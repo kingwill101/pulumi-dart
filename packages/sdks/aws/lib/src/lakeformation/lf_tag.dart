@@ -79,7 +79,7 @@ import 'lf_tag_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -87,7 +87,10 @@ import 'lf_tag_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lakeformation_lftag" "example" {
+/// resource "aws_lakeformation_lf_tag" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key    = "module"
 ///   values = ["Orders", "Sales", "Customers"]
 /// }
@@ -166,7 +169,7 @@ class LfTag extends pulumi.CustomResource {
           'aws:lakeformation/lfTag:LfTag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     catalogId = registerOutput<String>('catalogId');
     key = registerOutput<String>('key');

@@ -77,7 +77,7 @@ import 'bucket_ownership_controls_state.dart';
 /// 			Rule: &s3.BucketOwnershipControlsRuleArgs{
 /// 				ObjectOwnership: pulumi.String("BucketOwnerPreferred"),
 /// 			},
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -87,7 +87,7 @@ import 'bucket_ownership_controls_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -96,10 +96,16 @@ import 'bucket_ownership_controls_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example"
 /// }
-/// resource "aws_s3_bucketownershipcontrols" "example" {
-///   rule = {
+/// resource "aws_s3_bucket_ownership_controls" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
 ///     object_ownership = "BucketOwnerPreferred"
 ///   }
 ///   bucket = aws_s3_bucket.example.id
@@ -198,7 +204,7 @@ class BucketOwnershipControls extends pulumi.CustomResource {
           'aws:s3/bucketOwnershipControls:BucketOwnershipControls',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     region = registerOutput<String>('region');

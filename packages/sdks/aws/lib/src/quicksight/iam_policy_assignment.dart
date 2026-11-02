@@ -87,7 +87,7 @@ import 'iam_policy_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -95,9 +95,12 @@ import 'iam_policy_assignment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_quicksight_iampolicyassignment" "example" {
-///   identities = {
-///     users = [exampleAwsQuicksightUser.userName]
+/// resource "aws_quicksight_iam_policy_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   identities {
+///     user = [exampleAwsQuicksightUser.userName]
 ///   }
 ///   assignment_name   = "example"
 ///   assignment_status = "ENABLED"
@@ -128,11 +131,11 @@ import 'iam_policy_assignment_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new IamPolicyAssignment("example", IamPolicyAssignmentArgs.builder()
 ///             .identities(IamPolicyAssignmentIdentitiesArgs.builder()
-///                 .users(exampleAwsQuicksightUser.userName())
+///                 .users(exampleAwsQuicksightUser.get("userName"))
 ///                 .build())
 ///             .assignmentName("example")
 ///             .assignmentStatus("ENABLED")
-///             .policyArn(exampleAwsIamPolicy.arn())
+///             .policyArn(exampleAwsIamPolicy.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -191,7 +194,7 @@ class IamPolicyAssignment extends pulumi.CustomResource {
           'aws:quicksight/iamPolicyAssignment:IamPolicyAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     assignmentId = registerOutput<String>('assignmentId');
     assignmentName = registerOutput<String>('assignmentName');

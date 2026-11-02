@@ -237,7 +237,7 @@ import 'email_channel_state.dart';
 /// 		}
 /// 		_, err = iam.NewRolePolicy(ctx, "role_policy", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("role_policy"),
-/// 			Role:   role.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   role.ID(),
 /// 			Policy: pulumi.String(rolePolicy.Json),
 /// 		})
 /// 		if err != nil {
@@ -248,7 +248,7 @@ import 'email_channel_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -256,8 +256,8 @@ import 'email_channel_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["pinpoint.amazonaws.com"]
@@ -266,31 +266,46 @@ import 'email_channel_state.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "rolePolicy" {
-///   statements {
+/// data "aws_iam_policy_document" "rolePolicy" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["mobileanalytics:PutEvents", "mobileanalytics:PutItems"]
 ///     resources = ["*"]
 ///   }
 /// }
 ///
-/// resource "aws_pinpoint_emailchannel" "email" {
+/// resource "aws_pinpoint_email_channel" "email" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_id = aws_pinpoint_app.app.application_id
 ///   from_address   = "user@example.com"
 ///   role_arn       = aws_iam_role.role.arn
 /// }
 /// resource "aws_pinpoint_app" "app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_ses_domainidentity" "identity" {
+/// resource "aws_ses_domain_identity" "identity" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain = "example.com"
 /// }
 /// resource "aws_iam_role" "role" {
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iam_rolepolicy" "role_policy" {
+/// resource "aws_iam_role_policy" "role_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "role_policy"
 ///   role   = aws_iam_role.role.id
-///   policy = data.aws_iam_getpolicydocument.rolePolicy.json
+///   policy = data.aws_iam_policy_document.rolePolicy.json
 /// }
 /// ```
 /// ```java
@@ -462,7 +477,7 @@ class EmailChannel extends pulumi.CustomResource {
           'aws:pinpoint/emailChannel:EmailChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     configurationSet = registerOutput<String?>('configurationSet');

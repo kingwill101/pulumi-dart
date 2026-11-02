@@ -96,8 +96,8 @@ import 'instance_trust_provider_attachment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = verifiedaccess.NewInstanceTrustProviderAttachment(ctx, "example", &verifiedaccess.InstanceTrustProviderAttachmentArgs{
-/// 			VerifiedaccessInstanceId:      example.ID().ToIDOutput().ToStringOutput(),
-/// 			VerifiedaccessTrustProviderId: exampleTrustProvider.ID().ToIDOutput().ToStringOutput(),
+/// 			VerifiedaccessInstanceId:      example.ID(),
+/// 			VerifiedaccessTrustProviderId: exampleTrustProvider.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -107,7 +107,7 @@ import 'instance_trust_provider_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -116,18 +116,27 @@ import 'instance_trust_provider_attachment_state.dart';
 /// }
 ///
 /// resource "aws_verifiedaccess_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_verifiedaccess_trustprovider" "example" {
-///   device_options = {
+/// resource "aws_verifiedaccess_trust_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   device_options {
 ///     tenant_id = "example"
 ///   }
 ///   device_trust_provider_type = "jamf"
 ///   policy_reference_name      = "example"
 ///   trust_provider_type        = "device"
 /// }
-/// resource "aws_verifiedaccess_instancetrustproviderattachment" "example" {
+/// resource "aws_verifiedaccess_instance_trust_provider_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   verifiedaccess_instance_id       = aws_verifiedaccess_instance.example.id
-///   verifiedaccess_trust_provider_id = aws_verifiedaccess_trustprovider.example.id
+///   verifiedaccess_trust_provider_id = aws_verifiedaccess_trust_provider.example.id
 /// }
 /// ```
 /// ```java
@@ -223,7 +232,7 @@ class InstanceTrustProviderAttachment extends pulumi.CustomResource {
           'aws:verifiedaccess/instanceTrustProviderAttachment:InstanceTrustProviderAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     verifiedaccessInstanceId = registerOutput<String>('verifiedaccessInstanceId');

@@ -303,7 +303,7 @@ import 'connector_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -311,11 +311,14 @@ import 'connector_profile_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicy" "example" {
+/// data "aws_iam_policy" "example" {
 ///   name = "AmazonRedshiftAllCommandsFullAccess"
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example_role"
 ///   managed_policy_arns = [test.arn]
 ///   assume_role_policy = jsonencode({
@@ -331,9 +334,15 @@ import 'connector_profile_state.dart';
 ///   })
 /// }
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example-bucket"
 /// }
 /// resource "aws_redshift_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier = "example_cluster"
 ///   database_name      = "example_db"
 ///   master_username    = "exampleuser"
@@ -341,16 +350,19 @@ import 'connector_profile_state.dart';
 ///   node_type          = "dc1.large"
 ///   cluster_type       = "single-node"
 /// }
-/// resource "aws_appflow_connectorprofile" "example" {
-///   connector_profile_config = {
-///     connector_profile_credentials = {
-///       redshift = {
+/// resource "aws_appflow_connector_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   connector_profile_config {
+///     connector_profile_credentials {
+///       redshift {
 ///         password = aws_redshift_cluster.example.master_password
 ///         username = aws_redshift_cluster.example.master_username
 ///       }
 ///     }
-///     connector_profile_properties = {
-///       redshift = {
+///     connector_profile_properties {
+///       redshift {
 ///         bucket_name  = aws_s3_bucket.example.name
 ///         database_url ="jdbc:redshift://${aws_redshift_cluster.example.endpoint}/${aws_redshift_cluster.example.database_name}"
 ///         role_arn     = aws_iam_role.example.arn
@@ -403,7 +415,7 @@ import 'connector_profile_state.dart';
 ///
 ///         var exampleRole = new Role("exampleRole", RoleArgs.builder()
 ///             .name("example_role")
-///             .managedPolicyArns(test.arn())
+///             .managedPolicyArns(test.get("arn"))
 ///             .assumeRolePolicy(serializeJson(
 ///                 jsonObject(
 ///                     jsonProperty("Version", "2012-10-17"),
@@ -569,7 +581,7 @@ class ConnectorProfile extends pulumi.CustomResource {
           'aws:appflow/connectorProfile:ConnectorProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     connectionMode = registerOutput<String>('connectionMode');

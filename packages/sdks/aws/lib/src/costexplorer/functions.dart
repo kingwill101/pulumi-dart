@@ -59,7 +59,7 @@ import 'get_tags_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,7 @@ import 'get_tags_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_costexplorer_getcostcategory" "example" {
+/// data "aws_costexplorer_cost_category" "example" {
 ///   cost_category_arn = "costCategoryARN"
 /// }
 /// ```
@@ -201,7 +201,7 @@ pulumi.Output<GetCostCategoryResult> getCostCategoryOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -209,7 +209,7 @@ pulumi.Output<GetCostCategoryResult> getCostCategoryOutput(
 ///   }
 /// }
 ///
-/// data "aws_costexplorer_gettags" "test" {
+/// data "aws_costexplorer_tags" "test" {
 ///   time_period = {
 ///     start = "2021-01-01"
 ///     end   = "2022-12-01"

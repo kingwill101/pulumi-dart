@@ -140,7 +140,7 @@ import 'voice_connector_origination_state.dart';
 /// 				},
 /// 			},
 /// 			Disabled:         pulumi.Bool(false),
-/// 			VoiceConnectorId: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			VoiceConnectorId: _default.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -150,7 +150,7 @@ import 'voice_connector_origination_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -158,19 +158,25 @@ import 'voice_connector_origination_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_chime_voiceconnector" "default" {
+/// resource "aws_chime_voice_connector" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "test"
 ///   require_encryption = true
 /// }
-/// resource "aws_chime_voiceconnectororigination" "default" {
-///   routes {
+/// resource "aws_chime_voice_connector_origination" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   route {
 ///     host     = "127.0.0.1"
 ///     port     = 8081
 ///     protocol = "TCP"
 ///     priority = 1
 ///     weight   = 1
 ///   }
-///   routes {
+///   route {
 ///     host     = "127.0.0.2"
 ///     port     = 8082
 ///     protocol = "TCP"
@@ -178,7 +184,7 @@ import 'voice_connector_origination_state.dart';
 ///     weight   = 10
 ///   }
 ///   disabled           = false
-///   voice_connector_id = aws_chime_voiceconnector.default.id
+///   voice_connector_id = aws_chime_voice_connector.default.id
 /// }
 /// ```
 /// ```java
@@ -289,7 +295,7 @@ class VoiceConnectorOrigination extends pulumi.CustomResource {
           'aws:chime/voiceConnectorOrigination:VoiceConnectorOrigination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     disabled = registerOutput<bool?>('disabled');
     region = registerOutput<String>('region');

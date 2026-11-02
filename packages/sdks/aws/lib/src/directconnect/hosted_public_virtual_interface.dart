@@ -100,7 +100,7 @@ import 'hosted_public_virtual_interface_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -108,7 +108,10 @@ import 'hosted_public_virtual_interface_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_directconnect_hostedpublicvirtualinterface" "foo" {
+/// resource "aws_directconnect_hosted_public_virtual_interface" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_id         = "dxcon-zzzzzzzz"
 ///   name                  = "vif-foo"
 ///   vlan                  = 4094
@@ -228,7 +231,7 @@ class HostedPublicVirtualInterface extends pulumi.CustomResource {
           'aws:directconnect/hostedPublicVirtualInterface:HostedPublicVirtualInterface',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     addressFamily = registerOutput<String>('addressFamily');
     amazonAddress = registerOutput<String>('amazonAddress');

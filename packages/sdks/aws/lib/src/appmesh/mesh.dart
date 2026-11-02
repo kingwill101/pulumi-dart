@@ -58,7 +58,7 @@ import 'mesh_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,6 +67,9 @@ import 'mesh_state.dart';
 /// }
 ///
 /// resource "aws_appmesh_mesh" "simple" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "simpleapp"
 /// }
 /// ```
@@ -183,7 +186,7 @@ import 'mesh_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -192,8 +195,11 @@ import 'mesh_state.dart';
 /// }
 ///
 /// resource "aws_appmesh_mesh" "simple" {
-///   spec = {
-///     egress_filter = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   spec {
+///     egress_filter {
 ///       type = "ALLOW_ALL"
 ///     }
 ///   }
@@ -288,7 +294,7 @@ class Mesh extends pulumi.CustomResource {
           'aws:appmesh/mesh:Mesh',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdDate = registerOutput<String>('createdDate');

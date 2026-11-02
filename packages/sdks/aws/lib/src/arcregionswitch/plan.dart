@@ -299,7 +299,7 @@ import 'plan_workflow.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -308,6 +308,9 @@ import 'plan_workflow.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "arc-region-switch-role"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -321,9 +324,12 @@ import 'plan_workflow.dart';
 ///   })
 /// }
 /// resource "aws_arcregionswitch_plan" "example" {
-///   workflows {
-///     steps {
-///       execution_approval_configs {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workflow {
+///     step {
+///       execution_approval_config {
 ///         approval_role   = aws_iam_role.example.arn
 ///         timeout_minutes = 60
 ///       }
@@ -333,9 +339,9 @@ import 'plan_workflow.dart';
 ///     workflow_target_action = "activate"
 ///     workflow_target_region = "us-west-2"
 ///   }
-///   workflows {
-///     steps {
-///       execution_approval_configs {
+///   workflow {
+///     step {
+///       execution_approval_config {
 ///         approval_role   = aws_iam_role.example.arn
 ///         timeout_minutes = 60
 ///       }
@@ -723,7 +729,7 @@ import 'plan_workflow.dart';
 ///                                     },
 ///                                 },
 ///                                 RegionToRun = "activatingRegion",
-///                                 RetryIntervalMinutes = 5,
+///                                 RetryIntervalMinutes = 5.0,
 ///                                 TimeoutMinutes = 30,
 ///                             },
 ///                         },
@@ -958,7 +964,7 @@ import 'plan_workflow.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -967,6 +973,9 @@ import 'plan_workflow.dart';
 /// }
 ///
 /// resource "aws_arcregionswitch_plan" "complex" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   associated_alarms {
 ///     name                = "application-health-alarm"
 ///     alarm_type          = "applicationHealth"
@@ -981,10 +990,10 @@ import 'plan_workflow.dart';
 ///     target_region                        = "us-west-2"
 ///     min_delay_minutes_between_executions = 30
 ///   }
-///   workflows {
-///     steps {
-///       custom_action_lambda_configs {
-///         lambdas {
+///   workflow {
+///     step {
+///       custom_action_lambda_config {
+///         lambda {
 ///           arn = example.arn
 ///         }
 ///         region_to_run          = "activatingRegion"
@@ -994,11 +1003,11 @@ import 'plan_workflow.dart';
 ///       name                 = "lambda-step"
 ///       execution_block_type = "CustomActionLambda"
 ///     }
-///     steps {
-///       parallel_configs {
-///         steps {
-///           ec2_asg_capacity_increase_configs {
-///             asgs {
+///     step {
+///       parallel_config {
+///         step {
+///           ec2_asg_capacity_increase_config {
+///             asg {
 ///               arn = exampleAwsAutoscalingGroup.arn
 ///             }
 ///             target_percent = 150
@@ -1006,9 +1015,9 @@ import 'plan_workflow.dart';
 ///           name                 = "asg-scaling"
 ///           execution_block_type = "EC2AutoScaling"
 ///         }
-///         steps {
-///           ecs_capacity_increase_configs {
-///             services {
+///         step {
+///           ecs_capacity_increase_config {
+///             service {
 ///               cluster_arn = exampleAwsEcsCluster.arn
 ///               service_arn = exampleAwsEcsService.arn
 ///             }
@@ -1024,9 +1033,9 @@ import 'plan_workflow.dart';
 ///     workflow_target_action = "activate"
 ///     workflow_target_region = "us-west-2"
 ///   }
-///   workflows {
-///     steps {
-///       route53_health_check_configs {
+///   workflow {
+///     step {
+///       route53_health_check_config {
 ///         hosted_zone_id = exampleAwsRoute53Zone.zoneId
 ///         record_name    = "api.example.com"
 ///       }
@@ -1103,7 +1112,7 @@ import 'plan_workflow.dart';
 ///                         PlanWorkflowStepArgs.builder()
 ///                             .customActionLambdaConfigs(PlanWorkflowStepCustomActionLambdaConfigArgs.builder()
 ///                                 .lambdas(PlanWorkflowStepCustomActionLambdaConfigLambdaArgs.builder()
-///                                     .arn(example.arn())
+///                                     .arn(example.get("arn"))
 ///                                     .build())
 ///                                 .regionToRun("activatingRegion")
 ///                                 .retryIntervalMinutes(5.0)
@@ -1118,7 +1127,7 @@ import 'plan_workflow.dart';
 ///                                     PlanWorkflowStepParallelConfigStepArgs.builder()
 ///                                         .ec2AsgCapacityIncreaseConfigs(PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigArgs.builder()
 ///                                             .asgs(PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigAsgArgs.builder()
-///                                                 .arn(exampleAwsAutoscalingGroup.arn())
+///                                                 .arn(exampleAwsAutoscalingGroup.get("arn"))
 ///                                                 .build())
 ///                                             .targetPercent(150)
 ///                                             .build())
@@ -1128,8 +1137,8 @@ import 'plan_workflow.dart';
 ///                                     PlanWorkflowStepParallelConfigStepArgs.builder()
 ///                                         .ecsCapacityIncreaseConfigs(PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigArgs.builder()
 ///                                             .services(PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigServiceArgs.builder()
-///                                                 .clusterArn(exampleAwsEcsCluster.arn())
-///                                                 .serviceArn(exampleAwsEcsService.arn())
+///                                                 .clusterArn(exampleAwsEcsCluster.get("arn"))
+///                                                 .serviceArn(exampleAwsEcsService.get("arn"))
 ///                                                 .build())
 ///                                             .targetPercent(200)
 ///                                             .build())
@@ -1146,7 +1155,7 @@ import 'plan_workflow.dart';
 ///                 PlanWorkflowArgs.builder()
 ///                     .steps(PlanWorkflowStepArgs.builder()
 ///                         .route53HealthCheckConfigs(PlanWorkflowStepRoute53HealthCheckConfigArgs.builder()
-///                             .hostedZoneId(exampleAwsRoute53Zone.zoneId())
+///                             .hostedZoneId(exampleAwsRoute53Zone.get("zoneId"))
 ///                             .recordName("api.example.com")
 ///                             .build())
 ///                         .name("route53-health-check")
@@ -1156,7 +1165,7 @@ import 'plan_workflow.dart';
 ///                     .workflowTargetRegion("us-east-1")
 ///                     .build())
 ///             .name("complex-plan")
-///             .executionRole(exampleAwsIamRole.arn())
+///             .executionRole(exampleAwsIamRole.get("arn"))
 ///             .recoveryApproach("activeActive")
 ///             .regions(
 ///                 "us-east-1",
@@ -1296,7 +1305,7 @@ class Plan extends pulumi.CustomResource {
           'aws:arcregionswitch/plan:Plan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     associatedAlarms = registerOutput<List<PlanAssociatedAlarm>?>('associatedAlarms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanAssociatedAlarm>(guardedValue, (value) => PlanAssociatedAlarm.fromMap((value as Map).cast<String, dynamic>())); });

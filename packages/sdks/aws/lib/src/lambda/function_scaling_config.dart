@@ -203,7 +203,7 @@ import 'function_scaling_config_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -211,37 +211,46 @@ import 'function_scaling_config_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_capacityprovider" "example" {
-///   vpc_config = {
+/// resource "aws_lambda_capacity_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   vpc_config {
 ///     subnet_ids         = exampleAwsSubnet[*].id
 ///     security_group_ids = [exampleAwsSecurityGroup.id]
 ///   }
-///   permissions_config = {
+///   permissions_config {
 ///     capacity_provider_operator_role_arn = exampleAwsIamRole.arn
 ///   }
 ///   name = "example"
 /// }
 /// resource "aws_lambda_function" "example" {
-///   capacity_provider_config = {
-///     lambda_managed_instances_capacity_provider_config = {
-///       capacity_provider_arn = aws_lambda_capacityprovider.example.arn
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   capacity_provider_config {
+///     lambda_managed_instances_capacity_provider_config {
+///       capacity_provider_arn = aws_lambda_capacity_provider.example.arn
 ///     }
 ///   }
-///   code        = fileArchive("lambda_function.zip")
-///   name        = "example"
-///   role        = exampleAwsIamRole.arn
-///   handler     = "index.handler"
-///   runtime     = "python3.14"
-///   memory_size = 32768
-///   publish     = true
-///   publish_to  = "LATEST_PUBLISHED"
+///   filename      = filearchive("lambda_function.zip")
+///   function_name = "example"
+///   role          = exampleAwsIamRole.arn
+///   handler       = "index.handler"
+///   runtime       = "python3.14"
+///   memory_size   = 32768
+///   publish       = true
+///   publish_to    = "LATEST_PUBLISHED"
 /// }
-/// resource "aws_lambda_functionscalingconfig" "example" {
-///   function_scaling_config = {
+/// resource "aws_lambda_function_scaling_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   function_scaling_config {
 ///     min_execution_environments = 3
 ///     max_execution_environments = 100
 ///   }
-///   function_name = aws_lambda_function.example.name
+///   function_name = aws_lambda_function.example.function_name
 ///   qualifier     = "$LATEST.PUBLISHED"
 /// }
 /// ```
@@ -278,11 +287,11 @@ import 'function_scaling_config_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new CapacityProvider("example", CapacityProviderArgs.builder()
 ///             .vpcConfig(CapacityProviderVpcConfigArgs.builder()
-///                 .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
-///                 .securityGroupIds(exampleAwsSecurityGroup.id())
+///                 .subnetIds(exampleAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
+///                 .securityGroupIds(exampleAwsSecurityGroup.get("id"))
 ///                 .build())
 ///             .permissionsConfig(CapacityProviderPermissionsConfigArgs.builder()
-///                 .capacityProviderOperatorRoleArn(exampleAwsIamRole.arn())
+///                 .capacityProviderOperatorRoleArn(exampleAwsIamRole.get("arn"))
 ///                 .build())
 ///             .name("example")
 ///             .build());
@@ -295,7 +304,7 @@ import 'function_scaling_config_timeouts.dart';
 ///                 .build())
 ///             .code(new FileArchive("lambda_function.zip"))
 ///             .name("example")
-///             .role(exampleAwsIamRole.arn())
+///             .role(exampleAwsIamRole.get("arn"))
 ///             .handler("index.handler")
 ///             .runtime("python3.14")
 ///             .memorySize(32768)
@@ -366,7 +375,7 @@ class FunctionScalingConfig extends pulumi.CustomResource {
           'aws:lambda/functionScalingConfig:FunctionScalingConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     functionArn = registerOutput<String>('functionArn');
     functionName = registerOutput<String>('functionName');

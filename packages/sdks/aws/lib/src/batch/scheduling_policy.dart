@@ -132,7 +132,7 @@ import 'scheduling_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -140,15 +140,19 @@ import 'scheduling_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_batch_schedulingpolicy" "example" {
-///   fair_share_policy = {
-///     share_distributions = [{
-///       "shareIdentifier" = "A1*"
-///       "weightFactor"    = 0.1
-///       }, {
-///       "shareIdentifier" = "A2"
-///       "weightFactor"    = 0.2
-///     }]
+/// resource "aws_batch_scheduling_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   fair_share_policy {
+///     share_distribution {
+///       share_identifier = "A1*"
+///       weight_factor    = 0.1
+///     }
+///     share_distribution {
+///       share_identifier = "A2"
+///       weight_factor    = 0.2
+///     }
 ///     compute_reservation = 1
 ///     share_decay_seconds = 3600
 ///   }
@@ -254,7 +258,7 @@ class SchedulingPolicy extends pulumi.CustomResource {
           'aws:batch/schedulingPolicy:SchedulingPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     fairSharePolicy = registerOutput<SchedulingPolicyFairSharePolicy?>('fairSharePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchedulingPolicyFairSharePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });

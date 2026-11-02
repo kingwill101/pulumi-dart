@@ -92,7 +92,7 @@ import 'vpc_connector_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -100,7 +100,10 @@ import 'vpc_connector_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apprunner_vpcconnector" "connector" {
+/// resource "aws_apprunner_vpc_connector" "connector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_connector_name = "name"
 ///   subnets            = ["subnet1", "subnet2"]
 ///   security_groups    = ["sg1", "sg2"]
@@ -201,7 +204,7 @@ class VpcConnector extends pulumi.CustomResource {
           'aws:apprunner/vpcConnector:VpcConnector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');

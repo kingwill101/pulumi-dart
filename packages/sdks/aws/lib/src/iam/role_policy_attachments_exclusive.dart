@@ -75,7 +75,7 @@ import 'role_policy_attachments_exclusive_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -83,7 +83,10 @@ import 'role_policy_attachments_exclusive_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_rolepolicyattachmentsexclusive" "example" {
+/// resource "aws_iam_role_policy_attachments_exclusive" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role_name   = exampleAwsIamRole.name
 ///   policy_arns = [exampleAwsIamPolicy.arn]
 /// }
@@ -110,8 +113,8 @@ import 'role_policy_attachments_exclusive_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RolePolicyAttachmentsExclusive("example", RolePolicyAttachmentsExclusiveArgs.builder()
-///             .roleName(exampleAwsIamRole.name())
-///             .policyArns(exampleAwsIamPolicy.arn())
+///             .roleName(exampleAwsIamRole.get("name"))
+///             .policyArns(exampleAwsIamPolicy.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -163,7 +166,7 @@ import 'role_policy_attachments_exclusive_state.dart';
 ///     var example = new Aws.Iam.RolePolicyAttachmentsExclusive("example", new()
 ///     {
 ///         RoleName = exampleAwsIamRole.Name,
-///         PolicyArns = new[] {},
+///         PolicyArns = new() {},
 ///     });
 ///
 /// });
@@ -190,7 +193,7 @@ import 'role_policy_attachments_exclusive_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -198,7 +201,10 @@ import 'role_policy_attachments_exclusive_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_rolepolicyattachmentsexclusive" "example" {
+/// resource "aws_iam_role_policy_attachments_exclusive" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role_name   = exampleAwsIamRole.name
 ///   policy_arns = []
 /// }
@@ -225,7 +231,7 @@ import 'role_policy_attachments_exclusive_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RolePolicyAttachmentsExclusive("example", RolePolicyAttachmentsExclusiveArgs.builder()
-///             .roleName(exampleAwsIamRole.name())
+///             .roleName(exampleAwsIamRole.get("name"))
 ///             .policyArns()
 ///             .build());
 ///
@@ -267,7 +273,7 @@ class RolePolicyAttachmentsExclusive extends pulumi.CustomResource {
           'aws:iam/rolePolicyAttachmentsExclusive:RolePolicyAttachmentsExclusive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     policyArns = registerOutput<List<String>>('policyArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     roleName = registerOutput<String>('roleName');

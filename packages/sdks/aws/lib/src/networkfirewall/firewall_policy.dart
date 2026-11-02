@@ -161,7 +161,7 @@ import 'firewall_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -169,22 +169,25 @@ import 'firewall_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
-/// data "aws_getcalleridentity" "currentGetCallerIdentity" {
+/// data "aws_caller_identity" "currentGetCallerIdentity" {
 /// }
 ///
-/// resource "aws_networkfirewall_firewallpolicy" "example" {
-///   firewall_policy = {
-///     stateless_rule_group_references = [{
-///       "priority"    = 1
-///       "resourceArn" = exampleAwsNetworkfirewallRuleGroup.arn
-///     }]
+/// resource "aws_networkfirewall_firewall_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   firewall_policy {
+///     stateless_rule_group_reference {
+///       priority     = 1
+///       resource_arn = exampleAwsNetworkfirewallRuleGroup.arn
+///     }
 ///     stateless_default_actions          = ["aws:pass"]
 ///     stateless_fragment_default_actions = ["aws:drop"]
-///     tls_inspection_configuration_arn   ="arn:${data.aws_getpartition.currentGetPartition.partition}:network-firewall:${data.aws_getregion.current.region}:${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:tls-configuration/example"
+///     tls_inspection_configuration_arn   ="arn:${data.aws_partition.currentGetPartition.partition}:network-firewall:${data.aws_region.current.region}:${data.aws_caller_identity.currentGetCallerIdentity.account_id}:tls-configuration/example"
 ///   }
 ///   name = "example"
 ///   tags = {
@@ -233,7 +236,7 @@ import 'firewall_policy_state.dart';
 ///             .firewallPolicy(FirewallPolicyFirewallPolicyArgs.builder()
 ///                 .statelessRuleGroupReferences(FirewallPolicyFirewallPolicyStatelessRuleGroupReferenceArgs.builder()
 ///                     .priority(1)
-///                     .resourceArn(exampleAwsNetworkfirewallRuleGroup.arn())
+///                     .resourceArn(exampleAwsNetworkfirewallRuleGroup.get("arn"))
 ///                     .build())
 ///                 .statelessDefaultActions("aws:pass")
 ///                 .statelessFragmentDefaultActions("aws:drop")
@@ -456,7 +459,7 @@ import 'firewall_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -464,20 +467,23 @@ import 'firewall_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkfirewall_firewallpolicy" "example" {
-///   firewall_policy = {
-///     policy_variables = {
-///       rule_variables = [{
-///         "ipSet" = {
-///           "definitions" = ["10.0.0.0/16", "10.1.0.0/24"]
+/// resource "aws_networkfirewall_firewall_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   firewall_policy {
+///     policy_variables {
+///       rule_variables {
+///         ip_set {
+///           definition = ["10.0.0.0/16", "10.1.0.0/24"]
 ///         }
-///         "key" = "HOME_NET"
-///       }]
+///         key = "HOME_NET"
+///       }
 ///     }
-///     stateless_rule_group_references = [{
-///       "priority"    = 1
-///       "resourceArn" = exampleAwsNetworkfirewallRuleGroup.arn
-///     }]
+///     stateless_rule_group_reference {
+///       priority     = 1
+///       resource_arn = exampleAwsNetworkfirewallRuleGroup.arn
+///     }
 ///     stateless_default_actions          = ["aws:pass"]
 ///     stateless_fragment_default_actions = ["aws:drop"]
 ///   }
@@ -528,7 +534,7 @@ import 'firewall_policy_state.dart';
 ///                     .build())
 ///                 .statelessRuleGroupReferences(FirewallPolicyFirewallPolicyStatelessRuleGroupReferenceArgs.builder()
 ///                     .priority(1)
-///                     .resourceArn(exampleAwsNetworkfirewallRuleGroup.arn())
+///                     .resourceArn(exampleAwsNetworkfirewallRuleGroup.get("arn"))
 ///                     .build())
 ///                 .statelessDefaultActions("aws:pass")
 ///                 .statelessFragmentDefaultActions("aws:drop")
@@ -713,7 +719,7 @@ import 'firewall_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -721,18 +727,21 @@ import 'firewall_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkfirewall_firewallpolicy" "example" {
-///   firewall_policy = {
-///     stateless_custom_actions = [{
-///       "actionDefinition" = {
-///         "publishMetricAction" = {
-///           "dimensions" = [{
-///             "value" = "1"
-///           }]
+/// resource "aws_networkfirewall_firewall_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   firewall_policy {
+///     stateless_custom_action {
+///       action_definition {
+///         publish_metric_action {
+///           dimension {
+///             value = "1"
+///           }
 ///         }
 ///       }
-///       "actionName" = "ExampleCustomAction"
-///     }]
+///       action_name = "ExampleCustomAction"
+///     }
 ///     stateless_default_actions          = ["aws:pass", "ExampleCustomAction"]
 ///     stateless_fragment_default_actions = ["aws:drop"]
 ///   }
@@ -934,7 +943,7 @@ import 'firewall_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -942,17 +951,20 @@ import 'firewall_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
 ///
-/// resource "aws_networkfirewall_firewallpolicy" "example" {
-///   firewall_policy = {
-///     stateful_rule_group_references = [{
-///       "deepThreatInspection" = true
-///       "resourceArn"          ="arn:${data.aws_getpartition.currentGetPartition.partition}:network-firewall:${data.aws_getregion.current.region}:aws-managed:stateful-rulegroup/AttackInfrastructureActionOrder"
-///     }]
+/// resource "aws_networkfirewall_firewall_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   firewall_policy {
+///     stateful_rule_group_reference {
+///       deep_threat_inspection = true
+///       resource_arn           ="arn:${data.aws_partition.currentGetPartition.partition}:network-firewall:${data.aws_region.current.region}:aws-managed:stateful-rulegroup/AttackInfrastructureActionOrder"
+///     }
 ///     stateless_fragment_default_actions = ["aws:drop"]
 ///     stateless_default_actions          = ["aws:pass"]
 ///   }
@@ -1174,7 +1186,7 @@ import 'firewall_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1182,21 +1194,24 @@ import 'firewall_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
 ///
-/// resource "aws_networkfirewall_firewallpolicy" "example" {
-///   firewall_policy = {
-///     stateful_engine_options = {
+/// resource "aws_networkfirewall_firewall_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   firewall_policy {
+///     stateful_engine_options {
 ///       rule_order = "STRICT_ORDER"
 ///     }
-///     stateful_rule_group_references = [{
-///       "deepThreatInspection" = false
-///       "priority"             = 1
-///       "resourceArn"          ="arn:${data.aws_getpartition.currentGetPartition.partition}:network-firewall:${data.aws_getregion.current.region}:aws-managed:stateful-rulegroup/AttackInfrastructureStrictOrder"
-///     }]
+///     stateful_rule_group_reference {
+///       deep_threat_inspection = false
+///       priority               = 1
+///       resource_arn           ="arn:${data.aws_partition.currentGetPartition.partition}:network-firewall:${data.aws_region.current.region}:aws-managed:stateful-rulegroup/AttackInfrastructureStrictOrder"
+///     }
 ///     stateless_fragment_default_actions = ["aws:drop"]
 ///     stateless_default_actions          = ["aws:pass"]
 ///   }
@@ -1323,7 +1338,7 @@ class FirewallPolicy extends pulumi.CustomResource {
           'aws:networkfirewall/firewallPolicy:FirewallPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

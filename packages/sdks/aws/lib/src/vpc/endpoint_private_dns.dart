@@ -67,7 +67,7 @@ import 'endpoint_private_dns_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,7 +75,10 @@ import 'endpoint_private_dns_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpc_endpointprivatedns" "example" {
+/// resource "aws_vpc_endpoint_private_dns" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_endpoint_id     = exampleAwsVpcEndpoint.id
 ///   private_dns_enabled = true
 /// }
@@ -102,7 +105,7 @@ import 'endpoint_private_dns_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new EndpointPrivateDns("example", EndpointPrivateDnsArgs.builder()
-///             .vpcEndpointId(exampleAwsVpcEndpoint.id())
+///             .vpcEndpointId(exampleAwsVpcEndpoint.get("id"))
 ///             .privateDnsEnabled(true)
 ///             .build());
 ///
@@ -146,7 +149,7 @@ class EndpointPrivateDns extends pulumi.CustomResource {
           'aws:vpc/endpointPrivateDns:EndpointPrivateDns',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     privateDnsEnabled = registerOutput<bool>('privateDnsEnabled');
     region = registerOutput<String>('region');

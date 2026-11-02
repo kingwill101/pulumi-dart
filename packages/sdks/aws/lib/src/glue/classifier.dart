@@ -112,7 +112,7 @@ import 'classifier_xml_classifier.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -121,12 +121,15 @@ import 'classifier_xml_classifier.dart';
 /// }
 ///
 /// resource "aws_glue_classifier" "example" {
-///   csv_classifier = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   csv_classifier {
 ///     allow_single_column    = false
 ///     contains_header        = "PRESENT"
 ///     delimiter              = ","
 ///     disable_value_trimming = false
-///     headers                = ["example1", "example2"]
+///     header                 = ["example1", "example2"]
 ///     quote_symbol           = "'"
 ///   }
 ///   name = "example"
@@ -260,7 +263,7 @@ import 'classifier_xml_classifier.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -269,7 +272,10 @@ import 'classifier_xml_classifier.dart';
 /// }
 ///
 /// resource "aws_glue_classifier" "example" {
-///   grok_classifier = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   grok_classifier {
 ///     classification = "example"
 ///     grok_pattern   = "example"
 ///   }
@@ -388,7 +394,7 @@ import 'classifier_xml_classifier.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -397,7 +403,10 @@ import 'classifier_xml_classifier.dart';
 /// }
 ///
 /// resource "aws_glue_classifier" "example" {
-///   json_classifier = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   json_classifier {
 ///     json_path = "example"
 ///   }
 ///   name = "example"
@@ -517,7 +526,7 @@ import 'classifier_xml_classifier.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -526,7 +535,10 @@ import 'classifier_xml_classifier.dart';
 /// }
 ///
 /// resource "aws_glue_classifier" "example" {
-///   xml_classifier = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   xml_classifier {
 ///     classification = "example"
 ///     row_tag        = "example"
 ///   }
@@ -611,7 +623,7 @@ class Classifier extends pulumi.CustomResource {
           'aws:glue/classifier:Classifier',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     csvClassifier = registerOutput<ClassifierCsvClassifier?>('csvClassifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassifierCsvClassifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     grokClassifier = registerOutput<ClassifierGrokClassifier?>('grokClassifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassifierGrokClassifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });

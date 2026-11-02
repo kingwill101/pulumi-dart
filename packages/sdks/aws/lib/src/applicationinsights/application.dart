@@ -135,7 +135,7 @@ import 'application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -144,10 +144,16 @@ import 'application_state.dart';
 /// }
 ///
 /// resource "aws_applicationinsights_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = aws_resourcegroups_group.example.name
 /// }
 /// resource "aws_resourcegroups_group" "example" {
-///   resource_query = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_query {
 ///     query = jsonencode({
 ///       "ResourceTypeFilters" = ["AWS::EC2::Instance"]
 ///       "TagFilters" = [{
@@ -273,7 +279,7 @@ class Application extends pulumi.CustomResource {
           'aws:applicationinsights/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoConfigEnabled = registerOutput<bool?>('autoConfigEnabled');

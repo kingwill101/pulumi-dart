@@ -77,7 +77,7 @@ import 'vpc_endpoint_service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -85,7 +85,10 @@ import 'vpc_endpoint_service_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcendpointservice" "example" {
+/// resource "aws_ec2_vpc_endpoint_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   acceptance_required        = false
 ///   network_load_balancer_arns = [exampleAwsLb.arn]
 /// }
@@ -113,7 +116,7 @@ import 'vpc_endpoint_service_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new VpcEndpointService("example", VpcEndpointServiceArgs.builder()
 ///             .acceptanceRequired(false)
-///             .networkLoadBalancerArns(exampleAwsLb.arn())
+///             .networkLoadBalancerArns(exampleAwsLb.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -193,7 +196,7 @@ import 'vpc_endpoint_service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -201,7 +204,10 @@ import 'vpc_endpoint_service_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcendpointservice" "example" {
+/// resource "aws_ec2_vpc_endpoint_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   acceptance_required        = false
 ///   gateway_load_balancer_arns = [exampleAwsLb.arn]
 /// }
@@ -229,7 +235,7 @@ import 'vpc_endpoint_service_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new VpcEndpointService("example", VpcEndpointServiceArgs.builder()
 ///             .acceptanceRequired(false)
-///             .gatewayLoadBalancerArns(exampleAwsLb.arn())
+///             .gatewayLoadBalancerArns(exampleAwsLb.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -303,7 +309,7 @@ class VpcEndpointService extends pulumi.CustomResource {
           'aws:ec2/vpcEndpointService:VpcEndpointService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     acceptanceRequired = registerOutput<bool>('acceptanceRequired');
     allowedPrincipals = registerOutput<List<String>>('allowedPrincipals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

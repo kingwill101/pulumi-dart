@@ -101,7 +101,7 @@ import 'vpc_ipam_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -109,12 +109,15 @@ import 'vpc_ipam_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
 ///
-/// resource "aws_ec2_vpcipam" "main" {
+/// resource "aws_ec2_vpc_ipam" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   operating_regions {
-///     region_name = data.aws_getregion.current.region
+///     region_name = data.aws_region.current.region
 ///   }
 ///   description = "My IPAM"
 ///   tags = {
@@ -280,7 +283,7 @@ import 'vpc_ipam_state.dart';
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -291,13 +294,16 @@ import 'vpc_ipam_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
 /// data "std_concat" "invoke_1" {
-///   input = [[data.aws_getregion.current.region], var.ipamRegions]
+///   input = [[data.aws_region.current.region], var.ipamRegions]
 /// }
 ///
-/// resource "aws_ec2_vpcipam" "main" {
+/// resource "aws_ec2_vpc_ipam" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dynamic "operating_regions" {
 ///     for_each = local.allIpamRegions
 ///     content {
@@ -368,7 +374,7 @@ class VpcIpam extends pulumi.CustomResource {
           'aws:ec2/vpcIpam:VpcIpam',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cascade = registerOutput<bool?>('cascade');

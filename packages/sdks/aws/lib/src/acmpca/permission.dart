@@ -123,7 +123,7 @@ import 'permission_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -132,13 +132,19 @@ import 'permission_state.dart';
 /// }
 ///
 /// resource "aws_acmpca_permission" "example" {
-///   certificate_authority_arn = aws_acmpca_certificateauthority.example.arn
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   certificate_authority_arn = aws_acmpca_certificate_authority.example.arn
 ///   actions                   = ["IssueCertificate", "GetCertificate", "ListPermissions"]
 ///   principal                 = "acm.amazonaws.com"
 /// }
-/// resource "aws_acmpca_certificateauthority" "example" {
-///   certificate_authority_configuration = {
-///     subject = {
+/// resource "aws_acmpca_certificate_authority" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   certificate_authority_configuration {
+///     subject {
 ///       common_name = "example.com"
 ///     }
 ///     key_algorithm     = "RSA_4096"
@@ -240,7 +246,7 @@ class Permission extends pulumi.CustomResource {
           'aws:acmpca/permission:Permission',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     actions = registerOutput<List<String>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     certificateAuthorityArn = registerOutput<String>('certificateAuthorityArn');

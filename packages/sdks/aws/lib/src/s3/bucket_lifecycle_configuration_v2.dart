@@ -101,7 +101,7 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -109,8 +109,11 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_bucketlifecycleconfiguration" "example" {
-///   rules {
+/// resource "aws_s3_bucket_lifecycle_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
 ///     id     = "rule-1"
 ///     status = "Enabled"
 ///   }
@@ -145,7 +148,7 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 ///                 .id("rule-1")
 ///                 .status("Enabled")
 ///                 .build())
-///             .bucket(bucket.bucket())
+///             .bucket(bucket.get("bucket"))
 ///             .build());
 ///
 ///     }
@@ -245,7 +248,7 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -253,9 +256,13 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_bucketlifecycleconfiguration" "example" {
-///   rules {
-///     filter = {}
+/// resource "aws_s3_bucket_lifecycle_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     filter {
+///     }
 ///     id     = "rule-1"
 ///     status = "Enabled"
 ///   }
@@ -293,7 +300,7 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 ///                 .id("rule-1")
 ///                 .status("Enabled")
 ///                 .build())
-///             .bucket(bucket.bucket())
+///             .bucket(bucket.get("bucket"))
 ///             .build());
 ///
 ///     }
@@ -403,7 +410,7 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -411,9 +418,12 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_bucketlifecycleconfiguration" "example" {
-///   rules {
-///     filter = {
+/// resource "aws_s3_bucket_lifecycle_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     filter {
 ///       prefix = "logs/"
 ///     }
 ///     id     = "rule-1"
@@ -454,7 +464,7 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 ///                 .id("rule-1")
 ///                 .status("Enabled")
 ///                 .build())
-///             .bucket(bucket.bucket())
+///             .bucket(bucket.get("bucket"))
 ///             .build());
 ///
 ///     }
@@ -597,7 +607,7 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -605,16 +615,19 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_bucketlifecycleconfiguration" "example" {
-///   rules {
-///     filter = {
+/// resource "aws_s3_bucket_lifecycle_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     filter {
 ///       prefix = "logs/"
 ///     }
 ///     id     = "rule-1"
 ///     status = "Enabled"
 ///   }
-///   rules {
-///     filter = {
+///   rule {
+///     filter {
 ///       prefix = "tmp/"
 ///     }
 ///     id     = "rule-2"
@@ -664,7 +677,7 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 ///                     .id("rule-2")
 ///                     .status("Enabled")
 ///                     .build())
-///             .bucket(bucket.bucket())
+///             .bucket(bucket.get("bucket"))
 ///             .build());
 ///
 ///     }
@@ -792,7 +805,7 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -800,10 +813,13 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_bucketlifecycleconfiguration" "example" {
-///   rules {
-///     filter = {
-///       tag = {
+/// resource "aws_s3_bucket_lifecycle_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     filter {
+///       tag {
 ///         key   = "Name"
 ///         value = "Staging"
 ///       }
@@ -850,7 +866,7 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 ///                 .id("rule-1")
 ///                 .status("Enabled")
 ///                 .build())
-///             .bucket(bucket.bucket())
+///             .bucket(bucket.get("bucket"))
 ///             .build());
 ///
 ///     }
@@ -985,7 +1001,7 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -993,10 +1009,13 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_bucketlifecycleconfiguration" "example" {
-///   rules {
-///     filter = {
-///       and = {
+/// resource "aws_s3_bucket_lifecycle_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     filter {
+///       and {
 ///         tags = {
 ///           "Key1" = "Value1"
 ///           "Key2" = "Value2"
@@ -1047,7 +1066,7 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 ///                 .id("rule-1")
 ///                 .status("Enabled")
 ///                 .build())
-///             .bucket(bucket.bucket())
+///             .bucket(bucket.get("bucket"))
 ///             .build());
 ///
 ///     }
@@ -1187,7 +1206,7 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1195,10 +1214,13 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_bucketlifecycleconfiguration" "example" {
-///   rules {
-///     filter = {
-///       and = {
+/// resource "aws_s3_bucket_lifecycle_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     filter {
+///       and {
 ///         prefix = "logs/"
 ///         tags = {
 ///           "Key1" = "Value1"
@@ -1251,7 +1273,7 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 ///                 .id("rule-1")
 ///                 .status("Enabled")
 ///                 .build())
-///             .bucket(bucket.bucket())
+///             .bucket(bucket.get("bucket"))
 ///             .build());
 ///
 ///     }
@@ -1388,7 +1410,7 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1396,12 +1418,15 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_bucketlifecycleconfiguration" "example" {
-///   rules {
-///     filter = {
+/// resource "aws_s3_bucket_lifecycle_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     filter {
 ///       object_size_greater_than = 1
 ///     }
-///     transitions {
+///     transition {
 ///       days          = 365
 ///       storage_class = "GLACIER_IR"
 ///     }
@@ -1447,7 +1472,7 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 ///                 .id("Allow small object transitions")
 ///                 .status("Enabled")
 ///                 .build())
-///             .bucket(bucket.bucket())
+///             .bucket(bucket.get("bucket"))
 ///             .build());
 ///
 ///     }
@@ -1578,7 +1603,7 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1586,10 +1611,13 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_bucketlifecycleconfiguration" "example" {
-///   rules {
-///     filter = {
-///       and = {
+/// resource "aws_s3_bucket_lifecycle_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     filter {
+///       and {
 ///         prefix                   = "logs/"
 ///         object_size_greater_than = 500
 ///         object_size_less_than    = 64000
@@ -1638,7 +1666,7 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 ///                 .id("rule-1")
 ///                 .status("Enabled")
 ///                 .build())
-///             .bucket(bucket.bucket())
+///             .bucket(bucket.get("bucket"))
 ///             .build());
 ///
 ///     }
@@ -2092,7 +2120,7 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2101,19 +2129,28 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "my-bucket"
 /// }
-/// resource "aws_s3_bucketacl" "bucket_acl" {
+/// resource "aws_s3_bucket_acl" "bucket_acl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.bucket.bucket
 ///   acl    = "private"
 /// }
-/// resource "aws_s3_bucketlifecycleconfiguration" "bucket-config" {
-///   rules {
-///     expiration = {
+/// resource "aws_s3_bucket_lifecycle_configuration" "bucket-config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     expiration {
 ///       days = 90
 ///     }
-///     filter = {
-///       and = {
+///     filter {
+///       and {
 ///         prefix = "log/"
 ///         tags = {
 ///           "rule"      = "log"
@@ -2121,22 +2158,22 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 ///         }
 ///       }
 ///     }
-///     transitions {
+///     transition {
 ///       days          = 30
 ///       storage_class = "STANDARD_IA"
 ///     }
-///     transitions {
+///     transition {
 ///       days          = 60
 ///       storage_class = "GLACIER"
 ///     }
 ///     id     = "log"
 ///     status = "Enabled"
 ///   }
-///   rules {
-///     filter = {
+///   rule {
+///     filter {
 ///       prefix = "tmp/"
 ///     }
-///     expiration = {
+///     expiration {
 ///       date = "2023-01-13T00:00:00Z"
 ///     }
 ///     id     = "tmp"
@@ -2145,32 +2182,44 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 ///   bucket = aws_s3_bucket.bucket.bucket
 /// }
 /// resource "aws_s3_bucket" "versioning_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "my-versioning-bucket"
 /// }
-/// resource "aws_s3_bucketacl" "versioning_bucket_acl" {
+/// resource "aws_s3_bucket_acl" "versioning_bucket_acl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.versioning_bucket.bucket
 ///   acl    = "private"
 /// }
-/// resource "aws_s3_bucketversioning" "versioning" {
-///   versioning_configuration = {
+/// resource "aws_s3_bucket_versioning" "versioning" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   versioning_configuration {
 ///     status = "Enabled"
 ///   }
 ///   bucket = aws_s3_bucket.versioning_bucket.bucket
 /// }
-/// resource "aws_s3_bucketlifecycleconfiguration" "versioning-bucket-config" {
-///   depends_on = [aws_s3_bucketversioning.versioning]
-///   rules {
-///     filter = {
+/// resource "aws_s3_bucket_lifecycle_configuration" "versioning-bucket-config" {
+///   depends_on = [aws_s3_bucket_versioning.versioning]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     filter {
 ///       prefix = "config/"
 ///     }
-///     noncurrent_version_expiration = {
+///     noncurrent_version_expiration {
 ///       noncurrent_days = 90
 ///     }
-///     noncurrent_version_transitions {
+///     noncurrent_version_transition {
 ///       noncurrent_days = 30
 ///       storage_class   = "STANDARD_IA"
 ///     }
-///     noncurrent_version_transitions {
+///     noncurrent_version_transition {
 ///       noncurrent_days = 60
 ///       storage_class   = "GLACIER"
 ///     }
@@ -2441,7 +2490,7 @@ class BucketLifecycleConfigurationV2 extends pulumi.CustomResource {
           'aws:s3/bucketLifecycleConfigurationV2:BucketLifecycleConfigurationV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String>('expectedBucketOwner');

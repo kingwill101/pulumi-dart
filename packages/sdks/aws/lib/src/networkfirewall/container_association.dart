@@ -127,7 +127,7 @@ import 'container_association_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -135,9 +135,12 @@ import 'container_association_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkfirewall_containerassociation" "example" {
-///   container_monitoring_configurations {
-///     attribute_filters {
+/// resource "aws_networkfirewall_container_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   container_monitoring_configuration {
+///     attribute_filter {
 ///       key   = "app"
 ///       value = "backend"
 ///     }
@@ -181,7 +184,7 @@ import 'container_association_timeouts.dart';
 ///                     .key("app")
 ///                     .value("backend")
 ///                     .build())
-///                 .clusterArn(exampleAwsEksCluster.arn())
+///                 .clusterArn(exampleAwsEksCluster.get("arn"))
 ///                 .build())
 ///             .containerAssociationName("example-eks-association")
 ///             .type("EKS")
@@ -290,7 +293,7 @@ import 'container_association_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -298,8 +301,11 @@ import 'container_association_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkfirewall_containerassociation" "example" {
-///   container_monitoring_configurations {
+/// resource "aws_networkfirewall_container_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   container_monitoring_configuration {
 ///     cluster_arn = exampleAwsEcsCluster.arn
 ///   }
 ///   container_association_name = "example-ecs-association"
@@ -330,7 +336,7 @@ import 'container_association_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new ContainerAssociation("example", ContainerAssociationArgs.builder()
 ///             .containerMonitoringConfigurations(ContainerAssociationContainerMonitoringConfigurationArgs.builder()
-///                 .clusterArn(exampleAwsEcsCluster.arn())
+///                 .clusterArn(exampleAwsEcsCluster.get("arn"))
 ///                 .build())
 ///             .containerAssociationName("example-ecs-association")
 ///             .type("ECS")
@@ -400,7 +406,7 @@ class ContainerAssociation extends pulumi.CustomResource {
           'aws:networkfirewall/containerAssociation:ContainerAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     containerAssociationArn = registerOutput<String>('containerAssociationArn');
     containerAssociationName = registerOutput<String>('containerAssociationName');

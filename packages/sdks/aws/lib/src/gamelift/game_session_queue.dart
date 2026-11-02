@@ -123,7 +123,7 @@ import 'game_session_queue_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -131,12 +131,15 @@ import 'game_session_queue_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_gamelift_gamesessionqueue" "test" {
-///   player_latency_policies {
+/// resource "aws_gamelift_game_session_queue" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   player_latency_policy {
 ///     maximum_individual_player_latency_milliseconds = 100
 ///     policy_duration_seconds                        = 5
 ///   }
-///   player_latency_policies {
+///   player_latency_policy {
 ///     maximum_individual_player_latency_milliseconds = 200
 ///   }
 ///   name                = "example-session-queue"
@@ -178,9 +181,9 @@ import 'game_session_queue_state.dart';
 ///                     .build())
 ///             .name("example-session-queue")
 ///             .destinations(
-///                 usWest2Fleet.arn(),
-///                 euCentral1Fleet.arn())
-///             .notificationTarget(gameSessionQueueNotifications.arn())
+///                 usWest2Fleet.get("arn"),
+///                 euCentral1Fleet.get("arn"))
+///             .notificationTarget(gameSessionQueueNotifications.get("arn"))
 ///             .timeoutInSeconds(60)
 ///             .build());
 ///
@@ -246,7 +249,7 @@ class GameSessionQueue extends pulumi.CustomResource {
           'aws:gamelift/gameSessionQueue:GameSessionQueue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     customEventData = registerOutput<String?>('customEventData');

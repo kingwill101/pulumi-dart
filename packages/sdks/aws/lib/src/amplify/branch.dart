@@ -80,7 +80,7 @@ import 'branch_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = amplify.NewBranch(ctx, "master", &amplify.BranchArgs{
-/// 			AppId:      example.ID().ToIDOutput().ToStringOutput(),
+/// 			AppId:      example.ID(),
 /// 			BranchName: pulumi.String("master"),
 /// 			Framework:  pulumi.String("React"),
 /// 			Stage:      pulumi.String("PRODUCTION"),
@@ -96,7 +96,7 @@ import 'branch_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -105,9 +105,15 @@ import 'branch_state.dart';
 /// }
 ///
 /// resource "aws_amplify_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "app"
 /// }
 /// resource "aws_amplify_branch" "master" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id      = aws_amplify_app.example.id
 ///   branch_name = "master"
 ///   framework   = "React"
@@ -254,7 +260,7 @@ import 'branch_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = amplify.NewBranch(ctx, "master", &amplify.BranchArgs{
-/// 			AppId:                example.ID().ToIDOutput().ToStringOutput(),
+/// 			AppId:                example.ID(),
 /// 			BranchName:           pulumi.String("master"),
 /// 			EnableBasicAuth:      pulumi.Bool(true),
 /// 			BasicAuthCredentials: pulumi.String(invokeBase64encode.Result),
@@ -267,7 +273,7 @@ import 'branch_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -279,9 +285,15 @@ import 'branch_state.dart';
 /// }
 ///
 /// resource "aws_amplify_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "app"
 /// }
 /// resource "aws_amplify_branch" "master" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id                 = aws_amplify_app.example.id
 ///   branch_name            = "master"
 ///   enable_basic_auth      = true
@@ -633,7 +645,7 @@ import 'branch_state.dart';
 /// 			return err
 /// 		}
 /// 		master, err := amplify.NewBranch(ctx, "master", &amplify.BranchArgs{
-/// 			AppId:              example.ID().ToIDOutput().ToStringOutput(),
+/// 			AppId:              example.ID(),
 /// 			BranchName:         pulumi.String("master"),
 /// 			EnableNotification: pulumi.Bool(true),
 /// 		})
@@ -754,7 +766,7 @@ import 'branch_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -762,8 +774,8 @@ import 'branch_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "amplifyAppMaster" {
-///   statements {
+/// data "aws_iam_policy_document" "amplifyAppMaster" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["events.amazonaws.com"]
@@ -776,15 +788,24 @@ import 'branch_state.dart';
 /// }
 ///
 /// resource "aws_amplify_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "app"
 /// }
 /// resource "aws_amplify_branch" "master" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id              = aws_amplify_app.example.id
 ///   branch_name         = "master"
 ///   enable_notification = true
 /// }
 /// # EventBridge Rule for Amplify notifications
-/// resource "aws_cloudwatch_eventrule" "amplify_app_master" {
+/// resource "aws_cloudwatch_event_rule" "amplify_app_master" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        ="amplify-${app.id}-${aws_amplify_branch.master.branch_name}-branch-notification"
 ///   description ="AWS Amplify build notifications for :  App: ${app.id} Branch: ${aws_amplify_branch.master.branch_name}"
 ///   event_pattern = jsonencode({
@@ -797,8 +818,11 @@ import 'branch_state.dart';
 ///     "source"      = ["aws.amplify"]
 ///   })
 /// }
-/// resource "aws_cloudwatch_eventtarget" "amplify_app_master" {
-///   input_transformer = {
+/// resource "aws_cloudwatch_event_target" "amplify_app_master" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   input_transformer {
 ///     input_paths = {
 ///       "jobId"  = "$.detail.jobId"
 ///       "appId"  = "$.detail.appId"
@@ -808,22 +832,31 @@ import 'branch_state.dart';
 ///     }
 ///     input_template = "\"Build notification from the AWS Amplify Console for app: https://<branch>.<appId>.amplifyapp.com/. Your build status is <status>. Go to https://console.aws.amazon.com/amplify/home?region=<region>#<appId>/<branch>/<jobId> to view details on your build. \""
 ///   }
-///   rule      = aws_cloudwatch_eventrule.amplify_app_master.name
+///   rule      = aws_cloudwatch_event_rule.amplify_app_master.name
 ///   target_id = aws_amplify_branch.master.branch_name
 ///   arn       = aws_sns_topic.amplify_app_master.arn
 /// }
 /// # SNS Topic for Amplify notifications
 /// resource "aws_sns_topic" "amplify_app_master" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name ="amplify-${app.id}_${aws_amplify_branch.master.branch_name}"
 /// }
-/// resource "aws_sns_topicpolicy" "amplify_app_master" {
+/// resource "aws_sns_topic_policy" "amplify_app_master" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   arn    = aws_sns_topic.amplify_app_master.arn
-///   policy = data.aws_iam_getpolicydocument.amplifyAppMaster.json
+///   policy = data.aws_iam_policy_document.amplifyAppMaster.json
 /// }
-/// resource "aws_sns_topicsubscription" "this" {
-///   topic    = aws_sns_topic.amplify_app_master.arn
-///   protocol = "email"
-///   endpoint = "user@acme.com"
+/// resource "aws_sns_topic_subscription" "this" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   topic_arn = aws_sns_topic.amplify_app_master.arn
+///   protocol  = "email"
+///   endpoint  = "user@acme.com"
 /// }
 /// ```
 /// ```java
@@ -877,8 +910,8 @@ import 'branch_state.dart';
 ///
 ///         // EventBridge Rule for Amplify notifications
 ///         var amplifyAppMasterEventRule = new EventRule("amplifyAppMasterEventRule", EventRuleArgs.builder()
-///             .name(master.branchName().applyValue(_branchName -> String.format("amplify-%s-%s-branch-notification", app.id(),_branchName)))
-///             .description(master.branchName().applyValue(_branchName -> String.format("AWS Amplify build notifications for :  App: %s Branch: %s", app.id(),_branchName)))
+///             .name(master.branchName().applyValue(_branchName -> String.format("amplify-%s-%s-branch-notification", app.get("id"),_branchName)))
+///             .description(master.branchName().applyValue(_branchName -> String.format("AWS Amplify build notifications for :  App: %s Branch: %s", app.get("id"),_branchName)))
 ///             .eventPattern(Output.tuple(example.id(), master.branchName()).applyValue(values -> {
 ///                 var id = values.t1;
 ///                 var branchName = values.t2;
@@ -901,7 +934,7 @@ import 'branch_state.dart';
 ///
 ///         // SNS Topic for Amplify notifications
 ///         var amplifyAppMasterTopic = new Topic("amplifyAppMasterTopic", TopicArgs.builder()
-///             .name(master.branchName().applyValue(_branchName -> String.format("amplify-%s_%s", app.id(),_branchName)))
+///             .name(master.branchName().applyValue(_branchName -> String.format("amplify-%s_%s", app.get("id"),_branchName)))
 ///             .build());
 ///
 ///         var amplifyAppMasterEventTarget = new EventTarget("amplifyAppMasterEventTarget", EventTargetArgs.builder()
@@ -1104,7 +1137,7 @@ class Branch extends pulumi.CustomResource {
           'aws:amplify/branch:Branch',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['basicAuthCredentials'],
         ) {
     appId = registerOutput<String>('appId');

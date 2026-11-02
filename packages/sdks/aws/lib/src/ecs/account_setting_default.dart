@@ -68,7 +68,7 @@ import 'account_setting_default_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,7 +76,10 @@ import 'account_setting_default_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecs_accountsettingdefault" "test" {
+/// resource "aws_ecs_account_setting_default" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "taskLongArnFormat"
 ///   value = "enabled"
 /// }
@@ -178,7 +181,7 @@ import 'account_setting_default_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -186,7 +189,10 @@ import 'account_setting_default_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecs_accountsettingdefault" "test" {
+/// resource "aws_ecs_account_setting_default" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "defaultLogDriverMode"
 ///   value = "non-blocking"
 /// }
@@ -259,7 +265,7 @@ class AccountSettingDefault extends pulumi.CustomResource {
           'aws:ecs/accountSettingDefault:AccountSettingDefault',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     principalArn = registerOutput<String>('principalArn');

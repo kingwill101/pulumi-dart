@@ -436,7 +436,7 @@ import 'compute_environment_update_policy.dart';
 /// 			return err
 /// 		}
 /// 		sampleSubnet, err := ec2.NewSubnet(ctx, "sample", &ec2.SubnetArgs{
-/// 			VpcId:     sampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:     sampleVpc.ID(),
 /// 			CidrBlock: pulumi.String("10.1.1.0/24"),
 /// 		})
 /// 		if err != nil {
@@ -459,10 +459,10 @@ import 'compute_environment_update_policy.dart';
 /// 				MinVcpus:       pulumi.Int(0),
 /// 				PlacementGroup: samplePlacementGroup.Name,
 /// 				SecurityGroupIds: pulumi.StringArray{
-/// 					sample.ID().ToIDOutput().ToStringOutput(),
+/// 					sample.ID(),
 /// 				},
 /// 				Subnets: pulumi.StringArray{
-/// 					sampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 					sampleSubnet.ID(),
 /// 				},
 /// 				Type: pulumi.String("EC2"),
 /// 			},
@@ -480,7 +480,7 @@ import 'compute_environment_update_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -488,8 +488,8 @@ import 'compute_environment_update_policy.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "ec2AssumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "ec2AssumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["ec2.amazonaws.com"]
@@ -498,8 +498,8 @@ import 'compute_environment_update_policy.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "batchAssumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "batchAssumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["batch.amazonaws.com"]
@@ -510,26 +510,44 @@ import 'compute_environment_update_policy.dart';
 /// }
 ///
 /// resource "aws_iam_role" "ecs_instance_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "ecs_instance_role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.ec2AssumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.ec2AssumeRole.json
 /// }
-/// resource "aws_iam_rolepolicyattachment" "ecs_instance_role" {
+/// resource "aws_iam_role_policy_attachment" "ecs_instance_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role       = aws_iam_role.ecs_instance_role.name
 ///   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role"
 /// }
-/// resource "aws_iam_instanceprofile" "ecs_instance_role" {
+/// resource "aws_iam_instance_profile" "ecs_instance_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "ecs_instance_role"
 ///   role = aws_iam_role.ecs_instance_role.name
 /// }
 /// resource "aws_iam_role" "aws_batch_service_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "aws_batch_service_role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.batchAssumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.batchAssumeRole.json
 /// }
-/// resource "aws_iam_rolepolicyattachment" "aws_batch_service_role" {
+/// resource "aws_iam_role_policy_attachment" "aws_batch_service_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role       = aws_iam_role.aws_batch_service_role.name
 ///   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole"
 /// }
-/// resource "aws_ec2_securitygroup" "sample" {
+/// resource "aws_ec2_security_group" "sample" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   egress {
 ///     from_port   = 0
 ///     to_port     = 0
@@ -539,25 +557,37 @@ import 'compute_environment_update_policy.dart';
 ///   name = "aws_batch_compute_environment_security_group"
 /// }
 /// resource "aws_ec2_vpc" "sample" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.1.0.0/16"
 /// }
 /// resource "aws_ec2_subnet" "sample" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id     = aws_ec2_vpc.sample.id
 ///   cidr_block = "10.1.1.0/24"
 /// }
-/// resource "aws_ec2_placementgroup" "sample" {
+/// resource "aws_ec2_placement_group" "sample" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "sample"
 ///   strategy = "cluster"
 /// }
-/// resource "aws_batch_computeenvironment" "sample" {
-///   depends_on = [aws_iam_rolepolicyattachment.aws_batch_service_role]
-///   compute_resources = {
-///     instance_role      = aws_iam_instanceprofile.ecs_instance_role.arn
-///     instance_types     = ["c4.large"]
+/// resource "aws_batch_compute_environment" "sample" {
+///   depends_on = [aws_iam_role_policy_attachment.aws_batch_service_role]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   compute_resources {
+///     instance_role      = aws_iam_instance_profile.ecs_instance_role.arn
+///     instance_type      = ["c4.large"]
 ///     max_vcpus          = 16
 ///     min_vcpus          = 0
-///     placement_group    = aws_ec2_placementgroup.sample.name
-///     security_group_ids = [aws_ec2_securitygroup.sample.id]
+///     placement_group    = aws_ec2_placement_group.sample.name
+///     security_group_ids = [aws_ec2_security_group.sample.id]
 ///     subnets            = [aws_ec2_subnet.sample.id]
 ///     type               = "EC2"
 ///   }
@@ -917,7 +947,7 @@ import 'compute_environment_update_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -925,9 +955,12 @@ import 'compute_environment_update_policy.dart';
 ///   }
 /// }
 ///
-/// resource "aws_batch_computeenvironment" "sample" {
+/// resource "aws_batch_compute_environment" "sample" {
 ///   depends_on = [awsBatchServiceRole]
-///   compute_resources = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   compute_resources {
 ///     max_vcpus          = 16
 ///     security_group_ids = [sampleAwsSecurityGroup.id]
 ///     subnets            = [sampleAwsSubnet.id]
@@ -964,12 +997,12 @@ import 'compute_environment_update_policy.dart';
 ///         var sample = new ComputeEnvironment("sample", ComputeEnvironmentArgs.builder()
 ///             .computeResources(ComputeEnvironmentComputeResourcesArgs.builder()
 ///                 .maxVcpus(16)
-///                 .securityGroupIds(sampleAwsSecurityGroup.id())
-///                 .subnets(sampleAwsSubnet.id())
+///                 .securityGroupIds(sampleAwsSecurityGroup.get("id"))
+///                 .subnets(sampleAwsSubnet.get("id"))
 ///                 .type("FARGATE")
 ///                 .build())
 ///             .name("sample")
-///             .serviceRole(awsBatchServiceRoleAwsIamRole.arn())
+///             .serviceRole(awsBatchServiceRoleAwsIamRole.get("arn"))
 ///             .type("MANAGED")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(awsBatchServiceRole)
@@ -1130,7 +1163,7 @@ import 'compute_environment_update_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1138,18 +1171,21 @@ import 'compute_environment_update_policy.dart';
 ///   }
 /// }
 ///
-/// resource "aws_batch_computeenvironment" "sample" {
-///   compute_resources = {
+/// resource "aws_batch_compute_environment" "sample" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   compute_resources {
 ///     allocation_strategy = "BEST_FIT_PROGRESSIVE"
 ///     instance_role       = ecsInstance.arn
-///     instance_types      = ["optimal"]
+///     instance_type       = ["optimal"]
 ///     max_vcpus           = 4
 ///     min_vcpus           = 0
 ///     security_group_ids  = [sampleAwsSecurityGroup.id]
 ///     subnets             = [sampleAwsSubnet.id]
 ///     type                = "EC2"
 ///   }
-///   update_policy = {
+///   update_policy {
 ///     job_execution_timeout_minutes = 30
 ///     terminate_jobs_on_update      = false
 ///   }
@@ -1183,12 +1219,12 @@ import 'compute_environment_update_policy.dart';
 ///         var sample = new ComputeEnvironment("sample", ComputeEnvironmentArgs.builder()
 ///             .computeResources(ComputeEnvironmentComputeResourcesArgs.builder()
 ///                 .allocationStrategy("BEST_FIT_PROGRESSIVE")
-///                 .instanceRole(ecsInstance.arn())
+///                 .instanceRole(ecsInstance.get("arn"))
 ///                 .instanceTypes("optimal")
 ///                 .maxVcpus(4)
 ///                 .minVcpus(0)
-///                 .securityGroupIds(sampleAwsSecurityGroup.id())
-///                 .subnets(sampleAwsSubnet.id())
+///                 .securityGroupIds(sampleAwsSecurityGroup.get("id"))
+///                 .subnets(sampleAwsSubnet.get("id"))
 ///                 .type("EC2")
 ///                 .build())
 ///             .updatePolicy(ComputeEnvironmentUpdatePolicyArgs.builder()
@@ -1285,7 +1321,7 @@ class ComputeEnvironment extends pulumi.CustomResource {
           'aws:batch/computeEnvironment:ComputeEnvironment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     computeResources = registerOutput<ComputeEnvironmentComputeResources>('computeResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeEnvironmentComputeResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });

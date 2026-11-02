@@ -103,13 +103,13 @@ import 'bucket_acl_v2_state.dart';
 /// 			Rule: &s3.BucketOwnershipControlsRuleArgs{
 /// 				ObjectOwnership: pulumi.String("BucketOwnerPreferred"),
 /// 			},
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Acl:    pulumi.String("private"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleBucketOwnershipControls,
@@ -122,7 +122,7 @@ import 'bucket_acl_v2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -131,18 +131,27 @@ import 'bucket_acl_v2_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "my-tf-example-bucket"
 /// }
-/// resource "aws_s3_bucketownershipcontrols" "example" {
-///   rule = {
+/// resource "aws_s3_bucket_ownership_controls" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
 ///     object_ownership = "BucketOwnerPreferred"
 ///   }
 ///   bucket = aws_s3_bucket.example.id
 /// }
-/// resource "aws_s3_bucketacl" "example" {
-///   depends_on = [aws_s3_bucketownershipcontrols.example]
-///   bucket     = aws_s3_bucket.example.id
-///   acl        = "private"
+/// resource "aws_s3_bucket_acl" "example" {
+///   depends_on = [aws_s3_bucket_ownership_controls.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   bucket = aws_s3_bucket.example.id
+///   acl    = "private"
 /// }
 /// ```
 /// ```java
@@ -342,13 +351,13 @@ import 'bucket_acl_v2_state.dart';
 /// 			Rule: &s3.BucketOwnershipControlsRuleArgs{
 /// 				ObjectOwnership: pulumi.String("BucketOwnerPreferred"),
 /// 			},
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleBucketPublicAccessBlock, err := s3.NewBucketPublicAccessBlock(ctx, "example", &s3.BucketPublicAccessBlockArgs{
-/// 			Bucket:                example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket:                example.ID(),
 /// 			BlockPublicAcls:       pulumi.Bool(false),
 /// 			BlockPublicPolicy:     pulumi.Bool(false),
 /// 			IgnorePublicAcls:      pulumi.Bool(false),
@@ -358,7 +367,7 @@ import 'bucket_acl_v2_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Acl:    pulumi.String("public-read"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleBucketOwnershipControls,
@@ -372,7 +381,7 @@ import 'bucket_acl_v2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -381,25 +390,37 @@ import 'bucket_acl_v2_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "my-tf-example-bucket"
 /// }
-/// resource "aws_s3_bucketownershipcontrols" "example" {
-///   rule = {
+/// resource "aws_s3_bucket_ownership_controls" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
 ///     object_ownership = "BucketOwnerPreferred"
 ///   }
 ///   bucket = aws_s3_bucket.example.id
 /// }
-/// resource "aws_s3_bucketpublicaccessblock" "example" {
+/// resource "aws_s3_bucket_public_access_block" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket                  = aws_s3_bucket.example.id
 ///   block_public_acls       = false
 ///   block_public_policy     = false
 ///   ignore_public_acls      = false
 ///   restrict_public_buckets = false
 /// }
-/// resource "aws_s3_bucketacl" "example" {
-///   depends_on = [aws_s3_bucketownershipcontrols.example, aws_s3_bucketpublicaccessblock.example]
-///   bucket     = aws_s3_bucket.example.id
-///   acl        = "public-read"
+/// resource "aws_s3_bucket_acl" "example" {
+///   depends_on = [aws_s3_bucket_ownership_controls.example, aws_s3_bucket_public_access_block.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   bucket = aws_s3_bucket.example.id
+///   acl    = "public-read"
 /// }
 /// ```
 /// ```java
@@ -664,7 +685,7 @@ import 'bucket_acl_v2_state.dart';
 /// 			Rule: &s3.BucketOwnershipControlsRuleArgs{
 /// 				ObjectOwnership: pulumi.String("BucketOwnerPreferred"),
 /// 			},
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -691,7 +712,7 @@ import 'bucket_acl_v2_state.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleBucketOwnershipControls,
 /// 		}))
@@ -703,7 +724,7 @@ import 'bucket_acl_v2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -711,37 +732,47 @@ import 'bucket_acl_v2_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_s3_getcanonicaluserid" "current" {
+/// data "aws_s3_canonical_user_id" "current" {
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "my-tf-example-bucket"
 /// }
-/// resource "aws_s3_bucketownershipcontrols" "example" {
-///   rule = {
+/// resource "aws_s3_bucket_ownership_controls" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
 ///     object_ownership = "BucketOwnerPreferred"
 ///   }
 ///   bucket = aws_s3_bucket.example.id
 /// }
-/// resource "aws_s3_bucketacl" "example" {
-///   depends_on = [aws_s3_bucketownershipcontrols.example]
-///   access_control_policy = {
-///     owner = {
-///       id = data.aws_s3_getcanonicaluserid.current.id
+/// resource "aws_s3_bucket_acl" "example" {
+///   depends_on = [aws_s3_bucket_ownership_controls.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   access_control_policy {
+///     owner {
+///       id = data.aws_s3_canonical_user_id.current.id
 ///     }
-///     grants = [{
-///       "grantee" = {
-///         "id"   = data.aws_s3_getcanonicaluserid.current.id
-///         "type" = "CanonicalUser"
+///     grant {
+///       grantee {
+///         id   = data.aws_s3_canonical_user_id.current.id
+///         type = "CanonicalUser"
 ///       }
-///       "permission" = "READ"
-///       }, {
-///       "grantee" = {
-///         "type" = "Group"
-///         "uri"  = "http://acs.amazonaws.com/groups/s3/LogDelivery"
+///       permission = "READ"
+///     }
+///     grant {
+///       grantee {
+///         type = "Group"
+///         uri  = "http://acs.amazonaws.com/groups/s3/LogDelivery"
 ///       }
-///       "permission" = "READ_ACP"
-///     }]
+///       permission = "READ_ACP"
+///     }
 ///   }
 ///   bucket = aws_s3_bucket.example.id
 /// }
@@ -936,7 +967,7 @@ class BucketAclV2 extends pulumi.CustomResource {
           'aws:s3/bucketAclV2:BucketAclV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accessControlPolicy = registerOutput<BucketAclV2AccessControlPolicy>('accessControlPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketAclV2AccessControlPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     acl = registerOutput<String?>('acl');

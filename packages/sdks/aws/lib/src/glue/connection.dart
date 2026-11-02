@@ -83,7 +83,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -92,6 +92,9 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "aws_glue_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 ///   connection_properties = {
 ///     "JDBC_CONNECTION_URL" = "jdbc:mysql://example.com/exampledatabase"
@@ -233,7 +236,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -241,15 +244,18 @@ import 'connection_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_secretsmanager_getsecret" "example" {
+/// data "aws_secretsmanager_secret" "example" {
 ///   name = "example-secret"
 /// }
 ///
 /// resource "aws_glue_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 ///   connection_properties = {
 ///     "JDBC_CONNECTION_URL" = "jdbc:mysql://example.com/exampledatabase"
-///     "SECRET_ID"           = data.aws_secretsmanager_getsecret.example.name
+///     "SECRET_ID"           = data.aws_secretsmanager_secret.example.name
 ///   }
 /// }
 /// ```
@@ -413,7 +419,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -422,10 +428,13 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "aws_glue_connection" "example" {
-///   physical_connection_requirements = {
-///     availability_zone       = exampleAwsSubnet.availabilityZone
-///     security_group_id_lists = [exampleAwsSecurityGroup.id]
-///     subnet_id               = exampleAwsSubnet.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   physical_connection_requirements {
+///     availability_zone      = exampleAwsSubnet.availabilityZone
+///     security_group_id_list = [exampleAwsSecurityGroup.id]
+///     subnet_id              = exampleAwsSubnet.id
 ///   }
 ///   name = "example"
 ///   connection_properties = {
@@ -459,13 +468,13 @@ import 'connection_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Connection("example", ConnectionArgs.builder()
 ///             .physicalConnectionRequirements(ConnectionPhysicalConnectionRequirementsArgs.builder()
-///                 .availabilityZone(exampleAwsSubnet.availabilityZone())
-///                 .securityGroupIdLists(exampleAwsSecurityGroup.id())
-///                 .subnetId(exampleAwsSubnet.id())
+///                 .availabilityZone(exampleAwsSubnet.get("availabilityZone"))
+///                 .securityGroupIdLists(exampleAwsSecurityGroup.get("id"))
+///                 .subnetId(exampleAwsSubnet.get("id"))
 ///                 .build())
 ///             .name("example")
 ///             .connectionProperties(Map.ofEntries(
-///                 Map.entry("JDBC_CONNECTION_URL", String.format("jdbc:mysql://%s/exampledatabase", exampleAwsRdsCluster.endpoint())),
+///                 Map.entry("JDBC_CONNECTION_URL", String.format("jdbc:mysql://%s/exampledatabase", exampleAwsRdsCluster.get("endpoint"))),
 ///                 Map.entry("PASSWORD", "examplepassword"),
 ///                 Map.entry("USERNAME", "exampleusername")
 ///             ))
@@ -678,7 +687,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -686,11 +695,14 @@ import 'connection_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_secretsmanager_getsecret" "example" {
+/// data "aws_secretsmanager_secret" "example" {
 ///   name = "example-secret"
 /// }
 ///
 /// resource "aws_glue_connection" "example1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example1"
 ///   connection_type = "CUSTOM"
 ///   connection_properties = {
@@ -699,10 +711,13 @@ import 'connection_state.dart';
 ///     "CONNECTOR_URL"        = "s3://example/snowflake-jdbc.jar"
 ///     "JDBC_CONNECTION_URL"  = "[[\"default=jdbc:snowflake://example.com/?user=$${user}&password=$${password}\"],\",\"]"
 ///   }
-///   match_criterias = ["template-connection"]
+///   match_criteria = ["template-connection"]
 /// }
 /// # Reference the connector using match_criteria with the connector created above.
 /// resource "aws_glue_connection" "example2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example2"
 ///   connection_type = "CUSTOM"
 ///   connection_properties = {
@@ -710,9 +725,9 @@ import 'connection_state.dart';
 ///     "CONNECTOR_TYPE"       = "Jdbc"
 ///     "CONNECTOR_URL"        = "s3://example/snowflake-jdbc.jar"
 ///     "JDBC_CONNECTION_URL"  = "jdbc:snowflake://example.com/?user=$${user}&password=$${password}"
-///     "SECRET_ID"            = data.aws_secretsmanager_getsecret.example.name
+///     "SECRET_ID"            = data.aws_secretsmanager_secret.example.name
 ///   }
-///   match_criterias = ["Connection", aws_glue_connection.example1.name]
+///   match_criteria = ["Connection", aws_glue_connection.example1.name]
 /// }
 /// # Define the custom connector using the connection_type of `CUSTOM` with the match_criteria of `template_connection`
 /// # Example here being a snowflake jdbc connector with a secret having user and password as keys
@@ -935,7 +950,7 @@ import 'connection_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = secretsmanager.NewSecretVersion(ctx, "example", &secretsmanager.SecretVersionArgs{
-/// 			SecretId:     example.ID().ToIDOutput().ToStringOutput(),
+/// 			SecretId:     example.ID(),
 /// 			SecretString: pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
@@ -967,7 +982,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -976,9 +991,15 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "aws_secretsmanager_secret" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-secret"
 /// }
-/// resource "aws_secretsmanager_secretversion" "example" {
+/// resource "aws_secretsmanager_secret_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = aws_secretsmanager_secret.example.id
 ///   secret_string = jsonencode({
 ///     "username" = "exampleusername"
@@ -986,6 +1007,9 @@ import 'connection_state.dart';
 ///   })
 /// }
 /// resource "aws_glue_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
 ///   connection_type = "AZURECOSMOS"
 ///   connection_properties = {
@@ -1195,7 +1219,7 @@ import 'connection_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = secretsmanager.NewSecretVersion(ctx, "example", &secretsmanager.SecretVersionArgs{
-/// 			SecretId:     example.ID().ToIDOutput().ToStringOutput(),
+/// 			SecretId:     example.ID(),
 /// 			SecretString: pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
@@ -1227,7 +1251,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1236,9 +1260,15 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "aws_secretsmanager_secret" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-secret"
 /// }
-/// resource "aws_secretsmanager_secretversion" "example" {
+/// resource "aws_secretsmanager_secret_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = aws_secretsmanager_secret.example.id
 ///   secret_string = jsonencode({
 ///     "username" = "exampleusername"
@@ -1246,6 +1276,9 @@ import 'connection_state.dart';
 ///   })
 /// }
 /// resource "aws_glue_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
 ///   connection_type = "AZURECOSMOS"
 ///   connection_properties = {
@@ -1519,7 +1552,7 @@ import 'connection_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = secretsmanager.NewSecretVersion(ctx, "example", &secretsmanager.SecretVersionArgs{
-/// 			SecretId:     example.ID().ToIDOutput().ToStringOutput(),
+/// 			SecretId:     example.ID(),
 /// 			SecretString: json0,
 /// 		})
 /// 		if err != nil {
@@ -1550,7 +1583,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1562,15 +1595,41 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "aws_secretsmanager_secret" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-secret"
 /// }
-/// resource "aws_secretsmanager_secretversion" "example" {
+/// resource "aws_secretsmanager_secret_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = aws_secretsmanager_secret.example.id
 ///   secret_string = jsonencode({
-///     "credentials" = base64encode("{\n  \\\"type\\\": \\\"service_account\\\",\n  \\\"project_id\\\": \\\"example-project\\\",\n  \\\"private_key_id\\\": \\\"example-key\\\",\n  \\\"private_key\\\": \\\"-----BEGIN RSA PRIVATE KEY-----\\\nREDACTED\\\n-----END RSA PRIVATE KEY-----\\\",\n  \\\"client_email\\\": \\\"example-project@appspot.gserviceaccount.com\\\",\n  \\\"client_id\\\": example-client\\\",\n  \\\"auth_uri\\\": \\\"https://accounts.google.com/o/oauth2/auth\\\",\n  \\\"token_uri\\\": \\\"https://oauth2.googleapis.com/token\\\",\n  \\\"auth_provider_x509_cert_url\\\": \\\"https://www.googleapis.com/oauth2/v1/certs\\\",\n  \\\"client_x509_cert_url\\\": \\\"https://www.googleapis.com/robot/v1/metadata/x509/example-project%%40appspot.gserviceaccount.com\\\",\n  \\\"universe_domain\\\": \\\"googleapis.com\\\"\n}\n")
+///     "credentials" = base64encode(<<-EOT
+/// {
+///   \"type\": \"service_account\",
+///   \"project_id\": \"example-project\",
+///   \"private_key_id\": \"example-key\",
+///   \"private_key\": \"-----BEGIN RSA PRIVATE KEY-----\
+/// REDACTED\
+/// -----END RSA PRIVATE KEY-----\",
+///   \"client_email\": \"example-project@appspot.gserviceaccount.com\",
+///   \"client_id\": example-client\",
+///   \"auth_uri\": \"https://accounts.google.com/o/oauth2/auth\",
+///   \"token_uri\": \"https://oauth2.googleapis.com/token\",
+///   \"auth_provider_x509_cert_url\": \"https://www.googleapis.com/oauth2/v1/certs\",
+///   \"client_x509_cert_url\": \"https://www.googleapis.com/robot/v1/metadata/x509/example-project%%40appspot.gserviceaccount.com\",
+///   \"universe_domain\": \"googleapis.com\"
+/// }
+/// EOT
+/// )
 ///   })
 /// }
 /// resource "aws_glue_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
 ///   connection_type = "BIGQUERY"
 ///   connection_properties = {
@@ -1827,7 +1886,7 @@ import 'connection_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = secretsmanager.NewSecretVersion(ctx, "example", &secretsmanager.SecretVersionArgs{
-/// 			SecretId:     example.ID().ToIDOutput().ToStringOutput(),
+/// 			SecretId:     example.ID(),
 /// 			SecretString: pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
@@ -1863,7 +1922,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1872,9 +1931,15 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "aws_secretsmanager_secret" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-secret"
 /// }
-/// resource "aws_secretsmanager_secretversion" "example" {
+/// resource "aws_secretsmanager_secret_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = aws_secretsmanager_secret.example.id
 ///   secret_string = jsonencode({
 ///     "opensearch.net.http.auth.user" = "exampleusername"
@@ -1882,6 +1947,9 @@ import 'connection_state.dart';
 ///   })
 /// }
 /// resource "aws_glue_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
 ///   connection_type = "OPENSEARCH"
 ///   connection_properties = {
@@ -2106,7 +2174,7 @@ import 'connection_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = secretsmanager.NewSecretVersion(ctx, "example", &secretsmanager.SecretVersionArgs{
-/// 			SecretId:     example.ID().ToIDOutput().ToStringOutput(),
+/// 			SecretId:     example.ID(),
 /// 			SecretString: pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
@@ -2139,7 +2207,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2148,9 +2216,15 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "aws_secretsmanager_secret" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-secret"
 /// }
-/// resource "aws_secretsmanager_secretversion" "example" {
+/// resource "aws_secretsmanager_secret_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = aws_secretsmanager_secret.example.id
 ///   secret_string = jsonencode({
 ///     "sfUser"     = "exampleusername"
@@ -2158,6 +2232,9 @@ import 'connection_state.dart';
 ///   })
 /// }
 /// resource "aws_glue_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
 ///   connection_type = "SNOWFLAKE"
 ///   connection_properties = {
@@ -2331,7 +2408,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2340,6 +2417,9 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "aws_glue_connection" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
 ///   connection_type = "DYNAMODB"
 ///   athena_properties = {
@@ -2536,7 +2616,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2545,14 +2625,17 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "aws_glue_connection" "example" {
-///   authentication_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   authentication_configuration {
 ///     authentication_type = "BASIC"
 ///     secret_arn          = exampleAwsSecretsmanagerSecret.arn
 ///   }
-///   physical_connection_requirements = {
-///     availability_zone       = exampleAwsSubnet.availabilityZone
-///     security_group_id_lists = [exampleAwsSecurityGroup.id]
-///     subnet_id               = exampleAwsSubnet.id
+///   physical_connection_requirements {
+///     availability_zone      = exampleAwsSubnet.availabilityZone
+///     security_group_id_list = [exampleAwsSecurityGroup.id]
+///     subnet_id              = exampleAwsSubnet.id
 ///   }
 ///   name            = "athenafederatedcatalog_mysql"
 ///   connection_type = "MYSQL"
@@ -2593,23 +2676,23 @@ import 'connection_state.dart';
 ///         var example = new Connection("example", ConnectionArgs.builder()
 ///             .authenticationConfiguration(ConnectionAuthenticationConfigurationArgs.builder()
 ///                 .authenticationType("BASIC")
-///                 .secretArn(exampleAwsSecretsmanagerSecret.arn())
+///                 .secretArn(exampleAwsSecretsmanagerSecret.get("arn"))
 ///                 .build())
 ///             .physicalConnectionRequirements(ConnectionPhysicalConnectionRequirementsArgs.builder()
-///                 .availabilityZone(exampleAwsSubnet.availabilityZone())
-///                 .securityGroupIdLists(exampleAwsSecurityGroup.id())
-///                 .subnetId(exampleAwsSubnet.id())
+///                 .availabilityZone(exampleAwsSubnet.get("availabilityZone"))
+///                 .securityGroupIdLists(exampleAwsSecurityGroup.get("id"))
+///                 .subnetId(exampleAwsSubnet.get("id"))
 ///                 .build())
 ///             .name("athenafederatedcatalog_mysql")
 ///             .connectionType("MYSQL")
 ///             .athenaProperties(Map.ofEntries(
 ///                 Map.entry("lambda_function_arn", "arn:aws:lambda:us-east-1:123456789012:function:athenafederatedcatalog_mysql"),
-///                 Map.entry("spill_bucket", exampleAwsS3Bucket.bucket())
+///                 Map.entry("spill_bucket", exampleAwsS3Bucket.get("bucket"))
 ///             ))
 ///             .connectionProperties(Map.ofEntries(
-///                 Map.entry("HOST", exampleAwsRdsCluster.endpoint()),
-///                 Map.entry("PORT", exampleAwsRdsCluster.port()),
-///                 Map.entry("DATABASE", exampleAwsRdsCluster.databaseName())
+///                 Map.entry("HOST", exampleAwsRdsCluster.get("endpoint")),
+///                 Map.entry("PORT", exampleAwsRdsCluster.get("port")),
+///                 Map.entry("DATABASE", exampleAwsRdsCluster.get("databaseName"))
 ///             ))
 ///             .build());
 ///
@@ -2690,7 +2773,7 @@ class Connection extends pulumi.CustomResource {
           'aws:glue/connection:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['athenaProperties', 'connectionProperties'],
         ) {
     arn = registerOutput<String>('arn');

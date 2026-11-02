@@ -90,7 +90,7 @@ import 'data_protection_settings_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -99,13 +99,22 @@ import 'data_protection_settings_association_state.dart';
 /// }
 ///
 /// resource "aws_workspacesweb_portal" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "aws_workspacesweb_dataprotectionsettings" "example" {
+/// resource "aws_workspacesweb_data_protection_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "aws_workspacesweb_dataprotectionsettingsassociation" "example" {
-///   data_protection_settings_arn = aws_workspacesweb_dataprotectionsettings.example.data_protection_settings_arn
+/// resource "aws_workspacesweb_data_protection_settings_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   data_protection_settings_arn = aws_workspacesweb_data_protection_settings.example.data_protection_settings_arn
 ///   portal_arn                   = aws_workspacesweb_portal.example.portal_arn
 /// }
 /// ```
@@ -190,7 +199,7 @@ class DataProtectionSettingsAssociation extends pulumi.CustomResource {
           'aws:workspacesweb/dataProtectionSettingsAssociation:DataProtectionSettingsAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     dataProtectionSettingsArn = registerOutput<String>('dataProtectionSettingsArn');
     portalArn = registerOutput<String>('portalArn');

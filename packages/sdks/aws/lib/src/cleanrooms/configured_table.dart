@@ -120,7 +120,7 @@ import 'configured_table_table_reference.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -128,8 +128,11 @@ import 'configured_table_table_reference.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cleanrooms_configuredtable" "test_configured_table" {
-///   table_reference = {
+/// resource "aws_cleanrooms_configured_table" "test_configured_table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   table_reference {
 ///     database_name = "example_database"
 ///     table_name    = "example_table"
 ///   }
@@ -259,7 +262,7 @@ class ConfiguredTable extends pulumi.CustomResource {
           'aws:cleanrooms/configuredTable:ConfiguredTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     allowedColumns = registerOutput<List<String>>('allowedColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     analysisMethod = registerOutput<String>('analysisMethod');

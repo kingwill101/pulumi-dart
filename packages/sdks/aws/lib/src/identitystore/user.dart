@@ -108,7 +108,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -117,11 +117,14 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_identitystore_user" "example" {
-///   name = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name {
 ///     given_name  = "John"
 ///     family_name = "Doe"
 ///   }
-///   emails = {
+///   emails {
 ///     value = "john@example.com"
 ///   }
 ///   identity_store_id = exampleAwsSsoadminInstances.identityStoreIds[0]
@@ -160,7 +163,7 @@ import 'user_state.dart';
 ///             .emails(UserEmailsArgs.builder()
 ///                 .value("john@example.com")
 ///                 .build())
-///             .identityStoreId(exampleAwsSsoadminInstances.identityStoreIds()[0])
+///             .identityStoreId(exampleAwsSsoadminInstances.get("identityStoreIds")[0])
 ///             .displayName("John Doe")
 ///             .userName("johndoe")
 ///             .build());
@@ -245,7 +248,7 @@ class User extends pulumi.CustomResource {
           'aws:identitystore/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     addresses = registerOutput<UserAddresses?>('addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserAddresses.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');

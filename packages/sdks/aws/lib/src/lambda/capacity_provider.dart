@@ -99,7 +99,7 @@ import 'capacity_provider_vpc_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -107,12 +107,15 @@ import 'capacity_provider_vpc_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_capacityprovider" "example" {
-///   vpc_config = {
+/// resource "aws_lambda_capacity_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   vpc_config {
 ///     subnet_ids         = exampleAwsSubnet[*].id
 ///     security_group_ids = [exampleAwsSecurityGroup.id]
 ///   }
-///   permissions_config = {
+///   permissions_config {
 ///     capacity_provider_operator_role_arn = exampleAwsIamRole.arn
 ///   }
 ///   name = "example"
@@ -143,11 +146,11 @@ import 'capacity_provider_vpc_config.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new CapacityProvider("example", CapacityProviderArgs.builder()
 ///             .vpcConfig(CapacityProviderVpcConfigArgs.builder()
-///                 .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
-///                 .securityGroupIds(exampleAwsSecurityGroup.id())
+///                 .subnetIds(exampleAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
+///                 .securityGroupIds(exampleAwsSecurityGroup.get("id"))
 ///                 .build())
 ///             .permissionsConfig(CapacityProviderPermissionsConfigArgs.builder()
-///                 .capacityProviderOperatorRoleArn(exampleAwsIamRole.arn())
+///                 .capacityProviderOperatorRoleArn(exampleAwsIamRole.get("arn"))
 ///                 .build())
 ///             .name("example")
 ///             .build());
@@ -249,7 +252,7 @@ import 'capacity_provider_vpc_config.dart';
 ///                     new Aws.Lambda.Inputs.CapacityProviderCapacityProviderScalingConfigScalingPolicyArgs
 ///                     {
 ///                         PredefinedMetricType = "LambdaCapacityProviderAverageCPUUtilization",
-///                         TargetValue = 50,
+///                         TargetValue = 50.0,
 ///                     },
 ///                 },
 ///             },
@@ -325,7 +328,7 @@ import 'capacity_provider_vpc_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -333,25 +336,28 @@ import 'capacity_provider_vpc_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_capacityprovider" "example" {
-///   vpc_config = {
+/// resource "aws_lambda_capacity_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   vpc_config {
 ///     subnet_ids         = exampleAwsSubnet[*].id
 ///     security_group_ids = [exampleAwsSecurityGroup.id]
 ///   }
-///   permissions_config = {
+///   permissions_config {
 ///     capacity_provider_operator_role_arn = exampleAwsIamRole.arn
 ///   }
-///   capacity_provider_scaling_configs {
+///   capacity_provider_scaling_config = [{
 ///     scaling_mode = "Manual"
-///     scaling_policies {
+///     scaling_policies = [{
 ///       predefined_metric_type = "LambdaCapacityProviderAverageCPUUtilization"
 ///       target_value           = 50
-///     }
-///   }
-///   instance_requirements {
+///     }]
+///   }]
+///   instance_requirements = [{
 ///     architectures          = ["x86_64"]
 ///     allowed_instance_types = ["c6i.2xlarge", "c7i.2xlarge"]
-///   }
+///   }]
 ///   name = "example"
 /// }
 /// ```
@@ -383,11 +389,11 @@ import 'capacity_provider_vpc_config.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new CapacityProvider("example", CapacityProviderArgs.builder()
 ///             .vpcConfig(CapacityProviderVpcConfigArgs.builder()
-///                 .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
-///                 .securityGroupIds(exampleAwsSecurityGroup.id())
+///                 .subnetIds(exampleAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
+///                 .securityGroupIds(exampleAwsSecurityGroup.get("id"))
 ///                 .build())
 ///             .permissionsConfig(CapacityProviderPermissionsConfigArgs.builder()
-///                 .capacityProviderOperatorRoleArn(exampleAwsIamRole.arn())
+///                 .capacityProviderOperatorRoleArn(exampleAwsIamRole.get("arn"))
 ///                 .build())
 ///             .capacityProviderScalingConfigs(CapacityProviderCapacityProviderScalingConfigArgs.builder()
 ///                 .scalingMode("Manual")
@@ -466,7 +472,7 @@ class CapacityProvider extends pulumi.CustomResource {
           'aws:lambda/capacityProvider:CapacityProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     capacityProviderScalingConfigs = registerOutput<List<CapacityProviderCapacityProviderScalingConfig>>('capacityProviderScalingConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CapacityProviderCapacityProviderScalingConfig>(guardedValue, (value) => CapacityProviderCapacityProviderScalingConfig.fromMap((value as Map).cast<String, dynamic>())); });

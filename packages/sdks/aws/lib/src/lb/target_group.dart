@@ -83,7 +83,7 @@ import 'target_group_target_health_state.dart';
 /// 			Name:     pulumi.String("tf-example-lb-tg"),
 /// 			Port:     pulumi.Int(80),
 /// 			Protocol: pulumi.String("HTTP"),
-/// 			VpcId:    main.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:    main.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -93,7 +93,7 @@ import 'target_group_target_health_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -101,13 +101,19 @@ import 'target_group_target_health_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lb_targetgroup" "test" {
+/// resource "aws_lb_target_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "tf-example-lb-tg"
 ///   port     = 80
 ///   protocol = "HTTP"
 ///   vpc_id   = aws_ec2_vpc.main.id
 /// }
 /// resource "aws_ec2_vpc" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
 /// ```
@@ -238,7 +244,7 @@ import 'target_group_target_health_state.dart';
 /// 			Port:       pulumi.Int(80),
 /// 			Protocol:   pulumi.String("HTTP"),
 /// 			TargetType: pulumi.String("ip"),
-/// 			VpcId:      main.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:      main.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -248,7 +254,7 @@ import 'target_group_target_health_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -256,7 +262,10 @@ import 'target_group_target_health_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lb_targetgroup" "ip-example" {
+/// resource "aws_lb_target_group" "ip-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "tf-example-lb-tg"
 ///   port        = 80
 ///   protocol    = "HTTP"
@@ -264,6 +273,9 @@ import 'target_group_target_health_state.dart';
 ///   vpc_id      = aws_ec2_vpc.main.id
 /// }
 /// resource "aws_ec2_vpc" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
 /// ```
@@ -380,7 +392,7 @@ import 'target_group_target_health_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -388,7 +400,10 @@ import 'target_group_target_health_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lb_targetgroup" "lambda-example" {
+/// resource "aws_lb_target_group" "lambda-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "tf-example-lb-tg"
 ///   target_type = "lambda"
 /// }
@@ -502,7 +517,7 @@ import 'target_group_target_health_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -510,7 +525,10 @@ import 'target_group_target_health_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lb_targetgroup" "alb-example" {
+/// resource "aws_lb_target_group" "alb-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "tf-example-lb-alb-tg"
 ///   target_type = "alb"
 ///   port        = 80
@@ -544,7 +562,7 @@ import 'target_group_target_health_state.dart';
 ///             .targetType("alb")
 ///             .port(80)
 ///             .protocol("TCP")
-///             .vpcId(main.id())
+///             .vpcId(main.get("id"))
 ///             .build());
 ///
 ///     }
@@ -647,7 +665,7 @@ import 'target_group_target_health_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -655,8 +673,11 @@ import 'target_group_target_health_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lb_targetgroup" "tcp-example" {
-///   target_health_states {
+/// resource "aws_lb_target_group" "tcp-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   target_health_state {
 ///     enable_unhealthy_connection_termination = false
 ///   }
 ///   name     = "tf-example-lb-nlb-tg"
@@ -694,7 +715,7 @@ import 'target_group_target_health_state.dart';
 ///             .name("tf-example-lb-nlb-tg")
 ///             .port(25)
 ///             .protocol("TCP")
-///             .vpcId(main.id())
+///             .vpcId(main.get("id"))
 ///             .build());
 ///
 ///     }
@@ -823,7 +844,7 @@ import 'target_group_target_health_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -831,13 +852,16 @@ import 'target_group_target_health_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lb_targetgroup" "tcp-example" {
-///   target_group_health = {
-///     dns_failover = {
+/// resource "aws_lb_target_group" "tcp-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   target_group_health {
+///     dns_failover {
 ///       minimum_healthy_targets_count      = "1"
 ///       minimum_healthy_targets_percentage = "off"
 ///     }
-///     unhealthy_state_routing = {
+///     unhealthy_state_routing {
 ///       minimum_healthy_targets_count      = "1"
 ///       minimum_healthy_targets_percentage = "off"
 ///     }
@@ -886,7 +910,7 @@ import 'target_group_target_health_state.dart';
 ///             .name("tf-example-lb-nlb-tg")
 ///             .port(80)
 ///             .protocol("TCP")
-///             .vpcId(main.id())
+///             .vpcId(main.get("id"))
 ///             .build());
 ///
 ///     }
@@ -1010,7 +1034,7 @@ class TargetGroup extends pulumi.CustomResource {
           'aws:lb/targetGroup:TargetGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     arnSuffix = registerOutput<String>('arnSuffix');

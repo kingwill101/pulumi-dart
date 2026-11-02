@@ -100,7 +100,7 @@ import 'replication_subnet_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -109,7 +109,10 @@ import 'replication_subnet_group_state.dart';
 /// }
 ///
 /// # Create a new replication subnet group
-/// resource "aws_dms_replicationsubnetgroup" "example" {
+/// resource "aws_dms_replication_subnet_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   replication_subnet_group_description = "Example replication subnet group"
 ///   replication_subnet_group_id          = "example-dms-replication-subnet-group-tf"
 ///   subnet_ids                           = ["subnet-12345678", "subnet-12345679"]
@@ -367,7 +370,7 @@ import 'replication_subnet_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -376,6 +379,9 @@ import 'replication_subnet_group_state.dart';
 /// }
 ///
 /// resource "aws_iam_role" "dms-vpc-role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "dms-vpc-role"
 ///   description = "Allows DMS to manage VPC"
 ///   assume_role_policy = jsonencode({
@@ -389,12 +395,18 @@ import 'replication_subnet_group_state.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_iam_rolepolicyattachment" "example" {
+/// resource "aws_iam_role_policy_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role       = aws_iam_role.dms-vpc-role.name
 ///   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSVPCManagementRole"
 /// }
-/// resource "aws_dms_replicationsubnetgroup" "example" {
-///   depends_on                           = [aws_iam_rolepolicyattachment.example]
+/// resource "aws_dms_replication_subnet_group" "example" {
+///   depends_on = [aws_iam_role_policy_attachment.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   replication_subnet_group_description = "Example"
 ///   replication_subnet_group_id          = "example-id"
 ///   subnet_ids                           = ["subnet-12345678", "subnet-12345679"]
@@ -538,7 +550,7 @@ class ReplicationSubnetGroup extends pulumi.CustomResource {
           'aws:dms/replicationSubnetGroup:ReplicationSubnetGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     replicationSubnetGroupArn = registerOutput<String>('replicationSubnetGroupArn');

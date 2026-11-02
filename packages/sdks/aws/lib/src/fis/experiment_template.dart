@@ -177,7 +177,7 @@ import 'experiment_template_target.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -185,20 +185,23 @@ import 'experiment_template_target.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fis_experimenttemplate" "example" {
-///   actions {
-///     target = {
+/// resource "aws_fis_experiment_template" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   action {
+///     target {
 ///       key   = "Instances"
 ///       value = "example-target"
 ///     }
 ///     name      = "example-action"
 ///     action_id = "aws:ec2:terminate-instances"
 ///   }
-///   stop_conditions {
+///   stop_condition {
 ///     source = "none"
 ///   }
-///   targets {
-///     resource_tags {
+///   target {
+///     resource_tag {
 ///       key   = "env"
 ///       value = "example"
 ///     }
@@ -258,7 +261,7 @@ import 'experiment_template_target.dart';
 ///                 .selectionMode("COUNT(1)")
 ///                 .build())
 ///             .description("example")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -836,7 +839,7 @@ import 'experiment_template_target.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -844,28 +847,28 @@ import 'experiment_template_target.dart';
 ///   }
 /// }
 ///
-/// data "aws_getpartition" "current" {
+/// data "aws_partition" "current" {
 /// }
-/// data "aws_iam_getpolicydocument" "reportAccess" {
-///   statements {
+/// data "aws_iam_policy_document" "reportAccess" {
+///   statement {
 ///     sid       = "logsDelivery"
 ///     effect    = "Allow"
 ///     actions   = ["logs:CreateLogDelivery"]
 ///     resources = ["*"]
 ///   }
-///   statements {
+///   statement {
 ///     sid       = "ReportsBucket"
 ///     effect    = "Allow"
 ///     actions   = ["s3:PutObject", "s3:GetObject"]
 ///     resources = ["*"]
 ///   }
-///   statements {
+///   statement {
 ///     sid       = "GetDashboard"
 ///     effect    = "Allow"
 ///     actions   = ["cloudwatch:GetDashboard"]
 ///     resources = ["*"]
 ///   }
-///   statements {
+///   statement {
 ///     sid       = "GetDashboardData"
 ///     effect    = "Allow"
 ///     actions   = ["cloudwatch:getMetricWidgetImage"]
@@ -875,35 +878,47 @@ import 'experiment_template_target.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 ///   assume_role_policy = jsonencode({
 ///     "Statement" = [{
 ///       "Action" = "sts:AssumeRole"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "Service" = ["fis.${data.aws_getpartition.current.dns_suffix}"]
+///         "Service" = ["fis.${data.aws_partition.current.dns_suffix}"]
 ///       }
 ///     }]
 ///     "Version" = "2012-10-17"
 ///   })
 /// }
 /// resource "aws_iam_policy" "report_access" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "report_access"
-///   policy = data.aws_iam_getpolicydocument.reportAccess.json
+///   policy = data.aws_iam_policy_document.reportAccess.json
 /// }
-/// resource "aws_iam_rolepolicyattachment" "report_access" {
+/// resource "aws_iam_role_policy_attachment" "report_access" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role       = test.name
 ///   policy_arn = aws_iam_policy.report_access.arn
 /// }
-/// resource "aws_fis_experimenttemplate" "example" {
-///   experiment_report_configuration = {
-///     data_sources = {
-///       cloudwatch_dashboards = [{
-///         "dashboardArn" = exampleAwsCloudwatchDashboard.dashboardArn
-///       }]
+/// resource "aws_fis_experiment_template" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   experiment_report_configuration {
+///     data_sources {
+///       cloudwatch_dashboard {
+///         dashboard_arn = exampleAwsCloudwatchDashboard.dashboardArn
+///       }
 ///     }
-///     outputs = {
-///       s3_configuration = {
+///     outputs {
+///       s3_configuration {
 ///         bucket_name = exampleAwsS3Bucket.bucket
 ///         prefix      = "fis-example-reports"
 ///       }
@@ -911,19 +926,19 @@ import 'experiment_template_target.dart';
 ///     post_experiment_duration = "PT10M"
 ///     pre_experiment_duration  = "PT10M"
 ///   }
-///   actions {
-///     target = {
+///   action {
+///     target {
 ///       key   = "Instances"
 ///       value = "example-target"
 ///     }
 ///     name      = "example-action"
 ///     action_id = "aws:ec2:terminate-instances"
 ///   }
-///   stop_conditions {
+///   stop_condition {
 ///     source = "none"
 ///   }
-///   targets {
-///     resource_tags {
+///   target {
+///     resource_tag {
 ///       key   = "env"
 ///       value = "example"
 ///     }
@@ -1036,7 +1051,7 @@ import 'experiment_template_target.dart';
 ///             .build());
 ///
 ///         var reportAccessRolePolicyAttachment = new RolePolicyAttachment("reportAccessRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
-///             .role(test.name())
+///             .role(test.get("name"))
 ///             .policyArn(reportAccessPolicy.arn())
 ///             .build());
 ///
@@ -1044,12 +1059,12 @@ import 'experiment_template_target.dart';
 ///             .experimentReportConfiguration(ExperimentTemplateExperimentReportConfigurationArgs.builder()
 ///                 .dataSources(ExperimentTemplateExperimentReportConfigurationDataSourcesArgs.builder()
 ///                     .cloudwatchDashboards(ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboardArgs.builder()
-///                         .dashboardArn(exampleAwsCloudwatchDashboard.dashboardArn())
+///                         .dashboardArn(exampleAwsCloudwatchDashboard.get("dashboardArn"))
 ///                         .build())
 ///                     .build())
 ///                 .outputs(ExperimentTemplateExperimentReportConfigurationOutputsArgs.builder()
 ///                     .s3Configuration(ExperimentTemplateExperimentReportConfigurationOutputsS3ConfigurationArgs.builder()
-///                         .bucketName(exampleAwsS3Bucket.bucket())
+///                         .bucketName(exampleAwsS3Bucket.get("bucket"))
 ///                         .prefix("fis-example-reports")
 ///                         .build())
 ///                     .build())
@@ -1227,7 +1242,7 @@ class ExperimentTemplate extends pulumi.CustomResource {
           'aws:fis/experimentTemplate:ExperimentTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     actions = registerOutput<List<ExperimentTemplateAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExperimentTemplateAction>(guardedValue, (value) => ExperimentTemplateAction.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String>('description');

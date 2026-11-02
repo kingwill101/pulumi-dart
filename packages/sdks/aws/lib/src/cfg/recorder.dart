@@ -154,7 +154,7 @@ import 'recorder_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -162,8 +162,8 @@ import 'recorder_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["config.amazonaws.com"]
@@ -174,12 +174,18 @@ import 'recorder_state.dart';
 /// }
 ///
 /// resource "aws_cfg_recorder" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   role_arn = aws_iam_role.r.arn
 /// }
 /// resource "aws_iam_role" "r" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "awsconfig-example"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
 /// ```
 /// ```java
@@ -373,7 +379,7 @@ import 'recorder_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -382,12 +388,15 @@ import 'recorder_state.dart';
 /// }
 ///
 /// resource "aws_cfg_recorder" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   recording_group = {
 ///     exclusion_by_resource_types = [{
-///       "resourceTypes" = ["AWS::EC2::Instance"]
+///       resource_types = ["AWS::EC2::Instance"]
 ///     }]
 ///     recording_strategies = [{
-///       "useOnly" = "EXCLUSION_BY_RESOURCE_TYPES"
+///       use_only = "EXCLUSION_BY_RESOURCE_TYPES"
 ///     }]
 ///     all_supported = false
 ///   }
@@ -430,7 +439,7 @@ import 'recorder_state.dart';
 ///                 .allSupported(false)
 ///                 .build())
 ///             .name("example")
-///             .roleArn(r.arn())
+///             .roleArn(r.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -584,7 +593,7 @@ import 'recorder_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -593,6 +602,9 @@ import 'recorder_state.dart';
 /// }
 ///
 /// resource "aws_cfg_recorder" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   recording_group = {
 ///     all_supported                 = false
 ///     include_global_resource_types = false
@@ -651,7 +663,7 @@ import 'recorder_state.dart';
 ///                 .recordingFrequency("CONTINUOUS")
 ///                 .build())
 ///             .name("example")
-///             .roleArn(r.arn())
+///             .roleArn(r.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -723,7 +735,7 @@ class Recorder extends pulumi.CustomResource {
           'aws:cfg/recorder:Recorder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     recordingGroup = registerOutput<RecorderRecordingGroup>('recordingGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecorderRecordingGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });

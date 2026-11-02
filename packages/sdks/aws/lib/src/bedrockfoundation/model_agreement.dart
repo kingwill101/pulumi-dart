@@ -95,7 +95,7 @@ import 'model_agreement_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -103,17 +103,18 @@ import 'model_agreement_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_bedrockfoundation_getmodelagreementoffers" "example" {
+/// data "aws_bedrockfoundation_model_agreement_offers" "example" {
 ///   model_id   = "eu.anthropic.claude-opus-4-5-20251101-v1:0"
 ///   offer_type = "PUBLIC"
 /// }
 ///
-/// resource "aws_bedrockfoundation_modelagreement" "example" {
+/// resource "aws_bedrockfoundation_model_agreement" "example" {
 ///   lifecycle {
-///     ignore_changes = [offerToken]
+///     ignore_changes        = [offerToken]
+///     create_before_destroy = true
 ///   }
-///   model_id    = data.aws_bedrockfoundation_getmodelagreementoffers.example.model_id
-///   offer_token = data.aws_bedrockfoundation_getmodelagreementoffers.example.offers[0].offer_token
+///   model_id    = data.aws_bedrockfoundation_model_agreement_offers.example.model_id
+///   offer_token = data.aws_bedrockfoundation_model_agreement_offers.example.offers[0].offer_token
 /// }
 /// ```
 /// ```java
@@ -218,7 +219,7 @@ class ModelAgreement extends pulumi.CustomResource {
           'aws:bedrockfoundation/modelAgreement:ModelAgreement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     modelId = registerOutput<String>('modelId');
     offerToken = registerOutput<String>('offerToken');

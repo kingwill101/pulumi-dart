@@ -96,7 +96,7 @@ import 'organizations_features_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -105,10 +105,16 @@ import 'organizations_features_state.dart';
 /// }
 ///
 /// resource "aws_organizations_organization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   aws_service_access_principals = ["iam.amazonaws.com"]
 ///   feature_set                   = "ALL"
 /// }
-/// resource "aws_iam_organizationsfeatures" "example" {
+/// resource "aws_iam_organizations_features" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enabled_features = ["RootCredentialsManagement", "RootSessions"]
 /// }
 /// ```
@@ -190,7 +196,7 @@ class OrganizationsFeatures extends pulumi.CustomResource {
           'aws:iam/organizationsFeatures:OrganizationsFeatures',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     enabledFeatures = registerOutput<List<String>>('enabledFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }

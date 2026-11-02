@@ -90,7 +90,7 @@ import 'workflow_step.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -99,8 +99,11 @@ import 'workflow_step.dart';
 /// }
 ///
 /// resource "aws_transfer_workflow" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   steps {
-///     delete_step_details = {
+///     delete_step_details {
 ///       name                 = "example"
 ///       source_file_location = "$${original.file}"
 ///     }
@@ -303,7 +306,7 @@ import 'workflow_step.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -312,8 +315,11 @@ import 'workflow_step.dart';
 /// }
 ///
 /// resource "aws_transfer_workflow" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   steps {
-///     custom_step_details = {
+///     custom_step_details {
 ///       name                 = "example"
 ///       source_file_location = "$${original.file}"
 ///       target               = exampleAwsLambdaFunction.arn
@@ -322,11 +328,11 @@ import 'workflow_step.dart';
 ///     type = "CUSTOM"
 ///   }
 ///   steps {
-///     tag_step_details = {
-///       tags = [{
-///         "key"   = "Name"
-///         "value" = "Hello World"
-///       }]
+///     tag_step_details {
+///       tags {
+///         key   = "Name"
+///         value = "Hello World"
+///       }
 ///       name                 = "example"
 ///       source_file_location = "$${original.file}"
 ///     }
@@ -365,7 +371,7 @@ import 'workflow_step.dart';
 ///                     .customStepDetails(WorkflowStepCustomStepDetailsArgs.builder()
 ///                         .name("example")
 ///                         .sourceFileLocation("${original.file}")
-///                         .target(exampleAwsLambdaFunction.arn())
+///                         .target(exampleAwsLambdaFunction.get("arn"))
 ///                         .timeoutSeconds(60)
 ///                         .build())
 ///                     .type("CUSTOM")
@@ -443,7 +449,7 @@ class Workflow extends pulumi.CustomResource {
           'aws:transfer/workflow:Workflow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

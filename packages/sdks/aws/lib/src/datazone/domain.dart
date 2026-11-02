@@ -209,7 +209,7 @@ import 'domain_timeouts.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
 /// 			"Version": "2012-10-17",
-/// 			"Statement": []map[string]interface{}{
+/// 			"Statement": []interface{}{
 /// 				map[string]interface{}{
 /// 					"Action": []string{
 /// 						"sts:AssumeRole",
@@ -281,7 +281,7 @@ import 'domain_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -290,6 +290,9 @@ import 'domain_timeouts.dart';
 /// }
 ///
 /// resource "aws_iam_role" "domain_execution_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my_domain_execution_role"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -308,7 +311,10 @@ import 'domain_timeouts.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_iam_rolepolicy" "domain_execution_role" {
+/// resource "aws_iam_role_policy" "domain_execution_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role = aws_iam_role.domain_execution_role.name
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -320,6 +326,9 @@ import 'domain_timeouts.dart';
 ///   })
 /// }
 /// resource "aws_datazone_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example"
 ///   domain_execution_role = aws_iam_role.domain_execution_role.arn
 /// }
@@ -760,7 +769,7 @@ import 'domain_timeouts.dart';
 /// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
 /// 						{
 /// 							Test: "StringEquals",
-/// 							Values: pulumi.StringArray{
+/// 							Values: []string{
 /// 								current.AccountId,
 /// 							},
 /// 							Variable: "aws:SourceAccount",
@@ -819,7 +828,7 @@ import 'domain_timeouts.dart';
 /// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
 /// 						{
 /// 							Test: "StringEquals",
-/// 							Values: pulumi.StringArray{
+/// 							Values: []string{
 /// 								current.AccountId,
 /// 							},
 /// 							Variable: "aws:SourceAccount",
@@ -877,7 +886,7 @@ import 'domain_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -885,16 +894,16 @@ import 'domain_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_iam_getpolicydocument" "assumeRoleDomainExecution" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "assumeRoleDomainExecution" {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
-///       values   = [data.aws_getcalleridentity.current.account_id]
+///       values   = [data.aws_caller_identity.current.account_id]
 ///       variable = "aws:SourceAccount"
 ///     }
-///     conditions {
+///     condition {
 ///       test     = "ForAllValues:StringLike"
 ///       values   = ["datazone*"]
 ///       variable = "aws:TagKeys"
@@ -906,14 +915,14 @@ import 'domain_timeouts.dart';
 ///     actions = ["sts:AssumeRole", "sts:TagSession", "sts:SetContext"]
 ///   }
 /// }
-/// data "aws_iam_getpolicy" "domainExecutionRole" {
+/// data "aws_iam_policy" "domainExecutionRole" {
 ///   name = "SageMakerStudioDomainExecutionRolePolicy"
 /// }
-/// data "aws_iam_getpolicydocument" "assumeRoleDomainService" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "assumeRoleDomainService" {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
-///       values   = [data.aws_getcalleridentity.current.account_id]
+///       values   = [data.aws_caller_identity.current.account_id]
 ///       variable = "aws:SourceAccount"
 ///     }
 ///     principals {
@@ -923,28 +932,43 @@ import 'domain_timeouts.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicy" "domainServiceRole" {
+/// data "aws_iam_policy" "domainServiceRole" {
 ///   name = "SageMakerStudioDomainServiceRolePolicy"
 /// }
 ///
 /// resource "aws_iam_role" "domain_execution" {
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRoleDomainExecution.json
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   assume_role_policy = data.aws_iam_policy_document.assumeRoleDomainExecution.json
 ///   name               = "example-domain-execution-role"
 /// }
-/// resource "aws_iam_rolepolicyattachment" "domain_execution" {
-///   policy_arn = data.aws_iam_getpolicy.domainExecutionRole.arn
+/// resource "aws_iam_role_policy_attachment" "domain_execution" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy_arn = data.aws_iam_policy.domainExecutionRole.arn
 ///   role       = aws_iam_role.domain_execution.name
 /// }
 /// resource "aws_iam_role" "domain_service" {
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRoleDomainService.json
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   assume_role_policy = data.aws_iam_policy_document.assumeRoleDomainService.json
 ///   name               = "example-domain-service-role"
 /// }
-/// resource "aws_iam_rolepolicyattachment" "domain_service" {
-///   policy_arn = data.aws_iam_getpolicy.domainServiceRole.arn
+/// resource "aws_iam_role_policy_attachment" "domain_service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy_arn = data.aws_iam_policy.domainServiceRole.arn
 ///   role       = aws_iam_role.domain_service.name
 /// }
 /// # DataZone Domain V2
 /// resource "aws_datazone_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-domain"
 ///   domain_execution_role = aws_iam_role.domain_execution.arn
 ///   domain_version        = "V2"
@@ -1224,7 +1248,7 @@ class Domain extends pulumi.CustomResource {
           'aws:datazone/domain:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

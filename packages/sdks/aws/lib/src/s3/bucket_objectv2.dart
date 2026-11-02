@@ -88,7 +88,7 @@ import 'bucket_objectv2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -99,10 +99,13 @@ import 'bucket_objectv2_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_bucketobjectv2" "object" {
+/// resource "aws_s3_bucket_objectv2" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "your_bucket_name"
 ///   key    = "new_object_key"
-///   source = fileAsset("path/to/file")
+///   source = fileasset("path/to/file")
 ///   etag   = filemd5("path/to/file")
 /// }
 /// ```
@@ -260,7 +263,7 @@ import 'bucket_objectv2_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: examplebucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: examplebucket.ID(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -268,7 +271,7 @@ import 'bucket_objectv2_state.dart';
 /// 		}
 /// 		_, err = s3.NewBucketObjectv2(ctx, "example", &s3.BucketObjectv2Args{
 /// 			Key:      pulumi.String("someobject"),
-/// 			Bucket:   examplebucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket:   examplebucket.ID(),
 /// 			Source:   pulumi.NewFileAsset("index.html"),
 /// 			KmsKeyId: examplekms.Arn,
 /// 		})
@@ -280,7 +283,7 @@ import 'bucket_objectv2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -289,20 +292,32 @@ import 'bucket_objectv2_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "examplekms" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "KMS key 1"
 ///   deletion_window_in_days = 7
 /// }
 /// resource "aws_s3_bucket" "examplebucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "examplebuckettftest"
 /// }
-/// resource "aws_s3_bucketacl" "example" {
+/// resource "aws_s3_bucket_acl" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.examplebucket.id
 ///   acl    = "private"
 /// }
-/// resource "aws_s3_bucketobjectv2" "example" {
+/// resource "aws_s3_bucket_objectv2" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key        = "someobject"
 ///   bucket     = aws_s3_bucket.examplebucket.id
-///   source     = fileAsset("index.html")
+///   source     = fileasset("index.html")
 ///   kms_key_id = aws_kms_key.examplekms.arn
 /// }
 /// ```
@@ -465,7 +480,7 @@ import 'bucket_objectv2_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: examplebucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: examplebucket.ID(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -473,7 +488,7 @@ import 'bucket_objectv2_state.dart';
 /// 		}
 /// 		_, err = s3.NewBucketObjectv2(ctx, "example", &s3.BucketObjectv2Args{
 /// 			Key:                  pulumi.String("someobject"),
-/// 			Bucket:               examplebucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket:               examplebucket.ID(),
 /// 			Source:               pulumi.NewFileAsset("index.html"),
 /// 			ServerSideEncryption: pulumi.String("aws:kms"),
 /// 		})
@@ -485,7 +500,7 @@ import 'bucket_objectv2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -494,16 +509,25 @@ import 'bucket_objectv2_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "examplebucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "examplebuckettftest"
 /// }
-/// resource "aws_s3_bucketacl" "example" {
+/// resource "aws_s3_bucket_acl" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.examplebucket.id
 ///   acl    = "private"
 /// }
-/// resource "aws_s3_bucketobjectv2" "example" {
+/// resource "aws_s3_bucket_objectv2" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key                    = "someobject"
 ///   bucket                 = aws_s3_bucket.examplebucket.id
-///   source                 = fileAsset("index.html")
+///   source                 = fileasset("index.html")
 ///   server_side_encryption = "aws:kms"
 /// }
 /// ```
@@ -654,7 +678,7 @@ import 'bucket_objectv2_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: examplebucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: examplebucket.ID(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -662,7 +686,7 @@ import 'bucket_objectv2_state.dart';
 /// 		}
 /// 		_, err = s3.NewBucketObjectv2(ctx, "example", &s3.BucketObjectv2Args{
 /// 			Key:                  pulumi.String("someobject"),
-/// 			Bucket:               examplebucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket:               examplebucket.ID(),
 /// 			Source:               pulumi.NewFileAsset("index.html"),
 /// 			ServerSideEncryption: pulumi.String("AES256"),
 /// 		})
@@ -674,7 +698,7 @@ import 'bucket_objectv2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -683,16 +707,25 @@ import 'bucket_objectv2_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "examplebucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "examplebuckettftest"
 /// }
-/// resource "aws_s3_bucketacl" "example" {
+/// resource "aws_s3_bucket_acl" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.examplebucket.id
 ///   acl    = "private"
 /// }
-/// resource "aws_s3_bucketobjectv2" "example" {
+/// resource "aws_s3_bucket_objectv2" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key                    = "someobject"
 ///   bucket                 = aws_s3_bucket.examplebucket.id
-///   source                 = fileAsset("index.html")
+///   source                 = fileasset("index.html")
 ///   server_side_encryption = "AES256"
 /// }
 /// ```
@@ -888,7 +921,7 @@ import 'bucket_objectv2_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: examplebucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: examplebucket.ID(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -898,14 +931,14 @@ import 'bucket_objectv2_state.dart';
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
-/// 			Bucket: examplebucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: examplebucket.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketObjectv2(ctx, "examplebucket_object", &s3.BucketObjectv2Args{
 /// 			Key:                       pulumi.String("someobject"),
-/// 			Bucket:                    examplebucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket:                    examplebucket.ID(),
 /// 			Source:                    pulumi.NewFileAsset("important.txt"),
 /// 			ObjectLockLegalHoldStatus: pulumi.String("ON"),
 /// 			ObjectLockMode:            pulumi.String("GOVERNANCE"),
@@ -922,7 +955,7 @@ import 'bucket_objectv2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -931,24 +964,36 @@ import 'bucket_objectv2_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "examplebucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket              = "examplebuckettftest"
 ///   object_lock_enabled = true
 /// }
-/// resource "aws_s3_bucketacl" "example" {
+/// resource "aws_s3_bucket_acl" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.examplebucket.id
 ///   acl    = "private"
 /// }
-/// resource "aws_s3_bucketversioning" "example" {
-///   versioning_configuration = {
+/// resource "aws_s3_bucket_versioning" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   versioning_configuration {
 ///     status = "Enabled"
 ///   }
 ///   bucket = aws_s3_bucket.examplebucket.id
 /// }
-/// resource "aws_s3_bucketobjectv2" "examplebucket_object" {
-///   depends_on                    = [aws_s3_bucketversioning.example]
+/// resource "aws_s3_bucket_objectv2" "examplebucket_object" {
+///   depends_on = [aws_s3_bucket_versioning.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key                           = "someobject"
 ///   bucket                        = aws_s3_bucket.examplebucket.id
-///   source                        = fileAsset("important.txt")
+///   source                        = fileasset("important.txt")
 ///   object_lock_legal_hold_status = "ON"
 ///   object_lock_mode              = "GOVERNANCE"
 ///   object_lock_retain_until_date = "2021-12-31T23:59:60Z"
@@ -1155,7 +1200,7 @@ import 'bucket_objectv2_state.dart';
 /// 				},
 /// 			},
 /// 			Key:    pulumi.String("someobject"),
-/// 			Bucket: examplebucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: examplebucket.ID(),
 /// 			Source: pulumi.NewFileAsset("important.txt"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Env": pulumi.String("test"),
@@ -1169,7 +1214,7 @@ import 'bucket_objectv2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1178,9 +1223,15 @@ import 'bucket_objectv2_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "examplebucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "examplebuckettftest"
 /// }
-/// resource "aws_s3_bucketobjectv2" "examplebucket_object" {
+/// resource "aws_s3_bucket_objectv2" "examplebucket_object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   override_provider = {
 ///     default_tags = {
 ///       tags = {}
@@ -1188,7 +1239,7 @@ import 'bucket_objectv2_state.dart';
 ///   }
 ///   key    = "someobject"
 ///   bucket = aws_s3_bucket.examplebucket.id
-///   source = fileAsset("important.txt")
+///   source = fileasset("important.txt")
 ///   tags = {
 ///     "Env" = "test"
 ///   }
@@ -1385,7 +1436,7 @@ class BucketObjectv2 extends pulumi.CustomResource {
           'aws:s3/bucketObjectv2:BucketObjectv2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     acl = registerOutput<String>('acl');
     arn = registerOutput<String>('arn');

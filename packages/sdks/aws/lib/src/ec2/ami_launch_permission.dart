@@ -64,7 +64,7 @@ import 'ami_launch_permission_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'ami_launch_permission_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_amilaunchpermission" "example" {
+/// resource "aws_ec2_ami_launch_permission" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   image_id   = "ami-12345678"
 ///   account_id = "123456789012"
 /// }
@@ -174,7 +177,7 @@ import 'ami_launch_permission_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -182,7 +185,10 @@ import 'ami_launch_permission_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_amilaunchpermission" "example" {
+/// resource "aws_ec2_ami_launch_permission" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   image_id = "ami-12345678"
 ///   group    = "all"
 /// }
@@ -293,7 +299,7 @@ import 'ami_launch_permission_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -301,12 +307,15 @@ import 'ami_launch_permission_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_organizations_getorganization" "current" {
+/// data "aws_organizations_organization" "current" {
 /// }
 ///
-/// resource "aws_ec2_amilaunchpermission" "example" {
+/// resource "aws_ec2_ami_launch_permission" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   image_id         = "ami-12345678"
-///   organization_arn = data.aws_organizations_getorganization.current.arn
+///   organization_arn = data.aws_organizations_organization.current.arn
 /// }
 /// ```
 /// ```java
@@ -407,7 +416,7 @@ class AmiLaunchPermission extends pulumi.CustomResource {
           'aws:ec2/amiLaunchPermission:AmiLaunchPermission',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     group = registerOutput<String?>('group');

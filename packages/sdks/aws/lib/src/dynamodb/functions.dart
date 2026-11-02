@@ -65,7 +65,7 @@ import 'get_tables_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,7 @@ import 'get_tables_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_dynamodb_getbackups" "example" {
+/// data "aws_dynamodb_backups" "example" {
 ///   table_name = "my-table"
 /// }
 /// ```
@@ -194,7 +194,7 @@ pulumi.Output<GetBackupsResult> getBackupsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -202,7 +202,7 @@ pulumi.Output<GetBackupsResult> getBackupsOutput(
 ///   }
 /// }
 ///
-/// data "aws_dynamodb_gettable" "tableName" {
+/// data "aws_dynamodb_table" "tableName" {
 ///   name = "tableName"
 /// }
 /// ```
@@ -355,7 +355,7 @@ pulumi.Output<GetTableResult> getTableOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -363,13 +363,18 @@ pulumi.Output<GetTableResult> getTableOutput(
 ///   }
 /// }
 ///
-/// data "aws_dynamodb_gettableitem" "test" {
+/// data "aws_dynamodb_table_item" "test" {
 ///   table_name = example.name
 ///   expression_attribute_names = {
 ///     "#P" = "Percentile"
 ///   }
 ///   projection_expression = "#P"
-///   key                   = "{\n\\t\\\"hashKey\\\": {\\\"S\\\": \\\"example\\\"}\n}\n"
+///   key                   = <<KEY
+/// {
+/// \t\"hashKey\": {\"S\": \"example\"}
+/// }
+/// KEY
+///
 /// }
 /// ```
 /// ```java
@@ -394,7 +399,7 @@ pulumi.Output<GetTableResult> getTableOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = DynamodbFunctions.getTableItem(GetTableItemArgs.builder()
-///             .tableName(example.name())
+///             .tableName(example.get("name"))
 ///             .expressionAttributeNames(Map.of("#P", "Percentile"))
 ///             .projectionExpression("#P")
 ///             .key("""
@@ -505,7 +510,7 @@ pulumi.Output<GetTableItemResult> getTableItemOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -513,11 +518,11 @@ pulumi.Output<GetTableItemResult> getTableItemOutput(
 ///   }
 /// }
 ///
-/// data "aws_dynamodb_gettables" "all" {
+/// data "aws_dynamodb_tables" "all" {
 /// }
 ///
 /// output "tableNames" {
-///   value = data.aws_dynamodb_gettables.all.names
+///   value = data.aws_dynamodb_tables.all.names
 /// }
 /// ```
 /// ```java

@@ -186,7 +186,7 @@ import 'event_subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -195,6 +195,9 @@ import 'event_subscription_state.dart';
 /// }
 ///
 /// resource "aws_rds_instance" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocated_storage    = 10
 ///   engine               = "mysql"
 ///   engine_version       = "5.6.17"
@@ -206,9 +209,15 @@ import 'event_subscription_state.dart';
 ///   parameter_group_name = "default.mysql5.6"
 /// }
 /// resource "aws_sns_topic" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "rds-events"
 /// }
-/// resource "aws_rds_eventsubscription" "default" {
+/// resource "aws_rds_event_subscription" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "rds-event-sub"
 ///   sns_topic        = aws_sns_topic.default.arn
 ///   source_type      = "db-instance"
@@ -365,7 +374,7 @@ class EventSubscription extends pulumi.CustomResource {
           'aws:rds/eventSubscription:EventSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     customerAwsId = registerOutput<String>('customerAwsId');

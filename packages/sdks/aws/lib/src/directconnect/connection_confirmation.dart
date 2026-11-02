@@ -55,7 +55,7 @@ import 'connection_confirmation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -63,7 +63,10 @@ import 'connection_confirmation_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_directconnect_connectionconfirmation" "confirmation" {
+/// resource "aws_directconnect_connection_confirmation" "confirmation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_id = "dxcon-ffabc123"
 /// }
 /// ```
@@ -120,7 +123,7 @@ class ConnectionConfirmation extends pulumi.CustomResource {
           'aws:directconnect/connectionConfirmation:ConnectionConfirmation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     connectionId = registerOutput<String>('connectionId');
     region = registerOutput<String>('region');

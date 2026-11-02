@@ -56,7 +56,7 @@ import 'connector_worker_configuration.dart';
 ///     plugins: [{
 ///         customPlugin: {
 ///             arn: exampleAwsMskconnectCustomPlugin.arn,
-///             revision: Number(exampleAwsMskconnectCustomPlugin.latestRevision),
+///             revision: exampleAwsMskconnectCustomPlugin.latestRevision,
 ///         },
 ///     }],
 ///     name: "example",
@@ -109,7 +109,7 @@ import 'connector_worker_configuration.dart';
 ///     plugins=[{
 ///         "custom_plugin": {
 ///             "arn": example_aws_mskconnect_custom_plugin["arn"],
-///             "revision": int(example_aws_mskconnect_custom_plugin["latestRevision"]),
+///             "revision": example_aws_mskconnect_custom_plugin["latestRevision"],
 ///         },
 ///     }],
 ///     name="example",
@@ -270,7 +270,7 @@ import 'connector_worker_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -279,12 +279,15 @@ import 'connector_worker_configuration.dart';
 /// }
 ///
 /// resource "aws_mskconnect_connector" "example" {
-///   capacity = {
-///     autoscaling = {
-///       scale_in_policy = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   capacity {
+///     autoscaling {
+///       scale_in_policy {
 ///         cpu_utilization_percentage = 20
 ///       }
-///       scale_out_policy = {
+///       scale_out_policy {
 ///         cpu_utilization_percentage = 80
 ///       }
 ///       mcu_count        = 1
@@ -292,23 +295,23 @@ import 'connector_worker_configuration.dart';
 ///       max_worker_count = 2
 ///     }
 ///   }
-///   kafka_cluster = {
-///     apache_kafka_cluster = {
-///       vpc = {
+///   kafka_cluster {
+///     apache_kafka_cluster {
+///       vpc {
 ///         security_groups = [exampleAwsSecurityGroup.id]
 ///         subnets         = [example1.id, example2.id, example3.id]
 ///       }
 ///       bootstrap_servers = exampleAwsMskCluster.bootstrapBrokersTls
 ///     }
 ///   }
-///   kafka_cluster_client_authentication = {
+///   kafka_cluster_client_authentication {
 ///     authentication_type = "NONE"
 ///   }
-///   kafka_cluster_encryption_in_transit = {
+///   kafka_cluster_encryption_in_transit {
 ///     encryption_type = "TLS"
 ///   }
-///   plugins {
-///     custom_plugin = {
+///   plugin {
+///     custom_plugin {
 ///       arn      = exampleAwsMskconnectCustomPlugin.arn
 ///       revision = exampleAwsMskconnectCustomPlugin.latestRevision
 ///     }
@@ -372,13 +375,13 @@ import 'connector_worker_configuration.dart';
 ///             .kafkaCluster(ConnectorKafkaClusterArgs.builder()
 ///                 .apacheKafkaCluster(ConnectorKafkaClusterApacheKafkaClusterArgs.builder()
 ///                     .vpc(ConnectorKafkaClusterApacheKafkaClusterVpcArgs.builder()
-///                         .securityGroups(exampleAwsSecurityGroup.id())
+///                         .securityGroups(exampleAwsSecurityGroup.get("id"))
 ///                         .subnets(
-///                             example1.id(),
-///                             example2.id(),
-///                             example3.id())
+///                             example1.get("id"),
+///                             example2.get("id"),
+///                             example3.get("id"))
 ///                         .build())
-///                     .bootstrapServers(exampleAwsMskCluster.bootstrapBrokersTls())
+///                     .bootstrapServers(exampleAwsMskCluster.get("bootstrapBrokersTls"))
 ///                     .build())
 ///                 .build())
 ///             .kafkaClusterClientAuthentication(ConnectorKafkaClusterClientAuthenticationArgs.builder()
@@ -389,8 +392,8 @@ import 'connector_worker_configuration.dart';
 ///                 .build())
 ///             .plugins(ConnectorPluginArgs.builder()
 ///                 .customPlugin(ConnectorPluginCustomPluginArgs.builder()
-///                     .arn(exampleAwsMskconnectCustomPlugin.arn())
-///                     .revision(exampleAwsMskconnectCustomPlugin.latestRevision())
+///                     .arn(exampleAwsMskconnectCustomPlugin.get("arn"))
+///                     .revision(exampleAwsMskconnectCustomPlugin.get("latestRevision"))
 ///                     .build())
 ///                 .build())
 ///             .name("example")
@@ -400,7 +403,7 @@ import 'connector_worker_configuration.dart';
 ///                 Map.entry("tasks.max", "1"),
 ///                 Map.entry("topics", "example")
 ///             ))
-///             .serviceExecutionRoleArn(exampleAwsIamRole.arn())
+///             .serviceExecutionRoleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -505,7 +508,7 @@ class Connector extends pulumi.CustomResource {
           'aws:mskconnect/connector:Connector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     capacity = registerOutput<ConnectorCapacity>('capacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorCapacity.fromMap((guardedValue as Map).cast<String, dynamic>()); });

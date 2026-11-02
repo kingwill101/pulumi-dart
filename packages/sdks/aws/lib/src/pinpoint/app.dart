@@ -93,7 +93,7 @@ import 'app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -102,10 +102,13 @@ import 'app_state.dart';
 /// }
 ///
 /// resource "aws_pinpoint_app" "example" {
-///   limits = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   limits {
 ///     maximum_duration = 600
 ///   }
-///   quiet_time = {
+///   quiet_time {
 ///     start = "00:00"
 ///     end   = "06:00"
 ///   }
@@ -213,7 +216,7 @@ class App extends pulumi.CustomResource {
           'aws:pinpoint/app:App',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     arn = registerOutput<String>('arn');

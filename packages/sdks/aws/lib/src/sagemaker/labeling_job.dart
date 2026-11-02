@@ -185,7 +185,7 @@ import 'labeling_job_stopping_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -194,12 +194,15 @@ import 'labeling_job_stopping_condition.dart';
 /// }
 ///
 /// # https://docs.aws.amazon.com/sagemaker/latest/dg/sms-named-entity-recg.html#sms-creating-ner-api.
-/// resource "aws_sagemaker_labelingjob" "test" {
-///   human_task_config = {
-///     ui_config = {
+/// resource "aws_sagemaker_labeling_job" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   human_task_config {
+///     ui_config {
 ///       human_task_ui_arn = "arn:aws:sagemaker:us-west-2:394669845002:human-task-ui/NamedEntityRecognition"
 ///     }
-///     annotation_consolidation_config = {
+///     annotation_consolidation_config {
 ///       annotation_consolidation_lambda_arn = "arn:aws:lambda:us-west-2:081040173940:function:ACS-NamedEntityRecognition"
 ///     }
 ///     number_of_human_workers_per_data_object = 1
@@ -209,14 +212,14 @@ import 'labeling_job_stopping_condition.dart';
 ///     workteam_arn                            = example.arn
 ///     pre_human_task_lambda_arn               = "arn:aws:lambda:us-west-2:081040173940:function:PRE-NamedEntityRecognition"
 ///   }
-///   input_config = {
-///     data_source = {
-///       sns_data_source = {
+///   input_config {
+///     data_source {
+///       sns_data_source {
 ///         sns_topic_arn = exampleAwsSnsTopic.arn
 ///       }
 ///     }
 ///   }
-///   output_config = {
+///   output_config {
 ///     s3_output_path ="s3://${exampleAwsS3Bucket.bucket}/"
 ///   }
 ///   label_attribute_name         = "label1"
@@ -266,23 +269,23 @@ import 'labeling_job_stopping_condition.dart';
 ///                 .taskDescription("Apply the labels provided to specific words or phrases within the larger text block.")
 ///                 .taskTitle("Named entity Recognition task")
 ///                 .taskTimeLimitInSeconds(28800)
-///                 .workteamArn(example.arn())
+///                 .workteamArn(example.get("arn"))
 ///                 .preHumanTaskLambdaArn("arn:aws:lambda:us-west-2:081040173940:function:PRE-NamedEntityRecognition")
 ///                 .build())
 ///             .inputConfig(LabelingJobInputConfigArgs.builder()
 ///                 .dataSource(LabelingJobInputConfigDataSourceArgs.builder()
 ///                     .snsDataSource(LabelingJobInputConfigDataSourceSnsDataSourceArgs.builder()
-///                         .snsTopicArn(exampleAwsSnsTopic.arn())
+///                         .snsTopicArn(exampleAwsSnsTopic.get("arn"))
 ///                         .build())
 ///                     .build())
 ///                 .build())
 ///             .outputConfig(LabelingJobOutputConfigArgs.builder()
-///                 .s3OutputPath(String.format("s3://%s/", exampleAwsS3Bucket.bucket()))
+///                 .s3OutputPath(String.format("s3://%s/", exampleAwsS3Bucket.get("bucket")))
 ///                 .build())
 ///             .labelAttributeName("label1")
 ///             .labelingJobName("my-labeling-job")
-///             .roleArn(exampleAwsIamRole.arn())
-///             .labelCategoryConfigS3Uri(String.format("s3://%s/%s", exampleAwsS3Bucket.bucket(),exampleAwsS3Object.key()))
+///             .roleArn(exampleAwsIamRole.get("arn"))
+///             .labelCategoryConfigS3Uri(String.format("s3://%s/%s", exampleAwsS3Bucket.get("bucket"),exampleAwsS3Object.get("key")))
 ///             .build());
 ///
 ///     }
@@ -373,7 +376,7 @@ class LabelingJob extends pulumi.CustomResource {
           'aws:sagemaker/labelingJob:LabelingJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     failureReason = registerOutput<String>('failureReason');
     humanTaskConfig = registerOutput<LabelingJobHumanTaskConfig>('humanTaskConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabelingJobHumanTaskConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

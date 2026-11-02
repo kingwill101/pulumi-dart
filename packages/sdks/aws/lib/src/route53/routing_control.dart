@@ -62,7 +62,7 @@ import 'routing_control_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'routing_control_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53recoverycontrol_routingcontrol" "example" {
+/// resource "aws_route53recoverycontrol_routing_control" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "tinlicker"
 ///   cluster_arn = "arn:aws:route53-recovery-control::881188118811:cluster/8d47920e-d789-437d-803a-2dcc4b204393"
 /// }
@@ -174,7 +177,7 @@ import 'routing_control_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -182,7 +185,10 @@ import 'routing_control_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53recoverycontrol_routingcontrol" "example" {
+/// resource "aws_route53recoverycontrol_routing_control" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "thomasoliver"
 ///   cluster_arn       = "arn:aws:route53-recovery-control::881188118811:cluster/8d47920e-d789-437d-803a-2dcc4b204393"
 ///   control_panel_arn = "arn:aws:route53-recovery-control::428113431245:controlpanel/abd5fbfc052d4844a082dbf400f61da8"
@@ -262,7 +268,7 @@ class RoutingControl extends pulumi.CustomResource {
           'aws:route53recoverycontrol/routingControl:RoutingControl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     clusterArn = registerOutput<String>('clusterArn');

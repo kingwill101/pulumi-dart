@@ -102,7 +102,7 @@ import 'resource_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -111,6 +111,9 @@ import 'resource_state.dart';
 /// }
 ///
 /// resource "aws_cloudcontrol_resource" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   type_name = "AWS::ECS::Cluster"
 ///   desired_state = jsonencode({
 ///     "ClusterName" = "example"
@@ -201,7 +204,7 @@ class ResourceType extends pulumi.CustomResource {
           'aws:cloudcontrol/resource:Resource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['schema'],
         ) {
     desiredState = registerOutput<String>('desiredState');

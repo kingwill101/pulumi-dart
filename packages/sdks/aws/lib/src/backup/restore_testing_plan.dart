@@ -96,7 +96,7 @@ import 'restore_testing_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -104,8 +104,11 @@ import 'restore_testing_plan_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_backup_restoretestingplan" "example" {
-///   recovery_point_selection = {
+/// resource "aws_backup_restore_testing_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   recovery_point_selection {
 ///     algorithm            = "LATEST_WITHIN_WINDOW"
 ///     include_vaults       = ["*"]
 ///     recovery_point_types = ["CONTINUOUS"]
@@ -204,7 +207,7 @@ class RestoreTestingPlan extends pulumi.CustomResource {
           'aws:backup/restoreTestingPlan:RestoreTestingPlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

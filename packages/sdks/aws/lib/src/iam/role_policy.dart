@@ -181,7 +181,7 @@ import 'role_policy_state.dart';
 /// 		json1 := string(tmpJSON1)
 /// 		_, err = iam.NewRolePolicy(ctx, "test_policy", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("test_policy"),
-/// 			Role:   testRole.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   testRole.ID(),
 /// 			Policy: pulumi.String(json1),
 /// 		})
 /// 		if err != nil {
@@ -192,7 +192,7 @@ import 'role_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -200,7 +200,10 @@ import 'role_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_rolepolicy" "test_policy" {
+/// resource "aws_iam_role_policy" "test_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test_policy"
 ///   role = aws_iam_role.test_role.id
 ///   policy = jsonencode({
@@ -213,6 +216,9 @@ import 'role_policy_state.dart';
 ///   })
 /// }
 /// resource "aws_iam_role" "test_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test_role"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -362,7 +368,7 @@ class RolePolicy extends pulumi.CustomResource {
           'aws:iam/rolePolicy:RolePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');

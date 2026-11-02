@@ -84,7 +84,7 @@ import 'nfs_location_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -92,7 +92,10 @@ import 'nfs_location_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_datasync_nfslocation" "example" {
+/// resource "aws_datasync_nfs_location" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   on_prem_config = {
 ///     agent_arns = [exampleAwsDatasyncAgent.arn]
 ///   }
@@ -124,7 +127,7 @@ import 'nfs_location_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new NfsLocation("example", NfsLocationArgs.builder()
 ///             .onPremConfig(NfsLocationOnPremConfigArgs.builder()
-///                 .agentArns(exampleAwsDatasyncAgent.arn())
+///                 .agentArns(exampleAwsDatasyncAgent.get("arn"))
 ///                 .build())
 ///             .serverHostname("nfs.example.com")
 ///             .subdirectory("/exported/path")
@@ -191,7 +194,7 @@ class NfsLocation extends pulumi.CustomResource {
           'aws:datasync/nfsLocation:NfsLocation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     mountOptions = registerOutput<NfsLocationMountOptions?>('mountOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NfsLocationMountOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

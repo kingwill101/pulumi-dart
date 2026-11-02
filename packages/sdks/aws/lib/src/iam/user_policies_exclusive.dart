@@ -73,7 +73,7 @@ import 'user_policies_exclusive_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -81,7 +81,10 @@ import 'user_policies_exclusive_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_userpoliciesexclusive" "example" {
+/// resource "aws_iam_user_policies_exclusive" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user_name    = exampleAwsIamUser.name
 ///   policy_names = [exampleAwsIamUserPolicy.name]
 /// }
@@ -108,8 +111,8 @@ import 'user_policies_exclusive_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new UserPoliciesExclusive("example", UserPoliciesExclusiveArgs.builder()
-///             .userName(exampleAwsIamUser.name())
-///             .policyNames(exampleAwsIamUserPolicy.name())
+///             .userName(exampleAwsIamUser.get("name"))
+///             .policyNames(exampleAwsIamUserPolicy.get("name"))
 ///             .build());
 ///
 ///     }
@@ -161,7 +164,7 @@ import 'user_policies_exclusive_state.dart';
 ///     var example = new Aws.Iam.UserPoliciesExclusive("example", new()
 ///     {
 ///         UserName = exampleAwsIamUser.Name,
-///         PolicyNames = new[] {},
+///         PolicyNames = new() {},
 ///     });
 ///
 /// });
@@ -188,7 +191,7 @@ import 'user_policies_exclusive_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -196,7 +199,10 @@ import 'user_policies_exclusive_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_userpoliciesexclusive" "example" {
+/// resource "aws_iam_user_policies_exclusive" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user_name    = exampleAwsIamUser.name
 ///   policy_names = []
 /// }
@@ -223,7 +229,7 @@ import 'user_policies_exclusive_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new UserPoliciesExclusive("example", UserPoliciesExclusiveArgs.builder()
-///             .userName(exampleAwsIamUser.name())
+///             .userName(exampleAwsIamUser.get("name"))
 ///             .policyNames()
 ///             .build());
 ///
@@ -265,7 +271,7 @@ class UserPoliciesExclusive extends pulumi.CustomResource {
           'aws:iam/userPoliciesExclusive:UserPoliciesExclusive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     policyNames = registerOutput<List<String>>('policyNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     userName = registerOutput<String>('userName');

@@ -59,7 +59,7 @@ import 'get_pipeline_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,7 @@ import 'get_pipeline_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_datapipeline_getpipeline" "example" {
+/// data "aws_datapipeline_pipeline" "example" {
 ///   pipeline_id = "pipelineID"
 /// }
 /// ```
@@ -188,7 +188,7 @@ pulumi.Output<GetPipelineResult> getPipelineOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -196,7 +196,7 @@ pulumi.Output<GetPipelineResult> getPipelineOutput(
 ///   }
 /// }
 ///
-/// data "aws_datapipeline_getpipelinedefinition" "example" {
+/// data "aws_datapipeline_pipeline_definition" "example" {
 ///   pipeline_id = "pipelineID"
 /// }
 /// ```

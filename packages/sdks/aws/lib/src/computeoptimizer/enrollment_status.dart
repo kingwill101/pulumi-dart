@@ -56,7 +56,7 @@ import 'enrollment_status_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -64,7 +64,10 @@ import 'enrollment_status_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_computeoptimizer_enrollmentstatus" "example" {
+/// resource "aws_computeoptimizer_enrollment_status" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   status = "Active"
 /// }
 /// ```
@@ -135,7 +138,7 @@ class EnrollmentStatus extends pulumi.CustomResource {
           'aws:computeoptimizer/enrollmentStatus:EnrollmentStatus',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     includeMemberAccounts = registerOutput<bool>('includeMemberAccounts');
     numberOfMemberAccountsOptedIn = registerOutput<int>('numberOfMemberAccountsOptedIn');

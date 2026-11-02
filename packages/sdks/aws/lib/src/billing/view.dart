@@ -75,7 +75,7 @@ import 'view_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -84,6 +84,9 @@ import 'view_timeouts.dart';
 /// }
 ///
 /// resource "aws_billing_view" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example"
 ///   description  = "example description"
 ///   source_views = ["arn:aws:billing::123456789012:billingview/example"]
@@ -185,7 +188,7 @@ class View extends pulumi.CustomResource {
           'aws:billing/view:View',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     billingViewType = registerOutput<String>('billingViewType');

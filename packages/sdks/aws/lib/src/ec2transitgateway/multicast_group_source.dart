@@ -67,7 +67,7 @@ import 'multicast_group_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,7 +75,10 @@ import 'multicast_group_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2transitgateway_multicastgroupsource" "example" {
+/// resource "aws_ec2transitgateway_multicast_group_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_ip_address                    = "224.0.0.1"
 ///   network_interface_id                = exampleAwsNetworkInterface.id
 ///   transit_gateway_multicast_domain_id = exampleAwsEc2TransitGatewayMulticastDomain.id
@@ -104,8 +107,8 @@ import 'multicast_group_source_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new MulticastGroupSource("example", MulticastGroupSourceArgs.builder()
 ///             .groupIpAddress("224.0.0.1")
-///             .networkInterfaceId(exampleAwsNetworkInterface.id())
-///             .transitGatewayMulticastDomainId(exampleAwsEc2TransitGatewayMulticastDomain.id())
+///             .networkInterfaceId(exampleAwsNetworkInterface.get("id"))
+///             .transitGatewayMulticastDomainId(exampleAwsEc2TransitGatewayMulticastDomain.get("id"))
 ///             .build());
 ///
 ///     }
@@ -142,7 +145,7 @@ class MulticastGroupSource extends pulumi.CustomResource {
           'aws:ec2transitgateway/multicastGroupSource:MulticastGroupSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     groupIpAddress = registerOutput<String>('groupIpAddress');
     networkInterfaceId = registerOutput<String>('networkInterfaceId');

@@ -64,7 +64,7 @@ import 'assessment_report_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'assessment_report_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_auditmanager_assessmentreport" "test" {
+/// resource "aws_auditmanager_assessment_report" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "example"
 ///   assessment_id = testAwsAuditmanagerAssessment.id
 /// }
@@ -100,7 +103,7 @@ import 'assessment_report_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var test = new AssessmentReport("test", AssessmentReportArgs.builder()
 ///             .name("example")
-///             .assessmentId(testAwsAuditmanagerAssessment.id())
+///             .assessmentId(testAwsAuditmanagerAssessment.get("id"))
 ///             .build());
 ///
 ///     }
@@ -151,7 +154,7 @@ class AssessmentReport extends pulumi.CustomResource {
           'aws:auditmanager/assessmentReport:AssessmentReport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     assessmentId = registerOutput<String>('assessmentId');
     author = registerOutput<String>('author');

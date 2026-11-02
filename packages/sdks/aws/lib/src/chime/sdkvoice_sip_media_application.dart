@@ -78,7 +78,7 @@ import 'sdkvoice_sip_media_application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,7 +86,10 @@ import 'sdkvoice_sip_media_application_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_chime_sdkvoicesipmediaapplication" "example" {
+/// resource "aws_chime_sdkvoice_sip_media_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoints = {
 ///     lambda_arn = test.arn
 ///   }
@@ -118,7 +121,7 @@ import 'sdkvoice_sip_media_application_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new SdkvoiceSipMediaApplication("example", SdkvoiceSipMediaApplicationArgs.builder()
 ///             .endpoints(SdkvoiceSipMediaApplicationEndpointsArgs.builder()
-///                 .lambdaArn(test.arn())
+///                 .lambdaArn(test.get("arn"))
 ///                 .build())
 ///             .awsRegion("us-east-1")
 ///             .name("example-sip-media-application")
@@ -176,7 +179,7 @@ class SdkvoiceSipMediaApplication extends pulumi.CustomResource {
           'aws:chime/sdkvoiceSipMediaApplication:SdkvoiceSipMediaApplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsRegion = registerOutput<String>('awsRegion');

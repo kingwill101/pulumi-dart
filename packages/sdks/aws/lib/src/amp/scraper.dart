@@ -335,7 +335,7 @@ import 'scraper_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -344,6 +344,9 @@ import 'scraper_timeouts.dart';
 /// }
 ///
 /// resource "aws_amp_scraper" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source = {
 ///     eks = {
 ///       cluster_arn = exampleAwsEksCluster.arn
@@ -355,7 +358,63 @@ import 'scraper_timeouts.dart';
 ///       workspace_arn = exampleAwsPrometheusWorkspace.arn
 ///     }
 ///   }
-///   scrape_configuration = "global:\n  scrape_interval: 30s\nscrape_configs:\n  # pod metrics\n  - job_name: pod_exporter\n    kubernetes_sd_configs:\n      - role: pod\n  # container metrics\n  - job_name: cadvisor\n    scheme: https\n    authorization:\n      credentials_file: /var/run/secrets/kubernetes.io/serviceaccount/token\n    kubernetes_sd_configs:\n      - role: node\n    relabel_configs:\n      - action: labelmap\n        regex: __meta_kubernetes_node_label_(.+)\n      - replacement: kubernetes.default.svc:443\n        target_label: __address__\n      - source_labels: [__meta_kubernetes_node_name]\n        regex: (.+)\n        target_label: __metrics_path__\n        replacement: /api/v1/nodes/$1/proxy/metrics/cadvisor\n  # apiserver metrics\n  - bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token\n    job_name: kubernetes-apiservers\n    kubernetes_sd_configs:\n    - role: endpoints\n    relabel_configs:\n    - action: keep\n      regex: default;kubernetes;https\n      source_labels:\n      - __meta_kubernetes_namespace\n      - __meta_kubernetes_service_name\n      - __meta_kubernetes_endpoint_port_name\n    scheme: https\n  # kube proxy metrics\n  - job_name: kube-proxy\n    honor_labels: true\n    kubernetes_sd_configs:\n    - role: pod\n    relabel_configs:\n    - action: keep\n      source_labels:\n      - __meta_kubernetes_namespace\n      - __meta_kubernetes_pod_name\n      separator: '/'\n      regex: 'kube-system/kube-proxy.+'\n    - source_labels:\n      - __address__\n      action: replace\n      target_label: __address__\n      regex: (.+?)(\\\\\\\\:\\\\\\\\d+)?\n      replacement: $1:10249\n"
+///   scrape_configuration = <<EOT
+/// global:
+///   scrape_interval: 30s
+/// scrape_configs:
+///   # pod metrics
+///   - job_name: pod_exporter
+///     kubernetes_sd_configs:
+///       - role: pod
+///   # container metrics
+///   - job_name: cadvisor
+///     scheme: https
+///     authorization:
+///       credentials_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+///     kubernetes_sd_configs:
+///       - role: node
+///     relabel_configs:
+///       - action: labelmap
+///         regex: __meta_kubernetes_node_label_(.+)
+///       - replacement: kubernetes.default.svc:443
+///         target_label: __address__
+///       - source_labels: [__meta_kubernetes_node_name]
+///         regex: (.+)
+///         target_label: __metrics_path__
+///         replacement: /api/v1/nodes/$1/proxy/metrics/cadvisor
+///   # apiserver metrics
+///   - bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+///     job_name: kubernetes-apiservers
+///     kubernetes_sd_configs:
+///     - role: endpoints
+///     relabel_configs:
+///     - action: keep
+///       regex: default;kubernetes;https
+///       source_labels:
+///       - __meta_kubernetes_namespace
+///       - __meta_kubernetes_service_name
+///       - __meta_kubernetes_endpoint_port_name
+///     scheme: https
+///   # kube proxy metrics
+///   - job_name: kube-proxy
+///     honor_labels: true
+///     kubernetes_sd_configs:
+///     - role: pod
+///     relabel_configs:
+///     - action: keep
+///       source_labels:
+///       - __meta_kubernetes_namespace
+///       - __meta_kubernetes_pod_name
+///       separator: '/'
+///       regex: 'kube-system/kube-proxy.+'
+///     - source_labels:
+///       - __address__
+///       action: replace
+///       target_label: __address__
+///       regex: (.+?)(\\\\:\\\\d+)?
+///       replacement: $1:10249
+/// EOT
+///
 /// }
 /// ```
 /// ```java
@@ -386,13 +445,13 @@ import 'scraper_timeouts.dart';
 ///         var example = new Scraper("example", ScraperArgs.builder()
 ///             .source(ScraperSourceArgs.builder()
 ///                 .eks(ScraperSourceEksArgs.builder()
-///                     .clusterArn(exampleAwsEksCluster.arn())
-///                     .subnetIds(exampleAwsEksCluster.vpcConfig()[0].subnetIds())
+///                     .clusterArn(exampleAwsEksCluster.get("arn"))
+///                     .subnetIds(exampleAwsEksCluster.get("vpcConfig")[0].get("subnetIds"))
 ///                     .build())
 ///                 .build())
 ///             .destination(ScraperDestinationArgs.builder()
 ///                 .amp(ScraperDestinationAmpArgs.builder()
-///                     .workspaceArn(exampleAwsPrometheusWorkspace.arn())
+///                     .workspaceArn(exampleAwsPrometheusWorkspace.get("arn"))
 ///                     .build())
 ///                 .build())
 ///             .scrapeConfiguration("""
@@ -652,7 +711,7 @@ import 'scraper_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -661,6 +720,9 @@ import 'scraper_timeouts.dart';
 /// }
 ///
 /// resource "aws_amp_scraper" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source = {
 ///     eks = {
 ///       cluster_arn = exampleAwsEksCluster.arn
@@ -672,7 +734,15 @@ import 'scraper_timeouts.dart';
 ///       dataset_arn = "arn:aws:cloudwatch:us-west-2:123456789012:dataset/default"
 ///     }
 ///   }
-///   scrape_configuration = "global:\n  scrape_interval: 30s\nscrape_configs:\n  - job_name: pod_exporter\n    kubernetes_sd_configs:\n      - role: pod\n"
+///   scrape_configuration = <<EOT
+/// global:
+///   scrape_interval: 30s
+/// scrape_configs:
+///   - job_name: pod_exporter
+///     kubernetes_sd_configs:
+///       - role: pod
+/// EOT
+///
 /// }
 /// ```
 /// ```java
@@ -703,8 +773,8 @@ import 'scraper_timeouts.dart';
 ///         var example = new Scraper("example", ScraperArgs.builder()
 ///             .source(ScraperSourceArgs.builder()
 ///                 .eks(ScraperSourceEksArgs.builder()
-///                     .clusterArn(exampleAwsEksCluster.arn())
-///                     .subnetIds(exampleAwsEksCluster.vpcConfig()[0].subnetIds())
+///                     .clusterArn(exampleAwsEksCluster.get("arn"))
+///                     .subnetIds(exampleAwsEksCluster.get("vpcConfig")[0].get("subnetIds"))
 ///                     .build())
 ///                 .build())
 ///             .destination(ScraperDestinationArgs.builder()
@@ -923,7 +993,7 @@ import 'scraper_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -932,6 +1002,9 @@ import 'scraper_timeouts.dart';
 /// }
 ///
 /// resource "aws_amp_scraper" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source = {
 ///     vpc = {
 ///       security_group_ids = [exampleAwsSecurityGroup.id]
@@ -943,7 +1016,23 @@ import 'scraper_timeouts.dart';
 ///       workspace_arn = exampleAwsPrometheusWorkspace.arn
 ///     }
 ///   }
-///   scrape_configuration = "global:\n  scrape_interval: 30s\nscrape_configs:\n  - job_name: 'my-service'\n    dns_sd_configs:\n      - names: ['my-service.my-namespace']\n        type: A\n        port: 8080\n    metrics_path: '/metrics'\n    relabel_configs:\n      - target_label: service_name\n        replacement: 'my-service'\n      - target_label: discovery_method\n        replacement: 'cloudmap-dns'\n"
+///   scrape_configuration = <<EOT
+/// global:
+///   scrape_interval: 30s
+/// scrape_configs:
+///   - job_name: 'my-service'
+///     dns_sd_configs:
+///       - names: ['my-service.my-namespace']
+///         type: A
+///         port: 8080
+///     metrics_path: '/metrics'
+///     relabel_configs:
+///       - target_label: service_name
+///         replacement: 'my-service'
+///       - target_label: discovery_method
+///         replacement: 'cloudmap-dns'
+/// EOT
+///
 /// }
 /// ```
 /// ```java
@@ -974,15 +1063,15 @@ import 'scraper_timeouts.dart';
 ///         var example = new Scraper("example", ScraperArgs.builder()
 ///             .source(ScraperSourceArgs.builder()
 ///                 .vpc(ScraperSourceVpcArgs.builder()
-///                     .securityGroupIds(exampleAwsSecurityGroup.id())
+///                     .securityGroupIds(exampleAwsSecurityGroup.get("id"))
 ///                     .subnetIds(
-///                         example1.id(),
-///                         example2.id())
+///                         example1.get("id"),
+///                         example2.get("id"))
 ///                     .build())
 ///                 .build())
 ///             .destination(ScraperDestinationArgs.builder()
 ///                 .amp(ScraperDestinationAmpArgs.builder()
-///                     .workspaceArn(exampleAwsPrometheusWorkspace.arn())
+///                     .workspaceArn(exampleAwsPrometheusWorkspace.get("arn"))
 ///                     .build())
 ///                 .build())
 ///             .scrapeConfiguration("""
@@ -1217,7 +1306,7 @@ import 'scraper_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1226,6 +1315,9 @@ import 'scraper_timeouts.dart';
 /// }
 ///
 /// resource "aws_amp_scraper" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source = {
 ///     vpc = {
 ///       security_group_ids = [exampleAwsSecurityGroup.id]
@@ -1242,7 +1334,18 @@ import 'scraper_timeouts.dart';
 ///       domain_arn = exampleAwsOpensearchDomain.arn
 ///     }
 ///   }
-///   scrape_configuration = "global:\n  scrape_interval: 30s\nscrape_configs:\n  - job_name: 'my-service'\n    dns_sd_configs:\n      - names: ['my-service.my-namespace']\n        type: A\n        port: 8080\n    metrics_path: '/metrics'\n"
+///   scrape_configuration = <<EOT
+/// global:
+///   scrape_interval: 30s
+/// scrape_configs:
+///   - job_name: 'my-service'
+///     dns_sd_configs:
+///       - names: ['my-service.my-namespace']
+///         type: A
+///         port: 8080
+///     metrics_path: '/metrics'
+/// EOT
+///
 /// }
 /// ```
 /// ```java
@@ -1275,20 +1378,20 @@ import 'scraper_timeouts.dart';
 ///         var example = new Scraper("example", ScraperArgs.builder()
 ///             .source(ScraperSourceArgs.builder()
 ///                 .vpc(ScraperSourceVpcArgs.builder()
-///                     .securityGroupIds(exampleAwsSecurityGroup.id())
+///                     .securityGroupIds(exampleAwsSecurityGroup.get("id"))
 ///                     .subnetIds(
-///                         example1.id(),
-///                         example2.id())
+///                         example1.get("id"),
+///                         example2.get("id"))
 ///                     .build())
 ///                 .build())
 ///             .destination(ScraperDestinationArgs.builder()
 ///                 .amp(ScraperDestinationAmpArgs.builder()
-///                     .workspaceArn(exampleAwsPrometheusWorkspace.arn())
+///                     .workspaceArn(exampleAwsPrometheusWorkspace.get("arn"))
 ///                     .build())
 ///                 .build())
 ///             .exporter(ScraperExporterArgs.builder()
 ///                 .opensearch(ScraperExporterOpensearchArgs.builder()
-///                     .domainArn(exampleAwsOpensearchDomain.arn())
+///                     .domainArn(exampleAwsOpensearchDomain.get("arn"))
 ///                     .build())
 ///                 .build())
 ///             .scrapeConfiguration("""
@@ -1451,7 +1554,7 @@ import 'scraper_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1459,10 +1562,13 @@ import 'scraper_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_amp_getdefaultscraperconfiguration" "example" {
+/// data "aws_amp_default_scraper_configuration" "example" {
 /// }
 ///
 /// resource "aws_amp_scraper" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   destination = {
 ///     amp = {
 ///       workspace_arn = exampleAwsPrometheusWorkspace.arn
@@ -1474,7 +1580,7 @@ import 'scraper_timeouts.dart';
 ///       subnet_ids  = exampleAwsEksCluster.vpcConfig[0].subnetIds
 ///     }
 ///   }
-///   scrape_configuration = data.aws_amp_getdefaultscraperconfiguration.example.configuration
+///   scrape_configuration = data.aws_amp_default_scraper_configuration.example.configuration
 /// }
 /// ```
 /// ```java
@@ -1510,13 +1616,13 @@ import 'scraper_timeouts.dart';
 ///         var exampleScraper = new Scraper("exampleScraper", ScraperArgs.builder()
 ///             .destination(ScraperDestinationArgs.builder()
 ///                 .amp(ScraperDestinationAmpArgs.builder()
-///                     .workspaceArn(exampleAwsPrometheusWorkspace.arn())
+///                     .workspaceArn(exampleAwsPrometheusWorkspace.get("arn"))
 ///                     .build())
 ///                 .build())
 ///             .source(ScraperSourceArgs.builder()
 ///                 .eks(ScraperSourceEksArgs.builder()
-///                     .clusterArn(exampleAwsEksCluster.arn())
-///                     .subnetIds(exampleAwsEksCluster.vpcConfig()[0].subnetIds())
+///                     .clusterArn(exampleAwsEksCluster.get("arn"))
+///                     .subnetIds(exampleAwsEksCluster.get("vpcConfig")[0].get("subnetIds"))
 ///                     .build())
 ///                 .build())
 ///             .scrapeConfiguration(example.configuration())
@@ -1692,7 +1798,7 @@ import 'scraper_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1700,16 +1806,22 @@ import 'scraper_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_eks_getcluster" "this" {
+/// data "aws_eks_cluster" "this" {
 ///   name = "example"
 /// }
 ///
 /// resource "aws_amp_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tags = {
 ///     "AMPAgentlessScraper" = ""
 ///   }
 /// }
 /// resource "aws_amp_scraper" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source = {
 ///     eks = {
 ///       cluster_arn = exampleAwsEksCluster.arn
@@ -1764,8 +1876,8 @@ import 'scraper_timeouts.dart';
 ///         var exampleScraper = new Scraper("exampleScraper", ScraperArgs.builder()
 ///             .source(ScraperSourceArgs.builder()
 ///                 .eks(ScraperSourceEksArgs.builder()
-///                     .clusterArn(exampleAwsEksCluster.arn())
-///                     .subnetIds(exampleAwsEksCluster.vpcConfig()[0].subnetIds())
+///                     .clusterArn(exampleAwsEksCluster.get("arn"))
+///                     .subnetIds(exampleAwsEksCluster.get("vpcConfig")[0].get("subnetIds"))
 ///                     .build())
 ///                 .build())
 ///             .destination(ScraperDestinationArgs.builder()
@@ -1939,7 +2051,7 @@ import 'scraper_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1948,6 +2060,9 @@ import 'scraper_timeouts.dart';
 /// }
 ///
 /// resource "aws_amp_scraper" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source = {
 ///     eks = {
 ///       cluster_arn = exampleAwsEksCluster.arn
@@ -1995,8 +2110,8 @@ import 'scraper_timeouts.dart';
 ///         var example = new Scraper("example", ScraperArgs.builder()
 ///             .source(ScraperSourceArgs.builder()
 ///                 .eks(ScraperSourceEksArgs.builder()
-///                     .clusterArn(exampleAwsEksCluster.arn())
-///                     .subnetIds(exampleAwsEksCluster.vpcConfig()[0].subnetIds())
+///                     .clusterArn(exampleAwsEksCluster.get("arn"))
+///                     .subnetIds(exampleAwsEksCluster.get("vpcConfig")[0].get("subnetIds"))
 ///                     .build())
 ///                 .build())
 ///             .destination(ScraperDestinationArgs.builder()
@@ -2005,7 +2120,7 @@ import 'scraper_timeouts.dart';
 ///                     .build())
 ///                 .build())
 ///             .roleConfiguration(ScraperRoleConfigurationArgs.builder()
-///                 .sourceRoleArn(source.arn())
+///                 .sourceRoleArn(source.get("arn"))
 ///                 .targetRoleArn("arn:aws:iam::ACCOUNT-ID:role/target-role-name")
 ///                 .build())
 ///             .scrapeConfiguration("...")
@@ -2092,7 +2207,7 @@ class Scraper extends pulumi.CustomResource {
           'aws:amp/scraper:Scraper',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     alias = registerOutput<String?>('alias');
     arn = registerOutput<String>('arn');

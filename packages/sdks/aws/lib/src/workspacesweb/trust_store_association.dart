@@ -117,7 +117,7 @@ import 'trust_store_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -129,13 +129,22 @@ import 'trust_store_association_state.dart';
 /// }
 ///
 /// resource "aws_workspacesweb_portal" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "aws_workspacesweb_truststore" "example" {
+/// resource "aws_workspacesweb_trust_store" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_list = [base64encode(file("certificate.pem"))]
 /// }
-/// resource "aws_workspacesweb_truststoreassociation" "example" {
-///   trust_store_arn = aws_workspacesweb_truststore.example.trust_store_arn
+/// resource "aws_workspacesweb_trust_store_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   trust_store_arn = aws_workspacesweb_trust_store.example.trust_store_arn
 ///   portal_arn      = aws_workspacesweb_portal.example.portal_arn
 /// }
 /// ```
@@ -246,7 +255,7 @@ class TrustStoreAssociation extends pulumi.CustomResource {
           'aws:workspacesweb/trustStoreAssociation:TrustStoreAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     portalArn = registerOutput<String>('portalArn');
     region = registerOutput<String>('region');

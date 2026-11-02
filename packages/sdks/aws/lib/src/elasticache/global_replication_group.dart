@@ -112,7 +112,7 @@ import 'global_replication_group_state.dart';
 /// 		}
 /// 		example, err := elasticache.NewGlobalReplicationGroup(ctx, "example", &elasticache.GlobalReplicationGroupArgs{
 /// 			GlobalReplicationGroupIdSuffix: pulumi.String("example"),
-/// 			PrimaryReplicationGroupId:      primary.ID().ToIDOutput().ToStringOutput(),
+/// 			PrimaryReplicationGroupId:      primary.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -131,7 +131,7 @@ import 'global_replication_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -139,11 +139,17 @@ import 'global_replication_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elasticache_globalreplicationgroup" "example" {
+/// resource "aws_elasticache_global_replication_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   global_replication_group_id_suffix = "example"
-///   primary_replication_group_id       = aws_elasticache_replicationgroup.primary.id
+///   primary_replication_group_id       = aws_elasticache_replication_group.primary.id
 /// }
-/// resource "aws_elasticache_replicationgroup" "primary" {
+/// resource "aws_elasticache_replication_group" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   replication_group_id = "example-primary"
 ///   description          = "primary replication group"
 ///   engine               = "redis"
@@ -151,10 +157,13 @@ import 'global_replication_group_state.dart';
 ///   node_type            = "cache.m5.large"
 ///   num_cache_clusters   = 1
 /// }
-/// resource "aws_elasticache_replicationgroup" "secondary" {
+/// resource "aws_elasticache_replication_group" "secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   replication_group_id        = "example-secondary"
 ///   description                 = "secondary replication group"
-///   global_replication_group_id = aws_elasticache_globalreplicationgroup.example.global_replication_group_id
+///   global_replication_group_id = aws_elasticache_global_replication_group.example.global_replication_group_id
 ///   num_cache_clusters          = 1
 /// }
 /// ```
@@ -348,7 +357,7 @@ import 'global_replication_group_state.dart';
 /// 		}
 /// 		example, err := elasticache.NewGlobalReplicationGroup(ctx, "example", &elasticache.GlobalReplicationGroupArgs{
 /// 			GlobalReplicationGroupIdSuffix: pulumi.String("example"),
-/// 			PrimaryReplicationGroupId:      primary.ID().ToIDOutput().ToStringOutput(),
+/// 			PrimaryReplicationGroupId:      primary.ID(),
 /// 			EngineVersion:                  pulumi.String("6.2"),
 /// 		})
 /// 		if err != nil {
@@ -368,7 +377,7 @@ import 'global_replication_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -376,12 +385,18 @@ import 'global_replication_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elasticache_globalreplicationgroup" "example" {
+/// resource "aws_elasticache_global_replication_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   global_replication_group_id_suffix = "example"
-///   primary_replication_group_id       = aws_elasticache_replicationgroup.primary.id
+///   primary_replication_group_id       = aws_elasticache_replication_group.primary.id
 ///   engine_version                     = "6.2"
 /// }
-/// resource "aws_elasticache_replicationgroup" "primary" {
+/// resource "aws_elasticache_replication_group" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   replication_group_id = "example-primary"
 ///   description          = "primary replication group"
 ///   engine               = "redis"
@@ -389,10 +404,13 @@ import 'global_replication_group_state.dart';
 ///   node_type            = "cache.m5.large"
 ///   num_cache_clusters   = 1
 /// }
-/// resource "aws_elasticache_replicationgroup" "secondary" {
+/// resource "aws_elasticache_replication_group" "secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   replication_group_id        = "example-secondary"
 ///   description                 = "secondary replication group"
-///   global_replication_group_id = aws_elasticache_globalreplicationgroup.example.global_replication_group_id
+///   global_replication_group_id = aws_elasticache_global_replication_group.example.global_replication_group_id
 ///   num_cache_clusters          = 1
 /// }
 /// ```
@@ -526,7 +544,7 @@ class GlobalReplicationGroup extends pulumi.CustomResource {
   /// An ElastiCache Parameter Group to use for the Global Replication Group.
   /// Required when upgrading a major engine version, but will be ignored if left configured after the upgrade is complete. Specifying without a major version upgrade will fail. When a replication group joins a global datastore, AWS auto-generates a new parameter group (prefixed `global-datastore-`) derived from the primary's parameter group. Note that ElastiCache creates a copy of this parameter group for each member replication group.
   late final pulumi.Output<String?> parameterGroupName;
-  /// The ID of the primary cluster that accepts writes and will replicate updates to the secondary cluster. If `primaryReplicationGroupId` is changed, creates a new resource.
+  /// The ID of the primary cluster that accepts writes and will replicate updates to the secondary cluster. Changing this value will trigger a failover to the specified replication group.
   late final pulumi.Output<String> primaryReplicationGroupId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -545,7 +563,7 @@ class GlobalReplicationGroup extends pulumi.CustomResource {
           'aws:elasticache/globalReplicationGroup:GlobalReplicationGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     atRestEncryptionEnabled = registerOutput<bool>('atRestEncryptionEnabled');

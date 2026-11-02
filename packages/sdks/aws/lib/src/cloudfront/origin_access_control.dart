@@ -78,7 +78,7 @@ import 'origin_access_control_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,7 +86,10 @@ import 'origin_access_control_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_originaccesscontrol" "example" {
+/// resource "aws_cloudfront_origin_access_control" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                              = "example"
 ///   description                       = "Example Policy"
 ///   origin_access_control_origin_type = "s3"
@@ -174,7 +177,7 @@ class OriginAccessControl extends pulumi.CustomResource {
           'aws:cloudfront/originAccessControl:OriginAccessControl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

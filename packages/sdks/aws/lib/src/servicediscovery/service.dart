@@ -133,7 +133,7 @@ import 'service_state.dart';
 /// 		examplePrivateDnsNamespace, err := servicediscovery.NewPrivateDnsNamespace(ctx, "example", &servicediscovery.PrivateDnsNamespaceArgs{
 /// 			Name:        pulumi.String("example.mydomain.local"),
 /// 			Description: pulumi.String("example"),
-/// 			Vpc:         example.ID().ToIDOutput().ToStringOutput(),
+/// 			Vpc:         example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -146,7 +146,7 @@ import 'service_state.dart';
 /// 						Type: pulumi.String("A"),
 /// 					},
 /// 				},
-/// 				NamespaceId:   examplePrivateDnsNamespace.ID().ToIDOutput().ToStringOutput(),
+/// 				NamespaceId:   examplePrivateDnsNamespace.ID(),
 /// 				RoutingPolicy: pulumi.String("MULTIVALUE"),
 /// 			},
 /// 			HealthCheckConfig: &servicediscovery.ServiceHealthCheckConfigArgs{
@@ -162,7 +162,7 @@ import 'service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -171,22 +171,31 @@ import 'service_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block           = "10.0.0.0/16"
 ///   enable_dns_support   = true
 ///   enable_dns_hostnames = true
 /// }
-/// resource "aws_servicediscovery_privatednsnamespace" "example" {
+/// resource "aws_servicediscovery_private_dns_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example.mydomain.local"
 ///   description = "example"
 ///   vpc         = aws_ec2_vpc.example.id
 /// }
 /// resource "aws_servicediscovery_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dns_config = {
 ///     dns_records = [{
-///       "ttl"  = 10
-///       "type" = "A"
+///       ttl  = 10
+///       type = "A"
 ///     }]
-///     namespace_id   = aws_servicediscovery_privatednsnamespace.example.id
+///     namespace_id   = aws_servicediscovery_private_dns_namespace.example.id
 ///     routing_policy = "MULTIVALUE"
 ///   }
 ///   health_check_config = {
@@ -395,7 +404,7 @@ import 'service_state.dart';
 /// 						Type: pulumi.String("A"),
 /// 					},
 /// 				},
-/// 				NamespaceId: example.ID().ToIDOutput().ToStringOutput(),
+/// 				NamespaceId: example.ID(),
 /// 			},
 /// 			HealthCheckConfig: &servicediscovery.ServiceHealthCheckConfigArgs{
 /// 				FailureThreshold: pulumi.Int(10),
@@ -412,7 +421,7 @@ import 'service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -420,17 +429,23 @@ import 'service_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_servicediscovery_publicdnsnamespace" "example" {
+/// resource "aws_servicediscovery_public_dns_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example.mydomain.com"
 ///   description = "example"
 /// }
 /// resource "aws_servicediscovery_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dns_config = {
 ///     dns_records = [{
-///       "ttl"  = 10
-///       "type" = "A"
+///       ttl  = 10
+///       type = "A"
 ///     }]
-///     namespace_id = aws_servicediscovery_publicdnsnamespace.example.id
+///     namespace_id = aws_servicediscovery_public_dns_namespace.example.id
 ///   }
 ///   health_check_config = {
 ///     failure_threshold = 10
@@ -558,7 +573,7 @@ class Service extends pulumi.CustomResource {
           'aws:servicediscovery/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

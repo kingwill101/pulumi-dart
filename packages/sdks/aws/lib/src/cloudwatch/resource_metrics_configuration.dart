@@ -97,7 +97,7 @@ import 'resource_metrics_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -105,15 +105,21 @@ import 'resource_metrics_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elasticache_replicationgroup" "example" {
+/// resource "aws_elasticache_replication_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   replication_group_id = "example"
 ///   description          = "example"
 ///   engine               = "valkey"
 ///   node_type            = "cache.t3.small"
 ///   num_cache_clusters   = 1
 /// }
-/// resource "aws_cloudwatch_resourcemetricsconfiguration" "example" {
-///   resource_arn = aws_elasticache_replicationgroup.example.arn
+/// resource "aws_cloudwatch_resource_metrics_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_arn = aws_elasticache_replication_group.example.arn
 /// }
 /// ```
 /// ```java
@@ -252,7 +258,7 @@ import 'resource_metrics_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -260,8 +266,11 @@ import 'resource_metrics_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_resourcemetricsconfiguration" "example" {
-///   metric_selection = {
+/// resource "aws_cloudwatch_resource_metrics_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   metric_selection {
 ///     include_metrics = ["valkey.memory.used", "valkey.commands.processed"]
 ///   }
 ///   resource_arn = exampleAwsElasticacheReplicationGroup.arn
@@ -295,7 +304,7 @@ import 'resource_metrics_configuration_state.dart';
 ///                     "valkey.memory.used",
 ///                     "valkey.commands.processed")
 ///                 .build())
-///             .resourceArn(exampleAwsElasticacheReplicationGroup.arn())
+///             .resourceArn(exampleAwsElasticacheReplicationGroup.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -350,7 +359,7 @@ class ResourceMetricsConfiguration extends pulumi.CustomResource {
           'aws:cloudwatch/resourceMetricsConfiguration:ResourceMetricsConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     metricSelection = registerOutput<ResourceMetricsConfigurationMetricSelection?>('metricSelection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceMetricsConfigurationMetricSelection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');

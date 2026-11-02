@@ -83,7 +83,7 @@ import 'authorizer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -92,6 +92,9 @@ import 'authorizer_state.dart';
 /// }
 ///
 /// resource "aws_apigatewayv2_authorizer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id           = exampleAwsApigatewayv2Api.id
 ///   authorizer_type  = "REQUEST"
 ///   authorizer_uri   = exampleAwsLambdaFunction.invokeArn
@@ -121,9 +124,9 @@ import 'authorizer_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Authorizer("example", AuthorizerArgs.builder()
-///             .apiId(exampleAwsApigatewayv2Api.id())
+///             .apiId(exampleAwsApigatewayv2Api.get("id"))
 ///             .authorizerType("REQUEST")
-///             .authorizerUri(exampleAwsLambdaFunction.invokeArn())
+///             .authorizerUri(exampleAwsLambdaFunction.get("invokeArn"))
 ///             .identitySources("route.request.header.Auth")
 ///             .name("example-authorizer")
 ///             .build());
@@ -224,7 +227,7 @@ import 'authorizer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -233,6 +236,9 @@ import 'authorizer_state.dart';
 /// }
 ///
 /// resource "aws_apigatewayv2_authorizer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id                            = exampleAwsApigatewayv2Api.id
 ///   authorizer_type                   = "REQUEST"
 ///   authorizer_uri                    = exampleAwsLambdaFunction.invokeArn
@@ -263,9 +269,9 @@ import 'authorizer_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Authorizer("example", AuthorizerArgs.builder()
-///             .apiId(exampleAwsApigatewayv2Api.id())
+///             .apiId(exampleAwsApigatewayv2Api.get("id"))
 ///             .authorizerType("REQUEST")
-///             .authorizerUri(exampleAwsLambdaFunction.invokeArn())
+///             .authorizerUri(exampleAwsLambdaFunction.get("invokeArn"))
 ///             .identitySources("$request.header.Authorization")
 ///             .name("example-authorizer")
 ///             .authorizerPayloadFormatVersion("2.0")
@@ -332,7 +338,7 @@ class Authorizer extends pulumi.CustomResource {
           'aws:apigatewayv2/authorizer:Authorizer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     authorizerCredentialsArn = registerOutput<String?>('authorizerCredentialsArn');

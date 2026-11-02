@@ -273,7 +273,7 @@ import 'lifecycle_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -281,41 +281,50 @@ import 'lifecycle_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
 ///     "Statement" = [{
 ///       "Action" = "sts:AssumeRole"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "Service" ="imagebuilder.${data.aws_getpartition.currentGetPartition.dns_suffix}"
+///         "Service" ="imagebuilder.${data.aws_partition.currentGetPartition.dns_suffix}"
 ///       }
 ///     }]
 ///   })
 ///   name = "example"
 /// }
-/// resource "aws_iam_rolepolicyattachment" "example" {
-///   policy_arn ="arn:${data.aws_getpartition.currentGetPartition.partition}:iam::aws:policy/service-role/EC2ImageBuilderLifecycleExecutionPolicy"
+/// resource "aws_iam_role_policy_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy_arn ="arn:${data.aws_partition.currentGetPartition.partition}:iam::aws:policy/service-role/EC2ImageBuilderLifecycleExecutionPolicy"
 ///   role       = aws_iam_role.example.name
 /// }
-/// resource "aws_imagebuilder_lifecyclepolicy" "example" {
-///   depends_on = [aws_iam_rolepolicyattachment.example]
-///   resource_selection = {
+/// resource "aws_imagebuilder_lifecycle_policy" "example" {
+///   depends_on = [aws_iam_role_policy_attachment.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_selection {
 ///     tag_map = {
 ///       "key1" = "value1"
 ///       "key2" = "value2"
 ///     }
 ///   }
-///   policy_details {
-///     action = {
+///   policy_detail {
+///     action {
 ///       type = "DELETE"
 ///     }
-///     filter = {
+///     filter {
 ///       type            = "AGE"
 ///       value           = 6
 ///       retain_at_least = 10
@@ -524,7 +533,7 @@ class LifecyclePolicy extends pulumi.CustomResource {
           'aws:imagebuilder/lifecyclePolicy:LifecyclePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

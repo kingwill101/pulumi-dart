@@ -64,7 +64,7 @@ import 'event_data_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'event_data_store_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudtrail_eventdatastore" "example" {
+/// resource "aws_cloudtrail_event_data_store" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-event-data-store"
 /// }
 /// ```
@@ -297,7 +300,7 @@ import 'event_data_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -305,27 +308,30 @@ import 'event_data_store_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_dynamodb_gettable" "table" {
+/// data "aws_dynamodb_table" "table" {
 ///   name = "not-important-dynamodb-table"
 /// }
 ///
-/// resource "aws_cloudtrail_eventdatastore" "example" {
-///   advanced_event_selectors {
-///     field_selectors {
+/// resource "aws_cloudtrail_event_data_store" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   advanced_event_selector {
+///     field_selector {
 ///       field  = "eventCategory"
 ///       equals = ["Data"]
 ///     }
-///     field_selectors {
+///     field_selector {
 ///       field  = "resources.type"
 ///       equals = ["AWS::DynamoDB::Table"]
 ///     }
-///     field_selectors {
+///     field_selector {
 ///       field  = "eventName"
 ///       equals = ["PutItem"]
 ///     }
-///     field_selectors {
+///     field_selector {
 ///       field  = "resources.ARN"
-///       equals = [data.aws_dynamodb_gettable.table.arn]
+///       equals = [data.aws_dynamodb_table.table.arn]
 ///     }
 ///     name = "Log all DynamoDB PutEvent actions for a specific DynamoDB table"
 ///   }
@@ -469,7 +475,7 @@ class EventDataStore extends pulumi.CustomResource {
           'aws:cloudtrail/eventDataStore:EventDataStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     advancedEventSelectors = registerOutput<List<EventDataStoreAdvancedEventSelector>>('advancedEventSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventDataStoreAdvancedEventSelector>(guardedValue, (value) => EventDataStoreAdvancedEventSelector.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');

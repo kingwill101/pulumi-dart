@@ -53,6 +53,8 @@ class ClusterState {
   final pulumi.Input<String?>? neptuneInstanceParameterGroupName;
   /// Neptune subnet group to associate with this Neptune instance.
   final pulumi.Input<String?>? neptuneSubnetGroupName;
+  /// Network type of the Neptune cluster. Valid values: `IPV4`, `DUAL`. Default: `IPV4`. Specifying `DUAL` enables dual-stack IPv4/IPv6 connectivity. The Neptune DB subnet group associated with the cluster must be backed by IPv6-capable subnets. See the [Neptune dual-stack documentation](https://docs.aws.amazon.com/neptune/latest/userguide/neptune-dualstack-db-cluster.html) for prerequisites.
+  final pulumi.Input<String?>? networkType;
   /// Port on which the Neptune accepts connections. Default is `8182`.
   final pulumi.Input<int?>? port;
   /// Daily time range during which automated backups are created if automated backups are enabled using the BackupRetentionPeriod parameter. Time in UTC. Default: A 30-minute window selected at random from an 8-hour block of time per regionE.g., 04:00-09:00
@@ -107,6 +109,7 @@ class ClusterState {
   /// [neptuneClusterParameterGroupName] Cluster parameter group to associate with the cluster.
   /// [neptuneInstanceParameterGroupName] Name of DB parameter group to apply to all instances in the cluster. When upgrading, AWS does not return this value, so do not reference it in other arguments—either leave it unset, configure each instance directly, or ensure it matches the `engineVersion`.
   /// [neptuneSubnetGroupName] Neptune subnet group to associate with this Neptune instance.
+  /// [networkType] Network type of the Neptune cluster. Valid values: `IPV4`, `DUAL`. Default: `IPV4`. Specifying `DUAL` enables dual-stack IPv4/IPv6 connectivity. The Neptune DB subnet group associated with the cluster must be backed by IPv6-capable subnets. See the [Neptune dual-stack documentation](https://docs.aws.amazon.com/neptune/latest/userguide/neptune-dualstack-db-cluster.html) for prerequisites.
   /// [port] Port on which the Neptune accepts connections. Default is `8182`.
   /// [preferredBackupWindow] Daily time range during which automated backups are created if automated backups are enabled using the BackupRetentionPeriod parameter. Time in UTC. Default: A 30-minute window selected at random from an 8-hour block of time per regionE.g., 04:00-09:00
   /// [preferredMaintenanceWindow] Weekly time range during which system maintenance can occur, in (UTC) e.g., wed:04:00-wed:04:30
@@ -146,6 +149,7 @@ class ClusterState {
     this.neptuneClusterParameterGroupName,
     this.neptuneInstanceParameterGroupName,
     this.neptuneSubnetGroupName,
+    this.networkType,
     this.port,
     this.preferredBackupWindow,
     this.preferredMaintenanceWindow,
@@ -188,6 +192,7 @@ class ClusterState {
       'neptuneClusterParameterGroupName': ?neptuneClusterParameterGroupName,
       'neptuneInstanceParameterGroupName': ?neptuneInstanceParameterGroupName,
       'neptuneSubnetGroupName': ?neptuneSubnetGroupName,
+      'networkType': ?networkType,
       'port': ?port,
       'preferredBackupWindow': ?preferredBackupWindow,
       'preferredMaintenanceWindow': ?preferredMaintenanceWindow,
@@ -231,6 +236,7 @@ class ClusterState {
       neptuneClusterParameterGroupName: (() { final guardedValue = map['neptuneClusterParameterGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       neptuneInstanceParameterGroupName: (() { final guardedValue = map['neptuneInstanceParameterGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       neptuneSubnetGroupName: (() { final guardedValue = map['neptuneSubnetGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkType: (() { final guardedValue = map['networkType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       preferredBackupWindow: (() { final guardedValue = map['preferredBackupWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       preferredMaintenanceWindow: (() { final guardedValue = map['preferredMaintenanceWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

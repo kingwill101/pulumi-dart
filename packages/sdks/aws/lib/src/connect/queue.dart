@@ -87,7 +87,7 @@ import 'queue_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -96,6 +96,9 @@ import 'queue_state.dart';
 /// }
 ///
 /// resource "aws_connect_queue" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id           = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   name                  = "Example Name"
 ///   description           = "Example Description"
@@ -239,7 +242,7 @@ import 'queue_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -248,6 +251,9 @@ import 'queue_state.dart';
 /// }
 ///
 /// resource "aws_connect_queue" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id           = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   name                  = "Example Name"
 ///   description           = "Example Description"
@@ -407,7 +413,7 @@ import 'queue_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -416,7 +422,10 @@ import 'queue_state.dart';
 /// }
 ///
 /// resource "aws_connect_queue" "test" {
-///   outbound_caller_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   outbound_caller_config {
 ///     outbound_caller_id_name      = "example"
 ///     outbound_caller_id_number_id = "12345678-abcd-1234-abcd-123456789012"
 ///     outbound_flow_id             = "87654321-defg-1234-defg-987654321234"
@@ -533,7 +542,7 @@ class Queue extends pulumi.CustomResource {
           'aws:connect/queue:Queue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

@@ -122,7 +122,7 @@ import 'security_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -130,9 +130,29 @@ import 'security_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_emr_securityconfiguration" "foo" {
+/// resource "aws_emr_security_configuration" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "emrsc_other"
-///   configuration = "{\n  \\\"EncryptionConfiguration\\\": {\n    \\\"AtRestEncryptionConfiguration\\\": {\n      \\\"S3EncryptionConfiguration\\\": {\n        \\\"EncryptionMode\\\": \\\"SSE-S3\\\"\n      },\n      \\\"LocalDiskEncryptionConfiguration\\\": {\n        \\\"EncryptionKeyProviderType\\\": \\\"AwsKms\\\",\n        \\\"AwsKmsKey\\\": \\\"arn:aws:kms:us-west-2:187416307283:alias/my_emr_test_key\\\"\n      }\n    },\n    \\\"EnableInTransitEncryption\\\": false,\n    \\\"EnableAtRestEncryption\\\": true\n  }\n}\n"
+///   configuration = <<EOF
+/// {
+///   \"EncryptionConfiguration\": {
+///     \"AtRestEncryptionConfiguration\": {
+///       \"S3EncryptionConfiguration\": {
+///         \"EncryptionMode\": \"SSE-S3\"
+///       },
+///       \"LocalDiskEncryptionConfiguration\": {
+///         \"EncryptionKeyProviderType\": \"AwsKms\",
+///         \"AwsKmsKey\": \"arn:aws:kms:us-west-2:187416307283:alias/my_emr_test_key\"
+///       }
+///     },
+///     \"EnableInTransitEncryption\": false,
+///     \"EnableAtRestEncryption\": true
+///   }
+/// }
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -237,7 +257,7 @@ class SecurityConfiguration extends pulumi.CustomResource {
           'aws:emr/securityConfiguration:SecurityConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     configuration = registerOutput<String>('configuration');
     creationDate = registerOutput<String>('creationDate');

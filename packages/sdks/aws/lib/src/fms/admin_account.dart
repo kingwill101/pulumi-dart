@@ -50,7 +50,7 @@ import 'admin_account_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -58,7 +58,10 @@ import 'admin_account_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fms_adminaccount" "example" {
+/// resource "aws_fms_admin_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -116,7 +119,7 @@ class AdminAccount extends pulumi.CustomResource {
           'aws:fms/adminAccount:AdminAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
   }

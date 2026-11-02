@@ -112,7 +112,7 @@ import 'sdkvoice_voice_profile_domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -121,10 +121,16 @@ import 'sdkvoice_voice_profile_domain_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "KMS Key for Voice Profile Domain"
 ///   deletion_window_in_days = 7
 /// }
-/// resource "aws_chime_sdkvoicevoiceprofiledomain" "example" {
+/// resource "aws_chime_sdkvoice_voice_profile_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   server_side_encryption_configuration = {
 ///     kms_key_arn = aws_kms_key.example.arn
 ///   }
@@ -229,7 +235,7 @@ class SdkvoiceVoiceProfileDomain extends pulumi.CustomResource {
           'aws:chime/sdkvoiceVoiceProfileDomain:SdkvoiceVoiceProfileDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

@@ -72,7 +72,7 @@ import 'playback_key_pair_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -83,7 +83,10 @@ import 'playback_key_pair_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ivs_playbackkeypair" "example" {
+/// resource "aws_ivs_playback_key_pair" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   public_key = file("./public-key.pem")
 /// }
 /// ```
@@ -177,7 +180,7 @@ class PlaybackKeyPair extends pulumi.CustomResource {
           'aws:ivs/playbackKeyPair:PlaybackKeyPair',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     fingerprint = registerOutput<String>('fingerprint');

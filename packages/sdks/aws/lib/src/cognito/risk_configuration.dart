@@ -79,7 +79,7 @@ import 'risk_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -87,9 +87,12 @@ import 'risk_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_riskconfiguration" "example" {
-///   risk_exception_configuration = {
-///     blocked_ip_range_lists = ["10.10.10.10/32"]
+/// resource "aws_cognito_risk_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   risk_exception_configuration {
+///     blocked_ip_range_list = ["10.10.10.10/32"]
 ///   }
 ///   user_pool_id = exampleAwsCognitoUserPool.id
 /// }
@@ -120,7 +123,7 @@ import 'risk_configuration_state.dart';
 ///             .riskExceptionConfiguration(RiskConfigurationRiskExceptionConfigurationArgs.builder()
 ///                 .blockedIpRangeLists("10.10.10.10/32")
 ///                 .build())
-///             .userPoolId(exampleAwsCognitoUserPool.id())
+///             .userPoolId(exampleAwsCognitoUserPool.get("id"))
 ///             .build());
 ///
 ///     }
@@ -182,7 +185,7 @@ class RiskConfiguration extends pulumi.CustomResource {
           'aws:cognito/riskConfiguration:RiskConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accountTakeoverRiskConfiguration = registerOutput<RiskConfigurationAccountTakeoverRiskConfiguration?>('accountTakeoverRiskConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RiskConfigurationAccountTakeoverRiskConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientId = registerOutput<String?>('clientId');

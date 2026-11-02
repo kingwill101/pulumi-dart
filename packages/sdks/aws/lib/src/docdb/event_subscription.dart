@@ -147,7 +147,7 @@ import 'event_subscription_state.dart';
 /// 			},
 /// 			SourceType: pulumi.String("db-cluster"),
 /// 			SourceIds: pulumi.StringArray{
-/// 				example.ID().ToIDOutput().ToStringOutput(),
+/// 				example.ID(),
 /// 			},
 /// 			SnsTopicArn: exampleTopic.Arn,
 /// 		})
@@ -159,7 +159,7 @@ import 'event_subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -168,6 +168,9 @@ import 'event_subscription_state.dart';
 /// }
 ///
 /// resource "aws_docdb_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier  = "example"
 ///   availability_zones  = [available.names[0], available.names[1], available.names[2]]
 ///   master_username     = "foo"
@@ -175,9 +178,15 @@ import 'event_subscription_state.dart';
 ///   skip_final_snapshot = true
 /// }
 /// resource "aws_sns_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-events"
 /// }
-/// resource "aws_docdb_eventsubscription" "example" {
+/// resource "aws_docdb_event_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "example"
 ///   enabled          = true
 ///   event_categories = ["creation", "failure"]
@@ -214,9 +223,9 @@ import 'event_subscription_state.dart';
 ///         var example = new Cluster("example", ClusterArgs.builder()
 ///             .clusterIdentifier("example")
 ///             .availabilityZones(
-///                 available.names()[0],
-///                 available.names()[1],
-///                 available.names()[2])
+///                 available.get("names")[0],
+///                 available.get("names")[1],
+///                 available.get("names")[2])
 ///             .masterUsername("foo")
 ///             .masterPassword("mustbeeightcharaters")
 ///             .skipFinalSnapshot(true)
@@ -318,7 +327,7 @@ class EventSubscription extends pulumi.CustomResource {
           'aws:docdb/eventSubscription:EventSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     customerAwsId = registerOutput<String>('customerAwsId');

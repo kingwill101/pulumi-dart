@@ -96,7 +96,7 @@ import 'budget_state.dart';
 ///             new Aws.Budgets.Inputs.BudgetNotificationArgs
 ///             {
 ///                 ComparisonOperator = "GREATER_THAN",
-///                 Threshold = 100,
+///                 Threshold = 100.0,
 ///                 ThresholdType = "PERCENTAGE",
 ///                 NotificationType = "FORECASTED",
 ///                 SubscriberEmailAddresses = new[]
@@ -171,7 +171,7 @@ import 'budget_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -180,11 +180,14 @@ import 'budget_state.dart';
 /// }
 ///
 /// resource "aws_budgets_budget" "ec2" {
-///   cost_filters {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cost_filter {
 ///     name   = "Service"
 ///     values = ["Amazon Elastic Compute Cloud - Compute"]
 ///   }
-///   notifications {
+///   notification {
 ///     comparison_operator        = "GREATER_THAN"
 ///     threshold                  = 100
 ///     threshold_type             = "PERCENTAGE"
@@ -346,7 +349,7 @@ import 'budget_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -355,6 +358,9 @@ import 'budget_state.dart';
 /// }
 ///
 /// resource "aws_budgets_budget" "cost" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   budget_type  = "COST"
 ///   limit_amount = "100"
 ///   limit_unit   = "USD"
@@ -499,7 +505,7 @@ import 'budget_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -508,12 +514,15 @@ import 'budget_state.dart';
 /// }
 ///
 /// resource "aws_budgets_budget" "cost" {
-///   planned_limits {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   planned_limit {
 ///     start_time = "2017-07-01_00:00"
 ///     amount     = "100"
 ///     unit       = "USD"
 ///   }
-///   planned_limits {
+///   planned_limit {
 ///     start_time = "2017-08-01_00:00"
 ///     amount     = "200"
 ///     unit       = "USD"
@@ -636,7 +645,7 @@ import 'budget_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -645,6 +654,9 @@ import 'budget_state.dart';
 /// }
 ///
 /// resource "aws_budgets_budget" "s3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   budget_type  = "USAGE"
 ///   limit_amount = "3"
 ///   limit_unit   = "GB"
@@ -802,7 +814,7 @@ import 'budget_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -811,7 +823,10 @@ import 'budget_state.dart';
 /// }
 ///
 /// resource "aws_budgets_budget" "savings_plan_utilization" {
-///   cost_types = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cost_types {
 ///     include_credit             = false
 ///     include_discount           = false
 ///     include_other_subscription = false
@@ -1032,7 +1047,7 @@ import 'budget_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1041,7 +1056,10 @@ import 'budget_state.dart';
 /// }
 ///
 /// resource "aws_budgets_budget" "ri_utilization" {
-///   cost_types = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cost_types {
 ///     include_credit             = false
 ///     include_discount           = false
 ///     include_other_subscription = false
@@ -1053,7 +1071,7 @@ import 'budget_state.dart';
 ///     include_upfront            = false
 ///     use_blended                = false
 ///   }
-///   cost_filters {
+///   cost_filter {
 ///     name   = "Service"
 ///     values = ["Amazon Relational Database Service"]
 ///   }
@@ -1219,7 +1237,7 @@ import 'budget_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1228,7 +1246,10 @@ import 'budget_state.dart';
 /// }
 ///
 /// resource "aws_budgets_budget" "cost" {
-///   cost_filters {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cost_filter {
 ///     name   = "TagKeyValue"
 ///     values = ["aws:createdBy$Pulumi", "user:business-unit$human_resources"]
 ///   }
@@ -1355,7 +1376,7 @@ import 'budget_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1364,7 +1385,10 @@ import 'budget_state.dart';
 /// }
 ///
 /// resource "aws_budgets_budget" "cost" {
-///   cost_filters {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cost_filter {
 ///     name   = "TagKeyValue"
 ///     values = ["TagKey${"$"}${tagValue}"]
 ///   }
@@ -1519,7 +1543,7 @@ import 'budget_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1528,8 +1552,11 @@ import 'budget_state.dart';
 /// }
 ///
 /// resource "aws_budgets_budget" "simple" {
-///   filter_expression = {
-///     dimensions = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filter_expression {
+///     dimensions {
 ///       key    = "SERVICE"
 ///       values = ["Amazon Elastic Compute Cloud - Compute"]
 ///     }
@@ -1756,7 +1783,7 @@ import 'budget_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1765,18 +1792,22 @@ import 'budget_state.dart';
 /// }
 ///
 /// resource "aws_budgets_budget" "and_example" {
-///   filter_expression = {
-///     ands = [{
-///       "dimensions" = {
-///         "key"    = "SERVICE"
-///         "values" = ["Amazon Elastic Compute Cloud - Compute"]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filter_expression {
+///     and {
+///       dimensions {
+///         key    = "SERVICE"
+///         values = ["Amazon Elastic Compute Cloud - Compute"]
 ///       }
-///       }, {
-///       "tags" = {
-///         "key"    = "Environment"
-///         "values" = ["Production"]
+///     }
+///     and {
+///       tags {
+///         key    = "Environment"
+///         values = ["Production"]
 ///       }
-///     }]
+///     }
 ///   }
 ///   name         = "budget-and-filter"
 ///   budget_type  = "COST"
@@ -2017,7 +2048,7 @@ import 'budget_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2026,18 +2057,22 @@ import 'budget_state.dart';
 /// }
 ///
 /// resource "aws_budgets_budget" "or_example" {
-///   filter_expression = {
-///     ors = [{
-///       "dimensions" = {
-///         "key"    = "SERVICE"
-///         "values" = ["Amazon Elastic Compute Cloud - Compute"]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filter_expression {
+///     or {
+///       dimensions {
+///         key    = "SERVICE"
+///         values = ["Amazon Elastic Compute Cloud - Compute"]
 ///       }
-///       }, {
-///       "dimensions" = {
-///         "key"    = "SERVICE"
-///         "values" = ["Amazon Relational Database Service"]
+///     }
+///     or {
+///       dimensions {
+///         key    = "SERVICE"
+///         values = ["Amazon Relational Database Service"]
 ///       }
-///     }]
+///     }
 ///   }
 ///   name         = "budget-or-filter"
 ///   budget_type  = "COST"
@@ -2237,7 +2272,7 @@ import 'budget_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2246,9 +2281,12 @@ import 'budget_state.dart';
 /// }
 ///
 /// resource "aws_budgets_budget" "not_example" {
-///   filter_expression = {
-///     not = {
-///       dimensions = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filter_expression {
+///     not {
+///       dimensions {
 ///         key    = "REGION"
 ///         values = ["us-west-2"]
 ///       }
@@ -2511,7 +2549,7 @@ import 'budget_state.dart';
 ///             new Aws.Budgets.Inputs.BudgetNotificationArgs
 ///             {
 ///                 ComparisonOperator = "GREATER_THAN",
-///                 Threshold = 100,
+///                 Threshold = 100.0,
 ///                 ThresholdType = "PERCENTAGE",
 ///                 NotificationType = "FORECASTED",
 ///                 SubscriberEmailAddresses = new[]
@@ -2609,7 +2647,7 @@ import 'budget_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2618,34 +2656,40 @@ import 'budget_state.dart';
 /// }
 ///
 /// resource "aws_budgets_budget" "compound_example" {
-///   filter_expression = {
-///     ors = [{
-///       "ands" = [{
-///         "dimensions" = {
-///           "key"    = "SERVICE"
-///           "values" = ["Amazon Elastic Compute Cloud - Compute"]
-///         }
-///         }, {
-///         "tags" = {
-///           "key"    = "Environment"
-///           "values" = ["production"]
-///         }
-///         }, {
-///         "costCategories" = {
-///           "key"    = "Environment"
-///           "values" = ["production"]
-///         }
-///       }]
-///       }, {
-///       "not" = {
-///         "dimensions" = {
-///           "key"    = "REGION"
-///           "values" = ["us-west-2"]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filter_expression {
+///     or {
+///       and {
+///         dimensions {
+///           key    = "SERVICE"
+///           values = ["Amazon Elastic Compute Cloud - Compute"]
 ///         }
 ///       }
-///     }]
+///       and {
+///         tags {
+///           key    = "Environment"
+///           values = ["production"]
+///         }
+///       }
+///       and {
+///         cost_categories {
+///           key    = "Environment"
+///           values = ["production"]
+///         }
+///       }
+///     }
+///     or {
+///       not {
+///         dimensions {
+///           key    = "REGION"
+///           values = ["us-west-2"]
+///         }
+///       }
+///     }
 ///   }
-///   notifications {
+///   notification {
 ///     comparison_operator        = "GREATER_THAN"
 ///     threshold                  = 100
 ///     threshold_type             = "PERCENTAGE"
@@ -2846,7 +2890,7 @@ class Budget extends pulumi.CustomResource {
           'aws:budgets/budget:Budget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');

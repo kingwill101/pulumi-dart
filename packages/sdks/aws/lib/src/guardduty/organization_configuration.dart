@@ -143,7 +143,7 @@ import 'organization_configuration_state.dart';
 /// 				},
 /// 			},
 /// 			AutoEnableOrganizationMembers: pulumi.String("ALL"),
-/// 			DetectorId:                    example.ID().ToIDOutput().ToStringOutput(),
+/// 			DetectorId:                    example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -153,7 +153,7 @@ import 'organization_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -162,21 +162,27 @@ import 'organization_configuration_state.dart';
 /// }
 ///
 /// resource "aws_guardduty_detector" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enable = true
 /// }
-/// resource "aws_guardduty_organizationconfiguration" "example" {
-///   datasources = {
-///     s3_logs = {
+/// resource "aws_guardduty_organization_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   datasources {
+///     s3_logs {
 ///       auto_enable = true
 ///     }
-///     kubernetes = {
-///       audit_logs = {
+///     kubernetes {
+///       audit_logs {
 ///         enable = true
 ///       }
 ///     }
-///     malware_protection = {
-///       scan_ec2_instance_with_findings = {
-///         ebs_volumes = {
+///     malware_protection {
+///       scan_ec2_instance_with_findings {
+///         ebs_volumes {
 ///           auto_enable = true
 ///         }
 ///       }
@@ -301,7 +307,7 @@ class OrganizationConfiguration extends pulumi.CustomResource {
           'aws:guardduty/organizationConfiguration:OrganizationConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     autoEnableOrganizationMembers = registerOutput<String>('autoEnableOrganizationMembers');
     datasources = registerOutput<OrganizationConfigurationDatasources>('datasources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationConfigurationDatasources.fromMap((guardedValue as Map).cast<String, dynamic>()); });

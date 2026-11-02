@@ -96,7 +96,7 @@ import 'data_catalog_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -104,7 +104,10 @@ import 'data_catalog_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_athena_datacatalog" "example" {
+/// resource "aws_athena_data_catalog" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "athena-data-catalog"
 ///   description = "Example Athena data catalog"
 ///   type        = "LAMBDA"
@@ -238,7 +241,7 @@ import 'data_catalog_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -246,7 +249,10 @@ import 'data_catalog_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_athena_datacatalog" "example" {
+/// resource "aws_athena_data_catalog" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "hive-data-catalog"
 ///   description = "Hive based Data Catalog"
 ///   type        = "HIVE"
@@ -374,7 +380,7 @@ import 'data_catalog_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -382,7 +388,10 @@ import 'data_catalog_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_athena_datacatalog" "example" {
+/// resource "aws_athena_data_catalog" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "glue-data-catalog"
 ///   description = "Glue based Data Catalog"
 ///   type        = "GLUE"
@@ -514,7 +523,7 @@ import 'data_catalog_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -522,7 +531,10 @@ import 'data_catalog_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_athena_datacatalog" "example" {
+/// resource "aws_athena_data_catalog" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "lambda-data-catalog"
 ///   description = "Lambda based Data Catalog"
 ///   type        = "LAMBDA"
@@ -617,7 +629,7 @@ class DataCatalog extends pulumi.CustomResource {
           'aws:athena/dataCatalog:DataCatalog',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');

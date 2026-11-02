@@ -145,7 +145,7 @@ import 'data_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -153,16 +153,19 @@ import 'data_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_quicksight_dataset" "example" {
-///   physical_table_maps {
-///     s3_source = {
-///       upload_settings = {
+/// resource "aws_quicksight_data_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   physical_table_map {
+///     s3_source {
+///       upload_settings {
 ///         format = "JSON"
 ///       }
-///       input_columns = [{
-///         "name" = "Column1"
-///         "type" = "STRING"
-///       }]
+///       input_columns {
+///         name = "Column1"
+///         type = "STRING"
+///       }
 ///       data_source_arn = exampleAwsQuicksightDataSource.arn
 ///     }
 ///     physical_table_map_id = "example-id"
@@ -207,7 +210,7 @@ import 'data_set_state.dart';
 ///                         .name("Column1")
 ///                         .type("STRING")
 ///                         .build())
-///                     .dataSourceArn(exampleAwsQuicksightDataSource.arn())
+///                     .dataSourceArn(exampleAwsQuicksightDataSource.get("arn"))
 ///                     .build())
 ///                 .physicalTableMapId("example-id")
 ///                 .build())
@@ -371,7 +374,7 @@ import 'data_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -379,16 +382,19 @@ import 'data_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_quicksight_dataset" "example" {
-///   physical_table_maps {
-///     s3_source = {
-///       upload_settings = {
+/// resource "aws_quicksight_data_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   physical_table_map {
+///     s3_source {
+///       upload_settings {
 ///         format = "JSON"
 ///       }
-///       input_columns = [{
-///         "name" = "UserName"
-///         "type" = "STRING"
-///       }]
+///       input_columns {
+///         name = "UserName"
+///         type = "STRING"
+///       }
 ///       data_source_arn = exampleAwsQuicksightDataSource.arn
 ///     }
 ///     physical_table_map_id = "example-id"
@@ -434,7 +440,7 @@ import 'data_set_state.dart';
 ///                         .name("UserName")
 ///                         .type("STRING")
 ///                         .build())
-///                     .dataSourceArn(exampleAwsQuicksightDataSource.arn())
+///                     .dataSourceArn(exampleAwsQuicksightDataSource.get("arn"))
 ///                     .build())
 ///                 .physicalTableMapId("example-id")
 ///                 .build())
@@ -628,7 +634,7 @@ import 'data_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -636,20 +642,23 @@ import 'data_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_quicksight_dataset" "example" {
+/// resource "aws_quicksight_data_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   column_level_permission_rules {
 ///     column_names = ["Column1"]
 ///     principals   = [exampleAwsQuicksightUser.arn]
 ///   }
-///   physical_table_maps {
-///     s3_source = {
-///       upload_settings = {
+///   physical_table_map {
+///     s3_source {
+///       upload_settings {
 ///         format = "JSON"
 ///       }
-///       input_columns = [{
-///         "name" = "Column1"
-///         "type" = "STRING"
-///       }]
+///       input_columns {
+///         name = "Column1"
+///         type = "STRING"
+///       }
 ///       data_source_arn = exampleAwsQuicksightDataSource.arn
 ///     }
 ///     physical_table_map_id = "example-id"
@@ -688,7 +697,7 @@ import 'data_set_state.dart';
 ///         var example = new DataSet("example", DataSetArgs.builder()
 ///             .columnLevelPermissionRules(DataSetColumnLevelPermissionRuleArgs.builder()
 ///                 .columnNames("Column1")
-///                 .principals(exampleAwsQuicksightUser.arn())
+///                 .principals(exampleAwsQuicksightUser.get("arn"))
 ///                 .build())
 ///             .physicalTableMaps(DataSetPhysicalTableMapArgs.builder()
 ///                 .s3Source(DataSetPhysicalTableMapS3SourceArgs.builder()
@@ -699,7 +708,7 @@ import 'data_set_state.dart';
 ///                         .name("Column1")
 ///                         .type("STRING")
 ///                         .build())
-///                     .dataSourceArn(exampleAwsQuicksightDataSource.arn())
+///                     .dataSourceArn(exampleAwsQuicksightDataSource.get("arn"))
 ///                     .build())
 ///                 .physicalTableMapId("example-id")
 ///                 .build())
@@ -895,7 +904,7 @@ import 'data_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -903,21 +912,24 @@ import 'data_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_quicksight_dataset" "example" {
+/// resource "aws_quicksight_data_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   field_folders {
 ///     field_folders_id = "example-id"
 ///     columns          = ["Column1"]
 ///     description      = "example description"
 ///   }
-///   physical_table_maps {
-///     s3_source = {
-///       upload_settings = {
+///   physical_table_map {
+///     s3_source {
+///       upload_settings {
 ///         format = "JSON"
 ///       }
-///       input_columns = [{
-///         "name" = "Column1"
-///         "type" = "STRING"
-///       }]
+///       input_columns {
+///         name = "Column1"
+///         type = "STRING"
+///       }
 ///       data_source_arn = exampleAwsQuicksightDataSource.arn
 ///     }
 ///     physical_table_map_id = "example-id"
@@ -968,7 +980,7 @@ import 'data_set_state.dart';
 ///                         .name("Column1")
 ///                         .type("STRING")
 ///                         .build())
-///                     .dataSourceArn(exampleAwsQuicksightDataSource.arn())
+///                     .dataSourceArn(exampleAwsQuicksightDataSource.get("arn"))
 ///                     .build())
 ///                 .physicalTableMapId("example-id")
 ///                 .build())
@@ -1180,7 +1192,7 @@ import 'data_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1188,20 +1200,23 @@ import 'data_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_quicksight_dataset" "example" {
+/// resource "aws_quicksight_data_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   permissions {
 ///     actions   = ["quicksight:DescribeDataSet", "quicksight:DescribeDataSetPermissions", "quicksight:PassDataSet", "quicksight:DescribeIngestion", "quicksight:ListIngestions"]
 ///     principal = exampleAwsQuicksightUser.arn
 ///   }
-///   physical_table_maps {
-///     s3_source = {
-///       upload_settings = {
+///   physical_table_map {
+///     s3_source {
+///       upload_settings {
 ///         format = "JSON"
 ///       }
-///       input_columns = [{
-///         "name" = "Column1"
-///         "type" = "STRING"
-///       }]
+///       input_columns {
+///         name = "Column1"
+///         type = "STRING"
+///       }
 ///       data_source_arn = exampleAwsQuicksightDataSource.arn
 ///     }
 ///     physical_table_map_id = "example-id"
@@ -1245,7 +1260,7 @@ import 'data_set_state.dart';
 ///                     "quicksight:PassDataSet",
 ///                     "quicksight:DescribeIngestion",
 ///                     "quicksight:ListIngestions")
-///                 .principal(exampleAwsQuicksightUser.arn())
+///                 .principal(exampleAwsQuicksightUser.get("arn"))
 ///                 .build())
 ///             .physicalTableMaps(DataSetPhysicalTableMapArgs.builder()
 ///                 .s3Source(DataSetPhysicalTableMapS3SourceArgs.builder()
@@ -1256,7 +1271,7 @@ import 'data_set_state.dart';
 ///                         .name("Column1")
 ///                         .type("STRING")
 ///                         .build())
-///                     .dataSourceArn(exampleAwsQuicksightDataSource.arn())
+///                     .dataSourceArn(exampleAwsQuicksightDataSource.get("arn"))
 ///                     .build())
 ///                 .physicalTableMapId("example-id")
 ///                 .build())
@@ -1467,7 +1482,7 @@ import 'data_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1475,25 +1490,28 @@ import 'data_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_quicksight_dataset" "example" {
-///   row_level_permission_tag_configuration = {
-///     tag_rules = [{
-///       "columnName"             = "Column1"
-///       "tagKey"                 = "tagkey"
-///       "matchAllValue"          = "*"
-///       "tagMultiValueDelimiter" = ","
-///     }]
+/// resource "aws_quicksight_data_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   row_level_permission_tag_configuration {
+///     tag_rules {
+///       column_name               = "Column1"
+///       tag_key                   = "tagkey"
+///       match_all_value           = "*"
+///       tag_multi_value_delimiter = ","
+///     }
 ///     status = "ENABLED"
 ///   }
-///   physical_table_maps {
-///     s3_source = {
-///       upload_settings = {
+///   physical_table_map {
+///     s3_source {
+///       upload_settings {
 ///         format = "JSON"
 ///       }
-///       input_columns = [{
-///         "name" = "Column1"
-///         "type" = "STRING"
-///       }]
+///       input_columns {
+///         name = "Column1"
+///         type = "STRING"
+///       }
 ///       data_source_arn = exampleAwsQuicksightDataSource.arn
 ///     }
 ///     physical_table_map_id = "example-id"
@@ -1549,7 +1567,7 @@ import 'data_set_state.dart';
 ///                         .name("Column1")
 ///                         .type("STRING")
 ///                         .build())
-///                     .dataSourceArn(exampleAwsQuicksightDataSource.arn())
+///                     .dataSourceArn(exampleAwsQuicksightDataSource.get("arn"))
 ///                     .build())
 ///                 .physicalTableMapId("example-id")
 ///                 .build())
@@ -1651,7 +1669,7 @@ class DataSet extends pulumi.CustomResource {
           'aws:quicksight/dataSet:DataSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');

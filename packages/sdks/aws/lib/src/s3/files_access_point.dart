@@ -83,7 +83,7 @@ import 'files_access_point_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -91,7 +91,10 @@ import 'files_access_point_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_filesaccesspoint" "example" {
+/// resource "aws_s3_files_access_point" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   posix_users {
 ///     gid = 1001
 ///     uid = 1001
@@ -126,7 +129,7 @@ import 'files_access_point_timeouts.dart';
 ///                 .gid(1001)
 ///                 .uid(1001)
 ///                 .build())
-///             .fileSystemId(exampleAwsS3filesFileSystem.id())
+///             .fileSystemId(exampleAwsS3filesFileSystem.get("id"))
 ///             .build());
 ///
 ///     }
@@ -200,7 +203,7 @@ class FilesAccessPoint extends pulumi.CustomResource {
           'aws:s3/filesAccessPoint:FilesAccessPoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     fileSystemId = registerOutput<String>('fileSystemId');

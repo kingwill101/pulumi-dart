@@ -104,7 +104,7 @@ import 'service_integration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -112,15 +112,18 @@ import 'service_integration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_devopsguru_serviceintegration" "example" {
-///   kms_server_side_encryption = {
+/// resource "aws_devopsguru_service_integration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   kms_server_side_encryption {
 ///     opt_in_status = "ENABLED"
 ///     type          = "AWS_OWNED_KMS_KEY"
 ///   }
-///   logs_anomaly_detection = {
+///   logs_anomaly_detection {
 ///     opt_in_status = "ENABLED"
 ///   }
-///   ops_center = {
+///   ops_center {
 ///     opt_in_status = "ENABLED"
 ///   }
 /// }
@@ -286,7 +289,7 @@ import 'service_integration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -295,17 +298,23 @@ import 'service_integration_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_devopsguru_serviceintegration" "example" {
-///   kms_server_side_encryption = {
+/// resource "aws_devopsguru_service_integration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   kms_server_side_encryption {
 ///     kms_key_id    = test.arn
 ///     opt_in_status = "ENABLED"
 ///     type          = "CUSTOMER_MANAGED_KEY"
 ///   }
-///   logs_anomaly_detection = {
+///   logs_anomaly_detection {
 ///     opt_in_status = "DISABLED"
 ///   }
-///   ops_center = {
+///   ops_center {
 ///     opt_in_status = "DISABLED"
 ///   }
 /// }
@@ -339,7 +348,7 @@ import 'service_integration_state.dart';
 ///
 ///         var exampleServiceIntegration = new ServiceIntegration("exampleServiceIntegration", ServiceIntegrationArgs.builder()
 ///             .kmsServerSideEncryption(ServiceIntegrationKmsServerSideEncryptionArgs.builder()
-///                 .kmsKeyId(test.arn())
+///                 .kmsKeyId(test.get("arn"))
 ///                 .optInStatus("ENABLED")
 ///                 .type("CUSTOMER_MANAGED_KEY")
 ///                 .build())
@@ -410,7 +419,7 @@ class ServiceIntegration extends pulumi.CustomResource {
           'aws:devopsguru/serviceIntegration:ServiceIntegration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     kmsServerSideEncryption = registerOutput<ServiceIntegrationKmsServerSideEncryption>('kmsServerSideEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIntegrationKmsServerSideEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logsAnomalyDetection = registerOutput<ServiceIntegrationLogsAnomalyDetection>('logsAnomalyDetection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIntegrationLogsAnomalyDetection.fromMap((guardedValue as Map).cast<String, dynamic>()); });

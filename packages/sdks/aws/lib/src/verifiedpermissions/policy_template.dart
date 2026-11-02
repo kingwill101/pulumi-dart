@@ -64,7 +64,7 @@ import 'policy_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'policy_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_verifiedpermissions_policytemplate" "example" {
+/// resource "aws_verifiedpermissions_policy_template" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_store_id = exampleAwsVerifiedpermissionsPolicyStore.id
 ///   statement       = "permit (principal in ?principal, action in PhotoFlash::Action::\"FullPhotoAccess\", resource == ?resource) unless { resource.IsPrivate };"
 /// }
@@ -99,7 +102,7 @@ import 'policy_template_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new PolicyTemplate("example", PolicyTemplateArgs.builder()
-///             .policyStoreId(exampleAwsVerifiedpermissionsPolicyStore.id())
+///             .policyStoreId(exampleAwsVerifiedpermissionsPolicyStore.get("id"))
 ///             .statement("permit (principal in ?principal, action in PhotoFlash::Action::\"FullPhotoAccess\", resource == ?resource) unless { resource.IsPrivate };")
 ///             .build());
 ///
@@ -151,7 +154,7 @@ class PolicyTemplate extends pulumi.CustomResource {
           'aws:verifiedpermissions/policyTemplate:PolicyTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     createdDate = registerOutput<String>('createdDate');
     description = registerOutput<String?>('description');

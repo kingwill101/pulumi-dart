@@ -218,7 +218,7 @@ import 'permission_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -227,27 +227,39 @@ import 'permission_state.dart';
 /// }
 ///
 /// resource "aws_lambda_permission" "allow_cloudwatch" {
-///   statement_id = "AllowExecutionFromCloudWatch"
-///   action       = "lambda:InvokeFunction"
-///   function     = aws_lambda_function.test_lambda.name
-///   principal    = "events.amazonaws.com"
-///   source_arn   = "arn:aws:events:eu-west-1:111122223333:rule/RunDaily"
-///   qualifier    = aws_lambda_alias.test_alias.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   statement_id  = "AllowExecutionFromCloudWatch"
+///   action        = "lambda:InvokeFunction"
+///   function_name = aws_lambda_function.test_lambda.function_name
+///   principal     = "events.amazonaws.com"
+///   source_arn    = "arn:aws:events:eu-west-1:111122223333:rule/RunDaily"
+///   qualifier     = aws_lambda_alias.test_alias.name
 /// }
 /// resource "aws_lambda_alias" "test_alias" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "testalias"
 ///   description      = "a sample description"
-///   function_name    = aws_lambda_function.test_lambda.name
+///   function_name    = aws_lambda_function.test_lambda.function_name
 ///   function_version = "$LATEST"
 /// }
 /// resource "aws_lambda_function" "test_lambda" {
-///   code    = fileArchive("lambdatest.zip")
-///   name    = "lambda_function_name"
-///   role    = aws_iam_role.iam_for_lambda.arn
-///   handler = "exports.handler"
-///   runtime = "nodejs24.x"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filename      = filearchive("lambdatest.zip")
+///   function_name = "lambda_function_name"
+///   role          = aws_iam_role.iam_for_lambda.arn
+///   handler       = "exports.handler"
+///   runtime       = "nodejs24.x"
 /// }
 /// resource "aws_iam_role" "iam_for_lambda" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "iam_for_lambda"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -599,7 +611,7 @@ import 'permission_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -608,28 +620,43 @@ import 'permission_state.dart';
 /// }
 ///
 /// resource "aws_lambda_permission" "with_sns" {
-///   statement_id = "AllowExecutionFromSNS"
-///   action       = "lambda:InvokeFunction"
-///   function     = aws_lambda_function.func.name
-///   principal    = "sns.amazonaws.com"
-///   source_arn   = aws_sns_topic.default.arn
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   statement_id  = "AllowExecutionFromSNS"
+///   action        = "lambda:InvokeFunction"
+///   function_name = aws_lambda_function.func.function_name
+///   principal     = "sns.amazonaws.com"
+///   source_arn    = aws_sns_topic.default.arn
 /// }
 /// resource "aws_sns_topic" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "call-lambda-maybe"
 /// }
-/// resource "aws_sns_topicsubscription" "lambda" {
-///   topic    = aws_sns_topic.default.arn
-///   protocol = "lambda"
-///   endpoint = aws_lambda_function.func.arn
+/// resource "aws_sns_topic_subscription" "lambda" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   topic_arn = aws_sns_topic.default.arn
+///   protocol  = "lambda"
+///   endpoint  = aws_lambda_function.func.arn
 /// }
 /// resource "aws_lambda_function" "func" {
-///   code    = fileArchive("lambdatest.zip")
-///   name    = "lambda_called_from_sns"
-///   role    = aws_iam_role.default.arn
-///   handler = "exports.handler"
-///   runtime = "python3.12"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filename      = filearchive("lambdatest.zip")
+///   function_name = "lambda_called_from_sns"
+///   role          = aws_iam_role.default.arn
+///   handler       = "exports.handler"
+///   runtime       = "python3.12"
 /// }
 /// resource "aws_iam_role" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "iam_for_lambda_with_sns"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -862,7 +889,7 @@ import 'permission_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -870,16 +897,22 @@ import 'permission_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_restapi" "MyDemoAPI" {
+/// resource "aws_apigateway_rest_api" "MyDemoAPI" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "MyDemoAPI"
 ///   description = "This is my API for demonstration purposes"
 /// }
 /// resource "aws_lambda_permission" "lambda_permission" {
-///   statement_id = "AllowMyDemoAPIInvoke"
-///   action       = "lambda:InvokeFunction"
-///   function     = "MyDemoFunction"
-///   principal    = "apigateway.amazonaws.com"
-///   source_arn   ="${aws_apigateway_restapi.MyDemoAPI.execution_arn}/*"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   statement_id  = "AllowMyDemoAPIInvoke"
+///   action        = "lambda:InvokeFunction"
+///   function_name = "MyDemoFunction"
+///   principal     = "apigateway.amazonaws.com"
+///   source_arn    ="${aws_apigateway_rest_api.MyDemoAPI.execution_arn}/*"
 /// }
 /// ```
 /// ```java
@@ -1182,7 +1215,7 @@ import 'permission_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1190,8 +1223,8 @@ import 'permission_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["lambda.amazonaws.com"]
@@ -1202,31 +1235,46 @@ import 'permission_state.dart';
 /// }
 ///
 /// resource "aws_lambda_permission" "logging" {
-///   action     = "lambda:InvokeFunction"
-///   function   = aws_lambda_function.logging.name
-///   principal  = "logs.eu-west-1.amazonaws.com"
-///   source_arn ="${aws_cloudwatch_loggroup.default.arn}:*"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   action        = "lambda:InvokeFunction"
+///   function_name = aws_lambda_function.logging.function_name
+///   principal     = "logs.eu-west-1.amazonaws.com"
+///   source_arn    ="${aws_cloudwatch_log_group.default.arn}:*"
 /// }
-/// resource "aws_cloudwatch_loggroup" "default" {
+/// resource "aws_cloudwatch_log_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "/default"
 /// }
-/// resource "aws_cloudwatch_logsubscriptionfilter" "logging" {
-///   depends_on      = [aws_lambda_permission.logging]
+/// resource "aws_cloudwatch_log_subscription_filter" "logging" {
+///   depends_on = [aws_lambda_permission.logging]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   destination_arn = aws_lambda_function.logging.arn
 ///   filter_pattern  = ""
-///   log_group       = aws_cloudwatch_loggroup.default.name
+///   log_group_name  = aws_cloudwatch_log_group.default.name
 ///   name            = "logging_default"
 /// }
 /// resource "aws_lambda_function" "logging" {
-///   code    = fileArchive("lamba_logging.zip")
-///   name    = "lambda_called_from_cloudwatch_logs"
-///   handler = "exports.handler"
-///   role    = aws_iam_role.default.arn
-///   runtime = "python3.12"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filename      = filearchive("lamba_logging.zip")
+///   function_name = "lambda_called_from_cloudwatch_logs"
+///   handler       = "exports.handler"
+///   role          = aws_iam_role.default.arn
+///   runtime       = "python3.12"
 /// }
 /// resource "aws_iam_role" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "iam_for_lambda_called_from_cloudwatch_logs"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
 /// ```
 /// ```java
@@ -1457,7 +1505,7 @@ import 'permission_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1465,13 +1513,19 @@ import 'permission_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_functionurl" "url" {
+/// resource "aws_lambda_function_url" "url" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   function_name      = example.functionName
 ///   authorization_type = "AWS_IAM"
 /// }
 /// resource "aws_lambda_permission" "url" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   action                 = "lambda:InvokeFunctionUrl"
-///   function               = example.functionName
+///   function_name          = example.functionName
 ///   principal              = "arn:aws:iam::444455556666:role/example"
 ///   source_account         = "444455556666"
 ///   function_url_auth_type = "AWS_IAM"
@@ -1501,13 +1555,13 @@ import 'permission_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var url = new FunctionUrl("url", FunctionUrlArgs.builder()
-///             .functionName(example.functionName())
+///             .functionName(example.get("functionName"))
 ///             .authorizationType("AWS_IAM")
 ///             .build());
 ///
 ///         var urlPermission = new Permission("urlPermission", PermissionArgs.builder()
 ///             .action("lambda:InvokeFunctionUrl")
-///             .function(example.functionName())
+///             .function(example.get("functionName"))
 ///             .principal("arn:aws:iam::444455556666:role/example")
 ///             .sourceAccount("444455556666")
 ///             .functionUrlAuthType("AWS_IAM")
@@ -1593,7 +1647,7 @@ class Permission extends pulumi.CustomResource {
           'aws:lambda/permission:Permission',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     action = registerOutput<String>('action');
     eventSourceToken = registerOutput<String?>('eventSourceToken');

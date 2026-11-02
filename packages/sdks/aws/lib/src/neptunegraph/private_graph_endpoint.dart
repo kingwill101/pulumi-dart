@@ -250,7 +250,7 @@ import 'private_graph_endpoint_timeouts.dart';
 /// 		}
 /// 		// Example Subnet 1
 /// 		example1, err := ec2.NewSubnet(ctx, "example1", &ec2.SubnetArgs{
-/// 			VpcId:            example.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            example.ID(),
 /// 			CidrBlock:        pulumi.String("10.0.1.0/24"),
 /// 			AvailabilityZone: pulumi.Sprintf("%va", current.Region),
 /// 			Tags: pulumi.StringMap{
@@ -262,7 +262,7 @@ import 'private_graph_endpoint_timeouts.dart';
 /// 		}
 /// 		// Example Subnet 2
 /// 		example2, err := ec2.NewSubnet(ctx, "example2", &ec2.SubnetArgs{
-/// 			VpcId:            example.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            example.ID(),
 /// 			CidrBlock:        pulumi.String("10.0.2.0/24"),
 /// 			AvailabilityZone: pulumi.Sprintf("%vb", current.Region),
 /// 			Tags: pulumi.StringMap{
@@ -286,7 +286,7 @@ import 'private_graph_endpoint_timeouts.dart';
 /// 			},
 /// 			NamePrefix:  pulumi.String("neptune-graph-sg"),
 /// 			Description: pulumi.String("Security group for Neptune Graph"),
-/// 			VpcId:       example.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:       example.ID(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("neptune-graph-sg"),
 /// 			},
@@ -304,14 +304,14 @@ import 'private_graph_endpoint_timeouts.dart';
 /// 		}
 /// 		// Private Graph Endpoint
 /// 		_, err = neptunegraph.NewPrivateGraphEndpoint(ctx, "example", &neptunegraph.PrivateGraphEndpointArgs{
-/// 			GraphIdentifier: exampleGraph.ID().ToIDOutput().ToStringOutput(),
-/// 			VpcId:           example.ID().ToIDOutput().ToStringOutput(),
+/// 			GraphIdentifier: exampleGraph.ID(),
+/// 			VpcId:           example.ID(),
 /// 			SubnetIds: pulumi.StringArray{
-/// 				example1.ID().ToIDOutput().ToStringOutput(),
-/// 				example2.ID().ToIDOutput().ToStringOutput(),
+/// 				example1.ID(),
+/// 				example2.ID(),
 /// 			},
 /// 			VpcSecurityGroupIds: pulumi.StringArray{
-/// 				exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleSecurityGroup.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -322,7 +322,7 @@ import 'private_graph_endpoint_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -330,11 +330,14 @@ import 'private_graph_endpoint_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
 ///
 /// # Example VPC for Neptune Graph
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 ///   tags = {
 ///     "Name" = "neptune-graph-vpc"
@@ -342,24 +345,33 @@ import 'private_graph_endpoint_timeouts.dart';
 /// }
 /// # Example Subnet 1
 /// resource "aws_ec2_subnet" "example1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.example.id
 ///   cidr_block        = "10.0.1.0/24"
-///   availability_zone ="${data.aws_getregion.current.region}a"
+///   availability_zone ="${data.aws_region.current.region}a"
 ///   tags = {
 ///     "Name" = "neptune-graph-subnet-1"
 ///   }
 /// }
 /// # Example Subnet 2
 /// resource "aws_ec2_subnet" "example2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.example.id
 ///   cidr_block        = "10.0.2.0/24"
-///   availability_zone ="${data.aws_getregion.current.region}b"
+///   availability_zone ="${data.aws_region.current.region}b"
 ///   tags = {
 ///     "Name" = "neptune-graph-subnet-2"
 ///   }
 /// }
 /// # Security Group for Neptune Graph
-/// resource "aws_ec2_securitygroup" "example" {
+/// resource "aws_ec2_security_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ingress {
 ///     from_port   = 8182
 ///     to_port     = 8182
@@ -375,15 +387,21 @@ import 'private_graph_endpoint_timeouts.dart';
 /// }
 /// # Example Graph resource
 /// resource "aws_neptunegraph_graph" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   graph_name         = "example-graph-test-20260112"
 ///   provisioned_memory = 16
 /// }
 /// # Private Graph Endpoint
-/// resource "aws_neptunegraph_privategraphendpoint" "example" {
+/// resource "aws_neptunegraph_private_graph_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   graph_identifier       = aws_neptunegraph_graph.example.id
 ///   vpc_id                 = aws_ec2_vpc.example.id
 ///   subnet_ids             = [aws_ec2_subnet.example1.id, aws_ec2_subnet.example2.id]
-///   vpc_security_group_ids = [aws_ec2_securitygroup.example.id]
+///   vpc_security_group_ids = [aws_ec2_security_group.example.id]
 /// }
 /// ```
 /// ```java
@@ -597,7 +615,7 @@ class PrivateGraphEndpoint extends pulumi.CustomResource {
           'aws:neptunegraph/privateGraphEndpoint:PrivateGraphEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     graphIdentifier = registerOutput<String>('graphIdentifier');
     privateGraphEndpointIdentifier = registerOutput<String>('privateGraphEndpointIdentifier');

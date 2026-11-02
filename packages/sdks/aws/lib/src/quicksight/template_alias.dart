@@ -16,7 +16,7 @@ import 'template_alias_state.dart';
 /// const example = new aws.quicksight.TemplateAlias("example", {
 ///     aliasName: "example-alias",
 ///     templateId: test.templateId,
-///     templateVersionNumber: Number(test.versionNumber),
+///     templateVersionNumber: test.versionNumber,
 /// });
 /// ```
 /// ```python
@@ -26,7 +26,7 @@ import 'template_alias_state.dart';
 /// example = aws.quicksight.TemplateAlias("example",
 ///     alias_name="example-alias",
 ///     template_id=test["templateId"],
-///     template_version_number=int(test["versionNumber"]))
+///     template_version_number=test["versionNumber"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -68,7 +68,7 @@ import 'template_alias_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,7 +76,10 @@ import 'template_alias_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_quicksight_templatealias" "example" {
+/// resource "aws_quicksight_template_alias" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alias_name              = "example-alias"
 ///   template_id             = test.templateId
 ///   template_version_number = test.versionNumber
@@ -105,8 +108,8 @@ import 'template_alias_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new TemplateAlias("example", TemplateAliasArgs.builder()
 ///             .aliasName("example-alias")
-///             .templateId(test.templateId())
-///             .templateVersionNumber(test.versionNumber())
+///             .templateId(test.get("templateId"))
+///             .templateVersionNumber(test.get("versionNumber"))
 ///             .build());
 ///
 ///     }
@@ -158,7 +161,7 @@ class TemplateAlias extends pulumi.CustomResource {
           'aws:quicksight/templateAlias:TemplateAlias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     aliasName = registerOutput<String>('aliasName');
     arn = registerOutput<String>('arn');

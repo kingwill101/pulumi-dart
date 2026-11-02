@@ -62,7 +62,7 @@ import 'control_panel_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'control_panel_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53recoverycontrol_controlpanel" "example" {
+/// resource "aws_route53recoverycontrol_control_panel" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "balmorhea"
 ///   cluster_arn = "arn:aws:route53-recovery-control::123456789012:cluster/8d47920e-d789-437d-803a-2dcc4b204393"
 /// }
@@ -153,7 +156,7 @@ class ControlPanel extends pulumi.CustomResource {
           'aws:route53recoverycontrol/controlPanel:ControlPanel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     clusterArn = registerOutput<String>('clusterArn');

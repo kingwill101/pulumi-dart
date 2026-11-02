@@ -98,7 +98,7 @@ import 'canary_vpc_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -107,7 +107,10 @@ import 'canary_vpc_config.dart';
 /// }
 ///
 /// resource "aws_synthetics_canary" "some" {
-///   schedule = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   schedule {
 ///     expression = "rate(0 minute)"
 ///   }
 ///   name                 = "some-canary"
@@ -246,7 +249,7 @@ class Canary extends pulumi.CustomResource {
           'aws:synthetics/canary:Canary',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     artifactConfig = registerOutput<CanaryArtifactConfig?>('artifactConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CanaryArtifactConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

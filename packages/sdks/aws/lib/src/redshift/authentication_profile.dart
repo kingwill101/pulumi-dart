@@ -88,7 +88,7 @@ import 'authentication_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -96,7 +96,10 @@ import 'authentication_profile_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_redshift_authenticationprofile" "example" {
+/// resource "aws_redshift_authentication_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authentication_profile_name = "example"
 ///   authentication_profile_content = jsonencode({
 ///     "AllowDBUserOverride" = "1"
@@ -181,7 +184,7 @@ class AuthenticationProfile extends pulumi.CustomResource {
           'aws:redshift/authenticationProfile:AuthenticationProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     authenticationProfileContent = registerOutput<String>('authenticationProfileContent');
     authenticationProfileName = registerOutput<String>('authenticationProfileName');

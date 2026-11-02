@@ -54,7 +54,7 @@ import 'get_workspaces_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -62,7 +62,7 @@ import 'get_workspaces_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_amp_getdefaultscraperconfiguration" "example" {
+/// data "aws_amp_default_scraper_configuration" "example" {
 /// }
 /// ```
 /// ```java
@@ -182,7 +182,7 @@ pulumi.Output<GetDefaultScraperConfigurationResult> getDefaultScraperConfigurati
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -190,7 +190,7 @@ pulumi.Output<GetDefaultScraperConfigurationResult> getDefaultScraperConfigurati
 ///   }
 /// }
 ///
-/// data "aws_amp_getworkspace" "example" {
+/// data "aws_amp_workspace" "example" {
 ///   workspace_id = "ws-41det8a1-2c67-6a1a-9381-9b83d3d78ef7"
 /// }
 /// ```
@@ -306,7 +306,7 @@ pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -314,7 +314,7 @@ pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
 ///   }
 /// }
 ///
-/// data "aws_amp_getworkspaces" "example" {
+/// data "aws_amp_workspaces" "example" {
 /// }
 /// ```
 /// ```java
@@ -407,7 +407,7 @@ pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -415,7 +415,7 @@ pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
 ///   }
 /// }
 ///
-/// data "aws_amp_getworkspaces" "example" {
+/// data "aws_amp_workspaces" "example" {
 ///   alias_prefix = "example"
 /// }
 /// ```

@@ -92,7 +92,7 @@ import 'replica_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -101,11 +101,17 @@ import 'replica_key_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "Multi-Region primary key"
 ///   deletion_window_in_days = 30
 ///   multi_region            = true
 /// }
-/// resource "aws_kms_replicakey" "replica" {
+/// resource "aws_kms_replica_key" "replica" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "Multi-Region replica key"
 ///   deletion_window_in_days = 7
 ///   primary_key_arn         = aws_kms_key.primary.arn
@@ -256,7 +262,7 @@ import 'replica_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -265,12 +271,18 @@ import 'replica_key_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region                  = "us-east-1"
 ///   description             = "Multi-Region primary key"
 ///   deletion_window_in_days = 30
 ///   multi_region            = true
 /// }
-/// resource "aws_kms_replicakey" "replica" {
+/// resource "aws_kms_replica_key" "replica" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "Multi-Region replica key"
 ///   deletion_window_in_days = 7
 ///   primary_key_arn         = aws_kms_key.primary.arn
@@ -382,7 +394,7 @@ class ReplicaKey extends pulumi.CustomResource {
           'aws:kms/replicaKey:ReplicaKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     bypassPolicyLockoutSafetyCheck = registerOutput<bool?>('bypassPolicyLockoutSafetyCheck');

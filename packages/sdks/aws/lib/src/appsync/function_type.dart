@@ -222,7 +222,7 @@ import 'function_sync_config.dart';
 /// 			HttpConfig: &appsync.DataSourceHttpConfigArgs{
 /// 				Endpoint: pulumi.String("http://example.com"),
 /// 			},
-/// 			ApiId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			ApiId: example.ID(),
 /// 			Name:  pulumi.String("example"),
 /// 			Type:  pulumi.String("HTTP"),
 /// 		})
@@ -230,7 +230,7 @@ import 'function_sync_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appsync.NewFunction(ctx, "example", &appsync.FunctionArgs{
-/// 			ApiId:      example.ID().ToIDOutput().ToStringOutput(),
+/// 			ApiId:      example.ID(),
 /// 			DataSource: exampleDataSource.Name,
 /// 			Name:       pulumi.String("example"),
 /// 			RequestMappingTemplate: pulumi.String(`{
@@ -257,7 +257,7 @@ import 'function_sync_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -265,25 +265,70 @@ import 'function_sync_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appsync_graphqlapi" "example" {
+/// resource "aws_appsync_graph_q_l_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authentication_type = "API_KEY"
 ///   name                = "example"
-///   schema              = "type Mutation {\n  putPost(id: ID!, title: String!): Post\n}\n\ntype Post {\n  id: ID!\n  title: String!\n}\n\ntype Query {\n  singlePost(id: ID!): Post\n}\n\nschema {\n  query: Query\n  mutation: Mutation\n}\n"
+///   schema              = <<EOF
+/// type Mutation {
+///   putPost(id: ID!, title: String!): Post
 /// }
-/// resource "aws_appsync_datasource" "example" {
+///
+/// type Post {
+///   id: ID!
+///   title: String!
+/// }
+///
+/// type Query {
+///   singlePost(id: ID!): Post
+/// }
+///
+/// schema {
+///   query: Query
+///   mutation: Mutation
+/// }
+/// EOF
+///
+/// }
+/// resource "aws_appsync_data_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   http_config = {
 ///     endpoint = "http://example.com"
 ///   }
-///   api_id = aws_appsync_graphqlapi.example.id
+///   api_id = aws_appsync_graph_q_l_api.example.id
 ///   name   = "example"
 ///   type   = "HTTP"
 /// }
 /// resource "aws_appsync_function" "example" {
-///   api_id                    = aws_appsync_graphqlapi.example.id
-///   data_source               = aws_appsync_datasource.example.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   api_id                    = aws_appsync_graph_q_l_api.example.id
+///   data_source               = aws_appsync_data_source.example.name
 ///   name                      = "example"
-///   request_mapping_template  = "{\n    \\\"version\\\": \\\"2018-05-29\\\",\n    \\\"method\\\": \\\"GET\\\",\n    \\\"resourcePath\\\": \\\"/\\\",\n    \\\"params\\\":{\n        \\\"headers\\\": $utils.http.copyheaders($ctx.request.headers)\n    }\n}\n"
-///   response_mapping_template = "#if($ctx.result.statusCode == 200)\n    $ctx.result.body\n#else\n    $utils.appendError($ctx.result.body, $ctx.result.statusCode)\n#end\n"
+///   request_mapping_template  = <<EOF
+/// {
+///     \"version\": \"2018-05-29\",
+///     \"method\": \"GET\",
+///     \"resourcePath\": \"/\",
+///     \"params\":{
+///         \"headers\": $utils.http.copyheaders($ctx.request.headers)
+///     }
+/// }
+/// EOF
+///
+///   response_mapping_template = <<EOF
+/// #if($ctx.result.statusCode == 200)
+///     $ctx.result.body
+/// #else
+///     $utils.appendError($ctx.result.body, $ctx.result.statusCode)
+/// #end
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -528,7 +573,7 @@ import 'function_sync_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -540,7 +585,10 @@ import 'function_sync_config.dart';
 /// }
 ///
 /// resource "aws_appsync_function" "example" {
-///   runtime = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   runtime {
 ///     name            = "APPSYNC_JS"
 ///     runtime_version = "1.0.0"
 ///   }
@@ -579,8 +627,8 @@ import 'function_sync_config.dart';
 ///                 .name("APPSYNC_JS")
 ///                 .runtimeVersion("1.0.0")
 ///                 .build())
-///             .apiId(exampleAwsAppsyncGraphqlApi.id())
-///             .dataSource(exampleAwsAppsyncDatasource.name())
+///             .apiId(exampleAwsAppsyncGraphqlApi.get("id"))
+///             .dataSource(exampleAwsAppsyncDatasource.get("name"))
 ///             .name("example")
 ///             .code(StdFunctions.file(FileArgs.builder()
 ///                 .input("some-code-dir")
@@ -659,7 +707,7 @@ class FunctionType extends pulumi.CustomResource {
           'aws:appsync/function:Function',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     arn = registerOutput<String>('arn');

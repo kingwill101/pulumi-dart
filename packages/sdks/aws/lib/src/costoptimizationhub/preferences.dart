@@ -52,7 +52,7 @@ import 'preferences_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -61,6 +61,9 @@ import 'preferences_state.dart';
 /// }
 ///
 /// resource "aws_costoptimizationhub_preferences" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -153,7 +156,7 @@ import 'preferences_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -162,6 +165,9 @@ import 'preferences_state.dart';
 /// }
 ///
 /// resource "aws_costoptimizationhub_preferences" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   member_account_discount_visibility = "None"
 ///   savings_estimation_mode            = "AfterDiscounts"
 /// }
@@ -230,7 +236,7 @@ class Preferences extends pulumi.CustomResource {
           'aws:costoptimizationhub/preferences:Preferences',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     memberAccountDiscountVisibility = registerOutput<String>('memberAccountDiscountVisibility');
     savingsEstimationMode = registerOutput<String>('savingsEstimationMode');

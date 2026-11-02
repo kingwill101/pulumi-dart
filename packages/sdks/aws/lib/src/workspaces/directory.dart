@@ -395,7 +395,7 @@ import 'directory_workspace_creation_properties.dart';
 /// 			return err
 /// 		}
 /// 		exampleA, err := ec2.NewSubnet(ctx, "example_a", &ec2.SubnetArgs{
-/// 			VpcId:            exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            exampleVpc.ID(),
 /// 			AvailabilityZone: pulumi.String("us-east-1a"),
 /// 			CidrBlock:        pulumi.String("10.0.0.0/24"),
 /// 		})
@@ -403,7 +403,7 @@ import 'directory_workspace_creation_properties.dart';
 /// 			return err
 /// 		}
 /// 		exampleB, err := ec2.NewSubnet(ctx, "example_b", &ec2.SubnetArgs{
-/// 			VpcId:            exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            exampleVpc.ID(),
 /// 			AvailabilityZone: pulumi.String("us-east-1b"),
 /// 			CidrBlock:        pulumi.String("10.0.1.0/24"),
 /// 		})
@@ -412,10 +412,10 @@ import 'directory_workspace_creation_properties.dart';
 /// 		}
 /// 		exampleDirectory, err := directoryservice.NewDirectory(ctx, "example", &directoryservice.DirectoryArgs{
 /// 			VpcSettings: &directoryservice.DirectoryVpcSettingsArgs{
-/// 				VpcId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// 				VpcId: exampleVpc.ID(),
 /// 				SubnetIds: pulumi.StringArray{
-/// 					exampleA.ID().ToIDOutput().ToStringOutput(),
-/// 					exampleB.ID().ToIDOutput().ToStringOutput(),
+/// 					exampleA.ID(),
+/// 					exampleB.ID(),
 /// 				},
 /// 			},
 /// 			Name:     pulumi.String("corp.example.com"),
@@ -467,7 +467,7 @@ import 'directory_workspace_creation_properties.dart';
 /// 			return err
 /// 		}
 /// 		exampleC, err := ec2.NewSubnet(ctx, "example_c", &ec2.SubnetArgs{
-/// 			VpcId:            exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            exampleVpc.ID(),
 /// 			AvailabilityZone: pulumi.String("us-east-1c"),
 /// 			CidrBlock:        pulumi.String("10.0.2.0/24"),
 /// 		})
@@ -475,7 +475,7 @@ import 'directory_workspace_creation_properties.dart';
 /// 			return err
 /// 		}
 /// 		exampleD, err := ec2.NewSubnet(ctx, "example_d", &ec2.SubnetArgs{
-/// 			VpcId:            exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            exampleVpc.ID(),
 /// 			AvailabilityZone: pulumi.String("us-east-1d"),
 /// 			CidrBlock:        pulumi.String("10.0.3.0/24"),
 /// 		})
@@ -515,10 +515,10 @@ import 'directory_workspace_creation_properties.dart';
 /// 				EnableMaintenanceMode:           pulumi.Bool(true),
 /// 				UserEnabledAsLocalAdministrator: pulumi.Bool(true),
 /// 			},
-/// 			DirectoryId: exampleDirectory.ID().ToIDOutput().ToStringOutput(),
+/// 			DirectoryId: exampleDirectory.ID(),
 /// 			SubnetIds: pulumi.StringArray{
-/// 				exampleC.ID().ToIDOutput().ToStringOutput(),
-/// 				exampleD.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleC.ID(),
+/// 				exampleD.ID(),
 /// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"Example": pulumi.String("true"),
@@ -535,7 +535,7 @@ import 'directory_workspace_creation_properties.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -543,8 +543,8 @@ import 'directory_workspace_creation_properties.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "workspaces" {
-///   statements {
+/// data "aws_iam_policy_document" "workspaces" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["workspaces.amazonaws.com"]
@@ -554,23 +554,26 @@ import 'directory_workspace_creation_properties.dart';
 /// }
 ///
 /// resource "aws_workspaces_directory" "example" {
-///   depends_on = [aws_iam_rolepolicyattachment.workspaces_default_service_access, aws_iam_rolepolicyattachment.workspaces_default_self_service_access]
-///   certificate_based_auth_properties = {
+///   depends_on = [aws_iam_role_policy_attachment.workspaces_default_service_access, aws_iam_role_policy_attachment.workspaces_default_self_service_access]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   certificate_based_auth_properties {
 ///     certificate_authority_arn = "arn:aws:acm-pca:us-east-1:123456789012:certificate-authority/12345678-1234-1234-1234-123456789012"
 ///     status                    = "ENABLED"
 ///   }
-///   saml_properties = {
+///   saml_properties {
 ///     user_access_url = "https://sso.example.com/"
 ///     status          = "ENABLED"
 ///   }
-///   self_service_permissions = {
+///   self_service_permissions {
 ///     change_compute_type  = true
 ///     increase_volume_size = true
 ///     rebuild_workspace    = true
 ///     restart_workspace    = true
 ///     switch_running_mode  = true
 ///   }
-///   workspace_access_properties = {
+///   workspace_access_properties {
 ///     device_type_android    = "ALLOW"
 ///     device_type_chromeos   = "ALLOW"
 ///     device_type_ios        = "ALLOW"
@@ -580,7 +583,7 @@ import 'directory_workspace_creation_properties.dart';
 ///     device_type_windows    = "DENY"
 ///     device_type_zeroclient = "DENY"
 ///   }
-///   workspace_creation_properties = {
+///   workspace_creation_properties {
 ///     custom_security_group_id            = exampleAwsSecurityGroup.id
 ///     default_ou                          = "OU=AWS,DC=Workgroup,DC=Example,DC=com"
 ///     enable_internet_access              = true
@@ -594,6 +597,9 @@ import 'directory_workspace_creation_properties.dart';
 ///   }
 /// }
 /// resource "aws_directoryservice_directory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_settings = {
 ///     vpc_id     = aws_ec2_vpc.example.id
 ///     subnet_ids = [aws_ec2_subnet.example_a.id, aws_ec2_subnet.example_b.id]
@@ -603,36 +609,60 @@ import 'directory_workspace_creation_properties.dart';
 ///   size     = "Small"
 /// }
 /// resource "aws_iam_role" "workspaces_default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "workspaces_DefaultRole"
-///   assume_role_policy = data.aws_iam_getpolicydocument.workspaces.json
+///   assume_role_policy = data.aws_iam_policy_document.workspaces.json
 /// }
-/// resource "aws_iam_rolepolicyattachment" "workspaces_default_service_access" {
+/// resource "aws_iam_role_policy_attachment" "workspaces_default_service_access" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role       = aws_iam_role.workspaces_default.name
 ///   policy_arn = "arn:aws:iam::aws:policy/AmazonWorkSpacesServiceAccess"
 /// }
-/// resource "aws_iam_rolepolicyattachment" "workspaces_default_self_service_access" {
+/// resource "aws_iam_role_policy_attachment" "workspaces_default_self_service_access" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role       = aws_iam_role.workspaces_default.name
 ///   policy_arn = "arn:aws:iam::aws:policy/AmazonWorkSpacesSelfServiceAccess"
 /// }
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
 /// resource "aws_ec2_subnet" "example_a" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.example.id
 ///   availability_zone = "us-east-1a"
 ///   cidr_block        = "10.0.0.0/24"
 /// }
 /// resource "aws_ec2_subnet" "example_b" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.example.id
 ///   availability_zone = "us-east-1b"
 ///   cidr_block        = "10.0.1.0/24"
 /// }
 /// resource "aws_ec2_subnet" "example_c" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.example.id
 ///   availability_zone = "us-east-1c"
 ///   cidr_block        = "10.0.2.0/24"
 /// }
 /// resource "aws_ec2_subnet" "example_d" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.example.id
 ///   availability_zone = "us-east-1d"
 ///   cidr_block        = "10.0.3.0/24"
@@ -768,7 +798,7 @@ import 'directory_workspace_creation_properties.dart';
 ///                 .deviceTypeZeroclient("DENY")
 ///                 .build())
 ///             .workspaceCreationProperties(DirectoryWorkspaceCreationPropertiesArgs.builder()
-///                 .customSecurityGroupId(exampleAwsSecurityGroup.id())
+///                 .customSecurityGroupId(exampleAwsSecurityGroup.get("id"))
 ///                 .defaultOu("OU=AWS,DC=Workgroup,DC=Example,DC=com")
 ///                 .enableInternetAccess(true)
 ///                 .enableMaintenanceMode(true)
@@ -1091,7 +1121,7 @@ import 'directory_workspace_creation_properties.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1100,11 +1130,14 @@ import 'directory_workspace_creation_properties.dart';
 /// }
 ///
 /// resource "aws_workspaces_directory" "example" {
-///   active_directory_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   active_directory_config {
 ///     domain_name                = "example.internal"
 ///     service_account_secret_arn = exampleAwsSecretsmanagerSecret.arn
 ///   }
-///   workspace_access_properties = {
+///   workspace_access_properties {
 ///     device_type_android    = "ALLOW"
 ///     device_type_chromeos   = "ALLOW"
 ///     device_type_ios        = "ALLOW"
@@ -1114,12 +1147,12 @@ import 'directory_workspace_creation_properties.dart';
 ///     device_type_windows    = "DENY"
 ///     device_type_zeroclient = "DENY"
 ///   }
-///   workspace_creation_properties = {
+///   workspace_creation_properties {
 ///     custom_security_group_id = exampleAwsSecurityGroup.id
 ///     default_ou               = "OU=AWS,DC=Workgroup,DC=Example,DC=com"
 ///     enable_internet_access   = true
 ///   }
-///   saml_properties = {
+///   saml_properties {
 ///     relay_state_parameter_name = "RelayState"
 ///     user_access_url            = "https://sso.example.com/"
 ///     status                     = "ENABLED"
@@ -1159,7 +1192,7 @@ import 'directory_workspace_creation_properties.dart';
 ///         var example = new Directory("example", DirectoryArgs.builder()
 ///             .activeDirectoryConfig(DirectoryActiveDirectoryConfigArgs.builder()
 ///                 .domainName("example.internal")
-///                 .serviceAccountSecretArn(exampleAwsSecretsmanagerSecret.arn())
+///                 .serviceAccountSecretArn(exampleAwsSecretsmanagerSecret.get("arn"))
 ///                 .build())
 ///             .workspaceAccessProperties(DirectoryWorkspaceAccessPropertiesArgs.builder()
 ///                 .deviceTypeAndroid("ALLOW")
@@ -1172,7 +1205,7 @@ import 'directory_workspace_creation_properties.dart';
 ///                 .deviceTypeZeroclient("DENY")
 ///                 .build())
 ///             .workspaceCreationProperties(DirectoryWorkspaceCreationPropertiesArgs.builder()
-///                 .customSecurityGroupId(exampleAwsSecurityGroup.id())
+///                 .customSecurityGroupId(exampleAwsSecurityGroup.get("id"))
 ///                 .defaultOu("OU=AWS,DC=Workgroup,DC=Example,DC=com")
 ///                 .enableInternetAccess(true)
 ///                 .build())
@@ -1182,8 +1215,8 @@ import 'directory_workspace_creation_properties.dart';
 ///                 .status("ENABLED")
 ///                 .build())
 ///             .subnetIds(
-///                 exampleC.id(),
-///                 exampleD.id())
+///                 exampleC.get("id"),
+///                 exampleD.get("id"))
 ///             .workspaceType("POOLS")
 ///             .workspaceDirectoryName("Pool directory")
 ///             .workspaceDirectoryDescription("WorkSpaces Pools directory")
@@ -1293,7 +1326,7 @@ import 'directory_workspace_creation_properties.dart';
 /// 		_, err = workspaces.NewDirectory(ctx, "example", &workspaces.DirectoryArgs{
 /// 			DirectoryId: pulumi.Any(exampleAwsDirectoryServiceDirectory.Id),
 /// 			IpGroupIds: pulumi.StringArray{
-/// 				exampleIpGroup.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleIpGroup.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -1304,7 +1337,7 @@ import 'directory_workspace_creation_properties.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1313,10 +1346,16 @@ import 'directory_workspace_creation_properties.dart';
 /// }
 ///
 /// resource "aws_workspaces_directory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   directory_id = exampleAwsDirectoryServiceDirectory.id
-///   ip_group_ids = [aws_workspaces_ipgroup.example.id]
+///   ip_group_ids = [aws_workspaces_ip_group.example.id]
 /// }
-/// resource "aws_workspaces_ipgroup" "example" {
+/// resource "aws_workspaces_ip_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// ```
@@ -1348,7 +1387,7 @@ import 'directory_workspace_creation_properties.dart';
 ///             .build());
 ///
 ///         var example = new Directory("example", DirectoryArgs.builder()
-///             .directoryId(exampleAwsDirectoryServiceDirectory.id())
+///             .directoryId(exampleAwsDirectoryServiceDirectory.get("id"))
 ///             .ipGroupIds(exampleIpGroup.id())
 ///             .build());
 ///
@@ -1619,7 +1658,7 @@ import 'directory_workspace_creation_properties.dart';
 /// 				exampleB.Id,
 /// 			},
 /// 			SecurityGroupIds: pulumi.StringArray{
-/// 				workspacesStreaming.ID().ToIDOutput().ToStringOutput(),
+/// 				workspacesStreaming.ID(),
 /// 			},
 /// 			PrivateDnsEnabled: pulumi.Bool(true),
 /// 		})
@@ -1632,7 +1671,7 @@ import 'directory_workspace_creation_properties.dart';
 /// 					AccessEndpoints: workspaces.DirectoryWorkspaceAccessPropertiesAccessEndpointConfigAccessEndpointArray{
 /// 						&workspaces.DirectoryWorkspaceAccessPropertiesAccessEndpointConfigAccessEndpointArgs{
 /// 							AccessEndpointType: pulumi.String("STREAMING_WSP"),
-/// 							VpcEndpointId:      workspaces2.ID().ToIDOutput().ToStringOutput(),
+/// 							VpcEndpointId:      workspaces2.ID(),
 /// 						},
 /// 					},
 /// 					InternetFallbackProtocols: pulumi.StringArray{
@@ -1647,7 +1686,7 @@ import 'directory_workspace_creation_properties.dart';
 /// 			return err
 /// 		}
 /// 		_, err = vpc.NewSecurityGroupIngressRule(ctx, "workspaces_streaming_tcp_443", &vpc.SecurityGroupIngressRuleArgs{
-/// 			SecurityGroupId: workspacesStreaming.ID().ToIDOutput().ToStringOutput(),
+/// 			SecurityGroupId: workspacesStreaming.ID(),
 /// 			CidrIpv4:        pulumi.Any(exampleAwsVpc.CidrBlock),
 /// 			FromPort:        pulumi.Int(443),
 /// 			ToPort:          pulumi.Int(443),
@@ -1657,7 +1696,7 @@ import 'directory_workspace_creation_properties.dart';
 /// 			return err
 /// 		}
 /// 		_, err = vpc.NewSecurityGroupIngressRule(ctx, "workspaces_streaming_tcp_4195", &vpc.SecurityGroupIngressRuleArgs{
-/// 			SecurityGroupId: workspacesStreaming.ID().ToIDOutput().ToStringOutput(),
+/// 			SecurityGroupId: workspacesStreaming.ID(),
 /// 			CidrIpv4:        pulumi.Any(exampleAwsVpc.CidrBlock),
 /// 			FromPort:        pulumi.Int(4195),
 /// 			ToPort:          pulumi.Int(4195),
@@ -1667,7 +1706,7 @@ import 'directory_workspace_creation_properties.dart';
 /// 			return err
 /// 		}
 /// 		_, err = vpc.NewSecurityGroupIngressRule(ctx, "workspaces_streaming_udp_443", &vpc.SecurityGroupIngressRuleArgs{
-/// 			SecurityGroupId: workspacesStreaming.ID().ToIDOutput().ToStringOutput(),
+/// 			SecurityGroupId: workspacesStreaming.ID(),
 /// 			CidrIpv4:        pulumi.Any(exampleAwsVpc.CidrBlock),
 /// 			FromPort:        pulumi.Int(443),
 /// 			ToPort:          pulumi.Int(443),
@@ -1677,7 +1716,7 @@ import 'directory_workspace_creation_properties.dart';
 /// 			return err
 /// 		}
 /// 		_, err = vpc.NewSecurityGroupIngressRule(ctx, "workspaces_streaming_udp_4195", &vpc.SecurityGroupIngressRuleArgs{
-/// 			SecurityGroupId: workspacesStreaming.ID().ToIDOutput().ToStringOutput(),
+/// 			SecurityGroupId: workspacesStreaming.ID(),
 /// 			CidrIpv4:        pulumi.Any(exampleAwsVpc.CidrBlock),
 /// 			FromPort:        pulumi.Int(4195),
 /// 			ToPort:          pulumi.Int(4195),
@@ -1691,7 +1730,7 @@ import 'directory_workspace_creation_properties.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1699,57 +1738,78 @@ import 'directory_workspace_creation_properties.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
 ///
 /// resource "aws_workspaces_directory" "example" {
-///   workspace_access_properties = {
-///     access_endpoint_config = {
-///       access_endpoints = [{
-///         "accessEndpointType" = "STREAMING_WSP"
-///         "vpcEndpointId"      = aws_ec2_vpcendpoint.workspaces.id
-///       }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workspace_access_properties {
+///     access_endpoint_config {
+///       access_endpoints {
+///         access_endpoint_type = "STREAMING_WSP"
+///         vpc_endpoint_id      = aws_ec2_vpc_endpoint.workspaces.id
+///       }
 ///       internet_fallback_protocols = ["PCOIP"]
 ///     }
 ///     device_type_windows = "ALLOW"
 ///   }
 ///   directory_id = exampleAwsDirectoryServiceDirectory.id
 /// }
-/// resource "aws_ec2_vpcendpoint" "workspaces" {
+/// resource "aws_ec2_vpc_endpoint" "workspaces" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id              = exampleAwsVpc.id
-///   service_name        ="com.amazonaws.${data.aws_getregion.current.region}.highlander"
+///   service_name        ="com.amazonaws.${data.aws_region.current.region}.highlander"
 ///   vpc_endpoint_type   = "Interface"
 ///   subnet_ids          = [exampleA.id, exampleB.id]
-///   security_group_ids  = [aws_ec2_securitygroup.workspaces_streaming.id]
+///   security_group_ids  = [aws_ec2_security_group.workspaces_streaming.id]
 ///   private_dns_enabled = true
 /// }
-/// resource "aws_ec2_securitygroup" "workspaces_streaming" {
+/// resource "aws_ec2_security_group" "workspaces_streaming" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "workspaces-streaming-endpoint"
 ///   vpc_id = exampleAwsVpc.id
 /// }
-/// resource "aws_vpc_securitygroupingressrule" "workspaces_streaming_tcp_443" {
-///   security_group_id = aws_ec2_securitygroup.workspaces_streaming.id
+/// resource "aws_vpc_security_group_ingress_rule" "workspaces_streaming_tcp_443" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_group_id = aws_ec2_security_group.workspaces_streaming.id
 ///   cidr_ipv4         = exampleAwsVpc.cidrBlock
 ///   from_port         = 443
 ///   to_port           = 443
 ///   ip_protocol       = "tcp"
 /// }
-/// resource "aws_vpc_securitygroupingressrule" "workspaces_streaming_tcp_4195" {
-///   security_group_id = aws_ec2_securitygroup.workspaces_streaming.id
+/// resource "aws_vpc_security_group_ingress_rule" "workspaces_streaming_tcp_4195" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_group_id = aws_ec2_security_group.workspaces_streaming.id
 ///   cidr_ipv4         = exampleAwsVpc.cidrBlock
 ///   from_port         = 4195
 ///   to_port           = 4195
 ///   ip_protocol       = "tcp"
 /// }
-/// resource "aws_vpc_securitygroupingressrule" "workspaces_streaming_udp_443" {
-///   security_group_id = aws_ec2_securitygroup.workspaces_streaming.id
+/// resource "aws_vpc_security_group_ingress_rule" "workspaces_streaming_udp_443" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_group_id = aws_ec2_security_group.workspaces_streaming.id
 ///   cidr_ipv4         = exampleAwsVpc.cidrBlock
 ///   from_port         = 443
 ///   to_port           = 443
 ///   ip_protocol       = "udp"
 /// }
-/// resource "aws_vpc_securitygroupingressrule" "workspaces_streaming_udp_4195" {
-///   security_group_id = aws_ec2_securitygroup.workspaces_streaming.id
+/// resource "aws_vpc_security_group_ingress_rule" "workspaces_streaming_udp_4195" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_group_id = aws_ec2_security_group.workspaces_streaming.id
 ///   cidr_ipv4         = exampleAwsVpc.cidrBlock
 ///   from_port         = 4195
 ///   to_port           = 4195
@@ -1790,19 +1850,19 @@ import 'directory_workspace_creation_properties.dart';
 ///     public static void stack(Context ctx) {
 ///         var workspacesStreaming = new SecurityGroup("workspacesStreaming", SecurityGroupArgs.builder()
 ///             .name("workspaces-streaming-endpoint")
-///             .vpcId(exampleAwsVpc.id())
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .build());
 ///
 ///         final var current = AwsFunctions.getRegion(GetRegionArgs.builder()
 ///             .build());
 ///
 ///         var workspaces = new VpcEndpoint("workspaces", VpcEndpointArgs.builder()
-///             .vpcId(exampleAwsVpc.id())
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .serviceName(String.format("com.amazonaws.%s.highlander", current.region()))
 ///             .vpcEndpointType("Interface")
 ///             .subnetIds(
-///                 exampleA.id(),
-///                 exampleB.id())
+///                 exampleA.get("id"),
+///                 exampleB.get("id"))
 ///             .securityGroupIds(workspacesStreaming.id())
 ///             .privateDnsEnabled(true)
 ///             .build());
@@ -1818,12 +1878,12 @@ import 'directory_workspace_creation_properties.dart';
 ///                     .build())
 ///                 .deviceTypeWindows("ALLOW")
 ///                 .build())
-///             .directoryId(exampleAwsDirectoryServiceDirectory.id())
+///             .directoryId(exampleAwsDirectoryServiceDirectory.get("id"))
 ///             .build());
 ///
 ///         var workspacesStreamingTcp443 = new SecurityGroupIngressRule("workspacesStreamingTcp443", SecurityGroupIngressRuleArgs.builder()
 ///             .securityGroupId(workspacesStreaming.id())
-///             .cidrIpv4(exampleAwsVpc.cidrBlock())
+///             .cidrIpv4(exampleAwsVpc.get("cidrBlock"))
 ///             .fromPort(443)
 ///             .toPort(443)
 ///             .ipProtocol("tcp")
@@ -1831,7 +1891,7 @@ import 'directory_workspace_creation_properties.dart';
 ///
 ///         var workspacesStreamingTcp4195 = new SecurityGroupIngressRule("workspacesStreamingTcp4195", SecurityGroupIngressRuleArgs.builder()
 ///             .securityGroupId(workspacesStreaming.id())
-///             .cidrIpv4(exampleAwsVpc.cidrBlock())
+///             .cidrIpv4(exampleAwsVpc.get("cidrBlock"))
 ///             .fromPort(4195)
 ///             .toPort(4195)
 ///             .ipProtocol("tcp")
@@ -1839,7 +1899,7 @@ import 'directory_workspace_creation_properties.dart';
 ///
 ///         var workspacesStreamingUdp443 = new SecurityGroupIngressRule("workspacesStreamingUdp443", SecurityGroupIngressRuleArgs.builder()
 ///             .securityGroupId(workspacesStreaming.id())
-///             .cidrIpv4(exampleAwsVpc.cidrBlock())
+///             .cidrIpv4(exampleAwsVpc.get("cidrBlock"))
 ///             .fromPort(443)
 ///             .toPort(443)
 ///             .ipProtocol("udp")
@@ -1847,7 +1907,7 @@ import 'directory_workspace_creation_properties.dart';
 ///
 ///         var workspacesStreamingUdp4195 = new SecurityGroupIngressRule("workspacesStreamingUdp4195", SecurityGroupIngressRuleArgs.builder()
 ///             .securityGroupId(workspacesStreaming.id())
-///             .cidrIpv4(exampleAwsVpc.cidrBlock())
+///             .cidrIpv4(exampleAwsVpc.get("cidrBlock"))
 ///             .fromPort(4195)
 ///             .toPort(4195)
 ///             .ipProtocol("udp")
@@ -2005,7 +2065,7 @@ class Directory extends pulumi.CustomResource {
           'aws:workspaces/directory:Directory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     activeDirectoryConfig = registerOutput<DirectoryActiveDirectoryConfig?>('activeDirectoryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryActiveDirectoryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     alias = registerOutput<String>('alias');

@@ -64,7 +64,7 @@ import 'service_network_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'service_network_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpclattice_servicenetwork" "example" {
+/// resource "aws_vpclattice_service_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "example"
 ///   auth_type = "AWS_IAM"
 /// }
@@ -151,7 +154,7 @@ class ServiceNetwork extends pulumi.CustomResource {
           'aws:vpclattice/serviceNetwork:ServiceNetwork',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     authType = registerOutput<String>('authType');

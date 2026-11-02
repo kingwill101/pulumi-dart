@@ -317,7 +317,7 @@ import 'key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -325,10 +325,13 @@ import 'key_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "An example symmetric encryption KMS key"
 ///   enable_key_rotation     = true
 ///   deletion_window_in_days = 20
@@ -339,7 +342,7 @@ import 'key_state.dart';
 ///       "Sid"    = "Enable IAM User Permissions"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///         "AWS" ="arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
 ///       }
 ///       "Action"   = "kms:*"
 ///       "Resource" = "*"
@@ -347,7 +350,7 @@ import 'key_state.dart';
 ///       "Sid"    = "Allow administration of the key"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:user/Alice"
+///         "AWS" ="arn:aws:iam::${data.aws_caller_identity.current.account_id}:user/Alice"
 ///       }
 ///       "Action"   = ["kms:ReplicateKey", "kms:Create*", "kms:Describe*", "kms:Enable*", "kms:List*", "kms:Put*", "kms:Update*", "kms:Revoke*", "kms:Disable*", "kms:Get*", "kms:Delete*", "kms:ScheduleKeyDeletion", "kms:CancelKeyDeletion"]
 ///       "Resource" = "*"
@@ -355,7 +358,7 @@ import 'key_state.dart';
 ///       "Sid"    = "Allow use of the key"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:user/Bob"
+///         "AWS" ="arn:aws:iam::${data.aws_caller_identity.current.account_id}:user/Bob"
 ///       }
 ///       "Action"   = ["kms:DescribeKey", "kms:Encrypt", "kms:Decrypt", "kms:ReEncrypt*", "kms:GenerateDataKey", "kms:GenerateDataKeyWithoutPlaintext"]
 ///       "Resource" = "*"
@@ -658,7 +661,7 @@ import 'key_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = kms.NewKeyPolicy(ctx, "example", &kms.KeyPolicyArgs{
-/// 			KeyId:  example.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyId:  example.ID(),
 /// 			Policy: json0,
 /// 		})
 /// 		if err != nil {
@@ -669,7 +672,7 @@ import 'key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -677,15 +680,21 @@ import 'key_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "An example symmetric encryption KMS key"
 ///   enable_key_rotation     = true
 ///   deletion_window_in_days = 20
 /// }
-/// resource "aws_kms_keypolicy" "example" {
+/// resource "aws_kms_key_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key_id = aws_kms_key.example.id
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -694,7 +703,7 @@ import 'key_state.dart';
 ///       "Sid"    = "Enable IAM User Permissions"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///         "AWS" ="arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
 ///       }
 ///       "Action"   = "kms:*"
 ///       "Resource" = "*"
@@ -1085,7 +1094,7 @@ import 'key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1093,10 +1102,13 @@ import 'key_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description              = "RSA-3072 asymmetric KMS key for signing and verification"
 ///   customer_master_key_spec = "RSA_3072"
 ///   key_usage                = "SIGN_VERIFY"
@@ -1108,7 +1120,7 @@ import 'key_state.dart';
 ///       "Sid"    = "Enable IAM User Permissions"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///         "AWS" ="arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
 ///       }
 ///       "Action"   = "kms:*"
 ///       "Resource" = "*"
@@ -1116,7 +1128,7 @@ import 'key_state.dart';
 ///       "Sid"    = "Allow administration of the key"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:role/Admin"
+///         "AWS" ="arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/Admin"
 ///       }
 ///       "Action"   = ["kms:Create*", "kms:Describe*", "kms:Enable*", "kms:List*", "kms:Put*", "kms:Update*", "kms:Revoke*", "kms:Disable*", "kms:Get*", "kms:Delete*", "kms:ScheduleKeyDeletion", "kms:CancelKeyDeletion"]
 ///       "Resource" = "*"
@@ -1124,7 +1136,7 @@ import 'key_state.dart';
 ///       "Sid"    = "Allow use of the key"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:role/Developer"
+///         "AWS" ="arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/Developer"
 ///       }
 ///       "Action"   = ["kms:Sign", "kms:Verify", "kms:DescribeKey"]
 ///       "Resource" = "*"
@@ -1570,7 +1582,7 @@ import 'key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1578,10 +1590,13 @@ import 'key_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description              = "HMAC_384 key for tokens"
 ///   customer_master_key_spec = "HMAC_384"
 ///   key_usage                = "GENERATE_VERIFY_MAC"
@@ -1593,7 +1608,7 @@ import 'key_state.dart';
 ///       "Sid"    = "Enable IAM User Permissions"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///         "AWS" ="arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
 ///       }
 ///       "Action"   = "kms:*"
 ///       "Resource" = "*"
@@ -1601,7 +1616,7 @@ import 'key_state.dart';
 ///       "Sid"    = "Allow administration of the key"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:role/Admin"
+///         "AWS" ="arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/Admin"
 ///       }
 ///       "Action"   = ["kms:Create*", "kms:Describe*", "kms:Enable*", "kms:List*", "kms:Put*", "kms:Update*", "kms:Revoke*", "kms:Disable*", "kms:Get*", "kms:Delete*", "kms:ScheduleKeyDeletion", "kms:CancelKeyDeletion"]
 ///       "Resource" = "*"
@@ -1609,7 +1624,7 @@ import 'key_state.dart';
 ///       "Sid"    = "Allow use of the key"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:role/Developer"
+///         "AWS" ="arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/Developer"
 ///       }
 ///       "Action"   = ["kms:GenerateMac", "kms:VerifyMac", "kms:DescribeKey"]
 ///       "Resource" = "*"
@@ -2071,7 +2086,7 @@ import 'key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2079,10 +2094,13 @@ import 'key_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "An example multi-Region primary key"
 ///   multi_region            = true
 ///   enable_key_rotation     = true
@@ -2094,7 +2112,7 @@ import 'key_state.dart';
 ///       "Sid"    = "Enable IAM User Permissions"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///         "AWS" ="arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
 ///       }
 ///       "Action"   = "kms:*"
 ///       "Resource" = "*"
@@ -2102,7 +2120,7 @@ import 'key_state.dart';
 ///       "Sid"    = "Allow administration of the key"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:user/Alice"
+///         "AWS" ="arn:aws:iam::${data.aws_caller_identity.current.account_id}:user/Alice"
 ///       }
 ///       "Action"   = ["kms:ReplicateKey", "kms:Create*", "kms:Describe*", "kms:Enable*", "kms:List*", "kms:Put*", "kms:Update*", "kms:Revoke*", "kms:Disable*", "kms:Get*", "kms:Delete*", "kms:ScheduleKeyDeletion", "kms:CancelKeyDeletion"]
 ///       "Resource" = "*"
@@ -2110,7 +2128,7 @@ import 'key_state.dart';
 ///       "Sid"    = "Allow use of the key"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:user/Bob"
+///         "AWS" ="arn:aws:iam::${data.aws_caller_identity.current.account_id}:user/Bob"
 ///       }
 ///       "Action"   = ["kms:DescribeKey", "kms:Encrypt", "kms:Decrypt", "kms:ReEncrypt*", "kms:GenerateDataKey", "kms:GenerateDataKeyWithoutPlaintext"]
 ///       "Resource" = "*"
@@ -2338,7 +2356,7 @@ class Key extends pulumi.CustomResource {
           'aws:kms/key:Key',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     bypassPolicyLockoutSafetyCheck = registerOutput<bool?>('bypassPolicyLockoutSafetyCheck');

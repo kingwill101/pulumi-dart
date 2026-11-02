@@ -49,7 +49,7 @@ import 'caches_iscsi_volume_state.dart';
 ///         GatewayArn = exampleAwsStoragegatewayCache.GatewayArn,
 ///         NetworkInterfaceId = exampleAwsInstance.PrivateIp,
 ///         TargetName = "example",
-///         VolumeSizeInBytes = 5368709120,
+///         VolumeSizeInBytes = (int)5368709120,
 ///     });
 ///
 /// });
@@ -78,7 +78,7 @@ import 'caches_iscsi_volume_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,7 +86,10 @@ import 'caches_iscsi_volume_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_storagegateway_cachesiscsivolume" "example" {
+/// resource "aws_storagegateway_caches_iscsi_volume" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   gateway_arn          = exampleAwsStoragegatewayCache.gatewayArn
 ///   network_interface_id = exampleAwsInstance.privateIp
 ///   target_name          = "example"
@@ -115,8 +118,8 @@ import 'caches_iscsi_volume_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CachesIscsiVolume("example", CachesIscsiVolumeArgs.builder()
-///             .gatewayArn(exampleAwsStoragegatewayCache.gatewayArn())
-///             .networkInterfaceId(exampleAwsInstance.privateIp())
+///             .gatewayArn(exampleAwsStoragegatewayCache.get("gatewayArn"))
+///             .networkInterfaceId(exampleAwsInstance.get("privateIp"))
 ///             .targetName("example")
 ///             .volumeSizeInBytes(5368709120)
 ///             .build());
@@ -176,7 +179,7 @@ import 'caches_iscsi_volume_state.dart';
 ///         NetworkInterfaceId = exampleAwsInstance.PrivateIp,
 ///         SnapshotId = exampleAwsEbsSnapshot.Id,
 ///         TargetName = "example",
-///         VolumeSizeInBytes = exampleAwsEbsSnapshot.VolumeSize * 1024 * 1024 * 1024,
+///         VolumeSizeInBytes = (int)(double.Parse(exampleAwsEbsSnapshot.VolumeSize, System.Globalization.CultureInfo.InvariantCulture) * 1024.0 * 1024.0 * 1024.0),
 ///     });
 ///
 /// });
@@ -206,7 +209,7 @@ import 'caches_iscsi_volume_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -214,7 +217,10 @@ import 'caches_iscsi_volume_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_storagegateway_cachesiscsivolume" "example" {
+/// resource "aws_storagegateway_caches_iscsi_volume" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   gateway_arn          = exampleAwsStoragegatewayCache.gatewayArn
 ///   network_interface_id = exampleAwsInstance.privateIp
 ///   snapshot_id          = exampleAwsEbsSnapshot.id
@@ -244,11 +250,11 @@ import 'caches_iscsi_volume_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CachesIscsiVolume("example", CachesIscsiVolumeArgs.builder()
-///             .gatewayArn(exampleAwsStoragegatewayCache.gatewayArn())
-///             .networkInterfaceId(exampleAwsInstance.privateIp())
-///             .snapshotId(exampleAwsEbsSnapshot.id())
+///             .gatewayArn(exampleAwsStoragegatewayCache.get("gatewayArn"))
+///             .networkInterfaceId(exampleAwsInstance.get("privateIp"))
+///             .snapshotId(exampleAwsEbsSnapshot.get("id"))
 ///             .targetName("example")
-///             .volumeSizeInBytes(exampleAwsEbsSnapshot.volumeSize() * 1024 * 1024 * 1024)
+///             .volumeSizeInBytes(((Number) exampleAwsEbsSnapshot.get("volumeSize")).doubleValue() * 1024 * 1024 * 1024)
 ///             .build());
 ///
 ///     }
@@ -268,7 +274,7 @@ import 'caches_iscsi_volume_state.dart';
 ///     networkInterfaceId: exampleAwsInstance.privateIp,
 ///     sourceVolumeArn: existing.arn,
 ///     targetName: "example",
-///     volumeSizeInBytes: Number(existing.volumeSizeInBytes),
+///     volumeSizeInBytes: existing.volumeSizeInBytes,
 /// });
 /// ```
 /// ```python
@@ -280,7 +286,7 @@ import 'caches_iscsi_volume_state.dart';
 ///     network_interface_id=example_aws_instance["privateIp"],
 ///     source_volume_arn=existing["arn"],
 ///     target_name="example",
-///     volume_size_in_bytes=int(existing["volumeSizeInBytes"]))
+///     volume_size_in_bytes=existing["volumeSizeInBytes"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -326,7 +332,7 @@ import 'caches_iscsi_volume_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -334,7 +340,10 @@ import 'caches_iscsi_volume_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_storagegateway_cachesiscsivolume" "example" {
+/// resource "aws_storagegateway_caches_iscsi_volume" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   gateway_arn          = exampleAwsStoragegatewayCache.gatewayArn
 ///   network_interface_id = exampleAwsInstance.privateIp
 ///   source_volume_arn    = existing.arn
@@ -364,11 +373,11 @@ import 'caches_iscsi_volume_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CachesIscsiVolume("example", CachesIscsiVolumeArgs.builder()
-///             .gatewayArn(exampleAwsStoragegatewayCache.gatewayArn())
-///             .networkInterfaceId(exampleAwsInstance.privateIp())
-///             .sourceVolumeArn(existing.arn())
+///             .gatewayArn(exampleAwsStoragegatewayCache.get("gatewayArn"))
+///             .networkInterfaceId(exampleAwsInstance.get("privateIp"))
+///             .sourceVolumeArn(existing.get("arn"))
 ///             .targetName("example")
-///             .volumeSizeInBytes(existing.volumeSizeInBytes())
+///             .volumeSizeInBytes(existing.get("volumeSizeInBytes"))
 ///             .build());
 ///
 ///     }
@@ -444,7 +453,7 @@ class CachesIscsiVolume extends pulumi.CustomResource {
           'aws:storagegateway/cachesIscsiVolume:CachesIscsiVolume',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     chapEnabled = registerOutput<bool>('chapEnabled');

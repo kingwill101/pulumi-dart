@@ -71,7 +71,7 @@ import 'identity_center_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -79,14 +79,17 @@ import 'identity_center_configuration_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
 ///
-/// resource "aws_lakeformation_identitycenterconfiguration" "example" {
+/// resource "aws_lakeformation_identity_center_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_arn = local.identityCenterInstanceArn
 /// }
 /// locals {
-///   identityCenterInstanceArn = data.aws_ssoadmin_getinstances.example.arns[0]
+///   identityCenterInstanceArn = data.aws_ssoadmin_instances.example.arns[0]
 /// }
 /// ```
 /// ```java
@@ -186,7 +189,7 @@ class IdentityCenterConfiguration extends pulumi.CustomResource {
           'aws:lakeformation/identityCenterConfiguration:IdentityCenterConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     applicationArn = registerOutput<String>('applicationArn');
     catalogId = registerOutput<String>('catalogId');

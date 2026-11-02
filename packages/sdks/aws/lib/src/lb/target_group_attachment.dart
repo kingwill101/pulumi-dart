@@ -76,7 +76,7 @@ import 'target_group_attachment_state.dart';
 /// 		}
 /// 		_, err = lb.NewTargetGroupAttachment(ctx, "test", &lb.TargetGroupAttachmentArgs{
 /// 			TargetGroupArn: testTargetGroup.Arn,
-/// 			TargetId:       testInstance.ID().ToIDOutput().ToStringOutput(),
+/// 			TargetId:       testInstance.ID(),
 /// 			Port:           pulumi.Int(80),
 /// 		})
 /// 		if err != nil {
@@ -87,7 +87,7 @@ import 'target_group_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -95,14 +95,23 @@ import 'target_group_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lb_targetgroupattachment" "test" {
-///   target_group_arn = aws_lb_targetgroup.test.arn
+/// resource "aws_lb_target_group_attachment" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   target_group_arn = aws_lb_target_group.test.arn
 ///   target_id        = aws_ec2_instance.test.id
 ///   port             = 80
 /// }
-/// resource "aws_lb_targetgroup" "test" {
+/// resource "aws_lb_target_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_ec2_instance" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -288,7 +297,7 @@ import 'target_group_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -297,21 +306,33 @@ import 'target_group_attachment_state.dart';
 /// }
 ///
 /// resource "aws_lambda_permission" "with_lb" {
-///   statement_id = "AllowExecutionFromlb"
-///   action       = "lambda:InvokeFunction"
-///   function     = aws_lambda_function.test.name
-///   principal    = "elasticloadbalancing.amazonaws.com"
-///   source_arn   = aws_lb_targetgroup.test.arn
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   statement_id  = "AllowExecutionFromlb"
+///   action        = "lambda:InvokeFunction"
+///   function_name = aws_lambda_function.test.function_name
+///   principal     = "elasticloadbalancing.amazonaws.com"
+///   source_arn    = aws_lb_target_group.test.arn
 /// }
-/// resource "aws_lb_targetgroup" "test" {
+/// resource "aws_lb_target_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "test"
 ///   target_type = "lambda"
 /// }
 /// resource "aws_lambda_function" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_lb_targetgroupattachment" "test" {
-///   depends_on       = [aws_lambda_permission.with_lb]
-///   target_group_arn = aws_lb_targetgroup.test.arn
+/// resource "aws_lb_target_group_attachment" "test" {
+///   depends_on = [aws_lambda_permission.with_lb]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   target_group_arn = aws_lb_target_group.test.arn
 ///   target_id        = aws_lambda_function.test.arn
 /// }
 /// ```
@@ -485,7 +506,7 @@ import 'target_group_attachment_state.dart';
 /// 		}
 /// 		_, err = lb.NewTargetGroupAttachment(ctx, "test", &lb.TargetGroupAttachmentArgs{
 /// 			TargetGroupArn: test.Arn,
-/// 			TargetId:       testInstance.ID().ToIDOutput().ToStringOutput(),
+/// 			TargetId:       testInstance.ID(),
 /// 			Port:           pulumi.Int(443),
 /// 			QuicServerId:   pulumi.String("0x1a2b3c4d5e6f7a8b"),
 /// 		})
@@ -497,7 +518,7 @@ import 'target_group_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -505,18 +526,27 @@ import 'target_group_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lb_targetgroup" "test" {
+/// resource "aws_lb_target_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "test"
 ///   port     = 443
 ///   protocol = "QUIC"
 /// }
-/// resource "aws_lb_targetgroupattachment" "test" {
-///   target_group_arn = aws_lb_targetgroup.test.arn
+/// resource "aws_lb_target_group_attachment" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   target_group_arn = aws_lb_target_group.test.arn
 ///   target_id        = aws_ec2_instance.test.id
 ///   port             = 443
 ///   quic_server_id   = "0x1a2b3c4d5e6f7a8b"
 /// }
 /// resource "aws_ec2_instance" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -634,7 +664,7 @@ class TargetGroupAttachment extends pulumi.CustomResource {
           'aws:lb/targetGroupAttachment:TargetGroupAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     availabilityZone = registerOutput<String?>('availabilityZone');
     port = registerOutput<int?>('port');

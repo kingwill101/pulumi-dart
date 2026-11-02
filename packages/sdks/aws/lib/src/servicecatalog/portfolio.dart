@@ -66,7 +66,7 @@ import 'portfolio_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,6 +75,9 @@ import 'portfolio_state.dart';
 /// }
 ///
 /// resource "aws_servicecatalog_portfolio" "portfolio" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "My App Portfolio"
 ///   description   = "List of my organizations apps"
 ///   provider_name = "Brett"
@@ -156,7 +159,7 @@ class Portfolio extends pulumi.CustomResource {
           'aws:servicecatalog/portfolio:Portfolio',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdTime = registerOutput<String>('createdTime');

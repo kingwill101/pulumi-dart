@@ -74,7 +74,7 @@ import 'authorize_vpc_endpoint_access_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,12 +82,15 @@ import 'authorize_vpc_endpoint_access_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
-/// resource "aws_opensearch_authorizevpcendpointaccess" "test" {
+/// resource "aws_opensearch_authorize_vpc_endpoint_access" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name = testAwsOpensearchDomain.domainName
-///   account     = data.aws_getcalleridentity.current.account_id
+///   account     = data.aws_caller_identity.current.account_id
 /// }
 /// ```
 /// ```java
@@ -117,7 +120,7 @@ import 'authorize_vpc_endpoint_access_state.dart';
 ///             .build());
 ///
 ///         var test = new AuthorizeVpcEndpointAccess("test", AuthorizeVpcEndpointAccessArgs.builder()
-///             .domainName(testAwsOpensearchDomain.domainName())
+///             .domainName(testAwsOpensearchDomain.get("domainName"))
 ///             .account(current.accountId())
 ///             .build());
 ///
@@ -168,7 +171,7 @@ class AuthorizeVpcEndpointAccess extends pulumi.CustomResource {
           'aws:opensearch/authorizeVpcEndpointAccess:AuthorizeVpcEndpointAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     account = registerOutput<String>('account');
     authorizedPrincipals = registerOutput<List<AuthorizeVpcEndpointAccessAuthorizedPrincipal>>('authorizedPrincipals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthorizeVpcEndpointAccessAuthorizedPrincipal>(guardedValue, (value) => AuthorizeVpcEndpointAccessAuthorizedPrincipal.fromMap((value as Map).cast<String, dynamic>())); });

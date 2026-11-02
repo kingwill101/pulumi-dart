@@ -86,7 +86,7 @@ import 'slack_channel_configuration_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -94,7 +94,10 @@ import 'slack_channel_configuration_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_chatbot_slackchannelconfiguration" "test" {
+/// resource "aws_chatbot_slack_channel_configuration" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_name = "min-slaka-kanal"
 ///   iam_role_arn       = testAwsIamRole.arn
 ///   slack_channel_id   = "C07EZ1ABC23"
@@ -127,7 +130,7 @@ import 'slack_channel_configuration_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var test = new SlackChannelConfiguration("test", SlackChannelConfigurationArgs.builder()
 ///             .configurationName("min-slaka-kanal")
-///             .iamRoleArn(testAwsIamRole.arn())
+///             .iamRoleArn(testAwsIamRole.get("arn"))
 ///             .slackChannelId("C07EZ1ABC23")
 ///             .slackTeamId("T07EA123LEP")
 ///             .tags(Map.of("Name", "min-slaka-kanal"))
@@ -202,7 +205,7 @@ class SlackChannelConfiguration extends pulumi.CustomResource {
           'aws:chatbot/slackChannelConfiguration:SlackChannelConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     chatConfigurationArn = registerOutput<String>('chatConfigurationArn');
     configurationName = registerOutput<String>('configurationName');

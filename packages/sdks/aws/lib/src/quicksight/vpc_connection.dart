@@ -257,7 +257,7 @@ import 'vpc_connection_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -266,7 +266,10 @@ import 'vpc_connection_timeouts.dart';
 /// }
 ///
 /// resource "aws_iam_role" "vpc_connection_role" {
-///   inline_policies {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   inline_policy {
 ///     name = "QuickSightVPCConnectionRolePolicy"
 ///     policy = jsonencode({
 ///       "Version" = "2012-10-17"
@@ -288,7 +291,10 @@ import 'vpc_connection_timeouts.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_quicksight_vpcconnection" "example" {
+/// resource "aws_quicksight_vpc_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_connection_id  = "example-connection-id"
 ///   name               = "Example Connection"
 ///   role_arn           = aws_iam_role.vpc_connection_role.arn
@@ -457,7 +463,7 @@ class VpcConnection extends pulumi.CustomResource {
           'aws:quicksight/vpcConnection:VpcConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityStatus = registerOutput<String>('availabilityStatus');

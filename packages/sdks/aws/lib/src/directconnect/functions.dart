@@ -65,7 +65,7 @@ import 'get_router_configuration_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,7 @@ import 'get_router_configuration_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_directconnect_getconnection" "example" {
+/// data "aws_directconnect_connection" "example" {
 ///   name = "tf-dx-connection"
 /// }
 /// ```
@@ -194,7 +194,7 @@ pulumi.Output<GetConnectionResult> getConnectionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -202,7 +202,7 @@ pulumi.Output<GetConnectionResult> getConnectionOutput(
 ///   }
 /// }
 ///
-/// data "aws_directconnect_getgateway" "example" {
+/// data "aws_directconnect_gateway" "example" {
 ///   name = "example"
 /// }
 /// ```
@@ -326,7 +326,7 @@ pulumi.Output<GetGatewayResult> getGatewayOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -334,7 +334,7 @@ pulumi.Output<GetGatewayResult> getGatewayOutput(
 ///   }
 /// }
 ///
-/// data "aws_directconnect_getlocation" "example" {
+/// data "aws_directconnect_location" "example" {
 ///   location_code = "CS32A-24FL"
 /// }
 /// ```
@@ -451,7 +451,7 @@ pulumi.Output<GetLocationResult> getLocationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -459,7 +459,7 @@ pulumi.Output<GetLocationResult> getLocationOutput(
 ///   }
 /// }
 ///
-/// data "aws_directconnect_getlocations" "available" {
+/// data "aws_directconnect_locations" "available" {
 /// }
 /// ```
 /// ```java
@@ -583,7 +583,7 @@ pulumi.Output<GetLocationsResult> getLocationsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -591,7 +591,7 @@ pulumi.Output<GetLocationsResult> getLocationsOutput(
 ///   }
 /// }
 ///
-/// data "aws_directconnect_getrouterconfiguration" "example" {
+/// data "aws_directconnect_router_configuration" "example" {
 ///   virtual_interface_id   = "dxvif-abcde123"
 ///   router_type_identifier = "CiscoSystemsInc-2900SeriesRouters-IOS124"
 /// }

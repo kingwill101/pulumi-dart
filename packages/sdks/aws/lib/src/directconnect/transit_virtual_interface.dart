@@ -85,7 +85,7 @@ import 'transit_virtual_interface_state.dart';
 /// 		}
 /// 		_, err = directconnect.NewTransitVirtualInterface(ctx, "example", &directconnect.TransitVirtualInterfaceArgs{
 /// 			ConnectionId:  pulumi.Any(exampleAwsDxConnection.Id),
-/// 			DxGatewayId:   example.ID().ToIDOutput().ToStringOutput(),
+/// 			DxGatewayId:   example.ID(),
 /// 			Name:          pulumi.String("tf-transit-vif-example"),
 /// 			Vlan:          pulumi.Int(4094),
 /// 			AddressFamily: pulumi.String("ipv4"),
@@ -99,7 +99,7 @@ import 'transit_virtual_interface_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -108,10 +108,16 @@ import 'transit_virtual_interface_state.dart';
 /// }
 ///
 /// resource "aws_directconnect_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "tf-dxg-example"
 ///   amazon_side_asn = 64512
 /// }
-/// resource "aws_directconnect_transitvirtualinterface" "example" {
+/// resource "aws_directconnect_transit_virtual_interface" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_id  = exampleAwsDxConnection.id
 ///   dx_gateway_id  = aws_directconnect_gateway.example.id
 ///   name           = "tf-transit-vif-example"
@@ -149,7 +155,7 @@ import 'transit_virtual_interface_state.dart';
 ///             .build());
 ///
 ///         var exampleTransitVirtualInterface = new TransitVirtualInterface("exampleTransitVirtualInterface", TransitVirtualInterfaceArgs.builder()
-///             .connectionId(exampleAwsDxConnection.id())
+///             .connectionId(exampleAwsDxConnection.get("id"))
 ///             .dxGatewayId(example.id())
 ///             .name("tf-transit-vif-example")
 ///             .vlan(4094)
@@ -247,7 +253,7 @@ class TransitVirtualInterface extends pulumi.CustomResource {
           'aws:directconnect/transitVirtualInterface:TransitVirtualInterface',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     addressFamily = registerOutput<String>('addressFamily');
     amazonAddress = registerOutput<String>('amazonAddress');

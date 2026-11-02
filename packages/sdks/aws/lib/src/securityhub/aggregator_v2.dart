@@ -78,7 +78,7 @@ import 'aggregator_v2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,10 +86,16 @@ import 'aggregator_v2_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_securityhub_accountv2" "example" {
+/// resource "aws_securityhub_account_v2" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_securityhub_aggregatorv2" "example" {
-///   depends_on          = [aws_securityhub_accountv2.example]
+/// resource "aws_securityhub_aggregator_v2" "example" {
+///   depends_on = [aws_securityhub_account_v2.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region_linking_mode = "ALL_REGIONS"
 /// }
 /// ```
@@ -232,7 +238,7 @@ import 'aggregator_v2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -240,10 +246,16 @@ import 'aggregator_v2_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_securityhub_accountv2" "example" {
+/// resource "aws_securityhub_account_v2" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_securityhub_aggregatorv2" "example" {
-///   depends_on          = [aws_securityhub_accountv2.example]
+/// resource "aws_securityhub_aggregator_v2" "example" {
+///   depends_on = [aws_securityhub_account_v2.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region_linking_mode = "SPECIFIED_REGIONS"
 ///   linked_regions      = ["us-west-2", "eu-west-1"]
 /// }
@@ -345,7 +357,7 @@ class AggregatorV2 extends pulumi.CustomResource {
           'aws:securityhub/aggregatorV2:AggregatorV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     aggregationRegion = registerOutput<String>('aggregationRegion');
     arn = registerOutput<String>('arn');

@@ -65,7 +65,7 @@ import 'get_service_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,7 @@ import 'get_service_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_servicediscovery_getdnsnamespace" "test" {
+/// data "aws_servicediscovery_dns_namespace" "test" {
 ///   name = "example.service.local"
 ///   type = "DNS_PRIVATE"
 /// }
@@ -195,7 +195,7 @@ pulumi.Output<GetDnsNamespaceResult> getDnsNamespaceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -203,7 +203,7 @@ pulumi.Output<GetDnsNamespaceResult> getDnsNamespaceOutput(
 ///   }
 /// }
 ///
-/// data "aws_servicediscovery_gethttpnamespace" "example" {
+/// data "aws_servicediscovery_http_namespace" "example" {
 ///   name = "development"
 /// }
 /// ```
@@ -328,7 +328,7 @@ pulumi.Output<GetHttpNamespaceResult> getHttpNamespaceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -336,7 +336,7 @@ pulumi.Output<GetHttpNamespaceResult> getHttpNamespaceOutput(
 ///   }
 /// }
 ///
-/// data "aws_servicediscovery_getservice" "test" {
+/// data "aws_servicediscovery_service" "test" {
 ///   name         = "example"
 ///   namespace_id = "NAMESPACE_ID_VALUE"
 /// }

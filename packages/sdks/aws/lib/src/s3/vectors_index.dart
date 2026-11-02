@@ -78,7 +78,7 @@ import 'vectors_index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,7 +86,10 @@ import 'vectors_index_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_vectorsindex" "example" {
+/// resource "aws_s3_vectors_index" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   index_name         = "example-index"
 ///   vector_bucket_name = exampleAwsS3vectorsVectorBucket.vectorBucketName
 ///   data_type          = "float32"
@@ -117,7 +120,7 @@ import 'vectors_index_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new VectorsIndex("example", VectorsIndexArgs.builder()
 ///             .indexName("example-index")
-///             .vectorBucketName(exampleAwsS3vectorsVectorBucket.vectorBucketName())
+///             .vectorBucketName(exampleAwsS3vectorsVectorBucket.get("vectorBucketName"))
 ///             .dataType("float32")
 ///             .dimension(2)
 ///             .distanceMetric("euclidean")
@@ -193,7 +196,7 @@ class VectorsIndex extends pulumi.CustomResource {
           'aws:s3/vectorsIndex:VectorsIndex',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     creationTime = registerOutput<String>('creationTime');
     dataType = registerOutput<String>('dataType');

@@ -167,7 +167,7 @@ import 'routing_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -175,23 +175,26 @@ import 'routing_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigatewayv2_routingrule" "example" {
-///   actions {
-///     invoke_api = {
+/// resource "aws_apigatewayv2_routing_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   action {
+///     invoke_api {
 ///       api_id          = "example-api-id"
 ///       stage           = "example-stage"
 ///       strip_base_path = true
 ///     }
 ///   }
-///   conditions {
-///     match_headers = {
-///       any_of = {
+///   condition {
+///     match_headers {
+///       any_of {
 ///         header     = "X-Example-Header"
 ///         value_glob = "example-value-*"
 ///       }
 ///     }
-///     match_base_paths = {
-///       any_ofs = ["example-path", "another-path"]
+///     match_base_paths {
+///       any_of = ["example-path", "another-path"]
 ///     }
 ///   }
 ///   domain_name = "test.example.com"
@@ -314,7 +317,7 @@ class RoutingRule extends pulumi.CustomResource {
           'aws:apigatewayv2/routingRule:RoutingRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     actions = registerOutput<List<RoutingRuleAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingRuleAction>(guardedValue, (value) => RoutingRuleAction.fromMap((value as Map).cast<String, dynamic>())); });
     conditions = registerOutput<List<RoutingRuleCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingRuleCondition>(guardedValue, (value) => RoutingRuleCondition.fromMap((value as Map).cast<String, dynamic>())); });

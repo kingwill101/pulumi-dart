@@ -81,7 +81,7 @@ import 'subnet_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -90,6 +90,9 @@ import 'subnet_state.dart';
 /// }
 ///
 /// resource "aws_ec2_subnet" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id     = mainAwsVpc.id
 ///   cidr_block = "10.0.1.0/24"
 ///   tags = {
@@ -119,7 +122,7 @@ import 'subnet_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var main = new Subnet("main", SubnetArgs.builder()
-///             .vpcId(mainAwsVpc.id())
+///             .vpcId(mainAwsVpc.get("id"))
 ///             .cidrBlock("10.0.1.0/24")
 ///             .tags(Map.of("Name", "Main"))
 ///             .build());
@@ -220,7 +223,7 @@ import 'subnet_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -228,12 +231,18 @@ import 'subnet_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcipv4cidrblockassociation" "secondary_cidr" {
+/// resource "aws_ec2_vpc_ipv4_cidr_block_association" "secondary_cidr" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id     = main.id
 ///   cidr_block = "172.20.0.0/16"
 /// }
 /// resource "aws_ec2_subnet" "in_secondary_cidr" {
-///   vpc_id     = aws_ec2_vpcipv4cidrblockassociation.secondary_cidr.vpc_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   vpc_id     = aws_ec2_vpc_ipv4_cidr_block_association.secondary_cidr.vpc_id
 ///   cidr_block = "172.20.0.0/24"
 /// }
 /// ```
@@ -261,7 +270,7 @@ import 'subnet_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var secondaryCidr = new VpcIpv4CidrBlockAssociation("secondaryCidr", VpcIpv4CidrBlockAssociationArgs.builder()
-///             .vpcId(main.id())
+///             .vpcId(main.get("id"))
 ///             .cidrBlock("172.20.0.0/16")
 ///             .build());
 ///
@@ -498,14 +507,14 @@ import 'subnet_state.dart';
 /// 			return err
 /// 		}
 /// 		testVpcIpamPoolCidr, err := ec2.NewVpcIpamPoolCidr(ctx, "test", &ec2.VpcIpamPoolCidrArgs{
-/// 			IpamPoolId: testVpcIpamPool.ID().ToIDOutput().ToStringOutput(),
+/// 			IpamPoolId: testVpcIpamPool.ID(),
 /// 			Cidr:       pulumi.String("10.0.0.0/16"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		testVpc, err := ec2.NewVpc(ctx, "test", &ec2.VpcArgs{
-/// 			Ipv4IpamPoolId:    testVpcIpamPool.ID().ToIDOutput().ToStringOutput(),
+/// 			Ipv4IpamPoolId:    testVpcIpamPool.ID(),
 /// 			Ipv4NetmaskLength: pulumi.Int(24),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			testVpcIpamPoolCidr,
@@ -515,7 +524,7 @@ import 'subnet_state.dart';
 /// 		}
 /// 		vpc, err := ec2.NewVpcIpamPool(ctx, "vpc", &ec2.VpcIpamPoolArgs{
 /// 			SourceResource: &ec2.VpcIpamPoolSourceResourceArgs{
-/// 				ResourceId:     testVpc.ID().ToIDOutput().ToStringOutput(),
+/// 				ResourceId:     testVpc.ID(),
 /// 				ResourceOwner:  pulumi.Any(currentAwsCallerIdentity.AccountId),
 /// 				ResourceRegion: pulumi.String(current.Region),
 /// 				ResourceType:   pulumi.String("vpc"),
@@ -523,21 +532,21 @@ import 'subnet_state.dart';
 /// 			AddressFamily:    pulumi.String("ipv4"),
 /// 			IpamScopeId:      test.PrivateDefaultScopeId,
 /// 			Locale:           pulumi.String(current.Region),
-/// 			SourceIpamPoolId: testVpcIpamPool.ID().ToIDOutput().ToStringOutput(),
+/// 			SourceIpamPoolId: testVpcIpamPool.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		vpcVpcIpamPoolCidr, err := ec2.NewVpcIpamPoolCidr(ctx, "vpc", &ec2.VpcIpamPoolCidrArgs{
-/// 			IpamPoolId: vpc.ID().ToIDOutput().ToStringOutput(),
+/// 			IpamPoolId: vpc.ID(),
 /// 			Cidr:       testVpc.CidrBlock,
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewSubnet(ctx, "test", &ec2.SubnetArgs{
-/// 			VpcId:             testVpc.ID().ToIDOutput().ToStringOutput(),
-/// 			Ipv4IpamPoolId:    vpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:             testVpc.ID(),
+/// 			Ipv4IpamPoolId:    vpc.ID(),
 /// 			Ipv4NetmaskLength: pulumi.Int(28),
 /// 			AvailabilityZone:  pulumi.Any(available.Names[0]),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -551,7 +560,7 @@ import 'subnet_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -559,48 +568,69 @@ import 'subnet_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
 ///
-/// resource "aws_ec2_vpcipam" "test" {
+/// resource "aws_ec2_vpc_ipam" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   operating_regions {
-///     region_name = data.aws_getregion.current.region
+///     region_name = data.aws_region.current.region
 ///   }
 /// }
-/// resource "aws_ec2_vpcipampool" "test" {
+/// resource "aws_ec2_vpc_ipam_pool" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   address_family = "ipv4"
-///   ipam_scope_id  = aws_ec2_vpcipam.test.private_default_scope_id
-///   locale         = data.aws_getregion.current.region
+///   ipam_scope_id  = aws_ec2_vpc_ipam.test.private_default_scope_id
+///   locale         = data.aws_region.current.region
 /// }
-/// resource "aws_ec2_vpcipampoolcidr" "test" {
-///   ipam_pool_id = aws_ec2_vpcipampool.test.id
+/// resource "aws_ec2_vpc_ipam_pool_cidr" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ipam_pool_id = aws_ec2_vpc_ipam_pool.test.id
 ///   cidr         = "10.0.0.0/16"
 /// }
 /// resource "aws_ec2_vpc" "test" {
-///   depends_on          = [aws_ec2_vpcipampoolcidr.test]
-///   ipv4_ipam_pool_id   = aws_ec2_vpcipampool.test.id
+///   depends_on = [aws_ec2_vpc_ipam_pool_cidr.test]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ipv4_ipam_pool_id   = aws_ec2_vpc_ipam_pool.test.id
 ///   ipv4_netmask_length = 24
 /// }
-/// resource "aws_ec2_vpcipampool" "vpc" {
+/// resource "aws_ec2_vpc_ipam_pool" "vpc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source_resource = {
 ///     resource_id     = aws_ec2_vpc.test.id
 ///     resource_owner  = currentAwsCallerIdentity.accountId
-///     resource_region = data.aws_getregion.current.region
+///     resource_region = data.aws_region.current.region
 ///     resource_type   = "vpc"
 ///   }
 ///   address_family      = "ipv4"
-///   ipam_scope_id       = aws_ec2_vpcipam.test.private_default_scope_id
-///   locale              = data.aws_getregion.current.region
-///   source_ipam_pool_id = aws_ec2_vpcipampool.test.id
+///   ipam_scope_id       = aws_ec2_vpc_ipam.test.private_default_scope_id
+///   locale              = data.aws_region.current.region
+///   source_ipam_pool_id = aws_ec2_vpc_ipam_pool.test.id
 /// }
-/// resource "aws_ec2_vpcipampoolcidr" "vpc" {
-///   ipam_pool_id = aws_ec2_vpcipampool.vpc.id
+/// resource "aws_ec2_vpc_ipam_pool_cidr" "vpc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ipam_pool_id = aws_ec2_vpc_ipam_pool.vpc.id
 ///   cidr         = aws_ec2_vpc.test.cidr_block
 /// }
 /// resource "aws_ec2_subnet" "test" {
-///   depends_on          = [aws_ec2_vpcipampoolcidr.vpc]
+///   depends_on = [aws_ec2_vpc_ipam_pool_cidr.vpc]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id              = aws_ec2_vpc.test.id
-///   ipv4_ipam_pool_id   = aws_ec2_vpcipampool.vpc.id
+///   ipv4_ipam_pool_id   = aws_ec2_vpc_ipam_pool.vpc.id
 ///   ipv4_netmask_length = 28
 ///   availability_zone   = available.names[0]
 /// }
@@ -669,7 +699,7 @@ import 'subnet_state.dart';
 ///         var vpc = new VpcIpamPool("vpc", VpcIpamPoolArgs.builder()
 ///             .sourceResource(VpcIpamPoolSourceResourceArgs.builder()
 ///                 .resourceId(testVpc.id())
-///                 .resourceOwner(currentAwsCallerIdentity.accountId())
+///                 .resourceOwner(currentAwsCallerIdentity.get("accountId"))
 ///                 .resourceRegion(current.region())
 ///                 .resourceType("vpc")
 ///                 .build())
@@ -688,7 +718,7 @@ import 'subnet_state.dart';
 ///             .vpcId(testVpc.id())
 ///             .ipv4IpamPoolId(vpc.id())
 ///             .ipv4NetmaskLength(28)
-///             .availabilityZone(available.names()[0])
+///             .availabilityZone(available.get("names")[0])
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(vpcVpcIpamPoolCidr)
 ///                 .build());
@@ -850,7 +880,7 @@ class Subnet extends pulumi.CustomResource {
           'aws:ec2/subnet:Subnet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     assignIpv6AddressOnCreation = registerOutput<bool?>('assignIpv6AddressOnCreation');

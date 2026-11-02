@@ -179,7 +179,7 @@ import 'filter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -188,21 +188,27 @@ import 'filter_state.dart';
 /// }
 ///
 /// resource "aws_guardduty_filter" "MyFilter" {
-///   finding_criteria = {
-///     criterions = [{
-///       "field"  = "region"
-///       "equals" = ["eu-west-1"]
-///       }, {
-///       "field"     = "service.additionalInfo.threatListName"
-///       "notEquals" = ["some-threat", "another-threat"]
-///       }, {
-///       "field"       = "updatedAt"
-///       "greaterThan" = "2020-01-01T00:00:00Z"
-///       "lessThan"    = "2020-02-01T00:00:00Z"
-///       }, {
-///       "field"              = "severity"
-///       "greaterThanOrEqual" = "4"
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   finding_criteria {
+///     criterion {
+///       field  = "region"
+///       equals = ["eu-west-1"]
+///     }
+///     criterion {
+///       field      = "service.additionalInfo.threatListName"
+///       not_equals = ["some-threat", "another-threat"]
+///     }
+///     criterion {
+///       field        = "updatedAt"
+///       greater_than = "2020-01-01T00:00:00Z"
+///       less_than    = "2020-02-01T00:00:00Z"
+///     }
+///     criterion {
+///       field                 = "severity"
+///       greater_than_or_equal = "4"
+///     }
 ///   }
 ///   name        = "MyFilter"
 ///   action      = "ARCHIVE"
@@ -258,7 +264,7 @@ import 'filter_state.dart';
 ///                 .build())
 ///             .name("MyFilter")
 ///             .action("ARCHIVE")
-///             .detectorId(example.id())
+///             .detectorId(example.get("id"))
 ///             .rank(1)
 ///             .build());
 ///
@@ -333,7 +339,7 @@ class Filter extends pulumi.CustomResource {
           'aws:guardduty/filter:Filter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     action = registerOutput<String>('action');
     arn = registerOutput<String>('arn');

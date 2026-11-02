@@ -109,7 +109,7 @@ import 'disk_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -117,8 +117,8 @@ import 'disk_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzones" "available" {
-///   filters {
+/// data "aws_availability_zones" "available" {
+///   filter {
 ///     name   = "opt-in-status"
 ///     values = ["opt-in-not-required"]
 ///   }
@@ -126,9 +126,12 @@ import 'disk_state.dart';
 /// }
 ///
 /// resource "aws_lightsail_disk" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-disk"
 ///   size_in_gb        = 8
-///   availability_zone = data.aws_getavailabilityzones.available.names[0]
+///   availability_zone = data.aws_availability_zones.available.names[0]
 /// }
 /// ```
 /// ```java
@@ -234,7 +237,7 @@ class Disk extends pulumi.CustomResource {
           'aws:lightsail/disk:Disk',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String>('availabilityZone');

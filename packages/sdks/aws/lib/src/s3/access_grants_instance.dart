@@ -53,7 +53,7 @@ import 'access_grants_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -61,7 +61,10 @@ import 'access_grants_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3control_accessgrantsinstance" "example" {
+/// resource "aws_s3control_access_grants_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -147,7 +150,7 @@ import 'access_grants_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -155,7 +158,10 @@ import 'access_grants_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3control_accessgrantsinstance" "example" {
+/// resource "aws_s3control_access_grants_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity_center_arn = "arn:aws:sso:::instance/ssoins-890759e9c7bfdc1d"
 /// }
 /// ```
@@ -233,7 +239,7 @@ class AccessGrantsInstance extends pulumi.CustomResource {
           'aws:s3control/accessGrantsInstance:AccessGrantsInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accessGrantsInstanceArn = registerOutput<String>('accessGrantsInstanceArn');
     accessGrantsInstanceId = registerOutput<String>('accessGrantsInstanceId');

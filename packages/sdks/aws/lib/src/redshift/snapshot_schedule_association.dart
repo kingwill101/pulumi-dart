@@ -110,8 +110,8 @@ import 'snapshot_schedule_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = redshift.NewSnapshotScheduleAssociation(ctx, "default", &redshift.SnapshotScheduleAssociationArgs{
-/// 			ClusterIdentifier:  _default.ID().ToIDOutput().ToStringOutput(),
-/// 			ScheduleIdentifier: defaultSnapshotSchedule.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterIdentifier:  _default.ID(),
+/// 			ScheduleIdentifier: defaultSnapshotSchedule.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -121,7 +121,7 @@ import 'snapshot_schedule_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -130,6 +130,9 @@ import 'snapshot_schedule_association_state.dart';
 /// }
 ///
 /// resource "aws_redshift_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier = "tf-redshift-cluster"
 ///   database_name      = "mydb"
 ///   master_username    = "foo"
@@ -137,13 +140,19 @@ import 'snapshot_schedule_association_state.dart';
 ///   node_type          = "dc1.large"
 ///   cluster_type       = "single-node"
 /// }
-/// resource "aws_redshift_snapshotschedule" "default" {
+/// resource "aws_redshift_snapshot_schedule" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identifier  = "tf-redshift-snapshot-schedule"
 ///   definitions = ["rate(12 hours)"]
 /// }
-/// resource "aws_redshift_snapshotscheduleassociation" "default" {
+/// resource "aws_redshift_snapshot_schedule_association" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier  = aws_redshift_cluster.default.id
-///   schedule_identifier = aws_redshift_snapshotschedule.default.id
+///   schedule_identifier = aws_redshift_snapshot_schedule.default.id
 /// }
 /// ```
 /// ```java
@@ -247,7 +256,7 @@ class SnapshotScheduleAssociation extends pulumi.CustomResource {
           'aws:redshift/snapshotScheduleAssociation:SnapshotScheduleAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     region = registerOutput<String>('region');

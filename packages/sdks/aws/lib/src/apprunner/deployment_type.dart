@@ -56,7 +56,7 @@ import 'deployment_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,6 +65,9 @@ import 'deployment_timeouts.dart';
 /// }
 ///
 /// resource "aws_apprunner_deployment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_arn = exampleAwsApprunnerService.arn
 /// }
 /// ```
@@ -90,7 +93,7 @@ import 'deployment_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Deployment("example", DeploymentArgs.builder()
-///             .serviceArn(exampleAwsApprunnerService.arn())
+///             .serviceArn(exampleAwsApprunnerService.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -126,7 +129,7 @@ class DeploymentType extends pulumi.CustomResource {
           'aws:apprunner/deployment:Deployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     operationId = registerOutput<String>('operationId');
     region = registerOutput<String>('region');

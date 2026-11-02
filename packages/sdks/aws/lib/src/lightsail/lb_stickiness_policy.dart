@@ -105,7 +105,7 @@ import 'lb_stickiness_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -114,6 +114,9 @@ import 'lb_stickiness_policy_state.dart';
 /// }
 ///
 /// resource "aws_lightsail_lb" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-load-balancer"
 ///   health_check_path = "/"
 ///   instance_port     = "80"
@@ -121,7 +124,10 @@ import 'lb_stickiness_policy_state.dart';
 ///     "foo" = "bar"
 ///   }
 /// }
-/// resource "aws_lightsail_lbstickinesspolicy" "example" {
+/// resource "aws_lightsail_lb_stickiness_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   lb_name         = aws_lightsail_lb.example.name
 ///   cookie_duration = 900
 ///   enabled         = true
@@ -217,7 +223,7 @@ class LbStickinessPolicy extends pulumi.CustomResource {
           'aws:lightsail/lbStickinessPolicy:LbStickinessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     cookieDuration = registerOutput<int>('cookieDuration');
     enabled = registerOutput<bool>('enabled');

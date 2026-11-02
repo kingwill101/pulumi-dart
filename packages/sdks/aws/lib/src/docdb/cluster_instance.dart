@@ -118,7 +118,7 @@ import 'cluster_instance_state.dart';
 /// 			val0 := index
 /// 			__res, err := docdb.NewClusterInstance(ctx, fmt.Sprintf("cluster_instances-%v", key0), &docdb.ClusterInstanceArgs{
 /// 				Identifier:        pulumi.Sprintf("docdb-cluster-demo-%v", val0),
-/// 				ClusterIdentifier: _default.ID().ToIDOutput().ToStringOutput(),
+/// 				ClusterIdentifier: _default.ID(),
 /// 				InstanceClass:     pulumi.String("db.r5.large"),
 /// 			})
 /// 			if err != nil {
@@ -131,7 +131,7 @@ import 'cluster_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -139,13 +139,22 @@ import 'cluster_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_docdb_clusterinstance" "cluster_instances" {
-///   count              = 2
+/// resource "aws_docdb_cluster_instance" "cluster_instances" {
+///   count = 2
+///   pulumi {
+///     name ="cluster_instances-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identifier         ="docdb-cluster-demo-${count.index}"
 ///   cluster_identifier = aws_docdb_cluster.default.id
 ///   instance_class     = "db.r5.large"
 /// }
 /// resource "aws_docdb_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier = "docdb-cluster-demo"
 ///   availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c"]
 ///   master_username    = "foo"
@@ -299,7 +308,7 @@ class ClusterInstance extends pulumi.CustomResource {
           'aws:docdb/clusterInstance:ClusterInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     applyImmediately = registerOutput<bool?>('applyImmediately');
     arn = registerOutput<String>('arn');

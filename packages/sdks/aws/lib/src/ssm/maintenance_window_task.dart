@@ -158,7 +158,7 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -166,13 +166,16 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssm_maintenancewindowtask" "example" {
-///   task_invocation_parameters = {
-///     automation_parameters = {
-///       parameters = [{
-///         "name"   = "InstanceId"
-///         "values" = [exampleAwsInstance.id]
-///       }]
+/// resource "aws_ssm_maintenance_window_task" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   task_invocation_parameters {
+///     automation_parameters {
+///       parameter {
+///         name   = "InstanceId"
+///         values = [exampleAwsInstance.id]
+///       }
 ///       document_version = "$LATEST"
 ///     }
 ///   }
@@ -218,21 +221,21 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///                 .automationParameters(MaintenanceWindowTaskTaskInvocationParametersAutomationParametersArgs.builder()
 ///                     .parameters(MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameterArgs.builder()
 ///                         .name("InstanceId")
-///                         .values(exampleAwsInstance.id())
+///                         .values(exampleAwsInstance.get("id"))
 ///                         .build())
 ///                     .documentVersion("$LATEST")
 ///                     .build())
 ///                 .build())
 ///             .targets(MaintenanceWindowTaskTargetArgs.builder()
 ///                 .key("InstanceIds")
-///                 .values(exampleAwsInstance.id())
+///                 .values(exampleAwsInstance.get("id"))
 ///                 .build())
 ///             .maxConcurrency("2")
 ///             .maxErrors("1")
 ///             .priority(1)
 ///             .taskArn("AWS-RestartEC2Instance")
 ///             .taskType("AUTOMATION")
-///             .windowId(exampleAwsSsmMaintenanceWindow.id())
+///             .windowId(exampleAwsSsmMaintenanceWindow.get("id"))
 ///             .build());
 ///
 ///     }
@@ -405,7 +408,7 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -416,9 +419,12 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssm_maintenancewindowtask" "example" {
-///   task_invocation_parameters = {
-///     lambda_parameters = {
+/// resource "aws_ssm_maintenance_window_task" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   task_invocation_parameters {
+///     lambda_parameters {
 ///       client_context = base64encode("{\"key1\":\"value1\"}")
 ///       payload        = "{\"key1\":\"value1\"}"
 ///     }
@@ -472,14 +478,14 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///                 .build())
 ///             .targets(MaintenanceWindowTaskTargetArgs.builder()
 ///                 .key("InstanceIds")
-///                 .values(exampleAwsInstance.id())
+///                 .values(exampleAwsInstance.get("id"))
 ///                 .build())
 ///             .maxConcurrency("2")
 ///             .maxErrors("1")
 ///             .priority(1)
-///             .taskArn(exampleAwsLambdaFunction.arn())
+///             .taskArn(exampleAwsLambdaFunction.get("arn"))
 ///             .taskType("LAMBDA")
-///             .windowId(exampleAwsSsmMaintenanceWindow.id())
+///             .windowId(exampleAwsSsmMaintenanceWindow.get("id"))
 ///             .build());
 ///
 ///     }
@@ -700,7 +706,7 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -708,18 +714,21 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssm_maintenancewindowtask" "example" {
-///   task_invocation_parameters = {
-///     run_command_parameters = {
-///       notification_config = {
+/// resource "aws_ssm_maintenance_window_task" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   task_invocation_parameters {
+///     run_command_parameters {
+///       notification_config {
 ///         notification_arn    = exampleAwsSnsTopic.arn
 ///         notification_events = ["All"]
 ///         notification_type   = "Command"
 ///       }
-///       parameters = [{
-///         "name"   = "commands"
-///         "values" = ["date"]
-///       }]
+///       parameter {
+///         name   = "commands"
+///         values = ["date"]
+///       }
 ///       output_s3_bucket     = exampleAwsS3Bucket.id
 ///       output_s3_key_prefix = "output"
 ///       service_role_arn     = exampleAwsIamRole.arn
@@ -768,7 +777,7 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///             .taskInvocationParameters(MaintenanceWindowTaskTaskInvocationParametersArgs.builder()
 ///                 .runCommandParameters(MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersArgs.builder()
 ///                     .notificationConfig(MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfigArgs.builder()
-///                         .notificationArn(exampleAwsSnsTopic.arn())
+///                         .notificationArn(exampleAwsSnsTopic.get("arn"))
 ///                         .notificationEvents("All")
 ///                         .notificationType("Command")
 ///                         .build())
@@ -776,22 +785,22 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///                         .name("commands")
 ///                         .values("date")
 ///                         .build())
-///                     .outputS3Bucket(exampleAwsS3Bucket.id())
+///                     .outputS3Bucket(exampleAwsS3Bucket.get("id"))
 ///                     .outputS3KeyPrefix("output")
-///                     .serviceRoleArn(exampleAwsIamRole.arn())
+///                     .serviceRoleArn(exampleAwsIamRole.get("arn"))
 ///                     .timeoutSeconds(600)
 ///                     .build())
 ///                 .build())
 ///             .targets(MaintenanceWindowTaskTargetArgs.builder()
 ///                 .key("InstanceIds")
-///                 .values(exampleAwsInstance.id())
+///                 .values(exampleAwsInstance.get("id"))
 ///                 .build())
 ///             .maxConcurrency("2")
 ///             .maxErrors("1")
 ///             .priority(1)
 ///             .taskArn("AWS-RunShellScript")
 ///             .taskType("RUN_COMMAND")
-///             .windowId(exampleAwsSsmMaintenanceWindow.id())
+///             .windowId(exampleAwsSsmMaintenanceWindow.get("id"))
 ///             .build());
 ///
 ///     }
@@ -957,7 +966,7 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -965,9 +974,12 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssm_maintenancewindowtask" "example" {
-///   task_invocation_parameters = {
-///     step_functions_parameters = {
+/// resource "aws_ssm_maintenance_window_task" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   task_invocation_parameters {
+///     step_functions_parameters {
 ///       input = "{\"key1\":\"value1\"}"
 ///       name  = "example"
 ///     }
@@ -1017,14 +1029,14 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///                 .build())
 ///             .targets(MaintenanceWindowTaskTargetArgs.builder()
 ///                 .key("InstanceIds")
-///                 .values(exampleAwsInstance.id())
+///                 .values(exampleAwsInstance.get("id"))
 ///                 .build())
 ///             .maxConcurrency("2")
 ///             .maxErrors("1")
 ///             .priority(1)
-///             .taskArn(exampleAwsSfnActivity.id())
+///             .taskArn(exampleAwsSfnActivity.get("id"))
 ///             .taskType("STEP_FUNCTIONS")
-///             .windowId(exampleAwsSsmMaintenanceWindow.id())
+///             .windowId(exampleAwsSsmMaintenanceWindow.get("id"))
 ///             .build());
 ///
 ///     }
@@ -1116,7 +1128,7 @@ class MaintenanceWindowTask extends pulumi.CustomResource {
           'aws:ssm/maintenanceWindowTask:MaintenanceWindowTask',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cutoffBehavior = registerOutput<String?>('cutoffBehavior');

@@ -57,7 +57,7 @@ import 'dedicated_ip_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,7 +65,10 @@ import 'dedicated_ip_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sesv2_dedicatedippool" "example" {
+/// resource "aws_sesv2_dedicated_ip_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   pool_name = "my-pool"
 /// }
 /// ```
@@ -164,7 +167,7 @@ import 'dedicated_ip_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -172,7 +175,10 @@ import 'dedicated_ip_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sesv2_dedicatedippool" "example" {
+/// resource "aws_sesv2_dedicated_ip_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   pool_name    = "my-managed-pool"
 ///   scaling_mode = "MANAGED"
 /// }
@@ -250,7 +256,7 @@ class DedicatedIpPool extends pulumi.CustomResource {
           'aws:sesv2/dedicatedIpPool:DedicatedIpPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     poolName = registerOutput<String>('poolName');

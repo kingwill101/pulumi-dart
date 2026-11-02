@@ -126,7 +126,7 @@ import 'capability_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -135,9 +135,12 @@ import 'capability_timeouts.dart';
 /// }
 ///
 /// resource "aws_eks_capability" "example" {
-///   configuration = {
-///     argo_cd = {
-///       aws_idc = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     argo_cd {
+///       aws_idc {
 ///         idc_instance_arn = "arn:aws:sso:::instance/ssoins-1234567890abcdef0"
 ///       }
 ///       namespace = "argocd"
@@ -186,10 +189,10 @@ import 'capability_timeouts.dart';
 ///                     .namespace("argocd")
 ///                     .build())
 ///                 .build())
-///             .clusterName(exampleAwsEksCluster.name())
+///             .clusterName(exampleAwsEksCluster.get("name"))
 ///             .capabilityName("argocd")
 ///             .type("ARGOCD")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .deletePropagationPolicy("RETAIN")
 ///             .tags(Map.of("Name", "example-capability"))
 ///             .build());
@@ -376,7 +379,7 @@ import 'capability_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -385,29 +388,44 @@ import 'capability_timeouts.dart';
 /// }
 ///
 /// resource "aws_eks_capability" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name              = exampleAwsEksCluster.name
 ///   capability_name           = "ack"
 ///   type                      = "ACK"
 ///   role_arn                  = exampleAwsIamRole.arn
 ///   delete_propagation_policy = "RETAIN"
 /// }
-/// resource "aws_cloudwatch_loggroup" "ack" {
+/// resource "aws_cloudwatch_log_group" "ack" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "/aws/eks/example/capabilities/ack"
 /// }
-/// resource "aws_cloudwatch_logdeliverysource" "ack" {
+/// resource "aws_cloudwatch_log_delivery_source" "ack" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "eks-capability-ack-logs"
 ///   log_type     = "EKS_CAPABILITY_ACK_LOGS"
 ///   resource_arn = aws_eks_capability.example.arn
 /// }
-/// resource "aws_cloudwatch_logdeliverydestination" "ack" {
-///   delivery_destination_configuration = {
-///     destination_resource_arn = aws_cloudwatch_loggroup.ack.arn
+/// resource "aws_cloudwatch_log_delivery_destination" "ack" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   delivery_destination_configuration {
+///     destination_resource_arn = aws_cloudwatch_log_group.ack.arn
 ///   }
 ///   name = "eks-capability-ack-logs"
 /// }
-/// resource "aws_cloudwatch_logdelivery" "ack" {
-///   delivery_source_name     = aws_cloudwatch_logdeliverysource.ack.name
-///   delivery_destination_arn = aws_cloudwatch_logdeliverydestination.ack.arn
+/// resource "aws_cloudwatch_log_delivery" "ack" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   delivery_source_name     = aws_cloudwatch_log_delivery_source.ack.name
+///   delivery_destination_arn = aws_cloudwatch_log_delivery_destination.ack.arn
 /// }
 /// ```
 /// ```java
@@ -441,10 +459,10 @@ import 'capability_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Capability("example", CapabilityArgs.builder()
-///             .clusterName(exampleAwsEksCluster.name())
+///             .clusterName(exampleAwsEksCluster.get("name"))
 ///             .capabilityName("ack")
 ///             .type("ACK")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .deletePropagationPolicy("RETAIN")
 ///             .build());
 ///
@@ -567,7 +585,7 @@ class Capability extends pulumi.CustomResource {
           'aws:eks/capability:Capability',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     capabilityName = registerOutput<String>('capabilityName');

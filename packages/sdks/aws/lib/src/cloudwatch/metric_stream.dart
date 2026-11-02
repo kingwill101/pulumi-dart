@@ -508,14 +508,14 @@ import 'metric_stream_statistics_configuration.dart';
 /// 		}, nil)
 /// 		_, err = iam.NewRolePolicy(ctx, "metric_stream_to_firehose", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("default"),
-/// 			Role:   metricStreamToFirehoseRole.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   metricStreamToFirehoseRole.ID(),
 /// 			Policy: metricStreamToFirehose.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "bucket_acl", &s3.BucketAclArgs{
-/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: bucket.ID(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -544,7 +544,7 @@ import 'metric_stream_statistics_configuration.dart';
 /// 		}, nil)
 /// 		_, err = iam.NewRolePolicy(ctx, "firehose_to_s3", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("default"),
-/// 			Role:   firehoseToS3Role.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   firehoseToS3Role.ID(),
 /// 			Policy: firehoseToS3.Json(),
 /// 		})
 /// 		if err != nil {
@@ -555,7 +555,7 @@ import 'metric_stream_statistics_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -563,8 +563,8 @@ import 'metric_stream_statistics_configuration.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "streamsAssumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "streamsAssumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["streams.metrics.cloudwatch.amazonaws.com"]
@@ -573,15 +573,15 @@ import 'metric_stream_statistics_configuration.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "metricStreamToFirehose" {
-///   statements {
+/// data "aws_iam_policy_document" "metricStreamToFirehose" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["firehose:PutRecord", "firehose:PutRecordBatch"]
-///     resources = [aws_kinesis_firehosedeliverystream.s3_stream.arn]
+///     resources = [aws_kinesis_firehose_delivery_stream.s3_stream.arn]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "firehoseAssumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "firehoseAssumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["firehose.amazonaws.com"]
@@ -590,54 +590,78 @@ import 'metric_stream_statistics_configuration.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "firehoseToS3" {
-///   statements {
+/// data "aws_iam_policy_document" "firehoseToS3" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["s3:AbortMultipartUpload", "s3:GetBucketLocation", "s3:GetObject", "s3:ListBucket", "s3:ListBucketMultipartUploads", "s3:PutObject"]
 ///     resources = [aws_s3_bucket.bucket.arn, "${aws_s3_bucket.bucket.arn}/*"]
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_metricstream" "main" {
-///   include_filters {
+/// resource "aws_cloudwatch_metric_stream" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   include_filter {
 ///     namespace    = "AWS/EC2"
 ///     metric_names = ["CPUUtilization", "NetworkOut"]
 ///   }
-///   include_filters {
+///   include_filter {
 ///     namespace    = "AWS/EBS"
 ///     metric_names = []
 ///   }
 ///   name          = "my-metric-stream"
 ///   role_arn      = aws_iam_role.metric_stream_to_firehose.arn
-///   firehose_arn  = aws_kinesis_firehosedeliverystream.s3_stream.arn
+///   firehose_arn  = aws_kinesis_firehose_delivery_stream.s3_stream.arn
 ///   output_format = "json"
 /// }
 /// resource "aws_iam_role" "metric_stream_to_firehose" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "metric_stream_to_firehose_role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.streamsAssumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.streamsAssumeRole.json
 /// }
-/// resource "aws_iam_rolepolicy" "metric_stream_to_firehose" {
+/// resource "aws_iam_role_policy" "metric_stream_to_firehose" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "default"
 ///   role   = aws_iam_role.metric_stream_to_firehose.id
-///   policy = data.aws_iam_getpolicydocument.metricStreamToFirehose.json
+///   policy = data.aws_iam_policy_document.metricStreamToFirehose.json
 /// }
 /// resource "aws_s3_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "metric-stream-test-bucket"
 /// }
-/// resource "aws_s3_bucketacl" "bucket_acl" {
+/// resource "aws_s3_bucket_acl" "bucket_acl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.bucket.id
 ///   acl    = "private"
 /// }
 /// resource "aws_iam_role" "firehose_to_s3" {
-///   assume_role_policy = data.aws_iam_getpolicydocument.firehoseAssumeRole.json
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   assume_role_policy = data.aws_iam_policy_document.firehoseAssumeRole.json
 /// }
-/// resource "aws_iam_rolepolicy" "firehose_to_s3" {
+/// resource "aws_iam_role_policy" "firehose_to_s3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "default"
 ///   role   = aws_iam_role.firehose_to_s3.id
-///   policy = data.aws_iam_getpolicydocument.firehoseToS3.json
+///   policy = data.aws_iam_policy_document.firehoseToS3.json
 /// }
-/// resource "aws_kinesis_firehosedeliverystream" "s3_stream" {
-///   extended_s3_configuration = {
+/// resource "aws_kinesis_firehose_delivery_stream" "s3_stream" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   extended_s3_configuration {
 ///     role_arn   = aws_iam_role.firehose_to_s3.arn
 ///     bucket_arn = aws_s3_bucket.bucket.arn
 ///   }
@@ -1074,7 +1098,7 @@ import 'metric_stream_statistics_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1082,16 +1106,19 @@ import 'metric_stream_statistics_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_metricstream" "main" {
-///   statistics_configurations {
-///     include_metrics {
+/// resource "aws_cloudwatch_metric_stream" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   statistics_configuration {
+///     include_metric {
 ///       metric_name = "CPUUtilization"
 ///       namespace   = "AWS/EC2"
 ///     }
 ///     additional_statistics = ["p1", "tm99"]
 ///   }
-///   statistics_configurations {
-///     include_metrics {
+///   statistics_configuration {
+///     include_metric {
 ///       metric_name = "CPUUtilization"
 ///       namespace   = "AWS/EC2"
 ///     }
@@ -1145,8 +1172,8 @@ import 'metric_stream_statistics_configuration.dart';
 ///                     .additionalStatistics("TS(50.5:)")
 ///                     .build())
 ///             .name("my-metric-stream")
-///             .roleArn(metricStreamToFirehose.arn())
-///             .firehoseArn(s3Stream.arn())
+///             .roleArn(metricStreamToFirehose.get("arn"))
+///             .firehoseArn(s3Stream.get("arn"))
 ///             .outputFormat("json")
 ///             .build());
 ///
@@ -1244,7 +1271,7 @@ class MetricStream extends pulumi.CustomResource {
           'aws:cloudwatch/metricStream:MetricStream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationDate = registerOutput<String>('creationDate');

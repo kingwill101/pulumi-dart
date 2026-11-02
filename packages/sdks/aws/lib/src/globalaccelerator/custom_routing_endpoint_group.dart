@@ -109,7 +109,7 @@ import 'custom_routing_endpoint_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -117,13 +117,16 @@ import 'custom_routing_endpoint_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_globalaccelerator_customroutingendpointgroup" "example" {
-///   destination_configurations {
+/// resource "aws_globalaccelerator_custom_routing_endpoint_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   destination_configuration {
 ///     from_port = 80
 ///     to_port   = 8080
 ///     protocols = ["TCP"]
 ///   }
-///   endpoint_configurations {
+///   endpoint_configuration {
 ///     endpoint_id = exampleAwsSubnet.id
 ///   }
 ///   listener_arn = exampleAwsGlobalacceleratorCustomRoutingListener.arn
@@ -159,9 +162,9 @@ import 'custom_routing_endpoint_group_state.dart';
 ///                 .protocols("TCP")
 ///                 .build())
 ///             .endpointConfigurations(CustomRoutingEndpointGroupEndpointConfigurationArgs.builder()
-///                 .endpointId(exampleAwsSubnet.id())
+///                 .endpointId(exampleAwsSubnet.get("id"))
 ///                 .build())
-///             .listenerArn(exampleAwsGlobalacceleratorCustomRoutingListener.arn())
+///             .listenerArn(exampleAwsGlobalacceleratorCustomRoutingListener.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -221,7 +224,7 @@ class CustomRoutingEndpointGroup extends pulumi.CustomResource {
           'aws:globalaccelerator/customRoutingEndpointGroup:CustomRoutingEndpointGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     destinationConfigurations = registerOutput<List<CustomRoutingEndpointGroupDestinationConfiguration>>('destinationConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomRoutingEndpointGroupDestinationConfiguration>(guardedValue, (value) => CustomRoutingEndpointGroupDestinationConfiguration.fromMap((value as Map).cast<String, dynamic>())); });

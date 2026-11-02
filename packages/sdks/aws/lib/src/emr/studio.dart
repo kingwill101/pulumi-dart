@@ -95,7 +95,7 @@ import 'studio_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -104,6 +104,9 @@ import 'studio_state.dart';
 /// }
 ///
 /// resource "aws_emr_studio" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auth_mode                   = "SSO"
 ///   default_s3_location         ="s3://${test.bucket}/test"
 ///   engine_security_group_id    = testAwsSecurityGroup.id
@@ -138,14 +141,14 @@ import 'studio_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Studio("example", StudioArgs.builder()
 ///             .authMode("SSO")
-///             .defaultS3Location(String.format("s3://%s/test", test.bucket()))
-///             .engineSecurityGroupId(testAwsSecurityGroup.id())
+///             .defaultS3Location(String.format("s3://%s/test", test.get("bucket")))
+///             .engineSecurityGroupId(testAwsSecurityGroup.get("id"))
 ///             .name("example")
-///             .serviceRole(testAwsIamRole.arn())
-///             .subnetIds(testAwsSubnet.id())
-///             .userRole(testAwsIamRole.arn())
-///             .vpcId(testAwsVpc.id())
-///             .workspaceSecurityGroupId(testAwsSecurityGroup.id())
+///             .serviceRole(testAwsIamRole.get("arn"))
+///             .subnetIds(testAwsSubnet.get("id"))
+///             .userRole(testAwsIamRole.get("arn"))
+///             .vpcId(testAwsVpc.get("id"))
+///             .workspaceSecurityGroupId(testAwsSecurityGroup.get("id"))
 ///             .build());
 ///
 ///     }
@@ -227,7 +230,7 @@ class Studio extends pulumi.CustomResource {
           'aws:emr/studio:Studio',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     authMode = registerOutput<String>('authMode');

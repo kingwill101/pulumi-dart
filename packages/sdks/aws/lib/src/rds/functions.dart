@@ -91,7 +91,7 @@ import 'get_subnet_group_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -99,7 +99,7 @@ import 'get_subnet_group_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_rds_getcertificate" "example" {
+/// data "aws_rds_certificate" "example" {
 ///   latest_valid_till = true
 /// }
 /// ```
@@ -220,7 +220,7 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -228,7 +228,7 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 ///   }
 /// }
 ///
-/// data "aws_rds_getcluster" "clusterName" {
+/// data "aws_rds_cluster" "clusterName" {
 ///   cluster_identifier = "clusterName"
 /// }
 /// ```
@@ -349,7 +349,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -357,7 +357,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 ///   }
 /// }
 ///
-/// data "aws_rds_getclusterparametergroup" "test" {
+/// data "aws_rds_cluster_parameter_group" "test" {
 ///   name = "default.postgres15"
 /// }
 /// ```
@@ -540,7 +540,7 @@ pulumi.Output<GetClusterParameterGroupResult> getClusterParameterGroupOutput(
 /// 			return err
 /// 		}
 /// 		_, err = rds.NewClusterInstance(ctx, "aurora", &rds.ClusterInstanceArgs{
-/// 			ClusterIdentifier: aurora.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterIdentifier: aurora.ID(),
 /// 			InstanceClass:     pulumi.String(rds.InstanceType_T2_Small),
 /// 			DbSubnetGroupName: pulumi.String("my_db_subnet_group"),
 /// 		})
@@ -552,7 +552,7 @@ pulumi.Output<GetClusterParameterGroupResult> getClusterParameterGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -560,7 +560,7 @@ pulumi.Output<GetClusterParameterGroupResult> getClusterParameterGroupOutput(
 ///   }
 /// }
 ///
-/// data "aws_rds_getclustersnapshot" "developmentFinalSnapshot" {
+/// data "aws_rds_cluster_snapshot" "developmentFinalSnapshot" {
 ///   db_cluster_identifier = "development_cluster"
 ///   most_recent           = true
 /// }
@@ -569,13 +569,17 @@ pulumi.Output<GetClusterParameterGroupResult> getClusterParameterGroupOutput(
 /// # a new dev database.
 /// resource "aws_rds_cluster" "aurora" {
 ///   lifecycle {
-///     ignore_changes = [snapshotIdentifier]
+///     ignore_changes        = [snapshotIdentifier]
+///     create_before_destroy = true
 ///   }
 ///   cluster_identifier   = "development_cluster"
-///   snapshot_identifier  = data.aws_rds_getclustersnapshot.developmentFinalSnapshot.id
+///   snapshot_identifier  = data.aws_rds_cluster_snapshot.developmentFinalSnapshot.id
 ///   db_subnet_group_name = "my_db_subnet_group"
 /// }
-/// resource "aws_rds_clusterinstance" "aurora" {
+/// resource "aws_rds_cluster_instance" "aurora" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier   = aws_rds_cluster.aurora.id
 ///   instance_class       = "db.t2.small"
 ///   db_subnet_group_name = "my_db_subnet_group"
@@ -765,7 +769,7 @@ pulumi.Output<GetClusterSnapshotResult> getClusterSnapshotOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -773,8 +777,8 @@ pulumi.Output<GetClusterSnapshotResult> getClusterSnapshotOutput(
 ///   }
 /// }
 ///
-/// data "aws_rds_getclusters" "example" {
-///   filters {
+/// data "aws_rds_clusters" "example" {
+///   filter {
 ///     name   = "engine"
 ///     values = ["aurora-postgresql"]
 ///   }
@@ -923,7 +927,7 @@ pulumi.Output<GetClustersResult> getClustersOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -931,7 +935,7 @@ pulumi.Output<GetClustersResult> getClustersOutput(
 ///   }
 /// }
 ///
-/// data "aws_rds_getengineversion" "test" {
+/// data "aws_rds_engine_version" "test" {
 ///   engine             = "mysql"
 ///   preferred_versions = ["8.0.27", "8.0.26"]
 /// }
@@ -1068,7 +1072,7 @@ pulumi.Output<GetClustersResult> getClustersOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1076,8 +1080,8 @@ pulumi.Output<GetClustersResult> getClustersOutput(
 ///   }
 /// }
 ///
-/// data "aws_rds_getengineversion" "test" {
-///   filters {
+/// data "aws_rds_engine_version" "test" {
+///   filter {
 ///     name   = "engine-mode"
 ///     values = ["serverless"]
 ///   }
@@ -1220,7 +1224,7 @@ pulumi.Output<GetEngineVersionResult> getEngineVersionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1228,11 +1232,11 @@ pulumi.Output<GetEngineVersionResult> getEngineVersionOutput(
 ///   }
 /// }
 ///
-/// data "aws_rds_geteventcategories" "example" {
+/// data "aws_rds_event_categories" "example" {
 /// }
 ///
 /// output "example" {
-///   value = data.aws_rds_geteventcategories.example.event_categories
+///   value = data.aws_rds_event_categories.example.event_categories
 /// }
 /// ```
 /// ```java
@@ -1338,7 +1342,7 @@ pulumi.Output<GetEngineVersionResult> getEngineVersionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1346,12 +1350,12 @@ pulumi.Output<GetEngineVersionResult> getEngineVersionOutput(
 ///   }
 /// }
 ///
-/// data "aws_rds_geteventcategories" "example" {
+/// data "aws_rds_event_categories" "example" {
 ///   source_type = "db-snapshot"
 /// }
 ///
 /// output "example" {
-///   value = data.aws_rds_geteventcategories.example.event_categories
+///   value = data.aws_rds_event_categories.example.event_categories
 /// }
 /// ```
 /// ```java
@@ -1508,7 +1512,7 @@ pulumi.Output<GetEventCategoriesResult> getEventCategoriesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1516,7 +1520,7 @@ pulumi.Output<GetEventCategoriesResult> getEventCategoriesOutput(
 ///   }
 /// }
 ///
-/// data "aws_rds_getevents" "example" {
+/// data "aws_rds_events" "example" {
 ///   source_identifier = exampleAwsDbInstance.identifier
 ///   source_type       = "db-instance"
 ///   event_categories  = ["failure", "maintenance"]
@@ -1544,7 +1548,7 @@ pulumi.Output<GetEventCategoriesResult> getEventCategoriesOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = RdsFunctions.getEvents(GetEventsArgs.builder()
-///             .sourceIdentifier(exampleAwsDbInstance.identifier())
+///             .sourceIdentifier(exampleAwsDbInstance.get("identifier"))
 ///             .sourceType("db-instance")
 ///             .eventCategories(
 ///                 "failure",
@@ -1649,7 +1653,7 @@ pulumi.Output<GetEventsResult> getEventsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1657,7 +1661,7 @@ pulumi.Output<GetEventsResult> getEventsOutput(
 ///   }
 /// }
 ///
-/// data "aws_rds_getglobalcluster" "example" {
+/// data "aws_rds_global_cluster" "example" {
 ///   identifier = test.globalClusterIdentifier
 /// }
 /// ```
@@ -1683,7 +1687,7 @@ pulumi.Output<GetEventsResult> getEventsOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = RdsFunctions.getGlobalCluster(GetGlobalClusterArgs.builder()
-///             .identifier(test.globalClusterIdentifier())
+///             .identifier(test.get("globalClusterIdentifier"))
 ///             .build());
 ///
 ///     }
@@ -1778,7 +1782,7 @@ pulumi.Output<GetGlobalClusterResult> getGlobalClusterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1786,7 +1790,7 @@ pulumi.Output<GetGlobalClusterResult> getGlobalClusterOutput(
 ///   }
 /// }
 ///
-/// data "aws_rds_getinstance" "database" {
+/// data "aws_rds_instance" "database" {
 ///   db_instance_identifier = "my-test-database"
 /// }
 /// ```
@@ -1932,7 +1936,7 @@ pulumi.Output<GetInstanceResult> getInstanceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1940,7 +1944,7 @@ pulumi.Output<GetInstanceResult> getInstanceOutput(
 ///   }
 /// }
 ///
-/// data "aws_rds_getinstances" "example" {
+/// data "aws_rds_instances" "example" {
 ///   filters {
 ///     name   = "db-instance-id"
 ///     values = ["my-database-id"]
@@ -2054,7 +2058,7 @@ pulumi.Output<GetInstanceResult> getInstanceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2062,7 +2066,7 @@ pulumi.Output<GetInstanceResult> getInstanceOutput(
 ///   }
 /// }
 ///
-/// data "aws_rds_getinstances" "example" {
+/// data "aws_rds_instances" "example" {
 ///   tags = {
 ///     "Env" = "test"
 ///   }
@@ -2219,7 +2223,7 @@ pulumi.Output<GetInstancesResult> getInstancesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2227,7 +2231,7 @@ pulumi.Output<GetInstancesResult> getInstancesOutput(
 ///   }
 /// }
 ///
-/// data "aws_rds_getorderabledbinstance" "test" {
+/// data "aws_rds_orderable_db_instance" "test" {
 ///   engine                     = "mysql"
 ///   engine_version             = "5.7.22"
 ///   license_model              = "general-public-license"
@@ -2386,7 +2390,7 @@ pulumi.Output<GetInstancesResult> getInstancesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2394,7 +2398,7 @@ pulumi.Output<GetInstancesResult> getInstancesOutput(
 ///   }
 /// }
 ///
-/// data "aws_rds_getorderabledbinstance" "test" {
+/// data "aws_rds_orderable_db_instance" "test" {
 ///   engine                     = "mysql"
 ///   license_model              = "general-public-license"
 ///   preferred_engine_versions  = ["5.6.35", "5.6.41", "5.6.44"]
@@ -2536,7 +2540,7 @@ pulumi.Output<GetOrderableDbInstanceResult> getOrderableDbInstanceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2544,7 +2548,7 @@ pulumi.Output<GetOrderableDbInstanceResult> getOrderableDbInstanceOutput(
 ///   }
 /// }
 ///
-/// data "aws_rds_getparametergroup" "test" {
+/// data "aws_rds_parameter_group" "test" {
 ///   name = "default.postgres15"
 /// }
 /// ```
@@ -2665,7 +2669,7 @@ pulumi.Output<GetParameterGroupResult> getParameterGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2673,7 +2677,7 @@ pulumi.Output<GetParameterGroupResult> getParameterGroupOutput(
 ///   }
 /// }
 ///
-/// data "aws_rds_getproxy" "proxy" {
+/// data "aws_rds_proxy" "proxy" {
 ///   name = "my-test-db-proxy"
 /// }
 /// ```
@@ -2810,7 +2814,7 @@ pulumi.Output<GetProxyResult> getProxyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2818,7 +2822,7 @@ pulumi.Output<GetProxyResult> getProxyOutput(
 ///   }
 /// }
 ///
-/// data "aws_rds_getreservedinstanceoffering" "test" {
+/// data "aws_rds_reserved_instance_offering" "test" {
 ///   db_instance_class   = "db.t2.micro"
 ///   duration            = 31536000
 ///   multi_az            = false
@@ -3042,7 +3046,7 @@ pulumi.Output<GetReservedInstanceOfferingResult> getReservedInstanceOfferingOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3050,12 +3054,15 @@ pulumi.Output<GetReservedInstanceOfferingResult> getReservedInstanceOfferingOutp
 ///   }
 /// }
 ///
-/// data "aws_rds_getsnapshot" "latestProdSnapshot" {
+/// data "aws_rds_snapshot" "latestProdSnapshot" {
 ///   db_instance_identifier = aws_rds_instance.prod.identifier
 ///   most_recent            = true
 /// }
 ///
 /// resource "aws_rds_instance" "prod" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocated_storage    = 10
 ///   engine               = "mysql"
 ///   engine_version       = "5.6.17"
@@ -3069,11 +3076,12 @@ pulumi.Output<GetReservedInstanceOfferingResult> getReservedInstanceOfferingOutp
 /// # Use the latest production snapshot to create a dev instance.
 /// resource "aws_rds_instance" "dev" {
 ///   lifecycle {
-///     ignore_changes = [snapshotIdentifier]
+///     ignore_changes        = [snapshotIdentifier]
+///     create_before_destroy = true
 ///   }
 ///   instance_class      = "db.t2.micro"
 ///   db_name             = "mydbdev"
-///   snapshot_identifier = data.aws_rds_getsnapshot.latestProdSnapshot.id
+///   snapshot_identifier = data.aws_rds_snapshot.latestProdSnapshot.id
 /// }
 /// ```
 /// ```java
@@ -3244,7 +3252,7 @@ pulumi.Output<GetSnapshotResult> getSnapshotOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3252,7 +3260,7 @@ pulumi.Output<GetSnapshotResult> getSnapshotOutput(
 ///   }
 /// }
 ///
-/// data "aws_rds_getsnapshots" "example" {
+/// data "aws_rds_snapshots" "example" {
 ///   db_instance_identifier = "my-db-instance"
 /// }
 /// ```
@@ -3370,7 +3378,7 @@ pulumi.Output<GetSnapshotResult> getSnapshotOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3378,8 +3386,8 @@ pulumi.Output<GetSnapshotResult> getSnapshotOutput(
 ///   }
 /// }
 ///
-/// data "aws_rds_getsnapshots" "example" {
-///   filters {
+/// data "aws_rds_snapshots" "example" {
+///   filter {
 ///     name   = "db-snapshot-id"
 ///     values = ["my-snapshot-id"]
 ///   }
@@ -3509,7 +3517,7 @@ pulumi.Output<GetSnapshotsResult> getSnapshotsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3517,7 +3525,7 @@ pulumi.Output<GetSnapshotsResult> getSnapshotsOutput(
 ///   }
 /// }
 ///
-/// data "aws_rds_getsubnetgroup" "database" {
+/// data "aws_rds_subnet_group" "database" {
 ///   name = "my-test-database-subnet-group"
 /// }
 /// ```

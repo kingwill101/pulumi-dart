@@ -70,7 +70,7 @@ import 'capacity_reservation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -78,7 +78,10 @@ import 'capacity_reservation_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_capacityreservation" "default" {
+/// resource "aws_ec2_capacity_reservation" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_type     = "t2.micro"
 ///   instance_platform = "Linux/UNIX"
 ///   availability_zone = "eu-west-1a"
@@ -183,7 +186,7 @@ class CapacityReservation extends pulumi.CustomResource {
           'aws:ec2/capacityReservation:CapacityReservation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String>('availabilityZone');

@@ -89,7 +89,7 @@ import 'feature_v2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -97,10 +97,16 @@ import 'feature_v2_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_securityhub_accountv2" "example" {
+/// resource "aws_securityhub_account_v2" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_securityhub_featurev2" "example" {
-///   depends_on     = [aws_securityhub_accountv2.example]
+/// resource "aws_securityhub_feature_v2" "example" {
+///   depends_on = [aws_securityhub_account_v2.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   feature_name   = "NETWORK_SCANNING"
 ///   feature_status = "ENABLED"
 /// }
@@ -195,7 +201,7 @@ class FeatureV2 extends pulumi.CustomResource {
           'aws:securityhub/featureV2:FeatureV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     featureName = registerOutput<String>('featureName');
     featureStatus = registerOutput<String>('featureStatus');

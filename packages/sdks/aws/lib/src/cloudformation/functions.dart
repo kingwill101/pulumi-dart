@@ -65,7 +65,7 @@ import 'get_stack_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,7 @@ import 'get_stack_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_cloudformation_getcloudformationtype" "example" {
+/// data "aws_cloudformation_cloud_formation_type" "example" {
 ///   type      = "RESOURCE"
 ///   type_name = "AWS::Athena::WorkGroup"
 /// }
@@ -225,7 +225,7 @@ pulumi.Output<GetCloudFormationTypeResult> getCloudFormationTypeOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -233,14 +233,17 @@ pulumi.Output<GetCloudFormationTypeResult> getCloudFormationTypeOutput(
 ///   }
 /// }
 ///
-/// data "aws_cloudformation_getexport" "subnetId" {
+/// data "aws_cloudformation_export" "subnetId" {
 ///   name = "mySubnetIdExportName"
 /// }
 ///
 /// resource "aws_ec2_instance" "web" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ami           = "ami-abb07bcb"
 ///   instance_type = "t2.micro"
-///   subnet_id     = data.aws_cloudformation_getexport.subnetId.value
+///   subnet_id     = data.aws_cloudformation_export.subnetId.value
 /// }
 /// ```
 /// ```java
@@ -414,7 +417,7 @@ pulumi.Output<GetExportResult> getExportOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -422,14 +425,17 @@ pulumi.Output<GetExportResult> getExportOutput(
 ///   }
 /// }
 ///
-/// data "aws_cloudformation_getstack" "network" {
+/// data "aws_cloudformation_stack" "network" {
 ///   name = "my-network-stack"
 /// }
 ///
 /// resource "aws_ec2_instance" "web" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ami           = "ami-abb07bcb"
 ///   instance_type = "t2.micro"
-///   subnet_id     = data.aws_cloudformation_getstack.network.outputs["SubnetId"]
+///   subnet_id     = data.aws_cloudformation_stack.network.outputs["SubnetId"]
 ///   tags = {
 ///     "Name" = "HelloWorld"
 ///   }

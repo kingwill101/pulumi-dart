@@ -142,7 +142,7 @@ import 'gateway_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -150,17 +150,20 @@ import 'gateway_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appmesh_gatewayroute" "example" {
-///   spec = {
-///     http_route = {
-///       action = {
-///         target = {
-///           virtual_service = {
+/// resource "aws_appmesh_gateway_route" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   spec {
+///     http_route {
+///       action {
+///         target {
+///           virtual_service {
 ///             virtual_service_name = exampleAwsAppmeshVirtualService.name
 ///           }
 ///         }
 ///       }
-///       match = {
+///       match {
 ///         prefix = "/"
 ///       }
 ///     }
@@ -206,7 +209,7 @@ import 'gateway_route_state.dart';
 ///                     .action(GatewayRouteSpecHttpRouteActionArgs.builder()
 ///                         .target(GatewayRouteSpecHttpRouteActionTargetArgs.builder()
 ///                             .virtualService(GatewayRouteSpecHttpRouteActionTargetVirtualServiceArgs.builder()
-///                                 .virtualServiceName(exampleAwsAppmeshVirtualService.name())
+///                                 .virtualServiceName(exampleAwsAppmeshVirtualService.get("name"))
 ///                                 .build())
 ///                             .build())
 ///                         .build())
@@ -217,7 +220,7 @@ import 'gateway_route_state.dart';
 ///                 .build())
 ///             .name("example-gateway-route")
 ///             .meshName("example-service-mesh")
-///             .virtualGatewayName(exampleAwsAppmeshVirtualGateway.name())
+///             .virtualGatewayName(exampleAwsAppmeshVirtualGateway.get("name"))
 ///             .tags(Map.of("Environment", "test"))
 ///             .build());
 ///
@@ -290,7 +293,7 @@ class GatewayRoute extends pulumi.CustomResource {
           'aws:appmesh/gatewayRoute:GatewayRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdDate = registerOutput<String>('createdDate');

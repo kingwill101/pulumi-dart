@@ -141,7 +141,7 @@ import 'domain_association_sub_domain.dart';
 /// 			return err
 /// 		}
 /// 		master, err := amplify.NewBranch(ctx, "master", &amplify.BranchArgs{
-/// 			AppId:      example.ID().ToIDOutput().ToStringOutput(),
+/// 			AppId:      example.ID(),
 /// 			BranchName: pulumi.String("master"),
 /// 		})
 /// 		if err != nil {
@@ -158,7 +158,7 @@ import 'domain_association_sub_domain.dart';
 /// 					Prefix:     pulumi.String("www"),
 /// 				},
 /// 			},
-/// 			AppId:      example.ID().ToIDOutput().ToStringOutput(),
+/// 			AppId:      example.ID(),
 /// 			DomainName: pulumi.String("example.com"),
 /// 		})
 /// 		if err != nil {
@@ -169,7 +169,7 @@ import 'domain_association_sub_domain.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -178,7 +178,10 @@ import 'domain_association_sub_domain.dart';
 /// }
 ///
 /// resource "aws_amplify_app" "example" {
-///   custom_rules {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   custom_rule {
 ///     source = "https://example.com"
 ///     status = "302"
 ///     target = "https://www.example.com"
@@ -186,15 +189,21 @@ import 'domain_association_sub_domain.dart';
 ///   name = "app"
 /// }
 /// resource "aws_amplify_branch" "master" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id      = aws_amplify_app.example.id
 ///   branch_name = "master"
 /// }
-/// resource "aws_amplify_domainassociation" "example" {
-///   sub_domains {
+/// resource "aws_amplify_domain_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   sub_domain {
 ///     branch_name = aws_amplify_branch.master.branch_name
 ///     prefix      = ""
 ///   }
-///   sub_domains {
+///   sub_domain {
 ///     branch_name = aws_amplify_branch.master.branch_name
 ///     prefix      = "www"
 ///   }
@@ -328,7 +337,7 @@ class DomainAssociation extends pulumi.CustomResource {
           'aws:amplify/domainAssociation:DomainAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     arn = registerOutput<String>('arn');

@@ -260,7 +260,7 @@ import 'ca_certificate_validity.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -271,42 +271,60 @@ import 'ca_certificate_validity.dart';
 ///   }
 /// }
 ///
-/// data "aws_iot_getregistrationcode" "example" {
+/// data "aws_iot_registration_code" "example" {
 /// }
 ///
-/// resource "tls_selfsignedcert" "ca" {
-///   subject = [{
-///     "commonName"   = "example.com"
-///     "organization" = "ACME Examples, Inc"
-///   }]
-///   private_key_pem       = tls_privatekey.ca.private_key_pem
+/// resource "tls_self_signed_cert" "ca" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   subject {
+///     common_name  = "example.com"
+///     organization = "ACME Examples, Inc"
+///   }
+///   private_key_pem       = tls_private_key.ca.private_key_pem
 ///   validity_period_hours = 12
 ///   allowed_uses          = ["key_encipherment", "digital_signature", "server_auth"]
 ///   is_ca_certificate     = true
 /// }
-/// resource "tls_privatekey" "ca" {
+/// resource "tls_private_key" "ca" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   algorithm = "RSA"
 /// }
-/// resource "tls_certrequest" "verification" {
-///   subject = [{
-///     "commonName" = data.aws_iot_getregistrationcode.example.registration_code
-///   }]
-///   private_key_pem = tls_privatekey.verification.private_key_pem
+/// resource "tls_cert_request" "verification" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   subject {
+///     common_name = data.aws_iot_registration_code.example.registration_code
+///   }
+///   private_key_pem = tls_private_key.verification.private_key_pem
 /// }
-/// resource "tls_privatekey" "verification" {
+/// resource "tls_private_key" "verification" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   algorithm = "RSA"
 /// }
-/// resource "tls_locallysignedcert" "verification" {
-///   cert_request_pem      = tls_certrequest.verification.cert_request_pem
-///   ca_private_key_pem    = tls_privatekey.ca.private_key_pem
-///   ca_cert_pem           = tls_selfsignedcert.ca.cert_pem
+/// resource "tls_locally_signed_cert" "verification" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cert_request_pem      = tls_cert_request.verification.cert_request_pem
+///   ca_private_key_pem    = tls_private_key.ca.private_key_pem
+///   ca_cert_pem           = tls_self_signed_cert.ca.cert_pem
 ///   validity_period_hours = 12
 ///   allowed_uses          = ["key_encipherment", "digital_signature", "server_auth"]
 /// }
-/// resource "aws_iot_cacertificate" "example" {
+/// resource "aws_iot_ca_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   active                       = true
-///   ca_certificate_pem           = tls_selfsignedcert.ca.cert_pem
-///   verification_certificate_pem = tls_locallysignedcert.verification.cert_pem
+///   ca_certificate_pem           = tls_self_signed_cert.ca.cert_pem
+///   verification_certificate_pem = tls_locally_signed_cert.verification.cert_pem
 ///   allow_auto_registration      = true
 /// }
 /// ```
@@ -492,7 +510,7 @@ class CaCertificate extends pulumi.CustomResource {
           'aws:iot/caCertificate:CaCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['caCertificatePem', 'verificationCertificatePem'],
         ) {
     active = registerOutput<bool>('active');

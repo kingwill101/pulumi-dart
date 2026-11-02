@@ -59,7 +59,7 @@ import 'telemetry_enrichment_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,10 @@ import 'telemetry_enrichment_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_observabilityadmin_telemetryenrichment" "example" {
+/// resource "aws_observabilityadmin_telemetry_enrichment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -136,7 +139,7 @@ class TelemetryEnrichment extends pulumi.CustomResource {
           'aws:observabilityadmin/telemetryEnrichment:TelemetryEnrichment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     awsResourceExplorerManagedViewArn = registerOutput<String>('awsResourceExplorerManagedViewArn');
     region = registerOutput<String>('region');

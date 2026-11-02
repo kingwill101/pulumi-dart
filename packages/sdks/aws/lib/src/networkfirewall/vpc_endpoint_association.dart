@@ -95,7 +95,7 @@ import 'vpc_endpoint_association_vpc_endpoint_association_status.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -103,8 +103,11 @@ import 'vpc_endpoint_association_vpc_endpoint_association_status.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkfirewall_vpcendpointassociation" "example" {
-///   subnet_mapping = {
+/// resource "aws_networkfirewall_vpc_endpoint_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   subnet_mapping {
 ///     subnet_id = exampleAwsSubnet.id
 ///   }
 ///   firewall_arn = exampleAwsNetworkfirewallFirewall.arn
@@ -138,10 +141,10 @@ import 'vpc_endpoint_association_vpc_endpoint_association_status.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new VpcEndpointAssociation("example", VpcEndpointAssociationArgs.builder()
 ///             .subnetMapping(VpcEndpointAssociationSubnetMappingArgs.builder()
-///                 .subnetId(exampleAwsSubnet.id())
+///                 .subnetId(exampleAwsSubnet.get("id"))
 ///                 .build())
-///             .firewallArn(exampleAwsNetworkfirewallFirewall.arn())
-///             .vpcId(exampleAwsVpc.id())
+///             .firewallArn(exampleAwsNetworkfirewallFirewall.get("arn"))
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .tags(Map.of("Name", "example endpoint"))
 ///             .build());
 ///
@@ -204,7 +207,7 @@ class VpcEndpointAssociation extends pulumi.CustomResource {
           'aws:networkfirewall/vpcEndpointAssociation:VpcEndpointAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     firewallArn = registerOutput<String>('firewallArn');

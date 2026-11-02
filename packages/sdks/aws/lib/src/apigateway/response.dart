@@ -87,7 +87,7 @@ import 'response_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewResponse(ctx, "test", &apigateway.ResponseArgs{
-/// 			RestApiId:    main.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApiId:    main.ID(),
 /// 			StatusCode:   pulumi.String("401"),
 /// 			ResponseType: pulumi.String("UNAUTHORIZED"),
 /// 			ResponseTemplates: pulumi.StringMap{
@@ -105,7 +105,7 @@ import 'response_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -113,11 +113,17 @@ import 'response_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_restapi" "main" {
+/// resource "aws_apigateway_rest_api" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "MyDemoAPI"
 /// }
 /// resource "aws_apigateway_response" "test" {
-///   rest_api_id   = aws_apigateway_restapi.main.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api_id   = aws_apigateway_rest_api.main.id
 ///   status_code   = "401"
 ///   response_type = "UNAUTHORIZED"
 ///   response_templates = {
@@ -218,7 +224,7 @@ class Response extends pulumi.CustomResource {
           'aws:apigateway/response:Response',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     responseParameters = registerOutput<Map<String, String>?>('responseParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

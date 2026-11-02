@@ -96,7 +96,7 @@ import 'load_balancer_type.dart';
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -104,7 +104,10 @@ import 'load_balancer_type.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lb_loadbalancer" "test" {
+/// resource "aws_lb_load_balancer" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   access_logs = {
 ///     bucket  = lbLogs.id
 ///     prefix  = "test-lb"
@@ -182,7 +185,7 @@ import 'load_balancer_type.dart';
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -190,7 +193,10 @@ import 'load_balancer_type.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lb_loadbalancer" "test" {
+/// resource "aws_lb_load_balancer" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "test-lb-tf"
 ///   internal                   = false
 ///   load_balancer_type         = "network"
@@ -304,7 +310,7 @@ import 'load_balancer_type.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -312,7 +318,10 @@ import 'load_balancer_type.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lb_loadbalancer" "example" {
+/// resource "aws_lb_load_balancer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_mappings {
 ///     subnet_id     = example1.id
 ///     allocation_id = example1AwsEip.id
@@ -350,12 +359,12 @@ import 'load_balancer_type.dart';
 ///         var example = new LoadBalancer("example", LoadBalancerArgs.builder()
 ///             .subnetMappings(
 ///                 LoadBalancerSubnetMappingArgs.builder()
-///                     .subnetId(example1.id())
-///                     .allocationId(example1AwsEip.id())
+///                     .subnetId(example1.get("id"))
+///                     .allocationId(example1AwsEip.get("id"))
 ///                     .build(),
 ///                 LoadBalancerSubnetMappingArgs.builder()
-///                     .subnetId(example2.id())
-///                     .allocationId(example2AwsEip.id())
+///                     .subnetId(example2.get("id"))
+///                     .allocationId(example2AwsEip.get("id"))
 ///                     .build())
 ///             .name("example")
 ///             .loadBalancerType("network")
@@ -480,7 +489,7 @@ import 'load_balancer_type.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -488,7 +497,10 @@ import 'load_balancer_type.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lb_loadbalancer" "example" {
+/// resource "aws_lb_load_balancer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_mappings {
 ///     subnet_id            = example1.id
 ///     private_ipv4_address = "10.0.1.15"
@@ -526,11 +538,11 @@ import 'load_balancer_type.dart';
 ///         var example = new LoadBalancer("example", LoadBalancerArgs.builder()
 ///             .subnetMappings(
 ///                 LoadBalancerSubnetMappingArgs.builder()
-///                     .subnetId(example1.id())
+///                     .subnetId(example1.get("id"))
 ///                     .privateIpv4Address("10.0.1.15")
 ///                     .build(),
 ///                 LoadBalancerSubnetMappingArgs.builder()
-///                     .subnetId(example2.id())
+///                     .subnetId(example2.get("id"))
 ///                     .privateIpv4Address("10.0.2.15")
 ///                     .build())
 ///             .name("example")
@@ -665,7 +677,7 @@ class LoadBalancer extends pulumi.CustomResource {
           'aws:alb/loadBalancer:LoadBalancer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accessLogs = registerOutput<LoadBalancerAccessLogs?>('accessLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerAccessLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');

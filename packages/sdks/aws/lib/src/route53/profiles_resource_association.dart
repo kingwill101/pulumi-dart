@@ -109,7 +109,7 @@ import 'profiles_resource_association_timeouts.dart';
 /// 		exampleZone, err := route53.NewZone(ctx, "example", &route53.ZoneArgs{
 /// 			Vpcs: route53.ZoneVpcArray{
 /// 				&route53.ZoneVpcArgs{
-/// 					VpcId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// 					VpcId: exampleVpc.ID(),
 /// 				},
 /// 			},
 /// 			Name: pulumi.String("example.com"),
@@ -119,7 +119,7 @@ import 'profiles_resource_association_timeouts.dart';
 /// 		}
 /// 		_, err = route53.NewProfilesResourceAssociation(ctx, "example", &route53.ProfilesResourceAssociationArgs{
 /// 			Name:        pulumi.String("example"),
-/// 			ProfileId:   example.ID().ToIDOutput().ToStringOutput(),
+/// 			ProfileId:   example.ID(),
 /// 			ResourceArn: exampleZone.Arn,
 /// 		})
 /// 		if err != nil {
@@ -130,7 +130,7 @@ import 'profiles_resource_association_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -138,21 +138,33 @@ import 'profiles_resource_association_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53_profilesprofile" "example" {
+/// resource "aws_route53_profiles_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr = "10.0.0.0/16"
 /// }
 /// resource "aws_route53_zone" "example" {
-///   vpcs {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   vpc {
 ///     vpc_id = aws_ec2_vpc.example.id
 ///   }
 ///   name = "example.com"
 /// }
-/// resource "aws_route53_profilesresourceassociation" "example" {
+/// resource "aws_route53_profiles_resource_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example"
-///   profile_id   = aws_route53_profilesprofile.example.id
+///   profile_id   = aws_route53_profiles_profile.example.id
 ///   resource_arn = aws_route53_zone.example.arn
 /// }
 /// ```
@@ -275,7 +287,7 @@ class ProfilesResourceAssociation extends pulumi.CustomResource {
           'aws:route53/profilesResourceAssociation:ProfilesResourceAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     ownerId = registerOutput<String>('ownerId');

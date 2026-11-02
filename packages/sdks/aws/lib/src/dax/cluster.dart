@@ -72,7 +72,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -81,6 +81,9 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_dax_cluster" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name       = "cluster-example"
 ///   iam_role_arn       = example.arn
 ///   node_type          = "dax.r4.large"
@@ -110,7 +113,7 @@ import 'cluster_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var bar = new Cluster("bar", ClusterArgs.builder()
 ///             .clusterName("cluster-example")
-///             .iamRoleArn(example.arn())
+///             .iamRoleArn(example.get("arn"))
 ///             .nodeType("dax.r4.large")
 ///             .replicationFactor(1)
 ///             .build());
@@ -213,7 +216,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:dax/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZones = registerOutput<List<String>?>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

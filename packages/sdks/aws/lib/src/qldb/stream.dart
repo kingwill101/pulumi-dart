@@ -101,7 +101,7 @@ import 'stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -110,7 +110,10 @@ import 'stream_state.dart';
 /// }
 ///
 /// resource "aws_qldb_stream" "example" {
-///   kinesis_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   kinesis_configuration {
 ///     aggregation_enabled = false
 ///     stream_arn          = "arn:aws:kinesis:us-east-1:xxxxxxxxxxxx:stream/example-kinesis-stream"
 ///   }
@@ -209,7 +212,7 @@ class Stream extends pulumi.CustomResource {
           'aws:qldb/stream:Stream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     exclusiveEndTime = registerOutput<String?>('exclusiveEndTime');

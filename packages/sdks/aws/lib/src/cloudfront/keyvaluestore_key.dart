@@ -90,7 +90,7 @@ import 'keyvaluestore_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -98,12 +98,18 @@ import 'keyvaluestore_key_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_keyvaluestore" "example" {
+/// resource "aws_cloudfront_key_value_store" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "ExampleKeyValueStore"
 ///   comment = "This is an example key value store"
 /// }
-/// resource "aws_cloudfront_keyvaluestorekey" "example" {
-///   key_value_store_arn = aws_cloudfront_keyvaluestore.example.arn
+/// resource "aws_cloudfront_keyvaluestore_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_value_store_arn = aws_cloudfront_key_value_store.example.arn
 ///   key                 = "Test Key"
 ///   value               = "Test Value"
 /// }
@@ -203,7 +209,7 @@ class KeyvaluestoreKey extends pulumi.CustomResource {
           'aws:cloudfront/keyvaluestoreKey:KeyvaluestoreKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     key = registerOutput<String>('key');
     keyValueStoreArn = registerOutput<String>('keyValueStoreArn');

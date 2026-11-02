@@ -195,7 +195,7 @@ import 'service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -204,13 +204,16 @@ import 'service_state.dart';
 /// }
 ///
 /// resource "aws_apprunner_service" "example" {
-///   source_configuration = {
-///     authentication_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   source_configuration {
+///     authentication_configuration {
 ///       connection_arn = exampleAwsApprunnerConnection.arn
 ///     }
-///     code_repository = {
-///       code_configuration = {
-///         code_configuration_values = {
+///     code_repository {
+///       code_configuration {
+///         code_configuration_values {
 ///           build_command = "python setup.py develop"
 ///           port          = "8000"
 ///           runtime       = "PYTHON_3"
@@ -218,15 +221,15 @@ import 'service_state.dart';
 ///         }
 ///         configuration_source = "API"
 ///       }
-///       source_code_version = {
+///       source_code_version {
 ///         type  = "BRANCH"
 ///         value = "main"
 ///       }
 ///       repository_url = "https://github.com/example/my-example-python-app"
 ///     }
 ///   }
-///   network_configuration = {
-///     egress_configuration = {
+///   network_configuration {
+///     egress_configuration {
 ///       egress_type       = "VPC"
 ///       vpc_connector_arn = connector.arn
 ///     }
@@ -269,7 +272,7 @@ import 'service_state.dart';
 ///         var example = new Service("example", ServiceArgs.builder()
 ///             .sourceConfiguration(ServiceSourceConfigurationArgs.builder()
 ///                 .authenticationConfiguration(ServiceSourceConfigurationAuthenticationConfigurationArgs.builder()
-///                     .connectionArn(exampleAwsApprunnerConnection.arn())
+///                     .connectionArn(exampleAwsApprunnerConnection.get("arn"))
 ///                     .build())
 ///                 .codeRepository(ServiceSourceConfigurationCodeRepositoryArgs.builder()
 ///                     .codeConfiguration(ServiceSourceConfigurationCodeRepositoryCodeConfigurationArgs.builder()
@@ -291,7 +294,7 @@ import 'service_state.dart';
 ///             .networkConfiguration(ServiceNetworkConfigurationArgs.builder()
 ///                 .egressConfiguration(ServiceNetworkConfigurationEgressConfigurationArgs.builder()
 ///                     .egressType("VPC")
-///                     .vpcConnectorArn(connector.arn())
+///                     .vpcConnectorArn(connector.get("arn"))
 ///                     .build())
 ///                 .build())
 ///             .serviceName("example")
@@ -441,7 +444,7 @@ import 'service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -450,9 +453,12 @@ import 'service_state.dart';
 /// }
 ///
 /// resource "aws_apprunner_service" "example" {
-///   source_configuration = {
-///     image_repository = {
-///       image_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   source_configuration {
+///     image_repository {
+///       image_configuration {
 ///         port = "8000"
 ///       }
 ///       image_identifier      = "public.ecr.aws/aws-containers/hello-app-runner:latest"
@@ -682,7 +688,7 @@ import 'service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -691,13 +697,16 @@ import 'service_state.dart';
 /// }
 ///
 /// resource "aws_apprunner_service" "example" {
-///   observability_configuration = {
-///     observability_configuration_arn = aws_apprunner_observabilityconfiguration.example.arn
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   observability_configuration {
+///     observability_configuration_arn = aws_apprunner_observability_configuration.example.arn
 ///     observability_enabled           = true
 ///   }
-///   source_configuration = {
-///     image_repository = {
-///       image_configuration = {
+///   source_configuration {
+///     image_repository {
+///       image_configuration {
 ///         port = "8000"
 ///       }
 ///       image_identifier      = "public.ecr.aws/aws-containers/hello-app-runner:latest"
@@ -710,8 +719,11 @@ import 'service_state.dart';
 ///     "Name" = "example-apprunner-service"
 ///   }
 /// }
-/// resource "aws_apprunner_observabilityconfiguration" "example" {
-///   trace_configuration = {
+/// resource "aws_apprunner_observability_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   trace_configuration {
 ///     vendor = "AWSXRAY"
 ///   }
 ///   observability_configuration_name = "example"
@@ -860,7 +872,7 @@ class Service extends pulumi.CustomResource {
           'aws:apprunner/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoScalingConfigurationArn = registerOutput<String>('autoScalingConfigurationArn');

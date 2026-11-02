@@ -107,7 +107,7 @@ import 'pipeline_thumbnail_config_permission.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -116,11 +116,14 @@ import 'pipeline_thumbnail_config_permission.dart';
 /// }
 ///
 /// resource "aws_elastictranscoder_pipeline" "bar" {
-///   content_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   content_config {
 ///     bucket        = contentBucket.id
 ///     storage_class = "Standard"
 ///   }
-///   thumbnail_config = {
+///   thumbnail_config {
 ///     bucket        = thumbBucket.id
 ///     storage_class = "Standard"
 ///   }
@@ -154,16 +157,16 @@ import 'pipeline_thumbnail_config_permission.dart';
 ///     public static void stack(Context ctx) {
 ///         var bar = new Pipeline("bar", PipelineArgs.builder()
 ///             .contentConfig(PipelineContentConfigArgs.builder()
-///                 .bucket(contentBucket.id())
+///                 .bucket(contentBucket.get("id"))
 ///                 .storageClass("Standard")
 ///                 .build())
 ///             .thumbnailConfig(PipelineThumbnailConfigArgs.builder()
-///                 .bucket(thumbBucket.id())
+///                 .bucket(thumbBucket.get("id"))
 ///                 .storageClass("Standard")
 ///                 .build())
-///             .inputBucket(inputBucket.id())
+///             .inputBucket(inputBucket.get("id"))
 ///             .name("aws_elastictranscoder_pipeline_my_test_")
-///             .role(testRole.arn())
+///             .role(testRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -240,7 +243,7 @@ class Pipeline extends pulumi.CustomResource {
           'aws:elastictranscoder/pipeline:Pipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsKmsKeyArn = registerOutput<String?>('awsKmsKeyArn');

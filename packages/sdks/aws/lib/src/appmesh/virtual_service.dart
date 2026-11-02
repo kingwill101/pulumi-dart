@@ -96,7 +96,7 @@ import 'virtual_service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -104,10 +104,13 @@ import 'virtual_service_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appmesh_virtualservice" "servicea" {
-///   spec = {
-///     provider = {
-///       virtual_node = {
+/// resource "aws_appmesh_virtual_service" "servicea" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   spec {
+///     provider {
+///       virtual_node {
 ///         virtual_node_name = serviceb1.name
 ///       }
 ///     }
@@ -144,12 +147,12 @@ import 'virtual_service_state.dart';
 ///             .spec(VirtualServiceSpecArgs.builder()
 ///                 .provider(VirtualServiceSpecProviderArgs.builder()
 ///                     .virtualNode(VirtualServiceSpecProviderVirtualNodeArgs.builder()
-///                         .virtualNodeName(serviceb1.name())
+///                         .virtualNodeName(serviceb1.get("name"))
 ///                         .build())
 ///                     .build())
 ///                 .build())
 ///             .name("servicea.simpleapp.local")
-///             .meshName(simple.id())
+///             .meshName(simple.get("id"))
 ///             .build());
 ///
 ///     }
@@ -258,7 +261,7 @@ import 'virtual_service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -266,10 +269,13 @@ import 'virtual_service_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appmesh_virtualservice" "servicea" {
-///   spec = {
-///     provider = {
-///       virtual_router = {
+/// resource "aws_appmesh_virtual_service" "servicea" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   spec {
+///     provider {
+///       virtual_router {
 ///         virtual_router_name = serviceb.name
 ///       }
 ///     }
@@ -306,12 +312,12 @@ import 'virtual_service_state.dart';
 ///             .spec(VirtualServiceSpecArgs.builder()
 ///                 .provider(VirtualServiceSpecProviderArgs.builder()
 ///                     .virtualRouter(VirtualServiceSpecProviderVirtualRouterArgs.builder()
-///                         .virtualRouterName(serviceb.name())
+///                         .virtualRouterName(serviceb.get("name"))
 ///                         .build())
 ///                     .build())
 ///                 .build())
 ///             .name("servicea.simpleapp.local")
-///             .meshName(simple.id())
+///             .meshName(simple.get("id"))
 ///             .build());
 ///
 ///     }
@@ -374,7 +380,7 @@ class VirtualService extends pulumi.CustomResource {
           'aws:appmesh/virtualService:VirtualService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdDate = registerOutput<String>('createdDate');

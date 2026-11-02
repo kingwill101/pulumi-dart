@@ -71,7 +71,7 @@ import 'iam_role_association_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -79,7 +79,10 @@ import 'iam_role_association_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_odb_iamroleassociation" "example" {
+/// resource "aws_odb_iam_role_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   aws_integration = "KmsTde"
 ///   iam_role_arn    = "arn:aws:iam::123456789012:role/odb-iam-role-example"
 ///   resource_arn    = "arn:aws:odb:us-east-1:123456789012:cloud-vm-cluster/odb-example-cluster-id"
@@ -162,7 +165,7 @@ class IamRoleAssociation extends pulumi.CustomResource {
           'aws:odb/iamRoleAssociation:IamRoleAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     awsIntegration = registerOutput<String>('awsIntegration');
     iamRoleArn = registerOutput<String>('iamRoleArn');

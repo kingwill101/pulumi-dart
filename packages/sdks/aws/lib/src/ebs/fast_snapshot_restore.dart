@@ -65,7 +65,7 @@ import 'fast_snapshot_restore_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,10 @@ import 'fast_snapshot_restore_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ebs_fastsnapshotrestore" "example" {
+/// resource "aws_ebs_fast_snapshot_restore" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_zone = "us-west-2a"
 ///   snapshot_id       = exampleAwsEbsSnapshot.id
 /// }
@@ -101,7 +104,7 @@ import 'fast_snapshot_restore_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new FastSnapshotRestore("example", FastSnapshotRestoreArgs.builder()
 ///             .availabilityZone("us-west-2a")
-///             .snapshotId(exampleAwsEbsSnapshot.id())
+///             .snapshotId(exampleAwsEbsSnapshot.get("id"))
 ///             .build());
 ///
 ///     }
@@ -147,7 +150,7 @@ class FastSnapshotRestore extends pulumi.CustomResource {
           'aws:ebs/fastSnapshotRestore:FastSnapshotRestore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     availabilityZone = registerOutput<String>('availabilityZone');
     region = registerOutput<String>('region');

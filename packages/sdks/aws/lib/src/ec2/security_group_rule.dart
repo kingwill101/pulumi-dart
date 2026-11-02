@@ -102,7 +102,7 @@ import 'security_group_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -110,7 +110,10 @@ import 'security_group_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_securitygrouprule" "example" {
+/// resource "aws_ec2_security_group_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   type              = "ingress"
 ///   from_port         = 0
 ///   to_port           = 65535
@@ -146,8 +149,8 @@ import 'security_group_rule_state.dart';
 ///             .fromPort(0)
 ///             .toPort(65535)
 ///             .protocol("tcp")
-///             .cidrBlocks(exampleAwsVpc.cidrBlock())
-///             .ipv6CidrBlocks(exampleAwsVpc.ipv6CidrBlock())
+///             .cidrBlocks(exampleAwsVpc.get("cidrBlock"))
+///             .ipv6CidrBlocks(exampleAwsVpc.get("ipv6CidrBlock"))
 ///             .securityGroupId("sg-123456")
 ///             .build());
 ///
@@ -268,7 +271,7 @@ import 'security_group_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -276,16 +279,22 @@ import 'security_group_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_securitygrouprule" "allow_all" {
+/// resource "aws_ec2_security_group_rule" "allow_all" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   type              = "egress"
 ///   to_port           = 0
 ///   protocol          = "-1"
-///   prefix_list_ids   = [aws_ec2_vpcendpoint.my_endpoint.prefix_list_id]
+///   prefix_list_ids   = [aws_ec2_vpc_endpoint.my_endpoint.prefix_list_id]
 ///   from_port         = 0
 ///   security_group_id = "sg-123456"
 /// }
 /// # ...
-/// resource "aws_ec2_vpcendpoint" "my_endpoint" {
+/// resource "aws_ec2_vpc_endpoint" "my_endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -455,7 +464,7 @@ import 'security_group_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -463,20 +472,23 @@ import 'security_group_rule_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
-/// data "aws_ec2_getprefixlist" "s3" {
-///   name ="com.amazonaws.${data.aws_getregion.current.region}.s3"
+/// data "aws_ec2_prefix_list" "s3" {
+///   name ="com.amazonaws.${data.aws_region.current.region}.s3"
 /// }
 ///
-/// resource "aws_ec2_securitygrouprule" "s3_gateway_egress" {
+/// resource "aws_ec2_security_group_rule" "s3_gateway_egress" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description       = "S3 Gateway Egress"
 ///   type              = "egress"
 ///   security_group_id = "sg-123456"
 ///   from_port         = 443
 ///   to_port           = 443
 ///   protocol          = "tcp"
-///   prefix_list_ids   = [data.aws_ec2_getprefixlist.s3.id]
+///   prefix_list_ids   = [data.aws_ec2_prefix_list.s3.id]
 /// }
 /// ```
 /// ```java
@@ -660,7 +672,7 @@ class SecurityGroupRule extends pulumi.CustomResource {
           'aws:ec2/securityGroupRule:SecurityGroupRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     cidrBlocks = registerOutput<List<String>?>('cidrBlocks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');

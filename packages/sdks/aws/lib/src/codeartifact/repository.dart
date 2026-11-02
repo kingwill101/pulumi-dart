@@ -98,7 +98,7 @@ import 'repository_upstream.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -107,13 +107,22 @@ import 'repository_upstream.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "domain key"
 /// }
 /// resource "aws_codeartifact_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain         = "example"
 ///   encryption_key = aws_kms_key.example.arn
 /// }
 /// resource "aws_codeartifact_repository" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   repository = "example"
 ///   domain     = aws_codeartifact_domain.example.domain
 /// }
@@ -276,7 +285,7 @@ import 'repository_upstream.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -285,11 +294,17 @@ import 'repository_upstream.dart';
 /// }
 ///
 /// resource "aws_codeartifact_repository" "upstream" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   repository = "upstream"
 ///   domain     = testAwsCodeartifactDomain.domain
 /// }
 /// resource "aws_codeartifact_repository" "test" {
-///   upstreams {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   upstream {
 ///     repository_name = aws_codeartifact_repository.upstream.repository
 ///   }
 ///   repository = "example"
@@ -320,7 +335,7 @@ import 'repository_upstream.dart';
 ///     public static void stack(Context ctx) {
 ///         var upstream = new Repository("upstream", RepositoryArgs.builder()
 ///             .repository("upstream")
-///             .domain(testAwsCodeartifactDomain.domain())
+///             .domain(testAwsCodeartifactDomain.get("domain"))
 ///             .build());
 ///
 ///         var test = new Repository("test", RepositoryArgs.builder()
@@ -328,7 +343,7 @@ import 'repository_upstream.dart';
 ///                 .repositoryName(upstream.repository())
 ///                 .build())
 ///             .repository("example")
-///             .domain(example.domain())
+///             .domain(example.get("domain"))
 ///             .build());
 ///
 ///     }
@@ -442,7 +457,7 @@ import 'repository_upstream.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -451,11 +466,17 @@ import 'repository_upstream.dart';
 /// }
 ///
 /// resource "aws_codeartifact_repository" "upstream" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   repository = "upstream"
 ///   domain     = testAwsCodeartifactDomain.domain
 /// }
 /// resource "aws_codeartifact_repository" "test" {
-///   external_connections = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   external_connections {
 ///     external_connection_name = "public:npmjs"
 ///   }
 ///   repository = "example"
@@ -486,7 +507,7 @@ import 'repository_upstream.dart';
 ///     public static void stack(Context ctx) {
 ///         var upstream = new Repository("upstream", RepositoryArgs.builder()
 ///             .repository("upstream")
-///             .domain(testAwsCodeartifactDomain.domain())
+///             .domain(testAwsCodeartifactDomain.get("domain"))
 ///             .build());
 ///
 ///         var test = new Repository("test", RepositoryArgs.builder()
@@ -494,7 +515,7 @@ import 'repository_upstream.dart';
 ///                 .externalConnectionName("public:npmjs")
 ///                 .build())
 ///             .repository("example")
-///             .domain(example.domain())
+///             .domain(example.get("domain"))
 ///             .build());
 ///
 ///     }
@@ -567,7 +588,7 @@ class Repository extends pulumi.CustomResource {
           'aws:codeartifact/repository:Repository',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     administratorAccount = registerOutput<String>('administratorAccount');
     arn = registerOutput<String>('arn');

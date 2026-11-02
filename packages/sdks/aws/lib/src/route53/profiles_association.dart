@@ -95,8 +95,8 @@ import 'profiles_association_timeouts.dart';
 /// 		}
 /// 		_, err = route53.NewProfilesAssociation(ctx, "example", &route53.ProfilesAssociationArgs{
 /// 			Name:       pulumi.String("example"),
-/// 			ProfileId:  example.ID().ToIDOutput().ToStringOutput(),
-/// 			ResourceId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// 			ProfileId:  example.ID(),
+/// 			ResourceId: exampleVpc.ID(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("dev"),
 /// 			},
@@ -109,7 +109,7 @@ import 'profiles_association_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -117,15 +117,24 @@ import 'profiles_association_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53_profilesprofile" "example" {
+/// resource "aws_route53_profiles_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr = "10.0.0.0/16"
 /// }
-/// resource "aws_route53_profilesassociation" "example" {
+/// resource "aws_route53_profiles_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
-///   profile_id  = aws_route53_profilesprofile.example.id
+///   profile_id  = aws_route53_profiles_profile.example.id
 ///   resource_id = aws_ec2_vpc.example.id
 ///   tags = {
 ///     "Environment" = "dev"
@@ -238,7 +247,7 @@ class ProfilesAssociation extends pulumi.CustomResource {
           'aws:route53/profilesAssociation:ProfilesAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

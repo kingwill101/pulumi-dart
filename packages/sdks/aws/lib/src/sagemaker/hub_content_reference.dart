@@ -89,7 +89,7 @@ import 'hub_content_reference_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -98,10 +98,16 @@ import 'hub_content_reference_timeouts.dart';
 /// }
 ///
 /// resource "aws_sagemaker_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hub_name        = "example"
 ///   hub_description = "example"
 /// }
-/// resource "aws_sagemaker_hubcontentreference" "example" {
+/// resource "aws_sagemaker_hub_content_reference" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hub_name                         = aws_sagemaker_hub.example.hub_name
 ///   hub_content_name                 = "example-llama"
 ///   sagemaker_public_hub_content_arn = "arn:aws:sagemaker:us-east-1:aws:hub-content/SageMakerPublicHub/Model/meta-textgeneration-llama-3-1-8b-instruct"
@@ -227,7 +233,7 @@ import 'hub_content_reference_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -235,7 +241,10 @@ import 'hub_content_reference_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_hubcontentreference" "example" {
+/// resource "aws_sagemaker_hub_content_reference" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hub_name                         = exampleAwsSagemakerHub.hubName
 ///   hub_content_name                 = "example-llama"
 ///   sagemaker_public_hub_content_arn = "arn:aws:sagemaker:us-east-1:aws:hub-content/SageMakerPublicHub/Model/meta-textgeneration-llama-3-1-8b-instruct"
@@ -264,7 +273,7 @@ import 'hub_content_reference_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new HubContentReference("example", HubContentReferenceArgs.builder()
-///             .hubName(exampleAwsSagemakerHub.hubName())
+///             .hubName(exampleAwsSagemakerHub.get("hubName"))
 ///             .hubContentName("example-llama")
 ///             .sagemakerPublicHubContentArn("arn:aws:sagemaker:us-east-1:aws:hub-content/SageMakerPublicHub/Model/meta-textgeneration-llama-3-1-8b-instruct")
 ///             .minVersion("1.0.0")
@@ -342,7 +351,7 @@ class HubContentReference extends pulumi.CustomResource {
           'aws:sagemaker/hubContentReference:HubContentReference',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     hubArn = registerOutput<String>('hubArn');
     hubContentArn = registerOutput<String>('hubContentArn');

@@ -85,7 +85,7 @@ import 'video_stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -93,7 +93,10 @@ import 'video_stream_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kinesis_videostream" "default" {
+/// resource "aws_kinesis_video_stream" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "kinesis-video-stream"
 ///   data_retention_in_hours = 1
 ///   device_name             = "kinesis-video-device-name"
@@ -192,7 +195,7 @@ class VideoStream extends pulumi.CustomResource {
           'aws:kinesis/videoStream:VideoStream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationTime = registerOutput<String>('creationTime');

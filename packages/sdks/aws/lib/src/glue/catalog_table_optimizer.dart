@@ -120,7 +120,7 @@ import 'catalog_table_optimizer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -128,10 +128,13 @@ import 'catalog_table_optimizer_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_glue_catalogtableoptimizer" "example" {
-///   configuration = {
-///     compaction_configuration = {
-///       iceberg_configuration = {
+/// resource "aws_glue_catalog_table_optimizer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     compaction_configuration {
+///       iceberg_configuration {
 ///         strategy              = "binpack"
 ///         min_input_files       = 5
 ///         delete_file_threshold = 1
@@ -324,7 +327,7 @@ import 'catalog_table_optimizer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -332,10 +335,13 @@ import 'catalog_table_optimizer_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_glue_catalogtableoptimizer" "example" {
-///   configuration = {
-///     retention_configuration = {
-///       iceberg_configuration = {
+/// resource "aws_glue_catalog_table_optimizer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     retention_configuration {
+///       iceberg_configuration {
 ///         snapshot_retention_period_in_days = 7
 ///         number_of_snapshots_to_retain     = 3
 ///         clean_expired_files               = true
@@ -524,7 +530,7 @@ import 'catalog_table_optimizer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -532,10 +538,13 @@ import 'catalog_table_optimizer_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_glue_catalogtableoptimizer" "example" {
-///   configuration = {
-///     orphan_file_deletion_configuration = {
-///       iceberg_configuration = {
+/// resource "aws_glue_catalog_table_optimizer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     orphan_file_deletion_configuration {
+///       iceberg_configuration {
 ///         orphan_file_retention_period_in_days = 7
 ///         location                             = "s3://example-bucket/example_table/"
 ///       }
@@ -645,7 +654,7 @@ class CatalogTableOptimizer extends pulumi.CustomResource {
           'aws:glue/catalogTableOptimizer:CatalogTableOptimizer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     catalogId = registerOutput<String>('catalogId');
     configuration = registerOutput<CatalogTableOptimizerConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogTableOptimizerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

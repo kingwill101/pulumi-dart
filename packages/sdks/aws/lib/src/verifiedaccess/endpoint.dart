@@ -91,7 +91,7 @@ import 'endpoint_state.dart';
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -100,7 +100,10 @@ import 'endpoint_state.dart';
 /// }
 ///
 /// resource "aws_verifiedaccess_endpoint" "example" {
-///   load_balancer_options = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   load_balancer_options {
 ///     load_balancer_arn = exampleAwsLb.arn
 ///     port              = 443
 ///     protocol          = "https"
@@ -226,7 +229,7 @@ import 'endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -235,7 +238,10 @@ import 'endpoint_state.dart';
 /// }
 ///
 /// resource "aws_verifiedaccess_endpoint" "example" {
-///   network_interface_options = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   network_interface_options {
 ///     network_interface_id = exampleAwsNetworkInterface.id
 ///     port                 = 443
 ///     protocol             = "https"
@@ -274,18 +280,18 @@ import 'endpoint_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Endpoint("example", EndpointArgs.builder()
 ///             .networkInterfaceOptions(EndpointNetworkInterfaceOptionsArgs.builder()
-///                 .networkInterfaceId(exampleAwsNetworkInterface.id())
+///                 .networkInterfaceId(exampleAwsNetworkInterface.get("id"))
 ///                 .port(443)
 ///                 .protocol("https")
 ///                 .build())
 ///             .applicationDomain("example.com")
 ///             .attachmentType("vpc")
 ///             .description("example")
-///             .domainCertificateArn(exampleAwsAcmCertificate.arn())
+///             .domainCertificateArn(exampleAwsAcmCertificate.get("arn"))
 ///             .endpointDomainPrefix("example")
 ///             .endpointType("network-interface")
-///             .securityGroupIds(exampleAwsSecurityGroup.id())
-///             .verifiedAccessGroupId(exampleAwsVerifiedaccessGroup.id())
+///             .securityGroupIds(exampleAwsSecurityGroup.get("id"))
+///             .verifiedAccessGroupId(exampleAwsVerifiedaccessGroup.get("id"))
 ///             .build());
 ///
 ///     }
@@ -396,7 +402,7 @@ import 'endpoint_state.dart';
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -405,11 +411,14 @@ import 'endpoint_state.dart';
 /// }
 ///
 /// resource "aws_verifiedaccess_endpoint" "example" {
-///   cidr_options = {
-///     port_ranges = [{
-///       "fromPort" = 443
-///       "toPort"   = 443
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cidr_options {
+///     port_range {
+///       from_port = 443
+///       to_port   = 443
+///     }
 ///     cidr       = test[0].cidrBlock
 ///     protocol   = "tcp"
 ///     subnet_ids = [for subnet in test : subnet.id]
@@ -485,7 +494,7 @@ class Endpoint extends pulumi.CustomResource {
           'aws:verifiedaccess/endpoint:Endpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     applicationDomain = registerOutput<String?>('applicationDomain');
     attachmentType = registerOutput<String>('attachmentType');

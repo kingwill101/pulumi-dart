@@ -67,7 +67,7 @@ import 'channel_namespace_subscribe_auth_mode.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,7 +75,10 @@ import 'channel_namespace_subscribe_auth_mode.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appsync_channelnamespace" "example" {
+/// resource "aws_appsync_channel_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "example-channel-namespace"
 ///   api_id = exampleAwsAppsyncApi.apiId
 /// }
@@ -103,7 +106,7 @@ import 'channel_namespace_subscribe_auth_mode.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new ChannelNamespace("example", ChannelNamespaceArgs.builder()
 ///             .name("example-channel-namespace")
-///             .apiId(exampleAwsAppsyncApi.apiId())
+///             .apiId(exampleAwsAppsyncApi.get("apiId"))
 ///             .build());
 ///
 ///     }
@@ -162,7 +165,7 @@ class ChannelNamespace extends pulumi.CustomResource {
           'aws:appsync/channelNamespace:ChannelNamespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     channelNamespaceArn = registerOutput<String>('channelNamespaceArn');

@@ -87,7 +87,7 @@ import 'human_task_uiui_template.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -98,7 +98,10 @@ import 'human_task_uiui_template.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_humantaskui" "example" {
+/// resource "aws_sagemaker_human_task_u_i" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ui_template = {
 ///     content = file("sagemaker-human-task-ui-template.html")
 ///   }
@@ -190,7 +193,7 @@ class HumanTaskUI extends pulumi.CustomResource {
           'aws:sagemaker/humanTaskUI:HumanTaskUI',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     humanTaskUiName = registerOutput<String>('humanTaskUiName');

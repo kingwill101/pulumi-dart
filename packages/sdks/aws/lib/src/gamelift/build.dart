@@ -84,7 +84,7 @@ import 'build_storage_location.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -93,7 +93,10 @@ import 'build_storage_location.dart';
 /// }
 ///
 /// resource "aws_gamelift_build" "test" {
-///   storage_location = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   storage_location {
 ///     bucket   = testAwsS3Bucket.id
 ///     key      = testAwsS3Object.key
 ///     role_arn = testAwsIamRole.arn
@@ -126,9 +129,9 @@ import 'build_storage_location.dart';
 ///     public static void stack(Context ctx) {
 ///         var test = new Build("test", BuildArgs.builder()
 ///             .storageLocation(BuildStorageLocationArgs.builder()
-///                 .bucket(testAwsS3Bucket.id())
-///                 .key(testAwsS3Object.key())
-///                 .roleArn(testAwsIamRole.arn())
+///                 .bucket(testAwsS3Bucket.get("id"))
+///                 .key(testAwsS3Object.get("key"))
+///                 .roleArn(testAwsIamRole.get("arn"))
 ///                 .build())
 ///             .name("example-build")
 ///             .operatingSystem("WINDOWS_2012")
@@ -188,7 +191,7 @@ class Build extends pulumi.CustomResource {
           'aws:gamelift/build:Build',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

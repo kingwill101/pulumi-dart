@@ -94,7 +94,7 @@ import 'primary_contact_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -102,8 +102,11 @@ import 'primary_contact_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_account_primarycontact" "test" {
-///   address_line1      = "123 Any Street"
+/// resource "aws_account_primary_contact" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   address_line_1     = "123 Any Street"
 ///   city               = "Seattle"
 ///   company_name       = "Example Corp, Inc."
 ///   country_code       = "US"
@@ -217,7 +220,7 @@ class PrimaryContact extends pulumi.CustomResource {
           'aws:account/primaryContact:PrimaryContact',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     addressLine1 = registerOutput<String>('addressLine1');

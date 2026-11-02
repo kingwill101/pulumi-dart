@@ -108,7 +108,7 @@ import 'agentcore_gateway_rule_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -116,7 +116,10 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoregatewayrule" "example" {
+/// resource "aws_bedrock_agentcore_gateway_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions {
 ///     route_to_target = {
 ///       static_route = {
@@ -157,11 +160,11 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///             .actions(AgentcoreGatewayRuleActionArgs.builder()
 ///                 .routeToTarget(AgentcoreGatewayRuleActionRouteToTargetArgs.builder()
 ///                     .staticRoute(AgentcoreGatewayRuleActionRouteToTargetStaticRouteArgs.builder()
-///                         .targetName(exampleAwsBedrockagentcoreGatewayTarget.name())
+///                         .targetName(exampleAwsBedrockagentcoreGatewayTarget.get("name"))
 ///                         .build())
 ///                     .build())
 ///                 .build())
-///             .gatewayIdentifier(exampleAwsBedrockagentcoreGateway.gatewayId())
+///             .gatewayIdentifier(exampleAwsBedrockagentcoreGateway.get("gatewayId"))
 ///             .priority(100)
 ///             .description("Route all requests to the primary target")
 ///             .build());
@@ -325,7 +328,7 @@ import 'agentcore_gateway_rule_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -333,18 +336,21 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoregatewayrule" "canary" {
+/// resource "aws_bedrock_agentcore_gateway_rule" "canary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions {
 ///     route_to_target = {
 ///       weighted_route = {
 ///         traffic_splits = [{
-///           "name"       = "primary"
-///           "targetName" = primary.name
-///           "weight"     = 90
+///           name        = "primary"
+///           target_name = primary.name
+///           weight      = 90
 ///           }, {
-///           "name"       = "canary"
-///           "targetName" = canaryAwsBedrockagentcoreGatewayTarget.name
-///           "weight"     = 10
+///           name        = "canary"
+///           target_name = canaryAwsBedrockagentcoreGatewayTarget.name
+///           weight      = 10
 ///         }]
 ///       }
 ///     }
@@ -385,18 +391,18 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///                         .trafficSplits(
 ///                             AgentcoreGatewayRuleActionRouteToTargetWeightedRouteTrafficSplitArgs.builder()
 ///                                 .name("primary")
-///                                 .targetName(primary.name())
+///                                 .targetName(primary.get("name"))
 ///                                 .weight(90)
 ///                                 .build(),
 ///                             AgentcoreGatewayRuleActionRouteToTargetWeightedRouteTrafficSplitArgs.builder()
 ///                                 .name("canary")
-///                                 .targetName(canaryAwsBedrockagentcoreGatewayTarget.name())
+///                                 .targetName(canaryAwsBedrockagentcoreGatewayTarget.get("name"))
 ///                                 .weight(10)
 ///                                 .build())
 ///                         .build())
 ///                     .build())
 ///                 .build())
-///             .gatewayIdentifier(example.gatewayId())
+///             .gatewayIdentifier(example.get("gatewayId"))
 ///             .priority(100)
 ///             .build());
 ///
@@ -624,7 +630,7 @@ import 'agentcore_gateway_rule_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -632,12 +638,15 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
 ///
-/// resource "aws_bedrock_agentcoregatewayrule" "restricted" {
+/// resource "aws_bedrock_agentcore_gateway_rule" "restricted" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions {
 ///     route_to_target = {
 ///       static_route = {
@@ -648,9 +657,9 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///   conditions {
 ///     match_principals = {
 ///       any_ofs = [{
-///         "iamPrincipal" = {
-///           "arn"      ="arn:${data.aws_getpartition.currentGetPartition.partition}:iam::${data.aws_getcalleridentity.current.account_id}:role/agentcore-caller-*"
-///           "operator" = "StringLike"
+///         iam_principal = {
+///           arn      ="arn:${data.aws_partition.currentGetPartition.partition}:iam::${data.aws_caller_identity.current.account_id}:role/agentcore-caller-*"
+///           operator = "StringLike"
 ///         }
 ///       }]
 ///     }
@@ -706,7 +715,7 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///             .actions(AgentcoreGatewayRuleActionArgs.builder()
 ///                 .routeToTarget(AgentcoreGatewayRuleActionRouteToTargetArgs.builder()
 ///                     .staticRoute(AgentcoreGatewayRuleActionRouteToTargetStaticRouteArgs.builder()
-///                         .targetName(example.name())
+///                         .targetName(example.get("name"))
 ///                         .build())
 ///                     .build())
 ///                 .build())
@@ -726,7 +735,7 @@ import 'agentcore_gateway_rule_timeouts.dart';
 ///                         .anyOfs("/api/*")
 ///                         .build())
 ///                     .build())
-///             .gatewayIdentifier(exampleAwsBedrockagentcoreGateway.gatewayId())
+///             .gatewayIdentifier(exampleAwsBedrockagentcoreGateway.get("gatewayId"))
 ///             .priority(50)
 ///             .build());
 ///
@@ -820,7 +829,7 @@ class AgentcoreGatewayRule extends pulumi.CustomResource {
           'aws:bedrock/agentcoreGatewayRule:AgentcoreGatewayRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     actions = registerOutput<List<AgentcoreGatewayRuleAction>?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreGatewayRuleAction>(guardedValue, (value) => AgentcoreGatewayRuleAction.fromMap((value as Map).cast<String, dynamic>())); });
     conditions = registerOutput<List<AgentcoreGatewayRuleCondition>?>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreGatewayRuleCondition>(guardedValue, (value) => AgentcoreGatewayRuleCondition.fromMap((value as Map).cast<String, dynamic>())); });

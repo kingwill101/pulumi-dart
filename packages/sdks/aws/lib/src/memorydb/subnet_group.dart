@@ -86,7 +86,7 @@ import 'subnet_group_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSubnet, err := ec2.NewSubnet(ctx, "example", &ec2.SubnetArgs{
-/// 			VpcId:            example.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            example.ID(),
 /// 			CidrBlock:        pulumi.String("10.0.0.0/24"),
 /// 			AvailabilityZone: pulumi.String("us-west-2a"),
 /// 		})
@@ -96,7 +96,7 @@ import 'subnet_group_state.dart';
 /// 		_, err = memorydb.NewSubnetGroup(ctx, "example", &memorydb.SubnetGroupArgs{
 /// 			Name: pulumi.String("my-subnet-group"),
 /// 			SubnetIds: pulumi.StringArray{
-/// 				exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleSubnet.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -107,7 +107,7 @@ import 'subnet_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -116,14 +116,23 @@ import 'subnet_group_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
 /// resource "aws_ec2_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.example.id
 ///   cidr_block        = "10.0.0.0/24"
 ///   availability_zone = "us-west-2a"
 /// }
-/// resource "aws_memorydb_subnetgroup" "example" {
+/// resource "aws_memorydb_subnet_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "my-subnet-group"
 ///   subnet_ids = [aws_ec2_subnet.example.id]
 /// }
@@ -235,7 +244,7 @@ class SubnetGroup extends pulumi.CustomResource {
           'aws:memorydb/subnetGroup:SubnetGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

@@ -89,7 +89,7 @@ import 'instance_logging_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -97,9 +97,12 @@ import 'instance_logging_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_verifiedaccess_instanceloggingconfiguration" "example" {
-///   access_logs = {
-///     cloudwatch_logs = {
+/// resource "aws_verifiedaccess_instance_logging_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   access_logs {
+///     cloudwatch_logs {
 ///       enabled   = true
 ///       log_group = exampleAwsCloudwatchLogGroup.id
 ///     }
@@ -134,10 +137,10 @@ import 'instance_logging_configuration_state.dart';
 ///             .accessLogs(InstanceLoggingConfigurationAccessLogsArgs.builder()
 ///                 .cloudwatchLogs(InstanceLoggingConfigurationAccessLogsCloudwatchLogsArgs.builder()
 ///                     .enabled(true)
-///                     .logGroup(exampleAwsCloudwatchLogGroup.id())
+///                     .logGroup(exampleAwsCloudwatchLogGroup.get("id"))
 ///                     .build())
 ///                 .build())
-///             .verifiedaccessInstanceId(exampleAwsVerifiedaccessInstance.id())
+///             .verifiedaccessInstanceId(exampleAwsVerifiedaccessInstance.get("id"))
 ///             .build());
 ///
 ///     }
@@ -236,7 +239,7 @@ import 'instance_logging_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -244,9 +247,12 @@ import 'instance_logging_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_verifiedaccess_instanceloggingconfiguration" "example" {
-///   access_logs = {
-///     kinesis_data_firehose = {
+/// resource "aws_verifiedaccess_instance_logging_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   access_logs {
+///     kinesis_data_firehose {
 ///       delivery_stream = exampleAwsKinesisFirehoseDeliveryStream.name
 ///       enabled         = true
 ///     }
@@ -280,11 +286,11 @@ import 'instance_logging_configuration_state.dart';
 ///         var example = new InstanceLoggingConfiguration("example", InstanceLoggingConfigurationArgs.builder()
 ///             .accessLogs(InstanceLoggingConfigurationAccessLogsArgs.builder()
 ///                 .kinesisDataFirehose(InstanceLoggingConfigurationAccessLogsKinesisDataFirehoseArgs.builder()
-///                     .deliveryStream(exampleAwsKinesisFirehoseDeliveryStream.name())
+///                     .deliveryStream(exampleAwsKinesisFirehoseDeliveryStream.get("name"))
 ///                     .enabled(true)
 ///                     .build())
 ///                 .build())
-///             .verifiedaccessInstanceId(exampleAwsVerifiedaccessInstance.id())
+///             .verifiedaccessInstanceId(exampleAwsVerifiedaccessInstance.get("id"))
 ///             .build());
 ///
 ///     }
@@ -387,7 +393,7 @@ import 'instance_logging_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -395,9 +401,12 @@ import 'instance_logging_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_verifiedaccess_instanceloggingconfiguration" "example" {
-///   access_logs = {
-///     s3 = {
+/// resource "aws_verifiedaccess_instance_logging_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   access_logs {
+///     s3 {
 ///       bucket_name = exampleAwsS3Bucket.id
 ///       enabled     = true
 ///       prefix      = "example"
@@ -432,12 +441,12 @@ import 'instance_logging_configuration_state.dart';
 ///         var example = new InstanceLoggingConfiguration("example", InstanceLoggingConfigurationArgs.builder()
 ///             .accessLogs(InstanceLoggingConfigurationAccessLogsArgs.builder()
 ///                 .s3(InstanceLoggingConfigurationAccessLogsS3Args.builder()
-///                     .bucketName(exampleAwsS3Bucket.id())
+///                     .bucketName(exampleAwsS3Bucket.get("id"))
 ///                     .enabled(true)
 ///                     .prefix("example")
 ///                     .build())
 ///                 .build())
-///             .verifiedaccessInstanceId(exampleAwsVerifiedaccessInstance.id())
+///             .verifiedaccessInstanceId(exampleAwsVerifiedaccessInstance.get("id"))
 ///             .build());
 ///
 ///     }
@@ -571,7 +580,7 @@ import 'instance_logging_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -579,17 +588,20 @@ import 'instance_logging_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_verifiedaccess_instanceloggingconfiguration" "example" {
-///   access_logs = {
-///     cloudwatch_logs = {
+/// resource "aws_verifiedaccess_instance_logging_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   access_logs {
+///     cloudwatch_logs {
 ///       enabled   = true
 ///       log_group = exampleAwsCloudwatchLogGroup.id
 ///     }
-///     kinesis_data_firehose = {
+///     kinesis_data_firehose {
 ///       delivery_stream = exampleAwsKinesisFirehoseDeliveryStream.name
 ///       enabled         = true
 ///     }
-///     s3 = {
+///     s3 {
 ///       bucket_name = exampleAwsS3Bucket.id
 ///       enabled     = true
 ///     }
@@ -626,18 +638,18 @@ import 'instance_logging_configuration_state.dart';
 ///             .accessLogs(InstanceLoggingConfigurationAccessLogsArgs.builder()
 ///                 .cloudwatchLogs(InstanceLoggingConfigurationAccessLogsCloudwatchLogsArgs.builder()
 ///                     .enabled(true)
-///                     .logGroup(exampleAwsCloudwatchLogGroup.id())
+///                     .logGroup(exampleAwsCloudwatchLogGroup.get("id"))
 ///                     .build())
 ///                 .kinesisDataFirehose(InstanceLoggingConfigurationAccessLogsKinesisDataFirehoseArgs.builder()
-///                     .deliveryStream(exampleAwsKinesisFirehoseDeliveryStream.name())
+///                     .deliveryStream(exampleAwsKinesisFirehoseDeliveryStream.get("name"))
 ///                     .enabled(true)
 ///                     .build())
 ///                 .s3(InstanceLoggingConfigurationAccessLogsS3Args.builder()
-///                     .bucketName(exampleAwsS3Bucket.id())
+///                     .bucketName(exampleAwsS3Bucket.get("id"))
 ///                     .enabled(true)
 ///                     .build())
 ///                 .build())
-///             .verifiedaccessInstanceId(exampleAwsVerifiedaccessInstance.id())
+///             .verifiedaccessInstanceId(exampleAwsVerifiedaccessInstance.get("id"))
 ///             .build());
 ///
 ///     }
@@ -729,7 +741,7 @@ import 'instance_logging_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -737,8 +749,11 @@ import 'instance_logging_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_verifiedaccess_instanceloggingconfiguration" "example" {
-///   access_logs = {
+/// resource "aws_verifiedaccess_instance_logging_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   access_logs {
 ///     include_trust_context = true
 ///   }
 ///   verifiedaccess_instance_id = exampleAwsVerifiedaccessInstance.id
@@ -770,7 +785,7 @@ import 'instance_logging_configuration_state.dart';
 ///             .accessLogs(InstanceLoggingConfigurationAccessLogsArgs.builder()
 ///                 .includeTrustContext(true)
 ///                 .build())
-///             .verifiedaccessInstanceId(exampleAwsVerifiedaccessInstance.id())
+///             .verifiedaccessInstanceId(exampleAwsVerifiedaccessInstance.get("id"))
 ///             .build());
 ///
 ///     }
@@ -854,7 +869,7 @@ import 'instance_logging_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -862,8 +877,11 @@ import 'instance_logging_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_verifiedaccess_instanceloggingconfiguration" "example" {
-///   access_logs = {
+/// resource "aws_verifiedaccess_instance_logging_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   access_logs {
 ///     log_version = "ocsf-1.0.0-rc.2"
 ///   }
 ///   verifiedaccess_instance_id = exampleAwsVerifiedaccessInstance.id
@@ -895,7 +913,7 @@ import 'instance_logging_configuration_state.dart';
 ///             .accessLogs(InstanceLoggingConfigurationAccessLogsArgs.builder()
 ///                 .logVersion("ocsf-1.0.0-rc.2")
 ///                 .build())
-///             .verifiedaccessInstanceId(exampleAwsVerifiedaccessInstance.id())
+///             .verifiedaccessInstanceId(exampleAwsVerifiedaccessInstance.get("id"))
 ///             .build());
 ///
 ///     }
@@ -939,7 +957,7 @@ class InstanceLoggingConfiguration extends pulumi.CustomResource {
           'aws:verifiedaccess/instanceLoggingConfiguration:InstanceLoggingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accessLogs = registerOutput<InstanceLoggingConfigurationAccessLogs>('accessLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceLoggingConfigurationAccessLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');

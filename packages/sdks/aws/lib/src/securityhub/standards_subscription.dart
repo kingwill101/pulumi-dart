@@ -107,7 +107,7 @@ import 'standards_subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -115,18 +115,27 @@ import 'standards_subscription_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
 ///
 /// resource "aws_securityhub_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_securityhub_standardssubscription" "cis" {
-///   depends_on    = [aws_securityhub_account.example]
+/// resource "aws_securityhub_standards_subscription" "cis" {
+///   depends_on = [aws_securityhub_account.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   standards_arn = "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"
 /// }
-/// resource "aws_securityhub_standardssubscription" "pci_321" {
-///   depends_on    = [aws_securityhub_account.example]
-///   standards_arn ="arn:aws:securityhub:${data.aws_getregion.current.region}::standards/pci-dss/v/3.2.1"
+/// resource "aws_securityhub_standards_subscription" "pci_321" {
+///   depends_on = [aws_securityhub_account.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   standards_arn ="arn:aws:securityhub:${data.aws_region.current.region}::standards/pci-dss/v/3.2.1"
 /// }
 /// ```
 /// ```java
@@ -249,7 +258,7 @@ class StandardsSubscription extends pulumi.CustomResource {
           'aws:securityhub/standardsSubscription:StandardsSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');

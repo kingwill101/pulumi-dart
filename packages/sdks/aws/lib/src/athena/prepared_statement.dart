@@ -124,7 +124,7 @@ import 'prepared_statement_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -133,17 +133,29 @@ import 'prepared_statement_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket        = "tf-test"
 ///   force_destroy = true
 /// }
 /// resource "aws_athena_workgroup" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "tf-test"
 /// }
 /// resource "aws_athena_database" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "example"
 ///   bucket = aws_s3_bucket.test.bucket
 /// }
-/// resource "aws_athena_preparedstatement" "test" {
+/// resource "aws_athena_prepared_statement" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "tf_test"
 ///   query_statement ="SELECT * FROM ${aws_athena_database.test.name} WHERE x = ?"
 ///   workgroup       = aws_athena_workgroup.test.name
@@ -258,7 +270,7 @@ class PreparedStatement extends pulumi.CustomResource {
           'aws:athena/preparedStatement:PreparedStatement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

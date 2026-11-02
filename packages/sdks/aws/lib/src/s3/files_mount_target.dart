@@ -63,7 +63,7 @@ import 'files_mount_target_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,7 +71,10 @@ import 'files_mount_target_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_filesmounttarget" "example" {
+/// resource "aws_s3_files_mount_target" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   file_system_id = exampleAwsS3filesFileSystem.id
 ///   subnet_id      = exampleAwsSubnet.id
 /// }
@@ -98,8 +101,8 @@ import 'files_mount_target_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new FilesMountTarget("example", FilesMountTargetArgs.builder()
-///             .fileSystemId(exampleAwsS3filesFileSystem.id())
-///             .subnetId(exampleAwsSubnet.id())
+///             .fileSystemId(exampleAwsS3filesFileSystem.get("id"))
+///             .subnetId(exampleAwsSubnet.get("id"))
 ///             .build());
 ///
 ///     }
@@ -177,7 +180,7 @@ class FilesMountTarget extends pulumi.CustomResource {
           'aws:s3/filesMountTarget:FilesMountTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     availabilityZoneId = registerOutput<String>('availabilityZoneId');
     fileSystemId = registerOutput<String>('fileSystemId');

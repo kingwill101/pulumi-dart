@@ -62,7 +62,7 @@ import 'approval_rule_template_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'approval_rule_template_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_codecommit_approvalruletemplateassociation" "example" {
+/// resource "aws_codecommit_approval_rule_template_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   approval_rule_template_name = exampleAwsCodecommitApprovalRuleTemplate.name
 ///   repository_name             = exampleAwsCodecommitRepository.repositoryName
 /// }
@@ -97,8 +100,8 @@ import 'approval_rule_template_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ApprovalRuleTemplateAssociation("example", ApprovalRuleTemplateAssociationArgs.builder()
-///             .approvalRuleTemplateName(exampleAwsCodecommitApprovalRuleTemplate.name())
-///             .repositoryName(exampleAwsCodecommitRepository.repositoryName())
+///             .approvalRuleTemplateName(exampleAwsCodecommitApprovalRuleTemplate.get("name"))
+///             .repositoryName(exampleAwsCodecommitRepository.get("repositoryName"))
 ///             .build());
 ///
 ///     }
@@ -141,7 +144,7 @@ class ApprovalRuleTemplateAssociation extends pulumi.CustomResource {
           'aws:codecommit/approvalRuleTemplateAssociation:ApprovalRuleTemplateAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     approvalRuleTemplateName = registerOutput<String>('approvalRuleTemplateName');
     region = registerOutput<String>('region');

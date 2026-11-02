@@ -70,7 +70,7 @@ import 'provisioned_concurrency_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -78,7 +78,10 @@ import 'provisioned_concurrency_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_provisionedconcurrencyconfig" "example" {
+/// resource "aws_lambda_provisioned_concurrency_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   function_name                     = exampleAwsLambdaAlias.functionName
 ///   provisioned_concurrent_executions = 1
 ///   qualifier                         = exampleAwsLambdaAlias.name
@@ -106,9 +109,9 @@ import 'provisioned_concurrency_config_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ProvisionedConcurrencyConfig("example", ProvisionedConcurrencyConfigArgs.builder()
-///             .functionName(exampleAwsLambdaAlias.functionName())
+///             .functionName(exampleAwsLambdaAlias.get("functionName"))
 ///             .provisionedConcurrentExecutions(1)
-///             .qualifier(exampleAwsLambdaAlias.name())
+///             .qualifier(exampleAwsLambdaAlias.get("name"))
 ///             .build());
 ///
 ///     }
@@ -187,7 +190,7 @@ import 'provisioned_concurrency_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -195,7 +198,10 @@ import 'provisioned_concurrency_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_provisionedconcurrencyconfig" "example" {
+/// resource "aws_lambda_provisioned_concurrency_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   function_name                     = exampleAwsLambdaFunction.functionName
 ///   provisioned_concurrent_executions = 1
 ///   qualifier                         = exampleAwsLambdaFunction.version
@@ -223,9 +229,9 @@ import 'provisioned_concurrency_config_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ProvisionedConcurrencyConfig("example", ProvisionedConcurrencyConfigArgs.builder()
-///             .functionName(exampleAwsLambdaFunction.functionName())
+///             .functionName(exampleAwsLambdaFunction.get("functionName"))
 ///             .provisionedConcurrentExecutions(1)
-///             .qualifier(exampleAwsLambdaFunction.version())
+///             .qualifier(exampleAwsLambdaFunction.get("version"))
 ///             .build());
 ///
 ///     }
@@ -275,7 +281,7 @@ class ProvisionedConcurrencyConfig extends pulumi.CustomResource {
           'aws:lambda/provisionedConcurrencyConfig:ProvisionedConcurrencyConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     functionName = registerOutput<String>('functionName');
     provisionedConcurrentExecutions = registerOutput<int>('provisionedConcurrentExecutions');

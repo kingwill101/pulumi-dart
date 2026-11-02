@@ -95,7 +95,7 @@ import 'lb_certificate_state.dart';
 /// 		}
 /// 		_, err = lightsail.NewLbCertificate(ctx, "example", &lightsail.LbCertificateArgs{
 /// 			Name:       pulumi.String("example-load-balancer-certificate"),
-/// 			LbName:     example.ID().ToIDOutput().ToStringOutput(),
+/// 			LbName:     example.ID(),
 /// 			DomainName: pulumi.String("example.com"),
 /// 		})
 /// 		if err != nil {
@@ -106,7 +106,7 @@ import 'lb_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -115,6 +115,9 @@ import 'lb_certificate_state.dart';
 /// }
 ///
 /// resource "aws_lightsail_lb" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-load-balancer"
 ///   health_check_path = "/"
 ///   instance_port     = "80"
@@ -122,7 +125,10 @@ import 'lb_certificate_state.dart';
 ///     "foo" = "bar"
 ///   }
 /// }
-/// resource "aws_lightsail_lbcertificate" "example" {
+/// resource "aws_lightsail_lb_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example-load-balancer-certificate"
 ///   lb_name     = aws_lightsail_lb.example.id
 ///   domain_name = "example.com"
@@ -228,7 +234,7 @@ class LbCertificate extends pulumi.CustomResource {
           'aws:lightsail/lbCertificate:LbCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');

@@ -357,7 +357,7 @@ import 'provisioning_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -365,8 +365,8 @@ import 'provisioning_template_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "iotAssumeRolePolicy" {
-///   statements {
+/// data "aws_iam_policy_document" "iotAssumeRolePolicy" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["iot.amazonaws.com"]
@@ -374,27 +374,39 @@ import 'provisioning_template_state.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "devicePolicy" {
-///   statements {
+/// data "aws_iam_policy_document" "devicePolicy" {
+///   statement {
 ///     actions   = ["iot:Subscribe"]
 ///     resources = ["*"]
 ///   }
 /// }
 ///
 /// resource "aws_iam_role" "iot_fleet_provisioning" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "IoTProvisioningServiceRole"
 ///   path               = "/service-role/"
-///   assume_role_policy = data.aws_iam_getpolicydocument.iotAssumeRolePolicy.json
+///   assume_role_policy = data.aws_iam_policy_document.iotAssumeRolePolicy.json
 /// }
-/// resource "aws_iam_rolepolicyattachment" "iot_fleet_provisioning_registration" {
+/// resource "aws_iam_role_policy_attachment" "iot_fleet_provisioning_registration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role       = aws_iam_role.iot_fleet_provisioning.name
 ///   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSIoTThingsRegistration"
 /// }
 /// resource "aws_iot_policy" "device_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "DevicePolicy"
-///   policy = data.aws_iam_getpolicydocument.devicePolicy.json
+///   policy = data.aws_iam_policy_document.devicePolicy.json
 /// }
-/// resource "aws_iot_provisioningtemplate" "fleet" {
+/// resource "aws_iot_provisioning_template" "fleet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "FleetTemplate"
 ///   description           = "My provisioning template"
 ///   provisioning_role_arn = aws_iam_role.iot_fleet_provisioning.arn
@@ -638,7 +650,7 @@ class ProvisioningTemplate extends pulumi.CustomResource {
           'aws:iot/provisioningTemplate:ProvisioningTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultVersionId = registerOutput<int>('defaultVersionId');

@@ -69,7 +69,7 @@ import 'mlflow_app_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,7 +77,10 @@ import 'mlflow_app_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_mlflowapp" "example" {
+/// resource "aws_sagemaker_mlflow_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
 ///   role_arn           = exampleAwsIamRole.arn
 ///   artifact_store_uri ="s3://${exampleAwsS3Bucket.bucket}/path"
@@ -106,8 +109,8 @@ import 'mlflow_app_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new MlflowApp("example", MlflowAppArgs.builder()
 ///             .name("example")
-///             .roleArn(exampleAwsIamRole.arn())
-///             .artifactStoreUri(String.format("s3://%s/path", exampleAwsS3Bucket.bucket()))
+///             .roleArn(exampleAwsIamRole.get("arn"))
+///             .artifactStoreUri(String.format("s3://%s/path", exampleAwsS3Bucket.get("bucket")))
 ///             .build());
 ///
 ///     }
@@ -175,7 +178,7 @@ class MlflowApp extends pulumi.CustomResource {
           'aws:sagemaker/mlflowApp:MlflowApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accountDefaultStatus = registerOutput<String?>('accountDefaultStatus');
     arn = registerOutput<String>('arn');

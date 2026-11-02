@@ -55,7 +55,7 @@ import 'security_token_service_preferences_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -63,7 +63,10 @@ import 'security_token_service_preferences_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_securitytokenservicepreferences" "example" {
+/// resource "aws_iam_security_token_service_preferences" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   global_endpoint_token_version = "v2Token"
 /// }
 /// ```
@@ -118,7 +121,7 @@ class SecurityTokenServicePreferences extends pulumi.CustomResource {
           'aws:iam/securityTokenServicePreferences:SecurityTokenServicePreferences',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     globalEndpointTokenVersion = registerOutput<String>('globalEndpointTokenVersion');
   }

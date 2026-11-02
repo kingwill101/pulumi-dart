@@ -135,7 +135,7 @@ import 'algorithm_validation_specification.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -144,12 +144,15 @@ import 'algorithm_validation_specification.dart';
 /// }
 ///
 /// resource "aws_sagemaker_algorithm" "example" {
-///   training_specification = {
-///     training_channels = [{
-///       "name"                  = "train"
-///       "supportedContentTypes" = ["text/csv"]
-///       "supportedInputModes"   = ["File"]
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   training_specification {
+///     training_channels {
+///       name                    = "train"
+///       supported_content_types = ["text/csv"]
+///       supported_input_modes   = ["File"]
+///     }
 ///     supported_training_instance_types = ["ml.m5.large"]
 ///     training_image                    = "123456789012.dkr.ecr.us-west-2.amazonaws.com/example-training:latest"
 ///   }
@@ -662,7 +665,7 @@ import 'algorithm_validation_specification.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -670,75 +673,81 @@ import 'algorithm_validation_specification.dart';
 ///   }
 /// }
 ///
-/// data "aws_sagemaker_getprebuiltecrimage" "example" {
+/// data "aws_sagemaker_prebuilt_ecr_image" "example" {
 ///   repository_name = "linear-learner"
 ///   image_tag       = "1"
 /// }
 ///
 /// resource "aws_sagemaker_algorithm" "example" {
-///   training_specification = {
-///     metric_definitions = [{
-///       "name"  = "train:loss"
-///       "regex" = "loss=(.*?);"
-///     }]
-///     supported_hyper_parameters = [{
-///       "range" = {
-///         "continuousParameterRangeSpecification" = {
-///           "minValue" = "0.1"
-///           "maxValue" = "0.9"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   training_specification {
+///     metric_definitions {
+///       name  = "train:loss"
+///       regex = "loss=(.*?);"
+///     }
+///     supported_hyper_parameters {
+///       range {
+///         continuous_parameter_range_specification {
+///           min_value = "0.1"
+///           max_value = "0.9"
 ///         }
 ///       }
-///       "defaultValue" = "0.5"
-///       "description"  = "Continuous learning rate"
-///       "isRequired"   = true
-///       "isTunable"    = true
-///       "name"         = "eta"
-///       "type"         = "Continuous"
-///       }, {
-///       "range" = {
-///         "integerParameterRangeSpecification" = {
-///           "minValue" = "1"
-///           "maxValue" = "10"
+///       default_value = "0.5"
+///       description   = "Continuous learning rate"
+///       is_required   = true
+///       is_tunable    = true
+///       name          = "eta"
+///       type          = "Continuous"
+///     }
+///     supported_hyper_parameters {
+///       range {
+///         integer_parameter_range_specification {
+///           min_value = "1"
+///           max_value = "10"
 ///         }
 ///       }
-///       "defaultValue" = "5"
-///       "description"  = "Maximum tree depth"
-///       "isRequired"   = false
-///       "isTunable"    = true
-///       "name"         = "max_depth"
-///       "type"         = "Integer"
-///       }, {
-///       "range" = {
-///         "categoricalParameterRangeSpecification" = {
-///           "values" = ["reg:squarederror", "binary:logistic"]
+///       default_value = "5"
+///       description   = "Maximum tree depth"
+///       is_required   = false
+///       is_tunable    = true
+///       name          = "max_depth"
+///       type          = "Integer"
+///     }
+///     supported_hyper_parameters {
+///       range {
+///         categorical_parameter_range_specification {
+///           values = ["reg:squarederror", "binary:logistic"]
 ///         }
 ///       }
-///       "defaultValue" = "reg:squarederror"
-///       "description"  = "Objective function"
-///       "isRequired"   = false
-///       "isTunable"    = false
-///       "name"         = "objective"
-///       "type"         = "Categorical"
-///     }]
-///     supported_tuning_job_objective_metrics = [{
-///       "metricName" = "train:loss"
-///       "type"       = "Minimize"
-///     }]
-///     training_channels = [{
-///       "description"               = "Training data channel"
-///       "isRequired"                = true
-///       "name"                      = "train"
-///       "supportedCompressionTypes" = ["None", "Gzip"]
-///       "supportedContentTypes"     = ["text/csv"]
-///       "supportedInputModes"       = ["File"]
-///       }, {
-///       "name"                  = "validation"
-///       "supportedContentTypes" = ["application/json"]
-///       "supportedInputModes"   = ["Pipe"]
-///     }]
+///       default_value = "reg:squarederror"
+///       description   = "Objective function"
+///       is_required   = false
+///       is_tunable    = false
+///       name          = "objective"
+///       type          = "Categorical"
+///     }
+///     supported_tuning_job_objective_metrics {
+///       metric_name = "train:loss"
+///       type        = "Minimize"
+///     }
+///     training_channels {
+///       description                 = "Training data channel"
+///       is_required                 = true
+///       name                        = "train"
+///       supported_compression_types = ["None", "Gzip"]
+///       supported_content_types     = ["text/csv"]
+///       supported_input_modes       = ["File"]
+///     }
+///     training_channels {
+///       name                    = "validation"
+///       supported_content_types = ["application/json"]
+///       supported_input_modes   = ["Pipe"]
+///     }
 ///     supported_training_instance_types = ["ml.m5.large", "ml.c5.xlarge"]
 ///     supports_distributed_training     = true
-///     training_image                    = data.aws_sagemaker_getprebuiltecrimage.example.registry_path
+///     training_image                    = data.aws_sagemaker_prebuilt_ecr_image.example.registry_path
 ///   }
 ///   algorithm_name = "example-training-algorithm"
 /// }
@@ -1200,7 +1209,7 @@ import 'algorithm_validation_specification.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1208,41 +1217,44 @@ import 'algorithm_validation_specification.dart';
 ///   }
 /// }
 ///
-/// data "aws_sagemaker_getprebuiltecrimage" "example" {
+/// data "aws_sagemaker_prebuilt_ecr_image" "example" {
 ///   repository_name = "linear-learner"
 ///   image_tag       = "1"
 /// }
 ///
 /// resource "aws_sagemaker_algorithm" "example" {
-///   training_specification = {
-///     training_channels = [{
-///       "name"                  = "train"
-///       "supportedContentTypes" = ["text/csv"]
-///       "supportedInputModes"   = ["File"]
-///     }]
-///     supported_training_instance_types = ["ml.m5.large"]
-///     training_image                    = data.aws_sagemaker_getprebuiltecrimage.example.registry_path
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   inference_specification = {
-///     containers = [{
-///       "baseModel" = {
-///         "hubContentName"    = "basemodel"
-///         "hubContentVersion" = "1.0.0"
-///         "recipeName"        = "recipe"
+///   training_specification {
+///     training_channels {
+///       name                    = "train"
+///       supported_content_types = ["text/csv"]
+///       supported_input_modes   = ["File"]
+///     }
+///     supported_training_instance_types = ["ml.m5.large"]
+///     training_image                    = data.aws_sagemaker_prebuilt_ecr_image.example.registry_path
+///   }
+///   inference_specification {
+///     containers {
+///       base_model {
+///         hub_content_name    = "basemodel"
+///         hub_content_version = "1.0.0"
+///         recipe_name         = "recipe"
 ///       }
-///       "modelInput" = {
-///         "dataInputConfig" = "{}"
+///       model_input {
+///         data_input_config = "{}"
 ///       }
-///       "containerHostname" = "test-host"
-///       "environment" = {
+///       container_hostname = "test-host"
+///       environment = {
 ///         "TEST" = "value"
 ///       }
-///       "framework"        = "XGBOOST"
-///       "frameworkVersion" = "1.5-1"
-///       "image"            = data.aws_sagemaker_getprebuiltecrimage.example.registry_path
-///       "isCheckpoint"     = true
-///       "nearestModelName" = "nearest-model"
-///     }]
+///       framework          = "XGBOOST"
+///       framework_version  = "1.5-1"
+///       image              = data.aws_sagemaker_prebuilt_ecr_image.example.registry_path
+///       is_checkpoint      = true
+///       nearest_model_name = "nearest-model"
+///     }
 ///     supported_content_types                     = ["text/csv"]
 ///     supported_realtime_inference_instance_types = ["ml.m5.large"]
 ///     supported_response_mime_types               = ["text/csv"]
@@ -2400,7 +2412,7 @@ import 'algorithm_validation_specification.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2408,23 +2420,23 @@ import 'algorithm_validation_specification.dart';
 ///   }
 /// }
 ///
-/// data "aws_getpartition" "current" {
+/// data "aws_partition" "current" {
 /// }
-/// data "aws_sagemaker_getprebuiltecrimage" "example" {
+/// data "aws_sagemaker_prebuilt_ecr_image" "example" {
 ///   repository_name = "linear-learner"
 ///   image_tag       = "1"
 /// }
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
-///       identifiers = ["sagemaker.${data.aws_getpartition.current.dns_suffix}"]
+///       identifiers = ["sagemaker.${data.aws_partition.current.dns_suffix}"]
 ///     }
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "s3Access" {
-///   statements {
+/// data "aws_iam_policy_document" "s3Access" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["s3:GetBucketLocation", "s3:ListBucket", "s3:GetObject", "s3:PutObject"]
 ///     resources = [aws_s3_bucket.example.arn, "${aws_s3_bucket.example.arn}/*"]
@@ -2432,125 +2444,158 @@ import 'algorithm_validation_specification.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-sagemaker-algorithm-role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iam_rolepolicyattachment" "example" {
+/// resource "aws_iam_role_policy_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role       = aws_iam_role.example.name
-///   policy_arn ="arn:${data.aws_getpartition.current.partition}:iam::aws:policy/AmazonSageMakerFullAccess"
+///   policy_arn ="arn:${data.aws_partition.current.partition}:iam::aws:policy/AmazonSageMakerFullAccess"
 /// }
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket        = "example-sagemaker-algorithm-validation-bucket"
 ///   force_destroy = true
 /// }
-/// resource "aws_iam_rolepolicy" "example" {
+/// resource "aws_iam_role_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role   = aws_iam_role.example.name
-///   policy = data.aws_iam_getpolicydocument.s3Access.json
+///   policy = data.aws_iam_policy_document.s3Access.json
 /// }
-/// resource "aws_s3_bucketobjectv2" "training" {
+/// resource "aws_s3_bucket_objectv2" "training" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket  = aws_s3_bucket.example.bucket
 ///   key     = "algorithm/training/data.csv"
-///   content = "1,1.0,0.0\n0,0.0,1.0\n1,1.0,1.0\n0,0.0,0.0\n"
+///   content = <<-EOT
+/// 1,1.0,0.0
+/// 0,0.0,1.0
+/// 1,1.0,1.0
+/// 0,0.0,0.0
+/// EOT
+///
 /// }
-/// resource "aws_s3_bucketobjectv2" "transform" {
+/// resource "aws_s3_bucket_objectv2" "transform" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket  = aws_s3_bucket.example.bucket
 ///   key     = "algorithm/transform/input.csv"
-///   content = "1.0,0.0\n0.0,1.0\n"
+///   content = <<-EOT
+/// 1.0,0.0
+/// 0.0,1.0
+/// EOT
+///
 /// }
 /// resource "aws_sagemaker_algorithm" "example" {
-///   depends_on = [aws_iam_rolepolicyattachment.example, aws_iam_rolepolicy.example, aws_s3_bucketobjectv2.training, aws_s3_bucketobjectv2.transform]
-///   training_specification = {
-///     supported_hyper_parameters = [{
-///       "range" = {
-///         "integerParameterRangeSpecification" = {
-///           "minValue" = "2"
-///           "maxValue" = "2"
+///   depends_on = [aws_iam_role_policy_attachment.example, aws_iam_role_policy.example, aws_s3_bucket_objectv2.training, aws_s3_bucket_objectv2.transform]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   training_specification {
+///     supported_hyper_parameters {
+///       range {
+///         integer_parameter_range_specification {
+///           min_value = "2"
+///           max_value = "2"
 ///         }
 ///       }
-///       "defaultValue" = "2"
-///       "description"  = "Feature dimension"
-///       "isRequired"   = true
-///       "isTunable"    = false
-///       "name"         = "feature_dim"
-///       "type"         = "Integer"
-///       }, {
-///       "range" = {
-///         "integerParameterRangeSpecification" = {
-///           "minValue" = "4"
-///           "maxValue" = "4"
+///       default_value = "2"
+///       description   = "Feature dimension"
+///       is_required   = true
+///       is_tunable    = false
+///       name          = "feature_dim"
+///       type          = "Integer"
+///     }
+///     supported_hyper_parameters {
+///       range {
+///         integer_parameter_range_specification {
+///           min_value = "4"
+///           max_value = "4"
 ///         }
 ///       }
-///       "defaultValue" = "4"
-///       "description"  = "Mini batch size"
-///       "isRequired"   = true
-///       "isTunable"    = false
-///       "name"         = "mini_batch_size"
-///       "type"         = "Integer"
-///       }, {
-///       "range" = {
-///         "categoricalParameterRangeSpecification" = {
-///           "values" = ["binary_classifier"]
+///       default_value = "4"
+///       description   = "Mini batch size"
+///       is_required   = true
+///       is_tunable    = false
+///       name          = "mini_batch_size"
+///       type          = "Integer"
+///     }
+///     supported_hyper_parameters {
+///       range {
+///         categorical_parameter_range_specification {
+///           values = ["binary_classifier"]
 ///         }
 ///       }
-///       "defaultValue" = "binary_classifier"
-///       "description"  = "Predictor type"
-///       "isRequired"   = true
-///       "isTunable"    = false
-///       "name"         = "predictor_type"
-///       "type"         = "Categorical"
-///     }]
-///     training_channels = [{
-///       "name"                  = "train"
-///       "supportedContentTypes" = ["text/csv"]
-///       "supportedInputModes"   = ["File"]
-///     }]
-///     training_image                    = data.aws_sagemaker_getprebuiltecrimage.example.registry_path
+///       default_value = "binary_classifier"
+///       description   = "Predictor type"
+///       is_required   = true
+///       is_tunable    = false
+///       name          = "predictor_type"
+///       type          = "Categorical"
+///     }
+///     training_channels {
+///       name                    = "train"
+///       supported_content_types = ["text/csv"]
+///       supported_input_modes   = ["File"]
+///     }
+///     training_image                    = data.aws_sagemaker_prebuilt_ecr_image.example.registry_path
 ///     supported_training_instance_types = ["ml.m5.large"]
 ///   }
-///   inference_specification = {
-///     containers = [{
-///       "image" = data.aws_sagemaker_getprebuiltecrimage.example.registry_path
-///     }]
+///   inference_specification {
+///     containers {
+///       image = data.aws_sagemaker_prebuilt_ecr_image.example.registry_path
+///     }
 ///     supported_content_types            = ["text/csv"]
 ///     supported_response_mime_types      = ["text/csv"]
 ///     supported_transform_instance_types = ["ml.m5.large"]
 ///   }
-///   validation_specification = {
-///     validation_profiles = {
-///       training_job_definition = {
-///         output_data_config = {
+///   validation_specification {
+///     validation_profiles {
+///       training_job_definition {
+///         output_data_config {
 ///           compression_type = "GZIP"
 ///           s3_output_path   ="s3://${aws_s3_bucket.example.bucket}/algorithm/output"
 ///         }
-///         resource_config = {
+///         resource_config {
 ///           instance_count               = 1
 ///           instance_type                = "ml.m5.large"
 ///           keep_alive_period_in_seconds = 60
 ///           volume_size_in_gb            = 30
 ///         }
-///         stopping_condition = {
+///         stopping_condition {
 ///           max_pending_time_in_seconds = 7200
 ///           max_runtime_in_seconds      = 1800
 ///           max_wait_time_in_seconds    = 3600
 ///         }
-///         input_data_configs = [{
-///           "shuffleConfig" = {
-///             "seed" = 1
+///         input_data_config {
+///           shuffle_config {
+///             seed = 1
 ///           }
-///           "dataSource" = {
-///             "s3DataSource" = {
-///               "attributeNames"         = ["label"]
-///               "s3DataDistributionType" = "ShardedByS3Key"
-///               "s3DataType"             = "S3Prefix"
-///               "s3Uri"                  ="s3://${aws_s3_bucket.example.bucket}/algorithm/training/"
+///           data_source {
+///             s3_data_source {
+///               attribute_names           = ["label"]
+///               s3_data_distribution_type = "ShardedByS3Key"
+///               s3_data_type              = "S3Prefix"
+///               s3_uri                    ="s3://${aws_s3_bucket.example.bucket}/algorithm/training/"
 ///             }
 ///           }
-///           "channelName"       = "train"
-///           "compressionType"   = "None"
-///           "contentType"       = "text/csv"
-///           "inputMode"         = "File"
-///           "recordWrapperType" = "None"
-///         }]
+///           channel_name        = "train"
+///           compression_type    = "None"
+///           content_type        = "text/csv"
+///           input_mode          = "File"
+///           record_wrapper_type = "None"
+///         }
 ///         hyper_parameters = {
 ///           "feature_dim"     = "2"
 ///           "mini_batch_size" = "4"
@@ -2558,10 +2603,10 @@ import 'algorithm_validation_specification.dart';
 ///         }
 ///         training_input_mode = "File"
 ///       }
-///       transform_job_definition = {
-///         transform_input = {
-///           data_source = {
-///             s3_data_source = {
+///       transform_job_definition {
+///         transform_input {
+///           data_source {
+///             s3_data_source {
 ///               s3_data_type = "S3Prefix"
 ///               s3_uri       ="s3://${aws_s3_bucket.example.bucket}/algorithm/transform/"
 ///             }
@@ -2570,12 +2615,12 @@ import 'algorithm_validation_specification.dart';
 ///           content_type     = "text/csv"
 ///           split_type       = "Line"
 ///         }
-///         transform_output = {
+///         transform_output {
 ///           accept         = "text/csv"
 ///           assemble_with  = "Line"
 ///           s3_output_path ="s3://${aws_s3_bucket.example.bucket}/algorithm/transform-output"
 ///         }
-///         transform_resources = {
+///         transform_resources {
 ///           instance_count = 1
 ///           instance_type  = "ml.m5.large"
 ///         }
@@ -3136,7 +3181,7 @@ class Algorithm extends pulumi.CustomResource {
           'aws:sagemaker/algorithm:Algorithm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     algorithmDescription = registerOutput<String?>('algorithmDescription');
     algorithmName = registerOutput<String>('algorithmName');

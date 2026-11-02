@@ -119,7 +119,7 @@ import 'state_machine_tracing_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -128,10 +128,14 @@ import 'state_machine_tracing_configuration.dart';
 /// }
 ///
 /// # ...
-/// resource "aws_sfn_statemachine" "sfn_state_machine" {
+/// resource "aws_sfn_state_machine" "sfn_state_machine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "my-state-machine"
 ///   role_arn   = iamForSfn.arn
-///   definition ="{
+///   definition = <<EOF
+/// {
 ///   \"Comment\": \"A Hello World example of the Amazon States Language using an AWS Lambda Function\",
 ///   \"StartAt\": \"HelloWorld\",
 ///   \"States\": {
@@ -142,7 +146,8 @@ import 'state_machine_tracing_configuration.dart';
 ///     }
 ///   }
 /// }
-/// "
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -169,7 +174,7 @@ import 'state_machine_tracing_configuration.dart';
 ///         // ...
 ///         var sfnStateMachine = new StateMachine("sfnStateMachine", StateMachineArgs.builder()
 ///             .name("my-state-machine")
-///             .roleArn(iamForSfn.arn())
+///             .roleArn(iamForSfn.get("arn"))
 ///             .definition("""
 /// {
 ///   \"Comment\": \"A Hello World example of the Amazon States Language using an AWS Lambda Function\",
@@ -182,7 +187,7 @@ import 'state_machine_tracing_configuration.dart';
 ///     }
 ///   }
 /// }
-/// ", lambda.arn()))
+/// ", lambda.get("arn")))
 ///             .build());
 ///
 ///     }
@@ -326,7 +331,7 @@ import 'state_machine_tracing_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -335,11 +340,15 @@ import 'state_machine_tracing_configuration.dart';
 /// }
 ///
 /// # ...
-/// resource "aws_sfn_statemachine" "sfn_state_machine" {
+/// resource "aws_sfn_state_machine" "sfn_state_machine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "my-state-machine"
 ///   role_arn   = iamForSfn.arn
 ///   type       = "EXPRESS"
-///   definition ="{
+///   definition = <<EOF
+/// {
 ///   \"Comment\": \"A Hello World example of the Amazon States Language using an AWS Lambda Function\",
 ///   \"StartAt\": \"HelloWorld\",
 ///   \"States\": {
@@ -350,7 +359,8 @@ import 'state_machine_tracing_configuration.dart';
 ///     }
 ///   }
 /// }
-/// "
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -377,7 +387,7 @@ import 'state_machine_tracing_configuration.dart';
 ///         // ...
 ///         var sfnStateMachine = new StateMachine("sfnStateMachine", StateMachineArgs.builder()
 ///             .name("my-state-machine")
-///             .roleArn(iamForSfn.arn())
+///             .roleArn(iamForSfn.get("arn"))
 ///             .type("EXPRESS")
 ///             .definition("""
 /// {
@@ -391,7 +401,7 @@ import 'state_machine_tracing_configuration.dart';
 ///     }
 ///   }
 /// }
-/// ", lambda.arn()))
+/// ", lambda.get("arn")))
 ///             .build());
 ///
 ///     }
@@ -540,7 +550,7 @@ import 'state_machine_tracing_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -549,12 +559,16 @@ import 'state_machine_tracing_configuration.dart';
 /// }
 ///
 /// # ...
-/// resource "aws_sfn_statemachine" "sfn_state_machine" {
+/// resource "aws_sfn_state_machine" "sfn_state_machine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "my-state-machine"
 ///   role_arn   = iamForSfn.arn
 ///   publish    = true
 ///   type       = "EXPRESS"
-///   definition ="{
+///   definition = <<EOF
+/// {
 ///   \"Comment\": \"A Hello World example of the Amazon States Language using an AWS Lambda Function\",
 ///   \"StartAt\": \"HelloWorld\",
 ///   \"States\": {
@@ -565,7 +579,8 @@ import 'state_machine_tracing_configuration.dart';
 ///     }
 ///   }
 /// }
-/// "
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -592,7 +607,7 @@ import 'state_machine_tracing_configuration.dart';
 ///         // ...
 ///         var sfnStateMachine = new StateMachine("sfnStateMachine", StateMachineArgs.builder()
 ///             .name("my-state-machine")
-///             .roleArn(iamForSfn.arn())
+///             .roleArn(iamForSfn.get("arn"))
 ///             .publish(true)
 ///             .type("EXPRESS")
 ///             .definition("""
@@ -607,7 +622,7 @@ import 'state_machine_tracing_configuration.dart';
 ///     }
 ///   }
 /// }
-/// ", lambda.arn()))
+/// ", lambda.get("arn")))
 ///             .build());
 ///
 ///     }
@@ -772,7 +787,7 @@ import 'state_machine_tracing_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -781,15 +796,19 @@ import 'state_machine_tracing_configuration.dart';
 /// }
 ///
 /// # ...
-/// resource "aws_sfn_statemachine" "sfn_state_machine" {
-///   logging_configuration = {
+/// resource "aws_sfn_state_machine" "sfn_state_machine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   logging_configuration {
 ///     log_destination        ="${logGroupForSfn.arn}:*"
 ///     include_execution_data = true
 ///     level                  = "ERROR"
 ///   }
 ///   name       = "my-state-machine"
 ///   role_arn   = iamForSfn.arn
-///   definition ="{
+///   definition = <<EOF
+/// {
 ///   \"Comment\": \"A Hello World example of the Amazon States Language using an AWS Lambda Function\",
 ///   \"StartAt\": \"HelloWorld\",
 ///   \"States\": {
@@ -800,7 +819,8 @@ import 'state_machine_tracing_configuration.dart';
 ///     }
 ///   }
 /// }
-/// "
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -828,12 +848,12 @@ import 'state_machine_tracing_configuration.dart';
 ///         // ...
 ///         var sfnStateMachine = new StateMachine("sfnStateMachine", StateMachineArgs.builder()
 ///             .loggingConfiguration(StateMachineLoggingConfigurationArgs.builder()
-///                 .logDestination(String.format("%s:*", logGroupForSfn.arn()))
+///                 .logDestination(String.format("%s:*", logGroupForSfn.get("arn")))
 ///                 .includeExecutionData(true)
 ///                 .level("ERROR")
 ///                 .build())
 ///             .name("my-state-machine")
-///             .roleArn(iamForSfn.arn())
+///             .roleArn(iamForSfn.get("arn"))
 ///             .definition("""
 /// {
 ///   \"Comment\": \"A Hello World example of the Amazon States Language using an AWS Lambda Function\",
@@ -846,7 +866,7 @@ import 'state_machine_tracing_configuration.dart';
 ///     }
 ///   }
 /// }
-/// ", lambda.arn()))
+/// ", lambda.get("arn")))
 ///             .build());
 ///
 ///     }
@@ -1013,7 +1033,7 @@ import 'state_machine_tracing_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1022,15 +1042,19 @@ import 'state_machine_tracing_configuration.dart';
 /// }
 ///
 /// # ...
-/// resource "aws_sfn_statemachine" "sfn_state_machine" {
-///   encryption_configuration = {
+/// resource "aws_sfn_state_machine" "sfn_state_machine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   encryption_configuration {
 ///     kms_key_id                        = kmsKeyForSfn.arn
 ///     type                              = "CUSTOMER_MANAGED_KMS_KEY"
 ///     kms_data_key_reuse_period_seconds = 900
 ///   }
 ///   name       = "my-state-machine"
 ///   role_arn   = iamForSfn.arn
-///   definition ="{
+///   definition = <<EOF
+/// {
 ///   \"Comment\": \"A Hello World example of the Amazon States Language using an AWS Lambda Function\",
 ///   \"StartAt\": \"HelloWorld\",
 ///   \"States\": {
@@ -1041,7 +1065,8 @@ import 'state_machine_tracing_configuration.dart';
 ///     }
 ///   }
 /// }
-/// "
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -1069,12 +1094,12 @@ import 'state_machine_tracing_configuration.dart';
 ///         // ...
 ///         var sfnStateMachine = new StateMachine("sfnStateMachine", StateMachineArgs.builder()
 ///             .encryptionConfiguration(StateMachineEncryptionConfigurationArgs.builder()
-///                 .kmsKeyId(kmsKeyForSfn.arn())
+///                 .kmsKeyId(kmsKeyForSfn.get("arn"))
 ///                 .type("CUSTOMER_MANAGED_KMS_KEY")
 ///                 .kmsDataKeyReusePeriodSeconds(900)
 ///                 .build())
 ///             .name("my-state-machine")
-///             .roleArn(iamForSfn.arn())
+///             .roleArn(iamForSfn.get("arn"))
 ///             .definition("""
 /// {
 ///   \"Comment\": \"A Hello World example of the Amazon States Language using an AWS Lambda Function\",
@@ -1087,7 +1112,7 @@ import 'state_machine_tracing_configuration.dart';
 ///     }
 ///   }
 /// }
-/// ", lambda.arn()))
+/// ", lambda.get("arn")))
 ///             .build());
 ///
 ///     }
@@ -1184,7 +1209,7 @@ class StateMachine extends pulumi.CustomResource {
           'aws:sfn/stateMachine:StateMachine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationDate = registerOutput<String>('creationDate');

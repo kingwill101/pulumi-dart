@@ -55,7 +55,7 @@ import 'cidr_collection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -63,7 +63,10 @@ import 'cidr_collection_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53_cidrcollection" "example" {
+/// resource "aws_route53_cidr_collection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "collection-1"
 /// }
 /// ```
@@ -131,7 +134,7 @@ class CidrCollection extends pulumi.CustomResource {
           'aws:route53/cidrCollection:CidrCollection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

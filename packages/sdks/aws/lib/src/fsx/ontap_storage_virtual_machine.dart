@@ -67,7 +67,7 @@ import 'ontap_storage_virtual_machine_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,7 +75,10 @@ import 'ontap_storage_virtual_machine_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fsx_ontapstoragevirtualmachine" "test" {
+/// resource "aws_fsx_ontap_storage_virtual_machine" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   file_system_id = testAwsFsxOntapFileSystem.id
 ///   name           = "test"
 /// }
@@ -102,7 +105,7 @@ import 'ontap_storage_virtual_machine_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new OntapStorageVirtualMachine("test", OntapStorageVirtualMachineArgs.builder()
-///             .fileSystemId(testAwsFsxOntapFileSystem.id())
+///             .fileSystemId(testAwsFsxOntapFileSystem.get("id"))
 ///             .name("test")
 ///             .build());
 ///
@@ -230,7 +233,7 @@ import 'ontap_storage_virtual_machine_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -238,9 +241,12 @@ import 'ontap_storage_virtual_machine_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fsx_ontapstoragevirtualmachine" "test" {
-///   active_directory_configuration = {
-///     self_managed_active_directory_configuration = {
+/// resource "aws_fsx_ontap_storage_virtual_machine" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   active_directory_configuration {
+///     self_managed_active_directory_configuration {
 ///       dns_ips     = ["10.0.0.111", "10.0.0.222"]
 ///       domain_name = "corp.example.com"
 ///       password    = "avoid-plaintext-passwords"
@@ -287,7 +293,7 @@ import 'ontap_storage_virtual_machine_state.dart';
 ///                     .build())
 ///                 .netbiosName("mysvm")
 ///                 .build())
-///             .fileSystemId(testAwsFsxOntapFileSystem.id())
+///             .fileSystemId(testAwsFsxOntapFileSystem.get("id"))
 ///             .name("mysvm")
 ///             .build());
 ///
@@ -383,7 +389,7 @@ import 'ontap_storage_virtual_machine_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -391,9 +397,10 @@ import 'ontap_storage_virtual_machine_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fsx_ontapstoragevirtualmachine" "example" {
+/// resource "aws_fsx_ontap_storage_virtual_machine" "example" {
 ///   lifecycle {
-///     ignore_changes = [svmAdminPassword]
+///     ignore_changes        = [svmAdminPassword]
+///     create_before_destroy = true
 ///   }
 ///   svm_admin_password = "avoid-plaintext-passwords"
 /// }
@@ -477,7 +484,7 @@ class OntapStorageVirtualMachine extends pulumi.CustomResource {
           'aws:fsx/ontapStorageVirtualMachine:OntapStorageVirtualMachine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['svmAdminPassword'],
         ) {
     activeDirectoryConfiguration = registerOutput<OntapStorageVirtualMachineActiveDirectoryConfiguration?>('activeDirectoryConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OntapStorageVirtualMachineActiveDirectoryConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

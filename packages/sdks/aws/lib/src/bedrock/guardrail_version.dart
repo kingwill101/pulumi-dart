@@ -69,7 +69,7 @@ import 'guardrail_version_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,7 +77,10 @@ import 'guardrail_version_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_guardrailversion" "example" {
+/// resource "aws_bedrock_guardrail_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description   = "example"
 ///   guardrail_arn = exampleAwsBedrockGuardrail.guardrailArn
 ///   skip_destroy  = true
@@ -106,7 +109,7 @@ import 'guardrail_version_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new GuardrailVersion("example", GuardrailVersionArgs.builder()
 ///             .description("example")
-///             .guardrailArn(exampleAwsBedrockGuardrail.guardrailArn())
+///             .guardrailArn(exampleAwsBedrockGuardrail.get("guardrailArn"))
 ///             .skipDestroy(true)
 ///             .build());
 ///
@@ -158,7 +161,7 @@ class GuardrailVersion extends pulumi.CustomResource {
           'aws:bedrock/guardrailVersion:GuardrailVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     guardrailArn = registerOutput<String>('guardrailArn');

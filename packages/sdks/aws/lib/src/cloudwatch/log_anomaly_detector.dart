@@ -112,7 +112,7 @@ import 'log_anomaly_detector_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -120,13 +120,22 @@ import 'log_anomaly_detector_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_loggroup" "test" {
+/// resource "aws_cloudwatch_log_group" "test" {
 ///   count = 2
-///   name  ="testing-${count.index}"
+///   pulumi {
+///     name ="test-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name ="testing-${count.index}"
 /// }
-/// resource "aws_cloudwatch_loganomalydetector" "test" {
+/// resource "aws_cloudwatch_log_anomaly_detector" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   detector_name           = "testing"
-///   log_group_arn_lists     = [aws_cloudwatch_loggroup.test[0].arn]
+///   log_group_arn_list      = [aws_cloudwatch_log_group.test[0].arn]
 ///   anomaly_visibility_time = 7
 ///   evaluation_frequency    = "TEN_MIN"
 ///   enabled                 = "false"
@@ -165,7 +174,7 @@ import 'log_anomaly_detector_state.dart';
 /// }
 ///         var testLogAnomalyDetector = new LogAnomalyDetector("testLogAnomalyDetector", LogAnomalyDetectorArgs.builder()
 ///             .detectorName("testing")
-///             .logGroupArnLists(test[0].arn())
+///             .logGroupArnLists(test.get(0).arn())
 ///             .anomalyVisibilityTime(7)
 ///             .evaluationFrequency("TEN_MIN")
 ///             .enabled(false)
@@ -243,7 +252,7 @@ class LogAnomalyDetector extends pulumi.CustomResource {
           'aws:cloudwatch/logAnomalyDetector:LogAnomalyDetector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     anomalyVisibilityTime = registerOutput<int>('anomalyVisibilityTime');
     arn = registerOutput<String>('arn');

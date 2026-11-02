@@ -73,7 +73,7 @@ import 'user_pool_client_token_validity_units.dart';
 /// 		}
 /// 		_, err = cognito.NewUserPoolClient(ctx, "client", &cognito.UserPoolClientArgs{
 /// 			Name:       pulumi.String("client"),
-/// 			UserPoolId: pool.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId: pool.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -83,7 +83,7 @@ import 'user_pool_client_token_validity_units.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -91,11 +91,17 @@ import 'user_pool_client_token_validity_units.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_userpoolclient" "client" {
+/// resource "aws_cognito_user_pool_client" "client" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "client"
-///   user_pool_id = aws_cognito_userpool.pool.id
+///   user_pool_id = aws_cognito_user_pool.pool.id
 /// }
-/// resource "aws_cognito_userpool" "pool" {
+/// resource "aws_cognito_user_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "pool"
 /// }
 /// ```
@@ -218,7 +224,7 @@ import 'user_pool_client_token_validity_units.dart';
 /// 		}
 /// 		_, err = cognito.NewUserPoolClient(ctx, "client", &cognito.UserPoolClientArgs{
 /// 			Name:           pulumi.String("client"),
-/// 			UserPoolId:     pool.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId:     pool.ID(),
 /// 			GenerateSecret: pulumi.Bool(true),
 /// 			ExplicitAuthFlows: pulumi.StringArray{
 /// 				pulumi.String("ADMIN_NO_SRP_AUTH"),
@@ -232,7 +238,7 @@ import 'user_pool_client_token_validity_units.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -240,13 +246,19 @@ import 'user_pool_client_token_validity_units.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_userpoolclient" "client" {
+/// resource "aws_cognito_user_pool_client" "client" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "client"
-///   user_pool_id        = aws_cognito_userpool.pool.id
+///   user_pool_id        = aws_cognito_user_pool.pool.id
 ///   generate_secret     = true
 ///   explicit_auth_flows = ["ADMIN_NO_SRP_AUTH"]
 /// }
-/// resource "aws_cognito_userpool" "pool" {
+/// resource "aws_cognito_user_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "pool"
 /// }
 /// ```
@@ -551,7 +563,7 @@ import 'user_pool_client_token_validity_units.dart';
 /// 				UserDataShared: pulumi.Bool(true),
 /// 			},
 /// 			Name:       pulumi.String("pool_client"),
-/// 			UserPoolId: testUserPool.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId: testUserPool.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -578,7 +590,7 @@ import 'user_pool_client_token_validity_units.dart';
 /// 		}, nil)
 /// 		_, err = iam.NewRolePolicy(ctx, "test", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("role_policy"),
-/// 			Role:   testRole.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   testRole.ID(),
 /// 			Policy: test.Json(),
 /// 		})
 /// 		if err != nil {
@@ -589,7 +601,7 @@ import 'user_pool_client_token_validity_units.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -597,10 +609,10 @@ import 'user_pool_client_token_validity_units.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["cognito-idp.amazonaws.com"]
@@ -609,38 +621,53 @@ import 'user_pool_client_token_validity_units.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "test" {
-///   statements {
+/// data "aws_iam_policy_document" "test" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["mobiletargeting:UpdateEndpoint", "mobiletargeting:PutEvents"]
-///     resources = ["arn:aws:mobiletargeting:*:${data.aws_getcalleridentity.current.account_id}:apps/${aws_pinpoint_app.test.application_id}*"]
+///     resources = ["arn:aws:mobiletargeting:*:${data.aws_caller_identity.current.account_id}:apps/${aws_pinpoint_app.test.application_id}*"]
 ///   }
 /// }
 ///
-/// resource "aws_cognito_userpoolclient" "test" {
-///   analytics_configuration = {
+/// resource "aws_cognito_user_pool_client" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   analytics_configuration {
 ///     application_id   = aws_pinpoint_app.test.application_id
 ///     external_id      = "some_id"
 ///     role_arn         = aws_iam_role.test.arn
 ///     user_data_shared = true
 ///   }
 ///   name         = "pool_client"
-///   user_pool_id = aws_cognito_userpool.test.id
+///   user_pool_id = aws_cognito_user_pool.test.id
 /// }
-/// resource "aws_cognito_userpool" "test" {
+/// resource "aws_cognito_user_pool" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "pool"
 /// }
 /// resource "aws_pinpoint_app" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "pinpoint"
 /// }
 /// resource "aws_iam_role" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iam_rolepolicy" "test" {
+/// resource "aws_iam_role_policy" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "role_policy"
 ///   role   = aws_iam_role.test.id
-///   policy = data.aws_iam_getpolicydocument.test.json
+///   policy = data.aws_iam_policy_document.test.json
 /// }
 /// ```
 /// ```java
@@ -905,7 +932,7 @@ import 'user_pool_client_token_validity_units.dart';
 /// 		}
 /// 		_, err = cognito.NewUserPoolClient(ctx, "userpool_client", &cognito.UserPoolClientArgs{
 /// 			Name:       pulumi.String("client"),
-/// 			UserPoolId: pool.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId: pool.ID(),
 /// 			CallbackUrls: pulumi.StringArray{
 /// 				pulumi.String("https://example.com"),
 /// 			},
@@ -930,7 +957,7 @@ import 'user_pool_client_token_validity_units.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -938,16 +965,22 @@ import 'user_pool_client_token_validity_units.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_userpoolclient" "userpool_client" {
+/// resource "aws_cognito_user_pool_client" "userpool_client" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                 = "client"
-///   user_pool_id                         = aws_cognito_userpool.pool.id
+///   user_pool_id                         = aws_cognito_user_pool.pool.id
 ///   callback_urls                        = ["https://example.com"]
 ///   allowed_oauth_flows_user_pool_client = true
 ///   allowed_oauth_flows                  = ["code", "implicit"]
 ///   allowed_oauth_scopes                 = ["email", "openid"]
 ///   supported_identity_providers         = ["COGNITO"]
 /// }
-/// resource "aws_cognito_userpool" "pool" {
+/// resource "aws_cognito_user_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "pool"
 /// }
 /// ```
@@ -1105,7 +1138,7 @@ import 'user_pool_client_token_validity_units.dart';
 /// 				RetryGracePeriodSeconds: pulumi.Int(10),
 /// 			},
 /// 			Name:       pulumi.String("client"),
-/// 			UserPoolId: pool.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId: pool.ID(),
 /// 			ExplicitAuthFlows: pulumi.StringArray{
 /// 				pulumi.String("ADMIN_NO_SRP_AUTH"),
 /// 			},
@@ -1118,7 +1151,7 @@ import 'user_pool_client_token_validity_units.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1126,16 +1159,22 @@ import 'user_pool_client_token_validity_units.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_userpoolclient" "userpool_client" {
-///   refresh_token_rotation = {
+/// resource "aws_cognito_user_pool_client" "userpool_client" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   refresh_token_rotation {
 ///     feature                    = "ENABLED"
 ///     retry_grace_period_seconds = 10
 ///   }
 ///   name                = "client"
-///   user_pool_id        = aws_cognito_userpool.pool.id
+///   user_pool_id        = aws_cognito_user_pool.pool.id
 ///   explicit_auth_flows = ["ADMIN_NO_SRP_AUTH"]
 /// }
-/// resource "aws_cognito_userpool" "pool" {
+/// resource "aws_cognito_user_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "pool"
 /// }
 /// ```
@@ -1273,7 +1312,7 @@ class UserPoolClient extends pulumi.CustomResource {
           'aws:cognito/userPoolClient:UserPoolClient',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['clientSecret'],
         ) {
     accessTokenValidity = registerOutput<int>('accessTokenValidity');

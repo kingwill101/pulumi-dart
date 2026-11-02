@@ -66,7 +66,7 @@ import 'agent_flow_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'agent_flow_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentflow" "example" {
+/// resource "aws_bedrock_agent_flow" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-flow"
 ///   execution_role_arn = exampleAwsIamRole.arn
 /// }
@@ -102,7 +105,7 @@ import 'agent_flow_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentFlow("example", AgentFlowArgs.builder()
 ///             .name("example-flow")
-///             .executionRoleArn(exampleAwsIamRole.arn())
+///             .executionRoleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -405,7 +408,7 @@ import 'agent_flow_timeouts.dart';
 ///                                             {
 ///                                                 "User:",
 ///                                             },
-///                                             Temperature = 0,
+///                                             Temperature = 0.0,
 ///                                             TopP = 0.8999999761581421,
 ///                                         },
 ///                                     },
@@ -601,7 +604,7 @@ import 'agent_flow_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -609,90 +612,93 @@ import 'agent_flow_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentflow" "example" {
+/// resource "aws_bedrock_agent_flow" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   definition = {
 ///     connections = [{
-///       "configuration" = {
-///         "data" = {
-///           "sourceOutput" = "document"
-///           "targetInput"  = "topic"
+///       configuration = {
+///         data = {
+///           source_output = "document"
+///           target_input  = "topic"
 ///         }
 ///       }
-///       "name"   = "FlowInputNodeFlowInputNode0ToPrompt_1PromptsNode0"
-///       "source" = "FlowInputNode"
-///       "target" = "Prompt_1"
-///       "type"   = "Data"
+///       name   = "FlowInputNodeFlowInputNode0ToPrompt_1PromptsNode0"
+///       source = "FlowInputNode"
+///       target = "Prompt_1"
+///       type   = "Data"
 ///       }, {
-///       "configuration" = {
-///         "data" = {
-///           "sourceOutput" = "modelCompletion"
-///           "targetInput"  = "document"
+///       configuration = {
+///         data = {
+///           source_output = "modelCompletion"
+///           target_input  = "document"
 ///         }
 ///       }
-///       "name"   = "Prompt_1PromptsNode0ToFlowOutputNodeFlowOutputNode0"
-///       "source" = "Prompt_1"
-///       "target" = "FlowOutputNode"
-///       "type"   = "Data"
+///       name   = "Prompt_1PromptsNode0ToFlowOutputNodeFlowOutputNode0"
+///       source = "Prompt_1"
+///       target = "FlowOutputNode"
+///       type   = "Data"
 ///     }]
 ///     nodes = [{
-///       "configuration" = {
-///         "input" = {}
+///       configuration = {
+///         input = {}
 ///       }
-///       "outputs" = [{
-///         "name" = "document"
-///         "type" = "String"
+///       outputs = [{
+///         name = "document"
+///         type = "String"
 ///       }]
-///       "name" = "FlowInputNode"
-///       "type" = "Input"
+///       name = "FlowInputNode"
+///       type = "Input"
 ///       }, {
-///       "configuration" = {
-///         "prompt" = {
-///           "sourceConfiguration" = {
-///             "inline" = {
-///               "inferenceConfiguration" = {
-///                 "text" = {
-///                   "maxTokens"     = 2048
-///                   "stopSequences" = ["User:"]
-///                   "temperature"   = 0
-///                   "topP"          = 0.8999999761581421
+///       configuration = {
+///         prompt = {
+///           source_configuration = {
+///             inline = {
+///               inference_configuration = {
+///                 text = {
+///                   max_tokens     = 2048
+///                   stop_sequences = ["User:"]
+///                   temperature    = 0
+///                   top_p          = 0.8999999761581421
 ///                 }
 ///               }
-///               "templateConfiguration" = {
-///                 "text" = {
-///                   "inputVariables" = [{
-///                     "name" = "topic"
+///               template_configuration = {
+///                 text = {
+///                   input_variables = [{
+///                     name = "topic"
 ///                   }]
-///                   "text" = "Write a paragraph about {{topic}}."
+///                   text = "Write a paragraph about {{topic}}."
 ///                 }
 ///               }
-///               "modelId"      = "amazon.titan-text-express-v1"
-///               "templateType" = "TEXT"
+///               model_id      = "amazon.titan-text-express-v1"
+///               template_type = "TEXT"
 ///             }
 ///           }
 ///         }
 ///       }
-///       "inputs" = [{
-///         "expression" = "$.data"
-///         "name"       = "topic"
-///         "type"       = "String"
+///       inputs = [{
+///         expression = "$.data"
+///         name       = "topic"
+///         type       = "String"
 ///       }]
-///       "outputs" = [{
-///         "name" = "modelCompletion"
-///         "type" = "String"
+///       outputs = [{
+///         name = "modelCompletion"
+///         type = "String"
 ///       }]
-///       "name" = "Prompt_1"
-///       "type" = "Prompt"
+///       name = "Prompt_1"
+///       type = "Prompt"
 ///       }, {
-///       "configuration" = {
-///         "output" = {}
+///       configuration = {
+///         output = {}
 ///       }
-///       "inputs" = [{
-///         "expression" = "$.data"
-///         "name"       = "document"
-///         "type"       = "String"
+///       inputs = [{
+///         expression = "$.data"
+///         name       = "document"
+///         type       = "String"
 ///       }]
-///       "name" = "FlowOutputNode"
-///       "type" = "Output"
+///       name = "FlowOutputNode"
+///       type = "Output"
 ///     }]
 ///   }
 ///   name               = "example"
@@ -832,7 +838,7 @@ import 'agent_flow_timeouts.dart';
 ///                         .build())
 ///                 .build())
 ///             .name("example")
-///             .executionRoleArn(exampleAwsIamRole.arn())
+///             .executionRoleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -959,7 +965,7 @@ class AgentFlow extends pulumi.CustomResource {
           'aws:bedrock/agentFlow:AgentFlow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');

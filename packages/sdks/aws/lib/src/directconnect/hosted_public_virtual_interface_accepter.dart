@@ -137,7 +137,7 @@ import 'hosted_public_virtual_interface_accepter_state.dart';
 /// 		}
 /// 		// Accepter's side of the VIF.
 /// 		_, err = directconnect.NewHostedPublicVirtualInterfaceAccepter(ctx, "accepter", &directconnect.HostedPublicVirtualInterfaceAccepterArgs{
-/// 			VirtualInterfaceId: creator.ID().ToIDOutput().ToStringOutput(),
+/// 			VirtualInterfaceId: creator.ID(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Side": pulumi.String("Accepter"),
 /// 			},
@@ -150,7 +150,7 @@ import 'hosted_public_virtual_interface_accepter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -158,13 +158,16 @@ import 'hosted_public_virtual_interface_accepter_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "accepter" {
+/// data "aws_caller_identity" "accepter" {
 /// }
 ///
 /// # Creator's side of the VIF
-/// resource "aws_directconnect_hostedpublicvirtualinterface" "creator" {
+/// resource "aws_directconnect_hosted_public_virtual_interface" "creator" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_id         = "dxcon-zzzzzzzz"
-///   owner_account_id      = data.aws_getcalleridentity.accepter.account_id
+///   owner_account_id      = data.aws_caller_identity.accepter.account_id
 ///   name                  = "vif-foo"
 ///   vlan                  = 4094
 ///   address_family        = "ipv4"
@@ -174,8 +177,11 @@ import 'hosted_public_virtual_interface_accepter_state.dart';
 ///   route_filter_prefixes = ["210.52.109.0/24", "175.45.176.0/22"]
 /// }
 /// # Accepter's side of the VIF.
-/// resource "aws_directconnect_hostedpublicvirtualinterfaceaccepter" "accepter" {
-///   virtual_interface_id = aws_directconnect_hostedpublicvirtualinterface.creator.id
+/// resource "aws_directconnect_hosted_public_virtual_interface_accepter" "accepter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   virtual_interface_id = aws_directconnect_hosted_public_virtual_interface.creator.id
 ///   tags = {
 ///     "Side" = "Accepter"
 ///   }
@@ -297,7 +303,7 @@ class HostedPublicVirtualInterfaceAccepter extends pulumi.CustomResource {
           'aws:directconnect/hostedPublicVirtualInterfaceAccepter:HostedPublicVirtualInterfaceAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');

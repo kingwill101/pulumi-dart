@@ -71,7 +71,7 @@ import 'peering_attachment_accepter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -79,7 +79,10 @@ import 'peering_attachment_accepter_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2transitgateway_peeringattachmentaccepter" "example" {
+/// resource "aws_ec2transitgateway_peering_attachment_accepter" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   transit_gateway_attachment_id = exampleAwsEc2TransitGatewayPeeringAttachment.id
 ///   tags = {
 ///     "Name" = "Example cross-account attachment"
@@ -108,7 +111,7 @@ import 'peering_attachment_accepter_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new PeeringAttachmentAccepter("example", PeeringAttachmentAccepterArgs.builder()
-///             .transitGatewayAttachmentId(exampleAwsEc2TransitGatewayPeeringAttachment.id())
+///             .transitGatewayAttachmentId(exampleAwsEc2TransitGatewayPeeringAttachment.get("id"))
 ///             .tags(Map.of("Name", "Example cross-account attachment"))
 ///             .build());
 ///
@@ -162,7 +165,7 @@ class PeeringAttachmentAccepter extends pulumi.CustomResource {
           'aws:ec2transitgateway/peeringAttachmentAccepter:PeeringAttachmentAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     peerAccountId = registerOutput<String>('peerAccountId');
     peerRegion = registerOutput<String>('peerRegion');

@@ -65,7 +65,7 @@ import 'get_prebuilt_ecr_image_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,7 @@ import 'get_prebuilt_ecr_image_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_sagemaker_getprebuiltecrimage" "test" {
+/// data "aws_sagemaker_prebuilt_ecr_image" "test" {
 ///   repository_name = "sagemaker-scikit-learn"
 ///   image_tag       = "2.2-1.0.11.0"
 /// }

@@ -256,7 +256,7 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -264,14 +264,14 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_iam_getpolicydocument" "loggingBucketPolicy" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "loggingBucketPolicy" {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
 ///       variable = "aws:SourceAccount"
-///       values   = [data.aws_getcalleridentity.current.account_id]
+///       values   = [data.aws_caller_identity.current.account_id]
 ///     }
 ///     principals {
 ///       identifiers = ["logging.s3.amazonaws.com"]
@@ -283,18 +283,30 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "logging" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "access-logging-bucket"
 /// }
-/// resource "aws_s3_bucketpolicy" "logging" {
+/// resource "aws_s3_bucket_policy" "logging" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.logging.bucket
-///   policy = data.aws_iam_getpolicydocument.loggingBucketPolicy.json
+///   policy = data.aws_iam_policy_document.loggingBucketPolicy.json
 /// }
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example-bucket"
 /// }
-/// resource "aws_s3_bucketlogging" "example" {
-///   target_object_key_format = {
-///     partitioned_prefix = {
+/// resource "aws_s3_bucket_logging" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   target_object_key_format {
+///     partitioned_prefix {
 ///       partition_date_source = "EventTime"
 ///     }
 ///   }
@@ -533,7 +545,7 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -546,15 +558,15 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "log_bucket_acl", &s3.BucketAclArgs{
-/// 			Bucket: logBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: logBucket.ID(),
 /// 			Acl:    pulumi.String("log-delivery-write"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketLogging(ctx, "example", &s3.BucketLoggingArgs{
-/// 			Bucket:       example.ID().ToIDOutput().ToStringOutput(),
-/// 			TargetBucket: logBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket:       example.ID(),
+/// 			TargetBucket: logBucket.ID(),
 /// 			TargetPrefix: pulumi.String("log/"),
 /// 		})
 /// 		if err != nil {
@@ -565,7 +577,7 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -574,20 +586,35 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "my-tf-example-bucket"
 /// }
-/// resource "aws_s3_bucketacl" "example" {
+/// resource "aws_s3_bucket_acl" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.id
 ///   acl    = "private"
 /// }
 /// resource "aws_s3_bucket" "log_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "my-tf-log-bucket"
 /// }
-/// resource "aws_s3_bucketacl" "log_bucket_acl" {
+/// resource "aws_s3_bucket_acl" "log_bucket_acl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.log_bucket.id
 ///   acl    = "log-delivery-write"
 /// }
-/// resource "aws_s3_bucketlogging" "example" {
+/// resource "aws_s3_bucket_logging" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket        = aws_s3_bucket.example.id
 ///   target_bucket = aws_s3_bucket.log_bucket.id
 ///   target_prefix = "log/"
@@ -736,7 +763,7 @@ class BucketLoggingV2 extends pulumi.CustomResource {
           'aws:s3/bucketLoggingV2:BucketLoggingV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');

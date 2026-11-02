@@ -267,7 +267,7 @@ import 'v2models_intent_timeouts.dart';
 /// 		}
 /// 		testV2modelsBotLocale, err := lex.NewV2modelsBotLocale(ctx, "test", &lex.V2modelsBotLocaleArgs{
 /// 			LocaleId:                     pulumi.String("en_US"),
-/// 			BotId:                        testV2modelsBot.ID().ToIDOutput().ToStringOutput(),
+/// 			BotId:                        testV2modelsBot.ID(),
 /// 			BotVersion:                   pulumi.String("DRAFT"),
 /// 			NLuIntentConfidenceThreshold: pulumi.Float64(0.7),
 /// 		})
@@ -275,7 +275,7 @@ import 'v2models_intent_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lex.NewV2modelsBotVersion(ctx, "test", &lex.V2modelsBotVersionArgs{
-/// 			BotId: testV2modelsBot.ID().ToIDOutput().ToStringOutput(),
+/// 			BotId: testV2modelsBot.ID(),
 /// 			LocaleSpecification: testV2modelsBotLocale.LocaleId.ApplyT(func(localeId string) (map[string]map[string]string, error) {
 /// 				return map[string]map[string]string{
 /// 					localeId: map[string]string{
@@ -288,7 +288,7 @@ import 'v2models_intent_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lex.NewV2modelsIntent(ctx, "example", &lex.V2modelsIntentArgs{
-/// 			BotId:      testV2modelsBot.ID().ToIDOutput().ToStringOutput(),
+/// 			BotId:      testV2modelsBot.ID(),
 /// 			BotVersion: testV2modelsBotLocale.BotVersion,
 /// 			Name:       pulumi.String("botens_namn"),
 /// 			LocaleId:   testV2modelsBotLocale.LocaleId,
@@ -301,7 +301,7 @@ import 'v2models_intent_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -309,10 +309,13 @@ import 'v2models_intent_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_getpartition" "current" {
+/// data "aws_partition" "current" {
 /// }
 ///
 /// resource "aws_iam_role" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "botens_namn"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -326,11 +329,17 @@ import 'v2models_intent_timeouts.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_iam_rolepolicyattachment" "test" {
+/// resource "aws_iam_role_policy_attachment" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role       = aws_iam_role.test.name
-///   policy_arn ="arn:${data.aws_getpartition.current.partition}:iam::aws:policy/AmazonLexFullAccess"
+///   policy_arn ="arn:${data.aws_partition.current.partition}:iam::aws:policy/AmazonLexFullAccess"
 /// }
-/// resource "aws_lex_v2modelsbot" "test" {
+/// resource "aws_lex_v2models_bot" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_privacies {
 ///     child_directed = true
 ///   }
@@ -338,25 +347,34 @@ import 'v2models_intent_timeouts.dart';
 ///   idle_session_ttl_in_seconds = 60
 ///   role_arn                    = aws_iam_role.test.arn
 /// }
-/// resource "aws_lex_v2modelsbotlocale" "test" {
+/// resource "aws_lex_v2models_bot_locale" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   locale_id                        = "en_US"
-///   bot_id                           = aws_lex_v2modelsbot.test.id
+///   bot_id                           = aws_lex_v2models_bot.test.id
 ///   bot_version                      = "DRAFT"
 ///   n_lu_intent_confidence_threshold = 0.7
 /// }
-/// resource "aws_lex_v2modelsbotversion" "test" {
-///   bot_id = aws_lex_v2modelsbot.test.id
+/// resource "aws_lex_v2models_bot_version" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   bot_id = aws_lex_v2models_bot.test.id
 ///   locale_specification = {
-///     aws_lex_v2modelsbotlocale.test.locale_id = {
+///     aws_lex_v2models_bot_locale.test.locale_id = {
 ///       source_bot_version = "DRAFT"
 ///     }
 ///   }
 /// }
-/// resource "aws_lex_v2modelsintent" "example" {
-///   bot_id      = aws_lex_v2modelsbot.test.id
-///   bot_version = aws_lex_v2modelsbotlocale.test.bot_version
+/// resource "aws_lex_v2models_intent" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   bot_id      = aws_lex_v2models_bot.test.id
+///   bot_version = aws_lex_v2models_bot_locale.test.bot_version
 ///   name        = "botens_namn"
-///   locale_id   = aws_lex_v2modelsbotlocale.test.locale_id
+///   locale_id   = aws_lex_v2models_bot_locale.test.locale_id
 /// }
 /// ```
 /// ```java
@@ -826,7 +844,7 @@ import 'v2models_intent_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -834,55 +852,58 @@ import 'v2models_intent_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lex_v2modelsintent" "example" {
+/// resource "aws_lex_v2models_intent" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   confirmation_setting = {
 ///     prompt_specification = {
 ///       prompt_attempts_specifications = [{
-///         "allowedInputTypes" = {
-///           "allowAudioInput" = true
-///           "allowDtmfInput"  = true
+///         allowed_input_types = {
+///           allow_audio_input = true
+///           allow_dtmf_input  = true
 ///         }
-///         "audioAndDtmfInputSpecification" = {
-///           "audioSpecification" = {
-///             "endTimeoutMs" = 640
-///             "maxLengthMs"  = 15000
+///         audio_and_dtmf_input_specification = {
+///           audio_specification = {
+///             end_timeout_ms = 640
+///             max_length_ms  = 15000
 ///           }
-///           "dtmfSpecification" = {
-///             "deletionCharacter" = "*"
-///             "endCharacter"      = "#"
-///             "endTimeoutMs"      = 5000
-///             "maxLength"         = 513
+///           dtmf_specification = {
+///             deletion_character = "*"
+///             end_character      = "#"
+///             end_timeout_ms     = 5000
+///             max_length         = 513
 ///           }
-///           "startTimeoutMs" = 4000
+///           start_timeout_ms = 4000
 ///         }
-///         "textInputSpecification" = {
-///           "startTimeoutMs" = 30000
+///         text_input_specification = {
+///           start_timeout_ms = 30000
 ///         }
-///         "allowInterrupt" = true
-///         "mapBlockKey"    = "Initial"
+///         allow_interrupt = true
+///         map_block_key   = "Initial"
 ///         }, {
-///         "allowedInputTypes" = {
-///           "allowAudioInput" = true
-///           "allowDtmfInput"  = true
+///         allowed_input_types = {
+///           allow_audio_input = true
+///           allow_dtmf_input  = true
 ///         }
-///         "audioAndDtmfInputSpecification" = {
-///           "audioSpecification" = {
-///             "endTimeoutMs" = 640
-///             "maxLengthMs"  = 15000
+///         audio_and_dtmf_input_specification = {
+///           audio_specification = {
+///             end_timeout_ms = 640
+///             max_length_ms  = 15000
 ///           }
-///           "dtmfSpecification" = {
-///             "deletionCharacter" = "*"
-///             "endCharacter"      = "#"
-///             "endTimeoutMs"      = 5000
-///             "maxLength"         = 513
+///           dtmf_specification = {
+///             deletion_character = "*"
+///             end_character      = "#"
+///             end_timeout_ms     = 5000
+///             max_length         = 513
 ///           }
-///           "startTimeoutMs" = 4000
+///           start_timeout_ms = 4000
 ///         }
-///         "textInputSpecification" = {
-///           "startTimeoutMs" = 30000
+///         text_input_specification = {
+///           start_timeout_ms = 30000
 ///         }
-///         "allowInterrupt" = true
-///         "mapBlockKey"    = "Retry1"
+///         allow_interrupt = true
+///         map_block_key   = "Retry1"
 ///       }]
 ///       allow_interrupt            = true
 ///       max_retries                = 1
@@ -983,10 +1004,10 @@ import 'v2models_intent_timeouts.dart';
 ///                     .build())
 ///                 .active(true)
 ///                 .build())
-///             .botId(test.id())
-///             .botVersion(testAwsLexv2modelsBotLocale.botVersion())
+///             .botId(test.get("id"))
+///             .botVersion(testAwsLexv2modelsBotLocale.get("botVersion"))
 ///             .name("botens_namn")
-///             .localeId(testAwsLexv2modelsBotLocale.localeId())
+///             .localeId(testAwsLexv2modelsBotLocale.get("localeId"))
 ///             .build());
 ///
 ///     }
@@ -1172,7 +1193,7 @@ import 'v2models_intent_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1180,7 +1201,10 @@ import 'v2models_intent_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lex_v2modelsintent" "qna_example" {
+/// resource "aws_lex_v2models_intent" "qna_example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   qna_intent_configuration = {
 ///     data_source_configuration = {
 ///       kendra_configuration = {
@@ -1229,7 +1253,7 @@ import 'v2models_intent_timeouts.dart';
 ///             .qnaIntentConfiguration(V2modelsIntentQnaIntentConfigurationArgs.builder()
 ///                 .dataSourceConfiguration(V2modelsIntentQnaIntentConfigurationDataSourceConfigurationArgs.builder()
 ///                     .kendraConfiguration(V2modelsIntentQnaIntentConfigurationDataSourceConfigurationKendraConfigurationArgs.builder()
-///                         .kendraIndex(example.arn())
+///                         .kendraIndex(example.get("arn"))
 ///                         .exactResponse(true)
 ///                         .queryFilterStringEnabled(false)
 ///                         .build())
@@ -1238,10 +1262,10 @@ import 'v2models_intent_timeouts.dart';
 ///             .sampleUtterances(V2modelsIntentSampleUtteranceArgs.builder()
 ///                 .utterance("What is the answer?")
 ///                 .build())
-///             .botId(test.id())
-///             .botVersion(testAwsLexv2modelsBotLocale.botVersion())
+///             .botId(test.get("id"))
+///             .botVersion(testAwsLexv2modelsBotLocale.get("botVersion"))
 ///             .name("qna_intent")
-///             .localeId(testAwsLexv2modelsBotLocale.localeId())
+///             .localeId(testAwsLexv2modelsBotLocale.get("localeId"))
 ///             .parentIntentSignature("AMAZON.QnAIntent")
 ///             .build());
 ///
@@ -1336,7 +1360,7 @@ class V2modelsIntent extends pulumi.CustomResource {
           'aws:lex/v2modelsIntent:V2modelsIntent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     botId = registerOutput<String>('botId');
     botVersion = registerOutput<String>('botVersion');

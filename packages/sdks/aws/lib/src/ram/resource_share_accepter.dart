@@ -121,7 +121,7 @@ import 'resource_share_accepter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -129,22 +129,31 @@ import 'resource_share_accepter_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "receiver" {
+/// data "aws_caller_identity" "receiver" {
 /// }
 ///
-/// resource "aws_ram_resourceshare" "sender_share" {
+/// resource "aws_ram_resource_share" "sender_share" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "tf-test-resource-share"
 ///   allow_external_principals = true
 ///   tags = {
 ///     "Name" = "tf-test-resource-share"
 ///   }
 /// }
-/// resource "aws_ram_principalassociation" "sender_invite" {
-///   principal          = data.aws_getcalleridentity.receiver.account_id
-///   resource_share_arn = aws_ram_resourceshare.sender_share.arn
+/// resource "aws_ram_principal_association" "sender_invite" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   principal          = data.aws_caller_identity.receiver.account_id
+///   resource_share_arn = aws_ram_resource_share.sender_share.arn
 /// }
-/// resource "aws_ram_resourceshareaccepter" "receiver_accept" {
-///   share_arn = aws_ram_principalassociation.sender_invite.resource_share_arn
+/// resource "aws_ram_resource_share_accepter" "receiver_accept" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   share_arn = aws_ram_principal_association.sender_invite.resource_share_arn
 /// }
 /// ```
 /// ```java
@@ -263,7 +272,7 @@ class ResourceShareAccepter extends pulumi.CustomResource {
           'aws:ram/resourceShareAccepter:ResourceShareAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     invitationArn = registerOutput<String>('invitationArn');
     receiverAccountId = registerOutput<String>('receiverAccountId');

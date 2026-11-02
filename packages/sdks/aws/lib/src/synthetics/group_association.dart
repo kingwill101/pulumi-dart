@@ -64,7 +64,7 @@ import 'group_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'group_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_synthetics_groupassociation" "example" {
+/// resource "aws_synthetics_group_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_name = exampleAwsSyntheticsGroup.name
 ///   canary_arn = exampleAwsSyntheticsCanary.arn
 /// }
@@ -99,8 +102,8 @@ import 'group_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new GroupAssociation("example", GroupAssociationArgs.builder()
-///             .groupName(exampleAwsSyntheticsGroup.name())
-///             .canaryArn(exampleAwsSyntheticsCanary.arn())
+///             .groupName(exampleAwsSyntheticsGroup.get("name"))
+///             .canaryArn(exampleAwsSyntheticsCanary.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -146,7 +149,7 @@ class GroupAssociation extends pulumi.CustomResource {
           'aws:synthetics/groupAssociation:GroupAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     canaryArn = registerOutput<String>('canaryArn');
     groupArn = registerOutput<String>('groupArn');

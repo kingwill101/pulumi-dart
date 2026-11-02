@@ -78,7 +78,7 @@ import 'dedicated_host_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -88,7 +88,10 @@ import 'dedicated_host_state.dart';
 ///
 /// # Create a new host with instance type of c5.18xlarge with Auto Placement
 /// # and Host Recovery enabled.
-/// resource "aws_ec2_dedicatedhost" "test" {
+/// resource "aws_ec2_dedicated_host" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_type     = "c5.18xlarge"
 ///   availability_zone = "us-west-2a"
 ///   host_recovery     = "on"
@@ -187,7 +190,7 @@ class DedicatedHost extends pulumi.CustomResource {
           'aws:ec2/dedicatedHost:DedicatedHost',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     assetId = registerOutput<String>('assetId');

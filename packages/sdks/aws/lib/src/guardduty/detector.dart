@@ -136,7 +136,7 @@ import 'detector_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -145,18 +145,21 @@ import 'detector_state.dart';
 /// }
 ///
 /// resource "aws_guardduty_detector" "MyDetector" {
-///   datasources = {
-///     s3_logs = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   datasources {
+///     s3_logs {
 ///       enable = true
 ///     }
-///     kubernetes = {
-///       audit_logs = {
+///     kubernetes {
+///       audit_logs {
 ///         enable = false
 ///       }
 ///     }
-///     malware_protection = {
-///       scan_ec2_instance_with_findings = {
-///         ebs_volumes = {
+///     malware_protection {
+///       scan_ec2_instance_with_findings {
+///         ebs_volumes {
 ///           enable = true
 ///         }
 ///       }
@@ -276,7 +279,7 @@ class Detector extends pulumi.CustomResource {
           'aws:guardduty/detector:Detector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');

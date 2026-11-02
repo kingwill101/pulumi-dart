@@ -126,7 +126,7 @@ import 'outbound_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -134,20 +134,23 @@ import 'outbound_connection_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getregion" "currentGetRegion" {
+/// data "aws_region" "currentGetRegion" {
 /// }
 ///
-/// resource "aws_opensearch_outboundconnection" "foo" {
-///   local_domain_info = {
-///     owner_id    = data.aws_getcalleridentity.current.account_id
-///     region      = data.aws_getregion.currentGetRegion.region
+/// resource "aws_opensearch_outbound_connection" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   local_domain_info {
+///     owner_id    = data.aws_caller_identity.current.account_id
+///     region      = data.aws_region.currentGetRegion.region
 ///     domain_name = localDomain.domainName
 ///   }
-///   remote_domain_info = {
-///     owner_id    = data.aws_getcalleridentity.current.account_id
-///     region      = data.aws_getregion.currentGetRegion.region
+///   remote_domain_info {
+///     owner_id    = data.aws_caller_identity.current.account_id
+///     region      = data.aws_region.currentGetRegion.region
 ///     domain_name = remoteDomain.domainName
 ///   }
 ///   connection_alias = "outbound_connection"
@@ -190,12 +193,12 @@ import 'outbound_connection_state.dart';
 ///             .localDomainInfo(OutboundConnectionLocalDomainInfoArgs.builder()
 ///                 .ownerId(current.accountId())
 ///                 .region(currentGetRegion.region())
-///                 .domainName(localDomain.domainName())
+///                 .domainName(localDomain.get("domainName"))
 ///                 .build())
 ///             .remoteDomainInfo(OutboundConnectionRemoteDomainInfoArgs.builder()
 ///                 .ownerId(current.accountId())
 ///                 .region(currentGetRegion.region())
-///                 .domainName(remoteDomain.domainName())
+///                 .domainName(remoteDomain.get("domainName"))
 ///                 .build())
 ///             .connectionAlias("outbound_connection")
 ///             .connectionMode("DIRECT")
@@ -268,7 +271,7 @@ class OutboundConnection extends pulumi.CustomResource {
           'aws:opensearch/outboundConnection:OutboundConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     acceptConnection = registerOutput<bool?>('acceptConnection');
     connectionAlias = registerOutput<String>('connectionAlias');

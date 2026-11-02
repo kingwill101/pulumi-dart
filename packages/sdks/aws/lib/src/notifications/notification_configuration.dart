@@ -81,7 +81,7 @@ import 'notification_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -89,7 +89,10 @@ import 'notification_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_notifications_notificationconfiguration" "example" {
+/// resource "aws_notifications_notification_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   description = "Example notification configuration"
 ///   tags = {
@@ -223,7 +226,7 @@ import 'notification_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -231,7 +234,10 @@ import 'notification_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_notifications_notificationconfiguration" "example" {
+/// resource "aws_notifications_notification_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-aggregation"
 ///   description          = "Example notification configuration with aggregation"
 ///   aggregation_duration = "SHORT"
@@ -331,7 +337,7 @@ class NotificationConfiguration extends pulumi.CustomResource {
           'aws:notifications/notificationConfiguration:NotificationConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     aggregationDuration = registerOutput<String>('aggregationDuration');
     arn = registerOutput<String>('arn');

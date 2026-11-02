@@ -113,7 +113,7 @@ import 'revision_assets_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -121,10 +121,13 @@ import 'revision_assets_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_dataexchange_revisionassets" "example" {
-///   assets {
-///     create_s3_data_access_from_s3_bucket = {
-///       asset_source = {
+/// resource "aws_dataexchange_revision_assets" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   asset {
+///     create_s3_data_access_from_s3_bucket {
+///       asset_source {
 ///         bucket = "example-bucket"
 ///       }
 ///     }
@@ -224,7 +227,7 @@ class RevisionAssets extends pulumi.CustomResource {
           'aws:dataexchange/revisionAssets:RevisionAssets',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     assets = registerOutput<List<RevisionAssetsAsset>?>('assets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RevisionAssetsAsset>(guardedValue, (value) => RevisionAssetsAsset.fromMap((value as Map).cast<String, dynamic>())); });

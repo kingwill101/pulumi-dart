@@ -64,7 +64,7 @@ import 'availability_zone_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'availability_zone_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_availabilityzonegroup" "example" {
+/// resource "aws_ec2_availability_zone_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_name    = "us-west-2-lax-1"
 ///   opt_in_status = "opted-in"
 /// }
@@ -143,7 +146,7 @@ class AvailabilityZoneGroup extends pulumi.CustomResource {
           'aws:ec2/availabilityZoneGroup:AvailabilityZoneGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     groupName = registerOutput<String>('groupName');
     optInStatus = registerOutput<String>('optInStatus');

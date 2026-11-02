@@ -75,7 +75,7 @@ import 'role_policies_exclusive_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -83,7 +83,10 @@ import 'role_policies_exclusive_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_rolepoliciesexclusive" "example" {
+/// resource "aws_iam_role_policies_exclusive" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role_name    = exampleAwsIamRole.name
 ///   policy_names = [exampleAwsIamRolePolicy.name]
 /// }
@@ -110,8 +113,8 @@ import 'role_policies_exclusive_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RolePoliciesExclusive("example", RolePoliciesExclusiveArgs.builder()
-///             .roleName(exampleAwsIamRole.name())
-///             .policyNames(exampleAwsIamRolePolicy.name())
+///             .roleName(exampleAwsIamRole.get("name"))
+///             .policyNames(exampleAwsIamRolePolicy.get("name"))
 ///             .build());
 ///
 ///     }
@@ -163,7 +166,7 @@ import 'role_policies_exclusive_state.dart';
 ///     var example = new Aws.Iam.RolePoliciesExclusive("example", new()
 ///     {
 ///         RoleName = exampleAwsIamRole.Name,
-///         PolicyNames = new[] {},
+///         PolicyNames = new() {},
 ///     });
 ///
 /// });
@@ -190,7 +193,7 @@ import 'role_policies_exclusive_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -198,7 +201,10 @@ import 'role_policies_exclusive_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_rolepoliciesexclusive" "example" {
+/// resource "aws_iam_role_policies_exclusive" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role_name    = exampleAwsIamRole.name
 ///   policy_names = []
 /// }
@@ -225,7 +231,7 @@ import 'role_policies_exclusive_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RolePoliciesExclusive("example", RolePoliciesExclusiveArgs.builder()
-///             .roleName(exampleAwsIamRole.name())
+///             .roleName(exampleAwsIamRole.get("name"))
 ///             .policyNames()
 ///             .build());
 ///
@@ -267,7 +273,7 @@ class RolePoliciesExclusive extends pulumi.CustomResource {
           'aws:iam/rolePoliciesExclusive:RolePoliciesExclusive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     policyNames = registerOutput<List<String>>('policyNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     roleName = registerOutput<String>('roleName');

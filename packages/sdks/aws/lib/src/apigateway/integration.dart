@@ -154,7 +154,7 @@ import 'integration_tls_config.dart';
 /// 			return err
 /// 		}
 /// 		myDemoResource, err := apigateway.NewResource(ctx, "MyDemoResource", &apigateway.ResourceArgs{
-/// 			RestApi:  myDemoAPI.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:  myDemoAPI.ID(),
 /// 			ParentId: myDemoAPI.RootResourceId,
 /// 			PathPart: pulumi.String("mydemoresource"),
 /// 		})
@@ -162,8 +162,8 @@ import 'integration_tls_config.dart';
 /// 			return err
 /// 		}
 /// 		myDemoMethod, err := apigateway.NewMethod(ctx, "MyDemoMethod", &apigateway.MethodArgs{
-/// 			RestApi:       myDemoAPI.ID().ToIDOutput().ToStringOutput(),
-/// 			ResourceId:    myDemoResource.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:       myDemoAPI.ID(),
+/// 			ResourceId:    myDemoResource.ID(),
 /// 			HttpMethod:    pulumi.String("GET"),
 /// 			Authorization: pulumi.String("NONE"),
 /// 		})
@@ -171,8 +171,8 @@ import 'integration_tls_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewIntegration(ctx, "MyDemoIntegration", &apigateway.IntegrationArgs{
-/// 			RestApi:    myDemoAPI.ID().ToIDOutput().ToStringOutput(),
-/// 			ResourceId: myDemoResource.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:    myDemoAPI.ID(),
+/// 			ResourceId: myDemoResource.ID(),
 /// 			HttpMethod: myDemoMethod.HttpMethod,
 /// 			Type:       pulumi.String("MOCK"),
 /// 			CacheKeyParameters: pulumi.StringArray{
@@ -195,7 +195,7 @@ import 'integration_tls_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -203,23 +203,35 @@ import 'integration_tls_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_restapi" "MyDemoAPI" {
+/// resource "aws_apigateway_rest_api" "MyDemoAPI" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "MyDemoAPI"
 ///   description = "This is my API for demonstration purposes"
 /// }
 /// resource "aws_apigateway_resource" "MyDemoResource" {
-///   rest_api  = aws_apigateway_restapi.MyDemoAPI.id
-///   parent_id = aws_apigateway_restapi.MyDemoAPI.root_resource_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api  = aws_apigateway_rest_api.MyDemoAPI.id
+///   parent_id = aws_apigateway_rest_api.MyDemoAPI.root_resource_id
 ///   path_part = "mydemoresource"
 /// }
 /// resource "aws_apigateway_method" "MyDemoMethod" {
-///   rest_api      = aws_apigateway_restapi.MyDemoAPI.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api      = aws_apigateway_rest_api.MyDemoAPI.id
 ///   resource_id   = aws_apigateway_resource.MyDemoResource.id
 ///   http_method   = "GET"
 ///   authorization = "NONE"
 /// }
 /// resource "aws_apigateway_integration" "MyDemoIntegration" {
-///   rest_api             = aws_apigateway_restapi.MyDemoAPI.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api             = aws_apigateway_rest_api.MyDemoAPI.id
 ///   resource_id          = aws_apigateway_resource.MyDemoResource.id
 ///   http_method          = aws_apigateway_method.MyDemoMethod.http_method
 ///   type                 = "MOCK"
@@ -230,7 +242,12 @@ import 'integration_tls_config.dart';
 ///     "integration.request.header.X-Authorization" = "'static'"
 ///   }
 ///   request_templates = {
-///     "application/xml" = "{\n   \\\"body\\\" : $input.json('$')\n}\n"
+///     "application/xml" = <<EOF
+/// {
+///    \"body\" : $input.json('$')
+/// }
+/// EOF
+///
 ///   }
 /// }
 /// ```
@@ -618,14 +635,14 @@ import 'integration_tls_config.dart';
 /// 		resource, err := apigateway.NewResource(ctx, "resource", &apigateway.ResourceArgs{
 /// 			PathPart: pulumi.String("resource"),
 /// 			ParentId: api.RootResourceId,
-/// 			RestApi:  api.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:  api.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		method, err := apigateway.NewMethod(ctx, "method", &apigateway.MethodArgs{
-/// 			RestApi:       api.ID().ToIDOutput().ToStringOutput(),
-/// 			ResourceId:    resource.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:       api.ID(),
+/// 			ResourceId:    resource.ID(),
 /// 			HttpMethod:    pulumi.String("GET"),
 /// 			Authorization: pulumi.String("NONE"),
 /// 		})
@@ -679,8 +696,8 @@ import 'integration_tls_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewIntegration(ctx, "integration", &apigateway.IntegrationArgs{
-/// 			RestApi:               api.ID().ToIDOutput().ToStringOutput(),
-/// 			ResourceId:            resource.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:               api.ID(),
+/// 			ResourceId:            resource.ID(),
 /// 			HttpMethod:            method.HttpMethod,
 /// 			IntegrationHttpMethod: pulumi.String("POST"),
 /// 			Type:                  pulumi.String("AWS_PROXY"),
@@ -710,7 +727,7 @@ import 'integration_tls_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -721,14 +738,14 @@ import 'integration_tls_config.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getregion" "currentGetRegion" {
+/// data "aws_region" "currentGetRegion" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["lambda.amazonaws.com"]
@@ -739,22 +756,34 @@ import 'integration_tls_config.dart';
 /// }
 ///
 /// # API Gateway
-/// resource "aws_apigateway_restapi" "api" {
+/// resource "aws_apigateway_rest_api" "api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "myapi"
 /// }
 /// resource "aws_apigateway_resource" "resource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   path_part = "resource"
-///   parent_id = aws_apigateway_restapi.api.root_resource_id
-///   rest_api  = aws_apigateway_restapi.api.id
+///   parent_id = aws_apigateway_rest_api.api.root_resource_id
+///   rest_api  = aws_apigateway_rest_api.api.id
 /// }
 /// resource "aws_apigateway_method" "method" {
-///   rest_api      = aws_apigateway_restapi.api.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api      = aws_apigateway_rest_api.api.id
 ///   resource_id   = aws_apigateway_resource.resource.id
 ///   http_method   = "GET"
 ///   authorization = "NONE"
 /// }
 /// resource "aws_apigateway_integration" "integration" {
-///   rest_api                = aws_apigateway_restapi.api.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api                = aws_apigateway_rest_api.api.id
 ///   resource_id             = aws_apigateway_resource.resource.id
 ///   http_method             = aws_apigateway_method.method.http_method
 ///   integration_http_method = "POST"
@@ -763,23 +792,32 @@ import 'integration_tls_config.dart';
 /// }
 /// # Lambda
 /// resource "aws_lambda_permission" "apigw_lambda" {
-///   statement_id = "AllowExecutionFromAPIGateway"
-///   action       = "lambda:InvokeFunction"
-///   function     = aws_lambda_function.lambda.name
-///   principal    = "apigateway.amazonaws.com"
-///   source_arn   ="arn:${data.aws_getpartition.currentGetPartition.partition}:execute-api:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:${aws_apigateway_restapi.api.id}/*/${aws_apigateway_method.method.http_method}${aws_apigateway_resource.resource.path}"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   statement_id  = "AllowExecutionFromAPIGateway"
+///   action        = "lambda:InvokeFunction"
+///   function_name = aws_lambda_function.lambda.function_name
+///   principal     = "apigateway.amazonaws.com"
+///   source_arn    ="arn:${data.aws_partition.currentGetPartition.partition}:execute-api:${data.aws_region.currentGetRegion.region}:${data.aws_caller_identity.current.account_id}:${aws_apigateway_rest_api.api.id}/*/${aws_apigateway_method.method.http_method}${aws_apigateway_resource.resource.path}"
 /// }
 /// resource "aws_lambda_function" "lambda" {
-///   code             = fileArchive("lambda.zip")
-///   name             = "mylambda"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filename         = filearchive("lambda.zip")
+///   function_name    = "mylambda"
 ///   role             = aws_iam_role.role.arn
 ///   handler          = "lambda.lambda_handler"
 ///   runtime          = "python3.12"
 ///   source_code_hash = filebase64sha256("lambda.zip")
 /// }
 /// resource "aws_iam_role" "role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "myrole"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
 /// # IAM
 /// ```
@@ -1081,7 +1119,7 @@ import 'integration_tls_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1090,6 +1128,9 @@ import 'integration_tls_config.dart';
 /// }
 ///
 /// resource "aws_apigateway_integration" "integration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   rest_api                = api.id
 ///   resource_id             = resource.id
 ///   http_method             = method.httpMethod
@@ -1122,12 +1163,12 @@ import 'integration_tls_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var integration = new Integration("integration", IntegrationArgs.builder()
-///             .restApi(api.id())
-///             .resourceId(resource.id())
-///             .httpMethod(method.httpMethod())
+///             .restApi(api.get("id"))
+///             .resourceId(resource.get("id"))
+///             .httpMethod(method.get("httpMethod"))
 ///             .integrationHttpMethod("POST")
 ///             .type("AWS_PROXY")
-///             .uri(lambda.responseStreamingInvokeArn())
+///             .uri(lambda.get("responseStreamingInvokeArn"))
 ///             .responseTransferMode("STREAM")
 ///             .timeoutMilliseconds(900000)
 ///             .build());
@@ -1378,7 +1419,7 @@ import 'integration_tls_config.dart';
 /// 			return err
 /// 		}
 /// 		testResource, err := apigateway.NewResource(ctx, "test", &apigateway.ResourceArgs{
-/// 			RestApi:  testRestApi.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:  testRestApi.ID(),
 /// 			ParentId: testRestApi.RootResourceId,
 /// 			PathPart: pulumi.String("test"),
 /// 		})
@@ -1386,8 +1427,8 @@ import 'integration_tls_config.dart';
 /// 			return err
 /// 		}
 /// 		testMethod, err := apigateway.NewMethod(ctx, "test", &apigateway.MethodArgs{
-/// 			RestApi:       testRestApi.ID().ToIDOutput().ToStringOutput(),
-/// 			ResourceId:    testResource.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:       testRestApi.ID(),
+/// 			ResourceId:    testResource.ID(),
 /// 			HttpMethod:    pulumi.String("GET"),
 /// 			Authorization: pulumi.String("NONE"),
 /// 			RequestModels: pulumi.StringMap{
@@ -1398,8 +1439,8 @@ import 'integration_tls_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewIntegration(ctx, "test", &apigateway.IntegrationArgs{
-/// 			RestApi:    testRestApi.ID().ToIDOutput().ToStringOutput(),
-/// 			ResourceId: testResource.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:    testRestApi.ID(),
+/// 			ResourceId: testResource.ID(),
 /// 			HttpMethod: testMethod.HttpMethod,
 /// 			RequestTemplates: pulumi.StringMap{
 /// 				"application/json": pulumi.String(""),
@@ -1415,7 +1456,7 @@ import 'integration_tls_config.dart';
 /// 			PassthroughBehavior:   pulumi.String("WHEN_NO_MATCH"),
 /// 			ContentHandling:       pulumi.String("CONVERT_TO_TEXT"),
 /// 			ConnectionType:        pulumi.String("VPC_LINK"),
-/// 			ConnectionId:          testVpcLink.ID().ToIDOutput().ToStringOutput(),
+/// 			ConnectionId:          testVpcLink.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1425,7 +1466,7 @@ import 'integration_tls_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1433,26 +1474,41 @@ import 'integration_tls_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lb_loadbalancer" "test" {
+/// resource "aws_lb_load_balancer" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = var.name
 ///   internal           = true
 ///   load_balancer_type = "network"
 ///   subnets            = [var.subnetId]
 /// }
-/// resource "aws_apigateway_vpclink" "test" {
+/// resource "aws_apigateway_vpc_link" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = var.name
-///   target_arn = aws_lb_loadbalancer.test.arn
+///   target_arn = aws_lb_load_balancer.test.arn
 /// }
-/// resource "aws_apigateway_restapi" "test" {
+/// resource "aws_apigateway_rest_api" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = var.name
 /// }
 /// resource "aws_apigateway_resource" "test" {
-///   rest_api  = aws_apigateway_restapi.test.id
-///   parent_id = aws_apigateway_restapi.test.root_resource_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api  = aws_apigateway_rest_api.test.id
+///   parent_id = aws_apigateway_rest_api.test.root_resource_id
 ///   path_part = "test"
 /// }
 /// resource "aws_apigateway_method" "test" {
-///   rest_api      = aws_apigateway_restapi.test.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api      = aws_apigateway_rest_api.test.id
 ///   resource_id   = aws_apigateway_resource.test.id
 ///   http_method   = "GET"
 ///   authorization = "NONE"
@@ -1461,7 +1517,10 @@ import 'integration_tls_config.dart';
 ///   }
 /// }
 /// resource "aws_apigateway_integration" "test" {
-///   rest_api    = aws_apigateway_restapi.test.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api    = aws_apigateway_rest_api.test.id
 ///   resource_id = aws_apigateway_resource.test.id
 ///   http_method = aws_apigateway_method.test.http_method
 ///   request_templates = {
@@ -1478,11 +1537,13 @@ import 'integration_tls_config.dart';
 ///   passthrough_behavior    = "WHEN_NO_MATCH"
 ///   content_handling        = "CONVERT_TO_TEXT"
 ///   connection_type         = "VPC_LINK"
-///   connection_id           = aws_apigateway_vpclink.test.id
+///   connection_id           = aws_apigateway_vpc_link.test.id
 /// }
 /// variable "name" {
+///   type = any
 /// }
 /// variable "subnetId" {
+///   type = any
 /// }
 /// ```
 /// ```java
@@ -1517,8 +1578,8 @@ import 'integration_tls_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var name = config.require("name");
-///         final var subnetId = config.require("subnetId");
+///         final var name = config.requireObject("name", com.pulumi.core.TypeShape.map(String.class, Object.class));
+///         final var subnetId = config.requireObject("subnetId", com.pulumi.core.TypeShape.map(String.class, Object.class));
 ///         var test = new LoadBalancer("test", LoadBalancerArgs.builder()
 ///             .name(name)
 ///             .internal(true)
@@ -1897,7 +1958,7 @@ import 'integration_tls_config.dart';
 /// return err
 /// }
 /// exampleResource, err := apigateway.NewResource(ctx, "example", &apigateway.ResourceArgs{
-/// RestApi: exampleRestApi.ID().ToIDOutput().ToStringOutput(),
+/// RestApi: exampleRestApi.ID(),
 /// ParentId: exampleRestApi.RootResourceId,
 /// PathPart: pulumi.String("example"),
 /// })
@@ -1905,8 +1966,8 @@ import 'integration_tls_config.dart';
 /// return err
 /// }
 /// exampleMethod, err := apigateway.NewMethod(ctx, "example", &apigateway.MethodArgs{
-/// RestApi: exampleRestApi.ID().ToIDOutput().ToStringOutput(),
-/// ResourceId: exampleResource.ID().ToIDOutput().ToStringOutput(),
+/// RestApi: exampleRestApi.ID(),
+/// ResourceId: exampleResource.ID(),
 /// HttpMethod: pulumi.String("GET"),
 /// Authorization: pulumi.String("NONE"),
 /// })
@@ -1914,13 +1975,13 @@ import 'integration_tls_config.dart';
 /// return err
 /// }
 /// _, err = apigateway.NewIntegration(ctx, "example", &apigateway.IntegrationArgs{
-/// RestApi: exampleRestApi.ID().ToIDOutput().ToStringOutput(),
-/// ResourceId: exampleResource.ID().ToIDOutput().ToStringOutput(),
+/// RestApi: exampleRestApi.ID(),
+/// ResourceId: exampleResource.ID(),
 /// HttpMethod: exampleMethod.HttpMethod,
 /// IntegrationHttpMethod: pulumi.String("GET"),
 /// Type: pulumi.String("HTTP_PROXY"),
 /// ConnectionType: pulumi.String("VPC_LINK"),
-/// ConnectionId: example.ID().ToIDOutput().ToStringOutput(),
+/// ConnectionId: example.ID(),
 /// IntegrationTarget: exampleLoadBalancer.Arn,
 /// Uri: pulumi.String("http://example.com"),
 /// })
@@ -1939,7 +2000,7 @@ import 'integration_tls_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1947,12 +2008,18 @@ import 'integration_tls_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigatewayv2_vpclink" "example" {
+/// resource "aws_apigatewayv2_vpc_link" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
 ///   security_group_ids = [exampleAwsSecurityGroup.id]
 ///   subnet_ids         = exampleAwsSubnet[*].id
 /// }
-/// resource "aws_lb_loadbalancer" "example" {
+/// resource "aws_lb_load_balancer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-alb"
 ///   internal           = true
 ///   load_balancer_type = "application"
@@ -1960,41 +2027,56 @@ import 'integration_tls_config.dart';
 ///   subnets            = exampleAwsSubnet[*].id
 /// }
 /// resource "aws_lb_listener" "example" {
-///   default_actions {
-///     fixed_response = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_action {
+///     fixed_response {
 ///       content_type = "text/plain"
 ///       message_body = "OK"
 ///       status_code  = "200"
 ///     }
 ///     type = "fixed-response"
 ///   }
-///   load_balancer_arn = aws_lb_loadbalancer.example.arn
+///   load_balancer_arn = aws_lb_load_balancer.example.arn
 ///   port              = "80"
 ///   protocol          = "HTTP"
 /// }
-/// resource "aws_apigateway_restapi" "example" {
+/// resource "aws_apigateway_rest_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// resource "aws_apigateway_resource" "example" {
-///   rest_api  = aws_apigateway_restapi.example.id
-///   parent_id = aws_apigateway_restapi.example.root_resource_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api  = aws_apigateway_rest_api.example.id
+///   parent_id = aws_apigateway_rest_api.example.root_resource_id
 ///   path_part = "example"
 /// }
 /// resource "aws_apigateway_method" "example" {
-///   rest_api      = aws_apigateway_restapi.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api      = aws_apigateway_rest_api.example.id
 ///   resource_id   = aws_apigateway_resource.example.id
 ///   http_method   = "GET"
 ///   authorization = "NONE"
 /// }
 /// resource "aws_apigateway_integration" "example" {
-///   rest_api                = aws_apigateway_restapi.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api                = aws_apigateway_rest_api.example.id
 ///   resource_id             = aws_apigateway_resource.example.id
 ///   http_method             = aws_apigateway_method.example.http_method
 ///   integration_http_method = "GET"
 ///   type                    = "HTTP_PROXY"
 ///   connection_type         = "VPC_LINK"
-///   connection_id           = aws_apigatewayv2_vpclink.example.id
-///   integration_target      = aws_lb_loadbalancer.example.arn
+///   connection_id           = aws_apigatewayv2_vpc_link.example.id
+///   integration_target      = aws_lb_load_balancer.example.arn
 ///   uri                     = "http://example.com"
 /// }
 /// ```
@@ -2035,16 +2117,16 @@ import 'integration_tls_config.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new VpcLink("example", VpcLinkArgs.builder()
 ///             .name("example")
-///             .securityGroupIds(exampleAwsSecurityGroup.id())
-///             .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
+///             .securityGroupIds(exampleAwsSecurityGroup.get("id"))
+///             .subnetIds(exampleAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
 ///             .build());
 ///
 ///         var exampleLoadBalancer = new LoadBalancer("exampleLoadBalancer", LoadBalancerArgs.builder()
 ///             .name("example-alb")
 ///             .internal(true)
 ///             .loadBalancerType("application")
-///             .securityGroups(exampleAwsSecurityGroup.id())
-///             .subnets(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
+///             .securityGroups(exampleAwsSecurityGroup.get("id"))
+///             .subnets(exampleAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
 ///             .build());
 ///
 ///         var exampleListener = new Listener("exampleListener", ListenerArgs.builder()
@@ -2170,7 +2252,7 @@ class Integration extends pulumi.CustomResource {
           'aws:apigateway/integration:Integration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     cacheKeyParameters = registerOutput<List<String>?>('cacheKeyParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     cacheNamespace = registerOutput<String>('cacheNamespace');

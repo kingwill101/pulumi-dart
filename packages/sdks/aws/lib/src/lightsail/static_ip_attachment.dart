@@ -107,7 +107,7 @@ import 'static_ip_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -115,17 +115,26 @@ import 'static_ip_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lightsail_staticip" "example" {
+/// resource "aws_lightsail_static_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// resource "aws_lightsail_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example"
 ///   availability_zone = "us-east-1a"
 ///   blueprint_id      = "ubuntu_20_04"
 ///   bundle_id         = "nano_2_0"
 /// }
-/// resource "aws_lightsail_staticipattachment" "example" {
-///   static_ip_name = aws_lightsail_staticip.example.name
+/// resource "aws_lightsail_static_ip_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   static_ip_name = aws_lightsail_static_ip.example.name
 ///   instance_name  = aws_lightsail_instance.example.name
 /// }
 /// ```
@@ -227,7 +236,7 @@ class StaticIpAttachment extends pulumi.CustomResource {
           'aws:lightsail/staticIpAttachment:StaticIpAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     instanceName = registerOutput<String>('instanceName');
     ipAddress = registerOutput<String>('ipAddress');

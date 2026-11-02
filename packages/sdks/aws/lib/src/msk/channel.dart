@@ -152,7 +152,7 @@ import 'channel_topic_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -161,17 +161,20 @@ import 'channel_topic_configuration.dart';
 /// }
 ///
 /// resource "aws_msk_channel" "example" {
-///   topic_configuration = {
-///     record_converter = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   topic_configuration {
+///     record_converter {
 ///       value_converter = "BYTE_ARRAY"
 ///     }
 ///     topic_arn = exampleAwsMskTopic.arn
 ///   }
-///   s3_destination = {
-///     dead_letter_queue_s3 = {
+///   s3_destination {
+///     dead_letter_queue_s3 {
 ///       bucket_arn = dlq.arn
 ///     }
-///     storage = {
+///     storage {
 ///       bucket_arn       = exampleAwsS3Bucket.arn
 ///       compression_type = "NONE"
 ///       storage_class    = "STANDARD"
@@ -213,21 +216,21 @@ import 'channel_topic_configuration.dart';
 ///                 .recordConverter(ChannelTopicConfigurationRecordConverterArgs.builder()
 ///                     .valueConverter("BYTE_ARRAY")
 ///                     .build())
-///                 .topicArn(exampleAwsMskTopic.arn())
+///                 .topicArn(exampleAwsMskTopic.get("arn"))
 ///                 .build())
 ///             .s3Destination(ChannelS3DestinationArgs.builder()
 ///                 .deadLetterQueueS3(ChannelS3DestinationDeadLetterQueueS3Args.builder()
-///                     .bucketArn(dlq.arn())
+///                     .bucketArn(dlq.get("arn"))
 ///                     .build())
 ///                 .storage(ChannelS3DestinationStorageArgs.builder()
-///                     .bucketArn(exampleAwsS3Bucket.arn())
+///                     .bucketArn(exampleAwsS3Bucket.get("arn"))
 ///                     .compressionType("NONE")
 ///                     .storageClass("STANDARD")
 ///                     .build())
-///                 .serviceExecutionRoleArn(exampleAwsIamRole.arn())
+///                 .serviceExecutionRoleArn(exampleAwsIamRole.get("arn"))
 ///                 .build())
 ///             .channelName("example")
-///             .clusterArn(exampleAwsMskCluster.arn())
+///             .clusterArn(exampleAwsMskCluster.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -469,7 +472,7 @@ import 'channel_topic_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -478,36 +481,39 @@ import 'channel_topic_configuration.dart';
 /// }
 ///
 /// resource "aws_msk_channel" "example" {
-///   topic_configuration = {
-///     record_converter = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   topic_configuration {
+///     record_converter {
 ///       value_converter = "JSON"
 ///     }
-///     record_schema = {
+///     record_schema {
 ///       gsr_arn = exampleAwsGlueSchema.arn
 ///     }
 ///     topic_arn = exampleAwsMskTopic.arn
 ///   }
-///   iceberg_destination = {
-///     catalog = {
+///   iceberg_destination {
+///     catalog {
 ///       warehouse_location = exampleAwsS3tablesTableBucket.arn
 ///     }
-///     dead_letter_queue_s3 = {
+///     dead_letter_queue_s3 {
 ///       bucket_arn = dlq.arn
 ///     }
-///     destination_table = {
-///       partition_spec = {
-///         sources = [{
-///           "sourceName" = "event_time"
-///         }]
+///     destination_table {
+///       partition_spec {
+///         source {
+///           source_name = "event_time"
+///         }
 ///         partition_strategy = "TIME_HOUR"
 ///       }
 ///       destination_database_name = "example_namespace"
 ///       destination_table_name    = "example_table"
 ///     }
-///     schema_evolution = {
+///     schema_evolution {
 ///       enable_schema_evolution = false
 ///     }
-///     table_creation = {
+///     table_creation {
 ///       enable_table_creation = true
 ///     }
 ///     append_only                = true
@@ -555,16 +561,16 @@ import 'channel_topic_configuration.dart';
 ///                     .valueConverter("JSON")
 ///                     .build())
 ///                 .recordSchema(ChannelTopicConfigurationRecordSchemaArgs.builder()
-///                     .gsrArn(exampleAwsGlueSchema.arn())
+///                     .gsrArn(exampleAwsGlueSchema.get("arn"))
 ///                     .build())
-///                 .topicArn(exampleAwsMskTopic.arn())
+///                 .topicArn(exampleAwsMskTopic.get("arn"))
 ///                 .build())
 ///             .icebergDestination(ChannelIcebergDestinationArgs.builder()
 ///                 .catalog(ChannelIcebergDestinationCatalogArgs.builder()
-///                     .warehouseLocation(exampleAwsS3tablesTableBucket.arn())
+///                     .warehouseLocation(exampleAwsS3tablesTableBucket.get("arn"))
 ///                     .build())
 ///                 .deadLetterQueueS3(ChannelIcebergDestinationDeadLetterQueueS3Args.builder()
-///                     .bucketArn(dlq.arn())
+///                     .bucketArn(dlq.get("arn"))
 ///                     .build())
 ///                 .destinationTable(ChannelIcebergDestinationDestinationTableArgs.builder()
 ///                     .partitionSpec(ChannelIcebergDestinationDestinationTablePartitionSpecArgs.builder()
@@ -583,10 +589,10 @@ import 'channel_topic_configuration.dart';
 ///                     .enableTableCreation(true)
 ///                     .build())
 ///                 .appendOnly(true)
-///                 .serviceExecutionRoleArn(exampleAwsIamRole.arn())
+///                 .serviceExecutionRoleArn(exampleAwsIamRole.get("arn"))
 ///                 .build())
 ///             .channelName("example")
-///             .clusterArn(exampleAwsMskCluster.arn())
+///             .clusterArn(exampleAwsMskCluster.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -687,7 +693,7 @@ class Channel extends pulumi.CustomResource {
           'aws:msk/channel:Channel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     channelName = registerOutput<String>('channelName');

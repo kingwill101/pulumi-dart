@@ -65,7 +65,7 @@ import 'main_route_table_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,10 @@ import 'main_route_table_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_mainroutetableassociation" "a" {
+/// resource "aws_ec2_main_route_table_association" "a" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id         = foo.id
 ///   route_table_id = bar.id
 /// }
@@ -100,8 +103,8 @@ import 'main_route_table_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var a = new MainRouteTableAssociation("a", MainRouteTableAssociationArgs.builder()
-///             .vpcId(foo.id())
-///             .routeTableId(bar.id())
+///             .vpcId(foo.get("id"))
+///             .routeTableId(bar.get("id"))
 ///             .build());
 ///
 ///     }
@@ -137,7 +140,7 @@ class MainRouteTableAssociation extends pulumi.CustomResource {
           'aws:ec2/mainRouteTableAssociation:MainRouteTableAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     originalRouteTableId = registerOutput<String>('originalRouteTableId');
     region = registerOutput<String>('region');

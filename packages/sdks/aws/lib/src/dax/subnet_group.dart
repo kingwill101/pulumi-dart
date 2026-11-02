@@ -75,7 +75,7 @@ import 'subnet_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -83,7 +83,10 @@ import 'subnet_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_dax_subnetgroup" "example" {
+/// resource "aws_dax_subnet_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example"
 ///   subnet_ids = [example1.id, example2.id]
 /// }
@@ -112,8 +115,8 @@ import 'subnet_group_state.dart';
 ///         var example = new SubnetGroup("example", SubnetGroupArgs.builder()
 ///             .name("example")
 ///             .subnetIds(
-///                 example1.id(),
-///                 example2.id())
+///                 example1.get("id"),
+///                 example2.get("id"))
 ///             .build());
 ///
 ///     }
@@ -162,7 +165,7 @@ class SubnetGroup extends pulumi.CustomResource {
           'aws:dax/subnetGroup:SubnetGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

@@ -78,7 +78,7 @@ import 'target_group_attachment_target.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,8 +86,11 @@ import 'target_group_attachment_target.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpclattice_targetgroupattachment" "example" {
-///   target = {
+/// resource "aws_vpclattice_target_group_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   target {
 ///     id   = exampleAwsLb.arn
 ///     port = 80
 ///   }
@@ -118,10 +121,10 @@ import 'target_group_attachment_target.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new TargetGroupAttachment("example", TargetGroupAttachmentArgs.builder()
 ///             .target(TargetGroupAttachmentTargetArgs.builder()
-///                 .id(exampleAwsLb.arn())
+///                 .id(exampleAwsLb.get("arn"))
 ///                 .port(80)
 ///                 .build())
-///             .targetGroupIdentifier(exampleAwsVpclatticeTargetGroup.id())
+///             .targetGroupIdentifier(exampleAwsVpclatticeTargetGroup.get("id"))
 ///             .build());
 ///
 ///     }
@@ -157,7 +160,7 @@ class TargetGroupAttachment extends pulumi.CustomResource {
           'aws:vpclattice/targetGroupAttachment:TargetGroupAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     target = registerOutput<TargetGroupAttachmentTarget>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetGroupAttachmentTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });

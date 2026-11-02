@@ -65,7 +65,7 @@ import 'sms_channel_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,10 +73,16 @@ import 'sms_channel_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_pinpoint_smschannel" "sms" {
+/// resource "aws_pinpoint_sms_channel" "sms" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_id = aws_pinpoint_app.app.application_id
 /// }
 /// resource "aws_pinpoint_app" "app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -156,7 +162,7 @@ class SmsChannel extends pulumi.CustomResource {
           'aws:pinpoint/smsChannel:SmsChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     enabled = registerOutput<bool?>('enabled');

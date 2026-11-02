@@ -81,7 +81,7 @@ import 'lb_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -90,6 +90,9 @@ import 'lb_state.dart';
 /// }
 ///
 /// resource "aws_lightsail_lb" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-load-balancer"
 ///   health_check_path = "/"
 ///   instance_port     = 80
@@ -191,7 +194,7 @@ class Lb extends pulumi.CustomResource {
           'aws:lightsail/lb:Lb',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');

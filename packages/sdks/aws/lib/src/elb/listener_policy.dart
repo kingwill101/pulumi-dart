@@ -212,7 +212,7 @@ import 'listener_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -220,7 +220,10 @@ import 'listener_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elb_loadbalancer" "wu-tang" {
+/// resource "aws_elb_load_balancer" "wu-tang" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   listeners {
 ///     instance_port      = 443
 ///     instance_protocol  = "http"
@@ -234,7 +237,10 @@ import 'listener_policy_state.dart';
 ///     "Name" = "wu-tang"
 ///   }
 /// }
-/// resource "aws_elb_loadbalancerpolicy" "wu-tang-ssl" {
+/// resource "aws_elb_load_balancer_policy" "wu-tang-ssl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_attributes {
 ///     name  = "ECDHE-ECDSA-AES128-GCM-SHA256"
 ///     value = "true"
@@ -243,14 +249,17 @@ import 'listener_policy_state.dart';
 ///     name  = "Protocol-TLSv1.2"
 ///     value = "true"
 ///   }
-///   load_balancer_name = aws_elb_loadbalancer.wu-tang.name
+///   load_balancer_name = aws_elb_load_balancer.wu-tang.name
 ///   policy_name        = "wu-tang-ssl"
 ///   policy_type_name   = "SSLNegotiationPolicyType"
 /// }
-/// resource "aws_elb_listenerpolicy" "wu-tang-listener-policies-443" {
-///   load_balancer_name = aws_elb_loadbalancer.wu-tang.name
+/// resource "aws_elb_listener_policy" "wu-tang-listener-policies-443" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   load_balancer_name = aws_elb_load_balancer.wu-tang.name
 ///   load_balancer_port = 443
-///   policy_names       = [aws_elb_loadbalancerpolicy.wu-tang-ssl.policy_name]
+///   policy_names       = [aws_elb_load_balancer_policy.wu-tang-ssl.policy_name]
 /// }
 /// ```
 /// ```java
@@ -541,7 +550,7 @@ import 'listener_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -549,7 +558,10 @@ import 'listener_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elb_loadbalancer" "wu-tang" {
+/// resource "aws_elb_load_balancer" "wu-tang" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   listeners {
 ///     instance_port      = 443
 ///     instance_protocol  = "http"
@@ -563,19 +575,25 @@ import 'listener_policy_state.dart';
 ///     "Name" = "wu-tang"
 ///   }
 /// }
-/// resource "aws_elb_loadbalancerpolicy" "wu-tang-ssl-tls-1-1" {
+/// resource "aws_elb_load_balancer_policy" "wu-tang-ssl-tls-1-1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_attributes {
 ///     name  = "Reference-Security-Policy"
 ///     value = "ELBSecurityPolicy-TLS-1-1-2017-01"
 ///   }
-///   load_balancer_name = aws_elb_loadbalancer.wu-tang.name
+///   load_balancer_name = aws_elb_load_balancer.wu-tang.name
 ///   policy_name        = "wu-tang-ssl"
 ///   policy_type_name   = "SSLNegotiationPolicyType"
 /// }
-/// resource "aws_elb_listenerpolicy" "wu-tang-listener-policies-443" {
-///   load_balancer_name = aws_elb_loadbalancer.wu-tang.name
+/// resource "aws_elb_listener_policy" "wu-tang-listener-policies-443" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   load_balancer_name = aws_elb_load_balancer.wu-tang.name
 ///   load_balancer_port = 443
-///   policy_names       = [aws_elb_loadbalancerpolicy.wu-tang-ssl-tls-1-1.policy_name]
+///   policy_names       = [aws_elb_load_balancer_policy.wu-tang-ssl-tls-1-1.policy_name]
 /// }
 /// ```
 /// ```java
@@ -697,7 +715,7 @@ class ListenerPolicy extends pulumi.CustomResource {
           'aws:elb/listenerPolicy:ListenerPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     loadBalancerName = registerOutput<String>('loadBalancerName');
     loadBalancerPort = registerOutput<int>('loadBalancerPort');

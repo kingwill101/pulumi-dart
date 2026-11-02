@@ -108,7 +108,7 @@ import 'smsvoicev2_event_destination_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -116,15 +116,21 @@ import 'smsvoicev2_event_destination_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_pinpoint_smsvoicev2configurationset" "example" {
+/// resource "aws_pinpoint_smsvoicev2_configuration_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-configuration-set"
 /// }
-/// resource "aws_pinpoint_smsvoicev2eventdestination" "example" {
+/// resource "aws_pinpoint_smsvoicev2_event_destination" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloudwatch_logs_destination = {
 ///     iam_role_arn  = exampleAwsIamRole.arn
 ///     log_group_arn = exampleAwsCloudwatchLogGroup.arn
 ///   }
-///   configuration_set_name = aws_pinpoint_smsvoicev2configurationset.example.name
+///   configuration_set_name = aws_pinpoint_smsvoicev2_configuration_set.example.name
 ///   event_destination_name = "example"
 ///   matching_event_types   = ["ALL"]
 /// }
@@ -159,8 +165,8 @@ import 'smsvoicev2_event_destination_state.dart';
 ///
 ///         var exampleSmsvoicev2EventDestination = new Smsvoicev2EventDestination("exampleSmsvoicev2EventDestination", Smsvoicev2EventDestinationArgs.builder()
 ///             .cloudwatchLogsDestination(Smsvoicev2EventDestinationCloudwatchLogsDestinationArgs.builder()
-///                 .iamRoleArn(exampleAwsIamRole.arn())
-///                 .logGroupArn(exampleAwsCloudwatchLogGroup.arn())
+///                 .iamRoleArn(exampleAwsIamRole.get("arn"))
+///                 .logGroupArn(exampleAwsCloudwatchLogGroup.get("arn"))
 ///                 .build())
 ///             .configurationSetName(example.name())
 ///             .eventDestinationName("example")
@@ -287,7 +293,7 @@ import 'smsvoicev2_event_destination_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -295,15 +301,21 @@ import 'smsvoicev2_event_destination_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_pinpoint_smsvoicev2configurationset" "example" {
+/// resource "aws_pinpoint_smsvoicev2_configuration_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-configuration-set"
 /// }
-/// resource "aws_pinpoint_smsvoicev2eventdestination" "example" {
+/// resource "aws_pinpoint_smsvoicev2_event_destination" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   kinesis_firehose_destination = {
 ///     delivery_stream_arn = exampleAwsKinesisFirehoseDeliveryStream.arn
 ///     iam_role_arn        = exampleAwsIamRole.arn
 ///   }
-///   configuration_set_name = aws_pinpoint_smsvoicev2configurationset.example.name
+///   configuration_set_name = aws_pinpoint_smsvoicev2_configuration_set.example.name
 ///   event_destination_name = "example"
 ///   matching_event_types   = ["ALL"]
 /// }
@@ -338,8 +350,8 @@ import 'smsvoicev2_event_destination_state.dart';
 ///
 ///         var exampleSmsvoicev2EventDestination = new Smsvoicev2EventDestination("exampleSmsvoicev2EventDestination", Smsvoicev2EventDestinationArgs.builder()
 ///             .kinesisFirehoseDestination(Smsvoicev2EventDestinationKinesisFirehoseDestinationArgs.builder()
-///                 .deliveryStreamArn(exampleAwsKinesisFirehoseDeliveryStream.arn())
-///                 .iamRoleArn(exampleAwsIamRole.arn())
+///                 .deliveryStreamArn(exampleAwsKinesisFirehoseDeliveryStream.get("arn"))
+///                 .iamRoleArn(exampleAwsIamRole.get("arn"))
 ///                 .build())
 ///             .configurationSetName(example.name())
 ///             .eventDestinationName("example")
@@ -462,7 +474,7 @@ import 'smsvoicev2_event_destination_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -470,14 +482,20 @@ import 'smsvoicev2_event_destination_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_pinpoint_smsvoicev2configurationset" "example" {
+/// resource "aws_pinpoint_smsvoicev2_configuration_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-configuration-set"
 /// }
-/// resource "aws_pinpoint_smsvoicev2eventdestination" "example" {
+/// resource "aws_pinpoint_smsvoicev2_event_destination" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   sns_destination = {
 ///     topic_arn = exampleAwsSnsTopic.arn
 ///   }
-///   configuration_set_name = aws_pinpoint_smsvoicev2configurationset.example.name
+///   configuration_set_name = aws_pinpoint_smsvoicev2_configuration_set.example.name
 ///   event_destination_name = "example"
 ///   matching_event_types   = ["ALL"]
 /// }
@@ -512,7 +530,7 @@ import 'smsvoicev2_event_destination_state.dart';
 ///
 ///         var exampleSmsvoicev2EventDestination = new Smsvoicev2EventDestination("exampleSmsvoicev2EventDestination", Smsvoicev2EventDestinationArgs.builder()
 ///             .snsDestination(Smsvoicev2EventDestinationSnsDestinationArgs.builder()
-///                 .topicArn(exampleAwsSnsTopic.arn())
+///                 .topicArn(exampleAwsSnsTopic.get("arn"))
 ///                 .build())
 ///             .configurationSetName(example.name())
 ///             .eventDestinationName("example")
@@ -595,7 +613,7 @@ class Smsvoicev2EventDestination extends pulumi.CustomResource {
           'aws:pinpoint/smsvoicev2EventDestination:Smsvoicev2EventDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     cloudwatchLogsDestination = registerOutput<Smsvoicev2EventDestinationCloudwatchLogsDestination?>('cloudwatchLogsDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Smsvoicev2EventDestinationCloudwatchLogsDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     configurationSetArn = registerOutput<String>('configurationSetArn');

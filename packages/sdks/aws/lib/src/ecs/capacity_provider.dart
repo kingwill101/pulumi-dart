@@ -146,7 +146,7 @@ import 'capacity_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -155,15 +155,21 @@ import 'capacity_provider_state.dart';
 /// }
 ///
 /// resource "aws_autoscaling_group" "example" {
-///   tags {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   tag {
 ///     key                 = "AmazonECSManaged"
 ///     value               = true
 ///     propagate_at_launch = true
 ///   }
 /// }
-/// resource "aws_ecs_capacityprovider" "example" {
-///   auto_scaling_group_provider = {
-///     managed_scaling = {
+/// resource "aws_ecs_capacity_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   auto_scaling_group_provider {
+///     managed_scaling {
 ///       maximum_scaling_step_size = 1000
 ///       minimum_scaling_step_size = 1
 ///       status                    = "ENABLED"
@@ -452,7 +458,7 @@ import 'capacity_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -460,22 +466,25 @@ import 'capacity_provider_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecs_capacityprovider" "example" {
-///   managed_instances_provider = {
-///     instance_launch_template = {
-///       network_configuration = {
+/// resource "aws_ecs_capacity_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   managed_instances_provider {
+///     instance_launch_template {
+///       network_configuration {
 ///         subnets         = [exampleAwsSubnet.id]
 ///         security_groups = [exampleAwsSecurityGroup.id]
 ///       }
-///       storage_configuration = {
+///       storage_configuration {
 ///         storage_size_gib = 30
 ///       }
-///       instance_requirements = {
-///         memory_mib = {
+///       instance_requirements {
+///         memory_mib {
 ///           min = 1024
 ///           max = 8192
 ///         }
-///         vcpu_count = {
+///         vcpu_count {
 ///           min = 1
 ///           max = 4
 ///         }
@@ -524,8 +533,8 @@ import 'capacity_provider_state.dart';
 ///             .managedInstancesProvider(CapacityProviderManagedInstancesProviderArgs.builder()
 ///                 .instanceLaunchTemplate(CapacityProviderManagedInstancesProviderInstanceLaunchTemplateArgs.builder()
 ///                     .networkConfiguration(CapacityProviderManagedInstancesProviderInstanceLaunchTemplateNetworkConfigurationArgs.builder()
-///                         .subnets(exampleAwsSubnet.id())
-///                         .securityGroups(exampleAwsSecurityGroup.id())
+///                         .subnets(exampleAwsSubnet.get("id"))
+///                         .securityGroups(exampleAwsSecurityGroup.get("id"))
 ///                         .build())
 ///                     .storageConfiguration(CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfigurationArgs.builder()
 ///                         .storageSizeGib(30)
@@ -544,10 +553,10 @@ import 'capacity_provider_state.dart';
 ///                             "intel",
 ///                             "amd")
 ///                         .build())
-///                     .ec2InstanceProfileArn(ecsInstance.arn())
+///                     .ec2InstanceProfileArn(ecsInstance.get("arn"))
 ///                     .monitoring("DETAILED")
 ///                     .build())
-///                 .infrastructureRoleArn(ecsInfrastructure.arn())
+///                 .infrastructureRoleArn(ecsInfrastructure.get("arn"))
 ///                 .propagateTags("CAPACITY_PROVIDER")
 ///                 .build())
 ///             .name("example")
@@ -636,7 +645,7 @@ class CapacityProvider extends pulumi.CustomResource {
           'aws:ecs/capacityProvider:CapacityProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoScalingGroupProvider = registerOutput<CapacityProviderAutoScalingGroupProvider?>('autoScalingGroupProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityProviderAutoScalingGroupProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });

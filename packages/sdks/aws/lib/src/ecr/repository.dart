@@ -78,7 +78,7 @@ import 'repository_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -87,7 +87,10 @@ import 'repository_state.dart';
 /// }
 ///
 /// resource "aws_ecr_repository" "foo" {
-///   image_scanning_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   image_scanning_configuration {
 ///     scan_on_push = true
 ///   }
 ///   name                 = "bar"
@@ -240,7 +243,7 @@ import 'repository_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -249,11 +252,14 @@ import 'repository_state.dart';
 /// }
 ///
 /// resource "aws_ecr_repository" "example" {
-///   image_tag_mutability_exclusion_filters {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   image_tag_mutability_exclusion_filter {
 ///     filter      = "latest*"
 ///     filter_type = "WILDCARD"
 ///   }
-///   image_tag_mutability_exclusion_filters {
+///   image_tag_mutability_exclusion_filter {
 ///     filter      = "dev-*"
 ///     filter_type = "WILDCARD"
 ///   }
@@ -373,7 +379,7 @@ class Repository extends pulumi.CustomResource {
           'aws:ecr/repository:Repository',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     encryptionConfigurations = registerOutput<List<RepositoryEncryptionConfiguration>?>('encryptionConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryEncryptionConfiguration>(guardedValue, (value) => RepositoryEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())); });

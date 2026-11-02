@@ -107,7 +107,7 @@ import 'get_users_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -115,20 +115,20 @@ import 'get_users_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
-/// data "aws_identitystore_getgroup" "exampleGetGroup" {
-///   alternate_identifier = {
-///     unique_attribute = {
+/// data "aws_identitystore_group" "exampleGetGroup" {
+///   alternate_identifier {
+///     unique_attribute {
 ///       attribute_path  = "DisplayName"
 ///       attribute_value = "ExampleGroup"
 ///     }
 ///   }
-///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+///   identity_store_id = data.aws_ssoadmin_instances.example.identity_store_ids[0]
 /// }
 ///
 /// output "groupId" {
-///   value = data.aws_identitystore_getgroup.exampleGetGroup.group_id
+///   value = data.aws_identitystore_group.exampleGetGroup.group_id
 /// }
 /// ```
 /// ```java
@@ -328,7 +328,7 @@ pulumi.Output<GetGroupResult> getGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -336,20 +336,20 @@ pulumi.Output<GetGroupResult> getGroupOutput(
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
-/// data "aws_identitystore_getgroup" "exampleGetGroup" {
-///   alternate_identifier = {
-///     unique_attribute = {
+/// data "aws_identitystore_group" "exampleGetGroup" {
+///   alternate_identifier {
+///     unique_attribute {
 ///       attribute_path  = "DisplayName"
 ///       attribute_value = "ExampleGroup"
 ///     }
 ///   }
-///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+///   identity_store_id = data.aws_ssoadmin_instances.example.identity_store_ids[0]
 /// }
-/// data "aws_identitystore_getgroupmemberships" "exampleGetGroupMemberships" {
-///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
-///   group_id          = data.aws_identitystore_getgroup.exampleGetGroup.group_id
+/// data "aws_identitystore_group_memberships" "exampleGetGroupMemberships" {
+///   identity_store_id = data.aws_ssoadmin_instances.example.identity_store_ids[0]
+///   group_id          = data.aws_identitystore_group.exampleGetGroup.group_id
 /// }
 /// ```
 /// ```java
@@ -513,7 +513,7 @@ pulumi.Output<GetGroupMembershipsResult> getGroupMembershipsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -521,10 +521,10 @@ pulumi.Output<GetGroupMembershipsResult> getGroupMembershipsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
-/// data "aws_identitystore_getgroups" "exampleGetGroups" {
-///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+/// data "aws_identitystore_groups" "exampleGetGroups" {
+///   identity_store_id = data.aws_ssoadmin_instances.example.identity_store_ids[0]
 /// }
 /// ```
 /// ```java
@@ -695,7 +695,7 @@ pulumi.Output<GetGroupsResult> getGroupsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -703,20 +703,20 @@ pulumi.Output<GetGroupsResult> getGroupsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
-/// data "aws_identitystore_getuser" "exampleGetUser" {
-///   alternate_identifier = {
-///     unique_attribute = {
+/// data "aws_identitystore_user" "exampleGetUser" {
+///   alternate_identifier {
+///     unique_attribute {
 ///       attribute_path  = "UserName"
 ///       attribute_value = "ExampleUser"
 ///     }
 ///   }
-///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+///   identity_store_id = data.aws_ssoadmin_instances.example.identity_store_ids[0]
 /// }
 ///
 /// output "userId" {
-///   value = data.aws_identitystore_getuser.exampleGetUser.user_id
+///   value = data.aws_identitystore_user.exampleGetUser.user_id
 /// }
 /// ```
 /// ```java
@@ -871,7 +871,7 @@ pulumi.Output<GetUserResult> getUserOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -879,10 +879,10 @@ pulumi.Output<GetUserResult> getUserOutput(
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
-/// data "aws_identitystore_getusers" "exampleGetUsers" {
-///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+/// data "aws_identitystore_users" "exampleGetUsers" {
+///   identity_store_id = data.aws_ssoadmin_instances.example.identity_store_ids[0]
 /// }
 /// ```
 /// ```java

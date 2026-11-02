@@ -94,7 +94,7 @@ import 'notebook_instance_lifecycle_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -105,7 +105,10 @@ import 'notebook_instance_lifecycle_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_notebookinstancelifecycleconfiguration" "lc" {
+/// resource "aws_sagemaker_notebook_instance_lifecycle_configuration" "lc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "foo"
 ///   on_create = base64encode("echo foo")
 ///   on_start  = base64encode("echo bar")
@@ -203,7 +206,7 @@ class NotebookInstanceLifecycleConfiguration extends pulumi.CustomResource {
           'aws:sagemaker/notebookInstanceLifecycleConfiguration:NotebookInstanceLifecycleConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

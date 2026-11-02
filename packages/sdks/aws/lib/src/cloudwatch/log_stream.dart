@@ -75,7 +75,7 @@ import 'log_stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -83,12 +83,18 @@ import 'log_stream_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_loggroup" "yada" {
+/// resource "aws_cloudwatch_log_group" "yada" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "Yada"
 /// }
-/// resource "aws_cloudwatch_logstream" "foo" {
+/// resource "aws_cloudwatch_log_stream" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "SampleLogStream1234"
-///   log_group_name = aws_cloudwatch_loggroup.yada.name
+///   log_group_name = aws_cloudwatch_log_group.yada.name
 /// }
 /// ```
 /// ```java
@@ -182,7 +188,7 @@ class LogStream extends pulumi.CustomResource {
           'aws:cloudwatch/logStream:LogStream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     logGroupName = registerOutput<String>('logGroupName');

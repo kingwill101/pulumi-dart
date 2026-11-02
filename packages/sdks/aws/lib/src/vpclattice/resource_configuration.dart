@@ -118,7 +118,7 @@ import 'resource_configuration_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -126,9 +126,12 @@ import 'resource_configuration_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpclattice_resourceconfiguration" "example" {
-///   resource_configuration_definition = {
-///     dns_resource = {
+/// resource "aws_vpclattice_resource_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_configuration_definition {
+///     dns_resource {
 ///       domain_name     = "example.com"
 ///       ip_address_type = "IPV4"
 ///     }
@@ -173,7 +176,7 @@ import 'resource_configuration_timeouts.dart';
 ///                     .build())
 ///                 .build())
 ///             .name("Example")
-///             .resourceGatewayIdentifier(exampleAwsVpclatticeResourceGateway.id())
+///             .resourceGatewayIdentifier(exampleAwsVpclatticeResourceGateway.get("id"))
 ///             .portRanges("80")
 ///             .protocol("TCP")
 ///             .tags(Map.of("Environment", "Example"))
@@ -307,7 +310,7 @@ import 'resource_configuration_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -315,9 +318,12 @@ import 'resource_configuration_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpclattice_resourceconfiguration" "example" {
-///   resource_configuration_definition = {
-///     ip_resource = {
+/// resource "aws_vpclattice_resource_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_configuration_definition {
+///     ip_resource {
 ///       ip_address = "10.0.0.1"
 ///     }
 ///   }
@@ -360,7 +366,7 @@ import 'resource_configuration_timeouts.dart';
 ///                     .build())
 ///                 .build())
 ///             .name("Example")
-///             .resourceGatewayIdentifier(exampleAwsVpclatticeResourceGateway.id())
+///             .resourceGatewayIdentifier(exampleAwsVpclatticeResourceGateway.get("id"))
 ///             .portRanges("80")
 ///             .protocol("TCP")
 ///             .tags(Map.of("Environment", "Example"))
@@ -501,7 +507,7 @@ import 'resource_configuration_timeouts.dart';
 /// 			Name:                      pulumi.String("Example"),
 /// 			ResourceGatewayIdentifier: pulumi.Any(exampleAwsVpclatticeResourceGateway.Id),
 /// 			CustomDomainName:          pulumi.String("custom.example.com"),
-/// 			DomainVerificationId:      example.ID().ToIDOutput().ToStringOutput(),
+/// 			DomainVerificationId:      example.ID(),
 /// 			PortRanges: pulumi.StringArray{
 /// 				pulumi.String("443"),
 /// 			},
@@ -518,7 +524,7 @@ import 'resource_configuration_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -526,12 +532,18 @@ import 'resource_configuration_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpclattice_domainverification" "example" {
+/// resource "aws_vpclattice_domain_verification" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name = "example.com"
 /// }
-/// resource "aws_vpclattice_resourceconfiguration" "example" {
-///   resource_configuration_definition = {
-///     dns_resource = {
+/// resource "aws_vpclattice_resource_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_configuration_definition {
+///     dns_resource {
 ///       domain_name     = "test.example.com"
 ///       ip_address_type = "IPV4"
 ///     }
@@ -539,7 +551,7 @@ import 'resource_configuration_timeouts.dart';
 ///   name                        = "Example"
 ///   resource_gateway_identifier = exampleAwsVpclatticeResourceGateway.id
 ///   custom_domain_name          = "custom.example.com"
-///   domain_verification_id      = aws_vpclattice_domainverification.example.id
+///   domain_verification_id      = aws_vpclattice_domain_verification.example.id
 ///   port_ranges                 = ["443"]
 ///   protocol                    = "TCP"
 ///   tags = {
@@ -584,7 +596,7 @@ import 'resource_configuration_timeouts.dart';
 ///                     .build())
 ///                 .build())
 ///             .name("Example")
-///             .resourceGatewayIdentifier(exampleAwsVpclatticeResourceGateway.id())
+///             .resourceGatewayIdentifier(exampleAwsVpclatticeResourceGateway.get("id"))
 ///             .customDomainName("custom.example.com")
 ///             .domainVerificationId(example.id())
 ///             .portRanges("443")
@@ -705,7 +717,7 @@ import 'resource_configuration_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -713,9 +725,12 @@ import 'resource_configuration_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpclattice_resourceconfiguration" "test" {
-///   resource_configuration_definition = {
-///     arn_resource = {
+/// resource "aws_vpclattice_resource_configuration" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_configuration_definition {
+///     arn_resource {
 ///       arn = example.arn
 ///     }
 ///   }
@@ -750,11 +765,11 @@ import 'resource_configuration_timeouts.dart';
 ///         var test = new ResourceConfiguration("test", ResourceConfigurationArgs.builder()
 ///             .resourceConfigurationDefinition(ResourceConfigurationResourceConfigurationDefinitionArgs.builder()
 ///                 .arnResource(ResourceConfigurationResourceConfigurationDefinitionArnResourceArgs.builder()
-///                     .arn(example.arn())
+///                     .arn(example.get("arn"))
 ///                     .build())
 ///                 .build())
 ///             .name("Example")
-///             .resourceGatewayIdentifier(testAwsVpclatticeResourceGateway.id())
+///             .resourceGatewayIdentifier(testAwsVpclatticeResourceGateway.get("id"))
 ///             .type("ARN")
 ///             .build());
 ///
@@ -831,7 +846,7 @@ class ResourceConfiguration extends pulumi.CustomResource {
           'aws:vpclattice/resourceConfiguration:ResourceConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     allowAssociationToShareableServiceNetwork = registerOutput<bool>('allowAssociationToShareableServiceNetwork');
     arn = registerOutput<String>('arn');

@@ -38,7 +38,7 @@ class RoleAssociation extends pulumi.CustomResource {
           'aws:rds/roleAssociation:RoleAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     dbInstanceIdentifier = registerOutput<String>('dbInstanceIdentifier');
     featureName = registerOutput<String>('featureName');

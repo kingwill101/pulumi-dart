@@ -57,10 +57,10 @@ import 'serverless_collection_group_state.dart';
 ///         {
 ///             new Aws.OpenSearch.Inputs.ServerlessCollectionGroupCapacityLimitArgs
 ///             {
-///                 MinIndexingCapacityInOcu = 2,
-///                 MaxIndexingCapacityInOcu = 16,
-///                 MinSearchCapacityInOcu = 2,
-///                 MaxSearchCapacityInOcu = 16,
+///                 MinIndexingCapacityInOcu = 2.0,
+///                 MaxIndexingCapacityInOcu = 16.0,
+///                 MinSearchCapacityInOcu = 2.0,
+///                 MaxSearchCapacityInOcu = 16.0,
 ///             },
 ///         },
 ///         Name = "example-group",
@@ -101,7 +101,7 @@ import 'serverless_collection_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -109,7 +109,10 @@ import 'serverless_collection_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_opensearch_serverlesscollectiongroup" "example" {
+/// resource "aws_opensearch_serverless_collection_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   capacity_limits {
 ///     min_indexing_capacity_in_ocu = 2
 ///     max_indexing_capacity_in_ocu = 16
@@ -229,7 +232,7 @@ class ServerlessCollectionGroup extends pulumi.CustomResource {
           'aws:opensearch/serverlessCollectionGroup:ServerlessCollectionGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     capacityLimits = registerOutput<List<ServerlessCollectionGroupCapacityLimit>>('capacityLimits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerlessCollectionGroupCapacityLimit>(guardedValue, (value) => ServerlessCollectionGroupCapacityLimit.fromMap((value as Map).cast<String, dynamic>())); });

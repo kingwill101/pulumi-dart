@@ -50,7 +50,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -58,7 +58,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 ///   }
 /// }
 ///
-/// resource "aws_ram_sharingwithorganization" "example" {
+/// resource "aws_ram_sharing_with_organization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -113,7 +116,7 @@ class SharingWithOrganization extends pulumi.CustomResource {
           'aws:ram/sharingWithOrganization:SharingWithOrganization',
           name,
           pulumi.Input.mapToInputs(args ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         );
 
   /// Creates a typed reference to an existing [SharingWithOrganization] resource.

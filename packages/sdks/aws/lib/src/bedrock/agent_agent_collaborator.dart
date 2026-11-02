@@ -347,7 +347,7 @@ import 'agent_agent_collaborator_timeouts.dart';
 /// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
 /// 						{
 /// 							Test: "StringEquals",
-/// 							Values: pulumi.StringArray{
+/// 							Values: []string{
 /// 								current.AccountId,
 /// 							},
 /// 							Variable: "aws:SourceAccount",
@@ -411,7 +411,7 @@ import 'agent_agent_collaborator_timeouts.dart';
 /// 		}
 /// 		_, err = iam.NewRolePolicy(ctx, "example", &iam.RolePolicyArgs{
 /// 			Policy: pulumi.String(exampleAgentPermissions.Json),
-/// 			Role:   example.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -463,7 +463,7 @@ import 'agent_agent_collaborator_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -471,22 +471,22 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
-/// data "aws_getregion" "currentGetRegion" {
+/// data "aws_region" "currentGetRegion" {
 /// }
-/// data "aws_iam_getpolicydocument" "exampleAgentTrust" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "exampleAgentTrust" {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
-///       values   = [data.aws_getcalleridentity.current.account_id]
+///       values   = [data.aws_caller_identity.current.account_id]
 ///       variable = "aws:SourceAccount"
 ///     }
-///     conditions {
+///     condition {
 ///       test     = "ArnLike"
-///       values   = ["arn:${data.aws_getpartition.currentGetPartition.partition}:bedrock:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:agent/*"]
+///       values   = ["arn:${data.aws_partition.currentGetPartition.partition}:bedrock:${data.aws_region.currentGetRegion.region}:${data.aws_caller_identity.current.account_id}:agent/*"]
 ///       variable = "AWS:SourceArn"
 ///     }
 ///     principals {
@@ -496,33 +496,45 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "exampleAgentPermissions" {
-///   statements {
+/// data "aws_iam_policy_document" "exampleAgentPermissions" {
+///   statement {
 ///     actions   = ["bedrock:InvokeModel"]
-///     resources = ["arn:${data.aws_getpartition.currentGetPartition.partition}:bedrock:${data.aws_getregion.currentGetRegion.region}::foundation-model/anthropic.claude-3-5-sonnet-20241022-v2:0"]
+///     resources = ["arn:${data.aws_partition.currentGetPartition.partition}:bedrock:${data.aws_region.currentGetRegion.region}::foundation-model/anthropic.claude-3-5-sonnet-20241022-v2:0"]
 ///   }
-///   statements {
+///   statement {
 ///     actions   = ["bedrock:GetAgentAlias", "bedrock:InvokeAgent"]
-///     resources = ["arn:${data.aws_getpartition.currentGetPartition.partition}:bedrock:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:agent/*", "arn:${data.aws_getpartition.currentGetPartition.partition}:bedrock:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:agent-alias/*"]
+///     resources = ["arn:${data.aws_partition.currentGetPartition.partition}:bedrock:${data.aws_region.currentGetRegion.region}:${data.aws_caller_identity.current.account_id}:agent/*", "arn:${data.aws_partition.currentGetPartition.partition}:bedrock:${data.aws_region.currentGetRegion.region}:${data.aws_caller_identity.current.account_id}:agent-alias/*"]
 ///   }
 /// }
 ///
 /// resource "aws_iam_role" "example" {
-///   assume_role_policy = data.aws_iam_getpolicydocument.exampleAgentTrust.json
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   assume_role_policy = data.aws_iam_policy_document.exampleAgentTrust.json
 ///   name_prefix        = "AmazonBedrockExecutionRoleForAgents_"
 /// }
-/// resource "aws_iam_rolepolicy" "example" {
-///   policy = data.aws_iam_getpolicydocument.exampleAgentPermissions.json
+/// resource "aws_iam_role_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy = data.aws_iam_policy_document.exampleAgentPermissions.json
 ///   role   = aws_iam_role.example.id
 /// }
-/// resource "aws_bedrock_agentagent" "example_collaborator" {
+/// resource "aws_bedrock_agent_agent" "example_collaborator" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_name                  = "my-agent-collaborator"
 ///   agent_resource_role_arn     = aws_iam_role.example.arn
 ///   idle_session_ttl_in_seconds = 500
 ///   foundation_model            = "anthropic.claude-3-5-sonnet-20241022-v2:0"
 ///   instruction                 = "You are a collaborator agent. Do what the supervisor tells you to do."
 /// }
-/// resource "aws_bedrock_agentagent" "example_supervisor" {
+/// resource "aws_bedrock_agent_agent" "example_supervisor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_name                  = "my-agent-supervisor"
 ///   agent_resource_role_arn     = aws_iam_role.example.arn
 ///   agent_collaboration         = "SUPERVISOR"
@@ -531,16 +543,22 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///   instruction                 = "You are a supervisor agent. Tell the sub agent what to do."
 ///   prepare_agent               = false
 /// }
-/// resource "aws_bedrock_agentagentalias" "example" {
+/// resource "aws_bedrock_agent_agent_alias" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_alias_name = "my-agent-alias"
-///   agent_id         = aws_bedrock_agentagent.example_collaborator.agent_id
+///   agent_id         = aws_bedrock_agent_agent.example_collaborator.agent_id
 ///   description      = "Test Alias"
 /// }
-/// resource "aws_bedrock_agentagentcollaborator" "example" {
-///   agent_descriptor = {
-///     alias_arn = aws_bedrock_agentagentalias.example.agent_alias_arn
+/// resource "aws_bedrock_agent_agent_collaborator" "example" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   agent_id                   = aws_bedrock_agentagent.example_supervisor.agent_id
+///   agent_descriptor = {
+///     alias_arn = aws_bedrock_agent_agent_alias.example.agent_alias_arn
+///   }
+///   agent_id                   = aws_bedrock_agent_agent.example_supervisor.agent_id
 ///   collaboration_instruction  = "tell the other agent what to do"
 ///   collaborator_name          = "my-collab-example"
 ///   relay_conversation_history = "TO_COLLABORATOR"
@@ -821,7 +839,7 @@ class AgentAgentCollaborator extends pulumi.CustomResource {
           'aws:bedrock/agentAgentCollaborator:AgentAgentCollaborator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     agentDescriptor = registerOutput<AgentAgentCollaboratorAgentDescriptor>('agentDescriptor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentCollaboratorAgentDescriptor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     agentId = registerOutput<String>('agentId');

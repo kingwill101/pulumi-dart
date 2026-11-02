@@ -170,7 +170,7 @@ import 'lb_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -178,8 +178,8 @@ import 'lb_attachment_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzones" "available" {
-///   filters {
+/// data "aws_availability_zones" "available" {
+///   filter {
 ///     name   = "opt-in-status"
 ///     values = ["opt-in-not-required"]
 ///   }
@@ -187,6 +187,9 @@ import 'lb_attachment_state.dart';
 /// }
 ///
 /// resource "aws_lightsail_lb" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-load-balancer"
 ///   health_check_path = "/"
 ///   instance_port     = "80"
@@ -195,12 +198,18 @@ import 'lb_attachment_state.dart';
 ///   }
 /// }
 /// resource "aws_lightsail_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-instance"
-///   availability_zone = data.aws_getavailabilityzones.available.names[0]
+///   availability_zone = data.aws_availability_zones.available.names[0]
 ///   blueprint_id      = "amazon_linux_2"
 ///   bundle_id         = "nano_3_0"
 /// }
-/// resource "aws_lightsail_lbattachment" "example" {
+/// resource "aws_lightsail_lb_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   lb_name       = aws_lightsail_lb.example.name
 ///   instance_name = aws_lightsail_instance.example.name
 /// }
@@ -329,7 +338,7 @@ class LbAttachment extends pulumi.CustomResource {
           'aws:lightsail/lbAttachment:LbAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     instanceName = registerOutput<String>('instanceName');
     lbName = registerOutput<String>('lbName');

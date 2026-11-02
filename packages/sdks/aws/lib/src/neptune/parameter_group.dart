@@ -85,7 +85,7 @@ import 'parameter_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -93,8 +93,11 @@ import 'parameter_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_neptune_parametergroup" "example" {
-///   parameters {
+/// resource "aws_neptune_parameter_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parameter {
 ///     name  = "neptune_query_timeout"
 ///     value = "25"
 ///   }
@@ -188,7 +191,7 @@ class ParameterGroup extends pulumi.CustomResource {
           'aws:neptune/parameterGroup:ParameterGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

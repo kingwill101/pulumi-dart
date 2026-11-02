@@ -145,7 +145,7 @@ import 'notification_type.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -154,17 +154,29 @@ import 'notification_type.dart';
 /// }
 ///
 /// resource "aws_autoscaling_notification" "example_notifications" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_names   = [aws_autoscaling_group.bar.name, aws_autoscaling_group.foo.name]
 ///   notifications = ["autoscaling:EC2_INSTANCE_LAUNCH", "autoscaling:EC2_INSTANCE_TERMINATE", "autoscaling:EC2_INSTANCE_LAUNCH_ERROR", "autoscaling:EC2_INSTANCE_TERMINATE_ERROR"]
 ///   topic_arn     = aws_sns_topic.example.arn
 /// }
 /// resource "aws_sns_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 /// }
 /// resource "aws_autoscaling_group" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "foobar1-test"
 /// }
 /// resource "aws_autoscaling_group" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "barfoo-test"
 /// }
 /// ```
@@ -271,7 +283,7 @@ class Notification extends pulumi.CustomResource {
           'aws:autoscaling/notification:Notification',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     groupNames = registerOutput<List<String>>('groupNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     notifications = registerOutput<List<NotificationType>>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NotificationType>(guardedValue, (value) => NotificationType.fromValue(value as String)); });

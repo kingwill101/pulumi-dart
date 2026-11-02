@@ -222,7 +222,7 @@ import 'resource_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -230,17 +230,20 @@ import 'resource_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
-/// resource "aws_opensearchingest_resourcepolicy" "example" {
+/// resource "aws_opensearchingest_resource_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_arn = aws_opensearchingest_pipeline.example.pipeline_arn
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
 ///     "Statement" = [{
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///         "AWS" ="arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
 ///       }
 ///       "Action"   = "osis:CreatePipelineEndpoint"
 ///       "Resource" = aws_opensearchingest_pipeline.example.pipeline_arn
@@ -248,8 +251,12 @@ import 'resource_policy_state.dart';
 ///   })
 /// }
 /// resource "aws_opensearchingest_pipeline" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   pipeline_name               = "example"
-///   pipeline_configuration_body ="version: \"2\"
+///   pipeline_configuration_body = <<-EOT
+/// version: \"2\"
 /// example-pipeline:
 ///   source:
 ///     http:
@@ -257,14 +264,15 @@ import 'resource_policy_state.dart';
 ///   sink:
 ///     - s3:
 ///         aws:
-///           sts_role_arn: \"arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:role/Example\"
+///           sts_role_arn: \"arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/Example\"
 ///           region: \"us-east-1\"
 ///         bucket: \"example\"
 ///         threshold:
 ///           event_collect_timeout: \"60s\"
 ///         codec:
 ///           ndjson:
-/// "
+/// EOT
+///
 ///   max_units                   = 1
 ///   min_units                   = 1
 /// }
@@ -422,7 +430,7 @@ class ResourcePolicy extends pulumi.CustomResource {
           'aws:opensearchingest/resourcePolicy:ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

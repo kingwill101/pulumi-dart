@@ -159,7 +159,7 @@ import 'event_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -167,24 +167,27 @@ import 'event_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_eventendpoint" "this" {
-///   replication_config = {
+/// resource "aws_cloudwatch_event_endpoint" "this" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   replication_config {
 ///     state = "DISABLED"
 ///   }
-///   routing_config = {
-///     failover_config = {
-///       primary = {
+///   routing_config {
+///     failover_config {
+///       primary {
 ///         health_check = primaryAwsRoute53HealthCheck.arn
 ///       }
-///       secondary = {
+///       secondary {
 ///         route = "us-east-2"
 ///       }
 ///     }
 ///   }
-///   event_buses {
+///   event_bus {
 ///     event_bus_arn = primary.arn
 ///   }
-///   event_buses {
+///   event_bus {
 ///     event_bus_arn = secondary.arn
 ///   }
 ///   name     = "global-endpoint"
@@ -225,7 +228,7 @@ import 'event_endpoint_state.dart';
 ///             .routingConfig(EventEndpointRoutingConfigArgs.builder()
 ///                 .failoverConfig(EventEndpointRoutingConfigFailoverConfigArgs.builder()
 ///                     .primary(EventEndpointRoutingConfigFailoverConfigPrimaryArgs.builder()
-///                         .healthCheck(primaryAwsRoute53HealthCheck.arn())
+///                         .healthCheck(primaryAwsRoute53HealthCheck.get("arn"))
 ///                         .build())
 ///                     .secondary(EventEndpointRoutingConfigFailoverConfigSecondaryArgs.builder()
 ///                         .route("us-east-2")
@@ -234,13 +237,13 @@ import 'event_endpoint_state.dart';
 ///                 .build())
 ///             .eventBuses(
 ///                 EventEndpointEventBusArgs.builder()
-///                     .eventBusArn(primary.arn())
+///                     .eventBusArn(primary.get("arn"))
 ///                     .build(),
 ///                 EventEndpointEventBusArgs.builder()
-///                     .eventBusArn(secondary.arn())
+///                     .eventBusArn(secondary.get("arn"))
 ///                     .build())
 ///             .name("global-endpoint")
-///             .roleArn(replication.arn())
+///             .roleArn(replication.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -318,7 +321,7 @@ class EventEndpoint extends pulumi.CustomResource {
           'aws:cloudwatch/eventEndpoint:EventEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

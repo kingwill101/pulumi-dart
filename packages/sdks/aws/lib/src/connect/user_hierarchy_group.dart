@@ -81,7 +81,7 @@ import 'user_hierarchy_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -89,7 +89,10 @@ import 'user_hierarchy_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_connect_userhierarchygroup" "example" {
+/// resource "aws_connect_user_hierarchy_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   name        = "example"
 ///   tags = {
@@ -247,7 +250,7 @@ import 'user_hierarchy_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -255,17 +258,23 @@ import 'user_hierarchy_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_connect_userhierarchygroup" "parent" {
+/// resource "aws_connect_user_hierarchy_group" "parent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   name        = "parent"
 ///   tags = {
 ///     "Name" = "Example User Hierarchy Group Parent"
 ///   }
 /// }
-/// resource "aws_connect_userhierarchygroup" "child" {
+/// resource "aws_connect_user_hierarchy_group" "child" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id     = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   name            = "child"
-///   parent_group_id = aws_connect_userhierarchygroup.parent.hierarchy_group_id
+///   parent_group_id = aws_connect_user_hierarchy_group.parent.hierarchy_group_id
 ///   tags = {
 ///     "Name" = "Example User Hierarchy Group Child"
 ///   }
@@ -370,7 +379,7 @@ class UserHierarchyGroup extends pulumi.CustomResource {
           'aws:connect/userHierarchyGroup:UserHierarchyGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     hierarchyGroupId = registerOutput<String>('hierarchyGroupId');

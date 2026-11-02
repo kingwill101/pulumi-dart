@@ -90,7 +90,7 @@ import 'shard_group_timeouts.dart';
 ///     {
 ///         DbShardGroupIdentifier = "example-shard-group",
 ///         DbClusterIdentifier = example.Id,
-///         MaxAcu = 1200,
+///         MaxAcu = 1200.0,
 ///     });
 ///
 /// });
@@ -127,7 +127,7 @@ import 'shard_group_timeouts.dart';
 /// 		}
 /// 		_, err = rds.NewShardGroup(ctx, "example", &rds.ShardGroupArgs{
 /// 			DbShardGroupIdentifier: pulumi.String("example-shard-group"),
-/// 			DbClusterIdentifier:    example.ID().ToIDOutput().ToStringOutput(),
+/// 			DbClusterIdentifier:    example.ID(),
 /// 			MaxAcu:                 pulumi.Float64(1200),
 /// 		})
 /// 		if err != nil {
@@ -138,7 +138,7 @@ import 'shard_group_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -147,6 +147,9 @@ import 'shard_group_timeouts.dart';
 /// }
 ///
 /// resource "aws_rds_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier                    = "example-limitless-cluster"
 ///   engine                                = "aurora-postgresql"
 ///   engine_version                        = "16.6-limitless"
@@ -161,7 +164,10 @@ import 'shard_group_timeouts.dart';
 ///   monitoring_interval                   = 5
 ///   monitoring_role_arn                   = exampleAwsIamRole.arn
 /// }
-/// resource "aws_rds_shardgroup" "example" {
+/// resource "aws_rds_shard_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   db_shard_group_identifier = "example-shard-group"
 ///   db_cluster_identifier     = aws_rds_cluster.example.id
 ///   max_acu                   = 1200
@@ -203,7 +209,7 @@ import 'shard_group_timeouts.dart';
 ///             .performanceInsightsRetentionPeriod(31)
 ///             .enabledCloudwatchLogsExports("postgresql")
 ///             .monitoringInterval(5)
-///             .monitoringRoleArn(exampleAwsIamRole.arn())
+///             .monitoringRoleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///         var exampleShardGroup = new ShardGroup("exampleShardGroup", ShardGroupArgs.builder()
@@ -290,7 +296,7 @@ class ShardGroup extends pulumi.CustomResource {
           'aws:rds/shardGroup:ShardGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     computeRedundancy = registerOutput<int>('computeRedundancy');

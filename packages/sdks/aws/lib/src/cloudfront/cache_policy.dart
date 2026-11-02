@@ -177,7 +177,7 @@ import 'cache_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -185,22 +185,25 @@ import 'cache_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_cachepolicy" "example" {
-///   parameters_in_cache_key_and_forwarded_to_origin = {
-///     cookies_config = {
-///       cookies = {
+/// resource "aws_cloudfront_cache_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parameters_in_cache_key_and_forwarded_to_origin {
+///     cookies_config {
+///       cookies {
 ///         items = ["example"]
 ///       }
 ///       cookie_behavior = "whitelist"
 ///     }
-///     headers_config = {
-///       headers = {
+///     headers_config {
+///       headers {
 ///         items = ["example"]
 ///       }
 ///       header_behavior = "whitelist"
 ///     }
-///     query_strings_config = {
-///       query_strings = {
+///     query_strings_config {
+///       query_strings {
 ///         items = ["example"]
 ///       }
 ///       query_string_behavior = "whitelist"
@@ -338,7 +341,7 @@ class CachePolicy extends pulumi.CustomResource {
           'aws:cloudfront/cachePolicy:CachePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String?>('comment');

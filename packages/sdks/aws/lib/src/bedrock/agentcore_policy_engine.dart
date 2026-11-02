@@ -58,7 +58,7 @@ import 'agentcore_policy_engine_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -66,7 +66,10 @@ import 'agentcore_policy_engine_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcorepolicyengine" "example" {
+/// resource "aws_bedrock_agentcore_policy_engine" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example_policy_engine"
 /// }
 /// ```
@@ -165,7 +168,7 @@ import 'agentcore_policy_engine_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -173,7 +176,10 @@ import 'agentcore_policy_engine_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcorepolicyengine" "example" {
+/// resource "aws_bedrock_agentcore_policy_engine" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example_policy_engine"
 ///   description = "Policy engine for customer service agent"
 /// }
@@ -300,7 +306,7 @@ import 'agentcore_policy_engine_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -309,10 +315,16 @@ import 'agentcore_policy_engine_timeouts.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "KMS key for Bedrock AgentCore Policy Engine"
 ///   deletion_window_in_days = 7
 /// }
-/// resource "aws_bedrock_agentcorepolicyengine" "example" {
+/// resource "aws_bedrock_agentcore_policy_engine" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example_policy_engine"
 ///   description        = "Policy engine for customer service agent"
 ///   encryption_key_arn = aws_kms_key.example.arn
@@ -424,7 +436,7 @@ class AgentcorePolicyEngine extends pulumi.CustomResource {
           'aws:bedrock/agentcorePolicyEngine:AgentcorePolicyEngine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     encryptionKeyArn = registerOutput<String?>('encryptionKeyArn');

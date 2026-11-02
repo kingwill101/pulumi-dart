@@ -155,7 +155,7 @@ import 'identity_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -163,24 +163,30 @@ import 'identity_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
 ///       identifiers = ["*"]
 ///       type        = "AWS"
 ///     }
 ///     actions   = ["SES:SendEmail", "SES:SendRawEmail"]
-///     resources = [aws_ses_domainidentity.example.arn]
+///     resources = [aws_ses_domain_identity.example.arn]
 ///   }
 /// }
 ///
-/// resource "aws_ses_domainidentity" "example" {
+/// resource "aws_ses_domain_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain = "example.com"
 /// }
-/// resource "aws_ses_identitypolicy" "example" {
-///   identity = aws_ses_domainidentity.example.arn
+/// resource "aws_ses_identity_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   identity = aws_ses_domain_identity.example.arn
 ///   name     = "example"
-///   policy   = data.aws_iam_getpolicydocument.example.json
+///   policy   = data.aws_iam_policy_document.example.json
 /// }
 /// ```
 /// ```java
@@ -297,7 +303,7 @@ class IdentityPolicy extends pulumi.CustomResource {
           'aws:ses/identityPolicy:IdentityPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     identity = registerOutput<String>('identity');
     this.name = registerOutput<String>('name');

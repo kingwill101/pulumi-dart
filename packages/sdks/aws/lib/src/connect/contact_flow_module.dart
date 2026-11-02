@@ -247,16 +247,16 @@ import 'contact_flow_module_state.dart';
 /// 					"Transitions": map[string]interface{}{},
 /// 				},
 /// 			},
-/// 			"Settings": map[string]interface{}{
+/// 			"Settings": map[string][]interface{}{
 /// 				"InputParameters":  []interface{}{},
 /// 				"OutputParameters": []interface{}{},
-/// 				"Transitions": []map[string]string{
-/// 					{
+/// 				"Transitions": []interface{}{
+/// 					map[string]string{
 /// 						"DisplayName":   "Success",
 /// 						"ReferenceName": "Success",
 /// 						"Description":   "",
 /// 					},
-/// 					{
+/// 					map[string]string{
 /// 						"DisplayName":   "Error",
 /// 						"ReferenceName": "Error",
 /// 						"Description":   "",
@@ -287,7 +287,7 @@ import 'contact_flow_module_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -295,7 +295,10 @@ import 'contact_flow_module_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_connect_contactflowmodule" "example" {
+/// resource "aws_connect_contact_flow_module" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   name        = "Example"
 ///   description = "Example Contact Flow Module Description"
@@ -581,7 +584,7 @@ import 'contact_flow_module_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -592,7 +595,10 @@ import 'contact_flow_module_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_connect_contactflowmodule" "example" {
+/// resource "aws_connect_contact_flow_module" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id  = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   name         = "Example"
 ///   description  = "Example Contact Flow Module Description"
@@ -711,7 +717,7 @@ class ContactFlowModule extends pulumi.CustomResource {
           'aws:connect/contactFlowModule:ContactFlowModule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     contactFlowModuleId = registerOutput<String>('contactFlowModuleId');

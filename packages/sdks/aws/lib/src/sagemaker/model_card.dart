@@ -114,7 +114,7 @@ import 'model_card_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -122,10 +122,26 @@ import 'model_card_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_modelcard" "example" {
+/// resource "aws_sagemaker_model_card" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   model_card_name   = "my-model-card"
 ///   model_card_status = "Draft"
-///   content           = "{\n  \\\"business_details\\\": {\n    \\\"business_problem\\\": \\\"Quality\\\"\n  },\n  \\\"intended_uses\\\": {\n    \\\"intended_uses\\\": \\\"Testing\\\"\n  },\n  \\\"additional_information\\\": {\n    \\\"caveats_and_recommendations\\\": \\\"Use this\\\"\n  }\n}\n"
+///   content           = <<EOF
+/// {
+///   \"business_details\": {
+///     \"business_problem\": \"Quality\"
+///   },
+///   \"intended_uses\": {
+///     \"intended_uses\": \"Testing\"
+///   },
+///   \"additional_information\": {
+///     \"caveats_and_recommendations\": \"Use this\"
+///   }
+/// }
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -230,7 +246,7 @@ class ModelCard extends pulumi.CustomResource {
           'aws:sagemaker/modelCard:ModelCard',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     content = registerOutput<String>('content');
     modelCardArn = registerOutput<String>('modelCardArn');

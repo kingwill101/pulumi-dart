@@ -66,7 +66,7 @@ import 'smsvoicev2_configuration_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'smsvoicev2_configuration_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_pinpoint_smsvoicev2configurationset" "example" {
+/// resource "aws_pinpoint_smsvoicev2_configuration_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-configuration-set"
 ///   default_sender_id    = "example"
 ///   default_message_type = "TRANSACTIONAL"
@@ -156,7 +159,7 @@ class Smsvoicev2ConfigurationSet extends pulumi.CustomResource {
           'aws:pinpoint/smsvoicev2ConfigurationSet:Smsvoicev2ConfigurationSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultMessageType = registerOutput<String?>('defaultMessageType');

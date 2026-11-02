@@ -62,7 +62,7 @@ import 'transit_gateway_route_table_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'transit_gateway_route_table_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkmanager_transitgatewayroutetableattachment" "example" {
+/// resource "aws_networkmanager_transit_gateway_route_table_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   peering_id                      = exampleAwsNetworkmanagerTransitGatewayPeering.id
 ///   transit_gateway_route_table_arn = exampleAwsEc2TransitGatewayRouteTable.arn
 /// }
@@ -97,8 +100,8 @@ import 'transit_gateway_route_table_attachment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TransitGatewayRouteTableAttachment("example", TransitGatewayRouteTableAttachmentArgs.builder()
-///             .peeringId(exampleAwsNetworkmanagerTransitGatewayPeering.id())
-///             .transitGatewayRouteTableArn(exampleAwsEc2TransitGatewayRouteTable.arn())
+///             .peeringId(exampleAwsNetworkmanagerTransitGatewayPeering.get("id"))
+///             .transitGatewayRouteTableArn(exampleAwsEc2TransitGatewayRouteTable.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -167,7 +170,7 @@ class TransitGatewayRouteTableAttachment extends pulumi.CustomResource {
           'aws:networkmanager/transitGatewayRouteTableAttachment:TransitGatewayRouteTableAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attachmentPolicyRuleNumber = registerOutput<int>('attachmentPolicyRuleNumber');

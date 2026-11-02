@@ -68,7 +68,7 @@ import 'vpc_encryption_control_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcEncryptionControl(ctx, "example", &ec2.VpcEncryptionControlArgs{
-/// 			VpcId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId: exampleVpc.ID(),
 /// 			Mode:  pulumi.String("monitor"),
 /// 		})
 /// 		if err != nil {
@@ -79,7 +79,7 @@ import 'vpc_encryption_control_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -87,11 +87,17 @@ import 'vpc_encryption_control_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcencryptioncontrol" "example" {
+/// resource "aws_ec2_vpc_encryption_control" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id = aws_ec2_vpc.example.id
 ///   mode   = "monitor"
 /// }
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.1.0.0/16"
 /// }
 /// ```
@@ -213,7 +219,7 @@ class VpcEncryptionControl extends pulumi.CustomResource {
           'aws:ec2/vpcEncryptionControl:VpcEncryptionControl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     egressOnlyInternetGatewayExclusion = registerOutput<String>('egressOnlyInternetGatewayExclusion');
     elasticFileSystemExclusion = registerOutput<String>('elasticFileSystemExclusion');

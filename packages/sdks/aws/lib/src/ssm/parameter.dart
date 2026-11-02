@@ -71,7 +71,7 @@ import 'parameter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -80,6 +80,9 @@ import 'parameter_state.dart';
 /// }
 ///
 /// resource "aws_ssm_parameter" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "foo"
 ///   type  = "String"
 ///   value = "bar"
@@ -258,7 +261,7 @@ import 'parameter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -267,6 +270,9 @@ import 'parameter_state.dart';
 /// }
 ///
 /// resource "aws_rds_instance" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocated_storage    = 10
 ///   storage_type         = "gp2"
 ///   engine               = "mysql"
@@ -279,6 +285,9 @@ import 'parameter_state.dart';
 ///   parameter_group_name = "default.mysql5.7"
 /// }
 /// resource "aws_ssm_parameter" "secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "/production/database/password/master"
 ///   description = "The parameter description"
 ///   type        = "SecureString"
@@ -436,7 +445,7 @@ class Parameter extends pulumi.CustomResource {
           'aws:ssm/parameter:Parameter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['value', 'valueWo'],
         ) {
     allowedPattern = registerOutput<String?>('allowedPattern');

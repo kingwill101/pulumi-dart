@@ -67,7 +67,7 @@ import 'endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,6 +76,9 @@ import 'endpoint_state.dart';
 /// }
 ///
 /// resource "aws_s3outposts_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   outpost_id        = exampleAwsOutpostsOutpost.id
 ///   security_group_id = exampleAwsSecurityGroup.id
 ///   subnet_id         = exampleAwsSubnet.id
@@ -103,9 +106,9 @@ import 'endpoint_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Endpoint("example", EndpointArgs.builder()
-///             .outpostId(exampleAwsOutpostsOutpost.id())
-///             .securityGroupId(exampleAwsSecurityGroup.id())
-///             .subnetId(exampleAwsSubnet.id())
+///             .outpostId(exampleAwsOutpostsOutpost.get("id"))
+///             .securityGroupId(exampleAwsSecurityGroup.get("id"))
+///             .subnetId(exampleAwsSubnet.get("id"))
 ///             .build());
 ///
 ///     }
@@ -163,7 +166,7 @@ class Endpoint extends pulumi.CustomResource {
           'aws:s3outposts/endpoint:Endpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accessType = registerOutput<String>('accessType');
     arn = registerOutput<String>('arn');

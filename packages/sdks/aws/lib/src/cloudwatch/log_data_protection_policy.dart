@@ -233,7 +233,7 @@ import 'log_data_protection_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -241,14 +241,23 @@ import 'log_data_protection_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_loggroup" "example" {
+/// resource "aws_cloudwatch_log_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example"
 /// }
-/// resource "aws_cloudwatch_logdataprotectionpolicy" "example" {
-///   log_group_name = aws_cloudwatch_loggroup.example.name
+/// resource "aws_cloudwatch_log_data_protection_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   log_group_name = aws_cloudwatch_log_group.example.name
 ///   policy_document = jsonencode({
 ///     "Name"    = "Example"
 ///     "Version" = "2021-06-01"
@@ -425,7 +434,7 @@ class LogDataProtectionPolicy extends pulumi.CustomResource {
           'aws:cloudwatch/logDataProtectionPolicy:LogDataProtectionPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     logGroupName = registerOutput<String>('logGroupName');
     policyDocument = registerOutput<String>('policyDocument');

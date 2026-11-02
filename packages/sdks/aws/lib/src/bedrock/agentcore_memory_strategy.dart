@@ -87,7 +87,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -95,7 +95,10 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcorememorystrategy" "semantic" {
+/// resource "aws_bedrock_agentcore_memory_strategy" "semantic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "semantic_strategy"
 ///   memory_id           = example.id
 ///   type                = "SEMANTIC"
@@ -126,7 +129,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var semantic = new AgentcoreMemoryStrategy("semantic", AgentcoreMemoryStrategyArgs.builder()
 ///             .name("semantic_strategy")
-///             .memoryId(example.id())
+///             .memoryId(example.get("id"))
 ///             .type("SEMANTIC")
 ///             .description("Semantic understanding strategy")
 ///             .namespaceTemplates("default")
@@ -224,7 +227,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -232,7 +235,10 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcorememorystrategy" "summary" {
+/// resource "aws_bedrock_agentcore_memory_strategy" "summary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "summary_strategy"
 ///   memory_id           = example.id
 ///   type                = "SUMMARIZATION"
@@ -263,7 +269,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var summary = new AgentcoreMemoryStrategy("summary", AgentcoreMemoryStrategyArgs.builder()
 ///             .name("summary_strategy")
-///             .memoryId(example.id())
+///             .memoryId(example.get("id"))
 ///             .type("SUMMARIZATION")
 ///             .description("Text summarization strategy")
 ///             .namespaceTemplates("{sessionId}")
@@ -361,7 +367,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -369,7 +375,10 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcorememorystrategy" "user_pref" {
+/// resource "aws_bedrock_agentcore_memory_strategy" "user_pref" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "user_preference_strategy"
 ///   memory_id           = example.id
 ///   type                = "USER_PREFERENCE"
@@ -400,7 +409,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var userPref = new AgentcoreMemoryStrategy("userPref", AgentcoreMemoryStrategyArgs.builder()
 ///             .name("user_preference_strategy")
-///             .memoryId(example.id())
+///             .memoryId(example.get("id"))
 ///             .type("USER_PREFERENCE")
 ///             .description("User preference tracking strategy")
 ///             .namespaceTemplates("preferences")
@@ -499,7 +508,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -507,7 +516,10 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcorememorystrategy" "episodic" {
+/// resource "aws_bedrock_agentcore_memory_strategy" "episodic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "episodic_strategy"
 ///   memory_id           = example.id
 ///   type                = "EPISODIC"
@@ -538,7 +550,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var episodic = new AgentcoreMemoryStrategy("episodic", AgentcoreMemoryStrategyArgs.builder()
 ///             .name("episodic_strategy")
-///             .memoryId(example.id())
+///             .memoryId(example.get("id"))
 ///             .type("EPISODIC")
 ///             .description("Episodic memory strategy")
 ///             .namespaceTemplates("/strategies/{memoryStrategyId}/actors/{actorId}/sessions/{sessionId}")
@@ -687,7 +699,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -695,7 +707,10 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcorememorystrategy" "custom_semantic" {
+/// resource "aws_bedrock_agentcore_memory_strategy" "custom_semantic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration = {
 ///     consolidation = {
 ///       append_to_prompt = "Focus on extracting key semantic relationships and concepts"
@@ -752,8 +767,8 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///                 .type("SEMANTIC_OVERRIDE")
 ///                 .build())
 ///             .name("custom_semantic_strategy")
-///             .memoryId(example.id())
-///             .memoryExecutionRoleArn(example.memoryExecutionRoleArn())
+///             .memoryId(example.get("id"))
+///             .memoryExecutionRoleArn(example.get("memoryExecutionRoleArn"))
 ///             .type("CUSTOM")
 ///             .description("Custom semantic processing strategy")
 ///             .namespaceTemplates("{sessionId}")
@@ -891,7 +906,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -899,7 +914,10 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcorememorystrategy" "custom_summary" {
+/// resource "aws_bedrock_agentcore_memory_strategy" "custom_summary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration = {
 ///     consolidation = {
 ///       append_to_prompt = "Create concise summaries while preserving key details"
@@ -946,7 +964,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///                 .type("SUMMARY_OVERRIDE")
 ///                 .build())
 ///             .name("custom_summary_strategy")
-///             .memoryId(example.id())
+///             .memoryId(example.get("id"))
 ///             .type("CUSTOM")
 ///             .description("Custom summarization strategy")
 ///             .namespaceTemplates("summaries")
@@ -1097,7 +1115,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1105,7 +1123,10 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcorememorystrategy" "custom_user_pref" {
+/// resource "aws_bedrock_agentcore_memory_strategy" "custom_user_pref" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration = {
 ///     consolidation = {
 ///       append_to_prompt = "Consolidate user preferences and behavioral patterns"
@@ -1161,7 +1182,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///                 .type("USER_PREFERENCE_OVERRIDE")
 ///                 .build())
 ///             .name("custom_user_preference_strategy")
-///             .memoryId(example.id())
+///             .memoryId(example.get("id"))
 ///             .type("CUSTOM")
 ///             .description("Custom user preference tracking strategy")
 ///             .namespaceTemplates("user_prefs")
@@ -1345,7 +1366,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1353,7 +1374,10 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcorememorystrategy" "custom_episodic" {
+/// resource "aws_bedrock_agentcore_memory_strategy" "custom_episodic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration = {
 ///     consolidation = {
 ///       append_to_prompt = "Consolidate episodic memories into coherent narratives"
@@ -1421,8 +1445,8 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///                 .type("EPISODIC_OVERRIDE")
 ///                 .build())
 ///             .name("custom_episodic_strategy")
-///             .memoryId(example.id())
-///             .memoryExecutionRoleArn(example.memoryExecutionRoleArn())
+///             .memoryId(example.get("id"))
+///             .memoryExecutionRoleArn(example.get("memoryExecutionRoleArn"))
 ///             .type("CUSTOM")
 ///             .description("Custom episodic processing strategy")
 ///             .namespaceTemplates("/strategies/{memoryStrategyId}/actors/{actorId}/sessions/{sessionId}")
@@ -1595,7 +1619,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1603,7 +1627,10 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcorememorystrategy" "self_managed" {
+/// resource "aws_bedrock_agentcore_memory_strategy" "self_managed" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration = {
 ///     self_managed_configuration = {
 ///       trigger_conditions = {
@@ -1661,16 +1688,16 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///                             .build())
 ///                         .build())
 ///                     .invocationConfiguration(AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationInvocationConfigurationArgs.builder()
-///                         .topicArn(example.arn())
-///                         .payloadDeliveryBucketName(exampleAwsS3Bucket.bucket())
+///                         .topicArn(example.get("arn"))
+///                         .payloadDeliveryBucketName(exampleAwsS3Bucket.get("bucket"))
 ///                         .build())
 ///                     .historicalContextWindowSize(10)
 ///                     .build())
 ///                 .type("SELF_MANAGED")
 ///                 .build())
 ///             .name("self_managed_strategy")
-///             .memoryId(exampleAwsBedrockagentcoreMemory.id())
-///             .memoryExecutionRoleArn(exampleAwsBedrockagentcoreMemory.memoryExecutionRoleArn())
+///             .memoryId(exampleAwsBedrockagentcoreMemory.get("id"))
+///             .memoryExecutionRoleArn(exampleAwsBedrockagentcoreMemory.get("memoryExecutionRoleArn"))
 ///             .type("CUSTOM")
 ///             .description("Self-managed processing strategy")
 ///             .build());
@@ -1763,7 +1790,7 @@ class AgentcoreMemoryStrategy extends pulumi.CustomResource {
           'aws:bedrock/agentcoreMemoryStrategy:AgentcoreMemoryStrategy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     configuration = registerOutput<AgentcoreMemoryStrategyConfiguration?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreMemoryStrategyConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');

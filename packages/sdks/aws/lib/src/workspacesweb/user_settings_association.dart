@@ -109,7 +109,7 @@ import 'user_settings_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -118,17 +118,26 @@ import 'user_settings_association_state.dart';
 /// }
 ///
 /// resource "aws_workspacesweb_portal" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "aws_workspacesweb_usersettings" "example" {
+/// resource "aws_workspacesweb_user_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   copy_allowed     = "Enabled"
 ///   download_allowed = "Enabled"
 ///   paste_allowed    = "Enabled"
 ///   print_allowed    = "Enabled"
 ///   upload_allowed   = "Enabled"
 /// }
-/// resource "aws_workspacesweb_usersettingsassociation" "example" {
-///   user_settings_arn = aws_workspacesweb_usersettings.example.user_settings_arn
+/// resource "aws_workspacesweb_user_settings_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   user_settings_arn = aws_workspacesweb_user_settings.example.user_settings_arn
 ///   portal_arn        = aws_workspacesweb_portal.example.portal_arn
 /// }
 /// ```
@@ -221,7 +230,7 @@ class UserSettingsAssociation extends pulumi.CustomResource {
           'aws:workspacesweb/userSettingsAssociation:UserSettingsAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     portalArn = registerOutput<String>('portalArn');
     region = registerOutput<String>('region');

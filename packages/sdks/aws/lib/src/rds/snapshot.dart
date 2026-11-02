@@ -114,7 +114,7 @@ import 'snapshot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -123,6 +123,9 @@ import 'snapshot_state.dart';
 /// }
 ///
 /// resource "aws_rds_instance" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocated_storage       = 10
 ///   engine                  = "mysql"
 ///   engine_version          = "5.6.21"
@@ -135,6 +138,9 @@ import 'snapshot_state.dart';
 ///   parameter_group_name    = "default.mysql5.6"
 /// }
 /// resource "aws_rds_snapshot" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   db_instance_identifier = aws_rds_instance.bar.identifier
 ///   db_snapshot_identifier = "testsnapshot1234"
 /// }
@@ -273,7 +279,7 @@ class Snapshot extends pulumi.CustomResource {
           'aws:rds/snapshot:Snapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     allocatedStorage = registerOutput<int>('allocatedStorage');
     availabilityZone = registerOutput<String>('availabilityZone');

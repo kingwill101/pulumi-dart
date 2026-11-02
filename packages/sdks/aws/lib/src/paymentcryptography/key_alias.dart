@@ -136,7 +136,7 @@ import 'key_alias_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -145,8 +145,11 @@ import 'key_alias_state.dart';
 /// }
 ///
 /// resource "aws_paymentcryptography_key" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key_attributes {
-///     key_modes_of_uses {
+///     key_modes_of_use {
 ///       decrypt = true
 ///       encrypt = true
 ///       wrap    = true
@@ -158,7 +161,10 @@ import 'key_alias_state.dart';
 ///   }
 ///   exportable = true
 /// }
-/// resource "aws_paymentcryptography_keyalias" "test" {
+/// resource "aws_paymentcryptography_key_alias" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alias_name = "alias/test-alias"
 ///   key_arn    = aws_paymentcryptography_key.test.arn
 /// }
@@ -264,7 +270,7 @@ class KeyAlias extends pulumi.CustomResource {
           'aws:paymentcryptography/keyAlias:KeyAlias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     aliasName = registerOutput<String>('aliasName');
     keyArn = registerOutput<String?>('keyArn');

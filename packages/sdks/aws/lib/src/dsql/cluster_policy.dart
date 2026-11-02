@@ -173,7 +173,7 @@ import 'cluster_policy_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -182,8 +182,14 @@ import 'cluster_policy_timeouts.dart';
 /// }
 ///
 /// resource "aws_dsql_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_dsql_clusterpolicy" "example" {
+/// resource "aws_dsql_cluster_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identifier = aws_dsql_cluster.example.identifier
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -453,7 +459,7 @@ import 'cluster_policy_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -462,8 +468,14 @@ import 'cluster_policy_timeouts.dart';
 /// }
 ///
 /// resource "aws_dsql_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_dsql_clusterpolicy" "example" {
+/// resource "aws_dsql_cluster_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identifier = aws_dsql_cluster.example.identifier
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -527,7 +539,7 @@ import 'cluster_policy_timeouts.dart';
 ///                         jsonProperty("Resource", _arn),
 ///                         jsonProperty("Condition", jsonObject(
 ///                             jsonProperty("StringNotEquals", jsonObject(
-///                                 jsonProperty("aws:SourceVpc", exampleAwsVpc.id())
+///                                 jsonProperty("aws:SourceVpc", exampleAwsVpc.get("id"))
 ///                             ))
 ///                         ))
 ///                     )))
@@ -729,7 +741,7 @@ import 'cluster_policy_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -738,8 +750,14 @@ import 'cluster_policy_timeouts.dart';
 /// }
 ///
 /// resource "aws_dsql_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_dsql_clusterpolicy" "example" {
+/// resource "aws_dsql_cluster_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identifier = aws_dsql_cluster.example.identifier
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -886,7 +904,7 @@ class ClusterPolicy extends pulumi.CustomResource {
           'aws:dsql/clusterPolicy:ClusterPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     bypassPolicyLockoutSafetyCheck = registerOutput<bool>('bypassPolicyLockoutSafetyCheck');
     identifier = registerOutput<String>('identifier');

@@ -95,7 +95,7 @@ import 'agentcore_oauth2_credential_provider_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -103,7 +103,10 @@ import 'agentcore_oauth2_credential_provider_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoreoauth2credentialprovider" "github" {
+/// resource "aws_bedrock_agentcore_oauth2_credential_provider" "github" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   oauth2_provider_config = {
 ///     github_oauth2_provider_config = {
 ///       client_id     = "your-github-client-id"
@@ -266,7 +269,7 @@ import 'agentcore_oauth2_credential_provider_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -274,7 +277,10 @@ import 'agentcore_oauth2_credential_provider_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoreoauth2credentialprovider" "auth0" {
+/// resource "aws_bedrock_agentcore_oauth2_credential_provider" "auth0" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   oauth2_provider_config = {
 ///     custom_oauth2_provider_config = {
 ///       oauth_discovery = {
@@ -492,7 +498,7 @@ import 'agentcore_oauth2_credential_provider_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -500,7 +506,10 @@ import 'agentcore_oauth2_credential_provider_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoreoauth2credentialprovider" "keycloak" {
+/// resource "aws_bedrock_agentcore_oauth2_credential_provider" "keycloak" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   oauth2_provider_config = {
 ///     custom_oauth2_provider_config = {
 ///       oauth_discovery = {
@@ -654,7 +663,7 @@ class AgentcoreOauth2CredentialProvider extends pulumi.CustomResource {
           'aws:bedrock/agentcoreOauth2CredentialProvider:AgentcoreOauth2CredentialProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     callbackUrl = registerOutput<String>('callbackUrl');
     clientSecretArns = registerOutput<List<AgentcoreOauth2CredentialProviderClientSecretArn>>('clientSecretArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreOauth2CredentialProviderClientSecretArn>(guardedValue, (value) => AgentcoreOauth2CredentialProviderClientSecretArn.fromMap((value as Map).cast<String, dynamic>())); });

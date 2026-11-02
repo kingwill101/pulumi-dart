@@ -63,7 +63,7 @@ import 'get_v2_system_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,7 +71,7 @@ import 'get_v2_system_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_resiliencehub_getv2policy" "example" {
+/// data "aws_resiliencehub_v2_policy" "example" {
 ///   arn = "arn:aws:resiliencehub:us-west-2:123456789012:policy/example-policy:abc123"
 /// }
 /// ```
@@ -194,7 +194,7 @@ pulumi.Output<GetV2PolicyResult> getV2PolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -202,7 +202,7 @@ pulumi.Output<GetV2PolicyResult> getV2PolicyOutput(
 ///   }
 /// }
 ///
-/// data "aws_resiliencehub_getv2service" "example" {
+/// data "aws_resiliencehub_v2_service" "example" {
 ///   arn = "arn:aws:resiliencehub:us-west-2:123456789012:service/example-service:abc123"
 /// }
 /// ```
@@ -325,7 +325,7 @@ pulumi.Output<GetV2ServiceResult> getV2ServiceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -333,7 +333,7 @@ pulumi.Output<GetV2ServiceResult> getV2ServiceOutput(
 ///   }
 /// }
 ///
-/// data "aws_resiliencehub_getv2system" "example" {
+/// data "aws_resiliencehub_v2_system" "example" {
 ///   arn = "arn:aws:resiliencehub:us-west-2:123456789012:system/example-system:abc123"
 /// }
 /// ```

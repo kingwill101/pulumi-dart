@@ -77,7 +77,7 @@ import 'configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,9 +86,16 @@ import 'configuration_state.dart';
 /// }
 ///
 /// resource "aws_msk_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   kafka_versions    = ["2.1.0"]
 ///   name              = "example"
-///   server_properties = "auto.create.topics.enable = true\ndelete.topic.enable = true\n"
+///   server_properties = <<PROPERTIES
+/// auto.create.topics.enable = true
+/// delete.topic.enable = true
+/// PROPERTIES
+///
 /// }
 /// ```
 /// ```java
@@ -173,7 +180,7 @@ class Configuration extends pulumi.CustomResource {
           'aws:msk/configuration:Configuration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

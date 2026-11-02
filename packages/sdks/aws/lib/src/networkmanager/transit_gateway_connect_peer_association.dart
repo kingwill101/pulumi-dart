@@ -66,7 +66,7 @@ import 'transit_gateway_connect_peer_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'transit_gateway_connect_peer_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkmanager_transitgatewayconnectpeerassociation" "example" {
+/// resource "aws_networkmanager_transit_gateway_connect_peer_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   global_network_id                = exampleAwsNetworkmanagerGlobalNetwork.id
 ///   device_id                        = exampleAwsNetworkmanagerDevice.id
 ///   transit_gateway_connect_peer_arn = exampleAwsEc2TransitGatewayConnectPeer.arn
@@ -102,9 +105,9 @@ import 'transit_gateway_connect_peer_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TransitGatewayConnectPeerAssociation("example", TransitGatewayConnectPeerAssociationArgs.builder()
-///             .globalNetworkId(exampleAwsNetworkmanagerGlobalNetwork.id())
-///             .deviceId(exampleAwsNetworkmanagerDevice.id())
-///             .transitGatewayConnectPeerArn(exampleAwsEc2TransitGatewayConnectPeer.arn())
+///             .globalNetworkId(exampleAwsNetworkmanagerGlobalNetwork.get("id"))
+///             .deviceId(exampleAwsNetworkmanagerDevice.get("id"))
+///             .transitGatewayConnectPeerArn(exampleAwsEc2TransitGatewayConnectPeer.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -152,7 +155,7 @@ class TransitGatewayConnectPeerAssociation extends pulumi.CustomResource {
           'aws:networkmanager/transitGatewayConnectPeerAssociation:TransitGatewayConnectPeerAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     deviceId = registerOutput<String>('deviceId');
     globalNetworkId = registerOutput<String>('globalNetworkId');

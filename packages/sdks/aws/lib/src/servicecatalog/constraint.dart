@@ -96,7 +96,7 @@ import 'constraint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -105,6 +105,9 @@ import 'constraint_state.dart';
 /// }
 ///
 /// resource "aws_servicecatalog_constraint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description  = "Back off, man. I'm a scientist."
 ///   portfolio_id = exampleAwsServicecatalogPortfolio.id
 ///   product_id   = exampleAwsServicecatalogProduct.id
@@ -138,8 +141,8 @@ import 'constraint_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Constraint("example", ConstraintArgs.builder()
 ///             .description("Back off, man. I'm a scientist.")
-///             .portfolioId(exampleAwsServicecatalogPortfolio.id())
-///             .productId(exampleAwsServicecatalogProduct.id())
+///             .portfolioId(exampleAwsServicecatalogPortfolio.get("id"))
+///             .productId(exampleAwsServicecatalogProduct.get("id"))
 ///             .type("LAUNCH")
 ///             .parameters(serializeJson(
 ///                 jsonObject(
@@ -205,7 +208,7 @@ class Constraint extends pulumi.CustomResource {
           'aws:servicecatalog/constraint:Constraint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     description = registerOutput<String>('description');

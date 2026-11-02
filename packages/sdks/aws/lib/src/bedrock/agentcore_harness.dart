@@ -279,7 +279,7 @@ import 'agentcore_harness_truncation.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -287,8 +287,8 @@ import 'agentcore_harness_truncation.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["bedrock-agentcore.amazonaws.com"]
@@ -299,10 +299,16 @@ import 'agentcore_harness_truncation.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "bedrock-agentcore-harness-role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iam_rolepolicy" "example" {
+/// resource "aws_iam_role_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role = aws_iam_role.example.name
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -313,7 +319,10 @@ import 'agentcore_harness_truncation.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_bedrock_agentcoreharness" "example" {
+/// resource "aws_bedrock_agentcore_harness" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   model = {
 ///     bedrock_model_config = {
 ///       model_id = "anthropic.claude-sonnet-4-20250514"
@@ -733,7 +742,7 @@ import 'agentcore_harness_truncation.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -741,7 +750,10 @@ import 'agentcore_harness_truncation.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoreharness" "example" {
+/// resource "aws_bedrock_agentcore_harness" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   model = {
 ///     bedrock_model_config = {
 ///       model_id    = "anthropic.claude-sonnet-4-20250514"
@@ -852,7 +864,7 @@ import 'agentcore_harness_truncation.dart';
 ///                 .strategy("sliding_window")
 ///                 .build())
 ///             .harnessName("example_with_tools")
-///             .executionRoleArn(exampleAwsIamRole.arn())
+///             .executionRoleArn(exampleAwsIamRole.get("arn"))
 ///             .allowedTools("*")
 ///             .maxIterations(10)
 ///             .maxTokens(4096)
@@ -1041,7 +1053,7 @@ import 'agentcore_harness_truncation.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1049,7 +1061,10 @@ import 'agentcore_harness_truncation.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoreharness" "example" {
+/// resource "aws_bedrock_agentcore_harness" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   model = {
 ///     bedrock_model_config = {
 ///       model_id = "anthropic.claude-sonnet-4-20250514"
@@ -1112,7 +1127,7 @@ import 'agentcore_harness_truncation.dart';
 ///                 .text("You are a helpful assistant.")
 ///                 .build())
 ///             .harnessName("my_harness")
-///             .executionRoleArn(exampleAwsIamRole.arn())
+///             .executionRoleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1221,7 +1236,7 @@ class AgentcoreHarness extends pulumi.CustomResource {
           'aws:bedrock/agentcoreHarness:AgentcoreHarness',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['environmentVariables'],
         ) {
     allowedTools = registerOutput<List<String>>('allowedTools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

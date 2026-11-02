@@ -55,7 +55,7 @@ import 'smsvoicev2_opt_out_list_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -63,7 +63,10 @@ import 'smsvoicev2_opt_out_list_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_pinpoint_smsvoicev2optoutlist" "example" {
+/// resource "aws_pinpoint_smsvoicev2_opt_out_list" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-opt-out-list"
 /// }
 /// ```
@@ -135,7 +138,7 @@ class Smsvoicev2OptOutList extends pulumi.CustomResource {
           'aws:pinpoint/smsvoicev2OptOutList:Smsvoicev2OptOutList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

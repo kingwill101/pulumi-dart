@@ -85,7 +85,7 @@ import 'upload_buffer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -93,13 +93,16 @@ import 'upload_buffer_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_storagegateway_getlocaldisk" "test" {
+/// data "aws_storagegateway_local_disk" "test" {
 ///   disk_node   = testAwsVolumeAttachment.deviceName
 ///   gateway_arn = testAwsStoragegatewayGateway.arn
 /// }
 ///
-/// resource "aws_storagegateway_uploadbuffer" "test" {
-///   disk_path   = data.aws_storagegateway_getlocaldisk.test.disk_path
+/// resource "aws_storagegateway_upload_buffer" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   disk_path   = data.aws_storagegateway_local_disk.test.disk_path
 ///   gateway_arn = testAwsStoragegatewayGateway.arn
 /// }
 /// ```
@@ -127,13 +130,13 @@ import 'upload_buffer_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = StoragegatewayFunctions.getLocalDisk(GetLocalDiskArgs.builder()
-///             .diskNode(testAwsVolumeAttachment.deviceName())
-///             .gatewayArn(testAwsStoragegatewayGateway.arn())
+///             .diskNode(testAwsVolumeAttachment.get("deviceName"))
+///             .gatewayArn(testAwsStoragegatewayGateway.get("arn"))
 ///             .build());
 ///
 ///         var testUploadBuffer = new UploadBuffer("testUploadBuffer", UploadBufferArgs.builder()
 ///             .diskPath(test.diskPath())
-///             .gatewayArn(testAwsStoragegatewayGateway.arn())
+///             .gatewayArn(testAwsStoragegatewayGateway.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -234,7 +237,7 @@ import 'upload_buffer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -242,12 +245,15 @@ import 'upload_buffer_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_storagegateway_getlocaldisk" "test" {
+/// data "aws_storagegateway_local_disk" "test" {
 ///   disk_node   = testAwsVolumeAttachment.deviceName
 ///   gateway_arn = testAwsStoragegatewayGateway.arn
 /// }
 ///
-/// resource "aws_storagegateway_uploadbuffer" "example" {
+/// resource "aws_storagegateway_upload_buffer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   disk_id     = exampleAwsStoragegatewayLocalDisk.id
 ///   gateway_arn = exampleAwsStoragegatewayGateway.arn
 /// }
@@ -276,13 +282,13 @@ import 'upload_buffer_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = StoragegatewayFunctions.getLocalDisk(GetLocalDiskArgs.builder()
-///             .diskNode(testAwsVolumeAttachment.deviceName())
-///             .gatewayArn(testAwsStoragegatewayGateway.arn())
+///             .diskNode(testAwsVolumeAttachment.get("deviceName"))
+///             .gatewayArn(testAwsStoragegatewayGateway.get("arn"))
 ///             .build());
 ///
 ///         var example = new UploadBuffer("example", UploadBufferArgs.builder()
-///             .diskId(exampleAwsStoragegatewayLocalDisk.id())
-///             .gatewayArn(exampleAwsStoragegatewayGateway.arn())
+///             .diskId(exampleAwsStoragegatewayLocalDisk.get("id"))
+///             .gatewayArn(exampleAwsStoragegatewayGateway.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -334,7 +340,7 @@ class UploadBuffer extends pulumi.CustomResource {
           'aws:storagegateway/uploadBuffer:UploadBuffer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     diskId = registerOutput<String>('diskId');
     diskPath = registerOutput<String>('diskPath');

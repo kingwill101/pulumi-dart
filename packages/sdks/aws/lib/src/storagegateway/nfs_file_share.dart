@@ -77,7 +77,7 @@ import 'nfs_file_share_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -85,8 +85,11 @@ import 'nfs_file_share_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_storagegateway_nfsfileshare" "example" {
-///   client_lists = ["0.0.0.0/0"]
+/// resource "aws_storagegateway_nfs_file_share" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   client_list  = ["0.0.0.0/0"]
 ///   gateway_arn  = exampleAwsStoragegatewayGateway.arn
 ///   location_arn = exampleAwsS3Bucket.arn
 ///   role_arn     = exampleAwsIamRole.arn
@@ -115,9 +118,9 @@ import 'nfs_file_share_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new NfsFileShare("example", NfsFileShareArgs.builder()
 ///             .clientLists("0.0.0.0/0")
-///             .gatewayArn(exampleAwsStoragegatewayGateway.arn())
-///             .locationArn(exampleAwsS3Bucket.arn())
-///             .roleArn(exampleAwsIamRole.arn())
+///             .gatewayArn(exampleAwsStoragegatewayGateway.get("arn"))
+///             .locationArn(exampleAwsS3Bucket.get("arn"))
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -207,7 +210,7 @@ class NfsFileShare extends pulumi.CustomResource {
           'aws:storagegateway/nfsFileShare:NfsFileShare',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     auditDestinationArn = registerOutput<String?>('auditDestinationArn');

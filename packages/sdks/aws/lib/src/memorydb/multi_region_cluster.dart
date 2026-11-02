@@ -118,7 +118,7 @@ import 'multi_region_cluster_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -126,11 +126,17 @@ import 'multi_region_cluster_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_memorydb_multiregioncluster" "example" {
+/// resource "aws_memorydb_multi_region_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   multi_region_cluster_name_suffix = "example"
 ///   node_type                        = "db.r7g.xlarge"
 /// }
 /// resource "aws_memorydb_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   acl_name                   = exampleAwsMemorydbAcl.id
 ///   auto_minor_version_upgrade = false
 ///   name                       = "example"
@@ -139,7 +145,7 @@ import 'multi_region_cluster_timeouts.dart';
 ///   security_group_ids         = [exampleAwsSecurityGroup.id]
 ///   snapshot_retention_limit   = 7
 ///   subnet_group_name          = exampleAwsMemorydbSubnetGroup.id
-///   multi_region_cluster_name  = aws_memorydb_multiregioncluster.example.multi_region_cluster_name
+///   multi_region_cluster_name  = aws_memorydb_multi_region_cluster.example.multi_region_cluster_name
 /// }
 /// ```
 /// ```java
@@ -171,14 +177,14 @@ import 'multi_region_cluster_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
-///             .aclName(exampleAwsMemorydbAcl.id())
+///             .aclName(exampleAwsMemorydbAcl.get("id"))
 ///             .autoMinorVersionUpgrade(false)
 ///             .name("example")
 ///             .nodeType("db.t4g.small")
 ///             .numShards(2)
-///             .securityGroupIds(exampleAwsSecurityGroup.id())
+///             .securityGroupIds(exampleAwsSecurityGroup.get("id"))
 ///             .snapshotRetentionLimit(7)
-///             .subnetGroupName(exampleAwsMemorydbSubnetGroup.id())
+///             .subnetGroupName(exampleAwsMemorydbSubnetGroup.get("id"))
 ///             .multiRegionClusterName(example.multiRegionClusterName())
 ///             .build());
 ///
@@ -263,7 +269,7 @@ class MultiRegionCluster extends pulumi.CustomResource {
           'aws:memorydb/multiRegionCluster:MultiRegionCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

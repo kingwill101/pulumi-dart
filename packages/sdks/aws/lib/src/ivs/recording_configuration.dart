@@ -84,7 +84,7 @@ import 'recording_configuration_thumbnail_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -92,9 +92,12 @@ import 'recording_configuration_thumbnail_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ivs_recordingconfiguration" "example" {
-///   destination_configuration = {
-///     s3 = {
+/// resource "aws_ivs_recording_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   destination_configuration {
+///     s3 {
 ///       bucket_name = "ivs-stream-archive"
 ///     }
 ///   }
@@ -194,7 +197,7 @@ class RecordingConfiguration extends pulumi.CustomResource {
           'aws:ivs/recordingConfiguration:RecordingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     destinationConfiguration = registerOutput<RecordingConfigurationDestinationConfiguration>('destinationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordingConfigurationDestinationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

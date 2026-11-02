@@ -71,7 +71,7 @@ import 'image_workflow.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -80,6 +80,9 @@ import 'image_workflow.dart';
 /// }
 ///
 /// resource "aws_imagebuilder_image" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   distribution_configuration_arn   = exampleAwsImagebuilderDistributionConfiguration.arn
 ///   image_recipe_arn                 = exampleAwsImagebuilderImageRecipe.arn
 ///   infrastructure_configuration_arn = exampleAwsImagebuilderInfrastructureConfiguration.arn
@@ -107,9 +110,9 @@ import 'image_workflow.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Image("example", ImageArgs.builder()
-///             .distributionConfigurationArn(exampleAwsImagebuilderDistributionConfiguration.arn())
-///             .imageRecipeArn(exampleAwsImagebuilderImageRecipe.arn())
-///             .infrastructureConfigurationArn(exampleAwsImagebuilderInfrastructureConfiguration.arn())
+///             .distributionConfigurationArn(exampleAwsImagebuilderDistributionConfiguration.get("arn"))
+///             .imageRecipeArn(exampleAwsImagebuilderImageRecipe.get("arn"))
+///             .infrastructureConfigurationArn(exampleAwsImagebuilderInfrastructureConfiguration.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -196,7 +199,7 @@ class Image extends pulumi.CustomResource {
           'aws:imagebuilder/image:Image',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     containerRecipeArn = registerOutput<String?>('containerRecipeArn');

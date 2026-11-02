@@ -74,7 +74,7 @@ import 'directory_bucket_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,8 +82,11 @@ import 'directory_bucket_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_directorybucket" "example" {
-///   location = {
+/// resource "aws_s3_directory_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location {
 ///     name = "usw2-az1"
 ///   }
 ///   bucket = "example--usw2-az1--x-s3"
@@ -203,7 +206,7 @@ import 'directory_bucket_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -211,8 +214,11 @@ import 'directory_bucket_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_directorybucket" "example_local_zone" {
-///   location = {
+/// resource "aws_s3_directory_bucket" "example_local_zone" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location {
 ///     name = "usw2-xxx-lz1"
 ///     type = "LocalZone"
 ///   }
@@ -317,7 +323,7 @@ class DirectoryBucket extends pulumi.CustomResource {
           'aws:s3/directoryBucket:DirectoryBucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     bucket = registerOutput<String>('bucket');

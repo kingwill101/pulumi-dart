@@ -102,7 +102,7 @@ import 'data_cells_filter_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -110,9 +110,12 @@ import 'data_cells_filter_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lakeformation_datacellsfilter" "example" {
-///   table_data = {
-///     row_filter = {
+/// resource "aws_lakeformation_data_cells_filter" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   table_data {
+///     row_filter {
 ///       filter_expression = "my_column='example'"
 ///     }
 ///     database_name    = exampleAwsGlueCatalogDatabase.name
@@ -151,10 +154,10 @@ import 'data_cells_filter_timeouts.dart';
 ///                 .rowFilter(DataCellsFilterTableDataRowFilterArgs.builder()
 ///                     .filterExpression("my_column='example'")
 ///                     .build())
-///                 .databaseName(exampleAwsGlueCatalogDatabase.name())
+///                 .databaseName(exampleAwsGlueCatalogDatabase.get("name"))
 ///                 .name("example")
-///                 .tableCatalogId(current.accountId())
-///                 .tableName(exampleAwsGlueCatalogTable.name())
+///                 .tableCatalogId(current.get("accountId"))
+///                 .tableName(exampleAwsGlueCatalogTable.get("name"))
 ///                 .columnNames("my_column")
 ///                 .build())
 ///             .build());
@@ -292,7 +295,7 @@ import 'data_cells_filter_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -300,13 +303,17 @@ import 'data_cells_filter_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lakeformation_datacellsfilter" "excluded_columns" {
-///   table_data = {
-///     column_wildcard = {
+/// resource "aws_lakeformation_data_cells_filter" "excluded_columns" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   table_data {
+///     column_wildcard {
 ///       excluded_column_names = ["ssn", "credit_card"]
 ///     }
-///     row_filter = {
-///       all_rows_wildcard = {}
+///     row_filter {
+///       all_rows_wildcard {
+///       }
 ///     }
 ///     database_name    = example.name
 ///     name             = "exclude-pii"
@@ -351,10 +358,10 @@ import 'data_cells_filter_timeouts.dart';
 ///                     .allRowsWildcard(DataCellsFilterTableDataRowFilterAllRowsWildcardArgs.builder()
 ///                         .build())
 ///                     .build())
-///                 .databaseName(example.name())
+///                 .databaseName(example.get("name"))
 ///                 .name("exclude-pii")
-///                 .tableCatalogId(current.accountId())
-///                 .tableName(exampleAwsGlueCatalogTable.name())
+///                 .tableCatalogId(current.get("accountId"))
+///                 .tableName(exampleAwsGlueCatalogTable.get("name"))
 ///                 .build())
 ///             .build());
 ///
@@ -492,7 +499,7 @@ import 'data_cells_filter_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -500,12 +507,15 @@ import 'data_cells_filter_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lakeformation_datacellsfilter" "row_and_column" {
-///   table_data = {
-///     column_wildcard = {
+/// resource "aws_lakeformation_data_cells_filter" "row_and_column" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   table_data {
+///     column_wildcard {
 ///       excluded_column_names = ["salary", "bonus"]
 ///     }
-///     row_filter = {
+///     row_filter {
 ///       filter_expression = "department = 'Marketing'"
 ///     }
 ///     database_name    = example.name
@@ -549,10 +559,10 @@ import 'data_cells_filter_timeouts.dart';
 ///                 .rowFilter(DataCellsFilterTableDataRowFilterArgs.builder()
 ///                     .filterExpression("department = 'Marketing'")
 ///                     .build())
-///                 .databaseName(example.name())
+///                 .databaseName(example.get("name"))
 ///                 .name("marketing-filtered")
-///                 .tableCatalogId(current.accountId())
-///                 .tableName(exampleAwsGlueCatalogTable.name())
+///                 .tableCatalogId(current.get("accountId"))
+///                 .tableName(exampleAwsGlueCatalogTable.get("name"))
 ///                 .build())
 ///             .build());
 ///
@@ -679,7 +689,7 @@ import 'data_cells_filter_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -687,12 +697,15 @@ import 'data_cells_filter_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lakeformation_datacellsfilter" "row_only" {
-///   table_data = {
-///     column_wildcard = {
+/// resource "aws_lakeformation_data_cells_filter" "row_only" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   table_data {
+///     column_wildcard {
 ///       excluded_column_names = []
 ///     }
-///     row_filter = {
+///     row_filter {
 ///       filter_expression = "region = 'US-WEST'"
 ///     }
 ///     database_name    = example.name
@@ -734,10 +747,10 @@ import 'data_cells_filter_timeouts.dart';
 ///                 .rowFilter(DataCellsFilterTableDataRowFilterArgs.builder()
 ///                     .filterExpression("region = 'US-WEST'")
 ///                     .build())
-///                 .databaseName(example.name())
+///                 .databaseName(example.get("name"))
 ///                 .name("regional-filter")
-///                 .tableCatalogId(current.accountId())
-///                 .tableName(exampleAwsGlueCatalogTable.name())
+///                 .tableCatalogId(current.get("accountId"))
+///                 .tableName(exampleAwsGlueCatalogTable.get("name"))
 ///                 .build())
 ///             .build());
 ///
@@ -788,7 +801,7 @@ class DataCellsFilter extends pulumi.CustomResource {
           'aws:lakeformation/dataCellsFilter:DataCellsFilter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     tableData = registerOutput<DataCellsFilterTableData>('tableData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCellsFilterTableData.fromMap((guardedValue as Map).cast<String, dynamic>()); });

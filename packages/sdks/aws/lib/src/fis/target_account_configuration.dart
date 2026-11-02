@@ -72,7 +72,7 @@ import 'target_account_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -80,7 +80,10 @@ import 'target_account_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fis_targetaccountconfiguration" "example" {
+/// resource "aws_fis_target_account_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   experiment_template_id = exampleAwsFisExperimentTemplate.id
 ///   account_id             = current.accountId
 ///   role_arn               = fisRole.arn
@@ -109,9 +112,9 @@ import 'target_account_configuration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TargetAccountConfiguration("example", TargetAccountConfigurationArgs.builder()
-///             .experimentTemplateId(exampleAwsFisExperimentTemplate.id())
-///             .accountId(current.accountId())
-///             .roleArn(fisRole.arn())
+///             .experimentTemplateId(exampleAwsFisExperimentTemplate.get("id"))
+///             .accountId(current.get("accountId"))
+///             .roleArn(fisRole.get("arn"))
 ///             .description("Example")
 ///             .build());
 ///
@@ -163,7 +166,7 @@ class TargetAccountConfiguration extends pulumi.CustomResource {
           'aws:fis/targetAccountConfiguration:TargetAccountConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     description = registerOutput<String>('description');

@@ -65,7 +65,7 @@ import 'get_framework_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,7 @@ import 'get_framework_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_auditmanager_getcontrol" "example" {
+/// data "aws_auditmanager_control" "example" {
 ///   name = "1. Risk Management"
 ///   type = "Standard"
 /// }
@@ -281,7 +281,7 @@ import 'get_framework_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -289,25 +289,28 @@ import 'get_framework_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_auditmanager_getcontrol" "example" {
+/// data "aws_auditmanager_control" "example" {
 ///   name = "1. Risk Management"
 ///   type = "Standard"
 /// }
-/// data "aws_auditmanager_getcontrol" "example2" {
+/// data "aws_auditmanager_control" "example2" {
 ///   name = "2. Personnel"
 ///   type = "Standard"
 /// }
 ///
 /// resource "aws_auditmanager_framework" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   control_sets {
 ///     controls {
-///       id = data.aws_auditmanager_getcontrol.example.id
+///       id = data.aws_auditmanager_control.example.id
 ///     }
 ///     name = "example"
 ///   }
 ///   control_sets {
 ///     controls {
-///       id = data.aws_auditmanager_getcontrol.example2.id
+///       id = data.aws_auditmanager_control.example2.id
 ///     }
 ///     name = "example2"
 ///   }
@@ -484,7 +487,7 @@ pulumi.Output<GetControlResult> getControlOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -492,7 +495,7 @@ pulumi.Output<GetControlResult> getControlOutput(
 ///   }
 /// }
 ///
-/// data "aws_auditmanager_getframework" "example" {
+/// data "aws_auditmanager_framework" "example" {
 ///   name           = "Essential Eight"
 ///   framework_type = "Standard"
 /// }

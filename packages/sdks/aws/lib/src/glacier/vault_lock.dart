@@ -163,7 +163,7 @@ import 'vault_lock_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -171,9 +171,9 @@ import 'vault_lock_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
+///     condition {
 ///       test     = "NumericLessThanEquals"
 ///       variable = "glacier:ArchiveAgeinDays"
 ///       values   = ["365"]
@@ -185,11 +185,17 @@ import 'vault_lock_state.dart';
 /// }
 ///
 /// resource "aws_glacier_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
-/// resource "aws_glacier_vaultlock" "example" {
+/// resource "aws_glacier_vault_lock" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   complete_lock = false
-///   policy        = data.aws_iam_getpolicydocument.example.json
+///   policy        = data.aws_iam_policy_document.example.json
 ///   vault_name    = aws_glacier_vault.example.name
 /// }
 /// ```
@@ -341,7 +347,7 @@ import 'vault_lock_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -349,7 +355,10 @@ import 'vault_lock_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_glacier_vaultlock" "example" {
+/// resource "aws_glacier_vault_lock" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   complete_lock = true
 ///   policy        = exampleAwsIamPolicyDocument.json
 ///   vault_name    = exampleAwsGlacierVault.name
@@ -378,8 +387,8 @@ import 'vault_lock_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new VaultLock("example", VaultLockArgs.builder()
 ///             .completeLock(true)
-///             .policy(exampleAwsIamPolicyDocument.json())
-///             .vaultName(exampleAwsGlacierVault.name())
+///             .policy(exampleAwsIamPolicyDocument.get("json"))
+///             .vaultName(exampleAwsGlacierVault.get("name"))
 ///             .build());
 ///
 ///     }
@@ -427,7 +436,7 @@ class VaultLock extends pulumi.CustomResource {
           'aws:glacier/vaultLock:VaultLock',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     completeLock = registerOutput<bool>('completeLock');
     ignoreDeletionError = registerOutput<bool?>('ignoreDeletionError');

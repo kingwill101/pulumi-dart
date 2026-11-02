@@ -74,7 +74,7 @@ import 'server_workflow_details.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -83,6 +83,9 @@ import 'server_workflow_details.dart';
 /// }
 ///
 /// resource "aws_transfer_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tags = {
 ///     "Name" = "Example"
 ///   }
@@ -177,7 +180,7 @@ import 'server_workflow_details.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -186,6 +189,9 @@ import 'server_workflow_details.dart';
 /// }
 ///
 /// resource "aws_transfer_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   security_policy_name = "TransferSecurityPolicy-2020-06"
 /// }
 /// ```
@@ -311,7 +317,7 @@ import 'server_workflow_details.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -320,7 +326,10 @@ import 'server_workflow_details.dart';
 /// }
 ///
 /// resource "aws_transfer_server" "example" {
-///   endpoint_details = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   endpoint_details {
 ///     address_allocation_ids = [exampleAwsEip.id]
 ///     subnet_ids             = [exampleAwsSubnet.id]
 ///     vpc_id                 = exampleAwsVpc.id
@@ -352,9 +361,9 @@ import 'server_workflow_details.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Server("example", ServerArgs.builder()
 ///             .endpointDetails(ServerEndpointDetailsArgs.builder()
-///                 .addressAllocationIds(exampleAwsEip.id())
-///                 .subnetIds(exampleAwsSubnet.id())
-///                 .vpcId(exampleAwsVpc.id())
+///                 .addressAllocationIds(exampleAwsEip.get("id"))
+///                 .subnetIds(exampleAwsSubnet.get("id"))
+///                 .vpcId(exampleAwsVpc.get("id"))
 ///                 .build())
 ///             .endpointType("VPC")
 ///             .build());
@@ -435,7 +444,7 @@ import 'server_workflow_details.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -444,6 +453,9 @@ import 'server_workflow_details.dart';
 /// }
 ///
 /// resource "aws_transfer_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity_provider_type = "AWS_DIRECTORY_SERVICE"
 ///   directory_id           = exampleAwsDirectoryServiceDirectory.id
 /// }
@@ -471,7 +483,7 @@ import 'server_workflow_details.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Server("example", ServerArgs.builder()
 ///             .identityProviderType("AWS_DIRECTORY_SERVICE")
-///             .directoryId(exampleAwsDirectoryServiceDirectory.id())
+///             .directoryId(exampleAwsDirectoryServiceDirectory.get("id"))
 ///             .build());
 ///
 ///     }
@@ -545,7 +557,7 @@ import 'server_workflow_details.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -554,6 +566,9 @@ import 'server_workflow_details.dart';
 /// }
 ///
 /// resource "aws_transfer_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity_provider_type = "AWS_LAMBDA"
 ///   function               = exampleAwsLambdaFunction.arn
 /// }
@@ -581,7 +596,7 @@ import 'server_workflow_details.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Server("example", ServerArgs.builder()
 ///             .identityProviderType("AWS_LAMBDA")
-///             .function(exampleAwsLambdaFunction.arn())
+///             .function(exampleAwsLambdaFunction.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -702,7 +717,7 @@ import 'server_workflow_details.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -711,7 +726,10 @@ import 'server_workflow_details.dart';
 /// }
 ///
 /// resource "aws_transfer_server" "example" {
-///   endpoint_details = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   endpoint_details {
 ///     subnet_ids = [exampleAwsSubnet.id]
 ///     vpc_id     = exampleAwsVpc.id
 ///   }
@@ -746,16 +764,16 @@ import 'server_workflow_details.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Server("example", ServerArgs.builder()
 ///             .endpointDetails(ServerEndpointDetailsArgs.builder()
-///                 .subnetIds(exampleAwsSubnet.id())
-///                 .vpcId(exampleAwsVpc.id())
+///                 .subnetIds(exampleAwsSubnet.get("id"))
+///                 .vpcId(exampleAwsVpc.get("id"))
 ///                 .build())
 ///             .endpointType("VPC")
 ///             .protocols(
 ///                 "FTP",
 ///                 "FTPS")
-///             .certificate(exampleAwsAcmCertificate.arn())
+///             .certificate(exampleAwsAcmCertificate.get("arn"))
 ///             .identityProviderType("API_GATEWAY")
-///             .url(String.format("%s%s", exampleAwsApiGatewayDeployment.invokeUrl(),exampleAwsApiGatewayResource.path()))
+///             .url(String.format("%s%s", exampleAwsApiGatewayDeployment.get("invokeUrl"),exampleAwsApiGatewayResource.get("path")))
 ///             .build());
 ///
 ///     }
@@ -969,7 +987,7 @@ import 'server_workflow_details.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -977,8 +995,8 @@ import 'server_workflow_details.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "transferAssumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "transferAssumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["transfer.amazonaws.com"]
@@ -988,19 +1006,28 @@ import 'server_workflow_details.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_loggroup" "transfer" {
+/// resource "aws_cloudwatch_log_group" "transfer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name_prefix = "transfer_test_"
 /// }
 /// resource "aws_iam_role" "iam_for_transfer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name_prefix         = "iam_for_transfer_"
-///   assume_role_policy  = data.aws_iam_getpolicydocument.transferAssumeRole.json
+///   assume_role_policy  = data.aws_iam_policy_document.transferAssumeRole.json
 ///   managed_policy_arns = ["arn:aws:iam::aws:policy/service-role/AWSTransferLoggingAccess"]
 /// }
 /// resource "aws_transfer_server" "transfer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_type               = "PUBLIC"
 ///   logging_role                = aws_iam_role.iam_for_transfer.arn
 ///   protocols                   = ["SFTP"]
-///   structured_log_destinations = ["${aws_cloudwatch_loggroup.transfer.arn}:*"]
+///   structured_log_destinations = ["${aws_cloudwatch_log_group.transfer.arn}:*"]
 /// }
 /// ```
 /// ```java
@@ -1185,7 +1212,7 @@ class Server extends pulumi.CustomResource {
           'aws:transfer/server:Server',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['hostKey', 'postAuthenticationLoginBanner', 'preAuthenticationLoginBanner'],
         ) {
     arn = registerOutput<String>('arn');

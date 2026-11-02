@@ -150,7 +150,7 @@ import 'infrastructure_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -158,9 +158,12 @@ import 'infrastructure_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_imagebuilder_infrastructureconfiguration" "example" {
-///   logging = {
-///     s3_logs = {
+/// resource "aws_imagebuilder_infrastructure_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   logging {
+///     s3_logs {
 ///       s3_bucket_name = exampleAwsS3Bucket.bucket
 ///       s3_key_prefix  = "logs"
 ///     }
@@ -205,20 +208,20 @@ import 'infrastructure_configuration_state.dart';
 ///         var example = new InfrastructureConfiguration("example", InfrastructureConfigurationArgs.builder()
 ///             .logging(InfrastructureConfigurationLoggingArgs.builder()
 ///                 .s3Logs(InfrastructureConfigurationLoggingS3LogsArgs.builder()
-///                     .s3BucketName(exampleAwsS3Bucket.bucket())
+///                     .s3BucketName(exampleAwsS3Bucket.get("bucket"))
 ///                     .s3KeyPrefix("logs")
 ///                     .build())
 ///                 .build())
 ///             .description("example description")
-///             .instanceProfileName(exampleAwsIamInstanceProfile.name())
+///             .instanceProfileName(exampleAwsIamInstanceProfile.get("name"))
 ///             .instanceTypes(
 ///                 "t2.nano",
 ///                 "t3.micro")
-///             .keyPair(exampleAwsKeyPair.keyName())
+///             .keyPair(exampleAwsKeyPair.get("keyName"))
 ///             .name("example")
-///             .securityGroupIds(exampleAwsSecurityGroup.id())
-///             .snsTopicArn(exampleAwsSnsTopic.arn())
-///             .subnetId(main.id())
+///             .securityGroupIds(exampleAwsSecurityGroup.get("id"))
+///             .snsTopicArn(exampleAwsSnsTopic.get("arn"))
+///             .subnetId(main.get("id"))
 ///             .terminateInstanceOnFailure(true)
 ///             .tags(Map.of("foo", "bar"))
 ///             .build());
@@ -320,7 +323,7 @@ class InfrastructureConfiguration extends pulumi.CustomResource {
           'aws:imagebuilder/infrastructureConfiguration:InfrastructureConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dateCreated = registerOutput<String>('dateCreated');

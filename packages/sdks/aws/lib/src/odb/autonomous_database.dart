@@ -81,8 +81,8 @@ import 'autonomous_database_transportable_tablespace.dart';
 ///     {
 ///         AdminPasswordWo = autonomousDatabaseAdminPassword,
 ///         AdminPasswordWoVersion = 1,
-///         ComputeCount = 2,
-///         DataStorageSizeInTbs = 1,
+///         ComputeCount = 2.0,
+///         DataStorageSizeInTbs = 1.0,
 ///         DbName = "TFADBEXAMPLE",
 ///         DbWorkload = "OLTP",
 ///         DisplayName = "pulumi-adbs-example",
@@ -133,7 +133,7 @@ import 'autonomous_database_transportable_tablespace.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -141,7 +141,10 @@ import 'autonomous_database_transportable_tablespace.dart';
 ///   }
 /// }
 ///
-/// resource "aws_odb_autonomousdatabase" "example" {
+/// resource "aws_odb_autonomous_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   admin_password_wo         = var.autonomousDatabaseAdminPassword
 ///   admin_password_wo_version = 1
 ///   compute_count             = 2
@@ -192,7 +195,7 @@ import 'autonomous_database_transportable_tablespace.dart';
 ///             .dbWorkload("OLTP")
 ///             .displayName("pulumi-adbs-example")
 ///             .licenseModel("LICENSE_INCLUDED")
-///             .odbNetworkId(exampleAwsOdbNetwork.id())
+///             .odbNetworkId(exampleAwsOdbNetwork.get("id"))
 ///             .source("NONE")
 ///             .tags(Map.of("Environment", "example"))
 ///             .build());
@@ -302,7 +305,7 @@ import 'autonomous_database_transportable_tablespace.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -310,9 +313,12 @@ import 'autonomous_database_transportable_tablespace.dart';
 ///   }
 /// }
 ///
-/// resource "aws_odb_autonomousdatabase" "example" {
-///   admin_password_source = {
-///     customer_managed_aws_secret = {
+/// resource "aws_odb_autonomous_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   admin_password_source {
+///     customer_managed_aws_secret {
 ///       external_id_type = "compartment_ocid"
 ///       iam_role_arn     = "arn:aws:iam::123456789012:role/ADBSSecretManagerReadRole"
 ///       secret_arn       = "arn:aws:secretsmanager:us-east-1:123456789012:secret:adbs-admin-password"
@@ -422,7 +428,7 @@ import 'autonomous_database_transportable_tablespace.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -430,7 +436,7 @@ import 'autonomous_database_transportable_tablespace.dart';
 ///   }
 /// }
 ///
-/// data "aws_odb_getautonomousdatabase" "example" {
+/// data "aws_odb_autonomous_database" "example" {
 ///   id = exampleAwsOdbAutonomousDatabase.id
 /// }
 /// ```
@@ -456,7 +462,7 @@ import 'autonomous_database_transportable_tablespace.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = OdbFunctions.getAutonomousDatabase(GetAutonomousDatabaseArgs.builder()
-///             .id(exampleAwsOdbAutonomousDatabase.id())
+///             .id(exampleAwsOdbAutonomousDatabase.get("id"))
 ///             .build());
 ///
 ///     }
@@ -653,7 +659,7 @@ class AutonomousDatabase extends pulumi.CustomResource {
           'aws:odb/autonomousDatabase:AutonomousDatabase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['adminPassword', 'adminPasswordWo'],
         ) {
     actualUsedDataStorageSizeInTbs = registerOutput<double>('actualUsedDataStorageSizeInTbs');

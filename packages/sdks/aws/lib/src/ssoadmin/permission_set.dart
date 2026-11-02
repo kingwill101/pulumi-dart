@@ -84,7 +84,7 @@ import 'permission_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -92,13 +92,16 @@ import 'permission_set_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
 ///
-/// resource "aws_ssoadmin_permissionset" "example" {
+/// resource "aws_ssoadmin_permission_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "Example"
 ///   description      = "An example"
-///   instance_arn     = data.aws_ssoadmin_getinstances.example.arns[0]
+///   instance_arn     = data.aws_ssoadmin_instances.example.arns[0]
 ///   relay_state      = "https://s3.console.aws.amazon.com/s3/home?region=us-east-1#"
 ///   session_duration = "PT2H"
 /// }
@@ -200,7 +203,7 @@ class PermissionSet extends pulumi.CustomResource {
           'aws:ssoadmin/permissionSet:PermissionSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdDate = registerOutput<String>('createdDate');

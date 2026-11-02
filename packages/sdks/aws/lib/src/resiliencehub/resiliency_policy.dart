@@ -149,7 +149,7 @@ import 'resiliency_policy_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -157,21 +157,24 @@ import 'resiliency_policy_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_resiliencehub_resiliencypolicy" "example" {
-///   policy = {
-///     region = {
+/// resource "aws_resiliencehub_resiliency_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy {
+///     region {
 ///       rpo = "24h"
 ///       rto = "24h"
 ///     }
-///     az = {
+///     az {
 ///       rpo = "24h"
 ///       rto = "24h"
 ///     }
-///     hardware = {
+///     hardware {
 ///       rpo = "24h"
 ///       rto = "24h"
 ///     }
-///     software = {
+///     software {
 ///       rpo = "24h"
 ///       rto = "24h"
 ///     }
@@ -309,7 +312,7 @@ class ResiliencyPolicy extends pulumi.CustomResource {
           'aws:resiliencehub/resiliencyPolicy:ResiliencyPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dataLocationConstraint = registerOutput<String>('dataLocationConstraint');

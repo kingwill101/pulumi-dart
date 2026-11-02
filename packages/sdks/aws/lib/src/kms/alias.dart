@@ -72,7 +72,7 @@ import 'alias_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -81,8 +81,14 @@ import 'alias_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "a" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_kms_alias" "a" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "alias/my-key-alias"
 ///   target_key_id = aws_kms_key.a.key_id
 /// }
@@ -177,7 +183,7 @@ class Alias extends pulumi.CustomResource {
           'aws:kms/alias:Alias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

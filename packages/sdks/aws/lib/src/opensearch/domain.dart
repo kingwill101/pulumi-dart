@@ -108,7 +108,7 @@ import 'domain_vpc_options.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -117,7 +117,10 @@ import 'domain_vpc_options.dart';
 /// }
 ///
 /// resource "aws_opensearch_domain" "example" {
-///   cluster_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_config {
 ///     instance_type = "r4.large.search"
 ///   }
 ///   domain_name    = "example"
@@ -374,7 +377,7 @@ import 'domain_vpc_options.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -382,13 +385,13 @@ import 'domain_vpc_options.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
-/// data "aws_getcalleridentity" "currentGetCallerIdentity" {
+/// data "aws_caller_identity" "currentGetCallerIdentity" {
 /// }
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
+///     condition {
 ///       test     = "IpAddress"
 ///       variable = "aws:SourceIp"
 ///       values   = ["66.193.100.22/32"]
@@ -399,13 +402,16 @@ import 'domain_vpc_options.dart';
 ///     }
 ///     effect    = "Allow"
 ///     actions   = ["es:*"]
-///     resources = ["arn:aws:es:${data.aws_getregion.current.region}:${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:domain/${var.domain}/*"]
+///     resources = ["arn:aws:es:${data.aws_region.current.region}:${data.aws_caller_identity.currentGetCallerIdentity.account_id}:domain/${var.domain}/*"]
 ///   }
 /// }
 ///
 /// resource "aws_opensearch_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name     = var.domain
-///   access_policies = data.aws_iam_getpolicydocument.example.json
+///   access_policies = data.aws_iam_policy_document.example.json
 /// }
 /// variable "domain" {
 ///   type    = string
@@ -707,7 +713,7 @@ import 'domain_vpc_options.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -715,8 +721,8 @@ import 'domain_vpc_options.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["es.amazonaws.com"]
@@ -727,16 +733,25 @@ import 'domain_vpc_options.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_loggroup" "example" {
+/// resource "aws_cloudwatch_log_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
-/// resource "aws_cloudwatch_logresourcepolicy" "example" {
+/// resource "aws_cloudwatch_log_resource_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_name     = "example"
-///   policy_document = data.aws_iam_getpolicydocument.example.json
+///   policy_document = data.aws_iam_policy_document.example.json
 /// }
 /// resource "aws_opensearch_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   log_publishing_options {
-///     cloudwatch_log_group_arn = aws_cloudwatch_loggroup.example.arn
+///     cloudwatch_log_group_arn = aws_cloudwatch_log_group.example.arn
 ///     log_type                 = "INDEX_SLOW_LOGS"
 ///   }
 /// }
@@ -1144,7 +1159,7 @@ import 'domain_vpc_options.dart';
 /// 			domain = param
 /// 		}
 /// 		example, err := ec2.LookupVpc(ctx, &ec2.LookupVpcArgs{
-/// 			Tags: map[string]pulumi.String{
+/// 			Tags: map[string]string{
 /// 				"Name": vpc,
 /// 			},
 /// 		}, nil)
@@ -1155,7 +1170,7 @@ import 'domain_vpc_options.dart';
 /// 			Filters: []ec2.GetSubnetsFilter{
 /// 				{
 /// 					Name: "vpc-id",
-/// 					Values: pulumi.StringArray{
+/// 					Values: []string{
 /// 						example.Id,
 /// 					},
 /// 				},
@@ -1234,7 +1249,7 @@ import 'domain_vpc_options.dart';
 /// 					pulumi.String(exampleGetSubnets.Ids[1]),
 /// 				},
 /// 				SecurityGroupIds: pulumi.StringArray{
-/// 					exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+/// 					exampleSecurityGroup.ID(),
 /// 				},
 /// 			},
 /// 			DomainName:    pulumi.String(domain),
@@ -1257,7 +1272,7 @@ import 'domain_vpc_options.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1265,71 +1280,81 @@ import 'domain_vpc_options.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpc" "example" {
+/// data "aws_ec2_vpc" "example" {
 ///   tags = {
 ///     "Name" = var.vpc
 ///   }
 /// }
-/// data "aws_ec2_getsubnets" "exampleGetSubnets" {
+/// data "aws_ec2_subnets" "exampleGetSubnets" {
 ///   filters {
 ///     name   = "vpc-id"
-///     values = [data.aws_ec2_getvpc.example.id]
+///     values = [data.aws_ec2_vpc.example.id]
 ///   }
 ///   tags = {
 ///     "Tier" = "private"
 ///   }
 /// }
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
-/// data "aws_getcalleridentity" "currentGetCallerIdentity" {
+/// data "aws_caller_identity" "currentGetCallerIdentity" {
 /// }
-/// data "aws_iam_getpolicydocument" "exampleGetPolicyDocument" {
-///   statements {
+/// data "aws_iam_policy_document" "exampleGetPolicyDocument" {
+///   statement {
 ///     principals {
 ///       type        = "*"
 ///       identifiers = ["*"]
 ///     }
 ///     effect    = "Allow"
 ///     actions   = ["es:*"]
-///     resources = ["arn:aws:es:${data.aws_getregion.current.region}:${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:domain/${var.domain}/*"]
+///     resources = ["arn:aws:es:${data.aws_region.current.region}:${data.aws_caller_identity.currentGetCallerIdentity.account_id}:domain/${var.domain}/*"]
 ///   }
 /// }
 ///
-/// resource "aws_ec2_securitygroup" "example" {
+/// resource "aws_ec2_security_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ingress {
 ///     from_port   = 443
 ///     to_port     = 443
 ///     protocol    = "tcp"
-///     cidr_blocks = [data.aws_ec2_getvpc.example.cidr_block]
+///     cidr_blocks = [data.aws_ec2_vpc.example.cidr_block]
 ///   }
 ///   name        ="${var.vpc}-opensearch-${var.domain}"
 ///   description = "Managed by Pulumi"
-///   vpc_id      = data.aws_ec2_getvpc.example.id
+///   vpc_id      = data.aws_ec2_vpc.example.id
 /// }
-/// resource "aws_iam_servicelinkedrole" "example" {
+/// resource "aws_iam_service_linked_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   aws_service_name = "opensearchservice.amazonaws.com"
 /// }
 /// resource "aws_opensearch_domain" "example" {
-///   depends_on = [aws_iam_servicelinkedrole.example]
-///   cluster_config = {
+///   depends_on = [aws_iam_service_linked_role.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_config {
 ///     instance_type          = "m4.large.search"
 ///     zone_awareness_enabled = true
 ///   }
-///   vpc_options = {
-///     subnet_ids         = [data.aws_ec2_getsubnets.exampleGetSubnets.ids[0], data.aws_ec2_getsubnets.exampleGetSubnets.ids[1]]
-///     security_group_ids = [aws_ec2_securitygroup.example.id]
+///   vpc_options {
+///     subnet_ids         = [data.aws_ec2_subnets.exampleGetSubnets.ids[0], data.aws_ec2_subnets.exampleGetSubnets.ids[1]]
+///     security_group_ids = [aws_ec2_security_group.example.id]
 ///   }
 ///   domain_name    = var.domain
 ///   engine_version = "OpenSearch_1.0"
 ///   advanced_options = {
 ///     "rest.action.multi.allow_explicit_index" = "true"
 ///   }
-///   access_policies = data.aws_iam_getpolicydocument.exampleGetPolicyDocument.json
+///   access_policies = data.aws_iam_policy_document.exampleGetPolicyDocument.json
 ///   tags = {
 ///     "Domain" = "TestDomain"
 ///   }
 /// }
 /// variable "vpc" {
+///   type = any
 /// }
 /// variable "domain" {
 ///   type    = string
@@ -1377,7 +1402,7 @@ import 'domain_vpc_options.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var vpc = config.require("vpc");
+///         final var vpc = config.requireObject("vpc", com.pulumi.core.TypeShape.map(String.class, Object.class));
 ///         final var domain = config.get("domain").orElse("tf-test");
 ///         final var example = Ec2Functions.getVpc(GetVpcArgs.builder()
 ///             .tags(Map.of("Name", vpc))
@@ -1712,7 +1737,7 @@ import 'domain_vpc_options.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1721,11 +1746,14 @@ import 'domain_vpc_options.dart';
 /// }
 ///
 /// resource "aws_opensearch_domain" "example" {
-///   cluster_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_config {
 ///     instance_type = "r5.large.search"
 ///   }
-///   advanced_security_options = {
-///     master_user_options = {
+///   advanced_security_options {
+///     master_user_options {
 ///       master_user_name     = "example"
 ///       master_user_password = "Barbarbarbar1!"
 ///     }
@@ -1733,17 +1761,17 @@ import 'domain_vpc_options.dart';
 ///     anonymous_auth_enabled         = true
 ///     internal_user_database_enabled = true
 ///   }
-///   encrypt_at_rest = {
+///   encrypt_at_rest {
 ///     enabled = true
 ///   }
-///   domain_endpoint_options = {
+///   domain_endpoint_options {
 ///     enforce_https       = true
 ///     tls_security_policy = "Policy-Min-TLS-1-2-2019-07"
 ///   }
-///   node_to_node_encryption = {
+///   node_to_node_encryption {
 ///     enabled = true
 ///   }
-///   ebs_options = {
+///   ebs_options {
 ///     ebs_enabled = true
 ///     volume_size = 10
 ///   }
@@ -2013,7 +2041,7 @@ import 'domain_vpc_options.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2022,11 +2050,14 @@ import 'domain_vpc_options.dart';
 /// }
 ///
 /// resource "aws_opensearch_domain" "example" {
-///   cluster_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_config {
 ///     instance_type = "r5.large.search"
 ///   }
-///   advanced_security_options = {
-///     master_user_options = {
+///   advanced_security_options {
+///     master_user_options {
 ///       master_user_name     = "example"
 ///       master_user_password = "Barbarbarbar1!"
 ///     }
@@ -2034,17 +2065,17 @@ import 'domain_vpc_options.dart';
 ///     anonymous_auth_enabled         = true
 ///     internal_user_database_enabled = true
 ///   }
-///   encrypt_at_rest = {
+///   encrypt_at_rest {
 ///     enabled = true
 ///   }
-///   domain_endpoint_options = {
+///   domain_endpoint_options {
 ///     enforce_https       = true
 ///     tls_security_policy = "Policy-Min-TLS-1-2-2019-07"
 ///   }
-///   node_to_node_encryption = {
+///   node_to_node_encryption {
 ///     enabled = true
 ///   }
-///   ebs_options = {
+///   ebs_options {
 ///     ebs_enabled = true
 ///     volume_size = 10
 ///   }
@@ -2230,7 +2261,7 @@ class Domain extends pulumi.CustomResource {
           'aws:opensearch/domain:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accessPolicies = registerOutput<String>('accessPolicies');
     advancedOptions = registerOutput<Map<String, String>>('advancedOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

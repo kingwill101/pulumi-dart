@@ -194,7 +194,7 @@ import 'instance_public_ports_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -202,8 +202,8 @@ import 'instance_public_ports_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzones" "available" {
-///   filters {
+/// data "aws_availability_zones" "available" {
+///   filter {
 ///     name   = "opt-in-status"
 ///     values = ["opt-in-not-required"]
 ///   }
@@ -211,18 +211,24 @@ import 'instance_public_ports_state.dart';
 /// }
 ///
 /// resource "aws_lightsail_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-instance"
-///   availability_zone = data.aws_getavailabilityzones.available.names[0]
+///   availability_zone = data.aws_availability_zones.available.names[0]
 ///   blueprint_id      = "amazon_linux_2"
 ///   bundle_id         = "nano_3_0"
 /// }
-/// resource "aws_lightsail_instancepublicports" "example" {
-///   port_infos {
+/// resource "aws_lightsail_instance_public_ports" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   port_info {
 ///     protocol  = "tcp"
 ///     from_port = 80
 ///     to_port   = 80
 ///   }
-///   port_infos {
+///   port_info {
 ///     protocol  = "tcp"
 ///     from_port = 443
 ///     to_port   = 443
@@ -348,7 +354,7 @@ class InstancePublicPorts extends pulumi.CustomResource {
           'aws:lightsail/instancePublicPorts:InstancePublicPorts',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     instanceName = registerOutput<String>('instanceName');
     portInfos = registerOutput<List<InstancePublicPortsPortInfo>>('portInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstancePublicPortsPortInfo>(guardedValue, (value) => InstancePublicPortsPortInfo.fromMap((value as Map).cast<String, dynamic>())); });

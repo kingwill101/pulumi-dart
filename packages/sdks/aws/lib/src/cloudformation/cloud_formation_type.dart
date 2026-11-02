@@ -64,7 +64,7 @@ class CloudFormationType extends pulumi.CustomResource {
           'aws:cloudformation/cloudFormationType:CloudFormationType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultVersionId = registerOutput<String>('defaultVersionId');

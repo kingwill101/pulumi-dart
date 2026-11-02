@@ -104,8 +104,8 @@ import 'traffic_mirror_session_state.dart';
 /// 			Description:           pulumi.String("traffic mirror session - example"),
 /// 			NetworkInterfaceId:    pulumi.Any(test.PrimaryNetworkInterfaceId),
 /// 			SessionNumber:         pulumi.Int(1),
-/// 			TrafficMirrorFilterId: filter.ID().ToIDOutput().ToStringOutput(),
-/// 			TrafficMirrorTargetId: target.ID().ToIDOutput().ToStringOutput(),
+/// 			TrafficMirrorFilterId: filter.ID(),
+/// 			TrafficMirrorTargetId: target.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -115,7 +115,7 @@ import 'traffic_mirror_session_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -123,19 +123,28 @@ import 'traffic_mirror_session_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_trafficmirrorfilter" "filter" {
+/// resource "aws_ec2_traffic_mirror_filter" "filter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description      = "traffic mirror filter - example"
 ///   network_services = ["amazon-dns"]
 /// }
-/// resource "aws_ec2_trafficmirrortarget" "target" {
+/// resource "aws_ec2_traffic_mirror_target" "target" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_load_balancer_arn = lb.arn
 /// }
-/// resource "aws_ec2_trafficmirrorsession" "session" {
+/// resource "aws_ec2_traffic_mirror_session" "session" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description              = "traffic mirror session - example"
 ///   network_interface_id     = test.primaryNetworkInterfaceId
 ///   session_number           = 1
-///   traffic_mirror_filter_id = aws_ec2_trafficmirrorfilter.filter.id
-///   traffic_mirror_target_id = aws_ec2_trafficmirrortarget.target.id
+///   traffic_mirror_filter_id = aws_ec2_traffic_mirror_filter.filter.id
+///   traffic_mirror_target_id = aws_ec2_traffic_mirror_target.target.id
 /// }
 /// ```
 /// ```java
@@ -169,12 +178,12 @@ import 'traffic_mirror_session_state.dart';
 ///             .build());
 ///
 ///         var target = new TrafficMirrorTarget("target", TrafficMirrorTargetArgs.builder()
-///             .networkLoadBalancerArn(lb.arn())
+///             .networkLoadBalancerArn(lb.get("arn"))
 ///             .build());
 ///
 ///         var session = new TrafficMirrorSession("session", TrafficMirrorSessionArgs.builder()
 ///             .description("traffic mirror session - example")
-///             .networkInterfaceId(test.primaryNetworkInterfaceId())
+///             .networkInterfaceId(test.get("primaryNetworkInterfaceId"))
 ///             .sessionNumber(1)
 ///             .trafficMirrorFilterId(filter.id())
 ///             .trafficMirrorTargetId(target.id())
@@ -251,7 +260,7 @@ class TrafficMirrorSession extends pulumi.CustomResource {
           'aws:ec2/trafficMirrorSession:TrafficMirrorSession',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

@@ -89,7 +89,7 @@ import 'access_policy_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -97,8 +97,11 @@ import 'access_policy_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_eks_accesspolicyassociation" "example" {
-///   access_scope = {
+/// resource "aws_eks_access_policy_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   access_scope {
 ///     type       = "namespace"
 ///     namespaces = ["example-namespace"]
 ///   }
@@ -134,9 +137,9 @@ import 'access_policy_association_state.dart';
 ///                 .type("namespace")
 ///                 .namespaces("example-namespace")
 ///                 .build())
-///             .clusterName(exampleAwsEksCluster.name())
+///             .clusterName(exampleAwsEksCluster.get("name"))
 ///             .policyArn("arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy")
-///             .principalArn(exampleAwsIamUser.arn())
+///             .principalArn(exampleAwsIamUser.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -206,7 +209,7 @@ class AccessPolicyAssociation extends pulumi.CustomResource {
           'aws:eks/accessPolicyAssociation:AccessPolicyAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accessScope = registerOutput<AccessPolicyAssociationAccessScope>('accessScope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPolicyAssociationAccessScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     associatedAt = registerOutput<String>('associatedAt');

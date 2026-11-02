@@ -102,7 +102,7 @@ import 'inference_profile_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -110,11 +110,14 @@ import 'inference_profile_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
-/// resource "aws_bedrock_inferenceprofile" "example" {
-///   model_source = {
+/// resource "aws_bedrock_inference_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   model_source {
 ///     copy_from = "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-3-5-sonnet-20241022-v2:0"
 ///   }
 ///   name        = "Claude Sonnet for Project 123"
@@ -230,7 +233,7 @@ class InferenceProfile extends pulumi.CustomResource {
           'aws:bedrock/inferenceProfile:InferenceProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');

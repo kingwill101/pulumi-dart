@@ -166,7 +166,7 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -174,24 +174,27 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_organizations_getorganization" "currentGetOrganization" {
+/// data "aws_organizations_organization" "currentGetOrganization" {
 /// }
 ///
-/// resource "aws_observabilityadmin_centralizationrulefororganization" "example" {
-///   rule = {
-///     destination = {
+/// resource "aws_observabilityadmin_centralization_rule_for_organization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     destination {
 ///       region  = "eu-west-1"
-///       account = data.aws_getcalleridentity.current.account_id
+///       account = data.aws_caller_identity.current.account_id
 ///     }
-///     source = {
-///       source_logs_configuration = {
+///     source {
+///       source_logs_configuration {
 ///         encrypted_log_group_strategy = "SKIP"
 ///         log_group_selection_criteria = "*"
 ///       }
 ///       regions = ["ap-southeast-1"]
-///       scope   ="OrganizationId = '${data.aws_organizations_getorganization.currentGetOrganization.id}'"
+///       scope   ="OrganizationId = '${data.aws_organizations_organization.currentGetOrganization.id}'"
 ///     }
 ///   }
 ///   rule_name = "example-centralization-rule"
@@ -507,7 +510,7 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -515,35 +518,38 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_organizations_getorganization" "currentGetOrganization" {
+/// data "aws_organizations_organization" "currentGetOrganization" {
 /// }
 ///
-/// resource "aws_observabilityadmin_centralizationrulefororganization" "advanced" {
-///   rule = {
-///     destination = {
-///       destination_logs_configuration = {
-///         logs_encryption_configuration = {
+/// resource "aws_observabilityadmin_centralization_rule_for_organization" "advanced" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     destination {
+///       destination_logs_configuration {
+///         logs_encryption_configuration {
 ///           encryption_strategy = "AWS_OWNED"
 ///         }
-///         backup_configuration = {
+///         backup_configuration {
 ///           region = "us-west-1"
 ///         }
-///         log_group_name_configuration = {
+///         log_group_name_configuration {
 ///           log_group_name_pattern = "/centralized-logs/$${source.accountId}/$${source.region}/$${source.logGroup}"
 ///         }
 ///       }
 ///       region  = "eu-west-1"
-///       account = data.aws_getcalleridentity.current.account_id
+///       account = data.aws_caller_identity.current.account_id
 ///     }
-///     source = {
-///       source_logs_configuration = {
+///     source {
+///       source_logs_configuration {
 ///         encrypted_log_group_strategy = "ALLOW"
 ///         log_group_selection_criteria = "*"
 ///       }
 ///       regions = ["ap-southeast-1", "us-east-1"]
-///       scope   ="OrganizationId = '${data.aws_organizations_getorganization.currentGetOrganization.id}'"
+///       scope   ="OrganizationId = '${data.aws_organizations_organization.currentGetOrganization.id}'"
 ///     }
 ///   }
 ///   rule_name = "advanced-centralization-rule"
@@ -835,7 +841,7 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -843,24 +849,27 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_organizations_getorganization" "currentGetOrganization" {
+/// data "aws_organizations_organization" "currentGetOrganization" {
 /// }
 ///
-/// resource "aws_observabilityadmin_centralizationrulefororganization" "filtered" {
-///   rule = {
-///     destination = {
+/// resource "aws_observabilityadmin_centralization_rule_for_organization" "filtered" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     destination {
 ///       region  = "eu-west-1"
-///       account = data.aws_getcalleridentity.current.account_id
+///       account = data.aws_caller_identity.current.account_id
 ///     }
-///     source = {
-///       source_logs_configuration = {
+///     source {
+///       source_logs_configuration {
 ///         encrypted_log_group_strategy = "ALLOW"
 ///         log_group_selection_criteria = "LogGroupName LIKE '/aws/lambda%'"
 ///       }
 ///       regions = ["ap-southeast-1", "us-east-1"]
-///       scope   ="OrganizationId = '${data.aws_organizations_getorganization.currentGetOrganization.id}'"
+///       scope   ="OrganizationId = '${data.aws_organizations_organization.currentGetOrganization.id}'"
 ///     }
 ///   }
 ///   rule_name = "filtered-centralization-rule"
@@ -1128,7 +1137,7 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1136,28 +1145,31 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_organizations_getorganization" "currentGetOrganization" {
+/// data "aws_organizations_organization" "currentGetOrganization" {
 /// }
 ///
-/// resource "aws_observabilityadmin_centralizationrulefororganization" "metrics" {
-///   rule = {
-///     destination = {
-///       destination_metrics_configuration = {
-///         backup_configuration = {
+/// resource "aws_observabilityadmin_centralization_rule_for_organization" "metrics" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     destination {
+///       destination_metrics_configuration {
+///         backup_configuration {
 ///           region = "us-west-1"
 ///         }
 ///       }
 ///       region  = "eu-west-1"
-///       account = data.aws_getcalleridentity.current.account_id
+///       account = data.aws_caller_identity.current.account_id
 ///     }
-///     source = {
-///       source_metrics_configuration = {
+///     source {
+///       source_metrics_configuration {
 ///         metrics_selection_criteria = "*"
 ///       }
 ///       regions = ["ap-southeast-1", "us-east-1"]
-///       scope   ="OrganizationId = '${data.aws_organizations_getorganization.currentGetOrganization.id}'"
+///       scope   ="OrganizationId = '${data.aws_organizations_organization.currentGetOrganization.id}'"
 ///     }
 ///   }
 ///   rule_name = "metrics-centralization-rule"
@@ -1299,7 +1311,7 @@ class CentralizationRuleForOrganization extends pulumi.CustomResource {
           'aws:observabilityadmin/centralizationRuleForOrganization:CentralizationRuleForOrganization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     rule = registerOutput<CentralizationRuleForOrganizationRule>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CentralizationRuleForOrganizationRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });

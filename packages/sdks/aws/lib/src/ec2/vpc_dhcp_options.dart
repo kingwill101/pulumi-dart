@@ -72,7 +72,7 @@ import 'vpc_dhcp_options_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -80,7 +80,10 @@ import 'vpc_dhcp_options_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcdhcpoptions" "dns_resolver" {
+/// resource "aws_ec2_vpc_dhcp_options" "dns_resolver" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name_servers = ["8.8.8.8", "8.8.4.4"]
 /// }
 /// ```
@@ -236,7 +239,7 @@ import 'vpc_dhcp_options_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -244,7 +247,10 @@ import 'vpc_dhcp_options_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcdhcpoptions" "foo" {
+/// resource "aws_ec2_vpc_dhcp_options" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name                       = "service.consul"
 ///   domain_name_servers               = ["127.0.0.1", "10.0.0.2"]
 ///   ipv6_address_preferred_lease_time = 1440
@@ -357,7 +363,7 @@ class VpcDhcpOptions extends pulumi.CustomResource {
           'aws:ec2/vpcDhcpOptions:VpcDhcpOptions',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     domainName = registerOutput<String?>('domainName');

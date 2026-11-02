@@ -76,7 +76,7 @@ import 'voice_connector_logging_state.dart';
 /// 		_, err = chime.NewVoiceConnectorLogging(ctx, "default", &chime.VoiceConnectorLoggingArgs{
 /// 			EnableSipLogs:         pulumi.Bool(true),
 /// 			EnableMediaMetricLogs: pulumi.Bool(true),
-/// 			VoiceConnectorId:      _default.ID().ToIDOutput().ToStringOutput(),
+/// 			VoiceConnectorId:      _default.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -86,7 +86,7 @@ import 'voice_connector_logging_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -94,14 +94,20 @@ import 'voice_connector_logging_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_chime_voiceconnector" "default" {
+/// resource "aws_chime_voice_connector" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "vc-name-test"
 ///   require_encryption = true
 /// }
-/// resource "aws_chime_voiceconnectorlogging" "default" {
+/// resource "aws_chime_voice_connector_logging" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enable_sip_logs          = true
 ///   enable_media_metric_logs = true
-///   voice_connector_id       = aws_chime_voiceconnector.default.id
+///   voice_connector_id       = aws_chime_voice_connector.default.id
 /// }
 /// ```
 /// ```java
@@ -187,7 +193,7 @@ class VoiceConnectorLogging extends pulumi.CustomResource {
           'aws:chime/voiceConnectorLogging:VoiceConnectorLogging',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     enableMediaMetricLogs = registerOutput<bool?>('enableMediaMetricLogs');
     enableSipLogs = registerOutput<bool?>('enableSipLogs');

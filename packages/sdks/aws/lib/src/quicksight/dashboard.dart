@@ -116,7 +116,7 @@ import 'dashboard_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -125,12 +125,15 @@ import 'dashboard_state.dart';
 /// }
 ///
 /// resource "aws_quicksight_dashboard" "example" {
-///   source_entity = {
-///     source_template = {
-///       data_set_references = [{
-///         "dataSetArn"         = dataset.arn
-///         "dataSetPlaceholder" = "1"
-///       }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   source_entity {
+///     source_template {
+///       data_set_references {
+///         data_set_arn         = dataset.arn
+///         data_set_placeholder = "1"
+///       }
 ///       arn = source.arn
 ///     }
 ///   }
@@ -167,10 +170,10 @@ import 'dashboard_state.dart';
 ///             .sourceEntity(DashboardSourceEntityArgs.builder()
 ///                 .sourceTemplate(DashboardSourceEntitySourceTemplateArgs.builder()
 ///                     .dataSetReferences(DashboardSourceEntitySourceTemplateDataSetReferenceArgs.builder()
-///                         .dataSetArn(dataset.arn())
+///                         .dataSetArn(dataset.get("arn"))
 ///                         .dataSetPlaceholder("1")
 ///                         .build())
-///                     .arn(source.arn())
+///                     .arn(source.get("arn"))
 ///                     .build())
 ///                 .build())
 ///             .dashboardId("example-id")
@@ -481,7 +484,7 @@ import 'dashboard_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -490,6 +493,9 @@ import 'dashboard_state.dart';
 /// }
 ///
 /// resource "aws_quicksight_dashboard" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   definition = {
 ///     "dataSetIdentifiersDeclarations" = [{
 ///       "dataSetArn" = dataset.arn
@@ -564,7 +570,7 @@ import 'dashboard_state.dart';
 ///         var example = new Dashboard("example", DashboardArgs.builder()
 ///             .definition(Map.ofEntries(
 ///                 Map.entry("dataSetIdentifiersDeclarations", Arrays.asList(Map.ofEntries(
-///                     Map.entry("dataSetArn", dataset.arn()),
+///                     Map.entry("dataSetArn", dataset.get("arn")),
 ///                     Map.entry("identifier", "1")
 ///                 ))),
 ///                 Map.entry("sheets", Arrays.asList(Map.ofEntries(
@@ -702,7 +708,7 @@ class Dashboard extends pulumi.CustomResource {
           'aws:quicksight/dashboard:Dashboard',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');

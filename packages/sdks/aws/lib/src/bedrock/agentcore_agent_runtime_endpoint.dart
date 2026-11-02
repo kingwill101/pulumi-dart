@@ -69,7 +69,7 @@ import 'agentcore_agent_runtime_endpoint_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,7 +77,10 @@ import 'agentcore_agent_runtime_endpoint_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoreagentruntimeendpoint" "example" {
+/// resource "aws_bedrock_agentcore_agent_runtime_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "example_endpoint"
 ///   agent_runtime_id = exampleAwsBedrockagentcoreAgentRuntime.agentRuntimeId
 ///   description      = "Endpoint for agent runtime communication"
@@ -106,7 +109,7 @@ import 'agentcore_agent_runtime_endpoint_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentcoreAgentRuntimeEndpoint("example", AgentcoreAgentRuntimeEndpointArgs.builder()
 ///             .name("example_endpoint")
-///             .agentRuntimeId(exampleAwsBedrockagentcoreAgentRuntime.agentRuntimeId())
+///             .agentRuntimeId(exampleAwsBedrockagentcoreAgentRuntime.get("agentRuntimeId"))
 ///             .description("Endpoint for agent runtime communication")
 ///             .build());
 ///
@@ -166,7 +169,7 @@ class AgentcoreAgentRuntimeEndpoint extends pulumi.CustomResource {
           'aws:bedrock/agentcoreAgentRuntimeEndpoint:AgentcoreAgentRuntimeEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     agentRuntimeArn = registerOutput<String>('agentRuntimeArn');
     agentRuntimeEndpointArn = registerOutput<String>('agentRuntimeEndpointArn');

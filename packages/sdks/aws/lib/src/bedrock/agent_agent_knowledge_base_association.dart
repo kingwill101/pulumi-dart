@@ -73,7 +73,7 @@ import 'agent_agent_knowledge_base_association_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -81,7 +81,10 @@ import 'agent_agent_knowledge_base_association_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentagentknowledgebaseassociation" "example" {
+/// resource "aws_bedrock_agent_agent_knowledge_base_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_id             = "GGRRAED6JP"
 ///   description          = "Example Knowledge base"
 ///   knowledge_base_id    = "EMDPPAYPZI"
@@ -167,7 +170,7 @@ class AgentAgentKnowledgeBaseAssociation extends pulumi.CustomResource {
           'aws:bedrock/agentAgentKnowledgeBaseAssociation:AgentAgentKnowledgeBaseAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     agentId = registerOutput<String>('agentId');
     agentVersion = registerOutput<String>('agentVersion');

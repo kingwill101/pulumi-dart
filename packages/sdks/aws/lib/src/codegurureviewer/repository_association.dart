@@ -130,7 +130,7 @@ import 'repository_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -139,20 +139,27 @@ import 'repository_association_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_codecommit_repository" "example" {
 ///   lifecycle {
-///     ignore_changes = [tags["codeguru-reviewer"]]
+///     ignore_changes        = [tags["codeguru-reviewer"]]
+///     create_before_destroy = true
 ///   }
 ///   repository_name = "example-repo"
 /// }
-/// resource "aws_codegurureviewer_repositoryassociation" "example" {
-///   repository = {
-///     codecommit = {
+/// resource "aws_codegurureviewer_repository_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   repository {
+///     codecommit {
 ///       name = aws_codecommit_repository.example.repository_name
 ///     }
 ///   }
-///   kms_key_details = {
+///   kms_key_details {
 ///     encryption_option = "CUSTOMER_MANAGED_CMK"
 ///     kms_key_id        = aws_kms_key.example.key_id
 ///   }
@@ -273,7 +280,7 @@ class RepositoryAssociation extends pulumi.CustomResource {
           'aws:codegurureviewer/repositoryAssociation:RepositoryAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     associationId = registerOutput<String>('associationId');

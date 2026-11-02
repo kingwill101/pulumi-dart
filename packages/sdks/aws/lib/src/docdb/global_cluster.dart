@@ -178,7 +178,7 @@ import 'global_cluster_state.dart';
 /// 			ClusterIdentifier:       pulumi.String("test-primary-cluster"),
 /// 			MasterUsername:          pulumi.String("username"),
 /// 			MasterPassword:          pulumi.String("somepass123"),
-/// 			GlobalClusterIdentifier: example.ID().ToIDOutput().ToStringOutput(),
+/// 			GlobalClusterIdentifier: example.ID(),
 /// 			DbSubnetGroupName:       pulumi.String("default"),
 /// 		})
 /// 		if err != nil {
@@ -187,7 +187,7 @@ import 'global_cluster_state.dart';
 /// 		primaryClusterInstance, err := docdb.NewClusterInstance(ctx, "primary", &docdb.ClusterInstanceArgs{
 /// 			Engine:            example.Engine,
 /// 			Identifier:        pulumi.String("test-primary-cluster-instance"),
-/// 			ClusterIdentifier: primary.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterIdentifier: primary.ID(),
 /// 			InstanceClass:     pulumi.String("db.r5.large"),
 /// 		})
 /// 		if err != nil {
@@ -197,7 +197,7 @@ import 'global_cluster_state.dart';
 /// 			Engine:                  example.Engine,
 /// 			EngineVersion:           example.EngineVersion,
 /// 			ClusterIdentifier:       pulumi.String("test-secondary-cluster"),
-/// 			GlobalClusterIdentifier: example.ID().ToIDOutput().ToStringOutput(),
+/// 			GlobalClusterIdentifier: example.ID(),
 /// 			DbSubnetGroupName:       pulumi.String("default"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			primary,
@@ -208,7 +208,7 @@ import 'global_cluster_state.dart';
 /// 		_, err = docdb.NewClusterInstance(ctx, "secondary", &docdb.ClusterInstanceArgs{
 /// 			Engine:            example.Engine,
 /// 			Identifier:        pulumi.String("test-secondary-cluster-instance"),
-/// 			ClusterIdentifier: secondary.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterIdentifier: secondary.ID(),
 /// 			InstanceClass:     pulumi.String("db.r5.large"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			primaryClusterInstance,
@@ -221,7 +221,7 @@ import 'global_cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -229,37 +229,52 @@ import 'global_cluster_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_docdb_globalcluster" "example" {
+/// resource "aws_docdb_global_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   global_cluster_identifier = "global-test"
 ///   engine                    = "docdb"
 ///   engine_version            = "4.0.0"
 /// }
 /// resource "aws_docdb_cluster" "primary" {
-///   engine                    = aws_docdb_globalcluster.example.engine
-///   engine_version            = aws_docdb_globalcluster.example.engine_version
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   engine                    = aws_docdb_global_cluster.example.engine
+///   engine_version            = aws_docdb_global_cluster.example.engine_version
 ///   cluster_identifier        = "test-primary-cluster"
 ///   master_username           = "username"
 ///   master_password           = "somepass123"
-///   global_cluster_identifier = aws_docdb_globalcluster.example.id
+///   global_cluster_identifier = aws_docdb_global_cluster.example.id
 ///   db_subnet_group_name      = "default"
 /// }
-/// resource "aws_docdb_clusterinstance" "primary" {
-///   engine             = aws_docdb_globalcluster.example.engine
+/// resource "aws_docdb_cluster_instance" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   engine             = aws_docdb_global_cluster.example.engine
 ///   identifier         = "test-primary-cluster-instance"
 ///   cluster_identifier = aws_docdb_cluster.primary.id
 ///   instance_class     = "db.r5.large"
 /// }
 /// resource "aws_docdb_cluster" "secondary" {
-///   depends_on                = [aws_docdb_cluster.primary]
-///   engine                    = aws_docdb_globalcluster.example.engine
-///   engine_version            = aws_docdb_globalcluster.example.engine_version
+///   depends_on = [aws_docdb_cluster.primary]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   engine                    = aws_docdb_global_cluster.example.engine
+///   engine_version            = aws_docdb_global_cluster.example.engine_version
 ///   cluster_identifier        = "test-secondary-cluster"
-///   global_cluster_identifier = aws_docdb_globalcluster.example.id
+///   global_cluster_identifier = aws_docdb_global_cluster.example.id
 ///   db_subnet_group_name      = "default"
 /// }
-/// resource "aws_docdb_clusterinstance" "secondary" {
-///   depends_on         = [aws_docdb_clusterinstance.primary]
-///   engine             = aws_docdb_globalcluster.example.engine
+/// resource "aws_docdb_cluster_instance" "secondary" {
+///   depends_on = [aws_docdb_cluster_instance.primary]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   engine             = aws_docdb_global_cluster.example.engine
 ///   identifier         = "test-secondary-cluster-instance"
 ///   cluster_identifier = aws_docdb_cluster.secondary.id
 ///   instance_class     = "db.r5.large"
@@ -465,7 +480,7 @@ import 'global_cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -475,10 +490,14 @@ import 'global_cluster_state.dart';
 ///
 /// resource "aws_docdb_cluster" "example" {
 ///   lifecycle {
-///     ignore_changes = [globalClusterIdentifier]
+///     ignore_changes        = [globalClusterIdentifier]
+///     create_before_destroy = true
 ///   }
 /// }
-/// resource "aws_docdb_globalcluster" "example" {
+/// resource "aws_docdb_global_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   global_cluster_identifier    = "example"
 ///   source_db_cluster_identifier = aws_docdb_cluster.example.arn
 /// }
@@ -601,7 +620,7 @@ import 'global_cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -609,9 +628,10 @@ import 'global_cluster_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_docdb_globalcluster" "example" {
+/// resource "aws_docdb_global_cluster" "example" {
 ///   lifecycle {
-///     ignore_changes = [sourceDbClusterIdentifier]
+///     ignore_changes        = [sourceDbClusterIdentifier]
+///     create_before_destroy = true
 ///   }
 /// }
 /// ```
@@ -690,7 +710,7 @@ class GlobalCluster extends pulumi.CustomResource {
           'aws:docdb/globalCluster:GlobalCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     databaseName = registerOutput<String?>('databaseName');

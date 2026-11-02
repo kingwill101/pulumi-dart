@@ -73,7 +73,7 @@ import 'location_object_storage_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -81,7 +81,10 @@ import 'location_object_storage_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_datasync_locationobjectstorage" "example" {
+/// resource "aws_datasync_location_object_storage" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_arns      = [exampleAwsDatasyncAgent.arn]
 ///   server_hostname = "example"
 ///   bucket_name     = "example"
@@ -109,7 +112,7 @@ import 'location_object_storage_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new LocationObjectStorage("example", LocationObjectStorageArgs.builder()
-///             .agentArns(exampleAwsDatasyncAgent.arn())
+///             .agentArns(exampleAwsDatasyncAgent.get("arn"))
 ///             .serverHostname("example")
 ///             .bucketName("example")
 ///             .build());
@@ -185,7 +188,7 @@ class LocationObjectStorage extends pulumi.CustomResource {
           'aws:datasync/locationObjectStorage:LocationObjectStorage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['secretKey'],
         ) {
     accessKey = registerOutput<String?>('accessKey');

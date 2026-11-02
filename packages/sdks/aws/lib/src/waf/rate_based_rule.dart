@@ -126,7 +126,7 @@ import 'rate_based_rule_state.dart';
 /// 		_, err = waf.NewRateBasedRule(ctx, "wafrule", &waf.RateBasedRuleArgs{
 /// 			Predicates: waf.RateBasedRulePredicateArray{
 /// 				&waf.RateBasedRulePredicateArgs{
-/// 					DataId:  ipset.ID().ToIDOutput().ToStringOutput(),
+/// 					DataId:  ipset.ID(),
 /// 					Negated: pulumi.Bool(false),
 /// 					Type:    pulumi.String("IPMatch"),
 /// 				},
@@ -146,7 +146,7 @@ import 'rate_based_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -154,17 +154,23 @@ import 'rate_based_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_waf_ipset" "ipset" {
+/// resource "aws_waf_ip_set" "ipset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ip_set_descriptors {
 ///     type  = "IPV4"
 ///     value = "192.0.7.0/24"
 ///   }
 ///   name = "tfIPSet"
 /// }
-/// resource "aws_waf_ratebasedrule" "wafrule" {
-///   depends_on = [aws_waf_ipset.ipset]
+/// resource "aws_waf_rate_based_rule" "wafrule" {
+///   depends_on = [aws_waf_ip_set.ipset]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   predicates {
-///     data_id = aws_waf_ipset.ipset.id
+///     data_id = aws_waf_ip_set.ipset.id
 ///     negated = false
 ///     type    = "IPMatch"
 ///   }
@@ -288,7 +294,7 @@ class RateBasedRule extends pulumi.CustomResource {
           'aws:waf/rateBasedRule:RateBasedRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     metricName = registerOutput<String>('metricName');

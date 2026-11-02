@@ -303,7 +303,7 @@ import 'job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -312,16 +312,19 @@ import 'job_state.dart';
 /// }
 ///
 /// resource "aws_glue_job" "etl_job" {
-///   command = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   command {
 ///     script_location ="s3://${glueScripts.bucket}/jobs/etl_job.py"
 ///     name            = "glueetl"
 ///     python_version  = "3"
 ///   }
-///   notification_property = {
+///   notification_property {
 ///     notify_delay_after = 3
 ///   }
 ///   # delay in minutes
-///   execution_property = {
+///   execution_property {
 ///     max_concurrent_runs = 1
 ///   }
 ///   name              = "example-etl-job"
@@ -348,6 +351,9 @@ import 'job_state.dart';
 /// }
 /// # IAM role for Glue jobs
 /// resource "aws_iam_role" "glue_job_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "glue-job-role"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -360,10 +366,13 @@ import 'job_state.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_s3_bucketobjectv2" "glue_etl_script" {
+/// resource "aws_s3_bucket_objectv2" "glue_etl_script" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = glueScripts.id
 ///   key    = "jobs/etl_job.py"
-///   source = fileAsset("jobs/etl_job.py")
+///   source = fileasset("jobs/etl_job.py")
 /// }
 /// ```
 /// ```java
@@ -414,7 +423,7 @@ import 'job_state.dart';
 ///
 ///         var etlJob = new Job("etlJob", JobArgs.builder()
 ///             .command(JobCommandArgs.builder()
-///                 .scriptLocation(String.format("s3://%s/jobs/etl_job.py", glueScripts.bucket()))
+///                 .scriptLocation(String.format("s3://%s/jobs/etl_job.py", glueScripts.get("bucket")))
 ///                 .name("glueetl")
 ///                 .pythonVersion("3")
 ///                 .build())
@@ -432,7 +441,7 @@ import 'job_state.dart';
 ///             .timeout(2880)
 ///             .numberOfWorkers(2)
 ///             .workerType("G.1X")
-///             .connections(example.name())
+///             .connections(example.get("name"))
 ///             .executionClass("STANDARD")
 ///             .defaultArguments(Map.ofEntries(
 ///                 Map.entry("--job-language", "python"),
@@ -446,7 +455,7 @@ import 'job_state.dart';
 ///             .build());
 ///
 ///         var glueEtlScript = new BucketObjectv2("glueEtlScript", BucketObjectv2Args.builder()
-///             .bucket(glueScripts.id())
+///             .bucket(glueScripts.get("id"))
 ///             .key("jobs/etl_job.py")
 ///             .source(new FileAsset("jobs/etl_job.py"))
 ///             .build());
@@ -771,7 +780,7 @@ import 'job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -780,12 +789,15 @@ import 'job_state.dart';
 /// }
 ///
 /// resource "aws_glue_job" "python_shell_job" {
-///   command = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   command {
 ///     script_location ="s3://${glueScripts.bucket}/jobs/shell_job.py"
 ///     name            = "pythonshell"
 ///     python_version  = "3.9"
 ///   }
-///   execution_property = {
+///   execution_property {
 ///     max_concurrent_runs = 1
 ///   }
 ///   name         = "example-python-shell-job"
@@ -807,6 +819,9 @@ import 'job_state.dart';
 /// }
 /// # IAM role for Glue jobs
 /// resource "aws_iam_role" "glue_job_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "glue-job-role"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -819,10 +834,13 @@ import 'job_state.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_s3_bucketobjectv2" "python_shell_script" {
+/// resource "aws_s3_bucket_objectv2" "python_shell_script" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = glueScripts.id
 ///   key    = "jobs/shell_job.py"
-///   source = fileAsset("jobs/shell_job.py")
+///   source = fileasset("jobs/shell_job.py")
 /// }
 /// ```
 /// ```java
@@ -872,7 +890,7 @@ import 'job_state.dart';
 ///
 ///         var pythonShellJob = new Job("pythonShellJob", JobArgs.builder()
 ///             .command(JobCommandArgs.builder()
-///                 .scriptLocation(String.format("s3://%s/jobs/shell_job.py", glueScripts.bucket()))
+///                 .scriptLocation(String.format("s3://%s/jobs/shell_job.py", glueScripts.get("bucket")))
 ///                 .name("pythonshell")
 ///                 .pythonVersion("3.9")
 ///                 .build())
@@ -885,7 +903,7 @@ import 'job_state.dart';
 ///             .maxCapacity(0.0625)
 ///             .maxRetries(0)
 ///             .timeout(2880)
-///             .connections(example.name())
+///             .connections(example.get("name"))
 ///             .defaultArguments(Map.ofEntries(
 ///                 Map.entry("--job-language", "python"),
 ///                 Map.entry("--continuous-log-logGroup", "/aws-glue/jobs"),
@@ -896,7 +914,7 @@ import 'job_state.dart';
 ///             .build());
 ///
 ///         var pythonShellScript = new BucketObjectv2("pythonShellScript", BucketObjectv2Args.builder()
-///             .bucket(glueScripts.id())
+///             .bucket(glueScripts.get("id"))
 ///             .key("jobs/shell_job.py")
 ///             .source(new FileAsset("jobs/shell_job.py"))
 ///             .build());
@@ -1047,7 +1065,7 @@ import 'job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1056,7 +1074,10 @@ import 'job_state.dart';
 /// }
 ///
 /// resource "aws_glue_job" "example" {
-///   command = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   command {
 ///     name            = "glueray"
 ///     python_version  = "3.9"
 ///     runtime         = "Ray2.4"
@@ -1095,10 +1116,10 @@ import 'job_state.dart';
 ///                 .name("glueray")
 ///                 .pythonVersion("3.9")
 ///                 .runtime("Ray2.4")
-///                 .scriptLocation(String.format("s3://%s/example.py", exampleAwsS3Bucket.bucket()))
+///                 .scriptLocation(String.format("s3://%s/example.py", exampleAwsS3Bucket.get("bucket")))
 ///                 .build())
 ///             .name("example")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .glueVersion("4.0")
 ///             .workerType("Z.2X")
 ///             .build());
@@ -1207,7 +1228,7 @@ import 'job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1216,7 +1237,10 @@ import 'job_state.dart';
 /// }
 ///
 /// resource "aws_glue_job" "example" {
-///   command = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   command {
 ///     script_location ="s3://${exampleAwsS3Bucket.bucket}/example.scala"
 ///   }
 ///   name     = "example"
@@ -1250,10 +1274,10 @@ import 'job_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Job("example", JobArgs.builder()
 ///             .command(JobCommandArgs.builder()
-///                 .scriptLocation(String.format("s3://%s/example.scala", exampleAwsS3Bucket.bucket()))
+///                 .scriptLocation(String.format("s3://%s/example.scala", exampleAwsS3Bucket.get("bucket")))
 ///                 .build())
 ///             .name("example")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .defaultArguments(Map.of("--job-language", "scala"))
 ///             .build());
 ///
@@ -1349,7 +1373,7 @@ import 'job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1358,7 +1382,10 @@ import 'job_state.dart';
 /// }
 ///
 /// resource "aws_glue_job" "example" {
-///   command = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   command {
 ///     name            = "gluestreaming"
 ///     script_location ="s3://${exampleAwsS3Bucket.bucket}/example.script"
 ///   }
@@ -1391,10 +1418,10 @@ import 'job_state.dart';
 ///         var example = new Job("example", JobArgs.builder()
 ///             .command(JobCommandArgs.builder()
 ///                 .name("gluestreaming")
-///                 .scriptLocation(String.format("s3://%s/example.script", exampleAwsS3Bucket.bucket()))
+///                 .scriptLocation(String.format("s3://%s/example.script", exampleAwsS3Bucket.get("bucket")))
 ///                 .build())
 ///             .name("example streaming job")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1506,7 +1533,7 @@ import 'job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1514,13 +1541,19 @@ import 'job_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_loggroup" "example" {
+/// resource "aws_cloudwatch_log_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example"
 ///   retention_in_days = 14
 /// }
 /// resource "aws_glue_job" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   default_arguments = {
-///     "--continuous-log-logGroup"          = aws_cloudwatch_loggroup.example.name
+///     "--continuous-log-logGroup"          = aws_cloudwatch_log_group.example.name
 ///     "--enable-continuous-cloudwatch-log" = "true"
 ///     "--enable-continuous-log-filter"     = "true"
 ///     "--enable-metrics"                   = ""
@@ -1669,7 +1702,7 @@ class Job extends pulumi.CustomResource {
           'aws:glue/job:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     command = registerOutput<JobCommand>('command', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobCommand.fromMap((guardedValue as Map).cast<String, dynamic>()); });

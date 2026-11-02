@@ -62,7 +62,7 @@ import 'readiness_check_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'readiness_check_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53recoveryreadiness_readinesscheck" "example" {
+/// resource "aws_route53recoveryreadiness_readiness_check" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   readiness_check_name = my-cw-alarm-check
 ///   resource_set_name    = my-cw-alarm-set
 /// }
@@ -147,7 +150,7 @@ class ReadinessCheck extends pulumi.CustomResource {
           'aws:route53recoveryreadiness/readinessCheck:ReadinessCheck',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     readinessCheckName = registerOutput<String>('readinessCheckName');

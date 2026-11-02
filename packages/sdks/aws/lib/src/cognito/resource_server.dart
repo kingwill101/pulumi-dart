@@ -72,7 +72,7 @@ import 'resource_server_state.dart';
 /// 		_, err = cognito.NewResourceServer(ctx, "resource", &cognito.ResourceServerArgs{
 /// 			Identifier: pulumi.String("https://example.com"),
 /// 			Name:       pulumi.String("example"),
-/// 			UserPoolId: pool.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId: pool.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -82,7 +82,7 @@ import 'resource_server_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -90,13 +90,19 @@ import 'resource_server_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_userpool" "pool" {
+/// resource "aws_cognito_user_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "pool"
 /// }
-/// resource "aws_cognito_resourceserver" "resource" {
+/// resource "aws_cognito_resource_server" "resource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identifier   = "https://example.com"
 ///   name         = "example"
-///   user_pool_id = aws_cognito_userpool.pool.id
+///   user_pool_id = aws_cognito_user_pool.pool.id
 /// }
 /// ```
 /// ```java
@@ -237,7 +243,7 @@ import 'resource_server_state.dart';
 /// 			},
 /// 			Identifier: pulumi.String("https://example.com"),
 /// 			Name:       pulumi.String("example"),
-/// 			UserPoolId: pool.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId: pool.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -247,7 +253,7 @@ import 'resource_server_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -255,17 +261,23 @@ import 'resource_server_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_userpool" "pool" {
+/// resource "aws_cognito_user_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "pool"
 /// }
-/// resource "aws_cognito_resourceserver" "resource" {
-///   scopes {
+/// resource "aws_cognito_resource_server" "resource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope {
 ///     scope_name        = "sample-scope"
 ///     scope_description = "a Sample Scope Description"
 ///   }
 ///   identifier   = "https://example.com"
 ///   name         = "example"
-///   user_pool_id = aws_cognito_userpool.pool.id
+///   user_pool_id = aws_cognito_user_pool.pool.id
 /// }
 /// ```
 /// ```java
@@ -360,7 +372,7 @@ class ResourceServer extends pulumi.CustomResource {
           'aws:cognito/resourceServer:ResourceServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     identifier = registerOutput<String>('identifier');
     this.name = registerOutput<String>('name');

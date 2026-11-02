@@ -82,7 +82,7 @@ import 'savings_plan_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -90,7 +90,10 @@ import 'savings_plan_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_savingsplans_savingsplan" "example" {
+/// resource "aws_savingsplans_savings_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   savings_plan_offering_id = "00000000-0000-0000-0000-000000000000"
 ///   commitment               = "1.0"
 ///   tags = {
@@ -215,7 +218,7 @@ import 'savings_plan_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -223,7 +226,10 @@ import 'savings_plan_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_savingsplans_savingsplan" "scheduled" {
+/// resource "aws_savingsplans_savings_plan" "scheduled" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   savings_plan_offering_id = "00000000-0000-0000-0000-000000000000"
 ///   commitment               = "5.0"
 ///   purchase_time            = "2026-12-01T00:00:00Z"
@@ -347,7 +353,7 @@ class SavingsPlan extends pulumi.CustomResource {
           'aws:savingsplans/savingsPlan:SavingsPlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     commitment = registerOutput<String>('commitment');
     currency = registerOutput<String>('currency');

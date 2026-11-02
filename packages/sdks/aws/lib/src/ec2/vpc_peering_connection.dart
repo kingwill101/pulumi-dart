@@ -87,7 +87,7 @@ import 'vpc_peering_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -95,7 +95,10 @@ import 'vpc_peering_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcpeeringconnection" "foo" {
+/// resource "aws_ec2_vpc_peering_connection" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   peer_owner_id = peerOwnerId
 ///   peer_vpc_id   = bar.id
 ///   vpc_id        = fooAwsVpc.id
@@ -124,8 +127,8 @@ import 'vpc_peering_connection_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var foo = new VpcPeeringConnection("foo", VpcPeeringConnectionArgs.builder()
 ///             .peerOwnerId(peerOwnerId)
-///             .peerVpcId(bar.id())
-///             .vpcId(fooAwsVpc.id())
+///             .peerVpcId(bar.get("id"))
+///             .vpcId(fooAwsVpc.get("id"))
 ///             .build());
 ///
 ///     }
@@ -230,7 +233,7 @@ import 'vpc_peering_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -238,7 +241,10 @@ import 'vpc_peering_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcpeeringconnection" "foo" {
+/// resource "aws_ec2_vpc_peering_connection" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   accepter = {
 ///     allow_remote_vpc_dns_resolution = true
 ///   }
@@ -281,8 +287,8 @@ import 'vpc_peering_connection_state.dart';
 ///                 .allowRemoteVpcDnsResolution(true)
 ///                 .build())
 ///             .peerOwnerId(peerOwnerId)
-///             .peerVpcId(bar.id())
-///             .vpcId(fooAwsVpc.id())
+///             .peerVpcId(bar.get("id"))
+///             .vpcId(fooAwsVpc.get("id"))
 ///             .build());
 ///
 ///     }
@@ -393,8 +399,8 @@ import 'vpc_peering_connection_state.dart';
 /// 		}
 /// 		_, err = ec2.NewVpcPeeringConnection(ctx, "foo", &ec2.VpcPeeringConnectionArgs{
 /// 			PeerOwnerId: pulumi.Any(peerOwnerId),
-/// 			PeerVpcId:   bar.ID().ToIDOutput().ToStringOutput(),
-/// 			VpcId:       fooVpc.ID().ToIDOutput().ToStringOutput(),
+/// 			PeerVpcId:   bar.ID(),
+/// 			VpcId:       fooVpc.ID(),
 /// 			AutoAccept:  pulumi.Bool(true),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("VPC Peering between foo and bar"),
@@ -408,7 +414,7 @@ import 'vpc_peering_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -416,7 +422,10 @@ import 'vpc_peering_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcpeeringconnection" "foo" {
+/// resource "aws_ec2_vpc_peering_connection" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   peer_owner_id = peerOwnerId
 ///   peer_vpc_id   = aws_ec2_vpc.bar.id
 ///   vpc_id        = aws_ec2_vpc.foo.id
@@ -426,9 +435,15 @@ import 'vpc_peering_connection_state.dart';
 ///   }
 /// }
 /// resource "aws_ec2_vpc" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.1.0.0/16"
 /// }
 /// resource "aws_ec2_vpc" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.2.0.0/16"
 /// }
 /// ```
@@ -577,8 +592,8 @@ import 'vpc_peering_connection_state.dart';
 /// 		}
 /// 		_, err = ec2.NewVpcPeeringConnection(ctx, "foo", &ec2.VpcPeeringConnectionArgs{
 /// 			PeerOwnerId: pulumi.Any(peerOwnerId),
-/// 			PeerVpcId:   bar.ID().ToIDOutput().ToStringOutput(),
-/// 			VpcId:       fooVpc.ID().ToIDOutput().ToStringOutput(),
+/// 			PeerVpcId:   bar.ID(),
+/// 			VpcId:       fooVpc.ID(),
 /// 			PeerRegion:  pulumi.String("us-east-1"),
 /// 		})
 /// 		if err != nil {
@@ -589,7 +604,7 @@ import 'vpc_peering_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -597,16 +612,25 @@ import 'vpc_peering_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcpeeringconnection" "foo" {
+/// resource "aws_ec2_vpc_peering_connection" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   peer_owner_id = peerOwnerId
 ///   peer_vpc_id   = aws_ec2_vpc.bar.id
 ///   vpc_id        = aws_ec2_vpc.foo.id
 ///   peer_region   = "us-east-1"
 /// }
 /// resource "aws_ec2_vpc" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.1.0.0/16"
 /// }
 /// resource "aws_ec2_vpc" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.2.0.0/16"
 /// }
 /// ```
@@ -715,7 +739,7 @@ class VpcPeeringConnection extends pulumi.CustomResource {
           'aws:ec2/vpcPeeringConnection:VpcPeeringConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     acceptStatus = registerOutput<String>('acceptStatus');
     accepter = registerOutput<VpcPeeringConnectionAccepter>('accepter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcPeeringConnectionAccepter.fromMap((guardedValue as Map).cast<String, dynamic>()); });

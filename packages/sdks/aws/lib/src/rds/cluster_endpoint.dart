@@ -230,7 +230,7 @@ import 'cluster_endpoint_state.dart';
 /// 		}
 /// 		test1, err := rds.NewClusterInstance(ctx, "test1", &rds.ClusterInstanceArgs{
 /// 			ApplyImmediately:  pulumi.Bool(true),
-/// 			ClusterIdentifier: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterIdentifier: _default.ID(),
 /// 			Identifier:        pulumi.String("test1"),
 /// 			InstanceClass:     pulumi.String(rds.InstanceType_T2_Small),
 /// 			Engine:            _default.Engine.ApplyT(func(x *string) rds.EngineType { return rds.EngineType(*x) }).(rds.EngineTypeOutput),
@@ -241,7 +241,7 @@ import 'cluster_endpoint_state.dart';
 /// 		}
 /// 		test2, err := rds.NewClusterInstance(ctx, "test2", &rds.ClusterInstanceArgs{
 /// 			ApplyImmediately:  pulumi.Bool(true),
-/// 			ClusterIdentifier: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterIdentifier: _default.ID(),
 /// 			Identifier:        pulumi.String("test2"),
 /// 			InstanceClass:     pulumi.String(rds.InstanceType_T2_Small),
 /// 			Engine:            _default.Engine.ApplyT(func(x *string) rds.EngineType { return rds.EngineType(*x) }).(rds.EngineTypeOutput),
@@ -252,7 +252,7 @@ import 'cluster_endpoint_state.dart';
 /// 		}
 /// 		test3, err := rds.NewClusterInstance(ctx, "test3", &rds.ClusterInstanceArgs{
 /// 			ApplyImmediately:  pulumi.Bool(true),
-/// 			ClusterIdentifier: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterIdentifier: _default.ID(),
 /// 			Identifier:        pulumi.String("test3"),
 /// 			InstanceClass:     pulumi.String(rds.InstanceType_T2_Small),
 /// 			Engine:            _default.Engine.ApplyT(func(x *string) rds.EngineType { return rds.EngineType(*x) }).(rds.EngineTypeOutput),
@@ -262,24 +262,24 @@ import 'cluster_endpoint_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = rds.NewClusterEndpoint(ctx, "eligible", &rds.ClusterEndpointArgs{
-/// 			ClusterIdentifier:         _default.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterIdentifier:         _default.ID(),
 /// 			ClusterEndpointIdentifier: pulumi.String("reader"),
 /// 			CustomEndpointType:        pulumi.String("READER"),
 /// 			ExcludedMembers: pulumi.StringArray{
-/// 				test1.ID().ToIDOutput().ToStringOutput(),
-/// 				test2.ID().ToIDOutput().ToStringOutput(),
+/// 				test1.ID(),
+/// 				test2.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = rds.NewClusterEndpoint(ctx, "static", &rds.ClusterEndpointArgs{
-/// 			ClusterIdentifier:         _default.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterIdentifier:         _default.ID(),
 /// 			ClusterEndpointIdentifier: pulumi.String("static"),
 /// 			CustomEndpointType:        pulumi.String("READER"),
 /// 			StaticMembers: pulumi.StringArray{
-/// 				test1.ID().ToIDOutput().ToStringOutput(),
-/// 				test3.ID().ToIDOutput().ToStringOutput(),
+/// 				test1.ID(),
+/// 				test3.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -290,7 +290,7 @@ import 'cluster_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -299,6 +299,9 @@ import 'cluster_endpoint_state.dart';
 /// }
 ///
 /// resource "aws_rds_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier      = "aurora-cluster-demo"
 ///   availability_zones      = ["us-west-2a", "us-west-2b", "us-west-2c"]
 ///   database_name           = "mydb"
@@ -307,7 +310,10 @@ import 'cluster_endpoint_state.dart';
 ///   backup_retention_period = 5
 ///   preferred_backup_window = "07:00-09:00"
 /// }
-/// resource "aws_rds_clusterinstance" "test1" {
+/// resource "aws_rds_cluster_instance" "test1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   apply_immediately  = true
 ///   cluster_identifier = aws_rds_cluster.default.id
 ///   identifier         = "test1"
@@ -315,7 +321,10 @@ import 'cluster_endpoint_state.dart';
 ///   engine             = aws_rds_cluster.default.engine
 ///   engine_version     = aws_rds_cluster.default.engine_version
 /// }
-/// resource "aws_rds_clusterinstance" "test2" {
+/// resource "aws_rds_cluster_instance" "test2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   apply_immediately  = true
 ///   cluster_identifier = aws_rds_cluster.default.id
 ///   identifier         = "test2"
@@ -323,7 +332,10 @@ import 'cluster_endpoint_state.dart';
 ///   engine             = aws_rds_cluster.default.engine
 ///   engine_version     = aws_rds_cluster.default.engine_version
 /// }
-/// resource "aws_rds_clusterinstance" "test3" {
+/// resource "aws_rds_cluster_instance" "test3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   apply_immediately  = true
 ///   cluster_identifier = aws_rds_cluster.default.id
 ///   identifier         = "test3"
@@ -331,17 +343,23 @@ import 'cluster_endpoint_state.dart';
 ///   engine             = aws_rds_cluster.default.engine
 ///   engine_version     = aws_rds_cluster.default.engine_version
 /// }
-/// resource "aws_rds_clusterendpoint" "eligible" {
+/// resource "aws_rds_cluster_endpoint" "eligible" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier          = aws_rds_cluster.default.id
 ///   cluster_endpoint_identifier = "reader"
 ///   custom_endpoint_type        = "READER"
-///   excluded_members            = [aws_rds_clusterinstance.test1.id, aws_rds_clusterinstance.test2.id]
+///   excluded_members            = [aws_rds_cluster_instance.test1.id, aws_rds_cluster_instance.test2.id]
 /// }
-/// resource "aws_rds_clusterendpoint" "static" {
+/// resource "aws_rds_cluster_endpoint" "static" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier          = aws_rds_cluster.default.id
 ///   cluster_endpoint_identifier = "static"
 ///   custom_endpoint_type        = "READER"
-///   static_members              = [aws_rds_clusterinstance.test1.id, aws_rds_clusterinstance.test3.id]
+///   static_members              = [aws_rds_cluster_instance.test1.id, aws_rds_cluster_instance.test3.id]
 /// }
 /// ```
 /// ```java
@@ -534,7 +552,7 @@ class ClusterEndpoint extends pulumi.CustomResource {
           'aws:rds/clusterEndpoint:ClusterEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     clusterEndpointIdentifier = registerOutput<String>('clusterEndpointIdentifier');

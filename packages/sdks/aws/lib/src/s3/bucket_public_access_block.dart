@@ -77,7 +77,7 @@ import 'bucket_public_access_block_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketPublicAccessBlock(ctx, "example", &s3.BucketPublicAccessBlockArgs{
-/// 			Bucket:                example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket:                example.ID(),
 /// 			BlockPublicAcls:       pulumi.Bool(true),
 /// 			BlockPublicPolicy:     pulumi.Bool(true),
 /// 			IgnorePublicAcls:      pulumi.Bool(true),
@@ -91,7 +91,7 @@ import 'bucket_public_access_block_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -100,9 +100,15 @@ import 'bucket_public_access_block_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example"
 /// }
-/// resource "aws_s3_bucketpublicaccessblock" "example" {
+/// resource "aws_s3_bucket_public_access_block" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket                  = aws_s3_bucket.example.id
 ///   block_public_acls       = true
 ///   block_public_policy     = true
@@ -213,7 +219,7 @@ class BucketPublicAccessBlock extends pulumi.CustomResource {
           'aws:s3/bucketPublicAccessBlock:BucketPublicAccessBlock',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     blockPublicAcls = registerOutput<bool?>('blockPublicAcls');
     blockPublicPolicy = registerOutput<bool?>('blockPublicPolicy');

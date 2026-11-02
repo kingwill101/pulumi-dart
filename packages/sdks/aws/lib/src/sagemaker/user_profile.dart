@@ -65,7 +65,7 @@ import 'user_profile_user_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,10 @@ import 'user_profile_user_settings.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_userprofile" "example" {
+/// resource "aws_sagemaker_user_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_id         = test.id
 ///   user_profile_name = "example"
 /// }
@@ -100,7 +103,7 @@ import 'user_profile_user_settings.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new UserProfile("example", UserProfileArgs.builder()
-///             .domainId(test.id())
+///             .domainId(test.get("id"))
 ///             .userProfileName("example")
 ///             .build());
 ///
@@ -171,7 +174,7 @@ class UserProfile extends pulumi.CustomResource {
           'aws:sagemaker/userProfile:UserProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     domainId = registerOutput<String>('domainId');

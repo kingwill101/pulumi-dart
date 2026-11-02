@@ -148,7 +148,7 @@ import 'field_level_encryption_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -156,22 +156,25 @@ import 'field_level_encryption_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_fieldlevelencryptionconfig" "test" {
-///   content_type_profile_config = {
-///     content_type_profiles = {
-///       items = [{
-///         "contentType" = "application/x-www-form-urlencoded"
-///         "format"      = "URLEncoded"
-///       }]
+/// resource "aws_cloudfront_field_level_encryption_config" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   content_type_profile_config {
+///     content_type_profiles {
+///       items {
+///         content_type = "application/x-www-form-urlencoded"
+///         format       = "URLEncoded"
+///       }
 ///     }
 ///     forward_when_content_type_is_unknown = true
 ///   }
-///   query_arg_profile_config = {
-///     query_arg_profiles = {
-///       items = [{
-///         "profileId" = testAwsCloudfrontFieldLevelEncryptionProfile.id
-///         "queryArg"  = "Arg1"
-///       }]
+///   query_arg_profile_config {
+///     query_arg_profiles {
+///       items {
+///         profile_id = testAwsCloudfrontFieldLevelEncryptionProfile.id
+///         query_arg  = "Arg1"
+///       }
 ///     }
 ///     forward_when_query_arg_profile_is_unknown = true
 ///   }
@@ -218,7 +221,7 @@ import 'field_level_encryption_config_state.dart';
 ///             .queryArgProfileConfig(FieldLevelEncryptionConfigQueryArgProfileConfigArgs.builder()
 ///                 .queryArgProfiles(FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesArgs.builder()
 ///                     .items(FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItemArgs.builder()
-///                         .profileId(testAwsCloudfrontFieldLevelEncryptionProfile.id())
+///                         .profileId(testAwsCloudfrontFieldLevelEncryptionProfile.get("id"))
 ///                         .queryArg("Arg1")
 ///                         .build())
 ///                     .build())
@@ -284,7 +287,7 @@ class FieldLevelEncryptionConfig extends pulumi.CustomResource {
           'aws:cloudfront/fieldLevelEncryptionConfig:FieldLevelEncryptionConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     callerReference = registerOutput<String>('callerReference');

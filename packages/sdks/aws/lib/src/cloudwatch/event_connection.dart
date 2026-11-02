@@ -96,7 +96,7 @@ import 'event_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -104,9 +104,12 @@ import 'event_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_eventconnection" "test" {
-///   auth_parameters = {
-///     api_key = {
+/// resource "aws_cloudwatch_event_connection" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   auth_parameters {
+///     api_key {
 ///       key   = "x-signature"
 ///       value = "1234"
 ///     }
@@ -257,7 +260,7 @@ import 'event_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -265,9 +268,12 @@ import 'event_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_eventconnection" "test" {
-///   auth_parameters = {
-///     basic = {
+/// resource "aws_cloudwatch_event_connection" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   auth_parameters {
+///     basic {
 ///       username = "user"
 ///       password = "Pass1234!"
 ///     }
@@ -522,7 +528,7 @@ import 'event_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -530,29 +536,32 @@ import 'event_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_eventconnection" "test" {
-///   auth_parameters = {
-///     oauth = {
-///       client_parameters = {
+/// resource "aws_cloudwatch_event_connection" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   auth_parameters {
+///     oauth {
+///       client_parameters {
 ///         client_id     = "1234567890"
 ///         client_secret = "Pass1234!"
 ///       }
-///       oauth_http_parameters = {
-///         bodies = [{
-///           "key"           = "body-parameter-key"
-///           "value"         = "body-parameter-value"
-///           "isValueSecret" = false
-///         }]
-///         headers = [{
-///           "key"           = "header-parameter-key"
-///           "value"         = "header-parameter-value"
-///           "isValueSecret" = false
-///         }]
-///         query_strings = [{
-///           "key"           = "query-string-parameter-key"
-///           "value"         = "query-string-parameter-value"
-///           "isValueSecret" = false
-///         }]
+///       oauth_http_parameters {
+///         body {
+///           key             = "body-parameter-key"
+///           value           = "body-parameter-value"
+///           is_value_secret = false
+///         }
+///         header {
+///           key             = "header-parameter-key"
+///           value           = "header-parameter-value"
+///           is_value_secret = false
+///         }
+///         query_string {
+///           key             = "query-string-parameter-key"
+///           value           = "query-string-parameter-value"
+///           is_value_secret = false
+///         }
 ///       }
 ///       authorization_endpoint = "https://auth.url.com/endpoint"
 ///       http_method            = "GET"
@@ -858,7 +867,7 @@ import 'event_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -866,32 +875,36 @@ import 'event_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_eventconnection" "test" {
-///   auth_parameters = {
-///     basic = {
+/// resource "aws_cloudwatch_event_connection" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   auth_parameters {
+///     basic {
 ///       username = "user"
 ///       password = "Pass1234!"
 ///     }
-///     invocation_http_parameters = {
-///       bodies = [{
-///         "key"           = "body-parameter-key"
-///         "value"         = "body-parameter-value"
-///         "isValueSecret" = false
-///         }, {
-///         "key"           = "body-parameter-key2"
-///         "value"         = "body-parameter-value2"
-///         "isValueSecret" = true
-///       }]
-///       headers = [{
-///         "key"           = "header-parameter-key"
-///         "value"         = "header-parameter-value"
-///         "isValueSecret" = false
-///       }]
-///       query_strings = [{
-///         "key"           = "query-string-parameter-key"
-///         "value"         = "query-string-parameter-value"
-///         "isValueSecret" = false
-///       }]
+///     invocation_http_parameters {
+///       body {
+///         key             = "body-parameter-key"
+///         value           = "body-parameter-value"
+///         is_value_secret = false
+///       }
+///       body {
+///         key             = "body-parameter-key2"
+///         value           = "body-parameter-value2"
+///         is_value_secret = true
+///       }
+///       header {
+///         key             = "header-parameter-key"
+///         value           = "header-parameter-value"
+///         is_value_secret = false
+///       }
+///       query_string {
+///         key             = "query-string-parameter-key"
+///         value           = "query-string-parameter-value"
+///         is_value_secret = false
+///       }
 ///     }
 ///   }
 ///   name               = "ngrok-connection"
@@ -1157,7 +1170,7 @@ import 'event_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1165,24 +1178,27 @@ import 'event_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_eventconnection" "test" {
-///   auth_parameters = {
-///     connectivity_parameters = {
-///       resource_parameters = {
+/// resource "aws_cloudwatch_event_connection" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   auth_parameters {
+///     connectivity_parameters {
+///       resource_parameters {
 ///         resource_configuration_arn = "arn:aws:vpc-lattice:us-east-1:12345678910:resourceconfiguration/rcfg-12345678910"
 ///       }
 ///     }
-///     oauth = {
-///       client_parameters = {
+///     oauth {
+///       client_parameters {
 ///         client_id     = "1234567890"
 ///         client_secret = "Pass1234!"
 ///       }
-///       oauth_http_parameters = {
-///         bodies = [{
-///           "key"           = "grant_type"
-///           "value"         = "client_credentials"
-///           "isValueSecret" = false
-///         }]
+///       oauth_http_parameters {
+///         body {
+///           key             = "grant_type"
+///           value           = "client_credentials"
+///           is_value_secret = false
+///         }
 ///       }
 ///       authorization_endpoint = "https://private-api.example.com/auth"
 ///       http_method            = "POST"
@@ -1587,7 +1603,7 @@ import 'event_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1595,12 +1611,15 @@ import 'event_connection_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
 ///
 /// resource "aws_kms_key" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_window_in_days = 7
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -1609,7 +1628,7 @@ import 'event_connection_state.dart';
 ///       "Sid"    = "Enable IAM User Permissions"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:${data.aws_getpartition.currentGetPartition.partition}:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///         "AWS" ="arn:${data.aws_partition.currentGetPartition.partition}:iam::${data.aws_caller_identity.current.account_id}:root"
 ///       }
 ///       "Action"   = "kms:*"
 ///       "Resource" = "*"
@@ -1617,7 +1636,7 @@ import 'event_connection_state.dart';
 ///       "Sid"    = "Allow use of the key"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:${data.aws_getpartition.currentGetPartition.partition}:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///         "AWS" ="arn:${data.aws_partition.currentGetPartition.partition}:iam::${data.aws_caller_identity.current.account_id}:root"
 ///       }
 ///       "Action"   = ["kms:DescribeKey", "kms:Decrypt", "kms:GenerateDataKey"]
 ///       "Resource" = "*"
@@ -1633,9 +1652,12 @@ import 'event_connection_state.dart';
 ///     "EventBridgeApiDestinations" = "true"
 ///   }
 /// }
-/// resource "aws_cloudwatch_eventconnection" "test" {
-///   auth_parameters = {
-///     basic = {
+/// resource "aws_cloudwatch_event_connection" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   auth_parameters {
+///     basic {
 ///       username = "user"
 ///       password = "Pass1234!"
 ///     }
@@ -1731,7 +1753,7 @@ import 'event_connection_state.dart';
 ///             .name("ngrok-connection")
 ///             .description("A connection description")
 ///             .authorizationType("BASIC")
-///             .kmsKeyIdentifier(example.id())
+///             .kmsKeyIdentifier(example.get("id"))
 ///             .build());
 ///
 ///     }
@@ -1845,7 +1867,7 @@ class EventConnection extends pulumi.CustomResource {
           'aws:cloudwatch/eventConnection:EventConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     authParameters = registerOutput<EventConnectionAuthParameters>('authParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventConnectionAuthParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });

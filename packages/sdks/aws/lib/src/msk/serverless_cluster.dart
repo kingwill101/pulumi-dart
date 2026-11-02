@@ -119,7 +119,7 @@ import 'serverless_cluster_vpc_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -127,15 +127,18 @@ import 'serverless_cluster_vpc_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_msk_serverlesscluster" "example" {
-///   client_authentication = {
-///     sasl = {
-///       iam = {
+/// resource "aws_msk_serverless_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   client_authentication {
+///     sasl {
+///       iam {
 ///         enabled = true
 ///       }
 ///     }
 ///   }
-///   vpc_configs {
+///   vpc_config {
 ///     subnet_ids         = exampleAwsSubnet[*].id
 ///     security_group_ids = [exampleAwsSecurityGroup.id]
 ///   }
@@ -176,8 +179,8 @@ import 'serverless_cluster_vpc_config.dart';
 ///                     .build())
 ///                 .build())
 ///             .vpcConfigs(ServerlessClusterVpcConfigArgs.builder()
-///                 .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
-///                 .securityGroupIds(exampleAwsSecurityGroup.id())
+///                 .subnetIds(exampleAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
+///                 .securityGroupIds(exampleAwsSecurityGroup.get("id"))
 ///                 .build())
 ///             .clusterName("Example")
 ///             .build());
@@ -233,7 +236,7 @@ class ServerlessCluster extends pulumi.CustomResource {
           'aws:msk/serverlessCluster:ServerlessCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     bootstrapBrokersSaslIam = registerOutput<String>('bootstrapBrokersSaslIam');

@@ -198,7 +198,7 @@ import 'multi_region_access_point_routes_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -207,33 +207,46 @@ import 'multi_region_access_point_routes_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example-bucket-primary"
 /// }
 /// resource "aws_s3_bucket" "secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example-bucket-secondary"
 /// }
-/// resource "aws_s3control_multiregionaccesspoint" "example" {
-///   details = {
-///     regions = [{
-///       "bucket" = aws_s3_bucket.primary.bucket
-///       }, {
-///       "bucket" = aws_s3_bucket.secondary.bucket
-///     }]
+/// resource "aws_s3control_multi_region_access_point" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   details {
+///     region {
+///       bucket = aws_s3_bucket.primary.bucket
+///     }
+///     region {
+///       bucket = aws_s3_bucket.secondary.bucket
+///     }
 ///     name = "example"
 ///   }
 /// }
-/// resource "aws_s3control_multiregionaccesspointroutes" "example" {
-///   routes {
+/// resource "aws_s3control_multi_region_access_point_routes" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   route {
 ///     bucket                  = aws_s3_bucket.primary.bucket
 ///     region                  = aws_s3_bucket.primary.bucket_region
 ///     traffic_dial_percentage = 100
 ///   }
-///   routes {
+///   route {
 ///     bucket                  = aws_s3_bucket.secondary.bucket
 ///     region                  = aws_s3_bucket.secondary.bucket_region
 ///     traffic_dial_percentage = 100
 ///   }
-///   mrap = aws_s3control_multiregionaccesspoint.example.arn
+///   mrap = aws_s3control_multi_region_access_point.example.arn
 /// }
 /// ```
 /// ```java
@@ -441,7 +454,7 @@ import 'multi_region_access_point_routes_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -449,13 +462,16 @@ import 'multi_region_access_point_routes_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3control_multiregionaccesspointroutes" "example" {
-///   routes {
+/// resource "aws_s3control_multi_region_access_point_routes" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   route {
 ///     bucket                  = primary.bucket
 ///     region                  = primary.bucketRegion
 ///     traffic_dial_percentage = 0
 ///   }
-///   routes {
+///   route {
 ///     bucket                  = secondary.bucket
 ///     region                  = secondary.bucketRegion
 ///     traffic_dial_percentage = 100
@@ -488,16 +504,16 @@ import 'multi_region_access_point_routes_state.dart';
 ///         var example = new MultiRegionAccessPointRoutes("example", MultiRegionAccessPointRoutesArgs.builder()
 ///             .routes(
 ///                 MultiRegionAccessPointRoutesRouteArgs.builder()
-///                     .bucket(primary.bucket())
-///                     .region(primary.bucketRegion())
+///                     .bucket(primary.get("bucket"))
+///                     .region(primary.get("bucketRegion"))
 ///                     .trafficDialPercentage(0)
 ///                     .build(),
 ///                 MultiRegionAccessPointRoutesRouteArgs.builder()
-///                     .bucket(secondary.bucket())
-///                     .region(secondary.bucketRegion())
+///                     .bucket(secondary.get("bucket"))
+///                     .region(secondary.get("bucketRegion"))
 ///                     .trafficDialPercentage(100)
 ///                     .build())
-///             .mrap(exampleAwsS3controlMultiRegionAccessPoint.arn())
+///             .mrap(exampleAwsS3controlMultiRegionAccessPoint.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -560,7 +576,7 @@ class MultiRegionAccessPointRoutes extends pulumi.CustomResource {
           'aws:s3control/multiRegionAccessPointRoutes:MultiRegionAccessPointRoutes',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     mrap = registerOutput<String>('mrap');

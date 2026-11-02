@@ -62,7 +62,7 @@ import 'aggregate_authorization_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'aggregate_authorization_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cfg_aggregateauthorization" "example" {
+/// resource "aws_cfg_aggregate_authorization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id            = "123456789012"
 ///   authorized_aws_region = "eu-west-2"
 /// }
@@ -147,7 +150,7 @@ class AggregateAuthorization extends pulumi.CustomResource {
           'aws:cfg/aggregateAuthorization:AggregateAuthorization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');

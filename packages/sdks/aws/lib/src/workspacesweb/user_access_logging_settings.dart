@@ -87,7 +87,7 @@ import 'user_access_logging_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -96,12 +96,18 @@ import 'user_access_logging_settings_state.dart';
 /// }
 ///
 /// resource "aws_kinesis_stream" "example" {
-///   stream_mode_details = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   stream_mode_details {
 ///     stream_mode = "ON_DEMAND"
 ///   }
 ///   name = "amazon-workspaces-web-example-stream"
 /// }
-/// resource "aws_workspacesweb_useraccessloggingsettings" "example" {
+/// resource "aws_workspacesweb_user_access_logging_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   kinesis_stream_arn = aws_kinesis_stream.example.arn
 /// }
 /// ```
@@ -260,7 +266,7 @@ import 'user_access_logging_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -269,12 +275,18 @@ import 'user_access_logging_settings_state.dart';
 /// }
 ///
 /// resource "aws_kinesis_stream" "example" {
-///   stream_mode_details = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   stream_mode_details {
 ///     stream_mode = "ON_DEMAND"
 ///   }
 ///   name = "example-stream"
 /// }
-/// resource "aws_workspacesweb_useraccessloggingsettings" "example" {
+/// resource "aws_workspacesweb_user_access_logging_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   kinesis_stream_arn = aws_kinesis_stream.example.arn
 ///   tags = {
 ///     "Name"        = "example-user-access-logging-settings"
@@ -378,7 +390,7 @@ class UserAccessLoggingSettings extends pulumi.CustomResource {
           'aws:workspacesweb/userAccessLoggingSettings:UserAccessLoggingSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kinesisStreamArn = registerOutput<String>('kinesisStreamArn');

@@ -410,7 +410,7 @@ import 'intent_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -419,28 +419,31 @@ import 'intent_state.dart';
 /// }
 ///
 /// resource "aws_lex_intent" "order_flowers_intent" {
-///   confirmation_prompt = {
-///     messages = [{
-///       "content"     = "Okay, your {FlowerType} will be ready for pickup by {PickupTime} on {PickupDate}.  Does this sound okay?"
-///       "contentType" = "PlainText"
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   confirmation_prompt {
+///     message {
+///       content      = "Okay, your {FlowerType} will be ready for pickup by {PickupTime} on {PickupDate}.  Does this sound okay?"
+///       content_type = "PlainText"
+///     }
 ///     max_attempts = 2
 ///   }
-///   fulfillment_activity = {
+///   fulfillment_activity {
 ///     type = "ReturnIntent"
 ///   }
-///   rejection_statement = {
-///     messages = [{
-///       "content"     = "Okay, I will not place your order."
-///       "contentType" = "PlainText"
-///     }]
+///   rejection_statement {
+///     message {
+///       content      = "Okay, I will not place your order."
+///       content_type = "PlainText"
+///     }
 ///   }
-///   slots {
-///     value_elicitation_prompt = {
-///       messages = [{
-///         "content"     = "What type of flowers would you like to order?"
-///         "contentType" = "PlainText"
-///       }]
+///   slot {
+///     value_elicitation_prompt {
+///       message {
+///         content      = "What type of flowers would you like to order?"
+///         content_type = "PlainText"
+///       }
 ///       max_attempts = 2
 ///     }
 ///     description       = "The type of flowers to pick up"
@@ -451,12 +454,12 @@ import 'intent_state.dart';
 ///     slot_type         = "FlowerTypes"
 ///     slot_type_version = "$$LATEST"
 ///   }
-///   slots {
-///     value_elicitation_prompt = {
-///       messages = [{
-///         "content"     = "What day do you want the {FlowerType} to be picked up?"
-///         "contentType" = "PlainText"
-///       }]
+///   slot {
+///     value_elicitation_prompt {
+///       message {
+///         content      = "What day do you want the {FlowerType} to be picked up?"
+///         content_type = "PlainText"
+///       }
 ///       max_attempts = 2
 ///     }
 ///     description       = "The date to pick up the flowers"
@@ -467,12 +470,12 @@ import 'intent_state.dart';
 ///     slot_type         = "AMAZON.DATE"
 ///     slot_type_version = "$$LATEST"
 ///   }
-///   slots {
-///     value_elicitation_prompt = {
-///       messages = [{
-///         "content"     = "Pick up the {FlowerType} at what time on {PickupDate}?"
-///         "contentType" = "PlainText"
-///       }]
+///   slot {
+///     value_elicitation_prompt {
+///       message {
+///         content      = "Pick up the {FlowerType} at what time on {PickupDate}?"
+///         content_type = "PlainText"
+///       }
 ///       max_attempts = 2
 ///     }
 ///     description       = "The time to pick up the flowers"
@@ -741,7 +744,7 @@ class Intent extends pulumi.CustomResource {
           'aws:lex/intent:Intent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     checksum = registerOutput<String>('checksum');

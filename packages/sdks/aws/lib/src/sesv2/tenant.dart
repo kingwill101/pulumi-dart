@@ -73,7 +73,7 @@ import 'tenant_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,6 +82,9 @@ import 'tenant_state.dart';
 /// }
 ///
 /// resource "aws_sesv2_tenant" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tenant_name = "example-tenant"
 ///   tags = {
 ///     "Environment" = "test"
@@ -165,7 +168,7 @@ class Tenant extends pulumi.CustomResource {
           'aws:sesv2/tenant:Tenant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     sendingStatus = registerOutput<String>('sendingStatus');

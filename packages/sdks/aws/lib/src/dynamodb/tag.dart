@@ -133,7 +133,7 @@ import 'tag_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -144,18 +144,24 @@ import 'tag_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "replica" {
+/// data "aws_region" "replica" {
 /// }
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
 ///
 /// resource "aws_dynamodb_table" "example" {
-///   replicas {
-///     region_name = data.aws_getregion.replica.region
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   replica {
+///     region_name = data.aws_region.replica.region
 ///   }
 /// }
 /// resource "aws_dynamodb_tag" "test" {
-///   resource_arn = replace(aws_dynamodb_table.example.arn, data.aws_getregion.current.region, data.aws_getregion.replica.region)
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_arn = replace(aws_dynamodb_table.example.arn, data.aws_region.current.region, data.aws_region.replica.region)
 ///   key          = "testkey"
 ///   value        = "testvalue"
 /// }
@@ -274,7 +280,7 @@ class Tag extends pulumi.CustomResource {
           'aws:dynamodb/tag:Tag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     key = registerOutput<String>('key');
     region = registerOutput<String>('region');

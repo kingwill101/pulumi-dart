@@ -120,7 +120,7 @@ import 'report_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -128,12 +128,15 @@ import 'report_plan_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_backup_reportplan" "example" {
-///   report_delivery_channel = {
+/// resource "aws_backup_report_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   report_delivery_channel {
 ///     formats        = ["CSV", "JSON"]
 ///     s3_bucket_name = "example-bucket-name"
 ///   }
-///   report_setting = {
+///   report_setting {
 ///     report_template = "RESTORE_JOB_REPORT"
 ///   }
 ///   name        = "example_name"
@@ -244,7 +247,7 @@ class ReportPlan extends pulumi.CustomResource {
           'aws:backup/reportPlan:ReportPlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationTime = registerOutput<String>('creationTime');

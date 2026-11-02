@@ -80,7 +80,7 @@ import 'identity_provider_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -88,8 +88,11 @@ import 'identity_provider_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_eks_identityproviderconfig" "example" {
-///   oidc = {
+/// resource "aws_eks_identity_provider_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   oidc {
 ///     client_id                     = "your client_id"
 ///     identity_provider_config_name = "example"
 ///     issuer_url                    = "your issuer_url"
@@ -125,7 +128,7 @@ import 'identity_provider_config_state.dart';
 ///                 .identityProviderConfigName("example")
 ///                 .issuerUrl("your issuer_url")
 ///                 .build())
-///             .clusterName(exampleAwsEksCluster.name())
+///             .clusterName(exampleAwsEksCluster.get("name"))
 ///             .build());
 ///
 ///     }
@@ -193,7 +196,7 @@ class IdentityProviderConfig extends pulumi.CustomResource {
           'aws:eks/identityProviderConfig:IdentityProviderConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     clusterName = registerOutput<String>('clusterName');

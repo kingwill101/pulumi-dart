@@ -85,7 +85,7 @@ import 'email_identity_mail_from_attributes_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -93,13 +93,19 @@ import 'email_identity_mail_from_attributes_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sesv2_emailidentity" "example" {
+/// resource "aws_sesv2_email_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   email_identity = "example.com"
 /// }
-/// resource "aws_sesv2_emailidentitymailfromattributes" "example" {
-///   email_identity         = aws_sesv2_emailidentity.example.email_identity
+/// resource "aws_sesv2_email_identity_mail_from_attributes" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   email_identity         = aws_sesv2_email_identity.example.email_identity
 ///   behavior_on_mx_failure = "REJECT_MESSAGE"
-///   mail_from_domain       ="subdomain.${aws_sesv2_emailidentity.example.email_identity}"
+///   mail_from_domain       ="subdomain.${aws_sesv2_email_identity.example.email_identity}"
 /// }
 /// ```
 /// ```java
@@ -183,7 +189,7 @@ class EmailIdentityMailFromAttributes extends pulumi.CustomResource {
           'aws:sesv2/emailIdentityMailFromAttributes:EmailIdentityMailFromAttributes',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     behaviorOnMxFailure = registerOutput<String?>('behaviorOnMxFailure');
     emailIdentity = registerOutput<String>('emailIdentity');

@@ -57,7 +57,7 @@ import 'get_cluster_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,7 +65,7 @@ import 'get_cluster_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_cloudhsmv2_getcluster" "cluster" {
+/// data "aws_cloudhsmv2_cluster" "cluster" {
 ///   cluster_id = "cluster-testclusterid"
 /// }
 /// ```

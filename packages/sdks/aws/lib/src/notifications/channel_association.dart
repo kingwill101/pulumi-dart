@@ -104,7 +104,7 @@ import 'channel_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -112,17 +112,26 @@ import 'channel_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_notifications_notificationconfiguration" "example" {
+/// resource "aws_notifications_notification_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example-notification-config"
 ///   description = "Example notification configuration"
 /// }
-/// resource "aws_notifications_contactsemailcontact" "example" {
+/// resource "aws_notifications_contacts_email_contact" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "example-contact"
 ///   email_address = "example@example.com"
 /// }
-/// resource "aws_notifications_channelassociation" "example" {
-///   arn                            = aws_notifications_contactsemailcontact.example.arn
-///   notification_configuration_arn = aws_notifications_notificationconfiguration.example.arn
+/// resource "aws_notifications_channel_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   arn                            = aws_notifications_contacts_email_contact.example.arn
+///   notification_configuration_arn = aws_notifications_notification_configuration.example.arn
 /// }
 /// ```
 /// ```java
@@ -215,7 +224,7 @@ class ChannelAssociation extends pulumi.CustomResource {
           'aws:notifications/channelAssociation:ChannelAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     notificationConfigurationArn = registerOutput<String>('notificationConfigurationArn');

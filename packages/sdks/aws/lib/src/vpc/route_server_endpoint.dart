@@ -78,7 +78,7 @@ import 'route_server_endpoint_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,7 +86,10 @@ import 'route_server_endpoint_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpc_routeserverendpoint" "test" {
+/// resource "aws_vpc_route_server_endpoint" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   route_server_id = example.routeServerId
 ///   subnet_id       = main.id
 ///   tags = {
@@ -116,8 +119,8 @@ import 'route_server_endpoint_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new RouteServerEndpoint("test", RouteServerEndpointArgs.builder()
-///             .routeServerId(example.routeServerId())
-///             .subnetId(main.id())
+///             .routeServerId(example.get("routeServerId"))
+///             .subnetId(main.get("id"))
 ///             .tags(Map.of("Name", "Endpoint A"))
 ///             .build());
 ///
@@ -180,7 +183,7 @@ class RouteServerEndpoint extends pulumi.CustomResource {
           'aws:vpc/routeServerEndpoint:RouteServerEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     eniAddress = registerOutput<String>('eniAddress');

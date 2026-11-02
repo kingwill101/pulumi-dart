@@ -66,7 +66,7 @@ import 'network_interface_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'network_interface_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_networkinterfaceattachment" "test" {
+/// resource "aws_ec2_network_interface_attachment" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id          = testAwsInstance.id
 ///   network_interface_id = testAwsNetworkInterface.id
 ///   device_index         = 0
@@ -102,8 +105,8 @@ import 'network_interface_attachment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new NetworkInterfaceAttachment("test", NetworkInterfaceAttachmentArgs.builder()
-///             .instanceId(testAwsInstance.id())
-///             .networkInterfaceId(testAwsNetworkInterface.id())
+///             .instanceId(testAwsInstance.get("id"))
+///             .networkInterfaceId(testAwsNetworkInterface.get("id"))
 ///             .deviceIndex(0)
 ///             .build());
 ///
@@ -156,7 +159,7 @@ class NetworkInterfaceAttachmentEc2 extends pulumi.CustomResource {
           'aws:ec2/networkInterfaceAttachment:NetworkInterfaceAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     attachmentId = registerOutput<String>('attachmentId');
     deviceIndex = registerOutput<int>('deviceIndex');

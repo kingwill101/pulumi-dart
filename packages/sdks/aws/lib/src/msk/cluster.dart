@@ -461,7 +461,7 @@ import 'cluster_state.dart';
 /// 		subnetAz1, err := ec2.NewSubnet(ctx, "subnet_az1", &ec2.SubnetArgs{
 /// 			AvailabilityZone: pulumi.String(azs.Names[0]),
 /// 			CidrBlock:        pulumi.String("192.168.0.0/24"),
-/// 			VpcId:            vpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            vpc.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -469,7 +469,7 @@ import 'cluster_state.dart';
 /// 		subnetAz2, err := ec2.NewSubnet(ctx, "subnet_az2", &ec2.SubnetArgs{
 /// 			AvailabilityZone: pulumi.String(azs.Names[1]),
 /// 			CidrBlock:        pulumi.String("192.168.1.0/24"),
-/// 			VpcId:            vpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            vpc.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -477,13 +477,13 @@ import 'cluster_state.dart';
 /// 		subnetAz3, err := ec2.NewSubnet(ctx, "subnet_az3", &ec2.SubnetArgs{
 /// 			AvailabilityZone: pulumi.String(azs.Names[2]),
 /// 			CidrBlock:        pulumi.String("192.168.2.0/24"),
-/// 			VpcId:            vpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            vpc.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		sg, err := ec2.NewSecurityGroup(ctx, "sg", &ec2.SecurityGroupArgs{
-/// 			VpcId: vpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId: vpc.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -507,7 +507,7 @@ import 'cluster_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "bucket_acl", &s3.BucketAclArgs{
-/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: bucket.ID(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -566,12 +566,12 @@ import 'cluster_state.dart';
 /// 				},
 /// 				InstanceType: pulumi.String("kafka.m5.large"),
 /// 				ClientSubnets: pulumi.StringArray{
-/// 					subnetAz1.ID().ToIDOutput().ToStringOutput(),
-/// 					subnetAz2.ID().ToIDOutput().ToStringOutput(),
-/// 					subnetAz3.ID().ToIDOutput().ToStringOutput(),
+/// 					subnetAz1.ID(),
+/// 					subnetAz2.ID(),
+/// 					subnetAz3.ID(),
 /// 				},
 /// 				SecurityGroups: pulumi.StringArray{
-/// 					sg.ID().ToIDOutput().ToStringOutput(),
+/// 					sg.ID(),
 /// 				},
 /// 			},
 /// 			EncryptionInfo: &msk.ClusterEncryptionInfoArgs{
@@ -599,7 +599,7 @@ import 'cluster_state.dart';
 /// 					},
 /// 					S3: &msk.ClusterLoggingInfoBrokerLogsS3Args{
 /// 						Enabled: pulumi.Bool(true),
-/// 						Bucket:  bucket.ID().ToIDOutput().ToStringOutput(),
+/// 						Bucket:  bucket.ID(),
 /// 						Prefix:  pulumi.String("logs/msk-"),
 /// 					},
 /// 				},
@@ -621,7 +621,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -629,11 +629,11 @@ import 'cluster_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzones" "azs" {
+/// data "aws_availability_zones" "azs" {
 ///   state = "available"
 /// }
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["firehose.amazonaws.com"]
@@ -644,48 +644,79 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "vpc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "192.168.0.0/22"
 /// }
 /// resource "aws_ec2_subnet" "subnet_az1" {
-///   availability_zone = data.aws_getavailabilityzones.azs.names[0]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   availability_zone = data.aws_availability_zones.azs.names[0]
 ///   cidr_block        = "192.168.0.0/24"
 ///   vpc_id            = aws_ec2_vpc.vpc.id
 /// }
 /// resource "aws_ec2_subnet" "subnet_az2" {
-///   availability_zone = data.aws_getavailabilityzones.azs.names[1]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   availability_zone = data.aws_availability_zones.azs.names[1]
 ///   cidr_block        = "192.168.1.0/24"
 ///   vpc_id            = aws_ec2_vpc.vpc.id
 /// }
 /// resource "aws_ec2_subnet" "subnet_az3" {
-///   availability_zone = data.aws_getavailabilityzones.azs.names[2]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   availability_zone = data.aws_availability_zones.azs.names[2]
 ///   cidr_block        = "192.168.2.0/24"
 ///   vpc_id            = aws_ec2_vpc.vpc.id
 /// }
-/// resource "aws_ec2_securitygroup" "sg" {
+/// resource "aws_ec2_security_group" "sg" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id = aws_ec2_vpc.vpc.id
 /// }
 /// resource "aws_kms_key" "kms" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "example"
 /// }
-/// resource "aws_cloudwatch_loggroup" "test" {
+/// resource "aws_cloudwatch_log_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "msk_broker_logs"
 /// }
 /// resource "aws_s3_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "msk-broker-logs-bucket"
 /// }
-/// resource "aws_s3_bucketacl" "bucket_acl" {
+/// resource "aws_s3_bucket_acl" "bucket_acl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.bucket.id
 ///   acl    = "private"
 /// }
 /// resource "aws_iam_role" "firehose_role" {
-///   name               = "firehose_test_role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
-/// }
-/// resource "aws_kinesis_firehosedeliverystream" "test_stream" {
 ///   lifecycle {
-///     ignore_changes = [tags["LogDeliveryEnabled"]]
+///     create_before_destroy = true
 ///   }
-///   extended_s3_configuration = {
+///   name               = "firehose_test_role"
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
+/// }
+/// resource "aws_kinesis_firehose_delivery_stream" "test_stream" {
+///   lifecycle {
+///     ignore_changes        = [tags["LogDeliveryEnabled"]]
+///     create_before_destroy = true
+///   }
+///   extended_s3_configuration {
 ///     role_arn   = aws_iam_role.firehose_role.arn
 ///     bucket_arn = aws_s3_bucket.bucket.arn
 ///   }
@@ -696,40 +727,43 @@ import 'cluster_state.dart';
 ///   }
 /// }
 /// resource "aws_msk_cluster" "example" {
-///   broker_node_group_info = {
-///     storage_info = {
-///       ebs_storage_info = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   broker_node_group_info {
+///     storage_info {
+///       ebs_storage_info {
 ///         volume_size = 1000
 ///       }
 ///     }
 ///     instance_type   = "kafka.m5.large"
 ///     client_subnets  = [aws_ec2_subnet.subnet_az1.id, aws_ec2_subnet.subnet_az2.id, aws_ec2_subnet.subnet_az3.id]
-///     security_groups = [aws_ec2_securitygroup.sg.id]
+///     security_groups = [aws_ec2_security_group.sg.id]
 ///   }
-///   encryption_info = {
+///   encryption_info {
 ///     encryption_at_rest_kms_key_arn = aws_kms_key.kms.arn
 ///   }
-///   open_monitoring = {
-///     prometheus = {
-///       jmx_exporter = {
+///   open_monitoring {
+///     prometheus {
+///       jmx_exporter {
 ///         enabled_in_broker = true
 ///       }
-///       node_exporter = {
+///       node_exporter {
 ///         enabled_in_broker = true
 ///       }
 ///     }
 ///   }
-///   logging_info = {
-///     broker_logs = {
-///       cloudwatch_logs = {
+///   logging_info {
+///     broker_logs {
+///       cloudwatch_logs {
 ///         enabled   = true
-///         log_group = aws_cloudwatch_loggroup.test.name
+///         log_group = aws_cloudwatch_log_group.test.name
 ///       }
-///       firehose = {
+///       firehose {
 ///         enabled         = true
-///         delivery_stream = aws_kinesis_firehosedeliverystream.test_stream.name
+///         delivery_stream = aws_kinesis_firehose_delivery_stream.test_stream.name
 ///       }
-///       s3 = {
+///       s3 {
 ///         enabled = true
 ///         bucket  = aws_s3_bucket.bucket.id
 ///         prefix  = "logs/msk-"
@@ -1216,7 +1250,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1225,10 +1259,13 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_msk_cluster" "example" {
-///   broker_node_group_info = {
-///     storage_info = {
-///       ebs_storage_info = {
-///         provisioned_throughput = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   broker_node_group_info {
+///     storage_info {
+///       ebs_storage_info {
+///         provisioned_throughput {
 ///           enabled           = true
 ///           volume_throughput = 250
 ///         }
@@ -1282,10 +1319,10 @@ import 'cluster_state.dart';
 ///                     .build())
 ///                 .instanceType("kafka.m5.4xlarge")
 ///                 .clientSubnets(
-///                     subnetAz1.id(),
-///                     subnetAz2.id(),
-///                     subnetAz3.id())
-///                 .securityGroups(sg.id())
+///                     subnetAz1.get("id"),
+///                     subnetAz2.get("id"),
+///                     subnetAz3.get("id"))
+///                 .securityGroups(sg.get("id"))
 ///                 .build())
 ///             .clusterName("example")
 ///             .kafkaVersion("3.8.x")
@@ -1418,7 +1455,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:msk/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     bootstrapBrokers = registerOutput<String>('bootstrapBrokers');

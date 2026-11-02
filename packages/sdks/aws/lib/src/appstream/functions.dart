@@ -65,7 +65,7 @@ import 'get_image_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,7 @@ import 'get_image_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_appstream_getimage" "test" {
+/// data "aws_appstream_image" "test" {
 ///   name        = "AppStream-WinServer2019-06-17-2024"
 ///   type        = "PUBLIC"
 ///   most_recent = true

@@ -62,7 +62,7 @@ import 'endpoint_authorization_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'endpoint_authorization_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_redshift_endpointauthorization" "example" {
+/// resource "aws_redshift_endpoint_authorization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account            = "01234567910"
 ///   cluster_identifier = exampleAwsRedshiftCluster.clusterIdentifier
 /// }
@@ -98,7 +101,7 @@ import 'endpoint_authorization_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new EndpointAuthorization("example", EndpointAuthorizationArgs.builder()
 ///             .account("01234567910")
-///             .clusterIdentifier(exampleAwsRedshiftCluster.clusterIdentifier())
+///             .clusterIdentifier(exampleAwsRedshiftCluster.get("clusterIdentifier"))
 ///             .build());
 ///
 ///     }
@@ -153,7 +156,7 @@ class EndpointAuthorization extends pulumi.CustomResource {
           'aws:redshift/endpointAuthorization:EndpointAuthorization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     account = registerOutput<String>('account');
     allowedAllVpcs = registerOutput<bool>('allowedAllVpcs');

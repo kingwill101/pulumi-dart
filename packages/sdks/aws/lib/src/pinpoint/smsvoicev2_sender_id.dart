@@ -74,7 +74,7 @@ import 'smsvoicev2_sender_id_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,7 +82,10 @@ import 'smsvoicev2_sender_id_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_pinpoint_smsvoicev2senderid" "example" {
+/// resource "aws_pinpoint_smsvoicev2_sender_id" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   sender_id        = "MYCOMPANY"
 ///   iso_country_code = "GB"
 ///   message_types    = ["TRANSACTIONAL"]
@@ -201,7 +204,7 @@ import 'smsvoicev2_sender_id_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -209,7 +212,10 @@ import 'smsvoicev2_sender_id_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_pinpoint_smsvoicev2senderid" "example" {
+/// resource "aws_pinpoint_smsvoicev2_sender_id" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   sender_id                   = "MYCOMPANY"
 ///   iso_country_code            = "GB"
 ///   message_types               = ["TRANSACTIONAL"]
@@ -319,7 +325,7 @@ class Smsvoicev2SenderId extends pulumi.CustomResource {
           'aws:pinpoint/smsvoicev2SenderId:Smsvoicev2SenderId',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');

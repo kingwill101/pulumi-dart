@@ -64,7 +64,7 @@ import 'tenant_resource_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'tenant_resource_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sesv2_tenantresourceassociation" "example" {
+/// resource "aws_sesv2_tenant_resource_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tenant_name  = "example-tenant"
 ///   resource_arn = "arn:aws:ses:us-east-1:123456789012:configuration-set/example"
 /// }
@@ -145,7 +148,7 @@ class TenantResourceAssociation extends pulumi.CustomResource {
           'aws:sesv2/tenantResourceAssociation:TenantResourceAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');

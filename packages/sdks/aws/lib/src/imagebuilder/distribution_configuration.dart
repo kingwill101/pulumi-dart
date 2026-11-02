@@ -139,7 +139,7 @@ import 'distribution_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -147,10 +147,13 @@ import 'distribution_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_imagebuilder_distributionconfiguration" "example" {
-///   distributions {
-///     ami_distribution_configuration = {
-///       launch_permission = {
+/// resource "aws_imagebuilder_distribution_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   distribution {
+///     ami_distribution_configuration {
+///       launch_permission {
 ///         user_ids = ["123456789012"]
 ///       }
 ///       ami_tags = {
@@ -158,7 +161,7 @@ import 'distribution_configuration_state.dart';
 ///       }
 ///       name = "example-{{ imagebuilder:buildDate }}"
 ///     }
-///     launch_template_configurations {
+///     launch_template_configuration {
 ///       launch_template_id = "lt-0aaa1bcde2ff3456"
 ///     }
 ///     region = "us-east-1"
@@ -279,7 +282,7 @@ class DistributionConfiguration extends pulumi.CustomResource {
           'aws:imagebuilder/distributionConfiguration:DistributionConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dateCreated = registerOutput<String>('dateCreated');

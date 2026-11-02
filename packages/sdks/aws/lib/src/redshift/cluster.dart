@@ -86,7 +86,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -95,6 +95,9 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_redshift_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier = "tf-redshift-cluster"
 ///   database_name      = "mydb"
 ///   master_username    = "exampleuser"
@@ -224,7 +227,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -233,6 +236,9 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_redshift_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier     = "tf-redshift-cluster"
 ///   database_name          = "mydb"
 ///   master_username        = "exampleuser"
@@ -422,7 +428,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:redshift/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['masterPassword', 'masterPasswordWo'],
         ) {
     allowVersionUpgrade = registerOutput<bool?>('allowVersionUpgrade');

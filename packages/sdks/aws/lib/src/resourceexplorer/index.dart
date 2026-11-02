@@ -56,7 +56,7 @@ import 'index_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,6 +65,9 @@ import 'index_timeouts.dart';
 /// }
 ///
 /// resource "aws_resourceexplorer_index" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   type = "LOCAL"
 /// }
 /// ```
@@ -144,7 +147,7 @@ class Index extends pulumi.CustomResource {
           'aws:resourceexplorer/index:Index',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');

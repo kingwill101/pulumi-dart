@@ -128,7 +128,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -137,6 +137,9 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_rds_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier      = "aurora-cluster-demo"
 ///   engine                  = "aurora-mysql"
 ///   engine_version          = "5.7.mysql_aurora.2.03.2"
@@ -302,7 +305,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -311,6 +314,9 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_rds_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier      = "aurora-cluster-demo"
 ///   availability_zones      = ["us-west-2a", "us-west-2b", "us-west-2c"]
 ///   database_name           = "mydb"
@@ -474,7 +480,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -483,6 +489,9 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_rds_cluster" "postgresql" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier      = "aurora-cluster-demo"
 ///   engine                  = "aurora-postgresql"
 ///   availability_zones      = ["us-west-2a", "us-west-2b", "us-west-2c"]
@@ -657,7 +666,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -666,6 +675,9 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_rds_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier        = "example"
 ///   availability_zones        = ["us-west-2a", "us-west-2b", "us-west-2c"]
 ///   engine                    = "mysql"
@@ -808,8 +820,8 @@ import 'cluster_state.dart';
 ///     {
 ///         Serverlessv2ScalingConfiguration = new Aws.Rds.Inputs.ClusterServerlessv2ScalingConfigurationArgs
 ///         {
-///             MaxCapacity = 1,
-///             MinCapacity = 0,
+///             MaxCapacity = 1.0,
+///             MinCapacity = 0.0,
 ///             SecondsUntilAutoPause = 3600,
 ///         },
 ///         ClusterIdentifier = "example",
@@ -861,7 +873,7 @@ import 'cluster_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = rds.NewClusterInstance(ctx, "example", &rds.ClusterInstanceArgs{
-/// 			ClusterIdentifier: example.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterIdentifier: example.ID(),
 /// 			InstanceClass:     pulumi.String("db.serverless"),
 /// 			Engine:            example.Engine.ApplyT(func(x *string) rds.EngineType { return rds.EngineType(*x) }).(rds.EngineTypeOutput),
 /// 			EngineVersion:     example.EngineVersion,
@@ -874,7 +886,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -883,7 +895,10 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_rds_cluster" "example" {
-///   serverlessv2_scaling_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   serverlessv2_scaling_configuration {
 ///     max_capacity             = 1
 ///     min_capacity             = 0
 ///     seconds_until_auto_pause = 3600
@@ -897,7 +912,10 @@ import 'cluster_state.dart';
 ///   master_password    = "must_be_eight_characters"
 ///   storage_encrypted  = true
 /// }
-/// resource "aws_rds_clusterinstance" "example" {
+/// resource "aws_rds_cluster_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier = aws_rds_cluster.example.id
 ///   instance_class     = "db.serverless"
 ///   engine             = aws_rds_cluster.example.engine
@@ -1052,7 +1070,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1061,6 +1079,9 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_rds_cluster" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier          = "example"
 ///   database_name               = "test"
 ///   manage_master_user_password = true
@@ -1198,7 +1219,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1207,9 +1228,15 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "Example KMS Key"
 /// }
 /// resource "aws_rds_cluster" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier            = "example"
 ///   database_name                 = "test"
 ///   manage_master_user_password   = true
@@ -1383,7 +1410,7 @@ import 'cluster_state.dart';
 /// 			return err
 /// 		}
 /// 		testClusterInstance, err := rds.NewClusterInstance(ctx, "test", &rds.ClusterInstanceArgs{
-/// 			ClusterIdentifier: test.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterIdentifier: test.ID(),
 /// 			Identifier:        pulumi.String("example-1"),
 /// 			InstanceClass:     pulumi.String(rds.InstanceType_R6G_Large),
 /// 			Engine:            test.Engine.ApplyT(func(x *string) rds.EngineType { return rds.EngineType(*x) }).(rds.EngineTypeOutput),
@@ -1408,7 +1435,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1417,21 +1444,30 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_rds_cluster" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier          = "example"
 ///   database_name               = "test"
 ///   manage_master_user_password = true
 ///   master_username             = "test"
 /// }
-/// resource "aws_rds_clusterinstance" "test" {
+/// resource "aws_rds_cluster_instance" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier = aws_rds_cluster.test.id
 ///   identifier         = "example-1"
 ///   instance_class     = "db.r6g.large"
 ///   engine             = aws_rds_cluster.test.engine
 ///   engine_version     = aws_rds_cluster.test.engine_version
 /// }
-/// resource "aws_secretsmanager_secretrotation" "test" {
-///   depends_on       = [aws_rds_clusterinstance.test]
-///   secret_id        = aws_rds_cluster.test.master_user_secrets[0].secret_arn
+/// resource "aws_secretsmanager_secret_rotation" "test" {
+///   depends_on = [aws_rds_cluster_instance.test]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   secret_id        = aws_rds_cluster.test.master_user_secret[0].secret_arn
 ///   rotation_enabled = false
 /// }
 /// ```
@@ -1477,7 +1513,7 @@ import 'cluster_state.dart';
 ///             .build());
 ///
 ///         var testSecretRotation = new SecretRotation("testSecretRotation", SecretRotationArgs.builder()
-///             .secretId(test.masterUserSecrets().applyValue(_masterUserSecrets -> _masterUserSecrets[0].secretArn()))
+///             .secretId(test.masterUserSecrets().applyValue(_masterUserSecrets -> _masterUserSecrets.get(0).secretArn()))
 ///             .rotationEnabled(false)
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(testClusterInstance)
@@ -1644,7 +1680,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1652,21 +1688,25 @@ import 'cluster_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_rds_getclustersnapshot" "example" {
+/// data "aws_rds_cluster_snapshot" "example" {
 ///   db_cluster_identifier = "example-original-cluster"
 ///   most_recent           = true
 /// }
 ///
 /// resource "aws_rds_cluster" "example" {
 ///   lifecycle {
-///     ignore_changes = [snapshotIdentifier, globalClusterIdentifier]
+///     ignore_changes        = [snapshotIdentifier, globalClusterIdentifier]
+///     create_before_destroy = true
 ///   }
 ///   engine              = "aurora"
 ///   engine_version      = "5.6.mysql_aurora.1.22.4"
 ///   cluster_identifier  = "example"
-///   snapshot_identifier = data.aws_rds_getclustersnapshot.example.id
+///   snapshot_identifier = data.aws_rds_cluster_snapshot.example.id
 /// }
-/// resource "aws_rds_globalcluster" "example" {
+/// resource "aws_rds_global_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   global_cluster_identifier    = "example"
 ///   source_db_cluster_identifier = aws_rds_cluster.example.arn
 ///   force_destroy                = true
@@ -1839,7 +1879,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1848,7 +1888,10 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_rds_cluster" "db" {
-///   s3_import = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   s3_import {
 ///     source_engine         = "mysql"
 ///     source_engine_version = "5.6"
 ///     bucket_name           = "mybucket"
@@ -1977,7 +2020,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1986,7 +2029,10 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_rds_cluster" "example-clone" {
-///   restore_to_point_in_time = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   restore_to_point_in_time {
 ///     source_cluster_identifier  = "example"
 ///     restore_type               = "copy-on-write"
 ///     use_latest_restorable_time = true
@@ -2125,7 +2171,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2134,7 +2180,10 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_rds_cluster" "example" {
-///   scaling_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scaling_configuration {
 ///     auto_pause               = true
 ///     max_capacity             = 256
 ///     min_capacity             = 2
@@ -2233,8 +2282,8 @@ import 'cluster_state.dart';
 ///     {
 ///         Serverlessv2ScalingConfiguration = new Aws.Rds.Inputs.ClusterServerlessv2ScalingConfigurationArgs
 ///         {
-///             MaxCapacity = 256,
-///             MinCapacity = 0,
+///             MaxCapacity = 256.0,
+///             MinCapacity = 0.0,
 ///             SecondsUntilAutoPause = 3600,
 ///         },
 ///     });
@@ -2266,7 +2315,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2275,7 +2324,10 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_rds_cluster" "example" {
-///   serverlessv2_scaling_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   serverlessv2_scaling_configuration {
 ///     max_capacity             = 256
 ///     min_capacity             = 0
 ///     seconds_until_auto_pause = 3600
@@ -2516,7 +2568,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:rds/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['masterPassword', 'masterPasswordWo'],
         ) {
     allocatedStorage = registerOutput<int>('allocatedStorage');

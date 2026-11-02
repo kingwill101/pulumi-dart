@@ -135,7 +135,7 @@ import 'signing_job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -143,24 +143,30 @@ import 'signing_job_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_signer_signingprofile" "test_sp" {
+/// resource "aws_signer_signing_profile" "test_sp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   platform_id = "AWSLambda-SHA384-ECDSA"
 /// }
-/// resource "aws_signer_signingjob" "build_signing_job" {
-///   source = {
-///     s3 = {
+/// resource "aws_signer_signing_job" "build_signing_job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   source {
+///     s3 {
 ///       bucket  = "s3-bucket-name"
 ///       key     = "object-to-be-signed.zip"
 ///       version = "jADjFYYYEXAMPLETszPjOmCMFDzd9dN1"
 ///     }
 ///   }
-///   destination = {
-///     s3 = {
+///   destination {
+///     s3 {
 ///       bucket = "s3-bucket-name"
 ///       prefix = "signed/"
 ///     }
 ///   }
-///   profile_name               = aws_signer_signingprofile.test_sp.name
+///   profile_name               = aws_signer_signing_profile.test_sp.name
 ///   ignore_signing_job_failure = true
 /// }
 /// ```
@@ -300,7 +306,7 @@ class SigningJob extends pulumi.CustomResource {
           'aws:signer/signingJob:SigningJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     completedAt = registerOutput<String>('completedAt');
     createdAt = registerOutput<String>('createdAt');

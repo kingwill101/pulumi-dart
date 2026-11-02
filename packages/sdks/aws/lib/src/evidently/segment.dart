@@ -79,7 +79,7 @@ import 'segment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -88,6 +88,9 @@ import 'segment_state.dart';
 /// }
 ///
 /// resource "aws_evidently_segment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "example"
 ///   pattern = "{\"Price\":[{\"numeric\":[\">\",10,\"<=\",20]}]}"
 ///   tags = {
@@ -236,7 +239,7 @@ import 'segment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -245,8 +248,20 @@ import 'segment_state.dart';
 /// }
 ///
 /// resource "aws_evidently_segment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "example"
-///   pattern = "  {\n    \\\"Price\\\": [\n      {\n        \\\"numeric\\\": [\\\">\\\",10,\\\"<=\\\",20]\n      }\n    ]\n  }\n"
+///   pattern = <<JSON
+///   {
+///     \"Price\": [
+///       {
+///         \"numeric\": [\">\",10,\"<=\",20]
+///       }
+///     ]
+///   }
+/// JSON
+///
 ///   tags = {
 ///     "Key1" = "example Segment"
 ///   }
@@ -371,7 +386,7 @@ import 'segment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -380,6 +395,9 @@ import 'segment_state.dart';
 /// }
 ///
 /// resource "aws_evidently_segment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   pattern     = "{\"Price\":[{\"numeric\":[\">\",10,\"<=\",20]}]}"
 ///   description = "example"
@@ -469,7 +487,7 @@ class Segment extends pulumi.CustomResource {
           'aws:evidently/segment:Segment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdTime = registerOutput<String>('createdTime');

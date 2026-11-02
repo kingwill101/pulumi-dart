@@ -67,7 +67,7 @@ import 'space_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,6 +76,9 @@ import 'space_state.dart';
 /// }
 ///
 /// resource "aws_sagemaker_space" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_id  = test.id
 ///   space_name = "example"
 /// }
@@ -102,7 +105,7 @@ import 'space_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Space("example", SpaceArgs.builder()
-///             .domainId(test.id())
+///             .domainId(test.get("id"))
 ///             .spaceName("example")
 ///             .build());
 ///
@@ -164,7 +167,7 @@ class Space extends pulumi.CustomResource {
           'aws:sagemaker/space:Space',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     domainId = registerOutput<String>('domainId');

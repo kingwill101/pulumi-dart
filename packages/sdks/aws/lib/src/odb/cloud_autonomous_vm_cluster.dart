@@ -180,7 +180,7 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 ///         CloudExadataInfrastructureId = "<aws_odb_cloud_exadata_infrastructure_id>",
 ///         OdbNetworkId = "<aws_odb_network_id>",
 ///         DisplayName = "my_autonomous_vm_cluster",
-///         AutonomousDataStorageSizeInTbs = 5,
+///         AutonomousDataStorageSizeInTbs = 5.0,
 ///         MemoryPerOracleComputeUnitInGbs = 2,
 ///         TotalContainerDatabases = 1,
 ///         CpuCoreCountPerNode = 40,
@@ -245,7 +245,7 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 ///         CloudExadataInfrastructureId = "<aws_odb_cloud_exadata_infrastructure_id>",
 ///         OdbNetworkId = "<aws_odb_network_id>",
 ///         DisplayName = "my_autonomous_vm_cluster",
-///         AutonomousDataStorageSizeInTbs = 5,
+///         AutonomousDataStorageSizeInTbs = 5.0,
 ///         MemoryPerOracleComputeUnitInGbs = 2,
 ///         TotalContainerDatabases = 1,
 ///         CpuCoreCountPerNode = 40,
@@ -359,7 +359,7 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -367,8 +367,11 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_odb_cloudautonomousvmcluster" "avmc_with_minimum_parameters" {
-///   maintenance_window = {
+/// resource "aws_odb_cloud_autonomous_vm_cluster" "avmc_with_minimum_parameters" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   maintenance_window {
 ///     preference = "NO_PREFERENCE"
 ///   }
 ///   cloud_exadata_infrastructure_id       = "<aws_odb_cloud_exadata_infrastructure_id>"
@@ -383,26 +386,29 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 ///   scan_listener_port_tls                = 8561
 ///   scan_listener_port_non_tls            = 1024
 /// }
-/// resource "aws_odb_cloudautonomousvmcluster" "avmc_with_all_params" {
-///   maintenance_window = {
-///     days_of_weeks = [{
-///       "name" = "MONDAY"
+/// resource "aws_odb_cloud_autonomous_vm_cluster" "avmc_with_all_params" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   maintenance_window {
+///     days_of_week = [{
+///       name = "MONDAY"
 ///       }, {
-///       "name" = "TUESDAY"
+///       name = "TUESDAY"
 ///     }]
-///     hours_of_days      = [4, 16]
+///     hours_of_day       = [4, 16]
 ///     lead_time_in_weeks = 3
 ///     months = [{
-///       "name" = "FEBRUARY"
+///       name = "FEBRUARY"
 ///       }, {
-///       "name" = "MAY"
+///       name = "MAY"
 ///       }, {
-///       "name" = "AUGUST"
+///       name = "AUGUST"
 ///       }, {
-///       "name" = "NOVEMBER"
+///       name = "NOVEMBER"
 ///     }]
-///     preference      = "CUSTOM_PREFERENCE"
-///     weeks_of_months = [2, 4]
+///     preference     = "CUSTOM_PREFERENCE"
+///     weeks_of_month = [2, 4]
 ///   }
 ///   description                           = "my first avmc"
 ///   time_zone                             = "UTC"
@@ -706,7 +712,7 @@ class CloudAutonomousVmCluster extends pulumi.CustomResource {
           'aws:odb/cloudAutonomousVmCluster:CloudAutonomousVmCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autonomousDataStoragePercentage = registerOutput<double>('autonomousDataStoragePercentage');

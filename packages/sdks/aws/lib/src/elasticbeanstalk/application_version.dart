@@ -113,7 +113,7 @@ import 'application_version_state.dart';
 /// 			return err
 /// 		}
 /// 		defaultBucketObjectv2, err := s3.NewBucketObjectv2(ctx, "default", &s3.BucketObjectv2Args{
-/// 			Bucket: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: _default.ID(),
 /// 			Key:    pulumi.String("beanstalk/go-v1.zip"),
 /// 			Source: pulumi.NewFileAsset("go-v1.zip"),
 /// 		})
@@ -131,7 +131,7 @@ import 'application_version_state.dart';
 /// 			Name:        pulumi.String("tf-test-version-label"),
 /// 			Application: pulumi.Any("tf-test-name"),
 /// 			Description: pulumi.String("application version"),
-/// 			Bucket:      _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket:      _default.ID(),
 /// 			Key:         defaultBucketObjectv2.Key,
 /// 		})
 /// 		if err != nil {
@@ -142,7 +142,7 @@ import 'application_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -151,23 +151,35 @@ import 'application_version_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "tftest.applicationversion.bucket"
 /// }
-/// resource "aws_s3_bucketobjectv2" "default" {
+/// resource "aws_s3_bucket_objectv2" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.default.id
 ///   key    = "beanstalk/go-v1.zip"
-///   source = fileAsset("go-v1.zip")
+///   source = fileasset("go-v1.zip")
 /// }
 /// resource "aws_elasticbeanstalk_application" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "tf-test-name"
 ///   description = "tf-test-desc"
 /// }
-/// resource "aws_elasticbeanstalk_applicationversion" "default" {
+/// resource "aws_elasticbeanstalk_application_version" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "tf-test-version-label"
 ///   application = "tf-test-name"
 ///   description = "application version"
 ///   bucket      = aws_s3_bucket.default.id
-///   key         = aws_s3_bucketobjectv2.default.key
+///   key         = aws_s3_bucket_objectv2.default.key
 /// }
 /// ```
 /// ```java
@@ -292,7 +304,7 @@ class ApplicationVersion extends pulumi.CustomResource {
           'aws:elasticbeanstalk/applicationVersion:ApplicationVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     application = registerOutput<String>('application');
     arn = registerOutput<String>('arn');

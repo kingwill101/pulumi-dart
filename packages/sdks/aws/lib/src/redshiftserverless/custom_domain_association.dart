@@ -113,7 +113,7 @@ import 'custom_domain_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -122,16 +122,28 @@ import 'custom_domain_association_state.dart';
 /// }
 ///
 /// resource "aws_acm_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name = "example.com"
 /// }
 /// resource "aws_redshiftserverless_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   namespace_name = "example-namespace"
 /// }
 /// resource "aws_redshiftserverless_workgroup" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workgroup_name = "example-workgroup"
 ///   namespace_name = aws_redshiftserverless_namespace.example.namespace_name
 /// }
-/// resource "aws_redshiftserverless_customdomainassociation" "example" {
+/// resource "aws_redshiftserverless_custom_domain_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workgroup_name                = aws_redshiftserverless_workgroup.example.workgroup_name
 ///   custom_domain_name            = "example.com"
 ///   custom_domain_certificate_arn = aws_acm_certificate.example.arn
@@ -244,7 +256,7 @@ class CustomDomainAssociation extends pulumi.CustomResource {
           'aws:redshiftserverless/customDomainAssociation:CustomDomainAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     customDomainCertificateArn = registerOutput<String>('customDomainCertificateArn');
     customDomainCertificateExpiryTime = registerOutput<String>('customDomainCertificateExpiryTime');

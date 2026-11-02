@@ -59,7 +59,7 @@ import 'configuration_set_tracking_options.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,10 @@ import 'configuration_set_tracking_options.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ses_configurationset" "test" {
+/// resource "aws_ses_configuration_set" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "some-configuration-set-test"
 /// }
 /// ```
@@ -175,7 +178,7 @@ import 'configuration_set_tracking_options.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -183,8 +186,11 @@ import 'configuration_set_tracking_options.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ses_configurationset" "test" {
-///   delivery_options = {
+/// resource "aws_ses_configuration_set" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   delivery_options {
 ///     tls_policy = "Require"
 ///   }
 ///   name = "some-configuration-set-test"
@@ -300,7 +306,7 @@ import 'configuration_set_tracking_options.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -308,8 +314,11 @@ import 'configuration_set_tracking_options.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ses_configurationset" "test" {
-///   tracking_options = {
+/// resource "aws_ses_configuration_set" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   tracking_options {
 ///     custom_redirect_domain = "sub.example.com"
 ///   }
 ///   name = "some-configuration-set-test"
@@ -397,7 +406,7 @@ class ConfigurationSet extends pulumi.CustomResource {
           'aws:ses/configurationSet:ConfigurationSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deliveryOptions = registerOutput<ConfigurationSetDeliveryOptions?>('deliveryOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetDeliveryOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -159,7 +159,7 @@ import 'domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -168,10 +168,13 @@ import 'domain_state.dart';
 /// }
 ///
 /// resource "aws_cloudsearch_domain" "example" {
-///   scaling_parameters = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scaling_parameters {
 ///     desired_instance_type = "search.medium"
 ///   }
-///   index_fields {
+///   index_field {
 ///     name            = "headline"
 ///     type            = "text"
 ///     search          = true
@@ -180,7 +183,7 @@ import 'domain_state.dart';
 ///     highlight       = false
 ///     analysis_scheme = "_en_default_"
 ///   }
-///   index_fields {
+///   index_field {
 ///     name          = "price"
 ///     type          = "double"
 ///     search        = true
@@ -311,7 +314,7 @@ class Domain extends pulumi.CustomResource {
           'aws:cloudsearch/domain:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     documentServiceEndpoint = registerOutput<String>('documentServiceEndpoint');

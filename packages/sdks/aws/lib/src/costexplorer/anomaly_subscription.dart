@@ -161,7 +161,7 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -169,12 +169,18 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///   }
 /// }
 ///
-/// resource "aws_costexplorer_anomalymonitor" "test" {
+/// resource "aws_costexplorer_anomaly_monitor" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "AWSServiceMonitor"
 ///   monitor_type      = "DIMENSIONAL"
 ///   monitor_dimension = "SERVICE"
 /// }
-/// resource "aws_costexplorer_anomalysubscription" "test" {
+/// resource "aws_costexplorer_anomaly_subscription" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   threshold_expression = {
 ///     dimension = {
 ///       key           = "ANOMALY_TOTAL_IMPACT_ABSOLUTE"
@@ -188,7 +194,7 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///   }
 ///   name              = "DAILYSUBSCRIPTION"
 ///   frequency         = "DAILY"
-///   monitor_arn_lists = [aws_costexplorer_anomalymonitor.test.arn]
+///   monitor_arn_lists = [aws_costexplorer_anomaly_monitor.test.arn]
 /// }
 /// ```
 /// ```java
@@ -403,7 +409,7 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -411,7 +417,10 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///   }
 /// }
 ///
-/// resource "aws_costexplorer_anomalysubscription" "test" {
+/// resource "aws_costexplorer_anomaly_subscription" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   threshold_expression = {
 ///     dimension = {
 ///       key           = "ANOMALY_TOTAL_IMPACT_PERCENTAGE"
@@ -466,7 +475,7 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///                 .build())
 ///             .name("AWSServiceMonitor")
 ///             .frequency("DAILY")
-///             .monitorArnLists(testAwsCeAnomalyMonitor.arn())
+///             .monitorArnLists(testAwsCeAnomalyMonitor.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -681,7 +690,7 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -689,19 +698,22 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///   }
 /// }
 ///
-/// resource "aws_costexplorer_anomalysubscription" "test" {
+/// resource "aws_costexplorer_anomaly_subscription" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   threshold_expression = {
 ///     ands = [{
-///       "dimension" = {
-///         "key"          = "ANOMALY_TOTAL_IMPACT_ABSOLUTE"
-///         "matchOptions" = ["GREATER_THAN_OR_EQUAL"]
-///         "values"       = ["100"]
+///       dimension = {
+///         key           = "ANOMALY_TOTAL_IMPACT_ABSOLUTE"
+///         match_options = ["GREATER_THAN_OR_EQUAL"]
+///         values        = ["100"]
 ///       }
 ///       }, {
-///       "dimension" = {
-///         "key"          = "ANOMALY_TOTAL_IMPACT_PERCENTAGE"
-///         "matchOptions" = ["GREATER_THAN_OR_EQUAL"]
-///         "values"       = ["50"]
+///       dimension = {
+///         key           = "ANOMALY_TOTAL_IMPACT_PERCENTAGE"
+///         match_options = ["GREATER_THAN_OR_EQUAL"]
+///         values        = ["50"]
 ///       }
 ///     }]
 ///   }
@@ -763,7 +775,7 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///                 .build())
 ///             .name("AWSServiceMonitor")
 ///             .frequency("DAILY")
-///             .monitorArnLists(testAwsCeAnomalyMonitor.arn())
+///             .monitorArnLists(testAwsCeAnomalyMonitor.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1169,7 +1181,7 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1177,8 +1189,8 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "snsTopicPolicy" {
-///   statements {
+/// data "aws_iam_policy_document" "snsTopicPolicy" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["costalerts.amazonaws.com"]
@@ -1188,8 +1200,8 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///     effect    = "Allow"
 ///     resources = [aws_sns_topic.cost_anomaly_updates.arn]
 ///   }
-///   statements {
-///     conditions {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
 ///       variable = "AWS:SourceOwner"
 ///       values   = [accountId]
@@ -1207,26 +1219,38 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// }
 ///
 /// resource "aws_sns_topic" "cost_anomaly_updates" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "CostAnomalyUpdates"
 /// }
-/// resource "aws_sns_topicpolicy" "default" {
+/// resource "aws_sns_topic_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   arn    = aws_sns_topic.cost_anomaly_updates.arn
-///   policy = data.aws_iam_getpolicydocument.snsTopicPolicy.json
+///   policy = data.aws_iam_policy_document.snsTopicPolicy.json
 /// }
-/// resource "aws_costexplorer_anomalymonitor" "anomaly_monitor" {
+/// resource "aws_costexplorer_anomaly_monitor" "anomaly_monitor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "AWSServiceMonitor"
 ///   monitor_type      = "DIMENSIONAL"
 ///   monitor_dimension = "SERVICE"
 /// }
-/// resource "aws_costexplorer_anomalysubscription" "realtime_subscription" {
-///   depends_on = [aws_sns_topicpolicy.default]
+/// resource "aws_costexplorer_anomaly_subscription" "realtime_subscription" {
+///   depends_on = [aws_sns_topic_policy.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subscribers {
 ///     type    = "SNS"
 ///     address = aws_sns_topic.cost_anomaly_updates.arn
 ///   }
 ///   name              = "RealtimeAnomalySubscription"
 ///   frequency         = "IMMEDIATE"
-///   monitor_arn_lists = [aws_costexplorer_anomalymonitor.anomaly_monitor.arn]
+///   monitor_arn_lists = [aws_costexplorer_anomaly_monitor.anomaly_monitor.arn]
 /// }
 /// ```
 /// ```java
@@ -1454,7 +1478,7 @@ class AnomalySubscription extends pulumi.CustomResource {
           'aws:costexplorer/anomalySubscription:AnomalySubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');

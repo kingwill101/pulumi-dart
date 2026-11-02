@@ -158,7 +158,7 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 ///         {
 ///             SamplingConfig = new Aws.Bedrock.Inputs.AgentcoreOnlineEvaluationConfigRuleSamplingConfigArgs
 ///             {
-///                 SamplingPercentage = 10,
+///                 SamplingPercentage = 10.0,
 ///             },
 ///         },
 ///         Evaluators = new[]
@@ -260,7 +260,7 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -269,6 +269,9 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "agentcore-eval-role"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -281,13 +284,19 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_cloudwatch_loggroup" "example" {
+/// resource "aws_cloudwatch_log_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "/aws/agentcore/my-agent-traces"
 /// }
-/// resource "aws_bedrock_agentcoreonlineevaluationconfig" "example" {
+/// resource "aws_bedrock_agentcore_online_evaluation_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_source_config = {
 ///     cloudwatch_logs = {
-///       log_group_names = [aws_cloudwatch_loggroup.example.name]
+///       log_group_names = [aws_cloudwatch_log_group.example.name]
 ///       service_names   = ["my_agent_service"]
 ///     }
 ///   }
@@ -526,7 +535,7 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 ///         {
 ///             SamplingConfig = new Aws.Bedrock.Inputs.AgentcoreOnlineEvaluationConfigRuleSamplingConfigArgs
 ///             {
-///                 SamplingPercentage = 50,
+///                 SamplingPercentage = 50.0,
 ///             },
 ///             SessionConfig = new Aws.Bedrock.Inputs.AgentcoreOnlineEvaluationConfigRuleSessionConfigArgs
 ///             {
@@ -614,7 +623,7 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -622,7 +631,10 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoreonlineevaluationconfig" "filtered" {
+/// resource "aws_bedrock_agentcore_online_evaluation_config" "filtered" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_source_config = {
 ///     cloudwatch_logs = {
 ///       log_group_names = [example.name]
@@ -637,11 +649,11 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 ///       session_timeout_minutes = 30
 ///     }
 ///     filters = [{
-///       "value" = {
-///         "stringValue" = "production"
+///       value = {
+///         string_value = "production"
 ///       }
-///       "key"      = "environment"
-///       "operator" = "Equals"
+///       key      = "environment"
+///       operator = "Equals"
 ///     }]
 ///   }
 ///   evaluators {
@@ -684,7 +696,7 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 ///         var filtered = new AgentcoreOnlineEvaluationConfig("filtered", AgentcoreOnlineEvaluationConfigArgs.builder()
 ///             .dataSourceConfig(AgentcoreOnlineEvaluationConfigDataSourceConfigArgs.builder()
 ///                 .cloudwatchLogs(AgentcoreOnlineEvaluationConfigDataSourceConfigCloudwatchLogsArgs.builder()
-///                     .logGroupNames(example.name())
+///                     .logGroupNames(example.get("name"))
 ///                     .serviceNames("my_agent_service")
 ///                     .build())
 ///                 .build())
@@ -708,7 +720,7 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 ///                 .build())
 ///             .onlineEvaluationConfigName("filtered_evaluation")
 ///             .enableOnCreate(true)
-///             .evaluationExecutionRoleArn(exampleAwsIamRole.arn())
+///             .evaluationExecutionRoleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -807,7 +819,7 @@ class AgentcoreOnlineEvaluationConfig extends pulumi.CustomResource {
           'aws:bedrock/agentcoreOnlineEvaluationConfig:AgentcoreOnlineEvaluationConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     dataSourceConfig = registerOutput<AgentcoreOnlineEvaluationConfigDataSourceConfig>('dataSourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOnlineEvaluationConfigDataSourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');

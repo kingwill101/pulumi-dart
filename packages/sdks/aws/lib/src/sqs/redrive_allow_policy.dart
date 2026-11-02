@@ -122,7 +122,7 @@ import 'redrive_allow_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = sqs.NewRedriveAllowPolicy(ctx, "example", &sqs.RedriveAllowPolicyArgs{
-/// 			QueueUrl: example.ID().ToIDOutput().ToStringOutput(),
+/// 			QueueUrl: example.ID(),
 /// 			RedriveAllowPolicy: src.Arn.ApplyT(func(arn string) (pulumi.String, error) {
 /// 				var _zero pulumi.String
 /// 				tmpJSON1, err := json.Marshal(map[string]interface{}{
@@ -146,7 +146,7 @@ import 'redrive_allow_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -155,6 +155,9 @@ import 'redrive_allow_policy_state.dart';
 /// }
 ///
 /// resource "aws_sqs_queue" "src" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "srcqueue"
 ///   redrive_policy = jsonencode({
 ///     "deadLetterTargetArn" = aws_sqs_queue.example.arn
@@ -162,9 +165,15 @@ import 'redrive_allow_policy_state.dart';
 ///   })
 /// }
 /// resource "aws_sqs_queue" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "examplequeue"
 /// }
-/// resource "aws_sqs_redriveallowpolicy" "example" {
+/// resource "aws_sqs_redrive_allow_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   queue_url = aws_sqs_queue.example.id
 ///   redrive_allow_policy = jsonencode({
 ///     "redrivePermission" = "byQueue"
@@ -282,7 +291,7 @@ class RedriveAllowPolicy extends pulumi.CustomResource {
           'aws:sqs/redriveAllowPolicy:RedriveAllowPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     queueUrl = registerOutput<String>('queueUrl');
     redriveAllowPolicy = registerOutput<String>('redriveAllowPolicy');

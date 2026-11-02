@@ -172,7 +172,7 @@ import 'workflow_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -181,9 +181,15 @@ import 'workflow_state.dart';
 /// }
 ///
 /// resource "aws_glue_workflow" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// resource "aws_glue_trigger" "example-start" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions {
 ///     job_name = "example-job"
 ///   }
@@ -192,11 +198,14 @@ import 'workflow_state.dart';
 ///   workflow_name = aws_glue_workflow.example.name
 /// }
 /// resource "aws_glue_trigger" "example-inner" {
-///   predicate = {
-///     conditions = [{
-///       "jobName" = "example-job"
-///       "state"   = "SUCCEEDED"
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   predicate {
+///     conditions {
+///       job_name = "example-job"
+///       state    = "SUCCEEDED"
+///     }
 ///   }
 ///   actions {
 ///     job_name = "another-example-job"
@@ -329,7 +338,7 @@ class Workflow extends pulumi.CustomResource {
           'aws:glue/workflow:Workflow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultRunProperties = registerOutput<Map<String, String>?>('defaultRunProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

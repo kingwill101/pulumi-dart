@@ -199,7 +199,7 @@ import 'pull_time_update_exclusion_state.dart';
 /// 		json1 := string(tmpJSON1)
 /// 		_, err = iam.NewRolePolicy(ctx, "example", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("example-role-policy"),
-/// 			Role:   example.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   example.ID(),
 /// 			Policy: pulumi.String(json1),
 /// 		})
 /// 		if err != nil {
@@ -216,7 +216,7 @@ import 'pull_time_update_exclusion_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -225,6 +225,9 @@ import 'pull_time_update_exclusion_state.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-role"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -237,7 +240,10 @@ import 'pull_time_update_exclusion_state.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_iam_rolepolicy" "example" {
+/// resource "aws_iam_role_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-role-policy"
 ///   role = aws_iam_role.example.id
 ///   policy = jsonencode({
@@ -249,7 +255,10 @@ import 'pull_time_update_exclusion_state.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_ecr_pulltimeupdateexclusion" "example" {
+/// resource "aws_ecr_pull_time_update_exclusion" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   principal_arn = aws_iam_role.example.arn
 /// }
 /// ```
@@ -513,7 +522,7 @@ import 'pull_time_update_exclusion_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -522,9 +531,15 @@ import 'pull_time_update_exclusion_state.dart';
 /// }
 ///
 /// resource "aws_iam_user" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-user"
 /// }
-/// resource "aws_iam_userpolicy" "example" {
+/// resource "aws_iam_user_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-user-policy"
 ///   user = aws_iam_user.example.name
 ///   policy = jsonencode({
@@ -536,7 +551,10 @@ import 'pull_time_update_exclusion_state.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_ecr_pulltimeupdateexclusion" "example" {
+/// resource "aws_ecr_pull_time_update_exclusion" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   principal_arn = aws_iam_user.example.arn
 /// }
 /// ```
@@ -654,7 +672,7 @@ class PullTimeUpdateExclusion extends pulumi.CustomResource {
           'aws:ecr/pullTimeUpdateExclusion:PullTimeUpdateExclusion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     principalArn = registerOutput<String>('principalArn');
     region = registerOutput<String>('region');

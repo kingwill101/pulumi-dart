@@ -80,7 +80,7 @@ import 'agentcore_code_interpreter_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -88,7 +88,10 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcorecodeinterpreter" "example" {
+/// resource "aws_bedrock_agentcore_code_interpreter" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_configuration = {
 ///     network_mode = "PUBLIC"
 ///   }
@@ -302,7 +305,7 @@ import 'agentcore_code_interpreter_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -310,8 +313,8 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["bedrock-agentcore.amazonaws.com"]
@@ -322,10 +325,16 @@ import 'agentcore_code_interpreter_timeouts.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "bedrock-agentcore-code-interpreter-role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_bedrock_agentcorecodeinterpreter" "example" {
+/// resource "aws_bedrock_agentcore_code_interpreter" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_configuration = {
 ///     network_mode = "SANDBOX"
 ///   }
@@ -466,7 +475,7 @@ class AgentcoreCodeInterpreter extends pulumi.CustomResource {
           'aws:bedrock/agentcoreCodeInterpreter:AgentcoreCodeInterpreter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     certificates = registerOutput<List<AgentcoreCodeInterpreterCertificate>?>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreCodeInterpreterCertificate>(guardedValue, (value) => AgentcoreCodeInterpreterCertificate.fromMap((value as Map).cast<String, dynamic>())); });
     codeInterpreterArn = registerOutput<String>('codeInterpreterArn');

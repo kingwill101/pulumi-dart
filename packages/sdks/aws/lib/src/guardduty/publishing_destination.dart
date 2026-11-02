@@ -431,14 +431,14 @@ import 'publishing_destination_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "gd_bucket_acl", &s3.BucketAclArgs{
-/// 			Bucket: gdBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: gdBucket.ID(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		gdBucketPolicy, err := s3.NewBucketPolicy(ctx, "gd_bucket_policy", &s3.BucketPolicyArgs{
-/// 			Bucket: gdBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: gdBucket.ID(),
 /// 			Policy: bucketPol.Json(),
 /// 		})
 /// 		if err != nil {
@@ -453,7 +453,7 @@ import 'publishing_destination_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = guardduty.NewPublishingDestination(ctx, "test", &guardduty.PublishingDestinationArgs{
-/// 			DetectorId:     testGd.ID().ToIDOutput().ToStringOutput(),
+/// 			DetectorId:     testGd.ID(),
 /// 			DestinationArn: gdBucket.Arn,
 /// 			KmsKeyArn:      gdKey.Arn,
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -467,7 +467,7 @@ import 'publishing_destination_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -475,12 +475,12 @@ import 'publishing_destination_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getregion" "currentGetRegion" {
+/// data "aws_region" "currentGetRegion" {
 /// }
-/// data "aws_iam_getpolicydocument" "bucketPol" {
-///   statements {
+/// data "aws_iam_policy_document" "bucketPol" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["guardduty.amazonaws.com"]
@@ -489,7 +489,7 @@ import 'publishing_destination_state.dart';
 ///     actions   = ["s3:PutObject"]
 ///     resources = ["${aws_s3_bucket.gd_bucket.arn}/*"]
 ///   }
-///   statements {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["guardduty.amazonaws.com"]
@@ -499,49 +499,67 @@ import 'publishing_destination_state.dart';
 ///     resources = [aws_s3_bucket.gd_bucket.arn]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "kmsPol" {
-///   statements {
+/// data "aws_iam_policy_document" "kmsPol" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["guardduty.amazonaws.com"]
 ///     }
 ///     sid       = "Allow GuardDuty to encrypt findings"
 ///     actions   = ["kms:GenerateDataKey"]
-///     resources = ["arn:aws:kms:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:key/*"]
+///     resources = ["arn:aws:kms:${data.aws_region.currentGetRegion.region}:${data.aws_caller_identity.current.account_id}:key/*"]
 ///   }
-///   statements {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
-///       identifiers = ["arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"]
+///       identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"]
 ///     }
 ///     sid       = "Allow all users to modify/delete key (test only)"
 ///     actions   = ["kms:*"]
-///     resources = ["arn:aws:kms:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:key/*"]
+///     resources = ["arn:aws:kms:${data.aws_region.currentGetRegion.region}:${data.aws_caller_identity.current.account_id}:key/*"]
 ///   }
 /// }
 ///
 /// resource "aws_guardduty_detector" "test_gd" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enable = true
 /// }
 /// resource "aws_s3_bucket" "gd_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket        = "example"
 ///   force_destroy = true
 /// }
-/// resource "aws_s3_bucketacl" "gd_bucket_acl" {
+/// resource "aws_s3_bucket_acl" "gd_bucket_acl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.gd_bucket.id
 ///   acl    = "private"
 /// }
-/// resource "aws_s3_bucketpolicy" "gd_bucket_policy" {
+/// resource "aws_s3_bucket_policy" "gd_bucket_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.gd_bucket.id
-///   policy = data.aws_iam_getpolicydocument.bucketPol.json
+///   policy = data.aws_iam_policy_document.bucketPol.json
 /// }
 /// resource "aws_kms_key" "gd_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "Temporary key for AccTest of TF"
 ///   deletion_window_in_days = 7
-///   policy                  = data.aws_iam_getpolicydocument.kmsPol.json
+///   policy                  = data.aws_iam_policy_document.kmsPol.json
 /// }
-/// resource "aws_guardduty_publishingdestination" "test" {
-///   depends_on      = [aws_s3_bucketpolicy.gd_bucket_policy]
+/// resource "aws_guardduty_publishing_destination" "test" {
+///   depends_on = [aws_s3_bucket_policy.gd_bucket_policy]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   detector_id     = aws_guardduty_detector.test_gd.id
 ///   destination_arn = aws_s3_bucket.gd_bucket.arn
 ///   kms_key_arn     = aws_kms_key.gd_key.arn
@@ -814,7 +832,7 @@ class PublishingDestination extends pulumi.CustomResource {
           'aws:guardduty/publishingDestination:PublishingDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     destinationArn = registerOutput<String>('destinationArn');

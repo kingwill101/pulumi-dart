@@ -119,7 +119,7 @@ import 'kx_dataview_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -127,7 +127,10 @@ import 'kx_dataview_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_finspace_kxdataview" "example" {
+/// resource "aws_finspace_kx_dataview" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   timeouts {
 ///     create = "24h"
 ///     update = "24h"
@@ -172,12 +175,12 @@ import 'kx_dataview_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new KxDataview("example", KxDataviewArgs.builder()
 ///             .segmentConfigurations(KxDataviewSegmentConfigurationArgs.builder()
-///                 .volumeName(exampleAwsFinspaceKxVolume.name())
+///                 .volumeName(exampleAwsFinspaceKxVolume.get("name"))
 ///                 .dbPaths("/*")
 ///                 .build())
 ///             .name("my-tf-kx-dataview")
-///             .environmentId(exampleAwsFinspaceKxEnvironment.id())
-///             .databaseName(exampleAwsFinspaceKxDatabase.name())
+///             .environmentId(exampleAwsFinspaceKxEnvironment.get("id"))
+///             .databaseName(exampleAwsFinspaceKxDatabase.get("name"))
 ///             .availabilityZoneId("use1-az2")
 ///             .description("Terraform managed Kx Dataview")
 ///             .azMode("SINGLE")
@@ -274,7 +277,7 @@ class KxDataview extends pulumi.CustomResource {
           'aws:finspace/kxDataview:KxDataview',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoUpdate = registerOutput<bool>('autoUpdate');

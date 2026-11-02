@@ -97,7 +97,7 @@ import 'kx_database_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = finspace.NewKxDatabase(ctx, "example", &finspace.KxDatabaseArgs{
-/// 			EnvironmentId: exampleKxEnvironment.ID().ToIDOutput().ToStringOutput(),
+/// 			EnvironmentId: exampleKxEnvironment.ID(),
 /// 			Name:          pulumi.String("my-tf-kx-database"),
 /// 			Description:   pulumi.String("Example database description"),
 /// 		})
@@ -109,7 +109,7 @@ import 'kx_database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -118,15 +118,24 @@ import 'kx_database_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "Example KMS Key"
 ///   deletion_window_in_days = 7
 /// }
-/// resource "aws_finspace_kxenvironment" "example" {
+/// resource "aws_finspace_kx_environment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "my-tf-kx-environment"
 ///   kms_key_id = aws_kms_key.example.arn
 /// }
-/// resource "aws_finspace_kxdatabase" "example" {
-///   environment_id = aws_finspace_kxenvironment.example.id
+/// resource "aws_finspace_kx_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   environment_id = aws_finspace_kx_environment.example.id
 ///   name           = "my-tf-kx-database"
 ///   description    = "Example database description"
 /// }
@@ -239,7 +248,7 @@ class KxDatabase extends pulumi.CustomResource {
           'aws:finspace/kxDatabase:KxDatabase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdTimestamp = registerOutput<String>('createdTimestamp');

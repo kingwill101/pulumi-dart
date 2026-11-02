@@ -160,7 +160,7 @@ import 'proxy_protocol_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -168,7 +168,10 @@ import 'proxy_protocol_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elb_loadbalancer" "lb" {
+/// resource "aws_elb_load_balancer" "lb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   listeners {
 ///     instance_port     = 25
 ///     instance_protocol = "tcp"
@@ -184,8 +187,11 @@ import 'proxy_protocol_policy_state.dart';
 ///   name               = "test-lb"
 ///   availability_zones = ["us-east-1a"]
 /// }
-/// resource "aws_ec2_proxyprotocolpolicy" "smtp" {
-///   load_balancer  = aws_elb_loadbalancer.lb.name
+/// resource "aws_ec2_proxy_protocol_policy" "smtp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   load_balancer  = aws_elb_load_balancer.lb.name
 ///   instance_ports = ["25", "587"]
 /// }
 /// ```
@@ -286,7 +292,7 @@ class ProxyProtocolPolicy extends pulumi.CustomResource {
           'aws:ec2/proxyProtocolPolicy:ProxyProtocolPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     instancePorts = registerOutput<List<String>>('instancePorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     loadBalancer = registerOutput<String>('loadBalancer');

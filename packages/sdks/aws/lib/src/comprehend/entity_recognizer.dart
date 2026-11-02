@@ -174,7 +174,7 @@ import 'entity_recognizer_vpc_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -182,28 +182,38 @@ import 'entity_recognizer_vpc_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_comprehend_entityrecognizer" "example" {
+/// resource "aws_comprehend_entity_recognizer" "example" {
 ///   depends_on = [exampleAwsIamRolePolicy]
-///   input_data_config = {
-///     documents = {
-///       s3_uri ="s3://${documentsAwsS3Bucket.bucket}/${aws_s3_bucketobjectv2.documents.key}"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   input_data_config {
+///     documents {
+///       s3_uri ="s3://${documentsAwsS3Bucket.bucket}/${aws_s3_bucket_objectv2.documents.key}"
 ///     }
-///     entity_list = {
-///       s3_uri ="s3://${entitiesAwsS3Bucket.bucket}/${aws_s3_bucketobjectv2.entities.key}"
+///     entity_list {
+///       s3_uri ="s3://${entitiesAwsS3Bucket.bucket}/${aws_s3_bucket_objectv2.entities.key}"
 ///     }
-///     entity_types = [{
-///       "type" = "ENTITY_1"
-///       }, {
-///       "type" = "ENTITY_2"
-///     }]
+///     entity_types {
+///       type = "ENTITY_1"
+///     }
+///     entity_types {
+///       type = "ENTITY_2"
+///     }
 ///   }
 ///   name                 = "example"
 ///   data_access_role_arn = exampleAwsIamRole.arn
 ///   language_code        = "en"
 /// }
-/// resource "aws_s3_bucketobjectv2" "documents" {
+/// resource "aws_s3_bucket_objectv2" "documents" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_s3_bucketobjectv2" "entities" {
+/// resource "aws_s3_bucket_objectv2" "entities" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -240,10 +250,10 @@ import 'entity_recognizer_vpc_config.dart';
 ///         var example = new EntityRecognizer("example", EntityRecognizerArgs.builder()
 ///             .inputDataConfig(EntityRecognizerInputDataConfigArgs.builder()
 ///                 .documents(EntityRecognizerInputDataConfigDocumentsArgs.builder()
-///                     .s3Uri(documents.key().applyValue(_key -> String.format("s3://%s/%s", documentsAwsS3Bucket.bucket(),_key)))
+///                     .s3Uri(documents.key().applyValue(_key -> String.format("s3://%s/%s", documentsAwsS3Bucket.get("bucket"),_key)))
 ///                     .build())
 ///                 .entityList(EntityRecognizerInputDataConfigEntityListArgs.builder()
-///                     .s3Uri(entities.key().applyValue(_key -> String.format("s3://%s/%s", entitiesAwsS3Bucket.bucket(),_key)))
+///                     .s3Uri(entities.key().applyValue(_key -> String.format("s3://%s/%s", entitiesAwsS3Bucket.get("bucket"),_key)))
 ///                     .build())
 ///                 .entityTypes(
 ///                     EntityRecognizerInputDataConfigEntityTypeArgs.builder()
@@ -254,7 +264,7 @@ import 'entity_recognizer_vpc_config.dart';
 ///                         .build())
 ///                 .build())
 ///             .name("example")
-///             .dataAccessRoleArn(exampleAwsIamRole.arn())
+///             .dataAccessRoleArn(exampleAwsIamRole.get("arn"))
 ///             .languageCode("en")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleAwsIamRolePolicy)
@@ -359,7 +369,7 @@ class EntityRecognizer extends pulumi.CustomResource {
           'aws:comprehend/entityRecognizer:EntityRecognizer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dataAccessRoleArn = registerOutput<String>('dataAccessRoleArn');

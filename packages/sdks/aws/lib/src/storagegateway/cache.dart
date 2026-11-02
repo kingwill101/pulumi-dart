@@ -64,7 +64,7 @@ import 'cache_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,6 +73,9 @@ import 'cache_state.dart';
 /// }
 ///
 /// resource "aws_storagegateway_cache" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   disk_id     = exampleAwsStoragegatewayLocalDisk.id
 ///   gateway_arn = exampleAwsStoragegatewayGateway.arn
 /// }
@@ -99,8 +102,8 @@ import 'cache_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Cache("example", CacheArgs.builder()
-///             .diskId(exampleAwsStoragegatewayLocalDisk.id())
-///             .gatewayArn(exampleAwsStoragegatewayGateway.arn())
+///             .diskId(exampleAwsStoragegatewayLocalDisk.get("id"))
+///             .gatewayArn(exampleAwsStoragegatewayGateway.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -143,7 +146,7 @@ class Cache extends pulumi.CustomResource {
           'aws:storagegateway/cache:Cache',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     diskId = registerOutput<String>('diskId');
     gatewayArn = registerOutput<String>('gatewayArn');

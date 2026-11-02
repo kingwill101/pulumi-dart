@@ -114,7 +114,7 @@ import 'assessment_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -122,8 +122,11 @@ import 'assessment_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_inspector_assessmenttemplate" "example" {
-///   event_subscriptions {
+/// resource "aws_inspector_assessment_template" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   event_subscription {
 ///     event     = "ASSESSMENT_RUN_COMPLETED"
 ///     topic_arn = exampleAwsSnsTopic.arn
 ///   }
@@ -158,10 +161,10 @@ import 'assessment_template_state.dart';
 ///         var example = new AssessmentTemplate("example", AssessmentTemplateArgs.builder()
 ///             .eventSubscriptions(AssessmentTemplateEventSubscriptionArgs.builder()
 ///                 .event("ASSESSMENT_RUN_COMPLETED")
-///                 .topicArn(exampleAwsSnsTopic.arn())
+///                 .topicArn(exampleAwsSnsTopic.get("arn"))
 ///                 .build())
 ///             .name("example")
-///             .targetArn(exampleAwsInspectorAssessmentTarget.arn())
+///             .targetArn(exampleAwsInspectorAssessmentTarget.get("arn"))
 ///             .duration(3600)
 ///             .rulesPackageArns(
 ///                 "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-9hgA516p",
@@ -238,7 +241,7 @@ class AssessmentTemplate extends pulumi.CustomResource {
           'aws:inspector/assessmentTemplate:AssessmentTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     duration = registerOutput<int>('duration');

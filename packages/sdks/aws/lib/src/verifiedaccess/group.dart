@@ -58,7 +58,7 @@ import 'group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,6 +67,9 @@ import 'group_state.dart';
 /// }
 ///
 /// resource "aws_verifiedaccess_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   verifiedaccess_instance_id = exampleAwsVerifiedaccessInstance.id
 /// }
 /// ```
@@ -92,7 +95,7 @@ import 'group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Group("example", GroupArgs.builder()
-///             .verifiedaccessInstanceId(exampleAwsVerifiedaccessInstance.id())
+///             .verifiedaccessInstanceId(exampleAwsVerifiedaccessInstance.get("id"))
 ///             .build());
 ///
 ///     }
@@ -188,7 +191,7 @@ import 'group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -197,10 +200,16 @@ import 'group_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "test_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "KMS key for Verified Access Group test"
 /// }
 /// resource "aws_verifiedaccess_group" "test" {
-///   sse_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   sse_configuration {
 ///     kms_key_arn = aws_kms_key.test_key.arn
 ///   }
 ///   verifiedaccess_instance_id = testAwsVerifiedaccessInstanceTrustProviderAttachment.verifiedaccessInstanceId
@@ -238,7 +247,7 @@ import 'group_state.dart';
 ///             .sseConfiguration(GroupSseConfigurationArgs.builder()
 ///                 .kmsKeyArn(testKey.arn())
 ///                 .build())
-///             .verifiedaccessInstanceId(testAwsVerifiedaccessInstanceTrustProviderAttachment.verifiedaccessInstanceId())
+///             .verifiedaccessInstanceId(testAwsVerifiedaccessInstanceTrustProviderAttachment.get("verifiedaccessInstanceId"))
 ///             .build());
 ///
 ///     }
@@ -299,7 +308,7 @@ class Group extends pulumi.CustomResource {
           'aws:verifiedaccess/group:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     creationTime = registerOutput<String>('creationTime');
     deletionTime = registerOutput<String>('deletionTime');

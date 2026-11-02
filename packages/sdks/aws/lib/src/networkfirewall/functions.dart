@@ -63,7 +63,7 @@ import 'get_resource_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,7 +71,7 @@ import 'get_resource_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_networkfirewall_getfirewall" "example" {
+/// data "aws_networkfirewall_firewall" "example" {
 ///   arn = arn
 /// }
 /// ```
@@ -166,7 +166,7 @@ import 'get_resource_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -174,7 +174,7 @@ import 'get_resource_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_networkfirewall_getfirewall" "example" {
+/// data "aws_networkfirewall_firewall" "example" {
 ///   name = "Test"
 /// }
 /// ```
@@ -273,7 +273,7 @@ import 'get_resource_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -281,7 +281,7 @@ import 'get_resource_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_networkfirewall_getfirewall" "example" {
+/// data "aws_networkfirewall_firewall" "example" {
 ///   arn  = arn
 ///   name = "Test"
 /// }
@@ -407,7 +407,7 @@ pulumi.Output<GetFirewallResult> getFirewallOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -415,7 +415,7 @@ pulumi.Output<GetFirewallResult> getFirewallOutput(
 ///   }
 /// }
 ///
-/// data "aws_networkfirewall_getfirewallpolicy" "example" {
+/// data "aws_networkfirewall_firewall_policy" "example" {
 ///   name = firewallPolicyName
 /// }
 /// ```
@@ -510,7 +510,7 @@ pulumi.Output<GetFirewallResult> getFirewallOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -518,7 +518,7 @@ pulumi.Output<GetFirewallResult> getFirewallOutput(
 ///   }
 /// }
 ///
-/// data "aws_networkfirewall_getfirewallpolicy" "example" {
+/// data "aws_networkfirewall_firewall_policy" "example" {
 ///   arn = firewallPolicyArn
 /// }
 /// ```
@@ -617,7 +617,7 @@ pulumi.Output<GetFirewallResult> getFirewallOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -625,7 +625,7 @@ pulumi.Output<GetFirewallResult> getFirewallOutput(
 ///   }
 /// }
 ///
-/// data "aws_networkfirewall_getfirewallpolicy" "example" {
+/// data "aws_networkfirewall_firewall_policy" "example" {
 ///   arn  = firewallPolicyArn
 ///   name = firewallPolicyName
 /// }
@@ -754,7 +754,7 @@ pulumi.Output<GetFirewallPolicyResult> getFirewallPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -762,7 +762,7 @@ pulumi.Output<GetFirewallPolicyResult> getFirewallPolicyOutput(
 ///   }
 /// }
 ///
-/// data "aws_networkfirewall_getresourcepolicy" "example" {
+/// data "aws_networkfirewall_resource_policy" "example" {
 ///   resource_arn = resourcePolicyArn
 /// }
 /// ```

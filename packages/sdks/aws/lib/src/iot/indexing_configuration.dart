@@ -173,7 +173,7 @@ import 'indexing_configuration_thing_indexing_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -181,24 +181,30 @@ import 'indexing_configuration_thing_indexing_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iot_indexingconfiguration" "example" {
-///   thing_indexing_configuration = {
-///     filter = {
+/// resource "aws_iot_indexing_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   thing_indexing_configuration {
+///     filter {
 ///       named_shadow_names = ["thing1shadow"]
 ///     }
-///     custom_fields = [{
-///       "name" = "shadow.desired.power"
-///       "type" = "Boolean"
-///       }, {
-///       "name" = "attributes.version"
-///       "type" = "Number"
-///       }, {
-///       "name" = "shadow.name.thing1shadow.desired.DefaultDesired"
-///       "type" = "String"
-///       }, {
-///       "name" = "deviceDefender.securityProfile1.NUMBER_VALUE_BEHAVIOR.lastViolationValue.number"
-///       "type" = "Number"
-///     }]
+///     custom_field {
+///       name = "shadow.desired.power"
+///       type = "Boolean"
+///     }
+///     custom_field {
+///       name = "attributes.version"
+///       type = "Number"
+///     }
+///     custom_field {
+///       name = "shadow.name.thing1shadow.desired.DefaultDesired"
+///       type = "String"
+///     }
+///     custom_field {
+///       name = "deviceDefender.securityProfile1.NUMBER_VALUE_BEHAVIOR.lastViolationValue.number"
+///       type = "Number"
+///     }
 ///     thing_indexing_mode              = "REGISTRY_AND_SHADOW"
 ///     thing_connectivity_indexing_mode = "STATUS"
 ///     device_defender_indexing_mode    = "VIOLATIONS"
@@ -305,7 +311,7 @@ class IndexingConfiguration extends pulumi.CustomResource {
           'aws:iot/indexingConfiguration:IndexingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     thingGroupIndexingConfiguration = registerOutput<IndexingConfigurationThingGroupIndexingConfiguration>('thingGroupIndexingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexingConfigurationThingGroupIndexingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

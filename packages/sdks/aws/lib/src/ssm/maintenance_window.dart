@@ -70,7 +70,7 @@ import 'maintenance_window_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -78,7 +78,10 @@ import 'maintenance_window_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssm_maintenancewindow" "production" {
+/// resource "aws_ssm_maintenance_window" "production" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "maintenance-window-application"
 ///   schedule = "cron(0 16 ? * TUE *)"
 ///   duration = 3
@@ -189,7 +192,7 @@ class MaintenanceWindow extends pulumi.CustomResource {
           'aws:ssm/maintenanceWindow:MaintenanceWindow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     allowUnassociatedTargets = registerOutput<bool?>('allowUnassociatedTargets');
     cutoff = registerOutput<int>('cutoff');

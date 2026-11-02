@@ -106,7 +106,7 @@ import 'function_recursion_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -116,15 +116,21 @@ import 'function_recursion_config_state.dart';
 ///
 /// # Lambda function that may need to call itself
 /// resource "aws_lambda_function" "example" {
-///   code    = fileArchive("function.zip")
-///   name    = "recursive_processor"
-///   role    = lambdaRole.arn
-///   handler = "index.handler"
-///   runtime = "python3.12"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filename      = filearchive("function.zip")
+///   function_name = "recursive_processor"
+///   role          = lambdaRole.arn
+///   handler       = "index.handler"
+///   runtime       = "python3.12"
 /// }
 /// # Allow the function to invoke itself recursively
-/// resource "aws_lambda_functionrecursionconfig" "example" {
-///   function_name  = aws_lambda_function.example.name
+/// resource "aws_lambda_function_recursion_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   function_name  = aws_lambda_function.example.function_name
 ///   recursive_loop = "Allow"
 /// }
 /// ```
@@ -156,7 +162,7 @@ import 'function_recursion_config_state.dart';
 ///         var example = new Function("example", FunctionArgs.builder()
 ///             .code(new FileArchive("function.zip"))
 ///             .name("recursive_processor")
-///             .role(lambdaRole.arn())
+///             .role(lambdaRole.get("arn"))
 ///             .handler("index.handler")
 ///             .runtime("python3.12")
 ///             .build());
@@ -307,7 +313,7 @@ import 'function_recursion_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -317,19 +323,25 @@ import 'function_recursion_config_state.dart';
 ///
 /// # Production function with recursion protection
 /// resource "aws_lambda_function" "production_processor" {
-///   code    = fileArchive("processor.zip")
-///   name    = "production-data-processor"
-///   role    = lambdaRole.arn
-///   handler = "app.handler"
-///   runtime = "nodejs24.x"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filename      = filearchive("processor.zip")
+///   function_name = "production-data-processor"
+///   role          = lambdaRole.arn
+///   handler       = "app.handler"
+///   runtime       = "nodejs24.x"
 ///   tags = {
 ///     "Environment" = "production"
 ///     "Purpose"     = "data-processing"
 ///   }
 /// }
 /// # Prevent infinite loops in production
-/// resource "aws_lambda_functionrecursionconfig" "example" {
-///   function_name  = aws_lambda_function.production_processor.name
+/// resource "aws_lambda_function_recursion_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   function_name  = aws_lambda_function.production_processor.function_name
 ///   recursive_loop = "Terminate"
 /// }
 /// ```
@@ -361,7 +373,7 @@ import 'function_recursion_config_state.dart';
 ///         var productionProcessor = new Function("productionProcessor", FunctionArgs.builder()
 ///             .code(new FileArchive("processor.zip"))
 ///             .name("production-data-processor")
-///             .role(lambdaRole.arn())
+///             .role(lambdaRole.get("arn"))
 ///             .handler("app.handler")
 ///             .runtime("nodejs24.x")
 ///             .tags(Map.ofEntries(
@@ -433,7 +445,7 @@ class FunctionRecursionConfig extends pulumi.CustomResource {
           'aws:lambda/functionRecursionConfig:FunctionRecursionConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     functionName = registerOutput<String>('functionName');
     recursiveLoop = registerOutput<String>('recursiveLoop');

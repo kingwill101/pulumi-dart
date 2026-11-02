@@ -67,7 +67,7 @@ import 'app_authorization_connection_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,7 +75,10 @@ import 'app_authorization_connection_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appfabric_appauthorizationconnection" "example" {
+/// resource "aws_appfabric_app_authorization_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_authorization_arn = test.arn
 ///   app_bundle_arn        = arn
 /// }
@@ -102,7 +105,7 @@ import 'app_authorization_connection_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AppAuthorizationConnection("example", AppAuthorizationConnectionArgs.builder()
-///             .appAuthorizationArn(test.arn())
+///             .appAuthorizationArn(test.get("arn"))
 ///             .appBundleArn(arn)
 ///             .build());
 ///
@@ -146,7 +149,7 @@ class AppAuthorizationConnection extends pulumi.CustomResource {
           'aws:appfabric/appAuthorizationConnection:AppAuthorizationConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     app = registerOutput<String>('app');
     appAuthorizationArn = registerOutput<String>('appAuthorizationArn');

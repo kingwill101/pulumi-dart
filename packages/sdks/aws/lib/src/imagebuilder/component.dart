@@ -72,7 +72,7 @@ import 'component_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -81,6 +81,9 @@ import 'component_state.dart';
 /// }
 ///
 /// resource "aws_imagebuilder_component" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   platform = "Linux"
 ///   uri      ="s3://${exampleAwsS3Object.bucket}/${exampleAwsS3Object.key}"
@@ -111,7 +114,7 @@ import 'component_state.dart';
 ///         var example = new Component("example", ComponentArgs.builder()
 ///             .name("example")
 ///             .platform("Linux")
-///             .uri(String.format("s3://%s/%s", exampleAwsS3Object.bucket(),exampleAwsS3Object.key()))
+///             .uri(String.format("s3://%s/%s", exampleAwsS3Object.get("bucket"),exampleAwsS3Object.get("key")))
 ///             .version("1.0.0")
 ///             .build());
 ///
@@ -193,7 +196,7 @@ class Component extends pulumi.CustomResource {
           'aws:imagebuilder/component:Component',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     changeDescription = registerOutput<String?>('changeDescription');

@@ -191,7 +191,7 @@ import 'multi_region_access_point_policy_state.dart';
 /// 			Details: &s3control.MultiRegionAccessPointDetailsArgs{
 /// 				Regions: s3control.MultiRegionAccessPointDetailsRegionArray{
 /// 					&s3control.MultiRegionAccessPointDetailsRegionArgs{
-/// 						Bucket: fooBucket.ID().ToIDOutput().ToStringOutput(),
+/// 						Bucket: fooBucket.ID(),
 /// 					},
 /// 				},
 /// 				Name: pulumi.String("example"),
@@ -204,8 +204,8 @@ import 'multi_region_access_point_policy_state.dart';
 /// 			Details: &s3control.MultiRegionAccessPointPolicyDetailsArgs{
 /// 				Name: std.SplitOutput(ctx, std.SplitOutputArgs{
 /// 					Separator: pulumi.String(":"),
-/// 					Text:      example.ID().ToIDOutput().ToStringOutput(),
-/// 				}, nil).Result()[1],
+/// 					Text:      example.ID(),
+/// 				}, nil).Result()[1].(pulumi.String),
 /// 				Policy: example.Alias.ApplyT(func(alias string) (pulumi.String, error) {
 /// 					var _zero pulumi.String
 /// 					tmpJSON0, err := json.Marshal(map[string]interface{}{
@@ -241,7 +241,7 @@ import 'multi_region_access_point_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -252,35 +252,44 @@ import 'multi_region_access_point_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
 ///
 /// resource "aws_s3_bucket" "foo_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example-bucket-foo"
 /// }
-/// resource "aws_s3control_multiregionaccesspoint" "example" {
-///   details = {
-///     regions = [{
-///       "bucket" = aws_s3_bucket.foo_bucket.id
-///     }]
+/// resource "aws_s3control_multi_region_access_point" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   details {
+///     region {
+///       bucket = aws_s3_bucket.foo_bucket.id
+///     }
 ///     name = "example"
 ///   }
 /// }
-/// resource "aws_s3control_multiregionaccesspointpolicy" "example" {
-///   details = {
-///     name = element(split(":", aws_s3control_multiregionaccesspoint.example.id), 1)
+/// resource "aws_s3control_multi_region_access_point_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   details {
+///     name = element(split(":", aws_s3control_multi_region_access_point.example.id), 1)
 ///     policy = jsonencode({
 ///       "Version" = "2012-10-17"
 ///       "Statement" = [{
 ///         "Sid"    = "Example"
 ///         "Effect" = "Allow"
 ///         "Principal" = {
-///           "AWS" = data.aws_getcalleridentity.current.account_id
+///           "AWS" = data.aws_caller_identity.current.account_id
 ///         }
 ///         "Action"   = ["s3:GetObject", "s3:PutObject"]
-///         "Resource" ="arn:${data.aws_getpartition.currentGetPartition.partition}:s3::${data.aws_getcalleridentity.current.account_id}:accesspoint/${aws_s3control_multiregionaccesspoint.example.alias}/object/*"
+///         "Resource" ="arn:${data.aws_partition.currentGetPartition.partition}:s3::${data.aws_caller_identity.current.account_id}:accesspoint/${aws_s3control_multi_region_access_point.example.alias}/object/*"
 ///       }]
 ///     })
 ///   }
@@ -450,7 +459,7 @@ class MultiRegionAccessPointPolicy extends pulumi.CustomResource {
           'aws:s3control/multiRegionAccessPointPolicy:MultiRegionAccessPointPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     details = registerOutput<MultiRegionAccessPointPolicyDetails>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiRegionAccessPointPolicyDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });

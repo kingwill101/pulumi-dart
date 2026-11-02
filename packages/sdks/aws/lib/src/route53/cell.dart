@@ -55,7 +55,7 @@ import 'cell_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -64,6 +64,9 @@ import 'cell_state.dart';
 /// }
 ///
 /// resource "aws_route53recoveryreadiness_cell" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cell_name = "us-west-2-failover-cell"
 /// }
 /// ```
@@ -139,7 +142,7 @@ class Cell extends pulumi.CustomResource {
           'aws:route53recoveryreadiness/cell:Cell',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cellName = registerOutput<String>('cellName');

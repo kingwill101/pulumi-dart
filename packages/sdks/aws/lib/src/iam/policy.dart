@@ -121,7 +121,7 @@ import 'policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -130,6 +130,9 @@ import 'policy_state.dart';
 /// }
 ///
 /// resource "aws_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "test_policy"
 ///   path        = "/"
 ///   description = "My test policy"
@@ -252,7 +255,7 @@ class Policy extends pulumi.CustomResource {
           'aws:iam/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attachmentCount = registerOutput<int>('attachmentCount');

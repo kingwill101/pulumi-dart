@@ -109,7 +109,7 @@ import 'event_subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -117,7 +117,10 @@ import 'event_subscription_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_dms_eventsubscription" "example" {
+/// resource "aws_dms_event_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enabled          = true
 ///   event_categories = ["creation", "failure"]
 ///   name             = "my-favorite-event-subscription"
@@ -156,8 +159,8 @@ import 'event_subscription_state.dart';
 ///                 "creation",
 ///                 "failure")
 ///             .name("my-favorite-event-subscription")
-///             .snsTopicArn(exampleAwsSnsTopic.arn())
-///             .sourceIds(exampleAwsDmsReplicationTask.replicationTaskId())
+///             .snsTopicArn(exampleAwsSnsTopic.get("arn"))
+///             .sourceIds(exampleAwsDmsReplicationTask.get("replicationTaskId"))
 ///             .sourceType("replication-task")
 ///             .tags(Map.of("Name", "example"))
 ///             .build());
@@ -225,7 +228,7 @@ class EventSubscription extends pulumi.CustomResource {
           'aws:dms/eventSubscription:EventSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     enabled = registerOutput<bool?>('enabled');

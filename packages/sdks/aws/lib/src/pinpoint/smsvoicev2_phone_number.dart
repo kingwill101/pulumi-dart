@@ -76,7 +76,7 @@ import 'smsvoicev2_phone_number_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -84,7 +84,10 @@ import 'smsvoicev2_phone_number_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_pinpoint_smsvoicev2phonenumber" "example" {
+/// resource "aws_pinpoint_smsvoicev2_phone_number" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   iso_country_code    = "US"
 ///   message_type        = "TRANSACTIONAL"
 ///   number_type         = "TOLL_FREE"
@@ -199,7 +202,7 @@ class Smsvoicev2PhoneNumber extends pulumi.CustomResource {
           'aws:pinpoint/smsvoicev2PhoneNumber:Smsvoicev2PhoneNumber',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');

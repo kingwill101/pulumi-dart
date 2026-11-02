@@ -89,7 +89,7 @@ import 'vpc_ipam_scope_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcIpamScope(ctx, "example", &ec2.VpcIpamScopeArgs{
-/// 			IpamId:      example.ID().ToIDOutput().ToStringOutput(),
+/// 			IpamId:      example.ID(),
 /// 			Description: pulumi.String("Another Scope"),
 /// 		})
 /// 		if err != nil {
@@ -100,7 +100,7 @@ import 'vpc_ipam_scope_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -108,16 +108,22 @@ import 'vpc_ipam_scope_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
 ///
-/// resource "aws_ec2_vpcipam" "example" {
+/// resource "aws_ec2_vpc_ipam" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   operating_regions {
-///     region_name = data.aws_getregion.current.region
+///     region_name = data.aws_region.current.region
 ///   }
 /// }
-/// resource "aws_ec2_vpcipamscope" "example" {
-///   ipam_id     = aws_ec2_vpcipam.example.id
+/// resource "aws_ec2_vpc_ipam_scope" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ipam_id     = aws_ec2_vpc_ipam.example.id
 ///   description = "Another Scope"
 /// }
 /// ```
@@ -225,7 +231,7 @@ class VpcIpamScope extends pulumi.CustomResource {
           'aws:ec2/vpcIpamScope:VpcIpamScope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

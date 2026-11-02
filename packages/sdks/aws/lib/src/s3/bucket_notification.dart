@@ -225,7 +225,7 @@ import 'bucket_notification_topic.dart';
 /// 					FilterSuffix: pulumi.String(".log"),
 /// 				},
 /// 			},
-/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: bucket.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -235,7 +235,7 @@ import 'bucket_notification_topic.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -243,9 +243,9 @@ import 'bucket_notification_topic.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "topic" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "topic" {
+///   statement {
+///     condition {
 ///       test     = "ArnLike"
 ///       variable = "aws:SourceArn"
 ///       values   = [aws_s3_bucket.bucket.arn]
@@ -261,14 +261,23 @@ import 'bucket_notification_topic.dart';
 /// }
 ///
 /// resource "aws_sns_topic" "topic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "s3-event-notification-topic"
-///   policy = data.aws_iam_getpolicydocument.topic.json
+///   policy = data.aws_iam_policy_document.topic.json
 /// }
 /// resource "aws_s3_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "your-bucket-name"
 /// }
-/// resource "aws_s3_bucketnotification" "bucket_notification" {
-///   topics {
+/// resource "aws_s3_bucket_notification" "bucket_notification" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   topic {
 ///     topic_arn     = aws_sns_topic.topic.arn
 ///     events        = ["s3:ObjectCreated:*"]
 ///     filter_suffix = ".log"
@@ -602,7 +611,7 @@ import 'bucket_notification_topic.dart';
 /// 					FilterSuffix: pulumi.String(".log"),
 /// 				},
 /// 			},
-/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: bucket.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -612,7 +621,7 @@ import 'bucket_notification_topic.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -620,9 +629,9 @@ import 'bucket_notification_topic.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "queue" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "queue" {
+///   statement {
+///     condition {
 ///       test     = "ArnEquals"
 ///       variable = "aws:SourceArn"
 ///       values   = [aws_s3_bucket.bucket.arn]
@@ -638,14 +647,23 @@ import 'bucket_notification_topic.dart';
 /// }
 ///
 /// resource "aws_sqs_queue" "queue" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "s3-event-notification-queue"
-///   policy = data.aws_iam_getpolicydocument.queue.json
+///   policy = data.aws_iam_policy_document.queue.json
 /// }
 /// resource "aws_s3_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "your-bucket-name"
 /// }
-/// resource "aws_s3_bucketnotification" "bucket_notification" {
-///   queues {
+/// resource "aws_s3_bucket_notification" "bucket_notification" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   queue {
 ///     queue_arn     = aws_sqs_queue.queue.arn
 ///     events        = ["s3:ObjectCreated:*"]
 ///     filter_suffix = ".log"
@@ -1019,7 +1037,7 @@ import 'bucket_notification_topic.dart';
 /// 					FilterSuffix: pulumi.String(".log"),
 /// 				},
 /// 			},
-/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: bucket.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			allowBucket,
 /// 		}))
@@ -1031,7 +1049,7 @@ import 'bucket_notification_topic.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1039,8 +1057,8 @@ import 'bucket_notification_topic.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["lambda.amazonaws.com"]
@@ -1051,29 +1069,44 @@ import 'bucket_notification_topic.dart';
 /// }
 ///
 /// resource "aws_iam_role" "iam_for_lambda" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "iam_for_lambda"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
 /// resource "aws_lambda_permission" "allow_bucket" {
-///   statement_id = "AllowExecutionFromS3Bucket"
-///   action       = "lambda:InvokeFunction"
-///   function     = aws_lambda_function.func.arn
-///   principal    = "s3.amazonaws.com"
-///   source_arn   = aws_s3_bucket.bucket.arn
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   statement_id  = "AllowExecutionFromS3Bucket"
+///   action        = "lambda:InvokeFunction"
+///   function_name = aws_lambda_function.func.arn
+///   principal     = "s3.amazonaws.com"
+///   source_arn    = aws_s3_bucket.bucket.arn
 /// }
 /// resource "aws_lambda_function" "func" {
-///   code    = fileArchive("your-function.zip")
-///   name    = "example_lambda_name"
-///   role    = aws_iam_role.iam_for_lambda.arn
-///   handler = "exports.example"
-///   runtime = "nodejs24.x"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filename      = filearchive("your-function.zip")
+///   function_name = "example_lambda_name"
+///   role          = aws_iam_role.iam_for_lambda.arn
+///   handler       = "exports.example"
+///   runtime       = "nodejs24.x"
 /// }
 /// resource "aws_s3_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "your-bucket-name"
 /// }
-/// resource "aws_s3_bucketnotification" "bucket_notification" {
+/// resource "aws_s3_bucket_notification" "bucket_notification" {
 ///   depends_on = [aws_lambda_permission.allow_bucket]
-///   lambda_functions {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   lambda_function {
 ///     lambda_function_arn = aws_lambda_function.func.arn
 ///     events              = ["s3:ObjectCreated:*"]
 ///     filter_prefix       = "AWSLogs/"
@@ -1582,7 +1615,7 @@ import 'bucket_notification_topic.dart';
 /// 					FilterSuffix: pulumi.String(".log"),
 /// 				},
 /// 			},
-/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: bucket.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			allowBucket1,
 /// 			allowBucket2,
@@ -1595,7 +1628,7 @@ import 'bucket_notification_topic.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1603,8 +1636,8 @@ import 'bucket_notification_topic.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["lambda.amazonaws.com"]
@@ -1615,48 +1648,69 @@ import 'bucket_notification_topic.dart';
 /// }
 ///
 /// resource "aws_iam_role" "iam_for_lambda" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "iam_for_lambda"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
 /// resource "aws_lambda_permission" "allow_bucket1" {
-///   statement_id = "AllowExecutionFromS3Bucket1"
-///   action       = "lambda:InvokeFunction"
-///   function     = aws_lambda_function.func1.arn
-///   principal    = "s3.amazonaws.com"
-///   source_arn   = aws_s3_bucket.bucket.arn
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   statement_id  = "AllowExecutionFromS3Bucket1"
+///   action        = "lambda:InvokeFunction"
+///   function_name = aws_lambda_function.func1.arn
+///   principal     = "s3.amazonaws.com"
+///   source_arn    = aws_s3_bucket.bucket.arn
 /// }
 /// resource "aws_lambda_function" "func1" {
-///   code    = fileArchive("your-function1.zip")
-///   name    = "example_lambda_name1"
-///   role    = aws_iam_role.iam_for_lambda.arn
-///   handler = "exports.example"
-///   runtime = "nodejs24.x"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filename      = filearchive("your-function1.zip")
+///   function_name = "example_lambda_name1"
+///   role          = aws_iam_role.iam_for_lambda.arn
+///   handler       = "exports.example"
+///   runtime       = "nodejs24.x"
 /// }
 /// resource "aws_lambda_permission" "allow_bucket2" {
-///   statement_id = "AllowExecutionFromS3Bucket2"
-///   action       = "lambda:InvokeFunction"
-///   function     = aws_lambda_function.func2.arn
-///   principal    = "s3.amazonaws.com"
-///   source_arn   = aws_s3_bucket.bucket.arn
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   statement_id  = "AllowExecutionFromS3Bucket2"
+///   action        = "lambda:InvokeFunction"
+///   function_name = aws_lambda_function.func2.arn
+///   principal     = "s3.amazonaws.com"
+///   source_arn    = aws_s3_bucket.bucket.arn
 /// }
 /// resource "aws_lambda_function" "func2" {
-///   code    = fileArchive("your-function2.zip")
-///   name    = "example_lambda_name2"
-///   role    = aws_iam_role.iam_for_lambda.arn
-///   handler = "exports.example"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filename      = filearchive("your-function2.zip")
+///   function_name = "example_lambda_name2"
+///   role          = aws_iam_role.iam_for_lambda.arn
+///   handler       = "exports.example"
 /// }
 /// resource "aws_s3_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "your-bucket-name"
 /// }
-/// resource "aws_s3_bucketnotification" "bucket_notification" {
+/// resource "aws_s3_bucket_notification" "bucket_notification" {
 ///   depends_on = [aws_lambda_permission.allow_bucket1, aws_lambda_permission.allow_bucket2]
-///   lambda_functions {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   lambda_function {
 ///     lambda_function_arn = aws_lambda_function.func1.arn
 ///     events              = ["s3:ObjectCreated:*"]
 ///     filter_prefix       = "AWSLogs/"
 ///     filter_suffix       = ".log"
 ///   }
-///   lambda_functions {
+///   lambda_function {
 ///     lambda_function_arn = aws_lambda_function.func2.arn
 ///     events              = ["s3:ObjectCreated:*"]
 ///     filter_prefix       = "OtherLogs/"
@@ -2109,7 +2163,7 @@ import 'bucket_notification_topic.dart';
 /// 					FilterPrefix: pulumi.String("videos/"),
 /// 				},
 /// 			},
-/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: bucket.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2119,7 +2173,7 @@ import 'bucket_notification_topic.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2127,9 +2181,9 @@ import 'bucket_notification_topic.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "queue" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "queue" {
+///   statement {
+///     condition {
 ///       test     = "ArnEquals"
 ///       variable = "aws:SourceArn"
 ///       values   = [aws_s3_bucket.bucket.arn]
@@ -2145,20 +2199,29 @@ import 'bucket_notification_topic.dart';
 /// }
 ///
 /// resource "aws_sqs_queue" "queue" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "s3-event-notification-queue"
-///   policy = data.aws_iam_getpolicydocument.queue.json
+///   policy = data.aws_iam_policy_document.queue.json
 /// }
 /// resource "aws_s3_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "your-bucket-name"
 /// }
-/// resource "aws_s3_bucketnotification" "bucket_notification" {
-///   queues {
+/// resource "aws_s3_bucket_notification" "bucket_notification" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   queue {
 ///     id            = "image-upload-event"
 ///     queue_arn     = aws_sqs_queue.queue.arn
 ///     events        = ["s3:ObjectCreated:*"]
 ///     filter_prefix = "images/"
 ///   }
-///   queues {
+///   queue {
 ///     id            = "video-upload-event"
 ///     queue_arn     = aws_sqs_queue.queue.arn
 ///     events        = ["s3:ObjectCreated:*"]
@@ -2557,7 +2620,7 @@ import 'bucket_notification_topic.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketNotification(ctx, "shared", &s3.BucketNotificationArgs{
-/// 			Bucket:      shared.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket:      shared.ID(),
 /// 			Eventbridge: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -2657,7 +2720,7 @@ import 'bucket_notification_topic.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2666,14 +2729,23 @@ import 'bucket_notification_topic.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "shared" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "shared-bucket"
 /// }
-/// resource "aws_s3_bucketnotification" "shared" {
+/// resource "aws_s3_bucket_notification" "shared" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket      = aws_s3_bucket.shared.id
 ///   eventbridge = true
 /// }
 /// # Team A: process new uploads under uploads/
-/// resource "aws_cloudwatch_eventrule" "team_a" {
+/// resource "aws_cloudwatch_event_rule" "team_a" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "team-a-uploads"
 ///   event_pattern = jsonencode({
 ///     "source"      = ["aws.s3"]
@@ -2690,13 +2762,19 @@ import 'bucket_notification_topic.dart';
 ///     }
 ///   })
 /// }
-/// resource "aws_cloudwatch_eventtarget" "team_a" {
-///   rule = aws_cloudwatch_eventrule.team_a.name
+/// resource "aws_cloudwatch_event_target" "team_a" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule = aws_cloudwatch_event_rule.team_a.name
 ///   arn  = teamAProcessor.arn
 /// }
 /// # Team B: archive deletions under archive/, declared in a separate
 /// # Pulumi configuration that knows nothing about Team A.
-/// resource "aws_cloudwatch_eventrule" "team_b" {
+/// resource "aws_cloudwatch_event_rule" "team_b" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "team-b-deletions"
 ///   event_pattern = jsonencode({
 ///     "source"      = ["aws.s3"]
@@ -2713,8 +2791,11 @@ import 'bucket_notification_topic.dart';
 ///     }
 ///   })
 /// }
-/// resource "aws_cloudwatch_eventtarget" "team_b" {
-///   rule = aws_cloudwatch_eventrule.team_b.name
+/// resource "aws_cloudwatch_event_target" "team_b" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule = aws_cloudwatch_event_rule.team_b.name
 ///   arn  = teamBArchive.arn
 /// }
 /// ```
@@ -2777,7 +2858,7 @@ import 'bucket_notification_topic.dart';
 ///
 ///         var teamAEventTarget = new EventTarget("teamAEventTarget", EventTargetArgs.builder()
 ///             .rule(teamA.name())
-///             .arn(teamAProcessor.arn())
+///             .arn(teamAProcessor.get("arn"))
 ///             .build());
 ///
 ///         // Team B: archive deletions under archive/, declared in a separate
@@ -2803,7 +2884,7 @@ import 'bucket_notification_topic.dart';
 ///
 ///         var teamBEventTarget = new EventTarget("teamBEventTarget", EventTargetArgs.builder()
 ///             .rule(teamB.name())
-///             .arn(teamBArchive.arn())
+///             .arn(teamBArchive.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -2924,7 +3005,7 @@ class BucketNotification extends pulumi.CustomResource {
           'aws:s3/bucketNotification:BucketNotification',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     eventbridge = registerOutput<bool?>('eventbridge');

@@ -104,7 +104,7 @@ import 'custom_plugin_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleBucketObjectv2, err := s3.NewBucketObjectv2(ctx, "example", &s3.BucketObjectv2Args{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Key:    pulumi.String("debezium.zip"),
 /// 			Source: pulumi.NewFileAsset("debezium.zip"),
 /// 		})
@@ -129,7 +129,7 @@ import 'custom_plugin_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -138,18 +138,27 @@ import 'custom_plugin_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example"
 /// }
-/// resource "aws_s3_bucketobjectv2" "example" {
+/// resource "aws_s3_bucket_objectv2" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.id
 ///   key    = "debezium.zip"
-///   source = fileAsset("debezium.zip")
+///   source = fileasset("debezium.zip")
 /// }
-/// resource "aws_mskconnect_customplugin" "example" {
-///   location = {
-///     s3 = {
+/// resource "aws_mskconnect_custom_plugin" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location {
+///     s3 {
 ///       bucket_arn = aws_s3_bucket.example.arn
-///       file_key   = aws_s3_bucketobjectv2.example.key
+///       file_key   = aws_s3_bucket_objectv2.example.key
 ///     }
 ///   }
 ///   name         = "debezium-example"
@@ -276,7 +285,7 @@ class CustomPlugin extends pulumi.CustomResource {
           'aws:mskconnect/customPlugin:CustomPlugin',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     contentType = registerOutput<String>('contentType');

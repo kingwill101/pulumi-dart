@@ -67,7 +67,7 @@ import 'get_environments_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,7 +75,7 @@ import 'get_environments_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_appconfig_getapplication" "example" {
+/// data "aws_appconfig_application" "example" {
 ///   name = "my-appconfig-application"
 /// }
 /// ```
@@ -202,7 +202,7 @@ pulumi.Output<GetApplicationResult> getApplicationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -210,7 +210,7 @@ pulumi.Output<GetApplicationResult> getApplicationOutput(
 ///   }
 /// }
 ///
-/// data "aws_appconfig_getconfigurationprofile" "example" {
+/// data "aws_appconfig_configuration_profile" "example" {
 ///   application_id           = "b5d5gpj"
 ///   configuration_profile_id = "qrbb1c1"
 /// }
@@ -320,12 +320,22 @@ pulumi.Output<GetConfigurationProfileResult> getConfigurationProfileOutput(
 ///         ApplicationId = "a1d3rpe",
 ///     });
 ///
-///     var exampleGetConfigurationProfile = ;
+///     var exampleGetConfigurationProfile = .ToDictionary(item => {
+///         var __key = item.Key;
+///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+///     }, item => {
+///         var __value = item.Value;
+///         return Aws.AppConfig.GetConfigurationProfile.Invoke(new()
+///         {
+///             ConfigurationProfileId = __value,
+///             ApplicationId = exampleAwsAppconfigApplication.Id,
+///         });
+///     });
 ///
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -333,17 +343,17 @@ pulumi.Output<GetConfigurationProfileResult> getConfigurationProfileOutput(
 ///   }
 /// }
 ///
-/// data "aws_appconfig_getconfigurationprofiles" "example" {
+/// data "aws_appconfig_configuration_profiles" "example" {
 ///   application_id = "a1d3rpe"
 /// }
-/// data "aws_appconfig_getconfigurationprofile" "invoke_1" {
-///   for_each                 = data.aws_appconfig_getconfigurationprofiles.example.configuration_profile_ids
+/// data "aws_appconfig_configuration_profile" "invoke_1" {
+///   for_each                 = data.aws_appconfig_configuration_profiles.example.configuration_profile_ids
 ///   configuration_profile_id = each.value
 ///   application_id           = exampleAwsAppconfigApplication.id
 /// }
 ///
 /// locals {
-///   exampleGetConfigurationProfile = {for __key, __value in data.aws_appconfig_getconfigurationprofiles.example.configuration_profile_ids : __key => data.aws_appconfig_getconfigurationprofile.invoke_1[__key]}
+///   exampleGetConfigurationProfile = {for __key, __value in data.aws_appconfig_configuration_profiles.example.configuration_profile_ids : __key => data.aws_appconfig_configuration_profile.invoke_1[__key]}
 /// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_appconfig_get_configuration_profiles_get_configuration_profiles_args_doc}
@@ -433,7 +443,7 @@ pulumi.Output<GetConfigurationProfilesResult> getConfigurationProfilesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -441,7 +451,7 @@ pulumi.Output<GetConfigurationProfilesResult> getConfigurationProfilesOutput(
 ///   }
 /// }
 ///
-/// data "aws_appconfig_getenvironment" "example" {
+/// data "aws_appconfig_environment" "example" {
 ///   application_id = "b5d5gpj"
 ///   environment_id = "qrbb1c1"
 /// }
@@ -568,7 +578,7 @@ pulumi.Output<GetEnvironmentResult> getEnvironmentOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -576,7 +586,7 @@ pulumi.Output<GetEnvironmentResult> getEnvironmentOutput(
 ///   }
 /// }
 ///
-/// data "aws_appconfig_getenvironments" "example" {
+/// data "aws_appconfig_environments" "example" {
 ///   application_id = "a1d3rpe"
 /// }
 /// ```

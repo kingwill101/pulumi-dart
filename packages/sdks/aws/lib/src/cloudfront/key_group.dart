@@ -98,7 +98,7 @@ import 'key_group_state.dart';
 /// 		_, err = cloudfront.NewKeyGroup(ctx, "example", &cloudfront.KeyGroupArgs{
 /// 			Comment: pulumi.String("example key group"),
 /// 			Items: pulumi.StringArray{
-/// 				example.ID().ToIDOutput().ToStringOutput(),
+/// 				example.ID(),
 /// 			},
 /// 			Name: pulumi.String("example-key-group"),
 /// 		})
@@ -110,7 +110,7 @@ import 'key_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -121,14 +121,20 @@ import 'key_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_publickey" "example" {
+/// resource "aws_cloudfront_public_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   comment     = "example public key"
 ///   encoded_key = file("public_key.pem")
 ///   name        = "example-key"
 /// }
-/// resource "aws_cloudfront_keygroup" "example" {
+/// resource "aws_cloudfront_key_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   comment = "example key group"
-///   items   = [aws_cloudfront_publickey.example.id]
+///   items   = [aws_cloudfront_public_key.example.id]
 ///   name    = "example-key-group"
 /// }
 /// ```
@@ -227,7 +233,7 @@ class KeyGroup extends pulumi.CustomResource {
           'aws:cloudfront/keyGroup:KeyGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     comment = registerOutput<String?>('comment');
     etag = registerOutput<String>('etag');

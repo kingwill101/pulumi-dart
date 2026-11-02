@@ -102,7 +102,7 @@ import 'reserved_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -110,7 +110,7 @@ import 'reserved_instance_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_rds_getreservedinstanceoffering" "test" {
+/// data "aws_rds_reserved_instance_offering" "test" {
 ///   db_instance_class   = "db.t2.micro"
 ///   duration            = 31536000
 ///   multi_az            = false
@@ -118,8 +118,11 @@ import 'reserved_instance_state.dart';
 ///   product_description = "mysql"
 /// }
 ///
-/// resource "aws_rds_reservedinstance" "example" {
-///   offering_id    = data.aws_rds_getreservedinstanceoffering.test.offering_id
+/// resource "aws_rds_reserved_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   offering_id    = data.aws_rds_reserved_instance_offering.test.offering_id
 ///   reservation_id = "optionalCustomReservationID"
 ///   instance_count = 3
 /// }
@@ -246,7 +249,7 @@ class ReservedInstance extends pulumi.CustomResource {
           'aws:rds/reservedInstance:ReservedInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     currencyCode = registerOutput<String>('currencyCode');

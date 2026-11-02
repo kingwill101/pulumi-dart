@@ -102,7 +102,7 @@ import 'parameter_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -110,7 +110,10 @@ import 'parameter_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_dax_parametergroup" "example" {
+/// resource "aws_dax_parameter_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameters {
 ///     name  = "query-ttl-millis"
 ///     value = "100000"
@@ -203,7 +206,7 @@ class ParameterGroup extends pulumi.CustomResource {
           'aws:dax/parameterGroup:ParameterGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

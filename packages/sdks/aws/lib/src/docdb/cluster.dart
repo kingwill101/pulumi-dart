@@ -95,7 +95,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -104,6 +104,9 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_docdb_cluster" "docdb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier      = "my-docdb-cluster"
 ///   engine                  = "docdb"
 ///   master_username         = "foo"
@@ -277,7 +280,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:docdb/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['masterPassword', 'masterPasswordWo'],
         ) {
     allowMajorVersionUpgrade = registerOutput<bool?>('allowMajorVersionUpgrade');

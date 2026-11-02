@@ -86,7 +86,7 @@ import 'v2_service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -94,7 +94,10 @@ import 'v2_service_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_resiliencehub_v2service" "example" {
+/// resource "aws_resiliencehub_v2_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   permission_model = {
 ///     invoker_role_name = "AWSResilienceHubAssessmentRole"
 ///   }
@@ -282,7 +285,7 @@ import 'v2_service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -290,19 +293,25 @@ import 'v2_service_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_resiliencehub_v2policy" "example" {
+/// resource "aws_resiliencehub_v2_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_slo = {
 ///     target = 99.9
 ///   }
 ///   name = "example-policy"
 /// }
-/// resource "aws_resiliencehub_v2service" "example" {
+/// resource "aws_resiliencehub_v2_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   permission_model = {
 ///     invoker_role_name = "AWSResilienceHubAssessmentRole"
 ///   }
 ///   name        = "example-service"
 ///   description = "Production API service"
-///   policy_arn  = aws_resiliencehub_v2policy.example.arn
+///   policy_arn  = aws_resiliencehub_v2_policy.example.arn
 ///   regions     = ["us-west-2", "us-east-1"]
 ///   tags = {
 ///     "Environment" = "production"
@@ -489,7 +498,7 @@ import 'v2_service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -497,15 +506,21 @@ import 'v2_service_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_resiliencehub_v2system" "example" {
+/// resource "aws_resiliencehub_v2_system" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-system"
 /// }
-/// resource "aws_resiliencehub_v2service" "example" {
+/// resource "aws_resiliencehub_v2_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   permission_model = {
 ///     invoker_role_name = "AWSResilienceHubAssessmentRole"
 ///   }
 ///   associated_systems {
-///     system_arn = aws_resiliencehub_v2system.example.arn
+///     system_arn = aws_resiliencehub_v2_system.example.arn
 ///   }
 ///   name    = "example-service"
 ///   regions = ["us-west-2"]
@@ -628,7 +643,7 @@ class V2Service extends pulumi.CustomResource {
           'aws:resiliencehub/v2Service:V2Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     associatedSystems = registerOutput<List<V2ServiceAssociatedSystem>?>('associatedSystems', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2ServiceAssociatedSystem>(guardedValue, (value) => V2ServiceAssociatedSystem.fromMap((value as Map).cast<String, dynamic>())); });

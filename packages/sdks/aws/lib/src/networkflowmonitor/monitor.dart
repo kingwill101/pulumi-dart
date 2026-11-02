@@ -154,7 +154,7 @@ import 'monitor_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -163,17 +163,23 @@ import 'monitor_timeouts.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 ///   tags = {
 ///     "Name" = "example"
 ///   }
 /// }
 /// resource "aws_networkflowmonitor_monitor" "example" {
-///   local_resources {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   local_resource {
 ///     type       = "AWS::EC2::VPC"
 ///     identifier = aws_ec2_vpc.example.arn
 ///   }
-///   remote_resources {
+///   remote_resource {
 ///     type       = "AWS::EC2::VPC"
 ///     identifier = aws_ec2_vpc.example.arn
 ///   }
@@ -224,7 +230,7 @@ import 'monitor_timeouts.dart';
 ///                 .identifier(example.arn())
 ///                 .build())
 ///             .monitorName("example-monitor")
-///             .scopeArn(exampleAwsNetworkflowmonitorScope.scopeArn())
+///             .scopeArn(exampleAwsNetworkflowmonitorScope.get("scopeArn"))
 ///             .tags(Map.of("Name", "example"))
 ///             .build());
 ///
@@ -296,7 +302,7 @@ class Monitor extends pulumi.CustomResource {
           'aws:networkflowmonitor/monitor:Monitor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     localResources = registerOutput<List<MonitorLocalResource>>('localResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MonitorLocalResource>(guardedValue, (value) => MonitorLocalResource.fromMap((value as Map).cast<String, dynamic>())); });
     monitorArn = registerOutput<String>('monitorArn');

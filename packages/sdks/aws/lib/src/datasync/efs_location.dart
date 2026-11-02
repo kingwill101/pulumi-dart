@@ -83,7 +83,7 @@ import 'efs_location_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -91,7 +91,10 @@ import 'efs_location_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_datasync_efslocation" "example" {
+/// resource "aws_datasync_efs_location" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ec2_config = {
 ///     security_group_arns = [exampleAwsSecurityGroup.arn]
 ///     subnet_arn          = exampleAwsSubnet.arn
@@ -123,10 +126,10 @@ import 'efs_location_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new EfsLocation("example", EfsLocationArgs.builder()
 ///             .ec2Config(EfsLocationEc2ConfigArgs.builder()
-///                 .securityGroupArns(exampleAwsSecurityGroup.arn())
-///                 .subnetArn(exampleAwsSubnet.arn())
+///                 .securityGroupArns(exampleAwsSecurityGroup.get("arn"))
+///                 .subnetArn(exampleAwsSubnet.get("arn"))
 ///                 .build())
-///             .efsFileSystemArn(exampleAwsEfsMountTarget.fileSystemArn())
+///             .efsFileSystemArn(exampleAwsEfsMountTarget.get("fileSystemArn"))
 ///             .build());
 ///
 ///     }
@@ -194,7 +197,7 @@ class EfsLocation extends pulumi.CustomResource {
           'aws:datasync/efsLocation:EfsLocation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accessPointArn = registerOutput<String?>('accessPointArn');
     arn = registerOutput<String>('arn');

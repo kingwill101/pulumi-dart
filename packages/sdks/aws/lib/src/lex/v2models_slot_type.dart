@@ -153,7 +153,7 @@ import 'v2models_slot_type_value_selection_setting.dart';
 /// 		}
 /// 		exampleV2modelsBotLocale, err := lex.NewV2modelsBotLocale(ctx, "example", &lex.V2modelsBotLocaleArgs{
 /// 			LocaleId:                     pulumi.String("en_US"),
-/// 			BotId:                        example.ID().ToIDOutput().ToStringOutput(),
+/// 			BotId:                        example.ID(),
 /// 			BotVersion:                   pulumi.String("DRAFT"),
 /// 			NLuIntentConfidenceThreshold: pulumi.Float64(0.7),
 /// 		})
@@ -161,7 +161,7 @@ import 'v2models_slot_type_value_selection_setting.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lex.NewV2modelsBotVersion(ctx, "example", &lex.V2modelsBotVersionArgs{
-/// 			BotId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			BotId: example.ID(),
 /// 			LocaleSpecification: exampleV2modelsBotLocale.LocaleId.ApplyT(func(localeId string) (map[string]map[string]string, error) {
 /// 				return map[string]map[string]string{
 /// 					localeId: map[string]string{
@@ -174,7 +174,7 @@ import 'v2models_slot_type_value_selection_setting.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lex.NewV2modelsSlotType(ctx, "example", &lex.V2modelsSlotTypeArgs{
-/// 			BotId:      example.ID().ToIDOutput().ToStringOutput(),
+/// 			BotId:      example.ID(),
 /// 			BotVersion: exampleV2modelsBotLocale.BotVersion,
 /// 			Name:       pulumi.String("example"),
 /// 			LocaleId:   exampleV2modelsBotLocale.LocaleId,
@@ -187,7 +187,7 @@ import 'v2models_slot_type_value_selection_setting.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -195,7 +195,10 @@ import 'v2models_slot_type_value_selection_setting.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lex_v2modelsbot" "example" {
+/// resource "aws_lex_v2models_bot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_privacies {
 ///     child_directed = true
 ///   }
@@ -203,25 +206,34 @@ import 'v2models_slot_type_value_selection_setting.dart';
 ///   idle_session_ttl_in_seconds = 60
 ///   role_arn                    = exampleAwsIamRole.arn
 /// }
-/// resource "aws_lex_v2modelsbotlocale" "example" {
+/// resource "aws_lex_v2models_bot_locale" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   locale_id                        = "en_US"
-///   bot_id                           = aws_lex_v2modelsbot.example.id
+///   bot_id                           = aws_lex_v2models_bot.example.id
 ///   bot_version                      = "DRAFT"
 ///   n_lu_intent_confidence_threshold = 0.7
 /// }
-/// resource "aws_lex_v2modelsbotversion" "example" {
-///   bot_id = aws_lex_v2modelsbot.example.id
+/// resource "aws_lex_v2models_bot_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   bot_id = aws_lex_v2models_bot.example.id
 ///   locale_specification = {
-///     aws_lex_v2modelsbotlocale.example.locale_id = {
+///     aws_lex_v2models_bot_locale.example.locale_id = {
 ///       source_bot_version = "DRAFT"
 ///     }
 ///   }
 /// }
-/// resource "aws_lex_v2modelsslottype" "example" {
-///   bot_id      = aws_lex_v2modelsbot.example.id
-///   bot_version = aws_lex_v2modelsbotlocale.example.bot_version
+/// resource "aws_lex_v2models_slot_type" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   bot_id      = aws_lex_v2models_bot.example.id
+///   bot_version = aws_lex_v2models_bot_locale.example.bot_version
 ///   name        = "example"
-///   locale_id   = aws_lex_v2modelsbotlocale.example.locale_id
+///   locale_id   = aws_lex_v2models_bot_locale.example.locale_id
 /// }
 /// ```
 /// ```java
@@ -259,7 +271,7 @@ import 'v2models_slot_type_value_selection_setting.dart';
 ///                 .build())
 ///             .name("example")
 ///             .idleSessionTtlInSeconds(60)
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///         var exampleV2modelsBotLocale = new V2modelsBotLocale("exampleV2modelsBotLocale", V2modelsBotLocaleArgs.builder()
@@ -450,7 +462,7 @@ import 'v2models_slot_type_value_selection_setting.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -458,10 +470,13 @@ import 'v2models_slot_type_value_selection_setting.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lex_v2modelsslottype" "example" {
+/// resource "aws_lex_v2models_slot_type" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   value_selection_setting = {
 ///     advanced_recognition_settings = [{
-///       "audioRecognitionStrategy" = "UseSlotValuesAsCustomVocabulary"
+///       audio_recognition_strategy = "UseSlotValuesAsCustomVocabulary"
 ///     }]
 ///     resolution_strategy = "OriginalValue"
 ///   }
@@ -513,10 +528,10 @@ import 'v2models_slot_type_value_selection_setting.dart';
 ///                     .value("exampleValue")
 ///                     .build())
 ///                 .build())
-///             .botId(exampleAwsLexv2modelsBot.id())
-///             .botVersion(exampleAwsLexv2modelsBotLocale.botVersion())
+///             .botId(exampleAwsLexv2modelsBot.get("id"))
+///             .botVersion(exampleAwsLexv2modelsBotLocale.get("botVersion"))
 ///             .name("example")
-///             .localeId(exampleAwsLexv2modelsBotLocale.localeId())
+///             .localeId(exampleAwsLexv2modelsBotLocale.get("localeId"))
 ///             .build());
 ///
 ///     }
@@ -597,7 +612,7 @@ class V2modelsSlotType extends pulumi.CustomResource {
           'aws:lex/v2modelsSlotType:V2modelsSlotType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     botId = registerOutput<String>('botId');
     botVersion = registerOutput<String>('botVersion');

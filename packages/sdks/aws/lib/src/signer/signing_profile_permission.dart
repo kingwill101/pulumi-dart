@@ -180,7 +180,7 @@ import 'signing_profile_permission_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -188,8 +188,11 @@ import 'signing_profile_permission_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_signer_signingprofile" "prod_sp" {
-///   signature_validity_period = {
+/// resource "aws_signer_signing_profile" "prod_sp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   signature_validity_period {
 ///     value = 5
 ///     type  = "YEARS"
 ///   }
@@ -200,22 +203,31 @@ import 'signing_profile_permission_state.dart';
 ///     "tag2" = "value2"
 ///   }
 /// }
-/// resource "aws_signer_signingprofilepermission" "sp_permission_1" {
-///   profile_name = aws_signer_signingprofile.prod_sp.name
+/// resource "aws_signer_signing_profile_permission" "sp_permission_1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   profile_name = aws_signer_signing_profile.prod_sp.name
 ///   action       = "signer:StartSigningJob"
 ///   principal    = awsAccount
 /// }
-/// resource "aws_signer_signingprofilepermission" "sp_permission_2" {
-///   profile_name = aws_signer_signingprofile.prod_sp.name
+/// resource "aws_signer_signing_profile_permission" "sp_permission_2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   profile_name = aws_signer_signing_profile.prod_sp.name
 ///   action       = "signer:GetSigningProfile"
 ///   principal    = awsTeamRoleArn
 ///   statement_id = "ProdAccountStartSigningJob_StatementId"
 /// }
-/// resource "aws_signer_signingprofilepermission" "sp_permission_3" {
-///   profile_name        = aws_signer_signingprofile.prod_sp.name
+/// resource "aws_signer_signing_profile_permission" "sp_permission_3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   profile_name        = aws_signer_signing_profile.prod_sp.name
 ///   action              = "signer:RevokeSignature"
 ///   principal           = "123456789012"
-///   profile_version     = aws_signer_signingprofile.prod_sp.version
+///   profile_version     = aws_signer_signing_profile.prod_sp.version
 ///   statement_id_prefix = "version-permission-"
 /// }
 /// ```
@@ -356,7 +368,7 @@ class SigningProfilePermission extends pulumi.CustomResource {
           'aws:signer/signingProfilePermission:SigningProfilePermission',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     action = registerOutput<String>('action');
     principal = registerOutput<String>('principal');

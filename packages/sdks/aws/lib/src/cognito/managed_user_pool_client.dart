@@ -73,7 +73,7 @@ import 'managed_user_pool_client_token_validity_units.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -81,7 +81,10 @@ import 'managed_user_pool_client_token_validity_units.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_manageduserpoolclient" "example" {
+/// resource "aws_cognito_managed_user_pool_client" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name_pattern = "^AmazonOpenSearchService-example-(\\w+)$"
 ///   user_pool_id = exampleAwsCognitoUserPool.id
 /// }
@@ -109,7 +112,7 @@ import 'managed_user_pool_client_token_validity_units.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new ManagedUserPoolClient("example", ManagedUserPoolClientArgs.builder()
 ///             .namePattern("^AmazonOpenSearchService-example-(\\w+)$")
-///             .userPoolId(exampleAwsCognitoUserPool.id())
+///             .userPoolId(exampleAwsCognitoUserPool.get("id"))
 ///             .build());
 ///
 ///     }
@@ -200,7 +203,7 @@ class ManagedUserPoolClient extends pulumi.CustomResource {
           'aws:cognito/managedUserPoolClient:ManagedUserPoolClient',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['clientSecret'],
         ) {
     accessTokenValidity = registerOutput<int>('accessTokenValidity');

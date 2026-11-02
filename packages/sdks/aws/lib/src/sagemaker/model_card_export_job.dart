@@ -80,7 +80,7 @@ import 'model_card_export_job_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -88,8 +88,11 @@ import 'model_card_export_job_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_modelcardexportjob" "example" {
-///   output_config = {
+/// resource "aws_sagemaker_model_card_export_job" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   output_config {
 ///     s3_output_path ="s3://${test.example}/"
 ///   }
 ///   model_card_export_job_name = "my-model-card-export-job"
@@ -120,10 +123,10 @@ import 'model_card_export_job_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new ModelCardExportJob("example", ModelCardExportJobArgs.builder()
 ///             .outputConfig(ModelCardExportJobOutputConfigArgs.builder()
-///                 .s3OutputPath(String.format("s3://%s/", test.example()))
+///                 .s3OutputPath(String.format("s3://%s/", test.get("example")))
 ///                 .build())
 ///             .modelCardExportJobName("my-model-card-export-job")
-///             .modelCardName(exampleAwsSagemakerModelCard.modelCardName())
+///             .modelCardName(exampleAwsSagemakerModelCard.get("modelCardName"))
 ///             .build());
 ///
 ///     }
@@ -176,7 +179,7 @@ class ModelCardExportJob extends pulumi.CustomResource {
           'aws:sagemaker/modelCardExportJob:ModelCardExportJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     exportArtifacts = registerOutput<List<ModelCardExportJobExportArtifact>>('exportArtifacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ModelCardExportJobExportArtifact>(guardedValue, (value) => ModelCardExportJobExportArtifact.fromMap((value as Map).cast<String, dynamic>())); });
     modelCardExportJobArn = registerOutput<String>('modelCardExportJobArn');

@@ -89,7 +89,7 @@ import 's3_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -97,8 +97,11 @@ import 's3_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_dms_s3endpoint" "example" {
-///   depends_on              = [exampleAwsIamRolePolicy]
+/// resource "aws_dms_s3_endpoint" "example" {
+///   depends_on = [exampleAwsIamRolePolicy]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_id             = "donnedtipi"
 ///   endpoint_type           = "target"
 ///   bucket_name             = "beckut_name"
@@ -131,7 +134,7 @@ import 's3_endpoint_state.dart';
 ///             .endpointId("donnedtipi")
 ///             .endpointType("target")
 ///             .bucketName("beckut_name")
-///             .serviceAccessRoleArn(exampleAwsIamRole.arn())
+///             .serviceAccessRoleArn(exampleAwsIamRole.get("arn"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleAwsIamRolePolicy)
 ///                 .build());
@@ -412,7 +415,7 @@ import 's3_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -420,8 +423,11 @@ import 's3_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_dms_s3endpoint" "example" {
-///   depends_on    = [exampleAwsIamRolePolicy]
+/// resource "aws_dms_s3_endpoint" "example" {
+///   depends_on = [exampleAwsIamRolePolicy]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_id   = "donnedtipi"
 ///   endpoint_type = "target"
 ///   ssl_mode      = "none"
@@ -463,7 +469,7 @@ import 's3_endpoint_state.dart';
 ///   parquet_timestamp_in_millisecond            = true
 ///   parquet_version                             = "parquet-2-0"
 ///   preserve_transactions                       = false
-///   rfc4180                                     = false
+///   rfc_4180                                    = false
 ///   row_group_length                            = 11000
 ///   server_side_encryption_kms_key_id           = exampleAwsKmsKey.arn
 ///   service_access_role_arn                     = exampleAwsIamRole.arn
@@ -529,7 +535,7 @@ import 's3_endpoint_state.dart';
 ///             .enableStatistics(false)
 ///             .encodingType("plain")
 ///             .encryptionMode("SSE_S3")
-///             .expectedBucketOwner(current.accountId())
+///             .expectedBucketOwner(current.get("accountId"))
 ///             .externalTableDefinition("etd")
 ///             .ignoreHeaderRows(1)
 ///             .includeOpForFullLoad(true)
@@ -539,8 +545,8 @@ import 's3_endpoint_state.dart';
 ///             .preserveTransactions(false)
 ///             .rfc4180(false)
 ///             .rowGroupLength(11000)
-///             .serverSideEncryptionKmsKeyId(exampleAwsKmsKey.arn())
-///             .serviceAccessRoleArn(exampleAwsIamRole.arn())
+///             .serverSideEncryptionKmsKeyId(exampleAwsKmsKey.get("arn"))
+///             .serviceAccessRoleArn(exampleAwsIamRole.get("arn"))
 ///             .timestampColumnName("tx_commit_time")
 ///             .useCsvNoSupValue(false)
 ///             .useTaskStartTimeForFullLoadTimestamp(true)
@@ -742,7 +748,7 @@ class S3Endpoint extends pulumi.CustomResource {
           'aws:dms/s3Endpoint:S3Endpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     addColumnName = registerOutput<bool?>('addColumnName');
     addTrailingPaddingCharacter = registerOutput<bool?>('addTrailingPaddingCharacter');

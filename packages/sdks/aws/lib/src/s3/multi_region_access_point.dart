@@ -116,10 +116,10 @@ import 'multi_region_access_point_state.dart';
 /// 			Details: &s3control.MultiRegionAccessPointDetailsArgs{
 /// 				Regions: s3control.MultiRegionAccessPointDetailsRegionArray{
 /// 					&s3control.MultiRegionAccessPointDetailsRegionArgs{
-/// 						Bucket: fooBucket.ID().ToIDOutput().ToStringOutput(),
+/// 						Bucket: fooBucket.ID(),
 /// 					},
 /// 					&s3control.MultiRegionAccessPointDetailsRegionArgs{
-/// 						Bucket: barBucket.ID().ToIDOutput().ToStringOutput(),
+/// 						Bucket: barBucket.ID(),
 /// 					},
 /// 				},
 /// 				Name: pulumi.String("example"),
@@ -133,7 +133,7 @@ import 'multi_region_access_point_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -142,18 +142,28 @@ import 'multi_region_access_point_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "foo_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example-bucket-foo"
 /// }
 /// resource "aws_s3_bucket" "bar_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example-bucket-bar"
 /// }
-/// resource "aws_s3control_multiregionaccesspoint" "example" {
-///   details = {
-///     regions = [{
-///       "bucket" = aws_s3_bucket.foo_bucket.id
-///       }, {
-///       "bucket" = aws_s3_bucket.bar_bucket.id
-///     }]
+/// resource "aws_s3control_multi_region_access_point" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   details {
+///     region {
+///       bucket = aws_s3_bucket.foo_bucket.id
+///     }
+///     region {
+///       bucket = aws_s3_bucket.bar_bucket.id
+///     }
 ///     name = "example"
 ///   }
 /// }
@@ -279,7 +289,7 @@ class MultiRegionAccessPoint extends pulumi.CustomResource {
           'aws:s3control/multiRegionAccessPoint:MultiRegionAccessPoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     alias = registerOutput<String>('alias');

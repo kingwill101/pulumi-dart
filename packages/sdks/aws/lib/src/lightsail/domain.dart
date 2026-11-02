@@ -59,7 +59,7 @@ import 'domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -68,6 +68,9 @@ import 'domain_state.dart';
 /// }
 ///
 /// resource "aws_lightsail_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name = "example.com"
 /// }
 /// ```
@@ -128,7 +131,7 @@ class Domain extends pulumi.CustomResource {
           'aws:lightsail/domain:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     domainName = registerOutput<String>('domainName');

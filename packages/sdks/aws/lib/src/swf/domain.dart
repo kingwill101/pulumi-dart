@@ -68,7 +68,7 @@ import 'domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,6 +77,9 @@ import 'domain_state.dart';
 /// }
 ///
 /// resource "aws_swf_domain" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                        = "foo"
 ///   description                                 = "SWF Domain"
 ///   workflow_execution_retention_period_in_days = 30
@@ -160,7 +163,7 @@ class Domain extends pulumi.CustomResource {
           'aws:swf/domain:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

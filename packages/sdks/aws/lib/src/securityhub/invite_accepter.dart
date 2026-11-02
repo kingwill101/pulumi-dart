@@ -108,7 +108,7 @@ import 'invite_accepter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -117,17 +117,29 @@ import 'invite_accepter_state.dart';
 /// }
 ///
 /// resource "aws_securityhub_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_securityhub_member" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "123456789012"
 ///   email      = "example@example.com"
 ///   invite     = true
 /// }
 /// resource "aws_securityhub_account" "invitee" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_securityhub_inviteaccepter" "invitee" {
+/// resource "aws_securityhub_invite_accepter" "invitee" {
 ///   depends_on = [aws_securityhub_account.invitee]
-///   master_id  = aws_securityhub_member.example.master_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   master_id = aws_securityhub_member.example.master_id
 /// }
 /// ```
 /// ```java
@@ -225,7 +237,7 @@ class InviteAccepter extends pulumi.CustomResource {
           'aws:securityhub/inviteAccepter:InviteAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     invitationId = registerOutput<String>('invitationId');
     masterId = registerOutput<String>('masterId');

@@ -215,7 +215,7 @@ import 'report_group_state.dart';
 /// 		_, err = codebuild.NewReportGroup(ctx, "example", &codebuild.ReportGroupArgs{
 /// 			ExportConfig: &codebuild.ReportGroupExportConfigArgs{
 /// 				S3Destination: &codebuild.ReportGroupExportConfigS3DestinationArgs{
-/// 					Bucket:             exampleBucket.ID().ToIDOutput().ToStringOutput(),
+/// 					Bucket:             exampleBucket.ID(),
 /// 					EncryptionDisabled: pulumi.Bool(false),
 /// 					EncryptionKey:      exampleKey.Arn,
 /// 					Packaging:          pulumi.String("NONE"),
@@ -234,7 +234,7 @@ import 'report_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -242,13 +242,13 @@ import 'report_group_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
-///       identifiers = ["arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"]
+///       identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"]
 ///     }
 ///     sid       = "Enable IAM User Permissions"
 ///     effect    = "Allow"
@@ -258,16 +258,25 @@ import 'report_group_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "my test kms key"
 ///   deletion_window_in_days = 7
-///   policy                  = data.aws_iam_getpolicydocument.example.json
+///   policy                  = data.aws_iam_policy_document.example.json
 /// }
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "my-test"
 /// }
-/// resource "aws_codebuild_reportgroup" "example" {
-///   export_config = {
-///     s3_destination = {
+/// resource "aws_codebuild_report_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   export_config {
+///     s3_destination {
 ///       bucket              = aws_s3_bucket.example.id
 ///       encryption_disabled = false
 ///       encryption_key      = aws_kms_key.example.arn
@@ -454,7 +463,7 @@ class ReportGroup extends pulumi.CustomResource {
           'aws:codebuild/reportGroup:ReportGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     created = registerOutput<String>('created');

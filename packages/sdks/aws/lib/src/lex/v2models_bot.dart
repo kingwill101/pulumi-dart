@@ -201,7 +201,7 @@ import 'v2models_bot_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -209,7 +209,10 @@ import 'v2models_bot_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lex_v2modelsbot" "example" {
+/// resource "aws_lex_v2models_bot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_privacies {
 ///     child_directed = false
 ///   }
@@ -223,6 +226,9 @@ import 'v2models_bot_timeouts.dart';
 ///   }
 /// }
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -376,7 +382,7 @@ class V2modelsBot extends pulumi.CustomResource {
           'aws:lex/v2modelsBot:V2modelsBot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dataPrivacies = registerOutput<List<V2modelsBotDataPrivacy>>('dataPrivacies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2modelsBotDataPrivacy>(guardedValue, (value) => V2modelsBotDataPrivacy.fromMap((value as Map).cast<String, dynamic>())); });

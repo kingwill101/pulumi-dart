@@ -97,7 +97,7 @@ import 'security_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -105,7 +105,10 @@ import 'security_profile_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_connect_securityprofile" "example" {
+/// resource "aws_connect_security_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   name        = "example"
 ///   description = "example description"
@@ -207,7 +210,7 @@ class SecurityProfile extends pulumi.CustomResource {
           'aws:connect/securityProfile:SecurityProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

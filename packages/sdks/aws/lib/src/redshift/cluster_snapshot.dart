@@ -88,7 +88,7 @@ import 'cluster_snapshot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -96,7 +96,10 @@ import 'cluster_snapshot_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_redshift_clustersnapshot" "example" {
+/// resource "aws_redshift_cluster_snapshot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_snapshot_name = "example"
 ///   cluster_snapshot_content = jsonencode({
 ///     "AllowDBUserOverride" = "1"
@@ -193,7 +196,7 @@ class ClusterSnapshot extends pulumi.CustomResource {
           'aws:redshift/clusterSnapshot:ClusterSnapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     clusterIdentifier = registerOutput<String>('clusterIdentifier');

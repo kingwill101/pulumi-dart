@@ -165,7 +165,7 @@ import 'domain_saml_options_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -177,10 +177,13 @@ import 'domain_saml_options_state.dart';
 /// }
 ///
 /// resource "aws_elasticsearch_domain" "example" {
-///   cluster_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_config {
 ///     instance_type = "r4.large.elasticsearch"
 ///   }
-///   snapshot_options = {
+///   snapshot_options {
 ///     automated_snapshot_start_hour = 23
 ///   }
 ///   domain_name           = "example"
@@ -189,9 +192,12 @@ import 'domain_saml_options_state.dart';
 ///     "Domain" = "TestDomain"
 ///   }
 /// }
-/// resource "aws_elasticsearch_domainsamloptions" "example" {
-///   saml_options = {
-///     idp = {
+/// resource "aws_elasticsearch_domain_saml_options" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   saml_options {
+///     idp {
 ///       entity_id        = "https://example.com"
 ///       metadata_content = file("./saml-metadata.xml")
 ///     }
@@ -317,7 +323,7 @@ class DomainSamlOptions extends pulumi.CustomResource {
           'aws:elasticsearch/domainSamlOptions:DomainSamlOptions',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     domainName = registerOutput<String>('domainName');
     region = registerOutput<String>('region');

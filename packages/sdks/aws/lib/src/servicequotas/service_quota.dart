@@ -41,7 +41,7 @@ import 'service_quota_usage_metric.dart';
 ///     {
 ///         QuotaCode = "L-F678F1CE",
 ///         ServiceCode = "vpc",
-///         Value = 75,
+///         Value = 75.0,
 ///     });
 ///
 /// });
@@ -69,7 +69,7 @@ import 'service_quota_usage_metric.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,7 +77,10 @@ import 'service_quota_usage_metric.dart';
 ///   }
 /// }
 ///
-/// resource "aws_servicequotas_servicequota" "example" {
+/// resource "aws_servicequotas_service_quota" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   quota_code   = "L-F678F1CE"
 ///   service_code = "vpc"
 ///   value        = 75
@@ -169,7 +172,7 @@ class ServiceQuota extends pulumi.CustomResource {
           'aws:servicequotas/serviceQuota:ServiceQuota',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     adjustable = registerOutput<bool>('adjustable');
     arn = registerOutput<String>('arn');

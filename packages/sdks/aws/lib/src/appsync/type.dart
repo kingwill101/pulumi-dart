@@ -92,7 +92,7 @@ import 'type_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appsync.NewType(ctx, "example", &appsync.TypeArgs{
-/// 			ApiId:  example.ID().ToIDOutput().ToStringOutput(),
+/// 			ApiId:  example.ID(),
 /// 			Format: pulumi.String("SDL"),
 /// 			Definition: pulumi.String(`type Mutation
 ///
@@ -110,7 +110,7 @@ import 'type_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -118,14 +118,28 @@ import 'type_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appsync_graphqlapi" "example" {
+/// resource "aws_appsync_graph_q_l_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authentication_type = "API_KEY"
 ///   name                = "example"
 /// }
 /// resource "aws_appsync_type" "example" {
-///   api_id     = aws_appsync_graphqlapi.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   api_id     = aws_appsync_graph_q_l_api.example.id
 ///   format     = "SDL"
-///   definition = "type Mutation\n\n{\nputPost(id: ID!,title: String! ): Post\n\n}\n"
+///   definition = <<EOF
+/// type Mutation
+///
+/// {
+/// putPost(id: ID!,title: String! ): Post
+///
+/// }
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -230,7 +244,7 @@ class Type extends pulumi.CustomResource {
           'aws:appsync/type:Type',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     arn = registerOutput<String>('arn');

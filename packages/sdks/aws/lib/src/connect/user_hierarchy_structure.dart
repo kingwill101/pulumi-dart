@@ -84,7 +84,7 @@ import 'user_hierarchy_structure_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -92,9 +92,12 @@ import 'user_hierarchy_structure_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_connect_userhierarchystructure" "example" {
-///   hierarchy_structure = {
-///     level_one = {
+/// resource "aws_connect_user_hierarchy_structure" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   hierarchy_structure {
+///     level_one {
 ///       name = "levelone"
 ///     }
 ///   }
@@ -276,7 +279,7 @@ import 'user_hierarchy_structure_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -284,21 +287,24 @@ import 'user_hierarchy_structure_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_connect_userhierarchystructure" "example" {
-///   hierarchy_structure = {
-///     level_one = {
+/// resource "aws_connect_user_hierarchy_structure" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   hierarchy_structure {
+///     level_one {
 ///       name = "levelone"
 ///     }
-///     level_two = {
+///     level_two {
 ///       name = "leveltwo"
 ///     }
-///     level_three = {
+///     level_three {
 ///       name = "levelthree"
 ///     }
-///     level_four = {
+///     level_four {
 ///       name = "levelfour"
 ///     }
-///     level_five = {
+///     level_five {
 ///       name = "levelfive"
 ///     }
 ///   }
@@ -403,7 +409,7 @@ class UserHierarchyStructure extends pulumi.CustomResource {
           'aws:connect/userHierarchyStructure:UserHierarchyStructure',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     hierarchyStructure = registerOutput<UserHierarchyStructureHierarchyStructure>('hierarchyStructure', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserHierarchyStructureHierarchyStructure.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceId = registerOutput<String>('instanceId');

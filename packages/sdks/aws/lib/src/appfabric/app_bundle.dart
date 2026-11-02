@@ -73,7 +73,7 @@ import 'app_bundle_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -81,7 +81,10 @@ import 'app_bundle_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appfabric_appbundle" "example" {
+/// resource "aws_appfabric_app_bundle" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   customer_managed_key_arn = exampleAwmsKmsKey.arn
 ///   tags = {
 ///     "Environment" = "test"
@@ -110,7 +113,7 @@ import 'app_bundle_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AppBundle("example", AppBundleArgs.builder()
-///             .customerManagedKeyArn(exampleAwmsKmsKey.arn())
+///             .customerManagedKeyArn(exampleAwmsKmsKey.get("arn"))
 ///             .tags(Map.of("Environment", "test"))
 ///             .build());
 ///
@@ -166,7 +169,7 @@ class AppBundle extends pulumi.CustomResource {
           'aws:appfabric/appBundle:AppBundle',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     customerManagedKeyArn = registerOutput<String?>('customerManagedKeyArn');

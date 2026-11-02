@@ -105,7 +105,7 @@ import 'replication_task_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -114,7 +114,10 @@ import 'replication_task_state.dart';
 /// }
 ///
 /// # Create a new replication task
-/// resource "aws_dms_replicationtask" "test" {
+/// resource "aws_dms_replication_task" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cdc_start_time            = "1993-05-21T05:50:00Z"
 ///   migration_type            = "full-load"
 ///   replication_instance_arn  = test-dms-replication-instance-tf.replicationInstanceArn
@@ -153,13 +156,13 @@ import 'replication_task_state.dart';
 ///         var test = new ReplicationTask("test", ReplicationTaskArgs.builder()
 ///             .cdcStartTime("1993-05-21T05:50:00Z")
 ///             .migrationType("full-load")
-///             .replicationInstanceArn(test_dms_replication_instance_tf.replicationInstanceArn())
+///             .replicationInstanceArn(test_dms_replication_instance_tf.get("replicationInstanceArn"))
 ///             .replicationTaskId("test-dms-replication-task-tf")
 ///             .replicationTaskSettings("...")
-///             .sourceEndpointArn(test_dms_source_endpoint_tf.endpointArn())
+///             .sourceEndpointArn(test_dms_source_endpoint_tf.get("endpointArn"))
 ///             .tableMappings("{\"rules\":[{\"rule-type\":\"selection\",\"rule-id\":\"1\",\"rule-name\":\"1\",\"object-locator\":{\"schema-name\":\"%\",\"table-name\":\"%\"},\"rule-action\":\"include\"}]}")
 ///             .tags(Map.of("Name", "test"))
-///             .targetEndpointArn(test_dms_target_endpoint_tf.endpointArn())
+///             .targetEndpointArn(test_dms_target_endpoint_tf.get("endpointArn"))
 ///             .build());
 ///
 ///     }
@@ -237,7 +240,7 @@ class ReplicationTask extends pulumi.CustomResource {
           'aws:dms/replicationTask:ReplicationTask',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     cdcStartPosition = registerOutput<String>('cdcStartPosition');
     cdcStartTime = registerOutput<String?>('cdcStartTime');

@@ -65,7 +65,7 @@ import 'data_quality_ruleset_target_table.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,10 @@ import 'data_quality_ruleset_target_table.dart';
 ///   }
 /// }
 ///
-/// resource "aws_glue_dataqualityruleset" "example" {
+/// resource "aws_glue_data_quality_ruleset" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "example"
 ///   ruleset = "Rules = [Completeness \"colA\" between 0.4 and 0.8]"
 /// }
@@ -179,7 +182,7 @@ import 'data_quality_ruleset_target_table.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -187,7 +190,10 @@ import 'data_quality_ruleset_target_table.dart';
 ///   }
 /// }
 ///
-/// resource "aws_glue_dataqualityruleset" "example" {
+/// resource "aws_glue_data_quality_ruleset" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   description = "example"
 ///   ruleset     = "Rules = [Completeness \"colA\" between 0.4 and 0.8]"
@@ -305,7 +311,7 @@ import 'data_quality_ruleset_target_table.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -313,7 +319,10 @@ import 'data_quality_ruleset_target_table.dart';
 ///   }
 /// }
 ///
-/// resource "aws_glue_dataqualityruleset" "example" {
+/// resource "aws_glue_data_quality_ruleset" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "example"
 ///   ruleset = "Rules = [Completeness \"colA\" between 0.4 and 0.8]"
 ///   tags = {
@@ -438,7 +447,7 @@ import 'data_quality_ruleset_target_table.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -446,8 +455,11 @@ import 'data_quality_ruleset_target_table.dart';
 ///   }
 /// }
 ///
-/// resource "aws_glue_dataqualityruleset" "example" {
-///   target_table = {
+/// resource "aws_glue_data_quality_ruleset" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   target_table {
 ///     database_name = exampleAwsGlueCatalogDatabase.name
 ///     table_name    = exampleAwsGlueCatalogTable.name
 ///   }
@@ -479,8 +491,8 @@ import 'data_quality_ruleset_target_table.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new DataQualityRuleset("example", DataQualityRulesetArgs.builder()
 ///             .targetTable(DataQualityRulesetTargetTableArgs.builder()
-///                 .databaseName(exampleAwsGlueCatalogDatabase.name())
-///                 .tableName(exampleAwsGlueCatalogTable.name())
+///                 .databaseName(exampleAwsGlueCatalogDatabase.get("name"))
+///                 .tableName(exampleAwsGlueCatalogTable.get("name"))
 ///                 .build())
 ///             .name("example")
 ///             .ruleset("Rules = [Completeness \"colA\" between 0.4 and 0.8]")
@@ -545,7 +557,7 @@ class DataQualityRuleset extends pulumi.CustomResource {
           'aws:glue/dataQualityRuleset:DataQualityRuleset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdOn = registerOutput<String>('createdOn');

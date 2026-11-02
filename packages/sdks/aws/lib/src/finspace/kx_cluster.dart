@@ -226,7 +226,7 @@ import 'kx_cluster_vpc_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -234,22 +234,25 @@ import 'kx_cluster_vpc_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_finspace_kxcluster" "example" {
+/// resource "aws_finspace_kx_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   timeouts {
 ///     create = "18h"
 ///     update = "18h"
 ///   }
-///   capacity_configuration = {
+///   capacity_configuration {
 ///     node_type  = "kx.s.2xlarge"
 ///     node_count = 2
 ///   }
-///   vpc_configuration = {
+///   vpc_configuration {
 ///     vpc_id             = test.id
 ///     security_group_ids = [exampleAwsSecurityGroup.id]
 ///     subnet_ids         = [exampleAwsSubnet.id]
 ///     ip_address_type    = "IP_V4"
 ///   }
-///   code = {
+///   code {
 ///     s3_bucket = testAwsS3Bucket.id
 ///     s3_key    = object.key
 ///   }
@@ -257,7 +260,7 @@ import 'kx_cluster_vpc_configuration.dart';
 ///     type = "CACHE_1000"
 ///     size = 1200
 ///   }
-///   databases {
+///   database {
 ///     cache_configuration = [{
 ///       "cacheType" = "CACHE_1000"
 ///       "dbPaths"   = "/"
@@ -306,14 +309,14 @@ import 'kx_cluster_vpc_configuration.dart';
 ///                 .nodeCount(2)
 ///                 .build())
 ///             .vpcConfiguration(KxClusterVpcConfigurationArgs.builder()
-///                 .vpcId(test.id())
-///                 .securityGroupIds(exampleAwsSecurityGroup.id())
-///                 .subnetIds(exampleAwsSubnet.id())
+///                 .vpcId(test.get("id"))
+///                 .securityGroupIds(exampleAwsSecurityGroup.get("id"))
+///                 .subnetIds(exampleAwsSubnet.get("id"))
 ///                 .ipAddressType("IP_V4")
 ///                 .build())
 ///             .code(KxClusterCodeArgs.builder()
-///                 .s3Bucket(testAwsS3Bucket.id())
-///                 .s3Key(object.key())
+///                 .s3Bucket(testAwsS3Bucket.get("id"))
+///                 .s3Key(object.get("key"))
 ///                 .build())
 ///             .cacheStorageConfigurations(KxClusterCacheStorageConfigurationArgs.builder()
 ///                 .type("CACHE_1000")
@@ -324,10 +327,10 @@ import 'kx_cluster_vpc_configuration.dart';
 ///                     Map.entry("cacheType", "CACHE_1000"),
 ///                     Map.entry("dbPaths", "/")
 ///                 )))
-///                 .databaseName(exampleAwsFinspaceKxDatabase.name())
+///                 .databaseName(exampleAwsFinspaceKxDatabase.get("name"))
 ///                 .build())
 ///             .name("my-tf-kx-cluster")
-///             .environmentId(exampleAwsFinspaceKxEnvironment.id())
+///             .environmentId(exampleAwsFinspaceKxEnvironment.get("id"))
 ///             .type("HDB")
 ///             .releaseLabel("1.0")
 ///             .azMode("SINGLE")
@@ -458,7 +461,7 @@ class KxCluster extends pulumi.CustomResource {
           'aws:finspace/kxCluster:KxCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoScalingConfiguration = registerOutput<KxClusterAutoScalingConfiguration?>('autoScalingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KxClusterAutoScalingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -83,7 +83,7 @@ import 'studio_lifecycle_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -94,7 +94,10 @@ import 'studio_lifecycle_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_studiolifecycleconfig" "example" {
+/// resource "aws_sagemaker_studio_lifecycle_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   studio_lifecycle_config_name     = "example"
 ///   studio_lifecycle_config_app_type = "JupyterServer"
 ///   studio_lifecycle_config_content  = base64encode("echo Hello")
@@ -185,7 +188,7 @@ class StudioLifecycleConfig extends pulumi.CustomResource {
           'aws:sagemaker/studioLifecycleConfig:StudioLifecycleConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');

@@ -149,7 +149,7 @@ import 'lifecycle_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -158,11 +158,36 @@ import 'lifecycle_policy_state.dart';
 /// }
 ///
 /// resource "aws_ecr_repository" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-repo"
 /// }
-/// resource "aws_ecr_lifecyclepolicy" "example" {
+/// resource "aws_ecr_lifecycle_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   repository = aws_ecr_repository.example.name
-///   policy     = "{\n  \\\"rules\\\": [\n    {\n      \\\"rulePriority\\\": 1,\n      \\\"description\\\": \\\"Expire images older than 14 days\\\",\n      \\\"selection\\\": {\n        \\\"tagStatus\\\": \\\"untagged\\\",\n        \\\"countType\\\": \\\"sinceImagePushed\\\",\n        \\\"countUnit\\\": \\\"days\\\",\n        \\\"countNumber\\\": 14\n      },\n      \\\"action\\\": {\n        \\\"type\\\": \\\"expire\\\"\n      }\n    }\n  ]\n}\n"
+///   policy     = <<EOF
+/// {
+///   \"rules\": [
+///     {
+///       \"rulePriority\": 1,
+///       \"description\": \"Expire images older than 14 days\",
+///       \"selection\": {
+///         \"tagStatus\": \"untagged\",
+///         \"countType\": \"sinceImagePushed\",
+///         \"countUnit\": \"days\",
+///         \"countNumber\": 14
+///       },
+///       \"action\": {
+///         \"type\": \"expire\"
+///       }
+///     }
+///   ]
+/// }
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -389,7 +414,7 @@ import 'lifecycle_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -398,11 +423,36 @@ import 'lifecycle_policy_state.dart';
 /// }
 ///
 /// resource "aws_ecr_repository" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-repo"
 /// }
-/// resource "aws_ecr_lifecyclepolicy" "example" {
+/// resource "aws_ecr_lifecycle_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   repository = aws_ecr_repository.example.name
-///   policy     = "{\n  \\\"rules\\\": [\n    {\n      \\\"rulePriority\\\": 1,\n      \\\"description\\\": \\\"Keep last 30 images\\\",\n      \\\"selection\\\": {\n        \\\"tagStatus\\\": \\\"tagged\\\",\n        \\\"tagPrefixList\\\": [\\\"v\\\"],\n        \\\"countType\\\": \\\"imageCountMoreThan\\\",\n        \\\"countNumber\\\": 30\n      },\n      \\\"action\\\": {\n        \\\"type\\\": \\\"expire\\\"\n      }\n    }\n  ]\n}\n"
+///   policy     = <<EOF
+/// {
+///   \"rules\": [
+///     {
+///       \"rulePriority\": 1,
+///       \"description\": \"Keep last 30 images\",
+///       \"selection\": {
+///         \"tagStatus\": \"tagged\",
+///         \"tagPrefixList\": [\"v\"],
+///         \"countType\": \"imageCountMoreThan\",
+///         \"countNumber\": 30
+///       },
+///       \"action\": {
+///         \"type\": \"expire\"
+///       }
+///     }
+///   ]
+/// }
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -689,7 +739,7 @@ import 'lifecycle_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -698,11 +748,51 @@ import 'lifecycle_policy_state.dart';
 /// }
 ///
 /// resource "aws_ecr_repository" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-repo"
 /// }
-/// resource "aws_ecr_lifecyclepolicy" "example" {
+/// resource "aws_ecr_lifecycle_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   repository = aws_ecr_repository.example.name
-///   policy     = "{\n  \\\"rules\\\": [\n    {\n      \\\"rulePriority\\\": 1,\n      \\\"description\\\": \\\"Archive images not pulled in 90 days\\\",\n      \\\"selection\\\": {\n        \\\"tagStatus\\\": \\\"any\\\",\n        \\\"countType\\\": \\\"sinceImagePulled\\\",\n        \\\"countUnit\\\": \\\"days\\\",\n        \\\"countNumber\\\": 90\n      },\n      \\\"action\\\": {\n        \\\"type\\\": \\\"transition\\\",\n        \\\"targetStorageClass\\\": \\\"archive\\\"\n      }\n    },\n    {\n      \\\"rulePriority\\\": 2,\n      \\\"description\\\": \\\"Delete images archived for more than 365 days\\\",\n      \\\"selection\\\": {\n        \\\"tagStatus\\\": \\\"any\\\",\n        \\\"storageClass\\\": \\\"archive\\\",\n        \\\"countType\\\": \\\"sinceImageTransitioned\\\",\n        \\\"countUnit\\\": \\\"days\\\",\n        \\\"countNumber\\\": 365\n      },\n      \\\"action\\\": {\n        \\\"type\\\": \\\"expire\\\"\n      }\n    }\n  ]\n}\n"
+///   policy     = <<EOF
+/// {
+///   \"rules\": [
+///     {
+///       \"rulePriority\": 1,
+///       \"description\": \"Archive images not pulled in 90 days\",
+///       \"selection\": {
+///         \"tagStatus\": \"any\",
+///         \"countType\": \"sinceImagePulled\",
+///         \"countUnit\": \"days\",
+///         \"countNumber\": 90
+///       },
+///       \"action\": {
+///         \"type\": \"transition\",
+///         \"targetStorageClass\": \"archive\"
+///       }
+///     },
+///     {
+///       \"rulePriority\": 2,
+///       \"description\": \"Delete images archived for more than 365 days\",
+///       \"selection\": {
+///         \"tagStatus\": \"any\",
+///         \"storageClass\": \"archive\",
+///         \"countType\": \"sinceImageTransitioned\",
+///         \"countUnit\": \"days\",
+///         \"countNumber\": 365
+///       },
+///       \"action\": {
+///         \"type\": \"expire\"
+///       }
+///     }
+///   ]
+/// }
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -861,7 +951,7 @@ class LifecyclePolicy extends pulumi.CustomResource {
           'aws:ecr/lifecyclePolicy:LifecyclePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

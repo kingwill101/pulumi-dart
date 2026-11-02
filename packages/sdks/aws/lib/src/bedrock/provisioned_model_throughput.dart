@@ -71,7 +71,7 @@ import 'provisioned_model_throughput_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -79,7 +79,10 @@ import 'provisioned_model_throughput_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_provisionedmodelthroughput" "example" {
+/// resource "aws_bedrock_provisioned_model_throughput" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   provisioned_model_name = "example-model"
 ///   model_arn              = "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-v2"
 ///   commitment_duration    = "SixMonths"
@@ -174,7 +177,7 @@ class ProvisionedModelThroughput extends pulumi.CustomResource {
           'aws:bedrock/provisionedModelThroughput:ProvisionedModelThroughput',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     commitmentDuration = registerOutput<String?>('commitmentDuration');
     modelArn = registerOutput<String>('modelArn');

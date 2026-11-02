@@ -245,7 +245,7 @@ import 'cluster_zonal_shift_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -254,11 +254,14 @@ import 'cluster_zonal_shift_config.dart';
 /// }
 ///
 /// resource "aws_eks_cluster" "example" {
-///   depends_on = [aws_iam_rolepolicyattachment.cluster_AmazonEKSClusterPolicy]
-///   access_config = {
+///   depends_on = [aws_iam_role_policy_attachment.cluster_AmazonEKSClusterPolicy]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   access_config {
 ///     authentication_mode = "API"
 ///   }
-///   vpc_config = {
+///   vpc_config {
 ///     subnet_ids = [az1.id, az2.id, az3.id]
 ///   }
 ///   name     = "example"
@@ -266,6 +269,9 @@ import 'cluster_zonal_shift_config.dart';
 ///   version  = "1.35"
 /// }
 /// resource "aws_iam_role" "cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "eks-cluster-example"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -278,7 +284,10 @@ import 'cluster_zonal_shift_config.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_iam_rolepolicyattachment" "cluster_AmazonEKSClusterPolicy" {
+/// resource "aws_iam_role_policy_attachment" "cluster_AmazonEKSClusterPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
 ///   role       = aws_iam_role.cluster.name
 /// }
@@ -341,9 +350,9 @@ import 'cluster_zonal_shift_config.dart';
 ///                 .build())
 ///             .vpcConfig(ClusterVpcConfigArgs.builder()
 ///                 .subnetIds(
-///                     az1.id(),
-///                     az2.id(),
-///                     az3.id())
+///                     az1.get("id"),
+///                     az2.get("id"),
+///                     az3.get("id"))
 ///                 .build())
 ///             .name("example")
 ///             .roleArn(cluster.arn())
@@ -917,7 +926,7 @@ import 'cluster_zonal_shift_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -926,26 +935,29 @@ import 'cluster_zonal_shift_config.dart';
 /// }
 ///
 /// resource "aws_eks_cluster" "example" {
-///   depends_on = [aws_iam_rolepolicyattachment.cluster_AmazonEKSClusterPolicy, aws_iam_rolepolicyattachment.cluster_AmazonEKSComputePolicy, aws_iam_rolepolicyattachment.cluster_AmazonEKSBlockStoragePolicy, aws_iam_rolepolicyattachment.cluster_AmazonEKSLoadBalancingPolicy, aws_iam_rolepolicyattachment.cluster_AmazonEKSNetworkingPolicy]
-///   access_config = {
+///   depends_on = [aws_iam_role_policy_attachment.cluster_AmazonEKSClusterPolicy, aws_iam_role_policy_attachment.cluster_AmazonEKSComputePolicy, aws_iam_role_policy_attachment.cluster_AmazonEKSBlockStoragePolicy, aws_iam_role_policy_attachment.cluster_AmazonEKSLoadBalancingPolicy, aws_iam_role_policy_attachment.cluster_AmazonEKSNetworkingPolicy]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   access_config {
 ///     authentication_mode = "API"
 ///   }
-///   compute_config = {
+///   compute_config {
 ///     enabled       = true
 ///     node_pools    = ["general-purpose"]
 ///     node_role_arn = aws_iam_role.node.arn
 ///   }
-///   kubernetes_network_config = {
-///     elastic_load_balancing = {
+///   kubernetes_network_config {
+///     elastic_load_balancing {
 ///       enabled = true
 ///     }
 ///   }
-///   storage_config = {
-///     block_storage = {
+///   storage_config {
+///     block_storage {
 ///       enabled = true
 ///     }
 ///   }
-///   vpc_config = {
+///   vpc_config {
 ///     endpoint_private_access = true
 ///     endpoint_public_access  = true
 ///     subnet_ids              = [az1.id, az2.id, az3.id]
@@ -956,6 +968,9 @@ import 'cluster_zonal_shift_config.dart';
 ///   bootstrap_self_managed_addons = false
 /// }
 /// resource "aws_iam_role" "node" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "eks-auto-node-example"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -968,15 +983,24 @@ import 'cluster_zonal_shift_config.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_iam_rolepolicyattachment" "node_AmazonEKSWorkerNodeMinimalPolicy" {
+/// resource "aws_iam_role_policy_attachment" "node_AmazonEKSWorkerNodeMinimalPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodeMinimalPolicy"
 ///   role       = aws_iam_role.node.name
 /// }
-/// resource "aws_iam_rolepolicyattachment" "node_AmazonEC2ContainerRegistryPullOnly" {
+/// resource "aws_iam_role_policy_attachment" "node_AmazonEC2ContainerRegistryPullOnly" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPullOnly"
 ///   role       = aws_iam_role.node.name
 /// }
 /// resource "aws_iam_role" "cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "eks-cluster-example"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -989,23 +1013,38 @@ import 'cluster_zonal_shift_config.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_iam_rolepolicyattachment" "cluster_AmazonEKSClusterPolicy" {
+/// resource "aws_iam_role_policy_attachment" "cluster_AmazonEKSClusterPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
 ///   role       = aws_iam_role.cluster.name
 /// }
-/// resource "aws_iam_rolepolicyattachment" "cluster_AmazonEKSComputePolicy" {
+/// resource "aws_iam_role_policy_attachment" "cluster_AmazonEKSComputePolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSComputePolicy"
 ///   role       = aws_iam_role.cluster.name
 /// }
-/// resource "aws_iam_rolepolicyattachment" "cluster_AmazonEKSBlockStoragePolicy" {
+/// resource "aws_iam_role_policy_attachment" "cluster_AmazonEKSBlockStoragePolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSBlockStoragePolicy"
 ///   role       = aws_iam_role.cluster.name
 /// }
-/// resource "aws_iam_rolepolicyattachment" "cluster_AmazonEKSLoadBalancingPolicy" {
+/// resource "aws_iam_role_policy_attachment" "cluster_AmazonEKSLoadBalancingPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSLoadBalancingPolicy"
 ///   role       = aws_iam_role.cluster.name
 /// }
-/// resource "aws_iam_rolepolicyattachment" "cluster_AmazonEKSNetworkingPolicy" {
+/// resource "aws_iam_role_policy_attachment" "cluster_AmazonEKSNetworkingPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSNetworkingPolicy"
 ///   role       = aws_iam_role.cluster.name
 /// }
@@ -1125,9 +1164,9 @@ import 'cluster_zonal_shift_config.dart';
 ///                 .endpointPrivateAccess(true)
 ///                 .endpointPublicAccess(true)
 ///                 .subnetIds(
-///                     az1.id(),
-///                     az2.id(),
-///                     az3.id())
+///                     az1.get("id"),
+///                     az2.get("id"),
+///                     az3.get("id"))
 ///                 .build())
 ///             .name("example")
 ///             .roleArn(cluster.arn())
@@ -1539,7 +1578,7 @@ import 'cluster_zonal_shift_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1548,19 +1587,22 @@ import 'cluster_zonal_shift_config.dart';
 /// }
 ///
 /// resource "aws_eks_cluster" "example" {
-///   depends_on = [aws_iam_rolepolicyattachment.cluster_AmazonEKSClusterPolicy]
-///   access_config = {
+///   depends_on = [aws_iam_role_policy_attachment.cluster_AmazonEKSClusterPolicy]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   access_config {
 ///     authentication_mode = "API"
 ///   }
-///   remote_network_config = {
-///     remote_node_networks = {
+///   remote_network_config {
+///     remote_node_networks {
 ///       cidrs = ["172.16.0.0/18"]
 ///     }
-///     remote_pod_networks = {
+///     remote_pod_networks {
 ///       cidrs = ["172.16.64.0/18"]
 ///     }
 ///   }
-///   vpc_config = {
+///   vpc_config {
 ///     endpoint_private_access = true
 ///     endpoint_public_access  = true
 ///     subnet_ids              = [az1.id, az2.id, az3.id]
@@ -1570,6 +1612,9 @@ import 'cluster_zonal_shift_config.dart';
 ///   version  = "1.35"
 /// }
 /// resource "aws_iam_role" "cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "eks-cluster-example"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -1582,7 +1627,10 @@ import 'cluster_zonal_shift_config.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_iam_rolepolicyattachment" "cluster_AmazonEKSClusterPolicy" {
+/// resource "aws_iam_role_policy_attachment" "cluster_AmazonEKSClusterPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
 ///   role       = aws_iam_role.cluster.name
 /// }
@@ -1658,9 +1706,9 @@ import 'cluster_zonal_shift_config.dart';
 ///                 .endpointPrivateAccess(true)
 ///                 .endpointPublicAccess(true)
 ///                 .subnetIds(
-///                     az1.id(),
-///                     az2.id(),
-///                     az3.id())
+///                     az1.get("id"),
+///                     az2.get("id"),
+///                     az3.get("id"))
 ///                 .build())
 ///             .name("example")
 ///             .roleArn(cluster.arn())
@@ -2006,7 +2054,7 @@ import 'cluster_zonal_shift_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2014,29 +2062,35 @@ import 'cluster_zonal_shift_config.dart';
 ///   }
 /// }
 ///
-/// data "aws_outposts_getoutpost" "example" {
+/// data "aws_outposts_outpost" "example" {
 ///   name = "example"
 /// }
 ///
 /// resource "aws_eks_cluster" "example" {
-///   depends_on = [aws_iam_rolepolicyattachment.cluster_AmazonEKSLocalOutpostClusterPolicy]
-///   access_config = {
+///   depends_on = [aws_iam_role_policy_attachment.cluster_AmazonEKSLocalOutpostClusterPolicy]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   access_config {
 ///     authentication_mode = "CONFIG_MAP"
 ///   }
-///   vpc_config = {
+///   vpc_config {
 ///     endpoint_private_access = true
 ///     endpoint_public_access  = false
 ///     subnet_ids              = [az1.id, az2.id, az3.id]
 ///   }
-///   outpost_config = {
+///   outpost_config {
 ///     control_plane_instance_type = "m5.large"
-///     outpost_arns                = [data.aws_outposts_getoutpost.example.arn]
+///     outpost_arns                = [data.aws_outposts_outpost.example.arn]
 ///   }
 ///   name     = "example"
 ///   role_arn = aws_iam_role.cluster.arn
 ///   version  = "1.35"
 /// }
 /// resource "aws_iam_role" "cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "eks-cluster-example"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -2049,7 +2103,10 @@ import 'cluster_zonal_shift_config.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_iam_rolepolicyattachment" "cluster_AmazonEKSLocalOutpostClusterPolicy" {
+/// resource "aws_iam_role_policy_attachment" "cluster_AmazonEKSLocalOutpostClusterPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSLocalOutpostClusterPolicy"
 ///   role       = aws_iam_role.cluster.name
 /// }
@@ -2124,9 +2181,9 @@ import 'cluster_zonal_shift_config.dart';
 ///                 .endpointPrivateAccess(true)
 ///                 .endpointPublicAccess(false)
 ///                 .subnetIds(
-///                     az1.id(),
-///                     az2.id(),
-///                     az3.id())
+///                     az1.get("id"),
+///                     az2.get("id"),
+///                     az3.get("id"))
 ///                 .build())
 ///             .outpostConfig(ClusterOutpostConfigArgs.builder()
 ///                 .controlPlaneInstanceType("m5.large")
@@ -2298,7 +2355,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:eks/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accessConfig = registerOutput<ClusterAccessConfig>('accessConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAccessConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');

@@ -253,7 +253,7 @@ import 'agent_agent_alias_timeouts.dart';
 /// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
 /// 						{
 /// 							Test: "StringEquals",
-/// 							Values: pulumi.StringArray{
+/// 							Values: []string{
 /// 								current.AccountId,
 /// 							},
 /// 							Variable: "aws:SourceAccount",
@@ -307,7 +307,7 @@ import 'agent_agent_alias_timeouts.dart';
 /// 		}
 /// 		_, err = iam.NewRolePolicy(ctx, "example", &iam.RolePolicyArgs{
 /// 			Policy: pulumi.String(exampleAgentPermissions.Json),
-/// 			Role:   example.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -335,7 +335,7 @@ import 'agent_agent_alias_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -343,22 +343,22 @@ import 'agent_agent_alias_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
-/// data "aws_getregion" "currentGetRegion" {
+/// data "aws_region" "currentGetRegion" {
 /// }
-/// data "aws_iam_getpolicydocument" "exampleAgentTrust" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "exampleAgentTrust" {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
-///       values   = [data.aws_getcalleridentity.current.account_id]
+///       values   = [data.aws_caller_identity.current.account_id]
 ///       variable = "aws:SourceAccount"
 ///     }
-///     conditions {
+///     condition {
 ///       test     = "ArnLike"
-///       values   = ["arn:${data.aws_getpartition.currentGetPartition.partition}:bedrock:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:agent/*"]
+///       values   = ["arn:${data.aws_partition.currentGetPartition.partition}:bedrock:${data.aws_region.currentGetRegion.region}:${data.aws_caller_identity.current.account_id}:agent/*"]
 ///       variable = "AWS:SourceArn"
 ///     }
 ///     principals {
@@ -368,31 +368,43 @@ import 'agent_agent_alias_timeouts.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "exampleAgentPermissions" {
-///   statements {
+/// data "aws_iam_policy_document" "exampleAgentPermissions" {
+///   statement {
 ///     actions   = ["bedrock:InvokeModel"]
-///     resources = ["arn:${data.aws_getpartition.currentGetPartition.partition}:bedrock:${data.aws_getregion.currentGetRegion.region}::foundation-model/anthropic.claude-v2"]
+///     resources = ["arn:${data.aws_partition.currentGetPartition.partition}:bedrock:${data.aws_region.currentGetRegion.region}::foundation-model/anthropic.claude-v2"]
 ///   }
 /// }
 ///
 /// resource "aws_iam_role" "example" {
-///   assume_role_policy = data.aws_iam_getpolicydocument.exampleAgentTrust.json
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   assume_role_policy = data.aws_iam_policy_document.exampleAgentTrust.json
 ///   name_prefix        = "AmazonBedrockExecutionRoleForAgents_"
 /// }
-/// resource "aws_iam_rolepolicy" "example" {
-///   policy = data.aws_iam_getpolicydocument.exampleAgentPermissions.json
+/// resource "aws_iam_role_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy = data.aws_iam_policy_document.exampleAgentPermissions.json
 ///   role   = aws_iam_role.example.id
 /// }
-/// resource "aws_bedrock_agentagent" "example" {
+/// resource "aws_bedrock_agent_agent" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_name                  = "my-agent-name"
 ///   agent_resource_role_arn     = aws_iam_role.example.arn
 ///   idle_session_ttl_in_seconds = 500
 ///   foundation_model            = "anthropic.claude-v2"
 ///   instruction                 = "You are a friendly assistant who helps answer questions."
 /// }
-/// resource "aws_bedrock_agentagentalias" "example" {
+/// resource "aws_bedrock_agent_agent_alias" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_alias_name = "my-agent-alias"
-///   agent_id         = aws_bedrock_agentagent.example.agent_id
+///   agent_id         = aws_bedrock_agent_agent.example.agent_id
 ///   description      = "Test Alias"
 /// }
 /// ```
@@ -612,7 +624,7 @@ class AgentAgentAlias extends pulumi.CustomResource {
           'aws:bedrock/agentAgentAlias:AgentAgentAlias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     agentAliasArn = registerOutput<String>('agentAliasArn');
     agentAliasId = registerOutput<String>('agentAliasId');

@@ -168,7 +168,7 @@ import 'option_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -176,7 +176,10 @@ import 'option_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_rds_optiongroup" "example" {
+/// resource "aws_rds_option_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   options {
 ///     option_settings {
 ///       name  = "TIME_ZONE"
@@ -235,7 +238,7 @@ import 'option_group_state.dart';
 ///                 OptionGroupOptionArgs.builder()
 ///                     .optionSettings(OptionGroupOptionOptionSettingArgs.builder()
 ///                         .name("IAM_ROLE_ARN")
-///                         .value(exampleAwsIamRole.arn())
+///                         .value(exampleAwsIamRole.get("arn"))
 ///                         .build())
 ///                     .optionName("SQLSERVER_BACKUP_RESTORE")
 ///                     .build(),
@@ -326,7 +329,7 @@ class OptionGroup extends pulumi.CustomResource {
           'aws:rds/optionGroup:OptionGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     engineName = registerOutput<String>('engineName');

@@ -69,7 +69,7 @@ import 'service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -78,6 +78,9 @@ import 'service_state.dart';
 /// }
 ///
 /// resource "aws_vpclattice_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
 ///   auth_type          = "AWS_IAM"
 ///   custom_domain_name = "example.com"
@@ -169,7 +172,7 @@ class Service extends pulumi.CustomResource {
           'aws:vpclattice/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     authType = registerOutput<String>('authType');

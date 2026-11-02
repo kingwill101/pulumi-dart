@@ -78,7 +78,7 @@ import 'get_orderable_db_instance_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,7 +86,7 @@ import 'get_orderable_db_instance_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_neptune_getengineversion" "test" {
+/// data "aws_neptune_engine_version" "test" {
 ///   preferred_versions = ["1.4.5.0", "1.4.4.0", "1.4.3.0"]
 /// }
 /// ```
@@ -234,7 +234,7 @@ pulumi.Output<GetEngineVersionResult> getEngineVersionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -242,7 +242,7 @@ pulumi.Output<GetEngineVersionResult> getEngineVersionOutput(
 ///   }
 /// }
 ///
-/// data "aws_neptune_getorderabledbinstance" "test" {
+/// data "aws_neptune_orderable_db_instance" "test" {
 ///   engine_version             = "1.0.3.0"
 ///   preferred_instance_classes = ["db.r5.large", "db.r4.large", "db.t3.medium"]
 /// }

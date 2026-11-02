@@ -66,7 +66,7 @@ import 'v2_assertion_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'v2_assertion_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_resiliencehub_v2assertion" "example" {
+/// resource "aws_resiliencehub_v2_assertion" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_arn = exampleAwsResiliencehubv2Service.arn
 ///   text        = "The service must recover within 5 minutes of an AZ failure"
 /// }
@@ -101,7 +104,7 @@ import 'v2_assertion_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new V2Assertion("example", V2AssertionArgs.builder()
-///             .serviceArn(exampleAwsResiliencehubv2Service.arn())
+///             .serviceArn(exampleAwsResiliencehubv2Service.get("arn"))
 ///             .text("The service must recover within 5 minutes of an AZ failure")
 ///             .build());
 ///
@@ -162,7 +165,7 @@ class V2Assertion extends pulumi.CustomResource {
           'aws:resiliencehub/v2Assertion:V2Assertion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     assertionId = registerOutput<String>('assertionId');
     region = registerOutput<String>('region');

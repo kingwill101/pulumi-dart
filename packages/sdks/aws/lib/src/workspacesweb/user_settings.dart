@@ -78,7 +78,7 @@ import 'user_settings_toolbar_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,7 +86,10 @@ import 'user_settings_toolbar_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_workspacesweb_usersettings" "example" {
+/// resource "aws_workspacesweb_user_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   copy_allowed     = "Enabled"
 ///   download_allowed = "Enabled"
 ///   paste_allowed    = "Enabled"
@@ -243,7 +246,7 @@ import 'user_settings_toolbar_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -251,8 +254,11 @@ import 'user_settings_toolbar_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_workspacesweb_usersettings" "example" {
-///   toolbar_configuration = {
+/// resource "aws_workspacesweb_user_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   toolbar_configuration {
 ///     toolbar_type         = "Docked"
 ///     visual_mode          = "Dark"
 ///     hidden_toolbar_items = ["Webcam", "Microphone"]
@@ -543,7 +549,7 @@ import 'user_settings_toolbar_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -552,24 +558,30 @@ import 'user_settings_toolbar_configuration.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "KMS key for WorkSpaces Web User Settings"
 ///   deletion_window_in_days = 7
 /// }
-/// resource "aws_workspacesweb_usersettings" "example" {
-///   toolbar_configuration = {
+/// resource "aws_workspacesweb_user_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   toolbar_configuration {
 ///     toolbar_type           = "Docked"
 ///     visual_mode            = "Dark"
 ///     hidden_toolbar_items   = ["Webcam", "Microphone"]
 ///     max_display_resolution = "size1920X1080"
 ///   }
-///   cookie_synchronization_configuration = {
-///     allowlists = [{
-///       "domain" = "example.com"
-///       "path"   = "/path"
-///     }]
-///     blocklists = [{
-///       "domain" = "blocked.com"
-///     }]
+///   cookie_synchronization_configuration {
+///     allowlist {
+///       domain = "example.com"
+///       path   = "/path"
+///     }
+///     blocklist {
+///       domain = "blocked.com"
+///     }
 ///   }
 ///   copy_allowed                       = "Enabled"
 ///   download_allowed                   = "Enabled"
@@ -751,7 +763,7 @@ class UserSettings extends pulumi.CustomResource {
           'aws:workspacesweb/userSettings:UserSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

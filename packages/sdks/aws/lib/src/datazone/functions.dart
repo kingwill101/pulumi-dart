@@ -61,7 +61,7 @@ import 'get_environment_blueprint_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -69,7 +69,7 @@ import 'get_environment_blueprint_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_datazone_getdomain" "example" {
+/// data "aws_datazone_domain" "example" {
 ///   name = "example_domain"
 /// }
 /// ```
@@ -208,7 +208,7 @@ pulumi.Output<GetDomainResult> getDomainOutput(
 /// 			return err
 /// 		}
 /// 		_ = datazone.GetEnvironmentBlueprintOutput(ctx, datazone.GetEnvironmentBlueprintOutputArgs{
-/// 			DomainId: exampleDomain.ID().ToIDOutput().ToStringOutput(),
+/// 			DomainId: exampleDomain.ID(),
 /// 			Name:     pulumi.String("DefaultDataLake"),
 /// 			Managed:  pulumi.Bool(true),
 /// 		}, nil)
@@ -217,7 +217,7 @@ pulumi.Output<GetDomainResult> getDomainOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -225,13 +225,16 @@ pulumi.Output<GetDomainResult> getDomainOutput(
 ///   }
 /// }
 ///
-/// data "aws_datazone_getenvironmentblueprint" "example" {
+/// data "aws_datazone_environment_blueprint" "example" {
 ///   domain_id = aws_datazone_domain.example.id
 ///   name      = "DefaultDataLake"
 ///   managed   = true
 /// }
 ///
 /// resource "aws_datazone_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example_domain"
 ///   domain_execution_role = domainExecutionRole.arn
 /// }
@@ -261,7 +264,7 @@ pulumi.Output<GetDomainResult> getDomainOutput(
 ///     public static void stack(Context ctx) {
 ///         var exampleDomain = new Domain("exampleDomain", DomainArgs.builder()
 ///             .name("example_domain")
-///             .domainExecutionRole(domainExecutionRole.arn())
+///             .domainExecutionRole(domainExecutionRole.get("arn"))
 ///             .build());
 ///
 ///         final var example = DatazoneFunctions.getEnvironmentBlueprint(GetEnvironmentBlueprintArgs.builder()

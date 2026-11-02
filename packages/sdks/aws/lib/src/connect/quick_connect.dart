@@ -112,7 +112,7 @@ import 'quick_connect_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -120,11 +120,14 @@ import 'quick_connect_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_connect_quickconnect" "test" {
-///   quick_connect_config = {
-///     phone_configs = [{
-///       "phoneNumber" = "+12345678912"
-///     }]
+/// resource "aws_connect_quick_connect" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   quick_connect_config {
+///     phone_config {
+///       phone_number = "+12345678912"
+///     }
 ///     quick_connect_type = "PHONE_NUMBER"
 ///   }
 ///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
@@ -230,7 +233,7 @@ class QuickConnect extends pulumi.CustomResource {
           'aws:connect/quickConnect:QuickConnect',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

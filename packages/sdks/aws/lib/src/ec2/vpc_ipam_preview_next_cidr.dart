@@ -141,14 +141,14 @@ import 'vpc_ipam_preview_next_cidr_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleVpcIpamPoolCidr, err := ec2.NewVpcIpamPoolCidr(ctx, "example", &ec2.VpcIpamPoolCidrArgs{
-/// 			IpamPoolId: exampleVpcIpamPool.ID().ToIDOutput().ToStringOutput(),
+/// 			IpamPoolId: exampleVpcIpamPool.ID(),
 /// 			Cidr:       pulumi.String("172.20.0.0/16"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcIpamPreviewNextCidr(ctx, "example", &ec2.VpcIpamPreviewNextCidrArgs{
-/// 			IpamPoolId:    exampleVpcIpamPool.ID().ToIDOutput().ToStringOutput(),
+/// 			IpamPoolId:    exampleVpcIpamPool.ID(),
 /// 			NetmaskLength: pulumi.Int(28),
 /// 			DisallowedCidrs: pulumi.StringArray{
 /// 				pulumi.String("172.2.0.0/32"),
@@ -164,7 +164,7 @@ import 'vpc_ipam_preview_next_cidr_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -172,27 +172,39 @@ import 'vpc_ipam_preview_next_cidr_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
 ///
-/// resource "aws_ec2_vpcipampreviewnextcidr" "example" {
-///   depends_on       = [aws_ec2_vpcipampoolcidr.example]
-///   ipam_pool_id     = aws_ec2_vpcipampool.example.id
+/// resource "aws_ec2_vpc_ipam_preview_next_cidr" "example" {
+///   depends_on = [aws_ec2_vpc_ipam_pool_cidr.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ipam_pool_id     = aws_ec2_vpc_ipam_pool.example.id
 ///   netmask_length   = 28
 ///   disallowed_cidrs = ["172.2.0.0/32"]
 /// }
-/// resource "aws_ec2_vpcipampoolcidr" "example" {
-///   ipam_pool_id = aws_ec2_vpcipampool.example.id
+/// resource "aws_ec2_vpc_ipam_pool_cidr" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ipam_pool_id = aws_ec2_vpc_ipam_pool.example.id
 ///   cidr         = "172.20.0.0/16"
 /// }
-/// resource "aws_ec2_vpcipampool" "example" {
+/// resource "aws_ec2_vpc_ipam_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   address_family = "ipv4"
-///   ipam_scope_id  = aws_ec2_vpcipam.example.private_default_scope_id
-///   locale         = data.aws_getregion.current.region
+///   ipam_scope_id  = aws_ec2_vpc_ipam.example.private_default_scope_id
+///   locale         = data.aws_region.current.region
 /// }
-/// resource "aws_ec2_vpcipam" "example" {
+/// resource "aws_ec2_vpc_ipam" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   operating_regions {
-///     region_name = data.aws_getregion.current.region
+///     region_name = data.aws_region.current.region
 ///   }
 /// }
 /// ```
@@ -319,7 +331,7 @@ class VpcIpamPreviewNextCidr extends pulumi.CustomResource {
           'aws:ec2/vpcIpamPreviewNextCidr:VpcIpamPreviewNextCidr',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     cidr = registerOutput<String>('cidr');
     disallowedCidrs = registerOutput<List<String>?>('disallowedCidrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

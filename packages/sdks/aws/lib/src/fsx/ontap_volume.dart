@@ -80,7 +80,7 @@ import 'ontap_volume_tiering_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -88,7 +88,10 @@ import 'ontap_volume_tiering_policy.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fsx_ontapvolume" "test" {
+/// resource "aws_fsx_ontap_volume" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "test"
 ///   junction_path              = "/test"
 ///   size_in_megabytes          = 1024
@@ -122,7 +125,7 @@ import 'ontap_volume_tiering_policy.dart';
 ///             .junctionPath("/test")
 ///             .sizeInMegabytes(1024)
 ///             .storageEfficiencyEnabled(true)
-///             .storageVirtualMachineId(testAwsFsxOntapStorageVirtualMachine.id())
+///             .storageVirtualMachineId(testAwsFsxOntapStorageVirtualMachine.get("id"))
 ///             .build());
 ///
 ///     }
@@ -230,7 +233,7 @@ import 'ontap_volume_tiering_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -238,8 +241,11 @@ import 'ontap_volume_tiering_policy.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fsx_ontapvolume" "test" {
-///   tiering_policy = {
+/// resource "aws_fsx_ontap_volume" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   tiering_policy {
 ///     name           = "AUTO"
 ///     cooling_period = 31
 ///   }
@@ -281,7 +287,7 @@ import 'ontap_volume_tiering_policy.dart';
 ///             .junctionPath("/test")
 ///             .sizeInMegabytes(1024)
 ///             .storageEfficiencyEnabled(true)
-///             .storageVirtualMachineId(testAwsFsxOntapStorageVirtualMachine.id())
+///             .storageVirtualMachineId(testAwsFsxOntapStorageVirtualMachine.get("id"))
 ///             .build());
 ///
 ///     }
@@ -376,7 +382,7 @@ class OntapVolume extends pulumi.CustomResource {
           'aws:fsx/ontapVolume:OntapVolume',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     aggregateConfiguration = registerOutput<OntapVolumeAggregateConfiguration?>('aggregateConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OntapVolumeAggregateConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');

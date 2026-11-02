@@ -158,7 +158,7 @@ import 'data_lake_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -166,22 +166,26 @@ import 'data_lake_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_securitylake_datalake" "example" {
-///   configuration = {
-///     lifecycle_configuration = {
-///       expiration = {
+/// resource "aws_securitylake_data_lake" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     lifecycle_configuration {
+///       expiration {
 ///         days = 300
 ///       }
-///       transitions = [{
-///         "days"         = 31
-///         "storageClass" = "STANDARD_IA"
-///         }, {
-///         "days"         = 80
-///         "storageClass" = "ONEZONE_IA"
-///       }]
+///       transition {
+///         days          = 31
+///         storage_class = "STANDARD_IA"
+///       }
+///       transition {
+///         days          = 80
+///         storage_class = "ONEZONE_IA"
+///       }
 ///     }
-///     encryption_configurations = [{
-///       "kmsKeyId" = "S3_MANAGED_KEY"
+///     encryption_configuration = [{
+///       kms_key_id = "S3_MANAGED_KEY"
 ///     }]
 ///     region = "eu-west-1"
 ///   }
@@ -235,7 +239,7 @@ import 'data_lake_timeouts.dart';
 ///                     .build())
 ///                 .region("eu-west-1")
 ///                 .build())
-///             .metaStoreManagerRoleArn(metaStoreManager.arn())
+///             .metaStoreManagerRoleArn(metaStoreManager.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -347,7 +351,7 @@ import 'data_lake_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -355,10 +359,13 @@ import 'data_lake_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_securitylake_datalake" "example" {
-///   configuration = {
-///     encryption_configurations = [{
-///       "kmsKeyId" = "S3_MANAGED_KEY"
+/// resource "aws_securitylake_data_lake" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     encryption_configuration = [{
+///       kms_key_id = "S3_MANAGED_KEY"
 ///     }]
 ///     region = "eu-west-1"
 ///   }
@@ -395,7 +402,7 @@ import 'data_lake_timeouts.dart';
 ///                     .build())
 ///                 .region("eu-west-1")
 ///                 .build())
-///             .metaStoreManagerRoleArn(metaStoreManager.arn())
+///             .metaStoreManagerRoleArn(metaStoreManager.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -457,7 +464,7 @@ class DataLake extends pulumi.CustomResource {
           'aws:securitylake/dataLake:DataLake',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     configuration = registerOutput<DataLakeConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataLakeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

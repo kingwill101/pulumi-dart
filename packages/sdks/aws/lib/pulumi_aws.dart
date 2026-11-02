@@ -3195,6 +3195,10 @@ class _ArcregionswitchModuleNamespace {
   final PlanWorkflowStepParallelConfigStepRdsCreateCrossRegionReadReplicaConfigArgs = module_arcregionswitch.PlanWorkflowStepParallelConfigStepRdsCreateCrossRegionReadReplicaConfig.new;
   final PlanWorkflowStepParallelConfigStepRdsPromoteReadReplicaConfig = module_arcregionswitch.PlanWorkflowStepParallelConfigStepRdsPromoteReadReplicaConfig.new;
   final PlanWorkflowStepParallelConfigStepRdsPromoteReadReplicaConfigArgs = module_arcregionswitch.PlanWorkflowStepParallelConfigStepRdsPromoteReadReplicaConfig.new;
+  final PlanWorkflowStepParallelConfigStepRdsSwitchoverReadReplicaConfig = module_arcregionswitch.PlanWorkflowStepParallelConfigStepRdsSwitchoverReadReplicaConfig.new;
+  final PlanWorkflowStepParallelConfigStepRdsSwitchoverReadReplicaConfigArgs = module_arcregionswitch.PlanWorkflowStepParallelConfigStepRdsSwitchoverReadReplicaConfig.new;
+  final PlanWorkflowStepParallelConfigStepRdsSwitchoverReadReplicaConfigUngraceful = module_arcregionswitch.PlanWorkflowStepParallelConfigStepRdsSwitchoverReadReplicaConfigUngraceful.new;
+  final PlanWorkflowStepParallelConfigStepRdsSwitchoverReadReplicaConfigUngracefulArgs = module_arcregionswitch.PlanWorkflowStepParallelConfigStepRdsSwitchoverReadReplicaConfigUngraceful.new;
   final PlanWorkflowStepParallelConfigStepRegionSwitchPlanConfig = module_arcregionswitch.PlanWorkflowStepParallelConfigStepRegionSwitchPlanConfig.new;
   final PlanWorkflowStepParallelConfigStepRegionSwitchPlanConfigArgs = module_arcregionswitch.PlanWorkflowStepParallelConfigStepRegionSwitchPlanConfig.new;
   final PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfig = module_arcregionswitch.PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfig.new;
@@ -3205,6 +3209,10 @@ class _ArcregionswitchModuleNamespace {
   final PlanWorkflowStepRdsCreateCrossRegionReadReplicaConfigArgs = module_arcregionswitch.PlanWorkflowStepRdsCreateCrossRegionReadReplicaConfig.new;
   final PlanWorkflowStepRdsPromoteReadReplicaConfig = module_arcregionswitch.PlanWorkflowStepRdsPromoteReadReplicaConfig.new;
   final PlanWorkflowStepRdsPromoteReadReplicaConfigArgs = module_arcregionswitch.PlanWorkflowStepRdsPromoteReadReplicaConfig.new;
+  final PlanWorkflowStepRdsSwitchoverReadReplicaConfig = module_arcregionswitch.PlanWorkflowStepRdsSwitchoverReadReplicaConfig.new;
+  final PlanWorkflowStepRdsSwitchoverReadReplicaConfigArgs = module_arcregionswitch.PlanWorkflowStepRdsSwitchoverReadReplicaConfig.new;
+  final PlanWorkflowStepRdsSwitchoverReadReplicaConfigUngraceful = module_arcregionswitch.PlanWorkflowStepRdsSwitchoverReadReplicaConfigUngraceful.new;
+  final PlanWorkflowStepRdsSwitchoverReadReplicaConfigUngracefulArgs = module_arcregionswitch.PlanWorkflowStepRdsSwitchoverReadReplicaConfigUngraceful.new;
   final PlanWorkflowStepRegionSwitchPlanConfig = module_arcregionswitch.PlanWorkflowStepRegionSwitchPlanConfig.new;
   final PlanWorkflowStepRegionSwitchPlanConfigArgs = module_arcregionswitch.PlanWorkflowStepRegionSwitchPlanConfig.new;
   final PlanWorkflowStepRoute53HealthCheckConfig = module_arcregionswitch.PlanWorkflowStepRoute53HealthCheckConfig.new;
@@ -5250,6 +5258,14 @@ class _BedrockModuleNamespace {
   final CustomModelValidationMetricArgs = module_bedrock.CustomModelValidationMetric.new;
   final CustomModelVpcConfig = module_bedrock.CustomModelVpcConfig.new;
   final CustomModelVpcConfigArgs = module_bedrock.CustomModelVpcConfig.new;
+  final EnforcedGuardrailConfiguration = module_bedrock.EnforcedGuardrailConfiguration.new;
+  final EnforcedGuardrailConfigurationArgs = module_bedrock.EnforcedGuardrailConfigurationArgs.new;
+  final EnforcedGuardrailConfigurationModelEnforcement = module_bedrock.EnforcedGuardrailConfigurationModelEnforcement.new;
+  final EnforcedGuardrailConfigurationModelEnforcementArgs = module_bedrock.EnforcedGuardrailConfigurationModelEnforcement.new;
+  final EnforcedGuardrailConfigurationSelectiveContentGuarding = module_bedrock.EnforcedGuardrailConfigurationSelectiveContentGuarding.new;
+  final EnforcedGuardrailConfigurationSelectiveContentGuardingArgs = module_bedrock.EnforcedGuardrailConfigurationSelectiveContentGuarding.new;
+  final EnforcedGuardrailConfigurationState = module_bedrock.EnforcedGuardrailConfigurationState.new;
+  final EnforcedGuardrailConfigurationStateArgs = module_bedrock.EnforcedGuardrailConfigurationState.new;
   final EvaluationJob = module_bedrock.EvaluationJob.new;
   final EvaluationJobArgs = module_bedrock.EvaluationJobArgs.new;
   final EvaluationJobEvaluationConfig = module_bedrock.EvaluationJobEvaluationConfig.new;
@@ -7051,6 +7067,28 @@ class _CloudwatchModuleNamespace {
 
 class _CloudwatchomniModuleNamespace {
   _CloudwatchomniModuleNamespace();
+  final AccessGrant = module_cloudwatchomni.AccessGrant.new;
+  final AccessGrantArgs = module_cloudwatchomni.AccessGrantArgs.new;
+  final AccessGrantPrincipal = module_cloudwatchomni.AccessGrantPrincipal.new;
+  final AccessGrantPrincipalArgs = module_cloudwatchomni.AccessGrantPrincipal.new;
+  final AccessGrantPrincipalPrincipalAttribute = module_cloudwatchomni.AccessGrantPrincipalPrincipalAttribute.new;
+  final AccessGrantPrincipalPrincipalAttributeArgs = module_cloudwatchomni.AccessGrantPrincipalPrincipalAttribute.new;
+  final AccessGrantScopedAction = module_cloudwatchomni.AccessGrantScopedAction.new;
+  final AccessGrantScopedActionArgs = module_cloudwatchomni.AccessGrantScopedAction.new;
+  final AccessGrantScopedActionResource = module_cloudwatchomni.AccessGrantScopedActionResource.new;
+  final AccessGrantScopedActionResourceArgs = module_cloudwatchomni.AccessGrantScopedActionResource.new;
+  final AccessGrantScopedActionResourceRowScopeGroup = module_cloudwatchomni.AccessGrantScopedActionResourceRowScopeGroup.new;
+  final AccessGrantScopedActionResourceRowScopeGroupArgs = module_cloudwatchomni.AccessGrantScopedActionResourceRowScopeGroup.new;
+  final AccessGrantScopedActionResourceRowScopeGroupRowScope = module_cloudwatchomni.AccessGrantScopedActionResourceRowScopeGroupRowScope.new;
+  final AccessGrantScopedActionResourceRowScopeGroupRowScopeArgs = module_cloudwatchomni.AccessGrantScopedActionResourceRowScopeGroupRowScope.new;
+  final AccessGrantState = module_cloudwatchomni.AccessGrantState.new;
+  final AccessGrantStateArgs = module_cloudwatchomni.AccessGrantState.new;
+  final AccessProfile = module_cloudwatchomni.AccessProfile.new;
+  final AccessProfileArgs = module_cloudwatchomni.AccessProfileArgs.new;
+  final AccessProfileState = module_cloudwatchomni.AccessProfileState.new;
+  final AccessProfileStateArgs = module_cloudwatchomni.AccessProfileState.new;
+  final AccessProfileTimeouts = module_cloudwatchomni.AccessProfileTimeouts.new;
+  final AccessProfileTimeoutsArgs = module_cloudwatchomni.AccessProfileTimeouts.new;
   final Domain = module_cloudwatchomni.Domain.new;
   final DomainArgs = module_cloudwatchomni.DomainArgs.new;
   final DomainIdentityProviderConfiguration = module_cloudwatchomni.DomainIdentityProviderConfiguration.new;
@@ -7065,6 +7103,10 @@ class _CloudwatchomniModuleNamespace {
   final SpaceEncryptionConfigurationArgs = module_cloudwatchomni.SpaceEncryptionConfiguration.new;
   final SpaceState = module_cloudwatchomni.SpaceState.new;
   final SpaceStateArgs = module_cloudwatchomni.SpaceState.new;
+  final View = module_cloudwatchomni.View.new;
+  final ViewArgs = module_cloudwatchomni.ViewArgs.new;
+  final ViewState = module_cloudwatchomni.ViewState.new;
+  final ViewStateArgs = module_cloudwatchomni.ViewState.new;
 }
 
 class _CodeartifactModuleNamespace {
@@ -9152,6 +9194,12 @@ class _DirectoryserviceModuleNamespace {
   final DirectoryArgs = module_directoryservice.DirectoryArgs.new;
   final DirectoryConnectSettings = module_directoryservice.DirectoryConnectSettings.new;
   final DirectoryConnectSettingsArgs = module_directoryservice.DirectoryConnectSettings.new;
+  final DirectorySetting = module_directoryservice.DirectorySetting.new;
+  final DirectorySettingArgs = module_directoryservice.DirectorySettingArgs.new;
+  final DirectorySettingState = module_directoryservice.DirectorySettingState.new;
+  final DirectorySettingStateArgs = module_directoryservice.DirectorySettingState.new;
+  final DirectorySettingTimeouts = module_directoryservice.DirectorySettingTimeouts.new;
+  final DirectorySettingTimeoutsArgs = module_directoryservice.DirectorySettingTimeouts.new;
   final DirectoryState = module_directoryservice.DirectoryState.new;
   final DirectoryStateArgs = module_directoryservice.DirectoryState.new;
   final DirectoryVpcSettings = module_directoryservice.DirectoryVpcSettings.new;
@@ -9213,6 +9261,10 @@ class _DirectoryserviceModuleNamespace {
 
 class _DirectoryservicedataModuleNamespace {
   _DirectoryservicedataModuleNamespace();
+  final Group = module_directoryservicedata.Group.new;
+  final GroupArgs = module_directoryservicedata.GroupArgs.new;
+  final GroupState = module_directoryservicedata.GroupState.new;
+  final GroupStateArgs = module_directoryservicedata.GroupState.new;
   final User = module_directoryservicedata.User.new;
   final UserArgs = module_directoryservicedata.UserArgs.new;
   final UserState = module_directoryservicedata.UserState.new;
@@ -25963,6 +26015,46 @@ class _SagemakerModuleNamespace {
   final ImageVersionArgs = module_sagemaker.ImageVersionArgs.new;
   final ImageVersionState = module_sagemaker.ImageVersionState.new;
   final ImageVersionStateArgs = module_sagemaker.ImageVersionState.new;
+  final InferenceComponent = module_sagemaker.InferenceComponent.new;
+  final InferenceComponentArgs = module_sagemaker.InferenceComponentArgs.new;
+  final InferenceComponentDeploymentConfig = module_sagemaker.InferenceComponentDeploymentConfig.new;
+  final InferenceComponentDeploymentConfigArgs = module_sagemaker.InferenceComponentDeploymentConfig.new;
+  final InferenceComponentDeploymentConfigAutoRollbackConfiguration = module_sagemaker.InferenceComponentDeploymentConfigAutoRollbackConfiguration.new;
+  final InferenceComponentDeploymentConfigAutoRollbackConfigurationAlarm = module_sagemaker.InferenceComponentDeploymentConfigAutoRollbackConfigurationAlarm.new;
+  final InferenceComponentDeploymentConfigAutoRollbackConfigurationAlarmArgs = module_sagemaker.InferenceComponentDeploymentConfigAutoRollbackConfigurationAlarm.new;
+  final InferenceComponentDeploymentConfigAutoRollbackConfigurationArgs = module_sagemaker.InferenceComponentDeploymentConfigAutoRollbackConfiguration.new;
+  final InferenceComponentDeploymentConfigRollingUpdatePolicy = module_sagemaker.InferenceComponentDeploymentConfigRollingUpdatePolicy.new;
+  final InferenceComponentDeploymentConfigRollingUpdatePolicyArgs = module_sagemaker.InferenceComponentDeploymentConfigRollingUpdatePolicy.new;
+  final InferenceComponentDeploymentConfigRollingUpdatePolicyMaximumBatchSize = module_sagemaker.InferenceComponentDeploymentConfigRollingUpdatePolicyMaximumBatchSize.new;
+  final InferenceComponentDeploymentConfigRollingUpdatePolicyMaximumBatchSizeArgs = module_sagemaker.InferenceComponentDeploymentConfigRollingUpdatePolicyMaximumBatchSize.new;
+  final InferenceComponentDeploymentConfigRollingUpdatePolicyRollbackMaximumBatchSize = module_sagemaker.InferenceComponentDeploymentConfigRollingUpdatePolicyRollbackMaximumBatchSize.new;
+  final InferenceComponentDeploymentConfigRollingUpdatePolicyRollbackMaximumBatchSizeArgs = module_sagemaker.InferenceComponentDeploymentConfigRollingUpdatePolicyRollbackMaximumBatchSize.new;
+  final InferenceComponentRuntimeConfig = module_sagemaker.InferenceComponentRuntimeConfig.new;
+  final InferenceComponentRuntimeConfigArgs = module_sagemaker.InferenceComponentRuntimeConfig.new;
+  final InferenceComponentRuntimeConfigPlacementStatus = module_sagemaker.InferenceComponentRuntimeConfigPlacementStatus.new;
+  final InferenceComponentRuntimeConfigPlacementStatusArgs = module_sagemaker.InferenceComponentRuntimeConfigPlacementStatus.new;
+  final InferenceComponentSpecification = module_sagemaker.InferenceComponentSpecification.new;
+  final InferenceComponentSpecificationArgs = module_sagemaker.InferenceComponentSpecification.new;
+  final InferenceComponentSpecificationComputeResourceRequirements = module_sagemaker.InferenceComponentSpecificationComputeResourceRequirements.new;
+  final InferenceComponentSpecificationComputeResourceRequirementsArgs = module_sagemaker.InferenceComponentSpecificationComputeResourceRequirements.new;
+  final InferenceComponentSpecificationContainer = module_sagemaker.InferenceComponentSpecificationContainer.new;
+  final InferenceComponentSpecificationContainerArgs = module_sagemaker.InferenceComponentSpecificationContainer.new;
+  final InferenceComponentSpecificationContainerContainerMetricsConfig = module_sagemaker.InferenceComponentSpecificationContainerContainerMetricsConfig.new;
+  final InferenceComponentSpecificationContainerContainerMetricsConfigArgs = module_sagemaker.InferenceComponentSpecificationContainerContainerMetricsConfig.new;
+  final InferenceComponentSpecificationContainerContainerMetricsConfigMetricsEndpoint = module_sagemaker.InferenceComponentSpecificationContainerContainerMetricsConfigMetricsEndpoint.new;
+  final InferenceComponentSpecificationContainerContainerMetricsConfigMetricsEndpointArgs = module_sagemaker.InferenceComponentSpecificationContainerContainerMetricsConfigMetricsEndpoint.new;
+  final InferenceComponentSpecificationDataCacheConfig = module_sagemaker.InferenceComponentSpecificationDataCacheConfig.new;
+  final InferenceComponentSpecificationDataCacheConfigArgs = module_sagemaker.InferenceComponentSpecificationDataCacheConfig.new;
+  final InferenceComponentSpecificationSchedulingConfig = module_sagemaker.InferenceComponentSpecificationSchedulingConfig.new;
+  final InferenceComponentSpecificationSchedulingConfigArgs = module_sagemaker.InferenceComponentSpecificationSchedulingConfig.new;
+  final InferenceComponentSpecificationSchedulingConfigAvailabilityZoneBalance = module_sagemaker.InferenceComponentSpecificationSchedulingConfigAvailabilityZoneBalance.new;
+  final InferenceComponentSpecificationSchedulingConfigAvailabilityZoneBalanceArgs = module_sagemaker.InferenceComponentSpecificationSchedulingConfigAvailabilityZoneBalance.new;
+  final InferenceComponentSpecificationStartupParameters = module_sagemaker.InferenceComponentSpecificationStartupParameters.new;
+  final InferenceComponentSpecificationStartupParametersArgs = module_sagemaker.InferenceComponentSpecificationStartupParameters.new;
+  final InferenceComponentState = module_sagemaker.InferenceComponentState.new;
+  final InferenceComponentStateArgs = module_sagemaker.InferenceComponentState.new;
+  final InferenceComponentTimeouts = module_sagemaker.InferenceComponentTimeouts.new;
+  final InferenceComponentTimeoutsArgs = module_sagemaker.InferenceComponentTimeouts.new;
   final LabelingJob = module_sagemaker.LabelingJob.new;
   final LabelingJobArgs = module_sagemaker.LabelingJobArgs.new;
   final LabelingJobHumanTaskConfig = module_sagemaker.LabelingJobHumanTaskConfig.new;

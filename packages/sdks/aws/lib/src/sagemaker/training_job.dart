@@ -149,7 +149,7 @@ import 'training_job_vpc_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -157,20 +157,23 @@ import 'training_job_vpc_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_trainingjob" "example" {
-///   algorithm_specification = {
+/// resource "aws_sagemaker_training_job" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   algorithm_specification {
 ///     training_input_mode = "File"
 ///     training_image      = exampleAwsSagemakerPrebuiltEcrImage.registryPath
 ///   }
-///   output_data_config = {
+///   output_data_config {
 ///     s3_output_path ="s3://${exampleAwsS3Bucket.bucket}/output/"
 ///   }
-///   resource_config = {
+///   resource_config {
 ///     instance_type     = "ml.m5.large"
 ///     instance_count    = 1
 ///     volume_size_in_gb = 30
 ///   }
-///   stopping_condition = {
+///   stopping_condition {
 ///     max_runtime_in_seconds = 3600
 ///   }
 ///   training_job_name = "example"
@@ -205,10 +208,10 @@ import 'training_job_vpc_config.dart';
 ///         var example = new TrainingJob("example", TrainingJobArgs.builder()
 ///             .algorithmSpecification(TrainingJobAlgorithmSpecificationArgs.builder()
 ///                 .trainingInputMode("File")
-///                 .trainingImage(exampleAwsSagemakerPrebuiltEcrImage.registryPath())
+///                 .trainingImage(exampleAwsSagemakerPrebuiltEcrImage.get("registryPath"))
 ///                 .build())
 ///             .outputDataConfig(TrainingJobOutputDataConfigArgs.builder()
-///                 .s3OutputPath(String.format("s3://%s/output/", exampleAwsS3Bucket.bucket()))
+///                 .s3OutputPath(String.format("s3://%s/output/", exampleAwsS3Bucket.get("bucket")))
 ///                 .build())
 ///             .resourceConfig(TrainingJobResourceConfigArgs.builder()
 ///                 .instanceType("ml.m5.large")
@@ -219,7 +222,7 @@ import 'training_job_vpc_config.dart';
 ///                 .maxRuntimeInSeconds(3600)
 ///                 .build())
 ///             .trainingJobName("example")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -395,7 +398,7 @@ import 'training_job_vpc_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -403,23 +406,26 @@ import 'training_job_vpc_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_trainingjob" "example" {
-///   algorithm_specification = {
+/// resource "aws_sagemaker_training_job" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   algorithm_specification {
 ///     training_input_mode = "File"
 ///     training_image      = exampleAwsSagemakerPrebuiltEcrImage.registryPath
 ///   }
-///   output_data_config = {
+///   output_data_config {
 ///     s3_output_path ="s3://${exampleAwsS3Bucket.bucket}/output/"
 ///   }
-///   resource_config = {
+///   resource_config {
 ///     instance_type     = "ml.m5.large"
 ///     instance_count    = 1
 ///     volume_size_in_gb = 30
 ///   }
-///   stopping_condition = {
+///   stopping_condition {
 ///     max_runtime_in_seconds = 3600
 ///   }
-///   vpc_config = {
+///   vpc_config {
 ///     security_group_ids = [exampleAwsSecurityGroup.id]
 ///     subnets            = [exampleAwsSubnet.id]
 ///   }
@@ -456,10 +462,10 @@ import 'training_job_vpc_config.dart';
 ///         var example = new TrainingJob("example", TrainingJobArgs.builder()
 ///             .algorithmSpecification(TrainingJobAlgorithmSpecificationArgs.builder()
 ///                 .trainingInputMode("File")
-///                 .trainingImage(exampleAwsSagemakerPrebuiltEcrImage.registryPath())
+///                 .trainingImage(exampleAwsSagemakerPrebuiltEcrImage.get("registryPath"))
 ///                 .build())
 ///             .outputDataConfig(TrainingJobOutputDataConfigArgs.builder()
-///                 .s3OutputPath(String.format("s3://%s/output/", exampleAwsS3Bucket.bucket()))
+///                 .s3OutputPath(String.format("s3://%s/output/", exampleAwsS3Bucket.get("bucket")))
 ///                 .build())
 ///             .resourceConfig(TrainingJobResourceConfigArgs.builder()
 ///                 .instanceType("ml.m5.large")
@@ -470,11 +476,11 @@ import 'training_job_vpc_config.dart';
 ///                 .maxRuntimeInSeconds(3600)
 ///                 .build())
 ///             .vpcConfig(TrainingJobVpcConfigArgs.builder()
-///                 .securityGroupIds(exampleAwsSecurityGroup.id())
-///                 .subnets(exampleAwsSubnet.id())
+///                 .securityGroupIds(exampleAwsSecurityGroup.get("id"))
+///                 .subnets(exampleAwsSubnet.get("id"))
 ///                 .build())
 ///             .trainingJobName("example")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -693,7 +699,7 @@ import 'training_job_vpc_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -701,26 +707,29 @@ import 'training_job_vpc_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_trainingjob" "example" {
-///   algorithm_specification = {
+/// resource "aws_sagemaker_training_job" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   algorithm_specification {
 ///     training_input_mode                  = "File"
 ///     training_image                       = exampleAwsSagemakerPrebuiltEcrImage.registryPath
 ///     enable_sagemaker_metrics_time_series = true
 ///   }
-///   output_data_config = {
+///   output_data_config {
 ///     s3_output_path ="s3://${exampleAwsS3Bucket.bucket}/output/"
 ///   }
-///   resource_config = {
+///   resource_config {
 ///     instance_type     = "ml.m5.large"
 ///     instance_count    = 1
 ///     volume_size_in_gb = 30
 ///   }
-///   stopping_condition = {
+///   stopping_condition {
 ///     max_runtime_in_seconds = 3600
 ///   }
-///   input_data_configs {
-///     data_source = {
-///       s3_data_source = {
+///   input_data_config {
+///     data_source {
+///       s3_data_source {
 ///         s3_data_type = "S3Prefix"
 ///         s3_uri       ="s3://${exampleAwsS3Bucket.bucket}/train/"
 ///       }
@@ -766,11 +775,11 @@ import 'training_job_vpc_config.dart';
 ///         var example = new TrainingJob("example", TrainingJobArgs.builder()
 ///             .algorithmSpecification(TrainingJobAlgorithmSpecificationArgs.builder()
 ///                 .trainingInputMode("File")
-///                 .trainingImage(exampleAwsSagemakerPrebuiltEcrImage.registryPath())
+///                 .trainingImage(exampleAwsSagemakerPrebuiltEcrImage.get("registryPath"))
 ///                 .enableSagemakerMetricsTimeSeries(true)
 ///                 .build())
 ///             .outputDataConfig(TrainingJobOutputDataConfigArgs.builder()
-///                 .s3OutputPath(String.format("s3://%s/output/", exampleAwsS3Bucket.bucket()))
+///                 .s3OutputPath(String.format("s3://%s/output/", exampleAwsS3Bucket.get("bucket")))
 ///                 .build())
 ///             .resourceConfig(TrainingJobResourceConfigArgs.builder()
 ///                 .instanceType("ml.m5.large")
@@ -784,13 +793,13 @@ import 'training_job_vpc_config.dart';
 ///                 .dataSource(TrainingJobInputDataConfigDataSourceArgs.builder()
 ///                     .s3DataSource(TrainingJobInputDataConfigDataSourceS3DataSourceArgs.builder()
 ///                         .s3DataType("S3Prefix")
-///                         .s3Uri(String.format("s3://%s/train/", exampleAwsS3Bucket.bucket()))
+///                         .s3Uri(String.format("s3://%s/train/", exampleAwsS3Bucket.get("bucket")))
 ///                         .build())
 ///                     .build())
 ///                 .channelName("train")
 ///                 .build())
 ///             .trainingJobName("example")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .hyperParameters(Map.ofEntries(
 ///                 Map.entry("mini_batch_size", "200"),
 ///                 Map.entry("epochs", "10")
@@ -999,7 +1008,7 @@ import 'training_job_vpc_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1007,30 +1016,33 @@ import 'training_job_vpc_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_trainingjob" "example" {
-///   algorithm_specification = {
+/// resource "aws_sagemaker_training_job" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   algorithm_specification {
 ///     training_input_mode = "File"
 ///     training_image      = exampleAwsSagemakerPrebuiltEcrImage.registryPath
 ///   }
-///   checkpoint_config = {
+///   checkpoint_config {
 ///     local_path = "/opt/ml/checkpoints"
 ///     s3_uri     ="s3://${exampleAwsS3Bucket.bucket}/checkpoints/"
 ///   }
-///   output_data_config = {
+///   output_data_config {
 ///     compression_type = "GZIP"
 ///     kms_key_id       = exampleAwsKmsKey.arn
 ///     s3_output_path   ="s3://${exampleAwsS3Bucket.bucket}/output/"
 ///   }
-///   resource_config = {
+///   resource_config {
 ///     instance_type     = "ml.m5.large"
 ///     instance_count    = 1
 ///     volume_size_in_gb = 30
 ///     volume_kms_key_id = exampleAwsKmsKey.arn
 ///   }
-///   stopping_condition = {
+///   stopping_condition {
 ///     max_runtime_in_seconds = 3600
 ///   }
-///   tensor_board_output_config = {
+///   tensor_board_output_config {
 ///     local_path     = "/opt/ml/output/tensorboard"
 ///     s3_output_path ="s3://${exampleAwsS3Bucket.bucket}/tensorboard/"
 ///   }
@@ -1068,32 +1080,32 @@ import 'training_job_vpc_config.dart';
 ///         var example = new TrainingJob("example", TrainingJobArgs.builder()
 ///             .algorithmSpecification(TrainingJobAlgorithmSpecificationArgs.builder()
 ///                 .trainingInputMode("File")
-///                 .trainingImage(exampleAwsSagemakerPrebuiltEcrImage.registryPath())
+///                 .trainingImage(exampleAwsSagemakerPrebuiltEcrImage.get("registryPath"))
 ///                 .build())
 ///             .checkpointConfig(TrainingJobCheckpointConfigArgs.builder()
 ///                 .localPath("/opt/ml/checkpoints")
-///                 .s3Uri(String.format("s3://%s/checkpoints/", exampleAwsS3Bucket.bucket()))
+///                 .s3Uri(String.format("s3://%s/checkpoints/", exampleAwsS3Bucket.get("bucket")))
 ///                 .build())
 ///             .outputDataConfig(TrainingJobOutputDataConfigArgs.builder()
 ///                 .compressionType("GZIP")
-///                 .kmsKeyId(exampleAwsKmsKey.arn())
-///                 .s3OutputPath(String.format("s3://%s/output/", exampleAwsS3Bucket.bucket()))
+///                 .kmsKeyId(exampleAwsKmsKey.get("arn"))
+///                 .s3OutputPath(String.format("s3://%s/output/", exampleAwsS3Bucket.get("bucket")))
 ///                 .build())
 ///             .resourceConfig(TrainingJobResourceConfigArgs.builder()
 ///                 .instanceType("ml.m5.large")
 ///                 .instanceCount(1)
 ///                 .volumeSizeInGb(30)
-///                 .volumeKmsKeyId(exampleAwsKmsKey.arn())
+///                 .volumeKmsKeyId(exampleAwsKmsKey.get("arn"))
 ///                 .build())
 ///             .stoppingCondition(TrainingJobStoppingConditionArgs.builder()
 ///                 .maxRuntimeInSeconds(3600)
 ///                 .build())
 ///             .tensorBoardOutputConfig(TrainingJobTensorBoardOutputConfigArgs.builder()
 ///                 .localPath("/opt/ml/output/tensorboard")
-///                 .s3OutputPath(String.format("s3://%s/tensorboard/", exampleAwsS3Bucket.bucket()))
+///                 .s3OutputPath(String.format("s3://%s/tensorboard/", exampleAwsS3Bucket.get("bucket")))
 ///                 .build())
 ///             .trainingJobName("example")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1420,7 +1432,7 @@ import 'training_job_vpc_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1428,33 +1440,37 @@ import 'training_job_vpc_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_trainingjob" "example" {
-///   algorithm_specification = {
-///     metric_definitions = [{
-///       "name"  = "train:loss"
-///       "regex" = "loss: ([0-9\\.]+)"
-///       }, {
-///       "name"  = "validation:accuracy"
-///       "regex" = "accuracy: ([0-9\\.]+)"
-///     }]
-///     training_input_mode   = "File"
-///     training_image        = trainingImage
-///     container_entrypoints = ["python", "/opt/ml/code/train.py"]
-///     container_arguments   = ["--epochs", "10", "--batch-size", "128"]
+/// resource "aws_sagemaker_training_job" "example" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   output_data_config = {
+///   algorithm_specification {
+///     metric_definitions {
+///       name  = "train:loss"
+///       regex = "loss: ([0-9\\.]+)"
+///     }
+///     metric_definitions {
+///       name  = "validation:accuracy"
+///       regex = "accuracy: ([0-9\\.]+)"
+///     }
+///     training_input_mode  = "File"
+///     training_image       = trainingImage
+///     container_entrypoint = ["python", "/opt/ml/code/train.py"]
+///     container_arguments  = ["--epochs", "10", "--batch-size", "128"]
+///   }
+///   output_data_config {
 ///     s3_output_path ="s3://${exampleAwsS3Bucket.bucket}/output/"
 ///   }
-///   resource_config = {
+///   resource_config {
 ///     instance_type                = "ml.m5.xlarge"
 ///     instance_count               = 1
 ///     volume_size_in_gb            = 50
 ///     keep_alive_period_in_seconds = 600
 ///   }
-///   retry_strategy = {
+///   retry_strategy {
 ///     maximum_retry_attempts = 3
 ///   }
-///   stopping_condition = {
+///   stopping_condition {
 ///     max_runtime_in_seconds   = 3600
 ///     max_wait_time_in_seconds = 7200
 ///   }
@@ -1527,7 +1543,7 @@ import 'training_job_vpc_config.dart';
 ///                     "128")
 ///                 .build())
 ///             .outputDataConfig(TrainingJobOutputDataConfigArgs.builder()
-///                 .s3OutputPath(String.format("s3://%s/output/", exampleAwsS3Bucket.bucket()))
+///                 .s3OutputPath(String.format("s3://%s/output/", exampleAwsS3Bucket.get("bucket")))
 ///                 .build())
 ///             .resourceConfig(TrainingJobResourceConfigArgs.builder()
 ///                 .instanceType("ml.m5.xlarge")
@@ -1543,7 +1559,7 @@ import 'training_job_vpc_config.dart';
 ///                 .maxWaitTimeInSeconds(7200)
 ///                 .build())
 ///             .trainingJobName("example")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .enableManagedSpotTraining(true)
 ///             .enableNetworkIsolation(true)
 ///             .enableInterContainerTrafficEncryption(true)
@@ -1873,7 +1889,7 @@ import 'training_job_vpc_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1881,31 +1897,34 @@ import 'training_job_vpc_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_trainingjob" "example" {
-///   algorithm_specification = {
+/// resource "aws_sagemaker_training_job" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   algorithm_specification {
 ///     training_input_mode = "File"
 ///     training_image      = exampleAwsSagemakerPrebuiltEcrImage.registryPath
 ///   }
-///   infra_check_config = {
+///   infra_check_config {
 ///     enable_infra_check = true
 ///   }
-///   output_data_config = {
+///   output_data_config {
 ///     s3_output_path ="s3://${exampleAwsS3Bucket.bucket}/output/"
 ///   }
-///   resource_config = {
+///   resource_config {
 ///     instance_type     = "ml.m5.large"
 ///     instance_count    = 1
 ///     volume_size_in_gb = 30
 ///   }
-///   session_chaining_config = {
+///   session_chaining_config {
 ///     enable_session_tag_chaining = true
 ///   }
-///   stopping_condition = {
+///   stopping_condition {
 ///     max_runtime_in_seconds = 3600
 ///   }
-///   input_data_configs {
-///     data_source = {
-///       s3_data_source = {
+///   input_data_config {
+///     data_source {
+///       s3_data_source {
 ///         s3_data_distribution_type = "FullyReplicated"
 ///         s3_data_type              = "S3Prefix"
 ///         s3_uri                    ="s3://${exampleAwsS3Bucket.bucket}/train/"
@@ -1915,9 +1934,9 @@ import 'training_job_vpc_config.dart';
 ///     content_type = "text/csv"
 ///     input_mode   = "File"
 ///   }
-///   input_data_configs {
-///     data_source = {
-///       s3_data_source = {
+///   input_data_config {
+///     data_source {
+///       s3_data_source {
 ///         s3_data_distribution_type = "FullyReplicated"
 ///         s3_data_type              = "S3Prefix"
 ///         s3_uri                    ="s3://${exampleAwsS3Bucket.bucket}/validation/"
@@ -1964,13 +1983,13 @@ import 'training_job_vpc_config.dart';
 ///         var example = new TrainingJob("example", TrainingJobArgs.builder()
 ///             .algorithmSpecification(TrainingJobAlgorithmSpecificationArgs.builder()
 ///                 .trainingInputMode("File")
-///                 .trainingImage(exampleAwsSagemakerPrebuiltEcrImage.registryPath())
+///                 .trainingImage(exampleAwsSagemakerPrebuiltEcrImage.get("registryPath"))
 ///                 .build())
 ///             .infraCheckConfig(TrainingJobInfraCheckConfigArgs.builder()
 ///                 .enableInfraCheck(true)
 ///                 .build())
 ///             .outputDataConfig(TrainingJobOutputDataConfigArgs.builder()
-///                 .s3OutputPath(String.format("s3://%s/output/", exampleAwsS3Bucket.bucket()))
+///                 .s3OutputPath(String.format("s3://%s/output/", exampleAwsS3Bucket.get("bucket")))
 ///                 .build())
 ///             .resourceConfig(TrainingJobResourceConfigArgs.builder()
 ///                 .instanceType("ml.m5.large")
@@ -1989,7 +2008,7 @@ import 'training_job_vpc_config.dart';
 ///                         .s3DataSource(TrainingJobInputDataConfigDataSourceS3DataSourceArgs.builder()
 ///                             .s3DataDistributionType("FullyReplicated")
 ///                             .s3DataType("S3Prefix")
-///                             .s3Uri(String.format("s3://%s/train/", exampleAwsS3Bucket.bucket()))
+///                             .s3Uri(String.format("s3://%s/train/", exampleAwsS3Bucket.get("bucket")))
 ///                             .build())
 ///                         .build())
 ///                     .channelName("train")
@@ -2001,7 +2020,7 @@ import 'training_job_vpc_config.dart';
 ///                         .s3DataSource(TrainingJobInputDataConfigDataSourceS3DataSourceArgs.builder()
 ///                             .s3DataDistributionType("FullyReplicated")
 ///                             .s3DataType("S3Prefix")
-///                             .s3Uri(String.format("s3://%s/validation/", exampleAwsS3Bucket.bucket()))
+///                             .s3Uri(String.format("s3://%s/validation/", exampleAwsS3Bucket.get("bucket")))
 ///                             .build())
 ///                         .build())
 ///                     .channelName("validation")
@@ -2009,7 +2028,7 @@ import 'training_job_vpc_config.dart';
 ///                     .inputMode("File")
 ///                     .build())
 ///             .trainingJobName("example")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -2158,7 +2177,7 @@ class TrainingJob extends pulumi.CustomResource {
           'aws:sagemaker/trainingJob:TrainingJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     algorithmSpecification = registerOutput<TrainingJobAlgorithmSpecification?>('algorithmSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobAlgorithmSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');

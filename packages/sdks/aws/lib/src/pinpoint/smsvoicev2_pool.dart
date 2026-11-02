@@ -120,7 +120,7 @@ import 'smsvoicev2_pool_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -128,16 +128,22 @@ import 'smsvoicev2_pool_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_pinpoint_smsvoicev2phonenumber" "example" {
+/// resource "aws_pinpoint_smsvoicev2_phone_number" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   iso_country_code    = "US"
 ///   message_type        = "TRANSACTIONAL"
 ///   number_type         = "SIMULATOR"
 ///   number_capabilities = ["SMS"]
 /// }
-/// resource "aws_pinpoint_smsvoicev2pool" "example" {
+/// resource "aws_pinpoint_smsvoicev2_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   iso_country_code       = "US"
 ///   message_type           = "TRANSACTIONAL"
-///   origination_identities = [aws_pinpoint_smsvoicev2phonenumber.example.arn]
+///   origination_identities = [aws_pinpoint_smsvoicev2_phone_number.example.arn]
 ///   tags = {
 ///     "Name" = "example"
 ///   }
@@ -419,7 +425,7 @@ import 'smsvoicev2_pool_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -428,9 +434,15 @@ import 'smsvoicev2_pool_timeouts.dart';
 /// }
 ///
 /// resource "aws_sns_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-two-way-channel"
 /// }
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-pool-two-way"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -443,16 +455,22 @@ import 'smsvoicev2_pool_timeouts.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_pinpoint_smsvoicev2phonenumber" "example" {
+/// resource "aws_pinpoint_smsvoicev2_phone_number" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   iso_country_code    = "US"
 ///   message_type        = "TRANSACTIONAL"
 ///   number_type         = "SIMULATOR"
 ///   number_capabilities = ["SMS"]
 /// }
-/// resource "aws_pinpoint_smsvoicev2pool" "example" {
+/// resource "aws_pinpoint_smsvoicev2_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   iso_country_code       = "US"
 ///   message_type           = "TRANSACTIONAL"
-///   origination_identities = [aws_pinpoint_smsvoicev2phonenumber.example.arn]
+///   origination_identities = [aws_pinpoint_smsvoicev2_phone_number.example.arn]
 ///   two_way_enabled        = true
 ///   two_way_channel_arn    = aws_sns_topic.example.arn
 ///   two_way_channel_role   = aws_iam_role.example.arn
@@ -639,7 +657,7 @@ class Smsvoicev2Pool extends pulumi.CustomResource {
           'aws:pinpoint/smsvoicev2Pool:Smsvoicev2Pool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');

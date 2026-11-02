@@ -72,8 +72,8 @@ import 'internet_gateway_attachment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewInternetGatewayAttachment(ctx, "example", &ec2.InternetGatewayAttachmentArgs{
-/// 			InternetGatewayId: exampleInternetGateway.ID().ToIDOutput().ToStringOutput(),
-/// 			VpcId:             exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// 			InternetGatewayId: exampleInternetGateway.ID(),
+/// 			VpcId:             exampleVpc.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -83,7 +83,7 @@ import 'internet_gateway_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -91,14 +91,23 @@ import 'internet_gateway_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_internetgatewayattachment" "example" {
-///   internet_gateway_id = aws_ec2_internetgateway.example.id
+/// resource "aws_ec2_internet_gateway_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   internet_gateway_id = aws_ec2_internet_gateway.example.id
 ///   vpc_id              = aws_ec2_vpc.example.id
 /// }
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.1.0.0/16"
 /// }
-/// resource "aws_ec2_internetgateway" "example" {
+/// resource "aws_ec2_internet_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -184,7 +193,7 @@ class InternetGatewayAttachment extends pulumi.CustomResource {
           'aws:ec2/internetGatewayAttachment:InternetGatewayAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     internetGatewayId = registerOutput<String>('internetGatewayId');
     region = registerOutput<String>('region');

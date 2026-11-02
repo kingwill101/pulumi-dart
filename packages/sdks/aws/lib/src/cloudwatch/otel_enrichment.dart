@@ -82,7 +82,7 @@ import 'otel_enrichment_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -90,10 +90,16 @@ import 'otel_enrichment_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_observabilityadmin_telemetryenrichment" "example" {
+/// resource "aws_observabilityadmin_telemetry_enrichment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_cloudwatch_otelenrichment" "example" {
-///   depends_on = [aws_observabilityadmin_telemetryenrichment.example]
+/// resource "aws_cloudwatch_otel_enrichment" "example" {
+///   depends_on = [aws_observabilityadmin_telemetry_enrichment.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -300,7 +306,7 @@ import 'otel_enrichment_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -308,18 +314,24 @@ import 'otel_enrichment_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_observabilityadmin_telemetryenrichment" "example" {
+/// resource "aws_observabilityadmin_telemetry_enrichment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_cloudwatch_otelenrichment" "example" {
-///   depends_on = [aws_observabilityadmin_telemetryenrichment.example]
-///   exclude_filters {
+/// resource "aws_cloudwatch_otel_enrichment" "example" {
+///   depends_on = [aws_observabilityadmin_telemetry_enrichment.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   exclude_filter {
 ///     namespace    = "AWS/EC2"
 ///     metric_names = ["NetworkPacketsIn", "NetworkPacketsOut"]
 ///   }
-///   include_filters {
+///   include_filter {
 ///     namespace = "AWS/EC2"
 ///   }
-///   include_filters {
+///   include_filter {
 ///     namespace    = "AWS/RDS"
 ///     metric_names = ["CPUUtilization", "DatabaseConnections"]
 ///   }
@@ -441,7 +453,7 @@ class OtelEnrichment extends pulumi.CustomResource {
           'aws:cloudwatch/otelEnrichment:OtelEnrichment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     excludeFilters = registerOutput<List<OtelEnrichmentExcludeFilter>?>('excludeFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OtelEnrichmentExcludeFilter>(guardedValue, (value) => OtelEnrichmentExcludeFilter.fromMap((value as Map).cast<String, dynamic>())); });
     includeFilters = registerOutput<List<OtelEnrichmentIncludeFilter>?>('includeFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OtelEnrichmentIncludeFilter>(guardedValue, (value) => OtelEnrichmentIncludeFilter.fromMap((value as Map).cast<String, dynamic>())); });

@@ -135,7 +135,7 @@ import 'access_grant_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -143,22 +143,31 @@ import 'access_grant_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3control_accessgrantsinstance" "example" {
+/// resource "aws_s3control_access_grants_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_s3control_accessgrantslocation" "example" {
-///   depends_on     = [aws_s3control_accessgrantsinstance.example]
+/// resource "aws_s3control_access_grants_location" "example" {
+///   depends_on = [aws_s3control_access_grants_instance.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   iam_role_arn   = exampleAwsIamRole.arn
 ///   location_scope ="s3://${exampleAwsS3Bucket.bucket}/prefixA*"
 /// }
-/// resource "aws_s3control_accessgrant" "example" {
-///   access_grants_location_configuration = {
+/// resource "aws_s3control_access_grant" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   access_grants_location_configuration {
 ///     s3_sub_prefix = "prefixB*"
 ///   }
-///   grantee = {
+///   grantee {
 ///     grantee_type       = "IAM"
 ///     grantee_identifier = exampleAwsIamUser.arn
 ///   }
-///   access_grants_location_id = aws_s3control_accessgrantslocation.example.access_grants_location_id
+///   access_grants_location_id = aws_s3control_access_grants_location.example.access_grants_location_id
 ///   permission                = "READ"
 /// }
 /// ```
@@ -192,8 +201,8 @@ import 'access_grant_state.dart';
 ///         var example = new AccessGrantsInstance("example");
 ///
 ///         var exampleAccessGrantsLocation = new AccessGrantsLocation("exampleAccessGrantsLocation", AccessGrantsLocationArgs.builder()
-///             .iamRoleArn(exampleAwsIamRole.arn())
-///             .locationScope(String.format("s3://%s/prefixA*", exampleAwsS3Bucket.bucket()))
+///             .iamRoleArn(exampleAwsIamRole.get("arn"))
+///             .locationScope(String.format("s3://%s/prefixA*", exampleAwsS3Bucket.get("bucket")))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(example)
 ///                 .build());
@@ -204,7 +213,7 @@ import 'access_grant_state.dart';
 ///                 .build())
 ///             .grantee(AccessGrantGranteeArgs.builder()
 ///                 .granteeType("IAM")
-///                 .granteeIdentifier(exampleAwsIamUser.arn())
+///                 .granteeIdentifier(exampleAwsIamUser.get("arn"))
 ///                 .build())
 ///             .accessGrantsLocationId(exampleAccessGrantsLocation.accessGrantsLocationId())
 ///             .permission("READ")
@@ -285,7 +294,7 @@ class AccessGrant extends pulumi.CustomResource {
           'aws:s3control/accessGrant:AccessGrant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accessGrantArn = registerOutput<String>('accessGrantArn');
     accessGrantId = registerOutput<String>('accessGrantId');

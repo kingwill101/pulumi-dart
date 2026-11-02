@@ -88,7 +88,7 @@ import 'environment_membership_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cloud9.NewEnvironmentMembership(ctx, "test", &cloud9.EnvironmentMembershipArgs{
-/// 			EnvironmentId: test.ID().ToIDOutput().ToStringOutput(),
+/// 			EnvironmentId: test.ID(),
 /// 			Permissions:   pulumi.String("read-only"),
 /// 			UserArn:       testUser.Arn,
 /// 		})
@@ -100,7 +100,7 @@ import 'environment_membership_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -108,15 +108,24 @@ import 'environment_membership_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloud9_environmentec2" "test" {
+/// resource "aws_cloud9_environment_e_c2" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_type = "t2.micro"
 ///   name          = "some-env"
 /// }
 /// resource "aws_iam_user" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "some-user"
 /// }
-/// resource "aws_cloud9_environmentmembership" "test" {
-///   environment_id = aws_cloud9_environmentec2.test.id
+/// resource "aws_cloud9_environment_membership" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   environment_id = aws_cloud9_environment_e_c2.test.id
 ///   permissions    = "read-only"
 ///   user_arn       = aws_iam_user.test.arn
 /// }
@@ -217,7 +226,7 @@ class EnvironmentMembership extends pulumi.CustomResource {
           'aws:cloud9/environmentMembership:EnvironmentMembership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     environmentId = registerOutput<String>('environmentId');
     permissions = registerOutput<String>('permissions');

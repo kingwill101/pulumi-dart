@@ -127,7 +127,7 @@ import 'findings_filter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -136,13 +136,19 @@ import 'findings_filter_state.dart';
 /// }
 ///
 /// resource "aws_macie2_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_macie_findingsfilter" "test" {
+/// resource "aws_macie_findings_filter" "test" {
 ///   depends_on = [testAwsMacie2Account]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   finding_criteria = {
 ///     criterions = [{
-///       "field" = "region"
-///       "eqs"   = [current.region]
+///       field = "region"
+///       eqs   = [current.region]
 ///     }]
 ///   }
 ///   name        = "NAME OF THE FINDINGS FILTER"
@@ -182,7 +188,7 @@ import 'findings_filter_state.dart';
 ///             .findingCriteria(FindingsFilterFindingCriteriaArgs.builder()
 ///                 .criterions(FindingsFilterFindingCriteriaCriterionArgs.builder()
 ///                     .field("region")
-///                     .eqs(current.region())
+///                     .eqs(current.get("region"))
 ///                     .build())
 ///                 .build())
 ///             .name("NAME OF THE FINDINGS FILTER")
@@ -259,7 +265,7 @@ class FindingsFilter extends pulumi.CustomResource {
           'aws:macie/findingsFilter:FindingsFilter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     action = registerOutput<String>('action');
     arn = registerOutput<String>('arn');

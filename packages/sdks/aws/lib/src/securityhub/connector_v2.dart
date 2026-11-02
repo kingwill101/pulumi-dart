@@ -138,7 +138,7 @@ import 'connector_v2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -146,23 +146,32 @@ import 'connector_v2_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_securityhub_accountv2" "example" {
+/// resource "aws_securityhub_account_v2" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_securityhub_aggregatorv2" "example" {
-///   depends_on          = [aws_securityhub_accountv2.example]
+/// resource "aws_securityhub_aggregator_v2" "example" {
+///   depends_on = [aws_securityhub_account_v2.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region_linking_mode = "ALL_REGIONS"
 /// }
-/// resource "aws_securityhub_connectorv2" "example" {
-///   depends_on = [aws_securityhub_aggregatorv2.example]
-///   connector_provider = {
-///     jira_cloud = {
+/// resource "aws_securityhub_connector_v2" "example" {
+///   depends_on = [aws_securityhub_aggregator_v2.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   connector_provider {
+///     jira_cloud {
 ///       project_key = "SEC"
 ///     }
 ///   }
 ///   name = "jira-connector"
 /// }
 /// output "authUrl" {
-///   value = aws_securityhub_connectorv2.example.authUrl
+///   value = aws_securityhub_connector_v2.example.authUrl
 /// }
 /// ```
 /// ```java
@@ -338,7 +347,7 @@ import 'connector_v2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -346,10 +355,13 @@ import 'connector_v2_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_securityhub_connectorv2" "example" {
+/// resource "aws_securityhub_connector_v2" "example" {
 ///   depends_on = [exampleAwsSecurityhubAggregatorV2]
-///   connector_provider = {
-///     jira_cloud = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   connector_provider {
+///     jira_cloud {
 ///       project_key = "SEC"
 ///     }
 ///   }
@@ -390,7 +402,7 @@ import 'connector_v2_state.dart';
 ///                 .build())
 ///             .name("jira-connector")
 ///             .description("Jira Cloud integration for security findings")
-///             .kmsKeyArn(exampleAwsKmsKey.arn())
+///             .kmsKeyArn(exampleAwsKmsKey.get("arn"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleAwsSecurityhubAggregatorV2)
 ///                 .build());
@@ -468,7 +480,7 @@ class ConnectorV2 extends pulumi.CustomResource {
           'aws:securityhub/connectorV2:ConnectorV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     connectorId = registerOutput<String>('connectorId');

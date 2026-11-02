@@ -57,7 +57,7 @@ import 'encryption_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,7 +65,10 @@ import 'encryption_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_xray_encryptionconfig" "example" {
+/// resource "aws_xray_encryption_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   type = "NONE"
 /// }
 /// ```
@@ -279,7 +282,7 @@ import 'encryption_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -287,13 +290,13 @@ import 'encryption_config_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
-///       identifiers = ["arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"]
+///       identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"]
 ///     }
 ///     sid       = "Enable IAM User Permissions"
 ///     effect    = "Allow"
@@ -303,11 +306,17 @@ import 'encryption_config_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "Some Key"
 ///   deletion_window_in_days = 7
-///   policy                  = data.aws_iam_getpolicydocument.example.json
+///   policy                  = data.aws_iam_policy_document.example.json
 /// }
-/// resource "aws_xray_encryptionconfig" "example" {
+/// resource "aws_xray_encryption_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   type   = "KMS"
 ///   key_id = aws_kms_key.example.arn
 /// }
@@ -444,7 +453,7 @@ class EncryptionConfig extends pulumi.CustomResource {
           'aws:xray/encryptionConfig:EncryptionConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     keyId = registerOutput<String?>('keyId');
     region = registerOutput<String>('region');

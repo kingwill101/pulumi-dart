@@ -95,7 +95,7 @@ import 'user_login_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -104,16 +104,22 @@ import 'user_login_profile_state.dart';
 /// }
 ///
 /// resource "aws_iam_user" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "example"
 ///   path          = "/"
 ///   force_destroy = true
 /// }
-/// resource "aws_iam_userloginprofile" "example" {
+/// resource "aws_iam_user_login_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user    = aws_iam_user.example.name
 ///   pgp_key = "keybase:some_person_that_exists"
 /// }
 /// output "password" {
-///   value = aws_iam_userloginprofile.example.encrypted_password
+///   value = aws_iam_user_login_profile.example.encrypted_password
 /// }
 /// ```
 /// ```java
@@ -251,7 +257,7 @@ import 'user_login_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -259,9 +265,10 @@ import 'user_login_profile_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_userloginprofile" "example" {
+/// resource "aws_iam_user_login_profile" "example" {
 ///   lifecycle {
-///     ignore_changes = [passwordLength, passwordResetRequired, pgpKey]
+///     ignore_changes        = [passwordLength, passwordResetRequired, pgpKey]
+///     create_before_destroy = true
 ///   }
 /// }
 /// ```
@@ -332,7 +339,7 @@ class UserLoginProfile extends pulumi.CustomResource {
           'aws:iam/userLoginProfile:UserLoginProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['password'],
         ) {
     encryptedPassword = registerOutput<String>('encryptedPassword');

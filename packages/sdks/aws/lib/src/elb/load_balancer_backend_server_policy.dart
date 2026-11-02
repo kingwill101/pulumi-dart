@@ -250,7 +250,7 @@ import 'load_balancer_backend_server_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -261,7 +261,10 @@ import 'load_balancer_backend_server_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elb_loadbalancer" "wu-tang" {
+/// resource "aws_elb_load_balancer" "wu-tang" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   listeners {
 ///     instance_port      = 443
 ///     instance_protocol  = "http"
@@ -275,28 +278,37 @@ import 'load_balancer_backend_server_policy_state.dart';
 ///     "Name" = "wu-tang"
 ///   }
 /// }
-/// resource "aws_elb_loadbalancerpolicy" "wu-tang-ca-pubkey-policy" {
+/// resource "aws_elb_load_balancer_policy" "wu-tang-ca-pubkey-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_attributes {
 ///     name  = "PublicKey"
 ///     value = file("wu-tang-pubkey")
 ///   }
-///   load_balancer_name = aws_elb_loadbalancer.wu-tang.name
+///   load_balancer_name = aws_elb_load_balancer.wu-tang.name
 ///   policy_name        = "wu-tang-ca-pubkey-policy"
 ///   policy_type_name   = "PublicKeyPolicyType"
 /// }
-/// resource "aws_elb_loadbalancerpolicy" "wu-tang-root-ca-backend-auth-policy" {
+/// resource "aws_elb_load_balancer_policy" "wu-tang-root-ca-backend-auth-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_attributes {
 ///     name  = "PublicKeyPolicyName"
 ///     value = wu-tang-root-ca-pubkey-policy.policyName
 ///   }
-///   load_balancer_name = aws_elb_loadbalancer.wu-tang.name
+///   load_balancer_name = aws_elb_load_balancer.wu-tang.name
 ///   policy_name        = "wu-tang-root-ca-backend-auth-policy"
 ///   policy_type_name   = "BackendServerAuthenticationPolicyType"
 /// }
-/// resource "aws_elb_loadbalancerbackendserverpolicy" "wu-tang-backend-auth-policies-443" {
-///   load_balancer_name = aws_elb_loadbalancer.wu-tang.name
+/// resource "aws_elb_load_balancer_backend_server_policy" "wu-tang-backend-auth-policies-443" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   load_balancer_name = aws_elb_load_balancer.wu-tang.name
 ///   instance_port      = 443
-///   policy_names       = [aws_elb_loadbalancerpolicy.wu-tang-root-ca-backend-auth-policy.policy_name]
+///   policy_names       = [aws_elb_load_balancer_policy.wu-tang-root-ca-backend-auth-policy.policy_name]
 /// }
 /// ```
 /// ```java
@@ -356,7 +368,7 @@ import 'load_balancer_backend_server_policy_state.dart';
 ///         var wu_tang_root_ca_backend_auth_policy = new LoadBalancerPolicy("wu-tang-root-ca-backend-auth-policy", LoadBalancerPolicyArgs.builder()
 ///             .policyAttributes(LoadBalancerPolicyPolicyAttributeArgs.builder()
 ///                 .name("PublicKeyPolicyName")
-///                 .value(wu_tang_root_ca_pubkey_policy.policyName())
+///                 .value(wu_tang_root_ca_pubkey_policy.get("policyName"))
 ///                 .build())
 ///             .loadBalancerName(wu_tang.name())
 ///             .policyName("wu-tang-root-ca-backend-auth-policy")
@@ -441,7 +453,7 @@ class LoadBalancerBackendServerPolicy extends pulumi.CustomResource {
           'aws:elb/loadBalancerBackendServerPolicy:LoadBalancerBackendServerPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     instancePort = registerOutput<int>('instancePort');
     loadBalancerName = registerOutput<String>('loadBalancerName');

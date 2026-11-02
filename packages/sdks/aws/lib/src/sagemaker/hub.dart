@@ -65,7 +65,7 @@ import 'hub_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,6 +74,9 @@ import 'hub_state.dart';
 /// }
 ///
 /// resource "aws_sagemaker_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hub_name        = "example"
 ///   hub_description = "example"
 /// }
@@ -156,7 +159,7 @@ class Hub extends pulumi.CustomResource {
           'aws:sagemaker/hub:Hub',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     hubDescription = registerOutput<String>('hubDescription');

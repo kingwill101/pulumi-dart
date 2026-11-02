@@ -122,7 +122,7 @@ import 'resource_share_associations_exclusive_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSubnet, err := ec2.NewSubnet(ctx, "example", &ec2.SubnetArgs{
-/// 			VpcId:     exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:     exampleVpc.ID(),
 /// 			CidrBlock: pulumi.String("10.0.1.0/24"),
 /// 		})
 /// 		if err != nil {
@@ -146,7 +146,7 @@ import 'resource_share_associations_exclusive_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -154,19 +154,31 @@ import 'resource_share_associations_exclusive_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ram_resourceshare" "example" {
+/// resource "aws_ram_resource_share" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "example"
 ///   allow_external_principals = true
 /// }
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
 /// resource "aws_ec2_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id     = aws_ec2_vpc.example.id
 ///   cidr_block = "10.0.1.0/24"
 /// }
-/// resource "aws_ram_resourceshareassociationsexclusive" "example" {
-///   resource_share_arn = aws_ram_resourceshare.example.arn
+/// resource "aws_ram_resource_share_associations_exclusive" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_share_arn = aws_ram_resource_share.example.arn
 ///   principals         = ["111111111111", "222222222222"]
 ///   resource_arns      = [aws_ec2_subnet.example.arn]
 /// }
@@ -378,7 +390,7 @@ import 'resource_share_associations_exclusive_state.dart';
 /// 			key0 := index
 /// 			val0 := index
 /// 			__res, err := ec2.NewSubnet(ctx, fmt.Sprintf("example-%v", key0), &ec2.SubnetArgs{
-/// 				VpcId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// 				VpcId: exampleVpc.ID(),
 /// 				CidrBlock: std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
 /// 					Input:   exampleVpc.CidrBlock,
 /// 					Newbits: pulumi.Int(8),
@@ -409,7 +421,7 @@ import 'resource_share_associations_exclusive_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -420,19 +432,34 @@ import 'resource_share_associations_exclusive_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ram_resourceshare" "example" {
+/// resource "aws_ram_resource_share" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
 /// resource "aws_ec2_subnet" "example" {
-///   count      = 2
+///   count = 2
+///   pulumi {
+///     name ="example-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id     = aws_ec2_vpc.example.id
 ///   cidr_block = cidrsubnet(aws_ec2_vpc.example.cidr_block, 8, count.index)
 /// }
-/// resource "aws_ram_resourceshareassociationsexclusive" "example" {
-///   resource_share_arn = aws_ram_resourceshare.example.arn
+/// resource "aws_ram_resource_share_associations_exclusive" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_share_arn = aws_ram_resource_share.example.arn
 ///   principals         = [exampleAwsOrganizationsOrganization.arn]
 ///   resource_arns      = aws_ec2_subnet.example[*].arn
 /// }
@@ -489,7 +516,7 @@ import 'resource_share_associations_exclusive_state.dart';
 /// }
 ///         var exampleResourceShareAssociationsExclusive = new ResourceShareAssociationsExclusive("exampleResourceShareAssociationsExclusive", ResourceShareAssociationsExclusiveArgs.builder()
 ///             .resourceShareArn(example.arn())
-///             .principals(exampleAwsOrganizationsOrganization.arn())
+///             .principals(exampleAwsOrganizationsOrganization.get("arn"))
 ///             .resourceArns(exampleSubnet.stream().map(element -> element.arn()).collect(toList()))
 ///             .build());
 ///
@@ -658,7 +685,7 @@ import 'resource_share_associations_exclusive_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -666,13 +693,19 @@ import 'resource_share_associations_exclusive_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ram_resourceshare" "example" {
+/// resource "aws_ram_resource_share" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "example-service-share"
 ///   allow_external_principals = true
 /// }
-/// resource "aws_acmpca_certificateauthority" "example" {
-///   certificate_authority_configuration = {
-///     subject = {
+/// resource "aws_acmpca_certificate_authority" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   certificate_authority_configuration {
+///     subject {
 ///       common_name = "example.com"
 ///     }
 ///     key_algorithm     = "RSA_4096"
@@ -680,10 +713,13 @@ import 'resource_share_associations_exclusive_state.dart';
 ///   }
 ///   type = "ROOT"
 /// }
-/// resource "aws_ram_resourceshareassociationsexclusive" "example" {
-///   resource_share_arn = aws_ram_resourceshare.example.arn
+/// resource "aws_ram_resource_share_associations_exclusive" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_share_arn = aws_ram_resource_share.example.arn
 ///   principals         = ["pca-connector-ad.amazonaws.com"]
-///   resource_arns      = [aws_acmpca_certificateauthority.example.arn]
+///   resource_arns      = [aws_acmpca_certificate_authority.example.arn]
 ///   sources            = ["111111111111", "222222222222"]
 /// }
 /// ```
@@ -829,7 +865,7 @@ import 'resource_share_associations_exclusive_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -837,7 +873,10 @@ import 'resource_share_associations_exclusive_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ram_resourceshareassociationsexclusive" "example" {
+/// resource "aws_ram_resource_share_associations_exclusive" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_share_arn = exampleAwsRamResourceShare.arn
 /// }
 /// ```
@@ -863,7 +902,7 @@ import 'resource_share_associations_exclusive_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ResourceShareAssociationsExclusive("example", ResourceShareAssociationsExclusiveArgs.builder()
-///             .resourceShareArn(exampleAwsRamResourceShare.arn())
+///             .resourceShareArn(exampleAwsRamResourceShare.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -916,7 +955,7 @@ class ResourceShareAssociationsExclusive extends pulumi.CustomResource {
           'aws:ram/resourceShareAssociationsExclusive:ResourceShareAssociationsExclusive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     principals = registerOutput<List<String>?>('principals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');

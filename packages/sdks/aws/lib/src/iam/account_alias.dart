@@ -57,7 +57,7 @@ import 'account_alias_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,7 +65,10 @@ import 'account_alias_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_accountalias" "alias" {
+/// resource "aws_iam_account_alias" "alias" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_alias = "my-account-alias"
 /// }
 /// ```
@@ -129,7 +132,7 @@ class AccountAlias extends pulumi.CustomResource {
           'aws:iam/accountAlias:AccountAlias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accountAlias = registerOutput<String>('accountAlias');
   }

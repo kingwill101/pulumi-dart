@@ -71,7 +71,7 @@ import 'vpn_gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -79,7 +79,10 @@ import 'vpn_gateway_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpngateway" "vpn_gw" {
+/// resource "aws_ec2_vpn_gateway" "vpn_gw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id = main.id
 ///   tags = {
 ///     "Name" = "main"
@@ -108,7 +111,7 @@ import 'vpn_gateway_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var vpnGw = new VpnGateway("vpnGw", VpnGatewayArgs.builder()
-///             .vpcId(main.id())
+///             .vpcId(main.get("id"))
 ///             .tags(Map.of("Name", "main"))
 ///             .build());
 ///
@@ -162,7 +165,7 @@ class VpnGateway extends pulumi.CustomResource {
           'aws:ec2/vpnGateway:VpnGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     amazonSideAsn = registerOutput<String>('amazonSideAsn');
     arn = registerOutput<String>('arn');

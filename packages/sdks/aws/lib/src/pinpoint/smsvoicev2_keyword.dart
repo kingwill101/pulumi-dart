@@ -103,7 +103,7 @@ import 'smsvoicev2_keyword_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -111,14 +111,20 @@ import 'smsvoicev2_keyword_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_pinpoint_smsvoicev2phonenumber" "example" {
+/// resource "aws_pinpoint_smsvoicev2_phone_number" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   iso_country_code    = "US"
 ///   message_type        = "TRANSACTIONAL"
 ///   number_type         = "SIMULATOR"
 ///   number_capabilities = ["SMS"]
 /// }
-/// resource "aws_pinpoint_smsvoicev2keyword" "example" {
-///   origination_identity_arn = aws_pinpoint_smsvoicev2phonenumber.example.arn
+/// resource "aws_pinpoint_smsvoicev2_keyword" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   origination_identity_arn = aws_pinpoint_smsvoicev2_phone_number.example.arn
 ///   keyword                  = "EXAMPLE"
 ///   keyword_message          = "Thanks for messaging our example number."
 /// }
@@ -310,7 +316,7 @@ import 'smsvoicev2_keyword_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -318,19 +324,28 @@ import 'smsvoicev2_keyword_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_pinpoint_smsvoicev2phonenumber" "example" {
+/// resource "aws_pinpoint_smsvoicev2_phone_number" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   iso_country_code    = "US"
 ///   message_type        = "TRANSACTIONAL"
 ///   number_type         = "SIMULATOR"
 ///   number_capabilities = ["SMS"]
 /// }
-/// resource "aws_pinpoint_smsvoicev2pool" "example" {
+/// resource "aws_pinpoint_smsvoicev2_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   iso_country_code       = "US"
 ///   message_type           = "TRANSACTIONAL"
-///   origination_identities = [aws_pinpoint_smsvoicev2phonenumber.example.arn]
+///   origination_identities = [aws_pinpoint_smsvoicev2_phone_number.example.arn]
 /// }
-/// resource "aws_pinpoint_smsvoicev2keyword" "example" {
-///   origination_identity_arn = aws_pinpoint_smsvoicev2pool.example.arn
+/// resource "aws_pinpoint_smsvoicev2_keyword" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   origination_identity_arn = aws_pinpoint_smsvoicev2_pool.example.arn
 ///   keyword                  = "OPTOUT"
 ///   keyword_message          = "You have been unsubscribed."
 ///   keyword_action           = "OPT_OUT"
@@ -510,7 +525,7 @@ import 'smsvoicev2_keyword_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -518,14 +533,20 @@ import 'smsvoicev2_keyword_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_pinpoint_smsvoicev2phonenumber" "example" {
+/// resource "aws_pinpoint_smsvoicev2_phone_number" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   iso_country_code    = "US"
 ///   message_type        = "TRANSACTIONAL"
 ///   number_type         = "SIMULATOR"
 ///   number_capabilities = ["SMS"]
 /// }
-/// resource "aws_pinpoint_smsvoicev2keyword" "help" {
-///   origination_identity_arn = aws_pinpoint_smsvoicev2phonenumber.example.arn
+/// resource "aws_pinpoint_smsvoicev2_keyword" "help" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   origination_identity_arn = aws_pinpoint_smsvoicev2_phone_number.example.arn
 ///   keyword                  = "HELP"
 ///   keyword_message          = "Reply STOP to unsubscribe. Message and data rates may apply."
 /// }
@@ -634,7 +655,7 @@ class Smsvoicev2Keyword extends pulumi.CustomResource {
           'aws:pinpoint/smsvoicev2Keyword:Smsvoicev2Keyword',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     keyword = registerOutput<String>('keyword');
     keywordAction = registerOutput<String>('keywordAction');

@@ -135,7 +135,7 @@ import 'resource_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -143,9 +143,13 @@ import 'resource_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kinesis_resourcepolicy" "example" {
+/// resource "aws_kinesis_resource_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_arn = exampleAwsKinesisStream.arn
-///   policy       ="{
+///   policy       = <<EOF
+/// {
 ///   \"Version\": \"2012-10-17\",
 ///   \"Id\": \"writePolicy\",
 ///   \"Statement\": [{
@@ -163,7 +167,8 @@ import 'resource_policy_state.dart';
 ///     \"Resource\": \"${exampleAwsKinesisStream.arn}\"
 ///   }]
 /// }
-/// "
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -188,7 +193,7 @@ import 'resource_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ResourcePolicy("example", ResourcePolicyArgs.builder()
-///             .resourceArn(exampleAwsKinesisStream.arn())
+///             .resourceArn(exampleAwsKinesisStream.get("arn"))
 ///             .policy("""
 /// {
 ///   \"Version\": \"2012-10-17\",
@@ -208,7 +213,7 @@ import 'resource_policy_state.dart';
 ///     \"Resource\": \"%s\"
 ///   }]
 /// }
-/// ", exampleAwsKinesisStream.arn()))
+/// ", exampleAwsKinesisStream.get("arn")))
 ///             .build());
 ///
 ///     }
@@ -276,7 +281,7 @@ class ResourcePolicy extends pulumi.CustomResource {
           'aws:kinesis/resourcePolicy:ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

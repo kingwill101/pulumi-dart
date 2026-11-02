@@ -359,7 +359,7 @@ import 'multitenant_distribution_viewer_certificate.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -367,9 +367,12 @@ import 'multitenant_distribution_viewer_certificate.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_multitenantdistribution" "example" {
-///   default_cache_behavior = {
-///     allowed_methods = {
+/// resource "aws_cloudfront_multitenant_distribution" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_cache_behavior {
+///     allowed_methods {
 ///       items          = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
 ///       cached_methods = ["GET", "HEAD"]
 ///     }
@@ -377,28 +380,28 @@ import 'multitenant_distribution_viewer_certificate.dart';
 ///     viewer_protocol_policy = "redirect-to-https"
 ///     cache_policy_id        = exampleAwsCloudfrontCachePolicy.id
 ///   }
-///   restrictions = {
-///     geo_restriction = {
+///   restrictions {
+///     geo_restriction {
 ///       restriction_type = "none"
 ///     }
 ///   }
-///   viewer_certificate = {
+///   viewer_certificate {
 ///     acm_certificate_arn = exampleAwsAcmCertificate.arn
 ///     ssl_support_method  = "sni-only"
 ///   }
-///   tenant_config = {
-///     parameter_definitions = [{
-///       "definitions" = [{
-///         "stringSchemas" = [{
-///           "required" = true
-///           "comment"  = "Origin domain parameter for tenants"
-///         }]
-///       }]
-///       "name" = "origin_domain"
-///     }]
+///   tenant_config {
+///     parameter_definition {
+///       definition {
+///         string_schema {
+///           required = true
+///           comment  = "Origin domain parameter for tenants"
+///         }
+///       }
+///       name = "origin_domain"
+///     }
 ///   }
-///   origins {
-///     custom_origin_configs {
+///   origin {
+///     custom_origin_config {
 ///       http_port              = 80
 ///       https_port             = 443
 ///       origin_protocol_policy = "https-only"
@@ -463,7 +466,7 @@ import 'multitenant_distribution_viewer_certificate.dart';
 ///                     .build())
 ///                 .targetOriginId("example-origin")
 ///                 .viewerProtocolPolicy("redirect-to-https")
-///                 .cachePolicyId(exampleAwsCloudfrontCachePolicy.id())
+///                 .cachePolicyId(exampleAwsCloudfrontCachePolicy.get("id"))
 ///                 .build())
 ///             .restrictions(MultitenantDistributionRestrictionsArgs.builder()
 ///                 .geoRestriction(MultitenantDistributionRestrictionsGeoRestrictionArgs.builder()
@@ -471,7 +474,7 @@ import 'multitenant_distribution_viewer_certificate.dart';
 ///                     .build())
 ///                 .build())
 ///             .viewerCertificate(MultitenantDistributionViewerCertificateArgs.builder()
-///                 .acmCertificateArn(exampleAwsAcmCertificate.arn())
+///                 .acmCertificateArn(exampleAwsAcmCertificate.get("arn"))
 ///                 .sslSupportMethod("sni-only")
 ///                 .build())
 ///             .tenantConfig(MultitenantDistributionTenantConfigArgs.builder()
@@ -623,7 +626,7 @@ class MultitenantDistribution extends pulumi.CustomResource {
           'aws:cloudfront/multitenantDistribution:MultitenantDistribution',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     activeTrustedKeyGroups = registerOutput<List<MultitenantDistributionActiveTrustedKeyGroup>?>('activeTrustedKeyGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MultitenantDistributionActiveTrustedKeyGroup>(guardedValue, (value) => MultitenantDistributionActiveTrustedKeyGroup.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');

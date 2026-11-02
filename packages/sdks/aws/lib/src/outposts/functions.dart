@@ -100,7 +100,7 @@ pulumi.Output<GetAssetResult> getAssetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -108,7 +108,7 @@ pulumi.Output<GetAssetResult> getAssetOutput(
 ///   }
 /// }
 ///
-/// data "aws_outposts_getassets" "example" {
+/// data "aws_outposts_assets" "example" {
 ///   arn = exampleAwsOutpostsOutpost.arn
 /// }
 /// ```
@@ -134,7 +134,7 @@ pulumi.Output<GetAssetResult> getAssetOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = OutpostsFunctions.getAssets(GetAssetsArgs.builder()
-///             .arn(exampleAwsOutpostsOutpost.arn())
+///             .arn(exampleAwsOutpostsOutpost.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -212,7 +212,7 @@ pulumi.Output<GetAssetResult> getAssetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -220,9 +220,9 @@ pulumi.Output<GetAssetResult> getAssetOutput(
 ///   }
 /// }
 ///
-/// data "aws_outposts_getassets" "example" {
-///   arn             = exampleAwsOutpostsOutpost.arn
-///   host_id_filters = ["h-x38g5n0yd2a0ueb61"]
+/// data "aws_outposts_assets" "example" {
+///   arn            = exampleAwsOutpostsOutpost.arn
+///   host_id_filter = ["h-x38g5n0yd2a0ueb61"]
 /// }
 /// ```
 /// ```java
@@ -247,7 +247,7 @@ pulumi.Output<GetAssetResult> getAssetOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = OutpostsFunctions.getAssets(GetAssetsArgs.builder()
-///             .arn(exampleAwsOutpostsOutpost.arn())
+///             .arn(exampleAwsOutpostsOutpost.get("arn"))
 ///             .hostIdFilters("h-x38g5n0yd2a0ueb61")
 ///             .build());
 ///
@@ -328,7 +328,7 @@ pulumi.Output<GetAssetResult> getAssetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -336,9 +336,9 @@ pulumi.Output<GetAssetResult> getAssetOutput(
 ///   }
 /// }
 ///
-/// data "aws_outposts_getassets" "example" {
-///   arn               = exampleAwsOutpostsOutpost.arn
-///   status_id_filters = ["ACTIVE"]
+/// data "aws_outposts_assets" "example" {
+///   arn              = exampleAwsOutpostsOutpost.arn
+///   status_id_filter = ["ACTIVE"]
 /// }
 /// ```
 /// ```java
@@ -363,7 +363,7 @@ pulumi.Output<GetAssetResult> getAssetOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = OutpostsFunctions.getAssets(GetAssetsArgs.builder()
-///             .arn(exampleAwsOutpostsOutpost.arn())
+///             .arn(exampleAwsOutpostsOutpost.get("arn"))
 ///             .statusIdFilters("ACTIVE")
 ///             .build());
 ///
@@ -461,7 +461,7 @@ pulumi.Output<GetAssetsResult> getAssetsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -469,7 +469,7 @@ pulumi.Output<GetAssetsResult> getAssetsOutput(
 ///   }
 /// }
 ///
-/// data "aws_outposts_getoutpost" "example" {
+/// data "aws_outposts_outpost" "example" {
 ///   name = "example"
 /// }
 /// ```
@@ -551,7 +551,7 @@ pulumi.Output<GetOutpostResult> getOutpostOutput(
 ///         "m5.4xlarge",
 ///     ],
 /// });
-/// const exampleInstance = new aws.ec2.Instance("example", {instanceType: aws.ec2.InstanceType[example.then(example => example.instanceType)]});
+/// const exampleInstance = new aws.ec2.Instance("example", {instanceType: example.then(example => example.instanceType)});
 /// ```
 /// ```python
 /// import pulumi
@@ -562,7 +562,7 @@ pulumi.Output<GetOutpostResult> getOutpostOutput(
 ///         "m5.large",
 ///         "m5.4xlarge",
 ///     ])
-/// example_instance = aws.ec2.Instance("example", instance_type=aws.ec2.InstanceType(example.instance_type))
+/// example_instance = aws.ec2.Instance("example", instance_type=example.instance_type)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -584,7 +584,7 @@ pulumi.Output<GetOutpostResult> getOutpostOutput(
 ///
 ///     var exampleInstance = new Aws.Ec2.Instance("example", new()
 ///     {
-///         InstanceType = example.Apply(getOutpostInstanceTypeResult => getOutpostInstanceTypeResult.InstanceType).Apply(System.Enum.Parse<Aws.Ec2.InstanceType>),
+///         InstanceType = example.Apply(getOutpostInstanceTypeResult => getOutpostInstanceTypeResult.InstanceType),
 ///     });
 ///
 /// });
@@ -611,7 +611,7 @@ pulumi.Output<GetOutpostResult> getOutpostOutput(
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewInstance(ctx, "example", &ec2.InstanceArgs{
-/// 			InstanceType: example.InstanceType.ApplyT(func(x *string) ec2.InstanceType { return ec2.InstanceType(*x) }).(ec2.InstanceTypeOutput),
+/// 			InstanceType: pulumi.String(example.InstanceType),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -621,7 +621,7 @@ pulumi.Output<GetOutpostResult> getOutpostOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -629,13 +629,16 @@ pulumi.Output<GetOutpostResult> getOutpostOutput(
 ///   }
 /// }
 ///
-/// data "aws_outposts_getoutpostinstancetype" "example" {
+/// data "aws_outposts_outpost_instance_type" "example" {
 ///   arn                      = exampleAwsOutpostsOutpost.arn
 ///   preferred_instance_types = ["m5.large", "m5.4xlarge"]
 /// }
 ///
 /// resource "aws_ec2_instance" "example" {
-///   instance_type = data.aws_outposts_getoutpostinstancetype.example.instance_type
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   instance_type = data.aws_outposts_outpost_instance_type.example.instance_type
 /// }
 /// ```
 /// ```java
@@ -662,7 +665,7 @@ pulumi.Output<GetOutpostResult> getOutpostOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = OutpostsFunctions.getOutpostInstanceType(GetOutpostInstanceTypeArgs.builder()
-///             .arn(exampleAwsOutpostsOutpost.arn())
+///             .arn(exampleAwsOutpostsOutpost.get("arn"))
 ///             .preferredInstanceTypes(
 ///                 "m5.large",
 ///                 "m5.4xlarge")
@@ -773,7 +776,7 @@ pulumi.Output<GetOutpostInstanceTypeResult> getOutpostInstanceTypeOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -781,7 +784,7 @@ pulumi.Output<GetOutpostInstanceTypeResult> getOutpostInstanceTypeOutput(
 ///   }
 /// }
 ///
-/// data "aws_outposts_getoutpostinstancetypes" "example" {
+/// data "aws_outposts_outpost_instance_types" "example" {
 ///   arn = exampleAwsOutpostsOutpost.arn
 /// }
 /// ```
@@ -807,7 +810,7 @@ pulumi.Output<GetOutpostInstanceTypeResult> getOutpostInstanceTypeOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = OutpostsFunctions.getOutpostInstanceTypes(GetOutpostInstanceTypesArgs.builder()
-///             .arn(exampleAwsOutpostsOutpost.arn())
+///             .arn(exampleAwsOutpostsOutpost.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -902,7 +905,7 @@ pulumi.Output<GetOutpostInstanceTypesResult> getOutpostInstanceTypesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -910,7 +913,7 @@ pulumi.Output<GetOutpostInstanceTypesResult> getOutpostInstanceTypesOutput(
 ///   }
 /// }
 ///
-/// data "aws_outposts_getoutposts" "example" {
+/// data "aws_outposts_outposts" "example" {
 ///   site_id = id
 /// }
 /// ```
@@ -1031,7 +1034,7 @@ pulumi.Output<GetOutpostsResult> getOutpostsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1039,7 +1042,7 @@ pulumi.Output<GetOutpostsResult> getOutpostsOutput(
 ///   }
 /// }
 ///
-/// data "aws_outposts_getsite" "example" {
+/// data "aws_outposts_site" "example" {
 ///   name = "example"
 /// }
 /// ```
@@ -1153,7 +1156,7 @@ pulumi.Output<GetSiteResult> getSiteOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1161,7 +1164,7 @@ pulumi.Output<GetSiteResult> getSiteOutput(
 ///   }
 /// }
 ///
-/// data "aws_outposts_getsites" "all" {
+/// data "aws_outposts_sites" "all" {
 /// }
 /// ```
 /// ```java

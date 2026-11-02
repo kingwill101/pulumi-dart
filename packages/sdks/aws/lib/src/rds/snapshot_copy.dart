@@ -134,7 +134,7 @@ import 'snapshot_copy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -143,6 +143,9 @@ import 'snapshot_copy_state.dart';
 /// }
 ///
 /// resource "aws_rds_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocated_storage       = 10
 ///   engine                  = "mysql"
 ///   engine_version          = "5.6.21"
@@ -155,10 +158,16 @@ import 'snapshot_copy_state.dart';
 ///   parameter_group_name    = "default.mysql5.6"
 /// }
 /// resource "aws_rds_snapshot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   db_instance_identifier = aws_rds_instance.example.identifier
 ///   db_snapshot_identifier = "testsnapshot1234"
 /// }
-/// resource "aws_rds_snapshotcopy" "example" {
+/// resource "aws_rds_snapshot_copy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source_db_snapshot_identifier = aws_rds_snapshot.example.db_snapshot_arn
 ///   target_db_snapshot_identifier = "testsnapshot1234-copy"
 /// }
@@ -315,7 +324,7 @@ class SnapshotCopy extends pulumi.CustomResource {
           'aws:rds/snapshotCopy:SnapshotCopy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     allocatedStorage = registerOutput<int>('allocatedStorage');
     availabilityZone = registerOutput<String>('availabilityZone');

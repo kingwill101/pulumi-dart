@@ -69,7 +69,7 @@ import 'cluster_iam_roles_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,7 +77,10 @@ import 'cluster_iam_roles_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_redshift_clusteriamroles" "example" {
+/// resource "aws_redshift_cluster_iam_roles" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier = exampleAwsRedshiftCluster.clusterIdentifier
 ///   iam_role_arns      = [exampleAwsIamRole.arn]
 /// }
@@ -104,8 +107,8 @@ import 'cluster_iam_roles_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ClusterIamRoles("example", ClusterIamRolesArgs.builder()
-///             .clusterIdentifier(exampleAwsRedshiftCluster.clusterIdentifier())
-///             .iamRoleArns(exampleAwsIamRole.arn())
+///             .clusterIdentifier(exampleAwsRedshiftCluster.get("clusterIdentifier"))
+///             .iamRoleArns(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -151,7 +154,7 @@ class ClusterIamRoles extends pulumi.CustomResource {
           'aws:redshift/clusterIamRoles:ClusterIamRoles',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     defaultIamRoleArn = registerOutput<String>('defaultIamRoleArn');

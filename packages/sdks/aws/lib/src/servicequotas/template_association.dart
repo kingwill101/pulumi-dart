@@ -54,7 +54,7 @@ import 'template_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -62,7 +62,10 @@ import 'template_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_servicequotas_templateassociation" "example" {
+/// resource "aws_servicequotas_template_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -124,7 +127,7 @@ class TemplateAssociation extends pulumi.CustomResource {
           'aws:servicequotas/templateAssociation:TemplateAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     skipDestroy = registerOutput<bool?>('skipDestroy');

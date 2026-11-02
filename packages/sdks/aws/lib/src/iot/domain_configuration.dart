@@ -77,7 +77,7 @@ import 'domain_configuration_tls_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -85,7 +85,10 @@ import 'domain_configuration_tls_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iot_domainconfiguration" "iot" {
+/// resource "aws_iot_domain_configuration" "iot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "iot-"
 ///   domain_name             = "iot.example.com"
 ///   service_type            = "DATA"
@@ -117,7 +120,7 @@ import 'domain_configuration_tls_config.dart';
 ///             .name("iot-")
 ///             .domainName("iot.example.com")
 ///             .serviceType("DATA")
-///             .serverCertificateArns(cert.arn())
+///             .serverCertificateArns(cert.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -187,7 +190,7 @@ class DomainConfiguration extends pulumi.CustomResource {
           'aws:iot/domainConfiguration:DomainConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     applicationProtocol = registerOutput<String>('applicationProtocol');
     arn = registerOutput<String>('arn');

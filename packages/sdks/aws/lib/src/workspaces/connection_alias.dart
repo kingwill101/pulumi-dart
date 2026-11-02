@@ -58,7 +58,7 @@ import 'connection_alias_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -66,7 +66,10 @@ import 'connection_alias_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_workspaces_connectionalias" "example" {
+/// resource "aws_workspaces_connection_alias" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_string = "testdomain.test"
 /// }
 /// ```
@@ -141,7 +144,7 @@ class ConnectionAlias extends pulumi.CustomResource {
           'aws:workspaces/connectionAlias:ConnectionAlias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     connectionString = registerOutput<String>('connectionString');
     ownerAccountId = registerOutput<String>('ownerAccountId');

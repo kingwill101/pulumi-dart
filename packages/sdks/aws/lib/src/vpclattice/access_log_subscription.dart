@@ -64,7 +64,7 @@ import 'access_log_subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'access_log_subscription_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpclattice_accesslogsubscription" "example" {
+/// resource "aws_vpclattice_access_log_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_identifier = exampleAwsVpclatticeServiceNetwork.id
 ///   destination_arn     = bucket.arn
 /// }
@@ -99,8 +102,8 @@ import 'access_log_subscription_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AccessLogSubscription("example", AccessLogSubscriptionArgs.builder()
-///             .resourceIdentifier(exampleAwsVpclatticeServiceNetwork.id())
-///             .destinationArn(bucket.arn())
+///             .resourceIdentifier(exampleAwsVpclatticeServiceNetwork.get("id"))
+///             .destinationArn(bucket.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -154,7 +157,7 @@ class AccessLogSubscription extends pulumi.CustomResource {
           'aws:vpclattice/accessLogSubscription:AccessLogSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     destinationArn = registerOutput<String>('destinationArn');

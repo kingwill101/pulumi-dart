@@ -92,7 +92,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -101,6 +101,9 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "aws_lightsail_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example"
 ///   availability_zone = "us-east-1b"
 ///   blueprint_id      = "amazon_linux_2"
@@ -231,7 +234,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -240,6 +243,9 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "aws_lightsail_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example"
 ///   availability_zone = "us-east-1b"
 ///   blueprint_id      = "amazon_linux_2"
@@ -392,7 +398,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -401,7 +407,10 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "aws_lightsail_instance" "example" {
-///   add_on = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   add_on {
 ///     type          = "AutoSnapshot"
 ///     snapshot_time = "06:00"
 ///     status        = "Enabled"
@@ -534,7 +543,7 @@ class Instance extends pulumi.CustomResource {
           'aws:lightsail/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     addOn = registerOutput<InstanceAddOn?>('addOn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAddOn.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');

@@ -100,7 +100,7 @@ import 'organization_admin_account_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -109,13 +109,22 @@ import 'organization_admin_account_state.dart';
 /// }
 ///
 /// resource "aws_organizations_organization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   aws_service_access_principals = ["guardduty.amazonaws.com"]
 ///   feature_set                   = "ALL"
 /// }
 /// resource "aws_guardduty_detector" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_guardduty_organizationadminaccount" "example" {
-///   depends_on       = [aws_organizations_organization.example]
+/// resource "aws_guardduty_organization_admin_account" "example" {
+///   depends_on = [aws_organizations_organization.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   admin_account_id = "123456789012"
 /// }
 /// ```
@@ -207,7 +216,7 @@ class OrganizationAdminAccount extends pulumi.CustomResource {
           'aws:guardduty/organizationAdminAccount:OrganizationAdminAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     adminAccountId = registerOutput<String>('adminAccountId');
     region = registerOutput<String>('region');

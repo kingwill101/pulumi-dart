@@ -113,7 +113,7 @@ import 'cluster_parameter_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -121,12 +121,15 @@ import 'cluster_parameter_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_rds_clusterparametergroup" "default" {
-///   parameters {
+/// resource "aws_rds_cluster_parameter_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parameter {
 ///     name  = "character_set_server"
 ///     value = "utf8"
 ///   }
-///   parameters {
+///   parameter {
 ///     name  = "character_set_client"
 ///     value = "utf8"
 ///   }
@@ -230,7 +233,7 @@ class ClusterParameterGroup extends pulumi.CustomResource {
           'aws:rds/clusterParameterGroup:ClusterParameterGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');

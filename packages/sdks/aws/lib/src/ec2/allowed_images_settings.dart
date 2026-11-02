@@ -90,7 +90,7 @@ import 'allowed_images_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -98,8 +98,11 @@ import 'allowed_images_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_allowedimagessettings" "example" {
-///   image_criterions {
+/// resource "aws_ec2_allowed_images_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   image_criterion {
 ///     image_providers = ["amazon"]
 ///   }
 ///   state = "enabled"
@@ -234,7 +237,7 @@ import 'allowed_images_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -242,8 +245,11 @@ import 'allowed_images_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_allowedimagessettings" "example" {
-///   image_criterions {
+/// resource "aws_ec2_allowed_images_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   image_criterion {
 ///     image_providers = ["amazon", "123456789012"]
 ///   }
 ///   state = "audit-mode"
@@ -323,7 +329,7 @@ class AllowedImagesSettings extends pulumi.CustomResource {
           'aws:ec2/allowedImagesSettings:AllowedImagesSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     imageCriterions = registerOutput<List<AllowedImagesSettingsImageCriterion>?>('imageCriterions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AllowedImagesSettingsImageCriterion>(guardedValue, (value) => AllowedImagesSettingsImageCriterion.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');

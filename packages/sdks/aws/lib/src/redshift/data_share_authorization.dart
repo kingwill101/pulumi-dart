@@ -64,7 +64,7 @@ import 'data_share_authorization_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'data_share_authorization_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_redshift_datashareauthorization" "example" {
+/// resource "aws_redshift_data_share_authorization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   consumer_identifier = "123456789012"
 ///   data_share_arn      = "arn:aws:redshift:us-west-2:123456789012:datashare:3072dae5-022b-4d45-9cd3-01f010aae4b2/example_share"
 /// }
@@ -151,7 +154,7 @@ class DataShareAuthorization extends pulumi.CustomResource {
           'aws:redshift/dataShareAuthorization:DataShareAuthorization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     allowWrites = registerOutput<bool?>('allowWrites');
     consumerIdentifier = registerOutput<String>('consumerIdentifier');

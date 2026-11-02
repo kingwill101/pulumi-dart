@@ -54,7 +54,7 @@ import 'get_images_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -62,7 +62,7 @@ import 'get_images_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_ecrpublic_getauthorizationtoken" "token" {
+/// data "aws_ecrpublic_authorization_token" "token" {
 /// }
 /// ```
 /// ```java
@@ -188,7 +188,7 @@ pulumi.Output<GetAuthorizationTokenResult> getAuthorizationTokenOutput(
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -199,15 +199,15 @@ pulumi.Output<GetAuthorizationTokenResult> getAuthorizationTokenOutput(
 ///   }
 /// }
 ///
-/// data "aws_ecrpublic_getimages" "example" {
+/// data "aws_ecrpublic_images" "example" {
 ///   repository_name = "my-public-repository"
 /// }
 ///
 /// output "imageDigests" {
-///   value = [for img in data.aws_ecrpublic_getimages.example.images : img.digest if img.digest != null]
+///   value = [for img in data.aws_ecrpublic_images.example.images : img.digest if img.digest != null]
 /// }
 /// output "imageTags" {
-///   value = distinct(flatten([for img in data.aws_ecrpublic_getimages.example.images : img.tags]))
+///   value = distinct(flatten([for img in data.aws_ecrpublic_images.example.images : img.tags]))
 /// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ecrpublic_get_images_get_images_args_doc}

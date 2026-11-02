@@ -117,7 +117,7 @@ import 'regex_match_set_state.dart';
 /// 						Data: pulumi.String("User-Agent"),
 /// 						Type: pulumi.String("HEADER"),
 /// 					},
-/// 					RegexPatternSetId:  exampleRegexPatternSet.ID().ToIDOutput().ToStringOutput(),
+/// 					RegexPatternSetId:  exampleRegexPatternSet.ID(),
 /// 					TextTransformation: pulumi.String("NONE"),
 /// 				},
 /// 			},
@@ -131,7 +131,7 @@ import 'regex_match_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -139,18 +139,24 @@ import 'regex_match_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_waf_regexmatchset" "example" {
-///   regex_match_tuples {
-///     field_to_match = {
+/// resource "aws_waf_regex_match_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   regex_match_tuple {
+///     field_to_match {
 ///       data = "User-Agent"
 ///       type = "HEADER"
 ///     }
-///     regex_pattern_set_id = aws_waf_regexpatternset.example.id
+///     regex_pattern_set_id = aws_waf_regex_pattern_set.example.id
 ///     text_transformation  = "NONE"
 ///   }
 ///   name = "example"
 /// }
-/// resource "aws_waf_regexpatternset" "example" {
+/// resource "aws_waf_regex_pattern_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example"
 ///   regex_pattern_strings = ["one", "two"]
 /// }
@@ -252,7 +258,7 @@ class RegexMatchSet extends pulumi.CustomResource {
           'aws:waf/regexMatchSet:RegexMatchSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

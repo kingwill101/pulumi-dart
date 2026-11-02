@@ -79,7 +79,7 @@ import 'application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -88,6 +88,9 @@ import 'application_state.dart';
 /// }
 ///
 /// resource "aws_emrserverless_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "example"
 ///   release_label = "emr-6.6.0"
 ///   type          = "hive"
@@ -244,7 +247,7 @@ import 'application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -253,9 +256,12 @@ import 'application_state.dart';
 /// }
 ///
 /// resource "aws_emrserverless_application" "example" {
-///   initial_capacities {
-///     initial_capacity_config = {
-///       worker_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   initial_capacity {
+///     initial_capacity_config {
+///       worker_configuration {
 ///         cpu    = "2 vCPU"
 ///         memory = "10 GB"
 ///       }
@@ -408,7 +414,7 @@ import 'application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -417,7 +423,10 @@ import 'application_state.dart';
 /// }
 ///
 /// resource "aws_emrserverless_application" "example" {
-///   maximum_capacity = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   maximum_capacity {
 ///     cpu    = "2 vCPU"
 ///     memory = "10 GB"
 ///   }
@@ -654,7 +663,7 @@ import 'application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -663,23 +672,27 @@ import 'application_state.dart';
 /// }
 ///
 /// resource "aws_emrserverless_application" "example" {
-///   monitoring_configuration = {
-///     cloudwatch_logging_configuration = {
-///       log_types = [{
-///         "name"   = "SPARK_DRIVER"
-///         "values" = ["STDOUT", "STDERR"]
-///         }, {
-///         "name"   = "SPARK_EXECUTOR"
-///         "values" = ["STDOUT"]
-///       }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   monitoring_configuration {
+///     cloudwatch_logging_configuration {
+///       log_types {
+///         name   = "SPARK_DRIVER"
+///         values = ["STDOUT", "STDERR"]
+///       }
+///       log_types {
+///         name   = "SPARK_EXECUTOR"
+///         values = ["STDOUT"]
+///       }
 ///       enabled                = true
 ///       log_group_name         = "/aws/emr-serverless/example"
 ///       log_stream_name_prefix = "spark-logs"
 ///     }
-///     managed_persistence_monitoring_configuration = {
+///     managed_persistence_monitoring_configuration {
 ///       enabled = true
 ///     }
-///     prometheus_monitoring_configuration = {
+///     prometheus_monitoring_configuration {
 ///       remote_write_url = "https://prometheus-remote-write-endpoint.example.com/api/v1/write"
 ///     }
 ///   }
@@ -910,7 +923,7 @@ import 'application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -919,7 +932,10 @@ import 'application_state.dart';
 /// }
 ///
 /// resource "aws_emrserverless_application" "example" {
-///   runtime_configurations {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   runtime_configuration {
 ///     classification = "spark-executor-log4j2"
 ///     properties = {
 ///       "rootLogger.level"                = "error"
@@ -927,7 +943,7 @@ import 'application_state.dart';
 ///       "logger.IdentifierForClass.level" = "info"
 ///     }
 ///   }
-///   runtime_configurations {
+///   runtime_configuration {
 ///     classification = "spark-defaults"
 ///     properties = {
 ///       "spark.executor.memory" = "1g"
@@ -1065,7 +1081,7 @@ class Application extends pulumi.CustomResource {
           'aws:emrserverless/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     architecture = registerOutput<String?>('architecture');
     arn = registerOutput<String>('arn');

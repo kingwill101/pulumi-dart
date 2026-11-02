@@ -130,7 +130,7 @@ import 'identity_source_state.dart';
 /// 		}
 /// 		exampleUserPoolClient, err := cognito.NewUserPoolClient(ctx, "example", &cognito.UserPoolClientArgs{
 /// 			Name:       pulumi.String("example"),
-/// 			UserPoolId: exampleUserPool.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId: exampleUserPool.ID(),
 /// 			ExplicitAuthFlows: pulumi.StringArray{
 /// 				pulumi.String("ADMIN_NO_SRP_AUTH"),
 /// 			},
@@ -143,11 +143,11 @@ import 'identity_source_state.dart';
 /// 				CognitoUserPoolConfiguration: &verifiedpermissions.IdentitySourceConfigurationCognitoUserPoolConfigurationArgs{
 /// 					UserPoolArn: exampleUserPool.Arn,
 /// 					ClientIds: pulumi.StringArray{
-/// 						exampleUserPoolClient.ID().ToIDOutput().ToStringOutput(),
+/// 						exampleUserPoolClient.ID(),
 /// 					},
 /// 				},
 /// 			},
-/// 			PolicyStoreId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			PolicyStoreId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -157,7 +157,7 @@ import 'identity_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -165,27 +165,39 @@ import 'identity_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_verifiedpermissions_policystore" "example" {
-///   validation_settings = {
+/// resource "aws_verifiedpermissions_policy_store" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   validation_settings {
 ///     mode = "STRICT"
 ///   }
 /// }
-/// resource "aws_cognito_userpool" "example" {
+/// resource "aws_cognito_user_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
-/// resource "aws_cognito_userpoolclient" "example" {
+/// resource "aws_cognito_user_pool_client" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   user_pool_id        = aws_cognito_userpool.example.id
+///   user_pool_id        = aws_cognito_user_pool.example.id
 ///   explicit_auth_flows = ["ADMIN_NO_SRP_AUTH"]
 /// }
-/// resource "aws_verifiedpermissions_identitysource" "example" {
-///   configuration = {
-///     cognito_user_pool_configuration = {
-///       user_pool_arn = aws_cognito_userpool.example.arn
-///       client_ids    = [aws_cognito_userpoolclient.example.id]
+/// resource "aws_verifiedpermissions_identity_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     cognito_user_pool_configuration {
+///       user_pool_arn = aws_cognito_user_pool.example.arn
+///       client_ids    = [aws_cognito_user_pool_client.example.id]
 ///     }
 ///   }
-///   policy_store_id = aws_verifiedpermissions_policystore.example.id
+///   policy_store_id = aws_verifiedpermissions_policy_store.example.id
 /// }
 /// ```
 /// ```java
@@ -423,7 +435,7 @@ import 'identity_source_state.dart';
 /// 					EntityIdPrefix: pulumi.String("MyOIDCProvider"),
 /// 				},
 /// 			},
-/// 			PolicyStoreId:       example.ID().ToIDOutput().ToStringOutput(),
+/// 			PolicyStoreId:       example.ID(),
 /// 			PrincipalEntityType: pulumi.String("MyCorp::User"),
 /// 		})
 /// 		if err != nil {
@@ -434,7 +446,7 @@ import 'identity_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -442,21 +454,27 @@ import 'identity_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_verifiedpermissions_policystore" "example" {
-///   validation_settings = {
+/// resource "aws_verifiedpermissions_policy_store" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   validation_settings {
 ///     mode = "STRICT"
 ///   }
 /// }
-/// resource "aws_verifiedpermissions_identitysource" "example" {
-///   configuration = {
-///     open_id_connect_configuration = {
-///       token_selection = {
-///         access_token_only = {
+/// resource "aws_verifiedpermissions_identity_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     open_id_connect_configuration {
+///       token_selection {
+///         access_token_only {
 ///           audiences          = ["https://myapp.example.com"]
 ///           principal_id_claim = "sub"
 ///         }
 ///       }
-///       group_configuration = {
+///       group_configuration {
 ///         group_claim       = "groups"
 ///         group_entity_type = "MyCorp::UserGroup"
 ///       }
@@ -464,7 +482,7 @@ import 'identity_source_state.dart';
 ///       entity_id_prefix = "MyOIDCProvider"
 ///     }
 ///   }
-///   policy_store_id       = aws_verifiedpermissions_policystore.example.id
+///   policy_store_id       = aws_verifiedpermissions_policy_store.example.id
 ///   principal_entity_type = "MyCorp::User"
 /// }
 /// ```
@@ -584,7 +602,7 @@ class IdentitySource extends pulumi.CustomResource {
           'aws:verifiedpermissions/identitySource:IdentitySource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     configuration = registerOutput<IdentitySourceConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentitySourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     policyStoreId = registerOutput<String>('policyStoreId');

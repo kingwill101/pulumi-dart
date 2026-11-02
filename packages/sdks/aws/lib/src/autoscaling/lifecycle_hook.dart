@@ -180,7 +180,7 @@ import 'lifecycle_hook_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -189,7 +189,10 @@ import 'lifecycle_hook_state.dart';
 /// }
 ///
 /// resource "aws_autoscaling_group" "foobar" {
-///   tags {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   tag {
 ///     key                 = "Foo"
 ///     value               = "foo-bar"
 ///     propagate_at_launch = true
@@ -199,7 +202,10 @@ import 'lifecycle_hook_state.dart';
 ///   health_check_type    = "EC2"
 ///   termination_policies = ["OldestInstance"]
 /// }
-/// resource "aws_autoscaling_lifecyclehook" "foobar" {
+/// resource "aws_autoscaling_lifecycle_hook" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "foobar"
 ///   autoscaling_group_name = aws_autoscaling_group.foobar.name
 ///   default_result         = "CONTINUE"
@@ -350,7 +356,7 @@ class LifecycleHook extends pulumi.CustomResource {
           'aws:autoscaling/lifecycleHook:LifecycleHook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     defaultResult = registerOutput<String>('defaultResult');

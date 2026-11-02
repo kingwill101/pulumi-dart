@@ -64,7 +64,7 @@ import 'addon_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,6 +73,9 @@ import 'addon_state.dart';
 /// }
 ///
 /// resource "aws_eks_addon" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name = exampleAwsEksCluster.name
 ///   addon_name   = "vpc-cni"
 /// }
@@ -99,7 +102,7 @@ import 'addon_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Addon("example", AddonArgs.builder()
-///             .clusterName(exampleAwsEksCluster.name())
+///             .clusterName(exampleAwsEksCluster.get("name"))
 ///             .addonName("vpc-cni")
 ///             .build());
 ///
@@ -184,7 +187,7 @@ import 'addon_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -193,6 +196,9 @@ import 'addon_state.dart';
 /// }
 ///
 /// resource "aws_eks_addon" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name                = exampleAwsEksCluster.name
 ///   addon_name                  = "coredns"
 ///   addon_version               = "v1.10.1-eksbuild.1"
@@ -221,7 +227,7 @@ import 'addon_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Addon("example", AddonArgs.builder()
-///             .clusterName(exampleAwsEksCluster.name())
+///             .clusterName(exampleAwsEksCluster.get("name"))
 ///             .addonName("coredns")
 ///             .addonVersion("v1.10.1-eksbuild.1")
 ///             .resolveConflictsOnUpdate("PRESERVE")
@@ -389,7 +395,7 @@ import 'addon_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -398,6 +404,9 @@ import 'addon_state.dart';
 /// }
 ///
 /// resource "aws_eks_addon" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name                = "mycluster"
 ///   addon_name                  = "coredns"
 ///   addon_version               = "v1.10.1-eksbuild.1"
@@ -556,7 +565,7 @@ class Addon extends pulumi.CustomResource {
           'aws:eks/addon:Addon',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     addonName = registerOutput<String>('addonName');
     addonVersion = registerOutput<String>('addonVersion');

@@ -106,7 +106,7 @@ import 'get_service_account_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -114,13 +114,16 @@ import 'get_service_account_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_elb_gethostedzoneid" "main" {
+/// data "aws_elb_hosted_zone_id" "main" {
 /// }
 ///
 /// resource "aws_route53_record" "www" {
-///   aliases {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   alias {
 ///     name                   = mainAwsElb.dnsName
-///     zone_id                = data.aws_elb_gethostedzoneid.main.id
+///     zone_id                = data.aws_elb_hosted_zone_id.main.id
 ///     evaluate_target_health = true
 ///   }
 ///   zone_id = primary.zoneId
@@ -157,11 +160,11 @@ import 'get_service_account_result.dart';
 ///
 ///         var www = new Record("www", RecordArgs.builder()
 ///             .aliases(RecordAliasArgs.builder()
-///                 .name(mainAwsElb.dnsName())
+///                 .name(mainAwsElb.get("dnsName"))
 ///                 .zoneId(main.id())
 ///                 .evaluateTargetHealth(true)
 ///                 .build())
-///             .zoneId(primary.zoneId())
+///             .zoneId(primary.get("zoneId"))
 ///             .name("example.com")
 ///             .type("A")
 ///             .build());
@@ -288,7 +291,7 @@ pulumi.Output<GetHostedZoneIdResult> getHostedZoneIdOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -296,7 +299,7 @@ pulumi.Output<GetHostedZoneIdResult> getHostedZoneIdOutput(
 ///   }
 /// }
 ///
-/// data "aws_elb_getloadbalancer" "test" {
+/// data "aws_elb_load_balancer" "test" {
 ///   name = var.lbName
 /// }
 ///
@@ -564,7 +567,7 @@ pulumi.Output<GetLoadBalancerResult> getLoadBalancerOutput(
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "elb_logs_acl", &s3.BucketAclArgs{
-/// 			Bucket: elbLogs.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: elbLogs.ID(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -594,7 +597,7 @@ pulumi.Output<GetLoadBalancerResult> getLoadBalancerOutput(
 /// 			},
 /// 		}, nil)
 /// 		_, err = s3.NewBucketPolicy(ctx, "allow_elb_logging", &s3.BucketPolicyArgs{
-/// 			Bucket: elbLogs.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: elbLogs.ID(),
 /// 			Policy: allowElbLogging.Json(),
 /// 		})
 /// 		if err != nil {
@@ -602,7 +605,7 @@ pulumi.Output<GetLoadBalancerResult> getLoadBalancerOutput(
 /// 		}
 /// 		_, err = elb.NewLoadBalancer(ctx, "bar", &elb.LoadBalancerArgs{
 /// 			AccessLogs: &elb.LoadBalancerAccessLogsArgs{
-/// 				Bucket:   elbLogs.ID().ToIDOutput().ToStringOutput(),
+/// 				Bucket:   elbLogs.ID(),
 /// 				Interval: pulumi.Int(5),
 /// 			},
 /// 			Listeners: elb.LoadBalancerListenerArray{
@@ -626,7 +629,7 @@ pulumi.Output<GetLoadBalancerResult> getLoadBalancerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -634,13 +637,13 @@ pulumi.Output<GetLoadBalancerResult> getLoadBalancerOutput(
 ///   }
 /// }
 ///
-/// data "aws_elb_getserviceaccount" "main" {
+/// data "aws_elb_service_account" "main" {
 /// }
-/// data "aws_iam_getpolicydocument" "allowElbLogging" {
-///   statements {
+/// data "aws_iam_policy_document" "allowElbLogging" {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
-///       identifiers = [data.aws_elb_getserviceaccount.main.arn]
+///       identifiers = [data.aws_elb_service_account.main.arn]
 ///     }
 ///     effect    = "Allow"
 ///     actions   = ["s3:PutObject"]
@@ -649,17 +652,29 @@ pulumi.Output<GetLoadBalancerResult> getLoadBalancerOutput(
 /// }
 ///
 /// resource "aws_s3_bucket" "elb_logs" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "my-elb-tf-test-bucket"
 /// }
-/// resource "aws_s3_bucketacl" "elb_logs_acl" {
+/// resource "aws_s3_bucket_acl" "elb_logs_acl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.elb_logs.id
 ///   acl    = "private"
 /// }
-/// resource "aws_s3_bucketpolicy" "allow_elb_logging" {
+/// resource "aws_s3_bucket_policy" "allow_elb_logging" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.elb_logs.id
-///   policy = data.aws_iam_getpolicydocument.allowElbLogging.json
+///   policy = data.aws_iam_policy_document.allowElbLogging.json
 /// }
-/// resource "aws_elb_loadbalancer" "bar" {
+/// resource "aws_elb_load_balancer" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   access_logs = {
 ///     bucket   = aws_s3_bucket.elb_logs.id
 ///     interval = 5

@@ -63,7 +63,7 @@ import 'place_index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,7 +71,10 @@ import 'place_index_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_location_placeindex" "example" {
+/// resource "aws_location_place_index" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_source = "Here"
 ///   index_name  = "example"
 /// }
@@ -158,7 +161,7 @@ class PlaceIndex extends pulumi.CustomResource {
           'aws:location/placeIndex:PlaceIndex',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     dataSource = registerOutput<String>('dataSource');

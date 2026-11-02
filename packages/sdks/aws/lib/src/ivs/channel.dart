@@ -57,7 +57,7 @@ import 'channel_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -66,6 +66,9 @@ import 'channel_state.dart';
 /// }
 ///
 /// resource "aws_ivs_channel" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "channel-1"
 /// }
 /// ```
@@ -156,7 +159,7 @@ class Channel extends pulumi.CustomResource {
           'aws:ivs/channel:Channel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     authorized = registerOutput<bool>('authorized');

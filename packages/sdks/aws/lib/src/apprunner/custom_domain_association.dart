@@ -48,12 +48,12 @@ import 'custom_domain_association_state.dart';
 ///     for validation_range in [{"value": i} for i in range(0, range_body)]:
 ///         validation.append(aws.route53.Record(f"validation-{validation_range['value']}",
 ///             zone_id=example_aws_route53_zone["zoneId"],
-///             name=certificate_validation_records.apply(lambda certificate_validation_records: certificate_validation_records[validation_range["value"]].name),
+///             name=certificate_validation_records.apply(lambda certificate_validation_records, _validation_range=validation_range: certificate_validation_records[_validation_range["value"]].name),
 ///             type=aws.route53.RecordType.CNAME,
 ///             ttl=300,
-///             records=[certificate_validation_records.apply(lambda certificate_validation_records: certificate_validation_records[validation_range["value"]].value)]))
+///             records=[certificate_validation_records.apply(lambda certificate_validation_records, _validation_range=validation_range: certificate_validation_records[_validation_range["value"]].value)]))
 ///
-/// example.enable_www_subdomain.apply(lambda resolved_outputs: create_validation(3 if resolved_outputs['enable_www_subdomain'] == "true" else 2))
+/// example.enable_www_subdomain.apply(lambda resolved_outputs: create_validation(3 if resolved_outputs else 2))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -112,15 +112,13 @@ import 'custom_domain_association_state.dart';
 /// 		certificateValidationRecords := example.CertificateValidationRecords
 /// 		var validation []*route53.Record
 /// 		for index := 0; index < int(example.EnableWwwSubdomain.ApplyT(func(enableWwwSubdomain *bool) (int, error) {
-/// 			return int(enableWwwSubdomain.ApplyT(func(__convert bool) (int, error) {
-/// 				var tmp0 int
-/// 				if __convert {
-/// 					tmp0 = 3
-/// 				} else {
-/// 					tmp0 = 2
-/// 				}
-/// 				return tmp0, nil
-/// 			}).(pulumi.IntOutput)), nil
+/// 			var tmp0 int
+/// 			if enableWwwSubdomain {
+/// 				tmp0 = 3
+/// 			} else {
+/// 				tmp0 = 2
+/// 			}
+/// 			return tmp0, nil
 /// 		}).(pulumi.IntOutput)); index++ {
 /// 			key0 := index
 /// 			val0 := index
@@ -149,7 +147,7 @@ import 'custom_domain_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -157,12 +155,21 @@ import 'custom_domain_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apprunner_customdomainassociation" "example" {
+/// resource "aws_apprunner_custom_domain_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name = "example.com"
 ///   service_arn = exampleAwsApprunnerService.arn
 /// }
 /// resource "aws_route53_record" "validation" {
-///   count   = aws_apprunner_customdomainassociation.example.enable_www_subdomain ? 3 : 2
+///   count = aws_apprunner_custom_domain_association.example.enable_www_subdomain ? 3 : 2
+///   pulumi {
+///     name ="validation-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = exampleAwsRoute53Zone.zoneId
 ///   name    = local.certificateValidationRecords[count.index].name
 ///   type    = "CNAME"
@@ -170,7 +177,7 @@ import 'custom_domain_association_state.dart';
 ///   records = [local.certificateValidationRecords[count.index].value]
 /// }
 /// locals {
-///   certificateValidationRecords = aws_apprunner_customdomainassociation.example.certificate_validation_records
+///   certificateValidationRecords = aws_apprunner_custom_domain_association.example.certificate_validation_records
 /// }
 /// ```
 /// ```java
@@ -199,14 +206,14 @@ import 'custom_domain_association_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new CustomDomainAssociation("example", CustomDomainAssociationArgs.builder()
 ///             .domainName("example.com")
-///             .serviceArn(exampleAwsApprunnerService.arn())
+///             .serviceArn(exampleAwsApprunnerService.get("arn"))
 ///             .build());
 ///
 ///         final var certificateValidationRecords = example.certificateValidationRecords();
 ///
 ///         for (var i = 0; i < example.enableWwwSubdomain().applyValue(_enableWwwSubdomain -> _enableWwwSubdomain ? 3 : 2); i++) {
 ///             new Record("validation-" + i, RecordArgs.builder()
-///                 .zoneId(exampleAwsRoute53Zone.zoneId())
+///                 .zoneId(exampleAwsRoute53Zone.get("zoneId"))
 ///                 .name(certificateValidationRecords.applyValue(_certificateValidationRecords -> _certificateValidationRecords[range.value()].name()))
 ///                 .type("CNAME")
 ///                 .ttl(300)
@@ -255,7 +262,7 @@ class CustomDomainAssociation extends pulumi.CustomResource {
           'aws:apprunner/customDomainAssociation:CustomDomainAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     certificateValidationRecords = registerOutput<List<CustomDomainAssociationCertificateValidationRecord>>('certificateValidationRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomDomainAssociationCertificateValidationRecord>(guardedValue, (value) => CustomDomainAssociationCertificateValidationRecord.fromMap((value as Map).cast<String, dynamic>())); });
     dnsTarget = registerOutput<String>('dnsTarget');

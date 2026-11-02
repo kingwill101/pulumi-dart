@@ -160,7 +160,7 @@ import 'scaling_plan_state.dart';
 ///                         {
 ///                             PredefinedScalingMetricType = "ASGAverageCPUUtilization",
 ///                         },
-///                         TargetValue = 70,
+///                         TargetValue = 70.0,
 ///                     },
 ///                 },
 ///                 MaxCapacity = 3,
@@ -266,7 +266,7 @@ import 'scaling_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -281,31 +281,37 @@ import 'scaling_plan_state.dart';
 ///   input = "autoScalingGroup/%s"
 ///   args  = [aws_autoscaling_group.example.name]
 /// }
-/// data "aws_getavailabilityzones" "available" {
+/// data "aws_availability_zones" "available" {
 /// }
 ///
 /// resource "aws_autoscaling_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name_prefix          = "example"
 ///   launch_configuration = exampleAwsLaunchConfiguration.name
-///   availability_zones   = [data.aws_getavailabilityzones.available.names[0]]
+///   availability_zones   = [data.aws_availability_zones.available.names[0]]
 ///   min_size             = 0
 ///   max_size             = 3
-///   tags {
+///   tag {
 ///     key                 = "application"
 ///     value               = "example"
 ///     propagate_at_launch = true
 ///   }
 /// }
-/// resource "aws_autoscalingplans_scalingplan" "example" {
-///   application_source = {
-///     tag_filters = [{
-///       "key"    = "application"
-///       "values" = ["example"]
-///     }]
+/// resource "aws_autoscalingplans_scaling_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   scaling_instructions {
-///     target_tracking_configurations {
-///       predefined_scaling_metric_specification = {
+///   application_source {
+///     tag_filter {
+///       key    = "application"
+///       values = ["example"]
+///     }
+///   }
+///   scaling_instruction {
+///     target_tracking_configuration {
+///       predefined_scaling_metric_specification {
 ///         predefined_scaling_metric_type = "ASGAverageCPUUtilization"
 ///       }
 ///       target_value = 70
@@ -357,7 +363,7 @@ import 'scaling_plan_state.dart';
 ///
 ///         var example = new Group("example", GroupArgs.builder()
 ///             .namePrefix("example")
-///             .launchConfiguration(exampleAwsLaunchConfiguration.name())
+///             .launchConfiguration(exampleAwsLaunchConfiguration.get("name"))
 ///             .availabilityZones(available.names()[0])
 ///             .minSize(0)
 ///             .maxSize(3)
@@ -610,7 +616,7 @@ import 'scaling_plan_state.dart';
 ///                         {
 ///                             PredefinedScalingMetricType = "ASGAverageCPUUtilization",
 ///                         },
-///                         TargetValue = 70,
+///                         TargetValue = 70.0,
 ///                     },
 ///                 },
 ///                 DisableDynamicScaling = true,
@@ -725,7 +731,7 @@ import 'scaling_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -740,34 +746,40 @@ import 'scaling_plan_state.dart';
 ///   input = "autoScalingGroup/%s"
 ///   args  = [aws_autoscaling_group.example.name]
 /// }
-/// data "aws_getavailabilityzones" "available" {
+/// data "aws_availability_zones" "available" {
 /// }
 ///
 /// resource "aws_autoscaling_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name_prefix          = "example"
 ///   launch_configuration = exampleAwsLaunchConfiguration.name
-///   availability_zones   = [data.aws_getavailabilityzones.available.names[0]]
+///   availability_zones   = [data.aws_availability_zones.available.names[0]]
 ///   min_size             = 0
 ///   max_size             = 3
-///   tags {
+///   tag {
 ///     key                 = "application"
 ///     value               = "example"
 ///     propagate_at_launch = true
 ///   }
 /// }
-/// resource "aws_autoscalingplans_scalingplan" "example" {
-///   application_source = {
-///     tag_filters = [{
-///       "key"    = "application"
-///       "values" = ["example"]
-///     }]
+/// resource "aws_autoscalingplans_scaling_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   scaling_instructions {
-///     predefined_load_metric_specification = {
+///   application_source {
+///     tag_filter {
+///       key    = "application"
+///       values = ["example"]
+///     }
+///   }
+///   scaling_instruction {
+///     predefined_load_metric_specification {
 ///       predefined_load_metric_type = "ASGTotalCPUUtilization"
 ///     }
-///     target_tracking_configurations {
-///       predefined_scaling_metric_specification = {
+///     target_tracking_configuration {
+///       predefined_scaling_metric_specification {
 ///         predefined_scaling_metric_type = "ASGAverageCPUUtilization"
 ///       }
 ///       target_value = 70
@@ -823,7 +835,7 @@ import 'scaling_plan_state.dart';
 ///
 ///         var example = new Group("example", GroupArgs.builder()
 ///             .namePrefix("example")
-///             .launchConfiguration(exampleAwsLaunchConfiguration.name())
+///             .launchConfiguration(exampleAwsLaunchConfiguration.get("name"))
 ///             .availabilityZones(available.names()[0])
 ///             .minSize(0)
 ///             .maxSize(3)
@@ -955,7 +967,7 @@ class ScalingPlan extends pulumi.CustomResource {
           'aws:autoscalingplans/scalingPlan:ScalingPlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     applicationSource = registerOutput<ScalingPlanApplicationSource>('applicationSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScalingPlanApplicationSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

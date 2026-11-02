@@ -284,7 +284,7 @@ import 'preset_video_watermark.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -293,17 +293,20 @@ import 'preset_video_watermark.dart';
 /// }
 ///
 /// resource "aws_elastictranscoder_preset" "bar" {
-///   audio = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   audio {
 ///     audio_packing_mode = "SingleTrack"
 ///     bit_rate           = 96
 ///     channels           = 2
 ///     codec              = "AAC"
 ///     sample_rate        = 44100
 ///   }
-///   audio_codec_options = {
+///   audio_codec_options {
 ///     profile = "AAC-LC"
 ///   }
-///   video = {
+///   video {
 ///     bit_rate             = "1600"
 ///     codec                = "H.264"
 ///     display_aspect_ratio = "16:9"
@@ -316,7 +319,7 @@ import 'preset_video_watermark.dart';
 ///     padding_policy       = "Pad"
 ///     sizing_policy        = "Fit"
 ///   }
-///   thumbnails = {
+///   thumbnails {
 ///     format         = "png"
 ///     interval       = 120
 ///     max_width      = "auto"
@@ -534,7 +537,7 @@ class Preset extends pulumi.CustomResource {
           'aws:elastictranscoder/preset:Preset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     audio = registerOutput<PresetAudio?>('audio', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PresetAudio.fromMap((guardedValue as Map).cast<String, dynamic>()); });

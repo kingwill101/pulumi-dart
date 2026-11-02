@@ -88,7 +88,7 @@ import 'tracker_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -96,14 +96,23 @@ import 'tracker_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_location_geofencecollection" "example" {
+/// resource "aws_location_geofence_collection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   collection_name = "example"
 /// }
 /// resource "aws_location_tracker" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tracker_name = "example"
 /// }
-/// resource "aws_location_trackerassociation" "example" {
-///   consumer_arn = aws_location_geofencecollection.example.collection_arn
+/// resource "aws_location_tracker_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   consumer_arn = aws_location_geofence_collection.example.collection_arn
 ///   tracker_name = aws_location_tracker.example.tracker_name
 /// }
 /// ```
@@ -195,7 +204,7 @@ class TrackerAssociation extends pulumi.CustomResource {
           'aws:location/trackerAssociation:TrackerAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     consumerArn = registerOutput<String>('consumerArn');
     region = registerOutput<String>('region');

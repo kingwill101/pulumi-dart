@@ -103,14 +103,14 @@ import 'documentation_version_state.dart';
 /// 				Type: pulumi.String("API"),
 /// 			},
 /// 			Properties: pulumi.String("{\"description\":\"Example\"}"),
-/// 			RestApiId:  exampleRestApi.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApiId:  exampleRestApi.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewDocumentationVersion(ctx, "example", &apigateway.DocumentationVersionArgs{
 /// 			Version:     pulumi.String("example_version"),
-/// 			RestApiId:   exampleRestApi.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApiId:   exampleRestApi.ID(),
 /// 			Description: pulumi.String("Example description"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleDocumentationPart,
@@ -123,7 +123,7 @@ import 'documentation_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -131,21 +131,30 @@ import 'documentation_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_documentationversion" "example" {
-///   depends_on  = [aws_apigateway_documentationpart.example]
+/// resource "aws_apigateway_documentation_version" "example" {
+///   depends_on = [aws_apigateway_documentation_part.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   version     = "example_version"
-///   rest_api_id = aws_apigateway_restapi.example.id
+///   rest_api_id = aws_apigateway_rest_api.example.id
 ///   description = "Example description"
 /// }
-/// resource "aws_apigateway_restapi" "example" {
+/// resource "aws_apigateway_rest_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example_api"
 /// }
-/// resource "aws_apigateway_documentationpart" "example" {
+/// resource "aws_apigateway_documentation_part" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = {
 ///     type = "API"
 ///   }
 ///   properties  = "{\"description\":\"Example\"}"
-///   rest_api_id = aws_apigateway_restapi.example.id
+///   rest_api_id = aws_apigateway_rest_api.example.id
 /// }
 /// ```
 /// ```java
@@ -254,7 +263,7 @@ class DocumentationVersion extends pulumi.CustomResource {
           'aws:apigateway/documentationVersion:DocumentationVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     region = registerOutput<String>('region');

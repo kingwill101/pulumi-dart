@@ -149,7 +149,7 @@ import 'account_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -157,26 +157,29 @@ import 'account_assignment_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
-/// data "aws_ssoadmin_getpermissionset" "exampleGetPermissionSet" {
-///   instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+/// data "aws_ssoadmin_permission_set" "exampleGetPermissionSet" {
+///   instance_arn = data.aws_ssoadmin_instances.example.arns[0]
 ///   name         = "AWSReadOnlyAccess"
 /// }
-/// data "aws_identitystore_getgroup" "exampleGetGroup" {
-///   alternate_identifier = {
-///     unique_attribute = {
+/// data "aws_identitystore_group" "exampleGetGroup" {
+///   alternate_identifier {
+///     unique_attribute {
 ///       attribute_path  = "DisplayName"
 ///       attribute_value = "ExampleGroup"
 ///     }
 ///   }
-///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+///   identity_store_id = data.aws_ssoadmin_instances.example.identity_store_ids[0]
 /// }
 ///
-/// resource "aws_ssoadmin_accountassignment" "example" {
-///   instance_arn       = data.aws_ssoadmin_getinstances.example.arns[0]
-///   permission_set_arn = data.aws_ssoadmin_getpermissionset.exampleGetPermissionSet.arn
-///   principal_id       = data.aws_identitystore_getgroup.exampleGetGroup.group_id
+/// resource "aws_ssoadmin_account_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   instance_arn       = data.aws_ssoadmin_instances.example.arns[0]
+///   permission_set_arn = data.aws_ssoadmin_permission_set.exampleGetPermissionSet.arn
+///   principal_id       = data.aws_identitystore_group.exampleGetGroup.group_id
 ///   principal_type     = "GROUP"
 ///   target_id          = "123456789012"
 ///   target_type        = "AWS_ACCOUNT"
@@ -439,7 +442,7 @@ import 'account_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -447,31 +450,43 @@ import 'account_assignment_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
 ///
-/// resource "aws_ssoadmin_permissionset" "example" {
+/// resource "aws_ssoadmin_permission_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "Example"
-///   instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+///   instance_arn = data.aws_ssoadmin_instances.example.arns[0]
 /// }
 /// resource "aws_identitystore_group" "example" {
-///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   identity_store_id = data.aws_ssoadmin_instances.example.identity_store_ids[0]
 ///   display_name      = "Admin"
 ///   description       = "Admin Group"
 /// }
-/// resource "aws_ssoadmin_accountassignment" "example" {
-///   instance_arn       = data.aws_ssoadmin_getinstances.example.arns[0]
-///   permission_set_arn = aws_ssoadmin_permissionset.example.arn
+/// resource "aws_ssoadmin_account_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   instance_arn       = data.aws_ssoadmin_instances.example.arns[0]
+///   permission_set_arn = aws_ssoadmin_permission_set.example.arn
 ///   principal_id       = aws_identitystore_group.example.group_id
 ///   principal_type     = "GROUP"
 ///   target_id          = "123456789012"
 ///   target_type        = "AWS_ACCOUNT"
 /// }
-/// resource "aws_ssoadmin_managedpolicyattachment" "example" {
-///   depends_on         = [aws_ssoadmin_accountassignment.example]
-///   instance_arn       = data.aws_ssoadmin_getinstances.example.arns[0]
+/// resource "aws_ssoadmin_managed_policy_attachment" "example" {
+///   depends_on = [aws_ssoadmin_account_assignment.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   instance_arn       = data.aws_ssoadmin_instances.example.arns[0]
 ///   managed_policy_arn = "arn:aws:iam::aws:policy/AlexaForBusinessDeviceSetup"
-///   permission_set_arn = aws_ssoadmin_permissionset.example.arn
+///   permission_set_arn = aws_ssoadmin_permission_set.example.arn
 /// }
 /// ```
 /// ```java
@@ -633,7 +648,7 @@ class AccountAssignment extends pulumi.CustomResource {
           'aws:ssoadmin/accountAssignment:AccountAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     instanceArn = registerOutput<String>('instanceArn');
     permissionSetArn = registerOutput<String>('permissionSetArn');

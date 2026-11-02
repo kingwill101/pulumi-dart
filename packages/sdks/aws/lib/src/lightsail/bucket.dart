@@ -62,7 +62,7 @@ import 'bucket_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,6 +71,9 @@ import 'bucket_state.dart';
 /// }
 ///
 /// resource "aws_lightsail_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "example-bucket"
 ///   bundle_id = "small_1_0"
 /// }
@@ -159,7 +162,7 @@ class Bucket extends pulumi.CustomResource {
           'aws:lightsail/bucket:Bucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String>('availabilityZone');

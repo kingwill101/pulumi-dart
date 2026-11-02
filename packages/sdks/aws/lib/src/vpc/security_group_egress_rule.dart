@@ -80,7 +80,7 @@ import 'security_group_egress_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -88,7 +88,10 @@ import 'security_group_egress_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpc_securitygroupegressrule" "example" {
+/// resource "aws_vpc_security_group_egress_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   security_group_id = exampleAwsSecurityGroup.id
 ///   cidr_ipv4         = "10.0.0.0/8"
 ///   from_port         = 80
@@ -118,7 +121,7 @@ import 'security_group_egress_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new SecurityGroupEgressRule("example", SecurityGroupEgressRuleArgs.builder()
-///             .securityGroupId(exampleAwsSecurityGroup.id())
+///             .securityGroupId(exampleAwsSecurityGroup.get("id"))
 ///             .cidrIpv4("10.0.0.0/8")
 ///             .fromPort(80)
 ///             .ipProtocol("tcp")
@@ -204,7 +207,7 @@ class SecurityGroupEgressRule extends pulumi.CustomResource {
           'aws:vpc/securityGroupEgressRule:SecurityGroupEgressRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cidrIpv4 = registerOutput<String?>('cidrIpv4');

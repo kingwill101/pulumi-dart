@@ -211,7 +211,7 @@ import 'dashboard_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -220,6 +220,9 @@ import 'dashboard_state.dart';
 /// }
 ///
 /// resource "aws_cloudwatch_dashboard" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dashboard_name = "my-dashboard"
 ///   dashboard_body = jsonencode({
 ///     "widgets" = [{
@@ -386,7 +389,7 @@ class Dashboard extends pulumi.CustomResource {
           'aws:cloudwatch/dashboard:Dashboard',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     dashboardArn = registerOutput<String>('dashboardArn');
     dashboardBody = registerOutput<String>('dashboardBody');

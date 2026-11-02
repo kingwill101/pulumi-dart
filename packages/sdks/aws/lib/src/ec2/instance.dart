@@ -171,7 +171,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -179,7 +179,7 @@ import 'instance_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2_getami" "ubuntu" {
+/// data "aws_ec2_ami" "ubuntu" {
 ///   filters {
 ///     name   = "name"
 ///     values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
@@ -194,7 +194,10 @@ import 'instance_state.dart';
 ///
 /// # Canonical
 /// resource "aws_ec2_instance" "example" {
-///   ami           = data.aws_ec2_getami.ubuntu.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ami           = data.aws_ec2_ami.ubuntu.id
 ///   instance_type = "t3.micro"
 ///   tags = {
 ///     "Name" = "HelloWorld"
@@ -346,7 +349,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -355,6 +358,9 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "aws_ec2_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ami           = "resolve:ssm:/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64"
 ///   instance_type = "t3.micro"
 ///   tags = {
@@ -578,7 +584,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -586,7 +592,7 @@ import 'instance_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2_getami" "example" {
+/// data "aws_ec2_ami" "example" {
 ///   filters {
 ///     name   = "architecture"
 ///     values = ["arm64"]
@@ -600,13 +606,16 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "aws_ec2_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_market_options = {
 ///     spot_options = {
 ///       max_price = 0.0031
 ///     }
 ///     market_type = "spot"
 ///   }
-///   ami           = data.aws_ec2_getami.example.id
+///   ami           = data.aws_ec2_ami.example.id
 ///   instance_type = "t4g.nano"
 ///   tags = {
 ///     "Name" = "test-spot"
@@ -848,7 +857,7 @@ import 'instance_state.dart';
 /// 			return err
 /// 		}
 /// 		mySubnet, err := ec2.NewSubnet(ctx, "my_subnet", &ec2.SubnetArgs{
-/// 			VpcId:            myVpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            myVpc.ID(),
 /// 			CidrBlock:        pulumi.String("172.16.10.0/24"),
 /// 			AvailabilityZone: pulumi.String("us-west-2a"),
 /// 			Tags: pulumi.StringMap{
@@ -859,7 +868,7 @@ import 'instance_state.dart';
 /// 			return err
 /// 		}
 /// 		example, err := ec2.NewNetworkInterface(ctx, "example", &ec2.NetworkInterfaceArgs{
-/// 			SubnetId: mySubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetId: mySubnet.ID(),
 /// 			PrivateIps: pulumi.StringArray{
 /// 				pulumi.String("172.16.10.100"),
 /// 			},
@@ -872,7 +881,7 @@ import 'instance_state.dart';
 /// 		}
 /// 		_, err = ec2.NewInstance(ctx, "example", &ec2.InstanceArgs{
 /// 			PrimaryNetworkInterface: &ec2.InstancePrimaryNetworkInterfaceArgs{
-/// 				NetworkInterfaceId: example.ID().ToIDOutput().ToStringOutput(),
+/// 				NetworkInterfaceId: example.ID(),
 /// 			},
 /// 			CreditSpecification: &ec2.InstanceCreditSpecificationArgs{
 /// 				CpuCredits: pulumi.String("unlimited"),
@@ -888,7 +897,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -897,12 +906,18 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "my_vpc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "172.16.0.0/16"
 ///   tags = {
 ///     "Name" = "tf-example"
 ///   }
 /// }
 /// resource "aws_ec2_subnet" "my_subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.my_vpc.id
 ///   cidr_block        = "172.16.10.0/24"
 ///   availability_zone = "us-west-2a"
@@ -910,7 +925,10 @@ import 'instance_state.dart';
 ///     "Name" = "tf-example"
 ///   }
 /// }
-/// resource "aws_ec2_networkinterface" "example" {
+/// resource "aws_ec2_network_interface" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_id   = aws_ec2_subnet.my_subnet.id
 ///   private_ips = ["172.16.10.100"]
 ///   tags = {
@@ -918,8 +936,11 @@ import 'instance_state.dart';
 ///   }
 /// }
 /// resource "aws_ec2_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   primary_network_interface = {
-///     network_interface_id = aws_ec2_networkinterface.example.id
+///     network_interface_id = aws_ec2_network_interface.example.id
 ///   }
 ///   credit_specification = {
 ///     cpu_credits = "unlimited"
@@ -1190,7 +1211,7 @@ import 'instance_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSubnet, err := ec2.NewSubnet(ctx, "example", &ec2.SubnetArgs{
-/// 			VpcId:            example.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            example.ID(),
 /// 			CidrBlock:        pulumi.String("172.16.10.0/24"),
 /// 			AvailabilityZone: pulumi.String("us-east-2a"),
 /// 			Tags: pulumi.StringMap{
@@ -1224,7 +1245,7 @@ import 'instance_state.dart';
 /// 			},
 /// 			Ami:          pulumi.String(amzn_linux_2023_ami.Id),
 /// 			InstanceType: pulumi.String(ec2.InstanceType_C6a_2XLarge),
-/// 			SubnetId:     exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetId:     exampleSubnet.ID(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("tf-example"),
 /// 			},
@@ -1237,7 +1258,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1245,7 +1266,7 @@ import 'instance_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2_getami" "amzn-linux-2023-ami" {
+/// data "aws_ec2_ami" "amzn-linux-2023-ami" {
 ///   filters {
 ///     name   = "name"
 ///     values = ["al2023-ami-2023.*-x86_64"]
@@ -1255,12 +1276,18 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "172.16.0.0/16"
 ///   tags = {
 ///     "Name" = "tf-example"
 ///   }
 /// }
 /// resource "aws_ec2_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.example.id
 ///   cidr_block        = "172.16.10.0/24"
 ///   availability_zone = "us-east-2a"
@@ -1269,11 +1296,14 @@ import 'instance_state.dart';
 ///   }
 /// }
 /// resource "aws_ec2_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cpu_options = {
 ///     core_count       = 2
 ///     threads_per_core = 2
 ///   }
-///   ami           = data.aws_ec2_getami.amzn-linux-2023-ami.id
+///   ami           = data.aws_ec2_ami.amzn-linux-2023-ami.id
 ///   instance_type = "c6a.2xlarge"
 ///   subnet_id     = aws_ec2_subnet.example.id
 ///   tags = {
@@ -1459,7 +1489,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1468,6 +1498,9 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "aws_ec2_instance" "this" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ami                     = "ami-0dcc1e21636832c5d"
 ///   instance_type           = "m5.large"
 ///   host_resource_group_arn = "arn:aws:resource-groups:us-west-2:123456789012:group/win-testhost"
@@ -1678,7 +1711,7 @@ class Instance extends pulumi.CustomResource {
           'aws:ec2/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     ami = registerOutput<String>('ami');
     arn = registerOutput<String>('arn');

@@ -213,7 +213,7 @@ import 'analytics_application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -222,33 +222,39 @@ import 'analytics_application_state.dart';
 /// }
 ///
 /// resource "aws_kinesis_stream" "test_stream" {
-///   stream_mode_details = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   stream_mode_details {
 ///     stream_mode = "ON_DEMAND"
 ///   }
 ///   name = "pulumi-kinesis-test"
 /// }
-/// resource "aws_kinesis_analyticsapplication" "test_application" {
-///   inputs = {
-///     kinesis_stream = {
+/// resource "aws_kinesis_analytics_application" "test_application" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   inputs {
+///     kinesis_stream {
 ///       resource_arn = aws_kinesis_stream.test_stream.arn
 ///       role_arn     = test.arn
 ///     }
-///     parallelism = {
+///     parallelism {
 ///       count = 1
 ///     }
-///     schema = {
-///       record_format = {
-///         mapping_parameters = {
-///           json = {
+///     schema {
+///       record_format {
+///         mapping_parameters {
+///           json {
 ///             record_row_path = "$"
 ///           }
 ///         }
 ///       }
-///       record_columns = [{
-///         "mapping" = "$.test"
-///         "name"    = "test"
-///         "sqlType" = "VARCHAR(8)"
-///       }]
+///       record_columns {
+///         mapping  = "$.test"
+///         name     = "test"
+///         sql_type = "VARCHAR(8)"
+///       }
 ///       record_encoding = "UTF-8"
 ///     }
 ///     name_prefix = "test_prefix"
@@ -299,7 +305,7 @@ import 'analytics_application_state.dart';
 ///             .inputs(AnalyticsApplicationInputsArgs.builder()
 ///                 .kinesisStream(AnalyticsApplicationInputsKinesisStreamArgs.builder()
 ///                     .resourceArn(testStream.arn())
-///                     .roleArn(test.arn())
+///                     .roleArn(test.get("arn"))
 ///                     .build())
 ///                 .parallelism(AnalyticsApplicationInputsParallelismArgs.builder()
 ///                     .count(1)
@@ -698,7 +704,7 @@ import 'analytics_application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -706,62 +712,77 @@ import 'analytics_application_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_loggroup" "example" {
+/// resource "aws_cloudwatch_log_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "analytics"
 /// }
-/// resource "aws_cloudwatch_logstream" "example" {
+/// resource "aws_cloudwatch_log_stream" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "example-kinesis-application"
-///   log_group_name = aws_cloudwatch_loggroup.example.name
+///   log_group_name = aws_cloudwatch_log_group.example.name
 /// }
 /// resource "aws_kinesis_stream" "example" {
-///   stream_mode_details = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   stream_mode_details {
 ///     stream_mode = "ON_DEMAND"
 ///   }
 ///   name = "example-kinesis-stream"
 /// }
-/// resource "aws_kinesis_firehosedeliverystream" "example" {
-///   extended_s3_configuration = {
+/// resource "aws_kinesis_firehose_delivery_stream" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   extended_s3_configuration {
 ///     bucket_arn = exampleAwsS3Bucket.arn
 ///     role_arn   = exampleAwsIamRole.arn
 ///   }
 ///   name        = "example-kinesis-delivery-stream"
 ///   destination = "extended_s3"
 /// }
-/// resource "aws_kinesis_analyticsapplication" "test" {
-///   cloudwatch_logging_options = {
-///     log_stream_arn = aws_cloudwatch_logstream.example.arn
+/// resource "aws_kinesis_analytics_application" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cloudwatch_logging_options {
+///     log_stream_arn = aws_cloudwatch_log_stream.example.arn
 ///     role_arn       = exampleAwsIamRole.arn
 ///   }
-///   inputs = {
-///     schema = {
-///       record_format = {
-///         mapping_parameters = {
-///           csv = {
+///   inputs {
+///     schema {
+///       record_format {
+///         mapping_parameters {
+///           csv {
 ///             record_column_delimiter = ","
 ///             record_row_delimiter    = "|"
 ///           }
 ///         }
 ///       }
-///       record_columns = [{
-///         "name"    = "COLUMN_1"
-///         "sqlType" = "INTEGER"
-///       }]
+///       record_columns {
+///         name     = "COLUMN_1"
+///         sql_type = "INTEGER"
+///       }
 ///     }
-///     kinesis_stream = {
+///     kinesis_stream {
 ///       resource_arn = aws_kinesis_stream.example.arn
 ///       role_arn     = exampleAwsIamRole.arn
 ///     }
-///     starting_position_configurations = [{
-///       "startingPosition" = "NOW"
-///     }]
+///     starting_position_configuration {
+///       starting_position = "NOW"
+///     }
 ///     name_prefix = "example_prefix"
 ///   }
 ///   outputs {
-///     schema = {
+///     schema {
 ///       record_format_type = "CSV"
 ///     }
-///     kinesis_firehose = {
-///       resource_arn = aws_kinesis_firehosedeliverystream.example.arn
+///     kinesis_firehose {
+///       resource_arn = aws_kinesis_firehose_delivery_stream.example.arn
 ///       role_arn     = exampleAwsIamRole.arn
 ///     }
 ///     name = "OUTPUT_1"
@@ -831,8 +852,8 @@ import 'analytics_application_state.dart';
 ///
 ///         var exampleFirehoseDeliveryStream = new FirehoseDeliveryStream("exampleFirehoseDeliveryStream", FirehoseDeliveryStreamArgs.builder()
 ///             .extendedS3Configuration(FirehoseDeliveryStreamExtendedS3ConfigurationArgs.builder()
-///                 .bucketArn(exampleAwsS3Bucket.arn())
-///                 .roleArn(exampleAwsIamRole.arn())
+///                 .bucketArn(exampleAwsS3Bucket.get("arn"))
+///                 .roleArn(exampleAwsIamRole.get("arn"))
 ///                 .build())
 ///             .name("example-kinesis-delivery-stream")
 ///             .destination("extended_s3")
@@ -841,7 +862,7 @@ import 'analytics_application_state.dart';
 ///         var test = new AnalyticsApplication("test", AnalyticsApplicationArgs.builder()
 ///             .cloudwatchLoggingOptions(AnalyticsApplicationCloudwatchLoggingOptionsArgs.builder()
 ///                 .logStreamArn(exampleLogStream.arn())
-///                 .roleArn(exampleAwsIamRole.arn())
+///                 .roleArn(exampleAwsIamRole.get("arn"))
 ///                 .build())
 ///             .inputs(AnalyticsApplicationInputsArgs.builder()
 ///                 .schema(AnalyticsApplicationInputsSchemaArgs.builder()
@@ -860,7 +881,7 @@ import 'analytics_application_state.dart';
 ///                     .build())
 ///                 .kinesisStream(AnalyticsApplicationInputsKinesisStreamArgs.builder()
 ///                     .resourceArn(exampleStream.arn())
-///                     .roleArn(exampleAwsIamRole.arn())
+///                     .roleArn(exampleAwsIamRole.get("arn"))
 ///                     .build())
 ///                 .startingPositionConfigurations(AnalyticsApplicationInputsStartingPositionConfigurationArgs.builder()
 ///                     .startingPosition("NOW")
@@ -873,7 +894,7 @@ import 'analytics_application_state.dart';
 ///                     .build())
 ///                 .kinesisFirehose(AnalyticsApplicationOutputKinesisFirehoseArgs.builder()
 ///                     .resourceArn(exampleFirehoseDeliveryStream.arn())
-///                     .roleArn(exampleAwsIamRole.arn())
+///                     .roleArn(exampleAwsIamRole.get("arn"))
 ///                     .build())
 ///                 .name("OUTPUT_1")
 ///                 .build())
@@ -999,7 +1020,7 @@ class AnalyticsApplication extends pulumi.CustomResource {
           'aws:kinesis/analyticsApplication:AnalyticsApplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cloudwatchLoggingOptions = registerOutput<AnalyticsApplicationCloudwatchLoggingOptions?>('cloudwatchLoggingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsApplicationCloudwatchLoggingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -74,7 +74,7 @@ import 'organization_admin_account_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -83,9 +83,15 @@ import 'organization_admin_account_state.dart';
 /// }
 ///
 /// resource "aws_macie2_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_macie2_organizationadminaccount" "example" {
-///   depends_on       = [aws_macie2_account.example]
+/// resource "aws_macie2_organization_admin_account" "example" {
+///   depends_on = [aws_macie2_account.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   admin_account_id = "ID OF THE ADMIN ACCOUNT"
 /// }
 /// ```
@@ -163,7 +169,7 @@ class OrganizationAdminAccount extends pulumi.CustomResource {
           'aws:macie2/organizationAdminAccount:OrganizationAdminAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     adminAccountId = registerOutput<String>('adminAccountId');
     region = registerOutput<String>('region');

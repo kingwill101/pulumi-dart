@@ -130,7 +130,7 @@ import 'event_subscription_state.dart';
 /// 			SnsTopicArn: defaultTopic.Arn,
 /// 			SourceType:  pulumi.String("cluster"),
 /// 			SourceIds: pulumi.StringArray{
-/// 				_default.ID().ToIDOutput().ToStringOutput(),
+/// 				_default.ID(),
 /// 			},
 /// 			Severity: pulumi.String("INFO"),
 /// 			EventCategories: pulumi.StringArray{
@@ -151,7 +151,7 @@ import 'event_subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -160,13 +160,22 @@ import 'event_subscription_state.dart';
 /// }
 ///
 /// resource "aws_redshift_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier = "default"
 ///   database_name      = "default"
 /// }
 /// resource "aws_sns_topic" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "redshift-events"
 /// }
-/// resource "aws_redshift_eventsubscription" "default" {
+/// resource "aws_redshift_event_subscription" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "redshift-event-sub"
 ///   sns_topic_arn    = aws_sns_topic.default.arn
 ///   source_type      = "cluster"
@@ -307,7 +316,7 @@ class EventSubscription extends pulumi.CustomResource {
           'aws:redshift/eventSubscription:EventSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     customerAwsId = registerOutput<String>('customerAwsId');

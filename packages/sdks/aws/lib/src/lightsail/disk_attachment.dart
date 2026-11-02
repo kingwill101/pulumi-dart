@@ -161,7 +161,7 @@ import 'disk_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -169,8 +169,8 @@ import 'disk_attachment_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzones" "available" {
-///   filters {
+/// data "aws_availability_zones" "available" {
+///   filter {
 ///     name   = "opt-in-status"
 ///     values = ["opt-in-not-required"]
 ///   }
@@ -178,17 +178,26 @@ import 'disk_attachment_state.dart';
 /// }
 ///
 /// resource "aws_lightsail_disk" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-disk"
 ///   size_in_gb        = 8
-///   availability_zone = data.aws_getavailabilityzones.available.names[0]
+///   availability_zone = data.aws_availability_zones.available.names[0]
 /// }
 /// resource "aws_lightsail_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-instance"
-///   availability_zone = data.aws_getavailabilityzones.available.names[0]
+///   availability_zone = data.aws_availability_zones.available.names[0]
 ///   blueprint_id      = "amazon_linux_2"
 ///   bundle_id         = "nano_3_0"
 /// }
 /// resource "aws_lightsail_disk_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   disk_name     = aws_lightsail_disk.example.name
 ///   instance_name = aws_lightsail_instance.example.name
 ///   disk_path     = "/dev/xvdf"
@@ -317,7 +326,7 @@ class DiskAttachment extends pulumi.CustomResource {
           'aws:lightsail/disk_attachment:Disk_attachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     diskName = registerOutput<String>('diskName');
     diskPath = registerOutput<String>('diskPath');

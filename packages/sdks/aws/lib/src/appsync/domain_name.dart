@@ -62,7 +62,7 @@ import 'domain_name_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'domain_name_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appsync_domainname" "example" {
+/// resource "aws_appsync_domain_name" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name     = "api.example.com"
 ///   certificate_arn = exampleAwsAcmCertificate.arn
 /// }
@@ -98,7 +101,7 @@ import 'domain_name_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new DomainName("example", DomainNameArgs.builder()
 ///             .domainName("api.example.com")
-///             .certificateArn(exampleAwsAcmCertificate.arn())
+///             .certificateArn(exampleAwsAcmCertificate.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -147,7 +150,7 @@ class DomainName extends pulumi.CustomResource {
           'aws:appsync/domainName:DomainName',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     appsyncDomainName = registerOutput<String>('appsyncDomainName');
     certificateArn = registerOutput<String>('certificateArn');

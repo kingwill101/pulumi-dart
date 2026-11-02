@@ -7,6 +7,10 @@ import 'secret_version_state.dart';
 /// &gt; **NOTE:** If the `AWSCURRENT` staging label is present on this version during resource deletion, that label cannot be removed and will be skipped to prevent errors when fully deleting the secret. That label will leave this secret version active even after the resource is deleted from this provider unless the secret itself is deleted. Move the `AWSCURRENT` staging label before or after deleting this resource from this provider to fully trigger version deprecation if necessary.
 ///
 ///
+/// &gt; **NOTE:** This resource manages one specific version of a secret. If something else creates newer versions, such as rotation, another Pulumi program, or the console, this resource keeps tracking its own version even after that version is no longer `AWSCURRENT`. To read the current value of a secret, use the `aws.secretsmanager.SecretVersion` data source.
+///
+/// &gt; **NOTE:** When a secret's KMS key changes, Secrets Manager re-encrypts only the `AWSCURRENT`, `AWSPENDING`, and `AWSPREVIOUS` versions with the new key. Once the previous key is disabled or deleted, older versions can no longer be decrypted. If this resource's version is one of them, Pulumi keeps the value from state and shows a warning, but cannot import the version or move staging labels onto it. If the version is still `AWSCURRENT` or `AWSPENDING`, reading it fails. See [Change the encryption key for a secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/manage_update-encryption-key.html).
+///
 /// ## Example Usage
 ///
 /// ### Simple String Value
@@ -67,7 +71,7 @@ import 'secret_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,7 +79,10 @@ import 'secret_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_secretsmanager_secretversion" "example" {
+/// resource "aws_secretsmanager_secret_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id     = exampleAwsSecretsmanagerSecret.id
 ///   secret_string = "example-string-to-protect"
 /// }
@@ -102,7 +109,7 @@ import 'secret_version_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new SecretVersion("example", SecretVersionArgs.builder()
-///             .secretId(exampleAwsSecretsmanagerSecret.id())
+///             .secretId(exampleAwsSecretsmanagerSecret.get("id"))
 ///             .secretString("example-string-to-protect")
 ///             .build());
 ///
@@ -164,10 +171,10 @@ import 'secret_version_state.dart';
 /// return await Deployment.RunAsync(() =>
 /// {
 ///     var config = new Config();
-///     var example = config.GetObject<Dictionary<string, string>>("example") ??
+///     var example = config.GetObject<Dictionary<string, string>>("example") ?? new Dictionary<string, object?>
 ///     {
-///         { "key1", "value1" },
-///         { "key2", "value2" },
+///         ["key1"] = "value1",
+///         ["key2"] = "value2",
 ///     };
 ///     var exampleSecretVersion = new Aws.SecretsManager.SecretVersion("example", new()
 ///     {
@@ -215,7 +222,7 @@ import 'secret_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -223,14 +230,17 @@ import 'secret_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_secretsmanager_secretversion" "example" {
+/// resource "aws_secretsmanager_secret_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id     = exampleAwsSecretsmanagerSecret.id
 ///   secret_string = jsonencode(var.example)
 /// }
 /// # The map here can come from other supported configurations
 /// # like locals, resource attribute, map() built-in, etc.
 /// variable "example" {
-///   type = map(optional(string))
+///   type = map(string)
 ///   default = {
 ///     "key1" = "value1"
 ///     "key2" = "value2"
@@ -260,12 +270,12 @@ import 'secret_version_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var example = config.get("example").orElse(Map.ofEntries(
+///         final var example = config.getObject("example", com.pulumi.core.TypeShape.map(String.class, String.class)).orElse(Map.ofEntries(
 ///             Map.entry("key1", "value1"),
 ///             Map.entry("key2", "value2")
 ///         ));
 ///         var exampleSecretVersion = new SecretVersion("exampleSecretVersion", SecretVersionArgs.builder()
-///             .secretId(exampleAwsSecretsmanagerSecret.id())
+///             .secretId(exampleAwsSecretsmanagerSecret.get("id"))
 ///             .secretString(serializeJson(
 ///                 example))
 ///             .build());
@@ -346,7 +356,7 @@ import 'secret_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     std = {
 ///       source = "pulumi/std"
@@ -380,7 +390,7 @@ import 'secret_version_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         ctx.export("example", StdFunctions.jsondecode(JsondecodeArgs.builder()
-///             .input(exampleAwsSecretsmanagerSecretVersion.secretString())
+///             .input(exampleAwsSecretsmanagerSecretVersion.get("secretString"))
 ///             .build()).result().key1());
 ///     }
 /// }
@@ -455,7 +465,7 @@ class SecretVersion extends pulumi.CustomResource {
           'aws:secretsmanager/secretVersion:SecretVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['secretBinary', 'secretString', 'secretStringWo'],
         ) {
     arn = registerOutput<String>('arn');

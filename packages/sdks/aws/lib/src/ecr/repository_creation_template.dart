@@ -314,7 +314,7 @@ import 'repository_creation_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -322,8 +322,8 @@ import 'repository_creation_template_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = ["123456789012"]
@@ -334,17 +334,39 @@ import 'repository_creation_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecr_repositorycreationtemplate" "example" {
-///   encryption_configurations {
+/// resource "aws_ecr_repository_creation_template" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   encryption_configuration {
 ///     encryption_type = "AES256"
 ///   }
 ///   prefix               = "example"
 ///   description          = "An example template"
 ///   image_tag_mutability = "IMMUTABLE"
 ///   custom_role_arn      = "arn:aws:iam::123456789012:role/example"
-///   applied_fors         = ["PULL_THROUGH_CACHE"]
-///   repository_policy    = data.aws_iam_getpolicydocument.example.json
-///   lifecycle_policy     = "{\n  \\\"rules\\\": [\n    {\n      \\\"rulePriority\\\": 1,\n      \\\"description\\\": \\\"Expire images older than 14 days\\\",\n      \\\"selection\\\": {\n        \\\"tagStatus\\\": \\\"untagged\\\",\n        \\\"countType\\\": \\\"sinceImagePushed\\\",\n        \\\"countUnit\\\": \\\"days\\\",\n        \\\"countNumber\\\": 14\n      },\n      \\\"action\\\": {\n        \\\"type\\\": \\\"expire\\\"\n      }\n    }\n  ]\n}\n"
+///   applied_for          = ["PULL_THROUGH_CACHE"]
+///   repository_policy    = data.aws_iam_policy_document.example.json
+///   lifecycle_policy     = <<EOT
+/// {
+///   \"rules\": [
+///     {
+///       \"rulePriority\": 1,
+///       \"description\": \"Expire images older than 14 days\",
+///       \"selection\": {
+///         \"tagStatus\": \"untagged\",
+///         \"countType\": \"sinceImagePushed\",
+///         \"countUnit\": \"days\",
+///         \"countNumber\": 14
+///       },
+///       \"action\": {
+///         \"type\": \"expire\"
+///       }
+///     }
+///   ]
+/// }
+/// EOT
+///
 ///   resource_tags = {
 ///     "Foo" = "Bar"
 ///   }
@@ -547,7 +569,7 @@ class RepositoryCreationTemplate extends pulumi.CustomResource {
           'aws:ecr/repositoryCreationTemplate:RepositoryCreationTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     appliedFors = registerOutput<List<String>>('appliedFors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     customRoleArn = registerOutput<String?>('customRoleArn');

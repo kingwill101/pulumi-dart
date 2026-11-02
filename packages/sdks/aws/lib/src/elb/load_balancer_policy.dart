@@ -393,7 +393,7 @@ import 'load_balancer_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -404,7 +404,10 @@ import 'load_balancer_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elb_loadbalancer" "wu-tang" {
+/// resource "aws_elb_load_balancer" "wu-tang" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   listeners {
 ///     instance_port      = 443
 ///     instance_protocol  = "http"
@@ -418,25 +421,34 @@ import 'load_balancer_policy_state.dart';
 ///     "Name" = "wu-tang"
 ///   }
 /// }
-/// resource "aws_elb_loadbalancerpolicy" "wu-tang-ca-pubkey-policy" {
+/// resource "aws_elb_load_balancer_policy" "wu-tang-ca-pubkey-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_attributes {
 ///     name  = "PublicKey"
 ///     value = file("wu-tang-pubkey")
 ///   }
-///   load_balancer_name = aws_elb_loadbalancer.wu-tang.name
+///   load_balancer_name = aws_elb_load_balancer.wu-tang.name
 ///   policy_name        = "wu-tang-ca-pubkey-policy"
 ///   policy_type_name   = "PublicKeyPolicyType"
 /// }
-/// resource "aws_elb_loadbalancerpolicy" "wu-tang-root-ca-backend-auth-policy" {
+/// resource "aws_elb_load_balancer_policy" "wu-tang-root-ca-backend-auth-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_attributes {
 ///     name  = "PublicKeyPolicyName"
 ///     value = wu-tang-root-ca-pubkey-policy.policyName
 ///   }
-///   load_balancer_name = aws_elb_loadbalancer.wu-tang.name
+///   load_balancer_name = aws_elb_load_balancer.wu-tang.name
 ///   policy_name        = "wu-tang-root-ca-backend-auth-policy"
 ///   policy_type_name   = "BackendServerAuthenticationPolicyType"
 /// }
-/// resource "aws_elb_loadbalancerpolicy" "wu-tang-ssl" {
+/// resource "aws_elb_load_balancer_policy" "wu-tang-ssl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_attributes {
 ///     name  = "ECDHE-ECDSA-AES128-GCM-SHA256"
 ///     value = "true"
@@ -445,28 +457,37 @@ import 'load_balancer_policy_state.dart';
 ///     name  = "Protocol-TLSv1.2"
 ///     value = "true"
 ///   }
-///   load_balancer_name = aws_elb_loadbalancer.wu-tang.name
+///   load_balancer_name = aws_elb_load_balancer.wu-tang.name
 ///   policy_name        = "wu-tang-ssl"
 ///   policy_type_name   = "SSLNegotiationPolicyType"
 /// }
-/// resource "aws_elb_loadbalancerpolicy" "wu-tang-ssl-tls-1-1" {
+/// resource "aws_elb_load_balancer_policy" "wu-tang-ssl-tls-1-1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_attributes {
 ///     name  = "Reference-Security-Policy"
 ///     value = "ELBSecurityPolicy-TLS-1-1-2017-01"
 ///   }
-///   load_balancer_name = aws_elb_loadbalancer.wu-tang.name
+///   load_balancer_name = aws_elb_load_balancer.wu-tang.name
 ///   policy_name        = "wu-tang-ssl"
 ///   policy_type_name   = "SSLNegotiationPolicyType"
 /// }
-/// resource "aws_elb_loadbalancerbackendserverpolicy" "wu-tang-backend-auth-policies-443" {
-///   load_balancer_name = aws_elb_loadbalancer.wu-tang.name
+/// resource "aws_elb_load_balancer_backend_server_policy" "wu-tang-backend-auth-policies-443" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   load_balancer_name = aws_elb_load_balancer.wu-tang.name
 ///   instance_port      = 443
-///   policy_names       = [aws_elb_loadbalancerpolicy.wu-tang-root-ca-backend-auth-policy.policy_name]
+///   policy_names       = [aws_elb_load_balancer_policy.wu-tang-root-ca-backend-auth-policy.policy_name]
 /// }
-/// resource "aws_elb_listenerpolicy" "wu-tang-listener-policies-443" {
-///   load_balancer_name = aws_elb_loadbalancer.wu-tang.name
+/// resource "aws_elb_listener_policy" "wu-tang-listener-policies-443" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   load_balancer_name = aws_elb_load_balancer.wu-tang.name
 ///   load_balancer_port = 443
-///   policy_names       = [aws_elb_loadbalancerpolicy.wu-tang-ssl.policy_name]
+///   policy_names       = [aws_elb_load_balancer_policy.wu-tang-ssl.policy_name]
 /// }
 /// ```
 /// ```java
@@ -528,7 +549,7 @@ import 'load_balancer_policy_state.dart';
 ///         var wu_tang_root_ca_backend_auth_policy = new LoadBalancerPolicy("wu-tang-root-ca-backend-auth-policy", LoadBalancerPolicyArgs.builder()
 ///             .policyAttributes(LoadBalancerPolicyPolicyAttributeArgs.builder()
 ///                 .name("PublicKeyPolicyName")
-///                 .value(wu_tang_root_ca_pubkey_policy.policyName())
+///                 .value(wu_tang_root_ca_pubkey_policy.get("policyName"))
 ///                 .build())
 ///             .loadBalancerName(wu_tang.name())
 ///             .policyName("wu-tang-root-ca-backend-auth-policy")
@@ -673,7 +694,7 @@ class LoadBalancerPolicy extends pulumi.CustomResource {
           'aws:elb/loadBalancerPolicy:LoadBalancerPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     loadBalancerName = registerOutput<String>('loadBalancerName');
     policyAttributes = registerOutput<List<LoadBalancerPolicyPolicyAttribute>>('policyAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerPolicyPolicyAttribute>(guardedValue, (value) => LoadBalancerPolicyPolicyAttribute.fromMap((value as Map).cast<String, dynamic>())); });

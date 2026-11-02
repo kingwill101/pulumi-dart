@@ -81,7 +81,7 @@ import 'upload_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -90,9 +90,15 @@ import 'upload_state.dart';
 /// }
 ///
 /// resource "aws_devicefarm_project" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// resource "aws_devicefarm_upload" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   project_arn = aws_devicefarm_project.example.arn
 ///   type        = "APPIUM_JAVA_TESTNG_TEST_SPEC"
@@ -196,7 +202,7 @@ class Upload extends pulumi.CustomResource {
           'aws:devicefarm/upload:Upload',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     category = registerOutput<String>('category');

@@ -79,7 +79,7 @@ import 'open_zfs_file_system_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -87,7 +87,10 @@ import 'open_zfs_file_system_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fsx_openzfsfilesystem" "test" {
+/// resource "aws_fsx_open_zfs_file_system" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   storage_capacity    = 64
 ///   subnet_ids          = [test1.id]
 ///   deployment_type     = "SINGLE_AZ_1"
@@ -117,7 +120,7 @@ import 'open_zfs_file_system_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var test = new OpenZfsFileSystem("test", OpenZfsFileSystemArgs.builder()
 ///             .storageCapacity(64)
-///             .subnetIds(test1.id())
+///             .subnetIds(test1.get("id"))
 ///             .deploymentType("SINGLE_AZ_1")
 ///             .throughputCapacity(64)
 ///             .build());
@@ -213,7 +216,7 @@ import 'open_zfs_file_system_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -221,9 +224,10 @@ import 'open_zfs_file_system_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fsx_openzfsfilesystem" "example" {
+/// resource "aws_fsx_open_zfs_file_system" "example" {
 ///   lifecycle {
-///     ignore_changes = [securityGroupIds]
+///     ignore_changes        = [securityGroupIds]
+///     create_before_destroy = true
 ///   }
 ///   security_group_ids = [exampleAwsSecurityGroup.id]
 /// }
@@ -251,7 +255,7 @@ import 'open_zfs_file_system_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new OpenZfsFileSystem("example", OpenZfsFileSystemArgs.builder()
-///             .securityGroupIds(exampleAwsSecurityGroup.id())
+///             .securityGroupIds(exampleAwsSecurityGroup.get("id"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .ignoreChanges("securityGroupIds")
 ///                 .build());
@@ -352,7 +356,7 @@ class OpenZfsFileSystem extends pulumi.CustomResource {
           'aws:fsx/openZfsFileSystem:OpenZfsFileSystem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     automaticBackupRetentionDays = registerOutput<int?>('automaticBackupRetentionDays');

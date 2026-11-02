@@ -62,7 +62,7 @@ import 'domain_name_api_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'domain_name_api_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appsync_domainnameapiassociation" "example" {
+/// resource "aws_appsync_domain_name_api_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id      = exampleAwsAppsyncGraphqlApi.id
 ///   domain_name = exampleAwsAppsyncDomainName.domainName
 /// }
@@ -97,8 +100,8 @@ import 'domain_name_api_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DomainNameApiAssociation("example", DomainNameApiAssociationArgs.builder()
-///             .apiId(exampleAwsAppsyncGraphqlApi.id())
-///             .domainName(exampleAwsAppsyncDomainName.domainName())
+///             .apiId(exampleAwsAppsyncGraphqlApi.get("id"))
+///             .domainName(exampleAwsAppsyncDomainName.get("domainName"))
 ///             .build());
 ///
 ///     }
@@ -141,7 +144,7 @@ class DomainNameApiAssociation extends pulumi.CustomResource {
           'aws:appsync/domainNameApiAssociation:DomainNameApiAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     domainName = registerOutput<String>('domainName');

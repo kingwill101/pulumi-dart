@@ -74,7 +74,7 @@ import 'replication_configuration_state.dart';
 /// 			Destination: &efs.ReplicationConfigurationDestinationArgs{
 /// 				Region: pulumi.String("us-west-2"),
 /// 			},
-/// 			SourceFileSystemId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			SourceFileSystemId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -84,7 +84,7 @@ import 'replication_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -92,13 +92,19 @@ import 'replication_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_efs_filesystem" "example" {
+/// resource "aws_efs_file_system" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_efs_replicationconfiguration" "example" {
-///   destination = {
+/// resource "aws_efs_replication_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   destination {
 ///     region = "us-west-2"
 ///   }
-///   source_file_system_id = aws_efs_filesystem.example.id
+///   source_file_system_id = aws_efs_file_system.example.id
 /// }
 /// ```
 /// ```java
@@ -219,7 +225,7 @@ import 'replication_configuration_state.dart';
 /// 				AvailabilityZoneName: pulumi.String("us-west-2b"),
 /// 				KmsKeyId:             pulumi.String("1234abcd-12ab-34cd-56ef-1234567890ab"),
 /// 			},
-/// 			SourceFileSystemId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			SourceFileSystemId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -229,7 +235,7 @@ import 'replication_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -237,14 +243,20 @@ import 'replication_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_efs_filesystem" "example" {
+/// resource "aws_efs_file_system" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_efs_replicationconfiguration" "example" {
-///   destination = {
+/// resource "aws_efs_replication_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   destination {
 ///     availability_zone_name = "us-west-2b"
 ///     kms_key_id             = "1234abcd-12ab-34cd-56ef-1234567890ab"
 ///   }
-///   source_file_system_id = aws_efs_filesystem.example.id
+///   source_file_system_id = aws_efs_file_system.example.id
 /// }
 /// ```
 /// ```java
@@ -367,7 +379,7 @@ import 'replication_configuration_state.dart';
 /// 				FileSystemId: pulumi.String("fs-1234567890"),
 /// 				Region:       pulumi.String("us-west-2"),
 /// 			},
-/// 			SourceFileSystemId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			SourceFileSystemId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -377,7 +389,7 @@ import 'replication_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -385,14 +397,20 @@ import 'replication_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_efs_filesystem" "example" {
+/// resource "aws_efs_file_system" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_efs_replicationconfiguration" "example" {
-///   destination = {
+/// resource "aws_efs_replication_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   destination {
 ///     file_system_id = "fs-1234567890"
 ///     region         = "us-west-2"
 ///   }
-///   source_file_system_id = aws_efs_filesystem.example.id
+///   source_file_system_id = aws_efs_file_system.example.id
 /// }
 /// ```
 /// ```java
@@ -495,7 +513,7 @@ class ReplicationConfiguration extends pulumi.CustomResource {
           'aws:efs/replicationConfiguration:ReplicationConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     creationTime = registerOutput<String>('creationTime');
     destination = registerOutput<ReplicationConfigurationDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationConfigurationDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });

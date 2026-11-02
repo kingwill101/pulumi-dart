@@ -77,7 +77,7 @@ import 'service_specific_credential_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,9 +86,15 @@ import 'service_specific_credential_state.dart';
 /// }
 ///
 /// resource "aws_iam_user" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
-/// resource "aws_iam_servicespecificcredential" "example" {
+/// resource "aws_iam_service_specific_credential" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_name = "codecommit.amazonaws.com"
 ///   user_name    = aws_iam_user.example.name
 /// }
@@ -218,7 +224,7 @@ import 'service_specific_credential_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -227,9 +233,15 @@ import 'service_specific_credential_state.dart';
 /// }
 ///
 /// resource "aws_iam_user" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
-/// resource "aws_iam_servicespecificcredential" "bedrock" {
+/// resource "aws_iam_service_specific_credential" "bedrock" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_name        = "bedrock.amazonaws.com"
 ///   user_name           = aws_iam_user.example.name
 ///   credential_age_days = 30 # API key expires after 30 days
@@ -329,7 +341,7 @@ class ServiceSpecificCredential extends pulumi.CustomResource {
           'aws:iam/serviceSpecificCredential:ServiceSpecificCredential',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['serviceCredentialSecret', 'servicePassword'],
         ) {
     createDate = registerOutput<String>('createDate');
