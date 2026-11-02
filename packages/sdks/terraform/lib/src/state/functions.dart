@@ -24,6 +24,17 @@ Future<GetAzureRMReferenceResult> getAzureRMReference(
   return GetAzureRMReferenceResult.fromMap(result);
 }
 
+pulumi.Output<GetAzureRMReferenceResult> getAzureRMReferenceOutput(
+  GetAzureRMReferenceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'terraform:state:getAzureRMReference',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAzureRMReferenceResult.fromMap);
+}
+
 /// Access state from the local filesystem.
 /// [args] Arguments passed to this invoke. {@macro pulumi_state_get_local_reference_args_doc}
 /// [options] Invoke options controlling this call.
@@ -38,6 +49,17 @@ Future<GetLocalReferenceResult> getLocalReference(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLocalReferenceResult.fromMap(result);
+}
+
+pulumi.Output<GetLocalReferenceResult> getLocalReferenceOutput(
+  GetLocalReferenceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'terraform:state:getLocalReference',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLocalReferenceResult.fromMap);
 }
 
 /// Access state from a remote backend.
@@ -56,6 +78,17 @@ Future<GetRemoteReferenceResult> getRemoteReference(
   return GetRemoteReferenceResult.fromMap(result);
 }
 
+pulumi.Output<GetRemoteReferenceResult> getRemoteReferenceOutput(
+  GetRemoteReferenceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'terraform:state:getRemoteReference',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRemoteReferenceResult.fromMap);
+}
+
 /// Access state from an AWS S3 bucket.
 /// [args] Arguments passed to this invoke. {@macro pulumi_state_get_s3_reference_args_doc}
 /// [options] Invoke options controlling this call.
@@ -70,4 +103,15 @@ Future<GetS3ReferenceResult> getS3Reference(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetS3ReferenceResult.fromMap(result);
+}
+
+pulumi.Output<GetS3ReferenceResult> getS3ReferenceOutput(
+  GetS3ReferenceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'terraform:state:getS3Reference',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetS3ReferenceResult.fromMap);
 }

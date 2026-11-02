@@ -8,53 +8,53 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_state_get_azure_rmreference_args_doc}
 class GetAzureRMReferenceArgs {
   /// The access key of the storage account. Falls back to the ARM_ACCESS_KEY environment variable when unset.
-  final pulumi.Input<String>? accessKey;
+  final pulumi.Input<String?>? accessKey;
   /// The password for the client certificate specified in clientCertificatePath. Falls back to the ARM_CLIENT_CERTIFICATE_PASSWORD environment variable when unset.
-  final pulumi.Input<String>? clientCertificatePassword;
+  final pulumi.Input<String?>? clientCertificatePassword;
   /// The path to the PFX file used as the client certificate for service principal authentication. Falls back to the ARM_CLIENT_CERTIFICATE_PATH environment variable when unset.
-  final pulumi.Input<String>? clientCertificatePath;
+  final pulumi.Input<String?>? clientCertificatePath;
   /// The client ID to authenticate as. Falls back to the ARM_CLIENT_ID environment variable when unset.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The client secret used for service principal authentication. Falls back to the ARM_CLIENT_SECRET environment variable when unset.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// The name of the storage container within the storage account.
   final pulumi.Input<String> containerName;
   /// A custom endpoint for the Azure Resource Manager API. Falls back to the ARM_ENDPOINT environment variable when unset.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// The Azure cloud environment to use: public (default), china, german, stack or usgovernment. Falls back to the ARM_ENVIRONMENT environment variable when unset.
-  final pulumi.Input<String>? environment;
+  final pulumi.Input<String?>? environment;
   /// The name of the blob holding the Terraform state file inside the storage container.
   final pulumi.Input<String> key;
   /// The hostname of the Azure metadata service used to obtain the cloud environment. Falls back to the ARM_METADATA_HOST environment variable when unset.
-  final pulumi.Input<String>? metadataHost;
+  final pulumi.Input<String?>? metadataHost;
   /// The endpoint of the Managed Service Identity. Falls back to the ARM_MSI_ENDPOINT environment variable when unset.
-  final pulumi.Input<String>? msiEndpoint;
+  final pulumi.Input<String?>? msiEndpoint;
   /// The bearer token for requests to the oidcRequestUrl URL. Falls back to the ARM_OIDC_REQUEST_TOKEN or ACTIONS_ID_TOKEN_REQUEST_TOKEN environment variables when unset.
-  final pulumi.Input<String>? oidcRequestToken;
+  final pulumi.Input<String?>? oidcRequestToken;
   /// The URL of the OIDC provider to request an ID token from, e.g. in GitHub Actions. Requires oidcRequestToken. Falls back to the ARM_OIDC_REQUEST_URL or ACTIONS_ID_TOKEN_REQUEST_URL environment variables when unset.
-  final pulumi.Input<String>? oidcRequestUrl;
+  final pulumi.Input<String?>? oidcRequestUrl;
   /// A JWT token for OIDC authentication. Conflicts with oidcRequestToken. Falls back to the ARM_OIDC_TOKEN environment variable when unset.
-  final pulumi.Input<String>? oidcToken;
+  final pulumi.Input<String?>? oidcToken;
   /// The path to a file containing a JWT token for OIDC authentication. Conflicts with oidcRequestToken. Falls back to the ARM_OIDC_TOKEN_FILE_PATH environment variable when unset.
-  final pulumi.Input<String>? oidcTokenFilePath;
+  final pulumi.Input<String?>? oidcTokenFilePath;
   /// The name of the resource group holding the storage account. Required when using AzureAD authentication against the Azure Resource Manager API to look up the storage access key.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A SAS token for accessing the storage container. Falls back to the ARM_SAS_TOKEN environment variable when unset.
-  final pulumi.Input<String>? sasToken;
+  final pulumi.Input<String?>? sasToken;
   /// The name of the storage account.
   final pulumi.Input<String> storageAccountName;
   /// The subscription ID holding the storage account. Falls back to the ARM_SUBSCRIPTION_ID environment variable when unset.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// The tenant ID to authenticate against. Falls back to the ARM_TENANT_ID environment variable when unset.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// Whether to authenticate against the storage container with AzureAD instead of an access key. Falls back to the ARM_USE_AZUREAD environment variable when unset.
-  final pulumi.Input<bool>? useAzureadAuth;
+  final pulumi.Input<bool?>? useAzureadAuth;
   /// Whether to authenticate using Managed Service Identity. Falls back to the ARM_USE_MSI environment variable when unset.
-  final pulumi.Input<bool>? useMsi;
+  final pulumi.Input<bool?>? useMsi;
   /// Whether to authenticate using OIDC. Falls back to the ARM_USE_OIDC environment variable when unset.
-  final pulumi.Input<bool>? useOidc;
+  final pulumi.Input<bool?>? useOidc;
   /// The Terraform workspace to read state from.
-  final pulumi.Input<String>? workspace;
+  final pulumi.Input<String?>? workspace;
 
   /// Creates a new [GetAzureRMReferenceArgs].
   /// [accessKey] The access key of the storage account. Falls back to the ARM_ACCESS_KEY environment variable when unset.
@@ -81,7 +81,7 @@ class GetAzureRMReferenceArgs {
   /// [useMsi] Whether to authenticate using Managed Service Identity. Falls back to the ARM_USE_MSI environment variable when unset.
   /// [useOidc] Whether to authenticate using OIDC. Falls back to the ARM_USE_OIDC environment variable when unset.
   /// [workspace] The Terraform workspace to read state from.
-  const GetAzureRMReferenceArgs({
+  GetAzureRMReferenceArgs({
     this.accessKey,
     this.clientCertificatePassword,
     this.clientCertificatePath,
@@ -105,8 +105,8 @@ class GetAzureRMReferenceArgs {
     this.useAzureadAuth,
     this.useMsi,
     this.useOidc,
-    this.workspace,
-  });
+    pulumi.Input<String?>? workspace,
+  }) : workspace = workspace ?? pulumi.Input.fromValue('default');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

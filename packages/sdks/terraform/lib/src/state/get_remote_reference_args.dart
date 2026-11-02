@@ -9,11 +9,11 @@ import 'workspaces.dart';
 /// {@macro pulumi_state_get_remote_reference_args_doc}
 class GetRemoteReferenceArgs {
   /// The remote backend hostname to connect to.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// The name of the organization containing the targeted workspace(s).
   final pulumi.Input<String> organization;
   /// The token used to authenticate with the remote backend.
-  final pulumi.Input<String>? token;
+  final pulumi.Input<String?>? token;
   final pulumi.Input<Workspaces> workspaces;
 
   /// Creates a new [GetRemoteReferenceArgs].
@@ -21,12 +21,12 @@ class GetRemoteReferenceArgs {
   /// [organization] The name of the organization containing the targeted workspace(s).
   /// [token] The token used to authenticate with the remote backend.
   /// [workspaces] Required.
-  const GetRemoteReferenceArgs({
-    this.hostname,
+  GetRemoteReferenceArgs({
+    pulumi.Input<String?>? hostname,
     required this.organization,
     this.token,
     required this.workspaces,
-  });
+  }) : hostname = hostname ?? pulumi.Input.fromValue('app.terraform.io');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -3,16 +3,16 @@
 import 'package:pulumi_terraform/providers.dart' as module_providers;
 import 'package:pulumi_terraform/state.dart' as module_state;
 
-final providers = const _ProvidersModuleNamespace();
-final state = const _StateModuleNamespace();
+final providers = _ProvidersModuleNamespace();
+final state = _StateModuleNamespace();
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final Terraform = module_providers.ProviderProvider.new;
 }
 
 class _StateModuleNamespace {
-  const _StateModuleNamespace();
+  _StateModuleNamespace();
   final GetAzureRMReferenceArgs = module_state.GetAzureRMReferenceArgs.new;
   final GetAzureRMReferenceResult = module_state.GetAzureRMReferenceResult.new;
   final GetAzureRMReferenceResultArgs = module_state.GetAzureRMReferenceResult.new;
@@ -28,7 +28,11 @@ class _StateModuleNamespace {
   final Workspaces = module_state.Workspaces.new;
   final WorkspacesArgs = module_state.Workspaces.new;
   final getAzureRMReference = module_state.getAzureRMReference;
+  final getAzureRMReferenceOutput = module_state.getAzureRMReferenceOutput;
   final getLocalReference = module_state.getLocalReference;
+  final getLocalReferenceOutput = module_state.getLocalReferenceOutput;
   final getRemoteReference = module_state.getRemoteReference;
+  final getRemoteReferenceOutput = module_state.getRemoteReferenceOutput;
   final getS3Reference = module_state.getS3Reference;
+  final getS3ReferenceOutput = module_state.getS3ReferenceOutput;
 }

@@ -8,63 +8,63 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_state_get_s3_reference_args_doc}
 class GetS3ReferenceArgs {
   /// AWS access key.
-  final pulumi.Input<String>? accessKey;
+  final pulumi.Input<String?>? accessKey;
   /// The duration, in seconds, of the assume role session.
-  final pulumi.Input<int>? assumeRoleDurationSeconds;
+  final pulumi.Input<int?>? assumeRoleDurationSeconds;
   /// IAM Policy JSON describing further restricting permissions for the IAM Role being assumed.
-  final pulumi.Input<String>? assumeRolePolicy;
+  final pulumi.Input<String?>? assumeRolePolicy;
   /// Amazon Resource Names (ARNs) of IAM Policies describing further restricting permissions for the IAM Role being assumed.
-  final pulumi.Input<List<String>>? assumeRolePolicyArns;
+  final pulumi.Input<List<String>?>? assumeRolePolicyArns;
   /// Assume role session tags.
-  final pulumi.Input<Map<String, String>>? assumeRoleTags;
+  final pulumi.Input<Map<String, String>?>? assumeRoleTags;
   /// Assume role session tag keys to pass to any subsequent sessions.
-  final pulumi.Input<List<String>>? assumeRoleTransitiveTagKeys;
+  final pulumi.Input<List<String>?>? assumeRoleTransitiveTagKeys;
   /// The name of the S3 bucket.
   final pulumi.Input<String> bucket;
   /// Whether to enable server side encryption of the state file.
-  final pulumi.Input<bool>? encrypt;
+  final pulumi.Input<bool?>? encrypt;
   /// A custom endpoint for the S3 API.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// The external ID to use when assuming the role.
-  final pulumi.Input<String>? externalId;
+  final pulumi.Input<String?>? externalId;
   /// Force s3 to use path-style addressing instead of virtual hosted-bucket addressing. Required by most S3-compatible stores.
-  final pulumi.Input<bool>? forcePathStyle;
+  final pulumi.Input<bool?>? forcePathStyle;
   /// A custom endpoint for the IAM API.
-  final pulumi.Input<String>? iamEndpoint;
+  final pulumi.Input<String?>? iamEndpoint;
   /// The path to the state file inside the bucket. When using a non-default workspace, the state path is /workspace_key_prefix/workspace_name/key.
   final pulumi.Input<String> key;
   /// The ARN of a KMS Key to use for encrypting the state.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// The maximum number of times an AWS API request is retried on retryable failure.
-  final pulumi.Input<int>? maxRetries;
+  final pulumi.Input<int?>? maxRetries;
   /// AWS profile name as set in the shared credentials file.
-  final pulumi.Input<String>? profile;
+  final pulumi.Input<String?>? profile;
   /// AWS region of the S3 bucket. Falls back to the AWS_REGION or AWS_DEFAULT_REGION environment variables when unset.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ARN of an IAM Role to be assumed in order to read the state.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
   /// AWS secret key.
-  final pulumi.Input<String>? secretKey;
+  final pulumi.Input<String?>? secretKey;
   /// The session name to use when assuming the role.
-  final pulumi.Input<String>? sessionName;
+  final pulumi.Input<String?>? sessionName;
   /// Path to a shared credentials file.
-  final pulumi.Input<String>? sharedCredentialsFile;
+  final pulumi.Input<String?>? sharedCredentialsFile;
   /// Skip the credentials validation via the STS API.
-  final pulumi.Input<bool>? skipCredentialsValidation;
+  final pulumi.Input<bool?>? skipCredentialsValidation;
   /// Skip the AWS Metadata API check.
-  final pulumi.Input<bool>? skipMetadataApiCheck;
+  final pulumi.Input<bool?>? skipMetadataApiCheck;
   /// Skip static validation of region name.
-  final pulumi.Input<bool>? skipRegionValidation;
+  final pulumi.Input<bool?>? skipRegionValidation;
   /// The base64-encoded encryption key to use for server-side encryption with customer-provided keys (SSE-C).
-  final pulumi.Input<String>? sseCustomerKey;
+  final pulumi.Input<String?>? sseCustomerKey;
   /// A custom endpoint for the STS API.
-  final pulumi.Input<String>? stsEndpoint;
+  final pulumi.Input<String?>? stsEndpoint;
   /// AWS session token.
-  final pulumi.Input<String>? token;
+  final pulumi.Input<String?>? token;
   /// The Terraform workspace to read state from.
-  final pulumi.Input<String>? workspace;
+  final pulumi.Input<String?>? workspace;
   /// The prefix applied to the non-default state path inside the bucket.
-  final pulumi.Input<String>? workspaceKeyPrefix;
+  final pulumi.Input<String?>? workspaceKeyPrefix;
 
   /// Creates a new [GetS3ReferenceArgs].
   /// [accessKey] AWS access key.
@@ -96,7 +96,7 @@ class GetS3ReferenceArgs {
   /// [token] AWS session token.
   /// [workspace] The Terraform workspace to read state from.
   /// [workspaceKeyPrefix] The prefix applied to the non-default state path inside the bucket.
-  const GetS3ReferenceArgs({
+  GetS3ReferenceArgs({
     this.accessKey,
     this.assumeRoleDurationSeconds,
     this.assumeRolePolicy,
@@ -124,9 +124,9 @@ class GetS3ReferenceArgs {
     this.sseCustomerKey,
     this.stsEndpoint,
     this.token,
-    this.workspace,
+    pulumi.Input<String?>? workspace,
     this.workspaceKeyPrefix,
-  });
+  }) : workspace = workspace ?? pulumi.Input.fromValue('default');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -165,7 +165,7 @@ class GetS3ReferenceArgs {
   factory GetS3ReferenceArgs.fromMap(Map<String, dynamic> map) {
     return GetS3ReferenceArgs(
       accessKey: (() { final guardedValue = map['accessKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      assumeRoleDurationSeconds: (() { final guardedValue = map['assumeRoleDurationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      assumeRoleDurationSeconds: (() { final guardedValue = map['assumeRoleDurationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       assumeRolePolicy: (() { final guardedValue = map['assumeRolePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       assumeRolePolicyArns: (() { final guardedValue = map['assumeRolePolicyArns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       assumeRoleTags: (() { final guardedValue = map['assumeRoleTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -178,7 +178,7 @@ class GetS3ReferenceArgs {
       iamEndpoint: (() { final guardedValue = map['iamEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       key: pulumi.Input.fromValue(map['key'] as String),
       kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxRetries: (() { final guardedValue = map['maxRetries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxRetries: (() { final guardedValue = map['maxRetries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       profile: (() { final guardedValue = map['profile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       roleArn: (() { final guardedValue = map['roleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
