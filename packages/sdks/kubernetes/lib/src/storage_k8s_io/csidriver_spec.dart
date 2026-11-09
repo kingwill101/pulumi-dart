@@ -135,7 +135,7 @@ class CSIDriverSpec {
     return CSIDriverSpec(
       attachRequired: (() { final guardedValue = map['attachRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       fsGroupPolicy: (() { final guardedValue = map['fsGroupPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      nodeAllocatableUpdatePeriodSeconds: (() { final guardedValue = map['nodeAllocatableUpdatePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      nodeAllocatableUpdatePeriodSeconds: (() { final guardedValue = map['nodeAllocatableUpdatePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       podInfoOnMount: (() { final guardedValue = map['podInfoOnMount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       preventPodSchedulingIfMissing: (() { final guardedValue = map['preventPodSchedulingIfMissing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       requiresRepublish: (() { final guardedValue = map['requiresRepublish']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

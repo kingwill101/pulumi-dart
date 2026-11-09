@@ -82,7 +82,7 @@ class PodCertificateRequestSpec {
 
   factory PodCertificateRequestSpec.fromMap(Map<String, dynamic> map) {
     return PodCertificateRequestSpec(
-      maxExpirationSeconds: (() { final guardedValue = map['maxExpirationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxExpirationSeconds: (() { final guardedValue = map['maxExpirationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       nodeName: pulumi.Input.fromValue(map['nodeName'] as String),
       nodeUID: pulumi.Input.fromValue(map['nodeUID'] as String),
       podName: pulumi.Input.fromValue(map['podName'] as String),

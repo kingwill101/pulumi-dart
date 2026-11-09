@@ -19,6 +19,8 @@ class ChartHelmShV4Args {
   final pulumi.Input<bool?>? includeHooks;
   /// Location of public keys used for verification. Used only if `verify` is true
   final pulumi.Input<dynamic>? keyring;
+  /// The Kubernetes version used for Capabilities.KubeVersion when rendering the chart (equivalent to `helm template --kube-version`). If not specified, the version is discovered from the connected cluster.
+  final pulumi.Input<String?>? kubeVersion;
   /// Release name.
   final pulumi.Input<String?>? name;
   /// Namespace for the release.
@@ -50,6 +52,7 @@ class ChartHelmShV4Args {
   /// [devel] Use chart development versions, too. Equivalent to version '&gt;0.0.0-0'. If `version` is set, this is ignored.
   /// [includeHooks] By default, Helm hook resources (those annotated with `helm.sh/hook`) are omitted from the rendered output. When the provider is configured with `renderYamlToDirectory`, set this to true to include hook resources in the rendered manifests so that another tool (e.g. Argo CD) can apply them. Test hooks (`helm.sh/hook: test`) are always excluded. This setting has no effect outside of render mode, where hooks are not supported.
   /// [keyring] Location of public keys used for verification. Used only if `verify` is true
+  /// [kubeVersion] The Kubernetes version used for Capabilities.KubeVersion when rendering the chart (equivalent to `helm template --kube-version`). If not specified, the version is discovered from the connected cluster.
   /// [name] Release name.
   /// [namespace] Namespace for the release.
   /// [plainHttp] Use insecure HTTP for the chart download instead of HTTPS.
@@ -68,6 +71,7 @@ class ChartHelmShV4Args {
     this.devel,
     this.includeHooks,
     this.keyring,
+    this.kubeVersion,
     this.name,
     this.namespace,
     this.plainHttp,
@@ -89,6 +93,7 @@ class ChartHelmShV4Args {
       'devel': ?devel,
       'includeHooks': ?includeHooks,
       'keyring': ?keyring,
+      'kubeVersion': ?kubeVersion,
       'name': ?name,
       'namespace': ?namespace,
       'plainHttp': ?plainHttp,
@@ -111,6 +116,7 @@ class ChartHelmShV4Args {
       devel: (() { final guardedValue = map['devel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       includeHooks: (() { final guardedValue = map['includeHooks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       keyring: (() { final guardedValue = map['keyring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      kubeVersion: (() { final guardedValue = map['kubeVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       plainHttp: (() { final guardedValue = map['plainHttp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

@@ -27,7 +27,7 @@ class ContainerImage {
   factory ContainerImage.fromMap(Map<String, dynamic> map) {
     return ContainerImage(
       names: pulumi.Input.fromValue((map['names'] as List).cast<String>()),
-      sizeBytes: (() { final guardedValue = map['sizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      sizeBytes: (() { final guardedValue = map['sizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

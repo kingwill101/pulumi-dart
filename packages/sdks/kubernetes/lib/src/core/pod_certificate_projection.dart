@@ -84,9 +84,9 @@ class PodCertificateProjection {
       credentialBundlePath: (() { final guardedValue = map['credentialBundlePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keyPath: (() { final guardedValue = map['keyPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keyType: pulumi.Input.fromValue(map['keyType'] as String),
-      maxExpirationSeconds: (() { final guardedValue = map['maxExpirationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxExpirationSeconds: (() { final guardedValue = map['maxExpirationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       signerName: pulumi.Input.fromValue(map['signerName'] as String),
-      user: (() { final guardedValue = map['user']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      user: (() { final guardedValue = map['user']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       userAnnotations: (() { final guardedValue = map['userAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

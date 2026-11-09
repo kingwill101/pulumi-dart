@@ -34,7 +34,7 @@ class HPAScalingRulesAutoscalingV2beta2 {
     return HPAScalingRulesAutoscalingV2beta2(
       policies: (() { final guardedValue = map['policies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HPAScalingPolicyAutoscalingV2beta2>(guardedValue, (value) => HPAScalingPolicyAutoscalingV2beta2.fromMap((value as Map).cast<String, dynamic>()))); })(),
       selectPolicy: (() { final guardedValue = map['selectPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      stabilizationWindowSeconds: (() { final guardedValue = map['stabilizationWindowSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      stabilizationWindowSeconds: (() { final guardedValue = map['stabilizationWindowSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }
