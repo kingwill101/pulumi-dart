@@ -89,7 +89,7 @@ import 'subscription_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -98,6 +98,9 @@ import 'subscription_timeouts.dart';
 /// }
 ///
 /// resource "aws_pricingplanmanager_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   plan_family   = "CloudFront"
 ///   plan_tier     = "PRO"
 ///   resource_arns = [exampleAwsCloudfrontDistribution.arn, exampleAwsWafv2WebAcl.arn]
@@ -128,8 +131,8 @@ import 'subscription_timeouts.dart';
 ///             .planFamily("CloudFront")
 ///             .planTier("PRO")
 ///             .resourceArns(
-///                 exampleAwsCloudfrontDistribution.arn(),
-///                 exampleAwsWafv2WebAcl.arn())
+///                 exampleAwsCloudfrontDistribution.get("arn"),
+///                 exampleAwsWafv2WebAcl.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -229,7 +232,7 @@ import 'subscription_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -238,6 +241,9 @@ import 'subscription_timeouts.dart';
 /// }
 ///
 /// resource "aws_pricingplanmanager_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   approval_mode = "MANUAL"
 ///   plan_family   = "CloudFront"
 ///   plan_tier     = "BUSINESS"
@@ -270,8 +276,8 @@ import 'subscription_timeouts.dart';
 ///             .planFamily("CloudFront")
 ///             .planTier("BUSINESS")
 ///             .resourceArns(
-///                 exampleAwsCloudfrontDistribution.arn(),
-///                 exampleAwsWafv2WebAcl.arn())
+///                 exampleAwsCloudfrontDistribution.get("arn"),
+///                 exampleAwsWafv2WebAcl.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -342,7 +348,7 @@ class Subscription extends pulumi.CustomResource {
           'aws:pricingplanmanager/subscription:Subscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     approvalMode = registerOutput<String?>('approvalMode');
     arn = registerOutput<String>('arn');

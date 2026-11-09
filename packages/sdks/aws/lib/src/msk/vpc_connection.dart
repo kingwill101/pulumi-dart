@@ -89,7 +89,7 @@ import 'vpc_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -97,7 +97,10 @@ import 'vpc_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_msk_vpcconnection" "test" {
+/// resource "aws_msk_vpc_connection" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authentication     = "SASL_IAM"
 ///   target_cluster_arn = "aws_msk_cluster.arn"
 ///   vpc_id             = testAwsVpc.id
@@ -129,9 +132,9 @@ import 'vpc_connection_state.dart';
 ///         var test = new VpcConnection("test", VpcConnectionArgs.builder()
 ///             .authentication("SASL_IAM")
 ///             .targetClusterArn("aws_msk_cluster.arn")
-///             .vpcId(testAwsVpc.id())
-///             .clientSubnets(testAwsSubnet.stream().map(element -> element.id()).collect(toList()))
-///             .securityGroups(testAwsSecurityGroup.id())
+///             .vpcId(testAwsVpc.get("id"))
+///             .clientSubnets(testAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
+///             .securityGroups(testAwsSecurityGroup.get("id"))
 ///             .build());
 ///
 ///     }
@@ -178,7 +181,7 @@ class VpcConnection extends pulumi.CustomResource {
           'aws:msk/vpcConnection:VpcConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     authentication = registerOutput<String>('authentication');

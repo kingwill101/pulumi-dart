@@ -87,7 +87,7 @@ import 'member_state.dart';
 /// 		}
 /// 		_, err = guardduty.NewMember(ctx, "member", &guardduty.MemberArgs{
 /// 			AccountId:         member.AccountId,
-/// 			DetectorId:        primary.ID().ToIDOutput().ToStringOutput(),
+/// 			DetectorId:        primary.ID(),
 /// 			Email:             pulumi.String("required@example.com"),
 /// 			Invite:            pulumi.Bool(true),
 /// 			InvitationMessage: pulumi.String("please accept guardduty invitation"),
@@ -100,7 +100,7 @@ import 'member_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -109,12 +109,21 @@ import 'member_state.dart';
 /// }
 ///
 /// resource "aws_guardduty_detector" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enable = true
 /// }
 /// resource "aws_guardduty_detector" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enable = true
 /// }
 /// resource "aws_guardduty_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id         = aws_guardduty_detector.member.account_id
 ///   detector_id        = aws_guardduty_detector.primary.id
 ///   email              = "required@example.com"
@@ -223,7 +232,7 @@ class Member extends pulumi.CustomResource {
           'aws:guardduty/member:Member',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     detectorId = registerOutput<String>('detectorId');

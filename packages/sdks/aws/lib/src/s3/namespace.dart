@@ -77,7 +77,7 @@ import 'namespace_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,10 +86,16 @@ import 'namespace_state.dart';
 /// }
 ///
 /// resource "aws_s3tables_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   namespace        = "example_namespace"
-///   table_bucket_arn = aws_s3tables_tablebucket.example.arn
+///   table_bucket_arn = aws_s3tables_table_bucket.example.arn
 /// }
-/// resource "aws_s3tables_tablebucket" "example" {
+/// resource "aws_s3tables_table_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-bucket"
 /// }
 /// ```
@@ -176,7 +182,7 @@ class Namespace extends pulumi.CustomResource {
           'aws:s3tables/namespace:Namespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     createdBy = registerOutput<String>('createdBy');

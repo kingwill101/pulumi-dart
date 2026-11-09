@@ -174,7 +174,7 @@ import 'activation_state.dart';
 /// 		_, err = ssm.NewActivation(ctx, "foo", &ssm.ActivationArgs{
 /// 			Name:              pulumi.String("test_ssm_activation"),
 /// 			Description:       pulumi.String("Test"),
-/// 			IamRole:           testRole.ID().ToIDOutput().ToStringOutput(),
+/// 			IamRole:           testRole.ID(),
 /// 			RegistrationLimit: pulumi.Int(5),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			testAttach,
@@ -187,7 +187,7 @@ import 'activation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -195,8 +195,8 @@ import 'activation_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["ssm.amazonaws.com"]
@@ -207,15 +207,24 @@ import 'activation_state.dart';
 /// }
 ///
 /// resource "aws_iam_role" "test_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "test_role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iam_rolepolicyattachment" "test_attach" {
+/// resource "aws_iam_role_policy_attachment" "test_attach" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role       = aws_iam_role.test_role.name
 ///   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 /// }
 /// resource "aws_ssm_activation" "foo" {
-///   depends_on         = [aws_iam_rolepolicyattachment.test_attach]
+///   depends_on = [aws_iam_role_policy_attachment.test_attach]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "test_ssm_activation"
 ///   description        = "Test"
 ///   iam_role           = aws_iam_role.test_role.id
@@ -370,7 +379,7 @@ class Activation extends pulumi.CustomResource {
           'aws:ssm/activation:Activation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     activationCode = registerOutput<String>('activationCode');
     description = registerOutput<String?>('description');

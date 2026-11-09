@@ -261,7 +261,7 @@ import 'rule_state.dart';
 /// 		}
 /// 		_, err = iam.NewRolePolicy(ctx, "p", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("my-awsconfig-policy"),
-/// 			Role:   rRole.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   rRole.ID(),
 /// 			Policy: pulumi.String(p.Json),
 /// 		})
 /// 		if err != nil {
@@ -272,7 +272,7 @@ import 'rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -280,8 +280,8 @@ import 'rule_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["config.amazonaws.com"]
@@ -290,8 +290,8 @@ import 'rule_state.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "p" {
-///   statements {
+/// data "aws_iam_policy_document" "p" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["config:Put*"]
 ///     resources = ["*"]
@@ -300,6 +300,9 @@ import 'rule_state.dart';
 ///
 /// resource "aws_cfg_rule" "r" {
 ///   depends_on = [aws_cfg_recorder.foo]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source = {
 ///     owner             = "AWS"
 ///     source_identifier = "S3_BUCKET_VERSIONING_ENABLED"
@@ -307,17 +310,26 @@ import 'rule_state.dart';
 ///   name = "example"
 /// }
 /// resource "aws_cfg_recorder" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   role_arn = aws_iam_role.r.arn
 /// }
 /// resource "aws_iam_role" "r" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-awsconfig-role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iam_rolepolicy" "p" {
+/// resource "aws_iam_role_policy" "p" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "my-awsconfig-policy"
 ///   role   = aws_iam_role.r.id
-///   policy = data.aws_iam_getpolicydocument.p.json
+///   policy = data.aws_iam_policy_document.p.json
 /// }
 /// ```
 /// ```java
@@ -587,7 +599,7 @@ import 'rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -596,17 +608,29 @@ import 'rule_state.dart';
 /// }
 ///
 /// resource "aws_cfg_recorder" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_lambda_function" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_lambda_permission" "example" {
-///   action       = "lambda:InvokeFunction"
-///   function     = aws_lambda_function.example.arn
-///   principal    = "config.amazonaws.com"
-///   statement_id = "AllowExecutionFromConfig"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   action        = "lambda:InvokeFunction"
+///   function_name = aws_lambda_function.example.arn
+///   principal     = "config.amazonaws.com"
+///   statement_id  = "AllowExecutionFromConfig"
 /// }
 /// resource "aws_cfg_rule" "example" {
 ///   depends_on = [aws_cfg_recorder.example, aws_lambda_permission.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source = {
 ///     owner             = "CUSTOM_LAMBDA"
 ///     source_identifier = aws_lambda_function.example.arn
@@ -836,7 +860,7 @@ import 'rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -845,13 +869,28 @@ import 'rule_state.dart';
 /// }
 ///
 /// resource "aws_cfg_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source = {
 ///     custom_policy_details = {
 ///       policy_runtime = "guard-2.x.x"
-///       policy_text    = "\\t  rule tableisactive when\n\\t\\t  resourceType == \\\"AWS::DynamoDB::Table\\\" {\n\\t\\t  configuration.tableStatus == ['ACTIVE']\n\\t  }\n\\t  \n\\t  rule checkcompliance when\n\\t\\t  resourceType == \\\"AWS::DynamoDB::Table\\\"\n\\t\\t  tableisactive {\n\\t\\t\\t  supplementaryConfiguration.ContinuousBackupsDescription.pointInTimeRecoveryDescription.pointInTimeRecoveryStatus == \\\"ENABLED\\\"\n\\t  }\n"
+///       policy_text    = <<EOF
+/// \t  rule tableisactive when
+/// \t\t  resourceType == \"AWS::DynamoDB::Table\" {
+/// \t\t  configuration.tableStatus == ['ACTIVE']
+/// \t  }
+/// \t
+/// \t  rule checkcompliance when
+/// \t\t  resourceType == \"AWS::DynamoDB::Table\"
+/// \t\t  tableisactive {
+/// \t\t\t  supplementaryConfiguration.ContinuousBackupsDescription.pointInTimeRecoveryDescription.pointInTimeRecoveryStatus == \"ENABLED\"
+/// \t  }
+/// EOF
+///
 ///     }
 ///     source_details = [{
-///       "messageType" = "ConfigurationItemChangeNotification"
+///       message_type = "ConfigurationItemChangeNotification"
 ///     }]
 ///     owner = "CUSTOM_POLICY"
 ///   }
@@ -983,7 +1022,7 @@ class Rule extends pulumi.CustomResource {
           'aws:cfg/rule:Rule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

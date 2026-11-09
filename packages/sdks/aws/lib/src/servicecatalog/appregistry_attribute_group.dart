@@ -90,7 +90,7 @@ import 'appregistry_attribute_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -98,7 +98,10 @@ import 'appregistry_attribute_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_servicecatalog_appregistryattributegroup" "example" {
+/// resource "aws_servicecatalog_appregistry_attribute_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   description = "example description"
 ///   attributes = jsonencode({
@@ -193,7 +196,7 @@ class AppregistryAttributeGroup extends pulumi.CustomResource {
           'aws:servicecatalog/appregistryAttributeGroup:AppregistryAttributeGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attributes = registerOutput<String>('attributes');

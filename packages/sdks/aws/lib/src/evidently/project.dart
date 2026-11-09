@@ -80,7 +80,7 @@ import 'project_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -89,6 +89,9 @@ import 'project_state.dart';
 /// }
 ///
 /// resource "aws_evidently_project" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "Example"
 ///   description = "Example Description"
 ///   tags = {
@@ -231,7 +234,7 @@ import 'project_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -240,8 +243,11 @@ import 'project_state.dart';
 /// }
 ///
 /// resource "aws_evidently_project" "example" {
-///   data_delivery = {
-///     cloudwatch_logs = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   data_delivery {
+///     cloudwatch_logs {
 ///       log_group = "example-log-group-name"
 ///     }
 ///   }
@@ -401,7 +407,7 @@ import 'project_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -410,8 +416,11 @@ import 'project_state.dart';
 /// }
 ///
 /// resource "aws_evidently_project" "example" {
-///   data_delivery = {
-///     s3_destination = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   data_delivery {
+///     s3_destination {
 ///       bucket = "example-bucket-name"
 ///       prefix = "example"
 ///     }
@@ -528,7 +537,7 @@ class Project extends pulumi.CustomResource {
           'aws:evidently/project:Project',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     activeExperimentCount = registerOutput<int>('activeExperimentCount');
     activeLaunchCount = registerOutput<int>('activeLaunchCount');

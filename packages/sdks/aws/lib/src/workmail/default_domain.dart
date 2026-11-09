@@ -68,7 +68,7 @@ import 'default_domain_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = workmail.NewDefaultDomain(ctx, "example", &workmail.DefaultDomainArgs{
-/// 			OrganizationId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			OrganizationId: example.ID(),
 /// 			DomainName:     example.DefaultMailDomain,
 /// 		})
 /// 		if err != nil {
@@ -79,7 +79,7 @@ import 'default_domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -88,9 +88,15 @@ import 'default_domain_state.dart';
 /// }
 ///
 /// resource "aws_workmail_organization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization_alias = "example-org"
 /// }
-/// resource "aws_workmail_defaultdomain" "example" {
+/// resource "aws_workmail_default_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization_id = aws_workmail_organization.example.id
 ///   domain_name     = aws_workmail_organization.example.default_mail_domain
 /// }
@@ -184,7 +190,7 @@ class DefaultDomain extends pulumi.CustomResource {
           'aws:workmail/defaultDomain:DefaultDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     domainName = registerOutput<String>('domainName');
     organizationId = registerOutput<String>('organizationId');

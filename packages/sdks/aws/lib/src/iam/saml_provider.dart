@@ -77,7 +77,7 @@ import 'saml_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -88,7 +88,10 @@ import 'saml_provider_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_samlprovider" "default" {
+/// resource "aws_iam_saml_provider" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "myprovider"
 ///   saml_metadata_document = file("saml-metadata.xml")
 /// }
@@ -183,7 +186,7 @@ class SamlProvider extends pulumi.CustomResource {
           'aws:iam/samlProvider:SamlProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

@@ -141,7 +141,7 @@ import 'slot_type_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -149,12 +149,15 @@ import 'slot_type_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lex_slottype" "flower_types" {
-///   enumeration_values {
+/// resource "aws_lex_slot_type" "flower_types" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   enumeration_value {
 ///     synonyms = ["Lirium", "Martagon"]
 ///     value    = "lilies"
 ///   }
-///   enumeration_values {
+///   enumeration_value {
 ///     synonyms = ["Eduardoregelia", "Podonix"]
 ///     value    = "tulips"
 ///   }
@@ -280,7 +283,7 @@ class SlotType extends pulumi.CustomResource {
           'aws:lex/slotType:SlotType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     checksum = registerOutput<String>('checksum');
     createVersion = registerOutput<bool?>('createVersion');

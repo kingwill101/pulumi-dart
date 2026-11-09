@@ -148,7 +148,7 @@ import 'proxy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -157,6 +157,9 @@ import 'proxy_state.dart';
 /// }
 ///
 /// resource "aws_rds_proxy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auths {
 ///     auth_scheme = "SECRETS"
 ///     description = "example"
@@ -204,16 +207,16 @@ import 'proxy_state.dart';
 ///                 .authScheme("SECRETS")
 ///                 .description("example")
 ///                 .iamAuth("DISABLED")
-///                 .secretArn(exampleAwsSecretsmanagerSecret.arn())
+///                 .secretArn(exampleAwsSecretsmanagerSecret.get("arn"))
 ///                 .build())
 ///             .name("example")
 ///             .debugLogging(false)
 ///             .engineFamily("MYSQL")
 ///             .idleClientTimeout(1800)
 ///             .requireTls(true)
-///             .roleArn(exampleAwsIamRole.arn())
-///             .vpcSecurityGroupIds(exampleAwsSecurityGroup.id())
-///             .vpcSubnetIds(exampleAwsSubnet.id())
+///             .roleArn(exampleAwsIamRole.get("arn"))
+///             .vpcSecurityGroupIds(exampleAwsSecurityGroup.get("id"))
+///             .vpcSubnetIds(exampleAwsSubnet.get("id"))
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Name", "example"),
 ///                 Map.entry("Key", "value")
@@ -422,7 +425,7 @@ import 'proxy_state.dart';
 /// 					Netnum:  pulumi.Int(val0),
 /// 				}, nil).Result(),
 /// 				AvailabilityZone: pulumi.String(available.Names[val0]),
-/// 				VpcId:            example.ID().ToIDOutput().ToStringOutput(),
+/// 				VpcId:            example.ID(),
 /// 			})
 /// 			if err != nil {
 /// 				return err
@@ -443,7 +446,7 @@ import 'proxy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -454,8 +457,8 @@ import 'proxy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzones" "available" {
-///   filters {
+/// data "aws_availability_zones" "available" {
+///   filter {
 ///     name   = "opt-in-status"
 ///     values = ["opt-in-not-required"]
 ///   }
@@ -464,15 +467,27 @@ import 'proxy_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
 /// resource "aws_ec2_subnet" "example" {
-///   count             = 5
+///   count = 5
+///   pulumi {
+///     name ="example-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block        = cidrsubnet(aws_ec2_vpc.example.cidr_block, 8, count.index)
-///   availability_zone = data.aws_getavailabilityzones.available.names[count.index]
+///   availability_zone = data.aws_availability_zones.available.names[count.index]
 ///   vpc_id            = aws_ec2_vpc.example.id
 /// }
 /// resource "aws_rds_proxy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "example"
 ///   vpc_subnet_ids = [aws_ec2_subnet.example.id]
 /// }
@@ -618,7 +633,7 @@ import 'proxy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -628,7 +643,8 @@ import 'proxy_state.dart';
 ///
 /// resource "aws_rds_proxy" "example" {
 ///   lifecycle {
-///     ignore_changes = [vpcSubnetIds]
+///     ignore_changes        = [vpcSubnetIds]
+///     create_before_destroy = true
 ///   }
 ///   name           = "example"
 ///   vpc_subnet_ids = [exampleAwsSubnet.id]
@@ -658,7 +674,7 @@ import 'proxy_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Proxy("example", ProxyArgs.builder()
 ///             .name("example")
-///             .vpcSubnetIds(exampleAwsSubnet.id())
+///             .vpcSubnetIds(exampleAwsSubnet.get("id"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .ignoreChanges("vpcSubnetIds")
 ///                 .build());
@@ -735,7 +751,7 @@ class Proxy extends pulumi.CustomResource {
           'aws:rds/proxy:Proxy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     auths = registerOutput<List<ProxyAuth>?>('auths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProxyAuth>(guardedValue, (value) => ProxyAuth.fromMap((value as Map).cast<String, dynamic>())); });

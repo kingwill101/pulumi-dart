@@ -80,7 +80,7 @@ import 'script_storage_location.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -89,7 +89,10 @@ import 'script_storage_location.dart';
 /// }
 ///
 /// resource "aws_gamelift_script" "example" {
-///   storage_location = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   storage_location {
 ///     bucket   = exampleAwsS3Bucket.id
 ///     key      = exampleAwsS3Object.key
 ///     role_arn = exampleAwsIamRole.arn
@@ -121,9 +124,9 @@ import 'script_storage_location.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Script("example", ScriptArgs.builder()
 ///             .storageLocation(ScriptStorageLocationArgs.builder()
-///                 .bucket(exampleAwsS3Bucket.id())
-///                 .key(exampleAwsS3Object.key())
-///                 .roleArn(exampleAwsIamRole.arn())
+///                 .bucket(exampleAwsS3Bucket.get("id"))
+///                 .key(exampleAwsS3Object.get("key"))
+///                 .roleArn(exampleAwsIamRole.get("arn"))
 ///                 .build())
 ///             .name("example-script")
 ///             .build());
@@ -181,7 +184,7 @@ class Script extends pulumi.CustomResource {
           'aws:gamelift/script:Script',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

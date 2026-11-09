@@ -67,7 +67,7 @@ import 'connection_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,6 +76,9 @@ import 'connection_timeouts.dart';
 /// }
 ///
 /// resource "aws_codeconnections_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "example-connection"
 ///   provider_type = "Bitbucket"
 /// }
@@ -165,7 +168,7 @@ class Connection extends pulumi.CustomResource {
           'aws:codeconnections/connection:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     connectionStatus = registerOutput<String>('connectionStatus');

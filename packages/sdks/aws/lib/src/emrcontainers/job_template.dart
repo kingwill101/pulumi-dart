@@ -100,7 +100,7 @@ import 'job_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -108,10 +108,13 @@ import 'job_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_emrcontainers_jobtemplate" "example" {
-///   job_template_data = {
-///     job_driver = {
-///       spark_sql_job_driver = {
+/// resource "aws_emrcontainers_job_template" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   job_template_data {
+///     job_driver {
+///       spark_sql_job_driver {
 ///         entry_point = "default"
 ///       }
 ///     }
@@ -152,7 +155,7 @@ import 'job_template_state.dart';
 ///                         .entryPoint("default")
 ///                         .build())
 ///                     .build())
-///                 .executionRoleArn(exampleAwsIamRole.arn())
+///                 .executionRoleArn(exampleAwsIamRole.get("arn"))
 ///                 .releaseLabel("emr-6.10.0-latest")
 ///                 .build())
 ///             .name("example")
@@ -211,7 +214,7 @@ class JobTemplate extends pulumi.CustomResource {
           'aws:emrcontainers/jobTemplate:JobTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     jobTemplateData = registerOutput<JobTemplateJobTemplateData>('jobTemplateData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobTemplateJobTemplateData.fromMap((guardedValue as Map).cast<String, dynamic>()); });

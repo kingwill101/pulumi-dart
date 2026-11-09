@@ -64,7 +64,7 @@ import 'registry_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,6 +73,9 @@ import 'registry_state.dart';
 /// }
 ///
 /// resource "aws_schemas_registry" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my_own_registry"
 ///   description = "A custom schema registry"
 /// }
@@ -149,7 +152,7 @@ class Registry extends pulumi.CustomResource {
           'aws:schemas/registry:Registry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

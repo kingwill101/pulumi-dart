@@ -77,7 +77,7 @@ import 'organization_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,9 +86,15 @@ import 'organization_configuration_state.dart';
 /// }
 ///
 /// resource "aws_detective_graph" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enable = true
 /// }
-/// resource "aws_detective_organizationconfiguration" "example" {
+/// resource "aws_detective_organization_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auto_enable = true
 ///   graph_arn   = aws_detective_graph.example.graph_arn
 /// }
@@ -177,7 +183,7 @@ class OrganizationConfiguration extends pulumi.CustomResource {
           'aws:detective/organizationConfiguration:OrganizationConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     autoEnable = registerOutput<bool>('autoEnable');
     graphArn = registerOutput<String>('graphArn');

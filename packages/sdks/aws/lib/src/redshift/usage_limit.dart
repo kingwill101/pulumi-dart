@@ -70,7 +70,7 @@ import 'usage_limit_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -78,7 +78,10 @@ import 'usage_limit_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_redshift_usagelimit" "example" {
+/// resource "aws_redshift_usage_limit" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier = exampleAwsRedshiftCluster.id
 ///   feature_type       = "concurrency-scaling"
 ///   limit_type         = "time"
@@ -107,7 +110,7 @@ import 'usage_limit_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new UsageLimit("example", UsageLimitArgs.builder()
-///             .clusterIdentifier(exampleAwsRedshiftCluster.id())
+///             .clusterIdentifier(exampleAwsRedshiftCluster.get("id"))
 ///             .featureType("concurrency-scaling")
 ///             .limitType("time")
 ///             .amount(60)
@@ -169,7 +172,7 @@ class UsageLimit extends pulumi.CustomResource {
           'aws:redshift/usageLimit:UsageLimit',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     amount = registerOutput<int>('amount');
     arn = registerOutput<String>('arn');

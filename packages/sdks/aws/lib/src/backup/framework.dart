@@ -400,7 +400,7 @@ import 'framework_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -409,63 +409,66 @@ import 'framework_state.dart';
 /// }
 ///
 /// resource "aws_backup_framework" "Example" {
-///   controls {
-///     input_parameters {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   control {
+///     input_parameter {
 ///       name  = "requiredRetentionDays"
 ///       value = "35"
 ///     }
 ///     name = "BACKUP_RECOVERY_POINT_MINIMUM_RETENTION_CHECK"
 ///   }
-///   controls {
-///     input_parameters {
+///   control {
+///     input_parameter {
 ///       name  = "requiredFrequencyUnit"
 ///       value = "hours"
 ///     }
-///     input_parameters {
+///     input_parameter {
 ///       name  = "requiredRetentionDays"
 ///       value = "35"
 ///     }
-///     input_parameters {
+///     input_parameter {
 ///       name  = "requiredFrequencyValue"
 ///       value = "1"
 ///     }
 ///     name = "BACKUP_PLAN_MIN_FREQUENCY_AND_MIN_RETENTION_CHECK"
 ///   }
-///   controls {
+///   control {
 ///     name = "BACKUP_RECOVERY_POINT_ENCRYPTED"
 ///   }
-///   controls {
-///     scope = {
+///   control {
+///     scope {
 ///       compliance_resource_types = ["EBS"]
 ///     }
 ///     name = "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN"
 ///   }
-///   controls {
+///   control {
 ///     name = "BACKUP_RECOVERY_POINT_MANUAL_DELETION_DISABLED"
 ///   }
-///   controls {
-///     scope = {
+///   control {
+///     scope {
 ///       compliance_resource_types = ["EBS"]
 ///     }
-///     input_parameters {
+///     input_parameter {
 ///       name  = "maxRetentionDays"
 ///       value = "100"
 ///     }
-///     input_parameters {
+///     input_parameter {
 ///       name  = "minRetentionDays"
 ///       value = "1"
 ///     }
 ///     name = "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_VAULT_LOCK"
 ///   }
-///   controls {
-///     scope = {
+///   control {
+///     scope {
 ///       compliance_resource_types = ["EBS"]
 ///     }
-///     input_parameters {
+///     input_parameter {
 ///       name  = "recoveryPointAgeUnit"
 ///       value = "days"
 ///     }
-///     input_parameters {
+///     input_parameter {
 ///       name  = "recoveryPointAgeValue"
 ///       value = "1"
 ///     }
@@ -668,7 +671,7 @@ class Framework extends pulumi.CustomResource {
           'aws:backup/framework:Framework',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     controls = registerOutput<List<FrameworkControl>>('controls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrameworkControl>(guardedValue, (value) => FrameworkControl.fromMap((value as Map).cast<String, dynamic>())); });

@@ -121,7 +121,7 @@ import 'spot_instance_request_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -130,7 +130,10 @@ import 'spot_instance_request_state.dart';
 /// }
 ///
 /// # Request a spot instance at $0.03
-/// resource "aws_ec2_spotinstancerequest" "cheap_worker" {
+/// resource "aws_ec2_spot_instance_request" "cheap_worker" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ami           = "ami-1234"
 ///   spot_price    = "0.03"
 ///   instance_type = "c4.xlarge"
@@ -252,11 +255,11 @@ class SpotInstanceRequest extends pulumi.CustomResource {
   late final pulumi.Output<List<SpotInstanceRequestNetworkInterface>> networkInterfaces;
   late final pulumi.Output<String> outpostArn;
   late final pulumi.Output<String> passwordData;
-  /// Placement Group to start the instance in. Conflicts with `placementGroupId`.
+  /// Placement Group to start the instance in. Conflicts with `placementGroupId`. Updating this argument stops and restarts the EC2 instance, except for Spot Instances and instances with `disableApiStop` and `forceDestroy` enabled, which are replaced.
   late final pulumi.Output<String> placementGroup;
-  /// Placement Group ID to start the instance in. Conflicts with `placementGroup`.
+  /// Placement Group ID to start the instance in. Conflicts with `placementGroup`. Updating this argument stops and restarts the EC2 instance, except for Spot Instances and instances with `disableApiStop` and `forceDestroy` enabled, which are replaced.
   late final pulumi.Output<String> placementGroupId;
-  /// Number of the partition the instance is in. Valid only if the `aws.ec2.PlacementGroup` resource's `strategy` argument is set to `"partition"`.
+  /// Number of the partition the instance is in. Valid only if the `aws.ec2.PlacementGroup` resource's `strategy` argument is set to `"partition"`. Updating this argument stops and restarts the EC2 instance, except for Spot Instances and instances with `disableApiStop` and `forceDestroy` enabled, which are replaced.
   late final pulumi.Output<int> placementPartitionNumber;
   late final pulumi.Output<String> primaryNetworkInterfaceId;
   /// The primary network interface. See Primary Network Interface below.
@@ -345,7 +348,7 @@ class SpotInstanceRequest extends pulumi.CustomResource {
           'aws:ec2/spotInstanceRequest:SpotInstanceRequest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     ami = registerOutput<String>('ami');
     arn = registerOutput<String>('arn');

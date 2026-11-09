@@ -86,7 +86,7 @@ import 'default_auto_scaling_configuration_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -94,14 +94,20 @@ import 'default_auto_scaling_configuration_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apprunner_autoscalingconfigurationversion" "example" {
+/// resource "aws_apprunner_auto_scaling_configuration_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auto_scaling_configuration_name = "example"
 ///   max_concurrency                 = 50
 ///   max_size                        = 10
 ///   min_size                        = 2
 /// }
-/// resource "aws_apprunner_defaultautoscalingconfigurationversion" "example" {
-///   auto_scaling_configuration_arn = aws_apprunner_autoscalingconfigurationversion.example.arn
+/// resource "aws_apprunner_default_auto_scaling_configuration_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   auto_scaling_configuration_arn = aws_apprunner_auto_scaling_configuration_version.example.arn
 /// }
 /// ```
 /// ```java
@@ -183,7 +189,7 @@ class DefaultAutoScalingConfigurationVersion extends pulumi.CustomResource {
           'aws:apprunner/defaultAutoScalingConfigurationVersion:DefaultAutoScalingConfigurationVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     autoScalingConfigurationArn = registerOutput<String>('autoScalingConfigurationArn');
     region = registerOutput<String>('region');

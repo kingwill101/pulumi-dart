@@ -78,7 +78,7 @@ import 's3_location_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,7 +86,10 @@ import 's3_location_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_datasync_s3location" "example" {
+/// resource "aws_datasync_s3_location" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   s3_config = {
 ///     bucket_access_role_arn = exampleAwsIamRole.arn
 ///   }
@@ -118,9 +121,9 @@ import 's3_location_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new S3Location("example", S3LocationArgs.builder()
 ///             .s3Config(S3LocationS3ConfigArgs.builder()
-///                 .bucketAccessRoleArn(exampleAwsIamRole.arn())
+///                 .bucketAccessRoleArn(exampleAwsIamRole.get("arn"))
 ///                 .build())
-///             .s3BucketArn(exampleAwsS3Bucket.arn())
+///             .s3BucketArn(exampleAwsS3Bucket.get("arn"))
 ///             .subdirectory("/example/prefix")
 ///             .build());
 ///
@@ -223,7 +226,7 @@ import 's3_location_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -231,7 +234,10 @@ import 's3_location_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_datasync_s3location" "destination" {
+/// resource "aws_datasync_s3_location" "destination" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   s3_config = {
 ///     bucket_access_role_arn = example.arn
 ///   }
@@ -265,10 +271,10 @@ import 's3_location_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var destination = new S3Location("destination", S3LocationArgs.builder()
 ///             .s3Config(S3LocationS3ConfigArgs.builder()
-///                 .bucketAccessRoleArn(example.arn())
+///                 .bucketAccessRoleArn(example.get("arn"))
 ///                 .build())
-///             .agentArns(exampleAwsDatasyncAgent.arn())
-///             .s3BucketArn(exampleAwsS3AccessPoint.arn())
+///             .agentArns(exampleAwsDatasyncAgent.get("arn"))
+///             .s3BucketArn(exampleAwsS3AccessPoint.get("arn"))
 ///             .s3StorageClass("OUTPOSTS")
 ///             .subdirectory("/example/prefix")
 ///             .build());
@@ -338,7 +344,7 @@ class S3Location extends pulumi.CustomResource {
           'aws:datasync/s3Location:S3Location',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     agentArns = registerOutput<List<String>?>('agentArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');

@@ -98,7 +98,7 @@ import 'capacity_block_reservation_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -106,7 +106,7 @@ import 'capacity_block_reservation_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2_getcapacityblockoffering" "test" {
+/// data "aws_ec2_capacity_block_offering" "test" {
 ///   capacity_duration_hours = 24
 ///   end_date_range          = "2024-05-30T15:04:05Z"
 ///   instance_count          = 1
@@ -114,8 +114,11 @@ import 'capacity_block_reservation_timeouts.dart';
 ///   start_date_range        = "2024-04-28T15:04:05Z"
 /// }
 ///
-/// resource "aws_ec2_capacityblockreservation" "example" {
-///   capacity_block_offering_id = data.aws_ec2_getcapacityblockoffering.test.capacity_block_offering_id
+/// resource "aws_ec2_capacity_block_reservation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   capacity_block_offering_id = data.aws_ec2_capacity_block_offering.test.capacity_block_offering_id
 ///   instance_platform          = "Linux/UNIX"
 /// }
 /// ```
@@ -229,7 +232,7 @@ class CapacityBlockReservation extends pulumi.CustomResource {
           'aws:ec2/capacityBlockReservation:CapacityBlockReservation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String>('availabilityZone');

@@ -282,7 +282,7 @@ import 'glossary_state.dart';
 /// 		json0 := string(tmpJSON0)
 /// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
 /// 			"Version": "2012-10-17",
-/// 			"Statement": []map[string]interface{}{
+/// 			"Statement": []interface{}{
 /// 				map[string]interface{}{
 /// 					"Action": []string{
 /// 						"sts:AssumeRole",
@@ -336,7 +336,7 @@ import 'glossary_state.dart';
 /// 			return err
 /// 		}
 /// 		testProject, err := datazone.NewProject(ctx, "test", &datazone.ProjectArgs{
-/// 			DomainIdentifier: test.ID().ToIDOutput().ToStringOutput(),
+/// 			DomainIdentifier: test.ID(),
 /// 			GlossaryTerms: pulumi.StringArray{
 /// 				pulumi.String("2N8w6XJCwZf"),
 /// 			},
@@ -350,7 +350,7 @@ import 'glossary_state.dart';
 /// 		_, err = datazone.NewGlossary(ctx, "test", &datazone.GlossaryArgs{
 /// 			Description:             pulumi.String("description"),
 /// 			Name:                    pulumi.String("example_name"),
-/// 			OwningProjectIdentifier: testProject.ID().ToIDOutput().ToStringOutput(),
+/// 			OwningProjectIdentifier: testProject.ID(),
 /// 			Status:                  pulumi.String("DISABLED"),
 /// 			DomainIdentifier:        testProject.DomainIdentifier,
 /// 		})
@@ -362,7 +362,7 @@ import 'glossary_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -371,7 +371,10 @@ import 'glossary_state.dart';
 /// }
 ///
 /// resource "aws_iam_role" "domain_execution_role" {
-///   inline_policies {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   inline_policy {
 ///     name = "example_name"
 ///     policy = jsonencode({
 ///       "Version" = "2012-10-17"
@@ -401,13 +404,22 @@ import 'glossary_state.dart';
 ///   })
 /// }
 /// resource "aws_datazone_domain" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example_name"
 ///   domain_execution_role = aws_iam_role.domain_execution_role.arn
 /// }
-/// resource "aws_ec2_securitygroup" "test" {
+/// resource "aws_ec2_security_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example_name"
 /// }
 /// resource "aws_datazone_project" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_identifier   = aws_datazone_domain.test.id
 ///   glossary_terms      = ["2N8w6XJCwZf"]
 ///   name                = "example_name"
@@ -415,6 +427,9 @@ import 'glossary_state.dart';
 ///   skip_deletion_check = true
 /// }
 /// resource "aws_datazone_glossary" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description               = "description"
 ///   name                      = "example_name"
 ///   owning_project_identifier = aws_datazone_project.test.id
@@ -666,7 +681,7 @@ import 'glossary_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -675,6 +690,9 @@ import 'glossary_state.dart';
 /// }
 ///
 /// resource "aws_datazone_glossary" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description               = "description"
 ///   name                      = "example_name"
 ///   owning_project_identifier = testAwsDatazoneProject.id
@@ -706,9 +724,9 @@ import 'glossary_state.dart';
 ///         var test = new Glossary("test", GlossaryArgs.builder()
 ///             .description("description")
 ///             .name("example_name")
-///             .owningProjectIdentifier(testAwsDatazoneProject.id())
+///             .owningProjectIdentifier(testAwsDatazoneProject.get("id"))
 ///             .status("DISABLED")
-///             .domainIdentifier(testAwsDatazoneProject.domainIdentifier())
+///             .domainIdentifier(testAwsDatazoneProject.get("domainIdentifier"))
 ///             .build());
 ///
 ///     }
@@ -774,7 +792,7 @@ class Glossary extends pulumi.CustomResource {
           'aws:datazone/glossary:Glossary',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     domainIdentifier = registerOutput<String>('domainIdentifier');

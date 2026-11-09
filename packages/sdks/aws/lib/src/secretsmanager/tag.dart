@@ -82,7 +82,7 @@ import 'tag_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretsmanager.NewTag(ctx, "test", &secretsmanager.TagArgs{
-/// 			SecretId: test.ID().ToIDOutput().ToStringOutput(),
+/// 			SecretId: test.ID(),
 /// 			Key:      pulumi.String("ExampleKey"),
 /// 			Value:    pulumi.String("ExampleValue"),
 /// 		})
@@ -94,7 +94,7 @@ import 'tag_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -104,11 +104,15 @@ import 'tag_state.dart';
 ///
 /// resource "aws_secretsmanager_secret" "test" {
 ///   lifecycle {
-///     ignore_changes = [tags]
+///     ignore_changes        = [tags]
+///     create_before_destroy = true
 ///   }
 ///   name = "example-secret"
 /// }
 /// resource "aws_secretsmanager_tag" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = aws_secretsmanager_secret.test.id
 ///   key       = "ExampleKey"
 ///   value     = "ExampleValue"
@@ -201,7 +205,7 @@ class Tag extends pulumi.CustomResource {
           'aws:secretsmanager/tag:Tag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     key = registerOutput<String>('key');
     region = registerOutput<String>('region');

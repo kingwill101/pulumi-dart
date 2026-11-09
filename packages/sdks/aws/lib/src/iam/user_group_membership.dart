@@ -157,7 +157,7 @@ import 'user_group_membership_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -165,24 +165,42 @@ import 'user_group_membership_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_usergroupmembership" "example1" {
+/// resource "aws_iam_user_group_membership" "example1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user   = aws_iam_user.user1.name
 ///   groups = [aws_iam_group.group1.name, aws_iam_group.group2.name]
 /// }
-/// resource "aws_iam_usergroupmembership" "example2" {
+/// resource "aws_iam_user_group_membership" "example2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user   = aws_iam_user.user1.name
 ///   groups = [aws_iam_group.group3.name]
 /// }
 /// resource "aws_iam_user" "user1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "user1"
 /// }
 /// resource "aws_iam_group" "group1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "group1"
 /// }
 /// resource "aws_iam_group" "group2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "group2"
 /// }
 /// resource "aws_iam_group" "group3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "group3"
 /// }
 /// ```
@@ -301,7 +319,7 @@ class UserGroupMembership extends pulumi.CustomResource {
           'aws:iam/userGroupMembership:UserGroupMembership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     groups = registerOutput<List<String>>('groups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     user = registerOutput<String>('user');

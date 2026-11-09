@@ -64,7 +64,7 @@ import 'app_monitor_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'app_monitor_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_rum_appmonitor" "example" {
+/// resource "aws_rum_app_monitor" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "example"
 ///   domain = "localhost"
 /// }
@@ -161,7 +164,7 @@ class AppMonitor extends pulumi.CustomResource {
           'aws:rum/appMonitor:AppMonitor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     appMonitorConfiguration = registerOutput<AppMonitorAppMonitorConfiguration>('appMonitorConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppMonitorAppMonitorConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     appMonitorId = registerOutput<String>('appMonitorId');

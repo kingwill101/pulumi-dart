@@ -115,7 +115,7 @@ import 'queue_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -124,6 +124,9 @@ import 'queue_state.dart';
 /// }
 ///
 /// resource "aws_sqs_queue" "queue" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "example-queue"
 ///   delay_seconds             = 90
 ///   max_message_size          = 2048
@@ -168,7 +171,7 @@ import 'queue_state.dart';
 ///             .receiveWaitTimeSeconds(10)
 ///             .redrivePolicy(serializeJson(
 ///                 jsonObject(
-///                     jsonProperty("deadLetterTargetArn", queueDeadletter.arn()),
+///                     jsonProperty("deadLetterTargetArn", queueDeadletter.get("arn")),
 ///                     jsonProperty("maxReceiveCount", 4)
 ///                 )))
 ///             .tags(Map.of("Environment", "production"))
@@ -258,7 +261,7 @@ import 'queue_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -267,6 +270,9 @@ import 'queue_state.dart';
 /// }
 ///
 /// resource "aws_sqs_queue" "queue" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example-queue.fifo"
 ///   fifo_queue                  = true
 ///   content_based_deduplication = true
@@ -379,7 +385,7 @@ import 'queue_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -388,6 +394,9 @@ import 'queue_state.dart';
 /// }
 ///
 /// resource "aws_sqs_queue" "queue" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "pulumi-example-queue.fifo"
 ///   fifo_queue            = true
 ///   deduplication_scope   = "messageGroup"
@@ -555,7 +564,7 @@ import 'queue_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = sqs.NewRedriveAllowPolicy(ctx, "example_queue_redrive_allow_policy", &sqs.RedriveAllowPolicyArgs{
-/// 			QueueUrl: exampleQueueDeadletter.ID().ToIDOutput().ToStringOutput(),
+/// 			QueueUrl: exampleQueueDeadletter.ID(),
 /// 			RedriveAllowPolicy: queue.Arn.ApplyT(func(arn string) (pulumi.String, error) {
 /// 				var _zero pulumi.String
 /// 				tmpJSON1, err := json.Marshal(map[string]interface{}{
@@ -579,7 +588,7 @@ import 'queue_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -588,6 +597,9 @@ import 'queue_state.dart';
 /// }
 ///
 /// resource "aws_sqs_queue" "queue" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "pulumi-example-queue"
 ///   redrive_policy = jsonencode({
 ///     "deadLetterTargetArn" = aws_sqs_queue.example_queue_deadletter.arn
@@ -595,9 +607,15 @@ import 'queue_state.dart';
 ///   })
 /// }
 /// resource "aws_sqs_queue" "example_queue_deadletter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "pulumi-example-deadletter-queue"
 /// }
-/// resource "aws_sqs_redriveallowpolicy" "example_queue_redrive_allow_policy" {
+/// resource "aws_sqs_redrive_allow_policy" "example_queue_redrive_allow_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   queue_url = aws_sqs_queue.example_queue_deadletter.id
 ///   redrive_allow_policy = jsonencode({
 ///     "redrivePermission" = "byQueue"
@@ -742,7 +760,7 @@ import 'queue_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -751,6 +769,9 @@ import 'queue_state.dart';
 /// }
 ///
 /// resource "aws_sqs_queue" "queue" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "pulumi-example-queue"
 ///   sqs_managed_sse_enabled = true
 /// }
@@ -856,7 +877,7 @@ import 'queue_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -865,6 +886,9 @@ import 'queue_state.dart';
 /// }
 ///
 /// resource "aws_sqs_queue" "queue" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                              = "example-queue"
 ///   kms_master_key_id                 = "alias/aws/sqs"
 ///   kms_data_key_reuse_period_seconds = 300
@@ -983,7 +1007,7 @@ class Queue extends pulumi.CustomResource {
           'aws:sqs/queue:Queue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     contentBasedDeduplication = registerOutput<bool?>('contentBasedDeduplication');

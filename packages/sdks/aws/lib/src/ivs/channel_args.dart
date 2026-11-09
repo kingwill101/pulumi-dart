@@ -19,7 +19,7 @@ class ChannelArgs {
   final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// Channel type, which determines the allowable resolution and bitrate. Valid values: `STANDARD`, `BASIC`.
+  /// Channel type, which determines the allowable resolution and bitrate. Valid values: `STANDARD`, `BASIC`, `ADVANCED_SD`, `ADVANCED_HD`.
   final pulumi.Input<String?>? type;
 
   /// Creates a new [ChannelArgs].
@@ -29,7 +29,7 @@ class ChannelArgs {
   /// [recordingConfigurationArn] Recording configuration ARN.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [type] Channel type, which determines the allowable resolution and bitrate. Valid values: `STANDARD`, `BASIC`.
+  /// [type] Channel type, which determines the allowable resolution and bitrate. Valid values: `STANDARD`, `BASIC`, `ADVANCED_SD`, `ADVANCED_HD`.
   const ChannelArgs({
     this.authorized,
     this.latencyMode,

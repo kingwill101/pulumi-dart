@@ -102,7 +102,7 @@ import 'migration_project_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -110,11 +110,14 @@ import 'migration_project_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_dms_migrationproject" "example" {
-///   source_data_provider_descriptors {
+/// resource "aws_dms_migration_project" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   source_data_provider_descriptor {
 ///     data_provider_arn = source.arn
 ///   }
-///   target_data_provider_descriptors {
+///   target_data_provider_descriptor {
 ///     data_provider_arn = target.arn
 ///   }
 ///   instance_profile_arn = exampleAwsDmsInstanceProfile.arn
@@ -145,12 +148,12 @@ import 'migration_project_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new MigrationProject("example", MigrationProjectArgs.builder()
 ///             .sourceDataProviderDescriptors(MigrationProjectSourceDataProviderDescriptorArgs.builder()
-///                 .dataProviderArn(source.arn())
+///                 .dataProviderArn(source.get("arn"))
 ///                 .build())
 ///             .targetDataProviderDescriptors(MigrationProjectTargetDataProviderDescriptorArgs.builder()
-///                 .dataProviderArn(target.arn())
+///                 .dataProviderArn(target.get("arn"))
 ///                 .build())
-///             .instanceProfileArn(exampleAwsDmsInstanceProfile.arn())
+///             .instanceProfileArn(exampleAwsDmsInstanceProfile.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -313,7 +316,7 @@ import 'migration_project_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -321,17 +324,20 @@ import 'migration_project_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_dms_migrationproject" "example" {
-///   schema_conversion_application_attributes = {
+/// resource "aws_dms_migration_project" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   schema_conversion_application_attributes {
 ///     s3_bucket_path     = "s3://example-bucket"
 ///     s3_bucket_role_arn = exampleAwsIamRole.arn
 ///   }
-///   source_data_provider_descriptors {
+///   source_data_provider_descriptor {
 ///     data_provider_arn               = source.arn
 ///     secrets_manager_access_role_arn = exampleAwsIamRole.arn
 ///     secrets_manager_secret_id       = sourceAwsSecretsmanagerSecret.arn
 ///   }
-///   target_data_provider_descriptors {
+///   target_data_provider_descriptor {
 ///     data_provider_arn               = target.arn
 ///     secrets_manager_access_role_arn = exampleAwsIamRole.arn
 ///     secrets_manager_secret_id       = targetAwsSecretsmanagerSecret.arn
@@ -371,21 +377,21 @@ import 'migration_project_timeouts.dart';
 ///         var example = new MigrationProject("example", MigrationProjectArgs.builder()
 ///             .schemaConversionApplicationAttributes(MigrationProjectSchemaConversionApplicationAttributesArgs.builder()
 ///                 .s3BucketPath("s3://example-bucket")
-///                 .s3BucketRoleArn(exampleAwsIamRole.arn())
+///                 .s3BucketRoleArn(exampleAwsIamRole.get("arn"))
 ///                 .build())
 ///             .sourceDataProviderDescriptors(MigrationProjectSourceDataProviderDescriptorArgs.builder()
-///                 .dataProviderArn(source.arn())
-///                 .secretsManagerAccessRoleArn(exampleAwsIamRole.arn())
-///                 .secretsManagerSecretId(sourceAwsSecretsmanagerSecret.arn())
+///                 .dataProviderArn(source.get("arn"))
+///                 .secretsManagerAccessRoleArn(exampleAwsIamRole.get("arn"))
+///                 .secretsManagerSecretId(sourceAwsSecretsmanagerSecret.get("arn"))
 ///                 .build())
 ///             .targetDataProviderDescriptors(MigrationProjectTargetDataProviderDescriptorArgs.builder()
-///                 .dataProviderArn(target.arn())
-///                 .secretsManagerAccessRoleArn(exampleAwsIamRole.arn())
-///                 .secretsManagerSecretId(targetAwsSecretsmanagerSecret.arn())
+///                 .dataProviderArn(target.get("arn"))
+///                 .secretsManagerAccessRoleArn(exampleAwsIamRole.get("arn"))
+///                 .secretsManagerSecretId(targetAwsSecretsmanagerSecret.get("arn"))
 ///                 .build())
 ///             .name("example")
 ///             .description("Example migration project")
-///             .instanceProfileArn(exampleAwsDmsInstanceProfile.arn())
+///             .instanceProfileArn(exampleAwsDmsInstanceProfile.get("arn"))
 ///             .tags(Map.of("Environment", "example"))
 ///             .build());
 ///
@@ -473,7 +479,7 @@ class MigrationProject extends pulumi.CustomResource {
           'aws:dms/migrationProject:MigrationProject',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationTime = registerOutput<String>('creationTime');

@@ -185,7 +185,7 @@ import 'stack_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -194,6 +194,9 @@ import 'stack_state.dart';
 /// }
 ///
 /// resource "aws_cloudformation_stack" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "networking-stack"
 ///   parameters = {
 ///     "VPCCidr" = "10.0.0.0/16"
@@ -362,7 +365,7 @@ class Stack extends pulumi.CustomResource {
           'aws:cloudformation/stack:Stack',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     capabilities = registerOutput<List<String>?>('capabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     disableRollback = registerOutput<bool?>('disableRollback');

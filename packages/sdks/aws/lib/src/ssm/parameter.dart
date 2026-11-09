@@ -71,7 +71,7 @@ import 'parameter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -80,6 +80,9 @@ import 'parameter_state.dart';
 /// }
 ///
 /// resource "aws_ssm_parameter" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "foo"
 ///   type  = "String"
 ///   value = "bar"
@@ -138,7 +141,7 @@ import 'parameter_state.dart';
 ///     storageType: aws.rds.StorageType.GP2,
 ///     engine: "mysql",
 ///     engineVersion: "5.7.16",
-///     instanceClass: aws.rds.InstanceType.T2_Micro,
+///     instanceClass: aws.rds.InstanceType.T4G_Micro,
 ///     dbName: "mydb",
 ///     username: "foo",
 ///     password: databaseMasterPassword,
@@ -164,7 +167,7 @@ import 'parameter_state.dart';
 ///     storage_type=aws.rds.StorageType.GP2,
 ///     engine="mysql",
 ///     engine_version="5.7.16",
-///     instance_class=aws.rds.InstanceType.T2_MICRO,
+///     instance_class=aws.rds.InstanceType.T4_G_MICRO,
 ///     db_name="mydb",
 ///     username="foo",
 ///     password=database_master_password,
@@ -193,7 +196,7 @@ import 'parameter_state.dart';
 ///         StorageType = Aws.Rds.StorageType.GP2,
 ///         Engine = "mysql",
 ///         EngineVersion = "5.7.16",
-///         InstanceClass = Aws.Rds.InstanceType.T2_Micro,
+///         InstanceClass = Aws.Rds.InstanceType.T4G_Micro,
 ///         DbName = "mydb",
 ///         Username = "foo",
 ///         Password = databaseMasterPassword,
@@ -231,7 +234,7 @@ import 'parameter_state.dart';
 /// 			StorageType:        pulumi.String(rds.StorageTypeGP2),
 /// 			Engine:             pulumi.String("mysql"),
 /// 			EngineVersion:      pulumi.String("5.7.16"),
-/// 			InstanceClass:      pulumi.String(rds.InstanceType_T2_Micro),
+/// 			InstanceClass:      pulumi.String(rds.InstanceType_T4G_Micro),
 /// 			DbName:             pulumi.String("mydb"),
 /// 			Username:           pulumi.String("foo"),
 /// 			Password:           pulumi.Any(databaseMasterPassword),
@@ -258,7 +261,7 @@ import 'parameter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -267,11 +270,14 @@ import 'parameter_state.dart';
 /// }
 ///
 /// resource "aws_rds_instance" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocated_storage    = 10
 ///   storage_type         = "gp2"
 ///   engine               = "mysql"
 ///   engine_version       = "5.7.16"
-///   instance_class       = "db.t2.micro"
+///   instance_class       = "db.t4g.micro"
 ///   db_name              = "mydb"
 ///   username             = "foo"
 ///   password             = databaseMasterPassword
@@ -279,6 +285,9 @@ import 'parameter_state.dart';
 ///   parameter_group_name = "default.mysql5.7"
 /// }
 /// resource "aws_ssm_parameter" "secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "/production/database/password/master"
 ///   description = "The parameter description"
 ///   type        = "SecureString"
@@ -316,7 +325,7 @@ import 'parameter_state.dart';
 ///             .storageType("gp2")
 ///             .engine("mysql")
 ///             .engineVersion("5.7.16")
-///             .instanceClass("db.t2.micro")
+///             .instanceClass("db.t4g.micro")
 ///             .dbName("mydb")
 ///             .username("foo")
 ///             .password(databaseMasterPassword)
@@ -344,7 +353,7 @@ import 'parameter_state.dart';
 ///       storageType: gp2
 ///       engine: mysql
 ///       engineVersion: 5.7.16
-///       instanceClass: db.t2.micro
+///       instanceClass: db.t4g.micro
 ///       dbName: mydb
 ///       username: foo
 ///       password: ${databaseMasterPassword}
@@ -436,7 +445,7 @@ class Parameter extends pulumi.CustomResource {
           'aws:ssm/parameter:Parameter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['value', 'valueWo'],
         ) {
     allowedPattern = registerOutput<String?>('allowedPattern');

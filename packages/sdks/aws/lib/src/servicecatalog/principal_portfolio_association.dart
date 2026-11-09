@@ -64,7 +64,7 @@ import 'principal_portfolio_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'principal_portfolio_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_servicecatalog_principalportfolioassociation" "example" {
+/// resource "aws_servicecatalog_principal_portfolio_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   portfolio_id  = "port-68656c6c6f"
 ///   principal_arn = "arn:aws:iam::123456789012:user/Eleanor"
 /// }
@@ -149,7 +152,7 @@ class PrincipalPortfolioAssociation extends pulumi.CustomResource {
           'aws:servicecatalog/principalPortfolioAssociation:PrincipalPortfolioAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     portfolioId = registerOutput<String>('portfolioId');

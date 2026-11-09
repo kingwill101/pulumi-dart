@@ -73,7 +73,7 @@ import 'member_detector_feature_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = guardduty.NewMemberDetectorFeature(ctx, "runtime_monitoring", &guardduty.MemberDetectorFeatureArgs{
-/// 			DetectorId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			DetectorId: example.ID(),
 /// 			AccountId:  pulumi.String("123456789012"),
 /// 			Name:       pulumi.String("S3_DATA_EVENTS"),
 /// 			Status:     pulumi.String("ENABLED"),
@@ -86,7 +86,7 @@ import 'member_detector_feature_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -95,9 +95,15 @@ import 'member_detector_feature_state.dart';
 /// }
 ///
 /// resource "aws_guardduty_detector" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enable = true
 /// }
-/// resource "aws_guardduty_memberdetectorfeature" "runtime_monitoring" {
+/// resource "aws_guardduty_member_detector_feature" "runtime_monitoring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   detector_id = aws_guardduty_detector.example.id
 ///   account_id  = "123456789012"
 ///   name        = "S3_DATA_EVENTS"
@@ -261,7 +267,7 @@ import 'member_detector_feature_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = guardduty.NewDetectorFeature(ctx, "eks_protection", &guardduty.DetectorFeatureArgs{
-/// 			DetectorId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			DetectorId: example.ID(),
 /// 			AccountId:  "123456789012",
 /// 			Name:       pulumi.String("EKS_AUDIT_LOGS"),
 /// 			Status:     pulumi.String("ENABLED"),
@@ -276,7 +282,7 @@ import 'member_detector_feature_state.dart';
 /// 					Status: pulumi.String("ENABLED"),
 /// 				},
 /// 			},
-/// 			DetectorId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			DetectorId: example.ID(),
 /// 			AccountId:  "123456789012",
 /// 			Name:       pulumi.String("EKS_RUNTIME_MONITORING"),
 /// 			Status:     pulumi.String("ENABLED"),
@@ -289,7 +295,7 @@ import 'member_detector_feature_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -298,16 +304,25 @@ import 'member_detector_feature_state.dart';
 /// }
 ///
 /// resource "aws_guardduty_detector" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enable = true
 /// }
-/// resource "aws_guardduty_detectorfeature" "eks_protection" {
+/// resource "aws_guardduty_detector_feature" "eks_protection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   detector_id = aws_guardduty_detector.example.id
 ///   account_id  = "123456789012"
 ///   name        = "EKS_AUDIT_LOGS"
 ///   status      = "ENABLED"
 /// }
-/// resource "aws_guardduty_detectorfeature" "eks_runtime_monitoring" {
-///   additional_configurations {
+/// resource "aws_guardduty_detector_feature" "eks_runtime_monitoring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   additional_configuration {
 ///     name   = "EKS_ADDON_MANAGEMENT"
 ///     status = "ENABLED"
 ///   }
@@ -395,7 +410,7 @@ import 'member_detector_feature_state.dart';
 class MemberDetectorFeature extends pulumi.CustomResource {
   /// Member account ID to be updated.
   late final pulumi.Output<String> accountId;
-  /// Additional feature configuration block. See below.
+  /// Additional feature configuration block. If omitted, Terraform does not track changes to additional configurations that AWS manages for the feature. Removing a previously declared `additionalConfiguration` block leaves the setting unchanged in AWS; to change a setting, update its `status` instead. See below.
   late final pulumi.Output<List<MemberDetectorFeatureAdditionalConfiguration>?> additionalConfigurations;
   /// Amazon GuardDuty detector ID.
   late final pulumi.Output<String> detectorId;
@@ -418,7 +433,7 @@ class MemberDetectorFeature extends pulumi.CustomResource {
           'aws:guardduty/memberDetectorFeature:MemberDetectorFeature',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     additionalConfigurations = registerOutput<List<MemberDetectorFeatureAdditionalConfiguration>?>('additionalConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MemberDetectorFeatureAdditionalConfiguration>(guardedValue, (value) => MemberDetectorFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>())); });

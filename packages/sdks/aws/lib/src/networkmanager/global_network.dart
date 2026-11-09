@@ -57,7 +57,7 @@ import 'global_network_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,7 +65,10 @@ import 'global_network_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkmanager_globalnetwork" "example" {
+/// resource "aws_networkmanager_global_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "example"
 /// }
 /// ```
@@ -135,7 +138,7 @@ class GlobalNetwork extends pulumi.CustomResource {
           'aws:networkmanager/globalNetwork:GlobalNetwork',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

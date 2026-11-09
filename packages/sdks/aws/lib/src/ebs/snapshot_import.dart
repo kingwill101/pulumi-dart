@@ -103,7 +103,7 @@ import 'snapshot_import_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -111,9 +111,12 @@ import 'snapshot_import_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ebs_snapshotimport" "example" {
-///   disk_container = {
-///     user_bucket = {
+/// resource "aws_ebs_snapshot_import" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   disk_container {
+///     user_bucket {
 ///       s3_bucket = "disk-images"
 ///       s3_key    = "source.vhd"
 ///     }
@@ -227,7 +230,7 @@ class SnapshotImport extends pulumi.CustomResource {
           'aws:ebs/snapshotImport:SnapshotImport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     clientData = registerOutput<SnapshotImportClientData?>('clientData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotImportClientData.fromMap((guardedValue as Map).cast<String, dynamic>()); });

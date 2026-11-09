@@ -103,7 +103,7 @@ import 'certificate_validation_option.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -112,7 +112,10 @@ import 'certificate_validation_option.dart';
 /// }
 ///
 /// resource "aws_acm_certificate" "cert" {
-///   validation_options {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   validation_option {
 ///     domain_name       = "testing.example.com"
 ///     validation_domain = "example.com"
 ///   }
@@ -309,7 +312,7 @@ import 'certificate_validation_option.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -320,22 +323,31 @@ import 'certificate_validation_option.dart';
 ///   }
 /// }
 ///
-/// resource "tls_privatekey" "example" {
+/// resource "tls_private_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   algorithm = "RSA"
 /// }
-/// resource "tls_selfsignedcert" "example" {
-///   subject = [{
-///     "commonName"   = "example.com"
-///     "organization" = "ACME Examples, Inc"
-///   }]
+/// resource "tls_self_signed_cert" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   subject {
+///     common_name  = "example.com"
+///     organization = "ACME Examples, Inc"
+///   }
 ///   key_algorithm         = "RSA"
-///   private_key_pem       = tls_privatekey.example.private_key_pem
+///   private_key_pem       = tls_private_key.example.private_key_pem
 ///   validity_period_hours = 12
 ///   allowed_uses          = ["key_encipherment", "digital_signature", "server_auth"]
 /// }
 /// resource "aws_acm_certificate" "cert" {
-///   private_key      = tls_privatekey.example.private_key_pem
-///   certificate_body = tls_selfsignedcert.example.cert_pem
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   private_key      = tls_private_key.example.private_key_pem
+///   certificate_body = tls_self_signed_cert.example.cert_pem
 /// }
 /// ```
 /// ```java
@@ -563,7 +575,7 @@ import 'certificate_validation_option.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -574,23 +586,32 @@ import 'certificate_validation_option.dart';
 ///   }
 /// }
 ///
-/// resource "tls_privatekey" "example" {
+/// resource "tls_private_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   algorithm = "RSA"
 /// }
-/// resource "tls_selfsignedcert" "example" {
-///   subject = [{
-///     "commonName"   = "example.com"
-///     "organization" = "ACME Examples, Inc"
-///   }]
+/// resource "tls_self_signed_cert" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   subject {
+///     common_name  = "example.com"
+///     organization = "ACME Examples, Inc"
+///   }
 ///   key_algorithm         = "RSA"
-///   private_key_pem       = tls_privatekey.example.private_key_pem
+///   private_key_pem       = tls_private_key.example.private_key_pem
 ///   validity_period_hours = 12
 ///   allowed_uses          = ["key_encipherment", "digital_signature", "server_auth"]
 /// }
 /// resource "aws_acm_certificate" "cert" {
-///   private_key_wo         = tls_privatekey.example.private_key_pem
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   private_key_wo         = tls_private_key.example.private_key_pem
 ///   private_key_wo_version = 1
-///   certificate_body       = tls_selfsignedcert.example.cert_pem
+///   certificate_body       = tls_self_signed_cert.example.cert_pem
 /// }
 /// ```
 /// ```java
@@ -694,7 +715,7 @@ import 'certificate_validation_option.dart';
 ///         name: range.value.name,
 ///         records: [range.value.record],
 ///         ttl: 60,
-///         type: aws.route53.RecordType[range.value.type],
+///         type: range.value.type,
 ///         zoneId: exampleAwsRoute53Zone.zoneId,
 ///     });
 /// }
@@ -715,7 +736,7 @@ import 'certificate_validation_option.dart';
 ///         name=example_range["value"]["name"],
 ///         records=[example_range["value"]["record"]],
 ///         ttl=60,
-///         type=aws.route53.RecordType(example_range["value"]["type"]),
+///         type=example_range["value"]["type"],
 ///         zone_id=example_aws_route53_zone["zoneId"])
 /// ```
 /// ```csharp
@@ -729,7 +750,7 @@ import 'certificate_validation_option.dart';
 ///     var example = new List<Aws.Route53.Record>();
 ///     foreach (var range in .ToDictionary(item => {
 ///         var dvo = item.Value;
-///         return dvo.DomainName;
+///         return dvo.DomainName.ToString(System.Globalization.CultureInfo.InvariantCulture);
 ///     }, item => {
 ///         var dvo = item.Value;
 ///         return
@@ -749,14 +770,14 @@ import 'certificate_validation_option.dart';
 ///                 range.Value.Record,
 ///             },
 ///             Ttl = 60,
-///             Type = System.Enum.Parse<Aws.Route53.RecordType>(range.Value.Type),
+///             Type = range.Value.Type,
 ///             ZoneId = exampleAwsRoute53Zone.ZoneId,
 ///         }));
 ///     }
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -770,6 +791,12 @@ import 'certificate_validation_option.dart';
 ///     "record" = dvo.resourceRecordValue
 ///     "type"   = dvo.resourceRecordType
 ///   } }
+///   pulumi {
+///     name ="example-${each.key}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allow_overwrite = true
 ///   name            = each.value.name
 ///   records         = [each.value.record]
@@ -866,7 +893,7 @@ class Certificate extends pulumi.CustomResource {
           'aws:acm/certificate:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['privateKey', 'privateKeyWo'],
         ) {
     arn = registerOutput<String>('arn');

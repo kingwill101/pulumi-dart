@@ -128,7 +128,7 @@ import 'custom_log_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -136,13 +136,16 @@ import 'custom_log_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_securitylake_customlogsource" "example" {
+/// resource "aws_securitylake_custom_log_source" "example" {
 ///   depends_on = [exampleAwsSecuritylakeDataLake]
-///   configuration = {
-///     crawler_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     crawler_configuration {
 ///       role_arn = customLog.arn
 ///     }
-///     provider_identity = {
+///     provider_identity {
 ///       external_id = "example-id"
 ///       principal   = "123456789012"
 ///     }
@@ -180,7 +183,7 @@ import 'custom_log_source_state.dart';
 ///         var example = new CustomLogSource("example", CustomLogSourceArgs.builder()
 ///             .configuration(CustomLogSourceConfigurationArgs.builder()
 ///                 .crawlerConfiguration(CustomLogSourceConfigurationCrawlerConfigurationArgs.builder()
-///                     .roleArn(customLog.arn())
+///                     .roleArn(customLog.get("arn"))
 ///                     .build())
 ///                 .providerIdentity(CustomLogSourceConfigurationProviderIdentityArgs.builder()
 ///                     .externalId("example-id")
@@ -255,7 +258,7 @@ class CustomLogSource extends pulumi.CustomResource {
           'aws:securitylake/customLogSource:CustomLogSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     attributes = registerOutput<List<CustomLogSourceAttribute>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomLogSourceAttribute>(guardedValue, (value) => CustomLogSourceAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     configuration = registerOutput<CustomLogSourceConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomLogSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

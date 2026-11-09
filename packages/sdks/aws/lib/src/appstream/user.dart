@@ -70,7 +70,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -79,6 +79,9 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_appstream_user" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authentication_type = "USERPOOL"
 ///   user_name           = "EMAIL"
 ///   first_name          = "FIRST NAME"
@@ -169,7 +172,7 @@ class User extends pulumi.CustomResource {
           'aws:appstream/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     authenticationType = registerOutput<String>('authenticationType');

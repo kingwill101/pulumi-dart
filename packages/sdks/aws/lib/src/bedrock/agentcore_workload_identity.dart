@@ -69,7 +69,7 @@ import 'agentcore_workload_identity_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,7 +77,10 @@ import 'agentcore_workload_identity_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoreworkloadidentity" "example" {
+/// resource "aws_bedrock_agentcore_workload_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                = "example-workload-identity"
 ///   allowed_resource_oauth2_return_urls = ["https://example.com/callback"]
 /// }
@@ -197,7 +200,7 @@ import 'agentcore_workload_identity_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -205,7 +208,10 @@ import 'agentcore_workload_identity_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoreworkloadidentity" "example" {
+/// resource "aws_bedrock_agentcore_workload_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                = "example-workload-identity"
 ///   allowed_resource_oauth2_return_urls = ["https://app.example.com/oauth/callback", "https://api.example.com/auth/return", "https://example.com/callback"]
 /// }
@@ -302,7 +308,7 @@ class AgentcoreWorkloadIdentity extends pulumi.CustomResource {
           'aws:bedrock/agentcoreWorkloadIdentity:AgentcoreWorkloadIdentity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     allowedResourceOauth2ReturnUrls = registerOutput<List<String>?>('allowedResourceOauth2ReturnUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');

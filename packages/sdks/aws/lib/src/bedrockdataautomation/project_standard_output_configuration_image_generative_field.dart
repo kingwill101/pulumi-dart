@@ -1,0 +1,30 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+class ProjectStandardOutputConfigurationImageGenerativeField {
+  final pulumi.Input<String> state;
+  final pulumi.Input<List<String>?>? types;
+
+  /// Creates a new [ProjectStandardOutputConfigurationImageGenerativeField].
+  /// [state] Required.
+  /// [types] Optional.
+  const ProjectStandardOutputConfigurationImageGenerativeField({
+    required this.state,
+    this.types,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'state': state,
+      'types': ?types,
+    };
+  }
+
+  factory ProjectStandardOutputConfigurationImageGenerativeField.fromMap(Map<String, dynamic> map) {
+    return ProjectStandardOutputConfigurationImageGenerativeField(
+      state: pulumi.Input.fromValue(map['state'] as String),
+      types: (() { final guardedValue = map['types']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+    );
+  }
+}

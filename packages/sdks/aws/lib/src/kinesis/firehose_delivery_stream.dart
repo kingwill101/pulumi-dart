@@ -379,7 +379,7 @@ import 'firehose_delivery_stream_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "bucket_acl", &s3.BucketAclArgs{
-/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: bucket.ID(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -390,7 +390,7 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -398,8 +398,8 @@ import 'firehose_delivery_stream_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "firehoseAssumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "firehoseAssumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["firehose.amazonaws.com"]
@@ -408,8 +408,8 @@ import 'firehose_delivery_stream_state.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "lambdaAssumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "lambdaAssumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["lambda.amazonaws.com"]
@@ -419,16 +419,19 @@ import 'firehose_delivery_stream_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kinesis_firehosedeliverystream" "extended_s3_stream" {
-///   extended_s3_configuration = {
-///     processing_configuration = {
-///       processors = [{
-///         "parameters" = [{
-///           "parameterName"  = "LambdaArn"
-///           "parameterValue" ="${aws_lambda_function.lambda_processor.arn}:$LATEST"
-///         }]
-///         "type" = "Lambda"
-///       }]
+/// resource "aws_kinesis_firehose_delivery_stream" "extended_s3_stream" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   extended_s3_configuration {
+///     processing_configuration {
+///       processors {
+///         parameters {
+///           parameter_name  = "LambdaArn"
+///           parameter_value ="${aws_lambda_function.lambda_processor.arn}:$LATEST"
+///         }
+///         type = "Lambda"
+///       }
 ///       enabled = "true"
 ///     }
 ///     role_arn   = aws_iam_role.firehose_role.arn
@@ -438,26 +441,41 @@ import 'firehose_delivery_stream_state.dart';
 ///   destination = "extended_s3"
 /// }
 /// resource "aws_s3_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "tf-test-bucket"
 /// }
-/// resource "aws_s3_bucketacl" "bucket_acl" {
+/// resource "aws_s3_bucket_acl" "bucket_acl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.bucket.id
 ///   acl    = "private"
 /// }
 /// resource "aws_iam_role" "firehose_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "firehose_test_role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.firehoseAssumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.firehoseAssumeRole.json
 /// }
 /// resource "aws_iam_role" "lambda_iam" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "lambda_iam"
-///   assume_role_policy = data.aws_iam_getpolicydocument.lambdaAssumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.lambdaAssumeRole.json
 /// }
 /// resource "aws_lambda_function" "lambda_processor" {
-///   code    = fileArchive("lambda.zip")
-///   name    = "firehose_lambda_processor"
-///   role    = aws_iam_role.lambda_iam.arn
-///   handler = "exports.handler"
-///   runtime = "nodejs24.x"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filename      = filearchive("lambda.zip")
+///   function_name = "firehose_lambda_processor"
+///   role          = aws_iam_role.lambda_iam.arn
+///   handler       = "exports.handler"
+///   runtime       = "nodejs24.x"
 /// }
 /// ```
 /// ```java
@@ -875,7 +893,7 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -883,30 +901,36 @@ import 'firehose_delivery_stream_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kinesis_firehosedeliverystream" "extended_s3_stream" {
-///   extended_s3_configuration = {
-///     dynamic_partitioning_configuration = {
+/// resource "aws_kinesis_firehose_delivery_stream" "extended_s3_stream" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   extended_s3_configuration {
+///     dynamic_partitioning_configuration {
 ///       enabled = "true"
 ///     }
-///     processing_configuration = {
-///       processors = [{
-///         "parameters" = [{
-///           "parameterName"  = "SubRecordType"
-///           "parameterValue" = "JSON"
-///         }]
-///         "type" = "RecordDeAggregation"
-///         }, {
-///         "type" = "AppendDelimiterToRecord"
-///         }, {
-///         "parameters" = [{
-///           "parameterName"  = "JsonParsingEngine"
-///           "parameterValue" = "JQ-1.6"
-///           }, {
-///           "parameterName"  = "MetadataExtractionQuery"
-///           "parameterValue" = "{customer_id:.customer_id}"
-///         }]
-///         "type" = "MetadataExtraction"
-///       }]
+///     processing_configuration {
+///       processors {
+///         parameters {
+///           parameter_name  = "SubRecordType"
+///           parameter_value = "JSON"
+///         }
+///         type = "RecordDeAggregation"
+///       }
+///       processors {
+///         type = "AppendDelimiterToRecord"
+///       }
+///       processors {
+///         parameters {
+///           parameter_name  = "JsonParsingEngine"
+///           parameter_value = "JQ-1.6"
+///         }
+///         parameters {
+///           parameter_name  = "MetadataExtractionQuery"
+///           parameter_value = "{customer_id:.customer_id}"
+///         }
+///         type = "MetadataExtraction"
+///       }
 ///       enabled = "true"
 ///     }
 ///     role_arn            = firehoseRole.arn
@@ -978,8 +1002,8 @@ import 'firehose_delivery_stream_state.dart';
 ///                             .build())
 ///                     .enabled(true)
 ///                     .build())
-///                 .roleArn(firehoseRole.arn())
-///                 .bucketArn(bucket.arn())
+///                 .roleArn(firehoseRole.get("arn"))
+///                 .bucketArn(bucket.get("arn"))
 ///                 .bufferingSize(64)
 ///                 .prefix("data/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/")
 ///                 .errorOutputPrefix("errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/")
@@ -1200,7 +1224,7 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1208,22 +1232,26 @@ import 'firehose_delivery_stream_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kinesis_firehosedeliverystream" "extended_s3_stream" {
-///   extended_s3_configuration = {
-///     dynamic_partitioning_configuration = {
+/// resource "aws_kinesis_firehose_delivery_stream" "extended_s3_stream" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   extended_s3_configuration {
+///     dynamic_partitioning_configuration {
 ///       enabled = "true"
 ///     }
-///     processing_configuration = {
-///       processors = [{
-///         "parameters" = [{
-///           "parameterName"  = "JsonParsingEngine"
-///           "parameterValue" = "JQ-1.6"
-///           }, {
-///           "parameterName"  = "MetadataExtractionQuery"
-///           "parameterValue" = "{store_id:.store_id,customer_id:.customer_id}"
-///         }]
-///         "type" = "MetadataExtraction"
-///       }]
+///     processing_configuration {
+///       processors {
+///         parameters {
+///           parameter_name  = "JsonParsingEngine"
+///           parameter_value = "JQ-1.6"
+///         }
+///         parameters {
+///           parameter_name  = "MetadataExtractionQuery"
+///           parameter_value = "{store_id:.store_id,customer_id:.customer_id}"
+///         }
+///         type = "MetadataExtraction"
+///       }
 ///       enabled = "true"
 ///     }
 ///     role_arn            = firehoseRole.arn
@@ -1284,8 +1312,8 @@ import 'firehose_delivery_stream_state.dart';
 ///                         .build())
 ///                     .enabled(true)
 ///                     .build())
-///                 .roleArn(firehoseRole.arn())
-///                 .bucketArn(bucket.arn())
+///                 .roleArn(firehoseRole.get("arn"))
+///                 .bucketArn(bucket.get("arn"))
 ///                 .bufferingSize(64)
 ///                 .prefix("data/store_id=!{partitionKeyFromQuery:store_id}/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/")
 ///                 .errorOutputPrefix("errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/")
@@ -1534,7 +1562,7 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1543,6 +1571,9 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 ///
 /// resource "aws_redshift_cluster" "test_cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier = "tf-redshift-cluster"
 ///   database_name      = "test"
 ///   master_username    = "testuser"
@@ -1550,16 +1581,19 @@ import 'firehose_delivery_stream_state.dart';
 ///   node_type          = "dc1.large"
 ///   cluster_type       = "single-node"
 /// }
-/// resource "aws_kinesis_firehosedeliverystream" "test_stream" {
-///   redshift_configuration = {
-///     s3_configuration = {
+/// resource "aws_kinesis_firehose_delivery_stream" "test_stream" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   redshift_configuration {
+///     s3_configuration {
 ///       role_arn           = firehoseRole.arn
 ///       bucket_arn         = bucket.arn
 ///       buffering_size     = 10
 ///       buffering_interval = 400
 ///       compression_format = "GZIP"
 ///     }
-///     s3_backup_configuration = {
+///     s3_backup_configuration {
 ///       role_arn           = firehoseRole.arn
 ///       bucket_arn         = bucket.arn
 ///       buffering_size     = 15
@@ -1618,20 +1652,20 @@ import 'firehose_delivery_stream_state.dart';
 ///         var testStream = new FirehoseDeliveryStream("testStream", FirehoseDeliveryStreamArgs.builder()
 ///             .redshiftConfiguration(FirehoseDeliveryStreamRedshiftConfigurationArgs.builder()
 ///                 .s3Configuration(FirehoseDeliveryStreamRedshiftConfigurationS3ConfigurationArgs.builder()
-///                     .roleArn(firehoseRole.arn())
-///                     .bucketArn(bucket.arn())
+///                     .roleArn(firehoseRole.get("arn"))
+///                     .bucketArn(bucket.get("arn"))
 ///                     .bufferingSize(10)
 ///                     .bufferingInterval(400)
 ///                     .compressionFormat("GZIP")
 ///                     .build())
 ///                 .s3BackupConfiguration(FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationArgs.builder()
-///                     .roleArn(firehoseRole.arn())
-///                     .bucketArn(bucket.arn())
+///                     .roleArn(firehoseRole.get("arn"))
+///                     .bucketArn(bucket.get("arn"))
 ///                     .bufferingSize(15)
 ///                     .bufferingInterval(300)
 ///                     .compressionFormat("GZIP")
 ///                     .build())
-///                 .roleArn(firehoseRole.arn())
+///                 .roleArn(firehoseRole.get("arn"))
 ///                 .clusterJdbcurl(Output.tuple(testCluster.endpoint(), testCluster.databaseName()).applyValue(values -> {
 ///                     var endpoint = values.t1;
 ///                     var databaseName = values.t2;
@@ -1872,7 +1906,7 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1881,25 +1915,31 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 ///
 /// resource "aws_elasticsearch_domain" "test_cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name = "firehose-es-test"
 /// }
-/// resource "aws_kinesis_firehosedeliverystream" "test_stream" {
-///   elasticsearch_configuration = {
-///     s3_configuration = {
+/// resource "aws_kinesis_firehose_delivery_stream" "test_stream" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   elasticsearch_configuration {
+///     s3_configuration {
 ///       role_arn           = firehoseRole.arn
 ///       bucket_arn         = bucket.arn
 ///       buffering_size     = 10
 ///       buffering_interval = 400
 ///       compression_format = "GZIP"
 ///     }
-///     processing_configuration = {
-///       processors = [{
-///         "parameters" = [{
-///           "parameterName"  = "LambdaArn"
-///           "parameterValue" ="${lambdaProcessor.arn}:$LATEST"
-///         }]
-///         "type" = "Lambda"
-///       }]
+///     processing_configuration {
+///       processors {
+///         parameters {
+///           parameter_name  = "LambdaArn"
+///           parameter_value ="${lambdaProcessor.arn}:$LATEST"
+///         }
+///         type = "Lambda"
+///       }
 ///       enabled = "true"
 ///     }
 ///     domain_arn = aws_elasticsearch_domain.test_cluster.arn
@@ -1946,8 +1986,8 @@ import 'firehose_delivery_stream_state.dart';
 ///         var testStream = new FirehoseDeliveryStream("testStream", FirehoseDeliveryStreamArgs.builder()
 ///             .elasticsearchConfiguration(FirehoseDeliveryStreamElasticsearchConfigurationArgs.builder()
 ///                 .s3Configuration(FirehoseDeliveryStreamElasticsearchConfigurationS3ConfigurationArgs.builder()
-///                     .roleArn(firehoseRole.arn())
-///                     .bucketArn(bucket.arn())
+///                     .roleArn(firehoseRole.get("arn"))
+///                     .bucketArn(bucket.get("arn"))
 ///                     .bufferingSize(10)
 ///                     .bufferingInterval(400)
 ///                     .compressionFormat("GZIP")
@@ -1956,14 +1996,14 @@ import 'firehose_delivery_stream_state.dart';
 ///                     .processors(FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorArgs.builder()
 ///                         .parameters(FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameterArgs.builder()
 ///                             .parameterName("LambdaArn")
-///                             .parameterValue(String.format("%s:$LATEST", lambdaProcessor.arn()))
+///                             .parameterValue(String.format("%s:$LATEST", lambdaProcessor.get("arn")))
 ///                             .build())
 ///                         .type("Lambda")
 ///                         .build())
 ///                     .enabled(true)
 ///                     .build())
 ///                 .domainArn(testCluster.arn())
-///                 .roleArn(firehoseRole.arn())
+///                 .roleArn(firehoseRole.get("arn"))
 ///                 .indexName("test")
 ///                 .typeName("test")
 ///                 .build())
@@ -2396,7 +2436,7 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2404,13 +2444,13 @@ import 'firehose_delivery_stream_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "firehose-elasticsearch" {
-///   statements {
+/// data "aws_iam_policy_document" "firehose-elasticsearch" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["es:*"]
 ///     resources = [aws_elasticsearch_domain.test_cluster.arn, "${aws_elasticsearch_domain.test_cluster.arn}/*"]
 ///   }
-///   statements {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["ec2:DescribeVpcs", "ec2:DescribeVpcAttribute", "ec2:DescribeSubnets", "ec2:DescribeSecurityGroups", "ec2:DescribeNetworkInterfaces", "ec2:CreateNetworkInterface", "ec2:CreateNetworkInterfacePermission", "ec2:DeleteNetworkInterface"]
 ///     resources = ["*"]
@@ -2418,34 +2458,43 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 ///
 /// resource "aws_elasticsearch_domain" "test_cluster" {
-///   cluster_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_config {
 ///     instance_count         = 2
 ///     zone_awareness_enabled = true
 ///     instance_type          = "t2.small.elasticsearch"
 ///   }
-///   ebs_options = {
+///   ebs_options {
 ///     ebs_enabled = true
 ///     volume_size = 10
 ///   }
-///   vpc_options = {
+///   vpc_options {
 ///     security_group_ids = [first.id]
 ///     subnet_ids         = [firstAwsSubnet.id, second.id]
 ///   }
 ///   domain_name = "es-test"
 /// }
-/// resource "aws_iam_rolepolicy" "firehose-elasticsearch" {
+/// resource "aws_iam_role_policy" "firehose-elasticsearch" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "elasticsearch"
 ///   role   = firehose.id
-///   policy = data.aws_iam_getpolicydocument.firehose-elasticsearch.json
+///   policy = data.aws_iam_policy_document.firehose-elasticsearch.json
 /// }
-/// resource "aws_kinesis_firehosedeliverystream" "test" {
-///   depends_on = [aws_iam_rolepolicy.firehose-elasticsearch]
-///   elasticsearch_configuration = {
-///     s3_configuration = {
+/// resource "aws_kinesis_firehose_delivery_stream" "test" {
+///   depends_on = [aws_iam_role_policy.firehose-elasticsearch]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   elasticsearch_configuration {
+///     s3_configuration {
 ///       role_arn   = firehose.arn
 ///       bucket_arn = bucket.arn
 ///     }
-///     vpc_config = {
+///     vpc_config {
 ///       subnet_ids         = [firstAwsSubnet.id, second.id]
 ///       security_group_ids = [first.id]
 ///       role_arn           = firehose.arn
@@ -2505,10 +2554,10 @@ import 'firehose_delivery_stream_state.dart';
 ///                 .volumeSize(10)
 ///                 .build())
 ///             .vpcOptions(DomainVpcOptionsArgs.builder()
-///                 .securityGroupIds(first.id())
+///                 .securityGroupIds(first.get("id"))
 ///                 .subnetIds(
-///                     firstAwsSubnet.id(),
-///                     second.id())
+///                     firstAwsSubnet.get("id"),
+///                     second.get("id"))
 ///                 .build())
 ///             .domainName("es-test")
 ///             .build());
@@ -2539,25 +2588,25 @@ import 'firehose_delivery_stream_state.dart';
 ///
 ///         var firehose_elasticsearchRolePolicy = new RolePolicy("firehose-elasticsearchRolePolicy", RolePolicyArgs.builder()
 ///             .name("elasticsearch")
-///             .role(firehose.id())
+///             .role(firehose.get("id"))
 ///             .policy(firehose_elasticsearch.applyValue(_firehose_elasticsearch -> _firehose_elasticsearch.json()))
 ///             .build());
 ///
 ///         var test = new FirehoseDeliveryStream("test", FirehoseDeliveryStreamArgs.builder()
 ///             .elasticsearchConfiguration(FirehoseDeliveryStreamElasticsearchConfigurationArgs.builder()
 ///                 .s3Configuration(FirehoseDeliveryStreamElasticsearchConfigurationS3ConfigurationArgs.builder()
-///                     .roleArn(firehose.arn())
-///                     .bucketArn(bucket.arn())
+///                     .roleArn(firehose.get("arn"))
+///                     .bucketArn(bucket.get("arn"))
 ///                     .build())
 ///                 .vpcConfig(FirehoseDeliveryStreamElasticsearchConfigurationVpcConfigArgs.builder()
 ///                     .subnetIds(
-///                         firstAwsSubnet.id(),
-///                         second.id())
-///                     .securityGroupIds(first.id())
-///                     .roleArn(firehose.arn())
+///                         firstAwsSubnet.get("id"),
+///                         second.get("id"))
+///                     .securityGroupIds(first.get("id"))
+///                     .roleArn(firehose.get("arn"))
 ///                     .build())
 ///                 .domainArn(testCluster.arn())
-///                 .roleArn(firehose.arn())
+///                 .roleArn(firehose.get("arn"))
 ///                 .indexName("test")
 ///                 .typeName("test")
 ///                 .build())
@@ -2822,7 +2871,7 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2831,25 +2880,31 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 ///
 /// resource "aws_opensearch_domain" "test_cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name = "firehose-os-test"
 /// }
-/// resource "aws_kinesis_firehosedeliverystream" "test_stream" {
-///   opensearch_configuration = {
-///     s3_configuration = {
+/// resource "aws_kinesis_firehose_delivery_stream" "test_stream" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   opensearch_configuration {
+///     s3_configuration {
 ///       role_arn           = firehoseRole.arn
 ///       bucket_arn         = bucket.arn
 ///       buffering_size     = 10
 ///       buffering_interval = 400
 ///       compression_format = "GZIP"
 ///     }
-///     processing_configuration = {
-///       processors = [{
-///         "parameters" = [{
-///           "parameterName"  = "LambdaArn"
-///           "parameterValue" ="${lambdaProcessor.arn}:$LATEST"
-///         }]
-///         "type" = "Lambda"
-///       }]
+///     processing_configuration {
+///       processors {
+///         parameters {
+///           parameter_name  = "LambdaArn"
+///           parameter_value ="${lambdaProcessor.arn}:$LATEST"
+///         }
+///         type = "Lambda"
+///       }
 ///       enabled = "true"
 ///     }
 ///     domain_arn = aws_opensearch_domain.test_cluster.arn
@@ -2895,8 +2950,8 @@ import 'firehose_delivery_stream_state.dart';
 ///         var testStream = new FirehoseDeliveryStream("testStream", FirehoseDeliveryStreamArgs.builder()
 ///             .opensearchConfiguration(FirehoseDeliveryStreamOpensearchConfigurationArgs.builder()
 ///                 .s3Configuration(FirehoseDeliveryStreamOpensearchConfigurationS3ConfigurationArgs.builder()
-///                     .roleArn(firehoseRole.arn())
-///                     .bucketArn(bucket.arn())
+///                     .roleArn(firehoseRole.get("arn"))
+///                     .bucketArn(bucket.get("arn"))
 ///                     .bufferingSize(10)
 ///                     .bufferingInterval(400)
 ///                     .compressionFormat("GZIP")
@@ -2905,14 +2960,14 @@ import 'firehose_delivery_stream_state.dart';
 ///                     .processors(FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationProcessorArgs.builder()
 ///                         .parameters(FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationProcessorParameterArgs.builder()
 ///                             .parameterName("LambdaArn")
-///                             .parameterValue(String.format("%s:$LATEST", lambdaProcessor.arn()))
+///                             .parameterValue(String.format("%s:$LATEST", lambdaProcessor.get("arn")))
 ///                             .build())
 ///                         .type("Lambda")
 ///                         .build())
 ///                     .enabled(true)
 ///                     .build())
 ///                 .domainArn(testCluster.arn())
-///                 .roleArn(firehoseRole.arn())
+///                 .roleArn(firehoseRole.get("arn"))
 ///                 .indexName("test")
 ///                 .build())
 ///             .name("kinesis-firehose-test-stream")
@@ -3344,7 +3399,7 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3353,25 +3408,32 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 ///
 /// resource "aws_opensearch_domain" "test_cluster" {
-///   cluster_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_config {
 ///     instance_count         = 2
 ///     zone_awareness_enabled = true
 ///     instance_type          = "m4.large.search"
 ///   }
-///   ebs_options = {
+///   ebs_options {
 ///     ebs_enabled = true
 ///     volume_size = 10
 ///   }
-///   vpc_options = {
+///   vpc_options {
 ///     security_group_ids = [first.id]
 ///     subnet_ids         = [firstAwsSubnet.id, second.id]
 ///   }
 ///   domain_name = "es-test"
 /// }
-/// resource "aws_iam_rolepolicy" "firehose-opensearch" {
+/// resource "aws_iam_role_policy" "firehose-opensearch" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "opensearch"
 ///   role   = firehose.id
-///   policy ="{
+///   policy = <<EOF
+/// {
 ///   \"Version\": \"2012-10-17\",
 ///   \"Statement\": [
 ///     {
@@ -3402,16 +3464,20 @@ import 'firehose_delivery_stream_state.dart';
 ///         }
 ///   ]
 /// }
-/// "
+/// EOF
+///
 /// }
-/// resource "aws_kinesis_firehosedeliverystream" "test" {
-///   depends_on = [aws_iam_rolepolicy.firehose-opensearch]
-///   opensearch_configuration = {
-///     s3_configuration = {
+/// resource "aws_kinesis_firehose_delivery_stream" "test" {
+///   depends_on = [aws_iam_role_policy.firehose-opensearch]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   opensearch_configuration {
+///     s3_configuration {
 ///       role_arn   = firehose.arn
 ///       bucket_arn = bucket.arn
 ///     }
-///     vpc_config = {
+///     vpc_config {
 ///       subnet_ids         = [firstAwsSubnet.id, second.id]
 ///       security_group_ids = [first.id]
 ///       role_arn           = firehose.arn
@@ -3467,17 +3533,17 @@ import 'firehose_delivery_stream_state.dart';
 ///                 .volumeSize(10)
 ///                 .build())
 ///             .vpcOptions(DomainVpcOptionsArgs.builder()
-///                 .securityGroupIds(first.id())
+///                 .securityGroupIds(first.get("id"))
 ///                 .subnetIds(
-///                     firstAwsSubnet.id(),
-///                     second.id())
+///                     firstAwsSubnet.get("id"),
+///                     second.get("id"))
 ///                 .build())
 ///             .domainName("es-test")
 ///             .build());
 ///
 ///         var firehose_opensearch = new RolePolicy("firehose-opensearch", RolePolicyArgs.builder()
 ///             .name("opensearch")
-///             .role(firehose.id())
+///             .role(firehose.get("id"))
 ///             .policy(testCluster.arn().applyValue(_arn -> """
 /// {
 ///   \"Version\": \"2012-10-17\",
@@ -3516,18 +3582,18 @@ import 'firehose_delivery_stream_state.dart';
 ///         var test = new FirehoseDeliveryStream("test", FirehoseDeliveryStreamArgs.builder()
 ///             .opensearchConfiguration(FirehoseDeliveryStreamOpensearchConfigurationArgs.builder()
 ///                 .s3Configuration(FirehoseDeliveryStreamOpensearchConfigurationS3ConfigurationArgs.builder()
-///                     .roleArn(firehose.arn())
-///                     .bucketArn(bucket.arn())
+///                     .roleArn(firehose.get("arn"))
+///                     .bucketArn(bucket.get("arn"))
 ///                     .build())
 ///                 .vpcConfig(FirehoseDeliveryStreamOpensearchConfigurationVpcConfigArgs.builder()
 ///                     .subnetIds(
-///                         firstAwsSubnet.id(),
-///                         second.id())
-///                     .securityGroupIds(first.id())
-///                     .roleArn(firehose.arn())
+///                         firstAwsSubnet.get("id"),
+///                         second.get("id"))
+///                     .securityGroupIds(first.get("id"))
+///                     .roleArn(firehose.get("arn"))
 ///                     .build())
 ///                 .domainArn(testCluster.arn())
-///                 .roleArn(firehose.arn())
+///                 .roleArn(firehose.get("arn"))
 ///                 .indexName("test")
 ///                 .build())
 ///             .name("pulumi-kinesis-firehose-os")
@@ -3796,7 +3862,7 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3804,29 +3870,35 @@ import 'firehose_delivery_stream_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_opensearch_serverlesscollection" "test_collection" {
+/// resource "aws_opensearch_serverless_collection" "test_collection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "firehose-osserverless-test"
 /// }
-/// resource "aws_kinesis_firehosedeliverystream" "test_stream" {
-///   opensearchserverless_configuration = {
-///     s3_configuration = {
+/// resource "aws_kinesis_firehose_delivery_stream" "test_stream" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   opensearchserverless_configuration {
+///     s3_configuration {
 ///       role_arn           = firehoseRole.arn
 ///       bucket_arn         = bucket.arn
 ///       buffering_size     = 10
 ///       buffering_interval = 400
 ///       compression_format = "GZIP"
 ///     }
-///     processing_configuration = {
-///       processors = [{
-///         "parameters" = [{
-///           "parameterName"  = "LambdaArn"
-///           "parameterValue" ="${lambdaProcessor.arn}:$LATEST"
-///         }]
-///         "type" = "Lambda"
-///       }]
+///     processing_configuration {
+///       processors {
+///         parameters {
+///           parameter_name  = "LambdaArn"
+///           parameter_value ="${lambdaProcessor.arn}:$LATEST"
+///         }
+///         type = "Lambda"
+///       }
 ///       enabled = "true"
 ///     }
-///     collection_endpoint = aws_opensearch_serverlesscollection.test_collection.collection_endpoint
+///     collection_endpoint = aws_opensearch_serverless_collection.test_collection.collection_endpoint
 ///     role_arn            = firehoseRole.arn
 ///     index_name          = "test"
 ///   }
@@ -3869,8 +3941,8 @@ import 'firehose_delivery_stream_state.dart';
 ///         var testStream = new FirehoseDeliveryStream("testStream", FirehoseDeliveryStreamArgs.builder()
 ///             .opensearchserverlessConfiguration(FirehoseDeliveryStreamOpensearchserverlessConfigurationArgs.builder()
 ///                 .s3Configuration(FirehoseDeliveryStreamOpensearchserverlessConfigurationS3ConfigurationArgs.builder()
-///                     .roleArn(firehoseRole.arn())
-///                     .bucketArn(bucket.arn())
+///                     .roleArn(firehoseRole.get("arn"))
+///                     .bucketArn(bucket.get("arn"))
 ///                     .bufferingSize(10)
 ///                     .bufferingInterval(400)
 ///                     .compressionFormat("GZIP")
@@ -3879,14 +3951,14 @@ import 'firehose_delivery_stream_state.dart';
 ///                     .processors(FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfigurationProcessorArgs.builder()
 ///                         .parameters(FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfigurationProcessorParameterArgs.builder()
 ///                             .parameterName("LambdaArn")
-///                             .parameterValue(String.format("%s:$LATEST", lambdaProcessor.arn()))
+///                             .parameterValue(String.format("%s:$LATEST", lambdaProcessor.get("arn")))
 ///                             .build())
 ///                         .type("Lambda")
 ///                         .build())
 ///                     .enabled(true)
 ///                     .build())
 ///                 .collectionEndpoint(testCollection.collectionEndpoint())
-///                 .roleArn(firehoseRole.arn())
+///                 .roleArn(firehoseRole.get("arn"))
 ///                 .indexName("test")
 ///                 .build())
 ///             .name("kinesis-firehose-test-stream")
@@ -4272,7 +4344,7 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -4280,63 +4352,75 @@ import 'firehose_delivery_stream_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
-/// data "aws_getregion" "currentGetRegion" {
+/// data "aws_region" "currentGetRegion" {
 /// }
 ///
 /// resource "aws_s3_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket        = "test-bucket"
 ///   force_destroy = true
 /// }
-/// resource "aws_glue_catalogdatabase" "test" {
+/// resource "aws_glue_catalog_database" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test"
 /// }
-/// resource "aws_glue_catalogtable" "test" {
-///   open_table_format_input = {
-///     iceberg_input = {
+/// resource "aws_glue_catalog_table" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   open_table_format_input {
+///     iceberg_input {
 ///       metadata_operation = "CREATE"
 ///       version            = 2
 ///     }
 ///   }
-///   storage_descriptor = {
-///     columns = [{
-///       "name" = "my_column_1"
-///       "type" = "int"
-///     }]
+///   storage_descriptor {
+///     columns {
+///       name = "my_column_1"
+///       type = "int"
+///     }
 ///     location ="s3://${aws_s3_bucket.bucket.id}"
 ///   }
 ///   name          = "test"
-///   database_name = aws_glue_catalogdatabase.test.name
+///   database_name = aws_glue_catalog_database.test.name
 ///   parameters = {
 ///     "format" = "parquet"
 ///   }
 ///   table_type = "EXTERNAL_TABLE"
 /// }
-/// resource "aws_kinesis_firehosedeliverystream" "test_stream" {
-///   iceberg_configuration = {
-///     s3_configuration = {
+/// resource "aws_kinesis_firehose_delivery_stream" "test_stream" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   iceberg_configuration {
+///     s3_configuration {
 ///       role_arn   = firehoseRole.arn
 ///       bucket_arn = aws_s3_bucket.bucket.arn
 ///     }
-///     processing_configuration = {
-///       processors = [{
-///         "parameters" = [{
-///           "parameterName"  = "LambdaArn"
-///           "parameterValue" ="${lambdaProcessor.arn}:$LATEST"
-///         }]
-///         "type" = "Lambda"
-///       }]
+///     processing_configuration {
+///       processors {
+///         parameters {
+///           parameter_name  = "LambdaArn"
+///           parameter_value ="${lambdaProcessor.arn}:$LATEST"
+///         }
+///         type = "Lambda"
+///       }
 ///       enabled = "true"
 ///     }
-///     destination_table_configurations = [{
-///       "databaseName" = aws_glue_catalogdatabase.test.name
-///       "tableName"    = aws_glue_catalogtable.test.name
-///     }]
+///     destination_table_configuration {
+///       database_name = aws_glue_catalog_database.test.name
+///       table_name    = aws_glue_catalog_table.test.name
+///     }
 ///     role_arn           = firehoseRole.arn
-///     catalog_arn        ="arn:${data.aws_getpartition.currentGetPartition.partition}:glue:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:catalog"
+///     catalog_arn        ="arn:${data.aws_partition.currentGetPartition.partition}:glue:${data.aws_region.currentGetRegion.region}:${data.aws_caller_identity.current.account_id}:catalog"
 ///     buffering_size     = 10
 ///     buffering_interval = 400
 ///   }
@@ -4426,14 +4510,14 @@ import 'firehose_delivery_stream_state.dart';
 ///         var testStream = new FirehoseDeliveryStream("testStream", FirehoseDeliveryStreamArgs.builder()
 ///             .icebergConfiguration(FirehoseDeliveryStreamIcebergConfigurationArgs.builder()
 ///                 .s3Configuration(FirehoseDeliveryStreamIcebergConfigurationS3ConfigurationArgs.builder()
-///                     .roleArn(firehoseRole.arn())
+///                     .roleArn(firehoseRole.get("arn"))
 ///                     .bucketArn(bucket.arn())
 ///                     .build())
 ///                 .processingConfiguration(FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationArgs.builder()
 ///                     .processors(FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessorArgs.builder()
 ///                         .parameters(FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessorParameterArgs.builder()
 ///                             .parameterName("LambdaArn")
-///                             .parameterValue(String.format("%s:$LATEST", lambdaProcessor.arn()))
+///                             .parameterValue(String.format("%s:$LATEST", lambdaProcessor.get("arn")))
 ///                             .build())
 ///                         .type("Lambda")
 ///                         .build())
@@ -4443,7 +4527,7 @@ import 'firehose_delivery_stream_state.dart';
 ///                     .databaseName(test.name())
 ///                     .tableName(testCatalogTable.name())
 ///                     .build())
-///                 .roleArn(firehoseRole.arn())
+///                 .roleArn(firehoseRole.get("arn"))
 ///                 .catalogArn(String.format("arn:%s:glue:%s:%s:catalog", currentGetPartition.partition(),currentGetRegion.region(),current.accountId()))
 ///                 .bufferingSize(10)
 ///                 .bufferingInterval(400)
@@ -4640,7 +4724,7 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -4648,9 +4732,12 @@ import 'firehose_delivery_stream_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kinesis_firehosedeliverystream" "test_stream" {
-///   splunk_configuration = {
-///     s3_configuration = {
+/// resource "aws_kinesis_firehose_delivery_stream" "test_stream" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   splunk_configuration {
+///     s3_configuration {
 ///       role_arn           = firehose.arn
 ///       bucket_arn         = bucket.arn
 ///       buffering_size     = 10
@@ -4693,8 +4780,8 @@ import 'firehose_delivery_stream_state.dart';
 ///         var testStream = new FirehoseDeliveryStream("testStream", FirehoseDeliveryStreamArgs.builder()
 ///             .splunkConfiguration(FirehoseDeliveryStreamSplunkConfigurationArgs.builder()
 ///                 .s3Configuration(FirehoseDeliveryStreamSplunkConfigurationS3ConfigurationArgs.builder()
-///                     .roleArn(firehose.arn())
-///                     .bucketArn(bucket.arn())
+///                     .roleArn(firehose.get("arn"))
+///                     .bucketArn(bucket.get("arn"))
 ///                     .bufferingSize(10)
 ///                     .bufferingInterval(400)
 ///                     .compressionFormat("GZIP")
@@ -4917,7 +5004,7 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -4925,23 +5012,27 @@ import 'firehose_delivery_stream_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kinesis_firehosedeliverystream" "test_stream" {
-///   http_endpoint_configuration = {
-///     s3_configuration = {
+/// resource "aws_kinesis_firehose_delivery_stream" "test_stream" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   http_endpoint_configuration {
+///     s3_configuration {
 ///       role_arn           = firehose.arn
 ///       bucket_arn         = bucket.arn
 ///       buffering_size     = 10
 ///       buffering_interval = 400
 ///       compression_format = "GZIP"
 ///     }
-///     request_configuration = {
-///       common_attributes = [{
-///         "name"  = "testname"
-///         "value" = "testvalue"
-///         }, {
-///         "name"  = "testname2"
-///         "value" = "testvalue2"
-///       }]
+///     request_configuration {
+///       common_attributes {
+///         name  = "testname"
+///         value = "testvalue"
+///       }
+///       common_attributes {
+///         name  = "testname2"
+///         value = "testvalue2"
+///       }
 ///       content_encoding = "GZIP"
 ///     }
 ///     url                = "https://aws-api.newrelic.com/firehose/v1"
@@ -4984,8 +5075,8 @@ import 'firehose_delivery_stream_state.dart';
 ///         var testStream = new FirehoseDeliveryStream("testStream", FirehoseDeliveryStreamArgs.builder()
 ///             .httpEndpointConfiguration(FirehoseDeliveryStreamHttpEndpointConfigurationArgs.builder()
 ///                 .s3Configuration(FirehoseDeliveryStreamHttpEndpointConfigurationS3ConfigurationArgs.builder()
-///                     .roleArn(firehose.arn())
-///                     .bucketArn(bucket.arn())
+///                     .roleArn(firehose.get("arn"))
+///                     .bucketArn(bucket.get("arn"))
 ///                     .bufferingSize(10)
 ///                     .bufferingInterval(400)
 ///                     .compressionFormat("GZIP")
@@ -5007,7 +5098,7 @@ import 'firehose_delivery_stream_state.dart';
 ///                 .accessKey("my-key")
 ///                 .bufferingSize(15)
 ///                 .bufferingInterval(600)
-///                 .roleArn(firehose.arn())
+///                 .roleArn(firehose.get("arn"))
 ///                 .s3BackupMode("FailedDataOnly")
 ///                 .build())
 ///             .name("kinesis-firehose-test-stream")
@@ -5181,7 +5272,7 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -5189,9 +5280,12 @@ import 'firehose_delivery_stream_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kinesis_firehosedeliverystream" "example_snowflake_destination" {
-///   snowflake_configuration = {
-///     s3_configuration = {
+/// resource "aws_kinesis_firehose_delivery_stream" "example_snowflake_destination" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   snowflake_configuration {
+///     s3_configuration {
 ///       role_arn           = firehose.arn
 ///       bucket_arn         = bucket.arn
 ///       buffering_size     = 10
@@ -5238,8 +5332,8 @@ import 'firehose_delivery_stream_state.dart';
 ///         var exampleSnowflakeDestination = new FirehoseDeliveryStream("exampleSnowflakeDestination", FirehoseDeliveryStreamArgs.builder()
 ///             .snowflakeConfiguration(FirehoseDeliveryStreamSnowflakeConfigurationArgs.builder()
 ///                 .s3Configuration(FirehoseDeliveryStreamSnowflakeConfigurationS3ConfigurationArgs.builder()
-///                     .roleArn(firehose.arn())
-///                     .bucketArn(bucket.arn())
+///                     .roleArn(firehose.get("arn"))
+///                     .bucketArn(bucket.get("arn"))
 ///                     .bufferingSize(10)
 ///                     .bufferingInterval(400)
 ///                     .compressionFormat("GZIP")
@@ -5249,7 +5343,7 @@ import 'firehose_delivery_stream_state.dart';
 ///                 .bufferingInterval(600)
 ///                 .database("example-db")
 ///                 .privateKey("...")
-///                 .roleArn(firehose.arn())
+///                 .roleArn(firehose.get("arn"))
 ///                 .schema("example-schema")
 ///                 .table("example-table")
 ///                 .user("example-usr")
@@ -5422,7 +5516,7 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -5430,20 +5524,25 @@ import 'firehose_delivery_stream_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kinesis_firehosedeliverystream" "example" {
-///   extended_s3_configuration = {
-///     data_format_conversion_configuration = {
-///       input_format_configuration = {
-///         deserializer = {
-///           hive_json_ser_de = {}
+/// resource "aws_kinesis_firehose_delivery_stream" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   extended_s3_configuration {
+///     data_format_conversion_configuration {
+///       input_format_configuration {
+///         deserializer {
+///           hive_json_ser_de {
+///           }
 ///         }
 ///       }
-///       output_format_configuration = {
-///         serializer = {
-///           orc_ser_de = {}
+///       output_format_configuration {
+///         serializer {
+///           orc_ser_de {
+///           }
 ///         }
 ///       }
-///       schema_configuration = {
+///       schema_configuration {
 ///         database_name = exampleAwsGlueCatalogTable.databaseName
 ///         role_arn      = exampleAwsIamRole.arn
 ///         table_name    = exampleAwsGlueCatalogTable.name
@@ -5499,9 +5598,9 @@ import 'firehose_delivery_stream_state.dart';
 ///                             .build())
 ///                         .build())
 ///                     .schemaConfiguration(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationArgs.builder()
-///                         .databaseName(exampleAwsGlueCatalogTable.databaseName())
-///                         .roleArn(exampleAwsIamRole.arn())
-///                         .tableName(exampleAwsGlueCatalogTable.name())
+///                         .databaseName(exampleAwsGlueCatalogTable.get("databaseName"))
+///                         .roleArn(exampleAwsIamRole.get("arn"))
+///                         .tableName(exampleAwsGlueCatalogTable.get("name"))
 ///                         .build())
 ///                     .build())
 ///                 .bufferingSize(128)
@@ -5604,7 +5703,7 @@ class FirehoseDeliveryStream extends pulumi.CustomResource {
           'aws:kinesis/firehoseDeliveryStream:FirehoseDeliveryStream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     destination = registerOutput<String>('destination');

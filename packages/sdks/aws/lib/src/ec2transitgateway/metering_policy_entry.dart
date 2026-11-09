@@ -69,7 +69,7 @@ import 'metering_policy_entry_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,7 +77,10 @@ import 'metering_policy_entry_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2transitgateway_meteringpolicyentry" "example" {
+/// resource "aws_ec2transitgateway_metering_policy_entry" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   transit_gateway_metering_policy_id = exampleAwsEc2TransitGatewayMeteringPolicy.transitGatewayMeteringPolicyId
 ///   policy_rule_number                 = 100
 ///   metered_account                    = "source-attachment-owner"
@@ -105,7 +108,7 @@ import 'metering_policy_entry_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new MeteringPolicyEntry("example", MeteringPolicyEntryArgs.builder()
-///             .transitGatewayMeteringPolicyId(exampleAwsEc2TransitGatewayMeteringPolicy.transitGatewayMeteringPolicyId())
+///             .transitGatewayMeteringPolicyId(exampleAwsEc2TransitGatewayMeteringPolicy.get("transitGatewayMeteringPolicyId"))
 ///             .policyRuleNumber(100)
 ///             .meteredAccount("source-attachment-owner")
 ///             .build());
@@ -198,7 +201,7 @@ import 'metering_policy_entry_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -206,7 +209,10 @@ import 'metering_policy_entry_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2transitgateway_meteringpolicyentry" "example" {
+/// resource "aws_ec2transitgateway_metering_policy_entry" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   transit_gateway_metering_policy_id = exampleAwsEc2TransitGatewayMeteringPolicy.transitGatewayMeteringPolicyId
 ///   policy_rule_number                 = 200
 ///   metered_account                    = "destination-attachment-owner"
@@ -237,7 +243,7 @@ import 'metering_policy_entry_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new MeteringPolicyEntry("example", MeteringPolicyEntryArgs.builder()
-///             .transitGatewayMeteringPolicyId(exampleAwsEc2TransitGatewayMeteringPolicy.transitGatewayMeteringPolicyId())
+///             .transitGatewayMeteringPolicyId(exampleAwsEc2TransitGatewayMeteringPolicy.get("transitGatewayMeteringPolicyId"))
 ///             .policyRuleNumber(200)
 ///             .meteredAccount("destination-attachment-owner")
 ///             .sourceCidrBlock("10.0.0.0/8")
@@ -312,7 +318,7 @@ class MeteringPolicyEntry extends pulumi.CustomResource {
           'aws:ec2transitgateway/meteringPolicyEntry:MeteringPolicyEntry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     destinationCidrBlock = registerOutput<String?>('destinationCidrBlock');
     destinationPortRange = registerOutput<String?>('destinationPortRange');

@@ -71,7 +71,7 @@ import 'policy_table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -79,7 +79,10 @@ import 'policy_table_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2transitgateway_policytable" "example" {
+/// resource "aws_ec2transitgateway_policy_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   transit_gateway_id = exampleAwsEc2TransitGateway.id
 ///   tags = {
 ///     "Name" = "Example Policy Table"
@@ -108,7 +111,7 @@ import 'policy_table_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new PolicyTable("example", PolicyTableArgs.builder()
-///             .transitGatewayId(exampleAwsEc2TransitGateway.id())
+///             .transitGatewayId(exampleAwsEc2TransitGateway.get("id"))
 ///             .tags(Map.of("Name", "Example Policy Table"))
 ///             .build());
 ///
@@ -159,7 +162,7 @@ class PolicyTable extends pulumi.CustomResource {
           'aws:ec2transitgateway/policyTable:PolicyTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');

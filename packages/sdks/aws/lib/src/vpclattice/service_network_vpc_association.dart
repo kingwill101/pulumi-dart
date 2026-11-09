@@ -74,7 +74,7 @@ import 'service_network_vpc_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,7 +82,10 @@ import 'service_network_vpc_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpclattice_servicenetworkvpcassociation" "example" {
+/// resource "aws_vpclattice_service_network_vpc_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_identifier             = exampleAwsVpc.id
 ///   service_network_identifier = exampleAwsVpclatticeServiceNetwork.id
 ///   security_group_ids         = [exampleAwsSecurityGroup.id]
@@ -110,9 +113,9 @@ import 'service_network_vpc_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ServiceNetworkVpcAssociation("example", ServiceNetworkVpcAssociationArgs.builder()
-///             .vpcIdentifier(exampleAwsVpc.id())
-///             .serviceNetworkIdentifier(exampleAwsVpclatticeServiceNetwork.id())
-///             .securityGroupIds(exampleAwsSecurityGroup.id())
+///             .vpcIdentifier(exampleAwsVpc.get("id"))
+///             .serviceNetworkIdentifier(exampleAwsVpclatticeServiceNetwork.get("id"))
+///             .securityGroupIds(exampleAwsSecurityGroup.get("id"))
 ///             .build());
 ///
 ///     }
@@ -173,7 +176,7 @@ class ServiceNetworkVpcAssociation extends pulumi.CustomResource {
           'aws:vpclattice/serviceNetworkVpcAssociation:ServiceNetworkVpcAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdBy = registerOutput<String>('createdBy');

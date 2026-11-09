@@ -59,7 +59,7 @@ import 'get_signing_profile_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,7 @@ import 'get_signing_profile_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_signer_getsigningjob" "buildSigningJob" {
+/// data "aws_signer_signing_job" "buildSigningJob" {
 ///   job_id = "9ed7e5c3-b8d4-4da0-8459-44e0b068f7ee"
 /// }
 /// ```
@@ -188,7 +188,7 @@ pulumi.Output<GetSigningJobResult> getSigningJobOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -196,7 +196,7 @@ pulumi.Output<GetSigningJobResult> getSigningJobOutput(
 ///   }
 /// }
 ///
-/// data "aws_signer_getsigningprofile" "productionSigningProfile" {
+/// data "aws_signer_signing_profile" "productionSigningProfile" {
 ///   name = "prod_profile_DdW3Mk1foYL88fajut4mTVFGpuwfd4ACO6ANL0D1uIj7lrn8adK"
 /// }
 /// ```

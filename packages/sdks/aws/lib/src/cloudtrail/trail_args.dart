@@ -34,6 +34,8 @@ class TrailArgs {
   final pulumi.Input<String?>? kmsKeyId;
   /// Name of the trail.
   final pulumi.Input<String?>? name;
+  /// Whether CloudTrail logs events it generates when delivering log files to the trail's destinations, such as Amazon S3 and CloudWatch Logs. Set to `false` to suppress these events. See [Recursive logging](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-trail-recursive-logging.html) for details. If not specified, defaults to `true`.
+  final pulumi.Input<bool?>? recursiveLogging;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
   /// Name of the S3 bucket designated for publishing log files.
@@ -60,6 +62,7 @@ class TrailArgs {
   /// [isOrganizationTrail] Whether the trail is an AWS Organizations trail. Organization trails log events for the master account and all member accounts. Can only be created in the organization master account. Defaults to `false`.
   /// [kmsKeyId] KMS key ARN to use to encrypt the logs delivered by CloudTrail.
   /// [name] Name of the trail.
+  /// [recursiveLogging] Whether CloudTrail logs events it generates when delivering log files to the trail's destinations, such as Amazon S3 and CloudWatch Logs. Set to `false` to suppress these events. See [Recursive logging](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-trail-recursive-logging.html) for details. If not specified, defaults to `true`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [s3BucketName] Name of the S3 bucket designated for publishing log files.
   /// [s3KeyPrefix] S3 key prefix that follows the name of the bucket you have designated for log file delivery.
@@ -78,6 +81,7 @@ class TrailArgs {
     this.isOrganizationTrail,
     this.kmsKeyId,
     this.name,
+    this.recursiveLogging,
     this.region,
     required this.s3BucketName,
     this.s3KeyPrefix,
@@ -99,6 +103,7 @@ class TrailArgs {
       'isOrganizationTrail': ?isOrganizationTrail,
       'kmsKeyId': ?kmsKeyId,
       'name': ?name,
+      'recursiveLogging': ?recursiveLogging,
       'region': ?region,
       's3BucketName': s3BucketName,
       's3KeyPrefix': ?s3KeyPrefix,
@@ -121,6 +126,7 @@ class TrailArgs {
       isOrganizationTrail: (() { final guardedValue = map['isOrganizationTrail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recursiveLogging: (() { final guardedValue = map['recursiveLogging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s3BucketName: pulumi.Input.fromValue(map['s3BucketName'] as String),
       s3KeyPrefix: (() { final guardedValue = map['s3KeyPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

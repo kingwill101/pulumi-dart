@@ -58,7 +58,7 @@ import 'vpc_block_public_access_options_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -66,7 +66,10 @@ import 'vpc_block_public_access_options_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcblockpublicaccessoptions" "example" {
+/// resource "aws_ec2_vpc_block_public_access_options" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   internet_gateway_block_mode = "block-bidirectional"
 /// }
 /// ```
@@ -137,7 +140,7 @@ class VpcBlockPublicAccessOptions extends pulumi.CustomResource {
           'aws:ec2/vpcBlockPublicAccessOptions:VpcBlockPublicAccessOptions',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     awsRegion = registerOutput<String>('awsRegion');

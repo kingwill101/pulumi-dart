@@ -64,7 +64,7 @@ import 'graph_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,6 +73,9 @@ import 'graph_state.dart';
 /// }
 ///
 /// resource "aws_detective_graph" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tags = {
 ///     "Name" = "example-detective-graph"
 ///   }
@@ -153,7 +156,7 @@ class Graph extends pulumi.CustomResource {
           'aws:detective/graph:Graph',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     createdTime = registerOutput<String>('createdTime');
     graphArn = registerOutput<String>('graphArn');

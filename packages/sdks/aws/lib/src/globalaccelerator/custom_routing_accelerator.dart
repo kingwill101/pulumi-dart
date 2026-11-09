@@ -98,7 +98,7 @@ import 'custom_routing_accelerator_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -106,8 +106,11 @@ import 'custom_routing_accelerator_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_globalaccelerator_customroutingaccelerator" "example" {
-///   attributes = {
+/// resource "aws_globalaccelerator_custom_routing_accelerator" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   attributes {
 ///     flow_logs_enabled   = true
 ///     flow_logs_s3_bucket = "example-bucket"
 ///     flow_logs_s3_prefix = "flow-logs/"
@@ -222,7 +225,7 @@ class CustomRoutingAccelerator extends pulumi.CustomResource {
           'aws:globalaccelerator/customRoutingAccelerator:CustomRoutingAccelerator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attributes = registerOutput<CustomRoutingAcceleratorAttributes?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomRoutingAcceleratorAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });

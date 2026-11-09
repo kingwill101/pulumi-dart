@@ -120,7 +120,7 @@ import 'table_ttl.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -129,14 +129,17 @@ import 'table_ttl.dart';
 /// }
 ///
 /// resource "aws_keyspaces_table" "example" {
-///   schema_definition = {
-///     columns = [{
-///       "name" = "Message"
-///       "type" = "ASCII"
-///     }]
-///     partition_keys = [{
-///       "name" = "Message"
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   schema_definition {
+///     column {
+///       name = "Message"
+///       type = "ASCII"
+///     }
+///     partition_key {
+///       name = "Message"
+///     }
 ///   }
 ///   keyspace_name = exampleAwsKeyspacesKeyspace.name
 ///   table_name    = "my_table"
@@ -176,7 +179,7 @@ import 'table_ttl.dart';
 ///                     .name("Message")
 ///                     .build())
 ///                 .build())
-///             .keyspaceName(exampleAwsKeyspacesKeyspace.name())
+///             .keyspaceName(exampleAwsKeyspacesKeyspace.get("name"))
 ///             .tableName("my_table")
 ///             .build());
 ///
@@ -250,7 +253,7 @@ class Table extends pulumi.CustomResource {
           'aws:keyspaces/table:Table',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     capacitySpecification = registerOutput<TableCapacitySpecification>('capacitySpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableCapacitySpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });

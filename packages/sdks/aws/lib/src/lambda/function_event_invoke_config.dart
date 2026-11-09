@@ -188,7 +188,7 @@ import 'function_event_invoke_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -198,6 +198,9 @@ import 'function_event_invoke_config_state.dart';
 ///
 /// # SQS queue for failed invocations
 /// resource "aws_sqs_queue" "dlq" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "lambda-dlq"
 ///   tags = {
 ///     "Environment" = "production"
@@ -206,6 +209,9 @@ import 'function_event_invoke_config_state.dart';
 /// }
 /// # SNS topic for successful invocations
 /// resource "aws_sns_topic" "success" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "lambda-success-notifications"
 ///   tags = {
 ///     "Environment" = "production"
@@ -213,12 +219,15 @@ import 'function_event_invoke_config_state.dart';
 ///   }
 /// }
 /// # Complete event invoke configuration
-/// resource "aws_lambda_functioneventinvokeconfig" "example" {
-///   destination_config = {
-///     on_failure = {
+/// resource "aws_lambda_function_event_invoke_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   destination_config {
+///     on_failure {
 ///       destination = aws_sqs_queue.dlq.arn
 ///     }
-///     on_success = {
+///     on_success {
 ///       destination = aws_sns_topic.success.arn
 ///     }
 ///   }
@@ -283,7 +292,7 @@ import 'function_event_invoke_config_state.dart';
 ///                     .destination(success.arn())
 ///                     .build())
 ///                 .build())
-///             .functionName(exampleAwsLambdaFunction.functionName())
+///             .functionName(exampleAwsLambdaFunction.get("functionName"))
 ///             .maximumEventAgeInSeconds(300)
 ///             .maximumRetryAttempts(1)
 ///             .build());
@@ -386,7 +395,7 @@ import 'function_event_invoke_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -394,7 +403,10 @@ import 'function_event_invoke_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_functioneventinvokeconfig" "example" {
+/// resource "aws_lambda_function_event_invoke_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   function_name                = exampleAwsLambdaFunction.functionName
 ///   maximum_event_age_in_seconds = 60 # 1 minute - fail fast
 ///   maximum_retry_attempts       = 0 # No retries
@@ -422,7 +434,7 @@ import 'function_event_invoke_config_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new FunctionEventInvokeConfig("example", FunctionEventInvokeConfigArgs.builder()
-///             .functionName(exampleAwsLambdaFunction.functionName())
+///             .functionName(exampleAwsLambdaFunction.get("functionName"))
 ///             .maximumEventAgeInSeconds(60)
 ///             .maximumRetryAttempts(0)
 ///             .build());
@@ -557,7 +569,7 @@ import 'function_event_invoke_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -566,14 +578,20 @@ import 'function_event_invoke_config_state.dart';
 /// }
 ///
 /// resource "aws_lambda_alias" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "production"
 ///   description      = "Production alias"
 ///   function_name    = exampleAwsLambdaFunction.functionName
 ///   function_version = exampleAwsLambdaFunction.version
 /// }
-/// resource "aws_lambda_functioneventinvokeconfig" "example" {
-///   destination_config = {
-///     on_failure = {
+/// resource "aws_lambda_function_event_invoke_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   destination_config {
+///     on_failure {
 ///       destination = productionDlq.arn
 ///     }
 ///   }
@@ -611,17 +629,17 @@ import 'function_event_invoke_config_state.dart';
 ///         var example = new Alias("example", AliasArgs.builder()
 ///             .name("production")
 ///             .description("Production alias")
-///             .functionName(exampleAwsLambdaFunction.functionName())
-///             .functionVersion(exampleAwsLambdaFunction.version())
+///             .functionName(exampleAwsLambdaFunction.get("functionName"))
+///             .functionVersion(exampleAwsLambdaFunction.get("version"))
 ///             .build());
 ///
 ///         var exampleFunctionEventInvokeConfig = new FunctionEventInvokeConfig("exampleFunctionEventInvokeConfig", FunctionEventInvokeConfigArgs.builder()
 ///             .destinationConfig(FunctionEventInvokeConfigDestinationConfigArgs.builder()
 ///                 .onFailure(FunctionEventInvokeConfigDestinationConfigOnFailureArgs.builder()
-///                     .destination(productionDlq.arn())
+///                     .destination(productionDlq.get("arn"))
 ///                     .build())
 ///                 .build())
-///             .functionName(exampleAwsLambdaFunction.functionName())
+///             .functionName(exampleAwsLambdaFunction.get("functionName"))
 ///             .qualifier(example.name())
 ///             .maximumEventAgeInSeconds(1800)
 ///             .maximumRetryAttempts(2)
@@ -754,7 +772,7 @@ import 'function_event_invoke_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -762,12 +780,15 @@ import 'function_event_invoke_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_functioneventinvokeconfig" "example" {
-///   destination_config = {
-///     on_failure = {
+/// resource "aws_lambda_function_event_invoke_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   destination_config {
+///     on_failure {
 ///       destination = versionDlq.arn
 ///     }
-///     on_success = {
+///     on_success {
 ///       destination = versionSuccess.arn
 ///     }
 ///   }
@@ -804,14 +825,14 @@ import 'function_event_invoke_config_state.dart';
 ///         var example = new FunctionEventInvokeConfig("example", FunctionEventInvokeConfigArgs.builder()
 ///             .destinationConfig(FunctionEventInvokeConfigDestinationConfigArgs.builder()
 ///                 .onFailure(FunctionEventInvokeConfigDestinationConfigOnFailureArgs.builder()
-///                     .destination(versionDlq.arn())
+///                     .destination(versionDlq.get("arn"))
 ///                     .build())
 ///                 .onSuccess(FunctionEventInvokeConfigDestinationConfigOnSuccessArgs.builder()
-///                     .destination(versionSuccess.arn())
+///                     .destination(versionSuccess.get("arn"))
 ///                     .build())
 ///                 .build())
-///             .functionName(exampleAwsLambdaFunction.functionName())
-///             .qualifier(exampleAwsLambdaFunction.version())
+///             .functionName(exampleAwsLambdaFunction.get("functionName"))
+///             .qualifier(exampleAwsLambdaFunction.get("version"))
 ///             .maximumEventAgeInSeconds(21600)
 ///             .maximumRetryAttempts(2)
 ///             .build());
@@ -924,7 +945,7 @@ import 'function_event_invoke_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -932,9 +953,12 @@ import 'function_event_invoke_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_functioneventinvokeconfig" "example" {
-///   destination_config = {
-///     on_failure = {
+/// resource "aws_lambda_function_event_invoke_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   destination_config {
+///     on_failure {
 ///       destination = devDlq.arn
 ///     }
 ///   }
@@ -970,10 +994,10 @@ import 'function_event_invoke_config_state.dart';
 ///         var example = new FunctionEventInvokeConfig("example", FunctionEventInvokeConfigArgs.builder()
 ///             .destinationConfig(FunctionEventInvokeConfigDestinationConfigArgs.builder()
 ///                 .onFailure(FunctionEventInvokeConfigDestinationConfigOnFailureArgs.builder()
-///                     .destination(devDlq.arn())
+///                     .destination(devDlq.get("arn"))
 ///                     .build())
 ///                 .build())
-///             .functionName(exampleAwsLambdaFunction.functionName())
+///             .functionName(exampleAwsLambdaFunction.get("functionName"))
 ///             .qualifier("$LATEST")
 ///             .maximumEventAgeInSeconds(120)
 ///             .maximumRetryAttempts(0)
@@ -1122,7 +1146,7 @@ import 'function_event_invoke_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1132,18 +1156,27 @@ import 'function_event_invoke_config_state.dart';
 ///
 /// # S3 bucket for archiving successful events
 /// resource "aws_s3_bucket" "lambda_success_archive" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket ="lambda-success-archive-${bucketSuffix.hex}"
 /// }
 /// # EventBridge custom bus for failed events
-/// resource "aws_cloudwatch_eventbus" "lambda_failures" {
+/// resource "aws_cloudwatch_event_bus" "lambda_failures" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "lambda-failure-events"
 /// }
-/// resource "aws_lambda_functioneventinvokeconfig" "example" {
-///   destination_config = {
-///     on_failure = {
-///       destination = aws_cloudwatch_eventbus.lambda_failures.arn
+/// resource "aws_lambda_function_event_invoke_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   destination_config {
+///     on_failure {
+///       destination = aws_cloudwatch_event_bus.lambda_failures.arn
 ///     }
-///     on_success = {
+///     on_success {
 ///       destination = aws_s3_bucket.lambda_success_archive.arn
 ///     }
 ///   }
@@ -1180,7 +1213,7 @@ import 'function_event_invoke_config_state.dart';
 ///     public static void stack(Context ctx) {
 ///         // S3 bucket for archiving successful events
 ///         var lambdaSuccessArchive = new Bucket("lambdaSuccessArchive", BucketArgs.builder()
-///             .bucket(String.format("lambda-success-archive-%s", bucketSuffix.hex()))
+///             .bucket(String.format("lambda-success-archive-%s", bucketSuffix.get("hex")))
 ///             .build());
 ///
 ///         // EventBridge custom bus for failed events
@@ -1197,7 +1230,7 @@ import 'function_event_invoke_config_state.dart';
 ///                     .destination(lambdaSuccessArchive.arn())
 ///                     .build())
 ///                 .build())
-///             .functionName(exampleAwsLambdaFunction.functionName())
+///             .functionName(exampleAwsLambdaFunction.get("functionName"))
 ///             .build());
 ///
 ///     }
@@ -1293,7 +1326,7 @@ class FunctionEventInvokeConfig extends pulumi.CustomResource {
           'aws:lambda/functionEventInvokeConfig:FunctionEventInvokeConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     destinationConfig = registerOutput<FunctionEventInvokeConfigDestinationConfig?>('destinationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionEventInvokeConfigDestinationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     functionName = registerOutput<String>('functionName');

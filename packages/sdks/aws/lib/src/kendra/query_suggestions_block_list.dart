@@ -99,7 +99,7 @@ import 'query_suggestions_block_list_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -107,8 +107,11 @@ import 'query_suggestions_block_list_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kendra_querysuggestionsblocklist" "example" {
-///   source_s3_path = {
+/// resource "aws_kendra_query_suggestions_block_list" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   source_s3_path {
 ///     bucket = exampleAwsS3Bucket.id
 ///     key    = "example/suggestions.txt"
 ///   }
@@ -144,12 +147,12 @@ import 'query_suggestions_block_list_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new QuerySuggestionsBlockList("example", QuerySuggestionsBlockListArgs.builder()
 ///             .sourceS3Path(QuerySuggestionsBlockListSourceS3PathArgs.builder()
-///                 .bucket(exampleAwsS3Bucket.id())
+///                 .bucket(exampleAwsS3Bucket.get("id"))
 ///                 .key("example/suggestions.txt")
 ///                 .build())
-///             .indexId(exampleAwsKendraIndex.id())
+///             .indexId(exampleAwsKendraIndex.get("id"))
 ///             .name("Example")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .tags(Map.of("Name", "Example Kendra Index"))
 ///             .build());
 ///
@@ -217,7 +220,7 @@ class QuerySuggestionsBlockList extends pulumi.CustomResource {
           'aws:kendra/querySuggestionsBlockList:QuerySuggestionsBlockList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

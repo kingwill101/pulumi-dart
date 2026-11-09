@@ -85,11 +85,11 @@ class SpotInstanceRequestState {
   final pulumi.Input<List<SpotInstanceRequestNetworkInterface>?>? networkInterfaces;
   final pulumi.Input<String?>? outpostArn;
   final pulumi.Input<String?>? passwordData;
-  /// Placement Group to start the instance in. Conflicts with `placementGroupId`.
+  /// Placement Group to start the instance in. Conflicts with `placementGroupId`. Updating this argument stops and restarts the EC2 instance, except for Spot Instances and instances with `disableApiStop` and `forceDestroy` enabled, which are replaced.
   final pulumi.Input<String?>? placementGroup;
-  /// Placement Group ID to start the instance in. Conflicts with `placementGroup`.
+  /// Placement Group ID to start the instance in. Conflicts with `placementGroup`. Updating this argument stops and restarts the EC2 instance, except for Spot Instances and instances with `disableApiStop` and `forceDestroy` enabled, which are replaced.
   final pulumi.Input<String?>? placementGroupId;
-  /// Number of the partition the instance is in. Valid only if the `aws.ec2.PlacementGroup` resource's `strategy` argument is set to `"partition"`.
+  /// Number of the partition the instance is in. Valid only if the `aws.ec2.PlacementGroup` resource's `strategy` argument is set to `"partition"`. Updating this argument stops and restarts the EC2 instance, except for Spot Instances and instances with `disableApiStop` and `forceDestroy` enabled, which are replaced.
   final pulumi.Input<int?>? placementPartitionNumber;
   final pulumi.Input<String?>? primaryNetworkInterfaceId;
   /// The primary network interface. See Primary Network Interface below.
@@ -202,9 +202,9 @@ class SpotInstanceRequestState {
   /// [networkInterfaces] Customize network interfaces to be attached at instance boot time. See Network Interfaces below for more details.
   /// [outpostArn] Optional.
   /// [passwordData] Optional.
-  /// [placementGroup] Placement Group to start the instance in. Conflicts with `placementGroupId`.
-  /// [placementGroupId] Placement Group ID to start the instance in. Conflicts with `placementGroup`.
-  /// [placementPartitionNumber] Number of the partition the instance is in. Valid only if the `aws.ec2.PlacementGroup` resource's `strategy` argument is set to `"partition"`.
+  /// [placementGroup] Placement Group to start the instance in. Conflicts with `placementGroupId`. Updating this argument stops and restarts the EC2 instance, except for Spot Instances and instances with `disableApiStop` and `forceDestroy` enabled, which are replaced.
+  /// [placementGroupId] Placement Group ID to start the instance in. Conflicts with `placementGroup`. Updating this argument stops and restarts the EC2 instance, except for Spot Instances and instances with `disableApiStop` and `forceDestroy` enabled, which are replaced.
+  /// [placementPartitionNumber] Number of the partition the instance is in. Valid only if the `aws.ec2.PlacementGroup` resource's `strategy` argument is set to `"partition"`. Updating this argument stops and restarts the EC2 instance, except for Spot Instances and instances with `disableApiStop` and `forceDestroy` enabled, which are replaced.
   /// [primaryNetworkInterfaceId] Optional.
   /// [primaryNetworkInterfaces] The primary network interface. See Primary Network Interface below.
   /// [privateDns] The private DNS name assigned to the instance. Can only be

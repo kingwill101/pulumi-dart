@@ -126,7 +126,7 @@ import 'custom_routing_listener_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -134,8 +134,11 @@ import 'custom_routing_listener_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_globalaccelerator_customroutingaccelerator" "example" {
-///   attributes = {
+/// resource "aws_globalaccelerator_custom_routing_accelerator" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   attributes {
 ///     flow_logs_enabled   = true
 ///     flow_logs_s3_bucket = "example-bucket"
 ///     flow_logs_s3_prefix = "flow-logs/"
@@ -144,12 +147,15 @@ import 'custom_routing_listener_state.dart';
 ///   ip_address_type = "IPV4"
 ///   enabled         = true
 /// }
-/// resource "aws_globalaccelerator_customroutinglistener" "example" {
-///   port_ranges {
+/// resource "aws_globalaccelerator_custom_routing_listener" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   port_range {
 ///     from_port = 80
 ///     to_port   = 80
 ///   }
-///   accelerator_arn = aws_globalaccelerator_customroutingaccelerator.example.arn
+///   accelerator_arn = aws_globalaccelerator_custom_routing_accelerator.example.arn
 /// }
 /// ```
 /// ```java
@@ -256,7 +262,7 @@ class CustomRoutingListener extends pulumi.CustomResource {
           'aws:globalaccelerator/customRoutingListener:CustomRoutingListener',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     acceleratorArn = registerOutput<String>('acceleratorArn');
     arn = registerOutput<String>('arn');

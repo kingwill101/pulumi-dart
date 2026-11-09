@@ -62,7 +62,7 @@ import 'policy_table_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'policy_table_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2transitgateway_policytableassociation" "example" {
+/// resource "aws_ec2transitgateway_policy_table_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   transit_gateway_attachment_id   = exampleAwsNetworkmanagerTransitGatewayPeering.transitGatewayPeeringAttachmentId
 ///   transit_gateway_policy_table_id = exampleAwsEc2TransitGatewayPolicyTable.id
 /// }
@@ -97,8 +100,8 @@ import 'policy_table_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new PolicyTableAssociation("example", PolicyTableAssociationArgs.builder()
-///             .transitGatewayAttachmentId(exampleAwsNetworkmanagerTransitGatewayPeering.transitGatewayPeeringAttachmentId())
-///             .transitGatewayPolicyTableId(exampleAwsEc2TransitGatewayPolicyTable.id())
+///             .transitGatewayAttachmentId(exampleAwsNetworkmanagerTransitGatewayPeering.get("transitGatewayPeeringAttachmentId"))
+///             .transitGatewayPolicyTableId(exampleAwsEc2TransitGatewayPolicyTable.get("id"))
 ///             .build());
 ///
 ///     }
@@ -145,7 +148,7 @@ class PolicyTableAssociation extends pulumi.CustomResource {
           'aws:ec2transitgateway/policyTableAssociation:PolicyTableAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     resourceId = registerOutput<String>('resourceId');

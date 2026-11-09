@@ -108,7 +108,7 @@ import 'parameter_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -116,12 +116,15 @@ import 'parameter_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elasticache_parametergroup" "default" {
-///   parameters {
+/// resource "aws_elasticache_parameter_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parameter {
 ///     name  = "activerehashing"
 ///     value = "yes"
 ///   }
-///   parameters {
+///   parameter {
 ///     name  = "min-slaves-to-write"
 ///     value = "2"
 ///   }
@@ -220,7 +223,7 @@ class ParameterGroup extends pulumi.CustomResource {
           'aws:elasticache/parameterGroup:ParameterGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');

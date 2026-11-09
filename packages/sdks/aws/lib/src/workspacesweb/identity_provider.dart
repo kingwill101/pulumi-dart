@@ -94,7 +94,7 @@ import 'identity_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -103,9 +103,15 @@ import 'identity_provider_state.dart';
 /// }
 ///
 /// resource "aws_workspacesweb_portal" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "aws_workspacesweb_identityprovider" "example" {
+/// resource "aws_workspacesweb_identity_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity_provider_name = "example-saml"
 ///   identity_provider_type = "SAML"
 ///   portal_arn             = aws_workspacesweb_portal.example.portal_arn
@@ -273,7 +279,7 @@ import 'identity_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -282,9 +288,15 @@ import 'identity_provider_state.dart';
 /// }
 ///
 /// resource "aws_workspacesweb_portal" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "test"
 /// }
-/// resource "aws_workspacesweb_identityprovider" "test" {
+/// resource "aws_workspacesweb_identity_provider" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity_provider_name = "test-updated"
 ///   identity_provider_type = "OIDC"
 ///   portal_arn             = aws_workspacesweb_portal.test.portal_arn
@@ -402,7 +414,7 @@ class IdentityProvider extends pulumi.CustomResource {
           'aws:workspacesweb/identityProvider:IdentityProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     identityProviderArn = registerOutput<String>('identityProviderArn');
     identityProviderDetails = registerOutput<Map<String, String>>('identityProviderDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

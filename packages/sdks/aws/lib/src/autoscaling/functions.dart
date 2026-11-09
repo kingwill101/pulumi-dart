@@ -161,7 +161,7 @@ import 'get_group_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -169,7 +169,7 @@ import 'get_group_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_autoscaling_getamiids" "groups" {
+/// data "aws_autoscaling_ami_ids" "groups" {
 ///   filters {
 ///     name   = "tag:Team"
 ///     values = ["Pets"]
@@ -181,7 +181,10 @@ import 'get_group_result.dart';
 /// }
 ///
 /// resource "aws_autoscaling_notification" "slack_notifications" {
-///   group_names   = data.aws_autoscaling_getamiids.groups.names
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   group_names   = data.aws_autoscaling_ami_ids.groups.names
 ///   notifications = ["autoscaling:EC2_INSTANCE_LAUNCH", "autoscaling:EC2_INSTANCE_TERMINATE", "autoscaling:EC2_INSTANCE_LAUNCH_ERROR", "autoscaling:EC2_INSTANCE_TERMINATE_ERROR"]
 ///   topic_arn     = "TOPIC ARN"
 /// }
@@ -342,7 +345,7 @@ pulumi.Output<GetAmiIdsResult> getAmiIdsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -350,7 +353,7 @@ pulumi.Output<GetAmiIdsResult> getAmiIdsOutput(
 ///   }
 /// }
 ///
-/// data "aws_autoscaling_getgroup" "foo" {
+/// data "aws_autoscaling_group" "foo" {
 ///   name = "foo"
 /// }
 /// ```

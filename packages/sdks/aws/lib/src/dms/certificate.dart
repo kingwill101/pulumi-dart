@@ -79,7 +79,7 @@ import 'certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -89,6 +89,9 @@ import 'certificate_state.dart';
 ///
 /// # Create a new certificate
 /// resource "aws_dms_certificate" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_id  = "test-dms-certificate-tf"
 ///   certificate_pem = "..."
 ///   tags = {
@@ -175,7 +178,7 @@ class Certificate extends pulumi.CustomResource {
           'aws:dms/certificate:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['certificatePem', 'certificateWallet'],
         ) {
     certificateArn = registerOutput<String>('certificateArn');

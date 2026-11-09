@@ -66,7 +66,7 @@ import 'autonomous_database_secrets_manager_integration_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,10 +74,13 @@ import 'autonomous_database_secrets_manager_integration_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_odb_autonomousdatabasesecretsmanagerintegration" "example" {
+/// resource "aws_odb_autonomous_database_secrets_manager_integration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// output "adbsSecretsManagerServiceRoleArn" {
-///   value = aws_odb_autonomousdatabasesecretsmanagerintegration.example.role_arn
+///   value = aws_odb_autonomous_database_secrets_manager_integration.example.role_arn
 /// }
 /// ```
 /// ```java
@@ -155,7 +158,7 @@ class AutonomousDatabaseSecretsManagerIntegration extends pulumi.CustomResource 
           'aws:odb/autonomousDatabaseSecretsManagerIntegration:AutonomousDatabaseSecretsManagerIntegration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');

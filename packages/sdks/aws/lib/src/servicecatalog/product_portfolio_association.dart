@@ -64,7 +64,7 @@ import 'product_portfolio_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'product_portfolio_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_servicecatalog_productportfolioassociation" "example" {
+/// resource "aws_servicecatalog_product_portfolio_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   portfolio_id = "port-68656c6c6f"
 ///   product_id   = "prod-dnigbtea24ste"
 /// }
@@ -149,7 +152,7 @@ class ProductPortfolioAssociation extends pulumi.CustomResource {
           'aws:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     portfolioId = registerOutput<String>('portfolioId');

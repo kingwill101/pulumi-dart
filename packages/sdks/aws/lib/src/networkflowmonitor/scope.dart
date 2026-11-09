@@ -124,7 +124,7 @@ import 'scope_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -132,14 +132,17 @@ import 'scope_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
 /// resource "aws_networkflowmonitor_scope" "example" {
-///   targets {
-///     target_identifier = {
-///       target_id = {
-///         account_id = data.aws_getcalleridentity.current.account_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   target {
+///     target_identifier {
+///       target_id {
+///         account_id = data.aws_caller_identity.current.account_id
 ///       }
 ///       target_type = "ACCOUNT"
 ///     }
@@ -252,7 +255,7 @@ class Scope extends pulumi.CustomResource {
           'aws:networkflowmonitor/scope:Scope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     scopeArn = registerOutput<String>('scopeArn');

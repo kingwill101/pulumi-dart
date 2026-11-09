@@ -4,24 +4,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_rule_statement.dart';
 
 class WebAclRuleStatementNotStatement {
-  /// Single statement to negate. Exactly one statement must be specified.
-  final pulumi.Input<WebAclRuleStatement?>? statement;
+  /// Single statement to negate. Exactly one statement must be specified. The nested statement supports the statement types listed above except `managedRuleGroupStatement`, `rateBasedStatement` and `ruleGroupReferenceStatement`.
+  final pulumi.Input<WebAclRuleStatement> statement;
 
   /// Creates a new [WebAclRuleStatementNotStatement].
-  /// [statement] Single statement to negate. Exactly one statement must be specified.
+  /// [statement] Single statement to negate. Exactly one statement must be specified. The nested statement supports the statement types listed above except `managedRuleGroupStatement`, `rateBasedStatement` and `ruleGroupReferenceStatement`.
   const WebAclRuleStatementNotStatement({
-    this.statement,
+    required this.statement,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'statement': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatement, Map<String, dynamic>>(statement, (value) => value.toMap()),
+      'statement': pulumi.Input.mapInputValue<WebAclRuleStatement, Map<String, dynamic>>(statement, (value) => value.toMap()),
     };
   }
 
   factory WebAclRuleStatementNotStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementNotStatement(
-      statement: (() { final guardedValue = map['statement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleStatement.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      statement: pulumi.Input.fromValue(WebAclRuleStatement.fromMap((map['statement']! as Map).cast<String, dynamic>())),
     );
   }
 }

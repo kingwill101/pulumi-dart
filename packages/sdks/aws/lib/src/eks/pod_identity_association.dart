@@ -137,7 +137,7 @@ import 'pod_identity_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -145,7 +145,10 @@ import 'pod_identity_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_eks_podidentityassociation" "example" {
+/// resource "aws_eks_pod_identity_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name         = exampleAwsEksCluster.name
 ///   namespace            = "example"
 ///   service_account      = "example-sa"
@@ -184,10 +187,10 @@ import 'pod_identity_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new PodIdentityAssociation("example", PodIdentityAssociationArgs.builder()
-///             .clusterName(exampleAwsEksCluster.name())
+///             .clusterName(exampleAwsEksCluster.get("name"))
 ///             .namespace("example")
 ///             .serviceAccount("example-sa")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .disableSessionTags(true)
 ///             .policy(serializeJson(
 ///                 jsonObject(
@@ -404,7 +407,7 @@ import 'pod_identity_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -412,8 +415,8 @@ import 'pod_identity_association_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["pods.eks.amazonaws.com"]
@@ -424,14 +427,23 @@ import 'pod_identity_association_state.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "eks-pod-identity-example"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iam_rolepolicyattachment" "example_s3" {
+/// resource "aws_iam_role_policy_attachment" "example_s3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_arn = "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
 ///   role       = aws_iam_role.example.name
 /// }
-/// resource "aws_eks_podidentityassociation" "example" {
+/// resource "aws_eks_pod_identity_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name    = exampleAwsEksCluster.name
 ///   namespace       = "example"
 ///   service_account = "example-sa"
@@ -491,7 +503,7 @@ import 'pod_identity_association_state.dart';
 ///             .build());
 ///
 ///         var examplePodIdentityAssociation = new PodIdentityAssociation("examplePodIdentityAssociation", PodIdentityAssociationArgs.builder()
-///             .clusterName(exampleAwsEksCluster.name())
+///             .clusterName(exampleAwsEksCluster.get("name"))
 ///             .namespace("example")
 ///             .serviceAccount("example-sa")
 ///             .roleArn(example.arn())
@@ -600,7 +612,7 @@ class PodIdentityAssociation extends pulumi.CustomResource {
           'aws:eks/podIdentityAssociation:PodIdentityAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     associationArn = registerOutput<String>('associationArn');
     associationId = registerOutput<String>('associationId');

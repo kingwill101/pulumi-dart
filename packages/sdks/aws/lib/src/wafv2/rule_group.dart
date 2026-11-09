@@ -184,7 +184,7 @@ import 'rule_group_visibility_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -192,22 +192,26 @@ import 'rule_group_visibility_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafv2_rulegroup" "example" {
-///   visibility_config = {
+/// resource "aws_wafv2_rule_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   visibility_config {
 ///     cloudwatch_metrics_enabled = false
 ///     metric_name                = "friendly-metric-name"
 ///     sampled_requests_enabled   = false
 ///   }
-///   rules {
-///     action = {
-///       allow = {}
+///   rule {
+///     action {
+///       allow {
+///       }
 ///     }
-///     statement = {
-///       geo_match_statement = {
+///     statement {
+///       geo_match_statement {
 ///         country_codes = ["US", "NL"]
 ///       }
 ///     }
-///     visibility_config = {
+///     visibility_config {
 ///       cloudwatch_metrics_enabled = false
 ///       metric_name                = "friendly-rule-metric-name"
 ///       sampled_requests_enabled   = false
@@ -1342,7 +1346,7 @@ import 'rule_group_visibility_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1350,21 +1354,30 @@ import 'rule_group_visibility_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafv2_ipset" "test" {
+/// resource "aws_wafv2_ip_set" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "test"
 ///   scope              = "REGIONAL"
 ///   ip_address_version = "IPV4"
 ///   addresses          = ["1.1.1.1/32", "2.2.2.2/32"]
 /// }
-/// resource "aws_wafv2_regexpatternset" "test" {
-///   regular_expressions {
+/// resource "aws_wafv2_regex_pattern_set" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   regular_expression {
 ///     regex_string = "one"
 ///   }
 ///   name  = "test"
 ///   scope = "REGIONAL"
 /// }
-/// resource "aws_wafv2_rulegroup" "example" {
-///   visibility_config = {
+/// resource "aws_wafv2_rule_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   visibility_config {
 ///     cloudwatch_metrics_enabled = false
 ///     metric_name                = "friendly-metric-name"
 ///     sampled_requests_enabled   = false
@@ -1374,39 +1387,43 @@ import 'rule_group_visibility_config.dart';
 ///       "immunityTime" = 120
 ///     }]
 ///   }]
-///   rules {
-///     action = {
-///       block = {}
-///     }
-///     statement = {
-///       not_statement = {
-///         statements = [{
-///           "andStatement" = {
-///             "statements" = [{
-///               "geoMatchStatement" = {
-///                 "countryCodes" = ["US"]
-///               }
-///               }, {
-///               "byteMatchStatement" = {
-///                 "fieldToMatch" = {
-///                   "allQueryArguments" = {}
-///                 }
-///                 "textTransformations" = [{
-///                   "priority" = 5
-///                   "type"     = "CMD_LINE"
-///                   }, {
-///                   "priority" = 2
-///                   "type"     = "LOWERCASE"
-///                 }]
-///                 "positionalConstraint" = "CONTAINS"
-///                 "searchString"         = "word"
-///               }
-///             }]
-///           }
-///         }]
+///   rule {
+///     action {
+///       block {
 ///       }
 ///     }
-///     visibility_config = {
+///     statement {
+///       not_statement {
+///         statement {
+///           and_statement {
+///             statement {
+///               geo_match_statement {
+///                 country_codes = ["US"]
+///               }
+///             }
+///             statement {
+///               byte_match_statement {
+///                 field_to_match {
+///                   all_query_arguments {
+///                   }
+///                 }
+///                 text_transformation {
+///                   priority = 5
+///                   type     = "CMD_LINE"
+///                 }
+///                 text_transformation {
+///                   priority = 2
+///                   type     = "LOWERCASE"
+///                 }
+///                 positional_constraint = "CONTAINS"
+///                 search_string         = "word"
+///               }
+///             }
+///           }
+///         }
+///       }
+///     }
+///     visibility_config {
 ///       cloudwatch_metrics_enabled = false
 ///       metric_name                = "rule-1"
 ///       sampled_requests_enabled   = false
@@ -1414,87 +1431,95 @@ import 'rule_group_visibility_config.dart';
 ///     name     = "rule-1"
 ///     priority = 1
 ///   }
-///   rules {
-///     action = {
-///       count = {}
-///     }
-///     statement = {
-///       or_statement = {
-///         statements = [{
-///           "regexMatchStatement" = {
-///             "fieldToMatch" = {
-///               "singleHeader" = {
-///                 "name" = "user-agent"
-///               }
-///             }
-///             "textTransformations" = [{
-///               "priority" = 6
-///               "type"     = "NONE"
-///             }]
-///             "regexString" = "a-z?"
-///           }
-///           }, {
-///           "sqliMatchStatement" = {
-///             "fieldToMatch" = {
-///               "body" = {}
-///             }
-///             "textTransformations" = [{
-///               "priority" = 5
-///               "type"     = "URL_DECODE"
-///               }, {
-///               "priority" = 4
-///               "type"     = "HTML_ENTITY_DECODE"
-///               }, {
-///               "priority" = 3
-///               "type"     = "COMPRESS_WHITE_SPACE"
-///             }]
-///           }
-///           }, {
-///           "xssMatchStatement" = {
-///             "fieldToMatch" = {
-///               "method" = {}
-///             }
-///             "textTransformations" = [{
-///               "priority" = 2
-///               "type"     = "NONE"
-///             }]
-///           }
-///         }]
+///   rule {
+///     action {
+///       count {
 ///       }
 ///     }
-///     visibility_config = {
+///     statement {
+///       or_statement {
+///         statement {
+///           regex_match_statement {
+///             field_to_match {
+///               single_header {
+///                 name = "user-agent"
+///               }
+///             }
+///             text_transformation {
+///               priority = 6
+///               type     = "NONE"
+///             }
+///             regex_string = "a-z?"
+///           }
+///         }
+///         statement {
+///           sqli_match_statement {
+///             field_to_match {
+///               body {
+///               }
+///             }
+///             text_transformation {
+///               priority = 5
+///               type     = "URL_DECODE"
+///             }
+///             text_transformation {
+///               priority = 4
+///               type     = "HTML_ENTITY_DECODE"
+///             }
+///             text_transformation {
+///               priority = 3
+///               type     = "COMPRESS_WHITE_SPACE"
+///             }
+///           }
+///         }
+///         statement {
+///           xss_match_statement {
+///             field_to_match {
+///               method {
+///               }
+///             }
+///             text_transformation {
+///               priority = 2
+///               type     = "NONE"
+///             }
+///           }
+///         }
+///       }
+///     }
+///     visibility_config {
 ///       cloudwatch_metrics_enabled = false
 ///       metric_name                = "rule-2"
 ///       sampled_requests_enabled   = false
 ///     }
-///     captcha_config = {
-///       immunity_time_property = {
+///     captcha_config {
+///       immunity_time_property {
 ///         immunity_time = 240
 ///       }
 ///     }
 ///     name     = "rule-2"
 ///     priority = 2
 ///   }
-///   rules {
-///     action = {
-///       block = {}
+///   rule {
+///     action {
+///       block {
+///       }
 ///     }
-///     statement = {
-///       size_constraint_statement = {
-///         field_to_match = {
-///           single_query_argument = {
+///     statement {
+///       size_constraint_statement {
+///         field_to_match {
+///           single_query_argument {
 ///             name = "username"
 ///           }
 ///         }
-///         text_transformations = [{
-///           "priority" = 5
-///           "type"     = "NONE"
-///         }]
+///         text_transformation {
+///           priority = 5
+///           type     = "NONE"
+///         }
 ///         comparison_operator = "GT"
 ///         size                = 100
 ///       }
 ///     }
-///     visibility_config = {
+///     visibility_config {
 ///       cloudwatch_metrics_enabled = false
 ///       metric_name                = "rule-3"
 ///       sampled_requests_enabled   = false
@@ -1502,33 +1527,35 @@ import 'rule_group_visibility_config.dart';
 ///     name     = "rule-3"
 ///     priority = 3
 ///   }
-///   rules {
-///     action = {
-///       block = {}
-///     }
-///     statement = {
-///       or_statement = {
-///         statements = [{
-///           "ipSetReferenceStatement" = {
-///             "arn" = aws_wafv2_ipset.test.arn
-///           }
-///           }, {
-///           "regexPatternSetReferenceStatement" = {
-///             "fieldToMatch" = {
-///               "singleHeader" = {
-///                 "name" = "referer"
-///               }
-///             }
-///             "textTransformations" = [{
-///               "priority" = 2
-///               "type"     = "NONE"
-///             }]
-///             "arn" = aws_wafv2_regexpatternset.test.arn
-///           }
-///         }]
+///   rule {
+///     action {
+///       block {
 ///       }
 ///     }
-///     visibility_config = {
+///     statement {
+///       or_statement {
+///         statement {
+///           ip_set_reference_statement {
+///             arn = aws_wafv2_ip_set.test.arn
+///           }
+///         }
+///         statement {
+///           regex_pattern_set_reference_statement {
+///             field_to_match {
+///               single_header {
+///                 name = "referer"
+///               }
+///             }
+///             text_transformation {
+///               priority = 2
+///               type     = "NONE"
+///             }
+///             arn = aws_wafv2_regex_pattern_set.test.arn
+///           }
+///         }
+///       }
+///     }
+///     visibility_config {
 ///       cloudwatch_metrics_enabled = false
 ///       metric_name                = "rule-4"
 ///       sampled_requests_enabled   = false
@@ -1640,33 +1667,39 @@ import 'rule_group_visibility_config.dart';
 ///                         .block(RuleGroupRuleActionBlockArgs.builder()
 ///                             .build())
 ///                         .build())
-///                     .statement(Map.of("notStatement", Map.of("statements", Arrays.asList(RuleGroupRuleStatementArgs.builder()
-///                         .andStatement(Map.of("statements", Arrays.asList(
-///                             RuleGroupRuleStatementArgs.builder()
-///                                 .geoMatchStatement(RuleGroupRuleStatementGeoMatchStatementArgs.builder()
-///                                     .countryCodes("US")
-///                                     .build())
-///                                 .build(),
-///                             RuleGroupRuleStatementArgs.builder()
-///                                 .byteMatchStatement(RuleGroupRuleStatementByteMatchStatementArgs.builder()
-///                                     .fieldToMatch(RuleGroupRuleStatementByteMatchStatementFieldToMatchArgs.builder()
-///                                         .allQueryArguments(RuleGroupRuleStatementByteMatchStatementFieldToMatchAllQueryArgumentsArgs.builder()
-///                                             .build())
-///                                         .build())
-///                                     .textTransformations(
-///                                         RuleGroupRuleStatementByteMatchStatementTextTransformationArgs.builder()
-///                                             .priority(5)
-///                                             .type("CMD_LINE")
+///                     .statement(RuleGroupRuleStatementArgs.builder()
+///                         .notStatement(RuleGroupRuleStatementNotStatementArgs.builder()
+///                             .statements(RuleGroupRuleStatementArgs.builder()
+///                                 .andStatement(RuleGroupRuleStatementAndStatementArgs.builder()
+///                                     .statements(
+///                                         RuleGroupRuleStatementArgs.builder()
+///                                             .geoMatchStatement(RuleGroupRuleStatementGeoMatchStatementArgs.builder()
+///                                                 .countryCodes("US")
+///                                                 .build())
 ///                                             .build(),
-///                                         RuleGroupRuleStatementByteMatchStatementTextTransformationArgs.builder()
-///                                             .priority(2)
-///                                             .type("LOWERCASE")
+///                                         RuleGroupRuleStatementArgs.builder()
+///                                             .byteMatchStatement(RuleGroupRuleStatementByteMatchStatementArgs.builder()
+///                                                 .fieldToMatch(RuleGroupRuleStatementByteMatchStatementFieldToMatchArgs.builder()
+///                                                     .allQueryArguments(RuleGroupRuleStatementByteMatchStatementFieldToMatchAllQueryArgumentsArgs.builder()
+///                                                         .build())
+///                                                     .build())
+///                                                 .textTransformations(
+///                                                     RuleGroupRuleStatementByteMatchStatementTextTransformationArgs.builder()
+///                                                         .priority(5)
+///                                                         .type("CMD_LINE")
+///                                                         .build(),
+///                                                     RuleGroupRuleStatementByteMatchStatementTextTransformationArgs.builder()
+///                                                         .priority(2)
+///                                                         .type("LOWERCASE")
+///                                                         .build())
+///                                                 .positionalConstraint("CONTAINS")
+///                                                 .searchString("word")
+///                                                 .build())
 ///                                             .build())
-///                                     .positionalConstraint("CONTAINS")
-///                                     .searchString("word")
 ///                                     .build())
-///                                 .build())))
-///                         .build()))))
+///                                 .build())
+///                             .build())
+///                         .build())
 ///                     .visibilityConfig(RuleGroupRuleVisibilityConfigArgs.builder()
 ///                         .cloudwatchMetricsEnabled(false)
 ///                         .metricName("rule-1")
@@ -1681,54 +1714,56 @@ import 'rule_group_visibility_config.dart';
 ///                             .build())
 ///                         .build())
 ///                     .statement(RuleGroupRuleStatementArgs.builder()
-///                         .orStatement(Map.of("statements", Arrays.asList(
-///                             RuleGroupRuleStatementArgs.builder()
-///                                 .regexMatchStatement(RuleGroupRuleStatementRegexMatchStatementArgs.builder()
-///                                     .fieldToMatch(RuleGroupRuleStatementRegexMatchStatementFieldToMatchArgs.builder()
-///                                         .singleHeader(RuleGroupRuleStatementRegexMatchStatementFieldToMatchSingleHeaderArgs.builder()
-///                                             .name("user-agent")
+///                         .orStatement(RuleGroupRuleStatementOrStatementArgs.builder()
+///                             .statements(
+///                                 RuleGroupRuleStatementArgs.builder()
+///                                     .regexMatchStatement(RuleGroupRuleStatementRegexMatchStatementArgs.builder()
+///                                         .fieldToMatch(RuleGroupRuleStatementRegexMatchStatementFieldToMatchArgs.builder()
+///                                             .singleHeader(RuleGroupRuleStatementRegexMatchStatementFieldToMatchSingleHeaderArgs.builder()
+///                                                 .name("user-agent")
+///                                                 .build())
+///                                             .build())
+///                                         .textTransformations(RuleGroupRuleStatementRegexMatchStatementTextTransformationArgs.builder()
+///                                             .priority(6)
+///                                             .type("NONE")
+///                                             .build())
+///                                         .regexString("a-z?")
+///                                         .build())
+///                                     .build(),
+///                                 RuleGroupRuleStatementArgs.builder()
+///                                     .sqliMatchStatement(RuleGroupRuleStatementSqliMatchStatementArgs.builder()
+///                                         .fieldToMatch(RuleGroupRuleStatementSqliMatchStatementFieldToMatchArgs.builder()
+///                                             .body(RuleGroupRuleStatementSqliMatchStatementFieldToMatchBodyArgs.builder()
+///                                                 .build())
+///                                             .build())
+///                                         .textTransformations(
+///                                             RuleGroupRuleStatementSqliMatchStatementTextTransformationArgs.builder()
+///                                                 .priority(5)
+///                                                 .type("URL_DECODE")
+///                                                 .build(),
+///                                             RuleGroupRuleStatementSqliMatchStatementTextTransformationArgs.builder()
+///                                                 .priority(4)
+///                                                 .type("HTML_ENTITY_DECODE")
+///                                                 .build(),
+///                                             RuleGroupRuleStatementSqliMatchStatementTextTransformationArgs.builder()
+///                                                 .priority(3)
+///                                                 .type("COMPRESS_WHITE_SPACE")
+///                                                 .build())
+///                                         .build())
+///                                     .build(),
+///                                 RuleGroupRuleStatementArgs.builder()
+///                                     .xssMatchStatement(RuleGroupRuleStatementXssMatchStatementArgs.builder()
+///                                         .fieldToMatch(RuleGroupRuleStatementXssMatchStatementFieldToMatchArgs.builder()
+///                                             .method(RuleGroupRuleStatementXssMatchStatementFieldToMatchMethodArgs.builder()
+///                                                 .build())
+///                                             .build())
+///                                         .textTransformations(RuleGroupRuleStatementXssMatchStatementTextTransformationArgs.builder()
+///                                             .priority(2)
+///                                             .type("NONE")
 ///                                             .build())
 ///                                         .build())
-///                                     .textTransformations(RuleGroupRuleStatementRegexMatchStatementTextTransformationArgs.builder()
-///                                         .priority(6)
-///                                         .type("NONE")
-///                                         .build())
-///                                     .regexString("a-z?")
 ///                                     .build())
-///                                 .build(),
-///                             RuleGroupRuleStatementArgs.builder()
-///                                 .sqliMatchStatement(RuleGroupRuleStatementSqliMatchStatementArgs.builder()
-///                                     .fieldToMatch(RuleGroupRuleStatementSqliMatchStatementFieldToMatchArgs.builder()
-///                                         .body(RuleGroupRuleStatementSqliMatchStatementFieldToMatchBodyArgs.builder()
-///                                             .build())
-///                                         .build())
-///                                     .textTransformations(
-///                                         RuleGroupRuleStatementSqliMatchStatementTextTransformationArgs.builder()
-///                                             .priority(5)
-///                                             .type("URL_DECODE")
-///                                             .build(),
-///                                         RuleGroupRuleStatementSqliMatchStatementTextTransformationArgs.builder()
-///                                             .priority(4)
-///                                             .type("HTML_ENTITY_DECODE")
-///                                             .build(),
-///                                         RuleGroupRuleStatementSqliMatchStatementTextTransformationArgs.builder()
-///                                             .priority(3)
-///                                             .type("COMPRESS_WHITE_SPACE")
-///                                             .build())
-///                                     .build())
-///                                 .build(),
-///                             RuleGroupRuleStatementArgs.builder()
-///                                 .xssMatchStatement(RuleGroupRuleStatementXssMatchStatementArgs.builder()
-///                                     .fieldToMatch(RuleGroupRuleStatementXssMatchStatementFieldToMatchArgs.builder()
-///                                         .method(RuleGroupRuleStatementXssMatchStatementFieldToMatchMethodArgs.builder()
-///                                             .build())
-///                                         .build())
-///                                     .textTransformations(RuleGroupRuleStatementXssMatchStatementTextTransformationArgs.builder()
-///                                         .priority(2)
-///                                         .type("NONE")
-///                                         .build())
-///                                     .build())
-///                                 .build())))
+///                             .build())
 ///                         .build())
 ///                     .visibilityConfig(RuleGroupRuleVisibilityConfigArgs.builder()
 ///                         .cloudwatchMetricsEnabled(false)
@@ -1777,26 +1812,28 @@ import 'rule_group_visibility_config.dart';
 ///                             .build())
 ///                         .build())
 ///                     .statement(RuleGroupRuleStatementArgs.builder()
-///                         .orStatement(Map.of("statements", Arrays.asList(
-///                             RuleGroupRuleStatementArgs.builder()
-///                                 .ipSetReferenceStatement(RuleGroupRuleStatementIpSetReferenceStatementArgs.builder()
-///                                     .arn(test.arn())
-///                                     .build())
-///                                 .build(),
-///                             RuleGroupRuleStatementArgs.builder()
-///                                 .regexPatternSetReferenceStatement(RuleGroupRuleStatementRegexPatternSetReferenceStatementArgs.builder()
-///                                     .fieldToMatch(RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchArgs.builder()
-///                                         .singleHeader(RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeaderArgs.builder()
-///                                             .name("referer")
+///                         .orStatement(RuleGroupRuleStatementOrStatementArgs.builder()
+///                             .statements(
+///                                 RuleGroupRuleStatementArgs.builder()
+///                                     .ipSetReferenceStatement(RuleGroupRuleStatementIpSetReferenceStatementArgs.builder()
+///                                         .arn(test.arn())
+///                                         .build())
+///                                     .build(),
+///                                 RuleGroupRuleStatementArgs.builder()
+///                                     .regexPatternSetReferenceStatement(RuleGroupRuleStatementRegexPatternSetReferenceStatementArgs.builder()
+///                                         .fieldToMatch(RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchArgs.builder()
+///                                             .singleHeader(RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeaderArgs.builder()
+///                                                 .name("referer")
+///                                                 .build())
 ///                                             .build())
+///                                         .textTransformations(RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformationArgs.builder()
+///                                             .priority(2)
+///                                             .type("NONE")
+///                                             .build())
+///                                         .arn(testRegexPatternSet.arn())
 ///                                         .build())
-///                                     .textTransformations(RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformationArgs.builder()
-///                                         .priority(2)
-///                                         .type("NONE")
-///                                         .build())
-///                                     .arn(testRegexPatternSet.arn())
 ///                                     .build())
-///                                 .build())))
+///                             .build())
 ///                         .build())
 ///                     .visibilityConfig(RuleGroupRuleVisibilityConfigArgs.builder()
 ///                         .cloudwatchMetricsEnabled(false)
@@ -2175,7 +2212,7 @@ import 'rule_group_visibility_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2183,8 +2220,11 @@ import 'rule_group_visibility_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafv2_rulegroup" "example" {
-///   visibility_config = {
+/// resource "aws_wafv2_rule_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   visibility_config {
 ///     cloudwatch_metrics_enabled = false
 ///     metric_name                = "friendly-metric-name"
 ///     sampled_requests_enabled   = false
@@ -2370,7 +2410,7 @@ class RuleGroup extends pulumi.CustomResource {
           'aws:wafv2/ruleGroup:RuleGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     capacity = registerOutput<int>('capacity');

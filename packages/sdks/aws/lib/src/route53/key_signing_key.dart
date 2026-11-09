@@ -357,7 +357,7 @@ import 'key_signing_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -365,10 +365,13 @@ import 'key_signing_key_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   customer_master_key_spec = "ECC_NIST_P256"
 ///   deletion_window_in_days  = 7
 ///   key_usage                = "SIGN_VERIFY"
@@ -383,7 +386,7 @@ import 'key_signing_key_state.dart';
 ///       "Resource" = "*"
 ///       "Condition" = {
 ///         "StringEquals" = {
-///           "aws:SourceAccount" = data.aws_getcalleridentity.current.account_id
+///           "aws:SourceAccount" = data.aws_caller_identity.current.account_id
 ///         }
 ///         "ArnLike" = {
 ///           "aws:SourceArn" = "arn:aws:route53:::hostedzone/*"
@@ -406,7 +409,7 @@ import 'key_signing_key_state.dart';
 ///       "Action" = "kms:*"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///         "AWS" ="arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
 ///       }
 ///       "Resource" = "*"
 ///       "Sid"      = "Enable IAM User Permissions"
@@ -415,16 +418,25 @@ import 'key_signing_key_state.dart';
 ///   })
 /// }
 /// resource "aws_route53_zone" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example.com"
 /// }
-/// resource "aws_route53_keysigningkey" "example" {
+/// resource "aws_route53_key_signing_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hosted_zone_id             = test.id
 ///   key_management_service_arn = testAwsKmsKey.arn
 ///   name                       = "example"
 /// }
-/// resource "aws_route53_hostedzonednssec" "example" {
-///   depends_on     = [aws_route53_keysigningkey.example]
-///   hosted_zone_id = aws_route53_keysigningkey.example.hosted_zone_id
+/// resource "aws_route53_hosted_zone_dns_sec" "example" {
+///   depends_on = [aws_route53_key_signing_key.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   hosted_zone_id = aws_route53_key_signing_key.example.hosted_zone_id
 /// }
 /// ```
 /// ```java
@@ -522,8 +534,8 @@ import 'key_signing_key_state.dart';
 ///             .build());
 ///
 ///         var exampleKeySigningKey = new KeySigningKey("exampleKeySigningKey", KeySigningKeyArgs.builder()
-///             .hostedZoneId(test.id())
-///             .keyManagementServiceArn(testAwsKmsKey.arn())
+///             .hostedZoneId(test.get("id"))
+///             .keyManagementServiceArn(testAwsKmsKey.get("arn"))
 ///             .name("example")
 ///             .build());
 ///
@@ -656,7 +668,7 @@ class KeySigningKey extends pulumi.CustomResource {
           'aws:route53/keySigningKey:KeySigningKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     digestAlgorithmMnemonic = registerOutput<String>('digestAlgorithmMnemonic');
     digestAlgorithmType = registerOutput<int>('digestAlgorithmType');

@@ -73,7 +73,7 @@ import 'user_pool_web_authn_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -81,7 +81,10 @@ import 'user_pool_web_authn_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_userpool" "pool" {
+/// resource "aws_cognito_user_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "mypool"
 /// }
 /// ```
@@ -214,7 +217,7 @@ import 'user_pool_web_authn_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -222,13 +225,16 @@ import 'user_pool_web_authn_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_userpool" "example" {
-///   sms_configuration = {
+/// resource "aws_cognito_user_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   sms_configuration {
 ///     external_id    = "example"
 ///     sns_caller_arn = exampleAwsIamRole.arn
 ///     sns_region     = "us-east-1"
 ///   }
-///   software_token_mfa_configuration = {
+///   software_token_mfa_configuration {
 ///     enabled = true
 ///   }
 ///   mfa_configuration          = "ON"
@@ -261,7 +267,7 @@ import 'user_pool_web_authn_configuration.dart';
 ///         var example = new UserPool("example", UserPoolArgs.builder()
 ///             .smsConfiguration(UserPoolSmsConfigurationArgs.builder()
 ///                 .externalId("example")
-///                 .snsCallerArn(exampleAwsIamRole.arn())
+///                 .snsCallerArn(exampleAwsIamRole.get("arn"))
 ///                 .snsRegion("us-east-1")
 ///                 .build())
 ///             .softwareTokenMfaConfiguration(UserPoolSoftwareTokenMfaConfigurationArgs.builder()
@@ -396,7 +402,7 @@ import 'user_pool_web_authn_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -404,15 +410,19 @@ import 'user_pool_web_authn_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_userpool" "test" {
-///   account_recovery_setting = {
-///     recovery_mechanisms = [{
-///       "name"     = "verified_email"
-///       "priority" = 1
-///       }, {
-///       "name"     = "verified_phone_number"
-///       "priority" = 2
-///     }]
+/// resource "aws_cognito_user_pool" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   account_recovery_setting {
+///     recovery_mechanism {
+///       name     = "verified_email"
+///       priority = 1
+///     }
+///     recovery_mechanism {
+///       name     = "verified_phone_number"
+///       priority = 2
+///     }
 ///   }
 ///   name = "mypool"
 /// }
@@ -568,7 +578,7 @@ class UserPool extends pulumi.CustomResource {
           'aws:cognito/userPool:UserPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accountRecoverySetting = registerOutput<UserPoolAccountRecoverySetting?>('accountRecoverySetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolAccountRecoverySetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     adminCreateUserConfig = registerOutput<UserPoolAdminCreateUserConfig>('adminCreateUserConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolAdminCreateUserConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

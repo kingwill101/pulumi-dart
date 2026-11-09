@@ -79,13 +79,13 @@ import 'snapshot_create_volume_permission_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSnapshot, err := ebs.NewSnapshot(ctx, "example_snapshot", &ebs.SnapshotArgs{
-/// 			VolumeId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			VolumeId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewSnapshotCreateVolumePermission(ctx, "example_perm", &ec2.SnapshotCreateVolumePermissionArgs{
-/// 			SnapshotId: exampleSnapshot.ID().ToIDOutput().ToStringOutput(),
+/// 			SnapshotId: exampleSnapshot.ID(),
 /// 			AccountId:  pulumi.String("12345678"),
 /// 		})
 /// 		if err != nil {
@@ -96,7 +96,7 @@ import 'snapshot_create_volume_permission_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -104,15 +104,24 @@ import 'snapshot_create_volume_permission_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_snapshotcreatevolumepermission" "example_perm" {
+/// resource "aws_ec2_snapshot_create_volume_permission" "example_perm" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   snapshot_id = aws_ebs_snapshot.example_snapshot.id
 ///   account_id  = "12345678"
 /// }
 /// resource "aws_ebs_volume" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_zone = "us-west-2a"
 ///   size              = 40
 /// }
 /// resource "aws_ebs_snapshot" "example_snapshot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   volume_id = aws_ebs_volume.example.id
 /// }
 /// ```
@@ -197,7 +206,7 @@ class SnapshotCreateVolumePermission extends pulumi.CustomResource {
           'aws:ec2/snapshotCreateVolumePermission:SnapshotCreateVolumePermission',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     region = registerOutput<String>('region');

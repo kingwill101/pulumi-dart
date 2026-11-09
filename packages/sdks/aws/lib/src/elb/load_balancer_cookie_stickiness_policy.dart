@@ -113,7 +113,7 @@ import 'load_balancer_cookie_stickiness_policy_state.dart';
 /// 		}
 /// 		_, err = elb.NewLoadBalancerCookieStickinessPolicy(ctx, "foo", &elb.LoadBalancerCookieStickinessPolicyArgs{
 /// 			Name:                   pulumi.String("foo-policy"),
-/// 			LoadBalancer:           lb.ID().ToIDOutput().ToStringOutput(),
+/// 			LoadBalancer:           lb.ID(),
 /// 			LbPort:                 pulumi.Int(80),
 /// 			CookieExpirationPeriod: pulumi.Int(600),
 /// 		})
@@ -125,7 +125,7 @@ import 'load_balancer_cookie_stickiness_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -133,7 +133,10 @@ import 'load_balancer_cookie_stickiness_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elb_loadbalancer" "lb" {
+/// resource "aws_elb_load_balancer" "lb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   listeners {
 ///     instance_port     = 8000
 ///     instance_protocol = "http"
@@ -143,9 +146,12 @@ import 'load_balancer_cookie_stickiness_policy_state.dart';
 ///   name               = "test-lb"
 ///   availability_zones = ["us-east-1a"]
 /// }
-/// resource "aws_elb_loadbalancercookiestickinesspolicy" "foo" {
+/// resource "aws_elb_load_balancer_cookie_stickiness_policy" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "foo-policy"
-///   load_balancer            = aws_elb_loadbalancer.lb.id
+///   load_balancer            = aws_elb_load_balancer.lb.id
 ///   lb_port                  = 80
 ///   cookie_expiration_period = 600
 /// }
@@ -244,7 +250,7 @@ class LoadBalancerCookieStickinessPolicy extends pulumi.CustomResource {
           'aws:elb/loadBalancerCookieStickinessPolicy:LoadBalancerCookieStickinessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     cookieExpirationPeriod = registerOutput<int?>('cookieExpirationPeriod');
     lbPort = registerOutput<int>('lbPort');

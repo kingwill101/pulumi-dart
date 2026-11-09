@@ -66,7 +66,7 @@ import 'account_public_access_block_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'account_public_access_block_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_accountpublicaccessblock" "example" {
+/// resource "aws_s3_account_public_access_block" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   block_public_acls   = true
 ///   block_public_policy = true
 /// }
@@ -156,7 +159,7 @@ class AccountPublicAccessBlock extends pulumi.CustomResource {
           'aws:s3/accountPublicAccessBlock:AccountPublicAccessBlock',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     blockPublicAcls = registerOutput<bool?>('blockPublicAcls');

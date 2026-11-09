@@ -62,7 +62,7 @@ import 'resolver_query_log_config_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'resolver_query_log_config_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53_resolverquerylogconfigassociation" "example" {
+/// resource "aws_route53_resolver_query_log_config_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resolver_query_log_config_id = exampleAwsRoute53ResolverQueryLogConfig.id
 ///   resource_id                  = exampleAwsVpc.id
 /// }
@@ -97,8 +100,8 @@ import 'resolver_query_log_config_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ResolverQueryLogConfigAssociation("example", ResolverQueryLogConfigAssociationArgs.builder()
-///             .resolverQueryLogConfigId(exampleAwsRoute53ResolverQueryLogConfig.id())
-///             .resourceId(exampleAwsVpc.id())
+///             .resolverQueryLogConfigId(exampleAwsRoute53ResolverQueryLogConfig.get("id"))
+///             .resourceId(exampleAwsVpc.get("id"))
 ///             .build());
 ///
 ///     }
@@ -141,7 +144,7 @@ class ResolverQueryLogConfigAssociation extends pulumi.CustomResource {
           'aws:route53/resolverQueryLogConfigAssociation:ResolverQueryLogConfigAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     resolverQueryLogConfigId = registerOutput<String>('resolverQueryLogConfigId');

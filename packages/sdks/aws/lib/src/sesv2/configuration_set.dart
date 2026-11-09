@@ -152,7 +152,7 @@ import 'configuration_set_vdm_options.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -160,21 +160,24 @@ import 'configuration_set_vdm_options.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sesv2_configurationset" "example" {
-///   delivery_options = {
+/// resource "aws_sesv2_configuration_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   delivery_options {
 ///     max_delivery_seconds = 300
 ///     tls_policy           = "REQUIRE"
 ///   }
-///   reputation_options = {
+///   reputation_options {
 ///     reputation_metrics_enabled = false
 ///   }
-///   sending_options = {
+///   sending_options {
 ///     sending_enabled = true
 ///   }
-///   suppression_options = {
+///   suppression_options {
 ///     suppressed_reasons = ["BOUNCE", "COMPLAINT"]
 ///   }
-///   tracking_options = {
+///   tracking_options {
 ///     custom_redirect_domain = "example.com"
 ///     https_policy           = "REQUIRE"
 ///   }
@@ -298,7 +301,7 @@ class ConfigurationSet extends pulumi.CustomResource {
           'aws:sesv2/configurationSet:ConfigurationSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     configurationSetName = registerOutput<String>('configurationSetName');

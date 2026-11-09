@@ -64,7 +64,7 @@ import 'resource_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'resource_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ram_resourceassociation" "example" {
+/// resource "aws_ram_resource_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_arn       = exampleAwsSubnet.arn
 ///   resource_share_arn = exampleAwsRamResourceShare.arn
 /// }
@@ -99,8 +102,8 @@ import 'resource_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ResourceAssociation("example", ResourceAssociationArgs.builder()
-///             .resourceArn(exampleAwsSubnet.arn())
-///             .resourceShareArn(exampleAwsRamResourceShare.arn())
+///             .resourceArn(exampleAwsSubnet.get("arn"))
+///             .resourceShareArn(exampleAwsRamResourceShare.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -156,7 +159,7 @@ class ResourceAssociation extends pulumi.CustomResource {
           'aws:ram/resourceAssociation:ResourceAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');

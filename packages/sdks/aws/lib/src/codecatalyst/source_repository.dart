@@ -68,7 +68,7 @@ import 'source_repository_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,7 +76,10 @@ import 'source_repository_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_codecatalyst_sourcerepository" "example" {
+/// resource "aws_codecatalyst_source_repository" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-repo"
 ///   project_name = "example-project"
 ///   space_name   = "example-space"
@@ -156,7 +159,7 @@ class SourceRepository extends pulumi.CustomResource {
           'aws:codecatalyst/sourceRepository:SourceRepository',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

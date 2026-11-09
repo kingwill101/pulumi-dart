@@ -73,7 +73,7 @@ import 'template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,6 +82,9 @@ import 'template_state.dart';
 /// }
 ///
 /// resource "aws_ses_template" "MyTemplate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "MyTemplate"
 ///   subject = "Greetings, {{name}}!"
 ///   html    = "<h1>Hello {{name}},</h1><p>Your favorite animal is {{favoriteanimal}}.</p>"
@@ -167,7 +170,7 @@ class Template extends pulumi.CustomResource {
           'aws:ses/template:Template',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     html = registerOutput<String?>('html');

@@ -93,7 +93,7 @@ import 'vpc_ingress_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -101,8 +101,11 @@ import 'vpc_ingress_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apprunner_vpcingressconnection" "example" {
-///   ingress_vpc_configuration = {
+/// resource "aws_apprunner_vpc_ingress_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ingress_vpc_configuration {
 ///     vpc_id          = default.id
 ///     vpc_endpoint_id = apprunner.id
 ///   }
@@ -137,11 +140,11 @@ import 'vpc_ingress_connection_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new VpcIngressConnection("example", VpcIngressConnectionArgs.builder()
 ///             .ingressVpcConfiguration(VpcIngressConnectionIngressVpcConfigurationArgs.builder()
-///                 .vpcId(default_.id())
-///                 .vpcEndpointId(apprunner.id())
+///                 .vpcId(default_.get("id"))
+///                 .vpcEndpointId(apprunner.get("id"))
 ///                 .build())
 ///             .name("example")
-///             .serviceArn(exampleAwsApprunnerService.arn())
+///             .serviceArn(exampleAwsApprunnerService.get("arn"))
 ///             .tags(Map.of("foo", "bar"))
 ///             .build());
 ///
@@ -209,7 +212,7 @@ class VpcIngressConnection extends pulumi.CustomResource {
           'aws:apprunner/vpcIngressConnection:VpcIngressConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     domainName = registerOutput<String>('domainName');

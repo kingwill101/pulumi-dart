@@ -106,7 +106,7 @@ import 'response_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -114,9 +114,12 @@ import 'response_plan_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssmincidents_responseplan" "example" {
+/// resource "aws_ssmincidents_response_plan" "example" {
 ///   depends_on = [exampleAwsSsmincidentsReplicationSet]
-///   incident_template = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   incident_template {
 ///     title  = "title"
 ///     impact = "3"
 ///   }
@@ -505,7 +508,7 @@ import 'response_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -513,14 +516,18 @@ import 'response_plan_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssmincidents_responseplan" "example" {
+/// resource "aws_ssmincidents_response_plan" "example" {
 ///   depends_on = [exampleAwsSsmincidentsReplicationSet]
-///   incident_template = {
-///     notification_targets = [{
-///       "snsTopicArn" = example1.arn
-///       }, {
-///       "snsTopicArn" = example2.arn
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   incident_template {
+///     notification_target {
+///       sns_topic_arn = example1.arn
+///     }
+///     notification_target {
+///       sns_topic_arn = example2.arn
+///     }
 ///     title         = "title"
 ///     impact        = "3"
 ///     dedupe_string = "dedupe"
@@ -529,36 +536,37 @@ import 'response_plan_state.dart';
 ///     }
 ///     summary = "summary"
 ///   }
-///   action = {
-///     ssm_automations = [{
-///       "parameters" = [{
-///         "name"   = "key"
-///         "values" = ["value1", "value2"]
-///         }, {
-///         "name"   = "foo"
-///         "values" = ["bar"]
-///       }]
-///       "documentName"    = document1.name
-///       "roleArn"         = role1.arn
-///       "documentVersion" = "version1"
-///       "targetAccount"   = "RESPONSE_PLAN_OWNER_ACCOUNT"
-///       "dynamicParameters" = {
+///   action {
+///     ssm_automation {
+///       parameter {
+///         name   = "key"
+///         values = ["value1", "value2"]
+///       }
+///       parameter {
+///         name   = "foo"
+///         values = ["bar"]
+///       }
+///       document_name    = document1.name
+///       role_arn         = role1.arn
+///       document_version = "version1"
+///       target_account   = "RESPONSE_PLAN_OWNER_ACCOUNT"
+///       dynamic_parameters = {
 ///         "someKey"    = "INVOLVED_RESOURCES"
 ///         "anotherKey" = "INCIDENT_RECORD_ARN"
 ///       }
-///     }]
+///     }
 ///   }
-///   integration = {
-///     pagerduties = [{
-///       "name"      = "pagerdutyIntergration"
-///       "serviceId" = "example"
-///       "secretId"  = "example"
-///     }]
+///   integration {
+///     pagerduty {
+///       name       = "pagerdutyIntergration"
+///       service_id = "example"
+///       secret_id  = "example"
+///     }
 ///   }
-///   name          = "name"
-///   display_name  = "display name"
-///   chat_channels = [topic.arn]
-///   engagements   = ["arn:aws:ssm-contacts:us-east-2:111122223333:contact/test1"]
+///   name         = "name"
+///   display_name = "display name"
+///   chat_channel = [topic.arn]
+///   engagements  = ["arn:aws:ssm-contacts:us-east-2:111122223333:contact/test1"]
 ///   tags = {
 ///     "key" = "value"
 ///   }
@@ -597,10 +605,10 @@ import 'response_plan_state.dart';
 ///             .incidentTemplate(ResponsePlanIncidentTemplateArgs.builder()
 ///                 .notificationTargets(
 ///                     ResponsePlanIncidentTemplateNotificationTargetArgs.builder()
-///                         .snsTopicArn(example1.arn())
+///                         .snsTopicArn(example1.get("arn"))
 ///                         .build(),
 ///                     ResponsePlanIncidentTemplateNotificationTargetArgs.builder()
-///                         .snsTopicArn(example2.arn())
+///                         .snsTopicArn(example2.get("arn"))
 ///                         .build())
 ///                 .title("title")
 ///                 .impact(3)
@@ -621,8 +629,8 @@ import 'response_plan_state.dart';
 ///                             .name("foo")
 ///                             .values("bar")
 ///                             .build())
-///                     .documentName(document1.name())
-///                     .roleArn(role1.arn())
+///                     .documentName(document1.get("name"))
+///                     .roleArn(role1.get("arn"))
 ///                     .documentVersion("version1")
 ///                     .targetAccount("RESPONSE_PLAN_OWNER_ACCOUNT")
 ///                     .dynamicParameters(Map.ofEntries(
@@ -640,7 +648,7 @@ import 'response_plan_state.dart';
 ///                 .build())
 ///             .name("name")
 ///             .displayName("display name")
-///             .chatChannels(topic.arn())
+///             .chatChannels(topic.get("arn"))
 ///             .engagements("arn:aws:ssm-contacts:us-east-2:111122223333:contact/test1")
 ///             .tags(Map.of("key", "value"))
 ///             .build(), CustomResourceOptions.builder()
@@ -744,7 +752,7 @@ class ResponsePlan extends pulumi.CustomResource {
           'aws:ssmincidents/responsePlan:ResponsePlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     action = registerOutput<ResponsePlanAction?>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResponsePlanAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');

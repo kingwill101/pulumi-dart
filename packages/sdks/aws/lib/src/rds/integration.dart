@@ -165,7 +165,7 @@ import 'integration_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -174,10 +174,16 @@ import 'integration_timeouts.dart';
 /// }
 ///
 /// resource "aws_redshiftserverless_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   namespace_name = "redshift-example"
 /// }
 /// resource "aws_redshiftserverless_workgroup" "example" {
-///   config_parameters {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   config_parameter {
 ///     parameter_key   = "enable_case_sensitive_identifier"
 ///     parameter_value = "true"
 ///   }
@@ -189,7 +195,8 @@ import 'integration_timeouts.dart';
 /// }
 /// resource "aws_rds_integration" "example" {
 ///   lifecycle {
-///     ignore_changes = [kmsKeyId]
+///     ignore_changes        = [kmsKeyId]
+///     create_before_destroy = true
 ///   }
 ///   integration_name = "example"
 ///   source_arn       = exampleAwsRdsCluster.arn
@@ -237,14 +244,14 @@ import 'integration_timeouts.dart';
 ///             .baseCapacity(8)
 ///             .publiclyAccessible(false)
 ///             .subnetIds(
-///                 example1.id(),
-///                 example2.id(),
-///                 example3.id())
+///                 example1.get("id"),
+///                 example2.get("id"),
+///                 example3.get("id"))
 ///             .build());
 ///
 ///         var exampleIntegration = new Integration("exampleIntegration", IntegrationArgs.builder()
 ///             .integrationName("example")
-///             .sourceArn(exampleAwsRdsCluster.arn())
+///             .sourceArn(exampleAwsRdsCluster.get("arn"))
 ///             .targetArn(example.arn())
 ///             .build(), CustomResourceOptions.builder()
 ///                 .ignoreChanges("kmsKeyId")
@@ -527,7 +534,7 @@ import 'integration_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -535,18 +542,18 @@ import 'integration_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_iam_getpolicydocument" "keyPolicy" {
-///   statements {
+/// data "aws_iam_policy_document" "keyPolicy" {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
-///       identifiers = ["arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"]
+///       identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"]
 ///     }
 ///     actions   = ["kms:*"]
 ///     resources = ["*"]
 ///   }
-///   statements {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["redshift.amazonaws.com"]
@@ -557,10 +564,16 @@ import 'integration_timeouts.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_window_in_days = 10
-///   policy                  = data.aws_iam_getpolicydocument.keyPolicy.json
+///   policy                  = data.aws_iam_policy_document.keyPolicy.json
 /// }
 /// resource "aws_rds_integration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   integration_name = "example"
 ///   source_arn       = exampleAwsRdsCluster.arn
 ///   target_arn       = exampleAwsRedshiftserverlessNamespace.arn
@@ -629,8 +642,8 @@ import 'integration_timeouts.dart';
 ///
 ///         var exampleIntegration = new Integration("exampleIntegration", IntegrationArgs.builder()
 ///             .integrationName("example")
-///             .sourceArn(exampleAwsRdsCluster.arn())
-///             .targetArn(exampleAwsRedshiftserverlessNamespace.arn())
+///             .sourceArn(exampleAwsRdsCluster.get("arn"))
+///             .targetArn(exampleAwsRedshiftserverlessNamespace.get("arn"))
 ///             .kmsKeyId(example.arn())
 ///             .additionalEncryptionContext(Map.of("example", "test"))
 ///             .build());
@@ -737,7 +750,7 @@ class Integration extends pulumi.CustomResource {
           'aws:rds/integration:Integration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     arn = registerOutput<String>('arn');

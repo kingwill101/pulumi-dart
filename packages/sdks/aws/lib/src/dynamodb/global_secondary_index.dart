@@ -212,7 +212,7 @@ import 'global_secondary_index_warm_throughput.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -220,16 +220,19 @@ import 'global_secondary_index_warm_throughput.dart';
 ///   }
 /// }
 ///
-/// resource "aws_dynamodb_globalsecondaryindex" "example" {
-///   projection = {
+/// resource "aws_dynamodb_global_secondary_index" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   projection {
 ///     projection_type    = "INCLUDE"
 ///     non_key_attributes = ["UserId"]
 ///   }
-///   provisioned_throughput = {
+///   provisioned_throughput {
 ///     write_capacity_units = 10
 ///     read_capacity_units  = 10
 ///   }
-///   key_schemas {
+///   key_schema {
 ///     attribute_name = "GameTitle"
 ///     attribute_type = "S"
 ///     key_type       = "HASH"
@@ -238,11 +241,14 @@ import 'global_secondary_index_warm_throughput.dart';
 ///   index_name = "GameTitleIndex"
 /// }
 /// resource "aws_dynamodb_table" "example" {
-///   attributes {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   attribute {
 ///     name = "UserId"
 ///     type = "S"
 ///   }
-///   attributes {
+///   attribute {
 ///     name = "GameTitle"
 ///     type = "S"
 ///   }
@@ -555,7 +561,7 @@ import 'global_secondary_index_warm_throughput.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -564,26 +570,29 @@ import 'global_secondary_index_warm_throughput.dart';
 /// }
 ///
 /// resource "aws_dynamodb_table" "example" {
-///   attributes {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   attribute {
 ///     name = "example-key"
 ///     type = "S"
 ///   }
-///   attributes {
+///   attribute {
 ///     name = "example-gsi-key-1"
 ///     type = "S"
 ///   }
-///   attributes {
+///   attribute {
 ///     name = "example-gsi-key-2"
 ///     type = "S"
 ///   }
-///   global_secondary_indexes {
+///   global_secondary_index {
 ///     name            = "example-index-1"
 ///     projection_type = "ALL"
 ///     hash_key        = "example-gsi-key-1"
 ///     read_capacity   = 1
 ///     write_capacity  = 1
 ///   }
-///   global_secondary_indexes {
+///   global_secondary_index {
 ///     name            = "example-index-2"
 ///     projection_type = "ALL"
 ///     hash_key        = "example-gsi-key-2"
@@ -747,7 +756,7 @@ class GlobalSecondaryIndex extends pulumi.CustomResource {
           'aws:dynamodb/globalSecondaryIndex:GlobalSecondaryIndex',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     indexName = registerOutput<String>('indexName');

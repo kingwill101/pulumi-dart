@@ -66,7 +66,7 @@ import 'account_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,6 +75,9 @@ import 'account_state.dart';
 /// }
 ///
 /// resource "aws_organizations_account" "account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "my_new_account"
 ///   email = "john@doe.org"
 /// }
@@ -216,7 +219,7 @@ import 'account_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -226,7 +229,8 @@ import 'account_state.dart';
 ///
 /// resource "aws_organizations_account" "account" {
 ///   lifecycle {
-///     ignore_changes = [roleName]
+///     ignore_changes        = [roleName]
+///     create_before_destroy = true
 ///   }
 ///   name      = "my_new_account"
 ///   email     = "john@doe.org"
@@ -324,7 +328,7 @@ class Account extends pulumi.CustomResource {
           'aws:organizations/account:Account',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     closeOnDeletion = registerOutput<bool?>('closeOnDeletion');

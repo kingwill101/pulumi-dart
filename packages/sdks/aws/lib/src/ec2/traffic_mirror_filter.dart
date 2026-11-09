@@ -70,7 +70,7 @@ import 'traffic_mirror_filter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -78,7 +78,10 @@ import 'traffic_mirror_filter_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_trafficmirrorfilter" "foo" {
+/// resource "aws_ec2_traffic_mirror_filter" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description      = "traffic mirror filter - example"
 ///   network_services = ["amazon-dns"]
 /// }
@@ -156,7 +159,7 @@ class TrafficMirrorFilter extends pulumi.CustomResource {
           'aws:ec2/trafficMirrorFilter:TrafficMirrorFilter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

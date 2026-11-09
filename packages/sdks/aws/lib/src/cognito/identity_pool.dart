@@ -189,7 +189,7 @@ import 'identity_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -200,11 +200,17 @@ import 'identity_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_samlprovider" "default" {
+/// resource "aws_iam_saml_provider" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "my-saml-provider"
 ///   saml_metadata_document = file("saml-metadata.xml")
 /// }
-/// resource "aws_cognito_identitypool" "main" {
+/// resource "aws_cognito_identity_pool" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cognito_identity_providers {
 ///     client_id               = "6lhlkkfbfb4q5kpp90urffae"
 ///     provider_name           = "cognito-idp.us-east-1.amazonaws.com/us-east-1_Tv0493apJ"
@@ -222,7 +228,7 @@ import 'identity_pool_state.dart';
 ///     "graph.facebook.com"  = "7346241598935552"
 ///     "accounts.google.com" = "123456789012.apps.googleusercontent.com"
 ///   }
-///   saml_provider_arns           = [aws_iam_samlprovider.default.arn]
+///   saml_provider_arns           = [aws_iam_saml_provider.default.arn]
 ///   openid_connect_provider_arns = ["arn:aws:iam::123456789012:oidc-provider/id.example.com"]
 /// }
 /// ```
@@ -366,7 +372,7 @@ class IdentityPool extends pulumi.CustomResource {
           'aws:cognito/identityPool:IdentityPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     allowClassicFlow = registerOutput<bool?>('allowClassicFlow');
     allowUnauthenticatedIdentities = registerOutput<bool?>('allowUnauthenticatedIdentities');

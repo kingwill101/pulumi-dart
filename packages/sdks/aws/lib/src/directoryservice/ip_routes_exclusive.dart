@@ -144,7 +144,7 @@ import 'ip_routes_exclusive_timeouts.dart';
 /// Description: pulumi.String("Peered VPC"),
 /// },
 /// },
-/// DirectoryId: example.ID().ToIDOutput().ToStringOutput(),
+/// DirectoryId: example.ID(),
 /// UpdateSecurityGroupForDirectoryControllers: pulumi.Bool(true),
 /// })
 /// if err != nil {
@@ -155,7 +155,7 @@ import 'ip_routes_exclusive_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -164,6 +164,9 @@ import 'ip_routes_exclusive_timeouts.dart';
 /// }
 ///
 /// resource "aws_directoryservice_directory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_settings = {
 ///     vpc_id     = exampleAwsVpc.id
 ///     subnet_ids = exampleAwsSubnet[*].id
@@ -172,7 +175,10 @@ import 'ip_routes_exclusive_timeouts.dart';
 ///   password = "SuperSecretPassw0rd"
 ///   type     = "MicrosoftAD"
 /// }
-/// resource "aws_directoryservice_iproutesexclusive" "example" {
+/// resource "aws_directoryservice_ip_routes_exclusive" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ip_routes {
 ///     cidr_ip     = "10.0.0.0/24"
 ///     description = "On-premises network"
@@ -212,8 +218,8 @@ import 'ip_routes_exclusive_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Directory("example", DirectoryArgs.builder()
 ///             .vpcSettings(DirectoryVpcSettingsArgs.builder()
-///                 .vpcId(exampleAwsVpc.id())
-///                 .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
+///                 .vpcId(exampleAwsVpc.get("id"))
+///                 .subnetIds(exampleAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
 ///                 .build())
 ///             .name("corp.example.com")
 ///             .password("SuperSecretPassw0rd")
@@ -317,7 +323,7 @@ import 'ip_routes_exclusive_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -325,7 +331,10 @@ import 'ip_routes_exclusive_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_directoryservice_iproutesexclusive" "example" {
+/// resource "aws_directoryservice_ip_routes_exclusive" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ip_routes {
 ///     cidr_ipv6   = "2001:db8::/64"
 ///     description = "On-premises IPv6 network"
@@ -431,7 +440,7 @@ import 'ip_routes_exclusive_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -439,7 +448,10 @@ import 'ip_routes_exclusive_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_directoryservice_iproutesexclusive" "example" {
+/// resource "aws_directoryservice_ip_routes_exclusive" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   directory_id = exampleAwsDirectoryServiceDirectory.id
 /// }
 /// ```
@@ -465,7 +477,7 @@ import 'ip_routes_exclusive_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new IpRoutesExclusive("example", IpRoutesExclusiveArgs.builder()
-///             .directoryId(exampleAwsDirectoryServiceDirectory.id())
+///             .directoryId(exampleAwsDirectoryServiceDirectory.get("id"))
 ///             .build());
 ///
 ///     }
@@ -524,7 +536,7 @@ class IpRoutesExclusive extends pulumi.CustomResource {
           'aws:directoryservice/ipRoutesExclusive:IpRoutesExclusive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     directoryId = registerOutput<String>('directoryId');
     ipRoutes = registerOutput<List<IpRoutesExclusiveIpRoute>?>('ipRoutes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpRoutesExclusiveIpRoute>(guardedValue, (value) => IpRoutesExclusiveIpRoute.fromMap((value as Map).cast<String, dynamic>())); });

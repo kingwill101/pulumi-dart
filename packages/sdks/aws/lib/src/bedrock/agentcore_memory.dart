@@ -173,7 +173,7 @@ import 'agentcore_memory_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -181,8 +181,8 @@ import 'agentcore_memory_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["bedrock-agentcore.amazonaws.com"]
@@ -193,14 +193,23 @@ import 'agentcore_memory_timeouts.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "bedrock-agentcore-memory-role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iam_rolepolicyattachment" "example" {
+/// resource "aws_iam_role_policy_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role       = aws_iam_role.example.name
 ///   policy_arn = "arn:aws:iam::aws:policy/AmazonBedrockAgentCoreMemoryBedrockModelInferenceExecutionRolePolicy"
 /// }
-/// resource "aws_bedrock_agentcorememory" "example" {
+/// resource "aws_bedrock_agentcore_memory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example_memory"
 ///   event_expiry_duration = 30
 /// }
@@ -382,7 +391,7 @@ import 'agentcore_memory_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -391,9 +400,15 @@ import 'agentcore_memory_timeouts.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "KMS key for Bedrock AgentCore Memory"
 /// }
-/// resource "aws_bedrock_agentcorememory" "example" {
+/// resource "aws_bedrock_agentcore_memory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "example_memory"
 ///   description               = "Memory for customer service agent"
 ///   event_expiry_duration     = 60
@@ -433,7 +448,7 @@ import 'agentcore_memory_timeouts.dart';
 ///             .description("Memory for customer service agent")
 ///             .eventExpiryDuration(60)
 ///             .encryptionKeyArn(example.arn())
-///             .memoryExecutionRoleArn(exampleAwsIamRole.arn())
+///             .memoryExecutionRoleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -515,7 +530,7 @@ class AgentcoreMemory extends pulumi.CustomResource {
           'aws:bedrock/agentcoreMemory:AgentcoreMemory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

@@ -221,7 +221,7 @@ import 'event_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -229,8 +229,8 @@ import 'event_rule_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "snsTopicPolicy" {
-///   statements {
+/// data "aws_iam_policy_document" "snsTopicPolicy" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["events.amazonaws.com"]
@@ -241,24 +241,36 @@ import 'event_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_eventrule" "console" {
+/// resource "aws_cloudwatch_event_rule" "console" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "capture-aws-sign-in"
 ///   description = "Capture each AWS Console Sign In"
 ///   event_pattern = jsonencode({
 ///     "detail-type" = ["AWS Console Sign In via CloudTrail"]
 ///   })
 /// }
-/// resource "aws_cloudwatch_eventtarget" "sns" {
-///   rule      = aws_cloudwatch_eventrule.console.name
+/// resource "aws_cloudwatch_event_target" "sns" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule      = aws_cloudwatch_event_rule.console.name
 ///   target_id = "SendToSNS"
 ///   arn       = aws_sns_topic.aws_logins.arn
 /// }
 /// resource "aws_sns_topic" "aws_logins" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "aws-console-logins"
 /// }
-/// resource "aws_sns_topicpolicy" "default" {
+/// resource "aws_sns_topic_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   arn    = aws_sns_topic.aws_logins.arn
-///   policy = data.aws_iam_getpolicydocument.snsTopicPolicy.json
+///   policy = data.aws_iam_policy_document.snsTopicPolicy.json
 /// }
 /// ```
 /// ```java
@@ -440,7 +452,7 @@ class EventRule extends pulumi.CustomResource {
           'aws:cloudwatch/eventRule:EventRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

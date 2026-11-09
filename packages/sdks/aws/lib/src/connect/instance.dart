@@ -86,7 +86,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -95,6 +95,9 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "aws_connect_instance" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity_management_type = "CONNECT_MANAGED"
 ///   inbound_calls_enabled    = true
 ///   instance_alias           = "friendly-name-connect"
@@ -220,7 +223,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -229,6 +232,9 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "aws_connect_instance" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   directory_id             = testAwsDirectoryServiceDirectory.id
 ///   identity_management_type = "EXISTING_DIRECTORY"
 ///   inbound_calls_enabled    = true
@@ -258,7 +264,7 @@ import 'instance_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new Instance("test", InstanceArgs.builder()
-///             .directoryId(testAwsDirectoryServiceDirectory.id())
+///             .directoryId(testAwsDirectoryServiceDirectory.get("id"))
 ///             .identityManagementType("EXISTING_DIRECTORY")
 ///             .inboundCallsEnabled(true)
 ///             .instanceAlias("friendly-name-connect")
@@ -347,7 +353,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -356,6 +362,9 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "aws_connect_instance" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity_management_type = "SAML"
 ///   inbound_calls_enabled    = true
 ///   instance_alias           = "friendly-name-connect"
@@ -473,7 +482,7 @@ class Instance extends pulumi.CustomResource {
           'aws:connect/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoResolveBestVoicesEnabled = registerOutput<bool?>('autoResolveBestVoicesEnabled');

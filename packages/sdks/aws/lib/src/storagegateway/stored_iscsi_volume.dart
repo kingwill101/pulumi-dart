@@ -78,7 +78,7 @@ import 'stored_iscsi_volume_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,7 +86,10 @@ import 'stored_iscsi_volume_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_storagegateway_storediscsivolume" "example" {
+/// resource "aws_storagegateway_stored_iscsi_volume" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   gateway_arn            = exampleAwsStoragegatewayCache.gatewayArn
 ///   network_interface_id   = exampleAwsInstance.privateIp
 ///   target_name            = "example"
@@ -116,11 +119,11 @@ import 'stored_iscsi_volume_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new StoredIscsiVolume("example", StoredIscsiVolumeArgs.builder()
-///             .gatewayArn(exampleAwsStoragegatewayCache.gatewayArn())
-///             .networkInterfaceId(exampleAwsInstance.privateIp())
+///             .gatewayArn(exampleAwsStoragegatewayCache.get("gatewayArn"))
+///             .networkInterfaceId(exampleAwsInstance.get("privateIp"))
 ///             .targetName("example")
 ///             .preserveExistingData(false)
-///             .diskId(test.id())
+///             .diskId(test.get("id"))
 ///             .build());
 ///
 ///     }
@@ -213,7 +216,7 @@ import 'stored_iscsi_volume_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -221,7 +224,10 @@ import 'stored_iscsi_volume_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_storagegateway_storediscsivolume" "example" {
+/// resource "aws_storagegateway_stored_iscsi_volume" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   gateway_arn            = exampleAwsStoragegatewayCache.gatewayArn
 ///   network_interface_id   = exampleAwsInstance.privateIp
 ///   snapshot_id            = exampleAwsEbsSnapshot.id
@@ -252,12 +258,12 @@ import 'stored_iscsi_volume_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new StoredIscsiVolume("example", StoredIscsiVolumeArgs.builder()
-///             .gatewayArn(exampleAwsStoragegatewayCache.gatewayArn())
-///             .networkInterfaceId(exampleAwsInstance.privateIp())
-///             .snapshotId(exampleAwsEbsSnapshot.id())
+///             .gatewayArn(exampleAwsStoragegatewayCache.get("gatewayArn"))
+///             .networkInterfaceId(exampleAwsInstance.get("privateIp"))
+///             .snapshotId(exampleAwsEbsSnapshot.get("id"))
 ///             .targetName("example")
 ///             .preserveExistingData(false)
-///             .diskId(test.id())
+///             .diskId(test.get("id"))
 ///             .build());
 ///
 ///     }
@@ -340,7 +346,7 @@ class StoredIscsiVolume extends pulumi.CustomResource {
           'aws:storagegateway/storedIscsiVolume:StoredIscsiVolume',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     chapEnabled = registerOutput<bool>('chapEnabled');

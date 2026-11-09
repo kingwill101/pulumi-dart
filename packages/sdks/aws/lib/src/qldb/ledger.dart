@@ -64,7 +64,7 @@ import 'ledger_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,6 +73,9 @@ import 'ledger_state.dart';
 /// }
 ///
 /// resource "aws_qldb_ledger" "sample-ledger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "sample-ledger"
 ///   permissions_mode = "STANDARD"
 /// }
@@ -153,7 +156,7 @@ class Ledger extends pulumi.CustomResource {
           'aws:qldb/ledger:Ledger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deletionProtection = registerOutput<bool?>('deletionProtection');

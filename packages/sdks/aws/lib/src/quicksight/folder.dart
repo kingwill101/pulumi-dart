@@ -65,7 +65,7 @@ import 'folder_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,6 +74,9 @@ import 'folder_state.dart';
 /// }
 ///
 /// resource "aws_quicksight_folder" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   folder_id = "example-id"
 ///   name      = "example-name"
 /// }
@@ -234,7 +237,7 @@ import 'folder_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -243,6 +246,9 @@ import 'folder_state.dart';
 /// }
 ///
 /// resource "aws_quicksight_folder" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   permissions {
 ///     actions   = ["quicksight:CreateFolder", "quicksight:DescribeFolder", "quicksight:UpdateFolder", "quicksight:DeleteFolder", "quicksight:CreateFolderMembership", "quicksight:DeleteFolderMembership", "quicksight:DescribeFolderPermissions", "quicksight:UpdateFolderPermissions"]
 ///     principal = exampleAwsQuicksightUser.arn
@@ -284,7 +290,7 @@ import 'folder_state.dart';
 ///                     "quicksight:DeleteFolderMembership",
 ///                     "quicksight:DescribeFolderPermissions",
 ///                     "quicksight:UpdateFolderPermissions")
-///                 .principal(exampleAwsQuicksightUser.arn())
+///                 .principal(exampleAwsQuicksightUser.get("arn"))
 ///                 .build())
 ///             .folderId("example-id")
 ///             .name("example-name")
@@ -396,7 +402,7 @@ import 'folder_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -405,10 +411,16 @@ import 'folder_state.dart';
 /// }
 ///
 /// resource "aws_quicksight_folder" "parent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   folder_id = "parent-id"
 ///   name      = "parent-name"
 /// }
 /// resource "aws_quicksight_folder" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   folder_id         = "example-id"
 ///   name              = "example-name"
 ///   parent_folder_arn = aws_quicksight_folder.parent.arn
@@ -514,7 +526,7 @@ class Folder extends pulumi.CustomResource {
           'aws:quicksight/folder:Folder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');

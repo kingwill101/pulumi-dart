@@ -66,7 +66,7 @@ import 'subnet_cidr_reservation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'subnet_cidr_reservation_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_subnetcidrreservation" "example" {
+/// resource "aws_ec2_subnet_cidr_reservation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block       = "10.0.0.16/28"
 ///   reservation_type = "prefix"
 ///   subnet_id        = exampleAwsSubnet.id
@@ -104,7 +107,7 @@ import 'subnet_cidr_reservation_state.dart';
 ///         var example = new SubnetCidrReservation("example", SubnetCidrReservationArgs.builder()
 ///             .cidrBlock("10.0.0.16/28")
 ///             .reservationType("prefix")
-///             .subnetId(exampleAwsSubnet.id())
+///             .subnetId(exampleAwsSubnet.get("id"))
 ///             .build());
 ///
 ///     }
@@ -154,7 +157,7 @@ class SubnetCidrReservation extends pulumi.CustomResource {
           'aws:ec2/subnetCidrReservation:SubnetCidrReservation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     cidrBlock = registerOutput<String>('cidrBlock');
     description = registerOutput<String?>('description');

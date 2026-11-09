@@ -221,7 +221,7 @@ import 'user_group_state.dart';
 /// 		}
 /// 		_, err = cognito.NewUserGroup(ctx, "main", &cognito.UserGroupArgs{
 /// 			Name:        pulumi.String("user-group"),
-/// 			UserPoolId:  main.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId:  main.ID(),
 /// 			Description: pulumi.String("Managed by Pulumi"),
 /// 			Precedence:  pulumi.Int(42),
 /// 			RoleArn:     groupRoleRole.Arn,
@@ -234,7 +234,7 @@ import 'user_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -242,14 +242,14 @@ import 'user_group_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "groupRole" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "groupRole" {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
 ///       variable = "cognito-identity.amazonaws.com:aud"
 ///       values   = ["us-east-1:12345678-dead-beef-cafe-123456790ab"]
 ///     }
-///     conditions {
+///     condition {
 ///       test     = "ForAnyValue:StringLike"
 ///       variable = "cognito-identity.amazonaws.com:amr"
 ///       values   = ["authenticated"]
@@ -263,16 +263,25 @@ import 'user_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_userpool" "main" {
+/// resource "aws_cognito_user_pool" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "identity pool"
 /// }
 /// resource "aws_iam_role" "group_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "user-group-role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.groupRole.json
+///   assume_role_policy = data.aws_iam_policy_document.groupRole.json
 /// }
-/// resource "aws_cognito_usergroup" "main" {
+/// resource "aws_cognito_user_group" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "user-group"
-///   user_pool_id = aws_cognito_userpool.main.id
+///   user_pool_id = aws_cognito_user_pool.main.id
 ///   description  = "Managed by Pulumi"
 ///   precedence   = 42
 ///   role_arn     = aws_iam_role.group_role.arn
@@ -429,7 +438,7 @@ class UserGroup extends pulumi.CustomResource {
           'aws:cognito/userGroup:UserGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

@@ -101,7 +101,7 @@ import 'apns_sandbox_channel_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -112,12 +112,18 @@ import 'apns_sandbox_channel_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_pinpoint_apnssandboxchannel" "apns_sandbox" {
+/// resource "aws_pinpoint_apns_sandbox_channel" "apns_sandbox" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_id = aws_pinpoint_app.app.application_id
 ///   certificate    = file("./certificate.pem")
 ///   private_key    = file("./private_key.key")
 /// }
 /// resource "aws_pinpoint_app" "app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -224,7 +230,7 @@ class ApnsSandboxChannel extends pulumi.CustomResource {
           'aws:pinpoint/apnsSandboxChannel:ApnsSandboxChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['bundleId', 'certificate', 'privateKey', 'teamId', 'tokenKey', 'tokenKeyId'],
         ) {
     applicationId = registerOutput<String>('applicationId');

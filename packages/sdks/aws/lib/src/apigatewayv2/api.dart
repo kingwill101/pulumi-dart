@@ -71,7 +71,7 @@ import 'api_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -80,6 +80,9 @@ import 'api_state.dart';
 /// }
 ///
 /// resource "aws_apigatewayv2_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-websocket-api"
 ///   protocol_type              = "WEBSOCKET"
 ///   route_selection_expression = "$request.body.action"
@@ -184,7 +187,7 @@ import 'api_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -193,6 +196,9 @@ import 'api_state.dart';
 /// }
 ///
 /// resource "aws_apigatewayv2_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "example-http-api"
 ///   protocol_type = "HTTP"
 /// }
@@ -313,7 +319,7 @@ class Api extends pulumi.CustomResource {
           'aws:apigatewayv2/api:Api',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     apiEndpoint = registerOutput<String>('apiEndpoint');
     apiKeySelectionExpression = registerOutput<String?>('apiKeySelectionExpression');

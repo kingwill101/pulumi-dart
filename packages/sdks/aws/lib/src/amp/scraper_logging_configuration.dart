@@ -179,7 +179,7 @@ import 'scraper_logging_configuration_timeouts.dart';
 /// }).(pulumi.StringOutput),
 /// },
 /// },
-/// ScraperId: example.ID().ToIDOutput().ToStringOutput(),
+/// ScraperId: example.ID(),
 /// })
 /// if err != nil {
 /// return err
@@ -189,7 +189,7 @@ import 'scraper_logging_configuration_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -198,6 +198,9 @@ import 'scraper_logging_configuration_timeouts.dart';
 /// }
 ///
 /// resource "aws_amp_scraper" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source = {
 ///     eks = {
 ///       cluster_arn = exampleAwsEksCluster.arn
@@ -209,15 +212,29 @@ import 'scraper_logging_configuration_timeouts.dart';
 ///       workspace_arn = exampleAwsPrometheusWorkspace.arn
 ///     }
 ///   }
-///   scrape_configuration = "global:\n  scrape_interval: 15s\nscrape_configs:\n  - job_name: 'prometheus'\n    static_configs:\n      - targets: ['localhost:9090']\n"
+///   scrape_configuration = <<EOT
+/// global:
+///   scrape_interval: 15s
+/// scrape_configs:
+///   - job_name: 'prometheus'
+///     static_configs:
+///       - targets: ['localhost:9090']
+/// EOT
+///
 /// }
-/// resource "aws_cloudwatch_loggroup" "example" {
+/// resource "aws_cloudwatch_log_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "/aws/prometheus/scraper-logs/example"
 /// }
-/// resource "aws_amp_scraperloggingconfiguration" "example" {
+/// resource "aws_amp_scraper_logging_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   logging_destination = {
 ///     cloudwatch_logs = {
-///       log_group_arn ="${aws_cloudwatch_loggroup.example.arn}:*"
+///       log_group_arn ="${aws_cloudwatch_log_group.example.arn}:*"
 ///     }
 ///   }
 ///   scraper_id = aws_amp_scraper.example.id
@@ -257,13 +274,13 @@ import 'scraper_logging_configuration_timeouts.dart';
 ///         var example = new Scraper("example", ScraperArgs.builder()
 ///             .source(ScraperSourceArgs.builder()
 ///                 .eks(ScraperSourceEksArgs.builder()
-///                     .clusterArn(exampleAwsEksCluster.arn())
-///                     .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
+///                     .clusterArn(exampleAwsEksCluster.get("arn"))
+///                     .subnetIds(exampleAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
 ///                     .build())
 ///                 .build())
 ///             .destination(ScraperDestinationArgs.builder()
 ///                 .amp(ScraperDestinationAmpArgs.builder()
-///                     .workspaceArn(exampleAwsPrometheusWorkspace.arn())
+///                     .workspaceArn(exampleAwsPrometheusWorkspace.get("arn"))
 ///                     .build())
 ///                 .build())
 ///             .scrapeConfiguration("""
@@ -387,7 +404,7 @@ import 'scraper_logging_configuration_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -395,7 +412,10 @@ import 'scraper_logging_configuration_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_amp_scraperloggingconfiguration" "example" {
+/// resource "aws_amp_scraper_logging_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   logging_destination = {
 ///     cloudwatch_logs = {
 ///       log_group_arn ="${exampleAwsCloudwatchLogGroup.arn}:*"
@@ -431,10 +451,10 @@ import 'scraper_logging_configuration_timeouts.dart';
 ///         var example = new ScraperLoggingConfiguration("example", ScraperLoggingConfigurationArgs.builder()
 ///             .loggingDestination(ScraperLoggingConfigurationLoggingDestinationArgs.builder()
 ///                 .cloudwatchLogs(ScraperLoggingConfigurationLoggingDestinationCloudwatchLogsArgs.builder()
-///                     .logGroupArn(String.format("%s:*", exampleAwsCloudwatchLogGroup.arn()))
+///                     .logGroupArn(String.format("%s:*", exampleAwsCloudwatchLogGroup.get("arn")))
 ///                     .build())
 ///                 .build())
-///             .scraperId(exampleAwsPrometheusScraper.id())
+///             .scraperId(exampleAwsPrometheusScraper.get("id"))
 ///             .scraperComponents(
 ///                 "COLLECTOR",
 ///                 "EXPORTER")
@@ -502,7 +522,7 @@ class ScraperLoggingConfiguration extends pulumi.CustomResource {
           'aws:amp/scraperLoggingConfiguration:ScraperLoggingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     loggingDestination = registerOutput<ScraperLoggingConfigurationLoggingDestination>('loggingDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScraperLoggingConfigurationLoggingDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');

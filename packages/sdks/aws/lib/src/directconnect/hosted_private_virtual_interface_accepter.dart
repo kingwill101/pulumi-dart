@@ -135,8 +135,8 @@ import 'hosted_private_virtual_interface_accepter_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = directconnect.NewHostedPrivateVirtualInterfaceAccepter(ctx, "accepter", &directconnect.HostedPrivateVirtualInterfaceAccepterArgs{
-/// 			VirtualInterfaceId: creator.ID().ToIDOutput().ToStringOutput(),
-/// 			VpnGatewayId:       vpnGw.ID().ToIDOutput().ToStringOutput(),
+/// 			VirtualInterfaceId: creator.ID(),
+/// 			VpnGatewayId:       vpnGw.ID(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Side": pulumi.String("Accepter"),
 /// 			},
@@ -149,7 +149,7 @@ import 'hosted_private_virtual_interface_accepter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -157,25 +157,34 @@ import 'hosted_private_virtual_interface_accepter_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "accepter" {
+/// data "aws_caller_identity" "accepter" {
 /// }
 ///
 /// # Creator's side of the VIF
-/// resource "aws_directconnect_hostedprivatevirtualinterface" "creator" {
-///   depends_on       = [aws_ec2_vpngateway.vpn_gw]
+/// resource "aws_directconnect_hosted_private_virtual_interface" "creator" {
+///   depends_on = [aws_ec2_vpn_gateway.vpn_gw]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_id    = "dxcon-zzzzzzzz"
-///   owner_account_id = data.aws_getcalleridentity.accepter.account_id
+///   owner_account_id = data.aws_caller_identity.accepter.account_id
 ///   name             = "vif-foo"
 ///   vlan             = 4094
 ///   address_family   = "ipv4"
 ///   bgp_asn          = 65352
 /// }
 /// # Accepter's side of the VIF.
-/// resource "aws_ec2_vpngateway" "vpn_gw" {
+/// resource "aws_ec2_vpn_gateway" "vpn_gw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_directconnect_hostedprivatevirtualinterfaceaccepter" "accepter" {
-///   virtual_interface_id = aws_directconnect_hostedprivatevirtualinterface.creator.id
-///   vpn_gateway_id       = aws_ec2_vpngateway.vpn_gw.id
+/// resource "aws_directconnect_hosted_private_virtual_interface_accepter" "accepter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   virtual_interface_id = aws_directconnect_hosted_private_virtual_interface.creator.id
+///   vpn_gateway_id       = aws_ec2_vpn_gateway.vpn_gw.id
 ///   tags = {
 ///     "Side" = "Accepter"
 ///   }
@@ -310,7 +319,7 @@ class HostedPrivateVirtualInterfaceAccepter extends pulumi.CustomResource {
           'aws:directconnect/hostedPrivateVirtualInterfaceAccepter:HostedPrivateVirtualInterfaceAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dxGatewayId = registerOutput<String?>('dxGatewayId');

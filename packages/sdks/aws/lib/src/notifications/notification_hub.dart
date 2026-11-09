@@ -58,7 +58,7 @@ import 'notification_hub_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -66,7 +66,10 @@ import 'notification_hub_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_notifications_notificationhub" "example" {
+/// resource "aws_notifications_notification_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   notification_hub_region = "us-west-2"
 /// }
 /// ```
@@ -131,7 +134,7 @@ class NotificationHub extends pulumi.CustomResource {
           'aws:notifications/notificationHub:NotificationHub',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     notificationHubRegion = registerOutput<String>('notificationHubRegion');
     timeouts = registerOutput<NotificationHubTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationHubTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });

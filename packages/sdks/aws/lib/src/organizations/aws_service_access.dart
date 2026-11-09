@@ -61,7 +61,7 @@ import 'aws_service_access_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -69,7 +69,10 @@ import 'aws_service_access_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_organizations_awsserviceaccess" "example" {
+/// resource "aws_organizations_aws_service_access" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_principal = "tagpolicies.tag.amazonaws.com"
 /// }
 /// ```
@@ -146,7 +149,7 @@ class AwsServiceAccess extends pulumi.CustomResource {
           'aws:organizations/awsServiceAccess:AwsServiceAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     dateEnabled = registerOutput<String>('dateEnabled');
     servicePrincipal = registerOutput<String>('servicePrincipal');

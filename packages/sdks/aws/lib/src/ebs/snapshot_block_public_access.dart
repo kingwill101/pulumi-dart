@@ -57,7 +57,7 @@ import 'snapshot_block_public_access_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,7 +65,10 @@ import 'snapshot_block_public_access_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ebs_snapshotblockpublicaccess" "example" {
+/// resource "aws_ebs_snapshot_block_public_access" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   state = "block-all-sharing"
 /// }
 /// ```
@@ -139,7 +142,7 @@ class SnapshotBlockPublicAccess extends pulumi.CustomResource {
           'aws:ebs/snapshotBlockPublicAccess:SnapshotBlockPublicAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');

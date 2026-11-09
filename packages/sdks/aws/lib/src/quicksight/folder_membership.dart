@@ -68,7 +68,7 @@ import 'folder_membership_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,7 +76,10 @@ import 'folder_membership_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_quicksight_foldermembership" "example" {
+/// resource "aws_quicksight_folder_membership" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   folder_id   = exampleAwsQuicksightFolder.folderId
 ///   member_type = "DATASET"
 ///   member_id   = exampleAwsQuicksightDataSet.dataSetId
@@ -104,9 +107,9 @@ import 'folder_membership_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new FolderMembership("example", FolderMembershipArgs.builder()
-///             .folderId(exampleAwsQuicksightFolder.folderId())
+///             .folderId(exampleAwsQuicksightFolder.get("folderId"))
 ///             .memberType("DATASET")
-///             .memberId(exampleAwsQuicksightDataSet.dataSetId())
+///             .memberId(exampleAwsQuicksightDataSet.get("dataSetId"))
 ///             .build());
 ///
 ///     }
@@ -156,7 +159,7 @@ class FolderMembership extends pulumi.CustomResource {
           'aws:quicksight/folderMembership:FolderMembership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     folderId = registerOutput<String>('folderId');

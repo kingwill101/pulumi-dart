@@ -105,7 +105,7 @@ import 'fleet_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -114,11 +114,14 @@ import 'fleet_state.dart';
 /// }
 ///
 /// resource "aws_gamelift_fleet" "example" {
-///   runtime_configuration = {
-///     server_processes = [{
-///       "concurrentExecutions" = 1
-///       "launchPath"           = "C:\\game\\GomokuServer.exe"
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   runtime_configuration {
+///     server_process {
+///       concurrent_executions = 1
+///       launch_path           = "C:\\game\\GomokuServer.exe"
+///     }
 ///   }
 ///   build_id          = exampleAwsGameliftBuild.id
 ///   ec2_instance_type = "t2.micro"
@@ -156,7 +159,7 @@ import 'fleet_state.dart';
 ///                     .launchPath("C:\\game\\GomokuServer.exe")
 ///                     .build())
 ///                 .build())
-///             .buildId(exampleAwsGameliftBuild.id())
+///             .buildId(exampleAwsGameliftBuild.get("id"))
 ///             .ec2InstanceType("t2.micro")
 ///             .fleetType("ON_DEMAND")
 ///             .name("example-fleet-name")
@@ -244,7 +247,7 @@ class Fleet extends pulumi.CustomResource {
           'aws:gamelift/fleet:Fleet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     buildArn = registerOutput<String>('buildArn');

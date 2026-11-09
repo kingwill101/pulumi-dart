@@ -66,7 +66,7 @@ import 'open_zfs_volume_user_and_group_quota.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'open_zfs_volume_user_and_group_quota.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fsx_openzfsvolume" "test" {
+/// resource "aws_fsx_open_zfs_volume" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "testvolume"
 ///   parent_volume_id = testAwsFsxOpenzfsFileSystem.rootVolumeId
 /// }
@@ -102,7 +105,7 @@ import 'open_zfs_volume_user_and_group_quota.dart';
 ///     public static void stack(Context ctx) {
 ///         var test = new OpenZfsVolume("test", OpenZfsVolumeArgs.builder()
 ///             .name("testvolume")
-///             .parentVolumeId(testAwsFsxOpenzfsFileSystem.rootVolumeId())
+///             .parentVolumeId(testAwsFsxOpenzfsFileSystem.get("rootVolumeId"))
 ///             .build());
 ///
 ///     }
@@ -130,7 +133,7 @@ class OpenZfsVolume extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Whether tags for the file system should be copied to snapshots. Default is false.
   late final pulumi.Output<bool?> copyTagsToSnapshots;
-  /// Method used to compress the data on the volume. Valid values are `NONE` or `ZSTD`. Child volumes that don't specify compression option will inherit from parent volume. This option on file system applies to the root volume.
+  /// Method used to compress the data on the volume. Valid values are `NONE`, `ZSTD`, or `LZ4`. Child volumes that don't specify compression option will inherit from parent volume. This option on file system applies to the root volume.
   late final pulumi.Output<String?> dataCompressionType;
   /// Whether to delete all child volumes and snapshots. Valid values: `DELETE_CHILD_VOLUMES_AND_SNAPSHOTS`. This configuration must be applied separately before attempting to delete the resource to have the desired behavior..
   late final pulumi.Output<String?> deleteVolumeOptions;
@@ -173,7 +176,7 @@ class OpenZfsVolume extends pulumi.CustomResource {
           'aws:fsx/openZfsVolume:OpenZfsVolume',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     copyTagsToSnapshots = registerOutput<bool?>('copyTagsToSnapshots');

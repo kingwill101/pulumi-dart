@@ -104,7 +104,7 @@ import 'custom_action_type_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -112,12 +112,15 @@ import 'custom_action_type_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_codepipeline_customactiontype" "example" {
-///   input_artifact_details = {
+/// resource "aws_codepipeline_custom_action_type" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   input_artifact_details {
 ///     maximum_count = 1
 ///     minimum_count = 0
 ///   }
-///   output_artifact_details = {
+///   output_artifact_details {
 ///     maximum_count = 1
 ///     minimum_count = 0
 ///   }
@@ -222,7 +225,7 @@ class CustomActionType extends pulumi.CustomResource {
           'aws:codepipeline/customActionType:CustomActionType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     category = registerOutput<String>('category');

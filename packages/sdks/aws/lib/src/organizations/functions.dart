@@ -85,7 +85,7 @@ import 'get_resource_tags_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -93,7 +93,7 @@ import 'get_resource_tags_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_organizations_getaccount" "example" {
+/// data "aws_organizations_account" "example" {
 ///   account_id = "AWS ACCOUNT ID"
 /// }
 /// ```
@@ -214,7 +214,7 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -222,7 +222,7 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 ///   }
 /// }
 ///
-/// data "aws_organizations_getdelegatedadministrators" "example" {
+/// data "aws_organizations_delegated_administrators" "example" {
 ///   service_principal = "SERVICE PRINCIPAL"
 /// }
 /// ```
@@ -343,7 +343,7 @@ pulumi.Output<GetDelegatedAdministratorsResult> getDelegatedAdministratorsOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -351,7 +351,7 @@ pulumi.Output<GetDelegatedAdministratorsResult> getDelegatedAdministratorsOutput
 ///   }
 /// }
 ///
-/// data "aws_organizations_getdelegatedservices" "example" {
+/// data "aws_organizations_delegated_services" "example" {
 ///   account_id = "AWS ACCOUNT ID"
 /// }
 /// ```
@@ -472,7 +472,7 @@ pulumi.Output<GetDelegatedServicesResult> getDelegatedServicesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -480,7 +480,7 @@ pulumi.Output<GetDelegatedServicesResult> getDelegatedServicesOutput(
 ///   }
 /// }
 ///
-/// data "aws_organizations_getentitypath" "example" {
+/// data "aws_organizations_entity_path" "example" {
 ///   entity_id = "ou-ghi0-awsccccc"
 /// }
 /// ```
@@ -603,7 +603,7 @@ pulumi.Output<GetEntityPathResult> getEntityPathOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -611,11 +611,11 @@ pulumi.Output<GetEntityPathResult> getEntityPathOutput(
 ///   }
 /// }
 ///
-/// data "aws_organizations_getorganization" "example" {
+/// data "aws_organizations_organization" "example" {
 /// }
 ///
 /// output "accountIds" {
-///   value = data.aws_organizations_getorganization.example.accounts[*].id
+///   value = data.aws_organizations_organization.example.accounts[*].id
 /// }
 /// ```
 /// ```java
@@ -839,7 +839,7 @@ pulumi.Output<GetEntityPathResult> getEntityPathOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -847,14 +847,14 @@ pulumi.Output<GetEntityPathResult> getEntityPathOutput(
 ///   }
 /// }
 ///
-/// data "aws_organizations_getorganization" "example" {
+/// data "aws_organizations_organization" "example" {
 /// }
-/// data "aws_iam_getpolicydocument" "snsTopicPolicy" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "snsTopicPolicy" {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
 ///       variable = "aws:PrincipalOrgID"
-///       values   = [data.aws_organizations_getorganization.example.id]
+///       values   = [data.aws_organizations_organization.example.id]
 ///     }
 ///     principals {
 ///       type        = "AWS"
@@ -867,11 +867,17 @@ pulumi.Output<GetEntityPathResult> getEntityPathOutput(
 /// }
 ///
 /// resource "aws_sns_topic" "sns_topic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-sns-topic"
 /// }
-/// resource "aws_sns_topicpolicy" "sns_topic_policy" {
+/// resource "aws_sns_topic_policy" "sns_topic_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   arn    = aws_sns_topic.sns_topic.arn
-///   policy = data.aws_iam_getpolicydocument.snsTopicPolicy.json
+///   policy = data.aws_iam_policy_document.snsTopicPolicy.json
 /// }
 /// ```
 /// ```java
@@ -1072,7 +1078,7 @@ pulumi.Output<GetOrganizationResult> getOrganizationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1080,10 +1086,10 @@ pulumi.Output<GetOrganizationResult> getOrganizationOutput(
 ///   }
 /// }
 ///
-/// data "aws_organizations_getorganization" "org" {
+/// data "aws_organizations_organization" "org" {
 /// }
-/// data "aws_organizations_getorganizationalunit" "ou" {
-///   parent_id = data.aws_organizations_getorganization.org.roots[0].id
+/// data "aws_organizations_organizational_unit" "ou" {
+///   parent_id = data.aws_organizations_organization.org.roots[0].id
 ///   name      = "dev"
 /// }
 /// ```
@@ -1222,7 +1228,7 @@ pulumi.Output<GetOrganizationalUnitResult> getOrganizationalUnitOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1230,10 +1236,10 @@ pulumi.Output<GetOrganizationalUnitResult> getOrganizationalUnitOutput(
 ///   }
 /// }
 ///
-/// data "aws_organizations_getorganization" "org" {
+/// data "aws_organizations_organization" "org" {
 /// }
-/// data "aws_organizations_getorganizationalunitchildaccounts" "accounts" {
-///   parent_id = data.aws_organizations_getorganization.org.roots[0].id
+/// data "aws_organizations_organizational_unit_child_accounts" "accounts" {
+///   parent_id = data.aws_organizations_organization.org.roots[0].id
 /// }
 /// ```
 /// ```java
@@ -1369,7 +1375,7 @@ pulumi.Output<GetOrganizationalUnitChildAccountsResult> getOrganizationalUnitChi
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1377,10 +1383,10 @@ pulumi.Output<GetOrganizationalUnitChildAccountsResult> getOrganizationalUnitChi
 ///   }
 /// }
 ///
-/// data "aws_organizations_getorganization" "org" {
+/// data "aws_organizations_organization" "org" {
 /// }
-/// data "aws_organizations_getorganizationalunitdescendantaccounts" "accounts" {
-///   parent_id = data.aws_organizations_getorganization.org.roots[0].id
+/// data "aws_organizations_organizational_unit_descendant_accounts" "accounts" {
+///   parent_id = data.aws_organizations_organization.org.roots[0].id
 /// }
 /// ```
 /// ```java
@@ -1516,7 +1522,7 @@ pulumi.Output<GetOrganizationalUnitDescendantAccountsResult> getOrganizationalUn
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1524,10 +1530,10 @@ pulumi.Output<GetOrganizationalUnitDescendantAccountsResult> getOrganizationalUn
 ///   }
 /// }
 ///
-/// data "aws_organizations_getorganization" "org" {
+/// data "aws_organizations_organization" "org" {
 /// }
-/// data "aws_organizations_getorganizationalunitdescendantorganizationalunits" "ous" {
-///   parent_id = data.aws_organizations_getorganization.org.roots[0].id
+/// data "aws_organizations_organizational_unit_descendant_organizational_units" "ous" {
+///   parent_id = data.aws_organizations_organization.org.roots[0].id
 /// }
 /// ```
 /// ```java
@@ -1663,7 +1669,7 @@ pulumi.Output<GetOrganizationalUnitDescendantOrganizationalUnitsResult> getOrgan
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1671,10 +1677,10 @@ pulumi.Output<GetOrganizationalUnitDescendantOrganizationalUnitsResult> getOrgan
 ///   }
 /// }
 ///
-/// data "aws_organizations_getorganization" "org" {
+/// data "aws_organizations_organization" "org" {
 /// }
-/// data "aws_organizations_getorganizationalunits" "ou" {
-///   parent_id = data.aws_organizations_getorganization.org.roots[0].id
+/// data "aws_organizations_organizational_units" "ou" {
+///   parent_id = data.aws_organizations_organization.org.roots[0].id
 /// }
 /// ```
 /// ```java
@@ -1793,12 +1799,21 @@ pulumi.Output<GetOrganizationalUnitsResult> getOrganizationalUnitsOutput(
 ///     var exampleGetPolicy = Std.Toset.Invoke(new()
 ///     {
 ///         Input = example.Apply(getPoliciesResult => getPoliciesResult.Ids),
-///     }).Apply(invoke => );
+///     }).Apply(invoke => .ToDictionary(item => {
+///         var __key = item.Key;
+///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+///     }, item => {
+///         var __value = item.Value;
+///         return Aws.Organizations.GetPolicy.Invoke(new()
+///         {
+///             PolicyId = __value,
+///         });
+///     }));
 ///
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1809,16 +1824,16 @@ pulumi.Output<GetOrganizationalUnitsResult> getOrganizationalUnitsOutput(
 ///   }
 /// }
 ///
-/// data "aws_organizations_getpolicies" "example" {
+/// data "aws_organizations_policies" "example" {
 ///   filter = "SERVICE_CONTROL_POLICY"
 /// }
-/// data "aws_organizations_getpolicy" "invoke_1" {
-///   for_each  = toset(data.aws_organizations_getpolicies.example.ids)
+/// data "aws_organizations_policy" "invoke_1" {
+///   for_each  = toset(data.aws_organizations_policies.example.ids)
 ///   policy_id = each.value
 /// }
 ///
 /// locals {
-///   exampleGetPolicy = {for __key, __value in toset(data.aws_organizations_getpolicies.example.ids) : __key => data.aws_organizations_getpolicy.invoke_1[__key]}
+///   exampleGetPolicy = {for __key, __value in toset(data.aws_organizations_policies.example.ids) : __key => data.aws_organizations_policy.invoke_1[__key]}
 /// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_organizations_get_policies_get_policies_args_doc}
@@ -1900,12 +1915,21 @@ pulumi.Output<GetPoliciesResult> getPoliciesOutput(
 ///     var exampleGetPolicy = Std.Toset.Invoke(new()
 ///     {
 ///         Input = exampleGetPoliciesForTarget.Apply(getPoliciesForTargetResult => getPoliciesForTargetResult.Ids),
-///     }).Apply(invoke => );
+///     }).Apply(invoke => .ToDictionary(item => {
+///         var __key = item.Key;
+///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+///     }, item => {
+///         var __value = item.Value;
+///         return Aws.Organizations.GetPolicy.Invoke(new()
+///         {
+///             PolicyId = __value,
+///         });
+///     }));
 ///
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1916,19 +1940,19 @@ pulumi.Output<GetPoliciesResult> getPoliciesOutput(
 ///   }
 /// }
 ///
-/// data "aws_organizations_getorganization" "example" {
+/// data "aws_organizations_organization" "example" {
 /// }
-/// data "aws_organizations_getpoliciesfortarget" "exampleGetPoliciesForTarget" {
-///   target_id = data.aws_organizations_getorganization.example.roots[0].id
+/// data "aws_organizations_policies_for_target" "exampleGetPoliciesForTarget" {
+///   target_id = data.aws_organizations_organization.example.roots[0].id
 ///   filter    = "SERVICE_CONTROL_POLICY"
 /// }
-/// data "aws_organizations_getpolicy" "invoke_2" {
-///   for_each  = toset(data.aws_organizations_getpoliciesfortarget.exampleGetPoliciesForTarget.ids)
+/// data "aws_organizations_policy" "invoke_2" {
+///   for_each  = toset(data.aws_organizations_policies_for_target.exampleGetPoliciesForTarget.ids)
 ///   policy_id = each.value
 /// }
 ///
 /// locals {
-///   exampleGetPolicy = {for __key, __value in toset(data.aws_organizations_getpoliciesfortarget.exampleGetPoliciesForTarget.ids) : __key => data.aws_organizations_getpolicy.invoke_2[__key]}
+///   exampleGetPolicy = {for __key, __value in toset(data.aws_organizations_policies_for_target.exampleGetPoliciesForTarget.ids) : __key => data.aws_organizations_policy.invoke_2[__key]}
 /// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_organizations_get_policies_for_target_get_policies_for_target_args_doc}
@@ -2039,7 +2063,7 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2047,7 +2071,7 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 ///   }
 /// }
 ///
-/// data "aws_organizations_getresourcetags" "account" {
+/// data "aws_organizations_resource_tags" "account" {
 ///   resource_id = "123456123846"
 /// }
 /// ```

@@ -139,7 +139,7 @@ import 'vpc_association_authorization_state.dart';
 /// 		exampleZone, err := route53.NewZone(ctx, "example", &route53.ZoneArgs{
 /// 			Vpcs: route53.ZoneVpcArray{
 /// 				&route53.ZoneVpcArgs{
-/// 					VpcId: example.ID().ToIDOutput().ToStringOutput(),
+/// 					VpcId: example.ID(),
 /// 				},
 /// 			},
 /// 			Name: pulumi.String("example.com"),
@@ -158,8 +158,8 @@ import 'vpc_association_authorization_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleVpcAssociationAuthorization, err := route53.NewVpcAssociationAuthorization(ctx, "example", &route53.VpcAssociationAuthorizationArgs{
-/// 			VpcId:  alternate.ID().ToIDOutput().ToStringOutput(),
-/// 			ZoneId: exampleZone.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:  alternate.ID(),
+/// 			ZoneId: exampleZone.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -176,7 +176,7 @@ import 'vpc_association_authorization_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -185,31 +185,44 @@ import 'vpc_association_authorization_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block           = "10.6.0.0/16"
 ///   enable_dns_hostnames = true
 ///   enable_dns_support   = true
 /// }
 /// resource "aws_route53_zone" "example" {
 ///   lifecycle {
-///     ignore_changes = [vpcs]
+///     ignore_changes        = [vpcs]
+///     create_before_destroy = true
 ///   }
-///   vpcs {
+///   vpc {
 ///     vpc_id = aws_ec2_vpc.example.id
 ///   }
 ///   name = "example.com"
 /// }
 /// resource "aws_ec2_vpc" "alternate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block           = "10.7.0.0/16"
 ///   enable_dns_hostnames = true
 ///   enable_dns_support   = true
 /// }
-/// resource "aws_route53_vpcassociationauthorization" "example" {
+/// resource "aws_route53_vpc_association_authorization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id  = aws_ec2_vpc.alternate.id
 ///   zone_id = aws_route53_zone.example.id
 /// }
-/// resource "aws_route53_zoneassociation" "example" {
-///   vpc_id  = aws_route53_vpcassociationauthorization.example.vpc_id
-///   zone_id = aws_route53_vpcassociationauthorization.example.zone_id
+/// resource "aws_route53_zone_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   vpc_id  = aws_route53_vpc_association_authorization.example.vpc_id
+///   zone_id = aws_route53_vpc_association_authorization.example.zone_id
 /// }
 /// ```
 /// ```java
@@ -353,7 +366,7 @@ class VpcAssociationAuthorization extends pulumi.CustomResource {
           'aws:route53/vpcAssociationAuthorization:VpcAssociationAuthorization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     vpcId = registerOutput<String>('vpcId');
     vpcRegion = registerOutput<String>('vpcRegion');

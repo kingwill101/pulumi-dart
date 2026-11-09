@@ -96,7 +96,7 @@ import 'network_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -105,6 +105,9 @@ import 'network_timeouts.dart';
 /// }
 ///
 /// resource "aws_odb_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name         = "odb-my-net"
 ///   availability_zone_id = "use1-az6"
 ///   client_subnet_cidr   = "10.2.0.0/24"
@@ -253,7 +256,7 @@ import 'network_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -262,6 +265,9 @@ import 'network_timeouts.dart';
 /// }
 ///
 /// resource "aws_odb_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name         = "odb-my-net"
 ///   availability_zone_id = "use1-az6"
 ///   client_subnet_cidr   = "10.2.0.0/24"
@@ -412,7 +418,7 @@ class Network extends pulumi.CustomResource {
           'aws:odb/network:Network',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String>('availabilityZone');

@@ -122,7 +122,7 @@ import 'environment_state.dart';
 /// 			},
 /// 			Name:          pulumi.String("example-environment-tf"),
 /// 			Description:   pulumi.String("Example AppConfig Environment"),
-/// 			ApplicationId: exampleApplication.ID().ToIDOutput().ToStringOutput(),
+/// 			ApplicationId: exampleApplication.ID(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Type": pulumi.String("AppConfig Environment"),
 /// 			},
@@ -135,7 +135,7 @@ import 'environment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -144,7 +144,10 @@ import 'environment_state.dart';
 /// }
 ///
 /// resource "aws_appconfig_environment" "example" {
-///   monitors {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   monitor {
 ///     alarm_arn      = exampleAwsCloudwatchMetricAlarm.arn
 ///     alarm_role_arn = exampleAwsIamRole.arn
 ///   }
@@ -156,6 +159,9 @@ import 'environment_state.dart';
 ///   }
 /// }
 /// resource "aws_appconfig_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example-application-tf"
 ///   description = "Example AppConfig Application"
 ///   tags = {
@@ -195,8 +201,8 @@ import 'environment_state.dart';
 ///
 ///         var example = new Environment("example", EnvironmentArgs.builder()
 ///             .monitors(EnvironmentMonitorArgs.builder()
-///                 .alarmArn(exampleAwsCloudwatchMetricAlarm.arn())
-///                 .alarmRoleArn(exampleAwsIamRole.arn())
+///                 .alarmArn(exampleAwsCloudwatchMetricAlarm.get("arn"))
+///                 .alarmRoleArn(exampleAwsIamRole.get("arn"))
 ///                 .build())
 ///             .name("example-environment-tf")
 ///             .description("Example AppConfig Environment")
@@ -272,7 +278,7 @@ class Environment extends pulumi.CustomResource {
           'aws:appconfig/environment:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     arn = registerOutput<String>('arn');

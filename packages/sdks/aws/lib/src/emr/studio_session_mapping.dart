@@ -70,7 +70,7 @@ import 'studio_session_mapping_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -78,7 +78,10 @@ import 'studio_session_mapping_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_emr_studiosessionmapping" "example" {
+/// resource "aws_emr_studio_session_mapping" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   studio_id          = exampleAwsEmrStudio.id
 ///   identity_type      = "USER"
 ///   identity_id        = "example"
@@ -107,10 +110,10 @@ import 'studio_session_mapping_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new StudioSessionMapping("example", StudioSessionMappingArgs.builder()
-///             .studioId(exampleAwsEmrStudio.id())
+///             .studioId(exampleAwsEmrStudio.get("id"))
 ///             .identityType("USER")
 ///             .identityId("example")
-///             .sessionPolicyArn(exampleAwsIamPolicy.arn())
+///             .sessionPolicyArn(exampleAwsIamPolicy.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -161,7 +164,7 @@ class StudioSessionMapping extends pulumi.CustomResource {
           'aws:emr/studioSessionMapping:StudioSessionMapping',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     identityId = registerOutput<String>('identityId');
     identityName = registerOutput<String>('identityName');

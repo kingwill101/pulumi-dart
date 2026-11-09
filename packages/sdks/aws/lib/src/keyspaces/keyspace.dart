@@ -58,7 +58,7 @@ import 'keyspace_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,6 +67,9 @@ import 'keyspace_state.dart';
 /// }
 ///
 /// resource "aws_keyspaces_keyspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my_keyspace"
 /// }
 /// ```
@@ -140,7 +143,7 @@ class Keyspace extends pulumi.CustomResource {
           'aws:keyspaces/keyspace:Keyspace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

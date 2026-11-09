@@ -112,7 +112,7 @@ import 'fleet_stack_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -121,7 +121,10 @@ import 'fleet_stack_association_state.dart';
 /// }
 ///
 /// resource "aws_appstream_fleet" "example" {
-///   compute_capacity = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   compute_capacity {
 ///     desired_instances = 1
 ///   }
 ///   name          = "NAME"
@@ -129,9 +132,15 @@ import 'fleet_stack_association_state.dart';
 ///   instance_type = "stream.standard.small"
 /// }
 /// resource "aws_appstream_stack" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "STACK NAME"
 /// }
-/// resource "aws_appstream_fleetstackassociation" "example" {
+/// resource "aws_appstream_fleet_stack_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fleet_name = aws_appstream_fleet.example.name
 ///   stack_name = aws_appstream_stack.example.name
 /// }
@@ -234,7 +243,7 @@ class FleetStackAssociation extends pulumi.CustomResource {
           'aws:appstream/fleetStackAssociation:FleetStackAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     fleetName = registerOutput<String>('fleetName');
     region = registerOutput<String>('region');

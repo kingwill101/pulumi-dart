@@ -93,7 +93,7 @@ import 'environment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -102,11 +102,17 @@ import 'environment_state.dart';
 /// }
 ///
 /// resource "aws_elasticbeanstalk_environment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tf-test-name"
 ///   application         = aws_elasticbeanstalk_application.example.name
 ///   solution_stack_name = "64bit Amazon Linux 2015.03 v2.0.3 running Go 1.4"
 /// }
 /// resource "aws_elasticbeanstalk_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "tf-test-name"
 ///   description = "tf-test-desc"
 /// }
@@ -253,7 +259,7 @@ class Environment extends pulumi.CustomResource {
           'aws:elasticbeanstalk/environment:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     allSettings = registerOutput<List<EnvironmentAllSetting>>('allSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentAllSetting>(guardedValue, (value) => EnvironmentAllSetting.fromMap((value as Map).cast<String, dynamic>())); });
     application = registerOutput<String>('application');

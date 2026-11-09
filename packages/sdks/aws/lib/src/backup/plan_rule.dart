@@ -16,6 +16,8 @@ class PlanRule {
   final pulumi.Input<PlanRuleLifecycle?>? lifecycle;
   /// Metadata that you can assign to help organize the resources that you create.
   final pulumi.Input<Map<String, String>?>? recoveryPointTags;
+  /// Uniquely identifies a rule that is used to schedule the backup of a selection of resources.
+  final pulumi.Input<String?>? ruleId;
   /// Display name for a backup rule.
   final pulumi.Input<String> ruleName;
   /// Block for scanning configuration for the backup rule and includes the malware scanner, and scan mode of either full or incremental. Detailed below.
@@ -37,6 +39,7 @@ class PlanRule {
   /// [enableContinuousBackup] Enable continuous backups for supported resources.
   /// [lifecycle] Lifecycle that defines when a protected resource is transitioned to cold storage and when it expires. Detailed below.
   /// [recoveryPointTags] Metadata that you can assign to help organize the resources that you create.
+  /// [ruleId] Uniquely identifies a rule that is used to schedule the backup of a selection of resources.
   /// [ruleName] Display name for a backup rule.
   /// [scanActions] Block for scanning configuration for the backup rule and includes the malware scanner, and scan mode of either full or incremental. Detailed below.
   /// [schedule] CRON expression specifying when AWS Backup initiates a backup job.
@@ -50,6 +53,7 @@ class PlanRule {
     this.enableContinuousBackup,
     this.lifecycle,
     this.recoveryPointTags,
+    this.ruleId,
     required this.ruleName,
     this.scanActions,
     this.schedule,
@@ -66,6 +70,7 @@ class PlanRule {
       'enableContinuousBackup': ?enableContinuousBackup,
       'lifecycle': ?pulumi.Input.mapOptionalInputValue<PlanRuleLifecycle, Map<String, dynamic>>(lifecycle, (value) => value.toMap()),
       'recoveryPointTags': ?recoveryPointTags,
+      'ruleId': ?ruleId,
       'ruleName': ruleName,
       'scanActions': ?pulumi.Input.mapOptionalInputValue<List<PlanRuleScanAction>, List<Map<String, dynamic>>>(scanActions, (value) => pulumi.Input.encodeList<PlanRuleScanAction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'schedule': ?schedule,
@@ -83,6 +88,7 @@ class PlanRule {
       enableContinuousBackup: (() { final guardedValue = map['enableContinuousBackup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       lifecycle: (() { final guardedValue = map['lifecycle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PlanRuleLifecycle.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       recoveryPointTags: (() { final guardedValue = map['recoveryPointTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      ruleId: (() { final guardedValue = map['ruleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleName: pulumi.Input.fromValue(map['ruleName'] as String),
       scanActions: (() { final guardedValue = map['scanActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanRuleScanAction>(guardedValue, (value) => PlanRuleScanAction.fromMap((value as Map).cast<String, dynamic>()))); })(),
       schedule: (() { final guardedValue = map['schedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

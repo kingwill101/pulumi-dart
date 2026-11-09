@@ -92,7 +92,7 @@ import 'bucket_website.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -101,6 +101,9 @@ import 'bucket_website.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "my-tf-test-bucket"
 ///   tags = {
 ///     "Name"        = "My bucket"
@@ -259,7 +262,7 @@ import 'bucket_website.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -272,14 +275,17 @@ import 'bucket_website.dart';
 ///
 /// data "std_format" "invoke_0" {
 ///   input = "my-tf-test-bucket-%s-%s-an"
-///   args  = [data.aws_getcalleridentity.current.account_id, data.aws_getregion.currentGetRegion.region]
+///   args  = [data.aws_caller_identity.current.account_id, data.aws_region.currentGetRegion.region]
 /// }
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getregion" "currentGetRegion" {
+/// data "aws_region" "currentGetRegion" {
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket           = data.std_format.invoke_0.result
 ///   bucket_namespace = "account-regional"
 /// }
@@ -445,7 +451,7 @@ class Bucket extends pulumi.CustomResource {
           'aws:s3/bucket:Bucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accelerationStatus = registerOutput<String>('accelerationStatus');
     acl = registerOutput<String>('acl');

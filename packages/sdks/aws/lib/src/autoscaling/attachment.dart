@@ -68,7 +68,7 @@ import 'attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -78,6 +78,9 @@ import 'attachment_state.dart';
 ///
 /// # Create a new load balancer attachment
 /// resource "aws_autoscaling_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   autoscaling_group_name = exampleAwsAutoscalingGroup.id
 ///   elb                    = exampleAwsElb.id
 /// }
@@ -105,8 +108,8 @@ import 'attachment_state.dart';
 ///     public static void stack(Context ctx) {
 ///         // Create a new load balancer attachment
 ///         var example = new Attachment("example", AttachmentArgs.builder()
-///             .autoscalingGroupName(exampleAwsAutoscalingGroup.id())
-///             .elb(exampleAwsElb.id())
+///             .autoscalingGroupName(exampleAwsAutoscalingGroup.get("id"))
+///             .elb(exampleAwsElb.get("id"))
 ///             .build());
 ///
 ///     }
@@ -183,7 +186,7 @@ import 'attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -193,6 +196,9 @@ import 'attachment_state.dart';
 ///
 /// # Create a new ALB Target Group attachment
 /// resource "aws_autoscaling_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   autoscaling_group_name = exampleAwsAutoscalingGroup.id
 ///   lb_target_group_arn    = exampleAwsLbTargetGroup.arn
 /// }
@@ -220,8 +226,8 @@ import 'attachment_state.dart';
 ///     public static void stack(Context ctx) {
 ///         // Create a new ALB Target Group attachment
 ///         var example = new Attachment("example", AttachmentArgs.builder()
-///             .autoscalingGroupName(exampleAwsAutoscalingGroup.id())
-///             .lbTargetGroupArn(exampleAwsLbTargetGroup.arn())
+///             .autoscalingGroupName(exampleAwsAutoscalingGroup.get("id"))
+///             .lbTargetGroupArn(exampleAwsLbTargetGroup.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -258,7 +264,7 @@ class Attachment extends pulumi.CustomResource {
           'aws:autoscaling/attachment:Attachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     elb = registerOutput<String?>('elb');

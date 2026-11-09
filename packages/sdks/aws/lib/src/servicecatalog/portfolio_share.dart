@@ -76,7 +76,7 @@ import 'portfolio_share_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -84,7 +84,10 @@ import 'portfolio_share_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_servicecatalog_portfolioshare" "example" {
+/// resource "aws_servicecatalog_portfolio_share" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   principal_id = "012128675309"
 ///   portfolio_id = exampleAwsServicecatalogPortfolio.id
 ///   type         = "ACCOUNT"
@@ -113,7 +116,7 @@ import 'portfolio_share_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new PortfolioShare("example", PortfolioShareArgs.builder()
 ///             .principalId("012128675309")
-///             .portfolioId(exampleAwsServicecatalogPortfolio.id())
+///             .portfolioId(exampleAwsServicecatalogPortfolio.get("id"))
 ///             .type("ACCOUNT")
 ///             .build());
 ///
@@ -172,7 +175,7 @@ class PortfolioShare extends pulumi.CustomResource {
           'aws:servicecatalog/portfolioShare:PortfolioShare',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     accepted = registerOutput<bool>('accepted');

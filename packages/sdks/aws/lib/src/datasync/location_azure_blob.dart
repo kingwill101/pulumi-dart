@@ -87,7 +87,7 @@ import 'location_azure_blob_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -95,8 +95,11 @@ import 'location_azure_blob_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_datasync_locationazureblob" "example" {
-///   sas_configuration = {
+/// resource "aws_datasync_location_azure_blob" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   sas_configuration {
 ///     token = "sp=r&st=2023-12-20T14:54:52Z&se=2023-12-20T22:54:52Z&spr=https&sv=2021-06-08&sr=c&sig=aBBKDWQvyuVcTPH9EBp%2FXTI9E%2F%2Fmq171%2BZU178wcwqU%3D"
 ///   }
 ///   agent_arns          = [exampleAwsDatasyncAgent.arn]
@@ -130,7 +133,7 @@ import 'location_azure_blob_state.dart';
 ///             .sasConfiguration(LocationAzureBlobSasConfigurationArgs.builder()
 ///                 .token("sp=r&st=2023-12-20T14:54:52Z&se=2023-12-20T22:54:52Z&spr=https&sv=2021-06-08&sr=c&sig=aBBKDWQvyuVcTPH9EBp%2FXTI9E%2F%2Fmq171%2BZU178wcwqU%3D")
 ///                 .build())
-///             .agentArns(exampleAwsDatasyncAgent.arn())
+///             .agentArns(exampleAwsDatasyncAgent.get("arn"))
 ///             .authenticationType("SAS")
 ///             .containerUrl("https://myaccount.blob.core.windows.net/mycontainer")
 ///             .build());
@@ -175,7 +178,7 @@ class LocationAzureBlob extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// The authentication method DataSync uses to access your Azure Blob Storage. Valid values: `SAS`.
   late final pulumi.Output<String> authenticationType;
-  /// The type of blob that you want your objects or files to be when transferring them into Azure Blob Storage. Valid values: `BLOB`. Default: `BLOB`.
+  /// The type of blob that you want your objects or files to be when transferring them into Azure Blob Storage. Valid values: `BLOCK`. Default: `BLOCK`.
   late final pulumi.Output<String?> blobType;
   /// The URL of the Azure Blob Storage container involved in your transfer.
   late final pulumi.Output<String> containerUrl;
@@ -203,7 +206,7 @@ class LocationAzureBlob extends pulumi.CustomResource {
           'aws:datasync/locationAzureBlob:LocationAzureBlob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accessTier = registerOutput<String?>('accessTier');
     agentArns = registerOutput<List<String>>('agentArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

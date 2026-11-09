@@ -182,7 +182,7 @@ import 'role_association_state.dart';
 /// 				pulumi.String("USER_ID_1"),
 /// 				pulumi.String("USER_ID_2"),
 /// 			},
-/// 			WorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
+/// 			WorkspaceId: exampleWorkspace.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -192,7 +192,7 @@ import 'role_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -200,18 +200,27 @@ import 'role_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_grafana_roleassociation" "example" {
+/// resource "aws_grafana_role_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role         = "ADMIN"
 ///   user_ids     = ["USER_ID_1", "USER_ID_2"]
 ///   workspace_id = aws_grafana_workspace.example.id
 /// }
 /// resource "aws_grafana_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_access_type      = "CURRENT_ACCOUNT"
 ///   authentication_providers = ["SAML"]
 ///   permission_type          = "SERVICE_MANAGED"
 ///   role_arn                 = aws_iam_role.assume.arn
 /// }
 /// resource "aws_iam_role" "assume" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "grafana-assume"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -345,7 +354,7 @@ class RoleAssociation extends pulumi.CustomResource {
           'aws:grafana/roleAssociation:RoleAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     groupIds = registerOutput<List<String>?>('groupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');

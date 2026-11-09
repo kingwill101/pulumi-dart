@@ -116,7 +116,7 @@ import 'document_classifier_vpc_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -124,18 +124,27 @@ import 'document_classifier_vpc_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_comprehend_documentclassifier" "example" {
+/// resource "aws_comprehend_document_classifier" "example" {
 ///   depends_on = [exampleAwsIamRolePolicy]
-///   input_data_config = {
-///     s3_uri ="s3://${test.bucket}/${aws_s3_bucketobjectv2.documents.key}"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   input_data_config {
+///     s3_uri ="s3://${test.bucket}/${aws_s3_bucket_objectv2.documents.key}"
 ///   }
 ///   name                 = "example"
 ///   data_access_role_arn = exampleAwsIamRole.arn
 ///   language_code        = "en"
 /// }
-/// resource "aws_s3_bucketobjectv2" "documents" {
+/// resource "aws_s3_bucket_objectv2" "documents" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_s3_bucketobjectv2" "entities" {
+/// resource "aws_s3_bucket_objectv2" "entities" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -166,10 +175,10 @@ import 'document_classifier_vpc_config.dart';
 ///
 ///         var example = new DocumentClassifier("example", DocumentClassifierArgs.builder()
 ///             .inputDataConfig(DocumentClassifierInputDataConfigArgs.builder()
-///                 .s3Uri(documents.key().applyValue(_key -> String.format("s3://%s/%s", test.bucket(),_key)))
+///                 .s3Uri(documents.key().applyValue(_key -> String.format("s3://%s/%s", test.get("bucket"),_key)))
 ///                 .build())
 ///             .name("example")
-///             .dataAccessRoleArn(exampleAwsIamRole.arn())
+///             .dataAccessRoleArn(exampleAwsIamRole.get("arn"))
 ///             .languageCode("en")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleAwsIamRolePolicy)
@@ -279,7 +288,7 @@ class DocumentClassifier extends pulumi.CustomResource {
           'aws:comprehend/documentClassifier:DocumentClassifier',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dataAccessRoleArn = registerOutput<String>('dataAccessRoleArn');

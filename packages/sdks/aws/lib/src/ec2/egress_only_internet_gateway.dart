@@ -81,7 +81,7 @@ import 'egress_only_internet_gateway_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewEgressOnlyInternetGateway(ctx, "example", &ec2.EgressOnlyInternetGatewayArgs{
-/// 			VpcId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId: example.ID(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("main"),
 /// 			},
@@ -94,7 +94,7 @@ import 'egress_only_internet_gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -103,10 +103,16 @@ import 'egress_only_internet_gateway_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block                       = "10.1.0.0/16"
 ///   assign_generated_ipv6_cidr_block = true
 /// }
-/// resource "aws_ec2_egressonlyinternetgateway" "example" {
+/// resource "aws_ec2_egress_only_internet_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id = aws_ec2_vpc.example.id
 ///   tags = {
 ///     "Name" = "main"
@@ -195,7 +201,7 @@ class EgressOnlyInternetGateway extends pulumi.CustomResource {
           'aws:ec2/egressOnlyInternetGateway:EgressOnlyInternetGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

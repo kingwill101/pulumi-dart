@@ -74,7 +74,7 @@ import 'schema_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -83,6 +83,9 @@ import 'schema_state.dart';
 /// }
 ///
 /// resource "aws_glue_schema" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   schema_name       = "example"
 ///   registry_arn      = test.arn
 ///   data_format       = "AVRO"
@@ -113,7 +116,7 @@ import 'schema_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Schema("example", SchemaArgs.builder()
 ///             .schemaName("example")
-///             .registryArn(test.arn())
+///             .registryArn(test.get("arn"))
 ///             .dataFormat("AVRO")
 ///             .compatibility("NONE")
 ///             .schemaDefinition("{\"type\": \"record\", \"name\": \"r1\", \"fields\": [ {\"name\": \"f1\", \"type\": \"int\"}, {\"name\": \"f2\", \"type\": \"string\"} ]}")
@@ -191,7 +194,7 @@ class Schema extends pulumi.CustomResource {
           'aws:glue/schema:Schema',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     compatibility = registerOutput<String>('compatibility');

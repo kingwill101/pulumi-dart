@@ -55,7 +55,7 @@ import 'service_linked_role_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -63,7 +63,10 @@ import 'service_linked_role_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_servicelinkedrole" "elasticbeanstalk" {
+/// resource "aws_iam_service_linked_role" "elasticbeanstalk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   aws_service_name = "elasticbeanstalk.amazonaws.com"
 /// }
 /// ```
@@ -152,7 +155,7 @@ class ServiceLinkedRole extends pulumi.CustomResource {
           'aws:iam/serviceLinkedRole:ServiceLinkedRole',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsServiceName = registerOutput<String>('awsServiceName');

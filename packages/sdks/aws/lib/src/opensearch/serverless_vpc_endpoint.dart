@@ -74,7 +74,7 @@ import 'serverless_vpc_endpoint_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,7 +82,10 @@ import 'serverless_vpc_endpoint_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_opensearch_serverlessvpcendpoint" "example" {
+/// resource "aws_opensearch_serverless_vpc_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "myendpoint"
 ///   subnet_ids = [exampleAwsSubnet.id]
 ///   vpc_id     = exampleAwsVpc.id
@@ -111,8 +114,8 @@ import 'serverless_vpc_endpoint_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new ServerlessVpcEndpoint("example", ServerlessVpcEndpointArgs.builder()
 ///             .name("myendpoint")
-///             .subnetIds(exampleAwsSubnet.id())
-///             .vpcId(exampleAwsVpc.id())
+///             .subnetIds(exampleAwsSubnet.get("id"))
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .build());
 ///
 ///     }
@@ -176,7 +179,7 @@ class ServerlessVpcEndpoint extends pulumi.CustomResource {
           'aws:opensearch/serverlessVpcEndpoint:ServerlessVpcEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

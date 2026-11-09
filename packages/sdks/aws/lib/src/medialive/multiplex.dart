@@ -136,7 +136,7 @@ import 'multiplex_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -144,19 +144,22 @@ import 'multiplex_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzones" "available" {
+/// data "aws_availability_zones" "available" {
 ///   state = "available"
 /// }
 ///
 /// resource "aws_medialive_multiplex" "example" {
-///   multiplex_settings = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   multiplex_settings {
 ///     transport_stream_bitrate                = 1000000
 ///     transport_stream_id                     = 1
 ///     transport_stream_reserved_bitrate       = 1
 ///     maximum_video_buffer_delay_milliseconds = 1000
 ///   }
 ///   name               = "example-multiplex-changed"
-///   availability_zones = [data.aws_getavailabilityzones.available.names[0], data.aws_getavailabilityzones.available.names[1]]
+///   availability_zones = [data.aws_availability_zones.available.names[0], data.aws_availability_zones.available.names[1]]
 ///   start_multiplex    = true
 ///   tags = {
 ///     "tag1" = "value1"
@@ -285,7 +288,7 @@ class Multiplex extends pulumi.CustomResource {
           'aws:medialive/multiplex:Multiplex',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

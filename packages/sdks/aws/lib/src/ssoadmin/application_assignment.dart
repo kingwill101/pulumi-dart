@@ -68,7 +68,7 @@ import 'application_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,7 +76,10 @@ import 'application_assignment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssoadmin_applicationassignment" "example" {
+/// resource "aws_ssoadmin_application_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_arn = exampleAwsSsoadminApplication.arn
 ///   principal_id    = exampleAwsIdentitystoreUser.userId
 ///   principal_type  = "USER"
@@ -104,8 +107,8 @@ import 'application_assignment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ApplicationAssignment("example", ApplicationAssignmentArgs.builder()
-///             .applicationArn(exampleAwsSsoadminApplication.arn())
-///             .principalId(exampleAwsIdentitystoreUser.userId())
+///             .applicationArn(exampleAwsSsoadminApplication.get("arn"))
+///             .principalId(exampleAwsIdentitystoreUser.get("userId"))
 ///             .principalType("USER")
 ///             .build());
 ///
@@ -185,7 +188,7 @@ import 'application_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -193,7 +196,10 @@ import 'application_assignment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssoadmin_applicationassignment" "example" {
+/// resource "aws_ssoadmin_application_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_arn = exampleAwsSsoadminApplication.arn
 ///   principal_id    = exampleAwsIdentitystoreGroup.groupId
 ///   principal_type  = "GROUP"
@@ -221,8 +227,8 @@ import 'application_assignment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ApplicationAssignment("example", ApplicationAssignmentArgs.builder()
-///             .applicationArn(exampleAwsSsoadminApplication.arn())
-///             .principalId(exampleAwsIdentitystoreGroup.groupId())
+///             .applicationArn(exampleAwsSsoadminApplication.get("arn"))
+///             .principalId(exampleAwsIdentitystoreGroup.get("groupId"))
 ///             .principalType("GROUP")
 ///             .build());
 ///
@@ -269,7 +275,7 @@ class ApplicationAssignment extends pulumi.CustomResource {
           'aws:ssoadmin/applicationAssignment:ApplicationAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     applicationArn = registerOutput<String>('applicationArn');
     principalId = registerOutput<String>('principalId');

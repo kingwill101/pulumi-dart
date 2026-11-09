@@ -137,7 +137,7 @@ import 'serverless_access_policy_state.dart';
 /// 		}
 /// 		tmpJSON0, err := json.Marshal([]map[string]interface{}{
 /// 			map[string]interface{}{
-/// 				"Rules": []map[string]interface{}{
+/// 				"Rules": []interface{}{
 /// 					map[string]interface{}{
 /// 						"ResourceType": "index",
 /// 						"Resource": []string{
@@ -180,7 +180,7 @@ import 'serverless_access_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -188,10 +188,13 @@ import 'serverless_access_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
-/// resource "aws_opensearch_serverlessaccesspolicy" "example" {
+/// resource "aws_opensearch_serverless_access_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   type        = "data"
 ///   description = "read and write permissions"
@@ -205,7 +208,7 @@ import 'serverless_access_policy_state.dart';
 ///       "Resource"     = ["collection/example-collection"]
 ///       "Permission"   = ["aoss:*"]
 ///     }]
-///     "Principal" = [data.aws_getcalleridentity.current.arn]
+///     "Principal" = [data.aws_caller_identity.current.arn]
 ///   }])
 /// }
 /// ```
@@ -474,7 +477,7 @@ import 'serverless_access_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -482,10 +485,13 @@ import 'serverless_access_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
-/// resource "aws_opensearch_serverlessaccesspolicy" "example" {
+/// resource "aws_opensearch_serverless_access_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   type        = "data"
 ///   description = "read-only permissions"
@@ -499,7 +505,7 @@ import 'serverless_access_policy_state.dart';
 ///       "Resource"     = ["collection/example-collection"]
 ///       "Permission"   = ["aoss:DescribeCollectionItems"]
 ///     }]
-///     "Principal" = [data.aws_getcalleridentity.current.arn]
+///     "Principal" = [data.aws_caller_identity.current.arn]
 ///   }])
 /// }
 /// ```
@@ -719,7 +725,7 @@ import 'serverless_access_policy_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		tmpJSON0, err := json.Marshal([]map[string]interface{}{
 /// 			map[string]interface{}{
-/// 				"Rules": []map[string]interface{}{
+/// 				"Rules": []interface{}{
 /// 					map[string]interface{}{
 /// 						"ResourceType": "index",
 /// 						"Resource": []string{
@@ -763,7 +769,7 @@ import 'serverless_access_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -771,7 +777,10 @@ import 'serverless_access_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_opensearch_serverlessaccesspolicy" "example" {
+/// resource "aws_opensearch_serverless_access_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   type        = "data"
 ///   description = "saml permissions"
@@ -914,7 +923,7 @@ class ServerlessAccessPolicy extends pulumi.CustomResource {
           'aws:opensearch/serverlessAccessPolicy:ServerlessAccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

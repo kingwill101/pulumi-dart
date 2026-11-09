@@ -158,7 +158,7 @@ import 'log_destination_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -166,26 +166,32 @@ import 'log_destination_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "testDestinationPolicy" {
-///   statements {
+/// data "aws_iam_policy_document" "testDestinationPolicy" {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = ["123456789012"]
 ///     }
 ///     effect    = "Allow"
 ///     actions   = ["logs:PutSubscriptionFilter"]
-///     resources = [aws_cloudwatch_logdestination.test_destination.arn]
+///     resources = [aws_cloudwatch_log_destination.test_destination.arn]
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_logdestination" "test_destination" {
+/// resource "aws_cloudwatch_log_destination" "test_destination" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "test_destination"
 ///   role_arn   = iamForCloudwatch.arn
 ///   target_arn = kinesisForCloudwatch.arn
 /// }
-/// resource "aws_cloudwatch_logdestinationpolicy" "test_destination_policy" {
-///   destination_name = aws_cloudwatch_logdestination.test_destination.name
-///   access_policy    = data.aws_iam_getpolicydocument.testDestinationPolicy.json
+/// resource "aws_cloudwatch_log_destination_policy" "test_destination_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   destination_name = aws_cloudwatch_log_destination.test_destination.name
+///   access_policy    = data.aws_iam_policy_document.testDestinationPolicy.json
 /// }
 /// ```
 /// ```java
@@ -217,8 +223,8 @@ import 'log_destination_policy_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var testDestination = new LogDestination("testDestination", LogDestinationArgs.builder()
 ///             .name("test_destination")
-///             .roleArn(iamForCloudwatch.arn())
-///             .targetArn(kinesisForCloudwatch.arn())
+///             .roleArn(iamForCloudwatch.get("arn"))
+///             .targetArn(kinesisForCloudwatch.get("arn"))
 ///             .build());
 ///
 ///         final var testDestinationPolicy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
@@ -315,7 +321,7 @@ class LogDestinationPolicy extends pulumi.CustomResource {
           'aws:cloudwatch/logDestinationPolicy:LogDestinationPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accessPolicy = registerOutput<String>('accessPolicy');
     destinationName = registerOutput<String>('destinationName');

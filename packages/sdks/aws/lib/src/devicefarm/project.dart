@@ -60,7 +60,7 @@ import 'project_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -69,6 +69,9 @@ import 'project_state.dart';
 /// }
 ///
 /// resource "aws_devicefarm_project" "awesome_devices" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-device-farm"
 /// }
 /// ```
@@ -150,7 +153,7 @@ class Project extends pulumi.CustomResource {
           'aws:devicefarm/project:Project',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultJobTimeoutMinutes = registerOutput<int?>('defaultJobTimeoutMinutes');

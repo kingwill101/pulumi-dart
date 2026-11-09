@@ -92,7 +92,7 @@ import 'trust_store_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -100,9 +100,12 @@ import 'trust_store_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_truststore" "example" {
-///   ca_certificates_bundle_source = {
-///     ca_certificates_bundle_s3_location = {
+/// resource "aws_cloudfront_trust_store" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ca_certificates_bundle_source {
+///     ca_certificates_bundle_s3_location {
 ///       bucket = "example-bucket"
 ///       key    = "ca-certificates.pem"
 ///       region = "us-east-1"
@@ -250,7 +253,7 @@ import 'trust_store_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -258,9 +261,12 @@ import 'trust_store_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_truststore" "example" {
-///   ca_certificates_bundle_source = {
-///     ca_certificates_bundle_s3_location = {
+/// resource "aws_cloudfront_trust_store" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ca_certificates_bundle_source {
+///     ca_certificates_bundle_s3_location {
 ///       bucket  = "example-bucket"
 ///       key     = "ca-certificates.pem"
 ///       region  = "us-east-1"
@@ -361,7 +367,7 @@ class TrustStore extends pulumi.CustomResource {
           'aws:cloudfront/trustStore:TrustStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     caCertificatesBundleSource = registerOutput<TrustStoreCaCertificatesBundleSource>('caCertificatesBundleSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustStoreCaCertificatesBundleSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });

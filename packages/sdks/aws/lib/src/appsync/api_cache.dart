@@ -77,7 +77,7 @@ import 'api_cache_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appsync.NewApiCache(ctx, "example", &appsync.ApiCacheArgs{
-/// 			ApiId:              example.ID().ToIDOutput().ToStringOutput(),
+/// 			ApiId:              example.ID(),
 /// 			ApiCachingBehavior: pulumi.String("FULL_REQUEST_CACHING"),
 /// 			Type:               pulumi.String("LARGE"),
 /// 			Ttl:                pulumi.Int(900),
@@ -90,7 +90,7 @@ import 'api_cache_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -98,12 +98,18 @@ import 'api_cache_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appsync_graphqlapi" "example" {
+/// resource "aws_appsync_graph_q_l_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authentication_type = "API_KEY"
 ///   name                = "example"
 /// }
-/// resource "aws_appsync_apicache" "example" {
-///   api_id               = aws_appsync_graphqlapi.example.id
+/// resource "aws_appsync_api_cache" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   api_id               = aws_appsync_graph_q_l_api.example.id
 ///   api_caching_behavior = "FULL_REQUEST_CACHING"
 ///   type                 = "LARGE"
 ///   ttl                  = 900
@@ -200,7 +206,7 @@ class ApiCache extends pulumi.CustomResource {
           'aws:appsync/apiCache:ApiCache',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     apiCachingBehavior = registerOutput<String>('apiCachingBehavior');
     apiId = registerOutput<String>('apiId');

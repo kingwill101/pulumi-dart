@@ -59,7 +59,7 @@ import 'organizations_access_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,10 @@ import 'organizations_access_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_servicecatalog_organizationsaccess" "example" {
+/// resource "aws_servicecatalog_organizations_access" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enabled = "true"
 /// }
 /// ```
@@ -122,7 +125,7 @@ class OrganizationsAccess extends pulumi.CustomResource {
           'aws:servicecatalog/organizationsAccess:OrganizationsAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     enabled = registerOutput<bool>('enabled');
   }

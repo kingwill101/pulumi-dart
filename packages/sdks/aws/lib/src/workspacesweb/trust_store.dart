@@ -87,7 +87,7 @@ import 'trust_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -98,8 +98,11 @@ import 'trust_store_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_workspacesweb_truststore" "example" {
-///   certificates {
+/// resource "aws_workspacesweb_trust_store" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   certificate {
 ///     body = file("certificate.pem")
 ///   }
 /// }
@@ -278,7 +281,7 @@ import 'trust_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -289,11 +292,14 @@ import 'trust_store_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_workspacesweb_truststore" "example" {
-///   certificates {
+/// resource "aws_workspacesweb_trust_store" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   certificate {
 ///     body = file("certificate1.pem")
 ///   }
-///   certificates {
+///   certificate {
 ///     body = file("certificate2.pem")
 ///   }
 ///   tags = {
@@ -399,7 +405,7 @@ class TrustStore extends pulumi.CustomResource {
           'aws:workspacesweb/trustStore:TrustStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     certificates = registerOutput<List<TrustStoreCertificate>?>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrustStoreCertificate>(guardedValue, (value) => TrustStoreCertificate.fromMap((value as Map).cast<String, dynamic>())); });

@@ -69,7 +69,7 @@ import 'api_mapping_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,7 +77,10 @@ import 'api_mapping_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigatewayv2_apimapping" "example" {
+/// resource "aws_apigatewayv2_api_mapping" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id      = exampleAwsApigatewayv2Api.id
 ///   domain_name = exampleAwsApigatewayv2DomainName.id
 ///   stage       = exampleAwsApigatewayv2Stage.id
@@ -105,9 +108,9 @@ import 'api_mapping_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ApiMapping("example", ApiMappingArgs.builder()
-///             .apiId(exampleAwsApigatewayv2Api.id())
-///             .domainName(exampleAwsApigatewayv2DomainName.id())
-///             .stage(exampleAwsApigatewayv2Stage.id())
+///             .apiId(exampleAwsApigatewayv2Api.get("id"))
+///             .domainName(exampleAwsApigatewayv2DomainName.get("id"))
+///             .stage(exampleAwsApigatewayv2Stage.get("id"))
 ///             .build());
 ///
 ///     }
@@ -155,7 +158,7 @@ class ApiMapping extends pulumi.CustomResource {
           'aws:apigatewayv2/apiMapping:ApiMapping',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     apiMappingKey = registerOutput<String?>('apiMappingKey');

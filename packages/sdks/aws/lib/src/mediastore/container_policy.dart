@@ -207,7 +207,7 @@ import 'container_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -215,34 +215,40 @@ import 'container_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
-/// data "aws_getcalleridentity" "currentGetCallerIdentity" {
+/// data "aws_caller_identity" "currentGetCallerIdentity" {
 /// }
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
+///     condition {
 ///       test     = "Bool"
 ///       variable = "aws:SecureTransport"
 ///       values   = ["true"]
 ///     }
 ///     principals {
 ///       type        = "AWS"
-///       identifiers = ["arn:aws:iam::${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:root"]
+///       identifiers = ["arn:aws:iam::${data.aws_caller_identity.currentGetCallerIdentity.account_id}:root"]
 ///     }
 ///     sid       = "MediaStoreFullAccess"
 ///     effect    = "Allow"
 ///     actions   = ["mediastore:*"]
-///     resources = ["arn:aws:mediastore:${data.aws_getregion.current.region}:${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:container/${aws_mediastore_container.example.name}/*"]
+///     resources = ["arn:aws:mediastore:${data.aws_region.current.region}:${data.aws_caller_identity.currentGetCallerIdentity.account_id}:container/${aws_mediastore_container.example.name}/*"]
 ///   }
 /// }
 ///
 /// resource "aws_mediastore_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
-/// resource "aws_mediastore_containerpolicy" "example" {
+/// resource "aws_mediastore_container_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   container_name = aws_mediastore_container.example.name
-///   policy         = data.aws_iam_getpolicydocument.example.json
+///   policy         = data.aws_iam_policy_document.example.json
 /// }
 /// ```
 /// ```java
@@ -384,7 +390,7 @@ class ContainerPolicy extends pulumi.CustomResource {
           'aws:mediastore/containerPolicy:ContainerPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     containerName = registerOutput<String>('containerName');
     policy = registerOutput<String>('policy');

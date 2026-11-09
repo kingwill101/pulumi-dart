@@ -89,7 +89,7 @@ import 'cluster_parameter_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -97,8 +97,11 @@ import 'cluster_parameter_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_neptune_clusterparametergroup" "example" {
-///   parameters {
+/// resource "aws_neptune_cluster_parameter_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parameter {
 ///     name  = "neptune_enable_audit_log"
 ///     value = 1
 ///   }
@@ -195,7 +198,7 @@ class ClusterParameterGroup extends pulumi.CustomResource {
           'aws:neptune/clusterParameterGroup:ClusterParameterGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

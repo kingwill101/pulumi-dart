@@ -99,7 +99,7 @@ import 'faq_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -108,7 +108,10 @@ import 'faq_state.dart';
 /// }
 ///
 /// resource "aws_kendra_faq" "example" {
-///   s3_path = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   s3_path {
 ///     bucket = exampleAwsS3Bucket.id
 ///     key    = exampleAwsS3Object.key
 ///   }
@@ -144,12 +147,12 @@ import 'faq_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Faq("example", FaqArgs.builder()
 ///             .s3Path(FaqS3PathArgs.builder()
-///                 .bucket(exampleAwsS3Bucket.id())
-///                 .key(exampleAwsS3Object.key())
+///                 .bucket(exampleAwsS3Bucket.get("id"))
+///                 .key(exampleAwsS3Object.get("key"))
 ///                 .build())
-///             .indexId(exampleAwsKendraIndex.id())
+///             .indexId(exampleAwsKendraIndex.get("id"))
 ///             .name("Example")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .tags(Map.of("Name", "Example Kendra Faq"))
 ///             .build());
 ///
@@ -255,7 +258,7 @@ import 'faq_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -264,7 +267,10 @@ import 'faq_state.dart';
 /// }
 ///
 /// resource "aws_kendra_faq" "example" {
-///   s3_path = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   s3_path {
 ///     bucket = exampleAwsS3Bucket.id
 ///     key    = exampleAwsS3Object.key
 ///   }
@@ -298,13 +304,13 @@ import 'faq_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Faq("example", FaqArgs.builder()
 ///             .s3Path(FaqS3PathArgs.builder()
-///                 .bucket(exampleAwsS3Bucket.id())
-///                 .key(exampleAwsS3Object.key())
+///                 .bucket(exampleAwsS3Bucket.get("id"))
+///                 .key(exampleAwsS3Object.get("key"))
 ///                 .build())
-///             .indexId(exampleAwsKendraIndex.id())
+///             .indexId(exampleAwsKendraIndex.get("id"))
 ///             .name("Example")
 ///             .fileFormat("CSV")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -408,7 +414,7 @@ import 'faq_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -417,7 +423,10 @@ import 'faq_state.dart';
 /// }
 ///
 /// resource "aws_kendra_faq" "example" {
-///   s3_path = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   s3_path {
 ///     bucket = exampleAwsS3Bucket.id
 ///     key    = exampleAwsS3Object.key
 ///   }
@@ -451,13 +460,13 @@ import 'faq_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Faq("example", FaqArgs.builder()
 ///             .s3Path(FaqS3PathArgs.builder()
-///                 .bucket(exampleAwsS3Bucket.id())
-///                 .key(exampleAwsS3Object.key())
+///                 .bucket(exampleAwsS3Bucket.get("id"))
+///                 .key(exampleAwsS3Object.get("key"))
 ///                 .build())
-///             .indexId(exampleAwsKendraIndex.id())
+///             .indexId(exampleAwsKendraIndex.get("id"))
 ///             .name("Example")
 ///             .languageCode("en")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -533,7 +542,7 @@ class Faq extends pulumi.CustomResource {
           'aws:kendra/faq:Faq',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');

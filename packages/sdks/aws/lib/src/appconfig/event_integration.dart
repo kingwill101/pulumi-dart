@@ -93,7 +93,7 @@ import 'event_integration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -101,7 +101,10 @@ import 'event_integration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appconfig_eventintegration" "example" {
+/// resource "aws_appconfig_event_integration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   event_filter = {
 ///     source = "aws.partner/example.com"
 ///   }
@@ -200,7 +203,7 @@ class EventIntegration extends pulumi.CustomResource {
           'aws:appconfig/eventIntegration:EventIntegration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

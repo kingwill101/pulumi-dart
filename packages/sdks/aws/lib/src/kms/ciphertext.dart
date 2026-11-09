@@ -97,7 +97,7 @@ import 'ciphertext_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -106,12 +106,24 @@ import 'ciphertext_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "oauth_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "oauth config"
 ///   is_enabled  = true
 /// }
 /// resource "aws_kms_ciphertext" "oauth" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key_id    = aws_kms_key.oauth_config.key_id
-///   plaintext = "{\n  \\\"client_id\\\": \\\"e587dbae22222f55da22\\\",\n  \\\"client_secret\\\": \\\"8289575d00000ace55e1815ec13673955721b8a5\\\"\n}\n"
+///   plaintext = <<EOF
+/// {
+///   \"client_id\": \"e587dbae22222f55da22\",
+///   \"client_secret\": \"8289575d00000ace55e1815ec13673955721b8a5\"
+/// }
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -202,7 +214,7 @@ class Ciphertext extends pulumi.CustomResource {
           'aws:kms/ciphertext:Ciphertext',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['plaintext', 'plaintextWo'],
         ) {
     ciphertextBlob = registerOutput<String>('ciphertextBlob');

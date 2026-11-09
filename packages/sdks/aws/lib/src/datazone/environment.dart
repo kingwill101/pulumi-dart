@@ -140,7 +140,7 @@ import 'environment_user_parameter.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -149,6 +149,9 @@ import 'environment_user_parameter.dart';
 /// }
 ///
 /// resource "aws_datazone_environment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user_parameters {
 ///     name  = "consumerGlueDbName"
 ///     value = "consumer"
@@ -205,10 +208,10 @@ import 'environment_user_parameter.dart';
 ///                     .value("workgroup")
 ///                     .build())
 ///             .name("example")
-///             .blueprintIdentifier(test.environmentBlueprintId())
-///             .profileIdentifier(testAwsDatazoneEnvironmentProfile.id())
-///             .projectIdentifier(testAwsDatazoneProject.id())
-///             .domainIdentifier(testAwsDatazoneDomain.id())
+///             .blueprintIdentifier(test.get("environmentBlueprintId"))
+///             .profileIdentifier(testAwsDatazoneEnvironmentProfile.get("id"))
+///             .projectIdentifier(testAwsDatazoneProject.get("id"))
+///             .domainIdentifier(testAwsDatazoneDomain.get("id"))
 ///             .build());
 ///
 ///     }
@@ -304,7 +307,7 @@ class Environment extends pulumi.CustomResource {
           'aws:datazone/environment:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accountIdentifier = registerOutput<String>('accountIdentifier');
     accountRegion = registerOutput<String>('accountRegion');

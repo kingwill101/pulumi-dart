@@ -62,7 +62,7 @@ import 'microvm_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,6 +71,9 @@ import 'microvm_timeouts.dart';
 /// }
 ///
 /// resource "aws_lambdamicrovms_microvm" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   image_arn = exampleAwsLambdamicrovmsImage.arn
 /// }
 /// ```
@@ -96,7 +99,7 @@ import 'microvm_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Microvm("example", MicrovmArgs.builder()
-///             .imageArn(exampleAwsLambdamicrovmsImage.arn())
+///             .imageArn(exampleAwsLambdamicrovmsImage.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -234,7 +237,7 @@ import 'microvm_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -243,13 +246,16 @@ import 'microvm_timeouts.dart';
 /// }
 ///
 /// resource "aws_lambdamicrovms_microvm" "example" {
-///   idle_policy = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   idle_policy {
 ///     auto_resume_enabled        = true
 ///     max_idle_duration_seconds  = 900
 ///     suspended_duration_seconds = 1800
 ///   }
-///   logging = {
-///     cloudwatch = {
+///   logging {
+///     cloudwatch {
 ///       log_group = exampleAwsCloudwatchLogGroup.name
 ///     }
 ///   }
@@ -292,11 +298,11 @@ import 'microvm_timeouts.dart';
 ///                 .build())
 ///             .logging(MicrovmLoggingArgs.builder()
 ///                 .cloudwatch(MicrovmLoggingCloudwatchArgs.builder()
-///                     .logGroup(exampleAwsCloudwatchLogGroup.name())
+///                     .logGroup(exampleAwsCloudwatchLogGroup.get("name"))
 ///                     .build())
 ///                 .build())
-///             .imageArn(exampleAwsLambdamicrovmsImage.arn())
-///             .executionRoleArn(exampleAwsIamRole.arn())
+///             .imageArn(exampleAwsLambdamicrovmsImage.get("arn"))
+///             .executionRoleArn(exampleAwsIamRole.get("arn"))
 ///             .maximumDurationInSeconds(14400)
 ///             .egressNetworkConnectors("arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:INTERNET_EGRESS")
 ///             .ingressNetworkConnectors("arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:ALL_INGRESS")
@@ -391,7 +397,7 @@ class Microvm extends pulumi.CustomResource {
           'aws:lambdamicrovms/microvm:Microvm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     egressNetworkConnectors = registerOutput<List<String>>('egressNetworkConnectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     endpoint = registerOutput<String>('endpoint');

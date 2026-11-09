@@ -117,7 +117,7 @@ import 'group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -126,8 +126,24 @@ import 'group_state.dart';
 /// }
 ///
 /// resource "aws_resourcegroups_group" "test" {
-///   resource_query = {
-///     query = "{\n  \\\"ResourceTypeFilters\\\": [\n    \\\"AWS::EC2::Instance\\\"\n  ],\n  \\\"TagFilters\\\": [\n    {\n      \\\"Key\\\": \\\"Stage\\\",\n      \\\"Values\\\": [\\\"Test\\\"]\n    }\n  ]\n}\n"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_query {
+///     query = <<JSON
+/// {
+///   \"ResourceTypeFilters\": [
+///     \"AWS::EC2::Instance\"
+///   ],
+///   \"TagFilters\": [
+///     {
+///       \"Key\": \"Stage\",
+///       \"Values\": [\"Test\"]
+///     }
+///   ]
+/// }
+/// JSON
+///
 ///   }
 ///   name = "test-group"
 /// }
@@ -235,7 +251,7 @@ class Group extends pulumi.CustomResource {
           'aws:resourcegroups/group:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     configurations = registerOutput<List<GroupConfiguration>?>('configurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupConfiguration>(guardedValue, (value) => GroupConfiguration.fromMap((value as Map).cast<String, dynamic>())); });

@@ -57,7 +57,7 @@ import 'access_point_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,7 +65,10 @@ import 'access_point_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_efs_accesspoint" "test" {
+/// resource "aws_efs_access_point" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   file_system_id = foo.id
 /// }
 /// ```
@@ -91,7 +94,7 @@ import 'access_point_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new AccessPoint("test", AccessPointArgs.builder()
-///             .fileSystemId(foo.id())
+///             .fileSystemId(foo.get("id"))
 ///             .build());
 ///
 ///     }
@@ -156,7 +159,7 @@ class AccessPoint extends pulumi.CustomResource {
           'aws:efs/accessPoint:AccessPoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     fileSystemArn = registerOutput<String>('fileSystemArn');

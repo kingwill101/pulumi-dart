@@ -75,7 +75,7 @@ import 'alias_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -84,6 +84,9 @@ import 'alias_state.dart';
 /// }
 ///
 /// resource "aws_lambda_alias" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "production"
 ///   description      = "Production environment alias"
 ///   function_name    = exampleAwsLambdaFunction.arn
@@ -114,7 +117,7 @@ import 'alias_state.dart';
 ///         var example = new Alias("example", AliasArgs.builder()
 ///             .name("production")
 ///             .description("Production environment alias")
-///             .functionName(exampleAwsLambdaFunction.arn())
+///             .functionName(exampleAwsLambdaFunction.get("arn"))
 ///             .functionVersion("1")
 ///             .build());
 ///
@@ -221,7 +224,7 @@ import 'alias_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -230,7 +233,10 @@ import 'alias_state.dart';
 /// }
 ///
 /// resource "aws_lambda_alias" "example" {
-///   routing_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   routing_config {
 ///     additional_version_weights = {
 ///       "1" = 0.1
 ///     }
@@ -271,7 +277,7 @@ import 'alias_state.dart';
 ///                 .build())
 ///             .name("staging")
 ///             .description("Staging environment with traffic splitting")
-///             .functionName(exampleAwsLambdaFunction.functionName())
+///             .functionName(exampleAwsLambdaFunction.get("functionName"))
 ///             .functionVersion("2")
 ///             .build());
 ///
@@ -385,7 +391,7 @@ import 'alias_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -395,7 +401,10 @@ import 'alias_state.dart';
 ///
 /// # Alias for gradual rollout
 /// resource "aws_lambda_alias" "example" {
-///   routing_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   routing_config {
 ///     additional_version_weights = {
 ///       "6" = 0.05
 ///     }
@@ -436,7 +445,7 @@ import 'alias_state.dart';
 ///                 .build())
 ///             .name("live")
 ///             .description("Live traffic with gradual rollout to new version")
-///             .functionName(exampleAwsLambdaFunction.functionName())
+///             .functionName(exampleAwsLambdaFunction.get("functionName"))
 ///             .functionVersion("5")
 ///             .build());
 ///
@@ -525,7 +534,7 @@ import 'alias_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -534,6 +543,9 @@ import 'alias_state.dart';
 /// }
 ///
 /// resource "aws_lambda_alias" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "dev"
 ///   description      = "Development environment - always points to latest"
 ///   function_name    = exampleAwsLambdaFunction.functionName
@@ -564,7 +576,7 @@ import 'alias_state.dart';
 ///         var example = new Alias("example", AliasArgs.builder()
 ///             .name("dev")
 ///             .description("Development environment - always points to latest")
-///             .functionName(exampleAwsLambdaFunction.functionName())
+///             .functionName(exampleAwsLambdaFunction.get("functionName"))
 ///             .functionVersion("$LATEST")
 ///             .build());
 ///
@@ -635,7 +647,7 @@ class Alias extends pulumi.CustomResource {
           'aws:lambda/alias:Alias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

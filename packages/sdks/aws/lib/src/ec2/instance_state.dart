@@ -89,11 +89,11 @@ class InstanceState {
   final pulumi.Input<String?>? outpostArn;
   /// Base-64 encoded encrypted password data for the instance. Useful for getting the administrator password for instances running Microsoft Windows. This attribute is only exported if `getPasswordData` is true. Note that this encrypted value will be stored in the state file, as with all exported attributes. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
   final pulumi.Input<String?>? passwordData;
-  /// Placement Group to start the instance in. Conflicts with `placementGroupId`.
+  /// Placement Group to start the instance in. Conflicts with `placementGroupId`. Updating this argument stops and restarts the EC2 instance, except for Spot Instances and instances with `disableApiStop` and `forceDestroy` enabled, which are replaced.
   final pulumi.Input<String?>? placementGroup;
-  /// Placement Group ID to start the instance in. Conflicts with `placementGroup`.
+  /// Placement Group ID to start the instance in. Conflicts with `placementGroup`. Updating this argument stops and restarts the EC2 instance, except for Spot Instances and instances with `disableApiStop` and `forceDestroy` enabled, which are replaced.
   final pulumi.Input<String?>? placementGroupId;
-  /// Number of the partition the instance is in. Valid only if the `aws.ec2.PlacementGroup` resource's `strategy` argument is set to `"partition"`.
+  /// Number of the partition the instance is in. Valid only if the `aws.ec2.PlacementGroup` resource's `strategy` argument is set to `"partition"`. Updating this argument stops and restarts the EC2 instance, except for Spot Instances and instances with `disableApiStop` and `forceDestroy` enabled, which are replaced.
   final pulumi.Input<int?>? placementPartitionNumber;
   /// The primary network interface. See Primary Network Interface below.
   final pulumi.Input<InstancePrimaryNetworkInterface?>? primaryNetworkInterface;
@@ -182,9 +182,9 @@ class InstanceState {
   /// [networkInterfaces] Customize network interfaces to be attached at instance boot time. See Network Interfaces below for more details.
   /// [outpostArn] ARN of the Outpost the instance is assigned to.
   /// [passwordData] Base-64 encoded encrypted password data for the instance. Useful for getting the administrator password for instances running Microsoft Windows. This attribute is only exported if `getPasswordData` is true. Note that this encrypted value will be stored in the state file, as with all exported attributes. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
-  /// [placementGroup] Placement Group to start the instance in. Conflicts with `placementGroupId`.
-  /// [placementGroupId] Placement Group ID to start the instance in. Conflicts with `placementGroup`.
-  /// [placementPartitionNumber] Number of the partition the instance is in. Valid only if the `aws.ec2.PlacementGroup` resource's `strategy` argument is set to `"partition"`.
+  /// [placementGroup] Placement Group to start the instance in. Conflicts with `placementGroupId`. Updating this argument stops and restarts the EC2 instance, except for Spot Instances and instances with `disableApiStop` and `forceDestroy` enabled, which are replaced.
+  /// [placementGroupId] Placement Group ID to start the instance in. Conflicts with `placementGroup`. Updating this argument stops and restarts the EC2 instance, except for Spot Instances and instances with `disableApiStop` and `forceDestroy` enabled, which are replaced.
+  /// [placementPartitionNumber] Number of the partition the instance is in. Valid only if the `aws.ec2.PlacementGroup` resource's `strategy` argument is set to `"partition"`. Updating this argument stops and restarts the EC2 instance, except for Spot Instances and instances with `disableApiStop` and `forceDestroy` enabled, which are replaced.
   /// [primaryNetworkInterface] The primary network interface. See Primary Network Interface below.
   /// [primaryNetworkInterfaceId] ID of the instance's primary network interface.
   /// [privateDns] Private DNS name assigned to the instance. Can only be used inside the Amazon EC2, and only available if you've enabled DNS hostnames for your VPC.

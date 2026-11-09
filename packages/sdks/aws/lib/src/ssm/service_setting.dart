@@ -62,7 +62,7 @@ import 'service_setting_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'service_setting_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssm_servicesetting" "test_setting" {
+/// resource "aws_ssm_service_setting" "test_setting" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   setting_id    = "/ssm/parameter-store/high-throughput-enabled"
 ///   setting_value = "true"
 /// }
@@ -153,7 +156,7 @@ class ServiceSetting extends pulumi.CustomResource {
           'aws:ssm/serviceSetting:ServiceSetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');

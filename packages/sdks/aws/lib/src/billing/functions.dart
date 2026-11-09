@@ -71,7 +71,7 @@ import 'get_views_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -79,12 +79,12 @@ import 'get_views_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_billing_getviews" "example" {
+/// data "aws_billing_views" "example" {
 ///   billing_view_types = ["PRIMARY"]
 /// }
 ///
 /// output "primaryViewArnByTypes" {
-///   value = data.aws_billing_getviews.example.billing_views[0].arn
+///   value = data.aws_billing_views.example.billing_view[0].arn
 /// }
 /// ```
 /// ```java
@@ -170,7 +170,7 @@ import 'get_views_result.dart';
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -178,14 +178,14 @@ import 'get_views_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_billing_getviews" "example" {
+/// data "aws_billing_views" "example" {
 /// }
 ///
 /// output "viewArns" {
-///   value = [for view in data.aws_billing_getviews.example.billing_views : view.arn]
+///   value = [for view in data.aws_billing_views.example.billing_view : view.arn]
 /// }
 /// output "primaryViewArnByName" {
-///   value = [for view in data.aws_billing_getviews.example.billing_views : view.arn if view.name == "Primary View"][0]
+///   value = [for view in data.aws_billing_views.example.billing_view : view.arn if view.name == "Primary View"][0]
 /// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_billing_get_views_get_views_args_doc}

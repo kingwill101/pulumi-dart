@@ -112,7 +112,7 @@ import 'image_builder_vpc_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -120,8 +120,11 @@ import 'image_builder_vpc_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appstream_imagebuilder" "test_fleet" {
-///   vpc_config = {
+/// resource "aws_appstream_image_builder" "test_fleet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   vpc_config {
 ///     subnet_ids = [example.id]
 ///   }
 ///   name                           = "Name"
@@ -159,7 +162,7 @@ import 'image_builder_vpc_config.dart';
 ///     public static void stack(Context ctx) {
 ///         var testFleet = new ImageBuilder("testFleet", ImageBuilderArgs.builder()
 ///             .vpcConfig(ImageBuilderVpcConfigArgs.builder()
-///                 .subnetIds(example.id())
+///                 .subnetIds(example.get("id"))
 ///                 .build())
 ///             .name("Name")
 ///             .description("Description of a ImageBuilder")
@@ -252,7 +255,7 @@ class ImageBuilder extends pulumi.CustomResource {
           'aws:appstream/imageBuilder:ImageBuilder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accessEndpoints = registerOutput<List<ImageBuilderAccessEndpoint>?>('accessEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageBuilderAccessEndpoint>(guardedValue, (value) => ImageBuilderAccessEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     appstreamAgentVersion = registerOutput<String>('appstreamAgentVersion');

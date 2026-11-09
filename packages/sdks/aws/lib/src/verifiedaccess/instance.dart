@@ -74,7 +74,7 @@ import 'instance_verified_access_trust_provider.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -83,6 +83,9 @@ import 'instance_verified_access_trust_provider.dart';
 /// }
 ///
 /// resource "aws_verifiedaccess_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "example"
 ///   tags = {
 ///     "Name" = "example"
@@ -180,7 +183,7 @@ import 'instance_verified_access_trust_provider.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -189,6 +192,9 @@ import 'instance_verified_access_trust_provider.dart';
 /// }
 ///
 /// resource "aws_verifiedaccess_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fips_enabled = true
 /// }
 /// ```
@@ -280,7 +286,7 @@ import 'instance_verified_access_trust_provider.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -289,6 +295,9 @@ import 'instance_verified_access_trust_provider.dart';
 /// }
 ///
 /// resource "aws_verifiedaccess_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_endpoints_custom_subdomain = "test.example.com"
 /// }
 /// ```
@@ -369,7 +378,7 @@ class Instance extends pulumi.CustomResource {
           'aws:verifiedaccess/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     cidrEndpointsCustomSubdomain = registerOutput<String?>('cidrEndpointsCustomSubdomain');
     creationTime = registerOutput<String>('creationTime');

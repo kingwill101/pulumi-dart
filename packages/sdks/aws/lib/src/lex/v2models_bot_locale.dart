@@ -74,7 +74,7 @@ import 'v2models_bot_locale_voice_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,7 +82,10 @@ import 'v2models_bot_locale_voice_settings.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lex_v2modelsbotlocale" "example" {
+/// resource "aws_lex_v2models_bot_locale" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bot_id                           = exampleAwsLexv2modelsBot.id
 ///   bot_version                      = "DRAFT"
 ///   locale_id                        = "en_US"
@@ -111,7 +114,7 @@ import 'v2models_bot_locale_voice_settings.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new V2modelsBotLocale("example", V2modelsBotLocaleArgs.builder()
-///             .botId(exampleAwsLexv2modelsBot.id())
+///             .botId(exampleAwsLexv2modelsBot.get("id"))
 ///             .botVersion("DRAFT")
 ///             .localeId("en_US")
 ///             .nLuIntentConfidenceThreshold(0.7)
@@ -215,7 +218,7 @@ import 'v2models_bot_locale_voice_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -223,7 +226,10 @@ import 'v2models_bot_locale_voice_settings.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lex_v2modelsbotlocale" "example" {
+/// resource "aws_lex_v2models_bot_locale" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   voice_settings = {
 ///     voice_id = "Kendra"
 ///     engine   = "standard"
@@ -261,7 +267,7 @@ import 'v2models_bot_locale_voice_settings.dart';
 ///                 .voiceId("Kendra")
 ///                 .engine("standard")
 ///                 .build())
-///             .botId(exampleAwsLexv2modelsBot.id())
+///             .botId(exampleAwsLexv2modelsBot.get("id"))
 ///             .botVersion("DRAFT")
 ///             .localeId("en_US")
 ///             .nLuIntentConfidenceThreshold(0.7)
@@ -325,7 +331,7 @@ class V2modelsBotLocale extends pulumi.CustomResource {
           'aws:lex/v2modelsBotLocale:V2modelsBotLocale',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     botId = registerOutput<String>('botId');
     botVersion = registerOutput<String>('botVersion');

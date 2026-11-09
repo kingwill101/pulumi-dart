@@ -139,7 +139,7 @@ import 'vpc_endpoint_policy_state.dart';
 /// 		}
 /// 		exampleVpcEndpoint, err := ec2.NewVpcEndpoint(ctx, "example", &ec2.VpcEndpointArgs{
 /// 			ServiceName: pulumi.String(example.ServiceName),
-/// 			VpcId:       exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:       exampleVpc.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -165,7 +165,7 @@ import 'vpc_endpoint_policy_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = ec2.NewVpcEndpointPolicy(ctx, "example", &ec2.VpcEndpointPolicyArgs{
-/// 			VpcEndpointId: exampleVpcEndpoint.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcEndpointId: exampleVpcEndpoint.ID(),
 /// 			Policy:        pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
@@ -176,7 +176,7 @@ import 'vpc_endpoint_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -184,19 +184,28 @@ import 'vpc_endpoint_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpcendpointservice" "example" {
+/// data "aws_ec2_vpc_endpoint_service" "example" {
 ///   service = "dynamodb"
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
-/// resource "aws_ec2_vpcendpoint" "example" {
-///   service_name = data.aws_ec2_getvpcendpointservice.example.service_name
+/// resource "aws_ec2_vpc_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service_name = data.aws_ec2_vpc_endpoint_service.example.service_name
 ///   vpc_id       = aws_ec2_vpc.example.id
 /// }
-/// resource "aws_ec2_vpcendpointpolicy" "example" {
-///   vpc_endpoint_id = aws_ec2_vpcendpoint.example.id
+/// resource "aws_ec2_vpc_endpoint_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   vpc_endpoint_id = aws_ec2_vpc_endpoint.example.id
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
 ///     "Statement" = [{
@@ -337,7 +346,7 @@ class VpcEndpointPolicy extends pulumi.CustomResource {
           'aws:ec2/vpcEndpointPolicy:VpcEndpointPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

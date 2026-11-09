@@ -68,7 +68,7 @@ import 'framework_share_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,7 +76,10 @@ import 'framework_share_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_auditmanager_frameworkshare" "example" {
+/// resource "aws_auditmanager_framework_share" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   destination_account = "123456789012"
 ///   destination_region  = "us-east-1"
 ///   framework_id        = exampleAwsAuditmanagerFramework.id
@@ -106,7 +109,7 @@ import 'framework_share_state.dart';
 ///         var example = new FrameworkShare("example", FrameworkShareArgs.builder()
 ///             .destinationAccount("123456789012")
 ///             .destinationRegion("us-east-1")
-///             .frameworkId(exampleAwsAuditmanagerFramework.id())
+///             .frameworkId(exampleAwsAuditmanagerFramework.get("id"))
 ///             .build());
 ///
 ///     }
@@ -170,7 +173,7 @@ class FrameworkShare extends pulumi.CustomResource {
           'aws:auditmanager/frameworkShare:FrameworkShare',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     comment = registerOutput<String?>('comment');
     destinationAccount = registerOutput<String>('destinationAccount');

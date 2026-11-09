@@ -150,7 +150,7 @@ import 'domain_name_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -158,19 +158,25 @@ import 'domain_name_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_domainname" "example" {
+/// resource "aws_apigateway_domain_name" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_arn = exampleAwsAcmCertificateValidation.certificateArn
 ///   domain_name     = "api.example.com"
 /// }
 /// # Example DNS record using Route53.
 /// # Route53 is not specifically required; any DNS host can be used.
 /// resource "aws_route53_record" "example" {
-///   aliases {
-///     evaluate_target_health = true
-///     name                   = aws_apigateway_domainname.example.cloudfront_domain_name
-///     zone_id                = aws_apigateway_domainname.example.cloudfront_zone_id
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   name    = aws_apigateway_domainname.example.domain_name
+///   alias {
+///     evaluate_target_health = true
+///     name                   = aws_apigateway_domain_name.example.cloudfront_domain_name
+///     zone_id                = aws_apigateway_domain_name.example.cloudfront_zone_id
+///   }
+///   name    = aws_apigateway_domain_name.example.domain_name
 ///   type    = "A"
 ///   zone_id = exampleAwsRoute53Zone.id
 /// }
@@ -200,7 +206,7 @@ import 'domain_name_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DomainName("example", DomainNameArgs.builder()
-///             .certificateArn(exampleAwsAcmCertificateValidation.certificateArn())
+///             .certificateArn(exampleAwsAcmCertificateValidation.get("certificateArn"))
 ///             .domainName("api.example.com")
 ///             .build());
 ///
@@ -214,7 +220,7 @@ import 'domain_name_state.dart';
 ///                 .build())
 ///             .name(example.domainName())
 ///             .type("A")
-///             .zoneId(exampleAwsRoute53Zone.id())
+///             .zoneId(exampleAwsRoute53Zone.get("id"))
 ///             .build());
 ///
 ///     }
@@ -373,7 +379,7 @@ import 'domain_name_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -381,7 +387,10 @@ import 'domain_name_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_domainname" "example" {
+/// resource "aws_apigateway_domain_name" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_configuration = {
 ///     types = "REGIONAL"
 ///   }
@@ -391,12 +400,15 @@ import 'domain_name_state.dart';
 /// # Example DNS record using Route53.
 /// # Route53 is not specifically required; any DNS host can be used.
 /// resource "aws_route53_record" "example" {
-///   aliases {
-///     evaluate_target_health = true
-///     name                   = aws_apigateway_domainname.example.regional_domain_name
-///     zone_id                = aws_apigateway_domainname.example.regional_zone_id
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   name    = aws_apigateway_domainname.example.domain_name
+///   alias {
+///     evaluate_target_health = true
+///     name                   = aws_apigateway_domain_name.example.regional_domain_name
+///     zone_id                = aws_apigateway_domain_name.example.regional_zone_id
+///   }
+///   name    = aws_apigateway_domain_name.example.domain_name
 ///   type    = "A"
 ///   zone_id = exampleAwsRoute53Zone.id
 /// }
@@ -431,7 +443,7 @@ import 'domain_name_state.dart';
 ///                 .types("REGIONAL")
 ///                 .build())
 ///             .domainName("api.example.com")
-///             .regionalCertificateArn(exampleAwsAcmCertificateValidation.certificateArn())
+///             .regionalCertificateArn(exampleAwsAcmCertificateValidation.get("certificateArn"))
 ///             .build());
 ///
 ///         // Example DNS record using Route53.
@@ -444,7 +456,7 @@ import 'domain_name_state.dart';
 ///                 .build())
 ///             .name(example.domainName())
 ///             .type("A")
-///             .zoneId(exampleAwsRoute53Zone.id())
+///             .zoneId(exampleAwsRoute53Zone.get("id"))
 ///             .build());
 ///
 ///     }
@@ -554,7 +566,7 @@ import 'domain_name_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -562,7 +574,10 @@ import 'domain_name_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_domainname" "example" {
+/// resource "aws_apigateway_domain_name" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_configuration = {
 ///     types = "REGIONAL"
 ///   }
@@ -599,7 +614,7 @@ import 'domain_name_state.dart';
 ///                 .types("REGIONAL")
 ///                 .build())
 ///             .domainName("api.example.com")
-///             .regionalCertificateArn(exampleAwsAcmCertificateValidation.certificateArn())
+///             .regionalCertificateArn(exampleAwsAcmCertificateValidation.get("certificateArn"))
 ///             .securityPolicy("SecurityPolicy_TLS13_1_3_2025_09")
 ///             .endpointAccessMode("STRICT")
 ///             .build());
@@ -701,7 +716,7 @@ class DomainName extends pulumi.CustomResource {
           'aws:apigateway/domainName:DomainName',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['certificatePrivateKey'],
         ) {
     arn = registerOutput<String>('arn');

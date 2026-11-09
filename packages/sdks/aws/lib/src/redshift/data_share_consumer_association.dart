@@ -64,7 +64,7 @@ import 'data_share_consumer_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'data_share_consumer_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_redshift_datashareconsumerassociation" "example" {
+/// resource "aws_redshift_data_share_consumer_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_share_arn           = "arn:aws:redshift:us-west-2:123456789012:datashare:b3bfde75-73fd-408b-9086-d6fccfd6d588/example"
 ///   associate_entire_account = true
 /// }
@@ -174,7 +177,7 @@ import 'data_share_consumer_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -182,7 +185,10 @@ import 'data_share_consumer_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_redshift_datashareconsumerassociation" "example" {
+/// resource "aws_redshift_data_share_consumer_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_share_arn  = "arn:aws:redshift:us-west-2:123456789012:datashare:b3bfde75-73fd-408b-9086-d6fccfd6d588/example"
 ///   consumer_region = "us-west-2"
 /// }
@@ -265,7 +271,7 @@ class DataShareConsumerAssociation extends pulumi.CustomResource {
           'aws:redshift/dataShareConsumerAssociation:DataShareConsumerAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     allowWrites = registerOutput<bool?>('allowWrites');
     associateEntireAccount = registerOutput<bool?>('associateEntireAccount');

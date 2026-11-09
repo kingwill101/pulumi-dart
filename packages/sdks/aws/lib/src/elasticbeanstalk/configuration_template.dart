@@ -89,7 +89,7 @@ import 'configuration_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -97,12 +97,18 @@ import 'configuration_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elasticbeanstalk_configurationtemplate" "example" {
+/// resource "aws_elasticbeanstalk_configuration_template" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tf-test-template-config"
 ///   application         = aws_elasticbeanstalk_application.example.name
 ///   solution_stack_name = "64bit Amazon Linux 2015.09 v2.0.8 running Go 1.4"
 /// }
 /// resource "aws_elasticbeanstalk_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "tf-test-name"
 ///   description = "tf-test-desc"
 /// }
@@ -190,7 +196,7 @@ class ConfigurationTemplate extends pulumi.CustomResource {
           'aws:elasticbeanstalk/configurationTemplate:ConfigurationTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     application = registerOutput<String>('application');
     description = registerOutput<String?>('description');

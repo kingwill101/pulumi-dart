@@ -73,7 +73,7 @@ import 'app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,6 +82,9 @@ import 'app_state.dart';
 /// }
 ///
 /// resource "aws_sagemaker_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_id         = exampleAwsSagemakerDomain.id
 ///   user_profile_name = exampleAwsSagemakerUserProfile.userProfileName
 ///   app_name          = "example"
@@ -110,8 +113,8 @@ import 'app_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new App("example", AppArgs.builder()
-///             .domainId(exampleAwsSagemakerDomain.id())
-///             .userProfileName(exampleAwsSagemakerUserProfile.userProfileName())
+///             .domainId(exampleAwsSagemakerDomain.get("id"))
+///             .userProfileName(exampleAwsSagemakerUserProfile.get("userProfileName"))
 ///             .appName("example")
 ///             .appType("JupyterServer")
 ///             .build());
@@ -172,7 +175,7 @@ class App extends pulumi.CustomResource {
           'aws:sagemaker/app:App',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     appName = registerOutput<String>('appName');
     appType = registerOutput<String>('appType');

@@ -287,7 +287,7 @@ import 'resource_data_sync_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -295,8 +295,8 @@ import 'resource_data_sync_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["ssm.amazonaws.com"]
@@ -306,8 +306,8 @@ import 'resource_data_sync_state.dart';
 ///     actions   = ["s3:GetBucketAcl"]
 ///     resources = [aws_s3_bucket.example.arn]
 ///   }
-///   statements {
-///     conditions {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
 ///       variable = "s3:x-amz-acl"
 ///       values   = ["bucket-owner-full-control"]
@@ -323,19 +323,28 @@ import 'resource_data_sync_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssm_resourcedatasync" "example" {
-///   s3_destination = {
+/// resource "aws_ssm_resource_data_sync" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   s3_destination {
 ///     bucket_name = aws_s3_bucket.example.bucket
 ///     region      = aws_s3_bucket.example.region
 ///   }
 ///   name = "example"
 /// }
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example"
 /// }
-/// resource "aws_s3_bucketpolicy" "example" {
+/// resource "aws_s3_bucket_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.bucket
-///   policy = data.aws_iam_getpolicydocument.example.json
+///   policy = data.aws_iam_policy_document.example.json
 /// }
 /// ```
 /// ```java
@@ -500,7 +509,7 @@ class ResourceDataSync extends pulumi.CustomResource {
           'aws:ssm/resourceDataSync:ResourceDataSync',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

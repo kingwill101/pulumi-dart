@@ -178,7 +178,7 @@ import 'user_group_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -187,29 +187,39 @@ import 'user_group_association_state.dart';
 /// }
 ///
 /// resource "aws_elasticache_user" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user_id       = "defaultUserID"
 ///   user_name     = "default"
 ///   access_string = "on ~app::* -@all +@read +@hash +@bitmap +@geo -setbit -bitfield -hset -hsetnx -hmset -hincrby -hincrbyfloat -hdel -bitop -geoadd -georadius -georadiusbymember"
 ///   engine        = "REDIS"
 ///   passwords     = ["password123456789"]
 /// }
-/// resource "aws_elasticache_usergroup" "example" {
+/// resource "aws_elasticache_user_group" "example" {
 ///   lifecycle {
-///     ignore_changes = [userIds]
+///     ignore_changes        = [userIds]
+///     create_before_destroy = true
 ///   }
 ///   engine        = "REDIS"
 ///   user_group_id = "userGroupId"
 ///   user_ids      = [aws_elasticache_user.default.user_id]
 /// }
 /// resource "aws_elasticache_user" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user_id       = "exampleUserID"
 ///   user_name     = "exampleuser"
 ///   access_string = "on ~app::* -@all +@read +@hash +@bitmap +@geo -setbit -bitfield -hset -hsetnx -hmset -hincrby -hincrbyfloat -hdel -bitop -geoadd -georadius -georadiusbymember"
 ///   engine        = "REDIS"
 ///   passwords     = ["password123456789"]
 /// }
-/// resource "aws_elasticache_usergroupassociation" "example" {
-///   user_group_id = aws_elasticache_usergroup.example.user_group_id
+/// resource "aws_elasticache_user_group_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   user_group_id = aws_elasticache_user_group.example.user_group_id
 ///   user_id       = aws_elasticache_user.example.user_id
 /// }
 /// ```
@@ -338,7 +348,7 @@ class UserGroupAssociation extends pulumi.CustomResource {
           'aws:elasticache/userGroupAssociation:UserGroupAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     userGroupId = registerOutput<String>('userGroupId');

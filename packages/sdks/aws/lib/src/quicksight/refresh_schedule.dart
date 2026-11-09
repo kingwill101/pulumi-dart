@@ -91,7 +91,7 @@ import 'refresh_schedule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -99,9 +99,12 @@ import 'refresh_schedule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_quicksight_refreshschedule" "example" {
-///   schedule = {
-///     schedule_frequency = {
+/// resource "aws_quicksight_refresh_schedule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   schedule {
+///     schedule_frequency {
 ///       interval = "HOURLY"
 ///     }
 ///     refresh_type = "FULL_REFRESH"
@@ -266,7 +269,7 @@ import 'refresh_schedule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -274,10 +277,13 @@ import 'refresh_schedule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_quicksight_refreshschedule" "example" {
-///   schedule = {
-///     schedule_frequency = {
-///       refresh_on_day = {
+/// resource "aws_quicksight_refresh_schedule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   schedule {
+///     schedule_frequency {
+///       refresh_on_day {
 ///         day_of_week = "MONDAY"
 ///       }
 ///       interval        = "WEEKLY"
@@ -456,7 +462,7 @@ import 'refresh_schedule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -464,10 +470,13 @@ import 'refresh_schedule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_quicksight_refreshschedule" "example" {
-///   schedule = {
-///     schedule_frequency = {
-///       refresh_on_day = {
+/// resource "aws_quicksight_refresh_schedule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   schedule {
+///     schedule_frequency {
+///       refresh_on_day {
 ///         day_of_month = "1"
 ///       }
 ///       interval        = "MONTHLY"
@@ -576,7 +585,7 @@ class RefreshSchedule extends pulumi.CustomResource {
           'aws:quicksight/refreshSchedule:RefreshSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');

@@ -68,7 +68,7 @@ import 'spot_datafeed_subscription_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewSpotDatafeedSubscription(ctx, "default", &ec2.SpotDatafeedSubscriptionArgs{
-/// 			Bucket: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: _default.ID(),
 /// 			Prefix: pulumi.String("my_subdirectory"),
 /// 		})
 /// 		if err != nil {
@@ -79,7 +79,7 @@ import 'spot_datafeed_subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -88,9 +88,15 @@ import 'spot_datafeed_subscription_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "tf-spot-datafeed"
 /// }
-/// resource "aws_ec2_spotdatafeedsubscription" "default" {
+/// resource "aws_ec2_spot_datafeed_subscription" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.default.id
 ///   prefix = "my_subdirectory"
 /// }
@@ -172,7 +178,7 @@ class SpotDatafeedSubscription extends pulumi.CustomResource {
           'aws:ec2/spotDatafeedSubscription:SpotDatafeedSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     prefix = registerOutput<String?>('prefix');

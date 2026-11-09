@@ -21,7 +21,7 @@ class DomainIndexField {
   final pulumi.Input<bool?>? sort;
   /// A comma-separated list of source fields to map to the field. Specifying a source field copies data from one field to another, enabling you to use the same source data in different ways by configuring different options for the fields.
   final pulumi.Input<String?>? sourceFields;
-  /// The field type. Valid values: `date`, `date-array`, `double`, `double-array`, `int`, `int-array`, `literal`, `literal-array`, `text`, `text-array`.
+  /// Field type. Valid values: `date`, `date-array`, `double`, `double-array`, `int`, `int-array`, `latlon`, `literal`, `literal-array`, `text`, `text-array`.
   final pulumi.Input<String> type;
 
   /// Creates a new [DomainIndexField].
@@ -34,7 +34,7 @@ class DomainIndexField {
   /// [search] You can set whether this index should be searchable or not.
   /// [sort] You can enable the property to be sortable.
   /// [sourceFields] A comma-separated list of source fields to map to the field. Specifying a source field copies data from one field to another, enabling you to use the same source data in different ways by configuring different options for the fields.
-  /// [type] The field type. Valid values: `date`, `date-array`, `double`, `double-array`, `int`, `int-array`, `literal`, `literal-array`, `text`, `text-array`.
+  /// [type] Field type. Valid values: `date`, `date-array`, `double`, `double-array`, `int`, `int-array`, `latlon`, `literal`, `literal-array`, `text`, `text-array`.
   const DomainIndexField({
     this.analysisScheme,
     this.defaultValue,

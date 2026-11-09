@@ -105,7 +105,7 @@ import 'local_gateway_route_table_virtual_interface_group_association_state.dart
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -113,16 +113,19 @@ import 'local_gateway_route_table_virtual_interface_group_association_state.dart
 ///   }
 /// }
 ///
-/// data "aws_ec2_getlocalgatewayroutetable" "example" {
+/// data "aws_ec2_local_gateway_route_table" "example" {
 ///   outpost_arn = "arn:aws:outposts:us-west-2:123456789012:outpost/op-1234567890abcdef"
 /// }
-/// data "aws_ec2_getlocalgatewayvirtualinterfacegroup" "exampleGetLocalGatewayVirtualInterfaceGroup" {
-///   local_gateway_id = data.aws_ec2_getlocalgatewayroutetable.example.local_gateway_id
+/// data "aws_ec2_local_gateway_virtual_interface_group" "exampleGetLocalGatewayVirtualInterfaceGroup" {
+///   local_gateway_id = data.aws_ec2_local_gateway_route_table.example.local_gateway_id
 /// }
 ///
-/// resource "aws_ec2_localgatewayroutetablevirtualinterfacegroupassociation" "example" {
-///   local_gateway_route_table_id             = data.aws_ec2_getlocalgatewayroutetable.example.id
-///   local_gateway_virtual_interface_group_id = data.aws_ec2_getlocalgatewayvirtualinterfacegroup.exampleGetLocalGatewayVirtualInterfaceGroup.id
+/// resource "aws_ec2_local_gateway_route_table_virtual_interface_group_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   local_gateway_route_table_id             = data.aws_ec2_local_gateway_route_table.example.id
+///   local_gateway_virtual_interface_group_id = data.aws_ec2_local_gateway_virtual_interface_group.exampleGetLocalGatewayVirtualInterfaceGroup.id
 ///   tags = {
 ///     "Name" = "example"
 ///   }
@@ -234,7 +237,7 @@ class LocalGatewayRouteTableVirtualInterfaceGroupAssociation extends pulumi.Cust
           'aws:ec2/localGatewayRouteTableVirtualInterfaceGroupAssociation:LocalGatewayRouteTableVirtualInterfaceGroupAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     localGatewayId = registerOutput<String>('localGatewayId');
     localGatewayRouteTableArn = registerOutput<String>('localGatewayRouteTableArn');

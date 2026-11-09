@@ -92,7 +92,7 @@ import 'teams_channel_configuration_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -100,7 +100,10 @@ import 'teams_channel_configuration_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_chatbot_teamschannelconfiguration" "test" {
+/// resource "aws_chatbot_teams_channel_configuration" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   channel_id         = "C07EZ1ABC23"
 ///   configuration_name = "mitt-lags-kanal"
 ///   iam_role_arn       = testAwsIamRole.arn
@@ -135,7 +138,7 @@ import 'teams_channel_configuration_timeouts.dart';
 ///         var test = new TeamsChannelConfiguration("test", TeamsChannelConfigurationArgs.builder()
 ///             .channelId("C07EZ1ABC23")
 ///             .configurationName("mitt-lags-kanal")
-///             .iamRoleArn(testAwsIamRole.arn())
+///             .iamRoleArn(testAwsIamRole.get("arn"))
 ///             .teamId("74361522-da01-538d-aa2e-ac7918c6bb92")
 ///             .tenantId("1234")
 ///             .tags(Map.of("Name", "mitt-lags-kanal"))
@@ -213,7 +216,7 @@ class TeamsChannelConfiguration extends pulumi.CustomResource {
           'aws:chatbot/teamsChannelConfiguration:TeamsChannelConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     channelId = registerOutput<String>('channelId');
     channelName = registerOutput<String>('channelName');

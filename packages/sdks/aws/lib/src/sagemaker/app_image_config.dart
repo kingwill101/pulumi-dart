@@ -90,7 +90,7 @@ import 'app_image_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -98,11 +98,14 @@ import 'app_image_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_appimageconfig" "test" {
-///   kernel_gateway_image_config = {
-///     kernel_specs = [{
-///       "name" = "example"
-///     }]
+/// resource "aws_sagemaker_app_image_config" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   kernel_gateway_image_config {
+///     kernel_spec {
+///       name = "example"
+///     }
 ///   }
 ///   app_image_config_name = "example"
 /// }
@@ -184,7 +187,7 @@ import 'app_image_config_state.dart';
 /// {
 ///     var test = new Aws.Sagemaker.AppImageConfig("test", new()
 ///     {
-///         CodeEditorAppImageConfig = null,
+///         CodeEditorAppImageConfig = new() { },
 ///         AppImageConfigName = "example",
 ///     });
 ///
@@ -212,7 +215,7 @@ import 'app_image_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -220,9 +223,13 @@ import 'app_image_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_appimageconfig" "test" {
-///   code_editor_app_image_config = {}
-///   app_image_config_name        = "example"
+/// resource "aws_sagemaker_app_image_config" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   code_editor_app_image_config {
+///   }
+///   app_image_config_name = "example"
 /// }
 /// ```
 /// ```java
@@ -351,7 +358,7 @@ import 'app_image_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -359,12 +366,16 @@ import 'app_image_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_appimageconfig" "test" {
-///   kernel_gateway_image_config = {
-///     file_system_config = {}
-///     kernel_specs = [{
-///       "name" = "example"
-///     }]
+/// resource "aws_sagemaker_app_image_config" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   kernel_gateway_image_config {
+///     file_system_config {
+///     }
+///     kernel_spec {
+///       name = "example"
+///     }
 ///   }
 ///   app_image_config_name = "example"
 /// }
@@ -459,7 +470,7 @@ class AppImageConfig extends pulumi.CustomResource {
           'aws:sagemaker/appImageConfig:AppImageConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     appImageConfigName = registerOutput<String>('appImageConfigName');
     arn = registerOutput<String>('arn');

@@ -107,7 +107,7 @@ import 'keyvaluestore_keys_exclusive_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -115,16 +115,22 @@ import 'keyvaluestore_keys_exclusive_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_keyvaluestore" "example" {
+/// resource "aws_cloudfront_key_value_store" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "ExampleKeyValueStore"
 ///   comment = "This is an example key value store"
 /// }
-/// resource "aws_cloudfront_keyvaluestorekeysexclusive" "example" {
+/// resource "aws_cloudfront_keyvaluestore_keys_exclusive" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_key_value_pairs {
 ///     key   = "Test Key"
 ///     value = "Test Value"
 ///   }
-///   key_value_store_arn = aws_cloudfront_keyvaluestore.example.arn
+///   key_value_store_arn = aws_cloudfront_key_value_store.example.arn
 /// }
 /// ```
 /// ```java
@@ -240,7 +246,7 @@ import 'keyvaluestore_keys_exclusive_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -248,7 +254,10 @@ import 'keyvaluestore_keys_exclusive_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_keyvaluestorekeysexclusive" "example" {
+/// resource "aws_cloudfront_keyvaluestore_keys_exclusive" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key_value_store_arn = exampleAwsCloudfrontKeyValueStore.arn
 /// }
 /// ```
@@ -274,7 +283,7 @@ import 'keyvaluestore_keys_exclusive_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new KeyvaluestoreKeysExclusive("example", KeyvaluestoreKeysExclusiveArgs.builder()
-///             .keyValueStoreArn(exampleAwsCloudfrontKeyValueStore.arn())
+///             .keyValueStoreArn(exampleAwsCloudfrontKeyValueStore.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -321,7 +330,7 @@ class KeyvaluestoreKeysExclusive extends pulumi.CustomResource {
           'aws:cloudfront/keyvaluestoreKeysExclusive:KeyvaluestoreKeysExclusive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     keyValueStoreArn = registerOutput<String>('keyValueStoreArn');
     maxBatchSize = registerOutput<int>('maxBatchSize');

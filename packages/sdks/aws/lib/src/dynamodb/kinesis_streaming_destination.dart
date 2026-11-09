@@ -138,7 +138,7 @@ import 'kinesis_streaming_destination_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -147,7 +147,10 @@ import 'kinesis_streaming_destination_state.dart';
 /// }
 ///
 /// resource "aws_dynamodb_table" "example" {
-///   attributes {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   attribute {
 ///     name = "id"
 ///     type = "S"
 ///   }
@@ -155,12 +158,18 @@ import 'kinesis_streaming_destination_state.dart';
 ///   hash_key = "id"
 /// }
 /// resource "aws_kinesis_stream" "example" {
-///   stream_mode_details = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   stream_mode_details {
 ///     stream_mode = "ON_DEMAND"
 ///   }
 ///   name = "order_item_changes"
 /// }
-/// resource "aws_dynamodb_kinesisstreamingdestination" "example" {
+/// resource "aws_dynamodb_kinesis_streaming_destination" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   stream_arn                               = aws_kinesis_stream.example.arn
 ///   table_name                               = aws_dynamodb_table.example.name
 ///   approximate_creation_date_time_precision = "MICROSECOND"
@@ -274,7 +283,7 @@ class KinesisStreamingDestination extends pulumi.CustomResource {
           'aws:dynamodb/kinesisStreamingDestination:KinesisStreamingDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     approximateCreationDateTimePrecision = registerOutput<String>('approximateCreationDateTimePrecision');
     region = registerOutput<String>('region');

@@ -56,7 +56,7 @@ import 'instance_connect_endpoint_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -64,7 +64,10 @@ import 'instance_connect_endpoint_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2transitgateway_instanceconnectendpoint" "example" {
+/// resource "aws_ec2transitgateway_instance_connect_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_id = exampleAwsSubnet.id
 /// }
 /// ```
@@ -90,7 +93,7 @@ import 'instance_connect_endpoint_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new InstanceConnectEndpoint("example", InstanceConnectEndpointArgs.builder()
-///             .subnetId(exampleAwsSubnet.id())
+///             .subnetId(exampleAwsSubnet.get("id"))
 ///             .build());
 ///
 ///     }
@@ -155,7 +158,7 @@ class InstanceConnectEndpoint extends pulumi.CustomResource {
           'aws:ec2transitgateway/instanceConnectEndpoint:InstanceConnectEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String>('availabilityZone');

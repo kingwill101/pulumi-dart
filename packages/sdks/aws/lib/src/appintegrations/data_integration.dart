@@ -105,7 +105,7 @@ import 'data_integration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -113,8 +113,11 @@ import 'data_integration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appintegrations_dataintegration" "example" {
-///   schedule_config = {
+/// resource "aws_appintegrations_data_integration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   schedule_config {
 ///     first_execution_from = "1439788442681"
 ///     object               = "Account"
 ///     schedule_expression  = "rate(1 hour)"
@@ -158,7 +161,7 @@ import 'data_integration_state.dart';
 ///                 .build())
 ///             .name("example")
 ///             .description("example")
-///             .kmsKey(test.arn())
+///             .kmsKey(test.get("arn"))
 ///             .sourceUri("Salesforce://AppFlow/example")
 ///             .tags(Map.of("Key1", "Value1"))
 ///             .build());
@@ -223,7 +226,7 @@ class DataIntegration extends pulumi.CustomResource {
           'aws:appintegrations/dataIntegration:DataIntegration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

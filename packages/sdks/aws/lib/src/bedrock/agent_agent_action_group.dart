@@ -117,7 +117,7 @@ import 'agent_agent_action_group_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -128,7 +128,10 @@ import 'agent_agent_action_group_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentagentactiongroup" "example" {
+/// resource "aws_bedrock_agent_agent_action_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   action_group_executor = {
 ///     lambda = "arn:aws:lambda:us-west-2:123456789012:function:example-function"
 ///   }
@@ -310,7 +313,7 @@ import 'agent_agent_action_group_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -318,7 +321,10 @@ import 'agent_agent_action_group_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentagentactiongroup" "example" {
+/// resource "aws_bedrock_agent_agent_action_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   action_group_executor = {
 ///     lambda = "arn:aws:lambda:us-west-2:123456789012:function:example-function"
 ///   }
@@ -573,7 +579,7 @@ import 'agent_agent_action_group_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -581,26 +587,29 @@ import 'agent_agent_action_group_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentagentactiongroup" "example" {
+/// resource "aws_bedrock_agent_agent_action_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   action_group_executor = {
 ///     lambda = "arn:aws:lambda:us-west-2:123456789012:function:example-function"
 ///   }
 ///   function_schema = {
 ///     member_functions = {
 ///       functions = [{
-///         "parameters" = [{
-///           "mapBlockKey" = "param1"
-///           "type"        = "string"
-///           "description" = "The first parameter"
-///           "required"    = true
+///         parameters = [{
+///           map_block_key = "param1"
+///           type          = "string"
+///           description   = "The first parameter"
+///           required      = true
 ///           }, {
-///           "mapBlockKey" = "param2"
-///           "type"        = "integer"
-///           "description" = "The second parameter"
-///           "required"    = false
+///           map_block_key = "param2"
+///           type          = "integer"
+///           description   = "The second parameter"
+///           required      = false
 ///         }]
-///         "name"        = "example-function"
-///         "description" = "Example function"
+///         name        = "example-function"
+///         description = "Example function"
 ///       }]
 ///     }
 ///   }
@@ -805,7 +814,7 @@ import 'agent_agent_action_group_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -816,7 +825,10 @@ import 'agent_agent_action_group_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentagentactiongroup" "example" {
+/// resource "aws_bedrock_agent_agent_action_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   action_group_executor = {
 ///     custom_control = "RETURN_CONTROL"
 ///   }
@@ -943,7 +955,7 @@ class AgentAgentActionGroup extends pulumi.CustomResource {
           'aws:bedrock/agentAgentActionGroup:AgentAgentActionGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     actionGroupExecutor = registerOutput<AgentAgentActionGroupActionGroupExecutor?>('actionGroupExecutor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentActionGroupActionGroupExecutor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     actionGroupId = registerOutput<String>('actionGroupId');

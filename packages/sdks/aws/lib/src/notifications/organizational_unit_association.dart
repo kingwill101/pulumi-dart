@@ -151,7 +151,7 @@ import 'organizational_unit_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = notifications.NewOrganizationalUnitAssociation(ctx, "example", &notifications.OrganizationalUnitAssociationArgs{
-/// 			OrganizationalUnitId:         exampleOrganizationalUnit.ID().ToIDOutput().ToStringOutput(),
+/// 			OrganizationalUnitId:         exampleOrganizationalUnit.ID(),
 /// 			NotificationConfigurationArn: exampleNotificationConfiguration.Arn,
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			wait,
@@ -164,7 +164,7 @@ import 'organizational_unit_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -172,26 +172,38 @@ import 'organizational_unit_association_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_organizations_getorganization" "example" {
+/// data "aws_organizations_organization" "example" {
 /// }
 ///
-/// resource "aws_notifications_notificationconfiguration" "example" {
+/// resource "aws_notifications_notification_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example-notification-config"
 ///   description = "Example notification configuration"
 /// }
-/// resource "aws_organizations_organizationalunit" "example" {
+/// resource "aws_organizations_organizational_unit" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "example-ou"
-///   parent_id = data.aws_organizations_getorganization.example.roots[0].id
+///   parent_id = data.aws_organizations_organization.example.roots[0].id
 /// }
 /// # Allow time for organizational unit creation to propagate
 /// resource "time_sleep" "wait" {
-///   depends_on      = [aws_organizations_organizationalunit.example, aws_notifications_notificationconfiguration.example]
+///   depends_on = [aws_organizations_organizational_unit.example, aws_notifications_notification_configuration.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "5s"
 /// }
-/// resource "aws_notifications_organizationalunitassociation" "example" {
-///   depends_on                     = [time_sleep.wait]
-///   organizational_unit_id         = aws_organizations_organizationalunit.example.id
-///   notification_configuration_arn = aws_notifications_notificationconfiguration.example.arn
+/// resource "aws_notifications_organizational_unit_association" "example" {
+///   depends_on = [time_sleep.wait]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   organizational_unit_id         = aws_organizations_organizational_unit.example.id
+///   notification_configuration_arn = aws_notifications_notification_configuration.example.arn
 /// }
 /// ```
 /// ```java
@@ -383,7 +395,7 @@ import 'organizational_unit_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -391,16 +403,22 @@ import 'organizational_unit_association_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_organizations_getorganization" "example" {
+/// data "aws_organizations_organization" "example" {
 /// }
 ///
-/// resource "aws_notifications_notificationconfiguration" "example" {
+/// resource "aws_notifications_notification_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example-notification-config"
 ///   description = "Example notification configuration"
 /// }
-/// resource "aws_notifications_organizationalunitassociation" "example" {
-///   organizational_unit_id         = data.aws_organizations_getorganization.example.roots[0].id
-///   notification_configuration_arn = aws_notifications_notificationconfiguration.example.arn
+/// resource "aws_notifications_organizational_unit_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   organizational_unit_id         = data.aws_organizations_organization.example.roots[0].id
+///   notification_configuration_arn = aws_notifications_notification_configuration.example.arn
 /// }
 /// ```
 /// ```java
@@ -491,7 +509,7 @@ class OrganizationalUnitAssociation extends pulumi.CustomResource {
           'aws:notifications/organizationalUnitAssociation:OrganizationalUnitAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     notificationConfigurationArn = registerOutput<String>('notificationConfigurationArn');
     organizationalUnitId = registerOutput<String>('organizationalUnitId');

@@ -90,7 +90,7 @@ import 'ontap_file_system_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -98,7 +98,10 @@ import 'ontap_file_system_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fsx_ontapfilesystem" "test" {
+/// resource "aws_fsx_ontap_file_system" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   storage_capacity    = 1024
 ///   subnet_ids          = [test1.id, test2.id]
 ///   deployment_type     = "MULTI_AZ_1"
@@ -130,11 +133,11 @@ import 'ontap_file_system_state.dart';
 ///         var test = new OntapFileSystem("test", OntapFileSystemArgs.builder()
 ///             .storageCapacity(1024)
 ///             .subnetIds(
-///                 test1.id(),
-///                 test2.id())
+///                 test1.get("id"),
+///                 test2.get("id"))
 ///             .deploymentType("MULTI_AZ_1")
 ///             .throughputCapacity(512)
-///             .preferredSubnetId(test1.id())
+///             .preferredSubnetId(test1.get("id"))
 ///             .build());
 ///
 ///     }
@@ -232,7 +235,7 @@ import 'ontap_file_system_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -240,7 +243,10 @@ import 'ontap_file_system_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fsx_ontapfilesystem" "testhapairs" {
+/// resource "aws_fsx_ontap_file_system" "testhapairs" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   storage_capacity                = 2048
 ///   subnet_ids                      = [test1.id]
 ///   deployment_type                 = "SINGLE_AZ_1"
@@ -272,11 +278,11 @@ import 'ontap_file_system_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var testhapairs = new OntapFileSystem("testhapairs", OntapFileSystemArgs.builder()
 ///             .storageCapacity(2048)
-///             .subnetIds(test1.id())
+///             .subnetIds(test1.get("id"))
 ///             .deploymentType("SINGLE_AZ_1")
 ///             .haPairs(2)
 ///             .throughputCapacityPerHaPair(128)
-///             .preferredSubnetId(test1.id())
+///             .preferredSubnetId(test1.get("id"))
 ///             .build());
 ///
 ///     }
@@ -374,7 +380,7 @@ import 'ontap_file_system_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -382,7 +388,10 @@ import 'ontap_file_system_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fsx_ontapfilesystem" "testsingleazgen2" {
+/// resource "aws_fsx_ontap_file_system" "testsingleazgen2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   storage_capacity                = 4096
 ///   subnet_ids                      = [test1.id]
 ///   deployment_type                 = "SINGLE_AZ_2"
@@ -414,11 +423,11 @@ import 'ontap_file_system_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var testsingleazgen2 = new OntapFileSystem("testsingleazgen2", OntapFileSystemArgs.builder()
 ///             .storageCapacity(4096)
-///             .subnetIds(test1.id())
+///             .subnetIds(test1.get("id"))
 ///             .deploymentType("SINGLE_AZ_2")
 ///             .haPairs(4)
 ///             .throughputCapacityPerHaPair(384)
-///             .preferredSubnetId(test1.id())
+///             .preferredSubnetId(test1.get("id"))
 ///             .build());
 ///
 ///     }
@@ -524,7 +533,7 @@ import 'ontap_file_system_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -532,7 +541,10 @@ import 'ontap_file_system_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fsx_ontapfilesystem" "testmultiazgen2" {
+/// resource "aws_fsx_ontap_file_system" "testmultiazgen2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   storage_capacity                = 1024
 ///   subnet_ids                      = [test1.id, test2.id]
 ///   deployment_type                 = "MULTI_AZ_2"
@@ -565,12 +577,12 @@ import 'ontap_file_system_state.dart';
 ///         var testmultiazgen2 = new OntapFileSystem("testmultiazgen2", OntapFileSystemArgs.builder()
 ///             .storageCapacity(1024)
 ///             .subnetIds(
-///                 test1.id(),
-///                 test2.id())
+///                 test1.get("id"),
+///                 test2.get("id"))
 ///             .deploymentType("MULTI_AZ_2")
 ///             .haPairs(1)
 ///             .throughputCapacityPerHaPair(384)
-///             .preferredSubnetId(test1.id())
+///             .preferredSubnetId(test1.get("id"))
 ///             .build());
 ///
 ///     }
@@ -667,7 +679,7 @@ import 'ontap_file_system_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -675,9 +687,10 @@ import 'ontap_file_system_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fsx_ontapfilesystem" "example" {
+/// resource "aws_fsx_ontap_file_system" "example" {
 ///   lifecycle {
-///     ignore_changes = [securityGroupIds]
+///     ignore_changes        = [securityGroupIds]
+///     create_before_destroy = true
 ///   }
 ///   security_group_ids = [exampleAwsSecurityGroup.id]
 /// }
@@ -705,7 +718,7 @@ import 'ontap_file_system_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new OntapFileSystem("example", OntapFileSystemArgs.builder()
-///             .securityGroupIds(exampleAwsSecurityGroup.id())
+///             .securityGroupIds(exampleAwsSecurityGroup.get("id"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .ignoreChanges("securityGroupIds")
 ///                 .build());
@@ -792,7 +805,7 @@ class OntapFileSystem extends pulumi.CustomResource {
           'aws:fsx/ontapFileSystem:OntapFileSystem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['fsxAdminPassword'],
         ) {
     arn = registerOutput<String>('arn');

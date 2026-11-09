@@ -123,7 +123,7 @@ import 'analytics_configuration_storage_class_analysis.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Name:   pulumi.String("EntireBucket"),
 /// 		})
 /// 		if err != nil {
@@ -134,7 +134,7 @@ import 'analytics_configuration_storage_class_analysis.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -142,7 +142,10 @@ import 'analytics_configuration_storage_class_analysis.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_analyticsconfiguration" "example-entire-bucket" {
+/// resource "aws_s3_analytics_configuration" "example-entire-bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   storage_class_analysis = {
 ///     data_export = {
 ///       destination = {
@@ -156,9 +159,15 @@ import 'analytics_configuration_storage_class_analysis.dart';
 ///   name   = "EntireBucket"
 /// }
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example"
 /// }
 /// resource "aws_s3_bucket" "analytics" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "analytics-destination"
 /// }
 /// ```
@@ -327,7 +336,7 @@ import 'analytics_configuration_storage_class_analysis.dart';
 /// 					"class":    pulumi.String("blue"),
 /// 				},
 /// 			},
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Name:   pulumi.String("ImportantBlueDocuments"),
 /// 		})
 /// 		if err != nil {
@@ -338,7 +347,7 @@ import 'analytics_configuration_storage_class_analysis.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -346,7 +355,10 @@ import 'analytics_configuration_storage_class_analysis.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_analyticsconfiguration" "example-filtered" {
+/// resource "aws_s3_analytics_configuration" "example-filtered" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   filter = {
 ///     prefix = "documents/"
 ///     tags = {
@@ -358,6 +370,9 @@ import 'analytics_configuration_storage_class_analysis.dart';
 ///   name   = "ImportantBlueDocuments"
 /// }
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example"
 /// }
 /// ```
@@ -454,7 +469,7 @@ class AnalyticsConfiguration extends pulumi.CustomResource {
           'aws:s3/analyticsConfiguration:AnalyticsConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     filter = registerOutput<AnalyticsConfigurationFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsConfigurationFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -68,7 +68,7 @@ import 'log_delivery_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,7 +76,10 @@ import 'log_delivery_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_logdeliverysource" "example" {
+/// resource "aws_cloudwatch_log_delivery_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example"
 ///   log_type     = "APPLICATION_LOGS"
 ///   resource_arn = exampleAwsBedrockagentKnowledgeBase.arn
@@ -106,7 +109,7 @@ import 'log_delivery_source_state.dart';
 ///         var example = new LogDeliverySource("example", LogDeliverySourceArgs.builder()
 ///             .name("example")
 ///             .logType("APPLICATION_LOGS")
-///             .resourceArn(exampleAwsBedrockagentKnowledgeBase.arn())
+///             .resourceArn(exampleAwsBedrockagentKnowledgeBase.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -172,7 +175,7 @@ class LogDeliverySource extends pulumi.CustomResource {
           'aws:cloudwatch/logDeliverySource:LogDeliverySource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     logType = registerOutput<String>('logType');

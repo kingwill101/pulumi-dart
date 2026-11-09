@@ -158,7 +158,7 @@ import 'pool_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -166,12 +166,15 @@ import 'pool_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_workspaces_getbundle" "example" {
+/// data "aws_workspaces_bundle" "example" {
 ///   owner = "AMAZON"
 ///   name  = "Standard with Windows 10 (Server 2022 based) (WSP)"
 /// }
 ///
 /// resource "aws_workspaces_directory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_ids                      = [exampleC.id, exampleD.id]
 ///   workspace_type                  = "POOLS"
 ///   workspace_directory_name        = "example-directory"
@@ -179,10 +182,13 @@ import 'pool_timeouts.dart';
 ///   user_identity_type              = "CUSTOMER_MANAGED"
 /// }
 /// resource "aws_workspaces_pool" "example" {
-///   capacity = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   capacity {
 ///     desired_user_sessions = 10
 ///   }
-///   bundle_id    = data.aws_workspaces_getbundle.example.id
+///   bundle_id    = data.aws_workspaces_bundle.example.id
 ///   pool_name    = "example-pool"
 ///   description  = "Example WorkSpaces Pool"
 ///   directory_id = aws_workspaces_directory.example.directory_id
@@ -222,8 +228,8 @@ import 'pool_timeouts.dart';
 ///
 ///         var exampleDirectory = new Directory("exampleDirectory", DirectoryArgs.builder()
 ///             .subnetIds(
-///                 exampleC.id(),
-///                 exampleD.id())
+///                 exampleC.get("id"),
+///                 exampleD.get("id"))
 ///             .workspaceType("POOLS")
 ///             .workspaceDirectoryName("example-directory")
 ///             .workspaceDirectoryDescription("Example WorkSpaces Directory for Pools")
@@ -383,7 +389,7 @@ import 'pool_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -392,7 +398,10 @@ import 'pool_timeouts.dart';
 /// }
 ///
 /// resource "aws_workspaces_pool" "example" {
-///   capacity = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   capacity {
 ///     desired_user_sessions = 10
 ///   }
 ///   bundle_id    = exampleAwsWorkspacesBundle.id
@@ -400,10 +409,10 @@ import 'pool_timeouts.dart';
 ///   description  = "Example WorkSpaces Pool with Application Settings"
 ///   directory_id = exampleAwsWorkspacesDirectory.directoryId
 ///   running_mode = "AUTO_STOP"
-///   application_settings {
+///   application_settings = [{
 ///     status         = "ENABLED"
 ///     settings_group = "my-settings-group"
-///   }
+///   }]
 /// }
 /// ```
 /// ```java
@@ -433,10 +442,10 @@ import 'pool_timeouts.dart';
 ///             .capacity(PoolCapacityArgs.builder()
 ///                 .desiredUserSessions(10)
 ///                 .build())
-///             .bundleId(exampleAwsWorkspacesBundle.id())
+///             .bundleId(exampleAwsWorkspacesBundle.get("id"))
 ///             .poolName("example-pool")
 ///             .description("Example WorkSpaces Pool with Application Settings")
-///             .directoryId(exampleAwsWorkspacesDirectory.directoryId())
+///             .directoryId(exampleAwsWorkspacesDirectory.get("directoryId"))
 ///             .runningMode("AUTO_STOP")
 ///             .applicationSettings(PoolApplicationSettingArgs.builder()
 ///                 .status("ENABLED")
@@ -574,7 +583,7 @@ import 'pool_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -583,7 +592,10 @@ import 'pool_timeouts.dart';
 /// }
 ///
 /// resource "aws_workspaces_pool" "example" {
-///   capacity = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   capacity {
 ///     desired_user_sessions = 10
 ///   }
 ///   bundle_id    = exampleAwsWorkspacesBundle.id
@@ -591,11 +603,11 @@ import 'pool_timeouts.dart';
 ///   description  = "Example WorkSpaces Pool with Timeout Settings"
 ///   directory_id = exampleAwsWorkspacesDirectory.directoryId
 ///   running_mode = "AUTO_STOP"
-///   timeout_settings {
+///   timeout_settings = [{
 ///     disconnect_timeout_in_seconds      = 900
 ///     idle_disconnect_timeout_in_seconds = 900
 ///     max_user_duration_in_seconds       = 14400
-///   }
+///   }]
 /// }
 /// ```
 /// ```java
@@ -625,10 +637,10 @@ import 'pool_timeouts.dart';
 ///             .capacity(PoolCapacityArgs.builder()
 ///                 .desiredUserSessions(10)
 ///                 .build())
-///             .bundleId(exampleAwsWorkspacesBundle.id())
+///             .bundleId(exampleAwsWorkspacesBundle.get("id"))
 ///             .poolName("example-pool")
 ///             .description("Example WorkSpaces Pool with Timeout Settings")
-///             .directoryId(exampleAwsWorkspacesDirectory.directoryId())
+///             .directoryId(exampleAwsWorkspacesDirectory.get("directoryId"))
 ///             .runningMode("AUTO_STOP")
 ///             .timeoutSettings(PoolTimeoutSettingArgs.builder()
 ///                 .disconnectTimeoutInSeconds(900)
@@ -728,7 +740,7 @@ class Pool extends pulumi.CustomResource {
           'aws:workspaces/pool:Pool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     applicationSettings = registerOutput<List<PoolApplicationSetting>>('applicationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolApplicationSetting>(guardedValue, (value) => PoolApplicationSetting.fromMap((value as Map).cast<String, dynamic>())); });
     bundleId = registerOutput<String>('bundleId');

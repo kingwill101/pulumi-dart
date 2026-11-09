@@ -95,7 +95,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -104,10 +104,16 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_workmail_organization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization_alias = "example-org"
 ///   delete_directory   = true
 /// }
 /// resource "aws_workmail_user" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization_id = aws_workmail_organization.example.organization_id
 ///   name            = "example-user"
 ///   display_name    = "Example User"
@@ -262,7 +268,7 @@ class User extends pulumi.CustomResource {
           'aws:workmail/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['password'],
         ) {
     city = registerOutput<String?>('city');

@@ -161,7 +161,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -169,8 +169,8 @@ import 'user_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "lbRo" {
-///   statements {
+/// data "aws_iam_policy_document" "lbRo" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["ec2:Describe*"]
 ///     resources = ["*"]
@@ -178,19 +178,28 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_iam_user" "lb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "loadbalancer"
 ///   path = "/system/"
 ///   tags = {
 ///     "tag-key" = "tag-value"
 ///   }
 /// }
-/// resource "aws_iam_accesskey" "lb" {
+/// resource "aws_iam_access_key" "lb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user = aws_iam_user.lb.name
 /// }
-/// resource "aws_iam_userpolicy" "lb_ro" {
+/// resource "aws_iam_user_policy" "lb_ro" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "test"
 ///   user   = aws_iam_user.lb.name
-///   policy = data.aws_iam_getpolicydocument.lbRo.json
+///   policy = data.aws_iam_policy_document.lbRo.json
 /// }
 /// ```
 /// ```java
@@ -333,7 +342,7 @@ class User extends pulumi.CustomResource {
           'aws:iam/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     forceDestroy = registerOutput<bool?>('forceDestroy');

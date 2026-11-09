@@ -118,7 +118,7 @@ import 'graph_vector_search_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -128,7 +128,10 @@ import 'graph_vector_search_configuration.dart';
 ///
 /// # Create Neptune Graph
 /// resource "aws_neptunegraph_graph" "example" {
-///   vector_search_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   vector_search_configuration {
 ///     vector_search_dimension = 128
 ///   }
 ///   graph_name          = "example-graph-test-20250203"
@@ -255,7 +258,7 @@ class Graph extends pulumi.CustomResource {
           'aws:neptunegraph/graph:Graph',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deletionProtection = registerOutput<bool>('deletionProtection');

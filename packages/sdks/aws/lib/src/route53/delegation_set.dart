@@ -78,14 +78,14 @@ import 'delegation_set_state.dart';
 /// 		}
 /// 		_, err = route53.NewZone(ctx, "primary", &route53.ZoneArgs{
 /// 			Name:            pulumi.String("mydomain.com"),
-/// 			DelegationSetId: main.ID().ToIDOutput().ToStringOutput(),
+/// 			DelegationSetId: main.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = route53.NewZone(ctx, "secondary", &route53.ZoneArgs{
 /// 			Name:            pulumi.String("coolcompany.io"),
-/// 			DelegationSetId: main.ID().ToIDOutput().ToStringOutput(),
+/// 			DelegationSetId: main.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -95,7 +95,7 @@ import 'delegation_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -103,16 +103,25 @@ import 'delegation_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53_delegationset" "main" {
+/// resource "aws_route53_delegation_set" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   reference_name = "DynDNS"
 /// }
 /// resource "aws_route53_zone" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "mydomain.com"
-///   delegation_set_id = aws_route53_delegationset.main.id
+///   delegation_set_id = aws_route53_delegation_set.main.id
 /// }
 /// resource "aws_route53_zone" "secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "coolcompany.io"
-///   delegation_set_id = aws_route53_delegationset.main.id
+///   delegation_set_id = aws_route53_delegation_set.main.id
 /// }
 /// ```
 /// ```java
@@ -203,7 +212,7 @@ class DelegationSet extends pulumi.CustomResource {
           'aws:route53/delegationSet:DelegationSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     nameServers = registerOutput<List<String>>('nameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

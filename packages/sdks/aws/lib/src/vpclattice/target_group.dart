@@ -86,7 +86,7 @@ import 'target_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -94,8 +94,11 @@ import 'target_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpclattice_targetgroup" "example" {
-///   config = {
+/// resource "aws_vpclattice_target_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   config {
 ///     vpc_identifier = exampleAwsVpc.id
 ///     port           = 443
 ///     protocol       = "HTTPS"
@@ -128,7 +131,7 @@ import 'target_group_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new TargetGroup("example", TargetGroupArgs.builder()
 ///             .config(TargetGroupConfigArgs.builder()
-///                 .vpcIdentifier(exampleAwsVpc.id())
+///                 .vpcIdentifier(exampleAwsVpc.get("id"))
 ///                 .port(443)
 ///                 .protocol("HTTPS")
 ///                 .build())
@@ -298,7 +301,7 @@ import 'target_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -306,10 +309,13 @@ import 'target_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpclattice_targetgroup" "example" {
-///   config = {
-///     health_check = {
-///       matcher = {
+/// resource "aws_vpclattice_target_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   config {
+///     health_check {
+///       matcher {
 ///         value = "200-299"
 ///       }
 ///       enabled                       = true
@@ -372,7 +378,7 @@ import 'target_group_state.dart';
 ///                     .protocol("HTTP")
 ///                     .protocolVersion("HTTP1")
 ///                     .build())
-///                 .vpcIdentifier(exampleAwsVpc.id())
+///                 .vpcIdentifier(exampleAwsVpc.get("id"))
 ///                 .ipAddressType("IPV4")
 ///                 .port(443)
 ///                 .protocol("HTTPS")
@@ -498,7 +504,7 @@ import 'target_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -506,8 +512,11 @@ import 'target_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpclattice_targetgroup" "example" {
-///   config = {
+/// resource "aws_vpclattice_target_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   config {
 ///     vpc_identifier   = exampleAwsVpc.id
 ///     port             = 443
 ///     protocol         = "HTTPS"
@@ -541,7 +550,7 @@ import 'target_group_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new TargetGroup("example", TargetGroupArgs.builder()
 ///             .config(TargetGroupConfigArgs.builder()
-///                 .vpcIdentifier(exampleAwsVpc.id())
+///                 .vpcIdentifier(exampleAwsVpc.get("id"))
 ///                 .port(443)
 ///                 .protocol("HTTPS")
 ///                 .protocolVersion("HTTP1")
@@ -628,7 +637,7 @@ import 'target_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -636,7 +645,10 @@ import 'target_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpclattice_targetgroup" "example" {
+/// resource "aws_vpclattice_target_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 ///   type = "LAMBDA"
 /// }
@@ -719,7 +731,7 @@ class TargetGroup extends pulumi.CustomResource {
           'aws:vpclattice/targetGroup:TargetGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     config = registerOutput<TargetGroupConfig?>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetGroupConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

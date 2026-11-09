@@ -150,7 +150,7 @@ import 'bucket_lifecycle_configuration_s3_control_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -158,21 +158,24 @@ import 'bucket_lifecycle_configuration_s3_control_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3control_bucketlifecycleconfiguration" "example" {
-///   rules {
-///     expiration = {
+/// resource "aws_s3control_bucket_lifecycle_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     expiration {
 ///       days = 365
 ///     }
-///     filter = {
+///     filter {
 ///       prefix = "logs/"
 ///     }
 ///     id = "logs"
 ///   }
-///   rules {
-///     expiration = {
+///   rule {
+///     expiration {
 ///       days = 7
 ///     }
-///     filter = {
+///     filter {
 ///       prefix = "temp/"
 ///     }
 ///     id = "temp"
@@ -224,7 +227,7 @@ import 'bucket_lifecycle_configuration_s3_control_state.dart';
 ///                         .build())
 ///                     .id("temp")
 ///                     .build())
-///             .bucket(exampleAwsS3controlBucket.arn())
+///             .bucket(exampleAwsS3controlBucket.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -277,7 +280,7 @@ class BucketLifecycleConfigurationS3Control extends pulumi.CustomResource {
           'aws:s3control/bucketLifecycleConfiguration:BucketLifecycleConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     region = registerOutput<String>('region');

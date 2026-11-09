@@ -106,7 +106,7 @@ import 'automation_rule_state.dart';
 ///                     Severity = new Aws.SecurityHub.Inputs.AutomationRuleActionFindingFieldsUpdateSeverityArgs
 ///                     {
 ///                         Label = "CRITICAL",
-///                         Product = 0,
+///                         Product = 0.0,
 ///                     },
 ///                     Note = new Aws.SecurityHub.Inputs.AutomationRuleActionFindingFieldsUpdateNoteArgs
 ///                     {
@@ -184,7 +184,7 @@ import 'automation_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -192,20 +192,23 @@ import 'automation_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_securityhub_automationrule" "example" {
-///   criteria = {
-///     resource_ids = [{
-///       "comparison" = "EQUALS"
-///       "value"      = "arn:aws:s3:::examplebucket/*"
-///     }]
+/// resource "aws_securityhub_automation_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   criteria {
+///     resource_id {
+///       comparison = "EQUALS"
+///       value      = "arn:aws:s3:::examplebucket/*"
+///     }
 ///   }
 ///   actions {
-///     finding_fields_update = {
-///       severity = {
+///     finding_fields_update {
+///       severity {
 ///         label   = "CRITICAL"
 ///         product = "0.0"
 ///       }
-///       note = {
+///       note {
 ///         text       = "This is a critical resource. Please review ASAP."
 ///         updated_by = "sechub-automation"
 ///       }
@@ -354,7 +357,7 @@ class AutomationRule extends pulumi.CustomResource {
           'aws:securityhub/automationRule:AutomationRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     actions = registerOutput<List<AutomationRuleAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationRuleAction>(guardedValue, (value) => AutomationRuleAction.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');

@@ -66,7 +66,7 @@ import 'data_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'data_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_dataexchange_dataset" "example" {
+/// resource "aws_dataexchange_data_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   asset_type  = "S3_SNAPSHOT"
 ///   description = "example"
 ///   name        = "example"
@@ -156,7 +159,7 @@ class DataSet extends pulumi.CustomResource {
           'aws:dataexchange/dataSet:DataSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     assetType = registerOutput<String>('assetType');

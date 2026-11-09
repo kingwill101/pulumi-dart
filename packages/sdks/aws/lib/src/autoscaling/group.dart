@@ -324,7 +324,7 @@ import 'metric.dart';
 /// 			HealthCheckType:        pulumi.String("ELB"),
 /// 			DesiredCapacity:        pulumi.Int(4),
 /// 			ForceDelete:            pulumi.Bool(true),
-/// 			PlacementGroup:         test.ID().ToIDOutput().ToStringOutput(),
+/// 			PlacementGroup:         test.ID(),
 /// 			LaunchConfiguration:    pulumi.Any(foobar.Name),
 /// 			VpcZoneIdentifiers: pulumi.StringArray{
 /// 				example1.Id,
@@ -339,7 +339,7 @@ import 'metric.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -347,19 +347,25 @@ import 'metric.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_placementgroup" "test" {
+/// resource "aws_ec2_placement_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "test"
 ///   strategy = "cluster"
 /// }
 /// resource "aws_autoscaling_group" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   timeouts {
 ///     delete = "15m"
 ///   }
-///   instance_maintenance_policy = {
+///   instance_maintenance_policy {
 ///     min_healthy_percentage = 90
 ///     max_healthy_percentage = 120
 ///   }
-///   initial_lifecycle_hooks {
+///   initial_lifecycle_hook {
 ///     name                 = "foobar"
 ///     default_result       = "CONTINUE"
 ///     heartbeat_timeout    = 2000
@@ -370,12 +376,12 @@ import 'metric.dart';
 ///     notification_target_arn = "arn:aws:sqs:us-east-1:444455556666:queue1*"
 ///     role_arn                = "arn:aws:iam::123456789012:role/S3Access"
 ///   }
-///   tags {
+///   tag {
 ///     key                 = "foo"
 ///     value               = "bar"
 ///     propagate_at_launch = true
 ///   }
-///   tags {
+///   tag {
 ///     key                 = "lorem"
 ///     value               = "ipsum"
 ///     propagate_at_launch = false
@@ -387,9 +393,9 @@ import 'metric.dart';
 ///   health_check_type         = "ELB"
 ///   desired_capacity          = 4
 ///   force_delete              = true
-///   placement_group           = aws_ec2_placementgroup.test.id
+///   placement_group           = aws_ec2_placement_group.test.id
 ///   launch_configuration      = foobar.name
-///   vpc_zone_identifiers      = [example1.id, example2.id]
+///   vpc_zone_identifier       = [example1.id, example2.id]
 /// }
 /// ```
 /// ```java
@@ -462,10 +468,10 @@ import 'metric.dart';
 ///             .desiredCapacity(4)
 ///             .forceDelete(true)
 ///             .placementGroup(test.id())
-///             .launchConfiguration(foobar.name())
+///             .launchConfiguration(foobar.get("name"))
 ///             .vpcZoneIdentifiers(
-///                 example1.id(),
-///                 example2.id())
+///                 example1.get("id"),
+///                 example2.get("id"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .customTimeouts(CustomTimeouts.builder()
 ///                     .delete(CustomTimeouts.parseTimeoutString("15m"))
@@ -618,7 +624,7 @@ import 'metric.dart';
 /// 		}
 /// 		_, err = autoscaling.NewGroup(ctx, "bar", &autoscaling.GroupArgs{
 /// 			LaunchTemplate: &autoscaling.GroupLaunchTemplateArgs{
-/// 				Id:      foobar.ID().ToIDOutput().ToStringOutput(),
+/// 				Id:      foobar.ID(),
 /// 				Version: pulumi.String("$Latest"),
 /// 			},
 /// 			AvailabilityZones: pulumi.StringArray{
@@ -636,7 +642,7 @@ import 'metric.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -644,14 +650,20 @@ import 'metric.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_launchtemplate" "foobar" {
+/// resource "aws_ec2_launch_template" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name_prefix   = "foobar"
 ///   image_id      = "ami-1a2b3c"
 ///   instance_type = "t2.micro"
 /// }
 /// resource "aws_autoscaling_group" "bar" {
-///   launch_template = {
-///     id      = aws_ec2_launchtemplate.foobar.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   launch_template {
+///     id      = aws_ec2_launch_template.foobar.id
 ///     version = "$Latest"
 ///   }
 ///   availability_zones = ["us-east-1a"]
@@ -867,7 +879,7 @@ import 'metric.dart';
 /// 			MixedInstancesPolicy: &autoscaling.GroupMixedInstancesPolicyArgs{
 /// 				LaunchTemplate: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateArgs{
 /// 					LaunchTemplateSpecification: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs{
-/// 						LaunchTemplateId: example.ID().ToIDOutput().ToStringOutput(),
+/// 						LaunchTemplateId: example.ID(),
 /// 					},
 /// 					Overrides: autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArray{
 /// 						&autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArgs{
@@ -896,7 +908,7 @@ import 'metric.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -904,24 +916,31 @@ import 'metric.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_launchtemplate" "example" {
+/// resource "aws_ec2_launch_template" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name_prefix   = "example"
 ///   image_id      = exampleAwsAmi.id
 ///   instance_type = "c5.large"
 /// }
 /// resource "aws_autoscaling_group" "example" {
-///   mixed_instances_policy = {
-///     launch_template = {
-///       launch_template_specification = {
-///         launch_template_id = aws_ec2_launchtemplate.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   mixed_instances_policy {
+///     launch_template {
+///       launch_template_specification {
+///         launch_template_id = aws_ec2_launch_template.example.id
 ///       }
-///       overrides = [{
-///         "instanceType"     = "c4.large"
-///         "weightedCapacity" = "3"
-///         }, {
-///         "instanceType"     = "c3.large"
-///         "weightedCapacity" = "2"
-///       }]
+///       override {
+///         instance_type     = "c4.large"
+///         weighted_capacity = "3"
+///       }
+///       override {
+///         instance_type     = "c3.large"
+///         weighted_capacity = "2"
+///       }
 ///     }
 ///   }
 ///   availability_zones = ["us-east-1a"]
@@ -959,7 +978,7 @@ import 'metric.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new LaunchTemplate("example", LaunchTemplateArgs.builder()
 ///             .namePrefix("example")
-///             .imageId(exampleAwsAmi.id())
+///             .imageId(exampleAwsAmi.get("id"))
 ///             .instanceType("c5.large")
 ///             .build());
 ///
@@ -1190,7 +1209,7 @@ import 'metric.dart';
 /// 				},
 /// 				LaunchTemplate: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateArgs{
 /// 					LaunchTemplateSpecification: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs{
-/// 						LaunchTemplateId: example.ID().ToIDOutput().ToStringOutput(),
+/// 						LaunchTemplateId: example.ID(),
 /// 					},
 /// 					Overrides: autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArray{
 /// 						&autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArgs{
@@ -1221,7 +1240,7 @@ import 'metric.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1229,36 +1248,43 @@ import 'metric.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_launchtemplate" "example" {
+/// resource "aws_ec2_launch_template" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name_prefix   = "example"
 ///   image_id      = exampleAwsAmi.id
 ///   instance_type = "c5.large"
 /// }
 /// resource "aws_autoscaling_group" "example" {
-///   mixed_instances_policy = {
-///     instances_distribution = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   mixed_instances_policy {
+///     instances_distribution {
 ///       on_demand_base_capacity                  = 0
 ///       on_demand_percentage_above_base_capacity = 25
 ///       spot_allocation_strategy                 = "capacity-optimized"
 ///     }
-///     launch_template = {
-///       launch_template_specification = {
-///         launch_template_id = aws_ec2_launchtemplate.example.id
+///     launch_template {
+///       launch_template_specification {
+///         launch_template_id = aws_ec2_launch_template.example.id
 ///       }
-///       overrides = [{
-///         "instanceType"     = "c4.large"
-///         "weightedCapacity" = "3"
-///         }, {
-///         "instanceType"     = "c3.large"
-///         "weightedCapacity" = "2"
-///       }]
+///       override {
+///         instance_type     = "c4.large"
+///         weighted_capacity = "3"
+///       }
+///       override {
+///         instance_type     = "c3.large"
+///         weighted_capacity = "2"
+///       }
 ///     }
 ///   }
-///   capacity_rebalance   = true
-///   desired_capacity     = 12
-///   max_size             = 15
-///   min_size             = 12
-///   vpc_zone_identifiers = [example1.id, example2.id]
+///   capacity_rebalance  = true
+///   desired_capacity    = 12
+///   max_size            = 15
+///   min_size            = 12
+///   vpc_zone_identifier = [example1.id, example2.id]
 /// }
 /// ```
 /// ```java
@@ -1291,7 +1317,7 @@ import 'metric.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new LaunchTemplate("example", LaunchTemplateArgs.builder()
 ///             .namePrefix("example")
-///             .imageId(exampleAwsAmi.id())
+///             .imageId(exampleAwsAmi.get("id"))
 ///             .instanceType("c5.large")
 ///             .build());
 ///
@@ -1322,8 +1348,8 @@ import 'metric.dart';
 ///             .maxSize(15)
 ///             .minSize(12)
 ///             .vpcZoneIdentifiers(
-///                 example1.id(),
-///                 example2.id())
+///                 example1.get("id"),
+///                 example2.get("id"))
 ///             .build());
 ///
 ///     }
@@ -1537,7 +1563,7 @@ import 'metric.dart';
 /// 			MixedInstancesPolicy: &autoscaling.GroupMixedInstancesPolicyArgs{
 /// 				LaunchTemplate: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateArgs{
 /// 					LaunchTemplateSpecification: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs{
-/// 						LaunchTemplateId: example.ID().ToIDOutput().ToStringOutput(),
+/// 						LaunchTemplateId: example.ID(),
 /// 					},
 /// 					Overrides: autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArray{
 /// 						&autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArgs{
@@ -1546,7 +1572,7 @@ import 'metric.dart';
 /// 						},
 /// 						&autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArgs{
 /// 							LaunchTemplateSpecification: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecificationArgs{
-/// 								LaunchTemplateId: example2.ID().ToIDOutput().ToStringOutput(),
+/// 								LaunchTemplateId: example2.ID(),
 /// 							},
 /// 							InstanceType:     pulumi.String("c6g.large"),
 /// 							WeightedCapacity: pulumi.String("2"),
@@ -1569,7 +1595,7 @@ import 'metric.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1577,31 +1603,41 @@ import 'metric.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_launchtemplate" "example" {
+/// resource "aws_ec2_launch_template" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name_prefix   = "example"
 ///   image_id      = exampleAwsAmi.id
 ///   instance_type = "c5.large"
 /// }
-/// resource "aws_ec2_launchtemplate" "example2" {
+/// resource "aws_ec2_launch_template" "example2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name_prefix = "example2"
 ///   image_id    = example2AwsAmi.id
 /// }
 /// resource "aws_autoscaling_group" "example" {
-///   mixed_instances_policy = {
-///     launch_template = {
-///       launch_template_specification = {
-///         launch_template_id = aws_ec2_launchtemplate.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   mixed_instances_policy {
+///     launch_template {
+///       launch_template_specification {
+///         launch_template_id = aws_ec2_launch_template.example.id
 ///       }
-///       overrides = [{
-///         "instanceType"     = "c4.large"
-///         "weightedCapacity" = "3"
-///         }, {
-///         "launchTemplateSpecification" = {
-///           "launchTemplateId" = aws_ec2_launchtemplate.example2.id
+///       override {
+///         instance_type     = "c4.large"
+///         weighted_capacity = "3"
+///       }
+///       override {
+///         launch_template_specification {
+///           launch_template_id = aws_ec2_launch_template.example2.id
 ///         }
-///         "instanceType"     = "c6g.large"
-///         "weightedCapacity" = "2"
-///       }]
+///         instance_type     = "c6g.large"
+///         weighted_capacity = "2"
+///       }
 ///     }
 ///   }
 ///   availability_zones = ["us-east-1a"]
@@ -1640,13 +1676,13 @@ import 'metric.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new LaunchTemplate("example", LaunchTemplateArgs.builder()
 ///             .namePrefix("example")
-///             .imageId(exampleAwsAmi.id())
+///             .imageId(exampleAwsAmi.get("id"))
 ///             .instanceType("c5.large")
 ///             .build());
 ///
 ///         var example2 = new LaunchTemplate("example2", LaunchTemplateArgs.builder()
 ///             .namePrefix("example2")
-///             .imageId(example2AwsAmi.id())
+///             .imageId(example2AwsAmi.get("id"))
 ///             .build());
 ///
 ///         var exampleGroup = new Group("exampleGroup", GroupArgs.builder()
@@ -1861,7 +1897,7 @@ import 'metric.dart';
 /// 			MixedInstancesPolicy: &autoscaling.GroupMixedInstancesPolicyArgs{
 /// 				LaunchTemplate: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateArgs{
 /// 					LaunchTemplateSpecification: &autoscaling.GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs{
-/// 						LaunchTemplateId: example.ID().ToIDOutput().ToStringOutput(),
+/// 						LaunchTemplateId: example.ID(),
 /// 					},
 /// 					Overrides: autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArray{
 /// 						&autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArgs{
@@ -1892,7 +1928,7 @@ import 'metric.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1900,27 +1936,33 @@ import 'metric.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_launchtemplate" "example" {
+/// resource "aws_ec2_launch_template" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name_prefix   = "example"
 ///   image_id      = exampleAwsAmi.id
 ///   instance_type = "c5.large"
 /// }
 /// resource "aws_autoscaling_group" "example" {
-///   mixed_instances_policy = {
-///     launch_template = {
-///       launch_template_specification = {
-///         launch_template_id = aws_ec2_launchtemplate.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   mixed_instances_policy {
+///     launch_template {
+///       launch_template_specification {
+///         launch_template_id = aws_ec2_launch_template.example.id
 ///       }
-///       overrides = [{
-///         "instanceRequirements" = {
-///           "memoryMib" = {
-///             "min" = 1000
+///       override {
+///         instance_requirements {
+///           memory_mib {
+///             min = 1000
 ///           }
-///           "vcpuCount" = {
-///             "min" = 4
+///           vcpu_count {
+///             min = 4
 ///           }
 ///         }
-///       }]
+///       }
 ///     }
 ///   }
 ///   availability_zones = ["us-east-1a"]
@@ -1961,7 +2003,7 @@ import 'metric.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new LaunchTemplate("example", LaunchTemplateArgs.builder()
 ///             .namePrefix("example")
-///             .imageId(exampleAwsAmi.id())
+///             .imageId(exampleAwsAmi.get("id"))
 ///             .instanceType("c5.large")
 ///             .build());
 ///
@@ -2117,17 +2159,17 @@ import 'metric.dart';
 ///     var config = new Config();
 ///     var extraTags = config.GetObject<dynamic>("extraTags") ?? new[]
 ///     {
-///
+///         new Dictionary<string, object?>
 ///         {
-///             { "key", "Foo" },
-///             { "propagateAtLaunch", true },
-///             { "value", "Bar" },
+///             ["key"] = "Foo",
+///             ["propagateAtLaunch"] = true,
+///             ["value"] = "Bar",
 ///         },
-///
+///         new Dictionary<string, object?>
 ///         {
-///             { "key", "Baz" },
-///             { "propagateAtLaunch", true },
-///             { "value", "Bam" },
+///             ["key"] = "Baz",
+///             ["propagateAtLaunch"] = true,
+///             ["value"] = "Bam",
 ///         },
 ///     };
 ///     var test = new Aws.AutoScaling.Group("test", new()
@@ -2173,7 +2215,7 @@ import 'metric.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		cfg := config.New(ctx, "")
-/// 		extraTags := []map[string]interface{}{
+/// 		extraTags := []interface{}{
 /// 			map[string]interface{}{
 /// 				"key":               "Foo",
 /// 				"propagateAtLaunch": true,
@@ -2218,7 +2260,7 @@ import 'metric.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2227,12 +2269,15 @@ import 'metric.dart';
 /// }
 ///
 /// resource "aws_autoscaling_group" "test" {
-///   tags {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   tag {
 ///     key                 = "explicit1"
 ///     value               = "value1"
 ///     propagate_at_launch = true
 ///   }
-///   tags {
+///   tag {
 ///     key                 = "explicit2"
 ///     value               = "value2"
 ///     propagate_at_launch = true
@@ -2241,9 +2286,10 @@ import 'metric.dart';
 ///   max_size             = 5
 ///   min_size             = 2
 ///   launch_configuration = foobar.name
-///   vpc_zone_identifiers = [example1.id, example2.id]
+///   vpc_zone_identifier  = [example1.id, example2.id]
 /// }
 /// variable "extraTags" {
+///   type = any
 ///   default = [{
 ///     "key"               = "Foo"
 ///     "propagateAtLaunch" = true
@@ -2278,7 +2324,7 @@ import 'metric.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var extraTags = config.get("extraTags").orElse(Arrays.asList(
+///         final var extraTags = config.getObject("extraTags", com.pulumi.core.TypeShape.map(String.class, Object.class)).orElse(Arrays.asList(
 ///             Map.ofEntries(
 ///                 Map.entry("key", "Foo"),
 ///                 Map.entry("propagateAtLaunch", true),
@@ -2304,10 +2350,10 @@ import 'metric.dart';
 ///             .name("foobar3-test")
 ///             .maxSize(5)
 ///             .minSize(2)
-///             .launchConfiguration(foobar.name())
+///             .launchConfiguration(foobar.get("name"))
 ///             .vpcZoneIdentifiers(
-///                 example1.id(),
-///                 example2.id())
+///                 example1.get("id"),
+///                 example2.get("id"))
 ///             .build());
 ///
 ///     }
@@ -2461,7 +2507,7 @@ import 'metric.dart';
 ///         LaunchTemplate = new Aws.AutoScaling.Inputs.GroupLaunchTemplateArgs
 ///         {
 ///             Id = exampleLaunchTemplate.Id,
-///             Version = exampleLaunchTemplate.LatestVersion,
+///             Version = exampleLaunchTemplate.LatestVersion.Apply(x => x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
 ///         },
 ///         InstanceRefresh = new Aws.AutoScaling.Inputs.GroupInstanceRefreshArgs
 ///         {
@@ -2532,7 +2578,7 @@ import 'metric.dart';
 /// 		}
 /// 		_, err = autoscaling.NewGroup(ctx, "example", &autoscaling.GroupArgs{
 /// 			LaunchTemplate: &autoscaling.GroupLaunchTemplateArgs{
-/// 				Id:      exampleLaunchTemplate.ID().ToIDOutput().ToStringOutput(),
+/// 				Id:      exampleLaunchTemplate.ID(),
 /// 				Version: exampleLaunchTemplate.LatestVersion,
 /// 			},
 /// 			InstanceRefresh: &autoscaling.GroupInstanceRefreshArgs{
@@ -2566,7 +2612,7 @@ import 'metric.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2574,7 +2620,7 @@ import 'metric.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2_getami" "example" {
+/// data "aws_ec2_ami" "example" {
 ///   filters {
 ///     name   = "name"
 ///     values = ["amzn-ami-hvm-*-x86_64-gp2"]
@@ -2584,18 +2630,21 @@ import 'metric.dart';
 /// }
 ///
 /// resource "aws_autoscaling_group" "example" {
-///   launch_template = {
-///     id      = aws_ec2_launchtemplate.example.id
-///     version = aws_ec2_launchtemplate.example.latest_version
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   instance_refresh = {
-///     preferences = {
+///   launch_template {
+///     id      = aws_ec2_launch_template.example.id
+///     version = aws_ec2_launch_template.example.latest_version
+///   }
+///   instance_refresh {
+///     preferences {
 ///       min_healthy_percentage = 50
 ///     }
 ///     strategy = "Rolling"
 ///     triggers = ["tag"]
 ///   }
-///   tags {
+///   tag {
 ///     key                 = "Key"
 ///     value               = "Value"
 ///     propagate_at_launch = true
@@ -2605,8 +2654,11 @@ import 'metric.dart';
 ///   max_size           = 2
 ///   min_size           = 1
 /// }
-/// resource "aws_ec2_launchtemplate" "example" {
-///   image_id      = data.aws_ec2_getami.example.id
+/// resource "aws_ec2_launch_template" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   image_id      = data.aws_ec2_ami.example.id
 ///   instance_type = "t3.nano"
 /// }
 /// ```
@@ -2855,7 +2907,7 @@ import 'metric.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2863,14 +2915,20 @@ import 'metric.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_launchtemplate" "example" {
+/// resource "aws_ec2_launch_template" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name_prefix   = "example"
 ///   image_id      = exampleAwsAmi.id
 ///   instance_type = "c5.large"
 /// }
 /// resource "aws_autoscaling_group" "example" {
-///   warm_pool = {
-///     instance_reuse_policy = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   warm_pool {
+///     instance_reuse_policy {
 ///       reuse_on_scale_in = true
 ///     }
 ///     pool_state                  = "Hibernated"
@@ -2910,7 +2968,7 @@ import 'metric.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new LaunchTemplate("example", LaunchTemplateArgs.builder()
 ///             .namePrefix("example")
-///             .imageId(exampleAwsAmi.id())
+///             .imageId(exampleAwsAmi.get("id"))
 ///             .instanceType("c5.large")
 ///             .build());
 ///
@@ -3054,7 +3112,7 @@ import 'metric.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3063,17 +3121,20 @@ import 'metric.dart';
 /// }
 ///
 /// resource "aws_autoscaling_group" "test" {
-///   dynamic "traffic_sources" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   dynamic "traffic_source" {
 ///     for_each = testAwsVpclatticeTargetGroup[*]
 ///     content {
-///       identifier = traffic_sources.value.arn
+///       identifier = traffic_source.value.arn
 ///       type       = "vpc-lattice"
 ///     }
 ///   }
-///   vpc_zone_identifiers = testAwsSubnet.id
-///   max_size             = 1
-///   min_size             = 1
-///   force_delete         = true
+///   vpc_zone_identifier = testAwsSubnet.id
+///   max_size            = 1
+///   min_size            = 1
+///   force_delete        = true
 /// }
 /// ```
 ///
@@ -3237,7 +3298,7 @@ class Group extends pulumi.CustomResource {
           'aws:autoscaling/group:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZoneDistribution = registerOutput<GroupAvailabilityZoneDistribution>('availabilityZoneDistribution', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupAvailabilityZoneDistribution.fromMap((guardedValue as Map).cast<String, dynamic>()); });

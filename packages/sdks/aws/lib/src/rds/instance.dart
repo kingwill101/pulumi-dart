@@ -119,7 +119,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -128,6 +128,9 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "aws_rds_instance" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocated_storage    = 10
 ///   db_name              = "mydb"
 ///   engine               = "mysql"
@@ -224,7 +227,7 @@ import 'instance_state.dart';
 ///     engine: custom_oracle.then(custom_oracle => custom_oracle.engine),
 ///     engineVersion: custom_oracle.then(custom_oracle => custom_oracle.engineVersion),
 ///     identifier: "ee-instance-demo",
-///     instanceClass: aws.rds.InstanceType[custom_oracle.then(custom_oracle => custom_oracle.instanceClass)],
+///     instanceClass: custom_oracle.then(custom_oracle => custom_oracle.instanceClass),
 ///     kmsKeyId: byId.then(byId => byId.arn),
 ///     licenseModel: custom_oracle.then(custom_oracle => custom_oracle.licenseModel),
 ///     multiAz: false,
@@ -245,7 +248,7 @@ import 'instance_state.dart';
 ///     customIamInstanceProfile: "AWSRDSCustomInstanceProfile",
 ///     backupRetentionPeriod: 7,
 ///     identifier: "ee-instance-replica",
-///     instanceClass: aws.rds.InstanceType[custom_oracle.then(custom_oracle => custom_oracle.instanceClass)],
+///     instanceClass: custom_oracle.then(custom_oracle => custom_oracle.instanceClass),
 ///     kmsKeyId: byId.then(byId => byId.arn),
 ///     multiAz: false,
 ///     skipFinalSnapshot: true,
@@ -283,7 +286,7 @@ import 'instance_state.dart';
 ///     engine=custom_oracle.engine,
 ///     engine_version=custom_oracle.engine_version,
 ///     identifier="ee-instance-demo",
-///     instance_class=aws.rds.InstanceType(custom_oracle.instance_class),
+///     instance_class=custom_oracle.instance_class,
 ///     kms_key_id=by_id.arn,
 ///     license_model=custom_oracle.license_model,
 ///     multi_az=False,
@@ -298,7 +301,7 @@ import 'instance_state.dart';
 ///     custom_iam_instance_profile="AWSRDSCustomInstanceProfile",
 ///     backup_retention_period=7,
 ///     identifier="ee-instance-replica",
-///     instance_class=aws.rds.InstanceType(custom_oracle.instance_class),
+///     instance_class=custom_oracle.instance_class,
 ///     kms_key_id=by_id.arn,
 ///     multi_az=False,
 ///     skip_final_snapshot=True,
@@ -344,7 +347,7 @@ import 'instance_state.dart';
 ///         Engine = custom_oracle.Apply(custom_oracle => custom_oracle.Apply(getOrderableDbInstanceResult => getOrderableDbInstanceResult.Engine)),
 ///         EngineVersion = custom_oracle.Apply(custom_oracle => custom_oracle.Apply(getOrderableDbInstanceResult => getOrderableDbInstanceResult.EngineVersion)),
 ///         Identifier = "ee-instance-demo",
-///         InstanceClass = custom_oracle.Apply(custom_oracle => custom_oracle.Apply(getOrderableDbInstanceResult => getOrderableDbInstanceResult.InstanceClass)).Apply(System.Enum.Parse<Aws.Rds.InstanceType>),
+///         InstanceClass = custom_oracle.Apply(custom_oracle => custom_oracle.Apply(getOrderableDbInstanceResult => getOrderableDbInstanceResult.InstanceClass)),
 ///         KmsKeyId = byId.Apply(getKeyResult => getKeyResult.Arn),
 ///         LicenseModel = custom_oracle.Apply(custom_oracle => custom_oracle.Apply(getOrderableDbInstanceResult => getOrderableDbInstanceResult.LicenseModel)),
 ///         MultiAz = false,
@@ -361,7 +364,7 @@ import 'instance_state.dart';
 ///         CustomIamInstanceProfile = "AWSRDSCustomInstanceProfile",
 ///         BackupRetentionPeriod = 7,
 ///         Identifier = "ee-instance-replica",
-///         InstanceClass = custom_oracle.Apply(custom_oracle => custom_oracle.Apply(getOrderableDbInstanceResult => getOrderableDbInstanceResult.InstanceClass)).Apply(System.Enum.Parse<Aws.Rds.InstanceType>),
+///         InstanceClass = custom_oracle.Apply(custom_oracle => custom_oracle.Apply(getOrderableDbInstanceResult => getOrderableDbInstanceResult.InstanceClass)),
 ///         KmsKeyId = byId.Apply(getKeyResult => getKeyResult.Arn),
 ///         MultiAz = false,
 ///         SkipFinalSnapshot = true,
@@ -412,7 +415,7 @@ import 'instance_state.dart';
 /// 			Engine:                   pulumi.String(custom_oracle.Engine),
 /// 			EngineVersion:            pulumi.String(custom_oracle.EngineVersion),
 /// 			Identifier:               pulumi.String("ee-instance-demo"),
-/// 			InstanceClass:            custom_oracle.InstanceClass.ApplyT(func(x *string) rds.InstanceType { return rds.InstanceType(*x) }).(rds.InstanceTypeOutput),
+/// 			InstanceClass:            pulumi.String(custom_oracle.InstanceClass),
 /// 			KmsKeyId:                 pulumi.String(byId.Arn),
 /// 			LicenseModel:             pulumi.String(custom_oracle.LicenseModel),
 /// 			MultiAz:                  pulumi.Bool(false),
@@ -430,7 +433,7 @@ import 'instance_state.dart';
 /// 			CustomIamInstanceProfile: pulumi.String("AWSRDSCustomInstanceProfile"),
 /// 			BackupRetentionPeriod:    pulumi.Int(7),
 /// 			Identifier:               pulumi.String("ee-instance-replica"),
-/// 			InstanceClass:            custom_oracle.InstanceClass.ApplyT(func(x *string) rds.InstanceType { return rds.InstanceType(*x) }).(rds.InstanceTypeOutput),
+/// 			InstanceClass:            pulumi.String(custom_oracle.InstanceClass),
 /// 			KmsKeyId:                 pulumi.String(byId.Arn),
 /// 			MultiAz:                  pulumi.Bool(false),
 /// 			SkipFinalSnapshot:        pulumi.Bool(true),
@@ -444,7 +447,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -452,18 +455,21 @@ import 'instance_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_rds_getorderabledbinstance" "custom-oracle" {
+/// data "aws_rds_orderable_db_instance" "custom-oracle" {
 ///   engine                     = "custom-oracle-ee"
 ///   engine_version             = "19.c.ee.002"
 ///   license_model              = "bring-your-own-license"
 ///   storage_type               = "gp3"
 ///   preferred_instance_classes = ["db.r5.xlarge", "db.r5.2xlarge", "db.r5.4xlarge"]
 /// }
-/// data "aws_kms_getkey" "byId" {
+/// data "aws_kms_key" "byId" {
 ///   key_id = "example-ef278353ceba4a5a97de6784565b9f78"
 /// }
 ///
 /// resource "aws_rds_instance" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   timeouts {
 ///     create = "3h"
 ///     delete = "3h"
@@ -474,18 +480,21 @@ import 'instance_state.dart';
 ///   custom_iam_instance_profile = "AWSRDSCustomInstanceProfile"
 ///   backup_retention_period     = 7
 ///   db_subnet_group_name        = dbSubnetGroupName
-///   engine                      = data.aws_rds_getorderabledbinstance.custom-oracle.engine
-///   engine_version              = data.aws_rds_getorderabledbinstance.custom-oracle.engine_version
+///   engine                      = data.aws_rds_orderable_db_instance.custom-oracle.engine
+///   engine_version              = data.aws_rds_orderable_db_instance.custom-oracle.engine_version
 ///   identifier                  = "ee-instance-demo"
-///   instance_class              = data.aws_rds_getorderabledbinstance.custom-oracle.instance_class
-///   kms_key_id                  = data.aws_kms_getkey.byId.arn
-///   license_model               = data.aws_rds_getorderabledbinstance.custom-oracle.license_model
+///   instance_class              = data.aws_rds_orderable_db_instance.custom-oracle.instance_class
+///   kms_key_id                  = data.aws_kms_key.byId.arn
+///   license_model               = data.aws_rds_orderable_db_instance.custom-oracle.license_model
 ///   multi_az                    = false # Custom for Oracle does not support multi-az
 ///   password                    = "avoid-plaintext-passwords"
 ///   username                    = "test"
 ///   storage_encrypted           = true
 /// }
 /// resource "aws_rds_instance" "test-replica" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   timeouts {
 ///     create = "3h"
 ///     delete = "3h"
@@ -497,8 +506,8 @@ import 'instance_state.dart';
 ///   custom_iam_instance_profile = "AWSRDSCustomInstanceProfile"
 ///   backup_retention_period     = 7
 ///   identifier                  = "ee-instance-replica"
-///   instance_class              = data.aws_rds_getorderabledbinstance.custom-oracle.instance_class
-///   kms_key_id                  = data.aws_kms_getkey.byId.arn
+///   instance_class              = data.aws_rds_orderable_db_instance.custom-oracle.instance_class
+///   kms_key_id                  = data.aws_kms_key.byId.arn
 ///   multi_az                    = false # Custom for Oracle does not support multi-az
 ///   skip_final_snapshot         = true
 ///   storage_encrypted           = true
@@ -697,7 +706,7 @@ import 'instance_state.dart';
 ///     engine: custom_sqlserver.then(custom_sqlserver => custom_sqlserver.engine),
 ///     engineVersion: custom_sqlserver.then(custom_sqlserver => custom_sqlserver.engineVersion),
 ///     identifier: "sql-instance-demo",
-///     instanceClass: aws.rds.InstanceType[custom_sqlserver.then(custom_sqlserver => custom_sqlserver.instanceClass)],
+///     instanceClass: custom_sqlserver.then(custom_sqlserver => custom_sqlserver.instanceClass),
 ///     kmsKeyId: byId.then(byId => byId.arn),
 ///     multiAz: false,
 ///     password: "avoid-plaintext-passwords",
@@ -735,7 +744,7 @@ import 'instance_state.dart';
 ///     engine=custom_sqlserver.engine,
 ///     engine_version=custom_sqlserver.engine_version,
 ///     identifier="sql-instance-demo",
-///     instance_class=aws.rds.InstanceType(custom_sqlserver.instance_class),
+///     instance_class=custom_sqlserver.instance_class,
 ///     kms_key_id=by_id.arn,
 ///     multi_az=False,
 ///     password="avoid-plaintext-passwords",
@@ -781,7 +790,7 @@ import 'instance_state.dart';
 ///         Engine = custom_sqlserver.Apply(custom_sqlserver => custom_sqlserver.Apply(getOrderableDbInstanceResult => getOrderableDbInstanceResult.Engine)),
 ///         EngineVersion = custom_sqlserver.Apply(custom_sqlserver => custom_sqlserver.Apply(getOrderableDbInstanceResult => getOrderableDbInstanceResult.EngineVersion)),
 ///         Identifier = "sql-instance-demo",
-///         InstanceClass = custom_sqlserver.Apply(custom_sqlserver => custom_sqlserver.Apply(getOrderableDbInstanceResult => getOrderableDbInstanceResult.InstanceClass)).Apply(System.Enum.Parse<Aws.Rds.InstanceType>),
+///         InstanceClass = custom_sqlserver.Apply(custom_sqlserver => custom_sqlserver.Apply(getOrderableDbInstanceResult => getOrderableDbInstanceResult.InstanceClass)),
 ///         KmsKeyId = byId.Apply(getKeyResult => getKeyResult.Arn),
 ///         MultiAz = false,
 ///         Password = "avoid-plaintext-passwords",
@@ -832,7 +841,7 @@ import 'instance_state.dart';
 /// 			Engine:                   pulumi.String(custom_sqlserver.Engine),
 /// 			EngineVersion:            pulumi.String(custom_sqlserver.EngineVersion),
 /// 			Identifier:               pulumi.String("sql-instance-demo"),
-/// 			InstanceClass:            custom_sqlserver.InstanceClass.ApplyT(func(x *string) rds.InstanceType { return rds.InstanceType(*x) }).(rds.InstanceTypeOutput),
+/// 			InstanceClass:            pulumi.String(custom_sqlserver.InstanceClass),
 /// 			KmsKeyId:                 pulumi.String(byId.Arn),
 /// 			MultiAz:                  pulumi.Bool(false),
 /// 			Password:                 pulumi.String("avoid-plaintext-passwords"),
@@ -847,7 +856,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -855,17 +864,20 @@ import 'instance_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_rds_getorderabledbinstance" "custom-sqlserver" {
+/// data "aws_rds_orderable_db_instance" "custom-sqlserver" {
 ///   engine                     = "custom-sqlserver-se"
 ///   engine_version             = "15.00.4249.2.v1"
 ///   storage_type               = "gp3"
 ///   preferred_instance_classes = ["db.r5.xlarge", "db.r5.2xlarge", "db.r5.4xlarge"]
 /// }
-/// data "aws_kms_getkey" "byId" {
+/// data "aws_kms_key" "byId" {
 ///   key_id = "example-ef278353ceba4a5a97de6784565b9f78"
 /// }
 ///
 /// resource "aws_rds_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   timeouts {
 ///     create = "3h"
 ///     delete = "3h"
@@ -876,11 +888,11 @@ import 'instance_state.dart';
 ///   custom_iam_instance_profile = "AWSRDSCustomSQLServerInstanceProfile"
 ///   backup_retention_period     = 7
 ///   db_subnet_group_name        = dbSubnetGroupName
-///   engine                      = data.aws_rds_getorderabledbinstance.custom-sqlserver.engine
-///   engine_version              = data.aws_rds_getorderabledbinstance.custom-sqlserver.engine_version
+///   engine                      = data.aws_rds_orderable_db_instance.custom-sqlserver.engine
+///   engine_version              = data.aws_rds_orderable_db_instance.custom-sqlserver.engine_version
 ///   identifier                  = "sql-instance-demo"
-///   instance_class              = data.aws_rds_getorderabledbinstance.custom-sqlserver.instance_class
-///   kms_key_id                  = data.aws_kms_getkey.byId.arn
+///   instance_class              = data.aws_rds_orderable_db_instance.custom-sqlserver.instance_class
+///   kms_key_id                  = data.aws_kms_key.byId.arn
 ///   multi_az                    = false # Custom for SQL Server does support multi-az
 ///   password                    = "avoid-plaintext-passwords"
 ///   storage_encrypted           = true
@@ -1046,7 +1058,7 @@ import 'instance_state.dart';
 ///     name: "db-db2-params",
 ///     family: _default.then(_default => _default.parameterGroupFamily),
 /// });
-/// // Create the RDS Db2 instance, use the data sources defined to set attributes
+/// // Create the RDS Db2 instance, use the functions defined to set attributes
 /// const exampleInstance = new aws.rds.Instance("example", {
 ///     allocatedStorage: 100,
 ///     backupRetentionPeriod: 7,
@@ -1054,7 +1066,7 @@ import 'instance_state.dart';
 ///     engine: example.then(example => example.engine),
 ///     engineVersion: example.then(example => example.engineVersion),
 ///     identifier: "db2-instance-demo",
-///     instanceClass: aws.rds.InstanceType[example.then(example => example.instanceClass)],
+///     instanceClass: example.then(example => example.instanceClass),
 ///     parameterGroupName: exampleParameterGroup.name,
 ///     password: "avoid-plaintext-passwords",
 ///     username: "test",
@@ -1092,7 +1104,7 @@ import 'instance_state.dart';
 ///     ],
 ///     name="db-db2-params",
 ///     family=default.parameter_group_family)
-/// # Create the RDS Db2 instance, use the data sources defined to set attributes
+/// # Create the RDS Db2 instance, use the functions defined to set attributes
 /// example_instance = aws.rds.Instance("example",
 ///     allocated_storage=100,
 ///     backup_retention_period=7,
@@ -1100,7 +1112,7 @@ import 'instance_state.dart';
 ///     engine=example.engine,
 ///     engine_version=example.engine_version,
 ///     identifier="db2-instance-demo",
-///     instance_class=aws.rds.InstanceType(example.instance_class),
+///     instance_class=example.instance_class,
 ///     parameter_group_name=example_parameter_group.name,
 ///     password="avoid-plaintext-passwords",
 ///     username="test")
@@ -1156,7 +1168,7 @@ import 'instance_state.dart';
 ///         Family = @default.Apply(@default => @default.Apply(getEngineVersionResult => getEngineVersionResult.ParameterGroupFamily)),
 ///     });
 ///
-///     // Create the RDS Db2 instance, use the data sources defined to set attributes
+///     // Create the RDS Db2 instance, use the functions defined to set attributes
 ///     var exampleInstance = new Aws.Rds.Instance("example", new()
 ///     {
 ///         AllocatedStorage = 100,
@@ -1165,7 +1177,7 @@ import 'instance_state.dart';
 ///         Engine = example.Apply(getOrderableDbInstanceResult => getOrderableDbInstanceResult.Engine),
 ///         EngineVersion = example.Apply(getOrderableDbInstanceResult => getOrderableDbInstanceResult.EngineVersion),
 ///         Identifier = "db2-instance-demo",
-///         InstanceClass = example.Apply(getOrderableDbInstanceResult => getOrderableDbInstanceResult.InstanceClass).Apply(System.Enum.Parse<Aws.Rds.InstanceType>),
+///         InstanceClass = example.Apply(getOrderableDbInstanceResult => getOrderableDbInstanceResult.InstanceClass),
 ///         ParameterGroupName = exampleParameterGroup.Name,
 ///         Password = "avoid-plaintext-passwords",
 ///         Username = "test",
@@ -1225,7 +1237,7 @@ import 'instance_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		// Create the RDS Db2 instance, use the data sources defined to set attributes
+/// 		// Create the RDS Db2 instance, use the functions defined to set attributes
 /// 		_, err = rds.NewInstance(ctx, "example", &rds.InstanceArgs{
 /// 			AllocatedStorage:      pulumi.Int(100),
 /// 			BackupRetentionPeriod: pulumi.Int(7),
@@ -1233,7 +1245,7 @@ import 'instance_state.dart';
 /// 			Engine:                pulumi.String(example.Engine),
 /// 			EngineVersion:         pulumi.String(example.EngineVersion),
 /// 			Identifier:            pulumi.String("db2-instance-demo"),
-/// 			InstanceClass:         example.InstanceClass.ApplyT(func(x *string) rds.InstanceType { return rds.InstanceType(*x) }).(rds.InstanceTypeOutput),
+/// 			InstanceClass:         pulumi.String(example.InstanceClass),
 /// 			ParameterGroupName:    exampleParameterGroup.Name,
 /// 			Password:              pulumi.String("avoid-plaintext-passwords"),
 /// 			Username:              pulumi.String("test"),
@@ -1246,7 +1258,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1254,19 +1266,22 @@ import 'instance_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_rds_getengineversion" "default" {
+/// data "aws_rds_engine_version" "default" {
 ///   engine = "db2-se"
 /// }
-/// data "aws_rds_getorderabledbinstance" "example" {
-///   engine                     = data.aws_rds_getengineversion.default.engine
-///   engine_version             = data.aws_rds_getengineversion.default.version
+/// data "aws_rds_orderable_db_instance" "example" {
+///   engine                     = data.aws_rds_engine_version.default.engine
+///   engine_version             = data.aws_rds_engine_version.default.version
 ///   license_model              = "bring-your-own-license"
 ///   storage_type               = "gp3"
 ///   preferred_instance_classes = ["db.t3.small", "db.r6i.large", "db.m6i.large"]
 /// }
 ///
 /// # The RDS Db2 instance resource requires licensing information. Create a new parameter group using the default parameter group as a source, and set license information.
-/// resource "aws_rds_parametergroup" "example" {
+/// resource "aws_rds_parameter_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameters {
 ///     apply_method = "immediate"
 ///     name         = "rds.ibm_customer_id"
@@ -1278,18 +1293,21 @@ import 'instance_state.dart';
 ///     value        = 0
 ///   }
 ///   name   = "db-db2-params"
-///   family = data.aws_rds_getengineversion.default.parameter_group_family
+///   family = data.aws_rds_engine_version.default.parameter_group_family
 /// }
-/// # Create the RDS Db2 instance, use the data sources defined to set attributes
+/// # Create the RDS Db2 instance, use the functions defined to set attributes
 /// resource "aws_rds_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocated_storage       = 100
 ///   backup_retention_period = 7
 ///   db_name                 = "test"
-///   engine                  = data.aws_rds_getorderabledbinstance.example.engine
-///   engine_version          = data.aws_rds_getorderabledbinstance.example.engine_version
+///   engine                  = data.aws_rds_orderable_db_instance.example.engine
+///   engine_version          = data.aws_rds_orderable_db_instance.example.engine_version
 ///   identifier              = "db2-instance-demo"
-///   instance_class          = data.aws_rds_getorderabledbinstance.example.instance_class
-///   parameter_group_name    = aws_rds_parametergroup.example.name
+///   instance_class          = data.aws_rds_orderable_db_instance.example.instance_class
+///   parameter_group_name    = aws_rds_parameter_group.example.name
 ///   password                = "avoid-plaintext-passwords"
 ///   username                = "test"
 /// }
@@ -1357,7 +1375,7 @@ import 'instance_state.dart';
 ///             .family(default_.parameterGroupFamily())
 ///             .build());
 ///
-///         // Create the RDS Db2 instance, use the data sources defined to set attributes
+///         // Create the RDS Db2 instance, use the functions defined to set attributes
 ///         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
 ///             .allocatedStorage(100)
 ///             .backupRetentionPeriod(7)
@@ -1390,7 +1408,7 @@ import 'instance_state.dart';
 ///           value: 0
 ///       name: db-db2-params
 ///       family: ${default.parameterGroupFamily}
-///   # Create the RDS Db2 instance, use the data sources defined to set attributes
+///   # Create the RDS Db2 instance, use the functions defined to set attributes
 ///   exampleInstance:
 ///     type: aws:rds:Instance
 ///     name: example
@@ -1488,7 +1506,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1497,6 +1515,9 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "aws_rds_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocated_storage     = 50
 ///   max_allocated_storage = 100
 /// }
@@ -1626,7 +1647,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1635,6 +1656,9 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "aws_rds_instance" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocated_storage           = 10
 ///   db_name                     = "mydb"
 ///   engine                      = "mysql"
@@ -1800,7 +1824,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1809,9 +1833,15 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "Example KMS Key"
 /// }
 /// resource "aws_rds_instance" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocated_storage             = 10
 ///   db_name                       = "mydb"
 ///   engine                        = "mysql"
@@ -1995,7 +2025,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2004,6 +2034,9 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "aws_rds_instance" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocated_storage           = 10
 ///   db_name                     = "mydb"
 ///   engine                      = "mysql"
@@ -2013,7 +2046,10 @@ import 'instance_state.dart';
 ///   username                    = "foo"
 ///   parameter_group_name        = "default.mysql8.0"
 /// }
-/// resource "aws_secretsmanager_secretrotation" "default" {
+/// resource "aws_secretsmanager_secret_rotation" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id        = aws_rds_instance.default.master_user_secrets[0].secret_arn
 ///   rotation_enabled = false
 /// }
@@ -2053,7 +2089,7 @@ import 'instance_state.dart';
 ///             .build());
 ///
 ///         var defaultSecretRotation = new SecretRotation("defaultSecretRotation", SecretRotationArgs.builder()
-///             .secretId(default_.masterUserSecrets().applyValue(_masterUserSecrets -> _masterUserSecrets[0].secretArn()))
+///             .secretId(default_.masterUserSecrets().applyValue(_masterUserSecrets -> _masterUserSecrets.get(0).secretArn()))
 ///             .rotationEnabled(false)
 ///             .build());
 ///
@@ -2160,7 +2196,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2169,6 +2205,9 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "aws_rds_instance" "db" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   s3_import = {
 ///     source_engine         = "mysql"
 ///     source_engine_version = "5.6"
@@ -2357,6 +2396,8 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<String> monitoringRoleArn;
   /// Whether the RDS instance is multi-AZ.
   late final pulumi.Output<bool> multiAz;
+  /// Whether to use the multi-tenant configuration of the Oracle CDB architecture. Only valid for RDS for Oracle CDB engines (`oracle-ee-cdb` and `oracle-se2-cdb`). Changing from `false` to `true` converts the instance in place and requires `applyImmediately = true`; RDS also applies any pending modifications at that time. Restored instances and read replicas are converted after creation. Conversion is irreversible, so changing from `true` to `false` forces a new resource. After conversion, RDS rejects changes to `password`, `passwordWo`, and `manageMasterUserPassword` on the instance; manage master user credentials on the tenant database instead. Additional tenant databases are managed outside this resource. See the [AWS documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Oracle.Concepts.CDBs.html) for details.
+  late final pulumi.Output<bool> multiTenant;
   /// National character set is used in the NCHAR, NVARCHAR2, and NCLOB data types for Oracle instances. This can't be changed. See [Oracle Character Sets Supported in Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.OracleCharacterSets.html).
   late final pulumi.Output<String> ncharCharacterSetName;
   /// Network type of the DB instance. Valid values: `IPV4`, `DUAL`.
@@ -2368,7 +2409,7 @@ class Instance extends pulumi.CustomResource {
   /// Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file. Cannot be set if `manageMasterUserPassword` is set to `true`.
   late final pulumi.Output<String?> password;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file. Cannot be set if `manageMasterUserPassword` is set to `true`. If set, requires `passwordWoVersion` to be set.
+  /// Password for the master DB user. Note that this may show up in logs. Cannot be set if `manageMasterUserPassword` is set to `true`. If set, requires `passwordWoVersion` to be set.
   late final pulumi.Output<String?> passwordWo;
   /// Required when `passwordWo` is set. Changing this value triggers an update to `passwordWo`.
   late final pulumi.Output<int?> passwordWoVersion;
@@ -2437,7 +2478,7 @@ class Instance extends pulumi.CustomResource {
           'aws:rds/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['password', 'passwordWo'],
         ) {
     address = registerOutput<String>('address');
@@ -2493,6 +2534,7 @@ class Instance extends pulumi.CustomResource {
     monitoringInterval = registerOutput<int?>('monitoringInterval');
     monitoringRoleArn = registerOutput<String>('monitoringRoleArn');
     multiAz = registerOutput<bool>('multiAz');
+    multiTenant = registerOutput<bool>('multiTenant');
     ncharCharacterSetName = registerOutput<String>('ncharCharacterSetName');
     networkType = registerOutput<String>('networkType');
     optionGroupName = registerOutput<String>('optionGroupName');
@@ -2605,6 +2647,7 @@ class Instance extends pulumi.CustomResource {
     monitoringInterval = registerOutput<int?>('monitoringInterval');
     monitoringRoleArn = registerOutput<String>('monitoringRoleArn');
     multiAz = registerOutput<bool>('multiAz');
+    multiTenant = registerOutput<bool>('multiTenant');
     ncharCharacterSetName = registerOutput<String>('ncharCharacterSetName');
     networkType = registerOutput<String>('networkType');
     optionGroupName = registerOutput<String>('optionGroupName');
@@ -2703,6 +2746,7 @@ class Instance extends pulumi.CustomResource {
     monitoringInterval = registerOutput<int?>('monitoringInterval');
     monitoringRoleArn = registerOutput<String>('monitoringRoleArn');
     multiAz = registerOutput<bool>('multiAz');
+    multiTenant = registerOutput<bool>('multiTenant');
     ncharCharacterSetName = registerOutput<String>('ncharCharacterSetName');
     networkType = registerOutput<String>('networkType');
     optionGroupName = registerOutput<String>('optionGroupName');

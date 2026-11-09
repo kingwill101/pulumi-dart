@@ -179,7 +179,7 @@ import 'agentcore_resource_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -187,9 +187,9 @@ import 'agentcore_resource_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
 ///       variable = "aws:SourceVpc"
 ///       values   = ["vpc-1a2b3c4d"]
@@ -201,15 +201,21 @@ import 'agentcore_resource_policy_state.dart';
 ///     sid       = "AllowOAuthFromVPC"
 ///     effect    = "Allow"
 ///     actions   = ["bedrock-agentcore:InvokeAgentRuntime"]
-///     resources = [aws_bedrock_agentcoreagentruntime.example.agent_runtime_arn]
+///     resources = [aws_bedrock_agentcore_agent_runtime.example.agent_runtime_arn]
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoreagentruntime" "example" {
+/// resource "aws_bedrock_agentcore_agent_runtime" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_bedrock_agentcoreresourcepolicy" "example" {
-///   policy       = data.aws_iam_getpolicydocument.example.json
-///   resource_arn = aws_bedrock_agentcoreagentruntime.example.agent_runtime_arn
+/// resource "aws_bedrock_agentcore_resource_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy       = data.aws_iam_policy_document.example.json
+///   resource_arn = aws_bedrock_agentcore_agent_runtime.example.agent_runtime_arn
 /// }
 /// ```
 /// ```java
@@ -338,7 +344,7 @@ class AgentcoreResourcePolicy extends pulumi.CustomResource {
           'aws:bedrock/agentcoreResourcePolicy:AgentcoreResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

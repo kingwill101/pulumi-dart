@@ -67,7 +67,7 @@ import 'instance_desired_state_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,7 +75,10 @@ import 'instance_desired_state_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_rds_instancedesiredstate" "test" {
+/// resource "aws_rds_instance_desired_state" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identifier = testAwsDbInstance.identifier
 ///   state      = "available"
 /// }
@@ -102,7 +105,7 @@ import 'instance_desired_state_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new InstanceDesiredState("test", InstanceDesiredStateArgs.builder()
-///             .identifier(testAwsDbInstance.identifier())
+///             .identifier(testAwsDbInstance.get("identifier"))
 ///             .state("available")
 ///             .build());
 ///
@@ -147,7 +150,7 @@ class InstanceDesiredState extends pulumi.CustomResource {
           'aws:rds/instanceDesiredState:InstanceDesiredState',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     identifier = registerOutput<String>('identifier');
     region = registerOutput<String>('region');

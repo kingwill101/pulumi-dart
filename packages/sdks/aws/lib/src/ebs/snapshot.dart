@@ -91,7 +91,7 @@ import 'snapshot_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ebs.NewSnapshot(ctx, "example_snapshot", &ebs.SnapshotArgs{
-/// 			VolumeId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			VolumeId: example.ID(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("HelloWorld_snap"),
 /// 			},
@@ -104,7 +104,7 @@ import 'snapshot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -113,6 +113,9 @@ import 'snapshot_state.dart';
 /// }
 ///
 /// resource "aws_ebs_volume" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_zone = "us-west-2a"
 ///   size              = 40
 ///   tags = {
@@ -120,6 +123,9 @@ import 'snapshot_state.dart';
 ///   }
 /// }
 /// resource "aws_ebs_snapshot" "example_snapshot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   volume_id = aws_ebs_volume.example.id
 ///   tags = {
 ///     "Name" = "HelloWorld_snap"
@@ -235,7 +241,7 @@ class Snapshot extends pulumi.CustomResource {
           'aws:ebs/snapshot:Snapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dataEncryptionKeyId = registerOutput<String>('dataEncryptionKeyId');

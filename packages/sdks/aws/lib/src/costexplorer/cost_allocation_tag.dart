@@ -66,7 +66,7 @@ import 'cost_allocation_tag_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'cost_allocation_tag_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_costexplorer_costallocationtag" "example" {
+/// resource "aws_costexplorer_cost_allocation_tag" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tag_key = "example"
 ///   status  = "Active"
 /// }
@@ -178,7 +181,7 @@ import 'cost_allocation_tag_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -186,7 +189,10 @@ import 'cost_allocation_tag_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_costexplorer_costallocationtag" "example" {
+/// resource "aws_costexplorer_cost_allocation_tag" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tag_key = "accountTag/example"
 ///   status  = "Active"
 /// }
@@ -257,7 +263,7 @@ class CostAllocationTag extends pulumi.CustomResource {
           'aws:costexplorer/costAllocationTag:CostAllocationTag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     status = registerOutput<String>('status');
     tagKey = registerOutput<String>('tagKey');

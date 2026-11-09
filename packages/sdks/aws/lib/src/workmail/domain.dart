@@ -65,7 +65,7 @@ import 'domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,6 +74,9 @@ import 'domain_state.dart';
 /// }
 ///
 /// resource "aws_workmail_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization_id = exampleAwsWorkmailOrganization.id
 ///   domain_name     = "example.com"
 /// }
@@ -100,7 +103,7 @@ import 'domain_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Domain("example", DomainArgs.builder()
-///             .organizationId(exampleAwsWorkmailOrganization.id())
+///             .organizationId(exampleAwsWorkmailOrganization.get("id"))
 ///             .domainName("example.com")
 ///             .build());
 ///
@@ -167,7 +170,7 @@ class Domain extends pulumi.CustomResource {
           'aws:workmail/domain:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     dkimVerificationStatus = registerOutput<String>('dkimVerificationStatus');
     domainName = registerOutput<String>('domainName');

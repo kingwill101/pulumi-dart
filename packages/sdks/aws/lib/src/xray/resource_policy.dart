@@ -68,7 +68,7 @@ import 'resource_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,7 +76,10 @@ import 'resource_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_xray_resourcepolicy" "test" {
+/// resource "aws_xray_resource_policy" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_name                 = "test"
 ///   policy_document             = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"AllowXRayAccess\",\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"*\"},\"Action\":[\"xray:*\",\"xray:PutResourcePolicy\"],\"Resource\":\"*\"}]}"
 ///   bypass_policy_lockout_check = true
@@ -170,7 +173,7 @@ class ResourcePolicy extends pulumi.CustomResource {
           'aws:xray/resourcePolicy:ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     bypassPolicyLockoutCheck = registerOutput<bool?>('bypassPolicyLockoutCheck');
     lastUpdatedTime = registerOutput<String>('lastUpdatedTime');

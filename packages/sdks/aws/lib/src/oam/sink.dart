@@ -73,7 +73,7 @@ import 'sink_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,6 +82,9 @@ import 'sink_state.dart';
 /// }
 ///
 /// resource "aws_oam_sink" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "ExampleSink"
 ///   tags = {
 ///     "Env" = "prod"
@@ -162,7 +165,7 @@ class Sink extends pulumi.CustomResource {
           'aws:oam/sink:Sink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

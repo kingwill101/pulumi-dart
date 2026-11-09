@@ -186,7 +186,7 @@ import 'customer_managed_policy_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -194,14 +194,20 @@ import 'customer_managed_policy_attachment_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
 ///
-/// resource "aws_ssoadmin_permissionset" "example" {
+/// resource "aws_ssoadmin_permission_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "Example"
-///   instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+///   instance_arn = data.aws_ssoadmin_instances.example.arns[0]
 /// }
 /// resource "aws_iam_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "TestPolicy"
 ///   description = "My test policy"
 ///   policy = jsonencode({
@@ -213,13 +219,16 @@ import 'customer_managed_policy_attachment_state.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_ssoadmin_customermanagedpolicyattachment" "example" {
-///   customer_managed_policy_reference = {
+/// resource "aws_ssoadmin_customer_managed_policy_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   customer_managed_policy_reference {
 ///     name = aws_iam_policy.example.name
 ///     path = "/"
 ///   }
-///   instance_arn       = aws_ssoadmin_permissionset.example.instance_arn
-///   permission_set_arn = aws_ssoadmin_permissionset.example.arn
+///   instance_arn       = aws_ssoadmin_permission_set.example.instance_arn
+///   permission_set_arn = aws_ssoadmin_permission_set.example.arn
 /// }
 /// ```
 /// ```java
@@ -353,7 +362,7 @@ class CustomerManagedPolicyAttachment extends pulumi.CustomResource {
           'aws:ssoadmin/customerManagedPolicyAttachment:CustomerManagedPolicyAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     customerManagedPolicyReference = registerOutput<CustomerManagedPolicyAttachmentCustomerManagedPolicyReference>('customerManagedPolicyReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomerManagedPolicyAttachmentCustomerManagedPolicyReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceArn = registerOutput<String>('instanceArn');

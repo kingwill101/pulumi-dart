@@ -70,7 +70,7 @@ import 'v2_service_function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -78,7 +78,10 @@ import 'v2_service_function_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_resiliencehub_v2servicefunction" "example" {
+/// resource "aws_resiliencehub_v2_service_function" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_arn = exampleAwsResiliencehubv2Service.arn
 ///   name        = "example-function"
 ///   criticality = "PRIMARY"
@@ -106,7 +109,7 @@ import 'v2_service_function_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new V2ServiceFunction("example", V2ServiceFunctionArgs.builder()
-///             .serviceArn(exampleAwsResiliencehubv2Service.arn())
+///             .serviceArn(exampleAwsResiliencehubv2Service.get("arn"))
 ///             .name("example-function")
 ///             .criticality("PRIMARY")
 ///             .build());
@@ -191,7 +194,7 @@ import 'v2_service_function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -199,7 +202,10 @@ import 'v2_service_function_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_resiliencehub_v2servicefunction" "example" {
+/// resource "aws_resiliencehub_v2_service_function" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_arn = exampleAwsResiliencehubv2Service.arn
 ///   name        = "payment-processing"
 ///   description = "Handles payment transaction processing"
@@ -228,7 +234,7 @@ import 'v2_service_function_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new V2ServiceFunction("example", V2ServiceFunctionArgs.builder()
-///             .serviceArn(exampleAwsResiliencehubv2Service.arn())
+///             .serviceArn(exampleAwsResiliencehubv2Service.get("arn"))
 ///             .name("payment-processing")
 ///             .description("Handles payment transaction processing")
 ///             .criticality("PRIMARY")
@@ -297,7 +303,7 @@ class V2ServiceFunction extends pulumi.CustomResource {
           'aws:resiliencehub/v2ServiceFunction:V2ServiceFunction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     criticality = registerOutput<String>('criticality');
     description = registerOutput<String?>('description');

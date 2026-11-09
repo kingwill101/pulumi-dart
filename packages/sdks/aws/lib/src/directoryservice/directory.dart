@@ -137,7 +137,7 @@ import 'directory_vpc_settings.dart';
 /// 			return err
 /// 		}
 /// 		foo, err := ec2.NewSubnet(ctx, "foo", &ec2.SubnetArgs{
-/// 			VpcId:            main.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            main.ID(),
 /// 			AvailabilityZone: pulumi.String("us-west-2a"),
 /// 			CidrBlock:        pulumi.String("10.0.1.0/24"),
 /// 		})
@@ -145,7 +145,7 @@ import 'directory_vpc_settings.dart';
 /// 			return err
 /// 		}
 /// 		barSubnet, err := ec2.NewSubnet(ctx, "bar", &ec2.SubnetArgs{
-/// 			VpcId:            main.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            main.ID(),
 /// 			AvailabilityZone: pulumi.String("us-west-2b"),
 /// 			CidrBlock:        pulumi.String("10.0.2.0/24"),
 /// 		})
@@ -154,10 +154,10 @@ import 'directory_vpc_settings.dart';
 /// 		}
 /// 		_, err = directoryservice.NewDirectory(ctx, "bar", &directoryservice.DirectoryArgs{
 /// 			VpcSettings: &directoryservice.DirectoryVpcSettingsArgs{
-/// 				VpcId: main.ID().ToIDOutput().ToStringOutput(),
+/// 				VpcId: main.ID(),
 /// 				SubnetIds: pulumi.StringArray{
-/// 					foo.ID().ToIDOutput().ToStringOutput(),
-/// 					barSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 					foo.ID(),
+/// 					barSubnet.ID(),
 /// 				},
 /// 			},
 /// 			Name:     pulumi.String("corp.notexample.com"),
@@ -175,7 +175,7 @@ import 'directory_vpc_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -184,6 +184,9 @@ import 'directory_vpc_settings.dart';
 /// }
 ///
 /// resource "aws_directoryservice_directory" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_settings = {
 ///     vpc_id     = aws_ec2_vpc.main.id
 ///     subnet_ids = [aws_ec2_subnet.foo.id, aws_ec2_subnet.bar.id]
@@ -196,14 +199,23 @@ import 'directory_vpc_settings.dart';
 ///   }
 /// }
 /// resource "aws_ec2_vpc" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
 /// resource "aws_ec2_subnet" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.main.id
 ///   availability_zone = "us-west-2a"
 ///   cidr_block        = "10.0.1.0/24"
 /// }
 /// resource "aws_ec2_subnet" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.main.id
 ///   availability_zone = "us-west-2b"
 ///   cidr_block        = "10.0.2.0/24"
@@ -434,7 +446,7 @@ import 'directory_vpc_settings.dart';
 /// 			return err
 /// 		}
 /// 		foo, err := ec2.NewSubnet(ctx, "foo", &ec2.SubnetArgs{
-/// 			VpcId:            main.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            main.ID(),
 /// 			AvailabilityZone: pulumi.String("us-west-2a"),
 /// 			CidrBlock:        pulumi.String("10.0.1.0/24"),
 /// 		})
@@ -442,7 +454,7 @@ import 'directory_vpc_settings.dart';
 /// 			return err
 /// 		}
 /// 		barSubnet, err := ec2.NewSubnet(ctx, "bar", &ec2.SubnetArgs{
-/// 			VpcId:            main.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            main.ID(),
 /// 			AvailabilityZone: pulumi.String("us-west-2b"),
 /// 			CidrBlock:        pulumi.String("10.0.2.0/24"),
 /// 		})
@@ -451,10 +463,10 @@ import 'directory_vpc_settings.dart';
 /// 		}
 /// 		_, err = directoryservice.NewDirectory(ctx, "bar", &directoryservice.DirectoryArgs{
 /// 			VpcSettings: &directoryservice.DirectoryVpcSettingsArgs{
-/// 				VpcId: main.ID().ToIDOutput().ToStringOutput(),
+/// 				VpcId: main.ID(),
 /// 				SubnetIds: pulumi.StringArray{
-/// 					foo.ID().ToIDOutput().ToStringOutput(),
-/// 					barSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 					foo.ID(),
+/// 					barSubnet.ID(),
 /// 				},
 /// 			},
 /// 			Name:     pulumi.String("corp.notexample.com"),
@@ -473,7 +485,7 @@ import 'directory_vpc_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -482,6 +494,9 @@ import 'directory_vpc_settings.dart';
 /// }
 ///
 /// resource "aws_directoryservice_directory" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_settings = {
 ///     vpc_id     = aws_ec2_vpc.main.id
 ///     subnet_ids = [aws_ec2_subnet.foo.id, aws_ec2_subnet.bar.id]
@@ -495,14 +510,23 @@ import 'directory_vpc_settings.dart';
 ///   }
 /// }
 /// resource "aws_ec2_vpc" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
 /// resource "aws_ec2_subnet" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.main.id
 ///   availability_zone = "us-west-2a"
 ///   cidr_block        = "10.0.1.0/24"
 /// }
 /// resource "aws_ec2_subnet" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.main.id
 ///   availability_zone = "us-west-2b"
 ///   cidr_block        = "10.0.2.0/24"
@@ -734,7 +758,7 @@ import 'directory_vpc_settings.dart';
 /// 			return err
 /// 		}
 /// 		foo, err := ec2.NewSubnet(ctx, "foo", &ec2.SubnetArgs{
-/// 			VpcId:            main.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            main.ID(),
 /// 			AvailabilityZone: pulumi.String("us-west-2a"),
 /// 			CidrBlock:        pulumi.String("10.0.1.0/24"),
 /// 		})
@@ -742,7 +766,7 @@ import 'directory_vpc_settings.dart';
 /// 			return err
 /// 		}
 /// 		bar, err := ec2.NewSubnet(ctx, "bar", &ec2.SubnetArgs{
-/// 			VpcId:            main.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            main.ID(),
 /// 			AvailabilityZone: pulumi.String("us-west-2b"),
 /// 			CidrBlock:        pulumi.String("10.0.2.0/24"),
 /// 		})
@@ -756,10 +780,10 @@ import 'directory_vpc_settings.dart';
 /// 				},
 /// 				CustomerUsername: pulumi.String("Admin"),
 /// 				SubnetIds: pulumi.StringArray{
-/// 					foo.ID().ToIDOutput().ToStringOutput(),
-/// 					bar.ID().ToIDOutput().ToStringOutput(),
+/// 					foo.ID(),
+/// 					bar.ID(),
 /// 				},
-/// 				VpcId: main.ID().ToIDOutput().ToStringOutput(),
+/// 				VpcId: main.ID(),
 /// 			},
 /// 			Name:     pulumi.String("corp.notexample.com"),
 /// 			Password: pulumi.String("SuperSecretPassw0rd"),
@@ -774,7 +798,7 @@ import 'directory_vpc_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -783,6 +807,9 @@ import 'directory_vpc_settings.dart';
 /// }
 ///
 /// resource "aws_directoryservice_directory" "connector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connect_settings = {
 ///     customer_dns_ips  = ["A.B.C.D"]
 ///     customer_username = "Admin"
@@ -795,14 +822,23 @@ import 'directory_vpc_settings.dart';
 ///   type     = "ADConnector"
 /// }
 /// resource "aws_ec2_vpc" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
 /// resource "aws_ec2_subnet" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.main.id
 ///   availability_zone = "us-west-2a"
 ///   cidr_block        = "10.0.1.0/24"
 /// }
 /// resource "aws_ec2_subnet" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.main.id
 ///   availability_zone = "us-west-2b"
 ///   cidr_block        = "10.0.2.0/24"
@@ -963,7 +999,7 @@ class Directory extends pulumi.CustomResource {
           'aws:directoryservice/directory:Directory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['password'],
         ) {
     accessUrl = registerOutput<String>('accessUrl');

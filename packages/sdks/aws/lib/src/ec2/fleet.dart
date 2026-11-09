@@ -107,7 +107,7 @@ import 'fleet_target_capacity_specification.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -116,12 +116,15 @@ import 'fleet_target_capacity_specification.dart';
 /// }
 ///
 /// resource "aws_ec2_fleet" "example" {
-///   target_capacity_specification = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   target_capacity_specification {
 ///     default_target_capacity_type = "spot"
 ///     total_target_capacity        = 5
 ///   }
-///   launch_template_configs {
-///     launch_template_specification = {
+///   launch_template_config {
+///     launch_template_specification {
 ///       launch_template_id = exampleAwsLaunchTemplate.id
 ///       version            = exampleAwsLaunchTemplate.latestVersion
 ///     }
@@ -159,8 +162,8 @@ import 'fleet_target_capacity_specification.dart';
 ///                 .build())
 ///             .launchTemplateConfigs(FleetLaunchTemplateConfigArgs.builder()
 ///                 .launchTemplateSpecification(FleetLaunchTemplateConfigLaunchTemplateSpecificationArgs.builder()
-///                     .launchTemplateId(exampleAwsLaunchTemplate.id())
-///                     .version(exampleAwsLaunchTemplate.latestVersion())
+///                     .launchTemplateId(exampleAwsLaunchTemplate.get("id"))
+///                     .version(exampleAwsLaunchTemplate.get("latestVersion"))
 ///                     .build())
 ///                 .build())
 ///             .build());
@@ -244,7 +247,7 @@ class Fleet extends pulumi.CustomResource {
           'aws:ec2/fleet:Fleet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     context = registerOutput<String?>('context');

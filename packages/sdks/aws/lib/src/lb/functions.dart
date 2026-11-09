@@ -113,7 +113,7 @@ import 'get_trust_store_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -121,13 +121,16 @@ import 'get_trust_store_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_lb_gethostedzoneid" "main" {
+/// data "aws_lb_hosted_zone_id" "main" {
 /// }
 ///
 /// resource "aws_route53_record" "www" {
-///   aliases {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   alias {
 ///     name                   = mainAwsLb.dnsName
-///     zone_id                = data.aws_lb_gethostedzoneid.main.id
+///     zone_id                = data.aws_lb_hosted_zone_id.main.id
 ///     evaluate_target_health = true
 ///   }
 ///   zone_id = primary.zoneId
@@ -164,11 +167,11 @@ import 'get_trust_store_result.dart';
 ///
 ///         var www = new Record("www", RecordArgs.builder()
 ///             .aliases(RecordAliasArgs.builder()
-///                 .name(mainAwsLb.dnsName())
+///                 .name(mainAwsLb.get("dnsName"))
 ///                 .zoneId(main.id())
 ///                 .evaluateTargetHealth(true)
 ///                 .build())
-///             .zoneId(primary.zoneId())
+///             .zoneId(primary.get("zoneId"))
 ///             .name("example.com")
 ///             .type("A")
 ///             .build());
@@ -287,7 +290,7 @@ pulumi.Output<GetHostedZoneIdResult> getHostedZoneIdOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -295,7 +298,7 @@ pulumi.Output<GetHostedZoneIdResult> getHostedZoneIdOutput(
 ///   }
 /// }
 ///
-/// data "aws_lb_getlbs" "example" {
+/// data "aws_lb_lbs" "example" {
 ///   tags = {
 ///     "elbv2.k8s.aws/cluster" = "my-cluster"
 ///   }
@@ -470,7 +473,7 @@ pulumi.Output<GetLbsResult> getLbsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -478,14 +481,14 @@ pulumi.Output<GetLbsResult> getLbsOutput(
 ///   }
 /// }
 ///
-/// data "aws_lb_getlistener" "listener" {
+/// data "aws_lb_listener" "listener" {
 ///   arn = var.listenerArn
 /// }
-/// data "aws_lb_getloadbalancer" "selected" {
+/// data "aws_lb_load_balancer" "selected" {
 ///   name = "default-public"
 /// }
-/// data "aws_lb_getlistener" "selected443" {
-///   load_balancer_arn = data.aws_lb_getloadbalancer.selected.arn
+/// data "aws_lb_listener" "selected443" {
+///   load_balancer_arn = data.aws_lb_load_balancer.selected.arn
 ///   port              = 443
 /// }
 ///
@@ -652,7 +655,7 @@ pulumi.Output<GetListenerResult> getListenerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -660,7 +663,7 @@ pulumi.Output<GetListenerResult> getListenerOutput(
 ///   }
 /// }
 ///
-/// data "aws_lb_getlistenerrule" "example" {
+/// data "aws_lb_listener_rule" "example" {
 ///   arn = var.lbRuleArn
 /// }
 ///
@@ -750,7 +753,7 @@ pulumi.Output<GetListenerResult> getListenerOutput(
 ///     var example = Aws.LB.GetListenerRule.Invoke(new()
 ///     {
 ///         ListenerArn = lbListenerArn,
-///         Priority = lbRulePriority,
+///         Priority = (int)lbRulePriority,
 ///     });
 ///
 /// });
@@ -781,7 +784,7 @@ pulumi.Output<GetListenerResult> getListenerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -789,7 +792,7 @@ pulumi.Output<GetListenerResult> getListenerOutput(
 ///   }
 /// }
 ///
-/// data "aws_lb_getlistenerrule" "example" {
+/// data "aws_lb_listener_rule" "example" {
 ///   listener_arn = var.lbListenerArn
 ///   priority     = var.lbRulePriority
 /// }
@@ -961,7 +964,7 @@ pulumi.Output<GetListenerRuleResult> getListenerRuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -969,7 +972,7 @@ pulumi.Output<GetListenerRuleResult> getListenerRuleOutput(
 ///   }
 /// }
 ///
-/// data "aws_lb_getloadbalancer" "test" {
+/// data "aws_lb_load_balancer" "test" {
 ///   arn  = var.lbArn
 ///   name = var.lbName
 /// }
@@ -1145,7 +1148,7 @@ pulumi.Output<GetLoadBalancerResult> getLoadBalancerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1153,7 +1156,7 @@ pulumi.Output<GetLoadBalancerResult> getLoadBalancerOutput(
 ///   }
 /// }
 ///
-/// data "aws_lb_gettargetgroup" "test" {
+/// data "aws_lb_target_group" "test" {
 ///   arn  = var.lbTgArn
 ///   name = var.lbTgName
 /// }
@@ -1327,7 +1330,7 @@ pulumi.Output<GetTargetGroupResult> getTargetGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1335,7 +1338,7 @@ pulumi.Output<GetTargetGroupResult> getTargetGroupOutput(
 ///   }
 /// }
 ///
-/// data "aws_lb_gettruststore" "test" {
+/// data "aws_lb_trust_store" "test" {
 ///   arn  = var.lbTsArn
 ///   name = var.lbTsName
 /// }

@@ -66,7 +66,7 @@ import 'tag_option_resource_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'tag_option_resource_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_servicecatalog_tagoptionresourceassociation" "example" {
+/// resource "aws_servicecatalog_tag_option_resource_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_id   = "prod-dnigbtea24ste"
 ///   tag_option_id = "tag-pjtvyakdlyo3m"
 /// }
@@ -153,7 +156,7 @@ class TagOptionResourceAssociation extends pulumi.CustomResource {
           'aws:servicecatalog/tagOptionResourceAssociation:TagOptionResourceAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');

@@ -147,7 +147,7 @@ import 'cluster_peering_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -156,24 +156,36 @@ import 'cluster_peering_timeouts.dart';
 /// }
 ///
 /// resource "aws_dsql_cluster" "example_1" {
-///   multi_region_properties = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   multi_region_properties {
 ///     witness_region = "us-west-2"
 ///   }
 /// }
 /// resource "aws_dsql_cluster" "example_2" {
-///   multi_region_properties = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   multi_region_properties {
 ///     witness_region = "us-west-2"
 ///   }
 /// }
-/// resource "aws_dsql_clusterpeering" "example_1" {
+/// resource "aws_dsql_cluster_peering" "example_1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identifier     = aws_dsql_cluster.example_1.identifier
 ///   clusters       = [aws_dsql_cluster.example_2.arn]
-///   witness_region = aws_dsql_cluster.example_1.multi_region_properties.witness_region
+///   witness_region = aws_dsql_cluster.example_1.multi_region_properties[0].witness_region
 /// }
-/// resource "aws_dsql_clusterpeering" "example_2" {
+/// resource "aws_dsql_cluster_peering" "example_2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identifier     = aws_dsql_cluster.example_2.identifier
 ///   clusters       = [aws_dsql_cluster.example_1.arn]
-///   witness_region = aws_dsql_cluster.example_2.multi_region_properties.witness_region
+///   witness_region = aws_dsql_cluster.example_2.multi_region_properties[0].witness_region
 /// }
 /// ```
 /// ```java
@@ -290,7 +302,7 @@ class ClusterPeering extends pulumi.CustomResource {
           'aws:dsql/clusterPeering:ClusterPeering',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     clusters = registerOutput<List<String>>('clusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     identifier = registerOutput<String>('identifier');

@@ -230,7 +230,7 @@ import 'account_throttle_setting.dart';
 /// 		}
 /// 		_, err = iam.NewRolePolicy(ctx, "cloudwatch", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("default"),
-/// 			Role:   cloudwatchRole.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   cloudwatchRole.ID(),
 /// 			Policy: pulumi.String(cloudwatch.Json),
 /// 		})
 /// 		if err != nil {
@@ -241,7 +241,7 @@ import 'account_throttle_setting.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -249,8 +249,8 @@ import 'account_throttle_setting.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["apigateway.amazonaws.com"]
@@ -259,8 +259,8 @@ import 'account_throttle_setting.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "cloudwatch" {
-///   statements {
+/// data "aws_iam_policy_document" "cloudwatch" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["logs:CreateLogGroup", "logs:CreateLogStream", "logs:DescribeLogGroups", "logs:DescribeLogStreams", "logs:PutLogEvents", "logs:GetLogEvents", "logs:FilterLogEvents"]
 ///     resources = ["*"]
@@ -268,16 +268,25 @@ import 'account_throttle_setting.dart';
 /// }
 ///
 /// resource "aws_apigateway_account" "demo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloudwatch_role_arn = aws_iam_role.cloudwatch.arn
 /// }
 /// resource "aws_iam_role" "cloudwatch" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "api_gateway_cloudwatch_global"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iam_rolepolicy" "cloudwatch" {
+/// resource "aws_iam_role_policy" "cloudwatch" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "default"
 ///   role   = aws_iam_role.cloudwatch.id
-///   policy = data.aws_iam_getpolicydocument.cloudwatch.json
+///   policy = data.aws_iam_policy_document.cloudwatch.json
 /// }
 /// ```
 /// ```java
@@ -435,7 +444,7 @@ class Account extends pulumi.CustomResource {
           'aws:apigateway/account:Account',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     apiKeyVersion = registerOutput<String>('apiKeyVersion');
     cloudwatchRoleArn = registerOutput<String>('cloudwatchRoleArn');

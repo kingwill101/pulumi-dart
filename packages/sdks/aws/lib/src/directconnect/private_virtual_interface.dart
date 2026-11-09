@@ -74,7 +74,7 @@ import 'private_virtual_interface_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,7 +82,10 @@ import 'private_virtual_interface_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_directconnect_privatevirtualinterface" "foo" {
+/// resource "aws_directconnect_private_virtual_interface" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_id  = "dxcon-zzzzzzzz"
 ///   name           = "vif-foo"
 ///   vlan           = 4094
@@ -204,7 +207,7 @@ class PrivateVirtualInterface extends pulumi.CustomResource {
           'aws:directconnect/privateVirtualInterface:PrivateVirtualInterface',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     addressFamily = registerOutput<String>('addressFamily');
     amazonAddress = registerOutput<String>('amazonAddress');

@@ -103,7 +103,7 @@ import 'directory_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -111,12 +111,15 @@ import 'directory_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appstream_directoryconfig" "example" {
-///   service_account_credentials = {
+/// resource "aws_appstream_directory_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service_account_credentials {
 ///     account_name     = "NAME OF ACCOUNT"
 ///     account_password = "PASSWORD OF ACCOUNT"
 ///   }
-///   certificate_based_auth_properties = {
+///   certificate_based_auth_properties {
 ///     certificate_authority_arn = "ARN OF CERTIFICATE AUTHORITY"
 ///     status                    = "STATUS OF CERTIFICATE BASED AUTHENTICATION"
 ///   }
@@ -213,7 +216,7 @@ class DirectoryConfig extends pulumi.CustomResource {
           'aws:appstream/directoryConfig:DirectoryConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     certificateBasedAuthProperties = registerOutput<DirectoryConfigCertificateBasedAuthProperties?>('certificateBasedAuthProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryConfigCertificateBasedAuthProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdTime = registerOutput<String>('createdTime');

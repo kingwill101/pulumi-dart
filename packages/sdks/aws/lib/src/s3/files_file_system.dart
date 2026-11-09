@@ -63,7 +63,7 @@ import 'files_file_system_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,7 +71,10 @@ import 'files_file_system_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_filesfilesystem" "example" {
+/// resource "aws_s3_files_file_system" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket   = exampleAwsS3Bucket.arn
 ///   role_arn = exampleAwsIamRole.arn
 /// }
@@ -98,8 +101,8 @@ import 'files_file_system_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new FilesFileSystem("example", FilesFileSystemArgs.builder()
-///             .bucket(exampleAwsS3Bucket.arn())
-///             .roleArn(exampleAwsIamRole.arn())
+///             .bucket(exampleAwsS3Bucket.get("arn"))
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -179,7 +182,7 @@ class FilesFileSystem extends pulumi.CustomResource {
           'aws:s3/filesFileSystem:FilesFileSystem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     acceptBucketWarning = registerOutput<bool?>('acceptBucketWarning');
     arn = registerOutput<String>('arn');

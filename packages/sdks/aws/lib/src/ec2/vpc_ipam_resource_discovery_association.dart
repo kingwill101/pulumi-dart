@@ -79,7 +79,7 @@ import 'vpc_ipam_resource_discovery_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -87,7 +87,10 @@ import 'vpc_ipam_resource_discovery_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcipamresourcediscoveryassociation" "test" {
+/// resource "aws_ec2_vpc_ipam_resource_discovery_association" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ipam_id                    = testAwsVpcIpam.id
 ///   ipam_resource_discovery_id = testAwsVpcIpamResourceDiscovery.id
 ///   tags = {
@@ -117,8 +120,8 @@ import 'vpc_ipam_resource_discovery_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new VpcIpamResourceDiscoveryAssociation("test", VpcIpamResourceDiscoveryAssociationArgs.builder()
-///             .ipamId(testAwsVpcIpam.id())
-///             .ipamResourceDiscoveryId(testAwsVpcIpamResourceDiscovery.id())
+///             .ipamId(testAwsVpcIpam.get("id"))
+///             .ipamResourceDiscoveryId(testAwsVpcIpamResourceDiscovery.get("id"))
 ///             .tags(Map.of("Name", "test"))
 ///             .build());
 ///
@@ -180,7 +183,7 @@ class VpcIpamResourceDiscoveryAssociation extends pulumi.CustomResource {
           'aws:ec2/vpcIpamResourceDiscoveryAssociation:VpcIpamResourceDiscoveryAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     ipamArn = registerOutput<String>('ipamArn');

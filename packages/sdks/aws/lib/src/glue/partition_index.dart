@@ -406,7 +406,7 @@ import 'partition_index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -414,38 +414,45 @@ import 'partition_index_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_glue_catalogdatabase" "example" {
+/// resource "aws_glue_catalog_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
-/// resource "aws_glue_catalogtable" "example" {
-///   storage_descriptor = {
-///     ser_de_info = {
+/// resource "aws_glue_catalog_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   storage_descriptor {
+///     ser_de_info {
 ///       name = "ser_de_name"
 ///       parameters = {
 ///         "param1" = "param_val_1"
 ///       }
 ///       serialization_library = "org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe"
 ///     }
-///     skewed_info = {
+///     skewed_info {
 ///       skewed_column_names = ["my_column_1"]
 ///       skewed_column_value_location_maps = {
 ///         "my_column_1" = "my_column_1_val_loc_map"
 ///       }
 ///       skewed_column_values = ["skewed_val_1"]
 ///     }
-///     columns = [{
-///       "name"    = "my_column_1"
-///       "type"    = "int"
-///       "comment" = "my_column1_comment"
-///       }, {
-///       "name"    = "my_column_2"
-///       "type"    = "string"
-///       "comment" = "my_column2_comment"
-///     }]
-///     sort_columns = [{
-///       "column"    = "my_column_1"
-///       "sortOrder" = 1
-///     }]
+///     columns {
+///       name    = "my_column_1"
+///       type    = "int"
+///       comment = "my_column1_comment"
+///     }
+///     columns {
+///       name    = "my_column_2"
+///       type    = "string"
+///       comment = "my_column2_comment"
+///     }
+///     sort_columns {
+///       column     = "my_column_1"
+///       sort_order = 1
+///     }
 ///     bucket_columns            = ["bucket_column_1"]
 ///     compressed                = false
 ///     input_format              = "SequenceFileInputFormat"
@@ -468,7 +475,7 @@ import 'partition_index_state.dart';
 ///     comment = "my_column_2_comment"
 ///   }
 ///   name               = "example"
-///   database_name      = aws_glue_catalogdatabase.example.name
+///   database_name      = aws_glue_catalog_database.example.name
 ///   owner              = "my_owner"
 ///   retention          = 1
 ///   table_type         = "VIRTUAL_VIEW"
@@ -478,13 +485,16 @@ import 'partition_index_state.dart';
 ///     "param1" = "param1_val"
 ///   }
 /// }
-/// resource "aws_glue_partitionindex" "example" {
-///   partition_index = {
+/// resource "aws_glue_partition_index" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   partition_index {
 ///     index_name = "example"
 ///     keys       = ["my_column_1", "my_column_2"]
 ///   }
-///   database_name = aws_glue_catalogdatabase.example.name
-///   table_name    = aws_glue_catalogtable.example.name
+///   database_name = aws_glue_catalog_database.example.name
+///   table_name    = aws_glue_catalog_table.example.name
 /// }
 /// ```
 /// ```java
@@ -698,7 +708,7 @@ class PartitionIndex extends pulumi.CustomResource {
           'aws:glue/partitionIndex:PartitionIndex',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     catalogId = registerOutput<String>('catalogId');
     databaseName = registerOutput<String>('databaseName');

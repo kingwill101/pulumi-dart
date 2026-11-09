@@ -71,7 +71,7 @@ import 'route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -80,6 +80,9 @@ import 'route_state.dart';
 /// }
 ///
 /// resource "aws_ec2_route" "r" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   route_table_id            = testing.id
 ///   destination_cidr_block    = "10.0.1.0/22"
 ///   vpc_peering_connection_id = "pcx-45ff3dc1"
@@ -107,7 +110,7 @@ import 'route_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var r = new Route("r", RouteArgs.builder()
-///             .routeTableId(testing.id())
+///             .routeTableId(testing.get("id"))
 ///             .destinationCidrBlock("10.0.1.0/22")
 ///             .vpcPeeringConnectionId("pcx-45ff3dc1")
 ///             .build());
@@ -203,7 +206,7 @@ import 'route_state.dart';
 /// 			return err
 /// 		}
 /// 		egress, err := ec2.NewEgressOnlyInternetGateway(ctx, "egress", &ec2.EgressOnlyInternetGatewayArgs{
-/// 			VpcId: vpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId: vpc.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -211,7 +214,7 @@ import 'route_state.dart';
 /// 		_, err = ec2.NewRoute(ctx, "r", &ec2.RouteArgs{
 /// 			RouteTableId:             pulumi.String("rtb-4fbb3ac4"),
 /// 			DestinationIpv6CidrBlock: pulumi.String("::/0"),
-/// 			EgressOnlyGatewayId:      egress.ID().ToIDOutput().ToStringOutput(),
+/// 			EgressOnlyGatewayId:      egress.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -221,7 +224,7 @@ import 'route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -230,16 +233,25 @@ import 'route_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "vpc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block                       = "10.1.0.0/16"
 ///   assign_generated_ipv6_cidr_block = true
 /// }
-/// resource "aws_ec2_egressonlyinternetgateway" "egress" {
+/// resource "aws_ec2_egress_only_internet_gateway" "egress" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id = aws_ec2_vpc.vpc.id
 /// }
 /// resource "aws_ec2_route" "r" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   route_table_id              = "rtb-4fbb3ac4"
 ///   destination_ipv6_cidr_block = "::/0"
-///   egress_only_gateway_id      = aws_ec2_egressonlyinternetgateway.egress.id
+///   egress_only_gateway_id      = aws_ec2_egress_only_internet_gateway.egress.id
 /// }
 /// ```
 /// ```java
@@ -409,7 +421,7 @@ class Route extends pulumi.CustomResource {
           'aws:ec2/route:Route',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     carrierGatewayId = registerOutput<String?>('carrierGatewayId');
     coreNetworkArn = registerOutput<String?>('coreNetworkArn');

@@ -4,7 +4,7 @@ import 'core_network_connector_configuration.dart';
 import 'core_network_connector_state.dart';
 import 'core_network_connector_timeouts.dart';
 
-/// Manages an AWS Lambda Network Connector. A network connector provisions elastic network interfaces (ENIs) in the subnets you specify, routing outbound traffic from [Lambda MicroVMs](https://docs.aws.amazon.com/lambda/latest/dg/microvms-networking.html) through your VPC — for example to reach private resources, or to give MicroVM traffic a stable source IP by exiting through your NAT gateway.
+/// Manages an AWS Lambda Network Connector. A network connector provisions elastic network interfaces (ENIs) in the subnets you specify, routing outbound traffic from [Lambda MicroVMs](https://docs.aws.amazon.com/lambda/latest/dg/microvms-networking.html) or [Lambda Web Functions](https://docs.aws.amazon.com/lambda/latest/dg/web-functions-networking.html) through your VPC — for example to reach private resources, or to give MicroVM traffic a stable source IP by exiting through your NAT gateway.
 ///
 /// ## Example Usage
 ///
@@ -308,7 +308,7 @@ import 'core_network_connector_timeouts.dart';
 /// json1 := string(tmpJSON1)
 /// _, err = iam.NewRolePolicy(ctx, "example", &iam.RolePolicyArgs{
 /// Name: pulumi.String("example-network-connector-operator"),
-/// Role: exampleRole.ID().ToIDOutput().ToStringOutput(),
+/// Role: exampleRole.ID(),
 /// Policy: pulumi.String(json1),
 /// })
 /// if err != nil {
@@ -319,7 +319,7 @@ import 'core_network_connector_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -327,7 +327,10 @@ import 'core_network_connector_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_corenetworkconnector" "example" {
+/// resource "aws_lambda_core_network_connector" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration = {
 ///     vpc_egress_configuration = {
 ///       associated_compute_resource_types = ["MicroVm"]
@@ -340,6 +343,9 @@ import 'core_network_connector_timeouts.dart';
 ///   operator_role = aws_iam_role.example.arn
 /// }
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-network-connector-operator"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -352,7 +358,10 @@ import 'core_network_connector_timeouts.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_iam_rolepolicy" "example" {
+/// resource "aws_iam_role_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-network-connector-operator"
 ///   role = aws_iam_role.example.id
 ///   policy = jsonencode({
@@ -424,8 +433,8 @@ import 'core_network_connector_timeouts.dart';
 ///                 .vpcEgressConfiguration(CoreNetworkConnectorConfigurationVpcEgressConfigurationArgs.builder()
 ///                     .associatedComputeResourceTypes("MicroVm")
 ///                     .networkProtocol("IPv4")
-///                     .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
-///                     .securityGroupIds(exampleAwsSecurityGroup.id())
+///                     .subnetIds(exampleAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
+///                     .securityGroupIds(exampleAwsSecurityGroup.get("id"))
 ///                     .build())
 ///                 .build())
 ///             .name("example")
@@ -489,6 +498,10 @@ class CoreNetworkConnector extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Network configuration of the connector. See `configuration` Block below.
   late final pulumi.Output<CoreNetworkConnectorConfiguration> configuration;
+  /// Number of the connector's latest version. Each configuration change creates a new immutable version.
+  late final pulumi.Output<int> latestVersion;
+  /// Version-qualified ARN of the connector's latest version. Use it for `service_config.egress_network_connector_arn` on an `aws.lambdaweb.FunctionRevision` resource.
+  late final pulumi.Output<String> latestVersionArn;
   /// Name of the network connector, unique within the account and Region. Changing this forces a new resource.
   late final pulumi.Output<String> name;
   /// ARN of the IAM role that the network connector service assumes to manage elastic network interfaces in your VPC.
@@ -511,10 +524,12 @@ class CoreNetworkConnector extends pulumi.CustomResource {
           'aws:lambda/coreNetworkConnector:CoreNetworkConnector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     configuration = registerOutput<CoreNetworkConnectorConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CoreNetworkConnectorConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    latestVersion = registerOutput<int>('latestVersion');
+    latestVersionArn = registerOutput<String>('latestVersionArn');
     this.name = registerOutput<String>('name');
     operatorRole = registerOutput<String>('operatorRole');
     region = registerOutput<String>('region');
@@ -547,6 +562,8 @@ class CoreNetworkConnector extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     configuration = registerOutput<CoreNetworkConnectorConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CoreNetworkConnectorConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    latestVersion = registerOutput<int>('latestVersion');
+    latestVersionArn = registerOutput<String>('latestVersionArn');
     this.name = registerOutput<String>('name');
     operatorRole = registerOutput<String>('operatorRole');
     region = registerOutput<String>('region');
@@ -564,6 +581,8 @@ class CoreNetworkConnector extends pulumi.CustomResource {
       ) {
     arn = registerOutput<String>('arn');
     configuration = registerOutput<CoreNetworkConnectorConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CoreNetworkConnectorConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    latestVersion = registerOutput<int>('latestVersion');
+    latestVersionArn = registerOutput<String>('latestVersionArn');
     this.name = registerOutput<String>('name');
     operatorRole = registerOutput<String>('operatorRole');
     region = registerOutput<String>('region');

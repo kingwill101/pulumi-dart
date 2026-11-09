@@ -62,7 +62,7 @@ import 'channel_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'channel_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_mediapackagev2_channelgroup" "example" {
+/// resource "aws_mediapackagev2_channel_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   description = "channel group for example channels"
 /// }
@@ -149,7 +152,7 @@ class ChannelGroup extends pulumi.CustomResource {
           'aws:mediapackagev2/channelGroup:ChannelGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

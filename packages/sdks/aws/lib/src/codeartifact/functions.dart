@@ -59,7 +59,7 @@ import 'get_repository_endpoint_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,7 @@ import 'get_repository_endpoint_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_codeartifact_getauthorizationtoken" "test" {
+/// data "aws_codeartifact_authorization_token" "test" {
 ///   domain = testAwsCodeartifactDomain.domain
 /// }
 /// ```
@@ -93,7 +93,7 @@ import 'get_repository_endpoint_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = CodeartifactFunctions.getAuthorizationToken(GetAuthorizationTokenArgs.builder()
-///             .domain(testAwsCodeartifactDomain.domain())
+///             .domain(testAwsCodeartifactDomain.get("domain"))
 ///             .build());
 ///
 ///     }
@@ -196,7 +196,7 @@ pulumi.Output<GetAuthorizationTokenResult> getAuthorizationTokenOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -204,7 +204,7 @@ pulumi.Output<GetAuthorizationTokenResult> getAuthorizationTokenOutput(
 ///   }
 /// }
 ///
-/// data "aws_codeartifact_getrepositoryendpoint" "test" {
+/// data "aws_codeartifact_repository_endpoint" "test" {
 ///   domain     = testAwsCodeartifactDomain.domain
 ///   repository = testAwsCodeartifactRepository.repository
 ///   format     = "npm"
@@ -232,8 +232,8 @@ pulumi.Output<GetAuthorizationTokenResult> getAuthorizationTokenOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = CodeartifactFunctions.getRepositoryEndpoint(GetRepositoryEndpointArgs.builder()
-///             .domain(testAwsCodeartifactDomain.domain())
-///             .repository(testAwsCodeartifactRepository.repository())
+///             .domain(testAwsCodeartifactDomain.get("domain"))
+///             .repository(testAwsCodeartifactRepository.get("repository"))
 ///             .format("npm")
 ///             .build());
 ///

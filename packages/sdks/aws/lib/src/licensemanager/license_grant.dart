@@ -99,7 +99,7 @@ import 'license_grant_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -107,7 +107,10 @@ import 'license_grant_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_licensemanager_licensegrant" "test" {
+/// resource "aws_licensemanager_license_grant" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "share-license-with-account"
 ///   allowed_operations = ["ListPurchasedLicenses", "CheckoutLicense", "CheckInLicense", "ExtendConsumptionLicense", "CreateToken"]
 ///   license_arn        = "arn:aws:license-manager::111111111111:license:l-exampleARN"
@@ -211,7 +214,7 @@ class LicenseGrant extends pulumi.CustomResource {
           'aws:licensemanager/licenseGrant:LicenseGrant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     allowedOperations = registerOutput<List<String>>('allowedOperations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');

@@ -192,7 +192,7 @@ import 'repository_permissions_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -200,8 +200,8 @@ import 'repository_permissions_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
 ///       type        = "*"
 ///       identifiers = ["*"]
@@ -213,20 +213,32 @@ import 'repository_permissions_policy_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "domain key"
 /// }
 /// resource "aws_codeartifact_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain         = "example"
 ///   encryption_key = aws_kms_key.example.arn
 /// }
 /// resource "aws_codeartifact_repository" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   repository = "example"
 ///   domain     = aws_codeartifact_domain.example.domain
 /// }
-/// resource "aws_codeartifact_repositorypermissionspolicy" "example" {
+/// resource "aws_codeartifact_repository_permissions_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   repository      = aws_codeartifact_repository.example.repository
 ///   domain          = aws_codeartifact_domain.example.domain
-///   policy_document = data.aws_iam_getpolicydocument.example.json
+///   policy_document = data.aws_iam_policy_document.example.json
 /// }
 /// ```
 /// ```java
@@ -381,7 +393,7 @@ class RepositoryPermissionsPolicy extends pulumi.CustomResource {
           'aws:codeartifact/repositoryPermissionsPolicy:RepositoryPermissionsPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     domain = registerOutput<String>('domain');
     domainOwner = registerOutput<String>('domainOwner');

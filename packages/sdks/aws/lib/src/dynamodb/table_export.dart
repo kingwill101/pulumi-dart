@@ -141,7 +141,7 @@ import 'table_export_state.dart';
 /// 		}
 /// 		_, err = dynamodb.NewTableExport(ctx, "example", &dynamodb.TableExportArgs{
 /// 			TableArn: exampleTable.Arn,
-/// 			S3Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			S3Bucket: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -151,7 +151,7 @@ import 'table_export_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -160,14 +160,20 @@ import 'table_export_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket_prefix = "example"
 ///   force_destroy = true
 /// }
 /// resource "aws_dynamodb_table" "example" {
-///   point_in_time_recovery = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   point_in_time_recovery {
 ///     enabled = true
 ///   }
-///   attributes {
+///   attribute {
 ///     name = "user_id"
 ///     type = "S"
 ///   }
@@ -175,7 +181,10 @@ import 'table_export_state.dart';
 ///   billing_mode = "PAY_PER_REQUEST"
 ///   hash_key     = "user_id"
 /// }
-/// resource "aws_dynamodb_tableexport" "example" {
+/// resource "aws_dynamodb_table_export" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   table_arn = aws_dynamodb_table.example.arn
 ///   s3_bucket = aws_s3_bucket.example.id
 /// }
@@ -323,7 +332,7 @@ import 'table_export_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -331,7 +340,10 @@ import 'table_export_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_dynamodb_tableexport" "example" {
+/// resource "aws_dynamodb_table_export" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   export_time = "2023-04-02T11:30:13+01:00"
 ///   s3_bucket   = exampleAwsS3Bucket.id
 ///   table_arn   = exampleAwsDynamodbTable.arn
@@ -360,8 +372,8 @@ import 'table_export_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new TableExport("example", TableExportArgs.builder()
 ///             .exportTime("2023-04-02T11:30:13+01:00")
-///             .s3Bucket(exampleAwsS3Bucket.id())
-///             .tableArn(exampleAwsDynamodbTable.arn())
+///             .s3Bucket(exampleAwsS3Bucket.get("id"))
+///             .tableArn(exampleAwsDynamodbTable.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -457,7 +469,7 @@ import 'table_export_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -465,8 +477,11 @@ import 'table_export_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_dynamodb_tableexport" "example" {
-///   incremental_export_specification = {
+/// resource "aws_dynamodb_table_export" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   incremental_export_specification {
 ///     export_from_time = "2025-02-09T12:00:00+01:00"
 ///     export_to_time   = "2025-02-09T13:00:00+01:00"
 ///   }
@@ -503,8 +518,8 @@ import 'table_export_state.dart';
 ///                 .exportToTime("2025-02-09T13:00:00+01:00")
 ///                 .build())
 ///             .exportType("INCREMENTAL_EXPORT")
-///             .s3Bucket(exampleAwsS3Bucket.id())
-///             .tableArn(exampleAwsDynamodbTable.arn())
+///             .s3Bucket(exampleAwsS3Bucket.get("id"))
+///             .tableArn(exampleAwsDynamodbTable.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -590,7 +605,7 @@ class TableExport extends pulumi.CustomResource {
           'aws:dynamodb/tableExport:TableExport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     billedSizeInBytes = registerOutput<int>('billedSizeInBytes');

@@ -56,7 +56,7 @@ import 'thing_type_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -64,7 +64,10 @@ import 'thing_type_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iot_thingtype" "foo" {
+/// resource "aws_iot_thing_type" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my_iot_thing"
 /// }
 /// ```
@@ -140,7 +143,7 @@ class ThingType extends pulumi.CustomResource {
           'aws:iot/thingType:ThingType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deprecated = registerOutput<bool?>('deprecated');

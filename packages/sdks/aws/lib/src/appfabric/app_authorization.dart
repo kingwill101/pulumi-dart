@@ -120,7 +120,7 @@ import 'app_authorization_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -128,13 +128,16 @@ import 'app_authorization_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appfabric_appauthorization" "example" {
-///   credential = {
-///     api_key_credentials = [{
-///       "apiKey" = "exampleapikeytoken"
-///     }]
+/// resource "aws_appfabric_app_authorization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   tenants {
+///   credential {
+///     api_key_credential {
+///       api_key = "exampleapikeytoken"
+///     }
+///   }
+///   tenant {
 ///     tenant_display_name = "example"
 ///     tenant_identifier   = "example"
 ///   }
@@ -243,7 +246,7 @@ class AppAuthorization extends pulumi.CustomResource {
           'aws:appfabric/appAuthorization:AppAuthorization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     app = registerOutput<String>('app');
     appBundleArn = registerOutput<String>('appBundleArn');

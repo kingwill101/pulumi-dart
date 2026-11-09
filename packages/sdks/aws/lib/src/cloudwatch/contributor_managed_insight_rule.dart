@@ -68,7 +68,7 @@ import 'contributor_managed_insight_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,7 +76,10 @@ import 'contributor_managed_insight_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_contributormanagedinsightrule" "example" {
+/// resource "aws_cloudwatch_contributor_managed_insight_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_arn  = test.arn
 ///   template_name = "VpcEndpointService-BytesByEndpointId-v1"
 ///   rule_state    = "DISABLED"
@@ -104,7 +107,7 @@ import 'contributor_managed_insight_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ContributorManagedInsightRule("example", ContributorManagedInsightRuleArgs.builder()
-///             .resourceArn(test.arn())
+///             .resourceArn(test.get("arn"))
 ///             .templateName("VpcEndpointService-BytesByEndpointId-v1")
 ///             .ruleState("DISABLED")
 ///             .build());
@@ -172,7 +175,7 @@ class ContributorManagedInsightRule extends pulumi.CustomResource {
           'aws:cloudwatch/contributorManagedInsightRule:ContributorManagedInsightRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');

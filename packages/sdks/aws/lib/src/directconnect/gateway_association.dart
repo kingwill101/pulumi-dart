@@ -98,14 +98,14 @@ import 'gateway_association_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleVpnGateway, err := ec2.NewVpnGateway(ctx, "example", &ec2.VpnGatewayArgs{
-/// 			VpcId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId: exampleVpc.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = directconnect.NewGatewayAssociation(ctx, "example", &directconnect.GatewayAssociationArgs{
-/// 			DxGatewayId:         example.ID().ToIDOutput().ToStringOutput(),
-/// 			AssociatedGatewayId: exampleVpnGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			DxGatewayId:         example.ID(),
+/// 			AssociatedGatewayId: exampleVpnGateway.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -115,7 +115,7 @@ import 'gateway_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -124,18 +124,30 @@ import 'gateway_association_state.dart';
 /// }
 ///
 /// resource "aws_directconnect_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
 ///   amazon_side_asn = "64512"
 /// }
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.255.255.0/28"
 /// }
-/// resource "aws_ec2_vpngateway" "example" {
+/// resource "aws_ec2_vpn_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id = aws_ec2_vpc.example.id
 /// }
-/// resource "aws_directconnect_gatewayassociation" "example" {
+/// resource "aws_directconnect_gateway_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dx_gateway_id         = aws_directconnect_gateway.example.id
-///   associated_gateway_id = aws_ec2_vpngateway.example.id
+///   associated_gateway_id = aws_ec2_vpn_gateway.example.id
 /// }
 /// ```
 /// ```java
@@ -301,8 +313,8 @@ import 'gateway_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = directconnect.NewGatewayAssociation(ctx, "example", &directconnect.GatewayAssociationArgs{
-/// 			DxGatewayId:         example.ID().ToIDOutput().ToStringOutput(),
-/// 			AssociatedGatewayId: exampleTransitGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			DxGatewayId:         example.ID(),
+/// 			AssociatedGatewayId: exampleTransitGateway.ID(),
 /// 			AllowedPrefixes: pulumi.StringArray{
 /// 				pulumi.String("10.255.255.0/30"),
 /// 				pulumi.String("10.255.255.8/30"),
@@ -316,7 +328,7 @@ import 'gateway_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -325,14 +337,23 @@ import 'gateway_association_state.dart';
 /// }
 ///
 /// resource "aws_directconnect_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
 ///   amazon_side_asn = "64512"
 /// }
-/// resource "aws_ec2transitgateway_transitgateway" "example" {
+/// resource "aws_ec2transitgateway_transit_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_directconnect_gatewayassociation" "example" {
+/// resource "aws_directconnect_gateway_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dx_gateway_id         = aws_directconnect_gateway.example.id
-///   associated_gateway_id = aws_ec2transitgateway_transitgateway.example.id
+///   associated_gateway_id = aws_ec2transitgateway_transit_gateway.example.id
 ///   allowed_prefixes      = ["10.255.255.0/30", "10.255.255.8/30"]
 /// }
 /// ```
@@ -501,14 +522,14 @@ import 'gateway_association_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleVpnGateway, err := ec2.NewVpnGateway(ctx, "example", &ec2.VpnGatewayArgs{
-/// 			VpcId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId: exampleVpc.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = directconnect.NewGatewayAssociation(ctx, "example", &directconnect.GatewayAssociationArgs{
-/// 			DxGatewayId:         example.ID().ToIDOutput().ToStringOutput(),
-/// 			AssociatedGatewayId: exampleVpnGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			DxGatewayId:         example.ID(),
+/// 			AssociatedGatewayId: exampleVpnGateway.ID(),
 /// 			AllowedPrefixes: pulumi.StringArray{
 /// 				pulumi.String("210.52.109.0/24"),
 /// 				pulumi.String("175.45.176.0/22"),
@@ -522,7 +543,7 @@ import 'gateway_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -531,18 +552,30 @@ import 'gateway_association_state.dart';
 /// }
 ///
 /// resource "aws_directconnect_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
 ///   amazon_side_asn = "64512"
 /// }
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.255.255.0/28"
 /// }
-/// resource "aws_ec2_vpngateway" "example" {
+/// resource "aws_ec2_vpn_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id = aws_ec2_vpc.example.id
 /// }
-/// resource "aws_directconnect_gatewayassociation" "example" {
+/// resource "aws_directconnect_gateway_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dx_gateway_id         = aws_directconnect_gateway.example.id
-///   associated_gateway_id = aws_ec2_vpngateway.example.id
+///   associated_gateway_id = aws_ec2_vpn_gateway.example.id
 ///   allowed_prefixes      = ["210.52.109.0/24", "175.45.176.0/22"]
 /// }
 /// ```
@@ -674,7 +707,7 @@ class GatewayAssociation extends pulumi.CustomResource {
           'aws:directconnect/gatewayAssociation:GatewayAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     allowedPrefixes = registerOutput<List<String>>('allowedPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     associatedGatewayId = registerOutput<String>('associatedGatewayId');

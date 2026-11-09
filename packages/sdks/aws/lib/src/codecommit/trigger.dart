@@ -105,7 +105,7 @@ import 'trigger_trigger.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -114,10 +114,16 @@ import 'trigger_trigger.dart';
 /// }
 ///
 /// resource "aws_codecommit_repository" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   repository_name = "test"
 /// }
 /// resource "aws_codecommit_trigger" "test" {
-///   triggers {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   trigger {
 ///     name            = "all"
 ///     events          = ["all"]
 ///     destination_arn = testAwsSnsTopic.arn
@@ -157,7 +163,7 @@ import 'trigger_trigger.dart';
 ///             .triggers(TriggerTriggerArgs.builder()
 ///                 .name("all")
 ///                 .events("all")
-///                 .destinationArn(testAwsSnsTopic.arn())
+///                 .destinationArn(testAwsSnsTopic.get("arn"))
 ///                 .build())
 ///             .repositoryName(test.repositoryName())
 ///             .build());
@@ -204,7 +210,7 @@ class Trigger extends pulumi.CustomResource {
           'aws:codecommit/trigger:Trigger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     configurationId = registerOutput<String>('configurationId');
     region = registerOutput<String>('region');

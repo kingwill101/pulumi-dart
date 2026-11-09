@@ -169,7 +169,7 @@ import 'image_recipe_systems_manager_agent.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -177,21 +177,24 @@ import 'image_recipe_systems_manager_agent.dart';
 ///   }
 /// }
 ///
-/// resource "aws_imagebuilder_imagerecipe" "example" {
-///   block_device_mappings {
-///     ebs = {
+/// resource "aws_imagebuilder_image_recipe" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   block_device_mapping {
+///     ebs {
 ///       delete_on_termination = true
 ///       volume_size           = 100
 ///       volume_type           = "gp2"
 ///     }
 ///     device_name = "/dev/xvdb"
 ///   }
-///   components {
-///     parameters {
+///   component {
+///     parameter {
 ///       name  = "Parameter1"
 ///       value = "Value1"
 ///     }
-///     parameters {
+///     parameter {
 ///       name  = "Parameter2"
 ///       value = "Value2"
 ///     }
@@ -246,10 +249,10 @@ import 'image_recipe_systems_manager_agent.dart';
 ///                         .name("Parameter2")
 ///                         .value("Value2")
 ///                         .build())
-///                 .componentArn(exampleAwsImagebuilderComponent.arn())
+///                 .componentArn(exampleAwsImagebuilderComponent.get("arn"))
 ///                 .build())
 ///             .name("example")
-///             .parentImage(String.format("arn:%s:imagebuilder:%s:aws:image/amazon-linux-2-x86/x.x.x", current.partition(),currentAwsRegion.region()))
+///             .parentImage(String.format("arn:%s:imagebuilder:%s:aws:image/amazon-linux-2-x86/x.x.x", current.get("partition"),currentAwsRegion.get("region")))
 ///             .version("1.0.0")
 ///             .build());
 ///
@@ -344,7 +347,7 @@ class ImageRecipe extends pulumi.CustomResource {
           'aws:imagebuilder/imageRecipe:ImageRecipe',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     amiTags = registerOutput<Map<String, String>?>('amiTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     arn = registerOutput<String>('arn');

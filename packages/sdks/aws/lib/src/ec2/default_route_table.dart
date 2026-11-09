@@ -121,7 +121,7 @@ import 'default_route_table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -129,7 +129,10 @@ import 'default_route_table_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_defaultroutetable" "example" {
+/// resource "aws_ec2_default_route_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   routes {
 ///     cidr_block = "10.0.1.0/24"
 ///     gateway_id = exampleAwsInternetGateway.id
@@ -170,13 +173,13 @@ import 'default_route_table_state.dart';
 ///             .routes(
 ///                 DefaultRouteTableRouteArgs.builder()
 ///                     .cidrBlock("10.0.1.0/24")
-///                     .gatewayId(exampleAwsInternetGateway.id())
+///                     .gatewayId(exampleAwsInternetGateway.get("id"))
 ///                     .build(),
 ///                 DefaultRouteTableRouteArgs.builder()
 ///                     .ipv6CidrBlock("::/0")
-///                     .egressOnlyGatewayId(exampleAwsEgressOnlyInternetGateway.id())
+///                     .egressOnlyGatewayId(exampleAwsEgressOnlyInternetGateway.get("id"))
 ///                     .build())
-///             .defaultRouteTableId(exampleAwsVpc.defaultRouteTableId())
+///             .defaultRouteTableId(exampleAwsVpc.get("defaultRouteTableId"))
 ///             .tags(Map.of("Name", "example"))
 ///             .build());
 ///
@@ -236,7 +239,7 @@ import 'default_route_table_state.dart';
 ///     var example = new Aws.Ec2.DefaultRouteTable("example", new()
 ///     {
 ///         DefaultRouteTableId = exampleAwsVpc.DefaultRouteTableId,
-///         Routes = new[] {},
+///         Routes = new() {},
 ///         Tags =
 ///         {
 ///             { "Name", "example" },
@@ -270,7 +273,7 @@ import 'default_route_table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -278,7 +281,10 @@ import 'default_route_table_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_defaultroutetable" "example" {
+/// resource "aws_ec2_default_route_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   default_route_table_id = exampleAwsVpc.defaultRouteTableId
 ///   tags = {
 ///     "Name" = "example"
@@ -307,7 +313,7 @@ import 'default_route_table_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DefaultRouteTable("example", DefaultRouteTableArgs.builder()
-///             .defaultRouteTableId(exampleAwsVpc.defaultRouteTableId())
+///             .defaultRouteTableId(exampleAwsVpc.get("defaultRouteTableId"))
 ///             .routes()
 ///             .tags(Map.of("Name", "example"))
 ///             .build());
@@ -368,7 +374,7 @@ class DefaultRouteTable extends pulumi.CustomResource {
           'aws:ec2/defaultRouteTable:DefaultRouteTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultRouteTableId = registerOutput<String>('defaultRouteTableId');

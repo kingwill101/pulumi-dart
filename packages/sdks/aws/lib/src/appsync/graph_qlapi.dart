@@ -70,7 +70,7 @@ import 'graph_qlapi_user_pool_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -78,7 +78,10 @@ import 'graph_qlapi_user_pool_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appsync_graphqlapi" "example" {
+/// resource "aws_appsync_graph_q_l_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authentication_type = "API_KEY"
 ///   name                = "example"
 /// }
@@ -180,7 +183,7 @@ import 'graph_qlapi_user_pool_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -188,7 +191,10 @@ import 'graph_qlapi_user_pool_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appsync_graphqlapi" "example" {
+/// resource "aws_appsync_graph_q_l_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authentication_type = "AWS_IAM"
 ///   name                = "example"
 /// }
@@ -311,7 +317,7 @@ import 'graph_qlapi_user_pool_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -319,7 +325,10 @@ import 'graph_qlapi_user_pool_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appsync_graphqlapi" "example" {
+/// resource "aws_appsync_graph_q_l_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user_pool_config = {
 ///     aws_region     = current.region
 ///     default_action = "DENY"
@@ -353,9 +362,9 @@ import 'graph_qlapi_user_pool_config.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new GraphQLApi("example", GraphQLApiArgs.builder()
 ///             .userPoolConfig(GraphQLApiUserPoolConfigArgs.builder()
-///                 .awsRegion(current.region())
+///                 .awsRegion(current.get("region"))
 ///                 .defaultAction("DENY")
-///                 .userPoolId(exampleAwsCognitoUserPool.id())
+///                 .userPoolId(exampleAwsCognitoUserPool.get("id"))
 ///                 .build())
 ///             .authenticationType("AMAZON_COGNITO_USER_POOLS")
 ///             .name("example")
@@ -449,7 +458,7 @@ import 'graph_qlapi_user_pool_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -457,7 +466,10 @@ import 'graph_qlapi_user_pool_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appsync_graphqlapi" "example" {
+/// resource "aws_appsync_graph_q_l_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   openid_connect_config = {
 ///     issuer = "https://example.com"
 ///   }
@@ -614,7 +626,7 @@ import 'graph_qlapi_user_pool_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -622,7 +634,10 @@ import 'graph_qlapi_user_pool_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appsync_graphqlapi" "example" {
+/// resource "aws_appsync_graph_q_l_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   lambda_authorizer_config = {
 ///     authorizer_uri = "arn:aws:lambda:us-east-1:123456789012:function:custom_lambda_authorizer"
 ///   }
@@ -630,11 +645,14 @@ import 'graph_qlapi_user_pool_config.dart';
 ///   name                = "example"
 /// }
 /// resource "aws_lambda_permission" "appsync_lambda_authorizer" {
-///   statement_id = "appsync_lambda_authorizer"
-///   action       = "lambda:InvokeFunction"
-///   function     = "custom_lambda_authorizer"
-///   principal    = "appsync.amazonaws.com"
-///   source_arn   = aws_appsync_graphqlapi.example.arn
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   statement_id  = "appsync_lambda_authorizer"
+///   action        = "lambda:InvokeFunction"
+///   function_name = "custom_lambda_authorizer"
+///   principal     = "appsync.amazonaws.com"
+///   source_arn    = aws_appsync_graph_q_l_api.example.arn
 /// }
 /// ```
 /// ```java
@@ -777,7 +795,7 @@ import 'graph_qlapi_user_pool_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -785,7 +803,10 @@ import 'graph_qlapi_user_pool_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appsync_graphqlapi" "example" {
+/// resource "aws_appsync_graph_q_l_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   additional_authentication_providers {
 ///     authentication_type = "AWS_IAM"
 ///   }
@@ -924,7 +945,7 @@ import 'graph_qlapi_user_pool_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -932,10 +953,21 @@ import 'graph_qlapi_user_pool_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appsync_graphqlapi" "example" {
+/// resource "aws_appsync_graph_q_l_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authentication_type = "AWS_IAM"
 ///   name                = "example"
-///   schema              = "schema {\n\\tquery: Query\n}\ntype Query {\n  test: Int\n}\n"
+///   schema              = <<EOF
+/// schema {
+/// \tquery: Query
+/// }
+/// type Query {
+///   test: Int
+/// }
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -1162,7 +1194,7 @@ import 'graph_qlapi_user_pool_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1170,8 +1202,8 @@ import 'graph_qlapi_user_pool_config.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["appsync.amazonaws.com"]
@@ -1182,14 +1214,23 @@ import 'graph_qlapi_user_pool_config.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iam_rolepolicyattachment" "example" {
+/// resource "aws_iam_role_policy_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSAppSyncPushToCloudWatchLogs"
 ///   role       = aws_iam_role.example.name
 /// }
-/// resource "aws_appsync_graphqlapi" "example" {
+/// resource "aws_appsync_graph_q_l_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   log_config = {
 ///     cloudwatch_logs_role_arn = aws_iam_role.example.arn
 ///     field_log_level          = "ERROR"
@@ -1517,7 +1558,7 @@ import 'graph_qlapi_user_pool_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1525,34 +1566,44 @@ import 'graph_qlapi_user_pool_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appsync_graphqlapi" "example" {
+/// resource "aws_appsync_graph_q_l_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authentication_type = "API_KEY"
 ///   name                = "example"
 /// }
-/// resource "aws_wafv2_webaclassociation" "example" {
-///   resource_arn = aws_appsync_graphqlapi.example.arn
-///   web_acl_arn  = aws_wafv2_webacl.example.arn
-/// }
-/// resource "aws_wafv2_webacl" "example" {
-///   default_action = {
-///     allow = {}
+/// resource "aws_wafv2_web_acl_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   visibility_config = {
+///   resource_arn = aws_appsync_graph_q_l_api.example.arn
+///   web_acl_arn  = aws_wafv2_web_acl.example.arn
+/// }
+/// resource "aws_wafv2_web_acl" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_action {
+///     allow {
+///     }
+///   }
+///   visibility_config {
 ///     cloudwatch_metrics_enabled = false
 ///     metric_name                = "friendly-metric-name"
 ///     sampled_requests_enabled   = false
 ///   }
-///   rules {
-///     override_action = {
+///   rule {
+///     override_action {
 ///       block = [{}]
 ///     }
-///     statement = {
-///       managed_rule_group_statement = {
+///     statement {
+///       managed_rule_group_statement {
 ///         name        = "AWSManagedRulesCommonRuleSet"
 ///         vendor_name = "AWS"
 ///       }
 ///     }
-///     visibility_config = {
+///     visibility_config {
 ///       cloudwatch_metrics_enabled = false
 ///       metric_name                = "friendly-rule-metric-name"
 ///       sampled_requests_enabled   = false
@@ -1618,10 +1669,12 @@ import 'graph_qlapi_user_pool_config.dart';
 ///                     .block(Arrays.asList(Map.ofEntries(
 ///                     )))
 ///                     .build())
-///                 .statement(Map.of("managedRuleGroupStatement", WebAclRuleStatementManagedRuleGroupStatementArgs.builder()
-///                     .name("AWSManagedRulesCommonRuleSet")
-///                     .vendorName("AWS")
-///                     .build()))
+///                 .statement(WebAclRuleStatementArgs.builder()
+///                     .managedRuleGroupStatement(WebAclRuleStatementManagedRuleGroupStatementArgs.builder()
+///                         .name("AWSManagedRulesCommonRuleSet")
+///                         .vendorName("AWS")
+///                         .build())
+///                     .build())
 ///                 .visibilityConfig(WebAclRuleVisibilityConfigArgs.builder()
 ///                     .cloudwatchMetricsEnabled(false)
 ///                     .metricName("friendly-rule-metric-name")
@@ -1756,7 +1809,7 @@ import 'graph_qlapi_user_pool_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1764,7 +1817,10 @@ import 'graph_qlapi_user_pool_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appsync_graphqlapi" "example" {
+/// resource "aws_appsync_graph_q_l_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authentication_type  = "AWS_IAM"
 ///   name                 = "example"
 ///   introspection_config = "ENABLED"
@@ -1884,7 +1940,7 @@ class GraphQLApi extends pulumi.CustomResource {
           'aws:appsync/graphQLApi:GraphQLApi',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     additionalAuthenticationProviders = registerOutput<List<GraphQLApiAdditionalAuthenticationProvider>?>('additionalAuthenticationProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GraphQLApiAdditionalAuthenticationProvider>(guardedValue, (value) => GraphQLApiAdditionalAuthenticationProvider.fromMap((value as Map).cast<String, dynamic>())); });
     apiType = registerOutput<String?>('apiType');

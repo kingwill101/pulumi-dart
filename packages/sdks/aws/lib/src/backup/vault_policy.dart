@@ -188,7 +188,7 @@ import 'vault_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -196,13 +196,13 @@ import 'vault_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
-///       identifiers = [data.aws_getcalleridentity.current.account_id]
+///       identifiers = [data.aws_caller_identity.current.account_id]
 ///     }
 ///     effect    = "Allow"
 ///     actions   = ["backup:DescribeBackupVault", "backup:DeleteBackupVault", "backup:PutBackupVaultAccessPolicy", "backup:DeleteBackupVaultAccessPolicy", "backup:GetBackupVaultAccessPolicy", "backup:StartBackupJob", "backup:GetBackupVaultNotifications", "backup:PutBackupVaultNotifications"]
@@ -211,11 +211,17 @@ import 'vault_policy_state.dart';
 /// }
 ///
 /// resource "aws_backup_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
-/// resource "aws_backup_vaultpolicy" "example" {
+/// resource "aws_backup_vault_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backup_vault_name = aws_backup_vault.example.name
-///   policy            = data.aws_iam_getpolicydocument.example.json
+///   policy            = data.aws_iam_policy_document.example.json
 /// }
 /// ```
 /// ```java
@@ -353,7 +359,7 @@ class VaultPolicy extends pulumi.CustomResource {
           'aws:backup/vaultPolicy:VaultPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     backupVaultArn = registerOutput<String>('backupVaultArn');
     backupVaultName = registerOutput<String>('backupVaultName');

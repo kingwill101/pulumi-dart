@@ -119,7 +119,7 @@ import 'hosted_configuration_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -127,7 +127,10 @@ import 'hosted_configuration_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appconfig_hostedconfigurationversion" "example" {
+/// resource "aws_appconfig_hosted_configuration_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_id           = exampleAwsAppconfigApplication.id
 ///   configuration_profile_id = exampleAwsAppconfigConfigurationProfile.configurationProfileId
 ///   description              = "Example Freeform Hosted Configuration Version"
@@ -162,8 +165,8 @@ import 'hosted_configuration_version_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new HostedConfigurationVersion("example", HostedConfigurationVersionArgs.builder()
-///             .applicationId(exampleAwsAppconfigApplication.id())
-///             .configurationProfileId(exampleAwsAppconfigConfigurationProfile.configurationProfileId())
+///             .applicationId(exampleAwsAppconfigApplication.get("id"))
+///             .configurationProfileId(exampleAwsAppconfigConfigurationProfile.get("configurationProfileId"))
 ///             .description("Example Freeform Hosted Configuration Version")
 ///             .contentType("application/json")
 ///             .content(serializeJson(
@@ -441,7 +444,7 @@ import 'hosted_configuration_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -449,7 +452,10 @@ import 'hosted_configuration_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appconfig_hostedconfigurationversion" "example" {
+/// resource "aws_appconfig_hosted_configuration_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_id           = exampleAwsAppconfigApplication.id
 ///   configuration_profile_id = exampleAwsAppconfigConfigurationProfile.configurationProfileId
 ///   description              = "Example Feature Flag Configuration Version"
@@ -517,8 +523,8 @@ import 'hosted_configuration_version_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new HostedConfigurationVersion("example", HostedConfigurationVersionArgs.builder()
-///             .applicationId(exampleAwsAppconfigApplication.id())
-///             .configurationProfileId(exampleAwsAppconfigConfigurationProfile.configurationProfileId())
+///             .applicationId(exampleAwsAppconfigApplication.get("id"))
+///             .configurationProfileId(exampleAwsAppconfigConfigurationProfile.get("configurationProfileId"))
 ///             .description("Example Feature Flag Configuration Version")
 ///             .contentType("application/json")
 ///             .content(serializeJson(
@@ -739,7 +745,7 @@ import 'hosted_configuration_version_state.dart';
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -761,7 +767,10 @@ import 'hosted_configuration_version_state.dart';
 ///   }]]
 /// }
 ///
-/// resource "aws_appconfig_hostedconfigurationversion" "example" {
+/// resource "aws_appconfig_hosted_configuration_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_id           = exampleAwsAppconfigApplication.id
 ///   configuration_profile_id = exampleAwsAppconfigConfigurationProfile.configurationProfileId
 ///   description              = "Example Multi-variant Feature Flag Configuration Version"
@@ -822,7 +831,7 @@ class HostedConfigurationVersion extends pulumi.CustomResource {
           'aws:appconfig/hostedConfigurationVersion:HostedConfigurationVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['content'],
         ) {
     applicationId = registerOutput<String>('applicationId');

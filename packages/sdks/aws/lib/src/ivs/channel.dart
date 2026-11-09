@@ -57,7 +57,7 @@ import 'channel_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -66,6 +66,9 @@ import 'channel_state.dart';
 /// }
 ///
 /// resource "aws_ivs_channel" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "channel-1"
 /// }
 /// ```
@@ -141,7 +144,7 @@ class Channel extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// Channel type, which determines the allowable resolution and bitrate. Valid values: `STANDARD`, `BASIC`.
+  /// Channel type, which determines the allowable resolution and bitrate. Valid values: `STANDARD`, `BASIC`, `ADVANCED_SD`, `ADVANCED_HD`.
   late final pulumi.Output<String> type;
 
   /// Creates a new [Channel].
@@ -156,7 +159,7 @@ class Channel extends pulumi.CustomResource {
           'aws:ivs/channel:Channel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     authorized = registerOutput<bool>('authorized');

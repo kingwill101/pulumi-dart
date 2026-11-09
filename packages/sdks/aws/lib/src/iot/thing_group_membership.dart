@@ -66,7 +66,7 @@ import 'thing_group_membership_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'thing_group_membership_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iot_thinggroupmembership" "example" {
+/// resource "aws_iot_thing_group_membership" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   thing_name             = "example-thing"
 ///   thing_group_name       = "example-group"
 ///   override_dynamic_group = true
@@ -150,7 +153,7 @@ class ThingGroupMembership extends pulumi.CustomResource {
           'aws:iot/thingGroupMembership:ThingGroupMembership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     overrideDynamicGroup = registerOutput<bool?>('overrideDynamicGroup');
     region = registerOutput<String>('region');

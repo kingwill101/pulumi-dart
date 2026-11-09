@@ -77,7 +77,7 @@ import 'contacts_email_contact_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -85,7 +85,10 @@ import 'contacts_email_contact_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_notifications_contactsemailcontact" "example" {
+/// resource "aws_notifications_contacts_email_contact" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "example-contact"
 ///   email_address = "example@example.com"
 ///   tags = {
@@ -173,7 +176,7 @@ class ContactsEmailContact extends pulumi.CustomResource {
           'aws:notifications/contactsEmailContact:ContactsEmailContact',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     emailAddress = registerOutput<String>('emailAddress');

@@ -262,9 +262,9 @@ import 'replication_instance_state.dart';
 /// 		// Database Migration Service requires the below IAM Roles to be created before
 /// 		// replication instances can be created. See the DMS Documentation for
 /// 		// additional information: https://docs.aws.amazon.com/dms/latest/userguide/security-iam.html#CHAP_Security.APIRole
-/// 		//   - dms-vpc-role
-/// 		//   - dms-cloudwatch-logs-role
-/// 		//   - dms-access-for-endpoint
+/// 		//  * dms-vpc-role
+/// 		//  * dms-cloudwatch-logs-role
+/// 		//  * dms-access-for-endpoint
 /// 		dmsAssumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
@@ -360,7 +360,7 @@ import 'replication_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -368,8 +368,8 @@ import 'replication_instance_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "dmsAssumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "dmsAssumeRole" {
+///   statement {
 ///     principals {
 ///       identifiers = ["dms.amazonaws.com"]
 ///       type        = "Service"
@@ -379,32 +379,53 @@ import 'replication_instance_state.dart';
 /// }
 ///
 /// resource "aws_iam_role" "dms-access-for-endpoint" {
-///   assume_role_policy = data.aws_iam_getpolicydocument.dmsAssumeRole.json
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   assume_role_policy = data.aws_iam_policy_document.dmsAssumeRole.json
 ///   name               = "dms-access-for-endpoint"
 /// }
-/// resource "aws_iam_rolepolicyattachment" "dms-access-for-endpoint-AmazonDMSRedshiftS3Role" {
+/// resource "aws_iam_role_policy_attachment" "dms-access-for-endpoint-AmazonDMSRedshiftS3Role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSRedshiftS3Role"
 ///   role       = aws_iam_role.dms-access-for-endpoint.name
 /// }
 /// resource "aws_iam_role" "dms-cloudwatch-logs-role" {
-///   assume_role_policy = data.aws_iam_getpolicydocument.dmsAssumeRole.json
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   assume_role_policy = data.aws_iam_policy_document.dmsAssumeRole.json
 ///   name               = "dms-cloudwatch-logs-role"
 /// }
-/// resource "aws_iam_rolepolicyattachment" "dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole" {
+/// resource "aws_iam_role_policy_attachment" "dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSCloudWatchLogsRole"
 ///   role       = aws_iam_role.dms-cloudwatch-logs-role.name
 /// }
 /// resource "aws_iam_role" "dms-vpc-role" {
-///   assume_role_policy = data.aws_iam_getpolicydocument.dmsAssumeRole.json
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   assume_role_policy = data.aws_iam_policy_document.dmsAssumeRole.json
 ///   name               = "dms-vpc-role"
 /// }
-/// resource "aws_iam_rolepolicyattachment" "dms-vpc-role-AmazonDMSVPCManagementRole" {
+/// resource "aws_iam_role_policy_attachment" "dms-vpc-role-AmazonDMSVPCManagementRole" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSVPCManagementRole"
 ///   role       = aws_iam_role.dms-vpc-role.name
 /// }
 /// # Create a new replication instance
-/// resource "aws_dms_replicationinstance" "test" {
-///   depends_on                   = [aws_iam_rolepolicyattachment.dms-access-for-endpoint-AmazonDMSRedshiftS3Role, aws_iam_rolepolicyattachment.dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole, aws_iam_rolepolicyattachment.dms-vpc-role-AmazonDMSVPCManagementRole]
+/// resource "aws_dms_replication_instance" "test" {
+///   depends_on = [aws_iam_role_policy_attachment.dms-access-for-endpoint-AmazonDMSRedshiftS3Role, aws_iam_role_policy_attachment.dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole, aws_iam_role_policy_attachment.dms-vpc-role-AmazonDMSVPCManagementRole]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocated_storage            = 20
 ///   apply_immediately            = true
 ///   auto_minor_version_upgrade   = true
@@ -518,7 +539,7 @@ import 'replication_instance_state.dart';
 ///             .publiclyAccessible(true)
 ///             .replicationInstanceClass("dms.t3.micro")
 ///             .replicationInstanceId("test-dms-replication-instance-tf")
-///             .replicationSubnetGroupId(test_dms_replication_subnet_group_tf.id())
+///             .replicationSubnetGroupId(test_dms_replication_subnet_group_tf.get("id"))
 ///             .tags(Map.of("Name", "test"))
 ///             .vpcSecurityGroupIds("sg-12345678")
 ///             .build(), CustomResourceOptions.builder()
@@ -676,7 +697,7 @@ class ReplicationInstance extends pulumi.CustomResource {
           'aws:dms/replicationInstance:ReplicationInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     allocatedStorage = registerOutput<int>('allocatedStorage');
     allowMajorVersionUpgrade = registerOutput<bool?>('allowMajorVersionUpgrade');

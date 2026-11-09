@@ -95,7 +95,7 @@ import 'container_service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -103,7 +103,10 @@ import 'container_service_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lightsail_containerservice" "example" {
+/// resource "aws_lightsail_container_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "container-service-1"
 ///   power       = "nano"
 ///   scale       = 1
@@ -247,7 +250,7 @@ import 'container_service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -255,12 +258,15 @@ import 'container_service_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lightsail_containerservice" "example" {
-///   public_domain_names = {
-///     certificates = [{
-///       "certificateName" = "example-certificate"
-///       "domainNames"     = ["www.example.com"]
-///     }]
+/// resource "aws_lightsail_container_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   public_domain_names {
+///     certificate {
+///       certificate_name = "example-certificate"
+///       domain_names     = ["www.example.com"]
+///     }
 ///   }
 /// }
 /// ```
@@ -475,7 +481,7 @@ import 'container_service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -483,27 +489,33 @@ import 'container_service_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
-///       identifiers = [aws_lightsail_containerservice.example.private_registry_access.ecr_image_puller_role.principal_arn]
+///       identifiers = [aws_lightsail_container_service.example.private_registry_access[0].ecr_image_puller_role[0].principal_arn]
 ///     }
 ///     effect  = "Allow"
 ///     actions = ["ecr:BatchGetImage", "ecr:GetDownloadUrlForLayer"]
 ///   }
 /// }
 ///
-/// resource "aws_lightsail_containerservice" "example" {
-///   private_registry_access = {
-///     ecr_image_puller_role = {
+/// resource "aws_lightsail_container_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   private_registry_access {
+///     ecr_image_puller_role {
 ///       is_active = true
 ///     }
 ///   }
 /// }
-/// resource "aws_ecr_repositorypolicy" "example" {
+/// resource "aws_ecr_repository_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   repository = exampleAwsEcrRepository.name
-///   policy     = data.aws_iam_getpolicydocument.example.json
+///   policy     = data.aws_iam_policy_document.example.json
 /// }
 /// ```
 /// ```java
@@ -557,7 +569,7 @@ import 'container_service_state.dart';
 ///             .build());
 ///
 ///         var exampleRepositoryPolicy = new RepositoryPolicy("exampleRepositoryPolicy", RepositoryPolicyArgs.builder()
-///             .repository(exampleAwsEcrRepository.name())
+///             .repository(exampleAwsEcrRepository.get("name"))
 ///             .policy(example.applyValue(_example -> _example.json()))
 ///             .build());
 ///
@@ -655,7 +667,7 @@ class ContainerService extends pulumi.CustomResource {
           'aws:lightsail/containerService:ContainerService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String>('availabilityZone');

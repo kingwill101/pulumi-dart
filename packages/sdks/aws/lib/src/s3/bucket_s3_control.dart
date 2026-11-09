@@ -64,7 +64,7 @@ import 'bucket_s3_control_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,6 +73,9 @@ import 'bucket_s3_control_state.dart';
 /// }
 ///
 /// resource "aws_s3control_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket     = "example"
 ///   outpost_id = exampleAwsOutpostsOutpost.id
 /// }
@@ -100,7 +103,7 @@ import 'bucket_s3_control_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Bucket("example", BucketArgs.builder()
 ///             .bucket("example")
-///             .outpostId(exampleAwsOutpostsOutpost.id())
+///             .outpostId(exampleAwsOutpostsOutpost.get("id"))
 ///             .build());
 ///
 ///     }
@@ -160,7 +163,7 @@ class BucketS3Control extends pulumi.CustomResource {
           'aws:s3control/bucket:Bucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     bucket = registerOutput<String>('bucket');

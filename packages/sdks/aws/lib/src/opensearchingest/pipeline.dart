@@ -225,7 +225,7 @@ import 'pipeline_vpc_options.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -233,12 +233,16 @@ import 'pipeline_vpc_options.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
 ///
 /// resource "aws_opensearchingest_pipeline" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   pipeline_name               = "example"
-///   pipeline_configuration_body ="version: \"2\"
+///   pipeline_configuration_body = <<-EOT
+/// version: \"2\"
 /// example-pipeline:
 ///   source:
 ///     http:
@@ -247,17 +251,21 @@ import 'pipeline_vpc_options.dart';
 ///     - s3:
 ///         aws:
 ///           sts_role_arn: \"${aws_iam_role.example.arn}\"
-///           region: \"${data.aws_getregion.current.region}\"
+///           region: \"${data.aws_region.current.region}\"
 ///         bucket: \"example\"
 ///         threshold:
 ///           event_collect_timeout: \"60s\"
 ///         codec:
 ///           ndjson:
-/// "
+/// EOT
+///
 ///   max_units                   = 1
 ///   min_units                   = 1
 /// }
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
 ///     "Statement" = [{
@@ -467,7 +475,7 @@ import 'pipeline_vpc_options.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -479,6 +487,9 @@ import 'pipeline_vpc_options.dart';
 /// }
 ///
 /// resource "aws_opensearchingest_pipeline" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   pipeline_name               = "example"
 ///   pipeline_configuration_body = file("example.yaml")
 ///   max_units                   = 1
@@ -600,7 +611,7 @@ class Pipeline extends pulumi.CustomResource {
           'aws:opensearchingest/pipeline:Pipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     bufferOptions = registerOutput<PipelineBufferOptions?>('bufferOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineBufferOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     encryptionAtRestOptions = registerOutput<PipelineEncryptionAtRestOptions?>('encryptionAtRestOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineEncryptionAtRestOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

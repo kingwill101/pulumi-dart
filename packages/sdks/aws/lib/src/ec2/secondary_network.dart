@@ -80,7 +80,7 @@ import 'secondary_network_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -88,7 +88,10 @@ import 'secondary_network_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_secondarynetwork" "example" {
+/// resource "aws_ec2_secondary_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ipv4_cidr_block = "10.0.0.0/16"
 ///   network_type    = "rdma"
 ///   tags = {
@@ -191,7 +194,7 @@ class SecondaryNetwork extends pulumi.CustomResource {
           'aws:ec2/secondaryNetwork:SecondaryNetwork',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     ipv4CidrBlock = registerOutput<String>('ipv4CidrBlock');

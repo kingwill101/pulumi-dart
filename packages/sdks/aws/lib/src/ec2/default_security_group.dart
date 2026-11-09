@@ -138,7 +138,7 @@ import 'default_security_group_state.dart';
 /// 					ToPort:   pulumi.Int(0),
 /// 				},
 /// 			},
-/// 			VpcId: mainvpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId: mainvpc.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -148,7 +148,7 @@ import 'default_security_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -157,9 +157,15 @@ import 'default_security_group_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "mainvpc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.1.0.0/16"
 /// }
-/// resource "aws_ec2_defaultsecuritygroup" "default" {
+/// resource "aws_ec2_default_security_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   egress {
 ///     from_port   = 0
 ///     to_port     = 0
@@ -336,7 +342,7 @@ import 'default_security_group_state.dart';
 /// 					ToPort:   pulumi.Int(0),
 /// 				},
 /// 			},
-/// 			VpcId: mainvpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId: mainvpc.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -346,7 +352,7 @@ import 'default_security_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -355,9 +361,15 @@ import 'default_security_group_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "mainvpc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.1.0.0/16"
 /// }
-/// resource "aws_ec2_defaultsecuritygroup" "default" {
+/// resource "aws_ec2_default_security_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ingress {
 ///     protocol  = -1
 ///     self      = true
@@ -485,7 +497,7 @@ class DefaultSecurityGroup extends pulumi.CustomResource {
           'aws:ec2/defaultSecurityGroup:DefaultSecurityGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');

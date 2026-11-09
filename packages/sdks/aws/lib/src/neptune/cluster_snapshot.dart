@@ -62,7 +62,7 @@ import 'cluster_snapshot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'cluster_snapshot_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_neptune_clustersnapshot" "example" {
+/// resource "aws_neptune_cluster_snapshot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   db_cluster_identifier          = exampleAwsNeptuneCluster.id
 ///   db_cluster_snapshot_identifier = "resourcetestsnapshot1234"
 /// }
@@ -97,7 +100,7 @@ import 'cluster_snapshot_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ClusterSnapshot("example", ClusterSnapshotArgs.builder()
-///             .dbClusterIdentifier(exampleAwsNeptuneCluster.id())
+///             .dbClusterIdentifier(exampleAwsNeptuneCluster.get("id"))
 ///             .dbClusterSnapshotIdentifier("resourcetestsnapshot1234")
 ///             .build());
 ///
@@ -165,7 +168,7 @@ class ClusterSnapshot extends pulumi.CustomResource {
           'aws:neptune/clusterSnapshot:ClusterSnapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     allocatedStorage = registerOutput<int>('allocatedStorage');
     availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

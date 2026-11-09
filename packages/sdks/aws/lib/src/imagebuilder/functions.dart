@@ -81,7 +81,7 @@ import 'get_infrastructure_configurations_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -89,7 +89,7 @@ import 'get_infrastructure_configurations_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_imagebuilder_getcomponent" "example" {
+/// data "aws_imagebuilder_component" "example" {
 ///   arn = "arn:aws:imagebuilder:us-west-2:aws:component/amazon-cloudwatch-agent-linux/1.0.0"
 /// }
 /// ```
@@ -237,7 +237,7 @@ pulumi.Output<GetComponentResult> getComponentOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -245,8 +245,8 @@ pulumi.Output<GetComponentResult> getComponentOutput(
 ///   }
 /// }
 ///
-/// data "aws_imagebuilder_getcomponents" "example" {
-///   filters {
+/// data "aws_imagebuilder_components" "example" {
+///   filter {
 ///     name   = "platform"
 ///     values = ["Linux"]
 ///   }
@@ -379,7 +379,7 @@ pulumi.Output<GetComponentsResult> getComponentsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -387,7 +387,7 @@ pulumi.Output<GetComponentsResult> getComponentsOutput(
 ///   }
 /// }
 ///
-/// data "aws_imagebuilder_getcontainerrecipe" "example" {
+/// data "aws_imagebuilder_container_recipe" "example" {
 ///   arn = "arn:aws:imagebuilder:us-east-1:aws:container-recipe/example/1.0.0"
 /// }
 /// ```
@@ -535,7 +535,7 @@ pulumi.Output<GetContainerRecipeResult> getContainerRecipeOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -543,8 +543,8 @@ pulumi.Output<GetContainerRecipeResult> getContainerRecipeOutput(
 ///   }
 /// }
 ///
-/// data "aws_imagebuilder_getcontainerrecipes" "example" {
-///   filters {
+/// data "aws_imagebuilder_container_recipes" "example" {
+///   filter {
 ///     name   = "platform"
 ///     values = ["Linux"]
 ///   }
@@ -677,7 +677,7 @@ pulumi.Output<GetContainerRecipesResult> getContainerRecipesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -685,7 +685,7 @@ pulumi.Output<GetContainerRecipesResult> getContainerRecipesOutput(
 ///   }
 /// }
 ///
-/// data "aws_imagebuilder_getdistributionconfiguration" "example" {
+/// data "aws_imagebuilder_distribution_configuration" "example" {
 ///   arn = "arn:aws:imagebuilder:us-west-2:aws:distribution-configuration/example"
 /// }
 /// ```
@@ -829,7 +829,7 @@ pulumi.Output<GetDistributionConfigurationResult> getDistributionConfigurationOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -837,8 +837,8 @@ pulumi.Output<GetDistributionConfigurationResult> getDistributionConfigurationOu
 ///   }
 /// }
 ///
-/// data "aws_imagebuilder_getdistributionconfigurations" "example" {
-///   filters {
+/// data "aws_imagebuilder_distribution_configurations" "example" {
+///   filter {
 ///     name   = "name"
 ///     values = ["example"]
 ///   }
@@ -970,7 +970,7 @@ pulumi.Output<GetDistributionConfigurationsResult> getDistributionConfigurations
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -978,7 +978,7 @@ pulumi.Output<GetDistributionConfigurationsResult> getDistributionConfigurations
 ///   }
 /// }
 ///
-/// data "aws_imagebuilder_getimage" "example" {
+/// data "aws_imagebuilder_image" "example" {
 ///   arn = "arn:aws:imagebuilder:us-west-2:aws:image/amazon-linux-2-x86/x.x.x"
 /// }
 /// ```
@@ -1099,7 +1099,7 @@ pulumi.Output<GetImageResult> getImageOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1107,7 +1107,7 @@ pulumi.Output<GetImageResult> getImageOutput(
 ///   }
 /// }
 ///
-/// data "aws_imagebuilder_getimagepipeline" "example" {
+/// data "aws_imagebuilder_image_pipeline" "example" {
 ///   arn = "arn:aws:imagebuilder:us-west-2:aws:image-pipeline/example"
 /// }
 /// ```
@@ -1251,7 +1251,7 @@ pulumi.Output<GetImagePipelineResult> getImagePipelineOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1259,8 +1259,8 @@ pulumi.Output<GetImagePipelineResult> getImagePipelineOutput(
 ///   }
 /// }
 ///
-/// data "aws_imagebuilder_getimagepipelines" "example" {
-///   filters {
+/// data "aws_imagebuilder_image_pipelines" "example" {
+///   filter {
 ///     name   = "name"
 ///     values = ["example"]
 ///   }
@@ -1390,7 +1390,7 @@ pulumi.Output<GetImagePipelinesResult> getImagePipelinesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1398,7 +1398,7 @@ pulumi.Output<GetImagePipelinesResult> getImagePipelinesOutput(
 ///   }
 /// }
 ///
-/// data "aws_imagebuilder_getimagerecipe" "example" {
+/// data "aws_imagebuilder_image_recipe" "example" {
 ///   arn = "arn:aws:imagebuilder:us-east-1:aws:image-recipe/example/1.0.0"
 /// }
 /// ```
@@ -1546,7 +1546,7 @@ pulumi.Output<GetImageRecipeResult> getImageRecipeOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1554,8 +1554,8 @@ pulumi.Output<GetImageRecipeResult> getImageRecipeOutput(
 ///   }
 /// }
 ///
-/// data "aws_imagebuilder_getimagerecipes" "example" {
-///   filters {
+/// data "aws_imagebuilder_image_recipes" "example" {
+///   filter {
 ///     name   = "platform"
 ///     values = ["Linux"]
 ///   }
@@ -1688,7 +1688,7 @@ pulumi.Output<GetImageRecipesResult> getImageRecipesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1696,7 +1696,7 @@ pulumi.Output<GetImageRecipesResult> getImageRecipesOutput(
 ///   }
 /// }
 ///
-/// data "aws_imagebuilder_getinfrastructureconfiguration" "example" {
+/// data "aws_imagebuilder_infrastructure_configuration" "example" {
 ///   arn = "arn:aws:imagebuilder:us-west-2:aws:infrastructure-configuration/example"
 /// }
 /// ```
@@ -1840,7 +1840,7 @@ pulumi.Output<GetInfrastructureConfigurationResult> getInfrastructureConfigurati
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1848,8 +1848,8 @@ pulumi.Output<GetInfrastructureConfigurationResult> getInfrastructureConfigurati
 ///   }
 /// }
 ///
-/// data "aws_imagebuilder_getinfrastructureconfigurations" "example" {
-///   filters {
+/// data "aws_imagebuilder_infrastructure_configurations" "example" {
+///   filter {
 ///     name   = "name"
 ///     values = ["example"]
 ///   }

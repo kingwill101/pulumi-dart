@@ -74,7 +74,7 @@ import 'asset_type_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,7 +82,10 @@ import 'asset_type_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_datazone_assettype" "test" {
+/// resource "aws_datazone_asset_type" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description               = "example"
 ///   domain_identifier         = testAwsDatazoneDomain.id
 ///   name                      = "example"
@@ -112,9 +115,9 @@ import 'asset_type_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var test = new AssetType("test", AssetTypeArgs.builder()
 ///             .description("example")
-///             .domainIdentifier(testAwsDatazoneDomain.id())
+///             .domainIdentifier(testAwsDatazoneDomain.get("id"))
 ///             .name("example")
-///             .owningProjectIdentifier(testAwsDatazoneProject.id())
+///             .owningProjectIdentifier(testAwsDatazoneProject.get("id"))
 ///             .build());
 ///
 ///     }
@@ -187,7 +190,7 @@ class AssetType extends pulumi.CustomResource {
           'aws:datazone/assetType:AssetType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     createdBy = registerOutput<String>('createdBy');

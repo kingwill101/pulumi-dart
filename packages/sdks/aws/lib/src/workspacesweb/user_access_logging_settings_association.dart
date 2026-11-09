@@ -120,7 +120,7 @@ import 'user_access_logging_settings_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -129,19 +129,31 @@ import 'user_access_logging_settings_association_state.dart';
 /// }
 ///
 /// resource "aws_workspacesweb_portal" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
 /// resource "aws_kinesis_stream" "example" {
-///   stream_mode_details = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   stream_mode_details {
 ///     stream_mode = "ON_DEMAND"
 ///   }
 ///   name = "amazon-workspaces-web-example"
 /// }
-/// resource "aws_workspacesweb_useraccessloggingsettings" "example" {
+/// resource "aws_workspacesweb_user_access_logging_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   kinesis_stream_arn = aws_kinesis_stream.example.arn
 /// }
-/// resource "aws_workspacesweb_useraccessloggingsettingsassociation" "example" {
-///   user_access_logging_settings_arn = aws_workspacesweb_useraccessloggingsettings.example.user_access_logging_settings_arn
+/// resource "aws_workspacesweb_user_access_logging_settings_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   user_access_logging_settings_arn = aws_workspacesweb_user_access_logging_settings.example.user_access_logging_settings_arn
 ///   portal_arn                       = aws_workspacesweb_portal.example.portal_arn
 /// }
 /// ```
@@ -243,7 +255,7 @@ class UserAccessLoggingSettingsAssociation extends pulumi.CustomResource {
           'aws:workspacesweb/userAccessLoggingSettingsAssociation:UserAccessLoggingSettingsAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     portalArn = registerOutput<String>('portalArn');
     region = registerOutput<String>('region');

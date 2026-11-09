@@ -88,7 +88,7 @@ import 'alarm_mute_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -96,9 +96,12 @@ import 'alarm_mute_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_alarmmuterule" "example" {
-///   rule = {
-///     schedule = {
+/// resource "aws_cloudwatch_alarm_mute_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     schedule {
 ///       duration   = "PT4H"
 ///       expression = "cron(0 2 * * *)"
 ///     }
@@ -241,7 +244,7 @@ import 'alarm_mute_rule_state.dart';
 ///         Namespace = "AWS/EC2",
 ///         Period = 120,
 ///         Statistic = "Average",
-///         Threshold = 80,
+///         Threshold = 80.0,
 ///     });
 ///
 ///     var exampleAlarmMuteRule = new Aws.CloudWatch.AlarmMuteRule("example", new()
@@ -326,7 +329,7 @@ import 'alarm_mute_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -334,8 +337,11 @@ import 'alarm_mute_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_metricalarm" "example" {
-///   name                = "example"
+/// resource "aws_cloudwatch_metric_alarm" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   alarm_name          = "example"
 ///   comparison_operator = "GreaterThanThreshold"
 ///   evaluation_periods  = 2
 ///   metric_name         = "CPUUtilization"
@@ -344,16 +350,19 @@ import 'alarm_mute_rule_state.dart';
 ///   statistic           = "Average"
 ///   threshold           = 80
 /// }
-/// resource "aws_cloudwatch_alarmmuterule" "example" {
-///   rule = {
-///     schedule = {
+/// resource "aws_cloudwatch_alarm_mute_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     schedule {
 ///       duration   = "PT4H"
 ///       expression = "cron(0 2 * * *)"
 ///       timezone   = "Asia/Tokyo"
 ///     }
 ///   }
-///   mute_targets = {
-///     alarm_names = [aws_cloudwatch_metricalarm.example.name]
+///   mute_targets {
+///     alarm_names = [aws_cloudwatch_metric_alarm.example.alarm_name]
 ///   }
 ///   name        = "example"
 ///   description = "Mute alarms during maintenance window"
@@ -538,7 +547,7 @@ import 'alarm_mute_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -546,9 +555,12 @@ import 'alarm_mute_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_alarmmuterule" "example" {
-///   rule = {
-///     schedule = {
+/// resource "aws_cloudwatch_alarm_mute_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     schedule {
 ///       duration   = "PT4H"
 ///       expression = "at(2026-12-31T23:59:59)"
 ///     }
@@ -666,7 +678,7 @@ class AlarmMuteRule extends pulumi.CustomResource {
           'aws:cloudwatch/alarmMuteRule:AlarmMuteRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

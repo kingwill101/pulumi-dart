@@ -330,7 +330,7 @@ import 'form_type_timeouts.dart';
 /// 		json0 := string(tmpJSON0)
 /// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
 /// 			"Version": "2012-10-17",
-/// 			"Statement": []map[string]interface{}{
+/// 			"Statement": []interface{}{
 /// 				map[string]interface{}{
 /// 					"Action": []string{
 /// 						"sts:AssumeRole",
@@ -384,7 +384,7 @@ import 'form_type_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		testProject, err := datazone.NewProject(ctx, "test", &datazone.ProjectArgs{
-/// 			DomainIdentifier: test.ID().ToIDOutput().ToStringOutput(),
+/// 			DomainIdentifier: test.ID(),
 /// 			GlossaryTerms: pulumi.StringArray{
 /// 				pulumi.String("2N8w6XJCwZf"),
 /// 			},
@@ -412,8 +412,8 @@ import 'form_type_timeouts.dart';
 /// 			},
 /// 			Description:             pulumi.String("desc"),
 /// 			Name:                    pulumi.String("SageMakerModelFormType"),
-/// 			DomainIdentifier:        test.ID().ToIDOutput().ToStringOutput(),
-/// 			OwningProjectIdentifier: testProject.ID().ToIDOutput().ToStringOutput(),
+/// 			DomainIdentifier:        test.ID(),
+/// 			OwningProjectIdentifier: testProject.ID(),
 /// 			Status:                  pulumi.String("DISABLED"),
 /// 		})
 /// 		if err != nil {
@@ -424,7 +424,7 @@ import 'form_type_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -433,7 +433,10 @@ import 'form_type_timeouts.dart';
 /// }
 ///
 /// resource "aws_iam_role" "domain_execution_role" {
-///   inline_policies {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   inline_policy {
 ///     name = "example-policy"
 ///     policy = jsonencode({
 ///       "Version" = "2012-10-17"
@@ -463,22 +466,47 @@ import 'form_type_timeouts.dart';
 ///   })
 /// }
 /// resource "aws_datazone_domain" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example"
 ///   domain_execution_role = aws_iam_role.domain_execution_role.arn
 /// }
-/// resource "aws_ec2_securitygroup" "test" {
+/// resource "aws_ec2_security_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// resource "aws_datazone_project" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_identifier   = aws_datazone_domain.test.id
 ///   glossary_terms      = ["2N8w6XJCwZf"]
 ///   name                = "example name"
 ///   description         = "desc"
 ///   skip_deletion_check = true
 /// }
-/// resource "aws_datazone_formtype" "test" {
-///   model = {
-///     smithy = "\\tstructure SageMakerModelFormType {\n\\t\\t\\t@required\n\\t\\t\\t@amazon.datazone#searchable\n\\t\\t\\tmodelName: String\n\n\\t\\t\\t@required\n\\t\\t\\tmodelArn: String\n\n\\t\\t\\t@required\n\\t\\t\\tcreationTime: String\n\\t\\t\\t}\n"
+/// resource "aws_datazone_form_type" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   model {
+///     smithy = <<EOF
+/// \tstructure SageMakerModelFormType {
+/// \t\t\t@required
+/// \t\t\t@amazon.datazone#searchable
+/// \t\t\tmodelName: String
+///
+/// \t\t\t@required
+/// \t\t\tmodelArn: String
+///
+/// \t\t\t@required
+/// \t\t\tcreationTime: String
+/// \t\t\t}
+/// EOF
+///
 ///   }
 ///   description               = "desc"
 ///   name                      = "SageMakerModelFormType"
@@ -751,7 +779,7 @@ class FormType extends pulumi.CustomResource {
           'aws:datazone/formType:FormType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     createdBy = registerOutput<String>('createdBy');

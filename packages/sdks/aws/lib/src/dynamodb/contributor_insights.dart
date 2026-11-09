@@ -55,7 +55,7 @@ import 'contributor_insights_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -63,7 +63,10 @@ import 'contributor_insights_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_dynamodb_contributorinsights" "test" {
+/// resource "aws_dynamodb_contributor_insights" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   table_name = "ExampleTableName"
 /// }
 /// ```
@@ -133,7 +136,7 @@ class ContributorInsights extends pulumi.CustomResource {
           'aws:dynamodb/contributorInsights:ContributorInsights',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     indexName = registerOutput<String?>('indexName');
     mode = registerOutput<String>('mode');

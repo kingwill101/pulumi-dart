@@ -101,7 +101,7 @@ import 'domain_verification_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -109,16 +109,22 @@ import 'domain_verification_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpclattice_domainverification" "example" {
+/// resource "aws_vpclattice_domain_verification" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name = "example.com"
 /// }
 /// # Create DNS TXT record for domain verification
 /// resource "aws_route53_record" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = exampleAwsRoute53Zone.zoneId
-///   name    = aws_vpclattice_domainverification.example.txt_record_name
+///   name    = aws_vpclattice_domain_verification.example.txt_record_name
 ///   type    = "TXT"
 ///   ttl     = 300
-///   records = [aws_vpclattice_domainverification.example.txt_record_value]
+///   records = [aws_vpclattice_domain_verification.example.txt_record_value]
 /// }
 /// ```
 /// ```java
@@ -150,7 +156,7 @@ import 'domain_verification_state.dart';
 ///
 ///         // Create DNS TXT record for domain verification
 ///         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()
-///             .zoneId(exampleAwsRoute53Zone.zoneId())
+///             .zoneId(exampleAwsRoute53Zone.get("zoneId"))
 ///             .name(example.txtRecordName())
 ///             .type("TXT")
 ///             .ttl(300)
@@ -251,7 +257,7 @@ import 'domain_verification_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -259,7 +265,10 @@ import 'domain_verification_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpclattice_domainverification" "example" {
+/// resource "aws_vpclattice_domain_verification" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name = "example.com"
 ///   tags = {
 ///     "Environment" = "production"
@@ -354,7 +363,7 @@ class DomainVerification extends pulumi.CustomResource {
           'aws:vpclattice/domainVerification:DomainVerification',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');

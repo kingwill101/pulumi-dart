@@ -138,7 +138,7 @@ import 'zone_association_state.dart';
 /// 		example, err := route53.NewZone(ctx, "example", &route53.ZoneArgs{
 /// 			Vpcs: route53.ZoneVpcArray{
 /// 				&route53.ZoneVpcArgs{
-/// 					VpcId: primary.ID().ToIDOutput().ToStringOutput(),
+/// 					VpcId: primary.ID(),
 /// 				},
 /// 			},
 /// 			Name: pulumi.String("example.com"),
@@ -150,7 +150,7 @@ import 'zone_association_state.dart';
 /// 		}
 /// 		_, err = route53.NewZoneAssociation(ctx, "secondary", &route53.ZoneAssociationArgs{
 /// 			ZoneId: example.ZoneId,
-/// 			VpcId:  secondary.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:  secondary.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -160,7 +160,7 @@ import 'zone_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -169,25 +169,35 @@ import 'zone_association_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block           = "10.6.0.0/16"
 ///   enable_dns_hostnames = true
 ///   enable_dns_support   = true
 /// }
 /// resource "aws_ec2_vpc" "secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block           = "10.7.0.0/16"
 ///   enable_dns_hostnames = true
 ///   enable_dns_support   = true
 /// }
 /// resource "aws_route53_zone" "example" {
 ///   lifecycle {
-///     ignore_changes = [vpcs]
+///     ignore_changes        = [vpcs]
+///     create_before_destroy = true
 ///   }
-///   vpcs {
+///   vpc {
 ///     vpc_id = aws_ec2_vpc.primary.id
 ///   }
 ///   name = "example.com"
 /// }
-/// resource "aws_route53_zoneassociation" "secondary" {
+/// resource "aws_route53_zone_association" "secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = aws_route53_zone.example.zone_id
 ///   vpc_id  = aws_ec2_vpc.secondary.id
 /// }
@@ -333,7 +343,7 @@ class ZoneAssociation extends pulumi.CustomResource {
           'aws:route53/zoneAssociation:ZoneAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     owningAccount = registerOutput<String>('owningAccount');
     vpcId = registerOutput<String>('vpcId');

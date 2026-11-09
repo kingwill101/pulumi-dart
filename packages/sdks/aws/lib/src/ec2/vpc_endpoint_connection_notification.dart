@@ -186,7 +186,7 @@ import 'vpc_endpoint_connection_notification_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcEndpointConnectionNotification(ctx, "foo", &ec2.VpcEndpointConnectionNotificationArgs{
-/// 			VpcEndpointServiceId:      foo.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcEndpointServiceId:      foo.ID(),
 /// 			ConnectionNotificationArn: topicTopic.Arn,
 /// 			ConnectionEvents: pulumi.StringArray{
 /// 				pulumi.String("Accept"),
@@ -201,7 +201,7 @@ import 'vpc_endpoint_connection_notification_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -209,8 +209,8 @@ import 'vpc_endpoint_connection_notification_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "topic" {
-///   statements {
+/// data "aws_iam_policy_document" "topic" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["vpce.amazonaws.com"]
@@ -222,15 +222,24 @@ import 'vpc_endpoint_connection_notification_state.dart';
 /// }
 ///
 /// resource "aws_sns_topic" "topic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "vpce-notification-topic"
-///   policy = data.aws_iam_getpolicydocument.topic.json
+///   policy = data.aws_iam_policy_document.topic.json
 /// }
-/// resource "aws_ec2_vpcendpointservice" "foo" {
+/// resource "aws_ec2_vpc_endpoint_service" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   acceptance_required        = false
 ///   network_load_balancer_arns = [test.arn]
 /// }
-/// resource "aws_ec2_vpcendpointconnectionnotification" "foo" {
-///   vpc_endpoint_service_id     = aws_ec2_vpcendpointservice.foo.id
+/// resource "aws_ec2_vpc_endpoint_connection_notification" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   vpc_endpoint_service_id     = aws_ec2_vpc_endpoint_service.foo.id
 ///   connection_notification_arn = aws_sns_topic.topic.arn
 ///   connection_events           = ["Accept", "Reject"]
 /// }
@@ -283,7 +292,7 @@ import 'vpc_endpoint_connection_notification_state.dart';
 ///
 ///         var foo = new VpcEndpointService("foo", VpcEndpointServiceArgs.builder()
 ///             .acceptanceRequired(false)
-///             .networkLoadBalancerArns(test.arn())
+///             .networkLoadBalancerArns(test.get("arn"))
 ///             .build());
 ///
 ///         var fooVpcEndpointConnectionNotification = new VpcEndpointConnectionNotification("fooVpcEndpointConnectionNotification", VpcEndpointConnectionNotificationArgs.builder()
@@ -375,7 +384,7 @@ class VpcEndpointConnectionNotification extends pulumi.CustomResource {
           'aws:ec2/vpcEndpointConnectionNotification:VpcEndpointConnectionNotification',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     connectionEvents = registerOutput<List<String>>('connectionEvents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     connectionNotificationArn = registerOutput<String>('connectionNotificationArn');

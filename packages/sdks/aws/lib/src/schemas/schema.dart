@@ -183,7 +183,7 @@ import 'schema_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -192,9 +192,15 @@ import 'schema_state.dart';
 /// }
 ///
 /// resource "aws_schemas_registry" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my_own_registry"
 /// }
 /// resource "aws_schemas_schema" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my_schema"
 ///   registry_name = aws_schemas_registry.test.name
 ///   type          = "OpenApi3"
@@ -358,7 +364,7 @@ class Schema extends pulumi.CustomResource {
           'aws:schemas/schema:Schema',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     content = registerOutput<String>('content');

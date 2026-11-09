@@ -14,9 +14,9 @@ class OriginAccessControlState {
   final pulumi.Input<String?>? name;
   /// The type of origin that this Origin Access Control is for. Valid values are `lambda`, `mediapackagev2`, `mediastore`, and `s3`.
   final pulumi.Input<String?>? originAccessControlOriginType;
-  /// Specifies which requests CloudFront signs. Specify `always` for the most common use case. Allowed values: `always`, `never`, and `no-override`.
+  /// Specifies which requests CloudFront signs. Specify `always` for the most common use case. Allowed values: `always`, `always-amz-auth`, `never`, and `no-override`. `always-amz-auth` is supported only for Lambda Web Function origins, and is the only value those origins support.
   final pulumi.Input<String?>? signingBehavior;
-  /// Determines how CloudFront signs (authenticates) requests. The only valid value is `sigv4`.
+  /// Determines how CloudFront signs (authenticates) requests. Valid values are `sigv4` and `sigv4a`.
   final pulumi.Input<String?>? signingProtocol;
 
   /// Creates a new [OriginAccessControlState].
@@ -25,8 +25,8 @@ class OriginAccessControlState {
   /// [etag] The current version of this Origin Access Control.
   /// [name] A name that identifies the Origin Access Control.
   /// [originAccessControlOriginType] The type of origin that this Origin Access Control is for. Valid values are `lambda`, `mediapackagev2`, `mediastore`, and `s3`.
-  /// [signingBehavior] Specifies which requests CloudFront signs. Specify `always` for the most common use case. Allowed values: `always`, `never`, and `no-override`.
-  /// [signingProtocol] Determines how CloudFront signs (authenticates) requests. The only valid value is `sigv4`.
+  /// [signingBehavior] Specifies which requests CloudFront signs. Specify `always` for the most common use case. Allowed values: `always`, `always-amz-auth`, `never`, and `no-override`. `always-amz-auth` is supported only for Lambda Web Function origins, and is the only value those origins support.
+  /// [signingProtocol] Determines how CloudFront signs (authenticates) requests. Valid values are `sigv4` and `sigv4a`.
   const OriginAccessControlState({
     this.arn,
     this.description,

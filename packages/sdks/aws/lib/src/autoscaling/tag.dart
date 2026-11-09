@@ -57,7 +57,7 @@ import 'tag_tag.dart';
 ///             },
 ///             autoscaling_group_name=example_tag_range["value"])
 ///
-/// std.flatten_output(input=example.resources.apply(lambda resources: [resources.autoscaling_groups for resources in resources])).apply(lambda resolved_outputs: create_example({str(entry): entry for entry in [asg["name"] for asg in resolved_outputs['invoke'].result]}))
+/// std.flatten_output(input=example.resources.apply(lambda resources: [resources.autoscaling_groups for resources in resources])).apply(lambda resolved_outputs: create_example({str(entry): entry for entry in [asg["name"] for asg in resolved_outputs.result]}))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -86,7 +86,7 @@ import 'tag_tag.dart';
 ///         return asg.Name;
 ///     }).ToList().ToDictionary(item => {
 ///         var entry = item.Value;
-///         return entry;
+///         return entry.ToString(System.Globalization.CultureInfo.InvariantCulture);
 ///     }, item => {
 ///         var entry = item.Value;
 ///         return entry;
@@ -106,7 +106,7 @@ import 'tag_tag.dart';
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -117,12 +117,21 @@ import 'tag_tag.dart';
 ///   }
 /// }
 ///
-/// resource "aws_eks_nodegroup" "example" {
+/// resource "aws_eks_node_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name    = "example"
 ///   node_group_name = "example"
 /// }
 /// resource "aws_autoscaling_tag" "example" {
-///   for_each = {for entry in [for asg in flatten([for resources in aws_eks_nodegroup.example.resources : resources.autoscalingGroups]) : asg.name] : entry => entry}
+///   for_each = {for entry in [for asg in flatten([for resources in aws_eks_node_group.example.resources : resources.autoscalingGroups]) : asg.name] : entry => entry}
+///   pulumi {
+///     name ="example-${each.key}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tag = {
 ///     key                 = "k8s.io/cluster-autoscaler/node-template/label/eks.amazonaws.com/capacityType"
 ///     value               = "SPOT"
@@ -178,7 +187,7 @@ class Tag extends pulumi.CustomResource {
           'aws:autoscaling/tag:Tag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     region = registerOutput<String>('region');

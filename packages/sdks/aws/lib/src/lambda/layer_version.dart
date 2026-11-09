@@ -77,7 +77,7 @@ import 'layer_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -85,8 +85,11 @@ import 'layer_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_layerversion" "example" {
-///   code                = fileArchive("lambda_layer_payload.zip")
+/// resource "aws_lambda_layer_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filename            = filearchive("lambda_layer_payload.zip")
 ///   layer_name          = "lambda_layer_name"
 ///   compatible_runtimes = ["nodejs24.x"]
 /// }
@@ -231,7 +234,7 @@ import 'layer_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -239,7 +242,10 @@ import 'layer_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_layerversion" "example" {
+/// resource "aws_lambda_layer_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   s3_bucket                = lambdaLayerZip.bucket
 ///   s3_key                   = lambdaLayerZip.key
 ///   layer_name               = "lambda_layer_name"
@@ -269,8 +275,8 @@ import 'layer_version_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new LayerVersion("example", LayerVersionArgs.builder()
-///             .s3Bucket(lambdaLayerZip.bucket())
-///             .s3Key(lambdaLayerZip.key())
+///             .s3Bucket(lambdaLayerZip.get("bucket"))
+///             .s3Key(lambdaLayerZip.get("key"))
 ///             .layerName("lambda_layer_name")
 ///             .compatibleRuntimes(
 ///                 "nodejs24.x",
@@ -427,7 +433,7 @@ import 'layer_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -438,8 +444,11 @@ import 'layer_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_layerversion" "example" {
-///   code                     = fileArchive("lambda_layer_payload.zip")
+/// resource "aws_lambda_layer_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filename                 = filearchive("lambda_layer_payload.zip")
 ///   layer_name               = "multi_runtime_layer"
 ///   description              = "Shared utilities for Lambda functions"
 ///   license_info             = "MIT"
@@ -602,7 +611,7 @@ class LayerVersion extends pulumi.CustomResource {
           'aws:lambda/layerVersion:LayerVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     code = registerOutput<dynamic>('code');

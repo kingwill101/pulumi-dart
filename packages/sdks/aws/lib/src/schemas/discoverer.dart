@@ -78,7 +78,7 @@ import 'discoverer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,11 +86,17 @@ import 'discoverer_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_eventbus" "messenger" {
+/// resource "aws_cloudwatch_event_bus" "messenger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "chat-messages"
 /// }
 /// resource "aws_schemas_discoverer" "test" {
-///   source_arn  = aws_cloudwatch_eventbus.messenger.arn
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   source_arn  = aws_cloudwatch_event_bus.messenger.arn
 ///   description = "Auto discover event schemas"
 /// }
 /// ```
@@ -176,7 +182,7 @@ class Discoverer extends pulumi.CustomResource {
           'aws:schemas/discoverer:Discoverer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

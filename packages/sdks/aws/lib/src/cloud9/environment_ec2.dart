@@ -68,7 +68,7 @@ import 'environment_ec2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,7 +76,10 @@ import 'environment_ec2_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloud9_environmentec2" "example" {
+/// resource "aws_cloud9_environment_e_c2" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_type = "t2.micro"
 ///   name          = "example-env"
 ///   image_id      = "amazonlinux-2023-x86_64"
@@ -208,7 +211,7 @@ import 'environment_ec2_state.dart';
 /// 				&ec2.GetInstanceFilterArgs{
 /// 					Name: pulumi.String("tag:aws:cloud9:environment"),
 /// 					Values: pulumi.StringArray{
-/// 						example.ID().ToIDOutput().ToStringOutput(),
+/// 						example.ID(),
 /// 					},
 /// 				},
 /// 			},
@@ -221,7 +224,7 @@ import 'environment_ec2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -229,18 +232,21 @@ import 'environment_ec2_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2_getinstance" "cloud9Instance" {
+/// data "aws_ec2_instance" "cloud9Instance" {
 ///   filters {
 ///     name   = "tag:aws:cloud9:environment"
-///     values = [aws_cloud9_environmentec2.example.id]
+///     values = [aws_cloud9_environment_e_c2.example.id]
 ///   }
 /// }
 ///
-/// resource "aws_cloud9_environmentec2" "example" {
+/// resource "aws_cloud9_environment_e_c2" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_type = "t2.micro"
 /// }
 /// output "cloud9Url" {
-///   value ="https://${region}.console.aws.amazon.com/cloud9/ide/${aws_cloud9_environmentec2.example.id}"
+///   value ="https://${region}.console.aws.amazon.com/cloud9/ide/${aws_cloud9_environment_e_c2.example.id}"
 /// }
 /// ```
 /// ```java
@@ -398,7 +404,7 @@ import 'environment_ec2_state.dart';
 /// 				&ec2.GetInstanceFilterArgs{
 /// 					Name: pulumi.String("tag:aws:cloud9:environment"),
 /// 					Values: pulumi.StringArray{
-/// 						example.ID().ToIDOutput().ToStringOutput(),
+/// 						example.ID(),
 /// 					},
 /// 				},
 /// 			},
@@ -416,7 +422,7 @@ import 'environment_ec2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -424,18 +430,24 @@ import 'environment_ec2_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2_getinstance" "cloud9Instance" {
+/// data "aws_ec2_instance" "cloud9Instance" {
 ///   filters {
 ///     name   = "tag:aws:cloud9:environment"
-///     values = [aws_cloud9_environmentec2.example.id]
+///     values = [aws_cloud9_environment_e_c2.example.id]
 ///   }
 /// }
 ///
-/// resource "aws_cloud9_environmentec2" "example" {
+/// resource "aws_cloud9_environment_e_c2" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_type = "t2.micro"
 /// }
 /// resource "aws_ec2_eip" "cloud9_eip" {
-///   instance = data.aws_ec2_getinstance.cloud9Instance.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   instance = data.aws_ec2_instance.cloud9Instance.id
 ///   domain   = "vpc"
 /// }
 /// output "cloud9PublicIp" {
@@ -560,7 +572,7 @@ class EnvironmentEC2 extends pulumi.CustomResource {
           'aws:cloud9/environmentEC2:EnvironmentEC2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     automaticStopTimeMinutes = registerOutput<int?>('automaticStopTimeMinutes');

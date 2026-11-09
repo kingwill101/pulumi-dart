@@ -165,7 +165,7 @@ import 'registry_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -173,24 +173,27 @@ import 'registry_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getregion" "currentGetRegion" {
+/// data "aws_region" "currentGetRegion" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
 ///
-/// resource "aws_ecr_registrypolicy" "example" {
+/// resource "aws_ecr_registry_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
 ///     "Statement" = [{
 ///       "Sid"    = "testpolicy"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:${data.aws_getpartition.currentGetPartition.partition}:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///         "AWS" ="arn:${data.aws_partition.currentGetPartition.partition}:iam::${data.aws_caller_identity.current.account_id}:root"
 ///       }
 ///       "Action"   = ["ecr:ReplicateImage"]
-///       "Resource" = ["arn:${data.aws_getpartition.currentGetPartition.partition}:ecr:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:repository/*"]
+///       "Resource" = ["arn:${data.aws_partition.currentGetPartition.partition}:ecr:${data.aws_region.currentGetRegion.region}:${data.aws_caller_identity.current.account_id}:repository/*"]
 ///     }]
 ///   })
 /// }
@@ -309,7 +312,7 @@ class RegistryPolicy extends pulumi.CustomResource {
           'aws:ecr/registryPolicy:RegistryPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

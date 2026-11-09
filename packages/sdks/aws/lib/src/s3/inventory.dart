@@ -124,7 +124,7 @@ import 'inventory_state.dart';
 /// 					BucketArn: inventory.Arn,
 /// 				},
 /// 			},
-/// 			Bucket:                 test.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket:                 test.ID(),
 /// 			Name:                   pulumi.String("EntireBucketDaily"),
 /// 			IncludedObjectVersions: pulumi.String("All"),
 /// 		})
@@ -136,7 +136,7 @@ import 'inventory_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -145,12 +145,21 @@ import 'inventory_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "my-tf-test-bucket"
 /// }
 /// resource "aws_s3_bucket" "inventory" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "my-tf-inventory-bucket"
 /// }
 /// resource "aws_s3_inventory" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   schedule = {
 ///     frequency = "Daily"
 ///   }
@@ -375,7 +384,7 @@ import 'inventory_state.dart';
 /// 					Prefix:    pulumi.String("inventory"),
 /// 				},
 /// 			},
-/// 			Bucket:                 test.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket:                 test.ID(),
 /// 			Name:                   pulumi.String("DocumentsWeekly"),
 /// 			IncludedObjectVersions: pulumi.String("All"),
 /// 		})
@@ -387,7 +396,7 @@ import 'inventory_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -396,12 +405,21 @@ import 'inventory_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "my-tf-test-bucket"
 /// }
 /// resource "aws_s3_bucket" "inventory" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "my-tf-inventory-bucket"
 /// }
 /// resource "aws_s3_inventory" "test-prefix" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   schedule = {
 ///     frequency = "Daily"
 ///   }
@@ -546,7 +564,7 @@ class Inventory extends pulumi.CustomResource {
           'aws:s3/inventory:Inventory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     destination = registerOutput<InventoryDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InventoryDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });

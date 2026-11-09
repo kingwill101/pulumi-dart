@@ -57,7 +57,7 @@ import 'serial_console_access_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,7 +65,10 @@ import 'serial_console_access_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_serialconsoleaccess" "example" {
+/// resource "aws_ec2_serial_console_access" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enabled = true
 /// }
 /// ```
@@ -139,7 +142,7 @@ class SerialConsoleAccess extends pulumi.CustomResource {
           'aws:ec2/serialConsoleAccess:SerialConsoleAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     enabled = registerOutput<bool?>('enabled');
     region = registerOutput<String>('region');

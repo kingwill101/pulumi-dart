@@ -59,7 +59,7 @@ import 'get_connection_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,7 @@ import 'get_connection_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_codestarconnections_getconnection" "example" {
+/// data "aws_codestarconnections_connection" "example" {
 ///   arn = exampleAwsCodestarconnectionsConnection.arn
 /// }
 /// ```
@@ -93,7 +93,7 @@ import 'get_connection_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = CodestarconnectionsFunctions.getConnection(GetConnectionArgs.builder()
-///             .arn(exampleAwsCodestarconnectionsConnection.arn())
+///             .arn(exampleAwsCodestarconnectionsConnection.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -162,7 +162,7 @@ import 'get_connection_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -170,7 +170,7 @@ import 'get_connection_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_codestarconnections_getconnection" "example" {
+/// data "aws_codestarconnections_connection" "example" {
 ///   name = exampleAwsCodestarconnectionsConnection.name
 /// }
 /// ```
@@ -196,7 +196,7 @@ import 'get_connection_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = CodestarconnectionsFunctions.getConnection(GetConnectionArgs.builder()
-///             .name(exampleAwsCodestarconnectionsConnection.name())
+///             .name(exampleAwsCodestarconnectionsConnection.get("name"))
 ///             .build());
 ///
 ///     }

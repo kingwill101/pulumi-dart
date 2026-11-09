@@ -55,7 +55,7 @@ import 'receipt_rule_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -63,7 +63,10 @@ import 'receipt_rule_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ses_receiptruleset" "main" {
+/// resource "aws_ses_receipt_rule_set" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   rule_set_name = "primary-rules"
 /// }
 /// ```
@@ -131,7 +134,7 @@ class ReceiptRuleSet extends pulumi.CustomResource {
           'aws:ses/receiptRuleSet:ReceiptRuleSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');

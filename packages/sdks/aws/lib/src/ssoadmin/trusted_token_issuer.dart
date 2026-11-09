@@ -111,7 +111,7 @@ import 'trusted_token_issuer_trusted_token_issuer_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -119,12 +119,15 @@ import 'trusted_token_issuer_trusted_token_issuer_configuration.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
 ///
-/// resource "aws_ssoadmin_trustedtokenissuer" "example" {
-///   trusted_token_issuer_configuration = {
-///     oidc_jwt_configuration = {
+/// resource "aws_ssoadmin_trusted_token_issuer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   trusted_token_issuer_configuration {
+///     oidc_jwt_configuration {
 ///       claim_attribute_path          = "email"
 ///       identity_store_attribute_path = "emails.value"
 ///       issuer_url                    = "https://example.com"
@@ -132,7 +135,7 @@ import 'trusted_token_issuer_trusted_token_issuer_configuration.dart';
 ///     }
 ///   }
 ///   name                      = "example"
-///   instance_arn              = data.aws_ssoadmin_getinstances.example.arns[0]
+///   instance_arn              = data.aws_ssoadmin_instances.example.arns[0]
 ///   trusted_token_issuer_type = "OIDC_JWT"
 /// }
 /// ```
@@ -256,7 +259,7 @@ class TrustedTokenIssuer extends pulumi.CustomResource {
           'aws:ssoadmin/trustedTokenIssuer:TrustedTokenIssuer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     clientToken = registerOutput<String?>('clientToken');

@@ -76,7 +76,7 @@ import 'file_system_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -84,7 +84,10 @@ import 'file_system_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_efs_filesystem" "example" {
+/// resource "aws_efs_file_system" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_token = "my-product"
 ///   tags = {
 ///     "Name" = "MyProduct"
@@ -203,7 +206,7 @@ import 'file_system_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -211,8 +214,11 @@ import 'file_system_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_efs_filesystem" "foo_with_lifecyle_policy" {
-///   lifecycle_policies {
+/// resource "aws_efs_file_system" "foo_with_lifecyle_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   lifecycle_policy {
 ///     transition_to_ia = "AFTER_30_DAYS"
 ///   }
 ///   creation_token = "my-product"
@@ -336,7 +342,7 @@ class FileSystem extends pulumi.CustomResource {
           'aws:efs/fileSystem:FileSystem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZoneId = registerOutput<String>('availabilityZoneId');

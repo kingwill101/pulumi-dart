@@ -142,7 +142,7 @@ import 'workspace_configuration_timeouts.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			WorkspaceId:           example.ID().ToIDOutput().ToStringOutput(),
+/// 			WorkspaceId:           example.ID(),
 /// 			RetentionPeriodInDays: pulumi.Int(60),
 /// 		})
 /// 		if err != nil {
@@ -153,7 +153,7 @@ import 'workspace_configuration_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -162,8 +162,14 @@ import 'workspace_configuration_timeouts.dart';
 /// }
 ///
 /// resource "aws_amp_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_amp_workspaceconfiguration" "example" {
+/// resource "aws_amp_workspace_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   limits_per_label_sets {
 ///     limits = {
 ///       max_series = 100000
@@ -340,7 +346,7 @@ import 'workspace_configuration_timeouts.dart';
 /// 					LabelSet: pulumi.StringMap{},
 /// 				},
 /// 			},
-/// 			WorkspaceId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			WorkspaceId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -350,7 +356,7 @@ import 'workspace_configuration_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -359,8 +365,14 @@ import 'workspace_configuration_timeouts.dart';
 /// }
 ///
 /// resource "aws_amp_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_amp_workspaceconfiguration" "example" {
+/// resource "aws_amp_workspace_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   limits_per_label_sets {
 ///     limits = {
 ///       max_series = 50000
@@ -487,7 +499,7 @@ import 'workspace_configuration_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = amp.NewWorkspaceConfiguration(ctx, "example", &amp.WorkspaceConfigurationArgs{
-/// 			WorkspaceId:                   example.ID().ToIDOutput().ToStringOutput(),
+/// 			WorkspaceId:                   example.ID(),
 /// 			RetentionPeriodInDays:         pulumi.Int(30),
 /// 			OutOfOrderTimeWindowInSeconds: pulumi.Int(120),
 /// 			RuleQueryOffsetInSeconds:      pulumi.Int(300),
@@ -500,7 +512,7 @@ import 'workspace_configuration_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -509,8 +521,14 @@ import 'workspace_configuration_timeouts.dart';
 /// }
 ///
 /// resource "aws_amp_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_amp_workspaceconfiguration" "example" {
+/// resource "aws_amp_workspace_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workspace_id                        = aws_amp_workspace.example.id
 ///   retention_period_in_days            = 30
 ///   out_of_order_time_window_in_seconds = 120
@@ -602,7 +620,7 @@ class WorkspaceConfiguration extends pulumi.CustomResource {
           'aws:amp/workspaceConfiguration:WorkspaceConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     limitsPerLabelSets = registerOutput<List<WorkspaceConfigurationLimitsPerLabelSet>?>('limitsPerLabelSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkspaceConfigurationLimitsPerLabelSet>(guardedValue, (value) => WorkspaceConfigurationLimitsPerLabelSet.fromMap((value as Map).cast<String, dynamic>())); });
     outOfOrderTimeWindowInSeconds = registerOutput<int>('outOfOrderTimeWindowInSeconds');

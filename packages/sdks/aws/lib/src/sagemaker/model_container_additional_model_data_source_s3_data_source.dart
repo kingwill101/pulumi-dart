@@ -1,11 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'model_container_additional_model_data_source_s3_data_source_hub_access_config.dart';
 import 'model_container_additional_model_data_source_s3_data_source_model_access_config.dart';
 
 class ModelContainerAdditionalModelDataSourceS3DataSource {
   /// How the model data is prepared. Allowed values are: `None` and `Gzip`.
   final pulumi.Input<String> compressionType;
+  /// Configuration for deploying a model from a SageMaker JumpStart private hub. See Hub Access Config.
+  final pulumi.Input<ModelContainerAdditionalModelDataSourceS3DataSourceHubAccessConfig?>? hubAccessConfig;
   /// Specifies the access configuration file for the ML model. You can explicitly accept the model end-user license agreement (EULA) within the `modelAccessConfig` configuration block. See Model Access Config.
   final pulumi.Input<ModelContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig?>? modelAccessConfig;
   /// Type of model data to deploy. Allowed values are: `S3Object` and `S3Prefix`.
@@ -15,11 +18,13 @@ class ModelContainerAdditionalModelDataSourceS3DataSource {
 
   /// Creates a new [ModelContainerAdditionalModelDataSourceS3DataSource].
   /// [compressionType] How the model data is prepared. Allowed values are: `None` and `Gzip`.
+  /// [hubAccessConfig] Configuration for deploying a model from a SageMaker JumpStart private hub. See Hub Access Config.
   /// [modelAccessConfig] Specifies the access configuration file for the ML model. You can explicitly accept the model end-user license agreement (EULA) within the `modelAccessConfig` configuration block. See Model Access Config.
   /// [s3DataType] Type of model data to deploy. Allowed values are: `S3Object` and `S3Prefix`.
   /// [s3Uri] The S3 path of model data to deploy.
   const ModelContainerAdditionalModelDataSourceS3DataSource({
     required this.compressionType,
+    this.hubAccessConfig,
     this.modelAccessConfig,
     required this.s3DataType,
     required this.s3Uri,
@@ -28,6 +33,7 @@ class ModelContainerAdditionalModelDataSourceS3DataSource {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'compressionType': compressionType,
+      'hubAccessConfig': ?pulumi.Input.mapOptionalInputValue<ModelContainerAdditionalModelDataSourceS3DataSourceHubAccessConfig, Map<String, dynamic>>(hubAccessConfig, (value) => value.toMap()),
       'modelAccessConfig': ?pulumi.Input.mapOptionalInputValue<ModelContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig, Map<String, dynamic>>(modelAccessConfig, (value) => value.toMap()),
       's3DataType': s3DataType,
       's3Uri': s3Uri,
@@ -37,6 +43,7 @@ class ModelContainerAdditionalModelDataSourceS3DataSource {
   factory ModelContainerAdditionalModelDataSourceS3DataSource.fromMap(Map<String, dynamic> map) {
     return ModelContainerAdditionalModelDataSourceS3DataSource(
       compressionType: pulumi.Input.fromValue(map['compressionType'] as String),
+      hubAccessConfig: (() { final guardedValue = map['hubAccessConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ModelContainerAdditionalModelDataSourceS3DataSourceHubAccessConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       modelAccessConfig: (() { final guardedValue = map['modelAccessConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ModelContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       s3DataType: pulumi.Input.fromValue(map['s3DataType'] as String),
       s3Uri: pulumi.Input.fromValue(map['s3Uri'] as String),

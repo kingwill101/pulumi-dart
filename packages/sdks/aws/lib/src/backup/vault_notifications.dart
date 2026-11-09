@@ -193,7 +193,7 @@ import 'vault_notifications_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -201,8 +201,8 @@ import 'vault_notifications_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "test" {
-///   statements {
+/// data "aws_iam_policy_document" "test" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["backup.amazonaws.com"]
@@ -216,13 +216,22 @@ import 'vault_notifications_state.dart';
 /// }
 ///
 /// resource "aws_sns_topic" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "backup-vault-events"
 /// }
-/// resource "aws_sns_topicpolicy" "test" {
+/// resource "aws_sns_topic_policy" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   arn    = aws_sns_topic.test.arn
-///   policy = data.aws_iam_getpolicydocument.test.json
+///   policy = data.aws_iam_policy_document.test.json
 /// }
-/// resource "aws_backup_vaultnotifications" "test" {
+/// resource "aws_backup_vault_notifications" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backup_vault_name   = "example_backup_vault"
 ///   sns_topic_arn       = aws_sns_topic.test.arn
 ///   backup_vault_events = ["BACKUP_JOB_STARTED", "RESTORE_JOB_COMPLETED"]
@@ -364,7 +373,7 @@ class VaultNotifications extends pulumi.CustomResource {
           'aws:backup/vaultNotifications:VaultNotifications',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     backupVaultArn = registerOutput<String>('backupVaultArn');
     backupVaultEvents = registerOutput<List<String>>('backupVaultEvents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

@@ -101,7 +101,7 @@ import 'ip_route_timeouts.dart';
 /// return err
 /// }
 /// _, err = directoryservice.NewIpRoute(ctx, "example", &directoryservice.IpRouteArgs{
-/// DirectoryId: example.ID().ToIDOutput().ToStringOutput(),
+/// DirectoryId: example.ID(),
 /// CidrIp: pulumi.String("10.0.0.0/24"),
 /// Description: pulumi.String("On-premises network"),
 /// })
@@ -113,7 +113,7 @@ import 'ip_route_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -122,6 +122,9 @@ import 'ip_route_timeouts.dart';
 /// }
 ///
 /// resource "aws_directoryservice_directory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_settings = {
 ///     vpc_id     = exampleAwsVpc.id
 ///     subnet_ids = exampleAwsSubnet[*].id
@@ -130,7 +133,10 @@ import 'ip_route_timeouts.dart';
 ///   password = "SuperSecretPassw0rd"
 ///   type     = "MicrosoftAD"
 /// }
-/// resource "aws_directoryservice_iproute" "example" {
+/// resource "aws_directoryservice_ip_route" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   directory_id = aws_directoryservice_directory.example.id
 ///   cidr_ip      = "10.0.0.0/24"
 ///   description  = "On-premises network"
@@ -162,8 +168,8 @@ import 'ip_route_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Directory("example", DirectoryArgs.builder()
 ///             .vpcSettings(DirectoryVpcSettingsArgs.builder()
-///                 .vpcId(exampleAwsVpc.id())
-///                 .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
+///                 .vpcId(exampleAwsVpc.get("id"))
+///                 .subnetIds(exampleAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
 ///                 .build())
 ///             .name("corp.example.com")
 ///             .password("SuperSecretPassw0rd")
@@ -245,7 +251,7 @@ import 'ip_route_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -253,7 +259,10 @@ import 'ip_route_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_directoryservice_iproute" "example" {
+/// resource "aws_directoryservice_ip_route" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   directory_id = "d-1234567890"
 ///   cidr_ipv6    = "2001:db8::/64"
 ///   description  = "On-premises IPv6 network"
@@ -350,7 +359,7 @@ class IpRoute extends pulumi.CustomResource {
           'aws:directoryservice/ipRoute:IpRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     cidrIp = registerOutput<String?>('cidrIp');
     cidrIpv6 = registerOutput<String?>('cidrIpv6');

@@ -92,7 +92,7 @@ import 'nat_gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -100,8 +100,11 @@ import 'nat_gateway_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_natgateway" "example" {
-///   depends_on    = [exampleAwsInternetGateway]
+/// resource "aws_ec2_nat_gateway" "example" {
+///   depends_on = [exampleAwsInternetGateway]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocation_id = exampleAwsEip.id
 ///   subnet_id     = exampleAwsSubnet.id
 ///   tags = {
@@ -132,8 +135,8 @@ import 'nat_gateway_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new NatGateway("example", NatGatewayArgs.builder()
-///             .allocationId(exampleAwsEip.id())
-///             .subnetId(exampleAwsSubnet.id())
+///             .allocationId(exampleAwsEip.get("id"))
+///             .subnetId(exampleAwsSubnet.get("id"))
 ///             .tags(Map.of("Name", "gw NAT"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleAwsInternetGateway)
@@ -233,7 +236,7 @@ import 'nat_gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -241,7 +244,10 @@ import 'nat_gateway_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_natgateway" "example" {
+/// resource "aws_ec2_nat_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocation_id                  = exampleAwsEip.id
 ///   subnet_id                      = exampleAwsSubnet.id
 ///   secondary_allocation_ids       = [secondary.id]
@@ -270,9 +276,9 @@ import 'nat_gateway_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new NatGateway("example", NatGatewayArgs.builder()
-///             .allocationId(exampleAwsEip.id())
-///             .subnetId(exampleAwsSubnet.id())
-///             .secondaryAllocationIds(secondary.id())
+///             .allocationId(exampleAwsEip.get("id"))
+///             .subnetId(exampleAwsSubnet.get("id"))
+///             .secondaryAllocationIds(secondary.get("id"))
 ///             .secondaryPrivateIpAddresses("10.0.1.5")
 ///             .build());
 ///
@@ -351,7 +357,7 @@ import 'nat_gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -359,7 +365,10 @@ import 'nat_gateway_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_natgateway" "example" {
+/// resource "aws_ec2_nat_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connectivity_type = "private"
 ///   subnet_id         = exampleAwsSubnet.id
 /// }
@@ -387,7 +396,7 @@ import 'nat_gateway_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new NatGateway("example", NatGatewayArgs.builder()
 ///             .connectivityType("private")
-///             .subnetId(exampleAwsSubnet.id())
+///             .subnetId(exampleAwsSubnet.get("id"))
 ///             .build());
 ///
 ///     }
@@ -465,7 +474,7 @@ import 'nat_gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -473,7 +482,10 @@ import 'nat_gateway_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_natgateway" "example" {
+/// resource "aws_ec2_nat_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connectivity_type                  = "private"
 ///   subnet_id                          = exampleAwsSubnet.id
 ///   secondary_private_ip_address_count = 7
@@ -502,7 +514,7 @@ import 'nat_gateway_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new NatGateway("example", NatGatewayArgs.builder()
 ///             .connectivityType("private")
-///             .subnetId(exampleAwsSubnet.id())
+///             .subnetId(exampleAwsSubnet.get("id"))
 ///             .secondaryPrivateIpAddressCount(7)
 ///             .build());
 ///
@@ -596,13 +608,13 @@ import 'nat_gateway_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewInternetGateway(ctx, "example", &ec2.InternetGatewayArgs{
-/// 			VpcId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewNatGateway(ctx, "example", &ec2.NatGatewayArgs{
-/// 			VpcId:            example.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            example.ID(),
 /// 			AvailabilityMode: pulumi.String("regional"),
 /// 		})
 /// 		if err != nil {
@@ -613,7 +625,7 @@ import 'nat_gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -621,16 +633,25 @@ import 'nat_gateway_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzones" "available" {
+/// data "aws_availability_zones" "available" {
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
-/// resource "aws_ec2_internetgateway" "example" {
+/// resource "aws_ec2_internet_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id = aws_ec2_vpc.example.id
 /// }
-/// resource "aws_ec2_natgateway" "example" {
+/// resource "aws_ec2_nat_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.example.id
 ///   availability_mode = "regional"
 /// }
@@ -847,7 +868,7 @@ import 'nat_gateway_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewInternetGateway(ctx, "example", &ec2.InternetGatewayArgs{
-/// 			VpcId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -867,19 +888,19 @@ import 'nat_gateway_state.dart';
 /// 			AvailabilityZoneAddresses: ec2.NatGatewayAvailabilityZoneAddressArray{
 /// 				&ec2.NatGatewayAvailabilityZoneAddressArgs{
 /// 					AllocationIds: pulumi.StringArray{
-/// 						exampleEip[0].ID().ToIDOutput().ToStringOutput(),
+/// 						exampleEip[0].ID(),
 /// 					},
 /// 					AvailabilityZone: pulumi.String(available.Names[0]),
 /// 				},
 /// 				&ec2.NatGatewayAvailabilityZoneAddressArgs{
 /// 					AllocationIds: pulumi.StringArray{
-/// 						exampleEip[1].ID().ToIDOutput().ToStringOutput(),
-/// 						exampleEip[2].ID().ToIDOutput().ToStringOutput(),
+/// 						exampleEip[1].ID(),
+/// 						exampleEip[2].ID(),
 /// 					},
 /// 					AvailabilityZone: pulumi.String(available.Names[1]),
 /// 				},
 /// 			},
-/// 			VpcId:            example.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            example.ID(),
 /// 			AvailabilityMode: pulumi.String("regional"),
 /// 		})
 /// 		if err != nil {
@@ -890,7 +911,7 @@ import 'nat_gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -898,27 +919,42 @@ import 'nat_gateway_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzones" "available" {
+/// data "aws_availability_zones" "available" {
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
-/// resource "aws_ec2_internetgateway" "example" {
+/// resource "aws_ec2_internet_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id = aws_ec2_vpc.example.id
 /// }
 /// resource "aws_ec2_eip" "example" {
-///   count  = 3
+///   count = 3
+///   pulumi {
+///     name ="example-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain = "vpc"
 /// }
-/// resource "aws_ec2_natgateway" "example" {
+/// resource "aws_ec2_nat_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_zone_addresses {
 ///     allocation_ids    = [aws_ec2_eip.example[0].id]
-///     availability_zone = data.aws_getavailabilityzones.available.names[0]
+///     availability_zone = data.aws_availability_zones.available.names[0]
 ///   }
 ///   availability_zone_addresses {
 ///     allocation_ids    = [aws_ec2_eip.example[1].id, aws_ec2_eip.example[2].id]
-///     availability_zone = data.aws_getavailabilityzones.available.names[1]
+///     availability_zone = data.aws_availability_zones.available.names[1]
 ///   }
 ///   vpc_id            = aws_ec2_vpc.example.id
 ///   availability_mode = "regional"
@@ -976,13 +1012,13 @@ import 'nat_gateway_state.dart';
 ///         var exampleNatGateway = new NatGateway("exampleNatGateway", NatGatewayArgs.builder()
 ///             .availabilityZoneAddresses(
 ///                 NatGatewayAvailabilityZoneAddressArgs.builder()
-///                     .allocationIds(exampleEip[0].id())
+///                     .allocationIds(exampleEip.get(0).id())
 ///                     .availabilityZone(available.names()[0])
 ///                     .build(),
 ///                 NatGatewayAvailabilityZoneAddressArgs.builder()
 ///                     .allocationIds(
-///                         exampleEip[1].id(),
-///                         exampleEip[2].id())
+///                         exampleEip.get(1).id(),
+///                         exampleEip.get(2).id())
 ///                     .availabilityZone(available.names()[1])
 ///                     .build())
 ///             .vpcId(example.id())
@@ -1105,7 +1141,7 @@ class NatGateway extends pulumi.CustomResource {
           'aws:ec2/natGateway:NatGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     allocationId = registerOutput<String?>('allocationId');
     associationId = registerOutput<String>('associationId');

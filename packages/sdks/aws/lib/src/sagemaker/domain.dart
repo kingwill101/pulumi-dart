@@ -180,7 +180,7 @@ import 'domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -188,8 +188,8 @@ import 'domain_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["sagemaker.amazonaws.com"]
@@ -199,7 +199,10 @@ import 'domain_state.dart';
 /// }
 ///
 /// resource "aws_sagemaker_domain" "example" {
-///   default_user_settings = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_user_settings {
 ///     execution_role = aws_iam_role.example.arn
 ///   }
 ///   domain_name = "example"
@@ -208,9 +211,12 @@ import 'domain_state.dart';
 ///   subnet_ids  = [exampleAwsSubnet.id]
 /// }
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
 ///   path               = "/"
-///   assume_role_policy = data.aws_iam_getpolicydocument.example.json
+///   assume_role_policy = data.aws_iam_policy_document.example.json
 /// }
 /// ```
 /// ```java
@@ -263,8 +269,8 @@ import 'domain_state.dart';
 ///                 .build())
 ///             .domainName("example")
 ///             .authMode("IAM")
-///             .vpcId(exampleAwsVpc.id())
-///             .subnetIds(exampleAwsSubnet.id())
+///             .vpcId(exampleAwsVpc.get("id"))
+///             .subnetIds(exampleAwsSubnet.get("id"))
 ///             .build());
 ///
 ///     }
@@ -470,7 +476,7 @@ import 'domain_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleImageVersion, err := sagemaker.NewImageVersion(ctx, "example", &sagemaker.ImageVersionArgs{
-/// 			ImageName: example.ID().ToIDOutput().ToStringOutput(),
+/// 			ImageName: example.ID(),
 /// 			BaseImage: pulumi.String("base-image"),
 /// 		})
 /// 		if err != nil {
@@ -503,7 +509,7 @@ import 'domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -512,28 +518,40 @@ import 'domain_state.dart';
 /// }
 ///
 /// resource "aws_sagemaker_image" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   image_name = "example"
 ///   role_arn   = exampleAwsIamRole.arn
 /// }
-/// resource "aws_sagemaker_appimageconfig" "example" {
-///   kernel_gateway_image_config = {
-///     kernel_specs = [{
-///       "name" = "example"
-///     }]
+/// resource "aws_sagemaker_app_image_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   kernel_gateway_image_config {
+///     kernel_spec {
+///       name = "example"
+///     }
 ///   }
 ///   app_image_config_name = "example"
 /// }
-/// resource "aws_sagemaker_imageversion" "example" {
+/// resource "aws_sagemaker_image_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   image_name = aws_sagemaker_image.example.id
 ///   base_image = "base-image"
 /// }
 /// resource "aws_sagemaker_domain" "example" {
-///   default_user_settings = {
-///     kernel_gateway_app_settings = {
-///       custom_images = [{
-///         "appImageConfigName" = aws_sagemaker_appimageconfig.example.app_image_config_name
-///         "imageName"          = aws_sagemaker_imageversion.example.image_name
-///       }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_user_settings {
+///     kernel_gateway_app_settings {
+///       custom_image {
+///         app_image_config_name = aws_sagemaker_app_image_config.example.app_image_config_name
+///         image_name            = aws_sagemaker_image_version.example.image_name
+///       }
 ///     }
 ///     execution_role = exampleAwsIamRole.arn
 ///   }
@@ -577,7 +595,7 @@ import 'domain_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Image("example", ImageArgs.builder()
 ///             .imageName("example")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///         var exampleAppImageConfig = new AppImageConfig("exampleAppImageConfig", AppImageConfigArgs.builder()
@@ -602,12 +620,12 @@ import 'domain_state.dart';
 ///                         .imageName(exampleImageVersion.imageName())
 ///                         .build())
 ///                     .build())
-///                 .executionRole(exampleAwsIamRole.arn())
+///                 .executionRole(exampleAwsIamRole.get("arn"))
 ///                 .build())
 ///             .domainName("example")
 ///             .authMode("IAM")
-///             .vpcId(exampleAwsVpc.id())
-///             .subnetIds(exampleAwsSubnet.id())
+///             .vpcId(exampleAwsVpc.get("id"))
+///             .subnetIds(exampleAwsSubnet.get("id"))
 ///             .build());
 ///
 ///     }
@@ -717,7 +735,7 @@ class Domain extends pulumi.CustomResource {
           'aws:sagemaker/domain:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     appNetworkAccessType = registerOutput<String?>('appNetworkAccessType');
     appSecurityGroupManagement = registerOutput<String?>('appSecurityGroupManagement');

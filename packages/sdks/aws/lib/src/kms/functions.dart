@@ -71,7 +71,7 @@ import 'get_secrets_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -79,7 +79,7 @@ import 'get_secrets_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_kms_getalias" "s3" {
+/// data "aws_kms_alias" "s3" {
 ///   name = "alias/aws/s3"
 /// }
 /// ```
@@ -236,7 +236,7 @@ pulumi.Output<GetAliasResult> getAliasOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -244,12 +244,21 @@ pulumi.Output<GetAliasResult> getAliasOutput(
 ///   }
 /// }
 ///
-/// data "aws_kms_getciphertext" "oauth" {
+/// data "aws_kms_cipher_text" "oauth" {
 ///   key_id    = aws_kms_key.oauth_config.key_id
-///   plaintext = "{\n  \\\"client_id\\\": \\\"e587dbae22222f55da22\\\",\n  \\\"client_secret\\\": \\\"8289575d00000ace55e1815ec13673955721b8a5\\\"\n}\n"
+///   plaintext = <<EOF
+/// {
+///   \"client_id\": \"e587dbae22222f55da22\",
+///   \"client_secret\": \"8289575d00000ace55e1815ec13673955721b8a5\"
+/// }
+/// EOF
+///
 /// }
 ///
 /// resource "aws_kms_key" "oauth_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "oauth config"
 ///   is_enabled  = true
 /// }
@@ -398,7 +407,7 @@ pulumi.Output<GetCipherTextResult> getCipherTextOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -406,7 +415,7 @@ pulumi.Output<GetCipherTextResult> getCipherTextOutput(
 ///   }
 /// }
 ///
-/// data "aws_kms_getcustomkeystore" "keystore" {
+/// data "aws_kms_custom_key_store" "keystore" {
 ///   custom_key_store_name = "my_cloudhsm"
 /// }
 /// ```
@@ -575,7 +584,7 @@ pulumi.Output<GetCustomKeyStoreResult> getCustomKeyStoreOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -583,16 +592,16 @@ pulumi.Output<GetCustomKeyStoreResult> getCustomKeyStoreOutput(
 ///   }
 /// }
 ///
-/// data "aws_kms_getkey" "byAlias" {
+/// data "aws_kms_key" "byAlias" {
 ///   key_id = "alias/my-key"
 /// }
-/// data "aws_kms_getkey" "byId" {
+/// data "aws_kms_key" "byId" {
 ///   key_id = "1234abcd-12ab-34cd-56ef-1234567890ab"
 /// }
-/// data "aws_kms_getkey" "byAliasArn" {
+/// data "aws_kms_key" "byAliasArn" {
 ///   key_id = "arn:aws:kms:us-east-1:111122223333:alias/my-key"
 /// }
-/// data "aws_kms_getkey" "byKeyArn" {
+/// data "aws_kms_key" "byKeyArn" {
 ///   key_id = "arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
 /// }
 /// ```
@@ -785,7 +794,7 @@ pulumi.Output<GetKeyResult> getKeyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -793,16 +802,16 @@ pulumi.Output<GetKeyResult> getKeyOutput(
 ///   }
 /// }
 ///
-/// data "aws_kms_getpublickey" "byAlias" {
+/// data "aws_kms_public_key" "byAlias" {
 ///   key_id = "alias/my-key"
 /// }
-/// data "aws_kms_getpublickey" "byId" {
+/// data "aws_kms_public_key" "byId" {
 ///   key_id = "1234abcd-12ab-34cd-56ef-1234567890ab"
 /// }
-/// data "aws_kms_getpublickey" "byAliasArn" {
+/// data "aws_kms_public_key" "byAliasArn" {
 ///   key_id = "arn:aws:kms:us-east-1:111122223333:alias/my-key"
 /// }
-/// data "aws_kms_getpublickey" "byKeyArn" {
+/// data "aws_kms_public_key" "byKeyArn" {
 ///   key_id = "arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
 /// }
 /// ```

@@ -109,7 +109,7 @@ import 'schema_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -118,7 +118,10 @@ import 'schema_state.dart';
 /// }
 ///
 /// resource "aws_verifiedpermissions_schema" "example" {
-///   definition = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   definition {
 ///     value = jsonencode({
 ///       "Namespace" = {
 ///         "entityTypes" = {}
@@ -166,7 +169,7 @@ import 'schema_state.dart';
 ///                         ))
 ///                     )))
 ///                 .build())
-///             .policyStoreId(exampleAwsVerifiedpermissionsPolicyStore.policyStoreId())
+///             .policyStoreId(exampleAwsVerifiedpermissionsPolicyStore.get("policyStoreId"))
 ///             .build());
 ///
 ///     }
@@ -216,7 +219,7 @@ class Schema extends pulumi.CustomResource {
           'aws:verifiedpermissions/schema:Schema',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     definition = registerOutput<SchemaDefinition>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchemaDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     namespaces = registerOutput<List<String>>('namespaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

@@ -100,7 +100,7 @@ import 'anomaly_detector_timeouts.dart';
 /// 				Skip: pulumi.Bool(true),
 /// 			},
 /// 			Alias:       pulumi.String("example"),
-/// 			WorkspaceId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			WorkspaceId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -110,7 +110,7 @@ import 'anomaly_detector_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -119,8 +119,14 @@ import 'anomaly_detector_timeouts.dart';
 /// }
 ///
 /// resource "aws_amp_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_amp_anomalydetector" "example" {
+/// resource "aws_amp_anomaly_detector" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration = {
 ///     random_cut_forest = {
 ///       query = "avg(up)"
@@ -280,7 +286,7 @@ import 'anomaly_detector_timeouts.dart';
 ///                 },
 ///                 IgnoreNearExpectedFromBelow = new Aws.Amp.Inputs.AnomalyDetectorConfigurationRandomCutForestIgnoreNearExpectedFromBelowArgs
 ///                 {
-///                     Amount = 2,
+///                     Amount = 2.0,
 ///                 },
 ///                 Query = "avg(up)",
 ///                 SampleSize = 256,
@@ -335,7 +341,7 @@ import 'anomaly_detector_timeouts.dart';
 /// 				MarkAsAnomaly: pulumi.Bool(true),
 /// 			},
 /// 			Alias:                       pulumi.String("example"),
-/// 			WorkspaceId:                 example.ID().ToIDOutput().ToStringOutput(),
+/// 			WorkspaceId:                 example.ID(),
 /// 			EvaluationIntervalInSeconds: pulumi.Int(120),
 /// 			Labels: pulumi.StringMap{
 /// 				"env":  pulumi.String("production"),
@@ -350,7 +356,7 @@ import 'anomaly_detector_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -359,8 +365,14 @@ import 'anomaly_detector_timeouts.dart';
 /// }
 ///
 /// resource "aws_amp_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_amp_anomalydetector" "example" {
+/// resource "aws_amp_anomaly_detector" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration = {
 ///     random_cut_forest = {
 ///       ignore_near_expected_from_above = {
@@ -531,7 +543,7 @@ class AnomalyDetector extends pulumi.CustomResource {
           'aws:amp/anomalyDetector:AnomalyDetector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     alias = registerOutput<String>('alias');
     arn = registerOutput<String>('arn');

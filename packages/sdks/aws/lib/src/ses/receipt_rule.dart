@@ -138,7 +138,7 @@ import 'receipt_rule_workmail_action.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -147,13 +147,16 @@ import 'receipt_rule_workmail_action.dart';
 /// }
 ///
 /// # Add a header to the email and store it in S3
-/// resource "aws_ses_receiptrule" "store" {
-///   add_header_actions {
+/// resource "aws_ses_receipt_rule" "store" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   add_header_action {
 ///     header_name  = "Custom-Header"
 ///     header_value = "Added by SES"
 ///     position     = 1
 ///   }
-///   s3_actions {
+///   s3_action {
 ///     bucket_name = "emails"
 ///     position    = 2
 ///   }
@@ -285,7 +288,7 @@ class ReceiptRule extends pulumi.CustomResource {
           'aws:ses/receiptRule:ReceiptRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     addHeaderActions = registerOutput<List<ReceiptRuleAddHeaderAction>?>('addHeaderActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReceiptRuleAddHeaderAction>(guardedValue, (value) => ReceiptRuleAddHeaderAction.fromMap((value as Map).cast<String, dynamic>())); });
     after = registerOutput<String?>('after');

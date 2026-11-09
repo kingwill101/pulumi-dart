@@ -143,7 +143,7 @@ import 'serverless_lifecycle_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -151,7 +151,10 @@ import 'serverless_lifecycle_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_opensearch_serverlesslifecyclepolicy" "example" {
+/// resource "aws_opensearch_serverless_lifecycle_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 ///   type = "retention"
 ///   policy = jsonencode({
@@ -281,7 +284,7 @@ class ServerlessLifecyclePolicy extends pulumi.CustomResource {
           'aws:opensearch/serverlessLifecyclePolicy:ServerlessLifecyclePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

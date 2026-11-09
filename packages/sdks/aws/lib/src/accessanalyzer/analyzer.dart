@@ -58,7 +58,7 @@ import 'analyzer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,6 +67,9 @@ import 'analyzer_state.dart';
 /// }
 ///
 /// resource "aws_accessanalyzer_analyzer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   analyzer_name = "example"
 /// }
 /// ```
@@ -195,7 +198,7 @@ import 'analyzer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -204,10 +207,16 @@ import 'analyzer_state.dart';
 /// }
 ///
 /// resource "aws_organizations_organization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   aws_service_access_principals = ["access-analyzer.amazonaws.com"]
 /// }
 /// resource "aws_accessanalyzer_analyzer" "example" {
-///   depends_on    = [aws_organizations_organization.example]
+///   depends_on = [aws_organizations_organization.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   analyzer_name = "example"
 ///   type          = "ORGANIZATION"
 /// }
@@ -437,7 +446,7 @@ import 'analyzer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -446,18 +455,22 @@ import 'analyzer_state.dart';
 /// }
 ///
 /// resource "aws_accessanalyzer_analyzer" "example" {
-///   configuration = {
-///     unused_access = {
-///       analysis_rule = {
-///         exclusions = [{
-///           "accountIds" = ["123456789012", "234567890123"]
-///           }, {
-///           "resourceTags" = [{
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     unused_access {
+///       analysis_rule {
+///         exclusion {
+///           account_ids = ["123456789012", "234567890123"]
+///         }
+///         exclusion {
+///           resource_tags = [{
 ///             "key1" = "value1"
 ///             }, {
 ///             "key2" = "value2"
 ///           }]
-///         }]
+///         }
 ///       }
 ///       unused_access_age = 180
 ///     }
@@ -658,7 +671,7 @@ import 'analyzer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -667,12 +680,15 @@ import 'analyzer_state.dart';
 /// }
 ///
 /// resource "aws_accessanalyzer_analyzer" "test" {
-///   configuration = {
-///     internal_access = {
-///       analysis_rule = {
-///         inclusions = [{
-///           "resourceTypes" = ["AWS::S3::Bucket", "AWS::RDS::DBSnapshot", "AWS::DynamoDB::Table"]
-///         }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     internal_access {
+///       analysis_rule {
+///         inclusion {
+///           resource_types = ["AWS::S3::Bucket", "AWS::RDS::DBSnapshot", "AWS::DynamoDB::Table"]
+///         }
 ///       }
 ///     }
 ///   }
@@ -860,7 +876,7 @@ import 'analyzer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -869,13 +885,16 @@ import 'analyzer_state.dart';
 /// }
 ///
 /// resource "aws_accessanalyzer_analyzer" "test" {
-///   configuration = {
-///     internal_access = {
-///       analysis_rule = {
-///         inclusions = [{
-///           "accountIds"   = ["123456789012"]
-///           "resourceArns" = ["arn:aws:s3:::my-example-bucket"]
-///         }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     internal_access {
+///       analysis_rule {
+///         inclusion {
+///           account_ids   = ["123456789012"]
+///           resource_arns = ["arn:aws:s3:::my-example-bucket"]
+///         }
 ///       }
 ///     }
 ///   }
@@ -981,7 +1000,7 @@ class Analyzer extends pulumi.CustomResource {
           'aws:accessanalyzer/analyzer:Analyzer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     analyzerName = registerOutput<String>('analyzerName');
     arn = registerOutput<String>('arn');

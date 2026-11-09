@@ -15,7 +15,7 @@ import 'snapshot_state.dart';
 ///     allocatedStorage: 10,
 ///     engine: "mysql",
 ///     engineVersion: "5.6.21",
-///     instanceClass: aws.rds.InstanceType.T2_Micro,
+///     instanceClass: aws.rds.InstanceType.T4G_Micro,
 ///     dbName: "baz",
 ///     password: "barbarbarbar",
 ///     username: "foo",
@@ -36,7 +36,7 @@ import 'snapshot_state.dart';
 ///     allocated_storage=10,
 ///     engine="mysql",
 ///     engine_version="5.6.21",
-///     instance_class=aws.rds.InstanceType.T2_MICRO,
+///     instance_class=aws.rds.InstanceType.T4_G_MICRO,
 ///     db_name="baz",
 ///     password="barbarbarbar",
 ///     username="foo",
@@ -60,7 +60,7 @@ import 'snapshot_state.dart';
 ///         AllocatedStorage = 10,
 ///         Engine = "mysql",
 ///         EngineVersion = "5.6.21",
-///         InstanceClass = Aws.Rds.InstanceType.T2_Micro,
+///         InstanceClass = Aws.Rds.InstanceType.T4G_Micro,
 ///         DbName = "baz",
 ///         Password = "barbarbarbar",
 ///         Username = "foo",
@@ -91,7 +91,7 @@ import 'snapshot_state.dart';
 /// 			AllocatedStorage:      pulumi.Int(10),
 /// 			Engine:                pulumi.String("mysql"),
 /// 			EngineVersion:         pulumi.String("5.6.21"),
-/// 			InstanceClass:         pulumi.String(rds.InstanceType_T2_Micro),
+/// 			InstanceClass:         pulumi.String(rds.InstanceType_T4G_Micro),
 /// 			DbName:                pulumi.String("baz"),
 /// 			Password:              pulumi.String("barbarbarbar"),
 /// 			Username:              pulumi.String("foo"),
@@ -114,7 +114,7 @@ import 'snapshot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -123,10 +123,13 @@ import 'snapshot_state.dart';
 /// }
 ///
 /// resource "aws_rds_instance" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocated_storage       = 10
 ///   engine                  = "mysql"
 ///   engine_version          = "5.6.21"
-///   instance_class          = "db.t2.micro"
+///   instance_class          = "db.t4g.micro"
 ///   db_name                 = "baz"
 ///   password                = "barbarbarbar"
 ///   username                = "foo"
@@ -135,6 +138,9 @@ import 'snapshot_state.dart';
 ///   parameter_group_name    = "default.mysql5.6"
 /// }
 /// resource "aws_rds_snapshot" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   db_instance_identifier = aws_rds_instance.bar.identifier
 ///   db_snapshot_identifier = "testsnapshot1234"
 /// }
@@ -166,7 +172,7 @@ import 'snapshot_state.dart';
 ///             .allocatedStorage(10)
 ///             .engine("mysql")
 ///             .engineVersion("5.6.21")
-///             .instanceClass("db.t2.micro")
+///             .instanceClass("db.t4g.micro")
 ///             .dbName("baz")
 ///             .password("barbarbarbar")
 ///             .username("foo")
@@ -191,7 +197,7 @@ import 'snapshot_state.dart';
 ///       allocatedStorage: 10
 ///       engine: mysql
 ///       engineVersion: 5.6.21
-///       instanceClass: db.t2.micro
+///       instanceClass: db.t4g.micro
 ///       dbName: baz
 ///       password: barbarbarbar
 ///       username: foo
@@ -273,7 +279,7 @@ class Snapshot extends pulumi.CustomResource {
           'aws:rds/snapshot:Snapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     allocatedStorage = registerOutput<int>('allocatedStorage');
     availabilityZone = registerOutput<String>('availabilityZone');

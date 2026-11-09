@@ -63,7 +63,7 @@ import 'get_templates_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,7 +71,7 @@ import 'get_templates_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_servicequotas_getservice" "example" {
+/// data "aws_servicequotas_service" "example" {
 ///   service_name = "Amazon Virtual Private Cloud (Amazon VPC)"
 /// }
 /// ```
@@ -217,7 +217,7 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -225,11 +225,11 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 ///   }
 /// }
 ///
-/// data "aws_servicequotas_getservicequota" "byQuotaCode" {
+/// data "aws_servicequotas_service_quota" "byQuotaCode" {
 ///   quota_code   = "L-F678F1CE"
 ///   service_code = "vpc"
 /// }
-/// data "aws_servicequotas_getservicequota" "byQuotaName" {
+/// data "aws_servicequotas_service_quota" "byQuotaName" {
 ///   quota_name   = "VPCs per Region"
 ///   service_code = "vpc"
 /// }
@@ -366,7 +366,7 @@ pulumi.Output<GetServiceQuotaResult> getServiceQuotaOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -374,7 +374,7 @@ pulumi.Output<GetServiceQuotaResult> getServiceQuotaOutput(
 ///   }
 /// }
 ///
-/// data "aws_servicequotas_gettemplates" "example" {
+/// data "aws_servicequotas_templates" "example" {
 ///   aws_region = "us-east-1"
 /// }
 /// ```

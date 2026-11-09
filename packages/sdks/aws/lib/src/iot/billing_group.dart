@@ -86,7 +86,7 @@ import 'billing_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -94,8 +94,11 @@ import 'billing_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iot_billinggroup" "example" {
-///   properties = {
+/// resource "aws_iot_billing_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   properties {
 ///     description = "This is my billing group"
 ///   }
 ///   name = "example"
@@ -185,7 +188,7 @@ class BillingGroup extends pulumi.CustomResource {
           'aws:iot/billingGroup:BillingGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     metadatas = registerOutput<List<BillingGroupMetadata>>('metadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BillingGroupMetadata>(guardedValue, (value) => BillingGroupMetadata.fromMap((value as Map).cast<String, dynamic>())); });

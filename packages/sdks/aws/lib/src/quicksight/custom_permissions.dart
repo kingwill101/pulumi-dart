@@ -76,7 +76,7 @@ import 'custom_permissions_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -84,8 +84,11 @@ import 'custom_permissions_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_quicksight_custompermissions" "example" {
-///   capabilities = {
+/// resource "aws_quicksight_custom_permissions" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   capabilities {
 ///     print_reports    = "DENY"
 ///     share_dashboards = "DENY"
 ///   }
@@ -174,7 +177,7 @@ class CustomPermissions extends pulumi.CustomResource {
           'aws:quicksight/customPermissions:CustomPermissions',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');

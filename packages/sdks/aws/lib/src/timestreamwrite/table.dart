@@ -67,7 +67,7 @@ import 'table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,6 +76,9 @@ import 'table_state.dart';
 /// }
 ///
 /// resource "aws_timestreamwrite_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name = exampleAwsTimestreamwriteDatabase.databaseName
 ///   table_name    = "example"
 /// }
@@ -102,7 +105,7 @@ import 'table_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Table("example", TableArgs.builder()
-///             .databaseName(exampleAwsTimestreamwriteDatabase.databaseName())
+///             .databaseName(exampleAwsTimestreamwriteDatabase.get("databaseName"))
 ///             .tableName("example")
 ///             .build());
 ///
@@ -207,7 +210,7 @@ import 'table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -216,7 +219,10 @@ import 'table_state.dart';
 /// }
 ///
 /// resource "aws_timestreamwrite_table" "example" {
-///   retention_properties = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   retention_properties {
 ///     magnetic_store_retention_period_in_days = 30
 ///     memory_store_retention_period_in_hours  = 8
 ///   }
@@ -254,7 +260,7 @@ import 'table_state.dart';
 ///                 .magneticStoreRetentionPeriodInDays(30)
 ///                 .memoryStoreRetentionPeriodInHours(8)
 ///                 .build())
-///             .databaseName(exampleAwsTimestreamwriteDatabase.databaseName())
+///             .databaseName(exampleAwsTimestreamwriteDatabase.get("databaseName"))
 ///             .tableName("example")
 ///             .tags(Map.of("Name", "example-timestream-table"))
 ///             .build());
@@ -365,7 +371,7 @@ import 'table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -374,8 +380,11 @@ import 'table_state.dart';
 /// }
 ///
 /// resource "aws_timestreamwrite_table" "example" {
-///   schema = {
-///     composite_partition_key = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   schema {
+///     composite_partition_key {
 ///       enforcement_in_record = "REQUIRED"
 ///       name                  = "attr1"
 ///       type                  = "DIMENSION"
@@ -416,7 +425,7 @@ import 'table_state.dart';
 ///                     .type("DIMENSION")
 ///                     .build())
 ///                 .build())
-///             .databaseName(exampleAwsTimestreamwriteDatabase.databaseName())
+///             .databaseName(exampleAwsTimestreamwriteDatabase.get("databaseName"))
 ///             .tableName("example")
 ///             .build());
 ///
@@ -477,7 +486,7 @@ class Table extends pulumi.CustomResource {
           'aws:timestreamwrite/table:Table',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     databaseName = registerOutput<String>('databaseName');

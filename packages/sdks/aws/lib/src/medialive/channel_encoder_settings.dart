@@ -8,6 +8,7 @@ import 'channel_encoder_settings_global_configuration.dart';
 import 'channel_encoder_settings_motion_graphics_configuration.dart';
 import 'channel_encoder_settings_nielsen_configuration.dart';
 import 'channel_encoder_settings_output_group.dart';
+import 'channel_encoder_settings_thumbnail_configuration.dart';
 import 'channel_encoder_settings_timecode_config.dart';
 import 'channel_encoder_settings_video_description.dart';
 
@@ -26,6 +27,8 @@ class ChannelEncoderSettings {
   final pulumi.Input<ChannelEncoderSettingsNielsenConfiguration?>? nielsenConfiguration;
   /// Output groups for the channel. See `outputGroups` Block for details.
   final pulumi.Input<List<ChannelEncoderSettingsOutputGroup>> outputGroups;
+  /// Thumbnail configuration settings. See `thumbnailConfiguration` Block for details.
+  final pulumi.Input<ChannelEncoderSettingsThumbnailConfiguration?>? thumbnailConfiguration;
   /// Settings used to acquire and adjust timecode information from inputs. See `timecodeConfig` Block for details.
   final pulumi.Input<ChannelEncoderSettingsTimecodeConfig> timecodeConfig;
   /// Video descriptions for the channel. See `videoDescriptions` Block for details.
@@ -39,6 +42,7 @@ class ChannelEncoderSettings {
   /// [motionGraphicsConfiguration] Settings for motion graphics. See `motionGraphicsConfiguration` Block for details.
   /// [nielsenConfiguration] Nielsen configuration settings. See `nielsenConfiguration` Block for details.
   /// [outputGroups] Output groups for the channel. See `outputGroups` Block for details.
+  /// [thumbnailConfiguration] Thumbnail configuration settings. See `thumbnailConfiguration` Block for details.
   /// [timecodeConfig] Settings used to acquire and adjust timecode information from inputs. See `timecodeConfig` Block for details.
   /// [videoDescriptions] Video descriptions for the channel. See `videoDescriptions` Block for details.
   const ChannelEncoderSettings({
@@ -49,6 +53,7 @@ class ChannelEncoderSettings {
     this.motionGraphicsConfiguration,
     this.nielsenConfiguration,
     required this.outputGroups,
+    this.thumbnailConfiguration,
     required this.timecodeConfig,
     this.videoDescriptions,
   });
@@ -62,6 +67,7 @@ class ChannelEncoderSettings {
       'motionGraphicsConfiguration': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsMotionGraphicsConfiguration, Map<String, dynamic>>(motionGraphicsConfiguration, (value) => value.toMap()),
       'nielsenConfiguration': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsNielsenConfiguration, Map<String, dynamic>>(nielsenConfiguration, (value) => value.toMap()),
       'outputGroups': pulumi.Input.mapInputValue<List<ChannelEncoderSettingsOutputGroup>, List<Map<String, dynamic>>>(outputGroups, (value) => pulumi.Input.encodeList<ChannelEncoderSettingsOutputGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'thumbnailConfiguration': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsThumbnailConfiguration, Map<String, dynamic>>(thumbnailConfiguration, (value) => value.toMap()),
       'timecodeConfig': pulumi.Input.mapInputValue<ChannelEncoderSettingsTimecodeConfig, Map<String, dynamic>>(timecodeConfig, (value) => value.toMap()),
       'videoDescriptions': ?pulumi.Input.mapOptionalInputValue<List<ChannelEncoderSettingsVideoDescription>, List<Map<String, dynamic>>>(videoDescriptions, (value) => pulumi.Input.encodeList<ChannelEncoderSettingsVideoDescription, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
@@ -76,6 +82,7 @@ class ChannelEncoderSettings {
       motionGraphicsConfiguration: (() { final guardedValue = map['motionGraphicsConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelEncoderSettingsMotionGraphicsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       nielsenConfiguration: (() { final guardedValue = map['nielsenConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelEncoderSettingsNielsenConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       outputGroups: pulumi.Input.fromValue(pulumi.Input.decodeList<ChannelEncoderSettingsOutputGroup>(map['outputGroups']!, (value) => ChannelEncoderSettingsOutputGroup.fromMap((value as Map).cast<String, dynamic>()))),
+      thumbnailConfiguration: (() { final guardedValue = map['thumbnailConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelEncoderSettingsThumbnailConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       timecodeConfig: pulumi.Input.fromValue(ChannelEncoderSettingsTimecodeConfig.fromMap((map['timecodeConfig']! as Map).cast<String, dynamic>())),
       videoDescriptions: (() { final guardedValue = map['videoDescriptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ChannelEncoderSettingsVideoDescription>(guardedValue, (value) => ChannelEncoderSettingsVideoDescription.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

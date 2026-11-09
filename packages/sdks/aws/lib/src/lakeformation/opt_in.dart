@@ -108,7 +108,7 @@ import 'opt_in_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -116,12 +116,15 @@ import 'opt_in_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lakeformation_optin" "example" {
-///   principals {
+/// resource "aws_lakeformation_opt_in" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   principal {
 ///     data_lake_principal_identifier = exampleAwsIamRole.arn
 ///   }
-///   resource_datas {
-///     database = {
+///   resource_data {
+///     database {
 ///       name       = exampleAwsGlueCatalogDatabase.name
 ///       catalog_id = current.accountId
 ///     }
@@ -154,12 +157,12 @@ import 'opt_in_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new OptIn("example", OptInArgs.builder()
 ///             .principals(OptInPrincipalArgs.builder()
-///                 .dataLakePrincipalIdentifier(exampleAwsIamRole.arn())
+///                 .dataLakePrincipalIdentifier(exampleAwsIamRole.get("arn"))
 ///                 .build())
 ///             .resourceDatas(OptInResourceDataArgs.builder()
 ///                 .database(OptInResourceDataDatabaseArgs.builder()
-///                     .name(exampleAwsGlueCatalogDatabase.name())
-///                     .catalogId(current.accountId())
+///                     .name(exampleAwsGlueCatalogDatabase.get("name"))
+///                     .catalogId(current.get("accountId"))
 ///                     .build())
 ///                 .build())
 ///             .build());
@@ -205,7 +208,7 @@ class OptIn extends pulumi.CustomResource {
           'aws:lakeformation/optIn:OptIn',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     conditions = registerOutput<List<OptInCondition>?>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OptInCondition>(guardedValue, (value) => OptInCondition.fromMap((value as Map).cast<String, dynamic>())); });
     lastModified = registerOutput<String>('lastModified');

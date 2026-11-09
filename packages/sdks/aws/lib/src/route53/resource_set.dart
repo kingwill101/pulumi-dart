@@ -81,7 +81,7 @@ import 'resource_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -89,7 +89,10 @@ import 'resource_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53recoveryreadiness_resourceset" "example" {
+/// resource "aws_route53recoveryreadiness_resource_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resources {
 ///     resource_arn = exampleAwsCloudwatchMetricAlarm.arn
 ///   }
@@ -121,7 +124,7 @@ import 'resource_set_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new ResourceSet("example", ResourceSetArgs.builder()
 ///             .resources(ResourceSetResourceArgs.builder()
-///                 .resourceArn(exampleAwsCloudwatchMetricAlarm.arn())
+///                 .resourceArn(exampleAwsCloudwatchMetricAlarm.get("arn"))
 ///                 .build())
 ///             .resourceSetName(my_cw_alarm_set)
 ///             .resourceSetType("AWS::CloudWatch::Alarm")
@@ -178,7 +181,7 @@ class ResourceSet extends pulumi.CustomResource {
           'aws:route53recoveryreadiness/resourceSet:ResourceSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     resourceSetName = registerOutput<String>('resourceSetName');

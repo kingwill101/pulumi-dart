@@ -55,7 +55,7 @@ import 'pipeline_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -64,6 +64,9 @@ import 'pipeline_state.dart';
 /// }
 ///
 /// resource "aws_datapipeline_pipeline" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "tf-pipeline-default"
 /// }
 /// ```
@@ -135,7 +138,7 @@ class Pipeline extends pulumi.CustomResource {
           'aws:datapipeline/pipeline:Pipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

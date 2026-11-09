@@ -97,7 +97,7 @@ import 'capacity_task_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -105,15 +105,18 @@ import 'capacity_task_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_outposts_getoutposts" "example" {
+/// data "aws_outposts_outposts" "example" {
 /// }
 ///
-/// resource "aws_outposts_capacitytask" "example" {
-///   instance_pools {
+/// resource "aws_outposts_capacity_task" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   instance_pool {
 ///     instance_type = "m5.large"
 ///     count         = 2
 ///   }
-///   outpost_identifier = data.aws_outposts_getoutposts.example.arns[0]
+///   outpost_identifier = data.aws_outposts_outposts.example.arns[0]
 /// }
 /// ```
 /// ```java
@@ -324,7 +327,7 @@ import 'capacity_task_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -332,29 +335,32 @@ import 'capacity_task_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_outposts_getassets" "example" {
+/// data "aws_outposts_assets" "example" {
 ///   arn = "arn:aws:outposts:us-west-2:123456789012:outpost/op-1234567890abcdef"
 /// }
 ///
-/// resource "aws_outposts_capacitytask" "example" {
+/// resource "aws_outposts_capacity_task" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   timeouts {
 ///     create = "90m"
 ///     delete = "15m"
 ///   }
-///   instances_to_exclude = {
+///   instances_to_exclude {
 ///     instances = ["i-0123456789abcdef0", "i-0fedcba9876543210"]
 ///   }
-///   instance_pools {
+///   instance_pool {
 ///     instance_type = "m5.large"
 ///     count         = 4
 ///   }
-///   instance_pools {
+///   instance_pool {
 ///     instance_type = "c5.xlarge"
 ///     count         = 2
 ///   }
 ///   outpost_identifier                = "op-1234567890abcdef"
 ///   task_action_on_blocking_instances = "WAIT_FOR_EVACUATION"
-///   asset_id                          = data.aws_outposts_getassets.example.asset_ids[0]
+///   asset_id                          = data.aws_outposts_assets.example.asset_ids[0]
 /// }
 /// ```
 /// ```java
@@ -507,7 +513,7 @@ class CapacityTask extends pulumi.CustomResource {
           'aws:outposts/capacityTask:CapacityTask',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     assetId = registerOutput<String>('assetId');
     capacityTaskId = registerOutput<String>('capacityTaskId');

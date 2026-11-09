@@ -78,7 +78,7 @@ import 'default_subnet_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,7 +86,10 @@ import 'default_subnet_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_defaultsubnet" "default_az1" {
+/// resource "aws_ec2_default_subnet" "default_az1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_zone = "us-west-2a"
 ///   tags = {
 ///     "Name" = "Default subnet for us-west-2a"
@@ -189,7 +192,7 @@ class DefaultSubnet extends pulumi.CustomResource {
           'aws:ec2/defaultSubnet:DefaultSubnet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     assignIpv6AddressOnCreation = registerOutput<bool?>('assignIpv6AddressOnCreation');

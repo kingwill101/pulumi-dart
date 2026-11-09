@@ -50,7 +50,7 @@ import 'sms_preferences_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -58,7 +58,10 @@ import 'sms_preferences_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sns_smspreferences" "update_sms_prefs" {
+/// resource "aws_sns_sms_preferences" "update_sms_prefs" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -125,7 +128,7 @@ class SmsPreferences extends pulumi.CustomResource {
           'aws:sns/smsPreferences:SmsPreferences',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     defaultSenderId = registerOutput<String?>('defaultSenderId');
     defaultSmsType = registerOutput<String?>('defaultSmsType');

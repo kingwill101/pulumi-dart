@@ -375,7 +375,7 @@ import 'trail_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		exampleBucketPolicy, err := s3.NewBucketPolicy(ctx, "example", &s3.BucketPolicyArgs{
-/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: exampleBucket.ID(),
 /// 			Policy: example.Json(),
 /// 		})
 /// 		if err != nil {
@@ -383,7 +383,7 @@ import 'trail_state.dart';
 /// 		}
 /// 		_, err = cloudtrail.NewTrail(ctx, "example", &cloudtrail.TrailArgs{
 /// 			Name:                       pulumi.String("example"),
-/// 			S3BucketName:               exampleBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			S3BucketName:               exampleBucket.ID(),
 /// 			S3KeyPrefix:                pulumi.String("prefix"),
 /// 			IncludeGlobalServiceEvents: pulumi.Bool(false),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -397,7 +397,7 @@ import 'trail_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -405,12 +405,12 @@ import 'trail_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
 ///       variable = "aws:SourceArn"
-///       values   = ["arn:${data.aws_getpartition.currentGetPartition.partition}:cloudtrail:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:trail/example"]
+///       values   = ["arn:${data.aws_partition.currentGetPartition.partition}:cloudtrail:${data.aws_region.currentGetRegion.region}:${data.aws_caller_identity.current.account_id}:trail/example"]
 ///     }
 ///     principals {
 ///       type        = "Service"
@@ -421,16 +421,16 @@ import 'trail_state.dart';
 ///     actions   = ["s3:GetBucketAcl"]
 ///     resources = [aws_s3_bucket.example.arn]
 ///   }
-///   statements {
-///     conditions {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
 ///       variable = "s3:x-amz-acl"
 ///       values   = ["bucket-owner-full-control"]
 ///     }
-///     conditions {
+///     condition {
 ///       test     = "StringEquals"
 ///       variable = "aws:SourceArn"
-///       values   = ["arn:${data.aws_getpartition.currentGetPartition.partition}:cloudtrail:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:trail/example"]
+///       values   = ["arn:${data.aws_partition.currentGetPartition.partition}:cloudtrail:${data.aws_region.currentGetRegion.region}:${data.aws_caller_identity.current.account_id}:trail/example"]
 ///     }
 ///     principals {
 ///       type        = "Service"
@@ -439,30 +439,39 @@ import 'trail_state.dart';
 ///     sid       = "AWSCloudTrailWrite"
 ///     effect    = "Allow"
 ///     actions   = ["s3:PutObject"]
-///     resources = ["${aws_s3_bucket.example.arn}/prefix/AWSLogs/${data.aws_getcalleridentity.current.account_id}/*"]
+///     resources = ["${aws_s3_bucket.example.arn}/prefix/AWSLogs/${data.aws_caller_identity.current.account_id}/*"]
 ///   }
 /// }
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
-/// data "aws_getregion" "currentGetRegion" {
+/// data "aws_region" "currentGetRegion" {
 /// }
 ///
 /// resource "aws_cloudtrail_trail" "example" {
-///   depends_on                    = [aws_s3_bucketpolicy.example]
+///   depends_on = [aws_s3_bucket_policy.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "example"
 ///   s3_bucket_name                = aws_s3_bucket.example.id
 ///   s3_key_prefix                 = "prefix"
 ///   include_global_service_events = false
 /// }
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket        = "my-test-trail"
 ///   force_destroy = true
 /// }
-/// resource "aws_s3_bucketpolicy" "example" {
+/// resource "aws_s3_bucket_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.id
-///   policy = data.aws_iam_getpolicydocument.example.json
+///   policy = data.aws_iam_policy_document.example.json
 /// }
 /// ```
 /// ```java
@@ -754,7 +763,7 @@ import 'trail_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -763,6 +772,9 @@ import 'trail_state.dart';
 /// }
 ///
 /// resource "aws_cloudtrail_trail" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   event_selectors {
 ///     data_resources {
 ///       type   = "AWS::Lambda::Function"
@@ -921,7 +933,7 @@ import 'trail_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -930,6 +942,9 @@ import 'trail_state.dart';
 /// }
 ///
 /// resource "aws_cloudtrail_trail" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   event_selectors {
 ///     data_resources {
 ///       type   = "AWS::S3::Object"
@@ -1104,7 +1119,7 @@ import 'trail_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1112,15 +1127,18 @@ import 'trail_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_s3_getbucket" "important-bucket" {
+/// data "aws_s3_bucket" "important-bucket" {
 ///   bucket = "important-bucket"
 /// }
 ///
 /// resource "aws_cloudtrail_trail" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   event_selectors {
 ///     data_resources {
 ///       type   = "AWS::S3::Object"
-///       values = ["${data.aws_s3_getbucket.important-bucket.arn}/"]
+///       values = ["${data.aws_s3_bucket.important-bucket.arn}/"]
 ///     }
 ///     read_write_type           = "All"
 ///     include_management_events = true
@@ -1414,7 +1432,7 @@ import 'trail_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1422,14 +1440,17 @@ import 'trail_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_s3_getbucket" "not-important-bucket-1" {
+/// data "aws_s3_bucket" "not-important-bucket-1" {
 ///   bucket = "not-important-bucket-1"
 /// }
-/// data "aws_s3_getbucket" "not-important-bucket-2" {
+/// data "aws_s3_bucket" "not-important-bucket-2" {
 ///   bucket = "not-important-bucket-2"
 /// }
 ///
 /// resource "aws_cloudtrail_trail" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   advanced_event_selectors {
 ///     field_selectors {
 ///       field  = "eventCategory"
@@ -1437,7 +1458,7 @@ import 'trail_state.dart';
 ///     }
 ///     field_selectors {
 ///       field            = "resources.ARN"
-///       not_starts_withs = ["${data.aws_s3_getbucket.not-important-bucket-1.arn}/", "${data.aws_s3_getbucket.not-important-bucket-2.arn}/"]
+///       not_starts_withs = ["${data.aws_s3_bucket.not-important-bucket-1.arn}/", "${data.aws_s3_bucket.not-important-bucket-2.arn}/"]
 ///     }
 ///     field_selectors {
 ///       field  = "resources.type"
@@ -1938,7 +1959,7 @@ import 'trail_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1946,17 +1967,20 @@ import 'trail_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_s3_getbucket" "important-bucket-1" {
+/// data "aws_s3_bucket" "important-bucket-1" {
 ///   bucket = "important-bucket-1"
 /// }
-/// data "aws_s3_getbucket" "important-bucket-2" {
+/// data "aws_s3_bucket" "important-bucket-2" {
 ///   bucket = "important-bucket-2"
 /// }
-/// data "aws_s3_getbucket" "important-bucket-3" {
+/// data "aws_s3_bucket" "important-bucket-3" {
 ///   bucket = "important-bucket-3"
 /// }
 ///
 /// resource "aws_cloudtrail_trail" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   advanced_event_selectors {
 ///     field_selectors {
 ///       field  = "eventCategory"
@@ -1968,7 +1992,7 @@ import 'trail_state.dart';
 ///     }
 ///     field_selectors {
 ///       field        = "resources.ARN"
-///       starts_withs = ["${data.aws_s3_getbucket.important-bucket-1.arn}/", "${data.aws_s3_getbucket.important-bucket-2.arn}/"]
+///       starts_withs = ["${data.aws_s3_bucket.important-bucket-1.arn}/", "${data.aws_s3_bucket.important-bucket-2.arn}/"]
 ///     }
 ///     field_selectors {
 ///       field  = "readOnly"
@@ -1991,7 +2015,7 @@ import 'trail_state.dart';
 ///     }
 ///     field_selectors {
 ///       field  = "resources.ARN"
-///       equals = ["${data.aws_s3_getbucket.important-bucket-3.arn}/important-prefix"]
+///       equals = ["${data.aws_s3_bucket.important-bucket-3.arn}/important-prefix"]
 ///     }
 ///     field_selectors {
 ///       field  = "readOnly"
@@ -2231,7 +2255,7 @@ import 'trail_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2239,11 +2263,17 @@ import 'trail_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_loggroup" "example" {
+/// resource "aws_cloudwatch_log_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "Example"
 /// }
 /// resource "aws_cloudtrail_trail" "example" {
-///   cloud_watch_logs_group_arn ="${aws_cloudwatch_loggroup.example.arn}:*"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cloud_watch_logs_group_arn ="${aws_cloudwatch_log_group.example.arn}:*"
 /// }
 /// ```
 /// ```java
@@ -2337,6 +2367,8 @@ class Trail extends pulumi.CustomResource {
   late final pulumi.Output<String?> kmsKeyId;
   /// Name of the trail.
   late final pulumi.Output<String> name;
+  /// Whether CloudTrail logs events it generates when delivering log files to the trail's destinations, such as Amazon S3 and CloudWatch Logs. Set to `false` to suppress these events. See [Recursive logging](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-trail-recursive-logging.html) for details. If not specified, defaults to `true`.
+  late final pulumi.Output<bool> recursiveLogging;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Name of the S3 bucket designated for publishing log files.
@@ -2366,7 +2398,7 @@ class Trail extends pulumi.CustomResource {
           'aws:cloudtrail/trail:Trail',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     advancedEventSelectors = registerOutput<List<TrailAdvancedEventSelector>?>('advancedEventSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrailAdvancedEventSelector>(guardedValue, (value) => TrailAdvancedEventSelector.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
@@ -2382,6 +2414,7 @@ class Trail extends pulumi.CustomResource {
     isOrganizationTrail = registerOutput<bool?>('isOrganizationTrail');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
     this.name = registerOutput<String>('name');
+    recursiveLogging = registerOutput<bool>('recursiveLogging');
     region = registerOutput<String>('region');
     s3BucketName = registerOutput<String>('s3BucketName');
     s3KeyPrefix = registerOutput<String?>('s3KeyPrefix');
@@ -2429,6 +2462,7 @@ class Trail extends pulumi.CustomResource {
     isOrganizationTrail = registerOutput<bool?>('isOrganizationTrail');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
     this.name = registerOutput<String>('name');
+    recursiveLogging = registerOutput<bool>('recursiveLogging');
     region = registerOutput<String>('region');
     s3BucketName = registerOutput<String>('s3BucketName');
     s3KeyPrefix = registerOutput<String?>('s3KeyPrefix');
@@ -2461,6 +2495,7 @@ class Trail extends pulumi.CustomResource {
     isOrganizationTrail = registerOutput<bool?>('isOrganizationTrail');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
     this.name = registerOutput<String>('name');
+    recursiveLogging = registerOutput<bool>('recursiveLogging');
     region = registerOutput<String>('region');
     s3BucketName = registerOutput<String>('s3BucketName');
     s3KeyPrefix = registerOutput<String?>('s3KeyPrefix');

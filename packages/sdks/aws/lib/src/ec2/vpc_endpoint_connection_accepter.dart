@@ -115,8 +115,8 @@ import 'vpc_endpoint_connection_accepter_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcEndpointConnectionAccepter(ctx, "example", &ec2.VpcEndpointConnectionAccepterArgs{
-/// 			VpcEndpointServiceId: example.ID().ToIDOutput().ToStringOutput(),
-/// 			VpcEndpointId:        exampleVpcEndpoint.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcEndpointServiceId: example.ID(),
+/// 			VpcEndpointId:        exampleVpcEndpoint.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -126,7 +126,7 @@ import 'vpc_endpoint_connection_accepter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -134,20 +134,29 @@ import 'vpc_endpoint_connection_accepter_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcendpointservice" "example" {
+/// resource "aws_ec2_vpc_endpoint_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   acceptance_required        = false
 ///   network_load_balancer_arns = [exampleAwsLb.arn]
 /// }
-/// resource "aws_ec2_vpcendpoint" "example" {
+/// resource "aws_ec2_vpc_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id              = testAlternate.id
 ///   service_name        = test.serviceName
 ///   vpc_endpoint_type   = "Interface"
 ///   private_dns_enabled = false
 ///   security_group_ids  = [testAwsSecurityGroup.id]
 /// }
-/// resource "aws_ec2_vpcendpointconnectionaccepter" "example" {
-///   vpc_endpoint_service_id = aws_ec2_vpcendpointservice.example.id
-///   vpc_endpoint_id         = aws_ec2_vpcendpoint.example.id
+/// resource "aws_ec2_vpc_endpoint_connection_accepter" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   vpc_endpoint_service_id = aws_ec2_vpc_endpoint_service.example.id
+///   vpc_endpoint_id         = aws_ec2_vpc_endpoint.example.id
 /// }
 /// ```
 /// ```java
@@ -177,15 +186,15 @@ import 'vpc_endpoint_connection_accepter_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new VpcEndpointService("example", VpcEndpointServiceArgs.builder()
 ///             .acceptanceRequired(false)
-///             .networkLoadBalancerArns(exampleAwsLb.arn())
+///             .networkLoadBalancerArns(exampleAwsLb.get("arn"))
 ///             .build());
 ///
 ///         var exampleVpcEndpoint = new VpcEndpoint("exampleVpcEndpoint", VpcEndpointArgs.builder()
-///             .vpcId(testAlternate.id())
-///             .serviceName(test.serviceName())
+///             .vpcId(testAlternate.get("id"))
+///             .serviceName(test.get("serviceName"))
 ///             .vpcEndpointType("Interface")
 ///             .privateDnsEnabled(false)
-///             .securityGroupIds(testAwsSecurityGroup.id())
+///             .securityGroupIds(testAwsSecurityGroup.get("id"))
 ///             .build());
 ///
 ///         var exampleVpcEndpointConnectionAccepter = new VpcEndpointConnectionAccepter("exampleVpcEndpointConnectionAccepter", VpcEndpointConnectionAccepterArgs.builder()
@@ -252,7 +261,7 @@ class VpcEndpointConnectionAccepter extends pulumi.CustomResource {
           'aws:ec2/vpcEndpointConnectionAccepter:VpcEndpointConnectionAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     vpcEndpointId = registerOutput<String>('vpcEndpointId');

@@ -40,7 +40,7 @@ import 'certificate_validation_state.dart';
 ///             name: range.value.name,
 ///             records: [range.value.record],
 ///             ttl: 60,
-///             type: aws.route53.RecordType[range.value.type],
+///             type: range.value.type,
 ///             zoneId: example.then(example => example.zoneId),
 ///         });
 ///     }
@@ -69,14 +69,14 @@ import 'certificate_validation_state.dart';
 ///             name=example_record_range["value"]["name"],
 ///             records=[example_record_range["value"]["record"]],
 ///             ttl=60,
-///             type=aws.route53.RecordType(example_record_range["value"]["type"]),
+///             type=example_record_range["value"]["type"],
 ///             zone_id=example.zone_id)
 ///
 /// example_certificate.domain_validation_options.apply(lambda resolved_outputs: create_example({dvo.domain_name: {
 ///     "name": dvo.resource_record_name,
 ///     "record": dvo.resource_record_value,
 ///     "type": dvo.resource_record_type,
-/// } for dvo in resolved_outputs['domain_validation_options']}))
+/// } for dvo in resolved_outputs}))
 /// example_certificate_validation = aws.acm.CertificateValidation("example",
 ///     certificate_arn=example_certificate.arn,
 ///     validation_record_fqdns=example_record.apply(lambda example_record: [record.fqdn for record in example_record.values()]))
@@ -125,7 +125,7 @@ import 'certificate_validation_state.dart';
 ///                 range.Value.Record,
 ///             },
 ///             Ttl = 60,
-///             Type = System.Enum.Parse<Aws.Route53.RecordType>(range.Value.Type),
+///             Type = range.Value.Type,
 ///             ZoneId = example.Apply(getZoneResult => getZoneResult.ZoneId),
 ///         }));
 ///     }
@@ -192,7 +192,7 @@ import 'certificate_validation_state.dart';
 /// pulumi.String(val0),
 /// },
 /// Ttl: pulumi.Int(60),
-/// Type: route53.RecordType(val0),
+/// Type: pulumi.String(val0),
 /// ZoneId: pulumi.String(example.ZoneId),
 /// })
 /// if err != nil {
@@ -229,7 +229,7 @@ import 'certificate_validation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -237,12 +237,15 @@ import 'certificate_validation_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_route53_getzone" "example" {
+/// data "aws_route53_zone" "example" {
 ///   name         = "example.com"
 ///   private_zone = false
 /// }
 ///
 /// resource "aws_acm_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name       = "example.com"
 ///   validation_method = "DNS"
 /// }
@@ -252,19 +255,31 @@ import 'certificate_validation_state.dart';
 ///     "record" = dvo.resourceRecordValue
 ///     "type"   = dvo.resourceRecordType
 ///   } }
+///   pulumi {
+///     name ="example-${each.key}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allow_overwrite = true
 ///   name            = each.value.name
 ///   records         = [each.value.record]
 ///   ttl             = 60
 ///   type            = each.value.type
-///   zone_id         = data.aws_route53_getzone.example.zone_id
+///   zone_id         = data.aws_route53_zone.example.zone_id
 /// }
-/// resource "aws_acm_certificatevalidation" "example" {
+/// resource "aws_acm_certificate_validation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_arn         = aws_acm_certificate.example.arn
 ///   validation_record_fqdns = [for record in aws_route53_record.example : record.fqdn]
 /// }
 /// resource "aws_lb_listener" "example" {
-///   certificate_arn = aws_acm_certificatevalidation.example.certificate_arn
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   certificate_arn = aws_acm_certificate_validation.example.certificate_arn
 /// }
 /// ```
 ///
@@ -305,7 +320,7 @@ import 'certificate_validation_state.dart';
 ///             name: range.value.name,
 ///             records: [range.value.record],
 ///             ttl: 60,
-///             type: aws.route53.RecordType[range.value.type],
+///             type: range.value.type,
 ///             zoneId: range.value.zoneId,
 ///         });
 ///     }
@@ -340,7 +355,7 @@ import 'certificate_validation_state.dart';
 ///             name=example_record_range["value"]["name"],
 ///             records=[example_record_range["value"]["record"]],
 ///             ttl=60,
-///             type=aws.route53.RecordType(example_record_range["value"]["type"]),
+///             type=example_record_range["value"]["type"],
 ///             zone_id=example_record_range["value"]["zoneId"])
 ///
 /// example.domain_validation_options.apply(lambda resolved_outputs: create_example({dvo.domain_name: {
@@ -348,7 +363,7 @@ import 'certificate_validation_state.dart';
 ///     "record": dvo.resource_record_value,
 ///     "type": dvo.resource_record_type,
 ///     "zoneId": example_org.zone_id if dvo.domain_name == "example.org" else example_com.zone_id,
-/// } for dvo in resolved_outputs['domain_validation_options']}))
+/// } for dvo in resolved_outputs}))
 /// example_certificate_validation = aws.acm.CertificateValidation("example",
 ///     certificate_arn=example.arn,
 ///     validation_record_fqdns=example_record.apply(lambda example_record: [record.fqdn for record in example_record.values()]))
@@ -414,7 +429,7 @@ import 'certificate_validation_state.dart';
 ///                 range.Value.Record,
 ///             },
 ///             Ttl = 60,
-///             Type = System.Enum.Parse<Aws.Route53.RecordType>(range.Value.Type),
+///             Type = range.Value.Type,
 ///             ZoneId = range.Value.ZoneId,
 ///         }));
 ///     }
@@ -493,7 +508,7 @@ import 'certificate_validation_state.dart';
 /// pulumi.String(val0),
 /// },
 /// Ttl: pulumi.Int(60),
-/// Type: route53.RecordType(val0),
+/// Type: pulumi.String(val0),
 /// ZoneId: pulumi.String(val0),
 /// })
 /// if err != nil {
@@ -530,7 +545,7 @@ import 'certificate_validation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -538,16 +553,19 @@ import 'certificate_validation_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_route53_getzone" "exampleCom" {
+/// data "aws_route53_zone" "exampleCom" {
 ///   name         = "example.com"
 ///   private_zone = false
 /// }
-/// data "aws_route53_getzone" "exampleOrg" {
+/// data "aws_route53_zone" "exampleOrg" {
 ///   name         = "example.org"
 ///   private_zone = false
 /// }
 ///
 /// resource "aws_acm_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name               = "example.com"
 ///   subject_alternative_names = ["www.example.com", "example.org"]
 ///   validation_method         = "DNS"
@@ -557,8 +575,14 @@ import 'certificate_validation_state.dart';
 ///     "name"   = dvo.resourceRecordName
 ///     "record" = dvo.resourceRecordValue
 ///     "type"   = dvo.resourceRecordType
-///     "zoneId" = dvo.domainName == "example.org" ? data.aws_route53_getzone.exampleOrg.zone_id : data.aws_route53_getzone.exampleCom.zone_id
+///     "zoneId" = dvo.domainName == "example.org" ? data.aws_route53_zone.exampleOrg.zone_id : data.aws_route53_zone.exampleCom.zone_id
 ///   } }
+///   pulumi {
+///     name ="example-${each.key}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allow_overwrite = true
 ///   name            = each.value.name
 ///   records         = [each.value.record]
@@ -566,12 +590,18 @@ import 'certificate_validation_state.dart';
 ///   type            = each.value.type
 ///   zone_id         = each.value.zoneId
 /// }
-/// resource "aws_acm_certificatevalidation" "example" {
+/// resource "aws_acm_certificate_validation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_arn         = aws_acm_certificate.example.arn
 ///   validation_record_fqdns = [for record in aws_route53_record.example : record.fqdn]
 /// }
 /// resource "aws_lb_listener" "example" {
-///   certificate_arn = aws_acm_certificatevalidation.example.certificate_arn
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   certificate_arn = aws_acm_certificate_validation.example.certificate_arn
 /// }
 /// ```
 ///
@@ -649,7 +679,7 @@ import 'certificate_validation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -658,10 +688,16 @@ import 'certificate_validation_state.dart';
 /// }
 ///
 /// resource "aws_acm_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name       = "example.com"
 ///   validation_method = "EMAIL"
 /// }
-/// resource "aws_acm_certificatevalidation" "example" {
+/// resource "aws_acm_certificate_validation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_arn = aws_acm_certificate.example.arn
 /// }
 /// ```
@@ -733,7 +769,7 @@ class CertificateValidation extends pulumi.CustomResource {
           'aws:acm/certificateValidation:CertificateValidation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     certificateArn = registerOutput<String>('certificateArn');
     region = registerOutput<String>('region');

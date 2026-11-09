@@ -278,7 +278,7 @@ import 'ssh_key_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleUser, err := transfer.NewUser(ctx, "example", &transfer.UserArgs{
-/// 			ServerId: exampleServer.ID().ToIDOutput().ToStringOutput(),
+/// 			ServerId: exampleServer.ID(),
 /// 			UserName: pulumi.String("tftestuser"),
 /// 			Role:     exampleRole.Arn,
 /// 			Tags: pulumi.StringMap{
@@ -289,7 +289,7 @@ import 'ssh_key_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = transfer.NewSshKey(ctx, "example", &transfer.SshKeyArgs{
-/// 			ServerId: exampleServer.ID().ToIDOutput().ToStringOutput(),
+/// 			ServerId: exampleServer.ID(),
 /// 			UserName: exampleUser.UserName,
 /// 			Body: std.TrimspaceOutput(ctx, std.TrimspaceOutputArgs{
 /// 				Input: examplePrivateKey.PublicKeyOpenssh,
@@ -317,7 +317,7 @@ import 'ssh_key_state.dart';
 /// 		}
 /// 		_, err = iam.NewRolePolicy(ctx, "example", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("tf-test-transfer-user-iam-policy"),
-/// 			Role:   exampleRole.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   exampleRole.ID(),
 /// 			Policy: pulumi.String(example.Json),
 /// 		})
 /// 		if err != nil {
@@ -328,7 +328,7 @@ import 'ssh_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -342,8 +342,8 @@ import 'ssh_key_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["transfer.amazonaws.com"]
@@ -352,8 +352,8 @@ import 'ssh_key_state.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     sid       = "AllowFullAccesstoS3"
 ///     effect    = "Allow"
 ///     actions   = ["s3:*"]
@@ -361,22 +361,34 @@ import 'ssh_key_state.dart';
 ///   }
 /// }
 ///
-/// resource "tls_privatekey" "example" {
+/// resource "tls_private_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   algorithm = "RSA"
 ///   rsa_bits  = 4096
 /// }
-/// resource "aws_transfer_sshkey" "example" {
+/// resource "aws_transfer_ssh_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   server_id = aws_transfer_server.example.id
 ///   user_name = aws_transfer_user.example.user_name
-///   body      = trimspace(tls_privatekey.example.public_key_openssh)
+///   body      = trimspace(tls_private_key.example.public_key_openssh)
 /// }
 /// resource "aws_transfer_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity_provider_type = "SERVICE_MANAGED"
 ///   tags = {
 ///     "NAME" = "tf-acc-test-transfer-server"
 ///   }
 /// }
 /// resource "aws_transfer_user" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   server_id = aws_transfer_server.example.id
 ///   user_name = "tftestuser"
 ///   role      = aws_iam_role.example.arn
@@ -385,13 +397,19 @@ import 'ssh_key_state.dart';
 ///   }
 /// }
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "tf-test-transfer-user-iam-role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iam_rolepolicy" "example" {
+/// resource "aws_iam_role_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "tf-test-transfer-user-iam-policy"
 ///   role   = aws_iam_role.example.id
-///   policy = data.aws_iam_getpolicydocument.example.json
+///   policy = data.aws_iam_policy_document.example.json
 /// }
 /// ```
 /// ```java
@@ -597,7 +615,7 @@ class SshKey extends pulumi.CustomResource {
           'aws:transfer/sshKey:SshKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     body = registerOutput<String>('body');
     region = registerOutput<String>('region');

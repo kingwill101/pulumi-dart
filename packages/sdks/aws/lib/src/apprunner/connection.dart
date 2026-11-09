@@ -77,7 +77,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,6 +86,9 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "aws_apprunner_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_name = "example"
 ///   provider_type   = "GITHUB"
 ///   tags = {
@@ -147,7 +150,7 @@ class Connection extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Name of the connection.
   late final pulumi.Output<String> connectionName;
-  /// Source repository provider. Valid values: `GITHUB`.
+  /// Source repository provider. Valid values: `GITHUB`, `BITBUCKET`.
   late final pulumi.Output<String> providerType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -170,7 +173,7 @@ class Connection extends pulumi.CustomResource {
           'aws:apprunner/connection:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     connectionName = registerOutput<String>('connectionName');

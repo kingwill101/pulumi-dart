@@ -160,3 +160,8 @@ export 'rds/storage_type.dart';
 export 'rds/subnet_group.dart';
 export 'rds/subnet_group_args.dart';
 export 'rds/subnet_group_state.dart';
+export 'rds/tenant_database.dart';
+export 'rds/tenant_database_args.dart';
+export 'rds/tenant_database_master_user_secret.dart';
+export 'rds/tenant_database_state.dart';
+export 'rds/tenant_database_timeouts.dart';

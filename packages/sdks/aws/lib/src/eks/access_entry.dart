@@ -83,7 +83,7 @@ import 'access_entry_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -91,7 +91,10 @@ import 'access_entry_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_eks_accessentry" "example" {
+/// resource "aws_eks_access_entry" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name      = exampleAwsEksCluster.name
 ///   principal_arn     = exampleAwsIamRole.arn
 ///   kubernetes_groups = ["group-1", "group-2"]
@@ -120,8 +123,8 @@ import 'access_entry_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AccessEntry("example", AccessEntryArgs.builder()
-///             .clusterName(exampleAwsEksCluster.name())
-///             .principalArn(exampleAwsIamRole.arn())
+///             .clusterName(exampleAwsEksCluster.get("name"))
+///             .principalArn(exampleAwsIamRole.get("arn"))
 ///             .kubernetesGroups(
 ///                 "group-1",
 ///                 "group-2")
@@ -203,7 +206,7 @@ class AccessEntry extends pulumi.CustomResource {
           'aws:eks/accessEntry:AccessEntry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accessEntryArn = registerOutput<String>('accessEntryArn');
     clusterName = registerOutput<String>('clusterName');

@@ -252,7 +252,7 @@ import 'domain_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -261,8 +261,11 @@ import 'domain_timeouts.dart';
 /// }
 ///
 /// resource "aws_route53domains_domain" "example" {
-///   admin_contact = {
-///     address_line1     = "101 Main Street"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   admin_contact {
+///     address_line_1    = "101 Main Street"
 ///     city              = "San Francisco"
 ///     contact_type      = "COMPANY"
 ///     country_code      = "US"
@@ -275,8 +278,8 @@ import 'domain_timeouts.dart';
 ///     state             = "CA"
 ///     zip_code          = "94105"
 ///   }
-///   registrant_contact = {
-///     address_line1     = "101 Main Street"
+///   registrant_contact {
+///     address_line_1    = "101 Main Street"
 ///     city              = "San Francisco"
 ///     contact_type      = "COMPANY"
 ///     country_code      = "US"
@@ -289,8 +292,8 @@ import 'domain_timeouts.dart';
 ///     state             = "CA"
 ///     zip_code          = "94105"
 ///   }
-///   tech_contact = {
-///     address_line1     = "101 Main Street"
+///   tech_contact {
+///     address_line_1    = "101 Main Street"
 ///     city              = "San Francisco"
 ///     contact_type      = "COMPANY"
 ///     country_code      = "US"
@@ -510,7 +513,7 @@ class Domain extends pulumi.CustomResource {
           'aws:route53domains/domain:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     abuseContactEmail = registerOutput<String>('abuseContactEmail');
     abuseContactPhone = registerOutput<String>('abuseContactPhone');

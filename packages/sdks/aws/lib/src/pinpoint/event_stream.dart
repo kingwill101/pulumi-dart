@@ -253,7 +253,7 @@ import 'event_stream_state.dart';
 /// 		}
 /// 		_, err = iam.NewRolePolicy(ctx, "test_role_policy", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("test_policy"),
-/// 			Role:   testRole.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   testRole.ID(),
 /// 			Policy: pulumi.String(testRolePolicy.Json),
 /// 		})
 /// 		if err != nil {
@@ -264,7 +264,7 @@ import 'event_stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -272,8 +272,8 @@ import 'event_stream_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["pinpoint.us-east-1.amazonaws.com"]
@@ -282,34 +282,49 @@ import 'event_stream_state.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "testRolePolicy" {
-///   statements {
+/// data "aws_iam_policy_document" "testRolePolicy" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["kinesis:PutRecords", "kinesis:DescribeStream"]
 ///     resources = ["arn:aws:kinesis:us-east-1:*:*/*"]
 ///   }
 /// }
 ///
-/// resource "aws_pinpoint_eventstream" "stream" {
+/// resource "aws_pinpoint_event_stream" "stream" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_id         = aws_pinpoint_app.app.application_id
 ///   destination_stream_arn = aws_kinesis_stream.test_stream.arn
 ///   role_arn               = aws_iam_role.test_role.arn
 /// }
 /// resource "aws_pinpoint_app" "app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_kinesis_stream" "test_stream" {
-///   stream_mode_details = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   stream_mode_details {
 ///     stream_mode = "ON_DEMAND"
 ///   }
 ///   name = "pinpoint-kinesis-test"
 /// }
 /// resource "aws_iam_role" "test_role" {
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iam_rolepolicy" "test_role_policy" {
+/// resource "aws_iam_role_policy" "test_role_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "test_policy"
 ///   role   = aws_iam_role.test_role.id
-///   policy = data.aws_iam_getpolicydocument.testRolePolicy.json
+///   policy = data.aws_iam_policy_document.testRolePolicy.json
 /// }
 /// ```
 /// ```java
@@ -479,7 +494,7 @@ class EventStream extends pulumi.CustomResource {
           'aws:pinpoint/eventStream:EventStream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     destinationStreamArn = registerOutput<String>('destinationStreamArn');

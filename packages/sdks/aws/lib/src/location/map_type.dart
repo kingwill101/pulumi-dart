@@ -72,7 +72,7 @@ import 'map_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -81,7 +81,10 @@ import 'map_state.dart';
 /// }
 ///
 /// resource "aws_location_map" "example" {
-///   configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
 ///     style = "VectorHereBerlin"
 ///   }
 ///   map_name = "example"
@@ -171,7 +174,7 @@ class MapType extends pulumi.CustomResource {
           'aws:location/map:Map',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     configuration = registerOutput<MapConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MapConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

@@ -64,7 +64,7 @@ import 'resource_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'resource_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_dynamodb_resourcepolicy" "example" {
+/// resource "aws_dynamodb_resource_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_arn = exampleAwsDynamodbTable.arn
 ///   policy       = test.json
 /// }
@@ -99,8 +102,8 @@ import 'resource_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ResourcePolicy("example", ResourcePolicyArgs.builder()
-///             .resourceArn(exampleAwsDynamodbTable.arn())
-///             .policy(test.json())
+///             .resourceArn(exampleAwsDynamodbTable.get("arn"))
+///             .policy(test.get("json"))
 ///             .build());
 ///
 ///     }
@@ -156,7 +159,7 @@ class ResourcePolicy extends pulumi.CustomResource {
           'aws:dynamodb/resourcePolicy:ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     confirmRemoveSelfResourceAccess = registerOutput<bool>('confirmRemoveSelfResourceAccess');
     policy = registerOutput<String>('policy');

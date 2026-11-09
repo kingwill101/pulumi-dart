@@ -247,7 +247,7 @@ import 'application_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleBucketObjectv2, err := s3.NewBucketObjectv2(ctx, "example", &s3.BucketObjectv2Args{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Key:    pulumi.String("example-flink-application"),
 /// 			Source: pulumi.NewFileAsset("flink-app.jar"),
 /// 		})
@@ -314,7 +314,7 @@ import 'application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -323,48 +323,58 @@ import 'application_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example-flink-application"
 /// }
-/// resource "aws_s3_bucketobjectv2" "example" {
+/// resource "aws_s3_bucket_objectv2" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.id
 ///   key    = "example-flink-application"
-///   source = fileAsset("flink-app.jar")
+///   source = fileasset("flink-app.jar")
 /// }
 /// resource "aws_kinesisanalyticsv2_application" "example" {
-///   application_configuration = {
-///     application_code_configuration = {
-///       code_content = {
-///         s3_content_location = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   application_configuration {
+///     application_code_configuration {
+///       code_content {
+///         s3_content_location {
 ///           bucket_arn = aws_s3_bucket.example.arn
-///           file_key   = aws_s3_bucketobjectv2.example.key
+///           file_key   = aws_s3_bucket_objectv2.example.key
 ///         }
 ///       }
 ///       code_content_type = "ZIPFILE"
 ///     }
-///     environment_properties = {
-///       property_groups = [{
-///         "propertyGroupId" = "PROPERTY-GROUP-1"
-///         "propertyMap" = {
+///     environment_properties {
+///       property_group {
+///         property_group_id = "PROPERTY-GROUP-1"
+///         property_map = {
 ///           "Key1" = "Value1"
 ///         }
-///         }, {
-///         "propertyGroupId" = "PROPERTY-GROUP-2"
-///         "propertyMap" = {
+///       }
+///       property_group {
+///         property_group_id = "PROPERTY-GROUP-2"
+///         property_map = {
 ///           "KeyA" = "ValueA"
 ///           "KeyB" = "ValueB"
 ///         }
-///       }]
+///       }
 ///     }
-///     flink_application_configuration = {
-///       checkpoint_configuration = {
+///     flink_application_configuration {
+///       checkpoint_configuration {
 ///         configuration_type = "DEFAULT"
 ///       }
-///       monitoring_configuration = {
+///       monitoring_configuration {
 ///         configuration_type = "CUSTOM"
 ///         log_level          = "DEBUG"
 ///         metrics_level      = "TASK"
 ///       }
-///       parallelism_configuration = {
+///       parallelism_configuration {
 ///         auto_scaling_enabled = true
 ///         configuration_type   = "CUSTOM"
 ///         parallelism          = 10
@@ -470,7 +480,7 @@ import 'application_state.dart';
 ///                 .build())
 ///             .name("example-flink-application")
 ///             .runtimeEnvironment("FLINK-1_8")
-///             .serviceExecutionRole(exampleAwsIamRole.arn())
+///             .serviceExecutionRole(exampleAwsIamRole.get("arn"))
 ///             .tags(Map.of("Environment", "test"))
 ///             .build());
 ///
@@ -1007,7 +1017,7 @@ import 'application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1015,93 +1025,104 @@ import 'application_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_loggroup" "example" {
+/// resource "aws_cloudwatch_log_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-sql-application"
 /// }
-/// resource "aws_cloudwatch_logstream" "example" {
+/// resource "aws_cloudwatch_log_stream" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "example-sql-application"
-///   log_group_name = aws_cloudwatch_loggroup.example.name
+///   log_group_name = aws_cloudwatch_log_group.example.name
 /// }
 /// resource "aws_kinesisanalyticsv2_application" "example" {
-///   application_configuration = {
-///     application_code_configuration = {
-///       code_content = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   application_configuration {
+///     application_code_configuration {
+///       code_content {
 ///         text_content = "SELECT 1;\n"
 ///       }
 ///       code_content_type = "PLAINTEXT"
 ///     }
-///     sql_application_configuration = {
-///       input = {
-///         input_parallelism = {
+///     sql_application_configuration {
+///       input {
+///         input_parallelism {
 ///           count = 3
 ///         }
-///         input_schema = {
-///           record_format = {
-///             mapping_parameters = {
-///               csv_mapping_parameters = {
+///         input_schema {
+///           record_format {
+///             mapping_parameters {
+///               csv_mapping_parameters {
 ///                 record_column_delimiter = ","
 ///                 record_row_delimiter    = "\n"
 ///               }
 ///             }
 ///             record_format_type = "CSV"
 ///           }
-///           record_columns = [{
-///             "name"    = "COLUMN_1"
-///             "sqlType" = "VARCHAR(8)"
-///             "mapping" = "MAPPING-1"
-///             }, {
-///             "name"    = "COLUMN_2"
-///             "sqlType" = "DOUBLE"
-///           }]
+///           record_column {
+///             name     = "COLUMN_1"
+///             sql_type = "VARCHAR(8)"
+///             mapping  = "MAPPING-1"
+///           }
+///           record_column {
+///             name     = "COLUMN_2"
+///             sql_type = "DOUBLE"
+///           }
 ///           record_encoding = "UTF-8"
 ///         }
-///         kinesis_streams_input = {
+///         kinesis_streams_input {
 ///           resource_arn = exampleAwsKinesisStream.arn
 ///         }
 ///         name_prefix = "PREFIX_1"
 ///       }
-///       reference_data_source = {
-///         reference_schema = {
-///           record_format = {
-///             mapping_parameters = {
-///               json_mapping_parameters = {
+///       reference_data_source {
+///         reference_schema {
+///           record_format {
+///             mapping_parameters {
+///               json_mapping_parameters {
 ///                 record_row_path = "$"
 ///               }
 ///             }
 ///             record_format_type = "JSON"
 ///           }
-///           record_columns = [{
-///             "name"    = "COLUMN_1"
-///             "sqlType" = "INTEGER"
-///           }]
+///           record_column {
+///             name     = "COLUMN_1"
+///             sql_type = "INTEGER"
+///           }
 ///         }
-///         s3_reference_data_source = {
+///         s3_reference_data_source {
 ///           bucket_arn = exampleAwsS3Bucket.arn
 ///           file_key   = "KEY-1"
 ///         }
 ///         table_name = "TABLE-1"
 ///       }
-///       outputs = [{
-///         "destinationSchema" = {
-///           "recordFormatType" = "JSON"
+///       output {
+///         destination_schema {
+///           record_format_type = "JSON"
 ///         }
-///         "lambdaOutput" = {
-///           "resourceArn" = exampleAwsLambdaFunction.arn
+///         lambda_output {
+///           resource_arn = exampleAwsLambdaFunction.arn
 ///         }
-///         "name" = "OUTPUT_1"
-///         }, {
-///         "destinationSchema" = {
-///           "recordFormatType" = "CSV"
+///         name = "OUTPUT_1"
+///       }
+///       output {
+///         destination_schema {
+///           record_format_type = "CSV"
 ///         }
-///         "kinesisFirehoseOutput" = {
-///           "resourceArn" = exampleAwsKinesisFirehoseDeliveryStream.arn
+///         kinesis_firehose_output {
+///           resource_arn = exampleAwsKinesisFirehoseDeliveryStream.arn
 ///         }
-///         "name" = "OUTPUT_2"
-///       }]
+///         name = "OUTPUT_2"
+///       }
 ///     }
 ///   }
-///   cloudwatch_logging_options = {
-///     log_stream_arn = aws_cloudwatch_logstream.example.arn
+///   cloudwatch_logging_options {
+///     log_stream_arn = aws_cloudwatch_log_stream.example.arn
 ///   }
 ///   name                   = "example-sql-application"
 ///   runtime_environment    = "SQL-1_0"
@@ -1206,7 +1227,7 @@ import 'application_state.dart';
 ///                             .recordEncoding("UTF-8")
 ///                             .build())
 ///                         .kinesisStreamsInput(ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInputArgs.builder()
-///                             .resourceArn(exampleAwsKinesisStream.arn())
+///                             .resourceArn(exampleAwsKinesisStream.get("arn"))
 ///                             .build())
 ///                         .namePrefix("PREFIX_1")
 ///                         .build())
@@ -1226,7 +1247,7 @@ import 'application_state.dart';
 ///                                 .build())
 ///                             .build())
 ///                         .s3ReferenceDataSource(ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSourceArgs.builder()
-///                             .bucketArn(exampleAwsS3Bucket.arn())
+///                             .bucketArn(exampleAwsS3Bucket.get("arn"))
 ///                             .fileKey("KEY-1")
 ///                             .build())
 ///                         .tableName("TABLE-1")
@@ -1237,7 +1258,7 @@ import 'application_state.dart';
 ///                                 .recordFormatType("JSON")
 ///                                 .build())
 ///                             .lambdaOutput(ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutputArgs.builder()
-///                                 .resourceArn(exampleAwsLambdaFunction.arn())
+///                                 .resourceArn(exampleAwsLambdaFunction.get("arn"))
 ///                                 .build())
 ///                             .name("OUTPUT_1")
 ///                             .build(),
@@ -1246,7 +1267,7 @@ import 'application_state.dart';
 ///                                 .recordFormatType("CSV")
 ///                                 .build())
 ///                             .kinesisFirehoseOutput(ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutputArgs.builder()
-///                                 .resourceArn(exampleAwsKinesisFirehoseDeliveryStream.arn())
+///                                 .resourceArn(exampleAwsKinesisFirehoseDeliveryStream.get("arn"))
 ///                                 .build())
 ///                             .name("OUTPUT_2")
 ///                             .build())
@@ -1257,7 +1278,7 @@ import 'application_state.dart';
 ///                 .build())
 ///             .name("example-sql-application")
 ///             .runtimeEnvironment("SQL-1_0")
-///             .serviceExecutionRole(exampleAwsIamRole.arn())
+///             .serviceExecutionRole(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1482,7 +1503,7 @@ import 'application_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleBucketObjectv2, err := s3.NewBucketObjectv2(ctx, "example", &s3.BucketObjectv2Args{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Key:    pulumi.String("example-flink-application"),
 /// 			Source: pulumi.NewFileAsset("flink-app.jar"),
 /// 		})
@@ -1522,7 +1543,7 @@ import 'application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1531,25 +1552,34 @@ import 'application_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example-flink-application"
 /// }
-/// resource "aws_s3_bucketobjectv2" "example" {
+/// resource "aws_s3_bucket_objectv2" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.id
 ///   key    = "example-flink-application"
-///   source = fileAsset("flink-app.jar")
+///   source = fileasset("flink-app.jar")
 /// }
 /// resource "aws_kinesisanalyticsv2_application" "example" {
-///   application_configuration = {
-///     application_code_configuration = {
-///       code_content = {
-///         s3_content_location = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   application_configuration {
+///     application_code_configuration {
+///       code_content {
+///         s3_content_location {
 ///           bucket_arn = aws_s3_bucket.example.arn
-///           file_key   = aws_s3_bucketobjectv2.example.key
+///           file_key   = aws_s3_bucket_objectv2.example.key
 ///         }
 ///       }
 ///       code_content_type = "ZIPFILE"
 ///     }
-///     vpc_configuration = {
+///     vpc_configuration {
 ///       security_group_ids = [exampleAwsSecurityGroup[0].id, exampleAwsSecurityGroup[1].id]
 ///       subnet_ids         = [exampleAwsSubnet.id]
 ///     }
@@ -1613,14 +1643,14 @@ import 'application_state.dart';
 ///                     .build())
 ///                 .vpcConfiguration(ApplicationApplicationConfigurationVpcConfigurationArgs.builder()
 ///                     .securityGroupIds(
-///                         exampleAwsSecurityGroup[0].id(),
-///                         exampleAwsSecurityGroup[1].id())
-///                     .subnetIds(exampleAwsSubnet.id())
+///                         exampleAwsSecurityGroup[0].get("id"),
+///                         exampleAwsSecurityGroup[1].get("id"))
+///                     .subnetIds(exampleAwsSubnet.get("id"))
 ///                     .build())
 ///                 .build())
 ///             .name("example-flink-application")
 ///             .runtimeEnvironment("FLINK-1_8")
-///             .serviceExecutionRole(exampleAwsIamRole.arn())
+///             .serviceExecutionRole(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1720,7 +1750,7 @@ class Application extends pulumi.CustomResource {
           'aws:kinesisanalyticsv2/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     applicationConfiguration = registerOutput<ApplicationApplicationConfiguration>('applicationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationApplicationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     applicationMode = registerOutput<String>('applicationMode');

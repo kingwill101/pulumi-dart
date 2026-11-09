@@ -118,7 +118,7 @@ import 'permission_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -127,8 +127,22 @@ import 'permission_timeouts.dart';
 /// }
 ///
 /// resource "aws_ram_permission" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "custom-backup"
-///   policy_template = "{\n    \\\"Effect\\\": \\\"Allow\\\",\n    \\\"Action\\\": [\n\\t\\\"backup:ListProtectedResourcesByBackupVault\\\",\n\\t\\\"backup:ListRecoveryPointsByBackupVault\\\",\n\\t\\\"backup:DescribeRecoveryPoint\\\",\n\\t\\\"backup:DescribeBackupVault\\\"\n    ]\n}\n"
+///   policy_template = <<EOF
+/// {
+///     \"Effect\": \"Allow\",
+///     \"Action\": [
+/// \t\"backup:ListProtectedResourcesByBackupVault\",
+/// \t\"backup:ListRecoveryPointsByBackupVault\",
+/// \t\"backup:DescribeRecoveryPoint\",
+/// \t\"backup:DescribeBackupVault\"
+///     ]
+/// }
+/// EOF
+///
 ///   resource_type   = "backup:BackupVault"
 ///   tags = {
 ///     "Name" = "custom-backup"
@@ -247,7 +261,7 @@ class Permission extends pulumi.CustomResource {
           'aws:ram/permission:Permission',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultVersion = registerOutput<bool>('defaultVersion');

@@ -88,7 +88,7 @@ import 'input_security_group_whitelist_rule.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -96,7 +96,10 @@ import 'input_security_group_whitelist_rule.dart';
 ///   }
 /// }
 ///
-/// resource "aws_medialive_inputsecuritygroup" "example" {
+/// resource "aws_medialive_input_security_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   whitelist_rules {
 ///     cidr = "10.0.0.8/32"
 ///   }
@@ -195,7 +198,7 @@ class InputSecurityGroup extends pulumi.CustomResource {
           'aws:medialive/inputSecurityGroup:InputSecurityGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     inputs = registerOutput<List<String>>('inputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

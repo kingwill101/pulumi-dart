@@ -108,7 +108,7 @@ import 'application_layer_automatic_response_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -116,15 +116,18 @@ import 'application_layer_automatic_response_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
-/// data "aws_getcalleridentity" "currentGetCallerIdentity" {
+/// data "aws_caller_identity" "currentGetCallerIdentity" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
 ///
-/// resource "aws_shield_applicationlayerautomaticresponse" "example" {
-///   resource_arn ="arn:${data.aws_getpartition.currentGetPartition.partition}:cloudfront:${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:distribution/${var.distributionId}"
+/// resource "aws_shield_application_layer_automatic_response" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_arn ="arn:${data.aws_partition.currentGetPartition.partition}:cloudfront:${data.aws_caller_identity.currentGetCallerIdentity.account_id}:distribution/${var.distributionId}"
 ///   action       = "COUNT"
 /// }
 /// variable "distributionId" {
@@ -219,7 +222,7 @@ class ApplicationLayerAutomaticResponse extends pulumi.CustomResource {
           'aws:shield/applicationLayerAutomaticResponse:ApplicationLayerAutomaticResponse',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     action = registerOutput<String>('action');
     resourceArn = registerOutput<String>('resourceArn');

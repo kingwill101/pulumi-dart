@@ -21,7 +21,7 @@ class KeyArgs {
   final pulumi.Input<bool?>? enableKeyRotation;
   /// Whether the key is enabled. Defaults to `true`.
   final pulumi.Input<bool?>? isEnabled;
-  /// Intended use of the key. Valid values: `ENCRYPT_DECRYPT`, `SIGN_VERIFY`, or `GENERATE_VERIFY_MAC`. Defaults to `ENCRYPT_DECRYPT`.
+  /// Intended use of the key. Valid values: `ENCRYPT_DECRYPT`, `SIGN_VERIFY`, `GENERATE_VERIFY_MAC`, or `KEY_AGREEMENT`. Defaults to `ENCRYPT_DECRYPT`.
   final pulumi.Input<String?>? keyUsage;
   /// Whether the KMS key is a multi-Region (`true`) or regional (`false`) key. Defaults to `false`.
   final pulumi.Input<bool?>? multiRegion;
@@ -46,7 +46,7 @@ class KeyArgs {
   /// [description] Description of the key as viewed in AWS console.
   /// [enableKeyRotation] Whether [key rotation](http://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html) is enabled. Defaults to `false`.
   /// [isEnabled] Whether the key is enabled. Defaults to `true`.
-  /// [keyUsage] Intended use of the key. Valid values: `ENCRYPT_DECRYPT`, `SIGN_VERIFY`, or `GENERATE_VERIFY_MAC`. Defaults to `ENCRYPT_DECRYPT`.
+  /// [keyUsage] Intended use of the key. Valid values: `ENCRYPT_DECRYPT`, `SIGN_VERIFY`, `GENERATE_VERIFY_MAC`, or `KEY_AGREEMENT`. Defaults to `ENCRYPT_DECRYPT`.
   /// [multiRegion] Whether the KMS key is a multi-Region (`true`) or regional (`false`) key. Defaults to `false`.
   /// [policy] Valid policy JSON document. Although this is a key policy, not an IAM policy, an `aws.iam.getPolicyDocument`, in the form that designates a principal, can be used. For more information about building policy documents with Terraform, see the AWS IAM Policy Document Guide.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

@@ -156,7 +156,7 @@ import 'data_protection_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -165,9 +165,15 @@ import 'data_protection_policy_state.dart';
 /// }
 ///
 /// resource "aws_sns_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
-/// resource "aws_sns_dataprotectionpolicy" "example" {
+/// resource "aws_sns_data_protection_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   arn = aws_sns_topic.example.arn
 ///   policy = jsonencode({
 ///     "Description" = "Example data protection policy"
@@ -299,7 +305,7 @@ class DataProtectionPolicy extends pulumi.CustomResource {
           'aws:sns/dataProtectionPolicy:DataProtectionPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     policy = registerOutput<String>('policy');

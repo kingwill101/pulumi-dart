@@ -84,7 +84,7 @@ import 'contact_channel_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -92,8 +92,11 @@ import 'contact_channel_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssmcontacts_contactchannel" "example" {
-///   delivery_address = {
+/// resource "aws_ssmcontacts_contact_channel" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   delivery_address {
 ///     simple_address = "email@example.com"
 ///   }
 ///   contact_id = "arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias"
@@ -243,7 +246,7 @@ import 'contact_channel_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -252,11 +255,17 @@ import 'contact_channel_state.dart';
 /// }
 ///
 /// resource "aws_ssmcontacts_contact" "example_contact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alias = "example_contact"
 ///   type  = "PERSONAL"
 /// }
-/// resource "aws_ssmcontacts_contactchannel" "example" {
-///   delivery_address = {
+/// resource "aws_ssmcontacts_contact_channel" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   delivery_address {
 ///     simple_address = "email@example.com"
 ///   }
 ///   contact_id = aws_ssmcontacts_contact.example_contact.arn
@@ -366,7 +375,7 @@ class ContactChannel extends pulumi.CustomResource {
           'aws:ssmcontacts/contactChannel:ContactChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     activationStatus = registerOutput<String>('activationStatus');
     arn = registerOutput<String>('arn');

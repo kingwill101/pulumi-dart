@@ -75,7 +75,7 @@ import 'log_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -83,7 +83,10 @@ import 'log_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_loggroup" "yada" {
+/// resource "aws_cloudwatch_log_group" "yada" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "Yada"
 ///   tags = {
 ///     "Environment" = "production"
@@ -194,7 +197,7 @@ class LogGroup extends pulumi.CustomResource {
           'aws:cloudwatch/logGroup:LogGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');

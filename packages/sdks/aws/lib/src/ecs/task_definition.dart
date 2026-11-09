@@ -229,7 +229,7 @@ import 'task_definition_volume.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -237,12 +237,15 @@ import 'task_definition_volume.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecs_taskdefinition" "service" {
+/// resource "aws_ecs_task_definition" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   placement_constraints {
 ///     type       = "memberOf"
 ///     expression = "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]"
 ///   }
-///   volumes {
+///   volume {
 ///     name      = "service-storage"
 ///     host_path = "/ecs/service-storage"
 ///   }
@@ -486,7 +489,7 @@ import 'task_definition_volume.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -497,8 +500,11 @@ import 'task_definition_volume.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecs_taskdefinition" "service" {
-///   proxy_configuration = {
+/// resource "aws_ecs_task_definition" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   proxy_configuration {
 ///     type           = "APPMESH"
 ///     container_name = "applicationContainerName"
 ///     properties = {
@@ -715,7 +721,7 @@ import 'task_definition_volume.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -726,9 +732,12 @@ import 'task_definition_volume.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecs_taskdefinition" "service" {
-///   volumes {
-///     docker_volume_configuration = {
+/// resource "aws_ecs_task_definition" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   volume {
+///     docker_volume_configuration {
 ///       scope         = "shared"
 ///       autoprovision = true
 ///       driver        = "local"
@@ -777,8 +786,8 @@ import 'task_definition_volume.dart';
 ///                     .driver("local")
 ///                     .driverOpts(Map.ofEntries(
 ///                         Map.entry("type", "nfs"),
-///                         Map.entry("device", String.format("%s:/", fs.dnsName())),
-///                         Map.entry("o", String.format("addr=%s,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport", fs.dnsName()))
+///                         Map.entry("device", String.format("%s:/", fs.get("dnsName"))),
+///                         Map.entry("o", String.format("addr=%s,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport", fs.get("dnsName")))
 ///                     ))
 ///                     .build())
 ///                 .name("service-storage")
@@ -950,7 +959,7 @@ import 'task_definition_volume.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -961,10 +970,13 @@ import 'task_definition_volume.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecs_taskdefinition" "service" {
-///   volumes {
-///     efs_volume_configuration = {
-///       authorization_config = {
+/// resource "aws_ecs_task_definition" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   volume {
+///     efs_volume_configuration {
+///       authorization_config {
 ///         access_point_id = test.id
 ///         iam             = "ENABLED"
 ///       }
@@ -1009,10 +1021,10 @@ import 'task_definition_volume.dart';
 ///             .volumes(TaskDefinitionVolumeArgs.builder()
 ///                 .efsVolumeConfiguration(TaskDefinitionVolumeEfsVolumeConfigurationArgs.builder()
 ///                     .authorizationConfig(TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigArgs.builder()
-///                         .accessPointId(test.id())
+///                         .accessPointId(test.get("id"))
 ///                         .iam("ENABLED")
 ///                         .build())
-///                     .fileSystemId(fs.id())
+///                     .fileSystemId(fs.get("id"))
 ///                     .rootDirectory("/opt/data")
 ///                     .transitEncryption("ENABLED")
 ///                     .transitEncryptionPort(2999)
@@ -1221,7 +1233,7 @@ import 'task_definition_volume.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1232,11 +1244,14 @@ import 'task_definition_volume.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecs_taskdefinition" "service" {
-///   volumes {
-///     fsx_windows_file_server_volume_configuration = {
-///       authorization_config = {
-///         credentials_parameter = aws_secretsmanager_secretversion.test.arn
+/// resource "aws_ecs_task_definition" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   volume {
+///     fsx_windows_file_server_volume_configuration {
+///       authorization_config {
+///         credentials_parameter = aws_secretsmanager_secret_version.test.arn
 ///         domain                = testAwsDirectoryServiceDirectory.name
 ///       }
 ///       file_system_id = testAwsFsxWindowsFileSystem.id
@@ -1247,7 +1262,10 @@ import 'task_definition_volume.dart';
 ///   family                = "service"
 ///   container_definitions = file("task-definitions/service.json")
 /// }
-/// resource "aws_secretsmanager_secretversion" "test" {
+/// resource "aws_secretsmanager_secret_version" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = testAwsSecretsmanagerSecret.id
 ///   secret_string = jsonencode({
 ///     "username" = "admin"
@@ -1285,11 +1303,11 @@ import 'task_definition_volume.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new SecretVersion("test", SecretVersionArgs.builder()
-///             .secretId(testAwsSecretsmanagerSecret.id())
+///             .secretId(testAwsSecretsmanagerSecret.get("id"))
 ///             .secretString(serializeJson(
 ///                 jsonObject(
 ///                     jsonProperty("username", "admin"),
-///                     jsonProperty("password", testAwsDirectoryServiceDirectory.password())
+///                     jsonProperty("password", testAwsDirectoryServiceDirectory.get("password"))
 ///                 )))
 ///             .build());
 ///
@@ -1298,9 +1316,9 @@ import 'task_definition_volume.dart';
 ///                 .fsxWindowsFileServerVolumeConfiguration(TaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationArgs.builder()
 ///                     .authorizationConfig(TaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfigArgs.builder()
 ///                         .credentialsParameter(test.arn())
-///                         .domain(testAwsDirectoryServiceDirectory.name())
+///                         .domain(testAwsDirectoryServiceDirectory.get("name"))
 ///                         .build())
-///                     .fileSystemId(testAwsFsxWindowsFileSystem.id())
+///                     .fileSystemId(testAwsFsxWindowsFileSystem.get("id"))
 ///                     .rootDirectory("\\data")
 ///                     .build())
 ///                 .name("service-storage")
@@ -1483,7 +1501,7 @@ import 'task_definition_volume.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1491,7 +1509,10 @@ import 'task_definition_volume.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecs_taskdefinition" "test" {
+/// resource "aws_ecs_task_definition" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   family                = "test"
 ///   container_definitions = "[\n  {\n    \"cpu\": 10,\n    \"command\": [\"sleep\", \"10\"],\n    \"entryPoint\": [\"/\"],\n    \"environment\": [\n      {\"name\": \"VARNAME\", \"value\": \"VARVAL\"}\n    ],\n    \"essential\": true,\n    \"image\": \"jenkins\",\n    \"memory\": 128,\n    \"name\": \"jenkins\",\n    \"portMappings\": [\n      {\n        \"containerPort\": 80,\n        \"hostPort\": 8080\n      }\n    ]\n  }\n]\n"
 /// }
@@ -1708,7 +1729,7 @@ import 'task_definition_volume.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1716,8 +1737,11 @@ import 'task_definition_volume.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecs_taskdefinition" "test" {
-///   runtime_platform = {
+/// resource "aws_ecs_task_definition" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   runtime_platform {
 ///     operating_system_family = "WINDOWS_SERVER_2019_CORE"
 ///     cpu_architecture        = "X86_64"
 ///   }
@@ -1892,7 +1916,7 @@ class TaskDefinition extends pulumi.CustomResource {
           'aws:ecs/taskDefinition:TaskDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     arnWithoutRevision = registerOutput<String>('arnWithoutRevision');

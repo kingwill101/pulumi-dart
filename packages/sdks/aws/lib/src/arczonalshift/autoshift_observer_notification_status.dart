@@ -55,7 +55,7 @@ import 'autoshift_observer_notification_status_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -63,7 +63,10 @@ import 'autoshift_observer_notification_status_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_arczonalshift_autoshiftobservernotificationstatus" "example" {
+/// resource "aws_arczonalshift_autoshift_observer_notification_status" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   status = "ENABLED"
 /// }
 /// ```
@@ -139,7 +142,7 @@ class AutoshiftObserverNotificationStatus extends pulumi.CustomResource {
           'aws:arczonalshift/autoshiftObserverNotificationStatus:AutoshiftObserverNotificationStatus',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');

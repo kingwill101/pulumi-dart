@@ -370,7 +370,7 @@ import 'channel_vpc.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -379,49 +379,52 @@ import 'channel_vpc.dart';
 /// }
 ///
 /// resource "aws_medialive_channel" "example" {
-///   input_specification = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   input_specification {
 ///     codec            = "AVC"
 ///     input_resolution = "HD"
 ///     maximum_bitrate  = "MAX_20_MBPS"
 ///   }
-///   encoder_settings = {
-///     timecode_config = {
+///   encoder_settings {
+///     timecode_config {
 ///       source = "EMBEDDED"
 ///     }
-///     audio_descriptions = [{
-///       "audioSelectorName" = "example audio selector"
-///       "name"              = "audio-selector"
-///     }]
-///     output_groups = [{
-///       "outputGroupSettings" = {
-///         "archiveGroupSettings" = [{
-///           "destination" = {
-///             "destinationRefId" = "destination"
-///           }
-///         }]
-///       }
-///       "outputs" = [{
-///         "outputSettings" = {
-///           "archiveOutputSettings" = {
-///             "containerSettings" = {
-///               "m2tsSettings" = {
-///                 "audioBufferModel" = "ATSC"
-///                 "bufferModel"      = "MULTIPLEX"
-///                 "rateMode"         = "CBR"
-///               }
-///             }
-///             "nameModifier" = "_1"
-///             "extension"    = "m2ts"
+///     audio_descriptions {
+///       audio_selector_name = "example audio selector"
+///       name                = "audio-selector"
+///     }
+///     output_groups {
+///       output_group_settings {
+///         archive_group_settings {
+///           destination {
+///             destination_ref_id = "destination"
 ///           }
 ///         }
-///         "outputName"            = "example-name"
-///         "videoDescriptionName"  = "example-video"
-///         "audioDescriptionNames" = ["audio-selector"]
-///       }]
-///     }]
-///     video_descriptions = [{
-///       "name" = "example-video"
-///     }]
+///       }
+///       outputs {
+///         output_settings {
+///           archive_output_settings {
+///             container_settings {
+///               m2ts_settings {
+///                 audio_buffer_model = "ATSC"
+///                 buffer_model       = "MULTIPLEX"
+///                 rate_mode          = "CBR"
+///               }
+///             }
+///             name_modifier = "_1"
+///             extension     = "m2ts"
+///           }
+///         }
+///         output_name             = "example-name"
+///         video_description_name  = "example-video"
+///         audio_description_names = ["audio-selector"]
+///       }
+///     }
+///     video_descriptions {
+///       name = "example-video"
+///     }
 ///   }
 ///   destinations {
 ///     settings {
@@ -527,20 +530,20 @@ import 'channel_vpc.dart';
 ///             .destinations(ChannelDestinationArgs.builder()
 ///                 .settings(
 ///                     ChannelDestinationSettingArgs.builder()
-///                         .url(String.format("s3://%s/test1", main.id()))
+///                         .url(String.format("s3://%s/test1", main.get("id")))
 ///                         .build(),
 ///                     ChannelDestinationSettingArgs.builder()
-///                         .url(String.format("s3://%s/test2", main2.id()))
+///                         .url(String.format("s3://%s/test2", main2.get("id")))
 ///                         .build())
 ///                 .id("destination")
 ///                 .build())
 ///             .inputAttachments(ChannelInputAttachmentArgs.builder()
 ///                 .inputAttachmentName("example-input")
-///                 .inputId(exampleAwsMedialiveInput.id())
+///                 .inputId(exampleAwsMedialiveInput.get("id"))
 ///                 .build())
 ///             .name("example-channel")
 ///             .channelClass("STANDARD")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -667,7 +670,7 @@ class Channel extends pulumi.CustomResource {
           'aws:medialive/channel:Channel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cdiInputSpecification = registerOutput<ChannelCdiInputSpecification?>('cdiInputSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChannelCdiInputSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -66,7 +66,7 @@ import 'phone_number_contact_flow_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'phone_number_contact_flow_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_connect_phonenumbercontactflowassociation" "example" {
+/// resource "aws_connect_phone_number_contact_flow_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   phone_number_id = exampleAwsConnectPhoneNumber.id
 ///   instance_id     = exampleAwsConnectInstance.id
 ///   contact_flow_id = exampleAwsConnectContactFlow.contactFlowId
@@ -102,9 +105,9 @@ import 'phone_number_contact_flow_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new PhoneNumberContactFlowAssociation("example", PhoneNumberContactFlowAssociationArgs.builder()
-///             .phoneNumberId(exampleAwsConnectPhoneNumber.id())
-///             .instanceId(exampleAwsConnectInstance.id())
-///             .contactFlowId(exampleAwsConnectContactFlow.contactFlowId())
+///             .phoneNumberId(exampleAwsConnectPhoneNumber.get("id"))
+///             .instanceId(exampleAwsConnectInstance.get("id"))
+///             .contactFlowId(exampleAwsConnectContactFlow.get("contactFlowId"))
 ///             .build());
 ///
 ///     }
@@ -150,7 +153,7 @@ class PhoneNumberContactFlowAssociation extends pulumi.CustomResource {
           'aws:connect/phoneNumberContactFlowAssociation:PhoneNumberContactFlowAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     contactFlowId = registerOutput<String>('contactFlowId');
     instanceId = registerOutput<String>('instanceId');

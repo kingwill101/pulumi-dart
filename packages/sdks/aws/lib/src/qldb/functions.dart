@@ -57,7 +57,7 @@ import 'get_ledger_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,7 +65,7 @@ import 'get_ledger_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_qldb_getledger" "example" {
+/// data "aws_qldb_ledger" "example" {
 ///   name = "an_example_ledger"
 /// }
 /// ```

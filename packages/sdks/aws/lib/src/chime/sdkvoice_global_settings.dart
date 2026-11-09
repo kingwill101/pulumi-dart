@@ -67,7 +67,7 @@ import 'sdkvoice_global_settings_voice_connector.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,7 +75,10 @@ import 'sdkvoice_global_settings_voice_connector.dart';
 ///   }
 /// }
 ///
-/// resource "aws_chime_sdkvoiceglobalsettings" "example" {
+/// resource "aws_chime_sdkvoice_global_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   voice_connector = {
 ///     cdr_bucket = "example-bucket-name"
 ///   }
@@ -145,7 +148,7 @@ class SdkvoiceGlobalSettings extends pulumi.CustomResource {
           'aws:chime/sdkvoiceGlobalSettings:SdkvoiceGlobalSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     voiceConnector = registerOutput<SdkvoiceGlobalSettingsVoiceConnector>('voiceConnector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SdkvoiceGlobalSettingsVoiceConnector.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

@@ -15,6 +15,8 @@ class ExpressGatewayServiceArgs {
   final pulumi.Input<String?>? cluster;
   /// Number of CPU units used by the task. Valid values are powers of 2 between 256 and 4096. Defaults to `1024`.
   final pulumi.Input<String?>? cpu;
+  /// CPU architecture of the tasks. Valid values are `X86_64` and `ARM64`. Defaults to `X86_64`.
+  final pulumi.Input<String?>? cpuArchitecture;
   /// ARN of the IAM role that allows ECS to pull container images and publish container logs to Amazon CloudWatch.
   final pulumi.Input<String> executionRoleArn;
   /// Path for health check requests. Defaults to `/`.
@@ -45,6 +47,7 @@ class ExpressGatewayServiceArgs {
   /// Creates a new [ExpressGatewayServiceArgs].
   /// [cluster] Name or ARN of the ECS cluster. Defaults to `default`.
   /// [cpu] Number of CPU units used by the task. Valid values are powers of 2 between 256 and 4096. Defaults to `1024`.
+  /// [cpuArchitecture] CPU architecture of the tasks. Valid values are `X86_64` and `ARM64`. Defaults to `X86_64`.
   /// [executionRoleArn] ARN of the IAM role that allows ECS to pull container images and publish container logs to Amazon CloudWatch.
   /// [healthCheckPath] Path for health check requests. Defaults to `/`.
   /// [infrastructureRoleArn] ARN of the IAM role that allows ECS to manage AWS infrastructure on your behalf. **Important:** The infrastructure role cannot be modified after the service is created. Changing this forces a new resource to be created.
@@ -61,6 +64,7 @@ class ExpressGatewayServiceArgs {
   const ExpressGatewayServiceArgs({
     this.cluster,
     this.cpu,
+    this.cpuArchitecture,
     required this.executionRoleArn,
     this.healthCheckPath,
     required this.infrastructureRoleArn,
@@ -80,6 +84,7 @@ class ExpressGatewayServiceArgs {
     return <String, dynamic>{
       'cluster': ?cluster,
       'cpu': ?cpu,
+      'cpuArchitecture': ?cpuArchitecture,
       'executionRoleArn': executionRoleArn,
       'healthCheckPath': ?healthCheckPath,
       'infrastructureRoleArn': infrastructureRoleArn,
@@ -100,6 +105,7 @@ class ExpressGatewayServiceArgs {
     return ExpressGatewayServiceArgs(
       cluster: (() { final guardedValue = map['cluster']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cpuArchitecture: (() { final guardedValue = map['cpuArchitecture']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       executionRoleArn: pulumi.Input.fromValue(map['executionRoleArn'] as String),
       healthCheckPath: (() { final guardedValue = map['healthCheckPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       infrastructureRoleArn: pulumi.Input.fromValue(map['infrastructureRoleArn'] as String),

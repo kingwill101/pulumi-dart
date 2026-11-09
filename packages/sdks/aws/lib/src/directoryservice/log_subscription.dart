@@ -187,7 +187,7 @@ import 'log_subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -195,29 +195,38 @@ import 'log_subscription_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "ad-log-policy" {
-///   statements {
+/// data "aws_iam_policy_document" "ad-log-policy" {
+///   statement {
 ///     principals {
 ///       identifiers = ["ds.amazonaws.com"]
 ///       type        = "Service"
 ///     }
 ///     actions   = ["logs:CreateLogStream", "logs:PutLogEvents"]
-///     resources = ["${aws_cloudwatch_loggroup.example.arn}:*"]
+///     resources = ["${aws_cloudwatch_log_group.example.arn}:*"]
 ///     effect    = "Allow"
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_loggroup" "example" {
+/// resource "aws_cloudwatch_log_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              ="/aws/directoryservice/${exampleAwsDirectoryServiceDirectory.id}"
 ///   retention_in_days = 14
 /// }
-/// resource "aws_cloudwatch_logresourcepolicy" "ad-log-policy" {
-///   policy_document = data.aws_iam_getpolicydocument.ad-log-policy.json
+/// resource "aws_cloudwatch_log_resource_policy" "ad-log-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy_document = data.aws_iam_policy_document.ad-log-policy.json
 ///   policy_name     = "ad-log-policy"
 /// }
-/// resource "aws_directoryservice_logsubscription" "example" {
+/// resource "aws_directoryservice_log_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   directory_id   = exampleAwsDirectoryServiceDirectory.id
-///   log_group_name = aws_cloudwatch_loggroup.example.name
+///   log_group_name = aws_cloudwatch_log_group.example.name
 /// }
 /// ```
 /// ```java
@@ -250,7 +259,7 @@ import 'log_subscription_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new LogGroup("example", LogGroupArgs.builder()
-///             .name(String.format("/aws/directoryservice/%s", exampleAwsDirectoryServiceDirectory.id()))
+///             .name(String.format("/aws/directoryservice/%s", exampleAwsDirectoryServiceDirectory.get("id")))
 ///             .retentionInDays(14)
 ///             .build());
 ///
@@ -274,7 +283,7 @@ import 'log_subscription_state.dart';
 ///             .build());
 ///
 ///         var exampleLogSubscription = new LogSubscription("exampleLogSubscription", LogSubscriptionArgs.builder()
-///             .directoryId(exampleAwsDirectoryServiceDirectory.id())
+///             .directoryId(exampleAwsDirectoryServiceDirectory.get("id"))
 ///             .logGroupName(example.name())
 ///             .build());
 ///
@@ -346,7 +355,7 @@ class LogSubscription extends pulumi.CustomResource {
           'aws:directoryservice/logSubscription:LogSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     directoryId = registerOutput<String>('directoryId');
     logGroupName = registerOutput<String>('logGroupName');

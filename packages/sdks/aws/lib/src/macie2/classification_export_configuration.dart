@@ -92,7 +92,7 @@ import 'classification_export_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -101,10 +101,16 @@ import 'classification_export_configuration_state.dart';
 /// }
 ///
 /// resource "aws_macie2_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_macie2_classificationexportconfiguration" "example" {
+/// resource "aws_macie2_classification_export_configuration" "example" {
 ///   depends_on = [aws_macie2_account.example]
-///   s3_destination = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   s3_destination {
 ///     bucket_name = exampleAwsS3Bucket.bucket
 ///     key_prefix  = "exampleprefix/"
 ///     kms_key_arn = exampleAwsKmsKey.arn
@@ -139,9 +145,9 @@ import 'classification_export_configuration_state.dart';
 ///
 ///         var exampleClassificationExportConfiguration = new ClassificationExportConfiguration("exampleClassificationExportConfiguration", ClassificationExportConfigurationArgs.builder()
 ///             .s3Destination(ClassificationExportConfigurationS3DestinationArgs.builder()
-///                 .bucketName(exampleAwsS3Bucket.bucket())
+///                 .bucketName(exampleAwsS3Bucket.get("bucket"))
 ///                 .keyPrefix("exampleprefix/")
-///                 .kmsKeyArn(exampleAwsKmsKey.arn())
+///                 .kmsKeyArn(exampleAwsKmsKey.get("arn"))
 ///                 .build())
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(example)
@@ -201,7 +207,7 @@ class ClassificationExportConfiguration extends pulumi.CustomResource {
           'aws:macie2/classificationExportConfiguration:ClassificationExportConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     s3Destination = registerOutput<ClassificationExportConfigurationS3Destination>('s3Destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassificationExportConfigurationS3Destination.fromMap((guardedValue as Map).cast<String, dynamic>()); });

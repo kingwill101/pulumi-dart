@@ -82,7 +82,7 @@ import 'application_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -91,7 +91,10 @@ import 'application_timeouts.dart';
 /// }
 ///
 /// resource "aws_qbusiness_application" "example" {
-///   attachments_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   attachments_configuration {
 ///     attachments_control_mode = "ENABLED"
 ///   }
 ///   display_name                 = "example-app"
@@ -126,8 +129,8 @@ import 'application_timeouts.dart';
 ///                 .attachmentsControlMode("ENABLED")
 ///                 .build())
 ///             .displayName("example-app")
-///             .iamServiceRoleArn(exampleAwsIamRole.arn())
-///             .identityCenterInstanceArn(exampleAwsSsoadminInstances.arns()[0])
+///             .iamServiceRoleArn(exampleAwsIamRole.get("arn"))
+///             .identityCenterInstanceArn(exampleAwsSsoadminInstances.get("arns")[0])
 ///             .build());
 ///
 ///     }
@@ -192,7 +195,7 @@ class Application extends pulumi.CustomResource {
           'aws:qbusiness/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attachmentsConfiguration = registerOutput<ApplicationAttachmentsConfiguration>('attachmentsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationAttachmentsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

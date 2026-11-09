@@ -74,7 +74,7 @@ import 'subscriber_notification_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,9 +82,13 @@ import 'subscriber_notification_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_securitylake_subscribernotification" "example" {
-///   configuration = {
-///     sqs_notification_configuration = {}
+/// resource "aws_securitylake_subscriber_notification" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     sqs_notification_configuration {
+///     }
 ///   }
 ///   subscriber_id = exampleAwsSecuritylakeSubscriber.id
 /// }
@@ -117,7 +121,7 @@ import 'subscriber_notification_state.dart';
 ///                 .sqsNotificationConfiguration(SubscriberNotificationConfigurationSqsNotificationConfigurationArgs.builder()
 ///                     .build())
 ///                 .build())
-///             .subscriberId(exampleAwsSecuritylakeSubscriber.id())
+///             .subscriberId(exampleAwsSecuritylakeSubscriber.get("id"))
 ///             .build());
 ///
 ///     }
@@ -214,7 +218,7 @@ import 'subscriber_notification_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -222,9 +226,12 @@ import 'subscriber_notification_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_securitylake_subscribernotification" "example" {
-///   configuration = {
-///     https_notification_configuration = {
+/// resource "aws_securitylake_subscriber_notification" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     https_notification_configuration {
 ///       endpoint        = test.apiEndpoint
 ///       target_role_arn = eventBridge.arn
 ///     }
@@ -258,11 +265,11 @@ import 'subscriber_notification_state.dart';
 ///         var example = new SubscriberNotification("example", SubscriberNotificationArgs.builder()
 ///             .configuration(SubscriberNotificationConfigurationArgs.builder()
 ///                 .httpsNotificationConfiguration(SubscriberNotificationConfigurationHttpsNotificationConfigurationArgs.builder()
-///                     .endpoint(test.apiEndpoint())
-///                     .targetRoleArn(eventBridge.arn())
+///                     .endpoint(test.get("apiEndpoint"))
+///                     .targetRoleArn(eventBridge.get("arn"))
 ///                     .build())
 ///                 .build())
-///             .subscriberId(exampleAwsSecuritylakeSubscriber.id())
+///             .subscriberId(exampleAwsSecuritylakeSubscriber.get("id"))
 ///             .build());
 ///
 ///     }
@@ -303,7 +310,7 @@ class SubscriberNotification extends pulumi.CustomResource {
           'aws:securitylake/subscriberNotification:SubscriberNotification',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     configuration = registerOutput<SubscriberNotificationConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriberNotificationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpointId = registerOutput<String>('endpointId');

@@ -62,7 +62,7 @@ import 'single_scram_secret_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'single_scram_secret_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_msk_singlescramsecretassociation" "example" {
+/// resource "aws_msk_single_scram_secret_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_arn = exampleAwsMskCluster.arn
 ///   secret_arn  = exampleAwsSecretsmanagerSecret.arn
 /// }
@@ -97,8 +100,8 @@ import 'single_scram_secret_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new SingleScramSecretAssociation("example", SingleScramSecretAssociationArgs.builder()
-///             .clusterArn(exampleAwsMskCluster.arn())
-///             .secretArn(exampleAwsSecretsmanagerSecret.arn())
+///             .clusterArn(exampleAwsMskCluster.get("arn"))
+///             .secretArn(exampleAwsSecretsmanagerSecret.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -141,7 +144,7 @@ class SingleScramSecretAssociation extends pulumi.CustomResource {
           'aws:msk/singleScramSecretAssociation:SingleScramSecretAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     clusterArn = registerOutput<String>('clusterArn');
     region = registerOutput<String>('region');

@@ -148,8 +148,8 @@ import 'hosted_transit_virtual_interface_acceptor_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = directconnect.NewHostedTransitVirtualInterfaceAcceptor(ctx, "accepter", &directconnect.HostedTransitVirtualInterfaceAcceptorArgs{
-/// 			VirtualInterfaceId: creator.ID().ToIDOutput().ToStringOutput(),
-/// 			DxGatewayId:        example.ID().ToIDOutput().ToStringOutput(),
+/// 			VirtualInterfaceId: creator.ID(),
+/// 			DxGatewayId:        example.ID(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Side": pulumi.String("Accepter"),
 /// 			},
@@ -162,7 +162,7 @@ import 'hosted_transit_virtual_interface_acceptor_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -170,14 +170,17 @@ import 'hosted_transit_virtual_interface_acceptor_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "accepter" {
+/// data "aws_caller_identity" "accepter" {
 /// }
 ///
 /// # Creator's side of the VIF
-/// resource "aws_directconnect_hostedtransitvirtualinterface" "creator" {
-///   depends_on       = [aws_directconnect_gateway.example]
+/// resource "aws_directconnect_hosted_transit_virtual_interface" "creator" {
+///   depends_on = [aws_directconnect_gateway.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_id    = "dxcon-zzzzzzzz"
-///   owner_account_id = data.aws_getcalleridentity.accepter.account_id
+///   owner_account_id = data.aws_caller_identity.accepter.account_id
 ///   name             = "tf-transit-vif-example"
 ///   vlan             = 4094
 ///   address_family   = "ipv4"
@@ -185,11 +188,17 @@ import 'hosted_transit_virtual_interface_acceptor_state.dart';
 /// }
 /// # Accepter's side of the VIF.
 /// resource "aws_directconnect_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "tf-dxg-example"
 ///   amazon_side_asn = 64512
 /// }
-/// resource "aws_directconnect_hostedtransitvirtualinterfaceacceptor" "accepter" {
-///   virtual_interface_id = aws_directconnect_hostedtransitvirtualinterface.creator.id
+/// resource "aws_directconnect_hosted_transit_virtual_interface_acceptor" "accepter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   virtual_interface_id = aws_directconnect_hosted_transit_virtual_interface.creator.id
 ///   dx_gateway_id        = aws_directconnect_gateway.example.id
 ///   tags = {
 ///     "Side" = "Accepter"
@@ -329,7 +338,7 @@ class HostedTransitVirtualInterfaceAcceptor extends pulumi.CustomResource {
           'aws:directconnect/hostedTransitVirtualInterfaceAcceptor:HostedTransitVirtualInterfaceAcceptor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dxGatewayId = registerOutput<String>('dxGatewayId');

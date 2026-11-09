@@ -116,8 +116,8 @@ import 'volume_attachment_state.dart';
 /// 		}
 /// 		_, err = ec2.NewVolumeAttachment(ctx, "ebs_att", &ec2.VolumeAttachmentArgs{
 /// 			DeviceName: pulumi.String("/dev/sdh"),
-/// 			VolumeId:   example.ID().ToIDOutput().ToStringOutput(),
-/// 			InstanceId: web.ID().ToIDOutput().ToStringOutput(),
+/// 			VolumeId:   example.ID(),
+/// 			InstanceId: web.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -127,7 +127,7 @@ import 'volume_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -135,12 +135,18 @@ import 'volume_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_volumeattachment" "ebs_att" {
+/// resource "aws_ec2_volume_attachment" "ebs_att" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   device_name = "/dev/sdh"
 ///   volume_id   = aws_ebs_volume.example.id
 ///   instance_id = aws_ec2_instance.web.id
 /// }
 /// resource "aws_ec2_instance" "web" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ami               = "ami-21f78e11"
 ///   availability_zone = "us-west-2a"
 ///   instance_type     = "t2.micro"
@@ -149,6 +155,9 @@ import 'volume_attachment_state.dart';
 ///   }
 /// }
 /// resource "aws_ebs_volume" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_zone = "us-west-2a"
 ///   size              = 1
 /// }
@@ -273,7 +282,7 @@ class VolumeAttachment extends pulumi.CustomResource {
           'aws:ec2/volumeAttachment:VolumeAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     deviceName = registerOutput<String>('deviceName');
     forceDetach = registerOutput<bool?>('forceDetach');

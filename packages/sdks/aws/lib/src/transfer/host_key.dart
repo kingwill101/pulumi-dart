@@ -67,7 +67,7 @@ import 'host_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,10 +75,16 @@ import 'host_key_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_transfer_hostkey" "example" {
+/// resource "aws_transfer_host_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   server_id        = exampleAwsTransferServer.id
 ///   description      = "example additional host key"
-///   host_key_body_wo = "# Private key PEM.\n"
+///   host_key_body_wo = <<EOT
+/// # Private key PEM.
+/// EOT
+///
 /// }
 /// ```
 /// ```java
@@ -103,7 +109,7 @@ import 'host_key_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new HostKey("example", HostKeyArgs.builder()
-///             .serverId(exampleAwsTransferServer.id())
+///             .serverId(exampleAwsTransferServer.get("id"))
 ///             .description("example additional host key")
 ///             .hostKeyBodyWo("""
 /// # Private key PEM.
@@ -167,7 +173,7 @@ class HostKey extends pulumi.CustomResource {
           'aws:transfer/hostKey:HostKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['hostKeyBody', 'hostKeyBodyWo'],
         ) {
     arn = registerOutput<String>('arn');

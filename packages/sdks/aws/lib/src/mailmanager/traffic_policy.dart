@@ -132,7 +132,7 @@ import 'traffic_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -140,11 +140,14 @@ import 'traffic_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_mailmanager_trafficpolicy" "example" {
-///   policy_statements {
-///     conditions {
-///       ip_expression = {
-///         evaluate = {
+/// resource "aws_mailmanager_traffic_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy_statement {
+///     condition {
+///       ip_expression {
+///         evaluate {
 ///           attribute = "SENDER_IP"
 ///         }
 ///         operator = "CIDR_MATCHES"
@@ -276,7 +279,7 @@ class TrafficPolicy extends pulumi.CustomResource {
           'aws:mailmanager/trafficPolicy:TrafficPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdTimestamp = registerOutput<String>('createdTimestamp');

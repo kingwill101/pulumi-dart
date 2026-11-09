@@ -121,7 +121,7 @@ import 'link_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -130,7 +130,10 @@ import 'link_state.dart';
 /// }
 ///
 /// resource "aws_oam_link" "example" {
-///   depends_on      = [aws_oam_sinkpolicy.example]
+///   depends_on = [aws_oam_sink_policy.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   label_template  = "$AccountName"
 ///   resource_types  = ["AWS::CloudWatch::Metric"]
 ///   sink_identifier = aws_oam_sink.example.arn
@@ -139,8 +142,14 @@ import 'link_state.dart';
 ///   }
 /// }
 /// resource "aws_oam_sink" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_oam_sinkpolicy" "example" {
+/// resource "aws_oam_sink_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   sink_identifier = aws_oam_sink.example.arn
 /// }
 /// ```
@@ -312,7 +321,7 @@ import 'link_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -322,8 +331,11 @@ import 'link_state.dart';
 ///
 /// resource "aws_oam_link" "example" {
 ///   depends_on = [exampleAwsOamSinkPolicy]
-///   link_configuration = {
-///     log_group_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   link_configuration {
+///     log_group_configuration {
 ///       filter = "LogGroupName LIKE 'aws/lambda/%' OR LogGroupName LIKE 'AWSLogs%'"
 ///     }
 ///   }
@@ -364,7 +376,7 @@ import 'link_state.dart';
 ///                 .build())
 ///             .labelTemplate("$AccountName")
 ///             .resourceTypes("AWS::Logs::LogGroup")
-///             .sinkIdentifier(exampleAwsOamSink.arn())
+///             .sinkIdentifier(exampleAwsOamSink.get("arn"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleAwsOamSinkPolicy)
 ///                 .build());
@@ -490,7 +502,7 @@ import 'link_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -500,8 +512,11 @@ import 'link_state.dart';
 ///
 /// resource "aws_oam_link" "example" {
 ///   depends_on = [exampleAwsOamSinkPolicy]
-///   link_configuration = {
-///     metric_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   link_configuration {
+///     metric_configuration {
 ///       filter = "Namespace IN ('AWS/EC2', 'AWS/ELB', 'AWS/S3')"
 ///     }
 ///   }
@@ -542,7 +557,7 @@ import 'link_state.dart';
 ///                 .build())
 ///             .labelTemplate("$AccountName")
 ///             .resourceTypes("AWS::CloudWatch::Metric")
-///             .sinkIdentifier(exampleAwsOamSink.arn())
+///             .sinkIdentifier(exampleAwsOamSink.get("arn"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleAwsOamSinkPolicy)
 ///                 .build());
@@ -612,7 +627,7 @@ class Link extends pulumi.CustomResource {
           'aws:oam/link:Link',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     label = registerOutput<String>('label');

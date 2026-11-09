@@ -111,7 +111,7 @@ import 'stream_stream_mode_details.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -120,7 +120,10 @@ import 'stream_stream_mode_details.dart';
 /// }
 ///
 /// resource "aws_kinesis_stream" "test_stream" {
-///   stream_mode_details = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   stream_mode_details {
 ///     stream_mode = "ON_DEMAND"
 ///   }
 ///   name                = "kinesis-test"
@@ -291,7 +294,7 @@ import 'stream_stream_mode_details.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -300,7 +303,10 @@ import 'stream_stream_mode_details.dart';
 /// }
 ///
 /// resource "aws_kinesis_stream" "test_stream" {
-///   stream_mode_details = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   stream_mode_details {
 ///     stream_mode = "PROVISIONED"
 ///   }
 ///   name                = "kinesis-test"
@@ -430,7 +436,7 @@ class Stream extends pulumi.CustomResource {
           'aws:kinesis/stream:Stream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     encryptionType = registerOutput<String?>('encryptionType');

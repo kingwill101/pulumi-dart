@@ -67,7 +67,7 @@ import 'integration_tls_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,6 +76,9 @@ import 'integration_tls_config.dart';
 /// }
 ///
 /// resource "aws_apigatewayv2_integration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id           = exampleAwsApigatewayv2Api.id
 ///   integration_type = "MOCK"
 /// }
@@ -102,7 +105,7 @@ import 'integration_tls_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Integration("example", IntegrationArgs.builder()
-///             .apiId(exampleAwsApigatewayv2Api.id())
+///             .apiId(exampleAwsApigatewayv2Api.get("id"))
 ///             .integrationType("MOCK")
 ///             .build());
 ///
@@ -234,7 +237,7 @@ import 'integration_tls_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -243,13 +246,19 @@ import 'integration_tls_config.dart';
 /// }
 ///
 /// resource "aws_lambda_function" "example" {
-///   code    = fileArchive("example.zip")
-///   name    = "Example"
-///   role    = exampleAwsIamRole.arn
-///   handler = "index.handler"
-///   runtime = "nodejs24.x"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filename      = filearchive("example.zip")
+///   function_name = "Example"
+///   role          = exampleAwsIamRole.arn
+///   handler       = "index.handler"
+///   runtime       = "nodejs24.x"
 /// }
 /// resource "aws_apigatewayv2_integration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id                    = exampleAwsApigatewayv2Api.id
 ///   integration_type          = "AWS_PROXY"
 ///   connection_type           = "INTERNET"
@@ -287,13 +296,13 @@ import 'integration_tls_config.dart';
 ///         var example = new Function("example", FunctionArgs.builder()
 ///             .code(new FileArchive("example.zip"))
 ///             .name("Example")
-///             .role(exampleAwsIamRole.arn())
+///             .role(exampleAwsIamRole.get("arn"))
 ///             .handler("index.handler")
 ///             .runtime("nodejs24.x")
 ///             .build());
 ///
 ///         var exampleIntegration = new Integration("exampleIntegration", IntegrationArgs.builder()
-///             .apiId(exampleAwsApigatewayv2Api.id())
+///             .apiId(exampleAwsApigatewayv2Api.get("id"))
 ///             .integrationType("AWS_PROXY")
 ///             .connectionType("INTERNET")
 ///             .contentHandlingStrategy("CONVERT_TO_TEXT")
@@ -419,7 +428,7 @@ import 'integration_tls_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -428,6 +437,9 @@ import 'integration_tls_config.dart';
 /// }
 ///
 /// resource "aws_apigatewayv2_integration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = exampleAwsApigatewayv2Api.id
 ///   credentials_arn     = exampleAwsIamRole.arn
 ///   description         = "SQS example"
@@ -461,8 +473,8 @@ import 'integration_tls_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Integration("example", IntegrationArgs.builder()
-///             .apiId(exampleAwsApigatewayv2Api.id())
-///             .credentialsArn(exampleAwsIamRole.arn())
+///             .apiId(exampleAwsApigatewayv2Api.get("id"))
+///             .credentialsArn(exampleAwsIamRole.get("arn"))
 ///             .description("SQS example")
 ///             .integrationType("AWS_PROXY")
 ///             .integrationSubtype("SQS-SendMessage")
@@ -664,7 +676,7 @@ import 'integration_tls_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -673,7 +685,10 @@ import 'integration_tls_config.dart';
 /// }
 ///
 /// resource "aws_apigatewayv2_integration" "example" {
-///   tls_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   tls_config {
 ///     server_name_to_verify = "example.com"
 ///   }
 ///   response_parameters {
@@ -738,14 +753,14 @@ import 'integration_tls_config.dart';
 ///                     .statusCode("200")
 ///                     .mappings(Map.of("overwrite:statuscode", "204"))
 ///                     .build())
-///             .apiId(exampleAwsApigatewayv2Api.id())
-///             .credentialsArn(exampleAwsIamRole.arn())
+///             .apiId(exampleAwsApigatewayv2Api.get("id"))
+///             .credentialsArn(exampleAwsIamRole.get("arn"))
 ///             .description("Example with a load balancer")
 ///             .integrationType("HTTP_PROXY")
-///             .integrationUri(exampleAwsLbListener.arn())
+///             .integrationUri(exampleAwsLbListener.get("arn"))
 ///             .integrationMethod("ANY")
 ///             .connectionType("VPC_LINK")
-///             .connectionId(exampleAwsApigatewayv2VpcLink.id())
+///             .connectionId(exampleAwsApigatewayv2VpcLink.get("id"))
 ///             .requestParameters(Map.ofEntries(
 ///                 Map.entry("append:header.authforintegration", "$context.authorizer.authorizerResponse"),
 ///                 Map.entry("overwrite:path", "staticValueForIntegration")
@@ -859,7 +874,7 @@ class Integration extends pulumi.CustomResource {
           'aws:apigatewayv2/integration:Integration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     connectionId = registerOutput<String?>('connectionId');

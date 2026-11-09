@@ -67,7 +67,7 @@ import 'get_user_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,7 +75,7 @@ import 'get_user_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_memorydb_getacl" "example" {
+/// data "aws_memorydb_acl" "example" {
 ///   name = "my-acl"
 /// }
 /// ```
@@ -196,7 +196,7 @@ pulumi.Output<GetAclResult> getAclOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -204,7 +204,7 @@ pulumi.Output<GetAclResult> getAclOutput(
 ///   }
 /// }
 ///
-/// data "aws_memorydb_getcluster" "example" {
+/// data "aws_memorydb_cluster" "example" {
 ///   name = "my-cluster"
 /// }
 /// ```
@@ -325,7 +325,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -333,7 +333,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 ///   }
 /// }
 ///
-/// data "aws_memorydb_getparametergroup" "example" {
+/// data "aws_memorydb_parameter_group" "example" {
 ///   name = "my-parameter-group"
 /// }
 /// ```
@@ -454,7 +454,7 @@ pulumi.Output<GetParameterGroupResult> getParameterGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -462,7 +462,7 @@ pulumi.Output<GetParameterGroupResult> getParameterGroupOutput(
 ///   }
 /// }
 ///
-/// data "aws_memorydb_getsnapshot" "example" {
+/// data "aws_memorydb_snapshot" "example" {
 ///   name = "my-snapshot"
 /// }
 /// ```
@@ -583,7 +583,7 @@ pulumi.Output<GetSnapshotResult> getSnapshotOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -591,7 +591,7 @@ pulumi.Output<GetSnapshotResult> getSnapshotOutput(
 ///   }
 /// }
 ///
-/// data "aws_memorydb_getsubnetgroup" "example" {
+/// data "aws_memorydb_subnet_group" "example" {
 ///   name = "my-subnet-group"
 /// }
 /// ```
@@ -712,7 +712,7 @@ pulumi.Output<GetSubnetGroupResult> getSubnetGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -720,7 +720,7 @@ pulumi.Output<GetSubnetGroupResult> getSubnetGroupOutput(
 ///   }
 /// }
 ///
-/// data "aws_memorydb_getuser" "example" {
+/// data "aws_memorydb_user" "example" {
 ///   user_name = "my-user"
 /// }
 /// ```

@@ -87,7 +87,7 @@ import 'organization_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -95,8 +95,11 @@ import 'organization_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_inspector2_organizationconfiguration" "example" {
-///   auto_enable = {
+/// resource "aws_inspector2_organization_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   auto_enable {
 ///     ec2             = true
 ///     ecr             = false
 ///     code_repository = false
@@ -172,7 +175,7 @@ class OrganizationConfiguration extends pulumi.CustomResource {
           'aws:inspector2/organizationConfiguration:OrganizationConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     autoEnable = registerOutput<OrganizationConfigurationAutoEnable>('autoEnable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationConfigurationAutoEnable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxAccountLimitReached = registerOutput<bool>('maxAccountLimitReached');

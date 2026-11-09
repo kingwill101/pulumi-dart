@@ -92,7 +92,7 @@ import 'table_replication_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -100,11 +100,14 @@ import 'table_replication_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3tables_tablereplication" "example" {
-///   rule = {
-///     destinations = [{
-///       "destinationTableBucketArn" = target.arn
-///     }]
+/// resource "aws_s3tables_table_replication" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     destination {
+///       destination_table_bucket_arn = target.arn
+///     }
 ///   }
 ///   table_arn = exampleAwsS3tablesTable.arn
 ///   role      = exampleAwsIamRole.arn
@@ -136,11 +139,11 @@ import 'table_replication_state.dart';
 ///         var example = new TableReplication("example", TableReplicationArgs.builder()
 ///             .rule(TableReplicationRuleArgs.builder()
 ///                 .destinations(TableReplicationRuleDestinationArgs.builder()
-///                     .destinationTableBucketArn(target.arn())
+///                     .destinationTableBucketArn(target.get("arn"))
 ///                     .build())
 ///                 .build())
-///             .tableArn(exampleAwsS3tablesTable.arn())
-///             .role(exampleAwsIamRole.arn())
+///             .tableArn(exampleAwsS3tablesTable.get("arn"))
+///             .role(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -197,7 +200,7 @@ class TableReplication extends pulumi.CustomResource {
           'aws:s3tables/tableReplication:TableReplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');

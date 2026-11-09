@@ -55,7 +55,7 @@ import 'transit_gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -63,7 +63,10 @@ import 'transit_gateway_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2transitgateway_transitgateway" "example" {
+/// resource "aws_ec2transitgateway_transit_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "example"
 /// }
 /// ```
@@ -163,7 +166,7 @@ class TransitGateway extends pulumi.CustomResource {
           'aws:ec2transitgateway/transitGateway:TransitGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     amazonSideAsn = registerOutput<int?>('amazonSideAsn');
     arn = registerOutput<String>('arn');

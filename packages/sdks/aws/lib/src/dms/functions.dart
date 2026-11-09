@@ -67,7 +67,7 @@ import 'get_replication_task_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,7 +75,7 @@ import 'get_replication_task_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_dms_getcertificate" "example" {
+/// data "aws_dms_certificate" "example" {
 ///   certificate_id = test.certificateId
 /// }
 /// ```
@@ -101,7 +101,7 @@ import 'get_replication_task_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = DmsFunctions.getCertificate(GetCertificateArgs.builder()
-///             .certificateId(test.certificateId())
+///             .certificateId(test.get("certificateId"))
 ///             .build());
 ///
 ///     }
@@ -198,7 +198,7 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -206,7 +206,7 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 ///   }
 /// }
 ///
-/// data "aws_dms_getendpoint" "test" {
+/// data "aws_dms_endpoint" "test" {
 ///   endpoint_id = "test_id"
 /// }
 /// ```
@@ -327,7 +327,7 @@ pulumi.Output<GetEndpointResult> getEndpointOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -335,7 +335,7 @@ pulumi.Output<GetEndpointResult> getEndpointOutput(
 ///   }
 /// }
 ///
-/// data "aws_dms_getreplicationinstance" "test" {
+/// data "aws_dms_replication_instance" "test" {
 ///   replication_instance_id = testAwsDmsReplicationInstance.replicationInstanceId
 /// }
 /// ```
@@ -361,7 +361,7 @@ pulumi.Output<GetEndpointResult> getEndpointOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = DmsFunctions.getReplicationInstance(GetReplicationInstanceArgs.builder()
-///             .replicationInstanceId(testAwsDmsReplicationInstance.replicationInstanceId())
+///             .replicationInstanceId(testAwsDmsReplicationInstance.get("replicationInstanceId"))
 ///             .build());
 ///
 ///     }
@@ -458,7 +458,7 @@ pulumi.Output<GetReplicationInstanceResult> getReplicationInstanceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -466,7 +466,7 @@ pulumi.Output<GetReplicationInstanceResult> getReplicationInstanceOutput(
 ///   }
 /// }
 ///
-/// data "aws_dms_getreplicationsubnetgroup" "test" {
+/// data "aws_dms_replication_subnet_group" "test" {
 ///   replication_subnet_group_id = testAwsDmsReplicationSubnetGroup.replicationSubnetGroupId
 /// }
 /// ```
@@ -492,7 +492,7 @@ pulumi.Output<GetReplicationInstanceResult> getReplicationInstanceOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = DmsFunctions.getReplicationSubnetGroup(GetReplicationSubnetGroupArgs.builder()
-///             .replicationSubnetGroupId(testAwsDmsReplicationSubnetGroup.replicationSubnetGroupId())
+///             .replicationSubnetGroupId(testAwsDmsReplicationSubnetGroup.get("replicationSubnetGroupId"))
 ///             .build());
 ///
 ///     }
@@ -589,7 +589,7 @@ pulumi.Output<GetReplicationSubnetGroupResult> getReplicationSubnetGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -597,7 +597,7 @@ pulumi.Output<GetReplicationSubnetGroupResult> getReplicationSubnetGroupOutput(
 ///   }
 /// }
 ///
-/// data "aws_dms_getreplicationtask" "test" {
+/// data "aws_dms_replication_task" "test" {
 ///   replication_task_id = testAwsDmsReplicationTask.replicationTaskId
 /// }
 /// ```
@@ -623,7 +623,7 @@ pulumi.Output<GetReplicationSubnetGroupResult> getReplicationSubnetGroupOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = DmsFunctions.getReplicationTask(GetReplicationTaskArgs.builder()
-///             .replicationTaskId(testAwsDmsReplicationTask.replicationTaskId())
+///             .replicationTaskId(testAwsDmsReplicationTask.get("replicationTaskId"))
 ///             .build());
 ///
 ///     }

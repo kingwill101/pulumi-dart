@@ -195,7 +195,7 @@ import 'sink_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -204,9 +204,15 @@ import 'sink_policy_state.dart';
 /// }
 ///
 /// resource "aws_oam_sink" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "ExampleSink"
 /// }
-/// resource "aws_oam_sinkpolicy" "example" {
+/// resource "aws_oam_sink_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   sink_identifier = aws_oam_sink.example.arn
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -350,7 +356,7 @@ class SinkPolicy extends pulumi.CustomResource {
           'aws:oam/sinkPolicy:SinkPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     policy = registerOutput<String>('policy');

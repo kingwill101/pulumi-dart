@@ -114,7 +114,7 @@ import 'event_destination_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -122,8 +122,11 @@ import 'event_destination_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ses_eventdestination" "cloudwatch" {
-///   cloudwatch_destinations {
+/// resource "aws_ses_event_destination" "cloudwatch" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cloudwatch_destination {
 ///     default_value  = "default"
 ///     dimension_name = "dimension"
 ///     value_source   = "emailHeader"
@@ -163,7 +166,7 @@ import 'event_destination_state.dart';
 ///                 .valueSource("emailHeader")
 ///                 .build())
 ///             .name("event-destination-cloudwatch")
-///             .configurationSetName(example.name())
+///             .configurationSetName(example.get("name"))
 ///             .enabled(true)
 ///             .matchingTypes(
 ///                 "bounce",
@@ -287,7 +290,7 @@ import 'event_destination_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -295,8 +298,11 @@ import 'event_destination_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ses_eventdestination" "kinesis" {
-///   kinesis_destination = {
+/// resource "aws_ses_event_destination" "kinesis" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   kinesis_destination {
 ///     stream_arn = example.arn
 ///     role_arn   = exampleAwsIamRole.arn
 ///   }
@@ -330,11 +336,11 @@ import 'event_destination_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var kinesis = new EventDestination("kinesis", EventDestinationArgs.builder()
 ///             .kinesisDestination(EventDestinationKinesisDestinationArgs.builder()
-///                 .streamArn(example.arn())
-///                 .roleArn(exampleAwsIamRole.arn())
+///                 .streamArn(example.get("arn"))
+///                 .roleArn(exampleAwsIamRole.get("arn"))
 ///                 .build())
 ///             .name("event-destination-kinesis")
-///             .configurationSetName(exampleAwsSesConfigurationSet.name())
+///             .configurationSetName(exampleAwsSesConfigurationSet.get("name"))
 ///             .enabled(true)
 ///             .matchingTypes(
 ///                 "bounce",
@@ -453,7 +459,7 @@ import 'event_destination_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -461,8 +467,11 @@ import 'event_destination_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ses_eventdestination" "sns" {
-///   sns_destination = {
+/// resource "aws_ses_event_destination" "sns" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   sns_destination {
 ///     topic_arn = example.arn
 ///   }
 ///   name                   = "event-destination-sns"
@@ -495,10 +504,10 @@ import 'event_destination_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var sns = new EventDestination("sns", EventDestinationArgs.builder()
 ///             .snsDestination(EventDestinationSnsDestinationArgs.builder()
-///                 .topicArn(example.arn())
+///                 .topicArn(example.get("arn"))
 ///                 .build())
 ///             .name("event-destination-sns")
-///             .configurationSetName(exampleAwsSesConfigurationSet.name())
+///             .configurationSetName(exampleAwsSesConfigurationSet.get("name"))
 ///             .enabled(true)
 ///             .matchingTypes(
 ///                 "bounce",
@@ -565,7 +574,7 @@ class EventDestination extends pulumi.CustomResource {
           'aws:ses/eventDestination:EventDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cloudwatchDestinations = registerOutput<List<EventDestinationCloudwatchDestination>?>('cloudwatchDestinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventDestinationCloudwatchDestination>(guardedValue, (value) => EventDestinationCloudwatchDestination.fromMap((value as Map).cast<String, dynamic>())); });

@@ -258,7 +258,7 @@ import 'network_settings_association_state.dart';
 /// 			key0 := index
 /// 			val0 := index
 /// 			__res, err := ec2.NewSubnet(ctx, fmt.Sprintf("example-%v", key0), &ec2.SubnetArgs{
-/// 				VpcId: example.ID().ToIDOutput().ToStringOutput(),
+/// 				VpcId: example.ID(),
 /// 				CidrBlock: std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
 /// 					Input:   example.CidrBlock,
 /// 					Newbits: pulumi.Int(8),
@@ -279,7 +279,7 @@ import 'network_settings_association_state.dart';
 /// 			key0 := index
 /// 			val0 := index
 /// 			__res, err := ec2.NewSecurityGroup(ctx, fmt.Sprintf("example-%v", key0), &ec2.SecurityGroupArgs{
-/// 				VpcId: example.ID().ToIDOutput().ToStringOutput(),
+/// 				VpcId: example.ID(),
 /// 				Name:  pulumi.Sprintf("example-%v", val0),
 /// 				Tags: pulumi.StringMap{
 /// 					"Name": pulumi.String("example"),
@@ -297,14 +297,14 @@ import 'network_settings_association_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleNetworkSettings, err := workspacesweb.NewNetworkSettings(ctx, "example", &workspacesweb.NetworkSettingsArgs{
-/// 			VpcId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId: example.ID(),
 /// 			SubnetIds: pulumi.StringArray{
-/// 				exampleSubnet[0].ID().ToIDOutput().ToStringOutput(),
-/// 				exampleSubnet[1].ID().ToIDOutput().ToStringOutput(),
+/// 				exampleSubnet[0].ID(),
+/// 				exampleSubnet[1].ID(),
 /// 			},
 /// 			SecurityGroupIds: pulumi.StringArray{
-/// 				exampleSecurityGroup[0].ID().ToIDOutput().ToStringOutput(),
-/// 				exampleSecurityGroup[1].ID().ToIDOutput().ToStringOutput(),
+/// 				exampleSecurityGroup[0].ID(),
+/// 				exampleSecurityGroup[1].ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -322,7 +322,7 @@ import 'network_settings_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -333,8 +333,8 @@ import 'network_settings_association_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzones" "available" {
-///   filters {
+/// data "aws_availability_zones" "available" {
+///   filter {
 ///     name   = "opt-in-status"
 ///     values = ["opt-in-not-required"]
 ///   }
@@ -342,22 +342,37 @@ import 'network_settings_association_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 ///   tags = {
 ///     "Name" = "example"
 ///   }
 /// }
 /// resource "aws_ec2_subnet" "example" {
-///   count             = 2
+///   count = 2
+///   pulumi {
+///     name ="example-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.example.id
 ///   cidr_block        = cidrsubnet(aws_ec2_vpc.example.cidr_block, 8, count.index)
-///   availability_zone = data.aws_getavailabilityzones.available.names[count.index]
+///   availability_zone = data.aws_availability_zones.available.names[count.index]
 ///   tags = {
 ///     "Name" = "example"
 ///   }
 /// }
-/// resource "aws_ec2_securitygroup" "example" {
-///   count  = 2
+/// resource "aws_ec2_security_group" "example" {
+///   count = 2
+///   pulumi {
+///     name ="example-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id = aws_ec2_vpc.example.id
 ///   name   ="example-${count.index}"
 ///   tags = {
@@ -365,15 +380,24 @@ import 'network_settings_association_state.dart';
 ///   }
 /// }
 /// resource "aws_workspacesweb_portal" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "aws_workspacesweb_networksettings" "example" {
+/// resource "aws_workspacesweb_network_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id             = aws_ec2_vpc.example.id
 ///   subnet_ids         = [aws_ec2_subnet.example[0].id, aws_ec2_subnet.example[1].id]
-///   security_group_ids = [aws_ec2_securitygroup.example[0].id, aws_ec2_securitygroup.example[1].id]
+///   security_group_ids = [aws_ec2_security_group.example[0].id, aws_ec2_security_group.example[1].id]
 /// }
-/// resource "aws_workspacesweb_networksettingsassociation" "example" {
-///   network_settings_arn = aws_workspacesweb_networksettings.example.network_settings_arn
+/// resource "aws_workspacesweb_network_settings_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   network_settings_arn = aws_workspacesweb_network_settings.example.network_settings_arn
 ///   portal_arn           = aws_workspacesweb_portal.example.portal_arn
 /// }
 /// ```
@@ -457,11 +481,11 @@ import 'network_settings_association_state.dart';
 ///         var exampleNetworkSettings = new NetworkSettings("exampleNetworkSettings", NetworkSettingsArgs.builder()
 ///             .vpcId(example.id())
 ///             .subnetIds(
-///                 exampleSubnet[0].id(),
-///                 exampleSubnet[1].id())
+///                 exampleSubnet.get(0).id(),
+///                 exampleSubnet.get(1).id())
 ///             .securityGroupIds(
-///                 exampleSecurityGroup[0].id(),
-///                 exampleSecurityGroup[1].id())
+///                 exampleSecurityGroup.get(0).id(),
+///                 exampleSecurityGroup.get(1).id())
 ///             .build());
 ///
 ///         var exampleNetworkSettingsAssociation = new NetworkSettingsAssociation("exampleNetworkSettingsAssociation", NetworkSettingsAssociationArgs.builder()
@@ -494,7 +518,7 @@ class NetworkSettingsAssociation extends pulumi.CustomResource {
           'aws:workspacesweb/networkSettingsAssociation:NetworkSettingsAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     networkSettingsArn = registerOutput<String>('networkSettingsArn');
     portalArn = registerOutput<String>('portalArn');

@@ -61,7 +61,7 @@ import 'subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,6 +70,9 @@ import 'subscription_state.dart';
 /// }
 ///
 /// resource "aws_shield_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auto_renew = "ENABLED"
 /// }
 /// ```
@@ -135,7 +138,7 @@ class Subscription extends pulumi.CustomResource {
           'aws:shield/subscription:Subscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     autoRenew = registerOutput<String>('autoRenew');
     skipDestroy = registerOutput<bool?>('skipDestroy');

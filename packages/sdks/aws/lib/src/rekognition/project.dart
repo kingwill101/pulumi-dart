@@ -69,7 +69,7 @@ import 'project_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -78,6 +78,9 @@ import 'project_timeouts.dart';
 /// }
 ///
 /// resource "aws_rekognition_project" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example-project"
 ///   auto_update = "ENABLED"
 ///   feature     = "CONTENT_MODERATION"
@@ -182,7 +185,7 @@ import 'project_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -191,6 +194,9 @@ import 'project_timeouts.dart';
 /// }
 ///
 /// resource "aws_rekognition_project" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "example-project"
 ///   feature = "CUSTOM_LABELS"
 /// }
@@ -284,7 +290,7 @@ class Project extends pulumi.CustomResource {
           'aws:rekognition/project:Project',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoUpdate = registerOutput<String>('autoUpdate');

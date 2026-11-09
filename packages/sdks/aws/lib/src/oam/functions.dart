@@ -65,7 +65,7 @@ import 'get_sinks_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,7 @@ import 'get_sinks_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_oam_getlink" "example" {
+/// data "aws_oam_link" "example" {
 ///   link_identifier = "arn:aws:oam:us-west-1:111111111111:link/abcd1234-a123-456a-a12b-a123b456c789"
 /// }
 /// ```
@@ -189,7 +189,7 @@ pulumi.Output<GetLinkResult> getLinkOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -197,7 +197,7 @@ pulumi.Output<GetLinkResult> getLinkOutput(
 ///   }
 /// }
 ///
-/// data "aws_oam_getlinks" "example" {
+/// data "aws_oam_links" "example" {
 /// }
 /// ```
 /// ```java
@@ -317,7 +317,7 @@ pulumi.Output<GetLinksResult> getLinksOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -325,7 +325,7 @@ pulumi.Output<GetLinksResult> getLinksOutput(
 ///   }
 /// }
 ///
-/// data "aws_oam_getsink" "example" {
+/// data "aws_oam_sink" "example" {
 ///   sink_identifier = "arn:aws:oam:us-west-1:111111111111:sink/abcd1234-a123-456a-a12b-a123b456c789"
 /// }
 /// ```
@@ -441,7 +441,7 @@ pulumi.Output<GetSinkResult> getSinkOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -449,7 +449,7 @@ pulumi.Output<GetSinkResult> getSinkOutput(
 ///   }
 /// }
 ///
-/// data "aws_oam_getsinks" "example" {
+/// data "aws_oam_sinks" "example" {
 /// }
 /// ```
 /// ```java

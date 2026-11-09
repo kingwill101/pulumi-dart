@@ -89,7 +89,7 @@ import 'association_target.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -98,6 +98,9 @@ import 'association_target.dart';
 /// }
 ///
 /// resource "aws_ssm_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   targets {
 ///     key    = "InstanceIds"
 ///     values = [exampleAwsInstance.id]
@@ -130,9 +133,9 @@ import 'association_target.dart';
 ///         var example = new Association("example", AssociationArgs.builder()
 ///             .targets(AssociationTargetArgs.builder()
 ///                 .key("InstanceIds")
-///                 .values(exampleAwsInstance.id())
+///                 .values(exampleAwsInstance.get("id"))
 ///                 .build())
-///             .name(exampleAwsSsmDocument.name())
+///             .name(exampleAwsSsmDocument.get("name"))
 ///             .build());
 ///
 ///     }
@@ -234,7 +237,7 @@ import 'association_target.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -243,6 +246,9 @@ import 'association_target.dart';
 /// }
 ///
 /// resource "aws_ssm_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   targets {
 ///     key    = "InstanceIds"
 ///     values = ["*"]
@@ -379,7 +385,7 @@ import 'association_target.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -388,6 +394,9 @@ import 'association_target.dart';
 /// }
 ///
 /// resource "aws_ssm_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   targets {
 ///     key    = "tag:Environment"
 ///     values = ["Development"]
@@ -528,7 +537,7 @@ import 'association_target.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -537,6 +546,9 @@ import 'association_target.dart';
 /// }
 ///
 /// resource "aws_ssm_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   targets {
 ///     key    = "InstanceIds"
 ///     values = [exampleAwsInstance.id]
@@ -570,9 +582,9 @@ import 'association_target.dart';
 ///         var example = new Association("example", AssociationArgs.builder()
 ///             .targets(AssociationTargetArgs.builder()
 ///                 .key("InstanceIds")
-///                 .values(exampleAwsInstance.id())
+///                 .values(exampleAwsInstance.get("id"))
 ///                 .build())
-///             .name(exampleAwsSsmDocument.name())
+///             .name(exampleAwsSsmDocument.get("name"))
 ///             .scheduleExpression("cron(0 2 ? * SUN *)")
 ///             .build());
 ///
@@ -907,8 +919,8 @@ import 'association_target.dart';
 /// 				&ssm.AssociationTargetArgs{
 /// 					Key: pulumi.String("InstanceIds"),
 /// 					Values: pulumi.StringArray{
-/// 						webServer1.ID().ToIDOutput().ToStringOutput(),
-/// 						webServer2.ID().ToIDOutput().ToStringOutput(),
+/// 						webServer1.ID(),
+/// 						webServer2.ID(),
 /// 					},
 /// 				},
 /// 			},
@@ -937,7 +949,7 @@ import 'association_target.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -950,6 +962,9 @@ import 'association_target.dart';
 ///
 /// # Removed EC2 provisioning dependencies for brevity
 /// resource "aws_ssm_association" "system_update" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   targets {
 ///     key    = "InstanceIds"
 ///     values = [aws_ec2_instance.web_server_1.id, aws_ec2_instance.web_server_2.id]
@@ -973,21 +988,41 @@ import 'association_target.dart';
 /// }
 /// # First EC2 instance
 /// resource "aws_ec2_instance" "web_server_1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ami                    = amazonLinux.id
 ///   instance_type          = "t3.micro"
 ///   subnet_id              = public.id
 ///   vpc_security_group_ids = [ec2Sg.id]
 ///   iam_instance_profile   = ec2SsmProfile.name
-///   user_data              = "#!/bin/bash\nyum update -y\nyum install -y amazon-ssm-agent\nsystemctl enable amazon-ssm-agent\nsystemctl start amazon-ssm-agent\n"
+///   user_data              = <<-EOF
+/// #!/bin/bash
+/// yum update -y
+/// yum install -y amazon-ssm-agent
+/// systemctl enable amazon-ssm-agent
+/// systemctl start amazon-ssm-agent
+/// EOF
+///
 /// }
 /// # Second EC2 instance
 /// resource "aws_ec2_instance" "web_server_2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ami                    = amazonLinux.id
 ///   instance_type          = "t3.micro"
 ///   subnet_id              = public.id
 ///   vpc_security_group_ids = [ec2Sg.id]
 ///   iam_instance_profile   = ec2SsmProfile.name
-///   user_data              = "#!/bin/bash\nyum update -y\nyum install -y amazon-ssm-agent\nsystemctl enable amazon-ssm-agent\nsystemctl start amazon-ssm-agent\n"
+///   user_data              = <<-EOF
+/// #!/bin/bash
+/// yum update -y
+/// yum install -y amazon-ssm-agent
+/// systemctl enable amazon-ssm-agent
+/// systemctl start amazon-ssm-agent
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -1018,11 +1053,11 @@ import 'association_target.dart';
 ///     public static void stack(Context ctx) {
 ///         // First EC2 instance
 ///         var webServer1 = new Instance("webServer1", InstanceArgs.builder()
-///             .ami(amazonLinux.id())
+///             .ami(amazonLinux.get("id"))
 ///             .instanceType("t3.micro")
-///             .subnetId(public_.id())
-///             .vpcSecurityGroupIds(ec2Sg.id())
-///             .iamInstanceProfile(ec2SsmProfile.name())
+///             .subnetId(public_.get("id"))
+///             .vpcSecurityGroupIds(ec2Sg.get("id"))
+///             .iamInstanceProfile(ec2SsmProfile.get("name"))
 ///             .userData("""
 /// #!/bin/bash
 /// yum update -y
@@ -1034,11 +1069,11 @@ import 'association_target.dart';
 ///
 ///         // Second EC2 instance
 ///         var webServer2 = new Instance("webServer2", InstanceArgs.builder()
-///             .ami(amazonLinux.id())
+///             .ami(amazonLinux.get("id"))
 ///             .instanceType("t3.micro")
-///             .subnetId(public_.id())
-///             .vpcSecurityGroupIds(ec2Sg.id())
-///             .iamInstanceProfile(ec2SsmProfile.name())
+///             .subnetId(public_.get("id"))
+///             .vpcSecurityGroupIds(ec2Sg.get("id"))
+///             .iamInstanceProfile(ec2SsmProfile.get("name"))
 ///             .userData("""
 /// #!/bin/bash
 /// yum update -y
@@ -1535,7 +1570,7 @@ import 'association_target.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1548,6 +1583,9 @@ import 'association_target.dart';
 ///
 /// # SSM Association for Webbased Servers
 /// resource "aws_ssm_association" "database_association" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   targets {
 ///     key    = "tag:Role"
 ///     values = ["WebServer", "Database"]
@@ -1560,12 +1598,16 @@ import 'association_target.dart';
 /// }
 /// # EC2 Instance 1 - Web Server with "ServerType" tag
 /// resource "aws_ec2_instance" "web_server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ami                    = amazonLinux.id
 ///   instance_type          = "t3.micro"
 ///   subnet_id              = default.id
 ///   vpc_security_group_ids = [ec2Sg.id]
 ///   iam_instance_profile   = ec2SsmProfile.name
-///   user_data              = base64encode("#!/bin/bash
+///   user_data              = base64encode(<<-EOF
+/// #!/bin/bash
 /// yum update -y
 /// yum install -y amazon-ssm-agent
 /// systemctl enable amazon-ssm-agent
@@ -1576,7 +1618,8 @@ import 'association_target.dart';
 /// systemctl enable httpd
 /// systemctl start httpd
 /// echo \"<h1>Web Server - ${prefix}</h1>\" > /var/www/html/index.html
-/// ")
+/// EOF
+/// )
 ///   tags = {
 ///     "Name"        ="${prefix}-web-server"
 ///     "ServerType"  = "WebServer"
@@ -1587,12 +1630,27 @@ import 'association_target.dart';
 /// }
 /// # EC2 Instance 2 - Database Server with "Role" tag
 /// resource "aws_ec2_instance" "database_server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ami                    = amazonLinux.id
 ///   instance_type          = "t3.micro"
 ///   subnet_id              = default.id
 ///   vpc_security_group_ids = [ec2Sg.id]
 ///   iam_instance_profile   = ec2SsmProfile.name
-///   user_data              = base64encode("#!/bin/bash\nyum update -y\nyum install -y amazon-ssm-agent\nsystemctl enable amazon-ssm-agent\nsystemctl start amazon-ssm-agent\n    \n# Install MySQL\nyum install -y mysql-server\nsystemctl enable mysqld\nsystemctl start mysqld\n")
+///   user_data              = base64encode(<<-EOF
+/// #!/bin/bash
+/// yum update -y
+/// yum install -y amazon-ssm-agent
+/// systemctl enable amazon-ssm-agent
+/// systemctl start amazon-ssm-agent
+///
+/// # Install MySQL
+/// yum install -y mysql-server
+/// systemctl enable mysqld
+/// systemctl start mysqld
+/// EOF
+/// )
 ///   tags = {
 ///     "Name"        ="${prefix}-database-server"
 ///     "Role"        = "Database"
@@ -1635,18 +1693,18 @@ import 'association_target.dart';
 ///                     "WebServer",
 ///                     "Database")
 ///                 .build())
-///             .name(systemUpdate.name())
+///             .name(systemUpdate.get("name"))
 ///             .parameters(Map.of("restartServices", "true"))
 ///             .scheduleExpression("cron(0 3 ? * SUN *)")
 ///             .build());
 ///
 ///         // EC2 Instance 1 - Web Server with "ServerType" tag
 ///         var webServer = new Instance("webServer", InstanceArgs.builder()
-///             .ami(amazonLinux.id())
+///             .ami(amazonLinux.get("id"))
 ///             .instanceType("t3.micro")
-///             .subnetId(default_.id())
-///             .vpcSecurityGroupIds(ec2Sg.id())
-///             .iamInstanceProfile(ec2SsmProfile.name())
+///             .subnetId(default_.get("id"))
+///             .vpcSecurityGroupIds(ec2Sg.get("id"))
+///             .iamInstanceProfile(ec2SsmProfile.get("name"))
 ///             .userData(StdFunctions.base64encode(Base64encodeArgs.builder()
 ///                 .input("""
 /// #!/bin/bash
@@ -1673,11 +1731,11 @@ import 'association_target.dart';
 ///
 ///         // EC2 Instance 2 - Database Server with "Role" tag
 ///         var databaseServer = new Instance("databaseServer", InstanceArgs.builder()
-///             .ami(amazonLinux.id())
+///             .ami(amazonLinux.get("id"))
 ///             .instanceType("t3.micro")
-///             .subnetId(default_.id())
-///             .vpcSecurityGroupIds(ec2Sg.id())
-///             .iamInstanceProfile(ec2SsmProfile.name())
+///             .subnetId(default_.get("id"))
+///             .vpcSecurityGroupIds(ec2Sg.get("id"))
+///             .iamInstanceProfile(ec2SsmProfile.get("name"))
 ///             .userData(StdFunctions.base64encode(Base64encodeArgs.builder()
 ///                 .input("""
 /// #!/bin/bash
@@ -1842,7 +1900,7 @@ class Association extends pulumi.CustomResource {
           'aws:ssm/association:Association',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     applyOnlyAtCronInterval = registerOutput<bool?>('applyOnlyAtCronInterval');
     arn = registerOutput<String>('arn');

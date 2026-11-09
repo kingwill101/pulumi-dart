@@ -188,7 +188,7 @@ import 'certificate_validity.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -200,17 +200,23 @@ import 'certificate_validity.dart';
 /// }
 ///
 /// resource "aws_acmpca_certificate" "example" {
-///   validity = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   validity {
 ///     type  = "YEARS"
 ///     value = 1
 ///   }
-///   certificate_authority_arn   = aws_acmpca_certificateauthority.example.arn
-///   certificate_signing_request = tls_certrequest.csr.cert_request_pem
+///   certificate_authority_arn   = aws_acmpca_certificate_authority.example.arn
+///   certificate_signing_request = tls_cert_request.csr.cert_request_pem
 ///   signing_algorithm           = "SHA256WITHRSA"
 /// }
-/// resource "aws_acmpca_certificateauthority" "example" {
-///   certificate_authority_configuration = {
-///     subject = {
+/// resource "aws_acmpca_certificate_authority" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   certificate_authority_configuration {
+///     subject {
 ///       common_name = "example.com"
 ///     }
 ///     key_algorithm     = "RSA_4096"
@@ -218,14 +224,20 @@ import 'certificate_validity.dart';
 ///   }
 ///   permanent_deletion_time_in_days = 7
 /// }
-/// resource "tls_privatekey" "key" {
+/// resource "tls_private_key" "key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   algorithm = "RSA"
 /// }
-/// resource "tls_certrequest" "csr" {
-///   subject = [{
-///     "commonName" = "example"
-///   }]
-///   private_key_pem = tls_privatekey.key.private_key_pem
+/// resource "tls_cert_request" "csr" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   subject {
+///     common_name = "example"
+///   }
+///   private_key_pem = tls_private_key.key.private_key_pem
 /// }
 /// ```
 /// ```java
@@ -376,7 +388,7 @@ class Certificate extends pulumi.CustomResource {
           'aws:acmpca/certificate:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     apiPassthrough = registerOutput<String?>('apiPassthrough');
     arn = registerOutput<String>('arn');

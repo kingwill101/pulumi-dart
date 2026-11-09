@@ -399,7 +399,7 @@ import 'delegation_signer_record_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -407,10 +407,13 @@ import 'delegation_signer_record_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   customer_master_key_spec = "ECC_NIST_P256"
 ///   deletion_window_in_days  = 7
 ///   key_usage                = "SIGN_VERIFY"
@@ -425,7 +428,7 @@ import 'delegation_signer_record_timeouts.dart';
 ///       "Resource" = "*"
 ///       "Condition" = {
 ///         "StringEquals" = {
-///           "aws:SourceAccount" = data.aws_getcalleridentity.current.account_id
+///           "aws:SourceAccount" = data.aws_caller_identity.current.account_id
 ///         }
 ///         "ArnLike" = {
 ///           "aws:SourceArn" = "arn:aws:route53:::hostedzone/*"
@@ -448,7 +451,7 @@ import 'delegation_signer_record_timeouts.dart';
 ///       "Action" = "kms:*"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///         "AWS" ="arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
 ///       }
 ///       "Resource" = "*"
 ///       "Sid"      = "Enable IAM User Permissions"
@@ -457,22 +460,34 @@ import 'delegation_signer_record_timeouts.dart';
 ///   })
 /// }
 /// resource "aws_route53_zone" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example.com"
 /// }
-/// resource "aws_route53_keysigningkey" "example" {
+/// resource "aws_route53_key_signing_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hosted_zone_id             = test.id
 ///   key_management_service_arn = testAwsKmsKey.arn
 ///   name                       = "example"
 /// }
-/// resource "aws_route53_hostedzonednssec" "example" {
-///   depends_on     = [aws_route53_keysigningkey.example]
-///   hosted_zone_id = aws_route53_keysigningkey.example.hosted_zone_id
+/// resource "aws_route53_hosted_zone_dns_sec" "example" {
+///   depends_on = [aws_route53_key_signing_key.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   hosted_zone_id = aws_route53_key_signing_key.example.hosted_zone_id
 /// }
-/// resource "aws_route53domains_delegationsignerrecord" "example" {
-///   signing_attributes = {
-///     algorithm  = aws_route53_keysigningkey.example.signing_algorithm_type
-///     flags      = aws_route53_keysigningkey.example.flag
-///     public_key = aws_route53_keysigningkey.example.public_key
+/// resource "aws_route53domains_delegation_signer_record" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   signing_attributes {
+///     algorithm  = aws_route53_key_signing_key.example.signing_algorithm_type
+///     flags      = aws_route53_key_signing_key.example.flag
+///     public_key = aws_route53_key_signing_key.example.public_key
 ///   }
 ///   domain_name = "example.com"
 /// }
@@ -575,8 +590,8 @@ import 'delegation_signer_record_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleKeySigningKey = new KeySigningKey("exampleKeySigningKey", KeySigningKeyArgs.builder()
-///             .hostedZoneId(test.id())
-///             .keyManagementServiceArn(testAwsKmsKey.arn())
+///             .hostedZoneId(test.get("id"))
+///             .keyManagementServiceArn(testAwsKmsKey.get("arn"))
 ///             .name("example")
 ///             .build());
 ///
@@ -678,10 +693,10 @@ import 'delegation_signer_record_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import delegation signer records using the domain name and DNSSEC key ID, separated by a comma (`,`). For example:
+/// Using `pulumi import`, import delegation signer records using the domain name, flags, algorithm, and public key separated by a comma (`,`). For example:
 ///
 /// ```sh
-/// $ pulumi import aws:route53domains/delegationSignerRecord:DelegationSignerRecord example example.com,40DE3534F5324DBDAC598ACEDB5B1E26A5368732D9C791D1347E4FBDDF6FC343
+/// $ pulumi import aws:route53domains/delegationSignerRecord:DelegationSignerRecord example example.com,257,13,M1jizbcdK5IBt7d4lRIiFTx+N06BJzaeScK215EOfa8efd2akkUWmxD5OhodZCIiRMvL5ZnStUP5UReIeUmBeA==
 /// ```
 class DelegationSignerRecord extends pulumi.CustomResource {
   /// An ID assigned to the created DS record.
@@ -689,7 +704,7 @@ class DelegationSignerRecord extends pulumi.CustomResource {
   /// The name of the domain that will have its parent DNS zone updated with the Delegation Signer record.
   late final pulumi.Output<String> domainName;
   /// The information about a key, including the algorithm, public key-value, and flags.
-  late final pulumi.Output<DelegationSignerRecordSigningAttributes?> signingAttributes;
+  late final pulumi.Output<DelegationSignerRecordSigningAttributes> signingAttributes;
   late final pulumi.Output<DelegationSignerRecordTimeouts?> timeouts;
 
   /// Creates a new [DelegationSignerRecord].
@@ -704,11 +719,11 @@ class DelegationSignerRecord extends pulumi.CustomResource {
           'aws:route53domains/delegationSignerRecord:DelegationSignerRecord',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     dnssecKeyId = registerOutput<String>('dnssecKeyId');
     domainName = registerOutput<String>('domainName');
-    signingAttributes = registerOutput<DelegationSignerRecordSigningAttributes?>('signingAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DelegationSignerRecordSigningAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    signingAttributes = registerOutput<DelegationSignerRecordSigningAttributes>('signingAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DelegationSignerRecordSigningAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeouts = registerOutput<DelegationSignerRecordTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DelegationSignerRecordTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -738,7 +753,7 @@ class DelegationSignerRecord extends pulumi.CustomResource {
         ) {
     dnssecKeyId = registerOutput<String>('dnssecKeyId');
     domainName = registerOutput<String>('domainName');
-    signingAttributes = registerOutput<DelegationSignerRecordSigningAttributes?>('signingAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DelegationSignerRecordSigningAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    signingAttributes = registerOutput<DelegationSignerRecordSigningAttributes>('signingAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DelegationSignerRecordSigningAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeouts = registerOutput<DelegationSignerRecordTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DelegationSignerRecordTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -753,7 +768,7 @@ class DelegationSignerRecord extends pulumi.CustomResource {
       ) {
     dnssecKeyId = registerOutput<String>('dnssecKeyId');
     domainName = registerOutput<String>('domainName');
-    signingAttributes = registerOutput<DelegationSignerRecordSigningAttributes?>('signingAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DelegationSignerRecordSigningAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    signingAttributes = registerOutput<DelegationSignerRecordSigningAttributes>('signingAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DelegationSignerRecordSigningAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeouts = registerOutput<DelegationSignerRecordTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DelegationSignerRecordTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

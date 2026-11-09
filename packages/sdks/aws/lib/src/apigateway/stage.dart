@@ -118,7 +118,7 @@ import 'stage_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -126,14 +126,23 @@ import 'stage_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_restapi" "example" {
+/// resource "aws_apigateway_rest_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_apigateway_stage" "example" {
-///   depends_on = [aws_cloudwatch_loggroup.example]
+///   depends_on = [aws_cloudwatch_log_group.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   stage_name = var.stageName
 /// }
-/// resource "aws_cloudwatch_loggroup" "example" {
-///   name              ="API-Gateway-Execution-Logs_${aws_apigateway_restapi.example.id}/${var.stageName}"
+/// resource "aws_cloudwatch_log_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name              ="API-Gateway-Execution-Logs_${aws_apigateway_rest_api.example.id}/${var.stageName}"
 ///   retention_in_days = 7
 /// }
 /// variable "stageName" {
@@ -268,7 +277,7 @@ class Stage extends pulumi.CustomResource {
           'aws:apigateway/stage:Stage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accessLogSettings = registerOutput<StageAccessLogSettings?>('accessLogSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StageAccessLogSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');

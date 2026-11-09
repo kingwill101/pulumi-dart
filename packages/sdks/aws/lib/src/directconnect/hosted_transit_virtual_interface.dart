@@ -76,7 +76,7 @@ import 'hosted_transit_virtual_interface_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -84,7 +84,10 @@ import 'hosted_transit_virtual_interface_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_directconnect_hostedtransitvirtualinterface" "example" {
+/// resource "aws_directconnect_hosted_transit_virtual_interface" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_id  = exampleAwsDxConnection.id
 ///   name           = "tf-transit-vif-example"
 ///   vlan           = 4094
@@ -114,7 +117,7 @@ import 'hosted_transit_virtual_interface_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new HostedTransitVirtualInterface("example", HostedTransitVirtualInterfaceArgs.builder()
-///             .connectionId(exampleAwsDxConnection.id())
+///             .connectionId(exampleAwsDxConnection.get("id"))
 ///             .name("tf-transit-vif-example")
 ///             .vlan(4094)
 ///             .addressFamily("ipv4")
@@ -197,7 +200,7 @@ class HostedTransitVirtualInterface extends pulumi.CustomResource {
           'aws:directconnect/hostedTransitVirtualInterface:HostedTransitVirtualInterface',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     addressFamily = registerOutput<String>('addressFamily');
     amazonAddress = registerOutput<String>('amazonAddress');

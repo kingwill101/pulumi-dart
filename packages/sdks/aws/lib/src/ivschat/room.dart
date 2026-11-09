@@ -58,7 +58,7 @@ import 'room_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,6 +67,9 @@ import 'room_state.dart';
 /// }
 ///
 /// resource "aws_ivschat_room" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "tf-room"
 /// }
 /// ```
@@ -154,7 +157,7 @@ class Room extends pulumi.CustomResource {
           'aws:ivschat/room:Room',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     loggingConfigurationIdentifiers = registerOutput<List<String>?>('loggingConfigurationIdentifiers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

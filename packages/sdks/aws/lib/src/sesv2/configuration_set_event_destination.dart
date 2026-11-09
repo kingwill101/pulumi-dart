@@ -135,7 +135,7 @@ import 'configuration_set_event_destination_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -143,22 +143,28 @@ import 'configuration_set_event_destination_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sesv2_configurationset" "example" {
+/// resource "aws_sesv2_configuration_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_set_name = "example"
 /// }
-/// resource "aws_sesv2_configurationseteventdestination" "example" {
-///   event_destination = {
-///     cloud_watch_destination = {
-///       dimension_configurations = [{
-///         "defaultDimensionValue" = "example"
-///         "dimensionName"         = "example"
-///         "dimensionValueSource"  = "MESSAGE_TAG"
-///       }]
+/// resource "aws_sesv2_configuration_set_event_destination" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   event_destination {
+///     cloud_watch_destination {
+///       dimension_configuration {
+///         default_dimension_value = "example"
+///         dimension_name          = "example"
+///         dimension_value_source  = "MESSAGE_TAG"
+///       }
 ///     }
 ///     enabled              = true
 ///     matching_event_types = ["SEND"]
 ///   }
-///   configuration_set_name = aws_sesv2_configurationset.example.configuration_set_name
+///   configuration_set_name = aws_sesv2_configuration_set.example.configuration_set_name
 ///   event_destination_name = "example"
 /// }
 /// ```
@@ -344,7 +350,7 @@ import 'configuration_set_event_destination_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -352,14 +358,17 @@ import 'configuration_set_event_destination_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_cloudwatch_geteventbus" "default" {
+/// data "aws_cloudwatch_event_bus" "default" {
 ///   name = "default"
 /// }
 ///
-/// resource "aws_sesv2_configurationseteventdestination" "example" {
-///   event_destination = {
-///     event_bridge_destination = {
-///       event_bus_arn = data.aws_cloudwatch_geteventbus.default.arn
+/// resource "aws_sesv2_configuration_set_event_destination" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   event_destination {
+///     event_bridge_destination {
+///       event_bus_arn = data.aws_cloudwatch_event_bus.default.arn
 ///     }
 ///     enabled              = true
 ///     matching_event_types = ["SEND"]
@@ -405,7 +414,7 @@ import 'configuration_set_event_destination_state.dart';
 ///                 .enabled(true)
 ///                 .matchingEventTypes("SEND")
 ///                 .build())
-///             .configurationSetName(exampleAwsSesv2ConfigurationSet.configurationSetName())
+///             .configurationSetName(exampleAwsSesv2ConfigurationSet.get("configurationSetName"))
 ///             .eventDestinationName("example")
 ///             .build());
 ///
@@ -544,7 +553,7 @@ import 'configuration_set_event_destination_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -552,19 +561,25 @@ import 'configuration_set_event_destination_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sesv2_configurationset" "example" {
+/// resource "aws_sesv2_configuration_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_set_name = "example"
 /// }
-/// resource "aws_sesv2_configurationseteventdestination" "example" {
-///   event_destination = {
-///     kinesis_firehose_destination = {
+/// resource "aws_sesv2_configuration_set_event_destination" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   event_destination {
+///     kinesis_firehose_destination {
 ///       delivery_stream_arn = exampleAwsKinesisFirehoseDeliveryStream.arn
 ///       iam_role_arn        = exampleAwsIamRole.arn
 ///     }
 ///     enabled              = true
 ///     matching_event_types = ["SEND"]
 ///   }
-///   configuration_set_name = aws_sesv2_configurationset.example.configuration_set_name
+///   configuration_set_name = aws_sesv2_configuration_set.example.configuration_set_name
 ///   event_destination_name = "example"
 /// }
 /// ```
@@ -600,8 +615,8 @@ import 'configuration_set_event_destination_state.dart';
 ///         var exampleConfigurationSetEventDestination = new ConfigurationSetEventDestination("exampleConfigurationSetEventDestination", ConfigurationSetEventDestinationArgs.builder()
 ///             .eventDestination(ConfigurationSetEventDestinationEventDestinationArgs.builder()
 ///                 .kinesisFirehoseDestination(ConfigurationSetEventDestinationEventDestinationKinesisFirehoseDestinationArgs.builder()
-///                     .deliveryStreamArn(exampleAwsKinesisFirehoseDeliveryStream.arn())
-///                     .iamRoleArn(exampleAwsIamRole.arn())
+///                     .deliveryStreamArn(exampleAwsKinesisFirehoseDeliveryStream.get("arn"))
+///                     .iamRoleArn(exampleAwsIamRole.get("arn"))
 ///                     .build())
 ///                 .enabled(true)
 ///                 .matchingEventTypes("SEND")
@@ -741,7 +756,7 @@ import 'configuration_set_event_destination_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -749,18 +764,24 @@ import 'configuration_set_event_destination_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sesv2_configurationset" "example" {
+/// resource "aws_sesv2_configuration_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_set_name = "example"
 /// }
-/// resource "aws_sesv2_configurationseteventdestination" "example" {
-///   event_destination = {
-///     pinpoint_destination = {
+/// resource "aws_sesv2_configuration_set_event_destination" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   event_destination {
+///     pinpoint_destination {
 ///       application_arn = exampleAwsPinpointApp.arn
 ///     }
 ///     enabled              = true
 ///     matching_event_types = ["SEND"]
 ///   }
-///   configuration_set_name = aws_sesv2_configurationset.example.configuration_set_name
+///   configuration_set_name = aws_sesv2_configuration_set.example.configuration_set_name
 ///   event_destination_name = "example"
 /// }
 /// ```
@@ -796,7 +817,7 @@ import 'configuration_set_event_destination_state.dart';
 ///         var exampleConfigurationSetEventDestination = new ConfigurationSetEventDestination("exampleConfigurationSetEventDestination", ConfigurationSetEventDestinationArgs.builder()
 ///             .eventDestination(ConfigurationSetEventDestinationEventDestinationArgs.builder()
 ///                 .pinpointDestination(ConfigurationSetEventDestinationEventDestinationPinpointDestinationArgs.builder()
-///                     .applicationArn(exampleAwsPinpointApp.arn())
+///                     .applicationArn(exampleAwsPinpointApp.get("arn"))
 ///                     .build())
 ///                 .enabled(true)
 ///                 .matchingEventTypes("SEND")
@@ -935,7 +956,7 @@ import 'configuration_set_event_destination_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -943,18 +964,24 @@ import 'configuration_set_event_destination_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sesv2_configurationset" "example" {
+/// resource "aws_sesv2_configuration_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_set_name = "example"
 /// }
-/// resource "aws_sesv2_configurationseteventdestination" "example" {
-///   event_destination = {
-///     sns_destination = {
+/// resource "aws_sesv2_configuration_set_event_destination" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   event_destination {
+///     sns_destination {
 ///       topic_arn = exampleAwsSnsTopic.arn
 ///     }
 ///     enabled              = true
 ///     matching_event_types = ["SEND"]
 ///   }
-///   configuration_set_name = aws_sesv2_configurationset.example.configuration_set_name
+///   configuration_set_name = aws_sesv2_configuration_set.example.configuration_set_name
 ///   event_destination_name = "example"
 /// }
 /// ```
@@ -990,7 +1017,7 @@ import 'configuration_set_event_destination_state.dart';
 ///         var exampleConfigurationSetEventDestination = new ConfigurationSetEventDestination("exampleConfigurationSetEventDestination", ConfigurationSetEventDestinationArgs.builder()
 ///             .eventDestination(ConfigurationSetEventDestinationEventDestinationArgs.builder()
 ///                 .snsDestination(ConfigurationSetEventDestinationEventDestinationSnsDestinationArgs.builder()
-///                     .topicArn(exampleAwsSnsTopic.arn())
+///                     .topicArn(exampleAwsSnsTopic.get("arn"))
 ///                     .build())
 ///                 .enabled(true)
 ///                 .matchingEventTypes("SEND")
@@ -1052,7 +1079,7 @@ class ConfigurationSetEventDestination extends pulumi.CustomResource {
           'aws:sesv2/configurationSetEventDestination:ConfigurationSetEventDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     configurationSetName = registerOutput<String>('configurationSetName');
     eventDestination = registerOutput<ConfigurationSetEventDestinationEventDestination>('eventDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetEventDestinationEventDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });

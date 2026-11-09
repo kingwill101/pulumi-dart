@@ -79,7 +79,7 @@ import 'topic_rule_destination_vpc_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -87,8 +87,11 @@ import 'topic_rule_destination_vpc_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iot_topicruledestination" "example" {
-///   vpc_configuration = {
+/// resource "aws_iot_topic_rule_destination" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   vpc_configuration {
 ///     role_arn        = exampleAwsIamRole.arn
 ///     security_groups = [exampleAwsSecurityGroup.id]
 ///     subnet_ids      = exampleAwsSubnet[*].id
@@ -120,10 +123,10 @@ import 'topic_rule_destination_vpc_configuration.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new TopicRuleDestination("example", TopicRuleDestinationArgs.builder()
 ///             .vpcConfiguration(TopicRuleDestinationVpcConfigurationArgs.builder()
-///                 .roleArn(exampleAwsIamRole.arn())
-///                 .securityGroups(exampleAwsSecurityGroup.id())
-///                 .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
-///                 .vpcId(exampleAwsVpc.id())
+///                 .roleArn(exampleAwsIamRole.get("arn"))
+///                 .securityGroups(exampleAwsSecurityGroup.get("id"))
+///                 .subnetIds(exampleAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
+///                 .vpcId(exampleAwsVpc.get("id"))
 ///                 .build())
 ///             .build());
 ///
@@ -161,7 +164,7 @@ class TopicRuleDestination extends pulumi.CustomResource {
           'aws:iot/topicRuleDestination:TopicRuleDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     enabled = registerOutput<bool?>('enabled');

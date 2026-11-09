@@ -64,7 +64,7 @@ import 'policy_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'policy_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_organizations_policyattachment" "account" {
+/// resource "aws_organizations_policy_attachment" "account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_id = example.id
 ///   target_id = "123456789012"
 /// }
@@ -99,7 +102,7 @@ import 'policy_attachment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var account = new PolicyAttachment("account", PolicyAttachmentArgs.builder()
-///             .policyId(example.id())
+///             .policyId(example.get("id"))
 ///             .targetId("123456789012")
 ///             .build());
 ///
@@ -174,7 +177,7 @@ import 'policy_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -182,7 +185,10 @@ import 'policy_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_organizations_policyattachment" "root" {
+/// resource "aws_organizations_policy_attachment" "root" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_id = example.id
 ///   target_id = exampleAwsOrganizationsOrganization.roots[0].id
 /// }
@@ -209,8 +215,8 @@ import 'policy_attachment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var root = new PolicyAttachment("root", PolicyAttachmentArgs.builder()
-///             .policyId(example.id())
-///             .targetId(exampleAwsOrganizationsOrganization.roots()[0].id())
+///             .policyId(example.get("id"))
+///             .targetId(exampleAwsOrganizationsOrganization.get("roots")[0].get("id"))
 ///             .build());
 ///
 ///     }
@@ -284,7 +290,7 @@ import 'policy_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -292,7 +298,10 @@ import 'policy_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_organizations_policyattachment" "unit" {
+/// resource "aws_organizations_policy_attachment" "unit" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_id = example.id
 ///   target_id = exampleAwsOrganizationsOrganizationalUnit.id
 /// }
@@ -319,8 +328,8 @@ import 'policy_attachment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var unit = new PolicyAttachment("unit", PolicyAttachmentArgs.builder()
-///             .policyId(example.id())
-///             .targetId(exampleAwsOrganizationsOrganizationalUnit.id())
+///             .policyId(example.get("id"))
+///             .targetId(exampleAwsOrganizationsOrganizationalUnit.get("id"))
 ///             .build());
 ///
 ///     }
@@ -377,7 +386,7 @@ class PolicyAttachment extends pulumi.CustomResource {
           'aws:organizations/policyAttachment:PolicyAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     policyId = registerOutput<String>('policyId');
     skipDestroy = registerOutput<bool?>('skipDestroy');

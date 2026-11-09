@@ -113,7 +113,7 @@ import 'policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -122,6 +122,9 @@ import 'policy_state.dart';
 /// }
 ///
 /// resource "aws_iot_policy" "pubsub" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "PubSubToAnyTopic"
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -223,7 +226,7 @@ class Policy extends pulumi.CustomResource {
           'aws:iot/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultVersionId = registerOutput<String>('defaultVersionId');

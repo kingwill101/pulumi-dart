@@ -106,8 +106,8 @@ import 'tag_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleVpnConnection, err := ec2.NewVpnConnection(ctx, "example", &ec2.VpnConnectionArgs{
-/// 			CustomerGatewayId: exampleCustomerGateway.ID().ToIDOutput().ToStringOutput(),
-/// 			TransitGatewayId:  example.ID().ToIDOutput().ToStringOutput(),
+/// 			CustomerGatewayId: exampleCustomerGateway.ID(),
+/// 			TransitGatewayId:  example.ID(),
 /// 			Type:              exampleCustomerGateway.Type,
 /// 		})
 /// 		if err != nil {
@@ -126,7 +126,7 @@ import 'tag_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -134,20 +134,32 @@ import 'tag_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2transitgateway_transitgateway" "example" {
+/// resource "aws_ec2transitgateway_transit_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_ec2_customergateway" "example" {
+/// resource "aws_ec2_customer_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bgp_asn    = 65000
 ///   ip_address = "172.0.0.1"
 ///   type       = "ipsec.1"
 /// }
-/// resource "aws_ec2_vpnconnection" "example" {
-///   customer_gateway_id = aws_ec2_customergateway.example.id
-///   transit_gateway_id  = aws_ec2transitgateway_transitgateway.example.id
-///   type                = aws_ec2_customergateway.example.type
+/// resource "aws_ec2_vpn_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   customer_gateway_id = aws_ec2_customer_gateway.example.id
+///   transit_gateway_id  = aws_ec2transitgateway_transit_gateway.example.id
+///   type                = aws_ec2_customer_gateway.example.type
 /// }
 /// resource "aws_ec2_tag" "example" {
-///   resource_id = aws_ec2_vpnconnection.example.transit_gateway_attachment_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_id = aws_ec2_vpn_connection.example.transit_gateway_attachment_id
 ///   key         = "Name"
 ///   value       = "Hello World"
 /// }
@@ -258,7 +270,7 @@ class Tag extends pulumi.CustomResource {
           'aws:ec2/tag:Tag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     key = registerOutput<String>('key');
     region = registerOutput<String>('region');

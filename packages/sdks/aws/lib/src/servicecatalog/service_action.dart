@@ -78,7 +78,7 @@ import 'service_action_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,8 +86,11 @@ import 'service_action_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_servicecatalog_serviceaction" "example" {
-///   definition = {
+/// resource "aws_servicecatalog_service_action" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   definition {
 ///     name = "AWS-RestartEC2Instance"
 ///   }
 ///   description = "Motor generator unit"
@@ -172,7 +175,7 @@ class ServiceAction extends pulumi.CustomResource {
           'aws:servicecatalog/serviceAction:ServiceAction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     definition = registerOutput<ServiceActionDefinition>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceActionDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

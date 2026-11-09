@@ -52,7 +52,7 @@ import 'account_registration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -60,7 +60,10 @@ import 'account_registration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_auditmanager_accountregistration" "example" {
+/// resource "aws_auditmanager_account_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -146,7 +149,7 @@ import 'account_registration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -154,7 +157,10 @@ import 'account_registration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_auditmanager_accountregistration" "example" {
+/// resource "aws_auditmanager_account_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deregister_on_destroy = true
 /// }
 /// ```
@@ -234,7 +240,7 @@ class AccountRegistration extends pulumi.CustomResource {
           'aws:auditmanager/accountRegistration:AccountRegistration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     delegatedAdminAccount = registerOutput<String?>('delegatedAdminAccount');
     deregisterOnDestroy = registerOutput<bool?>('deregisterOnDestroy');

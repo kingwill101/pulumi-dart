@@ -165,7 +165,7 @@ import 'license_association_state.dart';
 /// 		}
 /// 		_, err = grafana.NewLicenseAssociation(ctx, "example", &grafana.LicenseAssociationArgs{
 /// 			LicenseType: pulumi.String("ENTERPRISE_FREE_TRIAL"),
-/// 			WorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
+/// 			WorkspaceId: exampleWorkspace.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -175,7 +175,7 @@ import 'license_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -183,17 +183,26 @@ import 'license_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_grafana_licenseassociation" "example" {
+/// resource "aws_grafana_license_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   license_type = "ENTERPRISE_FREE_TRIAL"
 ///   workspace_id = aws_grafana_workspace.example.id
 /// }
 /// resource "aws_grafana_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_access_type      = "CURRENT_ACCOUNT"
 ///   authentication_providers = ["SAML"]
 ///   permission_type          = "SERVICE_MANAGED"
 ///   role_arn                 = aws_iam_role.assume.arn
 /// }
 /// resource "aws_iam_role" "assume" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "grafana-assume"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -330,7 +339,7 @@ class LicenseAssociation extends pulumi.CustomResource {
           'aws:grafana/licenseAssociation:LicenseAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     freeTrialExpiration = registerOutput<String>('freeTrialExpiration');
     grafanaToken = registerOutput<String?>('grafanaToken');

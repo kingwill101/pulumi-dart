@@ -112,8 +112,8 @@ import 'appregistry_attribute_group_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = servicecatalog.NewAppregistryAttributeGroupAssociation(ctx, "example", &servicecatalog.AppregistryAttributeGroupAssociationArgs{
-/// 			ApplicationId:    example.ID().ToIDOutput().ToStringOutput(),
-/// 			AttributeGroupId: exampleAppregistryAttributeGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			ApplicationId:    example.ID(),
+/// 			AttributeGroupId: exampleAppregistryAttributeGroup.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -123,7 +123,7 @@ import 'appregistry_attribute_group_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -131,10 +131,16 @@ import 'appregistry_attribute_group_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_servicecatalog_appregistryapplication" "example" {
+/// resource "aws_servicecatalog_appregistry_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-app"
 /// }
-/// resource "aws_servicecatalog_appregistryattributegroup" "example" {
+/// resource "aws_servicecatalog_appregistry_attribute_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   description = "example description"
 ///   attributes = jsonencode({
@@ -142,9 +148,12 @@ import 'appregistry_attribute_group_association_state.dart';
 ///     "group" = "examplegroup"
 ///   })
 /// }
-/// resource "aws_servicecatalog_appregistryattributegroupassociation" "example" {
-///   application_id     = aws_servicecatalog_appregistryapplication.example.id
-///   attribute_group_id = aws_servicecatalog_appregistryattributegroup.example.id
+/// resource "aws_servicecatalog_appregistry_attribute_group_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   application_id     = aws_servicecatalog_appregistry_application.example.id
+///   attribute_group_id = aws_servicecatalog_appregistry_attribute_group.example.id
 /// }
 /// ```
 /// ```java
@@ -247,7 +256,7 @@ class AppregistryAttributeGroupAssociation extends pulumi.CustomResource {
           'aws:servicecatalog/appregistryAttributeGroupAssociation:AppregistryAttributeGroupAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     attributeGroupId = registerOutput<String>('attributeGroupId');

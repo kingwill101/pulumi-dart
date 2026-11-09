@@ -59,7 +59,7 @@ import 'appregistry_application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,10 @@ import 'appregistry_application_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_servicecatalog_appregistryapplication" "example" {
+/// resource "aws_servicecatalog_appregistry_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-app"
 /// }
 /// ```
@@ -180,7 +183,7 @@ import 'appregistry_application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -188,12 +191,18 @@ import 'appregistry_application_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_servicecatalog_appregistryapplication" "example" {
+/// resource "aws_servicecatalog_appregistry_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-app"
 /// }
 /// resource "aws_s3_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example-bucket"
-///   tags   = aws_servicecatalog_appregistryapplication.example.application_tag
+///   tags   = aws_servicecatalog_appregistry_application.example.application_tag
 /// }
 /// ```
 /// ```java
@@ -282,7 +291,7 @@ class AppregistryApplication extends pulumi.CustomResource {
           'aws:servicecatalog/appregistryApplication:AppregistryApplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     applicationTag = registerOutput<Map<String, String>>('applicationTag', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     arn = registerOutput<String>('arn');

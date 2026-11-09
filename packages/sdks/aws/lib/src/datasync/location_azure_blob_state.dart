@@ -13,7 +13,7 @@ class LocationAzureBlobState {
   final pulumi.Input<String?>? arn;
   /// The authentication method DataSync uses to access your Azure Blob Storage. Valid values: `SAS`.
   final pulumi.Input<String?>? authenticationType;
-  /// The type of blob that you want your objects or files to be when transferring them into Azure Blob Storage. Valid values: `BLOB`. Default: `BLOB`.
+  /// The type of blob that you want your objects or files to be when transferring them into Azure Blob Storage. Valid values: `BLOCK`. Default: `BLOCK`.
   final pulumi.Input<String?>? blobType;
   /// The URL of the Azure Blob Storage container involved in your transfer.
   final pulumi.Input<String?>? containerUrl;
@@ -34,7 +34,7 @@ class LocationAzureBlobState {
   /// [agentArns] A list of DataSync Agent ARNs with which this location will be associated.
   /// [arn] ARN of the DataSync Location.
   /// [authenticationType] The authentication method DataSync uses to access your Azure Blob Storage. Valid values: `SAS`.
-  /// [blobType] The type of blob that you want your objects or files to be when transferring them into Azure Blob Storage. Valid values: `BLOB`. Default: `BLOB`.
+  /// [blobType] The type of blob that you want your objects or files to be when transferring them into Azure Blob Storage. Valid values: `BLOCK`. Default: `BLOCK`.
   /// [containerUrl] The URL of the Azure Blob Storage container involved in your transfer.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sasConfiguration] The SAS configuration that allows DataSync to access your Azure Blob Storage. See configuration below.

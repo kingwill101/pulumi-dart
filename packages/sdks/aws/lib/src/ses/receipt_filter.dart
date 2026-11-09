@@ -66,7 +66,7 @@ import 'receipt_filter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'receipt_filter_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ses_receiptfilter" "filter" {
+/// resource "aws_ses_receipt_filter" "filter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "block-spammer"
 ///   cidr   = "10.10.10.10"
 ///   policy = "Block"
@@ -152,7 +155,7 @@ class ReceiptFilter extends pulumi.CustomResource {
           'aws:ses/receiptFilter:ReceiptFilter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cidr = registerOutput<String>('cidr');

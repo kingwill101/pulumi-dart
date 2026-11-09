@@ -67,7 +67,7 @@ import 'account_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,8 +75,11 @@ import 'account_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kinesis_accountsettings" "example" {
-///   minimum_throughput_billing_commitment = {
+/// resource "aws_kinesis_account_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   minimum_throughput_billing_commitment {
 ///     status = "ENABLED"
 ///   }
 /// }
@@ -155,7 +158,7 @@ class AccountSettings extends pulumi.CustomResource {
           'aws:kinesis/accountSettings:AccountSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     minimumThroughputBillingCommitment = registerOutput<AccountSettingsMinimumThroughputBillingCommitment?>('minimumThroughputBillingCommitment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountSettingsMinimumThroughputBillingCommitment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');

@@ -108,7 +108,7 @@ import 'configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -117,11 +117,24 @@ import 'configuration_state.dart';
 /// }
 ///
 /// resource "aws_mq_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description    = "Example Configuration"
 ///   name           = "example"
 ///   engine_type    = "ActiveMQ"
 ///   engine_version = "5.19"
-///   data           = "<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\" standalone=\\\"yes\\\"?>\n<broker xmlns=\\\"http://activemq.apache.org/schema/core\\\">\n  <plugins>\n    <forcePersistencyModeBrokerPlugin persistenceFlag=\\\"true\\\"/>\n    <statisticsBrokerPlugin/>\n    <timeStampingBrokerPlugin ttlCeiling=\\\"86400000\\\" zeroExpirationOverride=\\\"86400000\\\"/>\n  </plugins>\n</broker>\n"
+///   data           = <<DATA
+/// <?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>
+/// <broker xmlns=\"http://activemq.apache.org/schema/core\">
+///   <plugins>
+///     <forcePersistencyModeBrokerPlugin persistenceFlag=\"true\"/>
+///     <statisticsBrokerPlugin/>
+///     <timeStampingBrokerPlugin ttlCeiling=\"86400000\" zeroExpirationOverride=\"86400000\"/>
+///   </plugins>
+/// </broker>
+/// DATA
+///
 /// }
 /// ```
 /// ```java
@@ -262,7 +275,7 @@ import 'configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -271,11 +284,18 @@ import 'configuration_state.dart';
 /// }
 ///
 /// resource "aws_mq_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description    = "Example Configuration"
 ///   name           = "example"
 ///   engine_type    = "RabbitMQ"
 ///   engine_version = "4.2"
-///   data           = "# Default RabbitMQ delivery acknowledgement timeout is 30 minutes in milliseconds\nconsumer_timeout = 1800000\n"
+///   data           = <<DATA
+/// # Default RabbitMQ delivery acknowledgement timeout is 30 minutes in milliseconds
+/// consumer_timeout = 1800000
+/// DATA
+///
 /// }
 /// ```
 /// ```java
@@ -375,7 +395,7 @@ class Configuration extends pulumi.CustomResource {
           'aws:mq/configuration:Configuration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     authenticationStrategy = registerOutput<String>('authenticationStrategy');

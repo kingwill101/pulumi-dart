@@ -68,7 +68,7 @@ import 'network_insights_path_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,7 +76,10 @@ import 'network_insights_path_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_networkinsightspath" "test" {
+/// resource "aws_ec2_network_insights_path" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source      = source.id
 ///   destination = destination.id
 ///   protocol    = "tcp"
@@ -104,8 +107,8 @@ import 'network_insights_path_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new NetworkInsightsPath("test", NetworkInsightsPathArgs.builder()
-///             .source(source.id())
-///             .destination(destination.id())
+///             .source(source.get("id"))
+///             .destination(destination.get("id"))
 ///             .protocol("tcp")
 ///             .build());
 ///
@@ -174,7 +177,7 @@ class NetworkInsightsPath extends pulumi.CustomResource {
           'aws:ec2/networkInsightsPath:NetworkInsightsPath',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     destination = registerOutput<String?>('destination');

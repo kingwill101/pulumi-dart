@@ -157,10 +157,10 @@ import 'cluster_state.dart';
 /// 			key0 := index
 /// 			val0 := index
 /// 			__res, err := ec2.NewSubnet(ctx, fmt.Sprintf("cloudhsm_v2_subnets-%v", key0), &ec2.SubnetArgs{
-/// 				VpcId:               cloudhsmV2Vpc.ID().ToIDOutput().ToStringOutput(),
-/// 				CidrBlock:           subnets[val0],
+/// 				VpcId:               cloudhsmV2Vpc.ID(),
+/// 				CidrBlock:           subnets[val0].(pulumi.String),
 /// 				MapPublicIpOnLaunch: pulumi.Bool(false),
-/// 				AvailabilityZone:    available.Names[val0],
+/// 				AvailabilityZone:    available.Names[val0].(pulumi.String),
 /// 				Tags: pulumi.StringMap{
 /// 					"Name": pulumi.String("example-aws_cloudhsm_v2_cluster"),
 /// 				},
@@ -196,7 +196,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -204,26 +204,38 @@ import 'cluster_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzones" "available" {
+/// data "aws_availability_zones" "available" {
 /// }
 ///
 /// resource "aws_ec2_vpc" "cloudhsm_v2_vpc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 ///   tags = {
 ///     "Name" = "example-aws_cloudhsm_v2_cluster"
 ///   }
 /// }
 /// resource "aws_ec2_subnet" "cloudhsm_v2_subnets" {
-///   count                   = 2
+///   count = 2
+///   pulumi {
+///     name ="cloudhsm_v2_subnets-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id                  = aws_ec2_vpc.cloudhsm_v2_vpc.id
 ///   cidr_block              = element(subnets, count.index)
 ///   map_public_ip_on_launch = false
-///   availability_zone       = element(data.aws_getavailabilityzones.available.names, count.index)
+///   availability_zone       = element(data.aws_availability_zones.available.names, count.index)
 ///   tags = {
 ///     "Name" = "example-aws_cloudhsm_v2_cluster"
 ///   }
 /// }
 /// resource "aws_cloudhsmv2_cluster" "cloudhsm_v2_cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hsm_type   = "hsm1.medium"
 ///   subnet_ids = aws_ec2_subnet.cloudhsm_v2_subnets[*].id
 ///   tags = {
@@ -334,7 +346,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:cloudhsmv2/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     clusterCertificates = registerOutput<List<ClusterClusterCertificate>>('clusterCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterClusterCertificate>(guardedValue, (value) => ClusterClusterCertificate.fromMap((value as Map).cast<String, dynamic>())); });
     clusterId = registerOutput<String>('clusterId');

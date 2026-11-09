@@ -62,7 +62,7 @@ import 'role_custom_permission_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'role_custom_permission_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_quicksight_rolecustompermission" "example" {
+/// resource "aws_quicksight_role_custom_permission" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role                    = "READER"
 ///   custom_permissions_name = exampleAwsQuicksightCustomPermissions.customPermissionsName
 /// }
@@ -98,7 +101,7 @@ import 'role_custom_permission_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new RoleCustomPermission("example", RoleCustomPermissionArgs.builder()
 ///             .role("READER")
-///             .customPermissionsName(exampleAwsQuicksightCustomPermissions.customPermissionsName())
+///             .customPermissionsName(exampleAwsQuicksightCustomPermissions.get("customPermissionsName"))
 ///             .build());
 ///
 ///     }
@@ -147,7 +150,7 @@ class RoleCustomPermission extends pulumi.CustomResource {
           'aws:quicksight/roleCustomPermission:RoleCustomPermission',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     customPermissionsName = registerOutput<String>('customPermissionsName');

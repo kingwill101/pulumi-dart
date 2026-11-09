@@ -99,8 +99,8 @@ import 'bucket_resource_access_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lightsail.NewBucketResourceAccess(ctx, "example", &lightsail.BucketResourceAccessArgs{
-/// 			BucketName:   example.ID().ToIDOutput().ToStringOutput(),
-/// 			ResourceName: exampleInstance.ID().ToIDOutput().ToStringOutput(),
+/// 			BucketName:   example.ID(),
+/// 			ResourceName: exampleInstance.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -110,7 +110,7 @@ import 'bucket_resource_access_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -119,16 +119,25 @@ import 'bucket_resource_access_state.dart';
 /// }
 ///
 /// resource "aws_lightsail_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "example-bucket"
 ///   bundle_id = "small_1_0"
 /// }
 /// resource "aws_lightsail_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-instance"
 ///   availability_zone = "us-east-1b"
 ///   blueprint_id      = "amazon_linux_2"
 ///   bundle_id         = "nano_3_0"
 /// }
-/// resource "aws_lightsail_bucketresourceaccess" "example" {
+/// resource "aws_lightsail_bucket_resource_access" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket_name   = aws_lightsail_bucket.example.id
 ///   resource_name = aws_lightsail_instance.example.id
 /// }
@@ -229,7 +238,7 @@ class BucketResourceAccess extends pulumi.CustomResource {
           'aws:lightsail/bucketResourceAccess:BucketResourceAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     bucketName = registerOutput<String>('bucketName');
     region = registerOutput<String>('region');

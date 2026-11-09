@@ -87,7 +87,7 @@ import 'parameter_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -95,8 +95,11 @@ import 'parameter_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_memorydb_parametergroup" "example" {
-///   parameters {
+/// resource "aws_memorydb_parameter_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parameter {
 ///     name  = "activedefrag"
 ///     value = "yes"
 ///   }
@@ -192,7 +195,7 @@ class ParameterGroup extends pulumi.CustomResource {
           'aws:memorydb/parameterGroup:ParameterGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

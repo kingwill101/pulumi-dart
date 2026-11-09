@@ -118,7 +118,7 @@ import 'resource_configuration_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -126,9 +126,12 @@ import 'resource_configuration_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpclattice_resourceconfiguration" "example" {
-///   resource_configuration_definition = {
-///     dns_resource = {
+/// resource "aws_vpclattice_resource_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_configuration_definition {
+///     dns_resource {
 ///       domain_name     = "example.com"
 ///       ip_address_type = "IPV4"
 ///     }
@@ -173,7 +176,7 @@ import 'resource_configuration_timeouts.dart';
 ///                     .build())
 ///                 .build())
 ///             .name("Example")
-///             .resourceGatewayIdentifier(exampleAwsVpclatticeResourceGateway.id())
+///             .resourceGatewayIdentifier(exampleAwsVpclatticeResourceGateway.get("id"))
 ///             .portRanges("80")
 ///             .protocol("TCP")
 ///             .tags(Map.of("Environment", "Example"))
@@ -307,7 +310,7 @@ import 'resource_configuration_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -315,9 +318,12 @@ import 'resource_configuration_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpclattice_resourceconfiguration" "example" {
-///   resource_configuration_definition = {
-///     ip_resource = {
+/// resource "aws_vpclattice_resource_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_configuration_definition {
+///     ip_resource {
 ///       ip_address = "10.0.0.1"
 ///     }
 ///   }
@@ -360,7 +366,7 @@ import 'resource_configuration_timeouts.dart';
 ///                     .build())
 ///                 .build())
 ///             .name("Example")
-///             .resourceGatewayIdentifier(exampleAwsVpclatticeResourceGateway.id())
+///             .resourceGatewayIdentifier(exampleAwsVpclatticeResourceGateway.get("id"))
 ///             .portRanges("80")
 ///             .protocol("TCP")
 ///             .tags(Map.of("Environment", "Example"))
@@ -501,7 +507,7 @@ import 'resource_configuration_timeouts.dart';
 /// 			Name:                      pulumi.String("Example"),
 /// 			ResourceGatewayIdentifier: pulumi.Any(exampleAwsVpclatticeResourceGateway.Id),
 /// 			CustomDomainName:          pulumi.String("custom.example.com"),
-/// 			DomainVerificationId:      example.ID().ToIDOutput().ToStringOutput(),
+/// 			DomainVerificationId:      example.ID(),
 /// 			PortRanges: pulumi.StringArray{
 /// 				pulumi.String("443"),
 /// 			},
@@ -518,7 +524,7 @@ import 'resource_configuration_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -526,12 +532,18 @@ import 'resource_configuration_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpclattice_domainverification" "example" {
+/// resource "aws_vpclattice_domain_verification" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name = "example.com"
 /// }
-/// resource "aws_vpclattice_resourceconfiguration" "example" {
-///   resource_configuration_definition = {
-///     dns_resource = {
+/// resource "aws_vpclattice_resource_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_configuration_definition {
+///     dns_resource {
 ///       domain_name     = "test.example.com"
 ///       ip_address_type = "IPV4"
 ///     }
@@ -539,7 +551,7 @@ import 'resource_configuration_timeouts.dart';
 ///   name                        = "Example"
 ///   resource_gateway_identifier = exampleAwsVpclatticeResourceGateway.id
 ///   custom_domain_name          = "custom.example.com"
-///   domain_verification_id      = aws_vpclattice_domainverification.example.id
+///   domain_verification_id      = aws_vpclattice_domain_verification.example.id
 ///   port_ranges                 = ["443"]
 ///   protocol                    = "TCP"
 ///   tags = {
@@ -584,7 +596,7 @@ import 'resource_configuration_timeouts.dart';
 ///                     .build())
 ///                 .build())
 ///             .name("Example")
-///             .resourceGatewayIdentifier(exampleAwsVpclatticeResourceGateway.id())
+///             .resourceGatewayIdentifier(exampleAwsVpclatticeResourceGateway.get("id"))
 ///             .customDomainName("custom.example.com")
 ///             .domainVerificationId(example.id())
 ///             .portRanges("443")
@@ -705,7 +717,7 @@ import 'resource_configuration_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -713,9 +725,12 @@ import 'resource_configuration_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpclattice_resourceconfiguration" "test" {
-///   resource_configuration_definition = {
-///     arn_resource = {
+/// resource "aws_vpclattice_resource_configuration" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_configuration_definition {
+///     arn_resource {
 ///       arn = example.arn
 ///     }
 ///   }
@@ -750,11 +765,11 @@ import 'resource_configuration_timeouts.dart';
 ///         var test = new ResourceConfiguration("test", ResourceConfigurationArgs.builder()
 ///             .resourceConfigurationDefinition(ResourceConfigurationResourceConfigurationDefinitionArgs.builder()
 ///                 .arnResource(ResourceConfigurationResourceConfigurationDefinitionArnResourceArgs.builder()
-///                     .arn(example.arn())
+///                     .arn(example.get("arn"))
 ///                     .build())
 ///                 .build())
 ///             .name("Example")
-///             .resourceGatewayIdentifier(testAwsVpclatticeResourceGateway.id())
+///             .resourceGatewayIdentifier(testAwsVpclatticeResourceGateway.get("id"))
 ///             .type("ARN")
 ///             .build());
 ///
@@ -772,6 +787,273 @@ import 'resource_configuration_timeouts.dart';
 ///       name: Example
 ///       resourceGatewayIdentifier: ${testAwsVpclatticeResourceGateway.id}
 ///       type: ARN
+/// ```
+///
+///
+/// ### CIDR Example
+///
+/// A `CIDR` resource configuration must use a resource gateway with `resourceConfigDnsResolution` set to `IN_VPC`. It cannot be associated with a service network or a resource endpoint and is consumed by a VPC endpoint of type `Tunnel`. See [Access CIDR ranges using AWS PrivateLink](https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-access-cidr-ranges.html) for details.
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.vpclattice.ResourceGateway("example", {
+///     name: "example",
+///     vpcId: exampleAwsVpc.id,
+///     subnetIds: [exampleAwsSubnet.id],
+///     resourceConfigDnsResolution: "IN_VPC",
+/// });
+/// const exampleResourceConfiguration = new aws.vpclattice.ResourceConfiguration("example", {
+///     resourceConfigurationDefinition: {
+///         cidrResource: {
+///             cidrRanges: [
+///                 "10.0.0.0/16",
+///                 "192.168.0.0/24",
+///             ],
+///         },
+///     },
+///     name: "example",
+///     resourceGatewayIdentifier: example.id,
+///     type: "CIDR",
+///     protocol: "TCP_UDP",
+///     portRanges: [
+///         "53",
+///         "443",
+///     ],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.vpclattice.ResourceGateway("example",
+///     name="example",
+///     vpc_id=example_aws_vpc["id"],
+///     subnet_ids=[example_aws_subnet["id"]],
+///     resource_config_dns_resolution="IN_VPC")
+/// example_resource_configuration = aws.vpclattice.ResourceConfiguration("example",
+///     resource_configuration_definition={
+///         "cidr_resource": {
+///             "cidr_ranges": [
+///                 "10.0.0.0/16",
+///                 "192.168.0.0/24",
+///             ],
+///         },
+///     },
+///     name="example",
+///     resource_gateway_identifier=example.id,
+///     type="CIDR",
+///     protocol="TCP_UDP",
+///     port_ranges=[
+///         "53",
+///         "443",
+///     ])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.VpcLattice.ResourceGateway("example", new()
+///     {
+///         Name = "example",
+///         VpcId = exampleAwsVpc.Id,
+///         SubnetIds = new[]
+///         {
+///             exampleAwsSubnet.Id,
+///         },
+///         ResourceConfigDnsResolution = "IN_VPC",
+///     });
+///
+///     var exampleResourceConfiguration = new Aws.VpcLattice.ResourceConfiguration("example", new()
+///     {
+///         ResourceConfigurationDefinition = new Aws.VpcLattice.Inputs.ResourceConfigurationResourceConfigurationDefinitionArgs
+///         {
+///             CidrResource = new Aws.VpcLattice.Inputs.ResourceConfigurationResourceConfigurationDefinitionCidrResourceArgs
+///             {
+///                 CidrRanges = new[]
+///                 {
+///                     "10.0.0.0/16",
+///                     "192.168.0.0/24",
+///                 },
+///             },
+///         },
+///         Name = "example",
+///         ResourceGatewayIdentifier = example.Id,
+///         Type = "CIDR",
+///         Protocol = "TCP_UDP",
+///         PortRanges = new[]
+///         {
+///             "53",
+///             "443",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/vpclattice"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := vpclattice.NewResourceGateway(ctx, "example", &vpclattice.ResourceGatewayArgs{
+/// 			Name:  pulumi.String("example"),
+/// 			VpcId: pulumi.Any(exampleAwsVpc.Id),
+/// 			SubnetIds: pulumi.StringArray{
+/// 				exampleAwsSubnet.Id,
+/// 			},
+/// 			ResourceConfigDnsResolution: pulumi.String("IN_VPC"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = vpclattice.NewResourceConfiguration(ctx, "example", &vpclattice.ResourceConfigurationArgs{
+/// 			ResourceConfigurationDefinition: &vpclattice.ResourceConfigurationResourceConfigurationDefinitionArgs{
+/// 				CidrResource: &vpclattice.ResourceConfigurationResourceConfigurationDefinitionCidrResourceArgs{
+/// 					CidrRanges: pulumi.StringArray{
+/// 						pulumi.String("10.0.0.0/16"),
+/// 						pulumi.String("192.168.0.0/24"),
+/// 					},
+/// 				},
+/// 			},
+/// 			Name:                      pulumi.String("example"),
+/// 			ResourceGatewayIdentifier: example.ID(),
+/// 			Type:                      pulumi.String("CIDR"),
+/// 			Protocol:                  pulumi.String("TCP_UDP"),
+/// 			PortRanges: pulumi.StringArray{
+/// 				pulumi.String("53"),
+/// 				pulumi.String("443"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpclattice_resource_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                           = "example"
+///   vpc_id                         = exampleAwsVpc.id
+///   subnet_ids                     = [exampleAwsSubnet.id]
+///   resource_config_dns_resolution = "IN_VPC"
+/// }
+/// resource "aws_vpclattice_resource_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_configuration_definition {
+///     cidr_resource {
+///       cidr_ranges = ["10.0.0.0/16", "192.168.0.0/24"]
+///     }
+///   }
+///   name                        = "example"
+///   resource_gateway_identifier = aws_vpclattice_resource_gateway.example.id
+///   type                        = "CIDR"
+///   protocol                    = "TCP_UDP"
+///   port_ranges                 = ["53", "443"]
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.vpclattice.ResourceGateway;
+/// import com.pulumi.aws.vpclattice.ResourceGatewayArgs;
+/// import com.pulumi.aws.vpclattice.ResourceConfiguration;
+/// import com.pulumi.aws.vpclattice.ResourceConfigurationArgs;
+/// import com.pulumi.aws.vpclattice.inputs.ResourceConfigurationResourceConfigurationDefinitionArgs;
+/// import com.pulumi.aws.vpclattice.inputs.ResourceConfigurationResourceConfigurationDefinitionCidrResourceArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new ResourceGateway("example", ResourceGatewayArgs.builder()
+///             .name("example")
+///             .vpcId(exampleAwsVpc.get("id"))
+///             .subnetIds(exampleAwsSubnet.get("id"))
+///             .resourceConfigDnsResolution("IN_VPC")
+///             .build());
+///
+///         var exampleResourceConfiguration = new ResourceConfiguration("exampleResourceConfiguration", ResourceConfigurationArgs.builder()
+///             .resourceConfigurationDefinition(ResourceConfigurationResourceConfigurationDefinitionArgs.builder()
+///                 .cidrResource(ResourceConfigurationResourceConfigurationDefinitionCidrResourceArgs.builder()
+///                     .cidrRanges(
+///                         "10.0.0.0/16",
+///                         "192.168.0.0/24")
+///                     .build())
+///                 .build())
+///             .name("example")
+///             .resourceGatewayIdentifier(example.id())
+///             .type("CIDR")
+///             .protocol("TCP_UDP")
+///             .portRanges(
+///                 "53",
+///                 "443")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:vpclattice:ResourceGateway
+///     properties:
+///       name: example
+///       vpcId: ${exampleAwsVpc.id}
+///       subnetIds:
+///         - ${exampleAwsSubnet.id}
+///       resourceConfigDnsResolution: IN_VPC
+///   exampleResourceConfiguration:
+///     type: aws:vpclattice:ResourceConfiguration
+///     name: example
+///     properties:
+///       resourceConfigurationDefinition:
+///         cidrResource:
+///           cidrRanges:
+///             - 10.0.0.0/16
+///             - 192.168.0.0/24
+///       name: example
+///       resourceGatewayIdentifier: ${example.id}
+///       type: CIDR
+///       protocol: TCP_UDP
+///       portRanges:
+///         - '53'
+///         - '443'
 /// ```
 ///
 ///
@@ -797,9 +1079,9 @@ class ResourceConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<String> domainVerificationStatus;
   /// Name for the Resource Configuration.
   late final pulumi.Output<String> name;
-  /// Port ranges to access the Resource either single port `80` or range `80-81` range.
+  /// Port ranges to access the Resource either single port `80` or range `80-81` range. For `CIDR` resource configurations, include port `53` to allow DNS.
   late final pulumi.Output<List<String>> portRanges;
-  /// Protocol for the Resource `TCP` is currently the only supported value.  MUST be specified if `resourceConfigurationGroupId` is not.
+  /// Protocol for the Resource. Valid values are `TCP` and `TCP_UDP`. `TCP_UDP` is only supported when `type` is `CIDR` (UDP is only supported for DNS). MUST be specified if `resourceConfigurationGroupId` is not.
   late final pulumi.Output<String> protocol;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -816,7 +1098,7 @@ class ResourceConfiguration extends pulumi.CustomResource {
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ResourceConfigurationTimeouts?> timeouts;
-  /// Type of Resource Configuration. Must be one of `GROUP`, `CHILD`, `SINGLE`, `ARN`.
+  /// Type of Resource Configuration. Must be one of `GROUP`, `CHILD`, `SINGLE`, `ARN`, `CIDR`. Use `CIDR` with a `cidrResource` block.
   late final pulumi.Output<String> type;
 
   /// Creates a new [ResourceConfiguration].
@@ -831,7 +1113,7 @@ class ResourceConfiguration extends pulumi.CustomResource {
           'aws:vpclattice/resourceConfiguration:ResourceConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     allowAssociationToShareableServiceNetwork = registerOutput<bool>('allowAssociationToShareableServiceNetwork');
     arn = registerOutput<String>('arn');

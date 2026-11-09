@@ -146,7 +146,7 @@ import 'table_replica_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -156,9 +156,10 @@ import 'table_replica_state.dart';
 ///
 /// resource "aws_dynamodb_table" "example" {
 ///   lifecycle {
-///     ignore_changes = [replicas]
+///     ignore_changes        = [replicas]
+///     create_before_destroy = true
 ///   }
-///   attributes {
+///   attribute {
 ///     name = "BrodoBaggins"
 ///     type = "S"
 ///   }
@@ -168,7 +169,10 @@ import 'table_replica_state.dart';
 ///   stream_enabled   = true
 ///   stream_view_type = "NEW_AND_OLD_IMAGES"
 /// }
-/// resource "aws_dynamodb_tablereplica" "example" {
+/// resource "aws_dynamodb_table_replica" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   global_table_arn = aws_dynamodb_table.example.arn
 ///   tags = {
 ///     "Name" = "IZPAWS"
@@ -296,7 +300,7 @@ class TableReplicaDynamodb extends pulumi.CustomResource {
           'aws:dynamodb/tableReplica:TableReplica',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');

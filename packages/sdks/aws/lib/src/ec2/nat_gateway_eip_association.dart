@@ -67,7 +67,7 @@ import 'nat_gateway_eip_association_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,7 +75,10 @@ import 'nat_gateway_eip_association_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_natgatewayeipassociation" "example" {
+/// resource "aws_ec2_nat_gateway_eip_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocation_id  = exampleAwsEip.id
 ///   nat_gateway_id = exampleAwsNatGateway.id
 /// }
@@ -102,8 +105,8 @@ import 'nat_gateway_eip_association_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new NatGatewayEipAssociation("example", NatGatewayEipAssociationArgs.builder()
-///             .allocationId(exampleAwsEip.id())
-///             .natGatewayId(exampleAwsNatGateway.id())
+///             .allocationId(exampleAwsEip.get("id"))
+///             .natGatewayId(exampleAwsNatGateway.get("id"))
 ///             .build());
 ///
 ///     }
@@ -150,7 +153,7 @@ class NatGatewayEipAssociation extends pulumi.CustomResource {
           'aws:ec2/natGatewayEipAssociation:NatGatewayEipAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     allocationId = registerOutput<String>('allocationId');
     associationId = registerOutput<String>('associationId');

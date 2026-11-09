@@ -59,7 +59,7 @@ import 'get_topic_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,7 @@ import 'get_topic_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_sns_gettopic" "example" {
+/// data "aws_sns_topic" "example" {
 ///   name = "an_example_topic"
 /// }
 /// ```

@@ -82,7 +82,7 @@ import 'endpoint_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -90,8 +90,11 @@ import 'endpoint_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_globalaccelerator_endpointgroup" "example" {
-///   endpoint_configurations {
+/// resource "aws_globalaccelerator_endpoint_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   endpoint_configuration {
 ///     endpoint_id = exampleAwsLb.arn
 ///     weight      = 100
 ///   }
@@ -122,10 +125,10 @@ import 'endpoint_group_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new EndpointGroup("example", EndpointGroupArgs.builder()
 ///             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
-///                 .endpointId(exampleAwsLb.arn())
+///                 .endpointId(exampleAwsLb.get("arn"))
 ///                 .weight(100)
 ///                 .build())
-///             .listenerArn(exampleAwsGlobalacceleratorListener.arn())
+///             .listenerArn(exampleAwsGlobalacceleratorListener.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -193,7 +196,7 @@ class EndpointGroup extends pulumi.CustomResource {
           'aws:globalaccelerator/endpointGroup:EndpointGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     endpointConfigurations = registerOutput<List<EndpointGroupEndpointConfiguration>?>('endpointConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointGroupEndpointConfiguration>(guardedValue, (value) => EndpointGroupEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>())); });

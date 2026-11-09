@@ -97,7 +97,7 @@ import 'location_hdfs_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -105,8 +105,11 @@ import 'location_hdfs_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_datasync_locationhdfs" "example" {
-///   name_nodes {
+/// resource "aws_datasync_location_hdfs" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name_node {
 ///     hostname = exampleAwsInstance.privateDns
 ///     port     = 80
 ///   }
@@ -139,10 +142,10 @@ import 'location_hdfs_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new LocationHdfs("example", LocationHdfsArgs.builder()
 ///             .nameNodes(LocationHdfsNameNodeArgs.builder()
-///                 .hostname(exampleAwsInstance.privateDns())
+///                 .hostname(exampleAwsInstance.get("privateDns"))
 ///                 .port(80)
 ///                 .build())
-///             .agentArns(exampleAwsDatasyncAgent.arn())
+///             .agentArns(exampleAwsDatasyncAgent.get("arn"))
 ///             .authenticationType("SIMPLE")
 ///             .simpleUser("example")
 ///             .build());
@@ -288,7 +291,7 @@ import 'location_hdfs_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -299,8 +302,11 @@ import 'location_hdfs_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_datasync_locationhdfs" "example" {
-///   name_nodes {
+/// resource "aws_datasync_location_hdfs" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name_node {
 ///     hostname = exampleAwsInstance.privateDns
 ///     port     = 80
 ///   }
@@ -338,10 +344,10 @@ import 'location_hdfs_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new LocationHdfs("example", LocationHdfsArgs.builder()
 ///             .nameNodes(LocationHdfsNameNodeArgs.builder()
-///                 .hostname(exampleAwsInstance.privateDns())
+///                 .hostname(exampleAwsInstance.get("privateDns"))
 ///                 .port(80)
 ///                 .build())
-///             .agentArns(exampleAwsDatasyncAgent.arn())
+///             .agentArns(exampleAwsDatasyncAgent.get("arn"))
 ///             .authenticationType("KERBEROS")
 ///             .kerberosPrincipal("user@example.com")
 ///             .kerberosKeytabBase64(StdFunctions.filebase64(Filebase64Args.builder()
@@ -447,7 +453,7 @@ class LocationHdfs extends pulumi.CustomResource {
           'aws:datasync/locationHdfs:LocationHdfs',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     agentArns = registerOutput<List<String>>('agentArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');

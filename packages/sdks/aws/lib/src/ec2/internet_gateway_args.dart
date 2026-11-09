@@ -82,7 +82,7 @@ class InternetGatewayArgs {
   /// }
   /// ```
   /// ```hcl
-  /// pulumi {
+  /// terraform {
   ///   required_providers {
   ///     aws = {
   ///       source = "pulumi/aws"
@@ -90,11 +90,17 @@ class InternetGatewayArgs {
   ///   }
   /// }
   ///
-  /// resource "aws_ec2_internetgateway" "gw" {
+  /// resource "aws_ec2_internet_gateway" "gw" {
+  ///   lifecycle {
+  ///     create_before_destroy = true
+  ///   }
   ///   vpc_id = main.id
   /// }
   /// resource "aws_ec2_instance" "foo" {
-  ///   depends_on = [aws_ec2_internetgateway.gw]
+  ///   depends_on = [aws_ec2_internet_gateway.gw]
+  ///   lifecycle {
+  ///     create_before_destroy = true
+  ///   }
   /// }
   /// ```
   /// ```java
@@ -122,7 +128,7 @@ class InternetGatewayArgs {
   ///
   ///     public static void stack(Context ctx) {
   ///         var gw = new InternetGateway("gw", InternetGatewayArgs.builder()
-  ///             .vpcId(main.id())
+  ///             .vpcId(main.get("id"))
   ///             .build());
   ///
   ///         var foo = new Instance("foo", InstanceArgs.Empty, CustomResourceOptions.builder()

@@ -65,7 +65,7 @@ import 'snapshot_schedule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,10 @@ import 'snapshot_schedule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_redshift_snapshotschedule" "default" {
+/// resource "aws_redshift_snapshot_schedule" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identifier  = "tf-redshift-snapshot-schedule"
 ///   definitions = ["rate(12 hours)"]
 /// }
@@ -158,7 +161,7 @@ class SnapshotSchedule extends pulumi.CustomResource {
           'aws:redshift/snapshotSchedule:SnapshotSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     definitions = registerOutput<List<String>>('definitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

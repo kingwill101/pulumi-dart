@@ -99,7 +99,7 @@ import 'fargate_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -107,8 +107,11 @@ import 'fargate_profile_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_eks_fargateprofile" "example" {
-///   selectors {
+/// resource "aws_eks_fargate_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   selector {
 ///     namespace = "example"
 ///   }
 ///   cluster_name           = exampleAwsEksCluster.name
@@ -143,10 +146,10 @@ import 'fargate_profile_state.dart';
 ///             .selectors(FargateProfileSelectorArgs.builder()
 ///                 .namespace("example")
 ///                 .build())
-///             .clusterName(exampleAwsEksCluster.name())
+///             .clusterName(exampleAwsEksCluster.get("name"))
 ///             .fargateProfileName("example")
-///             .podExecutionRoleArn(exampleAwsIamRole.arn())
-///             .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
+///             .podExecutionRoleArn(exampleAwsIamRole.get("arn"))
+///             .subnetIds(exampleAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
 ///             .build());
 ///
 ///     }
@@ -285,7 +288,7 @@ import 'fargate_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -294,6 +297,9 @@ import 'fargate_profile_state.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "eks-fargate-profile-example"
 ///   assume_role_policy = jsonencode({
 ///     "Statement" = [{
@@ -306,7 +312,10 @@ import 'fargate_profile_state.dart';
 ///     "Version" = "2012-10-17"
 ///   })
 /// }
-/// resource "aws_iam_rolepolicyattachment" "example-AmazonEKSFargatePodExecutionRolePolicy" {
+/// resource "aws_iam_role_policy_attachment" "example-AmazonEKSFargatePodExecutionRolePolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSFargatePodExecutionRolePolicy"
 ///   role       = aws_iam_role.example.name
 /// }
@@ -436,7 +445,7 @@ class FargateProfile extends pulumi.CustomResource {
           'aws:eks/fargateProfile:FargateProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     clusterName = registerOutput<String>('clusterName');

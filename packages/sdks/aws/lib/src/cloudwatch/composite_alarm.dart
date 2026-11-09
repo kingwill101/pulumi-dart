@@ -108,7 +108,7 @@ import 'composite_alarm_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -116,8 +116,11 @@ import 'composite_alarm_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_compositealarm" "example" {
-///   actions_suppressor = {
+/// resource "aws_cloudwatch_composite_alarm" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   actions_suppressor {
 ///     alarm            = "suppressor-alarm"
 ///     extension_period = 10
 ///     wait_period      = 20
@@ -159,9 +162,9 @@ import 'composite_alarm_state.dart';
 ///                 .build())
 ///             .alarmDescription("This is a composite alarm!")
 ///             .alarmName("example-composite-alarm")
-///             .alarmActions(exampleAwsSnsTopic.arn())
-///             .okActions(exampleAwsSnsTopic.arn())
-///             .alarmRule(String.format("ALARM(%s) OR ALARM(%s)", alpha.alarmName(),bravo.alarmName()))
+///             .alarmActions(exampleAwsSnsTopic.get("arn"))
+///             .okActions(exampleAwsSnsTopic.get("arn"))
+///             .alarmRule(String.format("ALARM(%s) OR ALARM(%s)", alpha.get("alarmName"),bravo.get("alarmName")))
 ///             .build());
 ///
 ///     }
@@ -243,7 +246,7 @@ class CompositeAlarm extends pulumi.CustomResource {
           'aws:cloudwatch/compositeAlarm:CompositeAlarm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     actionsEnabled = registerOutput<bool?>('actionsEnabled');
     actionsSuppressor = registerOutput<CompositeAlarmActionsSuppressor?>('actionsSuppressor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CompositeAlarmActionsSuppressor.fromMap((guardedValue as Map).cast<String, dynamic>()); });

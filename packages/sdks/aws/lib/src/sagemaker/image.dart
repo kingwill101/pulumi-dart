@@ -64,7 +64,7 @@ import 'image_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,6 +73,9 @@ import 'image_state.dart';
 /// }
 ///
 /// resource "aws_sagemaker_image" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   image_name = "example"
 ///   role_arn   = test.arn
 /// }
@@ -100,7 +103,7 @@ import 'image_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Image("example", ImageArgs.builder()
 ///             .imageName("example")
-///             .roleArn(test.arn())
+///             .roleArn(test.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -153,7 +156,7 @@ class Image extends pulumi.CustomResource {
           'aws:sagemaker/image:Image',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

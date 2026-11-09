@@ -126,7 +126,7 @@ import 'scheduled_action_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -135,14 +135,20 @@ import 'scheduled_action_state.dart';
 /// }
 ///
 /// resource "aws_appautoscaling_target" "dynamodb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   max_capacity       = 100
 ///   min_capacity       = 5
 ///   resource_id        = "table/tableName"
 ///   scalable_dimension = "dynamodb:table:ReadCapacityUnits"
 ///   service_namespace  = "dynamodb"
 /// }
-/// resource "aws_appautoscaling_scheduledaction" "dynamodb" {
-///   scalable_target_action = {
+/// resource "aws_appautoscaling_scheduled_action" "dynamodb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scalable_target_action {
 ///     min_capacity = 1
 ///     max_capacity = 200
 ///   }
@@ -344,7 +350,7 @@ import 'scheduled_action_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -353,14 +359,20 @@ import 'scheduled_action_state.dart';
 /// }
 ///
 /// resource "aws_appautoscaling_target" "ecs" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   max_capacity       = 4
 ///   min_capacity       = 1
 ///   resource_id        = "service/clusterName/serviceName"
 ///   scalable_dimension = "ecs:service:DesiredCount"
 ///   service_namespace  = "ecs"
 /// }
-/// resource "aws_appautoscaling_scheduledaction" "ecs" {
-///   scalable_target_action = {
+/// resource "aws_appautoscaling_scheduled_action" "ecs" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scalable_target_action {
 ///     min_capacity = 1
 ///     max_capacity = 10
 ///   }
@@ -477,7 +489,7 @@ class ScheduledAction extends pulumi.CustomResource {
           'aws:appautoscaling/scheduledAction:ScheduledAction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     endTime = registerOutput<String?>('endTime');

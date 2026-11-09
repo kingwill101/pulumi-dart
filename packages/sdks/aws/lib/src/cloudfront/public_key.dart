@@ -81,7 +81,7 @@ import 'public_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -92,7 +92,10 @@ import 'public_key_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_publickey" "example" {
+/// resource "aws_cloudfront_public_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   comment     = "test public key"
 ///   encoded_key = file("public_key.pem")
 ///   name        = "test_key"
@@ -183,7 +186,7 @@ class PublicKey extends pulumi.CustomResource {
           'aws:cloudfront/publicKey:PublicKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     callerReference = registerOutput<String>('callerReference');
     comment = registerOutput<String?>('comment');

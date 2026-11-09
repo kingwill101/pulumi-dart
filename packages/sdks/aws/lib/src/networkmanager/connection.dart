@@ -68,7 +68,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,6 +77,9 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "aws_networkmanager_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   global_network_id   = exampleAwsNetworkmanagerGlobalNetwork.id
 ///   device_id           = example1.id
 ///   connected_device_id = example2.id
@@ -104,9 +107,9 @@ import 'connection_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Connection("example", ConnectionArgs.builder()
-///             .globalNetworkId(exampleAwsNetworkmanagerGlobalNetwork.id())
-///             .deviceId(example1.id())
-///             .connectedDeviceId(example2.id())
+///             .globalNetworkId(exampleAwsNetworkmanagerGlobalNetwork.get("id"))
+///             .deviceId(example1.get("id"))
+///             .connectedDeviceId(example2.get("id"))
 ///             .build());
 ///
 ///     }
@@ -164,7 +167,7 @@ class Connection extends pulumi.CustomResource {
           'aws:networkmanager/connection:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     connectedDeviceId = registerOutput<String>('connectedDeviceId');

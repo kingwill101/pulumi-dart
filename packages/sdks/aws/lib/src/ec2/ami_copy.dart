@@ -91,7 +91,7 @@ import 'ami_copy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -99,7 +99,10 @@ import 'ami_copy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_amicopy" "example" {
+/// resource "aws_ec2_ami_copy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example"
 ///   source_ami_id     = "ami-xxxxxxxx"
 ///   source_ami_region = "us-west-1"
@@ -237,7 +240,7 @@ class AmiCopy extends pulumi.CustomResource {
           'aws:ec2/amiCopy:AmiCopy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     architecture = registerOutput<String>('architecture');
     arn = registerOutput<String>('arn');

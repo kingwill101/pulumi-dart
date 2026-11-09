@@ -65,7 +65,7 @@ import 'get_web_acl_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,7 @@ import 'get_web_acl_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_waf_getipset" "example" {
+/// data "aws_waf_ipset" "example" {
 ///   name = "tfWAFIPSet"
 /// }
 /// ```
@@ -194,7 +194,7 @@ pulumi.Output<GetIpsetResult> getIpsetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -202,7 +202,7 @@ pulumi.Output<GetIpsetResult> getIpsetOutput(
 ///   }
 /// }
 ///
-/// data "aws_waf_getratebasedrule" "example" {
+/// data "aws_waf_rate_based_rule" "example" {
 ///   name = "tfWAFRateBasedRule"
 /// }
 /// ```
@@ -323,7 +323,7 @@ pulumi.Output<GetRateBasedRuleResult> getRateBasedRuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -331,7 +331,7 @@ pulumi.Output<GetRateBasedRuleResult> getRateBasedRuleOutput(
 ///   }
 /// }
 ///
-/// data "aws_waf_getrule" "example" {
+/// data "aws_waf_rule" "example" {
 ///   name = "tfWAFRule"
 /// }
 /// ```
@@ -527,7 +527,7 @@ pulumi.Output<GetRuleResult> getRuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -535,22 +535,25 @@ pulumi.Output<GetRuleResult> getRuleOutput(
 ///   }
 /// }
 ///
-/// data "aws_waf_getsubscribedrulegroup" "byName" {
+/// data "aws_waf_subscribed_rule_group" "byName" {
 ///   name = "F5 Bot Detection Signatures For AWS WAF"
 /// }
-/// data "aws_waf_getsubscribedrulegroup" "byMetricName" {
+/// data "aws_waf_subscribed_rule_group" "byMetricName" {
 ///   metric_name = "F5BotDetectionSignatures"
 /// }
 ///
-/// resource "aws_waf_webacl" "acl" {
+/// resource "aws_waf_web_acl" "acl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   rules {
 ///     priority = 1
-///     rule_id  = data.aws_waf_getsubscribedrulegroup.byName.id
+///     rule_id  = data.aws_waf_subscribed_rule_group.byName.id
 ///     type     = "GROUP"
 ///   }
 ///   rules {
 ///     priority = 2
-///     rule_id  = data.aws_waf_getsubscribedrulegroup.byMetricName.id
+///     rule_id  = data.aws_waf_subscribed_rule_group.byMetricName.id
 ///     type     = "GROUP"
 ///   }
 /// }
@@ -709,7 +712,7 @@ pulumi.Output<GetSubscribedRuleGroupResult> getSubscribedRuleGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -717,7 +720,7 @@ pulumi.Output<GetSubscribedRuleGroupResult> getSubscribedRuleGroupOutput(
 ///   }
 /// }
 ///
-/// data "aws_waf_getwebacl" "example" {
+/// data "aws_waf_web_acl" "example" {
 ///   name = "tfWAFWebACL"
 /// }
 /// ```

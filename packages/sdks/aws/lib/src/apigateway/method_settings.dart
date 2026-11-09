@@ -87,7 +87,7 @@ import 'method_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -95,7 +95,10 @@ import 'method_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_methodsettings" "path_specific" {
+/// resource "aws_apigateway_method_settings" "path_specific" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   settings = {
 ///     logging_level = "OFF"
 ///   }
@@ -130,8 +133,8 @@ import 'method_settings_state.dart';
 ///             .settings(MethodSettingsSettingsArgs.builder()
 ///                 .loggingLevel("OFF")
 ///                 .build())
-///             .restApi(example.id())
-///             .stageName(exampleAwsApiGatewayStage.stageName())
+///             .restApi(example.get("id"))
+///             .stageName(exampleAwsApiGatewayStage.get("stageName"))
 ///             .methodPath("path1/GET")
 ///             .build());
 ///
@@ -235,7 +238,7 @@ import 'method_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -243,7 +246,10 @@ import 'method_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_methodsettings" "path_specific" {
+/// resource "aws_apigateway_method_settings" "path_specific" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   settings = {
 ///     logging_level      = "ERROR"
 ///     metrics_enabled    = true
@@ -282,8 +288,8 @@ import 'method_settings_state.dart';
 ///                 .metricsEnabled(true)
 ///                 .dataTraceEnabled(false)
 ///                 .build())
-///             .restApi(example.id())
-///             .stageName(exampleAwsApiGatewayStage.stageName())
+///             .restApi(example.get("id"))
+///             .stageName(exampleAwsApiGatewayStage.get("stageName"))
 ///             .methodPath("path1/GET")
 ///             .build());
 ///
@@ -389,7 +395,7 @@ import 'method_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -397,7 +403,10 @@ import 'method_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_methodsettings" "path_specific" {
+/// resource "aws_apigateway_method_settings" "path_specific" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   settings = {
 ///     logging_level      = "INFO"
 ///     metrics_enabled    = true
@@ -436,8 +445,8 @@ import 'method_settings_state.dart';
 ///                 .metricsEnabled(true)
 ///                 .dataTraceEnabled(false)
 ///                 .build())
-///             .restApi(example.id())
-///             .stageName(exampleAwsApiGatewayStage.stageName())
+///             .restApi(example.get("id"))
+///             .stageName(exampleAwsApiGatewayStage.get("stageName"))
 ///             .methodPath("path1/GET")
 ///             .build());
 ///
@@ -543,7 +552,7 @@ import 'method_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -551,7 +560,10 @@ import 'method_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_methodsettings" "path_specific" {
+/// resource "aws_apigateway_method_settings" "path_specific" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   settings = {
 ///     logging_level      = "INFO"
 ///     metrics_enabled    = true
@@ -590,8 +602,8 @@ import 'method_settings_state.dart';
 ///                 .metricsEnabled(true)
 ///                 .dataTraceEnabled(true)
 ///                 .build())
-///             .restApi(example.id())
-///             .stageName(exampleAwsApiGatewayStage.stageName())
+///             .restApi(example.get("id"))
+///             .stageName(exampleAwsApiGatewayStage.get("stageName"))
 ///             .methodPath("path1/GET")
 ///             .build());
 ///
@@ -645,7 +657,7 @@ class MethodSettings extends pulumi.CustomResource {
           'aws:apigateway/methodSettings:MethodSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     methodPath = registerOutput<String>('methodPath');
     region = registerOutput<String>('region');

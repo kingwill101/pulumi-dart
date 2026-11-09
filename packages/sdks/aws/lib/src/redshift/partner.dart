@@ -70,7 +70,7 @@ import 'partner_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -79,6 +79,9 @@ import 'partner_state.dart';
 /// }
 ///
 /// resource "aws_redshift_partner" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier = exampleAwsRedshiftCluster.id
 ///   account_id         = 1234567910
 ///   database_name      = exampleAwsRedshiftCluster.databaseName
@@ -107,9 +110,9 @@ import 'partner_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Partner("example", PartnerArgs.builder()
-///             .clusterIdentifier(exampleAwsRedshiftCluster.id())
+///             .clusterIdentifier(exampleAwsRedshiftCluster.get("id"))
 ///             .accountId("1234567910")
-///             .databaseName(exampleAwsRedshiftCluster.databaseName())
+///             .databaseName(exampleAwsRedshiftCluster.get("databaseName"))
 ///             .partnerName("example")
 ///             .build());
 ///
@@ -163,7 +166,7 @@ class Partner extends pulumi.CustomResource {
           'aws:redshift/partner:Partner',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     clusterIdentifier = registerOutput<String>('clusterIdentifier');

@@ -228,7 +228,7 @@ import 'query_log_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -236,8 +236,8 @@ import 'query_log_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "route53-query-logging-policy" {
-///   statements {
+/// data "aws_iam_policy_document" "route53-query-logging-policy" {
+///   statement {
 ///     principals {
 ///       identifiers = ["route53.amazonaws.com"]
 ///       type        = "Service"
@@ -247,21 +247,33 @@ import 'query_log_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_loggroup" "aws_route53_example_com" {
+/// resource "aws_cloudwatch_log_group" "aws_route53_example_com" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              ="/aws/route53/${aws_route53_zone.example_com.name}"
 ///   retention_in_days = 30
 /// }
-/// resource "aws_cloudwatch_logresourcepolicy" "route53-query-logging-policy" {
-///   policy_document = data.aws_iam_getpolicydocument.route53-query-logging-policy.json
+/// resource "aws_cloudwatch_log_resource_policy" "route53-query-logging-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy_document = data.aws_iam_policy_document.route53-query-logging-policy.json
 ///   policy_name     = "route53-query-logging-policy"
 /// }
 /// # Example Route53 zone with query logging
 /// resource "aws_route53_zone" "example_com" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example.com"
 /// }
-/// resource "aws_route53_querylog" "example_com" {
-///   depends_on               = [aws_cloudwatch_logresourcepolicy.route53-query-logging-policy]
-///   cloudwatch_log_group_arn = aws_cloudwatch_loggroup.aws_route53_example_com.arn
+/// resource "aws_route53_query_log" "example_com" {
+///   depends_on = [aws_cloudwatch_log_resource_policy.route53-query-logging-policy]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cloudwatch_log_group_arn = aws_cloudwatch_log_group.aws_route53_example_com.arn
 ///   zone_id                  = aws_route53_zone.example_com.zone_id
 /// }
 /// # Example CloudWatch log resource policy to allow Route53 to write logs
@@ -415,7 +427,7 @@ class QueryLog extends pulumi.CustomResource {
           'aws:route53/queryLog:QueryLog',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cloudwatchLogGroupArn = registerOutput<String>('cloudwatchLogGroupArn');

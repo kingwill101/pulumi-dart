@@ -355,7 +355,7 @@ import 'stack_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -363,8 +363,8 @@ import 'stack_set_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "aWSCloudFormationStackSetAdministrationRoleAssumeRolePolicy" {
-///   statements {
+/// data "aws_iam_policy_document" "aWSCloudFormationStackSetAdministrationRoleAssumeRolePolicy" {
+///   statement {
 ///     principals {
 ///       identifiers = ["cloudformation.amazonaws.com"]
 ///       type        = "Service"
@@ -373,19 +373,25 @@ import 'stack_set_state.dart';
 ///     effect  = "Allow"
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "aWSCloudFormationStackSetAdministrationRoleExecutionPolicy" {
-///   statements {
+/// data "aws_iam_policy_document" "aWSCloudFormationStackSetAdministrationRoleExecutionPolicy" {
+///   statement {
 ///     actions   = ["sts:AssumeRole"]
 ///     effect    = "Allow"
-///     resources = ["arn:aws:iam::*:role/${aws_cloudformation_stackset.example.execution_role_name}"]
+///     resources = ["arn:aws:iam::*:role/${aws_cloudformation_stack_set.example.execution_role_name}"]
 ///   }
 /// }
 ///
 /// resource "aws_iam_role" "AWSCloudFormationStackSetAdministrationRole" {
-///   assume_role_policy = data.aws_iam_getpolicydocument.aWSCloudFormationStackSetAdministrationRoleAssumeRolePolicy.json
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   assume_role_policy = data.aws_iam_policy_document.aWSCloudFormationStackSetAdministrationRoleAssumeRolePolicy.json
 ///   name               = "AWSCloudFormationStackSetAdministrationRole"
 /// }
-/// resource "aws_cloudformation_stackset" "example" {
+/// resource "aws_cloudformation_stack_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administration_role_arn = aws_iam_role.AWSCloudFormationStackSetAdministrationRole.arn
 ///   name                    = "example"
 ///   parameters = {
@@ -415,9 +421,12 @@ import 'stack_set_state.dart';
 ///     }
 ///   })
 /// }
-/// resource "aws_iam_rolepolicy" "AWSCloudFormationStackSetAdministrationRole_ExecutionPolicy" {
+/// resource "aws_iam_role_policy" "AWSCloudFormationStackSetAdministrationRole_ExecutionPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "ExecutionPolicy"
-///   policy = data.aws_iam_getpolicydocument.aWSCloudFormationStackSetAdministrationRoleExecutionPolicy.json
+///   policy = data.aws_iam_policy_document.aWSCloudFormationStackSetAdministrationRoleExecutionPolicy.json
 ///   role   = aws_iam_role.AWSCloudFormationStackSetAdministrationRole.name
 /// }
 /// ```
@@ -644,7 +653,7 @@ class StackSet extends pulumi.CustomResource {
           'aws:cloudformation/stackSet:StackSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     administrationRoleArn = registerOutput<String?>('administrationRoleArn');
     arn = registerOutput<String>('arn');

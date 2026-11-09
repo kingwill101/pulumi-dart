@@ -127,14 +127,14 @@ import 'route_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleNetworkAssociation, err := ec2clientvpn.NewNetworkAssociation(ctx, "example", &ec2clientvpn.NetworkAssociationArgs{
-/// 			ClientVpnEndpointId: exampleEndpoint.ID().ToIDOutput().ToStringOutput(),
+/// 			ClientVpnEndpointId: exampleEndpoint.ID(),
 /// 			SubnetId:            pulumi.Any(exampleAwsSubnet.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = ec2clientvpn.NewRoute(ctx, "example", &ec2clientvpn.RouteArgs{
-/// 			ClientVpnEndpointId:  exampleEndpoint.ID().ToIDOutput().ToStringOutput(),
+/// 			ClientVpnEndpointId:  exampleEndpoint.ID(),
 /// 			DestinationCidrBlock: pulumi.String("0.0.0.0/0"),
 /// 			TargetVpcSubnetId:    exampleNetworkAssociation.SubnetId,
 /// 		})
@@ -146,7 +146,7 @@ import 'route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -155,15 +155,24 @@ import 'route_state.dart';
 /// }
 ///
 /// resource "aws_ec2clientvpn_route" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_vpn_endpoint_id = aws_ec2clientvpn_endpoint.example.id
 ///   destination_cidr_block = "0.0.0.0/0"
-///   target_vpc_subnet_id   = aws_ec2clientvpn_networkassociation.example.subnet_id
+///   target_vpc_subnet_id   = aws_ec2clientvpn_network_association.example.subnet_id
 /// }
-/// resource "aws_ec2clientvpn_networkassociation" "example" {
+/// resource "aws_ec2clientvpn_network_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_vpn_endpoint_id = aws_ec2clientvpn_endpoint.example.id
 ///   subnet_id              = exampleAwsSubnet.id
 /// }
 /// resource "aws_ec2clientvpn_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_log_options = {
 ///     enabled = false
 ///   }
@@ -209,16 +218,16 @@ import 'route_state.dart';
 ///                 .build())
 ///             .authenticationOptions(EndpointAuthenticationOptionArgs.builder()
 ///                 .type("certificate-authentication")
-///                 .rootCertificateChainArn(exampleAwsAcmCertificate.arn())
+///                 .rootCertificateChainArn(exampleAwsAcmCertificate.get("arn"))
 ///                 .build())
 ///             .description("Example Client VPN endpoint")
-///             .serverCertificateArn(exampleAwsAcmCertificate.arn())
+///             .serverCertificateArn(exampleAwsAcmCertificate.get("arn"))
 ///             .clientCidrBlock("10.0.0.0/16")
 ///             .build());
 ///
 ///         var exampleNetworkAssociation = new NetworkAssociation("exampleNetworkAssociation", NetworkAssociationArgs.builder()
 ///             .clientVpnEndpointId(exampleEndpoint.id())
-///             .subnetId(exampleAwsSubnet.id())
+///             .subnetId(exampleAwsSubnet.get("id"))
 ///             .build());
 ///
 ///         var example = new Route("example", RouteArgs.builder()
@@ -296,7 +305,7 @@ class Route extends pulumi.CustomResource {
           'aws:ec2clientvpn/route:Route',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     clientVpnEndpointId = registerOutput<String>('clientVpnEndpointId');
     description = registerOutput<String?>('description');

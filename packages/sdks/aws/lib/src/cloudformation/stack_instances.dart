@@ -103,7 +103,7 @@ import 'stack_instances_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -111,7 +111,10 @@ import 'stack_instances_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudformation_stackinstances" "example" {
+/// resource "aws_cloudformation_stack_instances" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   accounts       = ["123456789012", "234567890123"]
 ///   regions        = ["us-east-1", "us-west-2"]
 ///   stack_set_name = exampleAwsCloudformationStackSet.name
@@ -145,7 +148,7 @@ import 'stack_instances_state.dart';
 ///             .regions(
 ///                 "us-east-1",
 ///                 "us-west-2")
-///             .stackSetName(exampleAwsCloudformationStackSet.name())
+///             .stackSetName(exampleAwsCloudformationStackSet.get("name"))
 ///             .build());
 ///
 ///     }
@@ -324,7 +327,7 @@ import 'stack_instances_state.dart';
 /// 				{
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
-/// 							Identifiers: pulumi.StringArray{
+/// 							Identifiers: []string{
 /// 								aWSCloudFormationStackSetAdministrationRole.Arn,
 /// 							},
 /// 							Type: "AWS",
@@ -380,7 +383,7 @@ import 'stack_instances_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -388,8 +391,8 @@ import 'stack_instances_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "aWSCloudFormationStackSetExecutionRoleAssumeRolePolicy" {
-///   statements {
+/// data "aws_iam_policy_document" "aWSCloudFormationStackSetExecutionRoleAssumeRolePolicy" {
+///   statement {
 ///     principals {
 ///       identifiers = [aWSCloudFormationStackSetAdministrationRole.arn]
 ///       type        = "AWS"
@@ -398,8 +401,8 @@ import 'stack_instances_state.dart';
 ///     effect  = "Allow"
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "aWSCloudFormationStackSetExecutionRoleMinimumExecutionPolicy" {
-///   statements {
+/// data "aws_iam_policy_document" "aWSCloudFormationStackSetExecutionRoleMinimumExecutionPolicy" {
+///   statement {
 ///     actions   = ["cloudformation:*", "s3:*", "sns:*"]
 ///     effect    = "Allow"
 ///     resources = ["*"]
@@ -407,12 +410,18 @@ import 'stack_instances_state.dart';
 /// }
 ///
 /// resource "aws_iam_role" "AWSCloudFormationStackSetExecutionRole" {
-///   assume_role_policy = data.aws_iam_getpolicydocument.aWSCloudFormationStackSetExecutionRoleAssumeRolePolicy.json
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   assume_role_policy = data.aws_iam_policy_document.aWSCloudFormationStackSetExecutionRoleAssumeRolePolicy.json
 ///   name               = "AWSCloudFormationStackSetExecutionRole"
 /// }
-/// resource "aws_iam_rolepolicy" "AWSCloudFormationStackSetExecutionRole_MinimumExecutionPolicy" {
+/// resource "aws_iam_role_policy" "AWSCloudFormationStackSetExecutionRole_MinimumExecutionPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "MinimumExecutionPolicy"
-///   policy = data.aws_iam_getpolicydocument.aWSCloudFormationStackSetExecutionRoleMinimumExecutionPolicy.json
+///   policy = data.aws_iam_policy_document.aWSCloudFormationStackSetExecutionRoleMinimumExecutionPolicy.json
 ///   role   = aws_iam_role.AWSCloudFormationStackSetExecutionRole.name
 /// }
 /// # Documentation: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html
@@ -448,7 +457,7 @@ import 'stack_instances_state.dart';
 ///         final var aWSCloudFormationStackSetExecutionRoleAssumeRolePolicy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                     .identifiers(aWSCloudFormationStackSetAdministrationRole.arn())
+///                     .identifiers(aWSCloudFormationStackSetAdministrationRole.get("arn"))
 ///                     .type("AWS")
 ///                     .build())
 ///                 .actions("sts:AssumeRole")
@@ -617,7 +626,7 @@ import 'stack_instances_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -625,8 +634,11 @@ import 'stack_instances_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudformation_stackinstances" "example" {
-///   deployment_targets = {
+/// resource "aws_cloudformation_stack_instances" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   deployment_targets {
 ///     organizational_unit_ids = [exampleAwsOrganizationsOrganization.roots[0].id]
 ///   }
 ///   regions        = ["us-west-2", "us-east-1"]
@@ -657,12 +669,12 @@ import 'stack_instances_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new StackInstances("example", StackInstancesArgs.builder()
 ///             .deploymentTargets(StackInstancesDeploymentTargetsArgs.builder()
-///                 .organizationalUnitIds(exampleAwsOrganizationsOrganization.roots()[0].id())
+///                 .organizationalUnitIds(exampleAwsOrganizationsOrganization.get("roots")[0].get("id"))
 ///                 .build())
 ///             .regions(
 ///                 "us-west-2",
 ///                 "us-east-1")
-///             .stackSetName(exampleAwsCloudformationStackSet.name())
+///             .stackSetName(exampleAwsCloudformationStackSet.get("name"))
 ///             .build());
 ///
 ///     }
@@ -737,7 +749,7 @@ class StackInstances extends pulumi.CustomResource {
           'aws:cloudformation/stackInstances:StackInstances',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accounts = registerOutput<List<String>>('accounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     callAs = registerOutput<String?>('callAs');

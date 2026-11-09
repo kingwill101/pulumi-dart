@@ -70,7 +70,7 @@ import 'vpc_endpoint_subnet_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -78,7 +78,10 @@ import 'vpc_endpoint_subnet_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcendpointsubnetassociation" "sn_ec2" {
+/// resource "aws_ec2_vpc_endpoint_subnet_association" "sn_ec2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_endpoint_id = ec2.id
 ///   subnet_id       = sn.id
 /// }
@@ -105,8 +108,8 @@ import 'vpc_endpoint_subnet_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var snEc2 = new VpcEndpointSubnetAssociation("snEc2", VpcEndpointSubnetAssociationArgs.builder()
-///             .vpcEndpointId(ec2.id())
-///             .subnetId(sn.id())
+///             .vpcEndpointId(ec2.get("id"))
+///             .subnetId(sn.get("id"))
 ///             .build());
 ///
 ///     }
@@ -150,7 +153,7 @@ class VpcEndpointSubnetAssociation extends pulumi.CustomResource {
           'aws:ec2/vpcEndpointSubnetAssociation:VpcEndpointSubnetAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     subnetId = registerOutput<String>('subnetId');

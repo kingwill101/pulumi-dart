@@ -88,7 +88,7 @@ import 'windows_file_system_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -96,7 +96,10 @@ import 'windows_file_system_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fsx_windowsfilesystem" "example" {
+/// resource "aws_fsx_windows_file_system" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   active_directory_id = exampleAwsDirectoryServiceDirectory.id
 ///   kms_key_id          = exampleAwsKmsKey.arn
 ///   storage_capacity    = 32
@@ -126,10 +129,10 @@ import 'windows_file_system_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new WindowsFileSystem("example", WindowsFileSystemArgs.builder()
-///             .activeDirectoryId(exampleAwsDirectoryServiceDirectory.id())
-///             .kmsKeyId(exampleAwsKmsKey.arn())
+///             .activeDirectoryId(exampleAwsDirectoryServiceDirectory.get("id"))
+///             .kmsKeyId(exampleAwsKmsKey.get("arn"))
 ///             .storageCapacity(32)
-///             .subnetIds(exampleAwsSubnet.id())
+///             .subnetIds(exampleAwsSubnet.get("id"))
 ///             .throughputCapacity(32)
 ///             .build());
 ///
@@ -261,7 +264,7 @@ import 'windows_file_system_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -269,8 +272,11 @@ import 'windows_file_system_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fsx_windowsfilesystem" "example" {
-///   self_managed_active_directory = {
+/// resource "aws_fsx_windows_file_system" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   self_managed_active_directory {
 ///     dns_ips     = ["10.0.0.111", "10.0.0.222"]
 ///     domain_name = "corp.example.com"
 ///     password    = "avoid-plaintext-passwords"
@@ -313,9 +319,9 @@ import 'windows_file_system_state.dart';
 ///                 .password("avoid-plaintext-passwords")
 ///                 .username("Admin")
 ///                 .build())
-///             .kmsKeyId(exampleAwsKmsKey.arn())
+///             .kmsKeyId(exampleAwsKmsKey.get("arn"))
 ///             .storageCapacity(32)
-///             .subnetIds(exampleAwsSubnet.id())
+///             .subnetIds(exampleAwsSubnet.get("id"))
 ///             .throughputCapacity(32)
 ///             .build());
 ///
@@ -447,7 +453,7 @@ import 'windows_file_system_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -455,8 +461,11 @@ import 'windows_file_system_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fsx_windowsfilesystem" "example" {
-///   self_managed_active_directory = {
+/// resource "aws_fsx_windows_file_system" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   self_managed_active_directory {
 ///     dns_ips                            = ["10.0.0.111", "10.0.0.222"]
 ///     domain_name                        = "corp.example.com"
 ///     domain_join_service_account_secret = exampleAwsSecretsmanagerSecret.arn
@@ -495,11 +504,11 @@ import 'windows_file_system_state.dart';
 ///                     "10.0.0.111",
 ///                     "10.0.0.222")
 ///                 .domainName("corp.example.com")
-///                 .domainJoinServiceAccountSecret(exampleAwsSecretsmanagerSecret.arn())
+///                 .domainJoinServiceAccountSecret(exampleAwsSecretsmanagerSecret.get("arn"))
 ///                 .build())
-///             .kmsKeyId(exampleAwsKmsKey.arn())
+///             .kmsKeyId(exampleAwsKmsKey.get("arn"))
 ///             .storageCapacity(32)
-///             .subnetIds(exampleAwsSubnet.id())
+///             .subnetIds(exampleAwsSubnet.get("id"))
 ///             .throughputCapacity(32)
 ///             .build());
 ///
@@ -600,7 +609,7 @@ import 'windows_file_system_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -608,9 +617,10 @@ import 'windows_file_system_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fsx_windowsfilesystem" "example" {
+/// resource "aws_fsx_windows_file_system" "example" {
 ///   lifecycle {
-///     ignore_changes = [securityGroupIds]
+///     ignore_changes        = [securityGroupIds]
+///     create_before_destroy = true
 ///   }
 ///   security_group_ids = [exampleAwsSecurityGroup.id]
 /// }
@@ -638,7 +648,7 @@ import 'windows_file_system_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new WindowsFileSystem("example", WindowsFileSystemArgs.builder()
-///             .securityGroupIds(exampleAwsSecurityGroup.id())
+///             .securityGroupIds(exampleAwsSecurityGroup.get("id"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .ignoreChanges("securityGroupIds")
 ///                 .build());
@@ -735,7 +745,7 @@ class WindowsFileSystem extends pulumi.CustomResource {
           'aws:fsx/windowsFileSystem:WindowsFileSystem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     activeDirectoryId = registerOutput<String?>('activeDirectoryId');
     aliases = registerOutput<List<String>?>('aliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

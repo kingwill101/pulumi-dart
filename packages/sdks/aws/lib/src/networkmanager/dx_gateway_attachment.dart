@@ -76,7 +76,7 @@ import 'dx_gateway_attachment_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -84,7 +84,10 @@ import 'dx_gateway_attachment_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkmanager_dxgatewayattachment" "test" {
+/// resource "aws_networkmanager_dx_gateway_attachment" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   core_network_id            = testAwsNetworkmanagerCoreNetworkPolicyAttachment.coreNetworkId
 ///   direct_connect_gateway_arn ="arn:aws:directconnect::${current.accountId}:dx-gateway/${testAwsDxGateway.id}"
 ///   edge_locations             = [currentAwsRegion.region]
@@ -112,9 +115,9 @@ import 'dx_gateway_attachment_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new DxGatewayAttachment("test", DxGatewayAttachmentArgs.builder()
-///             .coreNetworkId(testAwsNetworkmanagerCoreNetworkPolicyAttachment.coreNetworkId())
-///             .directConnectGatewayArn(String.format("arn:aws:directconnect::%s:dx-gateway/%s", current.accountId(),testAwsDxGateway.id()))
-///             .edgeLocations(currentAwsRegion.region())
+///             .coreNetworkId(testAwsNetworkmanagerCoreNetworkPolicyAttachment.get("coreNetworkId"))
+///             .directConnectGatewayArn(String.format("arn:aws:directconnect::%s:dx-gateway/%s", current.get("accountId"),testAwsDxGateway.get("id")))
+///             .edgeLocations(currentAwsRegion.get("region"))
 ///             .build());
 ///
 ///     }
@@ -182,7 +185,7 @@ class DxGatewayAttachment extends pulumi.CustomResource {
           'aws:networkmanager/dxGatewayAttachment:DxGatewayAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attachmentPolicyRuleNumber = registerOutput<int>('attachmentPolicyRuleNumber');

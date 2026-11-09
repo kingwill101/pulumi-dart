@@ -62,7 +62,7 @@ import 'vpc_dhcp_options_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'vpc_dhcp_options_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcdhcpoptionsassociation" "dns_resolver" {
+/// resource "aws_ec2_vpc_dhcp_options_association" "dns_resolver" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id          = foo.id
 ///   dhcp_options_id = fooAwsVpcDhcpOptions.id
 /// }
@@ -97,8 +100,8 @@ import 'vpc_dhcp_options_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var dnsResolver = new VpcDhcpOptionsAssociation("dnsResolver", VpcDhcpOptionsAssociationArgs.builder()
-///             .vpcId(foo.id())
-///             .dhcpOptionsId(fooAwsVpcDhcpOptions.id())
+///             .vpcId(foo.get("id"))
+///             .dhcpOptionsId(fooAwsVpcDhcpOptions.get("id"))
 ///             .build());
 ///
 ///     }
@@ -144,7 +147,7 @@ class VpcDhcpOptionsAssociation extends pulumi.CustomResource {
           'aws:ec2/vpcDhcpOptionsAssociation:VpcDhcpOptionsAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     dhcpOptionsId = registerOutput<String>('dhcpOptionsId');
     region = registerOutput<String>('region');

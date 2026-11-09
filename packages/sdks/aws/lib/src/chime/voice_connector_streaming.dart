@@ -83,7 +83,7 @@ import 'voice_connector_streaming_state.dart';
 /// 		}
 /// 		_, err = chime.NewVoiceConnectorStreaming(ctx, "default", &chime.VoiceConnectorStreamingArgs{
 /// 			Disabled:         pulumi.Bool(false),
-/// 			VoiceConnectorId: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			VoiceConnectorId: _default.ID(),
 /// 			DataRetention:    pulumi.Int(7),
 /// 			StreamingNotificationTargets: pulumi.StringArray{
 /// 				pulumi.String("SQS"),
@@ -97,7 +97,7 @@ import 'voice_connector_streaming_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -105,13 +105,19 @@ import 'voice_connector_streaming_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_chime_voiceconnector" "default" {
+/// resource "aws_chime_voice_connector" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "vc-name-test"
 ///   require_encryption = true
 /// }
-/// resource "aws_chime_voiceconnectorstreaming" "default" {
+/// resource "aws_chime_voice_connector_streaming" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   disabled                       = false
-///   voice_connector_id             = aws_chime_voiceconnector.default.id
+///   voice_connector_id             = aws_chime_voice_connector.default.id
 ///   data_retention                 = 7
 ///   streaming_notification_targets = ["SQS"]
 /// }
@@ -465,7 +471,7 @@ import 'voice_connector_streaming_state.dart';
 /// 				ConfigurationArn: example.Arn,
 /// 			},
 /// 			Disabled:         pulumi.Bool(false),
-/// 			VoiceConnectorId: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			VoiceConnectorId: _default.ID(),
 /// 			DataRetention:    pulumi.Int(7),
 /// 			StreamingNotificationTargets: pulumi.StringArray{
 /// 				pulumi.String("SQS"),
@@ -479,7 +485,7 @@ import 'voice_connector_streaming_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -487,8 +493,8 @@ import 'voice_connector_streaming_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["mediapipelines.chime.amazonaws.com"]
@@ -498,29 +504,38 @@ import 'voice_connector_streaming_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_chime_voiceconnector" "default" {
+/// resource "aws_chime_voice_connector" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "vc-name-test"
 ///   require_encryption = true
 /// }
-/// resource "aws_chime_voiceconnectorstreaming" "default" {
-///   media_insights_configuration = {
+/// resource "aws_chime_voice_connector_streaming" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   media_insights_configuration {
 ///     disabled          = false
-///     configuration_arn = aws_chimesdkmediapipelines_mediainsightspipelineconfiguration.example.arn
+///     configuration_arn = aws_chimesdkmediapipelines_media_insights_pipeline_configuration.example.arn
 ///   }
 ///   disabled                       = false
-///   voice_connector_id             = aws_chime_voiceconnector.default.id
+///   voice_connector_id             = aws_chime_voice_connector.default.id
 ///   data_retention                 = 7
 ///   streaming_notification_targets = ["SQS"]
 /// }
-/// resource "aws_chimesdkmediapipelines_mediainsightspipelineconfiguration" "example" {
+/// resource "aws_chimesdkmediapipelines_media_insights_pipeline_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   elements {
-///     amazon_transcribe_call_analytics_processor_configuration = {
+///     amazon_transcribe_call_analytics_processor_configuration {
 ///       language_code = "en-US"
 ///     }
 ///     type = "AmazonTranscribeCallAnalyticsProcessor"
 ///   }
 ///   elements {
-///     kinesis_data_stream_sink_configuration = {
+///     kinesis_data_stream_sink_configuration {
 ///       insights_target = aws_kinesis_stream.example.arn
 ///     }
 ///     type = "KinesisDataStreamSink"
@@ -529,11 +544,17 @@ import 'voice_connector_streaming_state.dart';
 ///   resource_access_role_arn = aws_iam_role.example.arn
 /// }
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "ExampleResourceAccessRole"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
 /// resource "aws_kinesis_stream" "example" {
-///   stream_mode_details = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   stream_mode_details {
 ///     stream_mode = "ON_DEMAND"
 ///   }
 ///   name = "ExampleStream"
@@ -730,7 +751,7 @@ class VoiceConnectorStreaming extends pulumi.CustomResource {
           'aws:chime/voiceConnectorStreaming:VoiceConnectorStreaming',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     dataRetention = registerOutput<int>('dataRetention');
     disabled = registerOutput<bool?>('disabled');

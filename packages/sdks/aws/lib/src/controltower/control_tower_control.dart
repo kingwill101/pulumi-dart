@@ -84,7 +84,7 @@ import 'control_tower_control_state.dart';
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -92,21 +92,24 @@ import 'control_tower_control_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
-/// data "aws_organizations_getorganization" "example" {
+/// data "aws_organizations_organization" "example" {
 /// }
-/// data "aws_organizations_getorganizationalunits" "exampleGetOrganizationalUnits" {
-///   parent_id = data.aws_organizations_getorganization.example.roots[0].id
+/// data "aws_organizations_organizational_units" "exampleGetOrganizationalUnits" {
+///   parent_id = data.aws_organizations_organization.example.roots[0].id
 /// }
 ///
-/// resource "aws_controltower_controltowercontrol" "example" {
+/// resource "aws_controltower_control_tower_control" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameters {
 ///     key   = "AllowedRegions"
 ///     value = jsonencode(["us-east-1"])
 ///   }
-///   control_identifier ="arn:aws:controltower:${data.aws_getregion.current.region}::control/AWS-GR_EC2_VOLUME_INUSE_CHECK"
-///   target_identifier  = [for x in data.aws_organizations_getorganizationalunits.exampleGetOrganizationalUnits.children : x.arn if x.name == "Infrastructure"][0]
+///   control_identifier ="arn:aws:controltower:${data.aws_region.current.region}::control/AWS-GR_EC2_VOLUME_INUSE_CHECK"
+///   target_identifier  = [for x in data.aws_organizations_organizational_units.exampleGetOrganizationalUnits.children : x.arn if x.name == "Infrastructure"][0]
 /// }
 /// ```
 ///
@@ -144,7 +147,7 @@ class ControlTowerControl extends pulumi.CustomResource {
           'aws:controltower/controlTowerControl:ControlTowerControl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     controlIdentifier = registerOutput<String>('controlIdentifier');

@@ -192,7 +192,7 @@ import 'web_acl_state.dart';
 /// 		wafrule, err := waf.NewRule(ctx, "wafrule", &waf.RuleArgs{
 /// 			Predicates: waf.RulePredicateArray{
 /// 				&waf.RulePredicateArgs{
-/// 					DataId:  ipset.ID().ToIDOutput().ToStringOutput(),
+/// 					DataId:  ipset.ID(),
 /// 					Negated: pulumi.Bool(false),
 /// 					Type:    pulumi.String("IPMatch"),
 /// 				},
@@ -215,7 +215,7 @@ import 'web_acl_state.dart';
 /// 						Type: pulumi.String("BLOCK"),
 /// 					},
 /// 					Priority: pulumi.Int(1),
-/// 					RuleId:   wafrule.ID().ToIDOutput().ToStringOutput(),
+/// 					RuleId:   wafrule.ID(),
 /// 					Type:     pulumi.String("REGULAR"),
 /// 				},
 /// 			},
@@ -233,7 +233,7 @@ import 'web_acl_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -241,7 +241,10 @@ import 'web_acl_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_waf_ipset" "ipset" {
+/// resource "aws_waf_ip_set" "ipset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ip_set_descriptors {
 ///     type  = "IPV4"
 ///     value = "192.0.7.0/24"
@@ -249,22 +252,28 @@ import 'web_acl_state.dart';
 ///   name = "tfIPSet"
 /// }
 /// resource "aws_waf_rule" "wafrule" {
-///   depends_on = [aws_waf_ipset.ipset]
+///   depends_on = [aws_waf_ip_set.ipset]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   predicates {
-///     data_id = aws_waf_ipset.ipset.id
+///     data_id = aws_waf_ip_set.ipset.id
 ///     negated = false
 ///     type    = "IPMatch"
 ///   }
 ///   name        = "tfWAFRule"
 ///   metric_name = "tfWAFRule"
 /// }
-/// resource "aws_waf_webacl" "waf_acl" {
-///   depends_on = [aws_waf_ipset.ipset, aws_waf_rule.wafrule]
-///   default_action = {
+/// resource "aws_waf_web_acl" "waf_acl" {
+///   depends_on = [aws_waf_ip_set.ipset, aws_waf_rule.wafrule]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_action {
 ///     type = "ALLOW"
 ///   }
 ///   rules {
-///     action = {
+///     action {
 ///       type = "BLOCK"
 ///     }
 ///     priority = 1
@@ -501,7 +510,7 @@ import 'web_acl_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -509,15 +518,19 @@ import 'web_acl_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_waf_webacl" "example" {
-///   logging_configuration = {
-///     redacted_fields = {
-///       field_to_matches = [{
-///         "type" = "URI"
-///         }, {
-///         "data" = "referer"
-///         "type" = "HEADER"
-///       }]
+/// resource "aws_waf_web_acl" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   logging_configuration {
+///     redacted_fields {
+///       field_to_match {
+///         type = "URI"
+///       }
+///       field_to_match {
+///         data = "referer"
+///         type = "HEADER"
+///       }
 ///     }
 ///     log_destination = exampleAwsKinesisFirehoseDeliveryStream.arn
 ///   }
@@ -559,7 +572,7 @@ import 'web_acl_state.dart';
 ///                             .type("HEADER")
 ///                             .build())
 ///                     .build())
-///                 .logDestination(exampleAwsKinesisFirehoseDeliveryStream.arn())
+///                 .logDestination(exampleAwsKinesisFirehoseDeliveryStream.get("arn"))
 ///                 .build())
 ///             .build());
 ///
@@ -618,7 +631,7 @@ class WebAcl extends pulumi.CustomResource {
           'aws:waf/webAcl:WebAcl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultAction = registerOutput<WebAclDefaultAction>('defaultAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclDefaultAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });

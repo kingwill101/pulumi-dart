@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogTransformerTransformerConfigParseToOcsf {
+  /// Specifies the service or process that produces the log events. Allowed values are: `CloudTrail`, `Route53Resolver`, `VPCFlow`, `EKSAudit`, and `AWSWAF`.
   final pulumi.Input<String> eventSource;
   /// Specifies the version of the OCSF schema to use for the transformed log events. The only allowed value is `V1.1`.
   final pulumi.Input<String> ocsfVersion;
@@ -10,7 +11,7 @@ class LogTransformerTransformerConfigParseToOcsf {
   final pulumi.Input<String?>? source;
 
   /// Creates a new [LogTransformerTransformerConfigParseToOcsf].
-  /// [eventSource] Required.
+  /// [eventSource] Specifies the service or process that produces the log events. Allowed values are: `CloudTrail`, `Route53Resolver`, `VPCFlow`, `EKSAudit`, and `AWSWAF`.
   /// [ocsfVersion] Specifies the version of the OCSF schema to use for the transformed log events. The only allowed value is `V1.1`.
   /// [source] Specifies the source field to be parsed. The only allowed value is `@message`. If omitted, the whole log message is processed.
   const LogTransformerTransformerConfigParseToOcsf({

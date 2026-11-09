@@ -64,7 +64,7 @@ import 'application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,6 +73,9 @@ import 'application_state.dart';
 /// }
 ///
 /// resource "aws_codedeploy_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_platform = "ECS"
 ///   name             = "example"
 /// }
@@ -174,7 +177,7 @@ import 'application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -183,6 +186,9 @@ import 'application_state.dart';
 /// }
 ///
 /// resource "aws_codedeploy_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_platform = "Lambda"
 ///   name             = "example"
 /// }
@@ -284,7 +290,7 @@ import 'application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -293,6 +299,9 @@ import 'application_state.dart';
 /// }
 ///
 /// resource "aws_codedeploy_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_platform = "Server"
 ///   name             = "example"
 /// }
@@ -375,7 +384,7 @@ class Application extends pulumi.CustomResource {
           'aws:codedeploy/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     arn = registerOutput<String>('arn');

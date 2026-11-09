@@ -147,7 +147,7 @@ import 'event_bus_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -155,8 +155,8 @@ import 'event_bus_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "test" {
-///   statements {
+/// data "aws_iam_policy_document" "test" {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = ["123456789012"]
@@ -168,8 +168,11 @@ import 'event_bus_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_eventbuspolicy" "test" {
-///   policy         = data.aws_iam_getpolicydocument.test.json
+/// resource "aws_cloudwatch_event_bus_policy" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy         = data.aws_iam_policy_document.test.json
 ///   event_bus_name = testAwsCloudwatchEventBus.name
 /// }
 /// ```
@@ -213,7 +216,7 @@ import 'event_bus_policy_state.dart';
 ///
 ///         var testEventBusPolicy = new EventBusPolicy("testEventBusPolicy", EventBusPolicyArgs.builder()
 ///             .policy(test.json())
-///             .eventBusName(testAwsCloudwatchEventBus.name())
+///             .eventBusName(testAwsCloudwatchEventBus.get("name"))
 ///             .build());
 ///
 ///     }
@@ -395,7 +398,7 @@ import 'event_bus_policy_state.dart';
 /// 						{
 /// 							Test:     "StringEquals",
 /// 							Variable: "aws:PrincipalOrgID",
-/// 							Values: pulumi.StringArray{
+/// 							Values: []string{
 /// 								example.Id,
 /// 							},
 /// 						},
@@ -438,7 +441,7 @@ import 'event_bus_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -446,9 +449,9 @@ import 'event_bus_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "test" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "test" {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
 ///       variable = "aws:PrincipalOrgID"
 ///       values   = [example.id]
@@ -464,8 +467,11 @@ import 'event_bus_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_eventbuspolicy" "test" {
-///   policy         = data.aws_iam_getpolicydocument.test.json
+/// resource "aws_cloudwatch_event_bus_policy" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy         = data.aws_iam_policy_document.test.json
 ///   event_bus_name = testAwsCloudwatchEventBus.name
 /// }
 /// ```
@@ -500,7 +506,7 @@ import 'event_bus_policy_state.dart';
 ///                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
 ///                     .test("StringEquals")
 ///                     .variable("aws:PrincipalOrgID")
-///                     .values(example.id())
+///                     .values(example.get("id"))
 ///                     .build())
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("AWS")
@@ -521,7 +527,7 @@ import 'event_bus_policy_state.dart';
 ///
 ///         var testEventBusPolicy = new EventBusPolicy("testEventBusPolicy", EventBusPolicyArgs.builder()
 ///             .policy(test.json())
-///             .eventBusName(testAwsCloudwatchEventBus.name())
+///             .eventBusName(testAwsCloudwatchEventBus.get("name"))
 ///             .build());
 ///
 ///     }
@@ -778,7 +784,7 @@ import 'event_bus_policy_state.dart';
 /// 						{
 /// 							Test:     "StringEquals",
 /// 							Variable: "aws:PrincipalOrgID",
-/// 							Values: pulumi.StringArray{
+/// 							Values: []string{
 /// 								example.Id,
 /// 							},
 /// 						},
@@ -821,7 +827,7 @@ import 'event_bus_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -829,8 +835,8 @@ import 'event_bus_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "test" {
-///   statements {
+/// data "aws_iam_policy_document" "test" {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = ["123456789012"]
@@ -840,8 +846,8 @@ import 'event_bus_policy_state.dart';
 ///     actions   = ["events:PutEvents"]
 ///     resources = ["arn:aws:events:eu-west-1:123456789012:event-bus/default"]
 ///   }
-///   statements {
-///     conditions {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
 ///       variable = "aws:PrincipalOrgID"
 ///       values   = [example.id]
@@ -857,8 +863,11 @@ import 'event_bus_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_eventbuspolicy" "test" {
-///   policy         = data.aws_iam_getpolicydocument.test.json
+/// resource "aws_cloudwatch_event_bus_policy" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy         = data.aws_iam_policy_document.test.json
 ///   event_bus_name = testAwsCloudwatchEventBus.name
 /// }
 /// ```
@@ -904,7 +913,7 @@ import 'event_bus_policy_state.dart';
 ///                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
 ///                         .test("StringEquals")
 ///                         .variable("aws:PrincipalOrgID")
-///                         .values(example.id())
+///                         .values(example.get("id"))
 ///                         .build())
 ///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                         .type("AWS")
@@ -925,7 +934,7 @@ import 'event_bus_policy_state.dart';
 ///
 ///         var testEventBusPolicy = new EventBusPolicy("testEventBusPolicy", EventBusPolicyArgs.builder()
 ///             .policy(test.json())
-///             .eventBusName(testAwsCloudwatchEventBus.name())
+///             .eventBusName(testAwsCloudwatchEventBus.get("name"))
 ///             .build());
 ///
 ///     }
@@ -1017,7 +1026,7 @@ class EventBusPolicy extends pulumi.CustomResource {
           'aws:cloudwatch/eventBusPolicy:EventBusPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     eventBusName = registerOutput<String?>('eventBusName');
     policy = registerOutput<String>('policy');

@@ -116,7 +116,7 @@ import 'endpoint_transit_gateway_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -125,6 +125,9 @@ import 'endpoint_transit_gateway_configuration.dart';
 /// }
 ///
 /// resource "aws_ec2clientvpn_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_log_options = {
 ///     enabled               = true
 ///     cloudwatch_log_group  = lg.name
@@ -165,15 +168,15 @@ import 'endpoint_transit_gateway_configuration.dart';
 ///         var example = new Endpoint("example", EndpointArgs.builder()
 ///             .connectionLogOptions(EndpointConnectionLogOptionsArgs.builder()
 ///                 .enabled(true)
-///                 .cloudwatchLogGroup(lg.name())
-///                 .cloudwatchLogStream(ls.name())
+///                 .cloudwatchLogGroup(lg.get("name"))
+///                 .cloudwatchLogStream(ls.get("name"))
 ///                 .build())
 ///             .authenticationOptions(EndpointAuthenticationOptionArgs.builder()
 ///                 .type("certificate-authentication")
-///                 .rootCertificateChainArn(rootCert.arn())
+///                 .rootCertificateChainArn(rootCert.get("arn"))
 ///                 .build())
 ///             .description("clientvpn-example")
-///             .serverCertificateArn(cert.arn())
+///             .serverCertificateArn(cert.get("arn"))
 ///             .clientCidrBlock("10.0.0.0/16")
 ///             .build());
 ///
@@ -271,7 +274,7 @@ class Endpoint extends pulumi.CustomResource {
           'aws:ec2clientvpn/endpoint:Endpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     authenticationOptions = registerOutput<List<EndpointAuthenticationOption>>('authenticationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointAuthenticationOption>(guardedValue, (value) => EndpointAuthenticationOption.fromMap((value as Map).cast<String, dynamic>())); });

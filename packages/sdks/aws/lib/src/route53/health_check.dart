@@ -93,7 +93,7 @@ import 'health_check_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -101,7 +101,10 @@ import 'health_check_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53_healthcheck" "example" {
+/// resource "aws_route53_health_check" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fqdn              = "example.com"
 ///   port              = 80
 ///   type              = "HTTP"
@@ -241,7 +244,7 @@ import 'health_check_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -249,7 +252,10 @@ import 'health_check_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53_healthcheck" "example" {
+/// resource "aws_route53_health_check" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   failure_threshold = "5"
 ///   fqdn              = "example.com"
 ///   port              = 443
@@ -388,7 +394,7 @@ import 'health_check_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -396,7 +402,10 @@ import 'health_check_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53_healthcheck" "parent" {
+/// resource "aws_route53_health_check" "parent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   type                   = "CALCULATED"
 ///   child_health_threshold = 1
 ///   child_healthchecks     = [child.id]
@@ -429,7 +438,7 @@ import 'health_check_state.dart';
 ///         var parent = new HealthCheck("parent", HealthCheckArgs.builder()
 ///             .type("CALCULATED")
 ///             .childHealthThreshold(1)
-///             .childHealthchecks(child.id())
+///             .childHealthchecks(child.get("id"))
 ///             .tags(Map.of("Name", "tf-test-calculated-health-check"))
 ///             .build());
 ///
@@ -512,7 +521,7 @@ import 'health_check_state.dart';
 ///         Namespace = "AWS/EC2",
 ///         Period = 120,
 ///         Statistic = "Average",
-///         Threshold = 80,
+///         Threshold = 80.0,
 ///         AlarmDescription = "This metric monitors ec2 cpu utilization",
 ///     });
 ///
@@ -565,7 +574,7 @@ import 'health_check_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -573,8 +582,11 @@ import 'health_check_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_metricalarm" "foobar" {
-///   name                = "test-foobar5"
+/// resource "aws_cloudwatch_metric_alarm" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   alarm_name          = "test-foobar5"
 ///   comparison_operator = "GreaterThanOrEqualToThreshold"
 ///   evaluation_periods  = "2"
 ///   metric_name         = "CPUUtilization"
@@ -584,9 +596,12 @@ import 'health_check_state.dart';
 ///   threshold           = "80"
 ///   alarm_description   = "This metric monitors ec2 cpu utilization"
 /// }
-/// resource "aws_route53_healthcheck" "foo" {
+/// resource "aws_route53_health_check" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   type                            = "CLOUDWATCH_METRIC"
-///   cloudwatch_alarm_name           = aws_cloudwatch_metricalarm.foobar.name
+///   cloudwatch_alarm_name           = aws_cloudwatch_metric_alarm.foobar.alarm_name
 ///   cloudwatch_alarm_region         = "us-west-2"
 ///   insufficient_data_health_status = "Healthy"
 /// }
@@ -731,7 +746,7 @@ import 'health_check_state.dart';
 ///         Namespace = "AWS/EC2",
 ///         Period = 120,
 ///         Statistic = "Average",
-///         Threshold = 80,
+///         Threshold = 80.0,
 ///         AlarmDescription = "This metric monitors ec2 cpu utilization",
 ///     });
 ///
@@ -743,7 +758,7 @@ import 'health_check_state.dart';
 ///         InsufficientDataHealthStatus = "Healthy",
 ///         Triggers =
 ///         {
-///             { "threshold", example.Threshold },
+///             { "threshold", example.Threshold.Apply(x => x.ToString(System.Globalization.CultureInfo.InvariantCulture)) },
 ///         },
 ///     });
 ///
@@ -791,7 +806,7 @@ import 'health_check_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -799,8 +814,11 @@ import 'health_check_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_metricalarm" "example" {
-///   name                = "example"
+/// resource "aws_cloudwatch_metric_alarm" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   alarm_name          = "example"
 ///   comparison_operator = "GreaterThanOrEqualToThreshold"
 ///   evaluation_periods  = "2"
 ///   metric_name         = "CPUUtilization"
@@ -810,13 +828,16 @@ import 'health_check_state.dart';
 ///   threshold           = "80"
 ///   alarm_description   = "This metric monitors ec2 cpu utilization"
 /// }
-/// resource "aws_route53_healthcheck" "example" {
+/// resource "aws_route53_health_check" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   type                            = "CLOUDWATCH_METRIC"
-///   cloudwatch_alarm_name           = aws_cloudwatch_metricalarm.example.name
+///   cloudwatch_alarm_name           = aws_cloudwatch_metric_alarm.example.alarm_name
 ///   cloudwatch_alarm_region         = "us-west-2"
 ///   insufficient_data_health_status = "Healthy"
 ///   triggers = {
-///     "threshold" = aws_cloudwatch_metricalarm.example.threshold
+///     "threshold" = aws_cloudwatch_metric_alarm.example.threshold
 ///   }
 /// }
 /// ```
@@ -968,7 +989,7 @@ class HealthCheck extends pulumi.CustomResource {
           'aws:route53/healthCheck:HealthCheck',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     childHealthThreshold = registerOutput<int?>('childHealthThreshold');

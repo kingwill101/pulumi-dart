@@ -268,7 +268,7 @@ import 'invocation_logging_configuration_state.dart';
 /// 		_, err = bedrockmodel.NewInvocationLoggingConfiguration(ctx, "example", &bedrockmodel.InvocationLoggingConfigurationArgs{
 /// 			LoggingConfig: &bedrockmodel.InvocationLoggingConfigurationLoggingConfigArgs{
 /// 				S3Config: &bedrockmodel.InvocationLoggingConfigurationLoggingConfigS3ConfigArgs{
-/// 					BucketName: example.ID().ToIDOutput().ToStringOutput(),
+/// 					BucketName: example.ID(),
 /// 					KeyPrefix:  pulumi.String("bedrock"),
 /// 				},
 /// 				EmbeddingDataDeliveryEnabled: pulumi.Bool(true),
@@ -287,7 +287,7 @@ import 'invocation_logging_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -295,19 +295,24 @@ import 'invocation_logging_configuration_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
 ///   lifecycle {
-///     ignore_changes = [tags["CreatorId"], tags["CreatorName"]]
+///     ignore_changes        = [tags["CreatorId"], tags["CreatorName"]]
+///     create_before_destroy = true
 ///   }
 ///   bucket        = "example"
 ///   force_destroy = true
 /// }
-/// resource "aws_s3_bucketpolicy" "example" {
+/// resource "aws_s3_bucket_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.bucket
-///   policy ="{
+///   policy = <<EOF
+/// {
 ///   \"Version\": \"2012-10-17\",
 ///   \"Statement\": [
 ///     {
@@ -323,19 +328,23 @@ import 'invocation_logging_configuration_state.dart';
 ///       ],
 ///       \"Condition\": {
 ///         \"StringEquals\": {
-///           \"aws:SourceAccount\": \"${data.aws_getcalleridentity.current.account_id}\"
+///           \"aws:SourceAccount\": \"${data.aws_caller_identity.current.account_id}\"
 ///         },
 ///         \"ArnLike\": {
-///           \"aws:SourceArn\": \"arn:aws:bedrock:us-east-1:${data.aws_getcalleridentity.current.account_id}:*\"
+///           \"aws:SourceArn\": \"arn:aws:bedrock:us-east-1:${data.aws_caller_identity.current.account_id}:*\"
 ///         }
 ///       }
 ///     }
 ///   ]
 /// }
-/// "
+/// EOF
+///
 /// }
-/// resource "aws_bedrockmodel_invocationloggingconfiguration" "example" {
-///   depends_on = [aws_s3_bucketpolicy.example]
+/// resource "aws_bedrockmodel_invocation_logging_configuration" "example" {
+///   depends_on = [aws_s3_bucket_policy.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   logging_config = {
 ///     s3_config = {
 ///       bucket_name = aws_s3_bucket.example.id
@@ -535,7 +544,7 @@ class InvocationLoggingConfiguration extends pulumi.CustomResource {
           'aws:bedrockmodel/invocationLoggingConfiguration:InvocationLoggingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     loggingConfig = registerOutput<InvocationLoggingConfigurationLoggingConfig>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InvocationLoggingConfigurationLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');

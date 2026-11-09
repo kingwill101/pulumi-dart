@@ -383,7 +383,7 @@ import 'stream_processor_timeouts.dart';
 /// 						var _zero string
 /// 						tmpJSON1, err := json.Marshal(map[string]interface{}{
 /// 							"Version": "2012-10-17",
-/// 							"Statement": []map[string]interface{}{
+/// 							"Statement": []interface{}{
 /// 								map[string]interface{}{
 /// 									"Action": []string{
 /// 										"s3:PutObject",
@@ -464,7 +464,7 @@ import 'stream_processor_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -473,19 +473,31 @@ import 'stream_processor_timeouts.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example-bucket"
 /// }
 /// resource "aws_sns_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 /// }
-/// resource "aws_kinesis_videostream" "example" {
+/// resource "aws_kinesis_video_stream" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-kinesis-input"
 ///   data_retention_in_hours = 1
 ///   device_name             = "kinesis-video-device-name"
 ///   media_type              = "video/h264"
 /// }
 /// resource "aws_iam_role" "example" {
-///   inline_policies {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   inline_policy {
 ///     name = "Rekognition-Access"
 ///     policy = jsonencode({
 ///       "Version" = "2012-10-17"
@@ -500,7 +512,7 @@ import 'stream_processor_timeouts.dart';
 ///         }, {
 ///         "Action"   = ["kinesis:Get*", "kinesis:DescribeStreamSummary"]
 ///         "Effect"   = "Allow"
-///         "Resource" = [aws_kinesis_videostream.example.arn]
+///         "Resource" = [aws_kinesis_video_stream.example.arn]
 ///       }]
 ///     })
 ///   }
@@ -516,26 +528,29 @@ import 'stream_processor_timeouts.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_rekognition_streamprocessor" "example" {
-///   data_sharing_preference = {
+/// resource "aws_rekognition_stream_processor" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   data_sharing_preference {
 ///     opt_in = false
 ///   }
-///   output = {
-///     s3_destination = {
+///   output {
+///     s3_destination {
 ///       bucket = aws_s3_bucket.example.bucket
 ///     }
 ///   }
-///   settings = {
-///     connected_home = {
+///   settings {
+///     connected_home {
 ///       labels = ["PERSON", "PET"]
 ///     }
 ///   }
-///   input = {
-///     kinesis_video_stream = {
-///       arn = aws_kinesis_videostream.example.arn
+///   input {
+///     kinesis_video_stream {
+///       arn = aws_kinesis_video_stream.example.arn
 ///     }
 ///   }
-///   notification_channel = {
+///   notification_channel {
 ///     sns_topic_arn = aws_sns_topic.example.arn
 ///   }
 ///   role_arn = aws_iam_role.example.arn
@@ -1196,7 +1211,7 @@ import 'stream_processor_timeouts.dart';
 /// 			},
 /// 			Settings: &rekognition.StreamProcessorSettingsArgs{
 /// 				FaceSearch: &rekognition.StreamProcessorSettingsFaceSearchArgs{
-/// 					CollectionId: exampleCollection.ID().ToIDOutput().ToStringOutput(),
+/// 					CollectionId: exampleCollection.ID(),
 /// 				},
 /// 			},
 /// 			RegionsOfInterests: rekognition.StreamProcessorRegionsOfInterestArray{
@@ -1228,7 +1243,7 @@ import 'stream_processor_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1236,27 +1251,36 @@ import 'stream_processor_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kinesis_videostream" "example" {
+/// resource "aws_kinesis_video_stream" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-kinesis-input"
 ///   data_retention_in_hours = 1
 ///   device_name             = "kinesis-video-device-name"
 ///   media_type              = "video/h264"
 /// }
 /// resource "aws_kinesis_stream" "example" {
-///   stream_mode_details = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   stream_mode_details {
 ///     stream_mode = "ON_DEMAND"
 ///   }
 ///   name = "pulumi-kinesis-example"
 /// }
 /// resource "aws_iam_role" "example" {
-///   inline_policies {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   inline_policy {
 ///     name = "Rekognition-Access"
 ///     policy = jsonencode({
 ///       "Version" = "2012-10-17"
 ///       "Statement" = [{
 ///         "Action"   = ["kinesis:Get*", "kinesis:DescribeStreamSummary"]
 ///         "Effect"   = "Allow"
-///         "Resource" = [aws_kinesis_videostream.example.arn]
+///         "Resource" = [aws_kinesis_video_stream.example.arn]
 ///         }, {
 ///         "Action"   = ["kinesis:PutRecord"]
 ///         "Effect"   = "Allow"
@@ -1277,37 +1301,43 @@ import 'stream_processor_timeouts.dart';
 ///   })
 /// }
 /// resource "aws_rekognition_collection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   collection_id = "example-collection"
 /// }
-/// resource "aws_rekognition_streamprocessor" "example" {
-///   data_sharing_preference = {
+/// resource "aws_rekognition_stream_processor" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   data_sharing_preference {
 ///     opt_in = false
 ///   }
-///   input = {
-///     kinesis_video_stream = {
-///       arn = aws_kinesis_videostream.example.arn
+///   input {
+///     kinesis_video_stream {
+///       arn = aws_kinesis_video_stream.example.arn
 ///     }
 ///   }
-///   output = {
-///     kinesis_data_stream = {
+///   output {
+///     kinesis_data_stream {
 ///       arn = aws_kinesis_stream.example.arn
 ///     }
 ///   }
-///   settings = {
-///     face_search = {
+///   settings {
+///     face_search {
 ///       collection_id = aws_rekognition_collection.example.id
 ///     }
 ///   }
-///   regions_of_interests {
-///     polygons {
+///   regions_of_interest {
+///     polygon {
 ///       x = 0.5
 ///       y = 0.5
 ///     }
-///     polygons {
+///     polygon {
 ///       x = 0.5
 ///       y = 0.5
 ///     }
-///     polygons {
+///     polygon {
 ///       x = 0.5
 ///       y = 0.5
 ///     }
@@ -1600,7 +1630,7 @@ class StreamProcessor extends pulumi.CustomResource {
           'aws:rekognition/streamProcessor:StreamProcessor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dataSharingPreference = registerOutput<StreamProcessorDataSharingPreference?>('dataSharingPreference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamProcessorDataSharingPreference.fromMap((guardedValue as Map).cast<String, dynamic>()); });

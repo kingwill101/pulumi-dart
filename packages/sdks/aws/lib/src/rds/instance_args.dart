@@ -100,6 +100,8 @@ class InstanceArgs {
   final pulumi.Input<String?>? monitoringRoleArn;
   /// Whether the RDS instance is multi-AZ.
   final pulumi.Input<bool?>? multiAz;
+  /// Whether to use the multi-tenant configuration of the Oracle CDB architecture. Only valid for RDS for Oracle CDB engines (`oracle-ee-cdb` and `oracle-se2-cdb`). Changing from `false` to `true` converts the instance in place and requires `applyImmediately = true`; RDS also applies any pending modifications at that time. Restored instances and read replicas are converted after creation. Conversion is irreversible, so changing from `true` to `false` forces a new resource. After conversion, RDS rejects changes to `password`, `passwordWo`, and `manageMasterUserPassword` on the instance; manage master user credentials on the tenant database instead. Additional tenant databases are managed outside this resource. See the [AWS documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Oracle.Concepts.CDBs.html) for details.
+  final pulumi.Input<bool?>? multiTenant;
   /// National character set is used in the NCHAR, NVARCHAR2, and NCLOB data types for Oracle instances. This can't be changed. See [Oracle Character Sets Supported in Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.OracleCharacterSets.html).
   final pulumi.Input<String?>? ncharCharacterSetName;
   /// Network type of the DB instance. Valid values: `IPV4`, `DUAL`.
@@ -111,7 +113,7 @@ class InstanceArgs {
   /// Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file. Cannot be set if `manageMasterUserPassword` is set to `true`.
   final pulumi.Input<String?>? password;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file. Cannot be set if `manageMasterUserPassword` is set to `true`. If set, requires `passwordWoVersion` to be set.
+  /// Password for the master DB user. Note that this may show up in logs. Cannot be set if `manageMasterUserPassword` is set to `true`. If set, requires `passwordWoVersion` to be set.
   final pulumi.Input<String?>? passwordWo;
   /// Required when `passwordWo` is set. Changing this value triggers an update to `passwordWo`.
   final pulumi.Input<int?>? passwordWoVersion;
@@ -204,6 +206,7 @@ class InstanceArgs {
   /// [monitoringInterval] Interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB instance. To disable collecting Enhanced Monitoring metrics, specify 0. The default is 0. Valid Values: 0, 1, 5, 10, 15, 30, 60.
   /// [monitoringRoleArn] ARN for the IAM role that permits RDS to send enhanced monitoring metrics to CloudWatch Logs. You can find more information on the [AWS Documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html) what IAM permissions are needed to allow Enhanced Monitoring for RDS Instances.
   /// [multiAz] Whether the RDS instance is multi-AZ.
+  /// [multiTenant] Whether to use the multi-tenant configuration of the Oracle CDB architecture. Only valid for RDS for Oracle CDB engines (`oracle-ee-cdb` and `oracle-se2-cdb`). Changing from `false` to `true` converts the instance in place and requires `applyImmediately = true`; RDS also applies any pending modifications at that time. Restored instances and read replicas are converted after creation. Conversion is irreversible, so changing from `true` to `false` forces a new resource. After conversion, RDS rejects changes to `password`, `passwordWo`, and `manageMasterUserPassword` on the instance; manage master user credentials on the tenant database instead. Additional tenant databases are managed outside this resource. See the [AWS documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Oracle.Concepts.CDBs.html) for details.
   /// [ncharCharacterSetName] National character set is used in the NCHAR, NVARCHAR2, and NCLOB data types for Oracle instances. This can't be changed. See [Oracle Character Sets Supported in Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.OracleCharacterSets.html).
   /// [networkType] Network type of the DB instance. Valid values: `IPV4`, `DUAL`.
   /// [optionGroupName] Name of the DB option group to associate.
@@ -278,6 +281,7 @@ class InstanceArgs {
     this.monitoringInterval,
     this.monitoringRoleArn,
     this.multiAz,
+    this.multiTenant,
     this.ncharCharacterSetName,
     this.networkType,
     this.optionGroupName,
@@ -355,6 +359,7 @@ class InstanceArgs {
       'monitoringInterval': ?monitoringInterval,
       'monitoringRoleArn': ?monitoringRoleArn,
       'multiAz': ?multiAz,
+      'multiTenant': ?multiTenant,
       'ncharCharacterSetName': ?ncharCharacterSetName,
       'networkType': ?networkType,
       'optionGroupName': ?optionGroupName,
@@ -433,6 +438,7 @@ class InstanceArgs {
       monitoringInterval: (() { final guardedValue = map['monitoringInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       monitoringRoleArn: (() { final guardedValue = map['monitoringRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       multiAz: (() { final guardedValue = map['multiAz']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      multiTenant: (() { final guardedValue = map['multiTenant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       ncharCharacterSetName: (() { final guardedValue = map['ncharCharacterSetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkType: (() { final guardedValue = map['networkType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       optionGroupName: (() { final guardedValue = map['optionGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

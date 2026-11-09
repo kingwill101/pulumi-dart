@@ -92,7 +92,7 @@ import 'vpn_concentrator_state.dart';
 /// 		}
 /// 		_, err = ec2.NewVpnConcentrator(ctx, "example", &ec2.VpnConcentratorArgs{
 /// 			Type:             pulumi.String("ipsec.1"),
-/// 			TransitGatewayId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			TransitGatewayId: example.ID(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("example"),
 /// 			},
@@ -105,7 +105,7 @@ import 'vpn_concentrator_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -113,15 +113,21 @@ import 'vpn_concentrator_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2transitgateway_transitgateway" "example" {
+/// resource "aws_ec2transitgateway_transit_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "example"
 ///   tags = {
 ///     "Name" = "example"
 ///   }
 /// }
-/// resource "aws_ec2_vpnconcentrator" "example" {
+/// resource "aws_ec2_vpn_concentrator" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   type               = "ipsec.1"
-///   transit_gateway_id = aws_ec2transitgateway_transitgateway.example.id
+///   transit_gateway_id = aws_ec2transitgateway_transit_gateway.example.id
 ///   tags = {
 ///     "Name" = "example"
 ///   }
@@ -220,7 +226,7 @@ class VpnConcentrator extends pulumi.CustomResource {
           'aws:ec2/vpnConcentrator:VpnConcentrator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

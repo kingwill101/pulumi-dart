@@ -99,7 +99,7 @@ import 'task_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -107,8 +107,11 @@ import 'task_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecs_taskset" "example" {
-///   load_balancers {
+/// resource "aws_ecs_task_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   load_balancer {
 ///     target_group_arn = exampleAwsLbTargetGroup.arn
 ///     container_name   = "mongo"
 ///     container_port   = 8080
@@ -142,13 +145,13 @@ import 'task_set_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new TaskSet("example", TaskSetArgs.builder()
 ///             .loadBalancers(TaskSetLoadBalancerArgs.builder()
-///                 .targetGroupArn(exampleAwsLbTargetGroup.arn())
+///                 .targetGroupArn(exampleAwsLbTargetGroup.get("arn"))
 ///                 .containerName("mongo")
 ///                 .containerPort(8080)
 ///                 .build())
-///             .service(exampleAwsEcsService.id())
-///             .cluster(exampleAwsEcsCluster.id())
-///             .taskDefinition(exampleAwsEcsTaskDefinition.arn())
+///             .service(exampleAwsEcsService.get("id"))
+///             .cluster(exampleAwsEcsCluster.get("id"))
+///             .taskDefinition(exampleAwsEcsTaskDefinition.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -205,7 +208,7 @@ import 'task_set_state.dart';
 ///     {
 ///         Scale = new Aws.Ecs.Inputs.TaskSetScaleArgs
 ///         {
-///             Value = 50,
+///             Value = 50.0,
 ///         },
 ///     }, new CustomResourceOptions
 ///     {
@@ -242,7 +245,7 @@ import 'task_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -250,11 +253,12 @@ import 'task_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecs_taskset" "example" {
+/// resource "aws_ecs_task_set" "example" {
 ///   lifecycle {
-///     ignore_changes = [scale]
+///     ignore_changes        = [scale]
+///     create_before_destroy = true
 ///   }
-///   scale = {
+///   scale {
 ///     value = 50
 ///   }
 /// }
@@ -371,7 +375,7 @@ class TaskSet extends pulumi.CustomResource {
           'aws:ecs/taskSet:TaskSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     capacityProviderStrategies = registerOutput<List<TaskSetCapacityProviderStrategy>?>('capacityProviderStrategies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TaskSetCapacityProviderStrategy>(guardedValue, (value) => TaskSetCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>())); });

@@ -118,7 +118,7 @@ import 'listener_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -126,16 +126,25 @@ import 'listener_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lb_loadbalancer" "front_end" {
+/// resource "aws_lb_load_balancer" "front_end" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_lb_targetgroup" "front_end" {
+/// resource "aws_lb_target_group" "front_end" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_lb_listener" "front_end" {
-///   default_actions {
-///     type             = "forward"
-///     target_group_arn = aws_lb_targetgroup.front_end.arn
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   load_balancer_arn = aws_lb_loadbalancer.front_end.arn
+///   default_action {
+///     type             = "forward"
+///     target_group_arn = aws_lb_target_group.front_end.arn
+///   }
+///   load_balancer_arn = aws_lb_load_balancer.front_end.arn
 ///   port              = "443"
 ///   protocol          = "HTTPS"
 ///   ssl_policy        = "ELBSecurityPolicy-2016-08"
@@ -372,7 +381,7 @@ import 'listener_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -380,26 +389,39 @@ import 'listener_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lb_loadbalancer" "front_end" {
+/// resource "aws_lb_load_balancer" "front_end" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_lb_targetgroup" "front_end_blue" {
+/// resource "aws_lb_target_group" "front_end_blue" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_lb_targetgroup" "front_end_green" {
+/// resource "aws_lb_target_group" "front_end_green" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_lb_listener" "front_end" {
-///   default_actions {
-///     forward = {
-///       target_groups = [{
-///         "arn"    = aws_lb_targetgroup.front_end_blue.arn
-///         "weight" = 100
-///         }, {
-///         "arn"    = aws_lb_targetgroup.front_end_green.arn
-///         "weight" = 0
-///       }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_action {
+///     forward {
+///       target_group {
+///         arn    = aws_lb_target_group.front_end_blue.arn
+///         weight = 100
+///       }
+///       target_group {
+///         arn    = aws_lb_target_group.front_end_green.arn
+///         weight = 0
+///       }
 ///     }
 ///     type = "forward"
 ///   }
-///   load_balancer_arn = aws_lb_loadbalancer.front_end.arn
+///   load_balancer_arn = aws_lb_load_balancer.front_end.arn
 ///   port              = "443"
 ///   protocol          = "HTTPS"
 ///   ssl_policy        = "ELBSecurityPolicy-2016-08"
@@ -590,7 +612,7 @@ import 'listener_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -599,7 +621,10 @@ import 'listener_state.dart';
 /// }
 ///
 /// resource "aws_lb_listener" "front_end" {
-///   default_actions {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_action {
 ///     type             = "forward"
 ///     target_group_arn = frontEndAwsLbTargetGroup.arn
 ///   }
@@ -636,9 +661,9 @@ import 'listener_state.dart';
 ///         var frontEnd = new Listener("frontEnd", ListenerArgs.builder()
 ///             .defaultActions(ListenerDefaultActionArgs.builder()
 ///                 .type("forward")
-///                 .targetGroupArn(frontEndAwsLbTargetGroup.arn())
+///                 .targetGroupArn(frontEndAwsLbTargetGroup.get("arn"))
 ///                 .build())
-///             .loadBalancerArn(frontEndAwsLb.arn())
+///             .loadBalancerArn(frontEndAwsLb.get("arn"))
 ///             .port(443)
 ///             .protocol("TLS")
 ///             .sslPolicy("ELBSecurityPolicy-2016-08")
@@ -776,7 +801,7 @@ import 'listener_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -784,18 +809,24 @@ import 'listener_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lb_loadbalancer" "front_end" {
+/// resource "aws_lb_load_balancer" "front_end" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_lb_listener" "front_end" {
-///   default_actions {
-///     redirect = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_action {
+///     redirect {
 ///       port        = "443"
 ///       protocol    = "HTTPS"
 ///       status_code = "HTTP_301"
 ///     }
 ///     type = "redirect"
 ///   }
-///   load_balancer_arn = aws_lb_loadbalancer.front_end.arn
+///   load_balancer_arn = aws_lb_load_balancer.front_end.arn
 ///   port              = "80"
 ///   protocol          = "HTTP"
 /// }
@@ -973,7 +1004,7 @@ import 'listener_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -981,18 +1012,24 @@ import 'listener_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lb_loadbalancer" "front_end" {
+/// resource "aws_lb_load_balancer" "front_end" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_lb_listener" "front_end" {
-///   default_actions {
-///     fixed_response = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_action {
+///     fixed_response {
 ///       content_type = "text/plain"
 ///       message_body = "Fixed response content"
 ///       status_code  = "200"
 ///     }
 ///     type = "fixed-response"
 ///   }
-///   load_balancer_arn = aws_lb_loadbalancer.front_end.arn
+///   load_balancer_arn = aws_lb_load_balancer.front_end.arn
 ///   port              = "80"
 ///   protocol          = "HTTP"
 /// }
@@ -1202,7 +1239,7 @@ import 'listener_state.dart';
 /// 				&lb.ListenerDefaultActionArgs{
 /// 					AuthenticateCognito: &lb.ListenerDefaultActionAuthenticateCognitoArgs{
 /// 						UserPoolArn:      pool.Arn,
-/// 						UserPoolClientId: client.ID().ToIDOutput().ToStringOutput(),
+/// 						UserPoolClientId: client.ID(),
 /// 						UserPoolDomain:   domain.Domain,
 /// 					},
 /// 					Type: pulumi.String("authenticate-cognito"),
@@ -1224,7 +1261,7 @@ import 'listener_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1232,30 +1269,48 @@ import 'listener_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lb_loadbalancer" "front_end" {
+/// resource "aws_lb_load_balancer" "front_end" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_lb_targetgroup" "front_end" {
+/// resource "aws_lb_target_group" "front_end" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_cognito_userpool" "pool" {
+/// resource "aws_cognito_user_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_cognito_userpoolclient" "client" {
+/// resource "aws_cognito_user_pool_client" "client" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_cognito_userpooldomain" "domain" {
+/// resource "aws_cognito_user_pool_domain" "domain" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_lb_listener" "front_end" {
-///   default_actions {
-///     authenticate_cognito = {
-///       user_pool_arn       = aws_cognito_userpool.pool.arn
-///       user_pool_client_id = aws_cognito_userpoolclient.client.id
-///       user_pool_domain    = aws_cognito_userpooldomain.domain.domain
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_action {
+///     authenticate_cognito {
+///       user_pool_arn       = aws_cognito_user_pool.pool.arn
+///       user_pool_client_id = aws_cognito_user_pool_client.client.id
+///       user_pool_domain    = aws_cognito_user_pool_domain.domain.domain
 ///     }
 ///     type = "authenticate-cognito"
 ///   }
-///   default_actions {
+///   default_action {
 ///     type             = "forward"
-///     target_group_arn = aws_lb_targetgroup.front_end.arn
+///     target_group_arn = aws_lb_target_group.front_end.arn
 ///   }
-///   load_balancer_arn = aws_lb_loadbalancer.front_end.arn
+///   load_balancer_arn = aws_lb_load_balancer.front_end.arn
 ///   port              = "80"
 ///   protocol          = "HTTP"
 /// }
@@ -1502,7 +1557,7 @@ import 'listener_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1510,13 +1565,22 @@ import 'listener_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lb_loadbalancer" "front_end" {
+/// resource "aws_lb_load_balancer" "front_end" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_lb_targetgroup" "front_end" {
+/// resource "aws_lb_target_group" "front_end" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_lb_listener" "front_end" {
-///   default_actions {
-///     authenticate_oidc = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_action {
+///     authenticate_oidc {
 ///       authorization_endpoint = "https://example.com/authorization_endpoint"
 ///       client_id              = "client_id"
 ///       client_secret          = "client_secret"
@@ -1526,11 +1590,11 @@ import 'listener_state.dart';
 ///     }
 ///     type = "authenticate-oidc"
 ///   }
-///   default_actions {
+///   default_action {
 ///     type             = "forward"
-///     target_group_arn = aws_lb_targetgroup.front_end.arn
+///     target_group_arn = aws_lb_target_group.front_end.arn
 ///   }
-///   load_balancer_arn = aws_lb_loadbalancer.front_end.arn
+///   load_balancer_arn = aws_lb_load_balancer.front_end.arn
 ///   port              = "80"
 ///   protocol          = "HTTP"
 /// }
@@ -1813,7 +1877,7 @@ import 'listener_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1822,23 +1886,27 @@ import 'listener_state.dart';
 /// }
 ///
 /// resource "aws_lb_listener" "test" {
-///   default_actions {
-///     jwt_validation = {
-///       additional_claims = [{
-///         "format" = "string-array"
-///         "name"   = "claim_name1"
-///         "values" = ["value1", "value2"]
-///         }, {
-///         "format" = "single-string"
-///         "name"   = "claim_name2"
-///         "values" = ["value1"]
-///       }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_action {
+///     jwt_validation {
+///       additional_claim {
+///         format = "string-array"
+///         name   = "claim_name1"
+///         values = ["value1", "value2"]
+///       }
+///       additional_claim {
+///         format = "single-string"
+///         name   = "claim_name2"
+///         values = ["value1"]
+///       }
 ///       issuer        = "https://example.com"
 ///       jwks_endpoint = "https://example.com/.well-known/jwks.json"
 ///     }
 ///     type = "jwt-validation"
 ///   }
-///   default_actions {
+///   default_action {
 ///     target_group_arn = testAwsLbTargetGroup.id
 ///     type             = "forward"
 ///   }
@@ -1896,14 +1964,14 @@ import 'listener_state.dart';
 ///                     .type("jwt-validation")
 ///                     .build(),
 ///                 ListenerDefaultActionArgs.builder()
-///                     .targetGroupArn(testAwsLbTargetGroup.id())
+///                     .targetGroupArn(testAwsLbTargetGroup.get("id"))
 ///                     .type("forward")
 ///                     .build())
-///             .loadBalancerArn(testAwsLb.id())
+///             .loadBalancerArn(testAwsLb.get("id"))
 ///             .protocol("HTTPS")
 ///             .port(443)
 ///             .sslPolicy("ELBSecurityPolicy-2016-08")
-///             .certificateArn(testAwsIamServerCertificate.arn())
+///             .certificateArn(testAwsIamServerCertificate.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -2084,11 +2152,11 @@ import 'listener_state.dart';
 /// 		_, err = lb.NewListener(ctx, "example", &lb.ListenerArgs{
 /// 			DefaultActions: lb.ListenerDefaultActionArray{
 /// 				&lb.ListenerDefaultActionArgs{
-/// 					TargetGroupArn: exampleTargetGroup.ID().ToIDOutput().ToStringOutput(),
+/// 					TargetGroupArn: exampleTargetGroup.ID(),
 /// 					Type:           pulumi.String("forward"),
 /// 				},
 /// 			},
-/// 			LoadBalancerArn: example.ID().ToIDOutput().ToStringOutput(),
+/// 			LoadBalancerArn: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2098,7 +2166,7 @@ import 'listener_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2106,15 +2174,21 @@ import 'listener_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lb_loadbalancer" "example" {
+/// resource "aws_lb_load_balancer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_mappings {
 ///     subnet_id = exampleAwsSubnet.id
 ///   }
 ///   load_balancer_type = "gateway"
 ///   name               = "example"
 /// }
-/// resource "aws_lb_targetgroup" "example" {
-///   health_check = {
+/// resource "aws_lb_target_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   health_check {
 ///     port     = 80
 ///     protocol = "HTTP"
 ///   }
@@ -2124,11 +2198,14 @@ import 'listener_state.dart';
 ///   vpc_id   = exampleAwsVpc.id
 /// }
 /// resource "aws_lb_listener" "example" {
-///   default_actions {
-///     target_group_arn = aws_lb_targetgroup.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_action {
+///     target_group_arn = aws_lb_target_group.example.id
 ///     type             = "forward"
 ///   }
-///   load_balancer_arn = aws_lb_loadbalancer.example.id
+///   load_balancer_arn = aws_lb_load_balancer.example.id
 /// }
 /// ```
 /// ```java
@@ -2161,7 +2238,7 @@ import 'listener_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new LoadBalancer("example", LoadBalancerArgs.builder()
 ///             .subnetMappings(LoadBalancerSubnetMappingArgs.builder()
-///                 .subnetId(exampleAwsSubnet.id())
+///                 .subnetId(exampleAwsSubnet.get("id"))
 ///                 .build())
 ///             .loadBalancerType("gateway")
 ///             .name("example")
@@ -2175,7 +2252,7 @@ import 'listener_state.dart';
 ///             .name("example")
 ///             .port(6081)
 ///             .protocol("GENEVE")
-///             .vpcId(exampleAwsVpc.id())
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .build());
 ///
 ///         var exampleListener = new Listener("exampleListener", ListenerArgs.builder()
@@ -2320,11 +2397,11 @@ import 'listener_state.dart';
 /// 			},
 /// 			DefaultActions: lb.ListenerDefaultActionArray{
 /// 				&lb.ListenerDefaultActionArgs{
-/// 					TargetGroupArn: exampleTargetGroup.ID().ToIDOutput().ToStringOutput(),
+/// 					TargetGroupArn: exampleTargetGroup.ID(),
 /// 					Type:           pulumi.String("forward"),
 /// 				},
 /// 			},
-/// 			LoadBalancerArn: example.ID().ToIDOutput().ToStringOutput(),
+/// 			LoadBalancerArn: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2334,7 +2411,7 @@ import 'listener_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2342,21 +2419,30 @@ import 'listener_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lb_loadbalancer" "example" {
+/// resource "aws_lb_load_balancer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   load_balancer_type = "application"
 /// }
-/// resource "aws_lb_targetgroup" "example" {
+/// resource "aws_lb_target_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_lb_listener" "example" {
-///   mutual_authentication = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   mutual_authentication {
 ///     mode            = "verify"
 ///     trust_store_arn = "..."
 ///   }
-///   default_actions {
-///     target_group_arn = aws_lb_targetgroup.example.id
+///   default_action {
+///     target_group_arn = aws_lb_target_group.example.id
 ///     type             = "forward"
 ///   }
-///   load_balancer_arn = aws_lb_loadbalancer.example.id
+///   load_balancer_arn = aws_lb_load_balancer.example.id
 /// }
 /// ```
 /// ```java
@@ -2525,7 +2611,7 @@ class Listener extends pulumi.CustomResource {
           'aws:lb/listener:Listener',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     alpnPolicy = registerOutput<String?>('alpnPolicy');
     arn = registerOutput<String>('arn');

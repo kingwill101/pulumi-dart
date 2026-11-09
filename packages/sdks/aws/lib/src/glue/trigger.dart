@@ -116,7 +116,7 @@ import 'trigger_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -125,11 +125,14 @@ import 'trigger_state.dart';
 /// }
 ///
 /// resource "aws_glue_trigger" "example" {
-///   predicate = {
-///     conditions = [{
-///       "jobName" = example2.name
-///       "state"   = "SUCCEEDED"
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   predicate {
+///     conditions {
+///       job_name = example2.name
+///       state    = "SUCCEEDED"
+///     }
 ///   }
 ///   actions {
 ///     job_name = example1.name
@@ -165,12 +168,12 @@ import 'trigger_state.dart';
 ///         var example = new Trigger("example", TriggerArgs.builder()
 ///             .predicate(TriggerPredicateArgs.builder()
 ///                 .conditions(TriggerPredicateConditionArgs.builder()
-///                     .jobName(example2.name())
+///                     .jobName(example2.get("name"))
 ///                     .state("SUCCEEDED")
 ///                     .build())
 ///                 .build())
 ///             .actions(TriggerActionArgs.builder()
-///                 .jobName(example1.name())
+///                 .jobName(example1.get("name"))
 ///                 .build())
 ///             .name("example")
 ///             .type("CONDITIONAL")
@@ -271,7 +274,7 @@ import 'trigger_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -280,6 +283,9 @@ import 'trigger_state.dart';
 /// }
 ///
 /// resource "aws_glue_trigger" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions {
 ///     job_name = exampleAwsGlueJob.name
 ///   }
@@ -311,7 +317,7 @@ import 'trigger_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Trigger("example", TriggerArgs.builder()
 ///             .actions(TriggerActionArgs.builder()
-///                 .jobName(exampleAwsGlueJob.name())
+///                 .jobName(exampleAwsGlueJob.get("name"))
 ///                 .build())
 ///             .name("example")
 ///             .type("ON_DEMAND")
@@ -412,7 +418,7 @@ import 'trigger_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -421,6 +427,9 @@ import 'trigger_state.dart';
 /// }
 ///
 /// resource "aws_glue_trigger" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions {
 ///     job_name = exampleAwsGlueJob.name
 ///   }
@@ -453,7 +462,7 @@ import 'trigger_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Trigger("example", TriggerArgs.builder()
 ///             .actions(TriggerActionArgs.builder()
-///                 .jobName(exampleAwsGlueJob.name())
+///                 .jobName(exampleAwsGlueJob.get("name"))
 ///                 .build())
 ///             .name("example")
 ///             .schedule("cron(15 12 * * ? *)")
@@ -585,7 +594,7 @@ import 'trigger_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -594,11 +603,14 @@ import 'trigger_state.dart';
 /// }
 ///
 /// resource "aws_glue_trigger" "example" {
-///   predicate = {
-///     conditions = [{
-///       "jobName" = example2.name
-///       "state"   = "SUCCEEDED"
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   predicate {
+///     conditions {
+///       job_name = example2.name
+///       state    = "SUCCEEDED"
+///     }
 ///   }
 ///   actions {
 ///     crawler_name = example1.name
@@ -634,12 +646,12 @@ import 'trigger_state.dart';
 ///         var example = new Trigger("example", TriggerArgs.builder()
 ///             .predicate(TriggerPredicateArgs.builder()
 ///                 .conditions(TriggerPredicateConditionArgs.builder()
-///                     .jobName(example2.name())
+///                     .jobName(example2.get("name"))
 ///                     .state("SUCCEEDED")
 ///                     .build())
 ///                 .build())
 ///             .actions(TriggerActionArgs.builder()
-///                 .crawlerName(example1.name())
+///                 .crawlerName(example1.get("name"))
 ///                 .build())
 ///             .name("example")
 ///             .type("CONDITIONAL")
@@ -773,7 +785,7 @@ import 'trigger_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -782,11 +794,14 @@ import 'trigger_state.dart';
 /// }
 ///
 /// resource "aws_glue_trigger" "example" {
-///   predicate = {
-///     conditions = [{
-///       "crawlerName" = example2.name
-///       "crawlState"  = "SUCCEEDED"
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   predicate {
+///     conditions {
+///       crawler_name = example2.name
+///       crawl_state  = "SUCCEEDED"
+///     }
 ///   }
 ///   actions {
 ///     job_name = example1.name
@@ -822,12 +837,12 @@ import 'trigger_state.dart';
 ///         var example = new Trigger("example", TriggerArgs.builder()
 ///             .predicate(TriggerPredicateArgs.builder()
 ///                 .conditions(TriggerPredicateConditionArgs.builder()
-///                     .crawlerName(example2.name())
+///                     .crawlerName(example2.get("name"))
 ///                     .crawlState("SUCCEEDED")
 ///                     .build())
 ///                 .build())
 ///             .actions(TriggerActionArgs.builder()
-///                 .jobName(example1.name())
+///                 .jobName(example1.get("name"))
 ///                 .build())
 ///             .name("example")
 ///             .type("CONDITIONAL")
@@ -903,7 +918,7 @@ class Trigger extends pulumi.CustomResource {
           'aws:glue/trigger:Trigger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     actions = registerOutput<List<TriggerAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TriggerAction>(guardedValue, (value) => TriggerAction.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');

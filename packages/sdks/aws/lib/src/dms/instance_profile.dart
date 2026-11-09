@@ -57,7 +57,7 @@ import 'instance_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,7 +65,10 @@ import 'instance_profile_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_dms_instanceprofile" "example" {
+/// resource "aws_dms_instance_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// ```
@@ -202,7 +205,7 @@ import 'instance_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -210,7 +213,10 @@ import 'instance_profile_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_dms_instanceprofile" "example" {
+/// resource "aws_dms_instance_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example"
 ///   description             = "example instance profile"
 ///   network_type            = "IPV4"
@@ -249,9 +255,9 @@ import 'instance_profile_state.dart';
 ///             .description("example instance profile")
 ///             .networkType("IPV4")
 ///             .publiclyAccessible(false)
-///             .subnetGroupIdentifier(exampleAwsDmsReplicationSubnetGroup.id())
-///             .vpcSecurityGroupIds(exampleAwsSecurityGroup.id())
-///             .kmsKeyArn(exampleAwsKmsKey.arn())
+///             .subnetGroupIdentifier(exampleAwsDmsReplicationSubnetGroup.get("id"))
+///             .vpcSecurityGroupIds(exampleAwsSecurityGroup.get("id"))
+///             .kmsKeyArn(exampleAwsKmsKey.get("arn"))
 ///             .tags(Map.of("Name", "example"))
 ///             .build());
 ///
@@ -328,7 +334,7 @@ class InstanceProfile extends pulumi.CustomResource {
           'aws:dms/instanceProfile:InstanceProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String>('availabilityZone');

@@ -124,8 +124,8 @@ import 'peering_attachment_state.dart';
 /// 		_, err = ec2transitgateway.NewPeeringAttachment(ctx, "example", &ec2transitgateway.PeeringAttachmentArgs{
 /// 			PeerAccountId:        peerTransitGateway.OwnerId,
 /// 			PeerRegion:           pulumi.String(peer.Region),
-/// 			PeerTransitGatewayId: peerTransitGateway.ID().ToIDOutput().ToStringOutput(),
-/// 			TransitGatewayId:     local.ID().ToIDOutput().ToStringOutput(),
+/// 			PeerTransitGatewayId: peerTransitGateway.ID(),
+/// 			TransitGatewayId:     local.ID(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("TGW Peering Requestor"),
 /// 			},
@@ -138,7 +138,7 @@ import 'peering_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -146,24 +146,33 @@ import 'peering_attachment_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "peer" {
+/// data "aws_region" "peer" {
 /// }
 ///
-/// resource "aws_ec2transitgateway_transitgateway" "local" {
+/// resource "aws_ec2transitgateway_transit_gateway" "local" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tags = {
 ///     "Name" = "Local TGW"
 ///   }
 /// }
-/// resource "aws_ec2transitgateway_transitgateway" "peer" {
+/// resource "aws_ec2transitgateway_transit_gateway" "peer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tags = {
 ///     "Name" = "Peer TGW"
 ///   }
 /// }
-/// resource "aws_ec2transitgateway_peeringattachment" "example" {
-///   peer_account_id         = aws_ec2transitgateway_transitgateway.peer.owner_id
-///   peer_region             = data.aws_getregion.peer.region
-///   peer_transit_gateway_id = aws_ec2transitgateway_transitgateway.peer.id
-///   transit_gateway_id      = aws_ec2transitgateway_transitgateway.local.id
+/// resource "aws_ec2transitgateway_peering_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   peer_account_id         = aws_ec2transitgateway_transit_gateway.peer.owner_id
+///   peer_region             = data.aws_region.peer.region
+///   peer_transit_gateway_id = aws_ec2transitgateway_transit_gateway.peer.id
+///   transit_gateway_id      = aws_ec2transitgateway_transit_gateway.local.id
 ///   tags = {
 ///     "Name" = "TGW Peering Requestor"
 ///   }
@@ -286,7 +295,7 @@ class PeeringAttachment extends pulumi.CustomResource {
           'aws:ec2transitgateway/peeringAttachment:PeeringAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.options = registerOutput<PeeringAttachmentOptions>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeeringAttachmentOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

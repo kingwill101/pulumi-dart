@@ -106,7 +106,7 @@ import 'configuration_profile_validator.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -114,8 +114,11 @@ import 'configuration_profile_validator.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appconfig_configurationprofile" "example" {
-///   validators {
+/// resource "aws_appconfig_configuration_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   validator {
 ///     content = exampleAwsLambdaFunction.arn
 ///     type    = "LAMBDA"
 ///   }
@@ -152,10 +155,10 @@ import 'configuration_profile_validator.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new ConfigurationProfile("example", ConfigurationProfileArgs.builder()
 ///             .validators(ConfigurationProfileValidatorArgs.builder()
-///                 .content(exampleAwsLambdaFunction.arn())
+///                 .content(exampleAwsLambdaFunction.get("arn"))
 ///                 .type("LAMBDA")
 ///                 .build())
-///             .applicationId(exampleAwsAppconfigApplication.id())
+///             .applicationId(exampleAwsAppconfigApplication.get("id"))
 ///             .description("Example Configuration Profile")
 ///             .name("example-configuration-profile-tf")
 ///             .locationUri("hosted")
@@ -229,7 +232,7 @@ class ConfigurationProfile extends pulumi.CustomResource {
           'aws:appconfig/configurationProfile:ConfigurationProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     arn = registerOutput<String>('arn');

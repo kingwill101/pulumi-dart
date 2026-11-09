@@ -94,7 +94,7 @@ import 'listener_state.dart';
 /// 			},
 /// 			Name:              pulumi.String("example"),
 /// 			Protocol:          pulumi.String("HTTPS"),
-/// 			ServiceIdentifier: example.ID().ToIDOutput().ToStringOutput(),
+/// 			ServiceIdentifier: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -104,7 +104,7 @@ import 'listener_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -113,11 +113,17 @@ import 'listener_state.dart';
 /// }
 ///
 /// resource "aws_vpclattice_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// resource "aws_vpclattice_listener" "example" {
-///   default_action = {
-///     fixed_response = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_action {
+///     fixed_response {
 ///       status_code = 404
 ///     }
 ///   }
@@ -327,7 +333,7 @@ import 'listener_state.dart';
 /// 					&vpclattice.ListenerDefaultActionForwardArgs{
 /// 						TargetGroups: vpclattice.ListenerDefaultActionForwardTargetGroupArray{
 /// 							&vpclattice.ListenerDefaultActionForwardTargetGroupArgs{
-/// 								TargetGroupIdentifier: exampleTargetGroup.ID().ToIDOutput().ToStringOutput(),
+/// 								TargetGroupIdentifier: exampleTargetGroup.ID(),
 /// 							},
 /// 						},
 /// 					},
@@ -335,7 +341,7 @@ import 'listener_state.dart';
 /// 			},
 /// 			Name:              pulumi.String("example"),
 /// 			Protocol:          pulumi.String("HTTP"),
-/// 			ServiceIdentifier: example.ID().ToIDOutput().ToStringOutput(),
+/// 			ServiceIdentifier: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -345,7 +351,7 @@ import 'listener_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -354,10 +360,16 @@ import 'listener_state.dart';
 /// }
 ///
 /// resource "aws_vpclattice_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
-/// resource "aws_vpclattice_targetgroup" "example" {
-///   config = {
+/// resource "aws_vpclattice_target_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   config {
 ///     port           = 80
 ///     protocol       = "HTTP"
 ///     vpc_identifier = exampleAwsVpc.id
@@ -366,12 +378,15 @@ import 'listener_state.dart';
 ///   type = "INSTANCE"
 /// }
 /// resource "aws_vpclattice_listener" "example" {
-///   default_action = {
-///     forwards = [{
-///       "targetGroups" = [{
-///         "targetGroupIdentifier" = aws_vpclattice_targetgroup.example.id
-///       }]
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_action {
+///     forward {
+///       target_groups {
+///         target_group_identifier = aws_vpclattice_target_group.example.id
+///       }
+///     }
 ///   }
 ///   name               = "example"
 ///   protocol           = "HTTP"
@@ -415,7 +430,7 @@ import 'listener_state.dart';
 ///             .config(TargetGroupConfigArgs.builder()
 ///                 .port(80)
 ///                 .protocol("HTTP")
-///                 .vpcIdentifier(exampleAwsVpc.id())
+///                 .vpcIdentifier(exampleAwsVpc.get("id"))
 ///                 .build())
 ///             .name("example-target-group-1")
 ///             .type("INSTANCE")
@@ -667,11 +682,11 @@ import 'listener_state.dart';
 /// 					&vpclattice.ListenerDefaultActionForwardArgs{
 /// 						TargetGroups: vpclattice.ListenerDefaultActionForwardTargetGroupArray{
 /// 							&vpclattice.ListenerDefaultActionForwardTargetGroupArgs{
-/// 								TargetGroupIdentifier: example1.ID().ToIDOutput().ToStringOutput(),
+/// 								TargetGroupIdentifier: example1.ID(),
 /// 								Weight:                pulumi.Int(80),
 /// 							},
 /// 							&vpclattice.ListenerDefaultActionForwardTargetGroupArgs{
-/// 								TargetGroupIdentifier: example2.ID().ToIDOutput().ToStringOutput(),
+/// 								TargetGroupIdentifier: example2.ID(),
 /// 								Weight:                pulumi.Int(20),
 /// 							},
 /// 						},
@@ -680,7 +695,7 @@ import 'listener_state.dart';
 /// 			},
 /// 			Name:              pulumi.String("example"),
 /// 			Protocol:          pulumi.String("HTTP"),
-/// 			ServiceIdentifier: example.ID().ToIDOutput().ToStringOutput(),
+/// 			ServiceIdentifier: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -690,7 +705,7 @@ import 'listener_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -699,10 +714,16 @@ import 'listener_state.dart';
 /// }
 ///
 /// resource "aws_vpclattice_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
-/// resource "aws_vpclattice_targetgroup" "example1" {
-///   config = {
+/// resource "aws_vpclattice_target_group" "example1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   config {
 ///     port           = 80
 ///     protocol       = "HTTP"
 ///     vpc_identifier = exampleAwsVpc.id
@@ -710,8 +731,11 @@ import 'listener_state.dart';
 ///   name = "example-target-group-1"
 ///   type = "INSTANCE"
 /// }
-/// resource "aws_vpclattice_targetgroup" "example2" {
-///   config = {
+/// resource "aws_vpclattice_target_group" "example2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   config {
 ///     port           = 8080
 ///     protocol       = "HTTP"
 ///     vpc_identifier = exampleAwsVpc.id
@@ -720,16 +744,20 @@ import 'listener_state.dart';
 ///   type = "INSTANCE"
 /// }
 /// resource "aws_vpclattice_listener" "example" {
-///   default_action = {
-///     forwards = [{
-///       "targetGroups" = [{
-///         "targetGroupIdentifier" = aws_vpclattice_targetgroup.example1.id
-///         "weight"                = 80
-///         }, {
-///         "targetGroupIdentifier" = aws_vpclattice_targetgroup.example2.id
-///         "weight"                = 20
-///       }]
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_action {
+///     forward {
+///       target_groups {
+///         target_group_identifier = aws_vpclattice_target_group.example1.id
+///         weight                  = 80
+///       }
+///       target_groups {
+///         target_group_identifier = aws_vpclattice_target_group.example2.id
+///         weight                  = 20
+///       }
+///     }
 ///   }
 ///   name               = "example"
 ///   protocol           = "HTTP"
@@ -773,7 +801,7 @@ import 'listener_state.dart';
 ///             .config(TargetGroupConfigArgs.builder()
 ///                 .port(80)
 ///                 .protocol("HTTP")
-///                 .vpcIdentifier(exampleAwsVpc.id())
+///                 .vpcIdentifier(exampleAwsVpc.get("id"))
 ///                 .build())
 ///             .name("example-target-group-1")
 ///             .type("INSTANCE")
@@ -783,7 +811,7 @@ import 'listener_state.dart';
 ///             .config(TargetGroupConfigArgs.builder()
 ///                 .port(8080)
 ///                 .protocol("HTTP")
-///                 .vpcIdentifier(exampleAwsVpc.id())
+///                 .vpcIdentifier(exampleAwsVpc.get("id"))
 ///                 .build())
 ///             .name("example-target-group-2")
 ///             .type("INSTANCE")
@@ -899,7 +927,7 @@ class Listener extends pulumi.CustomResource {
           'aws:vpclattice/listener:Listener',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');

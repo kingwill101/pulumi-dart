@@ -108,7 +108,7 @@ import 'data_source_vpc_connection_properties.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -116,10 +116,13 @@ import 'data_source_vpc_connection_properties.dart';
 ///   }
 /// }
 ///
-/// resource "aws_quicksight_datasource" "default" {
-///   parameters = {
-///     s3 = {
-///       manifest_file_location = {
+/// resource "aws_quicksight_data_source" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parameters {
+///     s3 {
+///       manifest_file_location {
 ///         bucket = "my-bucket"
 ///         key    = "path/to/manifest.json"
 ///       }
@@ -587,7 +590,7 @@ import 'data_source_vpc_connection_properties.dart';
 /// 				var _zero string
 /// 				tmpJSON2, err := json.Marshal(map[string]interface{}{
 /// 					"Version": "2012-10-17",
-/// 					"Statement": []map[string]interface{}{
+/// 					"Statement": []interface{}{
 /// 						map[string]interface{}{
 /// 							"Action": []string{
 /// 								"s3:GetObject",
@@ -643,7 +646,7 @@ import 'data_source_vpc_connection_properties.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -651,21 +654,27 @@ import 'data_source_vpc_connection_properties.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
-/// data "aws_getregion" "currentGetRegion" {
+/// data "aws_region" "currentGetRegion" {
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_s3_bucketobjectv2" "example" {
+/// resource "aws_s3_bucket_objectv2" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.bucket
 ///   key    = "manifest.json"
 ///   content = jsonencode({
 ///     "fileLocations" = [{
-///       "URIPrefixes" = ["https://${aws_s3_bucket.example.id}.s3-${data.aws_getregion.currentGetRegion.region}.${data.aws_getpartition.currentGetPartition.dns_suffix}"]
+///       "URIPrefixes" = ["https://${aws_s3_bucket.example.id}.s3-${data.aws_region.currentGetRegion.region}.${data.aws_partition.currentGetPartition.dns_suffix}"]
 ///     }]
 ///     "globalUploadSettings" = {
 ///       "format"         = "CSV"
@@ -676,6 +685,9 @@ import 'data_source_vpc_connection_properties.dart';
 ///   })
 /// }
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -687,13 +699,16 @@ import 'data_source_vpc_connection_properties.dart';
 ///       }
 ///       "Condition" = {
 ///         "StringEquals" = {
-///           "aws:SourceAccount" = data.aws_getcalleridentity.current.account_id
+///           "aws:SourceAccount" = data.aws_caller_identity.current.account_id
 ///         }
 ///       }
 ///     }]
 ///   })
 /// }
 /// resource "aws_iam_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   description = "Policy to allow QuickSight access to S3 bucket"
 ///   policy = jsonencode({
@@ -701,7 +716,7 @@ import 'data_source_vpc_connection_properties.dart';
 ///     "Statement" = [{
 ///       "Action"   = ["s3:GetObject"]
 ///       "Effect"   = "Allow"
-///       "Resource" ="${aws_s3_bucket.example.arn}/${aws_s3_bucketobjectv2.example.key}"
+///       "Resource" ="${aws_s3_bucket.example.arn}/${aws_s3_bucket_objectv2.example.key}"
 ///       }, {
 ///       "Action"   = ["s3:ListBucket"]
 ///       "Effect"   = "Allow"
@@ -709,16 +724,22 @@ import 'data_source_vpc_connection_properties.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_iam_rolepolicyattachment" "example" {
+/// resource "aws_iam_role_policy_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_arn = aws_iam_policy.example.arn
 ///   role       = aws_iam_role.example.name
 /// }
-/// resource "aws_quicksight_datasource" "example" {
-///   parameters = {
-///     s3 = {
-///       manifest_file_location = {
+/// resource "aws_quicksight_data_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parameters {
+///     s3 {
+///       manifest_file_location {
 ///         bucket = aws_s3_bucket.example.bucket
-///         key    = aws_s3_bucketobjectv2.example.key
+///         key    = aws_s3_bucket_objectv2.example.key
 ///       }
 ///       role_arn = aws_iam_role.example.arn
 ///     }
@@ -1000,7 +1021,7 @@ class DataSource extends pulumi.CustomResource {
           'aws:quicksight/dataSource:DataSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');

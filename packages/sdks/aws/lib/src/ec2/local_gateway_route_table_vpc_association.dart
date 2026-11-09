@@ -80,7 +80,7 @@ import 'local_gateway_route_table_vpc_association_state.dart';
 /// 		}
 /// 		_, err = ec2.NewLocalGatewayRouteTableVpcAssociation(ctx, "example", &ec2.LocalGatewayRouteTableVpcAssociationArgs{
 /// 			LocalGatewayRouteTableId: pulumi.String(example.Id),
-/// 			VpcId:                    exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:                    exampleVpc.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -90,7 +90,7 @@ import 'local_gateway_route_table_vpc_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -98,15 +98,21 @@ import 'local_gateway_route_table_vpc_association_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2_getlocalgatewayroutetable" "example" {
+/// data "aws_ec2_local_gateway_route_table" "example" {
 ///   outpost_arn = "arn:aws:outposts:us-west-2:123456789012:outpost/op-1234567890abcdef"
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
-/// resource "aws_ec2_localgatewayroutetablevpcassociation" "example" {
-///   local_gateway_route_table_id = data.aws_ec2_getlocalgatewayroutetable.example.id
+/// resource "aws_ec2_local_gateway_route_table_vpc_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   local_gateway_route_table_id = data.aws_ec2_local_gateway_route_table.example.id
 ///   vpc_id                       = aws_ec2_vpc.example.id
 /// }
 /// ```
@@ -207,7 +213,7 @@ class LocalGatewayRouteTableVpcAssociation extends pulumi.CustomResource {
           'aws:ec2/localGatewayRouteTableVpcAssociation:LocalGatewayRouteTableVpcAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     localGatewayId = registerOutput<String>('localGatewayId');
     localGatewayRouteTableId = registerOutput<String>('localGatewayRouteTableId');

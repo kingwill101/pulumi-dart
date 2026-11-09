@@ -147,7 +147,7 @@ import 'serverless_cache_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -155,15 +155,18 @@ import 'serverless_cache_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elasticache_serverlesscache" "example" {
-///   cache_usage_limits = {
-///     data_storage = {
+/// resource "aws_elasticache_serverless_cache" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cache_usage_limits {
+///     data_storage {
 ///       maximum = 10
 ///       unit    = "GB"
 ///     }
-///     ecpu_per_seconds = [{
-///       "maximum" = 5000
-///     }]
+///     ecpu_per_second {
+///       maximum = 5000
+///     }
 ///   }
 ///   engine               = "memcached"
 ///   name                 = "example"
@@ -211,10 +214,10 @@ import 'serverless_cache_timeouts.dart';
 ///             .engine("memcached")
 ///             .name("example")
 ///             .description("Test Server")
-///             .kmsKeyId(test.arn())
+///             .kmsKeyId(test.get("arn"))
 ///             .majorEngineVersion("1.6")
-///             .securityGroupIds(testAwsSecurityGroup.id())
-///             .subnetIds(testAwsSubnet.stream().map(element -> element.id()).collect(toList()))
+///             .securityGroupIds(testAwsSecurityGroup.get("id"))
+///             .subnetIds(testAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
 ///             .build());
 ///
 ///     }
@@ -367,7 +370,7 @@ import 'serverless_cache_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -375,15 +378,18 @@ import 'serverless_cache_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elasticache_serverlesscache" "example" {
-///   cache_usage_limits = {
-///     data_storage = {
+/// resource "aws_elasticache_serverless_cache" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cache_usage_limits {
+///     data_storage {
 ///       maximum = 10
 ///       unit    = "GB"
 ///     }
-///     ecpu_per_seconds = [{
-///       "maximum" = 5000
-///     }]
+///     ecpu_per_second {
+///       maximum = 5000
+///     }
 ///   }
 ///   engine                   = "redis"
 ///   name                     = "example"
@@ -434,11 +440,11 @@ import 'serverless_cache_timeouts.dart';
 ///             .name("example")
 ///             .dailySnapshotTime("09:00")
 ///             .description("Test Server")
-///             .kmsKeyId(test.arn())
+///             .kmsKeyId(test.get("arn"))
 ///             .majorEngineVersion("7")
 ///             .snapshotRetentionLimit(1)
-///             .securityGroupIds(testAwsSecurityGroup.id())
-///             .subnetIds(testAwsSubnet.stream().map(element -> element.id()).collect(toList()))
+///             .securityGroupIds(testAwsSecurityGroup.get("id"))
+///             .subnetIds(testAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
 ///             .build());
 ///
 ///     }
@@ -591,7 +597,7 @@ import 'serverless_cache_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -599,15 +605,18 @@ import 'serverless_cache_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elasticache_serverlesscache" "example" {
-///   cache_usage_limits = {
-///     data_storage = {
+/// resource "aws_elasticache_serverless_cache" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cache_usage_limits {
+///     data_storage {
 ///       maximum = 10
 ///       unit    = "GB"
 ///     }
-///     ecpu_per_seconds = [{
-///       "maximum" = 5000
-///     }]
+///     ecpu_per_second {
+///       maximum = 5000
+///     }
 ///   }
 ///   engine                   = "valkey"
 ///   name                     = "example"
@@ -658,11 +667,11 @@ import 'serverless_cache_timeouts.dart';
 ///             .name("example")
 ///             .dailySnapshotTime("09:00")
 ///             .description("Test Server")
-///             .kmsKeyId(test.arn())
+///             .kmsKeyId(test.get("arn"))
 ///             .majorEngineVersion("7")
 ///             .snapshotRetentionLimit(1)
-///             .securityGroupIds(testAwsSecurityGroup.id())
-///             .subnetIds(testAwsSubnet.stream().map(element -> element.id()).collect(toList()))
+///             .securityGroupIds(testAwsSecurityGroup.get("id"))
+///             .subnetIds(testAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
 ///             .build());
 ///
 ///     }
@@ -738,7 +747,7 @@ class ServerlessCache extends pulumi.CustomResource {
           'aws:elasticache/serverlessCache:ServerlessCache',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cacheUsageLimits = registerOutput<ServerlessCacheCacheUsageLimits?>('cacheUsageLimits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessCacheCacheUsageLimits.fromMap((guardedValue as Map).cast<String, dynamic>()); });

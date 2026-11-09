@@ -65,7 +65,7 @@ import 'get_runtime_versions_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,7 @@ import 'get_runtime_versions_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_synthetics_getruntimeversion" "example" {
+/// data "aws_synthetics_runtime_version" "example" {
 ///   prefix = "syn-nodejs-puppeteer"
 ///   latest = true
 /// }
@@ -175,7 +175,7 @@ import 'get_runtime_versions_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -183,7 +183,7 @@ import 'get_runtime_versions_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_synthetics_getruntimeversion" "example" {
+/// data "aws_synthetics_runtime_version" "example" {
 ///   prefix  = "syn-nodejs-puppeteer"
 ///   version = "9.0"
 /// }
@@ -302,7 +302,7 @@ pulumi.Output<GetRuntimeVersionResult> getRuntimeVersionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -310,7 +310,7 @@ pulumi.Output<GetRuntimeVersionResult> getRuntimeVersionOutput(
 ///   }
 /// }
 ///
-/// data "aws_synthetics_getruntimeversions" "example" {
+/// data "aws_synthetics_runtime_versions" "example" {
 /// }
 /// ```
 /// ```java

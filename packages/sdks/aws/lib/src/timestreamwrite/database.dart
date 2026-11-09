@@ -57,7 +57,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -66,6 +66,9 @@ import 'database_state.dart';
 /// }
 ///
 /// resource "aws_timestreamwrite_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name = "database-example"
 /// }
 /// ```
@@ -177,7 +180,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -186,6 +189,9 @@ import 'database_state.dart';
 /// }
 ///
 /// resource "aws_timestreamwrite_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name = "database-example"
 ///   kms_key_id    = exampleAwsKmsKey.arn
 ///   tags = {
@@ -216,7 +222,7 @@ import 'database_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Database("example", DatabaseArgs.builder()
 ///             .databaseName("database-example")
-///             .kmsKeyId(exampleAwsKmsKey.arn())
+///             .kmsKeyId(exampleAwsKmsKey.get("arn"))
 ///             .tags(Map.of("Name", "value"))
 ///             .build());
 ///
@@ -270,7 +276,7 @@ class Database extends pulumi.CustomResource {
           'aws:timestreamwrite/database:Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     databaseName = registerOutput<String>('databaseName');

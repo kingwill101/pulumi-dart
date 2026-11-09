@@ -155,7 +155,7 @@ import 'access_point_policy_state.dart';
 /// 				IgnorePublicAcls:      pulumi.Bool(true),
 /// 				RestrictPublicBuckets: pulumi.Bool(false),
 /// 			},
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Name:   pulumi.String("example"),
 /// 		}, pulumi.IgnoreChanges([]string{
 /// 			"policy",
@@ -195,7 +195,7 @@ import 'access_point_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -204,13 +204,17 @@ import 'access_point_policy_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example"
 /// }
-/// resource "aws_s3_accesspoint" "example" {
+/// resource "aws_s3_access_point" "example" {
 ///   lifecycle {
-///     ignore_changes = [policy]
+///     ignore_changes        = [policy]
+///     create_before_destroy = true
 ///   }
-///   public_access_block_configuration = {
+///   public_access_block_configuration {
 ///     block_public_acls       = true
 ///     block_public_policy     = false
 ///     ignore_public_acls      = true
@@ -219,8 +223,11 @@ import 'access_point_policy_state.dart';
 ///   bucket = aws_s3_bucket.example.id
 ///   name   = "example"
 /// }
-/// resource "aws_s3control_accesspointpolicy" "example" {
-///   access_point_arn = aws_s3_accesspoint.example.arn
+/// resource "aws_s3control_access_point_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   access_point_arn = aws_s3_access_point.example.arn
 ///   policy = jsonencode({
 ///     "Version" = "2008-10-17"
 ///     "Statement" = [{
@@ -229,7 +236,7 @@ import 'access_point_policy_state.dart';
 ///       "Principal" = {
 ///         "AWS" = "*"
 ///       }
-///       "Resource" ="${aws_s3_accesspoint.example.arn}/object/*"
+///       "Resource" ="${aws_s3_access_point.example.arn}/object/*"
 ///     }]
 ///   })
 /// }
@@ -364,7 +371,7 @@ class AccessPointPolicy extends pulumi.CustomResource {
           'aws:s3control/accessPointPolicy:AccessPointPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accessPointArn = registerOutput<String>('accessPointArn');
     hasPublicAccessPolicy = registerOutput<bool>('hasPublicAccessPolicy');

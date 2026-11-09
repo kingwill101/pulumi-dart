@@ -69,7 +69,7 @@ import 'managed_login_branding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,7 +77,10 @@ import 'managed_login_branding_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_managedloginbranding" "client" {
+/// resource "aws_cognito_managed_login_branding" "client" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_id                   = example.id
 ///   user_pool_id                = exampleAwsCognitoUserPool.id
 ///   use_cognito_provided_values = true
@@ -105,8 +108,8 @@ import 'managed_login_branding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var client = new ManagedLoginBranding("client", ManagedLoginBrandingArgs.builder()
-///             .clientId(example.id())
-///             .userPoolId(exampleAwsCognitoUserPool.id())
+///             .clientId(example.get("id"))
+///             .userPoolId(exampleAwsCognitoUserPool.get("id"))
 ///             .useCognitoProvidedValues(true)
 ///             .build());
 ///
@@ -242,7 +245,7 @@ import 'managed_login_branding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -253,8 +256,11 @@ import 'managed_login_branding_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_managedloginbranding" "client" {
-///   assets {
+/// resource "aws_cognito_managed_login_branding" "client" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   asset {
 ///     bytes      = filebase64("login_branding_asset.svg")
 ///     category   = "PAGE_HEADER_BACKGROUND"
 ///     color_mode = "DARK"
@@ -299,8 +305,8 @@ import 'managed_login_branding_state.dart';
 ///                 .colorMode("DARK")
 ///                 .extension("SVG")
 ///                 .build())
-///             .clientId(example.id())
-///             .userPoolId(exampleAwsCognitoUserPool.id())
+///             .clientId(example.get("id"))
+///             .userPoolId(exampleAwsCognitoUserPool.get("id"))
 ///             .settings(serializeJson(
 ///                 jsonObject(
 ///
@@ -371,7 +377,7 @@ class ManagedLoginBranding extends pulumi.CustomResource {
           'aws:cognito/managedLoginBranding:ManagedLoginBranding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     assets = registerOutput<List<ManagedLoginBrandingAsset>?>('assets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedLoginBrandingAsset>(guardedValue, (value) => ManagedLoginBrandingAsset.fromMap((value as Map).cast<String, dynamic>())); });
     clientId = registerOutput<String>('clientId');

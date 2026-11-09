@@ -70,7 +70,7 @@ import 'catalog_table_view_definition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -78,7 +78,10 @@ import 'catalog_table_view_definition.dart';
 ///   }
 /// }
 ///
-/// resource "aws_glue_catalogtable" "example" {
+/// resource "aws_glue_catalog_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "MyCatalogTable"
 ///   database_name = "MyCatalogDatabase"
 /// }
@@ -358,7 +361,7 @@ import 'catalog_table_view_definition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -366,34 +369,41 @@ import 'catalog_table_view_definition.dart';
 ///   }
 /// }
 ///
-/// resource "aws_glue_catalogtable" "example" {
-///   storage_descriptor = {
-///     ser_de_info = {
+/// resource "aws_glue_catalog_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   storage_descriptor {
+///     ser_de_info {
 ///       name                  = "my-stream"
 ///       serialization_library = "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe"
 ///       parameters = {
 ///         "serialization.format" = 1
 ///       }
 ///     }
-///     columns = [{
-///       "name" = "my_string"
-///       "type" = "string"
-///       }, {
-///       "name" = "my_double"
-///       "type" = "double"
-///       }, {
-///       "name"    = "my_date"
-///       "type"    = "date"
-///       "comment" = ""
-///       }, {
-///       "name"    = "my_bigint"
-///       "type"    = "bigint"
-///       "comment" = ""
-///       }, {
-///       "name"    = "my_struct"
-///       "type"    = "struct<my_nested_string:string>"
-///       "comment" = ""
-///     }]
+///     columns {
+///       name = "my_string"
+///       type = "string"
+///     }
+///     columns {
+///       name = "my_double"
+///       type = "double"
+///     }
+///     columns {
+///       name    = "my_date"
+///       type    = "date"
+///       comment = ""
+///     }
+///     columns {
+///       name    = "my_bigint"
+///       type    = "bigint"
+///       comment = ""
+///     }
+///     columns {
+///       name    = "my_struct"
+///       type    = "struct<my_nested_string:string>"
+///       comment = ""
+///     }
 ///     location      = "s3://my-bucket/event-streams/my-stream"
 ///     input_format  = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat"
 ///     output_format = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat"
@@ -798,7 +808,7 @@ import 'catalog_table_view_definition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -806,45 +816,59 @@ import 'catalog_table_view_definition.dart';
 ///   }
 /// }
 ///
-/// resource "aws_glue_catalogtable" "example" {
-///   open_table_format_input = {
-///     iceberg_input = {
-///       iceberg_table_input = {
-///         schema = {
-///           fields = [{
-///             "id"       = 1
-///             "name"     = "transaction_id"
-///             "required" = true
-///             "type"     = "            \\\"string\\\"\n"
-///             }, {
-///             "id"       = 2
-///             "name"     = "transaction_date"
-///             "required" = true
-///             "type"     = "            \\\"date\\\"\n"
-///             }, {
-///             "id"       = 3
-///             "name"     = "monthly_balance"
-///             "required" = true
-///             "type"     = "            \\\"float\\\"\n"
-///           }]
+/// resource "aws_glue_catalog_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   open_table_format_input {
+///     iceberg_input {
+///       iceberg_table_input {
+///         schema {
+///           fields {
+///             id       = 1
+///             name     = "transaction_id"
+///             required = true
+///             type     = <<EOF
+///             \"string\"
+/// EOF
+///
+///           }
+///           fields {
+///             id       = 2
+///             name     = "transaction_date"
+///             required = true
+///             type     = <<EOF
+///             \"date\"
+/// EOF
+///
+///           }
+///           fields {
+///             id       = 3
+///             name     = "monthly_balance"
+///             required = true
+///             type     = <<EOF
+///             \"float\"
+/// EOF
+///
+///           }
 ///           schema_id = 0
 ///           type      = "struct"
 ///         }
-///         partition_spec = {
-///           fields = [{
-///             "name"      = "by_year"
-///             "sourceId"  = 2
-///             "transform" = "year"
-///           }]
+///         partition_spec {
+///           fields {
+///             name      = "by_year"
+///             source_id = 2
+///             transform = "year"
+///           }
 ///           spec_id = 0
 ///         }
-///         sort_order = {
-///           fields = [{
-///             "direction" = "asc"
-///             "nullOrder" = "nulls-last"
-///             "sourceId"  = 1
-///             "transform" = "none"
-///           }]
+///         sort_order {
+///           fields {
+///             direction  = "asc"
+///             null_order = "nulls-last"
+///             source_id  = 1
+///             transform  = "none"
+///           }
 ///           order_id = 1
 ///         }
 ///         location = "s3://sampledatabucket/bankdataiceberg/transactiontable1/"
@@ -1103,7 +1127,7 @@ import 'catalog_table_view_definition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1111,14 +1135,17 @@ import 'catalog_table_view_definition.dart';
 ///   }
 /// }
 ///
-/// resource "aws_glue_catalogtable" "example" {
-///   view_definition = {
-///     representations = [{
-///       "dialect"              = "ATHENA"
-///       "dialectVersion"       = "3"
-///       "viewOriginalText"     = "SELECT * FROM catalog_database.base_table"
-///       "validationConnection" = exampleAwsGlueConnection.name
-///     }]
+/// resource "aws_glue_catalog_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   view_definition {
+///     representations {
+///       dialect               = "ATHENA"
+///       dialect_version       = "3"
+///       view_original_text    = "SELECT * FROM catalog_database.base_table"
+///       validation_connection = exampleAwsGlueConnection.name
+///     }
 ///     is_protected = true
 ///   }
 ///   name          = "multidialect_view"
@@ -1155,7 +1182,7 @@ import 'catalog_table_view_definition.dart';
 ///                     .dialect("ATHENA")
 ///                     .dialectVersion("3")
 ///                     .viewOriginalText("SELECT * FROM catalog_database.base_table")
-///                     .validationConnection(exampleAwsGlueConnection.name())
+///                     .validationConnection(exampleAwsGlueConnection.get("name"))
 ///                     .build())
 ///                 .isProtected(true)
 ///                 .build())
@@ -1258,7 +1285,7 @@ class CatalogTable extends pulumi.CustomResource {
           'aws:glue/catalogTable:CatalogTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     catalogId = registerOutput<String>('catalogId');

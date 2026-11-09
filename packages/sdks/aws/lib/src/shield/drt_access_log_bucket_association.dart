@@ -69,7 +69,7 @@ import 'drt_access_log_bucket_association_timeouts.dart';
 /// 		}
 /// 		_, err = shield.NewDrtAccessLogBucketAssociation(ctx, "test", &shield.DrtAccessLogBucketAssociationArgs{
 /// 			LogBucket:            pulumi.Any(shieldDrtAccessLogBucket),
-/// 			RoleArnAssociationId: test.ID().ToIDOutput().ToStringOutput(),
+/// 			RoleArnAssociationId: test.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -79,7 +79,7 @@ import 'drt_access_log_bucket_association_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -87,12 +87,18 @@ import 'drt_access_log_bucket_association_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_shield_drtaccessrolearnassociation" "test" {
+/// resource "aws_shield_drt_access_role_arn_association" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role_arn ="arn:aws:iam:${current.region}:${currentAwsCallerIdentity.accountId}:${shieldDrtAccessRoleName}"
 /// }
-/// resource "aws_shield_drtaccesslogbucketassociation" "test" {
+/// resource "aws_shield_drt_access_log_bucket_association" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   log_bucket              = shieldDrtAccessLogBucket
-///   role_arn_association_id = aws_shield_drtaccessrolearnassociation.test.id
+///   role_arn_association_id = aws_shield_drt_access_role_arn_association.test.id
 /// }
 /// ```
 /// ```java
@@ -119,7 +125,7 @@ import 'drt_access_log_bucket_association_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new DrtAccessRoleArnAssociation("test", DrtAccessRoleArnAssociationArgs.builder()
-///             .roleArn(String.format("arn:aws:iam:%s:%s:%s", current.region(),currentAwsCallerIdentity.accountId(),shieldDrtAccessRoleName))
+///             .roleArn(String.format("arn:aws:iam:%s:%s:%s", current.get("region"),currentAwsCallerIdentity.get("accountId"),shieldDrtAccessRoleName))
 ///             .build());
 ///
 ///         var testDrtAccessLogBucketAssociation = new DrtAccessLogBucketAssociation("testDrtAccessLogBucketAssociation", DrtAccessLogBucketAssociationArgs.builder()
@@ -171,7 +177,7 @@ class DrtAccessLogBucketAssociation extends pulumi.CustomResource {
           'aws:shield/drtAccessLogBucketAssociation:DrtAccessLogBucketAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     logBucket = registerOutput<String>('logBucket');
     roleArnAssociationId = registerOutput<String>('roleArnAssociationId');

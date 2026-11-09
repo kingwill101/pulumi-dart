@@ -115,7 +115,7 @@ import 'authorizer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -127,6 +127,9 @@ import 'authorizer_state.dart';
 /// }
 ///
 /// resource "aws_iot_authorizer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example"
 ///   authorizer_function_arn = exampleAwsLambdaFunction.arn
 ///   signing_disabled        = false
@@ -165,7 +168,7 @@ import 'authorizer_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Authorizer("example", AuthorizerArgs.builder()
 ///             .name("example")
-///             .authorizerFunctionArn(exampleAwsLambdaFunction.arn())
+///             .authorizerFunctionArn(exampleAwsLambdaFunction.get("arn"))
 ///             .signingDisabled(false)
 ///             .status("ACTIVE")
 ///             .tokenKeyName("Token-Header")
@@ -243,7 +246,7 @@ class Authorizer extends pulumi.CustomResource {
           'aws:iot/authorizer:Authorizer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['tokenSigningPublicKeys'],
         ) {
     arn = registerOutput<String>('arn');

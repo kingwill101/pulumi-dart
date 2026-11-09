@@ -7,8 +7,134 @@ import 'role_alias_state.dart';
 /// ## Example Usage
 ///
 ///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const assumeRole = aws.iam.getPolicyDocument({
+///     principals: [{
+///         type: "Service",
+///         identifiers: ["credentials.iot.amazonaws.com"],
+///     }],
+///     effect: "Allow",
+///     actions: ["sts:AssumeRole"],
+/// });
+/// const role = new aws.iam.Role("role", {
+///     name: "dynamodb-access-role",
+///     assumeRolePolicy: assumeRole.then(assumeRole => assumeRole.json),
+/// });
+/// const alias = new aws.iot.RoleAlias("alias", {
+///     alias: "Thermostat-dynamodb-access-role-alias",
+///     roleArn: role.arn,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// assume_role = aws.iam.get_policy_document(principals=[{
+///         "type": "Service",
+///         "identifiers": ["credentials.iot.amazonaws.com"],
+///     }],
+///     effect="Allow",
+///     actions=["sts:AssumeRole"])
+/// role = aws.iam.Role("role",
+///     name="dynamodb-access-role",
+///     assume_role_policy=assume_role.json)
+/// alias = aws.iot.RoleAlias("alias",
+///     alias="Thermostat-dynamodb-access-role-alias",
+///     role_arn=role.arn)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var assumeRole = Aws.Iam.GetPolicyDocument.Invoke(new()
+///     {
+///         Principals = new[]
+///         {
+///
+///             {
+///                 { "type", "Service" },
+///                 { "identifiers", new[]
+///                 {
+///                     "credentials.iot.amazonaws.com",
+///                 } },
+///             },
+///         },
+///         Effect = "Allow",
+///         Actions = new[]
+///         {
+///             "sts:AssumeRole",
+///         },
+///     });
+///
+///     var role = new Aws.Iam.Role("role", new()
+///     {
+///         Name = "dynamodb-access-role",
+///         AssumeRolePolicy = assumeRole.Apply(getPolicyDocumentResult => getPolicyDocumentResult.Json),
+///     });
+///
+///     var @alias = new Aws.Iot.RoleAlias("alias", new()
+///     {
+///         Alias = "Thermostat-dynamodb-access-role-alias",
+///         RoleArn = role.Arn,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iot"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Principals: []map[string]interface{}{
+/// 				map[string]interface{}{
+/// 					"type": "Service",
+/// 					"identifiers": []string{
+/// 						"credentials.iot.amazonaws.com",
+/// 					},
+/// 				},
+/// 			},
+/// 			Effect: "Allow",
+/// 			Actions: []string{
+/// 				"sts:AssumeRole",
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		role, err := iam.NewRole(ctx, "role", &iam.RoleArgs{
+/// 			Name:             pulumi.String("dynamodb-access-role"),
+/// 			AssumeRolePolicy: pulumi.String(assumeRole.Json),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = iot.NewRoleAlias(ctx, "alias", &iot.RoleAliasArgs{
+/// 			Alias:   pulumi.String("Thermostat-dynamodb-access-role-alias"),
+/// 			RoleArn: role.Arn,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -16,7 +142,7 @@ import 'role_alias_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
+/// data "aws_iam_policy_document" "assumeRole" {
 ///   principals = [{
 ///     "type"        = "Service"
 ///     "identifiers" = ["credentials.iot.amazonaws.com"]
@@ -26,12 +152,65 @@ import 'role_alias_state.dart';
 /// }
 ///
 /// resource "aws_iam_role" "role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "dynamodb-access-role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iot_rolealias" "alias" {
+/// resource "aws_iot_role_alias" "alias" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alias    = "Thermostat-dynamodb-access-role-alias"
 ///   role_arn = aws_iam_role.role.arn
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.iam.IamFunctions;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.Role;
+/// import com.pulumi.aws.iam.RoleArgs;
+/// import com.pulumi.aws.iot.RoleAlias;
+/// import com.pulumi.aws.iot.RoleAliasArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+///             .principals(Arrays.asList(Map.ofEntries(
+///                 Map.entry("type", "Service"),
+///                 Map.entry("identifiers", Arrays.asList("credentials.iot.amazonaws.com"))
+///             )))
+///             .effect("Allow")
+///             .actions(Arrays.asList("sts:AssumeRole"))
+///             .build());
+///
+///         var role = new Role("role", RoleArgs.builder()
+///             .name("dynamodb-access-role")
+///             .assumeRolePolicy(assumeRole.json())
+///             .build());
+///
+///         var alias = new RoleAlias("alias", RoleAliasArgs.builder()
+///             .alias("Thermostat-dynamodb-access-role-alias")
+///             .roleArn(role.arn())
+///             .build());
+///
+///     }
 /// }
 /// ```
 /// ```yaml
@@ -96,7 +275,7 @@ class RoleAlias extends pulumi.CustomResource {
           'aws:iot/roleAlias:RoleAlias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     alias = registerOutput<String>('alias');
     arn = registerOutput<String>('arn');

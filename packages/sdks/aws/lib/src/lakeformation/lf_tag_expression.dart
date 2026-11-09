@@ -108,7 +108,7 @@ import 'lf_tag_expression_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -116,14 +116,20 @@ import 'lf_tag_expression_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lakeformation_lftag" "example" {
+/// resource "aws_lakeformation_lf_tag" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key    = "example"
 ///   values = ["value"]
 /// }
-/// resource "aws_lakeformation_lftagexpression" "example" {
-///   expressions {
-///     tag_key    = aws_lakeformation_lftag.example.key
-///     tag_values = aws_lakeformation_lftag.example.values
+/// resource "aws_lakeformation_lf_tag_expression" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   expression {
+///     tag_key    = aws_lakeformation_lf_tag.example.key
+///     tag_values = aws_lakeformation_lf_tag.example.values
 ///   }
 ///   name = "example"
 /// }
@@ -220,7 +226,7 @@ class LfTagExpression extends pulumi.CustomResource {
           'aws:lakeformation/lfTagExpression:LfTagExpression',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     catalogId = registerOutput<String>('catalogId');
     description = registerOutput<String?>('description');

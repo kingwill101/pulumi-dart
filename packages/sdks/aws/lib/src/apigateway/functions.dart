@@ -68,7 +68,7 @@ import 'get_vpc_link_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,7 +76,7 @@ import 'get_vpc_link_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_apigateway_getapikeys" "example" {
+/// data "aws_apigateway_api_keys" "example" {
 /// }
 /// ```
 /// ```java
@@ -198,7 +198,7 @@ pulumi.Output<GetApiKeysResult> getApiKeysOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -206,7 +206,7 @@ pulumi.Output<GetApiKeysResult> getApiKeysOutput(
 ///   }
 /// }
 ///
-/// data "aws_apigateway_getauthorizer" "example" {
+/// data "aws_apigateway_authorizer" "example" {
 ///   rest_api_id   = exampleAwsApiGatewayRestApi.id
 ///   authorizer_id = exampleAwsApiGatewayAuthorizers.ids[0]
 /// }
@@ -233,8 +233,8 @@ pulumi.Output<GetApiKeysResult> getApiKeysOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = ApigatewayFunctions.getAuthorizer(GetAuthorizerArgs.builder()
-///             .restApiId(exampleAwsApiGatewayRestApi.id())
-///             .authorizerId(exampleAwsApiGatewayAuthorizers.ids()[0])
+///             .restApiId(exampleAwsApiGatewayRestApi.get("id"))
+///             .authorizerId(exampleAwsApiGatewayAuthorizers.get("ids")[0])
 ///             .build());
 ///
 ///     }
@@ -330,7 +330,7 @@ pulumi.Output<GetAuthorizerResult> getAuthorizerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -338,7 +338,7 @@ pulumi.Output<GetAuthorizerResult> getAuthorizerOutput(
 ///   }
 /// }
 ///
-/// data "aws_apigateway_getauthorizers" "example" {
+/// data "aws_apigateway_authorizers" "example" {
 ///   rest_api_id = exampleAwsApiGatewayRestApi.id
 /// }
 /// ```
@@ -364,7 +364,7 @@ pulumi.Output<GetAuthorizerResult> getAuthorizerOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = ApigatewayFunctions.getAuthorizers(GetAuthorizersArgs.builder()
-///             .restApiId(exampleAwsApiGatewayRestApi.id())
+///             .restApiId(exampleAwsApiGatewayRestApi.get("id"))
 ///             .build());
 ///
 ///     }
@@ -459,7 +459,7 @@ pulumi.Output<GetAuthorizersResult> getAuthorizersOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -467,7 +467,7 @@ pulumi.Output<GetAuthorizersResult> getAuthorizersOutput(
 ///   }
 /// }
 ///
-/// data "aws_apigateway_getdomainname" "example" {
+/// data "aws_apigateway_domain_name" "example" {
 ///   domain_name = "api.example.com"
 /// }
 /// ```
@@ -594,7 +594,7 @@ pulumi.Output<GetDomainNameResult> getDomainNameOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -602,7 +602,7 @@ pulumi.Output<GetDomainNameResult> getDomainNameOutput(
 ///   }
 /// }
 ///
-/// data "aws_apigateway_getexport" "example" {
+/// data "aws_apigateway_export" "example" {
 ///   rest_api_id = exampleAwsApiGatewayStage.restApiId
 ///   stage_name  = exampleAwsApiGatewayStage.stageName
 ///   export_type = "oas30"
@@ -630,8 +630,8 @@ pulumi.Output<GetDomainNameResult> getDomainNameOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = ApigatewayFunctions.getExport(GetExportArgs.builder()
-///             .restApiId(exampleAwsApiGatewayStage.restApiId())
-///             .stageName(exampleAwsApiGatewayStage.stageName())
+///             .restApiId(exampleAwsApiGatewayStage.get("restApiId"))
+///             .stageName(exampleAwsApiGatewayStage.get("stageName"))
 ///             .exportType("oas30")
 ///             .build());
 ///
@@ -730,7 +730,7 @@ pulumi.Output<GetExportResult> getExportOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -738,7 +738,7 @@ pulumi.Output<GetExportResult> getExportOutput(
 ///   }
 /// }
 ///
-/// data "aws_apigateway_getkey" "myApiKey" {
+/// data "aws_apigateway_key" "myApiKey" {
 ///   id = "ru3mpjgse6"
 /// }
 /// ```
@@ -879,7 +879,7 @@ pulumi.Output<GetKeyResult> getKeyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -887,11 +887,11 @@ pulumi.Output<GetKeyResult> getKeyOutput(
 ///   }
 /// }
 ///
-/// data "aws_apigateway_getrestapi" "myRestApi" {
+/// data "aws_apigateway_rest_api" "myRestApi" {
 ///   name = "my-rest-api"
 /// }
-/// data "aws_apigateway_getresource" "myResource" {
-///   rest_api_id = data.aws_apigateway_getrestapi.myRestApi.id
+/// data "aws_apigateway_resource" "myResource" {
+///   rest_api_id = data.aws_apigateway_rest_api.myRestApi.id
 ///   path        = "/endpoint/path"
 /// }
 /// ```
@@ -1027,7 +1027,7 @@ pulumi.Output<GetResourceResult> getResourceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1035,7 +1035,7 @@ pulumi.Output<GetResourceResult> getResourceOutput(
 ///   }
 /// }
 ///
-/// data "aws_apigateway_getrestapi" "myRestApi" {
+/// data "aws_apigateway_rest_api" "myRestApi" {
 ///   name = "my-rest-api"
 /// }
 /// ```
@@ -1187,7 +1187,7 @@ pulumi.Output<GetRestApiResult> getRestApiOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1195,7 +1195,7 @@ pulumi.Output<GetRestApiResult> getRestApiOutput(
 ///   }
 /// }
 ///
-/// data "aws_apigateway_getsdk" "example" {
+/// data "aws_apigateway_sdk" "example" {
 ///   rest_api_id = exampleAwsApiGatewayStage.restApiId
 ///   stage_name  = exampleAwsApiGatewayStage.stageName
 ///   sdk_type    = "android"
@@ -1229,8 +1229,8 @@ pulumi.Output<GetRestApiResult> getRestApiOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = ApigatewayFunctions.getSdk(GetSdkArgs.builder()
-///             .restApiId(exampleAwsApiGatewayStage.restApiId())
-///             .stageName(exampleAwsApiGatewayStage.stageName())
+///             .restApiId(exampleAwsApiGatewayStage.get("restApiId"))
+///             .stageName(exampleAwsApiGatewayStage.get("stageName"))
 ///             .sdkType("android")
 ///             .parameters(Map.ofEntries(
 ///                 Map.entry("groupId", "example"),
@@ -1342,7 +1342,7 @@ pulumi.Output<GetSdkResult> getSdkOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1350,7 +1350,7 @@ pulumi.Output<GetSdkResult> getSdkOutput(
 ///   }
 /// }
 ///
-/// data "aws_apigateway_getvpclink" "myApiGatewayVpcLink" {
+/// data "aws_apigateway_vpc_link" "myApiGatewayVpcLink" {
 ///   name = "my-vpc-link"
 /// }
 /// ```

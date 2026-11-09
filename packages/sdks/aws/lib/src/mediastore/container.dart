@@ -57,7 +57,7 @@ import 'container_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -66,6 +66,9 @@ import 'container_state.dart';
 /// }
 ///
 /// resource "aws_mediastore_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// ```
@@ -139,7 +142,7 @@ class Container extends pulumi.CustomResource {
           'aws:mediastore/container:Container',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     endpoint = registerOutput<String>('endpoint');

@@ -66,7 +66,7 @@ import 'cluster_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'cluster_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_neptune_clusterendpoint" "example" {
+/// resource "aws_neptune_cluster_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier          = test.clusterIdentifier
 ///   cluster_endpoint_identifier = "example"
 ///   endpoint_type               = "READER"
@@ -102,7 +105,7 @@ import 'cluster_endpoint_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ClusterEndpoint("example", ClusterEndpointArgs.builder()
-///             .clusterIdentifier(test.clusterIdentifier())
+///             .clusterIdentifier(test.get("clusterIdentifier"))
 ///             .clusterEndpointIdentifier("example")
 ///             .endpointType("READER")
 ///             .build());
@@ -162,7 +165,7 @@ class ClusterEndpoint extends pulumi.CustomResource {
           'aws:neptune/clusterEndpoint:ClusterEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     clusterEndpointIdentifier = registerOutput<String>('clusterEndpointIdentifier');

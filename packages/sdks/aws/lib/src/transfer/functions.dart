@@ -59,7 +59,7 @@ import 'get_server_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,7 @@ import 'get_server_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_transfer_getconnector" "test" {
+/// data "aws_transfer_connector" "test" {
 ///   id = "c-xxxxxxxxxxxxxx"
 /// }
 /// ```
@@ -189,7 +189,7 @@ pulumi.Output<GetConnectorResult> getConnectorOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -197,7 +197,7 @@ pulumi.Output<GetConnectorResult> getConnectorOutput(
 ///   }
 /// }
 ///
-/// data "aws_transfer_getserver" "example" {
+/// data "aws_transfer_server" "example" {
 ///   server_id = "s-1234567"
 /// }
 /// ```

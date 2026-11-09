@@ -79,7 +79,7 @@ import 'v2_user_journey_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -87,11 +87,17 @@ import 'v2_user_journey_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_resiliencehub_v2system" "example" {
+/// resource "aws_resiliencehub_v2_system" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-system"
 /// }
-/// resource "aws_resiliencehub_v2userjourney" "example" {
-///   system_arn = aws_resiliencehub_v2system.example.arn
+/// resource "aws_resiliencehub_v2_user_journey" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   system_arn = aws_resiliencehub_v2_system.example.arn
 ///   name       = "example-user-journey"
 /// }
 /// ```
@@ -253,7 +259,7 @@ import 'v2_user_journey_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -261,20 +267,29 @@ import 'v2_user_journey_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_resiliencehub_v2system" "example" {
+/// resource "aws_resiliencehub_v2_system" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-system"
 /// }
-/// resource "aws_resiliencehub_v2policy" "example" {
+/// resource "aws_resiliencehub_v2_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_slo = {
 ///     target = 99.9
 ///   }
 ///   name = "example-policy"
 /// }
-/// resource "aws_resiliencehub_v2userjourney" "example" {
-///   system_arn  = aws_resiliencehub_v2system.example.arn
+/// resource "aws_resiliencehub_v2_user_journey" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   system_arn  = aws_resiliencehub_v2_system.example.arn
 ///   name        = "checkout-flow"
 ///   description = "End-to-end checkout user journey"
-///   policy_arn  = aws_resiliencehub_v2policy.example.arn
+///   policy_arn  = aws_resiliencehub_v2_policy.example.arn
 /// }
 /// ```
 /// ```java
@@ -396,7 +411,7 @@ class V2UserJourney extends pulumi.CustomResource {
           'aws:resiliencehub/v2UserJourney:V2UserJourney',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

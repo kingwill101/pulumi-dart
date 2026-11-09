@@ -61,7 +61,7 @@ import 'get_table_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -69,7 +69,7 @@ import 'get_table_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_timestreamwrite_getdatabase" "test" {
+/// data "aws_timestreamwrite_database" "test" {
 ///   name = "database-example"
 /// }
 /// ```
@@ -196,7 +196,7 @@ pulumi.Output<GetDatabaseResult> getDatabaseOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -204,7 +204,7 @@ pulumi.Output<GetDatabaseResult> getDatabaseOutput(
 ///   }
 /// }
 ///
-/// data "aws_timestreamwrite_gettable" "test" {
+/// data "aws_timestreamwrite_table" "test" {
 ///   database_name = testAwsTimestreamwriteDatabase.databaseName
 ///   name          = testAwsTimestreamwriteTable.tableName
 /// }
@@ -231,8 +231,8 @@ pulumi.Output<GetDatabaseResult> getDatabaseOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = TimestreamwriteFunctions.getTable(GetTableArgs.builder()
-///             .databaseName(testAwsTimestreamwriteDatabase.databaseName())
-///             .name(testAwsTimestreamwriteTable.tableName())
+///             .databaseName(testAwsTimestreamwriteDatabase.get("databaseName"))
+///             .name(testAwsTimestreamwriteTable.get("tableName"))
 ///             .build());
 ///
 ///     }

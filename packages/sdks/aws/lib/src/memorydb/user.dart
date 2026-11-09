@@ -105,7 +105,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -117,10 +117,16 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "random_password" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   length = 16
 /// }
 /// resource "aws_memorydb_user" "example" {
-///   authentication_mode = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   authentication_mode {
 ///     type      = "password"
 ///     passwords = [random_password.example.result]
 ///   }
@@ -159,7 +165,7 @@ import 'user_state.dart';
 ///         var exampleUser = new User("exampleUser", UserArgs.builder()
 ///             .authenticationMode(UserAuthenticationModeArgs.builder()
 ///                 .type("password")
-///                 .passwords(example.result())
+///                 .passwords(example.get("result"))
 ///                 .build())
 ///             .userName("my-user")
 ///             .accessString("on ~* &* +@all")
@@ -229,7 +235,7 @@ class User extends pulumi.CustomResource {
           'aws:memorydb/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accessString = registerOutput<String>('accessString');
     arn = registerOutput<String>('arn');

@@ -118,7 +118,7 @@ import 'key_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -127,8 +127,11 @@ import 'key_timeouts.dart';
 /// }
 ///
 /// resource "aws_paymentcryptography_key" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key_attributes {
-///     key_modes_of_uses {
+///     key_modes_of_use {
 ///       decrypt = true
 ///       encrypt = true
 ///       wrap    = true
@@ -255,7 +258,7 @@ class Key extends pulumi.CustomResource {
           'aws:paymentcryptography/key:Key',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deletionWindowInDays = registerOutput<int>('deletionWindowInDays');
