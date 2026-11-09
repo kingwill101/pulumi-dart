@@ -40,7 +40,7 @@ class CustomResourceDefinitionStatus {
     return CustomResourceDefinitionStatus(
       acceptedNames: pulumi.Input.fromValue(CustomResourceDefinitionNames.fromMap((map['acceptedNames']! as Map).cast<String, dynamic>())),
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CustomResourceDefinitionCondition>(guardedValue, (value) => CustomResourceDefinitionCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       storedVersions: pulumi.Input.fromValue((map['storedVersions'] as List).cast<String>()),
     );
   }

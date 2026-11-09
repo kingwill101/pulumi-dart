@@ -50,10 +50,10 @@ class HorizontalPodAutoscalerStatusAutoscalingV2beta2 {
     return HorizontalPodAutoscalerStatusAutoscalingV2beta2(
       conditions: pulumi.Input.fromValue(pulumi.Input.decodeList<HorizontalPodAutoscalerConditionAutoscalingV2beta2>(map['conditions']!, (value) => HorizontalPodAutoscalerConditionAutoscalingV2beta2.fromMap((value as Map).cast<String, dynamic>()))),
       currentMetrics: (() { final guardedValue = map['currentMetrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MetricStatusAutoscalingV2beta2>(guardedValue, (value) => MetricStatusAutoscalingV2beta2.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      currentReplicas: pulumi.Input.fromValue((map['currentReplicas'] as num).toInt()),
-      desiredReplicas: pulumi.Input.fromValue((map['desiredReplicas'] as num).toInt()),
+      currentReplicas: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['currentReplicas'])),
+      desiredReplicas: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['desiredReplicas'])),
       lastScaleTime: (() { final guardedValue = map['lastScaleTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

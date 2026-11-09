@@ -26,7 +26,7 @@ class ScaleStatus {
 
   factory ScaleStatus.fromMap(Map<String, dynamic> map) {
     return ScaleStatus(
-      replicas: pulumi.Input.fromValue((map['replicas'] as num).toInt()),
+      replicas: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['replicas'])),
       selector: (() { final guardedValue = map['selector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

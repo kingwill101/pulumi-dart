@@ -107,7 +107,7 @@ class ContainerStatusPatch {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ready: (() { final guardedValue = map['ready']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceRequirementsPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      restartCount: (() { final guardedValue = map['restartCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      restartCount: (() { final guardedValue = map['restartCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       started: (() { final guardedValue = map['started']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContainerStatePatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       stopSignal: (() { final guardedValue = map['stopSignal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

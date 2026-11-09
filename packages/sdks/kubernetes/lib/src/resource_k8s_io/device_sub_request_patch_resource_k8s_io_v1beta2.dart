@@ -102,7 +102,7 @@ class DeviceSubRequestPatchResourceK8sIoV1beta2 {
     return DeviceSubRequestPatchResourceK8sIoV1beta2(
       allocationMode: (() { final guardedValue = map['allocationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CapacityRequirementsPatchResourceK8sIoV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       derivedAttributes: (() { final guardedValue = map['derivedAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeviceDerivedAttributePatchResourceK8sIoV1beta2>(guardedValue, (value) => DeviceDerivedAttributePatchResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))); })(),
       deviceClassName: (() { final guardedValue = map['deviceClassName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

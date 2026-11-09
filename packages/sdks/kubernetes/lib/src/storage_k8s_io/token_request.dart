@@ -27,7 +27,7 @@ class TokenRequest {
   factory TokenRequest.fromMap(Map<String, dynamic> map) {
     return TokenRequest(
       audience: pulumi.Input.fromValue(map['audience'] as String),
-      expirationSeconds: (() { final guardedValue = map['expirationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      expirationSeconds: (() { final guardedValue = map['expirationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

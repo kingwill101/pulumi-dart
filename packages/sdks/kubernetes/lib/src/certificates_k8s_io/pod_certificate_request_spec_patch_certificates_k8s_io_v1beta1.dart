@@ -110,7 +110,7 @@ class PodCertificateRequestSpecPatchCertificatesK8sIoV1beta1 {
 
   factory PodCertificateRequestSpecPatchCertificatesK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return PodCertificateRequestSpecPatchCertificatesK8sIoV1beta1(
-      maxExpirationSeconds: (() { final guardedValue = map['maxExpirationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxExpirationSeconds: (() { final guardedValue = map['maxExpirationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       nodeName: (() { final guardedValue = map['nodeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nodeUID: (() { final guardedValue = map['nodeUID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pkixPublicKey: (() { final guardedValue = map['pkixPublicKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
