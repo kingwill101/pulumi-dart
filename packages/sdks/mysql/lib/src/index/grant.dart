@@ -602,7 +602,7 @@ class Grant extends pulumi.CustomResource {
           'mysql:index/grant:Grant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '3.3.3').merge(options),
+          pulumi.CustomResourceOptions(version: '3.3.4').merge(options),
         ) {
     database = registerOutput<String>('database');
     grant = registerOutput<bool?>('grant');

@@ -182,7 +182,7 @@ class UserPassword extends pulumi.CustomResource {
           'mysql:index/userPassword:UserPassword',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '3.3.3').merge(options),
+          pulumi.CustomResourceOptions(version: '3.3.4').merge(options),
         ) {
     encryptedPassword = registerOutput<String>('encryptedPassword');
     host = registerOutput<String?>('host');
