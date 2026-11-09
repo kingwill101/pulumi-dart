@@ -124,7 +124,7 @@ class Role extends pulumi.CustomResource {
           'mysql:index/role:Role',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '3.3.3').merge(options),
+          pulumi.CustomResourceOptions(version: '3.3.4').merge(options),
         ) {
     this.name = registerOutput<String>('name');
   }

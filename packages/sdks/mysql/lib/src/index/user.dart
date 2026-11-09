@@ -277,7 +277,7 @@ class User extends pulumi.CustomResource {
           'mysql:index/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '3.3.3').merge(options),
+          pulumi.CustomResourceOptions(version: '3.3.4').merge(options),
           additionalSecretOutputs: const ['password', 'plaintextPassword'],
         ) {
     authPlugin = registerOutput<String?>('authPlugin');
