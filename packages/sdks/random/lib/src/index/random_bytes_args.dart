@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_random_bytes_random_bytes_args_doc}
 class RandomBytesArgs {
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
-  final pulumi.Input<Map<String, String>>? keepers;
+  final pulumi.Input<Map<String, String>?>? keepers;
   /// The number of bytes requested. The minimum value for length is 1.
   final pulumi.Input<int> length;
 
@@ -30,7 +30,7 @@ class RandomBytesArgs {
   factory RandomBytesArgs.fromMap(Map<String, dynamic> map) {
     return RandomBytesArgs(
       keepers: (() { final guardedValue = map['keepers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      length: pulumi.Input.fromValue(map['length'] as int),
+      length: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['length'])),
     );
   }
 }
