@@ -7,13 +7,13 @@ class GetHyperdriveConfigsResultMtls {
   final pulumi.Input<String> caCertificateId;
   /// Define mTLS certificate ID obtained after uploading client cert.
   final pulumi.Input<String> mtlsCertificateId;
-  /// Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
+  /// PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.
   final pulumi.Input<String> sslmode;
 
   /// Creates a new [GetHyperdriveConfigsResultMtls].
   /// [caCertificateId] Define CA certificate ID obtained after uploading CA cert.
   /// [mtlsCertificateId] Define mTLS certificate ID obtained after uploading client cert.
-  /// [sslmode] Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
+  /// [sslmode] PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.
   const GetHyperdriveConfigsResultMtls({
     required this.caCertificateId,
     required this.mtlsCertificateId,

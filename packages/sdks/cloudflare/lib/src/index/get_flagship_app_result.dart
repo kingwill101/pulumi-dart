@@ -3,12 +3,12 @@
 
 /// Result data returned by getFlagshipApp.
 class GetFlagshipAppResult {
-  /// Cloudflare account ID.
+  /// Cloudflare account ID that owns the Flagship app.
   final String? accountId;
-  /// App identifier.
+  /// Flagship app ID returned when the app was created.
   final String? appId;
   final String? createdAt;
-  /// App identifier.
+  /// Flagship app ID returned when the app was created.
   final String? id;
   final String? name;
   final String? updatedAt;
@@ -16,10 +16,10 @@ class GetFlagshipAppResult {
   final String? updatedBy;
 
   /// Creates a new [GetFlagshipAppResult].
-  /// [accountId] Cloudflare account ID.
-  /// [appId] App identifier.
+  /// [accountId] Cloudflare account ID that owns the Flagship app.
+  /// [appId] Flagship app ID returned when the app was created.
   /// [createdAt] Optional.
-  /// [id] App identifier.
+  /// [id] Flagship app ID returned when the app was created.
   /// [name] Optional.
   /// [updatedAt] Optional.
   /// [updatedBy] Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes.

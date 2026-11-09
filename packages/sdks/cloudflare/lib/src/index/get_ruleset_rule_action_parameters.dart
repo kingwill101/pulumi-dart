@@ -20,6 +20,7 @@ import 'get_ruleset_rule_action_parameters_no_cache.dart';
 import 'get_ruleset_rule_action_parameters_no_store.dart';
 import 'get_ruleset_rule_action_parameters_no_transform.dart';
 import 'get_ruleset_rule_action_parameters_origin.dart';
+import 'get_ruleset_rule_action_parameters_origin_range_requests.dart';
 import 'get_ruleset_rule_action_parameters_overrides.dart';
 import 'get_ruleset_rule_action_parameters_private.dart';
 import 'get_ruleset_rule_action_parameters_proxy_revalidate.dart';
@@ -124,6 +125,8 @@ class GetRulesetRuleActionParameters {
   final pulumi.Input<bool> originCacheControl;
   /// Whether to generate Cloudflare error pages for issues from the origin server.
   final pulumi.Input<bool> originErrorPagePassthru;
+  /// Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
+  final pulumi.Input<GetRulesetRuleActionParametersOriginRangeRequests> originRangeRequests;
   /// A set of overrides to apply to the target ruleset.
   final pulumi.Input<GetRulesetRuleActionParametersOverrides> overrides;
   /// A list of phases to skip the execution of. This option is incompatible with the rulesets option.
@@ -250,6 +253,7 @@ class GetRulesetRuleActionParameters {
   /// [origin] An origin to route to.
   /// [originCacheControl] Whether Cloudflare will aim to strictly adhere to RFC 7234.
   /// [originErrorPagePassthru] Whether to generate Cloudflare error pages for issues from the origin server.
+  /// [originRangeRequests] Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
   /// [overrides] A set of overrides to apply to the target ruleset.
   /// [phases] A list of phases to skip the execution of. This option is incompatible with the rulesets option.
   /// [polish] The Polish level to configure.
@@ -330,6 +334,7 @@ class GetRulesetRuleActionParameters {
     required this.origin,
     required this.originCacheControl,
     required this.originErrorPagePassthru,
+    required this.originRangeRequests,
     required this.overrides,
     required this.phases,
     required this.polish,
@@ -413,6 +418,7 @@ class GetRulesetRuleActionParameters {
       'origin': pulumi.Input.mapInputValue<GetRulesetRuleActionParametersOrigin, Map<String, dynamic>>(origin, (value) => value.toMap()),
       'originCacheControl': originCacheControl,
       'originErrorPagePassthru': originErrorPagePassthru,
+      'originRangeRequests': pulumi.Input.mapInputValue<GetRulesetRuleActionParametersOriginRangeRequests, Map<String, dynamic>>(originRangeRequests, (value) => value.toMap()),
       'overrides': pulumi.Input.mapInputValue<GetRulesetRuleActionParametersOverrides, Map<String, dynamic>>(overrides, (value) => value.toMap()),
       'phases': phases,
       'polish': polish,
@@ -483,7 +489,7 @@ class GetRulesetRuleActionParameters {
       hotlinkProtection: pulumi.Input.fromValue(map['hotlinkProtection'] as bool),
       id: pulumi.Input.fromValue(map['id'] as String),
       immutable: pulumi.Input.fromValue(GetRulesetRuleActionParametersImmutable.fromMap((map['immutable']! as Map).cast<String, dynamic>())),
-      increment: pulumi.Input.fromValue((map['increment'] as num).toInt()),
+      increment: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['increment'])),
       matchedData: pulumi.Input.fromValue(GetRulesetRuleActionParametersMatchedData.fromMap((map['matchedData']! as Map).cast<String, dynamic>())),
       maxAge: pulumi.Input.fromValue(GetRulesetRuleActionParametersMaxAge.fromMap((map['maxAge']! as Map).cast<String, dynamic>())),
       mirage: pulumi.Input.fromValue(map['mirage'] as bool),
@@ -497,6 +503,7 @@ class GetRulesetRuleActionParameters {
       origin: pulumi.Input.fromValue(GetRulesetRuleActionParametersOrigin.fromMap((map['origin']! as Map).cast<String, dynamic>())),
       originCacheControl: pulumi.Input.fromValue(map['originCacheControl'] as bool),
       originErrorPagePassthru: pulumi.Input.fromValue(map['originErrorPagePassthru'] as bool),
+      originRangeRequests: pulumi.Input.fromValue(GetRulesetRuleActionParametersOriginRangeRequests.fromMap((map['originRangeRequests']! as Map).cast<String, dynamic>())),
       overrides: pulumi.Input.fromValue(GetRulesetRuleActionParametersOverrides.fromMap((map['overrides']! as Map).cast<String, dynamic>())),
       phases: pulumi.Input.fromValue((map['phases'] as List).cast<String>()),
       polish: pulumi.Input.fromValue(map['polish'] as String),
@@ -505,7 +512,7 @@ class GetRulesetRuleActionParameters {
       proxyRevalidate: pulumi.Input.fromValue(GetRulesetRuleActionParametersProxyRevalidate.fromMap((map['proxyRevalidate']! as Map).cast<String, dynamic>())),
       public: pulumi.Input.fromValue(GetRulesetRuleActionParametersPublic.fromMap((map['public']! as Map).cast<String, dynamic>())),
       rawResponseFields: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRulesetRuleActionParametersRawResponseField>(map['rawResponseFields']!, (value) => GetRulesetRuleActionParametersRawResponseField.fromMap((value as Map).cast<String, dynamic>()))),
-      readTimeout: pulumi.Input.fromValue((map['readTimeout'] as num).toInt()),
+      readTimeout: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['readTimeout'])),
       redirectsForAiTraining: pulumi.Input.fromValue(map['redirectsForAiTraining'] as bool),
       requestBodyBuffering: pulumi.Input.fromValue(map['requestBodyBuffering'] as String),
       requestFields: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRulesetRuleActionParametersRequestField>(map['requestFields']!, (value) => GetRulesetRuleActionParametersRequestField.fromMap((value as Map).cast<String, dynamic>()))),
@@ -525,7 +532,7 @@ class GetRulesetRuleActionParameters {
       ssl: pulumi.Input.fromValue(map['ssl'] as String),
       staleIfError: pulumi.Input.fromValue(GetRulesetRuleActionParametersStaleIfError.fromMap((map['staleIfError']! as Map).cast<String, dynamic>())),
       staleWhileRevalidate: pulumi.Input.fromValue(GetRulesetRuleActionParametersStaleWhileRevalidate.fromMap((map['staleWhileRevalidate']! as Map).cast<String, dynamic>())),
-      statusCode: pulumi.Input.fromValue((map['statusCode'] as num).toInt()),
+      statusCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['statusCode'])),
       stripEtags: pulumi.Input.fromValue(map['stripEtags'] as bool),
       stripLastModified: pulumi.Input.fromValue(map['stripLastModified'] as bool),
       stripSetCookie: pulumi.Input.fromValue(map['stripSetCookie'] as bool),

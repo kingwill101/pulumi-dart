@@ -176,7 +176,7 @@ import 'zero_trust_access_ai_controls_mcp_portal_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -184,32 +184,35 @@ import 'zero_trust_access_ai_controls_mcp_portal_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustaccessaicontrolsmcpportal" "example_zero_trust_access_ai_controls_mcp_portal" {
-///   account_id                                  = "a86a8f5c339544d7bdc89926de14fb8c"
-///   zero_trust_access_ai_controls_mcp_portal_id = "my-mcp-portal"
-///   hostname                                    = "example.com"
-///   name                                        = "My MCP Portal"
-///   allow_code_mode                             = true
-///   code_mode                                   = "opt_in"
-///   description                                 = "This is my custom MCP Portal"
-///   secure_web_gateway                          = false
-///   servers {
+/// resource "cloudflare_zero_trust_access_ai_controls_mcp_portal" "example_zero_trust_access_ai_controls_mcp_portal" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   account_id         = "a86a8f5c339544d7bdc89926de14fb8c"
+///   id                 = "my-mcp-portal"
+///   hostname           = "example.com"
+///   name               = "My MCP Portal"
+///   allow_code_mode    = true
+///   code_mode          = "opt_in"
+///   description        = "This is my custom MCP Portal"
+///   secure_web_gateway = false
+///   servers = [{
 ///     server_id        = "my-mcp-server"
 ///     default_disabled = true
 ///     on_behalf        = true
-///     updated_prompts {
+///     updated_prompts = [{
 ///       name        = "name"
 ///       alias       = "my-custom-alias"
 ///       description = "description"
 ///       enabled     = true
-///     }
-///     updated_tools {
+///     }]
+///     updated_tools = [{
 ///       name        = "name"
 ///       alias       = "my-custom-alias"
 ///       description = "description"
 ///       enabled     = true
-///     }
-///   }
+///     }]
+///   }]
 /// }
 /// ```
 /// ```java
@@ -339,7 +342,7 @@ class ZeroTrustAccessAiControlsMcpPortal extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.3').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     allowCodeMode = registerOutput<bool>('allowCodeMode');

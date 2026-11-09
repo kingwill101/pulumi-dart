@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomPagesArgs {
   /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
   final pulumi.Input<String?>? accountId;
-  /// Error Page Types
+  /// Custom page type.
   /// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
   final pulumi.Input<String> identifier;
   /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -17,7 +17,7 @@ class GetCustomPagesArgs {
 
   /// Creates a new [GetCustomPagesArgs].
   /// [accountId] The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-  /// [identifier] Error Page Types
+  /// [identifier] Custom page type.
   /// [zoneId] The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
   const GetCustomPagesArgs({
     this.accountId,

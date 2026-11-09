@@ -13,7 +13,7 @@ class GetZeroTrustResourceLibraryApplicationsResult {
   final pulumi.Input<String> applicationType;
   /// Returns the application type description.
   final pulumi.Input<String> applicationTypeDescription;
-  /// Returns the category ID.
+  /// Numeric identifier for an application category.
   final pulumi.Input<int> categoryId;
   /// Returns the application creation time.
   final pulumi.Input<String> createdAt;
@@ -21,16 +21,19 @@ class GetZeroTrustResourceLibraryApplicationsResult {
   final pulumi.Input<double> genAiScore;
   /// Hostnames matched by the application.
   final pulumi.Input<List<String>> hostnames;
-  /// Returns the human readable ID.
+  /// Human-readable identifier for the application.
   final pulumi.Input<String> humanId;
-  /// Returns the application ID.
+  /// Numeric identifier for the application.
   final pulumi.Input<int> id;
-  /// IP subnets matched by the application.
+  /// IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
   final pulumi.Input<List<String>> ipSubnets;
-  /// Returns the application name.
+  /// Application name.
   final pulumi.Input<String> name;
-  /// Port and protocol pairs matched by the application.
+  /// Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
   final pulumi.Input<List<String>> portProtocols;
+  /// The account-specific Gateway review status. Applications with no assigned review status are returned as `unreviewed`.
+  /// Available values: "approved", "unapproved", "inReview", "unreviewed".
+  final pulumi.Input<String> reviewStatus;
   /// Support domains matched by the application.
   final pulumi.Input<List<String>> supportDomains;
   /// Cloudflare products that support this application.
@@ -46,15 +49,16 @@ class GetZeroTrustResourceLibraryApplicationsResult {
   /// [applicationSource] Returns the application source.
   /// [applicationType] Returns the application type.
   /// [applicationTypeDescription] Returns the application type description.
-  /// [categoryId] Returns the category ID.
+  /// [categoryId] Numeric identifier for an application category.
   /// [createdAt] Returns the application creation time.
   /// [genAiScore] GenAI score for the application. Returns -1 when no score is available.
   /// [hostnames] Hostnames matched by the application.
-  /// [humanId] Returns the human readable ID.
-  /// [id] Returns the application ID.
-  /// [ipSubnets] IP subnets matched by the application.
-  /// [name] Returns the application name.
-  /// [portProtocols] Port and protocol pairs matched by the application.
+  /// [humanId] Human-readable identifier for the application.
+  /// [id] Numeric identifier for the application.
+  /// [ipSubnets] IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
+  /// [name] Application name.
+  /// [portProtocols] Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
+  /// [reviewStatus] The account-specific Gateway review status. Applications with no assigned review status are returned as `unreviewed`.
   /// [supportDomains] Support domains matched by the application.
   /// [supporteds] Cloudflare products that support this application.
   /// [updatedAt] Returns the application update time.
@@ -74,6 +78,7 @@ class GetZeroTrustResourceLibraryApplicationsResult {
     required this.ipSubnets,
     required this.name,
     required this.portProtocols,
+    required this.reviewStatus,
     required this.supportDomains,
     required this.supporteds,
     required this.updatedAt,
@@ -96,6 +101,7 @@ class GetZeroTrustResourceLibraryApplicationsResult {
       'ipSubnets': ipSubnets,
       'name': name,
       'portProtocols': portProtocols,
+      'reviewStatus': reviewStatus,
       'supportDomains': supportDomains,
       'supporteds': supporteds,
       'updatedAt': updatedAt,
@@ -110,15 +116,16 @@ class GetZeroTrustResourceLibraryApplicationsResult {
       applicationSource: pulumi.Input.fromValue(map['applicationSource'] as String),
       applicationType: pulumi.Input.fromValue(map['applicationType'] as String),
       applicationTypeDescription: pulumi.Input.fromValue(map['applicationTypeDescription'] as String),
-      categoryId: pulumi.Input.fromValue((map['categoryId'] as num).toInt()),
+      categoryId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['categoryId'])),
       createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
       genAiScore: pulumi.Input.fromValue((map['genAiScore'] as num).toDouble()),
       hostnames: pulumi.Input.fromValue((map['hostnames'] as List).cast<String>()),
       humanId: pulumi.Input.fromValue(map['humanId'] as String),
-      id: pulumi.Input.fromValue((map['id'] as num).toInt()),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       ipSubnets: pulumi.Input.fromValue((map['ipSubnets'] as List).cast<String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
       portProtocols: pulumi.Input.fromValue((map['portProtocols'] as List).cast<String>()),
+      reviewStatus: pulumi.Input.fromValue(map['reviewStatus'] as String),
       supportDomains: pulumi.Input.fromValue((map['supportDomains'] as List).cast<String>()),
       supporteds: pulumi.Input.fromValue((map['supporteds'] as List).cast<String>()),
       updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),

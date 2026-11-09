@@ -18,6 +18,10 @@ class GetWorkerVersionsResult {
   final pulumi.Input<GetWorkerVersionsResultAnnotations> annotations;
   /// Configuration for assets within a Worker.
   final pulumi.Input<GetWorkerVersionsResultAssets> assets;
+  /// Email of the user who created the version.
+  final pulumi.Input<String> authorEmail;
+  /// Identifier of the user who created the version.
+  final pulumi.Input<String> authorId;
   /// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
   final pulumi.Input<List<GetWorkerVersionsResultBinding>> bindings;
   /// Global CacheW configuration for the Worker. When caching is on,
@@ -79,6 +83,8 @@ class GetWorkerVersionsResult {
   /// Creates a new [GetWorkerVersionsResult].
   /// [annotations] Metadata about the version.
   /// [assets] Configuration for assets within a Worker.
+  /// [authorEmail] Email of the user who created the version.
+  /// [authorId] Identifier of the user who created the version.
   /// [bindings] List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
   /// [cacheOptions] Global CacheW configuration for the Worker. When caching is on,
   /// [compatibilityDate] Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -103,6 +109,8 @@ class GetWorkerVersionsResult {
   const GetWorkerVersionsResult({
     required this.annotations,
     required this.assets,
+    required this.authorEmail,
+    required this.authorId,
     required this.bindings,
     required this.cacheOptions,
     required this.compatibilityDate,
@@ -130,6 +138,8 @@ class GetWorkerVersionsResult {
     return <String, dynamic>{
       'annotations': pulumi.Input.mapInputValue<GetWorkerVersionsResultAnnotations, Map<String, dynamic>>(annotations, (value) => value.toMap()),
       'assets': pulumi.Input.mapInputValue<GetWorkerVersionsResultAssets, Map<String, dynamic>>(assets, (value) => value.toMap()),
+      'authorEmail': authorEmail,
+      'authorId': authorId,
       'bindings': pulumi.Input.mapInputValue<List<GetWorkerVersionsResultBinding>, List<Map<String, dynamic>>>(bindings, (value) => pulumi.Input.encodeList<GetWorkerVersionsResultBinding, Map<String, dynamic>>(value, (value) => value.toMap())),
       'cacheOptions': pulumi.Input.mapInputValue<GetWorkerVersionsResultCacheOptions, Map<String, dynamic>>(cacheOptions, (value) => value.toMap()),
       'compatibilityDate': compatibilityDate,
@@ -158,6 +168,8 @@ class GetWorkerVersionsResult {
     return GetWorkerVersionsResult(
       annotations: pulumi.Input.fromValue(GetWorkerVersionsResultAnnotations.fromMap((map['annotations']! as Map).cast<String, dynamic>())),
       assets: pulumi.Input.fromValue(GetWorkerVersionsResultAssets.fromMap((map['assets']! as Map).cast<String, dynamic>())),
+      authorEmail: pulumi.Input.fromValue(map['authorEmail'] as String),
+      authorId: pulumi.Input.fromValue(map['authorId'] as String),
       bindings: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWorkerVersionsResultBinding>(map['bindings']!, (value) => GetWorkerVersionsResultBinding.fromMap((value as Map).cast<String, dynamic>()))),
       cacheOptions: pulumi.Input.fromValue(GetWorkerVersionsResultCacheOptions.fromMap((map['cacheOptions']! as Map).cast<String, dynamic>())),
       compatibilityDate: pulumi.Input.fromValue(map['compatibilityDate'] as String),
@@ -172,11 +184,11 @@ class GetWorkerVersionsResult {
       migrationTag: pulumi.Input.fromValue(map['migrationTag'] as String),
       migrations: pulumi.Input.fromValue(GetWorkerVersionsResultMigrations.fromMap((map['migrations']! as Map).cast<String, dynamic>())),
       modules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWorkerVersionsResultModule>(map['modules']!, (value) => GetWorkerVersionsResultModule.fromMap((value as Map).cast<String, dynamic>()))),
-      number: pulumi.Input.fromValue((map['number'] as num).toInt()),
+      number: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['number'])),
       packageDependencies: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWorkerVersionsResultPackageDependency>(map['packageDependencies']!, (value) => GetWorkerVersionsResultPackageDependency.fromMap((value as Map).cast<String, dynamic>()))),
       placement: pulumi.Input.fromValue(GetWorkerVersionsResultPlacement.fromMap((map['placement']! as Map).cast<String, dynamic>())),
       source: pulumi.Input.fromValue(map['source'] as String),
-      startupTimeMs: pulumi.Input.fromValue((map['startupTimeMs'] as num).toInt()),
+      startupTimeMs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['startupTimeMs'])),
       urls: pulumi.Input.fromValue((map['urls'] as List).cast<String>()),
       usageModel: pulumi.Input.fromValue(map['usageModel'] as String),
     );

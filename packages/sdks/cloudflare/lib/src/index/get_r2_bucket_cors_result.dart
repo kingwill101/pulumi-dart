@@ -5,14 +5,14 @@ import 'get_r2_bucket_cors_rule.dart';
 
 /// Result data returned by getR2BucketCors.
 class GetR2BucketCorsResult {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   final String? accountId;
   /// Name of the bucket.
   final String? bucketName;
   final List<GetR2BucketCorsRule>? rules;
 
   /// Creates a new [GetR2BucketCorsResult].
-  /// [accountId] Account ID.
+  /// [accountId] Cloudflare account ID that owns the R2 resource.
   /// [bucketName] Name of the bucket.
   /// [rules] Optional.
   const GetR2BucketCorsResult({

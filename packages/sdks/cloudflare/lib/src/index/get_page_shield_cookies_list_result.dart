@@ -81,7 +81,7 @@ class GetPageShieldCookiesListResult {
       httpOnlyAttribute: pulumi.Input.fromValue(map['httpOnlyAttribute'] as bool),
       id: pulumi.Input.fromValue(map['id'] as String),
       lastSeenAt: pulumi.Input.fromValue(map['lastSeenAt'] as String),
-      maxAgeAttribute: pulumi.Input.fromValue((map['maxAgeAttribute'] as num).toInt()),
+      maxAgeAttribute: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxAgeAttribute'])),
       name: pulumi.Input.fromValue(map['name'] as String),
       pageUrls: pulumi.Input.fromValue((map['pageUrls'] as List).cast<String>()),
       pathAttribute: pulumi.Input.fromValue(map['pathAttribute'] as String),

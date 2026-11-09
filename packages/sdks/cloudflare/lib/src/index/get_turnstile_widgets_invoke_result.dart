@@ -10,7 +10,8 @@ class GetTurnstileWidgetsInvokeResult {
   /// Direction to order widgets.
   /// Available values: "asc", "desc".
   final String? direction;
-  /// Filter widgets by field using case-insensitive substring matching.
+  /// Filter widgets by field. The `name` field uses case-insensitive
+  /// substring matching; `sitekey` uses exact matching.
   /// Format: `field:value`
   final String? filter;
   final int? maxItems;
@@ -20,7 +21,7 @@ class GetTurnstileWidgetsInvokeResult {
   /// Creates a new [GetTurnstileWidgetsInvokeResult].
   /// [accountId] Identifier
   /// [direction] Direction to order widgets.
-  /// [filter] Filter widgets by field using case-insensitive substring matching.
+  /// [filter] Filter widgets by field. The `name` field uses case-insensitive
   /// [maxItems] Optional.
   /// [order] Optional.
   /// [results] Optional.
@@ -49,7 +50,7 @@ class GetTurnstileWidgetsInvokeResult {
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return guardedValue as String; })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTurnstileWidgetsResult>(guardedValue, (value) => GetTurnstileWidgetsResult.fromMap((value as Map).cast<String, dynamic>())); })(),
     );

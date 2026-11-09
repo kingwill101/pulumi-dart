@@ -35,12 +35,21 @@ class GetZeroTrustAccessIdentityProvidersResultConfig {
   /// Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
   /// SAML assertions using the certificate from the assigned certificate set.
   final pulumi.Input<bool> enableEncryption;
+  /// Asks the IdP to reauthenticate the user for each SAML authentication request.
+  final pulumi.Input<bool> forceAuthn;
   /// Add a list of attribute names that will be returned in the response header from the Access callback.
   final pulumi.Input<List<GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttribute>> headerAttributes;
   /// X509 certificate to verify the signature in the SAML authentication response
   final pulumi.Input<List<String>> idpPublicCerts;
   /// IdP Entity ID or Issuer URL
   final pulumi.Input<String> issuerUrl;
+  /// When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+  final pulumi.Input<bool> loginPageAutoPrompt;
+  /// The maximum URL length the IdP accepts for the SSO redirect URL.
+  /// When the constructed SSO URL would exceed this length, the RelayState
+  /// is stored server-side and a short nonce is passed to the IdP instead.
+  /// Set this if your IdP enforces a URL length limit.
+  final pulumi.Input<int> maxSsoUrlLength;
   /// Your okta account url
   final pulumi.Input<String> oktaAccount;
   /// Your OneLogin account url
@@ -50,7 +59,7 @@ class GetZeroTrustAccessIdentityProvidersResultConfig {
   /// Enable Proof Key for Code Exchange (PKCE)
   final pulumi.Input<bool> pkceEnabled;
   /// Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-  /// Available values: "login", "selectAccount", "none".
+  /// Available values: "login", "selectAccount", "none", "consent".
   final pulumi.Input<String> prompt;
   final pulumi.Input<String> redirectUrl;
   /// When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.
@@ -65,6 +74,8 @@ class GetZeroTrustAccessIdentityProvidersResultConfig {
   final pulumi.Input<bool> supportGroups;
   /// The tokenEndpoint URL of your IdP
   final pulumi.Input<String> tokenUrl;
+  /// Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
+  final pulumi.Input<bool> useLoginHint;
 
   /// Creates a new [GetZeroTrustAccessIdentityProvidersResultConfig].
   /// [appsDomain] Your companies TLD
@@ -82,9 +93,12 @@ class GetZeroTrustAccessIdentityProvidersResultConfig {
   /// [emailAttributeName] The attribute name for email in the SAML response.
   /// [emailClaimName] The claim name for email in the idToken response.
   /// [enableEncryption] Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
+  /// [forceAuthn] Asks the IdP to reauthenticate the user for each SAML authentication request.
   /// [headerAttributes] Add a list of attribute names that will be returned in the response header from the Access callback.
   /// [idpPublicCerts] X509 certificate to verify the signature in the SAML authentication response
   /// [issuerUrl] IdP Entity ID or Issuer URL
+  /// [loginPageAutoPrompt] When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+  /// [maxSsoUrlLength] The maximum URL length the IdP accepts for the SSO redirect URL.
   /// [oktaAccount] Your okta account url
   /// [oneloginAccount] Your OneLogin account url
   /// [pingEnvId] Your PingOne environment identifier
@@ -97,6 +111,7 @@ class GetZeroTrustAccessIdentityProvidersResultConfig {
   /// [ssoTargetUrl] URL to send the SAML authentication requests to
   /// [supportGroups] Should Cloudflare try to load groups from your account
   /// [tokenUrl] The tokenEndpoint URL of your IdP
+  /// [useLoginHint] Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
   const GetZeroTrustAccessIdentityProvidersResultConfig({
     required this.appsDomain,
     required this.attributes,
@@ -113,9 +128,12 @@ class GetZeroTrustAccessIdentityProvidersResultConfig {
     required this.emailAttributeName,
     required this.emailClaimName,
     required this.enableEncryption,
+    required this.forceAuthn,
     required this.headerAttributes,
     required this.idpPublicCerts,
     required this.issuerUrl,
+    required this.loginPageAutoPrompt,
+    required this.maxSsoUrlLength,
     required this.oktaAccount,
     required this.oneloginAccount,
     required this.pingEnvId,
@@ -128,6 +146,7 @@ class GetZeroTrustAccessIdentityProvidersResultConfig {
     required this.ssoTargetUrl,
     required this.supportGroups,
     required this.tokenUrl,
+    required this.useLoginHint,
   });
 
   Map<String, dynamic> toMap() {
@@ -147,9 +166,12 @@ class GetZeroTrustAccessIdentityProvidersResultConfig {
       'emailAttributeName': emailAttributeName,
       'emailClaimName': emailClaimName,
       'enableEncryption': enableEncryption,
+      'forceAuthn': forceAuthn,
       'headerAttributes': pulumi.Input.mapInputValue<List<GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttribute>, List<Map<String, dynamic>>>(headerAttributes, (value) => pulumi.Input.encodeList<GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttribute, Map<String, dynamic>>(value, (value) => value.toMap())),
       'idpPublicCerts': idpPublicCerts,
       'issuerUrl': issuerUrl,
+      'loginPageAutoPrompt': loginPageAutoPrompt,
+      'maxSsoUrlLength': maxSsoUrlLength,
       'oktaAccount': oktaAccount,
       'oneloginAccount': oneloginAccount,
       'pingEnvId': pingEnvId,
@@ -162,6 +184,7 @@ class GetZeroTrustAccessIdentityProvidersResultConfig {
       'ssoTargetUrl': ssoTargetUrl,
       'supportGroups': supportGroups,
       'tokenUrl': tokenUrl,
+      'useLoginHint': useLoginHint,
     };
   }
 
@@ -182,9 +205,12 @@ class GetZeroTrustAccessIdentityProvidersResultConfig {
       emailAttributeName: pulumi.Input.fromValue(map['emailAttributeName'] as String),
       emailClaimName: pulumi.Input.fromValue(map['emailClaimName'] as String),
       enableEncryption: pulumi.Input.fromValue(map['enableEncryption'] as bool),
+      forceAuthn: pulumi.Input.fromValue(map['forceAuthn'] as bool),
       headerAttributes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttribute>(map['headerAttributes']!, (value) => GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttribute.fromMap((value as Map).cast<String, dynamic>()))),
       idpPublicCerts: pulumi.Input.fromValue((map['idpPublicCerts'] as List).cast<String>()),
       issuerUrl: pulumi.Input.fromValue(map['issuerUrl'] as String),
+      loginPageAutoPrompt: pulumi.Input.fromValue(map['loginPageAutoPrompt'] as bool),
+      maxSsoUrlLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxSsoUrlLength'])),
       oktaAccount: pulumi.Input.fromValue(map['oktaAccount'] as String),
       oneloginAccount: pulumi.Input.fromValue(map['oneloginAccount'] as String),
       pingEnvId: pulumi.Input.fromValue(map['pingEnvId'] as String),
@@ -197,6 +223,7 @@ class GetZeroTrustAccessIdentityProvidersResultConfig {
       ssoTargetUrl: pulumi.Input.fromValue(map['ssoTargetUrl'] as String),
       supportGroups: pulumi.Input.fromValue(map['supportGroups'] as bool),
       tokenUrl: pulumi.Input.fromValue(map['tokenUrl'] as String),
+      useLoginHint: pulumi.Input.fromValue(map['useLoginHint'] as bool),
     );
   }
 }

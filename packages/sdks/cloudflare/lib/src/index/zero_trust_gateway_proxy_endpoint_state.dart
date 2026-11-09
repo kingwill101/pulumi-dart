@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering ZeroTrustGatewayProxyEndpoint resources.
 class ZeroTrustGatewayProxyEndpointState {
+  /// Specify the Cloudflare account identifier.
   final pulumi.Input<String?>? accountId;
   final pulumi.Input<String?>? createdAt;
   /// Specify the list of CIDRs to restrict ingress connections.
@@ -18,7 +19,7 @@ class ZeroTrustGatewayProxyEndpointState {
   final pulumi.Input<String?>? updatedAt;
 
   /// Creates a new [ZeroTrustGatewayProxyEndpointState].
-  /// [accountId] Optional.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [createdAt] Optional.
   /// [ips] Specify the list of CIDRs to restrict ingress connections.
   /// [kind] The proxy endpoint kind

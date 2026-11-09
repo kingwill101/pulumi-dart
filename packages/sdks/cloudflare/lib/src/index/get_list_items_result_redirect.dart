@@ -48,7 +48,7 @@ class GetListItemsResultRedirect {
       preservePathSuffix: pulumi.Input.fromValue(map['preservePathSuffix'] as bool),
       preserveQueryString: pulumi.Input.fromValue(map['preserveQueryString'] as bool),
       sourceUrl: pulumi.Input.fromValue(map['sourceUrl'] as String),
-      statusCode: pulumi.Input.fromValue((map['statusCode'] as num).toInt()),
+      statusCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['statusCode'])),
       subpathMatching: pulumi.Input.fromValue(map['subpathMatching'] as bool),
       targetUrl: pulumi.Input.fromValue(map['targetUrl'] as String),
     );

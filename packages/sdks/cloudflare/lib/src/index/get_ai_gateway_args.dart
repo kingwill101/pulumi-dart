@@ -10,13 +10,13 @@ import 'get_ai_gateway_filter.dart';
 class GetAiGatewayArgs {
   final pulumi.Input<String?>? accountId;
   final pulumi.Input<GetAiGatewayFilter?>? filter;
-  /// gateway id
+  /// Unique identifier of the AI Gateway within the account.
   final pulumi.Input<String?>? id;
 
   /// Creates a new [GetAiGatewayArgs].
   /// [accountId] Optional.
   /// [filter] Optional.
-  /// [id] gateway id
+  /// [id] Unique identifier of the AI Gateway within the account.
   const GetAiGatewayArgs({
     this.accountId,
     this.filter,

@@ -36,7 +36,7 @@ class GetZeroTrustDlpSensitivityLevelsInvokeResult {
   factory GetZeroTrustDlpSensitivityLevelsInvokeResult.fromMap(Map<String, dynamic> map) {
     return GetZeroTrustDlpSensitivityLevelsInvokeResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetZeroTrustDlpSensitivityLevelsResult>(guardedValue, (value) => GetZeroTrustDlpSensitivityLevelsResult.fromMap((value as Map).cast<String, dynamic>())); })(),
       sensitivityGroupId: (() { final guardedValue = map['sensitivityGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

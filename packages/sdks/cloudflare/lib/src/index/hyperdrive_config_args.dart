@@ -13,27 +13,31 @@ class HyperdriveConfigArgs {
   /// Define configurations using a unique string identifier.
   final pulumi.Input<String> accountId;
   final pulumi.Input<HyperdriveConfigCaching?>? caching;
+  final pulumi.Input<String?>? integration;
   /// mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
   final pulumi.Input<HyperdriveConfigMtls?>? mtls;
   /// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
   final pulumi.Input<String> name;
-  final pulumi.Input<HyperdriveConfigOrigin> origin;
+  /// Combines database connection fields with exactly one supported network location.
+  final pulumi.Input<HyperdriveConfigOrigin?>? origin;
   /// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
   final pulumi.Input<int?>? originConnectionLimit;
 
   /// Creates a new [HyperdriveConfigArgs].
   /// [accountId] Define configurations using a unique string identifier.
   /// [caching] Optional.
+  /// [integration] Optional.
   /// [mtls] mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
   /// [name] The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
-  /// [origin] Required.
+  /// [origin] Combines database connection fields with exactly one supported network location.
   /// [originConnectionLimit] The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
   const HyperdriveConfigArgs({
     required this.accountId,
     this.caching,
+    this.integration,
     this.mtls,
     required this.name,
-    required this.origin,
+    this.origin,
     this.originConnectionLimit,
   });
 
@@ -41,9 +45,10 @@ class HyperdriveConfigArgs {
     return <String, dynamic>{
       'accountId': accountId,
       'caching': ?pulumi.Input.mapOptionalInputValue<HyperdriveConfigCaching, Map<String, dynamic>>(caching, (value) => value.toMap()),
+      'integration': ?integration,
       'mtls': ?pulumi.Input.mapOptionalInputValue<HyperdriveConfigMtls, Map<String, dynamic>>(mtls, (value) => value.toMap()),
       'name': name,
-      'origin': pulumi.Input.mapInputValue<HyperdriveConfigOrigin, Map<String, dynamic>>(origin, (value) => value.toMap()),
+      'origin': ?pulumi.Input.mapOptionalInputValue<HyperdriveConfigOrigin, Map<String, dynamic>>(origin, (value) => value.toMap()),
       'originConnectionLimit': ?originConnectionLimit,
     };
   }
@@ -52,10 +57,11 @@ class HyperdriveConfigArgs {
     return HyperdriveConfigArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
       caching: (() { final guardedValue = map['caching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HyperdriveConfigCaching.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      integration: (() { final guardedValue = map['integration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mtls: (() { final guardedValue = map['mtls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HyperdriveConfigMtls.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      origin: pulumi.Input.fromValue(HyperdriveConfigOrigin.fromMap((map['origin']! as Map).cast<String, dynamic>())),
-      originConnectionLimit: (() { final guardedValue = map['originConnectionLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      origin: (() { final guardedValue = map['origin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HyperdriveConfigOrigin.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      originConnectionLimit: (() { final guardedValue = map['originConnectionLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

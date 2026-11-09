@@ -122,7 +122,7 @@ import 'snippet_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -131,12 +131,22 @@ import 'snippet_state.dart';
 /// }
 ///
 /// resource "cloudflare_snippet" "example_snippet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id      = "9f1839b6152d298aca64c4e906b6d074"
 ///   snippet_name = "my_snippet"
-///   files {
+///   files = [{
 ///     name    = "main.js"
-///     content = "export default {\n  async fetch(request) {\n    return new Response('Hello, World!');\n  }\n}\n"
+///     content = <<-EOT
+/// export default {
+///   async fetch(request) {
+///     return new Response('Hello, World!');
 ///   }
+/// }
+/// EOT
+///
+///   }]
 ///   metadata = {
 ///     main_module = "main.js"
 ///   }
@@ -238,7 +248,7 @@ class Snippet extends pulumi.CustomResource {
           'cloudflare:index/snippet:Snippet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.3').merge(options),
         ) {
     createdOn = registerOutput<String>('createdOn');
     files = registerOutput<List<SnippetFile>>('files', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SnippetFile>(guardedValue, (value) => SnippetFile.fromMap((value as Map).cast<String, dynamic>())); });

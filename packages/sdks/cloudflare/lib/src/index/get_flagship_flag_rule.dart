@@ -37,7 +37,7 @@ class GetFlagshipFlagRule {
   factory GetFlagshipFlagRule.fromMap(Map<String, dynamic> map) {
     return GetFlagshipFlagRule(
       conditions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetFlagshipFlagRuleCondition>(map['conditions']!, (value) => GetFlagshipFlagRuleCondition.fromMap((value as Map).cast<String, dynamic>()))),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       rollout: pulumi.Input.fromValue(GetFlagshipFlagRuleRollout.fromMap((map['rollout']! as Map).cast<String, dynamic>())),
       serveVariation: pulumi.Input.fromValue(map['serveVariation'] as String),
     );

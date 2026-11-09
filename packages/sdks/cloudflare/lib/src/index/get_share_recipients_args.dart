@@ -41,7 +41,7 @@ class GetShareRecipientsArgs {
     return GetShareRecipientsArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
       includeResources: (() { final guardedValue = map['includeResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       shareId: pulumi.Input.fromValue(map['shareId'] as String),
     );
   }

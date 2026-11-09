@@ -155,7 +155,7 @@ class PageRuleActions {
     return PageRuleActions(
       alwaysUseHttps: (() { final guardedValue = map['alwaysUseHttps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       automaticHttpsRewrites: (() { final guardedValue = map['automaticHttpsRewrites']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      browserCacheTtl: (() { final guardedValue = map['browserCacheTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      browserCacheTtl: (() { final guardedValue = map['browserCacheTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       browserCheck: (() { final guardedValue = map['browserCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bypassCacheOnCookie: (() { final guardedValue = map['bypassCacheOnCookie']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cacheByDeviceType: (() { final guardedValue = map['cacheByDeviceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -168,7 +168,7 @@ class PageRuleActions {
       disablePerformance: (() { final guardedValue = map['disablePerformance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       disableSecurity: (() { final guardedValue = map['disableSecurity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       disableZaraz: (() { final guardedValue = map['disableZaraz']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      edgeCacheTtl: (() { final guardedValue = map['edgeCacheTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      edgeCacheTtl: (() { final guardedValue = map['edgeCacheTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       emailObfuscation: (() { final guardedValue = map['emailObfuscation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       explicitCacheControl: (() { final guardedValue = map['explicitCacheControl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       forwardingUrl: (() { final guardedValue = map['forwardingUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PageRuleActionsForwardingUrl.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

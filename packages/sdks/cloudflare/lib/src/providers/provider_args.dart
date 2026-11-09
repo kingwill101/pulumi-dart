@@ -17,7 +17,7 @@ class ProviderArgs {
   final pulumi.Input<String?>? baseUrl;
   /// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `apiKey`. Conflicts with `apiToken`.
   final pulumi.Input<String?>? email;
-  /// A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely identifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX` environment variable.
+  /// A value appended to the HTTP User Agent sent with every API call, used to identify the tool making the request. Defaults to `pulumi/&lt;version&gt;`. Set it to a value of your own to identify your traffic differently, or to the empty string to remove the Pulumi identifier entirely. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX` environment variable.
   final pulumi.Input<String?>? userAgentOperatorSuffix;
 
   /// Creates a new [ProviderArgs].
@@ -26,7 +26,7 @@ class ProviderArgs {
   /// [apiUserServiceKey] A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
   /// [baseUrl] Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment variable.
   /// [email] A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `apiKey`. Conflicts with `apiToken`.
-  /// [userAgentOperatorSuffix] A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely identifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX` environment variable.
+  /// [userAgentOperatorSuffix] A value appended to the HTTP User Agent sent with every API call, used to identify the tool making the request. Defaults to `pulumi/&lt;version&gt;`. Set it to a value of your own to identify your traffic differently, or to the empty string to remove the Pulumi identifier entirely. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX` environment variable.
   const ProviderArgs({
     this.apiKey,
     this.apiToken,

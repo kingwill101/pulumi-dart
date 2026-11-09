@@ -10,7 +10,7 @@ class GetPagesDomainsResult {
   final pulumi.Input<String> createdOn;
   final pulumi.Input<String> domainId;
   final pulumi.Input<String> id;
-  /// The domain name.
+  /// Fully qualified domain name for the Pages project, such as `example.com`.
   final pulumi.Input<String> name;
   /// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
   final pulumi.Input<String> status;
@@ -23,7 +23,7 @@ class GetPagesDomainsResult {
   /// [createdOn] Required.
   /// [domainId] Required.
   /// [id] Required.
-  /// [name] The domain name.
+  /// [name] Fully qualified domain name for the Pages project, such as `example.com`.
   /// [status] Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
   /// [validationData] Required.
   /// [verificationData] Required.

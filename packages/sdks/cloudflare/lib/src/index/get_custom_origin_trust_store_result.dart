@@ -6,12 +6,12 @@ import 'get_custom_origin_trust_store_filter.dart';
 class GetCustomOriginTrustStoreResult {
   /// The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
   final String? certificate;
-  /// Identifier.
+  /// Certificate identifier tag.
   final String? customOriginTrustStoreId;
   /// When the certificate expires.
   final String? expiresOn;
   final GetCustomOriginTrustStoreFilter? filter;
-  /// Identifier.
+  /// Certificate identifier tag.
   final String? id;
   /// The certificate authority that issued the certificate.
   final String? issuer;
@@ -29,10 +29,10 @@ class GetCustomOriginTrustStoreResult {
 
   /// Creates a new [GetCustomOriginTrustStoreResult].
   /// [certificate] The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
-  /// [customOriginTrustStoreId] Identifier.
+  /// [customOriginTrustStoreId] Certificate identifier tag.
   /// [expiresOn] When the certificate expires.
   /// [filter] Optional.
-  /// [id] Identifier.
+  /// [id] Certificate identifier tag.
   /// [issuer] The certificate authority that issued the certificate.
   /// [signature] The type of hash used for the certificate.
   /// [status] Status of the zone's custom SSL.

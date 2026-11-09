@@ -45,6 +45,9 @@ class ZeroTrustDeviceDefaultProfileState {
   /// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
   final pulumi.Input<double?>? lanAllowSubnetSize;
   final pulumi.Input<String?>? policyId;
+  /// The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+  /// Available values: "warp", "browserExtension".
+  final pulumi.Input<String?>? profileType;
   /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
   final pulumi.Input<bool?>? registerInterfaceIpWithDns;
   /// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
@@ -56,6 +59,8 @@ class ZeroTrustDeviceDefaultProfileState {
   final pulumi.Input<bool?>? switchLocked;
   /// Determines which tunnel protocol to use.
   final pulumi.Input<String?>? tunnelProtocol;
+  /// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+  final pulumi.Input<bool?>? uninstallProtection;
   /// Virtual network access settings for the device.
   final pulumi.Input<ZeroTrustDeviceDefaultProfileVirtualNetworks?>? virtualNetworks;
 
@@ -79,12 +84,14 @@ class ZeroTrustDeviceDefaultProfileState {
   /// [lanAllowMinutes] The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
   /// [lanAllowSubnetSize] The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
   /// [policyId] Optional.
+  /// [profileType] The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
   /// [registerInterfaceIpWithDns] Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
   /// [sccmVpnBoundarySupport] Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
   /// [serviceModeV2] Optional.
   /// [supportUrl] The URL to launch when the Send Feedback button is clicked.
   /// [switchLocked] Whether to allow the user to turn off the WARP switch and disconnect the client.
   /// [tunnelProtocol] Determines which tunnel protocol to use.
+  /// [uninstallProtection] Determines whether uninstalling the WARP client requires an override code. (Windows only).
   /// [virtualNetworks] Virtual network access settings for the device.
   const ZeroTrustDeviceDefaultProfileState({
     this.accountId,
@@ -106,12 +113,14 @@ class ZeroTrustDeviceDefaultProfileState {
     this.lanAllowMinutes,
     this.lanAllowSubnetSize,
     this.policyId,
+    this.profileType,
     this.registerInterfaceIpWithDns,
     this.sccmVpnBoundarySupport,
     this.serviceModeV2,
     this.supportUrl,
     this.switchLocked,
     this.tunnelProtocol,
+    this.uninstallProtection,
     this.virtualNetworks,
   });
 
@@ -136,12 +145,14 @@ class ZeroTrustDeviceDefaultProfileState {
       'lanAllowMinutes': ?lanAllowMinutes,
       'lanAllowSubnetSize': ?lanAllowSubnetSize,
       'policyId': ?policyId,
+      'profileType': ?profileType,
       'registerInterfaceIpWithDns': ?registerInterfaceIpWithDns,
       'sccmVpnBoundarySupport': ?sccmVpnBoundarySupport,
       'serviceModeV2': ?pulumi.Input.mapOptionalInputValue<ZeroTrustDeviceDefaultProfileServiceModeV2, Map<String, dynamic>>(serviceModeV2, (value) => value.toMap()),
       'supportUrl': ?supportUrl,
       'switchLocked': ?switchLocked,
       'tunnelProtocol': ?tunnelProtocol,
+      'uninstallProtection': ?uninstallProtection,
       'virtualNetworks': ?pulumi.Input.mapOptionalInputValue<ZeroTrustDeviceDefaultProfileVirtualNetworks, Map<String, dynamic>>(virtualNetworks, (value) => value.toMap()),
     };
   }
@@ -167,12 +178,14 @@ class ZeroTrustDeviceDefaultProfileState {
       lanAllowMinutes: (() { final guardedValue = map['lanAllowMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       lanAllowSubnetSize: (() { final guardedValue = map['lanAllowSubnetSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       policyId: (() { final guardedValue = map['policyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      profileType: (() { final guardedValue = map['profileType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       registerInterfaceIpWithDns: (() { final guardedValue = map['registerInterfaceIpWithDns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       sccmVpnBoundarySupport: (() { final guardedValue = map['sccmVpnBoundarySupport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       serviceModeV2: (() { final guardedValue = map['serviceModeV2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustDeviceDefaultProfileServiceModeV2.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       supportUrl: (() { final guardedValue = map['supportUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       switchLocked: (() { final guardedValue = map['switchLocked']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       tunnelProtocol: (() { final guardedValue = map['tunnelProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uninstallProtection: (() { final guardedValue = map['uninstallProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       virtualNetworks: (() { final guardedValue = map['virtualNetworks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustDeviceDefaultProfileVirtualNetworks.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

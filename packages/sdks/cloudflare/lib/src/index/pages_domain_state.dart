@@ -12,9 +12,9 @@ class PagesDomainState {
   final pulumi.Input<String?>? certificateAuthority;
   final pulumi.Input<String?>? createdOn;
   final pulumi.Input<String?>? domainId;
-  /// The domain name.
+  /// Fully qualified domain name for the Pages project, such as `example.com`.
   final pulumi.Input<String?>? name;
-  /// Name of the project.
+  /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   final pulumi.Input<String?>? projectName;
   /// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
   final pulumi.Input<String?>? status;
@@ -27,8 +27,8 @@ class PagesDomainState {
   /// [certificateAuthority] Available values: "google", "letsEncrypt".
   /// [createdOn] Optional.
   /// [domainId] Optional.
-  /// [name] The domain name.
-  /// [projectName] Name of the project.
+  /// [name] Fully qualified domain name for the Pages project, such as `example.com`.
+  /// [projectName] Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   /// [status] Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
   /// [validationData] Optional.
   /// [verificationData] Optional.

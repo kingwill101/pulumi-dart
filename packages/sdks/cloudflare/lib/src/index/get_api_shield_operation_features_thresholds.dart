@@ -59,15 +59,15 @@ class GetApiShieldOperationFeaturesThresholds {
 
   factory GetApiShieldOperationFeaturesThresholds.fromMap(Map<String, dynamic> map) {
     return GetApiShieldOperationFeaturesThresholds(
-      authIdTokens: pulumi.Input.fromValue((map['authIdTokens'] as num).toInt()),
-      dataPoints: pulumi.Input.fromValue((map['dataPoints'] as num).toInt()),
+      authIdTokens: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['authIdTokens'])),
+      dataPoints: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dataPoints'])),
       lastUpdated: pulumi.Input.fromValue(map['lastUpdated'] as String),
-      p50: pulumi.Input.fromValue((map['p50'] as num).toInt()),
-      p90: pulumi.Input.fromValue((map['p90'] as num).toInt()),
-      p99: pulumi.Input.fromValue((map['p99'] as num).toInt()),
-      periodSeconds: pulumi.Input.fromValue((map['periodSeconds'] as num).toInt()),
-      requests: pulumi.Input.fromValue((map['requests'] as num).toInt()),
-      suggestedThreshold: pulumi.Input.fromValue((map['suggestedThreshold'] as num).toInt()),
+      p50: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['p50'])),
+      p90: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['p90'])),
+      p99: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['p99'])),
+      periodSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['periodSeconds'])),
+      requests: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['requests'])),
+      suggestedThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['suggestedThreshold'])),
     );
   }
 }

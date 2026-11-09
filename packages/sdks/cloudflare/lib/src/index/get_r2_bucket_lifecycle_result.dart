@@ -5,14 +5,14 @@ import 'get_r2_bucket_lifecycle_rule.dart';
 
 /// Result data returned by getR2BucketLifecycle.
 class GetR2BucketLifecycleResult {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   final String? accountId;
   /// Name of the bucket.
   final String? bucketName;
   final List<GetR2BucketLifecycleRule>? rules;
 
   /// Creates a new [GetR2BucketLifecycleResult].
-  /// [accountId] Account ID.
+  /// [accountId] Cloudflare account ID that owns the R2 resource.
   /// [bucketName] Name of the bucket.
   /// [rules] Optional.
   const GetR2BucketLifecycleResult({

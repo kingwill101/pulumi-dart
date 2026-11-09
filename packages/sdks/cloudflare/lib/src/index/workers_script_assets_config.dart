@@ -3,6 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkersScriptAssetsConfig {
+  /// The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
+  final pulumi.Input<String?>? basePath;
   /// The contents of a _headers file (used to attach custom headers on asset responses).
   final pulumi.Input<String?>? headers;
   /// Determines the redirects and rewrites of requests for HTML content.
@@ -19,6 +21,7 @@ class WorkersScriptAssetsConfig {
   final pulumi.Input<bool?>? serveDirectly;
 
   /// Creates a new [WorkersScriptAssetsConfig].
+  /// [basePath] The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
   /// [headers] The contents of a _headers file (used to attach custom headers on asset responses).
   /// [htmlHandling] Determines the redirects and rewrites of requests for HTML content.
   /// [notFoundHandling] Determines the response when a request does not match a static asset, and there is no Worker script.
@@ -26,6 +29,7 @@ class WorkersScriptAssetsConfig {
   /// [runWorkerFirst] When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
   /// [serveDirectly] When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
   const WorkersScriptAssetsConfig({
+    this.basePath,
     this.headers,
     this.htmlHandling,
     this.notFoundHandling,
@@ -36,6 +40,7 @@ class WorkersScriptAssetsConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'basePath': ?basePath,
       'headers': ?headers,
       'htmlHandling': ?htmlHandling,
       'notFoundHandling': ?notFoundHandling,
@@ -47,6 +52,7 @@ class WorkersScriptAssetsConfig {
 
   factory WorkersScriptAssetsConfig.fromMap(Map<String, dynamic> map) {
     return WorkersScriptAssetsConfig(
+      basePath: (() { final guardedValue = map['basePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       headers: (() { final guardedValue = map['headers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       htmlHandling: (() { final guardedValue = map['htmlHandling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       notFoundHandling: (() { final guardedValue = map['notFoundHandling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

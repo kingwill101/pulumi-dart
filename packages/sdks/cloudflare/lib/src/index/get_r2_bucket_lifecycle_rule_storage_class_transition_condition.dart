@@ -29,7 +29,7 @@ class GetR2BucketLifecycleRuleStorageClassTransitionCondition {
   factory GetR2BucketLifecycleRuleStorageClassTransitionCondition.fromMap(Map<String, dynamic> map) {
     return GetR2BucketLifecycleRuleStorageClassTransitionCondition(
       date: pulumi.Input.fromValue(map['date'] as String),
-      maxAge: pulumi.Input.fromValue((map['maxAge'] as num).toInt()),
+      maxAge: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxAge'])),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

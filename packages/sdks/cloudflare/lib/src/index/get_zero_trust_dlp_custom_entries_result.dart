@@ -29,7 +29,7 @@ class GetZeroTrustDlpCustomEntriesResult {
   final pulumi.Input<String> uploadStatus;
   /// A Predefined AI prompt classification topic entry.
   final pulumi.Input<GetZeroTrustDlpCustomEntriesResultVariant> variant;
-  final pulumi.Input<String> wordList;
+  final pulumi.Input<List<String>> wordLists;
 
   /// Creates a new [GetZeroTrustDlpCustomEntriesResult].
   /// [caseSensitive] Only applies to custom word lists.
@@ -47,7 +47,7 @@ class GetZeroTrustDlpCustomEntriesResult {
   /// [updatedAt] Required.
   /// [uploadStatus] Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
   /// [variant] A Predefined AI prompt classification topic entry.
-  /// [wordList] Required.
+  /// [wordLists] Required.
   const GetZeroTrustDlpCustomEntriesResult({
     required this.caseSensitive,
     required this.confidence,
@@ -64,7 +64,7 @@ class GetZeroTrustDlpCustomEntriesResult {
     required this.updatedAt,
     required this.uploadStatus,
     required this.variant,
-    required this.wordList,
+    required this.wordLists,
   });
 
   Map<String, dynamic> toMap() {
@@ -84,7 +84,7 @@ class GetZeroTrustDlpCustomEntriesResult {
       'updatedAt': updatedAt,
       'uploadStatus': uploadStatus,
       'variant': pulumi.Input.mapInputValue<GetZeroTrustDlpCustomEntriesResultVariant, Map<String, dynamic>>(variant, (value) => value.toMap()),
-      'wordList': wordList,
+      'wordLists': wordLists,
     };
   }
 
@@ -105,7 +105,7 @@ class GetZeroTrustDlpCustomEntriesResult {
       updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),
       uploadStatus: pulumi.Input.fromValue(map['uploadStatus'] as String),
       variant: pulumi.Input.fromValue(GetZeroTrustDlpCustomEntriesResultVariant.fromMap((map['variant']! as Map).cast<String, dynamic>())),
-      wordList: pulumi.Input.fromValue(map['wordList'] as String),
+      wordLists: pulumi.Input.fromValue((map['wordLists'] as List).cast<String>()),
     );
   }
 }

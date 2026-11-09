@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetContentScanningExpressionsResult {
-  /// defines the unique ID for this custom scan expression.
+  /// Defines the unique ID for this Content Scanning custom expression.
   final pulumi.Input<String> id;
-  /// Defines the ruleset expression to use in matching content objects.
+  /// Defines the custom content extraction expression used to reach content objects in the request.
   final pulumi.Input<String> payload;
 
   /// Creates a new [GetContentScanningExpressionsResult].
-  /// [id] defines the unique ID for this custom scan expression.
-  /// [payload] Defines the ruleset expression to use in matching content objects.
+  /// [id] Defines the unique ID for this Content Scanning custom expression.
+  /// [payload] Defines the custom content extraction expression used to reach content objects in the request.
   const GetContentScanningExpressionsResult({
     required this.id,
     required this.payload,

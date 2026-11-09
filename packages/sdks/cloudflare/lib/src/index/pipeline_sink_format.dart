@@ -3,7 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineSinkFormat {
-  /// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+  /// Specifies the compression applied to JSON sink output.
+  /// Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
   final pulumi.Input<String?>? compression;
   /// Available values: "number", "string", "bytes".
   final pulumi.Input<String?>? decimalEncoding;
@@ -15,7 +16,7 @@ class PipelineSinkFormat {
   final pulumi.Input<bool?>? unstructured;
 
   /// Creates a new [PipelineSinkFormat].
-  /// [compression] Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+  /// [compression] Specifies the compression applied to JSON sink output.
   /// [decimalEncoding] Available values: "number", "string", "bytes".
   /// [rowGroupBytes] Optional.
   /// [timestampFormat] Available values: "rfc3339", "unixMillis".
@@ -45,7 +46,7 @@ class PipelineSinkFormat {
     return PipelineSinkFormat(
       compression: (() { final guardedValue = map['compression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       decimalEncoding: (() { final guardedValue = map['decimalEncoding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rowGroupBytes: (() { final guardedValue = map['rowGroupBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      rowGroupBytes: (() { final guardedValue = map['rowGroupBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       timestampFormat: (() { final guardedValue = map['timestampFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       unstructured: (() { final guardedValue = map['unstructured']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

@@ -32,7 +32,7 @@ class RulesetRuleActionParametersFromValue {
   factory RulesetRuleActionParametersFromValue.fromMap(Map<String, dynamic> map) {
     return RulesetRuleActionParametersFromValue(
       preserveQueryString: (() { final guardedValue = map['preserveQueryString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      statusCode: (() { final guardedValue = map['statusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      statusCode: (() { final guardedValue = map['statusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       targetUrl: pulumi.Input.fromValue(RulesetRuleActionParametersFromValueTargetUrl.fromMap((map['targetUrl']! as Map).cast<String, dynamic>())),
     );
   }

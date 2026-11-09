@@ -1,9 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_zero_trust_device_custom_profile_browser_extension_config.dart';
 import 'get_zero_trust_device_custom_profile_dns_search_suffix.dart';
 import 'get_zero_trust_device_custom_profile_exclude.dart';
 import 'get_zero_trust_device_custom_profile_fallback_domain.dart';
+import 'get_zero_trust_device_custom_profile_filter.dart';
 import 'get_zero_trust_device_custom_profile_include.dart';
 import 'get_zero_trust_device_custom_profile_service_mode_v2.dart';
 import 'get_zero_trust_device_custom_profile_target_test.dart';
@@ -20,9 +22,11 @@ class GetZeroTrustDeviceCustomProfileResult {
   final bool? allowedToLeave;
   /// The amount of time in seconds to reconnect after having been disabled.
   final double? autoConnect;
+  /// Browser extension proxy settings. Required when profile*type is browser*extension and invalid for WARP profiles.
+  final GetZeroTrustDeviceCustomProfileBrowserExtensionConfig? browserExtensionConfig;
   /// Turn on the captive portal after the specified amount of time.
   final double? captivePortal;
-  /// Whether the policy is the default policy for an account.
+  /// Whether the policy is the account default. WARP group profiles cannot set this field.
   final bool? default_;
   /// A description of the policy.
   final String? description;
@@ -37,6 +41,7 @@ class GetZeroTrustDeviceCustomProfileResult {
   /// List of routes excluded in the WARP client's tunnel.
   final List<GetZeroTrustDeviceCustomProfileExclude>? excludes;
   final List<GetZeroTrustDeviceCustomProfileFallbackDomain>? fallbackDomains;
+  final GetZeroTrustDeviceCustomProfileFilter? filter;
   final String? gatewayUniqueId;
   /// The ID of this resource.
   final String? id;
@@ -46,13 +51,16 @@ class GetZeroTrustDeviceCustomProfileResult {
   final double? lanAllowMinutes;
   /// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
   final double? lanAllowSubnetSize;
-  /// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
+  /// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version", "device.tags".
   final String? match;
   /// The name of the device settings profile.
   final String? name;
   final String? policyId;
   /// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
   final double? precedence;
+  /// The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+  /// Available values: "warp", "browserExtension".
+  final String? profileType;
   /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
   final bool? registerInterfaceIpWithDns;
   /// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
@@ -65,6 +73,8 @@ class GetZeroTrustDeviceCustomProfileResult {
   final List<GetZeroTrustDeviceCustomProfileTargetTest>? targetTests;
   /// Determines which tunnel protocol to use.
   final String? tunnelProtocol;
+  /// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+  final bool? uninstallProtection;
   /// Virtual network access settings for the device.
   final GetZeroTrustDeviceCustomProfileVirtualNetworks? virtualNetworks;
 
@@ -74,8 +84,9 @@ class GetZeroTrustDeviceCustomProfileResult {
   /// [allowUpdates] Whether to receive update notifications when a new version of the client is available.
   /// [allowedToLeave] Whether to allow devices to leave the organization.
   /// [autoConnect] The amount of time in seconds to reconnect after having been disabled.
+  /// [browserExtensionConfig] Browser extension proxy settings. Required when profile*type is browser*extension and invalid for WARP profiles.
   /// [captivePortal] Turn on the captive portal after the specified amount of time.
-  /// [default_] Whether the policy is the default policy for an account.
+  /// [default_] Whether the policy is the account default. WARP group profiles cannot set this field.
   /// [description] A description of the policy.
   /// [disableAutoFallback] If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
   /// [dnsSearchSuffixes] List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
@@ -83,15 +94,17 @@ class GetZeroTrustDeviceCustomProfileResult {
   /// [excludeOfficeIps] Whether to add Microsoft IPs to Split Tunnel exclusions.
   /// [excludes] List of routes excluded in the WARP client's tunnel.
   /// [fallbackDomains] Optional.
+  /// [filter] Optional.
   /// [gatewayUniqueId] Optional.
   /// [id] The ID of this resource.
   /// [includes] List of routes included in the WARP client's tunnel.
   /// [lanAllowMinutes] The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
   /// [lanAllowSubnetSize] The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
-  /// [match] The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
+  /// [match] The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version", "device.tags".
   /// [name] The name of the device settings profile.
   /// [policyId] Optional.
   /// [precedence] The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
+  /// [profileType] The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
   /// [registerInterfaceIpWithDns] Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
   /// [sccmVpnBoundarySupport] Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
   /// [serviceModeV2] Optional.
@@ -99,6 +112,7 @@ class GetZeroTrustDeviceCustomProfileResult {
   /// [switchLocked] Whether to allow the user to turn off the WARP switch and disconnect the client.
   /// [targetTests] Optional.
   /// [tunnelProtocol] Determines which tunnel protocol to use.
+  /// [uninstallProtection] Determines whether uninstalling the WARP client requires an override code. (Windows only).
   /// [virtualNetworks] Virtual network access settings for the device.
   const GetZeroTrustDeviceCustomProfileResult({
     this.accountId,
@@ -106,6 +120,7 @@ class GetZeroTrustDeviceCustomProfileResult {
     this.allowUpdates,
     this.allowedToLeave,
     this.autoConnect,
+    this.browserExtensionConfig,
     this.captivePortal,
     this.default_,
     this.description,
@@ -115,6 +130,7 @@ class GetZeroTrustDeviceCustomProfileResult {
     this.excludeOfficeIps,
     this.excludes,
     this.fallbackDomains,
+    this.filter,
     this.gatewayUniqueId,
     this.id,
     this.includes,
@@ -124,6 +140,7 @@ class GetZeroTrustDeviceCustomProfileResult {
     this.name,
     this.policyId,
     this.precedence,
+    this.profileType,
     this.registerInterfaceIpWithDns,
     this.sccmVpnBoundarySupport,
     this.serviceModeV2,
@@ -131,6 +148,7 @@ class GetZeroTrustDeviceCustomProfileResult {
     this.switchLocked,
     this.targetTests,
     this.tunnelProtocol,
+    this.uninstallProtection,
     this.virtualNetworks,
   });
 
@@ -141,6 +159,7 @@ class GetZeroTrustDeviceCustomProfileResult {
       'allowUpdates': ?allowUpdates,
       'allowedToLeave': ?allowedToLeave,
       'autoConnect': ?autoConnect,
+      'browserExtensionConfig': ?browserExtensionConfig?.toMap(),
       'captivePortal': ?captivePortal,
       'default': ?default_,
       'description': ?description,
@@ -150,6 +169,7 @@ class GetZeroTrustDeviceCustomProfileResult {
       'excludeOfficeIps': ?excludeOfficeIps,
       'excludes': ?(() { final guardedValue = excludes; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetZeroTrustDeviceCustomProfileExclude, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'fallbackDomains': ?(() { final guardedValue = fallbackDomains; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetZeroTrustDeviceCustomProfileFallbackDomain, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'filter': ?filter?.toMap(),
       'gatewayUniqueId': ?gatewayUniqueId,
       'id': ?id,
       'includes': ?(() { final guardedValue = includes; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetZeroTrustDeviceCustomProfileInclude, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
@@ -159,6 +179,7 @@ class GetZeroTrustDeviceCustomProfileResult {
       'name': ?name,
       'policyId': ?policyId,
       'precedence': ?precedence,
+      'profileType': ?profileType,
       'registerInterfaceIpWithDns': ?registerInterfaceIpWithDns,
       'sccmVpnBoundarySupport': ?sccmVpnBoundarySupport,
       'serviceModeV2': ?serviceModeV2?.toMap(),
@@ -166,6 +187,7 @@ class GetZeroTrustDeviceCustomProfileResult {
       'switchLocked': ?switchLocked,
       'targetTests': ?(() { final guardedValue = targetTests; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetZeroTrustDeviceCustomProfileTargetTest, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'tunnelProtocol': ?tunnelProtocol,
+      'uninstallProtection': ?uninstallProtection,
       'virtualNetworks': ?virtualNetworks?.toMap(),
     };
   }
@@ -177,6 +199,7 @@ class GetZeroTrustDeviceCustomProfileResult {
       allowUpdates: (() { final guardedValue = map['allowUpdates']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       allowedToLeave: (() { final guardedValue = map['allowedToLeave']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       autoConnect: (() { final guardedValue = map['autoConnect']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      browserExtensionConfig: (() { final guardedValue = map['browserExtensionConfig']; if (guardedValue == null) return null; return GetZeroTrustDeviceCustomProfileBrowserExtensionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       captivePortal: (() { final guardedValue = map['captivePortal']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       default_: (() { final guardedValue = map['default']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -186,6 +209,7 @@ class GetZeroTrustDeviceCustomProfileResult {
       excludeOfficeIps: (() { final guardedValue = map['excludeOfficeIps']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       excludes: (() { final guardedValue = map['excludes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetZeroTrustDeviceCustomProfileExclude>(guardedValue, (value) => GetZeroTrustDeviceCustomProfileExclude.fromMap((value as Map).cast<String, dynamic>())); })(),
       fallbackDomains: (() { final guardedValue = map['fallbackDomains']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetZeroTrustDeviceCustomProfileFallbackDomain>(guardedValue, (value) => GetZeroTrustDeviceCustomProfileFallbackDomain.fromMap((value as Map).cast<String, dynamic>())); })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return GetZeroTrustDeviceCustomProfileFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       gatewayUniqueId: (() { final guardedValue = map['gatewayUniqueId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       includes: (() { final guardedValue = map['includes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetZeroTrustDeviceCustomProfileInclude>(guardedValue, (value) => GetZeroTrustDeviceCustomProfileInclude.fromMap((value as Map).cast<String, dynamic>())); })(),
@@ -195,6 +219,7 @@ class GetZeroTrustDeviceCustomProfileResult {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       policyId: (() { final guardedValue = map['policyId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       precedence: (() { final guardedValue = map['precedence']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      profileType: (() { final guardedValue = map['profileType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       registerInterfaceIpWithDns: (() { final guardedValue = map['registerInterfaceIpWithDns']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       sccmVpnBoundarySupport: (() { final guardedValue = map['sccmVpnBoundarySupport']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       serviceModeV2: (() { final guardedValue = map['serviceModeV2']; if (guardedValue == null) return null; return GetZeroTrustDeviceCustomProfileServiceModeV2.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
@@ -202,6 +227,7 @@ class GetZeroTrustDeviceCustomProfileResult {
       switchLocked: (() { final guardedValue = map['switchLocked']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       targetTests: (() { final guardedValue = map['targetTests']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetZeroTrustDeviceCustomProfileTargetTest>(guardedValue, (value) => GetZeroTrustDeviceCustomProfileTargetTest.fromMap((value as Map).cast<String, dynamic>())); })(),
       tunnelProtocol: (() { final guardedValue = map['tunnelProtocol']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uninstallProtection: (() { final guardedValue = map['uninstallProtection']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       virtualNetworks: (() { final guardedValue = map['virtualNetworks']; if (guardedValue == null) return null; return GetZeroTrustDeviceCustomProfileVirtualNetworks.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }

@@ -44,7 +44,7 @@ class GetRulesetRuleActionParametersOverridesRule {
       action: pulumi.Input.fromValue(map['action'] as String),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       id: pulumi.Input.fromValue(map['id'] as String),
-      scoreThreshold: pulumi.Input.fromValue((map['scoreThreshold'] as num).toInt()),
+      scoreThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['scoreThreshold'])),
       sensitivityLevel: pulumi.Input.fromValue(map['sensitivityLevel'] as String),
     );
   }

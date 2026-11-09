@@ -17,6 +17,8 @@ class EmailRoutingSettingsState {
   /// Show the state of your account, and the type or configuration error.
   /// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
   final pulumi.Input<String?>? status;
+  /// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+  final pulumi.Input<bool?>? supportSubaddress;
   /// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
   final pulumi.Input<String?>? tag;
   /// Identifier.
@@ -29,6 +31,7 @@ class EmailRoutingSettingsState {
   /// [name] Domain of your zone.
   /// [skipWizard] Flag to check if the user skipped the configuration wizard.
   /// [status] Show the state of your account, and the type or configuration error.
+  /// [supportSubaddress] Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
   /// [tag] Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
   /// [zoneId] Identifier.
   const EmailRoutingSettingsState({
@@ -38,6 +41,7 @@ class EmailRoutingSettingsState {
     this.name,
     this.skipWizard,
     this.status,
+    this.supportSubaddress,
     this.tag,
     this.zoneId,
   });
@@ -50,6 +54,7 @@ class EmailRoutingSettingsState {
       'name': ?name,
       'skipWizard': ?skipWizard,
       'status': ?status,
+      'supportSubaddress': ?supportSubaddress,
       'tag': ?tag,
       'zoneId': ?zoneId,
     };
@@ -63,6 +68,7 @@ class EmailRoutingSettingsState {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       skipWizard: (() { final guardedValue = map['skipWizard']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      supportSubaddress: (() { final guardedValue = map['supportSubaddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       tag: (() { final guardedValue = map['tag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

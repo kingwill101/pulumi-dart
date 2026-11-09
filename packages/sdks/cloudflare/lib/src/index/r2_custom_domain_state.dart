@@ -5,7 +5,7 @@ import 'r2_custom_domain_status.dart';
 
 /// Input properties used for looking up and filtering R2CustomDomain resources.
 class R2CustomDomainState {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   final pulumi.Input<String?>? accountId;
   /// Name of the bucket.
   final pulumi.Input<String?>? bucketName;
@@ -27,7 +27,7 @@ class R2CustomDomainState {
   final pulumi.Input<String?>? zoneName;
 
   /// Creates a new [R2CustomDomainState].
-  /// [accountId] Account ID.
+  /// [accountId] Cloudflare account ID that owns the R2 resource.
   /// [bucketName] Name of the bucket.
   /// [ciphers] An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
   /// [domain] Name of the custom domain to be added.

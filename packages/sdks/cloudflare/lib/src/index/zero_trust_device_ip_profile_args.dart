@@ -58,7 +58,7 @@ class ZeroTrustDeviceIpProfileArgs {
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       match: pulumi.Input.fromValue(map['match'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      precedence: pulumi.Input.fromValue((map['precedence'] as num).toInt()),
+      precedence: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['precedence'])),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }

@@ -35,7 +35,7 @@ class GetZeroTrustDlpPredefinedEntryResult {
   final String? uploadStatus;
   /// A Predefined AI prompt classification topic entry.
   final GetZeroTrustDlpPredefinedEntryVariant? variant;
-  final String? wordList;
+  final List<String>? wordLists;
 
   /// Creates a new [GetZeroTrustDlpPredefinedEntryResult].
   /// [accountId] Optional.
@@ -56,7 +56,7 @@ class GetZeroTrustDlpPredefinedEntryResult {
   /// [updatedAt] Optional.
   /// [uploadStatus] Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
   /// [variant] A Predefined AI prompt classification topic entry.
-  /// [wordList] Optional.
+  /// [wordLists] Optional.
   const GetZeroTrustDlpPredefinedEntryResult({
     this.accountId,
     this.caseSensitive,
@@ -76,7 +76,7 @@ class GetZeroTrustDlpPredefinedEntryResult {
     this.updatedAt,
     this.uploadStatus,
     this.variant,
-    this.wordList,
+    this.wordLists,
   });
 
   Map<String, dynamic> toMap() {
@@ -99,7 +99,7 @@ class GetZeroTrustDlpPredefinedEntryResult {
       'updatedAt': ?updatedAt,
       'uploadStatus': ?uploadStatus,
       'variant': ?variant?.toMap(),
-      'wordList': ?wordList,
+      'wordLists': ?wordLists,
     };
   }
 
@@ -123,7 +123,7 @@ class GetZeroTrustDlpPredefinedEntryResult {
       updatedAt: (() { final guardedValue = map['updatedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       uploadStatus: (() { final guardedValue = map['uploadStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
       variant: (() { final guardedValue = map['variant']; if (guardedValue == null) return null; return GetZeroTrustDlpPredefinedEntryVariant.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      wordList: (() { final guardedValue = map['wordList']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      wordLists: (() { final guardedValue = map['wordLists']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }

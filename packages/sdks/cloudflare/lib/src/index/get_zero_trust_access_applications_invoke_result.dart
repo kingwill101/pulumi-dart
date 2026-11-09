@@ -66,7 +66,7 @@ class GetZeroTrustAccessApplicationsInvokeResult {
       aud: (() { final guardedValue = map['aud']; if (guardedValue == null) return null; return guardedValue as String; })(),
       domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return guardedValue as String; })(),
       exact: (() { final guardedValue = map['exact']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetZeroTrustAccessApplicationsResult>(guardedValue, (value) => GetZeroTrustAccessApplicationsResult.fromMap((value as Map).cast<String, dynamic>())); })(),
       search: (() { final guardedValue = map['search']; if (guardedValue == null) return null; return guardedValue as String; })(),
