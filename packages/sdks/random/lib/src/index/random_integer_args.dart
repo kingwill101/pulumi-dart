@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_random_integer_random_integer_args_doc}
 class RandomIntegerArgs {
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
-  final pulumi.Input<Map<String, String>>? keepers;
+  final pulumi.Input<Map<String, String>?>? keepers;
   /// The maximum inclusive value of the range.
   final pulumi.Input<int> max;
   /// The minimum inclusive value of the range.
   final pulumi.Input<int> min;
   /// A custom seed to always produce the same value.
-  final pulumi.Input<String>? seed;
+  final pulumi.Input<String?>? seed;
 
   /// Creates a new [RandomIntegerArgs].
   /// [keepers] Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
@@ -40,8 +40,8 @@ class RandomIntegerArgs {
   factory RandomIntegerArgs.fromMap(Map<String, dynamic> map) {
     return RandomIntegerArgs(
       keepers: (() { final guardedValue = map['keepers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      max: pulumi.Input.fromValue(map['max'] as int),
-      min: pulumi.Input.fromValue(map['min'] as int),
+      max: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['max'])),
+      min: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['min'])),
       seed: (() { final guardedValue = map['seed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

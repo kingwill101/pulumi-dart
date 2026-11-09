@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering RandomUuid resources.
 class RandomUuidState {
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
-  final pulumi.Input<Map<String, String>>? keepers;
+  final pulumi.Input<Map<String, String>?>? keepers;
   /// The generated uuid presented in string format.
-  final pulumi.Input<String>? result;
+  final pulumi.Input<String?>? result;
 
   /// Creates a new [RandomUuidState].
   /// [keepers] Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
