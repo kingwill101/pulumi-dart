@@ -9,7 +9,7 @@ import 'template_source_destination.dart';
 /// {@macro pulumi_index_template_source_args_doc}
 class TemplateSourceArgs {
   /// The default destination for projects using templates from this source.
-  final pulumi.Input<TemplateSourceDestination>? destination;
+  final pulumi.Input<TemplateSourceDestination?>? destination;
   /// Organization name.
   final pulumi.Input<String> organizationName;
   /// Source name.

@@ -27,4 +27,18 @@ class PolicyGroupInsightsAccountAttachment extends pulumi.CustomResource {
     orgName = registerOutput<String>('orgName');
     policyGroup = registerOutput<String>('policyGroup');
   }
+
+  /// Creates a typed reference to an existing [PolicyGroupInsightsAccountAttachment] resource.
+  PolicyGroupInsightsAccountAttachment.reference(String urn)
+    : super(
+        'pulumiservice:api:PolicyGroupInsightsAccountAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    this.name = registerOutput<String>('name');
+    orgName = registerOutput<String>('orgName');
+    policyGroup = registerOutput<String>('policyGroup');
+  }
 }

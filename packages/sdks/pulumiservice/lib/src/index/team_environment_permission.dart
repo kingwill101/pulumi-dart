@@ -3,6 +3,16 @@ import 'environment_permission.dart';
 import 'team_environment_permission_args.dart';
 
 /// A permission for a team to use an environment.
+///
+/// ## Import
+///
+/// This resource can be imported using its `id`, which has the format `{organization}/{team}/{project}+{environment}`, e.g.,
+///
+/// ```sh
+///  $ pulumi import pulumiservice:index:TeamEnvironmentPermission my-team-environment-permission my-org/my-team/my-project+my-environment
+/// ```
+///
+/// The project and environment are joined with `+`, not `/`. The legacy format `{organization}/{team}/{environment}` is also accepted, and uses the `default` project.
 class TeamEnvironmentPermission extends pulumi.CustomResource {
   /// Environment name.
   late final pulumi.Output<String> environment;
@@ -13,7 +23,7 @@ class TeamEnvironmentPermission extends pulumi.CustomResource {
   /// Which permission level to grant to the specified team.
   late final pulumi.Output<EnvironmentPermission> permission;
   /// Project name.
-  late final pulumi.Output<String?> project;
+  late final pulumi.Output<String> project;
   /// Team name.
   late final pulumi.Output<String> team;
 
@@ -29,13 +39,30 @@ class TeamEnvironmentPermission extends pulumi.CustomResource {
           'pulumiservice:index:TeamEnvironmentPermission',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['environment', 'maxOpenDuration', 'organization', 'permission', 'project', 'team']).merge(options),
         ) {
     environment = registerOutput<String>('environment');
     maxOpenDuration = registerOutput<String?>('maxOpenDuration');
     organization = registerOutput<String>('organization');
     permission = registerOutput<EnvironmentPermission>('permission', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentPermission.fromValue(guardedValue as String); });
-    project = registerOutput<String?>('project');
+    project = registerOutput<String>('project');
+    team = registerOutput<String>('team');
+  }
+
+  /// Creates a typed reference to an existing [TeamEnvironmentPermission] resource.
+  TeamEnvironmentPermission.reference(String urn)
+    : super(
+        'pulumiservice:index:TeamEnvironmentPermission',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    environment = registerOutput<String>('environment');
+    maxOpenDuration = registerOutput<String?>('maxOpenDuration');
+    organization = registerOutput<String>('organization');
+    permission = registerOutput<EnvironmentPermission>('permission', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentPermission.fromValue(guardedValue as String); });
+    project = registerOutput<String>('project');
     team = registerOutput<String>('team');
   }
 }

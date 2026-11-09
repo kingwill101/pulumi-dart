@@ -10,7 +10,7 @@ class OrgTemplateCollectionArgs {
   /// deprecated - use DestinationURL instead
   final pulumi.Input<dynamic>? destination;
   /// The destination URL for the template source.
-  final pulumi.Input<String>? destinationURL;
+  final pulumi.Input<String?>? destinationURL;
   /// The name of the template source.
   final pulumi.Input<String> name;
   /// The organization name

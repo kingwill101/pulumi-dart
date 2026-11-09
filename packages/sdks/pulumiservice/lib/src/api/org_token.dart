@@ -6,6 +6,8 @@ import 'org_token_args.dart';
 /// The `name` field must be unique across the organization (including deleted tokens) and cannot exceed 40 characters. The `expires` field accepts a unix epoch timestamp up to two years from the present, or `0` for no expiry (default).
 ///
 /// **Important:** The token value in the response is only returned once at creation time and cannot be retrieved later. Audit logs for actions performed with organization tokens are attributed to the organization rather than an individual user.
+///
+/// This request must be authenticated as a user, for example with a personal access token. Organization and team access tokens cannot create organization tokens, even when they have the Admin role, so that a token cannot be used to mint further organization tokens. Such requests return a 403 error.
 class OrgToken extends pulumi.CustomResource {
   /// The unique identifier
   late final pulumi.Output<String> tokenId;
@@ -25,8 +27,23 @@ class OrgToken extends pulumi.CustomResource {
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
+          additionalSecretOutputs: const ['tokenValue'],
         ) {
     tokenId = registerOutput<String>('tokenId');
-    tokenValue = registerOutput<String>('tokenValue');
+    tokenValue = registerOutput<String>('tokenValue', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [OrgToken] resource.
+  OrgToken.reference(String urn)
+    : super(
+        'pulumiservice:api/tokens:OrgToken',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['tokenValue'],
+        isResourceReference: true,
+      ) {
+    tokenId = registerOutput<String>('tokenId');
+    tokenValue = registerOutput<String>('tokenValue', isSecret: true);
   }
 }

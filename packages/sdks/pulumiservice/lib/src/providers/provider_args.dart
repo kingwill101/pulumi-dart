@@ -7,18 +7,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_providers_provider_args_doc}
 class ProviderArgs {
-  /// Access Token to authenticate with Pulumi Cloud.
-  final pulumi.Input<String>? accessToken;
+  /// Access token to authenticate with Pulumi Cloud. Optional: if unset, the provider uses the `PULUMI_ACCESS_TOKEN` environment variable, then the access token of the account you're logged in to with `pulumi login`.
+  final pulumi.Input<String?>? accessToken;
   /// Optional override of Pulumi Cloud API endpoint.
-  final pulumi.Input<String>? apiUrl;
+  final pulumi.Input<String?>? apiUrl;
 
   /// Creates a new [ProviderArgs].
-  /// [accessToken] Access Token to authenticate with Pulumi Cloud.
+  /// [accessToken] Access token to authenticate with Pulumi Cloud. Optional: if unset, the provider uses the `PULUMI_ACCESS_TOKEN` environment variable, then the access token of the account you're logged in to with `pulumi login`.
   /// [apiUrl] Optional override of Pulumi Cloud API endpoint.
-  const ProviderArgs({
+  ProviderArgs({
     this.accessToken,
-    this.apiUrl,
-  });
+    pulumi.Input<String?>? apiUrl,
+  }) : apiUrl = apiUrl ?? pulumi.Input.fromValue('https://api.pulumi.com');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

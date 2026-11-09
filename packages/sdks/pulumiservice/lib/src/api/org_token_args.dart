@@ -18,9 +18,9 @@ class OrgTokenArgs {
   /// The organization name
   final pulumi.Input<String> orgName;
   /// Audit log reason for creating this token
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// The role identifier
-  final pulumi.Input<String>? roleID;
+  final pulumi.Input<String?>? roleID;
 
   /// Creates a new [OrgTokenArgs].
   /// [admin] Whether the entity has admin privileges
@@ -56,7 +56,7 @@ class OrgTokenArgs {
     return OrgTokenArgs(
       admin: pulumi.Input.fromValue(map['admin'] as bool),
       description: pulumi.Input.fromValue(map['description'] as String),
-      expires: pulumi.Input.fromValue(map['expires'] as int),
+      expires: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['expires'])),
       name: pulumi.Input.fromValue(map['name'] as String),
       orgName: pulumi.Input.fromValue(map['orgName'] as String),
       reason: (() { final guardedValue = map['reason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

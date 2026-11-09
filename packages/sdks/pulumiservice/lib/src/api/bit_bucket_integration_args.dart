@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_api_integrations_bit_bucket_integration_args_doc}
 class BitBucketIntegrationArgs {
   /// If true, disable detailed property-level diffs in PR comments.
-  final pulumi.Input<bool>? disableDetailedDiff;
+  final pulumi.Input<bool?>? disableDetailedDiff;
   /// If true, disable Neo AI-generated deployment summaries in PR comments.
-  final pulumi.Input<bool>? disableNeoSummaries;
+  final pulumi.Input<bool?>? disableNeoSummaries;
   /// If true, disable automatic PR comments on deployments.
-  final pulumi.Input<bool>? disablePRComments;
+  final pulumi.Input<bool?>? disablePRComments;
   /// The BitBucket integration identifier
   final pulumi.Input<String> integrationId;
   /// The organization name

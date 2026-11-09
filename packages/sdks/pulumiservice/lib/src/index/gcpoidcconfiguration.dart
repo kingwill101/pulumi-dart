@@ -2,22 +2,23 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
+/// GCP configuration for Deployments OIDC. Pulumi ESC is the recommended way to supply cloud credentials to Pulumi Deployments. See [Supplying Cloud Credentials to Pulumi Deployments](https://www.pulumi.com/docs/deployments/guides/cloud-credentials/).
 class GCPOIDCConfiguration {
-  /// The numerical ID of the GCP project.
+  /// The GCP project number, a numeric value such as `123456789012`. This is not the project ID (such as `my-project`). To look up the number, run `gcloud projects describe &lt;project-id&gt; --format='value(projectNumber)'`.
   final pulumi.Input<String> projectId;
   /// The ID of the identity provider associated with the workload pool.
   final pulumi.Input<String> providerId;
   /// The region of the GCP project.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The email address of the service account to use.
   final pulumi.Input<String> serviceAccount;
   /// The lifetime of the temporary credentials in “XhYmZs” format.
-  final pulumi.Input<String>? tokenLifetime;
+  final pulumi.Input<String?>? tokenLifetime;
   /// The ID of the workload pool to use.
   final pulumi.Input<String> workloadPoolId;
 
   /// Creates a new [GCPOIDCConfiguration].
-  /// [projectId] The numerical ID of the GCP project.
+  /// [projectId] The GCP project number, a numeric value such as `123456789012`. This is not the project ID (such as `my-project`). To look up the number, run `gcloud projects describe &lt;project-id&gt; --format='value(projectNumber)'`.
   /// [providerId] The ID of the identity provider associated with the workload pool.
   /// [region] The region of the GCP project.
   /// [serviceAccount] The email address of the service account to use.

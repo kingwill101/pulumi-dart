@@ -15,11 +15,11 @@ class DeploymentScheduleArgs {
   /// Which command to run.
   final pulumi.Input<PulumiOperation> pulumiOperation;
   /// Cron expression for recurring scheduled runs. If you are supplying this, do not supply timestamp.
-  final pulumi.Input<String>? scheduleCron;
+  final pulumi.Input<String?>? scheduleCron;
   /// Stack name.
   final pulumi.Input<String> stack;
   /// The time at which the schedule should run, in ISO 8601 format. Eg: 2020-01-01T00:00:00Z. If you are supplying this, do not supply scheduleCron.
-  final pulumi.Input<String>? timestamp;
+  final pulumi.Input<String?>? timestamp;
 
   /// Creates a new [DeploymentScheduleArgs].
   /// [organization] Organization name.

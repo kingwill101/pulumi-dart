@@ -7,9 +7,9 @@ import 'deployment_settings_git_auth_sshauth.dart';
 /// Git source settings for a deployment.
 class DeploymentSettingsGitSourceGitAuth {
   /// Basic auth for git authentication. Only one of `personalAccessToken`, `sshAuth`, or `basicAuth` must be defined.
-  final pulumi.Input<DeploymentSettingsGitAuthBasicAuth>? basicAuth;
+  final pulumi.Input<DeploymentSettingsGitAuthBasicAuth?>? basicAuth;
   /// SSH auth for git authentication. Only one of `personalAccessToken`, `sshAuth`, or `basicAuth` must be defined.
-  final pulumi.Input<DeploymentSettingsGitAuthSSHAuth>? sshAuth;
+  final pulumi.Input<DeploymentSettingsGitAuthSSHAuth?>? sshAuth;
 
   /// Creates a new [DeploymentSettingsGitSourceGitAuth].
   /// [basicAuth] Basic auth for git authentication. Only one of `personalAccessToken`, `sshAuth`, or `basicAuth` must be defined.

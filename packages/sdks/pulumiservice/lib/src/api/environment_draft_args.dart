@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_api_esc_environment_draft_args_doc}
 class EnvironmentDraftArgs {
   /// The change request ID
-  final pulumi.Input<String>? changeRequestId;
+  final pulumi.Input<String?>? changeRequestId;
   /// The environment name
   final pulumi.Input<String> envName;
   /// The organization name

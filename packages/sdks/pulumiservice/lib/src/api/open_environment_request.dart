@@ -25,4 +25,17 @@ class OpenEnvironmentRequest extends pulumi.CustomResource {
     accessDurationSeconds = registerOutput<int>('accessDurationSeconds');
     grantExpirationSeconds = registerOutput<int>('grantExpirationSeconds');
   }
+
+  /// Creates a typed reference to an existing [OpenEnvironmentRequest] resource.
+  OpenEnvironmentRequest.reference(String urn)
+    : super(
+        'pulumiservice:api/esc:OpenEnvironmentRequest',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessDurationSeconds = registerOutput<int>('accessDurationSeconds');
+    grantExpirationSeconds = registerOutput<int>('grantExpirationSeconds');
+  }
 }

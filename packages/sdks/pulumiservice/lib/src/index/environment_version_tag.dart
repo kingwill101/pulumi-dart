@@ -2,13 +2,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'environment_version_tag_args.dart';
 
 /// A tag on a specific revision of an environment.
+///
+/// ## Import
+///
+/// This resource can be imported using its `id`, which has the format `{organization}/{project}/{environment}/{tagName}`, e.g.,
+///
+/// ```sh
+///  $ pulumi import pulumiservice:index:EnvironmentVersionTag my-environment-version-tag my-org/my-project/my-environment/my-tag
+/// ```
+///
+/// The legacy format `{organization}/{environment}/{tagName}` is also accepted, and uses the `default` project.
 class EnvironmentVersionTag extends pulumi.CustomResource {
   /// Environment name.
   late final pulumi.Output<String> environment;
   /// Organization name.
   late final pulumi.Output<String> organization;
   /// Project name.
-  late final pulumi.Output<String?> project;
+  late final pulumi.Output<String> project;
   /// Revision number.
   late final pulumi.Output<int> revision;
   /// Tag name.
@@ -26,11 +36,27 @@ class EnvironmentVersionTag extends pulumi.CustomResource {
           'pulumiservice:index:EnvironmentVersionTag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['environment', 'organization', 'project', 'tagName']).merge(options),
         ) {
     environment = registerOutput<String>('environment');
     organization = registerOutput<String>('organization');
-    project = registerOutput<String?>('project');
+    project = registerOutput<String>('project');
+    revision = registerOutput<int>('revision');
+    tagName = registerOutput<String>('tagName');
+  }
+
+  /// Creates a typed reference to an existing [EnvironmentVersionTag] resource.
+  EnvironmentVersionTag.reference(String urn)
+    : super(
+        'pulumiservice:index:EnvironmentVersionTag',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    environment = registerOutput<String>('environment');
+    organization = registerOutput<String>('organization');
+    project = registerOutput<String>('project');
     revision = registerOutput<int>('revision');
     tagName = registerOutput<String>('tagName');
   }

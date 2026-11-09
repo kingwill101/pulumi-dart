@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_api_auth_samlargs_doc}
 class SAMLArgs {
   /// The new IDP SSO descriptor XML for the SAML configuration.
-  final pulumi.Input<String>? newIdpSsoDescriptor;
+  final pulumi.Input<String?>? newIdpSsoDescriptor;
   /// The organization name
   final pulumi.Input<String> orgName;
 
