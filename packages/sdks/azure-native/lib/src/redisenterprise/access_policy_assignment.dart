@@ -68,7 +68,7 @@ import 'access_policy_assignment_properties_response_user.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'access_policy_assignment_properties_response_user.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_redisenterprise_accesspolicyassignment" "accessPolicyAssignment" {
+/// resource "azure-native_redisenterprise_access_policy_assignment" "accessPolicyAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   access_policy_assignment_name = "defaultTestEntraApp1"
 ///   access_policy_name            = "default"
 ///   cluster_name                  = "cache1"

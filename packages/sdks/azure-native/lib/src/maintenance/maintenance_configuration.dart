@@ -74,7 +74,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,7 +82,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_maintenance_maintenanceconfiguration" "maintenanceConfiguration" {
+/// resource "azure-native_maintenance_maintenance_configuration" "maintenanceConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   duration             = "05:00"
 ///   expiration_date_time = "9999-12-31 00:00"
 ///   location             = "westus2"

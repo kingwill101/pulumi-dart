@@ -25,7 +25,7 @@ import 'mongo_index_response.dart';
 ///         AccountName = "ddb1",
 ///         CollectionName = "collectionName",
 ///         DatabaseName = "databaseName",
-///         Options = null,
+///         Options = new() { },
 ///         Resource = new AzureNative.CosmosDB.Inputs.MongoDBCollectionResourceArgs
 ///         {
 ///             Id = "testcoll",
@@ -106,7 +106,7 @@ import 'mongo_index_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -114,7 +114,10 @@ import 'mongo_index_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_databaseaccountmongodbcollection" "databaseAccountMongoDBCollection" {
+/// resource "azure-native_cosmosdb_database_account_mongo_d_b_collection" "databaseAccountMongoDBCollection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name    = "ddb1"
 ///   collection_name = "collectionName"
 ///   database_name   = "databaseName"
@@ -122,12 +125,12 @@ import 'mongo_index_response.dart';
 ///   resource = {
 ///     id = "testcoll"
 ///     indexes = [{
-///       "key" = {
-///         "keys" = ["testKey"]
+///       key = {
+///         keys = ["testKey"]
 ///       }
-///       "options" = {
-///         "expireAfterSeconds" = 100
-///         "unique"             = true
+///       options = {
+///         expire_after_seconds = 100
+///         unique               = true
 ///       }
 ///     }]
 ///     shard_key = {
@@ -148,6 +151,9 @@ import 'mongo_index_response.dart';
 /// import com.pulumi.azurenative.cosmosdb.DatabaseAccountMongoDBCollection;
 /// import com.pulumi.azurenative.cosmosdb.DatabaseAccountMongoDBCollectionArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.MongoDBCollectionResourceArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.MongoIndexArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.MongoIndexKeysArgs;
+/// import com.pulumi.azurenative.cosmosdb.inputs.MongoIndexOptionsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

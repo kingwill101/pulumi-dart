@@ -2,16 +2,16 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// Properties of the user assigned identity.
+/// User assigned identity properties.
 class UserIdentityPropertiesResponse {
-  /// The client ID of resource identity.
+  /// The client id of user assigned identity.
   final pulumi.Input<String> clientId;
-  /// The principal ID of resource identity.
+  /// The principal id of user assigned identity.
   final pulumi.Input<String> principalId;
 
   /// Creates a new [UserIdentityPropertiesResponse].
-  /// [clientId] The client ID of resource identity.
-  /// [principalId] The principal ID of resource identity.
+  /// [clientId] The client id of user assigned identity.
+  /// [principalId] The principal id of user assigned identity.
   const UserIdentityPropertiesResponse({
     required this.clientId,
     required this.principalId,

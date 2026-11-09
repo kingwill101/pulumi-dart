@@ -28,7 +28,7 @@ import 'volume_args.dart';
 ///         },
 ///         Location = "location",
 ///         ResourceGroupName = "resourceGroupName",
-///         SizeMiB = 10000,
+///         SizeMiB = 10000.0,
 ///         Tags =
 ///         {
 ///             { "key1", "myvalue1" },
@@ -76,7 +76,7 @@ import 'volume_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -85,6 +85,9 @@ import 'volume_args.dart';
 /// }
 ///
 /// resource "azure-native_networkcloud_volume" "volume" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/clusterExtendedLocationName"
 ///     type = "CustomLocation"

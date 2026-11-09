@@ -71,7 +71,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kubernetesruntime_loadbalancer" "loadBalancer" {
+/// resource "azure-native_kubernetesruntime_load_balancer" "loadBalancer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addresses          = ["192.168.50.1/24", "192.168.51.2-192.168.51.10"]
 ///   advertise_mode     = "ARP"
 ///   load_balancer_name = "testlb"

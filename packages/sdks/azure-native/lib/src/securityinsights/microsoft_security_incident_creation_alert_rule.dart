@@ -55,7 +55,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -63,7 +63,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_microsoftsecurityincidentcreationalertrule" "microsoftSecurityIncidentCreationAlertRule" {
+/// resource "azure-native_securityinsights_microsoft_security_incident_creation_alert_rule" "microsoftSecurityIncidentCreationAlertRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "myRg"
 ///   rule_id             = "myFirstFusionRule"
 ///   workspace_name      = "myWorkspace"
@@ -193,7 +196,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -201,7 +204,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_microsoftsecurityincidentcreationalertrule" "microsoftSecurityIncidentCreationAlertRule" {
+/// resource "azure-native_securityinsights_microsoft_security_incident_creation_alert_rule" "microsoftSecurityIncidentCreationAlertRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name        = "testing displayname"
 ///   enabled             = true
 ///   kind                = "MicrosoftSecurityIncidentCreation"
@@ -237,7 +243,6 @@ import 'system_data_response.dart';
 ///         var microsoftSecurityIncidentCreationAlertRule = new MicrosoftSecurityIncidentCreationAlertRule("microsoftSecurityIncidentCreationAlertRule", MicrosoftSecurityIncidentCreationAlertRuleArgs.builder()
 ///             .displayName("testing displayname")
 ///             .enabled(true)
-///             .kind("MicrosoftSecurityIncidentCreation")
 ///             .productFilter("Microsoft Cloud App Security")
 ///             .resourceGroupName("myRg")
 ///             .ruleId("microsoftSecurityIncidentCreationRuleExample")
@@ -343,7 +348,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -351,7 +356,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_microsoftsecurityincidentcreationalertrule" "microsoftSecurityIncidentCreationAlertRule" {
+/// resource "azure-native_securityinsights_microsoft_security_incident_creation_alert_rule" "microsoftSecurityIncidentCreationAlertRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "myRg"
 ///   rule_id             = "73e01a99-5cd7-4139-a149-9f2736ff2ab5"
 ///   workspace_name      = "myWorkspace"

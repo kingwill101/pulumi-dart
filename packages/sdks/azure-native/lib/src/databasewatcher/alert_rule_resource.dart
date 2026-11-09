@@ -67,7 +67,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_databasewatcher_alertruleresource" "alertRuleResource" {
+/// resource "azure-native_databasewatcher_alert_rule_resource" "alertRuleResource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alert_rule_resource_id      = "/subscriptions/469DD77C-C8DB-47B7-B9E1-72D29F8C878Be/resourceGroups/rgWatcher/providers/microsoft.insights/scheduledqueryrules/alerts-demo"
 ///   alert_rule_resource_name    = "testAlert"
 ///   alert_rule_template_id      = "someTemplateId"

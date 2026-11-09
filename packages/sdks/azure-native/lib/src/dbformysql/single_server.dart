@@ -89,7 +89,7 @@ import 'storage_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -97,12 +97,15 @@ import 'storage_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbformysql_singleserver" "singleServer" {
+/// resource "azure-native_dbformysql_single_server" "singleServer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "brazilsouth"
 ///   properties = {
-///     "createMode"         = "PointInTimeRestore"
-///     "restorePointInTime" = "2017-12-14T00:00:37.467Z"
-///     "sourceServerId"     = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforMySQL/servers/sourceserver"
+///     create_mode           = "PointInTimeRestore"
+///     restore_point_in_time = "2017-12-14T00:00:37.467Z"
+///     source_server_id      = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforMySQL/servers/sourceserver"
 ///   }
 ///   resource_group_name = "TargetResourceGroup"
 ///   server_name         = "targetserver"
@@ -127,6 +130,10 @@ import 'storage_profile_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbformysql.SingleServer;
 /// import com.pulumi.azurenative.dbformysql.SingleServerArgs;
+/// import com.pulumi.azurenative.dbformysql.inputs.ServerPropertiesForDefaultCreateArgs;
+/// import com.pulumi.azurenative.dbformysql.inputs.ServerPropertiesForGeoRestoreArgs;
+/// import com.pulumi.azurenative.dbformysql.inputs.ServerPropertiesForReplicaArgs;
+/// import com.pulumi.azurenative.dbformysql.inputs.ServerPropertiesForRestoreArgs;
 /// import com.pulumi.azurenative.dbformysql.inputs.SkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -144,7 +151,6 @@ import 'storage_profile_response.dart';
 ///         var singleServer = new SingleServer("singleServer", SingleServerArgs.builder()
 ///             .location("brazilsouth")
 ///             .properties(ServerPropertiesForRestoreArgs.builder()
-///                 .createMode("PointInTimeRestore")
 ///                 .restorePointInTime("2017-12-14T00:00:37.467Z")
 ///                 .sourceServerId("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforMySQL/servers/sourceserver")
 ///                 .build())
@@ -329,7 +335,7 @@ import 'storage_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -337,17 +343,20 @@ import 'storage_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbformysql_singleserver" "singleServer" {
+/// resource "azure-native_dbformysql_single_server" "singleServer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "westus"
 ///   properties = {
-///     "administratorLogin"         = "cloudsa"
-///     "administratorLoginPassword" = "<administratorLoginPassword>"
-///     "createMode"                 = "Default"
-///     "sslEnforcement"             = "Enabled"
-///     "storageProfile" = {
-///       "backupRetentionDays" = 7
-///       "geoRedundantBackup"  = "Enabled"
-///       "storageMB"           = 128000
+///     administrator_login          = "cloudsa"
+///     administrator_login_password = "<administratorLoginPassword>"
+///     create_mode                  = "Default"
+///     ssl_enforcement              = "Enabled"
+///     storage_profile = {
+///       backup_retention_days = 7
+///       geo_redundant_backup  = "Enabled"
+///       storage_mb            = 128000
 ///     }
 ///   }
 ///   resource_group_name = "testrg"
@@ -373,6 +382,11 @@ import 'storage_profile_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbformysql.SingleServer;
 /// import com.pulumi.azurenative.dbformysql.SingleServerArgs;
+/// import com.pulumi.azurenative.dbformysql.inputs.ServerPropertiesForDefaultCreateArgs;
+/// import com.pulumi.azurenative.dbformysql.inputs.StorageProfileArgs;
+/// import com.pulumi.azurenative.dbformysql.inputs.ServerPropertiesForGeoRestoreArgs;
+/// import com.pulumi.azurenative.dbformysql.inputs.ServerPropertiesForReplicaArgs;
+/// import com.pulumi.azurenative.dbformysql.inputs.ServerPropertiesForRestoreArgs;
 /// import com.pulumi.azurenative.dbformysql.inputs.SkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -392,7 +406,6 @@ import 'storage_profile_response.dart';
 ///             .properties(ServerPropertiesForDefaultCreateArgs.builder()
 ///                 .administratorLogin("cloudsa")
 ///                 .administratorLoginPassword("<administratorLoginPassword>")
-///                 .createMode("Default")
 ///                 .sslEnforcement("Enabled")
 ///                 .storageProfile(StorageProfileArgs.builder()
 ///                     .backupRetentionDays(7)
@@ -563,7 +576,7 @@ import 'storage_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -571,11 +584,14 @@ import 'storage_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbformysql_singleserver" "singleServer" {
+/// resource "azure-native_dbformysql_single_server" "singleServer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "westus"
 ///   properties = {
-///     "createMode"     = "Replica"
-///     "sourceServerId" = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/MasterResourceGroup/providers/Microsoft.DBforMySQL/servers/masterserver"
+///     create_mode      = "Replica"
+///     source_server_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/MasterResourceGroup/providers/Microsoft.DBforMySQL/servers/masterserver"
 ///   }
 ///   resource_group_name = "TargetResourceGroup"
 ///   server_name         = "targetserver"
@@ -591,6 +607,10 @@ import 'storage_profile_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbformysql.SingleServer;
 /// import com.pulumi.azurenative.dbformysql.SingleServerArgs;
+/// import com.pulumi.azurenative.dbformysql.inputs.ServerPropertiesForDefaultCreateArgs;
+/// import com.pulumi.azurenative.dbformysql.inputs.ServerPropertiesForGeoRestoreArgs;
+/// import com.pulumi.azurenative.dbformysql.inputs.ServerPropertiesForReplicaArgs;
+/// import com.pulumi.azurenative.dbformysql.inputs.ServerPropertiesForRestoreArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -607,7 +627,6 @@ import 'storage_profile_response.dart';
 ///         var singleServer = new SingleServer("singleServer", SingleServerArgs.builder()
 ///             .location("westus")
 ///             .properties(ServerPropertiesForReplicaArgs.builder()
-///                 .createMode("Replica")
 ///                 .sourceServerId("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/MasterResourceGroup/providers/Microsoft.DBforMySQL/servers/masterserver")
 ///                 .build())
 ///             .resourceGroupName("TargetResourceGroup")
@@ -741,7 +760,7 @@ import 'storage_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -749,11 +768,14 @@ import 'storage_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbformysql_singleserver" "singleServer" {
+/// resource "azure-native_dbformysql_single_server" "singleServer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "westus"
 ///   properties = {
-///     "createMode"     = "GeoRestore"
-///     "sourceServerId" = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforMySQL/servers/sourceserver"
+///     create_mode      = "GeoRestore"
+///     source_server_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforMySQL/servers/sourceserver"
 ///   }
 ///   resource_group_name = "TargetResourceGroup"
 ///   server_name         = "targetserver"
@@ -778,6 +800,10 @@ import 'storage_profile_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbformysql.SingleServer;
 /// import com.pulumi.azurenative.dbformysql.SingleServerArgs;
+/// import com.pulumi.azurenative.dbformysql.inputs.ServerPropertiesForDefaultCreateArgs;
+/// import com.pulumi.azurenative.dbformysql.inputs.ServerPropertiesForGeoRestoreArgs;
+/// import com.pulumi.azurenative.dbformysql.inputs.ServerPropertiesForReplicaArgs;
+/// import com.pulumi.azurenative.dbformysql.inputs.ServerPropertiesForRestoreArgs;
 /// import com.pulumi.azurenative.dbformysql.inputs.SkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -795,7 +821,6 @@ import 'storage_profile_response.dart';
 ///         var singleServer = new SingleServer("singleServer", SingleServerArgs.builder()
 ///             .location("westus")
 ///             .properties(ServerPropertiesForGeoRestoreArgs.builder()
-///                 .createMode("GeoRestore")
 ///                 .sourceServerId("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforMySQL/servers/sourceserver")
 ///                 .build())
 ///             .resourceGroupName("TargetResourceGroup")

@@ -60,7 +60,7 @@ import 'workspace_notification_recipient_email_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'workspace_notification_recipient_email_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_workspacenotificationrecipientemail" "workspaceNotificationRecipientEmail" {
+/// resource "azure-native_apimanagement_workspace_notification_recipient_email" "workspaceNotificationRecipientEmail" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   email               = "foobar@live.com"
 ///   notification_name   = "RequestPublisherNotificationMessage"
 ///   resource_group_name = "rg1"

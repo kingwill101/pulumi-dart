@@ -26,7 +26,7 @@ import 'system_data_response.dart';
 ///         HybridConnectionName = "example-Relay-Hybrid-01",
 ///         NamespaceName = "example-RelayNamespace-01",
 ///         ResourceGroupName = "resourcegroup",
-///         Rights = new[]
+///         Rights =
 ///         {
 ///             AzureNative.Relay.AccessRights.Listen,
 ///             AzureNative.Relay.AccessRights.Send,
@@ -68,7 +68,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_relay_hybridconnectionauthorizationrule" "hybridConnectionAuthorizationRule" {
+/// resource "azure-native_relay_hybrid_connection_authorization_rule" "hybridConnectionAuthorizationRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization_rule_name = "example-RelayAuthRules-01"
 ///   hybrid_connection_name  = "example-Relay-Hybrid-01"
 ///   namespace_name          = "example-RelayNamespace-01"

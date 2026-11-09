@@ -103,7 +103,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -112,25 +112,28 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_machinelearningservices_compute" "compute" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_name = "compute123"
 ///   location     = "eastus"
 ///   properties = {
-///     "computeType" = "AmlCompute"
-///     "properties" = {
-///       "enableNodePublicIp"          = true
-///       "isolatedNetwork"             = false
-///       "osType"                      = "Windows"
-///       "remoteLoginPortPublicAccess" = "NotSpecified"
-///       "scaleSettings" = {
-///         "maxNodeCount"                = 1
-///         "minNodeCount"                = 0
-///         "nodeIdleTimeBeforeScaleDown" = "PT5M"
+///     compute_type = "AmlCompute"
+///     properties = {
+///       enable_node_public_ip           = true
+///       isolated_network                = false
+///       os_type                         = "Windows"
+///       remote_login_port_public_access = "NotSpecified"
+///       scale_settings = {
+///         max_node_count                   = 1
+///         min_node_count                   = 0
+///         node_idle_time_before_scale_down = "PT5M"
 ///       }
-///       "virtualMachineImage" = {
-///         "id" = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/galleries/myImageGallery/images/myImageDefinition/versions/0.0.1"
+///       virtual_machine_image = {
+///         id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/galleries/myImageGallery/images/myImageDefinition/versions/0.0.1"
 ///       }
-///       "vmPriority" = "Dedicated"
-///       "vmSize"     = "STANDARD_NC6"
+///       vm_priority = "Dedicated"
+///       vm_size     = "STANDARD_NC6"
 ///     }
 ///   }
 ///   resource_group_name = "testrg123"
@@ -147,6 +150,27 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Compute;
 /// import com.pulumi.azurenative.machinelearningservices.ComputeArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AKSArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AKSSchemaPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AmlComputeArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AmlComputePropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ScaleSettingsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.VirtualMachineImageArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ComputeInstanceArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ComputeInstancePropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DataFactoryArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DataLakeAnalyticsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DataLakeAnalyticsSchemaPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DatabricksArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DatabricksPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.HDInsightArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.HDInsightPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.KubernetesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.KubernetesPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SynapseSparkArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SynapseSparkPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.VirtualMachineArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.VirtualMachineSchemaPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -164,7 +188,6 @@ import 'system_data_response.dart';
 ///             .computeName("compute123")
 ///             .location("eastus")
 ///             .properties(AmlComputeArgs.builder()
-///                 .computeType("AmlCompute")
 ///                 .properties(AmlComputePropertiesArgs.builder()
 ///                     .enableNodePublicIp(true)
 ///                     .isolatedNetwork(false)
@@ -338,7 +361,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -347,10 +370,13 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_machinelearningservices_compute" "compute" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_name = "compute123"
 ///   location     = "eastus"
 ///   properties = {
-///     "computeType" = "DataFactory"
+///     compute_type = "DataFactory"
 ///   }
 ///   resource_group_name = "testrg123"
 ///   workspace_name      = "workspaces123"
@@ -366,6 +392,16 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Compute;
 /// import com.pulumi.azurenative.machinelearningservices.ComputeArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AKSArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AmlComputeArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ComputeInstanceArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DataFactoryArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DataLakeAnalyticsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DatabricksArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.HDInsightArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.KubernetesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SynapseSparkArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.VirtualMachineArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -383,7 +419,6 @@ import 'system_data_response.dart';
 ///             .computeName("compute123")
 ///             .location("eastus")
 ///             .properties(DataFactoryArgs.builder()
-///                 .computeType("DataFactory")
 ///                 .build())
 ///             .resourceGroupName("testrg123")
 ///             .workspaceName("workspaces123")
@@ -496,7 +531,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -505,10 +540,13 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_machinelearningservices_compute" "compute" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_name = "compute123"
 ///   location     = "eastus"
 ///   properties = {
-///     "computeType" = "AKS"
+///     compute_type = "AKS"
 ///   }
 ///   resource_group_name = "testrg123"
 ///   workspace_name      = "workspaces123"
@@ -524,6 +562,16 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Compute;
 /// import com.pulumi.azurenative.machinelearningservices.ComputeArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AKSArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AmlComputeArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ComputeInstanceArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DataFactoryArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DataLakeAnalyticsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DatabricksArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.HDInsightArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.KubernetesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SynapseSparkArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.VirtualMachineArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -541,7 +589,6 @@ import 'system_data_response.dart';
 ///             .computeName("compute123")
 ///             .location("eastus")
 ///             .properties(AKSArgs.builder()
-///                 .computeType("AKS")
 ///                 .build())
 ///             .resourceGroupName("testrg123")
 ///             .workspaceName("workspaces123")
@@ -793,7 +840,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -802,60 +849,63 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_machinelearningservices_compute" "compute" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_name = "compute123"
 ///   location     = "eastus"
 ///   properties = {
-///     "computeType" = "ComputeInstance"
-///     "properties" = {
-///       "applicationSharingPolicy"         = "Personal"
-///       "computeInstanceAuthorizationType" = "personal"
-///       "customServices" = [{
-///         "docker" = {
-///           "privileged" = true
+///     compute_type = "ComputeInstance"
+///     properties = {
+///       application_sharing_policy          = "Personal"
+///       compute_instance_authorization_type = "personal"
+///       custom_services = [{
+///         docker = {
+///           privileged = true
 ///         }
-///         "endpoints" = [{
-///           "name"      = "connect"
-///           "protocol"  = "http"
-///           "published" = 4444
-///           "target"    = 8787
+///         endpoints = [{
+///           name      = "connect"
+///           protocol  = "http"
+///           published = 4444
+///           target    = 8787
 ///         }]
-///         "environmentVariables" = {
+///         environment_variables = {
 ///           "RSP_LICENSE" = {
-///             "type"  = "local"
-///             "value" = "XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX"
+///             type  = "local"
+///             value = "XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX"
 ///           }
 ///         }
-///         "image" = {
-///           "reference" = "ghcr.io/azure/rstudio-workbench:latest"
-///           "type"      = "docker"
+///         image = {
+///           reference = "ghcr.io/azure/rstudio-workbench:latest"
+///           type      = "docker"
 ///         }
-///         "kernel" = {
-///           "argv"        = ["option1", "option2", "option3"]
-///           "displayName" = "TestKernel"
-///           "language"    = "python"
+///         kernel = {
+///           argv         = ["option1", "option2", "option3"]
+///           display_name = "TestKernel"
+///           language     = "python"
 ///         }
-///         "name" = "rstudio-workbench"
-///         "volumes" = [{
-///           "readOnly" = true
-///           "source"   = "/mnt/azureuser/"
-///           "target"   = "/home/testuser/"
-///           "type"     = "bind"
+///         name = "rstudio-workbench"
+///         volumes = [{
+///           read_only = true
+///           source    = "/mnt/azureuser/"
+///           target    = "/home/testuser/"
+///           type      = "bind"
 ///         }]
 ///       }]
-///       "enableSSO" = true
-///       "personalComputeInstanceSettings" = {
-///         "assignedUser" = {
-///           "objectId" = "00000000-0000-0000-0000-000000000000"
-///           "tenantId" = "00000000-0000-0000-0000-000000000000"
+///       enable_sso = true
+///       personal_compute_instance_settings = {
+///         assigned_user = {
+///           object_id = "00000000-0000-0000-0000-000000000000"
+///           tenant_id = "00000000-0000-0000-0000-000000000000"
 ///         }
 ///       }
-///       "sshSettings" = {
-///         "sshPublicAccess" = "Disabled"
+///       ssh_settings = {
+///         ssh_public_access = "Disabled"
 ///       }
-///       "subnet" = {
-///         "id" = "test-subnet-resource-id"
+///       subnet = {
+///         id = "test-subnet-resource-id"
 ///       }
-///       "vmSize" = "STANDARD_NC6"
+///       vm_size = "STANDARD_NC6"
 ///     }
 ///   }
 ///   resource_group_name = "testrg123"
@@ -872,6 +922,36 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Compute;
 /// import com.pulumi.azurenative.machinelearningservices.ComputeArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AKSArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AKSSchemaPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AmlComputeArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AmlComputePropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ResourceIdArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ComputeInstanceArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ComputeInstancePropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.CustomServiceArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DockerArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.EndpointArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.EnvironmentVariableArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ImageArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.JupyterKernelConfigArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.VolumeDefinitionArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.PersonalComputeInstanceSettingsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AssignedUserArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ComputeInstanceSshSettingsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DataFactoryArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DataLakeAnalyticsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DataLakeAnalyticsSchemaPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DatabricksArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DatabricksPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.HDInsightArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.HDInsightPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.KubernetesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.KubernetesPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SynapseSparkArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SynapseSparkPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.VirtualMachineArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.VirtualMachineSchemaPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -889,7 +969,6 @@ import 'system_data_response.dart';
 ///             .computeName("compute123")
 ///             .location("eastus")
 ///             .properties(ComputeInstanceArgs.builder()
-///                 .computeType("ComputeInstance")
 ///                 .properties(ComputeInstancePropertiesArgs.builder()
 ///                     .applicationSharingPolicy("Personal")
 ///                     .computeInstanceAuthorizationType("personal")
@@ -1269,7 +1348,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1278,35 +1357,38 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_machinelearningservices_compute" "compute" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_name = "compute123"
 ///   location     = "eastus"
 ///   properties = {
-///     "computeType" = "ComputeInstance"
-///     "properties" = {
-///       "applicationSharingPolicy"         = "Personal"
-///       "computeInstanceAuthorizationType" = "personal"
-///       "personalComputeInstanceSettings" = {
-///         "assignedUser" = {
-///           "objectId" = "00000000-0000-0000-0000-000000000000"
-///           "tenantId" = "00000000-0000-0000-0000-000000000000"
+///     compute_type = "ComputeInstance"
+///     properties = {
+///       application_sharing_policy          = "Personal"
+///       compute_instance_authorization_type = "personal"
+///       personal_compute_instance_settings = {
+///         assigned_user = {
+///           object_id = "00000000-0000-0000-0000-000000000000"
+///           tenant_id = "00000000-0000-0000-0000-000000000000"
 ///         }
 ///       }
-///       "schedules" = {
-///         "computeStartStop" = [{
-///           "action" = "Stop"
-///           "cron" = {
-///             "expression" = "0 18 * * *"
-///             "startTime"  = "2021-04-23T01:30:00"
-///             "timeZone"   = "Pacific Standard Time"
+///       schedules = {
+///         compute_start_stop = [{
+///           action = "Stop"
+///           cron = {
+///             expression = "0 18 * * *"
+///             start_time = "2021-04-23T01:30:00"
+///             time_zone  = "Pacific Standard Time"
 ///           }
-///           "status"      = "Enabled"
-///           "triggerType" = "Cron"
+///           status       = "Enabled"
+///           trigger_type = "Cron"
 ///         }]
 ///       }
-///       "sshSettings" = {
-///         "sshPublicAccess" = "Disabled"
+///       ssh_settings = {
+///         ssh_public_access = "Disabled"
 ///       }
-///       "vmSize" = "STANDARD_NC6"
+///       vm_size = "STANDARD_NC6"
 ///     }
 ///   }
 ///   resource_group_name = "testrg123"
@@ -1323,6 +1405,31 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Compute;
 /// import com.pulumi.azurenative.machinelearningservices.ComputeArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AKSArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AKSSchemaPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AmlComputeArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AmlComputePropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ComputeInstanceArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ComputeInstancePropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.PersonalComputeInstanceSettingsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AssignedUserArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ComputeSchedulesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ComputeStartStopScheduleArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.CronArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ComputeInstanceSshSettingsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DataFactoryArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DataLakeAnalyticsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DataLakeAnalyticsSchemaPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DatabricksArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DatabricksPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.HDInsightArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.HDInsightPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.KubernetesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.KubernetesPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SynapseSparkArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SynapseSparkPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.VirtualMachineArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.VirtualMachineSchemaPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1340,7 +1447,6 @@ import 'system_data_response.dart';
 ///             .computeName("compute123")
 ///             .location("eastus")
 ///             .properties(ComputeInstanceArgs.builder()
-///                 .computeType("ComputeInstance")
 ///                 .properties(ComputeInstancePropertiesArgs.builder()
 ///                     .applicationSharingPolicy("Personal")
 ///                     .computeInstanceAuthorizationType("personal")
@@ -1557,7 +1663,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1566,12 +1672,15 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_machinelearningservices_compute" "compute" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_name = "compute123"
 ///   location     = "eastus"
 ///   properties = {
-///     "computeType" = "ComputeInstance"
-///     "properties" = {
-///       "vmSize" = "STANDARD_NC6"
+///     compute_type = "ComputeInstance"
+///     properties = {
+///       vm_size = "STANDARD_NC6"
 ///     }
 ///   }
 ///   resource_group_name = "testrg123"
@@ -1588,6 +1697,25 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Compute;
 /// import com.pulumi.azurenative.machinelearningservices.ComputeArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AKSArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AKSSchemaPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AmlComputeArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AmlComputePropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ComputeInstanceArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ComputeInstancePropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DataFactoryArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DataLakeAnalyticsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DataLakeAnalyticsSchemaPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DatabricksArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DatabricksPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.HDInsightArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.HDInsightPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.KubernetesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.KubernetesPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SynapseSparkArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SynapseSparkPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.VirtualMachineArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.VirtualMachineSchemaPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1605,7 +1733,6 @@ import 'system_data_response.dart';
 ///             .computeName("compute123")
 ///             .location("eastus")
 ///             .properties(ComputeInstanceArgs.builder()
-///                 .computeType("ComputeInstance")
 ///                 .properties(ComputeInstancePropertiesArgs.builder()
 ///                     .vmSize("STANDARD_NC6")
 ///                     .build())
@@ -1747,7 +1874,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1756,16 +1883,19 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_machinelearningservices_compute" "compute" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_name = "compute123"
 ///   location     = "eastus"
 ///   properties = {
-///     "computeType" = "AmlCompute"
-///     "description" = "some compute"
-///     "properties" = {
-///       "scaleSettings" = {
-///         "maxNodeCount"                = 4
-///         "minNodeCount"                = 4
-///         "nodeIdleTimeBeforeScaleDown" = "PT5M"
+///     compute_type = "AmlCompute"
+///     description  = "some compute"
+///     properties = {
+///       scale_settings = {
+///         max_node_count                   = 4
+///         min_node_count                   = 4
+///         node_idle_time_before_scale_down = "PT5M"
 ///       }
 ///     }
 ///   }
@@ -1783,6 +1913,26 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Compute;
 /// import com.pulumi.azurenative.machinelearningservices.ComputeArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AKSArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AKSSchemaPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AmlComputeArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AmlComputePropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ScaleSettingsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ComputeInstanceArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ComputeInstancePropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DataFactoryArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DataLakeAnalyticsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DataLakeAnalyticsSchemaPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DatabricksArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DatabricksPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.HDInsightArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.HDInsightPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.KubernetesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.KubernetesPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SynapseSparkArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SynapseSparkPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.VirtualMachineArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.VirtualMachineSchemaPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1800,7 +1950,6 @@ import 'system_data_response.dart';
 ///             .computeName("compute123")
 ///             .location("eastus")
 ///             .properties(AmlComputeArgs.builder()
-///                 .computeType("AmlCompute")
 ///                 .description("some compute")
 ///                 .properties(AmlComputePropertiesArgs.builder()
 ///                     .scaleSettings(ScaleSettingsArgs.builder()
@@ -1954,7 +2103,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1963,15 +2112,18 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_machinelearningservices_compute" "compute" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_name = "compute123"
 ///   location     = "eastus"
 ///   properties = {
-///     "computeType" = "AKS"
-///     "description" = "some compute"
-///     "properties" = {
-///       "agentCount" = 4
+///     compute_type = "AKS"
+///     description  = "some compute"
+///     properties = {
+///       agent_count = 4
 ///     }
-///     "resourceId" = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourcegroups/testrg123/providers/Microsoft.ContainerService/managedClusters/compute123-56826-c9b00420020b2"
+///     resource_id = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourcegroups/testrg123/providers/Microsoft.ContainerService/managedClusters/compute123-56826-c9b00420020b2"
 ///   }
 ///   resource_group_name = "testrg123"
 ///   workspace_name      = "workspaces123"
@@ -1987,6 +2139,25 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Compute;
 /// import com.pulumi.azurenative.machinelearningservices.ComputeArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AKSArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AKSSchemaPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AmlComputeArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AmlComputePropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ComputeInstanceArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ComputeInstancePropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DataFactoryArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DataLakeAnalyticsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DataLakeAnalyticsSchemaPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DatabricksArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DatabricksPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.HDInsightArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.HDInsightPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.KubernetesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.KubernetesPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SynapseSparkArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SynapseSparkPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.VirtualMachineArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.VirtualMachineSchemaPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -2004,7 +2175,6 @@ import 'system_data_response.dart';
 ///             .computeName("compute123")
 ///             .location("eastus")
 ///             .properties(AKSArgs.builder()
-///                 .computeType("AKS")
 ///                 .description("some compute")
 ///                 .properties(AKSSchemaPropertiesArgs.builder()
 ///                     .agentCount(4)

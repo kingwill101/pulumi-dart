@@ -68,7 +68,7 @@ import 'topic_authorization_rule_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'topic_authorization_rule_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicebus_topicauthorizationrule" "topicAuthorizationRule" {
+/// resource "azure-native_servicebus_topic_authorization_rule" "topicAuthorizationRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization_rule_name = "sdk-AuthRules-4310"
 ///   namespace_name          = "sdk-Namespace-6261"
 ///   resource_group_name     = "ArunMonocle"

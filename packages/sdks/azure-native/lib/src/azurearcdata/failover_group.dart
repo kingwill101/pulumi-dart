@@ -74,7 +74,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,7 +82,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurearcdata_failovergroup" "failoverGroup" {
+/// resource "azure-native_azurearcdata_failover_group" "failoverGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   failover_group_name = "testFailoverGroupName"
 ///   properties = {
 ///     partner_managed_instance_id = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.AzureArcData/sqlManagedInstances/partnerMI"

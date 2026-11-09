@@ -77,7 +77,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -86,6 +86,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_cognitiveservices_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "testCreate1"
 ///   identity = {
 ///     type = "SystemAssigned"
@@ -219,7 +222,7 @@ import 'system_data_response.dart';
 ///         },
 ///         Location = "West US",
 ///         ProjectName = "testProject1",
-///         Properties = null,
+///         Properties = new() { },
 ///         ResourceGroupName = "myResourceGroup",
 ///     });
 ///
@@ -258,7 +261,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -267,6 +270,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_cognitiveservices_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "testCreate1"
 ///   identity = {
 ///     type = "SystemAssigned"

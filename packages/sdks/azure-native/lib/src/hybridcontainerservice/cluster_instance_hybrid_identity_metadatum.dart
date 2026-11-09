@@ -57,7 +57,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridcontainerservice_clusterinstancehybrididentitymetadatum" "clusterInstanceHybridIdentityMetadatum" {
+/// resource "azure-native_hybridcontainerservice_cluster_instance_hybrid_identity_metadatum" "clusterInstanceHybridIdentityMetadatum" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connected_cluster_resource_uri = "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.Kubernetes/connectedClusters/test-hybridakscluster"
 ///   public_key                     = "8ec7d60c-9700-40b1-8e6e-e5b2f6f477f2"
 ///   resource_uid                   = "f8b82dff-38ef-4220-99ef-d3a3f86ddc6c"

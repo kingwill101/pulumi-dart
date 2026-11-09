@@ -91,7 +91,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -99,7 +99,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_policyinsights_attestationatresource" "attestationAtResource" {
+/// resource "azure-native_policyinsights_attestation_at_resource" "attestationAtResource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assessment_date  = "2021-06-10T00:00:00Z"
 ///   attestation_name = "790996e6-9871-4b1f-9cd9-ec42cd6ced1e"
 ///   comments         = "This subscription has passed a security audit."

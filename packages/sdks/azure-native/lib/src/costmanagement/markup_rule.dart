@@ -30,7 +30,7 @@ import 'markup_rule_args.dart';
 ///         Description = "Markup rule for year 2022",
 ///         EndDate = "2022-12-31T00:00:00Z",
 ///         Name = "markup-2022",
-///         Percentage = 5,
+///         Percentage = 5.0,
 ///         StartDate = "2022-01-01T00:00:00Z",
 ///     });
 ///
@@ -72,7 +72,7 @@ import 'markup_rule_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'markup_rule_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_costmanagement_markuprule" "markupRule" {
+/// resource "azure-native_costmanagement_markup_rule" "markupRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   billing_account_id = "2af90bea-080c-438c-8977-17cddd5f115a:ef5ce3cf-f5af-4fcb-a5ed-c376e1d6d2b6"
 ///   billing_profile_id = "cbf78278-f4b8-43d9-8f13-47112da1c63e"
 ///   customer_details = {

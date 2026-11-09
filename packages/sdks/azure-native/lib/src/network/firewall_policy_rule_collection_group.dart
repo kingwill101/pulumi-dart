@@ -25,7 +25,7 @@ import 'firewall_policy_rule_collection_group_args.dart';
 ///         Priority = 100,
 ///         ResourceGroupName = "rg1",
 ///         RuleCollectionGroupName = "ruleCollectionGroup1",
-///         RuleCollections = new[]
+///         RuleCollections =
 ///         {
 ///             new AzureNative.Network.Inputs.FirewallPolicyNatRuleCollectionArgs
 ///             {
@@ -36,30 +36,30 @@ import 'firewall_policy_rule_collection_group_args.dart';
 ///                 Name = "Example-Nat-Rule-Collection",
 ///                 Priority = 100,
 ///                 RuleCollectionType = "FirewallPolicyNatRuleCollection",
-///                 Rules = new[]
+///                 Rules =
 ///                 {
 ///                     new AzureNative.Network.Inputs.NatRuleArgs
 ///                     {
-///                         DestinationAddresses = new[]
+///                         DestinationAddresses =
 ///                         {
 ///                             "152.23.32.23",
 ///                         },
-///                         DestinationPorts = new[]
+///                         DestinationPorts =
 ///                         {
 ///                             "8080",
 ///                         },
-///                         IpProtocols = new[]
+///                         IpProtocols =
 ///                         {
 ///                             AzureNative.Network.FirewallPolicyRuleNetworkProtocol.TCP,
 ///                             AzureNative.Network.FirewallPolicyRuleNetworkProtocol.UDP,
 ///                         },
 ///                         Name = "nat-rule1",
 ///                         RuleType = "NatRule",
-///                         SourceAddresses = new[]
+///                         SourceAddresses =
 ///                         {
 ///                             "2.2.2.2",
 ///                         },
-///                         SourceIpGroups = new() { },
+///                         SourceIpGroups =  {},
 ///                         TranslatedFqdn = "internalhttp.server.net",
 ///                         TranslatedPort = "8080",
 ///                     },
@@ -89,33 +89,33 @@ import 'firewall_policy_rule_collection_group_args.dart';
 /// 			ResourceGroupName:       pulumi.String("rg1"),
 /// 			RuleCollectionGroupName: pulumi.String("ruleCollectionGroup1"),
 /// 			RuleCollections: pulumi.Array{
-/// 				network.FirewallPolicyNatRuleCollection{
-/// 					Action: network.FirewallPolicyNatRuleCollectionAction{
-/// 						Type: network.FirewallPolicyNatRuleCollectionActionTypeDNAT,
+/// 				&network.FirewallPolicyNatRuleCollectionArgs{
+/// 					Action: &network.FirewallPolicyNatRuleCollectionActionArgs{
+/// 						Type: pulumi.String(network.FirewallPolicyNatRuleCollectionActionTypeDNAT),
 /// 					},
-/// 					Name:               "Example-Nat-Rule-Collection",
-/// 					Priority:           100,
-/// 					RuleCollectionType: "FirewallPolicyNatRuleCollection",
-/// 					Rules: []interface{}{
-/// 						network.NatRuleType{
-/// 							DestinationAddresses: []string{
-/// 								"152.23.32.23",
+/// 					Name:               pulumi.String("Example-Nat-Rule-Collection"),
+/// 					Priority:           pulumi.Int(100),
+/// 					RuleCollectionType: pulumi.String("FirewallPolicyNatRuleCollection"),
+/// 					Rules: pulumi.Array{
+/// 						&network.NatRuleTypeArgs{
+/// 							DestinationAddresses: pulumi.StringArray{
+/// 								pulumi.String("152.23.32.23"),
 /// 							},
-/// 							DestinationPorts: []string{
-/// 								"8080",
+/// 							DestinationPorts: pulumi.StringArray{
+/// 								pulumi.String("8080"),
 /// 							},
-/// 							IpProtocols: []network.FirewallPolicyRuleNetworkProtocol{
-/// 								network.FirewallPolicyRuleNetworkProtocolTCP,
-/// 								network.FirewallPolicyRuleNetworkProtocolUDP,
+/// 							IpProtocols: pulumi.StringArray{
+/// 								pulumi.String(network.FirewallPolicyRuleNetworkProtocolTCP),
+/// 								pulumi.String(network.FirewallPolicyRuleNetworkProtocolUDP),
 /// 							},
-/// 							Name:     "nat-rule1",
-/// 							RuleType: "NatRule",
-/// 							SourceAddresses: []string{
-/// 								"2.2.2.2",
+/// 							Name:     pulumi.String("nat-rule1"),
+/// 							RuleType: pulumi.String("NatRule"),
+/// 							SourceAddresses: pulumi.StringArray{
+/// 								pulumi.String("2.2.2.2"),
 /// 							},
-/// 							SourceIpGroups: []interface{}{},
-/// 							TranslatedFqdn: "internalhttp.server.net",
-/// 							TranslatedPort: "8080",
+/// 							SourceIpGroups: pulumi.StringArray{},
+/// 							TranslatedFqdn: pulumi.String("internalhttp.server.net"),
+/// 							TranslatedPort: pulumi.String("8080"),
 /// 						},
 /// 					},
 /// 				},
@@ -131,7 +131,7 @@ import 'firewall_policy_rule_collection_group_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -139,28 +139,31 @@ import 'firewall_policy_rule_collection_group_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_firewallpolicyrulecollectiongroup" "firewallPolicyRuleCollectionGroup" {
+/// resource "azure-native_network_firewall_policy_rule_collection_group" "firewallPolicyRuleCollectionGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   firewall_policy_name       = "firewallPolicy"
 ///   priority                   = 100
 ///   resource_group_name        = "rg1"
 ///   rule_collection_group_name = "ruleCollectionGroup1"
 ///   rule_collections = [{
-///     "action" = {
-///       "type" = "DNAT"
+///     action = {
+///       type = "DNAT"
 ///     }
-///     "name"               = "Example-Nat-Rule-Collection"
-///     "priority"           = 100
-///     "ruleCollectionType" = "FirewallPolicyNatRuleCollection"
-///     "rules" = [{
-///       "destinationAddresses" = ["152.23.32.23"]
-///       "destinationPorts"     = ["8080"]
-///       "ipProtocols"          = ["TCP", "UDP"]
-///       "name"                 = "nat-rule1"
-///       "ruleType"             = "NatRule"
-///       "sourceAddresses"      = ["2.2.2.2"]
-///       "sourceIpGroups"       = []
-///       "translatedFqdn"       = "internalhttp.server.net"
-///       "translatedPort"       = "8080"
+///     name                 = "Example-Nat-Rule-Collection"
+///     priority             = 100
+///     rule_collection_type = "FirewallPolicyNatRuleCollection"
+///     rules = [{
+///       destination_addresses = ["152.23.32.23"]
+///       destination_ports     = ["8080"]
+///       ip_protocols          = ["TCP", "UDP"]
+///       name                  = "nat-rule1"
+///       rule_type             = "NatRule"
+///       source_addresses      = ["2.2.2.2"]
+///       source_ip_groups      = []
+///       translated_fqdn       = "internalhttp.server.net"
+///       translated_port       = "8080"
 ///     }]
 ///   }]
 /// }
@@ -175,6 +178,13 @@ import 'firewall_policy_rule_collection_group_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.network.FirewallPolicyRuleCollectionGroup;
 /// import com.pulumi.azurenative.network.FirewallPolicyRuleCollectionGroupArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyFilterRuleCollectionArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyFilterRuleCollectionActionArgs;
+/// import com.pulumi.azurenative.network.inputs.ApplicationRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.NatRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.NetworkRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyNatRuleCollectionArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyNatRuleCollectionActionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -199,8 +209,18 @@ import 'firewall_policy_rule_collection_group_args.dart';
 ///                     .build())
 ///                 .name("Example-Nat-Rule-Collection")
 ///                 .priority(100)
-///                 .ruleCollectionType("FirewallPolicyNatRuleCollection")
-///                 .rules(%!v(PANIC=Format method: interface conversion: model.Expression is *model.FunctionCallExpression, not *model.ObjectConsExpression))
+///                 .rules(NatRuleArgs.builder()
+///                     .destinationAddresses("152.23.32.23")
+///                     .destinationPorts("8080")
+///                     .ipProtocols(
+///                         "TCP",
+///                         "UDP")
+///                     .name("nat-rule1")
+///                     .sourceAddresses("2.2.2.2")
+///                     .sourceIpGroups()
+///                     .translatedFqdn("internalhttp.server.net")
+///                     .translatedPort("8080")
+///                     .build())
 ///                 .build())
 ///             .build());
 ///
@@ -328,7 +348,7 @@ import 'firewall_policy_rule_collection_group_args.dart';
 ///         Priority = 100,
 ///         ResourceGroupName = "rg1",
 ///         RuleCollectionGroupName = "ruleCollectionGroup1",
-///         RuleCollections = new[]
+///         RuleCollections =
 ///         {
 ///             new AzureNative.Network.Inputs.FirewallPolicyFilterRuleCollectionArgs
 ///             {
@@ -339,25 +359,25 @@ import 'firewall_policy_rule_collection_group_args.dart';
 ///                 Name = "Example-Filter-Rule-Collection",
 ///                 Priority = 100,
 ///                 RuleCollectionType = "FirewallPolicyFilterRuleCollection",
-///                 Rules = new[]
+///                 Rules =
 ///                 {
 ///                     new AzureNative.Network.Inputs.NetworkRuleArgs
 ///                     {
-///                         DestinationAddresses = new[]
+///                         DestinationAddresses =
 ///                         {
 ///                             "*",
 ///                         },
-///                         DestinationPorts = new[]
+///                         DestinationPorts =
 ///                         {
 ///                             "*",
 ///                         },
-///                         IpProtocols = new[]
+///                         IpProtocols =
 ///                         {
 ///                             AzureNative.Network.FirewallPolicyRuleNetworkProtocol.TCP,
 ///                         },
 ///                         Name = "network-rule1",
 ///                         RuleType = "NetworkRule",
-///                         SourceAddresses = new[]
+///                         SourceAddresses =
 ///                         {
 ///                             "10.1.25.0/24",
 ///                         },
@@ -388,28 +408,28 @@ import 'firewall_policy_rule_collection_group_args.dart';
 /// 			ResourceGroupName:       pulumi.String("rg1"),
 /// 			RuleCollectionGroupName: pulumi.String("ruleCollectionGroup1"),
 /// 			RuleCollections: pulumi.Array{
-/// 				network.FirewallPolicyFilterRuleCollection{
-/// 					Action: network.FirewallPolicyFilterRuleCollectionAction{
-/// 						Type: network.FirewallPolicyFilterRuleCollectionActionTypeDeny,
+/// 				&network.FirewallPolicyFilterRuleCollectionArgs{
+/// 					Action: &network.FirewallPolicyFilterRuleCollectionActionArgs{
+/// 						Type: pulumi.String(network.FirewallPolicyFilterRuleCollectionActionTypeDeny),
 /// 					},
-/// 					Name:               "Example-Filter-Rule-Collection",
-/// 					Priority:           100,
-/// 					RuleCollectionType: "FirewallPolicyFilterRuleCollection",
-/// 					Rules: []interface{}{
-/// 						network.NetworkRule{
-/// 							DestinationAddresses: []string{
-/// 								"*",
+/// 					Name:               pulumi.String("Example-Filter-Rule-Collection"),
+/// 					Priority:           pulumi.Int(100),
+/// 					RuleCollectionType: pulumi.String("FirewallPolicyFilterRuleCollection"),
+/// 					Rules: pulumi.Array{
+/// 						&network.NetworkRuleArgs{
+/// 							DestinationAddresses: pulumi.StringArray{
+/// 								pulumi.String("*"),
 /// 							},
-/// 							DestinationPorts: []string{
-/// 								"*",
+/// 							DestinationPorts: pulumi.StringArray{
+/// 								pulumi.String("*"),
 /// 							},
-/// 							IpProtocols: []network.FirewallPolicyRuleNetworkProtocol{
-/// 								network.FirewallPolicyRuleNetworkProtocolTCP,
+/// 							IpProtocols: pulumi.StringArray{
+/// 								pulumi.String(network.FirewallPolicyRuleNetworkProtocolTCP),
 /// 							},
-/// 							Name:     "network-rule1",
-/// 							RuleType: "NetworkRule",
-/// 							SourceAddresses: []string{
-/// 								"10.1.25.0/24",
+/// 							Name:     pulumi.String("network-rule1"),
+/// 							RuleType: pulumi.String("NetworkRule"),
+/// 							SourceAddresses: pulumi.StringArray{
+/// 								pulumi.String("10.1.25.0/24"),
 /// 							},
 /// 						},
 /// 					},
@@ -426,7 +446,7 @@ import 'firewall_policy_rule_collection_group_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -434,25 +454,28 @@ import 'firewall_policy_rule_collection_group_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_firewallpolicyrulecollectiongroup" "firewallPolicyRuleCollectionGroup" {
+/// resource "azure-native_network_firewall_policy_rule_collection_group" "firewallPolicyRuleCollectionGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   firewall_policy_name       = "firewallPolicy"
 ///   priority                   = 100
 ///   resource_group_name        = "rg1"
 ///   rule_collection_group_name = "ruleCollectionGroup1"
 ///   rule_collections = [{
-///     "action" = {
-///       "type" = "Deny"
+///     action = {
+///       type = "Deny"
 ///     }
-///     "name"               = "Example-Filter-Rule-Collection"
-///     "priority"           = 100
-///     "ruleCollectionType" = "FirewallPolicyFilterRuleCollection"
-///     "rules" = [{
-///       "destinationAddresses" = ["*"]
-///       "destinationPorts"     = ["*"]
-///       "ipProtocols"          = ["TCP"]
-///       "name"                 = "network-rule1"
-///       "ruleType"             = "NetworkRule"
-///       "sourceAddresses"      = ["10.1.25.0/24"]
+///     name                 = "Example-Filter-Rule-Collection"
+///     priority             = 100
+///     rule_collection_type = "FirewallPolicyFilterRuleCollection"
+///     rules = [{
+///       destination_addresses = ["*"]
+///       destination_ports     = ["*"]
+///       ip_protocols          = ["TCP"]
+///       name                  = "network-rule1"
+///       rule_type             = "NetworkRule"
+///       source_addresses      = ["10.1.25.0/24"]
 ///     }]
 ///   }]
 /// }
@@ -467,6 +490,13 @@ import 'firewall_policy_rule_collection_group_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.network.FirewallPolicyRuleCollectionGroup;
 /// import com.pulumi.azurenative.network.FirewallPolicyRuleCollectionGroupArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyFilterRuleCollectionArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyFilterRuleCollectionActionArgs;
+/// import com.pulumi.azurenative.network.inputs.ApplicationRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.NatRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.NetworkRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyNatRuleCollectionArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyNatRuleCollectionActionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -491,8 +521,13 @@ import 'firewall_policy_rule_collection_group_args.dart';
 ///                     .build())
 ///                 .name("Example-Filter-Rule-Collection")
 ///                 .priority(100)
-///                 .ruleCollectionType("FirewallPolicyFilterRuleCollection")
-///                 .rules(%!v(PANIC=Format method: interface conversion: model.Expression is *model.FunctionCallExpression, not *model.ObjectConsExpression))
+///                 .rules(NetworkRuleArgs.builder()
+///                     .destinationAddresses("*")
+///                     .destinationPorts("*")
+///                     .ipProtocols("TCP")
+///                     .name("network-rule1")
+///                     .sourceAddresses("10.1.25.0/24")
+///                     .build())
 ///                 .build())
 ///             .build());
 ///
@@ -604,7 +639,7 @@ import 'firewall_policy_rule_collection_group_args.dart';
 ///         Priority = 110,
 ///         ResourceGroupName = "rg1",
 ///         RuleCollectionGroupName = "ruleCollectionGroup1",
-///         RuleCollections = new[]
+///         RuleCollections =
 ///         {
 ///             new AzureNative.Network.Inputs.FirewallPolicyFilterRuleCollectionArgs
 ///             {
@@ -614,25 +649,25 @@ import 'firewall_policy_rule_collection_group_args.dart';
 ///                 },
 ///                 Name = "Example-Filter-Rule-Collection",
 ///                 RuleCollectionType = "FirewallPolicyFilterRuleCollection",
-///                 Rules = new[]
+///                 Rules =
 ///                 {
 ///                     new AzureNative.Network.Inputs.NetworkRuleArgs
 ///                     {
-///                         DestinationIpGroups = new[]
+///                         DestinationIpGroups =
 ///                         {
 ///                             "/subscriptions/subid/providers/Microsoft.Network/resourceGroup/rg1/ipGroups/ipGroups2",
 ///                         },
-///                         DestinationPorts = new[]
+///                         DestinationPorts =
 ///                         {
 ///                             "*",
 ///                         },
-///                         IpProtocols = new[]
+///                         IpProtocols =
 ///                         {
 ///                             AzureNative.Network.FirewallPolicyRuleNetworkProtocol.TCP,
 ///                         },
 ///                         Name = "network-1",
 ///                         RuleType = "NetworkRule",
-///                         SourceIpGroups = new[]
+///                         SourceIpGroups =
 ///                         {
 ///                             "/subscriptions/subid/providers/Microsoft.Network/resourceGroup/rg1/ipGroups/ipGroups1",
 ///                         },
@@ -663,27 +698,27 @@ import 'firewall_policy_rule_collection_group_args.dart';
 /// 			ResourceGroupName:       pulumi.String("rg1"),
 /// 			RuleCollectionGroupName: pulumi.String("ruleCollectionGroup1"),
 /// 			RuleCollections: pulumi.Array{
-/// 				network.FirewallPolicyFilterRuleCollection{
-/// 					Action: network.FirewallPolicyFilterRuleCollectionAction{
-/// 						Type: network.FirewallPolicyFilterRuleCollectionActionTypeDeny,
+/// 				&network.FirewallPolicyFilterRuleCollectionArgs{
+/// 					Action: &network.FirewallPolicyFilterRuleCollectionActionArgs{
+/// 						Type: pulumi.String(network.FirewallPolicyFilterRuleCollectionActionTypeDeny),
 /// 					},
-/// 					Name:               "Example-Filter-Rule-Collection",
-/// 					RuleCollectionType: "FirewallPolicyFilterRuleCollection",
-/// 					Rules: []interface{}{
-/// 						network.NetworkRule{
-/// 							DestinationIpGroups: []string{
-/// 								"/subscriptions/subid/providers/Microsoft.Network/resourceGroup/rg1/ipGroups/ipGroups2",
+/// 					Name:               pulumi.String("Example-Filter-Rule-Collection"),
+/// 					RuleCollectionType: pulumi.String("FirewallPolicyFilterRuleCollection"),
+/// 					Rules: pulumi.Array{
+/// 						&network.NetworkRuleArgs{
+/// 							DestinationIpGroups: pulumi.StringArray{
+/// 								pulumi.String("/subscriptions/subid/providers/Microsoft.Network/resourceGroup/rg1/ipGroups/ipGroups2"),
 /// 							},
-/// 							DestinationPorts: []string{
-/// 								"*",
+/// 							DestinationPorts: pulumi.StringArray{
+/// 								pulumi.String("*"),
 /// 							},
-/// 							IpProtocols: []network.FirewallPolicyRuleNetworkProtocol{
-/// 								network.FirewallPolicyRuleNetworkProtocolTCP,
+/// 							IpProtocols: pulumi.StringArray{
+/// 								pulumi.String(network.FirewallPolicyRuleNetworkProtocolTCP),
 /// 							},
-/// 							Name:     "network-1",
-/// 							RuleType: "NetworkRule",
-/// 							SourceIpGroups: []string{
-/// 								"/subscriptions/subid/providers/Microsoft.Network/resourceGroup/rg1/ipGroups/ipGroups1",
+/// 							Name:     pulumi.String("network-1"),
+/// 							RuleType: pulumi.String("NetworkRule"),
+/// 							SourceIpGroups: pulumi.StringArray{
+/// 								pulumi.String("/subscriptions/subid/providers/Microsoft.Network/resourceGroup/rg1/ipGroups/ipGroups1"),
 /// 							},
 /// 						},
 /// 					},
@@ -700,7 +735,7 @@ import 'firewall_policy_rule_collection_group_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -708,24 +743,27 @@ import 'firewall_policy_rule_collection_group_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_firewallpolicyrulecollectiongroup" "firewallPolicyRuleCollectionGroup" {
+/// resource "azure-native_network_firewall_policy_rule_collection_group" "firewallPolicyRuleCollectionGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   firewall_policy_name       = "firewallPolicy"
 ///   priority                   = 110
 ///   resource_group_name        = "rg1"
 ///   rule_collection_group_name = "ruleCollectionGroup1"
 ///   rule_collections = [{
-///     "action" = {
-///       "type" = "Deny"
+///     action = {
+///       type = "Deny"
 ///     }
-///     "name"               = "Example-Filter-Rule-Collection"
-///     "ruleCollectionType" = "FirewallPolicyFilterRuleCollection"
-///     "rules" = [{
-///       "destinationIpGroups" = ["/subscriptions/subid/providers/Microsoft.Network/resourceGroup/rg1/ipGroups/ipGroups2"]
-///       "destinationPorts"    = ["*"]
-///       "ipProtocols"         = ["TCP"]
-///       "name"                = "network-1"
-///       "ruleType"            = "NetworkRule"
-///       "sourceIpGroups"      = ["/subscriptions/subid/providers/Microsoft.Network/resourceGroup/rg1/ipGroups/ipGroups1"]
+///     name                 = "Example-Filter-Rule-Collection"
+///     rule_collection_type = "FirewallPolicyFilterRuleCollection"
+///     rules = [{
+///       destination_ip_groups = ["/subscriptions/subid/providers/Microsoft.Network/resourceGroup/rg1/ipGroups/ipGroups2"]
+///       destination_ports     = ["*"]
+///       ip_protocols          = ["TCP"]
+///       name                  = "network-1"
+///       rule_type             = "NetworkRule"
+///       source_ip_groups      = ["/subscriptions/subid/providers/Microsoft.Network/resourceGroup/rg1/ipGroups/ipGroups1"]
 ///     }]
 ///   }]
 /// }
@@ -740,6 +778,13 @@ import 'firewall_policy_rule_collection_group_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.network.FirewallPolicyRuleCollectionGroup;
 /// import com.pulumi.azurenative.network.FirewallPolicyRuleCollectionGroupArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyFilterRuleCollectionArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyFilterRuleCollectionActionArgs;
+/// import com.pulumi.azurenative.network.inputs.ApplicationRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.NatRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.NetworkRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyNatRuleCollectionArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyNatRuleCollectionActionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -763,8 +808,13 @@ import 'firewall_policy_rule_collection_group_args.dart';
 ///                     .type("Deny")
 ///                     .build())
 ///                 .name("Example-Filter-Rule-Collection")
-///                 .ruleCollectionType("FirewallPolicyFilterRuleCollection")
-///                 .rules(%!v(PANIC=Format method: interface conversion: model.Expression is *model.FunctionCallExpression, not *model.ObjectConsExpression))
+///                 .rules(NetworkRuleArgs.builder()
+///                     .destinationIpGroups("/subscriptions/subid/providers/Microsoft.Network/resourceGroup/rg1/ipGroups/ipGroups2")
+///                     .destinationPorts("*")
+///                     .ipProtocols("TCP")
+///                     .name("network-1")
+///                     .sourceIpGroups("/subscriptions/subid/providers/Microsoft.Network/resourceGroup/rg1/ipGroups/ipGroups1")
+///                     .build())
 ///                 .build())
 ///             .build());
 ///
@@ -873,7 +923,7 @@ import 'firewall_policy_rule_collection_group_args.dart';
 ///         Priority = 110,
 ///         ResourceGroupName = "rg1",
 ///         RuleCollectionGroupName = "ruleCollectionGroup1",
-///         RuleCollections = new[]
+///         RuleCollections =
 ///         {
 ///             new AzureNative.Network.Inputs.FirewallPolicyFilterRuleCollectionArgs
 ///             {
@@ -883,13 +933,13 @@ import 'firewall_policy_rule_collection_group_args.dart';
 ///                 },
 ///                 Name = "Example-Filter-Rule-Collection",
 ///                 RuleCollectionType = "FirewallPolicyFilterRuleCollection",
-///                 Rules = new[]
+///                 Rules =
 ///                 {
 ///                     new AzureNative.Network.Inputs.ApplicationRuleArgs
 ///                     {
 ///                         Description = "Deny inbound rule",
 ///                         Name = "rule1",
-///                         Protocols = new[]
+///                         Protocols =
 ///                         {
 ///                             new AzureNative.Network.Inputs.FirewallPolicyRuleApplicationProtocolArgs
 ///                             {
@@ -898,12 +948,12 @@ import 'firewall_policy_rule_collection_group_args.dart';
 ///                             },
 ///                         },
 ///                         RuleType = "ApplicationRule",
-///                         SourceAddresses = new[]
+///                         SourceAddresses =
 ///                         {
 ///                             "216.58.216.164",
 ///                             "10.0.0.0/24",
 ///                         },
-///                         WebCategories = new[]
+///                         WebCategories =
 ///                         {
 ///                             "Hacking",
 ///                         },
@@ -934,29 +984,29 @@ import 'firewall_policy_rule_collection_group_args.dart';
 /// 			ResourceGroupName:       pulumi.String("rg1"),
 /// 			RuleCollectionGroupName: pulumi.String("ruleCollectionGroup1"),
 /// 			RuleCollections: pulumi.Array{
-/// 				network.FirewallPolicyFilterRuleCollection{
-/// 					Action: network.FirewallPolicyFilterRuleCollectionAction{
-/// 						Type: network.FirewallPolicyFilterRuleCollectionActionTypeDeny,
+/// 				&network.FirewallPolicyFilterRuleCollectionArgs{
+/// 					Action: &network.FirewallPolicyFilterRuleCollectionActionArgs{
+/// 						Type: pulumi.String(network.FirewallPolicyFilterRuleCollectionActionTypeDeny),
 /// 					},
-/// 					Name:               "Example-Filter-Rule-Collection",
-/// 					RuleCollectionType: "FirewallPolicyFilterRuleCollection",
-/// 					Rules: []interface{}{
-/// 						network.ApplicationRule{
-/// 							Description: "Deny inbound rule",
-/// 							Name:        "rule1",
-/// 							Protocols: []network.FirewallPolicyRuleApplicationProtocol{
-/// 								{
-/// 									Port:         443,
-/// 									ProtocolType: network.FirewallPolicyRuleApplicationProtocolTypeHttps,
+/// 					Name:               pulumi.String("Example-Filter-Rule-Collection"),
+/// 					RuleCollectionType: pulumi.String("FirewallPolicyFilterRuleCollection"),
+/// 					Rules: pulumi.Array{
+/// 						&network.ApplicationRuleArgs{
+/// 							Description: pulumi.String("Deny inbound rule"),
+/// 							Name:        pulumi.String("rule1"),
+/// 							Protocols: network.FirewallPolicyRuleApplicationProtocolArray{
+/// 								&network.FirewallPolicyRuleApplicationProtocolArgs{
+/// 									Port:         pulumi.Int(443),
+/// 									ProtocolType: pulumi.String(network.FirewallPolicyRuleApplicationProtocolTypeHttps),
 /// 								},
 /// 							},
-/// 							RuleType: "ApplicationRule",
-/// 							SourceAddresses: []string{
-/// 								"216.58.216.164",
-/// 								"10.0.0.0/24",
+/// 							RuleType: pulumi.String("ApplicationRule"),
+/// 							SourceAddresses: pulumi.StringArray{
+/// 								pulumi.String("216.58.216.164"),
+/// 								pulumi.String("10.0.0.0/24"),
 /// 							},
-/// 							WebCategories: []string{
-/// 								"Hacking",
+/// 							WebCategories: pulumi.StringArray{
+/// 								pulumi.String("Hacking"),
 /// 							},
 /// 						},
 /// 					},
@@ -973,7 +1023,7 @@ import 'firewall_policy_rule_collection_group_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -981,27 +1031,30 @@ import 'firewall_policy_rule_collection_group_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_firewallpolicyrulecollectiongroup" "firewallPolicyRuleCollectionGroup" {
+/// resource "azure-native_network_firewall_policy_rule_collection_group" "firewallPolicyRuleCollectionGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   firewall_policy_name       = "firewallPolicy"
 ///   priority                   = 110
 ///   resource_group_name        = "rg1"
 ///   rule_collection_group_name = "ruleCollectionGroup1"
 ///   rule_collections = [{
-///     "action" = {
-///       "type" = "Deny"
+///     action = {
+///       type = "Deny"
 ///     }
-///     "name"               = "Example-Filter-Rule-Collection"
-///     "ruleCollectionType" = "FirewallPolicyFilterRuleCollection"
-///     "rules" = [{
-///       "description" = "Deny inbound rule"
-///       "name"        = "rule1"
-///       "protocols" = [{
-///         "port"         = 443
-///         "protocolType" = "Https"
+///     name                 = "Example-Filter-Rule-Collection"
+///     rule_collection_type = "FirewallPolicyFilterRuleCollection"
+///     rules = [{
+///       description = "Deny inbound rule"
+///       name        = "rule1"
+///       protocols = [{
+///         port          = 443
+///         protocol_type = "Https"
 ///       }]
-///       "ruleType"        = "ApplicationRule"
-///       "sourceAddresses" = ["216.58.216.164", "10.0.0.0/24"]
-///       "webCategories"   = ["Hacking"]
+///       rule_type        = "ApplicationRule"
+///       source_addresses = ["216.58.216.164", "10.0.0.0/24"]
+///       web_categories   = ["Hacking"]
 ///     }]
 ///   }]
 /// }
@@ -1016,6 +1069,14 @@ import 'firewall_policy_rule_collection_group_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.network.FirewallPolicyRuleCollectionGroup;
 /// import com.pulumi.azurenative.network.FirewallPolicyRuleCollectionGroupArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyFilterRuleCollectionArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyFilterRuleCollectionActionArgs;
+/// import com.pulumi.azurenative.network.inputs.ApplicationRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyRuleApplicationProtocolArgs;
+/// import com.pulumi.azurenative.network.inputs.NatRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.NetworkRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyNatRuleCollectionArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyNatRuleCollectionActionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1039,8 +1100,18 @@ import 'firewall_policy_rule_collection_group_args.dart';
 ///                     .type("Deny")
 ///                     .build())
 ///                 .name("Example-Filter-Rule-Collection")
-///                 .ruleCollectionType("FirewallPolicyFilterRuleCollection")
-///                 .rules(%!v(PANIC=Format method: interface conversion: model.Expression is *model.FunctionCallExpression, not *model.ObjectConsExpression))
+///                 .rules(ApplicationRuleArgs.builder()
+///                     .description("Deny inbound rule")
+///                     .name("rule1")
+///                     .protocols(FirewallPolicyRuleApplicationProtocolArgs.builder()
+///                         .port(443)
+///                         .protocolType("Https")
+///                         .build())
+///                     .sourceAddresses(
+///                         "216.58.216.164",
+///                         "10.0.0.0/24")
+///                     .webCategories("Hacking")
+///                     .build())
 ///                 .build())
 ///             .build());
 ///
@@ -1162,7 +1233,7 @@ import 'firewall_policy_rule_collection_group_args.dart';
 ///         Priority = 110,
 ///         ResourceGroupName = "rg1",
 ///         RuleCollectionGroupName = "ruleCollectionGroup1",
-///         RuleCollections = new[]
+///         RuleCollections =
 ///         {
 ///             new AzureNative.Network.Inputs.FirewallPolicyFilterRuleCollectionArgs
 ///             {
@@ -1172,16 +1243,16 @@ import 'firewall_policy_rule_collection_group_args.dart';
 ///                 },
 ///                 Name = "Example-Filter-Rule-Collection",
 ///                 RuleCollectionType = "FirewallPolicyFilterRuleCollection",
-///                 Rules = new[]
+///                 Rules =
 ///                 {
 ///                     new AzureNative.Network.Inputs.ApplicationRuleArgs
 ///                     {
 ///                         Description = "Insert trusted tenants header",
-///                         FqdnTags = new[]
+///                         FqdnTags =
 ///                         {
 ///                             "WindowsVirtualDesktop",
 ///                         },
-///                         HttpHeadersToInsert = new[]
+///                         HttpHeadersToInsert =
 ///                         {
 ///                             new AzureNative.Network.Inputs.FirewallPolicyHttpHeaderToInsertArgs
 ///                             {
@@ -1190,7 +1261,7 @@ import 'firewall_policy_rule_collection_group_args.dart';
 ///                             },
 ///                         },
 ///                         Name = "rule1",
-///                         Protocols = new[]
+///                         Protocols =
 ///                         {
 ///                             new AzureNative.Network.Inputs.FirewallPolicyRuleApplicationProtocolArgs
 ///                             {
@@ -1199,7 +1270,7 @@ import 'firewall_policy_rule_collection_group_args.dart';
 ///                             },
 ///                         },
 ///                         RuleType = "ApplicationRule",
-///                         SourceAddresses = new[]
+///                         SourceAddresses =
 ///                         {
 ///                             "216.58.216.164",
 ///                             "10.0.0.0/24",
@@ -1231,35 +1302,35 @@ import 'firewall_policy_rule_collection_group_args.dart';
 /// 			ResourceGroupName:       pulumi.String("rg1"),
 /// 			RuleCollectionGroupName: pulumi.String("ruleCollectionGroup1"),
 /// 			RuleCollections: pulumi.Array{
-/// 				network.FirewallPolicyFilterRuleCollection{
-/// 					Action: network.FirewallPolicyFilterRuleCollectionAction{
-/// 						Type: network.FirewallPolicyFilterRuleCollectionActionTypeAllow,
+/// 				&network.FirewallPolicyFilterRuleCollectionArgs{
+/// 					Action: &network.FirewallPolicyFilterRuleCollectionActionArgs{
+/// 						Type: pulumi.String(network.FirewallPolicyFilterRuleCollectionActionTypeAllow),
 /// 					},
-/// 					Name:               "Example-Filter-Rule-Collection",
-/// 					RuleCollectionType: "FirewallPolicyFilterRuleCollection",
-/// 					Rules: []interface{}{
-/// 						network.ApplicationRule{
-/// 							Description: "Insert trusted tenants header",
-/// 							FqdnTags: []string{
-/// 								"WindowsVirtualDesktop",
+/// 					Name:               pulumi.String("Example-Filter-Rule-Collection"),
+/// 					RuleCollectionType: pulumi.String("FirewallPolicyFilterRuleCollection"),
+/// 					Rules: pulumi.Array{
+/// 						&network.ApplicationRuleArgs{
+/// 							Description: pulumi.String("Insert trusted tenants header"),
+/// 							FqdnTags: pulumi.StringArray{
+/// 								pulumi.String("WindowsVirtualDesktop"),
 /// 							},
-/// 							HttpHeadersToInsert: []network.FirewallPolicyHttpHeaderToInsert{
-/// 								{
-/// 									HeaderName:  "Restrict-Access-To-Tenants",
-/// 									HeaderValue: "contoso.com,fabrikam.onmicrosoft.com",
+/// 							HttpHeadersToInsert: network.FirewallPolicyHttpHeaderToInsertArray{
+/// 								&network.FirewallPolicyHttpHeaderToInsertArgs{
+/// 									HeaderName:  pulumi.String("Restrict-Access-To-Tenants"),
+/// 									HeaderValue: pulumi.String("contoso.com,fabrikam.onmicrosoft.com"),
 /// 								},
 /// 							},
-/// 							Name: "rule1",
-/// 							Protocols: []network.FirewallPolicyRuleApplicationProtocol{
-/// 								{
-/// 									Port:         80,
-/// 									ProtocolType: network.FirewallPolicyRuleApplicationProtocolTypeHttp,
+/// 							Name: pulumi.String("rule1"),
+/// 							Protocols: network.FirewallPolicyRuleApplicationProtocolArray{
+/// 								&network.FirewallPolicyRuleApplicationProtocolArgs{
+/// 									Port:         pulumi.Int(80),
+/// 									ProtocolType: pulumi.String(network.FirewallPolicyRuleApplicationProtocolTypeHttp),
 /// 								},
 /// 							},
-/// 							RuleType: "ApplicationRule",
-/// 							SourceAddresses: []string{
-/// 								"216.58.216.164",
-/// 								"10.0.0.0/24",
+/// 							RuleType: pulumi.String("ApplicationRule"),
+/// 							SourceAddresses: pulumi.StringArray{
+/// 								pulumi.String("216.58.216.164"),
+/// 								pulumi.String("10.0.0.0/24"),
 /// 							},
 /// 						},
 /// 					},
@@ -1276,7 +1347,7 @@ import 'firewall_policy_rule_collection_group_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1284,31 +1355,34 @@ import 'firewall_policy_rule_collection_group_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_firewallpolicyrulecollectiongroup" "firewallPolicyRuleCollectionGroup" {
+/// resource "azure-native_network_firewall_policy_rule_collection_group" "firewallPolicyRuleCollectionGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   firewall_policy_name       = "firewallPolicy"
 ///   priority                   = 110
 ///   resource_group_name        = "rg1"
 ///   rule_collection_group_name = "ruleCollectionGroup1"
 ///   rule_collections = [{
-///     "action" = {
-///       "type" = "Allow"
+///     action = {
+///       type = "Allow"
 ///     }
-///     "name"               = "Example-Filter-Rule-Collection"
-///     "ruleCollectionType" = "FirewallPolicyFilterRuleCollection"
-///     "rules" = [{
-///       "description" = "Insert trusted tenants header"
-///       "fqdnTags"    = ["WindowsVirtualDesktop"]
-///       "httpHeadersToInsert" = [{
-///         "headerName"  = "Restrict-Access-To-Tenants"
-///         "headerValue" = "contoso.com,fabrikam.onmicrosoft.com"
+///     name                 = "Example-Filter-Rule-Collection"
+///     rule_collection_type = "FirewallPolicyFilterRuleCollection"
+///     rules = [{
+///       description = "Insert trusted tenants header"
+///       fqdn_tags   = ["WindowsVirtualDesktop"]
+///       http_headers_to_insert = [{
+///         header_name  = "Restrict-Access-To-Tenants"
+///         header_value = "contoso.com,fabrikam.onmicrosoft.com"
 ///       }]
-///       "name" = "rule1"
-///       "protocols" = [{
-///         "port"         = 80
-///         "protocolType" = "Http"
+///       name = "rule1"
+///       protocols = [{
+///         port          = 80
+///         protocol_type = "Http"
 ///       }]
-///       "ruleType"        = "ApplicationRule"
-///       "sourceAddresses" = ["216.58.216.164", "10.0.0.0/24"]
+///       rule_type        = "ApplicationRule"
+///       source_addresses = ["216.58.216.164", "10.0.0.0/24"]
 ///     }]
 ///   }]
 /// }
@@ -1323,6 +1397,15 @@ import 'firewall_policy_rule_collection_group_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.network.FirewallPolicyRuleCollectionGroup;
 /// import com.pulumi.azurenative.network.FirewallPolicyRuleCollectionGroupArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyFilterRuleCollectionArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyFilterRuleCollectionActionArgs;
+/// import com.pulumi.azurenative.network.inputs.ApplicationRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyHttpHeaderToInsertArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyRuleApplicationProtocolArgs;
+/// import com.pulumi.azurenative.network.inputs.NatRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.NetworkRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyNatRuleCollectionArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyNatRuleCollectionActionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1346,8 +1429,22 @@ import 'firewall_policy_rule_collection_group_args.dart';
 ///                     .type("Allow")
 ///                     .build())
 ///                 .name("Example-Filter-Rule-Collection")
-///                 .ruleCollectionType("FirewallPolicyFilterRuleCollection")
-///                 .rules(%!v(PANIC=Format method: interface conversion: model.Expression is *model.FunctionCallExpression, not *model.ObjectConsExpression))
+///                 .rules(ApplicationRuleArgs.builder()
+///                     .description("Insert trusted tenants header")
+///                     .fqdnTags("WindowsVirtualDesktop")
+///                     .httpHeadersToInsert(FirewallPolicyHttpHeaderToInsertArgs.builder()
+///                         .headerName("Restrict-Access-To-Tenants")
+///                         .headerValue("contoso.com,fabrikam.onmicrosoft.com")
+///                         .build())
+///                     .name("rule1")
+///                     .protocols(FirewallPolicyRuleApplicationProtocolArgs.builder()
+///                         .port(80)
+///                         .protocolType("Http")
+///                         .build())
+///                     .sourceAddresses(
+///                         "216.58.216.164",
+///                         "10.0.0.0/24")
+///                     .build())
 ///                 .build())
 ///             .build());
 ///

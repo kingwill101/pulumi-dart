@@ -80,7 +80,7 @@ import 'connection_gateway_definition_response_properties.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -88,7 +88,10 @@ import 'connection_gateway_definition_response_properties.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_web_connectiongateway" "connectionGateway" {
+/// resource "azure-native_web_connection_gateway" "connectionGateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_gateway_name = "test123"
 ///   properties = {
 ///     backend_uri = "https://WABI-WEST-US-redirect.analysis.windows.net"

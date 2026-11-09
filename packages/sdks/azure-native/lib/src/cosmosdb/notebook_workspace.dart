@@ -56,7 +56,7 @@ import 'notebook_workspace_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -64,7 +64,10 @@ import 'notebook_workspace_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_notebookworkspace" "notebookWorkspace" {
+/// resource "azure-native_cosmosdb_notebook_workspace" "notebookWorkspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name            = "ddb1"
 ///   notebook_workspace_name = "default"
 ///   resource_group_name     = "rg1"

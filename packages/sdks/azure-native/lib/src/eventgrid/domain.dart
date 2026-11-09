@@ -96,7 +96,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -105,6 +105,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_eventgrid_domain" "domain" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name = "exampledomain1"
 ///   inbound_ip_rules {
 ///     action  = "Allow"

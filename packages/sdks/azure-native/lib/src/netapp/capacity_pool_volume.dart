@@ -73,7 +73,7 @@ import 'volume_properties_response_export_policy.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,7 +81,10 @@ import 'volume_properties_response_export_policy.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_netapp_capacitypoolvolume" "capacityPoolVolume" {
+/// resource "azure-native_netapp_capacity_pool_volume" "capacityPoolVolume" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "account1"
 ///   creation_token      = "my-unique-file-path"
 ///   location            = "eastus"

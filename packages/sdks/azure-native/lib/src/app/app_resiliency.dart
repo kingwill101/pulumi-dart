@@ -63,8 +63,8 @@ import 'timeout_policy_response.dart';
 ///                 502,
 ///                 503,
 ///             },
-///             InitialDelayInMilliseconds = 1000,
-///             MaxIntervalInMilliseconds = 10000,
+///             InitialDelayInMilliseconds = 1000.0,
+///             MaxIntervalInMilliseconds = 10000.0,
 ///             MaxRetries = 5,
 ///         },
 ///         Name = "resiliency-policy-1",
@@ -155,7 +155,7 @@ import 'timeout_policy_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -163,7 +163,10 @@ import 'timeout_policy_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_appresiliency" "appResiliency" {
+/// resource "azure-native_app_app_resiliency" "appResiliency" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_name = "testcontainerApp0"
 ///   circuit_breaker_policy = {
 ///     consecutive_errors   = 5
@@ -177,8 +180,8 @@ import 'timeout_policy_response.dart';
 ///   http_retry_policy = {
 ///     errors = ["5xx", "connect-failure", "reset", "retriable-headers", "retriable-status-codes"]
 ///     headers = [{
-///       "header"      = "X-Content-Type"
-///       "prefixMatch" = "GOATS"
+///       header       = "X-Content-Type"
+///       prefix_match = "GOATS"
 ///     }]
 ///     http_status_codes             = [502, 503]
 ///     initial_delay_in_milliseconds = 1000
@@ -212,6 +215,7 @@ import 'timeout_policy_response.dart';
 /// import com.pulumi.azurenative.app.inputs.CircuitBreakerPolicyArgs;
 /// import com.pulumi.azurenative.app.inputs.HttpConnectionPoolArgs;
 /// import com.pulumi.azurenative.app.inputs.HttpRetryPolicyArgs;
+/// import com.pulumi.azurenative.app.inputs.HeaderMatchArgs;
 /// import com.pulumi.azurenative.app.inputs.TcpConnectionPoolArgs;
 /// import com.pulumi.azurenative.app.inputs.TcpRetryPolicyArgs;
 /// import com.pulumi.azurenative.app.inputs.TimeoutPolicyArgs;

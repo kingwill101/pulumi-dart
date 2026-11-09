@@ -58,7 +58,7 @@ import 'registered_prefix_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'registered_prefix_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_peering_registeredprefix" "registeredPrefix" {
+/// resource "azure-native_peering_registered_prefix" "registeredPrefix" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   peering_name           = "peeringName"
 ///   prefix                 = "10.22.20.0/24"
 ///   registered_prefix_name = "registeredPrefixName"

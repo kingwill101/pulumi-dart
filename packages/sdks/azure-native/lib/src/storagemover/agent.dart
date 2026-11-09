@@ -43,13 +43,13 @@ import 'upload_limit_schedule_response.dart';
 ///                     EndTime = new AzureNative.StorageMover.Inputs.TimeArgs
 ///                     {
 ///                         Hour = 18,
-///                         Minute = 30,
+///                         Minute = 30.0,
 ///                     },
 ///                     LimitInMbps = 2000,
 ///                     StartTime = new AzureNative.StorageMover.Inputs.TimeArgs
 ///                     {
 ///                         Hour = 9,
-///                         Minute = 0,
+///                         Minute = 0.0,
 ///                     },
 ///                 },
 ///             },
@@ -107,7 +107,7 @@ import 'upload_limit_schedule_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -116,6 +116,9 @@ import 'upload_limit_schedule_response.dart';
 /// }
 ///
 /// resource "azure-native_storagemover_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_name          = "examples-agentName"
 ///   arc_resource_id     = "/subscriptions/60bcfc77-6589-4da2-b7fd-f9ec9322cf95/resourceGroups/examples-rg/providers/Microsoft.HybridCompute/machines/examples-hybridComputeName"
 ///   arc_vm_uuid         = "3bb2c024-eba9-4d18-9e7a-1d772fcc5fe9"
@@ -124,15 +127,15 @@ import 'upload_limit_schedule_response.dart';
 ///   storage_mover_name  = "examples-storageMoverName"
 ///   upload_limit_schedule = {
 ///     weekly_recurrences = [{
-///       "days" = ["Monday"]
-///       "endTime" = {
-///         "hour"   = 18
-///         "minute" = 30
+///       days = ["Monday"]
+///       end_time = {
+///         hour   = 18
+///         minute = 30
 ///       }
-///       "limitInMbps" = 2000
-///       "startTime" = {
-///         "hour"   = 9
-///         "minute" = 0
+///       limit_in_mbps = 2000
+///       start_time = {
+///         hour   = 9
+///         minute = 0
 ///       }
 ///     }]
 ///   }
@@ -149,6 +152,8 @@ import 'upload_limit_schedule_response.dart';
 /// import com.pulumi.azurenative.storagemover.Agent;
 /// import com.pulumi.azurenative.storagemover.AgentArgs;
 /// import com.pulumi.azurenative.storagemover.inputs.UploadLimitScheduleArgs;
+/// import com.pulumi.azurenative.storagemover.inputs.UploadLimitWeeklyRecurrenceArgs;
+/// import com.pulumi.azurenative.storagemover.inputs.TimeArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -324,7 +329,7 @@ import 'upload_limit_schedule_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -333,6 +338,9 @@ import 'upload_limit_schedule_response.dart';
 /// }
 ///
 /// resource "azure-native_storagemover_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_name          = "examples-agentName"
 ///   arc_resource_id     = "/subscriptions/60bcfc77-6589-4da2-b7fd-f9ec9322cf95/resourceGroups/examples-rg/providers/Microsoft.HybridCompute/machines/examples-hybridComputeName"
 ///   arc_vm_uuid         = "3bb2c024-eba9-4d18-9e7a-1d772fcc5fe9"
@@ -453,13 +461,13 @@ import 'upload_limit_schedule_response.dart';
 ///                     EndTime = new AzureNative.StorageMover.Inputs.TimeArgs
 ///                     {
 ///                         Hour = 24,
-///                         Minute = 0,
+///                         Minute = 0.0,
 ///                     },
 ///                     LimitInMbps = 2000,
 ///                     StartTime = new AzureNative.StorageMover.Inputs.TimeArgs
 ///                     {
 ///                         Hour = 18,
-///                         Minute = 0,
+///                         Minute = 0.0,
 ///                     },
 ///                 },
 ///                 new AzureNative.StorageMover.Inputs.UploadLimitWeeklyRecurrenceArgs
@@ -477,13 +485,13 @@ import 'upload_limit_schedule_response.dart';
 ///                     EndTime = new AzureNative.StorageMover.Inputs.TimeArgs
 ///                     {
 ///                         Hour = 9,
-///                         Minute = 0,
+///                         Minute = 0.0,
 ///                     },
 ///                     LimitInMbps = 2000,
 ///                     StartTime = new AzureNative.StorageMover.Inputs.TimeArgs
 ///                     {
 ///                         Hour = 0,
-///                         Minute = 0,
+///                         Minute = 0.0,
 ///                     },
 ///                 },
 ///             },
@@ -566,7 +574,7 @@ import 'upload_limit_schedule_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -575,6 +583,9 @@ import 'upload_limit_schedule_response.dart';
 /// }
 ///
 /// resource "azure-native_storagemover_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_name          = "examples-agentName"
 ///   arc_resource_id     = "/subscriptions/60bcfc77-6589-4da2-b7fd-f9ec9322cf95/resourceGroups/examples-rg/providers/Microsoft.HybridCompute/machines/examples-hybridComputeName"
 ///   arc_vm_uuid         = "3bb2c024-eba9-4d18-9e7a-1d772fcc5fe9"
@@ -582,26 +593,26 @@ import 'upload_limit_schedule_response.dart';
 ///   storage_mover_name  = "examples-storageMoverName"
 ///   upload_limit_schedule = {
 ///     weekly_recurrences = [{
-///       "days" = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-///       "endTime" = {
-///         "hour"   = 24
-///         "minute" = 0
+///       days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+///       end_time = {
+///         hour   = 24
+///         minute = 0
 ///       }
-///       "limitInMbps" = 2000
-///       "startTime" = {
-///         "hour"   = 18
-///         "minute" = 0
+///       limit_in_mbps = 2000
+///       start_time = {
+///         hour   = 18
+///         minute = 0
 ///       }
 ///       }, {
-///       "days" = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-///       "endTime" = {
-///         "hour"   = 9
-///         "minute" = 0
+///       days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+///       end_time = {
+///         hour   = 9
+///         minute = 0
 ///       }
-///       "limitInMbps" = 2000
-///       "startTime" = {
-///         "hour"   = 0
-///         "minute" = 0
+///       limit_in_mbps = 2000
+///       start_time = {
+///         hour   = 0
+///         minute = 0
 ///       }
 ///     }]
 ///   }
@@ -618,6 +629,8 @@ import 'upload_limit_schedule_response.dart';
 /// import com.pulumi.azurenative.storagemover.Agent;
 /// import com.pulumi.azurenative.storagemover.AgentArgs;
 /// import com.pulumi.azurenative.storagemover.inputs.UploadLimitScheduleArgs;
+/// import com.pulumi.azurenative.storagemover.inputs.UploadLimitWeeklyRecurrenceArgs;
+/// import com.pulumi.azurenative.storagemover.inputs.TimeArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

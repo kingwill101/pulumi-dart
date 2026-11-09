@@ -94,7 +94,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -102,7 +102,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_orbital_l2connection" "l2Connection" {
+/// resource "azure-native_orbital_l2_connection" "l2Connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   edge_site = {
 ///     id = "/subscriptions/c1be1141-a7c9-4aac-9608-3c2e2f1152c3/resourceGroups/rg1/providers/Microsoft.Orbital/edgeSites/es1"
 ///   }

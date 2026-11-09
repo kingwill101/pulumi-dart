@@ -280,7 +280,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -288,7 +288,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_ec2securitygroup" "ec2SecurityGroup" {
+/// resource "azure-native_awsconnector_ec2_security_group" "ec2SecurityGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "vzuwiygrafixnatwfk"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -299,61 +302,61 @@ import 'system_data_response.dart';
 ///       group_id    = "ljankmjnfyn"
 ///       group_name  = "btdfjlqbavbhlssltk"
 ///       ip_permissions = [{
-///         "fromPort"   = 20
-///         "ipProtocol" = "kgjdillfenc"
-///         "ipRanges" = [{
-///           "cidrIp"      = "bvmbvmljqvxtixhffwasjzntbuc"
-///           "description" = "shzjegnqjhifwjai"
+///         from_port   = 20
+///         ip_protocol = "kgjdillfenc"
+///         ip_ranges = [{
+///           cidr_ip     = "bvmbvmljqvxtixhffwasjzntbuc"
+///           description = "shzjegnqjhifwjai"
 ///         }]
-///         "ipv6Ranges" = [{
-///           "cidrIpv6"    = "uxlvmqqyfplqdqzolxmmnclvmtd"
-///           "description" = "iqaupyjrvko"
+///         ipv6_ranges = [{
+///           cidr_ipv6   = "uxlvmqqyfplqdqzolxmmnclvmtd"
+///           description = "iqaupyjrvko"
 ///         }]
-///         "prefixListIds" = [{
-///           "description"  = "chukmrsgeaica"
-///           "prefixListId" = "abvyhxeqhgiuwfmdproas"
+///         prefix_list_ids = [{
+///           description    = "chukmrsgeaica"
+///           prefix_list_id = "abvyhxeqhgiuwfmdproas"
 ///         }]
-///         "toPort" = 22
-///         "userIdGroupPairs" = [{
-///           "description"            = "ltskpjkztpi"
-///           "groupId"                = "laktgsfwgfj"
-///           "groupName"              = "rrnebynwgsv"
-///           "peeringStatus"          = "t"
-///           "userId"                 = "chhl"
-///           "vpcId"                  = "jxcofqkxxcehakoymxojgpra"
-///           "vpcPeeringConnectionId" = "vdqrycsnfuwkgftprwierfwv"
+///         to_port = 22
+///         user_id_group_pairs = [{
+///           description               = "ltskpjkztpi"
+///           group_id                  = "laktgsfwgfj"
+///           group_name                = "rrnebynwgsv"
+///           peering_status            = "t"
+///           user_id                   = "chhl"
+///           vpc_id                    = "jxcofqkxxcehakoymxojgpra"
+///           vpc_peering_connection_id = "vdqrycsnfuwkgftprwierfwv"
 ///         }]
 ///       }]
 ///       ip_permissions_egress = [{
-///         "fromPort"   = 20
-///         "ipProtocol" = "kgjdillfenc"
-///         "ipRanges" = [{
-///           "cidrIp"      = "bvmbvmljqvxtixhffwasjzntbuc"
-///           "description" = "shzjegnqjhifwjai"
+///         from_port   = 20
+///         ip_protocol = "kgjdillfenc"
+///         ip_ranges = [{
+///           cidr_ip     = "bvmbvmljqvxtixhffwasjzntbuc"
+///           description = "shzjegnqjhifwjai"
 ///         }]
-///         "ipv6Ranges" = [{
-///           "cidrIpv6"    = "uxlvmqqyfplqdqzolxmmnclvmtd"
-///           "description" = "iqaupyjrvko"
+///         ipv6_ranges = [{
+///           cidr_ipv6   = "uxlvmqqyfplqdqzolxmmnclvmtd"
+///           description = "iqaupyjrvko"
 ///         }]
-///         "prefixListIds" = [{
-///           "description"  = "chukmrsgeaica"
-///           "prefixListId" = "abvyhxeqhgiuwfmdproas"
+///         prefix_list_ids = [{
+///           description    = "chukmrsgeaica"
+///           prefix_list_id = "abvyhxeqhgiuwfmdproas"
 ///         }]
-///         "toPort" = 22
-///         "userIdGroupPairs" = [{
-///           "description"            = "ltskpjkztpi"
-///           "groupId"                = "laktgsfwgfj"
-///           "groupName"              = "rrnebynwgsv"
-///           "peeringStatus"          = "t"
-///           "userId"                 = "chhl"
-///           "vpcId"                  = "jxcofqkxxcehakoymxojgpra"
-///           "vpcPeeringConnectionId" = "vdqrycsnfuwkgftprwierfwv"
+///         to_port = 22
+///         user_id_group_pairs = [{
+///           description               = "ltskpjkztpi"
+///           group_id                  = "laktgsfwgfj"
+///           group_name                = "rrnebynwgsv"
+///           peering_status            = "t"
+///           user_id                   = "chhl"
+///           vpc_id                    = "jxcofqkxxcehakoymxojgpra"
+///           vpc_peering_connection_id = "vdqrycsnfuwkgftprwierfwv"
 ///         }]
 ///       }]
 ///       owner_id = "zjetpuydwcwvcujxzfp"
 ///       tags = [{
-///         "key"   = "qujkc"
-///         "value" = "jflpondfk"
+///         key   = "qujkc"
+///         value = "jflpondfk"
 ///       }]
 ///       vpc_id = "prgpmjbyqcuinimbjrzfmpmme"
 ///     }
@@ -383,6 +386,12 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.Ec2SecurityGroupArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.Ec2SecurityGroupPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEc2SecurityGroupPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.IpPermissionArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.IpRangeArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.Ipv6RangeArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.PrefixListIdArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.UserIdGroupPairArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

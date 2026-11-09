@@ -57,7 +57,7 @@ import 'web_app_scm_allowed_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'web_app_scm_allowed_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_web_webappscmallowed" "webAppScmAllowed" {
+/// resource "azure-native_web_web_app_scm_allowed" "webAppScmAllowed" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allow               = true
 ///   name                = "testSite"
 ///   resource_group_name = "rg"

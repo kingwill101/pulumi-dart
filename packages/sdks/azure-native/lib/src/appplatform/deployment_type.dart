@@ -142,10 +142,10 @@ import 'system_data_response.dart';
 /// 						FailureThreshold:    pulumi.Int(3),
 /// 						InitialDelaySeconds: pulumi.Int(30),
 /// 						PeriodSeconds:       pulumi.Int(10),
-/// 						ProbeAction: appplatform.HTTPGetAction{
-/// 							Path:   "/health",
-/// 							Scheme: appplatform.HTTPSchemeTypeHTTP,
-/// 							Type:   "HTTPGetAction",
+/// 						ProbeAction: &appplatform.HTTPGetActionArgs{
+/// 							Path:   pulumi.String("/health"),
+/// 							Scheme: pulumi.String(appplatform.HTTPSchemeTypeHTTP),
+/// 							Type:   pulumi.String("HTTPGetAction"),
 /// 						},
 /// 					},
 /// 					ReadinessProbe: &appplatform.ProbeArgs{
@@ -153,10 +153,10 @@ import 'system_data_response.dart';
 /// 						FailureThreshold:    pulumi.Int(3),
 /// 						InitialDelaySeconds: pulumi.Int(30),
 /// 						PeriodSeconds:       pulumi.Int(10),
-/// 						ProbeAction: appplatform.HTTPGetAction{
-/// 							Path:   "/health",
-/// 							Scheme: appplatform.HTTPSchemeTypeHTTP,
-/// 							Type:   "HTTPGetAction",
+/// 						ProbeAction: &appplatform.HTTPGetActionArgs{
+/// 							Path:   pulumi.String("/health"),
+/// 							Scheme: pulumi.String(appplatform.HTTPSchemeTypeHTTP),
+/// 							Type:   pulumi.String("HTTPGetAction"),
 /// 						},
 /// 					},
 /// 					ResourceRequests: &appplatform.ResourceRequestsArgs{
@@ -165,11 +165,11 @@ import 'system_data_response.dart';
 /// 					},
 /// 					TerminationGracePeriodSeconds: pulumi.Int(30),
 /// 				},
-/// 				Source: appplatform.SourceUploadedUserSourceInfo{
-/// 					ArtifactSelector: "sub-module-1",
-/// 					RelativePath:     "resources/a172cedcae47474b615c54d510a5d84a8dea3032e958587430b413538be3f333-2019082605-e3095339-1723-44b7-8b5e-31b1003978bc",
-/// 					Type:             "Source",
-/// 					Version:          "1.0",
+/// 				Source: &appplatform.SourceUploadedUserSourceInfoArgs{
+/// 					ArtifactSelector: pulumi.String("sub-module-1"),
+/// 					RelativePath:     pulumi.String("resources/a172cedcae47474b615c54d510a5d84a8dea3032e958587430b413538be3f333-2019082605-e3095339-1723-44b7-8b5e-31b1003978bc"),
+/// 					Type:             pulumi.String("Source"),
+/// 					Version:          pulumi.String("1.0"),
 /// 				},
 /// 			},
 /// 			ResourceGroupName: pulumi.String("myResourceGroup"),
@@ -190,7 +190,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -199,6 +199,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_appplatform_deployment" "deployment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_name        = "myapp"
 ///   deployment_name = "mydeployment"
 ///   properties = {
@@ -209,7 +212,7 @@ import 'system_data_response.dart';
 ///         }
 ///       }
 ///       apms = [{
-///         "resourceId" = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/apms/myappinsights"
+///         resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/apms/myappinsights"
 ///       }]
 ///       environment_variables = {
 ///         "env" = "test"
@@ -220,9 +223,9 @@ import 'system_data_response.dart';
 ///         initial_delay_seconds = 30
 ///         period_seconds        = 10
 ///         probe_action = {
-///           "path"   = "/health"
-///           "scheme" = "HTTP"
-///           "type"   = "HTTPGetAction"
+///           path   = "/health"
+///           scheme = "HTTP"
+///           type   = "HTTPGetAction"
 ///         }
 ///       }
 ///       readiness_probe = {
@@ -231,9 +234,9 @@ import 'system_data_response.dart';
 ///         initial_delay_seconds = 30
 ///         period_seconds        = 10
 ///         probe_action = {
-///           "path"   = "/health"
-///           "scheme" = "HTTP"
-///           "type"   = "HTTPGetAction"
+///           path   = "/health"
+///           scheme = "HTTP"
+///           type   = "HTTPGetAction"
 ///         }
 ///       }
 ///       resource_requests = {
@@ -243,10 +246,10 @@ import 'system_data_response.dart';
 ///       termination_grace_period_seconds = 30
 ///     }
 ///     source = {
-///       "artifactSelector" = "sub-module-1"
-///       "relativePath"     = "resources/a172cedcae47474b615c54d510a5d84a8dea3032e958587430b413538be3f333-2019082605-e3095339-1723-44b7-8b5e-31b1003978bc"
-///       "type"             = "Source"
-///       "version"          = "1.0"
+///       artifact_selector = "sub-module-1"
+///       relative_path     = "resources/a172cedcae47474b615c54d510a5d84a8dea3032e958587430b413538be3f333-2019082605-e3095339-1723-44b7-8b5e-31b1003978bc"
+///       type              = "Source"
+///       version           = "1.0"
 ///     }
 ///   }
 ///   resource_group_name = "myResourceGroup"
@@ -270,8 +273,19 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.DeploymentArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.DeploymentResourcePropertiesArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.DeploymentSettingsArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.ApmReferenceArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.ProbeArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.ExecActionArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.HTTPGetActionArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.TCPSocketActionArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.ResourceRequestsArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.BuildResultUserSourceInfoArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.CustomContainerUserSourceInfoArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.JarUploadedUserSourceInfoArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.NetCoreZipUploadedUserSourceInfoArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.SourceUploadedUserSourceInfoArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.UploadedUserSourceInfoArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.WarUploadedUserSourceInfoArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.SkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -304,7 +318,6 @@ import 'system_data_response.dart';
 ///                         .probeAction(HTTPGetActionArgs.builder()
 ///                             .path("/health")
 ///                             .scheme("HTTP")
-///                             .type("HTTPGetAction")
 ///                             .build())
 ///                         .build())
 ///                     .readinessProbe(ProbeArgs.builder()
@@ -315,7 +328,6 @@ import 'system_data_response.dart';
 ///                         .probeAction(HTTPGetActionArgs.builder()
 ///                             .path("/health")
 ///                             .scheme("HTTP")
-///                             .type("HTTPGetAction")
 ///                             .build())
 ///                         .build())
 ///                     .resourceRequests(ResourceRequestsArgs.builder()
@@ -327,7 +339,6 @@ import 'system_data_response.dart';
 ///                 .source(SourceUploadedUserSourceInfoArgs.builder()
 ///                     .artifactSelector("sub-module-1")
 ///                     .relativePath("resources/a172cedcae47474b615c54d510a5d84a8dea3032e958587430b413538be3f333-2019082605-e3095339-1723-44b7-8b5e-31b1003978bc")
-///                     .type("Source")
 ///                     .version("1.0")
 ///                     .build())
 ///                 .build())
@@ -642,10 +653,10 @@ import 'system_data_response.dart';
 /// 						FailureThreshold:    pulumi.Int(3),
 /// 						InitialDelaySeconds: pulumi.Int(30),
 /// 						PeriodSeconds:       pulumi.Int(10),
-/// 						ProbeAction: appplatform.HTTPGetAction{
-/// 							Path:   "/health",
-/// 							Scheme: appplatform.HTTPSchemeTypeHTTP,
-/// 							Type:   "HTTPGetAction",
+/// 						ProbeAction: &appplatform.HTTPGetActionArgs{
+/// 							Path:   pulumi.String("/health"),
+/// 							Scheme: pulumi.String(appplatform.HTTPSchemeTypeHTTP),
+/// 							Type:   pulumi.String("HTTPGetAction"),
 /// 						},
 /// 					},
 /// 					ReadinessProbe: &appplatform.ProbeArgs{
@@ -653,10 +664,10 @@ import 'system_data_response.dart';
 /// 						FailureThreshold:    pulumi.Int(3),
 /// 						InitialDelaySeconds: pulumi.Int(30),
 /// 						PeriodSeconds:       pulumi.Int(10),
-/// 						ProbeAction: appplatform.HTTPGetAction{
-/// 							Path:   "/health",
-/// 							Scheme: appplatform.HTTPSchemeTypeHTTP,
-/// 							Type:   "HTTPGetAction",
+/// 						ProbeAction: &appplatform.HTTPGetActionArgs{
+/// 							Path:   pulumi.String("/health"),
+/// 							Scheme: pulumi.String(appplatform.HTTPSchemeTypeHTTP),
+/// 							Type:   pulumi.String("HTTPGetAction"),
 /// 						},
 /// 					},
 /// 					ResourceRequests: &appplatform.ResourceRequestsArgs{
@@ -665,24 +676,24 @@ import 'system_data_response.dart';
 /// 					},
 /// 					TerminationGracePeriodSeconds: pulumi.Int(30),
 /// 				},
-/// 				Source: appplatform.CustomContainerUserSourceInfo{
-/// 					CustomContainer: appplatform.CustomContainer{
-/// 						Args: []string{
-/// 							"-c",
-/// 							"while true; do echo hello; sleep 10;done",
+/// 				Source: &appplatform.CustomContainerUserSourceInfoArgs{
+/// 					CustomContainer: &appplatform.CustomContainerArgs{
+/// 						Args: pulumi.StringArray{
+/// 							pulumi.String("-c"),
+/// 							pulumi.String("while true; do echo hello; sleep 10;done"),
 /// 						},
-/// 						Command: []string{
-/// 							"/bin/sh",
+/// 						Command: pulumi.StringArray{
+/// 							pulumi.String("/bin/sh"),
 /// 						},
-/// 						ContainerImage: "myContainerImage:v1",
-/// 						ImageRegistryCredential: appplatform.ImageRegistryCredential{
-/// 							Password: "myPassword",
-/// 							Username: "myUsername",
+/// 						ContainerImage: pulumi.String("myContainerImage:v1"),
+/// 						ImageRegistryCredential: &appplatform.ImageRegistryCredentialArgs{
+/// 							Password: pulumi.String("myPassword"),
+/// 							Username: pulumi.String("myUsername"),
 /// 						},
-/// 						LanguageFramework: "springboot",
-/// 						Server:            "myacr.azurecr.io",
+/// 						LanguageFramework: pulumi.String("springboot"),
+/// 						Server:            pulumi.String("myacr.azurecr.io"),
 /// 					},
-/// 					Type: "Container",
+/// 					Type: pulumi.String("Container"),
 /// 				},
 /// 			},
 /// 			ResourceGroupName: pulumi.String("myResourceGroup"),
@@ -698,7 +709,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -707,6 +718,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_appplatform_deployment" "deployment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_name        = "myapp"
 ///   deployment_name = "mydeployment"
 ///   properties = {
@@ -720,9 +734,9 @@ import 'system_data_response.dart';
 ///         initial_delay_seconds = 30
 ///         period_seconds        = 10
 ///         probe_action = {
-///           "path"   = "/health"
-///           "scheme" = "HTTP"
-///           "type"   = "HTTPGetAction"
+///           path   = "/health"
+///           scheme = "HTTP"
+///           type   = "HTTPGetAction"
 ///         }
 ///       }
 ///       readiness_probe = {
@@ -731,9 +745,9 @@ import 'system_data_response.dart';
 ///         initial_delay_seconds = 30
 ///         period_seconds        = 10
 ///         probe_action = {
-///           "path"   = "/health"
-///           "scheme" = "HTTP"
-///           "type"   = "HTTPGetAction"
+///           path   = "/health"
+///           scheme = "HTTP"
+///           type   = "HTTPGetAction"
 ///         }
 ///       }
 ///       resource_requests = {
@@ -743,18 +757,18 @@ import 'system_data_response.dart';
 ///       termination_grace_period_seconds = 30
 ///     }
 ///     source = {
-///       "customContainer" = {
-///         "args"           = ["-c", "while true; do echo hello; sleep 10;done"]
-///         "command"        = ["/bin/sh"]
-///         "containerImage" = "myContainerImage:v1"
-///         "imageRegistryCredential" = {
-///           "password" = "myPassword"
-///           "username" = "myUsername"
+///       custom_container = {
+///         args            = ["-c", "while true; do echo hello; sleep 10;done"]
+///         command         = ["/bin/sh"]
+///         container_image = "myContainerImage:v1"
+///         image_registry_credential = {
+///           password = "myPassword"
+///           username = "myUsername"
 ///         }
-///         "languageFramework" = "springboot"
-///         "server"            = "myacr.azurecr.io"
+///         language_framework = "springboot"
+///         server             = "myacr.azurecr.io"
 ///       }
-///       "type" = "Container"
+///       type = "Container"
 ///     }
 ///   }
 ///   resource_group_name = "myResourceGroup"
@@ -774,7 +788,19 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.inputs.DeploymentResourcePropertiesArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.DeploymentSettingsArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.ProbeArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.ExecActionArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.HTTPGetActionArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.TCPSocketActionArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.ResourceRequestsArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.BuildResultUserSourceInfoArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.CustomContainerUserSourceInfoArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.CustomContainerArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.ImageRegistryCredentialArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.JarUploadedUserSourceInfoArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.NetCoreZipUploadedUserSourceInfoArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.SourceUploadedUserSourceInfoArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.UploadedUserSourceInfoArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.WarUploadedUserSourceInfoArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -802,7 +828,6 @@ import 'system_data_response.dart';
 ///                         .probeAction(HTTPGetActionArgs.builder()
 ///                             .path("/health")
 ///                             .scheme("HTTP")
-///                             .type("HTTPGetAction")
 ///                             .build())
 ///                         .build())
 ///                     .readinessProbe(ProbeArgs.builder()
@@ -813,7 +838,6 @@ import 'system_data_response.dart';
 ///                         .probeAction(HTTPGetActionArgs.builder()
 ///                             .path("/health")
 ///                             .scheme("HTTP")
-///                             .type("HTTPGetAction")
 ///                             .build())
 ///                         .build())
 ///                     .resourceRequests(ResourceRequestsArgs.builder()
@@ -836,7 +860,6 @@ import 'system_data_response.dart';
 ///                         .languageFramework("springboot")
 ///                         .server("myacr.azurecr.io")
 ///                         .build())
-///                     .type("Container")
 ///                     .build())
 ///                 .build())
 ///             .resourceGroupName("myResourceGroup")

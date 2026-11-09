@@ -67,7 +67,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_restorepoint" "restorePoint" {
+/// resource "azure-native_compute_restore_point" "restorePoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name           = "myResourceGroup"
 ///   restore_point_collection_name = "rpcName"
 ///   restore_point_name            = "rpName"
@@ -224,7 +227,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -232,7 +235,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_restorepoint" "restorePoint" {
+/// resource "azure-native_compute_restore_point" "restorePoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   exclude_disks {
 ///     id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/disk123"
 ///   }

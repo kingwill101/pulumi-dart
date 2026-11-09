@@ -123,7 +123,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -131,7 +131,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurelargeinstance_azurelargeinstance" "azureLargeInstance" {
+/// resource "azure-native_azurelargeinstance_azure_large_instance" "azureLargeInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   azure_large_instance_id   = "23415635-4d7e-41dc-9598-8194f22c24e1"
 ///   azure_large_instance_name = "myALInstance"
 ///   hardware_profile = {
@@ -143,7 +146,7 @@ import 'system_data_response.dart';
 ///   network_profile = {
 ///     circuit_id = "/subscriptions/f0f4887f-d13c-4943-a8ba-d7da28d2a3fd/resourceGroups/myResourceGroup/providers/Microsoft.Network/expressRouteCircuit"
 ///     network_interfaces = [{
-///       "ipAddress" = "100.100.100.100"
+///       ip_address = "100.100.100.100"
 ///     }]
 ///   }
 ///   os_profile = {
@@ -175,6 +178,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.azurelargeinstance.AzureLargeInstanceArgs;
 /// import com.pulumi.azurenative.azurelargeinstance.inputs.HardwareProfileArgs;
 /// import com.pulumi.azurenative.azurelargeinstance.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.azurelargeinstance.inputs.IpAddressArgs;
 /// import com.pulumi.azurenative.azurelargeinstance.inputs.OsProfileArgs;
 /// import com.pulumi.azurenative.azurelargeinstance.inputs.StorageProfileArgs;
 /// import java.util.ArrayList;

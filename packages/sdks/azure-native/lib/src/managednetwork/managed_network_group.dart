@@ -22,7 +22,7 @@ import 'resource_id_response.dart';
 ///     {
 ///         ManagedNetworkGroupName = "myManagedNetworkGroup1",
 ///         ManagedNetworkName = "myManagedNetwork",
-///         ManagementGroups = new[] {},
+///         ManagementGroups = new() {},
 ///         ResourceGroupName = "myResourceGroup",
 ///         Subnets = new[]
 ///         {
@@ -31,7 +31,7 @@ import 'resource_id_response.dart';
 ///                 Id = "/subscriptionB/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/VnetA/subnets/subnetA",
 ///             },
 ///         },
-///         Subscriptions = new[] {},
+///         Subscriptions = new() {},
 ///         VirtualNetworks = new[]
 ///         {
 ///             new AzureNative.ManagedNetwork.Inputs.ResourceIdArgs
@@ -90,7 +90,7 @@ import 'resource_id_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -98,7 +98,10 @@ import 'resource_id_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managednetwork_managednetworkgroup" "managedNetworkGroup" {
+/// resource "azure-native_managednetwork_managed_network_group" "managedNetworkGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   managed_network_group_name = "myManagedNetworkGroup1"
 ///   managed_network_name       = "myManagedNetwork"
 ///   resource_group_name        = "myResourceGroup"

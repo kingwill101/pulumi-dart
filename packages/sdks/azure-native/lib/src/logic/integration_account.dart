@@ -65,7 +65,7 @@ import 'resource_reference_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'resource_reference_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_logic_integrationaccount" "integrationAccount" {
+/// resource "azure-native_logic_integration_account" "integrationAccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   integration_account_name = "testIntegrationAccount"
 ///   location                 = "westus"
 ///   resource_group_name      = "testResourceGroup"

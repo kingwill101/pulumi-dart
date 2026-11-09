@@ -68,7 +68,7 @@ import 'management_association_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'management_association_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_operationsmanagement_managementassociation" "managementAssociation" {
+/// resource "azure-native_operationsmanagement_management_association" "managementAssociation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                    = "East US"
 ///   management_association_name = "managementAssociation1"
 ///   properties = {

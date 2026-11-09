@@ -82,7 +82,7 @@ import 'reference_data_set_key_property_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -90,7 +90,10 @@ import 'reference_data_set_key_property_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_timeseriesinsights_referencedataset" "referenceDataSet" {
+/// resource "azure-native_timeseriesinsights_reference_data_set" "referenceDataSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   environment_name = "env1"
 ///   key_properties {
 ///     name = "DeviceId1"

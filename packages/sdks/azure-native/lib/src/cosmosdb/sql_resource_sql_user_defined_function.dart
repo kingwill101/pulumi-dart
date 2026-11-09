@@ -25,7 +25,7 @@ import 'sql_user_defined_function_get_properties_response_resource.dart';
 ///         AccountName = "ddb1",
 ///         ContainerName = "containerName",
 ///         DatabaseName = "databaseName",
-///         Options = null,
+///         Options = new() { },
 ///         Resource = new AzureNative.CosmosDB.Inputs.SqlUserDefinedFunctionResourceArgs
 ///         {
 ///             Body = "body",
@@ -72,7 +72,7 @@ import 'sql_user_defined_function_get_properties_response_resource.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'sql_user_defined_function_get_properties_response_resource.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_sqlresourcesqluserdefinedfunction" "sqlResourceSqlUserDefinedFunction" {
+/// resource "azure-native_cosmosdb_sql_resource_sql_user_defined_function" "sqlResourceSqlUserDefinedFunction" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name   = "ddb1"
 ///   container_name = "containerName"
 ///   database_name  = "databaseName"

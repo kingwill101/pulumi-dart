@@ -70,7 +70,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,7 +78,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datafactory_globalparameter" "globalParameter" {
+/// resource "azure-native_datafactory_global_parameter" "globalParameter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   factory_name          = "exampleFactoryName"
 ///   global_parameter_name = "default"
 ///   properties = {
@@ -100,6 +103,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datafactory.GlobalParameter;
 /// import com.pulumi.azurenative.datafactory.GlobalParameterArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.GlobalParameterSpecificationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -240,7 +244,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -248,7 +252,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datafactory_globalparameter" "globalParameter" {
+/// resource "azure-native_datafactory_global_parameter" "globalParameter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   factory_name          = "exampleFactoryName"
 ///   global_parameter_name = "default"
 ///   properties = {
@@ -270,6 +277,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datafactory.GlobalParameter;
 /// import com.pulumi.azurenative.datafactory.GlobalParameterArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.GlobalParameterSpecificationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

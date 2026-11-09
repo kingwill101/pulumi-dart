@@ -82,7 +82,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -90,7 +90,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_appplatform_configserver" "configServer" {
+/// resource "azure-native_appplatform_config_server" "configServer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     config_server = {
 ///       git_property = {
@@ -279,7 +282,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -287,7 +290,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_appplatform_configserver" "configServer" {
+/// resource "azure-native_appplatform_config_server" "configServer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     config_server = {
 ///       git_property = {

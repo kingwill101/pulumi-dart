@@ -82,7 +82,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -90,7 +90,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_discovery_nodepool" "nodePool" {
+/// resource "azure-native_discovery_node_pool" "nodePool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "uksouth"
 ///   node_pool_name = "5a88c24ec4e7091650"
 ///   properties = {

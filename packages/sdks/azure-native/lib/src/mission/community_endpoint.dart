@@ -34,7 +34,7 @@ import 'system_data_response.dart';
 ///                 Destination = "foo.example.com",
 ///                 DestinationType = AzureNative.Mission.DestinationType.FQDNTag,
 ///                 Ports = "443",
-///                 Protocols = new[]
+///                 Protocols =
 ///                 {
 ///                     AzureNative.Mission.CommunityEndpointProtocol.TCP,
 ///                 },
@@ -92,7 +92,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -100,7 +100,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_mission_communityendpoint" "communityEndpoint" {
+/// resource "azure-native_mission_community_endpoint" "communityEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   community_endpoint_name = "TestMyCommunityEndpoint"
 ///   community_name          = "TestMyCommunity"
 ///   location                = "West US"

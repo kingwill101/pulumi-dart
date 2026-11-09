@@ -29235,6 +29235,8 @@ class _DurabletaskModuleNamespace {
   final GetTaskHubArgs = module_durabletask.GetTaskHubArgs.new;
   final GetTaskHubResult = module_durabletask.GetTaskHubResult.new;
   final GetTaskHubResultArgs = module_durabletask.GetTaskHubResult.new;
+  final PrivateEndpointConnectionResponse = module_durabletask.PrivateEndpointConnectionResponse.new;
+  final PrivateEndpointConnectionResponseArgs = module_durabletask.PrivateEndpointConnectionResponse.new;
   final PrivateEndpointResponse = module_durabletask.PrivateEndpointResponse.new;
   final PrivateEndpointResponseArgs = module_durabletask.PrivateEndpointResponse.new;
   final PrivateEndpointServiceConnectionStatus = module_durabletask.PrivateEndpointServiceConnectionStatus.values;
@@ -29242,6 +29244,7 @@ class _DurabletaskModuleNamespace {
   final PrivateLinkServiceConnectionStateArgs = module_durabletask.PrivateLinkServiceConnectionState.new;
   final PrivateLinkServiceConnectionStateResponse = module_durabletask.PrivateLinkServiceConnectionStateResponse.new;
   final PrivateLinkServiceConnectionStateResponseArgs = module_durabletask.PrivateLinkServiceConnectionStateResponse.new;
+  final PublicNetworkAccess = module_durabletask.PublicNetworkAccess.values;
   final PurgeableOrchestrationState = module_durabletask.PurgeableOrchestrationState.values;
   final RetentionPolicy = module_durabletask.RetentionPolicy.new;
   final RetentionPolicyArgs = module_durabletask.RetentionPolicyArgs.new;
@@ -29263,6 +29266,7 @@ class _DurabletaskModuleNamespace {
   final SchedulerPropertiesResponseArgs = module_durabletask.SchedulerPropertiesResponse.new;
   final SchedulerSku = module_durabletask.SchedulerSku.new;
   final SchedulerSkuArgs = module_durabletask.SchedulerSku.new;
+  final SchedulerSkuName = module_durabletask.SchedulerSkuName.values;
   final SchedulerSkuResponse = module_durabletask.SchedulerSkuResponse.new;
   final SchedulerSkuResponseArgs = module_durabletask.SchedulerSkuResponse.new;
   final SystemDataResponse = module_durabletask.SystemDataResponse.new;
@@ -40881,11 +40885,11 @@ class _MonitorModuleNamespace {
   final ConditionArgs = module_monitor.Condition.new;
   final ConditionFailingPeriods = module_monitor.ConditionFailingPeriods.new;
   final ConditionFailingPeriodsArgs = module_monitor.ConditionFailingPeriods.new;
-  final ConditionFailingPeriodsResponse = module_monitor.ConditionFailingPeriodsResponse.new;
-  final ConditionFailingPeriodsResponseArgs = module_monitor.ConditionFailingPeriodsResponse.new;
   final ConditionOperator = module_monitor.ConditionOperator.values;
   final ConditionResponse = module_monitor.ConditionResponse.new;
   final ConditionResponseArgs = module_monitor.ConditionResponse.new;
+  final ConditionResponseFailingPeriods = module_monitor.ConditionResponseFailingPeriods.new;
+  final ConditionResponseFailingPeriodsArgs = module_monitor.ConditionResponseFailingPeriods.new;
   final ConditionSliResponse = module_monitor.ConditionSliResponse.new;
   final ConditionSliResponseArgs = module_monitor.ConditionSliResponse.new;
   final ConditionV1 = module_monitor.ConditionV1.new;
@@ -41137,6 +41141,8 @@ class _MonitorModuleNamespace {
   final IconDefinitionArgs = module_monitor.IconDefinition.new;
   final IconDefinitionResponse = module_monitor.IconDefinitionResponse.new;
   final IconDefinitionResponseArgs = module_monitor.IconDefinitionResponse.new;
+  final Identity = module_monitor.Identity.new;
+  final IdentityArgs = module_monitor.Identity.new;
   final IdentityResponse = module_monitor.IdentityResponse.new;
   final IdentityResponseArgs = module_monitor.IdentityResponse.new;
   final IdentityType = module_monitor.IdentityType.values;
@@ -41285,8 +41291,6 @@ class _MonitorModuleNamespace {
   final MicrosoftCommonAzureAppPushReceiverArgs = module_monitor.MicrosoftCommonAzureAppPushReceiver.new;
   final MicrosoftCommonEmailReceiver = module_monitor.MicrosoftCommonEmailReceiver.new;
   final MicrosoftCommonEmailReceiverArgs = module_monitor.MicrosoftCommonEmailReceiver.new;
-  final MicrosoftCommonIdentity = module_monitor.MicrosoftCommonIdentity.new;
-  final MicrosoftCommonIdentityArgs = module_monitor.MicrosoftCommonIdentity.new;
   final MicrosoftCommonRetentionPolicy = module_monitor.MicrosoftCommonRetentionPolicy.new;
   final MicrosoftCommonRetentionPolicyArgs = module_monitor.MicrosoftCommonRetentionPolicy.new;
   final MicrosoftCommonSmsReceiver = module_monitor.MicrosoftCommonSmsReceiver.new;
@@ -41488,6 +41492,7 @@ class _MonitorModuleNamespace {
   final SignalSourceResponseArgs = module_monitor.SignalSourceResponse.new;
   final Sli = module_monitor.Sli.new;
   final SliArgs = module_monitor.SliArgs.new;
+  final SliConditionOperator = module_monitor.SliConditionOperator.values;
   final SliProperties = module_monitor.SliProperties.new;
   final SliPropertiesArgs = module_monitor.SliProperties.new;
   final SliPropertiesResponse = module_monitor.SliPropertiesResponse.new;

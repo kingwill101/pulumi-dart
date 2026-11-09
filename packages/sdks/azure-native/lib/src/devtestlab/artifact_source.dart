@@ -78,7 +78,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -86,7 +86,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_devtestlab_artifactsource" "artifactSource" {
+/// resource "azure-native_devtestlab_artifact_source" "artifactSource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   arm_template_folder_path = "{armTemplateFolderPath}"
 ///   branch_ref               = "{branchRef}"
 ///   display_name             = "{displayName}"

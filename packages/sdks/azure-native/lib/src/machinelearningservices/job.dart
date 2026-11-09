@@ -139,17 +139,17 @@ import 'system_data_response.dart';
 /// 					"string": pulumi.String("string"),
 /// 				},
 /// 				ExperimentName: pulumi.String("string"),
-/// 				Identity: machinelearningservices.AmlToken{
-/// 					IdentityType: "AMLToken",
+/// 				Identity: &machinelearningservices.AmlTokenArgs{
+/// 					IdentityType: pulumi.String("AMLToken"),
 /// 				},
 /// 				IsArchived: pulumi.Bool(false),
 /// 				JobType:    pulumi.String("AutoML"),
 /// 				Outputs: pulumi.Map{
-/// 					"string": machinelearningservices.UriFileJobOutput{
-/// 						Description:   "string",
-/// 						JobOutputType: "uri_file",
-/// 						Mode:          machinelearningservices.OutputDeliveryModeReadWriteMount,
-/// 						Uri:           "string",
+/// 					"string": machinelearningservices.UriFileJobOutputArgs{
+/// 						Description:   pulumi.String("string"),
+/// 						JobOutputType: pulumi.String("uri_file"),
+/// 						Mode:          pulumi.String(machinelearningservices.OutputDeliveryModeReadWriteMount),
+/// 						Uri:           pulumi.String("string"),
 /// 					},
 /// 				},
 /// 				Properties: pulumi.StringMap{
@@ -177,23 +177,23 @@ import 'system_data_response.dart';
 /// 				Tags: pulumi.StringMap{
 /// 					"string": pulumi.String("string"),
 /// 				},
-/// 				TaskDetails: machinelearningservices.ImageClassification{
-/// 					LimitSettings: machinelearningservices.ImageLimitSettings{
-/// 						MaxTrials: 2,
+/// 				TaskDetails: &machinelearningservices.ImageClassificationArgs{
+/// 					LimitSettings: &machinelearningservices.ImageLimitSettingsArgs{
+/// 						MaxTrials: pulumi.Int(2),
 /// 					},
-/// 					ModelSettings: machinelearningservices.ImageModelSettingsClassification{
-/// 						ValidationCropSize: 2,
+/// 					ModelSettings: &machinelearningservices.ImageModelSettingsClassificationArgs{
+/// 						ValidationCropSize: pulumi.Int(2),
 /// 					},
-/// 					SearchSpace: []machinelearningservices.ImageModelDistributionSettingsClassification{
-/// 						{
-/// 							ValidationCropSize: "choice(2, 360)",
+/// 					SearchSpace: machinelearningservices.ImageModelDistributionSettingsClassificationArray{
+/// 						&machinelearningservices.ImageModelDistributionSettingsClassificationArgs{
+/// 							ValidationCropSize: pulumi.String("choice(2, 360)"),
 /// 						},
 /// 					},
-/// 					TargetColumnName: "string",
-/// 					TaskType:         "ImageClassification",
-/// 					TrainingData: machinelearningservices.MLTableJobInput{
-/// 						JobInputType: "mltable",
-/// 						Uri:          "string",
+/// 					TargetColumnName: pulumi.String("string"),
+/// 					TaskType:         pulumi.String("ImageClassification"),
+/// 					TrainingData: &machinelearningservices.MLTableJobInputArgs{
+/// 						JobInputType: pulumi.String("mltable"),
+/// 						Uri:          pulumi.String("string"),
 /// 					},
 /// 				},
 /// 			},
@@ -210,7 +210,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -219,69 +219,72 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_machinelearningservices_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   id = "string"
 ///   properties = {
-///     "computeId"     = "string"
-///     "description"   = "string"
-///     "displayName"   = "string"
-///     "environmentId" = "string"
-///     "environmentVariables" = {
+///     compute_id     = "string"
+///     description    = "string"
+///     display_name   = "string"
+///     environment_id = "string"
+///     environment_variables = {
 ///       "string" = "string"
 ///     }
-///     "experimentName" = "string"
-///     "identity" = {
-///       "identityType" = "AMLToken"
+///     experiment_name = "string"
+///     identity = {
+///       identity_type = "AMLToken"
 ///     }
-///     "isArchived" = false
-///     "jobType"    = "AutoML"
-///     "outputs" = {
+///     is_archived = false
+///     job_type    = "AutoML"
+///     outputs = {
 ///       "string" = {
-///         "description"   = "string"
-///         "jobOutputType" = "uri_file"
-///         "mode"          = "ReadWriteMount"
-///         "uri"           = "string"
+///         description     = "string"
+///         job_output_type = "uri_file"
+///         mode            = "ReadWriteMount"
+///         uri             = "string"
 ///       }
 ///     }
-///     "properties" = {
+///     properties = {
 ///       "string" = "string"
 ///     }
-///     "resources" = {
-///       "instanceCount" = 1
-///       "instanceType"  = "string"
-///       "properties" = {
+///     resources = {
+///       instance_count = 1
+///       instance_type  = "string"
+///       properties = {
 ///         "string" = {
 ///           "9bec0ab0-c62f-4fa9-a97c-7b24bbcc90ad" = null
 ///         }
 ///       }
 ///     }
-///     "services" = {
+///     services = {
 ///       "string" = {
-///         "endpoint"       = "string"
-///         "jobServiceType" = "string"
-///         "port"           = 1
-///         "properties" = {
+///         endpoint         = "string"
+///         job_service_type = "string"
+///         port             = 1
+///         properties = {
 ///           "string" = "string"
 ///         }
 ///       }
 ///     }
-///     "tags" = {
+///     tags = {
 ///       "string" = "string"
 ///     }
-///     "taskDetails" = {
-///       "limitSettings" = {
-///         "maxTrials" = 2
+///     task_details = {
+///       limit_settings = {
+///         max_trials = 2
 ///       }
-///       "modelSettings" = {
-///         "validationCropSize" = 2
+///       model_settings = {
+///         validation_crop_size = 2
 ///       }
-///       "searchSpace" = [{
-///         "validationCropSize" = "choice(2, 360)"
+///       search_space = [{
+///         validation_crop_size = "choice(2, 360)"
 ///       }]
-///       "targetColumnName" = "string"
-///       "taskType"         = "ImageClassification"
-///       "trainingData" = {
-///         "jobInputType" = "mltable"
-///         "uri"          = "string"
+///       target_column_name = "string"
+///       task_type          = "ImageClassification"
+///       training_data = {
+///         job_input_type = "mltable"
+///         uri            = "string"
 ///       }
 ///     }
 ///   }
@@ -299,6 +302,41 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Job;
 /// import com.pulumi.azurenative.machinelearningservices.JobArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AutoMLJobArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AmlTokenArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ManagedIdentityArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.UserIdentityArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.CustomModelJobOutputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.MLFlowModelJobOutputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.MLTableJobOutputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.TritonModelJobOutputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.UriFileJobOutputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.UriFolderJobOutputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.JobResourceConfigurationArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.JobServiceArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ClassificationArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.TableVerticalLimitSettingsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.MLTableJobInputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ForecastingArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ImageClassificationArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ImageLimitSettingsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ImageModelSettingsClassificationArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ImageModelDistributionSettingsClassificationArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ImageClassificationMultilabelArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ImageInstanceSegmentationArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ImageModelSettingsObjectDetectionArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ImageModelDistributionSettingsObjectDetectionArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ImageObjectDetectionArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.RegressionArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.TextClassificationArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.NlpVerticalLimitSettingsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.TextClassificationMultilabelArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.TextNerArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.CommandJobArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.PipelineJobArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SparkJobArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SparkResourceConfigurationArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SweepJobArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -322,13 +360,10 @@ import 'system_data_response.dart';
 ///                 .environmentVariables(Map.of("string", "string"))
 ///                 .experimentName("string")
 ///                 .identity(AmlTokenArgs.builder()
-///                     .identityType("AMLToken")
 ///                     .build())
 ///                 .isArchived(false)
-///                 .jobType("AutoML")
 ///                 .outputs(Map.of("string", UriFileJobOutputArgs.builder()
 ///                     .description("string")
-///                     .jobOutputType("uri_file")
 ///                     .mode("ReadWriteMount")
 ///                     .uri("string")
 ///                     .build()))
@@ -356,9 +391,7 @@ import 'system_data_response.dart';
 ///                         .validationCropSize("choice(2, 360)")
 ///                         .build())
 ///                     .targetColumnName("string")
-///                     .taskType("ImageClassification")
 ///                     .trainingData(MLTableJobInputArgs.builder()
-///                         .jobInputType("mltable")
 ///                         .uri("string")
 ///                         .build())
 ///                     .build())
@@ -706,24 +739,24 @@ import 'system_data_response.dart';
 /// 				ComputeId:   pulumi.String("string"),
 /// 				Description: pulumi.String("string"),
 /// 				DisplayName: pulumi.String("string"),
-/// 				Distribution: machinelearningservices.TensorFlow{
-/// 					DistributionType:     "TensorFlow",
-/// 					ParameterServerCount: 1,
-/// 					WorkerCount:          1,
+/// 				Distribution: &machinelearningservices.TensorFlowArgs{
+/// 					DistributionType:     pulumi.String("TensorFlow"),
+/// 					ParameterServerCount: pulumi.Int(1),
+/// 					WorkerCount:          pulumi.Int(1),
 /// 				},
 /// 				EnvironmentId: pulumi.String("string"),
 /// 				EnvironmentVariables: pulumi.StringMap{
 /// 					"string": pulumi.String("string"),
 /// 				},
 /// 				ExperimentName: pulumi.String("string"),
-/// 				Identity: machinelearningservices.AmlToken{
-/// 					IdentityType: "AMLToken",
+/// 				Identity: &machinelearningservices.AmlTokenArgs{
+/// 					IdentityType: pulumi.String("AMLToken"),
 /// 				},
 /// 				Inputs: pulumi.Map{
-/// 					"string": machinelearningservices.LiteralJobInput{
-/// 						Description:  "string",
-/// 						JobInputType: "literal",
-/// 						Value:        "string",
+/// 					"string": &machinelearningservices.LiteralJobInputArgs{
+/// 						Description:  pulumi.String("string"),
+/// 						JobInputType: pulumi.String("literal"),
+/// 						Value:        pulumi.String("string"),
 /// 					},
 /// 				},
 /// 				JobType: pulumi.String("Command"),
@@ -732,11 +765,11 @@ import 'system_data_response.dart';
 /// 					Timeout:       pulumi.String("PT5M"),
 /// 				},
 /// 				Outputs: pulumi.Map{
-/// 					"string": machinelearningservices.UriFileJobOutput{
-/// 						Description:   "string",
-/// 						JobOutputType: "uri_file",
-/// 						Mode:          machinelearningservices.OutputDeliveryModeReadWriteMount,
-/// 						Uri:           "string",
+/// 					"string": machinelearningservices.UriFileJobOutputArgs{
+/// 						Description:   pulumi.String("string"),
+/// 						JobOutputType: pulumi.String("uri_file"),
+/// 						Mode:          pulumi.String(machinelearningservices.OutputDeliveryModeReadWriteMount),
+/// 						Uri:           pulumi.String("string"),
 /// 					},
 /// 				},
 /// 				Properties: pulumi.StringMap{
@@ -778,7 +811,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -787,69 +820,72 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_machinelearningservices_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   id = "string"
 ///   properties = {
-///     "codeId"      = "string"
-///     "command"     = "string"
-///     "computeId"   = "string"
-///     "description" = "string"
-///     "displayName" = "string"
-///     "distribution" = {
-///       "distributionType"     = "TensorFlow"
-///       "parameterServerCount" = 1
-///       "workerCount"          = 1
+///     code_id      = "string"
+///     command      = "string"
+///     compute_id   = "string"
+///     description  = "string"
+///     display_name = "string"
+///     distribution = {
+///       distribution_type      = "TensorFlow"
+///       parameter_server_count = 1
+///       worker_count           = 1
 ///     }
-///     "environmentId" = "string"
-///     "environmentVariables" = {
+///     environment_id = "string"
+///     environment_variables = {
 ///       "string" = "string"
 ///     }
-///     "experimentName" = "string"
-///     "identity" = {
-///       "identityType" = "AMLToken"
+///     experiment_name = "string"
+///     identity = {
+///       identity_type = "AMLToken"
 ///     }
-///     "inputs" = {
+///     inputs = {
 ///       "string" = {
-///         "description"  = "string"
-///         "jobInputType" = "literal"
-///         "value"        = "string"
+///         description    = "string"
+///         job_input_type = "literal"
+///         value          = "string"
 ///       }
 ///     }
-///     "jobType" = "Command"
-///     "limits" = {
-///       "jobLimitsType" = "Command"
-///       "timeout"       = "PT5M"
+///     job_type = "Command"
+///     limits = {
+///       job_limits_type = "Command"
+///       timeout         = "PT5M"
 ///     }
-///     "outputs" = {
+///     outputs = {
 ///       "string" = {
-///         "description"   = "string"
-///         "jobOutputType" = "uri_file"
-///         "mode"          = "ReadWriteMount"
-///         "uri"           = "string"
+///         description     = "string"
+///         job_output_type = "uri_file"
+///         mode            = "ReadWriteMount"
+///         uri             = "string"
 ///       }
 ///     }
-///     "properties" = {
+///     properties = {
 ///       "string" = "string"
 ///     }
-///     "resources" = {
-///       "instanceCount" = 1
-///       "instanceType"  = "string"
-///       "properties" = {
+///     resources = {
+///       instance_count = 1
+///       instance_type  = "string"
+///       properties = {
 ///         "string" = {
 ///           "e6b6493e-7d5e-4db3-be1e-306ec641327e" = null
 ///         }
 ///       }
 ///     }
-///     "services" = {
+///     services = {
 ///       "string" = {
-///         "endpoint"       = "string"
-///         "jobServiceType" = "string"
-///         "port"           = 1
-///         "properties" = {
+///         endpoint         = "string"
+///         job_service_type = "string"
+///         port             = 1
+///         properties = {
 ///           "string" = "string"
 ///         }
 ///       }
 ///     }
-///     "tags" = {
+///     tags = {
 ///       "string" = "string"
 ///     }
 ///   }
@@ -867,6 +903,35 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Job;
 /// import com.pulumi.azurenative.machinelearningservices.JobArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AutoMLJobArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AmlTokenArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ManagedIdentityArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.UserIdentityArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.CustomModelJobOutputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.MLFlowModelJobOutputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.MLTableJobOutputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.TritonModelJobOutputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.UriFileJobOutputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.UriFolderJobOutputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.JobResourceConfigurationArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.JobServiceArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.CommandJobArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.MpiArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.PyTorchArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.TensorFlowArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.CustomModelJobInputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.LiteralJobInputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.MLFlowModelJobInputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.MLTableJobInputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.TritonModelJobInputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.UriFileJobInputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.UriFolderJobInputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.CommandJobLimitsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.PipelineJobArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SparkJobArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SparkResourceConfigurationArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SweepJobArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SweepJobLimitsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -889,7 +954,6 @@ import 'system_data_response.dart';
 ///                 .description("string")
 ///                 .displayName("string")
 ///                 .distribution(TensorFlowArgs.builder()
-///                     .distributionType("TensorFlow")
 ///                     .parameterServerCount(1)
 ///                     .workerCount(1)
 ///                     .build())
@@ -897,21 +961,16 @@ import 'system_data_response.dart';
 ///                 .environmentVariables(Map.of("string", "string"))
 ///                 .experimentName("string")
 ///                 .identity(AmlTokenArgs.builder()
-///                     .identityType("AMLToken")
 ///                     .build())
 ///                 .inputs(Map.of("string", LiteralJobInputArgs.builder()
 ///                     .description("string")
-///                     .jobInputType("literal")
 ///                     .value("string")
 ///                     .build()))
-///                 .jobType("Command")
-///                 .limits(Map.ofEntries(
-///                     Map.entry("jobLimitsType", "Command"),
-///                     Map.entry("timeout", "PT5M")
-///                 ))
+///                 .limits(CommandJobLimitsArgs.builder()
+///                     .timeout("PT5M")
+///                     .build())
 ///                 .outputs(Map.of("string", UriFileJobOutputArgs.builder()
 ///                     .description("string")
-///                     .jobOutputType("uri_file")
 ///                     .mode("ReadWriteMount")
 ///                     .uri("string")
 ///                     .build()))
@@ -1240,19 +1299,19 @@ import 'system_data_response.dart';
 /// 				DisplayName:    pulumi.String("string"),
 /// 				ExperimentName: pulumi.String("string"),
 /// 				Inputs: pulumi.Map{
-/// 					"string": machinelearningservices.LiteralJobInput{
-/// 						Description:  "string",
-/// 						JobInputType: "literal",
-/// 						Value:        "string",
+/// 					"string": &machinelearningservices.LiteralJobInputArgs{
+/// 						Description:  pulumi.String("string"),
+/// 						JobInputType: pulumi.String("literal"),
+/// 						Value:        pulumi.String("string"),
 /// 					},
 /// 				},
 /// 				JobType: pulumi.String("Pipeline"),
 /// 				Outputs: pulumi.Map{
-/// 					"string": machinelearningservices.UriFileJobOutput{
-/// 						Description:   "string",
-/// 						JobOutputType: "uri_file",
-/// 						Mode:          machinelearningservices.OutputDeliveryModeUpload,
-/// 						Uri:           "string",
+/// 					"string": machinelearningservices.UriFileJobOutputArgs{
+/// 						Description:   pulumi.String("string"),
+/// 						JobOutputType: pulumi.String("uri_file"),
+/// 						Mode:          pulumi.String(machinelearningservices.OutputDeliveryModeUpload),
+/// 						Uri:           pulumi.String("string"),
 /// 					},
 /// 				},
 /// 				Properties: pulumi.StringMap{
@@ -1286,7 +1345,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1295,43 +1354,46 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_machinelearningservices_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   id = "string"
 ///   properties = {
-///     "computeId"      = "string"
-///     "description"    = "string"
-///     "displayName"    = "string"
-///     "experimentName" = "string"
-///     "inputs" = {
+///     compute_id      = "string"
+///     description     = "string"
+///     display_name    = "string"
+///     experiment_name = "string"
+///     inputs = {
 ///       "string" = {
-///         "description"  = "string"
-///         "jobInputType" = "literal"
-///         "value"        = "string"
+///         description    = "string"
+///         job_input_type = "literal"
+///         value          = "string"
 ///       }
 ///     }
-///     "jobType" = "Pipeline"
-///     "outputs" = {
+///     job_type = "Pipeline"
+///     outputs = {
 ///       "string" = {
-///         "description"   = "string"
-///         "jobOutputType" = "uri_file"
-///         "mode"          = "Upload"
-///         "uri"           = "string"
+///         description     = "string"
+///         job_output_type = "uri_file"
+///         mode            = "Upload"
+///         uri             = "string"
 ///       }
 ///     }
-///     "properties" = {
+///     properties = {
 ///       "string" = "string"
 ///     }
-///     "services" = {
+///     services = {
 ///       "string" = {
-///         "endpoint"       = "string"
-///         "jobServiceType" = "string"
-///         "port"           = 1
-///         "properties" = {
+///         endpoint         = "string"
+///         job_service_type = "string"
+///         port             = 1
+///         properties = {
 ///           "string" = "string"
 ///         }
 ///       }
 ///     }
-///     "settings" = {}
-///     "tags" = {
+///     settings = {}
+///     tags = {
 ///       "string" = "string"
 ///     }
 ///   }
@@ -1349,6 +1411,25 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Job;
 /// import com.pulumi.azurenative.machinelearningservices.JobArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AutoMLJobArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.CustomModelJobOutputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.MLFlowModelJobOutputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.MLTableJobOutputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.TritonModelJobOutputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.UriFileJobOutputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.UriFolderJobOutputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.JobServiceArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.CommandJobArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.CustomModelJobInputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.LiteralJobInputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.MLFlowModelJobInputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.MLTableJobInputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.TritonModelJobInputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.UriFileJobInputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.UriFolderJobInputArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.PipelineJobArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SparkJobArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SweepJobArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1371,13 +1452,10 @@ import 'system_data_response.dart';
 ///                 .experimentName("string")
 ///                 .inputs(Map.of("string", LiteralJobInputArgs.builder()
 ///                     .description("string")
-///                     .jobInputType("literal")
 ///                     .value("string")
 ///                     .build()))
-///                 .jobType("Pipeline")
 ///                 .outputs(Map.of("string", UriFileJobOutputArgs.builder()
 ///                     .description("string")
-///                     .jobOutputType("uri_file")
 ///                     .mode("Upload")
 ///                     .uri("string")
 ///                     .build()))
@@ -1665,10 +1743,10 @@ import 'system_data_response.dart';
 /// 				ComputeId:   pulumi.String("string"),
 /// 				Description: pulumi.String("string"),
 /// 				DisplayName: pulumi.String("string"),
-/// 				EarlyTermination: machinelearningservices.MedianStoppingPolicy{
-/// 					DelayEvaluation:    1,
-/// 					EvaluationInterval: 1,
-/// 					PolicyType:         "MedianStopping",
+/// 				EarlyTermination: &machinelearningservices.MedianStoppingPolicyArgs{
+/// 					DelayEvaluation:    pulumi.Int(1),
+/// 					EvaluationInterval: pulumi.Int(1),
+/// 					PolicyType:         pulumi.String("MedianStopping"),
 /// 				},
 /// 				ExperimentName: pulumi.String("string"),
 /// 				JobType:        pulumi.String("Sweep"),
@@ -1685,8 +1763,8 @@ import 'system_data_response.dart';
 /// 				Properties: pulumi.StringMap{
 /// 					"string": pulumi.String("string"),
 /// 				},
-/// 				SamplingAlgorithm: machinelearningservices.GridSamplingAlgorithm{
-/// 					SamplingAlgorithmType: "Grid",
+/// 				SamplingAlgorithm: &machinelearningservices.GridSamplingAlgorithmArgs{
+/// 					SamplingAlgorithmType: pulumi.String("Grid"),
 /// 				},
 /// 				SearchSpace: pulumi.Any(map[string]interface{}{
 /// 					"string": map[string]interface{}{},
@@ -1707,9 +1785,9 @@ import 'system_data_response.dart';
 /// 				Trial: &machinelearningservices.TrialComponentArgs{
 /// 					CodeId:  pulumi.String("string"),
 /// 					Command: pulumi.String("string"),
-/// 					Distribution: machinelearningservices.Mpi{
-/// 						DistributionType:        "Mpi",
-/// 						ProcessCountPerInstance: 1,
+/// 					Distribution: &machinelearningservices.MpiArgs{
+/// 						DistributionType:        pulumi.String("Mpi"),
+/// 						ProcessCountPerInstance: pulumi.Int(1),
 /// 					},
 /// 					EnvironmentId: pulumi.String("string"),
 /// 					EnvironmentVariables: pulumi.StringMap{
@@ -1739,7 +1817,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1748,65 +1826,68 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_machinelearningservices_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   id = "string"
 ///   properties = {
-///     "computeId"   = "string"
-///     "description" = "string"
-///     "displayName" = "string"
-///     "earlyTermination" = {
-///       "delayEvaluation"    = 1
-///       "evaluationInterval" = 1
-///       "policyType"         = "MedianStopping"
+///     compute_id   = "string"
+///     description  = "string"
+///     display_name = "string"
+///     early_termination = {
+///       delay_evaluation    = 1
+///       evaluation_interval = 1
+///       policy_type         = "MedianStopping"
 ///     }
-///     "experimentName" = "string"
-///     "jobType"        = "Sweep"
-///     "limits" = {
-///       "jobLimitsType"       = "Sweep"
-///       "maxConcurrentTrials" = 1
-///       "maxTotalTrials"      = 1
-///       "trialTimeout"        = "PT1S"
+///     experiment_name = "string"
+///     job_type        = "Sweep"
+///     limits = {
+///       job_limits_type       = "Sweep"
+///       max_concurrent_trials = 1
+///       max_total_trials      = 1
+///       trial_timeout         = "PT1S"
 ///     }
-///     "objective" = {
-///       "goal"          = "Minimize"
-///       "primaryMetric" = "string"
+///     objective = {
+///       goal           = "Minimize"
+///       primary_metric = "string"
 ///     }
-///     "properties" = {
+///     properties = {
 ///       "string" = "string"
 ///     }
-///     "samplingAlgorithm" = {
-///       "samplingAlgorithmType" = "Grid"
+///     sampling_algorithm = {
+///       sampling_algorithm_type = "Grid"
 ///     }
-///     "searchSpace" = {
+///     search_space = {
 ///       "string" = {}
 ///     }
-///     "services" = {
+///     services = {
 ///       "string" = {
-///         "endpoint"       = "string"
-///         "jobServiceType" = "string"
-///         "port"           = 1
-///         "properties" = {
+///         endpoint         = "string"
+///         job_service_type = "string"
+///         port             = 1
+///         properties = {
 ///           "string" = "string"
 ///         }
 ///       }
 ///     }
-///     "tags" = {
+///     tags = {
 ///       "string" = "string"
 ///     }
-///     "trial" = {
-///       "codeId"  = "string"
-///       "command" = "string"
-///       "distribution" = {
-///         "distributionType"        = "Mpi"
-///         "processCountPerInstance" = 1
+///     trial = {
+///       code_id = "string"
+///       command = "string"
+///       distribution = {
+///         distribution_type          = "Mpi"
+///         process_count_per_instance = 1
 ///       }
-///       "environmentId" = "string"
-///       "environmentVariables" = {
+///       environment_id = "string"
+///       environment_variables = {
 ///         "string" = "string"
 ///       }
-///       "resources" = {
-///         "instanceCount" = 1
-///         "instanceType"  = "string"
-///         "properties" = {
+///       resources = {
+///         instance_count = 1
+///         instance_type  = "string"
+///         properties = {
 ///           "string" = {
 ///             "e6b6493e-7d5e-4db3-be1e-306ec641327e" = null
 ///           }
@@ -1828,6 +1909,26 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Job;
 /// import com.pulumi.azurenative.machinelearningservices.JobArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AutoMLJobArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.JobServiceArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.CommandJobArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.CommandJobLimitsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.PipelineJobArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SparkJobArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SweepJobArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.BanditPolicyArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.MedianStoppingPolicyArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.TruncationSelectionPolicyArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SweepJobLimitsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ObjectiveArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.BayesianSamplingAlgorithmArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.GridSamplingAlgorithmArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.RandomSamplingAlgorithmArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.TrialComponentArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.MpiArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.PyTorchArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.TensorFlowArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.JobResourceConfigurationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1850,23 +1951,19 @@ import 'system_data_response.dart';
 ///                 .earlyTermination(MedianStoppingPolicyArgs.builder()
 ///                     .delayEvaluation(1)
 ///                     .evaluationInterval(1)
-///                     .policyType("MedianStopping")
 ///                     .build())
 ///                 .experimentName("string")
-///                 .jobType("Sweep")
-///                 .limits(Map.ofEntries(
-///                     Map.entry("jobLimitsType", "Sweep"),
-///                     Map.entry("maxConcurrentTrials", 1),
-///                     Map.entry("maxTotalTrials", 1),
-///                     Map.entry("trialTimeout", "PT1S")
-///                 ))
+///                 .limits(SweepJobLimitsArgs.builder()
+///                     .maxConcurrentTrials(1)
+///                     .maxTotalTrials(1)
+///                     .trialTimeout("PT1S")
+///                     .build())
 ///                 .objective(ObjectiveArgs.builder()
 ///                     .goal("Minimize")
 ///                     .primaryMetric("string")
 ///                     .build())
 ///                 .properties(Map.of("string", "string"))
 ///                 .samplingAlgorithm(GridSamplingAlgorithmArgs.builder()
-///                     .samplingAlgorithmType("Grid")
 ///                     .build())
 ///                 .searchSpace(Map.of("string", Map.ofEntries(
 ///                 )))
@@ -1881,7 +1978,6 @@ import 'system_data_response.dart';
 ///                     .codeId("string")
 ///                     .command("string")
 ///                     .distribution(MpiArgs.builder()
-///                         .distributionType("Mpi")
 ///                         .processCountPerInstance(1)
 ///                         .build())
 ///                     .environmentId("string")

@@ -38,7 +38,7 @@ import 'target_selector_properties_response.dart';
 ///         ResourceGroupName = "rgopenapi",
 ///         Scope = "rkargnjeljnivwjly",
 ///         Solution = "p",
-///         Tags = null,
+///         Tags = new() { },
 ///         Target = new AzureNative.IoTOperationsOrchestrator.Inputs.TargetSelectorPropertiesArgs
 ///         {
 ///             Name = "mqxcv",
@@ -91,7 +91,7 @@ import 'target_selector_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -100,6 +100,9 @@ import 'target_selector_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_iotoperationsorchestrator_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "bjjhfqsplgzdlbdlddleetyg"
 ///     type = "sosibrbmmrfbbyp"

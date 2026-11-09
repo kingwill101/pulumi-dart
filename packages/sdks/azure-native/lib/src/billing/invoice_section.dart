@@ -72,7 +72,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_billing_invoicesection" "invoiceSection" {
+/// resource "azure-native_billing_invoice_section" "invoiceSection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   billing_account_name = "00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_2019-05-31"
 ///   billing_profile_name = "xxxx-xxxx-xxx-xxx"
 ///   invoice_section_name = "invoice-section-1"

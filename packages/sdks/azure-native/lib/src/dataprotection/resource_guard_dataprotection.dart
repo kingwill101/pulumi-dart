@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dataprotection_resourceguard" "resourceGuard" {
+/// resource "azure-native_dataprotection_resource_guard" "resourceGuard" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "WestUS"
 ///   resource_group_name  = "SampleResourceGroup"
 ///   resource_guards_name = "swaggerExample"

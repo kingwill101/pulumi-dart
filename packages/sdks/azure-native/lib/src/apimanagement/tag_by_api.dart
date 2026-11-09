@@ -58,7 +58,7 @@ import 'tag_by_api_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'tag_by_api_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_tagbyapi" "tagByApi" {
+/// resource "azure-native_apimanagement_tag_by_api" "tagByApi" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "5931a75ae4bbd512a88c680b"
 ///   resource_group_name = "rg1"
 ///   service_name        = "apimService1"

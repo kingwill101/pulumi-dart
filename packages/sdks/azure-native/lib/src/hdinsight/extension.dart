@@ -60,7 +60,7 @@ import 'extension_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,6 +69,9 @@ import 'extension_args.dart';
 /// }
 ///
 /// resource "azure-native_hdinsight_extension" "extension" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name        = "cluster1"
 ///   extension_name      = "clustermonitoring"
 ///   primary_key         = "**********"

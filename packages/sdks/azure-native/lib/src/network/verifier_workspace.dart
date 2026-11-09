@@ -67,7 +67,7 @@ import 'verifier_workspace_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'verifier_workspace_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_verifierworkspace" "verifierWorkspace" {
+/// resource "azure-native_network_verifier_workspace" "verifierWorkspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "eastus"
 ///   network_manager_name = "testNetworkManager"
 ///   properties = {

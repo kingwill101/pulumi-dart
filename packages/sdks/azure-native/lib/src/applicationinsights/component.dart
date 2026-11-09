@@ -67,7 +67,7 @@ import 'private_link_scoped_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,6 +76,9 @@ import 'private_link_scoped_resource_response.dart';
 /// }
 ///
 /// resource "azure-native_applicationinsights_component" "component" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_type      = "web"
 ///   flow_type             = "Bluefield"
 ///   kind                  = "web"
@@ -233,7 +236,7 @@ import 'private_link_scoped_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -242,6 +245,9 @@ import 'private_link_scoped_resource_response.dart';
 /// }
 ///
 /// resource "azure-native_applicationinsights_component" "component" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   kind                = "web"
 ///   location            = "South Central US"
 ///   resource_group_name = "my-resource-group"

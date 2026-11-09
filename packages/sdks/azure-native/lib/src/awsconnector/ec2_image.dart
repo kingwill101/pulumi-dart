@@ -286,7 +286,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -294,7 +294,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_ec2image" "ec2Image" {
+/// resource "azure-native_awsconnector_ec2_image" "ec2Image" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "rskzngterhbdzpdgzthkwkfsim"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -305,22 +308,22 @@ import 'system_data_response.dart';
 ///         value = "arm64"
 ///       }
 ///       block_device_mappings = [{
-///         "deviceName" = "foqeiqkjrwirhz"
-///         "ebs" = {
-///           "deleteOnTermination" = true
-///           "encrypted"           = true
-///           "iops"                = 6
-///           "kmsKeyId"            = "ilegn"
-///           "outpostArn"          = "yzyqckzzbmbeimvwrvckybpdil"
-///           "snapshotId"          = "yjsctqicabclgsmtr"
-///           "throughput"          = 29
-///           "volumeSize"          = 15
-///           "volumeType" = {
-///             "value" = "gp2"
+///         device_name = "foqeiqkjrwirhz"
+///         ebs = {
+///           delete_on_termination = true
+///           encrypted             = true
+///           iops                  = 6
+///           kms_key_id            = "ilegn"
+///           outpost_arn           = "yzyqckzzbmbeimvwrvckybpdil"
+///           snapshot_id           = "yjsctqicabclgsmtr"
+///           throughput            = 29
+///           volume_size           = 15
+///           volume_type = {
+///             value = "gp2"
 ///           }
 ///         }
-///         "noDevice"    = "rs"
-///         "virtualName" = "lgrpmrjfdvrwmfghttgcdgqsfum"
+///         no_device    = "rs"
+///         virtual_name = "lgrpmrjfdvrwmfghttgcdgqsfum"
 ///       }]
 ///       boot_mode = {
 ///         value = "legacy-bios"
@@ -351,9 +354,9 @@ import 'system_data_response.dart';
 ///       }
 ///       platform_details = "lisborjwdvhfnwsziqhfnxiqdmdynp"
 ///       product_codes = [{
-///         "productCodeId" = "gkdidapdrunawxoaa"
-///         "productCodeType" = {
-///           "value" = "devpay"
+///         product_code_id = "gkdidapdrunawxoaa"
+///         product_code_type = {
+///           value = "devpay"
 ///         }
 ///       }]
 ///       public           = true
@@ -372,8 +375,8 @@ import 'system_data_response.dart';
 ///         message = "qgjrouiqrxyqi"
 ///       }
 ///       tags = [{
-///         "key"   = "mcszeusqtxavdhmwinblzyofkns"
-///         "value" = "ehismpwetbakkwkjtngdrofhipjlko"
+///         key   = "mcszeusqtxavdhmwinblzyofkns"
+///         value = "ehismpwetbakkwkjtngdrofhipjlko"
 ///       }]
 ///       tpm_support = {
 ///         value = "v2.0"
@@ -410,14 +413,20 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.Ec2ImagePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEc2ImagePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ArchitectureValuesEnumValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.BlockDeviceMappingArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.EbsBlockDeviceArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.VolumeTypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.BootModeValuesEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.HypervisorTypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ImageTypeValuesEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ImdsSupportValuesEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.PlatformValuesEnumValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ProductCodeArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ProductCodeValuesEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.DeviceTypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ImageStateEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.StateReasonArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.TpmSupportValuesEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.VirtualizationTypeEnumValueArgs;
 /// import java.util.ArrayList;

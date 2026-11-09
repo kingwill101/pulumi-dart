@@ -46,7 +46,7 @@ import 'system_data_response.dart';
 ///             },
 ///         },
 ///         ResourceGroupName = "alertscorrelationrg",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -69,11 +69,11 @@ import 'system_data_response.dart';
 /// 			Location:                pulumi.String("Global"),
 /// 			Properties: &alertsmanagement.AlertProcessingRulePropertiesArgs{
 /// 				Actions: pulumi.Array{
-/// 					alertsmanagement.AddActionGroups{
-/// 						ActionGroupIds: []string{
-/// 							"/subscriptions/subId1/resourcegroups/RGId1/providers/microsoft.insights/actiongroups/ActionGroup1",
+/// 					&alertsmanagement.AddActionGroupsArgs{
+/// 						ActionGroupIds: pulumi.StringArray{
+/// 							pulumi.String("/subscriptions/subId1/resourcegroups/RGId1/providers/microsoft.insights/actiongroups/ActionGroup1"),
 /// 						},
-/// 						ActionType: "AddActionGroups",
+/// 						ActionType: pulumi.String("AddActionGroups"),
 /// 					},
 /// 				},
 /// 				Description: pulumi.String("Add ActionGroup1 to all alerts in the subscription"),
@@ -95,7 +95,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -103,13 +103,16 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_alertsmanagement_alertprocessingrulebyname" "alertProcessingRuleByName" {
+/// resource "azure-native_alertsmanagement_alert_processing_rule_by_name" "alertProcessingRuleByName" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alert_processing_rule_name = "AddActionGroupToSubscription"
 ///   location                   = "Global"
 ///   properties = {
 ///     actions = [{
-///       "actionGroupIds" = ["/subscriptions/subId1/resourcegroups/RGId1/providers/microsoft.insights/actiongroups/ActionGroup1"]
-///       "actionType"     = "AddActionGroups"
+///       action_group_ids = ["/subscriptions/subId1/resourcegroups/RGId1/providers/microsoft.insights/actiongroups/ActionGroup1"]
+///       action_type      = "AddActionGroups"
 ///     }]
 ///     description = "Add ActionGroup1 to all alerts in the subscription"
 ///     enabled     = true
@@ -130,6 +133,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.alertsmanagement.AlertProcessingRuleByName;
 /// import com.pulumi.azurenative.alertsmanagement.AlertProcessingRuleByNameArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.AlertProcessingRulePropertiesArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.AddActionGroupsArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.RemoveAllActionGroupsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -149,7 +154,6 @@ import 'system_data_response.dart';
 ///             .properties(AlertProcessingRulePropertiesArgs.builder()
 ///                 .actions(AddActionGroupsArgs.builder()
 ///                     .actionGroupIds("/subscriptions/subId1/resourcegroups/RGId1/providers/microsoft.insights/actiongroups/ActionGroup1")
-///                     .actionType("AddActionGroups")
 ///                     .build())
 ///                 .description("Add ActionGroup1 to all alerts in the subscription")
 ///                 .enabled(true)
@@ -280,7 +284,7 @@ import 'system_data_response.dart';
 ///             },
 ///         },
 ///         ResourceGroupName = "alertscorrelationrg",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -303,12 +307,12 @@ import 'system_data_response.dart';
 /// 			Location:                pulumi.String("Global"),
 /// 			Properties: &alertsmanagement.AlertProcessingRulePropertiesArgs{
 /// 				Actions: pulumi.Array{
-/// 					alertsmanagement.AddActionGroups{
-/// 						ActionGroupIds: []string{
-/// 							"/subscriptions/subId1/resourcegroups/RGId1/providers/microsoft.insights/actiongroups/AGId1",
-/// 							"/subscriptions/subId1/resourcegroups/RGId1/providers/microsoft.insights/actiongroups/AGId2",
+/// 					&alertsmanagement.AddActionGroupsArgs{
+/// 						ActionGroupIds: pulumi.StringArray{
+/// 							pulumi.String("/subscriptions/subId1/resourcegroups/RGId1/providers/microsoft.insights/actiongroups/AGId1"),
+/// 							pulumi.String("/subscriptions/subId1/resourcegroups/RGId1/providers/microsoft.insights/actiongroups/AGId2"),
 /// 						},
-/// 						ActionType: "AddActionGroups",
+/// 						ActionType: pulumi.String("AddActionGroups"),
 /// 					},
 /// 				},
 /// 				Conditions: alertsmanagement.ConditionArray{
@@ -341,7 +345,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -349,18 +353,21 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_alertsmanagement_alertprocessingrulebyname" "alertProcessingRuleByName" {
+/// resource "azure-native_alertsmanagement_alert_processing_rule_by_name" "alertProcessingRuleByName" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alert_processing_rule_name = "AddActionGroupsBySeverity"
 ///   location                   = "Global"
 ///   properties = {
 ///     actions = [{
-///       "actionGroupIds" = ["/subscriptions/subId1/resourcegroups/RGId1/providers/microsoft.insights/actiongroups/AGId1", "/subscriptions/subId1/resourcegroups/RGId1/providers/microsoft.insights/actiongroups/AGId2"]
-///       "actionType"     = "AddActionGroups"
+///       action_group_ids = ["/subscriptions/subId1/resourcegroups/RGId1/providers/microsoft.insights/actiongroups/AGId1", "/subscriptions/subId1/resourcegroups/RGId1/providers/microsoft.insights/actiongroups/AGId2"]
+///       action_type      = "AddActionGroups"
 ///     }]
 ///     conditions = [{
-///       "field"    = "Severity"
-///       "operator" = "Equals"
-///       "values"   = ["sev0", "sev1"]
+///       field    = "Severity"
+///       operator = "Equals"
+///       values   = ["sev0", "sev1"]
 ///     }]
 ///     description = "Add AGId1 and AGId2 to all Sev0 and Sev1 alerts in these resourceGroups"
 ///     enabled     = true
@@ -381,6 +388,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.alertsmanagement.AlertProcessingRuleByName;
 /// import com.pulumi.azurenative.alertsmanagement.AlertProcessingRuleByNameArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.AlertProcessingRulePropertiesArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.AddActionGroupsArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.RemoveAllActionGroupsArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.ConditionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -402,7 +412,6 @@ import 'system_data_response.dart';
 ///                     .actionGroupIds(
 ///                         "/subscriptions/subId1/resourcegroups/RGId1/providers/microsoft.insights/actiongroups/AGId1",
 ///                         "/subscriptions/subId1/resourcegroups/RGId1/providers/microsoft.insights/actiongroups/AGId2")
-///                     .actionType("AddActionGroups")
 ///                     .build())
 ///                 .conditions(ConditionArgs.builder()
 ///                     .field("Severity")
@@ -565,7 +574,7 @@ import 'system_data_response.dart';
 ///             },
 ///         },
 ///         ResourceGroupName = "alertscorrelationrg",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -588,8 +597,8 @@ import 'system_data_response.dart';
 /// 			Location:                pulumi.String("Global"),
 /// 			Properties: &alertsmanagement.AlertProcessingRulePropertiesArgs{
 /// 				Actions: pulumi.Array{
-/// 					alertsmanagement.RemoveAllActionGroups{
-/// 						ActionType: "RemoveAllActionGroups",
+/// 					&alertsmanagement.RemoveAllActionGroupsArgs{
+/// 						ActionType: pulumi.String("RemoveAllActionGroups"),
 /// 					},
 /// 				},
 /// 				Description: pulumi.String("Removes all ActionGroups from all Alerts on VMName during the maintenance window"),
@@ -616,7 +625,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -624,12 +633,15 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_alertsmanagement_alertprocessingrulebyname" "alertProcessingRuleByName" {
+/// resource "azure-native_alertsmanagement_alert_processing_rule_by_name" "alertProcessingRuleByName" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alert_processing_rule_name = "RemoveActionGroupsMaintenanceWindow"
 ///   location                   = "Global"
 ///   properties = {
 ///     actions = [{
-///       "actionType" = "RemoveAllActionGroups"
+///       action_type = "RemoveAllActionGroups"
 ///     }]
 ///     description = "Removes all ActionGroups from all Alerts on VMName during the maintenance window"
 ///     enabled     = true
@@ -655,6 +667,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.alertsmanagement.AlertProcessingRuleByName;
 /// import com.pulumi.azurenative.alertsmanagement.AlertProcessingRuleByNameArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.AlertProcessingRulePropertiesArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.AddActionGroupsArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.RemoveAllActionGroupsArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.ScheduleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -674,7 +688,6 @@ import 'system_data_response.dart';
 ///             .location("Global")
 ///             .properties(AlertProcessingRulePropertiesArgs.builder()
 ///                 .actions(RemoveAllActionGroupsArgs.builder()
-///                     .actionType("RemoveAllActionGroups")
 ///                     .build())
 ///                 .description("Removes all ActionGroups from all Alerts on VMName during the maintenance window")
 ///                 .enabled(true)
@@ -813,7 +826,7 @@ import 'system_data_response.dart';
 ///             },
 ///         },
 ///         ResourceGroupName = "alertscorrelationrg",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -836,8 +849,8 @@ import 'system_data_response.dart';
 /// 			Location:                pulumi.String("Global"),
 /// 			Properties: &alertsmanagement.AlertProcessingRulePropertiesArgs{
 /// 				Actions: pulumi.Array{
-/// 					alertsmanagement.RemoveAllActionGroups{
-/// 						ActionType: "RemoveAllActionGroups",
+/// 					&alertsmanagement.RemoveAllActionGroupsArgs{
+/// 						ActionType: pulumi.String("RemoveAllActionGroups"),
 /// 					},
 /// 				},
 /// 				Conditions: alertsmanagement.ConditionArray{
@@ -868,7 +881,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -876,17 +889,20 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_alertsmanagement_alertprocessingrulebyname" "alertProcessingRuleByName" {
+/// resource "azure-native_alertsmanagement_alert_processing_rule_by_name" "alertProcessingRuleByName" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alert_processing_rule_name = "RemoveActionGroupsSpecificAlertRule"
 ///   location                   = "Global"
 ///   properties = {
 ///     actions = [{
-///       "actionType" = "RemoveAllActionGroups"
+///       action_type = "RemoveAllActionGroups"
 ///     }]
 ///     conditions = [{
-///       "field"    = "AlertRuleId"
-///       "operator" = "Equals"
-///       "values"   = ["/subscriptions/suubId1/resourceGroups/Rgid2/providers/microsoft.insights/activityLogAlerts/RuleName"]
+///       field    = "AlertRuleId"
+///       operator = "Equals"
+///       values   = ["/subscriptions/suubId1/resourceGroups/Rgid2/providers/microsoft.insights/activityLogAlerts/RuleName"]
 ///     }]
 ///     description = "Removes all ActionGroups from all Alerts that fire on above AlertRule"
 ///     enabled     = true
@@ -907,6 +923,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.alertsmanagement.AlertProcessingRuleByName;
 /// import com.pulumi.azurenative.alertsmanagement.AlertProcessingRuleByNameArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.AlertProcessingRulePropertiesArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.AddActionGroupsArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.RemoveAllActionGroupsArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.ConditionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -925,7 +944,6 @@ import 'system_data_response.dart';
 ///             .location("Global")
 ///             .properties(AlertProcessingRulePropertiesArgs.builder()
 ///                 .actions(RemoveAllActionGroupsArgs.builder()
-///                     .actionType("RemoveAllActionGroups")
 ///                     .build())
 ///                 .conditions(ConditionArgs.builder()
 ///                     .field("AlertRuleId")
@@ -1065,7 +1083,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     new AzureNative.AlertsManagement.Inputs.WeeklyRecurrenceArgs
 ///                     {
-///                         DaysOfWeek = new[]
+///                         DaysOfWeek =
 ///                         {
 ///                             AzureNative.AlertsManagement.DaysOfWeek.Saturday,
 ///                             AzureNative.AlertsManagement.DaysOfWeek.Sunday,
@@ -1084,7 +1102,7 @@ import 'system_data_response.dart';
 ///             },
 ///         },
 ///         ResourceGroupName = "alertscorrelationrg",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -1107,8 +1125,8 @@ import 'system_data_response.dart';
 /// 			Location:                pulumi.String("Global"),
 /// 			Properties: &alertsmanagement.AlertProcessingRulePropertiesArgs{
 /// 				Actions: pulumi.Array{
-/// 					alertsmanagement.RemoveAllActionGroups{
-/// 						ActionType: "RemoveAllActionGroups",
+/// 					&alertsmanagement.RemoveAllActionGroupsArgs{
+/// 						ActionType: pulumi.String("RemoveAllActionGroups"),
 /// 					},
 /// 				},
 /// 				Conditions: alertsmanagement.ConditionArray{
@@ -1124,14 +1142,14 @@ import 'system_data_response.dart';
 /// 				Enabled:     pulumi.Bool(true),
 /// 				Schedule: &alertsmanagement.ScheduleArgs{
 /// 					Recurrences: pulumi.Array{
-/// 						alertsmanagement.WeeklyRecurrence{
-/// 							DaysOfWeek: []alertsmanagement.DaysOfWeek{
-/// 								alertsmanagement.DaysOfWeekSaturday,
-/// 								alertsmanagement.DaysOfWeekSunday,
+/// 						&alertsmanagement.WeeklyRecurrenceArgs{
+/// 							DaysOfWeek: pulumi.StringArray{
+/// 								pulumi.String(alertsmanagement.DaysOfWeekSaturday),
+/// 								pulumi.String(alertsmanagement.DaysOfWeekSunday),
 /// 							},
-/// 							EndTime:        "04:00:00",
-/// 							RecurrenceType: "Weekly",
-/// 							StartTime:      "22:00:00",
+/// 							EndTime:        pulumi.String("04:00:00"),
+/// 							RecurrenceType: pulumi.String("Weekly"),
+/// 							StartTime:      pulumi.String("22:00:00"),
 /// 						},
 /// 					},
 /// 					TimeZone: pulumi.String("India Standard Time"),
@@ -1154,7 +1172,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1162,26 +1180,29 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_alertsmanagement_alertprocessingrulebyname" "alertProcessingRuleByName" {
+/// resource "azure-native_alertsmanagement_alert_processing_rule_by_name" "alertProcessingRuleByName" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alert_processing_rule_name = "RemoveActionGroupsRecurringMaintenance"
 ///   location                   = "Global"
 ///   properties = {
 ///     actions = [{
-///       "actionType" = "RemoveAllActionGroups"
+///       action_type = "RemoveAllActionGroups"
 ///     }]
 ///     conditions = [{
-///       "field"    = "TargetResourceType"
-///       "operator" = "Equals"
-///       "values"   = ["microsoft.compute/virtualmachines"]
+///       field    = "TargetResourceType"
+///       operator = "Equals"
+///       values   = ["microsoft.compute/virtualmachines"]
 ///     }]
 ///     description = "Remove all ActionGroups from all Vitual machine Alerts during the recurring maintenance"
 ///     enabled     = true
 ///     schedule = {
 ///       recurrences = [{
-///         "daysOfWeek"     = ["Saturday", "Sunday"]
-///         "endTime"        = "04:00:00"
-///         "recurrenceType" = "Weekly"
-///         "startTime"      = "22:00:00"
+///         days_of_week    = ["Saturday", "Sunday"]
+///         end_time        = "04:00:00"
+///         recurrence_type = "Weekly"
+///         start_time      = "22:00:00"
 ///       }]
 ///       time_zone = "India Standard Time"
 ///     }
@@ -1202,7 +1223,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.alertsmanagement.AlertProcessingRuleByName;
 /// import com.pulumi.azurenative.alertsmanagement.AlertProcessingRuleByNameArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.AlertProcessingRulePropertiesArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.AddActionGroupsArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.RemoveAllActionGroupsArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.ConditionArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.ScheduleArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.DailyRecurrenceArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.MonthlyRecurrenceArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.WeeklyRecurrenceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1221,7 +1248,6 @@ import 'system_data_response.dart';
 ///             .location("Global")
 ///             .properties(AlertProcessingRulePropertiesArgs.builder()
 ///                 .actions(RemoveAllActionGroupsArgs.builder()
-///                     .actionType("RemoveAllActionGroups")
 ///                     .build())
 ///                 .conditions(ConditionArgs.builder()
 ///                     .field("TargetResourceType")
@@ -1236,7 +1262,6 @@ import 'system_data_response.dart';
 ///                             "Saturday",
 ///                             "Sunday")
 ///                         .endTime("04:00:00")
-///                         .recurrenceType("Weekly")
 ///                         .startTime("22:00:00")
 ///                         .build())
 ///                     .timeZone("India Standard Time")
@@ -1408,7 +1433,7 @@ import 'system_data_response.dart';
 ///                     },
 ///                     new AzureNative.AlertsManagement.Inputs.WeeklyRecurrenceArgs
 ///                     {
-///                         DaysOfWeek = new[]
+///                         DaysOfWeek =
 ///                         {
 ///                             AzureNative.AlertsManagement.DaysOfWeek.Saturday,
 ///                             AzureNative.AlertsManagement.DaysOfWeek.Sunday,
@@ -1424,7 +1449,7 @@ import 'system_data_response.dart';
 ///             },
 ///         },
 ///         ResourceGroupName = "alertscorrelationrg",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -1447,25 +1472,25 @@ import 'system_data_response.dart';
 /// 			Location:                pulumi.String("Global"),
 /// 			Properties: &alertsmanagement.AlertProcessingRulePropertiesArgs{
 /// 				Actions: pulumi.Array{
-/// 					alertsmanagement.RemoveAllActionGroups{
-/// 						ActionType: "RemoveAllActionGroups",
+/// 					&alertsmanagement.RemoveAllActionGroupsArgs{
+/// 						ActionType: pulumi.String("RemoveAllActionGroups"),
 /// 					},
 /// 				},
 /// 				Description: pulumi.String("Remove all ActionGroups outside business hours"),
 /// 				Enabled:     pulumi.Bool(true),
 /// 				Schedule: &alertsmanagement.ScheduleArgs{
 /// 					Recurrences: pulumi.Array{
-/// 						alertsmanagement.DailyRecurrence{
-/// 							EndTime:        "09:00:00",
-/// 							RecurrenceType: "Daily",
-/// 							StartTime:      "17:00:00",
+/// 						&alertsmanagement.DailyRecurrenceArgs{
+/// 							EndTime:        pulumi.String("09:00:00"),
+/// 							RecurrenceType: pulumi.String("Daily"),
+/// 							StartTime:      pulumi.String("17:00:00"),
 /// 						},
-/// 						alertsmanagement.WeeklyRecurrence{
-/// 							DaysOfWeek: []alertsmanagement.DaysOfWeek{
-/// 								alertsmanagement.DaysOfWeekSaturday,
-/// 								alertsmanagement.DaysOfWeekSunday,
+/// 						&alertsmanagement.WeeklyRecurrenceArgs{
+/// 							DaysOfWeek: pulumi.StringArray{
+/// 								pulumi.String(alertsmanagement.DaysOfWeekSaturday),
+/// 								pulumi.String(alertsmanagement.DaysOfWeekSunday),
 /// 							},
-/// 							RecurrenceType: "Weekly",
+/// 							RecurrenceType: pulumi.String("Weekly"),
 /// 						},
 /// 					},
 /// 					TimeZone: pulumi.String("Eastern Standard Time"),
@@ -1487,7 +1512,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1495,23 +1520,26 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_alertsmanagement_alertprocessingrulebyname" "alertProcessingRuleByName" {
+/// resource "azure-native_alertsmanagement_alert_processing_rule_by_name" "alertProcessingRuleByName" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alert_processing_rule_name = "RemoveActionGroupsOutsideBusinessHours"
 ///   location                   = "Global"
 ///   properties = {
 ///     actions = [{
-///       "actionType" = "RemoveAllActionGroups"
+///       action_type = "RemoveAllActionGroups"
 ///     }]
 ///     description = "Remove all ActionGroups outside business hours"
 ///     enabled     = true
 ///     schedule = {
 ///       recurrences = [{
-///         "endTime"        = "09:00:00"
-///         "recurrenceType" = "Daily"
-///         "startTime"      = "17:00:00"
+///         end_time        = "09:00:00"
+///         recurrence_type = "Daily"
+///         start_time      = "17:00:00"
 ///         }, {
-///         "daysOfWeek"     = ["Saturday", "Sunday"]
-///         "recurrenceType" = "Weekly"
+///         days_of_week    = ["Saturday", "Sunday"]
+///         recurrence_type = "Weekly"
 ///       }]
 ///       time_zone = "Eastern Standard Time"
 ///     }
@@ -1532,7 +1560,12 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.alertsmanagement.AlertProcessingRuleByName;
 /// import com.pulumi.azurenative.alertsmanagement.AlertProcessingRuleByNameArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.AlertProcessingRulePropertiesArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.AddActionGroupsArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.RemoveAllActionGroupsArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.ScheduleArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.DailyRecurrenceArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.MonthlyRecurrenceArgs;
+/// import com.pulumi.azurenative.alertsmanagement.inputs.WeeklyRecurrenceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1551,7 +1584,6 @@ import 'system_data_response.dart';
 ///             .location("Global")
 ///             .properties(AlertProcessingRulePropertiesArgs.builder()
 ///                 .actions(RemoveAllActionGroupsArgs.builder()
-///                     .actionType("RemoveAllActionGroups")
 ///                     .build())
 ///                 .description("Remove all ActionGroups outside business hours")
 ///                 .enabled(true)
@@ -1559,14 +1591,12 @@ import 'system_data_response.dart';
 ///                     .recurrences(
 ///                         DailyRecurrenceArgs.builder()
 ///                             .endTime("09:00:00")
-///                             .recurrenceType("Daily")
 ///                             .startTime("17:00:00")
 ///                             .build(),
 ///                         WeeklyRecurrenceArgs.builder()
 ///                             .daysOfWeek(
 ///                                 "Saturday",
 ///                                 "Sunday")
-///                             .recurrenceType("Weekly")
 ///                             .build())
 ///                     .timeZone("Eastern Standard Time")
 ///                     .build())

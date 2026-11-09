@@ -60,7 +60,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_arcsetting" "arcSetting" {
+/// resource "azure-native_azurestackhci_arc_setting" "arcSetting" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   arc_setting_name    = "default"
 ///   cluster_name        = "myCluster"
 ///   resource_group_name = "test-rg"

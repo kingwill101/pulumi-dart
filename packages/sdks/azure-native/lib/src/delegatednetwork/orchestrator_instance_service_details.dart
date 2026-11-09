@@ -84,7 +84,7 @@ import 'orchestrator_instance_service_details_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -92,7 +92,10 @@ import 'orchestrator_instance_service_details_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_delegatednetwork_orchestratorinstanceservicedetails" "orchestratorInstanceServiceDetails" {
+/// resource "azure-native_delegatednetwork_orchestrator_instance_service_details" "orchestratorInstanceServiceDetails" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_server_endpoint = "https://testk8s.cloudapp.net"
 ///   cluster_root_ca     = "ddsadsad344mfdsfdl"
 ///   controller_details = {

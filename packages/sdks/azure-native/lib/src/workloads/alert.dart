@@ -129,7 +129,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -138,15 +138,18 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_workloads_alert" "alert" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alert_name = "myAlert"
 ///   alert_rule_properties = {
 ///     action_groups = ["/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.insights/actiongroups/actiongroup1", "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.insights/actiongroups/actiongroup2"]
 ///     alert_query_parameters = [{
-///       "name"  = "providerInstance"
-///       "value" = ""
+///       name  = "providerInstance"
+///       value = ""
 ///       }, {
-///       "name"  = "workType"
-///       "value" = ""
+///       name  = "workType"
+///       value = ""
 ///     }]
 ///     auto_mitigate            = "Disable"
 ///     dimension                = "cpu"
@@ -178,6 +181,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.workloads.Alert;
 /// import com.pulumi.azurenative.workloads.AlertArgs;
 /// import com.pulumi.azurenative.workloads.inputs.AlertRulePropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.AlertQueryParameterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

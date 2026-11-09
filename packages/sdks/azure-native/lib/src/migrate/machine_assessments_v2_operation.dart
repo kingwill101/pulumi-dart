@@ -33,7 +33,7 @@ import 'system_data_response.dart';
 ///             },
 ///             Settings = new AzureNative.Migrate.Inputs.MachineAssessmentSettingsArgs
 ///             {
-///                 AzureDiskTypes = new[]
+///                 AzureDiskTypes =
 ///                 {
 ///                     AzureNative.Migrate.AzureDiskType.Unknown,
 ///                 },
@@ -42,11 +42,11 @@ import 'system_data_response.dart';
 ///                 AzurePricingTier = AzureNative.Migrate.AzurePricingTier.Standard,
 ///                 AzureSecurityOfferingType = AzureNative.Migrate.AzureSecurityOfferingType.NO,
 ///                 AzureStorageRedundancy = AzureNative.Migrate.AzureStorageRedundancy.Unknown,
-///                 AzureVmFamilies = new[]
+///                 AzureVmFamilies =
 ///                 {
 ///                     AzureNative.Migrate.AzureVmFamily.Unknown,
 ///                 },
-///                 AzureVmSecurityOptions = new[]
+///                 AzureVmSecurityOptions =
 ///                 {
 ///                     AzureNative.Migrate.AzureVmSecurityType.TVM,
 ///                 },
@@ -56,7 +56,7 @@ import 'system_data_response.dart';
 ///                     SubscriptionId = "lee",
 ///                 },
 ///                 Currency = AzureNative.Migrate.AzureCurrency.Unknown,
-///                 DiscountPercentage = 5,
+///                 DiscountPercentage = 5.0,
 ///                 EnvironmentType = AzureNative.Migrate.EnvironmentType.Production,
 ///                 LinuxAzureHybridUseBenefit = AzureNative.Migrate.AzureHybridUseBenefit.Unknown,
 ///                 PerformanceData = new AzureNative.Migrate.Inputs.PerformanceDataArgs
@@ -71,12 +71,12 @@ import 'system_data_response.dart';
 ///                     AzureOfferCode = AzureNative.Migrate.AzureOffer.Unknown,
 ///                     SavingsOptions = AzureNative.Migrate.SavingsOptions.None,
 ///                 },
-///                 ScalingFactor = 9,
+///                 ScalingFactor = 9.0,
 ///                 SizingCriterion = AzureNative.Migrate.AssessmentSizingCriterion.PerformanceBased,
 ///                 VmUptime = new AzureNative.Migrate.Inputs.VmUptimeArgs
 ///                 {
-///                     DaysPerMonth = 9,
-///                     HoursPerDay = 10,
+///                     DaysPerMonth = 9.0,
+///                     HoursPerDay = 10.0,
 ///                 },
 ///             },
 ///         },
@@ -160,7 +160,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -168,7 +168,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_machineassessmentsv2operation" "machineAssessmentsV2Operation" {
+/// resource "azure-native_migrate_machine_assessments_v2_operation" "machineAssessmentsV2Operation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assessment_name = "assessmentName"
 ///   project_name    = "contosoProject"
 ///   properties = {

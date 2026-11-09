@@ -70,7 +70,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,7 +78,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_mission_dedicatedhub" "dedicatedHub" {
+/// resource "azure-native_mission_dedicated_hub" "dedicatedHub" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   community_name      = "TestCommunity"
 ///   dedicated_hub_name  = "TestDedicatedHub"
 ///   designation         = "Reserved"

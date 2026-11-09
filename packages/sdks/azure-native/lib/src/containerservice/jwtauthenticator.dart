@@ -149,7 +149,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -157,13 +157,16 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_jwtauthenticator" "jwtAuthenticator" {
+/// resource "azure-native_containerservice_j_w_t_authenticator" "jwtAuthenticator" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   jwt_authenticator_name = "jwt1"
 ///   properties = {
 ///     claim_mappings = {
 ///       extra = [{
-///         "key"             = "example.com/extrakey"
-///         "valueExpression" = "claims.customfield"
+///         key              = "example.com/extrakey"
+///         value_expression = "claims.customfield"
 ///       }]
 ///       groups = {
 ///         expression = "claims.groups.split(',').map(group, 'aks:jwt:' + group)"
@@ -173,19 +176,19 @@ import 'system_data_response.dart';
 ///       }
 ///     }
 ///     claim_validation_rules = [{
-///       "expression" = "has(claims.sub)"
-///       "message"    = "Sub is required"
+///       expression = "has(claims.sub)"
+///       message    = "Sub is required"
 ///       }, {
-///       "expression" = "claims.sub != ''"
-///       "message"    = "Sub cannot be empty"
+///       expression = "claims.sub != ''"
+///       message    = "Sub cannot be empty"
 ///     }]
 ///     issuer = {
 ///       audiences = ["https://example.com/audience1", "https://example.com/audience2"]
 ///       url       = "https://example.com"
 ///     }
 ///     user_validation_rules = [{
-///       "expression" = "user.groups.all(group, group.startsWith('aks:jwt:admin:'))"
-///       "message"    = "Must be in admin user group"
+///       expression = "user.groups.all(group, group.startsWith('aks:jwt:admin:'))"
+///       message    = "Must be in admin user group"
 ///     }]
 ///   }
 ///   resource_group_name = "rg1"
@@ -204,7 +207,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.containerservice.JWTAuthenticatorArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.JWTAuthenticatorPropertiesArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.JWTAuthenticatorClaimMappingsArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.JWTAuthenticatorExtraClaimMappingExpressionArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.JWTAuthenticatorClaimMappingExpressionArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.JWTAuthenticatorValidationRuleArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.JWTAuthenticatorIssuerArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

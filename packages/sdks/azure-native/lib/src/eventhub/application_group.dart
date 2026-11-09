@@ -27,27 +27,27 @@ import 'throttling_policy_response.dart';
 ///         ClientAppGroupIdentifier = "SASKeyName=KeyName",
 ///         IsEnabled = true,
 ///         NamespaceName = "contoso-ua-test-eh-system-1",
-///         Policies = new[]
+///         Policies =
 ///         {
 ///             new AzureNative.EventHub.Inputs.ThrottlingPolicyArgs
 ///             {
 ///                 MetricId = AzureNative.EventHub.MetricId.IncomingMessages,
 ///                 Name = "ThrottlingPolicy1",
-///                 RateLimitThreshold = 7912,
+///                 RateLimitThreshold = 7912.0,
 ///                 Type = "ThrottlingPolicy",
 ///             },
 ///             new AzureNative.EventHub.Inputs.ThrottlingPolicyArgs
 ///             {
 ///                 MetricId = AzureNative.EventHub.MetricId.IncomingBytes,
 ///                 Name = "ThrottlingPolicy2",
-///                 RateLimitThreshold = 3951729,
+///                 RateLimitThreshold = 3951729.0,
 ///                 Type = "ThrottlingPolicy",
 ///             },
 ///             new AzureNative.EventHub.Inputs.ThrottlingPolicyArgs
 ///             {
 ///                 MetricId = AzureNative.EventHub.MetricId.OutgoingBytes,
 ///                 Name = "ThrottlingPolicy3",
-///                 RateLimitThreshold = 245175,
+///                 RateLimitThreshold = 245175.0,
 ///                 Type = "ThrottlingPolicy",
 ///             },
 ///         },
@@ -106,7 +106,7 @@ import 'throttling_policy_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -114,7 +114,10 @@ import 'throttling_policy_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventhub_applicationgroup" "applicationGroup" {
+/// resource "azure-native_eventhub_application_group" "applicationGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_group_name      = "appGroup1"
 ///   client_app_group_identifier = "SASKeyName=KeyName"
 ///   is_enabled                  = true
@@ -174,19 +177,16 @@ import 'throttling_policy_response.dart';
 ///                     .metricId("IncomingMessages")
 ///                     .name("ThrottlingPolicy1")
 ///                     .rateLimitThreshold(7912.0)
-///                     .type("ThrottlingPolicy")
 ///                     .build(),
 ///                 ThrottlingPolicyArgs.builder()
 ///                     .metricId("IncomingBytes")
 ///                     .name("ThrottlingPolicy2")
 ///                     .rateLimitThreshold(3951729.0)
-///                     .type("ThrottlingPolicy")
 ///                     .build(),
 ///                 ThrottlingPolicyArgs.builder()
 ///                     .metricId("OutgoingBytes")
 ///                     .name("ThrottlingPolicy3")
 ///                     .rateLimitThreshold(245175.0)
-///                     .type("ThrottlingPolicy")
 ///                     .build())
 ///             .resourceGroupName("contosotest")
 ///             .build());

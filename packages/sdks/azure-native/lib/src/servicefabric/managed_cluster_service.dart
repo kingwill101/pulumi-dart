@@ -44,7 +44,7 @@ import 'system_data_response.dart';
 ///                 PartitionScheme = "Singleton",
 ///             },
 ///             PlacementConstraints = "NodeType==frontend",
-///             ScalingPolicies = new[]
+///             ScalingPolicies =
 ///             {
 ///                 new AzureNative.ServiceFabric.Inputs.ScalingPolicyArgs
 ///                 {
@@ -58,10 +58,10 @@ import 'system_data_response.dart';
 ///                     ScalingTrigger = new AzureNative.ServiceFabric.Inputs.AveragePartitionLoadScalingTriggerArgs
 ///                     {
 ///                         Kind = "AveragePartitionLoadTrigger",
-///                         LowerLoadThreshold = 2,
+///                         LowerLoadThreshold = 2.0,
 ///                         MetricName = "metricName",
 ///                         ScaleInterval = "00:01:00",
-///                         UpperLoadThreshold = 8,
+///                         UpperLoadThreshold = 8.0,
 ///                     },
 ///                 },
 ///             },
@@ -124,24 +124,24 @@ import 'system_data_response.dart';
 /// 				InstanceCount:         pulumi.Int(5),
 /// 				MinInstanceCount:      pulumi.Int(3),
 /// 				MinInstancePercentage: pulumi.Int(30),
-/// 				PartitionDescription: servicefabric.SingletonPartitionScheme{
-/// 					PartitionScheme: "Singleton",
+/// 				PartitionDescription: &servicefabric.SingletonPartitionSchemeArgs{
+/// 					PartitionScheme: pulumi.String("Singleton"),
 /// 				},
 /// 				PlacementConstraints: pulumi.String("NodeType==frontend"),
 /// 				ScalingPolicies: servicefabric.ScalingPolicyArray{
 /// 					&servicefabric.ScalingPolicyArgs{
-/// 						ScalingMechanism: servicefabric.PartitionInstanceCountScaleMechanism{
-/// 							Kind:             "ScalePartitionInstanceCount",
-/// 							MaxInstanceCount: 9,
-/// 							MinInstanceCount: 3,
-/// 							ScaleIncrement:   2,
+/// 						ScalingMechanism: &servicefabric.PartitionInstanceCountScaleMechanismArgs{
+/// 							Kind:             pulumi.String("ScalePartitionInstanceCount"),
+/// 							MaxInstanceCount: pulumi.Int(9),
+/// 							MinInstanceCount: pulumi.Int(3),
+/// 							ScaleIncrement:   pulumi.Int(2),
 /// 						},
-/// 						ScalingTrigger: servicefabric.AveragePartitionLoadScalingTrigger{
-/// 							Kind:               "AveragePartitionLoadTrigger",
-/// 							LowerLoadThreshold: 2,
-/// 							MetricName:         "metricName",
-/// 							ScaleInterval:      "00:01:00",
-/// 							UpperLoadThreshold: 8,
+/// 						ScalingTrigger: &servicefabric.AveragePartitionLoadScalingTriggerArgs{
+/// 							Kind:               pulumi.String("AveragePartitionLoadTrigger"),
+/// 							LowerLoadThreshold: pulumi.Float64(2),
+/// 							MetricName:         pulumi.String("metricName"),
+/// 							ScaleInterval:      pulumi.String("00:01:00"),
+/// 							UpperLoadThreshold: pulumi.Float64(8),
 /// 						},
 /// 					},
 /// 				},
@@ -156,8 +156,8 @@ import 'system_data_response.dart';
 /// 				},
 /// 				ServicePackageActivationMode: pulumi.String(servicefabric.ServicePackageActivationModeSharedProcess),
 /// 				ServicePlacementPolicies: pulumi.Array{
-/// 					servicefabric.ServicePlacementNonPartiallyPlaceServicePolicy{
-/// 						Type: "NonPartiallyPlaceService",
+/// 					&servicefabric.ServicePlacementNonPartiallyPlaceServicePolicyArgs{
+/// 						Type: pulumi.String("NonPartiallyPlaceService"),
 /// 					},
 /// 				},
 /// 				ServiceTypeName: pulumi.String("myServiceType"),
@@ -178,7 +178,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -186,50 +186,53 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicefabric_managedclusterservice" "managedClusterService" {
+/// resource "azure-native_servicefabric_managed_cluster_service" "managedClusterService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_name = "myApp"
 ///   cluster_name     = "myCluster"
 ///   location         = "eastus"
 ///   properties = {
-///     "correlationScheme" = [{
-///       "scheme"      = "AlignedAffinity"
-///       "serviceName" = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/resRg/providers/Microsoft.ServiceFabric/managedclusters/myCluster/applications/myApp/services/myService1"
+///     correlation_scheme = [{
+///       scheme       = "AlignedAffinity"
+///       service_name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/resRg/providers/Microsoft.ServiceFabric/managedclusters/myCluster/applications/myApp/services/myService1"
 ///     }]
-///     "defaultMoveCost"       = "Medium"
-///     "instanceCount"         = 5
-///     "minInstanceCount"      = 3
-///     "minInstancePercentage" = 30
-///     "partitionDescription" = {
-///       "partitionScheme" = "Singleton"
+///     default_move_cost       = "Medium"
+///     instance_count          = 5
+///     min_instance_count      = 3
+///     min_instance_percentage = 30
+///     partition_description = {
+///       partition_scheme = "Singleton"
 ///     }
-///     "placementConstraints" = "NodeType==frontend"
-///     "scalingPolicies" = [{
-///       "scalingMechanism" = {
-///         "kind"             = "ScalePartitionInstanceCount"
-///         "maxInstanceCount" = 9
-///         "minInstanceCount" = 3
-///         "scaleIncrement"   = 2
+///     placement_constraints = "NodeType==frontend"
+///     scaling_policies = [{
+///       scaling_mechanism = {
+///         kind               = "ScalePartitionInstanceCount"
+///         max_instance_count = 9
+///         min_instance_count = 3
+///         scale_increment    = 2
 ///       }
-///       "scalingTrigger" = {
-///         "kind"               = "AveragePartitionLoadTrigger"
-///         "lowerLoadThreshold" = 2
-///         "metricName"         = "metricName"
-///         "scaleInterval"      = "00:01:00"
-///         "upperLoadThreshold" = 8
+///       scaling_trigger = {
+///         kind                 = "AveragePartitionLoadTrigger"
+///         lower_load_threshold = 2
+///         metric_name          = "metricName"
+///         scale_interval       = "00:01:00"
+///         upper_load_threshold = 8
 ///       }
 ///     }]
-///     "serviceDnsName" = "myservicednsname.myApp"
-///     "serviceKind"    = "Stateless"
-///     "serviceLoadMetrics" = [{
-///       "defaultLoad" = 3
-///       "name"        = "metric1"
-///       "weight"      = "Low"
+///     service_dns_name = "myservicednsname.myApp"
+///     service_kind     = "Stateless"
+///     service_load_metrics = [{
+///       default_load = 3
+///       name         = "metric1"
+///       weight       = "Low"
 ///     }]
-///     "servicePackageActivationMode" = "SharedProcess"
-///     "servicePlacementPolicies" = [{
-///       "type" = "NonPartiallyPlaceService"
+///     service_package_activation_mode = "SharedProcess"
+///     service_placement_policies = [{
+///       type = "NonPartiallyPlaceService"
 ///     }]
-///     "serviceTypeName" = "myServiceType"
+///     service_type_name = "myServiceType"
 ///   }
 ///   resource_group_name = "resRg"
 ///   service_name        = "myService"
@@ -248,6 +251,23 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.servicefabric.ManagedClusterService;
 /// import com.pulumi.azurenative.servicefabric.ManagedClusterServiceArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.StatefulServicePropertiesArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.ServiceCorrelationArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.NamedPartitionSchemeArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.SingletonPartitionSchemeArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.UniformInt64RangePartitionSchemeArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.ScalingPolicyArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.AddRemoveIncrementalNamedPartitionScalingMechanismArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.PartitionInstanceCountScaleMechanismArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.AveragePartitionLoadScalingTriggerArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.AverageServiceLoadScalingTriggerArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.ServiceLoadMetricArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.ServicePlacementInvalidDomainPolicyArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.ServicePlacementNonPartiallyPlaceServicePolicyArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.ServicePlacementPreferPrimaryDomainPolicyArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.ServicePlacementRequireDomainDistributionPolicyArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.ServicePlacementRequiredDomainPolicyArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.StatelessServicePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -275,18 +295,15 @@ import 'system_data_response.dart';
 ///                 .minInstanceCount(3)
 ///                 .minInstancePercentage(30)
 ///                 .partitionDescription(SingletonPartitionSchemeArgs.builder()
-///                     .partitionScheme("Singleton")
 ///                     .build())
 ///                 .placementConstraints("NodeType==frontend")
 ///                 .scalingPolicies(ScalingPolicyArgs.builder()
 ///                     .scalingMechanism(PartitionInstanceCountScaleMechanismArgs.builder()
-///                         .kind("ScalePartitionInstanceCount")
 ///                         .maxInstanceCount(9)
 ///                         .minInstanceCount(3)
 ///                         .scaleIncrement(2)
 ///                         .build())
 ///                     .scalingTrigger(AveragePartitionLoadScalingTriggerArgs.builder()
-///                         .kind("AveragePartitionLoadTrigger")
 ///                         .lowerLoadThreshold(2.0)
 ///                         .metricName("metricName")
 ///                         .scaleInterval("00:01:00")
@@ -294,7 +311,6 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .build())
 ///                 .serviceDnsName("myservicednsname.myApp")
-///                 .serviceKind("Stateless")
 ///                 .serviceLoadMetrics(ServiceLoadMetricArgs.builder()
 ///                     .defaultLoad(3)
 ///                     .name("metric1")
@@ -302,7 +318,6 @@ import 'system_data_response.dart';
 ///                     .build())
 ///                 .servicePackageActivationMode("SharedProcess")
 ///                 .servicePlacementPolicies(ServicePlacementNonPartiallyPlaceServicePolicyArgs.builder()
-///                     .type("NonPartiallyPlaceService")
 ///                     .build())
 ///                 .serviceTypeName("myServiceType")
 ///                 .build())
@@ -530,8 +545,8 @@ import 'system_data_response.dart';
 /// 			Location:        pulumi.String("eastus"),
 /// 			Properties: &servicefabric.StatelessServicePropertiesArgs{
 /// 				InstanceCount: pulumi.Int(1),
-/// 				PartitionDescription: servicefabric.SingletonPartitionScheme{
-/// 					PartitionScheme: "Singleton",
+/// 				PartitionDescription: &servicefabric.SingletonPartitionSchemeArgs{
+/// 					PartitionScheme: pulumi.String("Singleton"),
 /// 				},
 /// 				ServiceKind:     pulumi.String("Stateless"),
 /// 				ServiceTypeName: pulumi.String("myServiceType"),
@@ -549,7 +564,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -557,17 +572,20 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicefabric_managedclusterservice" "managedClusterService" {
+/// resource "azure-native_servicefabric_managed_cluster_service" "managedClusterService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_name = "myApp"
 ///   cluster_name     = "myCluster"
 ///   location         = "eastus"
 ///   properties = {
-///     "instanceCount" = 1
-///     "partitionDescription" = {
-///       "partitionScheme" = "Singleton"
+///     instance_count = 1
+///     partition_description = {
+///       partition_scheme = "Singleton"
 ///     }
-///     "serviceKind"     = "Stateless"
-///     "serviceTypeName" = "myServiceType"
+///     service_kind      = "Stateless"
+///     service_type_name = "myServiceType"
 ///   }
 ///   resource_group_name = "resRg"
 ///   service_name        = "myService"
@@ -583,6 +601,11 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.servicefabric.ManagedClusterService;
 /// import com.pulumi.azurenative.servicefabric.ManagedClusterServiceArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.StatefulServicePropertiesArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.NamedPartitionSchemeArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.SingletonPartitionSchemeArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.UniformInt64RangePartitionSchemeArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.StatelessServicePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -603,9 +626,7 @@ import 'system_data_response.dart';
 ///             .properties(StatelessServicePropertiesArgs.builder()
 ///                 .instanceCount(1)
 ///                 .partitionDescription(SingletonPartitionSchemeArgs.builder()
-///                     .partitionScheme("Singleton")
 ///                     .build())
-///                 .serviceKind("Stateless")
 ///                 .serviceTypeName("myServiceType")
 ///                 .build())
 ///             .resourceGroupName("resRg")

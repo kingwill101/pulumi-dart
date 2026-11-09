@@ -84,7 +84,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -93,6 +93,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_apicenter_deployment" "deployment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_name            = "echo-api"
 ///   definition_id       = "/workspaces/default/apis/echo-api/versions/2023-01-01/definitions/openapi"
 ///   deployment_name     = "production"

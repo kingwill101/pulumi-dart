@@ -87,7 +87,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -95,7 +95,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managednetworkfabric_ipprefix" "ipPrefix" {
+/// resource "azure-native_managednetworkfabric_ip_prefix" "ipPrefix" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   annotation     = "annotation"
 ///   ip_prefix_name = "example-ipPrefix"
 ///   ip_prefix_rules {

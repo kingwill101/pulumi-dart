@@ -74,7 +74,7 @@ import 'cosmos_db_data_connection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,7 +82,10 @@ import 'cosmos_db_data_connection_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kusto_cosmosdbdataconnection" "cosmosDbDataConnection" {
+/// resource "azure-native_kusto_cosmos_db_data_connection" "cosmosDbDataConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name                  = "kustoCluster"
 ///   cosmos_db_account_resource_id = "/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/kustorptest/providers/Microsoft.DocumentDb/databaseAccounts/cosmosDbAccountTest1"
 ///   cosmos_db_container           = "cosmosDbContainerTest"
@@ -128,7 +131,6 @@ import 'cosmos_db_data_connection_args.dart';
 ///             .cosmosDbDatabase("cosmosDbDatabaseTest")
 ///             .dataConnectionName("dataConnectionTest")
 ///             .databaseName("KustoDatabase1")
-///             .kind("CosmosDb")
 ///             .location("westus")
 ///             .managedIdentityResourceId("/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/kustorptest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/managedidentityTest1")
 ///             .mappingRuleName("TestMapping")
@@ -256,7 +258,7 @@ import 'cosmos_db_data_connection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -264,7 +266,10 @@ import 'cosmos_db_data_connection_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kusto_cosmosdbdataconnection" "cosmosDbDataConnection" {
+/// resource "azure-native_kusto_cosmos_db_data_connection" "cosmosDbDataConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name         = "kustoCluster"
 ///   data_connection_name = "dataConnectionTest"
 ///   database_name        = "KustoDatabase8"
@@ -393,7 +398,7 @@ import 'cosmos_db_data_connection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -401,7 +406,10 @@ import 'cosmos_db_data_connection_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kusto_cosmosdbdataconnection" "cosmosDbDataConnection" {
+/// resource "azure-native_kusto_cosmos_db_data_connection" "cosmosDbDataConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name         = "kustoCluster"
 ///   data_connection_name = "dataConnectionTest"
 ///   database_name        = "KustoDatabase8"

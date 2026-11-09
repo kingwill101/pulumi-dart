@@ -104,7 +104,7 @@ import 'partner_region_info_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -112,7 +112,10 @@ import 'partner_region_info_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_instancefailovergroup" "instanceFailoverGroup" {
+/// resource "azure-native_sql_instance_failover_group" "instanceFailoverGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   failover_group_name = "failover-group-test-3"
 ///   location_name       = "Japan East"
 ///   managed_instance_pairs {

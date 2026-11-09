@@ -56,7 +56,7 @@ import 'outbound_firewall_rule_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -64,7 +64,10 @@ import 'outbound_firewall_rule_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_outboundfirewallrule" "outboundFirewallRule" {
+/// resource "azure-native_sql_outbound_firewall_rule" "outboundFirewallRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   outbound_rule_fqdn  = "server.database.windows.net"
 ///   resource_group_name = "sqlcrudtest-7398"
 ///   server_name         = "sqlcrudtest-4645"

@@ -79,7 +79,7 @@ import 'workspace_manager_assignment_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -87,7 +87,10 @@ import 'workspace_manager_assignment_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_workspacemanagerassignment" "workspaceManagerAssignment" {
+/// resource "azure-native_securityinsights_workspace_manager_assignment" "workspaceManagerAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   items {
 ///     resource_id = "/subscriptions/d0cfe6b2-9ac0-4464-9919-dccaee2e48c0/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspac-es/myWorkspace/providers/Microsoft.SecurityInsights/alertRules/microsoftSecurityIncidentCreationRuleExampleOne"
 ///   }

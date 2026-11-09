@@ -74,7 +74,7 @@ import 'workspace_private_endpoint_connection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,7 +82,10 @@ import 'workspace_private_endpoint_connection_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_discovery_workspaceprivateendpointconnection" "workspacePrivateEndpointConnection" {
+/// resource "azure-native_discovery_workspace_private_endpoint_connection" "workspacePrivateEndpointConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   private_endpoint_connection_name = "connection"
 ///   properties = {
 ///     private_link_service_connection_state = {

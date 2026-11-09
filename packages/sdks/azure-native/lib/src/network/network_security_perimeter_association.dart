@@ -73,7 +73,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,7 +81,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_networksecurityperimeterassociation" "networkSecurityPerimeterAssociation" {
+/// resource "azure-native_network_network_security_perimeter_association" "networkSecurityPerimeterAssociation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   access_mode                     = "Enforced"
 ///   association_name                = "association1"
 ///   network_security_perimeter_name = "nsp1"

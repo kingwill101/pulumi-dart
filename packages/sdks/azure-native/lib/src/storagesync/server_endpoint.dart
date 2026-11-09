@@ -83,7 +83,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -91,7 +91,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storagesync_serverendpoint" "serverEndpoint" {
+/// resource "azure-native_storagesync_server_endpoint" "serverEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloud_tiering                    = "off"
 ///   initial_download_policy          = "NamespaceThenModifiedFiles"
 ///   initial_upload_policy            = "ServerAuthoritative"

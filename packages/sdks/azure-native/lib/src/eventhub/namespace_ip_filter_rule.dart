@@ -60,7 +60,7 @@ import 'namespace_ip_filter_rule_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'namespace_ip_filter_rule_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventhub_namespaceipfilterrule" "namespaceIpFilterRule" {
+/// resource "azure-native_eventhub_namespace_ip_filter_rule" "namespaceIpFilterRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   action              = "Accept"
 ///   filter_name         = "sdk-IPFilterRules-7337"
 ///   ip_filter_rule_name = "sdk-IPFilterRules-7337"

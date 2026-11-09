@@ -115,7 +115,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -124,13 +124,16 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_servicebus_namespace" "namespace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   geo_data_replication = {
 ///     locations = [{
-///       "locationName" = "eastus"
-///       "roleType"     = "Primary"
+///       location_name = "eastus"
+///       role_type     = "Primary"
 ///       }, {
-///       "locationName" = "southcentralus"
-///       "roleType"     = "Secondary"
+///       location_name = "southcentralus"
+///       role_type     = "Secondary"
 ///     }]
 ///     max_replication_lag_duration_in_seconds = 300
 ///   }
@@ -160,6 +163,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.servicebus.Namespace;
 /// import com.pulumi.azurenative.servicebus.NamespaceArgs;
 /// import com.pulumi.azurenative.servicebus.inputs.GeoDataReplicationPropertiesArgs;
+/// import com.pulumi.azurenative.servicebus.inputs.NamespaceReplicaLocationArgs;
 /// import com.pulumi.azurenative.servicebus.inputs.SBSkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -406,7 +410,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -415,13 +419,16 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_servicebus_namespace" "namespace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   geo_data_replication = {
 ///     locations = [{
-///       "locationName" = "eastus"
-///       "roleType"     = "Primary"
+///       location_name = "eastus"
+///       role_type     = "Primary"
 ///       }, {
-///       "locationName" = "southcentralus"
-///       "roleType"     = "Secondary"
+///       location_name = "southcentralus"
+///       role_type     = "Secondary"
 ///     }]
 ///     max_replication_lag_duration_in_seconds = 300
 ///   }
@@ -453,6 +460,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.servicebus.Namespace;
 /// import com.pulumi.azurenative.servicebus.NamespaceArgs;
 /// import com.pulumi.azurenative.servicebus.inputs.GeoDataReplicationPropertiesArgs;
+/// import com.pulumi.azurenative.servicebus.inputs.NamespaceReplicaLocationArgs;
 /// import com.pulumi.azurenative.servicebus.inputs.SBSkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

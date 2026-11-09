@@ -76,7 +76,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -85,13 +85,16 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_botservice_channel" "channel" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   channel_name = "AlexaChannel"
 ///   location     = "global"
 ///   properties = {
-///     "channelName" = "AlexaChannel"
-///     "properties" = {
-///       "alexaSkillId" = "XAlexaSkillIdX"
-///       "isEnabled"    = true
+///     channel_name = "AlexaChannel"
+///     properties = {
+///       alexa_skill_id = "XAlexaSkillIdX"
+///       is_enabled     = true
 ///     }
 ///   }
 ///   resource_group_name = "OneResourceGroupName"
@@ -108,6 +111,39 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.botservice.Channel;
 /// import com.pulumi.azurenative.botservice.ChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.AcsChatChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.AlexaChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.AlexaChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.DirectLineChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.DirectLineChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.DirectLineSpeechChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.DirectLineSpeechChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.EmailChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.EmailChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.FacebookChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.FacebookChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.KikChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.KikChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.LineChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.LineChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.M365ExtensionsArgs;
+/// import com.pulumi.azurenative.botservice.inputs.MsTeamsChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.MsTeamsChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.OmnichannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.OutlookChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SearchAssistantArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SkypeChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SkypeChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SlackChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SlackChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SmsChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SmsChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.TelegramChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.TelegramChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.TelephonyChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.TelephonyChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.WebChatChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.WebChatChannelPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -125,7 +161,6 @@ import 'system_data_response.dart';
 ///             .channelName("AlexaChannel")
 ///             .location("global")
 ///             .properties(AlexaChannelArgs.builder()
-///                 .channelName("AlexaChannel")
 ///                 .properties(AlexaChannelPropertiesArgs.builder()
 ///                     .alexaSkillId("XAlexaSkillIdX")
 ///                     .isEnabled(true)
@@ -264,7 +299,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -273,14 +308,17 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_botservice_channel" "channel" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   channel_name = "EmailChannel"
 ///   location     = "global"
 ///   properties = {
-///     "channelName" = "EmailChannel"
-///     "properties" = {
-///       "emailAddress" = "a@b.com"
-///       "isEnabled"    = true
-///       "password"     = "pwd"
+///     channel_name = "EmailChannel"
+///     properties = {
+///       email_address = "a@b.com"
+///       is_enabled    = true
+///       password      = "pwd"
 ///     }
 ///   }
 ///   resource_group_name = "OneResourceGroupName"
@@ -297,6 +335,39 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.botservice.Channel;
 /// import com.pulumi.azurenative.botservice.ChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.AcsChatChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.AlexaChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.AlexaChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.DirectLineChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.DirectLineChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.DirectLineSpeechChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.DirectLineSpeechChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.EmailChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.EmailChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.FacebookChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.FacebookChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.KikChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.KikChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.LineChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.LineChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.M365ExtensionsArgs;
+/// import com.pulumi.azurenative.botservice.inputs.MsTeamsChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.MsTeamsChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.OmnichannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.OutlookChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SearchAssistantArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SkypeChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SkypeChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SlackChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SlackChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SmsChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SmsChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.TelegramChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.TelegramChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.TelephonyChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.TelephonyChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.WebChatChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.WebChatChannelPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -314,7 +385,6 @@ import 'system_data_response.dart';
 ///             .channelName("EmailChannel")
 ///             .location("global")
 ///             .properties(EmailChannelArgs.builder()
-///                 .channelName("EmailChannel")
 ///                 .properties(EmailChannelPropertiesArgs.builder()
 ///                     .emailAddress("a@b.com")
 ///                     .isEnabled(true)
@@ -457,7 +527,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -466,14 +536,17 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_botservice_channel" "channel" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   channel_name = "DirectLineSpeechChannel"
 ///   location     = "global"
 ///   properties = {
-///     "channelName" = "DirectLineSpeechChannel"
-///     "properties" = {
-///       "cognitiveServiceRegion"          = "XcognitiveServiceRegionX"
-///       "cognitiveServiceSubscriptionKey" = "XcognitiveServiceSubscriptionKeyX"
-///       "isEnabled"                       = true
+///     channel_name = "DirectLineSpeechChannel"
+///     properties = {
+///       cognitive_service_region           = "XcognitiveServiceRegionX"
+///       cognitive_service_subscription_key = "XcognitiveServiceSubscriptionKeyX"
+///       is_enabled                         = true
 ///     }
 ///   }
 ///   resource_group_name = "OneResourceGroupName"
@@ -490,6 +563,39 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.botservice.Channel;
 /// import com.pulumi.azurenative.botservice.ChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.AcsChatChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.AlexaChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.AlexaChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.DirectLineChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.DirectLineChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.DirectLineSpeechChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.DirectLineSpeechChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.EmailChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.EmailChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.FacebookChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.FacebookChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.KikChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.KikChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.LineChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.LineChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.M365ExtensionsArgs;
+/// import com.pulumi.azurenative.botservice.inputs.MsTeamsChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.MsTeamsChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.OmnichannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.OutlookChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SearchAssistantArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SkypeChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SkypeChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SlackChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SlackChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SmsChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SmsChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.TelegramChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.TelegramChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.TelephonyChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.TelephonyChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.WebChatChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.WebChatChannelPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -507,7 +613,6 @@ import 'system_data_response.dart';
 ///             .channelName("DirectLineSpeechChannel")
 ///             .location("global")
 ///             .properties(DirectLineSpeechChannelArgs.builder()
-///                 .channelName("DirectLineSpeechChannel")
 ///                 .properties(DirectLineSpeechChannelPropertiesArgs.builder()
 ///                     .cognitiveServiceRegion("XcognitiveServiceRegionX")
 ///                     .cognitiveServiceSubscriptionKey("XcognitiveServiceSubscriptionKeyX")
@@ -602,7 +707,7 @@ import 'system_data_response.dart';
 ///             ChannelName = "EmailChannel",
 ///             Properties = new AzureNative.BotService.Inputs.EmailChannelPropertiesArgs
 ///             {
-///                 AuthMethod = 1,
+///                 AuthMethod = 1.0,
 ///                 EmailAddress = "a@b.com",
 ///                 IsEnabled = true,
 ///                 MagicCode = "000000",
@@ -652,7 +757,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -661,15 +766,18 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_botservice_channel" "channel" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   channel_name = "EmailChannel"
 ///   location     = "global"
 ///   properties = {
-///     "channelName" = "EmailChannel"
-///     "properties" = {
-///       "authMethod"   = 1
-///       "emailAddress" = "a@b.com"
-///       "isEnabled"    = true
-///       "magicCode"    = "000000"
+///     channel_name = "EmailChannel"
+///     properties = {
+///       auth_method   = 1
+///       email_address = "a@b.com"
+///       is_enabled    = true
+///       magic_code    = "000000"
 ///     }
 ///   }
 ///   resource_group_name = "OneResourceGroupName"
@@ -686,6 +794,39 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.botservice.Channel;
 /// import com.pulumi.azurenative.botservice.ChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.AcsChatChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.AlexaChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.AlexaChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.DirectLineChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.DirectLineChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.DirectLineSpeechChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.DirectLineSpeechChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.EmailChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.EmailChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.FacebookChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.FacebookChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.KikChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.KikChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.LineChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.LineChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.M365ExtensionsArgs;
+/// import com.pulumi.azurenative.botservice.inputs.MsTeamsChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.MsTeamsChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.OmnichannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.OutlookChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SearchAssistantArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SkypeChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SkypeChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SlackChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SlackChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SmsChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SmsChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.TelegramChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.TelegramChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.TelephonyChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.TelephonyChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.WebChatChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.WebChatChannelPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -703,7 +844,6 @@ import 'system_data_response.dart';
 ///             .channelName("EmailChannel")
 ///             .location("global")
 ///             .properties(EmailChannelArgs.builder()
-///                 .channelName("EmailChannel")
 ///                 .properties(EmailChannelPropertiesArgs.builder()
 ///                     .authMethod(1.0)
 ///                     .emailAddress("a@b.com")
@@ -858,7 +998,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -867,14 +1007,17 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_botservice_channel" "channel" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   channel_name = "LineChannel"
 ///   location     = "global"
 ///   properties = {
-///     "channelName" = "LineChannel"
-///     "properties" = {
-///       "lineRegistrations" = [{
-///         "channelAccessToken" = "channelAccessToken"
-///         "channelSecret"      = "channelSecret"
+///     channel_name = "LineChannel"
+///     properties = {
+///       line_registrations = [{
+///         channel_access_token = "channelAccessToken"
+///         channel_secret       = "channelSecret"
 ///       }]
 ///     }
 ///   }
@@ -892,6 +1035,40 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.botservice.Channel;
 /// import com.pulumi.azurenative.botservice.ChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.AcsChatChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.AlexaChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.AlexaChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.DirectLineChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.DirectLineChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.DirectLineSpeechChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.DirectLineSpeechChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.EmailChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.EmailChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.FacebookChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.FacebookChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.KikChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.KikChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.LineChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.LineChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.LineRegistrationArgs;
+/// import com.pulumi.azurenative.botservice.inputs.M365ExtensionsArgs;
+/// import com.pulumi.azurenative.botservice.inputs.MsTeamsChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.MsTeamsChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.OmnichannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.OutlookChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SearchAssistantArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SkypeChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SkypeChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SlackChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SlackChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SmsChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.SmsChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.TelegramChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.TelegramChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.TelephonyChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.TelephonyChannelPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.WebChatChannelArgs;
+/// import com.pulumi.azurenative.botservice.inputs.WebChatChannelPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -909,7 +1086,6 @@ import 'system_data_response.dart';
 ///             .channelName("LineChannel")
 ///             .location("global")
 ///             .properties(LineChannelArgs.builder()
-///                 .channelName("LineChannel")
 ///                 .properties(LineChannelPropertiesArgs.builder()
 ///                     .lineRegistrations(LineRegistrationArgs.builder()
 ///                         .channelAccessToken("channelAccessToken")

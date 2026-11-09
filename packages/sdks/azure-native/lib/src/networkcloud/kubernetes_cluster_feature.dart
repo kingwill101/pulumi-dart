@@ -81,7 +81,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -89,7 +89,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_networkcloud_kubernetesclusterfeature" "kubernetesClusterFeature" {
+/// resource "azure-native_networkcloud_kubernetes_cluster_feature" "kubernetesClusterFeature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   feature_name            = "featureName"
 ///   kubernetes_cluster_name = "kubernetesClusterName"
 ///   location                = "location"

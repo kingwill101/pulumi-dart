@@ -53,7 +53,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -61,7 +61,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_providerhub_operationbyproviderregistration" "operationByProviderRegistration" {
+/// resource "azure-native_providerhub_operation_by_provider_registration" "operationByProviderRegistration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   provider_namespace = "Microsoft.Contoso"
 /// }
 ///

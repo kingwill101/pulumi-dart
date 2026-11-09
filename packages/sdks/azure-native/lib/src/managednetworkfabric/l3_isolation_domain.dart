@@ -119,7 +119,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -127,13 +127,16 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managednetworkfabric_l3isolationdomain" "l3IsolationDomain" {
+/// resource "azure-native_managednetworkfabric_l3_isolation_domain" "l3IsolationDomain" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   aggregate_route_configuration = {
 ///     ipv4_routes = [{
-///       "prefix" = "10.0.0.0/24"
+///       prefix = "10.0.0.0/24"
 ///     }]
 ///     ipv6_routes = [{
-///       "prefix" = "3FFE:FFFF:0:CD30::a0/29"
+///       prefix = "3FFE:FFFF:0:CD30::a0/29"
 ///     }]
 ///   }
 ///   annotation = "annotation"
@@ -166,6 +169,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.managednetworkfabric.L3IsolationDomain;
 /// import com.pulumi.azurenative.managednetworkfabric.L3IsolationDomainArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.AggregateRouteConfigurationArgs;
+/// import com.pulumi.azurenative.managednetworkfabric.inputs.AggregateRouteArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.ConnectedSubnetRoutePolicyArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.L3ExportRoutePolicyArgs;
 /// import java.util.ArrayList;

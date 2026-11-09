@@ -56,7 +56,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -64,7 +64,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_scopeaccessreviewhistorydefinitionbyid" "scopeAccessReviewHistoryDefinitionById" {
+/// resource "azure-native_authorization_scope_access_review_history_definition_by_id" "scopeAccessReviewHistoryDefinitionById" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   history_definition_id = "44724910-d7a5-4c29-b28f-db73e717165a"
 ///   scope                 = "subscriptions/129a304b-4aea-4b86-a9f7-ba7e2b23737a"
 /// }

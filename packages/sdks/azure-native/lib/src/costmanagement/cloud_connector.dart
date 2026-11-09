@@ -59,7 +59,7 @@ import 'connector_collection_info_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'connector_collection_info_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_costmanagement_cloudconnector" "cloudConnector" {
+/// resource "azure-native_costmanagement_cloud_connector" "cloudConnector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connector_name     = "aws-123456789012"
 ///   credentials_key    = "arn:aws:iam::123456789012:role/AzureCostManagementRole"
 ///   credentials_secret = "external-id"

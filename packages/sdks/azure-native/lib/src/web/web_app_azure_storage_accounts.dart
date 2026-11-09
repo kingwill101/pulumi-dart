@@ -75,7 +75,7 @@ import 'web_app_azure_storage_accounts_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,7 +83,10 @@ import 'web_app_azure_storage_accounts_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_web_webappazurestorageaccounts" "webAppAzureStorageAccounts" {
+/// resource "azure-native_web_web_app_azure_storage_accounts" "webAppAzureStorageAccounts" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "sitef6141"
 ///   properties = {
 ///     "account1" = {
@@ -107,6 +110,7 @@ import 'web_app_azure_storage_accounts_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.web.WebAppAzureStorageAccounts;
 /// import com.pulumi.azurenative.web.WebAppAzureStorageAccountsArgs;
+/// import com.pulumi.azurenative.web.inputs.AzureStorageInfoValueArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

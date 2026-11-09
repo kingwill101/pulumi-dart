@@ -29,9 +29,9 @@ import 'system_data_response.dart';
 ///             Action = new AzureNative.MachineLearningServices.Inputs.EndpointScheduleActionArgs
 ///             {
 ///                 ActionType = "InvokeBatchEndpoint",
-///                 EndpointInvocationDefinition =
+///                 EndpointInvocationDefinition = new Dictionary<string, object?>
 ///                 {
-///                     { "9965593e-526f-4b89-bb36-761138cf2794", null },
+///                     ["9965593e-526f-4b89-bb36-761138cf2794"] = null,
 ///                 },
 ///             },
 ///             Description = "string",
@@ -76,11 +76,11 @@ import 'system_data_response.dart';
 /// 		_, err := machinelearningservices.NewSchedule(ctx, "schedule", &machinelearningservices.ScheduleArgs{
 /// 			Name: pulumi.String("string"),
 /// 			Properties: &machinelearningservices.SchedulePropertiesArgs{
-/// 				Action: machinelearningservices.EndpointScheduleAction{
-/// 					ActionType: "InvokeBatchEndpoint",
-/// 					EndpointInvocationDefinition: map[string]interface{}{
+/// 				Action: &machinelearningservices.EndpointScheduleActionArgs{
+/// 					ActionType: pulumi.String("InvokeBatchEndpoint"),
+/// 					EndpointInvocationDefinition: pulumi.Any(map[string]interface{}{
 /// 						"9965593e-526f-4b89-bb36-761138cf2794": nil,
-/// 					},
+/// 					}),
 /// 				},
 /// 				Description: pulumi.String("string"),
 /// 				DisplayName: pulumi.String("string"),
@@ -91,12 +91,12 @@ import 'system_data_response.dart';
 /// 				Tags: pulumi.StringMap{
 /// 					"string": pulumi.String("string"),
 /// 				},
-/// 				Trigger: machinelearningservices.CronTrigger{
-/// 					EndTime:     "string",
-/// 					Expression:  "string",
-/// 					StartTime:   "string",
-/// 					TimeZone:    "string",
-/// 					TriggerType: "Cron",
+/// 				Trigger: &machinelearningservices.CronTriggerArgs{
+/// 					EndTime:     pulumi.String("string"),
+/// 					Expression:  pulumi.String("string"),
+/// 					StartTime:   pulumi.String("string"),
+/// 					TimeZone:    pulumi.String("string"),
+/// 					TriggerType: pulumi.String("Cron"),
 /// 				},
 /// 			},
 /// 			ResourceGroupName: pulumi.String("test-rg"),
@@ -112,7 +112,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -121,11 +121,14 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_machinelearningservices_schedule" "schedule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "string"
 ///   properties = {
 ///     action = {
-///       "actionType" = "InvokeBatchEndpoint"
-///       "endpointInvocationDefinition" = {
+///       action_type = "InvokeBatchEndpoint"
+///       endpoint_invocation_definition = {
 ///         "9965593e-526f-4b89-bb36-761138cf2794" = null
 ///       }
 ///     }
@@ -139,11 +142,11 @@ import 'system_data_response.dart';
 ///       "string" = "string"
 ///     }
 ///     trigger = {
-///       "endTime"     = "string"
-///       "expression"  = "string"
-///       "startTime"   = "string"
-///       "timeZone"    = "string"
-///       "triggerType" = "Cron"
+///       end_time     = "string"
+///       expression   = "string"
+///       start_time   = "string"
+///       time_zone    = "string"
+///       trigger_type = "Cron"
 ///     }
 ///   }
 ///   resource_group_name = "test-rg"
@@ -161,6 +164,11 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.machinelearningservices.Schedule;
 /// import com.pulumi.azurenative.machinelearningservices.ScheduleArgs;
 /// import com.pulumi.azurenative.machinelearningservices.inputs.SchedulePropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.CreateMonitorActionArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.EndpointScheduleActionArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.JobScheduleActionArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.CronTriggerArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.RecurrenceTriggerArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -178,7 +186,6 @@ import 'system_data_response.dart';
 ///             .name("string")
 ///             .properties(SchedulePropertiesArgs.builder()
 ///                 .action(EndpointScheduleActionArgs.builder()
-///                     .actionType("InvokeBatchEndpoint")
 ///                     .endpointInvocationDefinition(Map.of("9965593e-526f-4b89-bb36-761138cf2794", null))
 ///                     .build())
 ///                 .description("string")
@@ -191,7 +198,6 @@ import 'system_data_response.dart';
 ///                     .expression("string")
 ///                     .startTime("string")
 ///                     .timeZone("string")
-///                     .triggerType("Cron")
 ///                     .build())
 ///                 .build())
 ///             .resourceGroupName("test-rg")

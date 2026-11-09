@@ -76,7 +76,7 @@ import 'wiki_documentation_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -84,7 +84,10 @@ import 'wiki_documentation_contract_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_productwiki" "productWiki" {
+/// resource "azure-native_apimanagement_product_wiki" "productWiki" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   documents {
 ///     documentation_id = "docId1"
 ///   }

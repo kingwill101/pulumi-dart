@@ -86,7 +86,7 @@ import 'authorization_provider_oauth2_settings_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -94,7 +94,10 @@ import 'authorization_provider_oauth2_settings_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_authorizationprovider" "authorizationProvider" {
+/// resource "azure-native_apimanagement_authorization_provider" "authorizationProvider" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization_provider_id = "aadwithauthcode"
 ///   display_name              = "aadwithauthcode"
 ///   identity_provider         = "aad"
@@ -305,7 +308,7 @@ import 'authorization_provider_oauth2_settings_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -313,7 +316,10 @@ import 'authorization_provider_oauth2_settings_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_authorizationprovider" "authorizationProvider" {
+/// resource "azure-native_apimanagement_authorization_provider" "authorizationProvider" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization_provider_id = "aadwithclientcred"
 ///   display_name              = "aadwithclientcred"
 ///   identity_provider         = "aad"
@@ -516,7 +522,7 @@ import 'authorization_provider_oauth2_settings_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -524,7 +530,10 @@ import 'authorization_provider_oauth2_settings_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_authorizationprovider" "authorizationProvider" {
+/// resource "azure-native_apimanagement_authorization_provider" "authorizationProvider" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization_provider_id = "google"
 ///   display_name              = "google"
 ///   identity_provider         = "google"

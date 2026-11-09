@@ -26,7 +26,7 @@ import 'wcfrelay_authorization_rule_args.dart';
 ///         NamespaceName = "example-RelayNamespace-01",
 ///         RelayName = "example-Relay-wcf-01",
 ///         ResourceGroupName = "resourcegroup",
-///         Rights = new[]
+///         Rights =
 ///         {
 ///             AzureNative.Relay.AccessRights.Listen,
 ///             AzureNative.Relay.AccessRights.Send,
@@ -68,7 +68,7 @@ import 'wcfrelay_authorization_rule_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'wcfrelay_authorization_rule_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_relay_wcfrelayauthorizationrule" "wcfRelayAuthorizationRule" {
+/// resource "azure-native_relay_w_c_f_relay_authorization_rule" "wcfRelayAuthorizationRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization_rule_name = "example-RelayAuthRules-01"
 ///   namespace_name          = "example-RelayNamespace-01"
 ///   relay_name              = "example-Relay-wcf-01"

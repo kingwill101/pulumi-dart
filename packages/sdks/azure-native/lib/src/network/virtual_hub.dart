@@ -78,7 +78,7 @@ import 'virtual_router_auto_scale_configuration_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -86,7 +86,10 @@ import 'virtual_router_auto_scale_configuration_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualhub" "virtualHub" {
+/// resource "azure-native_network_virtual_hub" "virtualHub" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   address_prefix      = "10.168.0.0/24"
 ///   location            = "West US"
 ///   resource_group_name = "rg1"

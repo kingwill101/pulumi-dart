@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_web_staticsitelinkedbackend" "staticSiteLinkedBackend" {
+/// resource "azure-native_web_static_site_linked_backend" "staticSiteLinkedBackend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backend_resource_id = "/subscription/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/backendRg/providers/Microsoft.Web/sites/testBackend"
 ///   linked_backend_name = "testBackend"
 ///   name                = "testStaticSite0"

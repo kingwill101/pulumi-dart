@@ -58,7 +58,7 @@ import 'console_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,6 +67,9 @@ import 'console_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_portal_console" "console" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   console_name = "default"
 ///   properties = {
 ///     os_type = "Linux"

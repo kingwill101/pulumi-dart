@@ -58,7 +58,7 @@ import 'managed_instance_azure_adonly_authentication_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'managed_instance_azure_adonly_authentication_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_managedinstanceazureadonlyauthentication" "managedInstanceAzureADOnlyAuthentication" {
+/// resource "azure-native_sql_managed_instance_azure_a_d_only_authentication" "managedInstanceAzureADOnlyAuthentication" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authentication_name          = "Default"
 ///   azure_ad_only_authentication = false
 ///   managed_instance_name        = "managedInstance"

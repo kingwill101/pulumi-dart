@@ -60,7 +60,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///             FilePath = "my-unique-file-path",
-///             ProtocolTypes = new[]
+///             ProtocolTypes =
 ///             {
 ///                 AzureNative.NetApp.ElasticProtocolType.NFSv3,
 ///             },
@@ -133,7 +133,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -141,7 +141,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_netapp_elasticvolume" "elasticVolume" {
+/// resource "azure-native_netapp_elastic_volume" "elasticVolume" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "account1"
 ///   location     = "eastus"
 ///   pool_name    = "pool1"
@@ -158,12 +161,12 @@ import 'system_data_response.dart';
 ///     }
 ///     export_policy = {
 ///       rules = [{
-///         "allowedClients" = ["0.0.0.0/0"]
-///         "nfsv3"          = "Enabled"
-///         "nfsv4"          = "Disabled"
-///         "rootAccess"     = "Disabled"
-///         "ruleIndex"      = 1
-///         "unixAccessRule" = "ReadOnly"
+///         allowed_clients  = ["0.0.0.0/0"]
+///         nfsv3            = "Enabled"
+///         nfsv4            = "Disabled"
+///         root_access      = "Disabled"
+///         rule_index       = 1
+///         unix_access_rule = "ReadOnly"
 ///       }]
 ///     }
 ///     file_path      = "my-unique-file-path"
@@ -189,6 +192,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.netapp.inputs.ElasticVolumeBackupPropertiesArgs;
 /// import com.pulumi.azurenative.netapp.inputs.ElasticVolumeSnapshotPropertiesArgs;
 /// import com.pulumi.azurenative.netapp.inputs.ElasticExportPolicyArgs;
+/// import com.pulumi.azurenative.netapp.inputs.ElasticExportPolicyRuleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

@@ -96,7 +96,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -105,6 +105,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_storage_connector" "connector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name   = "teststorageaccount"
 ///   connector_name = "testconnector"
 ///   location       = "eastus"
@@ -161,17 +164,14 @@ import 'system_data_response.dart';
 ///             .properties(StorageConnectorPropertiesArgs.builder()
 ///                 .dataSourceType("Azure_DataShare")
 ///                 .description("Example connector")
-///                 .source(Map.ofEntries(
-///                     Map.entry("authProperties", Map.ofEntries(
-///                         Map.entry("identityResourceId", "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testIdentity"),
-///                         Map.entry("type", "ManagedIdentity")
-///                     )),
-///                     Map.entry("connection", Map.ofEntries(
-///                         Map.entry("dataShareUri", "azds://eastus:datashare1:12345678-1234-1234-1234-123456789123"),
-///                         Map.entry("type", "DataShare")
-///                     )),
-///                     Map.entry("type", "DataShare")
-///                 ))
+///                 .source(DataShareSourceArgs.builder()
+///                     .authProperties(ManagedIdentityAuthPropertiesArgs.builder()
+///                         .identityResourceId("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testIdentity")
+///                         .build())
+///                     .connection(DataShareConnectionArgs.builder()
+///                         .dataShareUri("azds://eastus:datashare1:12345678-1234-1234-1234-123456789123")
+///                         .build())
+///                     .build())
 ///                 .state("Active")
 ///                 .build())
 ///             .resourceGroupName("testrg")

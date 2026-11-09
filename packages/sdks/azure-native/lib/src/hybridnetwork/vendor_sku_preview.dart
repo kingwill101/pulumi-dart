@@ -55,7 +55,7 @@ import 'vendor_sku_preview_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -63,7 +63,10 @@ import 'vendor_sku_preview_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridnetwork_vendorskupreview" "vendorSkuPreview" {
+/// resource "azure-native_hybridnetwork_vendor_sku_preview" "vendorSkuPreview" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   preview_subscription = "previewSub"
 ///   sku_name             = "TestSku"
 ///   vendor_name          = "TestVendor"

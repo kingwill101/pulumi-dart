@@ -52,7 +52,7 @@ import 'vendor_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -61,6 +61,9 @@ import 'vendor_args.dart';
 /// }
 ///
 /// resource "azure-native_hybridnetwork_vendor" "vendor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vendor_name = "TestVendor"
 /// }
 ///

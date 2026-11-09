@@ -85,7 +85,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -93,7 +93,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_dedicatedhostgroup" "dedicatedHostGroup" {
+/// resource "azure-native_compute_dedicated_host_group" "dedicatedHostGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   additional_capabilities = {
 ///     ultra_ssd_enabled = true
 ///   }
@@ -276,7 +279,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -284,7 +287,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_dedicatedhostgroup" "dedicatedHostGroup" {
+/// resource "azure-native_compute_dedicated_host_group" "dedicatedHostGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   host_group_name             = "myDedicatedHostGroup"
 ///   location                    = "westus"
 ///   platform_fault_domain_count = 3

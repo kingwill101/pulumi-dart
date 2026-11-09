@@ -32,7 +32,7 @@ import 'system_data_response.dart';
 ///             Profile = "ms",
 ///         },
 ///         ResourceGroupName = "rgwidget",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -71,7 +71,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,6 +80,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_widget_employee" "employee" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   employee_name = "foo"
 ///   location      = "itajgxyqozseoygnl"
 ///   properties = {

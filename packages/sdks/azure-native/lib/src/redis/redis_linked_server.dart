@@ -60,7 +60,7 @@ import 'redis_linked_server_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'redis_linked_server_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_redis_redislinkedserver" "redisLinkedServer" {
+/// resource "azure-native_redis_redis_linked_server" "redisLinkedServer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   linked_redis_cache_id       = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Cache/Redis/cache2"
 ///   linked_redis_cache_location = "West US"
 ///   linked_server_name          = "cache2"

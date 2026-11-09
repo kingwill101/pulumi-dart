@@ -56,7 +56,7 @@ import 'private_link_service_properties_response_visibility.dart';
 ///                 },
 ///             },
 ///         },
-///         LoadBalancerFrontendIpConfigurations = new[]
+///         LoadBalancerFrontendIpConfigurations =
 ///         {
 ///             new AzureNative.Network.Inputs.FrontendIPConfigurationArgs
 ///             {
@@ -141,7 +141,7 @@ import 'private_link_service_properties_response_visibility.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -149,7 +149,10 @@ import 'private_link_service_properties_response_visibility.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_privatelinkservice" "privateLinkService" {
+/// resource "azure-native_network_private_link_service" "privateLinkService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auto_approval = {
 ///     subscriptions = ["subscription1", "subscription2"]
 ///   }

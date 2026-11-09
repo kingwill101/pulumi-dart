@@ -21,7 +21,7 @@ import 'virtual_router_peering_args.dart';
 /// {
 ///     var virtualRouterPeering = new AzureNative.Network.VirtualRouterPeering("virtualRouterPeering", new()
 ///     {
-///         PeerAsn = 20000,
+///         PeerAsn = 20000.0,
 ///         PeerIp = "192.168.1.5",
 ///         PeeringName = "peering1",
 ///         ResourceGroupName = "rg1",
@@ -60,7 +60,7 @@ import 'virtual_router_peering_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'virtual_router_peering_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualrouterpeering" "virtualRouterPeering" {
+/// resource "azure-native_network_virtual_router_peering" "virtualRouterPeering" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   peer_asn            = 20000
 ///   peer_ip             = "192.168.1.5"
 ///   peering_name        = "peering1"

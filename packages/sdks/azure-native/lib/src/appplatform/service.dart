@@ -91,7 +91,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -100,6 +100,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_appplatform_service" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "eastus"
 ///   properties = {
 ///     maintenance_schedule_configuration = {
@@ -148,11 +151,10 @@ import 'system_data_response.dart';
 ///         var service = new Service("service", ServiceArgs.builder()
 ///             .location("eastus")
 ///             .properties(ClusterResourcePropertiesArgs.builder()
-///                 .maintenanceScheduleConfiguration(Map.ofEntries(
-///                     Map.entry("day", "Sunday"),
-///                     Map.entry("frequency", "Weekly"),
-///                     Map.entry("hour", 10)
-///                 ))
+///                 .maintenanceScheduleConfiguration(WeeklyMaintenanceScheduleConfigurationArgs.builder()
+///                     .day("Sunday")
+///                     .hour(10)
+///                     .build())
 ///                 .build())
 ///             .resourceGroupName("myResourceGroup")
 ///             .serviceName("myservice")
@@ -311,7 +313,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -320,6 +322,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_appplatform_service" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "eastus"
 ///   properties = {
 ///     managed_environment_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.App/managedEnvironments/myenvironment"
@@ -520,7 +525,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -529,6 +534,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_appplatform_service" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "eastus"
 ///   properties = {
 ///     marketplace_resource = {
@@ -769,7 +777,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -778,6 +786,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_appplatform_service" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "eastus"
 ///   properties = {
 ///     network_profile = {

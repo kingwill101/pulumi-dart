@@ -104,7 +104,7 @@ import 'trigger_properties_response.dart';
 ///                         },
 ///                         SourceControlType = AzureNative.ContainerRegistry.SourceControlType.Github,
 ///                     },
-///                     SourceTriggerEvents = new[]
+///                     SourceTriggerEvents =
 ///                     {
 ///                         AzureNative.ContainerRegistry.SourceTriggerEvent.Commit,
 ///                     },
@@ -221,7 +221,7 @@ import 'trigger_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -230,6 +230,9 @@ import 'trigger_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_containerregistry_task" "task" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_configuration = {
 ///     cpu = 2
 ///   }
@@ -247,21 +250,21 @@ import 'trigger_properties_response.dart';
 ///   resource_group_name = "myResourceGroup"
 ///   status              = "Enabled"
 ///   step = {
-///     "arguments" = [{
-///       "isSecret" = false
-///       "name"     = "mytestargument"
-///       "value"    = "mytestvalue"
+///     arguments = [{
+///       is_secret = false
+///       name      = "mytestargument"
+///       value     = "mytestvalue"
 ///       }, {
-///       "isSecret" = true
-///       "name"     = "mysecrettestargument"
-///       "value"    = "mysecrettestvalue"
+///       is_secret = true
+///       name      = "mysecrettestargument"
+///       value     = "mysecrettestvalue"
 ///     }]
-///     "contextPath"    = "src"
-///     "dockerFilePath" = "src/DockerFile"
-///     "imageNames"     = ["azurerest:testtag"]
-///     "isPushEnabled"  = true
-///     "noCache"        = false
-///     "type"           = "Docker"
+///     context_path     = "src"
+///     docker_file_path = "src/DockerFile"
+///     image_names      = ["azurerest:testtag"]
+///     is_push_enabled  = true
+///     no_cache         = false
+///     type             = "Docker"
 ///   }
 ///   tags = {
 ///     "testkey" = "value"
@@ -275,21 +278,21 @@ import 'trigger_properties_response.dart';
 ///       update_trigger_payload_type = "Token"
 ///     }
 ///     source_triggers = [{
-///       "name" = "mySourceTrigger"
-///       "sourceRepository" = {
-///         "branch"        = "master"
-///         "repositoryUrl" = "https://github.com/Azure/azure-rest-api-specs"
-///         "sourceControlAuthProperties" = {
-///           "token"     = "xxxxx"
-///           "tokenType" = "PAT"
+///       name = "mySourceTrigger"
+///       source_repository = {
+///         branch         = "master"
+///         repository_url = "https://github.com/Azure/azure-rest-api-specs"
+///         source_control_auth_properties = {
+///           token      = "xxxxx"
+///           token_type = "PAT"
 ///         }
-///         "sourceControlType" = "Github"
+///         source_control_type = "Github"
 ///       }
-///       "sourceTriggerEvents" = ["commit"]
+///       source_trigger_events = ["commit"]
 ///     }]
 ///     timer_triggers = [{
-///       "name"     = "myTimerTrigger"
-///       "schedule" = "30 9 * * 1-5"
+///       name     = "myTimerTrigger"
+///       schedule = "30 9 * * 1-5"
 ///     }]
 ///   }
 /// }
@@ -307,8 +310,16 @@ import 'trigger_properties_response.dart';
 /// import com.pulumi.azurenative.containerregistry.inputs.AgentPropertiesArgs;
 /// import com.pulumi.azurenative.containerregistry.inputs.IdentityPropertiesArgs;
 /// import com.pulumi.azurenative.containerregistry.inputs.PlatformPropertiesArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.DockerBuildStepArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.ArgumentArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.EncodedTaskStepArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.FileTaskStepArgs;
 /// import com.pulumi.azurenative.containerregistry.inputs.TriggerPropertiesArgs;
 /// import com.pulumi.azurenative.containerregistry.inputs.BaseImageTriggerArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.SourceTriggerArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.SourcePropertiesArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.AuthInfoArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.TimerTriggerArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -356,7 +367,6 @@ import 'trigger_properties_response.dart';
 ///                 .imageNames("azurerest:testtag")
 ///                 .isPushEnabled(true)
 ///                 .noCache(false)
-///                 .type("Docker")
 ///                 .build())
 ///             .tags(Map.of("testkey", "value"))
 ///             .taskName("mytTask")
@@ -661,7 +671,7 @@ import 'trigger_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -670,6 +680,9 @@ import 'trigger_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_containerregistry_task" "task" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   is_system_task      = true
 ///   location            = "eastus"
 ///   log_template        = "acr/tasks:{{.Run.OS}}"
@@ -867,7 +880,7 @@ import 'trigger_properties_response.dart';
 ///                         },
 ///                         SourceControlType = AzureNative.ContainerRegistry.SourceControlType.Github,
 ///                     },
-///                     SourceTriggerEvents = new[]
+///                     SourceTriggerEvents =
 ///                     {
 ///                         AzureNative.ContainerRegistry.SourceTriggerEvent.Commit,
 ///                     },
@@ -986,7 +999,7 @@ import 'trigger_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -995,6 +1008,9 @@ import 'trigger_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_containerregistry_task" "task" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_configuration = {
 ///     cpu = 2
 ///   }
@@ -1014,21 +1030,21 @@ import 'trigger_properties_response.dart';
 ///   resource_group_name = "myResourceGroup"
 ///   status              = "Enabled"
 ///   step = {
-///     "arguments" = [{
-///       "isSecret" = false
-///       "name"     = "mytestargument"
-///       "value"    = "mytestvalue"
+///     arguments = [{
+///       is_secret = false
+///       name      = "mytestargument"
+///       value     = "mytestvalue"
 ///       }, {
-///       "isSecret" = true
-///       "name"     = "mysecrettestargument"
-///       "value"    = "mysecrettestvalue"
+///       is_secret = true
+///       name      = "mysecrettestargument"
+///       value     = "mysecrettestvalue"
 ///     }]
-///     "contextPath"    = "src"
-///     "dockerFilePath" = "src/DockerFile"
-///     "imageNames"     = ["azurerest:testtag"]
-///     "isPushEnabled"  = true
-///     "noCache"        = false
-///     "type"           = "Docker"
+///     context_path     = "src"
+///     docker_file_path = "src/DockerFile"
+///     image_names      = ["azurerest:testtag"]
+///     is_push_enabled  = true
+///     no_cache         = false
+///     type             = "Docker"
 ///   }
 ///   tags = {
 ///     "testkey" = "value"
@@ -1042,21 +1058,21 @@ import 'trigger_properties_response.dart';
 ///       update_trigger_payload_type = "Default"
 ///     }
 ///     source_triggers = [{
-///       "name" = "mySourceTrigger"
-///       "sourceRepository" = {
-///         "branch"        = "master"
-///         "repositoryUrl" = "https://github.com/Azure/azure-rest-api-specs"
-///         "sourceControlAuthProperties" = {
-///           "token"     = "xxxxx"
-///           "tokenType" = "PAT"
+///       name = "mySourceTrigger"
+///       source_repository = {
+///         branch         = "master"
+///         repository_url = "https://github.com/Azure/azure-rest-api-specs"
+///         source_control_auth_properties = {
+///           token      = "xxxxx"
+///           token_type = "PAT"
 ///         }
-///         "sourceControlType" = "Github"
+///         source_control_type = "Github"
 ///       }
-///       "sourceTriggerEvents" = ["commit"]
+///       source_trigger_events = ["commit"]
 ///     }]
 ///     timer_triggers = [{
-///       "name"     = "myTimerTrigger"
-///       "schedule" = "30 9 * * 1-5"
+///       name     = "myTimerTrigger"
+///       schedule = "30 9 * * 1-5"
 ///     }]
 ///   }
 /// }
@@ -1073,9 +1089,18 @@ import 'trigger_properties_response.dart';
 /// import com.pulumi.azurenative.containerregistry.TaskArgs;
 /// import com.pulumi.azurenative.containerregistry.inputs.AgentPropertiesArgs;
 /// import com.pulumi.azurenative.containerregistry.inputs.IdentityPropertiesArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.UserIdentityPropertiesArgs;
 /// import com.pulumi.azurenative.containerregistry.inputs.PlatformPropertiesArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.DockerBuildStepArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.ArgumentArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.EncodedTaskStepArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.FileTaskStepArgs;
 /// import com.pulumi.azurenative.containerregistry.inputs.TriggerPropertiesArgs;
 /// import com.pulumi.azurenative.containerregistry.inputs.BaseImageTriggerArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.SourceTriggerArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.SourcePropertiesArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.AuthInfoArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.TimerTriggerArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1124,7 +1149,6 @@ import 'trigger_properties_response.dart';
 ///                 .imageNames("azurerest:testtag")
 ///                 .isPushEnabled(true)
 ///                 .noCache(false)
-///                 .type("Docker")
 ///                 .build())
 ///             .tags(Map.of("testkey", "value"))
 ///             .taskName("mytTask")
@@ -1465,7 +1489,7 @@ import 'trigger_properties_response.dart';
 ///                         },
 ///                         SourceControlType = AzureNative.ContainerRegistry.SourceControlType.Github,
 ///                     },
-///                     SourceTriggerEvents = new[]
+///                     SourceTriggerEvents =
 ///                     {
 ///                         AzureNative.ContainerRegistry.SourceTriggerEvent.Commit,
 ///                     },
@@ -1585,7 +1609,7 @@ import 'trigger_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1594,6 +1618,9 @@ import 'trigger_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_containerregistry_task" "task" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_configuration = {
 ///     cpu = 2
 ///   }
@@ -1614,21 +1641,21 @@ import 'trigger_properties_response.dart';
 ///   resource_group_name = "myResourceGroup"
 ///   status              = "Enabled"
 ///   step = {
-///     "arguments" = [{
-///       "isSecret" = false
-///       "name"     = "mytestargument"
-///       "value"    = "mytestvalue"
+///     arguments = [{
+///       is_secret = false
+///       name      = "mytestargument"
+///       value     = "mytestvalue"
 ///       }, {
-///       "isSecret" = true
-///       "name"     = "mysecrettestargument"
-///       "value"    = "mysecrettestvalue"
+///       is_secret = true
+///       name      = "mysecrettestargument"
+///       value     = "mysecrettestvalue"
 ///     }]
-///     "contextPath"    = "src"
-///     "dockerFilePath" = "src/DockerFile"
-///     "imageNames"     = ["azurerest:testtag"]
-///     "isPushEnabled"  = true
-///     "noCache"        = false
-///     "type"           = "Docker"
+///     context_path     = "src"
+///     docker_file_path = "src/DockerFile"
+///     image_names      = ["azurerest:testtag"]
+///     is_push_enabled  = true
+///     no_cache         = false
+///     type             = "Docker"
 ///   }
 ///   tags = {
 ///     "testkey" = "value"
@@ -1642,21 +1669,21 @@ import 'trigger_properties_response.dart';
 ///       update_trigger_payload_type = "Default"
 ///     }
 ///     source_triggers = [{
-///       "name" = "mySourceTrigger"
-///       "sourceRepository" = {
-///         "branch"        = "master"
-///         "repositoryUrl" = "https://github.com/Azure/azure-rest-api-specs"
-///         "sourceControlAuthProperties" = {
-///           "token"     = "xxxxx"
-///           "tokenType" = "PAT"
+///       name = "mySourceTrigger"
+///       source_repository = {
+///         branch         = "master"
+///         repository_url = "https://github.com/Azure/azure-rest-api-specs"
+///         source_control_auth_properties = {
+///           token      = "xxxxx"
+///           token_type = "PAT"
 ///         }
-///         "sourceControlType" = "Github"
+///         source_control_type = "Github"
 ///       }
-///       "sourceTriggerEvents" = ["commit"]
+///       source_trigger_events = ["commit"]
 ///     }]
 ///     timer_triggers = [{
-///       "name"     = "myTimerTrigger"
-///       "schedule" = "30 9 * * 1-5"
+///       name     = "myTimerTrigger"
+///       schedule = "30 9 * * 1-5"
 ///     }]
 ///   }
 /// }
@@ -1673,9 +1700,18 @@ import 'trigger_properties_response.dart';
 /// import com.pulumi.azurenative.containerregistry.TaskArgs;
 /// import com.pulumi.azurenative.containerregistry.inputs.AgentPropertiesArgs;
 /// import com.pulumi.azurenative.containerregistry.inputs.IdentityPropertiesArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.UserIdentityPropertiesArgs;
 /// import com.pulumi.azurenative.containerregistry.inputs.PlatformPropertiesArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.DockerBuildStepArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.ArgumentArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.EncodedTaskStepArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.FileTaskStepArgs;
 /// import com.pulumi.azurenative.containerregistry.inputs.TriggerPropertiesArgs;
 /// import com.pulumi.azurenative.containerregistry.inputs.BaseImageTriggerArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.SourceTriggerArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.SourcePropertiesArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.AuthInfoArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.TimerTriggerArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1728,7 +1764,6 @@ import 'trigger_properties_response.dart';
 ///                 .imageNames("azurerest:testtag")
 ///                 .isPushEnabled(true)
 ///                 .noCache(false)
-///                 .type("Docker")
 ///                 .build())
 ///             .tags(Map.of("testkey", "value"))
 ///             .taskName("mytTask")
@@ -2066,7 +2101,7 @@ import 'trigger_properties_response.dart';
 ///                         },
 ///                         SourceControlType = AzureNative.ContainerRegistry.SourceControlType.Github,
 ///                     },
-///                     SourceTriggerEvents = new[]
+///                     SourceTriggerEvents =
 ///                     {
 ///                         AzureNative.ContainerRegistry.SourceTriggerEvent.Commit,
 ///                     },
@@ -2180,7 +2215,7 @@ import 'trigger_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2189,6 +2224,9 @@ import 'trigger_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_containerregistry_task" "task" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_configuration = {
 ///     cpu = 2
 ///   }
@@ -2205,21 +2243,21 @@ import 'trigger_properties_response.dart';
 ///   resource_group_name = "myResourceGroup"
 ///   status              = "Enabled"
 ///   step = {
-///     "arguments" = [{
-///       "isSecret" = false
-///       "name"     = "mytestargument"
-///       "value"    = "mytestvalue"
+///     arguments = [{
+///       is_secret = false
+///       name      = "mytestargument"
+///       value     = "mytestvalue"
 ///       }, {
-///       "isSecret" = true
-///       "name"     = "mysecrettestargument"
-///       "value"    = "mysecrettestvalue"
+///       is_secret = true
+///       name      = "mysecrettestargument"
+///       value     = "mysecrettestvalue"
 ///     }]
-///     "contextPath"    = "src"
-///     "dockerFilePath" = "src/DockerFile"
-///     "imageNames"     = ["azurerest:testtag"]
-///     "isPushEnabled"  = true
-///     "noCache"        = false
-///     "type"           = "Docker"
+///     context_path     = "src"
+///     docker_file_path = "src/DockerFile"
+///     image_names      = ["azurerest:testtag"]
+///     is_push_enabled  = true
+///     no_cache         = false
+///     type             = "Docker"
 ///   }
 ///   tags = {
 ///     "testkey" = "value"
@@ -2231,21 +2269,21 @@ import 'trigger_properties_response.dart';
 ///       name                    = "myBaseImageTrigger"
 ///     }
 ///     source_triggers = [{
-///       "name" = "mySourceTrigger"
-///       "sourceRepository" = {
-///         "branch"        = "master"
-///         "repositoryUrl" = "https://github.com/Azure/azure-rest-api-specs"
-///         "sourceControlAuthProperties" = {
-///           "token"     = "xxxxx"
-///           "tokenType" = "PAT"
+///       name = "mySourceTrigger"
+///       source_repository = {
+///         branch         = "master"
+///         repository_url = "https://github.com/Azure/azure-rest-api-specs"
+///         source_control_auth_properties = {
+///           token      = "xxxxx"
+///           token_type = "PAT"
 ///         }
-///         "sourceControlType" = "Github"
+///         source_control_type = "Github"
 ///       }
-///       "sourceTriggerEvents" = ["commit"]
+///       source_trigger_events = ["commit"]
 ///     }]
 ///     timer_triggers = [{
-///       "name"     = "myTimerTrigger"
-///       "schedule" = "30 9 * * 1-5"
+///       name     = "myTimerTrigger"
+///       schedule = "30 9 * * 1-5"
 ///     }]
 ///   }
 /// }
@@ -2263,8 +2301,16 @@ import 'trigger_properties_response.dart';
 /// import com.pulumi.azurenative.containerregistry.inputs.AgentPropertiesArgs;
 /// import com.pulumi.azurenative.containerregistry.inputs.IdentityPropertiesArgs;
 /// import com.pulumi.azurenative.containerregistry.inputs.PlatformPropertiesArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.DockerBuildStepArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.ArgumentArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.EncodedTaskStepArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.FileTaskStepArgs;
 /// import com.pulumi.azurenative.containerregistry.inputs.TriggerPropertiesArgs;
 /// import com.pulumi.azurenative.containerregistry.inputs.BaseImageTriggerArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.SourceTriggerArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.SourcePropertiesArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.AuthInfoArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.TimerTriggerArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -2311,7 +2357,6 @@ import 'trigger_properties_response.dart';
 ///                 .imageNames("azurerest:testtag")
 ///                 .isPushEnabled(true)
 ///                 .noCache(false)
-///                 .type("Docker")
 ///                 .build())
 ///             .tags(Map.of("testkey", "value"))
 ///             .taskName("mytTask")

@@ -71,7 +71,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_devtestlab_servicefabric" "serviceFabric" {
+/// resource "azure-native_devtestlab_service_fabric" "serviceFabric" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   environment_id             = "{environmentId}"
 ///   external_service_fabric_id = "{serviceFabricId}"
 ///   lab_name                   = "{labName}"

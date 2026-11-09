@@ -65,7 +65,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,6 +74,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_azureresiliencemanagement_enrollment" "enrollment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enrollment_name = "sg1-enrollment"
 ///   properties = {
 ///     service_group_id = "/providers/Microsoft.Management/serviceGroups/sg1"

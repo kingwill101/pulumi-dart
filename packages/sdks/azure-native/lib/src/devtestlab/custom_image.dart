@@ -82,7 +82,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -90,7 +90,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_devtestlab_customimage" "customImage" {
+/// resource "azure-native_devtestlab_custom_image" "customImage" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description         = "My Custom Image"
 ///   lab_name            = "{labName}"
 ///   name                = "{customImageName}"

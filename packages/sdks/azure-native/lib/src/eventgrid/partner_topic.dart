@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,7 +77,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventgrid_partnertopic" "partnerTopic" {
+/// resource "azure-native_eventgrid_partner_topic" "partnerTopic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   expiration_time_if_not_activated_utc = "2022-03-23T23:06:13.109Z"
 ///   location                             = "westus2"
 ///   message_for_activation               = "Example message for activation"

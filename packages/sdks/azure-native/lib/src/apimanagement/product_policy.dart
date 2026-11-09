@@ -92,7 +92,7 @@ import 'product_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -100,7 +100,10 @@ import 'product_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_productpolicy" "productPolicy" {
+/// resource "azure-native_apimanagement_product_policy" "productPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   format              = "xml"
 ///   policy_id           = "policy"
 ///   product_id          = "5702e97e5157a50f48dce801"

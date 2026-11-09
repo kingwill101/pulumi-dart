@@ -118,7 +118,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -127,6 +127,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_confluent_connector" "connector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id = "dlz-f3a90de"
 ///   connector_basic_info = {
 ///     connector_class = "AZUREBLOBSTORAGESINK"
@@ -135,25 +138,25 @@ import 'system_data_response.dart';
 ///   }
 ///   connector_name = "connector-1"
 ///   connector_service_type_info = {
-///     "connectorServiceType" = "AzureBlobStorageSinkConnector"
-///     "storageAccountKey"    = "*******"
-///     "storageAccountName"   = "stcfaccount-1"
-///     "storageContainerName" = "continer-1"
+///     connector_service_type = "AzureBlobStorageSinkConnector"
+///     storage_account_key    = "*******"
+///     storage_account_name   = "stcfaccount-1"
+///     storage_container_name = "continer-1"
 ///   }
 ///   environment_id    = "env-12132"
 ///   organization_name = "myOrganization"
 ///   partner_connector_info = {
-///     "apiKey"               = "*******"
-///     "apiSecret"            = "*******"
-///     "authType"             = "KAFKA_API_KEY"
-///     "flushSize"            = "1000"
-///     "inputFormat"          = "JSON"
-///     "maxTasks"             = "2"
-///     "outputFormat"         = "JSON"
-///     "partnerConnectorType" = "KafkaAzureBlobStorageSink"
-///     "timeInterval"         = "DAILY"
-///     "topics"               = ["topic-1"]
-///     "topicsDir"            = "topicsDir"
+///     api_key                = "*******"
+///     api_secret             = "*******"
+///     auth_type              = "KAFKA_API_KEY"
+///     flush_size             = "1000"
+///     input_format           = "JSON"
+///     max_tasks              = "2"
+///     output_format          = "JSON"
+///     partner_connector_type = "KafkaAzureBlobStorageSink"
+///     time_interval          = "DAILY"
+///     topics                 = ["topic-1"]
+///     topics_dir             = "topicsDir"
 ///   }
 ///   resource_group_name = "myResourceGroup"
 /// }
@@ -169,6 +172,16 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.confluent.Connector;
 /// import com.pulumi.azurenative.confluent.ConnectorArgs;
 /// import com.pulumi.azurenative.confluent.inputs.ConnectorInfoBaseArgs;
+/// import com.pulumi.azurenative.confluent.inputs.AzureBlobStorageSinkConnectorServiceInfoArgs;
+/// import com.pulumi.azurenative.confluent.inputs.AzureBlobStorageSourceConnectorServiceInfoArgs;
+/// import com.pulumi.azurenative.confluent.inputs.AzureCosmosDBSinkConnectorServiceInfoArgs;
+/// import com.pulumi.azurenative.confluent.inputs.AzureCosmosDBSourceConnectorServiceInfoArgs;
+/// import com.pulumi.azurenative.confluent.inputs.AzureSynapseAnalyticsSinkConnectorServiceInfoArgs;
+/// import com.pulumi.azurenative.confluent.inputs.KafkaAzureBlobStorageSinkConnectorInfoArgs;
+/// import com.pulumi.azurenative.confluent.inputs.KafkaAzureBlobStorageSourceConnectorInfoArgs;
+/// import com.pulumi.azurenative.confluent.inputs.KafkaAzureCosmosDBSinkConnectorInfoArgs;
+/// import com.pulumi.azurenative.confluent.inputs.KafkaAzureCosmosDBSourceConnectorInfoArgs;
+/// import com.pulumi.azurenative.confluent.inputs.KafkaAzureSynapseAnalyticsSinkConnectorInfoArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -191,7 +204,6 @@ import 'system_data_response.dart';
 ///                 .build())
 ///             .connectorName("connector-1")
 ///             .connectorServiceTypeInfo(AzureBlobStorageSinkConnectorServiceInfoArgs.builder()
-///                 .connectorServiceType("AzureBlobStorageSinkConnector")
 ///                 .storageAccountKey("*******")
 ///                 .storageAccountName("stcfaccount-1")
 ///                 .storageContainerName("continer-1")
@@ -206,7 +218,6 @@ import 'system_data_response.dart';
 ///                 .inputFormat("JSON")
 ///                 .maxTasks("2")
 ///                 .outputFormat("JSON")
-///                 .partnerConnectorType("KafkaAzureBlobStorageSink")
 ///                 .timeInterval("DAILY")
 ///                 .topics("topic-1")
 ///                 .topicsDir("topicsDir")

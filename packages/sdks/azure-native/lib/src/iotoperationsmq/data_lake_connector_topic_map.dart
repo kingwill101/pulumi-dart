@@ -34,7 +34,7 @@ import 'system_data_response.dart';
 ///         {
 ///             AllowedLatencySecs = 25407,
 ///             ClientId = "gyjduryceozwqyjdrxhrtwuw",
-///             MaxMessagesPerBatch = 1581641880,
+///             MaxMessagesPerBatch = 1581641880.0,
 ///             MessagePayloadType = "pwhpwzqlzlhdrozpqziipvjqrnipo",
 ///             MqttSourceTopic = "mtac",
 ///             Qos = 2,
@@ -56,7 +56,7 @@ import 'system_data_response.dart';
 ///         },
 ///         MqName = "rc-8Z--2m-MU",
 ///         ResourceGroupName = "rgiotoperationsmq",
-///         Tags = null,
+///         Tags = new() { },
 ///         TopicMapName = "17-",
 ///     });
 ///
@@ -118,7 +118,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -126,7 +126,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperationsmq_datalakeconnectortopicmap" "dataLakeConnectorTopicMap" {
+/// resource "azure-native_iotoperationsmq_data_lake_connector_topic_map" "dataLakeConnectorTopicMap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_lake_connector_name = "E9gU89-1QnIG7-IP8qOQLV-"
 ///   data_lake_connector_ref  = "zirczjfua"
 ///   extended_location = {
@@ -143,10 +146,10 @@ import 'system_data_response.dart';
 ///     qos                    = 2
 ///     table = {
 ///       schema = [{
-///         "format"   = "boolean"
-///         "mapping"  = "lfnyjp"
-///         "name"     = "hejqncdsueoerueffbaqix"
-///         "optional" = true
+///         format   = "boolean"
+///         mapping  = "lfnyjp"
+///         name     = "hejqncdsueoerueffbaqix"
+///         optional = true
 ///       }]
 ///       table_name = "qyvzigmefvxwyjqksofyrstn"
 ///       table_path = "cyrkvxsjhbhwjegmhzyixchkdnxe"
@@ -171,6 +174,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.ExtendedLocationPropertyArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.DataLakeConnectorMapArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.DeltaTableArgs;
+/// import com.pulumi.azurenative.iotoperationsmq.inputs.DeltaTableSchemaArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

@@ -31,7 +31,7 @@ import 'system_data_response.dart';
 ///         Description = "Set of policies monitored by Azure Security Center for cross cloud",
 ///         DisplayName = "ASC Default",
 ///         Effect = AzureNative.Security.Effect.Audit,
-///         ExcludedScopes = new[] {},
+///         ExcludedScopes = new() {},
 ///         ResourceId = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23",
 ///         StandardAssignmentName = "1f3afdf9-d0c9-4c3d-847f-89da613e70a8",
 ///     });
@@ -72,7 +72,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_standardassignment" "standardAssignment" {
+/// resource "azure-native_security_standard_assignment" "standardAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assigned_standard = {
 ///     id = "/providers/Microsoft.Security/securityStandards/1f3afdf9-d0c9-4c3d-847f-89da613e70a8"
 ///   }
@@ -259,7 +262,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -267,7 +270,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_standardassignment" "standardAssignment" {
+/// resource "azure-native_security_standard_assignment" "standardAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assigned_standard = {
 ///     id = "/providers/Microsoft.Security/securityStandards/1f3afdf9-d0c9-4c3d-847f-89da613e70a8"
 ///   }

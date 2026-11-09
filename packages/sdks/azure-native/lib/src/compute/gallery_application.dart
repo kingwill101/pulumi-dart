@@ -106,7 +106,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -114,7 +114,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_galleryapplication" "galleryApplication" {
+/// resource "azure-native_compute_gallery_application" "galleryApplication" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   custom_actions {
 ///     description = "This is the custom action description."
 ///     name        = "myCustomAction"
@@ -149,6 +152,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.GalleryApplication;
 /// import com.pulumi.azurenative.compute.GalleryApplicationArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryApplicationCustomActionArgs;
+/// import com.pulumi.azurenative.compute.inputs.GalleryApplicationCustomActionParameterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

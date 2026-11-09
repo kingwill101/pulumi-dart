@@ -73,7 +73,7 @@ import 'webhook_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,6 +82,9 @@ import 'webhook_args.dart';
 /// }
 ///
 /// resource "azure-native_automation_webhook" "webhook" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   automation_account_name = "myAutomationAccount33"
 ///   expiry_time             = "2018-03-29T22:18:13.7002872Z"
 ///   is_enabled              = true

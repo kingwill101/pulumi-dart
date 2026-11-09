@@ -56,7 +56,7 @@ import 'server_dns_alias_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -64,7 +64,10 @@ import 'server_dns_alias_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_serverdnsalias" "serverDnsAlias" {
+/// resource "azure-native_sql_server_dns_alias" "serverDnsAlias" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dns_alias_name      = "dns-alias-name-1"
 ///   resource_group_name = "Default"
 ///   server_name         = "dns-alias-server"

@@ -21,10 +21,10 @@ import 'secret_resource_properties_response.dart';
 ///     var secret = new AzureNative.ServiceFabricMesh.Secret("secret", new()
 ///     {
 ///         Location = "EastUS",
-///         Properties = null,
+///         Properties = new() { },
 ///         ResourceGroupName = "sbz_demo",
 ///         SecretResourceName = "dbConnectionString",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -59,7 +59,7 @@ import 'secret_resource_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,6 +68,9 @@ import 'secret_resource_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_servicefabricmesh_secret" "secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "EastUS"
 ///   properties           = {}
 ///   resource_group_name  = "sbz_demo"

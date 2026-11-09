@@ -63,7 +63,7 @@ import 'web_app_application_settings_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'web_app_application_settings_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_web_webappapplicationsettings" "webAppApplicationSettings" {
+/// resource "azure-native_web_web_app_application_settings" "webAppApplicationSettings" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "sitef6141"
 ///   properties = {
 ///     "Setting1" = "Value1"

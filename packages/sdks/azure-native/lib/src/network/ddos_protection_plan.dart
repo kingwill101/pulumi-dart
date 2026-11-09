@@ -57,7 +57,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_ddosprotectionplan" "ddosProtectionPlan" {
+/// resource "azure-native_network_ddos_protection_plan" "ddosProtectionPlan" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ddos_protection_plan_name = "test-plan"
 ///   location                  = "westus"
 ///   resource_group_name       = "rg1"

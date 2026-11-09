@@ -58,7 +58,7 @@ import 'domain_ownership_identifier_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'domain_ownership_identifier_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_domainregistration_domainownershipidentifier" "domainOwnershipIdentifier" {
+/// resource "azure-native_domainregistration_domain_ownership_identifier" "domainOwnershipIdentifier" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name         = "example.com"
 ///   name                = "SampleOwnershipId"
 ///   ownership_id        = "SampleOwnershipId"

@@ -57,7 +57,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventgrid_domaintopic" "domainTopic" {
+/// resource "azure-native_eventgrid_domain_topic" "domainTopic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name         = "exampledomain1"
 ///   domain_topic_name   = "exampledomaintopic1"
 ///   resource_group_name = "examplerg"

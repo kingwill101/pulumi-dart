@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,6 +72,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_securityinsights_action" "action" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   action_id             = "912bec42-cb66-4c03-ac63-1761b6898c3e"
 ///   logic_app_resource_id = "/subscriptions/d0cfe6b2-9ac0-4464-9919-dccaee2e48c0/resourceGroups/myRg/providers/Microsoft.Logic/workflows/MyAlerts"
 ///   resource_group_name   = "myRg"

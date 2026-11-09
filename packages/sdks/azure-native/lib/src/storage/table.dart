@@ -57,7 +57,7 @@ import 'table_signed_identifier_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,6 +66,9 @@ import 'table_signed_identifier_response.dart';
 /// }
 ///
 /// resource "azure-native_storage_table" "table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "sto328"
 ///   resource_group_name = "res3376"
 ///   table_name          = "table6185"
@@ -228,7 +231,7 @@ import 'table_signed_identifier_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -237,6 +240,9 @@ import 'table_signed_identifier_response.dart';
 /// }
 ///
 /// resource "azure-native_storage_table" "table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "sto328"
 ///   resource_group_name = "res3376"
 ///   signed_identifiers {

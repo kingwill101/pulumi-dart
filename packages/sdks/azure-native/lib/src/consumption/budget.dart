@@ -97,7 +97,7 @@ import 'system_data_response.dart';
 ///                 Enabled = true,
 ///                 Locale = AzureNative.Consumption.CultureCode.En_us,
 ///                 Operator = AzureNative.Consumption.OperatorType.GreaterThan,
-///                 Threshold = 80,
+///                 Threshold = 80.0,
 ///                 ThresholdType = AzureNative.Consumption.ThresholdType.Actual,
 ///             } },
 ///         },
@@ -201,7 +201,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -210,28 +210,31 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_consumption_budget" "budget" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   amount      = 100.65
 ///   budget_name = "TestBudget"
 ///   category    = "Cost"
 ///   e_tag       = "\"1d34d016a593709\""
 ///   filter = {
 ///     and = [{
-///       "dimensions" = {
-///         "name"     = "ResourceId"
-///         "operator" = "In"
-///         "values"   = ["/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Compute/virtualMachines/MSVM2", "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Compute/virtualMachines/platformcloudplatformGeneric1"]
+///       dimensions = {
+///         name     = "ResourceId"
+///         operator = "In"
+///         values   = ["/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Compute/virtualMachines/MSVM2", "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Compute/virtualMachines/platformcloudplatformGeneric1"]
 ///       }
 ///       }, {
-///       "tags" = {
-///         "name"     = "category"
-///         "operator" = "In"
-///         "values"   = ["Dev", "Prod"]
+///       tags = {
+///         name     = "category"
+///         operator = "In"
+///         values   = ["Dev", "Prod"]
 ///       }
 ///       }, {
-///       "tags" = {
-///         "name"     = "department"
-///         "operator" = "In"
-///         "values"   = ["engineering", "sales"]
+///       tags = {
+///         name     = "department"
+///         operator = "In"
+///         values   = ["engineering", "sales"]
 ///       }
 ///     }]
 ///   }
@@ -266,6 +269,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.consumption.Budget;
 /// import com.pulumi.azurenative.consumption.BudgetArgs;
 /// import com.pulumi.azurenative.consumption.inputs.BudgetFilterArgs;
+/// import com.pulumi.azurenative.consumption.inputs.BudgetFilterPropertiesArgs;
+/// import com.pulumi.azurenative.consumption.inputs.BudgetComparisonExpressionArgs;
+/// import com.pulumi.azurenative.consumption.inputs.NotificationArgs;
 /// import com.pulumi.azurenative.consumption.inputs.BudgetTimePeriodArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

@@ -60,7 +60,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_customipprefix" "customIPPrefix" {
+/// resource "azure-native_network_custom_i_p_prefix" "customIPPrefix" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr                  = "0.0.0.0/24"
 ///   custom_ip_prefix_name = "test-customipprefix"
 ///   location              = "westus"

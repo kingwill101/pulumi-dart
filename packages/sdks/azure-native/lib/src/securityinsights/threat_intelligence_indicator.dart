@@ -26,11 +26,11 @@ import 'threat_intelligence_indicator_args.dart';
 ///         CreatedByRef = "contoso@contoso.com",
 ///         Description = "debugging indicators",
 ///         DisplayName = "new schema",
-///         ExternalReferences = new[] {},
-///         GranularMarkings = new[] {},
-///         KillChainPhases = new[] {},
+///         ExternalReferences = new() {},
+///         GranularMarkings = new() {},
+///         KillChainPhases = new() {},
 ///         Kind = "indicator",
-///         Labels = new[] {},
+///         Labels = new() {},
 ///         Modified = "",
 ///         Name = "d9cd6f0b-96b9-3984-17cd-a779d1e15a93",
 ///         Pattern = "[url:value = 'https://www.contoso.com']",
@@ -103,7 +103,7 @@ import 'threat_intelligence_indicator_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -111,7 +111,10 @@ import 'threat_intelligence_indicator_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_threatintelligenceindicator" "threatIntelligenceIndicator" {
+/// resource "azure-native_securityinsights_threat_intelligence_indicator" "threatIntelligenceIndicator" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   confidence               = 78
 ///   created_by_ref           = "contoso@contoso.com"
 ///   description              = "debugging indicators"
@@ -163,7 +166,6 @@ import 'threat_intelligence_indicator_args.dart';
 ///             .externalReferences()
 ///             .granularMarkings()
 ///             .killChainPhases()
-///             .kind("indicator")
 ///             .labels()
 ///             .modified("")
 ///             .name("d9cd6f0b-96b9-3984-17cd-a779d1e15a93")

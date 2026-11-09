@@ -74,7 +74,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,6 +83,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_maps_creator" "creator" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "myMapsAccount"
 ///   creator_name = "myCreator"
 ///   location     = "eastus2"

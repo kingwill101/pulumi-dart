@@ -35,7 +35,7 @@ import 'system_data_response.dart';
 ///             Name = AzureNative.DataBoxEdge.SkuName.Edge,
 ///             Tier = AzureNative.DataBoxEdge.SkuTier.Standard,
 ///         },
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -73,7 +73,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,6 +82,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_databoxedge_device" "device" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   device_name         = "testedgedevice"
 ///   location            = "WUS"
 ///   resource_group_name = "GroupForEdgeAutomation"
@@ -206,7 +209,7 @@ import 'system_data_response.dart';
 ///             Name = AzureNative.DataBoxEdge.SkuName.Edge,
 ///             Tier = AzureNative.DataBoxEdge.SkuTier.Standard,
 ///         },
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -247,7 +250,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -256,6 +259,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_databoxedge_device" "device" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_residency = {
 ///     type = "ZoneReplication"
 ///   }

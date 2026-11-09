@@ -114,7 +114,7 @@ import 'update_run_strategy_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -122,7 +122,10 @@ import 'update_run_strategy_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_updaterun" "updateRun" {
+/// resource "azure-native_containerservice_update_run" "updateRun" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fleet_name = "fleet1"
 ///   managed_cluster_update = {
 ///     node_image_selection = {
@@ -136,11 +139,11 @@ import 'update_run_strategy_response.dart';
 ///   resource_group_name = "rg1"
 ///   strategy = {
 ///     stages = [{
-///       "afterStageWaitInSeconds" = 3600
-///       "groups" = [{
-///         "name" = "group-a"
+///       after_stage_wait_in_seconds = 3600
+///       groups = [{
+///         name = "group-a"
 ///       }]
-///       "name" = "stage1"
+///       name = "stage1"
 ///     }]
 ///   }
 ///   update_run_name    = "run1"
@@ -161,6 +164,8 @@ import 'update_run_strategy_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.NodeImageSelectionArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterUpgradeSpecArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.UpdateRunStrategyArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.UpdateStageArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.UpdateGroupArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

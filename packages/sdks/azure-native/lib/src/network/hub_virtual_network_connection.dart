@@ -172,7 +172,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -180,7 +180,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_hubvirtualnetworkconnection" "hubVirtualNetworkConnection" {
+/// resource "azure-native_network_hub_virtual_network_connection" "hubVirtualNetworkConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_name          = "connection1"
 ///   enable_internet_security = false
 ///   remote_virtual_network = {
@@ -199,19 +202,19 @@ import 'sub_resource_response.dart';
 ///     }
 ///     propagated_route_tables = {
 ///       ids = [{
-///         "id" = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+///         id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
 ///       }]
 ///       labels = ["label1", "label2"]
 ///     }
 ///     vnet_routes = {
 ///       static_routes = [{
-///         "addressPrefixes"  = ["10.1.0.0/16", "10.2.0.0/16"]
-///         "name"             = "route1"
-///         "nextHopIpAddress" = "10.0.0.68"
+///         address_prefixes    = ["10.1.0.0/16", "10.2.0.0/16"]
+///         name                = "route1"
+///         next_hop_ip_address = "10.0.0.68"
 ///         }, {
-///         "addressPrefixes"  = ["10.3.0.0/16", "10.4.0.0/16"]
-///         "name"             = "route2"
-///         "nextHopIpAddress" = "10.0.0.65"
+///         address_prefixes    = ["10.3.0.0/16", "10.4.0.0/16"]
+///         name                = "route2"
+///         next_hop_ip_address = "10.0.0.65"
 ///       }]
 ///       static_routes_config = {
 ///         vnet_local_route_override_criteria = "Equal"
@@ -235,6 +238,7 @@ import 'sub_resource_response.dart';
 /// import com.pulumi.azurenative.network.inputs.RoutingConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.PropagatedRouteTableArgs;
 /// import com.pulumi.azurenative.network.inputs.VnetRouteArgs;
+/// import com.pulumi.azurenative.network.inputs.StaticRouteArgs;
 /// import com.pulumi.azurenative.network.inputs.StaticRoutesConfigArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

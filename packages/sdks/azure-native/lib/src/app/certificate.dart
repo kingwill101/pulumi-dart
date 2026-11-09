@@ -71,7 +71,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,6 +80,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_app_certificate" "certificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_name = "certificate-firendly-name"
 ///   environment_name = "testcontainerenv"
 ///   location         = "East US"
@@ -249,7 +252,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -258,6 +261,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_app_certificate" "certificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_name = "certificate-firendly-name"
 ///   environment_name = "testcontainerenv"
 ///   location         = "East US"

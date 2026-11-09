@@ -84,7 +84,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -92,7 +92,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dnsresolver_dnsforwardingruleset" "dnsForwardingRuleset" {
+/// resource "azure-native_dnsresolver_dns_forwarding_ruleset" "dnsForwardingRuleset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dns_forwarding_ruleset_name = "samplednsForwardingRuleset"
 ///   dns_resolver_outbound_endpoints {
 ///     id = "/subscriptions/abdd4249-9f34-4cc6-8e42-c2e32110603e/resourceGroups/sampleResourceGroup/providers/Microsoft.Network/dnsResolvers/sampleDnsResolver/outboundEndpoints/sampleOutboundEndpoint0"

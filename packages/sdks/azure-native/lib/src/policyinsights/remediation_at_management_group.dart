@@ -62,7 +62,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,7 +70,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_policyinsights_remediationatmanagementgroup" "remediationAtManagementGroup" {
+/// resource "azure-native_policyinsights_remediation_at_management_group" "remediationAtManagementGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   management_group_id         = "financeMg"
 ///   management_groups_namespace = "Microsoft.Management"
 ///   policy_assignment_id        = "/providers/microsoft.management/managementGroups/financeMg/providers/microsoft.authorization/policyassignments/b101830944f246d8a14088c5"

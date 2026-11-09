@@ -97,7 +97,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -105,19 +105,22 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_datashare" "dataShare" {
+/// resource "azure-native_storage_data_share" "dataShare" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name    = "teststorageaccount"
 ///   data_share_name = "testdatashare"
 ///   location        = "eastus"
 ///   properties = {
 ///     access_policies = [{
-///       "permission"  = "Read"
-///       "principalId" = "00000000-0000-0000-0000-000000000000"
-///       "tenantId"    = "00000000-0000-0000-0000-000000000000"
+///       permission   = "Read"
+///       principal_id = "00000000-0000-0000-0000-000000000000"
+///       tenant_id    = "00000000-0000-0000-0000-000000000000"
 ///     }]
 ///     assets = [{
-///       "assetPath"   = "/container/folder/foo"
-///       "displayName" = "virtualFoo"
+///       asset_path   = "/container/folder/foo"
+///       display_name = "virtualFoo"
 ///     }]
 ///     description = "Dummy data share"
 ///   }
@@ -135,6 +138,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.storage.DataShare;
 /// import com.pulumi.azurenative.storage.DataShareArgs;
 /// import com.pulumi.azurenative.storage.inputs.StorageDataSharePropertiesArgs;
+/// import com.pulumi.azurenative.storage.inputs.StorageDataShareAccessPolicyArgs;
+/// import com.pulumi.azurenative.storage.inputs.StorageDataShareAssetArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

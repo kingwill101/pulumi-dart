@@ -83,7 +83,7 @@ import 'virtual_network_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -91,7 +91,10 @@ import 'virtual_network_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_servicegateway" "serviceGateway" {
+/// resource "azure-native_network_service_gateway" "serviceGateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "eastus"
 ///   resource_group_name = "rg1"
 ///   route_target_address = {

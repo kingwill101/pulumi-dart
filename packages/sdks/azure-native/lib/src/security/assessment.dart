@@ -72,7 +72,7 @@ import 'security_assessment_partner_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,9 +81,12 @@ import 'security_assessment_partner_data_response.dart';
 /// }
 ///
 /// resource "azure-native_security_assessment" "assessment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assessment_name = "8bb8be0a-6010-4789-812f-e4d661c4ed0e"
 ///   resource_details = {
-///     "source" = "Azure"
+///     source = "Azure"
 ///   }
 ///   resource_id = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myRg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss2"
 ///   status = {
@@ -101,6 +104,9 @@ import 'security_assessment_partner_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.security.Assessment;
 /// import com.pulumi.azurenative.security.AssessmentArgs;
+/// import com.pulumi.azurenative.security.inputs.AzureResourceDetailsArgs;
+/// import com.pulumi.azurenative.security.inputs.OnPremiseResourceDetailsArgs;
+/// import com.pulumi.azurenative.security.inputs.OnPremiseSqlResourceDetailsArgs;
 /// import com.pulumi.azurenative.security.inputs.AssessmentStatusArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -118,7 +124,6 @@ import 'security_assessment_partner_data_response.dart';
 ///         var assessment = new Assessment("assessment", AssessmentArgs.builder()
 ///             .assessmentName("8bb8be0a-6010-4789-812f-e4d661c4ed0e")
 ///             .resourceDetails(AzureResourceDetailsArgs.builder()
-///                 .source("Azure")
 ///                 .build())
 ///             .resourceId("subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myRg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss2")
 ///             .status(AssessmentStatusArgs.builder()

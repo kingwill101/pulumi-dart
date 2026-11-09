@@ -66,7 +66,7 @@ import 'virtual_network_subnet_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,7 +74,10 @@ import 'virtual_network_subnet_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_virtualnetworksubnet" "virtualNetworkSubnet" {
+/// resource "azure-native_azurestackhci_virtual_network_subnet" "virtualNetworkSubnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     address_prefix = "10.0.0.0/28"
 ///   }

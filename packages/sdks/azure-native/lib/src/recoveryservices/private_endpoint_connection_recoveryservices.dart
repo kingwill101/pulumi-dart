@@ -25,7 +25,7 @@ import 'private_endpoint_connection_response.dart';
 ///         PrivateEndpointConnectionName = "gaallatestpe2.5704c932-249a-490b-a142-1396838cd3b",
 ///         Properties = new AzureNative.RecoveryServices.Inputs.PrivateEndpointConnectionArgs
 ///         {
-///             GroupIds = new[]
+///             GroupIds =
 ///             {
 ///                 AzureNative.RecoveryServices.VaultSubResourceType.AzureBackup_secondary,
 ///             },
@@ -87,7 +87,7 @@ import 'private_endpoint_connection_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -95,7 +95,10 @@ import 'private_endpoint_connection_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_recoveryservices_privateendpointconnection" "privateEndpointConnection" {
+/// resource "azure-native_recoveryservices_private_endpoint_connection" "privateEndpointConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   private_endpoint_connection_name = "gaallatestpe2.5704c932-249a-490b-a142-1396838cd3b"
 ///   properties = {
 ///     group_ids = ["AzureBackup_secondary"]
@@ -138,7 +141,7 @@ import 'private_endpoint_connection_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var privateEndpointConnection = new PrivateEndpointConnection("privateEndpointConnection", PrivateEndpointConnectionArgs.builder()
 ///             .privateEndpointConnectionName("gaallatestpe2.5704c932-249a-490b-a142-1396838cd3b")
-///             .properties(PrivateEndpointConnectionArgs.builder()
+///             .properties(com.pulumi.azurenative.recoveryservices.inputs.PrivateEndpointConnectionArgs.builder()
 ///                 .groupIds("AzureBackup_secondary")
 ///                 .privateEndpoint(PrivateEndpointArgs.builder()
 ///                     .id("/subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/gaallaRG/providers/Microsoft.Network/privateEndpoints/gaallatestpe3")

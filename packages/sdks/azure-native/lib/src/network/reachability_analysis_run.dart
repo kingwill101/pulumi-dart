@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,7 +77,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_reachabilityanalysisrun" "reachabilityAnalysisRun" {
+/// resource "azure-native_network_reachability_analysis_run" "reachabilityAnalysisRun" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_manager_name = "testNetworkManager"
 ///   properties = {
 ///     description = "A sample reachability analysis run"

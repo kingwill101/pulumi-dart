@@ -110,7 +110,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -118,7 +118,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managednamespace" "managedNamespace" {
+/// resource "azure-native_containerservice_managed_namespace" "managedNamespace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   managed_namespace_name = "namespace1"
 ///   properties = {
 ///     adoption_policy = "IfIdentical"

@@ -81,7 +81,7 @@ import 'managed_network_peering_policy_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -89,7 +89,10 @@ import 'managed_network_peering_policy_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managednetwork_managednetworkpeeringpolicy" "managedNetworkPeeringPolicy" {
+/// resource "azure-native_managednetwork_managed_network_peering_policy" "managedNetworkPeeringPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   managed_network_name                = "myManagedNetwork"
 ///   managed_network_peering_policy_name = "myHubAndSpoke"
 ///   properties = {
@@ -97,7 +100,7 @@ import 'managed_network_peering_policy_properties_response.dart';
 ///       id = "/subscriptionB/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myHubVnet"
 ///     }
 ///     spokes = [{
-///       "id" = "/subscriptionB/resourceGroups/myResourceGroup/providers/Microsoft.ManagedNetwork/managedNetworks/myManagedNetwork/managedNetworkGroups/myManagedNetworkGroup1"
+///       id = "/subscriptionB/resourceGroups/myResourceGroup/providers/Microsoft.ManagedNetwork/managedNetworks/myManagedNetwork/managedNetworkGroups/myManagedNetworkGroup1"
 ///     }]
 ///     type = "HubAndSpokeTopology"
 ///   }

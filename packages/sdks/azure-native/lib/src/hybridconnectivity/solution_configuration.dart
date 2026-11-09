@@ -22,7 +22,7 @@ import 'system_data_response.dart';
 ///     {
 ///         ResourceUri = "ymuj",
 ///         SolutionConfiguration = "keebwujt",
-///         SolutionSettings = null,
+///         SolutionSettings = new() { },
 ///         SolutionType = "nmtqllkyohwtsthxaimsye",
 ///     });
 ///
@@ -57,7 +57,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridconnectivity_solutionconfiguration" "solutionConfiguration" {
+/// resource "azure-native_hybridconnectivity_solution_configuration" "solutionConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_uri           = "ymuj"
 ///   solution_configuration = "keebwujt"
 ///   solution_settings      = {}

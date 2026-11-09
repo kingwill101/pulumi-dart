@@ -100,7 +100,7 @@ import 'connection_policy_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -108,7 +108,10 @@ import 'connection_policy_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_connectionpolicy" "connectionPolicy" {
+/// resource "azure-native_network_connection_policy" "connectionPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_policy_name = "testpolicy2"
 ///   properties = {
 ///     enable_internet_security = true

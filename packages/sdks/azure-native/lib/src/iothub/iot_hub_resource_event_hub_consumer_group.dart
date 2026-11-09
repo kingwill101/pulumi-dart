@@ -65,7 +65,7 @@ import 'iot_hub_resource_event_hub_consumer_group_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'iot_hub_resource_event_hub_consumer_group_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iothub_iothubresourceeventhubconsumergroup" "iotHubResourceEventHubConsumerGroup" {
+/// resource "azure-native_iothub_iot_hub_resource_event_hub_consumer_group" "iotHubResourceEventHubConsumerGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   event_hub_endpoint_name = "events"
 ///   name                    = "test"
 ///   properties = {

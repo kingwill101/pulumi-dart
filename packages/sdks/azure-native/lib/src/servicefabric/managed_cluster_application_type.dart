@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicefabric_managedclusterapplicationtype" "managedClusterApplicationType" {
+/// resource "azure-native_servicefabric_managed_cluster_application_type" "managedClusterApplicationType" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_type_name = "myAppType"
 ///   cluster_name          = "myCluster"
 ///   location              = "eastus"

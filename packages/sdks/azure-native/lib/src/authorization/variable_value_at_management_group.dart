@@ -81,7 +81,7 @@ import 'variable_value_at_management_group_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -89,7 +89,10 @@ import 'variable_value_at_management_group_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_variablevalueatmanagementgroup" "variableValueAtManagementGroup" {
+/// resource "azure-native_authorization_variable_value_at_management_group" "variableValueAtManagementGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   management_group_id = "DevOrg"
 ///   values {
 ///     column_name  = "StringColumn"

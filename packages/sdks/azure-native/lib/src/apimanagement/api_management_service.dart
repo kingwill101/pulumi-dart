@@ -181,7 +181,7 @@ import 'virtual_network_configuration_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -189,7 +189,10 @@ import 'virtual_network_configuration_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apimanagementservice" "apiManagementService" {
+/// resource "azure-native_apimanagement_api_management_service" "apiManagementService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   additional_locations {
 ///     disable_gateway = true
 ///     location        = "East US"
@@ -570,7 +573,7 @@ import 'virtual_network_configuration_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -578,7 +581,10 @@ import 'virtual_network_configuration_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apimanagementservice" "apiManagementService" {
+/// resource "azure-native_apimanagement_api_management_service" "apiManagementService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "South Central US"
 ///   publisher_email     = "foo@contoso.com"
 ///   publisher_name      = "foo"
@@ -780,7 +786,7 @@ import 'virtual_network_configuration_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -788,7 +794,10 @@ import 'virtual_network_configuration_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apimanagementservice" "apiManagementService" {
+/// resource "azure-native_apimanagement_api_management_service" "apiManagementService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
@@ -1023,7 +1032,7 @@ import 'virtual_network_configuration_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1031,7 +1040,10 @@ import 'virtual_network_configuration_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apimanagementservice" "apiManagementService" {
+/// resource "azure-native_apimanagement_api_management_service" "apiManagementService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "East US 2 EUAP"
 ///   public_ip_address_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/providers/Microsoft.Network/publicIPAddresses/apimazvnet"
 ///   publisher_email      = "apim@autorestsdk.com"
@@ -1280,7 +1292,7 @@ import 'virtual_network_configuration_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1288,7 +1300,10 @@ import 'virtual_network_configuration_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apimanagementservice" "apiManagementService" {
+/// resource "azure-native_apimanagement_api_management_service" "apiManagementService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "North europe"
 ///   publisher_email     = "apim@autorestsdk.com"
 ///   publisher_name      = "autorestsdk"
@@ -1510,7 +1525,7 @@ import 'virtual_network_configuration_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1518,7 +1533,10 @@ import 'virtual_network_configuration_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apimanagementservice" "apiManagementService" {
+/// resource "azure-native_apimanagement_api_management_service" "apiManagementService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
@@ -1815,7 +1833,7 @@ import 'virtual_network_configuration_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1823,7 +1841,10 @@ import 'virtual_network_configuration_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apimanagementservice" "apiManagementService" {
+/// resource "azure-native_apimanagement_api_management_service" "apiManagementService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_version_constraint = {
 ///     min_api_version = "2019-01-01"
 ///   }
@@ -1888,6 +1909,7 @@ import 'virtual_network_configuration_response.dart';
 /// import com.pulumi.azurenative.apimanagement.inputs.ApiVersionConstraintArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.HostnameConfigurationArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.ApiManagementServiceIdentityArgs;
+/// import com.pulumi.azurenative.apimanagement.inputs.UserIdentityPropertiesArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.ApiManagementServiceSkuPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -2196,7 +2218,7 @@ import 'virtual_network_configuration_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2204,7 +2226,10 @@ import 'virtual_network_configuration_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apimanagementservice" "apiManagementService" {
+/// resource "azure-native_apimanagement_api_management_service" "apiManagementService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   developer_portal_status = "Enabled"
 ///   location                = "South Central US"
 ///   publisher_email         = "foo@contoso.com"
@@ -2406,7 +2431,7 @@ import 'virtual_network_configuration_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2414,7 +2439,10 @@ import 'virtual_network_configuration_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apimanagementservice" "apiManagementService" {
+/// resource "azure-native_apimanagement_api_management_service" "apiManagementService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "East US"
 ///   nat_gateway_state   = "Enabled"
 ///   publisher_email     = "apim@autorestsdk.com"
@@ -2635,7 +2663,7 @@ import 'virtual_network_configuration_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2643,7 +2671,10 @@ import 'virtual_network_configuration_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apimanagementservice" "apiManagementService" {
+/// resource "azure-native_apimanagement_api_management_service" "apiManagementService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificates {
 ///     certificate_password = "Password"
 ///     encoded_certificate  = "*******Base64 encoded Certificate******************"
@@ -2882,7 +2913,7 @@ import 'virtual_network_configuration_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2890,7 +2921,10 @@ import 'virtual_network_configuration_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apimanagementservice" "apiManagementService" {
+/// resource "azure-native_apimanagement_api_management_service" "apiManagementService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity = {
 ///     type = "UserAssigned"
 ///     user_assigned_identities = {
@@ -2924,6 +2958,7 @@ import 'virtual_network_configuration_response.dart';
 /// import com.pulumi.azurenative.apimanagement.ApiManagementService;
 /// import com.pulumi.azurenative.apimanagement.ApiManagementServiceArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.ApiManagementServiceIdentityArgs;
+/// import com.pulumi.azurenative.apimanagement.inputs.UserIdentityPropertiesArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.ApiManagementServiceSkuPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -3126,7 +3161,7 @@ import 'virtual_network_configuration_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3134,7 +3169,10 @@ import 'virtual_network_configuration_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apimanagementservice" "apiManagementService" {
+/// resource "azure-native_apimanagement_api_management_service" "apiManagementService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_api = {
 ///     legacy_api = "Disabled"
 ///   }
@@ -3340,7 +3378,7 @@ import 'virtual_network_configuration_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3348,7 +3386,10 @@ import 'virtual_network_configuration_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apimanagementservice" "apiManagementService" {
+/// resource "azure-native_apimanagement_api_management_service" "apiManagementService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "South Central US"
 ///   publisher_email     = "foo@contoso.com"
 ///   publisher_name      = "foo"

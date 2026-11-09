@@ -73,7 +73,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,9 +81,14 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerregistry_agentpool" "agentPool" {
-///   agent_pool_name     = "myAgentPool"
-///   count               = 1
+/// resource "azure-native_containerregistry_agent_pool" "agentPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   agent_pool_name = "myAgentPool"
+///   _ {
+///     count = 1
+///   }
 ///   location            = "WESTUS"
 ///   os                  = "Linux"
 ///   registry_name       = "myRegistry"

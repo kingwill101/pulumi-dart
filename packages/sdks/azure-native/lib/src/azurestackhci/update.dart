@@ -31,7 +31,7 @@ import 'update_prerequisite_response.dart';
 ///         InstalledDate = "2022-04-06T14:08:18.254Z",
 ///         NotifyMessage = "Brief message with instructions for updates of AvailabilityType Notify",
 ///         PackagePath = "\\\\SU1FileServer\\SU1_Infrastructure_2\\Updates\\Packages\\Microsoft4.2203.2.32",
-///         PackageSizeInMb = 18858,
+///         PackageSizeInMb = 18858.0,
 ///         PackageType = "Infrastructure",
 ///         Prerequisites = new[]
 ///         {
@@ -42,7 +42,7 @@ import 'update_prerequisite_response.dart';
 ///                 Version = "prerequisite version",
 ///             },
 ///         },
-///         ProgressPercentage = 0,
+///         ProgressPercentage = 0.0,
 ///         Publisher = "Microsoft",
 ///         ReleaseLink = "https://docs.microsoft.com/azure-stack/operator/release-notes?view=azs-2203",
 ///         ResourceGroupName = "testrg",
@@ -102,7 +102,7 @@ import 'update_prerequisite_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -111,6 +111,9 @@ import 'update_prerequisite_response.dart';
 /// }
 ///
 /// resource "azure-native_azurestackhci_update" "update" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   additional_properties = "additional properties"
 ///   availability_type     = "Local"
 ///   cluster_name          = "testcluster"

@@ -71,7 +71,7 @@ import 'subnet_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,6 +80,9 @@ import 'subnet_args.dart';
 /// }
 ///
 /// resource "azure-native_network_subnet" "subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   address_prefix       = "10.0.0.0/16"
 ///   resource_group_name  = "subnet-test"
 ///   subnet_name          = "subnet1"
@@ -208,7 +211,7 @@ import 'subnet_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -217,6 +220,9 @@ import 'subnet_args.dart';
 /// }
 ///
 /// resource "azure-native_network_subnet" "subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   address_prefix       = "10.0.0.0/16"
 ///   resource_group_name  = "subnet-test"
 ///   subnet_name          = "subnet1"
@@ -357,7 +363,7 @@ import 'subnet_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -366,6 +372,9 @@ import 'subnet_args.dart';
 /// }
 ///
 /// resource "azure-native_network_subnet" "subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   address_prefix      = "10.0.0.0/16"
 ///   resource_group_name = "subnet-test"
 ///   service_endpoints {
@@ -528,7 +537,7 @@ import 'subnet_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -537,6 +546,9 @@ import 'subnet_args.dart';
 /// }
 ///
 /// resource "azure-native_network_subnet" "subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   address_prefix      = "10.0.0.0/16"
 ///   resource_group_name = "subnet-test"
 ///   service_endpoints {
@@ -695,7 +707,7 @@ import 'subnet_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -704,6 +716,9 @@ import 'subnet_args.dart';
 /// }
 ///
 /// resource "azure-native_network_subnet" "subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   address_prefix       = "10.0.0.0/16"
 ///   resource_group_name  = "subnet-test"
 ///   subnet_name          = "subnet1"

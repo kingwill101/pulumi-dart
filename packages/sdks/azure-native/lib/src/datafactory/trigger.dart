@@ -108,7 +108,7 @@ import 'trigger_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -117,25 +117,28 @@ import 'trigger_args.dart';
 /// }
 ///
 /// resource "azure-native_datafactory_trigger" "trigger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   factory_name = "exampleFactoryName"
 ///   properties = {
-///     "pipelines" = [{
-///       "parameters" = {
+///     pipelines = [{
+///       parameters = {
 ///         "OutputBlobNameList" = ["exampleoutput.csv"]
 ///       }
-///       "pipelineReference" = {
-///         "referenceName" = "examplePipeline"
-///         "type"          = "PipelineReference"
+///       pipeline_reference = {
+///         reference_name = "examplePipeline"
+///         type           = "PipelineReference"
 ///       }
 ///     }]
-///     "recurrence" = {
-///       "endTime"   = "2018-06-16T00:55:13.8441801Z"
-///       "frequency" = "Minute"
-///       "interval"  = 4
-///       "startTime" = "2018-06-16T00:39:13.8441801Z"
-///       "timeZone"  = "UTC"
+///     recurrence = {
+///       end_time   = "2018-06-16T00:55:13.8441801Z"
+///       frequency  = "Minute"
+///       interval   = 4
+///       start_time = "2018-06-16T00:39:13.8441801Z"
+///       time_zone  = "UTC"
 ///     }
-///     "type" = "ScheduleTrigger"
+///     type = "ScheduleTrigger"
 ///   }
 ///   resource_group_name = "exampleResourceGroup"
 ///   trigger_name        = "exampleTrigger"
@@ -151,6 +154,17 @@ import 'trigger_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datafactory.Trigger;
 /// import com.pulumi.azurenative.datafactory.TriggerArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.BlobEventsTriggerArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.TriggerPipelineReferenceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.PipelineReferenceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.BlobTriggerArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ChainingTriggerArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CustomEventsTriggerArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MultiplePipelineTriggerArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.RerunTumblingWindowTriggerArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ScheduleTriggerArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ScheduleTriggerRecurrenceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.TumblingWindowTriggerArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -181,7 +195,6 @@ import 'trigger_args.dart';
 ///                     .startTime("2018-06-16T00:39:13.8441801Z")
 ///                     .timeZone("UTC")
 ///                     .build())
-///                 .type("ScheduleTrigger")
 ///                 .build())
 ///             .resourceGroupName("exampleResourceGroup")
 ///             .triggerName("exampleTrigger")
@@ -382,7 +395,7 @@ import 'trigger_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -391,26 +404,29 @@ import 'trigger_args.dart';
 /// }
 ///
 /// resource "azure-native_datafactory_trigger" "trigger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   factory_name = "exampleFactoryName"
 ///   properties = {
-///     "description" = "Example description"
-///     "pipelines" = [{
-///       "parameters" = {
+///     description = "Example description"
+///     pipelines = [{
+///       parameters = {
 ///         "OutputBlobNameList" = ["exampleoutput.csv"]
 ///       }
-///       "pipelineReference" = {
-///         "referenceName" = "examplePipeline"
-///         "type"          = "PipelineReference"
+///       pipeline_reference = {
+///         reference_name = "examplePipeline"
+///         type           = "PipelineReference"
 ///       }
 ///     }]
-///     "recurrence" = {
-///       "endTime"   = "2018-06-16T00:55:14.905167Z"
-///       "frequency" = "Minute"
-///       "interval"  = 4
-///       "startTime" = "2018-06-16T00:39:14.905167Z"
-///       "timeZone"  = "UTC"
+///     recurrence = {
+///       end_time   = "2018-06-16T00:55:14.905167Z"
+///       frequency  = "Minute"
+///       interval   = 4
+///       start_time = "2018-06-16T00:39:14.905167Z"
+///       time_zone  = "UTC"
 ///     }
-///     "type" = "ScheduleTrigger"
+///     type = "ScheduleTrigger"
 ///   }
 ///   resource_group_name = "exampleResourceGroup"
 ///   trigger_name        = "exampleTrigger"
@@ -426,6 +442,17 @@ import 'trigger_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datafactory.Trigger;
 /// import com.pulumi.azurenative.datafactory.TriggerArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.BlobEventsTriggerArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.TriggerPipelineReferenceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.PipelineReferenceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.BlobTriggerArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ChainingTriggerArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CustomEventsTriggerArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MultiplePipelineTriggerArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.RerunTumblingWindowTriggerArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ScheduleTriggerArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ScheduleTriggerRecurrenceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.TumblingWindowTriggerArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -457,7 +484,6 @@ import 'trigger_args.dart';
 ///                     .startTime("2018-06-16T00:39:14.905167Z")
 ///                     .timeZone("UTC")
 ///                     .build())
-///                 .type("ScheduleTrigger")
 ///                 .build())
 ///             .resourceGroupName("exampleResourceGroup")
 ///             .triggerName("exampleTrigger")

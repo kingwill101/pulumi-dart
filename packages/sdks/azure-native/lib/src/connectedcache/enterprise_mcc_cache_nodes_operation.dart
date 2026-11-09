@@ -170,7 +170,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -178,7 +178,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_connectedcache_enterprisemcccachenodesoperation" "enterpriseMccCacheNodesOperation" {
+/// resource "azure-native_connectedcache_enterprise_mcc_cache_nodes_operation" "enterpriseMccCacheNodesOperation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cache_node_resource_name = "fgduqdovidpemlnmhelomffuafdrbgaasqznvrdkbvspfzsnrhncdtqquhijhdpwyzwleukqldpceyxqhqlftqrr"
 ///   customer_resource_name   = "nhdkvstdrrtsxxuz"
 ///   location                 = "westus"
@@ -189,10 +192,10 @@ import 'system_data_response.dart';
 ///       }
 ///       cache_node_properties_details_issues_list = ["ennbzfpuszgalzpawmwicaofqcwcj"]
 ///       drive_configuration = [{
-///         "cacheNumber"  = 11
-///         "nginxMapping" = "cirlpkpuxg"
-///         "physicalPath" = "pcbkezoofhamkycot"
-///         "sizeInGb"     = 14
+///         cache_number  = 11
+///         nginx_mapping = "cirlpkpuxg"
+///         physical_path = "pcbkezoofhamkycot"
+///         size_in_gb    = 14
 ///       }]
 ///       optional_property1 = "ph"
 ///       optional_property2 = "soqqgpgcbhb"
@@ -242,6 +245,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.connectedcache.inputs.CacheNodePropertyArgs;
 /// import com.pulumi.azurenative.connectedcache.inputs.AdditionalCacheNodePropertiesArgs;
 /// import com.pulumi.azurenative.connectedcache.inputs.BgpConfigurationArgs;
+/// import com.pulumi.azurenative.connectedcache.inputs.CacheNodeDriveConfigurationArgs;
 /// import com.pulumi.azurenative.connectedcache.inputs.ProxyUrlConfigurationArgs;
 /// import com.pulumi.azurenative.connectedcache.inputs.CacheNodeEntityArgs;
 /// import java.util.ArrayList;

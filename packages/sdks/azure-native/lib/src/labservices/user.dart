@@ -62,7 +62,7 @@ import 'user_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,6 +71,9 @@ import 'user_args.dart';
 /// }
 ///
 /// resource "azure-native_labservices_user" "user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   additional_usage_quota = "PT10H"
 ///   email                  = "testuser@contoso.com"
 ///   lab_name               = "testlab"

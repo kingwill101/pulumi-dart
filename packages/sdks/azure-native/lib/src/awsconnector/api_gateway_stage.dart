@@ -188,7 +188,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -196,7 +196,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_apigatewaystage" "apiGatewayStage" {
+/// resource "azure-native_awsconnector_api_gateway_stage" "apiGatewayStage" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "ixsfvcwygoceaaydsgkvubn"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -222,22 +225,22 @@ import 'system_data_response.dart';
 ///       description           = "dmxblpsncciutbbmfihkloqaxuab"
 ///       documentation_version = "fltvrg"
 ///       method_settings = [{
-///         "cacheDataEncrypted"   = true
-///         "cacheTtlInSeconds"    = 15
-///         "cachingEnabled"       = true
-///         "dataTraceEnabled"     = true
-///         "httpMethod"           = "wojjxwrlnmnertmfkstofcoekjxd"
-///         "loggingLevel"         = "cezcwkojlmp"
-///         "metricsEnabled"       = true
-///         "resourcePath"         = "fsaykfuxsfvultpnnpjjbak"
-///         "throttlingBurstLimit" = 3
-///         "throttlingRateLimit"  = 28
+///         cache_data_encrypted   = true
+///         cache_ttl_in_seconds   = 15
+///         caching_enabled        = true
+///         data_trace_enabled     = true
+///         http_method            = "wojjxwrlnmnertmfkstofcoekjxd"
+///         logging_level          = "cezcwkojlmp"
+///         metrics_enabled        = true
+///         resource_path          = "fsaykfuxsfvultpnnpjjbak"
+///         throttling_burst_limit = 3
+///         throttling_rate_limit  = 28
 ///       }]
 ///       rest_api_id = "cycztypxndrdmstjwi"
 ///       stage_name  = "iukgreicaikhlooycykkql"
 ///       tags = [{
-///         "key"   = "hnoncuskljmyehkhfaytophcz"
-///         "value" = "x"
+///         key   = "hnoncuskljmyehkhfaytophcz"
+///         value = "x"
 ///       }]
 ///       tracing_enabled = true
 ///       variables = {
@@ -272,6 +275,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsApiGatewayStagePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AccessLogSettingArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CanarySettingArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.MethodSettingArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

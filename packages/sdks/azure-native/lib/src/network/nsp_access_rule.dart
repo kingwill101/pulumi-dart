@@ -71,7 +71,7 @@ import 'subscription_id_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'subscription_id_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_nspaccessrule" "nspAccessRule" {
+/// resource "azure-native_network_nsp_access_rule" "nspAccessRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   access_rule_name                = "accessRule1"
 ///   address_prefixes                = ["10.11.0.0/16", "10.10.1.0/24"]
 ///   direction                       = "Inbound"

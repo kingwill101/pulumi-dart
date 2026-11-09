@@ -73,7 +73,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,7 +81,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_restorepointcollection" "restorePointCollection" {
+/// resource "azure-native_compute_restore_point_collection" "restorePointCollection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                      = "norwayeast"
 ///   resource_group_name           = "myResourceGroup"
 ///   restore_point_collection_name = "myRpc"
@@ -244,7 +247,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -252,7 +255,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_restorepointcollection" "restorePointCollection" {
+/// resource "azure-native_compute_restore_point_collection" "restorePointCollection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                      = "norwayeast"
 ///   resource_group_name           = "myResourceGroup"
 ///   restore_point_collection_name = "myRpc"

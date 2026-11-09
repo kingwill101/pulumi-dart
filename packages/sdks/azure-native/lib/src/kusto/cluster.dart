@@ -133,7 +133,7 @@ import 'virtual_network_configuration_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -142,6 +142,9 @@ import 'virtual_network_configuration_response.dart';
 /// }
 ///
 /// resource "azure-native_kusto_cluster" "cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allowed_ip_range_list    = ["0.0.0.0/0"]
 ///   cluster_name             = "kustoCluster"
 ///   enable_auto_stop         = true
@@ -153,11 +156,11 @@ import 'virtual_network_configuration_response.dart';
 ///   }
 ///   language_extensions = {
 ///     value = [{
-///       "languageExtensionImageName" = "Python3_10_8"
-///       "languageExtensionName"      = "PYTHON"
+///       language_extension_image_name = "Python3_10_8"
+///       language_extension_name       = "PYTHON"
 ///       }, {
-///       "languageExtensionImageName" = "R"
-///       "languageExtensionName"      = "R"
+///       language_extension_image_name = "R"
+///       language_extension_name       = "R"
 ///     }]
 ///   }
 ///   location              = "westus"
@@ -183,6 +186,7 @@ import 'virtual_network_configuration_response.dart';
 /// import com.pulumi.azurenative.kusto.ClusterArgs;
 /// import com.pulumi.azurenative.kusto.inputs.IdentityArgs;
 /// import com.pulumi.azurenative.kusto.inputs.LanguageExtensionsListArgs;
+/// import com.pulumi.azurenative.kusto.inputs.LanguageExtensionArgs;
 /// import com.pulumi.azurenative.kusto.inputs.AzureSkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

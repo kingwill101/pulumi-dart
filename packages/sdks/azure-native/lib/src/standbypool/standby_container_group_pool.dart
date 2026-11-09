@@ -29,7 +29,7 @@ import 'system_data_response.dart';
 ///             ContainerGroupProfile = new AzureNative.StandbyPool.Inputs.ContainerGroupProfileArgs
 ///             {
 ///                 Id = "/subscriptions/00000000-0000-0000-0000-000000000009/resourceGroups/rgstandbypool/providers/Microsoft.ContainerInstance/containerGroupProfiles/cgProfile",
-///                 Revision = 1,
+///                 Revision = 1.0,
 ///             },
 ///             SubnetIds = new[]
 ///             {
@@ -41,13 +41,13 @@ import 'system_data_response.dart';
 ///         },
 ///         ElasticityProfile = new AzureNative.StandbyPool.Inputs.StandbyContainerGroupPoolElasticityProfileArgs
 ///         {
-///             MaxReadyCapacity = 688,
+///             MaxReadyCapacity = 688.0,
 ///             RefillPolicy = AzureNative.StandbyPool.RefillPolicy.Always,
 ///         },
 ///         Location = "West US",
 ///         ResourceGroupName = "rgstandbypool",
 ///         StandbyContainerGroupPoolName = "pool",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -96,7 +96,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -104,14 +104,17 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_standbypool_standbycontainergrouppool" "standbyContainerGroupPool" {
+/// resource "azure-native_standbypool_standby_container_group_pool" "standbyContainerGroupPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   container_group_properties = {
 ///     container_group_profile = {
 ///       id       = "/subscriptions/00000000-0000-0000-0000-000000000009/resourceGroups/rgstandbypool/providers/Microsoft.ContainerInstance/containerGroupProfiles/cgProfile"
 ///       revision = 1
 ///     }
 ///     subnet_ids = [{
-///       "id" = "/subscriptions/00000000-0000-0000-0000-000000000009/resourceGroups/rgstandbypool/providers/Microsoft.Network/virtualNetworks/cgSubnet/subnets/cgSubnet"
+///       id = "/subscriptions/00000000-0000-0000-0000-000000000009/resourceGroups/rgstandbypool/providers/Microsoft.Network/virtualNetworks/cgSubnet/subnets/cgSubnet"
 ///     }]
 ///   }
 ///   elasticity_profile = {
@@ -136,6 +139,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.standbypool.StandbyContainerGroupPoolArgs;
 /// import com.pulumi.azurenative.standbypool.inputs.ContainerGroupPropertiesArgs;
 /// import com.pulumi.azurenative.standbypool.inputs.ContainerGroupProfileArgs;
+/// import com.pulumi.azurenative.standbypool.inputs.SubnetArgs;
 /// import com.pulumi.azurenative.standbypool.inputs.StandbyContainerGroupPoolElasticityProfileArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

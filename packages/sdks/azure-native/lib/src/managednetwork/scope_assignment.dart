@@ -54,7 +54,7 @@ import 'scope_assignment_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -62,7 +62,10 @@ import 'scope_assignment_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managednetwork_scopeassignment" "scopeAssignment" {
+/// resource "azure-native_managednetwork_scope_assignment" "scopeAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assigned_managed_network = "/subscriptions/subscriptionA/resourceGroups/myResourceGroup/providers/Microsoft.ManagedNetwork/managedNetworks/myManagedNetwork"
 ///   scope                    = "subscriptions/subscriptionC"
 ///   scope_assignment_name    = "subscriptionCAssignment"

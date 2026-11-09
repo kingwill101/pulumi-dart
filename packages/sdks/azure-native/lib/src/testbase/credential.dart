@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,6 +68,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_testbase_credential" "credential" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   credential_name        = "contoso-credential"
 ///   credential_type        = "IntuneAccount"
 ///   display_name           = "contoso-credential"

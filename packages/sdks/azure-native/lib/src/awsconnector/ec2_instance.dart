@@ -704,7 +704,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -712,7 +712,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_ec2instance" "ec2Instance" {
+/// resource "azure-native_awsconnector_ec2_instance" "ec2Instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     arn            = "noxwkahrsrcnrpz"
 ///     aws_account_id = "hhrjjrfopsrebnklxmr"
@@ -722,16 +725,16 @@ import 'system_data_response.dart';
 ///         value = "arm64"
 ///       }
 ///       block_device_mappings = [{
-///         "deviceName" = "tfaglaaaklzilxzmk"
-///         "ebs" = {
-///           "associatedResource"  = "pgkczdagxihtrkzzaiuzennp"
-///           "attachTime"          = "2024-10-08T03:49:10.616Z"
-///           "deleteOnTermination" = true
-///           "status" = {
-///             "value" = "attached"
+///         device_name = "tfaglaaaklzilxzmk"
+///         ebs = {
+///           associated_resource   = "pgkczdagxihtrkzzaiuzennp"
+///           attach_time           = "2024-10-08T03:49:10.616Z"
+///           delete_on_termination = true
+///           status = {
+///             value = "attached"
 ///           }
-///           "volumeId"      = "ilihhdgfhpylwqnaglcmj"
-///           "volumeOwnerId" = "ruylzxnmlundujqdqkqocknldkttka"
+///           volume_id       = "ilihhdgfhpylwqnaglcmj"
+///           volume_owner_id = "ruylzxnmlundujqdqkqocknldkttka"
 ///         }
 ///       }]
 ///       boot_mode = {
@@ -760,16 +763,16 @@ import 'system_data_response.dart';
 ///       }
 ///       ebs_optimized = true
 ///       elastic_gpu_associations = [{
-///         "elasticGpuAssociationId"    = "jmxqiqiyocefwrivbcumzx"
-///         "elasticGpuAssociationState" = "mkteimwlzs"
-///         "elasticGpuAssociationTime"  = "sosasrnqg"
-///         "elasticGpuId"               = "dnpmhib"
+///         elastic_gpu_association_id    = "jmxqiqiyocefwrivbcumzx"
+///         elastic_gpu_association_state = "mkteimwlzs"
+///         elastic_gpu_association_time  = "sosasrnqg"
+///         elastic_gpu_id                = "dnpmhib"
 ///       }]
 ///       elastic_inference_accelerator_associations = [{
-///         "elasticInferenceAcceleratorArn"              = "pnbrdzuzjxuwrtpdc"
-///         "elasticInferenceAcceleratorAssociationId"    = "uoout"
-///         "elasticInferenceAcceleratorAssociationState" = "bwbmjkusisjrxxdonwtxkbgbaxk"
-///         "elasticInferenceAcceleratorAssociationTime"  = "2024-10-08T03:49:10.617Z"
+///         elastic_inference_accelerator_arn               = "pnbrdzuzjxuwrtpdc"
+///         elastic_inference_accelerator_association_id    = "uoout"
+///         elastic_inference_accelerator_association_state = "bwbmjkusisjrxxdonwtxkbgbaxk"
+///         elastic_inference_accelerator_association_time  = "2024-10-08T03:49:10.617Z"
 ///       }]
 ///       ena_support = true
 ///       enclave_options = {
@@ -798,7 +801,7 @@ import 'system_data_response.dart';
 ///       key_name     = "bxxdzmyclfgrwqwnjajhs"
 ///       launch_time  = "2024-10-08T03:49:10.618Z"
 ///       licenses = [{
-///         "licenseConfigurationArn" = "q"
+///         license_configuration_arn = "q"
 ///       }]
 ///       maintenance_options = {
 ///         auto_recovery = {
@@ -829,73 +832,73 @@ import 'system_data_response.dart';
 ///         }
 ///       }
 ///       network_interfaces = [{
-///         "association" = {
-///           "carrierIp"       = "gyqfkluecfuwebntnygczb"
-///           "customerOwnedIp" = "sw"
-///           "ipOwnerId"       = "fbrkixipyqjnao"
-///           "publicDnsName"   = "oivnzjavxqmctzvhgmsavgwesabny"
-///           "publicIp"        = "tojjymqqjmschjp"
+///         association = {
+///           carrier_ip        = "gyqfkluecfuwebntnygczb"
+///           customer_owned_ip = "sw"
+///           ip_owner_id       = "fbrkixipyqjnao"
+///           public_dns_name   = "oivnzjavxqmctzvhgmsavgwesabny"
+///           public_ip         = "tojjymqqjmschjp"
 ///         }
-///         "attachment" = {
-///           "attachTime"          = "2024-10-08T03:49:10.618Z"
-///           "attachmentId"        = "lsqnlzd"
-///           "deleteOnTermination" = true
-///           "deviceIndex"         = 11
-///           "enaSrdSpecification" = {
-///             "enaSrdEnabled" = true
-///             "enaSrdUdpSpecification" = {
-///               "enaSrdUdpEnabled" = true
+///         attachment = {
+///           attach_time           = "2024-10-08T03:49:10.618Z"
+///           attachment_id         = "lsqnlzd"
+///           delete_on_termination = true
+///           device_index          = 11
+///           ena_srd_specification = {
+///             ena_srd_enabled = true
+///             ena_srd_udp_specification = {
+///               ena_srd_udp_enabled = true
 ///             }
 ///           }
-///           "networkCardIndex" = 9
-///           "status" = {
-///             "value" = "attached"
+///           network_card_index = 9
+///           status = {
+///             value = "attached"
 ///           }
 ///         }
-///         "connectionTrackingConfiguration" = {
-///           "tcpEstablishedTimeout" = 23
-///           "udpStreamTimeout"      = 24
-///           "udpTimeout"            = 30
+///         connection_tracking_configuration = {
+///           tcp_established_timeout = 23
+///           udp_stream_timeout      = 24
+///           udp_timeout             = 30
 ///         }
-///         "description" = "wcdguczvqhelvbuhnx"
-///         "groups" = [{
-///           "groupId"   = "nwupmxpxrzdroizfewqupyddewi"
-///           "groupName" = "gvsaaqihzfcwdmeocclatfqm"
+///         description = "wcdguczvqhelvbuhnx"
+///         groups = [{
+///           group_id   = "nwupmxpxrzdroizfewqupyddewi"
+///           group_name = "gvsaaqihzfcwdmeocclatfqm"
 ///         }]
-///         "interfaceType" = "mphomintds"
-///         "ipv4Prefixes" = [{
-///           "ipv4Prefix" = "ortyghjrffqjz"
+///         interface_type = "mphomintds"
+///         ipv4_prefixes = [{
+///           ipv4_prefix = "ortyghjrffqjz"
 ///         }]
-///         "ipv6Addresses" = [{
-///           "ipv6Address"   = "z"
-///           "isPrimaryIpv6" = true
+///         ipv6_addresses = [{
+///           ipv6_address    = "z"
+///           is_primary_ipv6 = true
 ///         }]
-///         "ipv6Prefixes" = [{
-///           "ipv6Prefix" = "cstrptdpvmberviuvuqfd"
+///         ipv6_prefixes = [{
+///           ipv6_prefix = "cstrptdpvmberviuvuqfd"
 ///         }]
-///         "macAddress"         = "k"
-///         "networkInterfaceId" = "qythf"
-///         "ownerId"            = "fvjysbetbyrzccspcenkpvi"
-///         "privateDnsName"     = "yvorusnuuigavdcqqdxecrkmjmhrf"
-///         "privateIpAddress"   = "m"
-///         "privateIpAddresses" = [{
-///           "association" = {
-///             "carrierIp"       = "gyqfkluecfuwebntnygczb"
-///             "customerOwnedIp" = "sw"
-///             "ipOwnerId"       = "fbrkixipyqjnao"
-///             "publicDnsName"   = "oivnzjavxqmctzvhgmsavgwesabny"
-///             "publicIp"        = "tojjymqqjmschjp"
+///         mac_address          = "k"
+///         network_interface_id = "qythf"
+///         owner_id             = "fvjysbetbyrzccspcenkpvi"
+///         private_dns_name     = "yvorusnuuigavdcqqdxecrkmjmhrf"
+///         private_ip_address   = "m"
+///         private_ip_addresses = [{
+///           association = {
+///             carrier_ip        = "gyqfkluecfuwebntnygczb"
+///             customer_owned_ip = "sw"
+///             ip_owner_id       = "fbrkixipyqjnao"
+///             public_dns_name   = "oivnzjavxqmctzvhgmsavgwesabny"
+///             public_ip         = "tojjymqqjmschjp"
 ///           }
-///           "primary"          = true
-///           "privateDnsName"   = "bdezhkhwoerivtfwgqelrsyiphf"
-///           "privateIpAddress" = "xcqnyrs"
+///           primary            = true
+///           private_dns_name   = "bdezhkhwoerivtfwgqelrsyiphf"
+///           private_ip_address = "xcqnyrs"
 ///         }]
-///         "sourceDestCheck" = true
-///         "status" = {
-///           "value" = "associated"
+///         source_dest_check = true
+///         status = {
+///           value = "associated"
 ///         }
-///         "subnetId" = "euocsemlw"
-///         "vpcId"    = "grahbrhjelkewder"
+///         subnet_id = "euocsemlw"
+///         vpc_id    = "grahbrhjelkewder"
 ///       }]
 ///       outpost_arn = "godjddxeidxe"
 ///       placement = {
@@ -925,9 +928,9 @@ import 'system_data_response.dart';
 ///       }
 ///       private_ip_address = "uosximzwwopktgyzlathmorgqah"
 ///       product_codes = [{
-///         "productCodeId" = "sexxutnmcfhkamhmvjrggoscatni"
-///         "productCodeType" = {
-///           "value" = "devpay"
+///         product_code_id = "sexxutnmcfhkamhmvjrggoscatni"
+///         product_code_type = {
+///           value = "devpay"
 ///         }
 ///       }]
 ///       public_dns_name   = "qkucqmeldgiumuzribitahwft"
@@ -938,8 +941,8 @@ import 'system_data_response.dart';
 ///         value = "ebs"
 ///       }
 ///       security_groups = [{
-///         "groupId"   = "nwupmxpxrzdroizfewqupyddewi"
-///         "groupName" = "gvsaaqihzfcwdmeocclatfqm"
+///         group_id   = "nwupmxpxrzdroizfewqupyddewi"
+///         group_name = "gvsaaqihzfcwdmeocclatfqm"
 ///       }]
 ///       source_dest_check        = true
 ///       spot_instance_request_id = "qiylxsuuinwyq"
@@ -957,8 +960,8 @@ import 'system_data_response.dart';
 ///       state_transition_reason = "arenmfmnvv"
 ///       subnet_id               = "mgnibedayjllwaidbjh"
 ///       tags = [{
-///         "key"   = "pbvbjvyuqibbevydlslmfple"
-///         "value" = "zztbwjxzwgmnjqhegktznmdrqferd"
+///         key   = "pbvbjvyuqibbevydlslmfple"
+///         value = "zztbwjxzwgmnjqhegktznmdrqferd"
 ///       }]
 ///       tpm_support                 = "fvxtckturm"
 ///       usage_operation             = "xrctwrcgpcrhlfjzhdvhiovdlcqafq"
@@ -992,6 +995,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.Ec2InstancePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEc2InstancePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ArchitectureValuesEnumValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.InstanceBlockDeviceMappingArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.EbsInstanceBlockDeviceArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.AttachmentStatusEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.BootModeValuesEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CapacityReservationSpecificationResponseArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CapacityReservationPreferenceEnumValueArgs;
@@ -999,12 +1005,15 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.CpuOptionsArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AmdSevSnpSpecificationEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.InstanceBootModeValuesEnumValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ElasticGpuAssociationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ElasticInferenceAcceleratorAssociationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.EnclaveOptionsArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.HibernationOptionsArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.HypervisorTypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.IamInstanceProfileArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.InstanceLifecycleTypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.InstanceTypeEnumValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.LicenseConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.InstanceMaintenanceOptionsArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.InstanceAutoRecoveryStateEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.InstanceMetadataOptionsResponseArgs;
@@ -1015,15 +1024,30 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.InstanceMetadataOptionsStateEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.MonitoringArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.MonitoringStateEnumValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.InstanceNetworkInterfaceArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.InstanceNetworkInterfaceAssociationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.InstanceNetworkInterfaceAttachmentArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.InstanceAttachmentEnaSrdSpecificationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.InstanceAttachmentEnaSrdUdpSpecificationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ConnectionTrackingSpecificationResponseArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.GroupIdentifierArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.InstanceIpv4PrefixArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.InstanceIpv6AddressArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.InstanceIpv6PrefixArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.InstancePrivateIpAddressArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.NetworkInterfaceStatusEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.PlacementArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.TenancyEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.PlatformValuesEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.PrivateDnsNameOptionsResponseArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.HostnameTypeEnumValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ProductCodeArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ProductCodeValuesEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.DeviceTypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.InstanceStateArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.InstanceStateNameEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.StateReasonArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.VirtualizationTypeEnumValueArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

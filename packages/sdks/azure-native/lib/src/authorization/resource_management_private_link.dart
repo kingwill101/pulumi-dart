@@ -53,7 +53,7 @@ import 'resource_management_private_link_endpoint_connections_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -61,7 +61,10 @@ import 'resource_management_private_link_endpoint_connections_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_resourcemanagementprivatelink" "resourceManagementPrivateLink" {
+/// resource "azure-native_authorization_resource_management_private_link" "resourceManagementPrivateLink" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "eastus"
 ///   resource_group_name = "my-resource-group"
 ///   rmpl_name           = "my-rmplName"

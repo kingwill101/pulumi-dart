@@ -65,7 +65,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_databoxedge_arcaddon" "arcAddon" {
+/// resource "azure-native_databoxedge_arc_addon" "arcAddon" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_name          = "arcName"
 ///   device_name         = "testedgedevice"
 ///   kind                = "ArcForKubernetes"
@@ -110,7 +113,6 @@ import 'system_data_response.dart';
 ///         var arcAddon = new ArcAddon("arcAddon", ArcAddonArgs.builder()
 ///             .addonName("arcName")
 ///             .deviceName("testedgedevice")
-///             .kind("ArcForKubernetes")
 ///             .resourceGroupName("GroupForEdgeAutomation")
 ///             .resourceLocation("EastUS")
 ///             .resourceName("testedgedevice")

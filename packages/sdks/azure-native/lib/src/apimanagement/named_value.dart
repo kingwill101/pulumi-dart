@@ -72,7 +72,7 @@ import 'named_value_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'named_value_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_namedvalue" "namedValue" {
+/// resource "azure-native_apimanagement_named_value" "namedValue" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name        = "prop3name"
 ///   named_value_id      = "testprop2"
 ///   resource_group_name = "rg1"
@@ -254,7 +257,7 @@ import 'named_value_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -262,7 +265,10 @@ import 'named_value_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_namedvalue" "namedValue" {
+/// resource "azure-native_apimanagement_named_value" "namedValue" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "prop6namekv"
 ///   key_vault = {
 ///     identity_client_id = "ceaa6b06-c00f-43ef-99ac-f53d1fe876a0"

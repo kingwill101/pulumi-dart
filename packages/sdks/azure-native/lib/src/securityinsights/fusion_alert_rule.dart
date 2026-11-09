@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_fusionalertrule" "fusionAlertRule" {
+/// resource "azure-native_securityinsights_fusion_alert_rule" "fusionAlertRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alert_rule_template_name = "f71aba3d-28fb-450b-b192-4e76a83015c8"
 ///   enabled                  = true
 ///   kind                     = "Fusion"
@@ -104,7 +107,6 @@ import 'system_data_response.dart';
 ///         var fusionAlertRule = new FusionAlertRule("fusionAlertRule", FusionAlertRuleArgs.builder()
 ///             .alertRuleTemplateName("f71aba3d-28fb-450b-b192-4e76a83015c8")
 ///             .enabled(true)
-///             .kind("Fusion")
 ///             .resourceGroupName("myRg")
 ///             .ruleId("myFirstFusionRule")
 ///             .workspaceName("myWorkspace")
@@ -206,7 +208,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -214,7 +216,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_fusionalertrule" "fusionAlertRule" {
+/// resource "azure-native_securityinsights_fusion_alert_rule" "fusionAlertRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "myRg"
 ///   rule_id             = "microsoftSecurityIncidentCreationRuleExample"
 ///   workspace_name      = "myWorkspace"
@@ -336,7 +341,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -344,7 +349,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_fusionalertrule" "fusionAlertRule" {
+/// resource "azure-native_securityinsights_fusion_alert_rule" "fusionAlertRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "myRg"
 ///   rule_id             = "73e01a99-5cd7-4139-a149-9f2736ff2ab5"
 ///   workspace_name      = "myWorkspace"

@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_sentinelonboardingstate" "sentinelOnboardingState" {
+/// resource "azure-native_securityinsights_sentinel_onboarding_state" "sentinelOnboardingState" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   customer_managed_key           = false
 ///   resource_group_name            = "myRg"
 ///   sentinel_onboarding_state_name = "default"

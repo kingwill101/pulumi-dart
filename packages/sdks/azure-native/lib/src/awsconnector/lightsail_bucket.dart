@@ -141,7 +141,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -149,7 +149,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_lightsailbucket" "lightsailBucket" {
+/// resource "azure-native_awsconnector_lightsail_bucket" "lightsailBucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "ctcjoqkhbmgwtqztn"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -168,8 +171,8 @@ import 'system_data_response.dart';
 ///       read_only_access_accounts  = ["yptmppbxsgfmbvcoourx"]
 ///       resources_receiving_access = ["abmltbmvfqgzha"]
 ///       tags = [{
-///         "key"   = "pllzblljxgv"
-///         "value" = "onksgozpshqfschbsuyhhui"
+///         key   = "pllzblljxgv"
+///         value = "onksgozpshqfschbsuyhhui"
 ///       }]
 ///       url = "dzofeppuoqkmehqcpzpezbmbvrvqbn"
 ///     }
@@ -200,6 +203,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.LightsailBucketPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsLightsailBucketPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AccessRulesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

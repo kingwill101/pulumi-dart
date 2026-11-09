@@ -173,7 +173,7 @@ import 'target_region_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -181,7 +181,10 @@ import 'target_region_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_galleryinvmaccesscontrolprofileversion" "galleryInVMAccessControlProfileVersion" {
+/// resource "azure-native_compute_gallery_in_v_m_access_control_profile_version" "galleryInVMAccessControlProfileVersion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   default_access                            = "Allow"
 ///   exclude_from_latest                       = false
 ///   gallery_name                              = "myGalleryName"
@@ -192,26 +195,26 @@ import 'target_region_response.dart';
 ///   resource_group_name                       = "myResourceGroup"
 ///   rules = {
 ///     identities = [{
-///       "exePath"     = "C:\\Windows\\System32\\cscript.exe"
-///       "groupName"   = "Administrators"
-///       "name"        = "WinPA"
-///       "processName" = "cscript"
-///       "userName"    = "SYSTEM"
+///       exe_path     = "C:\\Windows\\System32\\cscript.exe"
+///       group_name   = "Administrators"
+///       name         = "WinPA"
+///       process_name = "cscript"
+///       user_name    = "SYSTEM"
 ///     }]
 ///     privileges = [{
-///       "name" = "GoalState"
-///       "path" = "/machine"
-///       "queryParameters" = {
+///       name = "GoalState"
+///       path = "/machine"
+///       query_parameters = {
 ///         "comp" = "goalstate"
 ///       }
 ///     }]
 ///     role_assignments = [{
-///       "identities" = ["WinPA"]
-///       "role"       = "Provisioning"
+///       identities = ["WinPA"]
+///       role       = "Provisioning"
 ///     }]
 ///     roles = [{
-///       "name"       = "Provisioning"
-///       "privileges" = ["GoalState"]
+///       name       = "Provisioning"
+///       privileges = ["GoalState"]
 ///     }]
 ///   }
 ///   target_locations {
@@ -233,6 +236,10 @@ import 'target_region_response.dart';
 /// import com.pulumi.azurenative.compute.GalleryInVMAccessControlProfileVersion;
 /// import com.pulumi.azurenative.compute.GalleryInVMAccessControlProfileVersionArgs;
 /// import com.pulumi.azurenative.compute.inputs.AccessControlRulesArgs;
+/// import com.pulumi.azurenative.compute.inputs.AccessControlRulesIdentityArgs;
+/// import com.pulumi.azurenative.compute.inputs.AccessControlRulesPrivilegeArgs;
+/// import com.pulumi.azurenative.compute.inputs.AccessControlRulesRoleAssignmentArgs;
+/// import com.pulumi.azurenative.compute.inputs.AccessControlRulesRoleArgs;
 /// import com.pulumi.azurenative.compute.inputs.TargetRegionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

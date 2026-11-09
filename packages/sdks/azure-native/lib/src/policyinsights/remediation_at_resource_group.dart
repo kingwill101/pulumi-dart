@@ -60,7 +60,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_policyinsights_remediationatresourcegroup" "remediationAtResourceGroup" {
+/// resource "azure-native_policyinsights_remediation_at_resource_group" "remediationAtResourceGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_assignment_id = "/subscriptions/35ee058e-5fa0-414c-8145-3ebb8d09b6e2/resourceGroups/myResourceGroup/providers/microsoft.authorization/policyassignments/b101830944f246d8a14088c5"
 ///   remediation_name     = "storageRemediation"
 ///   resource_group_name  = "myResourceGroup"

@@ -72,7 +72,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managednetworkfabric_l2isolationdomain" "l2IsolationDomain" {
+/// resource "azure-native_managednetworkfabric_l2_isolation_domain" "l2IsolationDomain" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   annotation               = "annotation"
 ///   l2_isolation_domain_name = "example-l2domain"
 ///   location                 = "eastus"

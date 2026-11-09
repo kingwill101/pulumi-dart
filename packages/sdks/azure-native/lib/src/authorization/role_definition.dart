@@ -56,7 +56,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -64,7 +64,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_roledefinition" "roleDefinition" {
+/// resource "azure-native_authorization_role_definition" "roleDefinition" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role_definition_id = "roleDefinitionId"
 ///   scope              = "scope"
 /// }

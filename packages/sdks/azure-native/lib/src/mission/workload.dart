@@ -24,7 +24,7 @@ import 'workload_args.dart';
 ///     var workload = new AzureNative.Mission.Workload("workload", new()
 ///     {
 ///         Location = "westcentralus",
-///         ResourceGroupCollection = new[] {},
+///         ResourceGroupCollection = new() {},
 ///         ResourceGroupName = "rgopenapi",
 ///         Tags =
 ///         {
@@ -69,7 +69,7 @@ import 'workload_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,6 +78,9 @@ import 'workload_args.dart';
 /// }
 ///
 /// resource "azure-native_mission_workload" "workload" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                  = "westcentralus"
 ///   resource_group_collection = []
 ///   resource_group_name       = "rgopenapi"

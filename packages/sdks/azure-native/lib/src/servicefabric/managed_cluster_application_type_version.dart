@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicefabric_managedclusterapplicationtypeversion" "managedClusterApplicationTypeVersion" {
+/// resource "azure-native_servicefabric_managed_cluster_application_type_version" "managedClusterApplicationTypeVersion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_package_url       = "http://fakelink.test.com/MyAppType"
 ///   application_type_name = "myAppType"
 ///   cluster_name          = "myCluster"

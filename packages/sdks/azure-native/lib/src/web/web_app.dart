@@ -98,7 +98,7 @@ import 'web_app_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -106,7 +106,10 @@ import 'web_app_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_web_webapp" "webApp" {
+/// resource "azure-native_web_web_app" "webApp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloning_info = {
 ///     app_settings_overrides = {
 ///       "Setting1" = "NewValue1"
@@ -380,7 +383,7 @@ import 'web_app_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -388,7 +391,10 @@ import 'web_app_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_web_webapp" "webApp" {
+/// resource "azure-native_web_web_app" "webApp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   function_app_config = {
 ///     deployment = {
 ///       storage = {
@@ -418,11 +424,11 @@ import 'web_app_args.dart';
 ///   resource_group_name = "testrg123"
 ///   site_config = {
 ///     app_settings = [{
-///       "name"  = "AzureWebJobsStorage"
-///       "value" = "DefaultEndpointsProtocol=https;AccountName=StorageAccountName;AccountKey=Sanitized;EndpointSuffix=core.windows.net"
+///       name  = "AzureWebJobsStorage"
+///       value = "DefaultEndpointsProtocol=https;AccountName=StorageAccountName;AccountKey=Sanitized;EndpointSuffix=core.windows.net"
 ///       }, {
-///       "name"  = "APPLICATIONINSIGHTS_CONNECTION_STRING"
-///       "value" = "InstrumentationKey=Sanitized;IngestionEndpoint=Sanitized;LiveEndpoint=Sanitized"
+///       name  = "APPLICATIONINSIGHTS_CONNECTION_STRING"
+///       value = "InstrumentationKey=Sanitized;IngestionEndpoint=Sanitized;LiveEndpoint=Sanitized"
 ///     }]
 ///   }
 /// }
@@ -445,6 +451,7 @@ import 'web_app_args.dart';
 /// import com.pulumi.azurenative.web.inputs.FunctionsScaleAndConcurrencyArgs;
 /// import com.pulumi.azurenative.web.inputs.FunctionsSiteUpdateStrategyArgs;
 /// import com.pulumi.azurenative.web.inputs.SiteConfigArgs;
+/// import com.pulumi.azurenative.web.inputs.NameValuePairArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -790,7 +797,7 @@ import 'web_app_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -798,7 +805,10 @@ import 'web_app_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_web_webapp" "webApp" {
+/// resource "azure-native_web_web_app" "webApp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   function_app_config = {
 ///     deployment = {
 ///       storage = {
@@ -816,8 +826,8 @@ import 'web_app_args.dart';
 ///     }
 ///     scale_and_concurrency = {
 ///       always_ready = [{
-///         "instanceCount" = 2
-///         "name"          = "http"
+///         instance_count = 2
+///         name           = "http"
 ///       }]
 ///       instance_memory_mb     = 2048
 ///       maximum_instance_count = 100
@@ -837,11 +847,11 @@ import 'web_app_args.dart';
 ///   resource_group_name = "testrg123"
 ///   site_config = {
 ///     app_settings = [{
-///       "name"  = "AzureWebJobsStorage"
-///       "value" = "DefaultEndpointsProtocol=https;AccountName=StorageAccountName;AccountKey=Sanitized;EndpointSuffix=core.windows.net"
+///       name  = "AzureWebJobsStorage"
+///       value = "DefaultEndpointsProtocol=https;AccountName=StorageAccountName;AccountKey=Sanitized;EndpointSuffix=core.windows.net"
 ///       }, {
-///       "name"  = "APPLICATIONINSIGHTS_CONNECTION_STRING"
-///       "value" = "InstrumentationKey=Sanitized;IngestionEndpoint=Sanitized;LiveEndpoint=Sanitized"
+///       name  = "APPLICATIONINSIGHTS_CONNECTION_STRING"
+///       value = "InstrumentationKey=Sanitized;IngestionEndpoint=Sanitized;LiveEndpoint=Sanitized"
 ///     }]
 ///   }
 /// }
@@ -862,10 +872,12 @@ import 'web_app_args.dart';
 /// import com.pulumi.azurenative.web.inputs.FunctionsDeploymentStorageAuthenticationArgs;
 /// import com.pulumi.azurenative.web.inputs.FunctionsRuntimeArgs;
 /// import com.pulumi.azurenative.web.inputs.FunctionsScaleAndConcurrencyArgs;
+/// import com.pulumi.azurenative.web.inputs.FunctionsAlwaysReadyConfigArgs;
 /// import com.pulumi.azurenative.web.inputs.FunctionsScaleAndConcurrencyTriggersArgs;
 /// import com.pulumi.azurenative.web.inputs.FunctionsScaleAndConcurrencyTriggersHttpArgs;
 /// import com.pulumi.azurenative.web.inputs.FunctionsSiteUpdateStrategyArgs;
 /// import com.pulumi.azurenative.web.inputs.SiteConfigArgs;
+/// import com.pulumi.azurenative.web.inputs.NameValuePairArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1139,7 +1151,7 @@ import 'web_app_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1147,7 +1159,10 @@ import 'web_app_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_web_webapp" "webApp" {
+/// resource "azure-native_web_web_app" "webApp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   kind                = "app"
 ///   location            = "East US"
 ///   name                = "sitef6141"

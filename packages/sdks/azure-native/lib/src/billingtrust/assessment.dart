@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,6 +68,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_billingtrust_assessment" "assessment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     assessment_type = "BusinessVerification"
 ///   }
@@ -162,7 +165,7 @@ import 'system_data_response.dart';
 ///         Properties = new AzureNative.BillingTrust.Inputs.AssessmentPropertiesArgs
 ///         {
 ///             AssessmentType = AzureNative.BillingTrust.AssessmentType.Edu,
-///             InitialValues = new[]
+///             InitialValues =
 ///             {
 ///                 new AzureNative.BillingTrust.Inputs.EduInitialValueArgs
 ///                 {
@@ -230,7 +233,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -239,14 +242,17 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_billingtrust_assessment" "assessment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     assessment_type = "Edu"
 ///     initial_values = [{
-///       "domains" = [{
-///         "domainNames" = ["students.contoso.edu", "faculty.contoso.edu"]
-///         "tenantId"    = "11111111-1111-1111-1111-111111111111"
+///       domains = [{
+///         domain_names = ["students.contoso.edu", "faculty.contoso.edu"]
+///         tenant_id    = "11111111-1111-1111-1111-111111111111"
 ///       }]
-///       "kind" = "eduQualification"
+///       kind = "eduQualification"
 ///     }]
 ///   }
 ///   resource_uri = "subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/billing-edu-rg/providers/Microsoft.Program/educationEnrollments/default"
@@ -263,6 +269,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.billingtrust.Assessment;
 /// import com.pulumi.azurenative.billingtrust.AssessmentArgs;
 /// import com.pulumi.azurenative.billingtrust.inputs.AssessmentPropertiesArgs;
+/// import com.pulumi.azurenative.billingtrust.inputs.EduInitialValueArgs;
+/// import com.pulumi.azurenative.billingtrust.inputs.DomainEntryArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -279,15 +287,14 @@ import 'system_data_response.dart';
 ///         var assessment = new Assessment("assessment", AssessmentArgs.builder()
 ///             .properties(AssessmentPropertiesArgs.builder()
 ///                 .assessmentType("Edu")
-///                 .initialValues(Map.ofEntries(
-///                     Map.entry("domains", Arrays.asList(DomainEntryArgs.builder()
+///                 .initialValues(EduInitialValueArgs.builder()
+///                     .domains(DomainEntryArgs.builder()
 ///                         .domainNames(
 ///                             "students.contoso.edu",
 ///                             "faculty.contoso.edu")
 ///                         .tenantId("11111111-1111-1111-1111-111111111111")
-///                         .build())),
-///                     Map.entry("kind", "eduQualification")
-///                 ))
+///                         .build())
+///                     .build())
 ///                 .build())
 ///             .resourceUri("subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/billing-edu-rg/providers/Microsoft.Program/educationEnrollments/default")
 ///             .build());
@@ -411,7 +418,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -420,6 +427,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_billingtrust_assessment" "assessment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     assessment_type = "PayeeEnrollment"
 ///   }
@@ -549,7 +559,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -558,6 +568,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_billingtrust_assessment" "assessment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     assessment_type = "PayeeProfile"
 ///   }

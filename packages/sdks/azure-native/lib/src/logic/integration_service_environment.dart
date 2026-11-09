@@ -137,7 +137,7 @@ import 'managed_service_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -145,7 +145,10 @@ import 'managed_service_identity_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_logic_integrationserviceenvironment" "integrationServiceEnvironment" {
+/// resource "azure-native_logic_integration_service_environment" "integrationServiceEnvironment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   integration_service_environment_name = "testIntegrationServiceEnvironment"
 ///   location                             = "brazilsouth"
 ///   properties = {
@@ -163,13 +166,13 @@ import 'managed_service_identity_response.dart';
 ///         type = "Internal"
 ///       }
 ///       subnets = [{
-///         "id" = "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/testResourceGroup/providers/Microsoft.Network/virtualNetworks/testVNET/subnets/s1"
+///         id = "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/testResourceGroup/providers/Microsoft.Network/virtualNetworks/testVNET/subnets/s1"
 ///         }, {
-///         "id" = "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/testResourceGroup/providers/Microsoft.Network/virtualNetworks/testVNET/subnets/s2"
+///         id = "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/testResourceGroup/providers/Microsoft.Network/virtualNetworks/testVNET/subnets/s2"
 ///         }, {
-///         "id" = "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/testResourceGroup/providers/Microsoft.Network/virtualNetworks/testVNET/subnets/s3"
+///         id = "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/testResourceGroup/providers/Microsoft.Network/virtualNetworks/testVNET/subnets/s3"
 ///         }, {
-///         "id" = "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/testResourceGroup/providers/Microsoft.Network/virtualNetworks/testVNET/subnets/s4"
+///         id = "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/testResourceGroup/providers/Microsoft.Network/virtualNetworks/testVNET/subnets/s4"
 ///       }]
 ///     }
 ///   }

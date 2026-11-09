@@ -70,7 +70,7 @@ import 'sync_group_schema_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,7 +78,10 @@ import 'sync_group_schema_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_syncgroup" "syncGroup" {
+/// resource "azure-native_sql_sync_group" "syncGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   conflict_resolution_policy  = "HubWin"
 ///   database_name               = "syncgroupcrud-4328"
 ///   hub_database_user_name      = "hubUser"
@@ -242,7 +245,7 @@ import 'sync_group_schema_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -250,7 +253,10 @@ import 'sync_group_schema_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_syncgroup" "syncGroup" {
+/// resource "azure-native_sql_sync_group" "syncGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   conflict_resolution_policy  = "HubWin"
 ///   database_name               = "syncgroupcrud-4328"
 ///   hub_database_user_name      = "hubUser"

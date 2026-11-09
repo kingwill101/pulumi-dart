@@ -54,7 +54,7 @@ import 'disaster_recovery_configuration_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -62,7 +62,10 @@ import 'disaster_recovery_configuration_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_disasterrecoveryconfiguration" "disasterRecoveryConfiguration" {
+/// resource "azure-native_sql_disaster_recovery_configuration" "disasterRecoveryConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   disaster_recovery_configuration_name = "Default"
 ///   resource_group_name                  = "sqlcrudtest-4799"
 ///   server_name                          = "sqlcrudtest-5961"

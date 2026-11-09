@@ -27,13 +27,13 @@ import 'managed_service_identity_response.dart';
 ///         AccountName = "ddb1",
 ///         GraphName = "graphName",
 ///         Location = "West US",
-///         Options = null,
+///         Options = new() { },
 ///         Resource = new AzureNative.CosmosDB.Inputs.GraphResourceArgs
 ///         {
 ///             Id = "graphName",
 ///         },
 ///         ResourceGroupName = "rg1",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -72,7 +72,7 @@ import 'managed_service_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'managed_service_identity_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_graphresourcegraph" "graphResourceGraph" {
+/// resource "azure-native_cosmosdb_graph_resource_graph" "graphResourceGraph" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "ddb1"
 ///   graph_name   = "graphName"
 ///   location     = "West US"

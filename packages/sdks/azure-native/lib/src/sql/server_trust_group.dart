@@ -36,7 +36,7 @@ import 'server_trust_group_args.dart';
 ///         LocationName = "Japan East",
 ///         ResourceGroupName = "Default",
 ///         ServerTrustGroupName = "server-trust-group-test",
-///         TrustScopes = new[]
+///         TrustScopes =
 ///         {
 ///             AzureNative.Sql.TrustScope.GlobalTransactions,
 ///             AzureNative.Sql.TrustScope.ServiceBroker,
@@ -85,7 +85,7 @@ import 'server_trust_group_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -93,7 +93,10 @@ import 'server_trust_group_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_servertrustgroup" "serverTrustGroup" {
+/// resource "azure-native_sql_server_trust_group" "serverTrustGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_members {
 ///     server_id = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Sql/managedInstances/managedInstance-1"
 ///   }

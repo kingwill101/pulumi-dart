@@ -105,7 +105,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -113,7 +113,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_fileshares_fileshare" "fileShare" {
+/// resource "azure-native_fileshares_file_share" "fileShare" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "westus"
 ///   properties = {
 ///     media_tier = "SSD"

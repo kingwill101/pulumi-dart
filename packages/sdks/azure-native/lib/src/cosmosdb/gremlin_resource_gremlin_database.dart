@@ -26,13 +26,13 @@ import 'gremlin_resource_gremlin_database_args.dart';
 ///         AccountName = "ddb1",
 ///         DatabaseName = "databaseName",
 ///         Location = "West US",
-///         Options = null,
+///         Options = new() { },
 ///         Resource = new AzureNative.CosmosDB.Inputs.GremlinDatabaseResourceArgs
 ///         {
 ///             Id = "databaseName",
 ///         },
 ///         ResourceGroupName = "rg1",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -71,7 +71,7 @@ import 'gremlin_resource_gremlin_database_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'gremlin_resource_gremlin_database_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_gremlinresourcegremlindatabase" "gremlinResourceGremlinDatabase" {
+/// resource "azure-native_cosmosdb_gremlin_resource_gremlin_database" "gremlinResourceGremlinDatabase" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name  = "ddb1"
 ///   database_name = "databaseName"
 ///   location      = "West US"

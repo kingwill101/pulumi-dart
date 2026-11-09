@@ -143,13 +143,13 @@ import 'system_data_response.dart';
 /// 						TrustedCaCertificateConfigMapRef: pulumi.String("azure-iot-operations-aio-ca-trust-bundle"),
 /// 					},
 /// 				},
-/// 				RuntimeConfiguration: iotoperations.AkriConnectorTemplateHelmConfiguration{
-/// 					HelmConfigurationSettings: iotoperations.AkriConnectorTemplateHelmConfigurationSettings{
-/// 						ReleaseName:    "my-install",
-/// 						RepositoryName: "my-repo",
-/// 						Version:        "1.0.0",
+/// 				RuntimeConfiguration: &iotoperations.AkriConnectorTemplateHelmConfigurationArgs{
+/// 					HelmConfigurationSettings: &iotoperations.AkriConnectorTemplateHelmConfigurationSettingsArgs{
+/// 						ReleaseName:    pulumi.String("my-install"),
+/// 						RepositoryName: pulumi.String("my-repo"),
+/// 						Version:        pulumi.String("1.0.0"),
 /// 					},
-/// 					RuntimeConfigurationType: "HelmConfiguration",
+/// 					RuntimeConfigurationType: pulumi.String("HelmConfiguration"),
 /// 				},
 /// 			},
 /// 			ResourceGroupName: pulumi.String("rgiotoperations"),
@@ -164,7 +164,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -172,7 +172,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperations_akriconnectortemplate" "akriConnectorTemplate" {
+/// resource "azure-native_iotoperations_akri_connector_template" "akriConnectorTemplate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   akri_connector_template_name = "resource-name123"
 ///   extended_location = {
 ///     name = "/subscriptions/F8C729F9-DF9C-4743-848F-96EE433D8E53/resourceGroups/rgiotoperations/providers/Microsoft.ExtendedLocation/customLocations/resource-123"
@@ -185,8 +188,8 @@ import 'system_data_response.dart';
 ///       aio_min_version = "1.2.0"
 ///     }
 ///     device_inbound_endpoint_types = [{
-///       "endpointType" = "Microsoft.Rest"
-///       "version"      = "0.0.1"
+///       endpoint_type = "Microsoft.Rest"
+///       version       = "0.0.1"
 ///     }]
 ///     diagnostics = {
 ///       logs = {
@@ -211,12 +214,12 @@ import 'system_data_response.dart';
 ///       }
 ///     }
 ///     runtime_configuration = {
-///       "helmConfigurationSettings" = {
-///         "releaseName"    = "my-install"
-///         "repositoryName" = "my-repo"
-///         "version"        = "1.0.0"
+///       helm_configuration_settings = {
+///         release_name    = "my-install"
+///         repository_name = "my-repo"
+///         version         = "1.0.0"
 ///       }
-///       "runtimeConfigurationType" = "HelmConfiguration"
+///       runtime_configuration_type = "HelmConfiguration"
 ///     }
 ///   }
 ///   resource_group_name = "rgiotoperations"
@@ -235,12 +238,16 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.AkriConnectorTemplatePropertiesArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.AkriConnectorTemplateAioMetadataArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.AkriConnectorTemplateDeviceInboundEndpointTypeArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.AkriConnectorTemplateDiagnosticsArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.AkriConnectorsDiagnosticsLogsArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.AkriConnectorsMqttConnectionConfigurationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.AkriConnectorsServiceAccountAuthenticationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.AkriConnectorsServiceAccountTokenSettingsArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.TlsPropertiesArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.AkriConnectorTemplateHelmConfigurationArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.AkriConnectorTemplateHelmConfigurationSettingsArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.AkriConnectorTemplateManagedConfigurationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -276,12 +283,11 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .build())
 ///                 .mqttConnectionConfiguration(AkriConnectorsMqttConnectionConfigurationArgs.builder()
-///                     .authentication(Map.ofEntries(
-///                         Map.entry("method", "ServiceAccountToken"),
-///                         Map.entry("serviceAccountTokenSettings", AkriConnectorsServiceAccountTokenSettingsArgs.builder()
+///                     .authentication(AkriConnectorsServiceAccountAuthenticationArgs.builder()
+///                         .serviceAccountTokenSettings(AkriConnectorsServiceAccountTokenSettingsArgs.builder()
 ///                             .audience("MQ-SAT")
 ///                             .build())
-///                     ))
+///                         .build())
 ///                     .host("aio-broker:18883")
 ///                     .keepAliveSeconds(10)
 ///                     .maxInflightMessages(10)
@@ -298,7 +304,6 @@ import 'system_data_response.dart';
 ///                         .repositoryName("my-repo")
 ///                         .version("1.0.0")
 ///                         .build())
-///                     .runtimeConfigurationType("HelmConfiguration")
 ///                     .build())
 ///                 .build())
 ///             .resourceGroupName("rgiotoperations")

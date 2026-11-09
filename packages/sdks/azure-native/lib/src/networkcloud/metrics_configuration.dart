@@ -22,7 +22,7 @@ import 'system_data_response.dart';
 ///     var metricsConfiguration = new AzureNative.NetworkCloud.MetricsConfiguration("metricsConfiguration", new()
 ///     {
 ///         ClusterName = "clusterName",
-///         CollectionInterval = 15,
+///         CollectionInterval = 15.0,
 ///         EnabledMetrics = new[]
 ///         {
 ///             "metric1",
@@ -87,7 +87,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -95,7 +95,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_networkcloud_metricsconfiguration" "metricsConfiguration" {
+/// resource "azure-native_networkcloud_metrics_configuration" "metricsConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name        = "clusterName"
 ///   collection_interval = 15
 ///   enabled_metrics     = ["metric1", "metric2"]

@@ -78,7 +78,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -87,6 +87,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_servicebus_rule" "rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   correlation_filter = {
 ///     properties = {
 ///       "topicHint" = "Crop"
@@ -249,7 +252,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -258,6 +261,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_servicebus_rule" "rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   namespace_name      = "sdk-Namespace-1319"
 ///   resource_group_name = "resourceGroupName"
 ///   rule_name           = "sdk-Rules-6571"
@@ -402,7 +408,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -411,6 +417,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_servicebus_rule" "rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   filter_type         = "SqlFilter"
 ///   namespace_name      = "sdk-Namespace-1319"
 ///   resource_group_name = "resourceGroupName"

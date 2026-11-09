@@ -42,7 +42,7 @@ import 'system_data_response.dart';
 ///             CollationName = "SQL_Latin1_General_CP1_CI_AS",
 ///             CompatibilityLevel = 150,
 ///             CreateMode = AzureNative.AzureArcData.DatabaseCreateMode.PointInTimeRestore,
-///             DataFileSizeMB = 80,
+///             DataFileSizeMB = 80.0,
 ///             DatabaseCreationDate = "2022-04-05T16:26:33.883Z",
 ///             DatabaseOptions = new AzureNative.AzureArcData.Inputs.SqlServerDatabaseResourcePropertiesDatabaseOptionsArgs
 ///             {
@@ -56,12 +56,12 @@ import 'system_data_response.dart';
 ///                 IsTrustworthyOn = true,
 ///             },
 ///             IsReadOnly = true,
-///             LogFileSizeMB = 70,
+///             LogFileSizeMB = 70.0,
 ///             RecoveryMode = AzureNative.AzureArcData.RecoveryMode.Full,
 ///             RestorePointInTime = "2022-05-05T16:26:33.883Z",
-///             SizeMB = 150,
+///             SizeMB = 150.0,
 ///             SourceDatabaseId = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.AzureArcData/testSqlServerInstance/testsqlManagedInstance/databases/MyDatabase",
-///             SpaceAvailableMB = 100,
+///             SpaceAvailableMB = 100.0,
 ///             State = AzureNative.AzureArcData.DatabaseState.Online,
 ///         },
 ///         ResourceGroupName = "testrg",
@@ -141,7 +141,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -149,7 +149,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurearcdata_sqlserverdatabase" "sqlServerDatabase" {
+/// resource "azure-native_azurearcdata_sql_server_database" "sqlServerDatabase" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name = "testdb"
 ///   location      = "southeastasia"
 ///   properties = {

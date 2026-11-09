@@ -68,7 +68,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,14 +76,17 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_hciedgedevicejob" "hciEdgeDeviceJob" {
+/// resource "azure-native_azurestackhci_hci_edge_device_job" "hciEdgeDeviceJob" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   edge_device_name = "default"
 ///   jobs_name        = "collectLog"
 ///   kind             = "HCI"
 ///   properties = {
-///     "fromDate" = "2024-01-29T10:43:27.9471574Z"
-///     "jobType"  = "CollectLog"
-///     "toDate"   = "2024-01-29T10:43:27.9471574Z"
+///     from_date = "2024-01-29T10:43:27.9471574Z"
+///     job_type  = "CollectLog"
+///     to_date   = "2024-01-29T10:43:27.9471574Z"
 ///   }
 ///   resource_uri = "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/ArcInstance-rg/providers/Microsoft.HybridCompute/machines/Node-1"
 /// }
@@ -98,6 +101,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.azurestackhci.HciEdgeDeviceJob;
 /// import com.pulumi.azurenative.azurestackhci.HciEdgeDeviceJobArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.HciCollectLogJobPropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.HciRemoteSupportJobPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -114,10 +119,8 @@ import 'system_data_response.dart';
 ///         var hciEdgeDeviceJob = new HciEdgeDeviceJob("hciEdgeDeviceJob", HciEdgeDeviceJobArgs.builder()
 ///             .edgeDeviceName("default")
 ///             .jobsName("collectLog")
-///             .kind("HCI")
 ///             .properties(HciCollectLogJobPropertiesArgs.builder()
 ///                 .fromDate("2024-01-29T10:43:27.9471574Z")
-///                 .jobType("CollectLog")
 ///                 .toDate("2024-01-29T10:43:27.9471574Z")
 ///                 .build())
 ///             .resourceUri("subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/ArcInstance-rg/providers/Microsoft.HybridCompute/machines/Node-1")
@@ -242,7 +245,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -250,15 +253,18 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_hciedgedevicejob" "hciEdgeDeviceJob" {
+/// resource "azure-native_azurestackhci_hci_edge_device_job" "hciEdgeDeviceJob" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   edge_device_name = "default"
 ///   jobs_name        = "collectLog"
 ///   kind             = "HCI"
 ///   properties = {
-///     "accessLevel"         = "Diagnostics"
-///     "expirationTimestamp" = "2024-01-29T10:43:27.9471574Z"
-///     "jobType"             = "RemoteSupport"
-///     "type"                = "Enable"
+///     access_level         = "Diagnostics"
+///     expiration_timestamp = "2024-01-29T10:43:27.9471574Z"
+///     job_type             = "RemoteSupport"
+///     type                 = "Enable"
 ///   }
 ///   resource_uri = "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/ArcInstance-rg/providers/Microsoft.HybridCompute/machines/Node-1"
 /// }
@@ -273,6 +279,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.azurestackhci.HciEdgeDeviceJob;
 /// import com.pulumi.azurenative.azurestackhci.HciEdgeDeviceJobArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.HciCollectLogJobPropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.HciRemoteSupportJobPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -289,11 +297,9 @@ import 'system_data_response.dart';
 ///         var hciEdgeDeviceJob = new HciEdgeDeviceJob("hciEdgeDeviceJob", HciEdgeDeviceJobArgs.builder()
 ///             .edgeDeviceName("default")
 ///             .jobsName("collectLog")
-///             .kind("HCI")
 ///             .properties(HciRemoteSupportJobPropertiesArgs.builder()
 ///                 .accessLevel("Diagnostics")
 ///                 .expirationTimestamp("2024-01-29T10:43:27.9471574Z")
-///                 .jobType("RemoteSupport")
 ///                 .type("Enable")
 ///                 .build())
 ///             .resourceUri("subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/ArcInstance-rg/providers/Microsoft.HybridCompute/machines/Node-1")

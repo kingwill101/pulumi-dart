@@ -34,10 +34,10 @@ import 'system_data_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.DeviceProvisioningServices.Inputs.IotDpsSkuInfoArgs
 ///         {
-///             Capacity = 1,
+///             Capacity = 1.0,
 ///             Name = AzureNative.DeviceProvisioningServices.IotDpsSku.S1,
 ///         },
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -78,7 +78,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -86,7 +86,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_deviceprovisioningservices_iotdpsresource" "iotDpsResource" {
+/// resource "azure-native_deviceprovisioningservices_iot_dps_resource" "iotDpsResource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "East US"
 ///   properties = {
 ///     enable_data_residency = false

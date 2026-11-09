@@ -25,7 +25,7 @@ import 'sql_pool_args.dart';
 ///         Collation = "",
 ///         CreateMode = "",
 ///         Location = "Southeast Asia",
-///         MaxSizeBytes = 0,
+///         MaxSizeBytes = 0.0,
 ///         RecoverableDatabaseId = "",
 ///         ResourceGroupName = "ExampleResourceGroup",
 ///         Sku = new AzureNative.Synapse.Inputs.SkuArgs
@@ -36,7 +36,7 @@ import 'sql_pool_args.dart';
 ///         SourceDatabaseId = "",
 ///         SqlPoolName = "ExampleSqlPool",
 ///         StorageAccountType = AzureNative.Synapse.StorageAccountType.LRS,
-///         Tags = null,
+///         Tags = new() { },
 ///         WorkspaceName = "ExampleWorkspace",
 ///     });
 ///
@@ -82,7 +82,7 @@ import 'sql_pool_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -90,7 +90,10 @@ import 'sql_pool_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_synapse_sqlpool" "sqlPool" {
+/// resource "azure-native_synapse_sql_pool" "sqlPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   collation               = ""
 ///   create_mode             = ""
 ///   location                = "Southeast Asia"

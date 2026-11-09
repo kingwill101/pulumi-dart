@@ -156,7 +156,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -164,7 +164,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_ec2ipam" "ec2Ipam" {
+/// resource "azure-native_awsconnector_ec2_ipam" "ec2Ipam" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "lhjepajysvu"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -178,7 +181,7 @@ import 'system_data_response.dart';
 ///       ipam_id                                   = "baiefjd"
 ///       ipam_region                               = "dfdcpbefpcajoep"
 ///       operating_regions = [{
-///         "regionName" = "racqmjs"
+///         region_name = "racqmjs"
 ///       }]
 ///       owner_id                             = "sbcvakmustluzumdv"
 ///       private_default_scope_id             = "sgytzjkrmsnzccmbos"
@@ -190,8 +193,8 @@ import 'system_data_response.dart';
 ///       }
 ///       state_message = "wehaarwg"
 ///       tags = [{
-///         "key"   = "lldedstrwaskhlskwkk"
-///         "value" = "jnzubqdwmuxxyakaosx"
+///         key   = "lldedstrwaskhlskwkk"
+///         value = "jnzubqdwmuxxyakaosx"
 ///       }]
 ///       tier = {
 ///         value = "advanced"
@@ -223,7 +226,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.Ec2IpamArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.Ec2IpamPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEc2IpamPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.IpamOperatingRegionArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.IpamStateEnumValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.IpamTierEnumValueArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

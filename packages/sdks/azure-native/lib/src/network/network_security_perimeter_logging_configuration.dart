@@ -71,7 +71,7 @@ import 'nsp_logging_configuration_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'nsp_logging_configuration_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_networksecurityperimeterloggingconfiguration" "networkSecurityPerimeterLoggingConfiguration" {
+/// resource "azure-native_network_network_security_perimeter_logging_configuration" "networkSecurityPerimeterLoggingConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   logging_configuration_name      = "instance"
 ///   network_security_perimeter_name = "nsp1"
 ///   properties = {

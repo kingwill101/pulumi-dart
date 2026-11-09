@@ -54,9 +54,9 @@ import 'input_args_type.dart';
 /// 			InputName: pulumi.String("input7970"),
 /// 			JobName:   pulumi.String("sj9742"),
 /// 			Properties: &streamanalytics.StreamInputPropertiesArgs{
-/// 				Datasource: streamanalytics.GatewayMessageBusStreamInputDataSource{
-/// 					Topic: "EdgeTopic1",
-/// 					Type:  "GatewayMessageBus",
+/// 				Datasource: &streamanalytics.GatewayMessageBusStreamInputDataSourceArgs{
+/// 					Topic: pulumi.String("EdgeTopic1"),
+/// 					Type:  pulumi.String("GatewayMessageBus"),
 /// 				},
 /// 				Type: pulumi.String("Stream"),
 /// 			},
@@ -72,7 +72,7 @@ import 'input_args_type.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,14 +81,17 @@ import 'input_args_type.dart';
 /// }
 ///
 /// resource "azure-native_streamanalytics_input" "input" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   input_name = "input7970"
 ///   job_name   = "sj9742"
 ///   properties = {
-///     "datasource" = {
-///       "topic" = "EdgeTopic1"
-///       "type"  = "GatewayMessageBus"
+///     datasource = {
+///       topic = "EdgeTopic1"
+///       type  = "GatewayMessageBus"
 ///     }
-///     "type" = "Stream"
+///     type = "Stream"
 ///   }
 ///   resource_group_name = "sjrg3467"
 /// }
@@ -103,6 +106,16 @@ import 'input_args_type.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Input;
 /// import com.pulumi.azurenative.streamanalytics.InputArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ReferenceInputPropertiesArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSqlReferenceInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobReferenceInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.FileReferenceInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.StreamInputPropertiesArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobStreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubStreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubV2StreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.GatewayMessageBusStreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.IoTHubStreamInputDataSourceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -122,9 +135,7 @@ import 'input_args_type.dart';
 ///             .properties(StreamInputPropertiesArgs.builder()
 ///                 .datasource(GatewayMessageBusStreamInputDataSourceArgs.builder()
 ///                     .topic("EdgeTopic1")
-///                     .type("GatewayMessageBus")
 ///                     .build())
-///                 .type("Stream")
 ///                 .build())
 ///             .resourceGroupName("sjrg3467")
 ///             .build());
@@ -250,23 +261,23 @@ import 'input_args_type.dart';
 /// 			InputName: pulumi.String("input7225"),
 /// 			JobName:   pulumi.String("sj9597"),
 /// 			Properties: &streamanalytics.ReferenceInputPropertiesArgs{
-/// 				Datasource: streamanalytics.BlobReferenceInputDataSource{
-/// 					Container:   "state",
-/// 					DateFormat:  "yyyy/MM/dd",
-/// 					PathPattern: "{date}/{time}",
-/// 					StorageAccounts: []streamanalytics.StorageAccount{
-/// 						{
-/// 							AccountKey:  "someAccountKey==",
-/// 							AccountName: "someAccountName",
+/// 				Datasource: &streamanalytics.BlobReferenceInputDataSourceArgs{
+/// 					Container:   pulumi.String("state"),
+/// 					DateFormat:  pulumi.String("yyyy/MM/dd"),
+/// 					PathPattern: pulumi.String("{date}/{time}"),
+/// 					StorageAccounts: streamanalytics.StorageAccountArray{
+/// 						&streamanalytics.StorageAccountArgs{
+/// 							AccountKey:  pulumi.String("someAccountKey=="),
+/// 							AccountName: pulumi.String("someAccountName"),
 /// 						},
 /// 					},
-/// 					TimeFormat: "HH",
-/// 					Type:       "Microsoft.Storage/Blob",
+/// 					TimeFormat: pulumi.String("HH"),
+/// 					Type:       pulumi.String("Microsoft.Storage/Blob"),
 /// 				},
-/// 				Serialization: streamanalytics.CsvSerialization{
-/// 					Encoding:       streamanalytics.EncodingUTF8,
-/// 					FieldDelimiter: ",",
-/// 					Type:           "Csv",
+/// 				Serialization: &streamanalytics.CsvSerializationArgs{
+/// 					Encoding:       pulumi.String(streamanalytics.EncodingUTF8),
+/// 					FieldDelimiter: pulumi.String(","),
+/// 					Type:           pulumi.String("Csv"),
 /// 				},
 /// 				Type: pulumi.String("Reference"),
 /// 			},
@@ -282,7 +293,7 @@ import 'input_args_type.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -291,26 +302,29 @@ import 'input_args_type.dart';
 /// }
 ///
 /// resource "azure-native_streamanalytics_input" "input" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   input_name = "input7225"
 ///   job_name   = "sj9597"
 ///   properties = {
-///     "datasource" = {
-///       "container"   = "state"
-///       "dateFormat"  = "yyyy/MM/dd"
-///       "pathPattern" = "{date}/{time}"
-///       "storageAccounts" = [{
-///         "accountKey"  = "someAccountKey=="
-///         "accountName" = "someAccountName"
+///     datasource = {
+///       container    = "state"
+///       date_format  = "yyyy/MM/dd"
+///       path_pattern = "{date}/{time}"
+///       storage_accounts = [{
+///         account_key  = "someAccountKey=="
+///         account_name = "someAccountName"
 ///       }]
-///       "timeFormat" = "HH"
-///       "type"       = "Microsoft.Storage/Blob"
+///       time_format = "HH"
+///       type        = "Microsoft.Storage/Blob"
 ///     }
-///     "serialization" = {
-///       "encoding"       = "UTF8"
-///       "fieldDelimiter" = ","
-///       "type"           = "Csv"
+///     serialization = {
+///       encoding        = "UTF8"
+///       field_delimiter = ","
+///       type            = "Csv"
 ///     }
-///     "type" = "Reference"
+///     type = "Reference"
 ///   }
 ///   resource_group_name = "sjrg8440"
 /// }
@@ -325,6 +339,21 @@ import 'input_args_type.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Input;
 /// import com.pulumi.azurenative.streamanalytics.InputArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ReferenceInputPropertiesArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSqlReferenceInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobReferenceInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.StorageAccountArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.FileReferenceInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AvroSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.CsvSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.JsonSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ParquetSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.StreamInputPropertiesArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobStreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubStreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubV2StreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.GatewayMessageBusStreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.IoTHubStreamInputDataSourceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -351,14 +380,11 @@ import 'input_args_type.dart';
 ///                         .accountName("someAccountName")
 ///                         .build())
 ///                     .timeFormat("HH")
-///                     .type("Microsoft.Storage/Blob")
 ///                     .build())
 ///                 .serialization(CsvSerializationArgs.builder()
 ///                     .encoding("UTF8")
 ///                     .fieldDelimiter(",")
-///                     .type("Csv")
 ///                     .build())
-///                 .type("Reference")
 ///                 .build())
 ///             .resourceGroupName("sjrg8440")
 ///             .build());
@@ -501,9 +527,9 @@ import 'input_args_type.dart';
 /// 			InputName: pulumi.String("input7225"),
 /// 			JobName:   pulumi.String("sj9597"),
 /// 			Properties: &streamanalytics.ReferenceInputPropertiesArgs{
-/// 				Datasource: streamanalytics.FileReferenceInputDataSource{
-/// 					Path: "my/path",
-/// 					Type: "File",
+/// 				Datasource: &streamanalytics.FileReferenceInputDataSourceArgs{
+/// 					Path: pulumi.String("my/path"),
+/// 					Type: pulumi.String("File"),
 /// 				},
 /// 				Type: pulumi.String("Reference"),
 /// 			},
@@ -519,7 +545,7 @@ import 'input_args_type.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -528,14 +554,17 @@ import 'input_args_type.dart';
 /// }
 ///
 /// resource "azure-native_streamanalytics_input" "input" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   input_name = "input7225"
 ///   job_name   = "sj9597"
 ///   properties = {
-///     "datasource" = {
-///       "path" = "my/path"
-///       "type" = "File"
+///     datasource = {
+///       path = "my/path"
+///       type = "File"
 ///     }
-///     "type" = "Reference"
+///     type = "Reference"
 ///   }
 ///   resource_group_name = "sjrg8440"
 /// }
@@ -550,6 +579,16 @@ import 'input_args_type.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Input;
 /// import com.pulumi.azurenative.streamanalytics.InputArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ReferenceInputPropertiesArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSqlReferenceInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobReferenceInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.FileReferenceInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.StreamInputPropertiesArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobStreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubStreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubV2StreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.GatewayMessageBusStreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.IoTHubStreamInputDataSourceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -569,9 +608,7 @@ import 'input_args_type.dart';
 ///             .properties(ReferenceInputPropertiesArgs.builder()
 ///                 .datasource(FileReferenceInputDataSourceArgs.builder()
 ///                     .path("my/path")
-///                     .type("File")
 ///                     .build())
-///                 .type("Reference")
 ///                 .build())
 ///             .resourceGroupName("sjrg8440")
 ///             .build());
@@ -689,17 +726,17 @@ import 'input_args_type.dart';
 /// 			InputName: pulumi.String("input7425"),
 /// 			JobName:   pulumi.String("sj197"),
 /// 			Properties: &streamanalytics.StreamInputPropertiesArgs{
-/// 				Datasource: streamanalytics.EventHubStreamInputDataSource{
-/// 					ConsumerGroupName:      "sdkconsumergroup",
-/// 					EventHubName:           "sdkeventhub",
-/// 					ServiceBusNamespace:    "sdktest",
-/// 					SharedAccessPolicyKey:  "someSharedAccessPolicyKey==",
-/// 					SharedAccessPolicyName: "RootManageSharedAccessKey",
-/// 					Type:                   "Microsoft.ServiceBus/EventHub",
+/// 				Datasource: &streamanalytics.EventHubStreamInputDataSourceArgs{
+/// 					ConsumerGroupName:      pulumi.String("sdkconsumergroup"),
+/// 					EventHubName:           pulumi.String("sdkeventhub"),
+/// 					ServiceBusNamespace:    pulumi.String("sdktest"),
+/// 					SharedAccessPolicyKey:  pulumi.String("someSharedAccessPolicyKey=="),
+/// 					SharedAccessPolicyName: pulumi.String("RootManageSharedAccessKey"),
+/// 					Type:                   pulumi.String("Microsoft.ServiceBus/EventHub"),
 /// 				},
-/// 				Serialization: streamanalytics.JsonSerialization{
-/// 					Encoding: streamanalytics.EncodingUTF8,
-/// 					Type:     "Json",
+/// 				Serialization: &streamanalytics.JsonSerializationArgs{
+/// 					Encoding: pulumi.String(streamanalytics.EncodingUTF8),
+/// 					Type:     pulumi.String("Json"),
 /// 				},
 /// 				Type: pulumi.String("Stream"),
 /// 			},
@@ -715,7 +752,7 @@ import 'input_args_type.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -724,22 +761,25 @@ import 'input_args_type.dart';
 /// }
 ///
 /// resource "azure-native_streamanalytics_input" "input" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   input_name = "input7425"
 ///   job_name   = "sj197"
 ///   properties = {
-///     "datasource" = {
-///       "consumerGroupName"      = "sdkconsumergroup"
-///       "eventHubName"           = "sdkeventhub"
-///       "serviceBusNamespace"    = "sdktest"
-///       "sharedAccessPolicyKey"  = "someSharedAccessPolicyKey=="
-///       "sharedAccessPolicyName" = "RootManageSharedAccessKey"
-///       "type"                   = "Microsoft.ServiceBus/EventHub"
+///     datasource = {
+///       consumer_group_name       = "sdkconsumergroup"
+///       event_hub_name            = "sdkeventhub"
+///       service_bus_namespace     = "sdktest"
+///       shared_access_policy_key  = "someSharedAccessPolicyKey=="
+///       shared_access_policy_name = "RootManageSharedAccessKey"
+///       type                      = "Microsoft.ServiceBus/EventHub"
 ///     }
-///     "serialization" = {
-///       "encoding" = "UTF8"
-///       "type"     = "Json"
+///     serialization = {
+///       encoding = "UTF8"
+///       type     = "Json"
 ///     }
-///     "type" = "Stream"
+///     type = "Stream"
 ///   }
 ///   resource_group_name = "sjrg3139"
 /// }
@@ -754,6 +794,20 @@ import 'input_args_type.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Input;
 /// import com.pulumi.azurenative.streamanalytics.InputArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ReferenceInputPropertiesArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSqlReferenceInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobReferenceInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.FileReferenceInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AvroSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.CsvSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.JsonSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ParquetSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.StreamInputPropertiesArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobStreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubStreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubV2StreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.GatewayMessageBusStreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.IoTHubStreamInputDataSourceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -777,13 +831,10 @@ import 'input_args_type.dart';
 ///                     .serviceBusNamespace("sdktest")
 ///                     .sharedAccessPolicyKey("someSharedAccessPolicyKey==")
 ///                     .sharedAccessPolicyName("RootManageSharedAccessKey")
-///                     .type("Microsoft.ServiceBus/EventHub")
 ///                     .build())
 ///                 .serialization(JsonSerializationArgs.builder()
 ///                     .encoding("UTF8")
-///                     .type("Json")
 ///                     .build())
-///                 .type("Stream")
 ///                 .build())
 ///             .resourceGroupName("sjrg3139")
 ///             .build());
@@ -923,16 +974,16 @@ import 'input_args_type.dart';
 /// 			InputName: pulumi.String("input7970"),
 /// 			JobName:   pulumi.String("sj9742"),
 /// 			Properties: &streamanalytics.StreamInputPropertiesArgs{
-/// 				Datasource: streamanalytics.IoTHubStreamInputDataSource{
-/// 					ConsumerGroupName:      "sdkconsumergroup",
-/// 					Endpoint:               "messages/events",
-/// 					IotHubNamespace:        "iothub",
-/// 					SharedAccessPolicyKey:  "sharedAccessPolicyKey=",
-/// 					SharedAccessPolicyName: "owner",
-/// 					Type:                   "Microsoft.Devices/IotHubs",
+/// 				Datasource: &streamanalytics.IoTHubStreamInputDataSourceArgs{
+/// 					ConsumerGroupName:      pulumi.String("sdkconsumergroup"),
+/// 					Endpoint:               pulumi.String("messages/events"),
+/// 					IotHubNamespace:        pulumi.String("iothub"),
+/// 					SharedAccessPolicyKey:  pulumi.String("sharedAccessPolicyKey="),
+/// 					SharedAccessPolicyName: pulumi.String("owner"),
+/// 					Type:                   pulumi.String("Microsoft.Devices/IotHubs"),
 /// 				},
-/// 				Serialization: streamanalytics.AvroSerialization{
-/// 					Type: "Avro",
+/// 				Serialization: &streamanalytics.AvroSerializationArgs{
+/// 					Type: pulumi.String("Avro"),
 /// 				},
 /// 				Type: pulumi.String("Stream"),
 /// 			},
@@ -948,7 +999,7 @@ import 'input_args_type.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -957,21 +1008,24 @@ import 'input_args_type.dart';
 /// }
 ///
 /// resource "azure-native_streamanalytics_input" "input" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   input_name = "input7970"
 ///   job_name   = "sj9742"
 ///   properties = {
-///     "datasource" = {
-///       "consumerGroupName"      = "sdkconsumergroup"
-///       "endpoint"               = "messages/events"
-///       "iotHubNamespace"        = "iothub"
-///       "sharedAccessPolicyKey"  = "sharedAccessPolicyKey="
-///       "sharedAccessPolicyName" = "owner"
-///       "type"                   = "Microsoft.Devices/IotHubs"
+///     datasource = {
+///       consumer_group_name       = "sdkconsumergroup"
+///       endpoint                  = "messages/events"
+///       iot_hub_namespace         = "iothub"
+///       shared_access_policy_key  = "sharedAccessPolicyKey="
+///       shared_access_policy_name = "owner"
+///       type                      = "Microsoft.Devices/IotHubs"
 ///     }
-///     "serialization" = {
-///       "type" = "Avro"
+///     serialization = {
+///       type = "Avro"
 ///     }
-///     "type" = "Stream"
+///     type = "Stream"
 ///   }
 ///   resource_group_name = "sjrg3467"
 /// }
@@ -986,6 +1040,20 @@ import 'input_args_type.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Input;
 /// import com.pulumi.azurenative.streamanalytics.InputArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ReferenceInputPropertiesArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSqlReferenceInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobReferenceInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.FileReferenceInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AvroSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.CsvSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.JsonSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ParquetSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.StreamInputPropertiesArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobStreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubStreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubV2StreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.GatewayMessageBusStreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.IoTHubStreamInputDataSourceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1009,12 +1077,9 @@ import 'input_args_type.dart';
 ///                     .iotHubNamespace("iothub")
 ///                     .sharedAccessPolicyKey("sharedAccessPolicyKey=")
 ///                     .sharedAccessPolicyName("owner")
-///                     .type("Microsoft.Devices/IotHubs")
 ///                     .build())
 ///                 .serialization(AvroSerializationArgs.builder()
-///                     .type("Avro")
 ///                     .build())
-///                 .type("Stream")
 ///                 .build())
 ///             .resourceGroupName("sjrg3467")
 ///             .build());
@@ -1161,24 +1226,24 @@ import 'input_args_type.dart';
 /// 			InputName: pulumi.String("input8899"),
 /// 			JobName:   pulumi.String("sj6695"),
 /// 			Properties: &streamanalytics.StreamInputPropertiesArgs{
-/// 				Datasource: streamanalytics.BlobStreamInputDataSource{
-/// 					Container:            "state",
-/// 					DateFormat:           "yyyy/MM/dd",
-/// 					PathPattern:          "{date}/{time}",
-/// 					SourcePartitionCount: 16,
-/// 					StorageAccounts: []streamanalytics.StorageAccount{
-/// 						{
-/// 							AccountKey:  "someAccountKey==",
-/// 							AccountName: "someAccountName",
+/// 				Datasource: &streamanalytics.BlobStreamInputDataSourceArgs{
+/// 					Container:            pulumi.String("state"),
+/// 					DateFormat:           pulumi.String("yyyy/MM/dd"),
+/// 					PathPattern:          pulumi.String("{date}/{time}"),
+/// 					SourcePartitionCount: pulumi.Int(16),
+/// 					StorageAccounts: streamanalytics.StorageAccountArray{
+/// 						&streamanalytics.StorageAccountArgs{
+/// 							AccountKey:  pulumi.String("someAccountKey=="),
+/// 							AccountName: pulumi.String("someAccountName"),
 /// 						},
 /// 					},
-/// 					TimeFormat: "HH",
-/// 					Type:       "Microsoft.Storage/Blob",
+/// 					TimeFormat: pulumi.String("HH"),
+/// 					Type:       pulumi.String("Microsoft.Storage/Blob"),
 /// 				},
-/// 				Serialization: streamanalytics.CsvSerialization{
-/// 					Encoding:       streamanalytics.EncodingUTF8,
-/// 					FieldDelimiter: ",",
-/// 					Type:           "Csv",
+/// 				Serialization: &streamanalytics.CsvSerializationArgs{
+/// 					Encoding:       pulumi.String(streamanalytics.EncodingUTF8),
+/// 					FieldDelimiter: pulumi.String(","),
+/// 					Type:           pulumi.String("Csv"),
 /// 				},
 /// 				Type: pulumi.String("Stream"),
 /// 			},
@@ -1194,7 +1259,7 @@ import 'input_args_type.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1203,27 +1268,30 @@ import 'input_args_type.dart';
 /// }
 ///
 /// resource "azure-native_streamanalytics_input" "input" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   input_name = "input8899"
 ///   job_name   = "sj6695"
 ///   properties = {
-///     "datasource" = {
-///       "container"            = "state"
-///       "dateFormat"           = "yyyy/MM/dd"
-///       "pathPattern"          = "{date}/{time}"
-///       "sourcePartitionCount" = 16
-///       "storageAccounts" = [{
-///         "accountKey"  = "someAccountKey=="
-///         "accountName" = "someAccountName"
+///     datasource = {
+///       container              = "state"
+///       date_format            = "yyyy/MM/dd"
+///       path_pattern           = "{date}/{time}"
+///       source_partition_count = 16
+///       storage_accounts = [{
+///         account_key  = "someAccountKey=="
+///         account_name = "someAccountName"
 ///       }]
-///       "timeFormat" = "HH"
-///       "type"       = "Microsoft.Storage/Blob"
+///       time_format = "HH"
+///       type        = "Microsoft.Storage/Blob"
 ///     }
-///     "serialization" = {
-///       "encoding"       = "UTF8"
-///       "fieldDelimiter" = ","
-///       "type"           = "Csv"
+///     serialization = {
+///       encoding        = "UTF8"
+///       field_delimiter = ","
+///       type            = "Csv"
 ///     }
-///     "type" = "Stream"
+///     type = "Stream"
 ///   }
 ///   resource_group_name = "sjrg8161"
 /// }
@@ -1238,6 +1306,21 @@ import 'input_args_type.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Input;
 /// import com.pulumi.azurenative.streamanalytics.InputArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ReferenceInputPropertiesArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureSqlReferenceInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobReferenceInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.StorageAccountArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.FileReferenceInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AvroSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.CsvSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.JsonSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ParquetSerializationArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.StreamInputPropertiesArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.BlobStreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubStreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.EventHubV2StreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.GatewayMessageBusStreamInputDataSourceArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.IoTHubStreamInputDataSourceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1265,14 +1348,11 @@ import 'input_args_type.dart';
 ///                         .accountName("someAccountName")
 ///                         .build())
 ///                     .timeFormat("HH")
-///                     .type("Microsoft.Storage/Blob")
 ///                     .build())
 ///                 .serialization(CsvSerializationArgs.builder()
 ///                     .encoding("UTF8")
 ///                     .fieldDelimiter(",")
-///                     .type("Csv")
 ///                     .build())
-///                 .type("Stream")
 ///                 .build())
 ///             .resourceGroupName("sjrg8161")
 ///             .build());

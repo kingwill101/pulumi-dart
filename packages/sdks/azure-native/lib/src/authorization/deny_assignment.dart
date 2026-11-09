@@ -114,7 +114,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -122,7 +122,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_denyassignment" "denyAssignment" {
+/// resource "azure-native_authorization_deny_assignment" "denyAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deny_assignment_effect       = "enforced"
 ///   deny_assignment_id           = "64b75d79-7a26-4341-944e-4f1a19f0e6ca"
 ///   deny_assignment_name         = "Deny delete on critical resources"

@@ -62,7 +62,7 @@ import 'sandbox_custom_image_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,7 +70,10 @@ import 'sandbox_custom_image_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kusto_sandboxcustomimage" "sandboxCustomImage" {
+/// resource "azure-native_kusto_sandbox_custom_image" "sandboxCustomImage" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name              = "kustoCluster"
 ///   language                  = "Python"
 ///   language_version          = "3.10.8"
@@ -213,7 +216,7 @@ import 'sandbox_custom_image_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -221,7 +224,10 @@ import 'sandbox_custom_image_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kusto_sandboxcustomimage" "sandboxCustomImage" {
+/// resource "azure-native_kusto_sandbox_custom_image" "sandboxCustomImage" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   base_image_name           = "customImage1"
 ///   cluster_name              = "kustoCluster"
 ///   language                  = "Python"
@@ -364,7 +370,7 @@ import 'sandbox_custom_image_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -372,7 +378,10 @@ import 'sandbox_custom_image_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kusto_sandboxcustomimage" "sandboxCustomImage" {
+/// resource "azure-native_kusto_sandbox_custom_image" "sandboxCustomImage" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   base_image_name           = "Python3_10_8"
 ///   cluster_name              = "kustoCluster"
 ///   language                  = "Python"

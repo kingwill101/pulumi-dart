@@ -224,7 +224,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -232,7 +232,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_galleryscriptversion" "galleryScriptVersion" {
+/// resource "azure-native_compute_gallery_script_version" "galleryScriptVersion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   gallery_name                = "myGalleryName"
 ///   gallery_script_name         = "myGalleryScriptName"
 ///   gallery_script_version_name = "1.0.0"
@@ -243,54 +246,54 @@ import 'system_data_response.dart';
 ///       replica_count    = 2
 ///       source = {
 ///         parameters = [{
-///           "defaultValue" = "westus"
-///           "name"         = "location"
-///           "required"     = true
-///           "type"         = "String"
+///           default_value = "westus"
+///           name          = "location"
+///           required      = true
+///           type          = "String"
 ///           }, {
-///           "defaultValue" = "default value of parameter"
-///           "description"  = "description of the parameter"
-///           "name"         = "myGalleryScriptParameter1"
-///           "required"     = true
-///           "type"         = "String"
+///           default_value = "default value of parameter"
+///           description   = "description of the parameter"
+///           name          = "myGalleryScriptParameter1"
+///           required      = true
+///           type          = "String"
 ///           }, {
-///           "defaultValue" = "default value of parameter"
-///           "description"  = "description of the parameter"
-///           "name"         = "myGalleryScriptParameter2"
-///           "required"     = false
-///           "type"         = "String"
+///           default_value = "default value of parameter"
+///           description   = "description of the parameter"
+///           name          = "myGalleryScriptParameter2"
+///           required      = false
+///           type          = "String"
 ///           }, {
-///           "defaultValue" = "3"
-///           "description"  = "description of the parameter"
-///           "maxValue"     = "5"
-///           "minValue"     = "1"
-///           "name"         = "numberOfUnits"
-///           "required"     = true
-///           "type"         = "Int"
+///           default_value = "3"
+///           description   = "description of the parameter"
+///           max_value     = "5"
+///           min_value     = "1"
+///           name          = "numberOfUnits"
+///           required      = true
+///           type          = "Int"
 ///           }, {
-///           "defaultValue" = "0.6"
-///           "description"  = "description of the parameter"
-///           "maxValue"     = "2"
-///           "minValue"     = "0.1"
-///           "name"         = "weightOfUnit"
-///           "required"     = true
-///           "type"         = "Double"
+///           default_value = "0.6"
+///           description   = "description of the parameter"
+///           max_value     = "2"
+///           min_value     = "0.1"
+///           name          = "weightOfUnit"
+///           required      = true
+///           type          = "Double"
 ///           }, {
-///           "defaultValue" = "Fruit"
-///           "description"  = "description of the parameter"
-///           "enumValues"   = ["Fruit", "Vegetable", "Greens", "Nuts"]
-///           "name"         = "typeOfProduct"
-///           "required"     = false
-///           "type"         = "Enum"
+///           default_value = "Fruit"
+///           description   = "description of the parameter"
+///           enum_values   = ["Fruit", "Vegetable", "Greens", "Nuts"]
+///           name          = "typeOfProduct"
+///           required      = false
+///           type          = "Enum"
 ///         }]
 ///         script_link = "https://mystorageaccount.blob.core.windows.net/mycontainer/myScript.ps1?{sasKey}"
 ///       }
 ///       storage_account_type = "Standard_LRS"
 ///       target_regions = [{
-///         "excludeFromLatest"    = false
-///         "name"                 = "West US"
-///         "regionalReplicaCount" = 2
-///         "storageAccountType"   = "Standard_LRS"
+///         exclude_from_latest    = false
+///         name                   = "West US"
+///         regional_replica_count = 2
+///         storage_account_type   = "Standard_LRS"
 ///       }]
 ///     }
 ///     safety_profile = {
@@ -313,6 +316,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.GalleryScriptVersionPropertiesArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryScriptVersionPublishingProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ScriptSourceArgs;
+/// import com.pulumi.azurenative.compute.inputs.GalleryScriptParameterArgs;
+/// import com.pulumi.azurenative.compute.inputs.TargetRegionArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryScriptVersionSafetyProfileArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

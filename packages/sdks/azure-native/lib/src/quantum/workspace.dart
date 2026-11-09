@@ -98,7 +98,7 @@ import 'workspace_resource_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -107,17 +107,20 @@ import 'workspace_resource_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_quantum_workspace" "workspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "West US"
 ///   properties = {
 ///     providers = [{
-///       "providerId"  = "Honeywell"
-///       "providerSku" = "Basic"
+///       provider_id  = "Honeywell"
+///       provider_sku = "Basic"
 ///       }, {
-///       "providerId"  = "IonQ"
-///       "providerSku" = "Basic"
+///       provider_id  = "IonQ"
+///       provider_sku = "Basic"
 ///       }, {
-///       "providerId"  = "OneQBit"
-///       "providerSku" = "Basic"
+///       provider_id  = "OneQBit"
+///       provider_sku = "Basic"
 ///     }]
 ///     storage_account = "/subscriptions/1C4B2828-7D49-494F-933D-061373BE28C2/resourceGroups/quantumResourcegroup/providers/Microsoft.Storage/storageAccounts/testStorageAccount"
 ///   }
@@ -136,6 +139,7 @@ import 'workspace_resource_properties_response.dart';
 /// import com.pulumi.azurenative.quantum.Workspace;
 /// import com.pulumi.azurenative.quantum.WorkspaceArgs;
 /// import com.pulumi.azurenative.quantum.inputs.WorkspaceResourcePropertiesArgs;
+/// import com.pulumi.azurenative.quantum.inputs.ProviderArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

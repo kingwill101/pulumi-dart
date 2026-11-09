@@ -106,7 +106,7 @@ import 'content_type_args.dart';
 /// 			ResourceGroupName: pulumi.String("rg1"),
 /// 			Schema: pulumi.Any(map[string]interface{}{
 /// 				"additionalProperties": false,
-/// 				"properties": map[string]interface{}{
+/// 				"properties": map[string]map[string]interface{}{
 /// 					"en_us": map[string]interface{}{
 /// 						"additionalProperties": false,
 /// 						"properties": map[string]interface{}{
@@ -116,7 +116,7 @@ import 'content_type_args.dart';
 /// 								"title":       "Description",
 /// 								"type":        "string",
 /// 							},
-/// 							"documentId": map[string]interface{}{
+/// 							"documentId": map[string]string{
 /// 								"description": "Reference to page content document.",
 /// 								"title":       "Document ID",
 /// 								"type":        "string",
@@ -162,7 +162,7 @@ import 'content_type_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -170,7 +170,10 @@ import 'content_type_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_contenttype" "contentType" {
+/// resource "azure-native_apimanagement_content_type" "contentType" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   content_type_id     = "page"
 ///   description         = "A regular page"
 ///   name                = "Page"

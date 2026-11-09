@@ -34,7 +34,7 @@ import 'system_data_response.dart';
 ///                     Issqlcompression = false,
 ///                     TimeZone = "UTC",
 ///                 },
-///                 SubProtectionPolicy = new[]
+///                 SubProtectionPolicy =
 ///                 {
 ///                     new AzureNative.Workloads.Inputs.SubProtectionPolicyArgs
 ///                     {
@@ -191,7 +191,7 @@ import 'system_data_response.dart';
 ///                     Issqlcompression = false,
 ///                     TimeZone = "UTC",
 ///                 },
-///                 SubProtectionPolicy = new[]
+///                 SubProtectionPolicy =
 ///                 {
 ///                     new AzureNative.Workloads.Inputs.SubProtectionPolicyArgs
 ///                     {
@@ -244,7 +244,7 @@ import 'system_data_response.dart';
 ///         ConnectorName = "C1",
 ///         Location = "westcentralus",
 ///         ResourceGroupName = "test-rg",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -276,68 +276,68 @@ import 'system_data_response.dart';
 /// 					SubProtectionPolicy: workloads.SubProtectionPolicyArray{
 /// 						&workloads.SubProtectionPolicyArgs{
 /// 							PolicyType: pulumi.String(workloads.PolicyTypeFull),
-/// 							RetentionPolicy: workloads.LongTermRetentionPolicy{
-/// 								MonthlySchedule: workloads.MonthlyRetentionSchedule{
-/// 									RetentionDuration: workloads.RetentionDuration{
-/// 										Count:        60,
-/// 										DurationType: workloads.RetentionDurationTypeMonths,
+/// 							RetentionPolicy: &workloads.LongTermRetentionPolicyArgs{
+/// 								MonthlySchedule: &workloads.MonthlyRetentionScheduleArgs{
+/// 									RetentionDuration: &workloads.RetentionDurationArgs{
+/// 										Count:        pulumi.Int(60),
+/// 										DurationType: pulumi.String(workloads.RetentionDurationTypeMonths),
 /// 									},
-/// 									RetentionScheduleFormatType: workloads.RetentionScheduleFormatWeekly,
-/// 									RetentionScheduleWeekly: workloads.WeeklyRetentionFormat{
-/// 										DaysOfTheWeek: []workloads.DayOfWeek{
+/// 									RetentionScheduleFormatType: pulumi.String(workloads.RetentionScheduleFormatWeekly),
+/// 									RetentionScheduleWeekly: &workloads.WeeklyRetentionFormatArgs{
+/// 										DaysOfTheWeek: workloads.DayOfWeekArray{
 /// 											workloads.DayOfWeekSunday,
 /// 										},
-/// 										WeeksOfTheMonth: []workloads.WeekOfMonth{
+/// 										WeeksOfTheMonth: workloads.WeekOfMonthArray{
 /// 											workloads.WeekOfMonthFirst,
 /// 										},
 /// 									},
-/// 									RetentionTimes: []string{
-/// 										"2022-11-29T19:30:00.000Z",
+/// 									RetentionTimes: pulumi.StringArray{
+/// 										pulumi.String("2022-11-29T19:30:00.000Z"),
 /// 									},
 /// 								},
-/// 								RetentionPolicyType: "LongTermRetentionPolicy",
-/// 								WeeklySchedule: workloads.WeeklyRetentionSchedule{
-/// 									DaysOfTheWeek: []workloads.DayOfWeek{
+/// 								RetentionPolicyType: pulumi.String("LongTermRetentionPolicy"),
+/// 								WeeklySchedule: &workloads.WeeklyRetentionScheduleArgs{
+/// 									DaysOfTheWeek: workloads.DayOfWeekArray{
 /// 										workloads.DayOfWeekSunday,
 /// 									},
-/// 									RetentionDuration: workloads.RetentionDuration{
-/// 										Count:        104,
-/// 										DurationType: workloads.RetentionDurationTypeWeeks,
+/// 									RetentionDuration: &workloads.RetentionDurationArgs{
+/// 										Count:        pulumi.Int(104),
+/// 										DurationType: pulumi.String(workloads.RetentionDurationTypeWeeks),
 /// 									},
-/// 									RetentionTimes: []string{
-/// 										"2022-11-29T19:30:00.000Z",
+/// 									RetentionTimes: pulumi.StringArray{
+/// 										pulumi.String("2022-11-29T19:30:00.000Z"),
 /// 									},
 /// 								},
-/// 								YearlySchedule: workloads.YearlyRetentionSchedule{
-/// 									MonthsOfYear: []workloads.MonthOfYear{
+/// 								YearlySchedule: &workloads.YearlyRetentionScheduleArgs{
+/// 									MonthsOfYear: workloads.MonthOfYearArray{
 /// 										workloads.MonthOfYearJanuary,
 /// 									},
-/// 									RetentionDuration: workloads.RetentionDuration{
-/// 										Count:        10,
-/// 										DurationType: workloads.RetentionDurationTypeYears,
+/// 									RetentionDuration: &workloads.RetentionDurationArgs{
+/// 										Count:        pulumi.Int(10),
+/// 										DurationType: pulumi.String(workloads.RetentionDurationTypeYears),
 /// 									},
-/// 									RetentionScheduleFormatType: workloads.RetentionScheduleFormatWeekly,
-/// 									RetentionScheduleWeekly: workloads.WeeklyRetentionFormat{
-/// 										DaysOfTheWeek: []workloads.DayOfWeek{
+/// 									RetentionScheduleFormatType: pulumi.String(workloads.RetentionScheduleFormatWeekly),
+/// 									RetentionScheduleWeekly: &workloads.WeeklyRetentionFormatArgs{
+/// 										DaysOfTheWeek: workloads.DayOfWeekArray{
 /// 											workloads.DayOfWeekSunday,
 /// 										},
-/// 										WeeksOfTheMonth: []workloads.WeekOfMonth{
+/// 										WeeksOfTheMonth: workloads.WeekOfMonthArray{
 /// 											workloads.WeekOfMonthFirst,
 /// 										},
 /// 									},
-/// 									RetentionTimes: []string{
-/// 										"2022-11-29T19:30:00.000Z",
+/// 									RetentionTimes: pulumi.StringArray{
+/// 										pulumi.String("2022-11-29T19:30:00.000Z"),
 /// 									},
 /// 								},
 /// 							},
-/// 							SchedulePolicy: workloads.SimpleSchedulePolicy{
-/// 								SchedulePolicyType: "SimpleSchedulePolicy",
-/// 								ScheduleRunDays: []workloads.DayOfWeek{
+/// 							SchedulePolicy: &workloads.SimpleSchedulePolicyArgs{
+/// 								SchedulePolicyType: pulumi.String("SimpleSchedulePolicy"),
+/// 								ScheduleRunDays: workloads.DayOfWeekArray{
 /// 									workloads.DayOfWeekSunday,
 /// 								},
-/// 								ScheduleRunFrequency: workloads.ScheduleRunTypeWeekly,
-/// 								ScheduleRunTimes: []string{
-/// 									"2022-11-29T19:30:00.000Z",
+/// 								ScheduleRunFrequency: pulumi.String(workloads.ScheduleRunTypeWeekly),
+/// 								ScheduleRunTimes: pulumi.StringArray{
+/// 									pulumi.String("2022-11-29T19:30:00.000Z"),
 /// 								},
 /// 							},
 /// 							TieringPolicy: workloads.TieringPolicyMap{
@@ -348,37 +348,37 @@ import 'system_data_response.dart';
 /// 						},
 /// 						&workloads.SubProtectionPolicyArgs{
 /// 							PolicyType: pulumi.String(workloads.PolicyTypeDifferential),
-/// 							RetentionPolicy: workloads.SimpleRetentionPolicy{
-/// 								RetentionDuration: workloads.RetentionDuration{
-/// 									Count:        30,
-/// 									DurationType: workloads.RetentionDurationTypeDays,
+/// 							RetentionPolicy: &workloads.SimpleRetentionPolicyArgs{
+/// 								RetentionDuration: &workloads.RetentionDurationArgs{
+/// 									Count:        pulumi.Int(30),
+/// 									DurationType: pulumi.String(workloads.RetentionDurationTypeDays),
 /// 								},
-/// 								RetentionPolicyType: "SimpleRetentionPolicy",
+/// 								RetentionPolicyType: pulumi.String("SimpleRetentionPolicy"),
 /// 							},
-/// 							SchedulePolicy: workloads.SimpleSchedulePolicy{
-/// 								SchedulePolicyType: "SimpleSchedulePolicy",
-/// 								ScheduleRunDays: []workloads.DayOfWeek{
+/// 							SchedulePolicy: &workloads.SimpleSchedulePolicyArgs{
+/// 								SchedulePolicyType: pulumi.String("SimpleSchedulePolicy"),
+/// 								ScheduleRunDays: workloads.DayOfWeekArray{
 /// 									workloads.DayOfWeekMonday,
 /// 								},
-/// 								ScheduleRunFrequency: workloads.ScheduleRunTypeWeekly,
-/// 								ScheduleRunTimes: []string{
-/// 									"2022-09-29T02:00:00Z",
+/// 								ScheduleRunFrequency: pulumi.String(workloads.ScheduleRunTypeWeekly),
+/// 								ScheduleRunTimes: pulumi.StringArray{
+/// 									pulumi.String("2022-09-29T02:00:00Z"),
 /// 								},
-/// 								ScheduleWeeklyFrequency: 0,
+/// 								ScheduleWeeklyFrequency: pulumi.Int(0),
 /// 							},
 /// 						},
 /// 						&workloads.SubProtectionPolicyArgs{
 /// 							PolicyType: pulumi.String(workloads.PolicyTypeLog),
-/// 							RetentionPolicy: workloads.SimpleRetentionPolicy{
-/// 								RetentionDuration: workloads.RetentionDuration{
-/// 									Count:        20,
-/// 									DurationType: workloads.RetentionDurationTypeDays,
+/// 							RetentionPolicy: &workloads.SimpleRetentionPolicyArgs{
+/// 								RetentionDuration: &workloads.RetentionDurationArgs{
+/// 									Count:        pulumi.Int(20),
+/// 									DurationType: pulumi.String(workloads.RetentionDurationTypeDays),
 /// 								},
-/// 								RetentionPolicyType: "SimpleRetentionPolicy",
+/// 								RetentionPolicyType: pulumi.String("SimpleRetentionPolicy"),
 /// 							},
-/// 							SchedulePolicy: workloads.LogSchedulePolicy{
-/// 								ScheduleFrequencyInMins: 120,
-/// 								SchedulePolicyType:      "LogSchedulePolicy",
+/// 							SchedulePolicy: &workloads.LogSchedulePolicyArgs{
+/// 								ScheduleFrequencyInMins: pulumi.Int(120),
+/// 								SchedulePolicyType:      pulumi.String("LogSchedulePolicy"),
 /// 							},
 /// 						},
 /// 					},
@@ -396,11 +396,11 @@ import 'system_data_response.dart';
 /// 					SubProtectionPolicy: workloads.SubProtectionPolicyArray{
 /// 						&workloads.SubProtectionPolicyArgs{
 /// 							PolicyType: pulumi.String(workloads.PolicyTypeSnapshotFull),
-/// 							SchedulePolicy: workloads.SimpleSchedulePolicy{
-/// 								SchedulePolicyType:   "SimpleSchedulePolicy",
-/// 								ScheduleRunFrequency: workloads.ScheduleRunTypeDaily,
-/// 								ScheduleRunTimes: []string{
-/// 									"2023-09-18T06:30:00.000Z",
+/// 							SchedulePolicy: &workloads.SimpleSchedulePolicyArgs{
+/// 								SchedulePolicyType:   pulumi.String("SimpleSchedulePolicy"),
+/// 								ScheduleRunFrequency: pulumi.String(workloads.ScheduleRunTypeDaily),
+/// 								ScheduleRunTimes: pulumi.StringArray{
+/// 									pulumi.String("2023-09-18T06:30:00.000Z"),
 /// 								},
 /// 							},
 /// 							SnapshotBackupAdditionalDetails: &workloads.SnapshotBackupAdditionalDetailsArgs{
@@ -421,10 +421,10 @@ import 'system_data_response.dart';
 /// 				},
 /// 				HdbuserstoreKeyName: pulumi.String("abcd"),
 /// 				InstanceNumber:      pulumi.String("00"),
-/// 				RecoveryServicesVault: workloads.NewRecoveryServicesVault{
-/// 					Name:          "test-vault",
-/// 					ResourceGroup: "test-rg",
-/// 					VaultType:     "New",
+/// 				RecoveryServicesVault: &workloads.NewRecoveryServicesVaultArgs{
+/// 					Name:          pulumi.String("test-vault"),
+/// 					ResourceGroup: pulumi.String("test-rg"),
+/// 					VaultType:     pulumi.String("New"),
 /// 				},
 /// 				SslConfiguration: &workloads.SSLConfigurationArgs{
 /// 					SslCryptoProvider:        pulumi.String(workloads.SslCryptoProviderCommoncrypto),
@@ -449,7 +449,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -457,141 +457,144 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_acssbackupconnection" "acssBackupConnection" {
+/// resource "azure-native_workloads_a_c_s_s_backup_connection" "acssBackupConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backup_data = {
-///     "backupPolicy" = {
-///       "backupManagementType" = "AzureWorkload"
-///       "name"                 = "defaultHanaPolicy"
-///       "protectedItemsCount"  = 0
-///       "settings" = {
-///         "isCompression"    = false
-///         "issqlcompression" = false
-///         "timeZone"         = "UTC"
+///     backup_policy = {
+///       backup_management_type = "AzureWorkload"
+///       name                   = "defaultHanaPolicy"
+///       protected_items_count  = 0
+///       settings = {
+///         is_compression   = false
+///         issqlcompression = false
+///         time_zone        = "UTC"
 ///       }
-///       "subProtectionPolicy" = [{
-///         "policyType" = "Full"
-///         "retentionPolicy" = {
-///           "monthlySchedule" = {
-///             "retentionDuration" = {
-///               "count"        = 60
-///               "durationType" = "Months"
+///       sub_protection_policy = [{
+///         policy_type = "Full"
+///         retention_policy = {
+///           monthly_schedule = {
+///             retention_duration = {
+///               count         = 60
+///               duration_type = "Months"
 ///             }
-///             "retentionScheduleFormatType" = "Weekly"
-///             "retentionScheduleWeekly" = {
-///               "daysOfTheWeek"   = ["Sunday"]
-///               "weeksOfTheMonth" = ["First"]
+///             retention_schedule_format_type = "Weekly"
+///             retention_schedule_weekly = {
+///               days_of_the_week   = ["Sunday"]
+///               weeks_of_the_month = ["First"]
 ///             }
-///             "retentionTimes" = ["2022-11-29T19:30:00.000Z"]
+///             retention_times = ["2022-11-29T19:30:00.000Z"]
 ///           }
-///           "retentionPolicyType" = "LongTermRetentionPolicy"
-///           "weeklySchedule" = {
-///             "daysOfTheWeek" = ["Sunday"]
-///             "retentionDuration" = {
-///               "count"        = 104
-///               "durationType" = "Weeks"
+///           retention_policy_type = "LongTermRetentionPolicy"
+///           weekly_schedule = {
+///             days_of_the_week = ["Sunday"]
+///             retention_duration = {
+///               count         = 104
+///               duration_type = "Weeks"
 ///             }
-///             "retentionTimes" = ["2022-11-29T19:30:00.000Z"]
+///             retention_times = ["2022-11-29T19:30:00.000Z"]
 ///           }
-///           "yearlySchedule" = {
-///             "monthsOfYear" = ["January"]
-///             "retentionDuration" = {
-///               "count"        = 10
-///               "durationType" = "Years"
+///           yearly_schedule = {
+///             months_of_year = ["January"]
+///             retention_duration = {
+///               count         = 10
+///               duration_type = "Years"
 ///             }
-///             "retentionScheduleFormatType" = "Weekly"
-///             "retentionScheduleWeekly" = {
-///               "daysOfTheWeek"   = ["Sunday"]
-///               "weeksOfTheMonth" = ["First"]
+///             retention_schedule_format_type = "Weekly"
+///             retention_schedule_weekly = {
+///               days_of_the_week   = ["Sunday"]
+///               weeks_of_the_month = ["First"]
 ///             }
-///             "retentionTimes" = ["2022-11-29T19:30:00.000Z"]
+///             retention_times = ["2022-11-29T19:30:00.000Z"]
 ///           }
 ///         }
-///         "schedulePolicy" = {
-///           "schedulePolicyType"   = "SimpleSchedulePolicy"
-///           "scheduleRunDays"      = ["Sunday"]
-///           "scheduleRunFrequency" = "Weekly"
-///           "scheduleRunTimes"     = ["2022-11-29T19:30:00.000Z"]
+///         schedule_policy = {
+///           schedule_policy_type   = "SimpleSchedulePolicy"
+///           schedule_run_days      = ["Sunday"]
+///           schedule_run_frequency = "Weekly"
+///           schedule_run_times     = ["2022-11-29T19:30:00.000Z"]
 ///         }
-///         "tieringPolicy" = {
+///         tiering_policy = {
 ///           "ArchivedRP" = {
-///             "tieringMode" = "DoNotTier"
+///             tiering_mode = "DoNotTier"
 ///           }
 ///         }
 ///         }, {
-///         "policyType" = "Differential"
-///         "retentionPolicy" = {
-///           "retentionDuration" = {
-///             "count"        = 30
-///             "durationType" = "Days"
+///         policy_type = "Differential"
+///         retention_policy = {
+///           retention_duration = {
+///             count         = 30
+///             duration_type = "Days"
 ///           }
-///           "retentionPolicyType" = "SimpleRetentionPolicy"
+///           retention_policy_type = "SimpleRetentionPolicy"
 ///         }
-///         "schedulePolicy" = {
-///           "schedulePolicyType"      = "SimpleSchedulePolicy"
-///           "scheduleRunDays"         = ["Monday"]
-///           "scheduleRunFrequency"    = "Weekly"
-///           "scheduleRunTimes"        = ["2022-09-29T02:00:00Z"]
-///           "scheduleWeeklyFrequency" = 0
+///         schedule_policy = {
+///           schedule_policy_type      = "SimpleSchedulePolicy"
+///           schedule_run_days         = ["Monday"]
+///           schedule_run_frequency    = "Weekly"
+///           schedule_run_times        = ["2022-09-29T02:00:00Z"]
+///           schedule_weekly_frequency = 0
 ///         }
 ///         }, {
-///         "policyType" = "Log"
-///         "retentionPolicy" = {
-///           "retentionDuration" = {
-///             "count"        = 20
-///             "durationType" = "Days"
+///         policy_type = "Log"
+///         retention_policy = {
+///           retention_duration = {
+///             count         = 20
+///             duration_type = "Days"
 ///           }
-///           "retentionPolicyType" = "SimpleRetentionPolicy"
+///           retention_policy_type = "SimpleRetentionPolicy"
 ///         }
-///         "schedulePolicy" = {
-///           "scheduleFrequencyInMins" = 120
-///           "schedulePolicyType"      = "LogSchedulePolicy"
+///         schedule_policy = {
+///           schedule_frequency_in_mins = 120
+///           schedule_policy_type       = "LogSchedulePolicy"
 ///         }
 ///       }]
-///       "workLoadType" = "SAPHanaDatabase"
+///       work_load_type = "SAPHanaDatabase"
 ///     }
-///     "backupType" = "HANA"
-///     "dbInstanceSnapshotBackupPolicy" = {
-///       "backupManagementType" = "AzureWorkload"
-///       "name"                 = "defaultDbInstanceSnapshotPolicy"
-///       "settings" = {
-///         "isCompression"    = false
-///         "issqlcompression" = false
-///         "timeZone"         = "UTC"
+///     backup_type = "HANA"
+///     db_instance_snapshot_backup_policy = {
+///       backup_management_type = "AzureWorkload"
+///       name                   = "defaultDbInstanceSnapshotPolicy"
+///       settings = {
+///         is_compression   = false
+///         issqlcompression = false
+///         time_zone        = "UTC"
 ///       }
-///       "subProtectionPolicy" = [{
-///         "policyType" = "SnapshotFull"
-///         "schedulePolicy" = {
-///           "schedulePolicyType"   = "SimpleSchedulePolicy"
-///           "scheduleRunFrequency" = "Daily"
-///           "scheduleRunTimes"     = ["2023-09-18T06:30:00.000Z"]
+///       sub_protection_policy = [{
+///         policy_type = "SnapshotFull"
+///         schedule_policy = {
+///           schedule_policy_type   = "SimpleSchedulePolicy"
+///           schedule_run_frequency = "Daily"
+///           schedule_run_times     = ["2023-09-18T06:30:00.000Z"]
 ///         }
-///         "snapshotBackupAdditionalDetails" = {
-///           "instantRPDetails"              = "test-rg"
-///           "instantRpRetentionRangeInDays" = 1
-///           "userAssignedManagedIdentityDetails" = {
-///             "identityArmId" = "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testMsi"
-///             "identityName"  = "testMsi"
-///             "userAssignedIdentityProperties" = {
-///               "clientId"    = "c3a877cf-51f8-4031-8f17-ab562d1e7737"
-///               "principalId" = "2f5834bd-4b86-4d85-a8df-6dd829a6418c"
+///         snapshot_backup_additional_details = {
+///           instant_rp_details                 = "test-rg"
+///           instant_rp_retention_range_in_days = 1
+///           user_assigned_managed_identity_details = {
+///             identity_arm_id = "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testMsi"
+///             identity_name   = "testMsi"
+///             user_assigned_identity_properties = {
+///               client_id    = "c3a877cf-51f8-4031-8f17-ab562d1e7737"
+///               principal_id = "2f5834bd-4b86-4d85-a8df-6dd829a6418c"
 ///             }
 ///           }
 ///         }
 ///       }]
-///       "workLoadType" = "SAPHanaDBInstance"
+///       work_load_type = "SAPHanaDBInstance"
 ///     }
-///     "hdbuserstoreKeyName" = "abcd"
-///     "instanceNumber"      = "00"
-///     "recoveryServicesVault" = {
-///       "name"          = "test-vault"
-///       "resourceGroup" = "test-rg"
-///       "vaultType"     = "New"
+///     hdbuserstore_key_name = "abcd"
+///     instance_number       = "00"
+///     recovery_services_vault = {
+///       name           = "test-vault"
+///       resource_group = "test-rg"
+///       vault_type     = "New"
 ///     }
-///     "sslConfiguration" = {
-///       "sslCryptoProvider"        = "commoncrypto"
-///       "sslHostNameInCertificate" = "hostname"
-///       "sslKeyStore"              = "sapsrv.pse"
-///       "sslTrustStore"            = "sapsrv.pse"
+///     ssl_configuration = {
+///       ssl_crypto_provider          = "commoncrypto"
+///       ssl_host_name_in_certificate = "hostname"
+///       ssl_key_store                = "sapsrv.pse"
+///       ssl_trust_store              = "sapsrv.pse"
 ///     }
 ///   }
 ///   backup_name         = "dbBackup"
@@ -611,6 +614,31 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnection;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnectionArgs;
+/// import com.pulumi.azurenative.workloads.inputs.HanaBackupDataArgs;
+/// import com.pulumi.azurenative.workloads.inputs.DBBackupPolicyPropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SettingsArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SubProtectionPolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.LongTermRetentionPolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.MonthlyRetentionScheduleArgs;
+/// import com.pulumi.azurenative.workloads.inputs.RetentionDurationArgs;
+/// import com.pulumi.azurenative.workloads.inputs.WeeklyRetentionFormatArgs;
+/// import com.pulumi.azurenative.workloads.inputs.WeeklyRetentionScheduleArgs;
+/// import com.pulumi.azurenative.workloads.inputs.YearlyRetentionScheduleArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SimpleRetentionPolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.LogSchedulePolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.LongTermSchedulePolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SimpleSchedulePolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SimpleSchedulePolicyV2Args;
+/// import com.pulumi.azurenative.workloads.inputs.TieringPolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SnapshotBackupAdditionalDetailsArgs;
+/// import com.pulumi.azurenative.workloads.inputs.UserAssignedManagedIdentityDetailsArgs;
+/// import com.pulumi.azurenative.workloads.inputs.UserAssignedIdentityPropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.ExistingRecoveryServicesVaultArgs;
+/// import com.pulumi.azurenative.workloads.inputs.NewRecoveryServicesVaultArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SSLConfigurationArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SqlBackupDataArgs;
+/// import com.pulumi.azurenative.workloads.inputs.VMBackupDataArgs;
+/// import com.pulumi.azurenative.workloads.inputs.VMBackupPolicyPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -626,16 +654,15 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var acssBackupConnection = new ACSSBackupConnection("acssBackupConnection", ACSSBackupConnectionArgs.builder()
 ///             .backupData(HanaBackupDataArgs.builder()
-///                 .backupPolicy(Map.ofEntries(
-///                     Map.entry("backupManagementType", "AzureWorkload"),
-///                     Map.entry("name", "defaultHanaPolicy"),
-///                     Map.entry("protectedItemsCount", 0),
-///                     Map.entry("settings", SettingsArgs.builder()
+///                 .backupPolicy(DBBackupPolicyPropertiesArgs.builder()
+///                     .name("defaultHanaPolicy")
+///                     .protectedItemsCount(0)
+///                     .settings(SettingsArgs.builder()
 ///                         .isCompression(false)
 ///                         .issqlcompression(false)
 ///                         .timeZone("UTC")
-///                         .build()),
-///                     Map.entry("subProtectionPolicy", Arrays.asList(
+///                         .build())
+///                     .subProtectionPolicy(
 ///                         SubProtectionPolicyArgs.builder()
 ///                             .policyType("Full")
 ///                             .retentionPolicy(LongTermRetentionPolicyArgs.builder()
@@ -651,7 +678,6 @@ import 'system_data_response.dart';
 ///                                         .build())
 ///                                     .retentionTimes("2022-11-29T19:30:00.000Z")
 ///                                     .build())
-///                                 .retentionPolicyType("LongTermRetentionPolicy")
 ///                                 .weeklySchedule(WeeklyRetentionScheduleArgs.builder()
 ///                                     .daysOfTheWeek("Sunday")
 ///                                     .retentionDuration(RetentionDurationArgs.builder()
@@ -675,7 +701,6 @@ import 'system_data_response.dart';
 ///                                     .build())
 ///                                 .build())
 ///                             .schedulePolicy(SimpleSchedulePolicyArgs.builder()
-///                                 .schedulePolicyType("SimpleSchedulePolicy")
 ///                                 .scheduleRunDays("Sunday")
 ///                                 .scheduleRunFrequency("Weekly")
 ///                                 .scheduleRunTimes("2022-11-29T19:30:00.000Z")
@@ -691,10 +716,8 @@ import 'system_data_response.dart';
 ///                                     .count(30)
 ///                                     .durationType("Days")
 ///                                     .build())
-///                                 .retentionPolicyType("SimpleRetentionPolicy")
 ///                                 .build())
 ///                             .schedulePolicy(SimpleSchedulePolicyArgs.builder()
-///                                 .schedulePolicyType("SimpleSchedulePolicy")
 ///                                 .scheduleRunDays("Monday")
 ///                                 .scheduleRunFrequency("Weekly")
 ///                                 .scheduleRunTimes("2022-09-29T02:00:00Z")
@@ -708,28 +731,23 @@ import 'system_data_response.dart';
 ///                                     .count(20)
 ///                                     .durationType("Days")
 ///                                     .build())
-///                                 .retentionPolicyType("SimpleRetentionPolicy")
 ///                                 .build())
 ///                             .schedulePolicy(LogSchedulePolicyArgs.builder()
 ///                                 .scheduleFrequencyInMins(120)
-///                                 .schedulePolicyType("LogSchedulePolicy")
 ///                                 .build())
-///                             .build())),
-///                     Map.entry("workLoadType", "SAPHanaDatabase")
-///                 ))
-///                 .backupType("HANA")
-///                 .dbInstanceSnapshotBackupPolicy(Map.ofEntries(
-///                     Map.entry("backupManagementType", "AzureWorkload"),
-///                     Map.entry("name", "defaultDbInstanceSnapshotPolicy"),
-///                     Map.entry("settings", SettingsArgs.builder()
+///                             .build())
+///                     .workLoadType("SAPHanaDatabase")
+///                     .build())
+///                 .dbInstanceSnapshotBackupPolicy(DBBackupPolicyPropertiesArgs.builder()
+///                     .name("defaultDbInstanceSnapshotPolicy")
+///                     .settings(SettingsArgs.builder()
 ///                         .isCompression(false)
 ///                         .issqlcompression(false)
 ///                         .timeZone("UTC")
-///                         .build()),
-///                     Map.entry("subProtectionPolicy", Arrays.asList(SubProtectionPolicyArgs.builder()
+///                         .build())
+///                     .subProtectionPolicy(SubProtectionPolicyArgs.builder()
 ///                         .policyType("SnapshotFull")
 ///                         .schedulePolicy(SimpleSchedulePolicyArgs.builder()
-///                             .schedulePolicyType("SimpleSchedulePolicy")
 ///                             .scheduleRunFrequency("Daily")
 ///                             .scheduleRunTimes("2023-09-18T06:30:00.000Z")
 ///                             .build())
@@ -745,15 +763,14 @@ import 'system_data_response.dart';
 ///                                     .build())
 ///                                 .build())
 ///                             .build())
-///                         .build())),
-///                     Map.entry("workLoadType", "SAPHanaDBInstance")
-///                 ))
+///                         .build())
+///                     .workLoadType("SAPHanaDBInstance")
+///                     .build())
 ///                 .hdbuserstoreKeyName("abcd")
 ///                 .instanceNumber("00")
 ///                 .recoveryServicesVault(NewRecoveryServicesVaultArgs.builder()
 ///                     .name("test-vault")
 ///                     .resourceGroup("test-rg")
-///                     .vaultType("New")
 ///                     .build())
 ///                 .sslConfiguration(SSLConfigurationArgs.builder()
 ///                     .sslCryptoProvider("commoncrypto")
@@ -1238,7 +1255,7 @@ import 'system_data_response.dart';
 ///                     Issqlcompression = true,
 ///                     TimeZone = "UTC",
 ///                 },
-///                 SubProtectionPolicy = new[]
+///                 SubProtectionPolicy =
 ///                 {
 ///                     new AzureNative.Workloads.Inputs.SubProtectionPolicyArgs
 ///                     {
@@ -1398,7 +1415,7 @@ import 'system_data_response.dart';
 ///         ConnectorName = "C1",
 ///         Location = "westcentralus",
 ///         ResourceGroupName = "test-rg",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -1430,68 +1447,68 @@ import 'system_data_response.dart';
 /// 					SubProtectionPolicy: workloads.SubProtectionPolicyArray{
 /// 						&workloads.SubProtectionPolicyArgs{
 /// 							PolicyType: pulumi.String(workloads.PolicyTypeFull),
-/// 							RetentionPolicy: workloads.LongTermRetentionPolicy{
-/// 								MonthlySchedule: workloads.MonthlyRetentionSchedule{
-/// 									RetentionDuration: workloads.RetentionDuration{
-/// 										Count:        60,
-/// 										DurationType: workloads.RetentionDurationTypeMonths,
+/// 							RetentionPolicy: &workloads.LongTermRetentionPolicyArgs{
+/// 								MonthlySchedule: &workloads.MonthlyRetentionScheduleArgs{
+/// 									RetentionDuration: &workloads.RetentionDurationArgs{
+/// 										Count:        pulumi.Int(60),
+/// 										DurationType: pulumi.String(workloads.RetentionDurationTypeMonths),
 /// 									},
-/// 									RetentionScheduleFormatType: workloads.RetentionScheduleFormatWeekly,
-/// 									RetentionScheduleWeekly: workloads.WeeklyRetentionFormat{
-/// 										DaysOfTheWeek: []workloads.DayOfWeek{
+/// 									RetentionScheduleFormatType: pulumi.String(workloads.RetentionScheduleFormatWeekly),
+/// 									RetentionScheduleWeekly: &workloads.WeeklyRetentionFormatArgs{
+/// 										DaysOfTheWeek: workloads.DayOfWeekArray{
 /// 											workloads.DayOfWeekSunday,
 /// 										},
-/// 										WeeksOfTheMonth: []workloads.WeekOfMonth{
+/// 										WeeksOfTheMonth: workloads.WeekOfMonthArray{
 /// 											workloads.WeekOfMonthFirst,
 /// 										},
 /// 									},
-/// 									RetentionTimes: []string{
-/// 										"2022-11-29T19:30:00.000Z",
+/// 									RetentionTimes: pulumi.StringArray{
+/// 										pulumi.String("2022-11-29T19:30:00.000Z"),
 /// 									},
 /// 								},
-/// 								RetentionPolicyType: "LongTermRetentionPolicy",
-/// 								WeeklySchedule: workloads.WeeklyRetentionSchedule{
-/// 									DaysOfTheWeek: []workloads.DayOfWeek{
+/// 								RetentionPolicyType: pulumi.String("LongTermRetentionPolicy"),
+/// 								WeeklySchedule: &workloads.WeeklyRetentionScheduleArgs{
+/// 									DaysOfTheWeek: workloads.DayOfWeekArray{
 /// 										workloads.DayOfWeekSunday,
 /// 									},
-/// 									RetentionDuration: workloads.RetentionDuration{
-/// 										Count:        104,
-/// 										DurationType: workloads.RetentionDurationTypeWeeks,
+/// 									RetentionDuration: &workloads.RetentionDurationArgs{
+/// 										Count:        pulumi.Int(104),
+/// 										DurationType: pulumi.String(workloads.RetentionDurationTypeWeeks),
 /// 									},
-/// 									RetentionTimes: []string{
-/// 										"2022-11-29T19:30:00.000Z",
+/// 									RetentionTimes: pulumi.StringArray{
+/// 										pulumi.String("2022-11-29T19:30:00.000Z"),
 /// 									},
 /// 								},
-/// 								YearlySchedule: workloads.YearlyRetentionSchedule{
-/// 									MonthsOfYear: []workloads.MonthOfYear{
+/// 								YearlySchedule: &workloads.YearlyRetentionScheduleArgs{
+/// 									MonthsOfYear: workloads.MonthOfYearArray{
 /// 										workloads.MonthOfYearJanuary,
 /// 									},
-/// 									RetentionDuration: workloads.RetentionDuration{
-/// 										Count:        10,
-/// 										DurationType: workloads.RetentionDurationTypeYears,
+/// 									RetentionDuration: &workloads.RetentionDurationArgs{
+/// 										Count:        pulumi.Int(10),
+/// 										DurationType: pulumi.String(workloads.RetentionDurationTypeYears),
 /// 									},
-/// 									RetentionScheduleFormatType: workloads.RetentionScheduleFormatWeekly,
-/// 									RetentionScheduleWeekly: workloads.WeeklyRetentionFormat{
-/// 										DaysOfTheWeek: []workloads.DayOfWeek{
+/// 									RetentionScheduleFormatType: pulumi.String(workloads.RetentionScheduleFormatWeekly),
+/// 									RetentionScheduleWeekly: &workloads.WeeklyRetentionFormatArgs{
+/// 										DaysOfTheWeek: workloads.DayOfWeekArray{
 /// 											workloads.DayOfWeekSunday,
 /// 										},
-/// 										WeeksOfTheMonth: []workloads.WeekOfMonth{
+/// 										WeeksOfTheMonth: workloads.WeekOfMonthArray{
 /// 											workloads.WeekOfMonthFirst,
 /// 										},
 /// 									},
-/// 									RetentionTimes: []string{
-/// 										"2022-11-29T19:30:00.000Z",
+/// 									RetentionTimes: pulumi.StringArray{
+/// 										pulumi.String("2022-11-29T19:30:00.000Z"),
 /// 									},
 /// 								},
 /// 							},
-/// 							SchedulePolicy: workloads.SimpleSchedulePolicy{
-/// 								SchedulePolicyType: "SimpleSchedulePolicy",
-/// 								ScheduleRunDays: []workloads.DayOfWeek{
+/// 							SchedulePolicy: &workloads.SimpleSchedulePolicyArgs{
+/// 								SchedulePolicyType: pulumi.String("SimpleSchedulePolicy"),
+/// 								ScheduleRunDays: workloads.DayOfWeekArray{
 /// 									workloads.DayOfWeekSunday,
 /// 								},
-/// 								ScheduleRunFrequency: workloads.ScheduleRunTypeWeekly,
-/// 								ScheduleRunTimes: []string{
-/// 									"2022-11-29T19:30:00.000Z",
+/// 								ScheduleRunFrequency: pulumi.String(workloads.ScheduleRunTypeWeekly),
+/// 								ScheduleRunTimes: pulumi.StringArray{
+/// 									pulumi.String("2022-11-29T19:30:00.000Z"),
 /// 								},
 /// 							},
 /// 							TieringPolicy: workloads.TieringPolicyMap{
@@ -1504,47 +1521,47 @@ import 'system_data_response.dart';
 /// 						},
 /// 						&workloads.SubProtectionPolicyArgs{
 /// 							PolicyType: pulumi.String(workloads.PolicyTypeDifferential),
-/// 							RetentionPolicy: workloads.SimpleRetentionPolicy{
-/// 								RetentionDuration: workloads.RetentionDuration{
-/// 									Count:        30,
-/// 									DurationType: workloads.RetentionDurationTypeDays,
+/// 							RetentionPolicy: &workloads.SimpleRetentionPolicyArgs{
+/// 								RetentionDuration: &workloads.RetentionDurationArgs{
+/// 									Count:        pulumi.Int(30),
+/// 									DurationType: pulumi.String(workloads.RetentionDurationTypeDays),
 /// 								},
-/// 								RetentionPolicyType: "SimpleRetentionPolicy",
+/// 								RetentionPolicyType: pulumi.String("SimpleRetentionPolicy"),
 /// 							},
-/// 							SchedulePolicy: workloads.SimpleSchedulePolicy{
-/// 								SchedulePolicyType: "SimpleSchedulePolicy",
-/// 								ScheduleRunDays: []workloads.DayOfWeek{
+/// 							SchedulePolicy: &workloads.SimpleSchedulePolicyArgs{
+/// 								SchedulePolicyType: pulumi.String("SimpleSchedulePolicy"),
+/// 								ScheduleRunDays: workloads.DayOfWeekArray{
 /// 									workloads.DayOfWeekMonday,
 /// 								},
-/// 								ScheduleRunFrequency: workloads.ScheduleRunTypeWeekly,
-/// 								ScheduleRunTimes: []string{
-/// 									"2022-09-29T02:00:00Z",
+/// 								ScheduleRunFrequency: pulumi.String(workloads.ScheduleRunTypeWeekly),
+/// 								ScheduleRunTimes: pulumi.StringArray{
+/// 									pulumi.String("2022-09-29T02:00:00Z"),
 /// 								},
-/// 								ScheduleWeeklyFrequency: 0,
+/// 								ScheduleWeeklyFrequency: pulumi.Int(0),
 /// 							},
 /// 						},
 /// 						&workloads.SubProtectionPolicyArgs{
 /// 							PolicyType: pulumi.String(workloads.PolicyTypeLog),
-/// 							RetentionPolicy: workloads.SimpleRetentionPolicy{
-/// 								RetentionDuration: workloads.RetentionDuration{
-/// 									Count:        20,
-/// 									DurationType: workloads.RetentionDurationTypeDays,
+/// 							RetentionPolicy: &workloads.SimpleRetentionPolicyArgs{
+/// 								RetentionDuration: &workloads.RetentionDurationArgs{
+/// 									Count:        pulumi.Int(20),
+/// 									DurationType: pulumi.String(workloads.RetentionDurationTypeDays),
 /// 								},
-/// 								RetentionPolicyType: "SimpleRetentionPolicy",
+/// 								RetentionPolicyType: pulumi.String("SimpleRetentionPolicy"),
 /// 							},
-/// 							SchedulePolicy: workloads.LogSchedulePolicy{
-/// 								ScheduleFrequencyInMins: 120,
-/// 								SchedulePolicyType:      "LogSchedulePolicy",
+/// 							SchedulePolicy: &workloads.LogSchedulePolicyArgs{
+/// 								ScheduleFrequencyInMins: pulumi.Int(120),
+/// 								SchedulePolicyType:      pulumi.String("LogSchedulePolicy"),
 /// 							},
 /// 						},
 /// 					},
 /// 					WorkLoadType: pulumi.String(workloads.WorkloadTypeSQLDataBase),
 /// 				},
 /// 				BackupType: pulumi.String("SQL"),
-/// 				RecoveryServicesVault: workloads.NewRecoveryServicesVault{
-/// 					Name:          "test-vault",
-/// 					ResourceGroup: "test-rg",
-/// 					VaultType:     "New",
+/// 				RecoveryServicesVault: &workloads.NewRecoveryServicesVaultArgs{
+/// 					Name:          pulumi.String("test-vault"),
+/// 					ResourceGroup: pulumi.String("test-rg"),
+/// 					VaultType:     pulumi.String("New"),
 /// 				},
 /// 			},
 /// 			BackupName:        pulumi.String("dbBackup"),
@@ -1563,7 +1580,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1571,105 +1588,108 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_acssbackupconnection" "acssBackupConnection" {
+/// resource "azure-native_workloads_a_c_s_s_backup_connection" "acssBackupConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backup_data = {
-///     "backupPolicy" = {
-///       "backupManagementType" = "AzureWorkload"
-///       "name"                 = "defaultSqlPolicy"
-///       "protectedItemsCount"  = 0
-///       "settings" = {
-///         "isCompression"    = true
-///         "issqlcompression" = true
-///         "timeZone"         = "UTC"
+///     backup_policy = {
+///       backup_management_type = "AzureWorkload"
+///       name                   = "defaultSqlPolicy"
+///       protected_items_count  = 0
+///       settings = {
+///         is_compression   = true
+///         issqlcompression = true
+///         time_zone        = "UTC"
 ///       }
-///       "subProtectionPolicy" = [{
-///         "policyType" = "Full"
-///         "retentionPolicy" = {
-///           "monthlySchedule" = {
-///             "retentionDuration" = {
-///               "count"        = 60
-///               "durationType" = "Months"
+///       sub_protection_policy = [{
+///         policy_type = "Full"
+///         retention_policy = {
+///           monthly_schedule = {
+///             retention_duration = {
+///               count         = 60
+///               duration_type = "Months"
 ///             }
-///             "retentionScheduleFormatType" = "Weekly"
-///             "retentionScheduleWeekly" = {
-///               "daysOfTheWeek"   = ["Sunday"]
-///               "weeksOfTheMonth" = ["First"]
+///             retention_schedule_format_type = "Weekly"
+///             retention_schedule_weekly = {
+///               days_of_the_week   = ["Sunday"]
+///               weeks_of_the_month = ["First"]
 ///             }
-///             "retentionTimes" = ["2022-11-29T19:30:00.000Z"]
+///             retention_times = ["2022-11-29T19:30:00.000Z"]
 ///           }
-///           "retentionPolicyType" = "LongTermRetentionPolicy"
-///           "weeklySchedule" = {
-///             "daysOfTheWeek" = ["Sunday"]
-///             "retentionDuration" = {
-///               "count"        = 104
-///               "durationType" = "Weeks"
+///           retention_policy_type = "LongTermRetentionPolicy"
+///           weekly_schedule = {
+///             days_of_the_week = ["Sunday"]
+///             retention_duration = {
+///               count         = 104
+///               duration_type = "Weeks"
 ///             }
-///             "retentionTimes" = ["2022-11-29T19:30:00.000Z"]
+///             retention_times = ["2022-11-29T19:30:00.000Z"]
 ///           }
-///           "yearlySchedule" = {
-///             "monthsOfYear" = ["January"]
-///             "retentionDuration" = {
-///               "count"        = 10
-///               "durationType" = "Years"
+///           yearly_schedule = {
+///             months_of_year = ["January"]
+///             retention_duration = {
+///               count         = 10
+///               duration_type = "Years"
 ///             }
-///             "retentionScheduleFormatType" = "Weekly"
-///             "retentionScheduleWeekly" = {
-///               "daysOfTheWeek"   = ["Sunday"]
-///               "weeksOfTheMonth" = ["First"]
+///             retention_schedule_format_type = "Weekly"
+///             retention_schedule_weekly = {
+///               days_of_the_week   = ["Sunday"]
+///               weeks_of_the_month = ["First"]
 ///             }
-///             "retentionTimes" = ["2022-11-29T19:30:00.000Z"]
+///             retention_times = ["2022-11-29T19:30:00.000Z"]
 ///           }
 ///         }
-///         "schedulePolicy" = {
-///           "schedulePolicyType"   = "SimpleSchedulePolicy"
-///           "scheduleRunDays"      = ["Sunday"]
-///           "scheduleRunFrequency" = "Weekly"
-///           "scheduleRunTimes"     = ["2022-11-29T19:30:00.000Z"]
+///         schedule_policy = {
+///           schedule_policy_type   = "SimpleSchedulePolicy"
+///           schedule_run_days      = ["Sunday"]
+///           schedule_run_frequency = "Weekly"
+///           schedule_run_times     = ["2022-11-29T19:30:00.000Z"]
 ///         }
-///         "tieringPolicy" = {
+///         tiering_policy = {
 ///           "ArchivedRP" = {
-///             "duration"     = 45
-///             "durationType" = "Days"
-///             "tieringMode"  = "TierAfter"
+///             duration      = 45
+///             duration_type = "Days"
+///             tiering_mode  = "TierAfter"
 ///           }
 ///         }
 ///         }, {
-///         "policyType" = "Differential"
-///         "retentionPolicy" = {
-///           "retentionDuration" = {
-///             "count"        = 30
-///             "durationType" = "Days"
+///         policy_type = "Differential"
+///         retention_policy = {
+///           retention_duration = {
+///             count         = 30
+///             duration_type = "Days"
 ///           }
-///           "retentionPolicyType" = "SimpleRetentionPolicy"
+///           retention_policy_type = "SimpleRetentionPolicy"
 ///         }
-///         "schedulePolicy" = {
-///           "schedulePolicyType"      = "SimpleSchedulePolicy"
-///           "scheduleRunDays"         = ["Monday"]
-///           "scheduleRunFrequency"    = "Weekly"
-///           "scheduleRunTimes"        = ["2022-09-29T02:00:00Z"]
-///           "scheduleWeeklyFrequency" = 0
+///         schedule_policy = {
+///           schedule_policy_type      = "SimpleSchedulePolicy"
+///           schedule_run_days         = ["Monday"]
+///           schedule_run_frequency    = "Weekly"
+///           schedule_run_times        = ["2022-09-29T02:00:00Z"]
+///           schedule_weekly_frequency = 0
 ///         }
 ///         }, {
-///         "policyType" = "Log"
-///         "retentionPolicy" = {
-///           "retentionDuration" = {
-///             "count"        = 20
-///             "durationType" = "Days"
+///         policy_type = "Log"
+///         retention_policy = {
+///           retention_duration = {
+///             count         = 20
+///             duration_type = "Days"
 ///           }
-///           "retentionPolicyType" = "SimpleRetentionPolicy"
+///           retention_policy_type = "SimpleRetentionPolicy"
 ///         }
-///         "schedulePolicy" = {
-///           "scheduleFrequencyInMins" = 120
-///           "schedulePolicyType"      = "LogSchedulePolicy"
+///         schedule_policy = {
+///           schedule_frequency_in_mins = 120
+///           schedule_policy_type       = "LogSchedulePolicy"
 ///         }
 ///       }]
-///       "workLoadType" = "SQLDataBase"
+///       work_load_type = "SQLDataBase"
 ///     }
-///     "backupType" = "SQL"
-///     "recoveryServicesVault" = {
-///       "name"          = "test-vault"
-///       "resourceGroup" = "test-rg"
-///       "vaultType"     = "New"
+///     backup_type = "SQL"
+///     recovery_services_vault = {
+///       name           = "test-vault"
+///       resource_group = "test-rg"
+///       vault_type     = "New"
 ///     }
 ///   }
 ///   backup_name         = "dbBackup"
@@ -1689,6 +1709,27 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnection;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnectionArgs;
+/// import com.pulumi.azurenative.workloads.inputs.HanaBackupDataArgs;
+/// import com.pulumi.azurenative.workloads.inputs.DBBackupPolicyPropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SettingsArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SubProtectionPolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.LongTermRetentionPolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.MonthlyRetentionScheduleArgs;
+/// import com.pulumi.azurenative.workloads.inputs.RetentionDurationArgs;
+/// import com.pulumi.azurenative.workloads.inputs.WeeklyRetentionFormatArgs;
+/// import com.pulumi.azurenative.workloads.inputs.WeeklyRetentionScheduleArgs;
+/// import com.pulumi.azurenative.workloads.inputs.YearlyRetentionScheduleArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SimpleRetentionPolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.LogSchedulePolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.LongTermSchedulePolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SimpleSchedulePolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SimpleSchedulePolicyV2Args;
+/// import com.pulumi.azurenative.workloads.inputs.TieringPolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.ExistingRecoveryServicesVaultArgs;
+/// import com.pulumi.azurenative.workloads.inputs.NewRecoveryServicesVaultArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SqlBackupDataArgs;
+/// import com.pulumi.azurenative.workloads.inputs.VMBackupDataArgs;
+/// import com.pulumi.azurenative.workloads.inputs.VMBackupPolicyPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1704,16 +1745,15 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var acssBackupConnection = new ACSSBackupConnection("acssBackupConnection", ACSSBackupConnectionArgs.builder()
 ///             .backupData(SqlBackupDataArgs.builder()
-///                 .backupPolicy(Map.ofEntries(
-///                     Map.entry("backupManagementType", "AzureWorkload"),
-///                     Map.entry("name", "defaultSqlPolicy"),
-///                     Map.entry("protectedItemsCount", 0),
-///                     Map.entry("settings", SettingsArgs.builder()
+///                 .backupPolicy(DBBackupPolicyPropertiesArgs.builder()
+///                     .name("defaultSqlPolicy")
+///                     .protectedItemsCount(0)
+///                     .settings(SettingsArgs.builder()
 ///                         .isCompression(true)
 ///                         .issqlcompression(true)
 ///                         .timeZone("UTC")
-///                         .build()),
-///                     Map.entry("subProtectionPolicy", Arrays.asList(
+///                         .build())
+///                     .subProtectionPolicy(
 ///                         SubProtectionPolicyArgs.builder()
 ///                             .policyType("Full")
 ///                             .retentionPolicy(LongTermRetentionPolicyArgs.builder()
@@ -1729,7 +1769,6 @@ import 'system_data_response.dart';
 ///                                         .build())
 ///                                     .retentionTimes("2022-11-29T19:30:00.000Z")
 ///                                     .build())
-///                                 .retentionPolicyType("LongTermRetentionPolicy")
 ///                                 .weeklySchedule(WeeklyRetentionScheduleArgs.builder()
 ///                                     .daysOfTheWeek("Sunday")
 ///                                     .retentionDuration(RetentionDurationArgs.builder()
@@ -1753,7 +1792,6 @@ import 'system_data_response.dart';
 ///                                     .build())
 ///                                 .build())
 ///                             .schedulePolicy(SimpleSchedulePolicyArgs.builder()
-///                                 .schedulePolicyType("SimpleSchedulePolicy")
 ///                                 .scheduleRunDays("Sunday")
 ///                                 .scheduleRunFrequency("Weekly")
 ///                                 .scheduleRunTimes("2022-11-29T19:30:00.000Z")
@@ -1771,10 +1809,8 @@ import 'system_data_response.dart';
 ///                                     .count(30)
 ///                                     .durationType("Days")
 ///                                     .build())
-///                                 .retentionPolicyType("SimpleRetentionPolicy")
 ///                                 .build())
 ///                             .schedulePolicy(SimpleSchedulePolicyArgs.builder()
-///                                 .schedulePolicyType("SimpleSchedulePolicy")
 ///                                 .scheduleRunDays("Monday")
 ///                                 .scheduleRunFrequency("Weekly")
 ///                                 .scheduleRunTimes("2022-09-29T02:00:00Z")
@@ -1788,20 +1824,16 @@ import 'system_data_response.dart';
 ///                                     .count(20)
 ///                                     .durationType("Days")
 ///                                     .build())
-///                                 .retentionPolicyType("SimpleRetentionPolicy")
 ///                                 .build())
 ///                             .schedulePolicy(LogSchedulePolicyArgs.builder()
 ///                                 .scheduleFrequencyInMins(120)
-///                                 .schedulePolicyType("LogSchedulePolicy")
 ///                                 .build())
-///                             .build())),
-///                     Map.entry("workLoadType", "SQLDataBase")
-///                 ))
-///                 .backupType("SQL")
+///                             .build())
+///                     .workLoadType("SQLDataBase")
+///                     .build())
 ///                 .recoveryServicesVault(NewRecoveryServicesVaultArgs.builder()
 ///                     .name("test-vault")
 ///                     .resourceGroup("test-rg")
-///                     .vaultType("New")
 ///                     .build())
 ///                 .build())
 ///             .backupName("dbBackup")
@@ -2301,7 +2333,7 @@ import 'system_data_response.dart';
 ///         ConnectorName = "C1",
 ///         Location = "westcentralus",
 ///         ResourceGroupName = "test-rg",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -2331,74 +2363,74 @@ import 'system_data_response.dart';
 /// 					Name:                          pulumi.String("defaultVmPolicy"),
 /// 					PolicyType:                    pulumi.String(workloads.IAASVMPolicyTypeV1),
 /// 					ProtectedItemsCount:           pulumi.Int(0),
-/// 					RetentionPolicy: workloads.LongTermRetentionPolicy{
-/// 						DailySchedule: workloads.DailyRetentionSchedule{
-/// 							RetentionDuration: workloads.RetentionDuration{
-/// 								Count:        30,
-/// 								DurationType: workloads.RetentionDurationTypeDays,
+/// 					RetentionPolicy: &workloads.LongTermRetentionPolicyArgs{
+/// 						DailySchedule: &workloads.DailyRetentionScheduleArgs{
+/// 							RetentionDuration: &workloads.RetentionDurationArgs{
+/// 								Count:        pulumi.Int(30),
+/// 								DurationType: pulumi.String(workloads.RetentionDurationTypeDays),
 /// 							},
-/// 							RetentionTimes: []string{
-/// 								"2022-11-29T19:30:00.000Z",
+/// 							RetentionTimes: pulumi.StringArray{
+/// 								pulumi.String("2022-11-29T19:30:00.000Z"),
 /// 							},
 /// 						},
-/// 						MonthlySchedule: workloads.MonthlyRetentionSchedule{
-/// 							RetentionDuration: workloads.RetentionDuration{
-/// 								Count:        60,
-/// 								DurationType: workloads.RetentionDurationTypeMonths,
+/// 						MonthlySchedule: &workloads.MonthlyRetentionScheduleArgs{
+/// 							RetentionDuration: &workloads.RetentionDurationArgs{
+/// 								Count:        pulumi.Int(60),
+/// 								DurationType: pulumi.String(workloads.RetentionDurationTypeMonths),
 /// 							},
-/// 							RetentionScheduleFormatType: workloads.RetentionScheduleFormatWeekly,
-/// 							RetentionScheduleWeekly: workloads.WeeklyRetentionFormat{
-/// 								DaysOfTheWeek: []workloads.DayOfWeek{
+/// 							RetentionScheduleFormatType: pulumi.String(workloads.RetentionScheduleFormatWeekly),
+/// 							RetentionScheduleWeekly: &workloads.WeeklyRetentionFormatArgs{
+/// 								DaysOfTheWeek: workloads.DayOfWeekArray{
 /// 									workloads.DayOfWeekSunday,
 /// 								},
-/// 								WeeksOfTheMonth: []workloads.WeekOfMonth{
+/// 								WeeksOfTheMonth: workloads.WeekOfMonthArray{
 /// 									workloads.WeekOfMonthFirst,
 /// 								},
 /// 							},
-/// 							RetentionTimes: []string{
-/// 								"2022-11-29T19:30:00.000Z",
+/// 							RetentionTimes: pulumi.StringArray{
+/// 								pulumi.String("2022-11-29T19:30:00.000Z"),
 /// 							},
 /// 						},
-/// 						RetentionPolicyType: "LongTermRetentionPolicy",
-/// 						WeeklySchedule: workloads.WeeklyRetentionSchedule{
-/// 							DaysOfTheWeek: []workloads.DayOfWeek{
+/// 						RetentionPolicyType: pulumi.String("LongTermRetentionPolicy"),
+/// 						WeeklySchedule: &workloads.WeeklyRetentionScheduleArgs{
+/// 							DaysOfTheWeek: workloads.DayOfWeekArray{
 /// 								workloads.DayOfWeekSunday,
 /// 							},
-/// 							RetentionDuration: workloads.RetentionDuration{
-/// 								Count:        12,
-/// 								DurationType: workloads.RetentionDurationTypeWeeks,
+/// 							RetentionDuration: &workloads.RetentionDurationArgs{
+/// 								Count:        pulumi.Int(12),
+/// 								DurationType: pulumi.String(workloads.RetentionDurationTypeWeeks),
 /// 							},
-/// 							RetentionTimes: []string{
-/// 								"2022-11-29T19:30:00.000Z",
+/// 							RetentionTimes: pulumi.StringArray{
+/// 								pulumi.String("2022-11-29T19:30:00.000Z"),
 /// 							},
 /// 						},
-/// 						YearlySchedule: workloads.YearlyRetentionSchedule{
-/// 							MonthsOfYear: []workloads.MonthOfYear{
+/// 						YearlySchedule: &workloads.YearlyRetentionScheduleArgs{
+/// 							MonthsOfYear: workloads.MonthOfYearArray{
 /// 								workloads.MonthOfYearJanuary,
 /// 							},
-/// 							RetentionDuration: workloads.RetentionDuration{
-/// 								Count:        10,
-/// 								DurationType: workloads.RetentionDurationTypeYears,
+/// 							RetentionDuration: &workloads.RetentionDurationArgs{
+/// 								Count:        pulumi.Int(10),
+/// 								DurationType: pulumi.String(workloads.RetentionDurationTypeYears),
 /// 							},
-/// 							RetentionScheduleFormatType: workloads.RetentionScheduleFormatWeekly,
-/// 							RetentionScheduleWeekly: workloads.WeeklyRetentionFormat{
-/// 								DaysOfTheWeek: []workloads.DayOfWeek{
+/// 							RetentionScheduleFormatType: pulumi.String(workloads.RetentionScheduleFormatWeekly),
+/// 							RetentionScheduleWeekly: &workloads.WeeklyRetentionFormatArgs{
+/// 								DaysOfTheWeek: workloads.DayOfWeekArray{
 /// 									workloads.DayOfWeekSunday,
 /// 								},
-/// 								WeeksOfTheMonth: []workloads.WeekOfMonth{
+/// 								WeeksOfTheMonth: workloads.WeekOfMonthArray{
 /// 									workloads.WeekOfMonthFirst,
 /// 								},
 /// 							},
-/// 							RetentionTimes: []string{
-/// 								"2022-11-29T19:30:00.000Z",
+/// 							RetentionTimes: pulumi.StringArray{
+/// 								pulumi.String("2022-11-29T19:30:00.000Z"),
 /// 							},
 /// 						},
 /// 					},
-/// 					SchedulePolicy: workloads.SimpleSchedulePolicy{
-/// 						SchedulePolicyType:   "SimpleSchedulePolicy",
-/// 						ScheduleRunFrequency: workloads.ScheduleRunTypeDaily,
-/// 						ScheduleRunTimes: []string{
-/// 							"2022-11-29T19:30:00.000Z",
+/// 					SchedulePolicy: &workloads.SimpleSchedulePolicyArgs{
+/// 						SchedulePolicyType:   pulumi.String("SimpleSchedulePolicy"),
+/// 						ScheduleRunFrequency: pulumi.String(workloads.ScheduleRunTypeDaily),
+/// 						ScheduleRunTimes: pulumi.StringArray{
+/// 							pulumi.String("2022-11-29T19:30:00.000Z"),
 /// 						},
 /// 					},
 /// 					TieringPolicy: workloads.TieringPolicyMap{
@@ -2415,10 +2447,10 @@ import 'system_data_response.dart';
 /// 					DiskLunList:     pulumi.IntArray{},
 /// 					IsInclusionList: pulumi.Bool(true),
 /// 				},
-/// 				RecoveryServicesVault: workloads.NewRecoveryServicesVault{
-/// 					Name:          "test-vault",
-/// 					ResourceGroup: "test-rg",
-/// 					VaultType:     "New",
+/// 				RecoveryServicesVault: &workloads.NewRecoveryServicesVaultArgs{
+/// 					Name:          pulumi.String("test-vault"),
+/// 					ResourceGroup: pulumi.String("test-rg"),
+/// 					VaultType:     pulumi.String("New"),
 /// 				},
 /// 			},
 /// 			BackupName:        pulumi.String("vmBackup"),
@@ -2437,7 +2469,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2445,84 +2477,87 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_acssbackupconnection" "acssBackupConnection" {
+/// resource "azure-native_workloads_a_c_s_s_backup_connection" "acssBackupConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backup_data = {
-///     "backupPolicy" = {
-///       "backupManagementType" = "AzureIaasVM"
-///       "instantRPDetails" = {
-///         "azureBackupRGNamePrefix" = "dasas"
-///         "azureBackupRGNameSuffix" = "a"
+///     backup_policy = {
+///       backup_management_type = "AzureIaasVM"
+///       instant_rp_details = {
+///         azure_backup_rg_name_prefix = "dasas"
+///         azure_backup_rg_name_suffix = "a"
 ///       }
-///       "instantRpRetentionRangeInDays" = 2
-///       "name"                          = "defaultVmPolicy"
-///       "policyType"                    = "V1"
-///       "protectedItemsCount"           = 0
-///       "retentionPolicy" = {
-///         "dailySchedule" = {
-///           "retentionDuration" = {
-///             "count"        = 30
-///             "durationType" = "Days"
+///       instant_rp_retention_range_in_days = 2
+///       name                               = "defaultVmPolicy"
+///       policy_type                        = "V1"
+///       protected_items_count              = 0
+///       retention_policy = {
+///         daily_schedule = {
+///           retention_duration = {
+///             count         = 30
+///             duration_type = "Days"
 ///           }
-///           "retentionTimes" = ["2022-11-29T19:30:00.000Z"]
+///           retention_times = ["2022-11-29T19:30:00.000Z"]
 ///         }
-///         "monthlySchedule" = {
-///           "retentionDuration" = {
-///             "count"        = 60
-///             "durationType" = "Months"
+///         monthly_schedule = {
+///           retention_duration = {
+///             count         = 60
+///             duration_type = "Months"
 ///           }
-///           "retentionScheduleFormatType" = "Weekly"
-///           "retentionScheduleWeekly" = {
-///             "daysOfTheWeek"   = ["Sunday"]
-///             "weeksOfTheMonth" = ["First"]
+///           retention_schedule_format_type = "Weekly"
+///           retention_schedule_weekly = {
+///             days_of_the_week   = ["Sunday"]
+///             weeks_of_the_month = ["First"]
 ///           }
-///           "retentionTimes" = ["2022-11-29T19:30:00.000Z"]
+///           retention_times = ["2022-11-29T19:30:00.000Z"]
 ///         }
-///         "retentionPolicyType" = "LongTermRetentionPolicy"
-///         "weeklySchedule" = {
-///           "daysOfTheWeek" = ["Sunday"]
-///           "retentionDuration" = {
-///             "count"        = 12
-///             "durationType" = "Weeks"
+///         retention_policy_type = "LongTermRetentionPolicy"
+///         weekly_schedule = {
+///           days_of_the_week = ["Sunday"]
+///           retention_duration = {
+///             count         = 12
+///             duration_type = "Weeks"
 ///           }
-///           "retentionTimes" = ["2022-11-29T19:30:00.000Z"]
+///           retention_times = ["2022-11-29T19:30:00.000Z"]
 ///         }
-///         "yearlySchedule" = {
-///           "monthsOfYear" = ["January"]
-///           "retentionDuration" = {
-///             "count"        = 10
-///             "durationType" = "Years"
+///         yearly_schedule = {
+///           months_of_year = ["January"]
+///           retention_duration = {
+///             count         = 10
+///             duration_type = "Years"
 ///           }
-///           "retentionScheduleFormatType" = "Weekly"
-///           "retentionScheduleWeekly" = {
-///             "daysOfTheWeek"   = ["Sunday"]
-///             "weeksOfTheMonth" = ["First"]
+///           retention_schedule_format_type = "Weekly"
+///           retention_schedule_weekly = {
+///             days_of_the_week   = ["Sunday"]
+///             weeks_of_the_month = ["First"]
 ///           }
-///           "retentionTimes" = ["2022-11-29T19:30:00.000Z"]
+///           retention_times = ["2022-11-29T19:30:00.000Z"]
 ///         }
 ///       }
-///       "schedulePolicy" = {
-///         "schedulePolicyType"   = "SimpleSchedulePolicy"
-///         "scheduleRunFrequency" = "Daily"
-///         "scheduleRunTimes"     = ["2022-11-29T19:30:00.000Z"]
+///       schedule_policy = {
+///         schedule_policy_type   = "SimpleSchedulePolicy"
+///         schedule_run_frequency = "Daily"
+///         schedule_run_times     = ["2022-11-29T19:30:00.000Z"]
 ///       }
-///       "tieringPolicy" = {
+///       tiering_policy = {
 ///         "ArchivedRP" = {
-///           "duration"     = 3
-///           "durationType" = "Months"
-///           "tieringMode"  = "TierAfter"
+///           duration      = 3
+///           duration_type = "Months"
+///           tiering_mode  = "TierAfter"
 ///         }
 ///       }
-///       "timeZone" = "UTC"
+///       time_zone = "UTC"
 ///     }
-///     "backupType" = "VM"
-///     "diskExclusionProperties" = {
-///       "diskLunList"     = []
-///       "isInclusionList" = true
+///     backup_type = "VM"
+///     disk_exclusion_properties = {
+///       disk_lun_list     = []
+///       is_inclusion_list = true
 ///     }
-///     "recoveryServicesVault" = {
-///       "name"          = "test-vault"
-///       "resourceGroup" = "test-rg"
-///       "vaultType"     = "New"
+///     recovery_services_vault = {
+///       name           = "test-vault"
+///       resource_group = "test-rg"
+///       vault_type     = "New"
 ///     }
 ///   }
 ///   backup_name         = "vmBackup"
@@ -2542,6 +2577,28 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnection;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnectionArgs;
+/// import com.pulumi.azurenative.workloads.inputs.HanaBackupDataArgs;
+/// import com.pulumi.azurenative.workloads.inputs.DBBackupPolicyPropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.ExistingRecoveryServicesVaultArgs;
+/// import com.pulumi.azurenative.workloads.inputs.NewRecoveryServicesVaultArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SqlBackupDataArgs;
+/// import com.pulumi.azurenative.workloads.inputs.VMBackupDataArgs;
+/// import com.pulumi.azurenative.workloads.inputs.VMBackupPolicyPropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.InstantRPAdditionalDetailsArgs;
+/// import com.pulumi.azurenative.workloads.inputs.LongTermRetentionPolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.DailyRetentionScheduleArgs;
+/// import com.pulumi.azurenative.workloads.inputs.RetentionDurationArgs;
+/// import com.pulumi.azurenative.workloads.inputs.MonthlyRetentionScheduleArgs;
+/// import com.pulumi.azurenative.workloads.inputs.WeeklyRetentionFormatArgs;
+/// import com.pulumi.azurenative.workloads.inputs.WeeklyRetentionScheduleArgs;
+/// import com.pulumi.azurenative.workloads.inputs.YearlyRetentionScheduleArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SimpleRetentionPolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.LogSchedulePolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.LongTermSchedulePolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SimpleSchedulePolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SimpleSchedulePolicyV2Args;
+/// import com.pulumi.azurenative.workloads.inputs.TieringPolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.DiskExclusionPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -2557,17 +2614,16 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var acssBackupConnection = new ACSSBackupConnection("acssBackupConnection", ACSSBackupConnectionArgs.builder()
 ///             .backupData(VMBackupDataArgs.builder()
-///                 .backupPolicy(Map.ofEntries(
-///                     Map.entry("backupManagementType", "AzureIaasVM"),
-///                     Map.entry("instantRPDetails", InstantRPAdditionalDetailsArgs.builder()
+///                 .backupPolicy(VMBackupPolicyPropertiesArgs.builder()
+///                     .instantRPDetails(InstantRPAdditionalDetailsArgs.builder()
 ///                         .azureBackupRGNamePrefix("dasas")
 ///                         .azureBackupRGNameSuffix("a")
-///                         .build()),
-///                     Map.entry("instantRpRetentionRangeInDays", 2),
-///                     Map.entry("name", "defaultVmPolicy"),
-///                     Map.entry("policyType", "V1"),
-///                     Map.entry("protectedItemsCount", 0),
-///                     Map.entry("retentionPolicy", LongTermRetentionPolicyArgs.builder()
+///                         .build())
+///                     .instantRpRetentionRangeInDays(2)
+///                     .name("defaultVmPolicy")
+///                     .policyType("V1")
+///                     .protectedItemsCount(0)
+///                     .retentionPolicy(LongTermRetentionPolicyArgs.builder()
 ///                         .dailySchedule(DailyRetentionScheduleArgs.builder()
 ///                             .retentionDuration(RetentionDurationArgs.builder()
 ///                                 .count(30)
@@ -2587,7 +2643,6 @@ import 'system_data_response.dart';
 ///                                 .build())
 ///                             .retentionTimes("2022-11-29T19:30:00.000Z")
 ///                             .build())
-///                         .retentionPolicyType("LongTermRetentionPolicy")
 ///                         .weeklySchedule(WeeklyRetentionScheduleArgs.builder()
 ///                             .daysOfTheWeek("Sunday")
 ///                             .retentionDuration(RetentionDurationArgs.builder()
@@ -2609,20 +2664,18 @@ import 'system_data_response.dart';
 ///                                 .build())
 ///                             .retentionTimes("2022-11-29T19:30:00.000Z")
 ///                             .build())
-///                         .build()),
-///                     Map.entry("schedulePolicy", SimpleSchedulePolicyArgs.builder()
-///                         .schedulePolicyType("SimpleSchedulePolicy")
+///                         .build())
+///                     .schedulePolicy(SimpleSchedulePolicyArgs.builder()
 ///                         .scheduleRunFrequency("Daily")
 ///                         .scheduleRunTimes("2022-11-29T19:30:00.000Z")
-///                         .build()),
-///                     Map.entry("tieringPolicy", Map.of("ArchivedRP", TieringPolicyArgs.builder()
+///                         .build())
+///                     .tieringPolicy(Map.of("ArchivedRP", TieringPolicyArgs.builder()
 ///                         .duration(3)
 ///                         .durationType("Months")
 ///                         .tieringMode("TierAfter")
-///                         .build())),
-///                     Map.entry("timeZone", "UTC")
-///                 ))
-///                 .backupType("VM")
+///                         .build()))
+///                     .timeZone("UTC")
+///                     .build())
 ///                 .diskExclusionProperties(DiskExclusionPropertiesArgs.builder()
 ///                     .diskLunList()
 ///                     .isInclusionList(true)
@@ -2630,7 +2683,6 @@ import 'system_data_response.dart';
 ///                 .recoveryServicesVault(NewRecoveryServicesVaultArgs.builder()
 ///                     .name("test-vault")
 ///                     .resourceGroup("test-rg")
-///                     .vaultType("New")
 ///                     .build())
 ///                 .build())
 ///             .backupName("vmBackup")
@@ -2941,7 +2993,7 @@ import 'system_data_response.dart';
 ///                     Issqlcompression = false,
 ///                     TimeZone = "UTC",
 ///                 },
-///                 SubProtectionPolicy = new[]
+///                 SubProtectionPolicy =
 ///                 {
 ///                     new AzureNative.Workloads.Inputs.SubProtectionPolicyArgs
 ///                     {
@@ -3005,7 +3057,7 @@ import 'system_data_response.dart';
 ///         ConnectorName = "C1",
 ///         Location = "westcentralus",
 ///         ResourceGroupName = "test-rg",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -3037,48 +3089,48 @@ import 'system_data_response.dart';
 /// 					SubProtectionPolicy: workloads.SubProtectionPolicyArray{
 /// 						&workloads.SubProtectionPolicyArgs{
 /// 							PolicyType: pulumi.String(workloads.PolicyTypeFull),
-/// 							RetentionPolicy: workloads.LongTermRetentionPolicy{
-/// 								DailySchedule: workloads.DailyRetentionSchedule{
-/// 									RetentionDuration: workloads.RetentionDuration{
-/// 										Count:        30,
-/// 										DurationType: workloads.RetentionDurationTypeDays,
+/// 							RetentionPolicy: &workloads.LongTermRetentionPolicyArgs{
+/// 								DailySchedule: &workloads.DailyRetentionScheduleArgs{
+/// 									RetentionDuration: &workloads.RetentionDurationArgs{
+/// 										Count:        pulumi.Int(30),
+/// 										DurationType: pulumi.String(workloads.RetentionDurationTypeDays),
 /// 									},
-/// 									RetentionTimes: []string{
-/// 										"2018-01-10T18:30:00Z",
+/// 									RetentionTimes: pulumi.StringArray{
+/// 										pulumi.String("2018-01-10T18:30:00Z"),
 /// 									},
 /// 								},
-/// 								RetentionPolicyType: "LongTermRetentionPolicy",
+/// 								RetentionPolicyType: pulumi.String("LongTermRetentionPolicy"),
 /// 							},
-/// 							SchedulePolicy: workloads.SimpleSchedulePolicy{
-/// 								SchedulePolicyType:   "SimpleSchedulePolicy",
-/// 								ScheduleRunFrequency: workloads.ScheduleRunTypeDaily,
-/// 								ScheduleRunTimes: []string{
-/// 									"2018-01-10T18:30:00Z",
+/// 							SchedulePolicy: &workloads.SimpleSchedulePolicyArgs{
+/// 								SchedulePolicyType:   pulumi.String("SimpleSchedulePolicy"),
+/// 								ScheduleRunFrequency: pulumi.String(workloads.ScheduleRunTypeDaily),
+/// 								ScheduleRunTimes: pulumi.StringArray{
+/// 									pulumi.String("2018-01-10T18:30:00Z"),
 /// 								},
-/// 								ScheduleWeeklyFrequency: 0,
+/// 								ScheduleWeeklyFrequency: pulumi.Int(0),
 /// 							},
 /// 						},
 /// 						&workloads.SubProtectionPolicyArgs{
 /// 							PolicyType: pulumi.String(workloads.PolicyTypeLog),
-/// 							RetentionPolicy: workloads.SimpleRetentionPolicy{
-/// 								RetentionDuration: workloads.RetentionDuration{
-/// 									Count:        30,
-/// 									DurationType: workloads.RetentionDurationTypeDays,
+/// 							RetentionPolicy: &workloads.SimpleRetentionPolicyArgs{
+/// 								RetentionDuration: &workloads.RetentionDurationArgs{
+/// 									Count:        pulumi.Int(30),
+/// 									DurationType: pulumi.String(workloads.RetentionDurationTypeDays),
 /// 								},
-/// 								RetentionPolicyType: "SimpleRetentionPolicy",
+/// 								RetentionPolicyType: pulumi.String("SimpleRetentionPolicy"),
 /// 							},
-/// 							SchedulePolicy: workloads.LogSchedulePolicy{
-/// 								ScheduleFrequencyInMins: 60,
-/// 								SchedulePolicyType:      "LogSchedulePolicy",
+/// 							SchedulePolicy: &workloads.LogSchedulePolicyArgs{
+/// 								ScheduleFrequencyInMins: pulumi.Int(60),
+/// 								SchedulePolicyType:      pulumi.String("LogSchedulePolicy"),
 /// 							},
 /// 						},
 /// 					},
 /// 					WorkLoadType: pulumi.String(workloads.WorkloadTypeSQLDataBase),
 /// 				},
 /// 				BackupType: pulumi.String("SQL"),
-/// 				RecoveryServicesVault: workloads.ExistingRecoveryServicesVault{
-/// 					Id:        "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/test-vault",
-/// 					VaultType: "Existing",
+/// 				RecoveryServicesVault: &workloads.ExistingRecoveryServicesVaultArgs{
+/// 					Id:        pulumi.String("/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/test-vault"),
+/// 					VaultType: pulumi.String("Existing"),
 /// 				},
 /// 			},
 /// 			BackupName:        pulumi.String("dbBackup"),
@@ -3097,7 +3149,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3105,55 +3157,58 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_acssbackupconnection" "acssBackupConnection" {
+/// resource "azure-native_workloads_a_c_s_s_backup_connection" "acssBackupConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backup_data = {
-///     "backupPolicy" = {
-///       "backupManagementType" = "AzureWorkload"
-///       "name"                 = "defaultDbPolicy"
-///       "protectedItemsCount"  = 0
-///       "settings" = {
-///         "isCompression"    = false
-///         "issqlcompression" = false
-///         "timeZone"         = "UTC"
+///     backup_policy = {
+///       backup_management_type = "AzureWorkload"
+///       name                   = "defaultDbPolicy"
+///       protected_items_count  = 0
+///       settings = {
+///         is_compression   = false
+///         issqlcompression = false
+///         time_zone        = "UTC"
 ///       }
-///       "subProtectionPolicy" = [{
-///         "policyType" = "Full"
-///         "retentionPolicy" = {
-///           "dailySchedule" = {
-///             "retentionDuration" = {
-///               "count"        = 30
-///               "durationType" = "Days"
+///       sub_protection_policy = [{
+///         policy_type = "Full"
+///         retention_policy = {
+///           daily_schedule = {
+///             retention_duration = {
+///               count         = 30
+///               duration_type = "Days"
 ///             }
-///             "retentionTimes" = ["2018-01-10T18:30:00Z"]
+///             retention_times = ["2018-01-10T18:30:00Z"]
 ///           }
-///           "retentionPolicyType" = "LongTermRetentionPolicy"
+///           retention_policy_type = "LongTermRetentionPolicy"
 ///         }
-///         "schedulePolicy" = {
-///           "schedulePolicyType"      = "SimpleSchedulePolicy"
-///           "scheduleRunFrequency"    = "Daily"
-///           "scheduleRunTimes"        = ["2018-01-10T18:30:00Z"]
-///           "scheduleWeeklyFrequency" = 0
+///         schedule_policy = {
+///           schedule_policy_type      = "SimpleSchedulePolicy"
+///           schedule_run_frequency    = "Daily"
+///           schedule_run_times        = ["2018-01-10T18:30:00Z"]
+///           schedule_weekly_frequency = 0
 ///         }
 ///         }, {
-///         "policyType" = "Log"
-///         "retentionPolicy" = {
-///           "retentionDuration" = {
-///             "count"        = 30
-///             "durationType" = "Days"
+///         policy_type = "Log"
+///         retention_policy = {
+///           retention_duration = {
+///             count         = 30
+///             duration_type = "Days"
 ///           }
-///           "retentionPolicyType" = "SimpleRetentionPolicy"
+///           retention_policy_type = "SimpleRetentionPolicy"
 ///         }
-///         "schedulePolicy" = {
-///           "scheduleFrequencyInMins" = 60
-///           "schedulePolicyType"      = "LogSchedulePolicy"
+///         schedule_policy = {
+///           schedule_frequency_in_mins = 60
+///           schedule_policy_type       = "LogSchedulePolicy"
 ///         }
 ///       }]
-///       "workLoadType" = "SQLDataBase"
+///       work_load_type = "SQLDataBase"
 ///     }
-///     "backupType" = "SQL"
-///     "recoveryServicesVault" = {
-///       "id"        = "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/test-vault"
-///       "vaultType" = "Existing"
+///     backup_type = "SQL"
+///     recovery_services_vault = {
+///       id         = "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/test-vault"
+///       vault_type = "Existing"
 ///     }
 ///   }
 ///   backup_name         = "dbBackup"
@@ -3173,6 +3228,23 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnection;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnectionArgs;
+/// import com.pulumi.azurenative.workloads.inputs.HanaBackupDataArgs;
+/// import com.pulumi.azurenative.workloads.inputs.DBBackupPolicyPropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SettingsArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SubProtectionPolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.LongTermRetentionPolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.DailyRetentionScheduleArgs;
+/// import com.pulumi.azurenative.workloads.inputs.RetentionDurationArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SimpleRetentionPolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.LogSchedulePolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.LongTermSchedulePolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SimpleSchedulePolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SimpleSchedulePolicyV2Args;
+/// import com.pulumi.azurenative.workloads.inputs.ExistingRecoveryServicesVaultArgs;
+/// import com.pulumi.azurenative.workloads.inputs.NewRecoveryServicesVaultArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SqlBackupDataArgs;
+/// import com.pulumi.azurenative.workloads.inputs.VMBackupDataArgs;
+/// import com.pulumi.azurenative.workloads.inputs.VMBackupPolicyPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -3188,16 +3260,15 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var acssBackupConnection = new ACSSBackupConnection("acssBackupConnection", ACSSBackupConnectionArgs.builder()
 ///             .backupData(SqlBackupDataArgs.builder()
-///                 .backupPolicy(Map.ofEntries(
-///                     Map.entry("backupManagementType", "AzureWorkload"),
-///                     Map.entry("name", "defaultDbPolicy"),
-///                     Map.entry("protectedItemsCount", 0),
-///                     Map.entry("settings", SettingsArgs.builder()
+///                 .backupPolicy(DBBackupPolicyPropertiesArgs.builder()
+///                     .name("defaultDbPolicy")
+///                     .protectedItemsCount(0)
+///                     .settings(SettingsArgs.builder()
 ///                         .isCompression(false)
 ///                         .issqlcompression(false)
 ///                         .timeZone("UTC")
-///                         .build()),
-///                     Map.entry("subProtectionPolicy", Arrays.asList(
+///                         .build())
+///                     .subProtectionPolicy(
 ///                         SubProtectionPolicyArgs.builder()
 ///                             .policyType("Full")
 ///                             .retentionPolicy(LongTermRetentionPolicyArgs.builder()
@@ -3208,10 +3279,8 @@ import 'system_data_response.dart';
 ///                                         .build())
 ///                                     .retentionTimes("2018-01-10T18:30:00Z")
 ///                                     .build())
-///                                 .retentionPolicyType("LongTermRetentionPolicy")
 ///                                 .build())
 ///                             .schedulePolicy(SimpleSchedulePolicyArgs.builder()
-///                                 .schedulePolicyType("SimpleSchedulePolicy")
 ///                                 .scheduleRunFrequency("Daily")
 ///                                 .scheduleRunTimes("2018-01-10T18:30:00Z")
 ///                                 .scheduleWeeklyFrequency(0)
@@ -3224,19 +3293,15 @@ import 'system_data_response.dart';
 ///                                     .count(30)
 ///                                     .durationType("Days")
 ///                                     .build())
-///                                 .retentionPolicyType("SimpleRetentionPolicy")
 ///                                 .build())
 ///                             .schedulePolicy(LogSchedulePolicyArgs.builder()
 ///                                 .scheduleFrequencyInMins(60)
-///                                 .schedulePolicyType("LogSchedulePolicy")
 ///                                 .build())
-///                             .build())),
-///                     Map.entry("workLoadType", "SQLDataBase")
-///                 ))
-///                 .backupType("SQL")
+///                             .build())
+///                     .workLoadType("SQLDataBase")
+///                     .build())
 ///                 .recoveryServicesVault(ExistingRecoveryServicesVaultArgs.builder()
 ///                     .id("/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/test-vault")
-///                     .vaultType("Existing")
 ///                     .build())
 ///                 .build())
 ///             .backupName("dbBackup")
@@ -3467,7 +3532,7 @@ import 'system_data_response.dart';
 ///         ConnectorName = "C1",
 ///         Location = "westcentralus",
 ///         ResourceGroupName = "test-rg",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -3491,9 +3556,9 @@ import 'system_data_response.dart';
 /// 					Name: pulumi.String("defaultDbPolicy"),
 /// 				},
 /// 				BackupType: pulumi.String("SQL"),
-/// 				RecoveryServicesVault: workloads.ExistingRecoveryServicesVault{
-/// 					Id:        "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/test-vault",
-/// 					VaultType: "Existing",
+/// 				RecoveryServicesVault: &workloads.ExistingRecoveryServicesVaultArgs{
+/// 					Id:        pulumi.String("/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/test-vault"),
+/// 					VaultType: pulumi.String("Existing"),
 /// 				},
 /// 			},
 /// 			BackupName:        pulumi.String("dbBackup"),
@@ -3512,7 +3577,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3520,15 +3585,18 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_acssbackupconnection" "acssBackupConnection" {
+/// resource "azure-native_workloads_a_c_s_s_backup_connection" "acssBackupConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backup_data = {
-///     "backupPolicy" = {
-///       "name" = "defaultDbPolicy"
+///     backup_policy = {
+///       name = "defaultDbPolicy"
 ///     }
-///     "backupType" = "SQL"
-///     "recoveryServicesVault" = {
-///       "id"        = "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/test-vault"
-///       "vaultType" = "Existing"
+///     backup_type = "SQL"
+///     recovery_services_vault = {
+///       id         = "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/test-vault"
+///       vault_type = "Existing"
 ///     }
 ///   }
 ///   backup_name         = "dbBackup"
@@ -3548,6 +3616,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnection;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnectionArgs;
+/// import com.pulumi.azurenative.workloads.inputs.HanaBackupDataArgs;
+/// import com.pulumi.azurenative.workloads.inputs.DBBackupPolicyPropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.ExistingRecoveryServicesVaultArgs;
+/// import com.pulumi.azurenative.workloads.inputs.NewRecoveryServicesVaultArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SqlBackupDataArgs;
+/// import com.pulumi.azurenative.workloads.inputs.VMBackupDataArgs;
+/// import com.pulumi.azurenative.workloads.inputs.VMBackupPolicyPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -3566,10 +3641,8 @@ import 'system_data_response.dart';
 ///                 .backupPolicy(DBBackupPolicyPropertiesArgs.builder()
 ///                     .name("defaultDbPolicy")
 ///                     .build())
-///                 .backupType("SQL")
 ///                 .recoveryServicesVault(ExistingRecoveryServicesVaultArgs.builder()
 ///                     .id("/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/test-vault")
-///                     .vaultType("Existing")
 ///                     .build())
 ///                 .build())
 ///             .backupName("dbBackup")
@@ -3718,7 +3791,7 @@ import 'system_data_response.dart';
 ///         ConnectorName = "C1",
 ///         Location = "westcentralus",
 ///         ResourceGroupName = "test-rg",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -3744,25 +3817,25 @@ import 'system_data_response.dart';
 /// 					InstantRpRetentionRangeInDays: pulumi.Int(2),
 /// 					Name:                          pulumi.String("defaultVmPolicy"),
 /// 					ProtectedItemsCount:           pulumi.Int(0),
-/// 					RetentionPolicy: workloads.LongTermRetentionPolicy{
-/// 						DailySchedule: workloads.DailyRetentionSchedule{
-/// 							RetentionDuration: workloads.RetentionDuration{
-/// 								Count:        30,
-/// 								DurationType: workloads.RetentionDurationTypeDays,
+/// 					RetentionPolicy: &workloads.LongTermRetentionPolicyArgs{
+/// 						DailySchedule: &workloads.DailyRetentionScheduleArgs{
+/// 							RetentionDuration: &workloads.RetentionDurationArgs{
+/// 								Count:        pulumi.Int(30),
+/// 								DurationType: pulumi.String(workloads.RetentionDurationTypeDays),
 /// 							},
-/// 							RetentionTimes: []string{
-/// 								"2018-01-10T18:30:00Z",
+/// 							RetentionTimes: pulumi.StringArray{
+/// 								pulumi.String("2018-01-10T18:30:00Z"),
 /// 							},
 /// 						},
-/// 						RetentionPolicyType: "LongTermRetentionPolicy",
+/// 						RetentionPolicyType: pulumi.String("LongTermRetentionPolicy"),
 /// 					},
-/// 					SchedulePolicy: workloads.SimpleSchedulePolicy{
-/// 						SchedulePolicyType:   "SimpleSchedulePolicy",
-/// 						ScheduleRunFrequency: workloads.ScheduleRunTypeDaily,
-/// 						ScheduleRunTimes: []string{
-/// 							"2018-01-10T18:30:00Z",
+/// 					SchedulePolicy: &workloads.SimpleSchedulePolicyArgs{
+/// 						SchedulePolicyType:   pulumi.String("SimpleSchedulePolicy"),
+/// 						ScheduleRunFrequency: pulumi.String(workloads.ScheduleRunTypeDaily),
+/// 						ScheduleRunTimes: pulumi.StringArray{
+/// 							pulumi.String("2018-01-10T18:30:00Z"),
 /// 						},
-/// 						ScheduleWeeklyFrequency: 0,
+/// 						ScheduleWeeklyFrequency: pulumi.Int(0),
 /// 					},
 /// 				},
 /// 				BackupType: pulumi.String("VM"),
@@ -3770,10 +3843,10 @@ import 'system_data_response.dart';
 /// 					DiskLunList:     pulumi.IntArray{},
 /// 					IsInclusionList: pulumi.Bool(true),
 /// 				},
-/// 				RecoveryServicesVault: workloads.NewRecoveryServicesVault{
-/// 					Name:          "test-vault",
-/// 					ResourceGroup: "test-rg",
-/// 					VaultType:     "New",
+/// 				RecoveryServicesVault: &workloads.NewRecoveryServicesVaultArgs{
+/// 					Name:          pulumi.String("test-vault"),
+/// 					ResourceGroup: pulumi.String("test-rg"),
+/// 					VaultType:     pulumi.String("New"),
 /// 				},
 /// 			},
 /// 			BackupName:        pulumi.String("vmBackup"),
@@ -3792,7 +3865,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3800,40 +3873,43 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_acssbackupconnection" "acssBackupConnection" {
+/// resource "azure-native_workloads_a_c_s_s_backup_connection" "acssBackupConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backup_data = {
-///     "backupPolicy" = {
-///       "backupManagementType"          = "AzureIaasVM"
-///       "instantRPDetails"              = {}
-///       "instantRpRetentionRangeInDays" = 2
-///       "name"                          = "defaultVmPolicy"
-///       "protectedItemsCount"           = 0
-///       "retentionPolicy" = {
-///         "dailySchedule" = {
-///           "retentionDuration" = {
-///             "count"        = 30
-///             "durationType" = "Days"
+///     backup_policy = {
+///       backup_management_type             = "AzureIaasVM"
+///       instant_rp_details                 = {}
+///       instant_rp_retention_range_in_days = 2
+///       name                               = "defaultVmPolicy"
+///       protected_items_count              = 0
+///       retention_policy = {
+///         daily_schedule = {
+///           retention_duration = {
+///             count         = 30
+///             duration_type = "Days"
 ///           }
-///           "retentionTimes" = ["2018-01-10T18:30:00Z"]
+///           retention_times = ["2018-01-10T18:30:00Z"]
 ///         }
-///         "retentionPolicyType" = "LongTermRetentionPolicy"
+///         retention_policy_type = "LongTermRetentionPolicy"
 ///       }
-///       "schedulePolicy" = {
-///         "schedulePolicyType"      = "SimpleSchedulePolicy"
-///         "scheduleRunFrequency"    = "Daily"
-///         "scheduleRunTimes"        = ["2018-01-10T18:30:00Z"]
-///         "scheduleWeeklyFrequency" = 0
+///       schedule_policy = {
+///         schedule_policy_type      = "SimpleSchedulePolicy"
+///         schedule_run_frequency    = "Daily"
+///         schedule_run_times        = ["2018-01-10T18:30:00Z"]
+///         schedule_weekly_frequency = 0
 ///       }
 ///     }
-///     "backupType" = "VM"
-///     "diskExclusionProperties" = {
-///       "diskLunList"     = []
-///       "isInclusionList" = true
+///     backup_type = "VM"
+///     disk_exclusion_properties = {
+///       disk_lun_list     = []
+///       is_inclusion_list = true
 ///     }
-///     "recoveryServicesVault" = {
-///       "name"          = "test-vault"
-///       "resourceGroup" = "test-rg"
-///       "vaultType"     = "New"
+///     recovery_services_vault = {
+///       name           = "test-vault"
+///       resource_group = "test-rg"
+///       vault_type     = "New"
 ///     }
 ///   }
 ///   backup_name         = "vmBackup"
@@ -3853,6 +3929,23 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnection;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnectionArgs;
+/// import com.pulumi.azurenative.workloads.inputs.HanaBackupDataArgs;
+/// import com.pulumi.azurenative.workloads.inputs.DBBackupPolicyPropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.ExistingRecoveryServicesVaultArgs;
+/// import com.pulumi.azurenative.workloads.inputs.NewRecoveryServicesVaultArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SqlBackupDataArgs;
+/// import com.pulumi.azurenative.workloads.inputs.VMBackupDataArgs;
+/// import com.pulumi.azurenative.workloads.inputs.VMBackupPolicyPropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.InstantRPAdditionalDetailsArgs;
+/// import com.pulumi.azurenative.workloads.inputs.LongTermRetentionPolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.DailyRetentionScheduleArgs;
+/// import com.pulumi.azurenative.workloads.inputs.RetentionDurationArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SimpleRetentionPolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.LogSchedulePolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.LongTermSchedulePolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SimpleSchedulePolicyArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SimpleSchedulePolicyV2Args;
+/// import com.pulumi.azurenative.workloads.inputs.DiskExclusionPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -3868,14 +3961,13 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var acssBackupConnection = new ACSSBackupConnection("acssBackupConnection", ACSSBackupConnectionArgs.builder()
 ///             .backupData(VMBackupDataArgs.builder()
-///                 .backupPolicy(Map.ofEntries(
-///                     Map.entry("backupManagementType", "AzureIaasVM"),
-///                     Map.entry("instantRPDetails", InstantRPAdditionalDetailsArgs.builder()
-///                         .build()),
-///                     Map.entry("instantRpRetentionRangeInDays", 2),
-///                     Map.entry("name", "defaultVmPolicy"),
-///                     Map.entry("protectedItemsCount", 0),
-///                     Map.entry("retentionPolicy", LongTermRetentionPolicyArgs.builder()
+///                 .backupPolicy(VMBackupPolicyPropertiesArgs.builder()
+///                     .instantRPDetails(InstantRPAdditionalDetailsArgs.builder()
+///                         .build())
+///                     .instantRpRetentionRangeInDays(2)
+///                     .name("defaultVmPolicy")
+///                     .protectedItemsCount(0)
+///                     .retentionPolicy(LongTermRetentionPolicyArgs.builder()
 ///                         .dailySchedule(DailyRetentionScheduleArgs.builder()
 ///                             .retentionDuration(RetentionDurationArgs.builder()
 ///                                 .count(30)
@@ -3883,16 +3975,13 @@ import 'system_data_response.dart';
 ///                                 .build())
 ///                             .retentionTimes("2018-01-10T18:30:00Z")
 ///                             .build())
-///                         .retentionPolicyType("LongTermRetentionPolicy")
-///                         .build()),
-///                     Map.entry("schedulePolicy", SimpleSchedulePolicyArgs.builder()
-///                         .schedulePolicyType("SimpleSchedulePolicy")
+///                         .build())
+///                     .schedulePolicy(SimpleSchedulePolicyArgs.builder()
 ///                         .scheduleRunFrequency("Daily")
 ///                         .scheduleRunTimes("2018-01-10T18:30:00Z")
 ///                         .scheduleWeeklyFrequency(0)
 ///                         .build())
-///                 ))
-///                 .backupType("VM")
+///                     .build())
 ///                 .diskExclusionProperties(DiskExclusionPropertiesArgs.builder()
 ///                     .diskLunList()
 ///                     .isInclusionList(true)
@@ -3900,7 +3989,6 @@ import 'system_data_response.dart';
 ///                 .recoveryServicesVault(NewRecoveryServicesVaultArgs.builder()
 ///                     .name("test-vault")
 ///                     .resourceGroup("test-rg")
-///                     .vaultType("New")
 ///                     .build())
 ///                 .build())
 ///             .backupName("vmBackup")
@@ -4090,7 +4178,7 @@ import 'system_data_response.dart';
 ///         ConnectorName = "C1",
 ///         Location = "westcentralus",
 ///         ResourceGroupName = "test-rg",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -4118,9 +4206,9 @@ import 'system_data_response.dart';
 /// 					DiskLunList:     pulumi.IntArray{},
 /// 					IsInclusionList: pulumi.Bool(true),
 /// 				},
-/// 				RecoveryServicesVault: workloads.ExistingRecoveryServicesVault{
-/// 					Id:        "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/test-vault",
-/// 					VaultType: "Existing",
+/// 				RecoveryServicesVault: &workloads.ExistingRecoveryServicesVaultArgs{
+/// 					Id:        pulumi.String("/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/test-vault"),
+/// 					VaultType: pulumi.String("Existing"),
 /// 				},
 /// 			},
 /// 			BackupName:        pulumi.String("vmBackup"),
@@ -4139,7 +4227,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -4147,19 +4235,22 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_workloads_acssbackupconnection" "acssBackupConnection" {
+/// resource "azure-native_workloads_a_c_s_s_backup_connection" "acssBackupConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backup_data = {
-///     "backupPolicy" = {
-///       "name" = "defaultVmPolicy"
+///     backup_policy = {
+///       name = "defaultVmPolicy"
 ///     }
-///     "backupType" = "VM"
-///     "diskExclusionProperties" = {
-///       "diskLunList"     = []
-///       "isInclusionList" = true
+///     backup_type = "VM"
+///     disk_exclusion_properties = {
+///       disk_lun_list     = []
+///       is_inclusion_list = true
 ///     }
-///     "recoveryServicesVault" = {
-///       "id"        = "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/test-vault"
-///       "vaultType" = "Existing"
+///     recovery_services_vault = {
+///       id         = "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/test-vault"
+///       vault_type = "Existing"
 ///     }
 ///   }
 ///   backup_name         = "vmBackup"
@@ -4179,6 +4270,14 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnection;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnectionArgs;
+/// import com.pulumi.azurenative.workloads.inputs.HanaBackupDataArgs;
+/// import com.pulumi.azurenative.workloads.inputs.DBBackupPolicyPropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.ExistingRecoveryServicesVaultArgs;
+/// import com.pulumi.azurenative.workloads.inputs.NewRecoveryServicesVaultArgs;
+/// import com.pulumi.azurenative.workloads.inputs.SqlBackupDataArgs;
+/// import com.pulumi.azurenative.workloads.inputs.VMBackupDataArgs;
+/// import com.pulumi.azurenative.workloads.inputs.VMBackupPolicyPropertiesArgs;
+/// import com.pulumi.azurenative.workloads.inputs.DiskExclusionPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -4197,14 +4296,12 @@ import 'system_data_response.dart';
 ///                 .backupPolicy(VMBackupPolicyPropertiesArgs.builder()
 ///                     .name("defaultVmPolicy")
 ///                     .build())
-///                 .backupType("VM")
 ///                 .diskExclusionProperties(DiskExclusionPropertiesArgs.builder()
 ///                     .diskLunList()
 ///                     .isInclusionList(true)
 ///                     .build())
 ///                 .recoveryServicesVault(ExistingRecoveryServicesVaultArgs.builder()
 ///                     .id("/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/test-vault")
-///                     .vaultType("Existing")
 ///                     .build())
 ///                 .build())
 ///             .backupName("vmBackup")

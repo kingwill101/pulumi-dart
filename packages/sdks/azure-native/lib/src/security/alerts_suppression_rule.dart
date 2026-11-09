@@ -86,7 +86,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -94,7 +94,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_alertssuppressionrule" "alertsSuppressionRule" {
+/// resource "azure-native_security_alerts_suppression_rule" "alertsSuppressionRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alert_type                   = "IpAnomaly"
 ///   alerts_suppression_rule_name = "dismissIpAnomalyAlerts"
 ///   comment                      = "Test VM"
@@ -103,9 +106,9 @@ import 'system_data_response.dart';
 ///   state                        = "Enabled"
 ///   suppression_alerts_scope = {
 ///     all_of = [{
-///       "field" = "entities.ip.address"
+///       field = "entities.ip.address"
 ///       }, {
-///       "field" = "entities.process.commandline"
+///       field = "entities.process.commandline"
 ///     }]
 ///   }
 /// }
@@ -121,6 +124,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.security.AlertsSuppressionRule;
 /// import com.pulumi.azurenative.security.AlertsSuppressionRuleArgs;
 /// import com.pulumi.azurenative.security.inputs.SuppressionAlertsScopeArgs;
+/// import com.pulumi.azurenative.security.inputs.ScopeElementArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

@@ -176,7 +176,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -184,7 +184,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_guarddutydetector" "guardDutyDetector" {
+/// resource "azure-native_awsconnector_guard_duty_detector" "guardDutyDetector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "sxpvpkjhhmcssseznufvqer"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -208,18 +211,18 @@ import 'system_data_response.dart';
 ///       }
 ///       enable = true
 ///       features = [{
-///         "additionalConfiguration" = [{
-///           "name"   = "lkkifsmqcaujhderxjzcmezjh"
-///           "status" = "wbjikrlaxrtwpwiexknat"
+///         additional_configuration = [{
+///           name   = "lkkifsmqcaujhderxjzcmezjh"
+///           status = "wbjikrlaxrtwpwiexknat"
 ///         }]
-///         "name"   = "aoocmexbklfmzmglxopv"
-///         "status" = "DISABLED"
+///         name   = "aoocmexbklfmzmglxopv"
+///         status = "DISABLED"
 ///       }]
 ///       finding_publishing_frequency = "ed"
 ///       id                           = "vakfpotktucclwwqxkczvzrw"
 ///       tags = [{
-///         "key"   = "fezaldlvzejdwknyannwfh"
-///         "value" = "edlendjmyszkw"
+///         key   = "fezaldlvzejdwknyannwfh"
+///         value = "edlendjmyszkw"
 ///       }]
 ///     }
 ///     aws_region        = "wtiiifsewygmgbdcebhl"
@@ -254,6 +257,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.CFNMalwareProtectionConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CFNScanEc2InstanceWithFindingsConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CFNS3LogsConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.CFNFeatureConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.CFNFeatureAdditionalConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagItemArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

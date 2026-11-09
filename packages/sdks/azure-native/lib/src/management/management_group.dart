@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,7 +77,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_management_managementgroup" "managementGroup" {
+/// resource "azure-native_management_management_group" "managementGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   details = {
 ///     parent = {
 ///       id = "/providers/Microsoft.Management/managementGroups/RootGroup"

@@ -53,12 +53,12 @@ import 'cost_allocation_rule_properties_response.dart';
 ///                             new AzureNative.CostManagement.Inputs.CostAllocationProportionArgs
 ///                             {
 ///                                 Name = "destinationRG",
-///                                 Percentage = 45,
+///                                 Percentage = 45.0,
 ///                             },
 ///                             new AzureNative.CostManagement.Inputs.CostAllocationProportionArgs
 ///                             {
 ///                                 Name = "destinationRG2",
-///                                 Percentage = 54,
+///                                 Percentage = 54.0,
 ///                             },
 ///                         },
 ///                     },
@@ -131,7 +131,7 @@ import 'cost_allocation_rule_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -139,26 +139,29 @@ import 'cost_allocation_rule_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_costmanagement_costallocationrule" "costAllocationRule" {
+/// resource "azure-native_costmanagement_cost_allocation_rule" "costAllocationRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   billing_account_id = "100"
 ///   properties = {
 ///     description = "This is a testRule"
 ///     details = {
 ///       source_resources = [{
-///         "name"         = "ResourceGroupName"
-///         "resourceType" = "Dimension"
-///         "values"       = ["sampleRG", "secondRG"]
+///         name          = "ResourceGroupName"
+///         resource_type = "Dimension"
+///         values        = ["sampleRG", "secondRG"]
 ///       }]
 ///       target_resources = [{
-///         "name"         = "ResourceGroupName"
-///         "policyType"   = "FixedProportion"
-///         "resourceType" = "Dimension"
-///         "values" = [{
-///           "name"       = "destinationRG"
-///           "percentage" = 45
+///         name          = "ResourceGroupName"
+///         policy_type   = "FixedProportion"
+///         resource_type = "Dimension"
+///         values = [{
+///           name       = "destinationRG"
+///           percentage = 45
 ///           }, {
-///           "name"       = "destinationRG2"
-///           "percentage" = 54
+///           name       = "destinationRG2"
+///           percentage = 54
 ///         }]
 ///       }]
 ///     }
@@ -179,6 +182,9 @@ import 'cost_allocation_rule_properties_response.dart';
 /// import com.pulumi.azurenative.costmanagement.CostAllocationRuleArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.CostAllocationRulePropertiesArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.CostAllocationRuleDetailsArgs;
+/// import com.pulumi.azurenative.costmanagement.inputs.SourceCostAllocationResourceArgs;
+/// import com.pulumi.azurenative.costmanagement.inputs.TargetCostAllocationResourceArgs;
+/// import com.pulumi.azurenative.costmanagement.inputs.CostAllocationProportionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -466,7 +472,7 @@ import 'cost_allocation_rule_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -474,29 +480,32 @@ import 'cost_allocation_rule_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_costmanagement_costallocationrule" "costAllocationRule" {
+/// resource "azure-native_costmanagement_cost_allocation_rule" "costAllocationRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   billing_account_id = "100"
 ///   properties = {
 ///     description = "This is a testRule"
 ///     details = {
 ///       source_resources = [{
-///         "name"         = "category"
-///         "resourceType" = "Tag"
-///         "values"       = ["devops"]
+///         name          = "category"
+///         resource_type = "Tag"
+///         values        = ["devops"]
 ///       }]
 ///       target_resources = [{
-///         "name"         = "ResourceGroupName"
-///         "policyType"   = "FixedProportion"
-///         "resourceType" = "Dimension"
-///         "values" = [{
-///           "name"       = "destinationRG"
-///           "percentage" = 33.33
+///         name          = "ResourceGroupName"
+///         policy_type   = "FixedProportion"
+///         resource_type = "Dimension"
+///         values = [{
+///           name       = "destinationRG"
+///           percentage = 33.33
 ///           }, {
-///           "name"       = "destinationRG2"
-///           "percentage" = 33.33
+///           name       = "destinationRG2"
+///           percentage = 33.33
 ///           }, {
-///           "name"       = "destinationRG3"
-///           "percentage" = 33.34
+///           name       = "destinationRG3"
+///           percentage = 33.34
 ///         }]
 ///       }]
 ///     }
@@ -517,6 +526,9 @@ import 'cost_allocation_rule_properties_response.dart';
 /// import com.pulumi.azurenative.costmanagement.CostAllocationRuleArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.CostAllocationRulePropertiesArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.CostAllocationRuleDetailsArgs;
+/// import com.pulumi.azurenative.costmanagement.inputs.SourceCostAllocationResourceArgs;
+/// import com.pulumi.azurenative.costmanagement.inputs.TargetCostAllocationResourceArgs;
+/// import com.pulumi.azurenative.costmanagement.inputs.CostAllocationProportionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

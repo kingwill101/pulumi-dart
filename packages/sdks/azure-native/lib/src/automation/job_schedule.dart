@@ -82,7 +82,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -90,7 +90,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_automation_jobschedule" "jobSchedule" {
+/// resource "azure-native_automation_job_schedule" "jobSchedule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   automation_account_name = "ContoseAutomationAccount"
 ///   job_schedule_id         = "0fa462ba-3aa2-4138-83ca-9ebc3bc55cdc"
 ///   parameters = {

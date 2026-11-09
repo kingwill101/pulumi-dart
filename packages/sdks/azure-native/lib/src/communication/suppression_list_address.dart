@@ -65,7 +65,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_communication_suppressionlistaddress" "suppressionListAddress" {
+/// resource "azure-native_communication_suppression_list_address" "suppressionListAddress" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   address_id            = "11112222-3333-4444-5555-aaaabbbbcccc"
 ///   domain_name           = "contoso.com"
 ///   email                 = "newuser1@fabrikam.com"

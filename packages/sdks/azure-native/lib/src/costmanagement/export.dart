@@ -140,7 +140,7 @@ import 'system_assigned_service_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -149,6 +149,9 @@ import 'system_assigned_service_identity_response.dart';
 /// }
 ///
 /// resource "azure-native_costmanagement_export" "export" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   definition = {
 ///     data_set = {
 ///       configuration = {
@@ -516,7 +519,7 @@ import 'system_assigned_service_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -525,6 +528,9 @@ import 'system_assigned_service_identity_response.dart';
 /// }
 ///
 /// resource "azure-native_costmanagement_export" "export" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   definition = {
 ///     data_set = {
 ///       configuration = {
@@ -892,7 +898,7 @@ import 'system_assigned_service_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -901,6 +907,9 @@ import 'system_assigned_service_identity_response.dart';
 /// }
 ///
 /// resource "azure-native_costmanagement_export" "export" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   definition = {
 ///     data_set = {
 ///       configuration = {
@@ -1268,7 +1277,7 @@ import 'system_assigned_service_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1277,6 +1286,9 @@ import 'system_assigned_service_identity_response.dart';
 /// }
 ///
 /// resource "azure-native_costmanagement_export" "export" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   definition = {
 ///     data_set = {
 ///       configuration = {
@@ -1644,7 +1656,7 @@ import 'system_assigned_service_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1653,6 +1665,9 @@ import 'system_assigned_service_identity_response.dart';
 /// }
 ///
 /// resource "azure-native_costmanagement_export" "export" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   definition = {
 ///     data_set = {
 ///       configuration = {
@@ -2020,7 +2035,7 @@ import 'system_assigned_service_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2029,6 +2044,9 @@ import 'system_assigned_service_identity_response.dart';
 /// }
 ///
 /// resource "azure-native_costmanagement_export" "export" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   definition = {
 ///     data_set = {
 ///       configuration = {

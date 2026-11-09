@@ -124,11 +124,11 @@ import 'rules_engine_response.dart';
 ///         },
 ///         Location = "westus",
 ///         ResourceGroupName = "rg1",
-///         RoutingRules = new[]
+///         RoutingRules =
 ///         {
 ///             new AzureNative.FrontDoor.Inputs.RoutingRuleArgs
 ///             {
-///                 AcceptedProtocols = new[]
+///                 AcceptedProtocols =
 ///                 {
 ///                     AzureNative.FrontDoor.FrontDoorProtocol.Http,
 ///                 },
@@ -287,11 +287,11 @@ import 'rules_engine_response.dart';
 /// 					PatternsToMatch: pulumi.StringArray{
 /// 						pulumi.String("/*"),
 /// 					},
-/// 					RouteConfiguration: frontdoor.ForwardingConfiguration{
-/// 						BackendPool: frontdoor.SubResource{
-/// 							Id: "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/backendPools/backendPool1",
+/// 					RouteConfiguration: &frontdoor.ForwardingConfigurationArgs{
+/// 						BackendPool: &frontdoor.SubResourceArgs{
+/// 							Id: pulumi.String("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/backendPools/backendPool1"),
 /// 						},
-/// 						OdataType: "#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration",
+/// 						OdataType: pulumi.String("#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration"),
 /// 					},
 /// 					RulesEngine: &frontdoor.SubResourceArgs{
 /// 						Id: pulumi.String("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/rulesEngines/rulesEngine1"),
@@ -316,7 +316,7 @@ import 'rules_engine_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -324,7 +324,10 @@ import 'rules_engine_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_frontdoor_frontdoor" "frontDoor" {
+/// resource "azure-native_frontdoor_front_door" "frontDoor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backend_pools {
 ///     backends {
 ///       address    = "w3.contoso.com"
@@ -406,10 +409,10 @@ import 'rules_engine_response.dart';
 ///     name              = "routingRule1"
 ///     patterns_to_match = ["/*"]
 ///     route_configuration = {
-///       "backendPool" = {
-///         "id" = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/backendPools/backendPool1"
+///       backend_pool = {
+///         id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/backendPools/backendPool1"
 ///       }
-///       "odataType" = "#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration"
+///       odata_type = "#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration"
 ///     }
 ///     rules_engine = {
 ///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/rulesEngines/rulesEngine1"
@@ -435,6 +438,7 @@ import 'rules_engine_response.dart';
 /// import com.pulumi.azurenative.frontdoor.FrontDoor;
 /// import com.pulumi.azurenative.frontdoor.FrontDoorArgs;
 /// import com.pulumi.azurenative.frontdoor.inputs.BackendPoolArgs;
+/// import com.pulumi.azurenative.frontdoor.inputs.BackendArgs;
 /// import com.pulumi.azurenative.frontdoor.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.frontdoor.inputs.BackendPoolsSettingsArgs;
 /// import com.pulumi.azurenative.frontdoor.inputs.FrontendEndpointArgs;
@@ -442,6 +446,8 @@ import 'rules_engine_response.dart';
 /// import com.pulumi.azurenative.frontdoor.inputs.HealthProbeSettingsModelArgs;
 /// import com.pulumi.azurenative.frontdoor.inputs.LoadBalancingSettingsModelArgs;
 /// import com.pulumi.azurenative.frontdoor.inputs.RoutingRuleArgs;
+/// import com.pulumi.azurenative.frontdoor.inputs.ForwardingConfigurationArgs;
+/// import com.pulumi.azurenative.frontdoor.inputs.RedirectConfigurationArgs;
 /// import com.pulumi.azurenative.frontdoor.inputs.RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -544,7 +550,6 @@ import 'rules_engine_response.dart';
 ///                     .backendPool(SubResourceArgs.builder()
 ///                         .id("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/backendPools/backendPool1")
 ///                         .build())
-///                     .odataType("#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration")
 ///                     .build())
 ///                 .rulesEngine(SubResourceArgs.builder()
 ///                     .id("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/rulesEngines/rulesEngine1")

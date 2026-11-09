@@ -70,7 +70,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,6 +79,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_orbital_contact" "contact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   contact_name = "contact1"
 ///   contact_profile = {
 ///     id = "/subscriptions/c1be1141-a7c9-4aac-9608-3c2e2f1152c3/resourceGroups/contoso-Rgp/providers/Microsoft.Orbital/contactProfiles/CONTOSO-CP"

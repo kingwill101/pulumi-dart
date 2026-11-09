@@ -73,7 +73,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,6 +82,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_desktopvirtualization_application" "application" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_group_name = "applicationGroup1"
 ///   application_name       = "application1"
 ///   command_line_arguments = "arguments"

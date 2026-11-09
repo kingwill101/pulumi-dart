@@ -72,7 +72,7 @@ import 'vault_model_response_system_data.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,6 +81,9 @@ import 'vault_model_response_system_data.dart';
 /// }
 ///
 /// resource "azure-native_datareplication_vault" "vault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "eck"
 ///   properties = {
 ///     vault_type = "DisasterRecovery"

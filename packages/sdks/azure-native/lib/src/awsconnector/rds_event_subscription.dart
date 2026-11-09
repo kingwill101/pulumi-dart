@@ -128,7 +128,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -136,7 +136,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_rdseventsubscription" "rdsEventSubscription" {
+/// resource "azure-native_awsconnector_rds_event_subscription" "rdsEventSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "zw"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -150,8 +153,8 @@ import 'system_data_response.dart';
 ///       source_type       = "tvb"
 ///       subscription_name = "we"
 ///       tags = [{
-///         "key"   = "msbxnlvpqauwxmkadft"
-///         "value" = "mfwztutpnzzxe"
+///         key   = "msbxnlvpqauwxmkadft"
+///         value = "mfwztutpnzzxe"
 ///       }]
 ///     }
 ///     aws_region        = "sxpprlqqhjuob"
@@ -180,6 +183,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.RdsEventSubscriptionArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RdsEventSubscriptionPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsRdsEventSubscriptionPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

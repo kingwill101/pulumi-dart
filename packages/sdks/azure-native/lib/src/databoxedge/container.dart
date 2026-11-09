@@ -62,7 +62,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,6 +71,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_databoxedge_container" "container" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   container_name       = "blobcontainer1"
 ///   data_format          = "BlockBlob"
 ///   device_name          = "testedgedevice"

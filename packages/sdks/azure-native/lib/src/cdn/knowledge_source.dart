@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cdn_knowledgesource" "knowledgeSource" {
+/// resource "azure-native_cdn_knowledge_source" "knowledgeSource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description           = "Website knowledge source for FAQ content"
 ///   knowledge_source_name = "myKnowledgeSource1"
 ///   resource_group_name   = "RG"

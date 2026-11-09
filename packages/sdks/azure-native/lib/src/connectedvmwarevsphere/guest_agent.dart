@@ -80,7 +80,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -88,7 +88,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_connectedvmwarevsphere_guestagent" "guestAgent" {
+/// resource "azure-native_connectedvmwarevsphere_guest_agent" "guestAgent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   credentials = {
 ///     password = "<password>"
 ///     username = "tempuser"

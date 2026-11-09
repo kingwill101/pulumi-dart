@@ -116,7 +116,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -124,7 +124,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_adminrule" "adminRule" {
+/// resource "azure-native_network_admin_rule" "adminRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   access                  = "Deny"
 ///   configuration_name      = "myTestSecurityConfig"
 ///   description             = "This is Sample Admin Rule"
@@ -182,7 +185,6 @@ import 'system_data_response.dart';
 ///                 .addressPrefixType("NetworkGroup")
 ///                 .build())
 ///             .direction("Inbound")
-///             .kind("Custom")
 ///             .networkManagerName("testNetworkManager")
 ///             .priority(1)
 ///             .protocol("Tcp")
@@ -395,7 +397,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -403,7 +405,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_adminrule" "adminRule" {
+/// resource "azure-native_network_admin_rule" "adminRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   access                  = "Deny"
 ///   configuration_name      = "myTestSecurityConfig"
 ///   description             = "This is Sample Admin Rule"
@@ -461,7 +466,6 @@ import 'system_data_response.dart';
 ///                 .addressPrefixType("IPPrefix")
 ///                 .build())
 ///             .direction("Inbound")
-///             .kind("Custom")
 ///             .networkManagerName("testNetworkManager")
 ///             .priority(1)
 ///             .protocol("Tcp")

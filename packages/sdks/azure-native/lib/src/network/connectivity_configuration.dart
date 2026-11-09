@@ -99,7 +99,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -107,7 +107,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_connectivityconfiguration" "connectivityConfiguration" {
+/// resource "azure-native_network_connectivity_configuration" "connectivityConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   applies_to_groups {
 ///     group_connectivity = "None"
 ///     is_global          = "False"

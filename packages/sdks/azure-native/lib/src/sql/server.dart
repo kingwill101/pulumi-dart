@@ -94,7 +94,7 @@ import 'server_private_endpoint_connection_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -103,6 +103,9 @@ import 'server_private_endpoint_connection_response.dart';
 /// }
 ///
 /// resource "azure-native_sql_server" "server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administrator_login          = "dummylogin"
 ///   administrator_login_password = "PLACEHOLDER"
 ///   administrators = {

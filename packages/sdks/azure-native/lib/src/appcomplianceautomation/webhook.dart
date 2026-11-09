@@ -22,7 +22,7 @@ import 'webhook_args.dart';
 ///     {
 ///         ContentType = AzureNative.AppComplianceAutomation.ContentType.ApplicationJson,
 ///         EnableSslVerification = AzureNative.AppComplianceAutomation.EnableSslVerification.True,
-///         Events = new[]
+///         Events =
 ///         {
 ///             AzureNative.AppComplianceAutomation.NotificationEvent.Generate_snapshot_failed,
 ///         },
@@ -74,7 +74,7 @@ import 'webhook_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,6 +83,9 @@ import 'webhook_args.dart';
 /// }
 ///
 /// resource "azure-native_appcomplianceautomation_webhook" "webhook" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   content_type            = "application/json"
 ///   enable_ssl_verification = "true"
 ///   events                  = ["generate_snapshot_failed"]

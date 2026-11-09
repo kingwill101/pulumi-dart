@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,6 +70,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_dbforpostgresql_configuration" "configuration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_name  = "constraint_exclusion"
 ///   resource_group_name = "exampleresourcegroup"
 ///   server_name         = "exampleserver"

@@ -88,7 +88,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -96,7 +96,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managednetworkfabric_ipextendedcommunity" "ipExtendedCommunity" {
+/// resource "azure-native_managednetworkfabric_ip_extended_community" "ipExtendedCommunity" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   annotation                 = "annotation"
 ///   ip_extended_community_name = "example-ipExtendedCommunity"
 ///   ip_extended_community_rules {

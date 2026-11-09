@@ -86,7 +86,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -95,6 +95,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_search_service" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_type        = "Default"
 ///   hosting_mode        = "Default"
 ///   location            = "westus"
@@ -297,7 +300,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -306,6 +309,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_search_service" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auth_options = {
 ///     aad_or_api_key = {
 ///       aad_auth_failure_mode = "http401WithBearerChallenge"
@@ -523,7 +529,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -532,6 +538,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_search_service" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_type        = "Default"
 ///   disable_local_auth  = true
 ///   hosting_mode        = "Default"
@@ -729,7 +738,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -738,6 +747,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_search_service" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_type          = "Default"
 ///   hosting_mode          = "Default"
 ///   location              = "westus"
@@ -957,7 +969,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -966,14 +978,17 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_search_service" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_type = "Default"
 ///   hosting_mode = "Default"
 ///   location     = "westus"
 ///   network_rule_set = {
 ///     ip_rules = [{
-///       "value" = "123.4.5.6"
+///       value = "123.4.5.6"
 ///       }, {
-///       "value" = "123.4.6.0/18"
+///       value = "123.4.6.0/18"
 ///     }]
 ///   }
 ///   partition_count     = 1
@@ -999,6 +1014,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.search.Service;
 /// import com.pulumi.azurenative.search.ServiceArgs;
 /// import com.pulumi.azurenative.search.inputs.NetworkRuleSetArgs;
+/// import com.pulumi.azurenative.search.inputs.IpRuleArgs;
 /// import com.pulumi.azurenative.search.inputs.SkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1223,7 +1239,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1232,15 +1248,18 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_search_service" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_type = "Default"
 ///   hosting_mode = "Default"
 ///   location     = "westus"
 ///   network_rule_set = {
 ///     bypass = "AzureServices"
 ///     ip_rules = [{
-///       "value" = "123.4.5.6"
+///       value = "123.4.5.6"
 ///       }, {
-///       "value" = "123.4.6.0/18"
+///       value = "123.4.6.0/18"
 ///     }]
 ///   }
 ///   partition_count     = 1
@@ -1266,6 +1285,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.search.Service;
 /// import com.pulumi.azurenative.search.ServiceArgs;
 /// import com.pulumi.azurenative.search.inputs.NetworkRuleSetArgs;
+/// import com.pulumi.azurenative.search.inputs.IpRuleArgs;
 /// import com.pulumi.azurenative.search.inputs.SkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1475,7 +1495,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1484,6 +1504,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_search_service" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_type = "Default"
 ///   encryption_with_cmk = {
 ///     enforcement = "Enabled"
@@ -1633,7 +1656,7 @@ import 'system_data_response.dart';
 ///     var service = new AzureNative.Search.Service("service", new()
 ///     {
 ///         ComputeType = AzureNative.Search.ComputeType.Default,
-///         DataExfiltrationProtections = new[]
+///         DataExfiltrationProtections =
 ///         {
 ///             AzureNative.Search.SearchDataExfiltrationProtection.BlockAll,
 ///         },
@@ -1696,7 +1719,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1705,6 +1728,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_search_service" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_type                  = "Default"
 ///   data_exfiltration_protections = ["BlockAll"]
 ///   hosting_mode                  = "Default"
@@ -1903,7 +1929,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1912,6 +1938,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_search_service" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_type        = "Default"
 ///   hosting_mode        = "Default"
 ///   location            = "westus"

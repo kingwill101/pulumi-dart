@@ -79,7 +79,7 @@ import 'template_spec_version_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -87,7 +87,10 @@ import 'template_spec_version_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_resources_templatespecversion" "templateSpecVersion" {
+/// resource "azure-native_resources_template_spec_version" "templateSpecVersion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "This is version v1.0 of our template content"
 ///   location    = "eastus"
 ///   main_template = {

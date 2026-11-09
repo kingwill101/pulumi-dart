@@ -75,7 +75,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,7 +83,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_assessmentprojectsoperation" "assessmentProjectsOperation" {
+/// resource "azure-native_migrate_assessment_projects_operation" "assessmentProjectsOperation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assessment_solution_id          = "/subscriptions/4bd2aa0f-2bd2-4d67-91a8-5a4533d58600/resourceGroups/sakanwar/providers/Microsoft.Storage/storageAccounts/sakanwar1204usa"
 ///   customer_storage_account_arm_id = "/subscriptions/4bd2aa0f-2bd2-4d67-91a8-5a4533d58600/resourceGroups/sakanwar/providers/Microsoft.Storage/storageAccounts/sakanwar1204usa"
 ///   location                        = "southeastasia"

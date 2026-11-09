@@ -55,7 +55,7 @@ import 'management_configuration_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -63,7 +63,10 @@ import 'management_configuration_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_operationsmanagement_managementconfiguration" "managementConfiguration" {
+/// resource "azure-native_operationsmanagement_management_configuration" "managementConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                      = "East US"
 ///   management_configuration_name = "managementConfiguration1"
 ///   resource_group_name           = "rg1"

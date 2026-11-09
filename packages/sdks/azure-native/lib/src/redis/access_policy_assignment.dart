@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_redis_accesspolicyassignment" "accessPolicyAssignment" {
+/// resource "azure-native_redis_access_policy_assignment" "accessPolicyAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   access_policy_assignment_name = "accessPolicyAssignmentName1"
 ///   access_policy_name            = "accessPolicy1"
 ///   cache_name                    = "cache1"

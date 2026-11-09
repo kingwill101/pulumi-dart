@@ -118,7 +118,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -126,19 +126,22 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_appplatform_buildservicebuild" "buildServiceBuild" {
+/// resource "azure-native_appplatform_build_service_build" "buildServiceBuild" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   build_name         = "mybuild"
 ///   build_service_name = "default"
 ///   properties = {
 ///     agent_pool = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/buildServices/default/agentPools/default"
 ///     apms = [{
-///       "resourceId" = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/apms/myappinsights"
+///       resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/apms/myappinsights"
 ///     }]
 ///     builder = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/buildServices/default/builders/default"
 ///     certificates = [{
-///       "resourceId" = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/certificates/mycert1"
+///       resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/certificates/mycert1"
 ///       }, {
-///       "resourceId" = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/certificates/mycert2"
+///       resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/certificates/mycert2"
 ///     }]
 ///     env = {
 ///       "environmentVariable" = "test"
@@ -164,6 +167,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.BuildServiceBuild;
 /// import com.pulumi.azurenative.appplatform.BuildServiceBuildArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.BuildPropertiesArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.ApmReferenceArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.CertificateReferenceArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.BuildResourceRequestsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

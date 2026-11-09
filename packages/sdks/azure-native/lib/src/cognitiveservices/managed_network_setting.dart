@@ -68,10 +68,10 @@ import 'system_data_response.dart';
 /// 					FirewallSku:   pulumi.String(cognitiveservices.FirewallSkuStandard),
 /// 					IsolationMode: pulumi.String(cognitiveservices.IsolationModeAllowOnlyApprovedOutbound),
 /// 					OutboundRules: pulumi.Map{
-/// 						"rule_name_1": cognitiveservices.FqdnOutboundRule{
-/// 							Category:    cognitiveservices.RuleCategoryUserDefined,
-/// 							Destination: "destination_endpoint",
-/// 							Type:        "FQDN",
+/// 						"rule_name_1": &cognitiveservices.FqdnOutboundRuleArgs{
+/// 							Category:    pulumi.String(cognitiveservices.RuleCategoryUserDefined),
+/// 							Destination: pulumi.String("destination_endpoint"),
+/// 							Type:        pulumi.String("FQDN"),
 /// 						},
 /// 					},
 /// 				},
@@ -88,7 +88,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -96,7 +96,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cognitiveservices_managednetworksetting" "managedNetworkSetting" {
+/// resource "azure-native_cognitiveservices_managed_network_setting" "managedNetworkSetting" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name         = "cognitive-account-name"
 ///   managed_network_name = "default"
 ///   properties = {
@@ -105,9 +108,9 @@ import 'system_data_response.dart';
 ///       isolation_mode = "AllowOnlyApprovedOutbound"
 ///       outbound_rules = {
 ///         "rule_name_1" = {
-///           "category"    = "UserDefined"
-///           "destination" = "destination_endpoint"
-///           "type"        = "FQDN"
+///           category    = "UserDefined"
+///           destination = "destination_endpoint"
+///           type        = "FQDN"
 ///         }
 ///       }
 ///     }
@@ -127,6 +130,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cognitiveservices.ManagedNetworkSettingArgs;
 /// import com.pulumi.azurenative.cognitiveservices.inputs.ManagedNetworkSettingsPropertiesArgs;
 /// import com.pulumi.azurenative.cognitiveservices.inputs.ManagedNetworkSettingsExArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.FqdnOutboundRuleArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.PrivateEndpointOutboundRuleArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.ServiceTagOutboundRuleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -150,7 +156,6 @@ import 'system_data_response.dart';
 ///                     .outboundRules(Map.of("rule_name_1", FqdnOutboundRuleArgs.builder()
 ///                         .category("UserDefined")
 ///                         .destination("destination_endpoint")
-///                         .type("FQDN")
 ///                         .build()))
 ///                     .build())
 ///                 .build())

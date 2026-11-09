@@ -74,7 +74,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,7 +82,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dnsresolver_outboundendpoint" "outboundEndpoint" {
+/// resource "azure-native_dnsresolver_outbound_endpoint" "outboundEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dns_resolver_name      = "sampleDnsResolver"
 ///   location               = "westus2"
 ///   outbound_endpoint_name = "sampleOutboundEndpoint"

@@ -70,7 +70,7 @@ import 'integration_account_assembly_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,7 +78,10 @@ import 'integration_account_assembly_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_logic_integrationaccountassembly" "integrationAccountAssembly" {
+/// resource "azure-native_logic_integration_account_assembly" "integrationAccountAssembly" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assembly_artifact_name   = "testAssembly"
 ///   integration_account_name = "testIntegrationAccount"
 ///   location                 = "westus"

@@ -34,7 +34,7 @@ import 'system_data_response.dart';
 ///             SubnetId = "/subscriptions/536e130b-d7d6-4ac7-98a5-de20d69588d2/resourceGroups/customer-vnet-rg/providers/Microsoft.Network/virtualNetworks/customer-vnet/subnets/management",
 ///         },
 ///         ResourceGroupName = "garnet-prod-rg",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -74,7 +74,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,7 +82,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_garnetcluster" "garnetCluster" {
+/// resource "azure-native_cosmosdb_garnet_cluster" "garnetCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name = "garnet-prod"
 ///   location     = "West US"
 ///   properties = {

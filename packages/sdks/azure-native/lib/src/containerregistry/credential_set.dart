@@ -84,7 +84,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -92,7 +92,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerregistry_credentialset" "credentialSet" {
+/// resource "azure-native_containerregistry_credential_set" "credentialSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auth_credentials {
 ///     name                       = "Credential1"
 ///     password_secret_identifier = "https://myvault.vault.azure.net/secrets/password"

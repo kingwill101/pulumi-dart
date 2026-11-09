@@ -2,8 +2,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Operator for dimension values
 enum DimensionOperator implements pulumi.PulumiEnum<String> {
-  include("Include"),
-  exclude("Exclude");
+  valueInclude("Include"),
+  valueExclude("Exclude");
 
   const DimensionOperator(this.wireValue);
   @override

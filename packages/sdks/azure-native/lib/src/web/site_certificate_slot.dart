@@ -71,7 +71,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_web_sitecertificateslot" "siteCertificateSlot" {
+/// resource "azure-native_web_site_certificate_slot" "siteCertificateSlot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_name    = "testc6282"
 ///   host_names          = ["ServerCert"]
 ///   location            = "East US"

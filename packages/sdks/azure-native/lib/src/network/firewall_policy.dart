@@ -287,7 +287,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -295,7 +295,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_firewallpolicy" "firewallPolicy" {
+/// resource "azure-native_network_firewall_policy" "firewallPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dns_settings = {
 ///     enable_proxy                    = true
 ///     require_proxy_for_network_rules = false
@@ -317,14 +320,14 @@ import 'sub_resource_response.dart';
 ///         id = "/subscriptions/subid/resourcegroups/rg1/providers/microsoft.operationalinsights/workspaces/defaultWorkspace"
 ///       }
 ///       workspaces = [{
-///         "region" = "westus"
-///         "workspaceId" = {
-///           "id" = "/subscriptions/subid/resourcegroups/rg1/providers/microsoft.operationalinsights/workspaces/workspace1"
+///         region = "westus"
+///         workspace_id = {
+///           id = "/subscriptions/subid/resourcegroups/rg1/providers/microsoft.operationalinsights/workspaces/workspace1"
 ///         }
 ///         }, {
-///         "region" = "eastus"
-///         "workspaceId" = {
-///           "id" = "/subscriptions/subid/resourcegroups/rg1/providers/microsoft.operationalinsights/workspaces/workspace2"
+///         region = "eastus"
+///         workspace_id = {
+///           id = "/subscriptions/subid/resourcegroups/rg1/providers/microsoft.operationalinsights/workspaces/workspace2"
 ///         }
 ///       }]
 ///     }
@@ -333,16 +336,16 @@ import 'sub_resource_response.dart';
 ///   intrusion_detection = {
 ///     configuration = {
 ///       bypass_traffic_settings = [{
-///         "description"          = "Rule 1"
-///         "destinationAddresses" = ["5.6.7.8"]
-///         "destinationPorts"     = ["*"]
-///         "name"                 = "bypassRule1"
-///         "protocol"             = "TCP"
-///         "sourceAddresses"      = ["1.2.3.4"]
+///         description           = "Rule 1"
+///         destination_addresses = ["5.6.7.8"]
+///         destination_ports     = ["*"]
+///         name                  = "bypassRule1"
+///         protocol              = "TCP"
+///         source_addresses      = ["1.2.3.4"]
 ///       }]
 ///       signature_overrides = [{
-///         "id"   = "2525004"
-///         "mode" = "Deny"
+///         id   = "2525004"
+///         mode = "Deny"
 ///       }]
 ///     }
 ///     mode    = "Alert"
@@ -390,8 +393,11 @@ import 'sub_resource_response.dart';
 /// import com.pulumi.azurenative.network.inputs.FirewallPolicyInsightsArgs;
 /// import com.pulumi.azurenative.network.inputs.FirewallPolicyLogAnalyticsResourcesArgs;
 /// import com.pulumi.azurenative.network.inputs.SubResourceArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyLogAnalyticsWorkspaceArgs;
 /// import com.pulumi.azurenative.network.inputs.FirewallPolicyIntrusionDetectionArgs;
 /// import com.pulumi.azurenative.network.inputs.FirewallPolicyIntrusionDetectionConfigurationArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsArgs;
+/// import com.pulumi.azurenative.network.inputs.FirewallPolicyIntrusionDetectionSignatureSpecificationArgs;
 /// import com.pulumi.azurenative.network.inputs.FirewallPolicySkuArgs;
 /// import com.pulumi.azurenative.network.inputs.FirewallPolicySNATArgs;
 /// import com.pulumi.azurenative.network.inputs.FirewallPolicySQLArgs;

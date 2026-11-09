@@ -39,7 +39,7 @@ import 'system_data_response.dart';
 ///         {
 ///             ["floor"] = "1",
 ///         },
-///         Datasets = new[]
+///         Datasets =
 ///         {
 ///             new AzureNative.DeviceRegistry.Inputs.NamespaceDatasetArgs
 ///             {
@@ -78,7 +78,7 @@ import 'system_data_response.dart';
 ///             },
 ///         },
 ///         DefaultDatasetsConfiguration = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}",
-///         DefaultDatasetsDestinations = new[]
+///         DefaultDatasetsDestinations =
 ///         {
 ///             new AzureNative.DeviceRegistry.Inputs.DatasetBrokerStateStoreDestinationArgs
 ///             {
@@ -90,7 +90,7 @@ import 'system_data_response.dart';
 ///             },
 ///         },
 ///         DefaultEventsConfiguration = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}",
-///         DefaultEventsDestinations = new[]
+///         DefaultEventsDestinations =
 ///         {
 ///             new AzureNative.DeviceRegistry.Inputs.EventStorageDestinationArgs
 ///             {
@@ -103,7 +103,7 @@ import 'system_data_response.dart';
 ///         },
 ///         DefaultManagementGroupsConfiguration = "{\"retryCount\":10,\"retryBackoffInterval\":15}",
 ///         DefaultStreamsConfiguration = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}",
-///         DefaultStreamsDestinations = new[]
+///         DefaultStreamsDestinations =
 ///         {
 ///             new AzureNative.DeviceRegistry.Inputs.StreamMqttDestinationArgs
 ///             {
@@ -112,7 +112,7 @@ import 'system_data_response.dart';
 ///                     Qos = AzureNative.DeviceRegistry.MqttDestinationQos.Qos0,
 ///                     Retain = AzureNative.DeviceRegistry.TopicRetainType.Never,
 ///                     Topic = "/contoso/test",
-///                     Ttl = 3600,
+///                     Ttl = 3600.0,
 ///                 },
 ///                 Target = "Mqtt",
 ///             },
@@ -130,7 +130,7 @@ import 'system_data_response.dart';
 ///         DisplayName = "AssetDisplayName",
 ///         DocumentationUri = "https://www.example.com/manual",
 ///         Enabled = true,
-///         Events = new[]
+///         Events =
 ///         {
 ///             new AzureNative.DeviceRegistry.Inputs.NamespaceEventArgs
 ///             {
@@ -158,7 +158,7 @@ import 'system_data_response.dart';
 ///                             Qos = AzureNative.DeviceRegistry.MqttDestinationQos.Qos0,
 ///                             Retain = AzureNative.DeviceRegistry.TopicRetainType.Keep,
 ///                             Topic = "/contoso/testEvent1",
-///                             Ttl = 7200,
+///                             Ttl = 7200.0,
 ///                         },
 ///                         Target = "Mqtt",
 ///                     },
@@ -252,7 +252,7 @@ import 'system_data_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         SerialNumber = "64-103816-519918-8",
 ///         SoftwareRevision = "2.0",
-///         Streams = new[]
+///         Streams =
 ///         {
 ///             new AzureNative.DeviceRegistry.Inputs.NamespaceStreamArgs
 ///             {
@@ -282,7 +282,7 @@ import 'system_data_response.dart';
 ///                             Qos = AzureNative.DeviceRegistry.MqttDestinationQos.Qos0,
 ///                             Retain = AzureNative.DeviceRegistry.TopicRetainType.Never,
 ///                             Topic = "/contoso/testStream2",
-///                             Ttl = 7200,
+///                             Ttl = 7200.0,
 ///                         },
 ///                         Target = "Mqtt",
 ///                     },
@@ -341,11 +341,11 @@ import 'system_data_response.dart';
 /// 					DataSource:           pulumi.String("nsu=http://microsoft.com/Opc/OpcPlc/Oven;i=5"),
 /// 					DatasetConfiguration: pulumi.String("{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"),
 /// 					Destinations: pulumi.Array{
-/// 						deviceregistry.DatasetBrokerStateStoreDestination{
-/// 							Configuration: deviceregistry.BrokerStateStoreDestinationConfiguration{
-/// 								Key: "dataset1",
+/// 						&deviceregistry.DatasetBrokerStateStoreDestinationArgs{
+/// 							Configuration: &deviceregistry.BrokerStateStoreDestinationConfigurationArgs{
+/// 								Key: pulumi.String("dataset1"),
 /// 							},
-/// 							Target: "BrokerStateStore",
+/// 							Target: pulumi.String("BrokerStateStore"),
 /// 						},
 /// 					},
 /// 					Name:    pulumi.String("dataset1"),
@@ -354,33 +354,33 @@ import 'system_data_response.dart';
 /// 			},
 /// 			DefaultDatasetsConfiguration: pulumi.String("{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"),
 /// 			DefaultDatasetsDestinations: pulumi.Array{
-/// 				deviceregistry.DatasetBrokerStateStoreDestination{
-/// 					Configuration: deviceregistry.BrokerStateStoreDestinationConfiguration{
-/// 						Key: "defaultValue",
+/// 				&deviceregistry.DatasetBrokerStateStoreDestinationArgs{
+/// 					Configuration: &deviceregistry.BrokerStateStoreDestinationConfigurationArgs{
+/// 						Key: pulumi.String("defaultValue"),
 /// 					},
-/// 					Target: "BrokerStateStore",
+/// 					Target: pulumi.String("BrokerStateStore"),
 /// 				},
 /// 			},
 /// 			DefaultEventsConfiguration: pulumi.String("{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"),
 /// 			DefaultEventsDestinations: pulumi.Array{
-/// 				deviceregistry.EventStorageDestination{
-/// 					Configuration: deviceregistry.StorageDestinationConfiguration{
-/// 						Path: "/tmp",
+/// 				&deviceregistry.EventStorageDestinationArgs{
+/// 					Configuration: &deviceregistry.StorageDestinationConfigurationArgs{
+/// 						Path: pulumi.String("/tmp"),
 /// 					},
-/// 					Target: "Storage",
+/// 					Target: pulumi.String("Storage"),
 /// 				},
 /// 			},
 /// 			DefaultManagementGroupsConfiguration: pulumi.String("{\"retryCount\":10,\"retryBackoffInterval\":15}"),
 /// 			DefaultStreamsConfiguration:          pulumi.String("{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"),
 /// 			DefaultStreamsDestinations: pulumi.Array{
-/// 				deviceregistry.StreamMqttDestination{
-/// 					Configuration: deviceregistry.MqttDestinationConfiguration{
-/// 						Qos:    deviceregistry.MqttDestinationQosQos0,
-/// 						Retain: deviceregistry.TopicRetainTypeNever,
-/// 						Topic:  "/contoso/test",
-/// 						Ttl:    3600,
+/// 				&deviceregistry.StreamMqttDestinationArgs{
+/// 					Configuration: &deviceregistry.MqttDestinationConfigurationArgs{
+/// 						Qos:    pulumi.String(deviceregistry.MqttDestinationQosQos0),
+/// 						Retain: pulumi.String(deviceregistry.TopicRetainTypeNever),
+/// 						Topic:  pulumi.String("/contoso/test"),
+/// 						Ttl:    pulumi.Float64(3600),
 /// 					},
-/// 					Target: "Mqtt",
+/// 					Target: pulumi.String("Mqtt"),
 /// 				},
 /// 			},
 /// 			Description: pulumi.String("This is a sample Asset"),
@@ -409,14 +409,14 @@ import 'system_data_response.dart';
 /// 						},
 /// 					},
 /// 					Destinations: pulumi.Array{
-/// 						deviceregistry.EventMqttDestination{
-/// 							Configuration: deviceregistry.MqttDestinationConfiguration{
-/// 								Qos:    deviceregistry.MqttDestinationQosQos0,
-/// 								Retain: deviceregistry.TopicRetainTypeKeep,
-/// 								Topic:  "/contoso/testEvent1",
-/// 								Ttl:    7200,
+/// 						&deviceregistry.EventMqttDestinationArgs{
+/// 							Configuration: &deviceregistry.MqttDestinationConfigurationArgs{
+/// 								Qos:    pulumi.String(deviceregistry.MqttDestinationQosQos0),
+/// 								Retain: pulumi.String(deviceregistry.TopicRetainTypeKeep),
+/// 								Topic:  pulumi.String("/contoso/testEvent1"),
+/// 								Ttl:    pulumi.Float64(7200),
 /// 							},
-/// 							Target: "Mqtt",
+/// 							Target: pulumi.String("Mqtt"),
 /// 						},
 /// 					},
 /// 					EventConfiguration: pulumi.String("{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}"),
@@ -438,11 +438,11 @@ import 'system_data_response.dart';
 /// 						},
 /// 					},
 /// 					Destinations: pulumi.Array{
-/// 						deviceregistry.EventStorageDestination{
-/// 							Configuration: deviceregistry.StorageDestinationConfiguration{
-/// 								Path: "/tmp/event2",
+/// 						&deviceregistry.EventStorageDestinationArgs{
+/// 							Configuration: &deviceregistry.StorageDestinationConfigurationArgs{
+/// 								Path: pulumi.String("/tmp/event2"),
 /// 							},
-/// 							Target: "Storage",
+/// 							Target: pulumi.String("Storage"),
 /// 						},
 /// 					},
 /// 					EventConfiguration: pulumi.String("{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}"),
@@ -498,11 +498,11 @@ import 'system_data_response.dart';
 /// 			Streams: deviceregistry.NamespaceStreamArray{
 /// 				&deviceregistry.NamespaceStreamArgs{
 /// 					Destinations: pulumi.Array{
-/// 						deviceregistry.StreamStorageDestination{
-/// 							Configuration: deviceregistry.StorageDestinationConfiguration{
-/// 								Path: "/tmp/stream1",
+/// 						&deviceregistry.StreamStorageDestinationArgs{
+/// 							Configuration: &deviceregistry.StorageDestinationConfigurationArgs{
+/// 								Path: pulumi.String("/tmp/stream1"),
 /// 							},
-/// 							Target: "Storage",
+/// 							Target: pulumi.String("Storage"),
 /// 						},
 /// 					},
 /// 					Name:                pulumi.String("stream1"),
@@ -511,14 +511,14 @@ import 'system_data_response.dart';
 /// 				},
 /// 				&deviceregistry.NamespaceStreamArgs{
 /// 					Destinations: pulumi.Array{
-/// 						deviceregistry.StreamMqttDestination{
-/// 							Configuration: deviceregistry.MqttDestinationConfiguration{
-/// 								Qos:    deviceregistry.MqttDestinationQosQos0,
-/// 								Retain: deviceregistry.TopicRetainTypeNever,
-/// 								Topic:  "/contoso/testStream2",
-/// 								Ttl:    7200,
+/// 						&deviceregistry.StreamMqttDestinationArgs{
+/// 							Configuration: &deviceregistry.MqttDestinationConfigurationArgs{
+/// 								Qos:    pulumi.String(deviceregistry.MqttDestinationQosQos0),
+/// 								Retain: pulumi.String(deviceregistry.TopicRetainTypeNever),
+/// 								Topic:  pulumi.String("/contoso/testStream2"),
+/// 								Ttl:    pulumi.Float64(7200),
 /// 							},
-/// 							Target: "Mqtt",
+/// 							Target: pulumi.String("Mqtt"),
 /// 						},
 /// 					},
 /// 					Name:                pulumi.String("stream2"),
@@ -540,7 +540,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -548,7 +548,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_deviceregistry_namespaceasset" "namespaceAsset" {
+/// resource "azure-native_deviceregistry_namespace_asset" "namespaceAsset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   asset_name      = "my-asset-1"
 ///   asset_type_refs = ["myAssetTypeRef1", "myAssetTypeRef2"]
 ///   attributes = {
@@ -570,38 +573,38 @@ import 'system_data_response.dart';
 ///     data_source           = "nsu=http://microsoft.com/Opc/OpcPlc/Oven;i=5"
 ///     dataset_configuration = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
 ///     destinations = [{
-///       "configuration" = {
-///         "key" = "dataset1"
+///       configuration = {
+///         key = "dataset1"
 ///       }
-///       "target" = "BrokerStateStore"
+///       target = "BrokerStateStore"
 ///     }]
 ///     name     = "dataset1"
 ///     type_ref = "dataset1TypeRef"
 ///   }
 ///   default_datasets_configuration = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
 ///   default_datasets_destinations = [{
-///     "configuration" = {
-///       "key" = "defaultValue"
+///     configuration = {
+///       key = "defaultValue"
 ///     }
-///     "target" = "BrokerStateStore"
+///     target = "BrokerStateStore"
 ///   }]
 ///   default_events_configuration = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
 ///   default_events_destinations = [{
-///     "configuration" = {
-///       "path" = "/tmp"
+///     configuration = {
+///       path = "/tmp"
 ///     }
-///     "target" = "Storage"
+///     target = "Storage"
 ///   }]
 ///   default_management_groups_configuration = "{\"retryCount\":10,\"retryBackoffInterval\":15}"
 ///   default_streams_configuration           = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
 ///   default_streams_destinations = [{
-///     "configuration" = {
-///       "qos"    = "Qos0"
-///       "retain" = "Never"
-///       "topic"  = "/contoso/test"
-///       "ttl"    = 3600
+///     configuration = {
+///       qos    = "Qos0"
+///       retain = "Never"
+///       topic  = "/contoso/test"
+///       ttl    = 3600
 ///     }
-///     "target" = "Mqtt"
+///     target = "Mqtt"
 ///   }]
 ///   description = "This is a sample Asset"
 ///   device_ref = {
@@ -624,13 +627,13 @@ import 'system_data_response.dart';
 ///       name                     = "event1DataPoint2"
 ///     }
 ///     destinations = [{
-///       "configuration" = {
-///         "qos"    = "Qos0"
-///         "retain" = "Keep"
-///         "topic"  = "/contoso/testEvent1"
-///         "ttl"    = 7200
+///       configuration = {
+///         qos    = "Qos0"
+///         retain = "Keep"
+///         topic  = "/contoso/testEvent1"
+///         ttl    = 7200
 ///       }
-///       "target" = "Mqtt"
+///       target = "Mqtt"
 ///     }]
 ///     event_configuration = "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}"
 ///     event_notifier      = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt5"
@@ -649,10 +652,10 @@ import 'system_data_response.dart';
 ///       name                     = "event2DataPoint2"
 ///     }
 ///     destinations = [{
-///       "configuration" = {
-///         "path" = "/tmp/event2"
+///       configuration = {
+///         path = "/tmp/event2"
 ///       }
-///       "target" = "Storage"
+///       target = "Storage"
 ///     }]
 ///     event_configuration = "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}"
 ///     event_notifier      = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt8"
@@ -701,10 +704,10 @@ import 'system_data_response.dart';
 ///   software_revision   = "2.0"
 ///   streams {
 ///     destinations = [{
-///       "configuration" = {
-///         "path" = "/tmp/stream1"
+///       configuration = {
+///         path = "/tmp/stream1"
 ///       }
-///       "target" = "Storage"
+///       target = "Storage"
 ///     }]
 ///     name                 = "stream1"
 ///     stream_configuration = "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
@@ -712,13 +715,13 @@ import 'system_data_response.dart';
 ///   }
 ///   streams {
 ///     destinations = [{
-///       "configuration" = {
-///         "qos"    = "Qos0"
-///         "retain" = "Never"
-///         "topic"  = "/contoso/testStream2"
-///         "ttl"    = 7200
+///       configuration = {
+///         qos    = "Qos0"
+///         retain = "Never"
+///         topic  = "/contoso/testStream2"
+///         ttl    = 7200
 ///       }
-///       "target" = "Mqtt"
+///       target = "Mqtt"
 ///     }]
 ///     name                 = "stream2"
 ///     stream_configuration = "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
@@ -740,10 +743,23 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.NamespaceAsset;
 /// import com.pulumi.azurenative.deviceregistry.NamespaceAssetArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.NamespaceDatasetArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.NamespaceDatasetDataPointArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.DatasetBrokerStateStoreDestinationArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.BrokerStateStoreDestinationConfigurationArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.DatasetMqttDestinationArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.MqttDestinationConfigurationArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.DatasetStorageDestinationArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.StorageDestinationConfigurationArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.EventMqttDestinationArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.EventStorageDestinationArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.StreamMqttDestinationArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.StreamStorageDestinationArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.DeviceRefArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.NamespaceEventArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.NamespaceEventDataPointArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.ManagementGroupArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.ManagementActionArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.NamespaceStreamArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -784,7 +800,6 @@ import 'system_data_response.dart';
 ///                     .configuration(BrokerStateStoreDestinationConfigurationArgs.builder()
 ///                         .key("dataset1")
 ///                         .build())
-///                     .target("BrokerStateStore")
 ///                     .build())
 ///                 .name("dataset1")
 ///                 .typeRef("dataset1TypeRef")
@@ -794,14 +809,12 @@ import 'system_data_response.dart';
 ///                 .configuration(BrokerStateStoreDestinationConfigurationArgs.builder()
 ///                     .key("defaultValue")
 ///                     .build())
-///                 .target("BrokerStateStore")
 ///                 .build())
 ///             .defaultEventsConfiguration("{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}")
 ///             .defaultEventsDestinations(EventStorageDestinationArgs.builder()
 ///                 .configuration(StorageDestinationConfigurationArgs.builder()
 ///                     .path("/tmp")
 ///                     .build())
-///                 .target("Storage")
 ///                 .build())
 ///             .defaultManagementGroupsConfiguration("{\"retryCount\":10,\"retryBackoffInterval\":15}")
 ///             .defaultStreamsConfiguration("{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}")
@@ -812,7 +825,6 @@ import 'system_data_response.dart';
 ///                     .topic("/contoso/test")
 ///                     .ttl(3600.0)
 ///                     .build())
-///                 .target("Mqtt")
 ///                 .build())
 ///             .description("This is a sample Asset")
 ///             .deviceRef(DeviceRefArgs.builder()
@@ -843,7 +855,6 @@ import 'system_data_response.dart';
 ///                             .topic("/contoso/testEvent1")
 ///                             .ttl(7200.0)
 ///                             .build())
-///                         .target("Mqtt")
 ///                         .build())
 ///                     .eventConfiguration("{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}")
 ///                     .eventNotifier("nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt5")
@@ -866,7 +877,6 @@ import 'system_data_response.dart';
 ///                         .configuration(StorageDestinationConfigurationArgs.builder()
 ///                             .path("/tmp/event2")
 ///                             .build())
-///                         .target("Storage")
 ///                         .build())
 ///                     .eventConfiguration("{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}")
 ///                     .eventNotifier("nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt8")
@@ -920,7 +930,6 @@ import 'system_data_response.dart';
 ///                         .configuration(StorageDestinationConfigurationArgs.builder()
 ///                             .path("/tmp/stream1")
 ///                             .build())
-///                         .target("Storage")
 ///                         .build())
 ///                     .name("stream1")
 ///                     .streamConfiguration("{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}")
@@ -934,7 +943,6 @@ import 'system_data_response.dart';
 ///                             .topic("/contoso/testStream2")
 ///                             .ttl(7200.0)
 ///                             .build())
-///                         .target("Mqtt")
 ///                         .build())
 ///                     .name("stream2")
 ///                     .streamConfiguration("{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}")

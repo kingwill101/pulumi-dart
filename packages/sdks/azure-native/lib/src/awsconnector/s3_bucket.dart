@@ -91,7 +91,7 @@ import 'system_data_response.dart';
 ///                             {
 ///                                 "zzooekoypz",
 ///                             },
-///                             AllowedMethods = new[]
+///                             AllowedMethods =
 ///                             {
 ///                                 AzureNative.AwsConnector.CorsRuleAllowedMethods.DELETE,
 ///                             },
@@ -149,7 +149,7 @@ import 'system_data_response.dart';
 ///                         Enabled = true,
 ///                         Id = "yqyorzlpsfzzycfeqmdgtsstdze",
 ///                         IncludedObjectVersions = AzureNative.AwsConnector.InventoryConfigurationIncludedObjectVersions.All,
-///                         OptionalFields = new[]
+///                         OptionalFields =
 ///                         {
 ///                             AzureNative.AwsConnector.InventoryConfigurationOptionalFields.BucketKeyStatus,
 ///                         },
@@ -886,7 +886,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -894,7 +894,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_s3bucket" "s3Bucket" {
+/// resource "azure-native_awsconnector_s3_bucket" "s3Bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "pesmjbocvf"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -906,115 +909,115 @@ import 'system_data_response.dart';
 ///       }
 ///       access_control = "AuthenticatedRead"
 ///       analytics_configurations = [{
-///         "id"     = "ioxkjkuclx"
-///         "prefix" = "errquicjtmxuidndown"
-///         "storageClassAnalysis" = {
-///           "dataExport" = {
-///             "destination" = {
-///               "bucketAccountId" = "sfgcxqtuacvejulm"
-///               "bucketArn"       = "iuwuakbkkh"
-///               "format"          = "CSV"
-///               "prefix"          = "bnbqkueiiffpl"
+///         id     = "ioxkjkuclx"
+///         prefix = "errquicjtmxuidndown"
+///         storage_class_analysis = {
+///           data_export = {
+///             destination = {
+///               bucket_account_id = "sfgcxqtuacvejulm"
+///               bucket_arn        = "iuwuakbkkh"
+///               format            = "CSV"
+///               prefix            = "bnbqkueiiffpl"
 ///             }
-///             "outputSchemaVersion" = "ojzzqnkekust"
+///             output_schema_version = "ojzzqnkekust"
 ///           }
 ///         }
-///         "tagFilters" = [{
-///           "key"   = "ffmzaifhmkmsljsm"
-///           "value" = "fsby"
+///         tag_filters = [{
+///           key   = "ffmzaifhmkmsljsm"
+///           value = "fsby"
 ///         }]
 ///       }]
 ///       arn = "wdn"
 ///       bucket_encryption = {
 ///         server_side_encryption_configuration = [{
-///           "bucketKeyEnabled" = true
-///           "serverSideEncryptionByDefault" = {
-///             "kmsMasterKeyID" = "mledejya"
-///             "sseAlgorithm"   = "AES256"
+///           bucket_key_enabled = true
+///           server_side_encryption_by_default = {
+///             kms_master_key_id = "mledejya"
+///             sse_algorithm     = "AES256"
 ///           }
 ///         }]
 ///       }
 ///       bucket_name = "qapantghvzujpa"
 ///       cors_configuration = {
 ///         cors_rules = [{
-///           "allowedHeaders" = ["zzooekoypz"]
-///           "allowedMethods" = ["DELETE"]
-///           "allowedOrigins" = ["tqldxbbws"]
-///           "exposedHeaders" = ["wjlikohhmisfgumcfzrnvg"]
-///           "id"             = "zvasxfnbnbpftihvtosdnlmskv"
-///           "maxAge"         = 9
+///           allowed_headers = ["zzooekoypz"]
+///           allowed_methods = ["DELETE"]
+///           allowed_origins = ["tqldxbbws"]
+///           exposed_headers = ["wjlikohhmisfgumcfzrnvg"]
+///           id              = "zvasxfnbnbpftihvtosdnlmskv"
+///           max_age         = 9
 ///         }]
 ///       }
 ///       domain_name            = "vbhotuxputambztq"
 ///       dual_stack_domain_name = "sryuphsbzszrwamvrcsihe"
 ///       intelligent_tiering_configurations = [{
-///         "id"     = "dbqsgaw"
-///         "prefix" = "lhizynvczgfiqwaiyuqpvnd"
-///         "status" = "Disabled"
-///         "tagFilters" = [{
-///           "key"   = "ffmzaifhmkmsljsm"
-///           "value" = "fsby"
+///         id     = "dbqsgaw"
+///         prefix = "lhizynvczgfiqwaiyuqpvnd"
+///         status = "Disabled"
+///         tag_filters = [{
+///           key   = "ffmzaifhmkmsljsm"
+///           value = "fsby"
 ///         }]
-///         "tierings" = [{
-///           "accessTier" = "ARCHIVE_ACCESS"
-///           "days"       = 6
+///         tierings = [{
+///           access_tier = "ARCHIVE_ACCESS"
+///           days        = 6
 ///         }]
 ///       }]
 ///       inventory_configurations = [{
-///         "destination" = {
-///           "bucketAccountId" = "sfgcxqtuacvejulm"
-///           "bucketArn"       = "iuwuakbkkh"
-///           "format"          = "CSV"
-///           "prefix"          = "bnbqkueiiffpl"
+///         destination = {
+///           bucket_account_id = "sfgcxqtuacvejulm"
+///           bucket_arn        = "iuwuakbkkh"
+///           format            = "CSV"
+///           prefix            = "bnbqkueiiffpl"
 ///         }
-///         "enabled"                = true
-///         "id"                     = "yqyorzlpsfzzycfeqmdgtsstdze"
-///         "includedObjectVersions" = "All"
-///         "optionalFields"         = ["BucketKeyStatus"]
-///         "prefix"                 = "tuzwyujzrv"
-///         "scheduleFrequency"      = "Daily"
+///         enabled                  = true
+///         id                       = "yqyorzlpsfzzycfeqmdgtsstdze"
+///         included_object_versions = "All"
+///         optional_fields          = ["BucketKeyStatus"]
+///         prefix                   = "tuzwyujzrv"
+///         schedule_frequency       = "Daily"
 ///       }]
 ///       lifecycle_configuration = {
 ///         rules = [{
-///           "abortIncompleteMultipartUpload" = {
-///             "daysAfterInitiation" = 20
+///           abort_incomplete_multipart_upload = {
+///             days_after_initiation = 20
 ///           }
-///           "expirationDate"            = "ruijzosqnherfgwbgzbiwau"
-///           "expirationInDays"          = 8
-///           "expiredObjectDeleteMarker" = true
-///           "id"                        = "aofbidgki"
-///           "noncurrentVersionExpiration" = {
-///             "newerNoncurrentVersions" = 4
-///             "noncurrentDays"          = 17
+///           expiration_date              = "ruijzosqnherfgwbgzbiwau"
+///           expiration_in_days           = 8
+///           expired_object_delete_marker = true
+///           id                           = "aofbidgki"
+///           noncurrent_version_expiration = {
+///             newer_noncurrent_versions = 4
+///             noncurrent_days           = 17
 ///           }
-///           "noncurrentVersionExpirationInDays" = 4
-///           "noncurrentVersionTransition" = {
-///             "newerNoncurrentVersions" = 6
-///             "storageClass"            = "DEEP_ARCHIVE"
-///             "transitionInDays"        = 8
+///           noncurrent_version_expiration_in_days = 4
+///           noncurrent_version_transition = {
+///             newer_noncurrent_versions = 6
+///             storage_class             = "DEEP_ARCHIVE"
+///             transition_in_days        = 8
 ///           }
-///           "noncurrentVersionTransitions" = [{
-///             "newerNoncurrentVersions" = 6
-///             "storageClass"            = "DEEP_ARCHIVE"
-///             "transitionInDays"        = 8
+///           noncurrent_version_transitions = [{
+///             newer_noncurrent_versions = 6
+///             storage_class             = "DEEP_ARCHIVE"
+///             transition_in_days        = 8
 ///           }]
-///           "objectSizeGreaterThan" = "hfifjfbqvmtatza"
-///           "objectSizeLessThan"    = "ew"
-///           "prefix"                = "kbsmshvpardhxehfjgszomvekk"
-///           "status"                = "Disabled"
-///           "tagFilters" = [{
-///             "key"   = "ffmzaifhmkmsljsm"
-///             "value" = "fsby"
+///           object_size_greater_than = "hfifjfbqvmtatza"
+///           object_size_less_than    = "ew"
+///           prefix                   = "kbsmshvpardhxehfjgszomvekk"
+///           status                   = "Disabled"
+///           tag_filters = [{
+///             key   = "ffmzaifhmkmsljsm"
+///             value = "fsby"
 ///           }]
-///           "transition" = {
-///             "storageClass"     = "DEEP_ARCHIVE"
-///             "transitionDate"   = "cqdrkqznucygxbnccuvxqbtnm"
-///             "transitionInDays" = 14
+///           transition = {
+///             storage_class      = "DEEP_ARCHIVE"
+///             transition_date    = "cqdrkqznucygxbnccuvxqbtnm"
+///             transition_in_days = 14
 ///           }
-///           "transitions" = [{
-///             "storageClass"     = "DEEP_ARCHIVE"
-///             "transitionDate"   = "cqdrkqznucygxbnccuvxqbtnm"
-///             "transitionInDays" = 14
+///           transitions = [{
+///             storage_class      = "DEEP_ARCHIVE"
+///             transition_date    = "cqdrkqznucygxbnccuvxqbtnm"
+///             transition_in_days = 14
 ///           }]
 ///         }]
 ///       }
@@ -1028,12 +1031,12 @@ import 'system_data_response.dart';
 ///         }
 ///       }
 ///       metrics_configurations = [{
-///         "accessPointArn" = "tkhjqpjfplj"
-///         "id"             = "ggheleujxadbvbjogd"
-///         "prefix"         = "zg"
-///         "tagFilters" = [{
-///           "key"   = "ffmzaifhmkmsljsm"
-///           "value" = "fsby"
+///         access_point_arn = "tkhjqpjfplj"
+///         id               = "ggheleujxadbvbjogd"
+///         prefix           = "zg"
+///         tag_filters = [{
+///           key   = "ffmzaifhmkmsljsm"
+///           value = "fsby"
 ///         }]
 ///       }]
 ///       notification_configuration = {
@@ -1041,40 +1044,40 @@ import 'system_data_response.dart';
 ///           event_bridge_enabled = true
 ///         }
 ///         lambda_configurations = [{
-///           "event" = "zpvewswtoarduycggotzdneptucwix"
-///           "filter" = {
-///             "s3Key" = {
-///               "rules" = [{
-///                 "name"  = "ohgjzuamjncbifvbkldogxjuxvhvz"
-///                 "value" = "dauvnhzxpkpqutnrl"
+///           event = "zpvewswtoarduycggotzdneptucwix"
+///           filter = {
+///             s3_key = {
+///               rules = [{
+///                 name  = "ohgjzuamjncbifvbkldogxjuxvhvz"
+///                 value = "dauvnhzxpkpqutnrl"
 ///               }]
 ///             }
 ///           }
-///           "function" = "zmyzygfaojliiryslfyuyme"
+///           function = "zmyzygfaojliiryslfyuyme"
 ///         }]
 ///         queue_configurations = [{
-///           "event" = "qgcdpcvmkvjivvpvmmaeqrictlznb"
-///           "filter" = {
-///             "s3Key" = {
-///               "rules" = [{
-///                 "name"  = "ohgjzuamjncbifvbkldogxjuxvhvz"
-///                 "value" = "dauvnhzxpkpqutnrl"
+///           event = "qgcdpcvmkvjivvpvmmaeqrictlznb"
+///           filter = {
+///             s3_key = {
+///               rules = [{
+///                 name  = "ohgjzuamjncbifvbkldogxjuxvhvz"
+///                 value = "dauvnhzxpkpqutnrl"
 ///               }]
 ///             }
 ///           }
-///           "queue" = "qwlbvlgmwiaegulyybqggopf"
+///           queue = "qwlbvlgmwiaegulyybqggopf"
 ///         }]
 ///         topic_configurations = [{
-///           "event" = "kxl"
-///           "filter" = {
-///             "s3Key" = {
-///               "rules" = [{
-///                 "name"  = "ohgjzuamjncbifvbkldogxjuxvhvz"
-///                 "value" = "dauvnhzxpkpqutnrl"
+///           event = "kxl"
+///           filter = {
+///             s3_key = {
+///               rules = [{
+///                 name  = "ohgjzuamjncbifvbkldogxjuxvhvz"
+///                 value = "dauvnhzxpkpqutnrl"
 ///               }]
 ///             }
 ///           }
-///           "topic" = "cj"
+///           topic = "cj"
 ///         }]
 ///       }
 ///       object_lock_configuration = {
@@ -1090,7 +1093,7 @@ import 'system_data_response.dart';
 ///       object_lock_enabled = true
 ///       ownership_controls = {
 ///         rules = [{
-///           "objectOwnership" = "BucketOwnerEnforced"
+///           object_ownership = "BucketOwnerEnforced"
 ///         }]
 ///       }
 ///       public_access_block_configuration = {
@@ -1103,63 +1106,63 @@ import 'system_data_response.dart';
 ///       replication_configuration = {
 ///         role = "rqafufwtmuflkqet"
 ///         rules = [{
-///           "deleteMarkerReplication" = {
-///             "status" = "Disabled"
+///           delete_marker_replication = {
+///             status = "Disabled"
 ///           }
-///           "destination" = {
-///             "accessControlTranslation" = {
-///               "owner" = "smyptov"
+///           destination = {
+///             access_control_translation = {
+///               owner = "smyptov"
 ///             }
-///             "account" = "hwqiekzz"
-///             "bucket"  = "prjlsmdhkwrputvpdavgn"
-///             "encryptionConfiguration" = {
-///               "replicaKmsKeyID" = "uodgudyknqizofykjokpv"
+///             account = "hwqiekzz"
+///             bucket  = "prjlsmdhkwrputvpdavgn"
+///             encryption_configuration = {
+///               replica_kms_key_id = "uodgudyknqizofykjokpv"
 ///             }
-///             "metrics" = {
-///               "eventThreshold" = {
-///                 "minutes" = 18
+///             metrics = {
+///               event_threshold = {
+///                 minutes = 18
 ///               }
-///               "status" = "Disabled"
+///               status = "Disabled"
 ///             }
-///             "replicationTime" = {
-///               "status" = "Disabled"
-///               "time" = {
-///                 "minutes" = 18
+///             replication_time = {
+///               status = "Disabled"
+///               time = {
+///                 minutes = 18
 ///               }
 ///             }
-///             "storageClass" = "DEEP_ARCHIVE"
+///             storage_class = "DEEP_ARCHIVE"
 ///           }
-///           "filter" = {
-///             "and" = {
-///               "prefix" = "rlralilpznxqfpcseysvvxmfaor"
-///               "tagFilters" = [{
-///                 "key"   = "ffmzaifhmkmsljsm"
-///                 "value" = "fsby"
+///           filter = {
+///             and = {
+///               prefix = "rlralilpznxqfpcseysvvxmfaor"
+///               tag_filters = [{
+///                 key   = "ffmzaifhmkmsljsm"
+///                 value = "fsby"
 ///               }]
 ///             }
-///             "prefix" = "etzfeufdxmcvjzpvxbjmzikok"
-///             "tagFilter" = {
-///               "key"   = "ffmzaifhmkmsljsm"
-///               "value" = "fsby"
+///             prefix = "etzfeufdxmcvjzpvxbjmzikok"
+///             tag_filter = {
+///               key   = "ffmzaifhmkmsljsm"
+///               value = "fsby"
 ///             }
 ///           }
-///           "id"       = "fjcfzahlddm"
-///           "prefix"   = "agykvphwwnfevfucrxugxejv"
-///           "priority" = 20
-///           "sourceSelectionCriteria" = {
-///             "replicaModifications" = {
-///               "status" = "Disabled"
+///           id       = "fjcfzahlddm"
+///           prefix   = "agykvphwwnfevfucrxugxejv"
+///           priority = 20
+///           source_selection_criteria = {
+///             replica_modifications = {
+///               status = "Disabled"
 ///             }
-///             "sseKmsEncryptedObjects" = {
-///               "status" = "Disabled"
+///             sse_kms_encrypted_objects = {
+///               status = "Disabled"
 ///             }
 ///           }
-///           "status" = "Disabled"
+///           status = "Disabled"
 ///         }]
 ///       }
 ///       tags = [{
-///         "key"   = "dxpeasomkyhulmxegodswwuhn"
-///         "value" = "otwjdamxqdydqwujwyfh"
+///         key   = "dxpeasomkyhulmxegodswwuhn"
+///         value = "otwjdamxqdydqwujwyfh"
 ///       }]
 ///       versioning_configuration = {
 ///         status = "Enabled"
@@ -1172,16 +1175,16 @@ import 'system_data_response.dart';
 ///           protocol  = "http"
 ///         }
 ///         routing_rules = [{
-///           "redirectRule" = {
-///             "hostName"             = "odmugwc"
-///             "httpRedirectCode"     = "vfvnluyewsuhlybwzwsc"
-///             "protocol"             = "http"
-///             "replaceKeyPrefixWith" = "khrrcydzrtwzttnlqrlvdqdj"
-///             "replaceKeyWith"       = "axcwbdxqktfrrivec"
+///           redirect_rule = {
+///             host_name               = "odmugwc"
+///             http_redirect_code      = "vfvnluyewsuhlybwzwsc"
+///             protocol                = "http"
+///             replace_key_prefix_with = "khrrcydzrtwzttnlqrlvdqdj"
+///             replace_key_with        = "axcwbdxqktfrrivec"
 ///           }
-///           "routingRuleCondition" = {
-///             "httpErrorCodeReturnedEquals" = "rajjyyktkunsenpficiiq"
-///             "keyPrefixEquals"             = "tgzmwymptfxjolynmpwx"
+///           routing_rule_condition = {
+///             http_error_code_returned_equals = "rajjyyktkunsenpficiiq"
+///             key_prefix_equals               = "tgzmwymptfxjolynmpwx"
 ///           }
 ///         }]
 ///       }
@@ -1214,23 +1217,64 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.S3BucketPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsS3BucketPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AccelerateConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.AnalyticsConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.StorageClassAnalysisArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.DataExportArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.DestinationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagFilterArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.BucketEncryptionArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ServerSideEncryptionRuleArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ServerSideEncryptionByDefaultArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CorsConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.CorsRuleArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.IntelligentTieringConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TieringArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.InventoryConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LifecycleConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.RuleArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.AbortIncompleteMultipartUploadArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.NoncurrentVersionExpirationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.NoncurrentVersionTransitionArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TransitionArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LoggingConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.TargetObjectKeyFormatArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.PartitionedPrefixArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.MetricsConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.NotificationConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.EventBridgeConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.LambdaConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.NotificationFilterArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.S3KeyFilterArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.FilterRuleArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.QueueConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TopicConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ObjectLockConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ObjectLockRuleArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.DefaultRetentionArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.OwnershipControlsArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.OwnershipControlsRuleArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.PublicAccessBlockConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ReplicationConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ReplicationRuleArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.DeleteMarkerReplicationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ReplicationDestinationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.AccessControlTranslationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.EncryptionConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.MetricsArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ReplicationTimeValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ReplicationTimeArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ReplicationRuleFilterArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ReplicationRuleAndOperatorArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.SourceSelectionCriteriaArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ReplicaModificationsArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.SseKmsEncryptedObjectsArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.VersioningConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.WebsiteConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RedirectAllRequestsToArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.RoutingRuleArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.RedirectRuleArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.RoutingRuleConditionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

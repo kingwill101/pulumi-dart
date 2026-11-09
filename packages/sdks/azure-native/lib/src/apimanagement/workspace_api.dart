@@ -38,7 +38,7 @@ import 'workspace_api_args.dart';
 ///         Description = "apidescription5200",
 ///         DisplayName = "apiname1463",
 ///         Path = "newapiPath",
-///         Protocols = new[]
+///         Protocols =
 ///         {
 ///             AzureNative.ApiManagement.Protocol.Https,
 ///             AzureNative.ApiManagement.Protocol.Http,
@@ -103,7 +103,7 @@ import 'workspace_api_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -111,7 +111,10 @@ import 'workspace_api_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_workspaceapi" "workspaceApi" {
+/// resource "azure-native_apimanagement_workspace_api" "workspaceApi" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id = "tempgroup"
 ///   authentication_settings = {
 ///     o_auth2 = {

@@ -80,7 +80,7 @@ import 'tcp_config_response.dart';
 ///         {
 ///             Name = "Open",
 ///         },
-///         Tags = null,
+///         Tags = new() { },
 ///         Tcp = new[]
 ///         {
 ///             new AzureNative.ServiceFabricMesh.Inputs.TcpConfigArgs
@@ -181,7 +181,7 @@ import 'tcp_config_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -190,6 +190,9 @@ import 'tcp_config_response.dart';
 /// }
 ///
 /// resource "azure-native_servicefabricmesh_gateway" "gateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "Service Fabric Mesh sample gateway."
 ///   destination_network = {
 ///     name = "helloWorldNetwork"
@@ -206,9 +209,9 @@ import 'tcp_config_response.dart';
 ///         }
 ///         match = {
 ///           headers = [{
-///             "name"  = "accept"
-///             "type"  = "exact"
-///             "value" = "application/json"
+///             name  = "accept"
+///             type  = "exact"
+///             value = "application/json"
 ///           }]
 ///           path = {
 ///             rewrite = "/"
@@ -251,8 +254,13 @@ import 'tcp_config_response.dart';
 /// import com.pulumi.azurenative.servicefabricmesh.GatewayArgs;
 /// import com.pulumi.azurenative.servicefabricmesh.inputs.NetworkRefArgs;
 /// import com.pulumi.azurenative.servicefabricmesh.inputs.HttpConfigArgs;
-/// import com.pulumi.azurenative.servicefabricmesh.inputs.TcpConfigArgs;
+/// import com.pulumi.azurenative.servicefabricmesh.inputs.HttpHostConfigArgs;
+/// import com.pulumi.azurenative.servicefabricmesh.inputs.HttpRouteConfigArgs;
 /// import com.pulumi.azurenative.servicefabricmesh.inputs.GatewayDestinationArgs;
+/// import com.pulumi.azurenative.servicefabricmesh.inputs.HttpRouteMatchRuleArgs;
+/// import com.pulumi.azurenative.servicefabricmesh.inputs.HttpRouteMatchHeaderArgs;
+/// import com.pulumi.azurenative.servicefabricmesh.inputs.HttpRouteMatchPathArgs;
+/// import com.pulumi.azurenative.servicefabricmesh.inputs.TcpConfigArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

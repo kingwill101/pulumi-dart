@@ -151,7 +151,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -159,17 +159,20 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurearcdata_sqlserverinstance" "sqlServerInstance" {
+/// resource "azure-native_azurearcdata_sql_server_instance" "sqlServerInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "northeurope"
 ///   properties = {
 ///     authentication = {
 ///       mode = "Windows"
 ///       sql_server_entra_identity = [{
-///         "clientId"     = "00000000-1111-2222-3333-444444444444"
-///         "identityType" = "UserAssignedManagedIdentity"
+///         client_id     = "00000000-1111-2222-3333-444444444444"
+///         identity_type = "UserAssignedManagedIdentity"
 ///         }, {
-///         "clientId"     = ""
-///         "identityType" = "SystemAssignedManagedIdentity"
+///         client_id     = ""
+///         identity_type = "SystemAssignedManagedIdentity"
 ///       }]
 ///     }
 ///     backup_policy = {
@@ -215,6 +218,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.azurearcdata.SqlServerInstanceArgs;
 /// import com.pulumi.azurenative.azurearcdata.inputs.SqlServerInstancePropertiesArgs;
 /// import com.pulumi.azurenative.azurearcdata.inputs.AuthenticationArgs;
+/// import com.pulumi.azurenative.azurearcdata.inputs.EntraAuthenticationArgs;
 /// import com.pulumi.azurenative.azurearcdata.inputs.BackupPolicyArgs;
 /// import com.pulumi.azurenative.azurearcdata.inputs.ClientConnectionArgs;
 /// import com.pulumi.azurenative.azurearcdata.inputs.MigrationArgs;

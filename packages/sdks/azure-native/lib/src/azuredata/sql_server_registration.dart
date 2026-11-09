@@ -62,7 +62,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,7 +70,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azuredata_sqlserverregistration" "sqlServerRegistration" {
+/// resource "azure-native_azuredata_sql_server_registration" "sqlServerRegistration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                     = "northeurope"
 ///   resource_group_name          = "testrg"
 ///   sql_server_registration_name = "testsqlregistration"

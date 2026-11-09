@@ -37,7 +37,7 @@ import 'tag_response.dart';
 ///                 Value = "Computer",
 ///             },
 ///         },
-///         Version = 2,
+///         Version = 2.0,
 ///         WorkspaceName = "TestWS",
 ///     });
 ///
@@ -83,7 +83,7 @@ import 'tag_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -91,7 +91,10 @@ import 'tag_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_operationalinsights_savedsearch" "savedSearch" {
+/// resource "azure-native_operationalinsights_saved_search" "savedSearch" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   category            = "Saved Search Test Category"
 ///   display_name        = "Create or Update Saved Search Test"
 ///   function_alias      = "heartbeat_func"

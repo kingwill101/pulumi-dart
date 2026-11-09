@@ -70,7 +70,7 @@ import 'workspace_manager_group_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,7 +78,10 @@ import 'workspace_manager_group_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_workspacemanagergroup" "workspaceManagerGroup" {
+/// resource "azure-native_securityinsights_workspace_manager_group" "workspaceManagerGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description                  = "Group of all financial and banking institutions"
 ///   display_name                 = "Banks"
 ///   member_resource_names        = ["afbd324f-6c48-459c-8710-8d1e1cd03812", "f5fa104e-c0e3-4747-9182-d342dc048a9e"]

@@ -58,7 +58,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kubernetesconfiguration_privatelinkscope" "privateLinkScope" {
+/// resource "azure-native_kubernetesconfiguration_private_link_scope" "privateLinkScope" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   resource_group_name = "my-resource-group"
 ///   scope_name          = "my-privatelinkscope"
@@ -195,7 +198,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -203,7 +206,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kubernetesconfiguration_privatelinkscope" "privateLinkScope" {
+/// resource "azure-native_kubernetesconfiguration_private_link_scope" "privateLinkScope" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   resource_group_name = "my-resource-group"
 ///   scope_name          = "my-privatelinkscope"

@@ -77,24 +77,24 @@ import 'system_data_response.dart';
 /// 			Location: pulumi.String("westUs2"),
 /// 			Properties: &hybridnetwork.SitePropertiesFormatArgs{
 /// 				Nfvis: pulumi.Array{
-/// 					hybridnetwork.AzureCoreNFVIDetails{
-/// 						Location: "westUs2",
-/// 						Name:     "nfvi1",
-/// 						NfviType: "AzureCore",
+/// 					&hybridnetwork.AzureCoreNFVIDetailsArgs{
+/// 						Location: pulumi.String("westUs2"),
+/// 						Name:     pulumi.String("nfvi1"),
+/// 						NfviType: pulumi.String("AzureCore"),
 /// 					},
-/// 					hybridnetwork.AzureArcK8sClusterNFVIDetails{
-/// 						CustomLocationReference: hybridnetwork.ReferencedResource{
-/// 							Id: "/subscriptions/subid/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation1",
+/// 					&hybridnetwork.AzureArcK8sClusterNFVIDetailsArgs{
+/// 						CustomLocationReference: &hybridnetwork.ReferencedResourceArgs{
+/// 							Id: pulumi.String("/subscriptions/subid/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation1"),
 /// 						},
-/// 						Name:     "nfvi2",
-/// 						NfviType: "AzureArcKubernetes",
+/// 						Name:     pulumi.String("nfvi2"),
+/// 						NfviType: pulumi.String("AzureArcKubernetes"),
 /// 					},
-/// 					hybridnetwork.AzureOperatorNexusClusterNFVIDetails{
-/// 						CustomLocationReference: hybridnetwork.ReferencedResource{
-/// 							Id: "/subscriptions/subid/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation2",
+/// 					&hybridnetwork.AzureOperatorNexusClusterNFVIDetailsArgs{
+/// 						CustomLocationReference: &hybridnetwork.ReferencedResourceArgs{
+/// 							Id: pulumi.String("/subscriptions/subid/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation2"),
 /// 						},
-/// 						Name:     "nfvi3",
-/// 						NfviType: "AzureOperatorNexus",
+/// 						Name:     pulumi.String("nfvi3"),
+/// 						NfviType: pulumi.String("AzureOperatorNexus"),
 /// 					},
 /// 				},
 /// 			},
@@ -111,7 +111,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -120,24 +120,27 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_hybridnetwork_site" "site" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "westUs2"
 ///   properties = {
 ///     nfvis = [{
-///       "location" = "westUs2"
-///       "name"     = "nfvi1"
-///       "nfviType" = "AzureCore"
+///       location  = "westUs2"
+///       name      = "nfvi1"
+///       nfvi_type = "AzureCore"
 ///       }, {
-///       "customLocationReference" = {
-///         "id" = "/subscriptions/subid/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation1"
+///       custom_location_reference = {
+///         id = "/subscriptions/subid/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation1"
 ///       }
-///       "name"     = "nfvi2"
-///       "nfviType" = "AzureArcKubernetes"
+///       name      = "nfvi2"
+///       nfvi_type = "AzureArcKubernetes"
 ///       }, {
-///       "customLocationReference" = {
-///         "id" = "/subscriptions/subid/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation2"
+///       custom_location_reference = {
+///         id = "/subscriptions/subid/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation2"
 ///       }
-///       "name"     = "nfvi3"
-///       "nfviType" = "AzureOperatorNexus"
+///       name      = "nfvi3"
+///       nfvi_type = "AzureOperatorNexus"
 ///     }]
 ///   }
 ///   resource_group_name = "rg1"
@@ -155,6 +158,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hybridnetwork.Site;
 /// import com.pulumi.azurenative.hybridnetwork.SiteArgs;
 /// import com.pulumi.azurenative.hybridnetwork.inputs.SitePropertiesFormatArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureArcK8sClusterNFVIDetailsArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureCoreNFVIDetailsArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.AzureOperatorNexusClusterNFVIDetailsArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.ReferencedResourceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -175,21 +182,18 @@ import 'system_data_response.dart';
 ///                     AzureCoreNFVIDetailsArgs.builder()
 ///                         .location("westUs2")
 ///                         .name("nfvi1")
-///                         .nfviType("AzureCore")
 ///                         .build(),
 ///                     AzureArcK8sClusterNFVIDetailsArgs.builder()
 ///                         .customLocationReference(ReferencedResourceArgs.builder()
 ///                             .id("/subscriptions/subid/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation1")
 ///                             .build())
 ///                         .name("nfvi2")
-///                         .nfviType("AzureArcKubernetes")
 ///                         .build(),
 ///                     AzureOperatorNexusClusterNFVIDetailsArgs.builder()
 ///                         .customLocationReference(ReferencedResourceArgs.builder()
 ///                             .id("/subscriptions/subid/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation2")
 ///                             .build())
 ///                         .name("nfvi3")
-///                         .nfviType("AzureOperatorNexus")
 ///                         .build())
 ///                 .build())
 ///             .resourceGroupName("rg1")

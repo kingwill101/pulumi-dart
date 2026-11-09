@@ -21,7 +21,7 @@ import 'subscription_feature_registration_response_properties.dart';
 ///     var subscriptionFeatureRegistration = new AzureNative.Features.SubscriptionFeatureRegistration("subscriptionFeatureRegistration", new()
 ///     {
 ///         FeatureName = "testFeature",
-///         Properties = null,
+///         Properties = new() { },
 ///         ProviderNamespace = "subscriptionFeatureRegistrationGroupTestRG",
 ///     });
 ///
@@ -55,7 +55,7 @@ import 'subscription_feature_registration_response_properties.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -63,7 +63,10 @@ import 'subscription_feature_registration_response_properties.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_features_subscriptionfeatureregistration" "subscriptionFeatureRegistration" {
+/// resource "azure-native_features_subscription_feature_registration" "subscriptionFeatureRegistration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   feature_name       = "testFeature"
 ///   properties         = {}
 ///   provider_namespace = "subscriptionFeatureRegistrationGroupTestRG"

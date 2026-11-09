@@ -60,7 +60,7 @@ import 'server_key_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'server_key_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_serverkey" "serverKey" {
+/// resource "azure-native_sql_server_key" "serverKey" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key_name            = "someVault_someKey_01234567890123456789012345678901"
 ///   resource_group_name = "sqlcrudtest-7398"
 ///   server_key_type     = "AzureKeyVault"

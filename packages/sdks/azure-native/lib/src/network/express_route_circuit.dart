@@ -27,10 +27,10 @@ import 'sub_resource_response.dart';
 ///     var expressRouteCircuit = new AzureNative.Network.ExpressRouteCircuit("expressRouteCircuit", new()
 ///     {
 ///         AllowClassicOperations = false,
-///         Authorizations = new[] {},
+///         Authorizations = new() {},
 ///         CircuitName = "circuitName",
 ///         Location = "Brazil South",
-///         Peerings = new[] {},
+///         Peerings = new() {},
 ///         ResourceGroupName = "rg1",
 ///         ServiceProviderProperties = new AzureNative.Network.Inputs.ExpressRouteCircuitServiceProviderPropertiesArgs
 ///         {
@@ -89,7 +89,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -97,7 +97,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_expressroutecircuit" "expressRouteCircuit" {
+/// resource "azure-native_network_express_route_circuit" "expressRouteCircuit" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allow_classic_operations = false
 ///   circuit_name             = "circuitName"
 ///   location                 = "Brazil South"
@@ -248,7 +251,7 @@ import 'sub_resource_response.dart';
 ///     var expressRouteCircuit = new AzureNative.Network.ExpressRouteCircuit("expressRouteCircuit", new()
 ///     {
 ///         AuthorizationKey = "b0be57f5-1fba-463b-adec-ffe767354cdd",
-///         BandwidthInGbps = 10,
+///         BandwidthInGbps = 10.0,
 ///         CircuitName = "expressRouteCircuit1",
 ///         EnableDirectPortRateLimit = false,
 ///         ExpressRoutePort = new AzureNative.Network.Inputs.SubResourceArgs
@@ -306,7 +309,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -314,7 +317,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_expressroutecircuit" "expressRouteCircuit" {
+/// resource "azure-native_network_express_route_circuit" "expressRouteCircuit" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization_key             = "b0be57f5-1fba-463b-adec-ffe767354cdd"
 ///   bandwidth_in_gbps             = 10
 ///   circuit_name                  = "expressRouteCircuit1"

@@ -65,7 +65,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_databoxedge_storageaccount" "storageAccount" {
+/// resource "azure-native_databoxedge_storage_account" "storageAccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_policy                   = "Cloud"
 ///   description                   = "It's an awesome storage account"
 ///   device_name                   = "testedgedevice"

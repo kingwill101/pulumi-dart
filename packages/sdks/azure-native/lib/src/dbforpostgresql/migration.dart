@@ -96,7 +96,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -105,6 +105,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_dbforpostgresql_migration" "migration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dbs_to_migrate          = ["exampledatabase1", "exampledatabase2", "exampledatabase3", "exampledatabase4"]
 ///   location                = "eastus"
 ///   migration_mode          = "Offline"
@@ -341,7 +344,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -350,6 +353,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_dbforpostgresql_migration" "migration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dbs_to_migrate      = ["exampledatabase1", "exampledatabase2", "exampledatabase3", "exampledatabase4"]
 ///   location            = "eastus"
 ///   migration_mode      = "Offline"
@@ -588,7 +594,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -597,6 +603,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_dbforpostgresql_migration" "migration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dbs_to_migrate          = ["exampledatabase1", "exampledatabase2", "exampledatabase3", "exampledatabase4"]
 ///   location                = "eastus"
 ///   migration_mode          = "Offline"
@@ -842,7 +851,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -851,6 +860,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_dbforpostgresql_migration" "migration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dbs_to_migrate          = ["exampledatabase1", "exampledatabase2", "exampledatabase3", "exampledatabase4"]
 ///   location                = "eastus"
 ///   migration_mode          = "Offline"
@@ -1097,7 +1109,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1106,6 +1118,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_dbforpostgresql_migration" "migration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dbs_to_migrate                 = ["exampledatabase1", "exampledatabase2", "exampledatabase3", "exampledatabase4"]
 ///   location                       = "eastus"
 ///   migration_instance_resource_id = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.DBForPostgreSql/flexibleServers/examplesourcemigration"
@@ -1342,7 +1357,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1351,6 +1366,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_dbforpostgresql_migration" "migration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dbs_to_migrate          = ["exampledatabase1", "exampledatabase2", "exampledatabase3", "exampledatabase4"]
 ///   location                = "eastus"
 ///   migrate_roles           = "True"
@@ -1585,7 +1603,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1594,6 +1612,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_dbforpostgresql_migration" "migration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dbs_to_migrate          = ["exampledatabase1", "exampledatabase2", "exampledatabase3", "exampledatabase4"]
 ///   location                = "eastus"
 ///   migration_mode          = "Offline"

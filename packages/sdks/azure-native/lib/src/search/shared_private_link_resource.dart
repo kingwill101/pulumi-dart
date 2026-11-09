@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,7 +77,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_search_sharedprivatelinkresource" "sharedPrivateLinkResource" {
+/// resource "azure-native_search_shared_private_link_resource" "sharedPrivateLinkResource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     group_id                 = "blob"
 ///     private_link_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Storage/storageAccounts/storageAccountName"

@@ -69,16 +69,16 @@ import 'system_data_response.dart';
 /// 		_, err := machinelearningservices.NewDatastore(ctx, "datastore", &machinelearningservices.DatastoreArgs{
 /// 			Name: pulumi.String("string"),
 /// 			Properties: &machinelearningservices.AzureDataLakeGen1DatastoreArgs{
-/// 				Credentials: machinelearningservices.ServicePrincipalDatastoreCredentials{
-/// 					AuthorityUrl:    "string",
-/// 					ClientId:        "00000000-1111-2222-3333-444444444444",
-/// 					CredentialsType: "ServicePrincipal",
-/// 					ResourceUrl:     "string",
-/// 					Secrets: machinelearningservices.ServicePrincipalDatastoreSecrets{
-/// 						ClientSecret: "string",
-/// 						SecretsType:  "ServicePrincipal",
+/// 				Credentials: &machinelearningservices.ServicePrincipalDatastoreCredentialsArgs{
+/// 					AuthorityUrl:    pulumi.String("string"),
+/// 					ClientId:        pulumi.String("00000000-1111-2222-3333-444444444444"),
+/// 					CredentialsType: pulumi.String("ServicePrincipal"),
+/// 					ResourceUrl:     pulumi.String("string"),
+/// 					Secrets: &machinelearningservices.ServicePrincipalDatastoreSecretsArgs{
+/// 						ClientSecret: pulumi.String("string"),
+/// 						SecretsType:  pulumi.String("ServicePrincipal"),
 /// 					},
-/// 					TenantId: "00000000-1111-2222-3333-444444444444",
+/// 					TenantId: pulumi.String("00000000-1111-2222-3333-444444444444"),
 /// 				},
 /// 				DatastoreType: pulumi.String("AzureDataLakeGen1"),
 /// 				Description:   pulumi.String("string"),
@@ -101,7 +101,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -110,23 +110,26 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_machinelearningservices_datastore" "datastore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "string"
 ///   properties = {
-///     "credentials" = {
-///       "authorityUrl"    = "string"
-///       "clientId"        = "00000000-1111-2222-3333-444444444444"
-///       "credentialsType" = "ServicePrincipal"
-///       "resourceUrl"     = "string"
-///       "secrets" = {
-///         "clientSecret" = "string"
-///         "secretsType"  = "ServicePrincipal"
+///     credentials = {
+///       authority_url    = "string"
+///       client_id        = "00000000-1111-2222-3333-444444444444"
+///       credentials_type = "ServicePrincipal"
+///       resource_url     = "string"
+///       secrets = {
+///         client_secret = "string"
+///         secrets_type  = "ServicePrincipal"
 ///       }
-///       "tenantId" = "00000000-1111-2222-3333-444444444444"
+///       tenant_id = "00000000-1111-2222-3333-444444444444"
 ///     }
-///     "datastoreType" = "AzureDataLakeGen1"
-///     "description"   = "string"
-///     "storeName"     = "string"
-///     "tags" = {
+///     datastore_type = "AzureDataLakeGen1"
+///     description    = "string"
+///     store_name     = "string"
+///     tags = {
 ///       "string" = "string"
 ///     }
 ///   }
@@ -145,6 +148,20 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Datastore;
 /// import com.pulumi.azurenative.machinelearningservices.DatastoreArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AzureBlobDatastoreArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AccountKeyDatastoreCredentialsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AccountKeyDatastoreSecretsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.CertificateDatastoreCredentialsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.CertificateDatastoreSecretsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.NoneDatastoreCredentialsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SasDatastoreCredentialsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SasDatastoreSecretsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ServicePrincipalDatastoreCredentialsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ServicePrincipalDatastoreSecretsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AzureDataLakeGen1DatastoreArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AzureDataLakeGen2DatastoreArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AzureFileDatastoreArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.OneLakeDatastoreArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -164,15 +181,12 @@ import 'system_data_response.dart';
 ///                 .credentials(ServicePrincipalDatastoreCredentialsArgs.builder()
 ///                     .authorityUrl("string")
 ///                     .clientId("00000000-1111-2222-3333-444444444444")
-///                     .credentialsType("ServicePrincipal")
 ///                     .resourceUrl("string")
 ///                     .secrets(ServicePrincipalDatastoreSecretsArgs.builder()
 ///                         .clientSecret("string")
-///                         .secretsType("ServicePrincipal")
 ///                         .build())
 ///                     .tenantId("00000000-1111-2222-3333-444444444444")
 ///                     .build())
-///                 .datastoreType("AzureDataLakeGen1")
 ///                 .description("string")
 ///                 .storeName("string")
 ///                 .tags(Map.of("string", "string"))
@@ -341,16 +355,16 @@ import 'system_data_response.dart';
 /// 			Name: pulumi.String("string"),
 /// 			Properties: &machinelearningservices.AzureDataLakeGen2DatastoreArgs{
 /// 				AccountName: pulumi.String("string"),
-/// 				Credentials: machinelearningservices.ServicePrincipalDatastoreCredentials{
-/// 					AuthorityUrl:    "string",
-/// 					ClientId:        "00000000-1111-2222-3333-444444444444",
-/// 					CredentialsType: "ServicePrincipal",
-/// 					ResourceUrl:     "string",
-/// 					Secrets: machinelearningservices.ServicePrincipalDatastoreSecrets{
-/// 						ClientSecret: "string",
-/// 						SecretsType:  "ServicePrincipal",
+/// 				Credentials: &machinelearningservices.ServicePrincipalDatastoreCredentialsArgs{
+/// 					AuthorityUrl:    pulumi.String("string"),
+/// 					ClientId:        pulumi.String("00000000-1111-2222-3333-444444444444"),
+/// 					CredentialsType: pulumi.String("ServicePrincipal"),
+/// 					ResourceUrl:     pulumi.String("string"),
+/// 					Secrets: &machinelearningservices.ServicePrincipalDatastoreSecretsArgs{
+/// 						ClientSecret: pulumi.String("string"),
+/// 						SecretsType:  pulumi.String("ServicePrincipal"),
 /// 					},
-/// 					TenantId: "00000000-1111-2222-3333-444444444444",
+/// 					TenantId: pulumi.String("00000000-1111-2222-3333-444444444444"),
 /// 				},
 /// 				DatastoreType: pulumi.String("AzureDataLakeGen2"),
 /// 				Description:   pulumi.String("string"),
@@ -375,7 +389,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -384,26 +398,29 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_machinelearningservices_datastore" "datastore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "string"
 ///   properties = {
-///     "accountName" = "string"
-///     "credentials" = {
-///       "authorityUrl"    = "string"
-///       "clientId"        = "00000000-1111-2222-3333-444444444444"
-///       "credentialsType" = "ServicePrincipal"
-///       "resourceUrl"     = "string"
-///       "secrets" = {
-///         "clientSecret" = "string"
-///         "secretsType"  = "ServicePrincipal"
+///     account_name = "string"
+///     credentials = {
+///       authority_url    = "string"
+///       client_id        = "00000000-1111-2222-3333-444444444444"
+///       credentials_type = "ServicePrincipal"
+///       resource_url     = "string"
+///       secrets = {
+///         client_secret = "string"
+///         secrets_type  = "ServicePrincipal"
 ///       }
-///       "tenantId" = "00000000-1111-2222-3333-444444444444"
+///       tenant_id = "00000000-1111-2222-3333-444444444444"
 ///     }
-///     "datastoreType" = "AzureDataLakeGen2"
-///     "description"   = "string"
-///     "endpoint"      = "string"
-///     "filesystem"    = "string"
-///     "protocol"      = "string"
-///     "tags" = {
+///     datastore_type = "AzureDataLakeGen2"
+///     description    = "string"
+///     endpoint       = "string"
+///     filesystem     = "string"
+///     protocol       = "string"
+///     tags = {
 ///       "string" = "string"
 ///     }
 ///   }
@@ -422,6 +439,20 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Datastore;
 /// import com.pulumi.azurenative.machinelearningservices.DatastoreArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AzureBlobDatastoreArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AccountKeyDatastoreCredentialsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AccountKeyDatastoreSecretsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.CertificateDatastoreCredentialsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.CertificateDatastoreSecretsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.NoneDatastoreCredentialsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SasDatastoreCredentialsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SasDatastoreSecretsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ServicePrincipalDatastoreCredentialsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ServicePrincipalDatastoreSecretsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AzureDataLakeGen1DatastoreArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AzureDataLakeGen2DatastoreArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AzureFileDatastoreArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.OneLakeDatastoreArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -442,15 +473,12 @@ import 'system_data_response.dart';
 ///                 .credentials(ServicePrincipalDatastoreCredentialsArgs.builder()
 ///                     .authorityUrl("string")
 ///                     .clientId("00000000-1111-2222-3333-444444444444")
-///                     .credentialsType("ServicePrincipal")
 ///                     .resourceUrl("string")
 ///                     .secrets(ServicePrincipalDatastoreSecretsArgs.builder()
 ///                         .clientSecret("string")
-///                         .secretsType("ServicePrincipal")
 ///                         .build())
 ///                     .tenantId("00000000-1111-2222-3333-444444444444")
 ///                     .build())
-///                 .datastoreType("AzureDataLakeGen2")
 ///                 .description("string")
 ///                 .endpoint("string")
 ///                 .filesystem("string")
@@ -626,11 +654,11 @@ import 'system_data_response.dart';
 /// 			Name: pulumi.String("string"),
 /// 			Properties: &machinelearningservices.AzureFileDatastoreArgs{
 /// 				AccountName: pulumi.String("string"),
-/// 				Credentials: machinelearningservices.AccountKeyDatastoreCredentials{
-/// 					CredentialsType: "AccountKey",
-/// 					Secrets: machinelearningservices.AccountKeyDatastoreSecrets{
-/// 						Key:         "string",
-/// 						SecretsType: "AccountKey",
+/// 				Credentials: &machinelearningservices.AccountKeyDatastoreCredentialsArgs{
+/// 					CredentialsType: pulumi.String("AccountKey"),
+/// 					Secrets: &machinelearningservices.AccountKeyDatastoreSecretsArgs{
+/// 						Key:         pulumi.String("string"),
+/// 						SecretsType: pulumi.String("AccountKey"),
 /// 					},
 /// 				},
 /// 				DatastoreType: pulumi.String("AzureFile"),
@@ -656,7 +684,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -665,22 +693,25 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_machinelearningservices_datastore" "datastore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "string"
 ///   properties = {
-///     "accountName" = "string"
-///     "credentials" = {
-///       "credentialsType" = "AccountKey"
-///       "secrets" = {
-///         "key"         = "string"
-///         "secretsType" = "AccountKey"
+///     account_name = "string"
+///     credentials = {
+///       credentials_type = "AccountKey"
+///       secrets = {
+///         key          = "string"
+///         secrets_type = "AccountKey"
 ///       }
 ///     }
-///     "datastoreType" = "AzureFile"
-///     "description"   = "string"
-///     "endpoint"      = "string"
-///     "fileShareName" = "string"
-///     "protocol"      = "string"
-///     "tags" = {
+///     datastore_type  = "AzureFile"
+///     description     = "string"
+///     endpoint        = "string"
+///     file_share_name = "string"
+///     protocol        = "string"
+///     tags = {
 ///       "string" = "string"
 ///     }
 ///   }
@@ -699,6 +730,20 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Datastore;
 /// import com.pulumi.azurenative.machinelearningservices.DatastoreArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AzureBlobDatastoreArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AccountKeyDatastoreCredentialsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AccountKeyDatastoreSecretsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.CertificateDatastoreCredentialsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.CertificateDatastoreSecretsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.NoneDatastoreCredentialsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SasDatastoreCredentialsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SasDatastoreSecretsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ServicePrincipalDatastoreCredentialsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ServicePrincipalDatastoreSecretsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AzureDataLakeGen1DatastoreArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AzureDataLakeGen2DatastoreArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AzureFileDatastoreArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.OneLakeDatastoreArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -717,13 +762,10 @@ import 'system_data_response.dart';
 ///             .properties(AzureFileDatastoreArgs.builder()
 ///                 .accountName("string")
 ///                 .credentials(AccountKeyDatastoreCredentialsArgs.builder()
-///                     .credentialsType("AccountKey")
 ///                     .secrets(AccountKeyDatastoreSecretsArgs.builder()
 ///                         .key("string")
-///                         .secretsType("AccountKey")
 ///                         .build())
 ///                     .build())
-///                 .datastoreType("AzureFile")
 ///                 .description("string")
 ///                 .endpoint("string")
 ///                 .fileShareName("string")
@@ -888,11 +930,11 @@ import 'system_data_response.dart';
 /// 			Properties: &machinelearningservices.AzureBlobDatastoreArgs{
 /// 				AccountName:   pulumi.String("string"),
 /// 				ContainerName: pulumi.String("string"),
-/// 				Credentials: machinelearningservices.AccountKeyDatastoreCredentials{
-/// 					CredentialsType: "AccountKey",
-/// 					Secrets: machinelearningservices.AccountKeyDatastoreSecrets{
-/// 						Key:         "string",
-/// 						SecretsType: "AccountKey",
+/// 				Credentials: &machinelearningservices.AccountKeyDatastoreCredentialsArgs{
+/// 					CredentialsType: pulumi.String("AccountKey"),
+/// 					Secrets: &machinelearningservices.AccountKeyDatastoreSecretsArgs{
+/// 						Key:         pulumi.String("string"),
+/// 						SecretsType: pulumi.String("AccountKey"),
 /// 					},
 /// 				},
 /// 				DatastoreType: pulumi.String("AzureBlob"),
@@ -917,7 +959,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -926,22 +968,25 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_machinelearningservices_datastore" "datastore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "string"
 ///   properties = {
-///     "accountName"   = "string"
-///     "containerName" = "string"
-///     "credentials" = {
-///       "credentialsType" = "AccountKey"
-///       "secrets" = {
-///         "key"         = "string"
-///         "secretsType" = "AccountKey"
+///     account_name   = "string"
+///     container_name = "string"
+///     credentials = {
+///       credentials_type = "AccountKey"
+///       secrets = {
+///         key          = "string"
+///         secrets_type = "AccountKey"
 ///       }
 ///     }
-///     "datastoreType" = "AzureBlob"
-///     "description"   = "string"
-///     "endpoint"      = "core.windows.net"
-///     "protocol"      = "https"
-///     "tags" = {
+///     datastore_type = "AzureBlob"
+///     description    = "string"
+///     endpoint       = "core.windows.net"
+///     protocol       = "https"
+///     tags = {
 ///       "string" = "string"
 ///     }
 ///   }
@@ -960,6 +1005,20 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Datastore;
 /// import com.pulumi.azurenative.machinelearningservices.DatastoreArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AzureBlobDatastoreArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AccountKeyDatastoreCredentialsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AccountKeyDatastoreSecretsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.CertificateDatastoreCredentialsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.CertificateDatastoreSecretsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.NoneDatastoreCredentialsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SasDatastoreCredentialsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SasDatastoreSecretsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ServicePrincipalDatastoreCredentialsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ServicePrincipalDatastoreSecretsArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AzureDataLakeGen1DatastoreArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AzureDataLakeGen2DatastoreArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AzureFileDatastoreArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.OneLakeDatastoreArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -979,13 +1038,10 @@ import 'system_data_response.dart';
 ///                 .accountName("string")
 ///                 .containerName("string")
 ///                 .credentials(AccountKeyDatastoreCredentialsArgs.builder()
-///                     .credentialsType("AccountKey")
 ///                     .secrets(AccountKeyDatastoreSecretsArgs.builder()
 ///                         .key("string")
-///                         .secretsType("AccountKey")
 ///                         .build())
 ///                     .build())
-///                 .datastoreType("AzureBlob")
 ///                 .description("string")
 ///                 .endpoint("core.windows.net")
 ///                 .protocol("https")

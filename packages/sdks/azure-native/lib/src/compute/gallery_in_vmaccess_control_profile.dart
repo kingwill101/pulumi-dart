@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,7 +77,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_galleryinvmaccesscontrolprofile" "galleryInVMAccessControlProfile" {
+/// resource "azure-native_compute_gallery_in_v_m_access_control_profile" "galleryInVMAccessControlProfile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   gallery_name                      = "myGalleryName"
 ///   in_vm_access_control_profile_name = "myInVMAccessControlProfileName"
 ///   location                          = "West US"

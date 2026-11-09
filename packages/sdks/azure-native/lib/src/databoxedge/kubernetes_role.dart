@@ -64,7 +64,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_databoxedge_kubernetesrole" "kubernetesRole" {
+/// resource "azure-native_databoxedge_kubernetes_role" "kubernetesRole" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   device_name         = "testedgedevice"
 ///   name                = "IoTRole1"
 ///   resource_group_name = "GroupForEdgeAutomation"

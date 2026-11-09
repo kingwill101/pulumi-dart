@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,7 +77,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_blobdataset" "blobDataSet" {
+/// resource "azure-native_datashare_blob_data_set" "blobDataSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name         = "Account1"
 ///   container_name       = "C1"
 ///   data_set_name        = "Dataset1"
@@ -118,7 +121,6 @@ import 'system_data_response.dart';
 ///             .containerName("C1")
 ///             .dataSetName("Dataset1")
 ///             .filePath("file21")
-///             .kind("Blob")
 ///             .resourceGroup("SampleResourceGroup")
 ///             .resourceGroupName("SampleResourceGroup")
 ///             .shareName("Share1")
@@ -236,7 +238,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -244,7 +246,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_blobdataset" "blobDataSet" {
+/// resource "azure-native_datashare_blob_data_set" "blobDataSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "Account1"
 ///   data_set_name       = "Dataset1"
 ///   resource_group_name = "SampleResourceGroup"
@@ -373,7 +378,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -381,7 +386,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_blobdataset" "blobDataSet" {
+/// resource "azure-native_datashare_blob_data_set" "blobDataSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "Account1"
 ///   data_set_name       = "Dataset1"
 ///   resource_group_name = "SampleResourceGroup"
@@ -510,7 +518,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -518,7 +526,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_blobdataset" "blobDataSet" {
+/// resource "azure-native_datashare_blob_data_set" "blobDataSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "Account1"
 ///   data_set_name       = "Dataset1"
 ///   resource_group_name = "SampleResourceGroup"
@@ -647,7 +658,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -655,7 +666,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_blobdataset" "blobDataSet" {
+/// resource "azure-native_datashare_blob_data_set" "blobDataSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "Account1"
 ///   data_set_name       = "Dataset1"
 ///   resource_group_name = "SampleResourceGroup"
@@ -784,7 +798,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -792,7 +806,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_blobdataset" "blobDataSet" {
+/// resource "azure-native_datashare_blob_data_set" "blobDataSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "Account1"
 ///   data_set_name       = "Dataset1"
 ///   resource_group_name = "SampleResourceGroup"
@@ -921,7 +938,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -929,7 +946,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_blobdataset" "blobDataSet" {
+/// resource "azure-native_datashare_blob_data_set" "blobDataSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "sourceAccount"
 ///   data_set_name       = "dataset1"
 ///   resource_group_name = "SampleResourceGroup"

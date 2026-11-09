@@ -25,7 +25,7 @@ import 'terminal_server_configuration_response.dart';
 ///     var networkFabric = new AzureNative.ManagedNetworkFabric.NetworkFabric("networkFabric", new()
 ///     {
 ///         Annotation = "annotation",
-///         FabricASN = 29249,
+///         FabricASN = 29249.0,
 ///         FabricVersion = "1.x.x",
 ///         Ipv4Prefix = "10.18.0.0/19",
 ///         Ipv6Prefix = "3FFE:FFFF:0:CD40::/59",
@@ -43,7 +43,7 @@ import 'terminal_server_configuration_response.dart';
 ///                         Multiplier = 10,
 ///                     },
 ///                     Mtu = 1501,
-///                     PeerASN = 1235,
+///                     PeerASN = 1235.0,
 ///                     PrimaryIpv4Prefix = "10.0.0.12/30",
 ///                     PrimaryIpv6Prefix = "4FFE:FFFF:0:CD30::a8/127",
 ///                     SecondaryIpv4Prefix = "20.0.0.13/30",
@@ -93,7 +93,7 @@ import 'terminal_server_configuration_response.dart';
 ///                         Multiplier = 5,
 ///                     },
 ///                     Mtu = 1500,
-///                     PeerASN = 61234,
+///                     PeerASN = 61234.0,
 ///                     PrimaryIpv4Prefix = "10.0.0.14/30",
 ///                     PrimaryIpv6Prefix = "2FFE:FFFF:0:CD30::a7/126",
 ///                     SecondaryIpv4Prefix = "10.0.0.15/30",
@@ -286,7 +286,7 @@ import 'terminal_server_configuration_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -294,7 +294,10 @@ import 'terminal_server_configuration_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managednetworkfabric_networkfabric" "networkFabric" {
+/// resource "azure-native_managednetworkfabric_network_fabric" "networkFabric" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   annotation     = "annotation"
 ///   fabric_asn     = 29249
 ///   fabric_version = "1.x.x"

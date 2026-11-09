@@ -73,7 +73,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,7 +81,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_operationalinsights_summarylog" "summaryLog" {
+/// resource "azure-native_operationalinsights_summary_log" "summaryLog" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "oiautorest6685"
 ///   rule_definition = {
 ///     bin_delay         = 10

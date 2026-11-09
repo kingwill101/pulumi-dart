@@ -28,7 +28,7 @@ import 'sku_response.dart';
 ///         Location = "Japan East",
 ///         PerDatabaseSettings = new AzureNative.Sql.Inputs.ElasticPoolPerDatabaseSettingsArgs
 ///         {
-///             MaxCapacity = 2,
+///             MaxCapacity = 2.0,
 ///             MinCapacity = 0.25,
 ///         },
 ///         ResourceGroupName = "sqlcrudtest-2369",
@@ -80,7 +80,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -88,7 +88,10 @@ import 'sku_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_elasticpool" "elasticPool" {
+/// resource "azure-native_sql_elastic_pool" "elasticPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_zone = "1"
 ///   elastic_pool_name = "sqlcrudtest-8102"
 ///   location          = "Japan East"
@@ -232,8 +235,8 @@ import 'sku_response.dart';
 ///         PerDatabaseSettings = new AzureNative.Sql.Inputs.ElasticPoolPerDatabaseSettingsArgs
 ///         {
 ///             AutoPauseDelay = 80,
-///             MaxCapacity = 2,
-///             MinCapacity = 0,
+///             MaxCapacity = 2.0,
+///             MinCapacity = 0.0,
 ///         },
 ///         ResourceGroupName = "sqlcrudtest-2369",
 ///         ServerName = "sqlcrudtest-8069",
@@ -288,7 +291,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -296,7 +299,10 @@ import 'sku_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_elasticpool" "elasticPool" {
+/// resource "azure-native_sql_elastic_pool" "elasticPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auto_pause_delay  = 60
 ///   elastic_pool_name = "sqlcrudtest-8102"
 ///   location          = "Japan East"
@@ -494,7 +500,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -502,7 +508,10 @@ import 'sku_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_elasticpool" "elasticPool" {
+/// resource "azure-native_sql_elastic_pool" "elasticPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   elastic_pool_name               = "sqlcrudtest-8102"
 ///   high_availability_replica_count = 2
 ///   location                        = "Japan East"
@@ -618,7 +627,7 @@ import 'sku_response.dart';
 ///         Location = "Japan East",
 ///         PerDatabaseSettings = new AzureNative.Sql.Inputs.ElasticPoolPerDatabaseSettingsArgs
 ///         {
-///             MaxCapacity = 2,
+///             MaxCapacity = 2.0,
 ///             MinCapacity = 0.25,
 ///         },
 ///         ResourceGroupName = "sqlcrudtest-2369",
@@ -671,7 +680,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -679,7 +688,10 @@ import 'sku_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_elasticpool" "elasticPool" {
+/// resource "azure-native_sql_elastic_pool" "elasticPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   elastic_pool_name = "sqlcrudtest-8102"
 ///   location          = "Japan East"
 ///   per_database_settings = {
@@ -855,7 +867,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -863,7 +875,10 @@ import 'sku_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_elasticpool" "elasticPool" {
+/// resource "azure-native_sql_elastic_pool" "elasticPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   elastic_pool_name            = "sqlcrudtest-8102"
 ///   location                     = "Japan East"
 ///   maintenance_configuration_id = "/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_JapanEast_1"
@@ -997,7 +1012,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1005,7 +1020,10 @@ import 'sku_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_elasticpool" "elasticPool" {
+/// resource "azure-native_sql_elastic_pool" "elasticPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   elastic_pool_name   = "sqlcrudtest-8102"
 ///   location            = "Japan East"
 ///   resource_group_name = "sqlcrudtest-2369"
@@ -1143,7 +1161,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1151,7 +1169,10 @@ import 'sku_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_elasticpool" "elasticPool" {
+/// resource "azure-native_sql_elastic_pool" "elasticPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   elastic_pool_name      = "sqlcrudtest-8102"
 ///   location               = "Japan East"
 ///   preferred_enclave_type = "Default"
@@ -1309,7 +1330,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1317,7 +1338,10 @@ import 'sku_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_elasticpool" "elasticPool" {
+/// resource "azure-native_sql_elastic_pool" "elasticPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   elastic_pool_name      = "sqlcrudtest-8102"
 ///   location               = "Japan East"
 ///   preferred_enclave_type = "VBS"

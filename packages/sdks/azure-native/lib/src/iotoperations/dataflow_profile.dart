@@ -94,7 +94,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -102,7 +102,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperations_dataflowprofile" "dataflowProfile" {
+/// resource "azure-native_iotoperations_dataflow_profile" "dataflowProfile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataflow_profile_name = "resource-name123"
 ///   extended_location = {
 ///     name = "qmbrfwcpwwhggszhrdjv"
@@ -315,7 +318,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -323,7 +326,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperations_dataflowprofile" "dataflowProfile" {
+/// resource "azure-native_iotoperations_dataflow_profile" "dataflowProfile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataflow_profile_name = "aio-dataflowprofile"
 ///   extended_location = {
 ///     name = "qmbrfwcpwwhggszhrdjv"
@@ -496,7 +502,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -504,7 +510,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperations_dataflowprofile" "dataflowProfile" {
+/// resource "azure-native_iotoperations_dataflow_profile" "dataflowProfile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataflow_profile_name = "aio-dataflowprofile"
 ///   extended_location = {
 ///     name = "qmbrfwcpwwhggszhrdjv"

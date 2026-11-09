@@ -72,7 +72,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_fileshares_filesharesnapshot" "fileShareSnapshot" {
+/// resource "azure-native_fileshares_file_share_snapshot" "fileShareSnapshot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "testfilesharesnapshot"
 ///   properties = {
 ///     initiator_id = "backup-vault-001"

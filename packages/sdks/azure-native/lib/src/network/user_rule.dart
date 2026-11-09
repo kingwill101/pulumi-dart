@@ -62,7 +62,7 @@ import 'user_rule_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,7 +70,10 @@ import 'user_rule_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_userrule" "userRule" {
+/// resource "azure-native_network_user_rule" "userRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_name   = "myTestSecurityConfig"
 ///   network_manager_name = "testNetworkManager"
 ///   resource_group_name  = "rg1"
@@ -256,7 +259,7 @@ import 'user_rule_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -264,7 +267,10 @@ import 'user_rule_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_userrule" "userRule" {
+/// resource "azure-native_network_user_rule" "userRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_name      = "myTestSecurityConfig"
 ///   description             = "Sample User Rule"
 ///   destination_port_ranges = ["22"]
@@ -319,7 +325,6 @@ import 'user_rule_args.dart';
 ///                 .addressPrefixType("IPPrefix")
 ///                 .build())
 ///             .direction("Inbound")
-///             .kind("Custom")
 ///             .networkManagerName("testNetworkManager")
 ///             .protocol("Tcp")
 ///             .resourceGroupName("rg1")

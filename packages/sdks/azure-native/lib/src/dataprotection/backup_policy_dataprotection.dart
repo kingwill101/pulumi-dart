@@ -57,7 +57,7 @@ import 'system_data_response.dart';
 ///                                 "R/2019-11-20T08:00:00-08:00/P1W",
 ///                             },
 ///                         },
-///                         TaggingCriteria = new[]
+///                         TaggingCriteria =
 ///                         {
 ///                             new AzureNative.DataProtection.Inputs.TaggingCriteriaArgs
 ///                             {
@@ -66,15 +66,15 @@ import 'system_data_response.dart';
 ///                                 {
 ///                                     TagName = "Default",
 ///                                 },
-///                                 TaggingPriority = 99,
+///                                 TaggingPriority = 99.0,
 ///                             },
 ///                             new AzureNative.DataProtection.Inputs.TaggingCriteriaArgs
 ///                             {
-///                                 Criteria = new[]
+///                                 Criteria =
 ///                                 {
 ///                                     new AzureNative.DataProtection.Inputs.ScheduleBasedBackupCriteriaArgs
 ///                                     {
-///                                         DaysOfTheWeek = new[]
+///                                         DaysOfTheWeek =
 ///                                         {
 ///                                             AzureNative.DataProtection.DayOfWeek.Sunday,
 ///                                         },
@@ -90,7 +90,7 @@ import 'system_data_response.dart';
 ///                                 {
 ///                                     TagName = "Weekly",
 ///                                 },
-///                                 TaggingPriority = 20,
+///                                 TaggingPriority = 20.0,
 ///                             },
 ///                         },
 ///                     },
@@ -98,7 +98,7 @@ import 'system_data_response.dart';
 ///                 new AzureNative.DataProtection.Inputs.AzureRetentionRuleArgs
 ///                 {
 ///                     IsDefault = true,
-///                     Lifecycles = new[]
+///                     Lifecycles =
 ///                     {
 ///                         new AzureNative.DataProtection.Inputs.SourceLifeCycleArgs
 ///                         {
@@ -120,7 +120,7 @@ import 'system_data_response.dart';
 ///                 new AzureNative.DataProtection.Inputs.AzureRetentionRuleArgs
 ///                 {
 ///                     IsDefault = false,
-///                     Lifecycles = new[]
+///                     Lifecycles =
 ///                     {
 ///                         new AzureNative.DataProtection.Inputs.SourceLifeCycleArgs
 ///                         {
@@ -168,86 +168,86 @@ import 'system_data_response.dart';
 /// 				},
 /// 				ObjectType: pulumi.String("BackupPolicy"),
 /// 				PolicyRules: pulumi.Array{
-/// 					dataprotection.AzureBackupRule{
-/// 						BackupParameters: dataprotection.AzureBackupParams{
-/// 							BackupType: "Full",
-/// 							ObjectType: "AzureBackupParams",
+/// 					&dataprotection.AzureBackupRuleArgs{
+/// 						BackupParameters: &dataprotection.AzureBackupParamsArgs{
+/// 							BackupType: pulumi.String("Full"),
+/// 							ObjectType: pulumi.String("AzureBackupParams"),
 /// 						},
-/// 						DataStore: dataprotection.DataStoreInfoBase{
-/// 							DataStoreType: dataprotection.DataStoreTypesVaultStore,
-/// 							ObjectType:    "DataStoreInfoBase",
+/// 						DataStore: &dataprotection.DataStoreInfoBaseArgs{
+/// 							DataStoreType: pulumi.String(dataprotection.DataStoreTypesVaultStore),
+/// 							ObjectType:    pulumi.String("DataStoreInfoBase"),
 /// 						},
-/// 						Name:       "BackupWeekly",
-/// 						ObjectType: "AzureBackupRule",
-/// 						Trigger: dataprotection.ScheduleBasedTriggerContext{
-/// 							ObjectType: "ScheduleBasedTriggerContext",
-/// 							Schedule: dataprotection.BackupSchedule{
-/// 								RepeatingTimeIntervals: []string{
-/// 									"R/2019-11-20T08:00:00-08:00/P1W",
+/// 						Name:       pulumi.String("BackupWeekly"),
+/// 						ObjectType: pulumi.String("AzureBackupRule"),
+/// 						Trigger: &dataprotection.ScheduleBasedTriggerContextArgs{
+/// 							ObjectType: pulumi.String("ScheduleBasedTriggerContext"),
+/// 							Schedule: &dataprotection.BackupScheduleArgs{
+/// 								RepeatingTimeIntervals: pulumi.StringArray{
+/// 									pulumi.String("R/2019-11-20T08:00:00-08:00/P1W"),
 /// 								},
 /// 							},
-/// 							TaggingCriteria: []dataprotection.TaggingCriteria{
-/// 								{
-/// 									IsDefault: true,
-/// 									TagInfo: {
-/// 										TagName: "Default",
+/// 							TaggingCriteria: dataprotection.TaggingCriteriaArray{
+/// 								&dataprotection.TaggingCriteriaArgs{
+/// 									IsDefault: pulumi.Bool(true),
+/// 									TagInfo: &dataprotection.RetentionTagArgs{
+/// 										TagName: pulumi.String("Default"),
 /// 									},
-/// 									TaggingPriority: 99,
+/// 									TaggingPriority: pulumi.Float64(99),
 /// 								},
-/// 								{
-/// 									Criteria: []dataprotection.ScheduleBasedBackupCriteria{
-/// 										{
-/// 											DaysOfTheWeek: []dataprotection.DayOfWeek{
-/// 												dataprotection.DayOfWeekSunday,
+/// 								&dataprotection.TaggingCriteriaArgs{
+/// 									Criteria: dataprotection.ScheduleBasedBackupCriteriaArray{
+/// 										&dataprotection.ScheduleBasedBackupCriteriaArgs{
+/// 											DaysOfTheWeek: pulumi.StringArray{
+/// 												pulumi.String(dataprotection.DayOfWeekSunday),
 /// 											},
-/// 											ObjectType: "ScheduleBasedBackupCriteria",
-/// 											ScheduleTimes: []string{
-/// 												"2019-03-01T13:00:00Z",
+/// 											ObjectType: pulumi.String("ScheduleBasedBackupCriteria"),
+/// 											ScheduleTimes: pulumi.StringArray{
+/// 												pulumi.String("2019-03-01T13:00:00Z"),
 /// 											},
 /// 										},
 /// 									},
-/// 									IsDefault: false,
-/// 									TagInfo: {
-/// 										TagName: "Weekly",
+/// 									IsDefault: pulumi.Bool(false),
+/// 									TagInfo: &dataprotection.RetentionTagArgs{
+/// 										TagName: pulumi.String("Weekly"),
 /// 									},
-/// 									TaggingPriority: 20,
+/// 									TaggingPriority: pulumi.Float64(20),
 /// 								},
 /// 							},
 /// 						},
 /// 					},
-/// 					dataprotection.AzureRetentionRule{
-/// 						IsDefault: true,
-/// 						Lifecycles: []dataprotection.SourceLifeCycle{
-/// 							{
-/// 								DeleteAfter: {
-/// 									Duration:   "P1W",
-/// 									ObjectType: "AbsoluteDeleteOption",
+/// 					&dataprotection.AzureRetentionRuleArgs{
+/// 						IsDefault: pulumi.Bool(true),
+/// 						Lifecycles: dataprotection.SourceLifeCycleArray{
+/// 							&dataprotection.SourceLifeCycleArgs{
+/// 								DeleteAfter: &dataprotection.AbsoluteDeleteOptionArgs{
+/// 									Duration:   pulumi.String("P1W"),
+/// 									ObjectType: pulumi.String("AbsoluteDeleteOption"),
 /// 								},
-/// 								SourceDataStore: {
-/// 									DataStoreType: dataprotection.DataStoreTypesVaultStore,
-/// 									ObjectType:    "DataStoreInfoBase",
+/// 								SourceDataStore: &dataprotection.DataStoreInfoBaseArgs{
+/// 									DataStoreType: pulumi.String(dataprotection.DataStoreTypesVaultStore),
+/// 									ObjectType:    pulumi.String("DataStoreInfoBase"),
 /// 								},
 /// 							},
 /// 						},
-/// 						Name:       "Default",
-/// 						ObjectType: "AzureRetentionRule",
+/// 						Name:       pulumi.String("Default"),
+/// 						ObjectType: pulumi.String("AzureRetentionRule"),
 /// 					},
-/// 					dataprotection.AzureRetentionRule{
-/// 						IsDefault: false,
-/// 						Lifecycles: []dataprotection.SourceLifeCycle{
-/// 							{
-/// 								DeleteAfter: {
-/// 									Duration:   "P12W",
-/// 									ObjectType: "AbsoluteDeleteOption",
+/// 					&dataprotection.AzureRetentionRuleArgs{
+/// 						IsDefault: pulumi.Bool(false),
+/// 						Lifecycles: dataprotection.SourceLifeCycleArray{
+/// 							&dataprotection.SourceLifeCycleArgs{
+/// 								DeleteAfter: &dataprotection.AbsoluteDeleteOptionArgs{
+/// 									Duration:   pulumi.String("P12W"),
+/// 									ObjectType: pulumi.String("AbsoluteDeleteOption"),
 /// 								},
-/// 								SourceDataStore: {
-/// 									DataStoreType: dataprotection.DataStoreTypesVaultStore,
-/// 									ObjectType:    "DataStoreInfoBase",
+/// 								SourceDataStore: &dataprotection.DataStoreInfoBaseArgs{
+/// 									DataStoreType: pulumi.String(dataprotection.DataStoreTypesVaultStore),
+/// 									ObjectType:    pulumi.String("DataStoreInfoBase"),
 /// 								},
 /// 							},
 /// 						},
-/// 						Name:       "Weekly",
-/// 						ObjectType: "AzureRetentionRule",
+/// 						Name:       pulumi.String("Weekly"),
+/// 						ObjectType: pulumi.String("AzureRetentionRule"),
 /// 					},
 /// 				},
 /// 			},
@@ -264,7 +264,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -272,74 +272,77 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dataprotection_backuppolicy" "backupPolicy" {
+/// resource "azure-native_dataprotection_backup_policy" "backupPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backup_policy_name = "OSSDBPolicy"
 ///   properties = {
 ///     datasource_types = ["OssDB"]
 ///     object_type      = "BackupPolicy"
 ///     policy_rules = [{
-///       "backupParameters" = {
-///         "backupType" = "Full"
-///         "objectType" = "AzureBackupParams"
+///       backup_parameters = {
+///         backup_type = "Full"
+///         object_type = "AzureBackupParams"
 ///       }
-///       "dataStore" = {
-///         "dataStoreType" = "VaultStore"
-///         "objectType"    = "DataStoreInfoBase"
+///       data_store = {
+///         data_store_type = "VaultStore"
+///         object_type     = "DataStoreInfoBase"
 ///       }
-///       "name"       = "BackupWeekly"
-///       "objectType" = "AzureBackupRule"
-///       "trigger" = {
-///         "objectType" = "ScheduleBasedTriggerContext"
-///         "schedule" = {
-///           "repeatingTimeIntervals" = ["R/2019-11-20T08:00:00-08:00/P1W"]
+///       name        = "BackupWeekly"
+///       object_type = "AzureBackupRule"
+///       trigger = {
+///         object_type = "ScheduleBasedTriggerContext"
+///         schedule = {
+///           repeating_time_intervals = ["R/2019-11-20T08:00:00-08:00/P1W"]
 ///         }
-///         "taggingCriteria" = [{
-///           "isDefault" = true
-///           "tagInfo" = {
-///             "tagName" = "Default"
+///         tagging_criteria = [{
+///           is_default = true
+///           tag_info = {
+///             tag_name = "Default"
 ///           }
-///           "taggingPriority" = 99
+///           tagging_priority = 99
 ///           }, {
-///           "criteria" = [{
-///             "daysOfTheWeek" = ["Sunday"]
-///             "objectType"    = "ScheduleBasedBackupCriteria"
-///             "scheduleTimes" = ["2019-03-01T13:00:00Z"]
+///           criteria = [{
+///             days_of_the_week = ["Sunday"]
+///             object_type      = "ScheduleBasedBackupCriteria"
+///             schedule_times   = ["2019-03-01T13:00:00Z"]
 ///           }]
-///           "isDefault" = false
-///           "tagInfo" = {
-///             "tagName" = "Weekly"
+///           is_default = false
+///           tag_info = {
+///             tag_name = "Weekly"
 ///           }
-///           "taggingPriority" = 20
+///           tagging_priority = 20
 ///         }]
 ///       }
 ///       }, {
-///       "isDefault" = true
-///       "lifecycles" = [{
-///         "deleteAfter" = {
-///           "duration"   = "P1W"
-///           "objectType" = "AbsoluteDeleteOption"
+///       is_default = true
+///       lifecycles = [{
+///         delete_after = {
+///           duration    = "P1W"
+///           object_type = "AbsoluteDeleteOption"
 ///         }
-///         "sourceDataStore" = {
-///           "dataStoreType" = "VaultStore"
-///           "objectType"    = "DataStoreInfoBase"
+///         source_data_store = {
+///           data_store_type = "VaultStore"
+///           object_type     = "DataStoreInfoBase"
 ///         }
 ///       }]
-///       "name"       = "Default"
-///       "objectType" = "AzureRetentionRule"
+///       name        = "Default"
+///       object_type = "AzureRetentionRule"
 ///       }, {
-///       "isDefault" = false
-///       "lifecycles" = [{
-///         "deleteAfter" = {
-///           "duration"   = "P12W"
-///           "objectType" = "AbsoluteDeleteOption"
+///       is_default = false
+///       lifecycles = [{
+///         delete_after = {
+///           duration    = "P12W"
+///           object_type = "AbsoluteDeleteOption"
 ///         }
-///         "sourceDataStore" = {
-///           "dataStoreType" = "VaultStore"
-///           "objectType"    = "DataStoreInfoBase"
+///         source_data_store = {
+///           data_store_type = "VaultStore"
+///           object_type     = "DataStoreInfoBase"
 ///         }
 ///       }]
-///       "name"       = "Weekly"
-///       "objectType" = "AzureRetentionRule"
+///       name        = "Weekly"
+///       object_type = "AzureRetentionRule"
 ///     }]
 ///   }
 ///   resource_group_name = "000pikumar"
@@ -355,6 +358,18 @@ import 'system_data_response.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dataprotection.BackupPolicy;
+/// import com.pulumi.azurenative.dataprotection.inputs.AzureBackupRuleArgs;
+/// import com.pulumi.azurenative.dataprotection.inputs.AzureBackupParamsArgs;
+/// import com.pulumi.azurenative.dataprotection.inputs.DataStoreInfoBaseArgs;
+/// import com.pulumi.azurenative.dataprotection.inputs.AdhocBasedTriggerContextArgs;
+/// import com.pulumi.azurenative.dataprotection.inputs.ScheduleBasedTriggerContextArgs;
+/// import com.pulumi.azurenative.dataprotection.inputs.BackupScheduleArgs;
+/// import com.pulumi.azurenative.dataprotection.inputs.TaggingCriteriaArgs;
+/// import com.pulumi.azurenative.dataprotection.inputs.RetentionTagArgs;
+/// import com.pulumi.azurenative.dataprotection.inputs.ScheduleBasedBackupCriteriaArgs;
+/// import com.pulumi.azurenative.dataprotection.inputs.AzureRetentionRuleArgs;
+/// import com.pulumi.azurenative.dataprotection.inputs.SourceLifeCycleArgs;
+/// import com.pulumi.azurenative.dataprotection.inputs.AbsoluteDeleteOptionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -370,23 +385,19 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var backupPolicy = new BackupPolicy("backupPolicy", BackupPolicyArgs.builder()
 ///             .backupPolicyName("OSSDBPolicy")
-///             .properties(BackupPolicyArgs.builder()
+///             .properties(com.pulumi.azurenative.dataprotection.inputs.BackupPolicyArgs.builder()
 ///                 .datasourceTypes("OssDB")
-///                 .objectType("BackupPolicy")
 ///                 .policyRules(
 ///                     AzureBackupRuleArgs.builder()
 ///                         .backupParameters(AzureBackupParamsArgs.builder()
 ///                             .backupType("Full")
-///                             .objectType("AzureBackupParams")
 ///                             .build())
 ///                         .dataStore(DataStoreInfoBaseArgs.builder()
 ///                             .dataStoreType("VaultStore")
 ///                             .objectType("DataStoreInfoBase")
 ///                             .build())
 ///                         .name("BackupWeekly")
-///                         .objectType("AzureBackupRule")
 ///                         .trigger(ScheduleBasedTriggerContextArgs.builder()
-///                             .objectType("ScheduleBasedTriggerContext")
 ///                             .schedule(BackupScheduleArgs.builder()
 ///                                 .repeatingTimeIntervals("R/2019-11-20T08:00:00-08:00/P1W")
 ///                                 .build())
@@ -401,7 +412,6 @@ import 'system_data_response.dart';
 ///                                 TaggingCriteriaArgs.builder()
 ///                                     .criteria(ScheduleBasedBackupCriteriaArgs.builder()
 ///                                         .daysOfTheWeek("Sunday")
-///                                         .objectType("ScheduleBasedBackupCriteria")
 ///                                         .scheduleTimes("2019-03-01T13:00:00Z")
 ///                                         .build())
 ///                                     .isDefault(false)
@@ -417,7 +427,6 @@ import 'system_data_response.dart';
 ///                         .lifecycles(SourceLifeCycleArgs.builder()
 ///                             .deleteAfter(AbsoluteDeleteOptionArgs.builder()
 ///                                 .duration("P1W")
-///                                 .objectType("AbsoluteDeleteOption")
 ///                                 .build())
 ///                             .sourceDataStore(DataStoreInfoBaseArgs.builder()
 ///                                 .dataStoreType("VaultStore")
@@ -425,14 +434,12 @@ import 'system_data_response.dart';
 ///                                 .build())
 ///                             .build())
 ///                         .name("Default")
-///                         .objectType("AzureRetentionRule")
 ///                         .build(),
 ///                     AzureRetentionRuleArgs.builder()
 ///                         .isDefault(false)
 ///                         .lifecycles(SourceLifeCycleArgs.builder()
 ///                             .deleteAfter(AbsoluteDeleteOptionArgs.builder()
 ///                                 .duration("P12W")
-///                                 .objectType("AbsoluteDeleteOption")
 ///                                 .build())
 ///                             .sourceDataStore(DataStoreInfoBaseArgs.builder()
 ///                                 .dataStoreType("VaultStore")
@@ -440,7 +447,6 @@ import 'system_data_response.dart';
 ///                                 .build())
 ///                             .build())
 ///                         .name("Weekly")
-///                         .objectType("AzureRetentionRule")
 ///                         .build())
 ///                 .build())
 ///             .resourceGroupName("000pikumar")

@@ -36,7 +36,7 @@ import 'job_step_output_response.dart';
 ///             InitialRetryIntervalSeconds = 11,
 ///             MaximumRetryIntervalSeconds = 222,
 ///             RetryAttempts = 42,
-///             RetryIntervalBackoffMultiplier = 3,
+///             RetryIntervalBackoffMultiplier = 3.0,
 ///             TimeoutSeconds = 1234,
 ///         },
 ///         JobAgentName = "agent1",
@@ -116,7 +116,7 @@ import 'job_step_output_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -124,7 +124,10 @@ import 'job_step_output_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_jobstep" "jobStep" {
+/// resource "azure-native_sql_job_step" "jobStep" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   action = {
 ///     source = "Inline"
 ///     type   = "TSql"
@@ -394,7 +397,7 @@ import 'job_step_output_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -402,7 +405,10 @@ import 'job_step_output_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_jobstep" "jobStep" {
+/// resource "azure-native_sql_job_step" "jobStep" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   action = {
 ///     value = "select 1"
 ///   }

@@ -64,7 +64,7 @@ import 'virtual_network_tap_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'virtual_network_tap_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_networkinterfacetapconfiguration" "networkInterfaceTapConfiguration" {
+/// resource "azure-native_network_network_interface_tap_configuration" "networkInterfaceTapConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_interface_name = "mynic"
 ///   resource_group_name    = "testrg"
 ///   tap_configuration_name = "tapconfiguration1"

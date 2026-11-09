@@ -166,7 +166,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -174,7 +174,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_accessanalyzeranalyzer" "accessAnalyzerAnalyzer" {
+/// resource "azure-native_awsconnector_access_analyzer_analyzer" "accessAnalyzerAnalyzer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "jpcbvhsspnqhnreartkjyr"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -186,19 +189,19 @@ import 'system_data_response.dart';
 ///       }
 ///       analyzer_name = "owom"
 ///       archive_rules = [{
-///         "filter" = [{
-///           "contains" = ["hpzoliradchznu"]
-///           "eq"       = ["vlrqwrfkkwxvyxmqpbmwkxig"]
-///           "exists"   = true
-///           "neq"      = ["ro"]
-///           "property" = "pzndukmteempygtvmsrcrjulphe"
+///         filter = [{
+///           contains = ["hpzoliradchznu"]
+///           eq       = ["vlrqwrfkkwxvyxmqpbmwkxig"]
+///           exists   = true
+///           neq      = ["ro"]
+///           property = "pzndukmteempygtvmsrcrjulphe"
 ///         }]
-///         "ruleName" = "hvfnklcbuefkibrtayx"
+///         rule_name = "hvfnklcbuefkibrtayx"
 ///       }]
 ///       arn = "bmt"
 ///       tags = [{
-///         "key"   = "xeapsjw"
-///         "value" = "mtcjrbabaynnrmqttjf"
+///         key   = "xeapsjw"
+///         value = "mtcjrbabaynnrmqttjf"
 ///       }]
 ///       type = "vswmvhmkyxepqkvvksbglssmrgg"
 ///     }
@@ -229,6 +232,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.AccessAnalyzerAnalyzerPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsAccessAnalyzerAnalyzerPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.UnusedAccessConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ArchiveRuleArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.FilterArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

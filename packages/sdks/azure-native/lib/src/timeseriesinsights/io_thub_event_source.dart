@@ -55,7 +55,7 @@ import 'local_timestamp_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -63,7 +63,10 @@ import 'local_timestamp_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_timeseriesinsights_iothubeventsource" "ioTHubEventSource" {
+/// resource "azure-native_timeseriesinsights_io_t_hub_event_source" "ioTHubEventSource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   environment_name    = "env1"
 ///   event_source_name   = "es1"
 ///   resource_group_name = "rg1"
@@ -185,7 +188,7 @@ import 'local_timestamp_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -193,7 +196,10 @@ import 'local_timestamp_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_timeseriesinsights_iothubeventsource" "ioTHubEventSource" {
+/// resource "azure-native_timeseriesinsights_io_t_hub_event_source" "ioTHubEventSource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   environment_name    = "env1"
 ///   event_source_name   = "es1"
 ///   resource_group_name = "rg1"

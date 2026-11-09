@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,7 +77,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_fleetspaceaccount" "fleetspaceAccount" {
+/// resource "azure-native_cosmosdb_fleetspace_account" "fleetspaceAccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fleet_name              = "fleet1"
 ///   fleetspace_account_name = "db1"
 ///   fleetspace_name         = "fleetspace1"

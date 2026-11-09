@@ -135,7 +135,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -143,7 +143,10 @@ import 'sku_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_managedinstance" "managedInstance" {
+/// resource "azure-native_sql_managed_instance" "managedInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administrator_login          = "dummylogin"
 ///   administrator_login_password = "PLACEHOLDER"
 ///   administrators = {
@@ -458,7 +461,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -466,7 +469,10 @@ import 'sku_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_managedinstance" "managedInstance" {
+/// resource "azure-native_sql_managed_instance" "managedInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administrator_login          = "dummylogin"
 ///   administrator_login_password = "PLACEHOLDER"
 ///   license_type                 = "LicenseIncluded"

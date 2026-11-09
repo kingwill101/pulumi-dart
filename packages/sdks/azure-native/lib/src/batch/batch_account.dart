@@ -82,7 +82,7 @@ import 'virtual_machine_family_core_quota_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -90,7 +90,10 @@ import 'virtual_machine_family_core_quota_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_batch_batchaccount" "batchAccount" {
+/// resource "azure-native_batch_batch_account" "batchAccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sampleacct"
 ///   auto_storage = {
 ///     storage_account_id = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Storage/storageAccounts/samplestorage"
@@ -259,7 +262,7 @@ import 'virtual_machine_family_core_quota_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -267,7 +270,10 @@ import 'virtual_machine_family_core_quota_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_batch_batchaccount" "batchAccount" {
+/// resource "azure-native_batch_batch_account" "batchAccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sampleacct"
 ///   auto_storage = {
 ///     storage_account_id = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Storage/storageAccounts/samplestorage"
@@ -418,7 +424,7 @@ import 'virtual_machine_family_core_quota_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -426,7 +432,10 @@ import 'virtual_machine_family_core_quota_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_batch_batchaccount" "batchAccount" {
+/// resource "azure-native_batch_batch_account" "batchAccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sampleacct"
 ///   auto_storage = {
 ///     storage_account_id = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Storage/storageAccounts/samplestorage"
@@ -596,7 +605,7 @@ import 'virtual_machine_family_core_quota_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -604,7 +613,10 @@ import 'virtual_machine_family_core_quota_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_batch_batchaccount" "batchAccount" {
+/// resource "azure-native_batch_batch_account" "batchAccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sampleacct"
 ///   auto_storage = {
 ///     storage_account_id = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Storage/storageAccounts/samplestorage"

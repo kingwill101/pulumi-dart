@@ -57,7 +57,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storagesync_syncgroup" "syncGroup" {
+/// resource "azure-native_storagesync_sync_group" "syncGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name       = "SampleResourceGroup_1"
 ///   storage_sync_service_name = "SampleStorageSyncService_1"
 ///   sync_group_name           = "SampleSyncGroup_1"

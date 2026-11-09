@@ -117,7 +117,7 @@ import 'virtual_hub_route_v2_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -125,7 +125,10 @@ import 'virtual_hub_route_v2_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualhubroutetablev2" "virtualHubRouteTableV2" {
+/// resource "azure-native_network_virtual_hub_route_table_v2" "virtualHubRouteTableV2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   attached_connections = ["All_Vnets"]
 ///   resource_group_name  = "rg1"
 ///   route_table_name     = "virtualHubRouteTable1a"

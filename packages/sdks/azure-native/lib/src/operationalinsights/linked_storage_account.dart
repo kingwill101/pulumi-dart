@@ -65,7 +65,7 @@ import 'linked_storage_account_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'linked_storage_account_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_operationalinsights_linkedstorageaccount" "linkedStorageAccount" {
+/// resource "azure-native_operationalinsights_linked_storage_account" "linkedStorageAccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_source_type    = "CustomLogs"
 ///   resource_group_name = "mms-eus"
 ///   storage_account_ids = ["/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/mms-eus/providers/Microsoft.Storage/storageAccounts/testStorageA", "/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/mms-eus/providers/Microsoft.Storage/storageAccounts/testStorageB"]

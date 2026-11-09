@@ -155,7 +155,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -163,7 +163,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurearcdata_datacontroller" "dataController" {
+/// resource "azure-native_azurearcdata_data_controller" "dataController" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_controller_name = "testdataController"
 ///   extended_location = {
 ///     name = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.ExtendedLocation/customLocations/arclocation"

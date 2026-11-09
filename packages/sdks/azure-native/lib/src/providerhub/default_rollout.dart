@@ -92,7 +92,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -100,7 +100,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_providerhub_defaultrollout" "defaultRollout" {
+/// resource "azure-native_providerhub_default_rollout" "defaultRollout" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     specification = {
 ///       canary = {

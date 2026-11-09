@@ -76,7 +76,7 @@ import 'sku_response.dart';
 ///                             MatchVariable = AzureNative.FrontDoor.MatchVariable.RequestHeader,
 ///                             Operator = AzureNative.FrontDoor.Operator.Contains,
 ///                             Selector = "UserAgent",
-///                             Transforms = new[]
+///                             Transforms =
 ///                             {
 ///                                 AzureNative.FrontDoor.TransformType.Lowercase,
 ///                             },
@@ -452,7 +452,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -461,107 +461,110 @@ import 'sku_response.dart';
 /// }
 ///
 /// resource "azure-native_frontdoor_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   custom_rules = {
 ///     rules = [{
-///       "action" = "Block"
-///       "matchConditions" = [{
-///         "matchValue"    = ["192.168.1.0/24", "10.0.0.0/24"]
-///         "matchVariable" = "RemoteAddr"
-///         "operator"      = "IPMatch"
+///       action = "Block"
+///       match_conditions = [{
+///         match_value    = ["192.168.1.0/24", "10.0.0.0/24"]
+///         match_variable = "RemoteAddr"
+///         operator       = "IPMatch"
 ///       }]
-///       "name"               = "Rule1"
-///       "priority"           = 1
-///       "rateLimitThreshold" = 1000
-///       "ruleType"           = "RateLimitRule"
+///       name                 = "Rule1"
+///       priority             = 1
+///       rate_limit_threshold = 1000
+///       rule_type            = "RateLimitRule"
 ///       }, {
-///       "action" = "Block"
-///       "matchConditions" = [{
-///         "matchValue"    = ["CH"]
-///         "matchVariable" = "RemoteAddr"
-///         "operator"      = "GeoMatch"
+///       action = "Block"
+///       match_conditions = [{
+///         match_value    = ["CH"]
+///         match_variable = "RemoteAddr"
+///         operator       = "GeoMatch"
 ///         }, {
-///         "matchValue"    = ["windows"]
-///         "matchVariable" = "RequestHeader"
-///         "operator"      = "Contains"
-///         "selector"      = "UserAgent"
-///         "transforms"    = ["Lowercase"]
+///         match_value    = ["windows"]
+///         match_variable = "RequestHeader"
+///         operator       = "Contains"
+///         selector       = "UserAgent"
+///         transforms     = ["Lowercase"]
 ///       }]
-///       "name"     = "Rule2"
-///       "priority" = 2
-///       "ruleType" = "MatchRule"
+///       name      = "Rule2"
+///       priority  = 2
+///       rule_type = "MatchRule"
 ///       }, {
-///       "action" = "CAPTCHA"
-///       "matchConditions" = [{
-///         "matchValue"    = ["AzureBackup", "AzureBotService"]
-///         "matchVariable" = "RemoteAddr"
-///         "operator"      = "ServiceTagMatch"
+///       action = "CAPTCHA"
+///       match_conditions = [{
+///         match_value    = ["AzureBackup", "AzureBotService"]
+///         match_variable = "RemoteAddr"
+///         operator       = "ServiceTagMatch"
 ///       }]
-///       "name"               = "Rule3"
-///       "priority"           = 1
-///       "rateLimitThreshold" = 1000
-///       "ruleType"           = "RateLimitRule"
+///       name                 = "Rule3"
+///       priority             = 1
+///       rate_limit_threshold = 1000
+///       rule_type            = "RateLimitRule"
 ///     }]
 ///   }
 ///   location = "WestUs"
 ///   managed_rules = {
 ///     exceptions_list = {
 ///       exceptions = [{
-///         "matchValues"   = ["Mozilla"]
-///         "matchVariable" = "RequestHeaderNames"
-///         "scopes" = [{
-///           "ruleSetType"    = "Microsoft_DefaultRuleSet"
-///           "ruleSetVersion" = "2.2"
+///         match_values   = ["Mozilla"]
+///         match_variable = "RequestHeaderNames"
+///         scopes = [{
+///           rule_set_type    = "Microsoft_DefaultRuleSet"
+///           rule_set_version = "2.2"
 ///           }, {
-///           "ruleSetType"    = "Microsoft_HTTPDDoSRuleSet"
-///           "ruleSetVersion" = "1.0"
+///           rule_set_type    = "Microsoft_HTTPDDoSRuleSet"
+///           rule_set_version = "1.0"
 ///         }]
-///         "selector"              = "User-Agent"
-///         "selectorMatchOperator" = "Equals"
-///         "valueMatchOperator"    = "Contains"
+///         selector                = "User-Agent"
+///         selector_match_operator = "Equals"
+///         value_match_operator    = "Contains"
 ///       }]
 ///     }
 ///     managed_rule_sets = [{
-///       "exclusions" = [{
-///         "matchVariable"         = "RequestHeaderNames"
-///         "selector"              = "User-Agent"
-///         "selectorMatchOperator" = "Equals"
+///       exclusions = [{
+///         match_variable          = "RequestHeaderNames"
+///         selector                = "User-Agent"
+///         selector_match_operator = "Equals"
 ///       }]
-///       "ruleGroupOverrides" = [{
-///         "exclusions" = [{
-///           "matchVariable"         = "RequestCookieNames"
-///           "selector"              = "token"
-///           "selectorMatchOperator" = "StartsWith"
+///       rule_group_overrides = [{
+///         exclusions = [{
+///           match_variable          = "RequestCookieNames"
+///           selector                = "token"
+///           selector_match_operator = "StartsWith"
 ///         }]
-///         "ruleGroupName" = "SQLI"
-///         "rules" = [{
-///           "action"       = "Redirect"
-///           "enabledState" = "Enabled"
-///           "exclusions" = [{
-///             "matchVariable"         = "QueryStringArgNames"
-///             "selector"              = "query"
-///             "selectorMatchOperator" = "Equals"
+///         rule_group_name = "SQLI"
+///         rules = [{
+///           action        = "Redirect"
+///           enabled_state = "Enabled"
+///           exclusions = [{
+///             match_variable          = "QueryStringArgNames"
+///             selector                = "query"
+///             selector_match_operator = "Equals"
 ///           }]
-///           "ruleId" = "942100"
+///           rule_id = "942100"
 ///           }, {
-///           "enabledState" = "Disabled"
-///           "ruleId"       = "942110"
+///           enabled_state = "Disabled"
+///           rule_id       = "942110"
 ///         }]
 ///       }]
-///       "ruleSetAction"  = "Block"
-///       "ruleSetType"    = "Microsoft_DefaultRuleSet"
-///       "ruleSetVersion" = "2.2"
+///       rule_set_action  = "Block"
+///       rule_set_type    = "Microsoft_DefaultRuleSet"
+///       rule_set_version = "2.2"
 ///       }, {
-///       "ruleGroupOverrides" = [{
-///         "ruleGroupName" = "ExcessiveRequests"
-///         "rules" = [{
-///           "action"       = "Block"
-///           "enabledState" = "Enabled"
-///           "ruleId"       = "500100"
-///           "sensitivity"  = "High"
+///       rule_group_overrides = [{
+///         rule_group_name = "ExcessiveRequests"
+///         rules = [{
+///           action        = "Block"
+///           enabled_state = "Enabled"
+///           rule_id       = "500100"
+///           sensitivity   = "High"
 ///         }]
 ///       }]
-///       "ruleSetType"    = "Microsoft_HTTPDDoSRuleSet"
-///       "ruleSetVersion" = "1.0"
+///       rule_set_type    = "Microsoft_HTTPDDoSRuleSet"
+///       rule_set_version = "1.0"
 ///     }]
 ///   }
 ///   policy_name = "Policy1"
@@ -575,9 +578,9 @@ import 'sku_response.dart';
 ///     redirect_url                               = "http://www.bing.com"
 ///     request_body_check                         = "Disabled"
 ///     scrubbing_rules = [{
-///       "matchVariable"         = "RequestIPAddress"
-///       "selectorMatchOperator" = "EqualsAny"
-///       "state"                 = "Enabled"
+///       match_variable          = "RequestIPAddress"
+///       selector_match_operator = "EqualsAny"
+///       state                   = "Enabled"
 ///     }]
 ///     state = "Enabled"
 ///   }
@@ -598,9 +601,18 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.frontdoor.Policy;
 /// import com.pulumi.azurenative.frontdoor.PolicyArgs;
 /// import com.pulumi.azurenative.frontdoor.inputs.CustomRuleListArgs;
+/// import com.pulumi.azurenative.frontdoor.inputs.CustomRuleArgs;
+/// import com.pulumi.azurenative.frontdoor.inputs.MatchConditionArgs;
 /// import com.pulumi.azurenative.frontdoor.inputs.ManagedRuleSetListArgs;
 /// import com.pulumi.azurenative.frontdoor.inputs.ManagedRuleSetExceptionListArgs;
+/// import com.pulumi.azurenative.frontdoor.inputs.ManagedRuleSetExceptionArgs;
+/// import com.pulumi.azurenative.frontdoor.inputs.ManagedRuleSetScopeArgs;
+/// import com.pulumi.azurenative.frontdoor.inputs.ManagedRuleSetArgs;
+/// import com.pulumi.azurenative.frontdoor.inputs.ManagedRuleExclusionArgs;
+/// import com.pulumi.azurenative.frontdoor.inputs.ManagedRuleGroupOverrideArgs;
+/// import com.pulumi.azurenative.frontdoor.inputs.ManagedRuleOverrideArgs;
 /// import com.pulumi.azurenative.frontdoor.inputs.PolicySettingsArgs;
+/// import com.pulumi.azurenative.frontdoor.inputs.WebApplicationFirewallScrubbingRulesArgs;
 /// import com.pulumi.azurenative.frontdoor.inputs.SkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

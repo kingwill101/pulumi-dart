@@ -117,7 +117,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -125,7 +125,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_desktopvirtualization_msixpackage" "msixPackage" {
+/// resource "azure-native_desktopvirtualization_m_s_i_x_package" "msixPackage" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name            = "displayname"
 ///   host_pool_name          = "hostpool1"
 ///   image_path              = "imagepath"

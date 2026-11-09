@@ -57,7 +57,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_eyeson" "eyesOn" {
+/// resource "azure-native_securityinsights_eyes_on" "eyesOn" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   kind                = "EyesOn"
 ///   resource_group_name = "myRg"
 ///   settings_name       = "EyesOn"
@@ -96,7 +99,6 @@ import 'system_data_response.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var eyesOn = new EyesOn("eyesOn", EyesOnArgs.builder()
-///             .kind("EyesOn")
 ///             .resourceGroupName("myRg")
 ///             .settingsName("EyesOn")
 ///             .workspaceName("myWorkspace")

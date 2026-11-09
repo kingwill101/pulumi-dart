@@ -66,7 +66,7 @@ import 'topic_space_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,7 +74,10 @@ import 'topic_space_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventgrid_topicspace" "topicSpace" {
+/// resource "azure-native_eventgrid_topic_space" "topicSpace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   namespace_name      = "exampleNamespaceName1"
 ///   resource_group_name = "examplerg"
 ///   topic_space_name    = "exampleTopicSpaceName1"

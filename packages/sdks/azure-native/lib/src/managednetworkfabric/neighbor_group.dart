@@ -102,7 +102,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -110,7 +110,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managednetworkfabric_neighborgroup" "neighborGroup" {
+/// resource "azure-native_managednetworkfabric_neighbor_group" "neighborGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   annotation = "annotation"
 ///   destination = {
 ///     ipv4_addresses = ["10.10.10.10", "20.10.10.10", "30.10.10.10", "40.10.10.10", "50.10.10.10", "60.10.10.10", "70.10.10.10", "80.10.10.10", "90.10.10.10"]

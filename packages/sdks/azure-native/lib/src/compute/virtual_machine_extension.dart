@@ -56,10 +56,10 @@ import 'virtual_machine_extension_instance_view_response.dart';
 ///             TypeHandlerVersion = "aaaaaaaaaaaaaaaaaaaaaaaaaa",
 ///         },
 ///         Location = "westus",
-///         ProtectedSettings = null,
+///         ProtectedSettings = new() { },
 ///         Publisher = "extPublisher",
 ///         ResourceGroupName = "rgcompute",
-///         Settings = null,
+///         Settings = new() { },
 ///         SuppressFailures = true,
 ///         Tags =
 ///         {
@@ -137,7 +137,7 @@ import 'virtual_machine_extension_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -145,25 +145,28 @@ import 'virtual_machine_extension_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachineextension" "virtualMachineExtension" {
+/// resource "azure-native_compute_virtual_machine_extension" "virtualMachineExtension" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auto_upgrade_minor_version = true
 ///   enable_automatic_upgrade   = true
 ///   force_update_tag           = "a"
 ///   instance_view = {
 ///     name = "aaaaaaaaaaaaaaaaa"
 ///     statuses = [{
-///       "code"          = "aaaaaaaaaaaaaaaaaaaaaaa"
-///       "displayStatus" = "aaaaaa"
-///       "level"         = "Info"
-///       "message"       = "a"
-///       "time"          = "2021-11-30T12:58:26.522Z"
+///       code           = "aaaaaaaaaaaaaaaaaaaaaaa"
+///       display_status = "aaaaaa"
+///       level          = "Info"
+///       message        = "a"
+///       time           = "2021-11-30T12:58:26.522Z"
 ///     }]
 ///     substatuses = [{
-///       "code"          = "aaaaaaaaaaaaaaaaaaaaaaa"
-///       "displayStatus" = "aaaaaa"
-///       "level"         = "Info"
-///       "message"       = "a"
-///       "time"          = "2021-11-30T12:58:26.522Z"
+///       code           = "aaaaaaaaaaaaaaaaaaaaaaa"
+///       display_status = "aaaaaa"
+///       level          = "Info"
+///       message        = "a"
+///       time           = "2021-11-30T12:58:26.522Z"
 ///     }]
 ///     type                 = "aaaaaaaaa"
 ///     type_handler_version = "aaaaaaaaaaaaaaaaaaaaaaaaaa"
@@ -194,6 +197,7 @@ import 'virtual_machine_extension_instance_view_response.dart';
 /// import com.pulumi.azurenative.compute.VirtualMachineExtension;
 /// import com.pulumi.azurenative.compute.VirtualMachineExtensionArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineExtensionInstanceViewArgs;
+/// import com.pulumi.azurenative.compute.inputs.InstanceViewStatusArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -426,7 +430,7 @@ import 'virtual_machine_extension_instance_view_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -434,7 +438,10 @@ import 'virtual_machine_extension_instance_view_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachineextension" "virtualMachineExtension" {
+/// resource "azure-native_compute_virtual_machine_extension" "virtualMachineExtension" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   resource_group_name = "rgcompute"
 ///   vm_extension_name   = "myVMExtension"

@@ -139,7 +139,7 @@ import 'connector_mapping_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -147,7 +147,10 @@ import 'connector_mapping_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_customerinsights_connectormapping" "connectorMapping" {
+/// resource "azure-native_customerinsights_connector_mapping" "connectorMapping" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connector_name   = "testConnector8858"
 ///   description      = "Test mapping"
 ///   display_name     = "testMapping12491"
@@ -176,13 +179,13 @@ import 'connector_mapping_properties_response.dart';
 ///     }
 ///     has_header = false
 ///     structure = [{
-///       "columnName"   = "unknown1"
-///       "isEncrypted"  = false
-///       "propertyName" = "unknwon1"
+///       column_name   = "unknown1"
+///       is_encrypted  = false
+///       property_name = "unknwon1"
 ///       }, {
-///       "columnName"   = "unknown2"
-///       "isEncrypted"  = true
-///       "propertyName" = "unknwon2"
+///       column_name   = "unknown2"
+///       is_encrypted  = true
+///       property_name = "unknwon2"
 ///     }]
 ///   }
 ///   resource_group_name = "TestHubRG"
@@ -203,6 +206,7 @@ import 'connector_mapping_properties_response.dart';
 /// import com.pulumi.azurenative.customerinsights.inputs.ConnectorMappingCompleteOperationArgs;
 /// import com.pulumi.azurenative.customerinsights.inputs.ConnectorMappingErrorManagementArgs;
 /// import com.pulumi.azurenative.customerinsights.inputs.ConnectorMappingFormatArgs;
+/// import com.pulumi.azurenative.customerinsights.inputs.ConnectorMappingStructureArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

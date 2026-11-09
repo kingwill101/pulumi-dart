@@ -30,7 +30,7 @@ import 'relationship_type_mapping_response.dart';
 ///         {
 ///             { "en-us", "Relationship DisplayName" },
 ///         },
-///         Fields = new[] {},
+///         Fields = new() {},
 ///         HubName = "sdkTestHub",
 ///         ProfileType = "testProfile2326994",
 ///         RelatedProfileType = "testProfile2326994",
@@ -78,7 +78,7 @@ import 'relationship_type_mapping_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -87,6 +87,9 @@ import 'relationship_type_mapping_response.dart';
 /// }
 ///
 /// resource "azure-native_customerinsights_relationship" "relationship" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cardinality = "OneToOne"
 ///   description = {
 ///     "en-us" = "Relationship Description"

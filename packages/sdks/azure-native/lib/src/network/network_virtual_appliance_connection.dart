@@ -26,7 +26,7 @@ import 'network_virtual_appliance_connection_properties_response.dart';
 ///         NetworkVirtualApplianceName = "nva1",
 ///         Properties = new AzureNative.Network.Inputs.NetworkVirtualApplianceConnectionPropertiesArgs
 ///         {
-///             Asn = 64512,
+///             Asn = 64512.0,
 ///             BgpPeerAddress = new[]
 ///             {
 ///                 "169.254.16.13",
@@ -63,7 +63,7 @@ import 'network_virtual_appliance_connection_properties_response.dart';
 ///                     },
 ///                 },
 ///             },
-///             TunnelIdentifier = 0,
+///             TunnelIdentifier = 0.0,
 ///         },
 ///         ResourceGroupName = "rg1",
 ///     });
@@ -129,7 +129,7 @@ import 'network_virtual_appliance_connection_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -137,7 +137,10 @@ import 'network_virtual_appliance_connection_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_networkvirtualapplianceconnection" "networkVirtualApplianceConnection" {
+/// resource "azure-native_network_network_virtual_appliance_connection" "networkVirtualApplianceConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_name                = "connection1"
 ///   network_virtual_appliance_name = "nva1"
 ///   properties = {
@@ -157,7 +160,7 @@ import 'network_virtual_appliance_connection_properties_response.dart';
 ///       }
 ///       propagated_route_tables = {
 ///         ids = [{
-///           "id" = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+///           id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
 ///         }]
 ///         labels = ["label1"]
 ///       }

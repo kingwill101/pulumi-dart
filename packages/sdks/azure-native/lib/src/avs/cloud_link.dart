@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_avs_cloudlink" "cloudLink" {
+/// resource "azure-native_avs_cloud_link" "cloudLink" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloud_link_name     = "cloudLink1"
 ///   linked_cloud        = "/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2"
 ///   private_cloud_name  = "cloud1"

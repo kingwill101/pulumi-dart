@@ -65,9 +65,9 @@ import 'function_args.dart';
 /// 			FunctionName: pulumi.String("function8197"),
 /// 			JobName:      pulumi.String("sj8653"),
 /// 			Properties: &streamanalytics.ScalarFunctionPropertiesArgs{
-/// 				Binding: streamanalytics.JavaScriptFunctionBinding{
-/// 					Script: "function (x, y) { return x + y; }",
-/// 					Type:   "Microsoft.StreamAnalytics/JavascriptUdf",
+/// 				Binding: &streamanalytics.JavaScriptFunctionBindingArgs{
+/// 					Script: pulumi.String("function (x, y) { return x + y; }"),
+/// 					Type:   pulumi.String("Microsoft.StreamAnalytics/JavascriptUdf"),
 /// 				},
 /// 				Inputs: streamanalytics.FunctionInputTypeArray{
 /// 					&streamanalytics.FunctionInputTypeArgs{
@@ -91,7 +91,7 @@ import 'function_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -100,20 +100,23 @@ import 'function_args.dart';
 /// }
 ///
 /// resource "azure-native_streamanalytics_function" "function" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   function_name = "function8197"
 ///   job_name      = "sj8653"
 ///   properties = {
-///     "binding" = {
-///       "script" = "function (x, y) { return x + y; }"
-///       "type"   = "Microsoft.StreamAnalytics/JavascriptUdf"
+///     binding = {
+///       script = "function (x, y) { return x + y; }"
+///       type   = "Microsoft.StreamAnalytics/JavascriptUdf"
 ///     }
-///     "inputs" = [{
-///       "dataType" = "Any"
+///     inputs = [{
+///       data_type = "Any"
 ///     }]
-///     "output" = {
-///       "dataType" = "Any"
+///     output = {
+///       data_type = "Any"
 ///     }
-///     "type" = "Scalar"
+///     type = "Scalar"
 ///   }
 ///   resource_group_name = "sjrg1637"
 /// }
@@ -128,6 +131,12 @@ import 'function_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Function;
 /// import com.pulumi.azurenative.streamanalytics.FunctionArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AggregateFunctionPropertiesArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureMachineLearningWebServiceFunctionBindingArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.JavaScriptFunctionBindingArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.FunctionInputArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.FunctionOutputArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ScalarFunctionPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -147,7 +156,6 @@ import 'function_args.dart';
 ///             .properties(ScalarFunctionPropertiesArgs.builder()
 ///                 .binding(JavaScriptFunctionBindingArgs.builder()
 ///                     .script("function (x, y) { return x + y; }")
-///                     .type("Microsoft.StreamAnalytics/JavascriptUdf")
 ///                     .build())
 ///                 .inputs(FunctionInputArgs.builder()
 ///                     .dataType("Any")
@@ -155,7 +163,6 @@ import 'function_args.dart';
 ///                 .output(FunctionOutputArgs.builder()
 ///                     .dataType("Any")
 ///                     .build())
-///                 .type("Scalar")
 ///                 .build())
 ///             .resourceGroupName("sjrg1637")
 ///             .build());
@@ -314,27 +321,27 @@ import 'function_args.dart';
 /// 			FunctionName: pulumi.String("function588"),
 /// 			JobName:      pulumi.String("sj9093"),
 /// 			Properties: &streamanalytics.ScalarFunctionPropertiesArgs{
-/// 				Binding: streamanalytics.AzureMachineLearningWebServiceFunctionBinding{
-/// 					ApiKey:    "someApiKey==",
-/// 					BatchSize: 1000,
-/// 					Endpoint:  "someAzureMLEndpointURL",
-/// 					Inputs: streamanalytics.AzureMachineLearningWebServiceInputs{
-/// 						ColumnNames: []streamanalytics.AzureMachineLearningWebServiceInputColumn{
-/// 							{
-/// 								DataType: "string",
-/// 								MapTo:    0,
-/// 								Name:     "tweet",
+/// 				Binding: &streamanalytics.AzureMachineLearningWebServiceFunctionBindingArgs{
+/// 					ApiKey:    pulumi.String("someApiKey=="),
+/// 					BatchSize: pulumi.Int(1000),
+/// 					Endpoint:  pulumi.String("someAzureMLEndpointURL"),
+/// 					Inputs: &streamanalytics.AzureMachineLearningWebServiceInputsArgs{
+/// 						ColumnNames: streamanalytics.AzureMachineLearningWebServiceInputColumnArray{
+/// 							&streamanalytics.AzureMachineLearningWebServiceInputColumnArgs{
+/// 								DataType: pulumi.String("string"),
+/// 								MapTo:    pulumi.Int(0),
+/// 								Name:     pulumi.String("tweet"),
 /// 							},
 /// 						},
-/// 						Name: "input1",
+/// 						Name: pulumi.String("input1"),
 /// 					},
-/// 					Outputs: []streamanalytics.AzureMachineLearningWebServiceOutputColumn{
-/// 						{
-/// 							DataType: "string",
-/// 							Name:     "Sentiment",
+/// 					Outputs: streamanalytics.AzureMachineLearningWebServiceOutputColumnArray{
+/// 						&streamanalytics.AzureMachineLearningWebServiceOutputColumnArgs{
+/// 							DataType: pulumi.String("string"),
+/// 							Name:     pulumi.String("Sentiment"),
 /// 						},
 /// 					},
-/// 					Type: "Microsoft.MachineLearning/WebService",
+/// 					Type: pulumi.String("Microsoft.MachineLearning/WebService"),
 /// 				},
 /// 				Inputs: streamanalytics.FunctionInputTypeArray{
 /// 					&streamanalytics.FunctionInputTypeArgs{
@@ -358,7 +365,7 @@ import 'function_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -367,34 +374,37 @@ import 'function_args.dart';
 /// }
 ///
 /// resource "azure-native_streamanalytics_function" "function" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   function_name = "function588"
 ///   job_name      = "sj9093"
 ///   properties = {
-///     "binding" = {
-///       "apiKey"    = "someApiKey=="
-///       "batchSize" = 1000
-///       "endpoint"  = "someAzureMLEndpointURL"
-///       "inputs" = {
-///         "columnNames" = [{
-///           "dataType" = "string"
-///           "mapTo"    = 0
-///           "name"     = "tweet"
+///     binding = {
+///       api_key    = "someApiKey=="
+///       batch_size = 1000
+///       endpoint   = "someAzureMLEndpointURL"
+///       inputs = {
+///         column_names = [{
+///           data_type = "string"
+///           map_to    = 0
+///           name      = "tweet"
 ///         }]
-///         "name" = "input1"
+///         name = "input1"
 ///       }
-///       "outputs" = [{
-///         "dataType" = "string"
-///         "name"     = "Sentiment"
+///       outputs = [{
+///         data_type = "string"
+///         name      = "Sentiment"
 ///       }]
-///       "type" = "Microsoft.MachineLearning/WebService"
+///       type = "Microsoft.MachineLearning/WebService"
 ///     }
-///     "inputs" = [{
-///       "dataType" = "nvarchar(max)"
+///     inputs = [{
+///       data_type = "nvarchar(max)"
 ///     }]
-///     "output" = {
-///       "dataType" = "nvarchar(max)"
+///     output = {
+///       data_type = "nvarchar(max)"
 ///     }
-///     "type" = "Scalar"
+///     type = "Scalar"
 ///   }
 ///   resource_group_name = "sjrg7"
 /// }
@@ -409,6 +419,15 @@ import 'function_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Function;
 /// import com.pulumi.azurenative.streamanalytics.FunctionArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AggregateFunctionPropertiesArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureMachineLearningWebServiceFunctionBindingArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureMachineLearningWebServiceInputsArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureMachineLearningWebServiceInputColumnArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.AzureMachineLearningWebServiceOutputColumnArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.JavaScriptFunctionBindingArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.FunctionInputArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.FunctionOutputArgs;
+/// import com.pulumi.azurenative.streamanalytics.inputs.ScalarFunctionPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -442,7 +461,6 @@ import 'function_args.dart';
 ///                         .dataType("string")
 ///                         .name("Sentiment")
 ///                         .build())
-///                     .type("Microsoft.MachineLearning/WebService")
 ///                     .build())
 ///                 .inputs(FunctionInputArgs.builder()
 ///                     .dataType("nvarchar(max)")
@@ -450,7 +468,6 @@ import 'function_args.dart';
 ///                 .output(FunctionOutputArgs.builder()
 ///                     .dataType("nvarchar(max)")
 ///                     .build())
-///                 .type("Scalar")
 ///                 .build())
 ///             .resourceGroupName("sjrg7")
 ///             .build());

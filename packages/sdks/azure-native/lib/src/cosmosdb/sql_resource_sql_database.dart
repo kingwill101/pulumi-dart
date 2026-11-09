@@ -26,13 +26,13 @@ import 'sql_resource_sql_database_args.dart';
 ///         AccountName = "ddb1",
 ///         DatabaseName = "databaseName",
 ///         Location = "West US",
-///         Options = null,
+///         Options = new() { },
 ///         Resource = new AzureNative.CosmosDB.Inputs.SqlDatabaseResourceArgs
 ///         {
 ///             Id = "databaseName",
 ///         },
 ///         ResourceGroupName = "rg1",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -71,7 +71,7 @@ import 'sql_resource_sql_database_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'sql_resource_sql_database_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_sqlresourcesqldatabase" "sqlResourceSqlDatabase" {
+/// resource "azure-native_cosmosdb_sql_resource_sql_database" "sqlResourceSqlDatabase" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name  = "ddb1"
 ///   database_name = "databaseName"
 ///   location      = "West US"

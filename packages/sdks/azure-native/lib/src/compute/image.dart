@@ -83,7 +83,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -92,6 +92,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_image" "image" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   image_name          = "myImage"
 ///   location            = "West US"
 ///   resource_group_name = "myResourceGroup"
@@ -281,7 +284,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -290,6 +293,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_image" "image" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   image_name          = "myImage"
 ///   location            = "West US"
 ///   resource_group_name = "myResourceGroup"
@@ -479,7 +485,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -488,6 +494,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_image" "image" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   image_name          = "myImage"
 ///   location            = "West US"
 ///   resource_group_name = "myResourceGroup"
@@ -692,7 +701,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -701,6 +710,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_image" "image" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   image_name          = "myImage"
 ///   location            = "West US"
 ///   resource_group_name = "myResourceGroup"
@@ -900,7 +912,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -909,6 +921,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_image" "image" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   image_name          = "myImage"
 ///   location            = "West US"
 ///   resource_group_name = "myResourceGroup"
@@ -1113,7 +1128,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1122,6 +1137,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_image" "image" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   image_name          = "myImage"
 ///   location            = "West US"
 ///   resource_group_name = "myResourceGroup"
@@ -1300,7 +1318,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1309,6 +1327,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_image" "image" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   image_name          = "myImage"
 ///   location            = "West US"
 ///   resource_group_name = "myResourceGroup"
@@ -1477,7 +1498,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1486,13 +1507,16 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_image" "image" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   image_name          = "myImage"
 ///   location            = "West US"
 ///   resource_group_name = "myResourceGroup"
 ///   storage_profile = {
 ///     data_disks = [{
-///       "blobUri" = "https://mystorageaccount.blob.core.windows.net/dataimages/dataimage.vhd"
-///       "lun"     = 1
+///       blob_uri = "https://mystorageaccount.blob.core.windows.net/dataimages/dataimage.vhd"
+///       lun      = 1
 ///     }]
 ///     os_disk = {
 ///       blob_uri = "https://mystorageaccount.blob.core.windows.net/osimages/osimage.vhd"
@@ -1514,6 +1538,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.Image;
 /// import com.pulumi.azurenative.compute.ImageArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageStorageProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.ImageDataDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageOSDiskArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1708,7 +1733,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1717,14 +1742,17 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_image" "image" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   image_name          = "myImage"
 ///   location            = "West US"
 ///   resource_group_name = "myResourceGroup"
 ///   storage_profile = {
 ///     data_disks = [{
-///       "lun" = 1
-///       "managedDisk" = {
-///         "id" = "subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/myManagedDisk2"
+///       lun = 1
+///       managed_disk = {
+///         id = "subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/myManagedDisk2"
 ///       }
 ///     }]
 ///     os_disk = {
@@ -1749,8 +1777,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.Image;
 /// import com.pulumi.azurenative.compute.ImageArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageStorageProfileArgs;
-/// import com.pulumi.azurenative.compute.inputs.ImageOSDiskArgs;
+/// import com.pulumi.azurenative.compute.inputs.ImageDataDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.SubResourceArgs;
+/// import com.pulumi.azurenative.compute.inputs.ImageOSDiskArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1958,7 +1987,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1967,14 +1996,17 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_image" "image" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   image_name          = "myImage"
 ///   location            = "West US"
 ///   resource_group_name = "myResourceGroup"
 ///   storage_profile = {
 ///     data_disks = [{
-///       "lun" = 1
-///       "snapshot" = {
-///         "id" = "subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/mySnapshot2"
+///       lun = 1
+///       snapshot = {
+///         id = "subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/mySnapshot2"
 ///       }
 ///     }]
 ///     os_disk = {
@@ -1999,8 +2031,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.Image;
 /// import com.pulumi.azurenative.compute.ImageArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageStorageProfileArgs;
-/// import com.pulumi.azurenative.compute.inputs.ImageOSDiskArgs;
+/// import com.pulumi.azurenative.compute.inputs.ImageDataDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.SubResourceArgs;
+/// import com.pulumi.azurenative.compute.inputs.ImageOSDiskArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

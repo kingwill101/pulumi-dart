@@ -53,7 +53,7 @@ import 'import_collector_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -61,7 +61,10 @@ import 'import_collector_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_importcollector" "importCollector" {
+/// resource "azure-native_migrate_import_collector" "importCollector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   import_collector_name = "importCollector2952"
 ///   project_name          = "rajoshCCY9671project"
 ///   resource_group_name   = "markusavstestrg"

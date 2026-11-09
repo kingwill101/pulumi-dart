@@ -154,7 +154,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -162,7 +162,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_snstopic" "snsTopic" {
+/// resource "azure-native_awsconnector_sns_topic" "snsTopic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "vzzjtyjhqbty"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -171,22 +174,22 @@ import 'system_data_response.dart';
 ///     aws_properties = {
 ///       content_based_deduplication = true
 ///       delivery_status_logging = [{
-///         "failureFeedbackRoleArn"    = "ygtlmetldtzqhoasmdit"
-///         "protocol"                  = "application"
-///         "successFeedbackRoleArn"    = "ersgnxrmfnrqhmyilsomcxxlza"
-///         "successFeedbackSampleRate" = "iudedzrjawqzroytyyonpydzjzzmlj"
+///         failure_feedback_role_arn    = "ygtlmetldtzqhoasmdit"
+///         protocol                     = "application"
+///         success_feedback_role_arn    = "ersgnxrmfnrqhmyilsomcxxlza"
+///         success_feedback_sample_rate = "iudedzrjawqzroytyyonpydzjzzmlj"
 ///       }]
 ///       display_name      = "sanmplpvkvcorlhraijepxftlyeqwj"
 ///       fifo_topic        = true
 ///       kms_master_key_id = "nioyrfbmzmfdvakoenyodtjgzaxuw"
 ///       signature_version = "lpfgizlw"
 ///       subscription = [{
-///         "endpoint" = "yuvwciasnlpnswnynse"
-///         "protocol" = "zohpkxrrouufioztdmkw"
+///         endpoint = "yuvwciasnlpnswnynse"
+///         protocol = "zohpkxrrouufioztdmkw"
 ///       }]
 ///       tags = [{
-///         "key"   = "daicnimeizenloocglfwacmcp"
-///         "value" = "bxdamnevuybindqttmfvzotzqboj"
+///         key   = "daicnimeizenloocglfwacmcp"
+///         value = "bxdamnevuybindqttmfvzotzqboj"
 ///       }]
 ///       topic_arn      = "owersxkcdlhhnawxkmqlcjlzqlxtmj"
 ///       topic_name     = "lijmdexuvnfby"
@@ -218,6 +221,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.SnsTopicArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.SnsTopicPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsSnsTopicPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.LoggingConfigArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.SubscriptionArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

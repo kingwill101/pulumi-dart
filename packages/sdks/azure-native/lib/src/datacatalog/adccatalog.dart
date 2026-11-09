@@ -98,7 +98,7 @@ import 'principals_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -106,7 +106,10 @@ import 'principals_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datacatalog_adccatalog" "adcCatalog" {
+/// resource "azure-native_datacatalog_a_d_c_catalog" "adcCatalog" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   admins {
 ///     object_id = "99999999-9999-9999-999999999999"
 ///     upn       = "myupn@microsoft.com"

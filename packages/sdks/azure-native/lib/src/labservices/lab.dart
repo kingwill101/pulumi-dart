@@ -159,7 +159,7 @@ import 'virtual_machine_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -168,6 +168,9 @@ import 'virtual_machine_profile_response.dart';
 /// }
 ///
 /// resource "azure-native_labservices_lab" "lab" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auto_shutdown_profile = {
 ///     disconnect_delay            = "PT5M"
 ///     idle_delay                  = "PT5M"

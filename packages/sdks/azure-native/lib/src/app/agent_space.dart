@@ -170,7 +170,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -178,7 +178,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_agentspace" "agentSpace" {
+/// resource "azure-native_app_agent_space" "agentSpace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_space_name = "newAgentSpace"
 ///   identity = {
 ///     type = "SystemAssigned"
@@ -191,24 +194,24 @@ import 'system_data_response.dart';
 ///       geneva_actions_configuration = {
 ///         acis_endpoint = "https://acis.eastus.monitoring.azure.com"
 ///         allowed_actions = [{
-///           "actionName" = "RestartService"
-///           "actionParameters" = [{
-///             "name" = "serviceName"
-///             "type" = "string"
+///           action_name = "RestartService"
+///           action_parameters = [{
+///             name = "serviceName"
+///             type = "string"
 ///           }]
-///           "approvalRequired" = true
-///           "extension"        = "GenevaActions"
+///           approval_required = true
+///           extension         = "GenevaActions"
 ///           }, {
-///           "actionName" = "GetMetrics"
-///           "actionParameters" = [{
-///             "name" = "metricName"
-///             "type" = "string"
+///           action_name = "GetMetrics"
+///           action_parameters = [{
+///             name = "metricName"
+///             type = "string"
 ///             }, {
-///             "name" = "timeRange"
-///             "type" = "string"
+///             name = "timeRange"
+///             type = "string"
 ///           }]
-///           "approvalRequired" = false
-///           "extension"        = "GenevaActions"
+///           approval_required = false
+///           extension         = "GenevaActions"
 ///         }]
 ///         authentication_mode      = "OAuth"
 ///         certificate_subject_name = "CN=AgentSpaceAuth"
@@ -240,6 +243,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.inputs.AgentSpacePropertiesArgs;
 /// import com.pulumi.azurenative.app.inputs.AgentSpacePoliciesArgs;
 /// import com.pulumi.azurenative.app.inputs.GenevaActionsPolicyArgs;
+/// import com.pulumi.azurenative.app.inputs.GenevaActionConfigArgs;
+/// import com.pulumi.azurenative.app.inputs.GenevaActionParameterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

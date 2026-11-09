@@ -132,7 +132,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -140,7 +140,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_logsmetricfilter" "logsMetricFilter" {
+/// resource "azure-native_awsconnector_logs_metric_filter" "logsMetricFilter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "hvjoetfjcwqioibnqqj"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -151,15 +154,15 @@ import 'system_data_response.dart';
 ///       filter_pattern = "xkejasx"
 ///       log_group_name = "cugxyp"
 ///       metric_transformations = [{
-///         "defaultValue" = 7
-///         "dimensions" = [{
-///           "key"   = "aevchjwu"
-///           "value" = "rosnaljwmrdesiticsc"
+///         default_value = 7
+///         dimensions = [{
+///           key   = "aevchjwu"
+///           value = "rosnaljwmrdesiticsc"
 ///         }]
-///         "metricName"      = "oybfr"
-///         "metricNamespace" = "iabzdcxljvduduha"
-///         "metricValue"     = "rpkrrqxywciyvedsvrlbujqjenrlpr"
-///         "unit"            = "Bits"
+///         metric_name      = "oybfr"
+///         metric_namespace = "iabzdcxljvduduha"
+///         metric_value     = "rpkrrqxywciyvedsvrlbujqjenrlpr"
+///         unit             = "Bits"
 ///       }]
 ///     }
 ///     aws_region        = "qjqubwwtlycfy"
@@ -188,6 +191,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.LogsMetricFilterArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LogsMetricFilterPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsLogsMetricFilterPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.MetricTransformationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.DimensionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

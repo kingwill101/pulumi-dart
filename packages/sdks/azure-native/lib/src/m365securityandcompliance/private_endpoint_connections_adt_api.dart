@@ -66,7 +66,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,7 +74,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_m365securityandcompliance_privateendpointconnectionsadtapi" "privateEndpointConnectionsAdtAPI" {
+/// resource "azure-native_m365securityandcompliance_private_endpoint_connections_adt_a_p_i" "privateEndpointConnectionsAdtAPI" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   private_endpoint_connection_name = "myConnection"
 ///   private_link_service_connection_state = {
 ///     description = "Auto-Approved"

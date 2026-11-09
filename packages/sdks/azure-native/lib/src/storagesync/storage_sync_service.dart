@@ -32,7 +32,7 @@ import 'system_data_response.dart';
 ///         Location = "WestUS",
 ///         ResourceGroupName = "SampleResourceGroup_1",
 ///         StorageSyncServiceName = "SampleStorageSyncService_1",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -70,7 +70,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,7 +78,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storagesync_storagesyncservice" "storageSyncService" {
+/// resource "azure-native_storagesync_storage_sync_service" "storageSyncService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity = {
 ///     type = "SystemAssigned, UserAssigned"
 ///   }

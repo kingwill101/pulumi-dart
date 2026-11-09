@@ -90,7 +90,7 @@ import 'workspace_provider_authorization_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -99,6 +99,9 @@ import 'workspace_provider_authorization_response.dart';
 /// }
 ///
 /// resource "azure-native_databricks_workspace" "workspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_mode              = "Hybrid"
 ///   location                  = "westus"
 ///   managed_resource_group_id = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/myManagedRG"
@@ -311,7 +314,7 @@ import 'workspace_provider_authorization_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -320,6 +323,9 @@ import 'workspace_provider_authorization_response.dart';
 /// }
 ///
 /// resource "azure-native_databricks_workspace" "workspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_mode = "Hybrid"
 ///   encryption = {
 ///     entities = {
@@ -505,7 +511,7 @@ import 'workspace_provider_authorization_response.dart';
 ///             },
 ///             ComplianceSecurityProfile = new AzureNative.Databricks.Inputs.ComplianceSecurityProfileDefinitionArgs
 ///             {
-///                 ComplianceStandards = new[]
+///                 ComplianceStandards =
 ///                 {
 ///                     AzureNative.Databricks.ComplianceStandard.PCI_DSS,
 ///                     AzureNative.Databricks.ComplianceStandard.HIPAA,
@@ -577,7 +583,7 @@ import 'workspace_provider_authorization_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -586,6 +592,9 @@ import 'workspace_provider_authorization_response.dart';
 /// }
 ///
 /// resource "azure-native_databricks_workspace" "workspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_mode = "Hybrid"
 ///   enhanced_security_compliance = {
 ///     automatic_cluster_update = {
@@ -811,7 +820,7 @@ import 'workspace_provider_authorization_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -820,6 +829,9 @@ import 'workspace_provider_authorization_response.dart';
 /// }
 ///
 /// resource "azure-native_databricks_workspace" "workspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_mode        = "Serverless"
 ///   location            = "westus"
 ///   resource_group_name = "rg"
@@ -992,7 +1004,7 @@ import 'workspace_provider_authorization_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1001,6 +1013,9 @@ import 'workspace_provider_authorization_response.dart';
 /// }
 ///
 /// resource "azure-native_databricks_workspace" "workspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   access_connector = {
 ///     id            = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/adbrg/providers/Microsoft.Databricks/accessConnectors/myAccessConnector"
 ///     identity_type = "SystemAssigned"
@@ -1251,7 +1266,7 @@ import 'workspace_provider_authorization_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1260,6 +1275,9 @@ import 'workspace_provider_authorization_response.dart';
 /// }
 ///
 /// resource "azure-native_databricks_workspace" "workspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   access_connector = {
 ///     id                        = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/adbrg/providers/Microsoft.Databricks/accessConnectors/myAccessConnector"
 ///     identity_type             = "UserAssigned"
@@ -1550,7 +1568,7 @@ import 'workspace_provider_authorization_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1559,6 +1577,9 @@ import 'workspace_provider_authorization_response.dart';
 /// }
 ///
 /// resource "azure-native_databricks_workspace" "workspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_mode              = "Hybrid"
 ///   location                  = "westus"
 ///   managed_resource_group_id = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/myManagedRG"
@@ -1798,7 +1819,7 @@ import 'workspace_provider_authorization_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1807,6 +1828,9 @@ import 'workspace_provider_authorization_response.dart';
 /// }
 ///
 /// resource "azure-native_databricks_workspace" "workspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_mode              = "Hybrid"
 ///   location                  = "westus"
 ///   managed_resource_group_id = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/myManagedRG"
@@ -2036,7 +2060,7 @@ import 'workspace_provider_authorization_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2045,6 +2069,9 @@ import 'workspace_provider_authorization_response.dart';
 /// }
 ///
 /// resource "azure-native_databricks_workspace" "workspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_mode = "Hybrid"
 ///   encryption = {
 ///     entities = {

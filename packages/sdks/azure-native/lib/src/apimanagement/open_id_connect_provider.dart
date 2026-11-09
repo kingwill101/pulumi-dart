@@ -68,7 +68,7 @@ import 'open_id_connect_provider_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'open_id_connect_provider_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_openidconnectprovider" "openIdConnectProvider" {
+/// resource "azure-native_apimanagement_open_id_connect_provider" "openIdConnectProvider" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_id                = "oidprovidertemplate3"
 ///   client_secret            = "x"
 ///   display_name             = "templateoidprovider3"

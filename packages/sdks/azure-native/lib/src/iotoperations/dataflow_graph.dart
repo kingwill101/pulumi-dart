@@ -219,53 +219,53 @@ import 'system_data_response.dart';
 /// 					},
 /// 				},
 /// 				Nodes: pulumi.Array{
-/// 					iotoperations.DataflowGraphSourceNode{
-/// 						Name:     "temperature",
-/// 						NodeType: "Source",
-/// 						SourceSettings: iotoperations.DataflowGraphSourceSettings{
-/// 							DataSources: []string{
-/// 								"telemetry/temperature",
+/// 					&iotoperations.DataflowGraphSourceNodeArgs{
+/// 						Name:     pulumi.String("temperature"),
+/// 						NodeType: pulumi.String("Source"),
+/// 						SourceSettings: &iotoperations.DataflowGraphSourceSettingsArgs{
+/// 							DataSources: pulumi.StringArray{
+/// 								pulumi.String("telemetry/temperature"),
 /// 							},
-/// 							EndpointRef: "default",
+/// 							EndpointRef: pulumi.String("default"),
 /// 						},
 /// 					},
-/// 					iotoperations.DataflowGraphGraphNode{
-/// 						GraphSettings: iotoperations.DataflowGraphNodeGraphSettings{
-/// 							Artifact: "my-wasm-module:1.4.3",
-/// 							Configuration: []iotoperations.DataflowGraphGraphNodeConfiguration{
-/// 								{
-/// 									Key:   "key1",
-/// 									Value: "value1",
+/// 					&iotoperations.DataflowGraphGraphNodeArgs{
+/// 						GraphSettings: &iotoperations.DataflowGraphNodeGraphSettingsArgs{
+/// 							Artifact: pulumi.String("my-wasm-module:1.4.3"),
+/// 							Configuration: iotoperations.DataflowGraphGraphNodeConfigurationArray{
+/// 								&iotoperations.DataflowGraphGraphNodeConfigurationArgs{
+/// 									Key:   pulumi.String("key1"),
+/// 									Value: pulumi.String("value1"),
 /// 								},
-/// 								{
-/// 									Key:   "key2",
-/// 									Value: "value2",
+/// 								&iotoperations.DataflowGraphGraphNodeConfigurationArgs{
+/// 									Key:   pulumi.String("key2"),
+/// 									Value: pulumi.String("value2"),
 /// 								},
 /// 							},
-/// 							RegistryEndpointRef: "my-registry-endpoint",
+/// 							RegistryEndpointRef: pulumi.String("my-registry-endpoint"),
 /// 						},
-/// 						Name:     "my-graph",
-/// 						NodeType: "Graph",
+/// 						Name:     pulumi.String("my-graph"),
+/// 						NodeType: pulumi.String("Graph"),
 /// 					},
-/// 					iotoperations.DataflowGraphDestinationNode{
-/// 						DestinationSettings: iotoperations.DataflowGraphDestinationNodeSettings{
-/// 							DataDestination: "telemetry/temperature/alert",
-/// 							EndpointRef:     "default",
+/// 					&iotoperations.DataflowGraphDestinationNodeArgs{
+/// 						DestinationSettings: &iotoperations.DataflowGraphDestinationNodeSettingsArgs{
+/// 							DataDestination: pulumi.String("telemetry/temperature/alert"),
+/// 							EndpointRef:     pulumi.String("default"),
 /// 						},
-/// 						Name:     "alert",
-/// 						NodeType: "Destination",
+/// 						Name:     pulumi.String("alert"),
+/// 						NodeType: pulumi.String("Destination"),
 /// 					},
-/// 					iotoperations.DataflowGraphDestinationNode{
-/// 						DestinationSettings: iotoperations.DataflowGraphDestinationNodeSettings{
-/// 							DataDestination: "my-table",
-/// 							EndpointRef:     "fabric",
-/// 							OutputSchemaSettings: iotoperations.DataflowGraphDestinationSchemaSettings{
-/// 								SchemaRef:           "aio-sr://namespace/alert-parquet:1",
-/// 								SerializationFormat: iotoperations.DataflowGraphDestinationSchemaSerializationFormatParquet,
+/// 					&iotoperations.DataflowGraphDestinationNodeArgs{
+/// 						DestinationSettings: &iotoperations.DataflowGraphDestinationNodeSettingsArgs{
+/// 							DataDestination: pulumi.String("my-table"),
+/// 							EndpointRef:     pulumi.String("fabric"),
+/// 							OutputSchemaSettings: &iotoperations.DataflowGraphDestinationSchemaSettingsArgs{
+/// 								SchemaRef:           pulumi.String("aio-sr://namespace/alert-parquet:1"),
+/// 								SerializationFormat: pulumi.String(iotoperations.DataflowGraphDestinationSchemaSerializationFormatParquet),
 /// 							},
 /// 						},
-/// 						Name:     "fabric",
-/// 						NodeType: "Destination",
+/// 						Name:     pulumi.String("fabric"),
+/// 						NodeType: pulumi.String("Destination"),
 /// 					},
 /// 				},
 /// 				RequestDiskPersistence: pulumi.String(iotoperations.OperationalModeEnabled),
@@ -282,7 +282,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -290,7 +290,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperations_dataflowgraph" "dataflowGraph" {
+/// resource "azure-native_iotoperations_dataflow_graph" "dataflowGraph" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataflow_graph_name   = "resource-123"
 ///   dataflow_profile_name = "resource-123"
 ///   extended_location = {
@@ -301,78 +304,78 @@ import 'system_data_response.dart';
 ///   properties = {
 ///     mode = "Enabled"
 ///     node_connections = [{
-///       "from" = {
-///         "name" = "temperature"
-///         "schema" = {
-///           "schemaRef"           = "aio-sr://namespace/temperature:1"
-///           "serializationFormat" = "Avro"
+///       from = {
+///         name = "temperature"
+///         schema = {
+///           schema_ref           = "aio-sr://namespace/temperature:1"
+///           serialization_format = "Avro"
 ///         }
 ///       }
-///       "to" = {
-///         "name" = "my-graph"
+///       to = {
+///         name = "my-graph"
 ///       }
 ///       }, {
-///       "from" = {
-///         "name" = "my-graph.alert-output"
-///         "schema" = {
-///           "schemaRef"           = "aio-sr://namespace/alert:1"
-///           "serializationFormat" = "Avro"
+///       from = {
+///         name = "my-graph.alert-output"
+///         schema = {
+///           schema_ref           = "aio-sr://namespace/alert:1"
+///           serialization_format = "Avro"
 ///         }
 ///       }
-///       "to" = {
-///         "name" = "fabric"
+///       to = {
+///         name = "fabric"
 ///       }
 ///       }, {
-///       "from" = {
-///         "name" = "my-graph.normal-output"
-///         "schema" = {
-///           "schemaRef"           = "aio-sr://namespace/alert:1"
-///           "serializationFormat" = "Avro"
+///       from = {
+///         name = "my-graph.normal-output"
+///         schema = {
+///           schema_ref           = "aio-sr://namespace/alert:1"
+///           serialization_format = "Avro"
 ///         }
 ///       }
-///       "to" = {
-///         "name" = "fabric"
+///       to = {
+///         name = "fabric"
 ///       }
 ///     }]
 ///     nodes = [{
-///       "name"     = "temperature"
-///       "nodeType" = "Source"
-///       "sourceSettings" = {
-///         "dataSources" = ["telemetry/temperature"]
-///         "endpointRef" = "default"
+///       name      = "temperature"
+///       node_type = "Source"
+///       source_settings = {
+///         data_sources = ["telemetry/temperature"]
+///         endpoint_ref = "default"
 ///       }
 ///       }, {
-///       "graphSettings" = {
-///         "artifact" = "my-wasm-module:1.4.3"
-///         "configuration" = [{
-///           "key"   = "key1"
-///           "value" = "value1"
+///       graph_settings = {
+///         artifact = "my-wasm-module:1.4.3"
+///         configuration = [{
+///           key   = "key1"
+///           value = "value1"
 ///           }, {
-///           "key"   = "key2"
-///           "value" = "value2"
+///           key   = "key2"
+///           value = "value2"
 ///         }]
-///         "registryEndpointRef" = "my-registry-endpoint"
+///         registry_endpoint_ref = "my-registry-endpoint"
 ///       }
-///       "name"     = "my-graph"
-///       "nodeType" = "Graph"
+///       name      = "my-graph"
+///       node_type = "Graph"
 ///       }, {
-///       "destinationSettings" = {
-///         "dataDestination" = "telemetry/temperature/alert"
-///         "endpointRef"     = "default"
+///       destination_settings = {
+///         data_destination = "telemetry/temperature/alert"
+///         endpoint_ref     = "default"
 ///       }
-///       "name"     = "alert"
-///       "nodeType" = "Destination"
+///       name      = "alert"
+///       node_type = "Destination"
 ///       }, {
-///       "destinationSettings" = {
-///         "dataDestination" = "my-table"
-///         "endpointRef"     = "fabric"
-///         "outputSchemaSettings" = {
-///           "schemaRef"           = "aio-sr://namespace/alert-parquet:1"
-///           "serializationFormat" = "Parquet"
+///       destination_settings = {
+///         data_destination = "my-table"
+///         endpoint_ref     = "fabric"
+///         output_schema_settings = {
+///           schema_ref           = "aio-sr://namespace/alert-parquet:1"
+///           serialization_format = "Parquet"
 ///         }
 ///       }
-///       "name"     = "fabric"
-///       "nodeType" = "Destination"
+///       name      = "fabric"
+///       node_type = "Destination"
 ///     }]
 ///     request_disk_persistence = "Enabled"
 ///   }
@@ -391,6 +394,18 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.DataflowGraphArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.DataflowGraphPropertiesArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowGraphNodeConnectionArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowGraphConnectionInputArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowGraphConnectionSchemaSettingsArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowGraphConnectionOutputArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowGraphDestinationNodeArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowGraphGraphNodeArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowGraphSourceNodeArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowGraphSourceSettingsArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowGraphNodeGraphSettingsArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowGraphGraphNodeConfigurationArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowGraphDestinationNodeSettingsArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.DataflowGraphDestinationSchemaSettingsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -454,7 +469,6 @@ import 'system_data_response.dart';
 ///                 .nodes(
 ///                     DataflowGraphSourceNodeArgs.builder()
 ///                         .name("temperature")
-///                         .nodeType("Source")
 ///                         .sourceSettings(DataflowGraphSourceSettingsArgs.builder()
 ///                             .dataSources("telemetry/temperature")
 ///                             .endpointRef("default")
@@ -475,7 +489,6 @@ import 'system_data_response.dart';
 ///                             .registryEndpointRef("my-registry-endpoint")
 ///                             .build())
 ///                         .name("my-graph")
-///                         .nodeType("Graph")
 ///                         .build(),
 ///                     DataflowGraphDestinationNodeArgs.builder()
 ///                         .destinationSettings(DataflowGraphDestinationNodeSettingsArgs.builder()
@@ -483,7 +496,6 @@ import 'system_data_response.dart';
 ///                             .endpointRef("default")
 ///                             .build())
 ///                         .name("alert")
-///                         .nodeType("Destination")
 ///                         .build(),
 ///                     DataflowGraphDestinationNodeArgs.builder()
 ///                         .destinationSettings(DataflowGraphDestinationNodeSettingsArgs.builder()
@@ -495,7 +507,6 @@ import 'system_data_response.dart';
 ///                                 .build())
 ///                             .build())
 ///                         .name("fabric")
-///                         .nodeType("Destination")
 ///                         .build())
 ///                 .requestDiskPersistence("Enabled")
 ///                 .build())

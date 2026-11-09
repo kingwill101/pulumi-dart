@@ -62,7 +62,7 @@ import 'workspace_product_group_link_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,7 +70,10 @@ import 'workspace_product_group_link_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_workspaceproductgrouplink" "workspaceProductGroupLink" {
+/// resource "azure-native_apimanagement_workspace_product_group_link" "workspaceProductGroupLink" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_id            = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/groups/group1"
 ///   group_link_id       = "link1"
 ///   product_id          = "testproduct"

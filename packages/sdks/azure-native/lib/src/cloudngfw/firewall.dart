@@ -342,7 +342,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -351,6 +351,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_cloudngfw_firewall" "firewall" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   associated_rulestack = {
 ///     location     = "eastus"
 ///     resource_id  = "lrs1"
@@ -358,8 +361,8 @@ import 'system_data_response.dart';
 ///   }
 ///   dns_settings = {
 ///     dns_servers = [{
-///       "address"    = "20.22.92.111"
-///       "resourceId" = "/subscriptions/01c7d41f-afaf-464e-8a8b-5c6f9f98cee8/resourceGroups/mj-liftr-integration/providers/Microsoft.Network/publicIPAddresses/mj-liftr-integration-egressNatIp1"
+///       address     = "20.22.92.111"
+///       resource_id = "/subscriptions/01c7d41f-afaf-464e-8a8b-5c6f9f98cee8/resourceGroups/mj-liftr-integration/providers/Microsoft.Network/publicIPAddresses/mj-liftr-integration-egressNatIp1"
 ///     }]
 ///     enable_dns_proxy = "DISABLED"
 ///     enabled_dns_type = "CUSTOM"
@@ -401,15 +404,15 @@ import 'system_data_response.dart';
 ///   }
 ///   network_profile = {
 ///     egress_nat_ip = [{
-///       "address"    = "20.22.92.111"
-///       "resourceId" = "/subscriptions/01c7d41f-afaf-464e-8a8b-5c6f9f98cee8/resourceGroups/mj-liftr-integration/providers/Microsoft.Network/publicIPAddresses/mj-liftr-integration-egressNatIp1"
+///       address     = "20.22.92.111"
+///       resource_id = "/subscriptions/01c7d41f-afaf-464e-8a8b-5c6f9f98cee8/resourceGroups/mj-liftr-integration/providers/Microsoft.Network/publicIPAddresses/mj-liftr-integration-egressNatIp1"
 ///     }]
 ///     enable_egress_nat                    = "ENABLED"
 ///     network_type                         = "VNET"
 ///     private_source_nat_rules_destination = ["20.22.92.11"]
 ///     public_ips = [{
-///       "address"    = "20.22.92.11"
-///       "resourceId" = "/subscriptions/01c7d41f-afaf-464e-8a8b-5c6f9f98cee8/resourceGroups/mj-liftr-integration/providers/Microsoft.Network/publicIPAddresses/mj-liftr-integration-PublicIp1"
+///       address     = "20.22.92.11"
+///       resource_id = "/subscriptions/01c7d41f-afaf-464e-8a8b-5c6f9f98cee8/resourceGroups/mj-liftr-integration/providers/Microsoft.Network/publicIPAddresses/mj-liftr-integration-PublicIp1"
 ///     }]
 ///     trusted_ranges = ["20.22.92.11"]
 ///     vnet_configuration = {
@@ -477,10 +480,11 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cloudngfw.FirewallArgs;
 /// import com.pulumi.azurenative.cloudngfw.inputs.RulestackDetailsArgs;
 /// import com.pulumi.azurenative.cloudngfw.inputs.DNSSettingsArgs;
+/// import com.pulumi.azurenative.cloudngfw.inputs.IPAddressArgs;
 /// import com.pulumi.azurenative.cloudngfw.inputs.FrontendSettingArgs;
 /// import com.pulumi.azurenative.cloudngfw.inputs.EndpointConfigurationArgs;
-/// import com.pulumi.azurenative.cloudngfw.inputs.IPAddressArgs;
 /// import com.pulumi.azurenative.cloudngfw.inputs.AzureResourceManagerManagedIdentityPropertiesArgs;
+/// import com.pulumi.azurenative.cloudngfw.inputs.AzureResourceManagerUserAssignedIdentityArgs;
 /// import com.pulumi.azurenative.cloudngfw.inputs.MarketplaceDetailsArgs;
 /// import com.pulumi.azurenative.cloudngfw.inputs.NetworkProfileArgs;
 /// import com.pulumi.azurenative.cloudngfw.inputs.VnetConfigurationArgs;
@@ -965,7 +969,7 @@ import 'system_data_response.dart';
 /// {
 ///     var firewall = new AzureNative.Cloudngfw.Firewall("firewall", new()
 ///     {
-///         DnsSettings = null,
+///         DnsSettings = new() { },
 ///         FirewallName = "firewall1",
 ///         Location = "eastus",
 ///         MarketplaceDetails = new AzureNative.Cloudngfw.Inputs.MarketplaceDetailsArgs
@@ -1043,7 +1047,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1052,6 +1056,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_cloudngfw_firewall" "firewall" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dns_settings  = {}
 ///   firewall_name = "firewall1"
 ///   location      = "eastus"
@@ -1063,8 +1070,8 @@ import 'system_data_response.dart';
 ///     enable_egress_nat = "ENABLED"
 ///     network_type      = "VNET"
 ///     public_ips = [{
-///       "address"    = "20.22.92.11"
-///       "resourceId" = "/subscriptions/01c7d41f-afaf-464e-8a8b-5c6f9f98cee8/resourceGroups/mj-liftr-integration/providers/Microsoft.Network/publicIPAddresses/mj-liftr-integration-PublicIp1"
+///       address     = "20.22.92.11"
+///       resource_id = "/subscriptions/01c7d41f-afaf-464e-8a8b-5c6f9f98cee8/resourceGroups/mj-liftr-integration/providers/Microsoft.Network/publicIPAddresses/mj-liftr-integration-PublicIp1"
 ///     }]
 ///   }
 ///   plan_data = {
@@ -1087,6 +1094,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cloudngfw.inputs.DNSSettingsArgs;
 /// import com.pulumi.azurenative.cloudngfw.inputs.MarketplaceDetailsArgs;
 /// import com.pulumi.azurenative.cloudngfw.inputs.NetworkProfileArgs;
+/// import com.pulumi.azurenative.cloudngfw.inputs.IPAddressArgs;
 /// import com.pulumi.azurenative.cloudngfw.inputs.PlanDataArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

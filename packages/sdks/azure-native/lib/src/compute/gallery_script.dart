@@ -75,7 +75,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,7 +83,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_galleryscript" "galleryScript" {
+/// resource "azure-native_compute_gallery_script" "galleryScript" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   gallery_name        = "myGalleryName"
 ///   gallery_script_name = "myGalleryScriptName"
 ///   location            = "West US"

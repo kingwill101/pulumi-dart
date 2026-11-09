@@ -45,9 +45,9 @@ import 'system_data_response.dart';
 ///                         },
 ///                         OpenIDConnectConfig = new AzureNative.AwsConnector.Inputs.OpenIDConnectConfigArgs
 ///                         {
-///                             AuthTTL = 22,
+///                             AuthTTL = 22.0,
 ///                             ClientId = "luiqpcaoupuxlkhifmjmssaujivibq",
-///                             IatTTL = 12,
+///                             IatTTL = 12.0,
 ///                             Issuer = "gxglhkdfnvrrtsalksedpcukpk",
 ///                         },
 ///                         UserPoolConfig = new AzureNative.AwsConnector.Inputs.CognitoUserPoolConfigArgs
@@ -110,9 +110,9 @@ import 'system_data_response.dart';
 ///                 Name = "ahvfu",
 ///                 OpenIDConnectConfig = new AzureNative.AwsConnector.Inputs.OpenIDConnectConfigArgs
 ///                 {
-///                     AuthTTL = 22,
+///                     AuthTTL = 22.0,
 ///                     ClientId = "luiqpcaoupuxlkhifmjmssaujivibq",
-///                     IatTTL = 12,
+///                     IatTTL = 12.0,
 ///                     Issuer = "gxglhkdfnvrrtsalksedpcukpk",
 ///                 },
 ///                 Owner = "pdudimkqozuoczxvlgmj",
@@ -297,7 +297,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -305,7 +305,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_appsyncgraphqlapi" "appSyncGraphqlApi" {
+/// resource "azure-native_awsconnector_app_sync_graphql_api" "appSyncGraphqlApi" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "fgdkdvbltlygm"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -313,24 +316,24 @@ import 'system_data_response.dart';
 ///     aws_account_id = "cbznxz"
 ///     aws_properties = {
 ///       additional_authentication_providers = [{
-///         "authenticationType" = {
-///           "value" = "AMAZON_COGNITO_USER_POOLS"
+///         authentication_type = {
+///           value = "AMAZON_COGNITO_USER_POOLS"
 ///         }
-///         "lambdaAuthorizerConfig" = {
-///           "authorizerResultTtlInSeconds" = 30
-///           "authorizerUri"                = "hupypfpuanzvftlniinspu"
-///           "identityValidationExpression" = "hspldtc"
+///         lambda_authorizer_config = {
+///           authorizer_result_ttl_in_seconds = 30
+///           authorizer_uri                   = "hupypfpuanzvftlniinspu"
+///           identity_validation_expression   = "hspldtc"
 ///         }
-///         "openIDConnectConfig" = {
-///           "authTTL"  = 22
-///           "clientId" = "luiqpcaoupuxlkhifmjmssaujivibq"
-///           "iatTTL"   = 12
-///           "issuer"   = "gxglhkdfnvrrtsalksedpcukpk"
+///         open_id_connect_config = {
+///           auth_ttl  = 22
+///           client_id = "luiqpcaoupuxlkhifmjmssaujivibq"
+///           iat_ttl   = 12
+///           issuer    = "gxglhkdfnvrrtsalksedpcukpk"
 ///         }
-///         "userPoolConfig" = {
-///           "appIdClientRegex" = "qpfpcfsunn"
-///           "awsRegion"        = "nmpxe"
-///           "userPoolId"       = "jelygyotigqdtvomkxwllisaodzpme"
+///         user_pool_config = {
+///           app_id_client_regex = "qpfpcfsunn"
+///           aws_region          = "nmpxe"
+///           user_pool_id        = "jelygyotigqdtvomkxwllisaodzpme"
 ///         }
 ///       }]
 ///       api_id = "czvdzpkqmu"
@@ -428,17 +431,19 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.AppSyncGraphqlApiArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AppSyncGraphqlApiPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsAppSyncGraphqlApiPropertiesArgs;
-/// import com.pulumi.azurenative.awsconnector.inputs.GraphQLApiTypeEnumValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.AdditionalAuthenticationProviderArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AuthenticationTypeEnumValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.LambdaAuthorizerConfigArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.OpenIDConnectConfigArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.CognitoUserPoolConfigArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.GraphQLApiTypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.EnhancedMetricsConfigArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.DataSourceLevelMetricsBehaviorEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.OperationLevelMetricsConfigEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ResolverLevelMetricsBehaviorEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.GraphQLApiIntrospectionConfigEnumValueArgs;
-/// import com.pulumi.azurenative.awsconnector.inputs.LambdaAuthorizerConfigArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LogConfigArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.FieldLogLevelEnumValueArgs;
-/// import com.pulumi.azurenative.awsconnector.inputs.OpenIDConnectConfigArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.UserPoolConfigArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.DefaultActionEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.GraphQLApiVisibilityEnumValueArgs;

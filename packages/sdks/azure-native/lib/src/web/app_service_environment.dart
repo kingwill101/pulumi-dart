@@ -70,7 +70,7 @@ import 'virtual_network_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,7 +78,10 @@ import 'virtual_network_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_web_appserviceenvironment" "appServiceEnvironment" {
+/// resource "azure-native_web_app_service_environment" "appServiceEnvironment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   kind                = "Asev3"
 ///   location            = "South Central US"
 ///   name                = "test-ase"

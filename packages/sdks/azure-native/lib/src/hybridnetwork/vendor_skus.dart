@@ -22,7 +22,7 @@ import 'vendor_skus_args.dart';
 ///     var vendorSkus = new AzureNative.HybridNetwork.VendorSkus("vendorSkus", new()
 ///     {
 ///         DeploymentMode = AzureNative.HybridNetwork.SkuDeploymentMode.PrivateEdgeZone,
-///         ManagedApplicationTemplate = null,
+///         ManagedApplicationTemplate = new() { },
 ///         NetworkFunctionTemplate = new AzureNative.HybridNetwork.Inputs.NetworkFunctionTemplateArgs
 ///         {
 ///             NetworkFunctionRoleConfigurations = new[]
@@ -242,7 +242,7 @@ import 'vendor_skus_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -250,73 +250,76 @@ import 'vendor_skus_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridnetwork_vendorskus" "vendorSkus" {
+/// resource "azure-native_hybridnetwork_vendor_skus" "vendorSkus" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deployment_mode              = "PrivateEdgeZone"
 ///   managed_application_template = {}
 ///   network_function_template = {
 ///     network_function_role_configurations = [{
-///       "customProfile" = {
-///         "metadataConfigurationPath" = "/var/logs/network.cfg"
+///       custom_profile = {
+///         metadata_configuration_path = "/var/logs/network.cfg"
 ///       }
-///       "networkInterfaces" = [{
-///         "ipConfigurations" = [{
-///           "gateway"            = ""
-///           "ipAddress"          = ""
-///           "ipAllocationMethod" = "Dynamic"
-///           "ipVersion"          = "IPv4"
-///           "subnet"             = ""
+///       network_interfaces = [{
+///         ip_configurations = [{
+///           gateway              = ""
+///           ip_address           = ""
+///           ip_allocation_method = "Dynamic"
+///           ip_version           = "IPv4"
+///           subnet               = ""
 ///         }]
-///         "macAddress"           = ""
-///         "networkInterfaceName" = "nic1"
-///         "vmSwitchType"         = "Wan"
+///         mac_address            = ""
+///         network_interface_name = "nic1"
+///         vm_switch_type         = "Wan"
 ///         }, {
-///         "ipConfigurations" = [{
-///           "gateway"            = ""
-///           "ipAddress"          = ""
-///           "ipAllocationMethod" = "Dynamic"
-///           "ipVersion"          = "IPv4"
-///           "subnet"             = ""
+///         ip_configurations = [{
+///           gateway              = ""
+///           ip_address           = ""
+///           ip_allocation_method = "Dynamic"
+///           ip_version           = "IPv4"
+///           subnet               = ""
 ///         }]
-///         "macAddress"           = ""
-///         "networkInterfaceName" = "nic2"
-///         "vmSwitchType"         = "Management"
+///         mac_address            = ""
+///         network_interface_name = "nic2"
+///         vm_switch_type         = "Management"
 ///       }]
-///       "osProfile" = {
-///         "adminUsername" = "dummyuser"
-///         "customData"    = "base-64 encoded string of custom data"
-///         "linuxConfiguration" = {
-///           "ssh" = {
-///             "publicKeys" = [{
-///               "keyData" = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAgEAwrr66r8n6B8Y0zMF3dOpXEapIQD9DiYQ6D6/zwor9o39jSkHNiMMER/GETBbzP83LOcekm02aRjo55ArO7gPPVvCXbrirJu9pkm4AC4BBre5xSLS= user@constoso-DSH"
-///               "path"    = "home/user/.ssh/authorized_keys"
+///       os_profile = {
+///         admin_username = "dummyuser"
+///         custom_data    = "base-64 encoded string of custom data"
+///         linux_configuration = {
+///           ssh = {
+///             public_keys = [{
+///               key_data = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAgEAwrr66r8n6B8Y0zMF3dOpXEapIQD9DiYQ6D6/zwor9o39jSkHNiMMER/GETBbzP83LOcekm02aRjo55ArO7gPPVvCXbrirJu9pkm4AC4BBre5xSLS= user@constoso-DSH"
+///               path     = "home/user/.ssh/authorized_keys"
 ///             }]
 ///           }
 ///         }
 ///       }
-///       "roleName" = "test"
-///       "roleType" = "VirtualMachine"
-///       "storageProfile" = {
-///         "dataDisks" = [{
-///           "createOption" = "Empty"
-///           "diskSizeGB"   = 10
-///           "name"         = "DataDisk1"
+///       role_name = "test"
+///       role_type = "VirtualMachine"
+///       storage_profile = {
+///         data_disks = [{
+///           create_option = "Empty"
+///           disk_size_gb  = 10
+///           name          = "DataDisk1"
 ///         }]
-///         "imageReference" = {
-///           "offer"     = "UbuntuServer"
-///           "publisher" = "Canonical"
-///           "sku"       = "18.04-LTS"
-///           "version"   = "18.04.201804262"
+///         image_reference = {
+///           offer     = "UbuntuServer"
+///           publisher = "Canonical"
+///           sku       = "18.04-LTS"
+///           version   = "18.04.201804262"
 ///         }
-///         "osDisk" = {
-///           "diskSizeGB" = 30
-///           "name"       = "vhdName"
-///           "osType"     = "Linux"
-///           "vhd" = {
-///             "uri" = "https://contoso.net/link/vnd.vhd?sp=rl&st=2020-10-08T20:38:19Z&se=2020-12-09T19:38:00Z&sv=2019-12-12&sr=b&sig=7BM2f4yOw%3D"
+///         os_disk = {
+///           disk_size_gb = 30
+///           name         = "vhdName"
+///           os_type      = "Linux"
+///           vhd = {
+///             uri = "https://contoso.net/link/vnd.vhd?sp=rl&st=2020-10-08T20:38:19Z&se=2020-12-09T19:38:00Z&sv=2019-12-12&sr=b&sig=7BM2f4yOw%3D"
 ///           }
 ///         }
 ///       }
-///       "virtualMachineSize" = "Standard_D3_v2"
+///       virtual_machine_size = "Standard_D3_v2"
 ///     }]
 ///   }
 ///   network_function_type = "VirtualNetworkFunction"
@@ -336,6 +339,19 @@ import 'vendor_skus_args.dart';
 /// import com.pulumi.azurenative.hybridnetwork.VendorSkus;
 /// import com.pulumi.azurenative.hybridnetwork.VendorSkusArgs;
 /// import com.pulumi.azurenative.hybridnetwork.inputs.NetworkFunctionTemplateArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.NetworkFunctionRoleConfigurationArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.CustomProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.NetworkInterfaceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.NetworkInterfaceIPConfigurationArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.OsProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.LinuxConfigurationArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.SshConfigurationArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.SshPublicKeyArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.StorageProfileArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.DataDiskArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.ImageReferenceArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.OsDiskArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.VirtualHardDiskArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

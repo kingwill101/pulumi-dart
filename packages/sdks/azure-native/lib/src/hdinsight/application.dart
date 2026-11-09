@@ -139,7 +139,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -148,30 +148,33 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_hdinsight_application" "application" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_name = "hue"
 ///   cluster_name     = "cluster1"
 ///   properties = {
 ///     application_type = "CustomApplication"
 ///     compute_profile = {
 ///       roles = [{
-///         "hardwareProfile" = {
-///           "vmSize" = "Standard_D12_v2"
+///         hardware_profile = {
+///           vm_size = "Standard_D12_v2"
 ///         }
-///         "name"                = "edgenode"
-///         "targetInstanceCount" = 1
+///         name                  = "edgenode"
+///         target_instance_count = 1
 ///       }]
 ///     }
 ///     errors = []
 ///     https_endpoints = [{
-///       "accessModes"     = ["WebPage"]
-///       "destinationPort" = 20000
-///       "subDomainSuffix" = "dss"
+///       access_modes      = ["WebPage"]
+///       destination_port  = 20000
+///       sub_domain_suffix = "dss"
 ///     }]
 ///     install_script_actions = [{
-///       "name"       = "app-install-app1"
-///       "parameters" = "-version latest -port 20000"
-///       "roles"      = ["edgenode"]
-///       "uri"        = "https://.../install.sh"
+///       name       = "app-install-app1"
+///       parameters = "-version latest -port 20000"
+///       roles      = ["edgenode"]
+///       uri        = "https://.../install.sh"
 ///     }]
 ///     uninstall_script_actions = []
 ///   }
@@ -190,6 +193,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hdinsight.ApplicationArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.ApplicationPropertiesArgs;
 /// import com.pulumi.azurenative.hdinsight.inputs.ComputeProfileArgs;
+/// import com.pulumi.azurenative.hdinsight.inputs.RoleArgs;
+/// import com.pulumi.azurenative.hdinsight.inputs.HardwareProfileArgs;
+/// import com.pulumi.azurenative.hdinsight.inputs.ApplicationGetHttpsEndpointArgs;
+/// import com.pulumi.azurenative.hdinsight.inputs.RuntimeScriptActionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

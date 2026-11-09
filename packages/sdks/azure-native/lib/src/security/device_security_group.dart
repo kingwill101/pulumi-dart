@@ -28,7 +28,7 @@ import 'time_window_custom_alert_rule_response.dart';
 ///     {
 ///         DeviceSecurityGroupName = "samplesecuritygroup",
 ///         ResourceId = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/SampleRG/providers/Microsoft.Devices/iotHubs/sampleiothub",
-///         TimeWindowRules = new[]
+///         TimeWindowRules =
 ///         {
 ///             null,
 ///         },
@@ -66,7 +66,7 @@ import 'time_window_custom_alert_rule_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,7 +74,10 @@ import 'time_window_custom_alert_rule_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_devicesecuritygroup" "deviceSecurityGroup" {
+/// resource "azure-native_security_device_security_group" "deviceSecurityGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   device_security_group_name = "samplesecuritygroup"
 ///   resource_id                = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/SampleRG/providers/Microsoft.Devices/iotHubs/sampleiothub"
 ///   time_window_rules {

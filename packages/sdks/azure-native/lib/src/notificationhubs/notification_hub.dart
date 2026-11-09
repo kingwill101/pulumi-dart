@@ -70,7 +70,7 @@ import 'xiaomi_credential_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,7 +78,10 @@ import 'xiaomi_credential_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_notificationhubs_notificationhub" "notificationHub" {
+/// resource "azure-native_notificationhubs_notification_hub" "notificationHub" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "eastus"
 ///   namespace_name        = "nh-sdk-ns"
 ///   notification_hub_name = "nh-sdk-hub"

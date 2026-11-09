@@ -62,7 +62,7 @@ import 'compute_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,7 +70,10 @@ import 'compute_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datalakeanalytics_computepolicy" "computePolicy" {
+/// resource "azure-native_datalakeanalytics_compute_policy" "computePolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name                      = "contosoadla"
 ///   compute_policy_name               = "test_policy"
 ///   max_degree_of_parallelism_per_job = 10

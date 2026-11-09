@@ -188,7 +188,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -196,7 +196,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_rdsdbsnapshot" "rdsDbSnapshot" {
+/// resource "azure-native_awsconnector_rds_db_snapshot" "rdsDbSnapshot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "ojgfpymabvdpgvknjfvaecf"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -226,8 +229,8 @@ import 'system_data_response.dart';
 ///       percent_progress                    = 19
 ///       port                                = 11
 ///       processor_features = [{
-///         "name"  = "sidrqdpoqaeon"
-///         "value" = "elyxiifmhltlaxelehotutvcfcmqii"
+///         name  = "sidrqdpoqaeon"
+///         value = "elyxiifmhltlaxelehotutvcfcmqii"
 ///       }]
 ///       snapshot_create_time          = "2024-10-08T03:49:38.589Z"
 ///       snapshot_database_time        = "2024-10-08T03:49:38.589Z"
@@ -239,8 +242,8 @@ import 'system_data_response.dart';
 ///       storage_throughput            = 1
 ///       storage_type                  = "i"
 ///       tag_list = [{
-///         "key"   = "mzixrqjicfutjmwsvhfrku"
-///         "value" = "gbyocywzau"
+///         key   = "mzixrqjicfutjmwsvhfrku"
+///         value = "gbyocywzau"
 ///       }]
 ///       tde_credential_arn = "eyoddxncbnezesemvnxd"
 ///       timezone           = "coraguclwgryiiynjhpes"
@@ -272,6 +275,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.RdsDbSnapshotArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RdsDBSnapshotPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsRdsDBSnapshotPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ProcessorFeatureArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

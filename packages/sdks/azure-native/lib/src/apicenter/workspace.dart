@@ -59,7 +59,7 @@ import 'workspace_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,6 +68,9 @@ import 'workspace_args.dart';
 /// }
 ///
 /// resource "azure-native_apicenter_workspace" "workspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "contoso-resources"
 ///   service_name        = "contoso"
 ///   title               = "default"

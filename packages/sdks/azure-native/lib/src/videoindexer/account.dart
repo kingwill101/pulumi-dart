@@ -75,7 +75,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -84,6 +84,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_videoindexer_account" "account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "462af7c5-d1f6-4b91-86e3-8bc5e8a61574"
 ///   account_name = "contosto-videoanalyzer"
 ///   identity = {
@@ -254,7 +257,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -263,6 +266,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_videoindexer_account" "account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "contosto-videoanalyzer"
 ///   identity = {
 ///     type = "SystemAssigned"

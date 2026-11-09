@@ -41,7 +41,7 @@ import 'watcher_args.dart';
 ///         },
 ///         Location = "eastus2euap",
 ///         ResourceGroupName = "rgWatcher",
-///         Tags = null,
+///         Tags = new() { },
 ///         WatcherName = "testWatcher",
 ///     });
 ///
@@ -89,7 +89,7 @@ import 'watcher_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -98,6 +98,9 @@ import 'watcher_args.dart';
 /// }
 ///
 /// resource "azure-native_databasewatcher_watcher" "watcher" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   datastore = {
 ///     adx_cluster_resource_id    = "/subscriptions/49e0fbd3-75e8-44e7-96fd-5b64d9ad818d/resourceGroups/apiTest/providers/Microsoft.Kusto/clusters/apiTestKusto"
 ///     kusto_cluster_display_name = "kustoUri-adx"

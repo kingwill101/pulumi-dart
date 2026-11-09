@@ -33,7 +33,7 @@ import 'system_data_response.dart';
 ///                 CreatedAt = "2024-10-08T03:50:37.721Z",
 ///                 DomainName = "fiqx",
 ///                 Exported = true,
-///                 ExtendedKeyUsages = new[]
+///                 ExtendedKeyUsages =
 ///                 {
 ///                     AzureNative.AwsConnector.ExtendedKeyUsageName.ANY,
 ///                 },
@@ -45,7 +45,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     Value = AzureNative.AwsConnector.KeyAlgorithm.EC_prime256v1,
 ///                 },
-///                 KeyUsages = new[]
+///                 KeyUsages =
 ///                 {
 ///                     AzureNative.AwsConnector.KeyUsageName.ANY,
 ///                 },
@@ -163,7 +163,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -171,7 +171,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_acmcertificatesummary" "acmCertificateSummary" {
+/// resource "azure-native_awsconnector_acm_certificate_summary" "acmCertificateSummary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "eqfgreyihqzkrcyaxvy"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {

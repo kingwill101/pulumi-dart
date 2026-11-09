@@ -83,7 +83,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -91,7 +91,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_resources_azurepowershellscript" "azurePowerShellScript" {
+/// resource "azure-native_resources_azure_power_shell_script" "azurePowerShellScript" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   arguments              = "-Location 'westus' -Name \"*rg2\""
 ///   az_power_shell_version = "1.7.0"
 ///   cleanup_preference     = "Always"
@@ -132,7 +135,6 @@ import 'system_data_response.dart';
 ///             .arguments("-Location 'westus' -Name \"*rg2\"")
 ///             .azPowerShellVersion("1.7.0")
 ///             .cleanupPreference("Always")
-///             .kind("AzurePowerShell")
 ///             .location("westus")
 ///             .resourceGroupName("script-rg")
 ///             .retentionInterval("P7D")

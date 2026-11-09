@@ -66,7 +66,7 @@ import 'zone_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,6 +75,9 @@ import 'zone_args.dart';
 /// }
 ///
 /// resource "azure-native_dns_zone" "zone" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "Global"
 ///   resource_group_name = "rg1"
 ///   tags = {

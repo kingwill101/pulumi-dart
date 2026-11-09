@@ -75,7 +75,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,7 +83,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dashboard_managedprivateendpoint" "managedPrivateEndpoint" {
+/// resource "azure-native_dashboard_managed_private_endpoint" "managedPrivateEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_ids                     = ["grafana"]
 ///   location                      = "West US"
 ///   managed_private_endpoint_name = "myMPEName"

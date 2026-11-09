@@ -88,7 +88,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -97,6 +97,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_networkcloud_console" "console" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   console_name = "default"
 ///   enabled      = "True"
 ///   expiration   = "2022-06-01T01:27:03.008Z"

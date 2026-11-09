@@ -60,8 +60,8 @@ import 'system_data_response.dart';
 /// 			ApplicationId: pulumi.String("ad9a8e26-29d9-4829-bb30-e597a58cdbb8"),
 /// 			ConditionSets: pulumi.Array{
 /// 				pulumi.Any(map[string]interface{}{
-/// 					"conditions": []map[string]interface{}{
-/// 						map[string]interface{}{
+/// 					"conditions": []map[string]string{
+/// 						{
 /// 							"operator": "contains",
 /// 							"property": "$.Id",
 /// 							"value":    "-bil-",
@@ -83,7 +83,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -92,6 +92,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_security_application" "application" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_id = "ad9a8e26-29d9-4829-bb30-e597a58cdbb8"
 ///   condition_sets = [{
 ///     "conditions" = [{

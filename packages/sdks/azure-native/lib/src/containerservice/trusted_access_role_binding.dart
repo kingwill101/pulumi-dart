@@ -68,7 +68,7 @@ import 'trusted_access_role_binding_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'trusted_access_role_binding_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_trustedaccessrolebinding" "trustedAccessRoleBinding" {
+/// resource "azure-native_containerservice_trusted_access_role_binding" "trustedAccessRoleBinding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name              = "rg1"
 ///   resource_name                    = "clustername1"
 ///   roles                            = ["Microsoft.MachineLearningServices/workspaces/reader", "Microsoft.MachineLearningServices/workspaces/writer"]

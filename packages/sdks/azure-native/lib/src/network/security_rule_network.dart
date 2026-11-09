@@ -73,7 +73,7 @@ import 'security_rule_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,7 +81,10 @@ import 'security_rule_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_securityrule" "securityRule" {
+/// resource "azure-native_network_security_rule" "securityRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   access                      = "Deny"
 ///   destination_address_prefix  = "11.0.0.0/8"
 ///   destination_port_range      = "8080"

@@ -64,7 +64,7 @@ import 'system_data_response.dart';
 ///                     MaxInflightMessages = 33208,
 ///                     MaxInflightPatches = 3410,
 ///                     MaxInflightPatchesPerClient = 58933,
-///                     MaxMessageExpirySecs = 2036532516,
+///                     MaxMessageExpirySecs = 2036532516.0,
 ///                     MaxQueuedMessages = 8083241696687839232,
 ///                     MaxQueuedQos0Messages = 6545343433569253376,
 ///                     MaxSessionExpirySecs = 2526293894,
@@ -79,7 +79,7 @@ import 'system_data_response.dart';
 ///                     MaxInflightMessages = 33208,
 ///                     MaxInflightPatches = 3410,
 ///                     MaxInflightPatchesPerClient = 58933,
-///                     MaxMessageExpirySecs = 2036532516,
+///                     MaxMessageExpirySecs = 2036532516.0,
 ///                     MaxQueuedMessages = 8083241696687839232,
 ///                     MaxQueuedQos0Messages = 6545343433569253376,
 ///                     MaxSessionExpirySecs = 2526293894,
@@ -230,7 +230,7 @@ import 'system_data_response.dart';
 ///         Mode = AzureNative.IoTOperationsMQ.RunMode.Auto,
 ///         MqName = "u229L1RZ5",
 ///         ResourceGroupName = "rgiotoperationsmq",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -431,7 +431,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -440,6 +440,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_iotoperationsmq_broker" "broker" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auth_image = {
 ///     pull_policy  = "imfuzvqxgbdwliqnn"
 ///     pull_secrets = "klnqimxqsrdwhcqldjvdtsrs"
@@ -527,9 +530,9 @@ import 'system_data_response.dart';
 ///       }
 ///       selector = {
 ///         match_expressions = [{
-///           "key"      = "d"
-///           "operator" = "fcfvoarytcdbtccjervsmdis"
-///           "values"   = ["y"]
+///           key      = "d"
+///           operator = "fcfvoarytcdbtccjervsmdis"
+///           values   = ["y"]
 ///         }]
 ///         match_labels = {}
 ///       }
@@ -556,9 +559,9 @@ import 'system_data_response.dart';
 ///       }
 ///       selector = {
 ///         match_expressions = [{
-///           "key"      = "d"
-///           "operator" = "fcfvoarytcdbtccjervsmdis"
-///           "values"   = ["y"]
+///           key      = "d"
+///           operator = "fcfvoarytcdbtccjervsmdis"
+///           values   = ["y"]
 ///         }]
 ///         match_labels = {}
 ///       }
@@ -624,6 +627,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.VolumeClaimDataSourceRefArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.VolumeClaimResourceRequirementsArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.VolumeClaimSpecSelectorArgs;
+/// import com.pulumi.azurenative.iotoperationsmq.inputs.VolumeClaimSpecSelectorMatchExpressionsArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.ExtendedLocationPropertyArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.CertManagerCertOptionsArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.CertManagerPrivateKeyArgs;

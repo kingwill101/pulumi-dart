@@ -57,7 +57,7 @@ import 'encryption_scope_key_vault_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'encryption_scope_key_vault_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_encryptionscope" "encryptionScope" {
+/// resource "azure-native_storage_encryption_scope" "encryptionScope" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name          = "accountname"
 ///   encryption_scope_name = "{encryption-scope-name}"
 ///   resource_group_name   = "resource-group-name"
@@ -189,7 +192,7 @@ import 'encryption_scope_key_vault_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -197,7 +200,10 @@ import 'encryption_scope_key_vault_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_encryptionscope" "encryptionScope" {
+/// resource "azure-native_storage_encryption_scope" "encryptionScope" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name                      = "accountname"
 ///   encryption_scope_name             = "{encryption-scope-name}"
 ///   require_infrastructure_encryption = true

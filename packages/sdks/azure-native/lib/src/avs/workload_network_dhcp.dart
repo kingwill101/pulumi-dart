@@ -28,8 +28,8 @@ import 'workload_network_dhcp_args.dart';
 ///         {
 ///             DhcpType = "SERVER",
 ///             DisplayName = "dhcpConfigurations1",
-///             LeaseTime = 86400,
-///             Revision = 1,
+///             LeaseTime = 86400.0,
+///             Revision = 1.0,
 ///             ServerAddress = "40.1.5.1/24",
 ///         },
 ///         ResourceGroupName = "group1",
@@ -72,7 +72,7 @@ import 'workload_network_dhcp_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,15 +80,18 @@ import 'workload_network_dhcp_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_avs_workloadnetworkdhcp" "workloadNetworkDhcp" {
+/// resource "azure-native_avs_workload_network_dhcp" "workloadNetworkDhcp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dhcp_id            = "dhcp1"
 ///   private_cloud_name = "cloud1"
 ///   properties = {
-///     "dhcpType"      = "SERVER"
-///     "displayName"   = "dhcpConfigurations1"
-///     "leaseTime"     = 86400
-///     "revision"      = 1
-///     "serverAddress" = "40.1.5.1/24"
+///     dhcp_type      = "SERVER"
+///     display_name   = "dhcpConfigurations1"
+///     lease_time     = 86400
+///     revision       = 1
+///     server_address = "40.1.5.1/24"
 ///   }
 ///   resource_group_name = "group1"
 /// }
@@ -103,6 +106,8 @@ import 'workload_network_dhcp_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.avs.WorkloadNetworkDhcp;
 /// import com.pulumi.azurenative.avs.WorkloadNetworkDhcpArgs;
+/// import com.pulumi.azurenative.avs.inputs.WorkloadNetworkDhcpRelayArgs;
+/// import com.pulumi.azurenative.avs.inputs.WorkloadNetworkDhcpServerArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -120,7 +125,6 @@ import 'workload_network_dhcp_args.dart';
 ///             .dhcpId("dhcp1")
 ///             .privateCloudName("cloud1")
 ///             .properties(WorkloadNetworkDhcpServerArgs.builder()
-///                 .dhcpType("SERVER")
 ///                 .displayName("dhcpConfigurations1")
 ///                 .leaseTime(86400.0)
 ///                 .revision(1.0)

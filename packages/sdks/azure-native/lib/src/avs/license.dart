@@ -56,7 +56,7 @@ import 'vmware_firewall_license_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,6 +65,9 @@ import 'vmware_firewall_license_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_avs_license" "license" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   license_name        = "VmwareFirewall"
 ///   private_cloud_name  = "cloud1"
 ///   resource_group_name = "group1"

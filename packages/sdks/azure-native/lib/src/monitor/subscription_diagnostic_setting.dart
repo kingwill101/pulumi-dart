@@ -76,7 +76,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -84,7 +84,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_subscriptiondiagnosticsetting" "subscriptionDiagnosticSetting" {
+/// resource "azure-native_monitor_subscription_diagnostic_setting" "subscriptionDiagnosticSetting" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   event_hub_authorization_rule_id = "/subscriptions/fb9f25f9-5785-4510-a38f-a62f188eb9f8/resourceGroups/montest/providers/microsoft.eventhub/namespaces/mynamespace/authorizationrules/myrule"
 ///   event_hub_name                  = "myeventhub"
 ///   logs {
@@ -261,7 +264,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -269,7 +272,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_subscriptiondiagnosticsetting" "subscriptionDiagnosticSetting" {
+/// resource "azure-native_monitor_subscription_diagnostic_setting" "subscriptionDiagnosticSetting" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   event_hub_authorization_rule_id = "/subscriptions/fb9f25f9-5785-4510-a38f-a62f188eb9f8/resourceGroups/montest/providers/microsoft.eventhub/namespaces/mynamespace/authorizationrules/myrule"
 ///   event_hub_name                  = "myeventhub"
 ///   logs {

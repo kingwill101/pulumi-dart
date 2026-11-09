@@ -70,7 +70,7 @@ import 'gateway_hostname_configuration_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,7 +78,10 @@ import 'gateway_hostname_configuration_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_gatewayhostnameconfiguration" "gatewayHostnameConfiguration" {
+/// resource "azure-native_apimanagement_gateway_hostname_configuration" "gatewayHostnameConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_id               = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/certificates/cert1"
 ///   gateway_id                   = "gw1"
 ///   hc_id                        = "default"

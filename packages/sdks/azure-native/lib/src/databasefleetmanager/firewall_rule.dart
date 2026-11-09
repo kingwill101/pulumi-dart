@@ -67,7 +67,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_databasefleetmanager_firewallrule" "firewallRule" {
+/// resource "azure-native_databasefleetmanager_firewall_rule" "firewallRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   firewall_rule_name = "allow-10-0-0-0-24-to-10-1-0-0-24"
 ///   fleet_name         = "data-fleet-01"
 ///   fleetspace_name    = "prod-environment"

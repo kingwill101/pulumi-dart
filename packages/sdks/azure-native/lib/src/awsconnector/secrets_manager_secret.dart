@@ -155,7 +155,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -163,7 +163,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_secretsmanagersecret" "secretsManagerSecret" {
+/// resource "azure-native_awsconnector_secrets_manager_secret" "secretsManagerSecret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "balqdxuifwdmtcinyxjit"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -187,13 +190,13 @@ import 'system_data_response.dart';
 ///       kms_key_id = "vunob"
 ///       name       = "jqmtr"
 ///       replica_regions = [{
-///         "kmsKeyId" = "bkyubkuxwbasjkguqm"
-///         "region"   = "m"
+///         kms_key_id = "bkyubkuxwbasjkguqm"
+///         region     = "m"
 ///       }]
 ///       secret_string = "sbroa"
 ///       tags = [{
-///         "key"   = "ybodkythhxmehguhlrmodxhcduf"
-///         "value" = "wrci"
+///         key   = "ybodkythhxmehguhlrmodxhcduf"
+///         value = "wrci"
 ///       }]
 ///     }
 ///     aws_region        = "mw"
@@ -223,6 +226,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.SecretsManagerSecretPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsSecretsManagerSecretPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.GenerateSecretStringArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ReplicaRegionArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

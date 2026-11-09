@@ -83,7 +83,7 @@ import 'storage_insight_status_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -91,7 +91,10 @@ import 'storage_insight_status_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_operationalinsights_storageinsightconfig" "storageInsightConfig" {
+/// resource "azure-native_operationalinsights_storage_insight_config" "storageInsightConfig" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   containers          = ["wad-iis-logfiles"]
 ///   resource_group_name = "OIAutoRest5123"
 ///   storage_account = {

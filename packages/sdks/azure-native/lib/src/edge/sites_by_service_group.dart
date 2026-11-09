@@ -89,7 +89,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -97,7 +97,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_edge_sitesbyservicegroup" "sitesByServiceGroup" {
+/// resource "azure-native_edge_sites_by_service_group" "sitesByServiceGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     description  = "enxcmpvfvadbapo"
 ///     display_name = "string"

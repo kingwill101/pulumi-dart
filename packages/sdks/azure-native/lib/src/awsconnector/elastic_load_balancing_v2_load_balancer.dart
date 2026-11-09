@@ -172,7 +172,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -180,7 +180,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_elasticloadbalancingv2loadbalancer" "elasticLoadBalancingV2LoadBalancer" {
+/// resource "azure-native_awsconnector_elastic_load_balancing_v2_load_balancer" "elasticLoadBalancingV2LoadBalancer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "zrpnzixidbktdxtkovhvkklslaw"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -193,8 +196,8 @@ import 'system_data_response.dart';
 ///       ip_address_type                                              = "ghelcjykqvyqrwtwydiwleni"
 ///       load_balancer_arn                                            = "tswueurcdm"
 ///       load_balancer_attributes = [{
-///         "key"   = "jmpasivxkgcqvadmp"
-///         "value" = "cbsgvwtlyhuclvjpye"
+///         key   = "jmpasivxkgcqvadmp"
+///         value = "cbsgvwtlyhuclvjpye"
 ///       }]
 ///       load_balancer_full_name = "kmxzisdeike"
 ///       load_balancer_name      = "bdspilcwdpibhmnlbygrgaebhvbz"
@@ -202,15 +205,15 @@ import 'system_data_response.dart';
 ///       scheme                  = "nqjwo"
 ///       security_groups         = ["tavqrnlv"]
 ///       subnet_mappings = [{
-///         "allocationId"       = "dkrqwrzo"
-///         "iPv6Address"        = "mglejntagkkkioov"
-///         "privateIPv4Address" = "furnpiatzewmpnhapicnfy"
-///         "subnetId"           = "igo"
+///         allocation_id         = "dkrqwrzo"
+///         i_pv6_address         = "mglejntagkkkioov"
+///         private_i_pv4_address = "furnpiatzewmpnhapicnfy"
+///         subnet_id             = "igo"
 ///       }]
 ///       subnets = ["xqblkoljy"]
 ///       tags = [{
-///         "key"   = "eaenshgcpimgwtmxvu"
-///         "value" = "vxqjrslimcsyqfkfmjiqjcht"
+///         key   = "eaenshgcpimgwtmxvu"
+///         value = "vxqjrslimcsyqfkfmjiqjcht"
 ///       }]
 ///       type = "ywggrkrojayvb"
 ///     }
@@ -240,6 +243,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.ElasticLoadBalancingV2LoadBalancerArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ElasticLoadBalancingV2LoadBalancerPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsElasticLoadBalancingV2LoadBalancerPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.LoadBalancerAttributeArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.SubnetMappingArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

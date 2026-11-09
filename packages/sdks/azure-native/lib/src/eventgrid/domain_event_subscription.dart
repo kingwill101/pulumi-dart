@@ -82,7 +82,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -90,10 +90,13 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventgrid_domaineventsubscription" "domainEventSubscription" {
+/// resource "azure-native_eventgrid_domain_event_subscription" "domainEventSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   destination = {
-///     "endpointType" = "WebHook"
-///     "endpointUrl"  = "https://requestb.in/15ksip71"
+///     endpoint_type = "WebHook"
+///     endpoint_url  = "https://requestb.in/15ksip71"
 ///   }
 ///   domain_name             = "exampleDomain1"
 ///   event_subscription_name = "exampleEventSubscriptionName1"
@@ -115,6 +118,15 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.eventgrid.DomainEventSubscription;
 /// import com.pulumi.azurenative.eventgrid.DomainEventSubscriptionArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.AzureFunctionEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.EventHubEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.HybridConnectionEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.MonitorAlertEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.NamespaceTopicEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.ServiceBusQueueEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.ServiceBusTopicEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.StorageQueueEventSubscriptionDestinationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.WebHookEventSubscriptionDestinationArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.EventSubscriptionFilterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -131,7 +143,6 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var domainEventSubscription = new DomainEventSubscription("domainEventSubscription", DomainEventSubscriptionArgs.builder()
 ///             .destination(WebHookEventSubscriptionDestinationArgs.builder()
-///                 .endpointType("WebHook")
 ///                 .endpointUrl("https://requestb.in/15ksip71")
 ///                 .build())
 ///             .domainName("exampleDomain1")

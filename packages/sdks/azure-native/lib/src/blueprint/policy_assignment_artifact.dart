@@ -55,7 +55,7 @@ import 'policy_assignment_artifact_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -63,7 +63,10 @@ import 'policy_assignment_artifact_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_blueprint_policyassignmentartifact" "policyAssignmentArtifact" {
+/// resource "azure-native_blueprint_policy_assignment_artifact" "policyAssignmentArtifact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   artifact_name  = "storageTemplate"
 ///   blueprint_name = "simpleBlueprint"
 ///   resource_scope = "providers/Microsoft.Management/managementGroups/ContosoOnlineGroup"
@@ -210,7 +213,7 @@ import 'policy_assignment_artifact_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -218,7 +221,10 @@ import 'policy_assignment_artifact_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_blueprint_policyassignmentartifact" "policyAssignmentArtifact" {
+/// resource "azure-native_blueprint_policy_assignment_artifact" "policyAssignmentArtifact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   artifact_name  = "costCenterPolicy"
 ///   blueprint_name = "simpleBlueprint"
 ///   display_name   = "force costCenter tag on all resources"
@@ -245,6 +251,7 @@ import 'policy_assignment_artifact_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.blueprint.PolicyAssignmentArtifact;
 /// import com.pulumi.azurenative.blueprint.PolicyAssignmentArtifactArgs;
+/// import com.pulumi.azurenative.blueprint.inputs.ParameterValueArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -262,7 +269,6 @@ import 'policy_assignment_artifact_args.dart';
 ///             .artifactName("costCenterPolicy")
 ///             .blueprintName("simpleBlueprint")
 ///             .displayName("force costCenter tag on all resources")
-///             .kind("policyAssignment")
 ///             .parameters(Map.ofEntries(
 ///                 Map.entry("tagName", ParameterValueArgs.builder()
 ///                     .value("costCenter")
@@ -392,7 +398,7 @@ import 'policy_assignment_artifact_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -400,7 +406,10 @@ import 'policy_assignment_artifact_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_blueprint_policyassignmentartifact" "policyAssignmentArtifact" {
+/// resource "azure-native_blueprint_policy_assignment_artifact" "policyAssignmentArtifact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   artifact_name  = "ownerAssignment"
 ///   blueprint_name = "simpleBlueprint"
 ///   resource_scope = "providers/Microsoft.Management/managementGroups/ContosoOnlineGroup"
@@ -522,7 +531,7 @@ import 'policy_assignment_artifact_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -530,7 +539,10 @@ import 'policy_assignment_artifact_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_blueprint_policyassignmentartifact" "policyAssignmentArtifact" {
+/// resource "azure-native_blueprint_policy_assignment_artifact" "policyAssignmentArtifact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   artifact_name  = "storageTemplate"
 ///   blueprint_name = "simpleBlueprint"
 ///   resource_scope = "subscriptions/00000000-0000-0000-0000-000000000000"
@@ -677,7 +689,7 @@ import 'policy_assignment_artifact_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -685,7 +697,10 @@ import 'policy_assignment_artifact_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_blueprint_policyassignmentartifact" "policyAssignmentArtifact" {
+/// resource "azure-native_blueprint_policy_assignment_artifact" "policyAssignmentArtifact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   artifact_name  = "costCenterPolicy"
 ///   blueprint_name = "simpleBlueprint"
 ///   display_name   = "force costCenter tag on all resources"
@@ -712,6 +727,7 @@ import 'policy_assignment_artifact_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.blueprint.PolicyAssignmentArtifact;
 /// import com.pulumi.azurenative.blueprint.PolicyAssignmentArtifactArgs;
+/// import com.pulumi.azurenative.blueprint.inputs.ParameterValueArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -729,7 +745,6 @@ import 'policy_assignment_artifact_args.dart';
 ///             .artifactName("costCenterPolicy")
 ///             .blueprintName("simpleBlueprint")
 ///             .displayName("force costCenter tag on all resources")
-///             .kind("policyAssignment")
 ///             .parameters(Map.ofEntries(
 ///                 Map.entry("tagName", ParameterValueArgs.builder()
 ///                     .value("costCenter")
@@ -859,7 +874,7 @@ import 'policy_assignment_artifact_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -867,7 +882,10 @@ import 'policy_assignment_artifact_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_blueprint_policyassignmentartifact" "policyAssignmentArtifact" {
+/// resource "azure-native_blueprint_policy_assignment_artifact" "policyAssignmentArtifact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   artifact_name  = "ownerAssignment"
 ///   blueprint_name = "simpleBlueprint"
 ///   resource_scope = "subscriptions/00000000-0000-0000-0000-000000000000"

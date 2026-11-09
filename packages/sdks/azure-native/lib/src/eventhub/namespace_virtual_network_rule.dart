@@ -56,7 +56,7 @@ import 'namespace_virtual_network_rule_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -64,7 +64,10 @@ import 'namespace_virtual_network_rule_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventhub_namespacevirtualnetworkrule" "namespaceVirtualNetworkRule" {
+/// resource "azure-native_eventhub_namespace_virtual_network_rule" "namespaceVirtualNetworkRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   namespace_name            = "sdk-Namespace-6019"
 ///   resource_group_name       = "ResourceGroup"
 ///   virtual_network_rule_name = "sdk-VirtualNetworkRules-9191"

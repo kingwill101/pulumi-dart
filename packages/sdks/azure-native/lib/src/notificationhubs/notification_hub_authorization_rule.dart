@@ -26,7 +26,7 @@ import 'system_data_response.dart';
 ///         NamespaceName = "nh-sdk-ns",
 ///         NotificationHubName = "nh-sdk-hub",
 ///         ResourceGroupName = "5ktrial",
-///         Rights = new[]
+///         Rights =
 ///         {
 ///             AzureNative.NotificationHubs.AccessRights.Listen,
 ///             AzureNative.NotificationHubs.AccessRights.Send,
@@ -68,7 +68,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_notificationhubs_notificationhubauthorizationrule" "notificationHubAuthorizationRule" {
+/// resource "azure-native_notificationhubs_notification_hub_authorization_rule" "notificationHubAuthorizationRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization_rule_name = "MyManageSharedAccessKey"
 ///   namespace_name          = "nh-sdk-ns"
 ///   notification_hub_name   = "nh-sdk-hub"

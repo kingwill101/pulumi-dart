@@ -68,7 +68,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,13 +76,16 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_digitaltwins_digitaltwinsendpoint" "digitalTwinsEndpoint" {
+/// resource "azure-native_digitaltwins_digital_twins_endpoint" "digitalTwinsEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_name = "myServiceBus"
 ///   properties = {
-///     "authenticationType"        = "KeyBased"
-///     "endpointType"              = "ServiceBus"
-///     "primaryConnectionString"   = "Endpoint=sb://mysb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=xyzxyzoX4=;EntityPath=abcabc"
-///     "secondaryConnectionString" = "Endpoint=sb://mysb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=xyzxyzoX4=;EntityPath=abcabc"
+///     authentication_type         = "KeyBased"
+///     endpoint_type               = "ServiceBus"
+///     primary_connection_string   = "Endpoint=sb://mysb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=xyzxyzoX4=;EntityPath=abcabc"
+///     secondary_connection_string = "Endpoint=sb://mysb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=xyzxyzoX4=;EntityPath=abcabc"
 ///   }
 ///   resource_group_name = "resRg"
 ///   resource_name       = "myDigitalTwinsService"
@@ -98,6 +101,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.digitaltwins.DigitalTwinsEndpoint;
 /// import com.pulumi.azurenative.digitaltwins.DigitalTwinsEndpointArgs;
+/// import com.pulumi.azurenative.digitaltwins.inputs.EventGridArgs;
+/// import com.pulumi.azurenative.digitaltwins.inputs.EventHubArgs;
+/// import com.pulumi.azurenative.digitaltwins.inputs.ServiceBusArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -115,7 +121,6 @@ import 'system_data_response.dart';
 ///             .endpointName("myServiceBus")
 ///             .properties(ServiceBusArgs.builder()
 ///                 .authenticationType("KeyBased")
-///                 .endpointType("ServiceBus")
 ///                 .primaryConnectionString("Endpoint=sb://mysb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=xyzxyzoX4=;EntityPath=abcabc")
 ///                 .secondaryConnectionString("Endpoint=sb://mysb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=xyzxyzoX4=;EntityPath=abcabc")
 ///                 .build())
@@ -240,7 +245,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -248,13 +253,16 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_digitaltwins_digitaltwinsendpoint" "digitalTwinsEndpoint" {
+/// resource "azure-native_digitaltwins_digital_twins_endpoint" "digitalTwinsEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_name = "myServiceBus"
 ///   properties = {
-///     "authenticationType" = "IdentityBased"
-///     "endpointType"       = "ServiceBus"
-///     "endpointUri"        = "sb://mysb.servicebus.windows.net/"
-///     "entityPath"         = "mysbtopic"
+///     authentication_type = "IdentityBased"
+///     endpoint_type       = "ServiceBus"
+///     endpoint_uri        = "sb://mysb.servicebus.windows.net/"
+///     entity_path         = "mysbtopic"
 ///   }
 ///   resource_group_name = "resRg"
 ///   resource_name       = "myDigitalTwinsService"
@@ -270,6 +278,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.digitaltwins.DigitalTwinsEndpoint;
 /// import com.pulumi.azurenative.digitaltwins.DigitalTwinsEndpointArgs;
+/// import com.pulumi.azurenative.digitaltwins.inputs.EventGridArgs;
+/// import com.pulumi.azurenative.digitaltwins.inputs.EventHubArgs;
+/// import com.pulumi.azurenative.digitaltwins.inputs.ServiceBusArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -287,7 +298,6 @@ import 'system_data_response.dart';
 ///             .endpointName("myServiceBus")
 ///             .properties(ServiceBusArgs.builder()
 ///                 .authenticationType("IdentityBased")
-///                 .endpointType("ServiceBus")
 ///                 .endpointUri("sb://mysb.servicebus.windows.net/")
 ///                 .entityPath("mysbtopic")
 ///                 .build())
@@ -421,7 +431,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -429,16 +439,19 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_digitaltwins_digitaltwinsendpoint" "digitalTwinsEndpoint" {
+/// resource "azure-native_digitaltwins_digital_twins_endpoint" "digitalTwinsEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_name = "myServiceBus"
 ///   properties = {
-///     "authenticationType" = "IdentityBased"
-///     "endpointType"       = "ServiceBus"
-///     "endpointUri"        = "sb://mysb.servicebus.windows.net/"
-///     "entityPath"         = "mysbtopic"
-///     "identity" = {
-///       "type"                 = "UserAssigned"
-///       "userAssignedIdentity" = "/subscriptions/50016170-c839-41ba-a724-51e9df440b9e/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testidentity"
+///     authentication_type = "IdentityBased"
+///     endpoint_type       = "ServiceBus"
+///     endpoint_uri        = "sb://mysb.servicebus.windows.net/"
+///     entity_path         = "mysbtopic"
+///     identity = {
+///       type                   = "UserAssigned"
+///       user_assigned_identity = "/subscriptions/50016170-c839-41ba-a724-51e9df440b9e/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testidentity"
 ///     }
 ///   }
 ///   resource_group_name = "resRg"
@@ -455,6 +468,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.digitaltwins.DigitalTwinsEndpoint;
 /// import com.pulumi.azurenative.digitaltwins.DigitalTwinsEndpointArgs;
+/// import com.pulumi.azurenative.digitaltwins.inputs.EventGridArgs;
+/// import com.pulumi.azurenative.digitaltwins.inputs.ManagedIdentityReferenceArgs;
+/// import com.pulumi.azurenative.digitaltwins.inputs.EventHubArgs;
+/// import com.pulumi.azurenative.digitaltwins.inputs.ServiceBusArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -472,7 +489,6 @@ import 'system_data_response.dart';
 ///             .endpointName("myServiceBus")
 ///             .properties(ServiceBusArgs.builder()
 ///                 .authenticationType("IdentityBased")
-///                 .endpointType("ServiceBus")
 ///                 .endpointUri("sb://mysb.servicebus.windows.net/")
 ///                 .entityPath("mysbtopic")
 ///                 .identity(ManagedIdentityReferenceArgs.builder()

@@ -53,7 +53,7 @@ import 'system_data_response.dart';
 ///                 Type = "cxqgblrzqniowabexbztempdpkuib",
 ///             } },
 ///         },
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -108,7 +108,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -117,6 +117,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_iotoperationsdataprocessor_pipeline" "pipeline" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "vayzklhg"
 ///   enabled     = true
 ///   extended_location = {
@@ -152,6 +155,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperationsdataprocessor.PipelineArgs;
 /// import com.pulumi.azurenative.iotoperationsdataprocessor.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperationsdataprocessor.inputs.PipelineInputArgs;
+/// import com.pulumi.azurenative.iotoperationsdataprocessor.inputs.PipelineStageArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

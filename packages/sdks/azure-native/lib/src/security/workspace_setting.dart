@@ -55,7 +55,7 @@ import 'workspace_setting_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -63,7 +63,10 @@ import 'workspace_setting_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_workspacesetting" "workspaceSetting" {
+/// resource "azure-native_security_workspace_setting" "workspaceSetting" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   scope                  = "/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23"
 ///   workspace_id           = "/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"
 ///   workspace_setting_name = "default"

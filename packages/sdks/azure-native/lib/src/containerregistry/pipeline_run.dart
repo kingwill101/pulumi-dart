@@ -84,7 +84,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -92,7 +92,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerregistry_pipelinerun" "pipelineRun" {
+/// resource "azure-native_containerregistry_pipeline_run" "pipelineRun" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   pipeline_run_name = "myPipelineRun"
 ///   registry_name     = "myRegistry"
 ///   request = {
@@ -284,7 +287,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -292,7 +295,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerregistry_pipelinerun" "pipelineRun" {
+/// resource "azure-native_containerregistry_pipeline_run" "pipelineRun" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   force_update_tag  = "2020-03-04T17:23:21.9261521+00:00"
 ///   pipeline_run_name = "myPipelineRun"
 ///   registry_name     = "myRegistry"

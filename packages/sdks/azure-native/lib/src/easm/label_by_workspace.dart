@@ -55,7 +55,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -63,7 +63,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_easm_labelbyworkspace" "labelByWorkspace" {
+/// resource "azure-native_easm_label_by_workspace" "labelByWorkspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   label_name          = "ThisisaLabel"
 ///   resource_group_name = "dummyrg"
 ///   workspace_name      = "ThisisaWorkspace"

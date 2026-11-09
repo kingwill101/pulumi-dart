@@ -100,7 +100,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -108,7 +108,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_guestconfiguration_guestconfigurationassignment" "guestConfigurationAssignment" {
+/// resource "azure-native_guestconfiguration_guest_configuration_assignment" "guestConfigurationAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   guest_configuration_assignment_name = "NotInstalledApplicationForWindows"
 ///   location                            = "westcentralus"
 ///   name                                = "NotInstalledApplicationForWindows"
@@ -117,8 +120,8 @@ import 'system_data_response.dart';
 ///     guest_configuration = {
 ///       assignment_type = "ApplyAndAutoCorrect"
 ///       configuration_parameter = [{
-///         "name"  = "[InstalledApplication]NotInstalledApplicationResource1;Name"
-///         "value" = "NotePad,sql"
+///         name  = "[InstalledApplication]NotInstalledApplicationResource1;Name"
+///         value = "NotePad,sql"
 ///       }]
 ///       content_hash             = "123contenthash"
 ///       content_managed_identity = "test_identity"
@@ -143,6 +146,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.guestconfiguration.GuestConfigurationAssignmentArgs;
 /// import com.pulumi.azurenative.guestconfiguration.inputs.GuestConfigurationAssignmentPropertiesArgs;
 /// import com.pulumi.azurenative.guestconfiguration.inputs.GuestConfigurationNavigationArgs;
+/// import com.pulumi.azurenative.guestconfiguration.inputs.ConfigurationParameterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

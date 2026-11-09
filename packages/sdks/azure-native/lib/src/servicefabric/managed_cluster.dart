@@ -34,7 +34,7 @@ import 'system_data_response.dart';
 /// {
 ///     var managedCluster = new AzureNative.ServiceFabric.ManagedCluster("managedCluster", new()
 ///     {
-///         AddonFeatures = new[]
+///         AddonFeatures =
 ///         {
 ///             AzureNative.ServiceFabric.ManagedClusterAddOnFeature.DnsService,
 ///             AzureNative.ServiceFabric.ManagedClusterAddOnFeature.BackupRestoreService,
@@ -180,7 +180,7 @@ import 'system_data_response.dart';
 ///         {
 ///             Name = AzureNative.ServiceFabric.SkuName.Basic,
 ///         },
-///         Tags = null,
+///         Tags = new() { },
 ///         UpgradeDescription = new AzureNative.ServiceFabric.Inputs.ClusterUpgradePolicyArgs
 ///         {
 ///             DeltaHealthPolicy = new AzureNative.ServiceFabric.Inputs.ClusterUpgradeDeltaHealthPolicyArgs
@@ -380,7 +380,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -388,7 +388,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicefabric_managedcluster" "managedCluster" {
+/// resource "azure-native_servicefabric_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_features   = ["DnsService", "BackupRestoreService", "ResourceMonitorService"]
 ///   admin_password   = "{vm-password}"
 ///   admin_user_name  = "vmadmin"
@@ -519,6 +522,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.servicefabric.inputs.ApplicationTypeVersionsCleanupPolicyArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.SubnetArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.SettingsSectionDescriptionArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.SettingsParameterDescriptionArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.IpTagArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.LoadBalancingRuleArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.NetworkSecurityRuleArgs;
@@ -1145,7 +1149,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1153,7 +1157,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicefabric_managedcluster" "managedCluster" {
+/// resource "azure-native_servicefabric_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   admin_password          = "{vm-password}"
 ///   admin_user_name         = "vmadmin"
 ///   cluster_name            = "myCluster"
@@ -1185,6 +1192,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.servicefabric.ManagedCluster;
 /// import com.pulumi.azurenative.servicefabric.ManagedClusterArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.SettingsSectionDescriptionArgs;
+/// import com.pulumi.azurenative.servicefabric.inputs.SettingsParameterDescriptionArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.SkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_importcollectorsoperation" "importCollectorsOperation" {
+/// resource "azure-native_migrate_import_collectors_operation" "importCollectorsOperation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   discovery_site_id     = "/subscriptions/4bd2aa0f-2bd2-4d67-91a8-5a4533d58600/resourcegroups/ayagrawRG/providers/microsoft.offazure/importsites/actualSEA37d4importSite"
 ///   import_collector_name = "importCollectore7d5"
 ///   project_name          = "app18700project"

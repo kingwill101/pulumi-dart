@@ -142,7 +142,7 @@ import 'vmss_fabric_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -151,14 +151,17 @@ import 'vmss_fabric_profile_response.dart';
 /// }
 ///
 /// resource "azure-native_devopsinfrastructure_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_profile = {
-///     "kind" = "Stateless"
+///     kind = "Stateless"
 ///   }
 ///   dev_center_project_resource_id = "/subscriptions/222e81d0-cf38-4dab-baa5-289bf16baaa4/resourceGroups/rg-1es-devcenter/providers/Microsoft.DevCenter/projects/1ES"
 ///   fabric_profile = {
 ///     images = [{
-///       "ephemeralType" = "Automatic"
-///       "resourceId"    = "/MicrosoftWindowsServer/WindowsServer/2019-Datacenter/latest"
+///       ephemeral_type = "Automatic"
+///       resource_id    = "/MicrosoftWindowsServer/WindowsServer/2019-Datacenter/latest"
 ///     }]
 ///     kind = "Vmss"
 ///     os_profile = {
@@ -175,10 +178,10 @@ import 'vmss_fabric_profile_response.dart';
 ///   location            = "eastus"
 ///   maximum_concurrency = 10
 ///   organization_profile = {
-///     "kind" = "AzureDevOps"
-///     "organizations" = [{
-///       "openAccess" = true
-///       "url"        = "https://mseng.visualstudio.com"
+///     kind = "AzureDevOps"
+///     organizations = [{
+///       open_access = true
+///       url         = "https://mseng.visualstudio.com"
 ///     }]
 ///   }
 ///   pool_name           = "pool"
@@ -196,10 +199,17 @@ import 'vmss_fabric_profile_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.devopsinfrastructure.Pool;
 /// import com.pulumi.azurenative.devopsinfrastructure.PoolArgs;
+/// import com.pulumi.azurenative.devopsinfrastructure.inputs.StatefulArgs;
+/// import com.pulumi.azurenative.devopsinfrastructure.inputs.StatelessAgentProfileArgs;
 /// import com.pulumi.azurenative.devopsinfrastructure.inputs.VmssFabricProfileArgs;
+/// import com.pulumi.azurenative.devopsinfrastructure.inputs.PoolImageArgs;
 /// import com.pulumi.azurenative.devopsinfrastructure.inputs.OsProfileArgs;
 /// import com.pulumi.azurenative.devopsinfrastructure.inputs.SecretsManagementSettingsArgs;
 /// import com.pulumi.azurenative.devopsinfrastructure.inputs.DevOpsAzureSkuArgs;
+/// import com.pulumi.azurenative.devopsinfrastructure.inputs.AzureDevOpsOrganizationProfileArgs;
+/// import com.pulumi.azurenative.devopsinfrastructure.inputs.OrganizationArgs;
+/// import com.pulumi.azurenative.devopsinfrastructure.inputs.GitHubOrganizationProfileArgs;
+/// import com.pulumi.azurenative.devopsinfrastructure.inputs.GitHubOrganizationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -215,7 +225,6 @@ import 'vmss_fabric_profile_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var pool = new Pool("pool", PoolArgs.builder()
 ///             .agentProfile(StatelessAgentProfileArgs.builder()
-///                 .kind("Stateless")
 ///                 .build())
 ///             .devCenterProjectResourceId("/subscriptions/222e81d0-cf38-4dab-baa5-289bf16baaa4/resourceGroups/rg-1es-devcenter/providers/Microsoft.DevCenter/projects/1ES")
 ///             .fabricProfile(VmssFabricProfileArgs.builder()
@@ -223,7 +232,6 @@ import 'vmss_fabric_profile_response.dart';
 ///                     .ephemeralType("Automatic")
 ///                     .resourceId("/MicrosoftWindowsServer/WindowsServer/2019-Datacenter/latest")
 ///                     .build())
-///                 .kind("Vmss")
 ///                 .osProfile(OsProfileArgs.builder()
 ///                     .secretsManagementSettings(SecretsManagementSettingsArgs.builder()
 ///                         .certificateStoreName("Root")
@@ -238,7 +246,6 @@ import 'vmss_fabric_profile_response.dart';
 ///             .location("eastus")
 ///             .maximumConcurrency(10)
 ///             .organizationProfile(AzureDevOpsOrganizationProfileArgs.builder()
-///                 .kind("AzureDevOps")
 ///                 .organizations(OrganizationArgs.builder()
 ///                     .openAccess(true)
 ///                     .url("https://mseng.visualstudio.com")

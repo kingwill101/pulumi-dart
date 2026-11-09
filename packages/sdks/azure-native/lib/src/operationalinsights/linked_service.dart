@@ -58,7 +58,7 @@ import 'linked_service_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'linked_service_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_operationalinsights_linkedservice" "linkedService" {
+/// resource "azure-native_operationalinsights_linked_service" "linkedService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   linked_service_name      = "Cluster"
 ///   resource_group_name      = "mms-eus"
 ///   workspace_name           = "TestLinkWS"

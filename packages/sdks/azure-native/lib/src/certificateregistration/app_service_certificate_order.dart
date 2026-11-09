@@ -92,7 +92,7 @@ import 'certificate_order_contact_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -100,7 +100,10 @@ import 'certificate_order_contact_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_certificateregistration_appservicecertificateorder" "appServiceCertificateOrder" {
+/// resource "azure-native_certificateregistration_app_service_certificate_order" "appServiceCertificateOrder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auto_renew             = true
 ///   certificate_order_name = "SampleCertificateOrderName"
 ///   certificates = {
@@ -131,6 +134,7 @@ import 'certificate_order_contact_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.certificateregistration.AppServiceCertificateOrder;
 /// import com.pulumi.azurenative.certificateregistration.AppServiceCertificateOrderArgs;
+/// import com.pulumi.azurenative.certificateregistration.inputs.AppServiceCertificateArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

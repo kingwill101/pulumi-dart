@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_web_staticsiteuserprovidedfunctionappforstaticsite" "staticSiteUserProvidedFunctionAppForStaticSite" {
+/// resource "azure-native_web_static_site_user_provided_function_app_for_static_site" "staticSiteUserProvidedFunctionAppForStaticSite" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   function_app_name        = "testFunctionApp"
 ///   function_app_region      = "West US 2"
 ///   function_app_resource_id = "/subscription/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/functionRG/providers/Microsoft.Web/sites/testFunctionApp"

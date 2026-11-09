@@ -27,7 +27,7 @@ import 'virtual_machine_scale_set_vmrun_command_args.dart';
 ///     var virtualMachineScaleSetVMRunCommand = new AzureNative.Compute.VirtualMachineScaleSetVMRunCommand("virtualMachineScaleSetVMRunCommand", new()
 ///     {
 ///         AsyncExecution = false,
-///         ErrorBlobManagedIdentity = null,
+///         ErrorBlobManagedIdentity = new() { },
 ///         ErrorBlobUri = "https://mystorageaccount.blob.core.windows.net/mycontainer/MyScriptError.txt",
 ///         InstanceId = "0",
 ///         Location = "West US",
@@ -125,7 +125,7 @@ import 'virtual_machine_scale_set_vmrun_command_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -133,7 +133,10 @@ import 'virtual_machine_scale_set_vmrun_command_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescalesetvmruncommand" "virtualMachineScaleSetVMRunCommand" {
+/// resource "azure-native_compute_virtual_machine_scale_set_v_m_run_command" "virtualMachineScaleSetVMRunCommand" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   async_execution             = false
 ///   error_blob_managed_identity = {}
 ///   error_blob_uri              = "https://mystorageaccount.blob.core.windows.net/mycontainer/MyScriptError.txt"

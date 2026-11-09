@@ -108,7 +108,7 @@ import 'global_schema_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -116,7 +116,10 @@ import 'global_schema_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_globalschema" "globalSchema" {
+/// resource "azure-native_apimanagement_global_schema" "globalSchema" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description         = "sample schema description"
 ///   resource_group_name = "rg1"
 ///   schema_id           = "schema1"
@@ -327,7 +330,7 @@ import 'global_schema_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -335,7 +338,10 @@ import 'global_schema_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_globalschema" "globalSchema" {
+/// resource "azure-native_apimanagement_global_schema" "globalSchema" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description         = "sample schema description"
 ///   resource_group_name = "rg1"
 ///   schema_id           = "schema1"

@@ -77,7 +77,7 @@ import 'settings_properties_response_cache.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -86,6 +86,9 @@ import 'settings_properties_response_cache.dart';
 /// }
 ///
 /// resource "azure-native_costmanagement_setting" "setting" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cache {
 ///     channel    = "Modern"
 ///     id         = "/providers/Microsoft.Management/managementGroups/72f988bf-86f1-41af-91ab-2d7cd011db47"

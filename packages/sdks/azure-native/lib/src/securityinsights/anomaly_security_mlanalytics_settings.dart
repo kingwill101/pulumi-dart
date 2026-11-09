@@ -95,7 +95,7 @@ import 'system_data_response.dart';
 ///         SettingsDefinitionId = "f209187f-1d17-4431-94af-c141bf5f23db",
 ///         SettingsResourceName = "f209187f-1d17-4431-94af-c141bf5f23db",
 ///         SettingsStatus = AzureNative.SecurityInsights.SettingsStatus.Production,
-///         Tactics = new[]
+///         Tactics =
 ///         {
 ///             AzureNative.SecurityInsights.AttackTactic.Exfiltration,
 ///             AzureNative.SecurityInsights.AttackTactic.CommandAndControl,
@@ -207,7 +207,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -215,7 +215,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_anomalysecuritymlanalyticssettings" "anomalySecurityMLAnalyticsSettings" {
+/// resource "azure-native_securityinsights_anomaly_security_m_l_analytics_settings" "anomalySecurityMLAnalyticsSettings" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   anomaly_settings_version = 0
 ///   anomaly_version          = "1.0.5"
 ///   customizable_observations = {
@@ -338,7 +341,6 @@ import 'system_data_response.dart';
 ///             .enabled(true)
 ///             .frequency("PT1H")
 ///             .isDefaultSettings(true)
-///             .kind("Anomaly")
 ///             .requiredDataConnectors(SecurityMLAnalyticsSettingsDataSourceArgs.builder()
 ///                 .connectorId("AWS")
 ///                 .dataTypes("AWSCloudTrail")

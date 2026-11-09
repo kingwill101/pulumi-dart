@@ -64,7 +64,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_defaultuserrule" "defaultUserRule" {
+/// resource "azure-native_network_default_user_rule" "defaultUserRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_name   = "myTestSecurityConfig"
 ///   flag                 = "AllowVnetInbound"
 ///   kind                 = "Default"
@@ -108,7 +111,6 @@ import 'system_data_response.dart';
 ///         var defaultUserRule = new DefaultUserRule("defaultUserRule", DefaultUserRuleArgs.builder()
 ///             .configurationName("myTestSecurityConfig")
 ///             .flag("AllowVnetInbound")
-///             .kind("Default")
 ///             .networkManagerName("testNetworkManager")
 ///             .resourceGroupName("rg1")
 ///             .ruleCollectionName("testRuleCollection")
@@ -218,7 +220,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -226,7 +228,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_defaultuserrule" "defaultUserRule" {
+/// resource "azure-native_network_default_user_rule" "defaultUserRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_name   = "myTestSecurityConfig"
 ///   network_manager_name = "testNetworkManager"
 ///   resource_group_name  = "rg1"

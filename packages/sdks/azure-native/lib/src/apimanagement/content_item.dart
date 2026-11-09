@@ -57,7 +57,7 @@ import 'content_item_args.dart';
 /// 			ContentItemId: pulumi.String("4e3cf6a5-574a-ba08-1f23-2e7a38faa6d8"),
 /// 			ContentTypeId: pulumi.String("page"),
 /// 			Properties: pulumi.Any(map[string]interface{}{
-/// 				"en_us": map[string]interface{}{
+/// 				"en_us": map[string]string{
 /// 					"description": "Short story about the company.",
 /// 					"documentId":  "contentTypes/document/contentItems/4e3cf6a5-574a-ba08-1f23-2e7a38faa6d8",
 /// 					"keywords":    "company, about",
@@ -78,7 +78,7 @@ import 'content_item_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -86,7 +86,10 @@ import 'content_item_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_contentitem" "contentItem" {
+/// resource "azure-native_apimanagement_content_item" "contentItem" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   content_item_id = "4e3cf6a5-574a-ba08-1f23-2e7a38faa6d8"
 ///   content_type_id = "page"
 ///   properties = {

@@ -136,7 +136,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -144,7 +144,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_networkcloud_baremetalmachinekeyset" "bareMetalMachineKeySet" {
+/// resource "azure-native_networkcloud_bare_metal_machine_key_set" "bareMetalMachineKeySet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   azure_group_id                  = "f110271b-XXXX-4163-9b99-214d91660f0e"
 ///   bare_metal_machine_key_set_name = "bareMetalMachineKeySetName"
 ///   cluster_name                    = "clusterName"

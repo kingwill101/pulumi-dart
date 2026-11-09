@@ -2,9 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Type of managed service identity.
 enum IdentityType implements pulumi.PulumiEnum<String> {
-  systemAssigned("SystemAssigned"),
-  userAssigned("UserAssigned"),
-  none("None");
+  valueSystemAssigned("SystemAssigned"),
+  valueUserAssigned("UserAssigned"),
+  valueNone("None");
 
   const IdentityType(this.wireValue);
   @override

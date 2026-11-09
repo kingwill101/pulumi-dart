@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 ///                 Id = "/subscriptions/subid/resourceGroups/RG/providers/Microsoft.Cdn/profiles/profile1/ruleSets/ruleSet1",
 ///             },
 ///         },
-///         SupportedProtocols = new[]
+///         SupportedProtocols =
 ///         {
 ///             AzureNative.Cdn.AFDEndpointProtocols.Https,
 ///             AzureNative.Cdn.AFDEndpointProtocols.Http,
@@ -142,7 +142,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -151,6 +151,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_cdn_route" "route" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cache_configuration = {
 ///     compression_settings = {
 ///       content_types_to_compress = ["text/html", "application/octet-stream"]

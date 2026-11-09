@@ -79,7 +79,7 @@ import 'experiment_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -88,6 +88,9 @@ import 'experiment_args.dart';
 /// }
 ///
 /// resource "azure-native_frontdoor_experiment" "experiment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description   = "this is my first experiment!"
 ///   enabled_state = "Enabled"
 ///   endpoint_a = {

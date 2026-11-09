@@ -95,7 +95,7 @@ import 'hub_route_table_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -103,7 +103,10 @@ import 'hub_route_table_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_hubroutetable" "hubRouteTable" {
+/// resource "azure-native_network_hub_route_table" "hubRouteTable" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   labels              = ["label1", "label2"]
 ///   resource_group_name = "rg1"
 ///   route_table_name    = "hubRouteTable1"

@@ -57,7 +57,7 @@ import 'open_aiintegration_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'open_aiintegration_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_elastic_openai" "openAI" {
+/// resource "azure-native_elastic_open_a_i" "openAI" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   integration_name    = "default"
 ///   monitor_name        = "myMonitor"
 ///   resource_group_name = "myResourceGroup"

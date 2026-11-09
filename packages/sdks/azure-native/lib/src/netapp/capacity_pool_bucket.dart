@@ -30,8 +30,8 @@ import 'system_data_response.dart';
 ///         {
 ///             NfsUser = new AzureNative.NetApp.Inputs.NfsUserArgs
 ///             {
-///                 GroupId = 1000,
-///                 UserId = 1001,
+///                 GroupId = 1000.0,
+///                 UserId = 1001.0,
 ///             },
 ///         },
 ///         Path = "/path",
@@ -88,7 +88,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -96,7 +96,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_netapp_capacitypoolbucket" "capacityPoolBucket" {
+/// resource "azure-native_netapp_capacity_pool_bucket" "capacityPoolBucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "account1"
 ///   bucket_name  = "bucket1"
 ///   file_system_user = {

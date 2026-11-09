@@ -68,7 +68,7 @@ import 'workspace_private_endpoint_connection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'workspace_private_endpoint_connection_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_healthcareapis_workspaceprivateendpointconnection" "workspacePrivateEndpointConnection" {
+/// resource "azure-native_healthcareapis_workspace_private_endpoint_connection" "workspacePrivateEndpointConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   private_endpoint_connection_name = "myConnection"
 ///   private_link_service_connection_state = {
 ///     description = "Auto-Approved"

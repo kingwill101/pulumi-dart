@@ -66,7 +66,7 @@ import 'long_term_retention_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,7 +74,10 @@ import 'long_term_retention_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_longtermretentionpolicy" "longTermRetentionPolicy" {
+/// resource "azure-native_sql_long_term_retention_policy" "longTermRetentionPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name       = "testDatabase"
 ///   monthly_retention   = "P1Y"
 ///   policy_name         = "default"

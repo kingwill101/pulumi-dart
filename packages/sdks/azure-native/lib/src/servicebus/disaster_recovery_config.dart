@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicebus_disasterrecoveryconfig" "disasterRecoveryConfig" {
+/// resource "azure-native_servicebus_disaster_recovery_config" "disasterRecoveryConfig" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alias               = "sdk-Namespace-8860"
 ///   alternate_name      = "alternameforAlias-Namespace-8860"
 ///   namespace_name      = "sdk-Namespace-8860"

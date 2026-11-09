@@ -65,7 +65,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_machinelearningservices_connectionraiblocklist" "connectionRaiBlocklist" {
+/// resource "azure-native_machinelearningservices_connection_rai_blocklist" "connectionRaiBlocklist" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_name = "testConnection"
 ///   properties = {
 ///     description = "Basic blocklist description"

@@ -80,7 +80,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -88,7 +88,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_signalrservice_signalrreplica" "signalRReplica" {
+/// resource "azure-native_signalrservice_signal_r_replica" "signalRReplica" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "eastus"
 ///   replica_name        = "mySignalRService-eastus"
 ///   resource_group_name = "myResourceGroup"

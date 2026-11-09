@@ -45,7 +45,7 @@ import 'system_data_response.dart';
 ///         MachineName = "r01c001",
 ///         MachineSkuId = "684E-3B16-399E",
 ///         RackId = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/racks/rackName",
-///         RackSlot = 1,
+///         RackSlot = 1.0,
 ///         ResourceGroupName = "resourceGroupName",
 ///         SerialNumber = "BM1219XXX",
 ///         Tags =
@@ -106,7 +106,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -114,7 +114,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_networkcloud_baremetalmachine" "bareMetalMachine" {
+/// resource "azure-native_networkcloud_bare_metal_machine" "bareMetalMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bare_metal_machine_name = "bareMetalMachineName"
 ///   bmc_connection_string   = "bmcconnectionstring"
 ///   bmc_credentials = {

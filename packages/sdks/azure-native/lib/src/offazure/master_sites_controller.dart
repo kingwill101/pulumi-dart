@@ -78,7 +78,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -86,7 +86,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_offazure_mastersitescontroller" "masterSitesController" {
+/// resource "azure-native_offazure_master_sites_controller" "masterSitesController" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allow_multiple_sites            = true
 ///   customer_storage_account_arm_id = "tndgdhvguaaa"
 ///   location                        = "g"

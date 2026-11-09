@@ -85,7 +85,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -93,7 +93,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_machinelearningservices_registrycodeversion" "registryCodeVersion" {
+/// resource "azure-native_machinelearningservices_registry_code_version" "registryCodeVersion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   code_name = "string"
 ///   properties = {
 ///     code_uri     = "https://blobStorage/folderName"

@@ -72,7 +72,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_publicipaddress" "publicIPAddress" {
+/// resource "azure-native_network_public_i_p_address" "publicIPAddress" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dns_settings = {
 ///     domain_name_label = "dnslbl"
 ///   }
@@ -226,7 +229,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -234,7 +237,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_publicipaddress" "publicIPAddress" {
+/// resource "azure-native_network_public_i_p_address" "publicIPAddress" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dns_settings = {
 ///     domain_name_label       = "dnslbl"
 ///     domain_name_label_scope = "TenantReuse"
@@ -391,7 +397,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -399,7 +405,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_publicipaddress" "publicIPAddress" {
+/// resource "azure-native_network_public_i_p_address" "publicIPAddress" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   idle_timeout_in_minutes     = 10
 ///   location                    = "eastus"
 ///   public_ip_address_version   = "IPv4"
@@ -556,7 +565,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -564,7 +573,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_publicipaddress" "publicIPAddress" {
+/// resource "azure-native_network_public_i_p_address" "publicIPAddress" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location               = "eastus"
 ///   public_ip_address_name = "test-ip"
 ///   resource_group_name    = "rg1"

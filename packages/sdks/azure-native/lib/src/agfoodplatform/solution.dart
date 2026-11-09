@@ -56,7 +56,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,6 +65,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_agfoodplatform_solution" "solution" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_manager_for_agriculture_resource_name = "examples-farmbeatsResourceName"
 ///   resource_group_name                        = "examples-rg"
 ///   solution_id                                = "abc.partner"

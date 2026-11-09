@@ -96,7 +96,7 @@ import 'partner_info_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -104,7 +104,10 @@ import 'partner_info_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_failovergroup" "failoverGroup" {
+/// resource "azure-native_sql_failover_group" "failoverGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   databases           = ["/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Sql/servers/failover-group-primary-server/databases/testdb-1", "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Sql/servers/failover-group-primary-server/databases/testdb-2"]
 ///   failover_group_name = "failover-group-test-3"
 ///   partner_servers {
@@ -330,7 +333,7 @@ import 'partner_info_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -338,7 +341,10 @@ import 'partner_info_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_failovergroup" "failoverGroup" {
+/// resource "azure-native_sql_failover_group" "failoverGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   databases           = ["/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Sql/servers/failover-group-primary-server/databases/testdb-1", "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Sql/servers/failover-group-primary-server/databases/testdb-2"]
 ///   failover_group_name = "failover-group-test-3"
 ///   partner_servers {

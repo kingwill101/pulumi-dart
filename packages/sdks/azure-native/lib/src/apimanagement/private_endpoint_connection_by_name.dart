@@ -74,7 +74,7 @@ import 'private_link_service_connection_state_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,7 +82,10 @@ import 'private_link_service_connection_state_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_privateendpointconnectionbyname" "privateEndpointConnectionByName" {
+/// resource "azure-native_apimanagement_private_endpoint_connection_by_name" "privateEndpointConnectionByName" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   id                               = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/privateEndpointConnections/connectionName"
 ///   private_endpoint_connection_name = "privateEndpointConnectionName"
 ///   properties = {

@@ -97,7 +97,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -105,7 +105,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_automation_dscconfiguration" "dscConfiguration" {
+/// resource "azure-native_automation_dsc_configuration" "dscConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   automation_account_name = "myAutomationAccount18"
 ///   configuration_name      = "SetupServer"
 ///   description             = "sample configuration"

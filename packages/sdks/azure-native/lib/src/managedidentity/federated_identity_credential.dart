@@ -68,7 +68,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managedidentity_federatedidentitycredential" "federatedIdentityCredential" {
+/// resource "azure-native_managedidentity_federated_identity_credential" "federatedIdentityCredential" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   audiences                                   = ["api://AzureADTokenExchange"]
 ///   federated_identity_credential_resource_name = "ficResourceName"
 ///   issuer                                      = "https://oidc.prod-aks.azure.com/TenantGUID/IssuerGUID"

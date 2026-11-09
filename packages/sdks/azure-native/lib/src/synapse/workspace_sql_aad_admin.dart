@@ -64,7 +64,7 @@ import 'workspace_sql_aad_admin_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'workspace_sql_aad_admin_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_synapse_workspacesqlaadadmin" "workspaceSqlAadAdmin" {
+/// resource "azure-native_synapse_workspace_sql_aad_admin" "workspaceSqlAadAdmin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administrator_type  = "ActiveDirectory"
 ///   login               = "bob@contoso.com"
 ///   resource_group_name = "resourceGroup1"

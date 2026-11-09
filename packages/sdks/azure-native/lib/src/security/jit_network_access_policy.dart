@@ -148,7 +148,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -156,7 +156,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_jitnetworkaccesspolicy" "jitNetworkAccessPolicy" {
+/// resource "azure-native_security_jit_network_access_policy" "jitNetworkAccessPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   asc_location                   = "westeurope"
 ///   jit_network_access_policy_name = "default"
 ///   kind                           = "Basic"
@@ -203,7 +206,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.security.JitNetworkAccessPolicy;
 /// import com.pulumi.azurenative.security.JitNetworkAccessPolicyArgs;
 /// import com.pulumi.azurenative.security.inputs.JitNetworkAccessRequestArgs;
+/// import com.pulumi.azurenative.security.inputs.JitNetworkAccessRequestVirtualMachineArgs;
+/// import com.pulumi.azurenative.security.inputs.JitNetworkAccessRequestPortArgs;
 /// import com.pulumi.azurenative.security.inputs.JitNetworkAccessPolicyVirtualMachineArgs;
+/// import com.pulumi.azurenative.security.inputs.JitNetworkAccessPortRuleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

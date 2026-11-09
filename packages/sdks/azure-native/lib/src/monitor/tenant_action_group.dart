@@ -67,7 +67,7 @@ import 'webhook_receiver_tenant_action_group_response.dart';
 ///                 PhoneNumber = "0987654321",
 ///             },
 ///         },
-///         Tags = null,
+///         Tags = new() { },
 ///         TenantActionGroupName = "testTenantActionGroup",
 ///         VoiceReceivers = new[]
 ///         {
@@ -185,7 +185,7 @@ import 'webhook_receiver_tenant_action_group_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -193,7 +193,10 @@ import 'webhook_receiver_tenant_action_group_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_tenantactiongroup" "tenantActionGroup" {
+/// resource "azure-native_monitor_tenant_action_group" "tenantActionGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   azure_app_push_receivers {
 ///     email_address = "johndoe@email.com"
 ///     name          = "Sample azureAppPush"

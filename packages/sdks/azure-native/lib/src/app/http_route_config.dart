@@ -133,7 +133,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -141,30 +141,33 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_httprouteconfig" "httpRouteConfig" {
+/// resource "azure-native_app_http_route_config" "httpRouteConfig" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   environment_name = "testcontainerenv"
 ///   http_route_name  = "httproutefriendlyname"
 ///   properties = {
 ///     custom_domains = [{
-///       "bindingType"   = "SniEnabled"
-///       "certificateId" = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/examplerg/providers/Microsoft.App/managedEnvironments/testcontainerenv/certificates/certificate-1"
-///       "name"          = "example.com"
+///       binding_type   = "SniEnabled"
+///       certificate_id = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/examplerg/providers/Microsoft.App/managedEnvironments/testcontainerenv/certificates/certificate-1"
+///       name           = "example.com"
 ///     }]
 ///     rules = [{
-///       "description" = "random-description"
-///       "routes" = [{
-///         "action" = {
-///           "prefixRewrite" = "/v1/api"
+///       description = "random-description"
+///       routes = [{
+///         action = {
+///           prefix_rewrite = "/v1/api"
 ///         }
-///         "match" = {
-///           "caseSensitive" = true
-///           "path"          = "/v1"
+///         match = {
+///           case_sensitive = true
+///           path           = "/v1"
 ///         }
 ///       }]
-///       "targets" = [{
-///         "containerApp" = "capp-1"
-///         "revision"     = "rev-1"
-///         "weight"       = 100
+///       targets = [{
+///         container_app = "capp-1"
+///         revision      = "rev-1"
+///         weight        = 100
 ///       }]
 ///     }]
 ///   }
@@ -182,6 +185,12 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.HttpRouteConfig;
 /// import com.pulumi.azurenative.app.HttpRouteConfigArgs;
 /// import com.pulumi.azurenative.app.inputs.HttpRouteConfigPropertiesArgs;
+/// import com.pulumi.azurenative.app.inputs.CustomDomainArgs;
+/// import com.pulumi.azurenative.app.inputs.HttpRouteRuleArgs;
+/// import com.pulumi.azurenative.app.inputs.HttpRouteArgs;
+/// import com.pulumi.azurenative.app.inputs.HttpRouteActionArgs;
+/// import com.pulumi.azurenative.app.inputs.HttpRouteMatchArgs;
+/// import com.pulumi.azurenative.app.inputs.HttpRouteTargetArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -450,7 +459,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -458,29 +467,32 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_httprouteconfig" "httpRouteConfig" {
+/// resource "azure-native_app_http_route_config" "httpRouteConfig" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   environment_name = "testcontainerenv"
 ///   http_route_name  = "httproutefriendlyname"
 ///   properties = {
 ///     custom_domains = [{
-///       "bindingType"   = "Disabled"
-///       "certificateId" = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/examplerg/providers/Microsoft.App/managedEnvironments/testcontainerenv/certificates/certificate-1"
-///       "name"          = "example.com"
+///       binding_type   = "Disabled"
+///       certificate_id = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/examplerg/providers/Microsoft.App/managedEnvironments/testcontainerenv/certificates/certificate-1"
+///       name           = "example.com"
 ///     }]
 ///     rules = [{
-///       "description" = "random-description"
-///       "routes" = [{
-///         "action" = {
-///           "prefixRewrite" = "/v1/api"
+///       description = "random-description"
+///       routes = [{
+///         action = {
+///           prefix_rewrite = "/v1/api"
 ///         }
-///         "match" = {
-///           "caseSensitive"       = true
-///           "pathSeparatedPrefix" = "/v1"
+///         match = {
+///           case_sensitive        = true
+///           path_separated_prefix = "/v1"
 ///         }
 ///       }]
-///       "targets" = [{
-///         "containerApp" = "capp-1"
-///         "label"        = "label-1"
+///       targets = [{
+///         container_app = "capp-1"
+///         label         = "label-1"
 ///       }]
 ///     }]
 ///   }
@@ -498,6 +510,12 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.HttpRouteConfig;
 /// import com.pulumi.azurenative.app.HttpRouteConfigArgs;
 /// import com.pulumi.azurenative.app.inputs.HttpRouteConfigPropertiesArgs;
+/// import com.pulumi.azurenative.app.inputs.CustomDomainArgs;
+/// import com.pulumi.azurenative.app.inputs.HttpRouteRuleArgs;
+/// import com.pulumi.azurenative.app.inputs.HttpRouteArgs;
+/// import com.pulumi.azurenative.app.inputs.HttpRouteActionArgs;
+/// import com.pulumi.azurenative.app.inputs.HttpRouteMatchArgs;
+/// import com.pulumi.azurenative.app.inputs.HttpRouteTargetArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -762,7 +780,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -770,29 +788,32 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_httprouteconfig" "httpRouteConfig" {
+/// resource "azure-native_app_http_route_config" "httpRouteConfig" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   environment_name = "testcontainerenv"
 ///   http_route_name  = "httproutefriendlyname"
 ///   properties = {
 ///     custom_domains = [{
-///       "bindingType"   = "Disabled"
-///       "certificateId" = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/examplerg/providers/Microsoft.App/managedEnvironments/testcontainerenv/certificates/certificate-1"
-///       "name"          = "example.com"
+///       binding_type   = "Disabled"
+///       certificate_id = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/examplerg/providers/Microsoft.App/managedEnvironments/testcontainerenv/certificates/certificate-1"
+///       name           = "example.com"
 ///     }]
 ///     rules = [{
-///       "description" = "random-description"
-///       "routes" = [{
-///         "action" = {
-///           "prefixRewrite" = "/v1/api"
+///       description = "random-description"
+///       routes = [{
+///         action = {
+///           prefix_rewrite = "/v1/api"
 ///         }
-///         "match" = {
-///           "caseSensitive" = true
-///           "prefix"        = "/v1"
+///         match = {
+///           case_sensitive = true
+///           prefix         = "/v1"
 ///         }
 ///       }]
-///       "targets" = [{
-///         "containerApp" = "capp-1"
-///         "label"        = "label-1"
+///       targets = [{
+///         container_app = "capp-1"
+///         label         = "label-1"
 ///       }]
 ///     }]
 ///   }
@@ -810,6 +831,12 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.HttpRouteConfig;
 /// import com.pulumi.azurenative.app.HttpRouteConfigArgs;
 /// import com.pulumi.azurenative.app.inputs.HttpRouteConfigPropertiesArgs;
+/// import com.pulumi.azurenative.app.inputs.CustomDomainArgs;
+/// import com.pulumi.azurenative.app.inputs.HttpRouteRuleArgs;
+/// import com.pulumi.azurenative.app.inputs.HttpRouteArgs;
+/// import com.pulumi.azurenative.app.inputs.HttpRouteActionArgs;
+/// import com.pulumi.azurenative.app.inputs.HttpRouteMatchArgs;
+/// import com.pulumi.azurenative.app.inputs.HttpRouteTargetArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

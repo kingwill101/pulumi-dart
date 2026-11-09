@@ -58,7 +58,7 @@ import 'notification_recipient_email_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'notification_recipient_email_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_notificationrecipientemail" "notificationRecipientEmail" {
+/// resource "azure-native_apimanagement_notification_recipient_email" "notificationRecipientEmail" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   email               = "foobar@live.com"
 ///   notification_name   = "RequestPublisherNotificationMessage"
 ///   resource_group_name = "rg1"

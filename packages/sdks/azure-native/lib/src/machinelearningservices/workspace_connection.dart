@@ -70,7 +70,7 @@ import 'workspace_connection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,13 +78,16 @@ import 'workspace_connection_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_machinelearningservices_workspaceconnection" "workspaceConnection" {
+/// resource "azure-native_machinelearningservices_workspace_connection" "workspaceConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_name = "connection-1"
 ///   properties = {
-///     "authType"   = "None"
-///     "category"   = "ContainerRegistry"
-///     "expiryTime" = "2024-03-15T14:30:00Z"
-///     "target"     = "www.facebook.com"
+///     auth_type   = "None"
+///     category    = "ContainerRegistry"
+///     expiry_time = "2024-03-15T14:30:00Z"
+///     target      = "www.facebook.com"
 ///   }
 ///   resource_group_name = "resourceGroup-1"
 ///   workspace_name      = "workspace-1"
@@ -100,6 +103,18 @@ import 'workspace_connection_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.WorkspaceConnection;
 /// import com.pulumi.azurenative.machinelearningservices.WorkspaceConnectionArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AADAuthTypeWorkspaceConnectionPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AccessKeyAuthTypeWorkspaceConnectionPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.AccountKeyAuthTypeWorkspaceConnectionPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ApiKeyAuthWorkspaceConnectionPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.CustomKeysWorkspaceConnectionPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ManagedIdentityAuthTypeWorkspaceConnectionPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.NoneAuthTypeWorkspaceConnectionPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.OAuth2AuthTypeWorkspaceConnectionPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.PATAuthTypeWorkspaceConnectionPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.SASAuthTypeWorkspaceConnectionPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ServicePrincipalAuthTypeWorkspaceConnectionPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.UsernamePasswordAuthTypeWorkspaceConnectionPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -116,7 +131,6 @@ import 'workspace_connection_args.dart';
 ///         var workspaceConnection = new WorkspaceConnection("workspaceConnection", WorkspaceConnectionArgs.builder()
 ///             .connectionName("connection-1")
 ///             .properties(NoneAuthTypeWorkspaceConnectionPropertiesArgs.builder()
-///                 .authType("None")
 ///                 .category("ContainerRegistry")
 ///                 .expiryTime("2024-03-15T14:30:00Z")
 ///                 .target("www.facebook.com")

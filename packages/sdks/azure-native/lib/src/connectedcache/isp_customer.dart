@@ -132,7 +132,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -140,7 +140,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_connectedcache_ispcustomer" "ispCustomer" {
+/// resource "azure-native_connectedcache_isp_customer" "ispCustomer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   customer_resource_name = "MccRPTest2"
 ///   location               = "westus"
 ///   properties = {

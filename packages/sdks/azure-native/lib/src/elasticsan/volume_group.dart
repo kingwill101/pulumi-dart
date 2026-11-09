@@ -61,7 +61,7 @@ import 'volume_group_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'volume_group_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_elasticsan_volumegroup" "volumeGroup" {
+/// resource "azure-native_elasticsan_volume_group" "volumeGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   elastic_san_name    = "elasticsanname"
 ///   resource_group_name = "resourcegroupname"
 ///   volume_group_name   = "volumegroupname"

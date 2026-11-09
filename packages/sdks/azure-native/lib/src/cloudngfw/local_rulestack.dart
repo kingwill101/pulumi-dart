@@ -127,7 +127,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -135,7 +135,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cloudngfw_localrulestack" "localRulestack" {
+/// resource "azure-native_cloudngfw_local_rulestack" "localRulestack" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   associated_subscriptions = ["2bf4a339-294d-4c25-b0b2-ef649e9f5c27"]
 ///   default_mode             = "IPS"
 ///   description              = "local rulestacks"
@@ -181,6 +184,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cloudngfw.LocalRulestack;
 /// import com.pulumi.azurenative.cloudngfw.LocalRulestackArgs;
 /// import com.pulumi.azurenative.cloudngfw.inputs.AzureResourceManagerManagedIdentityPropertiesArgs;
+/// import com.pulumi.azurenative.cloudngfw.inputs.AzureResourceManagerUserAssignedIdentityArgs;
 /// import com.pulumi.azurenative.cloudngfw.inputs.SecurityServicesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -396,7 +400,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -404,7 +408,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cloudngfw_localrulestack" "localRulestack" {
+/// resource "azure-native_cloudngfw_local_rulestack" "localRulestack" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   local_rulestack_name = "lrs1"
 ///   location             = "eastus"
 ///   resource_group_name  = "rgopenapi"

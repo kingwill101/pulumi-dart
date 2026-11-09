@@ -65,7 +65,7 @@ import 'integration_account_session_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'integration_account_session_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_logic_integrationaccountsession" "integrationAccountSession" {
+/// resource "azure-native_logic_integration_account_session" "integrationAccountSession" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   content = {
 ///     "controlNumber"            = "1234"
 ///     "controlNumberChangedTime" = "2017-02-21T22:30:11.9923759Z"

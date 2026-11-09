@@ -344,7 +344,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -352,7 +352,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_dynamodbtable" "dynamoDbTable" {
+/// resource "azure-native_awsconnector_dynamo_db_table" "dynamoDbTable" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "fmkjilswdjyisfuwxuj"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -361,8 +364,8 @@ import 'system_data_response.dart';
 ///     aws_properties = {
 ///       arn = "qbvqgymuxfzuwybdspdhcuvfouwnet"
 ///       attribute_definitions = [{
-///         "attributeName" = "caryhpofnkqtoc"
-///         "attributeType" = "bcmjgzaljcemcrswr"
+///         attribute_name = "caryhpofnkqtoc"
+///         attribute_type = "bcmjgzaljcemcrswr"
 ///       }]
 ///       billing_mode = "pwxrsjcybdcidejuhvrckvxyxad"
 ///       contributor_insights_specification = {
@@ -370,21 +373,21 @@ import 'system_data_response.dart';
 ///       }
 ///       deletion_protection_enabled = true
 ///       global_secondary_indexes = [{
-///         "contributorInsightsSpecification" = {
-///           "enabled" = true
+///         contributor_insights_specification = {
+///           enabled = true
 ///         }
-///         "indexName" = "uqlzacnvsvayrvirrwwttb"
-///         "keySchema" = [{
-///           "attributeName" = "wisgqkyoouaxivtrtay"
-///           "keyType"       = "kwkqgbxrwnoklpgmoypovxe"
+///         index_name = "uqlzacnvsvayrvirrwwttb"
+///         key_schema = [{
+///           attribute_name = "wisgqkyoouaxivtrtay"
+///           key_type       = "kwkqgbxrwnoklpgmoypovxe"
 ///         }]
-///         "projection" = {
-///           "nonKeyAttributes" = ["loqmvohtjsscueegam"]
-///           "projectionType"   = "atbzepkydpgudoaqi"
+///         projection = {
+///           non_key_attributes = ["loqmvohtjsscueegam"]
+///           projection_type    = "atbzepkydpgudoaqi"
 ///         }
-///         "provisionedThroughput" = {
-///           "readCapacityUnits"  = 10
-///           "writeCapacityUnits" = 28
+///         provisioned_throughput = {
+///           read_capacity_units  = 10
+///           write_capacity_units = 28
 ///         }
 ///       }]
 ///       import_source_specification = {
@@ -403,22 +406,22 @@ import 'system_data_response.dart';
 ///         }
 ///       }
 ///       key_schema = [{
-///         "attributeName" = "wisgqkyoouaxivtrtay"
-///         "keyType"       = "kwkqgbxrwnoklpgmoypovxe"
+///         attribute_name = "wisgqkyoouaxivtrtay"
+///         key_type       = "kwkqgbxrwnoklpgmoypovxe"
 ///       }]
 ///       kinesis_stream_specification = {
 ///         approximate_creation_date_time_precision = "MICROSECOND"
 ///         stream_arn                               = "qldltl"
 ///       }
 ///       local_secondary_indexes = [{
-///         "indexName" = "gintyosxvkjqpe"
-///         "keySchema" = [{
-///           "attributeName" = "wisgqkyoouaxivtrtay"
-///           "keyType"       = "kwkqgbxrwnoklpgmoypovxe"
+///         index_name = "gintyosxvkjqpe"
+///         key_schema = [{
+///           attribute_name = "wisgqkyoouaxivtrtay"
+///           key_type       = "kwkqgbxrwnoklpgmoypovxe"
 ///         }]
-///         "projection" = {
-///           "nonKeyAttributes" = ["loqmvohtjsscueegam"]
-///           "projectionType"   = "atbzepkydpgudoaqi"
+///         projection = {
+///           non_key_attributes = ["loqmvohtjsscueegam"]
+///           projection_type    = "atbzepkydpgudoaqi"
 ///         }
 ///       }]
 ///       point_in_time_recovery_specification = {
@@ -442,8 +445,8 @@ import 'system_data_response.dart';
 ///       table_class = "tmbfrfbppwhjpm"
 ///       table_name  = "mqvlcdboopn"
 ///       tags = [{
-///         "key"   = "txipennfw"
-///         "value" = "dkgweupnz"
+///         key   = "txipennfw"
+///         value = "dkgweupnz"
 ///       }]
 ///       time_to_live_specification = {
 ///         attribute_name = "sxbfejubturdtyusqywguqni"
@@ -476,17 +479,23 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.DynamoDbTableArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.DynamoDBTablePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsDynamoDBTablePropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.AttributeDefinitionArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ContributorInsightsSpecificationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.GlobalSecondaryIndexArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.KeySchemaArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ProjectionArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ProvisionedThroughputArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ImportSourceSpecificationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.InputFormatOptionsArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CsvArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.S3BucketSourceArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.KinesisStreamSpecificationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.LocalSecondaryIndexArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.PointInTimeRecoverySpecificationArgs;
-/// import com.pulumi.azurenative.awsconnector.inputs.ProvisionedThroughputArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ResourcePolicyArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.SSESpecificationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.StreamSpecificationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.TimeToLiveSpecificationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
