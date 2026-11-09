@@ -62,7 +62,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,7 +70,10 @@ import 'sku_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_jobagent" "jobAgent" {
+/// resource "azure-native_sql_job_agent" "jobAgent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_id         = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/group1/providers/Microsoft.Sql/servers/server1/databases/db1"
 ///   job_agent_name      = "agent1"
 ///   location            = "southeastasia"
@@ -213,7 +216,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -221,7 +224,10 @@ import 'sku_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_jobagent" "jobAgent" {
+/// resource "azure-native_sql_job_agent" "jobAgent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_id         = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/group1/providers/Microsoft.Sql/servers/server1/databases/db1"
 ///   job_agent_name      = "agent1"
 ///   location            = "southeastasia"

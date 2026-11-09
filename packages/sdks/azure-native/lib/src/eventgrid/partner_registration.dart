@@ -68,7 +68,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventgrid_partnerregistration" "partnerRegistration" {
+/// resource "azure-native_eventgrid_partner_registration" "partnerRegistration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                  = "global"
 ///   partner_registration_name = "examplePartnerRegistrationName1"
 ///   resource_group_name       = "examplerg"

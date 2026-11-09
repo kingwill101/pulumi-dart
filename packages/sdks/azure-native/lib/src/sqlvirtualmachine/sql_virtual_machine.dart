@@ -84,7 +84,7 @@ import 'wsfc_domain_credentials_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -92,7 +92,10 @@ import 'wsfc_domain_credentials_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sqlvirtualmachine_sqlvirtualmachine" "sqlVirtualMachine" {
+/// resource "azure-native_sqlvirtualmachine_sql_virtual_machine" "sqlVirtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                              = "northeurope"
 ///   resource_group_name                   = "testrg"
 ///   sql_virtual_machine_group_resource_id = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/testvmgroup"
@@ -223,7 +226,7 @@ import 'wsfc_domain_credentials_response.dart';
 ///         {
 ///             BackupScheduleType = AzureNative.SqlVirtualMachine.BackupScheduleType.Manual,
 ///             BackupSystemDbs = true,
-///             DaysOfWeek = new[]
+///             DaysOfWeek =
 ///             {
 ///                 AzureNative.SqlVirtualMachine.AutoBackupDaysOfWeek.Monday,
 ///                 AzureNative.SqlVirtualMachine.AutoBackupDaysOfWeek.Friday,
@@ -363,7 +366,7 @@ import 'wsfc_domain_credentials_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -371,7 +374,10 @@ import 'wsfc_domain_credentials_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sqlvirtualmachine_sqlvirtualmachine" "sqlVirtualMachine" {
+/// resource "azure-native_sqlvirtualmachine_sql_virtual_machine" "sqlVirtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auto_backup_settings = {
 ///     backup_schedule_type     = "Manual"
 ///     backup_system_dbs        = true
@@ -759,7 +765,7 @@ import 'wsfc_domain_credentials_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -767,7 +773,10 @@ import 'wsfc_domain_credentials_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sqlvirtualmachine_sqlvirtualmachine" "sqlVirtualMachine" {
+/// resource "azure-native_sqlvirtualmachine_sql_virtual_machine" "sqlVirtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                 = "northeurope"
 ///   resource_group_name      = "testrg"
 ///   sql_virtual_machine_name = "testvm"
@@ -983,7 +992,7 @@ import 'wsfc_domain_credentials_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -991,7 +1000,10 @@ import 'wsfc_domain_credentials_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sqlvirtualmachine_sqlvirtualmachine" "sqlVirtualMachine" {
+/// resource "azure-native_sqlvirtualmachine_sql_virtual_machine" "sqlVirtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                 = "northeurope"
 ///   resource_group_name      = "testrg"
 ///   sql_virtual_machine_name = "testvm"
@@ -1235,7 +1247,7 @@ import 'wsfc_domain_credentials_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1243,7 +1255,10 @@ import 'wsfc_domain_credentials_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sqlvirtualmachine_sqlvirtualmachine" "sqlVirtualMachine" {
+/// resource "azure-native_sqlvirtualmachine_sql_virtual_machine" "sqlVirtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                 = "northeurope"
 ///   resource_group_name      = "testrg"
 ///   sql_virtual_machine_name = "testvm"
@@ -1613,7 +1628,7 @@ import 'wsfc_domain_credentials_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1621,7 +1636,10 @@ import 'wsfc_domain_credentials_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sqlvirtualmachine_sqlvirtualmachine" "sqlVirtualMachine" {
+/// resource "azure-native_sqlvirtualmachine_sql_virtual_machine" "sqlVirtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assessment_settings = {
 ///     enable          = true
 ///     run_immediately = true
@@ -2227,7 +2245,7 @@ import 'wsfc_domain_credentials_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2235,7 +2253,10 @@ import 'wsfc_domain_credentials_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sqlvirtualmachine_sqlvirtualmachine" "sqlVirtualMachine" {
+/// resource "azure-native_sqlvirtualmachine_sql_virtual_machine" "sqlVirtualMachine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                    = "northeurope"
 ///   resource_group_name         = "testrg"
 ///   sql_virtual_machine_name    = "testvm"

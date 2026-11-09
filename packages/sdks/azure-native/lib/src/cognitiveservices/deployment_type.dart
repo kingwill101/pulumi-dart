@@ -84,7 +84,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -93,6 +93,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_cognitiveservices_deployment" "deployment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name    = "accountName"
 ///   deployment_name = "deploymentName"
 ///   properties = {

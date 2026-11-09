@@ -68,7 +68,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,13 +76,16 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_clusterjob" "clusterJob" {
+/// resource "azure-native_azurestackhci_cluster_job" "clusterJob" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name = "myCluster"
 ///   jobs_name    = "ConfigureCVM"
 ///   properties = {
-///     "confidentialVmIntent" = "Enable"
-///     "deploymentMode"       = "Deploy"
-///     "jobType"              = "ConfigureCVM"
+///     confidential_vm_intent = "Enable"
+///     deployment_mode        = "Deploy"
+///     job_type               = "ConfigureCVM"
 ///   }
 ///   resource_group_name = "test-rg"
 /// }
@@ -97,6 +100,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.azurestackhci.ClusterJob;
 /// import com.pulumi.azurenative.azurestackhci.ClusterJobArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.HciConfigureCvmJobPropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.HciConfigureSdnIntegrationJobPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -116,7 +121,6 @@ import 'system_data_response.dart';
 ///             .properties(HciConfigureCvmJobPropertiesArgs.builder()
 ///                 .confidentialVmIntent("Enable")
 ///                 .deploymentMode("Deploy")
-///                 .jobType("ConfigureCVM")
 ///                 .build())
 ///             .resourceGroupName("test-rg")
 ///             .build());
@@ -233,7 +237,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -241,13 +245,16 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_clusterjob" "clusterJob" {
+/// resource "azure-native_azurestackhci_cluster_job" "clusterJob" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name = "myCluster"
 ///   jobs_name    = "configureSdnIntegration"
 ///   properties = {
-///     "deploymentMode"       = "Deploy"
-///     "jobType"              = "ConfigureSdnIntegration"
-///     "sdnIntegrationIntent" = "Enable"
+///     deployment_mode        = "Deploy"
+///     job_type               = "ConfigureSdnIntegration"
+///     sdn_integration_intent = "Enable"
 ///   }
 ///   resource_group_name = "test-rg"
 /// }
@@ -262,6 +269,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.azurestackhci.ClusterJob;
 /// import com.pulumi.azurenative.azurestackhci.ClusterJobArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.HciConfigureCvmJobPropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.HciConfigureSdnIntegrationJobPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -280,7 +289,6 @@ import 'system_data_response.dart';
 ///             .jobsName("configureSdnIntegration")
 ///             .properties(HciConfigureSdnIntegrationJobPropertiesArgs.builder()
 ///                 .deploymentMode("Deploy")
-///                 .jobType("ConfigureSdnIntegration")
 ///                 .sdnIntegrationIntent("Enable")
 ///                 .build())
 ///             .resourceGroupName("test-rg")

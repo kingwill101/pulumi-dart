@@ -79,7 +79,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -88,6 +88,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_cdn_origin" "origin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enabled                       = true
 ///   endpoint_name                 = "endpoint1"
 ///   host_name                     = "www.someDomain.net"

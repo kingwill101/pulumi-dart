@@ -35,7 +35,7 @@ import 'system_data_response.dart';
 ///                     AllSupported = true,
 ///                     ExclusionByResourceTypes = new AzureNative.AwsConnector.Inputs.ExclusionByResourceTypesArgs
 ///                     {
-///                         ResourceTypes = new[]
+///                         ResourceTypes =
 ///                         {
 ///                             "AWS::ACM::Certificate",
 ///                         },
@@ -48,7 +48,7 @@ import 'system_data_response.dart';
 ///                             Value = AzureNative.AwsConnector.RecordingStrategyType.ALL_SUPPORTED_RESOURCE_TYPES,
 ///                         },
 ///                     },
-///                     ResourceTypes = new[]
+///                     ResourceTypes =
 ///                     {
 ///                         "AWS::ACM::Certificate",
 ///                     },
@@ -68,7 +68,7 @@ import 'system_data_response.dart';
 ///                             {
 ///                                 Value = AzureNative.AwsConnector.RecordingFrequency.CONTINUOUS,
 ///                             },
-///                             ResourceTypes = new[]
+///                             ResourceTypes =
 ///                             {
 ///                                 "AWS::ACM::Certificate",
 ///                             },
@@ -174,7 +174,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -182,7 +182,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_configserviceconfigurationrecorder" "configServiceConfigurationRecorder" {
+/// resource "azure-native_awsconnector_config_service_configuration_recorder" "configServiceConfigurationRecorder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "uhzzvapzjrmbzxfxdqyczgmcq"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -208,11 +211,11 @@ import 'system_data_response.dart';
 ///           value = "CONTINUOUS"
 ///         }
 ///         recording_mode_overrides = [{
-///           "description" = "fxclcxlsumaur"
-///           "recordingFrequency" = {
-///             "value" = "CONTINUOUS"
+///           description = "fxclcxlsumaur"
+///           recording_frequency = {
+///             value = "CONTINUOUS"
 ///           }
-///           "resourceTypes" = ["AWS::ACM::Certificate"]
+///           resource_types = ["AWS::ACM::Certificate"]
 ///         }]
 ///       }
 ///       role_arn = "alfppyafyrtgacngfxckcioci"
@@ -249,6 +252,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.RecordingStrategyTypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RecordingModeArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RecordingFrequencyEnumValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.RecordingModeOverrideArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

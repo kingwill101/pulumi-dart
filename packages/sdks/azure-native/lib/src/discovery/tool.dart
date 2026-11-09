@@ -118,27 +118,27 @@ import 'tool_properties_response.dart';
 /// 						map[string]interface{}{
 /// 							"command":     "python3 submit_dft.py ",
 /// 							"description": "Optimize geometry of 'xyz's from the input data asset. This is a prerequisite for all other discovery computations.",
-/// 							"environment_variables": []map[string]interface{}{
-/// 								map[string]interface{}{
+/// 							"environment_variables": []map[string]string{
+/// 								{
 /// 									"name":  "OUTPUT_DIRECTORY_PATH",
 /// 									"value": "{{ outputDataAssetId }}",
 /// 								},
 /// 							},
 /// 							"input_schema": map[string]interface{}{
-/// 								"properties": map[string]interface{}{
-/// 									"basisSet": map[string]interface{}{
+/// 								"properties": map[string]map[string]string{
+/// 									"basisSet": map[string]string{
 /// 										"description": "Basis set. Must be one of the supported basis sets (e.g., def2-svp, def2-tzvp).",
 /// 										"type":        "string",
 /// 									},
-/// 									"inputDataAssetId": map[string]interface{}{
+/// 									"inputDataAssetId": map[string]string{
 /// 										"description": "Identifier of the input data asset",
 /// 										"type":        "string",
 /// 									},
-/// 									"outputDataAssetId": map[string]interface{}{
+/// 									"outputDataAssetId": map[string]string{
 /// 										"description": "Identifier to use for the new output data asset which will be created.",
 /// 										"type":        "string",
 /// 									},
-/// 									"xyzColumnName": map[string]interface{}{
+/// 									"xyzColumnName": map[string]string{
 /// 										"description": "Column containing xyz data within the input data table asset",
 /// 										"type":        "string",
 /// 									},
@@ -177,7 +177,7 @@ import 'tool_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -186,6 +186,9 @@ import 'tool_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_discovery_tool" "tool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "uksouth"
 ///   properties = {
 ///     definition_content = {

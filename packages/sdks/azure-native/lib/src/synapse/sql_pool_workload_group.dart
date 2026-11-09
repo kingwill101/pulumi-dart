@@ -23,9 +23,9 @@ import 'sql_pool_workload_group_args.dart';
 ///     {
 ///         Importance = "normal",
 ///         MaxResourcePercent = 100,
-///         MaxResourcePercentPerRequest = 3,
+///         MaxResourcePercentPerRequest = 3.0,
 ///         MinResourcePercent = 0,
-///         MinResourcePercentPerRequest = 3,
+///         MinResourcePercentPerRequest = 3.0,
 ///         QueryExecutionTimeout = 0,
 ///         ResourceGroupName = "sqlcrudtest-6852",
 ///         SqlPoolName = "sqlcrudtest-9187",
@@ -70,7 +70,7 @@ import 'sql_pool_workload_group_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,7 +78,10 @@ import 'sql_pool_workload_group_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_synapse_sqlpoolworkloadgroup" "sqlPoolWorkloadGroup" {
+/// resource "azure-native_synapse_sql_pool_workload_group" "sqlPoolWorkloadGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   importance                       = "normal"
 ///   max_resource_percent             = 100
 ///   max_resource_percent_per_request = 3
@@ -202,7 +205,7 @@ import 'sql_pool_workload_group_args.dart';
 ///     {
 ///         MaxResourcePercent = 100,
 ///         MinResourcePercent = 0,
-///         MinResourcePercentPerRequest = 3,
+///         MinResourcePercentPerRequest = 3.0,
 ///         ResourceGroupName = "sqlcrudtest-6852",
 ///         SqlPoolName = "sqlcrudtest-9187",
 ///         WorkloadGroupName = "smallrc",
@@ -243,7 +246,7 @@ import 'sql_pool_workload_group_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -251,7 +254,10 @@ import 'sql_pool_workload_group_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_synapse_sqlpoolworkloadgroup" "sqlPoolWorkloadGroup" {
+/// resource "azure-native_synapse_sql_pool_workload_group" "sqlPoolWorkloadGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   max_resource_percent             = 100
 ///   min_resource_percent             = 0
 ///   min_resource_percent_per_request = 3

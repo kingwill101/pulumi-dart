@@ -97,7 +97,7 @@ import 'dra_model_response_system_data.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -106,6 +106,9 @@ import 'dra_model_response_system_data.dart';
 /// }
 ///
 /// resource "azure-native_datareplication_dra" "dra" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fabric_agent_name = "M"
 ///   fabric_name       = "wPR"
 ///   properties = {

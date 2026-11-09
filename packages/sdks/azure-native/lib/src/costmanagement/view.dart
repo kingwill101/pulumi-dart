@@ -164,7 +164,7 @@ import 'view_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -173,6 +173,9 @@ import 'view_args.dart';
 /// }
 ///
 /// resource "azure-native_costmanagement_view" "view" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   accumulated = "true"
 ///   chart       = "Table"
 ///   data_set = {
@@ -185,8 +188,8 @@ import 'view_args.dart';
 ///     granularity = "Daily"
 ///     grouping    = []
 ///     sorting = [{
-///       "direction" = "Ascending"
-///       "name"      = "UsageDate"
+///       direction = "Ascending"
+///       name      = "UsageDate"
 ///     }]
 ///   }
 ///   display_name = "swagger Example"
@@ -229,6 +232,8 @@ import 'view_args.dart';
 /// import com.pulumi.azurenative.costmanagement.View;
 /// import com.pulumi.azurenative.costmanagement.ViewArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.ReportConfigDatasetArgs;
+/// import com.pulumi.azurenative.costmanagement.inputs.ReportConfigAggregationArgs;
+/// import com.pulumi.azurenative.costmanagement.inputs.ReportConfigSortingArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.KpiPropertiesArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.PivotPropertiesArgs;
 /// import java.util.ArrayList;

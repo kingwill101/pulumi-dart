@@ -58,7 +58,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_synapse_readonlyfollowingdatabase" "readOnlyFollowingDatabase" {
+/// resource "azure-native_synapse_read_only_following_database" "readOnlyFollowingDatabase" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name       = "KustoDatabase8"
 ///   kusto_pool_name     = "kustoclusterrptest4"
 ///   resource_group_name = "kustorptest"

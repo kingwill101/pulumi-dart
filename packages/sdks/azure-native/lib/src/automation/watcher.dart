@@ -24,11 +24,11 @@ import 'watcher_args.dart';
 ///     {
 ///         AutomationAccountName = "MyTestAutomationAccount",
 ///         Description = "This is a test watcher.",
-///         ExecutionFrequencyInSeconds = 60,
+///         ExecutionFrequencyInSeconds = 60.0,
 ///         ResourceGroupName = "rg",
 ///         ScriptName = "MyTestWatcherRunbook",
 ///         ScriptRunOn = "MyTestHybridWorkerGroup",
-///         Tags = null,
+///         Tags = new() { },
 ///         WatcherName = "MyTestWatcher",
 ///     });
 ///
@@ -67,7 +67,7 @@ import 'watcher_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,6 +76,9 @@ import 'watcher_args.dart';
 /// }
 ///
 /// resource "azure-native_automation_watcher" "watcher" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   automation_account_name        = "MyTestAutomationAccount"
 ///   description                    = "This is a test watcher."
 ///   execution_frequency_in_seconds = 60

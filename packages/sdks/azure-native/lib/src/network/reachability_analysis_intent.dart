@@ -38,7 +38,7 @@ import 'system_data_response.dart';
 ///                 {
 ///                     "0",
 ///                 },
-///                 Protocols = new[]
+///                 Protocols =
 ///                 {
 ///                     AzureNative.Network.NetworkProtocol.Any,
 ///                 },
@@ -111,7 +111,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -119,7 +119,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_reachabilityanalysisintent" "reachabilityAnalysisIntent" {
+/// resource "azure-native_network_reachability_analysis_intent" "reachabilityAnalysisIntent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_manager_name = "testNetworkManager"
 ///   properties = {
 ///     description             = "A sample reachability analysis intent"

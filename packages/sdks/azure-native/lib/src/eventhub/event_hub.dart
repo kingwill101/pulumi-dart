@@ -44,14 +44,14 @@ import 'system_data_response.dart';
 ///             SizeLimitInBytes = 10485763,
 ///         },
 ///         EventHubName = "sdk-EventHub-6547",
-///         MessageRetentionInDays = 4,
+///         MessageRetentionInDays = 4.0,
 ///         NamespaceName = "sdk-Namespace-5357",
-///         PartitionCount = 4,
+///         PartitionCount = 4.0,
 ///         ResourceGroupName = "Default-NotificationHubs-AustraliaEast",
 ///         RetentionDescription = new AzureNative.EventHub.Inputs.RetentionDescriptionArgs
 ///         {
 ///             CleanupPolicy = AzureNative.EventHub.CleanupPolicyRetentionDescription.Compact,
-///             RetentionTimeInHours = 96,
+///             RetentionTimeInHours = 96.0,
 ///             TombstoneRetentionTimeInHours = 1,
 ///         },
 ///         Status = AzureNative.EventHub.EntityStatus.Active,
@@ -113,7 +113,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -121,7 +121,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventhub_eventhub" "eventHub" {
+/// resource "azure-native_eventhub_event_hub" "eventHub" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   capture_description = {
 ///     destination = {
 ///       archive_name_format = "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}"

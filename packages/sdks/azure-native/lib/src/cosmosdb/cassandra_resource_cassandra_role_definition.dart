@@ -92,7 +92,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -100,7 +100,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_cassandraresourcecassandraroledefinition" "cassandraResourceCassandraRoleDefinition" {
+/// resource "azure-native_cosmosdb_cassandra_resource_cassandra_role_definition" "cassandraResourceCassandraRoleDefinition" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name      = "myAccountName"
 ///   assignable_scopes = ["/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/myResourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/dbs/sales", "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/myResourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/dbs/purchases"]
 ///   permissions {

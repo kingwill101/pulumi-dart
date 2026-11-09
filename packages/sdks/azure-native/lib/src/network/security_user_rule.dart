@@ -110,7 +110,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -118,7 +118,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_securityuserrule" "securityUserRule" {
+/// resource "azure-native_network_security_user_rule" "securityUserRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_name      = "myTestSecurityConfig"
 ///   description             = "Sample User Rule"
 ///   destination_port_ranges = ["22"]

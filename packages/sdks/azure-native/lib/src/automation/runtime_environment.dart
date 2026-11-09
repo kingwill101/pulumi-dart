@@ -70,7 +70,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,7 +78,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_automation_runtimeenvironment" "runtimeEnvironment" {
+/// resource "azure-native_automation_runtime_environment" "runtimeEnvironment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   automation_account_name = "myAutomationAccount9"
 ///   default_packages = {
 ///     "Az" = "12.3.0"

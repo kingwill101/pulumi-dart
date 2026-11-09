@@ -176,7 +176,7 @@ import 'template_properties_response.dart';
 /// 						"apiVersion": "2022-01-01-preview",
 /// 						"name":       "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/',concat('AnalyticsRule-', last(split([resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', 8365ebfe-a381-45b7-ad08-7d818070e11f)],'/'))))]",
 /// 						"properties": map[string]interface{}{
-/// 							"author": map[string]interface{}{
+/// 							"author": map[string]string{
 /// 								"email": "support@microsoft.com",
 /// 								"name":  "Microsoft",
 /// 							},
@@ -184,12 +184,12 @@ import 'template_properties_response.dart';
 /// 							"description": "CrowdStrike Falcon Endpoint Protection Analytics Rule 1",
 /// 							"kind":        "AnalyticsRule",
 /// 							"parentId":    "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', 8365ebfe-a381-45b7-ad08-7d818070e11f)]",
-/// 							"source": map[string]interface{}{
+/// 							"source": map[string]string{
 /// 								"kind":     "Solution",
 /// 								"name":     "str",
 /// 								"sourceId": "str.azure-sentinel-solution-str",
 /// 							},
-/// 							"support": map[string]interface{}{
+/// 							"support": map[string]string{
 /// 								"email": "support@microsoft.com",
 /// 								"link":  "https://support.microsoft.com/",
 /// 								"name":  "Microsoft Corporation",
@@ -231,7 +231,7 @@ import 'template_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -239,7 +239,10 @@ import 'template_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_contenttemplate" "contentTemplate" {
+/// resource "azure-native_securityinsights_content_template" "contentTemplate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   author = {
 ///     email = "support@microsoft.com"
 ///     name  = "Microsoft"

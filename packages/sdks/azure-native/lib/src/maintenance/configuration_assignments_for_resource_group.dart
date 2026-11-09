@@ -115,7 +115,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -123,7 +123,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_maintenance_configurationassignmentsforresourcegroup" "configurationAssignmentsForResourceGroup" {
+/// resource "azure-native_maintenance_configuration_assignments_for_resource_group" "configurationAssignmentsForResourceGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_assignment_name = "workervmConfiguration"
 ///   filter = {
 ///     locations      = ["Japan East", "UK South"]

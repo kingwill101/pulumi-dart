@@ -119,7 +119,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -127,25 +127,28 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_machinelearningservices_raipolicy" "raiPolicy" {
+/// resource "azure-native_machinelearningservices_rai_policy" "raiPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_name = "Azure.OpenAI"
 ///   properties = {
 ///     base_policy_name = "112"
 ///     completion_blocklists = [{
-///       "blocking"      = false
-///       "blocklistName" = "blocklistName"
+///       blocking       = false
+///       blocklist_name = "blocklistName"
 ///     }]
 ///     content_filters = [{
-///       "allowedContentLevel" = "Low"
-///       "blocking"            = false
-///       "enabled"             = false
-///       "name"                = "policyName"
-///       "source"              = "Prompt"
+///       allowed_content_level = "Low"
+///       blocking              = false
+///       enabled               = false
+///       name                  = "policyName"
+///       source                = "Prompt"
 ///     }]
 ///     mode = "Blocking"
 ///     prompt_blocklists = [{
-///       "blocking"      = false
-///       "blocklistName" = "blocklistName"
+///       blocking       = false
+///       blocklist_name = "blocklistName"
 ///     }]
 ///     type = "SystemManaged"
 ///   }
@@ -165,6 +168,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.machinelearningservices.RaiPolicy;
 /// import com.pulumi.azurenative.machinelearningservices.RaiPolicyArgs;
 /// import com.pulumi.azurenative.machinelearningservices.inputs.RaiPolicyPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.RaiBlocklistConfigArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.RaiPolicyContentFilterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

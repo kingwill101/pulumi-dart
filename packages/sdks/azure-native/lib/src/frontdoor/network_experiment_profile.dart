@@ -58,7 +58,7 @@ import 'network_experiment_profile_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'network_experiment_profile_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_frontdoor_networkexperimentprofile" "networkExperimentProfile" {
+/// resource "azure-native_frontdoor_network_experiment_profile" "networkExperimentProfile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enabled_state       = "Enabled"
 ///   location            = "WestUs"
 ///   profile_name        = "MyProfile"

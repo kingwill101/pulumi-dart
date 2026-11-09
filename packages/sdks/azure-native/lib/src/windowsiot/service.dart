@@ -24,7 +24,7 @@ import 'service_args.dart';
 ///         DeviceName = "service4445",
 ///         Location = "East US",
 ///         Notes = "blah",
-///         Quantity = 1000000,
+///         Quantity = 1000000.0,
 ///         ResourceGroupName = "res9101",
 ///     });
 ///
@@ -62,7 +62,7 @@ import 'service_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,6 +71,9 @@ import 'service_args.dart';
 /// }
 ///
 /// resource "azure-native_windowsiot_service" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   admin_domain_name   = "d.e.f"
 ///   billing_domain_name = "a.b.c"
 ///   device_name         = "service4445"

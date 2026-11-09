@@ -51,7 +51,7 @@ import 'topologies_properties_response.dart';
 ///         },
 ///         ResourceGroupName = "rgopenapi",
 ///         Scope = "lm",
-///         Tags = null,
+///         Tags = new() { },
 ///         Topologies = new[]
 ///         {
 ///             new AzureNative.IoTOperationsOrchestrator.Inputs.TopologiesPropertiesArgs
@@ -132,7 +132,7 @@ import 'topologies_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -141,6 +141,9 @@ import 'topologies_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_iotoperationsorchestrator_target" "target" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   components {
 ///     dependencies = ["x"]
 ///     name         = "yhnelpxsobdyurwvhkq"
@@ -184,6 +187,7 @@ import 'topologies_properties_response.dart';
 /// import com.pulumi.azurenative.iotoperationsorchestrator.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperationsorchestrator.inputs.ReconciliationPolicyArgs;
 /// import com.pulumi.azurenative.iotoperationsorchestrator.inputs.TopologiesPropertiesArgs;
+/// import com.pulumi.azurenative.iotoperationsorchestrator.inputs.BindingPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

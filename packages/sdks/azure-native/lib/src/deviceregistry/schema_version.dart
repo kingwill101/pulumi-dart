@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_deviceregistry_schemaversion" "schemaVersion" {
+/// resource "azure-native_deviceregistry_schema_version" "schemaVersion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description          = "Schema version 1"
 ///   resource_group_name  = "myResourceGroup"
 ///   schema_content       = "{\"$schema\": \"http://json-schema.org/draft-07/schema#\",\"type\": \"object\",\"properties\": {\"humidity\": {\"type\": \"string\"},\"temperature\": {\"type\":\"number\"}}}"

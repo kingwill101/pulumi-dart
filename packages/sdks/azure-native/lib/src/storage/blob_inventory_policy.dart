@@ -204,7 +204,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -212,40 +212,43 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_blobinventorypolicy" "blobInventoryPolicy" {
+/// resource "azure-native_storage_blob_inventory_policy" "blobInventoryPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name               = "sto9699"
 ///   blob_inventory_policy_name = "default"
 ///   policy = {
 ///     enabled = true
 ///     rules = [{
-///       "definition" = {
-///         "filters" = {
-///           "blobTypes" = ["blockBlob", "appendBlob", "pageBlob"]
-///           "creationTime" = {
-///             "lastNDays" = 1000
+///       definition = {
+///         filters = {
+///           blob_types = ["blockBlob", "appendBlob", "pageBlob"]
+///           creation_time = {
+///             last_n_days = 1000
 ///           }
-///           "includeBlobVersions" = true
-///           "includeSnapshots"    = true
-///           "prefixMatch"         = ["inventoryprefix1", "inventoryprefix2"]
+///           include_blob_versions = true
+///           include_snapshots     = true
+///           prefix_match          = ["inventoryprefix1", "inventoryprefix2"]
 ///         }
-///         "format"       = "Csv"
-///         "objectType"   = "Blob"
-///         "schedule"     = "Daily"
-///         "schemaFields" = ["Name", "Creation-Time", "Last-Modified", "Content-Length", "Content-MD5", "BlobType", "AccessTier", "AccessTierChangeTime", "Snapshot", "VersionId", "IsCurrentVersion", "Metadata"]
+///         format        = "Csv"
+///         object_type   = "Blob"
+///         schedule      = "Daily"
+///         schema_fields = ["Name", "Creation-Time", "Last-Modified", "Content-Length", "Content-MD5", "BlobType", "AccessTier", "AccessTierChangeTime", "Snapshot", "VersionId", "IsCurrentVersion", "Metadata"]
 ///       }
-///       "destination" = "container1"
-///       "enabled"     = true
-///       "name"        = "inventoryPolicyRule1"
+///       destination = "container1"
+///       enabled     = true
+///       name        = "inventoryPolicyRule1"
 ///       }, {
-///       "definition" = {
-///         "format"       = "Parquet"
-///         "objectType"   = "Container"
-///         "schedule"     = "Weekly"
-///         "schemaFields" = ["Name", "Last-Modified", "Metadata", "LeaseStatus", "LeaseState", "LeaseDuration", "PublicAccess", "HasImmutabilityPolicy", "HasLegalHold"]
+///       definition = {
+///         format        = "Parquet"
+///         object_type   = "Container"
+///         schedule      = "Weekly"
+///         schema_fields = ["Name", "Last-Modified", "Metadata", "LeaseStatus", "LeaseState", "LeaseDuration", "PublicAccess", "HasImmutabilityPolicy", "HasLegalHold"]
 ///       }
-///       "destination" = "container2"
-///       "enabled"     = true
-///       "name"        = "inventoryPolicyRule2"
+///       destination = "container2"
+///       enabled     = true
+///       name        = "inventoryPolicyRule2"
 ///     }]
 ///     type = "Inventory"
 ///   }
@@ -263,6 +266,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.storage.BlobInventoryPolicy;
 /// import com.pulumi.azurenative.storage.BlobInventoryPolicyArgs;
 /// import com.pulumi.azurenative.storage.inputs.BlobInventoryPolicySchemaArgs;
+/// import com.pulumi.azurenative.storage.inputs.BlobInventoryPolicyRuleArgs;
+/// import com.pulumi.azurenative.storage.inputs.BlobInventoryPolicyDefinitionArgs;
+/// import com.pulumi.azurenative.storage.inputs.BlobInventoryPolicyFilterArgs;
+/// import com.pulumi.azurenative.storage.inputs.BlobInventoryCreationTimeArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -802,7 +809,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -810,39 +817,42 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_blobinventorypolicy" "blobInventoryPolicy" {
+/// resource "azure-native_storage_blob_inventory_policy" "blobInventoryPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name               = "sto9699"
 ///   blob_inventory_policy_name = "default"
 ///   policy = {
 ///     enabled = true
 ///     rules = [{
-///       "definition" = {
-///         "filters" = {
-///           "blobTypes"           = ["blockBlob", "appendBlob", "pageBlob"]
-///           "excludePrefix"       = ["excludeprefix1", "excludeprefix2"]
-///           "includeBlobVersions" = true
-///           "includeDeleted"      = true
-///           "includeSnapshots"    = true
-///           "prefixMatch"         = ["inventoryprefix1", "inventoryprefix2"]
+///       definition = {
+///         filters = {
+///           blob_types            = ["blockBlob", "appendBlob", "pageBlob"]
+///           exclude_prefix        = ["excludeprefix1", "excludeprefix2"]
+///           include_blob_versions = true
+///           include_deleted       = true
+///           include_snapshots     = true
+///           prefix_match          = ["inventoryprefix1", "inventoryprefix2"]
 ///         }
-///         "format"       = "Csv"
-///         "objectType"   = "Blob"
-///         "schedule"     = "Daily"
-///         "schemaFields" = ["Name", "Creation-Time", "Last-Modified", "Content-Length", "Content-MD5", "BlobType", "AccessTier", "AccessTierChangeTime", "Snapshot", "VersionId", "IsCurrentVersion", "ContentType", "ContentEncoding", "ContentLanguage", "ContentCRC64", "CacheControl", "Metadata", "DeletionId", "Deleted", "DeletedTime", "RemainingRetentionDays"]
+///         format        = "Csv"
+///         object_type   = "Blob"
+///         schedule      = "Daily"
+///         schema_fields = ["Name", "Creation-Time", "Last-Modified", "Content-Length", "Content-MD5", "BlobType", "AccessTier", "AccessTierChangeTime", "Snapshot", "VersionId", "IsCurrentVersion", "ContentType", "ContentEncoding", "ContentLanguage", "ContentCRC64", "CacheControl", "Metadata", "DeletionId", "Deleted", "DeletedTime", "RemainingRetentionDays"]
 ///       }
-///       "destination" = "container1"
-///       "enabled"     = true
-///       "name"        = "inventoryPolicyRule1"
+///       destination = "container1"
+///       enabled     = true
+///       name        = "inventoryPolicyRule1"
 ///       }, {
-///       "definition" = {
-///         "format"       = "Parquet"
-///         "objectType"   = "Container"
-///         "schedule"     = "Weekly"
-///         "schemaFields" = ["Name", "Last-Modified", "Metadata", "LeaseStatus", "LeaseState", "LeaseDuration", "PublicAccess", "HasImmutabilityPolicy", "HasLegalHold", "Etag", "DefaultEncryptionScope", "DenyEncryptionScopeOverride", "ImmutableStorageWithVersioningEnabled", "Deleted", "Version", "DeletedTime", "RemainingRetentionDays"]
+///       definition = {
+///         format        = "Parquet"
+///         object_type   = "Container"
+///         schedule      = "Weekly"
+///         schema_fields = ["Name", "Last-Modified", "Metadata", "LeaseStatus", "LeaseState", "LeaseDuration", "PublicAccess", "HasImmutabilityPolicy", "HasLegalHold", "Etag", "DefaultEncryptionScope", "DenyEncryptionScopeOverride", "ImmutableStorageWithVersioningEnabled", "Deleted", "Version", "DeletedTime", "RemainingRetentionDays"]
 ///       }
-///       "destination" = "container2"
-///       "enabled"     = true
-///       "name"        = "inventoryPolicyRule2"
+///       destination = "container2"
+///       enabled     = true
+///       name        = "inventoryPolicyRule2"
 ///     }]
 ///     type = "Inventory"
 ///   }
@@ -860,6 +870,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.storage.BlobInventoryPolicy;
 /// import com.pulumi.azurenative.storage.BlobInventoryPolicyArgs;
 /// import com.pulumi.azurenative.storage.inputs.BlobInventoryPolicySchemaArgs;
+/// import com.pulumi.azurenative.storage.inputs.BlobInventoryPolicyRuleArgs;
+/// import com.pulumi.azurenative.storage.inputs.BlobInventoryPolicyDefinitionArgs;
+/// import com.pulumi.azurenative.storage.inputs.BlobInventoryPolicyFilterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1472,7 +1485,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1480,39 +1493,42 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_blobinventorypolicy" "blobInventoryPolicy" {
+/// resource "azure-native_storage_blob_inventory_policy" "blobInventoryPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name               = "sto9699"
 ///   blob_inventory_policy_name = "default"
 ///   policy = {
 ///     enabled = true
 ///     rules = [{
-///       "definition" = {
-///         "filters" = {
-///           "blobTypes"           = ["blockBlob", "appendBlob", "pageBlob"]
-///           "excludePrefix"       = ["excludeprefix1", "excludeprefix2"]
-///           "includeBlobVersions" = true
-///           "includeDeleted"      = true
-///           "includeSnapshots"    = true
-///           "prefixMatch"         = ["inventoryprefix1", "inventoryprefix2"]
+///       definition = {
+///         filters = {
+///           blob_types            = ["blockBlob", "appendBlob", "pageBlob"]
+///           exclude_prefix        = ["excludeprefix1", "excludeprefix2"]
+///           include_blob_versions = true
+///           include_deleted       = true
+///           include_snapshots     = true
+///           prefix_match          = ["inventoryprefix1", "inventoryprefix2"]
 ///         }
-///         "format"       = "Csv"
-///         "objectType"   = "Blob"
-///         "schedule"     = "Daily"
-///         "schemaFields" = ["Name", "Creation-Time", "Last-Modified", "Content-Length", "Content-MD5", "BlobType", "AccessTier", "AccessTierChangeTime", "Snapshot", "VersionId", "IsCurrentVersion", "Tags", "ContentType", "ContentEncoding", "ContentLanguage", "ContentCRC64", "CacheControl", "Metadata", "Deleted", "RemainingRetentionDays"]
+///         format        = "Csv"
+///         object_type   = "Blob"
+///         schedule      = "Daily"
+///         schema_fields = ["Name", "Creation-Time", "Last-Modified", "Content-Length", "Content-MD5", "BlobType", "AccessTier", "AccessTierChangeTime", "Snapshot", "VersionId", "IsCurrentVersion", "Tags", "ContentType", "ContentEncoding", "ContentLanguage", "ContentCRC64", "CacheControl", "Metadata", "Deleted", "RemainingRetentionDays"]
 ///       }
-///       "destination" = "container1"
-///       "enabled"     = true
-///       "name"        = "inventoryPolicyRule1"
+///       destination = "container1"
+///       enabled     = true
+///       name        = "inventoryPolicyRule1"
 ///       }, {
-///       "definition" = {
-///         "format"       = "Parquet"
-///         "objectType"   = "Container"
-///         "schedule"     = "Weekly"
-///         "schemaFields" = ["Name", "Last-Modified", "Metadata", "LeaseStatus", "LeaseState", "LeaseDuration", "PublicAccess", "HasImmutabilityPolicy", "HasLegalHold", "Etag", "DefaultEncryptionScope", "DenyEncryptionScopeOverride", "ImmutableStorageWithVersioningEnabled", "Deleted", "Version", "DeletedTime", "RemainingRetentionDays"]
+///       definition = {
+///         format        = "Parquet"
+///         object_type   = "Container"
+///         schedule      = "Weekly"
+///         schema_fields = ["Name", "Last-Modified", "Metadata", "LeaseStatus", "LeaseState", "LeaseDuration", "PublicAccess", "HasImmutabilityPolicy", "HasLegalHold", "Etag", "DefaultEncryptionScope", "DenyEncryptionScopeOverride", "ImmutableStorageWithVersioningEnabled", "Deleted", "Version", "DeletedTime", "RemainingRetentionDays"]
 ///       }
-///       "destination" = "container2"
-///       "enabled"     = true
-///       "name"        = "inventoryPolicyRule2"
+///       destination = "container2"
+///       enabled     = true
+///       name        = "inventoryPolicyRule2"
 ///     }]
 ///     type = "Inventory"
 ///   }
@@ -1530,6 +1546,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.storage.BlobInventoryPolicy;
 /// import com.pulumi.azurenative.storage.BlobInventoryPolicyArgs;
 /// import com.pulumi.azurenative.storage.inputs.BlobInventoryPolicySchemaArgs;
+/// import com.pulumi.azurenative.storage.inputs.BlobInventoryPolicyRuleArgs;
+/// import com.pulumi.azurenative.storage.inputs.BlobInventoryPolicyDefinitionArgs;
+/// import com.pulumi.azurenative.storage.inputs.BlobInventoryPolicyFilterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

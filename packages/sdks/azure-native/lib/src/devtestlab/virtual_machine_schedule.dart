@@ -125,7 +125,7 @@ import 'week_details_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -133,7 +133,10 @@ import 'week_details_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_devtestlab_virtualmachineschedule" "virtualMachineSchedule" {
+/// resource "azure-native_devtestlab_virtual_machine_schedule" "virtualMachineSchedule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   daily_recurrence = {
 ///     time = "1900"
 ///   }

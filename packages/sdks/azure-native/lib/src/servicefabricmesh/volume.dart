@@ -30,7 +30,7 @@ import 'volume_provider_parameters_azure_file_response.dart';
 ///         Location = "EastUS",
 ///         Provider = AzureNative.ServiceFabricMesh.VolumeProvider.SFAzureFile,
 ///         ResourceGroupName = "sbz_demo",
-///         Tags = null,
+///         Tags = new() { },
 ///         VolumeResourceName = "sampleVolume",
 ///     });
 ///
@@ -72,7 +72,7 @@ import 'volume_provider_parameters_azure_file_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,14 +81,19 @@ import 'volume_provider_parameters_azure_file_response.dart';
 /// }
 ///
 /// resource "azure-native_servicefabricmesh_volume" "volume" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   azure_file_parameters = {
 ///     account_key  = "provide-account-key-here"
 ///     account_name = "sbzdemoaccount"
 ///     share_name   = "sharel"
 ///   }
-///   description          = "Service Fabric Mesh sample volume."
-///   location             = "EastUS"
-///   provider             = "SFAzureFile"
+///   description = "Service Fabric Mesh sample volume."
+///   location    = "EastUS"
+///   _ {
+///     provider = "SFAzureFile"
+///   }
 ///   resource_group_name  = "sbz_demo"
 ///   tags                 = {}
 ///   volume_resource_name = "sampleVolume"

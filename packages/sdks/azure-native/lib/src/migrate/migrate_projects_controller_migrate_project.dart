@@ -65,7 +65,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_migrateprojectscontrollermigrateproject" "migrateProjectsControllerMigrateProject" {
+/// resource "azure-native_migrate_migrate_projects_controller_migrate_project" "migrateProjectsControllerMigrateProject" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "eastus"
 ///   migrate_project_name = "projTest1"
 ///   properties = {

@@ -263,7 +263,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -271,7 +271,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_lightsailinstance" "lightsailInstance" {
+/// resource "azure-native_awsconnector_lightsail_instance" "lightsailInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "cry"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -279,11 +282,11 @@ import 'system_data_response.dart';
 ///     aws_account_id = "bclcfxetkkugpyilojpvoypui"
 ///     aws_properties = {
 ///       add_ons = [{
-///         "addOnType" = "dk"
-///         "autoSnapshotAddOnRequest" = {
-///           "snapshotTimeOfDay" = "mnthrtsoittlqrvxnwvrbaxaazh"
+///         add_on_type = "dk"
+///         auto_snapshot_add_on_request = {
+///           snapshot_time_of_day = "mnthrtsoittlqrvxnwvrbaxaazh"
 ///         }
-///         "status" = "Disabled"
+///         status = "Disabled"
 ///       }]
 ///       availability_zone = "an"
 ///       blueprint_id      = "fcezpmlwqhchkvmrdnywpr"
@@ -291,13 +294,13 @@ import 'system_data_response.dart';
 ///       hardware = {
 ///         cpu_count = 30
 ///         disks = [{
-///           "attachedTo"      = "qoievao"
-///           "attachmentState" = "ujinucmjcnzuosaqycrkndh"
-///           "diskName"        = "tmfpjhluaytgmpxxqtccohpge"
-///           "iops"            = 11
-///           "isSystemDisk"    = true
-///           "path"            = "urbubhyieizmbnyddjkyaadmod"
-///           "sizeInGb"        = "vpd"
+///           attached_to      = "qoievao"
+///           attachment_state = "ujinucmjcnzuosaqycrkndh"
+///           disk_name        = "tmfpjhluaytgmpxxqtccohpge"
+///           iops             = 11
+///           is_system_disk   = true
+///           path             = "urbubhyieizmbnyddjkyaadmod"
+///           size_in_gb       = "vpd"
 ///         }]
 ///         ram_size_in_gb = 4
 ///       }
@@ -314,16 +317,16 @@ import 'system_data_response.dart';
 ///           gb_per_month_allocated = "dvbefi"
 ///         }
 ///         ports = [{
-///           "accessDirection" = "bybrpghkgcvx"
-///           "accessFrom"      = "kslf"
-///           "accessType"      = "dcqaucgpbxngw"
-///           "cidrListAliases" = ["btgxaahlpibcqefsgcghfd"]
-///           "cidrs"           = ["lhmvhnh"]
-///           "commonName"      = "t"
-///           "fromPort"        = 23
-///           "ipv6Cidrs"       = ["qladlrdxfiad"]
-///           "protocol"        = "bzikwazzeydyrukrjhsaogkkxua"
-///           "toPort"          = 13
+///           access_direction  = "bybrpghkgcvx"
+///           access_from       = "kslf"
+///           access_type       = "dcqaucgpbxngw"
+///           cidr_list_aliases = ["btgxaahlpibcqefsgcghfd"]
+///           cidrs             = ["lhmvhnh"]
+///           common_name       = "t"
+///           from_port         = 23
+///           ipv6_cidrs        = ["qladlrdxfiad"]
+///           protocol          = "bzikwazzeydyrukrjhsaogkkxua"
+///           to_port           = 13
 ///         }]
 ///       }
 ///       private_ip_address = "ieeqsrklgnc"
@@ -336,8 +339,8 @@ import 'system_data_response.dart';
 ///       }
 ///       support_code = "nxvcadptkoljiizhffgqdqqzkc"
 ///       tags = [{
-///         "key"   = "oeyvtbbbaviazuesvytzykdrje"
-///         "value" = "vbybagbqynriyix"
+///         key   = "oeyvtbbbaviazuesvytzykdrje"
+///         value = "vbybagbqynriyix"
 ///       }]
 ///       user_data = "f"
 ///       user_name = "rhivoaleeqwog"
@@ -368,11 +371,16 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.LightsailInstanceArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LightsailInstancePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsLightsailInstancePropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.AddOnArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.AutoSnapshotAddOnArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.HardwareArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.DiskArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LocationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.NetworkingArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.MonthlyTransferArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.PortArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.StateArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

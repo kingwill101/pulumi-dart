@@ -127,7 +127,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -135,7 +135,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datamigration_databasemigrationssqlmi" "databaseMigrationsSqlMi" {
+/// resource "azure-native_datamigration_database_migrations_sql_mi" "databaseMigrationsSqlMi" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   managed_instance_name = "managedInstance1"
 ///   properties = {
 ///     backup_configuration = {
@@ -218,7 +221,6 @@ import 'system_data_response.dart';
 ///                         .storageAccountResourceId("account.database.windows.net")
 ///                         .build())
 ///                     .build())
-///                 .kind("SqlMi")
 ///                 .migrationService("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.DataMigration/sqlMigrationServices/testagent")
 ///                 .offlineConfiguration(OfflineConfigurationArgs.builder()
 ///                     .lastBackupName("last_backup_file_name")
@@ -472,7 +474,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -480,7 +482,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datamigration_databasemigrationssqlmi" "databaseMigrationsSqlMi" {
+/// resource "azure-native_datamigration_database_migrations_sql_mi" "databaseMigrationsSqlMi" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   managed_instance_name = "managedInstance1"
 ///   properties = {
 ///     backup_configuration = {
@@ -558,7 +563,6 @@ import 'system_data_response.dart';
 ///                         .storageAccountResourceId("account.database.windows.net")
 ///                         .build())
 ///                     .build())
-///                 .kind("SqlMi")
 ///                 .migrationService("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.DataMigration/sqlMigrationServices/testagent")
 ///                 .scope("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Sql/managedInstances/instance")
 ///                 .sourceDatabaseName("aaa")

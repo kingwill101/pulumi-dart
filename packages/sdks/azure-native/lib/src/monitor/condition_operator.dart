@@ -1,19 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// Operator used in the filtering condition.
+/// The criteria operator. Relevant and required only for rules of the kind LogAlert.
 enum ConditionOperator implements pulumi.PulumiEnum<String> {
-  equal("eq"),
-  notEqual("ne"),
-  lessThan("lt"),
-  lessThanOrEqual("lte"),
-  greaterThan("gt"),
-  greaterThanOrEqual("gte"),
-  in_("in"),
-  notIn("notin"),
-  startsWith("startswith"),
-  notStartsWith("notstartswith"),
-  contains("contains"),
-  notContains("notcontains");
+  valueEquals("Equals"),
+  valueGreaterThan("GreaterThan"),
+  valueGreaterThanOrEqual("GreaterThanOrEqual"),
+  valueLessThan("LessThan"),
+  valueLessThanOrEqual("LessThanOrEqual"),
+  valueGreaterOrLessThan("GreaterOrLessThan");
 
   const ConditionOperator(this.wireValue);
   @override

@@ -27,7 +27,7 @@ import 'update_profile_response.dart';
 /// {
 ///     var nGroup = new AzureNative.ContainerInstance.NGroup("nGroup", new()
 ///     {
-///         ContainerGroupProfiles = new[] {},
+///         ContainerGroupProfiles = new() {},
 ///         ElasticProfile = new AzureNative.ContainerInstance.Inputs.ElasticProfileArgs
 ///         {
 ///             DesiredCount = 1,
@@ -80,7 +80,7 @@ import 'update_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -88,7 +88,10 @@ import 'update_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerinstance_ngroup" "nGroup" {
+/// resource "azure-native_containerinstance_n_group" "nGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   elastic_profile = {
 ///     desired_count          = 1
 ///     maintain_desired_count = true

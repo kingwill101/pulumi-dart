@@ -49,7 +49,7 @@ import 'system_data_response.dart';
 ///             {
 ///                 SoftDeleteSettings = new AzureNative.DataProtection.Inputs.SoftDeleteSettingsArgs
 ///                 {
-///                     RetentionDurationInDays = 14,
+///                     RetentionDurationInDays = 14.0,
 ///                     State = "Enabled",
 ///                 },
 ///             },
@@ -130,7 +130,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -138,7 +138,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dataprotection_backupvault" "backupVault" {
+/// resource "azure-native_dataprotection_backup_vault" "backupVault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity = {
 ///     type = "None"
 ///   }
@@ -161,8 +164,8 @@ import 'system_data_response.dart';
 ///       }
 ///     }
 ///     storage_settings = [{
-///       "datastoreType" = "VaultStore"
-///       "type"          = "LocallyRedundant"
+///       datastore_type = "VaultStore"
+///       type           = "LocallyRedundant"
 ///     }]
 ///   }
 ///   resource_group_name = "SampleResourceGroup"
@@ -188,6 +191,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dataprotection.inputs.AzureMonitorAlertSettingsArgs;
 /// import com.pulumi.azurenative.dataprotection.inputs.SecuritySettingsArgs;
 /// import com.pulumi.azurenative.dataprotection.inputs.SoftDeleteSettingsArgs;
+/// import com.pulumi.azurenative.dataprotection.inputs.StorageSettingArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -206,7 +210,7 @@ import 'system_data_response.dart';
 ///                 .type("None")
 ///                 .build())
 ///             .location("WestUS")
-///             .properties(BackupVaultArgs.builder()
+///             .properties(com.pulumi.azurenative.dataprotection.inputs.BackupVaultArgs.builder()
 ///                 .featureSettings(FeatureSettingsArgs.builder()
 ///                     .crossRegionRestoreSettings(CrossRegionRestoreSettingsArgs.builder()
 ///                         .state("Enabled")
@@ -395,7 +399,7 @@ import 'system_data_response.dart';
 ///                 },
 ///                 SoftDeleteSettings = new AzureNative.DataProtection.Inputs.SoftDeleteSettingsArgs
 ///                 {
-///                     RetentionDurationInDays = 0,
+///                     RetentionDurationInDays = 0.0,
 ///                     State = AzureNative.DataProtection.SoftDeleteState.Off,
 ///                 },
 ///             },
@@ -485,7 +489,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -493,7 +497,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dataprotection_backupvault" "backupVault" {
+/// resource "azure-native_dataprotection_backup_vault" "backupVault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity = {
 ///     type = "None"
 ///   }
@@ -525,8 +532,8 @@ import 'system_data_response.dart';
 ///       }
 ///     }
 ///     storage_settings = [{
-///       "datastoreType" = "VaultStore"
-///       "type"          = "LocallyRedundant"
+///       datastore_type = "VaultStore"
+///       type           = "LocallyRedundant"
 ///     }]
 ///   }
 ///   resource_group_name = "SampleResourceGroup"
@@ -554,6 +561,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dataprotection.inputs.CmkKeyVaultPropertiesArgs;
 /// import com.pulumi.azurenative.dataprotection.inputs.ImmutabilitySettingsArgs;
 /// import com.pulumi.azurenative.dataprotection.inputs.SoftDeleteSettingsArgs;
+/// import com.pulumi.azurenative.dataprotection.inputs.StorageSettingArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -572,7 +580,7 @@ import 'system_data_response.dart';
 ///                 .type("None")
 ///                 .build())
 ///             .location("WestUS")
-///             .properties(BackupVaultArgs.builder()
+///             .properties(com.pulumi.azurenative.dataprotection.inputs.BackupVaultArgs.builder()
 ///                 .monitoringSettings(MonitoringSettingsArgs.builder()
 ///                     .azureMonitorAlertSettings(AzureMonitorAlertSettingsArgs.builder()
 ///                         .alertsForAllJobFailures("Enabled")
@@ -784,7 +792,7 @@ import 'system_data_response.dart';
 ///             {
 ///                 SoftDeleteSettings = new AzureNative.DataProtection.Inputs.SoftDeleteSettingsArgs
 ///                 {
-///                     RetentionDurationInDays = 14,
+///                     RetentionDurationInDays = 14.0,
 ///                     State = "Enabled",
 ///                 },
 ///             },
@@ -865,7 +873,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -873,7 +881,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dataprotection_backupvault" "backupVault" {
+/// resource "azure-native_dataprotection_backup_vault" "backupVault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity = {
 ///     type = "systemAssigned"
 ///   }
@@ -896,8 +907,8 @@ import 'system_data_response.dart';
 ///       }
 ///     }
 ///     storage_settings = [{
-///       "datastoreType" = "VaultStore"
-///       "type"          = "LocallyRedundant"
+///       datastore_type = "VaultStore"
+///       type           = "LocallyRedundant"
 ///     }]
 ///   }
 ///   resource_group_name = "SampleResourceGroup"
@@ -923,6 +934,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dataprotection.inputs.AzureMonitorAlertSettingsArgs;
 /// import com.pulumi.azurenative.dataprotection.inputs.SecuritySettingsArgs;
 /// import com.pulumi.azurenative.dataprotection.inputs.SoftDeleteSettingsArgs;
+/// import com.pulumi.azurenative.dataprotection.inputs.StorageSettingArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -941,7 +953,7 @@ import 'system_data_response.dart';
 ///                 .type("systemAssigned")
 ///                 .build())
 ///             .location("WestUS")
-///             .properties(BackupVaultArgs.builder()
+///             .properties(com.pulumi.azurenative.dataprotection.inputs.BackupVaultArgs.builder()
 ///                 .featureSettings(FeatureSettingsArgs.builder()
 ///                     .crossRegionRestoreSettings(CrossRegionRestoreSettingsArgs.builder()
 ///                         .state("Enabled")

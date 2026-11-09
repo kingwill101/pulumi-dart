@@ -99,7 +99,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -107,13 +107,16 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_machinelearningservices_featurestoreentityversion" "featurestoreEntityVersion" {
+/// resource "azure-native_machinelearningservices_featurestore_entity_version" "featurestoreEntityVersion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "string"
 ///   properties = {
 ///     description = "string"
 ///     index_columns = [{
-///       "columnName" = "string"
-///       "dataType"   = "Datetime"
+///       column_name = "string"
+///       data_type   = "Datetime"
 ///     }]
 ///     is_anonymous = false
 ///     is_archived  = false
@@ -140,6 +143,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.machinelearningservices.FeaturestoreEntityVersion;
 /// import com.pulumi.azurenative.machinelearningservices.FeaturestoreEntityVersionArgs;
 /// import com.pulumi.azurenative.machinelearningservices.inputs.FeaturestoreEntityVersionPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.IndexColumnArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

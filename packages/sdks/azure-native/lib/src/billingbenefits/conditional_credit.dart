@@ -84,7 +84,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -92,15 +92,18 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_billingbenefits_conditionalcredit" "conditionalCredit" {
+/// resource "azure-native_billingbenefits_conditional_credit" "conditionalCredit" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   conditional_credit_name = "conditionalCredit_contributor_20250801"
 ///   location                = "global"
 ///   properties = {
-///     "displayName"       = "Contributor Conditional Credit 20250801"
-///     "entityType"        = "Contributor"
-///     "primaryResourceId" = "/subscriptions/10000000-0000-0000-0000-000000000000/resourceGroups/resource_group_name_01/providers/Microsoft.BillingBenefits/conditionalCredits/conditionalCredit_20250801"
-///     "productCode"       = "000187f7-0000-0260-ab43-b8473ce57f1d"
-///     "startAt"           = "2025-09-01T00:00:00Z"
+///     display_name        = "Contributor Conditional Credit 20250801"
+///     entity_type         = "Contributor"
+///     primary_resource_id = "/subscriptions/10000000-0000-0000-0000-000000000000/resourceGroups/resource_group_name_01/providers/Microsoft.BillingBenefits/conditionalCredits/conditionalCredit_20250801"
+///     product_code        = "000187f7-0000-0260-ab43-b8473ce57f1d"
+///     start_at            = "2025-09-01T00:00:00Z"
 ///   }
 ///   resource_group_name = "resource_group_name_02"
 ///   tags = {
@@ -119,6 +122,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.billingbenefits.ConditionalCredit;
 /// import com.pulumi.azurenative.billingbenefits.ConditionalCreditArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.ContributorConditionalCreditPropertiesArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.PrimaryConditionalCreditPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -137,7 +142,6 @@ import 'system_data_response.dart';
 ///             .location("global")
 ///             .properties(ContributorConditionalCreditPropertiesArgs.builder()
 ///                 .displayName("Contributor Conditional Credit 20250801")
-///                 .entityType("Contributor")
 ///                 .primaryResourceId("/subscriptions/10000000-0000-0000-0000-000000000000/resourceGroups/resource_group_name_01/providers/Microsoft.BillingBenefits/conditionalCredits/conditionalCredit_20250801")
 ///                 .productCode("000187f7-0000-0260-ab43-b8473ce57f1d")
 ///                 .startAt("2025-09-01T00:00:00Z")
@@ -247,7 +251,7 @@ import 'system_data_response.dart';
 ///                     {
 ///                         Credit = new AzureNative.BillingBenefits.Inputs.CommitmentArgs
 ///                         {
-///                             Amount = 5000,
+///                             Amount = 5000.0,
 ///                             CurrencyCode = "USD",
 ///                             Grain = AzureNative.BillingBenefits.CommitmentGrain.FullTerm,
 ///                         },
@@ -257,7 +261,7 @@ import 'system_data_response.dart';
 ///                     Name = "Milestone 1",
 ///                     SpendTarget = new AzureNative.BillingBenefits.Inputs.PriceArgs
 ///                     {
-///                         Amount = 50000,
+///                         Amount = 50000.0,
 ///                         CurrencyCode = "USD",
 ///                     },
 ///                 },
@@ -267,7 +271,7 @@ import 'system_data_response.dart';
 ///                     {
 ///                         Credit = new AzureNative.BillingBenefits.Inputs.CommitmentArgs
 ///                         {
-///                             Amount = 10000,
+///                             Amount = 10000.0,
 ///                             CurrencyCode = "USD",
 ///                             Grain = AzureNative.BillingBenefits.CommitmentGrain.FullTerm,
 ///                         },
@@ -277,7 +281,7 @@ import 'system_data_response.dart';
 ///                     Name = "Milestone 2",
 ///                     SpendTarget = new AzureNative.BillingBenefits.Inputs.PriceArgs
 ///                     {
-///                         Amount = 100000,
+///                         Amount = 100000.0,
 ///                         CurrencyCode = "USD",
 ///                     },
 ///                 },
@@ -368,7 +372,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -376,46 +380,49 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_billingbenefits_conditionalcredit" "conditionalCredit" {
+/// resource "azure-native_billingbenefits_conditional_credit" "conditionalCredit" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   conditional_credit_name = "conditionalCredit_20250801"
 ///   location                = "global"
 ///   properties = {
-///     "allowContributors" = "Enabled"
-///     "displayName"       = "Conditional Credit 20250801"
-///     "entityType"        = "Primary"
-///     "milestones" = [{
-///       "award" = {
-///         "credit" = {
-///           "amount"       = 5000
-///           "currencyCode" = "USD"
-///           "grain"        = "FullTerm"
+///     allow_contributors = "Enabled"
+///     display_name       = "Conditional Credit 20250801"
+///     entity_type        = "Primary"
+///     milestones = [{
+///       award = {
+///         credit = {
+///           amount        = 5000
+///           currency_code = "USD"
+///           grain         = "FullTerm"
 ///         }
-///         "duration" = "P3M"
+///         duration = "P3M"
 ///       }
-///       "endAt" = "2025-09-30T23:59:59Z"
-///       "name"  = "Milestone 1"
-///       "spendTarget" = {
-///         "amount"       = 50000
-///         "currencyCode" = "USD"
+///       end_at = "2025-09-30T23:59:59Z"
+///       name   = "Milestone 1"
+///       spend_target = {
+///         amount        = 50000
+///         currency_code = "USD"
 ///       }
 ///       }, {
-///       "award" = {
-///         "credit" = {
-///           "amount"       = 10000
-///           "currencyCode" = "USD"
-///           "grain"        = "FullTerm"
+///       award = {
+///         credit = {
+///           amount        = 10000
+///           currency_code = "USD"
+///           grain         = "FullTerm"
 ///         }
-///         "duration" = "P3M"
+///         duration = "P3M"
 ///       }
-///       "endAt" = "2025-12-31T23:59:59Z"
-///       "name"  = "Milestone 2"
-///       "spendTarget" = {
-///         "amount"       = 100000
-///         "currencyCode" = "USD"
+///       end_at = "2025-12-31T23:59:59Z"
+///       name   = "Milestone 2"
+///       spend_target = {
+///         amount        = 100000
+///         currency_code = "USD"
 ///       }
 ///     }]
-///     "productCode" = "000187f7-0000-0260-ab43-b8473ce57f1d"
-///     "startAt"     = "2025-07-01T00:00:00Z"
+///     product_code = "000187f7-0000-0260-ab43-b8473ce57f1d"
+///     start_at     = "2025-07-01T00:00:00Z"
 ///   }
 ///   resource_group_name = "resource_group_name_01"
 ///   tags = {
@@ -434,6 +441,12 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.billingbenefits.ConditionalCredit;
 /// import com.pulumi.azurenative.billingbenefits.ConditionalCreditArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.ContributorConditionalCreditPropertiesArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.PrimaryConditionalCreditPropertiesArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.ConditionalCreditMilestoneArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.AwardArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.CommitmentArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.PriceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -453,7 +466,6 @@ import 'system_data_response.dart';
 ///             .properties(PrimaryConditionalCreditPropertiesArgs.builder()
 ///                 .allowContributors("Enabled")
 ///                 .displayName("Conditional Credit 20250801")
-///                 .entityType("Primary")
 ///                 .milestones(
 ///                     ConditionalCreditMilestoneArgs.builder()
 ///                         .award(AwardArgs.builder()

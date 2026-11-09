@@ -244,7 +244,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -252,78 +252,81 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cognitiveservices_raipolicy" "raiPolicy" {
+/// resource "azure-native_cognitiveservices_rai_policy" "raiPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "accountName"
 ///   properties = {
 ///     base_policy_name = "Microsoft.Default"
 ///     content_filters = [{
-///       "blocking"          = false
-///       "enabled"           = false
-///       "name"              = "Hate"
-///       "severityThreshold" = "High"
-///       "source"            = "Prompt"
+///       blocking           = false
+///       enabled            = false
+///       name               = "Hate"
+///       severity_threshold = "High"
+///       source             = "Prompt"
 ///       }, {
-///       "blocking"          = true
-///       "enabled"           = true
-///       "name"              = "Hate"
-///       "severityThreshold" = "Medium"
-///       "source"            = "Completion"
+///       blocking           = true
+///       enabled            = true
+///       name               = "Hate"
+///       severity_threshold = "Medium"
+///       source             = "Completion"
 ///       }, {
-///       "blocking"          = true
-///       "enabled"           = true
-///       "name"              = "Sexual"
-///       "severityThreshold" = "High"
-///       "source"            = "Prompt"
+///       blocking           = true
+///       enabled            = true
+///       name               = "Sexual"
+///       severity_threshold = "High"
+///       source             = "Prompt"
 ///       }, {
-///       "blocking"          = true
-///       "enabled"           = true
-///       "name"              = "Sexual"
-///       "severityThreshold" = "Medium"
-///       "source"            = "Completion"
+///       blocking           = true
+///       enabled            = true
+///       name               = "Sexual"
+///       severity_threshold = "Medium"
+///       source             = "Completion"
 ///       }, {
-///       "blocking"          = true
-///       "enabled"           = true
-///       "name"              = "Selfharm"
-///       "severityThreshold" = "High"
-///       "source"            = "Prompt"
+///       blocking           = true
+///       enabled            = true
+///       name               = "Selfharm"
+///       severity_threshold = "High"
+///       source             = "Prompt"
 ///       }, {
-///       "blocking"          = true
-///       "enabled"           = true
-///       "name"              = "Selfharm"
-///       "severityThreshold" = "Medium"
-///       "source"            = "Completion"
+///       blocking           = true
+///       enabled            = true
+///       name               = "Selfharm"
+///       severity_threshold = "Medium"
+///       source             = "Completion"
 ///       }, {
-///       "blocking"          = true
-///       "enabled"           = true
-///       "name"              = "Violence"
-///       "severityThreshold" = "Medium"
-///       "source"            = "Prompt"
+///       blocking           = true
+///       enabled            = true
+///       name               = "Violence"
+///       severity_threshold = "Medium"
+///       source             = "Prompt"
 ///       }, {
-///       "blocking"          = true
-///       "enabled"           = true
-///       "name"              = "Violence"
-///       "severityThreshold" = "Medium"
-///       "source"            = "Completion"
+///       blocking           = true
+///       enabled            = true
+///       name               = "Violence"
+///       severity_threshold = "Medium"
+///       source             = "Completion"
 ///       }, {
-///       "blocking" = true
-///       "enabled"  = true
-///       "name"     = "Jailbreak"
-///       "source"   = "Prompt"
+///       blocking = true
+///       enabled  = true
+///       name     = "Jailbreak"
+///       source   = "Prompt"
 ///       }, {
-///       "blocking" = true
-///       "enabled"  = true
-///       "name"     = "Protected Material Text"
-///       "source"   = "Completion"
+///       blocking = true
+///       enabled  = true
+///       name     = "Protected Material Text"
+///       source   = "Completion"
 ///       }, {
-///       "blocking" = true
-///       "enabled"  = true
-///       "name"     = "Protected Material Code"
-///       "source"   = "Completion"
+///       blocking = true
+///       enabled  = true
+///       name     = "Protected Material Code"
+///       source   = "Completion"
 ///       }, {
-///       "blocking" = true
-///       "enabled"  = true
-///       "name"     = "Profanity"
-///       "source"   = "Prompt"
+///       blocking = true
+///       enabled  = true
+///       name     = "Profanity"
+///       source   = "Prompt"
 ///     }]
 ///     mode = "Asynchronous_filter"
 ///   }
@@ -342,6 +345,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cognitiveservices.RaiPolicy;
 /// import com.pulumi.azurenative.cognitiveservices.RaiPolicyArgs;
 /// import com.pulumi.azurenative.cognitiveservices.inputs.RaiPolicyPropertiesArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.RaiPolicyContentFilterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

@@ -92,7 +92,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -100,7 +100,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_baremetalinfrastructure_azurebaremetalstorageinstance" "azureBareMetalStorageInstance" {
+/// resource "azure-native_baremetalinfrastructure_azure_bare_metal_storage_instance" "azureBareMetalStorageInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   azure_bare_metal_storage_instance_name              = "myAzureBareMetalStorageInstance"
 ///   azure_bare_metal_storage_instance_unique_identifier = "23415635-4d7e-41dc-9598-8194f22c24e9"
 ///   location                                            = "westus2"

@@ -132,7 +132,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -140,7 +140,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_macieallowlist" "macieAllowList" {
+/// resource "azure-native_awsconnector_macie_allow_list" "macieAllowList" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "ljfzlbopfuubipqzi"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -160,8 +163,8 @@ import 'system_data_response.dart';
 ///       name        = "nkimocnjypmzr"
 ///       status      = "OK"
 ///       tags = [{
-///         "key"   = "hjfhvyhpoebquxi"
-///         "value" = "hipfzph"
+///         key   = "hjfhvyhpoebquxi"
+///         value = "hipfzph"
 ///       }]
 ///     }
 ///     aws_region        = "x"
@@ -192,6 +195,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsMacieAllowListPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CriteriaArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.S3WordsListArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

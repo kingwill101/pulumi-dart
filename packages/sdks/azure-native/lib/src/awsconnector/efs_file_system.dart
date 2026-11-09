@@ -177,7 +177,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -185,7 +185,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_efsfilesystem" "efsFileSystem" {
+/// resource "azure-native_awsconnector_efs_file_system" "efsFileSystem" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "phxoujlvsqavkckotussgpnjgexvq"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -204,23 +207,23 @@ import 'system_data_response.dart';
 ///         replication_overwrite_protection = "DISABLED"
 ///       }
 ///       file_system_tags = [{
-///         "key"   = "glyisjhra"
-///         "value" = "gcz"
+///         key   = "glyisjhra"
+///         value = "gcz"
 ///       }]
 ///       kms_key_id = "qglx"
 ///       lifecycle_policies = [{
-///         "transitionToArchive"             = "xsnpjovpiazmhefijlflijjycbugv"
-///         "transitionToIA"                  = "lslpvdwwgc"
-///         "transitionToPrimaryStorageClass" = "migoeoowupavauvyrljegu"
+///         transition_to_archive               = "xsnpjovpiazmhefijlflijjycbugv"
+///         transition_to_ia                    = "lslpvdwwgc"
+///         transition_to_primary_storage_class = "migoeoowupavauvyrljegu"
 ///       }]
 ///       performance_mode                = "gtcuhloqhqjvztxoqvnzhwejwqg"
 ///       provisioned_throughput_in_mibps = 6
 ///       replication_configuration = {
 ///         destinations = [{
-///           "availabilityZoneName" = "ymqufkisnklobowewikkugs"
-///           "fileSystemId"         = "utzycscycyiunvfnsjwz"
-///           "kmsKeyId"             = "afazkrebv"
-///           "region"               = "bakyknetpfqoqpltuuxkauokslotb"
+///           availability_zone_name = "ymqufkisnklobowewikkugs"
+///           file_system_id         = "utzycscycyiunvfnsjwz"
+///           kms_key_id             = "afazkrebv"
+///           region                 = "bakyknetpfqoqpltuuxkauokslotb"
 ///         }]
 ///       }
 ///       throughput_mode = "qiroscdbdjqkhezgxhfjiqd"
@@ -253,7 +256,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEfsFileSystemPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.BackupPolicyArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.FileSystemProtectionArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ElasticFileSystemTagArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.LifecyclePolicyArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ReplicationConfigurationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ReplicationDestinationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

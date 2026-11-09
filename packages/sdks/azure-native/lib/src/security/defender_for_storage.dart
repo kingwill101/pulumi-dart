@@ -87,7 +87,7 @@ import 'defender_for_storage_setting_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -95,7 +95,10 @@ import 'defender_for_storage_setting_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_defenderforstorage" "defenderForStorage" {
+/// resource "azure-native_security_defender_for_storage" "defenderForStorage" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     is_enabled = true
 ///     malware_scanning = {

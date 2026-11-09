@@ -50,7 +50,7 @@ import 'partner_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -59,6 +59,9 @@ import 'partner_args.dart';
 /// }
 ///
 /// resource "azure-native_managementpartner_partner" "partner" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   partner_id = "123456"
 /// }
 ///

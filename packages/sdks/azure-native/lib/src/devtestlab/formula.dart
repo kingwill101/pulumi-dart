@@ -139,7 +139,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -148,12 +148,15 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_devtestlab_formula" "formula" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "Formula using a Linux base"
 ///   formula_content = {
 ///     allow_claim = false
 ///     artifacts = [{
-///       "artifactId" = "/artifactsources/{artifactSourceName}/artifacts/linux-install-nodejs"
-///       "parameters" = []
+///       artifact_id = "/artifactsources/{artifactSourceName}/artifacts/linux-install-nodejs"
+///       parameters  = []
 ///     }]
 ///     disallow_public_ip_address = true
 ///     gallery_image_reference = {
@@ -170,8 +173,8 @@ import 'system_data_response.dart';
 ///     network_interface = {
 ///       shared_public_ip_address_configuration = {
 ///         inbound_nat_rules = [{
-///           "backendPort"       = 22
-///           "transportProtocol" = "Tcp"
+///           backend_port       = 22
+///           transport_protocol = "Tcp"
 ///         }]
 ///       }
 ///     }
@@ -197,9 +200,11 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.devtestlab.Formula;
 /// import com.pulumi.azurenative.devtestlab.FormulaArgs;
 /// import com.pulumi.azurenative.devtestlab.inputs.LabVirtualMachineCreationParameterArgs;
+/// import com.pulumi.azurenative.devtestlab.inputs.ArtifactInstallPropertiesArgs;
 /// import com.pulumi.azurenative.devtestlab.inputs.GalleryImageReferenceArgs;
 /// import com.pulumi.azurenative.devtestlab.inputs.NetworkInterfacePropertiesArgs;
 /// import com.pulumi.azurenative.devtestlab.inputs.SharedPublicIpAddressConfigurationArgs;
+/// import com.pulumi.azurenative.devtestlab.inputs.InboundNatRuleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

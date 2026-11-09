@@ -65,7 +65,7 @@ import 'variable_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,6 +74,9 @@ import 'variable_args.dart';
 /// }
 ///
 /// resource "azure-native_automation_variable" "variable" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   automation_account_name = "sampleAccount9"
 ///   description             = "my description"
 ///   is_encrypted            = false

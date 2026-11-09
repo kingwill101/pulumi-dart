@@ -26,14 +26,14 @@ import 'virtual_machine_scale_set_extension_args.dart';
 ///         EnableAutomaticUpgrade = true,
 ///         ForceUpdateTag = "aaaaaaaaa",
 ///         Name = "{extension-name}",
-///         ProtectedSettings = null,
+///         ProtectedSettings = new() { },
 ///         ProvisionAfterExtensions = new[]
 ///         {
 ///             "aa",
 ///         },
 ///         Publisher = "{extension-Publisher}",
 ///         ResourceGroupName = "rgcompute",
-///         Settings = null,
+///         Settings = new() { },
 ///         SuppressFailures = true,
 ///         Type = "{extension-Type}",
 ///         TypeHandlerVersion = "{handler-version}",
@@ -84,7 +84,7 @@ import 'virtual_machine_scale_set_extension_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -92,7 +92,10 @@ import 'virtual_machine_scale_set_extension_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescalesetextension" "virtualMachineScaleSetExtension" {
+/// resource "azure-native_compute_virtual_machine_scale_set_extension" "virtualMachineScaleSetExtension" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auto_upgrade_minor_version = true
 ///   enable_automatic_upgrade   = true
 ///   force_update_tag           = "aaaaaaaaa"
@@ -272,7 +275,7 @@ import 'virtual_machine_scale_set_extension_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -280,7 +283,10 @@ import 'virtual_machine_scale_set_extension_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescalesetextension" "virtualMachineScaleSetExtension" {
+/// resource "azure-native_compute_virtual_machine_scale_set_extension" "virtualMachineScaleSetExtension" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "rgcompute"
 ///   vm_scale_set_name   = "aaaaaaaaaaa"
 ///   vmss_extension_name = "aaaaaaaaaaa"

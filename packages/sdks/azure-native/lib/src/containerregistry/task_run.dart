@@ -86,7 +86,7 @@ import 'task_run_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -94,20 +94,23 @@ import 'task_run_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerregistry_taskrun" "taskRun" {
+/// resource "azure-native_containerregistry_task_run" "taskRun" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   force_update_tag    = "test"
 ///   registry_name       = "myRegistry"
 ///   resource_group_name = "myResourceGroup"
 ///   run_request = {
-///     "credentials"          = {}
-///     "encodedTaskContent"   = "c3RlcHM6IAogIC0gY21kOiB7eyAuVmFsdWVzLmNvbW1hbmQgfX0K"
-///     "encodedValuesContent" = "Y29tbWFuZDogYmFzaCBlY2hvIHt7LlJ1bi5SZWdpc3RyeX19Cg=="
-///     "platform" = {
-///       "architecture" = "amd64"
-///       "os"           = "Linux"
+///     credentials            = {}
+///     encoded_task_content   = "c3RlcHM6IAogIC0gY21kOiB7eyAuVmFsdWVzLmNvbW1hbmQgfX0K"
+///     encoded_values_content = "Y29tbWFuZDogYmFzaCBlY2hvIHt7LlJ1bi5SZWdpc3RyeX19Cg=="
+///     platform = {
+///       architecture = "amd64"
+///       os           = "Linux"
 ///     }
-///     "type"   = "EncodedTaskRunRequest"
-///     "values" = []
+///     type   = "EncodedTaskRunRequest"
+///     values = []
 ///   }
 ///   task_run_name = "myRun"
 /// }
@@ -122,6 +125,12 @@ import 'task_run_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.containerregistry.TaskRun;
 /// import com.pulumi.azurenative.containerregistry.TaskRunArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.DockerBuildRequestArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.CredentialsArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.PlatformPropertiesArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.EncodedTaskRunRequestArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.FileTaskRunRequestArgs;
+/// import com.pulumi.azurenative.containerregistry.inputs.TaskRunRequestArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -148,7 +157,6 @@ import 'task_run_args.dart';
 ///                     .architecture("amd64")
 ///                     .os("Linux")
 ///                     .build())
-///                 .type("EncodedTaskRunRequest")
 ///                 .values()
 ///                 .build())
 ///             .taskRunName("myRun")

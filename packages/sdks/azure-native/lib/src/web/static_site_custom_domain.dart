@@ -57,7 +57,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_web_staticsitecustomdomain" "staticSiteCustomDomain" {
+/// resource "azure-native_web_static_site_custom_domain" "staticSiteCustomDomain" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name         = "custom.domain.net"
 ///   name                = "testStaticSite0"
 ///   resource_group_name = "rg"

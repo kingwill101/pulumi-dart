@@ -69,7 +69,7 @@ import 'protection_intent_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,13 +77,16 @@ import 'protection_intent_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_recoveryservices_protectionintent" "protectionIntent" {
+/// resource "azure-native_recoveryservices_protection_intent" "protectionIntent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fabric_name        = "Azure"
 ///   intent_object_name = "vm;iaasvmcontainerv2;chamsrgtest;chamscandel"
 ///   properties = {
-///     "policyId"                 = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.RecoveryServices/vaults/myVault/backupPolicies/myPolicy"
-///     "protectionIntentItemType" = "AzureResourceItem"
-///     "sourceResourceId"         = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/chamsrgtest/providers/Microsoft.Compute/virtualMachines/chamscandel"
+///     policy_id                   = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.RecoveryServices/vaults/myVault/backupPolicies/myPolicy"
+///     protection_intent_item_type = "AzureResourceItem"
+///     source_resource_id          = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/chamsrgtest/providers/Microsoft.Compute/virtualMachines/chamscandel"
 ///   }
 ///   resource_group_name = "myRG"
 ///   vault_name          = "myVault"
@@ -99,6 +102,11 @@ import 'protection_intent_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.recoveryservices.ProtectionIntent;
 /// import com.pulumi.azurenative.recoveryservices.ProtectionIntentArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureRecoveryServiceVaultProtectionIntentArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureResourceProtectionIntentArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureWorkloadAutoProtectionIntentArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureWorkloadContainerAutoProtectionIntentArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.AzureWorkloadSQLAutoProtectionIntentArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -117,7 +125,6 @@ import 'protection_intent_args.dart';
 ///             .intentObjectName("vm;iaasvmcontainerv2;chamsrgtest;chamscandel")
 ///             .properties(AzureResourceProtectionIntentArgs.builder()
 ///                 .policyId("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.RecoveryServices/vaults/myVault/backupPolicies/myPolicy")
-///                 .protectionIntentItemType("AzureResourceItem")
 ///                 .sourceResourceId("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/chamsrgtest/providers/Microsoft.Compute/virtualMachines/chamscandel")
 ///                 .build())
 ///             .resourceGroupName("myRG")

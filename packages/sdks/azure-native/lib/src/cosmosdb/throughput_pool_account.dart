@@ -61,7 +61,7 @@ import 'throughput_pool_account_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'throughput_pool_account_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_throughputpoolaccount" "throughputPoolAccount" {
+/// resource "azure-native_cosmosdb_throughput_pool_account" "throughputPoolAccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_location             = "West US"
 ///   account_resource_identifier  = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DocumentDB/resourceGroup/rg1/databaseAccounts/db1/"
 ///   resource_group_name          = "rg1"

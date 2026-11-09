@@ -60,7 +60,7 @@ import 'sql_pool_transparent_data_encryption_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'sql_pool_transparent_data_encryption_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_synapse_sqlpooltransparentdataencryption" "sqlPoolTransparentDataEncryption" {
+/// resource "azure-native_synapse_sql_pool_transparent_data_encryption" "sqlPoolTransparentDataEncryption" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name              = "sqlcrudtest-6852"
 ///   sql_pool_name                    = "sqlcrudtest-9187"
 ///   status                           = "Enabled"

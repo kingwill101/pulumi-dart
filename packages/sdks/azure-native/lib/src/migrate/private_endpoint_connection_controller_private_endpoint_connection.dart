@@ -72,7 +72,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_privateendpointconnectioncontrollerprivateendpointconnection" "privateEndpointConnectionControllerPrivateEndpointConnection" {
+/// resource "azure-native_migrate_private_endpoint_connection_controller_private_endpoint_connection" "privateEndpointConnectionControllerPrivateEndpointConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   migrate_project_name = "proj567"
 ///   pe_connection_name   = "proj5675162pe.fdccace0-e303-4a79-80c8-3aa7c1f09cc6"
 ///   properties = {

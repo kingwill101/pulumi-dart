@@ -70,7 +70,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,12 +79,15 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_storagemover_endpoint" "endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_name = "examples-endpointName"
 ///   properties = {
-///     "blobContainerName"        = "examples-blobcontainer"
-///     "description"              = "Example Storage Blob Container Endpoint Description"
-///     "endpointType"             = "AzureStorageBlobContainer"
-///     "storageAccountResourceId" = "/subscriptions/60bcfc77-6589-4da2-b7fd-f9ec9322cf95/resourceGroups/examples-rg/providers/Microsoft.Storage/storageAccounts/examplesa"
+///     blob_container_name         = "examples-blobcontainer"
+///     description                 = "Example Storage Blob Container Endpoint Description"
+///     endpoint_type               = "AzureStorageBlobContainer"
+///     storage_account_resource_id = "/subscriptions/60bcfc77-6589-4da2-b7fd-f9ec9322cf95/resourceGroups/examples-rg/providers/Microsoft.Storage/storageAccounts/examplesa"
 ///   }
 ///   resource_group_name = "examples-rg"
 ///   storage_mover_name  = "examples-storageMoverName"
@@ -100,6 +103,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.storagemover.Endpoint;
 /// import com.pulumi.azurenative.storagemover.EndpointArgs;
+/// import com.pulumi.azurenative.storagemover.inputs.AzureStorageBlobContainerEndpointPropertiesArgs;
+/// import com.pulumi.azurenative.storagemover.inputs.AzureStorageSmbFileShareEndpointPropertiesArgs;
+/// import com.pulumi.azurenative.storagemover.inputs.NfsMountEndpointPropertiesArgs;
+/// import com.pulumi.azurenative.storagemover.inputs.SmbMountEndpointPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -118,7 +125,6 @@ import 'system_data_response.dart';
 ///             .properties(AzureStorageBlobContainerEndpointPropertiesArgs.builder()
 ///                 .blobContainerName("examples-blobcontainer")
 ///                 .description("Example Storage Blob Container Endpoint Description")
-///                 .endpointType("AzureStorageBlobContainer")
 ///                 .storageAccountResourceId("/subscriptions/60bcfc77-6589-4da2-b7fd-f9ec9322cf95/resourceGroups/examples-rg/providers/Microsoft.Storage/storageAccounts/examplesa")
 ///                 .build())
 ///             .resourceGroupName("examples-rg")
@@ -242,7 +248,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -251,12 +257,15 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_storagemover_endpoint" "endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_name = "examples-endpointName"
 ///   properties = {
-///     "description"              = "Example Storage File Share Endpoint Description"
-///     "endpointType"             = "AzureStorageSmbFileShare"
-///     "fileShareName"            = "examples-fileshare"
-///     "storageAccountResourceId" = "/subscriptions/60bcfc77-6589-4da2-b7fd-f9ec9322cf95/resourceGroups/examples-rg/providers/Microsoft.Storage/storageAccounts/examplesa"
+///     description                 = "Example Storage File Share Endpoint Description"
+///     endpoint_type               = "AzureStorageSmbFileShare"
+///     file_share_name             = "examples-fileshare"
+///     storage_account_resource_id = "/subscriptions/60bcfc77-6589-4da2-b7fd-f9ec9322cf95/resourceGroups/examples-rg/providers/Microsoft.Storage/storageAccounts/examplesa"
 ///   }
 ///   resource_group_name = "examples-rg"
 ///   storage_mover_name  = "examples-storageMoverName"
@@ -272,6 +281,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.storagemover.Endpoint;
 /// import com.pulumi.azurenative.storagemover.EndpointArgs;
+/// import com.pulumi.azurenative.storagemover.inputs.AzureStorageBlobContainerEndpointPropertiesArgs;
+/// import com.pulumi.azurenative.storagemover.inputs.AzureStorageSmbFileShareEndpointPropertiesArgs;
+/// import com.pulumi.azurenative.storagemover.inputs.NfsMountEndpointPropertiesArgs;
+/// import com.pulumi.azurenative.storagemover.inputs.SmbMountEndpointPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -289,7 +302,6 @@ import 'system_data_response.dart';
 ///             .endpointName("examples-endpointName")
 ///             .properties(AzureStorageSmbFileShareEndpointPropertiesArgs.builder()
 ///                 .description("Example Storage File Share Endpoint Description")
-///                 .endpointType("AzureStorageSmbFileShare")
 ///                 .fileShareName("examples-fileshare")
 ///                 .storageAccountResourceId("/subscriptions/60bcfc77-6589-4da2-b7fd-f9ec9322cf95/resourceGroups/examples-rg/providers/Microsoft.Storage/storageAccounts/examplesa")
 ///                 .build())
@@ -414,7 +426,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -423,12 +435,15 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_storagemover_endpoint" "endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_name = "examples-endpointName"
 ///   properties = {
-///     "description"  = "Example NFS Mount Endpoint Description"
-///     "endpointType" = "NfsMount"
-///     "export"       = "examples-exportName"
-///     "host"         = "0.0.0.0"
+///     description   = "Example NFS Mount Endpoint Description"
+///     endpoint_type = "NfsMount"
+///     export        = "examples-exportName"
+///     host          = "0.0.0.0"
 ///   }
 ///   resource_group_name = "examples-rg"
 ///   storage_mover_name  = "examples-storageMoverName"
@@ -444,6 +459,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.storagemover.Endpoint;
 /// import com.pulumi.azurenative.storagemover.EndpointArgs;
+/// import com.pulumi.azurenative.storagemover.inputs.AzureStorageBlobContainerEndpointPropertiesArgs;
+/// import com.pulumi.azurenative.storagemover.inputs.AzureStorageSmbFileShareEndpointPropertiesArgs;
+/// import com.pulumi.azurenative.storagemover.inputs.NfsMountEndpointPropertiesArgs;
+/// import com.pulumi.azurenative.storagemover.inputs.SmbMountEndpointPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -461,7 +480,6 @@ import 'system_data_response.dart';
 ///             .endpointName("examples-endpointName")
 ///             .properties(NfsMountEndpointPropertiesArgs.builder()
 ///                 .description("Example NFS Mount Endpoint Description")
-///                 .endpointType("NfsMount")
 ///                 .export("examples-exportName")
 ///                 .host("0.0.0.0")
 ///                 .build())
@@ -597,7 +615,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -606,17 +624,20 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_storagemover_endpoint" "endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_name = "examples-endpointName"
 ///   properties = {
-///     "credentials" = {
-///       "passwordUri" = "https://examples-azureKeyVault.vault.azure.net/secrets/examples-password"
-///       "type"        = "AzureKeyVaultSmb"
-///       "usernameUri" = "https://examples-azureKeyVault.vault.azure.net/secrets/examples-username"
+///     credentials = {
+///       password_uri = "https://examples-azureKeyVault.vault.azure.net/secrets/examples-password"
+///       type         = "AzureKeyVaultSmb"
+///       username_uri = "https://examples-azureKeyVault.vault.azure.net/secrets/examples-username"
 ///     }
-///     "description"  = "Example SMB Mount Endpoint Description"
-///     "endpointType" = "SmbMount"
-///     "host"         = "0.0.0.0"
-///     "shareName"    = "examples-shareName"
+///     description   = "Example SMB Mount Endpoint Description"
+///     endpoint_type = "SmbMount"
+///     host          = "0.0.0.0"
+///     share_name    = "examples-shareName"
 ///   }
 ///   resource_group_name = "examples-rg"
 ///   storage_mover_name  = "examples-storageMoverName"
@@ -632,6 +653,11 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.storagemover.Endpoint;
 /// import com.pulumi.azurenative.storagemover.EndpointArgs;
+/// import com.pulumi.azurenative.storagemover.inputs.AzureStorageBlobContainerEndpointPropertiesArgs;
+/// import com.pulumi.azurenative.storagemover.inputs.AzureStorageSmbFileShareEndpointPropertiesArgs;
+/// import com.pulumi.azurenative.storagemover.inputs.NfsMountEndpointPropertiesArgs;
+/// import com.pulumi.azurenative.storagemover.inputs.SmbMountEndpointPropertiesArgs;
+/// import com.pulumi.azurenative.storagemover.inputs.AzureKeyVaultSmbCredentialsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -648,13 +674,11 @@ import 'system_data_response.dart';
 ///         var endpoint = new Endpoint("endpoint", EndpointArgs.builder()
 ///             .endpointName("examples-endpointName")
 ///             .properties(SmbMountEndpointPropertiesArgs.builder()
-///                 .credentials(Map.ofEntries(
-///                     Map.entry("passwordUri", "https://examples-azureKeyVault.vault.azure.net/secrets/examples-password"),
-///                     Map.entry("type", "AzureKeyVaultSmb"),
-///                     Map.entry("usernameUri", "https://examples-azureKeyVault.vault.azure.net/secrets/examples-username")
-///                 ))
+///                 .credentials(AzureKeyVaultSmbCredentialsArgs.builder()
+///                     .passwordUri("https://examples-azureKeyVault.vault.azure.net/secrets/examples-password")
+///                     .usernameUri("https://examples-azureKeyVault.vault.azure.net/secrets/examples-username")
+///                     .build())
 ///                 .description("Example SMB Mount Endpoint Description")
-///                 .endpointType("SmbMount")
 ///                 .host("0.0.0.0")
 ///                 .shareName("examples-shareName")
 ///                 .build())

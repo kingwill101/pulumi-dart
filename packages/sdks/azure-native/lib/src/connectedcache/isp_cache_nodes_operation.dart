@@ -170,7 +170,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -178,7 +178,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_connectedcache_ispcachenodesoperation" "ispCacheNodesOperation" {
+/// resource "azure-native_connectedcache_isp_cache_nodes_operation" "ispCacheNodesOperation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cache_node_resource_name = "cabakm"
 ///   customer_resource_name   = "zpqzbmanlljgmkrthtydrtneavhlnlqkdmviq"
 ///   location                 = "westus"
@@ -189,10 +192,10 @@ import 'system_data_response.dart';
 ///       }
 ///       cache_node_properties_details_issues_list = ["ex"]
 ///       drive_configuration = [{
-///         "cacheNumber"  = 1
-///         "nginxMapping" = "lijygenjq"
-///         "physicalPath" = "/mcc"
-///         "sizeInGb"     = 500
+///         cache_number  = 1
+///         nginx_mapping = "lijygenjq"
+///         physical_path = "/mcc"
+///         size_in_gb    = 500
 ///       }]
 ///       optional_property1 = "hvpmt"
 ///       optional_property2 = "talanelmsgxvksrzoeeontqkjzbpv"
@@ -242,6 +245,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.connectedcache.inputs.CacheNodePropertyArgs;
 /// import com.pulumi.azurenative.connectedcache.inputs.AdditionalCacheNodePropertiesArgs;
 /// import com.pulumi.azurenative.connectedcache.inputs.BgpConfigurationArgs;
+/// import com.pulumi.azurenative.connectedcache.inputs.CacheNodeDriveConfigurationArgs;
 /// import com.pulumi.azurenative.connectedcache.inputs.ProxyUrlConfigurationArgs;
 /// import com.pulumi.azurenative.connectedcache.inputs.CacheNodeEntityArgs;
 /// import java.util.ArrayList;

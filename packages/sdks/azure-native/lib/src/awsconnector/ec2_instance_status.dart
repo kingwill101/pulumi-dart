@@ -215,7 +215,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -223,7 +223,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_ec2instancestatus" "ec2InstanceStatus" {
+/// resource "azure-native_awsconnector_ec2_instance_status" "ec2InstanceStatus" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "pgcnqdiaetxhtdrimhlcwthap"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -232,14 +235,14 @@ import 'system_data_response.dart';
 ///     aws_properties = {
 ///       availability_zone = "ytnhdkisucgzas"
 ///       events = [{
-///         "code" = {
-///           "value" = "instance-reboot"
+///         code = {
+///           value = "instance-reboot"
 ///         }
-///         "description"       = "hgvqagwss"
-///         "instanceEventId"   = "rnbshnkjo"
-///         "notAfter"          = "2024-10-08T03:53:26.681Z"
-///         "notBefore"         = "2024-10-08T03:53:26.681Z"
-///         "notBeforeDeadline" = "2024-10-08T03:53:26.681Z"
+///         description         = "hgvqagwss"
+///         instance_event_id   = "rnbshnkjo"
+///         not_after           = "2024-10-08T03:53:26.681Z"
+///         not_before          = "2024-10-08T03:53:26.681Z"
+///         not_before_deadline = "2024-10-08T03:53:26.681Z"
 ///       }]
 ///       instance_id = "aoffpxifvwnouuzzpkqc"
 ///       instance_state = {
@@ -250,12 +253,12 @@ import 'system_data_response.dart';
 ///       }
 ///       instance_status = {
 ///         details = [{
-///           "impairedSince" = "2024-10-08T03:53:26.682Z"
-///           "name" = {
-///             "value" = "reachability"
+///           impaired_since = "2024-10-08T03:53:26.682Z"
+///           name = {
+///             value = "reachability"
 ///           }
-///           "status" = {
-///             "value" = "failed"
+///           status = {
+///             value = "failed"
 ///           }
 ///         }]
 ///         status = {
@@ -265,12 +268,12 @@ import 'system_data_response.dart';
 ///       outpost_arn = "pprqpuqeokryiz"
 ///       system_status = {
 ///         details = [{
-///           "impairedSince" = "2024-10-08T03:53:26.682Z"
-///           "name" = {
-///             "value" = "reachability"
+///           impaired_since = "2024-10-08T03:53:26.682Z"
+///           name = {
+///             value = "reachability"
 ///           }
-///           "status" = {
-///             "value" = "failed"
+///           status = {
+///             value = "failed"
 ///           }
 ///         }]
 ///         status = {
@@ -304,9 +307,14 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.Ec2InstanceStatusArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.Ec2InstanceStatusPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEc2InstanceStatusPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.InstanceStatusEventArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.EventCodeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.InstanceStateArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.InstanceStateNameEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.InstanceStatusSummaryArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.InstanceStatusDetailsArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.StatusNameEnumValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.StatusTypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.SummaryStatusEnumValueArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

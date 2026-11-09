@@ -40,7 +40,7 @@ import 'update_configuration_response.dart';
 ///             },
 ///             ExpiryTime = "2018-11-09T11:22:57+00:00",
 ///             Frequency = AzureNative.Automation.ScheduleFrequency.Hour,
-///             Interval = 1,
+///             Interval = 1.0,
 ///             StartTime = "2017-10-19T12:22:57+00:00",
 ///             TimeZone = "America/Los_Angeles",
 ///         },
@@ -253,7 +253,7 @@ import 'update_configuration_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -261,7 +261,10 @@ import 'update_configuration_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_automation_softwareupdateconfigurationbyname" "softwareUpdateConfigurationByName" {
+/// resource "azure-native_automation_software_update_configuration_by_name" "softwareUpdateConfigurationByName" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   automation_account_name = "myaccount"
 ///   resource_group_name     = "mygroup"
 ///   schedule_info = {
@@ -293,22 +296,22 @@ import 'update_configuration_response.dart';
 ///     operating_system         = "Windows"
 ///     targets = {
 ///       azure_queries = [{
-///         "locations" = ["Japan East", "UK South"]
-///         "scope"     = ["/subscriptions/5ae68d89-69a4-454f-b5ce-e443cc4e0067/resourceGroups/myresources", "/subscriptions/5ae68d89-69a4-454f-b5ce-e443cc4e0067"]
-///         "tagSettings" = {
-///           "filterOperator" = "All"
-///           "tags" = {
+///         locations = ["Japan East", "UK South"]
+///         scope     = ["/subscriptions/5ae68d89-69a4-454f-b5ce-e443cc4e0067/resourceGroups/myresources", "/subscriptions/5ae68d89-69a4-454f-b5ce-e443cc4e0067"]
+///         tag_settings = {
+///           filter_operator = "All"
+///           tags = {
 ///             "tag1" = ["tag1Value1", "tag1Value2", "tag1Value3"]
 ///             "tag2" = ["tag2Value1", "tag2Value2", "tag2Value3"]
 ///           }
 ///         }
 ///       }]
 ///       non_azure_queries = [{
-///         "functionAlias" = "SavedSearch1"
-///         "workspaceId"   = "WorkspaceId1"
+///         function_alias = "SavedSearch1"
+///         workspace_id   = "WorkspaceId1"
 ///         }, {
-///         "functionAlias" = "SavedSearch2"
-///         "workspaceId"   = "WorkspaceId2"
+///         function_alias = "SavedSearch2"
+///         workspace_id   = "WorkspaceId2"
 ///       }]
 ///     }
 ///     windows = {
@@ -335,6 +338,9 @@ import 'update_configuration_response.dart';
 /// import com.pulumi.azurenative.automation.inputs.TaskPropertiesArgs;
 /// import com.pulumi.azurenative.automation.inputs.UpdateConfigurationArgs;
 /// import com.pulumi.azurenative.automation.inputs.TargetPropertiesArgs;
+/// import com.pulumi.azurenative.automation.inputs.AzureQueryPropertiesArgs;
+/// import com.pulumi.azurenative.automation.inputs.TagSettingsPropertiesArgs;
+/// import com.pulumi.azurenative.automation.inputs.NonAzureQueryPropertiesArgs;
 /// import com.pulumi.azurenative.automation.inputs.WindowsPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

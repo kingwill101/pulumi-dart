@@ -52,8 +52,8 @@ import 'replication_policy_args.dart';
 /// 		_, err := recoveryservices.NewReplicationPolicy(ctx, "replicationPolicy", &recoveryservices.ReplicationPolicyArgs{
 /// 			PolicyName: pulumi.String("protectionprofile1"),
 /// 			Properties: &recoveryservices.CreatePolicyInputPropertiesArgs{
-/// 				ProviderSpecificInput: recoveryservices.HyperVReplicaAzurePolicyInput{
-/// 					InstanceType: "HyperVReplicaAzure",
+/// 				ProviderSpecificInput: &recoveryservices.HyperVReplicaAzurePolicyInputArgs{
+/// 					InstanceType: pulumi.String("HyperVReplicaAzure"),
 /// 				},
 /// 			},
 /// 			ResourceGroupName: pulumi.String("resourceGroupPS1"),
@@ -69,7 +69,7 @@ import 'replication_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,11 +77,14 @@ import 'replication_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_recoveryservices_replicationpolicy" "replicationPolicy" {
+/// resource "azure-native_recoveryservices_replication_policy" "replicationPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_name = "protectionprofile1"
 ///   properties = {
 ///     provider_specific_input = {
-///       "instanceType" = "HyperVReplicaAzure"
+///       instance_type = "HyperVReplicaAzure"
 ///     }
 ///   }
 ///   resource_group_name = "resourceGroupPS1"
@@ -99,6 +102,16 @@ import 'replication_policy_args.dart';
 /// import com.pulumi.azurenative.recoveryservices.ReplicationPolicy;
 /// import com.pulumi.azurenative.recoveryservices.ReplicationPolicyArgs;
 /// import com.pulumi.azurenative.recoveryservices.inputs.CreatePolicyInputPropertiesArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.A2ACrossClusterMigrationPolicyCreationInputArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.A2APolicyCreationInputArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.HyperVReplicaAzurePolicyInputArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.HyperVReplicaBluePolicyInputArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.HyperVReplicaPolicyInputArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.InMageAzureV2PolicyInputArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.InMagePolicyInputArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.InMageRcmFailbackPolicyCreationInputArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.InMageRcmPolicyCreationInputArgs;
+/// import com.pulumi.azurenative.recoveryservices.inputs.VMwareCbtPolicyCreationInputArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -116,7 +129,6 @@ import 'replication_policy_args.dart';
 ///             .policyName("protectionprofile1")
 ///             .properties(CreatePolicyInputPropertiesArgs.builder()
 ///                 .providerSpecificInput(HyperVReplicaAzurePolicyInputArgs.builder()
-///                     .instanceType("HyperVReplicaAzure")
 ///                     .build())
 ///                 .build())
 ///             .resourceGroupName("resourceGroupPS1")

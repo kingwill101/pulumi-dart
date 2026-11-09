@@ -29,7 +29,7 @@ import 'system_data_response.dart';
 ///             AwsAccountId = "jhircduhthqiztp",
 ///             AwsProperties = new AzureNative.AwsConnector.Inputs.AwsLambdaFunctionPropertiesArgs
 ///             {
-///                 Architectures = new[]
+///                 Architectures =
 ///                 {
 ///                     AzureNative.AwsConnector.Architectures.Arm64,
 ///                 },
@@ -286,7 +286,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -294,7 +294,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_lambdafunction" "lambdaFunction" {
+/// resource "azure-native_awsconnector_lambda_function" "lambdaFunction" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "pipiphijlvjolohsfpmym"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -324,8 +327,8 @@ import 'system_data_response.dart';
 ///         size = 21
 ///       }
 ///       file_system_configs = [{
-///         "arn"            = "lgaajhamrjhiw"
-///         "localMountPath" = "ctjvtoy"
+///         arn              = "lgaajhamrjhiw"
+///         local_mount_path = "ctjvtoy"
 ///       }]
 ///       function_name = "fkv"
 ///       handler       = "penuepcuxqvyjozfpxcxkujpeiib"
@@ -359,8 +362,8 @@ import 'system_data_response.dart';
 ///         optimization_status = "Off"
 ///       }
 ///       tags = [{
-///         "key"   = "hweqw"
-///         "value" = "qctpnmjttccpi"
+///         key   = "hweqw"
+///         value = "qctpnmjttccpi"
 ///       }]
 ///       timeout = 28
 ///       tracing_config = {
@@ -402,11 +405,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.DeadLetterConfigArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.EnvironmentArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.EphemeralStorageArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.FileSystemConfigArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ImageConfigArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LoggingConfigArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RuntimeManagementConfigArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.SnapStartArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.SnapStartResponseArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.TracingConfigArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.VpcConfigArgs;
 /// import java.util.ArrayList;

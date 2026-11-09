@@ -84,7 +84,7 @@ import 'web_app_collector_operation_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -92,7 +92,10 @@ import 'web_app_collector_operation_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_webappcollectoroperation" "webAppCollectorOperation" {
+/// resource "azure-native_migrate_web_app_collector_operation" "webAppCollectorOperation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_properties = {
 ///     id                 = "fed93df5-b787-4e3f-a764-e3d2b9101a59-agent"
 ///     last_heartbeat_utc = "2023-11-03T05:43:02.078Z"

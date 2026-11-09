@@ -95,7 +95,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -103,7 +103,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_automanage_configurationprofilesversion" "configurationProfilesVersion" {
+/// resource "azure-native_automanage_configuration_profiles_version" "configurationProfilesVersion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_profile_name = "customConfigurationProfile"
 ///   location                   = "East US"
 ///   properties = {

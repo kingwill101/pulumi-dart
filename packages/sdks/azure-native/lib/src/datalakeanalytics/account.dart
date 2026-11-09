@@ -151,7 +151,7 @@ import 'virtual_network_rule_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -160,6 +160,9 @@ import 'virtual_network_rule_response.dart';
 /// }
 ///
 /// resource "azure-native_datalakeanalytics_account" "account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "contosoadla"
 ///   compute_policies {
 ///     max_degree_of_parallelism_per_job = 1

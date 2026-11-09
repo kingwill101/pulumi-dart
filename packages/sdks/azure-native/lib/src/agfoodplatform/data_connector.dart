@@ -58,13 +58,13 @@ import 'system_data_response.dart';
 /// 			DataConnectorName:                     pulumi.String("WeatherIBM"),
 /// 			DataManagerForAgricultureResourceName: pulumi.String("examples-dataManagerForAgricultureResourceName"),
 /// 			Properties: &agfoodplatform.DataConnectorPropertiesArgs{
-/// 				Credentials: agfoodplatform.ApiKeyAuthCredentials{
-/// 					ApiKey: agfoodplatform.KeyVaultProperties{
-/// 						KeyName:     "abcApiKey",
-/// 						KeyVaultUri: "https://testKeyVault.vault.azure.net/",
-/// 						KeyVersion:  "239c0475c7d44f20b0fc27d3fe90a41d",
+/// 				Credentials: &agfoodplatform.ApiKeyAuthCredentialsArgs{
+/// 					ApiKey: &agfoodplatform.KeyVaultPropertiesArgs{
+/// 						KeyName:     pulumi.String("abcApiKey"),
+/// 						KeyVaultUri: pulumi.String("https://testKeyVault.vault.azure.net/"),
+/// 						KeyVersion:  pulumi.String("239c0475c7d44f20b0fc27d3fe90a41d"),
 /// 					},
-/// 					Kind: "ApiKeyAuthCredentials",
+/// 					Kind: pulumi.String("ApiKeyAuthCredentials"),
 /// 				},
 /// 			},
 /// 			ResourceGroupName: pulumi.String("examples-rg"),
@@ -79,7 +79,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -87,17 +87,20 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_agfoodplatform_dataconnector" "dataConnector" {
+/// resource "azure-native_agfoodplatform_data_connector" "dataConnector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_connector_name                        = "WeatherIBM"
 ///   data_manager_for_agriculture_resource_name = "examples-dataManagerForAgricultureResourceName"
 ///   properties = {
 ///     credentials = {
-///       "apiKey" = {
-///         "keyName"     = "abcApiKey"
-///         "keyVaultUri" = "https://testKeyVault.vault.azure.net/"
-///         "keyVersion"  = "239c0475c7d44f20b0fc27d3fe90a41d"
+///       api_key = {
+///         key_name      = "abcApiKey"
+///         key_vault_uri = "https://testKeyVault.vault.azure.net/"
+///         key_version   = "239c0475c7d44f20b0fc27d3fe90a41d"
 ///       }
-///       "kind" = "ApiKeyAuthCredentials"
+///       kind = "ApiKeyAuthCredentials"
 ///     }
 ///   }
 ///   resource_group_name = "examples-rg"
@@ -114,6 +117,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.agfoodplatform.DataConnector;
 /// import com.pulumi.azurenative.agfoodplatform.DataConnectorArgs;
 /// import com.pulumi.azurenative.agfoodplatform.inputs.DataConnectorPropertiesArgs;
+/// import com.pulumi.azurenative.agfoodplatform.inputs.ApiKeyAuthCredentialsArgs;
+/// import com.pulumi.azurenative.agfoodplatform.inputs.KeyVaultPropertiesArgs;
+/// import com.pulumi.azurenative.agfoodplatform.inputs.OAuthClientCredentialsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -137,7 +143,6 @@ import 'system_data_response.dart';
 ///                         .keyVaultUri("https://testKeyVault.vault.azure.net/")
 ///                         .keyVersion("239c0475c7d44f20b0fc27d3fe90a41d")
 ///                         .build())
-///                     .kind("ApiKeyAuthCredentials")
 ///                     .build())
 ///                 .build())
 ///             .resourceGroupName("examples-rg")

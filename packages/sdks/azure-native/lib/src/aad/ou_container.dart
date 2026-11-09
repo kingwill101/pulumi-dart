@@ -64,7 +64,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_aad_oucontainer" "ouContainer" {
+/// resource "azure-native_aad_ou_container" "ouContainer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "AccountName1"
 ///   domain_service_name = "OuContainer.com"
 ///   ou_container_name   = "OuContainer1"

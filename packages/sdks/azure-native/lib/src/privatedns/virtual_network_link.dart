@@ -76,7 +76,7 @@ import 'virtual_network_link_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -84,7 +84,10 @@ import 'virtual_network_link_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_privatedns_virtualnetworklink" "virtualNetworkLink" {
+/// resource "azure-native_privatedns_virtual_network_link" "virtualNetworkLink" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "Global"
 ///   private_zone_name    = "privatezone1.com"
 ///   registration_enabled = false

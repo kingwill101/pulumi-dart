@@ -56,7 +56,7 @@ import 'event_grid_data_connection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -64,7 +64,10 @@ import 'event_grid_data_connection_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kusto_eventgriddataconnection" "eventGridDataConnection" {
+/// resource "azure-native_kusto_event_grid_data_connection" "eventGridDataConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name         = "kustoCluster"
 ///   data_connection_name = "dataConnectionTest"
 ///   database_name        = "KustoDatabase1"
@@ -193,7 +196,7 @@ import 'event_grid_data_connection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -201,7 +204,10 @@ import 'event_grid_data_connection_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kusto_eventgriddataconnection" "eventGridDataConnection" {
+/// resource "azure-native_kusto_event_grid_data_connection" "eventGridDataConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name         = "kustoCluster"
 ///   data_connection_name = "dataConnectionTest"
 ///   database_name        = "KustoDatabase8"
@@ -356,7 +362,7 @@ import 'event_grid_data_connection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -364,7 +370,10 @@ import 'event_grid_data_connection_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kusto_eventgriddataconnection" "eventGridDataConnection" {
+/// resource "azure-native_kusto_event_grid_data_connection" "eventGridDataConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   blob_storage_event_type      = "Microsoft.Storage.BlobCreated"
 ///   cluster_name                 = "kustoCluster"
 ///   consumer_group               = "$Default"
@@ -418,7 +427,6 @@ import 'event_grid_data_connection_args.dart';
 ///             .eventGridResourceId("/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/kustorptest/providers/Microsoft.Storage/storageAccounts/teststorageaccount/providers/Microsoft.EventGrid/eventSubscriptions/eventSubscriptionTest")
 ///             .eventHubResourceId("/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/kustorptest/providers/Microsoft.EventHub/namespaces/eventhubTestns1/eventhubs/eventhubTest2")
 ///             .ignoreFirstRecord(false)
-///             .kind("EventGrid")
 ///             .location("westus")
 ///             .managedIdentityResourceId("/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/kustorptest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/managedidentityTest1")
 ///             .mappingRuleName("TestMapping")

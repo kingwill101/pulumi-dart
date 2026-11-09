@@ -56,7 +56,7 @@ import 'iot_hub_data_connection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -64,7 +64,10 @@ import 'iot_hub_data_connection_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kusto_iothubdataconnection" "iotHubDataConnection" {
+/// resource "azure-native_kusto_iot_hub_data_connection" "iotHubDataConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name         = "kustoCluster"
 ///   data_connection_name = "dataConnectionTest"
 ///   database_name        = "KustoDatabase1"
@@ -193,7 +196,7 @@ import 'iot_hub_data_connection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -201,7 +204,10 @@ import 'iot_hub_data_connection_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kusto_iothubdataconnection" "iotHubDataConnection" {
+/// resource "azure-native_kusto_iot_hub_data_connection" "iotHubDataConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name         = "kustoCluster"
 ///   data_connection_name = "dataConnectionTest"
 ///   database_name        = "KustoDatabase8"
@@ -330,7 +336,7 @@ import 'iot_hub_data_connection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -338,7 +344,10 @@ import 'iot_hub_data_connection_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kusto_iothubdataconnection" "iotHubDataConnection" {
+/// resource "azure-native_kusto_iot_hub_data_connection" "iotHubDataConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name         = "kustoCluster"
 ///   data_connection_name = "dataConnectionTest"
 ///   database_name        = "KustoDatabase8"

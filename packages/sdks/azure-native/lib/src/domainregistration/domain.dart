@@ -114,7 +114,7 @@ import 'host_name_response.dart';
 ///         Location = "global",
 ///         Privacy = false,
 ///         ResourceGroupName = "testrg123",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -227,7 +227,7 @@ import 'host_name_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -236,6 +236,9 @@ import 'host_name_response.dart';
 /// }
 ///
 /// resource "azure-native_domainregistration_domain" "domain" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auth_code  = "exampleAuthCode"
 ///   auto_renew = true
 ///   consent = {

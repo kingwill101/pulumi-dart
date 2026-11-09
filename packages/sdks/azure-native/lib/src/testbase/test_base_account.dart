@@ -68,7 +68,7 @@ import 'test_base_account_skuresponse.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'test_base_account_skuresponse.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_testbase_testbaseaccount" "testBaseAccount" {
+/// resource "azure-native_testbase_test_base_account" "testBaseAccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   resource_group_name = "contoso-rg1"
 ///   sku = {

@@ -74,7 +74,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,7 +82,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_compoundassessmentoperation" "compoundAssessmentOperation" {
+/// resource "azure-native_migrate_compound_assessment_operation" "compoundAssessmentOperation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compound_assessment_name = "assessmentName"
 ///   project_name             = "contosoProject"
 ///   properties = {

@@ -88,7 +88,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -96,16 +96,19 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventgrid_partnerconfiguration" "partnerConfiguration" {
+/// resource "azure-native_eventgrid_partner_configuration" "partnerConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   partner_authorization = {
 ///     authorized_partners_list = [{
-///       "authorizationExpirationTimeInUtc" = "2022-01-28T01:20:55.142Z"
-///       "partnerName"                      = "Contoso.Finance"
-///       "partnerRegistrationImmutableId"   = "941892bc-f5d0-4d1c-8fb5-477570fc2b71"
+///       authorization_expiration_time_in_utc = "2022-01-28T01:20:55.142Z"
+///       partner_name                         = "Contoso.Finance"
+///       partner_registration_immutable_id    = "941892bc-f5d0-4d1c-8fb5-477570fc2b71"
 ///       }, {
-///       "authorizationExpirationTimeInUtc" = "2022-02-20T01:00:00.142Z"
-///       "partnerName"                      = "fabrikam.HR"
-///       "partnerRegistrationImmutableId"   = "5362bdb6-ce3e-4d0d-9a5b-3eb92c8aab38"
+///       authorization_expiration_time_in_utc = "2022-02-20T01:00:00.142Z"
+///       partner_name                         = "fabrikam.HR"
+///       partner_registration_immutable_id    = "5362bdb6-ce3e-4d0d-9a5b-3eb92c8aab38"
 ///     }]
 ///     default_maximum_expiration_time_in_days = 10
 ///   }
@@ -123,6 +126,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.eventgrid.PartnerConfiguration;
 /// import com.pulumi.azurenative.eventgrid.PartnerConfigurationArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.PartnerAuthorizationArgs;
+/// import com.pulumi.azurenative.eventgrid.inputs.PartnerArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

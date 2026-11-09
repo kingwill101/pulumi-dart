@@ -85,7 +85,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -93,7 +93,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_solutions_jitrequest" "jitRequest" {
+/// resource "azure-native_solutions_jit_request" "jitRequest" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_resource_id = "/subscriptions/00c76877-e316-48a7-af60-4a09fec9d43f/resourceGroups/52F30DB2/providers/Microsoft.Solutions/applications/7E193158"
 ///   jit_authorization_policies {
 ///     principal_id       = "1db8e132e2934dbcb8e1178a61319491"

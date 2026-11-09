@@ -48,7 +48,7 @@ import 'system_data_response.dart';
 ///                 Target = "mgwem",
 ///             },
 ///         },
-///         Tags = null,
+///         Tags = new() { },
 ///         TopicMapName = "5--CR4S47--UaxB4-",
 ///     });
 ///
@@ -103,7 +103,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -111,7 +111,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperationsmq_mqttbridgetopicmap" "mqttBridgeTopicMap" {
+/// resource "azure-native_iotoperationsmq_mqtt_bridge_topic_map" "mqttBridgeTopicMap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "an"
 ///     type = "CustomLocation"

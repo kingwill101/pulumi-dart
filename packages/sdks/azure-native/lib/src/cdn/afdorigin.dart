@@ -71,7 +71,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cdn_afdorigin" "afdOrigin" {
+/// resource "azure-native_cdn_a_f_d_origin" "afdOrigin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enabled_state       = "Enabled"
 ///   host_name           = "host1.blob.core.windows.net"
 ///   http_port           = 80

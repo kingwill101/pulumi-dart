@@ -72,7 +72,7 @@ import 'subnet_details_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'subnet_details_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_delegatednetwork_delegatedsubnetservicedetails" "delegatedSubnetServiceDetails" {
+/// resource "azure-native_delegatednetwork_delegated_subnet_service_details" "delegatedSubnetServiceDetails" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   controller_details = {
 ///     id = "/subscriptions/613192d7-503f-477a-9cfe-4efc3ee2bd60/resourceGroups/TestRG/providers/Microsoft.DelegatedNetwork/controller/dnctestcontroller"
 ///   }
@@ -248,7 +251,7 @@ import 'subnet_details_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -256,7 +259,10 @@ import 'subnet_details_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_delegatednetwork_delegatedsubnetservicedetails" "delegatedSubnetServiceDetails" {
+/// resource "azure-native_delegatednetwork_delegated_subnet_service_details" "delegatedSubnetServiceDetails" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocation_block_prefix_size = 27
 ///   controller_details = {
 ///     id = "/subscriptions/613192d7-503f-477a-9cfe-4efc3ee2bd60/resourceGroups/TestRG/providers/Microsoft.DelegatedNetwork/controller/dnctestcontroller"

@@ -101,7 +101,7 @@ import 'system_data_response.dart';
 ///                         Value = "zswuuw",
 ///                     },
 ///                 },
-///                 Threshold = 17,
+///                 Threshold = 17.0,
 ///                 ThresholdMetricId = "sqtfzityufokpxbthucjitcljvo",
 ///                 TreatMissingData = "iqrbyvljxufjwybtkjc",
 ///                 Unit = "vbjipwqqaobwlyebv",
@@ -231,7 +231,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -239,7 +239,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_cloudwatchalarm" "cloudWatchAlarm" {
+/// resource "azure-native_awsconnector_cloud_watch_alarm" "cloudWatchAlarm" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "nbymldrgacokglzmyglynjohhnj"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -254,8 +257,8 @@ import 'system_data_response.dart';
 ///       comparison_operator = "qo"
 ///       datapoints_to_alarm = 30
 ///       dimensions = [{
-///         "name"  = "bfnmnqiewf"
-///         "value" = "lnphxdrevivdil"
+///         name  = "bfnmnqiewf"
+///         value = "lnphxdrevivdil"
 ///       }]
 ///       evaluate_low_sample_count_percentile = "oihpnjstsw"
 ///       evaluation_periods                   = 15
@@ -263,33 +266,33 @@ import 'system_data_response.dart';
 ///       insufficient_data_actions            = ["dfkb"]
 ///       metric_name                          = "bkdkskukix"
 ///       metrics = [{
-///         "accountId"  = "rbtogpxgrissdcvqupcuhqqesz"
-///         "expression" = "hhxrpieqtbvafrujybxxa"
-///         "id"         = "zcevmcxhujphx"
-///         "label"      = "jmeaobrgk"
-///         "metricStat" = {
-///           "metric" = {
-///             "dimensions" = [{
-///               "name"  = "bfnmnqiewf"
-///               "value" = "lnphxdrevivdil"
+///         account_id = "rbtogpxgrissdcvqupcuhqqesz"
+///         expression = "hhxrpieqtbvafrujybxxa"
+///         id         = "zcevmcxhujphx"
+///         label      = "jmeaobrgk"
+///         metric_stat = {
+///           metric = {
+///             dimensions = [{
+///               name  = "bfnmnqiewf"
+///               value = "lnphxdrevivdil"
 ///             }]
-///             "metricName" = "mabmwxjydr"
-///             "namespace"  = "wwoppcactqawdnkpxvjlo"
+///             metric_name = "mabmwxjydr"
+///             namespace   = "wwoppcactqawdnkpxvjlo"
 ///           }
-///           "period" = 22
-///           "stat"   = "znmppqcobugvvlzccemylhxzsfsg"
-///           "unit"   = "vu"
+///           period = 22
+///           stat   = "znmppqcobugvvlzccemylhxzsfsg"
+///           unit   = "vu"
 ///         }
-///         "period"     = 27
-///         "returnData" = true
+///         period      = 27
+///         return_data = true
 ///       }]
 ///       namespace  = "ptrnxovqoagxfepnjkpewbbusjkkzr"
 ///       ok_actions = ["afskbnaohvdlb"]
 ///       period     = 5
 ///       statistic  = "yrrnvsfpyvhnzlmw"
 ///       tags = [{
-///         "key"   = "mdkzoktp"
-///         "value" = "zswuuw"
+///         key   = "mdkzoktp"
+///         value = "zswuuw"
 ///       }]
 ///       threshold           = 17
 ///       threshold_metric_id = "sqtfzityufokpxbthucjitcljvo"
@@ -322,6 +325,11 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.CloudWatchAlarmArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CloudWatchAlarmPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsCloudWatchAlarmPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.DimensionArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.MetricDataQueryArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.MetricStatArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.MetricArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

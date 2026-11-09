@@ -104,7 +104,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -112,7 +112,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_deviceupdate_privateendpointconnectionproxy" "privateEndpointConnectionProxy" {
+/// resource "azure-native_deviceupdate_private_endpoint_connection_proxy" "privateEndpointConnectionProxy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name                         = "contoso"
 ///   private_endpoint_connection_proxy_id = "peexample01"
 ///   remote_private_endpoint = {
@@ -121,13 +124,13 @@ import 'system_data_response.dart';
 ///     immutable_subscription_id = "00000000-0000-0000-0000-000000000000"
 ///     location                  = "westus2"
 ///     manual_private_link_service_connections = [{
-///       "groupIds"       = ["DeviceUpdate"]
-///       "name"           = "{privateEndpointConnectionProxyId}"
-///       "requestMessage" = "Please approve my connection, thanks."
+///       group_ids       = ["DeviceUpdate"]
+///       name            = "{privateEndpointConnectionProxyId}"
+///       request_message = "Please approve my connection, thanks."
 ///     }]
 ///     private_link_service_proxies = [{
-///       "groupConnectivityInformation" = []
-///       "id"                           = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/privateEndpoints/{privateEndpointConnectionProxyId}/privateLinkServiceProxies/{privateEndpointConnectionProxyId}"
+///       group_connectivity_information = []
+///       id                             = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/privateEndpoints/{privateEndpointConnectionProxyId}/privateLinkServiceProxies/{privateEndpointConnectionProxyId}"
 ///     }]
 ///   }
 ///   resource_group_name = "test-rg"
@@ -144,6 +147,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.deviceupdate.PrivateEndpointConnectionProxy;
 /// import com.pulumi.azurenative.deviceupdate.PrivateEndpointConnectionProxyArgs;
 /// import com.pulumi.azurenative.deviceupdate.inputs.RemotePrivateEndpointArgs;
+/// import com.pulumi.azurenative.deviceupdate.inputs.PrivateLinkServiceConnectionArgs;
+/// import com.pulumi.azurenative.deviceupdate.inputs.PrivateLinkServiceProxyArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

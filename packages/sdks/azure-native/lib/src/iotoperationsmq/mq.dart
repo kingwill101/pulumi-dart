@@ -29,7 +29,7 @@ import 'system_data_response.dart';
 ///         Location = "qayqiarqxjennoyvglovxrdiccscq",
 ///         MqName = "-MK0Vqe3K7Ji",
 ///         ResourceGroupName = "rgiotoperationsmq",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -67,7 +67,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,6 +76,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_iotoperationsmq_mq" "mq" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "an"
 ///     type = "CustomLocation"

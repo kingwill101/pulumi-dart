@@ -28,10 +28,10 @@ import 'workload_network_dns_zone_args.dart';
 ///             "1.1.1.1",
 ///         },
 ///         DnsZoneId = "dnsZone1",
-///         Domain = new[] {},
+///         Domain = new() {},
 ///         PrivateCloudName = "cloud1",
 ///         ResourceGroupName = "group1",
-///         Revision = 1,
+///         Revision = 1.0,
 ///         SourceIp = "8.8.8.8",
 ///     });
 ///
@@ -72,7 +72,7 @@ import 'workload_network_dns_zone_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'workload_network_dns_zone_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_avs_workloadnetworkdnszone" "workloadNetworkDnsZone" {
+/// resource "azure-native_avs_workload_network_dns_zone" "workloadNetworkDnsZone" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name        = "dnsZone1"
 ///   dns_server_ips      = ["1.1.1.1"]
 ///   dns_zone_id         = "dnsZone1"

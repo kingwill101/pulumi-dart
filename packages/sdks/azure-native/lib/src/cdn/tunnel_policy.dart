@@ -97,7 +97,7 @@ import 'tunnel_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -105,7 +105,10 @@ import 'tunnel_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cdn_tunnelpolicy" "tunnelPolicy" {
+/// resource "azure-native_cdn_tunnel_policy" "tunnelPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domains {
 ///     id = "/subscriptions/subid/resourcegroups/RG/providers/Microsoft.Cdn/profiles/profile1/customdomains/testdomain1"
 ///   }

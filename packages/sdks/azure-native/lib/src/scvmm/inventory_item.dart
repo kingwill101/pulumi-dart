@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_scvmm_inventoryitem" "inventoryItem" {
+/// resource "azure-native_scvmm_inventory_item" "inventoryItem" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   inventory_item_name = "12345678-1234-1234-1234-123456789abc"
 ///   inventory_type      = "Cloud"
 ///   resource_group_name = "testrg"

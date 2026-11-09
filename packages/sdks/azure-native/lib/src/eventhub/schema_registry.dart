@@ -22,7 +22,7 @@ import 'system_data_response.dart';
 /// {
 ///     var schemaRegistry = new AzureNative.EventHub.SchemaRegistry("schemaRegistry", new()
 ///     {
-///         GroupProperties = null,
+///         GroupProperties = new() { },
 ///         NamespaceName = "ali-ua-test-eh-system-1",
 ///         ResourceGroupName = "alitest",
 ///         SchemaCompatibility = AzureNative.EventHub.SchemaCompatibility.Forward,
@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventhub_schemaregistry" "schemaRegistry" {
+/// resource "azure-native_eventhub_schema_registry" "schemaRegistry" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_properties     = {}
 ///   namespace_name       = "ali-ua-test-eh-system-1"
 ///   resource_group_name  = "alitest"

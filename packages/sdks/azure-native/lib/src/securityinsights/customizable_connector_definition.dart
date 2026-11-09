@@ -62,7 +62,7 @@ import 'system_data_response.dart';
 ///                     MetricName = "Total events received",
 ///                 },
 ///             },
-///             InstructionSteps = new[]
+///             InstructionSteps =
 ///             {
 ///                 new AzureNative.SecurityInsights.Inputs.InstructionStepArgs
 ///                 {
@@ -222,7 +222,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -230,55 +230,58 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_customizableconnectordefinition" "customizableConnectorDefinition" {
+/// resource "azure-native_securityinsights_customizable_connector_definition" "customizableConnectorDefinition" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connector_ui_config = {
 ///     availability = {
 ///       is_preview = false
 ///       status     = 1
 ///     }
 ///     connectivity_criteria = [{
-///       "type"  = "IsConnectedQuery"
-///       "value" = ["GitHubAuditLogPolling_CL \n | summarize LastLogReceived = max(TimeGenerated)\n | project IsConnected = LastLogReceived > ago(30d)"]
+///       type  = "IsConnectedQuery"
+///       value = ["GitHubAuditLogPolling_CL \n | summarize LastLogReceived = max(TimeGenerated)\n | project IsConnected = LastLogReceived > ago(30d)"]
 ///     }]
 ///     data_types = [{
-///       "lastDataReceivedQuery" = "GitHubAuditLogPolling_CL \n            | summarize Time = max(TimeGenerated)\n            | where isnotempty(Time)"
-///       "name"                  = "GitHubAuditLogPolling_CL"
+///       last_data_received_query = "GitHubAuditLogPolling_CL \n            | summarize Time = max(TimeGenerated)\n            | where isnotempty(Time)"
+///       name                     = "GitHubAuditLogPolling_CL"
 ///     }]
 ///     description_markdown = "The GitHub audit log connector provides the capability to ingest GitHub logs into Azure Sentinel. By connecting GitHub audit logs into Azure Sentinel, you can view this data in workbooks, use it to create custom alerts, and improve your investigation process."
 ///     graph_queries = [{
-///       "baseQuery"  = "GitHubAuditLogPolling_CL"
-///       "legend"     = "GitHub audit log events"
-///       "metricName" = "Total events received"
+///       base_query  = "GitHubAuditLogPolling_CL"
+///       legend      = "GitHub audit log events"
+///       metric_name = "Total events received"
 ///     }]
 ///     instruction_steps = [{
-///       "description" = "Enable GitHub audit Logs. \n Follow [this](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) to create or find your personal key"
-///       "instructions" = [{
-///         "parameters" = {
+///       description = "Enable GitHub audit Logs. \n Follow [this](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) to create or find your personal key"
+///       instructions = [{
+///         parameters = {
 ///           "clientIdLabel"         = "Client ID"
 ///           "clientSecretLabel"     = "Client Secret"
 ///           "connectButtonLabel"    = "Connect"
 ///           "disconnectButtonLabel" = "Disconnect"
 ///         }
-///         "type" = "OAuthForm"
+///         type = "OAuthForm"
 ///       }]
-///       "title" = "Connect GitHub Enterprise Audit Log to Azure Sentinel"
+///       title = "Connect GitHub Enterprise Audit Log to Azure Sentinel"
 ///     }]
 ///     permissions = {
 ///       customs = [{
-///         "description" = "You need access to GitHub personal token, the key should have 'admin:org' scope"
-///         "name"        = "GitHub API personal token Key"
+///         description = "You need access to GitHub personal token, the key should have 'admin:org' scope"
+///         name        = "GitHub API personal token Key"
 ///       }]
 ///       resource_provider = [{
-///         "permissionsDisplayText" = "read and write permissions are required."
-///         "provider"               = "Microsoft.OperationalInsights/workspaces"
-///         "providerDisplayName"    = "Workspace"
-///         "requiredPermissions" = {
-///           "action" = false
-///           "delete" = false
-///           "read"   = false
-///           "write"  = true
+///         permissions_display_text = "read and write permissions are required."
+///         provider                 = "Microsoft.OperationalInsights/workspaces"
+///         provider_display_name    = "Workspace"
+///         required_permissions = {
+///           action = false
+///           delete = false
+///           read   = false
+///           write  = true
 ///         }
-///         "scope" = "Workspace"
+///         scope = "Workspace"
 ///       }]
 ///     }
 ///     publisher = "GitHub"
@@ -302,7 +305,15 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.securityinsights.CustomizableConnectorDefinitionArgs;
 /// import com.pulumi.azurenative.securityinsights.inputs.CustomizableConnectorUiConfigArgs;
 /// import com.pulumi.azurenative.securityinsights.inputs.ConnectorDefinitionsAvailabilityArgs;
+/// import com.pulumi.azurenative.securityinsights.inputs.ConnectivityCriterionArgs;
+/// import com.pulumi.azurenative.securityinsights.inputs.ConnectorDataTypeArgs;
+/// import com.pulumi.azurenative.securityinsights.inputs.GraphQueryArgs;
+/// import com.pulumi.azurenative.securityinsights.inputs.InstructionStepArgs;
+/// import com.pulumi.azurenative.securityinsights.inputs.InstructionStepDetailsArgs;
 /// import com.pulumi.azurenative.securityinsights.inputs.ConnectorDefinitionsPermissionsArgs;
+/// import com.pulumi.azurenative.securityinsights.inputs.CustomPermissionDetailsArgs;
+/// import com.pulumi.azurenative.securityinsights.inputs.ConnectorDefinitionsResourceProviderArgs;
+/// import com.pulumi.azurenative.securityinsights.inputs.ResourceProviderRequiredPermissionsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -379,7 +390,6 @@ import 'system_data_response.dart';
 ///                 .title("GitHub Enterprise Audit Log")
 ///                 .build())
 ///             .dataConnectorDefinitionName("73e01a99-5cd7-4139-a149-9f2736ff2ab5")
-///             .kind("Customizable")
 ///             .resourceGroupName("myRg")
 ///             .workspaceName("myWorkspace")
 ///             .build());

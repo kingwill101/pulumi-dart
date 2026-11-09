@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_signalrservice_signalrcustomcertificate" "signalRCustomCertificate" {
+/// resource "azure-native_signalrservice_signal_r_custom_certificate" "signalRCustomCertificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_name         = "myCert"
 ///   key_vault_base_uri       = "https://myvault.keyvault.azure.net/"
 ///   key_vault_secret_name    = "mycert"

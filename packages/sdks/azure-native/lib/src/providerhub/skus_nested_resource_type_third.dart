@@ -108,7 +108,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -116,22 +116,25 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_providerhub_skusnestedresourcetypethird" "skusNestedResourceTypeThird" {
+/// resource "azure-native_providerhub_skus_nested_resource_type_third" "skusNestedResourceTypeThird" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   nested_resource_type_first  = "nestedResourceTypeFirst"
 ///   nested_resource_type_second = "nestedResourceTypeSecond"
 ///   nested_resource_type_third  = "nestedResourceTypeThird"
 ///   properties = {
 ///     sku_settings = [{
-///       "kind" = "Standard"
-///       "name" = "freeSku"
-///       "tier" = "Tier1"
+///       kind = "Standard"
+///       name = "freeSku"
+///       tier = "Tier1"
 ///       }, {
-///       "costs" = [{
-///         "meterId" = "xxx"
+///       costs = [{
+///         meter_id = "xxx"
 ///       }]
-///       "kind" = "Premium"
-///       "name" = "premiumSku"
-///       "tier" = "Tier2"
+///       kind = "Premium"
+///       name = "premiumSku"
+///       tier = "Tier2"
 ///     }]
 ///   }
 ///   provider_namespace = "Microsoft.Contoso"
@@ -150,6 +153,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.providerhub.SkusNestedResourceTypeThird;
 /// import com.pulumi.azurenative.providerhub.SkusNestedResourceTypeThirdArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.SkuResourcePropertiesArgs;
+/// import com.pulumi.azurenative.providerhub.inputs.SkuSettingArgs;
+/// import com.pulumi.azurenative.providerhub.inputs.SkuCostArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

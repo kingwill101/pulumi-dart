@@ -66,7 +66,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,7 +74,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_devcenter_environmenttype" "environmentType" {
+/// resource "azure-native_devcenter_environment_type" "environmentType" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dev_center_name       = "Contoso"
 ///   display_name          = "Dev"
 ///   environment_type_name = "DevTest"

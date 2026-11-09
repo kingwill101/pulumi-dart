@@ -95,7 +95,7 @@ import 'web_test_properties_validation_rules_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -103,7 +103,10 @@ import 'web_test_properties_validation_rules_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_applicationinsights_webtest" "webTest" {
+/// resource "azure-native_applicationinsights_web_test" "webTest" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration = {
 ///     web_test = "<WebTest Name=\"my-webtest\" Id=\"678ddf96-1ab8-44c8-9274-123456789abc\" Enabled=\"True\" CssProjectStructure=\"\" CssIteration=\"\" Timeout=\"120\" WorkItemIds=\"\" xmlns=\"http://microsoft.com/schemas/VisualStudio/TeamTest/2010\" Description=\"\" CredentialUserName=\"\" CredentialPassword=\"\" PreAuthenticate=\"True\" Proxy=\"default\" StopOnError=\"False\" RecordedResultFile=\"\" ResultsLocale=\"\" ><Items><Request Method=\"GET\" Guid=\"a4162485-9114-fcfc-e086-123456789abc\" Version=\"1.1\" Url=\"http://my-component.azurewebsites.net\" ThinkTime=\"0\" Timeout=\"120\" ParseDependentRequests=\"True\" FollowRedirects=\"True\" RecordResult=\"True\" Cache=\"False\" ResponseTimeGoal=\"0\" Encoding=\"utf-8\" ExpectedHttpStatusCode=\"200\" ExpectedResponseUrl=\"\" ReportingName=\"\" IgnoreHttpStatusCode=\"False\" /></Items></WebTest>"
 ///   }
@@ -364,7 +367,7 @@ import 'web_test_properties_validation_rules_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -372,7 +375,10 @@ import 'web_test_properties_validation_rules_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_applicationinsights_webtest" "webTest" {
+/// resource "azure-native_applicationinsights_web_test" "webTest" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "Ping web test alert for mytestwebapp"
 ///   enabled     = true
 ///   frequency   = 900
@@ -382,11 +388,11 @@ import 'web_test_properties_validation_rules_response.dart';
 ///   }
 ///   request = {
 ///     headers = [{
-///       "headerFieldName"  = "Content-Language"
-///       "headerFieldValue" = "de-DE"
+///       header_field_name  = "Content-Language"
+///       header_field_value = "de-DE"
 ///       }, {
-///       "headerFieldName"  = "Accept-Language"
-///       "headerFieldValue" = "de-DE"
+///       header_field_name  = "Accept-Language"
+///       header_field_value = "de-DE"
 ///     }]
 ///     http_verb    = "POST"
 ///     request_body = "SGVsbG8gd29ybGQ="
@@ -416,6 +422,7 @@ import 'web_test_properties_validation_rules_response.dart';
 /// import com.pulumi.azurenative.applicationinsights.WebTestArgs;
 /// import com.pulumi.azurenative.applicationinsights.inputs.WebTestGeolocationArgs;
 /// import com.pulumi.azurenative.applicationinsights.inputs.WebTestPropertiesRequestArgs;
+/// import com.pulumi.azurenative.applicationinsights.inputs.HeaderFieldArgs;
 /// import com.pulumi.azurenative.applicationinsights.inputs.WebTestPropertiesValidationRulesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -666,7 +673,7 @@ import 'web_test_properties_validation_rules_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -674,7 +681,10 @@ import 'web_test_properties_validation_rules_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_applicationinsights_webtest" "webTest" {
+/// resource "azure-native_applicationinsights_web_test" "webTest" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration = {
 ///     web_test = "<WebTest Name=\"my-webtest\" Id=\"678ddf96-1ab8-44c8-9274-123456789abc\" Enabled=\"True\" CssProjectStructure=\"\" CssIteration=\"\" Timeout=\"30\" WorkItemIds=\"\" xmlns=\"http://microsoft.com/schemas/VisualStudio/TeamTest/2010\" Description=\"\" CredentialUserName=\"\" CredentialPassword=\"\" PreAuthenticate=\"True\" Proxy=\"default\" StopOnError=\"False\" RecordedResultFile=\"\" ResultsLocale=\"\" ><Items><Request Method=\"GET\" Guid=\"a4162485-9114-fcfc-e086-123456789abc\" Version=\"1.1\" Url=\"http://my-component.azurewebsites.net\" ThinkTime=\"0\" Timeout=\"30\" ParseDependentRequests=\"True\" FollowRedirects=\"True\" RecordResult=\"True\" Cache=\"False\" ResponseTimeGoal=\"0\" Encoding=\"utf-8\" ExpectedHttpStatusCode=\"200\" ExpectedResponseUrl=\"\" ReportingName=\"\" IgnoreHttpStatusCode=\"False\" /></Items></WebTest>"
 ///   }

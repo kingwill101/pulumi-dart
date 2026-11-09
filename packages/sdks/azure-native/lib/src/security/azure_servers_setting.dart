@@ -55,7 +55,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -63,7 +63,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_azureserverssetting" "azureServersSetting" {
+/// resource "azure-native_security_azure_servers_setting" "azureServersSetting" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   kind              = "AzureServersSetting"
 ///   selected_provider = "MdeTvm"
 ///   setting_kind      = "azureServersSetting"
@@ -93,7 +96,6 @@ import 'system_data_response.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var azureServersSetting = new AzureServersSetting("azureServersSetting", AzureServersSettingArgs.builder()
-///             .kind("AzureServersSetting")
 ///             .selectedProvider("MdeTvm")
 ///             .settingKind("azureServersSetting")
 ///             .build());

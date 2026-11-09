@@ -129,7 +129,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -137,7 +137,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_organizationsaccount" "organizationsAccount" {
+/// resource "azure-native_awsconnector_organizations_account" "organizationsAccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "wyzamnearzlajcvzhj"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -154,8 +157,8 @@ import 'system_data_response.dart';
 ///       role_name        = "izpxv"
 ///       status           = "ACTIVE"
 ///       tags = [{
-///         "key"   = "jwuqulmpbiwqxudtqfgrtnvxtbyxcb"
-///         "value" = "esqhxwyrftlxbuab"
+///         key   = "jwuqulmpbiwqxudtqfgrtnvxtbyxcb"
+///         value = "esqhxwyrftlxbuab"
 ///       }]
 ///     }
 ///     aws_region        = "yvslwciyhnwwnxxrv"
@@ -184,6 +187,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.OrganizationsAccountArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.OrganizationsAccountPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsOrganizationsAccountPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

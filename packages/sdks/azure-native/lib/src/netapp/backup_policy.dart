@@ -68,7 +68,7 @@ import 'volume_backups_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'volume_backups_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_netapp_backuppolicy" "backupPolicy" {
+/// resource "azure-native_netapp_backup_policy" "backupPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name            = "account1"
 ///   backup_policy_name      = "backupPolicyName"
 ///   daily_backups_to_keep   = 10

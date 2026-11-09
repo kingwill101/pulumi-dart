@@ -57,7 +57,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_kustodatabasedataset" "kustoDatabaseDataSet" {
+/// resource "azure-native_datashare_kusto_database_data_set" "kustoDatabaseDataSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "Account1"
 ///   data_set_name       = "Dataset1"
 ///   resource_group_name = "SampleResourceGroup"
@@ -194,7 +197,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -202,7 +205,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_kustodatabasedataset" "kustoDatabaseDataSet" {
+/// resource "azure-native_datashare_kusto_database_data_set" "kustoDatabaseDataSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "Account1"
 ///   data_set_name       = "Dataset1"
 ///   resource_group_name = "SampleResourceGroup"
@@ -335,7 +341,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -343,7 +349,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_kustodatabasedataset" "kustoDatabaseDataSet" {
+/// resource "azure-native_datashare_kusto_database_data_set" "kustoDatabaseDataSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name               = "Account1"
 ///   data_set_name              = "Dataset1"
 ///   kind                       = "KustoDatabase"
@@ -378,7 +387,6 @@ import 'system_data_response.dart';
 ///         var kustoDatabaseDataSet = new KustoDatabaseDataSet("kustoDatabaseDataSet", KustoDatabaseDataSetArgs.builder()
 ///             .accountName("Account1")
 ///             .dataSetName("Dataset1")
-///             .kind("KustoDatabase")
 ///             .kustoDatabaseResourceId("/subscriptions/433a8dfd-e5d5-4e77-ad86-90acdc75eb1a/resourceGroups/SampleResourceGroup/providers/Microsoft.Kusto/clusters/Cluster1/databases/Database1")
 ///             .resourceGroupName("SampleResourceGroup")
 ///             .shareName("Share1")
@@ -482,7 +490,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -490,7 +498,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_kustodatabasedataset" "kustoDatabaseDataSet" {
+/// resource "azure-native_datashare_kusto_database_data_set" "kustoDatabaseDataSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "Account1"
 ///   data_set_name       = "Dataset1"
 ///   resource_group_name = "SampleResourceGroup"
@@ -619,7 +630,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -627,7 +638,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_kustodatabasedataset" "kustoDatabaseDataSet" {
+/// resource "azure-native_datashare_kusto_database_data_set" "kustoDatabaseDataSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "Account1"
 ///   data_set_name       = "Dataset1"
 ///   resource_group_name = "SampleResourceGroup"
@@ -756,7 +770,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -764,7 +778,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_kustodatabasedataset" "kustoDatabaseDataSet" {
+/// resource "azure-native_datashare_kusto_database_data_set" "kustoDatabaseDataSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "Account1"
 ///   data_set_name       = "Dataset1"
 ///   resource_group_name = "SampleResourceGroup"
@@ -893,7 +910,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -901,7 +918,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_kustodatabasedataset" "kustoDatabaseDataSet" {
+/// resource "azure-native_datashare_kusto_database_data_set" "kustoDatabaseDataSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "sourceAccount"
 ///   data_set_name       = "dataset1"
 ///   resource_group_name = "SampleResourceGroup"

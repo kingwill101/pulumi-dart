@@ -65,7 +65,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_automanage_configurationprofileassignment" "configurationProfileAssignment" {
+/// resource "azure-native_automanage_configuration_profile_assignment" "configurationProfileAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_profile_assignment_name = "default"
 ///   properties = {
 ///     configuration_profile = "/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction"

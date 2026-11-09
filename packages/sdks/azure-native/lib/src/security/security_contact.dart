@@ -27,7 +27,7 @@ import 'system_data_response.dart';
 ///         IsEnabled = true,
 ///         NotificationsByRole = new AzureNative.Security.Inputs.SecurityContactPropertiesNotificationsByRoleArgs
 ///         {
-///             Roles = new[]
+///             Roles =
 ///             {
 ///                 AzureNative.Security.SecurityContactRole.Owner,
 ///             },
@@ -75,13 +75,13 @@ import 'system_data_response.dart';
 /// 				State: pulumi.String(security.StateOn),
 /// 			},
 /// 			NotificationsSources: pulumi.Array{
-/// 				security.NotificationsSourceAttackPath{
-/// 					MinimalRiskLevel: security.MinimalRiskLevelCritical,
-/// 					SourceType:       "AttackPath",
+/// 				&security.NotificationsSourceAttackPathArgs{
+/// 					MinimalRiskLevel: pulumi.String(security.MinimalRiskLevelCritical),
+/// 					SourceType:       pulumi.String("AttackPath"),
 /// 				},
-/// 				security.NotificationsSourceAlert{
-/// 					MinimalSeverity: security.MinimalSeverityMedium,
-/// 					SourceType:      "Alert",
+/// 				&security.NotificationsSourceAlertArgs{
+/// 					MinimalSeverity: pulumi.String(security.MinimalSeverityMedium),
+/// 					SourceType:      pulumi.String("Alert"),
 /// 				},
 /// 			},
 /// 			Phone:               pulumi.String("(214)275-4038"),
@@ -97,7 +97,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -105,7 +105,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_securitycontact" "securityContact" {
+/// resource "azure-native_security_security_contact" "securityContact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   emails     = "john@contoso.com;jane@contoso.com"
 ///   is_enabled = true
 ///   notifications_by_role = {
@@ -113,11 +116,11 @@ import 'system_data_response.dart';
 ///     state = "On"
 ///   }
 ///   notifications_sources = [{
-///     "minimalRiskLevel" = "Critical"
-///     "sourceType"       = "AttackPath"
+///     minimal_risk_level = "Critical"
+///     source_type        = "AttackPath"
 ///     }, {
-///     "minimalSeverity" = "Medium"
-///     "sourceType"      = "Alert"
+///     minimal_severity = "Medium"
+///     source_type      = "Alert"
 ///   }]
 ///   phone                 = "(214)275-4038"
 ///   security_contact_name = "default"
@@ -134,6 +137,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.security.SecurityContact;
 /// import com.pulumi.azurenative.security.SecurityContactArgs;
 /// import com.pulumi.azurenative.security.inputs.SecurityContactPropertiesNotificationsByRoleArgs;
+/// import com.pulumi.azurenative.security.inputs.NotificationsSourceAlertArgs;
+/// import com.pulumi.azurenative.security.inputs.NotificationsSourceAttackPathArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -157,11 +162,9 @@ import 'system_data_response.dart';
 ///             .notificationsSources(
 ///                 NotificationsSourceAttackPathArgs.builder()
 ///                     .minimalRiskLevel("Critical")
-///                     .sourceType("AttackPath")
 ///                     .build(),
 ///                 NotificationsSourceAlertArgs.builder()
 ///                     .minimalSeverity("Medium")
-///                     .sourceType("Alert")
 ///                     .build())
 ///             .phone("(214)275-4038")
 ///             .securityContactName("default")

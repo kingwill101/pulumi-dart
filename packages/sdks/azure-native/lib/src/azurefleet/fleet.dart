@@ -260,7 +260,7 @@ import 'vmattributes_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -269,28 +269,31 @@ import 'vmattributes_response.dart';
 /// }
 ///
 /// resource "azure-native_azurefleet_fleet" "fleet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_profile = {
 ///     base_virtual_machine_profile = {
 ///       network_profile = {
 ///         network_api_version = "2022-07-01"
 ///         network_interface_configurations = [{
-///           "name" = "vmNameTest"
-///           "properties" = {
-///             "enableAcceleratedNetworking" = false
-///             "enableIPForwarding"          = true
-///             "ipConfigurations" = [{
-///               "name" = "vmNameTest"
-///               "properties" = {
-///                 "loadBalancerBackendAddressPools" = [{
-///                   "id" = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}"
+///           name = "vmNameTest"
+///           properties = {
+///             enable_accelerated_networking = false
+///             enable_ip_forwarding          = true
+///             ip_configurations = [{
+///               name = "vmNameTest"
+///               properties = {
+///                 load_balancer_backend_address_pools = [{
+///                   id = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}"
 ///                 }]
-///                 "primary" = true
-///                 "subnet" = {
-///                   "id" = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}"
+///                 primary = true
+///                 subnet = {
+///                   id = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}"
 ///                 }
 ///               }
 ///             }]
-///             "primary" = true
+///             primary = true
 ///           }
 ///         }]
 ///       }
@@ -364,6 +367,12 @@ import 'vmattributes_response.dart';
 /// import com.pulumi.azurenative.azurefleet.inputs.ComputeProfileArgs;
 /// import com.pulumi.azurenative.azurefleet.inputs.BaseVirtualMachineProfileArgs;
 /// import com.pulumi.azurenative.azurefleet.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.azurefleet.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.azurefleet.inputs.VirtualMachineScaleSetNetworkConfigurationPropertiesArgs;
+/// import com.pulumi.azurenative.azurefleet.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.azurefleet.inputs.VirtualMachineScaleSetIPConfigurationPropertiesArgs;
+/// import com.pulumi.azurenative.azurefleet.inputs.SubResourceArgs;
+/// import com.pulumi.azurenative.azurefleet.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.azurefleet.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.azurefleet.inputs.LinuxConfigurationArgs;
 /// import com.pulumi.azurenative.azurefleet.inputs.VirtualMachineScaleSetStorageProfileArgs;

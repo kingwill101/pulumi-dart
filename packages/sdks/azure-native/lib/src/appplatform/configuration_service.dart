@@ -98,7 +98,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -106,16 +106,19 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_appplatform_configurationservice" "configurationService" {
+/// resource "azure-native_appplatform_configuration_service" "configurationService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_service_name = "default"
 ///   properties = {
 ///     settings = {
 ///       git_property = {
 ///         repositories = [{
-///           "label"    = "master"
-///           "name"     = "fake"
-///           "patterns" = ["app/dev"]
-///           "uri"      = "https://github.com/fake-user/fake-repository"
+///           label    = "master"
+///           name     = "fake"
+///           patterns = ["app/dev"]
+///           uri      = "https://github.com/fake-user/fake-repository"
 ///         }]
 ///       }
 ///       refresh_interval_in_seconds = 60
@@ -138,6 +141,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.inputs.ConfigurationServicePropertiesArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.ConfigurationServiceSettingsArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.ConfigurationServiceGitPropertyArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.ConfigurationServiceGitRepositoryArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

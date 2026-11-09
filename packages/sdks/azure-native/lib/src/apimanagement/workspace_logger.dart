@@ -69,7 +69,7 @@ import 'workspace_logger_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,7 +77,10 @@ import 'workspace_logger_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_workspacelogger" "workspaceLogger" {
+/// resource "azure-native_apimanagement_workspace_logger" "workspaceLogger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   credentials = {
 ///     "instrumentationKey" = "11................a1"
 ///   }
@@ -241,7 +244,7 @@ import 'workspace_logger_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -249,7 +252,10 @@ import 'workspace_logger_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_workspacelogger" "workspaceLogger" {
+/// resource "azure-native_apimanagement_workspace_logger" "workspaceLogger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   credentials = {
 ///     "connectionString" = "Endpoint=sb://hydraeventhub-ns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=********="
 ///     "name"             = "hydraeventhub"

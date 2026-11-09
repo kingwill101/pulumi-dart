@@ -25,11 +25,11 @@ import 'service_resource_description_response.dart';
 ///         Description = "Service Fabric Mesh sample application.",
 ///         Location = "EastUS",
 ///         ResourceGroupName = "sbz_demo",
-///         Services = new[]
+///         Services =
 ///         {
 ///             new AzureNative.ServiceFabricMesh.Inputs.ServiceResourceDescriptionArgs
 ///             {
-///                 CodePackages = new[]
+///                 CodePackages =
 ///                 {
 ///                     new AzureNative.ServiceFabricMesh.Inputs.ContainerCodePackagePropertiesArgs
 ///                     {
@@ -47,8 +47,8 @@ import 'service_resource_description_response.dart';
 ///                         {
 ///                             Requests = new AzureNative.ServiceFabricMesh.Inputs.ResourceRequestsArgs
 ///                             {
-///                                 Cpu = 1,
-///                                 MemoryInGB = 1,
+///                                 Cpu = 1.0,
+///                                 MemoryInGB = 1.0,
 ///                             },
 ///                         },
 ///                     },
@@ -73,7 +73,7 @@ import 'service_resource_description_response.dart';
 ///                 ReplicaCount = 1,
 ///             },
 ///         },
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -144,7 +144,7 @@ import 'service_resource_description_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -153,6 +153,9 @@ import 'service_resource_description_response.dart';
 /// }
 ///
 /// resource "azure-native_servicefabricmesh_application" "application" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_resource_name = "sampleApplication"
 ///   description               = "Service Fabric Mesh sample application."
 ///   location                  = "EastUS"
@@ -197,6 +200,12 @@ import 'service_resource_description_response.dart';
 /// import com.pulumi.azurenative.servicefabricmesh.Application;
 /// import com.pulumi.azurenative.servicefabricmesh.ApplicationArgs;
 /// import com.pulumi.azurenative.servicefabricmesh.inputs.ServiceResourceDescriptionArgs;
+/// import com.pulumi.azurenative.servicefabricmesh.inputs.ContainerCodePackagePropertiesArgs;
+/// import com.pulumi.azurenative.servicefabricmesh.inputs.EndpointPropertiesArgs;
+/// import com.pulumi.azurenative.servicefabricmesh.inputs.ResourceRequirementsArgs;
+/// import com.pulumi.azurenative.servicefabricmesh.inputs.ResourceRequestsArgs;
+/// import com.pulumi.azurenative.servicefabricmesh.inputs.NetworkRefArgs;
+/// import com.pulumi.azurenative.servicefabricmesh.inputs.EndpointRefArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

@@ -153,7 +153,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -161,7 +161,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperations_brokerauthentication" "brokerAuthentication" {
+/// resource "azure-native_iotoperations_broker_authentication" "brokerAuthentication" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authentication_name = "resource-name123"
 ///   broker_name         = "resource-name123"
 ///   extended_location = {
@@ -171,32 +174,32 @@ import 'system_data_response.dart';
 ///   instance_name = "resource-name123"
 ///   properties = {
 ///     authentication_methods = [{
-///       "customSettings" = {
-///         "auth" = {
-///           "x509" = {
-///             "secretRef" = "secret-name"
+///       custom_settings = {
+///         auth = {
+///           x509 = {
+///             secret_ref = "secret-name"
 ///           }
 ///         }
-///         "caCertConfigMap" = "pdecudefqyolvncbus"
-///         "endpoint"        = "https://www.example.com"
-///         "headers" = {
+///         ca_cert_config_map = "pdecudefqyolvncbus"
+///         endpoint           = "https://www.example.com"
+///         headers = {
 ///           "key8518" = "bwityjy"
 ///         }
 ///       }
-///       "method" = "Custom"
-///       "serviceAccountTokenSettings" = {
-///         "audiences" = ["jqyhyqatuydg"]
+///       method = "Custom"
+///       service_account_token_settings = {
+///         audiences = ["jqyhyqatuydg"]
 ///       }
-///       "x509Settings" = {
-///         "authorizationAttributes" = {
+///       x509_settings = {
+///         authorization_attributes = {
 ///           "key3384" = {
-///             "attributes" = {
+///             attributes = {
 ///               "key186" = "ucpajramsz"
 ///             }
-///             "subject" = "jpgwctfeixitptfgfnqhua"
+///             subject = "jpgwctfeixitptfgfnqhua"
 ///           }
 ///         }
-///         "trustedClientCaCert" = "vlctsqddl"
+///         trusted_client_ca_cert = "vlctsqddl"
 ///       }
 ///     }]
 ///   }
@@ -215,6 +218,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.BrokerAuthenticationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.BrokerAuthenticationPropertiesArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.BrokerAuthenticatorMethodsArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.BrokerAuthenticatorMethodCustomArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.BrokerAuthenticatorCustomAuthArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.X509ManualCertificateArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.BrokerAuthenticatorMethodSatArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.BrokerAuthenticatorMethodX509Args;
+/// import com.pulumi.azurenative.iotoperations.inputs.BrokerAuthenticatorMethodX509AttributesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -551,7 +561,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -559,7 +569,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperations_brokerauthentication" "brokerAuthentication" {
+/// resource "azure-native_iotoperations_broker_authentication" "brokerAuthentication" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authentication_name = "resource-name123"
 ///   broker_name         = "resource-name123"
 ///   extended_location = {
@@ -569,35 +582,35 @@ import 'system_data_response.dart';
 ///   instance_name = "resource-name123"
 ///   properties = {
 ///     authentication_methods = [{
-///       "method" = "ServiceAccountToken"
-///       "serviceAccountTokenSettings" = {
-///         "audiences" = ["aio-internal"]
+///       method = "ServiceAccountToken"
+///       service_account_token_settings = {
+///         audiences = ["aio-internal"]
 ///       }
 ///       }, {
-///       "method" = "X509"
-///       "x509Settings" = {
-///         "authorizationAttributes" = {
+///       method = "X509"
+///       x509_settings = {
+///         authorization_attributes = {
 ///           "intermediate" = {
-///             "attributes" = {
+///             attributes = {
 ///               "city" = "seattle"
 ///               "foo"  = "bar"
 ///             }
-///             "subject" = "CN = Contoso Intermediate CA"
+///             subject = "CN = Contoso Intermediate CA"
 ///           }
 ///           "root" = {
-///             "attributes" = {
+///             attributes = {
 ///               "organization" = "contoso"
 ///             }
-///             "subject" = "CN = Contoso Root CA Cert, OU = Engineering, C = US"
+///             subject = "CN = Contoso Root CA Cert, OU = Engineering, C = US"
 ///           }
 ///           "smart-fan" = {
-///             "attributes" = {
+///             attributes = {
 ///               "building" = "17"
 ///             }
-///             "subject" = "CN = smart-fan"
+///             subject = "CN = smart-fan"
 ///           }
 ///         }
-///         "trustedClientCaCert" = "my-ca"
+///         trusted_client_ca_cert = "my-ca"
 ///       }
 ///     }]
 ///   }
@@ -616,6 +629,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.BrokerAuthenticationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.BrokerAuthenticationPropertiesArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.BrokerAuthenticatorMethodsArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.BrokerAuthenticatorMethodSatArgs;
+/// import com.pulumi.azurenative.iotoperations.inputs.BrokerAuthenticatorMethodX509Args;
+/// import com.pulumi.azurenative.iotoperations.inputs.BrokerAuthenticatorMethodX509AttributesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

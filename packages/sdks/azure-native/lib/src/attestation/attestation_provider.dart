@@ -76,7 +76,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -84,7 +84,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_attestation_attestationprovider" "attestationProvider" {
+/// resource "azure-native_attestation_attestation_provider" "attestationProvider" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "East US"
 ///   properties = {
 ///     public_network_access          = "Enabled"

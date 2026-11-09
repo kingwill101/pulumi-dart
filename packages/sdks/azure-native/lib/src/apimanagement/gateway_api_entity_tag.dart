@@ -65,7 +65,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_gatewayapientitytag" "gatewayApiEntityTag" {
+/// resource "azure-native_apimanagement_gateway_api_entity_tag" "gatewayApiEntityTag" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "echo-api"
 ///   gateway_id          = "gw1"
 ///   provisioning_state  = "created"

@@ -72,7 +72,7 @@ import 'network_security_perimeter_link_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'network_security_perimeter_link_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_networksecurityperimeterlink" "networkSecurityPerimeterLink" {
+/// resource "azure-native_network_network_security_perimeter_link" "networkSecurityPerimeterLink" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auto_approved_remote_perimeter_resource_id = "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/networkSecurityPerimeters/nsp2"
 ///   link_name                                  = "link1"
 ///   local_inbound_profiles                     = ["*"]

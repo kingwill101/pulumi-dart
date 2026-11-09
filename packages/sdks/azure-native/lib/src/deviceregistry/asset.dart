@@ -220,7 +220,7 @@ import 'topic_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -229,6 +229,9 @@ import 'topic_response.dart';
 /// }
 ///
 /// resource "azure-native_deviceregistry_asset" "asset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   asset_endpoint_profile_ref = "myAssetEndpointProfile"
 ///   asset_name                 = "my-asset"
 ///   datasets {
@@ -308,6 +311,7 @@ import 'topic_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.Asset;
 /// import com.pulumi.azurenative.deviceregistry.AssetArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.DatasetArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.DataPointArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.TopicArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.EventArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.ExtendedLocationArgs;
@@ -824,7 +828,7 @@ import 'topic_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -833,6 +837,9 @@ import 'topic_response.dart';
 /// }
 ///
 /// resource "azure-native_deviceregistry_asset" "asset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   asset_endpoint_profile_ref = "myAssetEndpointProfile"
 ///   asset_name                 = "my-asset"
 ///   datasets {
@@ -911,6 +918,7 @@ import 'topic_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.Asset;
 /// import com.pulumi.azurenative.deviceregistry.AssetArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.DatasetArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.DataPointArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.TopicArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.EventArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.ExtendedLocationArgs;
@@ -1411,7 +1419,7 @@ import 'topic_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1420,6 +1428,9 @@ import 'topic_response.dart';
 /// }
 ///
 /// resource "azure-native_deviceregistry_asset" "asset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   asset_endpoint_profile_ref = "myAssetEndpointProfile"
 ///   asset_name                 = "my-asset"
 ///   datasets {
@@ -1497,6 +1508,7 @@ import 'topic_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.Asset;
 /// import com.pulumi.azurenative.deviceregistry.AssetArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.DatasetArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.DataPointArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.TopicArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.EventArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.ExtendedLocationArgs;
@@ -1993,7 +2005,7 @@ import 'topic_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2002,6 +2014,9 @@ import 'topic_response.dart';
 /// }
 ///
 /// resource "azure-native_deviceregistry_asset" "asset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   asset_endpoint_profile_ref = "myAssetEndpointProfile"
 ///   asset_name                 = "my-asset"
 ///   datasets {
@@ -2079,6 +2094,7 @@ import 'topic_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.Asset;
 /// import com.pulumi.azurenative.deviceregistry.AssetArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.DatasetArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.DataPointArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.TopicArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.EventArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.ExtendedLocationArgs;

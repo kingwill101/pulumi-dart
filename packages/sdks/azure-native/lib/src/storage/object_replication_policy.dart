@@ -97,7 +97,7 @@ import 'object_replication_policy_rule_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -105,7 +105,10 @@ import 'object_replication_policy_rule_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_objectreplicationpolicy" "objectReplicationPolicy" {
+/// resource "azure-native_storage_object_replication_policy" "objectReplicationPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "dst112"
 ///   destination_account = "dst112"
 ///   metrics = {
@@ -340,7 +343,7 @@ import 'object_replication_policy_rule_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -348,7 +351,10 @@ import 'object_replication_policy_rule_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_objectreplicationpolicy" "objectReplicationPolicy" {
+/// resource "azure-native_storage_object_replication_policy" "objectReplicationPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "src1122"
 ///   destination_account = "dst112"
 ///   metrics = {
@@ -600,7 +606,7 @@ import 'object_replication_policy_rule_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -608,7 +614,10 @@ import 'object_replication_policy_rule_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_objectreplicationpolicy" "objectReplicationPolicy" {
+/// resource "azure-native_storage_object_replication_policy" "objectReplicationPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "dst112"
 ///   destination_account = "dst112"
 ///   metrics = {
@@ -880,7 +889,7 @@ import 'object_replication_policy_rule_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -888,7 +897,10 @@ import 'object_replication_policy_rule_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_objectreplicationpolicy" "objectReplicationPolicy" {
+/// resource "azure-native_storage_object_replication_policy" "objectReplicationPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "src1122"
 ///   destination_account = "dst112"
 ///   metrics = {

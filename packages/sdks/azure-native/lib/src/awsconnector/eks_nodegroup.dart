@@ -203,7 +203,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -211,7 +211,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_eksnodegroup" "eksNodegroup" {
+/// resource "azure-native_awsconnector_eks_nodegroup" "eksNodegroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "qfzxiflpnxiua"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -251,9 +254,9 @@ import 'system_data_response.dart';
 ///         "key1070" = "ptrhctidulykbaakuqqqqpwbjf"
 ///       }
 ///       taints = [{
-///         "effect" = "cqyaskimdnuadazzlnzdgwjbg"
-///         "key"    = "msxlxqepxrvkybvjeshfybwsx"
-///         "value"  = "hfdagmnrdomthxavrf"
+///         effect = "cqyaskimdnuadazzlnzdgwjbg"
+///         key    = "msxlxqepxrvkybvjeshfybwsx"
+///         value  = "hfdagmnrdomthxavrf"
 ///       }]
 ///       update_config = {
 ///         max_unavailable            = 24
@@ -290,6 +293,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.LaunchTemplateSpecificationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RemoteAccessArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ScalingConfigArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TaintArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.UpdateConfigArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

@@ -761,7 +761,7 @@ import 'web_application_firewall_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -769,7 +769,10 @@ import 'web_application_firewall_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_webapplicationfirewallpolicy" "webApplicationFirewallPolicy" {
+/// resource "azure-native_network_web_application_firewall_policy" "webApplicationFirewallPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   custom_rules {
 ///     action = "Block"
 ///     match_conditions {
@@ -849,113 +852,113 @@ import 'web_application_firewall_policy_args.dart';
 ///   location = "WestUs"
 ///   managed_rules = {
 ///     exceptions = [{
-///       "exceptionManagedRuleSets" = [{
-///         "ruleSetType"    = "OWASP"
-///         "ruleSetVersion" = "3.2"
+///       exception_managed_rule_sets = [{
+///         rule_set_type    = "OWASP"
+///         rule_set_version = "3.2"
 ///       }]
-///       "matchVariable"      = "RequestURI"
-///       "valueMatchOperator" = "Contains"
-///       "values"             = ["health", "account/images", "default.aspx"]
+///       match_variable       = "RequestURI"
+///       value_match_operator = "Contains"
+///       values               = ["health", "account/images", "default.aspx"]
 ///       }, {
-///       "exceptionManagedRuleSets" = [{
-///         "ruleGroups" = [{
-///           "ruleGroupName" = "REQUEST-932-APPLICATION-ATTACK-RCE"
+///       exception_managed_rule_sets = [{
+///         rule_groups = [{
+///           rule_group_name = "REQUEST-932-APPLICATION-ATTACK-RCE"
 ///         }]
-///         "ruleSetType"    = "OWASP"
-///         "ruleSetVersion" = "3.2"
+///         rule_set_type    = "OWASP"
+///         rule_set_version = "3.2"
 ///       }]
-///       "matchVariable"         = "RequestHeader"
-///       "selector"              = "User-Agent"
-///       "selectorMatchOperator" = "StartsWith"
-///       "valueMatchOperator"    = "Contains"
-///       "values"                = ["Mozilla/5.0", "Chrome/122.0.0.0"]
+///       match_variable          = "RequestHeader"
+///       selector                = "User-Agent"
+///       selector_match_operator = "StartsWith"
+///       value_match_operator    = "Contains"
+///       values                  = ["Mozilla/5.0", "Chrome/122.0.0.0"]
 ///       }, {
-///       "exceptionManagedRuleSets" = [{
-///         "ruleGroups" = [{
-///           "ruleGroupName" = "BadBots"
-///           "rules" = [{
-///             "ruleId" = "100100"
+///       exception_managed_rule_sets = [{
+///         rule_groups = [{
+///           rule_group_name = "BadBots"
+///           rules = [{
+///             rule_id = "100100"
 ///           }]
 ///         }]
-///         "ruleSetType"    = "Microsoft_BotManagerRuleSet"
-///         "ruleSetVersion" = "1.0"
+///         rule_set_type    = "Microsoft_BotManagerRuleSet"
+///         rule_set_version = "1.0"
 ///       }]
-///       "matchVariable"      = "RemoteAddr"
-///       "valueMatchOperator" = "IPMatch"
-///       "values"             = ["1.2.3.4", "10.0.0.1/6"]
+///       match_variable       = "RemoteAddr"
+///       value_match_operator = "IPMatch"
+///       values               = ["1.2.3.4", "10.0.0.1/6"]
 ///     }]
 ///     exclusions = [{
-///       "exclusionManagedRuleSets" = [{
-///         "ruleGroups" = [{
-///           "ruleGroupName" = "REQUEST-930-APPLICATION-ATTACK-LFI"
-///           "rules" = [{
-///             "ruleId" = "930120"
+///       exclusion_managed_rule_sets = [{
+///         rule_groups = [{
+///           rule_group_name = "REQUEST-930-APPLICATION-ATTACK-LFI"
+///           rules = [{
+///             rule_id = "930120"
 ///           }]
 ///           }, {
-///           "ruleGroupName" = "REQUEST-932-APPLICATION-ATTACK-RCE"
+///           rule_group_name = "REQUEST-932-APPLICATION-ATTACK-RCE"
 ///         }]
-///         "ruleSetType"    = "OWASP"
-///         "ruleSetVersion" = "3.2"
+///         rule_set_type    = "OWASP"
+///         rule_set_version = "3.2"
 ///       }]
-///       "matchVariable"         = "RequestArgNames"
-///       "selector"              = "hello"
-///       "selectorMatchOperator" = "StartsWith"
+///       match_variable          = "RequestArgNames"
+///       selector                = "hello"
+///       selector_match_operator = "StartsWith"
 ///       }, {
-///       "exclusionManagedRuleSets" = [{
-///         "ruleGroups"     = []
-///         "ruleSetType"    = "OWASP"
-///         "ruleSetVersion" = "3.1"
+///       exclusion_managed_rule_sets = [{
+///         rule_groups      = []
+///         rule_set_type    = "OWASP"
+///         rule_set_version = "3.1"
 ///       }]
-///       "matchVariable"         = "RequestArgNames"
-///       "selector"              = "hello"
-///       "selectorMatchOperator" = "EndsWith"
+///       match_variable          = "RequestArgNames"
+///       selector                = "hello"
+///       selector_match_operator = "EndsWith"
 ///       }, {
-///       "matchVariable"         = "RequestArgNames"
-///       "selector"              = "test"
-///       "selectorMatchOperator" = "StartsWith"
+///       match_variable          = "RequestArgNames"
+///       selector                = "test"
+///       selector_match_operator = "StartsWith"
 ///       }, {
-///       "matchVariable"         = "RequestArgValues"
-///       "selector"              = "test"
-///       "selectorMatchOperator" = "StartsWith"
+///       match_variable          = "RequestArgValues"
+///       selector                = "test"
+///       selector_match_operator = "StartsWith"
 ///     }]
 ///     managed_rule_sets = [{
-///       "ruleGroupOverrides" = [{
-///         "ruleGroupName" = "REQUEST-931-APPLICATION-ATTACK-RFI"
-///         "rules" = [{
-///           "action" = "Log"
-///           "ruleId" = "931120"
-///           "state"  = "Enabled"
+///       rule_group_overrides = [{
+///         rule_group_name = "REQUEST-931-APPLICATION-ATTACK-RFI"
+///         rules = [{
+///           action  = "Log"
+///           rule_id = "931120"
+///           state   = "Enabled"
 ///           }, {
-///           "action" = "AnomalyScoring"
-///           "ruleId" = "931130"
-///           "state"  = "Disabled"
+///           action  = "AnomalyScoring"
+///           rule_id = "931130"
+///           state   = "Disabled"
 ///         }]
 ///       }]
-///       "ruleSetType"    = "OWASP"
-///       "ruleSetVersion" = "3.2"
+///       rule_set_type    = "OWASP"
+///       rule_set_version = "3.2"
 ///       }, {
-///       "ruleGroupOverrides" = [{
-///         "ruleGroupName" = "UnknownBots"
-///         "rules" = [{
-///           "action" = "JSChallenge"
-///           "ruleId" = "300700"
-///           "state"  = "Enabled"
+///       rule_group_overrides = [{
+///         rule_group_name = "UnknownBots"
+///         rules = [{
+///           action  = "JSChallenge"
+///           rule_id = "300700"
+///           state   = "Enabled"
 ///         }]
 ///       }]
-///       "ruleSetType"    = "Microsoft_BotManagerRuleSet"
-///       "ruleSetVersion" = "1.0"
+///       rule_set_type    = "Microsoft_BotManagerRuleSet"
+///       rule_set_version = "1.0"
 ///       }, {
-///       "ruleGroupOverrides" = [{
-///         "ruleGroupName" = "ExcessiveRequests"
-///         "rules" = [{
-///           "action"      = "Block"
-///           "ruleId"      = "500100"
-///           "sensitivity" = "High"
-///           "state"       = "Enabled"
+///       rule_group_overrides = [{
+///         rule_group_name = "ExcessiveRequests"
+///         rules = [{
+///           action      = "Block"
+///           rule_id     = "500100"
+///           sensitivity = "High"
+///           state       = "Enabled"
 ///         }]
 ///       }]
-///       "ruleSetType"    = "Microsoft_HTTPDDoSRuleSet"
-///       "ruleSetVersion" = "1.0"
+///       rule_set_type    = "Microsoft_HTTPDDoSRuleSet"
+///       rule_set_version = "1.0"
 ///     }]
 ///   }
 ///   policy_name = "Policy1"
@@ -963,14 +966,14 @@ import 'web_application_firewall_policy_args.dart';
 ///     js_challenge_cookie_expiration_in_mins = 100
 ///     log_scrubbing = {
 ///       scrubbing_rules = [{
-///         "matchVariable"         = "RequestArgNames"
-///         "selector"              = "test"
-///         "selectorMatchOperator" = "Equals"
-///         "state"                 = "Enabled"
+///         match_variable          = "RequestArgNames"
+///         selector                = "test"
+///         selector_match_operator = "Equals"
+///         state                   = "Enabled"
 ///         }, {
-///         "matchVariable"         = "RequestIPAddress"
-///         "selectorMatchOperator" = "EqualsAny"
-///         "state"                 = "Enabled"
+///         match_variable          = "RequestIPAddress"
+///         selector_match_operator = "EqualsAny"
+///         state                   = "Enabled"
 ///       }]
 ///       state = "Enabled"
 ///     }
@@ -989,9 +992,22 @@ import 'web_application_firewall_policy_args.dart';
 /// import com.pulumi.azurenative.network.WebApplicationFirewallPolicy;
 /// import com.pulumi.azurenative.network.WebApplicationFirewallPolicyArgs;
 /// import com.pulumi.azurenative.network.inputs.WebApplicationFirewallCustomRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.MatchConditionArgs;
+/// import com.pulumi.azurenative.network.inputs.MatchVariableArgs;
+/// import com.pulumi.azurenative.network.inputs.GroupByUserSessionArgs;
+/// import com.pulumi.azurenative.network.inputs.GroupByVariableArgs;
 /// import com.pulumi.azurenative.network.inputs.ManagedRulesDefinitionArgs;
+/// import com.pulumi.azurenative.network.inputs.ExceptionEntryArgs;
+/// import com.pulumi.azurenative.network.inputs.ExclusionManagedRuleSetArgs;
+/// import com.pulumi.azurenative.network.inputs.ExclusionManagedRuleGroupArgs;
+/// import com.pulumi.azurenative.network.inputs.ExclusionManagedRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.OwaspCrsExclusionEntryArgs;
+/// import com.pulumi.azurenative.network.inputs.ManagedRuleSetArgs;
+/// import com.pulumi.azurenative.network.inputs.ManagedRuleGroupOverrideArgs;
+/// import com.pulumi.azurenative.network.inputs.ManagedRuleOverrideArgs;
 /// import com.pulumi.azurenative.network.inputs.PolicySettingsArgs;
 /// import com.pulumi.azurenative.network.inputs.PolicySettingsLogScrubbingArgs;
+/// import com.pulumi.azurenative.network.inputs.WebApplicationFirewallScrubbingRulesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

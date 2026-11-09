@@ -31,7 +31,7 @@ import 'managed_service_identity_response.dart';
 ///         ResourceGroupName = "oiautorest6685",
 ///         Sku = new AzureNative.OperationalInsights.Inputs.ClusterSkuArgs
 ///         {
-///             Capacity = 1000,
+///             Capacity = 1000.0,
 ///             Name = AzureNative.OperationalInsights.ClusterSkuNameEnum.CapacityReservation,
 ///         },
 ///         Tags =
@@ -77,7 +77,7 @@ import 'managed_service_identity_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -86,6 +86,9 @@ import 'managed_service_identity_response.dart';
 /// }
 ///
 /// resource "azure-native_operationalinsights_cluster" "cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name        = "oiautorest6685"
 ///   location            = "australiasoutheast"
 ///   resource_group_name = "oiautorest6685"

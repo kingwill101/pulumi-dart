@@ -58,7 +58,7 @@ import 'data_collection_rule_association_response_metadata.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'data_collection_rule_association_response_metadata.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_datacollectionruleassociation" "dataCollectionRuleAssociation" {
+/// resource "azure-native_monitor_data_collection_rule_association" "dataCollectionRuleAssociation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   association_name        = "myAssociation"
 ///   data_collection_rule_id = "/subscriptions/703362b3-f278-4e4b-9179-c76eaf41ffc2/resourceGroups/myResourceGroup/providers/Microsoft.Insights/dataCollectionRules/myCollectionRule"
 ///   resource_uri            = "subscriptions/703362b3-f278-4e4b-9179-c76eaf41ffc2/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVm"

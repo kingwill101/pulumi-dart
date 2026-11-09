@@ -22,7 +22,7 @@ import 'system_data_response.dart';
 /// {
 ///     var scriptExecution = new AzureNative.AVS.ScriptExecution("scriptExecution", new()
 ///     {
-///         HiddenParameters = new[]
+///         HiddenParameters =
 ///         {
 ///             new AzureNative.AVS.Inputs.ScriptSecureStringExecutionParameterArgs
 ///             {
@@ -31,7 +31,7 @@ import 'system_data_response.dart';
 ///                 Type = "SecureValue",
 ///             },
 ///         },
-///         Parameters = new[]
+///         Parameters =
 ///         {
 ///             new AzureNative.AVS.Inputs.ScriptStringExecutionParameterArgs
 ///             {
@@ -71,22 +71,22 @@ import 'system_data_response.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := avs.NewScriptExecution(ctx, "scriptExecution", &avs.ScriptExecutionArgs{
 /// 			HiddenParameters: pulumi.Array{
-/// 				avs.ScriptSecureStringExecutionParameter{
-/// 					Name:        "Password",
-/// 					SecureValue: "PlaceholderPassword",
-/// 					Type:        "SecureValue",
+/// 				&avs.ScriptSecureStringExecutionParameterArgs{
+/// 					Name:        pulumi.String("Password"),
+/// 					SecureValue: pulumi.String("PlaceholderPassword"),
+/// 					Type:        pulumi.String("SecureValue"),
 /// 				},
 /// 			},
 /// 			Parameters: pulumi.Array{
-/// 				avs.ScriptStringExecutionParameter{
-/// 					Name:  "DomainName",
-/// 					Type:  "Value",
-/// 					Value: "placeholderDomain.local",
+/// 				&avs.ScriptStringExecutionParameterArgs{
+/// 					Name:  pulumi.String("DomainName"),
+/// 					Type:  pulumi.String("Value"),
+/// 					Value: pulumi.String("placeholderDomain.local"),
 /// 				},
-/// 				avs.ScriptStringExecutionParameter{
-/// 					Name:  "BaseUserDN",
-/// 					Type:  "Value",
-/// 					Value: "DC=placeholder, DC=placeholder",
+/// 				&avs.ScriptStringExecutionParameterArgs{
+/// 					Name:  pulumi.String("BaseUserDN"),
+/// 					Type:  pulumi.String("Value"),
+/// 					Value: pulumi.String("DC=placeholder, DC=placeholder"),
 /// 				},
 /// 			},
 /// 			PrivateCloudName:    pulumi.String("cloud1"),
@@ -106,7 +106,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -114,20 +114,23 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_avs_scriptexecution" "scriptExecution" {
+/// resource "azure-native_avs_script_execution" "scriptExecution" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hidden_parameters = [{
-///     "name"        = "Password"
-///     "secureValue" = "PlaceholderPassword"
-///     "type"        = "SecureValue"
+///     name         = "Password"
+///     secure_value = "PlaceholderPassword"
+///     type         = "SecureValue"
 ///   }]
 ///   parameters = [{
-///     "name"  = "DomainName"
-///     "type"  = "Value"
-///     "value" = "placeholderDomain.local"
+///     name  = "DomainName"
+///     type  = "Value"
+///     value = "placeholderDomain.local"
 ///     }, {
-///     "name"  = "BaseUserDN"
-///     "type"  = "Value"
-///     "value" = "DC=placeholder, DC=placeholder"
+///     name  = "BaseUserDN"
+///     type  = "Value"
+///     value = "DC=placeholder, DC=placeholder"
 ///   }]
 ///   private_cloud_name    = "cloud1"
 ///   resource_group_name   = "group1"
@@ -147,6 +150,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.avs.ScriptExecution;
 /// import com.pulumi.azurenative.avs.ScriptExecutionArgs;
+/// import com.pulumi.azurenative.avs.inputs.PSCredentialExecutionParameterArgs;
+/// import com.pulumi.azurenative.avs.inputs.ScriptSecureStringExecutionParameterArgs;
+/// import com.pulumi.azurenative.avs.inputs.ScriptStringExecutionParameterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -164,17 +170,14 @@ import 'system_data_response.dart';
 ///             .hiddenParameters(ScriptSecureStringExecutionParameterArgs.builder()
 ///                 .name("Password")
 ///                 .secureValue("PlaceholderPassword")
-///                 .type("SecureValue")
 ///                 .build())
 ///             .parameters(
 ///                 ScriptStringExecutionParameterArgs.builder()
 ///                     .name("DomainName")
-///                     .type("Value")
 ///                     .value("placeholderDomain.local")
 ///                     .build(),
 ///                 ScriptStringExecutionParameterArgs.builder()
 ///                     .name("BaseUserDN")
-///                     .type("Value")
 ///                     .value("DC=placeholder, DC=placeholder")
 ///                     .build())
 ///             .privateCloudName("cloud1")

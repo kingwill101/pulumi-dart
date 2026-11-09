@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_synapse_iothubdataconnection" "iotHubDataConnection" {
+/// resource "azure-native_synapse_iot_hub_data_connection" "iotHubDataConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_connection_name = "DataConnections8"
 ///   database_name        = "KustoDatabase8"
 ///   kusto_pool_name      = "kustoclusterrptest4"

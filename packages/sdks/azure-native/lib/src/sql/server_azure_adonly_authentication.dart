@@ -58,7 +58,7 @@ import 'server_azure_adonly_authentication_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'server_azure_adonly_authentication_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_serverazureadonlyauthentication" "serverAzureADOnlyAuthentication" {
+/// resource "azure-native_sql_server_azure_a_d_only_authentication" "serverAzureADOnlyAuthentication" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authentication_name          = "Default"
 ///   azure_ad_only_authentication = false
 ///   resource_group_name          = "sqlcrudtest-4799"

@@ -76,7 +76,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -84,7 +84,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_connectedenvironmentsstorage" "connectedEnvironmentsStorage" {
+/// resource "azure-native_app_connected_environments_storage" "connectedEnvironmentsStorage" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connected_environment_name = "env"
 ///   properties = {
 ///     azure_file = {

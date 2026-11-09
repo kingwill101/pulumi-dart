@@ -84,7 +84,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -92,7 +92,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridcompute_licenseprofile" "licenseProfile" {
+/// resource "azure-native_hybridcompute_license_profile" "licenseProfile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assigned_license     = "{LicenseResourceId}"
 ///   license_profile_name = "default"
 ///   location             = "eastus2euap"

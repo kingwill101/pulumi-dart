@@ -57,7 +57,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_digitaltwins_digitaltwin" "digitalTwin" {
+/// resource "azure-native_digitaltwins_digital_twin" "digitalTwin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "WestUS2"
 ///   resource_group_name = "resRg"
 ///   resource_name       = "myDigitalTwinsService"
@@ -189,7 +192,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -197,7 +200,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_digitaltwins_digitaltwin" "digitalTwin" {
+/// resource "azure-native_digitaltwins_digital_twin" "digitalTwin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "WestUS2"
 ///   public_network_access = "Enabled"
 ///   resource_group_name   = "resRg"

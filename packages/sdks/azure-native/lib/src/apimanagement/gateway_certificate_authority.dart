@@ -60,7 +60,7 @@ import 'gateway_certificate_authority_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'gateway_certificate_authority_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_gatewaycertificateauthority" "gatewayCertificateAuthority" {
+/// resource "azure-native_apimanagement_gateway_certificate_authority" "gatewayCertificateAuthority" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_id      = "cert1"
 ///   gateway_id          = "gw1"
 ///   is_trusted          = false

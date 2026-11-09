@@ -86,7 +86,7 @@ import 'table_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -95,12 +95,15 @@ import 'table_args.dart';
 /// }
 ///
 /// resource "azure-native_operationalinsights_table" "table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "oiautorest6685"
 ///   retention_in_days   = 45
 ///   schema = {
 ///     columns = [{
-///       "name" = "MyNewColumn"
-///       "type" = "guid"
+///       name = "MyNewColumn"
+///       type = "guid"
 ///     }]
 ///     name = "AzureNetworkFlow"
 ///   }
@@ -120,6 +123,7 @@ import 'table_args.dart';
 /// import com.pulumi.azurenative.operationalinsights.Table;
 /// import com.pulumi.azurenative.operationalinsights.TableArgs;
 /// import com.pulumi.azurenative.operationalinsights.inputs.SchemaArgs;
+/// import com.pulumi.azurenative.operationalinsights.inputs.ColumnArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

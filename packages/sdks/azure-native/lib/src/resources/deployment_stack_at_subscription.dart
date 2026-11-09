@@ -117,7 +117,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -125,7 +125,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_resources_deploymentstackatsubscription" "deploymentStackAtSubscription" {
+/// resource "azure-native_resources_deployment_stack_at_subscription" "deploymentStackAtSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   action_on_unmanage = {
 ///     management_groups = "detach"
 ///     resource_groups   = "delete"
@@ -161,6 +164,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.resources.DeploymentStackAtSubscriptionArgs;
 /// import com.pulumi.azurenative.resources.inputs.ActionOnUnmanageArgs;
 /// import com.pulumi.azurenative.resources.inputs.DenySettingsArgs;
+/// import com.pulumi.azurenative.resources.inputs.DeploymentParameterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

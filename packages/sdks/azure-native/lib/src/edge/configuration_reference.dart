@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_edge_configurationreference" "configurationReference" {
+/// resource "azure-native_edge_configuration_reference" "configurationReference" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_reference_name = "default"
 ///   properties = {
 ///     configuration_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgconfigurations/providers/Microsoft.Edge/configurations/aConfiguration"

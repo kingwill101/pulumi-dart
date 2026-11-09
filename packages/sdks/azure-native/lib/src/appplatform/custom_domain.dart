@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,7 +77,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_appplatform_customdomain" "customDomain" {
+/// resource "azure-native_appplatform_custom_domain" "customDomain" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_name    = "myapp"
 ///   domain_name = "mydomain.com"
 ///   properties = {

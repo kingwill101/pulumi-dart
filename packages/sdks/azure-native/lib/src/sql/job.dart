@@ -76,7 +76,7 @@ import 'job_schedule_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -85,6 +85,9 @@ import 'job_schedule_response.dart';
 /// }
 ///
 /// resource "azure-native_sql_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description         = "my favourite job"
 ///   job_agent_name      = "agent1"
 ///   job_name            = "job1"
@@ -253,7 +256,7 @@ import 'job_schedule_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -262,6 +265,9 @@ import 'job_schedule_response.dart';
 /// }
 ///
 /// resource "azure-native_sql_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   job_agent_name      = "agent1"
 ///   job_name            = "job1"
 ///   resource_group_name = "group1"

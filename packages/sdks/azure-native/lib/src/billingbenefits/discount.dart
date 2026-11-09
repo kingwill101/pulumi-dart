@@ -84,7 +84,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -93,14 +93,17 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_billingbenefits_discount" "discount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   discount_name = "testaffiliatediscount"
 ///   location      = "global"
 ///   properties = {
-///     "displayName" = "Virtual Machines D Series"
-///     "entityType"  = "Affiliate"
-///     "productCode" = "0001d726-0000-0160-330f-a0b98cdbbdc4"
-///     "startAt"     = "2023-07-01T00:00:00Z"
-///     "systemId"    = "13810867107109237"
+///     display_name = "Virtual Machines D Series"
+///     entity_type  = "Affiliate"
+///     product_code = "0001d726-0000-0160-330f-a0b98cdbbdc4"
+///     start_at     = "2023-07-01T00:00:00Z"
+///     system_id    = "13810867107109237"
 ///   }
 ///   resource_group_name = "testrg"
 ///   tags = {
@@ -119,6 +122,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.billingbenefits.Discount;
 /// import com.pulumi.azurenative.billingbenefits.DiscountArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.EntityTypeAffiliateDiscountArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.EntityTypePrimaryDiscountArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -137,7 +142,6 @@ import 'system_data_response.dart';
 ///             .location("global")
 ///             .properties(EntityTypeAffiliateDiscountArgs.builder()
 ///                 .displayName("Virtual Machines D Series")
-///                 .entityType("Affiliate")
 ///                 .productCode("0001d726-0000-0160-330f-a0b98cdbbdc4")
 ///                 .startAt("2023-07-01T00:00:00Z")
 ///                 .systemId("13810867107109237")
@@ -253,7 +257,7 @@ import 'system_data_response.dart';
 ///                     },
 ///                 },
 ///                 DiscountCombinationRule = AzureNative.BillingBenefits.DiscountCombinationRule.BestOf,
-///                 DiscountPercentage = 14,
+///                 DiscountPercentage = 14.0,
 ///                 DiscountType = "Sku",
 ///                 ProductFamilyName = "Azure",
 ///                 ProductId = "DZH318Z0BQ35",
@@ -293,23 +297,23 @@ import 'system_data_response.dart';
 /// 			Location:     pulumi.String("global"),
 /// 			Properties: &billingbenefits.EntityTypePrimaryDiscountArgs{
 /// 				AppliedScopeType: pulumi.String(billingbenefits.DiscountAppliedScopeTypeBillingAccount),
-/// 				DiscountTypeProperties: billingbenefits.DiscountTypeProductSku{
-/// 					ApplyDiscountOn: billingbenefits.ApplyDiscountOnPurchase,
-/// 					Conditions: []billingbenefits.ConditionsItem{
-/// 						{
-/// 							ConditionName: "Cloud",
-/// 							Type:          "equalAny",
-/// 							Value: []string{
-/// 								"US-Sec",
+/// 				DiscountTypeProperties: &billingbenefits.DiscountTypeProductSkuArgs{
+/// 					ApplyDiscountOn: pulumi.String(billingbenefits.ApplyDiscountOnPurchase),
+/// 					Conditions: billingbenefits.ConditionsItemArray{
+/// 						&billingbenefits.ConditionsItemArgs{
+/// 							ConditionName: pulumi.String("Cloud"),
+/// 							Type:          pulumi.String("equalAny"),
+/// 							Value: pulumi.StringArray{
+/// 								pulumi.String("US-Sec"),
 /// 							},
 /// 						},
 /// 					},
-/// 					DiscountCombinationRule: billingbenefits.DiscountCombinationRuleBestOf,
-/// 					DiscountPercentage:      14,
-/// 					DiscountType:            "Sku",
-/// 					ProductFamilyName:       "Azure",
-/// 					ProductId:               "DZH318Z0BQ35",
-/// 					SkuId:                   "0001",
+/// 					DiscountCombinationRule: pulumi.String(billingbenefits.DiscountCombinationRuleBestOf),
+/// 					DiscountPercentage:      pulumi.Float64(14),
+/// 					DiscountType:            pulumi.String("Sku"),
+/// 					ProductFamilyName:       pulumi.String("Azure"),
+/// 					ProductId:               pulumi.String("DZH318Z0BQ35"),
+/// 					SkuId:                   pulumi.String("0001"),
 /// 				},
 /// 				DisplayName: pulumi.String("Virtual Machines D Series"),
 /// 				EndAt:       pulumi.String("2024-07-01T23:59:59Z"),
@@ -333,7 +337,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -342,29 +346,32 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_billingbenefits_discount" "discount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   discount_name = "testprimarydiscount"
 ///   location      = "global"
 ///   properties = {
-///     "appliedScopeType" = "BillingAccount"
-///     "discountTypeProperties" = {
-///       "applyDiscountOn" = "Purchase"
-///       "conditions" = [{
-///         "conditionName" = "Cloud"
-///         "type"          = "equalAny"
-///         "value"         = ["US-Sec"]
+///     applied_scope_type = "BillingAccount"
+///     discount_type_properties = {
+///       apply_discount_on = "Purchase"
+///       conditions = [{
+///         condition_name = "Cloud"
+///         type           = "equalAny"
+///         value          = ["US-Sec"]
 ///       }]
-///       "discountCombinationRule" = "BestOf"
-///       "discountPercentage"      = 14
-///       "discountType"            = "Sku"
-///       "productFamilyName"       = "Azure"
-///       "productId"               = "DZH318Z0BQ35"
-///       "skuId"                   = "0001"
+///       discount_combination_rule = "BestOf"
+///       discount_percentage       = 14
+///       discount_type             = "Sku"
+///       product_family_name       = "Azure"
+///       product_id                = "DZH318Z0BQ35"
+///       sku_id                    = "0001"
 ///     }
-///     "displayName" = "Virtual Machines D Series"
-///     "endAt"       = "2024-07-01T23:59:59Z"
-///     "entityType"  = "Primary"
-///     "productCode" = "0001d726-0000-0160-330f-a0b98cdbbdc4"
-///     "startAt"     = "2023-07-01T00:00:00Z"
+///     display_name = "Virtual Machines D Series"
+///     end_at       = "2024-07-01T23:59:59Z"
+///     entity_type  = "Primary"
+///     product_code = "0001d726-0000-0160-330f-a0b98cdbbdc4"
+///     start_at     = "2023-07-01T00:00:00Z"
 ///   }
 ///   resource_group_name = "testrg"
 ///   tags = {
@@ -383,6 +390,14 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.billingbenefits.Discount;
 /// import com.pulumi.azurenative.billingbenefits.DiscountArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.EntityTypeAffiliateDiscountArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.EntityTypePrimaryDiscountArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountCustomPriceArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.ConditionsItemArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountCustomPriceMultiCurrencyArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountProductArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountProductFamilyArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountTypeProductSkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -410,14 +425,12 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .discountCombinationRule("BestOf")
 ///                     .discountPercentage(14.0)
-///                     .discountType("Sku")
 ///                     .productFamilyName("Azure")
 ///                     .productId("DZH318Z0BQ35")
 ///                     .skuId("0001")
 ///                     .build())
 ///                 .displayName("Virtual Machines D Series")
 ///                 .endAt("2024-07-01T23:59:59Z")
-///                 .entityType("Primary")
 ///                 .productCode("0001d726-0000-0160-330f-a0b98cdbbdc4")
 ///                 .startAt("2023-07-01T00:00:00Z")
 ///                 .build())
@@ -576,7 +589,7 @@ import 'system_data_response.dart';
 ///                     },
 ///                 },
 ///                 DiscountCombinationRule = AzureNative.BillingBenefits.DiscountCombinationRule.BestOf,
-///                 DiscountPercentage = 14,
+///                 DiscountPercentage = 14.0,
 ///                 DiscountType = "ProductFamily",
 ///                 ProductFamilyName = "Azure",
 ///             },
@@ -615,21 +628,21 @@ import 'system_data_response.dart';
 /// 			Location:     pulumi.String("global"),
 /// 			Properties: &billingbenefits.EntityTypePrimaryDiscountArgs{
 /// 				AppliedScopeType: pulumi.String(billingbenefits.DiscountAppliedScopeTypeBillingAccount),
-/// 				DiscountTypeProperties: billingbenefits.DiscountProductFamily{
-/// 					ApplyDiscountOn: billingbenefits.ApplyDiscountOnPurchase,
-/// 					Conditions: []billingbenefits.ConditionsItem{
-/// 						{
-/// 							ConditionName: "Cloud",
-/// 							Type:          "equalAny",
-/// 							Value: []string{
-/// 								"US-Sec",
+/// 				DiscountTypeProperties: &billingbenefits.DiscountProductFamilyArgs{
+/// 					ApplyDiscountOn: pulumi.String(billingbenefits.ApplyDiscountOnPurchase),
+/// 					Conditions: billingbenefits.ConditionsItemArray{
+/// 						&billingbenefits.ConditionsItemArgs{
+/// 							ConditionName: pulumi.String("Cloud"),
+/// 							Type:          pulumi.String("equalAny"),
+/// 							Value: pulumi.StringArray{
+/// 								pulumi.String("US-Sec"),
 /// 							},
 /// 						},
 /// 					},
-/// 					DiscountCombinationRule: billingbenefits.DiscountCombinationRuleBestOf,
-/// 					DiscountPercentage:      14,
-/// 					DiscountType:            "ProductFamily",
-/// 					ProductFamilyName:       "Azure",
+/// 					DiscountCombinationRule: pulumi.String(billingbenefits.DiscountCombinationRuleBestOf),
+/// 					DiscountPercentage:      pulumi.Float64(14),
+/// 					DiscountType:            pulumi.String("ProductFamily"),
+/// 					ProductFamilyName:       pulumi.String("Azure"),
 /// 				},
 /// 				DisplayName: pulumi.String("Virtual Machines D Series"),
 /// 				EndAt:       pulumi.String("2024-07-01T23:59:59Z"),
@@ -654,7 +667,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -663,28 +676,31 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_billingbenefits_discount" "discount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   discount_name = "testprimarydiscount"
 ///   location      = "global"
 ///   properties = {
-///     "appliedScopeType" = "BillingAccount"
-///     "discountTypeProperties" = {
-///       "applyDiscountOn" = "Purchase"
-///       "conditions" = [{
-///         "conditionName" = "Cloud"
-///         "type"          = "equalAny"
-///         "value"         = ["US-Sec"]
+///     applied_scope_type = "BillingAccount"
+///     discount_type_properties = {
+///       apply_discount_on = "Purchase"
+///       conditions = [{
+///         condition_name = "Cloud"
+///         type           = "equalAny"
+///         value          = ["US-Sec"]
 ///       }]
-///       "discountCombinationRule" = "BestOf"
-///       "discountPercentage"      = 14
-///       "discountType"            = "ProductFamily"
-///       "productFamilyName"       = "Azure"
+///       discount_combination_rule = "BestOf"
+///       discount_percentage       = 14
+///       discount_type             = "ProductFamily"
+///       product_family_name       = "Azure"
 ///     }
-///     "displayName" = "Virtual Machines D Series"
-///     "endAt"       = "2024-07-01T23:59:59Z"
-///     "entityType"  = "Primary"
-///     "productCode" = "0001d726-0000-0160-330f-a0b98cdbbdc4"
-///     "startAt"     = "2023-07-01T00:00:00Z"
-///     "systemId"    = "13810867107109237"
+///     display_name = "Virtual Machines D Series"
+///     end_at       = "2024-07-01T23:59:59Z"
+///     entity_type  = "Primary"
+///     product_code = "0001d726-0000-0160-330f-a0b98cdbbdc4"
+///     start_at     = "2023-07-01T00:00:00Z"
+///     system_id    = "13810867107109237"
 ///   }
 ///   resource_group_name = "testrg"
 ///   tags = {
@@ -703,6 +719,14 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.billingbenefits.Discount;
 /// import com.pulumi.azurenative.billingbenefits.DiscountArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.EntityTypeAffiliateDiscountArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.EntityTypePrimaryDiscountArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountCustomPriceArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.ConditionsItemArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountCustomPriceMultiCurrencyArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountProductArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountProductFamilyArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountTypeProductSkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -730,12 +754,10 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .discountCombinationRule("BestOf")
 ///                     .discountPercentage(14.0)
-///                     .discountType("ProductFamily")
 ///                     .productFamilyName("Azure")
 ///                     .build())
 ///                 .displayName("Virtual Machines D Series")
 ///                 .endAt("2024-07-01T23:59:59Z")
-///                 .entityType("Primary")
 ///                 .productCode("0001d726-0000-0160-330f-a0b98cdbbdc4")
 ///                 .startAt("2023-07-01T00:00:00Z")
 ///                 .systemId("13810867107109237")
@@ -918,7 +940,7 @@ import 'system_data_response.dart';
 ///                     TermUnits = "ASI1251A",
 ///                 },
 ///                 DiscountCombinationRule = AzureNative.BillingBenefits.DiscountCombinationRule.BestOf,
-///                 DiscountPercentage = 14,
+///                 DiscountPercentage = 14.0,
 ///                 DiscountType = "CustomPrice",
 ///                 ProductFamilyName = "Azure",
 ///                 ProductId = "DZH318Z0BQ35",
@@ -958,43 +980,43 @@ import 'system_data_response.dart';
 /// 			Location:     pulumi.String("global"),
 /// 			Properties: &billingbenefits.EntityTypePrimaryDiscountArgs{
 /// 				AppliedScopeType: pulumi.String(billingbenefits.DiscountAppliedScopeTypeBillingAccount),
-/// 				DiscountTypeProperties: billingbenefits.DiscountCustomPrice{
-/// 					ApplyDiscountOn: billingbenefits.ApplyDiscountOnPurchase,
-/// 					Conditions: []billingbenefits.ConditionsItem{
-/// 						{
-/// 							ConditionName: "Cloud",
-/// 							Type:          "equalAny",
-/// 							Value: []string{
-/// 								"US-Sec",
+/// 				DiscountTypeProperties: &billingbenefits.DiscountCustomPriceArgs{
+/// 					ApplyDiscountOn: pulumi.String(billingbenefits.ApplyDiscountOnPurchase),
+/// 					Conditions: billingbenefits.ConditionsItemArray{
+/// 						&billingbenefits.ConditionsItemArgs{
+/// 							ConditionName: pulumi.String("Cloud"),
+/// 							Type:          pulumi.String("equalAny"),
+/// 							Value: pulumi.StringArray{
+/// 								pulumi.String("US-Sec"),
 /// 							},
 /// 						},
 /// 					},
-/// 					CustomPriceProperties: billingbenefits.CustomPriceProperties{
-/// 						CatalogClaims: []billingbenefits.CatalogClaimsItem{
-/// 							{
-/// 								CatalogClaimsItemType: "NationalCloud",
-/// 								Value:                 "USSec",
+/// 					CustomPriceProperties: &billingbenefits.CustomPricePropertiesArgs{
+/// 						CatalogClaims: billingbenefits.CatalogClaimsItemArray{
+/// 							&billingbenefits.CatalogClaimsItemArgs{
+/// 								CatalogClaimsItemType: pulumi.String("NationalCloud"),
+/// 								Value:                 pulumi.String("USSec"),
 /// 							},
 /// 						},
-/// 						CatalogId: "4",
-/// 						MarketSetPrices: []billingbenefits.MarketSetPricesItems{
-/// 							{
-/// 								Currency: "USD",
-/// 								Markets: []string{
-/// 									"US",
+/// 						CatalogId: pulumi.String("4"),
+/// 						MarketSetPrices: billingbenefits.MarketSetPricesItemsArray{
+/// 							&billingbenefits.MarketSetPricesItemsArgs{
+/// 								Currency: pulumi.String("USD"),
+/// 								Markets: pulumi.StringArray{
+/// 									pulumi.String("US"),
 /// 								},
-/// 								Value: 125.16,
+/// 								Value: pulumi.Float64(125.16),
 /// 							},
 /// 						},
-/// 						RuleType:  billingbenefits.DiscountRuleTypeFixedPriceLock,
-/// 						TermUnits: "ASI1251A",
+/// 						RuleType:  pulumi.String(billingbenefits.DiscountRuleTypeFixedPriceLock),
+/// 						TermUnits: pulumi.String("ASI1251A"),
 /// 					},
-/// 					DiscountCombinationRule: billingbenefits.DiscountCombinationRuleBestOf,
-/// 					DiscountPercentage:      14,
-/// 					DiscountType:            "CustomPrice",
-/// 					ProductFamilyName:       "Azure",
-/// 					ProductId:               "DZH318Z0BQ35",
-/// 					SkuId:                   "0001",
+/// 					DiscountCombinationRule: pulumi.String(billingbenefits.DiscountCombinationRuleBestOf),
+/// 					DiscountPercentage:      pulumi.Float64(14),
+/// 					DiscountType:            pulumi.String("CustomPrice"),
+/// 					ProductFamilyName:       pulumi.String("Azure"),
+/// 					ProductId:               pulumi.String("DZH318Z0BQ35"),
+/// 					SkuId:                   pulumi.String("0001"),
 /// 				},
 /// 				DisplayName: pulumi.String("Virtual Machines D Series"),
 /// 				EndAt:       pulumi.String("2024-07-01T23:59:59Z"),
@@ -1018,7 +1040,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1027,43 +1049,46 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_billingbenefits_discount" "discount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   discount_name = "testprimarydiscount"
 ///   location      = "global"
 ///   properties = {
-///     "appliedScopeType" = "BillingAccount"
-///     "discountTypeProperties" = {
-///       "applyDiscountOn" = "Purchase"
-///       "conditions" = [{
-///         "conditionName" = "Cloud"
-///         "type"          = "equalAny"
-///         "value"         = ["US-Sec"]
+///     applied_scope_type = "BillingAccount"
+///     discount_type_properties = {
+///       apply_discount_on = "Purchase"
+///       conditions = [{
+///         condition_name = "Cloud"
+///         type           = "equalAny"
+///         value          = ["US-Sec"]
 ///       }]
-///       "customPriceProperties" = {
-///         "catalogClaims" = [{
-///           "catalogClaimsItemType" = "NationalCloud"
-///           "value"                 = "USSec"
+///       custom_price_properties = {
+///         catalog_claims = [{
+///           catalog_claims_item_type = "NationalCloud"
+///           value                    = "USSec"
 ///         }]
-///         "catalogId" = "4"
-///         "marketSetPrices" = [{
-///           "currency" = "USD"
-///           "markets"  = ["US"]
-///           "value"    = 125.16
+///         catalog_id = "4"
+///         market_set_prices = [{
+///           currency = "USD"
+///           markets  = ["US"]
+///           value    = 125.16
 ///         }]
-///         "ruleType"  = "FixedPriceLock"
-///         "termUnits" = "ASI1251A"
+///         rule_type  = "FixedPriceLock"
+///         term_units = "ASI1251A"
 ///       }
-///       "discountCombinationRule" = "BestOf"
-///       "discountPercentage"      = 14
-///       "discountType"            = "CustomPrice"
-///       "productFamilyName"       = "Azure"
-///       "productId"               = "DZH318Z0BQ35"
-///       "skuId"                   = "0001"
+///       discount_combination_rule = "BestOf"
+///       discount_percentage       = 14
+///       discount_type             = "CustomPrice"
+///       product_family_name       = "Azure"
+///       product_id                = "DZH318Z0BQ35"
+///       sku_id                    = "0001"
 ///     }
-///     "displayName" = "Virtual Machines D Series"
-///     "endAt"       = "2024-07-01T23:59:59Z"
-///     "entityType"  = "Primary"
-///     "productCode" = "0001d726-0000-0160-330f-a0b98cdbbdc4"
-///     "startAt"     = "2023-07-01T00:00:00Z"
+///     display_name = "Virtual Machines D Series"
+///     end_at       = "2024-07-01T23:59:59Z"
+///     entity_type  = "Primary"
+///     product_code = "0001d726-0000-0160-330f-a0b98cdbbdc4"
+///     start_at     = "2023-07-01T00:00:00Z"
 ///   }
 ///   resource_group_name = "testrg"
 ///   tags = {
@@ -1082,6 +1107,17 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.billingbenefits.Discount;
 /// import com.pulumi.azurenative.billingbenefits.DiscountArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.EntityTypeAffiliateDiscountArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.EntityTypePrimaryDiscountArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountCustomPriceArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.ConditionsItemArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.CustomPricePropertiesArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.CatalogClaimsItemArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.MarketSetPricesItemsArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountCustomPriceMultiCurrencyArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountProductArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountProductFamilyArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountTypeProductSkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1123,14 +1159,12 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .discountCombinationRule("BestOf")
 ///                     .discountPercentage(14.0)
-///                     .discountType("CustomPrice")
 ///                     .productFamilyName("Azure")
 ///                     .productId("DZH318Z0BQ35")
 ///                     .skuId("0001")
 ///                     .build())
 ///                 .displayName("Virtual Machines D Series")
 ///                 .endAt("2024-07-01T23:59:59Z")
-///                 .entityType("Primary")
 ///                 .productCode("0001d726-0000-0160-330f-a0b98cdbbdc4")
 ///                 .startAt("2023-07-01T00:00:00Z")
 ///                 .build())
@@ -1364,7 +1398,7 @@ import 'system_data_response.dart';
 ///                     TermUnits = "ASI1251A",
 ///                 },
 ///                 DiscountCombinationRule = AzureNative.BillingBenefits.DiscountCombinationRule.BestOf,
-///                 DiscountPercentage = 14,
+///                 DiscountPercentage = 14.0,
 ///                 DiscountType = "CustomPriceMultiCurrency",
 ///                 ProductFamilyName = "Azure",
 ///                 ProductId = "DZH318Z0BQ35",
@@ -1404,50 +1438,50 @@ import 'system_data_response.dart';
 /// 			Location:     pulumi.String("global"),
 /// 			Properties: &billingbenefits.EntityTypePrimaryDiscountArgs{
 /// 				AppliedScopeType: pulumi.String(billingbenefits.DiscountAppliedScopeTypeBillingAccount),
-/// 				DiscountTypeProperties: billingbenefits.DiscountCustomPriceMultiCurrency{
-/// 					ApplyDiscountOn: billingbenefits.ApplyDiscountOnPurchase,
-/// 					Conditions: []billingbenefits.ConditionsItem{
-/// 						{
-/// 							ConditionName: "Cloud",
-/// 							Type:          "equalAny",
-/// 							Value: []string{
-/// 								"US-Sec",
+/// 				DiscountTypeProperties: &billingbenefits.DiscountCustomPriceMultiCurrencyArgs{
+/// 					ApplyDiscountOn: pulumi.String(billingbenefits.ApplyDiscountOnPurchase),
+/// 					Conditions: billingbenefits.ConditionsItemArray{
+/// 						&billingbenefits.ConditionsItemArgs{
+/// 							ConditionName: pulumi.String("Cloud"),
+/// 							Type:          pulumi.String("equalAny"),
+/// 							Value: pulumi.StringArray{
+/// 								pulumi.String("US-Sec"),
 /// 							},
 /// 						},
 /// 					},
-/// 					CustomPriceProperties: billingbenefits.CustomPriceProperties{
-/// 						CatalogClaims: []billingbenefits.CatalogClaimsItem{
-/// 							{
-/// 								CatalogClaimsItemType: "NationalCloud",
-/// 								Value:                 "USSec",
+/// 					CustomPriceProperties: &billingbenefits.CustomPricePropertiesArgs{
+/// 						CatalogClaims: billingbenefits.CatalogClaimsItemArray{
+/// 							&billingbenefits.CatalogClaimsItemArgs{
+/// 								CatalogClaimsItemType: pulumi.String("NationalCloud"),
+/// 								Value:                 pulumi.String("USSec"),
 /// 							},
 /// 						},
-/// 						CatalogId: "4",
-/// 						MarketSetPrices: []billingbenefits.MarketSetPricesItems{
-/// 							{
-/// 								Currency: "USD",
-/// 								Markets: []string{
-/// 									"US",
+/// 						CatalogId: pulumi.String("4"),
+/// 						MarketSetPrices: billingbenefits.MarketSetPricesItemsArray{
+/// 							&billingbenefits.MarketSetPricesItemsArgs{
+/// 								Currency: pulumi.String("USD"),
+/// 								Markets: pulumi.StringArray{
+/// 									pulumi.String("US"),
 /// 								},
-/// 								Value: 125.16,
+/// 								Value: pulumi.Float64(125.16),
 /// 							},
-/// 							{
-/// 								Currency: "EUR",
-/// 								Markets: []string{
-/// 									"FR",
+/// 							&billingbenefits.MarketSetPricesItemsArgs{
+/// 								Currency: pulumi.String("EUR"),
+/// 								Markets: pulumi.StringArray{
+/// 									pulumi.String("FR"),
 /// 								},
-/// 								Value: 110.16,
+/// 								Value: pulumi.Float64(110.16),
 /// 							},
 /// 						},
-/// 						RuleType:  billingbenefits.DiscountRuleTypeFixedPriceLock,
-/// 						TermUnits: "ASI1251A",
+/// 						RuleType:  pulumi.String(billingbenefits.DiscountRuleTypeFixedPriceLock),
+/// 						TermUnits: pulumi.String("ASI1251A"),
 /// 					},
-/// 					DiscountCombinationRule: billingbenefits.DiscountCombinationRuleBestOf,
-/// 					DiscountPercentage:      14,
-/// 					DiscountType:            "CustomPriceMultiCurrency",
-/// 					ProductFamilyName:       "Azure",
-/// 					ProductId:               "DZH318Z0BQ35",
-/// 					SkuId:                   "0001",
+/// 					DiscountCombinationRule: pulumi.String(billingbenefits.DiscountCombinationRuleBestOf),
+/// 					DiscountPercentage:      pulumi.Float64(14),
+/// 					DiscountType:            pulumi.String("CustomPriceMultiCurrency"),
+/// 					ProductFamilyName:       pulumi.String("Azure"),
+/// 					ProductId:               pulumi.String("DZH318Z0BQ35"),
+/// 					SkuId:                   pulumi.String("0001"),
 /// 				},
 /// 				DisplayName: pulumi.String("Virtual Machines D Series"),
 /// 				EndAt:       pulumi.String("2024-07-01T23:59:59Z"),
@@ -1471,7 +1505,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1480,47 +1514,50 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_billingbenefits_discount" "discount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   discount_name = "testprimarydiscount"
 ///   location      = "global"
 ///   properties = {
-///     "appliedScopeType" = "BillingAccount"
-///     "discountTypeProperties" = {
-///       "applyDiscountOn" = "Purchase"
-///       "conditions" = [{
-///         "conditionName" = "Cloud"
-///         "type"          = "equalAny"
-///         "value"         = ["US-Sec"]
+///     applied_scope_type = "BillingAccount"
+///     discount_type_properties = {
+///       apply_discount_on = "Purchase"
+///       conditions = [{
+///         condition_name = "Cloud"
+///         type           = "equalAny"
+///         value          = ["US-Sec"]
 ///       }]
-///       "customPriceProperties" = {
-///         "catalogClaims" = [{
-///           "catalogClaimsItemType" = "NationalCloud"
-///           "value"                 = "USSec"
+///       custom_price_properties = {
+///         catalog_claims = [{
+///           catalog_claims_item_type = "NationalCloud"
+///           value                    = "USSec"
 ///         }]
-///         "catalogId" = "4"
-///         "marketSetPrices" = [{
-///           "currency" = "USD"
-///           "markets"  = ["US"]
-///           "value"    = 125.16
+///         catalog_id = "4"
+///         market_set_prices = [{
+///           currency = "USD"
+///           markets  = ["US"]
+///           value    = 125.16
 ///           }, {
-///           "currency" = "EUR"
-///           "markets"  = ["FR"]
-///           "value"    = 110.16
+///           currency = "EUR"
+///           markets  = ["FR"]
+///           value    = 110.16
 ///         }]
-///         "ruleType"  = "FixedPriceLock"
-///         "termUnits" = "ASI1251A"
+///         rule_type  = "FixedPriceLock"
+///         term_units = "ASI1251A"
 ///       }
-///       "discountCombinationRule" = "BestOf"
-///       "discountPercentage"      = 14
-///       "discountType"            = "CustomPriceMultiCurrency"
-///       "productFamilyName"       = "Azure"
-///       "productId"               = "DZH318Z0BQ35"
-///       "skuId"                   = "0001"
+///       discount_combination_rule = "BestOf"
+///       discount_percentage       = 14
+///       discount_type             = "CustomPriceMultiCurrency"
+///       product_family_name       = "Azure"
+///       product_id                = "DZH318Z0BQ35"
+///       sku_id                    = "0001"
 ///     }
-///     "displayName" = "Virtual Machines D Series"
-///     "endAt"       = "2024-07-01T23:59:59Z"
-///     "entityType"  = "Primary"
-///     "productCode" = "0001d726-0000-0160-330f-a0b98cdbbdc4"
-///     "startAt"     = "2023-07-01T00:00:00Z"
+///     display_name = "Virtual Machines D Series"
+///     end_at       = "2024-07-01T23:59:59Z"
+///     entity_type  = "Primary"
+///     product_code = "0001d726-0000-0160-330f-a0b98cdbbdc4"
+///     start_at     = "2023-07-01T00:00:00Z"
 ///   }
 ///   resource_group_name = "testrg"
 ///   tags = {
@@ -1539,6 +1576,17 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.billingbenefits.Discount;
 /// import com.pulumi.azurenative.billingbenefits.DiscountArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.EntityTypeAffiliateDiscountArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.EntityTypePrimaryDiscountArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountCustomPriceArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.ConditionsItemArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.CustomPricePropertiesArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.CatalogClaimsItemArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.MarketSetPricesItemsArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountCustomPriceMultiCurrencyArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountProductArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountProductFamilyArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountTypeProductSkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1586,14 +1634,12 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .discountCombinationRule("BestOf")
 ///                     .discountPercentage(14.0)
-///                     .discountType("CustomPriceMultiCurrency")
 ///                     .productFamilyName("Azure")
 ///                     .productId("DZH318Z0BQ35")
 ///                     .skuId("0001")
 ///                     .build())
 ///                 .displayName("Virtual Machines D Series")
 ///                 .endAt("2024-07-01T23:59:59Z")
-///                 .entityType("Primary")
 ///                 .productCode("0001d726-0000-0160-330f-a0b98cdbbdc4")
 ///                 .startAt("2023-07-01T00:00:00Z")
 ///                 .build())
@@ -1854,26 +1900,26 @@ import 'system_data_response.dart';
 /// 			Location:     pulumi.String("global"),
 /// 			Properties: &billingbenefits.EntityTypePrimaryDiscountArgs{
 /// 				AppliedScopeType: pulumi.String(billingbenefits.DiscountAppliedScopeTypeBillingAccount),
-/// 				DiscountTypeProperties: billingbenefits.DiscountTypeProductSku{
-/// 					ApplyDiscountOn: billingbenefits.ApplyDiscountOnPurchase,
-/// 					Conditions: []billingbenefits.ConditionsItem{
-/// 						{
-/// 							ConditionName: "Cloud",
-/// 							Type:          "equalAny",
-/// 							Value: []string{
-/// 								"US-Sec",
+/// 				DiscountTypeProperties: &billingbenefits.DiscountTypeProductSkuArgs{
+/// 					ApplyDiscountOn: pulumi.String(billingbenefits.ApplyDiscountOnPurchase),
+/// 					Conditions: billingbenefits.ConditionsItemArray{
+/// 						&billingbenefits.ConditionsItemArgs{
+/// 							ConditionName: pulumi.String("Cloud"),
+/// 							Type:          pulumi.String("equalAny"),
+/// 							Value: pulumi.StringArray{
+/// 								pulumi.String("US-Sec"),
 /// 							},
 /// 						},
 /// 					},
-/// 					DiscountCombinationRule: billingbenefits.DiscountCombinationRuleBestOf,
-/// 					DiscountType:            "Sku",
-/// 					PriceGuaranteeProperties: billingbenefits.PriceGuaranteeProperties{
-/// 						PriceGuaranteeDate: "2024-11-01T00:00:00",
-/// 						PricingPolicy:      billingbenefits.PricingPolicyProtected,
+/// 					DiscountCombinationRule: pulumi.String(billingbenefits.DiscountCombinationRuleBestOf),
+/// 					DiscountType:            pulumi.String("Sku"),
+/// 					PriceGuaranteeProperties: &billingbenefits.PriceGuaranteePropertiesArgs{
+/// 						PriceGuaranteeDate: pulumi.String("2024-11-01T00:00:00"),
+/// 						PricingPolicy:      pulumi.String(billingbenefits.PricingPolicyProtected),
 /// 					},
-/// 					ProductFamilyName: "Azure",
-/// 					ProductId:         "DZH318Z0BQ35",
-/// 					SkuId:             "0001",
+/// 					ProductFamilyName: pulumi.String("Azure"),
+/// 					ProductId:         pulumi.String("DZH318Z0BQ35"),
+/// 					SkuId:             pulumi.String("0001"),
 /// 				},
 /// 				DisplayName: pulumi.String("Virtual Machines D Series"),
 /// 				EndAt:       pulumi.String("2024-07-01T23:59:59Z"),
@@ -1897,7 +1943,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1906,32 +1952,35 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_billingbenefits_discount" "discount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   discount_name = "testprimarydiscount"
 ///   location      = "global"
 ///   properties = {
-///     "appliedScopeType" = "BillingAccount"
-///     "discountTypeProperties" = {
-///       "applyDiscountOn" = "Purchase"
-///       "conditions" = [{
-///         "conditionName" = "Cloud"
-///         "type"          = "equalAny"
-///         "value"         = ["US-Sec"]
+///     applied_scope_type = "BillingAccount"
+///     discount_type_properties = {
+///       apply_discount_on = "Purchase"
+///       conditions = [{
+///         condition_name = "Cloud"
+///         type           = "equalAny"
+///         value          = ["US-Sec"]
 ///       }]
-///       "discountCombinationRule" = "BestOf"
-///       "discountType"            = "Sku"
-///       "priceGuaranteeProperties" = {
-///         "priceGuaranteeDate" = "2024-11-01T00:00:00"
-///         "pricingPolicy"      = "Protected"
+///       discount_combination_rule = "BestOf"
+///       discount_type             = "Sku"
+///       price_guarantee_properties = {
+///         price_guarantee_date = "2024-11-01T00:00:00"
+///         pricing_policy       = "Protected"
 ///       }
-///       "productFamilyName" = "Azure"
-///       "productId"         = "DZH318Z0BQ35"
-///       "skuId"             = "0001"
+///       product_family_name = "Azure"
+///       product_id          = "DZH318Z0BQ35"
+///       sku_id              = "0001"
 ///     }
-///     "displayName" = "Virtual Machines D Series"
-///     "endAt"       = "2024-07-01T23:59:59Z"
-///     "entityType"  = "Primary"
-///     "productCode" = "0001d726-0000-0160-330f-a0b98cdbbdc4"
-///     "startAt"     = "2023-07-01T00:00:00Z"
+///     display_name = "Virtual Machines D Series"
+///     end_at       = "2024-07-01T23:59:59Z"
+///     entity_type  = "Primary"
+///     product_code = "0001d726-0000-0160-330f-a0b98cdbbdc4"
+///     start_at     = "2023-07-01T00:00:00Z"
 ///   }
 ///   resource_group_name = "testrg"
 ///   tags = {
@@ -1950,6 +1999,15 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.billingbenefits.Discount;
 /// import com.pulumi.azurenative.billingbenefits.DiscountArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.EntityTypeAffiliateDiscountArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.EntityTypePrimaryDiscountArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountCustomPriceArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.ConditionsItemArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.PriceGuaranteePropertiesArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountCustomPriceMultiCurrencyArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountProductArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountProductFamilyArgs;
+/// import com.pulumi.azurenative.billingbenefits.inputs.DiscountTypeProductSkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1976,7 +2034,6 @@ import 'system_data_response.dart';
 ///                         .value("US-Sec")
 ///                         .build())
 ///                     .discountCombinationRule("BestOf")
-///                     .discountType("Sku")
 ///                     .priceGuaranteeProperties(PriceGuaranteePropertiesArgs.builder()
 ///                         .priceGuaranteeDate("2024-11-01T00:00:00")
 ///                         .pricingPolicy("Protected")
@@ -1987,7 +2044,6 @@ import 'system_data_response.dart';
 ///                     .build())
 ///                 .displayName("Virtual Machines D Series")
 ///                 .endAt("2024-07-01T23:59:59Z")
-///                 .entityType("Primary")
 ///                 .productCode("0001d726-0000-0160-330f-a0b98cdbbdc4")
 ///                 .startAt("2023-07-01T00:00:00Z")
 ///                 .build())

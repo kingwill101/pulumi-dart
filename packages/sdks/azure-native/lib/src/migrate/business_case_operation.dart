@@ -32,7 +32,7 @@ import 'system_data_response.dart';
 ///             AzureArcSettings = new AzureNative.Migrate.Inputs.AzureArcSettingsArgs
 ///             {
 ///                 AzureArcState = AzureNative.Migrate.AzureArcState.Enabled,
-///                 LaborCostPercentage = 70,
+///                 LaborCostPercentage = 70.0,
 ///                 ManagementSettings = new AzureNative.Migrate.Inputs.AzureArcManagementSettingsArgs
 ///                 {
 ///                     MonitoringSettings = new AzureNative.Migrate.Inputs.AzureArcMonitoringSettingsArgs
@@ -44,71 +44,71 @@ import 'system_data_response.dart';
 ///             },
 ///             AzureSettings = new AzureNative.Migrate.Inputs.AzureSettingsArgs
 ///             {
-///                 AvsLaborCostPercentage = 0,
+///                 AvsLaborCostPercentage = 0.0,
 ///                 BusinessCaseType = AzureNative.Migrate.MigrationStrategy.OptimizeForCost,
-///                 ComfortFactor = 29,
+///                 ComfortFactor = 29.0,
 ///                 Currency = AzureNative.Migrate.BusinessCaseCurrency.USD,
-///                 DiscountPercentage = 83,
-///                 IaasLaborCostPercentage = 94,
-///                 InfrastructureGrowthRate = 83,
-///                 NetworkCostPercentage = 40,
-///                 PaasLaborCostPercentage = 47,
+///                 DiscountPercentage = 83.0,
+///                 IaasLaborCostPercentage = 94.0,
+///                 InfrastructureGrowthRate = 83.0,
+///                 NetworkCostPercentage = 40.0,
+///                 PaasLaborCostPercentage = 47.0,
 ///                 PerYearMigrationCompletionPercentage =
 ///                 {
-///                     { "Year0", 20 },
-///                     { "Year1", 30 },
-///                     { "Year2", 60 },
-///                     { "Year3", 90 },
+///                     { "Year0", 20.0 },
+///                     { "Year1", 30.0 },
+///                     { "Year2", 60.0 },
+///                     { "Year3", 90.0 },
 ///                 },
 ///                 PerformanceDataEndTime = "2023-11-08T07:10:07.764Z",
 ///                 PerformanceDataStartTime = "2023-11-08T07:10:07.764Z",
-///                 PerformanceUtilizationPercentile = 4,
+///                 PerformanceUtilizationPercentile = 4.0,
 ///                 SavingsOption = AzureNative.Migrate.SavingsOption.RI3Year,
 ///                 TargetLocation = "WestUs2",
-///                 Wacc = 79,
+///                 Wacc = 79.0,
 ///                 WorkloadDiscoverySource = AzureNative.Migrate.DiscoverySource.Appliance,
 ///             },
 ///             OnPremiseSettings = new AzureNative.Migrate.Inputs.OnPremiseSettingsArgs
 ///             {
 ///                 ComputeSettings = new AzureNative.Migrate.Inputs.ComputeSettingsArgs
 ///                 {
-///                     HyperthreadCoreToMemoryRatio = 12,
-///                     Price = 16,
+///                     HyperthreadCoreToMemoryRatio = 12.0,
+///                     Price = 16.0,
 ///                     RhelLinuxServerLicensing = new AzureNative.Migrate.Inputs.LinuxServerLicensingSettingsArgs
 ///                     {
-///                         LicenseCost = 9,
+///                         LicenseCost = 9.0,
 ///                     },
 ///                     SqlServerLicensing = new[]
 ///                     {
 ///                         new AzureNative.Migrate.Inputs.SqlServerLicensingSettingsArgs
 ///                         {
-///                             LicenseCost = 27,
-///                             SoftwareAssuranceCost = 16,
+///                             LicenseCost = 27.0,
+///                             SoftwareAssuranceCost = 16.0,
 ///                             Version = AzureNative.Migrate.SqlServerLicenseType.Enterprise,
 ///                         },
 ///                     },
 ///                     SuseLinuxServerLicensing = new AzureNative.Migrate.Inputs.LinuxServerLicensingSettingsArgs
 ///                     {
-///                         LicenseCost = 9,
+///                         LicenseCost = 9.0,
 ///                     },
 ///                     VirtualizationSoftwareSettings = new AzureNative.Migrate.Inputs.VirtualizationSoftwareSettingsArgs
 ///                     {
-///                         VMwareCloudFoundationLicenseCost = 7,
+///                         VMwareCloudFoundationLicenseCost = 7.0,
 ///                     },
 ///                     WindowsServerLicensing = new AzureNative.Migrate.Inputs.WindowsServerLicensingSettingsArgs
 ///                     {
-///                         LicenseCost = 9,
+///                         LicenseCost = 9.0,
 ///                         LicensesPerCore = 11,
-///                         SoftwareAssuranceCost = 1,
+///                         SoftwareAssuranceCost = 1.0,
 ///                     },
 ///                 },
 ///                 FacilitySettings = new AzureNative.Migrate.Inputs.FacilitySettingsArgs
 ///                 {
-///                     FacilitiesCostPerKwh = 28,
+///                     FacilitiesCostPerKwh = 28.0,
 ///                 },
 ///                 LaborSettings = new AzureNative.Migrate.Inputs.LaborSettingsArgs
 ///                 {
-///                     HourlyAdminCost = 25,
+///                     HourlyAdminCost = 25.0,
 ///                     PhysicalServersPerAdmin = 6,
 ///                     VirtualMachinesPerAdmin = 24,
 ///                 },
@@ -120,39 +120,39 @@ import 'system_data_response.dart';
 ///                         {
 ///                             new AzureNative.Migrate.Inputs.HypervLicenseArgs
 ///                             {
-///                                 LicenseCost = 4,
+///                                 LicenseCost = 4.0,
 ///                                 LicenseType = AzureNative.Migrate.HyperVLicenseType.Standard,
 ///                             },
 ///                         },
 ///                         NumberOfPhysicalCoresPerLicense = 2,
-///                         SoftwareAssuranceCost = 11,
+///                         SoftwareAssuranceCost = 11.0,
 ///                     },
 ///                     OtherManagementCostsSettings = new AzureNative.Migrate.Inputs.OtherManagementCostsSettingsArgs
 ///                     {
-///                         DataProtectionCostPerServerPerYear = 18,
-///                         MonitoringCostPerServerPerYear = 10,
-///                         PatchingCostPerServerPerYear = 18,
+///                         DataProtectionCostPerServerPerYear = 18.0,
+///                         MonitoringCostPerServerPerYear = 10.0,
+///                         PatchingCostPerServerPerYear = 18.0,
 ///                     },
 ///                     ThirdPartyManagementSettings = new AzureNative.Migrate.Inputs.ThirdPartyManagementSettingsArgs
 ///                     {
-///                         LicenseCost = 23,
-///                         SupportCost = 9,
+///                         LicenseCost = 23.0,
+///                         SupportCost = 9.0,
 ///                     },
 ///                 },
 ///                 NetworkSettings = new AzureNative.Migrate.Inputs.NetworkSettingsArgs
 ///                 {
-///                     HardwareSoftwareCostPercentage = 50,
-///                     MaintenanceCostPercentage = 48,
+///                     HardwareSoftwareCostPercentage = 50.0,
+///                     MaintenanceCostPercentage = 48.0,
 ///                 },
 ///                 SecuritySettings = new AzureNative.Migrate.Inputs.SecuritySettingsArgs
 ///                 {
-///                     ServerSecurityCostPerServerPerYear = 14,
-///                     SqlServerSecurityCostPerServerPerYear = 7,
+///                     ServerSecurityCostPerServerPerYear = 14.0,
+///                     SqlServerSecurityCostPerServerPerYear = 7.0,
 ///                 },
 ///                 StorageSettings = new AzureNative.Migrate.Inputs.StorageSettingsArgs
 ///                 {
-///                     CostPerGbPerMonth = 22,
-///                     MaintainanceCostPercentageToAcquisitionCost = 1,
+///                     CostPerGbPerMonth = 22.0,
+///                     MaintainanceCostPercentageToAcquisitionCost = 1.0,
 ///                 },
 ///             },
 ///         },
@@ -292,7 +292,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -300,7 +300,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_businesscaseoperation" "businessCaseOperation" {
+/// resource "azure-native_migrate_business_case_operation" "businessCaseOperation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   business_case_name  = "sample-business-case"
 ///   project_name        = "multipleto8617project"
 ///   resource_group_name = "rgopenapi"
@@ -347,9 +350,9 @@ import 'system_data_response.dart';
 ///           license_cost = 9
 ///         }
 ///         sql_server_licensing = [{
-///           "licenseCost"           = 27
-///           "softwareAssuranceCost" = 16
-///           "version"               = "Enterprise"
+///           license_cost            = 27
+///           software_assurance_cost = 16
+///           version                 = "Enterprise"
 ///         }]
 ///         suse_linux_server_licensing = {
 ///           license_cost = 9
@@ -374,8 +377,8 @@ import 'system_data_response.dart';
 ///       management_settings = {
 ///         hyperv_virtualization_management_settings = {
 ///           license_and_support_list = [{
-///             "licenseCost" = 4
-///             "licenseType" = "Standard"
+///             license_cost = 4
+///             license_type = "Standard"
 ///           }]
 ///           number_of_physical_cores_per_license = 2
 ///           software_assurance_cost              = 11
@@ -424,12 +427,14 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.migrate.inputs.OnPremiseSettingsArgs;
 /// import com.pulumi.azurenative.migrate.inputs.ComputeSettingsArgs;
 /// import com.pulumi.azurenative.migrate.inputs.LinuxServerLicensingSettingsArgs;
+/// import com.pulumi.azurenative.migrate.inputs.SqlServerLicensingSettingsArgs;
 /// import com.pulumi.azurenative.migrate.inputs.VirtualizationSoftwareSettingsArgs;
 /// import com.pulumi.azurenative.migrate.inputs.WindowsServerLicensingSettingsArgs;
 /// import com.pulumi.azurenative.migrate.inputs.FacilitySettingsArgs;
 /// import com.pulumi.azurenative.migrate.inputs.LaborSettingsArgs;
 /// import com.pulumi.azurenative.migrate.inputs.ManagementSettingsArgs;
 /// import com.pulumi.azurenative.migrate.inputs.HypervVirtualizationManagementSettingsArgs;
+/// import com.pulumi.azurenative.migrate.inputs.HypervLicenseArgs;
 /// import com.pulumi.azurenative.migrate.inputs.OtherManagementCostsSettingsArgs;
 /// import com.pulumi.azurenative.migrate.inputs.ThirdPartyManagementSettingsArgs;
 /// import com.pulumi.azurenative.migrate.inputs.NetworkSettingsArgs;

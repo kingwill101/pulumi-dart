@@ -81,7 +81,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -89,7 +89,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_galleryimage" "galleryImage" {
+/// resource "azure-native_compute_gallery_image" "galleryImage" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   gallery_image_name = "myGalleryImageName"
 ///   gallery_name       = "myGalleryName"
 ///   hyper_v_generation = "V1"

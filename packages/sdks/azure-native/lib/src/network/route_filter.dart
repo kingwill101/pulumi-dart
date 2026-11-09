@@ -90,7 +90,7 @@ import 'route_filter_rule_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -98,7 +98,10 @@ import 'route_filter_rule_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_routefilter" "routeFilter" {
+/// resource "azure-native_network_route_filter" "routeFilter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "West US"
 ///   resource_group_name = "rg1"
 ///   route_filter_name   = "filterName"

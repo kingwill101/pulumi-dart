@@ -92,7 +92,7 @@ import 'user_account_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -101,6 +101,9 @@ import 'user_account_response.dart';
 /// }
 ///
 /// resource "azure-native_batch_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sampleacct"
 ///   deployment_configuration = {
 ///     virtual_machine_configuration = {
@@ -454,7 +457,7 @@ import 'user_account_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -463,19 +466,22 @@ import 'user_account_response.dart';
 /// }
 ///
 /// resource "azure-native_batch_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sampleacct"
 ///   deployment_configuration = {
 ///     virtual_machine_configuration = {
 ///       data_disks = [{
-///         "caching"            = "ReadWrite"
-///         "diskSizeGB"         = 30
-///         "lun"                = 0
-///         "storageAccountType" = "Premium_LRS"
+///         caching              = "ReadWrite"
+///         disk_size_gb         = 30
+///         lun                  = 0
+///         storage_account_type = "Premium_LRS"
 ///         }, {
-///         "caching"            = "None"
-///         "diskSizeGB"         = 200
-///         "lun"                = 1
-///         "storageAccountType" = "Standard_LRS"
+///         caching              = "None"
+///         disk_size_gb         = 200
+///         lun                  = 1
+///         storage_account_type = "Standard_LRS"
 ///       }]
 ///       disk_encryption_configuration = {
 ///         targets = ["OsDisk", "TemporaryDisk"]
@@ -504,22 +510,22 @@ import 'user_account_response.dart';
 ///   network_configuration = {
 ///     endpoint_configuration = {
 ///       inbound_nat_pools = [{
-///         "backendPort"            = 12001
-///         "frontendPortRangeEnd"   = 15100
-///         "frontendPortRangeStart" = 15000
-///         "name"                   = "testnat"
-///         "networkSecurityGroupRules" = [{
-///           "access"              = "Allow"
-///           "priority"            = 150
-///           "sourceAddressPrefix" = "192.100.12.45"
-///           "sourcePortRanges"    = ["1", "2"]
+///         backend_port              = 12001
+///         frontend_port_range_end   = 15100
+///         frontend_port_range_start = 15000
+///         name                      = "testnat"
+///         network_security_group_rules = [{
+///           access                = "Allow"
+///           priority              = 150
+///           source_address_prefix = "192.100.12.45"
+///           source_port_ranges    = ["1", "2"]
 ///           }, {
-///           "access"              = "Deny"
-///           "priority"            = 3500
-///           "sourceAddressPrefix" = "*"
-///           "sourcePortRanges"    = ["*"]
+///           access                = "Deny"
+///           priority              = 3500
+///           source_address_prefix = "*"
+///           source_port_ranges    = ["*"]
 ///         }]
-///         "protocol" = "TCP"
+///         protocol = "TCP"
 ///       }]
 ///     }
 ///   }
@@ -546,6 +552,7 @@ import 'user_account_response.dart';
 /// import com.pulumi.azurenative.batch.PoolArgs;
 /// import com.pulumi.azurenative.batch.inputs.DeploymentConfigurationArgs;
 /// import com.pulumi.azurenative.batch.inputs.VirtualMachineConfigurationArgs;
+/// import com.pulumi.azurenative.batch.inputs.DataDiskArgs;
 /// import com.pulumi.azurenative.batch.inputs.DiskEncryptionConfigurationArgs;
 /// import com.pulumi.azurenative.batch.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.batch.inputs.NodePlacementConfigurationArgs;
@@ -554,6 +561,8 @@ import 'user_account_response.dart';
 /// import com.pulumi.azurenative.batch.inputs.WindowsConfigurationArgs;
 /// import com.pulumi.azurenative.batch.inputs.NetworkConfigurationArgs;
 /// import com.pulumi.azurenative.batch.inputs.PoolEndpointConfigurationArgs;
+/// import com.pulumi.azurenative.batch.inputs.InboundNatPoolArgs;
+/// import com.pulumi.azurenative.batch.inputs.NetworkSecurityGroupRuleArgs;
 /// import com.pulumi.azurenative.batch.inputs.ScaleSettingsArgs;
 /// import com.pulumi.azurenative.batch.inputs.AutoScaleSettingsArgs;
 /// import java.util.ArrayList;
@@ -987,7 +996,7 @@ import 'user_account_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -996,6 +1005,9 @@ import 'user_account_response.dart';
 /// }
 ///
 /// resource "azure-native_batch_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sampleacct"
 ///   deployment_configuration = {
 ///     virtual_machine_configuration = {
@@ -1242,7 +1254,7 @@ import 'user_account_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1251,6 +1263,9 @@ import 'user_account_response.dart';
 /// }
 ///
 /// resource "azure-native_batch_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sampleacct"
 ///   deployment_configuration = {
 ///     virtual_machine_configuration = {
@@ -1489,7 +1504,7 @@ import 'user_account_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1498,6 +1513,9 @@ import 'user_account_response.dart';
 /// }
 ///
 /// resource "azure-native_batch_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sampleacct"
 ///   deployment_configuration = {
 ///     virtual_machine_configuration = {
@@ -1750,7 +1768,7 @@ import 'user_account_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1759,6 +1777,9 @@ import 'user_account_response.dart';
 /// }
 ///
 /// resource "azure-native_batch_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sampleacct"
 ///   deployment_configuration = {
 ///     virtual_machine_configuration = {
@@ -2046,7 +2067,7 @@ import 'user_account_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2055,6 +2076,9 @@ import 'user_account_response.dart';
 /// }
 ///
 /// resource "azure-native_batch_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sampleacct"
 ///   deployment_configuration = {
 ///     virtual_machine_configuration = {
@@ -2342,7 +2366,7 @@ import 'user_account_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2351,6 +2375,9 @@ import 'user_account_response.dart';
 /// }
 ///
 /// resource "azure-native_batch_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sampleacct"
 ///   deployment_configuration = {
 ///     virtual_machine_configuration = {
@@ -2656,7 +2683,7 @@ import 'user_account_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2665,6 +2692,9 @@ import 'user_account_response.dart';
 /// }
 ///
 /// resource "azure-native_batch_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sampleacct"
 ///   deployment_configuration = {
 ///     virtual_machine_configuration = {
@@ -3068,7 +3098,7 @@ import 'user_account_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3077,20 +3107,23 @@ import 'user_account_response.dart';
 /// }
 ///
 /// resource "azure-native_batch_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sampleacct"
 ///   deployment_configuration = {
 ///     virtual_machine_configuration = {
 ///       extensions = [{
-///         "autoUpgradeMinorVersion" = true
-///         "enableAutomaticUpgrade"  = true
-///         "name"                    = "batchextension1"
-///         "publisher"               = "Microsoft.Azure.KeyVault"
-///         "settings" = {
+///         auto_upgrade_minor_version = true
+///         enable_automatic_upgrade   = true
+///         name                       = "batchextension1"
+///         publisher                  = "Microsoft.Azure.KeyVault"
+///         settings = {
 ///           "authenticationSettingsKey"    = "authenticationSettingsValue"
 ///           "secretsManagementSettingsKey" = "secretsManagementSettingsValue"
 ///         }
-///         "type"               = "KeyVaultForLinux"
-///         "typeHandlerVersion" = "2.0"
+///         type                 = "KeyVaultForLinux"
+///         type_handler_version = "2.0"
 ///       }]
 ///       image_reference = {
 ///         offer     = "0001-com-ubuntu-server-focal"
@@ -3124,6 +3157,7 @@ import 'user_account_response.dart';
 /// import com.pulumi.azurenative.batch.PoolArgs;
 /// import com.pulumi.azurenative.batch.inputs.DeploymentConfigurationArgs;
 /// import com.pulumi.azurenative.batch.inputs.VirtualMachineConfigurationArgs;
+/// import com.pulumi.azurenative.batch.inputs.VMExtensionArgs;
 /// import com.pulumi.azurenative.batch.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.batch.inputs.ScaleSettingsArgs;
 /// import com.pulumi.azurenative.batch.inputs.AutoScaleSettingsArgs;
@@ -3403,7 +3437,7 @@ import 'user_account_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3412,6 +3446,9 @@ import 'user_account_response.dart';
 /// }
 ///
 /// resource "azure-native_batch_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sampleacct"
 ///   deployment_configuration = {
 ///     virtual_machine_configuration = {
@@ -3727,7 +3764,7 @@ import 'user_account_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3736,6 +3773,9 @@ import 'user_account_response.dart';
 /// }
 ///
 /// resource "azure-native_batch_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sampleacct"
 ///   deployment_configuration = {
 ///     virtual_machine_configuration = {
@@ -4057,7 +4097,7 @@ import 'user_account_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -4066,6 +4106,9 @@ import 'user_account_response.dart';
 /// }
 ///
 /// resource "azure-native_batch_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sampleacct"
 ///   deployment_configuration = {
 ///     virtual_machine_configuration = {

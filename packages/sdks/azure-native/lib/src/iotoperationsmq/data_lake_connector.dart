@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 ///         },
 ///         Protocol = AzureNative.IoTOperationsMQ.MqttProtocol.V3,
 ///         ResourceGroupName = "rgiotoperationsmq",
-///         Tags = null,
+///         Tags = new() { },
 ///         Target = new AzureNative.IoTOperationsMQ.Inputs.DataLakeTargetStorageArgs
 ///         {
 ///             DatalakeStorage = new AzureNative.IoTOperationsMQ.Inputs.DataLakeServiceStorageArgs
@@ -213,7 +213,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -221,7 +221,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_iotoperationsmq_datalakeconnector" "dataLakeConnector" {
+/// resource "azure-native_iotoperationsmq_data_lake_connector" "dataLakeConnector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_lake_connector_name = "87v4D"
 ///   database_format          = "delta"
 ///   extended_location = {

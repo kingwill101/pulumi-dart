@@ -58,7 +58,7 @@ import 'subnet_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'subnet_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_routetable" "routeTable" {
+/// resource "azure-native_network_route_table" "routeTable" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   resource_group_name = "rg1"
 ///   route_table_name    = "testrt"
@@ -206,7 +209,7 @@ import 'subnet_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -214,7 +217,10 @@ import 'subnet_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_routetable" "routeTable" {
+/// resource "azure-native_network_route_table" "routeTable" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   disable_bgp_route_propagation = true
 ///   location                      = "westus"
 ///   resource_group_name           = "rg1"

@@ -76,7 +76,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -84,7 +84,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_appplatform_containerregistry" "containerRegistry" {
+/// resource "azure-native_appplatform_container_registry" "containerRegistry" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   container_registry_name = "my-container-registry"
 ///   properties = {
 ///     credentials = {
@@ -126,12 +129,11 @@ import 'system_data_response.dart';
 ///         var containerRegistry = new ContainerRegistry("containerRegistry", ContainerRegistryArgs.builder()
 ///             .containerRegistryName("my-container-registry")
 ///             .properties(ContainerRegistryPropertiesArgs.builder()
-///                 .credentials(Map.ofEntries(
-///                     Map.entry("password", "myPassword"),
-///                     Map.entry("server", "myServer"),
-///                     Map.entry("type", "BasicAuth"),
-///                     Map.entry("username", "myUsername")
-///                 ))
+///                 .credentials(ContainerRegistryBasicCredentialsArgs.builder()
+///                     .password("myPassword")
+///                     .server("myServer")
+///                     .username("myUsername")
+///                     .build())
 ///                 .build())
 ///             .resourceGroupName("myResourceGroup")
 ///             .serviceName("my-service")

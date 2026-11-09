@@ -48,7 +48,7 @@ import 'web_pub_sub_hub_properties_response.dart';
 ///                     UserEventPattern = "*",
 ///                 },
 ///             },
-///             EventListeners = new[]
+///             EventListeners =
 ///             {
 ///                 new AzureNative.WebPubSub.Inputs.EventListenerArgs
 ///                 {
@@ -143,7 +143,7 @@ import 'web_pub_sub_hub_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -151,31 +151,34 @@ import 'web_pub_sub_hub_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_webpubsub_webpubsubhub" "webPubSubHub" {
+/// resource "azure-native_webpubsub_web_pub_sub_hub" "webPubSubHub" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hub_name = "exampleHub"
 ///   properties = {
 ///     anonymous_connect_policy = "allow"
 ///     event_handlers = [{
-///       "auth" = {
-///         "managedIdentity" = {
-///           "resource" = "abc"
+///       auth = {
+///         managed_identity = {
+///           resource = "abc"
 ///         }
-///         "type" = "ManagedIdentity"
+///         type = "ManagedIdentity"
 ///       }
-///       "systemEvents"     = ["connect", "connected"]
-///       "urlTemplate"      = "http://host.com"
-///       "userEventPattern" = "*"
+///       system_events      = ["connect", "connected"]
+///       url_template       = "http://host.com"
+///       user_event_pattern = "*"
 ///     }]
 ///     event_listeners = [{
-///       "endpoint" = {
-///         "eventHubName"            = "eventHubName1"
-///         "fullyQualifiedNamespace" = "example.servicebus.windows.net"
-///         "type"                    = "EventHub"
+///       endpoint = {
+///         event_hub_name            = "eventHubName1"
+///         fully_qualified_namespace = "example.servicebus.windows.net"
+///         type                      = "EventHub"
 ///       }
-///       "filter" = {
-///         "systemEvents"     = ["connected", "disconnected"]
-///         "type"             = "EventName"
-///         "userEventPattern" = "*"
+///       filter = {
+///         system_events      = ["connected", "disconnected"]
+///         type               = "EventName"
+///         user_event_pattern = "*"
 ///       }
 ///     }]
 ///     web_socket_keep_alive_interval_in_seconds = 50
@@ -195,6 +198,12 @@ import 'web_pub_sub_hub_properties_response.dart';
 /// import com.pulumi.azurenative.webpubsub.WebPubSubHub;
 /// import com.pulumi.azurenative.webpubsub.WebPubSubHubArgs;
 /// import com.pulumi.azurenative.webpubsub.inputs.WebPubSubHubPropertiesArgs;
+/// import com.pulumi.azurenative.webpubsub.inputs.EventHandlerArgs;
+/// import com.pulumi.azurenative.webpubsub.inputs.UpstreamAuthSettingsArgs;
+/// import com.pulumi.azurenative.webpubsub.inputs.ManagedIdentitySettingsArgs;
+/// import com.pulumi.azurenative.webpubsub.inputs.EventListenerArgs;
+/// import com.pulumi.azurenative.webpubsub.inputs.EventHubEndpointArgs;
+/// import com.pulumi.azurenative.webpubsub.inputs.EventNameFilterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -226,18 +235,16 @@ import 'web_pub_sub_hub_properties_response.dart';
 ///                     .userEventPattern("*")
 ///                     .build())
 ///                 .eventListeners(EventListenerArgs.builder()
-///                     .endpoint(Map.ofEntries(
-///                         Map.entry("eventHubName", "eventHubName1"),
-///                         Map.entry("fullyQualifiedNamespace", "example.servicebus.windows.net"),
-///                         Map.entry("type", "EventHub")
-///                     ))
-///                     .filter(Map.ofEntries(
-///                         Map.entry("systemEvents", Arrays.asList(
+///                     .endpoint(EventHubEndpointArgs.builder()
+///                         .eventHubName("eventHubName1")
+///                         .fullyQualifiedNamespace("example.servicebus.windows.net")
+///                         .build())
+///                     .filter(EventNameFilterArgs.builder()
+///                         .systemEvents(
 ///                             "connected",
-///                             "disconnected")),
-///                         Map.entry("type", "EventName"),
-///                         Map.entry("userEventPattern", "*")
-///                     ))
+///                             "disconnected")
+///                         .userEventPattern("*")
+///                         .build())
 ///                     .build())
 ///                 .webSocketKeepAliveIntervalInSeconds(50)
 ///                 .build())

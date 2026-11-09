@@ -68,7 +68,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,6 +77,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_resourceconnector_appliance" "appliance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   distro = "AKSEdge"
 ///   infrastructure_config = {
 ///     provider = "VMWare"

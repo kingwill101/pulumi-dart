@@ -74,7 +74,7 @@ import 'local_network_gateway_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,7 +82,10 @@ import 'local_network_gateway_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_localnetworkgateway" "localNetworkGateway" {
+/// resource "azure-native_network_local_network_gateway" "localNetworkGateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fqdn               = "site1.contoso.com"
 ///   gateway_ip_address = "11.12.13.14"
 ///   local_network_address_space = {

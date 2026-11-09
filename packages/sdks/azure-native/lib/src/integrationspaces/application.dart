@@ -98,7 +98,7 @@ import 'tracking_data_store_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -107,6 +107,9 @@ import 'tracking_data_store_response.dart';
 /// }
 ///
 /// resource "azure-native_integrationspaces_application" "application" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_name    = "Application1"
 ///   description         = "This is the user provided description of the application."
 ///   location            = "CentralUS"
@@ -141,6 +144,7 @@ import 'tracking_data_store_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.integrationspaces.Application;
 /// import com.pulumi.azurenative.integrationspaces.ApplicationArgs;
+/// import com.pulumi.azurenative.integrationspaces.inputs.TrackingDataStoreArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

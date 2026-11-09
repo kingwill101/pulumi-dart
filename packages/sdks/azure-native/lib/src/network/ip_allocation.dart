@@ -68,7 +68,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_ipallocation" "ipAllocation" {
+/// resource "azure-native_network_ip_allocation" "ipAllocation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocation_tags = {
 ///     "VNetID" = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/HypernetVnet1"
 ///   }

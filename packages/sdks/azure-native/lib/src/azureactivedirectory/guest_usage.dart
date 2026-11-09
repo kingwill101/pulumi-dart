@@ -55,7 +55,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -63,7 +63,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azureactivedirectory_guestusage" "guestUsage" {
+/// resource "azure-native_azureactivedirectory_guest_usage" "guestUsage" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "contosoResourceGroup"
 ///   resource_name       = "contoso.onmicrosoft.com"
 /// }

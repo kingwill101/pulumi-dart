@@ -70,7 +70,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,7 +78,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cloudngfw_fqdnlistlocalrulestack" "fqdnListLocalRulestack" {
+/// resource "azure-native_cloudngfw_fqdn_list_local_rulestack" "fqdnListLocalRulestack" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   audit_comment        = "string"
 ///   description          = "string"
 ///   fqdn_list            = ["string1", "string2"]
@@ -234,7 +237,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -242,7 +245,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cloudngfw_fqdnlistlocalrulestack" "fqdnListLocalRulestack" {
+/// resource "azure-native_cloudngfw_fqdn_list_local_rulestack" "fqdnListLocalRulestack" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fqdn_list            = ["string1", "string2"]
 ///   local_rulestack_name = "lrs1"
 ///   name                 = "armid1"

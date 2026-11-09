@@ -58,7 +58,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,6 +67,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_containerstorage_snapshot" "snapshot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   pool_name           = "test-pool"
 ///   resource_group_name = "test-rg"
 ///   snapshot_name       = "test-snapshot"

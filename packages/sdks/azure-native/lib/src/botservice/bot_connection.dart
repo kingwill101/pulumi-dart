@@ -97,7 +97,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -105,18 +105,21 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_botservice_botconnection" "botConnection" {
+/// resource "azure-native_botservice_bot_connection" "botConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_name = "sampleConnection"
 ///   location        = "West US"
 ///   properties = {
 ///     client_id     = "sampleclientid"
 ///     client_secret = "samplesecret"
 ///     parameters = [{
-///       "key"   = "key1"
-///       "value" = "value1"
+///       key   = "key1"
+///       value = "value1"
 ///       }, {
-///       "key"   = "key2"
-///       "value" = "value2"
+///       key   = "key2"
+///       value = "value2"
 ///     }]
 ///     scopes              = "samplescope"
 ///     service_provider_id = "serviceproviderid"
@@ -136,6 +139,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.botservice.BotConnection;
 /// import com.pulumi.azurenative.botservice.BotConnectionArgs;
 /// import com.pulumi.azurenative.botservice.inputs.ConnectionSettingPropertiesArgs;
+/// import com.pulumi.azurenative.botservice.inputs.ConnectionSettingParameterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

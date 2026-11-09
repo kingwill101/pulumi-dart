@@ -60,7 +60,7 @@ import 'geo_backup_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'geo_backup_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_geobackuppolicy" "geoBackupPolicy" {
+/// resource "azure-native_sql_geo_backup_policy" "geoBackupPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name          = "testdw"
 ///   geo_backup_policy_name = "Default"
 ///   resource_group_name    = "sqlcrudtest-4799"

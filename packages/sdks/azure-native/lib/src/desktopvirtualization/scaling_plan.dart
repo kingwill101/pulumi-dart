@@ -180,7 +180,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -188,7 +188,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_desktopvirtualization_scalingplan" "scalingPlan" {
+/// resource "azure-native_desktopvirtualization_scaling_plan" "scalingPlan" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description   = "Description of Scaling Plan"
 ///   exclusion_tag = "value"
 ///   friendly_name = "Scaling Plan 1"

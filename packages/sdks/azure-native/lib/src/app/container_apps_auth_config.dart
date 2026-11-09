@@ -105,7 +105,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -113,7 +113,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_containerappsauthconfig" "containerAppsAuthConfig" {
+/// resource "azure-native_app_container_apps_auth_config" "containerAppsAuthConfig" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auth_config_name   = "current"
 ///   container_app_name = "testcanadacentral"
 ///   encryption_settings = {
@@ -386,7 +389,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -394,7 +397,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_containerappsauthconfig" "containerAppsAuthConfig" {
+/// resource "azure-native_app_container_apps_auth_config" "containerAppsAuthConfig" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auth_config_name   = "current"
 ///   container_app_name = "myapp"
 ///   encryption_settings = {
@@ -707,7 +713,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -715,7 +721,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_containerappsauthconfig" "containerAppsAuthConfig" {
+/// resource "azure-native_app_container_apps_auth_config" "containerAppsAuthConfig" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auth_config_name   = "current"
 ///   container_app_name = "myapp"
 ///   encryption_settings = {

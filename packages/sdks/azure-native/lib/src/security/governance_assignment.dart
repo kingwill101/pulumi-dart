@@ -93,7 +93,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -101,7 +101,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_governanceassignment" "governanceAssignment" {
+/// resource "azure-native_security_governance_assignment" "governanceAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   additional_data = {
 ///     ticket_link   = "https://snow.com"
 ///     ticket_number = 123123

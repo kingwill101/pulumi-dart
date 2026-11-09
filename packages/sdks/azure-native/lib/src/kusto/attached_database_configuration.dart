@@ -114,7 +114,7 @@ import 'table_level_sharing_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -122,7 +122,10 @@ import 'table_level_sharing_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kusto_attacheddatabaseconfiguration" "attachedDatabaseConfiguration" {
+/// resource "azure-native_kusto_attached_database_configuration" "attachedDatabaseConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   attached_database_configuration_name = "attachedDatabaseConfigurationsTest"
 ///   cluster_name                         = "kustoCluster2"
 ///   cluster_resource_id                  = "/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/kustorptest/providers/Microsoft.Kusto/Clusters/kustoCluster2"

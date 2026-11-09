@@ -22,7 +22,7 @@ import 'system_data_response.dart';
 /// {
 ///     var bandwidthSchedule = new AzureNative.DataBoxEdge.BandwidthSchedule("bandwidthSchedule", new()
 ///     {
-///         Days = new[]
+///         Days =
 ///         {
 ///             AzureNative.DataBoxEdge.DayOfWeek.Sunday,
 ///             AzureNative.DataBoxEdge.DayOfWeek.Monday,
@@ -72,7 +72,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_databoxedge_bandwidthschedule" "bandwidthSchedule" {
+/// resource "azure-native_databoxedge_bandwidth_schedule" "bandwidthSchedule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   days                = ["Sunday", "Monday"]
 ///   device_name         = "testedgedevice"
 ///   name                = "bandwidth-1"

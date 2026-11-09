@@ -114,7 +114,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -122,7 +122,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datamigration_databasemigrationssqldb" "databaseMigrationsSqlDb" {
+/// resource "azure-native_datamigration_database_migrations_sql_db" "databaseMigrationsSqlDb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     kind                 = "SqlDb"
 ///     migration_service    = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.DataMigration/sqlMigrationServices/testagent"
@@ -178,7 +181,6 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var databaseMigrationsSqlDb = new DatabaseMigrationsSqlDb("databaseMigrationsSqlDb", DatabaseMigrationsSqlDbArgs.builder()
 ///             .properties(DatabaseMigrationPropertiesSqlDbArgs.builder()
-///                 .kind("SqlDb")
 ///                 .migrationService("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.DataMigration/sqlMigrationServices/testagent")
 ///                 .scope("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Sql/servers/sqldbinstance")
 ///                 .sourceDatabaseName("aaa")
@@ -415,7 +417,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -423,7 +425,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datamigration_databasemigrationssqldb" "databaseMigrationsSqlDb" {
+/// resource "azure-native_datamigration_database_migrations_sql_db" "databaseMigrationsSqlDb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     kind                 = "SqlDb"
 ///     migration_service    = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.DataMigration/sqlMigrationServices/testagent"
@@ -478,7 +483,6 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var databaseMigrationsSqlDb = new DatabaseMigrationsSqlDb("databaseMigrationsSqlDb", DatabaseMigrationsSqlDbArgs.builder()
 ///             .properties(DatabaseMigrationPropertiesSqlDbArgs.builder()
-///                 .kind("SqlDb")
 ///                 .migrationService("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.DataMigration/sqlMigrationServices/testagent")
 ///                 .scope("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Sql/servers/sqldbinstance")
 ///                 .sourceDatabaseName("aaa")

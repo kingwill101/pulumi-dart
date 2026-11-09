@@ -50,11 +50,11 @@ import 'system_data_response.dart';
 ///             },
 ///             CanvasPosition = new AzureNative.CloudHealth.Inputs.EntityCoordinatesArgs
 ///             {
-///                 X = 14,
-///                 Y = 13,
+///                 X = 14.0,
+///                 Y = 13.0,
 ///             },
 ///             DisplayName = "My entity",
-///             HealthObjective = 62,
+///             HealthObjective = 62.0,
 ///             Icon = new AzureNative.CloudHealth.Inputs.IconDefinitionArgs
 ///             {
 ///                 CustomData = "rcitntvapruccrhtxmkqjphbxunkz",
@@ -233,7 +233,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -242,6 +242,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_cloudhealth_entity" "entity" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   entity_name       = "uszrxbdkxesdrxhmagmzywebgbjj"
 ///   health_model_name = "myHealthModel"
 ///   properties = {
@@ -276,23 +279,23 @@ import 'system_data_response.dart';
 ///         authentication_setting              = "B3P1X3e-FZtZ-4Ak-2VLHGQ-4m4-05DE-XNW5zW3P-46XY-DC3SSX"
 ///         log_analytics_workspace_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.OperationalInsights/workspaces/myworkspace"
 ///         signal_assignments = [{
-///           "signalDefinitions" = ["B3P1X3e-FZtZ-4Ak-2VLHGQ-4m4-05DE-XNW5zW3P-46XY-DC3SSX"]
+///           signal_definitions = ["B3P1X3e-FZtZ-4Ak-2VLHGQ-4m4-05DE-XNW5zW3P-46XY-DC3SSX"]
 ///         }]
 ///       }
 ///       azure_monitor_workspace = {
 ///         authentication_setting              = "B3P1X3e-FZtZ-4Ak-2VLHGQ-4m4-05DE-XNW5zW3P-46XY-DC3SSX"
 ///         azure_monitor_workspace_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.OperationalInsights/workspaces/myworkspace"
 ///         signal_assignments = [{
-///           "signalDefinitions" = ["sigdef2"]
+///           signal_definitions = ["sigdef2"]
 ///           }, {
-///           "signalDefinitions" = ["sigdef3"]
+///           signal_definitions = ["sigdef3"]
 ///         }]
 ///       }
 ///       azure_resource = {
 ///         authentication_setting = "B3P1X3e-FZtZ-4Ak-2VLHGQ-4m4-05DE-XNW5zW3P-46XY-DC3SSX"
 ///         azure_resource_id      = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1"
 ///         signal_assignments = [{
-///           "signalDefinitions" = ["sigdef1"]
+///           signal_definitions = ["sigdef1"]
 ///         }]
 ///       }
 ///       dependencies = {
@@ -320,6 +323,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cloudhealth.inputs.IconDefinitionArgs;
 /// import com.pulumi.azurenative.cloudhealth.inputs.SignalGroupArgs;
 /// import com.pulumi.azurenative.cloudhealth.inputs.LogAnalyticsSignalGroupArgs;
+/// import com.pulumi.azurenative.cloudhealth.inputs.SignalAssignmentArgs;
 /// import com.pulumi.azurenative.cloudhealth.inputs.AzureMonitorWorkspaceSignalGroupArgs;
 /// import com.pulumi.azurenative.cloudhealth.inputs.AzureResourceSignalGroupArgs;
 /// import com.pulumi.azurenative.cloudhealth.inputs.DependenciesSignalGroupArgs;

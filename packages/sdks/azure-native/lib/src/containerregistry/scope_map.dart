@@ -68,7 +68,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerregistry_scopemap" "scopeMap" {
+/// resource "azure-native_containerregistry_scope_map" "scopeMap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions             = ["repositories/myrepository/contentWrite", "repositories/myrepository/delete"]
 ///   description         = "Developer Scopes"
 ///   registry_name       = "myRegistry"

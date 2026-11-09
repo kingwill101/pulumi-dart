@@ -66,7 +66,7 @@ import 'rotation_policy_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,6 +75,9 @@ import 'rotation_policy_response.dart';
 /// }
 ///
 /// resource "azure-native_keyvault_key" "key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key_name = "sample-key-name"
 ///   properties = {
 ///     kty = "RSA"

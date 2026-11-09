@@ -85,10 +85,10 @@ import 'system_data_response.dart';
 /// 					Cpu:    pulumi.String("1"),
 /// 					Memory: pulumi.String("1G"),
 /// 				},
-/// 				ResponseCacheProperties: appplatform.GatewayLocalResponseCachePerRouteProperties{
-/// 					ResponseCacheType: "LocalCachePerRoute",
-/// 					Size:              "5MB",
-/// 					TimeToLive:        "300s",
+/// 				ResponseCacheProperties: &appplatform.GatewayLocalResponseCachePerRoutePropertiesArgs{
+/// 					ResponseCacheType: pulumi.String("LocalCachePerRoute"),
+/// 					Size:              pulumi.String("5MB"),
+/// 					TimeToLive:        pulumi.String("300s"),
 /// 				},
 /// 			},
 /// 			ResourceGroupName: pulumi.String("myResourceGroup"),
@@ -109,7 +109,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -118,10 +118,13 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_appplatform_gateway" "gateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   gateway_name = "default"
 ///   properties = {
 ///     apms = [{
-///       "resourceId" = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/apms/myappinsights"
+///       resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/apms/myappinsights"
 ///     }]
 ///     public = true
 ///     resource_requests = {
@@ -129,9 +132,9 @@ import 'system_data_response.dart';
 ///       memory = "1G"
 ///     }
 ///     response_cache_properties = {
-///       "responseCacheType" = "LocalCachePerRoute"
-///       "size"              = "5MB"
-///       "timeToLive"        = "300s"
+///       response_cache_type = "LocalCachePerRoute"
+///       size                = "5MB"
+///       time_to_live        = "300s"
 ///     }
 ///   }
 ///   resource_group_name = "myResourceGroup"
@@ -154,7 +157,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.Gateway;
 /// import com.pulumi.azurenative.appplatform.GatewayArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.GatewayPropertiesArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.ApmReferenceArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.GatewayResourceRequestsArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.GatewayLocalResponseCachePerInstancePropertiesArgs;
+/// import com.pulumi.azurenative.appplatform.inputs.GatewayLocalResponseCachePerRoutePropertiesArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.SkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -181,7 +187,6 @@ import 'system_data_response.dart';
 ///                     .memory("1G")
 ///                     .build())
 ///                 .responseCacheProperties(GatewayLocalResponseCachePerRoutePropertiesArgs.builder()
-///                     .responseCacheType("LocalCachePerRoute")
 ///                     .size("5MB")
 ///                     .timeToLive("300s")
 ///                     .build())

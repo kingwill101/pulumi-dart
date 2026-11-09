@@ -122,7 +122,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -130,7 +130,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_aad_domainservice" "domainService" {
+/// resource "azure-native_aad_domain_service" "domainService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name = "TestDomainService.com"
 ///   domain_security_settings = {
 ///     ntlm_v1             = "Enabled"

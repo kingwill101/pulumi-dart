@@ -73,9 +73,9 @@ import 'system_data_response.dart';
 /// 			Properties: &machinelearningservices.EnvironmentSpecificationVersionTypeArgs{
 /// 				CondaFile:   pulumi.String("channels:\n- defaults\ndependencies:\n- python=3.7.7\nname: my-env"),
 /// 				Description: pulumi.String("string"),
-/// 				Docker: machinelearningservices.DockerBuild{
-/// 					DockerSpecificationType: "Build",
-/// 					Dockerfile:              "FROM myimage",
+/// 				Docker: &machinelearningservices.DockerBuildArgs{
+/// 					DockerSpecificationType: pulumi.String("Build"),
+/// 					Dockerfile:              pulumi.String("FROM myimage"),
 /// 				},
 /// 				Properties: pulumi.StringMap{
 /// 					"additionalProp1": pulumi.String("string"),
@@ -102,7 +102,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -110,14 +110,17 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_machinelearningservices_environmentspecificationversion" "environmentSpecificationVersion" {
+/// resource "azure-native_machinelearningservices_environment_specification_version" "environmentSpecificationVersion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "testEnvironment"
 ///   properties = {
 ///     conda_file  = "channels:\n- defaults\ndependencies:\n- python=3.7.7\nname: my-env"
 ///     description = "string"
 ///     docker = {
-///       "dockerSpecificationType" = "Build"
-///       "dockerfile"              = "FROM myimage"
+///       docker_specification_type = "Build"
+///       dockerfile                = "FROM myimage"
 ///     }
 ///     properties = {
 ///       "additionalProp1" = "string"
@@ -144,6 +147,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.EnvironmentSpecificationVersion;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DockerBuildArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.DockerImageArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -159,7 +164,7 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var environmentSpecificationVersion = new EnvironmentSpecificationVersion("environmentSpecificationVersion", EnvironmentSpecificationVersionArgs.builder()
 ///             .name("testEnvironment")
-///             .properties(EnvironmentSpecificationVersionArgs.builder()
+///             .properties(com.pulumi.azurenative.machinelearningservices.inputs.EnvironmentSpecificationVersionArgs.builder()
 ///                 .condaFile("""
 /// channels:
 /// - defaults
@@ -168,7 +173,6 @@ import 'system_data_response.dart';
 /// name: my-env                """)
 ///                 .description("string")
 ///                 .docker(DockerBuildArgs.builder()
-///                     .dockerSpecificationType("Build")
 ///                     .dockerfile("FROM myimage")
 ///                     .build())
 ///                 .properties(Map.ofEntries(

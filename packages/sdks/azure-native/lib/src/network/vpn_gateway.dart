@@ -28,7 +28,7 @@ import 'vpn_gateway_nat_rule_response.dart';
 ///     {
 ///         BgpSettings = new AzureNative.Network.Inputs.BgpSettingsArgs
 ///         {
-///             Asn = 65515,
+///             Asn = 65515.0,
 ///             BgpPeeringAddresses = new[]
 ///             {
 ///                 new AzureNative.Network.Inputs.IPConfigurationBgpPeeringAddressArgs
@@ -219,7 +219,7 @@ import 'vpn_gateway_nat_rule_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -227,15 +227,18 @@ import 'vpn_gateway_nat_rule_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_vpngateway" "vpnGateway" {
+/// resource "azure-native_network_vpn_gateway" "vpnGateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bgp_settings = {
 ///     asn = 65515
 ///     bgp_peering_addresses = [{
-///       "customBgpIpAddresses" = ["169.254.21.5"]
-///       "ipconfigurationId"    = "Instance0"
+///       custom_bgp_ip_addresses = ["169.254.21.5"]
+///       ipconfiguration_id      = "Instance0"
 ///       }, {
-///       "customBgpIpAddresses" = ["169.254.21.10"]
-///       "ipconfigurationId"    = "Instance1"
+///       custom_bgp_ip_addresses = ["169.254.21.10"]
+///       ipconfiguration_id      = "Instance1"
 ///     }]
 ///     peer_weight = 0
 ///   }
@@ -293,9 +296,12 @@ import 'vpn_gateway_nat_rule_response.dart';
 /// import com.pulumi.azurenative.network.VpnGateway;
 /// import com.pulumi.azurenative.network.VpnGatewayArgs;
 /// import com.pulumi.azurenative.network.inputs.BgpSettingsArgs;
+/// import com.pulumi.azurenative.network.inputs.IPConfigurationBgpPeeringAddressArgs;
 /// import com.pulumi.azurenative.network.inputs.VpnConnectionArgs;
 /// import com.pulumi.azurenative.network.inputs.SubResourceArgs;
+/// import com.pulumi.azurenative.network.inputs.VpnSiteLinkConnectionArgs;
 /// import com.pulumi.azurenative.network.inputs.VpnGatewayNatRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.VpnNatRuleMappingArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

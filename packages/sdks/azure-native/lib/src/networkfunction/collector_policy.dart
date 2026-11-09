@@ -104,7 +104,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -112,7 +112,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_networkfunction_collectorpolicy" "collectorPolicy" {
+/// resource "azure-native_networkfunction_collector_policy" "collectorPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   azure_traffic_collector_name = "atc"
 ///   collector_policy_name        = "cp1"
 ///   emission_policies {
@@ -123,8 +126,8 @@ import 'system_data_response.dart';
 ///   }
 ///   ingestion_policy = {
 ///     ingestion_sources = [{
-///       "resourceId" = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/circuitName"
-///       "sourceType" = "Resource"
+///       resource_id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/circuitName"
+///       source_type = "Resource"
 ///     }]
 ///     ingestion_type = "IPFIX"
 ///   }
@@ -143,7 +146,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.networkfunction.CollectorPolicy;
 /// import com.pulumi.azurenative.networkfunction.CollectorPolicyArgs;
 /// import com.pulumi.azurenative.networkfunction.inputs.EmissionPoliciesPropertiesFormatArgs;
+/// import com.pulumi.azurenative.networkfunction.inputs.EmissionPolicyDestinationArgs;
 /// import com.pulumi.azurenative.networkfunction.inputs.IngestionPolicyPropertiesFormatArgs;
+/// import com.pulumi.azurenative.networkfunction.inputs.IngestionSourcesPropertiesFormatArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

@@ -57,7 +57,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_adlsgen2filedatasetmapping" "adlsGen2FileDataSetMapping" {
+/// resource "azure-native_datashare_a_d_l_s_gen2_file_data_set_mapping" "adlsGen2FileDataSetMapping" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name            = "Account1"
 ///   data_set_mapping_name   = "DatasetMapping1"
 ///   resource_group_name     = "SampleResourceGroup"
@@ -194,7 +197,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -202,7 +205,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_adlsgen2filedatasetmapping" "adlsGen2FileDataSetMapping" {
+/// resource "azure-native_datashare_a_d_l_s_gen2_file_data_set_mapping" "adlsGen2FileDataSetMapping" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name            = "Account1"
 ///   data_set_mapping_name   = "DatasetMapping1"
 ///   resource_group_name     = "SampleResourceGroup"
@@ -347,7 +353,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -355,7 +361,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_adlsgen2filedatasetmapping" "adlsGen2FileDataSetMapping" {
+/// resource "azure-native_datashare_a_d_l_s_gen2_file_data_set_mapping" "adlsGen2FileDataSetMapping" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name            = "Account1"
 ///   data_set_id             = "a08f184b-0567-4b11-ba22-a1199336d226"
 ///   data_set_mapping_name   = "DatasetMapping1"
@@ -399,7 +408,6 @@ import 'system_data_response.dart';
 ///             .dataSetMappingName("DatasetMapping1")
 ///             .filePath("file21")
 ///             .fileSystem("fileSystem")
-///             .kind("AdlsGen2File")
 ///             .outputType("Csv")
 ///             .resourceGroup("SampleResourceGroup")
 ///             .resourceGroupName("SampleResourceGroup")
@@ -524,7 +532,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -532,7 +540,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_adlsgen2filedatasetmapping" "adlsGen2FileDataSetMapping" {
+/// resource "azure-native_datashare_a_d_l_s_gen2_file_data_set_mapping" "adlsGen2FileDataSetMapping" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name            = "Account1"
 ///   data_set_mapping_name   = "DatasetMapping1"
 ///   resource_group_name     = "SampleResourceGroup"
@@ -661,7 +672,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -669,7 +680,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_adlsgen2filedatasetmapping" "adlsGen2FileDataSetMapping" {
+/// resource "azure-native_datashare_a_d_l_s_gen2_file_data_set_mapping" "adlsGen2FileDataSetMapping" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name            = "consumerAccount"
 ///   data_set_mapping_name   = "datasetMappingName1"
 ///   resource_group_name     = "SampleResourceGroup"

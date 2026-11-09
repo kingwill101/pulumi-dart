@@ -11,163 +11,6 @@ import 'system_data_response.dart';
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
-/// ### EdgeMachineJobs_CreateOrUpdate_CollectLog
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using AzureNative = Pulumi.AzureNative;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var edgeMachineJob = new AzureNative.AzureStackHCI.EdgeMachineJob("edgeMachineJob", new()
-///     {
-///         EdgeMachineName = "machine1",
-///         JobsName = "triggerLogCollection",
-///         Properties =
-///         {
-///             { "deploymentMode", AzureNative.AzureStackHCI.DeploymentMode.Validate },
-///             { "jobType", "EdgeMachineJobProperties" },
-///         },
-///         ResourceGroupName = "ArcInstance-rg",
-///     });
-///
-/// });
-///
-///
-/// ```
-///
-/// ```go
-/// package main
-///
-/// import (
-/// 	azurestackhci "github.com/pulumi/pulumi-azure-native-sdk/azurestackhci/v3"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := azurestackhci.NewEdgeMachineJob(ctx, "edgeMachineJob", &azurestackhci.EdgeMachineJobArgs{
-/// EdgeMachineName: pulumi.String("machine1"),
-/// JobsName: pulumi.String("triggerLogCollection"),
-/// Properties: interface{}{
-/// DeploymentMode: pulumi.String(azurestackhci.DeploymentModeValidate),
-/// JobType: pulumi.String("EdgeMachineJobProperties"),
-/// },
-/// ResourceGroupName: pulumi.String("ArcInstance-rg"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-///
-/// ```
-///
-/// ```hcl
-/// pulumi {
-///   required_providers {
-///     azure-native = {
-///       source = "pulumi/azure-native"
-///     }
-///   }
-/// }
-///
-/// resource "azure-native_azurestackhci_edgemachinejob" "edgeMachineJob" {
-///   edge_machine_name = "machine1"
-///   jobs_name         = "triggerLogCollection"
-///   properties = {
-///     "deploymentMode" = "Validate"
-///     "jobType"        = "EdgeMachineJobProperties"
-///   }
-///   resource_group_name = "ArcInstance-rg"
-/// }
-///
-/// ```
-///
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.azurenative.azurestackhci.EdgeMachineJob;
-/// import com.pulumi.azurenative.azurestackhci.EdgeMachineJobArgs;
-/// import java.util.ArrayList;
-/// import java.util.Arrays;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         var edgeMachineJob = new EdgeMachineJob("edgeMachineJob", EdgeMachineJobArgs.builder()
-///             .edgeMachineName("machine1")
-///             .jobsName("triggerLogCollection")
-///             .properties(DownloadOsJobPropertiesArgs.builder()
-///                 .deploymentMode("Validate")
-///                 .jobType("EdgeMachineJobProperties")
-///                 .build())
-///             .resourceGroupName("ArcInstance-rg")
-///             .build());
-///
-///     }
-/// }
-///
-/// ```
-///
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as azure_native from "@pulumi/azure-native";
-///
-/// const edgeMachineJob = new azure_native.azurestackhci.EdgeMachineJob("edgeMachineJob", {
-///     edgeMachineName: "machine1",
-///     jobsName: "triggerLogCollection",
-///     properties: {
-///         deploymentMode: azure_native.azurestackhci.DeploymentMode.Validate,
-///         jobType: "EdgeMachineJobProperties",
-///     },
-///     resourceGroupName: "ArcInstance-rg",
-/// });
-///
-/// ```
-///
-/// ```python
-/// import pulumi
-/// import pulumi_azure_native as azure_native
-///
-/// edge_machine_job = azure_native.azurestackhci.EdgeMachineJob("edgeMachineJob",
-///     edge_machine_name="machine1",
-///     jobs_name="triggerLogCollection",
-///     properties={
-///         "deployment_mode": azure_native.azurestackhci.DeploymentMode.VALIDATE,
-///         "job_type": "EdgeMachineJobProperties",
-///     },
-///     resource_group_name="ArcInstance-rg")
-///
-/// ```
-///
-/// ```yaml
-/// resources:
-///   edgeMachineJob:
-///     type: azure-native:azurestackhci:EdgeMachineJob
-///     properties:
-///       edgeMachineName: machine1
-///       jobsName: triggerLogCollection
-///       properties:
-///         deploymentMode: Validate
-///         jobType: EdgeMachineJobProperties
-///       resourceGroupName: ArcInstance-rg
-///
-/// ```
-///
-/// {{% /example %}}
-/// {{% example %}}
 /// ### EdgeMachineJobs_CreateOrUpdate_DownloadOs
 /// ```csharp
 /// using System.Collections.Generic;
@@ -249,7 +92,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -257,24 +100,27 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_edgemachinejob" "edgeMachineJob" {
+/// resource "azure-native_azurestackhci_edge_machine_job" "edgeMachineJob" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   edge_machine_name = "machine1"
 ///   jobs_name         = "DownloadOs"
 ///   properties = {
-///     "deploymentMode" = "Deploy"
-///     "downloadRequest" = {
-///       "osProfile" = {
-///         "gpgPubKey"       = "LS0tLS1CRUdJTiBQR1AgUFVCTElDIEtFWSBCTE9DSy0tLS0tXG5WZXJzaW9uOiBHbnVQRyB2MlxuXG5tUUVOQkZYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYXG4tLS0tLUVORCBQR1AgUFVCTElDIEtFWSBCTE9DSy0tLS0t"
-///         "imageHash"       = "sha256:a8b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1"
-///         "osImageLocation" = "https://aka.ms/aep/azlinux3.0"
-///         "osName"          = "AzureLinux"
-///         "osType"          = "AzureLinux"
-///         "osVersion"       = "3.0"
-///         "vsrVersion"      = "1.0.0"
+///     deployment_mode = "Deploy"
+///     download_request = {
+///       os_profile = {
+///         gpg_pub_key       = "LS0tLS1CRUdJTiBQR1AgUFVCTElDIEtFWSBCTE9DSy0tLS0tXG5WZXJzaW9uOiBHbnVQRyB2MlxuXG5tUUVOQkZYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYXG4tLS0tLUVORCBQR1AgUFVCTElDIEtFWSBCTE9DSy0tLS0t"
+///         image_hash        = "sha256:a8b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1"
+///         os_image_location = "https://aka.ms/aep/azlinux3.0"
+///         os_name           = "AzureLinux"
+///         os_type           = "AzureLinux"
+///         os_version        = "3.0"
+///         vsr_version       = "1.0.0"
 ///       }
-///       "target" = "AzureLinux"
+///       target = "AzureLinux"
 ///     }
-///     "jobType" = "DownloadOs"
+///     job_type = "DownloadOs"
 ///   }
 ///   resource_group_name = "ArcInstance-rg"
 /// }
@@ -289,6 +135,12 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.azurestackhci.EdgeMachineJob;
 /// import com.pulumi.azurenative.azurestackhci.EdgeMachineJobArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.DownloadOsJobPropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.DownloadRequestArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.DownloadOsProfileArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.EdgeMachineCollectLogJobPropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.EdgeMachineRemoteSupportJobPropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.ProvisionOsJobPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -319,7 +171,6 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .target("AzureLinux")
 ///                     .build())
-///                 .jobType("DownloadOs")
 ///                 .build())
 ///             .resourceGroupName("ArcInstance-rg")
 ///             .build());
@@ -610,7 +461,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -618,67 +469,70 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_edgemachinejob" "edgeMachineJob" {
+/// resource "azure-native_azurestackhci_edge_machine_job" "edgeMachineJob" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   edge_machine_name = "machine1"
 ///   jobs_name         = "ProvisionOs"
 ///   properties = {
-///     "deploymentMode" = "Deploy"
-///     "jobType"        = "ProvisionOs"
-///     "provisioningRequest" = {
-///       "customConfiguration" = "eyJjdXN0b21Db25maWciOiAiZXhhbXBsZSBiYXNlNjQgZW5jb2RlZCBjb25maWcifQ=="
-///       "deviceConfiguration" = {
-///         "hostName" = "634b9db8-83e1-46ed-b391-c1614e2d0097"
-///         "network" = {
-///           "networkAdapters" = [{
-///             "dnsAddressArray" = ["8.8.8.8"]
-///             "gateway"         = ""
-///             "ipAddress"       = ""
-///             "ipAddressRange" = {
-///               "endIp"   = ""
-///               "startIp" = ""
+///     deployment_mode = "Deploy"
+///     job_type        = "ProvisionOs"
+///     provisioning_request = {
+///       custom_configuration = "eyJjdXN0b21Db25maWciOiAiZXhhbXBsZSBiYXNlNjQgZW5jb2RlZCBjb25maWcifQ=="
+///       device_configuration = {
+///         host_name = "634b9db8-83e1-46ed-b391-c1614e2d0097"
+///         network = {
+///           network_adapters = [{
+///             dns_address_array = ["8.8.8.8"]
+///             gateway           = ""
+///             ip_address        = ""
+///             ip_address_range = {
+///               end_ip   = ""
+///               start_ip = ""
 ///             }
-///             "ipAssignmentType" = "Automatic"
-///             "subnetMask"       = ""
-///             "vlanId"           = "0"
+///             ip_assignment_type = "Automatic"
+///             subnet_mask        = ""
+///             vlan_id            = "0"
 ///           }]
 ///         }
-///         "storage" = {
-///           "partitionSize" = "30GB"
+///         storage = {
+///           partition_size = "30GB"
 ///         }
-///         "time" = {
-///           "primaryTimeServer"   = ""
-///           "secondaryTimeServer" = ""
-///           "timeZone"            = "UTC"
+///         time = {
+///           primary_time_server   = ""
+///           secondary_time_server = ""
+///           time_zone             = "UTC"
 ///         }
-///         "webProxy" = {
-///           "bypassList"    = []
-///           "connectionUri" = "https://microsoft.com/a"
-///           "port"          = ""
+///         web_proxy = {
+///           bypass_list    = []
+///           connection_uri = "https://microsoft.com/a"
+///           port           = ""
 ///         }
 ///       }
-///       "onboardingConfiguration" = {
-///         "arcVirtualMachineId" = "634b9db8-83e1-46ed-b391-c1614e2d0097"
-///         "location"            = "eastus"
-///         "resourceId"          = "/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/bhukumar-test-rg/providers/Microsoft.HybridCompute/machines/bkumar-t1"
-///         "tenantId"            = "72f988bf-86f1-41af-91ab-2d7cd011db47"
-///         "type"                = "HybridComputeMachine"
+///       onboarding_configuration = {
+///         arc_virtual_machine_id = "634b9db8-83e1-46ed-b391-c1614e2d0097"
+///         location               = "eastus"
+///         resource_id            = "/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/bhukumar-test-rg/providers/Microsoft.HybridCompute/machines/bkumar-t1"
+///         tenant_id              = "72f988bf-86f1-41af-91ab-2d7cd011db47"
+///         type                   = "HybridComputeMachine"
 ///       }
-///       "osProfile" = {
-///         "gpgPubKey"       = "LS0tLS1CRUdJTiBQR1AgUFVCTElDIEtFWSBCTE9DSy0tLS0tXG5WZXJzaW9uOiBHbnVQRyB2MlxuXG5tUUVOQkZYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYXG4tLS0tLUVORCBQR1AgUFVCTElDIEtFWSBCTE9DSy0tLS0t"
-///         "imageHash"       = "sha256:a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456"
-///         "operationType"   = "Provision"
-///         "osImageLocation" = "https://aka.ms/aep/azlinux3.0"
-///         "osName"          = "AzureLinux"
-///         "osType"          = "AzureLinux"
-///         "osVersion"       = "3.0"
-///         "vsrVersion"      = "1.0.0"
+///       os_profile = {
+///         gpg_pub_key       = "LS0tLS1CRUdJTiBQR1AgUFVCTElDIEtFWSBCTE9DSy0tLS0tXG5WZXJzaW9uOiBHbnVQRyB2MlxuXG5tUUVOQkZYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYXG4tLS0tLUVORCBQR1AgUFVCTElDIEtFWSBCTE9DSy0tLS0t"
+///         image_hash        = "sha256:a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456"
+///         operation_type    = "Provision"
+///         os_image_location = "https://aka.ms/aep/azlinux3.0"
+///         os_name           = "AzureLinux"
+///         os_type           = "AzureLinux"
+///         os_version        = "3.0"
+///         vsr_version       = "1.0.0"
 ///       }
-///       "target" = "AzureLinux"
-///       "userDetails" = [{
-///         "secretLocation" = "https://bhukumar-test-kv.vault.azure.net/secrets/edgeuser/7b2d7db11bad4e1599cb6a0f4d2b2e00"
-///         "secretType"     = "KeyVault"
-///         "sshPubKey"      = ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7... edgeuser@example.com"]
-///         "userName"       = "edgeuser"
+///       target = "AzureLinux"
+///       user_details = [{
+///         secret_location = "https://bhukumar-test-kv.vault.azure.net/secrets/edgeuser/7b2d7db11bad4e1599cb6a0f4d2b2e00"
+///         secret_type     = "KeyVault"
+///         ssh_pub_key     = ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7... edgeuser@example.com"]
+///         user_name       = "edgeuser"
 ///       }]
 ///     }
 ///   }
@@ -695,6 +549,21 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.azurestackhci.EdgeMachineJob;
 /// import com.pulumi.azurenative.azurestackhci.EdgeMachineJobArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.DownloadOsJobPropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.EdgeMachineCollectLogJobPropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.EdgeMachineRemoteSupportJobPropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.ProvisionOsJobPropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.ProvisioningRequestArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.TargetDeviceConfigurationArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.NetworkConfigurationArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.NetworkAdapterArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.IpAddressRangeArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.StorageConfigurationArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.TimeConfigurationArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.WebProxyConfigurationArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.OnboardingConfigurationArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.OsProvisionProfileArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.UserDetailsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -713,7 +582,6 @@ import 'system_data_response.dart';
 ///             .jobsName("ProvisionOs")
 ///             .properties(ProvisionOsJobPropertiesArgs.builder()
 ///                 .deploymentMode("Deploy")
-///                 .jobType("ProvisionOs")
 ///                 .provisioningRequest(ProvisioningRequestArgs.builder()
 ///                     .customConfiguration("eyJjdXN0b21Db25maWciOiAiZXhhbXBsZSBiYXNlNjQgZW5jb2RlZCBjb25maWcifQ==")
 ///                     .deviceConfiguration(TargetDeviceConfigurationArgs.builder()
@@ -1048,7 +916,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1056,14 +924,17 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_edgemachinejob" "edgeMachineJob" {
+/// resource "azure-native_azurestackhci_edge_machine_job" "edgeMachineJob" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   edge_machine_name = "machine1"
 ///   jobs_name         = "RemoteSupport"
 ///   properties = {
-///     "accessLevel"         = "Diagnostics"
-///     "expirationTimestamp" = "2024-01-29T10:43:27.9471574Z"
-///     "jobType"             = "RemoteSupport"
-///     "type"                = "Enable"
+///     access_level         = "Diagnostics"
+///     expiration_timestamp = "2024-01-29T10:43:27.9471574Z"
+///     job_type             = "RemoteSupport"
+///     type                 = "Enable"
 ///   }
 ///   resource_group_name = "ArcInstance-rg"
 /// }
@@ -1078,6 +949,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.azurestackhci.EdgeMachineJob;
 /// import com.pulumi.azurenative.azurestackhci.EdgeMachineJobArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.DownloadOsJobPropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.EdgeMachineCollectLogJobPropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.EdgeMachineRemoteSupportJobPropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.ProvisionOsJobPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1097,7 +972,6 @@ import 'system_data_response.dart';
 ///             .properties(EdgeMachineRemoteSupportJobPropertiesArgs.builder()
 ///                 .accessLevel("Diagnostics")
 ///                 .expirationTimestamp("2024-01-29T10:43:27.9471574Z")
-///                 .jobType("RemoteSupport")
 ///                 .type("Enable")
 ///                 .build())
 ///             .resourceGroupName("ArcInstance-rg")
@@ -1354,7 +1228,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1362,64 +1236,67 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_edgemachinejob" "edgeMachineJob" {
+/// resource "azure-native_azurestackhci_edge_machine_job" "edgeMachineJob" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   edge_machine_name = "machine1"
 ///   jobs_name         = "UpdateOs"
 ///   properties = {
-///     "deploymentMode" = "Deploy"
-///     "jobType"        = "ProvisionOs"
-///     "provisioningRequest" = {
-///       "customConfiguration" = "eyJjdXN0b21Db25maWciOiAiZXhhbXBsZSBiYXNlNjQgZW5jb2RlZCBjb25maWcifQ=="
-///       "deviceConfiguration" = {
-///         "hostName" = "634b9db8-83e1-46ed-b391-c1614e2d0097"
-///         "network" = {
-///           "networkAdapters" = [{
-///             "dnsAddressArray" = ["8.8.8.8"]
-///             "gateway"         = ""
-///             "ipAddress"       = ""
-///             "ipAddressRange" = {
-///               "endIp"   = ""
-///               "startIp" = ""
+///     deployment_mode = "Deploy"
+///     job_type        = "ProvisionOs"
+///     provisioning_request = {
+///       custom_configuration = "eyJjdXN0b21Db25maWciOiAiZXhhbXBsZSBiYXNlNjQgZW5jb2RlZCBjb25maWcifQ=="
+///       device_configuration = {
+///         host_name = "634b9db8-83e1-46ed-b391-c1614e2d0097"
+///         network = {
+///           network_adapters = [{
+///             dns_address_array = ["8.8.8.8"]
+///             gateway           = ""
+///             ip_address        = ""
+///             ip_address_range = {
+///               end_ip   = ""
+///               start_ip = ""
 ///             }
-///             "ipAssignmentType" = "Automatic"
-///             "subnetMask"       = ""
-///             "vlanId"           = "0"
+///             ip_assignment_type = "Automatic"
+///             subnet_mask        = ""
+///             vlan_id            = "0"
 ///           }]
 ///         }
-///         "time" = {
-///           "primaryTimeServer"   = ""
-///           "secondaryTimeServer" = ""
-///           "timeZone"            = "UTC"
+///         time = {
+///           primary_time_server   = ""
+///           secondary_time_server = ""
+///           time_zone             = "UTC"
 ///         }
-///         "webProxy" = {
-///           "bypassList"    = []
-///           "connectionUri" = "https://microsoft.com/a"
-///           "port"          = ""
+///         web_proxy = {
+///           bypass_list    = []
+///           connection_uri = "https://microsoft.com/a"
+///           port           = ""
 ///         }
 ///       }
-///       "onboardingConfiguration" = {
-///         "arcVirtualMachineId" = "634b9db8-83e1-46ed-b391-c1614e2d0097"
-///         "location"            = "eastus"
-///         "resourceId"          = "/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/bhukumar-test-rg/providers/Microsoft.HybridCompute/machines/bkumar-t1"
-///         "tenantId"            = "72f988bf-86f1-41af-91ab-2d7cd011db47"
-///         "type"                = "HybridComputeMachine"
+///       onboarding_configuration = {
+///         arc_virtual_machine_id = "634b9db8-83e1-46ed-b391-c1614e2d0097"
+///         location               = "eastus"
+///         resource_id            = "/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/bhukumar-test-rg/providers/Microsoft.HybridCompute/machines/bkumar-t1"
+///         tenant_id              = "72f988bf-86f1-41af-91ab-2d7cd011db47"
+///         type                   = "HybridComputeMachine"
 ///       }
-///       "osProfile" = {
-///         "gpgPubKey"       = "LS0tLS1CRUdJTiBQR1AgUFVCTElDIEtFWSBCTE9DSy0tLS0tXG5WZXJzaW9uOiBHbnVQRyB2MlxuXG5tUUVOQkZYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYXG4tLS0tLUVORCBQR1AgUFVCTElDIEtFWSBCTE9DSy0tLS0t"
-///         "imageHash"       = "sha256:b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef12345678"
-///         "operationType"   = "Update"
-///         "osImageLocation" = "https://aka.ms/aep/azlinux3.1"
-///         "osName"          = "AzureLinux"
-///         "osType"          = "AzureLinux"
-///         "osVersion"       = "3.1"
-///         "vsrVersion"      = "1.1.0"
+///       os_profile = {
+///         gpg_pub_key       = "LS0tLS1CRUdJTiBQR1AgUFVCTElDIEtFWSBCTE9DSy0tLS0tXG5WZXJzaW9uOiBHbnVQRyB2MlxuXG5tUUVOQkZYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYXG4tLS0tLUVORCBQR1AgUFVCTElDIEtFWSBCTE9DSy0tLS0t"
+///         image_hash        = "sha256:b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef12345678"
+///         operation_type    = "Update"
+///         os_image_location = "https://aka.ms/aep/azlinux3.1"
+///         os_name           = "AzureLinux"
+///         os_type           = "AzureLinux"
+///         os_version        = "3.1"
+///         vsr_version       = "1.1.0"
 ///       }
-///       "target" = "AzureLinux"
-///       "userDetails" = [{
-///         "secretLocation" = "https://bhukumar-test-kv.vault.azure.net/secrets/edgeuser/7b2d7db11bad4e1599cb6a0f4d2b2e00"
-///         "secretType"     = "KeyVault"
-///         "sshPubKey"      = ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7... edgeuser@example.com"]
-///         "userName"       = "edgeuser"
+///       target = "AzureLinux"
+///       user_details = [{
+///         secret_location = "https://bhukumar-test-kv.vault.azure.net/secrets/edgeuser/7b2d7db11bad4e1599cb6a0f4d2b2e00"
+///         secret_type     = "KeyVault"
+///         ssh_pub_key     = ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7... edgeuser@example.com"]
+///         user_name       = "edgeuser"
 ///       }]
 ///     }
 ///   }
@@ -1436,6 +1313,20 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.azurestackhci.EdgeMachineJob;
 /// import com.pulumi.azurenative.azurestackhci.EdgeMachineJobArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.DownloadOsJobPropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.EdgeMachineCollectLogJobPropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.EdgeMachineRemoteSupportJobPropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.ProvisionOsJobPropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.ProvisioningRequestArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.TargetDeviceConfigurationArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.NetworkConfigurationArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.NetworkAdapterArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.IpAddressRangeArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.TimeConfigurationArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.WebProxyConfigurationArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.OnboardingConfigurationArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.OsProvisionProfileArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.UserDetailsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1454,7 +1345,6 @@ import 'system_data_response.dart';
 ///             .jobsName("UpdateOs")
 ///             .properties(ProvisionOsJobPropertiesArgs.builder()
 ///                 .deploymentMode("Deploy")
-///                 .jobType("ProvisionOs")
 ///                 .provisioningRequest(ProvisioningRequestArgs.builder()
 ///                     .customConfiguration("eyJjdXN0b21Db25maWciOiAiZXhhbXBsZSBiYXNlNjQgZW5jb2RlZCBjb25maWcifQ==")
 ///                     .deviceConfiguration(TargetDeviceConfigurationArgs.builder()

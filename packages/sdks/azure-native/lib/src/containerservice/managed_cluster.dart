@@ -57,7 +57,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// {
 ///     var managedCluster = new AzureNative.ContainerService.ManagedCluster("managedCluster", new()
 ///     {
-///         AddonProfiles = null,
+///         AddonProfiles = new() { },
 ///         AgentPoolProfiles = new[]
 ///         {
 ///             new AzureNative.ContainerService.Inputs.ManagedClusterAgentPoolProfileArgs
@@ -225,7 +225,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -233,7 +233,10 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+/// resource "azure-native_containerservice_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_profiles = {}
 ///   agent_pool_profiles {
 ///     count = 3
@@ -260,7 +263,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///     admin_username = "azureuser"
 ///     ssh = {
 ///       public_keys = [{
-///         "keyData" = "keydata"
+///         key_data = "keydata"
 ///       }]
 ///     }
 ///   }
@@ -309,6 +312,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterPropertiesAutoScalerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceLinuxProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshConfigurationArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshPublicKeyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceNetworkProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs;
@@ -594,7 +598,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// {
 ///     var managedCluster = new AzureNative.ContainerService.ManagedCluster("managedCluster", new()
 ///     {
-///         AddonProfiles = null,
+///         AddonProfiles = new() { },
 ///         AgentPoolProfiles = new[]
 ///         {
 ///             new AzureNative.ContainerService.Inputs.ManagedClusterAgentPoolProfileArgs
@@ -753,7 +757,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -761,7 +765,10 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+/// resource "azure-native_containerservice_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_profiles = {}
 ///   agent_pool_profiles {
 ///     count                 = 3
@@ -784,7 +791,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///     admin_username = "azureuser"
 ///     ssh = {
 ///       public_keys = [{
-///         "keyData" = "keydata"
+///         key_data = "keydata"
 ///       }]
 ///     }
 ///   }
@@ -832,6 +839,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterPropertiesAutoScalerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceLinuxProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshConfigurationArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshPublicKeyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceNetworkProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterNATGatewayProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterManagedOutboundIPProfileArgs;
@@ -1280,7 +1288,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1288,7 +1296,10 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+/// resource "azure-native_containerservice_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_profiles = {
 ///     "azureKeyvaultSecretsProvider" = {
 ///       config = {
@@ -1319,7 +1330,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///     admin_username = "azureuser"
 ///     ssh = {
 ///       public_keys = [{
-///         "keyData" = "keydata"
+///         key_data = "keydata"
 ///       }]
 ///     }
 ///   }
@@ -1363,10 +1374,12 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.containerservice.ManagedCluster;
 /// import com.pulumi.azurenative.containerservice.ManagedClusterArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterAddonProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterAgentPoolProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterPropertiesAutoScalerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceLinuxProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshConfigurationArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshPublicKeyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceNetworkProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs;
@@ -1663,7 +1676,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// {
 ///     var managedCluster = new AzureNative.ContainerService.ManagedCluster("managedCluster", new()
 ///     {
-///         AddonProfiles = null,
+///         AddonProfiles = new() { },
 ///         AgentPoolProfiles = new[]
 ///         {
 ///             new AzureNative.ContainerService.Inputs.ManagedClusterAgentPoolProfileArgs
@@ -1824,7 +1837,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1832,7 +1845,10 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+/// resource "azure-native_containerservice_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_profiles = {}
 ///   agent_pool_profiles {
 ///     capacity_reservation_group_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Compute/capacityReservationGroups/crg1"
@@ -1856,7 +1872,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///     admin_username = "azureuser"
 ///     ssh = {
 ///       public_keys = [{
-///         "keyData" = "keydata"
+///         key_data = "keydata"
 ///       }]
 ///     }
 ///   }
@@ -1904,6 +1920,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterPropertiesAutoScalerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceLinuxProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshConfigurationArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshPublicKeyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceNetworkProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs;
@@ -2178,7 +2195,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// {
 ///     var managedCluster = new AzureNative.ContainerService.ManagedCluster("managedCluster", new()
 ///     {
-///         AddonProfiles = null,
+///         AddonProfiles = new() { },
 ///         AgentPoolProfiles = new[]
 ///         {
 ///             new AzureNative.ContainerService.Inputs.ManagedClusterAgentPoolProfileArgs
@@ -2349,7 +2366,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2357,7 +2374,10 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+/// resource "azure-native_containerservice_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_profiles = {}
 ///   agent_pool_profiles {
 ///     count                 = 3
@@ -2380,7 +2400,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///     admin_username = "azureuser"
 ///     ssh = {
 ///       public_keys = [{
-///         "keyData" = "keydata"
+///         key_data = "keydata"
 ///       }]
 ///     }
 ///   }
@@ -2431,6 +2451,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterPropertiesAutoScalerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceLinuxProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshConfigurationArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshPublicKeyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceNetworkProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs;
@@ -2714,7 +2735,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// {
 ///     var managedCluster = new AzureNative.ContainerService.ManagedCluster("managedCluster", new()
 ///     {
-///         AddonProfiles = null,
+///         AddonProfiles = new() { },
 ///         AgentPoolProfiles = new[]
 ///         {
 ///             new AzureNative.ContainerService.Inputs.ManagedClusterAgentPoolProfileArgs
@@ -2873,7 +2894,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2881,7 +2902,10 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+/// resource "azure-native_containerservice_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_profiles = {}
 ///   agent_pool_profiles {
 ///     count                 = 3
@@ -2904,7 +2928,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///     admin_username = "azureuser"
 ///     ssh = {
 ///       public_keys = [{
-///         "keyData" = "keydata"
+///         key_data = "keydata"
 ///       }]
 ///     }
 ///   }
@@ -2952,6 +2976,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterPropertiesAutoScalerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceLinuxProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshConfigurationArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshPublicKeyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceNetworkProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs;
@@ -3222,7 +3247,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// {
 ///     var managedCluster = new AzureNative.ContainerService.ManagedCluster("managedCluster", new()
 ///     {
-///         AddonProfiles = null,
+///         AddonProfiles = new() { },
 ///         AgentPoolProfiles = new[]
 ///         {
 ///             new AzureNative.ContainerService.Inputs.ManagedClusterAgentPoolProfileArgs
@@ -3383,7 +3408,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3391,7 +3416,10 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+/// resource "azure-native_containerservice_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_profiles = {}
 ///   agent_pool_profiles {
 ///     count                     = 3
@@ -3415,7 +3443,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///     admin_username = "azureuser"
 ///     ssh = {
 ///       public_keys = [{
-///         "keyData" = "keydata"
+///         key_data = "keydata"
 ///       }]
 ///     }
 ///   }
@@ -3463,6 +3491,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterPropertiesAutoScalerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceLinuxProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshConfigurationArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshPublicKeyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceNetworkProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs;
@@ -3737,7 +3766,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// {
 ///     var managedCluster = new AzureNative.ContainerService.ManagedCluster("managedCluster", new()
 ///     {
-///         AddonProfiles = null,
+///         AddonProfiles = new() { },
 ///         AgentPoolProfiles = new[]
 ///         {
 ///             new AzureNative.ContainerService.Inputs.ManagedClusterAgentPoolProfileArgs
@@ -3898,7 +3927,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3906,7 +3935,10 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+/// resource "azure-native_containerservice_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_profiles = {}
 ///   agent_pool_profiles {
 ///     count                 = 3
@@ -3930,7 +3962,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///     admin_username = "azureuser"
 ///     ssh = {
 ///       public_keys = [{
-///         "keyData" = "keydata"
+///         key_data = "keydata"
 ///       }]
 ///     }
 ///   }
@@ -3978,6 +4010,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterPropertiesAutoScalerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceLinuxProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshConfigurationArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshPublicKeyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceNetworkProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs;
@@ -4252,7 +4285,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// {
 ///     var managedCluster = new AzureNative.ContainerService.ManagedCluster("managedCluster", new()
 ///     {
-///         AddonProfiles = null,
+///         AddonProfiles = new() { },
 ///         AgentPoolProfiles = new[]
 ///         {
 ///             new AzureNative.ContainerService.Inputs.ManagedClusterAgentPoolProfileArgs
@@ -4433,7 +4466,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -4441,7 +4474,10 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+/// resource "azure-native_containerservice_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_profiles = {}
 ///   agent_pool_profiles {
 ///     count                 = 3
@@ -4471,7 +4507,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///     admin_username = "azureuser"
 ///     ssh = {
 ///       public_keys = [{
-///         "keyData" = "keydata"
+///         key_data = "keydata"
 ///       }]
 ///     }
 ///   }
@@ -4520,6 +4556,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterHTTPProxyConfigArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceLinuxProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshConfigurationArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshPublicKeyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceNetworkProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs;
@@ -4827,7 +4864,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// {
 ///     var managedCluster = new AzureNative.ContainerService.ManagedCluster("managedCluster", new()
 ///     {
-///         AddonProfiles = null,
+///         AddonProfiles = new() { },
 ///         AgentPoolProfiles = new[]
 ///         {
 ///             new AzureNative.ContainerService.Inputs.ManagedClusterAgentPoolProfileArgs
@@ -5006,7 +5043,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -5014,7 +5051,10 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+/// resource "azure-native_containerservice_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_profiles = {}
 ///   agent_pool_profiles {
 ///     count                 = 3
@@ -5043,7 +5083,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///     admin_username = "azureuser"
 ///     ssh = {
 ///       public_keys = [{
-///         "keyData" = "keydata"
+///         key_data = "keydata"
 ///       }]
 ///     }
 ///   }
@@ -5092,6 +5132,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterHTTPProxyConfigArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceLinuxProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshConfigurationArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshPublicKeyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceNetworkProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs;
@@ -5395,7 +5436,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// {
 ///     var managedCluster = new AzureNative.ContainerService.ManagedCluster("managedCluster", new()
 ///     {
-///         AddonProfiles = null,
+///         AddonProfiles = new() { },
 ///         AgentPoolProfiles = new[]
 ///         {
 ///             new AzureNative.ContainerService.Inputs.ManagedClusterAgentPoolProfileArgs
@@ -5563,7 +5604,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -5571,7 +5612,10 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+/// resource "azure-native_containerservice_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_profiles = {}
 ///   agent_pool_profiles {
 ///     count                     = 3
@@ -5597,7 +5641,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///     admin_username = "azureuser"
 ///     ssh = {
 ///       public_keys = [{
-///         "keyData" = "keydata"
+///         key_data = "keydata"
 ///       }]
 ///     }
 ///   }
@@ -5647,6 +5691,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterPropertiesAutoScalerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceLinuxProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshConfigurationArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshPublicKeyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceNetworkProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs;
@@ -5932,7 +5977,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// {
 ///     var managedCluster = new AzureNative.ContainerService.ManagedCluster("managedCluster", new()
 ///     {
-///         AddonProfiles = null,
+///         AddonProfiles = new() { },
 ///         AgentPoolProfiles = new[]
 ///         {
 ///             new AzureNative.ContainerService.Inputs.ManagedClusterAgentPoolProfileArgs
@@ -6093,7 +6138,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -6101,7 +6146,10 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+/// resource "azure-native_containerservice_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_profiles = {}
 ///   agent_pool_profiles {
 ///     count                    = 3
@@ -6125,7 +6173,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///     admin_username = "azureuser"
 ///     ssh = {
 ///       public_keys = [{
-///         "keyData" = "keydata"
+///         key_data = "keydata"
 ///       }]
 ///     }
 ///   }
@@ -6173,6 +6221,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterPropertiesAutoScalerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceLinuxProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshConfigurationArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshPublicKeyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceNetworkProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs;
@@ -6447,7 +6496,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// {
 ///     var managedCluster = new AzureNative.ContainerService.ManagedCluster("managedCluster", new()
 ///     {
-///         AddonProfiles = null,
+///         AddonProfiles = new() { },
 ///         AgentPoolProfiles = new[]
 ///         {
 ///             new AzureNative.ContainerService.Inputs.ManagedClusterAgentPoolProfileArgs
@@ -6628,7 +6677,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -6636,7 +6685,10 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+/// resource "azure-native_containerservice_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_profiles = {}
 ///   agent_pool_profiles {
 ///     count                 = 3
@@ -6666,7 +6718,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///     admin_username = "azureuser"
 ///     ssh = {
 ///       public_keys = [{
-///         "keyData" = "keydata"
+///         key_data = "keydata"
 ///       }]
 ///     }
 ///   }
@@ -6715,6 +6767,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterHTTPProxyConfigArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceLinuxProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshConfigurationArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshPublicKeyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceNetworkProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs;
@@ -7022,7 +7075,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// {
 ///     var managedCluster = new AzureNative.ContainerService.ManagedCluster("managedCluster", new()
 ///     {
-///         AddonProfiles = null,
+///         AddonProfiles = new() { },
 ///         AgentPoolProfiles = new[]
 ///         {
 ///             new AzureNative.ContainerService.Inputs.ManagedClusterAgentPoolProfileArgs
@@ -7183,7 +7236,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -7191,7 +7244,10 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+/// resource "azure-native_containerservice_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_profiles = {}
 ///   agent_pool_profiles {
 ///     count                        = 3
@@ -7215,7 +7271,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///     admin_username = "azureuser"
 ///     ssh = {
 ///       public_keys = [{
-///         "keyData" = "keydata"
+///         key_data = "keydata"
 ///       }]
 ///     }
 ///   }
@@ -7263,6 +7319,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterPropertiesAutoScalerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceLinuxProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshConfigurationArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshPublicKeyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceNetworkProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs;
@@ -7537,7 +7594,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// {
 ///     var managedCluster = new AzureNative.ContainerService.ManagedCluster("managedCluster", new()
 ///     {
-///         AddonProfiles = null,
+///         AddonProfiles = new() { },
 ///         AgentPoolProfiles = new[]
 ///         {
 ///             new AzureNative.ContainerService.Inputs.ManagedClusterAgentPoolProfileArgs
@@ -7705,7 +7762,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -7713,7 +7770,10 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+/// resource "azure-native_containerservice_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_profiles = {}
 ///   agent_pool_profiles {
 ///     count                 = 3
@@ -7736,7 +7796,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///     admin_username = "azureuser"
 ///     ssh = {
 ///       public_keys = [{
-///         "keyData" = "keydata"
+///         key_data = "keydata"
 ///       }]
 ///     }
 ///   }
@@ -7788,6 +7848,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterPropertiesAutoScalerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceLinuxProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshConfigurationArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshPublicKeyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceNetworkProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs;
@@ -8074,7 +8135,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// {
 ///     var managedCluster = new AzureNative.ContainerService.ManagedCluster("managedCluster", new()
 ///     {
-///         AddonProfiles = null,
+///         AddonProfiles = new() { },
 ///         AgentPoolProfiles = new[]
 ///         {
 ///             new AzureNative.ContainerService.Inputs.ManagedClusterAgentPoolProfileArgs
@@ -8240,7 +8301,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -8248,7 +8309,10 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+/// resource "azure-native_containerservice_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_profiles = {}
 ///   agent_pool_profiles {
 ///     count                     = 3
@@ -8274,7 +8338,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///     admin_username = "azureuser"
 ///     ssh = {
 ///       public_keys = [{
-///         "keyData" = "keydata"
+///         key_data = "keydata"
 ///       }]
 ///     }
 ///   }
@@ -8323,6 +8387,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterPropertiesAutoScalerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceLinuxProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshConfigurationArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshPublicKeyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceNetworkProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs;
@@ -8756,7 +8821,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -8764,7 +8829,10 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+/// resource "azure-native_containerservice_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_pool_profiles {
 ///     count                 = 3
 ///     enable_node_public_ip = true
@@ -8780,7 +8848,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///     admin_username = "azureuser"
 ///     ssh = {
 ///       public_keys = [{
-///         "keyData" = "keydata"
+///         key_data = "keydata"
 ///       }]
 ///     }
 ///   }
@@ -8830,6 +8898,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterAgentPoolProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceLinuxProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshConfigurationArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshPublicKeyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceNetworkProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs;
@@ -9084,7 +9153,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// {
 ///     var managedCluster = new AzureNative.ContainerService.ManagedCluster("managedCluster", new()
 ///     {
-///         AddonProfiles = null,
+///         AddonProfiles = new() { },
 ///         AgentPoolProfiles = new[]
 ///         {
 ///             new AzureNative.ContainerService.Inputs.ManagedClusterAgentPoolProfileArgs
@@ -9245,7 +9314,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -9253,7 +9322,10 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+/// resource "azure-native_containerservice_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_profiles = {}
 ///   agent_pool_profiles {
 ///     count                 = 3
@@ -9277,7 +9349,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///     admin_username = "azureuser"
 ///     ssh = {
 ///       public_keys = [{
-///         "keyData" = "keydata"
+///         key_data = "keydata"
 ///       }]
 ///     }
 ///   }
@@ -9325,6 +9397,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterPropertiesAutoScalerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceLinuxProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshConfigurationArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshPublicKeyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceNetworkProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs;
@@ -9744,7 +9817,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -9752,7 +9825,10 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+/// resource "azure-native_containerservice_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_pool_profiles {
 ///     count                 = 3
 ///     enable_node_public_ip = true
@@ -9774,7 +9850,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///     admin_username = "azureuser"
 ///     ssh = {
 ///       public_keys = [{
-///         "keyData" = "keydata"
+///         key_data = "keydata"
 ///       }]
 ///     }
 ///   }
@@ -9815,6 +9891,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterIngressProfileWebAppRoutingArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceLinuxProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshConfigurationArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshPublicKeyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceNetworkProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs;
@@ -10048,7 +10125,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// {
 ///     var managedCluster = new AzureNative.ContainerService.ManagedCluster("managedCluster", new()
 ///     {
-///         AddonProfiles = null,
+///         AddonProfiles = new() { },
 ///         AgentPoolProfiles = new[]
 ///         {
 ///             new AzureNative.ContainerService.Inputs.ManagedClusterAgentPoolProfileArgs
@@ -10195,7 +10272,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -10203,7 +10280,10 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+/// resource "azure-native_containerservice_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_profiles = {}
 ///   agent_pool_profiles {
 ///     count                 = 3
@@ -10226,7 +10306,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///     admin_username = "azureuser"
 ///     ssh = {
 ///       public_keys = [{
-///         "keyData" = "keydata"
+///         key_data = "keydata"
 ///       }]
 ///     }
 ///   }
@@ -10269,6 +10349,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterPropertiesAutoScalerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceLinuxProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshConfigurationArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshPublicKeyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceNetworkProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
@@ -10519,7 +10600,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// {
 ///     var managedCluster = new AzureNative.ContainerService.ManagedCluster("managedCluster", new()
 ///     {
-///         AddonProfiles = null,
+///         AddonProfiles = new() { },
 ///         AgentPoolProfiles = new[]
 ///         {
 ///             new AzureNative.ContainerService.Inputs.ManagedClusterAgentPoolProfileArgs
@@ -10687,7 +10768,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -10695,7 +10776,10 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+/// resource "azure-native_containerservice_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_profiles = {}
 ///   agent_pool_profiles {
 ///     count                     = 3
@@ -10722,7 +10806,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///     admin_username = "azureuser"
 ///     ssh = {
 ///       public_keys = [{
-///         "keyData" = "keydata"
+///         key_data = "keydata"
 ///       }]
 ///     }
 ///   }
@@ -10771,6 +10855,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterPropertiesAutoScalerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceLinuxProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshConfigurationArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshPublicKeyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceNetworkProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs;
@@ -11056,7 +11141,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// {
 ///     var managedCluster = new AzureNative.ContainerService.ManagedCluster("managedCluster", new()
 ///     {
-///         AddonProfiles = null,
+///         AddonProfiles = new() { },
 ///         AgentPoolProfiles = new[]
 ///         {
 ///             new AzureNative.ContainerService.Inputs.ManagedClusterAgentPoolProfileArgs
@@ -11224,7 +11309,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -11232,7 +11317,10 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+/// resource "azure-native_containerservice_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_profiles = {}
 ///   agent_pool_profiles {
 ///     count                     = 3
@@ -11259,7 +11347,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///     admin_username = "azureuser"
 ///     ssh = {
 ///       public_keys = [{
-///         "keyData" = "keydata"
+///         key_data = "keydata"
 ///       }]
 ///     }
 ///   }
@@ -11308,6 +11396,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterPropertiesAutoScalerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceLinuxProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshConfigurationArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshPublicKeyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceNetworkProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs;
@@ -11598,7 +11687,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///             EnableAzureRBAC = true,
 ///             Managed = true,
 ///         },
-///         AddonProfiles = null,
+///         AddonProfiles = new() { },
 ///         AgentPoolProfiles = new[]
 ///         {
 ///             new AzureNative.ContainerService.Inputs.ManagedClusterAgentPoolProfileArgs
@@ -11772,7 +11861,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -11780,7 +11869,10 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+/// resource "azure-native_containerservice_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   aad_profile = {
 ///     enable_azure_rbac = true
 ///     managed           = true
@@ -11808,7 +11900,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///     admin_username = "azureuser"
 ///     ssh = {
 ///       public_keys = [{
-///         "keyData" = "keydata"
+///         key_data = "keydata"
 ///       }]
 ///     }
 ///   }
@@ -11857,6 +11949,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterPropertiesAutoScalerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceLinuxProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshConfigurationArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshPublicKeyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceNetworkProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs;
@@ -12405,7 +12498,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -12413,7 +12506,10 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_managedcluster" "managedCluster" {
+/// resource "azure-native_containerservice_managed_cluster" "managedCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   addon_profiles = {
 ///     "azureKeyvaultSecretsProvider" = {
 ///       config = {
@@ -12444,7 +12540,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///     admin_username = "azureuser"
 ///     ssh = {
 ///       public_keys = [{
-///         "keyData" = "keydata"
+///         key_data = "keydata"
 ///       }]
 ///     }
 ///   }
@@ -12473,13 +12569,13 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 ///       }
 ///       components = {
 ///         egress_gateways = [{
-///           "enabled"                  = true
-///           "gatewayConfigurationName" = "test-gateway-configuration"
-///           "name"                     = "test-istio-egress"
+///           enabled                    = true
+///           gateway_configuration_name = "test-gateway-configuration"
+///           name                       = "test-istio-egress"
 ///         }]
 ///         ingress_gateways = [{
-///           "enabled" = true
-///           "mode"    = "Internal"
+///           enabled = true
+///           mode    = "Internal"
 ///         }]
 ///       }
 ///     }
@@ -12513,10 +12609,12 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.containerservice.ManagedCluster;
 /// import com.pulumi.azurenative.containerservice.ManagedClusterArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterAddonProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterAgentPoolProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterPropertiesAutoScalerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceLinuxProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshConfigurationArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceSshPublicKeyArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ContainerServiceNetworkProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs;
@@ -12525,6 +12623,8 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.IstioCertificateAuthorityArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.IstioPluginCertificateAuthorityArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.IstioComponentsArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.IstioEgressGatewayArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.IstioIngressGatewayArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterSKUArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ManagedClusterWindowsProfileArgs;

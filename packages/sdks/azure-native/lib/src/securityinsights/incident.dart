@@ -85,7 +85,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -94,6 +94,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_securityinsights_incident" "incident" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   classification          = "FalsePositive"
 ///   classification_comment  = "Not a malicious activity"
 ///   classification_reason   = "IncorrectAlertLogic"

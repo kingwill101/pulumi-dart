@@ -56,7 +56,7 @@ import 'server_communication_link_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -64,7 +64,10 @@ import 'server_communication_link_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_servercommunicationlink" "serverCommunicationLink" {
+/// resource "azure-native_sql_server_communication_link" "serverCommunicationLink" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   communication_link_name = "link1"
 ///   partner_server          = "sqldcrudtest-test"
 ///   resource_group_name     = "sqlcrudtest-7398"

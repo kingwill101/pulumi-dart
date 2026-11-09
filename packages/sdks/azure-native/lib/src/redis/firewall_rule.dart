@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_redis_firewallrule" "firewallRule" {
+/// resource "azure-native_redis_firewall_rule" "firewallRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cache_name          = "cache1"
 ///   end_ip              = "192.168.1.4"
 ///   resource_group_name = "rg1"

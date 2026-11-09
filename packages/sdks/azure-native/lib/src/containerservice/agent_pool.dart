@@ -87,7 +87,7 @@ import 'virtual_machines_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -95,9 +95,14 @@ import 'virtual_machines_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_agentpool" "agentPool" {
+/// resource "azure-native_containerservice_agent_pool" "agentPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_pool_name = "agentpool1"
-///   count           = 3
+///   _ {
+///     count = 3
+///   }
 ///   creation_data = {
 ///     source_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.ContainerService/snapshots/snapshot1"
 ///   }
@@ -267,7 +272,7 @@ import 'virtual_machines_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -275,15 +280,20 @@ import 'virtual_machines_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_agentpool" "agentPool" {
+/// resource "azure-native_containerservice_agent_pool" "agentPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_pool_name               = "agentpool1"
 ///   capacity_reservation_group_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Compute/CapacityReservationGroups/crg1"
-///   count                         = 3
-///   orchestrator_version          = ""
-///   os_type                       = "Linux"
-///   resource_group_name           = "rg1"
-///   resource_name                 = "clustername1"
-///   vm_size                       = "Standard_DS2_v2"
+///   _ {
+///     count = 3
+///   }
+///   orchestrator_version = ""
+///   os_type              = "Linux"
+///   resource_group_name  = "rg1"
+///   resource_name        = "clustername1"
+///   vm_size              = "Standard_DS2_v2"
 /// }
 ///
 /// ```
@@ -432,7 +442,7 @@ import 'virtual_machines_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -440,9 +450,14 @@ import 'virtual_machines_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_agentpool" "agentPool" {
-///   agent_pool_name      = "agentpool1"
-///   count                = 3
+/// resource "azure-native_containerservice_agent_pool" "agentPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   agent_pool_name = "agentpool1"
+///   _ {
+///     count = 3
+///   }
 ///   host_group_id        = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg/providers/Microsoft.Compute/hostGroups/hostgroup1"
 ///   orchestrator_version = ""
 ///   os_type              = "Linux"
@@ -597,7 +612,7 @@ import 'virtual_machines_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -605,9 +620,14 @@ import 'virtual_machines_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_agentpool" "agentPool" {
-///   agent_pool_name           = "agentpool1"
-///   count                     = 3
+/// resource "azure-native_containerservice_agent_pool" "agentPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   agent_pool_name = "agentpool1"
+///   _ {
+///     count = 3
+///   }
 ///   enable_encryption_at_host = true
 ///   orchestrator_version      = ""
 ///   os_type                   = "Linux"
@@ -764,7 +784,7 @@ import 'virtual_machines_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -772,9 +792,14 @@ import 'virtual_machines_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_agentpool" "agentPool" {
-///   agent_pool_name      = "agentpool1"
-///   count                = 3
+/// resource "azure-native_containerservice_agent_pool" "agentPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   agent_pool_name = "agentpool1"
+///   _ {
+///     count = 3
+///   }
 ///   orchestrator_version = ""
 ///   os_disk_size_gb      = 64
 ///   os_disk_type         = "Ephemeral"
@@ -934,7 +959,7 @@ import 'virtual_machines_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -942,9 +967,14 @@ import 'virtual_machines_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_agentpool" "agentPool" {
-///   agent_pool_name      = "agentpool1"
-///   count                = 3
+/// resource "azure-native_containerservice_agent_pool" "agentPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   agent_pool_name = "agentpool1"
+///   _ {
+///     count = 3
+///   }
 ///   enable_fips          = true
 ///   orchestrator_version = ""
 ///   os_type              = "Linux"
@@ -1151,7 +1181,7 @@ import 'virtual_machines_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1159,9 +1189,14 @@ import 'virtual_machines_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_agentpool" "agentPool" {
-///   agent_pool_name      = "agentpool1"
-///   count                = 3
+/// resource "azure-native_containerservice_agent_pool" "agentPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   agent_pool_name = "agentpool1"
+///   _ {
+///     count = 3
+///   }
 ///   gpu_instance_profile = "MIG2g"
 ///   kubelet_config = {
 ///     allowed_unsafe_sysctls  = ["kernel.msg*", "net.core.somaxconn"]
@@ -1435,7 +1470,7 @@ import 'virtual_machines_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1443,9 +1478,14 @@ import 'virtual_machines_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_agentpool" "agentPool" {
-///   agent_pool_name      = "agentpool1"
-///   count                = 3
+/// resource "azure-native_containerservice_agent_pool" "agentPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   agent_pool_name = "agentpool1"
+///   _ {
+///     count = 3
+///   }
 ///   mode                 = "User"
 ///   orchestrator_version = ""
 ///   os_disk_size_gb      = 64
@@ -1660,7 +1700,7 @@ import 'virtual_machines_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1668,9 +1708,14 @@ import 'virtual_machines_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_agentpool" "agentPool" {
+/// resource "azure-native_containerservice_agent_pool" "agentPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_pool_name = "agentpool1"
-///   count           = 3
+///   _ {
+///     count = 3
+///   }
 ///   kubelet_config = {
 ///     allowed_unsafe_sysctls  = ["kernel.msg*", "net.core.somaxconn"]
 ///     cpu_cfs_quota           = true
@@ -1939,7 +1984,7 @@ import 'virtual_machines_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1947,9 +1992,14 @@ import 'virtual_machines_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_agentpool" "agentPool" {
-///   agent_pool_name      = "agentpool1"
-///   count                = 3
+/// resource "azure-native_containerservice_agent_pool" "agentPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   agent_pool_name = "agentpool1"
+///   _ {
+///     count = 3
+///   }
 ///   message_of_the_day   = "Zm9vCg=="
 ///   mode                 = "User"
 ///   orchestrator_version = ""
@@ -2166,7 +2216,7 @@ import 'virtual_machines_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2174,9 +2224,14 @@ import 'virtual_machines_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_agentpool" "agentPool" {
+/// resource "azure-native_containerservice_agent_pool" "agentPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_pool_name = "agentpool1"
-///   count           = 3
+///   _ {
+///     count = 3
+///   }
 ///   kubelet_config = {
 ///     allowed_unsafe_sysctls  = ["kernel.msg*", "net.core.somaxconn"]
 ///     cpu_cfs_quota           = true
@@ -2446,7 +2501,7 @@ import 'virtual_machines_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2454,9 +2509,14 @@ import 'virtual_machines_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_agentpool" "agentPool" {
-///   agent_pool_name              = "agentpool1"
-///   count                        = 3
+/// resource "azure-native_containerservice_agent_pool" "agentPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   agent_pool_name = "agentpool1"
+///   _ {
+///     count = 3
+///   }
 ///   orchestrator_version         = ""
 ///   os_type                      = "Linux"
 ///   proximity_placement_group_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.Compute/proximityPlacementGroups/ppg1"
@@ -2611,7 +2671,7 @@ import 'virtual_machines_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2619,9 +2679,14 @@ import 'virtual_machines_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_agentpool" "agentPool" {
-///   agent_pool_name      = "agentpool1"
-///   count                = 3
+/// resource "azure-native_containerservice_agent_pool" "agentPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   agent_pool_name = "agentpool1"
+///   _ {
+///     count = 3
+///   }
 ///   enable_ultra_ssd     = true
 ///   orchestrator_version = ""
 ///   os_type              = "Linux"
@@ -2826,7 +2891,7 @@ import 'virtual_machines_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2834,7 +2899,10 @@ import 'virtual_machines_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_agentpool" "agentPool" {
+/// resource "azure-native_containerservice_agent_pool" "agentPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_pool_name = "agentpool1"
 ///   node_labels = {
 ///     "key1" = "val1"
@@ -2851,11 +2919,11 @@ import 'virtual_machines_profile_response.dart';
 ///   virtual_machines_profile = {
 ///     scale = {
 ///       manual = [{
-///         "count" = 3
-///         "size"  = "Standard_D2_v2"
+///         count = 3
+///         size  = "Standard_D2_v2"
 ///         }, {
-///         "count" = 2
-///         "size"  = "Standard_D2_v3"
+///         count = 2
+///         size  = "Standard_D2_v3"
 ///       }]
 ///     }
 ///   }
@@ -2873,6 +2941,7 @@ import 'virtual_machines_profile_response.dart';
 /// import com.pulumi.azurenative.containerservice.AgentPoolArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.VirtualMachinesProfileArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ScaleProfileArgs;
+/// import com.pulumi.azurenative.containerservice.inputs.ManualScaleProfileArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -3072,7 +3141,7 @@ import 'virtual_machines_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3080,9 +3149,14 @@ import 'virtual_machines_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_agentpool" "agentPool" {
-///   agent_pool_name      = "wnp2"
-///   count                = 3
+/// resource "azure-native_containerservice_agent_pool" "agentPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   agent_pool_name = "wnp2"
+///   _ {
+///     count = 3
+///   }
 ///   orchestrator_version = "1.23.3"
 ///   os_sku               = "Windows2022"
 ///   os_type              = "Windows"
@@ -3260,7 +3334,7 @@ import 'virtual_machines_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3268,9 +3342,14 @@ import 'virtual_machines_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_agentpool" "agentPool" {
+/// resource "azure-native_containerservice_agent_pool" "agentPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_pool_name = "agentpool1"
-///   count           = 3
+///   _ {
+///     count = 3
+///   }
 ///   node_labels = {
 ///     "key1" = "val1"
 ///   }
@@ -3467,7 +3546,7 @@ import 'virtual_machines_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3475,9 +3554,14 @@ import 'virtual_machines_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_agentpool" "agentPool" {
-///   agent_pool_name      = "wnp2"
-///   count                = 3
+/// resource "azure-native_containerservice_agent_pool" "agentPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   agent_pool_name = "wnp2"
+///   _ {
+///     count = 3
+///   }
 ///   orchestrator_version = "1.23.8"
 ///   os_sku               = "Windows2022"
 ///   os_type              = "Windows"
@@ -3672,7 +3756,7 @@ import 'virtual_machines_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3680,10 +3764,15 @@ import 'virtual_machines_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_agentpool" "agentPool" {
+/// resource "azure-native_containerservice_agent_pool" "agentPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_pool_name = "agentpool1"
-///   count           = 3
-///   mode            = "User"
+///   _ {
+///     count = 3
+///   }
+///   mode = "User"
 ///   node_labels = {
 ///     "key1" = "val1"
 ///   }
@@ -3874,7 +3963,7 @@ import 'virtual_machines_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3882,7 +3971,10 @@ import 'virtual_machines_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_agentpool" "agentPool" {
+/// resource "azure-native_containerservice_agent_pool" "agentPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_pool_name = "agentpool1"
 ///   power_state = {
 ///     code = "Running"
@@ -4026,7 +4118,7 @@ import 'virtual_machines_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -4034,7 +4126,10 @@ import 'virtual_machines_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_agentpool" "agentPool" {
+/// resource "azure-native_containerservice_agent_pool" "agentPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_pool_name = "agentpool1"
 ///   power_state = {
 ///     code = "Stopped"
@@ -4196,7 +4291,7 @@ import 'virtual_machines_profile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -4204,9 +4299,14 @@ import 'virtual_machines_profile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_agentpool" "agentPool" {
-///   agent_pool_name           = "agentpool1"
-///   count                     = 3
+/// resource "azure-native_containerservice_agent_pool" "agentPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   agent_pool_name = "agentpool1"
+///   _ {
+///     count = 3
+///   }
 ///   enable_auto_scaling       = true
 ///   max_count                 = 2
 ///   min_count                 = 2

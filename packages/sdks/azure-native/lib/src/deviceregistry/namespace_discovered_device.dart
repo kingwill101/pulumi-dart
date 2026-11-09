@@ -52,7 +52,7 @@ import 'system_data_response.dart';
 ///         {
 ///             { "site", "building-1" },
 ///         },
-///         Version = 1,
+///         Version = 1.0,
 ///     });
 ///
 /// });
@@ -105,7 +105,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -113,7 +113,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_deviceregistry_namespacediscovereddevice" "namespaceDiscoveredDevice" {
+/// resource "azure-native_deviceregistry_namespace_discovered_device" "namespaceDiscoveredDevice" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   discovered_device_name = "my-discovereddevice-1"
 ///   discovery_id           = "discoveryId1"
 ///   endpoints = {
@@ -151,6 +154,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.NamespaceDiscoveredDeviceArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.DiscoveredMessagingEndpointsArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.DiscoveredOutboundEndpointsArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.DeviceMessagingEndpointArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.ExtendedLocationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

@@ -56,7 +56,7 @@ import 'event_hub_data_connection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -64,7 +64,10 @@ import 'event_hub_data_connection_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kusto_eventhubdataconnection" "eventHubDataConnection" {
+/// resource "azure-native_kusto_event_hub_data_connection" "eventHubDataConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name         = "kustoCluster"
 ///   data_connection_name = "dataConnectionTest"
 ///   database_name        = "KustoDatabase1"
@@ -203,7 +206,7 @@ import 'event_hub_data_connection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -211,7 +214,10 @@ import 'event_hub_data_connection_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kusto_eventhubdataconnection" "eventHubDataConnection" {
+/// resource "azure-native_kusto_event_hub_data_connection" "eventHubDataConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name                 = "kustoCluster"
 ///   consumer_group               = "testConsumerGroup1"
 ///   data_connection_name         = "dataConnectionTest"
@@ -252,7 +258,6 @@ import 'event_hub_data_connection_args.dart';
 ///             .dataConnectionName("dataConnectionTest")
 ///             .databaseName("KustoDatabase8")
 ///             .eventHubResourceId("/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/kustorptest/providers/Microsoft.EventHub/namespaces/eventhubTestns1/eventhubs/eventhubTest1")
-///             .kind("EventHub")
 ///             .location("westus")
 ///             .managedIdentityResourceId("/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/kustorptest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/managedidentityTest1")
 ///             .resourceGroupName("kustorptest")
@@ -365,7 +370,7 @@ import 'event_hub_data_connection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -373,7 +378,10 @@ import 'event_hub_data_connection_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kusto_eventhubdataconnection" "eventHubDataConnection" {
+/// resource "azure-native_kusto_event_hub_data_connection" "eventHubDataConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name         = "kustoCluster"
 ///   data_connection_name = "dataConnectionTest"
 ///   database_name        = "KustoDatabase8"

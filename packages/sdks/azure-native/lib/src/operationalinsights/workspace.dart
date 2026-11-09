@@ -78,7 +78,7 @@ import 'workspace_sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -87,6 +87,9 @@ import 'workspace_sku_response.dart';
 /// }
 ///
 /// resource "azure-native_operationalinsights_workspace" "workspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "australiasoutheast"
 ///   resource_group_name = "oiautorest6685"
 ///   retention_in_days   = 30

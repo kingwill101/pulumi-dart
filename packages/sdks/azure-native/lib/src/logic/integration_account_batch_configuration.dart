@@ -88,7 +88,7 @@ import 'integration_account_batch_configuration_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -96,7 +96,10 @@ import 'integration_account_batch_configuration_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_logic_integrationaccountbatchconfiguration" "integrationAccountBatchConfiguration" {
+/// resource "azure-native_logic_integration_account_batch_configuration" "integrationAccountBatchConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   batch_configuration_name = "testBatchConfiguration"
 ///   integration_account_name = "testIntegrationAccount"
 ///   location                 = "westus"

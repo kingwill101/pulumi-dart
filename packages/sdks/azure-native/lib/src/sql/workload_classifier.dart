@@ -72,7 +72,7 @@ import 'workload_classifier_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,7 +80,10 @@ import 'workload_classifier_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_workloadclassifier" "workloadClassifier" {
+/// resource "azure-native_sql_workload_classifier" "workloadClassifier" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   context                  = "test_context"
 ///   database_name            = "testdb"
 ///   end_time                 = "14:00"
@@ -248,7 +251,7 @@ import 'workload_classifier_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -256,7 +259,10 @@ import 'workload_classifier_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_workloadclassifier" "workloadClassifier" {
+/// resource "azure-native_sql_workload_classifier" "workloadClassifier" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name            = "testdb"
 ///   member_name              = "dbo"
 ///   resource_group_name      = "Default-SQL-SouthEastAsia"

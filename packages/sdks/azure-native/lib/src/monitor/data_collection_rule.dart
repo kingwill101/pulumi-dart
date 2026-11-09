@@ -37,7 +37,7 @@ import 'stream_declaration_response.dart';
 ///                 {
 ///                     "centralWorkspace",
 ///                 },
-///                 Streams = new[]
+///                 Streams =
 ///                 {
 ///                     AzureNative.Monitor.KnownDataFlowStreams.Microsoft_Perf,
 ///                     AzureNative.Monitor.KnownDataFlowStreams.Microsoft_Syslog,
@@ -60,7 +60,7 @@ import 'stream_declaration_response.dart';
 ///                     },
 ///                     Name = "cloudTeamCoreCounters",
 ///                     SamplingFrequencyInSeconds = 15,
-///                     Streams = new[]
+///                     Streams =
 ///                     {
 ///                         AzureNative.Monitor.KnownPerfCounterDataSourceStreams.Microsoft_Perf,
 ///                     },
@@ -73,7 +73,7 @@ import 'stream_declaration_response.dart';
 ///                     },
 ///                     Name = "appTeamExtraCounters",
 ///                     SamplingFrequencyInSeconds = 30,
-///                     Streams = new[]
+///                     Streams =
 ///                     {
 ///                         AzureNative.Monitor.KnownPerfCounterDataSourceStreams.Microsoft_Perf,
 ///                     },
@@ -83,36 +83,36 @@ import 'stream_declaration_response.dart';
 ///             {
 ///                 new AzureNative.Monitor.Inputs.SyslogDataSourceArgs
 ///                 {
-///                     FacilityNames = new[]
+///                     FacilityNames =
 ///                     {
 ///                         AzureNative.Monitor.KnownSyslogDataSourceFacilityNames.Cron,
 ///                     },
-///                     LogLevels = new[]
+///                     LogLevels =
 ///                     {
 ///                         AzureNative.Monitor.KnownSyslogDataSourceLogLevels.Debug,
 ///                         AzureNative.Monitor.KnownSyslogDataSourceLogLevels.Critical,
 ///                         AzureNative.Monitor.KnownSyslogDataSourceLogLevels.Emergency,
 ///                     },
 ///                     Name = "cronSyslog",
-///                     Streams = new[]
+///                     Streams =
 ///                     {
 ///                         AzureNative.Monitor.KnownSyslogDataSourceStreams.Microsoft_Syslog,
 ///                     },
 ///                 },
 ///                 new AzureNative.Monitor.Inputs.SyslogDataSourceArgs
 ///                 {
-///                     FacilityNames = new[]
+///                     FacilityNames =
 ///                     {
 ///                         AzureNative.Monitor.KnownSyslogDataSourceFacilityNames.Syslog,
 ///                     },
-///                     LogLevels = new[]
+///                     LogLevels =
 ///                     {
 ///                         AzureNative.Monitor.KnownSyslogDataSourceLogLevels.Alert,
 ///                         AzureNative.Monitor.KnownSyslogDataSourceLogLevels.Critical,
 ///                         AzureNative.Monitor.KnownSyslogDataSourceLogLevels.Emergency,
 ///                     },
 ///                     Name = "syslogBase",
-///                     Streams = new[]
+///                     Streams =
 ///                     {
 ///                         AzureNative.Monitor.KnownSyslogDataSourceStreams.Microsoft_Syslog,
 ///                     },
@@ -123,7 +123,7 @@ import 'stream_declaration_response.dart';
 ///                 new AzureNative.Monitor.Inputs.WindowsEventLogDataSourceArgs
 ///                 {
 ///                     Name = "cloudSecurityTeamEvents",
-///                     Streams = new[]
+///                     Streams =
 ///                     {
 ///                         AzureNative.Monitor.KnownWindowsEventLogDataSourceStreams.Microsoft_WindowsEvent,
 ///                     },
@@ -135,7 +135,7 @@ import 'stream_declaration_response.dart';
 ///                 new AzureNative.Monitor.Inputs.WindowsEventLogDataSourceArgs
 ///                 {
 ///                     Name = "appTeam1AppEvents",
-///                     Streams = new[]
+///                     Streams =
 ///                     {
 ///                         AzureNative.Monitor.KnownWindowsEventLogDataSourceStreams.Microsoft_WindowsEvent,
 ///                     },
@@ -290,7 +290,7 @@ import 'stream_declaration_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -298,7 +298,10 @@ import 'stream_declaration_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_datacollectionrule" "dataCollectionRule" {
+/// resource "azure-native_monitor_data_collection_rule" "dataCollectionRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_collection_rule_name = "myCollectionRule"
 ///   data_flows {
 ///     destinations = ["centralWorkspace"]
@@ -306,41 +309,41 @@ import 'stream_declaration_response.dart';
 ///   }
 ///   data_sources = {
 ///     performance_counters = [{
-///       "counterSpecifiers"          = ["\\Processor(_Total)\\% Processor Time", "\\Memory\\Committed Bytes", "\\LogicalDisk(_Total)\\Free Megabytes", "\\PhysicalDisk(_Total)\\Avg. Disk Queue Length"]
-///       "name"                       = "cloudTeamCoreCounters"
-///       "samplingFrequencyInSeconds" = 15
-///       "streams"                    = ["Microsoft-Perf"]
+///       counter_specifiers            = ["\\Processor(_Total)\\% Processor Time", "\\Memory\\Committed Bytes", "\\LogicalDisk(_Total)\\Free Megabytes", "\\PhysicalDisk(_Total)\\Avg. Disk Queue Length"]
+///       name                          = "cloudTeamCoreCounters"
+///       sampling_frequency_in_seconds = 15
+///       streams                       = ["Microsoft-Perf"]
 ///       }, {
-///       "counterSpecifiers"          = ["\\Process(_Total)\\Thread Count"]
-///       "name"                       = "appTeamExtraCounters"
-///       "samplingFrequencyInSeconds" = 30
-///       "streams"                    = ["Microsoft-Perf"]
+///       counter_specifiers            = ["\\Process(_Total)\\Thread Count"]
+///       name                          = "appTeamExtraCounters"
+///       sampling_frequency_in_seconds = 30
+///       streams                       = ["Microsoft-Perf"]
 ///     }]
 ///     syslog = [{
-///       "facilityNames" = ["cron"]
-///       "logLevels"     = ["Debug", "Critical", "Emergency"]
-///       "name"          = "cronSyslog"
-///       "streams"       = ["Microsoft-Syslog"]
+///       facility_names = ["cron"]
+///       log_levels     = ["Debug", "Critical", "Emergency"]
+///       name           = "cronSyslog"
+///       streams        = ["Microsoft-Syslog"]
 ///       }, {
-///       "facilityNames" = ["syslog"]
-///       "logLevels"     = ["Alert", "Critical", "Emergency"]
-///       "name"          = "syslogBase"
-///       "streams"       = ["Microsoft-Syslog"]
+///       facility_names = ["syslog"]
+///       log_levels     = ["Alert", "Critical", "Emergency"]
+///       name           = "syslogBase"
+///       streams        = ["Microsoft-Syslog"]
 ///     }]
 ///     windows_event_logs = [{
-///       "name"         = "cloudSecurityTeamEvents"
-///       "streams"      = ["Microsoft-WindowsEvent"]
-///       "xPathQueries" = ["Security!"]
+///       name           = "cloudSecurityTeamEvents"
+///       streams        = ["Microsoft-WindowsEvent"]
+///       x_path_queries = ["Security!"]
 ///       }, {
-///       "name"         = "appTeam1AppEvents"
-///       "streams"      = ["Microsoft-WindowsEvent"]
-///       "xPathQueries" = ["System![System[(Level = 1 or Level = 2 or Level = 3)]]", "Application!*[System[(Level = 1 or Level = 2 or Level = 3)]]"]
+///       name           = "appTeam1AppEvents"
+///       streams        = ["Microsoft-WindowsEvent"]
+///       x_path_queries = ["System![System[(Level = 1 or Level = 2 or Level = 3)]]", "Application!*[System[(Level = 1 or Level = 2 or Level = 3)]]"]
 ///     }]
 ///   }
 ///   destinations = {
 ///     log_analytics = [{
-///       "name"                = "centralWorkspace"
-///       "workspaceResourceId" = "/subscriptions/703362b3-f278-4e4b-9179-c76eaf41ffc2/resourceGroups/myResourceGroup/providers/Microsoft.OperationalInsights/workspaces/centralTeamWorkspace"
+///       name                  = "centralWorkspace"
+///       workspace_resource_id = "/subscriptions/703362b3-f278-4e4b-9179-c76eaf41ffc2/resourceGroups/myResourceGroup/providers/Microsoft.OperationalInsights/workspaces/centralTeamWorkspace"
 ///     }]
 ///   }
 ///   location            = "eastus"
@@ -359,7 +362,11 @@ import 'stream_declaration_response.dart';
 /// import com.pulumi.azurenative.monitor.DataCollectionRuleArgs;
 /// import com.pulumi.azurenative.monitor.inputs.DataFlowArgs;
 /// import com.pulumi.azurenative.monitor.inputs.DataCollectionRuleDataSourcesArgs;
+/// import com.pulumi.azurenative.monitor.inputs.PerfCounterDataSourceArgs;
+/// import com.pulumi.azurenative.monitor.inputs.SyslogDataSourceArgs;
+/// import com.pulumi.azurenative.monitor.inputs.WindowsEventLogDataSourceArgs;
 /// import com.pulumi.azurenative.monitor.inputs.DataCollectionRuleDestinationsArgs;
+/// import com.pulumi.azurenative.monitor.inputs.LogAnalyticsDestinationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

@@ -86,7 +86,7 @@ import 'time_series_database_connection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -94,7 +94,10 @@ import 'time_series_database_connection_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_digitaltwins_timeseriesdatabaseconnection" "timeSeriesDatabaseConnection" {
+/// resource "azure-native_digitaltwins_time_series_database_connection" "timeSeriesDatabaseConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     adx_database_name               = "myDatabase"
 ///     adx_endpoint_uri                = "https://mycluster.kusto.windows.net"
@@ -145,7 +148,6 @@ import 'time_series_database_connection_args.dart';
 ///                 .adxEndpointUri("https://mycluster.kusto.windows.net")
 ///                 .adxResourceId("/subscriptions/c493073e-2460-45ba-a403-f3e0df1e9feg/resourceGroups/testrg/providers/Microsoft.Kusto/clusters/mycluster")
 ///                 .adxTableName("myTable")
-///                 .connectionType("AzureDataExplorer")
 ///                 .eventHubEndpointUri("sb://myeh.servicebus.windows.net/")
 ///                 .eventHubEntityPath("myeh")
 ///                 .eventHubNamespaceResourceId("/subscriptions/c493073e-2460-45ba-a403-f3e0df1e9feg/resourceGroups/testrg/providers/Microsoft.EventHub/namespaces/myeh")
@@ -313,7 +315,7 @@ import 'time_series_database_connection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -321,7 +323,10 @@ import 'time_series_database_connection_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_digitaltwins_timeseriesdatabaseconnection" "timeSeriesDatabaseConnection" {
+/// resource "azure-native_digitaltwins_time_series_database_connection" "timeSeriesDatabaseConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     adx_database_name                            = "myDatabase"
 ///     adx_endpoint_uri                             = "https://mycluster.kusto.windows.net"
@@ -372,7 +377,6 @@ import 'time_series_database_connection_args.dart';
 ///                 .adxResourceId("/subscriptions/c493073e-2460-45ba-a403-f3e0df1e9feg/resourceGroups/testrg/providers/Microsoft.Kusto/clusters/mycluster")
 ///                 .adxTableName("myPropertyUpdatesTable")
 ///                 .adxTwinLifecycleEventsTableName("myTwinLifecycleEventsTable")
-///                 .connectionType("AzureDataExplorer")
 ///                 .eventHubEndpointUri("sb://myeh.servicebus.windows.net/")
 ///                 .eventHubEntityPath("myeh")
 ///                 .eventHubNamespaceResourceId("/subscriptions/c493073e-2460-45ba-a403-f3e0df1e9feg/resourceGroups/testrg/providers/Microsoft.EventHub/namespaces/myeh")

@@ -185,7 +185,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -194,13 +194,16 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_offazurespringboot_springbootapp" "springbootapp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     app_name = "wrauwfegjfccym"
 ///     app_port = 12
 ///     app_type = "axzunlh"
 ///     application_configurations = [{
-///       "key"   = "wrbnwhqxjextxgdfbonuynvs"
-///       "value" = "jnmaf"
+///       key   = "wrbnwhqxjextxgdfbonuynvs"
+///       value = "jnmaf"
 ///     }]
 ///     artifact_name     = "wrauwfegjfccym"
 ///     binding_ports     = [11]
@@ -211,9 +214,9 @@ import 'system_data_response.dart';
 ///     environments      = ["afhprevtcx"]
 ///     instance_count    = 5
 ///     instances = [{
-///       "instanceCount" = 5
-///       "jvmMemoryInMB" = 128
-///       "machineArmId"  = "lsstlommxuskyhnwyxh"
+///       instance_count   = 5
+///       jvm_memory_in_mb = 128
+///       machine_arm_id   = "lsstlommxuskyhnwyxh"
 ///     }]
 ///     jar_file_location  = "wfptqclncaqycyfbfih"
 ///     jvm_memory_in_mb   = 1
@@ -221,8 +224,8 @@ import 'system_data_response.dart';
 ///     last_modified_time = "2022-12-02T09:28:24.094Z"
 ///     machine_arm_ids    = ["lsstlommxuskyhnwyxh"]
 ///     miscs = [{
-///       "key"   = "fobsfetkynfmkziei"
-///       "value" = "k"
+///       key   = "fobsfetkynfmkziei"
+///       value = "k"
 ///     }]
 ///     runtime_jdk_version      = "eblzujbsulpeilykqyjso"
 ///     servers                  = ["gvfhsohasdx"]
@@ -245,6 +248,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.offazurespringboot.Springbootapp;
 /// import com.pulumi.azurenative.offazurespringboot.SpringbootappArgs;
 /// import com.pulumi.azurenative.offazurespringboot.inputs.SpringbootappsPropertiesArgs;
+/// import com.pulumi.azurenative.offazurespringboot.inputs.SpringbootappsPropertiesApplicationConfigurationsArgs;
+/// import com.pulumi.azurenative.offazurespringboot.inputs.SpringbootappsPropertiesInstancesArgs;
+/// import com.pulumi.azurenative.offazurespringboot.inputs.SpringbootappsPropertiesMiscsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -495,7 +501,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -504,6 +510,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_offazurespringboot_springbootapp" "springbootapp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "rgspringbootapps"
 ///   site_name           = "pdfosfhtemfsaglvwjdyqlyeipucrd"
 ///   springbootapps_name = "ofjeesoahqtnovlbuvflyknpbhcpeqqhekntvqxyemuwbcqnuxjgfhsf"

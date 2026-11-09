@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,7 +77,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_devcenter_devcenter" "devCenter" {
+/// resource "azure-native_devcenter_dev_center" "devCenter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dev_center_name     = "Contoso"
 ///   display_name        = "ContosoDevCenter"
 ///   location            = "centralus"

@@ -74,7 +74,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,7 +82,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_mongocluster_mongocluster" "mongoCluster" {
+/// resource "azure-native_mongocluster_mongo_cluster" "mongoCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location           = "westus2"
 ///   mongo_cluster_name = "myMongoCluster"
 ///   properties = {
@@ -228,7 +231,7 @@ import 'system_data_response.dart';
 ///             },
 ///             Storage = new AzureNative.MongoCluster.Inputs.StoragePropertiesArgs
 ///             {
-///                 SizeGb = 128,
+///                 SizeGb = 128.0,
 ///             },
 ///         },
 ///         ResourceGroupName = "TestResourceGroup",
@@ -283,7 +286,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -291,7 +294,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_mongocluster_mongocluster" "mongoCluster" {
+/// resource "azure-native_mongocluster_mongo_cluster" "mongoCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location           = "westus2"
 ///   mongo_cluster_name = "myMongoCluster"
 ///   properties = {
@@ -524,7 +530,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -532,7 +538,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_mongocluster_mongocluster" "mongoCluster" {
+/// resource "azure-native_mongocluster_mongo_cluster" "mongoCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location           = "centralus"
 ///   mongo_cluster_name = "myReplicaMongoCluster"
 ///   properties = {

@@ -56,7 +56,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -64,7 +64,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_providerhub_providermonitorsetting" "providerMonitorSetting" {
+/// resource "azure-native_providerhub_provider_monitor_setting" "providerMonitorSetting" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                      = "eastus"
 ///   provider_monitor_setting_name = "ContosoMonitorSetting"
 ///   resource_group_name           = "default"

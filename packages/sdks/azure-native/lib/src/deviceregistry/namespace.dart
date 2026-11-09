@@ -94,7 +94,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -103,6 +103,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_deviceregistry_namespace" "namespace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
@@ -135,6 +138,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.NamespaceArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.SystemAssignedServiceIdentityArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.MessagingArgs;
+/// import com.pulumi.azurenative.deviceregistry.inputs.MessagingEndpointArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

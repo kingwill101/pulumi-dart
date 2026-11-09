@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_signalrservice_signalrsharedprivatelinkresource" "signalRSharedPrivateLinkResource" {
+/// resource "azure-native_signalrservice_signal_r_shared_private_link_resource" "signalRSharedPrivateLinkResource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_id                          = "sites"
 ///   private_link_resource_id          = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/Microsoft.Web/sites/myWebApp"
 ///   request_message                   = "Please approve"

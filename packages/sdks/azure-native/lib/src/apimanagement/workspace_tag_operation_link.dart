@@ -62,7 +62,7 @@ import 'workspace_tag_operation_link_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,7 +70,10 @@ import 'workspace_tag_operation_link_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_workspacetagoperationlink" "workspaceTagOperationLink" {
+/// resource "azure-native_apimanagement_workspace_tag_operation_link" "workspaceTagOperationLink" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   operation_id        = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/apis/echo-api/operations/op1"
 ///   operation_link_id   = "link1"
 ///   resource_group_name = "rg1"

@@ -97,7 +97,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -105,7 +105,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_loadbalancerbackendaddresspool" "loadBalancerBackendAddressPool" {
+/// resource "azure-native_network_load_balancer_backend_address_pool" "loadBalancerBackendAddressPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backend_address_pool_name = "backend"
 ///   load_balancer_backend_addresses {
 ///     ip_address = "10.0.0.4"

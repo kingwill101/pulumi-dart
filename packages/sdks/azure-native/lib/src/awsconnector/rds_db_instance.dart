@@ -331,7 +331,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -339,7 +339,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_rdsdbinstance" "rdsDbInstance" {
+/// resource "azure-native_awsconnector_rds_db_instance" "rdsDbInstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "pktn"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -349,8 +352,8 @@ import 'system_data_response.dart';
 ///       allocated_storage           = "ryhixfujuvwifznymxbze"
 ///       allow_major_version_upgrade = true
 ///       associated_roles = [{
-///         "featureName" = "jyivqbpnmvg"
-///         "roleArn"     = "jblmzpmkcvnkvsxkswtmfqlwttf"
+///         feature_name = "jyivqbpnmvg"
+///         role_arn     = "jblmzpmkcvnkvsxkswtmfqlwttf"
 ///       }]
 ///       auto_minor_version_upgrade              = true
 ///       automatic_backup_replication_kms_key_id = "eqwqyzovzxcmragbjhqq"
@@ -420,8 +423,8 @@ import 'system_data_response.dart';
 ///       preferred_backup_window               = "wesxjihubbcfgwqebebkzmmfoipd"
 ///       preferred_maintenance_window          = "gtmzlucaagottcm"
 ///       processor_features = [{
-///         "name"  = "coreCount"
-///         "value" = "qhhoewgkcuvttcihy"
+///         name  = "coreCount"
+///         value = "qhhoewgkcuvttcihy"
 ///       }]
 ///       promotion_tier                           = 12
 ///       publicly_accessible                      = true
@@ -436,8 +439,8 @@ import 'system_data_response.dart';
 ///       storage_throughput                       = 16
 ///       storage_type                             = "ywcy"
 ///       tags = [{
-///         "key"   = "kilbegh"
-///         "value" = "rdhflka"
+///         key   = "kilbegh"
+///         value = "rdhflka"
 ///       }]
 ///       tde_credential_arn             = "twmu"
 ///       tde_credential_password        = "fqedsuqphkwhafmptzeruepeqalyty"
@@ -472,9 +475,12 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.RdsDbInstanceArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RdsDBInstancePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsRdsDBInstancePropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.DBInstanceRoleArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CertificateDetailsArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RdsDbInstanceEndpointArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.MasterUserSecretArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ProcessorFeatureArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

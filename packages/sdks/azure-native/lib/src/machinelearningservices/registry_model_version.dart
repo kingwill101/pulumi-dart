@@ -104,7 +104,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -112,7 +112,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_machinelearningservices_registrymodelversion" "registryModelVersion" {
+/// resource "azure-native_machinelearningservices_registry_model_version" "registryModelVersion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   model_name = "string"
 ///   properties = {
 ///     description = "string"
@@ -149,6 +152,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.machinelearningservices.RegistryModelVersion;
 /// import com.pulumi.azurenative.machinelearningservices.RegistryModelVersionArgs;
 /// import com.pulumi.azurenative.machinelearningservices.inputs.ModelVersionPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.FlavorDataArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

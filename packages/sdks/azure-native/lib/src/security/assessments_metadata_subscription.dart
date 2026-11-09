@@ -21,7 +21,7 @@ import 'assessments_metadata_subscription_args.dart';
 ///     {
 ///         AssessmentMetadataName = "ca039e75-a276-4175-aebc-bcd41e4b14b7",
 ///         AssessmentType = AzureNative.Security.AssessmentType.CustomerManaged,
-///         Categories = new[]
+///         Categories =
 ///         {
 ///             AzureNative.Security.Categories.Compute,
 ///         },
@@ -30,7 +30,7 @@ import 'assessments_metadata_subscription_args.dart';
 ///         ImplementationEffort = AzureNative.Security.ImplementationEffort.Low,
 ///         RemediationDescription = "To install an endpoint protection solution: 1.  <a href=\"https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#how-do-i-turn-on-antimalware-in-my-virtual-machine-scale-set\">Follow the instructions in How do I turn on antimalware in my virtual machine scale set</a>",
 ///         Severity = AzureNative.Security.Severity.Medium,
-///         Threats = new[]
+///         Threats =
 ///         {
 ///             AzureNative.Security.Threats.DataExfiltration,
 ///             AzureNative.Security.Threats.DataSpillage,
@@ -82,7 +82,7 @@ import 'assessments_metadata_subscription_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -90,7 +90,10 @@ import 'assessments_metadata_subscription_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_assessmentsmetadatasubscription" "assessmentsMetadataSubscription" {
+/// resource "azure-native_security_assessments_metadata_subscription" "assessmentsMetadataSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assessment_metadata_name = "ca039e75-a276-4175-aebc-bcd41e4b14b7"
 ///   assessment_type          = "CustomerManaged"
 ///   categories               = ["Compute"]

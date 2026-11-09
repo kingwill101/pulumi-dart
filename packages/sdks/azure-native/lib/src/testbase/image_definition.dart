@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_testbase_imagedefinition" "imageDefinition" {
+/// resource "azure-native_testbase_image_definition" "imageDefinition" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   architecture           = "x64"
 ///   image_definition_name  = "contoso-image-def"
 ///   os_state               = "Generalized"

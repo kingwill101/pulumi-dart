@@ -71,7 +71,7 @@ import 'cluster_sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -80,6 +80,9 @@ import 'cluster_sku_response.dart';
 /// }
 ///
 /// resource "azure-native_streamanalytics_cluster" "cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name        = "An Example Cluster"
 ///   location            = "North US"
 ///   resource_group_name = "sjrg"

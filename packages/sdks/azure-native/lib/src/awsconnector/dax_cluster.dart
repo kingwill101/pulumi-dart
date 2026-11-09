@@ -219,7 +219,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -227,7 +227,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_daxcluster" "daxCluster" {
+/// resource "azure-native_awsconnector_dax_cluster" "daxCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "vmw"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -250,16 +253,16 @@ import 'system_data_response.dart';
 ///       node_ids_to_remove = ["uzzbmymlnrssuuqf"]
 ///       node_type          = "vwyypkakaevefciygrniikfpyul"
 ///       nodes = [{
-///         "availabilityZone" = "j"
-///         "endpoint" = {
-///           "address" = "piabfnkoscysceufovcpffxl"
-///           "port"    = 13
-///           "url"     = "bcwzfeebgdzlvoafvyddknwzaih"
+///         availability_zone = "j"
+///         endpoint = {
+///           address = "piabfnkoscysceufovcpffxl"
+///           port    = 13
+///           url     = "bcwzfeebgdzlvoafvyddknwzaih"
 ///         }
-///         "nodeCreateTime"       = "2024-10-08T03:51:45.186Z"
-///         "nodeId"               = "stfvsn"
-///         "nodeStatus"           = "cvxigvbkflormrnhzzjp"
-///         "parameterGroupStatus" = "ywehlocxyzqprjzljpwluyd"
+///         node_create_time       = "2024-10-08T03:51:45.186Z"
+///         node_id                = "stfvsn"
+///         node_status            = "cvxigvbkflormrnhzzjp"
+///         parameter_group_status = "ywehlocxyzqprjzljpwluyd"
 ///       }]
 ///       notification_configuration = {
 ///         topic_arn    = "phhrllxlsvtkodsyamltvoypqoj"
@@ -272,8 +275,8 @@ import 'system_data_response.dart';
 ///       }
 ///       preferred_maintenance_window = "gnqllhurfpmhsujlnznvuhtnacwfe"
 ///       security_groups = [{
-///         "securityGroupIdentifier" = "ehbvorabecsniiea"
-///         "status"                  = "ymc"
+///         security_group_identifier = "ehbvorabecsniiea"
+///         status                    = "ymc"
 ///       }]
 ///       sse_description = {
 ///         status = {
@@ -312,8 +315,10 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsDaxClusterPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.DaxClusterEndpointArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ClusterEndpointEncryptionTypeEnumValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.NodeArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.DaxClusterNotificationConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ParameterGroupStatusArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.SecurityGroupMembershipArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.SSEDescriptionArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.SSEStatusEnumValueArgs;
 /// import java.util.ArrayList;

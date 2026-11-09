@@ -71,7 +71,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azureresiliencemanagement_goaltemplate" "goalTemplate" {
+/// resource "azure-native_azureresiliencemanagement_goal_template" "goalTemplate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   goal_template_name = "gt1"
 ///   properties = {
 ///     goal_type                         = "Resiliency"
@@ -236,7 +239,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -244,7 +247,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azureresiliencemanagement_goaltemplate" "goalTemplate" {
+/// resource "azure-native_azureresiliencemanagement_goal_template" "goalTemplate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   goal_template_name = "gt1"
 ///   properties = {
 ///     goal_type = "Resiliency"

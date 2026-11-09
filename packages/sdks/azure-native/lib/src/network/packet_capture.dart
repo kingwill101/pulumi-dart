@@ -25,7 +25,7 @@ import 'packet_capture_storage_location_response.dart';
 /// {
 ///     var packetCapture = new AzureNative.Network.PacketCapture("packetCapture", new()
 ///     {
-///         BytesToCapturePerPacket = 10000,
+///         BytesToCapturePerPacket = 10000.0,
 ///         Filters = new[]
 ///         {
 ///             new AzureNative.Network.Inputs.PacketCaptureFilterArgs
@@ -46,7 +46,7 @@ import 'packet_capture_storage_location_response.dart';
 ///         },
 ///         Target = "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Compute/virtualMachines/vm1",
 ///         TimeLimitInSeconds = 100,
-///         TotalBytesPerSession = 100000,
+///         TotalBytesPerSession = 100000.0,
 ///     });
 ///
 /// });
@@ -95,7 +95,7 @@ import 'packet_capture_storage_location_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -103,7 +103,10 @@ import 'packet_capture_storage_location_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_packetcapture" "packetCapture" {
+/// resource "azure-native_network_packet_capture" "packetCapture" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bytes_to_capture_per_packet = 10000
 ///   filters {
 ///     local_ip_address = "10.0.0.4"

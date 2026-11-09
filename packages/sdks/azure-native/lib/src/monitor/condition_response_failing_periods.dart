@@ -3,16 +3,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert.
-class ConditionFailingPeriodsResponse {
+class ConditionResponseFailingPeriods {
   /// The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods. Default value is 1
   final pulumi.Input<double?>? minFailingPeriodsToAlert;
   /// The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points. Default value is 1
   final pulumi.Input<double?>? numberOfEvaluationPeriods;
 
-  /// Creates a new [ConditionFailingPeriodsResponse].
+  /// Creates a new [ConditionResponseFailingPeriods].
   /// [minFailingPeriodsToAlert] The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods. Default value is 1
   /// [numberOfEvaluationPeriods] The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points. Default value is 1
-  ConditionFailingPeriodsResponse({
+  ConditionResponseFailingPeriods({
     pulumi.Input<double?>? minFailingPeriodsToAlert,
     pulumi.Input<double?>? numberOfEvaluationPeriods,
   }) : minFailingPeriodsToAlert = minFailingPeriodsToAlert ?? pulumi.Input.fromValue(1), numberOfEvaluationPeriods = numberOfEvaluationPeriods ?? pulumi.Input.fromValue(1);
@@ -24,8 +24,8 @@ class ConditionFailingPeriodsResponse {
     };
   }
 
-  factory ConditionFailingPeriodsResponse.fromMap(Map<String, dynamic> map) {
-    return ConditionFailingPeriodsResponse(
+  factory ConditionResponseFailingPeriods.fromMap(Map<String, dynamic> map) {
+    return ConditionResponseFailingPeriods(
       minFailingPeriodsToAlert: (() { final guardedValue = map['minFailingPeriodsToAlert']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       numberOfEvaluationPeriods: (() { final guardedValue = map['numberOfEvaluationPeriods']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );

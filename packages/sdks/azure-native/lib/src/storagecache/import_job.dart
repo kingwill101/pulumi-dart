@@ -77,7 +77,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -85,7 +85,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storagecache_importjob" "importJob" {
+/// resource "azure-native_storagecache_import_job" "importJob" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   aml_filesystem_name      = "fs1"
 ///   conflict_resolution_mode = "OverwriteAlways"
 ///   import_job_name          = "job1"

@@ -111,7 +111,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -120,6 +120,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_redisenterprise_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   access_keys_authentication = "Enabled"
 ///   client_protocol            = "Encrypted"
 ///   cluster_name               = "cache1"
@@ -355,7 +358,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -364,6 +367,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_redisenterprise_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_protocol     = "Encrypted"
 ///   cluster_name        = "cache1"
 ///   clustering_policy   = "NoCluster"
@@ -541,7 +547,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -550,6 +556,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_redisenterprise_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   access_keys_authentication = "Enabled"
 ///   client_protocol            = "Encrypted"
 ///   cluster_name               = "cache1"
@@ -559,9 +568,9 @@ import 'system_data_response.dart';
 ///   geo_replication = {
 ///     group_nickname = "groupName"
 ///     linked_databases = [{
-///       "id" = "/subscriptions/e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8f/resourceGroups/rg1/providers/Microsoft.Cache/redisEnterprise/cache1/databases/default"
+///       id = "/subscriptions/e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8f/resourceGroups/rg1/providers/Microsoft.Cache/redisEnterprise/cache1/databases/default"
 ///       }, {
-///       "id" = "/subscriptions/e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8e/resourceGroups/rg2/providers/Microsoft.Cache/redisEnterprise/cache2/databases/default"
+///       id = "/subscriptions/e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8e/resourceGroups/rg2/providers/Microsoft.Cache/redisEnterprise/cache2/databases/default"
 ///     }]
 ///   }
 ///   port                = 10000
@@ -579,6 +588,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.redisenterprise.Database;
 /// import com.pulumi.azurenative.redisenterprise.DatabaseArgs;
 /// import com.pulumi.azurenative.redisenterprise.inputs.DatabasePropertiesGeoReplicationArgs;
+/// import com.pulumi.azurenative.redisenterprise.inputs.LinkedDatabaseArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

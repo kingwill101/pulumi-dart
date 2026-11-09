@@ -106,7 +106,7 @@ import 'unknown_target_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -114,7 +114,10 @@ import 'unknown_target_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storagecache_storagetarget" "storageTarget" {
+/// resource "azure-native_storagecache_storage_target" "storageTarget" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cache_name = "sc1"
 ///   junctions {
 ///     namespace_path    = "/path/on/cache"
@@ -356,7 +359,7 @@ import 'unknown_target_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -364,7 +367,10 @@ import 'unknown_target_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storagecache_storagetarget" "storageTarget" {
+/// resource "azure-native_storagecache_storage_target" "storageTarget" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   blob_nfs = {
 ///     target             = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Storage/storageAccounts/blofnfs/blobServices/default/containers/blobnfs"
 ///     usage_model        = "READ_WRITE"
@@ -549,7 +555,7 @@ import 'unknown_target_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -557,7 +563,10 @@ import 'unknown_target_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storagecache_storagetarget" "storageTarget" {
+/// resource "azure-native_storagecache_storage_target" "storageTarget" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cache_name = "sc1"
 ///   nfs3 = {
 ///     target             = "10.0.44.44"

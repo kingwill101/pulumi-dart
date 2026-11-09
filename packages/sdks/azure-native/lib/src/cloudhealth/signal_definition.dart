@@ -112,7 +112,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -120,32 +120,35 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cloudhealth_signaldefinition" "signalDefinition" {
+/// resource "azure-native_cloudhealth_signal_definition" "signalDefinition" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   health_model_name = "myHealthModel"
 ///   properties = {
-///     "aggregationType" = "None"
-///     "dataUnit"        = "byte"
-///     "dimension"       = "nodename"
-///     "dimensionFilter" = "node1"
-///     "displayName"     = "cpu usage"
-///     "evaluationRules" = {
-///       "degradedRule" = {
-///         "operator"  = "LowerThan"
-///         "threshold" = "65"
+///     aggregation_type = "None"
+///     data_unit        = "byte"
+///     dimension        = "nodename"
+///     dimension_filter = "node1"
+///     display_name     = "cpu usage"
+///     evaluation_rules = {
+///       degraded_rule = {
+///         operator  = "LowerThan"
+///         threshold = "65"
 ///       }
-///       "unhealthyRule" = {
-///         "operator"  = "LowerThan"
-///         "threshold" = "60"
+///       unhealthy_rule = {
+///         operator  = "LowerThan"
+///         threshold = "60"
 ///       }
 ///     }
-///     "labels" = {
+///     labels = {
 ///       "key4788" = "ixfvzsfnpvkkbrce"
 ///     }
-///     "metricName"      = "cpuusage"
-///     "metricNamespace" = "microsoft.compute/virtualMachines"
-///     "refreshInterval" = "PT1M"
-///     "signalKind"      = "AzureResourceMetric"
-///     "timeGrain"       = "PT1M"
+///     metric_name      = "cpuusage"
+///     metric_namespace = "microsoft.compute/virtualMachines"
+///     refresh_interval = "PT1M"
+///     signal_kind      = "AzureResourceMetric"
+///     time_grain       = "PT1M"
 ///   }
 ///   resource_group_name    = "rgopenapi"
 ///   signal_definition_name = "sig1"
@@ -161,6 +164,11 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.cloudhealth.SignalDefinition;
 /// import com.pulumi.azurenative.cloudhealth.SignalDefinitionArgs;
+/// import com.pulumi.azurenative.cloudhealth.inputs.LogAnalyticsQuerySignalDefinitionPropertiesArgs;
+/// import com.pulumi.azurenative.cloudhealth.inputs.EvaluationRuleArgs;
+/// import com.pulumi.azurenative.cloudhealth.inputs.ThresholdRuleArgs;
+/// import com.pulumi.azurenative.cloudhealth.inputs.PrometheusMetricsSignalDefinitionPropertiesArgs;
+/// import com.pulumi.azurenative.cloudhealth.inputs.ResourceMetricSignalDefinitionPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -196,7 +204,6 @@ import 'system_data_response.dart';
 ///                 .metricName("cpuusage")
 ///                 .metricNamespace("microsoft.compute/virtualMachines")
 ///                 .refreshInterval("PT1M")
-///                 .signalKind("AzureResourceMetric")
 ///                 .timeGrain("PT1M")
 ///                 .build())
 ///             .resourceGroupName("rgopenapi")

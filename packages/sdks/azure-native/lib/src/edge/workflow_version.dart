@@ -123,7 +123,7 @@ import 'workflow_version_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -131,7 +131,10 @@ import 'workflow_version_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_edge_workflowversion" "workflowVersion" {
+/// resource "azure-native_edge_workflow_version" "workflowVersion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   context_name = "testname"
 ///   extended_location = {
 ///     name = "szjrwimeqyiue"
@@ -140,19 +143,19 @@ import 'workflow_version_properties_response.dart';
 ///   properties = {
 ///     specification = {}
 ///     stage_spec = [{
-///       "name"          = "amrbjd"
-///       "specification" = {}
-///       "taskOption" = {
-///         "concurrency" = 3
-///         "errorAction" = {
-///           "maxToleratedFailures" = 0
-///           "mode"                 = "stopOnAnyFailure"
+///       name          = "amrbjd"
+///       specification = {}
+///       task_option = {
+///         concurrency = 3
+///         error_action = {
+///           max_tolerated_failures = 0
+///           mode                   = "stopOnAnyFailure"
 ///         }
 ///       }
-///       "tasks" = [{
-///         "name"          = "xxmeyvmgydbcwxqwjhadjxjod"
-///         "specification" = {}
-///         "targetId"      = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+///       tasks = [{
+///         name          = "xxmeyvmgydbcwxqwjhadjxjod"
+///         specification = {}
+///         target_id     = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 ///       }]
 ///     }]
 ///   }
@@ -173,6 +176,10 @@ import 'workflow_version_properties_response.dart';
 /// import com.pulumi.azurenative.edge.WorkflowVersionArgs;
 /// import com.pulumi.azurenative.edge.inputs.AzureResourceManagerCommonTypesExtendedLocationArgs;
 /// import com.pulumi.azurenative.edge.inputs.WorkflowVersionPropertiesArgs;
+/// import com.pulumi.azurenative.edge.inputs.StageSpecArgs;
+/// import com.pulumi.azurenative.edge.inputs.TaskOptionArgs;
+/// import com.pulumi.azurenative.edge.inputs.ErrorActionArgs;
+/// import com.pulumi.azurenative.edge.inputs.TaskSpecArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

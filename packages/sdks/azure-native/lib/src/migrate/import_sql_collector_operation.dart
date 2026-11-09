@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_importsqlcollectoroperation" "importSqlCollectorOperation" {
+/// resource "azure-native_migrate_import_sql_collector_operation" "importSqlCollectorOperation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   import_sql_collectors_name = "importCollector"
 ///   project_name               = "contosoProject"
 ///   properties = {

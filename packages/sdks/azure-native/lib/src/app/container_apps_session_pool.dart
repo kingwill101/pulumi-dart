@@ -181,7 +181,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -189,17 +189,20 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_containerappssessionpool" "containerAppsSessionPool" {
+/// resource "azure-native_app_container_apps_session_pool" "containerAppsSessionPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   container_type = "CustomContainer"
 ///   custom_container_template = {
 ///     containers = [{
-///       "args"    = ["-c", "while true; do echo hello; sleep 10;done"]
-///       "command" = ["/bin/sh"]
-///       "image"   = "repo/testcontainer:v4"
-///       "name"    = "testinitcontainer"
-///       "resources" = {
-///         "cpu"    = 0.25
-///         "memory" = "0.5Gi"
+///       args    = ["-c", "while true; do echo hello; sleep 10;done"]
+///       command = ["/bin/sh"]
+///       image   = "repo/testcontainer:v4"
+///       name    = "testinitcontainer"
+///       resources = {
+///         cpu    = 0.25
+///         memory = "0.5Gi"
 ///       }
 ///     }]
 ///     ingress = {
@@ -248,6 +251,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.ContainerAppsSessionPool;
 /// import com.pulumi.azurenative.app.ContainerAppsSessionPoolArgs;
 /// import com.pulumi.azurenative.app.inputs.CustomContainerTemplateArgs;
+/// import com.pulumi.azurenative.app.inputs.SessionContainerArgs;
+/// import com.pulumi.azurenative.app.inputs.SessionContainerResourcesArgs;
 /// import com.pulumi.azurenative.app.inputs.SessionIngressArgs;
 /// import com.pulumi.azurenative.app.inputs.SessionRegistryCredentialsArgs;
 /// import com.pulumi.azurenative.app.inputs.DynamicPoolConfigurationArgs;
@@ -647,7 +652,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -655,17 +660,20 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_containerappssessionpool" "containerAppsSessionPool" {
+/// resource "azure-native_app_container_apps_session_pool" "containerAppsSessionPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   container_type = "CustomContainer"
 ///   custom_container_template = {
 ///     containers = [{
-///       "args"    = ["-c", "while true; do echo hello; sleep 10;done"]
-///       "command" = ["/bin/sh"]
-///       "image"   = "repo/testcontainer:v4"
-///       "name"    = "testinitcontainer"
-///       "resources" = {
-///         "cpu"    = 0.25
-///         "memory" = "0.5Gi"
+///       args    = ["-c", "while true; do echo hello; sleep 10;done"]
+///       command = ["/bin/sh"]
+///       image   = "repo/testcontainer:v4"
+///       name    = "testinitcontainer"
+///       resources = {
+///         cpu    = 0.25
+///         memory = "0.5Gi"
 ///       }
 ///     }]
 ///     ingress = {
@@ -714,6 +722,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.ContainerAppsSessionPool;
 /// import com.pulumi.azurenative.app.ContainerAppsSessionPoolArgs;
 /// import com.pulumi.azurenative.app.inputs.CustomContainerTemplateArgs;
+/// import com.pulumi.azurenative.app.inputs.SessionContainerArgs;
+/// import com.pulumi.azurenative.app.inputs.SessionContainerResourcesArgs;
 /// import com.pulumi.azurenative.app.inputs.SessionIngressArgs;
 /// import com.pulumi.azurenative.app.inputs.SessionRegistryCredentialsArgs;
 /// import com.pulumi.azurenative.app.inputs.DynamicPoolConfigurationArgs;

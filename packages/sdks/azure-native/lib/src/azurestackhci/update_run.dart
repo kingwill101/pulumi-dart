@@ -32,7 +32,7 @@ import 'update_run_args.dart';
 ///         ResourceGroupName = "testrg",
 ///         StartTimeUtc = "2022-04-06T01:36:33.3876751+00:00",
 ///         Status = "Success",
-///         Steps = new[]
+///         Steps =
 ///         {
 ///             new AzureNative.AzureStackHCI.Inputs.StepArgs
 ///             {
@@ -100,7 +100,7 @@ import 'update_run_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -108,7 +108,10 @@ import 'update_run_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_updaterun" "updateRun" {
+/// resource "azure-native_azurestackhci_update_run" "updateRun" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name          = "testcluster"
 ///   description           = "Update Azure Stack."
 ///   end_time_utc          = "2022-04-06T13:58:42.969006+00:00"

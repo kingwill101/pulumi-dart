@@ -75,7 +75,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -84,13 +84,16 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_cdn_secret" "secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameters = {
-///     "secretSource" = {
-///       "id" = "/subscriptions/subid/resourcegroups/RG/providers/Microsoft.KeyVault/vault/kvName/secrets/certificatename"
+///     secret_source = {
+///       id = "/subscriptions/subid/resourcegroups/RG/providers/Microsoft.KeyVault/vault/kvName/secrets/certificatename"
 ///     }
-///     "secretVersion"    = "abcdef1234578900abcdef1234567890"
-///     "type"             = "CustomerCertificate"
-///     "useLatestVersion" = false
+///     secret_version     = "abcdef1234578900abcdef1234567890"
+///     type               = "CustomerCertificate"
+///     use_latest_version = false
 ///   }
 ///   profile_name        = "profile1"
 ///   resource_group_name = "RG"
@@ -107,6 +110,11 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.cdn.Secret;
 /// import com.pulumi.azurenative.cdn.SecretArgs;
+/// import com.pulumi.azurenative.cdn.inputs.AzureFirstPartyManagedCertificateParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.CustomerCertificateParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.ResourceReferenceArgs;
+/// import com.pulumi.azurenative.cdn.inputs.ManagedCertificateParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.UrlSigningKeyParametersArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -126,7 +134,6 @@ import 'system_data_response.dart';
 ///                     .id("/subscriptions/subid/resourcegroups/RG/providers/Microsoft.KeyVault/vault/kvName/secrets/certificatename")
 ///                     .build())
 ///                 .secretVersion("abcdef1234578900abcdef1234567890")
-///                 .type("CustomerCertificate")
 ///                 .useLatestVersion(false)
 ///                 .build())
 ///             .profileName("profile1")

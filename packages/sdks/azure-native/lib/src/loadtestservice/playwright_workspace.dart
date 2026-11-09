@@ -68,7 +68,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_loadtestservice_playwrightworkspace" "playwrightWorkspace" {
+/// resource "azure-native_loadtestservice_playwright_workspace" "playwrightWorkspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   local_auth                = "Enabled"
 ///   location                  = "westus3"
 ///   playwright_workspace_name = "myWorkspace"

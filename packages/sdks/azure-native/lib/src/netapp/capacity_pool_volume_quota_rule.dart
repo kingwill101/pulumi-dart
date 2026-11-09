@@ -25,7 +25,7 @@ import 'system_data_response.dart';
 ///         AccountName = "account-9957",
 ///         Location = "westus",
 ///         PoolName = "pool-5210",
-///         QuotaSizeInKiBs = 100005,
+///         QuotaSizeInKiBs = 100005.0,
 ///         QuotaTarget = "1821",
 ///         QuotaType = AzureNative.NetApp.Type.IndividualUserQuota,
 ///         ResourceGroupName = "myRG",
@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,7 +77,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_netapp_capacitypoolvolumequotarule" "capacityPoolVolumeQuotaRule" {
+/// resource "azure-native_netapp_capacity_pool_volume_quota_rule" "capacityPoolVolumeQuotaRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name           = "account-9957"
 ///   location               = "westus"
 ///   pool_name              = "pool-5210"

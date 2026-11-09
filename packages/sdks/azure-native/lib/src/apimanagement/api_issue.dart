@@ -68,7 +68,7 @@ import 'api_issue_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'api_issue_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apiissue" "apiIssue" {
+/// resource "azure-native_apimanagement_api_issue" "apiIssue" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "57d1f7558aa04f15146d9d8a"
 ///   created_date        = "2018-02-01T22:21:20.467Z"
 ///   description         = "New API issue description"

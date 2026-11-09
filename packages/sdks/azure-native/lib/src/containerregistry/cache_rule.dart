@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerregistry_cacherule" "cacheRule" {
+/// resource "azure-native_containerregistry_cache_rule" "cacheRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cache_rule_name            = "myCacheRule"
 ///   credential_set_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry/credentialSets/myCredentialSet"
 ///   registry_name              = "myRegistry"

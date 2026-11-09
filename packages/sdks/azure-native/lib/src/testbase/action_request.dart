@@ -54,7 +54,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -62,7 +62,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_testbase_actionrequest" "actionRequest" {
+/// resource "azure-native_testbase_action_request" "actionRequest" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   action_request_name    = "167184141414254"
 ///   resource_group_name    = "contoso-rg"
 ///   test_base_account_name = "contoso-testBaseAccount"

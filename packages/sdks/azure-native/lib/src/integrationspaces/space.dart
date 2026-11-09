@@ -64,7 +64,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,6 +73,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_integrationspaces_space" "space" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description         = "This is the user provided description of the space resource."
 ///   location            = "CentralUS"
 ///   resource_group_name = "testrg"

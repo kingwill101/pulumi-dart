@@ -130,7 +130,7 @@ import 'virtual_network_retrieve_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -138,7 +138,10 @@ import 'virtual_network_retrieve_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridcontainerservice_virtualnetworkretrieve" "virtualNetworkRetrieve" {
+/// resource "azure-native_hybridcontainerservice_virtual_network_retrieve" "virtualNetworkRetrieve" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/a3e42606-29b1-4d7d-b1d9-9ff6b9d3c71b/resourcegroups/test-arcappliance-resgrp/providers/microsoft.extendedlocation/customlocations/testcustomlocation"
 ///     type = "CustomLocation"
@@ -156,13 +159,13 @@ import 'virtual_network_retrieve_args.dart';
 ///     }
 ///     ip_address_prefix = "192.168.0.0/16"
 ///     vip_pool = [{
-///       "endIP"   = "192.168.0.50"
-///       "startIP" = "192.168.0.10"
+///       end_ip   = "192.168.0.50"
+///       start_ip = "192.168.0.10"
 ///     }]
 ///     vlan_id = 10
 ///     vmip_pool = [{
-///       "endIP"   = "192.168.0.130"
-///       "startIP" = "192.168.0.110"
+///       end_ip   = "192.168.0.130"
+///       start_ip = "192.168.0.110"
 ///     }]
 ///   }
 ///   resource_group_name  = "test-arcappliance-resgrp"
@@ -183,6 +186,8 @@ import 'virtual_network_retrieve_args.dart';
 /// import com.pulumi.azurenative.hybridcontainerservice.inputs.VirtualNetworkPropertiesArgs;
 /// import com.pulumi.azurenative.hybridcontainerservice.inputs.VirtualNetworkPropertiesInfraVnetProfileArgs;
 /// import com.pulumi.azurenative.hybridcontainerservice.inputs.VirtualNetworkPropertiesHciArgs;
+/// import com.pulumi.azurenative.hybridcontainerservice.inputs.VirtualNetworkPropertiesVipPoolArgs;
+/// import com.pulumi.azurenative.hybridcontainerservice.inputs.VirtualNetworkPropertiesVmipPoolArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

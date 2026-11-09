@@ -67,7 +67,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventgrid_partnerdestination" "partnerDestination" {
+/// resource "azure-native_eventgrid_partner_destination" "partnerDestination" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_base_url                    = "https://www.example/endpoint"
 ///   endpoint_service_context             = "This is an example"
 ///   expiration_time_if_not_activated_utc = "2022-03-14T19:33:43.430Z"

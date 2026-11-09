@@ -24,7 +24,7 @@ import 'system_data_response.dart';
 ///     var groundStation = new AzureNative.Orbital.GroundStation("groundStation", new()
 ///     {
 ///         AltitudeMeters = 1500.83,
-///         Capabilities = new[]
+///         Capabilities =
 ///         {
 ///             AzureNative.Orbital.Capability.Communication,
 ///         },
@@ -91,7 +91,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -99,7 +99,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_orbital_groundstation" "groundStation" {
+/// resource "azure-native_orbital_ground_station" "groundStation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   altitude_meters = 1500.83
 ///   capabilities    = ["Communication"]
 ///   city            = "redmond"

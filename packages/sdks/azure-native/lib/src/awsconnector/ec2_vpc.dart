@@ -138,7 +138,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -146,7 +146,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_ec2vpc" "ec2Vpc" {
+/// resource "azure-native_awsconnector_ec2_vpc" "ec2Vpc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "bcrtgodiyozdsiqbhdvsaaog"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -164,8 +167,8 @@ import 'system_data_response.dart';
 ///       ipv4_netmask_length     = 21
 ///       ipv6_cidr_blocks        = ["q"]
 ///       tags = [{
-///         "key"   = "dn"
-///         "value" = "tqvkxdrwsaxvxwckrpqk"
+///         key   = "dn"
+///         value = "tqvkxdrwsaxvxwckrpqk"
 ///       }]
 ///       vpc_id = "wqqqqmtbgzmdfmkiaoyjdkavuzzzzw"
 ///     }
@@ -195,6 +198,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.Ec2VpcArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.Ec2VpcPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEc2VpcPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

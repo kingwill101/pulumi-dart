@@ -65,7 +65,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apitool" "apiTool" {
+/// resource "azure-native_apimanagement_api_tool" "apiTool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "github-mcp-api"
 ///   description         = "This is a MCP tool to create an issue in a github repository"
 ///   display_name        = "createIssue"

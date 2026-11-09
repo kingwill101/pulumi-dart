@@ -96,7 +96,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -104,21 +104,24 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_javacomponent" "javaComponent" {
+/// resource "azure-native_app_java_component" "javaComponent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   environment_name = "myenvironment"
 ///   name             = "myjavacomponent"
 ///   properties = {
-///     "componentType" = "SpringBootAdmin"
-///     "configurations" = [{
-///       "propertyName" = "spring.boot.admin.ui.enable-toasts"
-///       "value"        = "true"
+///     component_type = "SpringBootAdmin"
+///     configurations = [{
+///       property_name = "spring.boot.admin.ui.enable-toasts"
+///       value         = "true"
 ///       }, {
-///       "propertyName" = "spring.boot.admin.monitor.status-interval"
-///       "value"        = "10000ms"
+///       property_name = "spring.boot.admin.monitor.status-interval"
+///       value         = "10000ms"
 ///     }]
-///     "scale" = {
-///       "maxReplicas" = 1
-///       "minReplicas" = 1
+///     scale = {
+///       max_replicas = 1
+///       min_replicas = 1
 ///     }
 ///   }
 ///   resource_group_name = "examplerg"
@@ -134,6 +137,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.app.JavaComponent;
 /// import com.pulumi.azurenative.app.JavaComponentArgs;
+/// import com.pulumi.azurenative.app.inputs.NacosComponentArgs;
+/// import com.pulumi.azurenative.app.inputs.JavaComponentConfigurationPropertyArgs;
+/// import com.pulumi.azurenative.app.inputs.JavaComponentPropertiesScaleArgs;
+/// import com.pulumi.azurenative.app.inputs.SpringBootAdminComponentArgs;
+/// import com.pulumi.azurenative.app.inputs.SpringCloudConfigComponentArgs;
+/// import com.pulumi.azurenative.app.inputs.SpringCloudEurekaComponentArgs;
+/// import com.pulumi.azurenative.app.inputs.SpringCloudGatewayComponentArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -151,7 +161,6 @@ import 'system_data_response.dart';
 ///             .environmentName("myenvironment")
 ///             .name("myjavacomponent")
 ///             .properties(SpringBootAdminComponentArgs.builder()
-///                 .componentType("SpringBootAdmin")
 ///                 .configurations(
 ///                     JavaComponentConfigurationPropertyArgs.builder()
 ///                         .propertyName("spring.boot.admin.ui.enable-toasts")
@@ -353,7 +362,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -361,25 +370,28 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_app_javacomponent" "javaComponent" {
+/// resource "azure-native_app_java_component" "javaComponent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   environment_name = "myenvironment"
 ///   name             = "myjavacomponent"
 ///   properties = {
-///     "componentType" = "SpringBootAdmin"
-///     "configurations" = [{
-///       "propertyName" = "spring.boot.admin.ui.enable-toasts"
-///       "value"        = "true"
+///     component_type = "SpringBootAdmin"
+///     configurations = [{
+///       property_name = "spring.boot.admin.ui.enable-toasts"
+///       value         = "true"
 ///       }, {
-///       "propertyName" = "spring.boot.admin.monitor.status-interval"
-///       "value"        = "10000ms"
+///       property_name = "spring.boot.admin.monitor.status-interval"
+///       value         = "10000ms"
 ///     }]
-///     "scale" = {
-///       "maxReplicas" = 1
-///       "minReplicas" = 1
+///     scale = {
+///       max_replicas = 1
+///       min_replicas = 1
 ///     }
-///     "serviceBinds" = [{
-///       "name"      = "yellowcat"
-///       "serviceId" = "/subscriptions/8efdecc5-919e-44eb-b179-915dca89ebf9/resourceGroups/examplerg/providers/Microsoft.App/managedEnvironments/myenvironment/javaComponents/yellowcat"
+///     service_binds = [{
+///       name       = "yellowcat"
+///       service_id = "/subscriptions/8efdecc5-919e-44eb-b179-915dca89ebf9/resourceGroups/examplerg/providers/Microsoft.App/managedEnvironments/myenvironment/javaComponents/yellowcat"
 ///     }]
 ///   }
 ///   resource_group_name = "examplerg"
@@ -395,6 +407,14 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.app.JavaComponent;
 /// import com.pulumi.azurenative.app.JavaComponentArgs;
+/// import com.pulumi.azurenative.app.inputs.NacosComponentArgs;
+/// import com.pulumi.azurenative.app.inputs.JavaComponentConfigurationPropertyArgs;
+/// import com.pulumi.azurenative.app.inputs.JavaComponentPropertiesScaleArgs;
+/// import com.pulumi.azurenative.app.inputs.JavaComponentServiceBindArgs;
+/// import com.pulumi.azurenative.app.inputs.SpringBootAdminComponentArgs;
+/// import com.pulumi.azurenative.app.inputs.SpringCloudConfigComponentArgs;
+/// import com.pulumi.azurenative.app.inputs.SpringCloudEurekaComponentArgs;
+/// import com.pulumi.azurenative.app.inputs.SpringCloudGatewayComponentArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -412,7 +432,6 @@ import 'system_data_response.dart';
 ///             .environmentName("myenvironment")
 ///             .name("myjavacomponent")
 ///             .properties(SpringBootAdminComponentArgs.builder()
-///                 .componentType("SpringBootAdmin")
 ///                 .configurations(
 ///                     JavaComponentConfigurationPropertyArgs.builder()
 ///                         .propertyName("spring.boot.admin.ui.enable-toasts")

@@ -64,7 +64,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_containerservice_loadbalancer" "loadBalancer" {
+/// resource "azure-native_containerservice_load_balancer" "loadBalancer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allow_service_placement = true
 ///   load_balancer_name      = "kubernetes"
 ///   name                    = "kubernetes"

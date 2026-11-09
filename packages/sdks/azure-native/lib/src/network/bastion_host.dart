@@ -84,7 +84,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -92,7 +92,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_bastionhost" "bastionHost" {
+/// resource "azure-native_network_bastion_host" "bastionHost" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bastion_host_name = "bastionhosttenant"
 ///   ip_configurations {
 ///     name = "bastionHostIpConfiguration"
@@ -272,7 +275,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -280,7 +283,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_bastionhost" "bastionHost" {
+/// resource "azure-native_network_bastion_host" "bastionHost" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bastion_host_name           = "bastionhosttenant"
 ///   enable_private_only_bastion = true
 ///   ip_configurations {
@@ -456,7 +462,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -464,7 +470,10 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_bastionhost" "bastionHost" {
+/// resource "azure-native_network_bastion_host" "bastionHost" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bastion_host_name = "bastionhosttenant"
 ///   ip_configurations {
 ///     name = "bastionHostIpConfiguration"
@@ -591,7 +600,7 @@ import 'sub_resource_response.dart';
 ///     var bastionHost = new AzureNative.Network.BastionHost("bastionHost", new()
 ///     {
 ///         BastionHostName = "bastionhostdeveloper",
-///         IpConfigurations = new[] {},
+///         IpConfigurations = new() {},
 ///         NetworkAcls = new AzureNative.Network.Inputs.BastionHostPropertiesFormatNetworkAclsArgs
 ///         {
 ///             IpRules = new[]
@@ -649,7 +658,7 @@ import 'sub_resource_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -657,11 +666,14 @@ import 'sub_resource_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_bastionhost" "bastionHost" {
+/// resource "azure-native_network_bastion_host" "bastionHost" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bastion_host_name = "bastionhostdeveloper"
 ///   network_acls = {
 ///     ip_rules = [{
-///       "addressPrefix" = "1.1.1.1/16"
+///       address_prefix = "1.1.1.1/16"
 ///     }]
 ///   }
 ///   resource_group_name = "rg2"
@@ -681,6 +693,7 @@ import 'sub_resource_response.dart';
 /// import com.pulumi.azurenative.network.BastionHost;
 /// import com.pulumi.azurenative.network.BastionHostArgs;
 /// import com.pulumi.azurenative.network.inputs.BastionHostPropertiesFormatNetworkAclsArgs;
+/// import com.pulumi.azurenative.network.inputs.IPRuleArgs;
 /// import com.pulumi.azurenative.network.inputs.SubResourceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

@@ -58,7 +58,7 @@ import 'controller_details_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'controller_details_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_delegatednetwork_controllerdetails" "controllerDetails" {
+/// resource "azure-native_delegatednetwork_controller_details" "controllerDetails" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "West US"
 ///   purpose             = "test"
 ///   resource_group_name = "TestRG"

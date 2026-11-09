@@ -139,7 +139,7 @@ import 'routing_configuration_express_route_connection_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -147,7 +147,10 @@ import 'routing_configuration_express_route_connection_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_expressrouteconnection" "expressRouteConnection" {
+/// resource "azure-native_network_express_route_connection" "expressRouteConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization_key = "authorizationKey"
 ///   connection_name   = "connectionName"
 ///   express_route_circuit_peering = {
@@ -169,11 +172,11 @@ import 'routing_configuration_express_route_connection_response.dart';
 ///     }
 ///     propagated_route_tables = {
 ///       ids = [{
-///         "id" = "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable1"
+///         id = "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable1"
 ///         }, {
-///         "id" = "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable2"
+///         id = "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable2"
 ///         }, {
-///         "id" = "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable3"
+///         id = "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable3"
 ///       }]
 ///       labels = ["label1", "label2"]
 ///     }

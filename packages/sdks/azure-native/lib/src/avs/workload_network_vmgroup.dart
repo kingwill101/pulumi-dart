@@ -29,7 +29,7 @@ import 'workload_network_vmgroup_args.dart';
 ///         },
 ///         PrivateCloudName = "cloud1",
 ///         ResourceGroupName = "group1",
-///         Revision = 1,
+///         Revision = 1.0,
 ///         VmGroupId = "vmGroup1",
 ///     });
 ///
@@ -68,7 +68,7 @@ import 'workload_network_vmgroup_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,7 +76,10 @@ import 'workload_network_vmgroup_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_avs_workloadnetworkvmgroup" "workloadNetworkVMGroup" {
+/// resource "azure-native_avs_workload_network_v_m_group" "workloadNetworkVMGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name        = "vmGroup1"
 ///   members             = ["564d43da-fefc-2a3b-1d92-42855622fa50"]
 ///   private_cloud_name  = "cloud1"

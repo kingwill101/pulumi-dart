@@ -78,7 +78,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -86,7 +86,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_devtestlab_servicerunner" "serviceRunner" {
+/// resource "azure-native_devtestlab_service_runner" "serviceRunner" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity = {
 ///     client_secret_url = "{identityClientSecretUrl}"
 ///     principal_id      = "{identityPrincipalId}"

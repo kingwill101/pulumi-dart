@@ -25,12 +25,12 @@ import 'system_data_response.dart';
 ///         EnvironmentData = new AzureNative.Security.Inputs.AwsEnvironmentDataArgs
 ///         {
 ///             EnvironmentType = "AwsAccount",
-///             ScanInterval = 4,
+///             ScanInterval = 4.0,
 ///         },
 ///         EnvironmentName = AzureNative.Security.CloudName.AWS,
 ///         HierarchyIdentifier = "exampleHierarchyId",
 ///         Location = "Central US",
-///         Offerings = new[]
+///         Offerings =
 ///         {
 ///             new AzureNative.Security.Inputs.CspmMonitorAwsOfferingArgs
 ///             {
@@ -43,7 +43,7 @@ import 'system_data_response.dart';
 ///         },
 ///         ResourceGroupName = "exampleResourceGroup",
 ///         SecurityConnectorName = "exampleSecurityConnectorName",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -70,11 +70,11 @@ import 'system_data_response.dart';
 /// 			HierarchyIdentifier: pulumi.String("exampleHierarchyId"),
 /// 			Location:            pulumi.String("Central US"),
 /// 			Offerings: pulumi.Array{
-/// 				security.CspmMonitorAwsOffering{
-/// 					NativeCloudConnection: security.CspmMonitorAwsOfferingNativeCloudConnection{
-/// 						CloudRoleArn: "arn:aws:iam::00000000:role/ASCMonitor",
+/// 				&security.CspmMonitorAwsOfferingArgs{
+/// 					NativeCloudConnection: &security.CspmMonitorAwsOfferingNativeCloudConnectionArgs{
+/// 						CloudRoleArn: pulumi.String("arn:aws:iam::00000000:role/ASCMonitor"),
 /// 					},
-/// 					OfferingType: "CspmMonitorAws",
+/// 					OfferingType: pulumi.String("CspmMonitorAws"),
 /// 				},
 /// 			},
 /// 			ResourceGroupName:     pulumi.String("exampleResourceGroup"),
@@ -91,7 +91,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -99,19 +99,22 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_securityconnector" "securityConnector" {
+/// resource "azure-native_security_security_connector" "securityConnector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   environment_data = {
-///     "environmentType" = "AwsAccount"
-///     "scanInterval"    = 4
+///     environment_type = "AwsAccount"
+///     scan_interval    = 4
 ///   }
 ///   environment_name     = "AWS"
 ///   hierarchy_identifier = "exampleHierarchyId"
 ///   location             = "Central US"
 ///   offerings = [{
-///     "nativeCloudConnection" = {
-///       "cloudRoleArn" = "arn:aws:iam::00000000:role/ASCMonitor"
+///     native_cloud_connection = {
+///       cloud_role_arn = "arn:aws:iam::00000000:role/ASCMonitor"
 ///     }
-///     "offeringType" = "CspmMonitorAws"
+///     offering_type = "CspmMonitorAws"
 ///   }]
 ///   resource_group_name     = "exampleResourceGroup"
 ///   security_connector_name = "exampleSecurityConnectorName"
@@ -128,6 +131,35 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.security.SecurityConnector;
 /// import com.pulumi.azurenative.security.SecurityConnectorArgs;
+/// import com.pulumi.azurenative.security.inputs.AwsEnvironmentDataArgs;
+/// import com.pulumi.azurenative.security.inputs.AzureDevOpsScopeEnvironmentDataArgs;
+/// import com.pulumi.azurenative.security.inputs.DockerHubEnvironmentDataArgs;
+/// import com.pulumi.azurenative.security.inputs.GcpProjectEnvironmentDataArgs;
+/// import com.pulumi.azurenative.security.inputs.GithubScopeEnvironmentDataArgs;
+/// import com.pulumi.azurenative.security.inputs.GitlabScopeEnvironmentDataArgs;
+/// import com.pulumi.azurenative.security.inputs.JFrogEnvironmentDataArgs;
+/// import com.pulumi.azurenative.security.inputs.CspmMonitorAwsOfferingArgs;
+/// import com.pulumi.azurenative.security.inputs.CspmMonitorAwsOfferingNativeCloudConnectionArgs;
+/// import com.pulumi.azurenative.security.inputs.CspmMonitorAzureDevOpsOfferingArgs;
+/// import com.pulumi.azurenative.security.inputs.CspmMonitorDockerHubOfferingArgs;
+/// import com.pulumi.azurenative.security.inputs.CspmMonitorGcpOfferingArgs;
+/// import com.pulumi.azurenative.security.inputs.CspmMonitorGcpOfferingNativeCloudConnectionArgs;
+/// import com.pulumi.azurenative.security.inputs.CspmMonitorGitLabOfferingArgs;
+/// import com.pulumi.azurenative.security.inputs.CspmMonitorGithubOfferingArgs;
+/// import com.pulumi.azurenative.security.inputs.CspmMonitorJFrogOfferingArgs;
+/// import com.pulumi.azurenative.security.inputs.DefenderCspmAwsOfferingArgs;
+/// import com.pulumi.azurenative.security.inputs.DefenderCspmDockerHubOfferingArgs;
+/// import com.pulumi.azurenative.security.inputs.DefenderCspmGcpOfferingArgs;
+/// import com.pulumi.azurenative.security.inputs.DefenderCspmJFrogOfferingArgs;
+/// import com.pulumi.azurenative.security.inputs.DefenderFoDatabasesAwsOfferingArgs;
+/// import com.pulumi.azurenative.security.inputs.DefenderForContainersAwsOfferingArgs;
+/// import com.pulumi.azurenative.security.inputs.DefenderForContainersDockerHubOfferingArgs;
+/// import com.pulumi.azurenative.security.inputs.DefenderForContainersGcpOfferingArgs;
+/// import com.pulumi.azurenative.security.inputs.DefenderForContainersGcpOfferingNativeCloudConnectionArgs;
+/// import com.pulumi.azurenative.security.inputs.DefenderForContainersJFrogOfferingArgs;
+/// import com.pulumi.azurenative.security.inputs.DefenderForDatabasesGcpOfferingArgs;
+/// import com.pulumi.azurenative.security.inputs.DefenderForServersAwsOfferingArgs;
+/// import com.pulumi.azurenative.security.inputs.DefenderForServersGcpOfferingArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -143,7 +175,6 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var securityConnector = new SecurityConnector("securityConnector", SecurityConnectorArgs.builder()
 ///             .environmentData(AwsEnvironmentDataArgs.builder()
-///                 .environmentType("AwsAccount")
 ///                 .scanInterval(4.0)
 ///                 .build())
 ///             .environmentName("AWS")
@@ -153,7 +184,6 @@ import 'system_data_response.dart';
 ///                 .nativeCloudConnection(CspmMonitorAwsOfferingNativeCloudConnectionArgs.builder()
 ///                     .cloudRoleArn("arn:aws:iam::00000000:role/ASCMonitor")
 ///                     .build())
-///                 .offeringType("CspmMonitorAws")
 ///                 .build())
 ///             .resourceGroupName("exampleResourceGroup")
 ///             .securityConnectorName("exampleSecurityConnectorName")

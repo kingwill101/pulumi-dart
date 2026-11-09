@@ -60,7 +60,7 @@ import 'key_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,6 +69,9 @@ import 'key_args.dart';
 /// }
 ///
 /// resource "azure-native_synapse_key" "key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   is_active_cmk       = true
 ///   key_name            = "somekey"
 ///   key_vault_url       = "https://vault.azure.net/keys/somesecret"

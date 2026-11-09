@@ -22,7 +22,7 @@ import 'database_account_table_args.dart';
 ///     var databaseAccountTable = new AzureNative.CosmosDB.DatabaseAccountTable("databaseAccountTable", new()
 ///     {
 ///         AccountName = "ddb1",
-///         Options = null,
+///         Options = new() { },
 ///         Resource = new AzureNative.CosmosDB.Inputs.TableResourceArgs
 ///         {
 ///             Id = "tableName",
@@ -65,7 +65,7 @@ import 'database_account_table_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'database_account_table_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_databaseaccounttable" "databaseAccountTable" {
+/// resource "azure-native_cosmosdb_database_account_table" "databaseAccountTable" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "ddb1"
 ///   options      = {}
 ///   resource = {

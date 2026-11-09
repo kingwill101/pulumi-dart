@@ -31,11 +31,11 @@ import 'prediction_response_system_generated_entities.dart';
 ///         {
 ///             { "en-us", "sdktest" },
 ///         },
-///         Grades = new[] {},
+///         Grades = new() {},
 ///         HubName = "sdkTestHub",
-///         InvolvedInteractionTypes = new[] {},
-///         InvolvedKpiTypes = new[] {},
-///         InvolvedRelationships = new[] {},
+///         InvolvedInteractionTypes = new() {},
+///         InvolvedKpiTypes = new() {},
+///         InvolvedRelationships = new() {},
 ///         Mappings = new AzureNative.CustomerInsights.Inputs.PredictionMappingsArgs
 ///         {
 ///             Grade = "sdktest_Grade",
@@ -102,7 +102,7 @@ import 'prediction_response_system_generated_entities.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -111,6 +111,9 @@ import 'prediction_response_system_generated_entities.dart';
 /// }
 ///
 /// resource "azure-native_customerinsights_prediction" "prediction" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auto_analyze = true
 ///   description = {
 ///     "en-us" = "sdktest"

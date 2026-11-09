@@ -28,7 +28,7 @@ import 'workload_network_segment_subnet_response.dart';
 ///         DisplayName = "segment1",
 ///         PrivateCloudName = "cloud1",
 ///         ResourceGroupName = "group1",
-///         Revision = 1,
+///         Revision = 1.0,
 ///         SegmentId = "segment1",
 ///         Subnet = new AzureNative.AVS.Inputs.WorkloadNetworkSegmentSubnetArgs
 ///         {
@@ -79,7 +79,7 @@ import 'workload_network_segment_subnet_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -87,7 +87,10 @@ import 'workload_network_segment_subnet_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_avs_workloadnetworksegment" "workloadNetworkSegment" {
+/// resource "azure-native_avs_workload_network_segment" "workloadNetworkSegment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connected_gateway   = "/infra/tier-1s/gateway"
 ///   display_name        = "segment1"
 ///   private_cloud_name  = "cloud1"

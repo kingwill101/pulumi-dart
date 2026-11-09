@@ -24,7 +24,7 @@ import 'system_data_response.dart';
 /// {
 ///     var automation = new AzureNative.Security.Automation("automation", new()
 ///     {
-///         Actions = new[]
+///         Actions =
 ///         {
 ///             new AzureNative.Security.Inputs.AutomationActionLogicAppArgs
 ///             {
@@ -53,7 +53,7 @@ import 'system_data_response.dart';
 ///                 EventSource = AzureNative.Security.EventSource.Assessments,
 ///             },
 ///         },
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -73,10 +73,10 @@ import 'system_data_response.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := security.NewAutomation(ctx, "automation", &security.AutomationArgs{
 /// 			Actions: pulumi.Array{
-/// 				security.AutomationActionLogicApp{
-/// 					ActionType:         "LogicApp",
-/// 					LogicAppResourceId: "/subscriptions/e54a4a18-5b94-4f90-9471-bd3decad8a2e/resourceGroups/sample/providers/Microsoft.Logic/workflows/MyTest1",
-/// 					Uri:                "https://exampleTriggerUri1.com",
+/// 				&security.AutomationActionLogicAppArgs{
+/// 					ActionType:         pulumi.String("LogicApp"),
+/// 					LogicAppResourceId: pulumi.String("/subscriptions/e54a4a18-5b94-4f90-9471-bd3decad8a2e/resourceGroups/sample/providers/Microsoft.Logic/workflows/MyTest1"),
+/// 					Uri:                pulumi.String("https://exampleTriggerUri1.com"),
 /// 				},
 /// 			},
 /// 			AutomationName:    pulumi.String("exampleAutomation"),
@@ -107,7 +107,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -116,10 +116,13 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_security_automation" "automation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions = [{
-///     "actionType"         = "LogicApp"
-///     "logicAppResourceId" = "/subscriptions/e54a4a18-5b94-4f90-9471-bd3decad8a2e/resourceGroups/sample/providers/Microsoft.Logic/workflows/MyTest1"
-///     "uri"                = "https://exampleTriggerUri1.com"
+///     action_type           = "LogicApp"
+///     logic_app_resource_id = "/subscriptions/e54a4a18-5b94-4f90-9471-bd3decad8a2e/resourceGroups/sample/providers/Microsoft.Logic/workflows/MyTest1"
+///     uri                   = "https://exampleTriggerUri1.com"
 ///   }]
 ///   automation_name     = "exampleAutomation"
 ///   description         = "An example of a security automation that triggers one LogicApp resource (myTest1) on any security assessment"
@@ -146,6 +149,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.security.Automation;
 /// import com.pulumi.azurenative.security.AutomationArgs;
+/// import com.pulumi.azurenative.security.inputs.AutomationActionEventHubArgs;
+/// import com.pulumi.azurenative.security.inputs.AutomationActionLogicAppArgs;
+/// import com.pulumi.azurenative.security.inputs.AutomationActionWorkspaceArgs;
 /// import com.pulumi.azurenative.security.inputs.AutomationScopeArgs;
 /// import com.pulumi.azurenative.security.inputs.AutomationSourceArgs;
 /// import java.util.ArrayList;
@@ -163,7 +169,6 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var automation = new Automation("automation", AutomationArgs.builder()
 ///             .actions(AutomationActionLogicAppArgs.builder()
-///                 .actionType("LogicApp")
 ///                 .logicAppResourceId("/subscriptions/e54a4a18-5b94-4f90-9471-bd3decad8a2e/resourceGroups/sample/providers/Microsoft.Logic/workflows/MyTest1")
 ///                 .uri("https://exampleTriggerUri1.com")
 ///                 .build())
@@ -277,7 +282,7 @@ import 'system_data_response.dart';
 /// {
 ///     var automation = new AzureNative.Security.Automation("automation", new()
 ///     {
-///         Actions = new[]
+///         Actions =
 ///         {
 ///             new AzureNative.Security.Inputs.AutomationActionLogicAppArgs
 ///             {
@@ -322,7 +327,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///         },
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -342,10 +347,10 @@ import 'system_data_response.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := security.NewAutomation(ctx, "automation", &security.AutomationArgs{
 /// 			Actions: pulumi.Array{
-/// 				security.AutomationActionLogicApp{
-/// 					ActionType:         "LogicApp",
-/// 					LogicAppResourceId: "/subscriptions/e54a4a18-5b94-4f90-9471-bd3decad8a2e/resourceGroups/sample/providers/Microsoft.Logic/workflows/MyTest1",
-/// 					Uri:                "https://exampleTriggerUri1.com",
+/// 				&security.AutomationActionLogicAppArgs{
+/// 					ActionType:         pulumi.String("LogicApp"),
+/// 					LogicAppResourceId: pulumi.String("/subscriptions/e54a4a18-5b94-4f90-9471-bd3decad8a2e/resourceGroups/sample/providers/Microsoft.Logic/workflows/MyTest1"),
+/// 					Uri:                pulumi.String("https://exampleTriggerUri1.com"),
 /// 				},
 /// 			},
 /// 			AutomationName:    pulumi.String("exampleAutomation"),
@@ -388,7 +393,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -397,10 +402,13 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_security_automation" "automation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions = [{
-///     "actionType"         = "LogicApp"
-///     "logicAppResourceId" = "/subscriptions/e54a4a18-5b94-4f90-9471-bd3decad8a2e/resourceGroups/sample/providers/Microsoft.Logic/workflows/MyTest1"
-///     "uri"                = "https://exampleTriggerUri1.com"
+///     action_type           = "LogicApp"
+///     logic_app_resource_id = "/subscriptions/e54a4a18-5b94-4f90-9471-bd3decad8a2e/resourceGroups/sample/providers/Microsoft.Logic/workflows/MyTest1"
+///     uri                   = "https://exampleTriggerUri1.com"
 ///   }]
 ///   automation_name     = "exampleAutomation"
 ///   description         = "An example of a security automation that triggers one LogicApp resource (myTest1) on any high severity security assessment"
@@ -435,8 +443,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.security.Automation;
 /// import com.pulumi.azurenative.security.AutomationArgs;
+/// import com.pulumi.azurenative.security.inputs.AutomationActionEventHubArgs;
+/// import com.pulumi.azurenative.security.inputs.AutomationActionLogicAppArgs;
+/// import com.pulumi.azurenative.security.inputs.AutomationActionWorkspaceArgs;
 /// import com.pulumi.azurenative.security.inputs.AutomationScopeArgs;
 /// import com.pulumi.azurenative.security.inputs.AutomationSourceArgs;
+/// import com.pulumi.azurenative.security.inputs.AutomationRuleSetArgs;
+/// import com.pulumi.azurenative.security.inputs.AutomationTriggeringRuleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -452,7 +465,6 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var automation = new Automation("automation", AutomationArgs.builder()
 ///             .actions(AutomationActionLogicAppArgs.builder()
-///                 .actionType("LogicApp")
 ///                 .logicAppResourceId("/subscriptions/e54a4a18-5b94-4f90-9471-bd3decad8a2e/resourceGroups/sample/providers/Microsoft.Logic/workflows/MyTest1")
 ///                 .uri("https://exampleTriggerUri1.com")
 ///                 .build())
@@ -596,7 +608,7 @@ import 'system_data_response.dart';
 /// {
 ///     var automation = new AzureNative.Security.Automation("automation", new()
 ///     {
-///         Actions = new[]
+///         Actions =
 ///         {
 ///             new AzureNative.Security.Inputs.AutomationActionLogicAppArgs
 ///             {
@@ -641,7 +653,7 @@ import 'system_data_response.dart';
 ///                 },
 ///             },
 ///         },
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -661,10 +673,10 @@ import 'system_data_response.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := security.NewAutomation(ctx, "automation", &security.AutomationArgs{
 /// 			Actions: pulumi.Array{
-/// 				security.AutomationActionLogicApp{
-/// 					ActionType:         "LogicApp",
-/// 					LogicAppResourceId: "/subscriptions/e54a4a18-5b94-4f90-9471-bd3decad8a2e/resourceGroups/sample/providers/Microsoft.Logic/workflows/MyTest1",
-/// 					Uri:                "https://exampleTriggerUri1.com",
+/// 				&security.AutomationActionLogicAppArgs{
+/// 					ActionType:         pulumi.String("LogicApp"),
+/// 					LogicAppResourceId: pulumi.String("/subscriptions/e54a4a18-5b94-4f90-9471-bd3decad8a2e/resourceGroups/sample/providers/Microsoft.Logic/workflows/MyTest1"),
+/// 					Uri:                pulumi.String("https://exampleTriggerUri1.com"),
 /// 				},
 /// 			},
 /// 			AutomationName:    pulumi.String("exampleAutomation"),
@@ -707,7 +719,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -716,10 +728,13 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_security_automation" "automation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions = [{
-///     "actionType"         = "LogicApp"
-///     "logicAppResourceId" = "/subscriptions/e54a4a18-5b94-4f90-9471-bd3decad8a2e/resourceGroups/sample/providers/Microsoft.Logic/workflows/MyTest1"
-///     "uri"                = "https://exampleTriggerUri1.com"
+///     action_type           = "LogicApp"
+///     logic_app_resource_id = "/subscriptions/e54a4a18-5b94-4f90-9471-bd3decad8a2e/resourceGroups/sample/providers/Microsoft.Logic/workflows/MyTest1"
+///     uri                   = "https://exampleTriggerUri1.com"
 ///   }]
 ///   automation_name     = "exampleAutomation"
 ///   description         = "An example of a security automation that triggers one LogicApp resource (myTest1) on any security assessment of type customAssessment"
@@ -754,8 +769,13 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.security.Automation;
 /// import com.pulumi.azurenative.security.AutomationArgs;
+/// import com.pulumi.azurenative.security.inputs.AutomationActionEventHubArgs;
+/// import com.pulumi.azurenative.security.inputs.AutomationActionLogicAppArgs;
+/// import com.pulumi.azurenative.security.inputs.AutomationActionWorkspaceArgs;
 /// import com.pulumi.azurenative.security.inputs.AutomationScopeArgs;
 /// import com.pulumi.azurenative.security.inputs.AutomationSourceArgs;
+/// import com.pulumi.azurenative.security.inputs.AutomationRuleSetArgs;
+/// import com.pulumi.azurenative.security.inputs.AutomationTriggeringRuleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -771,7 +791,6 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var automation = new Automation("automation", AutomationArgs.builder()
 ///             .actions(AutomationActionLogicAppArgs.builder()
-///                 .actionType("LogicApp")
 ///                 .logicAppResourceId("/subscriptions/e54a4a18-5b94-4f90-9471-bd3decad8a2e/resourceGroups/sample/providers/Microsoft.Logic/workflows/MyTest1")
 ///                 .uri("https://exampleTriggerUri1.com")
 ///                 .build())

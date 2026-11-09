@@ -74,7 +74,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,7 +82,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_connectedcache_enterprisecustomeroperation" "enterpriseCustomerOperation" {
+/// resource "azure-native_connectedcache_enterprise_customer_operation" "enterpriseCustomerOperation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   customer_resource_name = "l"
 ///   location               = "zdzhhkjyogrqxwihkifnmeyhwpujbr"
 ///   properties = {

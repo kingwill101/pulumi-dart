@@ -58,7 +58,7 @@ import 'product_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,6 +67,9 @@ import 'product_args.dart';
 /// }
 ///
 /// resource "azure-native_apimanagement_product" "product" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name        = "Test Template ProductName 4"
 ///   product_id          = "testproduct"
 ///   resource_group_name = "rg1"

@@ -242,7 +242,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -250,7 +250,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_networkfirewallfirewallpolicy" "networkFirewallFirewallPolicy" {
+/// resource "azure-native_awsconnector_network_firewall_firewall_policy" "networkFirewallFirewallPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "jmirflesx"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -272,27 +275,27 @@ import 'system_data_response.dart';
 ///           stream_exception_policy = "CONTINUE"
 ///         }
 ///         stateful_rule_group_references = [{
-///           "override" = {
-///             "action" = "DROP_TO_ALERT"
+///           override = {
+///             action = "DROP_TO_ALERT"
 ///           }
-///           "priority"    = 24
-///           "resourceArn" = "mjmcihwfckvrmkqo"
+///           priority     = 24
+///           resource_arn = "mjmcihwfckvrmkqo"
 ///         }]
 ///         stateless_custom_actions = [{
-///           "actionDefinition" = {
-///             "publishMetricAction" = {
-///               "dimensions" = [{
-///                 "value" = "kpelhvywxyvfwbkxeepdvujwrlywy"
+///           action_definition = {
+///             publish_metric_action = {
+///               dimensions = [{
+///                 value = "kpelhvywxyvfwbkxeepdvujwrlywy"
 ///               }]
 ///             }
 ///           }
-///           "actionName" = "vzrqjgluyejlinwxxhuljye"
+///           action_name = "vzrqjgluyejlinwxxhuljye"
 ///         }]
 ///         stateless_default_actions          = ["bhojbxqneam"]
 ///         stateless_fragment_default_actions = ["lnpufwfpveptbxocevsbt"]
 ///         stateless_rule_group_references = [{
-///           "priority"    = 11
-///           "resourceArn" = "kjggnkcabwynhgqkoryqzbkwz"
+///           priority     = 11
+///           resource_arn = "kjggnkcabwynhgqkoryqzbkwz"
 ///         }]
 ///         tls_inspection_configuration_arn = "qrdcssdykfcsxjdimv"
 ///       }
@@ -300,8 +303,8 @@ import 'system_data_response.dart';
 ///       firewall_policy_id   = "ofrzbmefsngq"
 ///       firewall_policy_name = "xasgbvm"
 ///       tags = [{
-///         "key"   = "njlfcpwz"
-///         "value" = "lrpynqejzy"
+///         key   = "njlfcpwz"
+///         value = "lrpynqejzy"
 ///       }]
 ///     }
 ///     aws_region        = "ujnhepy"
@@ -332,7 +335,16 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsNetworkFirewallFirewallPolicyPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.FirewallPolicyArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RuleVariablesModelArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.IPSetArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.StatefulEngineOptionsArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.StatefulRuleGroupReferenceArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.StatefulRuleGroupOverrideArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.CustomActionArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ActionDefinitionArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.PublishMetricActionArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.DimensionArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.StatelessRuleGroupReferenceArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

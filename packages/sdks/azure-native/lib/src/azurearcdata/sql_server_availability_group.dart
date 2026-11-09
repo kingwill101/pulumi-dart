@@ -145,7 +145,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -153,15 +153,18 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurearcdata_sqlserveravailabilitygroup" "sqlServerAvailabilityGroup" {
+/// resource "azure-native_azurearcdata_sql_server_availability_group" "sqlServerAvailabilityGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_group_name = "testAG"
 ///   location                = "southeastasia"
 ///   properties = {
 ///     databases = {
 ///       value = [{
-///         "databaseName" = "db1"
+///         database_name = "db1"
 ///         }, {
-///         "databaseName" = "db2"
+///         database_name = "db2"
 ///       }]
 ///     }
 ///     info = {
@@ -176,12 +179,12 @@ import 'system_data_response.dart';
 ///     }
 ///     replicas = {
 ///       value = [{
-///         "configure" = {
-///           "backupPriority" = 50
-///           "endpointUrl"    = "TCP://mytest60-0.mytest60-svc:5022"
-///           "sessionTimeout" = 10
+///         configure = {
+///           backup_priority = 50
+///           endpoint_url    = "TCP://mytest60-0.mytest60-svc:5022"
+///           session_timeout = 10
 ///         }
-///         "replicaName" = "testSqlServer\\INST1"
+///         replica_name = "testSqlServer\\INST1"
 ///       }]
 ///     }
 ///   }
@@ -204,8 +207,11 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.azurearcdata.SqlServerAvailabilityGroupArgs;
 /// import com.pulumi.azurenative.azurearcdata.inputs.SqlServerAvailabilityGroupResourcePropertiesArgs;
 /// import com.pulumi.azurenative.azurearcdata.inputs.SqlServerAvailabilityGroupResourcePropertiesDatabasesArgs;
+/// import com.pulumi.azurenative.azurearcdata.inputs.SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArgs;
 /// import com.pulumi.azurenative.azurearcdata.inputs.AvailabilityGroupInfoArgs;
 /// import com.pulumi.azurenative.azurearcdata.inputs.SqlServerAvailabilityGroupResourcePropertiesReplicasArgs;
+/// import com.pulumi.azurenative.azurearcdata.inputs.SqlAvailabilityGroupReplicaResourcePropertiesArgs;
+/// import com.pulumi.azurenative.azurearcdata.inputs.AvailabilityGroupConfigureArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

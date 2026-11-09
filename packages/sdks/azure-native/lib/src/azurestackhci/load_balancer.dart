@@ -279,7 +279,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -287,7 +287,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_loadbalancer" "loadBalancer" {
+/// resource "azure-native_azurestackhci_load_balancer" "loadBalancer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"
 ///     type = "CustomLocation"
@@ -296,80 +299,80 @@ import 'system_data_response.dart';
 ///   location           = "West US2"
 ///   properties = {
 ///     backend_address_pools = [{
-///       "name" = "web-backend"
-///       "properties" = {
-///         "loadBalancerBackendAddresses" = [{
-///           "name" = "web-server-1"
-///           "properties" = {
-///             "adminState" = "Up"
-///             "networkInterfaceIPConfiguration" = {
-///               "resourceId" = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/azure-local-rg/providers/Microsoft.AzureStackHCI/networkInterfaces/web-server-1-nic/ipConfigurations/primary"
+///       name = "web-backend"
+///       properties = {
+///         load_balancer_backend_addresses = [{
+///           name = "web-server-1"
+///           properties = {
+///             admin_state = "Up"
+///             network_interface_ip_configuration = {
+///               resource_id = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/azure-local-rg/providers/Microsoft.AzureStackHCI/networkInterfaces/web-server-1-nic/ipConfigurations/primary"
 ///             }
 ///           }
 ///           }, {
-///           "name" = "web-server-2"
-///           "properties" = {
-///             "adminState" = "Up"
-///             "networkInterfaceIPConfiguration" = {
-///               "resourceId" = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/azure-local-rg/providers/Microsoft.AzureStackHCI/networkInterfaces/web-server-2-nic/ipConfigurations/primary"
+///           name = "web-server-2"
+///           properties = {
+///             admin_state = "Up"
+///             network_interface_ip_configuration = {
+///               resource_id = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/azure-local-rg/providers/Microsoft.AzureStackHCI/networkInterfaces/web-server-2-nic/ipConfigurations/primary"
 ///             }
 ///           }
 ///         }]
-///         "virtualNetwork" = {
-///           "resourceId" = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/azure-local-rg/providers/Microsoft.AzureStackHCI/virtualNetworks/webVNet"
+///         virtual_network = {
+///           resource_id = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/azure-local-rg/providers/Microsoft.AzureStackHCI/virtualNetworks/webVNet"
 ///         }
 ///       }
 ///     }]
 ///     frontend_ip_configurations = [{
-///       "name" = "web-frontend"
-///       "properties" = {
-///         "publicIPAddress" = {
-///           "resourceId" = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/azure-local-rg/providers/Microsoft.AzureStackHCI/publicIPs/webPublicIP"
+///       name = "web-frontend"
+///       properties = {
+///         public_ip_address = {
+///           resource_id = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/azure-local-rg/providers/Microsoft.AzureStackHCI/publicIPs/webPublicIP"
 ///         }
 ///       }
 ///     }]
 ///     load_balancing_rules = [{
-///       "name" = "http-rule"
-///       "properties" = {
-///         "backendAddressPool" = {
-///           "name" = "web-backend"
+///       name = "http-rule"
+///       properties = {
+///         backend_address_pool = {
+///           name = "web-backend"
 ///         }
-///         "backendPort" = 80
-///         "frontendIPConfiguration" = {
-///           "name" = "web-frontend"
+///         backend_port = 80
+///         frontend_ip_configuration = {
+///           name = "web-frontend"
 ///         }
-///         "frontendPort"         = 80
-///         "idleTimeoutInMinutes" = 4
-///         "loadDistribution"     = "Default"
-///         "probe" = {
-///           "name" = "http-probe"
+///         frontend_port           = 80
+///         idle_timeout_in_minutes = 4
+///         load_distribution       = "Default"
+///         probe = {
+///           name = "http-probe"
 ///         }
-///         "protocol" = "Tcp"
+///         protocol = "Tcp"
 ///       }
 ///       }, {
-///       "name" = "https-rule"
-///       "properties" = {
-///         "backendAddressPool" = {
-///           "name" = "web-backend"
+///       name = "https-rule"
+///       properties = {
+///         backend_address_pool = {
+///           name = "web-backend"
 ///         }
-///         "backendPort" = 443
-///         "frontendIPConfiguration" = {
-///           "name" = "web-frontend"
+///         backend_port = 443
+///         frontend_ip_configuration = {
+///           name = "web-frontend"
 ///         }
-///         "frontendPort"         = 443
-///         "idleTimeoutInMinutes" = 4
-///         "loadDistribution"     = "Default"
-///         "protocol"             = "Tcp"
+///         frontend_port           = 443
+///         idle_timeout_in_minutes = 4
+///         load_distribution       = "Default"
+///         protocol                = "Tcp"
 ///       }
 ///     }]
 ///     probes = [{
-///       "name" = "http-probe"
-///       "properties" = {
-///         "intervalInSeconds" = 15
-///         "numberOfProbes"    = 2
-///         "port"              = 80
-///         "protocol"          = "Http"
-///         "requestPath"       = "/health"
+///       name = "http-probe"
+///       properties = {
+///         interval_in_seconds = 15
+///         number_of_probes    = 2
+///         port                = 80
+///         protocol            = "Http"
+///         request_path        = "/health"
 ///       }
 ///     }]
 ///   }
@@ -388,6 +391,22 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.LoadBalancerArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.LoadBalancerPropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.BackendAddressPoolArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.BackendAddressPoolPropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.LoadBalancerBackendAddressArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.LoadBalancerBackendAddressPropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.IPConfigurationArmReferenceArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.VirtualNetworkArmReferenceArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.FrontendIPConfigurationArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.FrontendIPConfigurationPropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.PublicIPAddressArmReferenceArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.LoadBalancerRuleArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.LoadBalancerRulePropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.LoadBalancerBackendAddressPoolReferenceArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.LoadBalancerFrontendIPConfigurationReferenceArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.LoadBalancerProbeReferenceArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.ProbeArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.ProbePropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

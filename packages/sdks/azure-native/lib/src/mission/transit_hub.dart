@@ -36,7 +36,7 @@ import 'transit_option_response.dart';
 ///         {
 ///             Params = new AzureNative.Mission.Inputs.TransitOptionParamsArgs
 ///             {
-///                 ScaleUnits = 1,
+///                 ScaleUnits = 1.0,
 ///             },
 ///             Type = AzureNative.Mission.TransitOptionType.ExpressRoute,
 ///         },
@@ -83,7 +83,7 @@ import 'transit_option_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -91,7 +91,10 @@ import 'transit_option_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_mission_transithub" "transitHub" {
+/// resource "azure-native_mission_transit_hub" "transitHub" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   community_name      = "TestMyCommunity"
 ///   location            = "westcentralus"
 ///   resource_group_name = "rgopenapi"

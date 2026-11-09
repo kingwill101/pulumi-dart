@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,7 +77,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datafactory_managedprivateendpoint" "managedPrivateEndpoint" {
+/// resource "azure-native_datafactory_managed_private_endpoint" "managedPrivateEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   factory_name                  = "exampleFactoryName"
 ///   managed_private_endpoint_name = "exampleManagedPrivateEndpointName"
 ///   managed_virtual_network_name  = "exampleManagedVirtualNetworkName"
@@ -115,7 +118,7 @@ import 'system_data_response.dart';
 ///             .factoryName("exampleFactoryName")
 ///             .managedPrivateEndpointName("exampleManagedPrivateEndpointName")
 ///             .managedVirtualNetworkName("exampleManagedVirtualNetworkName")
-///             .properties(ManagedPrivateEndpointArgs.builder()
+///             .properties(com.pulumi.azurenative.datafactory.inputs.ManagedPrivateEndpointArgs.builder()
 ///                 .fqdns()
 ///                 .groupId("blob")
 ///                 .privateLinkResourceId("/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/exampleResourceGroup/providers/Microsoft.Storage/storageAccounts/exampleBlobStorage")

@@ -80,7 +80,7 @@ import 'workspace_api_diagnostic_args.dart';
 ///         ResourceGroupName = "rg1",
 ///         Sampling = new AzureNative.ApiManagement.Inputs.SamplingSettingsArgs
 ///         {
-///             Percentage = 50,
+///             Percentage = 50.0,
 ///             SamplingType = AzureNative.ApiManagement.SamplingType.@Fixed,
 ///         },
 ///         ServiceName = "apimService1",
@@ -161,7 +161,7 @@ import 'workspace_api_diagnostic_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -169,7 +169,10 @@ import 'workspace_api_diagnostic_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_workspaceapidiagnostic" "workspaceApiDiagnostic" {
+/// resource "azure-native_apimanagement_workspace_api_diagnostic" "workspaceApiDiagnostic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   always_log = "allErrors"
 ///   api_id     = "57d1f7558aa04f15146d9d8a"
 ///   backend = {

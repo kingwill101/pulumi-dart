@@ -62,7 +62,7 @@ import 'encryption_protector_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,7 +70,10 @@ import 'encryption_protector_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_encryptionprotector" "encryptionProtector" {
+/// resource "azure-native_sql_encryption_protector" "encryptionProtector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auto_rotation_enabled     = false
 ///   encryption_protector_name = "current"
 ///   resource_group_name       = "sqlcrudtest-7398"
@@ -211,7 +214,7 @@ import 'encryption_protector_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -219,7 +222,10 @@ import 'encryption_protector_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_encryptionprotector" "encryptionProtector" {
+/// resource "azure-native_sql_encryption_protector" "encryptionProtector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   encryption_protector_name = "current"
 ///   resource_group_name       = "sqlcrudtest-7398"
 ///   server_key_name           = "ServiceManaged"

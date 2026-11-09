@@ -82,7 +82,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -90,13 +90,16 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_programenrollment_eduenrollment" "eduEnrollment" {
+/// resource "azure-native_programenrollment_edu_enrollment" "eduEnrollment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enrollment_name = "default"
 ///   location        = "eastus"
 ///   properties = {
 ///     domains = [{
-///       "domainNames" = ["university.edu", "college.edu"]
-///       "tenantId"    = "00000000-0000-0000-0000-000000000001"
+///       domain_names = ["university.edu", "college.edu"]
+///       tenant_id    = "00000000-0000-0000-0000-000000000001"
 ///     }]
 ///   }
 ///   resource_group_name = "testrg"
@@ -113,6 +116,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.programenrollment.EduEnrollment;
 /// import com.pulumi.azurenative.programenrollment.EduEnrollmentArgs;
 /// import com.pulumi.azurenative.programenrollment.inputs.EduEnrollmentPropertiesArgs;
+/// import com.pulumi.azurenative.programenrollment.inputs.DomainGroupArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

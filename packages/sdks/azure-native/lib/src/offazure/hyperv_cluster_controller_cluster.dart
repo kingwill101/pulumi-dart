@@ -71,7 +71,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -79,7 +79,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_offazure_hypervclustercontrollercluster" "hypervClusterControllerCluster" {
+/// resource "azure-native_offazure_hyperv_cluster_controller_cluster" "hypervClusterControllerCluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name        = "67b-v01-nC3--6tCUl"
 ///   fqdn                = "rpfphmlbzericn"
 ///   host_fqdn_list      = ["ozzrrnscesqywisszgtrnqkxp"]

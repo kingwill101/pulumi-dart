@@ -119,7 +119,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -127,25 +127,28 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_machinelearningservices_connectionraipolicy" "connectionRaiPolicy" {
+/// resource "azure-native_machinelearningservices_connection_rai_policy" "connectionRaiPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_name = "testConnection"
 ///   properties = {
 ///     base_policy_name = "112"
 ///     completion_blocklists = [{
-///       "blocking"      = false
-///       "blocklistName" = "blocklistName"
+///       blocking       = false
+///       blocklist_name = "blocklistName"
 ///     }]
 ///     content_filters = [{
-///       "allowedContentLevel" = "Low"
-///       "blocking"            = false
-///       "enabled"             = false
-///       "name"                = "policyName"
-///       "source"              = "Prompt"
+///       allowed_content_level = "Low"
+///       blocking              = false
+///       enabled               = false
+///       name                  = "policyName"
+///       source                = "Prompt"
 ///     }]
 ///     mode = "Blocking"
 ///     prompt_blocklists = [{
-///       "blocking"      = false
-///       "blocklistName" = "blocklistName"
+///       blocking       = false
+///       blocklist_name = "blocklistName"
 ///     }]
 ///     type = "SystemManaged"
 ///   }
@@ -165,6 +168,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.machinelearningservices.ConnectionRaiPolicy;
 /// import com.pulumi.azurenative.machinelearningservices.ConnectionRaiPolicyArgs;
 /// import com.pulumi.azurenative.machinelearningservices.inputs.RaiPolicyPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.RaiBlocklistConfigArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.RaiPolicyContentFilterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

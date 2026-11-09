@@ -79,7 +79,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -87,14 +87,17 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azureresiliencemanagement_goalassignment" "goalAssignment" {
+/// resource "azure-native_azureresiliencemanagement_goal_assignment" "goalAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   goal_assignment_name = "ga1"
 ///   properties = {
 ///     goal_assignment_type = "Resiliency"
 ///     goal_template_id     = "/providers/Microsoft.AzureResilienceManagement/goaltemplates/gt1"
 ///     service_level_resources = [{
-///       "serviceLevelIndicatorResourceId" = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyVirtualMachine"
-///       "serviceLevelObjectiveResourceId" = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyVirtualMachine"
+///       service_level_indicator_resource_id = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyVirtualMachine"
+///       service_level_objective_resource_id = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyVirtualMachine"
 ///     }]
 ///   }
 ///   service_group_name = "sg1"
@@ -111,6 +114,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.azureresiliencemanagement.GoalAssignment;
 /// import com.pulumi.azurenative.azureresiliencemanagement.GoalAssignmentArgs;
 /// import com.pulumi.azurenative.azureresiliencemanagement.inputs.GoalAssignmentPropertiesArgs;
+/// import com.pulumi.azurenative.azureresiliencemanagement.inputs.ServiceLevelResourceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -250,7 +254,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -258,7 +262,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azureresiliencemanagement_goalassignment" "goalAssignment" {
+/// resource "azure-native_azureresiliencemanagement_goal_assignment" "goalAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   goal_assignment_name = "ga1"
 ///   properties = {
 ///     goal_assignment_type = "Resiliency"

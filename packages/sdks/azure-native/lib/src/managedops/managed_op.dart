@@ -78,7 +78,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -86,7 +86,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managedops_managedop" "managedOp" {
+/// resource "azure-native_managedops_managed_op" "managedOp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   managed_ops_name = "default"
 ///   properties = {
 ///     desired_configuration = {

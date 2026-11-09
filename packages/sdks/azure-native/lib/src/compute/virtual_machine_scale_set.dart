@@ -42,7 +42,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -225,7 +225,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -233,7 +233,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -254,26 +257,26 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     }
 ///     extension_profile = {
 ///       extensions = [{
-///         "autoUpgradeMinorVersion" = false
-///         "name"                    = "{extension-name}"
-///         "publisher"               = "{extension-Publisher}"
-///         "settings"                = {}
-///         "suppressFailures"        = true
-///         "type"                    = "{extension-Type}"
-///         "typeHandlerVersion"      = "{handler-version}"
+///         auto_upgrade_minor_version = false
+///         name                       = "{extension-name}"
+///         publisher                  = "{extension-Publisher}"
+///         settings                   = {}
+///         suppress_failures          = true
+///         type                       = "{extension-Type}"
+///         type_handler_version       = "{handler-version}"
 ///       }]
 ///     }
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -316,7 +319,11 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.DiagnosticsProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.BootDiagnosticsArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetExtensionProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetExtensionArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -627,7 +634,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -822,7 +829,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -830,7 +837,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -851,31 +861,31 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     }
 ///     extension_profile = {
 ///       extensions = [{
-///         "autoUpgradeMinorVersion" = false
-///         "name"                    = "{extension-name}"
-///         "protectedSettingsFromKeyVault" = {
-///           "secretUrl" = "https://kvName.vault.azure.net/secrets/secretName/79b88b3a6f5440ffb2e73e44a0db712e"
-///           "sourceVault" = {
-///             "id" = "/subscriptions/a53f7094-a16c-47af-abe4-b05c05d0d79a/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/kvName"
+///         auto_upgrade_minor_version = false
+///         name                       = "{extension-name}"
+///         protected_settings_from_key_vault = {
+///           secret_url = "https://kvName.vault.azure.net/secrets/secretName/79b88b3a6f5440ffb2e73e44a0db712e"
+///           source_vault = {
+///             id = "/subscriptions/a53f7094-a16c-47af-abe4-b05c05d0d79a/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/kvName"
 ///           }
 ///         }
-///         "publisher"          = "{extension-Publisher}"
-///         "settings"           = {}
-///         "type"               = "{extension-Type}"
-///         "typeHandlerVersion" = "{handler-version}"
+///         publisher            = "{extension-Publisher}"
+///         settings             = {}
+///         type                 = "{extension-Type}"
+///         type_handler_version = "{handler-version}"
 ///       }]
 ///     }
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -918,7 +928,13 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.DiagnosticsProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.BootDiagnosticsArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetExtensionProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetExtensionArgs;
+/// import com.pulumi.azurenative.compute.inputs.KeyVaultSecretReferenceArgs;
+/// import com.pulumi.azurenative.compute.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -1247,7 +1263,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -1376,7 +1392,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1384,7 +1400,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -1399,15 +1418,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -1443,6 +1462,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
@@ -1668,7 +1690,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -1818,7 +1840,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1826,7 +1848,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -1841,15 +1866,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -1889,6 +1914,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -2152,7 +2180,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -2286,7 +2314,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2294,7 +2322,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -2309,15 +2340,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -2355,6 +2386,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -2588,7 +2622,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -2722,7 +2756,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2730,7 +2764,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -2745,15 +2782,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -2791,6 +2828,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -3024,7 +3064,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -3147,7 +3187,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3155,7 +3195,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -3170,15 +3213,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     storage_profile = {
@@ -3211,6 +3254,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
@@ -3424,7 +3470,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -3600,7 +3646,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3608,7 +3654,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -3623,31 +3672,31 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "disableTcpStateTracking"     = true
-///         "enableAcceleratedNetworking" = true
-///         "enableIPForwarding"          = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         disable_tcp_state_tracking    = true
+///         enable_accelerated_networking = true
+///         enable_ip_forwarding          = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{nicConfig1-name}"
-///         "primary" = true
+///         name    = "{nicConfig1-name}"
+///         primary = true
 ///         }, {
-///         "disableTcpStateTracking"     = false
-///         "enableAcceleratedNetworking" = false
-///         "enableIPForwarding"          = false
-///         "ipConfigurations" = [{
-///           "name"                    = "{nicConfig2-name}"
-///           "primary"                 = true
-///           "privateIPAddressVersion" = "IPv4"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-fpga-subnet-name2}"
+///         disable_tcp_state_tracking    = false
+///         enable_accelerated_networking = false
+///         enable_ip_forwarding          = false
+///         ip_configurations = [{
+///           name                       = "{nicConfig2-name}"
+///           primary                    = true
+///           private_ip_address_version = "IPv4"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-fpga-subnet-name2}"
 ///           }
 ///         }]
-///         "name"    = "{nicConfig2-name}"
-///         "primary" = false
+///         name    = "{nicConfig2-name}"
+///         primary = false
 ///       }]
 ///     }
 ///     os_profile = {
@@ -3685,6 +3734,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -3987,7 +4039,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -4161,7 +4213,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -4169,7 +4221,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -4184,27 +4239,27 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     application_profile = {
 ///       gallery_applications = [{
-///         "configurationReference"          = "https://mystorageaccount.blob.core.windows.net/configurations/settings.config"
-///         "enableAutomaticUpgrade"          = false
-///         "order"                           = 1
-///         "packageReferenceId"              = "/subscriptions/32c17a9e-aa7b-4ba5-a45b-e324116b6fdb/resourceGroups/myresourceGroupName2/providers/Microsoft.Compute/galleries/myGallery1/applications/MyApplication1/versions/1.0"
-///         "tags"                            = "myTag1"
-///         "treatFailureAsDeploymentFailure" = true
+///         configuration_reference             = "https://mystorageaccount.blob.core.windows.net/configurations/settings.config"
+///         enable_automatic_upgrade            = false
+///         order                               = 1
+///         package_reference_id                = "/subscriptions/32c17a9e-aa7b-4ba5-a45b-e324116b6fdb/resourceGroups/myresourceGroupName2/providers/Microsoft.Compute/galleries/myGallery1/applications/MyApplication1/versions/1.0"
+///         tags                                = "myTag1"
+///         treat_failure_as_deployment_failure = true
 ///         }, {
-///         "packageReferenceId" = "/subscriptions/32c17a9e-aa7b-4ba5-a45b-e324116b6fdg/resourceGroups/myresourceGroupName3/providers/Microsoft.Compute/galleries/myGallery2/applications/MyApplication2/versions/1.1"
+///         package_reference_id = "/subscriptions/32c17a9e-aa7b-4ba5-a45b-e324116b6fdg/resourceGroups/myresourceGroupName3/providers/Microsoft.Compute/galleries/myGallery2/applications/MyApplication2/versions/1.1"
 ///       }]
 ///     }
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -4245,7 +4300,11 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ApplicationProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VMGalleryApplicationArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -4553,7 +4612,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -4700,7 +4759,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -4708,7 +4767,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "westus"
 ///   overprovision = false
 ///   resiliency_policy = {
@@ -4730,15 +4792,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -4781,6 +4843,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -5070,7 +5135,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         },
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -5241,7 +5306,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -5249,7 +5314,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -5283,15 +5351,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     }
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -5341,6 +5409,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetHardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VMSizePropertiesArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -5663,7 +5734,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_DS1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -5836,7 +5907,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -5844,7 +5915,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -5859,15 +5933,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -5877,15 +5951,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     }
 ///     storage_profile = {
 ///       data_disks = [{
-///         "caching"      = "ReadWrite"
-///         "createOption" = "Empty"
-///         "diskSizeGB"   = 1023
-///         "lun"          = 0
-///         "managedDisk" = {
-///           "diskEncryptionSet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSets/{existing-diskEncryptionSet-name}"
+///         caching       = "ReadWrite"
+///         create_option = "Empty"
+///         disk_size_gb  = 1023
+///         lun           = 0
+///         managed_disk = {
+///           disk_encryption_set = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSets/{existing-diskEncryptionSet-name}"
 ///           }
-///           "storageAccountType" = "Standard_LRS"
+///           storage_account_type = "Standard_LRS"
 ///         }
 ///       }]
 ///       image_reference = {
@@ -5920,12 +5994,16 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
-/// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
-/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetDataDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
 /// import com.pulumi.azurenative.compute.inputs.DiskEncryptionSetParametersArgs;
+/// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -6210,7 +6288,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -6382,7 +6460,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -6390,7 +6468,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -6405,29 +6486,29 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///         }, {
-///         "enableAcceleratedNetworking" = false
-///         "enableFpga"                  = true
-///         "enableIPForwarding"          = false
-///         "ipConfigurations" = [{
-///           "name"                    = "{fpgaNic-Name}"
-///           "primary"                 = true
-///           "privateIPAddressVersion" = "IPv4"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-fpga-subnet-name}"
+///         enable_accelerated_networking = false
+///         enable_fpga                   = true
+///         enable_ip_forwarding          = false
+///         ip_configurations = [{
+///           name                       = "{fpgaNic-Name}"
+///           primary                    = true
+///           private_ip_address_version = "IPv4"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-fpga-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{fpgaNic-Name}"
-///         "primary" = false
+///         name    = "{fpgaNic-Name}"
+///         primary = false
 ///       }]
 ///     }
 ///     os_profile = {
@@ -6465,6 +6546,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -6765,7 +6849,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_DS1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -6917,7 +7001,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -6925,7 +7009,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "westus"
 ///   overprovision = true
 ///   plan = {
@@ -6945,15 +7032,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -6998,6 +7085,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.SecurityProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
@@ -7274,7 +7364,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -7472,7 +7562,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -7480,7 +7570,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -7495,41 +7588,41 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "auxiliaryMode"               = "AcceleratedConnections"
-///         "auxiliarySku"                = "A1"
-///         "disableTcpStateTracking"     = true
-///         "enableAcceleratedNetworking" = true
-///         "enableIPForwarding"          = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         auxiliary_mode                = "AcceleratedConnections"
+///         auxiliary_sku                 = "A1"
+///         disable_tcp_state_tracking    = true
+///         enable_accelerated_networking = true
+///         enable_ip_forwarding          = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{nicConfig1-name}"
-///         "primary" = true
+///         name    = "{nicConfig1-name}"
+///         primary = true
 ///         }, {
-///         "disableTcpStateTracking"     = false
-///         "enableAcceleratedNetworking" = false
-///         "enableIPForwarding"          = false
-///         "ipConfigurations" = [{
-///           "name"                    = "{nicConfig2-name}"
-///           "primary"                 = true
-///           "privateIPAddressVersion" = "IPv4"
-///           "publicIPAddressConfiguration" = {
-///             "dnsSettings" = {
-///               "domainNameLabel"      = "vmsstestlabel01"
-///               "domainNameLabelScope" = "NoReuse"
+///         disable_tcp_state_tracking    = false
+///         enable_accelerated_networking = false
+///         enable_ip_forwarding          = false
+///         ip_configurations = [{
+///           name                       = "{nicConfig2-name}"
+///           primary                    = true
+///           private_ip_address_version = "IPv4"
+///           public_ip_address_configuration = {
+///             dns_settings = {
+///               domain_name_label       = "vmsstestlabel01"
+///               domain_name_label_scope = "NoReuse"
 ///             }
-///             "idleTimeoutInMinutes" = 10
-///             "name"                 = "publicip"
+///             idle_timeout_in_minutes = 10
+///             name                    = "publicip"
 ///           }
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-fpga-subnet-name2}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-fpga-subnet-name2}"
 ///           }
 ///         }]
-///         "name"    = "{nicConfig2-name}"
-///         "primary" = false
+///         name    = "{nicConfig2-name}"
+///         primary = false
 ///       }]
 ///     }
 ///     os_profile = {
@@ -7567,6 +7660,11 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetPublicIPAddressConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -7907,7 +8005,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -8061,7 +8159,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -8069,7 +8167,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -8084,15 +8185,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -8139,6 +8240,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ScheduledEventsProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.OSImageNotificationProfileArgs;
@@ -8408,7 +8512,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D2s_v3",
 ///             Tier = "Standard",
 ///         },
@@ -8560,7 +8664,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -8568,7 +8672,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -8583,15 +8690,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -8637,6 +8744,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.SecurityProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ProxyAgentSettingsArgs;
@@ -8909,7 +9019,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -9054,7 +9164,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -9062,7 +9172,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "westus"
 ///   overprovision = false
 ///   resiliency_policy = {
@@ -9082,15 +9195,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -9133,6 +9246,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -9403,7 +9519,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -9548,7 +9664,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -9556,7 +9672,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "westus"
 ///   overprovision = false
 ///   resiliency_policy = {
@@ -9576,15 +9695,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -9627,6 +9746,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -9890,7 +10012,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_A1",
 ///             Tier = "Standard",
 ///         },
@@ -10039,7 +10161,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -10047,7 +10169,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "eastus2euap"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -10065,15 +10190,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -10116,6 +10241,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.AutomaticOSUpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.SecurityPostureReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
@@ -10376,7 +10504,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_DC2as_v5",
 ///             Tier = "Standard",
 ///         },
@@ -10539,7 +10667,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -10547,7 +10675,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -10562,15 +10693,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -10621,6 +10752,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.SecurityProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.UefiSettingsArgs;
@@ -10906,7 +11040,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_DC2es_v5",
 ///             Tier = "Standard",
 ///         },
@@ -11069,7 +11203,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -11077,7 +11211,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -11092,15 +11229,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -11151,6 +11288,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.SecurityProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.UefiSettingsArgs;
@@ -11436,7 +11576,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_A1",
 ///             Tier = "Standard",
 ///         },
@@ -11585,7 +11725,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -11593,7 +11733,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "eastus2euap"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -11611,15 +11754,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -11662,6 +11805,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.AutomaticOSUpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ServiceArtifactReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
@@ -11922,7 +12068,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D2s_v3",
 ///             Tier = "Standard",
 ///         },
@@ -12078,7 +12224,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -12086,7 +12232,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -12101,15 +12250,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -12157,6 +12306,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.SecurityProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.UefiSettingsArgs;
@@ -12436,7 +12588,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -12581,7 +12733,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -12589,7 +12741,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "westus"
 ///   overprovision = true
 ///   plan = {
@@ -12609,15 +12764,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -12659,6 +12814,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -12923,7 +13081,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -13075,7 +13233,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -13083,7 +13241,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -13098,18 +13259,18 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "applicationGatewayBackendAddressPools" = [{
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/applicationGateways/{existing-application-gateway-name}/backendAddressPools/{existing-backend-address-pool-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           application_gateway_backend_address_pools = [{
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/applicationGateways/{existing-application-gateway-name}/backendAddressPools/{existing-backend-address-pool-name}"
 ///           }]
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -13150,6 +13311,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.SubResourceArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -13406,7 +13571,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -13579,7 +13744,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -13587,7 +13752,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -13602,25 +13770,25 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "loadBalancerBackendAddressPools" = [{
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/{existing-load-balancer-name}/backendAddressPools/{existing-backend-address-pool-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           load_balancer_backend_address_pools = [{
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/{existing-load-balancer-name}/backendAddressPools/{existing-backend-address-pool-name}"
 ///           }]
-///           "loadBalancerInboundNatPools" = [{
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/{existing-load-balancer-name}/inboundNatPools/{existing-nat-pool-name}"
+///           load_balancer_inbound_nat_pools = [{
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/{existing-load-balancer-name}/inboundNatPools/{existing-nat-pool-name}"
 ///           }]
-///           "name" = "{vmss-name}"
-///           "publicIPAddressConfiguration" = {
-///             "name"                   = "{vmss-name}"
-///             "publicIPAddressVersion" = "IPv4"
+///           name = "{vmss-name}"
+///           public_ip_address_configuration = {
+///             name                      = "{vmss-name}"
+///             public_ip_address_version = "IPv4"
 ///           }
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -13661,6 +13829,11 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.SubResourceArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetPublicIPAddressConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -13966,7 +14139,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         },
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -14123,7 +14296,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -14131,7 +14304,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   automatic_repairs_policy = {
 ///     enabled      = true
 ///     grace_period = "PT10M"
@@ -14163,15 +14339,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -14218,6 +14394,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -14525,7 +14704,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -14679,7 +14858,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -14687,7 +14866,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -14708,15 +14890,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     }
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -14759,6 +14941,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.DiagnosticsProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.BootDiagnosticsArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -15026,7 +15211,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D2_v2",
 ///             Tier = "Standard",
 ///         },
@@ -15195,7 +15380,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -15203,7 +15388,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -15218,15 +15406,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -15236,13 +15424,13 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     }
 ///     storage_profile = {
 ///       data_disks = [{
-///         "createOption" = "Empty"
-///         "diskSizeGB"   = 1023
-///         "lun"          = 0
+///         create_option = "Empty"
+///         disk_size_gb  = 1023
+///         lun           = 0
 ///         }, {
-///         "createOption" = "Empty"
-///         "diskSizeGB"   = 1023
-///         "lun"          = 1
+///         create_option = "Empty"
+///         disk_size_gb  = 1023
+///         lun           = 1
 ///       }]
 ///       image_reference = {
 ///         offer     = "WindowsServer"
@@ -15277,8 +15465,12 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetDataDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
@@ -15574,7 +15766,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_DS1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -15728,7 +15920,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -15736,7 +15928,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "westus"
 ///   overprovision = true
 ///   plan = {
@@ -15756,15 +15951,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -15810,6 +16005,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -16096,7 +16294,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_DS1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -16250,7 +16448,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -16258,7 +16456,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "westus"
 ///   overprovision = true
 ///   plan = {
@@ -16278,15 +16479,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -16332,6 +16533,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -16618,7 +16822,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_DS1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -16770,7 +16974,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -16778,7 +16982,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "westus"
 ///   overprovision = true
 ///   plan = {
@@ -16798,15 +17005,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -16851,6 +17058,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -17127,7 +17337,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -17310,7 +17520,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -17318,7 +17528,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -17339,26 +17552,26 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     }
 ///     extension_profile = {
 ///       extensions = [{
-///         "autoUpgradeMinorVersion" = false
-///         "name"                    = "{extension-name}"
-///         "publisher"               = "{extension-Publisher}"
-///         "settings"                = {}
-///         "type"                    = "{extension-Type}"
-///         "typeHandlerVersion"      = "{handler-version}"
+///         auto_upgrade_minor_version = false
+///         name                       = "{extension-name}"
+///         publisher                  = "{extension-Publisher}"
+///         settings                   = {}
+///         type                       = "{extension-Type}"
+///         type_handler_version       = "{handler-version}"
 ///       }]
 ///       extensions_time_budget = "PT1H20M"
 ///     }
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -17401,7 +17614,11 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.DiagnosticsProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.BootDiagnosticsArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetExtensionProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetExtensionArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -17712,7 +17929,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -17864,7 +18081,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -17872,7 +18089,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -17892,15 +18112,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     }
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -17943,6 +18163,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.DiagnosticsProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.BootDiagnosticsArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -18206,7 +18429,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -18346,7 +18569,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -18354,7 +18577,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -18369,15 +18595,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -18418,6 +18644,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -18663,7 +18892,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -18803,7 +19032,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -18811,7 +19040,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -18826,15 +19058,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -18875,6 +19107,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -19126,7 +19361,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 2,
+///             Capacity = 2.0,
 ///             Name = "Standard_A8m_v2",
 ///             Tier = "Standard",
 ///         },
@@ -19283,7 +19518,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -19291,7 +19526,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                    = "westus"
 ///   orchestration_mode          = "Flexible"
 ///   platform_fault_domain_count = 1
@@ -19309,23 +19547,23 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     network_profile = {
 ///       network_api_version = "2020-11-01"
 ///       network_interface_configurations = [{
-///         "enableAcceleratedNetworking" = false
-///         "enableIPForwarding"          = true
-///         "ipConfigurations" = [{
-///           "applicationGatewayBackendAddressPools" = []
-///           "loadBalancerBackendAddressPools"       = []
-///           "name"                                  = "{vmss-name}"
-///           "primary"                               = true
-///           "publicIPAddressConfiguration" = {
-///             "idleTimeoutInMinutes" = 15
-///             "name"                 = "{vmss-name}"
+///         enable_accelerated_networking = false
+///         enable_ip_forwarding          = true
+///         ip_configurations = [{
+///           application_gateway_backend_address_pools = []
+///           load_balancer_backend_address_pools       = []
+///           name                                      = "{vmss-name}"
+///           primary                                   = true
+///           public_ip_address_configuration = {
+///             idle_timeout_in_minutes = 15
+///             name                    = "{vmss-name}"
 ///           }
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -19366,6 +19604,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.SkuArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetPublicIPAddressConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -19656,14 +19898,14 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         {
 ///             ForceDeletion = true,
 ///             PrioritizeUnhealthyVMs = true,
-///             Rules = new[]
+///             Rules =
 ///             {
 ///                 AzureNative.Compute.VirtualMachineScaleSetScaleInRules.OldestVM,
 ///             },
 ///         },
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -19810,7 +20052,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -19818,7 +20060,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -19838,15 +20083,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -19888,6 +20133,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -20159,7 +20407,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         SinglePlacementGroup = false,
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 10,
+///             Capacity = 10.0,
 ///             Name = "Mix",
 ///         },
 ///         SkuProfile = new AzureNative.Compute.Inputs.SkuProfileArgs
@@ -20185,7 +20433,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         {
 ///             BillingProfile = new AzureNative.Compute.Inputs.BillingProfileArgs
 ///             {
-///                 MaxPrice = -1,
+///                 MaxPrice = -1.0,
 ///             },
 ///             EvictionPolicy = AzureNative.Compute.VirtualMachineEvictionPolicyTypes.Deallocate,
 ///             NetworkProfile = new AzureNative.Compute.Inputs.VirtualMachineScaleSetNetworkProfileArgs
@@ -20339,7 +20587,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -20347,7 +20595,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location           = "westus"
 ///   orchestration_mode = "Flexible"
 ///   priority_mix_policy = {
@@ -20363,11 +20614,11 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   sku_profile = {
 ///     allocation_strategy = "CapacityOptimized"
 ///     vm_sizes = [{
-///       "name" = "Standard_D8s_v5"
+///       name = "Standard_D8s_v5"
 ///       }, {
-///       "name" = "Standard_E16s_v5"
+///       name = "Standard_E16s_v5"
 ///       }, {
-///       "name" = "Standard_D2s_v5"
+///       name = "Standard_D2s_v5"
 ///     }]
 ///   }
 ///   virtual_machine_profile = {
@@ -20377,15 +20628,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     eviction_policy = "Deallocate"
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -20426,9 +20677,13 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.PriorityMixPolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.SkuArgs;
 /// import com.pulumi.azurenative.compute.inputs.SkuProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.SkuProfileVMSizeArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.BillingProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -20750,7 +21005,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         SinglePlacementGroup = false,
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 10,
+///             Capacity = 10.0,
 ///             Name = "Mix",
 ///         },
 ///         SkuProfile = new AzureNative.Compute.Inputs.SkuProfileArgs
@@ -20779,7 +21034,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         {
 ///             BillingProfile = new AzureNative.Compute.Inputs.BillingProfileArgs
 ///             {
-///                 MaxPrice = -1,
+///                 MaxPrice = -1.0,
 ///             },
 ///             EvictionPolicy = AzureNative.Compute.VirtualMachineEvictionPolicyTypes.Deallocate,
 ///             NetworkProfile = new AzureNative.Compute.Inputs.VirtualMachineScaleSetNetworkProfileArgs
@@ -20936,7 +21191,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -20944,7 +21199,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location           = "westus"
 ///   orchestration_mode = "Flexible"
 ///   priority_mix_policy = {
@@ -20960,14 +21218,14 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   sku_profile = {
 ///     allocation_strategy = "Prioritized"
 ///     vm_sizes = [{
-///       "name" = "Standard_D8s_v5"
-///       "rank" = 0
+///       name = "Standard_D8s_v5"
+///       rank = 0
 ///       }, {
-///       "name" = "Standard_E16s_v5"
-///       "rank" = 1
+///       name = "Standard_E16s_v5"
+///       rank = 1
 ///       }, {
-///       "name" = "Standard_D2s_v5"
-///       "rank" = 2
+///       name = "Standard_D2s_v5"
+///       rank = 2
 ///     }]
 ///   }
 ///   virtual_machine_profile = {
@@ -20977,15 +21235,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     eviction_policy = "Deallocate"
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -21026,9 +21284,13 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.PriorityMixPolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.SkuArgs;
 /// import com.pulumi.azurenative.compute.inputs.SkuProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.SkuProfileVMSizeArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.BillingProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -21356,7 +21618,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 2,
+///             Capacity = 2.0,
 ///             Name = "Standard_A8m_v2",
 ///             Tier = "Standard",
 ///         },
@@ -21373,7 +21635,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         {
 ///             BillingProfile = new AzureNative.Compute.Inputs.BillingProfileArgs
 ///             {
-///                 MaxPrice = -1,
+///                 MaxPrice = -1.0,
 ///             },
 ///             EvictionPolicy = AzureNative.Compute.VirtualMachineEvictionPolicyTypes.Deallocate,
 ///             NetworkProfile = new AzureNative.Compute.Inputs.VirtualMachineScaleSetNetworkProfileArgs
@@ -21516,7 +21778,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -21524,7 +21786,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -21547,15 +21812,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     eviction_policy = "Deallocate"
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -21599,6 +21864,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.BillingProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -21878,7 +22146,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -22042,7 +22310,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -22050,7 +22318,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -22065,15 +22336,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -22083,8 +22354,8 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         disable_password_authentication = true
 ///         ssh = {
 ///           public_keys = [{
-///             "keyData" = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCeClRAk2ipUs/l5voIsDC5q9RI+YSRd1Bvd/O+axgY4WiBzG+4FwJWZm/mLLe5DoOdHQwmU2FrKXZSW4w2sYE70KeWnrFViCOX5MTVvJgPE8ClugNl8RWth/tU849DvM9sT7vFgfVSHcAS2yDRyDlueii+8nF2ym8XWAPltFVCyLHRsyBp5YPqK8JFYIa1eybKsY3hEAxRCA+/7bq8et+Gj3coOsuRmrehav7rE6N12Pb80I6ofa6SM5XNYq4Xk0iYNx7R3kdz0Jj9XgZYWjAHjJmT0gTRoOnt6upOuxK7xI/ykWrllgpXrCPu3Ymz+c+ujaqcxDopnAl2lmf69/J1"
-///             "path"    = "/home/{your-username}/.ssh/authorized_keys"
+///             key_data = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCeClRAk2ipUs/l5voIsDC5q9RI+YSRd1Bvd/O+axgY4WiBzG+4FwJWZm/mLLe5DoOdHQwmU2FrKXZSW4w2sYE70KeWnrFViCOX5MTVvJgPE8ClugNl8RWth/tU849DvM9sT7vFgfVSHcAS2yDRyDlueii+8nF2ym8XWAPltFVCyLHRsyBp5YPqK8JFYIa1eybKsY3hEAxRCA+/7bq8et+Gj3coOsuRmrehav7rE6N12Pb80I6ofa6SM5XNYq4Xk0iYNx7R3kdz0Jj9XgZYWjAHjJmT0gTRoOnt6upOuxK7xI/ykWrllgpXrCPu3Ymz+c+ujaqcxDopnAl2lmf69/J1"
+///             path     = "/home/{your-username}/.ssh/authorized_keys"
 ///           }]
 ///         }
 ///       }
@@ -22122,9 +22393,13 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.LinuxConfigurationArgs;
 /// import com.pulumi.azurenative.compute.inputs.SshConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.SshPublicKeyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
@@ -22398,7 +22673,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -22552,7 +22827,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -22560,7 +22835,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -22575,15 +22853,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -22630,6 +22908,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ScheduledEventsProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.TerminateNotificationProfileArgs;
@@ -22899,7 +23180,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -23041,7 +23322,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -23049,7 +23330,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -23064,15 +23348,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -23114,6 +23398,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -23363,7 +23650,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 2,
+///             Capacity = 2.0,
 ///             Name = "Standard_A1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -23541,7 +23828,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -23549,7 +23836,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "centralus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -23564,15 +23854,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -23582,13 +23872,13 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     }
 ///     storage_profile = {
 ///       data_disks = [{
-///         "createOption" = "Empty"
-///         "diskSizeGB"   = 1023
-///         "lun"          = 0
+///         create_option = "Empty"
+///         disk_size_gb  = 1023
+///         lun           = 0
 ///         }, {
-///         "createOption" = "Empty"
-///         "diskSizeGB"   = 1023
-///         "lun"          = 1
+///         create_option = "Empty"
+///         disk_size_gb  = 1023
+///         lun           = 1
 ///       }]
 ///       image_reference = {
 ///         offer     = "WindowsServer"
@@ -23624,8 +23914,12 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetDataDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetManagedDiskParametersArgs;
@@ -23929,7 +24223,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -24085,7 +24379,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -24093,7 +24387,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -24114,15 +24411,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     }
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -24166,6 +24463,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetHardwareProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VMSizePropertiesArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -24455,7 +24755,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         },
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_D1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -24610,7 +24910,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -24618,7 +24918,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -24646,15 +24949,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   virtual_machine_profile = {
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -24701,6 +25004,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetVMProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;
@@ -24997,7 +25303,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///         ResourceGroupName = "myResourceGroup",
 ///         Sku = new AzureNative.Compute.Inputs.SkuArgs
 ///         {
-///             Capacity = 3,
+///             Capacity = 3.0,
 ///             Name = "Standard_DS1_v2",
 ///             Tier = "Standard",
 ///         },
@@ -25149,7 +25455,7 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -25157,7 +25463,10 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_virtualmachinescaleset" "virtualMachineScaleSet" {
+/// resource "azure-native_compute_virtual_machine_scale_set" "virtualMachineScaleSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "westus"
 ///   overprovision       = true
 ///   resource_group_name = "myResourceGroup"
@@ -25177,15 +25486,15 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 ///     }
 ///     network_profile = {
 ///       network_interface_configurations = [{
-///         "enableIPForwarding" = true
-///         "ipConfigurations" = [{
-///           "name" = "{vmss-name}"
-///           "subnet" = {
-///             "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
+///         enable_ip_forwarding = true
+///         ip_configurations = [{
+///           name = "{vmss-name}"
+///           subnet = {
+///             id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"
 ///           }
 ///         }]
-///         "name"    = "{vmss-name}"
-///         "primary" = true
+///         name    = "{vmss-name}"
+///         primary = true
 ///       }]
 ///     }
 ///     os_profile = {
@@ -25228,6 +25537,9 @@ import 'virtual_machine_scale_set_vmprofile_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.CapacityReservationProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkProfileArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetNetworkConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetIPConfigurationArgs;
+/// import com.pulumi.azurenative.compute.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetOSProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineScaleSetStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageReferenceArgs;

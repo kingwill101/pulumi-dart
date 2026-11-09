@@ -110,7 +110,7 @@ import 'storage_task_assignment_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -118,7 +118,10 @@ import 'storage_task_assignment_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_storagetaskassignment" "storageTaskAssignment" {
+/// resource "azure-native_storage_storage_task_assignment" "storageTaskAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sto4445"
 ///   properties = {
 ///     description = "My Storage task assignment"
@@ -387,7 +390,7 @@ import 'storage_task_assignment_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -395,7 +398,10 @@ import 'storage_task_assignment_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storage_storagetaskassignment" "storageTaskAssignment" {
+/// resource "azure-native_storage_storage_task_assignment" "storageTaskAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sto4445"
 ///   properties = {
 ///     description = "My Storage task assignment"

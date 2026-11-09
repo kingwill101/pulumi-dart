@@ -186,7 +186,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -194,7 +194,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_securityinsights_activitycustomentityquery" "activityCustomEntityQuery" {
+/// resource "azure-native_securityinsights_activity_custom_entity_query" "activityCustomEntityQuery" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   content     = "On '{{Computer}}' the account '{{TargetAccount}}' was deleted by '{{AddedBy}}'"
 ///   description = "Account deleted on host"
 ///   enabled     = true
@@ -244,7 +247,6 @@ import 'system_data_response.dart';
 ///             .entitiesFilter(Map.of("Host_OsFamily", Arrays.asList("Windows")))
 ///             .entityQueryId("07da3cc8-c8ad-4710-a44e-334cdcb7882b")
 ///             .inputEntityType("Host")
-///             .kind("Activity")
 ///             .queryDefinitions(ActivityEntityQueriesPropertiesQueryDefinitionsArgs.builder()
 ///                 .query("""
 /// let GetAccountActions = (v_Host_Name:string, v_Host_NTDomain:string, v_Host_DnsDomain:string, v_Host_AzureID:string, v_Host_OMSAgentID:string){

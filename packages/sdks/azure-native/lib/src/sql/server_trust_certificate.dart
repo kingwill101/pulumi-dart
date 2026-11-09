@@ -58,7 +58,7 @@ import 'server_trust_certificate_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'server_trust_certificate_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_servertrustcertificate" "serverTrustCertificate" {
+/// resource "azure-native_sql_server_trust_certificate" "serverTrustCertificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_name      = "customerCertificateName"
 ///   managed_instance_name = "testcl"
 ///   public_blob           = "308203AE30820296A0030201020210"

@@ -112,7 +112,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -120,7 +120,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_applink_applinkmember" "appLinkMember" {
+/// resource "azure-native_applink_app_link_member" "appLinkMember" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_link_member_name = "member-01"
 ///   app_link_name        = "applink-test-01"
 ///   location             = "westus2"

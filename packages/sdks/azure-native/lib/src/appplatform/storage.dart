@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,6 +78,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_appplatform_storage" "storage" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   properties = {
 ///     account_key  = "account-key-of-storage-account"
 ///     account_name = "storage-account-name"
@@ -116,7 +119,6 @@ import 'system_data_response.dart';
 ///             .properties(StorageAccountArgs.builder()
 ///                 .accountKey("account-key-of-storage-account")
 ///                 .accountName("storage-account-name")
-///                 .storageType("StorageAccount")
 ///                 .build())
 ///             .resourceGroupName("myResourceGroup")
 ///             .serviceName("myservice")

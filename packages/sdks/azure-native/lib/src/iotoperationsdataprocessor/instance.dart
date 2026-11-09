@@ -30,7 +30,7 @@ import 'system_data_response.dart';
 ///         InstanceName = "15wp-47-e60s18w",
 ///         Location = "westus",
 ///         ResourceGroupName = "rgopenapi",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,6 +78,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_iotoperationsdataprocessor_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "ytazzjdwgnnwsmexqasgpyabrtkgtf"
 ///   extended_location = {
 ///     name = "/subscriptions/e0aaa3df-e9a4-456a-9824-3c3b5c438110/resourceGroups/IoTOperationsDataProcessor-rg/providers/Microsoft.ExtendedLocation/customLocations/dev-space"

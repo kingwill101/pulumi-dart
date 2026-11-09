@@ -53,7 +53,7 @@ import 'system_data_response.dart';
 ///             PolicyStatus = AzureNative.NetApp.PolicyStatus.Enabled,
 ///             WeeklySchedule = new AzureNative.NetApp.Inputs.ElasticSnapshotPolicyWeeklyScheduleArgs
 ///             {
-///                 Days = new[]
+///                 Days =
 ///                 {
 ///                     AzureNative.NetApp.DayOfWeek.Wednesday,
 ///                 },
@@ -127,7 +127,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -135,7 +135,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_netapp_elasticsnapshotpolicy" "elasticSnapshotPolicy" {
+/// resource "azure-native_netapp_elastic_snapshot_policy" "elasticSnapshotPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "account1"
 ///   location     = "eastus"
 ///   properties = {

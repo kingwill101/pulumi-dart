@@ -24,9 +24,9 @@ import 'workload_group_args.dart';
 ///         DatabaseName = "testdb",
 ///         Importance = "normal",
 ///         MaxResourcePercent = 100,
-///         MaxResourcePercentPerRequest = 3,
+///         MaxResourcePercentPerRequest = 3.0,
 ///         MinResourcePercent = 0,
-///         MinResourcePercentPerRequest = 3,
+///         MinResourcePercentPerRequest = 3.0,
 ///         QueryExecutionTimeout = 0,
 ///         ResourceGroupName = "Default-SQL-SouthEastAsia",
 ///         ServerName = "testsvr",
@@ -70,7 +70,7 @@ import 'workload_group_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,7 +78,10 @@ import 'workload_group_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_workloadgroup" "workloadGroup" {
+/// resource "azure-native_sql_workload_group" "workloadGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name                    = "testdb"
 ///   importance                       = "normal"
 ///   max_resource_percent             = 100
@@ -203,7 +206,7 @@ import 'workload_group_args.dart';
 ///         DatabaseName = "testdb",
 ///         MaxResourcePercent = 100,
 ///         MinResourcePercent = 0,
-///         MinResourcePercentPerRequest = 3,
+///         MinResourcePercentPerRequest = 3.0,
 ///         ResourceGroupName = "Default-SQL-SouthEastAsia",
 ///         ServerName = "testsvr",
 ///         WorkloadGroupName = "smallrc",
@@ -243,7 +246,7 @@ import 'workload_group_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -251,7 +254,10 @@ import 'workload_group_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_workloadgroup" "workloadGroup" {
+/// resource "azure-native_sql_workload_group" "workloadGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name                    = "testdb"
 ///   max_resource_percent             = 100
 ///   min_resource_percent             = 0

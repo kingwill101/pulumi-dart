@@ -201,7 +201,7 @@ import 'tag_info_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -209,7 +209,10 @@ import 'tag_info_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cloudngfw_postrule" "postRule" {
+/// resource "azure-native_cloudngfw_post_rule" "postRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   action_type   = "Allow"
 ///   applications  = ["app1"]
 ///   audit_comment = "example comment"
@@ -509,7 +512,7 @@ import 'tag_info_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -517,7 +520,10 @@ import 'tag_info_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cloudngfw_postrule" "postRule" {
+/// resource "azure-native_cloudngfw_post_rule" "postRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   global_rulestack_name = "lrs1"
 ///   priority              = "1"
 ///   rule_name             = "postRule1"

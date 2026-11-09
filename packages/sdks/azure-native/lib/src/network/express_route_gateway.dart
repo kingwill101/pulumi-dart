@@ -80,7 +80,7 @@ import 'virtual_hub_id_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -88,7 +88,10 @@ import 'virtual_hub_id_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_expressroutegateway" "expressRouteGateway" {
+/// resource "azure-native_network_express_route_gateway" "expressRouteGateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allow_non_virtual_wan_traffic = false
 ///   auto_scale_configuration = {
 ///     bounds = {

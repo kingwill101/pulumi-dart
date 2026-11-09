@@ -92,7 +92,7 @@ import 'table_resource_table_role_definition_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -100,7 +100,10 @@ import 'table_resource_table_role_definition_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_tableresourcetableroledefinition" "tableResourceTableRoleDefinition" {
+/// resource "azure-native_cosmosdb_table_resource_table_role_definition" "tableResourceTableRoleDefinition" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name      = "myAccountName"
 ///   assignable_scopes = ["/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/myResourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/dbs/sales", "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/myResourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/dbs/purchases"]
 ///   permissions {

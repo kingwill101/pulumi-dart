@@ -134,7 +134,7 @@ import 'workspace_backend_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -142,7 +142,10 @@ import 'workspace_backend_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_workspacebackend" "workspaceBackend" {
+/// resource "azure-native_apimanagement_workspace_backend" "workspaceBackend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backend_id = "proxybackend"
 ///   credentials = {
 ///     authorization = {
@@ -450,7 +453,7 @@ import 'workspace_backend_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -458,7 +461,10 @@ import 'workspace_backend_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_workspacebackend" "workspaceBackend" {
+/// resource "azure-native_apimanagement_workspace_backend" "workspaceBackend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backend_id  = "sfbackend"
 ///   description = "Service Fabric Test App 1"
 ///   properties = {
@@ -467,8 +473,8 @@ import 'workspace_backend_args.dart';
 ///       management_endpoints             = ["https://somecluster.com"]
 ///       max_partition_resolution_retries = 5
 ///       server_x509_names = [{
-///         "issuerCertificateThumbprint" = "IssuerCertificateThumbprint1"
-///         "name"                        = "ServerCommonName1"
+///         issuer_certificate_thumbprint = "IssuerCertificateThumbprint1"
+///         name                          = "ServerCommonName1"
 ///       }]
 ///     }
 ///   }
@@ -491,6 +497,7 @@ import 'workspace_backend_args.dart';
 /// import com.pulumi.azurenative.apimanagement.WorkspaceBackendArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.BackendPropertiesArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.BackendServiceFabricClusterPropertiesArgs;
+/// import com.pulumi.azurenative.apimanagement.inputs.X509CertificateNameArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

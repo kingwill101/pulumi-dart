@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -70,6 +70,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_dbformysql_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   charset             = "utf8"
 ///   collation           = "utf8_general_ci"
 ///   database_name       = "db1"

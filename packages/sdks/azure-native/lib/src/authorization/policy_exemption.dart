@@ -78,7 +78,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -86,7 +86,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_policyexemption" "policyExemption" {
+/// resource "azure-native_authorization_policy_exemption" "policyExemption" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description        = "Exempt demo cluster from limit sku"
 ///   display_name       = "Exempt demo cluster"
 ///   exemption_category = "Waiver"
@@ -296,7 +299,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -304,7 +307,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_authorization_policyexemption" "policyExemption" {
+/// resource "azure-native_authorization_policy_exemption" "policyExemption" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assignment_scope_validation = "Default"
 ///   description                 = "Exempt demo cluster from limit sku"
 ///   display_name                = "Exempt demo cluster"
@@ -336,6 +342,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.authorization.PolicyExemption;
 /// import com.pulumi.azurenative.authorization.PolicyExemptionArgs;
 /// import com.pulumi.azurenative.authorization.inputs.ResourceSelectorArgs;
+/// import com.pulumi.azurenative.authorization.inputs.SelectorArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

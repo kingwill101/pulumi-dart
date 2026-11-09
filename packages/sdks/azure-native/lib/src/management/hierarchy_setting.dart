@@ -57,7 +57,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_management_hierarchysetting" "hierarchySetting" {
+/// resource "azure-native_management_hierarchy_setting" "hierarchySetting" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   default_management_group                 = "/providers/Microsoft.Management/managementGroups/DefaultGroup"
 ///   group_id                                 = "root"
 ///   require_authorization_for_group_creation = true

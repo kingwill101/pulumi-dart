@@ -10,7 +10,7 @@ class Condition {
   final pulumi.Input<String?>? alertSensitivity;
   /// Specifies the type of threshold criteria
   final pulumi.Input<dynamic>? criterionType;
-  /// List of Dimensions conditions
+  /// List of Dimensions conditions. Relevant only for rules of the kind LogAlert and LogToMetric.
   final pulumi.Input<List<Dimension>?>? dimensions;
   /// The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert.
   final pulumi.Input<ConditionFailingPeriods?>? failingPeriods;
@@ -36,7 +36,7 @@ class Condition {
   /// Creates a new [Condition].
   /// [alertSensitivity] The extent of deviation required to trigger an alert. Allowed values are 'Low', 'Medium' and 'High'. This will affect how tight the threshold is to the metric series pattern. Relevant only for dynamic threshold rules of the kind LogAlert.
   /// [criterionType] Specifies the type of threshold criteria
-  /// [dimensions] List of Dimensions conditions
+  /// [dimensions] List of Dimensions conditions. Relevant only for rules of the kind LogAlert and LogToMetric.
   /// [failingPeriods] The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert.
   /// [ignoreDataBefore] Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format). Relevant only for dynamic threshold rules of the kind LogAlert.
   /// [metricMeasureColumn] The column containing the metric measure number. Relevant only for rules of the kind LogAlert.

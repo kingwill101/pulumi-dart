@@ -37,7 +37,7 @@ import 'vpn_client_configuration_response.dart';
 ///         AllowVirtualWanTraffic = false,
 ///         BgpSettings = new AzureNative.Network.Inputs.BgpSettingsArgs
 ///         {
-///             Asn = 65515,
+///             Asn = 65515.0,
 ///             BgpPeeringAddress = "10.0.1.30",
 ///             PeerWeight = 0,
 ///         },
@@ -131,11 +131,11 @@ import 'vpn_client_configuration_response.dart';
 ///                 new AzureNative.Network.Inputs.RadiusServerArgs
 ///                 {
 ///                     RadiusServerAddress = "10.2.0.0",
-///                     RadiusServerScore = 20,
+///                     RadiusServerScore = 20.0,
 ///                     RadiusServerSecret = "radiusServerSecret",
 ///                 },
 ///             },
-///             VpnClientProtocols = new[]
+///             VpnClientProtocols =
 ///             {
 ///                 AzureNative.Network.VpnClientProtocol.OpenVPN,
 ///             },
@@ -260,7 +260,7 @@ import 'vpn_client_configuration_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -268,7 +268,10 @@ import 'vpn_client_configuration_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualnetworkgateway" "virtualNetworkGateway" {
+/// resource "azure-native_network_virtual_network_gateway" "virtualNetworkGateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   active_active             = false
 ///   allow_remote_vnet_traffic = false
 ///   allow_virtual_wan_traffic = false
@@ -330,9 +333,9 @@ import 'vpn_client_configuration_response.dart';
 ///   virtual_network_gateway_name = "vpngw"
 ///   vpn_client_configuration = {
 ///     radius_servers = [{
-///       "radiusServerAddress" = "10.2.0.0"
-///       "radiusServerScore"   = 20
-///       "radiusServerSecret"  = "radiusServerSecret"
+///       radius_server_address = "10.2.0.0"
+///       radius_server_score   = 20
+///       radius_server_secret  = "radiusServerSecret"
 ///     }]
 ///     vpn_client_protocols            = ["OpenVPN"]
 ///     vpn_client_revoked_certificates = []
@@ -356,8 +359,10 @@ import 'vpn_client_configuration_response.dart';
 /// import com.pulumi.azurenative.network.inputs.VirtualNetworkGatewayIPConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.network.inputs.VirtualNetworkGatewayNatRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.VpnNatRuleMappingArgs;
 /// import com.pulumi.azurenative.network.inputs.VirtualNetworkGatewaySkuArgs;
 /// import com.pulumi.azurenative.network.inputs.VpnClientConfigurationArgs;
+/// import com.pulumi.azurenative.network.inputs.RadiusServerArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -860,7 +865,7 @@ import 'vpn_client_configuration_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -868,7 +873,10 @@ import 'vpn_client_configuration_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualnetworkgateway" "virtualNetworkGateway" {
+/// resource "azure-native_network_virtual_network_gateway" "virtualNetworkGateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   active_active                        = false
 ///   allow_remote_vnet_traffic            = false
 ///   allow_virtual_wan_traffic            = false
@@ -935,6 +943,7 @@ import 'vpn_client_configuration_response.dart';
 /// import com.pulumi.azurenative.network.inputs.VirtualNetworkGatewayIPConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.network.inputs.VirtualNetworkGatewayNatRuleArgs;
+/// import com.pulumi.azurenative.network.inputs.VpnNatRuleMappingArgs;
 /// import com.pulumi.azurenative.network.inputs.VirtualNetworkGatewaySkuArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

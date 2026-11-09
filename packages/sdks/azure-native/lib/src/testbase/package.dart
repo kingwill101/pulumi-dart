@@ -46,7 +46,7 @@ import 'test_response.dart';
 ///         Location = "westus",
 ///         PackageName = "contoso-package2",
 ///         ResourceGroupName = "contoso-rg1",
-///         Tags = null,
+///         Tags = new() { },
 ///         TargetOSList = new[]
 ///         {
 ///             new AzureNative.TestBase.Inputs.TargetOSInfoArgs
@@ -244,7 +244,7 @@ import 'test_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -253,6 +253,9 @@ import 'test_response.dart';
 /// }
 ///
 /// resource "azure-native_testbase_package" "package" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_name = "contoso-package2"
 ///   blob_path        = "storageAccountPath/package.zip"
 ///   first_party_apps {
@@ -344,6 +347,7 @@ import 'test_response.dart';
 /// import com.pulumi.azurenative.testbase.inputs.FirstPartyAppDefinitionArgs;
 /// import com.pulumi.azurenative.testbase.inputs.TargetOSInfoArgs;
 /// import com.pulumi.azurenative.testbase.inputs.TestArgs;
+/// import com.pulumi.azurenative.testbase.inputs.CommandArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

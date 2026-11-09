@@ -64,7 +64,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_securitysetting" "securitySetting" {
+/// resource "azure-native_azurestackhci_security_setting" "securitySetting" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name                                                   = "myCluster"
 ///   resource_group_name                                            = "test-rg"
 ///   secured_core_compliance_assignment                             = "Audit"

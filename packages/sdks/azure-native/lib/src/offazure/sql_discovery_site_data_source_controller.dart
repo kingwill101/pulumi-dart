@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_offazure_sqldiscoverysitedatasourcecontroller" "sqlDiscoverySiteDataSourceController" {
+/// resource "azure-native_offazure_sql_discovery_site_data_source_controller" "sqlDiscoverySiteDataSourceController" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   discovery_site_data_source_name = "jN--823UiQ"
 ///   discovery_site_id               = "ndmdh"
 ///   resource_group_name             = "rgmigrate"

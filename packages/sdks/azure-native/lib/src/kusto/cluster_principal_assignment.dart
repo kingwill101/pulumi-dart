@@ -64,7 +64,7 @@ import 'cluster_principal_assignment_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'cluster_principal_assignment_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kusto_clusterprincipalassignment" "clusterPrincipalAssignment" {
+/// resource "azure-native_kusto_cluster_principal_assignment" "clusterPrincipalAssignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name              = "kustoCluster"
 ///   principal_assignment_name = "kustoprincipal1"
 ///   principal_id              = "87654321-1234-1234-1234-123456789123"

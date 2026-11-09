@@ -43,7 +43,7 @@ import 'system_data_response.dart';
 ///         Location = "svzwmojzvarczmvgfhjk",
 ///         Name = "49-gj2-mwgt--1m611----35u",
 ///         ResourceGroupName = "rgopenapi",
-///         Tags = null,
+///         Tags = new() { },
 ///         Version = "jwxk",
 ///     });
 ///
@@ -93,7 +93,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -102,6 +102,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_iotoperationsorchestrator_solution" "solution" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   components {
 ///     dependencies = ["x"]
 ///     name         = "yhnelpxsobdyurwvhkq"

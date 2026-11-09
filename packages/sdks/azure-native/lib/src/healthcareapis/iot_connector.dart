@@ -102,8 +102,8 @@ import 'system_data_response.dart';
 /// 								"timestampExpression": "$.measurementdatetime",
 /// 								"typeMatchExpression": "$..[?(@heartrate)]",
 /// 								"typeName":            "heartrate",
-/// 								"values": []map[string]interface{}{
-/// 									map[string]interface{}{
+/// 								"values": []map[string]string{
+/// 									{
 /// 										"required":        "true",
 /// 										"valueExpression": "$.heartrate",
 /// 										"valueName":       "hr",
@@ -144,7 +144,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -152,7 +152,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_healthcareapis_iotconnector" "iotConnector" {
+/// resource "azure-native_healthcareapis_iot_connector" "iotConnector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   device_mapping = {
 ///     content = {
 ///       "template" = [{

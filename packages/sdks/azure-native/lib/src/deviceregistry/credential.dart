@@ -64,7 +64,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,6 +73,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_deviceregistry_credential" "credential" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "East US 2"
 ///   namespace_name      = "mynamespace"
 ///   resource_group_name = "rgdeviceregistry"

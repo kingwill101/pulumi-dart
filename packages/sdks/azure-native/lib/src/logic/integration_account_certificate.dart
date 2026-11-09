@@ -77,7 +77,7 @@ import 'key_vault_key_reference_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -85,7 +85,10 @@ import 'key_vault_key_reference_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_logic_integrationaccountcertificate" "integrationAccountCertificate" {
+/// resource "azure-native_logic_integration_account_certificate" "integrationAccountCertificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_name         = "testCertificate"
 ///   integration_account_name = "testIntegrationAccount"
 ///   key = {

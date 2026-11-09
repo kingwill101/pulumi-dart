@@ -103,7 +103,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -112,6 +112,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_hybridcompute_machine" "machine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_public_key = "string"
 ///   identity = {
 ///     type = "SystemAssigned"

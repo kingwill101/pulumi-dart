@@ -77,7 +77,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -86,6 +86,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_eventgrid_channel" "channel" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   channel_name                         = "exampleChannelName1"
 ///   channel_type                         = "PartnerTopic"
 ///   expiration_time_if_not_activated_utc = "2021-10-21T22:50:25.410433Z"

@@ -67,7 +67,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,6 +76,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_automation_certificate" "certificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   automation_account_name = "myAutomationAccount18"
 ///   base64_value            = "base 64 value of cert"
 ///   certificate_name        = "testCert"

@@ -66,7 +66,7 @@ import 'virtual_network_tap_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,7 +74,10 @@ import 'virtual_network_tap_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_virtualnetworktap" "virtualNetworkTap" {
+/// resource "azure-native_network_virtual_network_tap" "virtualNetworkTap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   destination_network_interface_ip_configuration = {
 ///     id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkInterfaces/testNetworkInterface/ipConfigurations/ipconfig1"
 ///   }

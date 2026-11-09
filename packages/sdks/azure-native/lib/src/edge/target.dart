@@ -101,7 +101,7 @@ import 'target_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -110,6 +110,9 @@ import 'target_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_edge_target" "target" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "szjrwimeqyiue"
 ///     type = "EdgeZone"

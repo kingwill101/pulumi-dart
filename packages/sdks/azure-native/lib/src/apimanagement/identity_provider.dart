@@ -60,7 +60,7 @@ import 'identity_provider_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'identity_provider_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_identityprovider" "identityProvider" {
+/// resource "azure-native_apimanagement_identity_provider" "identityProvider" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_id              = "facebookid"
 ///   client_secret          = "facebookapplicationsecret"
 ///   identity_provider_name = "facebook"

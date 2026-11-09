@@ -68,9 +68,9 @@ import 'vnet_solution_response.dart';
 /// 			AuthInfo: &servicelinker.SecretAuthInfoArgs{
 /// 				AuthType: pulumi.String("secret"),
 /// 				Name:     pulumi.String("name"),
-/// 				SecretInfo: servicelinker.ValueSecretInfo{
-/// 					SecretType: "rawValue",
-/// 					Value:      "secret",
+/// 				SecretInfo: &servicelinker.ValueSecretInfoArgs{
+/// 					SecretType: pulumi.String("rawValue"),
+/// 					Value:      pulumi.String("secret"),
 /// 				},
 /// 			},
 /// 			LinkerName:  pulumi.String("linkName"),
@@ -93,7 +93,7 @@ import 'vnet_solution_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -102,19 +102,22 @@ import 'vnet_solution_response.dart';
 /// }
 ///
 /// resource "azure-native_servicelinker_linker" "linker" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auth_info = {
-///     "authType" = "secret"
-///     "name"     = "name"
-///     "secretInfo" = {
-///       "secretType" = "rawValue"
-///       "value"      = "secret"
+///     auth_type = "secret"
+///     name      = "name"
+///     secret_info = {
+///       secret_type = "rawValue"
+///       value       = "secret"
 ///     }
 ///   }
 ///   linker_name  = "linkName"
 ///   resource_uri = "subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/sites/test-app"
 ///   target_service = {
-///     "id"   = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforPostgreSQL/servers/test-pg/databases/test-db"
-///     "type" = "AzureResource"
+///     id   = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforPostgreSQL/servers/test-pg/databases/test-db"
+///     type = "AzureResource"
 ///   }
 ///   v_net_solution = {
 ///     type = "serviceEndpoint"
@@ -131,6 +134,21 @@ import 'vnet_solution_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.servicelinker.Linker;
 /// import com.pulumi.azurenative.servicelinker.LinkerArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.AccessKeyInfoBaseArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.EasyAuthMicrosoftEntraIDAuthInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.SecretAuthInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.KeyVaultSecretReferenceSecretInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.KeyVaultSecretUriSecretInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.ValueSecretInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.ServicePrincipalCertificateAuthInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.ServicePrincipalSecretAuthInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.SystemAssignedIdentityAuthInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.UserAccountAuthInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.UserAssignedIdentityAuthInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.AzureResourceArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.ConfluentBootstrapServerArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.ConfluentSchemaRegistryArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.SelfHostedServerArgs;
 /// import com.pulumi.azurenative.servicelinker.inputs.VNetSolutionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -147,10 +165,8 @@ import 'vnet_solution_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var linker = new Linker("linker", LinkerArgs.builder()
 ///             .authInfo(SecretAuthInfoArgs.builder()
-///                 .authType("secret")
 ///                 .name("name")
 ///                 .secretInfo(ValueSecretInfoArgs.builder()
-///                     .secretType("rawValue")
 ///                     .value("secret")
 ///                     .build())
 ///                 .build())
@@ -158,7 +174,6 @@ import 'vnet_solution_response.dart';
 ///             .resourceUri("subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/sites/test-app")
 ///             .targetService(AzureResourceArgs.builder()
 ///                 .id("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforPostgreSQL/servers/test-pg/databases/test-db")
-///                 .type("AzureResource")
 ///                 .build())
 ///             .vNetSolution(VNetSolutionArgs.builder()
 ///                 .type("serviceEndpoint")

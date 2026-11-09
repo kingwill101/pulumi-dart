@@ -86,8 +86,8 @@ import 'system_data_response.dart';
 /// 					"type":  "Expression",
 /// 					"value": "@dataset().MyFolderPath",
 /// 				}),
-/// 				Format: datafactory.TextFormat{
-/// 					Type: "TextFormat",
+/// 				Format: &datafactory.TextFormatArgs{
+/// 					Type: pulumi.String("TextFormat"),
 /// 				},
 /// 				LinkedServiceName: &datafactory.LinkedServiceReferenceArgs{
 /// 					ReferenceName: pulumi.String("exampleLinkedService"),
@@ -115,7 +115,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -124,33 +124,36 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_datafactory_dataset" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_name = "exampleDataset"
 ///   factory_name = "exampleFactoryName"
 ///   properties = {
-///     "fileName" = {
+///     file_name = {
 ///       "type"  = "Expression"
 ///       "value" = "@dataset().MyFileName"
 ///     }
-///     "folderPath" = {
+///     folder_path = {
 ///       "type"  = "Expression"
 ///       "value" = "@dataset().MyFolderPath"
 ///     }
-///     "format" = {
-///       "type" = "TextFormat"
+///     format = {
+///       type = "TextFormat"
 ///     }
-///     "linkedServiceName" = {
-///       "referenceName" = "exampleLinkedService"
-///       "type"          = "LinkedServiceReference"
+///     linked_service_name = {
+///       reference_name = "exampleLinkedService"
+///       type           = "LinkedServiceReference"
 ///     }
-///     "parameters" = {
+///     parameters = {
 ///       "MyFileName" = {
-///         "type" = "String"
+///         type = "String"
 ///       }
 ///       "MyFolderPath" = {
-///         "type" = "String"
+///         type = "String"
 ///       }
 ///     }
-///     "type" = "AzureBlob"
+///     type = "AzureBlob"
 ///   }
 ///   resource_group_name = "exampleResourceGroup"
 /// }
@@ -165,6 +168,118 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datafactory.Dataset;
 /// import com.pulumi.azurenative.datafactory.DatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AmazonMWSObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.LinkedServiceReferenceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ParameterSpecificationArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AmazonRdsForOracleTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AmazonRdsForSqlServerTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AmazonRedshiftTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AmazonS3DatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AvroFormatArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.JsonFormatArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.OrcFormatArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ParquetFormatArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.TextFormatArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AvroDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureBlobDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureBlobFSDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureDataExplorerTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureDataLakeStoreDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureDatabricksDeltaLakeDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureMariaDBTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureMySqlTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzurePostgreSqlTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureSearchIndexDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureSqlDWTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureSqlMITableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureSqlTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.BinaryDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CassandraTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CommonDataServiceForAppsEntityDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ConcurObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CosmosDbMongoDbApiCollectionDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CosmosDbSqlApiCollectionDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CouchbaseTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CustomDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.Db2TableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DelimitedTextDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DocumentDbCollectionDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DrillTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DynamicsAXResourceDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DynamicsCrmEntityDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DynamicsEntityDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.EloquaObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ExcelDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.FileShareDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.GoogleAdWordsObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.GoogleBigQueryObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.GoogleBigQueryV2ObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.GreenplumTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.HBaseObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.HiveObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.HttpDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.HubspotObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.IcebergDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ImpalaObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.InformixTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.JiraObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.JsonDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.LakeHouseTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MagentoObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MariaDBTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MarketoObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MicrosoftAccessTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MongoDbAtlasCollectionDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MongoDbCollectionDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MongoDbV2CollectionDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MySqlTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.NetezzaTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ODataResourceDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.OdbcTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.Office365DatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.OracleServiceCloudObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.OracleTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.OrcDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ParquetDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.PaypalObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.PhoenixObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.PostgreSqlTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.PostgreSqlV2TableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.PrestoObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.QuickBooksObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.RelationalTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ResponsysObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.RestResourceDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SalesforceMarketingCloudObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SalesforceObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SalesforceServiceCloudObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SalesforceServiceCloudV2ObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SalesforceV2ObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapBwCubeDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapCloudForCustomerResourceDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapEccResourceDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapHanaTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapOdpResourceDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapOpenHubTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapTableResourceDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ServiceNowObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ServiceNowV2ObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SharePointOnlineListResourceDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ShopifyObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SnowflakeDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SnowflakeV2DatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SparkObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SqlServerTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SquareObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SybaseTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.TeradataTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.VerticaTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.WarehouseTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.WebTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.XeroObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.XmlDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ZohoObjectDatasetArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -191,7 +306,6 @@ import 'system_data_response.dart';
 ///                     Map.entry("value", "@dataset().MyFolderPath")
 ///                 ))
 ///                 .format(TextFormatArgs.builder()
-///                     .type("TextFormat")
 ///                     .build())
 ///                 .linkedServiceName(LinkedServiceReferenceArgs.builder()
 ///                     .referenceName("exampleLinkedService")
@@ -205,7 +319,6 @@ import 'system_data_response.dart';
 ///                         .type("String")
 ///                         .build())
 ///                 ))
-///                 .type("AzureBlob")
 ///                 .build())
 ///             .resourceGroupName("exampleResourceGroup")
 ///             .build());
@@ -400,8 +513,8 @@ import 'system_data_response.dart';
 /// 					"type":  "Expression",
 /// 					"value": "@dataset().MyFolderPath",
 /// 				}),
-/// 				Format: datafactory.TextFormat{
-/// 					Type: "TextFormat",
+/// 				Format: &datafactory.TextFormatArgs{
+/// 					Type: pulumi.String("TextFormat"),
 /// 				},
 /// 				LinkedServiceName: &datafactory.LinkedServiceReferenceArgs{
 /// 					ReferenceName: pulumi.String("exampleLinkedService"),
@@ -429,7 +542,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -438,34 +551,37 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_datafactory_dataset" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_name = "exampleDataset"
 ///   factory_name = "exampleFactoryName"
 ///   properties = {
-///     "description" = "Example description"
-///     "fileName" = {
+///     description = "Example description"
+///     file_name = {
 ///       "type"  = "Expression"
 ///       "value" = "@dataset().MyFileName"
 ///     }
-///     "folderPath" = {
+///     folder_path = {
 ///       "type"  = "Expression"
 ///       "value" = "@dataset().MyFolderPath"
 ///     }
-///     "format" = {
-///       "type" = "TextFormat"
+///     format = {
+///       type = "TextFormat"
 ///     }
-///     "linkedServiceName" = {
-///       "referenceName" = "exampleLinkedService"
-///       "type"          = "LinkedServiceReference"
+///     linked_service_name = {
+///       reference_name = "exampleLinkedService"
+///       type           = "LinkedServiceReference"
 ///     }
-///     "parameters" = {
+///     parameters = {
 ///       "MyFileName" = {
-///         "type" = "String"
+///         type = "String"
 ///       }
 ///       "MyFolderPath" = {
-///         "type" = "String"
+///         type = "String"
 ///       }
 ///     }
-///     "type" = "AzureBlob"
+///     type = "AzureBlob"
 ///   }
 ///   resource_group_name = "exampleResourceGroup"
 /// }
@@ -480,6 +596,118 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datafactory.Dataset;
 /// import com.pulumi.azurenative.datafactory.DatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AmazonMWSObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.LinkedServiceReferenceArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ParameterSpecificationArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AmazonRdsForOracleTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AmazonRdsForSqlServerTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AmazonRedshiftTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AmazonS3DatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AvroFormatArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.JsonFormatArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.OrcFormatArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ParquetFormatArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.TextFormatArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AvroDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureBlobDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureBlobFSDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureDataExplorerTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureDataLakeStoreDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureDatabricksDeltaLakeDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureMariaDBTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureMySqlTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzurePostgreSqlTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureSearchIndexDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureSqlDWTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureSqlMITableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureSqlTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.AzureTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.BinaryDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CassandraTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CommonDataServiceForAppsEntityDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ConcurObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CosmosDbMongoDbApiCollectionDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CosmosDbSqlApiCollectionDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CouchbaseTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.CustomDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.Db2TableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DelimitedTextDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DocumentDbCollectionDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DrillTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DynamicsAXResourceDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DynamicsCrmEntityDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.DynamicsEntityDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.EloquaObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ExcelDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.FileShareDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.GoogleAdWordsObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.GoogleBigQueryObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.GoogleBigQueryV2ObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.GreenplumTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.HBaseObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.HiveObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.HttpDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.HubspotObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.IcebergDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ImpalaObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.InformixTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.JiraObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.JsonDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.LakeHouseTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MagentoObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MariaDBTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MarketoObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MicrosoftAccessTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MongoDbAtlasCollectionDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MongoDbCollectionDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MongoDbV2CollectionDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.MySqlTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.NetezzaTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ODataResourceDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.OdbcTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.Office365DatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.OracleServiceCloudObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.OracleTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.OrcDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ParquetDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.PaypalObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.PhoenixObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.PostgreSqlTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.PostgreSqlV2TableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.PrestoObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.QuickBooksObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.RelationalTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ResponsysObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.RestResourceDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SalesforceMarketingCloudObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SalesforceObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SalesforceServiceCloudObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SalesforceServiceCloudV2ObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SalesforceV2ObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapBwCubeDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapCloudForCustomerResourceDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapEccResourceDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapHanaTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapOdpResourceDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapOpenHubTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SapTableResourceDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ServiceNowObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ServiceNowV2ObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SharePointOnlineListResourceDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ShopifyObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SnowflakeDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SnowflakeV2DatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SparkObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SqlServerTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SquareObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.SybaseTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.TeradataTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.VerticaTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.WarehouseTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.WebTableDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.XeroObjectDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.XmlDatasetArgs;
+/// import com.pulumi.azurenative.datafactory.inputs.ZohoObjectDatasetArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -507,7 +735,6 @@ import 'system_data_response.dart';
 ///                     Map.entry("value", "@dataset().MyFolderPath")
 ///                 ))
 ///                 .format(TextFormatArgs.builder()
-///                     .type("TextFormat")
 ///                     .build())
 ///                 .linkedServiceName(LinkedServiceReferenceArgs.builder()
 ///                     .referenceName("exampleLinkedService")
@@ -521,7 +748,6 @@ import 'system_data_response.dart';
 ///                         .type("String")
 ///                         .build())
 ///                 ))
-///                 .type("AzureBlob")
 ///                 .build())
 ///             .resourceGroupName("exampleResourceGroup")
 ///             .build());

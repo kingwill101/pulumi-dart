@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_quota_groupquota" "groupQuota" {
+/// resource "azure-native_quota_group_quota" "groupQuota" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_quota_name    = "groupquota1"
 ///   management_group_id = "E7EC67B3-7657-4966-BFFC-41EFD36BAA09"
 ///   properties = {

@@ -67,7 +67,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -76,6 +76,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_alertsmanagement_issue" "issue" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   issue_name = "3f29e1b2b05f8371595dc761fed8e8b3"
 ///   properties = {
 ///     impact_time = "2024-12-13T02:45:33"

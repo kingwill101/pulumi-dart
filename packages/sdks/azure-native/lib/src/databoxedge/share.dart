@@ -97,7 +97,7 @@ import 'user_access_right_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -106,6 +106,9 @@ import 'user_access_right_response.dart';
 /// }
 ///
 /// resource "azure-native_databoxedge_share" "share" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   access_protocol = "SMB"
 ///   azure_container_info = {
 ///     container_name                = "testContainerSMB"

@@ -60,7 +60,7 @@ import 'virtual_network_rule_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'virtual_network_rule_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_virtualnetworkrule" "virtualNetworkRule" {
+/// resource "azure-native_sql_virtual_network_rule" "virtualNetworkRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ignore_missing_vnet_service_endpoint = false
 ///   resource_group_name                  = "Default"
 ///   server_name                          = "vnet-test-svr"

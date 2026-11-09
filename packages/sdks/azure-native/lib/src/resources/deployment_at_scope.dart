@@ -82,7 +82,7 @@ import 'deployment_properties_extended_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -90,7 +90,10 @@ import 'deployment_properties_extended_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_resources_deploymentatscope" "deploymentAtScope" {
+/// resource "azure-native_resources_deployment_at_scope" "deploymentAtScope" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deployment_name = "my-deployment"
 ///   location        = "eastus"
 ///   properties = {

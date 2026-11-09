@@ -60,7 +60,7 @@ import 'user_identity_contract_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'user_identity_contract_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_groupuser" "groupUser" {
+/// resource "azure-native_apimanagement_group_user" "groupUser" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_id            = "tempgroup"
 ///   resource_group_name = "rg1"
 ///   service_name        = "apimService1"

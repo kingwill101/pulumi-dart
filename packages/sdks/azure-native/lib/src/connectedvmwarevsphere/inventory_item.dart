@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_connectedvmwarevsphere_inventoryitem" "inventoryItem" {
+/// resource "azure-native_connectedvmwarevsphere_inventory_item" "inventoryItem" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   inventory_item_name = "testItem"
 ///   inventory_type      = "ResourcePool"
 ///   resource_group_name = "testrg"

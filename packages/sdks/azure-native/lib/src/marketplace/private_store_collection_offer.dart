@@ -69,7 +69,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,7 +77,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_marketplace_privatestorecollectionoffer" "privateStoreCollectionOffer" {
+/// resource "azure-native_marketplace_private_store_collection_offer" "privateStoreCollectionOffer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   collection_id                = "56a1a02d-8cf8-45df-bf37-d5f7120fcb3d"
 ///   e_tag                        = "\"9301f4fd-0000-0100-0000-5e248b350666\""
 ///   offer_id                     = "marketplacetestthirdparty.md-test-third-party-2"

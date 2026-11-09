@@ -23,7 +23,7 @@ import 'database_account_cassandra_keyspace_args.dart';
 ///     {
 ///         AccountName = "ddb1",
 ///         KeyspaceName = "keyspaceName",
-///         Options = null,
+///         Options = new() { },
 ///         Resource = new AzureNative.CosmosDB.Inputs.CassandraKeyspaceResourceArgs
 ///         {
 ///             Id = "keyspaceName",
@@ -65,7 +65,7 @@ import 'database_account_cassandra_keyspace_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'database_account_cassandra_keyspace_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_databaseaccountcassandrakeyspace" "databaseAccountCassandraKeyspace" {
+/// resource "azure-native_cosmosdb_database_account_cassandra_keyspace" "databaseAccountCassandraKeyspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name  = "ddb1"
 ///   keyspace_name = "keyspaceName"
 ///   options       = {}

@@ -189,7 +189,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -198,6 +198,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_app_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration = {
 ///     manual_trigger_config = {
 ///       parallelism              = 4
@@ -217,30 +220,30 @@ import 'system_data_response.dart';
 ///   resource_group_name = "rg"
 ///   template = {
 ///     containers = [{
-///       "image" = "repo/testcontainerAppsJob0:v1"
-///       "name"  = "testcontainerAppsJob0"
-///       "probes" = [{
-///         "httpGet" = {
-///           "httpHeaders" = [{
-///             "name"  = "Custom-Header"
-///             "value" = "Awesome"
+///       image = "repo/testcontainerAppsJob0:v1"
+///       name  = "testcontainerAppsJob0"
+///       probes = [{
+///         http_get = {
+///           http_headers = [{
+///             name  = "Custom-Header"
+///             value = "Awesome"
 ///           }]
-///           "path" = "/health"
-///           "port" = 8080
+///           path = "/health"
+///           port = 8080
 ///         }
-///         "initialDelaySeconds" = 5
-///         "periodSeconds"       = 3
-///         "type"                = "Liveness"
+///         initial_delay_seconds = 5
+///         period_seconds        = 3
+///         type                  = "Liveness"
 ///       }]
 ///     }]
 ///     init_containers = [{
-///       "args"    = ["-c", "while true; do echo hello; sleep 10;done"]
-///       "command" = ["/bin/sh"]
-///       "image"   = "repo/testcontainerAppsJob0:v4"
-///       "name"    = "testinitcontainerAppsJob0"
-///       "resources" = {
-///         "cpu"    = 0.2
-///         "memory" = "100Mi"
+///       args    = ["-c", "while true; do echo hello; sleep 10;done"]
+///       command = ["/bin/sh"]
+///       image   = "repo/testcontainerAppsJob0:v4"
+///       name    = "testinitcontainerAppsJob0"
+///       resources = {
+///         cpu    = 0.2
+///         memory = "100Mi"
 ///       }
 ///     }]
 ///   }
@@ -260,6 +263,12 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.inputs.JobConfigurationManualTriggerConfigArgs;
 /// import com.pulumi.azurenative.app.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.app.inputs.JobTemplateArgs;
+/// import com.pulumi.azurenative.app.inputs.ContainerArgs;
+/// import com.pulumi.azurenative.app.inputs.ContainerAppProbeArgs;
+/// import com.pulumi.azurenative.app.inputs.ContainerAppProbeHttpGetArgs;
+/// import com.pulumi.azurenative.app.inputs.ContainerAppProbeHttpHeadersArgs;
+/// import com.pulumi.azurenative.app.inputs.InitContainerArgs;
+/// import com.pulumi.azurenative.app.inputs.ContainerResourcesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

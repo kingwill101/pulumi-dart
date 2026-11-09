@@ -57,7 +57,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,6 +66,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_avs_authorization" "authorization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization_name  = "authorization1"
 ///   private_cloud_name  = "cloud1"
 ///   resource_group_name = "group1"

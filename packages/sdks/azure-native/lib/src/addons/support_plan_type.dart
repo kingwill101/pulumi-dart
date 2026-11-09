@@ -52,7 +52,7 @@ import 'support_plan_type_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -60,7 +60,10 @@ import 'support_plan_type_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_addons_supportplantype" "supportPlanType" {
+/// resource "azure-native_addons_support_plan_type" "supportPlanType" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   plan_type_name = "Standard"
 ///   provider_name  = "Canonical"
 /// }

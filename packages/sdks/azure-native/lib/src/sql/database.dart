@@ -72,7 +72,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,6 +81,9 @@ import 'sku_response.dart';
 /// }
 ///
 /// resource "azure-native_sql_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name       = "testdb"
 ///   location            = "southeastasia"
 ///   resource_group_name = "Default-SQL-SouthEastAsia"
@@ -243,7 +246,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -252,6 +255,9 @@ import 'sku_response.dart';
 /// }
 ///
 /// resource "azure-native_sql_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name       = "testdb"
 ///   location            = "southeastasia"
 ///   resource_group_name = "Default-SQL-SouthEastAsia"
@@ -404,7 +410,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -413,6 +419,9 @@ import 'sku_response.dart';
 /// }
 ///
 /// resource "azure-native_sql_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_mode         = "Restore"
 ///   database_name       = "testdw"
 ///   location            = "southeastasia"
@@ -555,7 +564,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -564,6 +573,9 @@ import 'sku_response.dart';
 /// }
 ///
 /// resource "azure-native_sql_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_mode         = "Recovery"
 ///   database_name       = "testdw"
 ///   location            = "westus"
@@ -708,7 +720,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -717,6 +729,9 @@ import 'sku_response.dart';
 /// }
 ///
 /// resource "azure-native_sql_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_mode           = "PointInTimeRestore"
 ///   database_name         = "testdw"
 ///   location              = "southeastasia"
@@ -873,7 +888,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -882,6 +897,9 @@ import 'sku_response.dart';
 /// }
 ///
 /// resource "azure-native_sql_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_mode         = "Copy"
 ///   database_name       = "dbcopy"
 ///   location            = "southeastasia"
@@ -1055,7 +1073,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1064,6 +1082,9 @@ import 'sku_response.dart';
 /// }
 ///
 /// resource "azure-native_sql_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_mode         = "Secondary"
 ///   database_name       = "testdb"
 ///   location            = "southeastasia"
@@ -1242,7 +1263,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1251,6 +1272,9 @@ import 'sku_response.dart';
 /// }
 ///
 /// resource "azure-native_sql_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_mode         = "Secondary"
 ///   database_name       = "testdb"
 ///   location            = "southeastasia"
@@ -1431,7 +1455,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1440,6 +1464,9 @@ import 'sku_response.dart';
 /// }
 ///
 /// resource "azure-native_sql_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_mode         = "Secondary"
 ///   database_name       = "testdb"
 ///   location            = "southeastasia"
@@ -1614,7 +1641,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1623,6 +1650,9 @@ import 'sku_response.dart';
 /// }
 ///
 /// resource "azure-native_sql_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_mode           = "PointInTimeRestore"
 ///   database_name         = "dbpitr"
 ///   location              = "southeastasia"
@@ -1768,7 +1798,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1777,6 +1807,9 @@ import 'sku_response.dart';
 /// }
 ///
 /// resource "azure-native_sql_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name          = "testdb"
 ///   location               = "southeastasia"
 ///   preferred_enclave_type = "Default"
@@ -1912,7 +1945,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1921,6 +1954,9 @@ import 'sku_response.dart';
 /// }
 ///
 /// resource "azure-native_sql_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name          = "testdb"
 ///   location               = "southeastasia"
 ///   preferred_enclave_type = "VBS"
@@ -2022,7 +2058,7 @@ import 'sku_response.dart';
 ///         CreateMode = AzureNative.Sql.CreateMode.Default,
 ///         DatabaseName = "testdb",
 ///         Location = "southeastasia",
-///         MaxSizeBytes = 1073741824,
+///         MaxSizeBytes = 1073741824.0,
 ///         ResourceGroupName = "Default-SQL-SouthEastAsia",
 ///         ServerName = "testsvr",
 ///         Sku = new AzureNative.Sql.Inputs.SkuArgs
@@ -2071,7 +2107,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2080,6 +2116,9 @@ import 'sku_response.dart';
 /// }
 ///
 /// resource "azure-native_sql_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_zone   = "1"
 ///   collation           = "SQL_Latin1_General_CP1_CI_AS"
 ///   create_mode         = "Default"
@@ -2215,7 +2254,7 @@ import 'sku_response.dart';
 ///         CreateMode = AzureNative.Sql.CreateMode.Default,
 ///         DatabaseName = "testdb",
 ///         Location = "southeastasia",
-///         MaxSizeBytes = 1073741824,
+///         MaxSizeBytes = 1073741824.0,
 ///         ResourceGroupName = "Default-SQL-SouthEastAsia",
 ///         ServerName = "testsvr",
 ///         Sku = new AzureNative.Sql.Inputs.SkuArgs
@@ -2263,7 +2302,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2272,6 +2311,9 @@ import 'sku_response.dart';
 /// }
 ///
 /// resource "azure-native_sql_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   collation           = "SQL_Latin1_General_CP1_CI_AS"
 ///   create_mode         = "Default"
 ///   database_name       = "testdb"
@@ -2437,7 +2479,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2446,6 +2488,9 @@ import 'sku_response.dart';
 /// }
 ///
 /// resource "azure-native_sql_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name       = "testdb"
 ///   is_ledger_on        = true
 ///   location            = "southeastasia"
@@ -2579,7 +2624,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2588,6 +2633,9 @@ import 'sku_response.dart';
 /// }
 ///
 /// resource "azure-native_sql_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name       = "testdb"
 ///   location            = "southeastasia"
 ///   resource_group_name = "Default-SQL-SouthEastAsia"
@@ -2684,7 +2732,7 @@ import 'sku_response.dart';
 ///         DatabaseName = "testdb",
 ///         Location = "southeastasia",
 ///         MaintenanceConfigurationId = "/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_SouthEastAsia_1",
-///         MaxSizeBytes = 1073741824,
+///         MaxSizeBytes = 1073741824.0,
 ///         ResourceGroupName = "Default-SQL-SouthEastAsia",
 ///         ServerName = "testsvr",
 ///         Sku = new AzureNative.Sql.Inputs.SkuArgs
@@ -2733,7 +2781,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2742,6 +2790,9 @@ import 'sku_response.dart';
 /// }
 ///
 /// resource "azure-native_sql_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   collation                    = "SQL_Latin1_General_CP1_CI_AS"
 ///   create_mode                  = "Default"
 ///   database_name                = "testdb"
@@ -2912,7 +2963,7 @@ import 'sku_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2921,6 +2972,9 @@ import 'sku_response.dart';
 /// }
 ///
 /// resource "azure-native_sql_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name                       = "testdb"
 ///   location                            = "southeastasia"
 ///   requested_backup_storage_redundancy = "Zone"

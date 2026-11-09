@@ -60,7 +60,7 @@ import 'tag_by_operation_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'tag_by_operation_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_tagbyoperation" "tagByOperation" {
+/// resource "azure-native_apimanagement_tag_by_operation" "tagByOperation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "5931a75ae4bbd512a88c680b"
 ///   operation_id        = "5931a75ae4bbd512a88c680a"
 ///   resource_group_name = "rg1"

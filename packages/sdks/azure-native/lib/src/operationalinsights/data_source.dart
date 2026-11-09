@@ -65,7 +65,7 @@ import 'data_source_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'data_source_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_operationalinsights_datasource" "dataSource" {
+/// resource "azure-native_operationalinsights_data_source" "dataSource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_source_name = "AzTestDS774"
 ///   kind             = "AzureActivityLog"
 ///   properties = {

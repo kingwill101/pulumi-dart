@@ -63,7 +63,7 @@ import 'resource_reference_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'resource_reference_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_logic_integrationserviceenvironmentmanagedapi" "integrationServiceEnvironmentManagedApi" {
+/// resource "azure-native_logic_integration_service_environment_managed_api" "integrationServiceEnvironmentManagedApi" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_name                             = "servicebus"
 ///   integration_service_environment_name = "testIntegrationServiceEnvironment"
 ///   location                             = "brazilsouth"

@@ -65,7 +65,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_scheduledtrigger" "scheduledTrigger" {
+/// resource "azure-native_datashare_scheduled_trigger" "scheduledTrigger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name            = "Account1"
 ///   kind                    = "ScheduleBased"
 ///   recurrence_interval     = "Day"
@@ -109,7 +112,6 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var scheduledTrigger = new ScheduledTrigger("scheduledTrigger", ScheduledTriggerArgs.builder()
 ///             .accountName("Account1")
-///             .kind("ScheduleBased")
 ///             .recurrenceInterval("Day")
 ///             .resourceGroupName("SampleResourceGroup")
 ///             .shareSubscriptionName("ShareSubscription1")

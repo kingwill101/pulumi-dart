@@ -76,7 +76,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -84,7 +84,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_extendedlocation_resourcesyncrule" "resourceSyncRule" {
+/// resource "azure-native_extendedlocation_resource_sync_rule" "resourceSyncRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   child_resource_name = "resourceSyncRule01"
 ///   location            = "West US"
 ///   priority            = 999

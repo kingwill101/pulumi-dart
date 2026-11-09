@@ -23,7 +23,7 @@ import 'group_properties_response.dart';
 ///         ETag = "\"1e000c2c-0000-0d00-0000-5cdaa4190000\"",
 ///         GroupName = "Group2",
 ///         ProjectName = "abgoyalWEselfhostb72bproject",
-///         Properties = null,
+///         Properties = new() { },
 ///         ResourceGroupName = "abgoyal-westEurope",
 ///     });
 ///
@@ -59,7 +59,7 @@ import 'group_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,6 +68,9 @@ import 'group_properties_response.dart';
 /// }
 ///
 /// resource "azure-native_migrate_group" "group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   e_tag               = "\"1e000c2c-0000-0d00-0000-5cdaa4190000\""
 ///   group_name          = "Group2"
 ///   project_name        = "abgoyalWEselfhostb72bproject"

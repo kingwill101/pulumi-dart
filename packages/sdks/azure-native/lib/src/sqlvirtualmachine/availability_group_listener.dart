@@ -96,7 +96,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -104,7 +104,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sqlvirtualmachine_availabilitygrouplistener" "availabilityGroupListener" {
+/// resource "azure-native_sqlvirtualmachine_availability_group_listener" "availabilityGroupListener" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_group_listener_name = "agl-test"
 ///   availability_group_name          = "ag-test"
 ///   load_balancer_configurations {
@@ -332,7 +335,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -340,7 +343,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sqlvirtualmachine_availabilitygrouplistener" "availabilityGroupListener" {
+/// resource "azure-native_sqlvirtualmachine_availability_group_listener" "availabilityGroupListener" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_group_listener_name = "agl-test"
 ///   availability_group_name          = "ag-test"
 ///   multi_subnet_ip_configurations {

@@ -70,7 +70,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,7 +78,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_desktopvirtualization_privateendpointconnectionbyworkspace" "privateEndpointConnectionByWorkspace" {
+/// resource "azure-native_desktopvirtualization_private_endpoint_connection_by_workspace" "privateEndpointConnectionByWorkspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   private_endpoint_connection_name = "workspace1.377103f1-5179-4bdf-8556-4cdd3207cc5b"
 ///   private_link_service_connection_state = {
 ///     actions_required = "None"

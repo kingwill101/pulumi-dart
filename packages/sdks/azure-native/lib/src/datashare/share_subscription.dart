@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_sharesubscription" "shareSubscription" {
+/// resource "azure-native_datashare_share_subscription" "shareSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name            = "Account1"
 ///   expiration_date         = "2020-08-26T22:33:24.5785265Z"
 ///   invitation_id           = "12345678-1234-1234-12345678abd"

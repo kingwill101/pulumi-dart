@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datashare_scheduledsynchronizationsetting" "scheduledSynchronizationSetting" {
+/// resource "azure-native_datashare_scheduled_synchronization_setting" "scheduledSynchronizationSetting" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name                 = "Account1"
 ///   kind                         = "ScheduleBased"
 ///   recurrence_interval          = "Day"
@@ -106,7 +109,6 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var scheduledSynchronizationSetting = new ScheduledSynchronizationSetting("scheduledSynchronizationSetting", ScheduledSynchronizationSettingArgs.builder()
 ///             .accountName("Account1")
-///             .kind("ScheduleBased")
 ///             .recurrenceInterval("Day")
 ///             .resourceGroupName("SampleResourceGroup")
 ///             .shareName("Share1")

@@ -57,7 +57,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_managementgroupnetworkmanagerconnection" "managementGroupNetworkManagerConnection" {
+/// resource "azure-native_network_management_group_network_manager_connection" "managementGroupNetworkManagerConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   management_group_id             = "managementGroupA"
 ///   network_manager_connection_name = "TestNMConnection"
 ///   network_manager_id              = "/subscriptions/subscriptionC/resourceGroup/rg1/providers/Microsoft.Network/networkManagers/testNetworkManager"

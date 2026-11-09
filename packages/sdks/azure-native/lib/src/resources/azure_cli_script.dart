@@ -58,7 +58,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_resources_azurecliscript" "azureCliScript" {
+/// resource "azure-native_resources_azure_cli_script" "azureCliScript" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "script-rg"
 ///   script_name         = "MyDeploymentScript"
 /// }
@@ -181,7 +184,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -189,7 +192,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_resources_azurecliscript" "azureCliScript" {
+/// resource "azure-native_resources_azure_cli_script" "azureCliScript" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "script-rg"
 ///   script_name         = "MyDeploymentScript"
 /// }
@@ -304,7 +310,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -312,7 +318,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_resources_azurecliscript" "azureCliScript" {
+/// resource "azure-native_resources_azure_cli_script" "azureCliScript" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "script-rg"
 ///   script_name         = "MyDeploymentScript"
 /// }
@@ -427,7 +436,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -435,7 +444,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_resources_azurecliscript" "azureCliScript" {
+/// resource "azure-native_resources_azure_cli_script" "azureCliScript" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "script-rg"
 ///   script_name         = "MyDeploymentScript"
 /// }
@@ -550,7 +562,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -558,7 +570,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_resources_azurecliscript" "azureCliScript" {
+/// resource "azure-native_resources_azure_cli_script" "azureCliScript" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "script-rg"
 ///   script_name         = "MyDeploymentScript"
 /// }
@@ -673,7 +688,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -681,7 +696,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_resources_azurecliscript" "azureCliScript" {
+/// resource "azure-native_resources_azure_cli_script" "azureCliScript" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "script-rg"
 ///   script_name         = "MyDeploymentScript"
 /// }

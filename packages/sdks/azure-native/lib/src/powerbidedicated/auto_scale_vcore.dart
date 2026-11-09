@@ -78,7 +78,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -86,7 +86,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_powerbidedicated_autoscalevcore" "autoScaleVCore" {
+/// resource "azure-native_powerbidedicated_auto_scale_v_core" "autoScaleVCore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   capacity_limit      = 10
 ///   capacity_object_id  = "a28f00bd-5330-4572-88f1-fa883e074785"
 ///   location            = "West US"

@@ -126,7 +126,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -134,7 +134,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_redshiftclusterparametergroup" "redshiftClusterParameterGroup" {
+/// resource "azure-native_awsconnector_redshift_cluster_parameter_group" "redshiftClusterParameterGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "gskgxjliwptm"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -145,12 +148,12 @@ import 'system_data_response.dart';
 ///       parameter_group_family = "bbhnqerzrhqtinntphvuim"
 ///       parameter_group_name   = "tiqxhqigpmuckmnpgijvnpwzb"
 ///       parameters = [{
-///         "parameterName"  = "jxeucnajvjzv"
-///         "parameterValue" = "ubxmwmoxeslbruenu"
+///         parameter_name  = "jxeucnajvjzv"
+///         parameter_value = "ubxmwmoxeslbruenu"
 ///       }]
 ///       tags = [{
-///         "key"   = "ucdvfenzatoxmpdicwhztuvgtnku"
-///         "value" = "qpznlj"
+///         key   = "ucdvfenzatoxmpdicwhztuvgtnku"
+///         value = "qpznlj"
 ///       }]
 ///     }
 ///     aws_region        = "wrhyhrmwhdmlnjjbrl"
@@ -179,6 +182,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.RedshiftClusterParameterGroupArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RedshiftClusterParameterGroupPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsRedshiftClusterParameterGroupPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ParameterArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

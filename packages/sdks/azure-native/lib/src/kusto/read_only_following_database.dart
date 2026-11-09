@@ -63,7 +63,7 @@ import 'table_level_sharing_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'table_level_sharing_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kusto_readonlyfollowingdatabase" "readOnlyFollowingDatabase" {
+/// resource "azure-native_kusto_read_only_following_database" "readOnlyFollowingDatabase" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name        = "kustoCluster"
 ///   database_name       = "kustoReadOnlyDatabase"
 ///   hot_cache_period    = "P1D"
@@ -107,7 +110,6 @@ import 'table_level_sharing_properties_response.dart';
 ///             .clusterName("kustoCluster")
 ///             .databaseName("kustoReadOnlyDatabase")
 ///             .hotCachePeriod("P1D")
-///             .kind("ReadOnlyFollowing")
 ///             .location("westus")
 ///             .resourceGroupName("kustorptest")
 ///             .build());
@@ -210,7 +212,7 @@ import 'table_level_sharing_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -218,7 +220,10 @@ import 'table_level_sharing_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_kusto_readonlyfollowingdatabase" "readOnlyFollowingDatabase" {
+/// resource "azure-native_kusto_read_only_following_database" "readOnlyFollowingDatabase" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   caller_role         = "Admin"
 ///   cluster_name        = "kustoCluster"
 ///   database_name       = "KustoDatabase8"

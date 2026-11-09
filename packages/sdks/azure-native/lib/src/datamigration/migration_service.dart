@@ -57,7 +57,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datamigration_migrationservice" "migrationService" {
+/// resource "azure-native_datamigration_migration_service" "migrationService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location               = "northeurope"
 ///   migration_service_name = "testagent"
 ///   resource_group_name    = "testrg"
@@ -187,7 +190,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -195,7 +198,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datamigration_migrationservice" "migrationService" {
+/// resource "azure-native_datamigration_migration_service" "migrationService" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location               = "northeurope"
 ///   migration_service_name = "testagent"
 ///   resource_group_name    = "testrg"

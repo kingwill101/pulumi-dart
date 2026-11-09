@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_diskaccess" "diskAccess" {
+/// resource "azure-native_compute_disk_access" "diskAccess" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   disk_access_name    = "myDiskAccess"
 ///   location            = "West US"
 ///   resource_group_name = "myResourceGroup"

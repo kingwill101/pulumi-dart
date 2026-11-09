@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_eventgrid_clientgroup" "clientGroup" {
+/// resource "azure-native_eventgrid_client_group" "clientGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_group_name   = "exampleClientGroupName1"
 ///   description         = "This is a test client group"
 ///   namespace_name      = "exampleNamespaceName1"

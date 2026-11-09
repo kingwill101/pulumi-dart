@@ -58,7 +58,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,6 +67,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_elastic_monitor" "monitor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   monitor_name        = "myMonitor"
 ///   resource_group_name = "myResourceGroup"
 /// }

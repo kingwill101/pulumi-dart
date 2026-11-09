@@ -89,7 +89,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -98,14 +98,17 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_recommendationsservice_account" "account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "sampleAccount"
 ///   location     = "West US"
 ///   properties = {
 ///     configuration = "Capacity"
 ///     endpoint_authentications = [{
-///       "aadTenantID"   = "tenant"
-///       "principalID"   = "oid"
-///       "principalType" = "User"
+///       aad_tenant_id  = "tenant"
+///       principal_id   = "oid"
+///       principal_type = "User"
 ///     }]
 ///   }
 ///   resource_group_name = "rg"
@@ -125,6 +128,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.recommendationsservice.Account;
 /// import com.pulumi.azurenative.recommendationsservice.AccountArgs;
 /// import com.pulumi.azurenative.recommendationsservice.inputs.AccountResourcePropertiesArgs;
+/// import com.pulumi.azurenative.recommendationsservice.inputs.EndpointAuthenticationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

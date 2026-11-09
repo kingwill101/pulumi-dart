@@ -25,7 +25,7 @@ import 'vm_uptime_assessments_operation_response.dart';
 ///     var assessmentsOperation = new AzureNative.Migrate.AssessmentsOperation("assessmentsOperation", new()
 ///     {
 ///         AssessmentName = "asm1",
-///         AzureDiskTypes = new[]
+///         AzureDiskTypes =
 ///         {
 ///             AzureNative.Migrate.AzureDiskType.Premium,
 ///             AzureNative.Migrate.AzureDiskType.PremiumV2,
@@ -36,7 +36,7 @@ import 'vm_uptime_assessments_operation_response.dart';
 ///         AzureOfferCode = AzureNative.Migrate.AzureOfferCode.Unknown,
 ///         AzurePricingTier = AzureNative.Migrate.AzurePricingTier.Standard,
 ///         AzureStorageRedundancy = AzureNative.Migrate.AzureStorageRedundancy.Unknown,
-///         AzureVmFamilies = new[]
+///         AzureVmFamilies =
 ///         {
 ///             AzureNative.Migrate.AzureVmFamily.DSeries,
 ///             AzureNative.Migrate.AzureVmFamily.Lsv2Series,
@@ -46,7 +46,7 @@ import 'vm_uptime_assessments_operation_response.dart';
 ///             AzureNative.Migrate.AzureVmFamily.Mv2Series,
 ///         },
 ///         Currency = AzureNative.Migrate.AzureCurrency.Unknown,
-///         DiscountPercentage = 6,
+///         DiscountPercentage = 6.0,
 ///         EaSubscriptionId = "kwsu",
 ///         GroupName = "kuchatur-test",
 ///         LinuxAzureHybridUseBenefit = AzureNative.Migrate.AzureHybridUseBenefit.Unknown,
@@ -57,13 +57,13 @@ import 'vm_uptime_assessments_operation_response.dart';
 ///         ProvisioningState = AzureNative.Migrate.ProvisioningState.Succeeded,
 ///         ReservedInstance = AzureNative.Migrate.AzureReservedInstance.None,
 ///         ResourceGroupName = "ayagrawrg",
-///         ScalingFactor = 24,
+///         ScalingFactor = 24.0,
 ///         SizingCriterion = AzureNative.Migrate.AssessmentSizingCriterion.PerformanceBased,
 ///         TimeRange = AzureNative.Migrate.TimeRange.Day,
 ///         VmUptime = new AzureNative.Migrate.Inputs.VmUptimeArgs
 ///         {
-///             DaysPerMonth = 13,
-///             HoursPerDay = 26,
+///             DaysPerMonth = 13.0,
+///             HoursPerDay = 26.0,
 ///         },
 ///     });
 ///
@@ -132,7 +132,7 @@ import 'vm_uptime_assessments_operation_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -140,7 +140,10 @@ import 'vm_uptime_assessments_operation_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_migrate_assessmentsoperation" "assessmentsOperation" {
+/// resource "azure-native_migrate_assessments_operation" "assessmentsOperation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assessment_name                = "asm1"
 ///   azure_disk_types               = ["Premium", "PremiumV2", "StandardSSD"]
 ///   azure_hybrid_use_benefit       = "Unknown"

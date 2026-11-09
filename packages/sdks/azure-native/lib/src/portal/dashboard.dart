@@ -128,7 +128,7 @@ import 'system_data_response.dart';
 /// 					},
 /// 				},
 /// 				Metadata: pulumi.Any(map[string]interface{}{
-/// 					"metadata": map[string]interface{}{
+/// 					"metadata": map[string]int{
 /// 						"ColSpan": 2,
 /// 						"RowSpan": 1,
 /// 						"X":       4,
@@ -152,7 +152,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -161,29 +161,32 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_portal_dashboard" "dashboard" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dashboard_name = "testDashboard"
 ///   location       = "eastus"
 ///   properties = {
 ///     lenses = [{
-///       "order" = 1
-///       "parts" = [{
-///         "position" = {
-///           "colSpan" = 3
-///           "rowSpan" = 4
-///           "x"       = 1
-///           "y"       = 2
+///       order = 1
+///       parts = [{
+///         position = {
+///           col_span = 3
+///           row_span = 4
+///           x        = 1
+///           y        = 2
 ///         }
 ///         }, {
-///         "position" = {
-///           "colSpan" = 6
-///           "rowSpan" = 6
-///           "x"       = 5
-///           "y"       = 5
+///         position = {
+///           col_span = 6
+///           row_span = 6
+///           x        = 5
+///           y        = 5
 ///         }
 ///       }]
 ///       }, {
-///       "order" = 2
-///       "parts" = []
+///       order = 2
+///       parts = []
 ///     }]
 ///     metadata = {
 ///       "metadata" = {
@@ -212,6 +215,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.portal.Dashboard;
 /// import com.pulumi.azurenative.portal.DashboardArgs;
 /// import com.pulumi.azurenative.portal.inputs.DashboardPropertiesWithProvisioningStateArgs;
+/// import com.pulumi.azurenative.portal.inputs.DashboardLensArgs;
+/// import com.pulumi.azurenative.portal.inputs.DashboardPartsArgs;
+/// import com.pulumi.azurenative.portal.inputs.DashboardPartsPositionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

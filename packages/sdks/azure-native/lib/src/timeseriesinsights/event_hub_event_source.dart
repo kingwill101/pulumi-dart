@@ -75,7 +75,7 @@ import 'local_timestamp_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,7 +83,10 @@ import 'local_timestamp_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_timeseriesinsights_eventhubeventsource" "eventHubEventSource" {
+/// resource "azure-native_timeseriesinsights_event_hub_event_source" "eventHubEventSource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   consumer_group_name      = "cgn"
 ///   environment_name         = "env1"
 ///   event_hub_name           = "ehn"
@@ -129,7 +132,6 @@ import 'local_timestamp_response.dart';
 ///             .eventSourceName("es1")
 ///             .eventSourceResourceId("somePathInArm")
 ///             .keyName("managementKey")
-///             .kind("Microsoft.EventHub")
 ///             .location("West US")
 ///             .resourceGroupName("rg1")
 ///             .serviceBusNamespace("sbn")
@@ -277,7 +279,7 @@ import 'local_timestamp_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -285,7 +287,10 @@ import 'local_timestamp_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_timeseriesinsights_eventhubeventsource" "eventHubEventSource" {
+/// resource "azure-native_timeseriesinsights_event_hub_event_source" "eventHubEventSource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   consumer_group_name      = "cgn"
 ///   environment_name         = "env1"
 ///   event_hub_name           = "ehn"
@@ -332,7 +337,6 @@ import 'local_timestamp_response.dart';
 ///             .eventSourceName("es1")
 ///             .eventSourceResourceId("somePathInArm")
 ///             .keyName("managementKey")
-///             .kind("Microsoft.EventHub")
 ///             .location("West US")
 ///             .resourceGroupName("rg1")
 ///             .serviceBusNamespace("sbn")

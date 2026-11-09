@@ -64,7 +64,7 @@ import 'workspace_api_version_set_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'workspace_api_version_set_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_workspaceapiversionset" "workspaceApiVersionSet" {
+/// resource "azure-native_apimanagement_workspace_api_version_set" "workspaceApiVersionSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description         = "Version configuration"
 ///   display_name        = "api set 1"
 ///   resource_group_name = "rg1"

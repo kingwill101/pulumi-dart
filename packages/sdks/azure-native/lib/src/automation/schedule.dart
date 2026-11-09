@@ -23,7 +23,7 @@ import 'system_data_response.dart';
 /// {
 ///     var schedule = new AzureNative.Automation.Schedule("schedule", new()
 ///     {
-///         AdvancedSchedule = null,
+///         AdvancedSchedule = new() { },
 ///         AutomationAccountName = "myAutomationAccount33",
 ///         Description = "my description of schedule goes here",
 ///         ExpiryTime = "2017-04-01T17:28:57.2494819Z",
@@ -72,7 +72,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,6 +81,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_automation_schedule" "schedule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   advanced_schedule       = {}
 ///   automation_account_name = "myAutomationAccount33"
 ///   description             = "my description of schedule goes here"

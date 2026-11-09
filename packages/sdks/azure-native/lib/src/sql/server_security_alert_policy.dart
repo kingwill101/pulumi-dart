@@ -83,7 +83,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -91,7 +91,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_serversecurityalertpolicy" "serverSecurityAlertPolicy" {
+/// resource "azure-native_sql_server_security_alert_policy" "serverSecurityAlertPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   disabled_alerts            = ["Access_Anomaly", "Usage_Anomaly"]
 ///   email_account_admins       = true
 ///   email_addresses            = ["testSecurityAlert@microsoft.com"]
@@ -261,7 +264,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -269,7 +272,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_serversecurityalertpolicy" "serverSecurityAlertPolicy" {
+/// resource "azure-native_sql_server_security_alert_policy" "serverSecurityAlertPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name        = "securityalert-4799"
 ///   security_alert_policy_name = "Default"
 ///   server_name                = "securityalert-6440"

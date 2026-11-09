@@ -39,7 +39,7 @@ import 'system_data_response.dart';
 ///         },
 ///         Schedule = new AzureNative.CostManagement.Inputs.SchedulePropertiesArgs
 ///         {
-///             DaysOfWeek = new[]
+///             DaysOfWeek =
 ///             {
 ///                 AzureNative.CostManagement.DaysOfWeek.Monday,
 ///             },
@@ -47,7 +47,7 @@ import 'system_data_response.dart';
 ///             Frequency = AzureNative.CostManagement.ScheduleFrequency.Monthly,
 ///             HourOfDay = 10,
 ///             StartDate = "2020-06-19T22:21:51.1287144Z",
-///             WeeksOfMonth = new[]
+///             WeeksOfMonth =
 ///             {
 ///                 AzureNative.CostManagement.WeeksOfMonth.First,
 ///                 AzureNative.CostManagement.WeeksOfMonth.Third,
@@ -109,7 +109,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -117,7 +117,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_costmanagement_scheduledaction" "scheduledAction" {
+/// resource "azure-native_costmanagement_scheduled_action" "scheduledAction" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Monthly Cost By Resource"
 ///   kind         = "Email"
 ///   name         = "monthlyCostByResource"

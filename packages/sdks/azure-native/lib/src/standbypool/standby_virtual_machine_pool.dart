@@ -26,13 +26,13 @@ import 'system_data_response.dart';
 ///         AttachedVirtualMachineScaleSetId = "/subscriptions/00000000-0000-0000-0000-000000000009/resourceGroups/rgstandbypool/providers/Microsoft.Compute/virtualMachineScaleSets/myVmss",
 ///         ElasticityProfile = new AzureNative.StandbyPool.Inputs.StandbyVirtualMachinePoolElasticityProfileArgs
 ///         {
-///             MaxReadyCapacity = 304,
-///             MinReadyCapacity = 300,
+///             MaxReadyCapacity = 304.0,
+///             MinReadyCapacity = 300.0,
 ///         },
 ///         Location = "West US",
 ///         ResourceGroupName = "rgstandbypool",
 ///         StandbyVirtualMachinePoolName = "pool",
-///         Tags = null,
+///         Tags = new() { },
 ///         VirtualMachineState = AzureNative.StandbyPool.VirtualMachineState.Running,
 ///     });
 ///
@@ -73,7 +73,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -81,7 +81,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_standbypool_standbyvirtualmachinepool" "standbyVirtualMachinePool" {
+/// resource "azure-native_standbypool_standby_virtual_machine_pool" "standbyVirtualMachinePool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   attached_virtual_machine_scale_set_id = "/subscriptions/00000000-0000-0000-0000-000000000009/resourceGroups/rgstandbypool/providers/Microsoft.Compute/virtualMachineScaleSets/myVmss"
 ///   elasticity_profile = {
 ///     max_ready_capacity = 304

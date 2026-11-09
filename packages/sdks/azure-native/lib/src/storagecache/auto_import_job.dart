@@ -33,7 +33,7 @@ import 'system_data_response.dart';
 ///         ConflictResolutionMode = AzureNative.StorageCache.ConflictResolutionMode.Skip,
 ///         EnableDeletions = false,
 ///         Location = "eastus",
-///         MaximumErrors = 0,
+///         MaximumErrors = 0.0,
 ///         ResourceGroupName = "scgroup",
 ///         Tags =
 ///         {
@@ -82,7 +82,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -90,7 +90,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storagecache_autoimportjob" "autoImportJob" {
+/// resource "azure-native_storagecache_auto_import_job" "autoImportJob" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   admin_status             = "Enable"
 ///   aml_filesystem_name      = "fs1"
 ///   auto_import_job_name     = "autojob1"

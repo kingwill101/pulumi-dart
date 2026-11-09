@@ -96,7 +96,7 @@ import 'notification_response.dart';
 ///                 Enabled = true,
 ///                 Locale = AzureNative.CostManagement.CultureCode.En_us,
 ///                 Operator = AzureNative.CostManagement.BudgetNotificationOperatorType.GreaterThan,
-///                 Threshold = 80,
+///                 Threshold = 80.0,
 ///                 ThresholdType = AzureNative.CostManagement.ThresholdType.Actual,
 ///             } },
 ///         },
@@ -200,7 +200,7 @@ import 'notification_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -209,28 +209,31 @@ import 'notification_response.dart';
 /// }
 ///
 /// resource "azure-native_costmanagement_budget" "budget" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   amount      = 100.65
 ///   budget_name = "TestBudget"
 ///   category    = "Cost"
 ///   e_tag       = "\"1d34d016a593709\""
 ///   filter = {
 ///     and = [{
-///       "dimensions" = {
-///         "name"     = "ResourceId"
-///         "operator" = "In"
-///         "values"   = ["/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Compute/virtualMachines/MSVM2", "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Compute/virtualMachines/platformcloudplatformGeneric1"]
+///       dimensions = {
+///         name     = "ResourceId"
+///         operator = "In"
+///         values   = ["/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Compute/virtualMachines/MSVM2", "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Compute/virtualMachines/platformcloudplatformGeneric1"]
 ///       }
 ///       }, {
-///       "tags" = {
-///         "name"     = "category"
-///         "operator" = "In"
-///         "values"   = ["Dev", "Prod"]
+///       tags = {
+///         name     = "category"
+///         operator = "In"
+///         values   = ["Dev", "Prod"]
 ///       }
 ///       }, {
-///       "tags" = {
-///         "name"     = "department"
-///         "operator" = "In"
-///         "values"   = ["engineering", "sales"]
+///       tags = {
+///         name     = "department"
+///         operator = "In"
+///         values   = ["engineering", "sales"]
 ///       }
 ///     }]
 ///   }
@@ -265,6 +268,9 @@ import 'notification_response.dart';
 /// import com.pulumi.azurenative.costmanagement.Budget;
 /// import com.pulumi.azurenative.costmanagement.BudgetArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetFilterArgs;
+/// import com.pulumi.azurenative.costmanagement.inputs.BudgetFilterPropertiesArgs;
+/// import com.pulumi.azurenative.costmanagement.inputs.BudgetComparisonExpressionArgs;
+/// import com.pulumi.azurenative.costmanagement.inputs.NotificationArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetTimePeriodArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -550,7 +556,7 @@ import 'notification_response.dart';
 ///         BudgetName = "TestAlertRule",
 ///         Category = AzureNative.CostManagement.CategoryType.ReservationUtilization,
 ///         ETag = "\"1d34d016a593709\"",
-///         Filter = null,
+///         Filter = new() { },
 ///         Notifications =
 ///         {
 ///             { "Actual_LessThan_99_Percent", new AzureNative.CostManagement.Inputs.NotificationArgs
@@ -564,7 +570,7 @@ import 'notification_response.dart';
 ///                 Frequency = AzureNative.CostManagement.Frequency.Weekly,
 ///                 Locale = AzureNative.CostManagement.CultureCode.En_us,
 ///                 Operator = AzureNative.CostManagement.BudgetNotificationOperatorType.LessThan,
-///                 Threshold = 99,
+///                 Threshold = 99.0,
 ///             } },
 ///         },
 ///         Scope = "providers/Microsoft.Billing/billingAccounts/123456",
@@ -626,7 +632,7 @@ import 'notification_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -635,6 +641,9 @@ import 'notification_response.dart';
 /// }
 ///
 /// resource "azure-native_costmanagement_budget" "budget" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   budget_name = "TestAlertRule"
 ///   category    = "ReservationUtilization"
 ///   e_tag       = "\"1d34d016a593709\""
@@ -668,6 +677,7 @@ import 'notification_response.dart';
 /// import com.pulumi.azurenative.costmanagement.Budget;
 /// import com.pulumi.azurenative.costmanagement.BudgetArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetFilterArgs;
+/// import com.pulumi.azurenative.costmanagement.inputs.NotificationArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetTimePeriodArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -844,7 +854,7 @@ import 'notification_response.dart';
 ///                 Frequency = AzureNative.CostManagement.Frequency.Weekly,
 ///                 Locale = AzureNative.CostManagement.CultureCode.En_us,
 ///                 Operator = AzureNative.CostManagement.BudgetNotificationOperatorType.LessThan,
-///                 Threshold = 99,
+///                 Threshold = 99.0,
 ///             } },
 ///         },
 ///         Scope = "providers/Microsoft.Billing/billingAccounts/123456",
@@ -916,7 +926,7 @@ import 'notification_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -925,6 +935,9 @@ import 'notification_response.dart';
 /// }
 ///
 /// resource "azure-native_costmanagement_budget" "budget" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   budget_name = "TestAlertRule"
 ///   category    = "ReservationUtilization"
 ///   e_tag       = "\"1d34d016a593709\""
@@ -965,6 +978,7 @@ import 'notification_response.dart';
 /// import com.pulumi.azurenative.costmanagement.BudgetArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetFilterArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetComparisonExpressionArgs;
+/// import com.pulumi.azurenative.costmanagement.inputs.NotificationArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetTimePeriodArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1176,7 +1190,7 @@ import 'notification_response.dart';
 ///                 Frequency = AzureNative.CostManagement.Frequency.Weekly,
 ///                 Locale = AzureNative.CostManagement.CultureCode.En_us,
 ///                 Operator = AzureNative.CostManagement.BudgetNotificationOperatorType.LessThan,
-///                 Threshold = 99,
+///                 Threshold = 99.0,
 ///             } },
 ///         },
 ///         Scope = "providers/Microsoft.Billing/billingAccounts/123456",
@@ -1248,7 +1262,7 @@ import 'notification_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1257,6 +1271,9 @@ import 'notification_response.dart';
 /// }
 ///
 /// resource "azure-native_costmanagement_budget" "budget" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   budget_name = "TestAlertRule"
 ///   category    = "ReservationUtilization"
 ///   e_tag       = "\"1d34d016a593709\""
@@ -1297,6 +1314,7 @@ import 'notification_response.dart';
 /// import com.pulumi.azurenative.costmanagement.BudgetArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetFilterArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetComparisonExpressionArgs;
+/// import com.pulumi.azurenative.costmanagement.inputs.NotificationArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetTimePeriodArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1508,7 +1526,7 @@ import 'notification_response.dart';
 ///                 Frequency = AzureNative.CostManagement.Frequency.Daily,
 ///                 Locale = AzureNative.CostManagement.CultureCode.En_us,
 ///                 Operator = AzureNative.CostManagement.BudgetNotificationOperatorType.LessThan,
-///                 Threshold = 99,
+///                 Threshold = 99.0,
 ///             } },
 ///         },
 ///         Scope = "providers/Microsoft.Billing/billingAccounts/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee:ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj_2023-04-01/billingProfiles/KKKK-LLLL-MMM-NNN",
@@ -1580,7 +1598,7 @@ import 'notification_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1589,6 +1607,9 @@ import 'notification_response.dart';
 /// }
 ///
 /// resource "azure-native_costmanagement_budget" "budget" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   budget_name = "TestAlertRule"
 ///   category    = "ReservationUtilization"
 ///   e_tag       = "\"1d34d016a593709\""
@@ -1629,6 +1650,7 @@ import 'notification_response.dart';
 /// import com.pulumi.azurenative.costmanagement.BudgetArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetFilterArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetComparisonExpressionArgs;
+/// import com.pulumi.azurenative.costmanagement.inputs.NotificationArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetTimePeriodArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1840,7 +1862,7 @@ import 'notification_response.dart';
 ///                 Frequency = AzureNative.CostManagement.Frequency.Daily,
 ///                 Locale = AzureNative.CostManagement.CultureCode.En_us,
 ///                 Operator = AzureNative.CostManagement.BudgetNotificationOperatorType.LessThan,
-///                 Threshold = 99,
+///                 Threshold = 99.0,
 ///             } },
 ///         },
 ///         Scope = "providers/Microsoft.Billing/billingAccounts/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee:ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj_2023-04-01/billingProfiles/KKKK-LLLL-MMM-NNN",
@@ -1912,7 +1934,7 @@ import 'notification_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1921,6 +1943,9 @@ import 'notification_response.dart';
 /// }
 ///
 /// resource "azure-native_costmanagement_budget" "budget" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   budget_name = "TestAlertRule"
 ///   category    = "ReservationUtilization"
 ///   e_tag       = "\"1d34d016a593709\""
@@ -1961,6 +1986,7 @@ import 'notification_response.dart';
 /// import com.pulumi.azurenative.costmanagement.BudgetArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetFilterArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetComparisonExpressionArgs;
+/// import com.pulumi.azurenative.costmanagement.inputs.NotificationArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetTimePeriodArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -2145,7 +2171,7 @@ import 'notification_response.dart';
 ///         BudgetName = "TestAlertRule",
 ///         Category = AzureNative.CostManagement.CategoryType.ReservationUtilization,
 ///         ETag = "\"1d34d016a593709\"",
-///         Filter = null,
+///         Filter = new() { },
 ///         Notifications =
 ///         {
 ///             { "Actual_LessThan_99_Percent", new AzureNative.CostManagement.Inputs.NotificationArgs
@@ -2159,7 +2185,7 @@ import 'notification_response.dart';
 ///                 Frequency = AzureNative.CostManagement.Frequency.Daily,
 ///                 Locale = AzureNative.CostManagement.CultureCode.En_us,
 ///                 Operator = AzureNative.CostManagement.BudgetNotificationOperatorType.LessThan,
-///                 Threshold = 99,
+///                 Threshold = 99.0,
 ///             } },
 ///         },
 ///         Scope = "providers/Microsoft.Billing/billingAccounts/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee:ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj_2023-04-01/billingProfiles/KKKK-LLLL-MMM-NNN",
@@ -2221,7 +2247,7 @@ import 'notification_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2230,6 +2256,9 @@ import 'notification_response.dart';
 /// }
 ///
 /// resource "azure-native_costmanagement_budget" "budget" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   budget_name = "TestAlertRule"
 ///   category    = "ReservationUtilization"
 ///   e_tag       = "\"1d34d016a593709\""
@@ -2263,6 +2292,7 @@ import 'notification_response.dart';
 /// import com.pulumi.azurenative.costmanagement.Budget;
 /// import com.pulumi.azurenative.costmanagement.BudgetArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetFilterArgs;
+/// import com.pulumi.azurenative.costmanagement.inputs.NotificationArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetTimePeriodArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -2439,7 +2469,7 @@ import 'notification_response.dart';
 ///                 Frequency = AzureNative.CostManagement.Frequency.Daily,
 ///                 Locale = AzureNative.CostManagement.CultureCode.En_us,
 ///                 Operator = AzureNative.CostManagement.BudgetNotificationOperatorType.LessThan,
-///                 Threshold = 99,
+///                 Threshold = 99.0,
 ///             } },
 ///         },
 ///         Scope = "providers/Microsoft.Billing/billingAccounts/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee:ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj_2023-04-01/customers/000000-1111-2222-3333-444444444444",
@@ -2511,7 +2541,7 @@ import 'notification_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2520,6 +2550,9 @@ import 'notification_response.dart';
 /// }
 ///
 /// resource "azure-native_costmanagement_budget" "budget" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   budget_name = "TestAlertRule"
 ///   category    = "ReservationUtilization"
 ///   e_tag       = "\"1d34d016a593709\""
@@ -2560,6 +2593,7 @@ import 'notification_response.dart';
 /// import com.pulumi.azurenative.costmanagement.BudgetArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetFilterArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetComparisonExpressionArgs;
+/// import com.pulumi.azurenative.costmanagement.inputs.NotificationArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetTimePeriodArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -2771,7 +2805,7 @@ import 'notification_response.dart';
 ///                 Frequency = AzureNative.CostManagement.Frequency.Daily,
 ///                 Locale = AzureNative.CostManagement.CultureCode.En_us,
 ///                 Operator = AzureNative.CostManagement.BudgetNotificationOperatorType.LessThan,
-///                 Threshold = 99,
+///                 Threshold = 99.0,
 ///             } },
 ///         },
 ///         Scope = "providers/Microsoft.Billing/billingAccounts/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee:ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj_2023-04-01/customers/000000-1111-2222-3333-444444444444",
@@ -2843,7 +2877,7 @@ import 'notification_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2852,6 +2886,9 @@ import 'notification_response.dart';
 /// }
 ///
 /// resource "azure-native_costmanagement_budget" "budget" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   budget_name = "TestAlertRule"
 ///   category    = "ReservationUtilization"
 ///   e_tag       = "\"1d34d016a593709\""
@@ -2892,6 +2929,7 @@ import 'notification_response.dart';
 /// import com.pulumi.azurenative.costmanagement.BudgetArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetFilterArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetComparisonExpressionArgs;
+/// import com.pulumi.azurenative.costmanagement.inputs.NotificationArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetTimePeriodArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -3076,7 +3114,7 @@ import 'notification_response.dart';
 ///         BudgetName = "TestAlertRule",
 ///         Category = AzureNative.CostManagement.CategoryType.ReservationUtilization,
 ///         ETag = "\"1d34d016a593709\"",
-///         Filter = null,
+///         Filter = new() { },
 ///         Notifications =
 ///         {
 ///             { "Actual_LessThan_99_Percent", new AzureNative.CostManagement.Inputs.NotificationArgs
@@ -3090,7 +3128,7 @@ import 'notification_response.dart';
 ///                 Frequency = AzureNative.CostManagement.Frequency.Daily,
 ///                 Locale = AzureNative.CostManagement.CultureCode.En_us,
 ///                 Operator = AzureNative.CostManagement.BudgetNotificationOperatorType.LessThan,
-///                 Threshold = 99,
+///                 Threshold = 99.0,
 ///             } },
 ///         },
 ///         Scope = "providers/Microsoft.Billing/billingAccounts/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee:ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj_2023-04-01/customers/000000-1111-2222-3333-444444444444",
@@ -3152,7 +3190,7 @@ import 'notification_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3161,6 +3199,9 @@ import 'notification_response.dart';
 /// }
 ///
 /// resource "azure-native_costmanagement_budget" "budget" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   budget_name = "TestAlertRule"
 ///   category    = "ReservationUtilization"
 ///   e_tag       = "\"1d34d016a593709\""
@@ -3194,6 +3235,7 @@ import 'notification_response.dart';
 /// import com.pulumi.azurenative.costmanagement.Budget;
 /// import com.pulumi.azurenative.costmanagement.BudgetArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetFilterArgs;
+/// import com.pulumi.azurenative.costmanagement.inputs.NotificationArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.BudgetTimePeriodArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;

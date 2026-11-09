@@ -67,7 +67,7 @@ import 'volume_snapshot_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -75,7 +75,10 @@ import 'volume_snapshot_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_elasticsan_volumesnapshot" "volumeSnapshot" {
+/// resource "azure-native_elasticsan_volume_snapshot" "volumeSnapshot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     source_id = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}"
 ///   }
@@ -226,7 +229,7 @@ import 'volume_snapshot_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -234,7 +237,10 @@ import 'volume_snapshot_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_elasticsan_volumesnapshot" "volumeSnapshot" {
+/// resource "azure-native_elasticsan_volume_snapshot" "volumeSnapshot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     source_id = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}"
 ///   }

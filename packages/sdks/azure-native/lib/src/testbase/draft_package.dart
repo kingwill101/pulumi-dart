@@ -74,7 +74,7 @@ import 'test_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -82,7 +82,10 @@ import 'test_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_testbase_draftpackage" "draftPackage" {
+/// resource "azure-native_testbase_draft_package" "draftPackage" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_file_name          = "TestBaseM365DigitalClock.msi"
 ///   application_name       = "contoso-package"
 ///   draft_package_name     = "61d99543-14ff-47ae-bf03-8a8b8445502e"

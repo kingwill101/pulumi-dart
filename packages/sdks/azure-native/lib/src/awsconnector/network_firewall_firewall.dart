@@ -145,7 +145,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -153,7 +153,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_networkfirewallfirewall" "networkFirewallFirewall" {
+/// resource "azure-native_awsconnector_network_firewall_firewall" "networkFirewallFirewall" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "shwlgihd"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -170,12 +173,12 @@ import 'system_data_response.dart';
 ///       firewall_policy_change_protection = true
 ///       subnet_change_protection          = true
 ///       subnet_mappings = [{
-///         "ipAddressType" = "gkcalzfxwkomabldynmunz"
-///         "subnetId"      = "kmo"
+///         ip_address_type = "gkcalzfxwkomabldynmunz"
+///         subnet_id       = "kmo"
 ///       }]
 ///       tags = [{
-///         "key"   = "kasiukxlhrjduzsis"
-///         "value" = "fnavszvtxyetugcmqvandzxjawuq"
+///         key   = "kasiukxlhrjduzsis"
+///         value = "fnavszvtxyetugcmqvandzxjawuq"
 ///       }]
 ///       vpc_id = "cxrvqz"
 ///     }
@@ -205,6 +208,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.NetworkFirewallFirewallArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.NetworkFirewallFirewallPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsNetworkFirewallFirewallPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.SubnetMappingArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

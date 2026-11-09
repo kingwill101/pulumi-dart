@@ -108,7 +108,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -116,15 +116,18 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cdn_securitypolicy" "securityPolicy" {
+/// resource "azure-native_cdn_security_policy" "securityPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameters = {
 ///     associations = [{
-///       "domains" = [{
-///         "id" = "/subscriptions/subid/resourcegroups/RG/providers/Microsoft.Cdn/profiles/profile1/customdomains/testdomain1"
+///       domains = [{
+///         id = "/subscriptions/subid/resourcegroups/RG/providers/Microsoft.Cdn/profiles/profile1/customdomains/testdomain1"
 ///         }, {
-///         "id" = "/subscriptions/subid/resourcegroups/RG/providers/Microsoft.Cdn/profiles/profile1/customdomains/testdomain2"
+///         id = "/subscriptions/subid/resourcegroups/RG/providers/Microsoft.Cdn/profiles/profile1/customdomains/testdomain2"
 ///       }]
-///       "patternsToMatch" = ["/*"]
+///       patterns_to_match = ["/*"]
 ///     }]
 ///     type = "WebApplicationFirewall"
 ///     waf_policy = {
@@ -147,6 +150,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cdn.SecurityPolicy;
 /// import com.pulumi.azurenative.cdn.SecurityPolicyArgs;
 /// import com.pulumi.azurenative.cdn.inputs.SecurityPolicyWebApplicationFirewallParametersArgs;
+/// import com.pulumi.azurenative.cdn.inputs.SecurityPolicyWebApplicationFirewallAssociationArgs;
+/// import com.pulumi.azurenative.cdn.inputs.ActivatedResourceReferenceArgs;
 /// import com.pulumi.azurenative.cdn.inputs.ResourceReferenceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -173,7 +178,6 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                     .patternsToMatch("/*")
 ///                     .build())
-///                 .type("WebApplicationFirewall")
 ///                 .wafPolicy(ResourceReferenceArgs.builder()
 ///                     .id("/subscriptions/subid/resourcegroups/RG/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/wafTest")
 ///                     .build())

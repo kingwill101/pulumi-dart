@@ -252,7 +252,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -260,7 +260,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_cloudtrailtrail" "cloudTrailTrail" {
+/// resource "azure-native_awsconnector_cloud_trail_trail" "cloudTrailTrail" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "lectoohspiqh"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -268,33 +271,33 @@ import 'system_data_response.dart';
 ///     aws_account_id = "mynelopf"
 ///     aws_properties = {
 ///       advanced_event_selectors = [{
-///         "fieldSelectors" = [{
-///           "endsWith"      = ["xvhm"]
-///           "equals"        = ["wxznrgvwsjlxdvssmmse"]
-///           "field"         = "mq"
-///           "notEndsWith"   = ["x"]
-///           "notEquals"     = ["vglmmoivfeqg"]
-///           "notStartsWith" = ["pojptcfcw"]
-///           "startsWith"    = ["fvldfltesnmpieljtehsvxudvxdujk"]
+///         field_selectors = [{
+///           ends_with       = ["xvhm"]
+///           equals          = ["wxznrgvwsjlxdvssmmse"]
+///           field           = "mq"
+///           not_ends_with   = ["x"]
+///           not_equals      = ["vglmmoivfeqg"]
+///           not_starts_with = ["pojptcfcw"]
+///           starts_with     = ["fvldfltesnmpieljtehsvxudvxdujk"]
 ///         }]
-///         "name" = "ee"
+///         name = "ee"
 ///       }]
 ///       arn                            = "gbcn"
 ///       cloud_watch_logs_log_group_arn = "nznfnuyxarmdmdtgjiougqgq"
 ///       cloud_watch_logs_role_arn      = "umhmpx"
 ///       enable_log_file_validation     = true
 ///       event_selectors = [{
-///         "dataResources" = [{
-///           "type"   = "txxrjncwohiohorurqdxzabre"
-///           "values" = ["xhlnkujkbtpptbwchhh"]
+///         data_resources = [{
+///           type   = "txxrjncwohiohorurqdxzabre"
+///           values = ["xhlnkujkbtpptbwchhh"]
 ///         }]
-///         "excludeManagementEventSources" = ["r"]
-///         "includeManagementEvents"       = true
-///         "readWriteType"                 = "All"
+///         exclude_management_event_sources = ["r"]
+///         include_management_events        = true
+///         read_write_type                  = "All"
 ///       }]
 ///       include_global_service_events = true
 ///       insight_selectors = [{
-///         "insightType" = "brwlpasadlbwolsysta"
+///         insight_type = "brwlpasadlbwolsysta"
 ///       }]
 ///       is_logging            = true
 ///       is_multi_region_trail = true
@@ -305,8 +308,8 @@ import 'system_data_response.dart';
 ///       sns_topic_arn         = "owdxqmsrqylekull"
 ///       sns_topic_name        = "goknthoxfekdccclolilvnyacvcop"
 ///       tags = [{
-///         "key"   = "sytikpggzq"
-///         "value" = "vnsgm"
+///         key   = "sytikpggzq"
+///         value = "vnsgm"
 ///       }]
 ///       trail_name = "oawneexezdnuouxdykllsflq"
 ///     }
@@ -336,6 +339,12 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.CloudTrailTrailArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CloudTrailTrailPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsCloudTrailTrailPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.AdvancedEventSelectorArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.AdvancedFieldSelectorArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.EventSelectorArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.DataResourceArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.InsightSelectorArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

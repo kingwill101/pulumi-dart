@@ -57,7 +57,7 @@ import 'subscription_list_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'subscription_list_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_elastic_monitoredsubscription" "monitoredSubscription" {
+/// resource "azure-native_elastic_monitored_subscription" "monitoredSubscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_name  = "default"
 ///   monitor_name        = "myMonitor"
 ///   resource_group_name = "myResourceGroup"

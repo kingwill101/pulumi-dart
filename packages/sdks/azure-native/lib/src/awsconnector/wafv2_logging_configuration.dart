@@ -165,7 +165,7 @@ import 'wafv2_logging_configuration_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -173,7 +173,10 @@ import 'wafv2_logging_configuration_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_wafv2loggingconfiguration" "wafv2LoggingConfiguration" {
+/// resource "azure-native_awsconnector_wafv2_logging_configuration" "wafv2LoggingConfiguration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "miqjaa"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -184,22 +187,22 @@ import 'wafv2_logging_configuration_properties_response.dart';
 ///       logging_filter = {
 ///         default_behavior = "DROP"
 ///         filters = [{
-///           "behavior" = "DROP"
-///           "conditions" = [{
-///             "actionCondition" = {
-///               "action" = "ALLOW"
+///           behavior = "DROP"
+///           conditions = [{
+///             action_condition = {
+///               action = "ALLOW"
 ///             }
-///             "labelNameCondition" = {
-///               "labelName" = "oypkvstyighnjavknhfon"
+///             label_name_condition = {
+///               label_name = "oypkvstyighnjavknhfon"
 ///             }
 ///           }]
-///           "requirement" = "MEETS_ALL"
+///           requirement = "MEETS_ALL"
 ///         }]
 ///       }
 ///       managed_by_firewall_manager = true
 ///       redacted_fields = [{
-///         "singleHeader" = {
-///           "name" = "bfqodp"
+///         single_header = {
+///           name = "bfqodp"
 ///         }
 ///       }]
 ///       resource_arn = "bnozeamipjgc"
@@ -231,6 +234,12 @@ import 'wafv2_logging_configuration_properties_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.Wafv2LoggingConfigurationPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsWafv2LoggingConfigurationPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LoggingFilterModelPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.FilterArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ConditionArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ActionConditionModelPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.LabelNameConditionModelPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.FieldToMatchArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.SingleHeaderModelPropertiesArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

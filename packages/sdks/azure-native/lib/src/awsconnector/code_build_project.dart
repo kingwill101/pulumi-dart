@@ -81,7 +81,7 @@ import 'system_data_response.dart';
 ///                 Cache = new AzureNative.AwsConnector.Inputs.ProjectCacheArgs
 ///                 {
 ///                     Location = "wgmqyjzlxsazecszvdkfr",
-///                     Modes = new[]
+///                     Modes =
 ///                     {
 ///                         AzureNative.AwsConnector.CacheMode.LOCAL_CUSTOM_CACHE,
 ///                     },
@@ -635,7 +635,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -643,7 +643,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_codebuildproject" "codeBuildProject" {
+/// resource "azure-native_awsconnector_code_build_project" "codeBuildProject" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "fpjpnhlms"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -704,11 +707,11 @@ import 'system_data_response.dart';
 ///           value = "BUILD_GENERAL1_2XLARGE"
 ///         }
 ///         environment_variables = [{
-///           "name" = "bmzlnmjzuxrxeemxfutykrlvemt"
-///           "type" = {
-///             "value" = "PARAMETER_STORE"
+///           name = "bmzlnmjzuxrxeemxfutykrlvemt"
+///           type = {
+///             value = "PARAMETER_STORE"
 ///           }
-///           "value" = "eakfsmirkkwnizotyqqgmgjthn"
+///           value = "eakfsmirkkwnizotyqqgmgjthn"
 ///         }]
 ///         fleet = {
 ///           fleet_arn = "brslcsjgupcpeistg"
@@ -729,12 +732,12 @@ import 'system_data_response.dart';
 ///         }
 ///       }
 ///       file_system_locations = [{
-///         "identifier"   = "tdquc"
-///         "location"     = "yeaotrzuhjtdtbfrlpvmlmaoqyioin"
-///         "mountOptions" = "tocdlorjekugjotphpxuyebjj"
-///         "mountPoint"   = "fctmorvlmplsmeqvmavw"
-///         "type" = {
-///           "value" = "EFS"
+///         identifier    = "tdquc"
+///         location      = "yeaotrzuhjtdtbfrlpvmlmaoqyioin"
+///         mount_options = "tocdlorjekugjotphpxuyebjj"
+///         mount_point   = "fctmorvlmplsmeqvmavw"
+///         type = {
+///           value = "EFS"
 ///         }
 ///       }]
 ///       last_modified = "2024-10-08T03:48:48.571Z"
@@ -765,51 +768,51 @@ import 'system_data_response.dart';
 ///       queued_timeout_in_minutes = 30
 ///       resource_access_role      = "st"
 ///       secondary_artifacts = [{
-///         "artifactIdentifier" = "hcfdqzwleorpe"
-///         "bucketOwnerAccess" = {
-///           "value" = "FULL"
+///         artifact_identifier = "hcfdqzwleorpe"
+///         bucket_owner_access = {
+///           value = "FULL"
 ///         }
-///         "encryptionDisabled" = true
-///         "location"           = "zvhsfl"
-///         "name"               = "dsqyinskfvabyktgjbszny"
-///         "namespaceType" = {
-///           "value" = "BUILD_ID"
+///         encryption_disabled = true
+///         location            = "zvhsfl"
+///         name                = "dsqyinskfvabyktgjbszny"
+///         namespace_type = {
+///           value = "BUILD_ID"
 ///         }
-///         "overrideArtifactName" = true
-///         "packaging" = {
-///           "value" = "NONE"
+///         override_artifact_name = true
+///         packaging = {
+///           value = "NONE"
 ///         }
-///         "path" = "zbsfhzkoet"
-///         "type" = {
-///           "value" = "CODEPIPELINE"
+///         path = "zbsfhzkoet"
+///         type = {
+///           value = "CODEPIPELINE"
 ///         }
 ///       }]
 ///       secondary_source_versions = [{
-///         "sourceIdentifier" = "kiyezlaophakaslamcsxpkzggoj"
-///         "sourceVersion"    = "zy"
+///         source_identifier = "kiyezlaophakaslamcsxpkzggoj"
+///         source_version    = "zy"
 ///       }]
 ///       secondary_sources = [{
-///         "auth" = {
-///           "resource" = "oyfwquyzyjklbxlyjyddpmhmjgsgk"
-///           "type" = {
-///             "value" = "CODECONNECTIONS"
+///         auth = {
+///           resource = "oyfwquyzyjklbxlyjyddpmhmjgsgk"
+///           type = {
+///             value = "CODECONNECTIONS"
 ///           }
 ///         }
-///         "buildStatusConfig" = {
-///           "context"   = "zoghbponrxfhugrjzdheibkada"
-///           "targetUrl" = "ooonrchy"
+///         build_status_config = {
+///           context    = "zoghbponrxfhugrjzdheibkada"
+///           target_url = "ooonrchy"
 ///         }
-///         "buildspec"     = "xxcoigvstisdhlfkfiblrgqhbtoqd"
-///         "gitCloneDepth" = 9
-///         "gitSubmodulesConfig" = {
-///           "fetchSubmodules" = true
+///         buildspec       = "xxcoigvstisdhlfkfiblrgqhbtoqd"
+///         git_clone_depth = 9
+///         git_submodules_config = {
+///           fetch_submodules = true
 ///         }
-///         "insecureSsl"       = true
-///         "location"          = "owijjqkiwwegfcrynqcypho"
-///         "reportBuildStatus" = true
-///         "sourceIdentifier"  = "lnhelescdeif"
-///         "type" = {
-///           "value" = "BITBUCKET"
+///         insecure_ssl        = true
+///         location            = "owijjqkiwwegfcrynqcypho"
+///         report_build_status = true
+///         source_identifier   = "lnhelescdeif"
+///         type = {
+///           value = "BITBUCKET"
 ///         }
 ///       }]
 ///       service_role = "pydzdifzkz"
@@ -839,8 +842,8 @@ import 'system_data_response.dart';
 ///       }
 ///       source_version = "idpngofzedxghp"
 ///       tags = [{
-///         "key"   = "jcnahvslmrynzn"
-///         "value" = "iqwximmqwgsjlwdgv"
+///         key   = "jcnahvslmrynzn"
+///         value = "iqwximmqwgsjlwdgv"
 ///       }]
 ///       timeout_in_minutes = 7
 ///       vpc_config = {
@@ -854,11 +857,11 @@ import 'system_data_response.dart';
 ///           value = "BUILD"
 ///         }
 ///         filter_groups = [{
-///           "webhookFilter" = {
-///             "excludeMatchedPattern" = true
-///             "pattern"               = "ozqghxeblvksllu"
-///             "type" = {
-///               "value" = "ACTOR_ACCOUNT_ID"
+///           webhook_filter = {
+///             exclude_matched_pattern = true
+///             pattern                 = "ozqghxeblvksllu"
+///             type = {
+///               value = "ACTOR_ACCOUNT_ID"
 ///             }
 ///           }
 ///         }]
@@ -907,25 +910,34 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.CacheTypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ProjectEnvironmentArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ComputeTypeEnumValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.EnvironmentVariableArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.EnvironmentVariableTypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ProjectFleetArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ImagePullCredentialsTypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RegistryCredentialArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CredentialProviderTypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.EnvironmentTypeEnumValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ProjectFileSystemLocationArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.FileSystemTypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LogsConfigArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CloudWatchLogsConfigArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LogsConfigStatusTypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.S3LogsConfigArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ProjectVisibilityTypeEnumValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.ProjectSourceVersionArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ProjectSourceArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.SourceAuthArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.SourceAuthTypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.BuildStatusConfigArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.GitSubmodulesConfigArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.SourceTypeEnumValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.VpcConfigArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.WebhookArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.WebhookBuildTypeEnumValueArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.FilterGroupArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.WebhookFilterArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.WebhookFilterTypeEnumValueArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

@@ -63,7 +63,7 @@ import 'web_pub_sub_custom_certificate_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -71,7 +71,10 @@ import 'web_pub_sub_custom_certificate_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_webpubsub_webpubsubcustomcertificate" "webPubSubCustomCertificate" {
+/// resource "azure-native_webpubsub_web_pub_sub_custom_certificate" "webPubSubCustomCertificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_name         = "myCert"
 ///   key_vault_base_uri       = "https://myvault.keyvault.azure.net/"
 ///   key_vault_secret_name    = "mycert"

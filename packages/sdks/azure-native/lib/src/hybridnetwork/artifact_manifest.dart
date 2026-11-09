@@ -94,7 +94,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -102,19 +102,22 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridnetwork_artifactmanifest" "artifactManifest" {
+/// resource "azure-native_hybridnetwork_artifact_manifest" "artifactManifest" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   artifact_manifest_name = "TestManifest"
 ///   artifact_store_name    = "TestArtifactStore"
 ///   location               = "eastus"
 ///   properties = {
 ///     artifacts = [{
-///       "artifactName"    = "fed-rbac"
-///       "artifactType"    = "OCIArtifact"
-///       "artifactVersion" = "1.0.0"
+///       artifact_name    = "fed-rbac"
+///       artifact_type    = "OCIArtifact"
+///       artifact_version = "1.0.0"
 ///       }, {
-///       "artifactName"    = "nginx"
-///       "artifactType"    = "OCIArtifact"
-///       "artifactVersion" = "v1"
+///       artifact_name    = "nginx"
+///       artifact_type    = "OCIArtifact"
+///       artifact_version = "v1"
 ///     }]
 ///   }
 ///   publisher_name      = "TestPublisher"
@@ -132,6 +135,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hybridnetwork.ArtifactManifest;
 /// import com.pulumi.azurenative.hybridnetwork.ArtifactManifestArgs;
 /// import com.pulumi.azurenative.hybridnetwork.inputs.ArtifactManifestPropertiesFormatArgs;
+/// import com.pulumi.azurenative.hybridnetwork.inputs.ManifestArtifactFormatArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

@@ -64,7 +64,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,6 +73,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_chaos_capability" "capability" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   capability_name           = "Shutdown-1.0"
 ///   parent_provider_namespace = "Microsoft.Compute"
 ///   parent_resource_name      = "exampleVM"

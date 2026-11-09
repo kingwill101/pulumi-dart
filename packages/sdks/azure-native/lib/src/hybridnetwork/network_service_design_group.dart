@@ -60,7 +60,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_hybridnetwork_networkservicedesigngroup" "networkServiceDesignGroup" {
+/// resource "azure-native_hybridnetwork_network_service_design_group" "networkServiceDesignGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                          = "eastus"
 ///   network_service_design_group_name = "TestNetworkServiceDesignGroupName"
 ///   publisher_name                    = "TestPublisher"

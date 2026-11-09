@@ -178,7 +178,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -187,6 +187,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_storagecache_cache" "cache" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cache_name    = "sc1"
 ///   cache_size_gb = 3072
 ///   directory_services_settings = {
@@ -213,14 +216,14 @@ import 'system_data_response.dart';
 ///   resource_group_name = "scgroup"
 ///   security_settings = {
 ///     access_policies = [{
-///       "accessRules" = [{
-///         "access"         = "rw"
-///         "rootSquash"     = false
-///         "scope"          = "default"
-///         "submountAccess" = true
-///         "suid"           = false
+///       access_rules = [{
+///         access          = "rw"
+///         root_squash     = false
+///         scope           = "default"
+///         submount_access = true
+///         suid            = false
 ///       }]
-///       "name" = "default"
+///       name = "default"
 ///     }]
 ///   }
 ///   sku = {
@@ -253,6 +256,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.storagecache.inputs.KeyVaultKeyReferenceArgs;
 /// import com.pulumi.azurenative.storagecache.inputs.KeyVaultKeyReferenceSourceVaultArgs;
 /// import com.pulumi.azurenative.storagecache.inputs.CacheSecuritySettingsArgs;
+/// import com.pulumi.azurenative.storagecache.inputs.NfsAccessPolicyArgs;
+/// import com.pulumi.azurenative.storagecache.inputs.NfsAccessRuleArgs;
 /// import com.pulumi.azurenative.storagecache.inputs.CacheSkuArgs;
 /// import com.pulumi.azurenative.storagecache.inputs.CacheUpgradeSettingsArgs;
 /// import java.util.ArrayList;

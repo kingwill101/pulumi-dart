@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managednetworkfabric_networkinterface" "networkInterface" {
+/// resource "azure-native_managednetworkfabric_network_interface" "networkInterface" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   annotation             = "annotation"
 ///   network_device_name    = "example-device"
 ///   network_interface_name = "example-interface"

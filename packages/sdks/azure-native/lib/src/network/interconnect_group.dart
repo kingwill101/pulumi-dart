@@ -69,7 +69,7 @@ import 'subgroup_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,7 +77,10 @@ import 'subgroup_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_interconnectgroup" "interconnectGroup" {
+/// resource "azure-native_network_interconnect_group" "interconnectGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   interconnect_group_name = "test-ig"
 ///   location                = "eastus"
 ///   resource_group_name     = "rg1"

@@ -100,7 +100,7 @@ import 'system_metadata_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -108,7 +108,10 @@ import 'system_metadata_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storagepool_diskpool" "diskPool" {
+/// resource "azure-native_storagepool_disk_pool" "diskPool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_zones = ["1"]
 ///   disk_pool_name     = "myDiskPool"
 ///   disks {

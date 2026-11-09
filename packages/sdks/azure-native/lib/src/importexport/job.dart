@@ -116,7 +116,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -125,6 +125,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_importexport_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   job_name = "myExportJob"
 ///   location = "West US"
 ///   properties = {
@@ -439,7 +442,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -448,17 +451,20 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_importexport_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   job_name = "myJob"
 ///   location = "West US"
 ///   properties = {
 ///     backup_drive_manifest = true
 ///     diagnostics_path      = "waimportexport"
 ///     drive_list = [{
-///       "bitLockerKey"    = "238810-662376-448998-450120-652806-203390-606320-483076"
-///       "driveHeaderHash" = "0:1048576:FB6B6ED500D49DA6E0D723C98D42C657F2881CC13357C28DCECA6A524F1292501571A321238540E621AB5BD9C9A32637615919A75593E6CB5C1515DAE341CABF;135266304:143360:C957A189AFC38C4E80731252301EB91427CE55E61448FA3C73C6FDDE70ABBC197947EC8D0249A2C639BB10B95957D5820A4BE8DFBBF76FFFA688AE5CE0D42EC3"
-///       "driveId"         = "9CA995BB"
-///       "manifestFile"    = "\\8a0c23f7-14b7-470a-9633-fcd46590a1bc.manifest"
-///       "manifestHash"    = "4228EC5D8E048CB9B515338C789314BE8D0B2FDBC7C7A0308E1C826242CDE74E"
+///       bit_locker_key    = "238810-662376-448998-450120-652806-203390-606320-483076"
+///       drive_header_hash = "0:1048576:FB6B6ED500D49DA6E0D723C98D42C657F2881CC13357C28DCECA6A524F1292501571A321238540E621AB5BD9C9A32637615919A75593E6CB5C1515DAE341CABF;135266304:143360:C957A189AFC38C4E80731252301EB91427CE55E61448FA3C73C6FDDE70ABBC197947EC8D0249A2C639BB10B95957D5820A4BE8DFBBF76FFFA688AE5CE0D42EC3"
+///       drive_id          = "9CA995BB"
+///       manifest_file     = "\\8a0c23f7-14b7-470a-9633-fcd46590a1bc.manifest"
+///       manifest_hash     = "4228EC5D8E048CB9B515338C789314BE8D0B2FDBC7C7A0308E1C826242CDE74E"
 ///     }]
 ///     job_type  = "Import"
 ///     log_level = "Verbose"
@@ -493,6 +499,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.importexport.Job;
 /// import com.pulumi.azurenative.importexport.JobArgs;
 /// import com.pulumi.azurenative.importexport.inputs.JobDetailsArgs;
+/// import com.pulumi.azurenative.importexport.inputs.DriveStatusArgs;
 /// import com.pulumi.azurenative.importexport.inputs.ReturnAddressArgs;
 /// import com.pulumi.azurenative.importexport.inputs.ReturnShippingArgs;
 /// import java.util.ArrayList;

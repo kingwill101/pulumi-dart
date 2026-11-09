@@ -56,11 +56,11 @@ import 'system_data_response.dart';
 ///                 {
 ///                     15,
 ///                 },
-///                 RequestedMonths = new[]
+///                 RequestedMonths =
 ///                 {
 ///                     AzureNative.ComputeSchedule.Month.January,
 ///                 },
-///                 RequestedWeekDays = new[]
+///                 RequestedWeekDays =
 ///                 {
 ///                     AzureNative.ComputeSchedule.WeekDay.Monday,
 ///                 },
@@ -146,7 +146,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -154,17 +154,20 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_computeschedule_scheduledaction" "scheduledAction" {
+/// resource "azure-native_computeschedule_scheduled_action" "scheduledAction" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "vmuhgdgipeypkcv"
 ///   properties = {
 ///     action_type = "Start"
 ///     disabled    = true
 ///     end_time    = "2025-04-17T00:23:55.286Z"
 ///     notification_settings = [{
-///       "destination" = "wbhryycyolvnypjxzlawwvb"
-///       "disabled"    = true
-///       "language"    = "en-us"
-///       "type"        = "Email"
+///       destination = "wbhryycyolvnypjxzlawwvb"
+///       disabled    = true
+///       language    = "en-us"
+///       type        = "Email"
 ///     }]
 ///     resource_type = "VirtualMachine"
 ///     schedule = {
@@ -202,6 +205,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.computeschedule.ScheduledAction;
 /// import com.pulumi.azurenative.computeschedule.ScheduledActionArgs;
 /// import com.pulumi.azurenative.computeschedule.inputs.ScheduledActionPropertiesArgs;
+/// import com.pulumi.azurenative.computeschedule.inputs.NotificationPropertiesArgs;
 /// import com.pulumi.azurenative.computeschedule.inputs.ScheduledActionsScheduleArgs;
 /// import com.pulumi.azurenative.computeschedule.inputs.ExecutionParametersArgs;
 /// import com.pulumi.azurenative.computeschedule.inputs.RetryPolicyArgs;

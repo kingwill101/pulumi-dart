@@ -57,7 +57,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -65,7 +65,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_operationalinsights_querypack" "queryPack" {
+/// resource "azure-native_operationalinsights_query_pack" "queryPack" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "South Central US"
 ///   query_pack_name     = "my-querypack"
 ///   resource_group_name = "my-resource-group"
@@ -194,7 +197,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -202,7 +205,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_operationalinsights_querypack" "queryPack" {
+/// resource "azure-native_operationalinsights_query_pack" "queryPack" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "South Central US"
 ///   query_pack_name     = "my-querypack"
 ///   resource_group_name = "my-resource-group"

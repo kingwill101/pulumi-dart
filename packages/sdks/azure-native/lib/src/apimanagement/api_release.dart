@@ -60,7 +60,7 @@ import 'api_release_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -68,7 +68,10 @@ import 'api_release_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_apirelease" "apiRelease" {
+/// resource "azure-native_apimanagement_api_release" "apiRelease" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/a1"
 ///   notes               = "yahooagain"
 ///   release_id          = "testrev"

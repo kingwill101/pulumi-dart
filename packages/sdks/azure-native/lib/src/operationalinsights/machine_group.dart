@@ -24,7 +24,7 @@ import 'machine_reference_with_hints_response.dart';
 ///         DisplayName = "Foo",
 ///         Kind = "machineGroup",
 ///         MachineGroupName = "ccfbf4bf-dc08-4371-9e9b-00a8d875d45a",
-///         Machines = new[]
+///         Machines =
 ///         {
 ///             new AzureNative.OperationalInsights.Inputs.MachineReferenceWithHintsArgs
 ///             {
@@ -75,7 +75,7 @@ import 'machine_reference_with_hints_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,8 +83,13 @@ import 'machine_reference_with_hints_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_operationalinsights_machinegroup" "machineGroup" {
-///   count              = 1
+/// resource "azure-native_operationalinsights_machine_group" "machineGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   _ {
+///     count = 1
+///   }
 ///   display_name       = "Foo"
 ///   kind               = "machineGroup"
 ///   machine_group_name = "ccfbf4bf-dc08-4371-9e9b-00a8d875d45a"
@@ -123,11 +128,9 @@ import 'machine_reference_with_hints_response.dart';
 ///         var machineGroup = new MachineGroup("machineGroup", MachineGroupArgs.builder()
 ///             .count(1)
 ///             .displayName("Foo")
-///             .kind("machineGroup")
 ///             .machineGroupName("ccfbf4bf-dc08-4371-9e9b-00a8d875d45a")
 ///             .machines(MachineReferenceWithHintsArgs.builder()
 ///                 .id("/subscriptions/63BE4E24-FDF0-4E9C-9342-6A5D5A359722/resourceGroups/rg-sm/providers/Microsoft.OperationalInsights/workspaces/D6F79F14-E563-469B-84B5-9286D2803B2F/machines/m-0fe4b501-7ac9-41d7-a4e1-1591a0789519")
-///                 .kind("ref:machinewithhints")
 ///                 .build())
 ///             .resourceGroupName("rg-sm")
 ///             .workspaceName("D6F79F14-E563-469B-84B5-9286D2803B2F")

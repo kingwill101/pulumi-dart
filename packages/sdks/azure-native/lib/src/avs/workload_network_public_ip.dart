@@ -23,7 +23,7 @@ import 'workload_network_public_ipargs.dart';
 ///     var workloadNetworkPublicIP = new AzureNative.AVS.WorkloadNetworkPublicIP("workloadNetworkPublicIP", new()
 ///     {
 ///         DisplayName = "publicIP1",
-///         NumberOfPublicIPs = 32,
+///         NumberOfPublicIPs = 32.0,
 ///         PrivateCloudName = "cloud1",
 ///         PublicIPId = "publicIP1",
 ///         ResourceGroupName = "group1",
@@ -61,7 +61,7 @@ import 'workload_network_public_ipargs.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'workload_network_public_ipargs.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_avs_workloadnetworkpublicip" "workloadNetworkPublicIP" {
+/// resource "azure-native_avs_workload_network_public_i_p" "workloadNetworkPublicIP" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "publicIP1"
 ///   number_of_public_i_ps = 32
 ///   private_cloud_name    = "cloud1"

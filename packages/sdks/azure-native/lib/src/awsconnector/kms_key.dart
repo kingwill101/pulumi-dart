@@ -132,7 +132,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -140,7 +140,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_kmskey" "kmsKey" {
+/// resource "azure-native_awsconnector_kms_key" "kmsKey" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "qozbasr"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -161,8 +164,8 @@ import 'system_data_response.dart';
 ///       pending_window_in_days             = 7
 ///       rotation_period_in_days            = 4
 ///       tags = [{
-///         "key"   = "eprsfobey"
-///         "value" = "lcaeaqxughlzgzhbbi"
+///         key   = "eprsfobey"
+///         value = "lcaeaqxughlzgzhbbi"
 ///       }]
 ///     }
 ///     aws_region        = "hvyzzutginnqrhgkyyripyqhqkofm"
@@ -191,6 +194,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.KmsKeyArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.KmsKeyPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsKmsKeyPropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

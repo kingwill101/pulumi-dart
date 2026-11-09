@@ -111,7 +111,7 @@ import 'subnet_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -119,7 +119,10 @@ import 'subnet_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_privateendpoint" "privateEndpoint" {
+/// resource "azure-native_network_private_endpoint" "privateEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   custom_network_interface_name = "testPeNic"
 ///   ip_configurations {
 ///     group_id           = "file"
@@ -357,7 +360,7 @@ import 'subnet_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -365,7 +368,10 @@ import 'subnet_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_privateendpoint" "privateEndpoint" {
+/// resource "azure-native_network_private_endpoint" "privateEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_security_groups {
 ///     id = "/subscriptions/subId/resourceGroups/rg1/provders/Microsoft.Network/applicationSecurityGroup/asg1"
 ///   }
@@ -591,7 +597,7 @@ import 'subnet_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -599,7 +605,10 @@ import 'subnet_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_privateendpoint" "privateEndpoint" {
+/// resource "azure-native_network_private_endpoint" "privateEndpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   custom_network_interface_name = "testPeNic"
 ///   ip_configurations {
 ///     group_id           = "file"

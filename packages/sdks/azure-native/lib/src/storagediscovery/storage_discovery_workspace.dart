@@ -32,7 +32,7 @@ import 'system_data_response.dart';
 ///                 new AzureNative.StorageDiscovery.Inputs.StorageDiscoveryScopeArgs
 ///                 {
 ///                     DisplayName = "Sample-Collection",
-///                     ResourceTypes = new[]
+///                     ResourceTypes =
 ///                     {
 ///                         "/subscriptions/b79cb3ba-745e-5d9a-8903-4a02327a7e09/resourceGroups/sample-rg/providers/Microsoft.Storage/storageAccounts/sample-storageAccount",
 ///                     },
@@ -50,7 +50,7 @@ import 'system_data_response.dart';
 ///                 new AzureNative.StorageDiscovery.Inputs.StorageDiscoveryScopeArgs
 ///                 {
 ///                     DisplayName = "Sample-Collection-2",
-///                     ResourceTypes = new[]
+///                     ResourceTypes =
 ///                     {
 ///                         "/subscriptions/b79cb3ba-745e-5d9a-8903-4a02327a7e09/resourceGroups/sample-rg/providers/Microsoft.Storage/storageAccounts/sample-storageAccount",
 ///                     },
@@ -146,7 +146,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -154,23 +154,26 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_storagediscovery_storagediscoveryworkspace" "storageDiscoveryWorkspace" {
+/// resource "azure-native_storagediscovery_storage_discovery_workspace" "storageDiscoveryWorkspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "westeurope"
 ///   properties = {
 ///     description = "Sample Storage Discovery Workspace"
 ///     scopes = [{
-///       "displayName"   = "Sample-Collection"
-///       "resourceTypes" = ["/subscriptions/b79cb3ba-745e-5d9a-8903-4a02327a7e09/resourceGroups/sample-rg/providers/Microsoft.Storage/storageAccounts/sample-storageAccount"]
-///       "tagKeysOnly"   = ["filterTag1", "filterTag2"]
-///       "tags" = {
+///       display_name   = "Sample-Collection"
+///       resource_types = ["/subscriptions/b79cb3ba-745e-5d9a-8903-4a02327a7e09/resourceGroups/sample-rg/providers/Microsoft.Storage/storageAccounts/sample-storageAccount"]
+///       tag_keys_only  = ["filterTag1", "filterTag2"]
+///       tags = {
 ///         "filterTag3" = "value3"
 ///         "filterTag4" = "value4"
 ///       }
 ///       }, {
-///       "displayName"   = "Sample-Collection-2"
-///       "resourceTypes" = ["/subscriptions/b79cb3ba-745e-5d9a-8903-4a02327a7e09/resourceGroups/sample-rg/providers/Microsoft.Storage/storageAccounts/sample-storageAccount"]
-///       "tagKeysOnly"   = ["filterTag5"]
-///       "tags" = {
+///       display_name   = "Sample-Collection-2"
+///       resource_types = ["/subscriptions/b79cb3ba-745e-5d9a-8903-4a02327a7e09/resourceGroups/sample-rg/providers/Microsoft.Storage/storageAccounts/sample-storageAccount"]
+///       tag_keys_only  = ["filterTag5"]
+///       tags = {
 ///         "filterTag6" = "value6"
 ///       }
 ///     }]
@@ -195,6 +198,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.storagediscovery.StorageDiscoveryWorkspace;
 /// import com.pulumi.azurenative.storagediscovery.StorageDiscoveryWorkspaceArgs;
 /// import com.pulumi.azurenative.storagediscovery.inputs.StorageDiscoveryWorkspacePropertiesArgs;
+/// import com.pulumi.azurenative.storagediscovery.inputs.StorageDiscoveryScopeArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

@@ -76,7 +76,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -84,7 +84,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_diskencryptionset" "diskEncryptionSet" {
+/// resource "azure-native_compute_disk_encryption_set" "diskEncryptionSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   active_key = {
 ///     key_url = "https://myvaultdifferentsub.vault-int.azure-int.net/keys/{key}"
 ///   }
@@ -264,7 +267,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -272,7 +275,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_compute_diskencryptionset" "diskEncryptionSet" {
+/// resource "azure-native_compute_disk_encryption_set" "diskEncryptionSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   active_key = {
 ///     key_url = "https://myvmvault.vault-int.azure-int.net/keys/{key}"
 ///     source_vault = {

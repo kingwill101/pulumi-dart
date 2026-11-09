@@ -70,7 +70,7 @@ import 'managed_database_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -78,7 +78,10 @@ import 'managed_database_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_manageddatabase" "managedDatabase" {
+/// resource "azure-native_sql_managed_database" "managedDatabase" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auto_complete_restore       = true
 ///   collation                   = "SQL_Latin1_General_CP1_CI_AS"
 ///   create_mode                 = "RestoreExternalBackup"
@@ -249,7 +252,7 @@ import 'managed_database_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -257,7 +260,10 @@ import 'managed_database_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_manageddatabase" "managedDatabase" {
+/// resource "azure-native_sql_managed_database" "managedDatabase" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auto_complete_restore      = true
 ///   collation                  = "SQL_Latin1_General_CP1_CI_AS"
 ///   create_mode                = "RestoreExternalBackup"
@@ -420,7 +426,7 @@ import 'managed_database_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -428,7 +434,10 @@ import 'managed_database_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_manageddatabase" "managedDatabase" {
+/// resource "azure-native_sql_managed_database" "managedDatabase" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_mode             = "Recovery"
 ///   database_name           = "testdb_recovered"
 ///   location                = "southeastasia"
@@ -575,7 +584,7 @@ import 'managed_database_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -583,7 +592,10 @@ import 'managed_database_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_manageddatabase" "managedDatabase" {
+/// resource "azure-native_sql_managed_database" "managedDatabase" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   collation                   = "SQL_Latin1_General_CP1_CI_AS"
 ///   create_mode                 = "RestoreExternalBackup"
 ///   database_name               = "managedDatabase"
@@ -740,7 +752,7 @@ import 'managed_database_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -748,7 +760,10 @@ import 'managed_database_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_manageddatabase" "managedDatabase" {
+/// resource "azure-native_sql_managed_database" "managedDatabase" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_mode                                   = "PointInTimeRestore"
 ///   cross_subscription_source_database_id         = "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/Default-SQL-SouthEastAsia/providers/Microsoft.Sql/managedInstances/testsvr2/databases/testdb"
 ///   cross_subscription_target_managed_instance_id = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default-SQL-SouthEastAsia/providers/Microsoft.Sql/managedInstances/testsvr"
@@ -903,7 +918,7 @@ import 'managed_database_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -911,7 +926,10 @@ import 'managed_database_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_manageddatabase" "managedDatabase" {
+/// resource "azure-native_sql_managed_database" "managedDatabase" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_mode           = "PointInTimeRestore"
 ///   database_name         = "managedDatabase"
 ///   location              = "southeastasia"
@@ -1057,7 +1075,7 @@ import 'managed_database_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1065,7 +1083,10 @@ import 'managed_database_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_manageddatabase" "managedDatabase" {
+/// resource "azure-native_sql_managed_database" "managedDatabase" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name         = "managedDatabase"
 ///   is_ledger_on          = true
 ///   location              = "southeastasia"
@@ -1206,7 +1227,7 @@ import 'managed_database_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1214,7 +1235,10 @@ import 'managed_database_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_manageddatabase" "managedDatabase" {
+/// resource "azure-native_sql_managed_database" "managedDatabase" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name         = "managedDatabase"
 ///   location              = "southeastasia"
 ///   managed_instance_name = "managedInstance"
@@ -1355,7 +1379,7 @@ import 'managed_database_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1363,7 +1387,10 @@ import 'managed_database_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_manageddatabase" "managedDatabase" {
+/// resource "azure-native_sql_managed_database" "managedDatabase" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name         = "managedDatabase"
 ///   location              = "southeastasia"
 ///   managed_instance_name = "managedInstance"

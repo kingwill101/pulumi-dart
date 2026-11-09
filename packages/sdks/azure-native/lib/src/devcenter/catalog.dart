@@ -74,7 +74,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,6 +83,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_devcenter_catalog" "catalog" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ado_git = {
 ///     branch            = "main"
 ///     path              = "/templates"
@@ -254,7 +257,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -263,6 +266,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_devcenter_catalog" "catalog" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   catalog_name    = "CentralCatalog"
 ///   dev_center_name = "Contoso"
 ///   git_hub = {

@@ -92,7 +92,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -101,6 +101,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option = "FromImage"
 ///     image_reference = {
@@ -290,7 +293,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -299,6 +302,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option = "Empty"
 ///   }
@@ -466,7 +472,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -475,6 +481,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option = "Empty"
 ///   }
@@ -640,7 +649,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -649,6 +658,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option      = "Copy"
 ///     source_resource_id = "subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/mySnapshot"
@@ -801,7 +813,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -810,6 +822,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option      = "Import"
 ///     source_uri         = "https://mystorageaccount.blob.core.windows.net/osimages/osimage.vhd"
@@ -965,7 +980,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -974,6 +989,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option = "Import"
 ///     source_uri    = "https://mystorageaccount.blob.core.windows.net/osimages/osimage.vhd"
@@ -1137,7 +1155,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1146,6 +1164,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option      = "ImportSecure"
 ///     security_data_uri  = "https://mystorageaccount.blob.core.windows.net/osimages/vmgs.vhd"
@@ -1335,7 +1356,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1344,6 +1365,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option     = "UploadPreparedSecure"
 ///     upload_size_bytes = 10737418752
@@ -1521,7 +1545,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1530,6 +1554,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option = "FromImage"
 ///     image_reference = {
@@ -1702,7 +1729,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1711,6 +1738,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option = "FromImage"
 ///     gallery_image_reference = {
@@ -1883,7 +1913,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1892,6 +1922,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option = "FromImage"
 ///     gallery_image_reference = {
@@ -2064,7 +2097,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2073,6 +2106,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option = "FromImage"
 ///     gallery_image_reference = {
@@ -2238,7 +2274,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2247,6 +2283,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option      = "Copy"
 ///     source_resource_id = "subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/myDisk1"
@@ -2397,7 +2436,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2406,6 +2445,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option           = "CopyFromSanSnapshot"
 ///     elastic_san_resource_id = "subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.ElasticSan/elasticSans/myElasticSan/volumegroups/myElasticSanVolumeGroup/snapshots/myElasticSanVolumeSnapshot"
@@ -2558,7 +2600,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2567,6 +2609,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option = "Empty"
 ///   }
@@ -2724,7 +2769,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2733,6 +2778,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option = "Empty"
 ///   }
@@ -2888,7 +2936,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -2897,6 +2945,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option    = "Upload"
 ///     performance_plus = true
@@ -3007,8 +3058,8 @@ import 'system_data_response.dart';
 ///         {
 ///             CreateOption = AzureNative.Compute.DiskCreateOption.Empty,
 ///         },
-///         DiskIOPSReadWrite = 125,
-///         DiskMBpsReadWrite = 3000,
+///         DiskIOPSReadWrite = 125.0,
+///         DiskMBpsReadWrite = 3000.0,
 ///         DiskName = "myPremiumV2Disk",
 ///         DiskSizeGB = 200,
 ///         Location = "West US",
@@ -3058,7 +3109,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3067,6 +3118,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option = "Empty"
 ///   }
@@ -3256,7 +3310,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3265,6 +3319,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option = "FromImage"
 ///     image_reference = {
@@ -3452,7 +3509,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3461,6 +3518,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option = "Empty"
 ///   }
@@ -3587,8 +3647,8 @@ import 'system_data_response.dart';
 ///             CreateOption = AzureNative.Compute.DiskCreateOption.Empty,
 ///             LogicalSectorSize = 4096,
 ///         },
-///         DiskIOPSReadWrite = 125,
-///         DiskMBpsReadWrite = 3000,
+///         DiskIOPSReadWrite = 125.0,
+///         DiskMBpsReadWrite = 3000.0,
 ///         DiskName = "myUltraReadOnlyDisk",
 ///         DiskSizeGB = 200,
 ///         Encryption = new AzureNative.Compute.Inputs.EncryptionArgs
@@ -3646,7 +3706,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3655,6 +3715,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option       = "Empty"
 ///     logical_sector_size = 4096
@@ -3850,7 +3913,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3859,6 +3922,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option     = "Upload"
 ///     upload_size_bytes = 10737418752
@@ -4018,7 +4084,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -4027,6 +4093,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option = "Empty"
 ///   }
@@ -4197,7 +4266,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -4206,6 +4275,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option = "Empty"
 ///   }
@@ -4365,7 +4437,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -4374,6 +4446,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_data = {
 ///     create_option       = "Empty"
 ///     logical_sector_size = 512

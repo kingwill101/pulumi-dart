@@ -69,7 +69,7 @@ import 'private_link_service_private_endpoint_connection_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -77,7 +77,10 @@ import 'private_link_service_private_endpoint_connection_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_privatelinkserviceprivateendpointconnection" "privateLinkServicePrivateEndpointConnection" {
+/// resource "azure-native_network_private_link_service_private_endpoint_connection" "privateLinkServicePrivateEndpointConnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "testPlePeConnection"
 ///   pe_connection_name = "testPlePeConnection"
 ///   private_link_service_connection_state = {

@@ -25,7 +25,7 @@ import 'system_data_response.dart';
 ///         AuthorizationRuleName = "sdk-AuthRules-1788",
 ///         NamespaceName = "nh-sdk-ns",
 ///         ResourceGroupName = "5ktrial",
-///         Rights = new[]
+///         Rights =
 ///         {
 ///             AzureNative.NotificationHubs.AccessRights.Listen,
 ///             AzureNative.NotificationHubs.AccessRights.Send,
@@ -66,7 +66,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -74,7 +74,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_notificationhubs_namespaceauthorizationrule" "namespaceAuthorizationRule" {
+/// resource "azure-native_notificationhubs_namespace_authorization_rule" "namespaceAuthorizationRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization_rule_name = "sdk-AuthRules-1788"
 ///   namespace_name          = "nh-sdk-ns"
 ///   resource_group_name     = "5ktrial"

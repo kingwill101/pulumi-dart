@@ -93,7 +93,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -101,7 +101,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_costmanagement_scheduledactionbyscope" "scheduledActionByScope" {
+/// resource "azure-native_costmanagement_scheduled_action_by_scope" "scheduledActionByScope" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Daily anomaly by resource"
 ///   kind         = "InsightAlert"
 ///   name         = "dailyAnomalyByResource"
@@ -261,7 +264,7 @@ import 'system_data_response.dart';
 ///         DisplayName = "Monthly Cost By Resource",
 ///         FileDestination = new AzureNative.CostManagement.Inputs.FileDestinationArgs
 ///         {
-///             FileFormats = new[]
+///             FileFormats =
 ///             {
 ///                 AzureNative.CostManagement.FileFormat.Csv,
 ///             },
@@ -279,7 +282,7 @@ import 'system_data_response.dart';
 ///         },
 ///         Schedule = new AzureNative.CostManagement.Inputs.SchedulePropertiesArgs
 ///         {
-///             DaysOfWeek = new[]
+///             DaysOfWeek =
 ///             {
 ///                 AzureNative.CostManagement.DaysOfWeek.Monday,
 ///             },
@@ -287,7 +290,7 @@ import 'system_data_response.dart';
 ///             Frequency = AzureNative.CostManagement.ScheduleFrequency.Monthly,
 ///             HourOfDay = 10,
 ///             StartDate = "2020-06-19T22:21:51.1287144Z",
-///             WeeksOfMonth = new[]
+///             WeeksOfMonth =
 ///             {
 ///                 AzureNative.CostManagement.WeeksOfMonth.First,
 ///                 AzureNative.CostManagement.WeeksOfMonth.Third,
@@ -356,7 +359,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -364,7 +367,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_costmanagement_scheduledactionbyscope" "scheduledActionByScope" {
+/// resource "azure-native_costmanagement_scheduled_action_by_scope" "scheduledActionByScope" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Monthly Cost By Resource"
 ///   file_destination = {
 ///     file_formats = ["Csv"]

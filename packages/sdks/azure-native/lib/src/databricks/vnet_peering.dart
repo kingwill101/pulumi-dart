@@ -75,7 +75,7 @@ import 'vnet_peering_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,7 +83,10 @@ import 'vnet_peering_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_databricks_vnetpeering" "vNetPeering" {
+/// resource "azure-native_databricks_v_net_peering" "vNetPeering" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allow_forwarded_traffic      = false
 ///   allow_gateway_transit        = false
 ///   allow_virtual_network_access = true

@@ -82,8 +82,8 @@ import 'system_data_response.dart';
 /// 		_, err := security.NewGovernanceRule(ctx, "governanceRule", &security.GovernanceRuleArgs{
 /// 			ConditionSets: pulumi.Array{
 /// 				pulumi.Any(map[string]interface{}{
-/// 					"conditions": []map[string]interface{}{
-/// 						map[string]interface{}{
+/// 					"conditions": []map[string]string{
+/// 						{
 /// 							"operator": "In",
 /// 							"property": "$.AssessmentKey",
 /// 							"value":    "[\"b1cd27e0-4ecc-4246-939f-49c426d9d72f\", \"fe83f80b-073d-4ccf-93d9-6797eb870201\"]",
@@ -123,7 +123,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -131,7 +131,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_governancerule" "governanceRule" {
+/// resource "azure-native_security_governance_rule" "governanceRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   condition_sets = [{
 ///     "conditions" = [{
 ///       "operator" = "In"
@@ -385,8 +388,8 @@ import 'system_data_response.dart';
 /// 		_, err := security.NewGovernanceRule(ctx, "governanceRule", &security.GovernanceRuleArgs{
 /// 			ConditionSets: pulumi.Array{
 /// 				pulumi.Any(map[string]interface{}{
-/// 					"conditions": []map[string]interface{}{
-/// 						map[string]interface{}{
+/// 					"conditions": []map[string]string{
+/// 						{
 /// 							"operator": "In",
 /// 							"property": "$.AssessmentKey",
 /// 							"value":    "[\"b1cd27e0-4ecc-4246-939f-49c426d9d72f\", \"fe83f80b-073d-4ccf-93d9-6797eb870201\"]",
@@ -423,7 +426,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -431,7 +434,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_governancerule" "governanceRule" {
+/// resource "azure-native_security_governance_rule" "governanceRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   condition_sets = [{
 ///     "conditions" = [{
 ///       "operator" = "In"
@@ -679,8 +685,8 @@ import 'system_data_response.dart';
 /// 		_, err := security.NewGovernanceRule(ctx, "governanceRule", &security.GovernanceRuleArgs{
 /// 			ConditionSets: pulumi.Array{
 /// 				pulumi.Any(map[string]interface{}{
-/// 					"conditions": []map[string]interface{}{
-/// 						map[string]interface{}{
+/// 					"conditions": []map[string]string{
+/// 						{
 /// 							"operator": "In",
 /// 							"property": "$.AssessmentKey",
 /// 							"value":    "[\"b1cd27e0-4ecc-4246-939f-49c426d9d72f\", \"fe83f80b-073d-4ccf-93d9-6797eb870201\"]",
@@ -717,7 +723,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -725,7 +731,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_security_governancerule" "governanceRule" {
+/// resource "azure-native_security_governance_rule" "governanceRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   condition_sets = [{
 ///     "conditions" = [{
 ///       "operator" = "In"

@@ -64,7 +64,7 @@ import 'graph_qlapi_resolver_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -72,7 +72,10 @@ import 'graph_qlapi_resolver_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_apimanagement_graphqlapiresolverpolicy" "graphQLApiResolverPolicy" {
+/// resource "azure-native_apimanagement_graph_q_l_api_resolver_policy" "graphQLApiResolverPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id              = "5600b57e7e8880006a040001"
 ///   format              = "xml"
 ///   policy_id           = "policy"

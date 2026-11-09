@@ -66,17 +66,17 @@ import 'system_data_response.dart';
 /// 			DryrunName: pulumi.String("dryrunName"),
 /// 			Parameters: &servicelinker.CreateOrUpdateDryrunParametersArgs{
 /// 				ActionName: pulumi.String("createOrUpdate"),
-/// 				AuthInfo: servicelinker.SecretAuthInfo{
-/// 					AuthType: "secret",
-/// 					Name:     "name",
-/// 					SecretInfo: servicelinker.ValueSecretInfo{
-/// 						SecretType: "rawValue",
-/// 						Value:      "secret",
+/// 				AuthInfo: &servicelinker.SecretAuthInfoArgs{
+/// 					AuthType: pulumi.String("secret"),
+/// 					Name:     pulumi.String("name"),
+/// 					SecretInfo: &servicelinker.ValueSecretInfoArgs{
+/// 						SecretType: pulumi.String("rawValue"),
+/// 						Value:      pulumi.String("secret"),
 /// 					},
 /// 				},
-/// 				TargetService: servicelinker.AzureResource{
-/// 					Id:   "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDb/databaseAccounts/test-acc/mongodbDatabases/test-db",
-/// 					Type: "AzureResource",
+/// 				TargetService: &servicelinker.AzureResourceArgs{
+/// 					Id:   pulumi.String("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDb/databaseAccounts/test-acc/mongodbDatabases/test-db"),
+/// 					Type: pulumi.String("AzureResource"),
 /// 				},
 /// 			},
 /// 			ResourceUri: pulumi.String("subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/sites/test-app"),
@@ -91,7 +91,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -99,21 +99,24 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_servicelinker_linkerdryrun" "linkerDryrun" {
+/// resource "azure-native_servicelinker_linker_dryrun" "linkerDryrun" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dryrun_name = "dryrunName"
 ///   parameters = {
 ///     action_name = "createOrUpdate"
 ///     auth_info = {
-///       "authType" = "secret"
-///       "name"     = "name"
-///       "secretInfo" = {
-///         "secretType" = "rawValue"
-///         "value"      = "secret"
+///       auth_type = "secret"
+///       name      = "name"
+///       secret_info = {
+///         secret_type = "rawValue"
+///         value       = "secret"
 ///       }
 ///     }
 ///     target_service = {
-///       "id"   = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDb/databaseAccounts/test-acc/mongodbDatabases/test-db"
-///       "type" = "AzureResource"
+///       id   = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDb/databaseAccounts/test-acc/mongodbDatabases/test-db"
+///       type = "AzureResource"
 ///     }
 ///   }
 ///   resource_uri = "subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/sites/test-app"
@@ -130,6 +133,21 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.servicelinker.LinkerDryrun;
 /// import com.pulumi.azurenative.servicelinker.LinkerDryrunArgs;
 /// import com.pulumi.azurenative.servicelinker.inputs.CreateOrUpdateDryrunParametersArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.AccessKeyInfoBaseArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.EasyAuthMicrosoftEntraIDAuthInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.SecretAuthInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.KeyVaultSecretReferenceSecretInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.KeyVaultSecretUriSecretInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.ValueSecretInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.ServicePrincipalCertificateAuthInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.ServicePrincipalSecretAuthInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.SystemAssignedIdentityAuthInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.UserAccountAuthInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.UserAssignedIdentityAuthInfoArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.AzureResourceArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.ConfluentBootstrapServerArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.ConfluentSchemaRegistryArgs;
+/// import com.pulumi.azurenative.servicelinker.inputs.SelfHostedServerArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -146,18 +164,14 @@ import 'system_data_response.dart';
 ///         var linkerDryrun = new LinkerDryrun("linkerDryrun", LinkerDryrunArgs.builder()
 ///             .dryrunName("dryrunName")
 ///             .parameters(CreateOrUpdateDryrunParametersArgs.builder()
-///                 .actionName("createOrUpdate")
 ///                 .authInfo(SecretAuthInfoArgs.builder()
-///                     .authType("secret")
 ///                     .name("name")
 ///                     .secretInfo(ValueSecretInfoArgs.builder()
-///                         .secretType("rawValue")
 ///                         .value("secret")
 ///                         .build())
 ///                     .build())
 ///                 .targetService(AzureResourceArgs.builder()
 ///                     .id("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDb/databaseAccounts/test-acc/mongodbDatabases/test-db")
-///                     .type("AzureResource")
 ///                     .build())
 ///                 .build())
 ///             .resourceUri("subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/sites/test-app")

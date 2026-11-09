@@ -58,7 +58,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_appplatform_applicationliveview" "applicationLiveView" {
+/// resource "azure-native_appplatform_application_live_view" "applicationLiveView" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_live_view_name = "default"
 ///   resource_group_name        = "myResourceGroup"
 ///   service_name               = "myservice"

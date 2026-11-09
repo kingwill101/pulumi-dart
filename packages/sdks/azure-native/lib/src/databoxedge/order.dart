@@ -96,7 +96,7 @@ import 'tracking_info_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -105,6 +105,9 @@ import 'tracking_info_response.dart';
 /// }
 ///
 /// resource "azure-native_databoxedge_order" "order" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   contact_information = {
 ///     company_name   = "Microsoft"
 ///     contact_person = "John Mcclane"

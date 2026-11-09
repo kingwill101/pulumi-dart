@@ -84,7 +84,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -93,6 +93,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_offazurespringboot_springbootsite" "springbootsite" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "rywvpbfsqovhlfirtwisugsdsfsgf"
 ///     type = "lvsb"
@@ -266,7 +269,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -275,6 +278,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_offazurespringboot_springbootsite" "springbootsite" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "tgobtvxktootwhhvjtsmpddvlqlrq"
 ///   resource_group_name  = "rgspringbootsites"
 ///   springbootsites_name = "xrmzlavpewxtfeitghdrj"

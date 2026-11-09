@@ -59,7 +59,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -67,7 +67,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_dbforpostgresql_servergrouprole" "serverGroupRole" {
+/// resource "azure-native_dbforpostgresql_server_group_role" "serverGroupRole" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name        = "pgtestsvc4"
 ///   password            = "password"
 ///   resource_group_name = "TestGroup"

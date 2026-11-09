@@ -77,7 +77,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -86,6 +86,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_relay_namespace" "namespace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "South Central US"
 ///   namespace_name      = "example-RelayNamespace-5849"
 ///   resource_group_name = "resourcegroup"

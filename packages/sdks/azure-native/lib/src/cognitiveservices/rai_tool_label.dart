@@ -110,7 +110,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -118,7 +118,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cognitiveservices_raitoollabel" "raiToolLabel" {
+/// resource "azure-native_cognitiveservices_rai_tool_label" "raiToolLabel" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "accountName"
 ///   properties = {
 ///     account_scope = {
@@ -127,15 +130,15 @@ import 'system_data_response.dart';
 ///       }
 ///     }
 ///     project_scopes = [{
-///       "labelValues" = {
+///       label_values = {
 ///         "confidentiality" = "low"
 ///       }
-///       "project" = "test-project"
+///       project = "test-project"
 ///       }, {
-///       "labelValues" = {
+///       label_values = {
 ///         "confidentiality" = "low"
 ///       }
-///       "project" = "sample-project"
+///       project = "sample-project"
 ///     }]
 ///     tool_connection_name = "Web_Search"
 ///   }
@@ -155,6 +158,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cognitiveservices.RaiToolLabelArgs;
 /// import com.pulumi.azurenative.cognitiveservices.inputs.RaiToolLabelPropertiesArgs;
 /// import com.pulumi.azurenative.cognitiveservices.inputs.RaiToolLabelPropertiesAccountScopeArgs;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.RaiToolLabelPropertiesProjectScopesItemArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

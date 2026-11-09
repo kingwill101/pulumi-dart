@@ -85,7 +85,7 @@ import 'extended_server_blob_auditing_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -93,7 +93,10 @@ import 'extended_server_blob_auditing_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_extendedserverblobauditingpolicy" "extendedServerBlobAuditingPolicy" {
+/// resource "azure-native_sql_extended_server_blob_auditing_policy" "extendedServerBlobAuditingPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   audit_actions_and_groups        = ["SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP", "BATCH_COMPLETED_GROUP"]
 ///   blob_auditing_policy_name       = "default"
 ///   is_azure_monitor_target_enabled = true
@@ -285,7 +288,7 @@ import 'extended_server_blob_auditing_policy_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -293,7 +296,10 @@ import 'extended_server_blob_auditing_policy_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_sql_extendedserverblobauditingpolicy" "extendedServerBlobAuditingPolicy" {
+/// resource "azure-native_sql_extended_server_blob_auditing_policy" "extendedServerBlobAuditingPolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   blob_auditing_policy_name  = "default"
 ///   resource_group_name        = "blobauditingtest-4799"
 ///   server_name                = "blobauditingtest-6440"

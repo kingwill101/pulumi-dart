@@ -86,7 +86,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -94,17 +94,20 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_machinelearningservices_dataversion" "dataVersion" {
+/// resource "azure-native_machinelearningservices_data_version" "dataVersion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "string"
 ///   properties = {
-///     "dataType"    = "uri_file"
-///     "dataUri"     = "string"
-///     "description" = "string"
-///     "isAnonymous" = false
-///     "properties" = {
+///     data_type    = "uri_file"
+///     data_uri     = "string"
+///     description  = "string"
+///     is_anonymous = false
+///     properties = {
 ///       "string" = "string"
 ///     }
-///     "tags" = {
+///     tags = {
 ///       "string" = "string"
 ///     }
 ///   }
@@ -123,6 +126,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.DataVersion;
 /// import com.pulumi.azurenative.machinelearningservices.DataVersionArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.MLTableDataArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.UriFileDataVersionArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.UriFolderDataVersionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -139,7 +145,6 @@ import 'system_data_response.dart';
 ///         var dataVersion = new DataVersion("dataVersion", DataVersionArgs.builder()
 ///             .name("string")
 ///             .properties(UriFileDataVersionArgs.builder()
-///                 .dataType("uri_file")
 ///                 .dataUri("string")
 ///                 .description("string")
 ///                 .isAnonymous(false)

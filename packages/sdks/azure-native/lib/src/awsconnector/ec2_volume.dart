@@ -130,7 +130,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -138,7 +138,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_awsconnector_ec2volume" "ec2Volume" {
+/// resource "azure-native_awsconnector_ec2_volume" "ec2Volume" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "tvdnvkrfzxnahsvnguhrcancxusw"
 ///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
 ///   properties = {
@@ -155,8 +158,8 @@ import 'system_data_response.dart';
 ///       size                 = 2
 ///       snapshot_id          = "upwukogzrkqcaea"
 ///       tags = [{
-///         "key"   = "hizjca"
-///         "value" = "hnfhwndsnhbpnwfv"
+///         key   = "hizjca"
+///         value = "hnfhwndsnhbpnwfv"
 ///       }]
 ///       throughput  = 20
 ///       volume_id   = "rdcojpg"
@@ -188,6 +191,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.Ec2VolumeArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.Ec2VolumePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEc2VolumePropertiesArgs;
+/// import com.pulumi.azurenative.awsconnector.inputs.TagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

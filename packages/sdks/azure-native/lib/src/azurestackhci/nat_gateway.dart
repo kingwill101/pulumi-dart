@@ -85,7 +85,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -93,7 +93,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_azurestackhci_natgateway" "natGateway" {
+/// resource "azure-native_azurestackhci_nat_gateway" "natGateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extended_location = {
 ///     name = "/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"
 ///     type = "CustomLocation"
@@ -102,7 +105,7 @@ import 'system_data_response.dart';
 ///   nat_gateway_name = "test-nat-gw"
 ///   properties = {
 ///     public_ip_addresses = [{
-///       "resourceId" = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/azure-local-rg/providers/Microsoft.AzureStackHCI/publicIPAddresses/outbound-pip"
+///       resource_id = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/azure-local-rg/providers/Microsoft.AzureStackHCI/publicIPAddresses/outbound-pip"
 ///     }]
 ///   }
 ///   resource_group_name = "test-rg"
@@ -120,6 +123,7 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.NatGatewayArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.NatGatewayPropertiesArgs;
+/// import com.pulumi.azurenative.azurestackhci.inputs.PublicIPAddressArmReferenceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

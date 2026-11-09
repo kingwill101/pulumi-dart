@@ -75,7 +75,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -83,7 +83,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cdn_profileagent" "profileAgent" {
+/// resource "azure-native_cdn_profile_agent" "profileAgent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_name = "agent1"
 ///   custom_domains {
 ///     id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/RG/providers/Microsoft.Cdn/profiles/profile1/customDomains/mydomain.com"

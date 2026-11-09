@@ -108,7 +108,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -117,6 +117,9 @@ import 'system_data_response.dart';
 /// }
 ///
 /// resource "azure-native_containerservice_namespace" "namespace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   namespace_name = "namespace1"
 ///   properties = {
 ///     adoption_policy = "IfIdentical"

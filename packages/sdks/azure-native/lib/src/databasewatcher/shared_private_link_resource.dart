@@ -65,7 +65,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -73,7 +73,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_databasewatcher_sharedprivatelinkresource" "sharedPrivateLinkResource" {
+/// resource "azure-native_databasewatcher_shared_private_link_resource" "sharedPrivateLinkResource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dns_zone                          = "ec3ae9d410ba"
 ///   group_id                          = "vault"
 ///   private_link_resource_id          = "/subscriptions/49e0fbd3-75e8-44e7-96fd-5b64d9ad818d/resourceGroups/apiTest-ddat4p/providers/Microsoft.KeyVault/vaults/kvmo3ej9ih"

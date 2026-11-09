@@ -69,7 +69,7 @@ import 'volume_group_volume_properties_response.dart';
 ///                 },
 ///                 ServiceLevel = AzureNative.NetApp.ServiceLevel.Premium,
 ///                 SubnetId = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///                 ThroughputMibps = 10,
+///                 ThroughputMibps = 10.0,
 ///                 UsageThreshold = 107374182400,
 ///                 VolumeSpecName = "ora-data1",
 ///                 Zones = new[]
@@ -111,7 +111,7 @@ import 'volume_group_volume_properties_response.dart';
 ///                 },
 ///                 ServiceLevel = AzureNative.NetApp.ServiceLevel.Premium,
 ///                 SubnetId = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///                 ThroughputMibps = 10,
+///                 ThroughputMibps = 10.0,
 ///                 UsageThreshold = 107374182400,
 ///                 VolumeSpecName = "ora-data2",
 ///                 Zones = new[]
@@ -153,7 +153,7 @@ import 'volume_group_volume_properties_response.dart';
 ///                 },
 ///                 ServiceLevel = AzureNative.NetApp.ServiceLevel.Premium,
 ///                 SubnetId = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///                 ThroughputMibps = 10,
+///                 ThroughputMibps = 10.0,
 ///                 UsageThreshold = 107374182400,
 ///                 VolumeSpecName = "ora-data3",
 ///                 Zones = new[]
@@ -195,7 +195,7 @@ import 'volume_group_volume_properties_response.dart';
 ///                 },
 ///                 ServiceLevel = AzureNative.NetApp.ServiceLevel.Premium,
 ///                 SubnetId = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///                 ThroughputMibps = 10,
+///                 ThroughputMibps = 10.0,
 ///                 UsageThreshold = 107374182400,
 ///                 VolumeSpecName = "ora-data4",
 ///                 Zones = new[]
@@ -237,7 +237,7 @@ import 'volume_group_volume_properties_response.dart';
 ///                 },
 ///                 ServiceLevel = AzureNative.NetApp.ServiceLevel.Premium,
 ///                 SubnetId = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///                 ThroughputMibps = 10,
+///                 ThroughputMibps = 10.0,
 ///                 UsageThreshold = 107374182400,
 ///                 VolumeSpecName = "ora-data5",
 ///                 Zones = new[]
@@ -279,7 +279,7 @@ import 'volume_group_volume_properties_response.dart';
 ///                 },
 ///                 ServiceLevel = AzureNative.NetApp.ServiceLevel.Premium,
 ///                 SubnetId = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///                 ThroughputMibps = 10,
+///                 ThroughputMibps = 10.0,
 ///                 UsageThreshold = 107374182400,
 ///                 VolumeSpecName = "ora-data6",
 ///                 Zones = new[]
@@ -321,7 +321,7 @@ import 'volume_group_volume_properties_response.dart';
 ///                 },
 ///                 ServiceLevel = AzureNative.NetApp.ServiceLevel.Premium,
 ///                 SubnetId = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///                 ThroughputMibps = 10,
+///                 ThroughputMibps = 10.0,
 ///                 UsageThreshold = 107374182400,
 ///                 VolumeSpecName = "ora-data7",
 ///                 Zones = new[]
@@ -363,7 +363,7 @@ import 'volume_group_volume_properties_response.dart';
 ///                 },
 ///                 ServiceLevel = AzureNative.NetApp.ServiceLevel.Premium,
 ///                 SubnetId = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///                 ThroughputMibps = 10,
+///                 ThroughputMibps = 10.0,
 ///                 UsageThreshold = 107374182400,
 ///                 VolumeSpecName = "ora-data8",
 ///                 Zones = new[]
@@ -405,7 +405,7 @@ import 'volume_group_volume_properties_response.dart';
 ///                 },
 ///                 ServiceLevel = AzureNative.NetApp.ServiceLevel.Premium,
 ///                 SubnetId = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///                 ThroughputMibps = 10,
+///                 ThroughputMibps = 10.0,
 ///                 UsageThreshold = 107374182400,
 ///                 VolumeSpecName = "ora-log",
 ///                 Zones = new[]
@@ -447,7 +447,7 @@ import 'volume_group_volume_properties_response.dart';
 ///                 },
 ///                 ServiceLevel = AzureNative.NetApp.ServiceLevel.Premium,
 ///                 SubnetId = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///                 ThroughputMibps = 10,
+///                 ThroughputMibps = 10.0,
 ///                 UsageThreshold = 107374182400,
 ///                 VolumeSpecName = "ora-log-mirror",
 ///                 Zones = new[]
@@ -489,7 +489,7 @@ import 'volume_group_volume_properties_response.dart';
 ///                 },
 ///                 ServiceLevel = AzureNative.NetApp.ServiceLevel.Premium,
 ///                 SubnetId = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///                 ThroughputMibps = 10,
+///                 ThroughputMibps = 10.0,
 ///                 UsageThreshold = 107374182400,
 ///                 VolumeSpecName = "ora-binary",
 ///                 Zones = new[]
@@ -531,7 +531,7 @@ import 'volume_group_volume_properties_response.dart';
 ///                 },
 ///                 ServiceLevel = AzureNative.NetApp.ServiceLevel.Premium,
 ///                 SubnetId = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///                 ThroughputMibps = 10,
+///                 ThroughputMibps = 10.0,
 ///                 UsageThreshold = 107374182400,
 ///                 VolumeSpecName = "ora-backup",
 ///                 Zones = new[]
@@ -1012,7 +1012,7 @@ import 'volume_group_volume_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -1020,7 +1020,10 @@ import 'volume_group_volume_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_netapp_volumegroup" "volumeGroup" {
+/// resource "azure-native_netapp_volume_group" "volumeGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "account1"
 ///   group_meta_data = {
 ///     application_identifier = "OR2"
@@ -1035,20 +1038,20 @@ import 'volume_group_volume_properties_response.dart';
 ///     creation_token            = "test-ora-data1"
 ///     export_policy = {
 ///       rules = [{
-///         "allowedClients"      = "0.0.0.0/0"
-///         "cifs"                = false
-///         "hasRootAccess"       = true
-///         "kerberos5IReadOnly"  = false
-///         "kerberos5IReadWrite" = false
-///         "kerberos5PReadOnly"  = false
-///         "kerberos5PReadWrite" = false
-///         "kerberos5ReadOnly"   = false
-///         "kerberos5ReadWrite"  = false
-///         "nfsv3"               = false
-///         "nfsv41"              = true
-///         "ruleIndex"           = 1
-///         "unixReadOnly"        = true
-///         "unixReadWrite"       = true
+///         allowed_clients        = "0.0.0.0/0"
+///         cifs                   = false
+///         has_root_access        = true
+///         kerberos5_i_read_only  = false
+///         kerberos5_i_read_write = false
+///         kerberos5_p_read_only  = false
+///         kerberos5_p_read_write = false
+///         kerberos5_read_only    = false
+///         kerberos5_read_write   = false
+///         nfsv3                  = false
+///         nfsv41                 = true
+///         rule_index             = 1
+///         unix_read_only         = true
+///         unix_read_write        = true
 ///       }]
 ///     }
 ///     name             = "test-ora-data1"
@@ -1065,20 +1068,20 @@ import 'volume_group_volume_properties_response.dart';
 ///     creation_token            = "test-ora-data2"
 ///     export_policy = {
 ///       rules = [{
-///         "allowedClients"      = "0.0.0.0/0"
-///         "cifs"                = false
-///         "hasRootAccess"       = true
-///         "kerberos5IReadOnly"  = false
-///         "kerberos5IReadWrite" = false
-///         "kerberos5PReadOnly"  = false
-///         "kerberos5PReadWrite" = false
-///         "kerberos5ReadOnly"   = false
-///         "kerberos5ReadWrite"  = false
-///         "nfsv3"               = false
-///         "nfsv41"              = true
-///         "ruleIndex"           = 1
-///         "unixReadOnly"        = true
-///         "unixReadWrite"       = true
+///         allowed_clients        = "0.0.0.0/0"
+///         cifs                   = false
+///         has_root_access        = true
+///         kerberos5_i_read_only  = false
+///         kerberos5_i_read_write = false
+///         kerberos5_p_read_only  = false
+///         kerberos5_p_read_write = false
+///         kerberos5_read_only    = false
+///         kerberos5_read_write   = false
+///         nfsv3                  = false
+///         nfsv41                 = true
+///         rule_index             = 1
+///         unix_read_only         = true
+///         unix_read_write        = true
 ///       }]
 ///     }
 ///     name             = "test-ora-data2"
@@ -1095,20 +1098,20 @@ import 'volume_group_volume_properties_response.dart';
 ///     creation_token            = "test-ora-data3"
 ///     export_policy = {
 ///       rules = [{
-///         "allowedClients"      = "0.0.0.0/0"
-///         "cifs"                = false
-///         "hasRootAccess"       = true
-///         "kerberos5IReadOnly"  = false
-///         "kerberos5IReadWrite" = false
-///         "kerberos5PReadOnly"  = false
-///         "kerberos5PReadWrite" = false
-///         "kerberos5ReadOnly"   = false
-///         "kerberos5ReadWrite"  = false
-///         "nfsv3"               = false
-///         "nfsv41"              = true
-///         "ruleIndex"           = 1
-///         "unixReadOnly"        = true
-///         "unixReadWrite"       = true
+///         allowed_clients        = "0.0.0.0/0"
+///         cifs                   = false
+///         has_root_access        = true
+///         kerberos5_i_read_only  = false
+///         kerberos5_i_read_write = false
+///         kerberos5_p_read_only  = false
+///         kerberos5_p_read_write = false
+///         kerberos5_read_only    = false
+///         kerberos5_read_write   = false
+///         nfsv3                  = false
+///         nfsv41                 = true
+///         rule_index             = 1
+///         unix_read_only         = true
+///         unix_read_write        = true
 ///       }]
 ///     }
 ///     name             = "test-ora-data3"
@@ -1125,20 +1128,20 @@ import 'volume_group_volume_properties_response.dart';
 ///     creation_token            = "test-ora-data4"
 ///     export_policy = {
 ///       rules = [{
-///         "allowedClients"      = "0.0.0.0/0"
-///         "cifs"                = false
-///         "hasRootAccess"       = true
-///         "kerberos5IReadOnly"  = false
-///         "kerberos5IReadWrite" = false
-///         "kerberos5PReadOnly"  = false
-///         "kerberos5PReadWrite" = false
-///         "kerberos5ReadOnly"   = false
-///         "kerberos5ReadWrite"  = false
-///         "nfsv3"               = false
-///         "nfsv41"              = true
-///         "ruleIndex"           = 1
-///         "unixReadOnly"        = true
-///         "unixReadWrite"       = true
+///         allowed_clients        = "0.0.0.0/0"
+///         cifs                   = false
+///         has_root_access        = true
+///         kerberos5_i_read_only  = false
+///         kerberos5_i_read_write = false
+///         kerberos5_p_read_only  = false
+///         kerberos5_p_read_write = false
+///         kerberos5_read_only    = false
+///         kerberos5_read_write   = false
+///         nfsv3                  = false
+///         nfsv41                 = true
+///         rule_index             = 1
+///         unix_read_only         = true
+///         unix_read_write        = true
 ///       }]
 ///     }
 ///     name             = "test-ora-data4"
@@ -1155,20 +1158,20 @@ import 'volume_group_volume_properties_response.dart';
 ///     creation_token            = "test-ora-data5"
 ///     export_policy = {
 ///       rules = [{
-///         "allowedClients"      = "0.0.0.0/0"
-///         "cifs"                = false
-///         "hasRootAccess"       = true
-///         "kerberos5IReadOnly"  = false
-///         "kerberos5IReadWrite" = false
-///         "kerberos5PReadOnly"  = false
-///         "kerberos5PReadWrite" = false
-///         "kerberos5ReadOnly"   = false
-///         "kerberos5ReadWrite"  = false
-///         "nfsv3"               = false
-///         "nfsv41"              = true
-///         "ruleIndex"           = 1
-///         "unixReadOnly"        = true
-///         "unixReadWrite"       = true
+///         allowed_clients        = "0.0.0.0/0"
+///         cifs                   = false
+///         has_root_access        = true
+///         kerberos5_i_read_only  = false
+///         kerberos5_i_read_write = false
+///         kerberos5_p_read_only  = false
+///         kerberos5_p_read_write = false
+///         kerberos5_read_only    = false
+///         kerberos5_read_write   = false
+///         nfsv3                  = false
+///         nfsv41                 = true
+///         rule_index             = 1
+///         unix_read_only         = true
+///         unix_read_write        = true
 ///       }]
 ///     }
 ///     name             = "test-ora-data5"
@@ -1185,20 +1188,20 @@ import 'volume_group_volume_properties_response.dart';
 ///     creation_token            = "test-ora-data6"
 ///     export_policy = {
 ///       rules = [{
-///         "allowedClients"      = "0.0.0.0/0"
-///         "cifs"                = false
-///         "hasRootAccess"       = true
-///         "kerberos5IReadOnly"  = false
-///         "kerberos5IReadWrite" = false
-///         "kerberos5PReadOnly"  = false
-///         "kerberos5PReadWrite" = false
-///         "kerberos5ReadOnly"   = false
-///         "kerberos5ReadWrite"  = false
-///         "nfsv3"               = false
-///         "nfsv41"              = true
-///         "ruleIndex"           = 1
-///         "unixReadOnly"        = true
-///         "unixReadWrite"       = true
+///         allowed_clients        = "0.0.0.0/0"
+///         cifs                   = false
+///         has_root_access        = true
+///         kerberos5_i_read_only  = false
+///         kerberos5_i_read_write = false
+///         kerberos5_p_read_only  = false
+///         kerberos5_p_read_write = false
+///         kerberos5_read_only    = false
+///         kerberos5_read_write   = false
+///         nfsv3                  = false
+///         nfsv41                 = true
+///         rule_index             = 1
+///         unix_read_only         = true
+///         unix_read_write        = true
 ///       }]
 ///     }
 ///     name             = "test-ora-data6"
@@ -1215,20 +1218,20 @@ import 'volume_group_volume_properties_response.dart';
 ///     creation_token            = "test-ora-data7"
 ///     export_policy = {
 ///       rules = [{
-///         "allowedClients"      = "0.0.0.0/0"
-///         "cifs"                = false
-///         "hasRootAccess"       = true
-///         "kerberos5IReadOnly"  = false
-///         "kerberos5IReadWrite" = false
-///         "kerberos5PReadOnly"  = false
-///         "kerberos5PReadWrite" = false
-///         "kerberos5ReadOnly"   = false
-///         "kerberos5ReadWrite"  = false
-///         "nfsv3"               = false
-///         "nfsv41"              = true
-///         "ruleIndex"           = 1
-///         "unixReadOnly"        = true
-///         "unixReadWrite"       = true
+///         allowed_clients        = "0.0.0.0/0"
+///         cifs                   = false
+///         has_root_access        = true
+///         kerberos5_i_read_only  = false
+///         kerberos5_i_read_write = false
+///         kerberos5_p_read_only  = false
+///         kerberos5_p_read_write = false
+///         kerberos5_read_only    = false
+///         kerberos5_read_write   = false
+///         nfsv3                  = false
+///         nfsv41                 = true
+///         rule_index             = 1
+///         unix_read_only         = true
+///         unix_read_write        = true
 ///       }]
 ///     }
 ///     name             = "test-ora-data7"
@@ -1245,20 +1248,20 @@ import 'volume_group_volume_properties_response.dart';
 ///     creation_token            = "test-ora-data8"
 ///     export_policy = {
 ///       rules = [{
-///         "allowedClients"      = "0.0.0.0/0"
-///         "cifs"                = false
-///         "hasRootAccess"       = true
-///         "kerberos5IReadOnly"  = false
-///         "kerberos5IReadWrite" = false
-///         "kerberos5PReadOnly"  = false
-///         "kerberos5PReadWrite" = false
-///         "kerberos5ReadOnly"   = false
-///         "kerberos5ReadWrite"  = false
-///         "nfsv3"               = false
-///         "nfsv41"              = true
-///         "ruleIndex"           = 1
-///         "unixReadOnly"        = true
-///         "unixReadWrite"       = true
+///         allowed_clients        = "0.0.0.0/0"
+///         cifs                   = false
+///         has_root_access        = true
+///         kerberos5_i_read_only  = false
+///         kerberos5_i_read_write = false
+///         kerberos5_p_read_only  = false
+///         kerberos5_p_read_write = false
+///         kerberos5_read_only    = false
+///         kerberos5_read_write   = false
+///         nfsv3                  = false
+///         nfsv41                 = true
+///         rule_index             = 1
+///         unix_read_only         = true
+///         unix_read_write        = true
 ///       }]
 ///     }
 ///     name             = "test-ora-data8"
@@ -1275,20 +1278,20 @@ import 'volume_group_volume_properties_response.dart';
 ///     creation_token            = "test-ora-log"
 ///     export_policy = {
 ///       rules = [{
-///         "allowedClients"      = "0.0.0.0/0"
-///         "cifs"                = false
-///         "hasRootAccess"       = true
-///         "kerberos5IReadOnly"  = false
-///         "kerberos5IReadWrite" = false
-///         "kerberos5PReadOnly"  = false
-///         "kerberos5PReadWrite" = false
-///         "kerberos5ReadOnly"   = false
-///         "kerberos5ReadWrite"  = false
-///         "nfsv3"               = false
-///         "nfsv41"              = true
-///         "ruleIndex"           = 1
-///         "unixReadOnly"        = true
-///         "unixReadWrite"       = true
+///         allowed_clients        = "0.0.0.0/0"
+///         cifs                   = false
+///         has_root_access        = true
+///         kerberos5_i_read_only  = false
+///         kerberos5_i_read_write = false
+///         kerberos5_p_read_only  = false
+///         kerberos5_p_read_write = false
+///         kerberos5_read_only    = false
+///         kerberos5_read_write   = false
+///         nfsv3                  = false
+///         nfsv41                 = true
+///         rule_index             = 1
+///         unix_read_only         = true
+///         unix_read_write        = true
 ///       }]
 ///     }
 ///     name             = "test-ora-log"
@@ -1305,20 +1308,20 @@ import 'volume_group_volume_properties_response.dart';
 ///     creation_token            = "test-ora-log-mirror"
 ///     export_policy = {
 ///       rules = [{
-///         "allowedClients"      = "0.0.0.0/0"
-///         "cifs"                = false
-///         "hasRootAccess"       = true
-///         "kerberos5IReadOnly"  = false
-///         "kerberos5IReadWrite" = false
-///         "kerberos5PReadOnly"  = false
-///         "kerberos5PReadWrite" = false
-///         "kerberos5ReadOnly"   = false
-///         "kerberos5ReadWrite"  = false
-///         "nfsv3"               = false
-///         "nfsv41"              = true
-///         "ruleIndex"           = 1
-///         "unixReadOnly"        = true
-///         "unixReadWrite"       = true
+///         allowed_clients        = "0.0.0.0/0"
+///         cifs                   = false
+///         has_root_access        = true
+///         kerberos5_i_read_only  = false
+///         kerberos5_i_read_write = false
+///         kerberos5_p_read_only  = false
+///         kerberos5_p_read_write = false
+///         kerberos5_read_only    = false
+///         kerberos5_read_write   = false
+///         nfsv3                  = false
+///         nfsv41                 = true
+///         rule_index             = 1
+///         unix_read_only         = true
+///         unix_read_write        = true
 ///       }]
 ///     }
 ///     name             = "test-ora-log-mirror"
@@ -1335,20 +1338,20 @@ import 'volume_group_volume_properties_response.dart';
 ///     creation_token            = "test-ora-binary"
 ///     export_policy = {
 ///       rules = [{
-///         "allowedClients"      = "0.0.0.0/0"
-///         "cifs"                = false
-///         "hasRootAccess"       = true
-///         "kerberos5IReadOnly"  = false
-///         "kerberos5IReadWrite" = false
-///         "kerberos5PReadOnly"  = false
-///         "kerberos5PReadWrite" = false
-///         "kerberos5ReadOnly"   = false
-///         "kerberos5ReadWrite"  = false
-///         "nfsv3"               = false
-///         "nfsv41"              = true
-///         "ruleIndex"           = 1
-///         "unixReadOnly"        = true
-///         "unixReadWrite"       = true
+///         allowed_clients        = "0.0.0.0/0"
+///         cifs                   = false
+///         has_root_access        = true
+///         kerberos5_i_read_only  = false
+///         kerberos5_i_read_write = false
+///         kerberos5_p_read_only  = false
+///         kerberos5_p_read_write = false
+///         kerberos5_read_only    = false
+///         kerberos5_read_write   = false
+///         nfsv3                  = false
+///         nfsv41                 = true
+///         rule_index             = 1
+///         unix_read_only         = true
+///         unix_read_write        = true
 ///       }]
 ///     }
 ///     name             = "test-ora-binary"
@@ -1365,20 +1368,20 @@ import 'volume_group_volume_properties_response.dart';
 ///     creation_token            = "test-ora-backup"
 ///     export_policy = {
 ///       rules = [{
-///         "allowedClients"      = "0.0.0.0/0"
-///         "cifs"                = false
-///         "hasRootAccess"       = true
-///         "kerberos5IReadOnly"  = false
-///         "kerberos5IReadWrite" = false
-///         "kerberos5PReadOnly"  = false
-///         "kerberos5PReadWrite" = false
-///         "kerberos5ReadOnly"   = false
-///         "kerberos5ReadWrite"  = false
-///         "nfsv3"               = false
-///         "nfsv41"              = true
-///         "ruleIndex"           = 1
-///         "unixReadOnly"        = true
-///         "unixReadWrite"       = true
+///         allowed_clients        = "0.0.0.0/0"
+///         cifs                   = false
+///         has_root_access        = true
+///         kerberos5_i_read_only  = false
+///         kerberos5_i_read_write = false
+///         kerberos5_p_read_only  = false
+///         kerberos5_p_read_write = false
+///         kerberos5_read_only    = false
+///         kerberos5_read_write   = false
+///         nfsv3                  = false
+///         nfsv41                 = true
+///         rule_index             = 1
+///         unix_read_only         = true
+///         unix_read_write        = true
 ///       }]
 ///     }
 ///     name             = "test-ora-backup"
@@ -1405,6 +1408,7 @@ import 'volume_group_volume_properties_response.dart';
 /// import com.pulumi.azurenative.netapp.inputs.VolumeGroupMetaDataArgs;
 /// import com.pulumi.azurenative.netapp.inputs.VolumeGroupVolumePropertiesArgs;
 /// import com.pulumi.azurenative.netapp.inputs.VolumePropertiesExportPolicyArgs;
+/// import com.pulumi.azurenative.netapp.inputs.ExportPolicyRuleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -2968,7 +2972,7 @@ import 'volume_group_volume_properties_response.dart';
 ///                 ProximityPlacementGroup = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/cys_sjain_fcp_rg/providers/Microsoft.Compute/proximityPlacementGroups/svlqa_sjain_multivolume_ppg",
 ///                 ServiceLevel = AzureNative.NetApp.ServiceLevel.Premium,
 ///                 SubnetId = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///                 ThroughputMibps = 10,
+///                 ThroughputMibps = 10.0,
 ///                 UsageThreshold = 107374182400,
 ///                 VolumeSpecName = "data",
 ///             },
@@ -3007,7 +3011,7 @@ import 'volume_group_volume_properties_response.dart';
 ///                 ProximityPlacementGroup = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/cys_sjain_fcp_rg/providers/Microsoft.Compute/proximityPlacementGroups/svlqa_sjain_multivolume_ppg",
 ///                 ServiceLevel = AzureNative.NetApp.ServiceLevel.Premium,
 ///                 SubnetId = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///                 ThroughputMibps = 10,
+///                 ThroughputMibps = 10.0,
 ///                 UsageThreshold = 107374182400,
 ///                 VolumeSpecName = "log",
 ///             },
@@ -3046,7 +3050,7 @@ import 'volume_group_volume_properties_response.dart';
 ///                 ProximityPlacementGroup = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/cys_sjain_fcp_rg/providers/Microsoft.Compute/proximityPlacementGroups/svlqa_sjain_multivolume_ppg",
 ///                 ServiceLevel = AzureNative.NetApp.ServiceLevel.Premium,
 ///                 SubnetId = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///                 ThroughputMibps = 10,
+///                 ThroughputMibps = 10.0,
 ///                 UsageThreshold = 107374182400,
 ///                 VolumeSpecName = "shared",
 ///             },
@@ -3085,7 +3089,7 @@ import 'volume_group_volume_properties_response.dart';
 ///                 ProximityPlacementGroup = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/cys_sjain_fcp_rg/providers/Microsoft.Compute/proximityPlacementGroups/svlqa_sjain_multivolume_ppg",
 ///                 ServiceLevel = AzureNative.NetApp.ServiceLevel.Premium,
 ///                 SubnetId = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///                 ThroughputMibps = 10,
+///                 ThroughputMibps = 10.0,
 ///                 UsageThreshold = 107374182400,
 ///                 VolumeSpecName = "data-backup",
 ///             },
@@ -3124,7 +3128,7 @@ import 'volume_group_volume_properties_response.dart';
 ///                 ProximityPlacementGroup = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/cys_sjain_fcp_rg/providers/Microsoft.Compute/proximityPlacementGroups/svlqa_sjain_multivolume_ppg",
 ///                 ServiceLevel = AzureNative.NetApp.ServiceLevel.Premium,
 ///                 SubnetId = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///                 ThroughputMibps = 10,
+///                 ThroughputMibps = 10.0,
 ///                 UsageThreshold = 107374182400,
 ///                 VolumeSpecName = "log-backup",
 ///             },
@@ -3339,7 +3343,7 @@ import 'volume_group_volume_properties_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -3347,7 +3351,10 @@ import 'volume_group_volume_properties_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_netapp_volumegroup" "volumeGroup" {
+/// resource "azure-native_netapp_volume_group" "volumeGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name = "account1"
 ///   group_meta_data = {
 ///     application_identifier = "SH9"
@@ -3362,20 +3369,20 @@ import 'volume_group_volume_properties_response.dart';
 ///     creation_token            = "test-data-mnt00001"
 ///     export_policy = {
 ///       rules = [{
-///         "allowedClients"      = "0.0.0.0/0"
-///         "cifs"                = false
-///         "hasRootAccess"       = true
-///         "kerberos5IReadOnly"  = false
-///         "kerberos5IReadWrite" = false
-///         "kerberos5PReadOnly"  = false
-///         "kerberos5PReadWrite" = false
-///         "kerberos5ReadOnly"   = false
-///         "kerberos5ReadWrite"  = false
-///         "nfsv3"               = false
-///         "nfsv41"              = true
-///         "ruleIndex"           = 1
-///         "unixReadOnly"        = true
-///         "unixReadWrite"       = true
+///         allowed_clients        = "0.0.0.0/0"
+///         cifs                   = false
+///         has_root_access        = true
+///         kerberos5_i_read_only  = false
+///         kerberos5_i_read_write = false
+///         kerberos5_p_read_only  = false
+///         kerberos5_p_read_write = false
+///         kerberos5_read_only    = false
+///         kerberos5_read_write   = false
+///         nfsv3                  = false
+///         nfsv41                 = true
+///         rule_index             = 1
+///         unix_read_only         = true
+///         unix_read_write        = true
 ///       }]
 ///     }
 ///     name                      = "test-data-mnt00001"
@@ -3392,20 +3399,20 @@ import 'volume_group_volume_properties_response.dart';
 ///     creation_token            = "test-log-mnt00001"
 ///     export_policy = {
 ///       rules = [{
-///         "allowedClients"      = "0.0.0.0/0"
-///         "cifs"                = false
-///         "hasRootAccess"       = true
-///         "kerberos5IReadOnly"  = false
-///         "kerberos5IReadWrite" = false
-///         "kerberos5PReadOnly"  = false
-///         "kerberos5PReadWrite" = false
-///         "kerberos5ReadOnly"   = false
-///         "kerberos5ReadWrite"  = false
-///         "nfsv3"               = false
-///         "nfsv41"              = true
-///         "ruleIndex"           = 1
-///         "unixReadOnly"        = true
-///         "unixReadWrite"       = true
+///         allowed_clients        = "0.0.0.0/0"
+///         cifs                   = false
+///         has_root_access        = true
+///         kerberos5_i_read_only  = false
+///         kerberos5_i_read_write = false
+///         kerberos5_p_read_only  = false
+///         kerberos5_p_read_write = false
+///         kerberos5_read_only    = false
+///         kerberos5_read_write   = false
+///         nfsv3                  = false
+///         nfsv41                 = true
+///         rule_index             = 1
+///         unix_read_only         = true
+///         unix_read_write        = true
 ///       }]
 ///     }
 ///     name                      = "test-log-mnt00001"
@@ -3422,20 +3429,20 @@ import 'volume_group_volume_properties_response.dart';
 ///     creation_token            = "test-shared"
 ///     export_policy = {
 ///       rules = [{
-///         "allowedClients"      = "0.0.0.0/0"
-///         "cifs"                = false
-///         "hasRootAccess"       = true
-///         "kerberos5IReadOnly"  = false
-///         "kerberos5IReadWrite" = false
-///         "kerberos5PReadOnly"  = false
-///         "kerberos5PReadWrite" = false
-///         "kerberos5ReadOnly"   = false
-///         "kerberos5ReadWrite"  = false
-///         "nfsv3"               = false
-///         "nfsv41"              = true
-///         "ruleIndex"           = 1
-///         "unixReadOnly"        = true
-///         "unixReadWrite"       = true
+///         allowed_clients        = "0.0.0.0/0"
+///         cifs                   = false
+///         has_root_access        = true
+///         kerberos5_i_read_only  = false
+///         kerberos5_i_read_write = false
+///         kerberos5_p_read_only  = false
+///         kerberos5_p_read_write = false
+///         kerberos5_read_only    = false
+///         kerberos5_read_write   = false
+///         nfsv3                  = false
+///         nfsv41                 = true
+///         rule_index             = 1
+///         unix_read_only         = true
+///         unix_read_write        = true
 ///       }]
 ///     }
 ///     name                      = "test-shared"
@@ -3452,20 +3459,20 @@ import 'volume_group_volume_properties_response.dart';
 ///     creation_token            = "test-data-backup"
 ///     export_policy = {
 ///       rules = [{
-///         "allowedClients"      = "0.0.0.0/0"
-///         "cifs"                = false
-///         "hasRootAccess"       = true
-///         "kerberos5IReadOnly"  = false
-///         "kerberos5IReadWrite" = false
-///         "kerberos5PReadOnly"  = false
-///         "kerberos5PReadWrite" = false
-///         "kerberos5ReadOnly"   = false
-///         "kerberos5ReadWrite"  = false
-///         "nfsv3"               = false
-///         "nfsv41"              = true
-///         "ruleIndex"           = 1
-///         "unixReadOnly"        = true
-///         "unixReadWrite"       = true
+///         allowed_clients        = "0.0.0.0/0"
+///         cifs                   = false
+///         has_root_access        = true
+///         kerberos5_i_read_only  = false
+///         kerberos5_i_read_write = false
+///         kerberos5_p_read_only  = false
+///         kerberos5_p_read_write = false
+///         kerberos5_read_only    = false
+///         kerberos5_read_write   = false
+///         nfsv3                  = false
+///         nfsv41                 = true
+///         rule_index             = 1
+///         unix_read_only         = true
+///         unix_read_write        = true
 ///       }]
 ///     }
 ///     name                      = "test-data-backup"
@@ -3482,20 +3489,20 @@ import 'volume_group_volume_properties_response.dart';
 ///     creation_token            = "test-log-backup"
 ///     export_policy = {
 ///       rules = [{
-///         "allowedClients"      = "0.0.0.0/0"
-///         "cifs"                = false
-///         "hasRootAccess"       = true
-///         "kerberos5IReadOnly"  = false
-///         "kerberos5IReadWrite" = false
-///         "kerberos5PReadOnly"  = false
-///         "kerberos5PReadWrite" = false
-///         "kerberos5ReadOnly"   = false
-///         "kerberos5ReadWrite"  = false
-///         "nfsv3"               = false
-///         "nfsv41"              = true
-///         "ruleIndex"           = 1
-///         "unixReadOnly"        = true
-///         "unixReadWrite"       = true
+///         allowed_clients        = "0.0.0.0/0"
+///         cifs                   = false
+///         has_root_access        = true
+///         kerberos5_i_read_only  = false
+///         kerberos5_i_read_write = false
+///         kerberos5_p_read_only  = false
+///         kerberos5_p_read_write = false
+///         kerberos5_read_only    = false
+///         kerberos5_read_write   = false
+///         nfsv3                  = false
+///         nfsv41                 = true
+///         rule_index             = 1
+///         unix_read_only         = true
+///         unix_read_write        = true
 ///       }]
 ///     }
 ///     name                      = "test-log-backup"
@@ -3522,6 +3529,7 @@ import 'volume_group_volume_properties_response.dart';
 /// import com.pulumi.azurenative.netapp.inputs.VolumeGroupMetaDataArgs;
 /// import com.pulumi.azurenative.netapp.inputs.VolumeGroupVolumePropertiesArgs;
 /// import com.pulumi.azurenative.netapp.inputs.VolumePropertiesExportPolicyArgs;
+/// import com.pulumi.azurenative.netapp.inputs.ExportPolicyRuleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

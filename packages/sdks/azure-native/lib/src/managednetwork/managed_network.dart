@@ -71,7 +71,7 @@ import 'scope_response.dart';
 ///                 },
 ///             },
 ///         },
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -139,7 +139,7 @@ import 'scope_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -147,30 +147,33 @@ import 'scope_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_managednetwork_managednetwork" "managedNetwork" {
+/// resource "azure-native_managednetwork_managed_network" "managedNetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "eastus"
 ///   managed_network_name = "myManagedNetwork"
 ///   resource_group_name  = "myResourceGroup"
 ///   scope = {
 ///     management_groups = [{
-///       "id" = "/providers/Microsoft.Management/managementGroups/20000000-0001-0000-0000-000000000000"
+///       id = "/providers/Microsoft.Management/managementGroups/20000000-0001-0000-0000-000000000000"
 ///       }, {
-///       "id" = "/providers/Microsoft.Management/managementGroups/20000000-0002-0000-0000-000000000000"
+///       id = "/providers/Microsoft.Management/managementGroups/20000000-0002-0000-0000-000000000000"
 ///     }]
 ///     subnets = [{
-///       "id" = "/subscriptions/subscriptionC/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/VnetC/subnets/subnetA"
+///       id = "/subscriptions/subscriptionC/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/VnetC/subnets/subnetA"
 ///       }, {
-///       "id" = "/subscriptions/subscriptionC/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/VnetC/subnets/subnetB"
+///       id = "/subscriptions/subscriptionC/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/VnetC/subnets/subnetB"
 ///     }]
 ///     subscriptions = [{
-///       "id" = "subscriptionA"
+///       id = "subscriptionA"
 ///       }, {
-///       "id" = "subscriptionB"
+///       id = "subscriptionB"
 ///     }]
 ///     virtual_networks = [{
-///       "id" = "/subscriptions/subscriptionC/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/VnetA"
+///       id = "/subscriptions/subscriptionC/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/VnetA"
 ///       }, {
-///       "id" = "/subscriptions/subscriptionC/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/VnetB"
+///       id = "/subscriptions/subscriptionC/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/VnetB"
 ///     }]
 ///   }
 ///   tags = {}
@@ -187,6 +190,7 @@ import 'scope_response.dart';
 /// import com.pulumi.azurenative.managednetwork.ManagedNetwork;
 /// import com.pulumi.azurenative.managednetwork.ManagedNetworkArgs;
 /// import com.pulumi.azurenative.managednetwork.inputs.ScopeArgs;
+/// import com.pulumi.azurenative.managednetwork.inputs.ResourceIdArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;

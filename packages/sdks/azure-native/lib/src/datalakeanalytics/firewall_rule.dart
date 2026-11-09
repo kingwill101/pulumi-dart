@@ -58,7 +58,7 @@ import 'firewall_rule_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -66,7 +66,10 @@ import 'firewall_rule_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datalakeanalytics_firewallrule" "firewallRule" {
+/// resource "azure-native_datalakeanalytics_firewall_rule" "firewallRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name        = "contosoadla"
 ///   end_ip_address      = "2.2.2.2"
 ///   firewall_rule_name  = "test_rule"

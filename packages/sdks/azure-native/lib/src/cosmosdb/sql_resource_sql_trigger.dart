@@ -25,7 +25,7 @@ import 'sql_trigger_get_properties_response_resource.dart';
 ///         AccountName = "ddb1",
 ///         ContainerName = "containerName",
 ///         DatabaseName = "databaseName",
-///         Options = null,
+///         Options = new() { },
 ///         Resource = new AzureNative.CosmosDB.Inputs.SqlTriggerResourceArgs
 ///         {
 ///             Body = "body",
@@ -76,7 +76,7 @@ import 'sql_trigger_get_properties_response_resource.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -84,7 +84,10 @@ import 'sql_trigger_get_properties_response_resource.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_sqlresourcesqltrigger" "sqlResourceSqlTrigger" {
+/// resource "azure-native_cosmosdb_sql_resource_sql_trigger" "sqlResourceSqlTrigger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name   = "ddb1"
 ///   container_name = "containerName"
 ///   database_name  = "databaseName"

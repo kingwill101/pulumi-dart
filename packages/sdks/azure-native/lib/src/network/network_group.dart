@@ -61,7 +61,7 @@ import 'system_data_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -69,7 +69,10 @@ import 'system_data_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_networkgroup" "networkGroup" {
+/// resource "azure-native_network_network_group" "networkGroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description          = "A sample group"
 ///   member_type          = "VirtualNetwork"
 ///   network_group_name   = "testNetworkGroup"

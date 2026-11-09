@@ -104,7 +104,7 @@ import 'role_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -112,7 +112,10 @@ import 'role_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_cosmosdb_mongodbresourcemongoroledefinition" "mongoDBResourceMongoRoleDefinition" {
+/// resource "azure-native_cosmosdb_mongo_d_b_resource_mongo_role_definition" "mongoDBResourceMongoRoleDefinition" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name             = "myAccountName"
 ///   database_name            = "sales"
 ///   mongo_role_definition_id = "myMongoRoleDefinitionId"

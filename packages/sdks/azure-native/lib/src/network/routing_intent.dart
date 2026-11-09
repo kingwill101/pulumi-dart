@@ -94,7 +94,7 @@ import 'routing_policy_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -102,7 +102,10 @@ import 'routing_policy_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_network_routingintent" "routingIntent" {
+/// resource "azure-native_network_routing_intent" "routingIntent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = "rg1"
 ///   routing_intent_name = "Intent1"
 ///   routing_policies {

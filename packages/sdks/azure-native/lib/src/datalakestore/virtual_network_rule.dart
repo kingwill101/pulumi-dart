@@ -56,7 +56,7 @@ import 'virtual_network_rule_args.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -64,7 +64,10 @@ import 'virtual_network_rule_args.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_datalakestore_virtualnetworkrule" "virtualNetworkRule" {
+/// resource "azure-native_datalakestore_virtual_network_rule" "virtualNetworkRule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name              = "contosoadla"
 ///   resource_group_name       = "contosorg"
 ///   subnet_id                 = "test_subnetId"

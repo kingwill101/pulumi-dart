@@ -62,7 +62,7 @@ import 'alert_rule_all_of_condition_response.dart';
 ///         {
 ///             "/subscriptions/187f412d-1758-44d9-b052-169e2564721d",
 ///         },
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -123,7 +123,7 @@ import 'alert_rule_all_of_condition_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -131,11 +131,14 @@ import 'alert_rule_all_of_condition_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_activitylogalert" "activityLogAlert" {
+/// resource "azure-native_monitor_activity_log_alert" "activityLogAlert" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions = {
 ///     action_groups = [{
-///       "actionGroupId" = "/subscriptions/187f412d-1758-44d9-b052-169e2564721d/resourceGroups/MyResourceGroup/providers/Microsoft.Insights/actionGroups/SampleActionGroup"
-///       "webhookProperties" = {
+///       action_group_id = "/subscriptions/187f412d-1758-44d9-b052-169e2564721d/resourceGroups/MyResourceGroup/providers/Microsoft.Insights/actionGroups/SampleActionGroup"
+///       webhook_properties = {
 ///         "sampleWebhookProperty" = "SamplePropertyValue"
 ///       }
 ///     }]
@@ -143,11 +146,11 @@ import 'alert_rule_all_of_condition_response.dart';
 ///   activity_log_alert_name = "SampleActivityLogAlertRule"
 ///   condition = {
 ///     all_of = [{
-///       "equals" = "Administrative"
-///       "field"  = "category"
+///       equals = "Administrative"
+///       field  = "category"
 ///       }, {
-///       "equals" = "Error"
-///       "field"  = "level"
+///       equals = "Error"
+///       field  = "level"
 ///     }]
 ///   }
 ///   description         = "Description of sample Activity Log Alert rule."
@@ -169,7 +172,9 @@ import 'alert_rule_all_of_condition_response.dart';
 /// import com.pulumi.azurenative.monitor.ActivityLogAlert;
 /// import com.pulumi.azurenative.monitor.ActivityLogAlertArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ActionListArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ActionGroupArgs;
 /// import com.pulumi.azurenative.monitor.inputs.AlertRuleAllOfConditionArgs;
+/// import com.pulumi.azurenative.monitor.inputs.AlertRuleAnyOfOrLeafConditionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -377,7 +382,7 @@ import 'alert_rule_all_of_condition_response.dart';
 ///         {
 ///             "subscriptions/187f412d-1758-44d9-b052-169e2564721d",
 ///         },
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -446,7 +451,7 @@ import 'alert_rule_all_of_condition_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -454,11 +459,14 @@ import 'alert_rule_all_of_condition_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_activitylogalert" "activityLogAlert" {
+/// resource "azure-native_monitor_activity_log_alert" "activityLogAlert" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions = {
 ///     action_groups = [{
-///       "actionGroupId" = "/subscriptions/187f412d-1758-44d9-b052-169e2564721d/resourceGroups/MyResourceGroup/providers/Microsoft.Insights/actionGroups/SampleActionGroup"
-///       "webhookProperties" = {
+///       action_group_id = "/subscriptions/187f412d-1758-44d9-b052-169e2564721d/resourceGroups/MyResourceGroup/providers/Microsoft.Insights/actionGroups/SampleActionGroup"
+///       webhook_properties = {
 ///         "sampleWebhookProperty" = "SamplePropertyValue"
 ///       }
 ///     }]
@@ -466,15 +474,15 @@ import 'alert_rule_all_of_condition_response.dart';
 ///   activity_log_alert_name = "SampleActivityLogAlertRuleWithAnyOfCondition"
 ///   condition = {
 ///     all_of = [{
-///       "equals" = "ServiceHealth"
-///       "field"  = "category"
+///       equals = "ServiceHealth"
+///       field  = "category"
 ///       }, {
-///       "anyOf" = [{
-///         "equals" = "Incident"
-///         "field"  = "properties.incidentType"
+///       any_of = [{
+///         equals = "Incident"
+///         field  = "properties.incidentType"
 ///         }, {
-///         "equals" = "Maintenance"
-///         "field"  = "properties.incidentType"
+///         equals = "Maintenance"
+///         field  = "properties.incidentType"
 ///       }]
 ///     }]
 ///   }
@@ -497,7 +505,10 @@ import 'alert_rule_all_of_condition_response.dart';
 /// import com.pulumi.azurenative.monitor.ActivityLogAlert;
 /// import com.pulumi.azurenative.monitor.ActivityLogAlertArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ActionListArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ActionGroupArgs;
 /// import com.pulumi.azurenative.monitor.inputs.AlertRuleAllOfConditionArgs;
+/// import com.pulumi.azurenative.monitor.inputs.AlertRuleAnyOfOrLeafConditionArgs;
+/// import com.pulumi.azurenative.monitor.inputs.AlertRuleLeafConditionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -724,7 +735,7 @@ import 'alert_rule_all_of_condition_response.dart';
 ///         {
 ///             "subscriptions/187f412d-1758-44d9-b052-169e2564721d",
 ///         },
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 /// });
@@ -788,7 +799,7 @@ import 'alert_rule_all_of_condition_response.dart';
 /// ```
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure-native = {
 ///       source = "pulumi/azure-native"
@@ -796,11 +807,14 @@ import 'alert_rule_all_of_condition_response.dart';
 ///   }
 /// }
 ///
-/// resource "azure-native_monitor_activitylogalert" "activityLogAlert" {
+/// resource "azure-native_monitor_activity_log_alert" "activityLogAlert" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   actions = {
 ///     action_groups = [{
-///       "actionGroupId" = "/subscriptions/187f412d-1758-44d9-b052-169e2564721d/resourceGroups/MyResourceGroup/providers/Microsoft.Insights/actionGroups/SampleActionGroup"
-///       "webhookProperties" = {
+///       action_group_id = "/subscriptions/187f412d-1758-44d9-b052-169e2564721d/resourceGroups/MyResourceGroup/providers/Microsoft.Insights/actionGroups/SampleActionGroup"
+///       webhook_properties = {
 ///         "sampleWebhookProperty" = "SamplePropertyValue"
 ///       }
 ///     }]
@@ -808,11 +822,11 @@ import 'alert_rule_all_of_condition_response.dart';
 ///   activity_log_alert_name = "SampleActivityLogAlertRuleWithContainsAny"
 ///   condition = {
 ///     all_of = [{
-///       "equals" = "ServiceHealth"
-///       "field"  = "category"
+///       equals = "ServiceHealth"
+///       field  = "category"
 ///       }, {
-///       "containsAny" = ["North Europe", "West Europe"]
-///       "field"       = "properties.impactedServices[*].ImpactedRegions[*].RegionName"
+///       contains_any = ["North Europe", "West Europe"]
+///       field        = "properties.impactedServices[*].ImpactedRegions[*].RegionName"
 ///     }]
 ///   }
 ///   description         = "Description of sample Activity Log Alert rule with 'containsAny'."
@@ -834,7 +848,9 @@ import 'alert_rule_all_of_condition_response.dart';
 /// import com.pulumi.azurenative.monitor.ActivityLogAlert;
 /// import com.pulumi.azurenative.monitor.ActivityLogAlertArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ActionListArgs;
+/// import com.pulumi.azurenative.monitor.inputs.ActionGroupArgs;
 /// import com.pulumi.azurenative.monitor.inputs.AlertRuleAllOfConditionArgs;
+/// import com.pulumi.azurenative.monitor.inputs.AlertRuleAnyOfOrLeafConditionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
