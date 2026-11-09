@@ -156,7 +156,7 @@ import 'instance_state.dart';
 /// 		examplePrivateDnsNamespace, err := servicediscovery.NewPrivateDnsNamespace(ctx, "example", &servicediscovery.PrivateDnsNamespaceArgs{
 /// 			Name:        pulumi.String("example.domain.local"),
 /// 			Description: pulumi.String("example"),
-/// 			Vpc:         example.ID().ToIDOutput().ToStringOutput(),
+/// 			Vpc:         example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -169,7 +169,7 @@ import 'instance_state.dart';
 /// 						Type: pulumi.String("A"),
 /// 					},
 /// 				},
-/// 				NamespaceId:   examplePrivateDnsNamespace.ID().ToIDOutput().ToStringOutput(),
+/// 				NamespaceId:   examplePrivateDnsNamespace.ID(),
 /// 				RoutingPolicy: pulumi.String("MULTIVALUE"),
 /// 			},
 /// 			HealthCheckCustomConfig: &servicediscovery.ServiceHealthCheckCustomConfigArgs{
@@ -182,7 +182,7 @@ import 'instance_state.dart';
 /// 		}
 /// 		_, err = servicediscovery.NewInstance(ctx, "example", &servicediscovery.InstanceArgs{
 /// 			InstanceId: pulumi.String("example-instance-id"),
-/// 			ServiceId:  exampleService.ID().ToIDOutput().ToStringOutput(),
+/// 			ServiceId:  exampleService.ID(),
 /// 			Attributes: pulumi.StringMap{
 /// 				"AWS_INSTANCE_IPV4": pulumi.String("172.18.0.1"),
 /// 				"custom_attribute":  pulumi.String("custom"),
@@ -196,7 +196,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -205,22 +205,31 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block           = "10.0.0.0/16"
 ///   enable_dns_support   = true
 ///   enable_dns_hostnames = true
 /// }
-/// resource "aws_servicediscovery_privatednsnamespace" "example" {
+/// resource "aws_servicediscovery_private_dns_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example.domain.local"
 ///   description = "example"
 ///   vpc         = aws_ec2_vpc.example.id
 /// }
 /// resource "aws_servicediscovery_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dns_config = {
 ///     dns_records = [{
-///       "ttl"  = 10
-///       "type" = "A"
+///       ttl  = 10
+///       type = "A"
 ///     }]
-///     namespace_id   = aws_servicediscovery_privatednsnamespace.example.id
+///     namespace_id   = aws_servicediscovery_private_dns_namespace.example.id
 ///     routing_policy = "MULTIVALUE"
 ///   }
 ///   health_check_custom_config = {
@@ -229,6 +238,9 @@ import 'instance_state.dart';
 ///   name = "example"
 /// }
 /// resource "aws_servicediscovery_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id = "example-instance-id"
 ///   service_id  = aws_servicediscovery_service.example.id
 ///   attributes = {
@@ -435,14 +447,14 @@ import 'instance_state.dart';
 /// 		}
 /// 		exampleService, err := servicediscovery.NewService(ctx, "example", &servicediscovery.ServiceArgs{
 /// 			Name:        pulumi.String("example"),
-/// 			NamespaceId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			NamespaceId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = servicediscovery.NewInstance(ctx, "example", &servicediscovery.InstanceArgs{
 /// 			InstanceId: pulumi.String("example-instance-id"),
-/// 			ServiceId:  exampleService.ID().ToIDOutput().ToStringOutput(),
+/// 			ServiceId:  exampleService.ID(),
 /// 			Attributes: pulumi.StringMap{
 /// 				"AWS_EC2_INSTANCE_ID": pulumi.String("i-0abdg374kd892cj6dl"),
 /// 			},
@@ -455,7 +467,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -463,15 +475,24 @@ import 'instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_servicediscovery_httpnamespace" "example" {
+/// resource "aws_servicediscovery_http_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example.domain.test"
 ///   description = "example"
 /// }
 /// resource "aws_servicediscovery_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example"
-///   namespace_id = aws_servicediscovery_httpnamespace.example.id
+///   namespace_id = aws_servicediscovery_http_namespace.example.id
 /// }
 /// resource "aws_servicediscovery_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id = "example-instance-id"
 ///   service_id  = aws_servicediscovery_service.example.id
 ///   attributes = {
@@ -576,7 +597,7 @@ class Instance extends pulumi.CustomResource {
           'aws:servicediscovery/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     attributes = registerOutput<Map<String, String>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     instanceId = registerOutput<String>('instanceId');

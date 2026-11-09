@@ -149,7 +149,7 @@ import 'conformance_pack_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -157,14 +157,30 @@ import 'conformance_pack_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cfg_conformancepack" "example" {
+/// resource "aws_cfg_conformance_pack" "example" {
 ///   depends_on = [exampleAwsConfigConfigurationRecorder]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   input_parameters {
 ///     parameter_name  = "AccessKeysRotatedParameterMaxAccessKeyAge"
 ///     parameter_value = "90"
 ///   }
 ///   name          = "example"
-///   template_body = "Parameters:\n  AccessKeysRotatedParameterMaxAccessKeyAge:\n    Type: String\nResources:\n  IAMPasswordPolicy:\n    Properties:\n      ConfigRuleName: IAMPasswordPolicy\n      Source:\n        Owner: AWS\n        SourceIdentifier: IAM_PASSWORD_POLICY\n    Type: AWS::Config::ConfigRule\n"
+///   template_body = <<EOT
+/// Parameters:
+///   AccessKeysRotatedParameterMaxAccessKeyAge:
+///     Type: String
+/// Resources:
+///   IAMPasswordPolicy:
+///     Properties:
+///       ConfigRuleName: IAMPasswordPolicy
+///       Source:
+///         Owner: AWS
+///         SourceIdentifier: IAM_PASSWORD_POLICY
+///     Type: AWS::Config::ConfigRule
+/// EOT
+///
 /// }
 /// ```
 /// ```java
@@ -364,7 +380,7 @@ import 'conformance_pack_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleBucketObjectv2, err := s3.NewBucketObjectv2(ctx, "example", &s3.BucketObjectv2Args{
-/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: exampleBucket.ID(),
 /// 			Key:    pulumi.String("example-key"),
 /// 			Content: pulumi.String(`Resources:
 ///   IAMPasswordPolicy:
@@ -397,7 +413,7 @@ import 'conformance_pack_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -405,18 +421,37 @@ import 'conformance_pack_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cfg_conformancepack" "example" {
-///   depends_on      = [exampleAwsConfigConfigurationRecorder]
+/// resource "aws_cfg_conformance_pack" "example" {
+///   depends_on = [exampleAwsConfigConfigurationRecorder]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
-///   template_s3_uri ="s3://${aws_s3_bucket.example.bucket}/${aws_s3_bucketobjectv2.example.key}"
+///   template_s3_uri ="s3://${aws_s3_bucket.example.bucket}/${aws_s3_bucket_objectv2.example.key}"
 /// }
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example"
 /// }
-/// resource "aws_s3_bucketobjectv2" "example" {
+/// resource "aws_s3_bucket_objectv2" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket  = aws_s3_bucket.example.id
 ///   key     = "example-key"
-///   content = "Resources:\n  IAMPasswordPolicy:\n    Properties:\n      ConfigRuleName: IAMPasswordPolicy\n      Source:\n        Owner: AWS\n        SourceIdentifier: IAM_PASSWORD_POLICY\n    Type: AWS::Config::ConfigRule\n"
+///   content = <<EOT
+/// Resources:
+///   IAMPasswordPolicy:
+///     Properties:
+///       ConfigRuleName: IAMPasswordPolicy
+///       Source:
+///         Owner: AWS
+///         SourceIdentifier: IAM_PASSWORD_POLICY
+///     Type: AWS::Config::ConfigRule
+/// EOT
+///
 /// }
 /// ```
 /// ```java
@@ -562,7 +597,7 @@ class ConformancePack extends pulumi.CustomResource {
           'aws:cfg/conformancePack:ConformancePack',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deliveryS3Bucket = registerOutput<String?>('deliveryS3Bucket');

@@ -78,7 +78,7 @@ import 'finding_aggregator_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -87,9 +87,15 @@ import 'finding_aggregator_state.dart';
 /// }
 ///
 /// resource "aws_securityhub_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_securityhub_findingaggregator" "example" {
-///   depends_on   = [aws_securityhub_account.example]
+/// resource "aws_securityhub_finding_aggregator" "example" {
+///   depends_on = [aws_securityhub_account.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   linking_mode = "ALL_REGIONS"
 /// }
 /// ```
@@ -234,7 +240,7 @@ import 'finding_aggregator_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -243,9 +249,15 @@ import 'finding_aggregator_state.dart';
 /// }
 ///
 /// resource "aws_securityhub_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_securityhub_findingaggregator" "example" {
-///   depends_on        = [aws_securityhub_account.example]
+/// resource "aws_securityhub_finding_aggregator" "example" {
+///   depends_on = [aws_securityhub_account.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   linking_mode      = "ALL_REGIONS_EXCEPT_SPECIFIED"
 ///   specified_regions = ["eu-west-1", "eu-west-2"]
 /// }
@@ -397,7 +409,7 @@ import 'finding_aggregator_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -406,9 +418,15 @@ import 'finding_aggregator_state.dart';
 /// }
 ///
 /// resource "aws_securityhub_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_securityhub_findingaggregator" "example" {
-///   depends_on        = [aws_securityhub_account.example]
+/// resource "aws_securityhub_finding_aggregator" "example" {
+///   depends_on = [aws_securityhub_account.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   linking_mode      = "SPECIFIED_REGIONS"
 ///   specified_regions = ["eu-west-1", "eu-west-2"]
 /// }
@@ -540,7 +558,7 @@ import 'finding_aggregator_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -549,9 +567,15 @@ import 'finding_aggregator_state.dart';
 /// }
 ///
 /// resource "aws_securityhub_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_securityhub_findingaggregator" "example" {
-///   depends_on   = [aws_securityhub_account.example]
+/// resource "aws_securityhub_finding_aggregator" "example" {
+///   depends_on = [aws_securityhub_account.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   linking_mode = "NO_REGIONS"
 /// }
 /// ```
@@ -640,7 +664,7 @@ class FindingAggregator extends pulumi.CustomResource {
           'aws:securityhub/findingAggregator:FindingAggregator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     linkingMode = registerOutput<String>('linkingMode');

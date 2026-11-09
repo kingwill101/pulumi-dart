@@ -114,7 +114,7 @@ import 'snapshot_copy_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSnapshot, err := ebs.NewSnapshot(ctx, "example_snapshot", &ebs.SnapshotArgs{
-/// 			VolumeId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			VolumeId: example.ID(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("HelloWorld_snap"),
 /// 			},
@@ -123,7 +123,7 @@ import 'snapshot_copy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ebs.NewSnapshotCopy(ctx, "example_copy", &ebs.SnapshotCopyArgs{
-/// 			SourceSnapshotId: exampleSnapshot.ID().ToIDOutput().ToStringOutput(),
+/// 			SourceSnapshotId: exampleSnapshot.ID(),
 /// 			SourceRegion:     pulumi.String("us-west-2"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("HelloWorld_copy_snap"),
@@ -137,7 +137,7 @@ import 'snapshot_copy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -146,6 +146,9 @@ import 'snapshot_copy_state.dart';
 /// }
 ///
 /// resource "aws_ebs_volume" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_zone = "us-west-2a"
 ///   size              = 40
 ///   tags = {
@@ -153,12 +156,18 @@ import 'snapshot_copy_state.dart';
 ///   }
 /// }
 /// resource "aws_ebs_snapshot" "example_snapshot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   volume_id = aws_ebs_volume.example.id
 ///   tags = {
 ///     "Name" = "HelloWorld_snap"
 ///   }
 /// }
-/// resource "aws_ebs_snapshotcopy" "example_copy" {
+/// resource "aws_ebs_snapshot_copy" "example_copy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source_snapshot_id = aws_ebs_snapshot.example_snapshot.id
 ///   source_region      = "us-west-2"
 ///   tags = {
@@ -286,7 +295,7 @@ class SnapshotCopy extends pulumi.CustomResource {
           'aws:ebs/snapshotCopy:SnapshotCopy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     completionDurationMinutes = registerOutput<int?>('completionDurationMinutes');

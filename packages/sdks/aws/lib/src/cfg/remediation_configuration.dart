@@ -211,7 +211,7 @@ import 'remediation_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -220,13 +220,19 @@ import 'remediation_configuration_state.dart';
 /// }
 ///
 /// resource "aws_cfg_rule" "this" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source = {
 ///     owner             = "AWS"
 ///     source_identifier = "S3_BUCKET_VERSIONING_ENABLED"
 ///   }
 ///   name = "example"
 /// }
-/// resource "aws_cfg_remediationconfiguration" "this" {
+/// resource "aws_cfg_remediation_configuration" "this" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   execution_controls = {
 ///     ssm_controls = {
 ///       concurrent_execution_rate_percentage = 25
@@ -417,7 +423,7 @@ class RemediationConfiguration extends pulumi.CustomResource {
           'aws:cfg/remediationConfiguration:RemediationConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     automatic = registerOutput<bool?>('automatic');

@@ -84,7 +84,7 @@ import 'access_grants_location_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -92,10 +92,16 @@ import 'access_grants_location_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3control_accessgrantsinstance" "example" {
+/// resource "aws_s3control_access_grants_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_s3control_accessgrantslocation" "example" {
-///   depends_on     = [aws_s3control_accessgrantsinstance.example]
+/// resource "aws_s3control_access_grants_location" "example" {
+///   depends_on = [aws_s3control_access_grants_instance.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   iam_role_arn   = exampleAwsIamRole.arn
 ///   location_scope = "s3://"
 /// }
@@ -126,7 +132,7 @@ import 'access_grants_location_state.dart';
 ///         var example = new AccessGrantsInstance("example");
 ///
 ///         var exampleAccessGrantsLocation = new AccessGrantsLocation("exampleAccessGrantsLocation", AccessGrantsLocationArgs.builder()
-///             .iamRoleArn(exampleAwsIamRole.arn())
+///             .iamRoleArn(exampleAwsIamRole.get("arn"))
 ///             .locationScope("s3://")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(example)
@@ -188,7 +194,7 @@ class AccessGrantsLocation extends pulumi.CustomResource {
           'aws:s3control/accessGrantsLocation:AccessGrantsLocation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accessGrantsLocationArn = registerOutput<String>('accessGrantsLocationArn');
     accessGrantsLocationId = registerOutput<String>('accessGrantsLocationId');

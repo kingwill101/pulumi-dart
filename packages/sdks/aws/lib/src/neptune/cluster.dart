@@ -91,7 +91,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -100,6 +100,9 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_neptune_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier                  = "neptune-cluster-demo"
 ///   engine                              = "neptune"
 ///   backup_retention_period             = 5
@@ -217,6 +220,8 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String?> neptuneInstanceParameterGroupName;
   /// Neptune subnet group to associate with this Neptune instance.
   late final pulumi.Output<String> neptuneSubnetGroupName;
+  /// Network type of the Neptune cluster. Valid values: `IPV4`, `DUAL`. Default: `IPV4`. Specifying `DUAL` enables dual-stack IPv4/IPv6 connectivity. The Neptune DB subnet group associated with the cluster must be backed by IPv6-capable subnets. See the [Neptune dual-stack documentation](https://docs.aws.amazon.com/neptune/latest/userguide/neptune-dualstack-db-cluster.html) for prerequisites.
+  late final pulumi.Output<String> networkType;
   /// Port on which the Neptune accepts connections. Default is `8182`.
   late final pulumi.Output<int?> port;
   /// Daily time range during which automated backups are created if automated backups are enabled using the BackupRetentionPeriod parameter. Time in UTC. Default: A 30-minute window selected at random from an 8-hour block of time per regionE.g., 04:00-09:00
@@ -258,7 +263,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:neptune/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     allowMajorVersionUpgrade = registerOutput<bool>('allowMajorVersionUpgrade');
     applyImmediately = registerOutput<bool>('applyImmediately');
@@ -284,6 +289,7 @@ class Cluster extends pulumi.CustomResource {
     neptuneClusterParameterGroupName = registerOutput<String>('neptuneClusterParameterGroupName');
     neptuneInstanceParameterGroupName = registerOutput<String?>('neptuneInstanceParameterGroupName');
     neptuneSubnetGroupName = registerOutput<String>('neptuneSubnetGroupName');
+    networkType = registerOutput<String>('networkType');
     port = registerOutput<int?>('port');
     preferredBackupWindow = registerOutput<String>('preferredBackupWindow');
     preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');
@@ -348,6 +354,7 @@ class Cluster extends pulumi.CustomResource {
     neptuneClusterParameterGroupName = registerOutput<String>('neptuneClusterParameterGroupName');
     neptuneInstanceParameterGroupName = registerOutput<String?>('neptuneInstanceParameterGroupName');
     neptuneSubnetGroupName = registerOutput<String>('neptuneSubnetGroupName');
+    networkType = registerOutput<String>('networkType');
     port = registerOutput<int?>('port');
     preferredBackupWindow = registerOutput<String>('preferredBackupWindow');
     preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');
@@ -397,6 +404,7 @@ class Cluster extends pulumi.CustomResource {
     neptuneClusterParameterGroupName = registerOutput<String>('neptuneClusterParameterGroupName');
     neptuneInstanceParameterGroupName = registerOutput<String?>('neptuneInstanceParameterGroupName');
     neptuneSubnetGroupName = registerOutput<String>('neptuneSubnetGroupName');
+    networkType = registerOutput<String>('networkType');
     port = registerOutput<int?>('port');
     preferredBackupWindow = registerOutput<String>('preferredBackupWindow');
     preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');

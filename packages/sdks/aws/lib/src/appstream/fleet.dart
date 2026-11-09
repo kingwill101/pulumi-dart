@@ -137,7 +137,7 @@ import 'fleet_vpc_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -146,10 +146,13 @@ import 'fleet_vpc_config.dart';
 /// }
 ///
 /// resource "aws_appstream_fleet" "test_fleet" {
-///   compute_capacity = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   compute_capacity {
 ///     desired_instances = 1
 ///   }
-///   vpc_config = {
+///   vpc_config {
 ///     subnet_ids = ["subnet-06e9b13400c225127"]
 ///   }
 ///   name                               = "test-fleet"
@@ -304,7 +307,7 @@ class Fleet extends pulumi.CustomResource {
           'aws:appstream/fleet:Fleet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     computeCapacity = registerOutput<FleetComputeCapacity>('computeCapacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetComputeCapacity.fromMap((guardedValue as Map).cast<String, dynamic>()); });

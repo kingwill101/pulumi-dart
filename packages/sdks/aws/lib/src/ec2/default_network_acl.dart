@@ -161,7 +161,7 @@ import 'default_network_acl_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -170,9 +170,15 @@ import 'default_network_acl_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "mainvpc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.1.0.0/16"
 /// }
-/// resource "aws_ec2_defaultnetworkacl" "default" {
+/// resource "aws_ec2_default_network_acl" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   egress {
 ///     protocol   = -1
 ///     rule_no    = 100
@@ -378,7 +384,7 @@ import 'default_network_acl_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -387,9 +393,15 @@ import 'default_network_acl_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "mainvpc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.1.0.0/16"
 /// }
-/// resource "aws_ec2_defaultnetworkacl" "default" {
+/// resource "aws_ec2_default_network_acl" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ingress {
 ///     protocol   = -1
 ///     rule_no    = 100
@@ -434,7 +446,7 @@ import 'default_network_acl_state.dart';
 ///                 .protocol("-1")
 ///                 .ruleNo(100)
 ///                 .action("allow")
-///                 .cidrBlock(mainvpcAwsDefaultVpc.cidrBlock())
+///                 .cidrBlock(mainvpcAwsDefaultVpc.get("cidrBlock"))
 ///                 .fromPort(0)
 ///                 .toPort(0)
 ///                 .build())
@@ -530,7 +542,7 @@ import 'default_network_acl_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -539,9 +551,15 @@ import 'default_network_acl_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "mainvpc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.1.0.0/16"
 /// }
-/// resource "aws_ec2_defaultnetworkacl" "default" {
+/// resource "aws_ec2_default_network_acl" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   default_network_acl_id = aws_ec2_vpc.mainvpc.default_network_acl_id
 /// }
 /// ```
@@ -658,7 +676,7 @@ import 'default_network_acl_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -666,9 +684,10 @@ import 'default_network_acl_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_defaultnetworkacl" "default" {
+/// resource "aws_ec2_default_network_acl" "default" {
 ///   lifecycle {
-///     ignore_changes = [subnetIds]
+///     ignore_changes        = [subnetIds]
+///     create_before_destroy = true
 ///   }
 /// }
 /// ```
@@ -758,7 +777,7 @@ class DefaultNetworkAcl extends pulumi.CustomResource {
           'aws:ec2/defaultNetworkAcl:DefaultNetworkAcl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultNetworkAclId = registerOutput<String>('defaultNetworkAclId');

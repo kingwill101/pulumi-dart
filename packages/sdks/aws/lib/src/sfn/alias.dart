@@ -142,7 +142,7 @@ import 'alias_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -151,18 +151,24 @@ import 'alias_state.dart';
 /// }
 ///
 /// resource "aws_sfn_alias" "sfn_alias" {
-///   routing_configurations {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   routing_configuration {
 ///     state_machine_version_arn = sfnTest.stateMachineVersionArn
 ///     weight                    = 100
 ///   }
 ///   name = "my_sfn_alias"
 /// }
 /// resource "aws_sfn_alias" "my_sfn_alias" {
-///   routing_configurations {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   routing_configuration {
 ///     state_machine_version_arn = "arn:aws:states:us-east-1:12345:stateMachine:demo:3"
 ///     weight                    = 50
 ///   }
-///   routing_configurations {
+///   routing_configuration {
 ///     state_machine_version_arn = "arn:aws:states:us-east-1:12345:stateMachine:demo:2"
 ///     weight                    = 50
 ///   }
@@ -193,7 +199,7 @@ import 'alias_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var sfnAlias = new Alias("sfnAlias", AliasArgs.builder()
 ///             .routingConfigurations(AliasRoutingConfigurationArgs.builder()
-///                 .stateMachineVersionArn(sfnTest.stateMachineVersionArn())
+///                 .stateMachineVersionArn(sfnTest.get("stateMachineVersionArn"))
 ///                 .weight(100)
 ///                 .build())
 ///             .name("my_sfn_alias")
@@ -278,7 +284,7 @@ class Alias extends pulumi.CustomResource {
           'aws:sfn/alias:Alias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationDate = registerOutput<String>('creationDate');

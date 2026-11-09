@@ -217,7 +217,7 @@ import 'extension_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -225,8 +225,8 @@ import 'extension_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "test" {
-///   statements {
+/// data "aws_iam_policy_document" "test" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["appconfig.amazonaws.com"]
@@ -236,15 +236,24 @@ import 'extension_state.dart';
 /// }
 ///
 /// resource "aws_sns_topic" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test"
 /// }
 /// resource "aws_iam_role" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "test"
-///   assume_role_policy = data.aws_iam_getpolicydocument.test.json
+///   assume_role_policy = data.aws_iam_policy_document.test.json
 /// }
 /// resource "aws_appconfig_extension" "test" {
-///   action_points {
-///     actions {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   action_point {
+///     action {
 ///       name     = "test"
 ///       role_arn = aws_iam_role.test.arn
 ///       uri      = aws_sns_topic.test.arn
@@ -405,7 +414,7 @@ class Extension extends pulumi.CustomResource {
           'aws:appconfig/extension:Extension',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     actionPoints = registerOutput<List<ExtensionActionPoint>>('actionPoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExtensionActionPoint>(guardedValue, (value) => ExtensionActionPoint.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');

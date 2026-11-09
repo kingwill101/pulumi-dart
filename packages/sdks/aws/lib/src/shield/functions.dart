@@ -59,7 +59,7 @@ import 'get_protection_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,7 @@ import 'get_protection_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_shield_getprotection" "example" {
+/// data "aws_shield_protection" "example" {
 ///   protection_id = "abc123"
 /// }
 /// ```
@@ -162,7 +162,7 @@ import 'get_protection_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -170,7 +170,7 @@ import 'get_protection_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_shield_getprotection" "example" {
+/// data "aws_shield_protection" "example" {
 ///   resource_arn = "arn:aws:globalaccelerator::123456789012:accelerator/1234abcd-abcd-1234-abcd-1234abcdefgh"
 /// }
 /// ```

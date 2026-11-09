@@ -62,7 +62,7 @@ import 'origin_access_identity_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'origin_access_identity_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_originaccessidentity" "example" {
+/// resource "aws_cloudfront_origin_access_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   comment = "Some comment"
 /// }
 /// ```
@@ -191,7 +194,7 @@ import 'origin_access_identity_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -200,8 +203,11 @@ import 'origin_access_identity_state.dart';
 /// }
 ///
 /// resource "aws_cloudfront_distribution" "example" {
-///   origins {
-///     s3_origin_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   origin {
+///     s3_origin_config {
 ///       origin_access_identity = exampleAwsCloudfrontOriginAccessIdentity.cloudfrontAccessIdentityPath
 ///     }
 ///   }
@@ -233,7 +239,7 @@ import 'origin_access_identity_state.dart';
 ///         var example = new Distribution("example", DistributionArgs.builder()
 ///             .origins(DistributionOriginArgs.builder()
 ///                 .s3OriginConfig(DistributionOriginS3OriginConfigArgs.builder()
-///                     .originAccessIdentity(exampleAwsCloudfrontOriginAccessIdentity.cloudfrontAccessIdentityPath())
+///                     .originAccessIdentity(exampleAwsCloudfrontOriginAccessIdentity.get("cloudfrontAccessIdentityPath"))
 ///                     .build())
 ///                 .build())
 ///             .build());
@@ -359,7 +365,7 @@ import 'origin_access_identity_state.dart';
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "AWS",
-/// 							Identifiers: pulumi.StringArray{
+/// 							Identifiers: []string{
 /// 								exampleAwsCloudfrontOriginAccessIdentity.IamArn,
 /// 							},
 /// 						},
@@ -388,7 +394,7 @@ import 'origin_access_identity_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -396,8 +402,8 @@ import 'origin_access_identity_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "s3Policy" {
-///   statements {
+/// data "aws_iam_policy_document" "s3Policy" {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = [exampleAwsCloudfrontOriginAccessIdentity.iamArn]
@@ -407,9 +413,12 @@ import 'origin_access_identity_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_bucketpolicy" "example" {
+/// resource "aws_s3_bucket_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = exampleAwsS3Bucket.id
-///   policy = data.aws_iam_getpolicydocument.s3Policy.json
+///   policy = data.aws_iam_policy_document.s3Policy.json
 /// }
 /// ```
 /// ```java
@@ -441,15 +450,15 @@ import 'origin_access_identity_state.dart';
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("AWS")
-///                     .identifiers(exampleAwsCloudfrontOriginAccessIdentity.iamArn())
+///                     .identifiers(exampleAwsCloudfrontOriginAccessIdentity.get("iamArn"))
 ///                     .build())
 ///                 .actions("s3:GetObject")
-///                 .resources(String.format("%s/*", exampleAwsS3Bucket.arn()))
+///                 .resources(String.format("%s/*", exampleAwsS3Bucket.get("arn")))
 ///                 .build())
 ///             .build());
 ///
 ///         var example = new BucketPolicy("example", BucketPolicyArgs.builder()
-///             .bucket(exampleAwsS3Bucket.id())
+///             .bucket(exampleAwsS3Bucket.get("id"))
 ///             .policy(s3Policy.json())
 ///             .build());
 ///
@@ -522,7 +531,7 @@ class OriginAccessIdentity extends pulumi.CustomResource {
           'aws:cloudfront/originAccessIdentity:OriginAccessIdentity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     callerReference = registerOutput<String>('callerReference');

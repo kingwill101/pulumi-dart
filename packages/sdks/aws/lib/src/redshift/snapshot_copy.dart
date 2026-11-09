@@ -64,7 +64,7 @@ import 'snapshot_copy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'snapshot_copy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_redshift_snapshotcopy" "example" {
+/// resource "aws_redshift_snapshot_copy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier = exampleAwsRedshiftCluster.id
 ///   destination_region = "us-east-1"
 /// }
@@ -99,7 +102,7 @@ import 'snapshot_copy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new SnapshotCopy("example", SnapshotCopyArgs.builder()
-///             .clusterIdentifier(exampleAwsRedshiftCluster.id())
+///             .clusterIdentifier(exampleAwsRedshiftCluster.get("id"))
 ///             .destinationRegion("us-east-1")
 ///             .build());
 ///
@@ -151,7 +154,7 @@ class SnapshotCopy extends pulumi.CustomResource {
           'aws:redshift/snapshotCopy:SnapshotCopy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     destinationRegion = registerOutput<String>('destinationRegion');

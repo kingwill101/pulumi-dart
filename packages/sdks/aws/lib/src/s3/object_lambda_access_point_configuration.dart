@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'object_lambda_access_point_configuration_transformation_configuration.dart';
 
 class ObjectLambdaAccessPointConfiguration {
-  /// Allowed features. Valid values: `GetObject-Range`, `GetObject-PartNumber`.
+  /// Allowed features. Valid values: `GetObject-Range`, `GetObject-PartNumber`, `HeadObject-Range`, `HeadObject-PartNumber`.
   final pulumi.Input<List<String>?>? allowedFeatures;
   /// Whether or not the CloudWatch metrics configuration is enabled.
   final pulumi.Input<bool?>? cloudWatchMetricsEnabled;
@@ -14,7 +14,7 @@ class ObjectLambdaAccessPointConfiguration {
   final pulumi.Input<List<ObjectLambdaAccessPointConfigurationTransformationConfiguration>> transformationConfigurations;
 
   /// Creates a new [ObjectLambdaAccessPointConfiguration].
-  /// [allowedFeatures] Allowed features. Valid values: `GetObject-Range`, `GetObject-PartNumber`.
+  /// [allowedFeatures] Allowed features. Valid values: `GetObject-Range`, `GetObject-PartNumber`, `HeadObject-Range`, `HeadObject-PartNumber`.
   /// [cloudWatchMetricsEnabled] Whether or not the CloudWatch metrics configuration is enabled.
   /// [supportingAccessPoint] Standard access point associated with the Object Lambda Access Point.
   /// [transformationConfigurations] List of transformation configurations for the Object Lambda Access Point. See `transformationConfiguration` Block below for more details.

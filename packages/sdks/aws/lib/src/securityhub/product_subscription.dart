@@ -83,7 +83,7 @@ import 'product_subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -91,14 +91,20 @@ import 'product_subscription_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
 ///
 /// resource "aws_securityhub_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_securityhub_productsubscription" "example" {
-///   depends_on  = [aws_securityhub_account.example]
-///   product_arn ="arn:aws:securityhub:${data.aws_getregion.current.region}:733251395267:product/alertlogic/althreatmanagement"
+/// resource "aws_securityhub_product_subscription" "example" {
+///   depends_on = [aws_securityhub_account.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   product_arn ="arn:aws:securityhub:${data.aws_region.current.region}:733251395267:product/alertlogic/althreatmanagement"
 /// }
 /// ```
 /// ```java
@@ -238,7 +244,7 @@ class ProductSubscription extends pulumi.CustomResource {
           'aws:securityhub/productSubscription:ProductSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     productArn = registerOutput<String>('productArn');

@@ -104,7 +104,7 @@ import 'daemon_task_definition_volume.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -112,8 +112,11 @@ import 'daemon_task_definition_volume.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecs_daemontaskdefinition" "example" {
-///   container_definitions {
+/// resource "aws_ecs_daemon_task_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   container_definition {
 ///     name      = "app"
 ///     image     = "nginx:latest"
 ///     cpu       = 256
@@ -427,7 +430,7 @@ import 'daemon_task_definition_volume.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -436,6 +439,9 @@ import 'daemon_task_definition_volume.dart';
 /// }
 ///
 /// resource "aws_iam_role" "task_execution" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "daemon-task-execution-role"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -449,6 +455,9 @@ import 'daemon_task_definition_volume.dart';
 ///   })
 /// }
 /// resource "aws_iam_role" "task" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "daemon-task-role"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -461,8 +470,11 @@ import 'daemon_task_definition_volume.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_ecs_daemontaskdefinition" "example" {
-///   container_definitions {
+/// resource "aws_ecs_daemon_task_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   container_definition {
 ///     name      = "app"
 ///     image     = "nginx:latest"
 ///     cpu       = 256
@@ -760,7 +772,7 @@ import 'daemon_task_definition_volume.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -768,22 +780,25 @@ import 'daemon_task_definition_volume.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecs_daemontaskdefinition" "example" {
-///   container_definitions {
+/// resource "aws_ecs_daemon_task_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   container_definition {
 ///     name      = "app"
 ///     image     = "nginx:latest"
 ///     cpu       = 256
 ///     memory    = 512
 ///     essential = true
 ///   }
-///   volumes {
-///     hosts {
+///   volume {
+///     host {
 ///       source_path = "/data"
 ///     }
 ///     name = "data-volume"
 ///   }
-///   volumes {
-///     hosts {
+///   volume {
+///     host {
 ///       source_path = "/var/log"
 ///     }
 ///     name = "logs-volume"
@@ -999,7 +1014,7 @@ import 'daemon_task_definition_volume.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1007,15 +1022,18 @@ import 'daemon_task_definition_volume.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecs_daemontaskdefinition" "example" {
-///   container_definitions {
+/// resource "aws_ecs_daemon_task_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   container_definition {
 ///     name      = "app"
 ///     image     = "my-app:latest"
 ///     cpu       = 256
 ///     memory    = 512
 ///     essential = true
 ///   }
-///   container_definitions {
+///   container_definition {
 ///     name      = "sidecar"
 ///     image     = "datadog/agent:latest"
 ///     cpu       = 128
@@ -1151,7 +1169,7 @@ class DaemonTaskDefinition extends pulumi.CustomResource {
           'aws:ecs/daemonTaskDefinition:DaemonTaskDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     containerDefinitions = registerOutput<List<DaemonTaskDefinitionContainerDefinition>>('containerDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DaemonTaskDefinitionContainerDefinition>(guardedValue, (value) => DaemonTaskDefinitionContainerDefinition.fromMap((value as Map).cast<String, dynamic>())); });

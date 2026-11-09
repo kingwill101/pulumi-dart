@@ -155,7 +155,7 @@ import 'permission_set_inline_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -163,24 +163,30 @@ import 'permission_set_inline_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
-/// data "aws_iam_getpolicydocument" "exampleGetPolicyDocument" {
-///   statements {
+/// data "aws_iam_policy_document" "exampleGetPolicyDocument" {
+///   statement {
 ///     sid       = "1"
 ///     actions   = ["s3:ListAllMyBuckets", "s3:GetBucketLocation"]
 ///     resources = ["arn:aws:s3:::*"]
 ///   }
 /// }
 ///
-/// resource "aws_ssoadmin_permissionset" "example" {
+/// resource "aws_ssoadmin_permission_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "Example"
-///   instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+///   instance_arn = data.aws_ssoadmin_instances.example.arns[0]
 /// }
-/// resource "aws_ssoadmin_permissionsetinlinepolicy" "example" {
-///   inline_policy      = data.aws_iam_getpolicydocument.exampleGetPolicyDocument.json
-///   instance_arn       = data.aws_ssoadmin_getinstances.example.arns[0]
-///   permission_set_arn = aws_ssoadmin_permissionset.example.arn
+/// resource "aws_ssoadmin_permission_set_inline_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   inline_policy      = data.aws_iam_policy_document.exampleGetPolicyDocument.json
+///   instance_arn       = data.aws_ssoadmin_instances.example.arns[0]
+///   permission_set_arn = aws_ssoadmin_permission_set.example.arn
 /// }
 /// ```
 /// ```java
@@ -301,7 +307,7 @@ class PermissionSetInlinePolicy extends pulumi.CustomResource {
           'aws:ssoadmin/permissionSetInlinePolicy:PermissionSetInlinePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     inlinePolicy = registerOutput<String>('inlinePolicy');
     instanceArn = registerOutput<String>('instanceArn');

@@ -189,7 +189,7 @@ import 'domain_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -197,9 +197,9 @@ import 'domain_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "main" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "main" {
+///   statement {
+///     condition {
 ///       test     = "IpAddress"
 ///       variable = "aws:SourceIp"
 ///       values   = ["127.0.0.1/32"]
@@ -215,12 +215,18 @@ import 'domain_policy_state.dart';
 /// }
 ///
 /// resource "aws_opensearch_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name    = "tf-test"
 ///   engine_version = "OpenSearch_1.1"
 /// }
-/// resource "aws_opensearch_domainpolicy" "main" {
+/// resource "aws_opensearch_domain_policy" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name     = aws_opensearch_domain.example.domain_name
-///   access_policies = data.aws_iam_getpolicydocument.main.json
+///   access_policies = data.aws_iam_policy_document.main.json
 /// }
 /// ```
 /// ```java
@@ -344,7 +350,7 @@ class DomainPolicy extends pulumi.CustomResource {
           'aws:opensearch/domainPolicy:DomainPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accessPolicies = registerOutput<String>('accessPolicies');
     domainName = registerOutput<String>('domainName');

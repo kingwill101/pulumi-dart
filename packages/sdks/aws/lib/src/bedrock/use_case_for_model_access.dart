@@ -107,7 +107,7 @@ import 'use_case_for_model_access_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -115,7 +115,10 @@ import 'use_case_for_model_access_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_usecaseformodelaccess" "example" {
+/// resource "aws_bedrock_use_case_for_model_access" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   form_data = jsonencode({
 ///     "companyName"         = "AWS Provider"
 ///     "companyWebsite"      = "https://www.test.com"
@@ -215,7 +218,7 @@ class UseCaseForModelAccess extends pulumi.CustomResource {
           'aws:bedrock/useCaseForModelAccess:UseCaseForModelAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     formData = registerOutput<String>('formData');
   }

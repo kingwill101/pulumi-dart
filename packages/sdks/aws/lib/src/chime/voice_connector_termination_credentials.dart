@@ -140,7 +140,7 @@ import 'voice_connector_termination_credentials_state.dart';
 /// 				pulumi.String("US"),
 /// 				pulumi.String("CA"),
 /// 			},
-/// 			VoiceConnectorId: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			VoiceConnectorId: _default.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -152,7 +152,7 @@ import 'voice_connector_termination_credentials_state.dart';
 /// 					Password: pulumi.String("test!"),
 /// 				},
 /// 			},
-/// 			VoiceConnectorId: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			VoiceConnectorId: _default.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			defaultVoiceConnectorTermination,
 /// 		}))
@@ -164,7 +164,7 @@ import 'voice_connector_termination_credentials_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -172,24 +172,33 @@ import 'voice_connector_termination_credentials_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_chime_voiceconnector" "default" {
+/// resource "aws_chime_voice_connector" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "test"
 ///   require_encryption = true
 /// }
-/// resource "aws_chime_voiceconnectortermination" "default" {
+/// resource "aws_chime_voice_connector_termination" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   disabled           = true
 ///   cps_limit          = 1
-///   cidr_allow_lists   = ["50.35.78.96/31"]
+///   cidr_allow_list    = ["50.35.78.96/31"]
 ///   calling_regions    = ["US", "CA"]
-///   voice_connector_id = aws_chime_voiceconnector.default.id
+///   voice_connector_id = aws_chime_voice_connector.default.id
 /// }
-/// resource "aws_chime_voiceconnectorterminationcredentials" "default" {
-///   depends_on = [aws_chime_voiceconnectortermination.default]
+/// resource "aws_chime_voice_connector_termination_credentials" "default" {
+///   depends_on = [aws_chime_voice_connector_termination.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   credentials {
 ///     username = "test"
 ///     password = "test!"
 ///   }
-///   voice_connector_id = aws_chime_voiceconnector.default.id
+///   voice_connector_id = aws_chime_voice_connector.default.id
 /// }
 /// ```
 /// ```java
@@ -307,7 +316,7 @@ class VoiceConnectorTerminationCredentials extends pulumi.CustomResource {
           'aws:chime/voiceConnectorTerminationCredentials:VoiceConnectorTerminationCredentials',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     credentials = registerOutput<List<VoiceConnectorTerminationCredentialsCredential>>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VoiceConnectorTerminationCredentialsCredential>(guardedValue, (value) => VoiceConnectorTerminationCredentialsCredential.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');

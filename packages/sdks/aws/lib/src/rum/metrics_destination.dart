@@ -62,7 +62,7 @@ import 'metrics_destination_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'metrics_destination_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_rum_metricsdestination" "example" {
+/// resource "aws_rum_metrics_destination" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_monitor_name = exampleAwsRumAppMonitor.name
 ///   destination      = "CloudWatch"
 /// }
@@ -97,7 +100,7 @@ import 'metrics_destination_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new MetricsDestination("example", MetricsDestinationArgs.builder()
-///             .appMonitorName(exampleAwsRumAppMonitor.name())
+///             .appMonitorName(exampleAwsRumAppMonitor.get("name"))
 ///             .destination("CloudWatch")
 ///             .build());
 ///
@@ -145,7 +148,7 @@ class MetricsDestination extends pulumi.CustomResource {
           'aws:rum/metricsDestination:MetricsDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     appMonitorName = registerOutput<String>('appMonitorName');
     destination = registerOutput<String>('destination');

@@ -114,7 +114,7 @@ import 'user_defined_function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -122,17 +122,23 @@ import 'user_defined_function_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_glue_catalogdatabase" "example" {
+/// resource "aws_glue_catalog_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my_database"
 /// }
-/// resource "aws_glue_userdefinedfunction" "example" {
+/// resource "aws_glue_user_defined_function" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_uris {
 ///     resource_type = "ARCHIVE"
 ///     uri           = "uri"
 ///   }
 ///   name          = "my_func"
-///   catalog_id    = aws_glue_catalogdatabase.example.catalog_id
-///   database_name = aws_glue_catalogdatabase.example.name
+///   catalog_id    = aws_glue_catalog_database.example.catalog_id
+///   database_name = aws_glue_catalog_database.example.name
 ///   class_name    = "class"
 ///   owner_name    = "owner"
 ///   owner_type    = "GROUP"
@@ -245,7 +251,7 @@ class UserDefinedFunction extends pulumi.CustomResource {
           'aws:glue/userDefinedFunction:UserDefinedFunction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     catalogId = registerOutput<String?>('catalogId');

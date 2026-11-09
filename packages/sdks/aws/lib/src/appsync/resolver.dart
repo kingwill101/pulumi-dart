@@ -304,7 +304,7 @@ import 'resolver_sync_config.dart';
 /// 			HttpConfig: &appsync.DataSourceHttpConfigArgs{
 /// 				Endpoint: pulumi.String("http://example.com"),
 /// 			},
-/// 			ApiId: test.ID().ToIDOutput().ToStringOutput(),
+/// 			ApiId: test.ID(),
 /// 			Name:  pulumi.String("my_example"),
 /// 			Type:  pulumi.String("HTTP"),
 /// 		})
@@ -320,7 +320,7 @@ import 'resolver_sync_config.dart';
 /// 				},
 /// 				Ttl: pulumi.Int(60),
 /// 			},
-/// 			ApiId:      test.ID().ToIDOutput().ToStringOutput(),
+/// 			ApiId:      test.ID(),
 /// 			Field:      pulumi.String("singlePost"),
 /// 			Type:       pulumi.String("Query"),
 /// 			DataSource: testDataSource.Name,
@@ -353,7 +353,7 @@ import 'resolver_sync_config.dart';
 /// 				},
 /// 			},
 /// 			Type:             pulumi.String("Mutation"),
-/// 			ApiId:            test.ID().ToIDOutput().ToStringOutput(),
+/// 			ApiId:            test.ID(),
 /// 			Field:            pulumi.String("pipelineTest"),
 /// 			RequestTemplate:  pulumi.String("{}"),
 /// 			ResponseTemplate: pulumi.String("$util.toJson($ctx.result)"),
@@ -367,7 +367,7 @@ import 'resolver_sync_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -375,39 +375,87 @@ import 'resolver_sync_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appsync_graphqlapi" "test" {
+/// resource "aws_appsync_graph_q_l_api" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authentication_type = "API_KEY"
 ///   name                = "tf-example"
-///   schema              = "type Mutation {\n\\tputPost(id: ID!, title: String!): Post\n}\n\ntype Post {\n\\tid: ID!\n\\ttitle: String!\n}\n\ntype Query {\n\\tsinglePost(id: ID!): Post\n}\n\nschema {\n\\tquery: Query\n\\tmutation: Mutation\n}\n"
+///   schema              = <<EOF
+/// type Mutation {
+/// \tputPost(id: ID!, title: String!): Post
 /// }
-/// resource "aws_appsync_datasource" "test" {
+///
+/// type Post {
+/// \tid: ID!
+/// \ttitle: String!
+/// }
+///
+/// type Query {
+/// \tsinglePost(id: ID!): Post
+/// }
+///
+/// schema {
+/// \tquery: Query
+/// \tmutation: Mutation
+/// }
+/// EOF
+///
+/// }
+/// resource "aws_appsync_data_source" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   http_config = {
 ///     endpoint = "http://example.com"
 ///   }
-///   api_id = aws_appsync_graphqlapi.test.id
+///   api_id = aws_appsync_graph_q_l_api.test.id
 ///   name   = "my_example"
 ///   type   = "HTTP"
 /// }
 /// # UNIT type resolver (default)
 /// resource "aws_appsync_resolver" "test" {
-///   caching_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   caching_config {
 ///     caching_keys = ["$context.identity.sub", "$context.arguments.id"]
 ///     ttl          = 60
 ///   }
-///   api_id            = aws_appsync_graphqlapi.test.id
+///   api_id            = aws_appsync_graph_q_l_api.test.id
 ///   field             = "singlePost"
 ///   type              = "Query"
-///   data_source       = aws_appsync_datasource.test.name
-///   request_template  = "{\n    \\\"version\\\": \\\"2018-05-29\\\",\n    \\\"method\\\": \\\"GET\\\",\n    \\\"resourcePath\\\": \\\"/\\\",\n    \\\"params\\\":{\n        \\\"headers\\\": $utils.http.copyheaders($ctx.request.headers)\n    }\n}\n"
-///   response_template = "#if($ctx.result.statusCode == 200)\n    $ctx.result.body\n#else\n    $utils.appendError($ctx.result.body, $ctx.result.statusCode)\n#end\n"
+///   data_source       = aws_appsync_data_source.test.name
+///   request_template  = <<EOF
+/// {
+///     \"version\": \"2018-05-29\",
+///     \"method\": \"GET\",
+///     \"resourcePath\": \"/\",
+///     \"params\":{
+///         \"headers\": $utils.http.copyheaders($ctx.request.headers)
+///     }
+/// }
+/// EOF
+///
+///   response_template = <<EOF
+/// #if($ctx.result.statusCode == 200)
+///     $ctx.result.body
+/// #else
+///     $utils.appendError($ctx.result.body, $ctx.result.statusCode)
+/// #end
+/// EOF
+///
 /// }
 /// # PIPELINE type resolver
 /// resource "aws_appsync_resolver" "Mutation_pipelineTest" {
-///   pipeline_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   pipeline_config {
 ///     functions = [test1.functionId, test2.functionId, test3.functionId]
 ///   }
 ///   type              = "Mutation"
-///   api_id            = aws_appsync_graphqlapi.test.id
+///   api_id            = aws_appsync_graph_q_l_api.test.id
 ///   field             = "pipelineTest"
 ///   request_template  = "{}"
 ///   response_template = "$util.toJson($ctx.result)"
@@ -510,9 +558,9 @@ import 'resolver_sync_config.dart';
 ///         var mutationPipelineTest = new Resolver("mutationPipelineTest", ResolverArgs.builder()
 ///             .pipelineConfig(ResolverPipelineConfigArgs.builder()
 ///                 .functions(
-///                     test1.functionId(),
-///                     test2.functionId(),
-///                     test3.functionId())
+///                     test1.get("functionId"),
+///                     test2.get("functionId"),
+///                     test3.get("functionId"))
 ///                 .build())
 ///             .type("Mutation")
 ///             .apiId(test.id())
@@ -727,7 +775,7 @@ import 'resolver_sync_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -739,11 +787,14 @@ import 'resolver_sync_config.dart';
 /// }
 ///
 /// resource "aws_appsync_resolver" "example" {
-///   runtime = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   runtime {
 ///     name            = "APPSYNC_JS"
 ///     runtime_version = "1.0.0"
 ///   }
-///   pipeline_config = {
+///   pipeline_config {
 ///     functions = [test.functionId]
 ///   }
 ///   type   = "Query"
@@ -784,10 +835,10 @@ import 'resolver_sync_config.dart';
 ///                 .runtimeVersion("1.0.0")
 ///                 .build())
 ///             .pipelineConfig(ResolverPipelineConfigArgs.builder()
-///                 .functions(test.functionId())
+///                 .functions(test.get("functionId"))
 ///                 .build())
 ///             .type("Query")
-///             .apiId(testAwsAppsyncGraphqlApi.id())
+///             .apiId(testAwsAppsyncGraphqlApi.get("id"))
 ///             .field("pipelineTest")
 ///             .kind("PIPELINE")
 ///             .code(StdFunctions.file(FileArgs.builder()
@@ -873,7 +924,7 @@ class Resolver extends pulumi.CustomResource {
           'aws:appsync/resolver:Resolver',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     arn = registerOutput<String>('arn');

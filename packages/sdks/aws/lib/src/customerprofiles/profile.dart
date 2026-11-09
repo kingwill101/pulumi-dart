@@ -73,7 +73,7 @@ import 'profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,9 +82,15 @@ import 'profile_state.dart';
 /// }
 ///
 /// resource "aws_customerprofiles_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name = "example"
 /// }
 /// resource "aws_customerprofiles_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name = aws_customerprofiles_domain.example.domain_name
 /// }
 /// ```
@@ -205,7 +211,7 @@ class Profile extends pulumi.CustomResource {
           'aws:customerprofiles/profile:Profile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accountNumber = registerOutput<String?>('accountNumber');
     additionalInformation = registerOutput<String?>('additionalInformation');

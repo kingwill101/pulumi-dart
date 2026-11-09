@@ -101,7 +101,7 @@ import 'user_policy_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -110,14 +110,23 @@ import 'user_policy_attachment_state.dart';
 /// }
 ///
 /// resource "aws_iam_user" "user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test-user"
 /// }
 /// resource "aws_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "test-policy"
 ///   description = "A test policy"
 ///   policy      = "{ ... policy JSON ... }"
 /// }
-/// resource "aws_iam_userpolicyattachment" "test-attach" {
+/// resource "aws_iam_user_policy_attachment" "test-attach" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user       = aws_iam_user.user.name
 ///   policy_arn = aws_iam_policy.policy.arn
 /// }
@@ -222,7 +231,7 @@ class UserPolicyAttachment extends pulumi.CustomResource {
           'aws:iam/userPolicyAttachment:UserPolicyAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     policyArn = registerOutput<String>('policyArn');
     user = registerOutput<String>('user');

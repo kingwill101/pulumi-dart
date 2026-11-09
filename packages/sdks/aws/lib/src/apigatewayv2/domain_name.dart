@@ -87,7 +87,7 @@ import 'domain_name_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -95,8 +95,11 @@ import 'domain_name_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigatewayv2_domainname" "example" {
-///   domain_name_configuration = {
+/// resource "aws_apigatewayv2_domain_name" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   domain_name_configuration {
 ///     certificate_arn = exampleAwsAcmCertificate.arn
 ///     endpoint_type   = "REGIONAL"
 ///     security_policy = "TLS_1_2"
@@ -128,7 +131,7 @@ import 'domain_name_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new DomainName("example", DomainNameArgs.builder()
 ///             .domainNameConfiguration(DomainNameDomainNameConfigurationArgs.builder()
-///                 .certificateArn(exampleAwsAcmCertificate.arn())
+///                 .certificateArn(exampleAwsAcmCertificate.get("arn"))
 ///                 .endpointType("REGIONAL")
 ///                 .securityPolicy("TLS_1_2")
 ///                 .build())
@@ -277,7 +280,7 @@ import 'domain_name_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -285,8 +288,11 @@ import 'domain_name_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigatewayv2_domainname" "example" {
-///   domain_name_configuration = {
+/// resource "aws_apigatewayv2_domain_name" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   domain_name_configuration {
 ///     certificate_arn = exampleAwsAcmCertificate.arn
 ///     endpoint_type   = "REGIONAL"
 ///     security_policy = "TLS_1_2"
@@ -294,12 +300,15 @@ import 'domain_name_state.dart';
 ///   domain_name = "http-api.example.com"
 /// }
 /// resource "aws_route53_record" "example" {
-///   aliases {
-///     name                   = aws_apigatewayv2_domainname.example.domain_name_configuration.target_domain_name
-///     zone_id                = aws_apigatewayv2_domainname.example.domain_name_configuration.hosted_zone_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   alias {
+///     name                   = aws_apigatewayv2_domain_name.example.domain_name_configuration[0].target_domain_name
+///     zone_id                = aws_apigatewayv2_domain_name.example.domain_name_configuration[0].hosted_zone_id
 ///     evaluate_target_health = false
 ///   }
-///   name    = aws_apigatewayv2_domainname.example.domain_name
+///   name    = aws_apigatewayv2_domain_name.example.domain_name
 ///   type    = "A"
 ///   zone_id = exampleAwsRoute53Zone.zoneId
 /// }
@@ -331,7 +340,7 @@ import 'domain_name_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new DomainName("example", DomainNameArgs.builder()
 ///             .domainNameConfiguration(DomainNameDomainNameConfigurationArgs.builder()
-///                 .certificateArn(exampleAwsAcmCertificate.arn())
+///                 .certificateArn(exampleAwsAcmCertificate.get("arn"))
 ///                 .endpointType("REGIONAL")
 ///                 .securityPolicy("TLS_1_2")
 ///                 .build())
@@ -346,7 +355,7 @@ import 'domain_name_state.dart';
 ///                 .build())
 ///             .name(example.domainName())
 ///             .type("A")
-///             .zoneId(exampleAwsRoute53Zone.zoneId())
+///             .zoneId(exampleAwsRoute53Zone.get("zoneId"))
 ///             .build());
 ///
 ///     }
@@ -415,7 +424,7 @@ class DomainName extends pulumi.CustomResource {
           'aws:apigatewayv2/domainName:DomainName',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     apiMappingSelectionExpression = registerOutput<String>('apiMappingSelectionExpression');
     arn = registerOutput<String>('arn');

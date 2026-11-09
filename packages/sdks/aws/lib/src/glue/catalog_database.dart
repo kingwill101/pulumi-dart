@@ -58,7 +58,7 @@ import 'catalog_database_target_database.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -66,7 +66,10 @@ import 'catalog_database_target_database.dart';
 ///   }
 /// }
 ///
-/// resource "aws_glue_catalogdatabase" "example" {
+/// resource "aws_glue_catalog_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "MyCatalogDatabase"
 /// }
 /// ```
@@ -197,7 +200,7 @@ import 'catalog_database_target_database.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -205,9 +208,12 @@ import 'catalog_database_target_database.dart';
 ///   }
 /// }
 ///
-/// resource "aws_glue_catalogdatabase" "example" {
-///   create_table_default_permissions {
-///     principal = {
+/// resource "aws_glue_catalog_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   create_table_default_permission {
+///     principal {
 ///       data_lake_principal_identifier = "IAM_ALLOWED_PRINCIPALS"
 ///     }
 ///     permissions = ["SELECT"]
@@ -310,7 +316,7 @@ class CatalogDatabase extends pulumi.CustomResource {
           'aws:glue/catalogDatabase:CatalogDatabase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     catalogId = registerOutput<String>('catalogId');

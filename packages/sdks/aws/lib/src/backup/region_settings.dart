@@ -156,7 +156,7 @@ import 'region_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -164,7 +164,10 @@ import 'region_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_backup_regionsettings" "test" {
+/// resource "aws_backup_region_settings" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_type_opt_in_preference = {
 ///     "Aurora"                 = true
 ///     "CloudFormation"         = true
@@ -310,7 +313,7 @@ class RegionSettings extends pulumi.CustomResource {
           'aws:backup/regionSettings:RegionSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     resourceTypeManagementPreference = registerOutput<Map<String, bool>>('resourceTypeManagementPreference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, bool>(); });

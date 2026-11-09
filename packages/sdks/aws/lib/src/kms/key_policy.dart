@@ -129,7 +129,7 @@ import 'key_policy_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = kms.NewKeyPolicy(ctx, "example", &kms.KeyPolicyArgs{
-/// 			KeyId:  example.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyId:  example.ID(),
 /// 			Policy: pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
@@ -140,7 +140,7 @@ import 'key_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -149,9 +149,15 @@ import 'key_policy_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "example"
 /// }
-/// resource "aws_kms_keypolicy" "example" {
+/// resource "aws_kms_key_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key_id = aws_kms_key.example.id
 ///   policy = jsonencode({
 ///     "Id" = "example"
@@ -273,7 +279,7 @@ class KeyPolicy extends pulumi.CustomResource {
           'aws:kms/keyPolicy:KeyPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     bypassPolicyLockoutSafetyCheck = registerOutput<bool?>('bypassPolicyLockoutSafetyCheck');
     keyId = registerOutput<String>('keyId');

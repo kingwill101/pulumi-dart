@@ -63,7 +63,7 @@ import 'application_snapshot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,7 +71,10 @@ import 'application_snapshot_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kinesisanalyticsv2_applicationsnapshot" "example" {
+/// resource "aws_kinesisanalyticsv2_application_snapshot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_name = exampleAwsKinesisanalyticsv2Application.name
 ///   snapshot_name    = "example-snapshot"
 /// }
@@ -98,7 +101,7 @@ import 'application_snapshot_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ApplicationSnapshot("example", ApplicationSnapshotArgs.builder()
-///             .applicationName(exampleAwsKinesisanalyticsv2Application.name())
+///             .applicationName(exampleAwsKinesisanalyticsv2Application.get("name"))
 ///             .snapshotName("example-snapshot")
 ///             .build());
 ///
@@ -146,7 +149,7 @@ class ApplicationSnapshot extends pulumi.CustomResource {
           'aws:kinesisanalyticsv2/applicationSnapshot:ApplicationSnapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     applicationName = registerOutput<String>('applicationName');
     applicationVersionId = registerOutput<int>('applicationVersionId');

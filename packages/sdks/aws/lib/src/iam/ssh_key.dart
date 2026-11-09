@@ -86,7 +86,7 @@ import 'ssh_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -95,10 +95,16 @@ import 'ssh_key_state.dart';
 /// }
 ///
 /// resource "aws_iam_user" "user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test-user"
 ///   path = "/"
 /// }
-/// resource "aws_iam_sshkey" "user" {
+/// resource "aws_iam_ssh_key" "user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   username   = aws_iam_user.user.name
 ///   encoding   = "SSH"
 ///   public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD3F6tyPEFEzV0LX3X8BsXdMsQz1x2cEikKDEY0aIj41qgxMCP/iteneqXSIFZBp5vizPvaoIR3Um9xK7PGoW8giupGn+EPuxIA4cDM4vzOqOkiMPhz5XK0whEjkVzTo4+S0puvDZuwIsdiW9mxhJc7tgBNL0cYlWSYVkz4G/fslNfRPW5mYAM49f4fhtxPb5ok4Q2Lg9dPKVHO/Bgeu5woMc7RY0p1ej6D4CKFE6lymSDJpW0YHX/wqE9+cfEauh7xZcG0q9t2ta6F6fmX0agvpFyZo8aFbXeUBr7osSCJNgvavWbM/06niWrOvYX2xwWdhXmXSrbX8ZbabVohBK41 mytest@mydomain.com"
@@ -191,7 +197,7 @@ class SshKey extends pulumi.CustomResource {
           'aws:iam/sshKey:SshKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     encoding = registerOutput<String>('encoding');
     fingerprint = registerOutput<String>('fingerprint');

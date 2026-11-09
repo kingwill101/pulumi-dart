@@ -62,7 +62,7 @@ import 'repository_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,6 +71,9 @@ import 'repository_state.dart';
 /// }
 ///
 /// resource "aws_codecommit_repository" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   repository_name = "MyTestRepository"
 ///   description     = "This is the Sample App Repository"
 /// }
@@ -197,7 +200,7 @@ import 'repository_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -206,11 +209,17 @@ import 'repository_state.dart';
 /// }
 ///
 /// resource "aws_codecommit_repository" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   repository_name = "MyTestRepository"
 ///   description     = "This is the Sample App Repository"
 ///   kms_key_id      = aws_kms_key.test.arn
 /// }
 /// resource "aws_kms_key" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "test"
 ///   deletion_window_in_days = 7
 /// }
@@ -312,7 +321,7 @@ class Repository extends pulumi.CustomResource {
           'aws:codecommit/repository:Repository',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cloneUrlHttp = registerOutput<String>('cloneUrlHttp');

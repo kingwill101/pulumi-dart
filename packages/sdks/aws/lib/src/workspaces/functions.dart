@@ -65,7 +65,7 @@ import 'get_workspace_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,7 @@ import 'get_workspace_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_workspaces_getbundle" "example" {
+/// data "aws_workspaces_bundle" "example" {
 ///   bundle_id = "wsb-b0s22j3d7"
 /// }
 /// ```
@@ -172,7 +172,7 @@ import 'get_workspace_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -180,7 +180,7 @@ import 'get_workspace_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_workspaces_getbundle" "example" {
+/// data "aws_workspaces_bundle" "example" {
 ///   owner = "AMAZON"
 ///   name  = "Value with Windows 10 and Office 2016"
 /// }
@@ -304,7 +304,7 @@ pulumi.Output<GetBundleResult> getBundleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -312,7 +312,7 @@ pulumi.Output<GetBundleResult> getBundleOutput(
 ///   }
 /// }
 ///
-/// data "aws_workspaces_getdirectory" "example" {
+/// data "aws_workspaces_directory" "example" {
 ///   directory_id = "d-9067783251"
 /// }
 /// ```
@@ -433,7 +433,7 @@ pulumi.Output<GetDirectoryResult> getDirectoryOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -441,7 +441,7 @@ pulumi.Output<GetDirectoryResult> getDirectoryOutput(
 ///   }
 /// }
 ///
-/// data "aws_workspaces_getimage" "example" {
+/// data "aws_workspaces_image" "example" {
 ///   image_id = "wsi-ten5h0y19"
 /// }
 /// ```
@@ -564,7 +564,7 @@ pulumi.Output<GetImageResult> getImageOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -572,7 +572,7 @@ pulumi.Output<GetImageResult> getImageOutput(
 ///   }
 /// }
 ///
-/// data "aws_workspaces_getworkspace" "example" {
+/// data "aws_workspaces_workspace" "example" {
 ///   workspace_id = "ws-cj5xcxsz5"
 /// }
 /// ```
@@ -671,7 +671,7 @@ pulumi.Output<GetImageResult> getImageOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -679,7 +679,7 @@ pulumi.Output<GetImageResult> getImageOutput(
 ///   }
 /// }
 ///
-/// data "aws_workspaces_getworkspace" "example" {
+/// data "aws_workspaces_workspace" "example" {
 ///   directory_id = "d-9967252f57"
 ///   user_name    = "Example"
 /// }

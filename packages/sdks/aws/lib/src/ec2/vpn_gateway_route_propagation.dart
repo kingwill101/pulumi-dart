@@ -66,7 +66,7 @@ import 'vpn_gateway_route_propagation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'vpn_gateway_route_propagation_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpngatewayroutepropagation" "example" {
+/// resource "aws_ec2_vpn_gateway_route_propagation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpn_gateway_id = exampleAwsVpnGateway.id
 ///   route_table_id = exampleAwsRouteTable.id
 /// }
@@ -101,8 +104,8 @@ import 'vpn_gateway_route_propagation_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new VpnGatewayRoutePropagation("example", VpnGatewayRoutePropagationArgs.builder()
-///             .vpnGatewayId(exampleAwsVpnGateway.id())
-///             .routeTableId(exampleAwsRouteTable.id())
+///             .vpnGatewayId(exampleAwsVpnGateway.get("id"))
+///             .routeTableId(exampleAwsRouteTable.get("id"))
 ///             .build());
 ///
 ///     }
@@ -136,7 +139,7 @@ class VpnGatewayRoutePropagation extends pulumi.CustomResource {
           'aws:ec2/vpnGatewayRoutePropagation:VpnGatewayRoutePropagation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     routeTableId = registerOutput<String>('routeTableId');

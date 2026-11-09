@@ -115,7 +115,7 @@ import 'registered_domain_tech_contact.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -123,11 +123,14 @@ import 'registered_domain_tech_contact.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53domains_registereddomain" "example" {
-///   name_servers {
+/// resource "aws_route53domains_registered_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name_server {
 ///     name = "ns-195.awsdns-24.com"
 ///   }
-///   name_servers {
+///   name_server {
 ///     name = "ns-874.awsdns-45.net"
 ///   }
 ///   domain_name = "example.com"
@@ -258,7 +261,7 @@ class RegisteredDomain extends pulumi.CustomResource {
           'aws:route53domains/registeredDomain:RegisteredDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     abuseContactEmail = registerOutput<String>('abuseContactEmail');
     abuseContactPhone = registerOutput<String>('abuseContactPhone');

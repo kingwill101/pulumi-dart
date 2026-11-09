@@ -112,7 +112,7 @@ import 'provisioned_product_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -120,7 +120,10 @@ import 'provisioned_product_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_servicecatalog_provisionedproduct" "example" {
+/// resource "aws_servicecatalog_provisioned_product" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   provisioning_parameters {
 ///     key   = "foo"
 ///     value = "bar"
@@ -262,7 +265,7 @@ class ProvisionedProduct extends pulumi.CustomResource {
           'aws:servicecatalog/provisionedProduct:ProvisionedProduct',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     arn = registerOutput<String>('arn');

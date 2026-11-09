@@ -111,7 +111,7 @@ import 'feature_group_throughput_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -119,11 +119,14 @@ import 'feature_group_throughput_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_featuregroup" "example" {
-///   online_store_config = {
+/// resource "aws_sagemaker_feature_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   online_store_config {
 ///     enable_online_store = true
 ///   }
-///   feature_definitions {
+///   feature_definition {
 ///     feature_name = "example"
 ///     feature_type = "String"
 ///   }
@@ -167,7 +170,7 @@ import 'feature_group_throughput_config.dart';
 ///             .featureGroupName("example")
 ///             .recordIdentifierFeatureName("example")
 ///             .eventTimeFeatureName("example")
-///             .roleArn(test.arn())
+///             .roleArn(test.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -236,7 +239,7 @@ class FeatureGroup extends pulumi.CustomResource {
           'aws:sagemaker/featureGroup:FeatureGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

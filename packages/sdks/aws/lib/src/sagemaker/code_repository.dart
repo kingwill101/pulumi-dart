@@ -74,7 +74,7 @@ import 'code_repository_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,8 +82,11 @@ import 'code_repository_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_coderepository" "example" {
-///   git_config = {
+/// resource "aws_sagemaker_code_repository" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   git_config {
 ///     repository_url = "https://github.com/github/docs.git"
 ///   }
 ///   code_repository_name = "example"
@@ -247,7 +250,7 @@ import 'code_repository_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		exampleSecretVersion, err := secretsmanager.NewSecretVersion(ctx, "example", &secretsmanager.SecretVersionArgs{
-/// 			SecretId:     example.ID().ToIDOutput().ToStringOutput(),
+/// 			SecretId:     example.ID(),
 /// 			SecretString: pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
@@ -270,7 +273,7 @@ import 'code_repository_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -279,18 +282,27 @@ import 'code_repository_state.dart';
 /// }
 ///
 /// resource "aws_secretsmanager_secret" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
-/// resource "aws_secretsmanager_secretversion" "example" {
+/// resource "aws_secretsmanager_secret_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = aws_secretsmanager_secret.example.id
 ///   secret_string = jsonencode({
 ///     "username" = "example"
 ///     "password" = "example"
 ///   })
 /// }
-/// resource "aws_sagemaker_coderepository" "example" {
-///   depends_on = [aws_secretsmanager_secretversion.example]
-///   git_config = {
+/// resource "aws_sagemaker_code_repository" "example" {
+///   depends_on = [aws_secretsmanager_secret_version.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   git_config {
 ///     repository_url = "https://github.com/github/docs.git"
 ///     secret_arn     = aws_secretsmanager_secret.example.arn
 ///   }
@@ -413,7 +425,7 @@ class CodeRepository extends pulumi.CustomResource {
           'aws:sagemaker/codeRepository:CodeRepository',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     codeRepositoryName = registerOutput<String>('codeRepositoryName');

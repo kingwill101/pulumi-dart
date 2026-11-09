@@ -97,7 +97,7 @@ import 'get_received_licenses_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -105,12 +105,12 @@ import 'get_received_licenses_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_licensemanager_getlicensegrants" "test" {
+/// data "aws_licensemanager_license_grants" "test" {
 ///   filters {
 ///     name   = "GranteePrincipalARN"
-///     values = ["arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"]
+///     values = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"]
 ///   }
 /// }
 /// ```
@@ -249,7 +249,7 @@ pulumi.Output<GetLicenseGrantsResult> getLicenseGrantsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -257,7 +257,7 @@ pulumi.Output<GetLicenseGrantsResult> getLicenseGrantsOutput(
 ///   }
 /// }
 ///
-/// data "aws_licensemanager_getreceivedlicense" "test" {
+/// data "aws_licensemanager_received_license" "test" {
 ///   license_arn = "arn:aws:license-manager::111111111111:license:l-ecbaa94eb71a4830b6d7e49268fecaa0"
 /// }
 /// ```
@@ -403,7 +403,7 @@ pulumi.Output<GetReceivedLicenseResult> getReceivedLicenseOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -411,8 +411,8 @@ pulumi.Output<GetReceivedLicenseResult> getReceivedLicenseOutput(
 ///   }
 /// }
 ///
-/// data "aws_licensemanager_getreceivedlicenses" "test" {
-///   filters {
+/// data "aws_licensemanager_received_licenses" "test" {
+///   filter {
 ///     name   = "IssuerName"
 ///     values = ["AWS/Marketplace"]
 ///   }

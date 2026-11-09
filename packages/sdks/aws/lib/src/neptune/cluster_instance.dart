@@ -117,7 +117,7 @@ import 'cluster_instance_state.dart';
 /// 		for index := 0; index < 2; index++ {
 /// 			key0 := index
 /// 			__res, err := neptune.NewClusterInstance(ctx, fmt.Sprintf("example-%v", key0), &neptune.ClusterInstanceArgs{
-/// 				ClusterIdentifier: _default.ID().ToIDOutput().ToStringOutput(),
+/// 				ClusterIdentifier: _default.ID(),
 /// 				Engine:            pulumi.String("neptune"),
 /// 				InstanceClass:     pulumi.String("db.r4.large"),
 /// 				ApplyImmediately:  pulumi.Bool(true),
@@ -132,7 +132,7 @@ import 'cluster_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -141,6 +141,9 @@ import 'cluster_instance_state.dart';
 /// }
 ///
 /// resource "aws_neptune_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier                  = "neptune-cluster-demo"
 ///   engine                              = "neptune"
 ///   backup_retention_period             = 5
@@ -149,8 +152,14 @@ import 'cluster_instance_state.dart';
 ///   iam_database_authentication_enabled = true
 ///   apply_immediately                   = true
 /// }
-/// resource "aws_neptune_clusterinstance" "example" {
-///   count              = 2
+/// resource "aws_neptune_cluster_instance" "example" {
+///   count = 2
+///   pulumi {
+///     name ="example-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier = aws_neptune_cluster.default.id
 ///   engine             = "neptune"
 ///   instance_class     = "db.r4.large"
@@ -306,7 +315,7 @@ class ClusterInstance extends pulumi.CustomResource {
           'aws:neptune/clusterInstance:ClusterInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     address = registerOutput<String>('address');
     applyImmediately = registerOutput<bool>('applyImmediately');

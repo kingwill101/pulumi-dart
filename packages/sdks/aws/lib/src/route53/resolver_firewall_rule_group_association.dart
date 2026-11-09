@@ -71,7 +71,7 @@ import 'resolver_firewall_rule_group_association_state.dart';
 /// 		}
 /// 		_, err = route53.NewResolverFirewallRuleGroupAssociation(ctx, "example", &route53.ResolverFirewallRuleGroupAssociationArgs{
 /// 			Name:                pulumi.String("example"),
-/// 			FirewallRuleGroupId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			FirewallRuleGroupId: example.ID(),
 /// 			Priority:            pulumi.Int(100),
 /// 			VpcId:               pulumi.Any(exampleAwsVpc.Id),
 /// 		})
@@ -83,7 +83,7 @@ import 'resolver_firewall_rule_group_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -91,12 +91,18 @@ import 'resolver_firewall_rule_group_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53_resolverfirewallrulegroup" "example" {
+/// resource "aws_route53_resolver_firewall_rule_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
-/// resource "aws_route53_resolverfirewallrulegroupassociation" "example" {
+/// resource "aws_route53_resolver_firewall_rule_group_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "example"
-///   firewall_rule_group_id = aws_route53_resolverfirewallrulegroup.example.id
+///   firewall_rule_group_id = aws_route53_resolver_firewall_rule_group.example.id
 ///   priority               = 100
 ///   vpc_id                 = exampleAwsVpc.id
 /// }
@@ -132,7 +138,7 @@ import 'resolver_firewall_rule_group_association_state.dart';
 ///             .name("example")
 ///             .firewallRuleGroupId(example.id())
 ///             .priority(100)
-///             .vpcId(exampleAwsVpc.id())
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .build());
 ///
 ///     }
@@ -194,7 +200,7 @@ class ResolverFirewallRuleGroupAssociation extends pulumi.CustomResource {
           'aws:route53/resolverFirewallRuleGroupAssociation:ResolverFirewallRuleGroupAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     firewallRuleGroupId = registerOutput<String>('firewallRuleGroupId');

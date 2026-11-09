@@ -13,6 +13,8 @@ class ExpressGatewayServiceState {
   final pulumi.Input<String?>? cluster;
   /// Number of CPU units used by the task. Valid values are powers of 2 between 256 and 4096. Defaults to `1024`.
   final pulumi.Input<String?>? cpu;
+  /// CPU architecture of the tasks. Valid values are `X86_64` and `ARM64`. Defaults to `X86_64`.
+  final pulumi.Input<String?>? cpuArchitecture;
   /// (**Deprecated**) ARN of the current deployment.
   final pulumi.Input<String?>? currentDeployment;
   /// ARN of the IAM role that allows ECS to pull container images and publish container logs to Amazon CloudWatch.
@@ -53,6 +55,7 @@ class ExpressGatewayServiceState {
   /// Creates a new [ExpressGatewayServiceState].
   /// [cluster] Name or ARN of the ECS cluster. Defaults to `default`.
   /// [cpu] Number of CPU units used by the task. Valid values are powers of 2 between 256 and 4096. Defaults to `1024`.
+  /// [cpuArchitecture] CPU architecture of the tasks. Valid values are `X86_64` and `ARM64`. Defaults to `X86_64`.
   /// [currentDeployment] (**Deprecated**) ARN of the current deployment.
   /// [executionRoleArn] ARN of the IAM role that allows ECS to pull container images and publish container logs to Amazon CloudWatch.
   /// [healthCheckPath] Path for health check requests. Defaults to `/`.
@@ -74,6 +77,7 @@ class ExpressGatewayServiceState {
   const ExpressGatewayServiceState({
     this.cluster,
     this.cpu,
+    this.cpuArchitecture,
     this.currentDeployment,
     this.executionRoleArn,
     this.healthCheckPath,
@@ -98,6 +102,7 @@ class ExpressGatewayServiceState {
     return <String, dynamic>{
       'cluster': ?cluster,
       'cpu': ?cpu,
+      'cpuArchitecture': ?cpuArchitecture,
       'currentDeployment': ?currentDeployment,
       'executionRoleArn': ?executionRoleArn,
       'healthCheckPath': ?healthCheckPath,
@@ -123,6 +128,7 @@ class ExpressGatewayServiceState {
     return ExpressGatewayServiceState(
       cluster: (() { final guardedValue = map['cluster']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cpuArchitecture: (() { final guardedValue = map['cpuArchitecture']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       currentDeployment: (() { final guardedValue = map['currentDeployment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       executionRoleArn: (() { final guardedValue = map['executionRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       healthCheckPath: (() { final guardedValue = map['healthCheckPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

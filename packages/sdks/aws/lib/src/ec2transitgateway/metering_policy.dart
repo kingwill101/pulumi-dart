@@ -83,7 +83,7 @@ import 'metering_policy_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2transitgateway.NewMeteringPolicy(ctx, "example", &ec2transitgateway.MeteringPolicyArgs{
-/// 			TransitGatewayId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			TransitGatewayId: example.ID(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("example"),
 /// 			},
@@ -96,7 +96,7 @@ import 'metering_policy_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -104,13 +104,19 @@ import 'metering_policy_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2transitgateway_transitgateway" "example" {
+/// resource "aws_ec2transitgateway_transit_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tags = {
 ///     "Name" = "example"
 ///   }
 /// }
-/// resource "aws_ec2transitgateway_meteringpolicy" "example" {
-///   transit_gateway_id = aws_ec2transitgateway_transitgateway.example.id
+/// resource "aws_ec2transitgateway_metering_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   transit_gateway_id = aws_ec2transitgateway_transit_gateway.example.id
 ///   tags = {
 ///     "Name" = "example"
 ///   }
@@ -244,7 +250,7 @@ import 'metering_policy_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -252,7 +258,10 @@ import 'metering_policy_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2transitgateway_meteringpolicy" "example" {
+/// resource "aws_ec2transitgateway_metering_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   transit_gateway_id       = exampleAwsEc2TransitGateway.id
 ///   middlebox_attachment_ids = [exampleAwsEc2TransitGatewayVpcAttachment.id]
 ///   tags = {
@@ -282,8 +291,8 @@ import 'metering_policy_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new MeteringPolicy("example", MeteringPolicyArgs.builder()
-///             .transitGatewayId(exampleAwsEc2TransitGateway.id())
-///             .middleboxAttachmentIds(exampleAwsEc2TransitGatewayVpcAttachment.id())
+///             .transitGatewayId(exampleAwsEc2TransitGateway.get("id"))
+///             .middleboxAttachmentIds(exampleAwsEc2TransitGatewayVpcAttachment.get("id"))
 ///             .tags(Map.of("Name", "example"))
 ///             .build());
 ///
@@ -353,7 +362,7 @@ class MeteringPolicy extends pulumi.CustomResource {
           'aws:ec2transitgateway/meteringPolicy:MeteringPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     middleboxAttachmentIds = registerOutput<List<String>?>('middleboxAttachmentIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

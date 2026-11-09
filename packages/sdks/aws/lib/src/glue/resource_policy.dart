@@ -153,7 +153,7 @@ import 'resource_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -161,25 +161,28 @@ import 'resource_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
-/// data "aws_getregion" "currentGetRegion" {
+/// data "aws_region" "currentGetRegion" {
 /// }
-/// data "aws_iam_getpolicydocument" "glue-example-policy" {
-///   statements {
+/// data "aws_iam_policy_document" "glue-example-policy" {
+///   statement {
 ///     principals {
 ///       identifiers = ["*"]
 ///       type        = "AWS"
 ///     }
 ///     actions   = ["glue:CreateTable"]
-///     resources = ["arn:${data.aws_getpartition.currentGetPartition.partition}:glue:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:*"]
+///     resources = ["arn:${data.aws_partition.currentGetPartition.partition}:glue:${data.aws_region.currentGetRegion.region}:${data.aws_caller_identity.current.account_id}:*"]
 ///   }
 /// }
 ///
-/// resource "aws_glue_resourcepolicy" "example" {
-///   policy = data.aws_iam_getpolicydocument.glue-example-policy.json
+/// resource "aws_glue_resource_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy = data.aws_iam_policy_document.glue-example-policy.json
 /// }
 /// ```
 /// ```java
@@ -308,7 +311,7 @@ class ResourcePolicy extends pulumi.CustomResource {
           'aws:glue/resourcePolicy:ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     enableHybrid = registerOutput<String?>('enableHybrid');
     policy = registerOutput<String>('policy');

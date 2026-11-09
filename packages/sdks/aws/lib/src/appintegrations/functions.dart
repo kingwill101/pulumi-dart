@@ -57,7 +57,7 @@ import 'get_event_integration_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,7 +65,7 @@ import 'get_event_integration_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_appintegrations_geteventintegration" "example" {
+/// data "aws_appintegrations_event_integration" "example" {
 ///   name = "example"
 /// }
 /// ```

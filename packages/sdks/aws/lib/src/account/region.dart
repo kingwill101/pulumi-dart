@@ -62,7 +62,7 @@ import 'region_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,6 +71,9 @@ import 'region_state.dart';
 /// }
 ///
 /// resource "aws_account_region" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region_name = "ap-southeast-3"
 ///   enabled     = true
 /// }
@@ -143,7 +146,7 @@ class Region extends pulumi.CustomResource {
           'aws:account/region:Region',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     enabled = registerOutput<bool>('enabled');

@@ -93,7 +93,7 @@ import 'method_state.dart';
 /// 			return err
 /// 		}
 /// 		myDemoResource, err := apigateway.NewResource(ctx, "MyDemoResource", &apigateway.ResourceArgs{
-/// 			RestApi:  myDemoAPI.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:  myDemoAPI.ID(),
 /// 			ParentId: myDemoAPI.RootResourceId,
 /// 			PathPart: pulumi.String("mydemoresource"),
 /// 		})
@@ -101,8 +101,8 @@ import 'method_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewMethod(ctx, "MyDemoMethod", &apigateway.MethodArgs{
-/// 			RestApi:       myDemoAPI.ID().ToIDOutput().ToStringOutput(),
-/// 			ResourceId:    myDemoResource.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:       myDemoAPI.ID(),
+/// 			ResourceId:    myDemoResource.ID(),
 /// 			HttpMethod:    pulumi.String("GET"),
 /// 			Authorization: pulumi.String("NONE"),
 /// 		})
@@ -114,7 +114,7 @@ import 'method_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -122,17 +122,26 @@ import 'method_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_restapi" "MyDemoAPI" {
+/// resource "aws_apigateway_rest_api" "MyDemoAPI" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "MyDemoAPI"
 ///   description = "This is my API for demonstration purposes"
 /// }
 /// resource "aws_apigateway_resource" "MyDemoResource" {
-///   rest_api  = aws_apigateway_restapi.MyDemoAPI.id
-///   parent_id = aws_apigateway_restapi.MyDemoAPI.root_resource_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api  = aws_apigateway_rest_api.MyDemoAPI.id
+///   parent_id = aws_apigateway_rest_api.MyDemoAPI.root_resource_id
 ///   path_part = "mydemoresource"
 /// }
 /// resource "aws_apigateway_method" "MyDemoMethod" {
-///   rest_api      = aws_apigateway_restapi.MyDemoAPI.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api      = aws_apigateway_rest_api.MyDemoAPI.id
 ///   resource_id   = aws_apigateway_resource.MyDemoResource.id
 ///   http_method   = "GET"
 ///   authorization = "NONE"
@@ -350,7 +359,7 @@ import 'method_state.dart';
 /// 			return err
 /// 		}
 /// 		thisResource, err := apigateway.NewResource(ctx, "this", &apigateway.ResourceArgs{
-/// 			RestApi:  thisRestApi.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:  thisRestApi.ID(),
 /// 			ParentId: thisRestApi.RootResourceId,
 /// 			PathPart: pulumi.String("{proxy+}"),
 /// 		})
@@ -360,18 +369,18 @@ import 'method_state.dart';
 /// 		thisAuthorizer, err := apigateway.NewAuthorizer(ctx, "this", &apigateway.AuthorizerArgs{
 /// 			Name:         pulumi.String("CognitoUserPoolAuthorizer"),
 /// 			Type:         pulumi.String("COGNITO_USER_POOLS"),
-/// 			RestApi:      thisRestApi.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:      thisRestApi.ID(),
 /// 			ProviderArns: toPulumiStringArray(this.Arns),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewMethod(ctx, "any", &apigateway.MethodArgs{
-/// 			RestApi:       thisRestApi.ID().ToIDOutput().ToStringOutput(),
-/// 			ResourceId:    thisResource.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:       thisRestApi.ID(),
+/// 			ResourceId:    thisResource.ID(),
 /// 			HttpMethod:    pulumi.String("ANY"),
 /// 			Authorization: pulumi.String("COGNITO_USER_POOLS"),
-/// 			AuthorizerId:  thisAuthorizer.ID().ToIDOutput().ToStringOutput(),
+/// 			AuthorizerId:  thisAuthorizer.ID(),
 /// 			RequestParameters: pulumi.BoolMap{
 /// 				"method.request.path.proxy": pulumi.Bool(true),
 /// 			},
@@ -391,7 +400,7 @@ import 'method_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -399,26 +408,38 @@ import 'method_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_cognito_getuserpools" "this" {
+/// data "aws_cognito_user_pools" "this" {
 ///   name = var.cognitoUserPoolName
 /// }
 ///
-/// resource "aws_apigateway_restapi" "this" {
+/// resource "aws_apigateway_rest_api" "this" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "with-authorizer"
 /// }
 /// resource "aws_apigateway_resource" "this" {
-///   rest_api  = aws_apigateway_restapi.this.id
-///   parent_id = aws_apigateway_restapi.this.root_resource_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api  = aws_apigateway_rest_api.this.id
+///   parent_id = aws_apigateway_rest_api.this.root_resource_id
 ///   path_part = "{proxy+}"
 /// }
 /// resource "aws_apigateway_authorizer" "this" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "CognitoUserPoolAuthorizer"
 ///   type          = "COGNITO_USER_POOLS"
-///   rest_api      = aws_apigateway_restapi.this.id
-///   provider_arns = data.aws_cognito_getuserpools.this.arns
+///   rest_api      = aws_apigateway_rest_api.this.id
+///   provider_arns = data.aws_cognito_user_pools.this.arns
 /// }
 /// resource "aws_apigateway_method" "any" {
-///   rest_api      = aws_apigateway_restapi.this.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api      = aws_apigateway_rest_api.this.id
 ///   resource_id   = aws_apigateway_resource.this.id
 ///   http_method   = "ANY"
 ///   authorization = "COGNITO_USER_POOLS"
@@ -428,6 +449,7 @@ import 'method_state.dart';
 ///   }
 /// }
 /// variable "cognitoUserPoolName" {
+///   type = any
 /// }
 /// ```
 /// ```java
@@ -460,7 +482,7 @@ import 'method_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var cognitoUserPoolName = config.require("cognitoUserPoolName");
+///         final var cognitoUserPoolName = config.requireObject("cognitoUserPoolName", com.pulumi.core.TypeShape.map(String.class, Object.class));
 ///         final var this = CognitoFunctions.getUserPools(GetUserPoolsArgs.builder()
 ///             .name(cognitoUserPoolName)
 ///             .build());
@@ -597,7 +619,7 @@ class Method extends pulumi.CustomResource {
           'aws:apigateway/method:Method',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     apiKeyRequired = registerOutput<bool?>('apiKeyRequired');
     authorization = registerOutput<String>('authorization');

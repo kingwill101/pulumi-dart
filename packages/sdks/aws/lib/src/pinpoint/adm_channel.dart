@@ -79,7 +79,7 @@ import 'adm_channel_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -88,8 +88,14 @@ import 'adm_channel_state.dart';
 /// }
 ///
 /// resource "aws_pinpoint_app" "app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_pinpoint_admchannel" "channel" {
+/// resource "aws_pinpoint_adm_channel" "channel" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_id = aws_pinpoint_app.app.application_id
 ///   client_id      = ""
 ///   client_secret  = ""
@@ -175,7 +181,7 @@ class AdmChannel extends pulumi.CustomResource {
           'aws:pinpoint/admChannel:AdmChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['clientId', 'clientSecret'],
         ) {
     applicationId = registerOutput<String>('applicationId');

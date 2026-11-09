@@ -62,7 +62,7 @@ import 'vault_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,6 +71,9 @@ import 'vault_state.dart';
 /// }
 ///
 /// resource "aws_backup_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example_backup_vault"
 ///   kms_key_arn = exampleAwsKmsKey.arn
 /// }
@@ -98,7 +101,7 @@ import 'vault_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Vault("example", VaultArgs.builder()
 ///             .name("example_backup_vault")
-///             .kmsKeyArn(exampleAwsKmsKey.arn())
+///             .kmsKeyArn(exampleAwsKmsKey.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -163,7 +166,7 @@ class Vault extends pulumi.CustomResource {
           'aws:backup/vault:Vault',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     forceDestroy = registerOutput<bool?>('forceDestroy');

@@ -111,7 +111,7 @@ import 'vpc_origin_vpc_origin_endpoint_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -119,9 +119,12 @@ import 'vpc_origin_vpc_origin_endpoint_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_vpcorigin" "alb" {
-///   vpc_origin_endpoint_config = {
-///     origin_ssl_protocols = {
+/// resource "aws_cloudfront_vpc_origin" "alb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   vpc_origin_endpoint_config {
+///     origin_ssl_protocols {
 ///       items    = ["TLSv1.2"]
 ///       quantity = 1
 ///     }
@@ -163,7 +166,7 @@ import 'vpc_origin_vpc_origin_endpoint_config.dart';
 ///                     .quantity(1)
 ///                     .build())
 ///                 .name("example-vpc-origin")
-///                 .arn(this_.arn())
+///                 .arn(this_.get("arn"))
 ///                 .httpPort(8080)
 ///                 .httpsPort(8443)
 ///                 .originProtocolPolicy("https-only")
@@ -225,7 +228,7 @@ class VpcOrigin extends pulumi.CustomResource {
           'aws:cloudfront/vpcOrigin:VpcOrigin',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     etag = registerOutput<String>('etag');

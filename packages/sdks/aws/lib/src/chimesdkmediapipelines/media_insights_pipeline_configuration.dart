@@ -261,7 +261,7 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -269,8 +269,8 @@ import 'media_insights_pipeline_configuration_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "mediaPipelinesAssumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "mediaPipelinesAssumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["mediapipelines.chime.amazonaws.com"]
@@ -280,15 +280,18 @@ import 'media_insights_pipeline_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_chimesdkmediapipelines_mediainsightspipelineconfiguration" "my_configuration" {
+/// resource "aws_chimesdkmediapipelines_media_insights_pipeline_configuration" "my_configuration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   elements {
-///     amazon_transcribe_call_analytics_processor_configuration = {
+///     amazon_transcribe_call_analytics_processor_configuration {
 ///       language_code = "en-US"
 ///     }
 ///     type = "AmazonTranscribeCallAnalyticsProcessor"
 ///   }
 ///   elements {
-///     kinesis_data_stream_sink_configuration = {
+///     kinesis_data_stream_sink_configuration {
 ///       insights_target = aws_kinesis_stream.example.arn
 ///     }
 ///     type = "KinesisDataStreamSink"
@@ -301,14 +304,20 @@ import 'media_insights_pipeline_configuration_state.dart';
 ///   }
 /// }
 /// resource "aws_kinesis_stream" "example" {
-///   stream_mode_details = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   stream_mode_details {
 ///     stream_mode = "ON_DEMAND"
 ///   }
 ///   name = "example"
 /// }
 /// resource "aws_iam_role" "call_analytics_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "CallAnalyticsRole"
-///   assume_role_policy = data.aws_iam_getpolicydocument.mediaPipelinesAssumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.mediaPipelinesAssumeRole.json
 /// }
 /// ```
 /// ```java
@@ -723,7 +732,7 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -731,8 +740,8 @@ import 'media_insights_pipeline_configuration_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "transcribeAssumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "transcribeAssumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["transcribe.amazonaws.com"]
@@ -742,10 +751,13 @@ import 'media_insights_pipeline_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_chimesdkmediapipelines_mediainsightspipelineconfiguration" "my_configuration" {
+/// resource "aws_chimesdkmediapipelines_media_insights_pipeline_configuration" "my_configuration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   elements {
-///     amazon_transcribe_call_analytics_processor_configuration = {
-///       post_call_analytics_settings = {
+///     amazon_transcribe_call_analytics_processor_configuration {
+///       post_call_analytics_settings {
 ///         content_redaction_output     = "redacted"
 ///         data_access_role_arn         = aws_iam_role.post_call_role.arn
 ///         output_encryption_kms_key_id = "MyKmsKeyId"
@@ -766,7 +778,7 @@ import 'media_insights_pipeline_configuration_state.dart';
 ///     type = "AmazonTranscribeCallAnalyticsProcessor"
 ///   }
 ///   elements {
-///     kinesis_data_stream_sink_configuration = {
+///     kinesis_data_stream_sink_configuration {
 ///       insights_target = example.arn
 ///     }
 ///     type = "KinesisDataStreamSink"
@@ -775,8 +787,11 @@ import 'media_insights_pipeline_configuration_state.dart';
 ///   resource_access_role_arn = exampleAwsIamRole.arn
 /// }
 /// resource "aws_iam_role" "post_call_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "PostCallAccessRole"
-///   assume_role_policy = data.aws_iam_getpolicydocument.transcribeAssumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.transcribeAssumeRole.json
 /// }
 /// ```
 /// ```java
@@ -854,12 +869,12 @@ import 'media_insights_pipeline_configuration_state.dart';
 ///                     .build(),
 ///                 MediaInsightsPipelineConfigurationElementArgs.builder()
 ///                     .kinesisDataStreamSinkConfiguration(MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfigurationArgs.builder()
-///                         .insightsTarget(example.arn())
+///                         .insightsTarget(example.get("arn"))
 ///                         .build())
 ///                     .type("KinesisDataStreamSink")
 ///                     .build())
 ///             .name("MyCallAnalyticsConfiguration")
-///             .resourceAccessRoleArn(exampleAwsIamRole.arn())
+///             .resourceAccessRoleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1167,7 +1182,7 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1175,38 +1190,43 @@ import 'media_insights_pipeline_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_chimesdkmediapipelines_mediainsightspipelineconfiguration" "my_configuration" {
-///   real_time_alert_configuration = {
-///     rules = [{
-///       "issueDetectionConfiguration" = {
-///         "ruleName" = "MyIssueDetectionRule"
+/// resource "aws_chimesdkmediapipelines_media_insights_pipeline_configuration" "my_configuration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   real_time_alert_configuration {
+///     rules {
+///       issue_detection_configuration {
+///         rule_name = "MyIssueDetectionRule"
 ///       }
-///       "type" = "IssueDetection"
-///       }, {
-///       "keywordMatchConfiguration" = {
-///         "keywords" = ["keyword1", "keyword2"]
-///         "negate"   = false
-///         "ruleName" = "MyKeywordMatchRule"
+///       type = "IssueDetection"
+///     }
+///     rules {
+///       keyword_match_configuration {
+///         keywords  = ["keyword1", "keyword2"]
+///         negate    = false
+///         rule_name = "MyKeywordMatchRule"
 ///       }
-///       "type" = "KeywordMatch"
-///       }, {
-///       "sentimentConfiguration" = {
-///         "ruleName"      = "MySentimentRule"
-///         "sentimentType" = "NEGATIVE"
-///         "timePeriod"    = 60
+///       type = "KeywordMatch"
+///     }
+///     rules {
+///       sentiment_configuration {
+///         rule_name      = "MySentimentRule"
+///         sentiment_type = "NEGATIVE"
+///         time_period    = 60
 ///       }
-///       "type" = "Sentiment"
-///     }]
+///       type = "Sentiment"
+///     }
 ///     disabled = false
 ///   }
 ///   elements {
-///     amazon_transcribe_call_analytics_processor_configuration = {
+///     amazon_transcribe_call_analytics_processor_configuration {
 ///       language_code = "en-US"
 ///     }
 ///     type = "AmazonTranscribeCallAnalyticsProcessor"
 ///   }
 ///   elements {
-///     kinesis_data_stream_sink_configuration = {
+///     kinesis_data_stream_sink_configuration {
 ///       insights_target = example.arn
 ///     }
 ///     type = "KinesisDataStreamSink"
@@ -1282,12 +1302,12 @@ import 'media_insights_pipeline_configuration_state.dart';
 ///                     .build(),
 ///                 MediaInsightsPipelineConfigurationElementArgs.builder()
 ///                     .kinesisDataStreamSinkConfiguration(MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfigurationArgs.builder()
-///                         .insightsTarget(example.arn())
+///                         .insightsTarget(example.get("arn"))
 ///                         .build())
 ///                     .type("KinesisDataStreamSink")
 ///                     .build())
 ///             .name("MyRealTimeAlertConfiguration")
-///             .resourceAccessRoleArn(callAnalyticsRole.arn())
+///             .resourceAccessRoleArn(callAnalyticsRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1488,7 +1508,7 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1496,9 +1516,12 @@ import 'media_insights_pipeline_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_chimesdkmediapipelines_mediainsightspipelineconfiguration" "my_configuration" {
+/// resource "aws_chimesdkmediapipelines_media_insights_pipeline_configuration" "my_configuration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   elements {
-///     amazon_transcribe_processor_configuration = {
+///     amazon_transcribe_processor_configuration {
 ///       content_identification_type          = "PII"
 ///       enable_partial_results_stabilization = true
 ///       filter_partial_results               = true
@@ -1514,7 +1537,7 @@ import 'media_insights_pipeline_configuration_state.dart';
 ///     type = "AmazonTranscribeProcessor"
 ///   }
 ///   elements {
-///     kinesis_data_stream_sink_configuration = {
+///     kinesis_data_stream_sink_configuration {
 ///       insights_target = example.arn
 ///     }
 ///     type = "KinesisDataStreamSink"
@@ -1567,12 +1590,12 @@ import 'media_insights_pipeline_configuration_state.dart';
 ///                     .build(),
 ///                 MediaInsightsPipelineConfigurationElementArgs.builder()
 ///                     .kinesisDataStreamSinkConfiguration(MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfigurationArgs.builder()
-///                         .insightsTarget(example.arn())
+///                         .insightsTarget(example.get("arn"))
 ///                         .build())
 ///                     .type("KinesisDataStreamSink")
 ///                     .build())
 ///             .name("MyTranscribeConfiguration")
-///             .resourceAccessRoleArn(exampleAwsIamRole.arn())
+///             .resourceAccessRoleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1807,7 +1830,7 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1815,34 +1838,37 @@ import 'media_insights_pipeline_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_chimesdkmediapipelines_mediainsightspipelineconfiguration" "my_configuration" {
+/// resource "aws_chimesdkmediapipelines_media_insights_pipeline_configuration" "my_configuration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   elements {
-///     voice_analytics_processor_configuration = {
+///     voice_analytics_processor_configuration {
 ///       speaker_search_status      = "Enabled"
 ///       voice_tone_analysis_status = "Enabled"
 ///     }
 ///     type = "VoiceAnalyticsProcessor"
 ///   }
 ///   elements {
-///     lambda_function_sink_configuration = {
+///     lambda_function_sink_configuration {
 ///       insights_target = "arn:aws:lambda:us-west-2:1111111111:function:MyFunction"
 ///     }
 ///     type = "LambdaFunctionSink"
 ///   }
 ///   elements {
-///     sns_topic_sink_configuration = {
+///     sns_topic_sink_configuration {
 ///       insights_target = "arn:aws:sns:us-west-2:1111111111:topic/MyTopic"
 ///     }
 ///     type = "SnsTopicSink"
 ///   }
 ///   elements {
-///     sqs_queue_sink_configuration = {
+///     sqs_queue_sink_configuration {
 ///       insights_target = "arn:aws:sqs:us-west-2:1111111111:queue/MyQueue"
 ///     }
 ///     type = "SqsQueueSink"
 ///   }
 ///   elements {
-///     kinesis_data_stream_sink_configuration = {
+///     kinesis_data_stream_sink_configuration {
 ///       insights_target = test.arn
 ///     }
 ///     type = "KinesisDataStreamSink"
@@ -1907,12 +1933,12 @@ import 'media_insights_pipeline_configuration_state.dart';
 ///                     .build(),
 ///                 MediaInsightsPipelineConfigurationElementArgs.builder()
 ///                     .kinesisDataStreamSinkConfiguration(MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfigurationArgs.builder()
-///                         .insightsTarget(test.arn())
+///                         .insightsTarget(test.get("arn"))
 ///                         .build())
 ///                     .type("KinesisDataStreamSink")
 ///                     .build())
 ///             .name("MyVoiceAnalyticsConfiguration")
-///             .resourceAccessRoleArn(example.arn())
+///             .resourceAccessRoleArn(example.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -2035,7 +2061,7 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2043,9 +2069,12 @@ import 'media_insights_pipeline_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_chimesdkmediapipelines_mediainsightspipelineconfiguration" "my_configuration" {
+/// resource "aws_chimesdkmediapipelines_media_insights_pipeline_configuration" "my_configuration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   elements {
-///     s3_recording_sink_configuration = {
+///     s3_recording_sink_configuration {
 ///       destination = "arn:aws:s3:::MyBucket"
 ///     }
 ///     type = "S3RecordingSink"
@@ -2085,7 +2114,7 @@ import 'media_insights_pipeline_configuration_state.dart';
 ///                 .type("S3RecordingSink")
 ///                 .build())
 ///             .name("MyS3RecordingConfiguration")
-///             .resourceAccessRoleArn(example.arn())
+///             .resourceAccessRoleArn(example.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -2149,7 +2178,7 @@ class MediaInsightsPipelineConfiguration extends pulumi.CustomResource {
           'aws:chimesdkmediapipelines/mediaInsightsPipelineConfiguration:MediaInsightsPipelineConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     elements = registerOutput<List<MediaInsightsPipelineConfigurationElement>>('elements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MediaInsightsPipelineConfigurationElement>(guardedValue, (value) => MediaInsightsPipelineConfigurationElement.fromMap((value as Map).cast<String, dynamic>())); });

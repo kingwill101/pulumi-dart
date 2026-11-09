@@ -97,7 +97,7 @@ import 'log_transformer_transformer_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -105,14 +105,20 @@ import 'log_transformer_transformer_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_logtransformer" "example" {
-///   transformer_configs {
-///     parse_jsons {
+/// resource "aws_cloudwatch_log_transformer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   transformer_config {
+///     parse_json {
 ///     }
 ///   }
-///   log_group_arn = aws_cloudwatch_loggroup.example.arn
+///   log_group_arn = aws_cloudwatch_log_group.example.arn
 /// }
-/// resource "aws_cloudwatch_loggroup" "example" {
+/// resource "aws_cloudwatch_log_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// ```
@@ -207,7 +213,7 @@ class LogTransformer extends pulumi.CustomResource {
           'aws:cloudwatch/logTransformer:LogTransformer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     logGroupArn = registerOutput<String>('logGroupArn');
     region = registerOutput<String>('region');

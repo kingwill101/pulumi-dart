@@ -94,7 +94,7 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -102,7 +102,10 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentdatasource" "example" {
+/// resource "aws_bedrock_agent_data_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_source_configuration = {
 ///     s3_configuration = {
 ///       bucket_arn = "arn:aws:s3:::example-bucket"
@@ -348,7 +351,7 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -356,7 +359,10 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentdatasource" "example" {
+/// resource "aws_bedrock_agent_data_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_source_configuration = {
 ///     managed_knowledge_base_connector_configuration = {
 ///       media_extraction_configuration = {
@@ -445,7 +451,7 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 ///                     .parsingStrategy("SMART_PARSING")
 ///                     .build())
 ///                 .build())
-///             .knowledgeBaseId(exampleAwsBedrockagentKnowledgeBase.id())
+///             .knowledgeBaseId(exampleAwsBedrockagentKnowledgeBase.get("id"))
 ///             .name("example-s3-managed")
 ///             .build());
 ///
@@ -655,7 +661,7 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -663,7 +669,10 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentdatasource" "sharepoint" {
+/// resource "aws_bedrock_agent_data_source" "sharepoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_source_configuration = {
 ///     managed_knowledge_base_connector_configuration = {
 ///       connector_parameters = jsonencode({
@@ -742,7 +751,7 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 ///                     .build())
 ///                 .type("MANAGED_KNOWLEDGE_BASE_CONNECTOR")
 ///                 .build())
-///             .knowledgeBaseId(example.id())
+///             .knowledgeBaseId(example.get("id"))
 ///             .name("example-sharepoint")
 ///             .build());
 ///
@@ -945,7 +954,7 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -953,7 +962,10 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentdatasource" "example" {
+/// resource "aws_bedrock_agent_data_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_source_configuration = {
 ///     s3_configuration = {
 ///       bucket_arn = exampleAwsS3Bucket.arn
@@ -1015,7 +1027,7 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 ///         var example = new AgentDataSource("example", AgentDataSourceArgs.builder()
 ///             .dataSourceConfiguration(AgentDataSourceDataSourceConfigurationArgs.builder()
 ///                 .s3Configuration(AgentDataSourceDataSourceConfigurationS3ConfigurationArgs.builder()
-///                     .bucketArn(exampleAwsS3Bucket.arn())
+///                     .bucketArn(exampleAwsS3Bucket.get("arn"))
 ///                     .build())
 ///                 .type("S3")
 ///                 .build())
@@ -1038,7 +1050,7 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 ///                     .parsingStrategy("BEDROCK_FOUNDATION_MODEL")
 ///                     .build())
 ///                 .build())
-///             .knowledgeBaseId(exampleAwsBedrockagentKnowledgeBase.id())
+///             .knowledgeBaseId(exampleAwsBedrockagentKnowledgeBase.get("id"))
 ///             .name("multimodal-example")
 ///             .build());
 ///
@@ -1292,7 +1304,7 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 /// 					Type: pulumi.String("BEDROCK_FOUNDATION_MODEL"),
 /// 				},
 /// 			},
-/// 			KnowledgeBaseId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			KnowledgeBaseId: example.ID(),
 /// 			Name:            pulumi.String("graphrag-example"),
 /// 		})
 /// 		if err != nil {
@@ -1303,7 +1315,7 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1311,7 +1323,10 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentknowledgebase" "example" {
+/// resource "aws_bedrock_agent_knowledge_base" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   knowledge_base_configuration = {
 ///     vector_knowledge_base_configuration = {
 ///       embedding_model_arn = "arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-english-v3"
@@ -1331,7 +1346,10 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 ///   name     = "graphrag-example"
 ///   role_arn = exampleAwsIamRole.arn
 /// }
-/// resource "aws_bedrock_agentdatasource" "example" {
+/// resource "aws_bedrock_agent_data_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_source_configuration = {
 ///     s3_configuration = {
 ///       bucket_arn = exampleAwsS3Bucket.arn
@@ -1349,7 +1367,7 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 ///       type = "BEDROCK_FOUNDATION_MODEL"
 ///     }
 ///   }
-///   knowledge_base_id = aws_bedrock_agentknowledgebase.example.id
+///   knowledge_base_id = aws_bedrock_agent_knowledge_base.example.id
 ///   name              = "graphrag-example"
 /// }
 /// ```
@@ -1400,18 +1418,18 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 ///                         .metadataField("metadata")
 ///                         .textField("text")
 ///                         .build())
-///                     .graphArn(exampleAwsNeptunegraphGraph.arn())
+///                     .graphArn(exampleAwsNeptunegraphGraph.get("arn"))
 ///                     .build())
 ///                 .type("NEPTUNE_ANALYTICS")
 ///                 .build())
 ///             .name("graphrag-example")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///         var exampleAgentDataSource = new AgentDataSource("exampleAgentDataSource", AgentDataSourceArgs.builder()
 ///             .dataSourceConfiguration(AgentDataSourceDataSourceConfigurationArgs.builder()
 ///                 .s3Configuration(AgentDataSourceDataSourceConfigurationS3ConfigurationArgs.builder()
-///                     .bucketArn(exampleAwsS3Bucket.arn())
+///                     .bucketArn(exampleAwsS3Bucket.get("arn"))
 ///                     .build())
 ///                 .type("S3")
 ///                 .build())
@@ -1421,7 +1439,7 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 ///                         .enrichmentStrategyConfiguration(AgentDataSourceVectorIngestionConfigurationContextEnrichmentConfigurationBedrockFoundationModelConfigurationEnrichmentStrategyConfigurationArgs.builder()
 ///                             .method("CHUNK_ENTITY_EXTRACTION")
 ///                             .build())
-///                         .modelArn(String.format("arn:aws:bedrock:us-east-1:%s:inference-profile/us.anthropic.claude-haiku-4-5-20251001-v1:0", current.accountId()))
+///                         .modelArn(String.format("arn:aws:bedrock:us-east-1:%s:inference-profile/us.anthropic.claude-haiku-4-5-20251001-v1:0", current.get("accountId")))
 ///                         .build())
 ///                     .type("BEDROCK_FOUNDATION_MODEL")
 ///                     .build())
@@ -1513,7 +1531,7 @@ class AgentDataSource extends pulumi.CustomResource {
           'aws:bedrock/agentDataSource:AgentDataSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     dataDeletionPolicy = registerOutput<String>('dataDeletionPolicy');
     dataSourceConfiguration = registerOutput<AgentDataSourceDataSourceConfiguration>('dataSourceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentDataSourceDataSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

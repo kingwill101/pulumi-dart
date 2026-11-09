@@ -65,7 +65,7 @@ import 'bucket_access_key_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lightsail.NewBucketAccessKey(ctx, "example", &lightsail.BucketAccessKeyArgs{
-/// 			BucketName: example.ID().ToIDOutput().ToStringOutput(),
+/// 			BucketName: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -75,7 +75,7 @@ import 'bucket_access_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -84,10 +84,16 @@ import 'bucket_access_key_state.dart';
 /// }
 ///
 /// resource "aws_lightsail_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "example-bucket"
 ///   bundle_id = "small_1_0"
 /// }
-/// resource "aws_lightsail_bucketaccesskey" "example" {
+/// resource "aws_lightsail_bucket_access_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket_name = aws_lightsail_bucket.example.id
 /// }
 /// ```
@@ -174,7 +180,7 @@ class BucketAccessKey extends pulumi.CustomResource {
           'aws:lightsail/bucketAccessKey:BucketAccessKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['secretAccessKey'],
         ) {
     accessKeyId = registerOutput<String>('accessKeyId');

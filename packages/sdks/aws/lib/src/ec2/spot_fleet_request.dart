@@ -201,7 +201,7 @@ import 'spot_fleet_request_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -210,7 +210,10 @@ import 'spot_fleet_request_state.dart';
 /// }
 ///
 /// # Request a Spot fleet
-/// resource "aws_ec2_spotfleetrequest" "cheap_compute" {
+/// resource "aws_ec2_spot_fleet_request" "cheap_compute" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   launch_specifications {
 ///     instance_type            = "m4.10xlarge"
 ///     ami                      = "ami-1234"
@@ -273,7 +276,7 @@ import 'spot_fleet_request_state.dart';
 ///                     .ami("ami-1234")
 ///                     .spotPrice("2.793")
 ///                     .placementTenancy("dedicated")
-///                     .iamInstanceProfileArn(example.arn())
+///                     .iamInstanceProfileArn(example.get("arn"))
 ///                     .build(),
 ///                 SpotFleetRequestLaunchSpecificationArgs.builder()
 ///                     .rootBlockDevices(SpotFleetRequestLaunchSpecificationRootBlockDeviceArgs.builder()
@@ -284,7 +287,7 @@ import 'spot_fleet_request_state.dart';
 ///                     .ami("ami-5678")
 ///                     .keyName("my-key")
 ///                     .spotPrice("1.117")
-///                     .iamInstanceProfileArn(example.arn())
+///                     .iamInstanceProfileArn(example.get("arn"))
 ///                     .availabilityZone("us-west-1a")
 ///                     .subnetId("subnet-1234")
 ///                     .weightedCapacity("35")
@@ -409,7 +412,7 @@ import 'spot_fleet_request_state.dart';
 ///                 LaunchTemplateSpecification = new Aws.Ec2.Inputs.SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationArgs
 ///                 {
 ///                     Id = foo.Id,
-///                     Version = foo.LatestVersion,
+///                     Version = foo.LatestVersion.Apply(x => x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
 ///                 },
 ///             },
 ///         },
@@ -450,7 +453,7 @@ import 'spot_fleet_request_state.dart';
 /// 			LaunchTemplateConfigs: ec2.SpotFleetRequestLaunchTemplateConfigArray{
 /// 				&ec2.SpotFleetRequestLaunchTemplateConfigArgs{
 /// 					LaunchTemplateSpecification: &ec2.SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationArgs{
-/// 						Id:      foo.ID().ToIDOutput().ToStringOutput(),
+/// 						Id:      foo.ID(),
 /// 						Version: foo.LatestVersion,
 /// 					},
 /// 				},
@@ -470,7 +473,7 @@ import 'spot_fleet_request_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -478,18 +481,24 @@ import 'spot_fleet_request_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_launchtemplate" "foo" {
+/// resource "aws_ec2_launch_template" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "launch-template"
 ///   image_id      = "ami-516b9131"
 ///   instance_type = "m1.small"
 ///   key_name      = "some-key"
 /// }
-/// resource "aws_ec2_spotfleetrequest" "foo" {
+/// resource "aws_ec2_spot_fleet_request" "foo" {
 ///   depends_on = [test-attach]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   launch_template_configs {
 ///     launch_template_specification = {
-///       id      = aws_ec2_launchtemplate.foo.id
-///       version = aws_ec2_launchtemplate.foo.latest_version
+///       id      = aws_ec2_launch_template.foo.id
+///       version = aws_ec2_launch_template.foo.latest_version
 ///     }
 ///   }
 ///   iam_fleet_role  = "arn:aws:iam::12345678:role/spot-fleet"
@@ -704,7 +713,7 @@ import 'spot_fleet_request_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -712,7 +721,10 @@ import 'spot_fleet_request_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_spotfleetrequest" "foo" {
+/// resource "aws_ec2_spot_fleet_request" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   launch_specifications {
 ///     instance_type     = "m1.small"
 ///     ami               = "ami-d06a90b0"
@@ -919,7 +931,7 @@ import 'spot_fleet_request_state.dart';
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -927,7 +939,10 @@ import 'spot_fleet_request_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_spotfleetrequest" "example" {
+/// resource "aws_ec2_spot_fleet_request" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dynamic "launch_specifications" {
 ///     for_each = [for s in var.subnets : {
 ///       "subnetId" = s[1]
@@ -957,6 +972,7 @@ import 'spot_fleet_request_state.dart';
 ///   terminate_instances_with_expiration = "true"
 /// }
 /// variable "subnets" {
+///   type = any
 /// }
 /// ```
 ///
@@ -1083,7 +1099,7 @@ import 'spot_fleet_request_state.dart';
 ///                 LaunchTemplateSpecification = new Aws.Ec2.Inputs.SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationArgs
 ///                 {
 ///                     Id = foo.Id,
-///                     Version = foo.LatestVersion,
+///                     Version = foo.LatestVersion.Apply(x => x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
 ///                 },
 ///                 Overrides = new[]
 ///                 {
@@ -1130,7 +1146,7 @@ import 'spot_fleet_request_state.dart';
 /// 			Filters: []ec2.GetSubnetsFilter{
 /// 				{
 /// 					Name: "vpc-id",
-/// 					Values: pulumi.StringArray{
+/// 					Values: []string{
 /// 						vpcId,
 /// 					},
 /// 				},
@@ -1152,7 +1168,7 @@ import 'spot_fleet_request_state.dart';
 /// 			LaunchTemplateConfigs: ec2.SpotFleetRequestLaunchTemplateConfigArray{
 /// 				&ec2.SpotFleetRequestLaunchTemplateConfigArgs{
 /// 					LaunchTemplateSpecification: &ec2.SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationArgs{
-/// 						Id:      foo.ID().ToIDOutput().ToStringOutput(),
+/// 						Id:      foo.ID(),
 /// 						Version: foo.LatestVersion,
 /// 					},
 /// 					Overrides: ec2.SpotFleetRequestLaunchTemplateConfigOverrideArray{
@@ -1183,7 +1199,7 @@ import 'spot_fleet_request_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1191,34 +1207,40 @@ import 'spot_fleet_request_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2_getsubnets" "example" {
+/// data "aws_ec2_subnets" "example" {
 ///   filters {
 ///     name   = "vpc-id"
 ///     values = [vpcId]
 ///   }
 /// }
 ///
-/// resource "aws_ec2_launchtemplate" "foo" {
+/// resource "aws_ec2_launch_template" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "launch-template"
 ///   image_id      = "ami-516b9131"
 ///   instance_type = "m1.small"
 ///   key_name      = "some-key"
 /// }
-/// resource "aws_ec2_spotfleetrequest" "foo" {
+/// resource "aws_ec2_spot_fleet_request" "foo" {
 ///   depends_on = [test-attach]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   launch_template_configs {
 ///     launch_template_specification = {
-///       id      = aws_ec2_launchtemplate.foo.id
-///       version = aws_ec2_launchtemplate.foo.latest_version
+///       id      = aws_ec2_launch_template.foo.id
+///       version = aws_ec2_launch_template.foo.latest_version
 ///     }
 ///     overrides {
-///       subnet_id = data.aws_ec2_getsubnets.example.ids[0]
+///       subnet_id = data.aws_ec2_subnets.example.ids[0]
 ///     }
 ///     overrides {
-///       subnet_id = data.aws_ec2_getsubnets.example.ids[1]
+///       subnet_id = data.aws_ec2_subnets.example.ids[1]
 ///     }
 ///     overrides {
-///       subnet_id = data.aws_ec2_getsubnets.example.ids[2]
+///       subnet_id = data.aws_ec2_subnets.example.ids[2]
 ///     }
 ///   }
 ///   iam_fleet_role  = "arn:aws:iam::12345678:role/spot-fleet"
@@ -1445,7 +1467,7 @@ class SpotFleetRequest extends pulumi.CustomResource {
           'aws:ec2/spotFleetRequest:SpotFleetRequest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     allocationStrategy = registerOutput<String?>('allocationStrategy');
     clientToken = registerOutput<String>('clientToken');

@@ -158,7 +158,7 @@ import 'data_repository_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -190,7 +190,7 @@ import 'data_repository_association_state.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			FileSystemId: exampleLustreFileSystem.ID().ToIDOutput().ToStringOutput(),
+/// 			FileSystemId: exampleLustreFileSystem.ID(),
 /// 			DataRepositoryPath: example.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 				return fmt.Sprintf("s3://%v", id), nil
 /// 			}).(pulumi.StringOutput),
@@ -204,7 +204,7 @@ import 'data_repository_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -213,28 +213,40 @@ import 'data_repository_association_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "my-bucket"
 /// }
-/// resource "aws_s3_bucketacl" "example" {
+/// resource "aws_s3_bucket_acl" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.id
 ///   acl    = "private"
 /// }
-/// resource "aws_fsx_lustrefilesystem" "example" {
+/// resource "aws_fsx_lustre_file_system" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   storage_capacity            = 1200
 ///   subnet_ids                  = exampleAwsSubnet.id
 ///   deployment_type             = "PERSISTENT_2"
 ///   per_unit_storage_throughput = 125
 /// }
-/// resource "aws_fsx_datarepositoryassociation" "example" {
-///   s3 = {
-///     auto_export_policy = {
+/// resource "aws_fsx_data_repository_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   s3 {
+///     auto_export_policy {
 ///       events = ["NEW", "CHANGED", "DELETED"]
 ///     }
-///     auto_import_policy = {
+///     auto_import_policy {
 ///       events = ["NEW", "CHANGED", "DELETED"]
 ///     }
 ///   }
-///   file_system_id       = aws_fsx_lustrefilesystem.example.id
+///   file_system_id       = aws_fsx_lustre_file_system.example.id
 ///   data_repository_path ="s3://${aws_s3_bucket.example.id}"
 ///   file_system_path     = "/my-bucket"
 /// }
@@ -280,7 +292,7 @@ import 'data_repository_association_state.dart';
 ///
 ///         var exampleLustreFileSystem = new LustreFileSystem("exampleLustreFileSystem", LustreFileSystemArgs.builder()
 ///             .storageCapacity(1200)
-///             .subnetIds(exampleAwsSubnet.id())
+///             .subnetIds(exampleAwsSubnet.get("id"))
 ///             .deploymentType("PERSISTENT_2")
 ///             .perUnitStorageThroughput(125)
 ///             .build());
@@ -394,7 +406,7 @@ class DataRepositoryAssociation extends pulumi.CustomResource {
           'aws:fsx/dataRepositoryAssociation:DataRepositoryAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     associationId = registerOutput<String>('associationId');

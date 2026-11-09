@@ -55,7 +55,7 @@ import 'resolver_firewall_domain_list_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -63,7 +63,10 @@ import 'resolver_firewall_domain_list_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53_resolverfirewalldomainlist" "example" {
+/// resource "aws_route53_resolver_firewall_domain_list" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// ```
@@ -137,7 +140,7 @@ class ResolverFirewallDomainList extends pulumi.CustomResource {
           'aws:route53/resolverFirewallDomainList:ResolverFirewallDomainList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     domains = registerOutput<List<String>?>('domains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

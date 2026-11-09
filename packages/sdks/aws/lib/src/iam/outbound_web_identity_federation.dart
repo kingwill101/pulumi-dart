@@ -51,7 +51,7 @@ import 'outbound_web_identity_federation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -59,7 +59,10 @@ import 'outbound_web_identity_federation_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_outboundwebidentityfederation" "example" {
+/// resource "aws_iam_outbound_web_identity_federation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -124,7 +127,7 @@ class OutboundWebIdentityFederation extends pulumi.CustomResource {
           'aws:iam/outboundWebIdentityFederation:OutboundWebIdentityFederation',
           name,
           pulumi.Input.mapToInputs(args ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     issuerIdentifier = registerOutput<String>('issuerIdentifier');
   }

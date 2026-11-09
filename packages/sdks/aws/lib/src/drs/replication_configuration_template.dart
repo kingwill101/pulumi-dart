@@ -210,7 +210,7 @@ import 'replication_configuration_template_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -218,22 +218,25 @@ import 'replication_configuration_template_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_drs_replicationconfigurationtemplate" "example" {
-///   pit_policies {
+/// resource "aws_drs_replication_configuration_template" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   pit_policy {
 ///     enabled            = true
 ///     interval           = 10
 ///     retention_duration = 60
 ///     units              = "MINUTE"
 ///     rule_id            = 1
 ///   }
-///   pit_policies {
+///   pit_policy {
 ///     enabled            = true
 ///     interval           = 1
 ///     retention_duration = 24
 ///     units              = "HOUR"
 ///     rule_id            = 2
 ///   }
-///   pit_policies {
+///   pit_policy {
 ///     enabled            = true
 ///     interval           = 1
 ///     retention_duration = 3
@@ -306,8 +309,8 @@ import 'replication_configuration_template_timeouts.dart';
 ///             .ebsEncryption("DEFAULT")
 ///             .ebsEncryptionKeyArn("arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab")
 ///             .replicationServerInstanceType("t3.small")
-///             .replicationServersSecurityGroupsIds(exampleAwsSecurityGroup.stream().map(element -> element.id()).collect(toList()))
-///             .stagingAreaSubnetId(exampleAwsSubnet.id())
+///             .replicationServersSecurityGroupsIds(exampleAwsSecurityGroup.stream().map(element -> element.get("id")).collect(toList()))
+///             .stagingAreaSubnetId(exampleAwsSubnet.get("id"))
 ///             .useDedicatedReplicationServer(false)
 ///             .build());
 ///
@@ -376,7 +379,7 @@ class ReplicationConfigurationTemplate extends pulumi.CustomResource {
           'aws:drs/replicationConfigurationTemplate:ReplicationConfigurationTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     associateDefaultSecurityGroup = registerOutput<bool>('associateDefaultSecurityGroup');

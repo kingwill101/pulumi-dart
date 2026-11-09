@@ -91,7 +91,7 @@ import 'resource_lf_tag_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -99,11 +99,14 @@ import 'resource_lf_tag_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lakeformation_resourcelftag" "example" {
-///   database = {
+/// resource "aws_lakeformation_resource_lf_tag" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   database {
 ///     name = exampleAwsGlueCatalogDatabase.name
 ///   }
-///   lf_tag = {
+///   lf_tag {
 ///     key   = exampleAwsLakeformationLfTag.key
 ///     value = "stowe"
 ///   }
@@ -134,10 +137,10 @@ import 'resource_lf_tag_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new ResourceLfTag("example", ResourceLfTagArgs.builder()
 ///             .database(ResourceLfTagDatabaseArgs.builder()
-///                 .name(exampleAwsGlueCatalogDatabase.name())
+///                 .name(exampleAwsGlueCatalogDatabase.get("name"))
 ///                 .build())
 ///             .lfTag(ResourceLfTagLfTagArgs.builder()
-///                 .key(exampleAwsLakeformationLfTag.key())
+///                 .key(exampleAwsLakeformationLfTag.get("key"))
 ///                 .value("stowe")
 ///                 .build())
 ///             .build());
@@ -192,7 +195,7 @@ class ResourceLfTag extends pulumi.CustomResource {
           'aws:lakeformation/resourceLfTag:ResourceLfTag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     catalogId = registerOutput<String?>('catalogId');
     database = registerOutput<ResourceLfTagDatabase?>('database', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceLfTagDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });

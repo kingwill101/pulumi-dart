@@ -62,7 +62,7 @@ import 'files_synchronization_configuration_state.dart';
 ///             new Aws.S3.Inputs.FilesSynchronizationConfigurationImportDataRuleArgs
 ///             {
 ///                 Prefix = "",
-///                 SizeLessThan = 52673613135872,
+///                 SizeLessThan = (int)52673613135872,
 ///                 Trigger = "ON_FILE_ACCESS",
 ///             },
 ///         },
@@ -104,7 +104,7 @@ import 'files_synchronization_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -112,7 +112,10 @@ import 'files_synchronization_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_filessynchronizationconfiguration" "example" {
+/// resource "aws_s3_files_synchronization_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   expiration_data_rules {
 ///     days_after_last_access = 30
 ///   }
@@ -156,7 +159,7 @@ import 'files_synchronization_configuration_state.dart';
 ///                 .sizeLessThan(52673613135872)
 ///                 .trigger("ON_FILE_ACCESS")
 ///                 .build())
-///             .fileSystemId(exampleAwsS3filesFileSystem.id())
+///             .fileSystemId(exampleAwsS3filesFileSystem.get("id"))
 ///             .build());
 ///
 ///     }
@@ -222,7 +225,7 @@ class FilesSynchronizationConfiguration extends pulumi.CustomResource {
           'aws:s3/filesSynchronizationConfiguration:FilesSynchronizationConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     expirationDataRules = registerOutput<List<FilesSynchronizationConfigurationExpirationDataRule>?>('expirationDataRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FilesSynchronizationConfigurationExpirationDataRule>(guardedValue, (value) => FilesSynchronizationConfigurationExpirationDataRule.fromMap((value as Map).cast<String, dynamic>())); });
     fileSystemId = registerOutput<String>('fileSystemId');

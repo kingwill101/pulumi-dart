@@ -74,7 +74,7 @@ import 'device_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -83,7 +83,10 @@ import 'device_state.dart';
 /// }
 ///
 /// resource "aws_sagemaker_device" "example" {
-///   device = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   device {
 ///     device_name = "example"
 ///   }
 ///   device_fleet_name = exampleAwsSagemakerDeviceFleet.deviceFleetName
@@ -115,7 +118,7 @@ import 'device_state.dart';
 ///             .device(DeviceDeviceArgs.builder()
 ///                 .deviceName("example")
 ///                 .build())
-///             .deviceFleetName(exampleAwsSagemakerDeviceFleet.deviceFleetName())
+///             .deviceFleetName(exampleAwsSagemakerDeviceFleet.get("deviceFleetName"))
 ///             .build());
 ///
 ///     }
@@ -162,7 +165,7 @@ class Device extends pulumi.CustomResource {
           'aws:sagemaker/device:Device',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     agentVersion = registerOutput<String>('agentVersion');
     arn = registerOutput<String>('arn');

@@ -25,6 +25,8 @@ class GetComputeEnvironmentResult {
   final Map<String, String>? tags;
   /// Type of the compute environment (for example, `MANAGED` or `UNMANAGED`).
   final String? type;
+  /// Number of vCPUs for an unmanaged compute environment. This parameter is only used for fair-share scheduling to ensure that each compute environment has the correct number of vCPUs when it is used in a fair-share job queue. Only valid when `type` is `UNMANAGED`.
+  final int? unmanagedVcpus;
   /// Infrastructure update policy for the compute environment.
   final List<GetComputeEnvironmentUpdatePolicy>? updatePolicies;
 
@@ -40,6 +42,7 @@ class GetComputeEnvironmentResult {
   /// [statusReason] Short, human-readable string to provide additional details about the current status of the compute environment.
   /// [tags] Key-value map of resource tags
   /// [type] Type of the compute environment (for example, `MANAGED` or `UNMANAGED`).
+  /// [unmanagedVcpus] Number of vCPUs for an unmanaged compute environment. This parameter is only used for fair-share scheduling to ensure that each compute environment has the correct number of vCPUs when it is used in a fair-share job queue. Only valid when `type` is `UNMANAGED`.
   /// [updatePolicies] Infrastructure update policy for the compute environment.
   const GetComputeEnvironmentResult({
     this.arn,
@@ -53,6 +56,7 @@ class GetComputeEnvironmentResult {
     this.statusReason,
     this.tags,
     this.type,
+    this.unmanagedVcpus,
     this.updatePolicies,
   });
 
@@ -69,6 +73,7 @@ class GetComputeEnvironmentResult {
       'statusReason': ?statusReason,
       'tags': ?tags,
       'type': ?type,
+      'unmanagedVcpus': ?unmanagedVcpus,
       'updatePolicies': ?(() { final guardedValue = updatePolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetComputeEnvironmentUpdatePolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
@@ -86,6 +91,7 @@ class GetComputeEnvironmentResult {
       statusReason: (() { final guardedValue = map['statusReason']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      unmanagedVcpus: (() { final guardedValue = map['unmanagedVcpus']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       updatePolicies: (() { final guardedValue = map['updatePolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetComputeEnvironmentUpdatePolicy>(guardedValue, (value) => GetComputeEnvironmentUpdatePolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }

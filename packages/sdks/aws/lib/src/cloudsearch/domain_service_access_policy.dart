@@ -175,7 +175,7 @@ import 'domain_service_access_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cloudsearch.NewDomainServiceAccessPolicy(ctx, "example", &cloudsearch.DomainServiceAccessPolicyArgs{
-/// 			DomainName:   exampleDomain.ID().ToIDOutput().ToStringOutput(),
+/// 			DomainName:   exampleDomain.ID(),
 /// 			AccessPolicy: pulumi.String(example.Json),
 /// 		})
 /// 		if err != nil {
@@ -186,7 +186,7 @@ import 'domain_service_access_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -194,9 +194,9 @@ import 'domain_service_access_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
+///     condition {
 ///       test     = "IpAddress"
 ///       variable = "aws:SourceIp"
 ///       values   = ["192.0.2.0/32"]
@@ -212,11 +212,17 @@ import 'domain_service_access_policy_state.dart';
 /// }
 ///
 /// resource "aws_cloudsearch_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-domain"
 /// }
-/// resource "aws_cloudsearch_domainserviceaccesspolicy" "example" {
+/// resource "aws_cloudsearch_domain_service_access_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name   = aws_cloudsearch_domain.example.id
-///   access_policy = data.aws_iam_getpolicydocument.example.json
+///   access_policy = data.aws_iam_policy_document.example.json
 /// }
 /// ```
 /// ```java
@@ -341,7 +347,7 @@ class DomainServiceAccessPolicy extends pulumi.CustomResource {
           'aws:cloudsearch/domainServiceAccessPolicy:DomainServiceAccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accessPolicy = registerOutput<String>('accessPolicy');
     domainName = registerOutput<String>('domainName');

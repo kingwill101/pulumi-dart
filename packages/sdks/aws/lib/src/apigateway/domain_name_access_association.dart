@@ -66,7 +66,7 @@ import 'domain_name_access_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'domain_name_access_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_domainnameaccessassociation" "example" {
+/// resource "aws_apigateway_domain_name_access_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   access_association_source      = exampleAwsVpcEndpoint.id
 ///   access_association_source_type = "VPCE"
 ///   domain_name_arn                = exampleAwsApiGatewayDomainName.arn
@@ -102,9 +105,9 @@ import 'domain_name_access_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DomainNameAccessAssociation("example", DomainNameAccessAssociationArgs.builder()
-///             .accessAssociationSource(exampleAwsVpcEndpoint.id())
+///             .accessAssociationSource(exampleAwsVpcEndpoint.get("id"))
 ///             .accessAssociationSourceType("VPCE")
-///             .domainNameArn(exampleAwsApiGatewayDomainName.arn())
+///             .domainNameArn(exampleAwsApiGatewayDomainName.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -163,7 +166,7 @@ class DomainNameAccessAssociation extends pulumi.CustomResource {
           'aws:apigateway/domainNameAccessAssociation:DomainNameAccessAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accessAssociationSource = registerOutput<String>('accessAssociationSource');
     accessAssociationSourceType = registerOutput<String>('accessAssociationSourceType');

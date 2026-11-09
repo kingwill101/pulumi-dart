@@ -67,7 +67,7 @@ import 'vpc_ipv6_cidr_block_association_state.dart';
 /// 		}
 /// 		_, err = ec2.NewVpcIpv6CidrBlockAssociation(ctx, "test", &ec2.VpcIpv6CidrBlockAssociationArgs{
 /// 			Ipv6IpamPoolId: pulumi.Any(testAwsVpcIpamPool.Id),
-/// 			VpcId:          test.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:          test.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -77,7 +77,7 @@ import 'vpc_ipv6_cidr_block_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,9 +86,15 @@ import 'vpc_ipv6_cidr_block_association_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
-/// resource "aws_ec2_vpcipv6cidrblockassociation" "test" {
+/// resource "aws_ec2_vpc_ipv6_cidr_block_association" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ipv6_ipam_pool_id = testAwsVpcIpamPool.id
 ///   vpc_id            = aws_ec2_vpc.test.id
 /// }
@@ -121,7 +127,7 @@ import 'vpc_ipv6_cidr_block_association_state.dart';
 ///             .build());
 ///
 ///         var testVpcIpv6CidrBlockAssociation = new VpcIpv6CidrBlockAssociation("testVpcIpv6CidrBlockAssociation", VpcIpv6CidrBlockAssociationArgs.builder()
-///             .ipv6IpamPoolId(testAwsVpcIpamPool.id())
+///             .ipv6IpamPoolId(testAwsVpcIpamPool.get("id"))
 ///             .vpcId(test.id())
 ///             .build());
 ///
@@ -200,7 +206,7 @@ class VpcIpv6CidrBlockAssociation extends pulumi.CustomResource {
           'aws:ec2/vpcIpv6CidrBlockAssociation:VpcIpv6CidrBlockAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     assignGeneratedIpv6CidrBlock = registerOutput<bool>('assignGeneratedIpv6CidrBlock');
     ipSource = registerOutput<String>('ipSource');

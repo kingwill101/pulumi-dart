@@ -59,7 +59,7 @@ import 'key_pair_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,10 @@ import 'key_pair_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lightsail_keypair" "example" {
+/// resource "aws_lightsail_key_pair" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// ```
@@ -166,7 +169,7 @@ import 'key_pair_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -174,7 +177,10 @@ import 'key_pair_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lightsail_keypair" "example" {
+/// resource "aws_lightsail_key_pair" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "example"
 ///   pgp_key = "keybase:keybaseusername"
 /// }
@@ -291,7 +297,7 @@ import 'key_pair_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -302,7 +308,10 @@ import 'key_pair_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lightsail_keypair" "example" {
+/// resource "aws_lightsail_key_pair" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example"
 ///   public_key = file("~/.ssh/id_rsa.pub")
 /// }
@@ -398,7 +407,7 @@ class KeyPair extends pulumi.CustomResource {
           'aws:lightsail/keyPair:KeyPair',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['privateKey'],
         ) {
     arn = registerOutput<String>('arn');

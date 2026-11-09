@@ -177,7 +177,7 @@ import 'evaluation_job_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -185,26 +185,29 @@ import 'evaluation_job_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_evaluationjob" "example" {
-///   evaluation_config = {
-///     automated = {
-///       dataset_metric_configs = [{
-///         "dataset" = {
-///           "name" = "Builtin.Bold"
+/// resource "aws_bedrock_evaluation_job" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   evaluation_config {
+///     automated {
+///       dataset_metric_config {
+///         dataset {
+///           name = "Builtin.Bold"
 ///         }
-///         "taskType"    = "Generation"
-///         "metricNames" = ["Builtin.Robustness"]
-///       }]
+///         task_type    = "Generation"
+///         metric_names = ["Builtin.Robustness"]
+///       }
 ///     }
 ///   }
-///   inference_config = {
-///     models = [{
-///       "bedrockModel" = {
-///         "modelIdentifier" = "amazon.nova-micro-v1:0"
+///   inference_config {
+///     model {
+///       bedrock_model {
+///         model_identifier = "amazon.nova-micro-v1:0"
 ///       }
-///     }]
+///     }
 ///   }
-///   output_data_config = {
+///   output_data_config {
 ///     s3_uri ="s3://${exampleAwsS3Bucket.id}/output/"
 ///   }
 ///   job_name = "example-job"
@@ -260,10 +263,10 @@ import 'evaluation_job_timeouts.dart';
 ///                     .build())
 ///                 .build())
 ///             .outputDataConfig(EvaluationJobOutputDataConfigArgs.builder()
-///                 .s3Uri(String.format("s3://%s/output/", exampleAwsS3Bucket.id()))
+///                 .s3Uri(String.format("s3://%s/output/", exampleAwsS3Bucket.get("id")))
 ///                 .build())
 ///             .jobName("example-job")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -360,7 +363,7 @@ class EvaluationJob extends pulumi.CustomResource {
           'aws:bedrock/evaluationJob:EvaluationJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     applicationType = registerOutput<String>('applicationType');
     createdAt = registerOutput<String>('createdAt');

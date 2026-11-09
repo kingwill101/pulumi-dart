@@ -158,7 +158,7 @@ import 'collaboration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -167,13 +167,16 @@ import 'collaboration_state.dart';
 /// }
 ///
 /// resource "aws_cleanrooms_collaboration" "test_collaboration" {
-///   data_encryption_metadata = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   data_encryption_metadata {
 ///     allow_clear_text                            = true
 ///     allow_duplicates                            = true
 ///     allow_joins_on_columns_with_different_names = true
 ///     preserve_nulls                              = false
 ///   }
-///   members {
+///   member {
 ///     account_id       = 123456789012
 ///     display_name     = "Other member"
 ///     member_abilities = []
@@ -328,7 +331,7 @@ class Collaboration extends pulumi.CustomResource {
           'aws:cleanrooms/collaboration:Collaboration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     analyticsEngine = registerOutput<String?>('analyticsEngine');
     arn = registerOutput<String>('arn');

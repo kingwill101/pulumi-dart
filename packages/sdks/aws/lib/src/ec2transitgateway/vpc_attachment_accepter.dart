@@ -77,7 +77,7 @@ import 'vpc_attachment_accepter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -85,7 +85,10 @@ import 'vpc_attachment_accepter_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2transitgateway_vpcattachmentaccepter" "example" {
+/// resource "aws_ec2transitgateway_vpc_attachment_accepter" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   transit_gateway_attachment_id = exampleAwsEc2TransitGatewayVpcAttachment.id
 ///   tags = {
 ///     "Name" = "Example cross-account attachment"
@@ -114,7 +117,7 @@ import 'vpc_attachment_accepter_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new VpcAttachmentAccepter("example", VpcAttachmentAccepterArgs.builder()
-///             .transitGatewayAttachmentId(exampleAwsEc2TransitGatewayVpcAttachment.id())
+///             .transitGatewayAttachmentId(exampleAwsEc2TransitGatewayVpcAttachment.get("id"))
 ///             .tags(Map.of("Name", "Example cross-account attachment"))
 ///             .build());
 ///
@@ -181,7 +184,7 @@ class VpcAttachmentAccepter extends pulumi.CustomResource {
           'aws:ec2transitgateway/vpcAttachmentAccepter:VpcAttachmentAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     applianceModeSupport = registerOutput<String>('applianceModeSupport');
     dnsSupport = registerOutput<String>('dnsSupport');

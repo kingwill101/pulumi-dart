@@ -215,7 +215,7 @@ import 'budget_action_subscriber.dart';
 ///         ActionThreshold = new Aws.Budgets.Inputs.BudgetActionActionThresholdArgs
 ///         {
 ///             ActionThresholdType = "ABSOLUTE_VALUE",
-///             ActionThresholdValue = 100,
+///             ActionThresholdValue = 100.0,
 ///         },
 ///         Definition = new Aws.Budgets.Inputs.BudgetActionDefinitionArgs
 ///         {
@@ -368,7 +368,7 @@ import 'budget_action_subscriber.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -376,38 +376,41 @@ import 'budget_action_subscriber.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["ec2:Describe*"]
 ///     resources = ["*"]
 ///   }
 /// }
-/// data "aws_getpartition" "current" {
+/// data "aws_partition" "current" {
 /// }
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
-///       identifiers = ["budgets.${data.aws_getpartition.current.dns_suffix}"]
+///       identifiers = ["budgets.${data.aws_partition.current.dns_suffix}"]
 ///     }
 ///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 ///
-/// resource "aws_budgets_budgetaction" "example" {
-///   action_threshold = {
+/// resource "aws_budgets_budget_action" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   action_threshold {
 ///     action_threshold_type  = "ABSOLUTE_VALUE"
 ///     action_threshold_value = 100
 ///   }
-///   definition = {
-///     iam_action_definition = {
+///   definition {
+///     iam_action_definition {
 ///       policy_arn = aws_iam_policy.example.arn
 ///       roles      = [aws_iam_role.example.name]
 ///     }
 ///   }
-///   subscribers {
+///   subscriber {
 ///     address           = "example@example.example"
 ///     subscription_type = "EMAIL"
 ///   }
@@ -422,15 +425,24 @@ import 'budget_action_subscriber.dart';
 ///   }
 /// }
 /// resource "aws_iam_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   description = "My example policy"
-///   policy      = data.aws_iam_getpolicydocument.example.json
+///   policy      = data.aws_iam_policy_document.example.json
 /// }
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
 /// resource "aws_budgets_budget" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example"
 ///   budget_type       = "USAGE"
 ///   limit_amount      = "10.0"
@@ -674,7 +686,7 @@ class BudgetAction extends pulumi.CustomResource {
           'aws:budgets/budgetAction:BudgetAction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     actionId = registerOutput<String>('actionId');

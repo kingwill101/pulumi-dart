@@ -65,7 +65,7 @@ import 'route_server_propagation_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,10 @@ import 'route_server_propagation_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpc_routeserverpropagation" "example" {
+/// resource "aws_vpc_route_server_propagation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   route_server_id = exampleAwsVpcRouteServer.routeServerId
 ///   route_table_id  = exampleAwsRouteTable.id
 /// }
@@ -100,8 +103,8 @@ import 'route_server_propagation_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RouteServerPropagation("example", RouteServerPropagationArgs.builder()
-///             .routeServerId(exampleAwsVpcRouteServer.routeServerId())
-///             .routeTableId(exampleAwsRouteTable.id())
+///             .routeServerId(exampleAwsVpcRouteServer.get("routeServerId"))
+///             .routeTableId(exampleAwsRouteTable.get("id"))
 ///             .build());
 ///
 ///     }
@@ -147,7 +150,7 @@ class RouteServerPropagation extends pulumi.CustomResource {
           'aws:vpc/routeServerPropagation:RouteServerPropagation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     routeServerId = registerOutput<String>('routeServerId');

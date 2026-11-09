@@ -57,7 +57,7 @@ import 'get_domain_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,7 +65,7 @@ import 'get_domain_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_elasticsearch_getdomain" "myDomain" {
+/// data "aws_elasticsearch_domain" "myDomain" {
 ///   domain_name = "my-domain-name"
 /// }
 /// ```

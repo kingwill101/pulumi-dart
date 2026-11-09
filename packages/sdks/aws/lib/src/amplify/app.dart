@@ -176,7 +176,7 @@ import 'app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -185,14 +185,35 @@ import 'app_state.dart';
 /// }
 ///
 /// resource "aws_amplify_app" "example" {
-///   custom_rules {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   custom_rule {
 ///     source = "/<*>"
 ///     status = "404"
 ///     target = "/index.html"
 ///   }
 ///   name       = "example"
 ///   repository = "https://github.com/example/app"
-///   build_spec = "version: 0.1\nfrontend:\n  phases:\n    preBuild:\n      commands:\n        - yarn install\n    build:\n      commands:\n        - yarn run build\n  artifacts:\n    baseDirectory: build\n    files:\n      - '**/*'\n  cache:\n    paths:\n      - node_modules/**/*\n"
+///   build_spec = <<-EOT
+/// version: 0.1
+/// frontend:
+///   phases:
+///     preBuild:
+///       commands:
+///         - yarn install
+///     build:
+///       commands:
+///         - yarn run build
+///   artifacts:
+///     baseDirectory: build
+///     files:
+///       - '**/*'
+///   cache:
+///     paths:
+///       - node_modules/**/*
+/// EOT
+///
 ///   environment_variables = {
 ///     "ENV" = "test"
 ///   }
@@ -349,7 +370,7 @@ import 'app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -358,6 +379,9 @@ import 'app_state.dart';
 /// }
 ///
 /// resource "aws_amplify_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example"
 ///   repository   = "https://github.com/example/app"
 ///   access_token = "..."
@@ -494,7 +518,7 @@ import 'app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -503,7 +527,10 @@ import 'app_state.dart';
 /// }
 ///
 /// resource "aws_amplify_app" "example" {
-///   auto_branch_creation_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   auto_branch_creation_config {
 ///     enable_auto_build = true
 ///   }
 ///   # Enable auto build for the created branch.
@@ -641,7 +668,7 @@ import 'app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -653,6 +680,9 @@ import 'app_state.dart';
 /// }
 ///
 /// resource "aws_amplify_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "example"
 ///   enable_basic_auth      = true
 ///   basic_auth_credentials = base64encode("username1:password1")
@@ -813,7 +843,7 @@ import 'app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -822,12 +852,15 @@ import 'app_state.dart';
 /// }
 ///
 /// resource "aws_amplify_app" "example" {
-///   custom_rules {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   custom_rule {
 ///     source = "/api/<*>"
 ///     status = "200"
 ///     target = "https://api.example.com/api/<*>"
 ///   }
-///   custom_rules {
+///   custom_rule {
 ///     source = "</^[^.]+$|\\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf|map|json)$)([^.]+$)/>"
 ///     status = "200"
 ///     target = "/index.html"
@@ -958,7 +991,7 @@ import 'app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -967,6 +1000,9 @@ import 'app_state.dart';
 /// }
 ///
 /// resource "aws_amplify_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 ///   environment_variables = {
 ///     "_CUSTOM_IMAGE" = "node:16"
@@ -1123,7 +1159,7 @@ import 'app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1132,8 +1168,26 @@ import 'app_state.dart';
 /// }
 ///
 /// resource "aws_amplify_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "example"
-///   custom_headers = "customHeaders:\n  - pattern: '**'\n    headers:\n      - key: 'Strict-Transport-Security'\n        value: 'max-age=31536000; includeSubDomains'\n      - key: 'X-Frame-Options'\n        value: 'SAMEORIGIN'\n      - key: 'X-XSS-Protection'\n        value: '1; mode=block'\n      - key: 'X-Content-Type-Options'\n        value: 'nosniff'\n      - key: 'Content-Security-Policy'\n        value: \\\"default-src 'self'\\\"\n"
+///   custom_headers = <<-EOT
+/// customHeaders:
+///   - pattern: '**'
+///     headers:
+///       - key: 'Strict-Transport-Security'
+///         value: 'max-age=31536000; includeSubDomains'
+///       - key: 'X-Frame-Options'
+///         value: 'SAMEORIGIN'
+///       - key: 'X-XSS-Protection'
+///         value: '1; mode=block'
+///       - key: 'X-Content-Type-Options'
+///         value: 'nosniff'
+///       - key: 'Content-Security-Policy'
+///         value: \"default-src 'self'\"
+/// EOT
+///
 /// }
 /// ```
 /// ```java
@@ -1269,7 +1323,7 @@ import 'app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1278,7 +1332,10 @@ import 'app_state.dart';
 /// }
 ///
 /// resource "aws_amplify_app" "example" {
-///   job_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   job_config {
 ///     build_compute_type = "STANDARD_8GB"
 ///   }
 ///   name = "example"
@@ -1379,7 +1436,7 @@ class App extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// OAuth token for a third-party source control system for an Amplify app. The OAuth token is used to create a webhook and a read-only deploy key. The OAuth token is not stored.
   late final pulumi.Output<String?> oauthToken;
-  /// Platform or framework for an Amplify app. Valid values: `WEB`, `WEB_COMPUTE`. Default value: `WEB`.
+  /// Platform or framework for an Amplify app. Valid values: `WEB`, `WEB_COMPUTE`, `WEB_DYNAMIC`. Default value: `WEB`.
   late final pulumi.Output<String?> platform;
   /// Describes the information about a production branch for an Amplify app. A `productionBranch` block is documented below.
   late final pulumi.Output<List<AppProductionBranch>> productionBranches;
@@ -1404,7 +1461,7 @@ class App extends pulumi.CustomResource {
           'aws:amplify/app:App',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['accessToken', 'basicAuthCredentials', 'oauthToken'],
         ) {
     accessToken = registerOutput<String?>('accessToken', isSecret: true);

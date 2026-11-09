@@ -70,7 +70,7 @@ import 'catalog_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -79,6 +79,9 @@ import 'catalog_timeouts.dart';
 /// }
 ///
 /// resource "aws_glue_catalog" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   description = "Example Glue Catalog"
 /// }
@@ -197,7 +200,7 @@ import 'catalog_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -206,6 +209,9 @@ import 'catalog_timeouts.dart';
 /// }
 ///
 /// resource "aws_glue_catalog" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   description = "Example Glue Catalog"
 ///   parameters = {
@@ -357,7 +363,7 @@ import 'catalog_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -366,8 +372,11 @@ import 'catalog_timeouts.dart';
 /// }
 ///
 /// resource "aws_glue_catalog" "example" {
-///   catalog_properties = {
-///     data_lake_access_properties = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   catalog_properties {
+///     data_lake_access_properties {
 ///       data_lake_access = true
 ///       catalog_type     = "aws:glue:datacatalog"
 ///     }
@@ -504,7 +513,7 @@ import 'catalog_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -513,7 +522,10 @@ import 'catalog_timeouts.dart';
 /// }
 ///
 /// resource "aws_glue_catalog" "example" {
-///   federated_catalog = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   federated_catalog {
 ///     connection_name = exampleAwsGlueConnection.name
 ///     identifier      = "arn:aws:glue:us-east-1:123456789012:catalog"
 ///   }
@@ -544,7 +556,7 @@ import 'catalog_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Catalog("example", CatalogArgs.builder()
 ///             .federatedCatalog(CatalogFederatedCatalogArgs.builder()
-///                 .connectionName(exampleAwsGlueConnection.name())
+///                 .connectionName(exampleAwsGlueConnection.get("name"))
 ///                 .identifier("arn:aws:glue:us-east-1:123456789012:catalog")
 ///                 .build())
 ///             .name("example")
@@ -695,7 +707,7 @@ import 'catalog_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -704,14 +716,17 @@ import 'catalog_timeouts.dart';
 /// }
 ///
 /// resource "aws_glue_catalog" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_database_default_permissions {
-///     principal = {
+///     principal {
 ///       data_lake_principal_identifier = "IAM_ALLOWED_PRINCIPALS"
 ///     }
 ///     permissions = ["ALL"]
 ///   }
 ///   create_table_default_permissions {
-///     principal = {
+///     principal {
 ///       data_lake_principal_identifier = "IAM_ALLOWED_PRINCIPALS"
 ///     }
 ///     permissions = ["ALL"]
@@ -853,7 +868,7 @@ class Catalog extends pulumi.CustomResource {
           'aws:glue/catalog:Catalog',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     allowFullTableExternalDataAccess = registerOutput<String>('allowFullTableExternalDataAccess');
     arn = registerOutput<String>('arn');

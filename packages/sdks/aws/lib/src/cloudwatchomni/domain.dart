@@ -74,7 +74,7 @@ import 'domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -83,6 +83,9 @@ import 'domain_state.dart';
 /// }
 ///
 /// resource "aws_cloudwatchomni_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
 ///   identity_providers = ["IAM"]
 /// }
@@ -229,7 +232,7 @@ import 'domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -237,13 +240,16 @@ import 'domain_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
 ///
 /// resource "aws_cloudwatchomni_domain" "example" {
-///   identity_provider_configuration = {
-///     identity_center_configuration = {
-///       identity_center_instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   identity_provider_configuration {
+///     identity_center_configuration {
+///       identity_center_instance_arn = data.aws_ssoadmin_instances.example.arns[0]
 ///     }
 ///   }
 ///   name               = "example"
@@ -367,7 +373,7 @@ class Domain extends pulumi.CustomResource {
           'aws:cloudwatchomni/domain:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     customEndpointUrls = registerOutput<List<String>>('customEndpointUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

@@ -77,7 +77,7 @@ import 'export_task_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -85,7 +85,10 @@ import 'export_task_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_rds_exporttask" "example" {
+/// resource "aws_rds_export_task" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   export_task_identifier = "example"
 ///   source_arn             = exampleAwsDbSnapshot.dbSnapshotArn
 ///   s3_bucket_name         = exampleAwsS3Bucket.id
@@ -116,10 +119,10 @@ import 'export_task_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new ExportTask("example", ExportTaskArgs.builder()
 ///             .exportTaskIdentifier("example")
-///             .sourceArn(exampleAwsDbSnapshot.dbSnapshotArn())
-///             .s3BucketName(exampleAwsS3Bucket.id())
-///             .iamRoleArn(exampleAwsIamRole.arn())
-///             .kmsKeyId(exampleAwsKmsKey.arn())
+///             .sourceArn(exampleAwsDbSnapshot.get("dbSnapshotArn"))
+///             .s3BucketName(exampleAwsS3Bucket.get("id"))
+///             .iamRoleArn(exampleAwsIamRole.get("arn"))
+///             .kmsKeyId(exampleAwsKmsKey.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -463,7 +466,7 @@ import 'export_task_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: exampleBucket.ID(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -571,7 +574,7 @@ import 'export_task_timeouts.dart';
 /// 		_, err = rds.NewExportTask(ctx, "example", &rds.ExportTaskArgs{
 /// 			ExportTaskIdentifier: pulumi.String("example"),
 /// 			SourceArn:            exampleSnapshot.DbSnapshotArn,
-/// 			S3BucketName:         exampleBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			S3BucketName:         exampleBucket.ID(),
 /// 			IamRoleArn:           exampleRole.Arn,
 /// 			KmsKeyId:             exampleKey.Arn,
 /// 			ExportOnlies: pulumi.StringArray{
@@ -587,7 +590,7 @@ import 'export_task_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -595,30 +598,39 @@ import 'export_task_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     actions   = ["s3:ListAllMyBuckets"]
 ///     resources = ["*"]
 ///   }
-///   statements {
+///   statement {
 ///     actions   = ["s3:GetBucketLocation", "s3:ListBucket"]
 ///     resources = [aws_s3_bucket.example.arn]
 ///   }
-///   statements {
+///   statement {
 ///     actions   = ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"]
 ///     resources = ["${aws_s3_bucket.example.arn}/*"]
 ///   }
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket        = "example"
 ///   force_destroy = true
 /// }
-/// resource "aws_s3_bucketacl" "example" {
+/// resource "aws_s3_bucket_acl" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.id
 ///   acl    = "private"
 /// }
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -633,17 +645,29 @@ import 'export_task_timeouts.dart';
 ///   })
 /// }
 /// resource "aws_iam_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "example"
-///   policy = data.aws_iam_getpolicydocument.example.json
+///   policy = data.aws_iam_policy_document.example.json
 /// }
-/// resource "aws_iam_rolepolicyattachment" "example" {
+/// resource "aws_iam_role_policy_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role       = aws_iam_role.example.name
 ///   policy_arn = aws_iam_policy.example.arn
 /// }
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_window_in_days = 10
 /// }
 /// resource "aws_rds_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identifier           = "example"
 ///   allocated_storage    = 10
 ///   db_name              = "test"
@@ -656,16 +680,22 @@ import 'export_task_timeouts.dart';
 ///   skip_final_snapshot  = true
 /// }
 /// resource "aws_rds_snapshot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   db_instance_identifier = aws_rds_instance.example.identifier
 ///   db_snapshot_identifier = "example"
 /// }
-/// resource "aws_rds_exporttask" "example" {
+/// resource "aws_rds_export_task" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   export_task_identifier = "example"
 ///   source_arn             = aws_rds_snapshot.example.db_snapshot_arn
 ///   s3_bucket_name         = aws_s3_bucket.example.id
 ///   iam_role_arn           = aws_iam_role.example.arn
 ///   kms_key_id             = aws_kms_key.example.arn
-///   export_onlies          = ["database"]
+///   export_only            = ["database"]
 ///   s3_prefix              = "my_prefix/example"
 /// }
 /// ```
@@ -959,7 +989,7 @@ class ExportTask extends pulumi.CustomResource {
           'aws:rds/exportTask:ExportTask',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     exportOnlies = registerOutput<List<String>?>('exportOnlies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     exportTaskIdentifier = registerOutput<String>('exportTaskIdentifier');

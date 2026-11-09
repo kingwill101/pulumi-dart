@@ -62,7 +62,7 @@ import 'vpc_endpoint_route_table_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'vpc_endpoint_route_table_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcendpointroutetableassociation" "example" {
+/// resource "aws_ec2_vpc_endpoint_route_table_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   route_table_id  = exampleAwsRouteTable.id
 ///   vpc_endpoint_id = exampleAwsVpcEndpoint.id
 /// }
@@ -97,8 +100,8 @@ import 'vpc_endpoint_route_table_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new VpcEndpointRouteTableAssociation("example", VpcEndpointRouteTableAssociationArgs.builder()
-///             .routeTableId(exampleAwsRouteTable.id())
-///             .vpcEndpointId(exampleAwsVpcEndpoint.id())
+///             .routeTableId(exampleAwsRouteTable.get("id"))
+///             .vpcEndpointId(exampleAwsVpcEndpoint.get("id"))
 ///             .build());
 ///
 ///     }
@@ -154,7 +157,7 @@ class VpcEndpointRouteTableAssociation extends pulumi.CustomResource {
           'aws:ec2/vpcEndpointRouteTableAssociation:VpcEndpointRouteTableAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     routeTableId = registerOutput<String>('routeTableId');

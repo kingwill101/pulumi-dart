@@ -108,7 +108,7 @@ import 's3_access_point_attachment_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -116,10 +116,13 @@ import 's3_access_point_attachment_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fsx_s3accesspointattachment" "example" {
-///   openzfs_configuration = {
-///     file_system_identity = {
-///       posix_user = {
+/// resource "aws_fsx_s3_access_point_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   openzfs_configuration {
+///     file_system_identity {
+///       posix_user {
 ///         uid = 1001
 ///         gid = 1001
 ///       }
@@ -164,7 +167,7 @@ import 's3_access_point_attachment_timeouts.dart';
 ///                         .build())
 ///                     .type("POSIX")
 ///                     .build())
-///                 .volumeId(exampleAwsFsxOpenzfsVolume.id())
+///                 .volumeId(exampleAwsFsxOpenzfsVolume.get("id"))
 ///                 .build())
 ///             .name("example-attachment")
 ///             .type("OPENZFS")
@@ -228,7 +231,7 @@ class S3AccessPointAttachment extends pulumi.CustomResource {
           'aws:fsx/s3AccessPointAttachment:S3AccessPointAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     openzfsConfiguration = registerOutput<S3AccessPointAttachmentOpenzfsConfiguration>('openzfsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return S3AccessPointAttachmentOpenzfsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

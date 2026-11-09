@@ -100,7 +100,7 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///         IsLocalBackupEnabled = true,
 ///         IsSparseDiskgroupEnabled = true,
 ///         LicenseModel = "LICENSE_INCLUDED",
-///         DataStorageSizeInTbs = 20,
+///         DataStorageSizeInTbs = 20.0,
 ///         DbServers = new[]
 ///         {
 ///             "db-server-1",
@@ -156,7 +156,7 @@ import 'cloud_vm_cluster_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -164,8 +164,11 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_odb_cloudvmcluster" "with_minimum_parameter" {
-///   data_collection_options = {
+/// resource "aws_odb_cloud_vm_cluster" "with_minimum_parameter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   data_collection_options {
 ///     is_diagnostics_events_enabled = false
 ///     is_health_monitoring_enabled  = false
 ///     is_incident_logs_enabled      = false
@@ -366,7 +369,7 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///         IsLocalBackupEnabled = true,
 ///         IsSparseDiskgroupEnabled = true,
 ///         LicenseModel = "LICENSE_INCLUDED",
-///         DataStorageSizeInTbs = 20,
+///         DataStorageSizeInTbs = 20.0,
 ///         DbServers = new[]
 ///         {
 ///             "my-dbserver-1",
@@ -435,7 +438,7 @@ import 'cloud_vm_cluster_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -443,8 +446,11 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_odb_cloudvmcluster" "with_all_parameters" {
-///   data_collection_options = {
+/// resource "aws_odb_cloud_vm_cluster" "with_all_parameters" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   data_collection_options {
 ///     is_diagnostics_events_enabled = true
 ///     is_health_monitoring_enabled  = true
 ///     is_incident_logs_enabled      = true
@@ -660,7 +666,7 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///         IsLocalBackupEnabled = true,
 ///         IsSparseDiskgroupEnabled = true,
 ///         LicenseModel = "LICENSE_INCLUDED",
-///         DataStorageSizeInTbs = 20,
+///         DataStorageSizeInTbs = 20.0,
 ///         DbServers = new[]
 ///         {
 ///             "my-dbserver-1",
@@ -729,7 +735,7 @@ import 'cloud_vm_cluster_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -737,8 +743,11 @@ import 'cloud_vm_cluster_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_odb_cloudvmcluster" "gi_version_tag_example" {
-///   data_collection_options = {
+/// resource "aws_odb_cloud_vm_cluster" "gi_version_tag_example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   data_collection_options {
 ///     is_diagnostics_events_enabled = true
 ///     is_health_monitoring_enabled  = true
 ///     is_incident_logs_enabled      = true
@@ -971,7 +980,7 @@ class CloudVmCluster extends pulumi.CustomResource {
           'aws:odb/cloudVmCluster:CloudVmCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cloudExadataInfrastructureArn = registerOutput<String>('cloudExadataInfrastructureArn');

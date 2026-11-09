@@ -197,7 +197,7 @@ import 'session_logger_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		exampleBucketPolicy, err := s3.NewBucketPolicy(ctx, "example", &s3.BucketPolicyArgs{
-/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: exampleBucket.ID(),
 /// 			Policy: example.Json(),
 /// 		})
 /// 		if err != nil {
@@ -209,7 +209,7 @@ import 'session_logger_state.dart';
 /// 			},
 /// 			LogConfiguration: &workspacesweb.SessionLoggerLogConfigurationArgs{
 /// 				S3: &workspacesweb.SessionLoggerLogConfigurationS3Args{
-/// 					Bucket:          exampleBucket.ID().ToIDOutput().ToStringOutput(),
+/// 					Bucket:          exampleBucket.ID(),
 /// 					FolderStructure: pulumi.String("Flat"),
 /// 					LogFileFormat:   pulumi.String("Json"),
 /// 				},
@@ -226,7 +226,7 @@ import 'session_logger_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -234,8 +234,8 @@ import 'session_logger_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["workspaces-web.amazonaws.com"]
@@ -247,19 +247,29 @@ import 'session_logger_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example-session-logs"
 /// }
-/// resource "aws_s3_bucketpolicy" "example" {
-///   bucket = aws_s3_bucket.example.id
-///   policy = data.aws_iam_getpolicydocument.example.json
-/// }
-/// resource "aws_workspacesweb_sessionlogger" "example" {
-///   depends_on = [aws_s3_bucketpolicy.example]
-///   event_filter = {
-///     all = {}
+/// resource "aws_s3_bucket_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   log_configuration = {
-///     s3 = {
+///   bucket = aws_s3_bucket.example.id
+///   policy = data.aws_iam_policy_document.example.json
+/// }
+/// resource "aws_workspacesweb_session_logger" "example" {
+///   depends_on = [aws_s3_bucket_policy.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   event_filter {
+///     all {
+///     }
+///   }
+///   log_configuration {
+///     s3 {
 ///       bucket           = aws_s3_bucket.example.id
 ///       folder_structure = "Flat"
 ///       log_file_format  = "Json"
@@ -770,7 +780,7 @@ import 'session_logger_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		exampleBucketPolicy, err := s3.NewBucketPolicy(ctx, "example", &s3.BucketPolicyArgs{
-/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: exampleBucket.ID(),
 /// 			Policy: example.Json(),
 /// 		})
 /// 		if err != nil {
@@ -842,7 +852,7 @@ import 'session_logger_state.dart';
 /// 			},
 /// 			LogConfiguration: &workspacesweb.SessionLoggerLogConfigurationArgs{
 /// 				S3: &workspacesweb.SessionLoggerLogConfigurationS3Args{
-/// 					Bucket:          exampleBucket.ID().ToIDOutput().ToStringOutput(),
+/// 					Bucket:          exampleBucket.ID(),
 /// 					BucketOwner:     pulumi.String(currentGetCallerIdentity.AccountId),
 /// 					FolderStructure: pulumi.String("NestedByDate"),
 /// 					KeyPrefix:       pulumi.String("workspaces-web-logs/"),
@@ -871,7 +881,7 @@ import 'session_logger_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -879,8 +889,8 @@ import 'session_logger_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["workspaces-web.amazonaws.com"]
@@ -890,20 +900,20 @@ import 'session_logger_state.dart';
 ///     resources = [aws_s3_bucket.example.arn, "${aws_s3_bucket.example.arn}/*"]
 ///   }
 /// }
-/// data "aws_getpartition" "current" {
+/// data "aws_partition" "current" {
 /// }
-/// data "aws_getcalleridentity" "currentGetCallerIdentity" {
+/// data "aws_caller_identity" "currentGetCallerIdentity" {
 /// }
-/// data "aws_iam_getpolicydocument" "kmsKeyPolicy" {
-///   statements {
+/// data "aws_iam_policy_document" "kmsKeyPolicy" {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
-///       identifiers = ["arn:${data.aws_getpartition.current.partition}:iam::${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:root"]
+///       identifiers = ["arn:${data.aws_partition.current.partition}:iam::${data.aws_caller_identity.currentGetCallerIdentity.account_id}:root"]
 ///     }
 ///     actions   = ["kms:*"]
 ///     resources = ["*"]
 ///   }
-///   statements {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["workspaces-web.amazonaws.com"]
@@ -914,26 +924,38 @@ import 'session_logger_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket        = "example-session-logs"
 ///   force_destroy = true
 /// }
-/// resource "aws_s3_bucketpolicy" "example" {
+/// resource "aws_s3_bucket_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.id
-///   policy = data.aws_iam_getpolicydocument.example.json
+///   policy = data.aws_iam_policy_document.example.json
 /// }
 /// resource "aws_kms_key" "example" {
-///   description = "KMS key for WorkSpaces Web Session Logger"
-///   policy      = data.aws_iam_getpolicydocument.kmsKeyPolicy.json
-/// }
-/// resource "aws_workspacesweb_sessionlogger" "example" {
-///   depends_on = [aws_s3_bucketpolicy.example, aws_kms_key.example]
-///   event_filter = {
-///     includes = ["SessionStart", "SessionEnd"]
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   log_configuration = {
-///     s3 = {
+///   description = "KMS key for WorkSpaces Web Session Logger"
+///   policy      = data.aws_iam_policy_document.kmsKeyPolicy.json
+/// }
+/// resource "aws_workspacesweb_session_logger" "example" {
+///   depends_on = [aws_s3_bucket_policy.example, aws_kms_key.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   event_filter {
+///     include = ["SessionStart", "SessionEnd"]
+///   }
+///   log_configuration {
+///     s3 {
 ///       bucket           = aws_s3_bucket.example.id
-///       bucket_owner     = data.aws_getcalleridentity.currentGetCallerIdentity.account_id
+///       bucket_owner     = data.aws_caller_identity.currentGetCallerIdentity.account_id
 ///       folder_structure = "NestedByDate"
 ///       key_prefix       = "workspaces-web-logs/"
 ///       log_file_format  = "JsonLines"
@@ -1223,7 +1245,7 @@ class SessionLogger extends pulumi.CustomResource {
           'aws:workspacesweb/sessionLogger:SessionLogger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

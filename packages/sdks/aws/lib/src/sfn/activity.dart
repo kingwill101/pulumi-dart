@@ -58,7 +58,7 @@ import 'activity_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,6 +67,9 @@ import 'activity_state.dart';
 /// }
 ///
 /// resource "aws_sfn_activity" "sfn_activity" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-activity"
 /// }
 /// ```
@@ -185,7 +188,7 @@ import 'activity_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -194,7 +197,10 @@ import 'activity_state.dart';
 /// }
 ///
 /// resource "aws_sfn_activity" "sfn_activity" {
-///   encryption_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   encryption_configuration {
 ///     kms_key_id                        = kmsKeyForSfn.arn
 ///     type                              = "CUSTOMER_MANAGED_KMS_KEY"
 ///     kms_data_key_reuse_period_seconds = 900
@@ -226,7 +232,7 @@ import 'activity_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var sfnActivity = new Activity("sfnActivity", ActivityArgs.builder()
 ///             .encryptionConfiguration(ActivityEncryptionConfigurationArgs.builder()
-///                 .kmsKeyId(kmsKeyForSfn.arn())
+///                 .kmsKeyId(kmsKeyForSfn.get("arn"))
 ///                 .type("CUSTOMER_MANAGED_KMS_KEY")
 ///                 .kmsDataKeyReusePeriodSeconds(900)
 ///                 .build())
@@ -292,7 +298,7 @@ class Activity extends pulumi.CustomResource {
           'aws:sfn/activity:Activity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationDate = registerOutput<String>('creationDate');

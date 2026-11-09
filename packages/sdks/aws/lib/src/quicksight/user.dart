@@ -76,7 +76,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -85,6 +85,9 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_quicksight_user" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   email         = "author1@example.com"
 ///   identity_type = "IAM"
 ///   user_role     = "AUTHOR"
@@ -203,7 +206,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -212,6 +215,9 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_quicksight_user" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   email         = "authorpro1@example.com"
 ///   identity_type = "IAM"
 ///   user_role     = "AUTHOR_PRO"
@@ -331,7 +337,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -340,6 +346,9 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_quicksight_user" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   email         = "reader1@example.com"
 ///   identity_type = "QUICKSIGHT"
 ///   user_role     = "READER"
@@ -433,7 +442,7 @@ class User extends pulumi.CustomResource {
           'aws:quicksight/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');

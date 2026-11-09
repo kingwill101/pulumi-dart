@@ -425,7 +425,7 @@ import 'multicast_domain_state.dart';
 /// 			return err
 /// 		}
 /// 		subnet1, err := ec2.NewSubnet(ctx, "subnet1", &ec2.SubnetArgs{
-/// 			VpcId:            vpc1.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            vpc1.ID(),
 /// 			CidrBlock:        pulumi.String("10.0.1.0/24"),
 /// 			AvailabilityZone: pulumi.String(available.Names[0]),
 /// 		})
@@ -433,7 +433,7 @@ import 'multicast_domain_state.dart';
 /// 			return err
 /// 		}
 /// 		subnet2, err := ec2.NewSubnet(ctx, "subnet2", &ec2.SubnetArgs{
-/// 			VpcId:            vpc1.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            vpc1.ID(),
 /// 			CidrBlock:        pulumi.String("10.0.2.0/24"),
 /// 			AvailabilityZone: pulumi.String(available.Names[1]),
 /// 		})
@@ -441,7 +441,7 @@ import 'multicast_domain_state.dart';
 /// 			return err
 /// 		}
 /// 		subnet3, err := ec2.NewSubnet(ctx, "subnet3", &ec2.SubnetArgs{
-/// 			VpcId:            vpc2.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            vpc2.ID(),
 /// 			CidrBlock:        pulumi.String("10.1.1.0/24"),
 /// 			AvailabilityZone: pulumi.String(available.Names[0]),
 /// 		})
@@ -451,7 +451,7 @@ import 'multicast_domain_state.dart';
 /// 		instance1, err := ec2.NewInstance(ctx, "instance1", &ec2.InstanceArgs{
 /// 			Ami:          pulumi.String(amazonLinux.Id),
 /// 			InstanceType: pulumi.String(ec2.InstanceType_T2_Micro),
-/// 			SubnetId:     subnet1.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetId:     subnet1.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -459,7 +459,7 @@ import 'multicast_domain_state.dart';
 /// 		instance2, err := ec2.NewInstance(ctx, "instance2", &ec2.InstanceArgs{
 /// 			Ami:          pulumi.String(amazonLinux.Id),
 /// 			InstanceType: pulumi.String(ec2.InstanceType_T2_Micro),
-/// 			SubnetId:     subnet2.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetId:     subnet2.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -467,7 +467,7 @@ import 'multicast_domain_state.dart';
 /// 		instance3, err := ec2.NewInstance(ctx, "instance3", &ec2.InstanceArgs{
 /// 			Ami:          pulumi.String(amazonLinux.Id),
 /// 			InstanceType: pulumi.String(ec2.InstanceType_T2_Micro),
-/// 			SubnetId:     subnet3.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetId:     subnet3.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -480,27 +480,27 @@ import 'multicast_domain_state.dart';
 /// 		}
 /// 		attachment1, err := ec2transitgateway.NewVpcAttachment(ctx, "attachment1", &ec2transitgateway.VpcAttachmentArgs{
 /// 			SubnetIds: pulumi.StringArray{
-/// 				subnet1.ID().ToIDOutput().ToStringOutput(),
-/// 				subnet2.ID().ToIDOutput().ToStringOutput(),
+/// 				subnet1.ID(),
+/// 				subnet2.ID(),
 /// 			},
-/// 			TransitGatewayId: tgw.ID().ToIDOutput().ToStringOutput(),
-/// 			VpcId:            vpc1.ID().ToIDOutput().ToStringOutput(),
+/// 			TransitGatewayId: tgw.ID(),
+/// 			VpcId:            vpc1.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		attachment2, err := ec2transitgateway.NewVpcAttachment(ctx, "attachment2", &ec2transitgateway.VpcAttachmentArgs{
 /// 			SubnetIds: pulumi.StringArray{
-/// 				subnet3.ID().ToIDOutput().ToStringOutput(),
+/// 				subnet3.ID(),
 /// 			},
-/// 			TransitGatewayId: tgw.ID().ToIDOutput().ToStringOutput(),
-/// 			VpcId:            vpc2.ID().ToIDOutput().ToStringOutput(),
+/// 			TransitGatewayId: tgw.ID(),
+/// 			VpcId:            vpc2.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		domain, err := ec2transitgateway.NewMulticastDomain(ctx, "domain", &ec2transitgateway.MulticastDomainArgs{
-/// 			TransitGatewayId:     tgw.ID().ToIDOutput().ToStringOutput(),
+/// 			TransitGatewayId:     tgw.ID(),
 /// 			StaticSourcesSupport: pulumi.String("enable"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("Transit_Gateway_Multicast_Domain_Example"),
@@ -510,9 +510,9 @@ import 'multicast_domain_state.dart';
 /// 			return err
 /// 		}
 /// 		association3, err := ec2transitgateway.NewMulticastDomainAssociation(ctx, "association3", &ec2transitgateway.MulticastDomainAssociationArgs{
-/// 			SubnetId:                        subnet3.ID().ToIDOutput().ToStringOutput(),
-/// 			TransitGatewayAttachmentId:      attachment2.ID().ToIDOutput().ToStringOutput(),
-/// 			TransitGatewayMulticastDomainId: domain.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetId:                        subnet3.ID(),
+/// 			TransitGatewayAttachmentId:      attachment2.ID(),
+/// 			TransitGatewayMulticastDomainId: domain.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -526,17 +526,17 @@ import 'multicast_domain_state.dart';
 /// 			return err
 /// 		}
 /// 		association1, err := ec2transitgateway.NewMulticastDomainAssociation(ctx, "association1", &ec2transitgateway.MulticastDomainAssociationArgs{
-/// 			SubnetId:                        subnet1.ID().ToIDOutput().ToStringOutput(),
-/// 			TransitGatewayAttachmentId:      attachment1.ID().ToIDOutput().ToStringOutput(),
-/// 			TransitGatewayMulticastDomainId: domain.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetId:                        subnet1.ID(),
+/// 			TransitGatewayAttachmentId:      attachment1.ID(),
+/// 			TransitGatewayMulticastDomainId: domain.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = ec2transitgateway.NewMulticastDomainAssociation(ctx, "association2", &ec2transitgateway.MulticastDomainAssociationArgs{
-/// 			SubnetId:                        subnet2.ID().ToIDOutput().ToStringOutput(),
-/// 			TransitGatewayAttachmentId:      attachment2.ID().ToIDOutput().ToStringOutput(),
-/// 			TransitGatewayMulticastDomainId: domain.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetId:                        subnet2.ID(),
+/// 			TransitGatewayAttachmentId:      attachment2.ID(),
+/// 			TransitGatewayMulticastDomainId: domain.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -562,7 +562,7 @@ import 'multicast_domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -570,10 +570,10 @@ import 'multicast_domain_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzones" "available" {
+/// data "aws_availability_zones" "available" {
 ///   state = "available"
 /// }
-/// data "aws_ec2_getami" "amazonLinux" {
+/// data "aws_ec2_ami" "amazonLinux" {
 ///   filters {
 ///     name   = "name"
 ///     values = ["amzn-ami-hvm-*-x86_64-gp2"]
@@ -587,90 +587,144 @@ import 'multicast_domain_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "vpc1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
 /// resource "aws_ec2_vpc" "vpc2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.1.0.0/16"
 /// }
 /// resource "aws_ec2_subnet" "subnet1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.vpc1.id
 ///   cidr_block        = "10.0.1.0/24"
-///   availability_zone = data.aws_getavailabilityzones.available.names[0]
+///   availability_zone = data.aws_availability_zones.available.names[0]
 /// }
 /// resource "aws_ec2_subnet" "subnet2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.vpc1.id
 ///   cidr_block        = "10.0.2.0/24"
-///   availability_zone = data.aws_getavailabilityzones.available.names[1]
+///   availability_zone = data.aws_availability_zones.available.names[1]
 /// }
 /// resource "aws_ec2_subnet" "subnet3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.vpc2.id
 ///   cidr_block        = "10.1.1.0/24"
-///   availability_zone = data.aws_getavailabilityzones.available.names[0]
+///   availability_zone = data.aws_availability_zones.available.names[0]
 /// }
 /// resource "aws_ec2_instance" "instance1" {
-///   ami           = data.aws_ec2_getami.amazonLinux.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ami           = data.aws_ec2_ami.amazonLinux.id
 ///   instance_type = "t2.micro"
 ///   subnet_id     = aws_ec2_subnet.subnet1.id
 /// }
 /// resource "aws_ec2_instance" "instance2" {
-///   ami           = data.aws_ec2_getami.amazonLinux.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ami           = data.aws_ec2_ami.amazonLinux.id
 ///   instance_type = "t2.micro"
 ///   subnet_id     = aws_ec2_subnet.subnet2.id
 /// }
 /// resource "aws_ec2_instance" "instance3" {
-///   ami           = data.aws_ec2_getami.amazonLinux.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ami           = data.aws_ec2_ami.amazonLinux.id
 ///   instance_type = "t2.micro"
 ///   subnet_id     = aws_ec2_subnet.subnet3.id
 /// }
-/// resource "aws_ec2transitgateway_transitgateway" "tgw" {
+/// resource "aws_ec2transitgateway_transit_gateway" "tgw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   multicast_support = "enable"
 /// }
-/// resource "aws_ec2transitgateway_vpcattachment" "attachment1" {
+/// resource "aws_ec2transitgateway_vpc_attachment" "attachment1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_ids         = [aws_ec2_subnet.subnet1.id, aws_ec2_subnet.subnet2.id]
-///   transit_gateway_id = aws_ec2transitgateway_transitgateway.tgw.id
+///   transit_gateway_id = aws_ec2transitgateway_transit_gateway.tgw.id
 ///   vpc_id             = aws_ec2_vpc.vpc1.id
 /// }
-/// resource "aws_ec2transitgateway_vpcattachment" "attachment2" {
+/// resource "aws_ec2transitgateway_vpc_attachment" "attachment2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_ids         = [aws_ec2_subnet.subnet3.id]
-///   transit_gateway_id = aws_ec2transitgateway_transitgateway.tgw.id
+///   transit_gateway_id = aws_ec2transitgateway_transit_gateway.tgw.id
 ///   vpc_id             = aws_ec2_vpc.vpc2.id
 /// }
-/// resource "aws_ec2transitgateway_multicastdomain" "domain" {
-///   transit_gateway_id     = aws_ec2transitgateway_transitgateway.tgw.id
+/// resource "aws_ec2transitgateway_multicast_domain" "domain" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   transit_gateway_id     = aws_ec2transitgateway_transit_gateway.tgw.id
 ///   static_sources_support = "enable"
 ///   tags = {
 ///     "Name" = "Transit_Gateway_Multicast_Domain_Example"
 ///   }
 /// }
-/// resource "aws_ec2transitgateway_multicastdomainassociation" "association3" {
+/// resource "aws_ec2transitgateway_multicast_domain_association" "association3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_id                           = aws_ec2_subnet.subnet3.id
-///   transit_gateway_attachment_id       = aws_ec2transitgateway_vpcattachment.attachment2.id
-///   transit_gateway_multicast_domain_id = aws_ec2transitgateway_multicastdomain.domain.id
+///   transit_gateway_attachment_id       = aws_ec2transitgateway_vpc_attachment.attachment2.id
+///   transit_gateway_multicast_domain_id = aws_ec2transitgateway_multicast_domain.domain.id
 /// }
-/// resource "aws_ec2transitgateway_multicastgroupsource" "source" {
+/// resource "aws_ec2transitgateway_multicast_group_source" "source" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_ip_address                    = "224.0.0.1"
 ///   network_interface_id                = aws_ec2_instance.instance3.primary_network_interface_id
-///   transit_gateway_multicast_domain_id = aws_ec2transitgateway_multicastdomainassociation.association3.transit_gateway_multicast_domain_id
+///   transit_gateway_multicast_domain_id = aws_ec2transitgateway_multicast_domain_association.association3.transit_gateway_multicast_domain_id
 /// }
-/// resource "aws_ec2transitgateway_multicastdomainassociation" "association1" {
+/// resource "aws_ec2transitgateway_multicast_domain_association" "association1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_id                           = aws_ec2_subnet.subnet1.id
-///   transit_gateway_attachment_id       = aws_ec2transitgateway_vpcattachment.attachment1.id
-///   transit_gateway_multicast_domain_id = aws_ec2transitgateway_multicastdomain.domain.id
+///   transit_gateway_attachment_id       = aws_ec2transitgateway_vpc_attachment.attachment1.id
+///   transit_gateway_multicast_domain_id = aws_ec2transitgateway_multicast_domain.domain.id
 /// }
-/// resource "aws_ec2transitgateway_multicastdomainassociation" "association2" {
+/// resource "aws_ec2transitgateway_multicast_domain_association" "association2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_id                           = aws_ec2_subnet.subnet2.id
-///   transit_gateway_attachment_id       = aws_ec2transitgateway_vpcattachment.attachment2.id
-///   transit_gateway_multicast_domain_id = aws_ec2transitgateway_multicastdomain.domain.id
+///   transit_gateway_attachment_id       = aws_ec2transitgateway_vpc_attachment.attachment2.id
+///   transit_gateway_multicast_domain_id = aws_ec2transitgateway_multicast_domain.domain.id
 /// }
-/// resource "aws_ec2transitgateway_multicastgroupmember" "member1" {
+/// resource "aws_ec2transitgateway_multicast_group_member" "member1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_ip_address                    = "224.0.0.1"
 ///   network_interface_id                = aws_ec2_instance.instance1.primary_network_interface_id
-///   transit_gateway_multicast_domain_id = aws_ec2transitgateway_multicastdomainassociation.association1.transit_gateway_multicast_domain_id
+///   transit_gateway_multicast_domain_id = aws_ec2transitgateway_multicast_domain_association.association1.transit_gateway_multicast_domain_id
 /// }
-/// resource "aws_ec2transitgateway_multicastgroupmember" "member2" {
+/// resource "aws_ec2transitgateway_multicast_group_member" "member2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_ip_address                    = "224.0.0.1"
 ///   network_interface_id                = aws_ec2_instance.instance2.primary_network_interface_id
-///   transit_gateway_multicast_domain_id = aws_ec2transitgateway_multicastdomainassociation.association1.transit_gateway_multicast_domain_id
+///   transit_gateway_multicast_domain_id = aws_ec2transitgateway_multicast_domain_association.association1.transit_gateway_multicast_domain_id
 /// }
 /// ```
 /// ```java
@@ -1010,7 +1064,7 @@ class MulticastDomain extends pulumi.CustomResource {
           'aws:ec2transitgateway/multicastDomain:MulticastDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoAcceptSharedAssociations = registerOutput<String?>('autoAcceptSharedAssociations');

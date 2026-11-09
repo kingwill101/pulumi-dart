@@ -63,7 +63,7 @@ import 'metric_alarm_warm_up_configuration.dart';
 ///         Namespace = "AWS/EC2",
 ///         Period = 120,
 ///         Statistic = "Average",
-///         Threshold = 80,
+///         Threshold = 80.0,
 ///         AlarmDescription = "This metric monitors ec2 cpu utilization",
 ///         InsufficientDataActions =  {},
 ///     });
@@ -101,7 +101,7 @@ import 'metric_alarm_warm_up_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -109,8 +109,11 @@ import 'metric_alarm_warm_up_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_metricalarm" "foobar" {
-///   name                      = "test-foobar5"
+/// resource "aws_cloudwatch_metric_alarm" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   alarm_name                = "test-foobar5"
 ///   comparison_operator       = "GreaterThanOrEqualToThreshold"
 ///   evaluation_periods        = 2
 ///   metric_name               = "CPUUtilization"
@@ -258,7 +261,7 @@ import 'metric_alarm_warm_up_configuration.dart';
 ///         Namespace = "AWS/EC2",
 ///         Period = 120,
 ///         Statistic = "Average",
-///         Threshold = 80,
+///         Threshold = 80.0,
 ///         Dimensions =
 ///         {
 ///             { "AutoScalingGroupName", bar.Name },
@@ -319,7 +322,7 @@ import 'metric_alarm_warm_up_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -328,14 +331,20 @@ import 'metric_alarm_warm_up_configuration.dart';
 /// }
 ///
 /// resource "aws_autoscaling_policy" "bat" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "foobar3-test"
 ///   scaling_adjustment     = 4
 ///   adjustment_type        = "ChangeInCapacity"
 ///   cooldown               = 300
 ///   autoscaling_group_name = bar.name
 /// }
-/// resource "aws_cloudwatch_metricalarm" "bat" {
-///   name                = "test-foobar5"
+/// resource "aws_cloudwatch_metric_alarm" "bat" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   alarm_name          = "test-foobar5"
 ///   comparison_operator = "GreaterThanOrEqualToThreshold"
 ///   evaluation_periods  = 2
 ///   metric_name         = "CPUUtilization"
@@ -378,7 +387,7 @@ import 'metric_alarm_warm_up_configuration.dart';
 ///             .scalingAdjustment(4)
 ///             .adjustmentType("ChangeInCapacity")
 ///             .cooldown(300)
-///             .autoscalingGroupName(bar.name())
+///             .autoscalingGroupName(bar.get("name"))
 ///             .build());
 ///
 ///         var batMetricAlarm = new MetricAlarm("batMetricAlarm", MetricAlarmArgs.builder()
@@ -390,7 +399,7 @@ import 'metric_alarm_warm_up_configuration.dart';
 ///             .period(120)
 ///             .statistic("Average")
 ///             .threshold(80.0)
-///             .dimensions(Map.of("AutoScalingGroupName", bar.name()))
+///             .dimensions(Map.of("AutoScalingGroupName", bar.get("name")))
 ///             .alarmDescription("This metric monitors ec2 cpu utilization")
 ///             .alarmActions(bat.arn())
 ///             .build());
@@ -579,7 +588,7 @@ import 'metric_alarm_warm_up_configuration.dart';
 ///         Name = "test-foobar",
 ///         ComparisonOperator = "GreaterThanOrEqualToThreshold",
 ///         EvaluationPeriods = 2,
-///         Threshold = 10,
+///         Threshold = 10.0,
 ///         AlarmDescription = "Request error rate has exceeded 10%",
 ///         InsufficientDataActions =  {},
 ///     });
@@ -647,7 +656,7 @@ import 'metric_alarm_warm_up_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -655,15 +664,18 @@ import 'metric_alarm_warm_up_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_metricalarm" "foobar" {
-///   metric_queries {
+/// resource "aws_cloudwatch_metric_alarm" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   metric_query {
 ///     id          = "e1"
 ///     expression  = "m2/m1*100"
 ///     label       = "Error Rate"
 ///     return_data = "true"
 ///   }
-///   metric_queries {
-///     metric = {
+///   metric_query {
+///     metric {
 ///       metric_name = "RequestCount"
 ///       namespace   = "AWS/ApplicationELB"
 ///       period      = 120
@@ -675,8 +687,8 @@ import 'metric_alarm_warm_up_configuration.dart';
 ///     }
 ///     id = "m1"
 ///   }
-///   metric_queries {
-///     metric = {
+///   metric_query {
+///     metric {
 ///       metric_name = "HTTPCode_ELB_5XX_Count"
 ///       namespace   = "AWS/ApplicationELB"
 ///       period      = 120
@@ -688,7 +700,7 @@ import 'metric_alarm_warm_up_configuration.dart';
 ///     }
 ///     id = "m2"
 ///   }
-///   name                      = "test-foobar"
+///   alarm_name                = "test-foobar"
 ///   comparison_operator       = "GreaterThanOrEqualToThreshold"
 ///   evaluation_periods        = 2
 ///   threshold                 = 10
@@ -899,7 +911,7 @@ import 'metric_alarm_warm_up_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -907,9 +919,12 @@ import 'metric_alarm_warm_up_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_metricalarm" "promql_alarm" {
-///   evaluation_criteria = {
-///     promql_criteria = {
+/// resource "aws_cloudwatch_metric_alarm" "promql_alarm" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   evaluation_criteria {
+///     promql_criteria {
 ///       query           = "avg(cpu_utilization_percent) > 80"
 ///       pending_period  = 300
 ///       recovery_period = 120
@@ -918,7 +933,7 @@ import 'metric_alarm_warm_up_configuration.dart';
 ///   # 5 minutes
 ///   # 5 minutes
 ///   # 2 minutes
-///   name                = "high-cpu-promql"
+///   alarm_name          = "high-cpu-promql"
 ///   alarm_description   = "Alarm when average CPU exceeds 80% using PromQL"
 ///   evaluation_interval = 30 # seconds
 ///   alarm_actions       = [alerts.arn]
@@ -958,7 +973,7 @@ import 'metric_alarm_warm_up_configuration.dart';
 ///             .name("high-cpu-promql")
 ///             .alarmDescription("Alarm when average CPU exceeds 80% using PromQL")
 ///             .evaluationInterval(30)
-///             .alarmActions(alerts.arn())
+///             .alarmActions(alerts.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1149,7 +1164,7 @@ import 'metric_alarm_warm_up_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1157,15 +1172,18 @@ import 'metric_alarm_warm_up_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_metricalarm" "xx_anomaly_detection" {
-///   metric_queries {
+/// resource "aws_cloudwatch_metric_alarm" "xx_anomaly_detection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   metric_query {
 ///     id          = "e1"
 ///     return_data = true
 ///     expression  = "ANOMALY_DETECTION_BAND(m1)"
 ///     label       = "CPUUtilization (Expected)"
 ///   }
-///   metric_queries {
-///     metric = {
+///   metric_query {
+///     metric {
 ///       metric_name = "CPUUtilization"
 ///       namespace   = "AWS/EC2"
 ///       period      = 120
@@ -1178,7 +1196,7 @@ import 'metric_alarm_warm_up_configuration.dart';
 ///     id          = "m1"
 ///     return_data = true
 ///   }
-///   name                      = "test-foobar"
+///   alarm_name                = "test-foobar"
 ///   comparison_operator       = "GreaterThanUpperThreshold"
 ///   evaluation_periods        = 2
 ///   threshold_metric_id       = "e1"
@@ -1406,7 +1424,7 @@ import 'metric_alarm_warm_up_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1414,15 +1432,27 @@ import 'metric_alarm_warm_up_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_metricalarm" "example" {
-///   metric_queries {
+/// resource "aws_cloudwatch_metric_alarm" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   metric_query {
 ///     id          = "q1"
-///     expression  = "SELECT\n  MAX(DBLoadRelativeToNumVCPUs)\nFROM SCHEMA(\\\"AWS/RDS\\\", DBInstanceIdentifier)\nWHERE DBInstanceIdentifier != 'example-rds-instance'\nGROUP BY DBInstanceIdentifier\nORDER BY MIN() ASC\nLIMIT 1\n"
+///     expression  = <<-EOT
+/// SELECT
+///   MAX(DBLoadRelativeToNumVCPUs)
+/// FROM SCHEMA(\"AWS/RDS\", DBInstanceIdentifier)
+/// WHERE DBInstanceIdentifier != 'example-rds-instance'
+/// GROUP BY DBInstanceIdentifier
+/// ORDER BY MIN() ASC
+/// LIMIT 1
+/// EOT
+///
 ///     period      = 60
 ///     return_data = true
 ///     label       = "Max DB Load of the Least-Loaded RDS Instance"
 ///   }
-///   name                = "example-alarm"
+///   alarm_name          = "example-alarm"
 ///   alarm_description   = "Triggers if the smallest per-instance maximum load during the evaluation period exceeds the threshold"
 ///   comparison_operator = "GreaterThanThreshold"
 ///   evaluation_periods  = 1
@@ -1632,7 +1662,7 @@ import 'metric_alarm_warm_up_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1640,8 +1670,11 @@ import 'metric_alarm_warm_up_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_metricalarm" "nlb_healthyhosts" {
-///   name                = "alarmname"
+/// resource "aws_cloudwatch_metric_alarm" "nlb_healthyhosts" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   alarm_name          = "alarmname"
 ///   comparison_operator = "LessThanThreshold"
 ///   evaluation_periods  = 1
 ///   metric_name         = "HealthyHostCount"
@@ -1691,11 +1724,11 @@ import 'metric_alarm_warm_up_configuration.dart';
 ///             .threshold(logstashServersCount)
 ///             .alarmDescription("Number of healthy nodes in Target Group")
 ///             .actionsEnabled(true)
-///             .alarmActions(sns.arn())
-///             .okActions(sns.arn())
+///             .alarmActions(sns.get("arn"))
+///             .okActions(sns.get("arn"))
 ///             .dimensions(Map.ofEntries(
-///                 Map.entry("TargetGroup", lb_tg.arnSuffix()),
-///                 Map.entry("LoadBalancer", lb.arnSuffix())
+///                 Map.entry("TargetGroup", lb_tg.get("arnSuffix")),
+///                 Map.entry("LoadBalancer", lb.get("arnSuffix"))
 ///             ))
 ///             .build());
 ///
@@ -1791,7 +1824,7 @@ import 'metric_alarm_warm_up_configuration.dart';
 ///         Namespace = "ExampleApp",
 ///         Period = 60,
 ///         Statistic = "Sum",
-///         Threshold = 0,
+///         Threshold = 0.0,
 ///         TreatMissingData = "breaching",
 ///         AlarmActions =
 ///         {
@@ -1837,7 +1870,7 @@ import 'metric_alarm_warm_up_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1845,11 +1878,14 @@ import 'metric_alarm_warm_up_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_metricalarm" "example" {
-///   warm_up_configuration = {
+/// resource "aws_cloudwatch_metric_alarm" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   warm_up_configuration {
 ///     warm_up_period_duration_in_minutes = 30
 ///   }
-///   name                = "example-service-errors"
+///   alarm_name          = "example-service-errors"
 ///   comparison_operator = "GreaterThanThreshold"
 ///   evaluation_periods  = 3
 ///   metric_name         = "Errors"
@@ -1896,7 +1932,7 @@ import 'metric_alarm_warm_up_configuration.dart';
 ///             .statistic("Sum")
 ///             .threshold(0.0)
 ///             .treatMissingData("breaching")
-///             .alarmActions(exampleAwsSnsTopic.arn())
+///             .alarmActions(exampleAwsSnsTopic.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1991,7 +2027,7 @@ import 'metric_alarm_warm_up_configuration.dart';
 ///         Namespace = "ExampleApp",
 ///         Period = 86400,
 ///         Statistic = "Sum",
-///         Threshold = 0,
+///         Threshold = 0.0,
 ///         AlarmActions =
 ///         {
 ///             exampleAwsSnsTopic.Arn,
@@ -2037,7 +2073,7 @@ import 'metric_alarm_warm_up_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2045,13 +2081,16 @@ import 'metric_alarm_warm_up_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_metricalarm" "example" {
-///   evaluation_window = {
-///     wall_clock_window = {
+/// resource "aws_cloudwatch_metric_alarm" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   evaluation_window {
+///     wall_clock_window {
 ///       timezone = "America/New_York"
 ///     }
 ///   }
-///   name                = "example-daily-errors"
+///   alarm_name          = "example-daily-errors"
 ///   comparison_operator = "GreaterThanThreshold"
 ///   evaluation_periods  = 1
 ///   metric_name         = "Errors"
@@ -2099,7 +2138,7 @@ import 'metric_alarm_warm_up_configuration.dart';
 ///             .period(86400)
 ///             .statistic("Sum")
 ///             .threshold(0.0)
-///             .alarmActions(exampleAwsSnsTopic.arn())
+///             .alarmActions(exampleAwsSnsTopic.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -2232,7 +2271,7 @@ class MetricAlarm extends pulumi.CustomResource {
           'aws:cloudwatch/metricAlarm:MetricAlarm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     actionsEnabled = registerOutput<bool?>('actionsEnabled');
     alarmActions = registerOutput<List<String>?>('alarmActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

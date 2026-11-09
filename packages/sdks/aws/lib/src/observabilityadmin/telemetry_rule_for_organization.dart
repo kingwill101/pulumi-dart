@@ -104,7 +104,7 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -112,11 +112,17 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_observabilityadmin_telemetryevaluationfororganization" "example" {
+/// resource "aws_observabilityadmin_telemetry_evaluation_for_organization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_observabilityadmin_telemetryrulefororganization" "example" {
-///   depends_on = [aws_observabilityadmin_telemetryevaluationfororganization.example]
-///   rule = {
+/// resource "aws_observabilityadmin_telemetry_rule_for_organization" "example" {
+///   depends_on = [aws_observabilityadmin_telemetry_evaluation_for_organization.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
 ///     telemetry_type = "Logs"
 ///     resource_type  = "AWS::EC2::VPC"
 ///   }
@@ -325,7 +331,7 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -333,13 +339,19 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_observabilityadmin_telemetryevaluationfororganization" "example" {
+/// resource "aws_observabilityadmin_telemetry_evaluation_for_organization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_observabilityadmin_telemetryrulefororganization" "example" {
-///   depends_on = [aws_observabilityadmin_telemetryevaluationfororganization.example]
-///   rule = {
-///     destination_configuration = {
-///       vpc_flow_log_parameters = {
+/// resource "aws_observabilityadmin_telemetry_rule_for_organization" "example" {
+///   depends_on = [aws_observabilityadmin_telemetry_evaluation_for_organization.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     destination_configuration {
+///       vpc_flow_log_parameters {
 ///         traffic_type             = "ALL"
 ///         max_aggregation_interval = 60
 ///       }
@@ -562,7 +574,7 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -570,17 +582,23 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_organizations_getorganization" "current" {
+/// data "aws_organizations_organization" "current" {
 /// }
 ///
-/// resource "aws_observabilityadmin_telemetryevaluationfororganization" "example" {
+/// resource "aws_observabilityadmin_telemetry_evaluation_for_organization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_observabilityadmin_telemetryrulefororganization" "example" {
-///   depends_on = [aws_observabilityadmin_telemetryevaluationfororganization.example]
-///   rule = {
+/// resource "aws_observabilityadmin_telemetry_rule_for_organization" "example" {
+///   depends_on = [aws_observabilityadmin_telemetry_evaluation_for_organization.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
 ///     telemetry_type     = "Logs"
 ///     resource_type      = "AWS::EKS::Cluster"
-///     scope              ="OrganizationId = '${data.aws_organizations_getorganization.current.id}'"
+///     scope              ="OrganizationId = '${data.aws_organizations_organization.current.id}'"
 ///     selection_criteria = "ResourceTags.Environment = 'production'"
 ///     regions            = ["us-east-1", "us-west-2"]
 ///   }
@@ -771,7 +789,7 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -779,11 +797,17 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_observabilityadmin_telemetryevaluationfororganization" "example" {
+/// resource "aws_observabilityadmin_telemetry_evaluation_for_organization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_observabilityadmin_telemetryrulefororganization" "example" {
-///   depends_on = [aws_observabilityadmin_telemetryevaluationfororganization.example]
-///   rule = {
+/// resource "aws_observabilityadmin_telemetry_rule_for_organization" "example" {
+///   depends_on = [aws_observabilityadmin_telemetry_evaluation_for_organization.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
 ///     telemetry_type = "Logs"
 ///     resource_type  = "AWS::EC2::VPC"
 ///   }
@@ -906,7 +930,7 @@ class TelemetryRuleForOrganization extends pulumi.CustomResource {
           'aws:observabilityadmin/telemetryRuleForOrganization:TelemetryRuleForOrganization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     rule = registerOutput<TelemetryRuleForOrganizationRule>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryRuleForOrganizationRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -67,7 +67,7 @@ import 'location_fsx_lustre_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,7 +75,10 @@ import 'location_fsx_lustre_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_datasync_locationfsxlustre" "example" {
+/// resource "aws_datasync_location_fsx_lustre" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fsx_filesystem_arn  = exampleAwsFsxLustreFileSystem.arn
 ///   security_group_arns = [exampleAwsSecurityGroup.arn]
 /// }
@@ -102,8 +105,8 @@ import 'location_fsx_lustre_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new LocationFsxLustre("example", LocationFsxLustreArgs.builder()
-///             .fsxFilesystemArn(exampleAwsFsxLustreFileSystem.arn())
-///             .securityGroupArns(exampleAwsSecurityGroup.arn())
+///             .fsxFilesystemArn(exampleAwsFsxLustreFileSystem.get("arn"))
+///             .securityGroupArns(exampleAwsSecurityGroup.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -159,7 +162,7 @@ class LocationFsxLustre extends pulumi.CustomResource {
           'aws:datasync/locationFsxLustre:LocationFsxLustre',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationTime = registerOutput<String>('creationTime');

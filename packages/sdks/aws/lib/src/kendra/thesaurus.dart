@@ -97,7 +97,7 @@ import 'thesaurus_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -106,7 +106,10 @@ import 'thesaurus_state.dart';
 /// }
 ///
 /// resource "aws_kendra_thesaurus" "example" {
-///   source_s3_path = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   source_s3_path {
 ///     bucket = exampleAwsS3Bucket.id
 ///     key    = exampleAwsS3Object.key
 ///   }
@@ -142,12 +145,12 @@ import 'thesaurus_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Thesaurus("example", ThesaurusArgs.builder()
 ///             .sourceS3Path(ThesaurusSourceS3PathArgs.builder()
-///                 .bucket(exampleAwsS3Bucket.id())
-///                 .key(exampleAwsS3Object.key())
+///                 .bucket(exampleAwsS3Bucket.get("id"))
+///                 .key(exampleAwsS3Object.get("key"))
 ///                 .build())
-///             .indexId(exampleAwsKendraIndex.id())
+///             .indexId(exampleAwsKendraIndex.get("id"))
 ///             .name("Example")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .tags(Map.of("Name", "Example Kendra Thesaurus"))
 ///             .build());
 ///
@@ -215,7 +218,7 @@ class Thesaurus extends pulumi.CustomResource {
           'aws:kendra/thesaurus:Thesaurus',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

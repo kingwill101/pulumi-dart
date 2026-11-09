@@ -274,7 +274,7 @@ import 'language_model_state.dart';
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = iam.NewRolePolicy(ctx, "test_policy", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("example"),
-/// 			Role:   exampleRole.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   exampleRole.ID(),
 /// 			Policy: pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
@@ -288,7 +288,7 @@ import 'language_model_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketObjectv2(ctx, "object", &s3.BucketObjectv2Args{
-/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: exampleBucket.ID(),
 /// 			Key:    pulumi.String("transcribe/test1.txt"),
 /// 			Source: pulumi.NewFileAsset("test1.txt"),
 /// 		})
@@ -317,7 +317,7 @@ import 'language_model_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -325,8 +325,8 @@ import 'language_model_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["transcribe.amazonaws.com"]
@@ -336,10 +336,16 @@ import 'language_model_state.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
-///   assume_role_policy = data.aws_iam_getpolicydocument.example.json
+///   assume_role_policy = data.aws_iam_policy_document.example.json
 /// }
-/// resource "aws_iam_rolepolicy" "test_policy" {
+/// resource "aws_iam_role_policy" "test_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 ///   role = aws_iam_role.example.id
 ///   policy = jsonencode({
@@ -352,16 +358,25 @@ import 'language_model_state.dart';
 ///   })
 /// }
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket        = "example-transcribe"
 ///   force_destroy = true
 /// }
-/// resource "aws_s3_bucketobjectv2" "object" {
+/// resource "aws_s3_bucket_objectv2" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.id
 ///   key    = "transcribe/test1.txt"
-///   source = fileAsset("test1.txt")
+///   source = fileasset("test1.txt")
 /// }
-/// resource "aws_transcribe_languagemodel" "example" {
-///   input_data_config = {
+/// resource "aws_transcribe_language_model" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   input_data_config {
 ///     data_access_role_arn = aws_iam_role.example.arn
 ///     s3_uri               ="s3://${aws_s3_bucket.example.id}/transcribe/"
 ///   }
@@ -568,7 +583,7 @@ class LanguageModel extends pulumi.CustomResource {
           'aws:transcribe/languageModel:LanguageModel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     baseModelName = registerOutput<String>('baseModelName');

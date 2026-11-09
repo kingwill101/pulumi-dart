@@ -175,7 +175,7 @@ import 'resource_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -183,8 +183,43 @@ import 'resource_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_organizations_resourcepolicy" "example" {
-///   content = "{\n  \\\"Version\\\": \\\"2012-10-17\\\",\n  \\\"Statement\\\": [\n    {\n      \\\"Sid\\\": \\\"DelegatingNecessaryDescribeListActions\\\",\n      \\\"Effect\\\": \\\"Allow\\\",\n      \\\"Principal\\\": {\n        \\\"AWS\\\": \\\"arn:aws:iam::123456789012:root\\\"\n      },\n      \\\"Action\\\": [\n        \\\"organizations:DescribeOrganization\\\",\n        \\\"organizations:DescribeOrganizationalUnit\\\",\n        \\\"organizations:DescribeAccount\\\",\n        \\\"organizations:DescribePolicy\\\",\n        \\\"organizations:DescribeEffectivePolicy\\\",\n        \\\"organizations:ListRoots\\\",\n        \\\"organizations:ListOrganizationalUnitsForParent\\\",\n        \\\"organizations:ListParents\\\",\n        \\\"organizations:ListChildren\\\",\n        \\\"organizations:ListAccounts\\\",\n        \\\"organizations:ListAccountsForParent\\\",\n        \\\"organizations:ListPolicies\\\",\n        \\\"organizations:ListPoliciesForTarget\\\",\n        \\\"organizations:ListTargetsForPolicy\\\",\n        \\\"organizations:ListTagsForResource\\\"\n      ],\n      \\\"Resource\\\": \\\"*\\\"\n    }\n  ]\n}\n"
+/// resource "aws_organizations_resource_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   content = <<EOF
+/// {
+///   \"Version\": \"2012-10-17\",
+///   \"Statement\": [
+///     {
+///       \"Sid\": \"DelegatingNecessaryDescribeListActions\",
+///       \"Effect\": \"Allow\",
+///       \"Principal\": {
+///         \"AWS\": \"arn:aws:iam::123456789012:root\"
+///       },
+///       \"Action\": [
+///         \"organizations:DescribeOrganization\",
+///         \"organizations:DescribeOrganizationalUnit\",
+///         \"organizations:DescribeAccount\",
+///         \"organizations:DescribePolicy\",
+///         \"organizations:DescribeEffectivePolicy\",
+///         \"organizations:ListRoots\",
+///         \"organizations:ListOrganizationalUnitsForParent\",
+///         \"organizations:ListParents\",
+///         \"organizations:ListChildren\",
+///         \"organizations:ListAccounts\",
+///         \"organizations:ListAccountsForParent\",
+///         \"organizations:ListPolicies\",
+///         \"organizations:ListPoliciesForTarget\",
+///         \"organizations:ListTargetsForPolicy\",
+///         \"organizations:ListTagsForResource\"
+///       ],
+///       \"Resource\": \"*\"
+///     }
+///   ]
+/// }
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -325,7 +360,7 @@ class ResourcePolicy extends pulumi.CustomResource {
           'aws:organizations/resourcePolicy:ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     content = registerOutput<String>('content');

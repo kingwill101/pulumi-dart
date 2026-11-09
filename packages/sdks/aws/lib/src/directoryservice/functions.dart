@@ -57,7 +57,7 @@ import 'get_directory_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,7 +65,7 @@ import 'get_directory_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_directoryservice_getdirectory" "example" {
+/// data "aws_directoryservice_directory" "example" {
 ///   directory_id = main.id
 /// }
 /// ```
@@ -91,7 +91,7 @@ import 'get_directory_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = DirectoryserviceFunctions.getDirectory(GetDirectoryArgs.builder()
-///             .directoryId(main.id())
+///             .directoryId(main.get("id"))
 ///             .build());
 ///
 ///     }

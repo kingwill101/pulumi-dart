@@ -66,7 +66,7 @@ import 'log_destination_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'log_destination_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_logdestination" "test_destination" {
+/// resource "aws_cloudwatch_log_destination" "test_destination" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "test_destination"
 ///   role_arn   = iamForCloudwatch.arn
 ///   target_arn = kinesisForCloudwatch.arn
@@ -103,8 +106,8 @@ import 'log_destination_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var testDestination = new LogDestination("testDestination", LogDestinationArgs.builder()
 ///             .name("test_destination")
-///             .roleArn(iamForCloudwatch.arn())
-///             .targetArn(kinesisForCloudwatch.arn())
+///             .roleArn(iamForCloudwatch.get("arn"))
+///             .targetArn(kinesisForCloudwatch.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -169,7 +172,7 @@ class LogDestination extends pulumi.CustomResource {
           'aws:cloudwatch/logDestination:LogDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

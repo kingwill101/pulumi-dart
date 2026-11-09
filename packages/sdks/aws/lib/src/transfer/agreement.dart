@@ -80,7 +80,7 @@ import 'agreement_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -89,6 +89,9 @@ import 'agreement_state.dart';
 /// }
 ///
 /// resource "aws_transfer_agreement" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   access_role        = test.arn
 ///   base_directory     = "/DOC-EXAMPLE-BUCKET/home/mydirectory"
 ///   description        = "example"
@@ -119,12 +122,12 @@ import 'agreement_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Agreement("example", AgreementArgs.builder()
-///             .accessRole(test.arn())
+///             .accessRole(test.get("arn"))
 ///             .baseDirectory("/DOC-EXAMPLE-BUCKET/home/mydirectory")
 ///             .description("example")
-///             .localProfileId(local.profileId())
-///             .partnerProfileId(partner.profileId())
-///             .serverId(testAwsTransferServer.id())
+///             .localProfileId(local.get("profileId"))
+///             .partnerProfileId(partner.get("profileId"))
+///             .serverId(testAwsTransferServer.get("id"))
 ///             .build());
 ///
 ///     }
@@ -188,7 +191,7 @@ class Agreement extends pulumi.CustomResource {
           'aws:transfer/agreement:Agreement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accessRole = registerOutput<String>('accessRole');
     agreementId = registerOutput<String>('agreementId');

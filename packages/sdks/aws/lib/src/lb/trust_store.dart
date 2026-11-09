@@ -123,7 +123,7 @@ import 'trust_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -131,17 +131,23 @@ import 'trust_store_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lb_truststore" "test" {
+/// resource "aws_lb_trust_store" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                             = "tf-example-lb-ts"
 ///   ca_certificates_bundle_s3_bucket = "..."
 ///   ca_certificates_bundle_s3_key    = "..."
 /// }
 /// resource "aws_lb_listener" "example" {
-///   mutual_authentication = {
-///     mode            = "verify"
-///     trust_store_arn = aws_lb_truststore.test.arn
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   default_actions {
+///   mutual_authentication {
+///     mode            = "verify"
+///     trust_store_arn = aws_lb_trust_store.test.arn
+///   }
+///   default_action {
 ///     target_group_arn = exampleAwsLbTargetGroup.id
 ///     type             = "forward"
 ///   }
@@ -185,10 +191,10 @@ import 'trust_store_state.dart';
 ///                 .trustStoreArn(test.arn())
 ///                 .build())
 ///             .defaultActions(ListenerDefaultActionArgs.builder()
-///                 .targetGroupArn(exampleAwsLbTargetGroup.id())
+///                 .targetGroupArn(exampleAwsLbTargetGroup.get("id"))
 ///                 .type("forward")
 ///                 .build())
-///             .loadBalancerArn(exampleAwsLb.id())
+///             .loadBalancerArn(exampleAwsLb.get("id"))
 ///             .build());
 ///
 ///     }
@@ -263,7 +269,7 @@ class TrustStore extends pulumi.CustomResource {
           'aws:lb/trustStore:TrustStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     arnSuffix = registerOutput<String>('arnSuffix');

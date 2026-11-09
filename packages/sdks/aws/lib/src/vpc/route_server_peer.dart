@@ -92,7 +92,7 @@ import 'route_server_peer_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -100,8 +100,11 @@ import 'route_server_peer_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpc_routeserverpeer" "test" {
-///   bgp_options = {
+/// resource "aws_vpc_route_server_peer" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   bgp_options {
 ///     peer_asn = 65200
 ///   }
 ///   route_server_endpoint_id = example.routeServerEndpointId
@@ -137,7 +140,7 @@ import 'route_server_peer_timeouts.dart';
 ///             .bgpOptions(RouteServerPeerBgpOptionsArgs.builder()
 ///                 .peerAsn(65200)
 ///                 .build())
-///             .routeServerEndpointId(example.routeServerEndpointId())
+///             .routeServerEndpointId(example.get("routeServerEndpointId"))
 ///             .peerAddress("10.0.1.250")
 ///             .tags(Map.of("Name", "Appliance 1"))
 ///             .build());
@@ -247,7 +250,7 @@ import 'route_server_peer_timeouts.dart';
 /// {
 ///     var test = new Aws.Vpc.RouteServer("test", new()
 ///     {
-///         AmazonSideAsn = 4294967294,
+///         AmazonSideAsn = (int)4294967294,
 ///         Tags =
 ///         {
 ///             { "Name", "Test" },
@@ -371,7 +374,7 @@ import 'route_server_peer_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -379,35 +382,50 @@ import 'route_server_peer_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpc_routeserver" "test" {
+/// resource "aws_vpc_route_server" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   amazon_side_asn = 4294967294
 ///   tags = {
 ///     "Name" = "Test"
 ///   }
 /// }
-/// resource "aws_vpc_routeservervpcassociation" "test" {
-///   route_server_id = aws_vpc_routeserver.test.route_server_id
+/// resource "aws_vpc_route_server_vpc_association" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   route_server_id = aws_vpc_route_server.test.route_server_id
 ///   vpc_id          = testAwsVpc.id
 /// }
-/// resource "aws_vpc_routeserverendpoint" "test" {
-///   depends_on      = [aws_vpc_routeservervpcassociation.test]
-///   route_server_id = aws_vpc_routeserver.test.route_server_id
+/// resource "aws_vpc_route_server_endpoint" "test" {
+///   depends_on = [aws_vpc_route_server_vpc_association.test]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   route_server_id = aws_vpc_route_server.test.route_server_id
 ///   subnet_id       = testAwsSubnet.id
 ///   tags = {
 ///     "Name" = "Test Endpoint"
 ///   }
 /// }
-/// resource "aws_vpc_routeserverpropagation" "test" {
-///   depends_on      = [aws_vpc_routeservervpcassociation.test]
-///   route_server_id = aws_vpc_routeserver.test.route_server_id
+/// resource "aws_vpc_route_server_propagation" "test" {
+///   depends_on = [aws_vpc_route_server_vpc_association.test]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   route_server_id = aws_vpc_route_server.test.route_server_id
 ///   route_table_id  = testAwsRouteTable.id
 /// }
-/// resource "aws_vpc_routeserverpeer" "test" {
-///   bgp_options = {
+/// resource "aws_vpc_route_server_peer" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   bgp_options {
 ///     peer_asn                = 65000
 ///     peer_liveness_detection = "bgp-keepalive"
 ///   }
-///   route_server_endpoint_id = aws_vpc_routeserverendpoint.test.route_server_endpoint_id
+///   route_server_endpoint_id = aws_vpc_route_server_endpoint.test.route_server_endpoint_id
 ///   peer_address             = "10.0.1.250"
 ///   tags = {
 ///     "Name" = "Test Appliance"
@@ -452,12 +470,12 @@ import 'route_server_peer_timeouts.dart';
 ///
 ///         var testRouteServerVpcAssociation = new RouteServerVpcAssociation("testRouteServerVpcAssociation", RouteServerVpcAssociationArgs.builder()
 ///             .routeServerId(test.routeServerId())
-///             .vpcId(testAwsVpc.id())
+///             .vpcId(testAwsVpc.get("id"))
 ///             .build());
 ///
 ///         var testRouteServerEndpoint = new RouteServerEndpoint("testRouteServerEndpoint", RouteServerEndpointArgs.builder()
 ///             .routeServerId(test.routeServerId())
-///             .subnetId(testAwsSubnet.id())
+///             .subnetId(testAwsSubnet.get("id"))
 ///             .tags(Map.of("Name", "Test Endpoint"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(testRouteServerVpcAssociation)
@@ -465,7 +483,7 @@ import 'route_server_peer_timeouts.dart';
 ///
 ///         var testRouteServerPropagation = new RouteServerPropagation("testRouteServerPropagation", RouteServerPropagationArgs.builder()
 ///             .routeServerId(test.routeServerId())
-///             .routeTableId(testAwsRouteTable.id())
+///             .routeTableId(testAwsRouteTable.get("id"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(testRouteServerVpcAssociation)
 ///                 .build());
@@ -581,7 +599,7 @@ class RouteServerPeer extends pulumi.CustomResource {
           'aws:vpc/routeServerPeer:RouteServerPeer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     bgpOptions = registerOutput<RouteServerPeerBgpOptions>('bgpOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouteServerPeerBgpOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

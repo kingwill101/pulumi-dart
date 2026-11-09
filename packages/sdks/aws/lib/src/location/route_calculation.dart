@@ -62,7 +62,7 @@ import 'route_calculation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'route_calculation_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_location_routecalculation" "example" {
+/// resource "aws_location_route_calculation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   calculator_name = "example"
 ///   data_source     = "Here"
 /// }
@@ -155,7 +158,7 @@ class RouteCalculation extends pulumi.CustomResource {
           'aws:location/routeCalculation:RouteCalculation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     calculatorArn = registerOutput<String>('calculatorArn');
     calculatorName = registerOutput<String>('calculatorName');

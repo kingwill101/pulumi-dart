@@ -86,7 +86,7 @@ import 'get_custom_routing_accelerator_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -94,7 +94,7 @@ import 'get_custom_routing_accelerator_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_globalaccelerator_getaccelerator" "example" {
+/// data "aws_globalaccelerator_accelerator" "example" {
 ///   arn  = var.acceleratorArn
 ///   name = var.acceleratorName
 /// }
@@ -264,7 +264,7 @@ pulumi.Output<GetAcceleratorResult> getAcceleratorOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -272,7 +272,7 @@ pulumi.Output<GetAcceleratorResult> getAcceleratorOutput(
 ///   }
 /// }
 ///
-/// data "aws_globalaccelerator_getcustomroutingaccelerator" "example" {
+/// data "aws_globalaccelerator_custom_routing_accelerator" "example" {
 ///   arn  = var.acceleratorArn
 ///   name = var.acceleratorName
 /// }

@@ -133,7 +133,7 @@ import 'ingestion_destination_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -141,17 +141,20 @@ import 'ingestion_destination_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appfabric_ingestiondestination" "example" {
-///   processing_configuration = {
-///     audit_log = {
+/// resource "aws_appfabric_ingestion_destination" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   processing_configuration {
+///     audit_log {
 ///       format = "json"
 ///       schema = "raw"
 ///     }
 ///   }
-///   destination_configuration = {
-///     audit_log = {
-///       destination = {
-///         s3_bucket = {
+///   destination_configuration {
+///     audit_log {
+///       destination {
+///         s3_bucket {
 ///           bucket_name = exampleAwsS3Bucket.bucket
 ///         }
 ///       }
@@ -199,13 +202,13 @@ import 'ingestion_destination_timeouts.dart';
 ///                 .auditLog(IngestionDestinationDestinationConfigurationAuditLogArgs.builder()
 ///                     .destination(IngestionDestinationDestinationConfigurationAuditLogDestinationArgs.builder()
 ///                         .s3Bucket(IngestionDestinationDestinationConfigurationAuditLogDestinationS3BucketArgs.builder()
-///                             .bucketName(exampleAwsS3Bucket.bucket())
+///                             .bucketName(exampleAwsS3Bucket.get("bucket"))
 ///                             .build())
 ///                         .build())
 ///                     .build())
 ///                 .build())
-///             .appBundleArn(exampleAwsAppfabricAppBundle.arn())
-///             .ingestionArn(exampleAwsAppfabricIngestion.arn())
+///             .appBundleArn(exampleAwsAppfabricAppBundle.get("arn"))
+///             .ingestionArn(exampleAwsAppfabricIngestion.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -261,7 +264,7 @@ class IngestionDestination extends pulumi.CustomResource {
           'aws:appfabric/ingestionDestination:IngestionDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     appBundleArn = registerOutput<String>('appBundleArn');
     arn = registerOutput<String>('arn');

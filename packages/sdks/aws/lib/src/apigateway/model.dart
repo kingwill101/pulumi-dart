@@ -98,7 +98,7 @@ import 'model_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = apigateway.NewModel(ctx, "MyDemoModel", &apigateway.ModelArgs{
-/// 			RestApi:     myDemoAPI.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:     myDemoAPI.ID(),
 /// 			Name:        pulumi.String("user"),
 /// 			Description: pulumi.String("a JSON schema"),
 /// 			ContentType: pulumi.String("application/json"),
@@ -112,7 +112,7 @@ import 'model_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -120,12 +120,18 @@ import 'model_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_restapi" "MyDemoAPI" {
+/// resource "aws_apigateway_rest_api" "MyDemoAPI" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "MyDemoAPI"
 ///   description = "This is my API for demonstration purposes"
 /// }
 /// resource "aws_apigateway_model" "MyDemoModel" {
-///   rest_api     = aws_apigateway_restapi.MyDemoAPI.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api     = aws_apigateway_rest_api.MyDemoAPI.id
 ///   name         = "user"
 ///   description  = "a JSON schema"
 ///   content_type = "application/json"
@@ -232,7 +238,7 @@ class Model extends pulumi.CustomResource {
           'aws:apigateway/model:Model',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     contentType = registerOutput<String>('contentType');
     description = registerOutput<String?>('description');

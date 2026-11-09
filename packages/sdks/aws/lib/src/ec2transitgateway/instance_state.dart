@@ -164,7 +164,7 @@ import 'instance_state_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2transitgateway.NewInstanceState(ctx, "test", &ec2transitgateway.InstanceStateArgs{
-/// 			InstanceId: test.ID().ToIDOutput().ToStringOutput(),
+/// 			InstanceId: test.ID(),
 /// 			State:      pulumi.String("stopped"),
 /// 		})
 /// 		if err != nil {
@@ -175,7 +175,7 @@ import 'instance_state_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -183,7 +183,7 @@ import 'instance_state_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2_getami" "ubuntu" {
+/// data "aws_ec2_ami" "ubuntu" {
 ///   filters {
 ///     name   = "name"
 ///     values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
@@ -198,13 +198,19 @@ import 'instance_state_state.dart';
 ///
 /// # Canonical
 /// resource "aws_ec2_instance" "test" {
-///   ami           = data.aws_ec2_getami.ubuntu.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ami           = data.aws_ec2_ami.ubuntu.id
 ///   instance_type = "t3.micro"
 ///   tags = {
 ///     "Name" = "HelloWorld"
 ///   }
 /// }
-/// resource "aws_ec2transitgateway_instancestate" "test" {
+/// resource "aws_ec2transitgateway_instance_state" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id = aws_ec2_instance.test.id
 ///   state       = "stopped"
 /// }
@@ -327,7 +333,7 @@ class InstanceState extends pulumi.CustomResource {
           'aws:ec2transitgateway/instanceState:InstanceState',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     force = registerOutput<bool?>('force');
     instanceId = registerOutput<String>('instanceId');

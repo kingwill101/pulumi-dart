@@ -68,7 +68,7 @@ import 'contributor_insight_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,7 +76,10 @@ import 'contributor_insight_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_contributorinsightrule" "test" {
+/// resource "aws_cloudwatch_contributor_insight_rule" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   rule_name       = "testing"
 ///   rule_state      = "ENABLED"
 ///   rule_definition = "{\"Schema\":{\"Name\":\"CloudWatchLogRule\",\"Version\":1},\"AggregateOn\":\"Count\",\"Contribution\":{\"Filters\":[{\"In\":[\"some-keyword\"],\"Match\":\"$.message\"}],\"Keys\":[\"$.country\"]},\"LogFormat\":\"JSON\",\"LogGroupNames\":[\"/aws/lambda/api-prod\"]}"
@@ -170,7 +173,7 @@ class ContributorInsightRule extends pulumi.CustomResource {
           'aws:cloudwatch/contributorInsightRule:ContributorInsightRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');

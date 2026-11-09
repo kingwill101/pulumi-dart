@@ -90,7 +90,7 @@ import 'shared_directory_accepter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -98,15 +98,21 @@ import 'shared_directory_accepter_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_directoryservice_shareddirectory" "example" {
+/// resource "aws_directoryservice_shared_directory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   target = {
 ///     id = receiver.accountId
 ///   }
 ///   directory_id = exampleAwsDirectoryServiceDirectory.id
 ///   notes        = "example"
 /// }
-/// resource "aws_directoryservice_shareddirectoryaccepter" "example" {
-///   shared_directory_id = aws_directoryservice_shareddirectory.example.shared_directory_id
+/// resource "aws_directoryservice_shared_directory_accepter" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   shared_directory_id = aws_directoryservice_shared_directory.example.shared_directory_id
 /// }
 /// ```
 /// ```java
@@ -135,9 +141,9 @@ import 'shared_directory_accepter_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new SharedDirectory("example", SharedDirectoryArgs.builder()
 ///             .target(SharedDirectoryTargetArgs.builder()
-///                 .id(receiver.accountId())
+///                 .id(receiver.get("accountId"))
 ///                 .build())
-///             .directoryId(exampleAwsDirectoryServiceDirectory.id())
+///             .directoryId(exampleAwsDirectoryServiceDirectory.get("id"))
 ///             .notes("example")
 ///             .build());
 ///
@@ -198,7 +204,7 @@ class SharedDirectoryAccepter extends pulumi.CustomResource {
           'aws:directoryservice/sharedDirectoryAccepter:SharedDirectoryAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     method = registerOutput<String>('method');
     notes = registerOutput<String>('notes');

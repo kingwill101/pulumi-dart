@@ -78,7 +78,7 @@ import 'device_fleet_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,8 +86,11 @@ import 'device_fleet_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_devicefleet" "example" {
-///   output_config = {
+/// resource "aws_sagemaker_device_fleet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   output_config {
 ///     s3_output_location ="s3://${exampleAwsS3Bucket.bucket}/prefix/"
 ///   }
 ///   device_fleet_name = "example"
@@ -118,10 +121,10 @@ import 'device_fleet_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new DeviceFleet("example", DeviceFleetArgs.builder()
 ///             .outputConfig(DeviceFleetOutputConfigArgs.builder()
-///                 .s3OutputLocation(String.format("s3://%s/prefix/", exampleAwsS3Bucket.bucket()))
+///                 .s3OutputLocation(String.format("s3://%s/prefix/", exampleAwsS3Bucket.get("bucket")))
 ///                 .build())
 ///             .deviceFleetName("example")
-///             .roleArn(test.arn())
+///             .roleArn(test.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -179,7 +182,7 @@ class DeviceFleet extends pulumi.CustomResource {
           'aws:sagemaker/deviceFleet:DeviceFleet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

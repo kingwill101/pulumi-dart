@@ -160,7 +160,7 @@ import 'access_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -168,29 +168,38 @@ import 'access_key_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "lbRo" {
-///   statements {
+/// data "aws_iam_policy_document" "lbRo" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["ec2:Describe*"]
 ///     resources = ["*"]
 ///   }
 /// }
 ///
-/// resource "aws_iam_accesskey" "lb" {
+/// resource "aws_iam_access_key" "lb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user    = aws_iam_user.lb.name
 ///   pgp_key = "keybase:some_person_that_exists"
 /// }
 /// resource "aws_iam_user" "lb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "loadbalancer"
 ///   path = "/system/"
 /// }
-/// resource "aws_iam_userpolicy" "lb_ro" {
+/// resource "aws_iam_user_policy" "lb_ro" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "test"
 ///   user   = aws_iam_user.lb.name
-///   policy = data.aws_iam_getpolicydocument.lbRo.json
+///   policy = data.aws_iam_policy_document.lbRo.json
 /// }
 /// output "secret" {
-///   value = aws_iam_accesskey.lb.encrypted_secret
+///   value = aws_iam_access_key.lb.encrypted_secret
 /// }
 /// ```
 /// ```java
@@ -361,7 +370,7 @@ import 'access_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -370,14 +379,20 @@ import 'access_key_state.dart';
 /// }
 ///
 /// resource "aws_iam_user" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test"
 ///   path = "/test/"
 /// }
-/// resource "aws_iam_accesskey" "test" {
+/// resource "aws_iam_access_key" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user = aws_iam_user.test.name
 /// }
 /// output "awsIamSmtpPasswordV4" {
-///   value = aws_iam_accesskey.test.ses_smtp_password_v4
+///   value = aws_iam_access_key.test.ses_smtp_password_v4
 /// }
 /// ```
 /// ```java
@@ -485,7 +500,7 @@ class AccessKey extends pulumi.CustomResource {
           'aws:iam/accessKey:AccessKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['secret', 'sesSmtpPasswordV4'],
         ) {
     createDate = registerOutput<String>('createDate');

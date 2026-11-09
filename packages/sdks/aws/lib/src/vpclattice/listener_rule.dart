@@ -212,7 +212,7 @@ import 'listener_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -220,33 +220,37 @@ import 'listener_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpclattice_listenerrule" "example" {
-///   match = {
-///     http_match = {
-///       path_match = {
-///         match = {
+/// resource "aws_vpclattice_listener_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   match {
+///     http_match {
+///       path_match {
+///         match {
 ///           prefix = "/example-path"
 ///         }
 ///         case_sensitive = true
 ///       }
-///       header_matches = [{
-///         "match" = {
-///           "exact" = "example-contains"
+///       header_matches {
+///         match {
+///           exact = "example-contains"
 ///         }
-///         "name"          = "example-header"
-///         "caseSensitive" = false
-///       }]
+///         name           = "example-header"
+///         case_sensitive = false
+///       }
 ///     }
 ///   }
-///   action = {
-///     forward = {
-///       target_groups = [{
-///         "targetGroupIdentifier" = exampleAwsVpclatticeTargetGroup.id
-///         "weight"                = 1
-///         }, {
-///         "targetGroupIdentifier" = example2.id
-///         "weight"                = 2
-///       }]
+///   action {
+///     forward {
+///       target_groups {
+///         target_group_identifier = exampleAwsVpclatticeTargetGroup.id
+///         weight                  = 1
+///       }
+///       target_groups {
+///         target_group_identifier = example2.id
+///         weight                  = 2
+///       }
 ///     }
 ///   }
 ///   name                = "example"
@@ -307,18 +311,18 @@ import 'listener_rule_state.dart';
 ///                 .forward(ListenerRuleActionForwardArgs.builder()
 ///                     .targetGroups(
 ///                         ListenerRuleActionForwardTargetGroupArgs.builder()
-///                             .targetGroupIdentifier(exampleAwsVpclatticeTargetGroup.id())
+///                             .targetGroupIdentifier(exampleAwsVpclatticeTargetGroup.get("id"))
 ///                             .weight(1)
 ///                             .build(),
 ///                         ListenerRuleActionForwardTargetGroupArgs.builder()
-///                             .targetGroupIdentifier(example2.id())
+///                             .targetGroupIdentifier(example2.get("id"))
 ///                             .weight(2)
 ///                             .build())
 ///                     .build())
 ///                 .build())
 ///             .name("example")
-///             .listenerIdentifier(exampleAwsVpclatticeListener.listenerId())
-///             .serviceIdentifier(exampleAwsVpclatticeService.id())
+///             .listenerIdentifier(exampleAwsVpclatticeListener.get("listenerId"))
+///             .serviceIdentifier(exampleAwsVpclatticeService.get("id"))
 ///             .priority(20)
 ///             .build());
 ///
@@ -487,7 +491,7 @@ import 'listener_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -495,19 +499,22 @@ import 'listener_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpclattice_listenerrule" "example" {
-///   match = {
-///     http_match = {
-///       path_match = {
-///         match = {
+/// resource "aws_vpclattice_listener_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   match {
+///     http_match {
+///       path_match {
+///         match {
 ///           exact = "/example-path"
 ///         }
 ///         case_sensitive = false
 ///       }
 ///     }
 ///   }
-///   action = {
-///     fixed_response = {
+///   action {
+///     fixed_response {
 ///       status_code = 404
 ///     }
 ///   }
@@ -561,8 +568,8 @@ import 'listener_rule_state.dart';
 ///                     .build())
 ///                 .build())
 ///             .name("example")
-///             .listenerIdentifier(exampleAwsVpclatticeListener.listenerId())
-///             .serviceIdentifier(exampleAwsVpclatticeService.id())
+///             .listenerIdentifier(exampleAwsVpclatticeListener.get("listenerId"))
+///             .serviceIdentifier(exampleAwsVpclatticeService.get("id"))
 ///             .priority(10)
 ///             .build());
 ///
@@ -635,7 +642,7 @@ class ListenerRule extends pulumi.CustomResource {
           'aws:vpclattice/listenerRule:ListenerRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     action = registerOutput<ListenerRuleAction>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListenerRuleAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');

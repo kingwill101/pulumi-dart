@@ -218,7 +218,7 @@ import 'integration_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -227,10 +227,13 @@ import 'integration_timeouts.dart';
 /// }
 ///
 /// resource "aws_dynamodb_table" "example" {
-///   point_in_time_recovery = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   point_in_time_recovery {
 ///     enabled = true
 ///   }
-///   attributes {
+///   attribute {
 ///     name = "example"
 ///     type = "S"
 ///   }
@@ -240,10 +243,16 @@ import 'integration_timeouts.dart';
 ///   hash_key       = "example"
 /// }
 /// resource "aws_redshiftserverless_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   namespace_name = "redshift-example"
 /// }
 /// resource "aws_redshiftserverless_workgroup" "example" {
-///   config_parameters {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   config_parameter {
 ///     parameter_key   = "enable_case_sensitive_identifier"
 ///     parameter_value = "true"
 ///   }
@@ -254,6 +263,9 @@ import 'integration_timeouts.dart';
 ///   subnet_ids          = [example1.id, example2.id, example3.id]
 /// }
 /// resource "aws_redshift_integration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   integration_name = "example"
 ///   source_arn       = aws_dynamodb_table.example.arn
 ///   target_arn       = aws_redshiftserverless_namespace.example.arn
@@ -317,9 +329,9 @@ import 'integration_timeouts.dart';
 ///             .baseCapacity(8)
 ///             .publiclyAccessible(false)
 ///             .subnetIds(
-///                 example1.id(),
-///                 example2.id(),
-///                 example3.id())
+///                 example1.get("id"),
+///                 example2.get("id"),
+///                 example3.get("id"))
 ///             .build());
 ///
 ///         var exampleIntegration = new Integration("exampleIntegration", IntegrationArgs.builder()
@@ -625,7 +637,7 @@ import 'integration_timeouts.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = kms.NewKeyPolicy(ctx, "example", &kms.KeyPolicyArgs{
-/// 			KeyId:  example.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyId:  example.ID(),
 /// 			Policy: json0,
 /// 		})
 /// 		if err != nil {
@@ -648,7 +660,7 @@ import 'integration_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -656,21 +668,27 @@ import 'integration_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "example"
 ///   deletion_window_in_days = 10
 /// }
-/// resource "aws_kms_keypolicy" "example" {
+/// resource "aws_kms_key_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key_id = aws_kms_key.example.id
 ///   policy = jsonencode({
 ///     "Version" = "2008-10-17"
 ///     "Statement" = [{
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///         "AWS" ="arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
 ///       }
 ///       "Action"   = "kms:*"
 ///       "Resource" = "*"
@@ -683,16 +701,19 @@ import 'integration_timeouts.dart';
 ///       "Resource" = "*"
 ///       "Condition" = {
 ///         "StringEquals" = {
-///           "aws:SourceAccount" = data.aws_getcalleridentity.current.account_id
+///           "aws:SourceAccount" = data.aws_caller_identity.current.account_id
 ///         }
 ///         "ArnEquals" = {
-///           "aws:SourceArn" ="arn:aws:redshift:*:${data.aws_getcalleridentity.current.account_id}:integration:*"
+///           "aws:SourceArn" ="arn:aws:redshift:*:${data.aws_caller_identity.current.account_id}:integration:*"
 ///         }
 ///       }
 ///     }]
 ///   })
 /// }
 /// resource "aws_redshift_integration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   integration_name = "example"
 ///   source_arn       = exampleAwsDynamodbTable.arn
 ///   target_arn       = exampleAwsRedshiftserverlessNamespace.arn
@@ -777,8 +798,8 @@ import 'integration_timeouts.dart';
 ///
 ///         var exampleIntegration = new Integration("exampleIntegration", IntegrationArgs.builder()
 ///             .integrationName("example")
-///             .sourceArn(exampleAwsDynamodbTable.arn())
-///             .targetArn(exampleAwsRedshiftserverlessNamespace.arn())
+///             .sourceArn(exampleAwsDynamodbTable.get("arn"))
+///             .targetArn(exampleAwsRedshiftserverlessNamespace.get("arn"))
 ///             .kmsKeyId(example.arn())
 ///             .additionalEncryptionContext(Map.of("example", "test"))
 ///             .build());
@@ -894,7 +915,7 @@ class Integration extends pulumi.CustomResource {
           'aws:redshift/integration:Integration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     arn = registerOutput<String>('arn');

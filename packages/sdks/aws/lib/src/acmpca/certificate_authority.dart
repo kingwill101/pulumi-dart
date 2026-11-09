@@ -94,7 +94,7 @@ import 'certificate_authority_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -102,9 +102,12 @@ import 'certificate_authority_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_acmpca_certificateauthority" "example" {
-///   certificate_authority_configuration = {
-///     subject = {
+/// resource "aws_acmpca_certificate_authority" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   certificate_authority_configuration {
+///     subject {
 ///       common_name = "example.com"
 ///     }
 ///     key_algorithm     = "RSA_4096"
@@ -248,7 +251,7 @@ import 'certificate_authority_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -256,9 +259,12 @@ import 'certificate_authority_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_acmpca_certificateauthority" "example" {
-///   certificate_authority_configuration = {
-///     subject = {
+/// resource "aws_acmpca_certificate_authority" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   certificate_authority_configuration {
+///     subject {
 ///       common_name = "example.com"
 ///     }
 ///     key_algorithm     = "RSA_4096"
@@ -550,7 +556,7 @@ import 'certificate_authority_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		exampleBucketPolicy, err := s3.NewBucketPolicy(ctx, "example", &s3.BucketPolicyArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Policy: acmpcaBucketAccess.Json(),
 /// 		})
 /// 		if err != nil {
@@ -569,7 +575,7 @@ import 'certificate_authority_state.dart';
 /// 					CustomCname:      pulumi.String("crl.example.com"),
 /// 					Enabled:          pulumi.Bool(true),
 /// 					ExpirationInDays: pulumi.Int(7),
-/// 					S3BucketName:     example.ID().ToIDOutput().ToStringOutput(),
+/// 					S3BucketName:     example.ID(),
 /// 					S3ObjectAcl:      pulumi.String("BUCKET_OWNER_FULL_CONTROL"),
 /// 				},
 /// 			},
@@ -584,7 +590,7 @@ import 'certificate_authority_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -592,8 +598,8 @@ import 'certificate_authority_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "acmpcaBucketAccess" {
-///   statements {
+/// data "aws_iam_policy_document" "acmpcaBucketAccess" {
+///   statement {
 ///     principals {
 ///       identifiers = ["acm-pca.amazonaws.com"]
 ///       type        = "Service"
@@ -604,24 +610,33 @@ import 'certificate_authority_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket        = "example"
 ///   force_destroy = true
 /// }
-/// resource "aws_s3_bucketpolicy" "example" {
+/// resource "aws_s3_bucket_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.id
-///   policy = data.aws_iam_getpolicydocument.acmpcaBucketAccess.json
+///   policy = data.aws_iam_policy_document.acmpcaBucketAccess.json
 /// }
-/// resource "aws_acmpca_certificateauthority" "example" {
-///   depends_on = [aws_s3_bucketpolicy.example]
-///   certificate_authority_configuration = {
-///     subject = {
+/// resource "aws_acmpca_certificate_authority" "example" {
+///   depends_on = [aws_s3_bucket_policy.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   certificate_authority_configuration {
+///     subject {
 ///       common_name = "example.com"
 ///     }
 ///     key_algorithm     = "RSA_4096"
 ///     signing_algorithm = "SHA512WITHRSA"
 ///   }
-///   revocation_configuration = {
-///     crl_configuration = {
+///   revocation_configuration {
+///     crl_configuration {
 ///       custom_cname       = "crl.example.com"
 ///       enabled            = true
 ///       expiration_in_days = 7
@@ -831,7 +846,7 @@ class CertificateAuthority extends pulumi.CustomResource {
           'aws:acmpca/certificateAuthority:CertificateAuthority',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     certificate = registerOutput<String>('certificate');

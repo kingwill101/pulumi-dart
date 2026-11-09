@@ -168,7 +168,7 @@ import 'container_service_deployment_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -176,9 +176,12 @@ import 'container_service_deployment_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lightsail_containerservicedeploymentversion" "example" {
-///   public_endpoint = {
-///     health_check = {
+/// resource "aws_lightsail_container_service_deployment_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   public_endpoint {
+///     health_check {
 ///       healthy_threshold   = 2
 ///       unhealthy_threshold = 2
 ///       timeout_seconds     = 2
@@ -189,10 +192,10 @@ import 'container_service_deployment_version_state.dart';
 ///     container_name = "hello-world"
 ///     container_port = 80
 ///   }
-///   containers {
+///   container {
 ///     container_name = "hello-world"
 ///     image          = "amazon/amazon-lightsail:hello-world"
-///     commands       = []
+///     command        = []
 ///     environment = {
 ///       "MY_ENVIRONMENT_VARIABLE" = "my_value"
 ///     }
@@ -247,7 +250,7 @@ import 'container_service_deployment_version_state.dart';
 ///                 .environment(Map.of("MY_ENVIRONMENT_VARIABLE", "my_value"))
 ///                 .ports(Map.of("80", "HTTP"))
 ///                 .build())
-///             .serviceName(exampleAwsLightsailContainerService.name())
+///             .serviceName(exampleAwsLightsailContainerService.get("name"))
 ///             .build());
 ///
 ///     }
@@ -317,7 +320,7 @@ class ContainerServiceDeploymentVersion extends pulumi.CustomResource {
           'aws:lightsail/containerServiceDeploymentVersion:ContainerServiceDeploymentVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     containers = registerOutput<List<ContainerServiceDeploymentVersionContainer>>('containers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerServiceDeploymentVersionContainer>(guardedValue, (value) => ContainerServiceDeploymentVersionContainer.fromMap((value as Map).cast<String, dynamic>())); });
     createdAt = registerOutput<String>('createdAt');

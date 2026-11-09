@@ -63,7 +63,7 @@ import 'instance_metadata_defaults_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,7 +71,10 @@ import 'instance_metadata_defaults_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_instancemetadatadefaults" "enforce-imdsv2" {
+/// resource "aws_ec2_instance_metadata_defaults" "enforce-imdsv2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   http_tokens                 = "required"
 ///   http_put_response_hop_limit = 1
 /// }
@@ -142,7 +145,7 @@ class InstanceMetadataDefaults extends pulumi.CustomResource {
           'aws:ec2/instanceMetadataDefaults:InstanceMetadataDefaults',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     httpEndpoint = registerOutput<String>('httpEndpoint');
     httpPutResponseHopLimit = registerOutput<int>('httpPutResponseHopLimit');

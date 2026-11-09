@@ -79,7 +79,7 @@ import 'conditional_forwarder_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -87,7 +87,10 @@ import 'conditional_forwarder_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_directoryservice_conditionalforwarder" "example" {
+/// resource "aws_directoryservice_conditional_forwarder" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   directory_id       = ad.id
 ///   remote_domain_name = "example.com"
 ///   dns_ips            = ["8.8.8.8", "8.8.4.4"]
@@ -115,7 +118,7 @@ import 'conditional_forwarder_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ConditionalForwarder("example", ConditionalForwarderArgs.builder()
-///             .directoryId(ad.id())
+///             .directoryId(ad.get("id"))
 ///             .remoteDomainName("example.com")
 ///             .dnsIps(
 ///                 "8.8.8.8",
@@ -167,7 +170,7 @@ class ConditionalForwarder extends pulumi.CustomResource {
           'aws:directoryservice/conditionalForwarder:ConditionalForwarder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     directoryId = registerOutput<String>('directoryId');
     dnsIps = registerOutput<List<String>>('dnsIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

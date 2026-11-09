@@ -110,7 +110,7 @@ import 'standards_control_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -119,13 +119,22 @@ import 'standards_control_association_state.dart';
 /// }
 ///
 /// resource "aws_securityhub_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_securityhub_standardssubscription" "cis_aws_foundations_benchmark" {
-///   depends_on    = [aws_securityhub_account.example]
+/// resource "aws_securityhub_standards_subscription" "cis_aws_foundations_benchmark" {
+///   depends_on = [aws_securityhub_account.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   standards_arn = "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"
 /// }
-/// resource "aws_securityhub_standardscontrolassociation" "cis_aws_foundations_benchmark_disable_iam_1" {
-///   standards_arn       = aws_securityhub_standardssubscription.cis_aws_foundations_benchmark.standards_arn
+/// resource "aws_securityhub_standards_control_association" "cis_aws_foundations_benchmark_disable_iam_1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   standards_arn       = aws_securityhub_standards_subscription.cis_aws_foundations_benchmark.standards_arn
 ///   security_control_id = "IAM.1"
 ///   association_status  = "DISABLED"
 ///   updated_reason      = "Not needed"
@@ -307,7 +316,7 @@ import 'standards_control_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -315,16 +324,25 @@ import 'standards_control_association_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_securityhub_getstandardscontrolassociations" "iam1" {
+/// data "aws_securityhub_standards_control_associations" "iam1" {
 ///   security_control_id = "IAM.1"
 /// }
 ///
 /// resource "aws_securityhub_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_securityhub_standardscontrolassociation" "iam_1" {
-///   for_each            = {for entry in data.aws_securityhub_getstandardscontrolassociations.iam1.standards_control_associations[*].standards_arn : entry => entry}
+/// resource "aws_securityhub_standards_control_association" "iam_1" {
+///   for_each = {for entry in data.aws_securityhub_standards_control_associations.iam1.standards_control_associations[*].standards_arn : entry => entry}
+///   pulumi {
+///     name ="iam_1-${each.key}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   standards_arn       = each.key
-///   security_control_id = data.aws_securityhub_getstandardscontrolassociations.iam1.security_control_id
+///   security_control_id = data.aws_securityhub_standards_control_associations.iam1.security_control_id
 ///   association_status  = "DISABLED"
 ///   updated_reason      = "Not needed"
 /// }
@@ -397,7 +415,7 @@ class StandardsControlAssociation extends pulumi.CustomResource {
           'aws:securityhub/standardsControlAssociation:StandardsControlAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     associationStatus = registerOutput<String>('associationStatus');
     region = registerOutput<String>('region');

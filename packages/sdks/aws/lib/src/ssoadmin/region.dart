@@ -79,7 +79,7 @@ import 'region_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -87,11 +87,14 @@ import 'region_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
 ///
 /// resource "aws_ssoadmin_region" "example" {
-///   instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   instance_arn = data.aws_ssoadmin_instances.example.arns[0]
 ///   region_name  = "us-east-1"
 /// }
 /// ```
@@ -190,7 +193,7 @@ class Region extends pulumi.CustomResource {
           'aws:ssoadmin/region:Region',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     instanceArn = registerOutput<String>('instanceArn');
     region = registerOutput<String>('region');

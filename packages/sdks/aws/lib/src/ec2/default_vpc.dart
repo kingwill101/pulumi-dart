@@ -76,7 +76,7 @@ import 'default_vpc_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -84,7 +84,10 @@ import 'default_vpc_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_defaultvpc" "default" {
+/// resource "aws_ec2_default_vpc" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tags = {
 ///     "Name" = "Default VPC"
 ///   }
@@ -188,7 +191,7 @@ class DefaultVpc extends pulumi.CustomResource {
           'aws:ec2/defaultVpc:DefaultVpc',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     assignGeneratedIpv6CidrBlock = registerOutput<bool?>('assignGeneratedIpv6CidrBlock');

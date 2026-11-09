@@ -68,7 +68,7 @@ import 'runtime_management_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,7 +76,10 @@ import 'runtime_management_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_runtimemanagementconfig" "example" {
+/// resource "aws_lambda_runtime_management_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   function_name     = exampleAwsLambdaFunction.functionName
 ///   update_runtime_on = "FunctionUpdate"
 /// }
@@ -103,7 +106,7 @@ import 'runtime_management_config_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RuntimeManagementConfig("example", RuntimeManagementConfigArgs.builder()
-///             .functionName(exampleAwsLambdaFunction.functionName())
+///             .functionName(exampleAwsLambdaFunction.get("functionName"))
 ///             .updateRuntimeOn("FunctionUpdate")
 ///             .build());
 ///
@@ -182,7 +185,7 @@ import 'runtime_management_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -190,7 +193,10 @@ import 'runtime_management_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_runtimemanagementconfig" "example" {
+/// resource "aws_lambda_runtime_management_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   function_name       = exampleAwsLambdaFunction.functionName
 ///   update_runtime_on   = "Manual"
 ///   runtime_version_arn = "arn:aws:lambda:us-east-1::runtime:abcd1234"
@@ -218,7 +224,7 @@ import 'runtime_management_config_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RuntimeManagementConfig("example", RuntimeManagementConfigArgs.builder()
-///             .functionName(exampleAwsLambdaFunction.functionName())
+///             .functionName(exampleAwsLambdaFunction.get("functionName"))
 ///             .updateRuntimeOn("Manual")
 ///             .runtimeVersionArn("arn:aws:lambda:us-east-1::runtime:abcd1234")
 ///             .build());
@@ -274,7 +280,7 @@ class RuntimeManagementConfig extends pulumi.CustomResource {
           'aws:lambda/runtimeManagementConfig:RuntimeManagementConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     functionArn = registerOutput<String>('functionArn');
     functionName = registerOutput<String>('functionName');

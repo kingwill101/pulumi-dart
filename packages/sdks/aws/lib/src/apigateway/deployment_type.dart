@@ -53,7 +53,7 @@ class DeploymentType extends pulumi.CustomResource {
           'aws:apigateway/deployment:Deployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     createdDate = registerOutput<String>('createdDate');
     description = registerOutput<String?>('description');

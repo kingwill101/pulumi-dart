@@ -76,7 +76,7 @@ import 'resolver_config_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = route53.NewResolverConfig(ctx, "example", &route53.ResolverConfigArgs{
-/// 			ResourceId:             example.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceId:             example.ID(),
 /// 			AutodefinedReverseFlag: pulumi.String("DISABLE"),
 /// 		})
 /// 		if err != nil {
@@ -87,7 +87,7 @@ import 'resolver_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -96,11 +96,17 @@ import 'resolver_config_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block           = "10.0.0.0/16"
 ///   enable_dns_support   = true
 ///   enable_dns_hostnames = true
 /// }
-/// resource "aws_route53_resolverconfig" "example" {
+/// resource "aws_route53_resolver_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_id              = aws_ec2_vpc.example.id
 ///   autodefined_reverse_flag = "DISABLE"
 /// }
@@ -188,7 +194,7 @@ class ResolverConfig extends pulumi.CustomResource {
           'aws:route53/resolverConfig:ResolverConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     autodefinedReverseFlag = registerOutput<String>('autodefinedReverseFlag');
     ownerId = registerOutput<String>('ownerId');

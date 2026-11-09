@@ -175,7 +175,7 @@ import 'queue_policy_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = sqs.NewQueuePolicy(ctx, "test", &sqs.QueuePolicyArgs{
-/// 			QueueUrl: q.ID().ToIDOutput().ToStringOutput(),
+/// 			QueueUrl: q.ID(),
 /// 			Policy:   test.Json(),
 /// 		})
 /// 		if err != nil {
@@ -186,7 +186,7 @@ import 'queue_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -194,9 +194,9 @@ import 'queue_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "test" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "test" {
+///   statement {
+///     condition {
 ///       test     = "ArnEquals"
 ///       variable = "aws:SourceArn"
 ///       values   = [example.arn]
@@ -213,11 +213,17 @@ import 'queue_policy_state.dart';
 /// }
 ///
 /// resource "aws_sqs_queue" "q" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "examplequeue"
 /// }
-/// resource "aws_sqs_queuepolicy" "test" {
+/// resource "aws_sqs_queue_policy" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   queue_url = aws_sqs_queue.q.id
-///   policy    = data.aws_iam_getpolicydocument.test.json
+///   policy    = data.aws_iam_policy_document.test.json
 /// }
 /// ```
 /// ```java
@@ -257,7 +263,7 @@ import 'queue_policy_state.dart';
 ///                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
 ///                     .test("ArnEquals")
 ///                     .variable("aws:SourceArn")
-///                     .values(example.arn())
+///                     .values(example.get("arn"))
 ///                     .build())
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("*")
@@ -450,7 +456,7 @@ import 'queue_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = sqs.NewQueuePolicy(ctx, "example", &sqs.QueuePolicyArgs{
-/// 			QueueUrl: exampleQueue.ID().ToIDOutput().ToStringOutput(),
+/// 			QueueUrl: exampleQueue.ID(),
 /// 			Policy: pulumi.All(exampleQueue.Arn, example.Arn).ApplyT(func(_args []interface{}) (string, error) {
 /// 				exampleQueueArn := _args[0].(string)
 /// 				exampleArn := _args[1].(string)
@@ -489,7 +495,7 @@ import 'queue_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -498,12 +504,21 @@ import 'queue_policy_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "brodobaggins"
 /// }
 /// resource "aws_sqs_queue" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "be-giant"
 /// }
-/// resource "aws_sqs_queuepolicy" "example" {
+/// resource "aws_sqs_queue_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   queue_url = aws_sqs_queue.example.id
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -653,7 +668,7 @@ class QueuePolicy extends pulumi.CustomResource {
           'aws:sqs/queuePolicy:QueuePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     queueUrl = registerOutput<String>('queueUrl');

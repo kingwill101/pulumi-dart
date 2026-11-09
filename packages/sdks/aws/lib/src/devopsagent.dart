@@ -1,3 +1,11 @@
 export 'devopsagent/agent_space.dart';
 export 'devopsagent/agent_space_args.dart';
 export 'devopsagent/agent_space_state.dart';
+export 'devopsagent/asset.dart';
+export 'devopsagent/asset_args.dart';
+export 'devopsagent/asset_content.dart';
+export 'devopsagent/asset_content_file.dart';
+export 'devopsagent/asset_content_file_body.dart';
+export 'devopsagent/asset_content_source_url.dart';
+export 'devopsagent/asset_content_zip.dart';
+export 'devopsagent/asset_state.dart';

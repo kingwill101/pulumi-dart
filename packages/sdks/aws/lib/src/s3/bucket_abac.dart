@@ -88,7 +88,7 @@ import 'bucket_abac_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -97,10 +97,16 @@ import 'bucket_abac_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "bucket-name"
 /// }
-/// resource "aws_s3_bucketabac" "example" {
-///   abac_status = {
+/// resource "aws_s3_bucket_abac" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   abac_status {
 ///     status = "Enabled"
 ///   }
 ///   bucket = aws_s3_bucket.example.bucket
@@ -202,7 +208,7 @@ class BucketAbac extends pulumi.CustomResource {
           'aws:s3/bucketAbac:BucketAbac',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     abacStatus = registerOutput<BucketAbacAbacStatus>('abacStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketAbacAbacStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bucket = registerOutput<String>('bucket');

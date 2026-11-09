@@ -70,7 +70,7 @@ import 'vault_lock_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -78,7 +78,10 @@ import 'vault_lock_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_backup_vaultlockconfiguration" "test" {
+/// resource "aws_backup_vault_lock_configuration" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   backup_vault_name   = "example_backup_vault"
 ///   changeable_for_days = 3
 ///   max_retention_days  = 1200
@@ -161,7 +164,7 @@ class VaultLockConfiguration extends pulumi.CustomResource {
           'aws:backup/vaultLockConfiguration:VaultLockConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     backupVaultArn = registerOutput<String>('backupVaultArn');
     backupVaultName = registerOutput<String>('backupVaultName');

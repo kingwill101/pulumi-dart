@@ -72,7 +72,7 @@ import 'partition_storage_descriptor.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -81,6 +81,9 @@ import 'partition_storage_descriptor.dart';
 /// }
 ///
 /// resource "aws_glue_partition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name    = "some-database"
 ///   table_name       = "some-table"
 ///   partition_values = ["some-value"]
@@ -169,7 +172,7 @@ class Partition extends pulumi.CustomResource {
           'aws:glue/partition:Partition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     catalogId = registerOutput<String>('catalogId');
     creationTime = registerOutput<String>('creationTime');

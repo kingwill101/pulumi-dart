@@ -68,7 +68,7 @@ import 'get_task_execution_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,7 +76,7 @@ import 'get_task_execution_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_ecs_getcluster" "ecs-mongo" {
+/// data "aws_ecs_cluster" "ecs-mongo" {
 ///   cluster_name = "ecs-mongo-production"
 /// }
 /// ```
@@ -192,7 +192,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -200,7 +200,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 ///   }
 /// }
 ///
-/// data "aws_ecs_getclusters" "example" {
+/// data "aws_ecs_clusters" "example" {
 /// }
 /// ```
 /// ```java
@@ -323,7 +323,7 @@ pulumi.Output<GetClustersResult> getClustersOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -331,7 +331,7 @@ pulumi.Output<GetClustersResult> getClustersOutput(
 ///   }
 /// }
 ///
-/// data "aws_ecs_getcontainerdefinition" "ecs-mongo" {
+/// data "aws_ecs_container_definition" "ecs-mongo" {
 ///   task_definition = mongo.id
 ///   container_name  = "mongodb"
 /// }
@@ -358,7 +358,7 @@ pulumi.Output<GetClustersResult> getClustersOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var ecs-mongo = EcsFunctions.getContainerDefinition(GetContainerDefinitionArgs.builder()
-///             .taskDefinition(mongo.id())
+///             .taskDefinition(mongo.get("id"))
 ///             .containerName("mongodb")
 ///             .build());
 ///
@@ -460,7 +460,7 @@ pulumi.Output<GetContainerDefinitionResult> getContainerDefinitionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -468,7 +468,7 @@ pulumi.Output<GetContainerDefinitionResult> getContainerDefinitionOutput(
 ///   }
 /// }
 ///
-/// data "aws_ecs_getservice" "example" {
+/// data "aws_ecs_service" "example" {
 ///   service_name = "example"
 ///   cluster_arn  = exampleAwsEcsCluster.arn
 /// }
@@ -496,7 +496,7 @@ pulumi.Output<GetContainerDefinitionResult> getContainerDefinitionOutput(
 ///     public static void stack(Context ctx) {
 ///         final var example = EcsFunctions.getService(GetServiceArgs.builder()
 ///             .serviceName("example")
-///             .clusterArn(exampleAwsEcsCluster.arn())
+///             .clusterArn(exampleAwsEcsCluster.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -699,7 +699,7 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 /// 		}
 /// 		_, err = ecs.NewService(ctx, "mongo", &ecs.ServiceArgs{
 /// 			Name:           pulumi.String("mongo"),
-/// 			Cluster:        foo.ID().ToIDOutput().ToStringOutput(),
+/// 			Cluster:        foo.ID(),
 /// 			DesiredCount:   pulumi.Int(2),
 /// 			TaskDefinition: mongo.Arn(),
 /// 		})
@@ -711,7 +711,7 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -719,23 +719,48 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 ///   }
 /// }
 ///
-/// data "aws_ecs_gettaskdefinition" "mongo" {
-///   task_definition = aws_ecs_taskdefinition.mongo.family
+/// data "aws_ecs_task_definition" "mongo" {
+///   task_definition = aws_ecs_task_definition.mongo.family
 /// }
 ///
 /// resource "aws_ecs_cluster" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "foo"
 /// }
-/// resource "aws_ecs_taskdefinition" "mongo" {
+/// resource "aws_ecs_task_definition" "mongo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   family                = "mongodb"
-///   container_definitions = "[\n  {\n    \\\"cpu\\\": 128,\n    \\\"environment\\\": [{\n      \\\"name\\\": \\\"SECRET\\\",\n      \\\"value\\\": \\\"KEY\\\"\n    }],\n    \\\"essential\\\": true,\n    \\\"image\\\": \\\"mongo:latest\\\",\n    \\\"memory\\\": 128,\n    \\\"memoryReservation\\\": 64,\n    \\\"name\\\": \\\"mongodb\\\"\n  }\n]\n"
+///   container_definitions = <<DEFINITION
+/// [
+///   {
+///     \"cpu\": 128,
+///     \"environment\": [{
+///       \"name\": \"SECRET\",
+///       \"value\": \"KEY\"
+///     }],
+///     \"essential\": true,
+///     \"image\": \"mongo:latest\",
+///     \"memory\": 128,
+///     \"memoryReservation\": 64,
+///     \"name\": \"mongodb\"
+///   }
+/// ]
+/// DEFINITION
+///
 /// }
 /// resource "aws_ecs_service" "mongo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "mongo"
 ///   cluster       = aws_ecs_cluster.foo.id
 ///   desired_count = 2
 ///   # Track the latest ACTIVE revision
-///   task_definition = data.aws_ecs_gettaskdefinition.mongo.arn
+///   task_definition = data.aws_ecs_task_definition.mongo.arn
 /// }
 /// # Simply specify the family to find the latest ACTIVE revision in that family.
 /// ```
@@ -950,8 +975,8 @@ pulumi.Output<GetTaskDefinitionResult> getTaskDefinitionOutput(
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// _, err := ecs.GetTaskExecution(ctx, &ecs.GetTaskExecutionArgs{
 /// NetworkConfiguration: ecs.GetTaskExecutionNetworkConfiguration{
-/// Subnets: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:2,22-44)),
-/// SecurityGroups: pulumi.StringArray{
+/// Subnets: []string(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:2,22-44)),
+/// SecurityGroups: []string{
 /// exampleAwsSecurityGroup.Id,
 /// },
 /// AssignPublicIp: pulumi.BoolRef(false),
@@ -969,7 +994,7 @@ pulumi.Output<GetTaskDefinitionResult> getTaskDefinitionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -977,8 +1002,8 @@ pulumi.Output<GetTaskDefinitionResult> getTaskDefinitionOutput(
 ///   }
 /// }
 ///
-/// data "aws_ecs_gettaskexecution" "example" {
-///   network_configuration = {
+/// data "aws_ecs_task_execution" "example" {
+///   network_configuration {
 ///     subnets          = exampleAwsSubnet[*].id
 ///     security_groups  = [exampleAwsSecurityGroup.id]
 ///     assign_public_ip = false
@@ -1013,12 +1038,12 @@ pulumi.Output<GetTaskDefinitionResult> getTaskDefinitionOutput(
 ///     public static void stack(Context ctx) {
 ///         final var example = EcsFunctions.getTaskExecution(GetTaskExecutionArgs.builder()
 ///             .networkConfiguration(GetTaskExecutionNetworkConfigurationArgs.builder()
-///                 .subnets(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
-///                 .securityGroups(exampleAwsSecurityGroup.id())
+///                 .subnets(exampleAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
+///                 .securityGroups(exampleAwsSecurityGroup.get("id"))
 ///                 .assignPublicIp(false)
 ///                 .build())
-///             .cluster(exampleAwsEcsCluster.id())
-///             .taskDefinition(exampleAwsEcsTaskDefinition.arn())
+///             .cluster(exampleAwsEcsCluster.get("id"))
+///             .taskDefinition(exampleAwsEcsTaskDefinition.get("arn"))
 ///             .desiredCount(1)
 ///             .launchType("FARGATE")
 ///             .build());

@@ -76,7 +76,7 @@ import 'cluster_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -85,6 +85,9 @@ import 'cluster_timeouts.dart';
 /// }
 ///
 /// resource "aws_dsql_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_protection_enabled = true
 ///   tags = {
 ///     "Name" = "TestCluster"
@@ -189,7 +192,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:dsql/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');

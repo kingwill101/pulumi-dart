@@ -118,7 +118,7 @@ import 'report_definition_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -126,7 +126,10 @@ import 'report_definition_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cur_reportdefinition" "example_cur_report_definition" {
+/// resource "aws_cur_report_definition" "example_cur_report_definition" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   report_name                = "example-cur-report-definition"
 ///   time_unit                  = "HOURLY"
 ///   format                     = "textORcsv"
@@ -249,7 +252,7 @@ class ReportDefinition extends pulumi.CustomResource {
           'aws:cur/reportDefinition:ReportDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     additionalArtifacts = registerOutput<List<String>?>('additionalArtifacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     additionalSchemaElements = registerOutput<List<String>>('additionalSchemaElements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

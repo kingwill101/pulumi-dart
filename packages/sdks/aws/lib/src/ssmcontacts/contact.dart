@@ -77,7 +77,7 @@ import 'contact_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -87,8 +87,11 @@ import 'contact_state.dart';
 ///
 /// resource "aws_ssmcontacts_contact" "example" {
 ///   depends_on = [exampleAwsSsmincidentsReplicationSet]
-///   alias      = "alias"
-///   type       = "PERSONAL"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   alias = "alias"
+///   type  = "PERSONAL"
 /// }
 /// ```
 /// ```java
@@ -222,7 +225,7 @@ import 'contact_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -231,7 +234,10 @@ import 'contact_state.dart';
 /// }
 ///
 /// resource "aws_ssmcontacts_contact" "example" {
-///   depends_on   = [exampleAwsSsmincidentsReplicationSet]
+///   depends_on = [exampleAwsSsmincidentsReplicationSet]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alias        = "alias"
 ///   display_name = "displayName"
 ///   type         = "ESCALATION"
@@ -335,7 +341,7 @@ class Contact extends pulumi.CustomResource {
           'aws:ssmcontacts/contact:Contact',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     alias = registerOutput<String>('alias');
     arn = registerOutput<String>('arn');

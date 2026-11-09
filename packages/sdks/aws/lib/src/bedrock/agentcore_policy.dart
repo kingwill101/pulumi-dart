@@ -93,7 +93,7 @@ import 'agentcore_policy_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -101,10 +101,16 @@ import 'agentcore_policy_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcorepolicy" "example" {
+/// resource "aws_bedrock_agentcore_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   definition = {
 ///     cedar = {
-///       statement = "permit(principal, action == Action::\\\"Read\\\", resource);\n"
+///       statement = <<-EOT
+/// permit(principal, action == Action::\"Read\", resource);
+/// EOT
+///
 ///     }
 ///   }
 ///   name             = "example_policy"
@@ -144,7 +150,7 @@ import 'agentcore_policy_timeouts.dart';
 ///                     .build())
 ///                 .build())
 ///             .name("example_policy")
-///             .policyEngineId(exampleAwsBedrockagentcorePolicyEngine.policyEngineId())
+///             .policyEngineId(exampleAwsBedrockagentcorePolicyEngine.get("policyEngineId"))
 ///             .description("Allow read access to example resources")
 ///             .build());
 ///
@@ -219,7 +225,7 @@ class AgentcorePolicy extends pulumi.CustomResource {
           'aws:bedrock/agentcorePolicy:AgentcorePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     definition = registerOutput<AgentcorePolicyDefinition>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcorePolicyDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');

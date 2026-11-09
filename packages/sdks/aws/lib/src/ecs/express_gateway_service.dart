@@ -84,7 +84,7 @@ import 'express_gateway_service_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -92,8 +92,11 @@ import 'express_gateway_service_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecs_expressgatewayservice" "example" {
-///   primary_container = {
+/// resource "aws_ecs_express_gateway_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   primary_container {
 ///     image = "nginx:latest"
 ///   }
 ///   execution_role_arn      = execution.arn
@@ -126,8 +129,8 @@ import 'express_gateway_service_timeouts.dart';
 ///             .primaryContainer(ExpressGatewayServicePrimaryContainerArgs.builder()
 ///                 .image("nginx:latest")
 ///                 .build())
-///             .executionRoleArn(execution.arn())
-///             .infrastructureRoleArn(infrastructure.arn())
+///             .executionRoleArn(execution.get("arn"))
+///             .infrastructureRoleArn(infrastructure.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -316,7 +319,7 @@ import 'express_gateway_service_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -324,25 +327,29 @@ import 'express_gateway_service_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecs_expressgatewayservice" "example" {
-///   primary_container = {
-///     aws_logs_configurations = [{
-///       "logGroup" = app.name
+/// resource "aws_ecs_express_gateway_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   primary_container {
+///     aws_logs_configuration = [{
+///       log_group = app.name
 ///     }]
-///     environments = [{
-///       "name"  = "ENV"
-///       "value" = "production"
-///       }, {
-///       "name"  = "PORT"
-///       "value" = "8080"
-///     }]
-///     secrets = [{
-///       "name"      = "DB_PASSWORD"
-///       "valueFrom" = dbPassword.arn
-///     }]
+///     environment {
+///       name  = "ENV"
+///       value = "production"
+///     }
+///     environment {
+///       name  = "PORT"
+///       value = "8080"
+///     }
+///     secret {
+///       name       = "DB_PASSWORD"
+///       value_from = dbPassword.arn
+///     }
 ///     image          = "my-app:latest"
 ///     container_port = 8080
-///     commands       = ["./start.sh"]
+///     command        = ["./start.sh"]
 ///   }
 ///   execution_role_arn      = execution.arn
 ///   infrastructure_role_arn = infrastructure.arn
@@ -377,7 +384,7 @@ import 'express_gateway_service_timeouts.dart';
 ///         var example = new ExpressGatewayService("example", ExpressGatewayServiceArgs.builder()
 ///             .primaryContainer(ExpressGatewayServicePrimaryContainerArgs.builder()
 ///                 .awsLogsConfigurations(ExpressGatewayServicePrimaryContainerAwsLogsConfigurationArgs.builder()
-///                     .logGroup(app.name())
+///                     .logGroup(app.get("name"))
 ///                     .build())
 ///                 .environments(
 ///                     ExpressGatewayServicePrimaryContainerEnvironmentArgs.builder()
@@ -390,14 +397,14 @@ import 'express_gateway_service_timeouts.dart';
 ///                         .build())
 ///                 .secrets(ExpressGatewayServicePrimaryContainerSecretArgs.builder()
 ///                     .name("DB_PASSWORD")
-///                     .valueFrom(dbPassword.arn())
+///                     .valueFrom(dbPassword.get("arn"))
 ///                     .build())
 ///                 .image("my-app:latest")
 ///                 .containerPort(8080)
 ///                 .commands("./start.sh")
 ///                 .build())
-///             .executionRoleArn(execution.arn())
-///             .infrastructureRoleArn(infrastructure.arn())
+///             .executionRoleArn(execution.get("arn"))
+///             .infrastructureRoleArn(infrastructure.get("arn"))
 ///             .healthCheckPath("/health")
 ///             .build());
 ///
@@ -561,7 +568,7 @@ import 'express_gateway_service_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -569,15 +576,18 @@ import 'express_gateway_service_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecs_expressgatewayservice" "example" {
-///   primary_container = {
+/// resource "aws_ecs_express_gateway_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   primary_container {
 ///     image          = "nginx:latest"
 ///     container_port = 80
 ///   }
-///   network_configurations {
+///   network_configuration = [{
 ///     subnets         = [privateA.id, privateB.id]
 ///     security_groups = [app.id]
-///   }
+///   }]
 ///   service_name            = "my-express-service"
 ///   cluster                 = main.name
 ///   execution_role_arn      = execution.arn
@@ -616,14 +626,14 @@ import 'express_gateway_service_timeouts.dart';
 ///                 .build())
 ///             .networkConfigurations(ExpressGatewayServiceNetworkConfigurationArgs.builder()
 ///                 .subnets(
-///                     privateA.id(),
-///                     privateB.id())
-///                 .securityGroups(app.id())
+///                     privateA.get("id"),
+///                     privateB.get("id"))
+///                 .securityGroups(app.get("id"))
 ///                 .build())
 ///             .serviceName("my-express-service")
-///             .cluster(main.name())
-///             .executionRoleArn(execution.arn())
-///             .infrastructureRoleArn(infrastructure.arn())
+///             .cluster(main.get("name"))
+///             .executionRoleArn(execution.get("arn"))
+///             .infrastructureRoleArn(infrastructure.get("arn"))
 ///             .cpu("256")
 ///             .memory("512")
 ///             .build());
@@ -676,6 +686,8 @@ class ExpressGatewayService extends pulumi.CustomResource {
   late final pulumi.Output<String> cluster;
   /// Number of CPU units used by the task. Valid values are powers of 2 between 256 and 4096. Defaults to `1024`.
   late final pulumi.Output<String> cpu;
+  /// CPU architecture of the tasks. Valid values are `X86_64` and `ARM64`. Defaults to `X86_64`.
+  late final pulumi.Output<String> cpuArchitecture;
   /// (**Deprecated**) ARN of the current deployment.
   late final pulumi.Output<String> currentDeployment;
   /// ARN of the IAM role that allows ECS to pull container images and publish container logs to Amazon CloudWatch.
@@ -725,10 +737,11 @@ class ExpressGatewayService extends pulumi.CustomResource {
           'aws:ecs/expressGatewayService:ExpressGatewayService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     cluster = registerOutput<String>('cluster');
     cpu = registerOutput<String>('cpu');
+    cpuArchitecture = registerOutput<String>('cpuArchitecture');
     currentDeployment = registerOutput<String>('currentDeployment');
     executionRoleArn = registerOutput<String>('executionRoleArn');
     healthCheckPath = registerOutput<String>('healthCheckPath');
@@ -775,6 +788,7 @@ class ExpressGatewayService extends pulumi.CustomResource {
         ) {
     cluster = registerOutput<String>('cluster');
     cpu = registerOutput<String>('cpu');
+    cpuArchitecture = registerOutput<String>('cpuArchitecture');
     currentDeployment = registerOutput<String>('currentDeployment');
     executionRoleArn = registerOutput<String>('executionRoleArn');
     healthCheckPath = registerOutput<String>('healthCheckPath');
@@ -806,6 +820,7 @@ class ExpressGatewayService extends pulumi.CustomResource {
       ) {
     cluster = registerOutput<String>('cluster');
     cpu = registerOutput<String>('cpu');
+    cpuArchitecture = registerOutput<String>('cpuArchitecture');
     currentDeployment = registerOutput<String>('currentDeployment');
     executionRoleArn = registerOutput<String>('executionRoleArn');
     healthCheckPath = registerOutput<String>('healthCheckPath');

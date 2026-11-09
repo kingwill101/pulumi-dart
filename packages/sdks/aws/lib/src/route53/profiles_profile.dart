@@ -74,7 +74,7 @@ import 'profiles_profile_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,7 +82,10 @@ import 'profiles_profile_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53_profilesprofile" "example" {
+/// resource "aws_route53_profiles_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 ///   tags = {
 ///     "Environment" = "dev"
@@ -168,7 +171,7 @@ class ProfilesProfile extends pulumi.CustomResource {
           'aws:route53/profilesProfile:ProfilesProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

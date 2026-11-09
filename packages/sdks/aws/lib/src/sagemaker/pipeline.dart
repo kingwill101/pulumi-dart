@@ -127,7 +127,7 @@ import 'pipeline_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -136,6 +136,9 @@ import 'pipeline_state.dart';
 /// }
 ///
 /// resource "aws_sagemaker_pipeline" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   pipeline_name         = "example"
 ///   pipeline_display_name = "example"
 ///   role_arn              = exampleAwsIamRole.arn
@@ -176,7 +179,7 @@ import 'pipeline_state.dart';
 ///         var example = new Pipeline("example", PipelineArgs.builder()
 ///             .pipelineName("example")
 ///             .pipelineDisplayName("example")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .pipelineDefinition(serializeJson(
 ///                 jsonObject(
 ///                     jsonProperty("Version", "2020-12-01"),
@@ -255,7 +258,7 @@ class Pipeline extends pulumi.CustomResource {
           'aws:sagemaker/pipeline:Pipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     parallelismConfiguration = registerOutput<PipelineParallelismConfiguration?>('parallelismConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineParallelismConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

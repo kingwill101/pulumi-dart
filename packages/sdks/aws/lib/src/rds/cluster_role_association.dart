@@ -69,7 +69,7 @@ import 'cluster_role_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,7 +77,10 @@ import 'cluster_role_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_rds_clusterroleassociation" "example" {
+/// resource "aws_rds_cluster_role_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   db_cluster_identifier = exampleAwsRdsCluster.id
 ///   feature_name          = "S3_INTEGRATION"
 ///   role_arn              = exampleAwsIamRole.arn
@@ -105,9 +108,9 @@ import 'cluster_role_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ClusterRoleAssociation("example", ClusterRoleAssociationArgs.builder()
-///             .dbClusterIdentifier(exampleAwsRdsCluster.id())
+///             .dbClusterIdentifier(exampleAwsRdsCluster.get("id"))
 ///             .featureName("S3_INTEGRATION")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -153,7 +156,7 @@ class ClusterRoleAssociation extends pulumi.CustomResource {
           'aws:rds/clusterRoleAssociation:ClusterRoleAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     dbClusterIdentifier = registerOutput<String>('dbClusterIdentifier');
     featureName = registerOutput<String?>('featureName');

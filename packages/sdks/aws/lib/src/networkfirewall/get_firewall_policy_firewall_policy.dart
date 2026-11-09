@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_firewall_policy_firewall_policy_policy_variable.dart';
+import 'get_firewall_policy_firewall_policy_route53_resolved_ip_validation.dart';
 import 'get_firewall_policy_firewall_policy_stateful_engine_option.dart';
 import 'get_firewall_policy_firewall_policy_stateful_rule_group_reference.dart';
 import 'get_firewall_policy_firewall_policy_stateless_custom_action.dart';
@@ -10,6 +11,7 @@ import 'get_firewall_policy_firewall_policy_stateless_rule_group_reference.dart'
 class GetFirewallPolicyFirewallPolicy {
   final pulumi.Input<bool> enableTlsSessionHolding;
   final pulumi.Input<List<GetFirewallPolicyFirewallPolicyPolicyVariable>> policyVariables;
+  final pulumi.Input<List<GetFirewallPolicyFirewallPolicyRoute53ResolvedIpValidation>> route53ResolvedIpValidations;
   final pulumi.Input<List<String>> statefulDefaultActions;
   final pulumi.Input<List<GetFirewallPolicyFirewallPolicyStatefulEngineOption>> statefulEngineOptions;
   final pulumi.Input<List<GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference>> statefulRuleGroupReferences;
@@ -22,6 +24,7 @@ class GetFirewallPolicyFirewallPolicy {
   /// Creates a new [GetFirewallPolicyFirewallPolicy].
   /// [enableTlsSessionHolding] Required.
   /// [policyVariables] Required.
+  /// [route53ResolvedIpValidations] Required.
   /// [statefulDefaultActions] Required.
   /// [statefulEngineOptions] Required.
   /// [statefulRuleGroupReferences] Required.
@@ -33,6 +36,7 @@ class GetFirewallPolicyFirewallPolicy {
   const GetFirewallPolicyFirewallPolicy({
     required this.enableTlsSessionHolding,
     required this.policyVariables,
+    required this.route53ResolvedIpValidations,
     required this.statefulDefaultActions,
     required this.statefulEngineOptions,
     required this.statefulRuleGroupReferences,
@@ -47,6 +51,7 @@ class GetFirewallPolicyFirewallPolicy {
     return <String, dynamic>{
       'enableTlsSessionHolding': enableTlsSessionHolding,
       'policyVariables': pulumi.Input.mapInputValue<List<GetFirewallPolicyFirewallPolicyPolicyVariable>, List<Map<String, dynamic>>>(policyVariables, (value) => pulumi.Input.encodeList<GetFirewallPolicyFirewallPolicyPolicyVariable, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'route53ResolvedIpValidations': pulumi.Input.mapInputValue<List<GetFirewallPolicyFirewallPolicyRoute53ResolvedIpValidation>, List<Map<String, dynamic>>>(route53ResolvedIpValidations, (value) => pulumi.Input.encodeList<GetFirewallPolicyFirewallPolicyRoute53ResolvedIpValidation, Map<String, dynamic>>(value, (value) => value.toMap())),
       'statefulDefaultActions': statefulDefaultActions,
       'statefulEngineOptions': pulumi.Input.mapInputValue<List<GetFirewallPolicyFirewallPolicyStatefulEngineOption>, List<Map<String, dynamic>>>(statefulEngineOptions, (value) => pulumi.Input.encodeList<GetFirewallPolicyFirewallPolicyStatefulEngineOption, Map<String, dynamic>>(value, (value) => value.toMap())),
       'statefulRuleGroupReferences': pulumi.Input.mapInputValue<List<GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference>, List<Map<String, dynamic>>>(statefulRuleGroupReferences, (value) => pulumi.Input.encodeList<GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -62,6 +67,7 @@ class GetFirewallPolicyFirewallPolicy {
     return GetFirewallPolicyFirewallPolicy(
       enableTlsSessionHolding: pulumi.Input.fromValue(map['enableTlsSessionHolding'] as bool),
       policyVariables: pulumi.Input.fromValue(pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicyPolicyVariable>(map['policyVariables']!, (value) => GetFirewallPolicyFirewallPolicyPolicyVariable.fromMap((value as Map).cast<String, dynamic>()))),
+      route53ResolvedIpValidations: pulumi.Input.fromValue(pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicyRoute53ResolvedIpValidation>(map['route53ResolvedIpValidations']!, (value) => GetFirewallPolicyFirewallPolicyRoute53ResolvedIpValidation.fromMap((value as Map).cast<String, dynamic>()))),
       statefulDefaultActions: pulumi.Input.fromValue((map['statefulDefaultActions'] as List).cast<String>()),
       statefulEngineOptions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicyStatefulEngineOption>(map['statefulEngineOptions']!, (value) => GetFirewallPolicyFirewallPolicyStatefulEngineOption.fromMap((value as Map).cast<String, dynamic>()))),
       statefulRuleGroupReferences: pulumi.Input.fromValue(pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference>(map['statefulRuleGroupReferences']!, (value) => GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference.fromMap((value as Map).cast<String, dynamic>()))),

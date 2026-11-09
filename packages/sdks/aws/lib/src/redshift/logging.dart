@@ -81,7 +81,7 @@ import 'logging_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -90,6 +90,9 @@ import 'logging_state.dart';
 /// }
 ///
 /// resource "aws_redshift_logging" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier   = exampleAwsRedshiftCluster.id
 ///   log_destination_type = "cloudwatch"
 ///   log_exports          = ["connectionlog", "userlog"]
@@ -117,7 +120,7 @@ import 'logging_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Logging("example", LoggingArgs.builder()
-///             .clusterIdentifier(exampleAwsRedshiftCluster.id())
+///             .clusterIdentifier(exampleAwsRedshiftCluster.get("id"))
 ///             .logDestinationType("cloudwatch")
 ///             .logExports(
 ///                 "connectionlog",
@@ -206,7 +209,7 @@ import 'logging_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -215,6 +218,9 @@ import 'logging_state.dart';
 /// }
 ///
 /// resource "aws_redshift_logging" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier   = exampleAwsRedshiftCluster.id
 ///   log_destination_type = "s3"
 ///   bucket_name          = exampleAwsS3Bucket.id
@@ -243,9 +249,9 @@ import 'logging_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Logging("example", LoggingArgs.builder()
-///             .clusterIdentifier(exampleAwsRedshiftCluster.id())
+///             .clusterIdentifier(exampleAwsRedshiftCluster.get("id"))
 ///             .logDestinationType("s3")
-///             .bucketName(exampleAwsS3Bucket.id())
+///             .bucketName(exampleAwsS3Bucket.get("id"))
 ///             .s3KeyPrefix("example-prefix/")
 ///             .build());
 ///
@@ -299,7 +305,7 @@ class Logging extends pulumi.CustomResource {
           'aws:redshift/logging:Logging',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     bucketName = registerOutput<String?>('bucketName');
     clusterIdentifier = registerOutput<String>('clusterIdentifier');

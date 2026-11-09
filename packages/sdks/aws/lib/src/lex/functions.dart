@@ -67,7 +67,7 @@ import 'get_slot_type_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,7 +75,7 @@ import 'get_slot_type_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_lex_getbot" "orderFlowersBot" {
+/// data "aws_lex_bot" "orderFlowersBot" {
 ///   name    = "OrderFlowers"
 ///   version = "$LATEST"
 /// }
@@ -203,7 +203,7 @@ pulumi.Output<GetBotResult> getBotOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -211,7 +211,7 @@ pulumi.Output<GetBotResult> getBotOutput(
 ///   }
 /// }
 ///
-/// data "aws_lex_getbotalias" "orderFlowersProd" {
+/// data "aws_lex_bot_alias" "orderFlowersProd" {
 ///   bot_name = "OrderFlowers"
 ///   name     = "OrderFlowersProd"
 /// }
@@ -339,7 +339,7 @@ pulumi.Output<GetBotAliasResult> getBotAliasOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -347,7 +347,7 @@ pulumi.Output<GetBotAliasResult> getBotAliasOutput(
 ///   }
 /// }
 ///
-/// data "aws_lex_getintent" "orderFlowers" {
+/// data "aws_lex_intent" "orderFlowers" {
 ///   name    = "OrderFlowers"
 ///   version = "$LATEST"
 /// }
@@ -475,7 +475,7 @@ pulumi.Output<GetIntentResult> getIntentOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -483,7 +483,7 @@ pulumi.Output<GetIntentResult> getIntentOutput(
 ///   }
 /// }
 ///
-/// data "aws_lex_getslottype" "flowerTypes" {
+/// data "aws_lex_slot_type" "flowerTypes" {
 ///   name    = "FlowerTypes"
 ///   version = "1"
 /// }

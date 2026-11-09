@@ -55,7 +55,7 @@ import 'email_identity_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -63,7 +63,10 @@ import 'email_identity_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ses_emailidentity" "example" {
+/// resource "aws_ses_email_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   email = "email@example.com"
 /// }
 /// ```
@@ -131,7 +134,7 @@ class EmailIdentity extends pulumi.CustomResource {
           'aws:ses/emailIdentity:EmailIdentity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     email = registerOutput<String>('email');

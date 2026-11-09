@@ -65,7 +65,7 @@ import 'agent_prompt_variant.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,10 @@ import 'agent_prompt_variant.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentprompt" "example" {
+/// resource "aws_bedrock_agent_prompt" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "MyPrompt"
 ///   description = "My prompt description."
 /// }
@@ -284,7 +287,7 @@ import 'agent_prompt_variant.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -292,7 +295,10 @@ import 'agent_prompt_variant.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentprompt" "example" {
+/// resource "aws_bedrock_agent_prompt" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   variants {
 ///     inference_configuration = {
 ///       text = {
@@ -302,9 +308,9 @@ import 'agent_prompt_variant.dart';
 ///     template_configuration = {
 ///       text = {
 ///         input_variables = [{
-///           "name" = "genre"
+///           name = "genre"
 ///           }, {
-///           "name" = "number"
+///           name = "number"
 ///         }]
 ///         text = "Make me a {{genre}} playlist consisting of the following number of songs: {{number}}."
 ///       }
@@ -447,7 +453,7 @@ class AgentPrompt extends pulumi.CustomResource {
           'aws:bedrock/agentPrompt:AgentPrompt',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');

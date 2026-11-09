@@ -561,7 +561,7 @@ import 'agentcore_gateway_target_timeouts.dart';
 /// 		}, nil)
 /// 		_, err = iam.NewRolePolicy(ctx, "gateway_lambda_invoke", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("example-gateway-lambda-invoke"),
-/// 			Role:   gatewayRole.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   gatewayRole.ID(),
 /// 			Policy: gatewayLambdaInvoke.Json(),
 /// 		})
 /// 		if err != nil {
@@ -659,7 +659,7 @@ import 'agentcore_gateway_target_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -667,8 +667,8 @@ import 'agentcore_gateway_target_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "gatewayAssume" {
-///   statements {
+/// data "aws_iam_policy_document" "gatewayAssume" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["bedrock-agentcore.amazonaws.com"]
@@ -677,8 +677,8 @@ import 'agentcore_gateway_target_timeouts.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "lambdaAssume" {
-///   statements {
+/// data "aws_iam_policy_document" "lambdaAssume" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["lambda.amazonaws.com"]
@@ -687,8 +687,8 @@ import 'agentcore_gateway_target_timeouts.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "gatewayLambdaInvoke" {
-///   statements {
+/// data "aws_iam_policy_document" "gatewayLambdaInvoke" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["lambda:InvokeFunction"]
 ///     resources = [aws_lambda_function.example.arn]
@@ -696,26 +696,41 @@ import 'agentcore_gateway_target_timeouts.dart';
 /// }
 ///
 /// resource "aws_iam_role" "gateway_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "bedrock-gateway-role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.gatewayAssume.json
+///   assume_role_policy = data.aws_iam_policy_document.gatewayAssume.json
 /// }
 /// resource "aws_iam_role" "lambda_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-lambda-role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.lambdaAssume.json
+///   assume_role_policy = data.aws_iam_policy_document.lambdaAssume.json
 /// }
 /// resource "aws_lambda_function" "example" {
-///   code    = fileArchive("example.zip")
-///   name    = "example-function"
-///   role    = aws_iam_role.lambda_role.arn
-///   handler = "index.handler"
-///   runtime = "nodejs24.x"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filename      = filearchive("example.zip")
+///   function_name = "example-function"
+///   role          = aws_iam_role.lambda_role.arn
+///   handler       = "index.handler"
+///   runtime       = "nodejs24.x"
 /// }
-/// resource "aws_iam_rolepolicy" "gateway_lambda_invoke" {
+/// resource "aws_iam_role_policy" "gateway_lambda_invoke" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "example-gateway-lambda-invoke"
 ///   role   = aws_iam_role.gateway_role.id
-///   policy = data.aws_iam_getpolicydocument.gatewayLambdaInvoke.json
+///   policy = data.aws_iam_policy_document.gatewayLambdaInvoke.json
 /// }
-/// resource "aws_bedrock_agentcoregateway" "example" {
+/// resource "aws_bedrock_agentcore_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorizer_configuration = {
 ///     custom_jwt_authorizer = {
 ///       discovery_url = "https://accounts.google.com/.well-known/openid-configuration"
@@ -725,7 +740,10 @@ import 'agentcore_gateway_target_timeouts.dart';
 ///   role_arn        = aws_iam_role.gateway_role.arn
 ///   authorizer_type = "CUSTOM_JWT"
 /// }
-/// resource "aws_bedrock_agentcoregatewaytarget" "example" {
+/// resource "aws_bedrock_agentcore_gateway_target" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   credential_provider_configuration = {
 ///     gateway_iam_role = {}
 ///   }
@@ -734,42 +752,42 @@ import 'agentcore_gateway_target_timeouts.dart';
 ///       lambda = {
 ///         tool_schema = {
 ///           inline_payloads = [{
-///             "inputSchema" = {
-///               "properties" = [{
-///                 "name"        = "message"
-///                 "type"        = "string"
-///                 "description" = "Message to process"
-///                 "required"    = true
+///             input_schema = {
+///               properties = [{
+///                 name        = "message"
+///                 type        = "string"
+///                 description = "Message to process"
+///                 required    = true
 ///                 }, {
-///                 "properties" = [{
-///                   "name" = "priority"
-///                   "type" = "string"
+///                 properties = [{
+///                   name = "priority"
+///                   type = "string"
 ///                   }, {
-///                   "name" = "tags"
-///                   "type" = "array"
-///                   "itemsJson" = jsonencode({
+///                   name = "tags"
+///                   type = "array"
+///                   items_json = jsonencode({
 ///                     "type" = "string"
 ///                   })
 ///                 }]
-///                 "name" = "options"
-///                 "type" = "object"
+///                 name = "options"
+///                 type = "object"
 ///               }]
-///               "type"        = "object"
-///               "description" = "Request processing schema"
+///               type        = "object"
+///               description = "Request processing schema"
 ///             }
-///             "outputSchema" = {
-///               "properties" = [{
-///                 "name"     = "status"
-///                 "type"     = "string"
-///                 "required" = true
+///             output_schema = {
+///               properties = [{
+///                 name     = "status"
+///                 type     = "string"
+///                 required = true
 ///                 }, {
-///                 "name" = "result"
-///                 "type" = "string"
+///                 name = "result"
+///                 type = "string"
 ///               }]
-///               "type" = "object"
+///               type = "object"
 ///             }
-///             "name"        = "process_request"
-///             "description" = "Process incoming requests"
+///             name        = "process_request"
+///             description = "Process incoming requests"
 ///           }]
 ///         }
 ///         lambda_arn = aws_lambda_function.example.arn
@@ -777,7 +795,7 @@ import 'agentcore_gateway_target_timeouts.dart';
 ///     }
 ///   }
 ///   name               = "example-target"
-///   gateway_identifier = aws_bedrock_agentcoregateway.example.gateway_id
+///   gateway_identifier = aws_bedrock_agentcore_gateway.example.gateway_id
 ///   description        = "Lambda function target for processing requests"
 /// }
 /// ```
@@ -1196,7 +1214,7 @@ import 'agentcore_gateway_target_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1204,7 +1222,10 @@ import 'agentcore_gateway_target_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoregatewaytarget" "sigv4_example" {
+/// resource "aws_bedrock_agentcore_gateway_target" "sigv4_example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   credential_provider_configuration = {
 ///     gateway_iam_role = {
 ///       service = "bedrock-agentcore"
@@ -1261,7 +1282,7 @@ import 'agentcore_gateway_target_timeouts.dart';
 ///                     .build())
 ///                 .build())
 ///             .name("sigv4-target")
-///             .gatewayIdentifier(example.gatewayId())
+///             .gatewayIdentifier(example.get("gatewayId"))
 ///             .build());
 ///
 ///     }
@@ -1576,7 +1597,7 @@ import 'agentcore_gateway_target_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1584,7 +1605,10 @@ import 'agentcore_gateway_target_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoregatewaytarget" "complex_schema" {
+/// resource "aws_bedrock_agentcore_gateway_target" "complex_schema" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   credential_provider_configuration = {
 ///     gateway_iam_role = {}
 ///   }
@@ -1593,18 +1617,18 @@ import 'agentcore_gateway_target_timeouts.dart';
 ///       lambda = {
 ///         tool_schema = {
 ///           inline_payloads = [{
-///             "inputSchema" = {
-///               "properties" = [{
-///                 "properties" = [{
-///                   "name" = "nested_tags"
-///                   "type" = "array"
-///                   "itemsJson" = jsonencode({
+///             input_schema = {
+///               properties = [{
+///                 properties = [{
+///                   name = "nested_tags"
+///                   type = "array"
+///                   items_json = jsonencode({
 ///                     "type" = "string"
 ///                   })
 ///                   }, {
-///                   "name" = "metadata"
-///                   "type" = "object"
-///                   "propertiesJson" = jsonencode({
+///                   name = "metadata"
+///                   type = "object"
+///                   properties_json = jsonencode({
 ///                     "properties" = {
 ///                       "created_at" = {
 ///                         "type" = "string"
@@ -1616,13 +1640,13 @@ import 'agentcore_gateway_target_timeouts.dart';
 ///                     "required" = ["created_at"]
 ///                   })
 ///                 }]
-///                 "name" = "profile"
-///                 "type" = "object"
+///                 name = "profile"
+///                 type = "object"
 ///               }]
-///               "type" = "object"
+///               type = "object"
 ///             }
-///             "name"        = "complex_tool"
-///             "description" = "Tool with complex nested schema"
+///             name        = "complex_tool"
+///             description = "Tool with complex nested schema"
 ///           }]
 ///         }
 ///         lambda_arn = example.arn
@@ -1711,12 +1735,12 @@ import 'agentcore_gateway_target_timeouts.dart';
 ///                                 .description("Tool with complex nested schema")
 ///                                 .build())
 ///                             .build())
-///                         .lambdaArn(example.arn())
+///                         .lambdaArn(example.get("arn"))
 ///                         .build())
 ///                     .build())
 ///                 .build())
 ///             .name("complex-target")
-///             .gatewayIdentifier(exampleAwsBedrockagentcoreGateway.gatewayId())
+///             .gatewayIdentifier(exampleAwsBedrockagentcoreGateway.get("gatewayId"))
 ///             .build());
 ///
 ///     }
@@ -1902,7 +1926,7 @@ import 'agentcore_gateway_target_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1910,7 +1934,10 @@ import 'agentcore_gateway_target_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoregatewaytarget" "mcp_with_headers" {
+/// resource "aws_bedrock_agentcore_gateway_target" "mcp_with_headers" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   target_configuration = {
 ///     mcp = {
 ///       mcp_server = {
@@ -1969,7 +1996,7 @@ import 'agentcore_gateway_target_timeouts.dart';
 ///                 .allowedQueryParameters("version")
 ///                 .build())
 ///             .name("mcp-target-with-headers")
-///             .gatewayIdentifier(example.gatewayId())
+///             .gatewayIdentifier(example.get("gatewayId"))
 ///             .description("MCP server target with header propagation")
 ///             .build());
 ///
@@ -2127,7 +2154,7 @@ import 'agentcore_gateway_target_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2135,7 +2162,10 @@ import 'agentcore_gateway_target_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoregatewaytarget" "example" {
+/// resource "aws_bedrock_agentcore_gateway_target" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   target_configuration = {
 ///     mcp = {
 ///       mcp_server = {
@@ -2192,13 +2222,13 @@ import 'agentcore_gateway_target_timeouts.dart';
 ///                 .build())
 ///             .privateEndpoint(AgentcoreGatewayTargetPrivateEndpointArgs.builder()
 ///                 .managedVpcResource(AgentcoreGatewayTargetPrivateEndpointManagedVpcResourceArgs.builder()
-///                     .vpcIdentifier(exampleAwsVpc.id())
-///                     .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
+///                     .vpcIdentifier(exampleAwsVpc.get("id"))
+///                     .subnetIds(exampleAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
 ///                     .endpointIpAddressType("IPV4")
-///                     .securityGroupIds(mcpLattice.id())
+///                     .securityGroupIds(mcpLattice.get("id"))
 ///                     .build())
 ///                 .build())
-///             .gatewayIdentifier(exampleAwsBedrockagentcoreGateway.gatewayId())
+///             .gatewayIdentifier(exampleAwsBedrockagentcoreGateway.get("gatewayId"))
 ///             .name("my-private-mcp-target")
 ///             .build());
 ///
@@ -2331,7 +2361,7 @@ import 'agentcore_gateway_target_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2339,7 +2369,10 @@ import 'agentcore_gateway_target_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoregatewaytarget" "example" {
+/// resource "aws_bedrock_agentcore_gateway_target" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   target_configuration = {
 ///     mcp = {
 ///       mcp_server = {
@@ -2397,13 +2430,13 @@ import 'agentcore_gateway_target_timeouts.dart';
 ///                 .build())
 ///             .privateEndpoint(AgentcoreGatewayTargetPrivateEndpointArgs.builder()
 ///                 .managedVpcResource(AgentcoreGatewayTargetPrivateEndpointManagedVpcResourceArgs.builder()
-///                     .vpcIdentifier(exampleAwsVpc.id())
-///                     .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
+///                     .vpcIdentifier(exampleAwsVpc.get("id"))
+///                     .subnetIds(exampleAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
 ///                     .endpointIpAddressType("IPV4")
-///                     .routingDomain(mcpAlb.dnsName())
+///                     .routingDomain(mcpAlb.get("dnsName"))
 ///                     .build())
 ///                 .build())
-///             .gatewayIdentifier(exampleAwsBedrockagentcoreGateway.gatewayId())
+///             .gatewayIdentifier(exampleAwsBedrockagentcoreGateway.get("gatewayId"))
 ///             .name("my-private-mcp-via-alb")
 ///             .build());
 ///
@@ -2523,7 +2556,7 @@ import 'agentcore_gateway_target_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2531,7 +2564,10 @@ import 'agentcore_gateway_target_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoregatewaytarget" "example" {
+/// resource "aws_bedrock_agentcore_gateway_target" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   target_configuration = {
 ///     mcp = {
 ///       mcp_server = {
@@ -2584,10 +2620,10 @@ import 'agentcore_gateway_target_timeouts.dart';
 ///                 .build())
 ///             .privateEndpoint(AgentcoreGatewayTargetPrivateEndpointArgs.builder()
 ///                 .selfManagedLatticeResource(AgentcoreGatewayTargetPrivateEndpointSelfManagedLatticeResourceArgs.builder()
-///                     .resourceConfigurationIdentifier(mcp.arn())
+///                     .resourceConfigurationIdentifier(mcp.get("arn"))
 ///                     .build())
 ///                 .build())
-///             .gatewayIdentifier(exampleAwsBedrockagentcoreGateway.gatewayId())
+///             .gatewayIdentifier(exampleAwsBedrockagentcoreGateway.get("gatewayId"))
 ///             .name("my-private-mcp-self-managed")
 ///             .build());
 ///
@@ -2666,7 +2702,7 @@ class AgentcoreGatewayTarget extends pulumi.CustomResource {
           'aws:bedrock/agentcoreGatewayTarget:AgentcoreGatewayTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     credentialProviderConfiguration = registerOutput<AgentcoreGatewayTargetCredentialProviderConfiguration?>('credentialProviderConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayTargetCredentialProviderConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');

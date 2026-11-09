@@ -69,7 +69,7 @@ import 'integration_response_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,7 +77,10 @@ import 'integration_response_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigatewayv2_integrationresponse" "example" {
+/// resource "aws_apigatewayv2_integration_response" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id                   = exampleAwsApigatewayv2Api.id
 ///   integration_id           = exampleAwsApigatewayv2Integration.id
 ///   integration_response_key = "/200/"
@@ -105,8 +108,8 @@ import 'integration_response_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new IntegrationResponse("example", IntegrationResponseArgs.builder()
-///             .apiId(exampleAwsApigatewayv2Api.id())
-///             .integrationId(exampleAwsApigatewayv2Integration.id())
+///             .apiId(exampleAwsApigatewayv2Api.get("id"))
+///             .integrationId(exampleAwsApigatewayv2Integration.get("id"))
 ///             .integrationResponseKey("/200/")
 ///             .build());
 ///
@@ -159,7 +162,7 @@ class IntegrationResponse extends pulumi.CustomResource {
           'aws:apigatewayv2/integrationResponse:IntegrationResponse',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     contentHandlingStrategy = registerOutput<String?>('contentHandlingStrategy');

@@ -50,7 +50,7 @@ class Certificate extends pulumi.CustomResource {
           'aws:transfer/certificate:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['certificate', 'certificateChain', 'privateKey'],
         ) {
     activeDate = registerOutput<String>('activeDate');

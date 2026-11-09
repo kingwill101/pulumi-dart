@@ -64,7 +64,7 @@ import 'endpoint_service_private_dns_verification_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'endpoint_service_private_dns_verification_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpc_endpointserviceprivatednsverification" "example" {
+/// resource "aws_vpc_endpoint_service_private_dns_verification" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id = exampleAwsVpcEndpointService.id
 /// }
 /// ```
@@ -98,7 +101,7 @@ import 'endpoint_service_private_dns_verification_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new EndpointServicePrivateDnsVerification("example", EndpointServicePrivateDnsVerificationArgs.builder()
-///             .serviceId(exampleAwsVpcEndpointService.id())
+///             .serviceId(exampleAwsVpcEndpointService.get("id"))
 ///             .build());
 ///
 ///     }
@@ -139,7 +142,7 @@ class EndpointServicePrivateDnsVerification extends pulumi.CustomResource {
           'aws:vpc/endpointServicePrivateDnsVerification:EndpointServicePrivateDnsVerification',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     serviceId = registerOutput<String>('serviceId');

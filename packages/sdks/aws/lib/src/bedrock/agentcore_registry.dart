@@ -62,7 +62,7 @@ import 'agentcore_registry_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'agentcore_registry_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoreregistry" "example" {
+/// resource "aws_bedrock_agentcore_registry" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example_registry"
 /// }
 /// ```
@@ -187,7 +190,7 @@ import 'agentcore_registry_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -195,7 +198,10 @@ import 'agentcore_registry_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoreregistry" "example" {
+/// resource "aws_bedrock_agentcore_registry" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   approval_configurations {
 ///     auto_approval = true
 ///   }
@@ -346,7 +352,7 @@ import 'agentcore_registry_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -354,7 +360,10 @@ import 'agentcore_registry_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoreregistry" "example" {
+/// resource "aws_bedrock_agentcore_registry" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorizer_configuration = {
 ///     custom_jwt_authorizer = {
 ///       discovery_url     = "https://example.okta.com/.well-known/openid-configuration"
@@ -473,7 +482,7 @@ class AgentcoreRegistry extends pulumi.CustomResource {
           'aws:bedrock/agentcoreRegistry:AgentcoreRegistry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     approvalConfigurations = registerOutput<List<AgentcoreRegistryApprovalConfiguration>>('approvalConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreRegistryApprovalConfiguration>(guardedValue, (value) => AgentcoreRegistryApprovalConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     authorizerConfiguration = registerOutput<AgentcoreRegistryAuthorizerConfiguration?>('authorizerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreRegistryAuthorizerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

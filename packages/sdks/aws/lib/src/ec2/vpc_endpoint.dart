@@ -75,7 +75,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -83,7 +83,10 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcendpoint" "s3" {
+/// resource "aws_ec2_vpc_endpoint" "s3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id       = main.id
 ///   service_name = "com.amazonaws.us-west-2.s3"
 /// }
@@ -110,7 +113,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var s3 = new VpcEndpoint("s3", VpcEndpointArgs.builder()
-///             .vpcId(main.id())
+///             .vpcId(main.get("id"))
 ///             .serviceName("com.amazonaws.us-west-2.s3")
 ///             .build());
 ///
@@ -198,7 +201,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -206,7 +209,10 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcendpoint" "s3" {
+/// resource "aws_ec2_vpc_endpoint" "s3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id       = main.id
 ///   service_name = "com.amazonaws.us-west-2.s3"
 ///   tags = {
@@ -236,7 +242,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var s3 = new VpcEndpoint("s3", VpcEndpointArgs.builder()
-///             .vpcId(main.id())
+///             .vpcId(main.get("id"))
 ///             .serviceName("com.amazonaws.us-west-2.s3")
 ///             .tags(Map.of("Environment", "test"))
 ///             .build());
@@ -335,7 +341,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -343,7 +349,10 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcendpoint" "s3" {
+/// resource "aws_ec2_vpc_endpoint" "s3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region         = "us-west-2"
 ///   vpc_id         = main.id
 ///   service_name   = "com.amazonaws.us-east-2.s3"
@@ -376,7 +385,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///     public static void stack(Context ctx) {
 ///         var s3 = new VpcEndpoint("s3", VpcEndpointArgs.builder()
 ///             .region("us-west-2")
-///             .vpcId(main.id())
+///             .vpcId(main.get("id"))
 ///             .serviceName("com.amazonaws.us-east-2.s3")
 ///             .serviceRegion("us-east-2")
 ///             .tags(Map.of("Environment", "test"))
@@ -474,7 +483,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -482,7 +491,10 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcendpoint" "ec2" {
+/// resource "aws_ec2_vpc_endpoint" "ec2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id              = main.id
 ///   service_name        = "com.amazonaws.us-west-2.ec2"
 ///   vpc_endpoint_type   = "Interface"
@@ -512,10 +524,10 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var ec2 = new VpcEndpoint("ec2", VpcEndpointArgs.builder()
-///             .vpcId(main.id())
+///             .vpcId(main.get("id"))
 ///             .serviceName("com.amazonaws.us-west-2.ec2")
 ///             .vpcEndpointType("Interface")
-///             .securityGroupIds(sg1.id())
+///             .securityGroupIds(sg1.get("id"))
 ///             .privateDnsEnabled(true)
 ///             .build());
 ///
@@ -658,7 +670,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -666,7 +678,10 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcendpoint" "ec2" {
+/// resource "aws_ec2_vpc_endpoint" "ec2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_configurations {
 ///     ipv4      = "10.0.1.10"
 ///     subnet_id = example1.id
@@ -707,18 +722,18 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///             .subnetConfigurations(
 ///                 VpcEndpointSubnetConfigurationArgs.builder()
 ///                     .ipv4("10.0.1.10")
-///                     .subnetId(example1.id())
+///                     .subnetId(example1.get("id"))
 ///                     .build(),
 ///                 VpcEndpointSubnetConfigurationArgs.builder()
 ///                     .ipv4("10.0.2.10")
-///                     .subnetId(example2.id())
+///                     .subnetId(example2.get("id"))
 ///                     .build())
-///             .vpcId(example.id())
+///             .vpcId(example.get("id"))
 ///             .serviceName("com.amazonaws.us-west-2.ec2")
 ///             .vpcEndpointType("Interface")
 ///             .subnetIds(
-///                 example1.id(),
-///                 example2.id())
+///                 example1.get("id"),
+///                 example2.get("id"))
 ///             .build());
 ///
 ///     }
@@ -857,7 +872,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -865,18 +880,24 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
-/// resource "aws_ec2_vpcendpointservice" "example" {
+/// resource "aws_ec2_vpc_endpoint_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   acceptance_required        = false
-///   allowed_principals         = [data.aws_getcalleridentity.current.arn]
+///   allowed_principals         = [data.aws_caller_identity.current.arn]
 ///   gateway_load_balancer_arns = [exampleAwsLb.arn]
 /// }
-/// resource "aws_ec2_vpcendpoint" "example" {
-///   service_name      = aws_ec2_vpcendpointservice.example.service_name
+/// resource "aws_ec2_vpc_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service_name      = aws_ec2_vpc_endpoint_service.example.service_name
 ///   subnet_ids        = [exampleAwsSubnet.id]
-///   vpc_endpoint_type = aws_ec2_vpcendpointservice.example.service_type
+///   vpc_endpoint_type = aws_ec2_vpc_endpoint_service.example.service_type
 ///   vpc_id            = exampleAwsVpc.id
 /// }
 /// ```
@@ -911,14 +932,14 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///         var example = new VpcEndpointService("example", VpcEndpointServiceArgs.builder()
 ///             .acceptanceRequired(false)
 ///             .allowedPrincipals(current.arn())
-///             .gatewayLoadBalancerArns(exampleAwsLb.arn())
+///             .gatewayLoadBalancerArns(exampleAwsLb.get("arn"))
 ///             .build());
 ///
 ///         var exampleVpcEndpoint = new VpcEndpoint("exampleVpcEndpoint", VpcEndpointArgs.builder()
 ///             .serviceName(example.serviceName())
-///             .subnetIds(exampleAwsSubnet.id())
+///             .subnetIds(exampleAwsSubnet.get("id"))
 ///             .vpcEndpointType(example.serviceType())
-///             .vpcId(exampleAwsVpc.id())
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .build());
 ///
 ///     }
@@ -1022,7 +1043,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1030,7 +1051,10 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcendpoint" "example" {
+/// resource "aws_ec2_vpc_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_configuration_arn = exampleAwsVpclatticeResourceConfiguration.arn
 ///   subnet_ids                 = [exampleAwsSubnet.id]
 ///   vpc_endpoint_type          = "Resource"
@@ -1059,10 +1083,10 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new VpcEndpoint("example", VpcEndpointArgs.builder()
-///             .resourceConfigurationArn(exampleAwsVpclatticeResourceConfiguration.arn())
-///             .subnetIds(exampleAwsSubnet.id())
+///             .resourceConfigurationArn(exampleAwsVpclatticeResourceConfiguration.get("arn"))
+///             .subnetIds(exampleAwsSubnet.get("id"))
 ///             .vpcEndpointType("Resource")
-///             .vpcId(exampleAwsVpc.id())
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .build());
 ///
 ///     }
@@ -1152,7 +1176,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1160,7 +1184,10 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcendpoint" "example" {
+/// resource "aws_ec2_vpc_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_network_arn = exampleAwsVpclatticeServiceNetwork.arn
 ///   subnet_ids          = [exampleAwsSubnet.id]
 ///   vpc_endpoint_type   = "ServiceNetwork"
@@ -1189,10 +1216,10 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new VpcEndpoint("example", VpcEndpointArgs.builder()
-///             .serviceNetworkArn(exampleAwsVpclatticeServiceNetwork.arn())
-///             .subnetIds(exampleAwsSubnet.id())
+///             .serviceNetworkArn(exampleAwsVpclatticeServiceNetwork.get("arn"))
+///             .subnetIds(exampleAwsSubnet.get("id"))
 ///             .vpcEndpointType("ServiceNetwork")
-///             .vpcId(exampleAwsVpc.id())
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .build());
 ///
 ///     }
@@ -1207,6 +1234,165 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///       subnetIds:
 ///         - ${exampleAwsSubnet.id}
 ///       vpcEndpointType: ServiceNetwork
+///       vpcId: ${exampleAwsVpc.id}
+/// ```
+///
+///
+/// ### VPC Lattice Tunnel Endpoint Type
+///
+/// A `Tunnel` endpoint connects to exactly one `CIDR` type `aws.vpclattice.ResourceConfiguration`, and consumers must send GENEVE-encapsulated traffic (UDP port 6081) to it. See [Access a network segment through a tunnel VPC endpoint](https://docs.aws.amazon.com/vpc/latest/privatelink/use-cidr-endpoint.html).
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.ec2.VpcEndpoint("example", {
+///     resourceConfigurationArn: exampleAwsVpclatticeResourceConfiguration.arn,
+///     securityGroupIds: [exampleAwsSecurityGroup.id],
+///     subnetIds: [
+///         example1.id,
+///         example2.id,
+///     ],
+///     vpcEndpointType: "Tunnel",
+///     vpcId: exampleAwsVpc.id,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.ec2.VpcEndpoint("example",
+///     resource_configuration_arn=example_aws_vpclattice_resource_configuration["arn"],
+///     security_group_ids=[example_aws_security_group["id"]],
+///     subnet_ids=[
+///         example1["id"],
+///         example2["id"],
+///     ],
+///     vpc_endpoint_type="Tunnel",
+///     vpc_id=example_aws_vpc["id"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.Ec2.VpcEndpoint("example", new()
+///     {
+///         ResourceConfigurationArn = exampleAwsVpclatticeResourceConfiguration.Arn,
+///         SecurityGroupIds = new[]
+///         {
+///             exampleAwsSecurityGroup.Id,
+///         },
+///         SubnetIds = new[]
+///         {
+///             example1.Id,
+///             example2.Id,
+///         },
+///         VpcEndpointType = "Tunnel",
+///         VpcId = exampleAwsVpc.Id,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := ec2.NewVpcEndpoint(ctx, "example", &ec2.VpcEndpointArgs{
+/// 			ResourceConfigurationArn: pulumi.Any(exampleAwsVpclatticeResourceConfiguration.Arn),
+/// 			SecurityGroupIds: pulumi.StringArray{
+/// 				exampleAwsSecurityGroup.Id,
+/// 			},
+/// 			SubnetIds: pulumi.StringArray{
+/// 				example1.Id,
+/// 				example2.Id,
+/// 			},
+/// 			VpcEndpointType: pulumi.String("Tunnel"),
+/// 			VpcId:           pulumi.Any(exampleAwsVpc.Id),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_configuration_arn = exampleAwsVpclatticeResourceConfiguration.arn
+///   security_group_ids         = [exampleAwsSecurityGroup.id]
+///   subnet_ids                 = [example1.id, example2.id]
+///   vpc_endpoint_type          = "Tunnel"
+///   vpc_id                     = exampleAwsVpc.id
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.ec2.VpcEndpoint;
+/// import com.pulumi.aws.ec2.VpcEndpointArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new VpcEndpoint("example", VpcEndpointArgs.builder()
+///             .resourceConfigurationArn(exampleAwsVpclatticeResourceConfiguration.get("arn"))
+///             .securityGroupIds(exampleAwsSecurityGroup.get("id"))
+///             .subnetIds(
+///                 example1.get("id"),
+///                 example2.get("id"))
+///             .vpcEndpointType("Tunnel")
+///             .vpcId(exampleAwsVpc.get("id"))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:ec2:VpcEndpoint
+///     properties:
+///       resourceConfigurationArn: ${exampleAwsVpclatticeResourceConfiguration.arn}
+///       securityGroupIds:
+///         - ${exampleAwsSecurityGroup.id}
+///       subnetIds:
+///         - ${example1.id}
+///         - ${example2.id}
+///       vpcEndpointType: Tunnel
 ///       vpcId: ${exampleAwsVpc.id}
 /// ```
 ///
@@ -1236,7 +1422,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///     name: internal.then(internal => `ptfe.${internal.name}`),
 ///     type: aws.route53.RecordType.CNAME,
 ///     ttl: 300,
-///     records: [ptfeService.dnsEntries[0].dns_name.apply(x =>String(x))],
+///     records: [ptfeService.dnsEntries[0].dns_name],
 /// });
 /// ```
 /// ```python
@@ -1258,7 +1444,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///     name=f"ptfe.{internal.name}",
 ///     type=aws.route53.RecordType.CNAME,
 ///     ttl=300,
-///     records=[ptfe_service.dns_entries[0].dns_name.apply(lambda x: str(x))])
+///     records=[ptfe_service.dns_entries[0].dns_name])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1358,7 +1544,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1366,13 +1552,16 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///   }
 /// }
 ///
-/// data "aws_route53_getzone" "internal" {
+/// data "aws_route53_zone" "internal" {
 ///   name         = "vpc.internal."
 ///   private_zone = true
 ///   vpc_id       = vpcId
 /// }
 ///
-/// resource "aws_ec2_vpcendpoint" "ptfe_service" {
+/// resource "aws_ec2_vpc_endpoint" "ptfe_service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id              = vpcId
 ///   service_name        = ptfeServiceConfig
 ///   vpc_endpoint_type   = "Interface"
@@ -1381,11 +1570,14 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///   private_dns_enabled = false
 /// }
 /// resource "aws_route53_record" "ptfe_service" {
-///   zone_id = data.aws_route53_getzone.internal.zone_id
-///   name    ="ptfe.${data.aws_route53_getzone.internal.name}"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   zone_id = data.aws_route53_zone.internal.zone_id
+///   name    ="ptfe.${data.aws_route53_zone.internal.name}"
 ///   type    = "CNAME"
 ///   ttl     = "300"
-///   records = [aws_ec2_vpcendpoint.ptfe_service.dns_entries[0]["dns_name"]]
+///   records = [aws_ec2_vpc_endpoint.ptfe_service.dns_entries[0]["dns_name"]]
 /// }
 /// ```
 /// ```java
@@ -1417,7 +1609,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///             .vpcId(vpcId)
 ///             .serviceName(ptfeServiceConfig)
 ///             .vpcEndpointType("Interface")
-///             .securityGroupIds(ptfeServiceAwsSecurityGroup.id())
+///             .securityGroupIds(ptfeServiceAwsSecurityGroup.get("id"))
 ///             .subnetIds(subnetIds)
 ///             .privateDnsEnabled(false)
 ///             .build());
@@ -1433,7 +1625,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///             .name(String.format("ptfe.%s", internal.name()))
 ///             .type("CNAME")
 ///             .ttl(300)
-///             .records(ptfeService.dnsEntries().applyValue(_dnsEntries -> _dnsEntries[0].dns_name()))
+///             .records(ptfeService.dnsEntries().applyValue(_dnsEntries -> _dnsEntries.get(0).dns_name()))
 ///             .build());
 ///
 ///     }
@@ -1522,11 +1714,11 @@ class VpcEndpoint extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Whether or not the VPC Endpoint is being managed by its service - `true` or `false`.
   late final pulumi.Output<bool> requesterManaged;
-  /// ARN of a Resource Configuration to connect this VPC Endpoint to. Exactly one of `resourceConfigurationArn`, `serviceName` or `serviceNetworkArn` is required.
+  /// ARN of a Resource Configuration to connect this VPC Endpoint to. Exactly one of `resourceConfigurationArn`, `serviceName` or `serviceNetworkArn` is required. Applicable for endpoints of type `Resource` and `Tunnel`. For `Tunnel` endpoints, the resource configuration must be of type `CIDR`.
   late final pulumi.Output<String?> resourceConfigurationArn;
   /// One or more route table IDs. Applicable for endpoints of type `Gateway`.
   late final pulumi.Output<List<String>> routeTableIds;
-  /// ID of one or more security groups to associate with the network interface. Applicable for endpoints of type `Interface`. If no security groups are specified, the VPC's [default security group](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#DefaultSecurityGroup) is associated with the endpoint.
+  /// ID of one or more security groups to associate with the network interface. Applicable for endpoints of type `Interface`, `Resource`, `ServiceNetwork`, and `Tunnel`. If no security groups are specified, the VPC's [default security group](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#DefaultSecurityGroup) is associated with the endpoint.
   late final pulumi.Output<List<String>> securityGroupIds;
   /// Service name. For AWS services the service name is usually in the form `com.amazonaws.&lt;region&gt;.&lt;service&gt;` (the SageMaker AI Notebook service is an exception to this rule, the service name is in the form `aws.sagemaker.&lt;region&gt;.notebook`). Exactly one of `resourceConfigurationArn`, `serviceName` or `serviceNetworkArn` is required.
   late final pulumi.Output<String?> serviceName;
@@ -1538,13 +1730,13 @@ class VpcEndpoint extends pulumi.CustomResource {
   late final pulumi.Output<String> state;
   /// Subnet configuration for the endpoint, used to select specific IPv4 and/or IPv6 addresses to the endpoint. See subnetConfiguration below.
   late final pulumi.Output<List<VpcEndpointSubnetConfiguration>> subnetConfigurations;
-  /// ID of one or more subnets in which to create a network interface for the endpoint. Applicable for endpoints of type `GatewayLoadBalancer` and `Interface`. Interface type endpoints cannot function without being assigned to a subnet.
+  /// ID of one or more subnets in which to create a network interface for the endpoint. Applicable for endpoints of type `GatewayLoadBalancer`, `Interface`, `Resource`, `ServiceNetwork`, and `Tunnel`. Interface type endpoints cannot function without being assigned to a subnet. For `Tunnel` endpoints, the subnets must be in the Availability Zones of the resource gateway associated with the resource configuration.
   late final pulumi.Output<List<String>> subnetIds;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// VPC endpoint type, `Gateway`, `GatewayLoadBalancer`,`Interface`, `Resource` or `ServiceNetwork`. Defaults to `Gateway`.
+  /// VPC endpoint type, `Gateway`, `GatewayLoadBalancer`, `Interface`, `Resource`, `ServiceNetwork` or `Tunnel`. Defaults to `Gateway`.
   late final pulumi.Output<String?> vpcEndpointType;
   /// ID of the VPC in which the endpoint will be used.
   late final pulumi.Output<String> vpcId;
@@ -1561,7 +1753,7 @@ class VpcEndpoint extends pulumi.CustomResource {
           'aws:ec2/vpcEndpoint:VpcEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoAccept = registerOutput<bool?>('autoAccept');

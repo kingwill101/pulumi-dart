@@ -75,7 +75,7 @@ import 'ingress_point_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -83,7 +83,10 @@ import 'ingress_point_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_mailmanager_ingresspoint" "example" {
+/// resource "aws_mailmanager_ingress_point" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example"
 ///   type              = "OPEN"
 ///   rule_set_id       = exampleAwsMailmanagerRuleSet.id
@@ -114,8 +117,8 @@ import 'ingress_point_timeouts.dart';
 ///         var example = new IngressPoint("example", IngressPointArgs.builder()
 ///             .name("example")
 ///             .type("OPEN")
-///             .ruleSetId(exampleAwsMailmanagerRuleSet.id())
-///             .trafficPolicyId(exampleAwsMailmanagerTrafficPolicy.id())
+///             .ruleSetId(exampleAwsMailmanagerRuleSet.get("id"))
+///             .trafficPolicyId(exampleAwsMailmanagerTrafficPolicy.get("id"))
 ///             .build());
 ///
 ///     }
@@ -216,7 +219,7 @@ import 'ingress_point_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -224,8 +227,11 @@ import 'ingress_point_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_mailmanager_ingresspoint" "example" {
-///   ingress_point_configuration = {
+/// resource "aws_mailmanager_ingress_point" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ingress_point_configuration {
 ///     smtp_password_wo         = smtpPassword
 ///     smtp_password_wo_version = 1
 ///   }
@@ -264,8 +270,8 @@ import 'ingress_point_timeouts.dart';
 ///                 .build())
 ///             .name("example")
 ///             .type("AUTH")
-///             .ruleSetId(exampleAwsMailmanagerRuleSet.id())
-///             .trafficPolicyId(exampleAwsMailmanagerTrafficPolicy.id())
+///             .ruleSetId(exampleAwsMailmanagerRuleSet.get("id"))
+///             .trafficPolicyId(exampleAwsMailmanagerTrafficPolicy.get("id"))
 ///             .build());
 ///
 ///     }
@@ -374,7 +380,7 @@ import 'ingress_point_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -382,9 +388,12 @@ import 'ingress_point_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_mailmanager_ingresspoint" "example" {
-///   network_configuration = {
-///     private_network_configuration = {
+/// resource "aws_mailmanager_ingress_point" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   network_configuration {
+///     private_network_configuration {
 ///       vpc_endpoint_id = exampleAwsVpcEndpoint.id
 ///     }
 ///   }
@@ -420,13 +429,13 @@ import 'ingress_point_timeouts.dart';
 ///         var example = new IngressPoint("example", IngressPointArgs.builder()
 ///             .networkConfiguration(IngressPointNetworkConfigurationArgs.builder()
 ///                 .privateNetworkConfiguration(IngressPointNetworkConfigurationPrivateNetworkConfigurationArgs.builder()
-///                     .vpcEndpointId(exampleAwsVpcEndpoint.id())
+///                     .vpcEndpointId(exampleAwsVpcEndpoint.get("id"))
 ///                     .build())
 ///                 .build())
 ///             .name("example")
 ///             .type("OPEN")
-///             .ruleSetId(exampleAwsMailmanagerRuleSet.id())
-///             .trafficPolicyId(exampleAwsMailmanagerTrafficPolicy.id())
+///             .ruleSetId(exampleAwsMailmanagerRuleSet.get("id"))
+///             .trafficPolicyId(exampleAwsMailmanagerTrafficPolicy.get("id"))
 ///             .build());
 ///
 ///     }
@@ -515,7 +524,7 @@ class IngressPoint extends pulumi.CustomResource {
           'aws:mailmanager/ingressPoint:IngressPoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     aRecord = registerOutput<String>('aRecord');
     arn = registerOutput<String>('arn');

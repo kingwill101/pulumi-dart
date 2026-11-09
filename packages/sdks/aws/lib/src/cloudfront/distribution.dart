@@ -787,7 +787,7 @@ import 'distribution_viewer_mtls_config.dart';
 /// 			Origins: cloudfront.DistributionOriginArray{
 /// 				&cloudfront.DistributionOriginArgs{
 /// 					DomainName:            b.BucketRegionalDomainName,
-/// 					OriginAccessControlId: _default.ID().ToIDOutput().ToStringOutput(),
+/// 					OriginAccessControlId: _default.ID(),
 /// 					OriginId:              pulumi.String(s3OriginId),
 /// 				},
 /// 			},
@@ -880,7 +880,7 @@ import 'distribution_viewer_mtls_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -888,9 +888,9 @@ import 'distribution_viewer_mtls_config.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "originBucketPolicy" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "originBucketPolicy" {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
 ///       variable = "AWS:SourceArn"
 ///       values   = [aws_cloudfront_distribution.s3_distribution.arn]
@@ -905,35 +905,47 @@ import 'distribution_viewer_mtls_config.dart';
 ///     resources = ["${aws_s3_bucket.b.arn}/*"]
 ///   }
 /// }
-/// data "aws_acm_getcertificate" "myDomainGetCertificate" {
+/// data "aws_acm_certificate" "myDomainGetCertificate" {
 ///   region   = "us-east-1"
 ///   domain   ="*.${local.myDomain}"
 ///   statuses = ["ISSUED"]
 /// }
-/// data "aws_route53_getzone" "myDomainGetZone" {
+/// data "aws_route53_zone" "myDomainGetZone" {
 ///   name = local.myDomain
 /// }
 ///
 /// resource "aws_s3_bucket" "b" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "mybucket"
 ///   tags = {
 ///     "Name" = "My bucket"
 ///   }
 /// }
-/// resource "aws_s3_bucketpolicy" "b" {
+/// resource "aws_s3_bucket_policy" "b" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.b.bucket
-///   policy = data.aws_iam_getpolicydocument.originBucketPolicy.json
+///   policy = data.aws_iam_policy_document.originBucketPolicy.json
 /// }
-/// resource "aws_cloudfront_originaccesscontrol" "default" {
+/// resource "aws_cloudfront_origin_access_control" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                              = "default-oac"
 ///   origin_access_control_origin_type = "s3"
 ///   signing_behavior                  = "always"
 ///   signing_protocol                  = "sigv4"
 /// }
 /// resource "aws_cloudfront_distribution" "s3_distribution" {
-///   default_cache_behavior = {
-///     forwarded_values = {
-///       cookies = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_cache_behavior {
+///     forwarded_values {
+///       cookies {
 ///         forward = "none"
 ///       }
 ///       query_string = false
@@ -946,19 +958,19 @@ import 'distribution_viewer_mtls_config.dart';
 ///     default_ttl            = 3600
 ///     max_ttl                = 86400
 ///   }
-///   restrictions = {
-///     geo_restriction = {
+///   restrictions {
+///     geo_restriction {
 ///       restriction_type = "whitelist"
 ///       locations        = ["US", "CA", "GB", "DE"]
 ///     }
 ///   }
-///   viewer_certificate = {
-///     acm_certificate_arn = data.aws_acm_getcertificate.myDomainGetCertificate.arn
+///   viewer_certificate {
+///     acm_certificate_arn = data.aws_acm_certificate.myDomainGetCertificate.arn
 ///     ssl_support_method  = "sni-only"
 ///   }
-///   ordered_cache_behaviors {
-///     forwarded_values = {
-///       cookies = {
+///   ordered_cache_behavior {
+///     forwarded_values {
+///       cookies {
 ///         forward = "none"
 ///       }
 ///       query_string = false
@@ -974,9 +986,9 @@ import 'distribution_viewer_mtls_config.dart';
 ///     compress               = true
 ///     viewer_protocol_policy = "redirect-to-https"
 ///   }
-///   ordered_cache_behaviors {
-///     forwarded_values = {
-///       cookies = {
+///   ordered_cache_behavior {
+///     forwarded_values {
+///       cookies {
 ///         forward = "none"
 ///       }
 ///       query_string = false
@@ -991,9 +1003,9 @@ import 'distribution_viewer_mtls_config.dart';
 ///     compress               = true
 ///     viewer_protocol_policy = "redirect-to-https"
 ///   }
-///   origins {
+///   origin {
 ///     domain_name              = aws_s3_bucket.b.bucket_regional_domain_name
-///     origin_access_control_id = aws_cloudfront_originaccesscontrol.default.id
+///     origin_access_control_id = aws_cloudfront_origin_access_control.default.id
 ///     origin_id                = local.s3OriginId
 ///   }
 ///   enabled             = true
@@ -1008,12 +1020,18 @@ import 'distribution_viewer_mtls_config.dart';
 /// }
 /// resource "aws_route53_record" "cloudfront" {
 ///   for_each = aws_cloudfront_distribution.s3_distribution.aliases
-///   aliases {
+///   pulumi {
+///     name ="cloudfront-${each.key}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   alias {
 ///     name                   = aws_cloudfront_distribution.s3_distribution.domain_name
 ///     zone_id                = aws_cloudfront_distribution.s3_distribution.hosted_zone_id
 ///     evaluate_target_health = false
 ///   }
-///   zone_id = data.aws_route53_getzone.myDomainGetZone.zone_id
+///   zone_id = data.aws_route53_zone.myDomainGetZone.zone_id
 ///   name    = each.value
 ///   type    = "A"
 /// }
@@ -1632,7 +1650,7 @@ import 'distribution_viewer_mtls_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1641,31 +1659,34 @@ import 'distribution_viewer_mtls_config.dart';
 /// }
 ///
 /// resource "aws_cloudfront_distribution" "s3_distribution" {
-///   default_cache_behavior = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_cache_behavior {
 ///     target_origin_id = "groupS3"
 ///   }
 ///   # ... other configuration ...
-///   origin_groups {
-///     failover_criteria = {
+///   origin_group {
+///     failover_criteria {
 ///       status_codes = [403, 404, 500, 502]
 ///     }
-///     members {
+///     member {
 ///       origin_id = "primaryS3"
 ///     }
-///     members {
+///     member {
 ///       origin_id = "failoverS3"
 ///     }
 ///     origin_id = "groupS3"
 ///   }
-///   origins {
-///     s3_origin_config = {
+///   origin {
+///     s3_origin_config {
 ///       origin_access_identity = default.cloudfrontAccessIdentityPath
 ///     }
 ///     domain_name = primary.bucketRegionalDomainName
 ///     origin_id   = "primaryS3"
 ///   }
-///   origins {
-///     s3_origin_config = {
+///   origin {
+///     s3_origin_config {
 ///       origin_access_identity = default.cloudfrontAccessIdentityPath
 ///     }
 ///     domain_name = failover.bucketRegionalDomainName
@@ -1724,16 +1745,16 @@ import 'distribution_viewer_mtls_config.dart';
 ///             .origins(
 ///                 DistributionOriginArgs.builder()
 ///                     .s3OriginConfig(DistributionOriginS3OriginConfigArgs.builder()
-///                         .originAccessIdentity(default_.cloudfrontAccessIdentityPath())
+///                         .originAccessIdentity(default_.get("cloudfrontAccessIdentityPath"))
 ///                         .build())
-///                     .domainName(primary.bucketRegionalDomainName())
+///                     .domainName(primary.get("bucketRegionalDomainName"))
 ///                     .originId("primaryS3")
 ///                     .build(),
 ///                 DistributionOriginArgs.builder()
 ///                     .s3OriginConfig(DistributionOriginS3OriginConfigArgs.builder()
-///                         .originAccessIdentity(default_.cloudfrontAccessIdentityPath())
+///                         .originAccessIdentity(default_.get("cloudfrontAccessIdentityPath"))
 ///                         .build())
-///                     .domainName(failover.bucketRegionalDomainName())
+///                     .domainName(failover.get("bucketRegionalDomainName"))
 ///                     .originId("failoverS3")
 ///                     .build())
 ///             .build());
@@ -1999,7 +2020,7 @@ import 'distribution_viewer_mtls_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2008,7 +2029,10 @@ import 'distribution_viewer_mtls_config.dart';
 /// }
 ///
 /// resource "aws_cloudfront_distribution" "s3_distribution" {
-///   default_cache_behavior = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_cache_behavior {
 ///     cache_policy_id        = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
 ///     allowed_methods        = ["GET", "HEAD", "OPTIONS"]
 ///     cached_methods         = ["GET", "HEAD"]
@@ -2016,17 +2040,17 @@ import 'distribution_viewer_mtls_config.dart';
 ///     viewer_protocol_policy = "allow-all"
 ///   }
 ///   # Using the CachingDisabled managed policy ID:
-///   restrictions = {
-///     geo_restriction = {
+///   restrictions {
+///     geo_restriction {
 ///       restriction_type = "whitelist"
 ///       locations        = ["US", "CA", "GB", "DE"]
 ///     }
 ///   }
-///   viewer_certificate = {
+///   viewer_certificate {
 ///     cloudfront_default_certificate = true
 ///   }
-///   origins {
-///     s3_origin_config = {
+///   origin {
+///     s3_origin_config {
 ///       origin_access_identity = default.cloudfrontAccessIdentityPath
 ///     }
 ///     domain_name = primary.bucketRegionalDomainName
@@ -2098,9 +2122,9 @@ import 'distribution_viewer_mtls_config.dart';
 ///                 .build())
 ///             .origins(DistributionOriginArgs.builder()
 ///                 .s3OriginConfig(DistributionOriginS3OriginConfigArgs.builder()
-///                     .originAccessIdentity(default_.cloudfrontAccessIdentityPath())
+///                     .originAccessIdentity(default_.get("cloudfrontAccessIdentityPath"))
 ///                     .build())
-///                 .domainName(primary.bucketRegionalDomainName())
+///                 .domainName(primary.get("bucketRegionalDomainName"))
 ///                 .originId("myS3Origin")
 ///                 .build())
 ///             .enabled(true)
@@ -2334,7 +2358,7 @@ import 'distribution_viewer_mtls_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2343,32 +2367,47 @@ import 'distribution_viewer_mtls_config.dart';
 /// }
 ///
 /// resource "aws_cloudfront_distribution" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_cloudwatch_logdeliverysource" "example" {
+/// resource "aws_cloudwatch_log_delivery_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region       = "us-east-1"
 ///   name         = "example"
 ///   log_type     = "ACCESS_LOGS"
 ///   resource_arn = aws_cloudfront_distribution.example.arn
 /// }
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket        = "testbucket"
 ///   force_destroy = true
 /// }
-/// resource "aws_cloudwatch_logdeliverydestination" "example" {
-///   delivery_destination_configuration = {
+/// resource "aws_cloudwatch_log_delivery_destination" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   delivery_destination_configuration {
 ///     destination_resource_arn ="${aws_s3_bucket.example.arn}/prefix"
 ///   }
 ///   region        = "us-east-1"
 ///   name          = "s3-destination"
 ///   output_format = "parquet"
 /// }
-/// resource "aws_cloudwatch_logdelivery" "example" {
-///   s3_delivery_configurations {
-///     suffix_path = "/123456678910/{DistributionId}/{yyyy}/{MM}/{dd}/{HH}"
+/// resource "aws_cloudwatch_log_delivery" "example" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
+///   s3_delivery_configuration = [{
+///     suffix_path = "/123456678910/{DistributionId}/{yyyy}/{MM}/{dd}/{HH}"
+///   }]
 ///   region                   = "us-east-1"
-///   delivery_source_name     = aws_cloudwatch_logdeliverysource.example.name
-///   delivery_destination_arn = aws_cloudwatch_logdeliverydestination.example.arn
+///   delivery_source_name     = aws_cloudwatch_log_delivery_source.example.name
+///   delivery_destination_arn = aws_cloudwatch_log_delivery_destination.example.arn
 /// }
 /// ```
 /// ```java
@@ -2643,7 +2682,7 @@ import 'distribution_viewer_mtls_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2652,31 +2691,46 @@ import 'distribution_viewer_mtls_config.dart';
 /// }
 ///
 /// resource "aws_cloudfront_distribution" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_kinesis_firehosedeliverystream" "cloudfront_logs" {
+/// resource "aws_kinesis_firehose_delivery_stream" "cloudfront_logs" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region = "us-east-1"
 ///   tags = {
 ///     "LogDeliveryEnabled" = "true"
 ///   }
 /// }
-/// resource "aws_cloudwatch_logdeliverysource" "example" {
+/// resource "aws_cloudwatch_log_delivery_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region       = "us-east-1"
 ///   name         = "cloudfront-logs-source"
 ///   log_type     = "ACCESS_LOGS"
 ///   resource_arn = aws_cloudfront_distribution.example.arn
 /// }
-/// resource "aws_cloudwatch_logdeliverydestination" "example" {
-///   delivery_destination_configuration = {
-///     destination_resource_arn = aws_kinesis_firehosedeliverystream.cloudfront_logs.arn
+/// resource "aws_cloudwatch_log_delivery_destination" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   delivery_destination_configuration {
+///     destination_resource_arn = aws_kinesis_firehose_delivery_stream.cloudfront_logs.arn
 ///   }
 ///   region        = "us-east-1"
 ///   name          = "firehose-destination"
 ///   output_format = "json"
 /// }
-/// resource "aws_cloudwatch_logdelivery" "example" {
+/// resource "aws_cloudwatch_log_delivery" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region                   = "us-east-1"
-///   delivery_source_name     = aws_cloudwatch_logdeliverysource.example.name
-///   delivery_destination_arn = aws_cloudwatch_logdeliverydestination.example.arn
+///   delivery_source_name     = aws_cloudwatch_log_delivery_source.example.name
+///   delivery_destination_arn = aws_cloudwatch_log_delivery_destination.example.arn
 /// }
 /// ```
 /// ```java
@@ -2884,11 +2938,11 @@ import 'distribution_viewer_mtls_config.dart';
 /// 		}
 /// 		_, err = cloudfront.NewDistribution(ctx, "example", &cloudfront.DistributionArgs{
 /// 			ConnectionFunctionAssociation: &cloudfront.DistributionConnectionFunctionAssociationArgs{
-/// 				Id: example.ID().ToIDOutput().ToStringOutput(),
+/// 				Id: example.ID(),
 /// 			},
 /// 			ViewerMtlsConfig: &cloudfront.DistributionViewerMtlsConfigArgs{
 /// 				TrustStoreConfig: &cloudfront.DistributionViewerMtlsConfigTrustStoreConfigArgs{
-/// 					TrustStoreId:               exampleTrustStore.ID().ToIDOutput().ToStringOutput(),
+/// 					TrustStoreId:               exampleTrustStore.ID(),
 /// 					AdvertiseTrustStoreCaNames: pulumi.Bool(true),
 /// 					IgnoreCertificateExpiry:    pulumi.Bool(false),
 /// 				},
@@ -2903,7 +2957,7 @@ import 'distribution_viewer_mtls_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2911,19 +2965,28 @@ import 'distribution_viewer_mtls_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_connectionfunction" "example" {
+/// resource "aws_cloudfront_connection_function" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-connection-function"
 /// }
-/// resource "aws_cloudfront_truststore" "example" {
+/// resource "aws_cloudfront_trust_store" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-trust-store"
 /// }
 /// resource "aws_cloudfront_distribution" "example" {
-///   connection_function_association = {
-///     id = aws_cloudfront_connectionfunction.example.id
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   viewer_mtls_config = {
-///     trust_store_config = {
-///       trust_store_id                 = aws_cloudfront_truststore.example.id
+///   connection_function_association {
+///     id = aws_cloudfront_connection_function.example.id
+///   }
+///   viewer_mtls_config {
+///     trust_store_config {
+///       trust_store_id                 = aws_cloudfront_trust_store.example.id
 ///       advertise_trust_store_ca_names = true
 ///       ignore_certificate_expiry      = false
 ///     }
@@ -3116,7 +3179,7 @@ class Distribution extends pulumi.CustomResource {
           'aws:cloudfront/distribution:Distribution',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     aliases = registerOutput<List<String>?>('aliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     anycastIpListId = registerOutput<String?>('anycastIpListId');

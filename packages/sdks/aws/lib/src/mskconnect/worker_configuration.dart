@@ -70,7 +70,7 @@ import 'worker_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -78,9 +78,16 @@ import 'worker_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_mskconnect_workerconfiguration" "example" {
+/// resource "aws_mskconnect_worker_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example"
-///   properties_file_content = "key.converter=org.apache.kafka.connect.storage.StringConverter\nvalue.converter=org.apache.kafka.connect.storage.StringConverter\n"
+///   properties_file_content = <<EOT
+/// key.converter=org.apache.kafka.connect.storage.StringConverter
+/// value.converter=org.apache.kafka.connect.storage.StringConverter
+/// EOT
+///
 /// }
 /// ```
 /// ```java
@@ -166,7 +173,7 @@ class WorkerConfiguration extends pulumi.CustomResource {
           'aws:mskconnect/workerConfiguration:WorkerConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

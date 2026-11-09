@@ -79,7 +79,7 @@ import 'daemon_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -88,6 +88,9 @@ import 'daemon_timeouts.dart';
 /// }
 ///
 /// resource "aws_ecs_daemon" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-daemon"
 ///   cluster_arn                = exampleAwsEcsCluster.arn
 ///   daemon_task_definition_arn = exampleAwsEcsDaemonTaskDefinition.arn
@@ -117,9 +120,9 @@ import 'daemon_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Daemon("example", DaemonArgs.builder()
 ///             .name("example-daemon")
-///             .clusterArn(exampleAwsEcsCluster.arn())
-///             .daemonTaskDefinitionArn(exampleAwsEcsDaemonTaskDefinition.arn())
-///             .capacityProviderArns(exampleAwsEcsCapacityProvider.arn())
+///             .clusterArn(exampleAwsEcsCluster.get("arn"))
+///             .daemonTaskDefinitionArn(exampleAwsEcsDaemonTaskDefinition.get("arn"))
+///             .capacityProviderArns(exampleAwsEcsCapacityProvider.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -198,7 +201,7 @@ import 'daemon_timeouts.dart';
 ///                 },
 ///                 Enable = true,
 ///             },
-///             DrainPercent = 50,
+///             DrainPercent = 50.0,
 ///             BakeTimeInMinutes = 10,
 ///         },
 ///         Name = "example-daemon",
@@ -248,7 +251,7 @@ import 'daemon_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -257,8 +260,11 @@ import 'daemon_timeouts.dart';
 /// }
 ///
 /// resource "aws_ecs_daemon" "example" {
-///   deployment_configuration = {
-///     alarms = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   deployment_configuration {
+///     alarms {
 ///       alarm_names = ["example-alarm"]
 ///       enable      = true
 ///     }
@@ -304,9 +310,9 @@ import 'daemon_timeouts.dart';
 ///                 .bakeTimeInMinutes(10)
 ///                 .build())
 ///             .name("example-daemon")
-///             .clusterArn(exampleAwsEcsCluster.arn())
-///             .daemonTaskDefinitionArn(exampleAwsEcsDaemonTaskDefinition.arn())
-///             .capacityProviderArns(exampleAwsEcsCapacityProvider.arn())
+///             .clusterArn(exampleAwsEcsCluster.get("arn"))
+///             .daemonTaskDefinitionArn(exampleAwsEcsDaemonTaskDefinition.get("arn"))
+///             .capacityProviderArns(exampleAwsEcsCapacityProvider.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -420,7 +426,7 @@ import 'daemon_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -429,6 +435,9 @@ import 'daemon_timeouts.dart';
 /// }
 ///
 /// resource "aws_ecs_daemon" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-daemon"
 ///   cluster_arn                = exampleAwsEcsCluster.arn
 ///   daemon_task_definition_arn = exampleAwsEcsDaemonTaskDefinition.arn
@@ -462,9 +471,9 @@ import 'daemon_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Daemon("example", DaemonArgs.builder()
 ///             .name("example-daemon")
-///             .clusterArn(exampleAwsEcsCluster.arn())
-///             .daemonTaskDefinitionArn(exampleAwsEcsDaemonTaskDefinition.arn())
-///             .capacityProviderArns(exampleAwsEcsCapacityProvider.arn())
+///             .clusterArn(exampleAwsEcsCluster.get("arn"))
+///             .daemonTaskDefinitionArn(exampleAwsEcsDaemonTaskDefinition.get("arn"))
+///             .capacityProviderArns(exampleAwsEcsCapacityProvider.get("arn"))
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Environment", "production"),
 ///                 Map.entry("Application", "example")
@@ -547,7 +556,7 @@ class Daemon extends pulumi.CustomResource {
           'aws:ecs/daemon:Daemon',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     capacityProviderArns = registerOutput<List<String>>('capacityProviderArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

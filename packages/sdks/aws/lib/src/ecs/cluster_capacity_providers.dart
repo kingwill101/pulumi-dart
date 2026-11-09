@@ -111,7 +111,7 @@ import 'cluster_capacity_providers_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -120,10 +120,16 @@ import 'cluster_capacity_providers_state.dart';
 /// }
 ///
 /// resource "aws_ecs_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-cluster"
 /// }
-/// resource "aws_ecs_clustercapacityproviders" "example" {
-///   default_capacity_provider_strategies {
+/// resource "aws_ecs_cluster_capacity_providers" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_capacity_provider_strategy {
 ///     base              = 1
 ///     weight            = 100
 ///     capacity_provider = "FARGATE"
@@ -222,7 +228,7 @@ class ClusterCapacityProviders extends pulumi.CustomResource {
           'aws:ecs/clusterCapacityProviders:ClusterCapacityProviders',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     capacityProviders = registerOutput<List<String>?>('capacityProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     clusterName = registerOutput<String>('clusterName');

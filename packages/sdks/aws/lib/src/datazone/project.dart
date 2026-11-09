@@ -81,7 +81,7 @@ import 'project_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -90,6 +90,9 @@ import 'project_timeouts.dart';
 /// }
 ///
 /// resource "aws_datazone_project" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_id           = testAwsDatazoneDomain.id
 ///   glossary_terms      = ["2N8w6XJCwZf"]
 ///   name                = "name"
@@ -119,7 +122,7 @@ import 'project_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new Project("test", ProjectArgs.builder()
-///             .domainId(testAwsDatazoneDomain.id())
+///             .domainId(testAwsDatazoneDomain.get("id"))
 ///             .glossaryTerms("2N8w6XJCwZf")
 ///             .name("name")
 ///             .description("desc")
@@ -201,7 +204,7 @@ import 'project_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -210,6 +213,9 @@ import 'project_timeouts.dart';
 /// }
 ///
 /// resource "aws_datazone_project" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_identifier = testAwsDatazoneDomain.id
 ///   name              = "name"
 /// }
@@ -236,7 +242,7 @@ import 'project_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new Project("test", ProjectArgs.builder()
-///             .domainIdentifier(testAwsDatazoneDomain.id())
+///             .domainIdentifier(testAwsDatazoneDomain.get("id"))
 ///             .name("name")
 ///             .build());
 ///
@@ -312,7 +318,7 @@ class Project extends pulumi.CustomResource {
           'aws:datazone/project:Project',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     createdBy = registerOutput<String>('createdBy');

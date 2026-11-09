@@ -137,7 +137,7 @@ import 'group_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -145,7 +145,10 @@ import 'group_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_grouppolicy" "my_developer_policy" {
+/// resource "aws_iam_group_policy" "my_developer_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "my_developer_policy"
 ///   group = aws_iam_group.my_developers.name
 ///   policy = jsonencode({
@@ -158,6 +161,9 @@ import 'group_policy_state.dart';
 ///   })
 /// }
 /// resource "aws_iam_group" "my_developers" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "developers"
 ///   path = "/users/"
 /// }
@@ -264,7 +270,7 @@ class GroupPolicy extends pulumi.CustomResource {
           'aws:iam/groupPolicy:GroupPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     group = registerOutput<String>('group');
     this.name = registerOutput<String>('name');

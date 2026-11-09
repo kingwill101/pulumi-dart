@@ -128,7 +128,7 @@ import 'subscriber_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -138,12 +138,15 @@ import 'subscriber_timeouts.dart';
 ///
 /// resource "aws_securitylake_subscriber" "example" {
 ///   depends_on = [exampleAwsSecuritylakeDataLake]
-///   subscriber_identity = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   subscriber_identity {
 ///     external_id = "example"
 ///     principal   = "1234567890"
 ///   }
-///   sources {
-///     aws_log_source_resource = {
+///   source {
+///     aws_log_source_resource {
 ///       source_name    = "ROUTE53"
 ///       source_version = "1.0"
 ///     }
@@ -364,7 +367,7 @@ import 'subscriber_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -374,18 +377,21 @@ import 'subscriber_timeouts.dart';
 ///
 /// resource "aws_securitylake_subscriber" "example" {
 ///   depends_on = [exampleAwsSecuritylakeDataLake]
-///   subscriber_identity = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   subscriber_identity {
 ///     external_id = "example"
 ///     principal   = "1234567890"
 ///   }
-///   sources {
-///     aws_log_source_resource = {
+///   source {
+///     aws_log_source_resource {
 ///       source_name    = "SH_FINDINGS"
 ///       source_version = "2.0"
 ///     }
 ///   }
-///   sources {
-///     aws_log_source_resource = {
+///   source {
+///     aws_log_source_resource {
 ///       source_name    = "ROUTE53"
 ///       source_version = "2.0"
 ///     }
@@ -521,7 +527,7 @@ class Subscriber extends pulumi.CustomResource {
           'aws:securitylake/subscriber:Subscriber',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accessType = registerOutput<String>('accessType');
     arn = registerOutput<String>('arn');

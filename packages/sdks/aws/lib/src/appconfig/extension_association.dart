@@ -248,7 +248,7 @@ import 'extension_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -256,8 +256,8 @@ import 'extension_association_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "test" {
-///   statements {
+/// data "aws_iam_policy_document" "test" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["appconfig.amazonaws.com"]
@@ -267,15 +267,24 @@ import 'extension_association_state.dart';
 /// }
 ///
 /// resource "aws_sns_topic" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test"
 /// }
 /// resource "aws_iam_role" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "test"
-///   assume_role_policy = data.aws_iam_getpolicydocument.test.json
+///   assume_role_policy = data.aws_iam_policy_document.test.json
 /// }
 /// resource "aws_appconfig_extension" "test" {
-///   action_points {
-///     actions {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   action_point {
+///     action {
 ///       name     = "test"
 ///       role_arn = aws_iam_role.test.arn
 ///       uri      = aws_sns_topic.test.arn
@@ -289,9 +298,15 @@ import 'extension_association_state.dart';
 ///   }
 /// }
 /// resource "aws_appconfig_application" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test"
 /// }
-/// resource "aws_appconfig_extensionassociation" "test" {
+/// resource "aws_appconfig_extension_association" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   extension_arn = aws_appconfig_extension.test.arn
 ///   resource_arn  = aws_appconfig_application.test.arn
 /// }
@@ -462,7 +477,7 @@ class ExtensionAssociation extends pulumi.CustomResource {
           'aws:appconfig/extensionAssociation:ExtensionAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     extensionArn = registerOutput<String>('extensionArn');

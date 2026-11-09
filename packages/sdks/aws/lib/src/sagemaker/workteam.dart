@@ -106,7 +106,7 @@ import 'workteam_worker_access_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -115,8 +115,11 @@ import 'workteam_worker_access_configuration.dart';
 /// }
 ///
 /// resource "aws_sagemaker_workteam" "example" {
-///   member_definitions {
-///     cognito_member_definition = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   member_definition {
+///     cognito_member_definition {
 ///       client_id  = exampleAwsCognitoUserPoolClient.id
 ///       user_pool  = exampleAwsCognitoUserPoolDomain.userPoolId
 ///       user_group = exampleAwsCognitoUserGroup.name
@@ -153,13 +156,13 @@ import 'workteam_worker_access_configuration.dart';
 ///         var example = new Workteam("example", WorkteamArgs.builder()
 ///             .memberDefinitions(WorkteamMemberDefinitionArgs.builder()
 ///                 .cognitoMemberDefinition(WorkteamMemberDefinitionCognitoMemberDefinitionArgs.builder()
-///                     .clientId(exampleAwsCognitoUserPoolClient.id())
-///                     .userPool(exampleAwsCognitoUserPoolDomain.userPoolId())
-///                     .userGroup(exampleAwsCognitoUserGroup.name())
+///                     .clientId(exampleAwsCognitoUserPoolClient.get("id"))
+///                     .userPool(exampleAwsCognitoUserPoolDomain.get("userPoolId"))
+///                     .userGroup(exampleAwsCognitoUserGroup.get("name"))
 ///                     .build())
 ///                 .build())
 ///             .workteamName("example")
-///             .workforceName(exampleAwsSagemakerWorkforce.id())
+///             .workforceName(exampleAwsSagemakerWorkforce.get("id"))
 ///             .description("example")
 ///             .build());
 ///
@@ -276,7 +279,7 @@ import 'workteam_worker_access_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -285,8 +288,11 @@ import 'workteam_worker_access_configuration.dart';
 /// }
 ///
 /// resource "aws_sagemaker_workteam" "example" {
-///   member_definitions {
-///     oidc_member_definition = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   member_definition {
+///     oidc_member_definition {
 ///       groups = ["example"]
 ///     }
 ///   }
@@ -325,7 +331,7 @@ import 'workteam_worker_access_configuration.dart';
 ///                     .build())
 ///                 .build())
 ///             .workteamName("example")
-///             .workforceName(exampleAwsSagemakerWorkforce.id())
+///             .workforceName(exampleAwsSagemakerWorkforce.get("id"))
 ///             .description("example")
 ///             .build());
 ///
@@ -390,7 +396,7 @@ class Workteam extends pulumi.CustomResource {
           'aws:sagemaker/workteam:Workteam',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');

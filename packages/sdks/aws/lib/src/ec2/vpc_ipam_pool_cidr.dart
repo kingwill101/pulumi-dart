@@ -119,7 +119,7 @@ import 'vpc_ipam_pool_cidr_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcIpamPoolCidr(ctx, "example", &ec2.VpcIpamPoolCidrArgs{
-/// 			IpamPoolId: exampleVpcIpamPool.ID().ToIDOutput().ToStringOutput(),
+/// 			IpamPoolId: exampleVpcIpamPool.ID(),
 /// 			Cidr:       pulumi.String("172.20.0.0/16"),
 /// 		})
 /// 		if err != nil {
@@ -130,7 +130,7 @@ import 'vpc_ipam_pool_cidr_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -138,21 +138,30 @@ import 'vpc_ipam_pool_cidr_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
 ///
-/// resource "aws_ec2_vpcipam" "example" {
+/// resource "aws_ec2_vpc_ipam" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   operating_regions {
-///     region_name = data.aws_getregion.current.region
+///     region_name = data.aws_region.current.region
 ///   }
 /// }
-/// resource "aws_ec2_vpcipampool" "example" {
+/// resource "aws_ec2_vpc_ipam_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   address_family = "ipv4"
-///   ipam_scope_id  = aws_ec2_vpcipam.example.private_default_scope_id
-///   locale         = data.aws_getregion.current.region
+///   ipam_scope_id  = aws_ec2_vpc_ipam.example.private_default_scope_id
+///   locale         = data.aws_region.current.region
 /// }
-/// resource "aws_ec2_vpcipampoolcidr" "example" {
-///   ipam_pool_id = aws_ec2_vpcipampool.example.id
+/// resource "aws_ec2_vpc_ipam_pool_cidr" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ipam_pool_id = aws_ec2_vpc_ipam_pool.example.id
 ///   cidr         = "172.20.0.0/16"
 /// }
 /// ```
@@ -358,7 +367,7 @@ import 'vpc_ipam_pool_cidr_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcIpamPoolCidr(ctx, "ipv6_test_public", &ec2.VpcIpamPoolCidrArgs{
-/// 			IpamPoolId:    ipv6TestPublic.ID().ToIDOutput().ToStringOutput(),
+/// 			IpamPoolId:    ipv6TestPublic.ID(),
 /// 			NetmaskLength: pulumi.Int(52),
 /// 		})
 /// 		if err != nil {
@@ -369,7 +378,7 @@ import 'vpc_ipam_pool_cidr_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -377,25 +386,34 @@ import 'vpc_ipam_pool_cidr_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
 ///
-/// resource "aws_ec2_vpcipam" "example" {
+/// resource "aws_ec2_vpc_ipam" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   operating_regions {
-///     region_name = data.aws_getregion.current.region
+///     region_name = data.aws_region.current.region
 ///   }
 /// }
-/// resource "aws_ec2_vpcipampool" "ipv6_test_public" {
+/// resource "aws_ec2_vpc_ipam_pool" "ipv6_test_public" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   address_family        = "ipv6"
-///   ipam_scope_id         = aws_ec2_vpcipam.example.public_default_scope_id
+///   ipam_scope_id         = aws_ec2_vpc_ipam.example.public_default_scope_id
 ///   locale                = "us-east-1"
 ///   description           = "public ipv6"
 ///   publicly_advertisable = false
 ///   public_ip_source      = "amazon"
 ///   aws_service           = "ec2"
 /// }
-/// resource "aws_ec2_vpcipampoolcidr" "ipv6_test_public" {
-///   ipam_pool_id   = aws_ec2_vpcipampool.ipv6_test_public.id
+/// resource "aws_ec2_vpc_ipam_pool_cidr" "ipv6_test_public" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ipam_pool_id   = aws_ec2_vpc_ipam_pool.ipv6_test_public.id
 ///   netmask_length = 52
 /// }
 /// ```
@@ -521,7 +539,7 @@ class VpcIpamPoolCidr extends pulumi.CustomResource {
           'aws:ec2/vpcIpamPoolCidr:VpcIpamPoolCidr',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     cidr = registerOutput<String>('cidr');
     cidrAuthorizationContext = registerOutput<VpcIpamPoolCidrCidrAuthorizationContext?>('cidrAuthorizationContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcIpamPoolCidrCidrAuthorizationContext.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -69,7 +69,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -78,6 +78,9 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "aws_directconnect_connection" "hoge" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "tf-dx-connection"
 ///   bandwidth = "1Gbps"
 ///   location  = "EqDC2"
@@ -190,7 +193,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -199,6 +202,9 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "aws_directconnect_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "tf-dx-connection"
 ///   bandwidth      = "10Gbps"
 ///   location       = "EqDA2"
@@ -320,7 +326,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -329,6 +335,9 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "aws_directconnect_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "tf-dx-connection"
 ///   bandwidth       = "10Gbps"
 ///   location        = "EqDC2"
@@ -454,7 +463,7 @@ class Connection extends pulumi.CustomResource {
           'aws:directconnect/connection:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsDevice = registerOutput<String>('awsDevice');

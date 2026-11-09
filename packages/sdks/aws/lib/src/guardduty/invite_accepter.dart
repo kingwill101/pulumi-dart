@@ -96,7 +96,7 @@ import 'invite_accepter_state.dart';
 /// 		}
 /// 		memberMember, err := guardduty.NewMember(ctx, "member", &guardduty.MemberArgs{
 /// 			AccountId:  memberDetector.AccountId,
-/// 			DetectorId: primary.ID().ToIDOutput().ToStringOutput(),
+/// 			DetectorId: primary.ID(),
 /// 			Email:      pulumi.String("required@example.com"),
 /// 			Invite:     pulumi.Bool(true),
 /// 		})
@@ -104,7 +104,7 @@ import 'invite_accepter_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = guardduty.NewInviteAccepter(ctx, "member", &guardduty.InviteAccepterArgs{
-/// 			DetectorId:      memberDetector.ID().ToIDOutput().ToStringOutput(),
+/// 			DetectorId:      memberDetector.ID(),
 /// 			MasterAccountId: primary.AccountId,
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			memberMember,
@@ -117,7 +117,7 @@ import 'invite_accepter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -125,20 +125,32 @@ import 'invite_accepter_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_guardduty_inviteaccepter" "member" {
-///   depends_on        = [aws_guardduty_member.member]
+/// resource "aws_guardduty_invite_accepter" "member" {
+///   depends_on = [aws_guardduty_member.member]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   detector_id       = aws_guardduty_detector.member.id
 ///   master_account_id = aws_guardduty_detector.primary.account_id
 /// }
 /// resource "aws_guardduty_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id  = aws_guardduty_detector.member.account_id
 ///   detector_id = aws_guardduty_detector.primary.id
 ///   email       = "required@example.com"
 ///   invite      = true
 /// }
 /// resource "aws_guardduty_detector" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_guardduty_detector" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -240,7 +252,7 @@ class InviteAccepter extends pulumi.CustomResource {
           'aws:guardduty/inviteAccepter:InviteAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     detectorId = registerOutput<String>('detectorId');
     masterAccountId = registerOutput<String>('masterAccountId');

@@ -102,7 +102,7 @@ import 'ip_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -110,7 +110,10 @@ import 'ip_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_waf_ipset" "ipset" {
+/// resource "aws_waf_ip_set" "ipset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ip_set_descriptors {
 ///     type  = "IPV4"
 ///     value = "192.0.7.0/24"
@@ -201,7 +204,7 @@ class IpSet extends pulumi.CustomResource {
           'aws:waf/ipSet:IpSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     ipSetDescriptors = registerOutput<List<IpSetIpSetDescriptor>?>('ipSetDescriptors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpSetIpSetDescriptor>(guardedValue, (value) => IpSetIpSetDescriptor.fromMap((value as Map).cast<String, dynamic>())); });

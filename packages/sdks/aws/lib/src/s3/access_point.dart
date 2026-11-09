@@ -74,7 +74,7 @@ import 'access_point_vpc_configuration.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewAccessPoint(ctx, "example", &s3.AccessPointArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Name:   pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
@@ -85,7 +85,7 @@ import 'access_point_vpc_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -94,9 +94,15 @@ import 'access_point_vpc_configuration.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example"
 /// }
-/// resource "aws_s3_accesspoint" "example" {
+/// resource "aws_s3_access_point" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.id
 ///   name   = "example"
 /// }
@@ -237,7 +243,7 @@ import 'access_point_vpc_configuration.dart';
 /// 		}
 /// 		_, err = s3.NewAccessPoint(ctx, "example", &s3.AccessPointArgs{
 /// 			VpcConfiguration: &s3.AccessPointVpcConfigurationArgs{
-/// 				VpcId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// 				VpcId: exampleVpc.ID(),
 /// 			},
 /// 			Bucket: example.Arn,
 /// 			Name:   pulumi.String("example"),
@@ -250,7 +256,7 @@ import 'access_point_vpc_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -259,16 +265,25 @@ import 'access_point_vpc_configuration.dart';
 /// }
 ///
 /// resource "aws_s3control_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example"
 /// }
-/// resource "aws_s3_accesspoint" "example" {
-///   vpc_configuration = {
+/// resource "aws_s3_access_point" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   vpc_configuration {
 ///     vpc_id = aws_ec2_vpc.example.id
 ///   }
 ///   bucket = aws_s3control_bucket.example.arn
 ///   name   = "example"
 /// }
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
 /// ```
@@ -442,7 +457,7 @@ import 'access_point_vpc_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -450,17 +465,23 @@ import 'access_point_vpc_configuration.dart';
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzones" "available" {
+/// data "aws_availability_zones" "available" {
 ///   state = "available"
 /// }
 ///
-/// resource "aws_s3_directorybucket" "example" {
-///   location = {
-///     name = data.aws_getavailabilityzones.available.zone_ids[0]
+/// resource "aws_s3_directory_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location {
+///     name = data.aws_availability_zones.available.zone_ids[0]
 ///   }
 ///   bucket = "example--zoneId--x-s3"
 /// }
-/// resource "aws_s3_accesspoint" "example" {
+/// resource "aws_s3_access_point" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = test.bucket
 ///   name   = "example--zoneId--xa-s3"
 /// }
@@ -503,7 +524,7 @@ import 'access_point_vpc_configuration.dart';
 ///             .build());
 ///
 ///         var exampleAccessPoint = new AccessPoint("exampleAccessPoint", AccessPointArgs.builder()
-///             .bucket(test.bucket())
+///             .bucket(test.get("bucket"))
 ///             .name("example--zoneId--xa-s3")
 ///             .build());
 ///
@@ -599,7 +620,7 @@ class AccessPoint extends pulumi.CustomResource {
           'aws:s3/accessPoint:AccessPoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     alias = registerOutput<String>('alias');

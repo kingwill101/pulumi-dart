@@ -55,7 +55,7 @@ import 'revision_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -64,6 +64,9 @@ import 'revision_state.dart';
 /// }
 ///
 /// resource "aws_dataexchange_revision" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_set_id = exampleAwsDataexchangeDataSet.id
 /// }
 /// ```
@@ -89,7 +92,7 @@ import 'revision_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Revision("example", RevisionArgs.builder()
-///             .dataSetId(exampleAwsDataexchangeDataSet.id())
+///             .dataSetId(exampleAwsDataexchangeDataSet.get("id"))
 ///             .build());
 ///
 ///     }
@@ -139,7 +142,7 @@ class Revision extends pulumi.CustomResource {
           'aws:dataexchange/revision:Revision',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String?>('comment');

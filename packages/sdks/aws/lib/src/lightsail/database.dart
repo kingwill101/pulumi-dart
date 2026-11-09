@@ -86,7 +86,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -95,6 +95,9 @@ import 'database_state.dart';
 /// }
 ///
 /// resource "aws_lightsail_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   relational_database_name = "example-database"
 ///   availability_zone        = "us-east-1a"
 ///   master_database_name     = "exampledb"
@@ -231,7 +234,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -240,6 +243,9 @@ import 'database_state.dart';
 /// }
 ///
 /// resource "aws_lightsail_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   relational_database_name = "example-database"
 ///   availability_zone        = "us-east-1a"
 ///   master_database_name     = "exampledb"
@@ -386,7 +392,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -395,6 +401,9 @@ import 'database_state.dart';
 /// }
 ///
 /// resource "aws_lightsail_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   relational_database_name     = "example-database"
 ///   availability_zone            = "us-east-1a"
 ///   master_database_name         = "exampledb"
@@ -551,7 +560,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -560,6 +569,9 @@ import 'database_state.dart';
 /// }
 ///
 /// resource "aws_lightsail_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   relational_database_name     = "example-database"
 ///   availability_zone            = "us-east-1a"
 ///   master_database_name         = "exampledb"
@@ -711,7 +723,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -720,6 +732,9 @@ import 'database_state.dart';
 /// }
 ///
 /// resource "aws_lightsail_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   relational_database_name = "example-database"
 ///   availability_zone        = "us-east-1a"
 ///   master_database_name     = "exampledb"
@@ -862,7 +877,7 @@ class Database extends pulumi.CustomResource {
           'aws:lightsail/database:Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['masterPassword'],
         ) {
     applyImmediately = registerOutput<bool>('applyImmediately');

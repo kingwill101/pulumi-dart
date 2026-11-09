@@ -78,7 +78,7 @@ import 'open_id_connect_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,7 +86,10 @@ import 'open_id_connect_provider_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_openidconnectprovider" "default" {
+/// resource "aws_iam_open_id_connect_provider" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   url              = "https://accounts.google.com"
 ///   client_id_lists  = ["266362248691-342342xasdasdasda-apps.googleusercontent.com"]
 ///   thumbprint_lists = ["cf23df2207d99a74fbe169e3eba035e633b65d94"]
@@ -198,7 +201,7 @@ import 'open_id_connect_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -206,7 +209,10 @@ import 'open_id_connect_provider_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_openidconnectprovider" "default" {
+/// resource "aws_iam_open_id_connect_provider" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   url             = "https://accounts.google.com"
 ///   client_id_lists = ["266362248691-342342xasdasdasda-apps.googleusercontent.com"]
 /// }
@@ -291,7 +297,7 @@ class OpenIdConnectProvider extends pulumi.CustomResource {
           'aws:iam/openIdConnectProvider:OpenIdConnectProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     clientIdLists = registerOutput<List<String>>('clientIdLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

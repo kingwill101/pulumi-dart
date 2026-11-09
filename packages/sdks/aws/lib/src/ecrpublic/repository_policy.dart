@@ -205,7 +205,7 @@ import 'repository_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -213,8 +213,8 @@ import 'repository_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = ["123456789012"]
@@ -226,11 +226,17 @@ import 'repository_policy_state.dart';
 /// }
 ///
 /// resource "aws_ecrpublic_repository" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   repository_name = "example"
 /// }
-/// resource "aws_ecrpublic_repositorypolicy" "example" {
+/// resource "aws_ecrpublic_repository_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   repository_name = aws_ecrpublic_repository.example.repository_name
-///   policy          = data.aws_iam_getpolicydocument.example.json
+///   policy          = data.aws_iam_policy_document.example.json
 /// }
 /// ```
 /// ```java
@@ -370,7 +376,7 @@ class RepositoryPolicy extends pulumi.CustomResource {
           'aws:ecrpublic/repositoryPolicy:RepositoryPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

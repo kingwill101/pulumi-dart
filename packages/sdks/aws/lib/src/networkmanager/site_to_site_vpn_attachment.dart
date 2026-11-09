@@ -64,7 +64,7 @@ import 'site_to_site_vpn_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'site_to_site_vpn_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkmanager_sitetositevpnattachment" "example" {
+/// resource "aws_networkmanager_site_to_site_vpn_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   core_network_id    = exampleAwsccNetworkmanagerCoreNetwork.id
 ///   vpn_connection_arn = exampleAwsVpnConnection.arn
 /// }
@@ -99,8 +102,8 @@ import 'site_to_site_vpn_attachment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new SiteToSiteVpnAttachment("example", SiteToSiteVpnAttachmentArgs.builder()
-///             .coreNetworkId(exampleAwsccNetworkmanagerCoreNetwork.id())
-///             .vpnConnectionArn(exampleAwsVpnConnection.arn())
+///             .coreNetworkId(exampleAwsccNetworkmanagerCoreNetwork.get("id"))
+///             .vpnConnectionArn(exampleAwsVpnConnection.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -413,7 +416,7 @@ import 'site_to_site_vpn_attachment_state.dart';
 /// return err
 /// }
 /// testVpnConnection, err := ec2.NewVpnConnection(ctx, "test", &ec2.VpnConnectionArgs{
-/// CustomerGatewayId: testCustomerGateway.ID().ToIDOutput().ToStringOutput(),
+/// CustomerGatewayId: testCustomerGateway.ID(),
 /// Type: pulumi.String("ipsec.1"),
 /// Tags: pulumi.StringMap{
 /// "Name": pulumi.String("test"),
@@ -502,7 +505,7 @@ import 'site_to_site_vpn_attachment_state.dart';
 /// return err
 /// }
 /// _, err = networkmanager.NewAttachmentAccepter(ctx, "test", &networkmanager.AttachmentAccepterArgs{
-/// AttachmentId: testSiteToSiteVpnAttachment.ID().ToIDOutput().ToStringOutput(),
+/// AttachmentId: testSiteToSiteVpnAttachment.ID(),
 /// AttachmentType: testSiteToSiteVpnAttachment.AttachmentType,
 /// })
 /// if err != nil {
@@ -513,7 +516,7 @@ import 'site_to_site_vpn_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -524,9 +527,9 @@ import 'site_to_site_vpn_attachment_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_networkmanager_getcorenetworkpolicydocument" "test" {
+/// data "aws_networkmanager_core_network_policy_document" "test" {
 ///   attachment_policies {
-///     action = {
+///     action {
 ///       association_method = "constant"
 ///       segment            = "shared"
 ///     }
@@ -539,7 +542,7 @@ import 'site_to_site_vpn_attachment_state.dart';
 ///     rule_number     = 1
 ///     condition_logic = "or"
 ///   }
-///   core_network_configurations {
+///   core_network_configuration {
 ///     edge_locations {
 ///       location = current.region
 ///       asn      = 64512
@@ -548,10 +551,10 @@ import 'site_to_site_vpn_attachment_state.dart';
 ///     asn_ranges       = ["64512-64555"]
 ///   }
 ///   segment_actions {
-///     action      = "share"
-///     mode        = "attachment-route"
-///     segment     = "shared"
-///     share_withs = ["*"]
+///     action     = "share"
+///     mode       = "attachment-route"
+///     segment    = "shared"
+///     share_with = ["*"]
 ///   }
 ///   segments {
 ///     name                          = "shared"
@@ -560,37 +563,55 @@ import 'site_to_site_vpn_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_customergateway" "test" {
+/// resource "aws_ec2_customer_gateway" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bgp_asn    = 65000
 ///   ip_address = "172.0.0.1"
 ///   type       = "ipsec.1"
 /// }
-/// resource "aws_ec2_vpnconnection" "test" {
-///   customer_gateway_id = aws_ec2_customergateway.test.id
+/// resource "aws_ec2_vpn_connection" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   customer_gateway_id = aws_ec2_customer_gateway.test.id
 ///   type                = "ipsec.1"
 ///   tags = {
 ///     "Name" = "test"
 ///   }
 /// }
-/// resource "aws_networkmanager_globalnetwork" "test" {
+/// resource "aws_networkmanager_global_network" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tags = {
 ///     "Name" = "test"
 ///   }
 /// }
-/// resource "awscc_networkmanagercorenetwork" "test" {
-///   global_network_id = aws_networkmanager_globalnetwork.test.id
-///   policy_document   = jsonencode(jsondecode(data.aws_networkmanager_getcorenetworkpolicydocument.test.json))
+/// resource "awscc_networkmanager_core_network" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   global_network_id = aws_networkmanager_global_network.test.id
+///   policy_document   = jsonencode(jsondecode(data.aws_networkmanager_core_network_policy_document.test.json))
 /// }
-/// resource "aws_networkmanager_sitetositevpnattachment" "test" {
-///   core_network_id    = awscc_networkmanagercorenetwork.test.id
-///   vpn_connection_arn = aws_ec2_vpnconnection.test.arn
+/// resource "aws_networkmanager_site_to_site_vpn_attachment" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   core_network_id    = awscc_networkmanager_core_network.test.id
+///   vpn_connection_arn = aws_ec2_vpn_connection.test.arn
 ///   tags = {
 ///     "segment" = "shared"
 ///   }
 /// }
-/// resource "aws_networkmanager_attachmentaccepter" "test" {
-///   attachment_id   = aws_networkmanager_sitetositevpnattachment.test.id
-///   attachment_type = aws_networkmanager_sitetositevpnattachment.test.attachment_type
+/// resource "aws_networkmanager_attachment_accepter" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   attachment_id   = aws_networkmanager_site_to_site_vpn_attachment.test.id
+///   attachment_type = aws_networkmanager_site_to_site_vpn_attachment.test.attachment_type
 /// }
 /// ```
 /// ```java
@@ -669,7 +690,7 @@ import 'site_to_site_vpn_attachment_state.dart';
 ///                 .build())
 ///             .coreNetworkConfigurations(GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArgs.builder()
 ///                 .edgeLocations(GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArgs.builder()
-///                     .location(current.region())
+///                     .location(current.get("region"))
 ///                     .asn("64512")
 ///                     .build())
 ///                 .vpnEcmpSupport(false)
@@ -697,7 +718,7 @@ import 'site_to_site_vpn_attachment_state.dart';
 ///             .build());
 ///
 ///         var testSiteToSiteVpnAttachment = new SiteToSiteVpnAttachment("testSiteToSiteVpnAttachment", SiteToSiteVpnAttachmentArgs.builder()
-///             .coreNetworkId(testNetworkmanagerCoreNetwork.id())
+///             .coreNetworkId(testNetworkmanagerCoreNetwork.get("id"))
 ///             .vpnConnectionArn(testVpnConnection.arn())
 ///             .tags(Map.of("segment", "shared"))
 ///             .build());
@@ -846,7 +867,7 @@ class SiteToSiteVpnAttachment extends pulumi.CustomResource {
           'aws:networkmanager/siteToSiteVpnAttachment:SiteToSiteVpnAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attachmentPolicyRuleNumber = registerOutput<int>('attachmentPolicyRuleNumber');

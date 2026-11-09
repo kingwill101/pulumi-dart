@@ -225,7 +225,7 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -233,36 +233,40 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
-/// resource "aws_s3control_storagelensconfiguration" "example" {
-///   storage_lens_configuration = {
-///     account_level = {
-///       activity_metrics = {
+/// resource "aws_s3control_storage_lens_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   storage_lens_configuration {
+///     account_level {
+///       activity_metrics {
 ///         enabled = true
 ///       }
-///       bucket_level = {
-///         activity_metrics = {
+///       bucket_level {
+///         activity_metrics {
 ///           enabled = true
 ///         }
 ///       }
 ///     }
-///     data_export = {
-///       cloud_watch_metrics = {
+///     data_export {
+///       cloud_watch_metrics {
 ///         enabled = true
 ///       }
-///       s3_bucket_destination = {
-///         encryption = {
-///           sse_s3s = [{}]
+///       s3_bucket_destination {
+///         encryption {
+///           sse_s3 {
+///           }
 ///         }
-///         account_id            = data.aws_getcalleridentity.current.account_id
+///         account_id            = data.aws_caller_identity.current.account_id
 ///         arn                   = target.arn
 ///         format                = "CSV"
 ///         output_schema_version = "V_1"
 ///       }
 ///     }
-///     exclude = {
+///     exclude {
 ///       buckets = [b1.arn, b2.arn]
 ///       regions = ["us-east-2"]
 ///     }
@@ -330,15 +334,15 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 ///                                 .build())
 ///                             .build())
 ///                         .accountId(current.accountId())
-///                         .arn(target.arn())
+///                         .arn(target.get("arn"))
 ///                         .format("CSV")
 ///                         .outputSchemaVersion("V_1")
 ///                         .build())
 ///                     .build())
 ///                 .exclude(StorageLensConfigurationStorageLensConfigurationExcludeArgs.builder()
 ///                     .buckets(
-///                         b1.arn(),
-///                         b2.arn())
+///                         b1.get("arn"),
+///                         b2.get("arn"))
 ///                     .regions("us-east-2")
 ///                     .build())
 ///                 .enabled(true)
@@ -423,7 +427,7 @@ class StorageLensConfiguration extends pulumi.CustomResource {
           'aws:s3control/storageLensConfiguration:StorageLensConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');

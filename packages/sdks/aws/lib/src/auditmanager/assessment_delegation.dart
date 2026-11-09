@@ -72,7 +72,7 @@ import 'assessment_delegation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -80,7 +80,10 @@ import 'assessment_delegation_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_auditmanager_assessmentdelegation" "example" {
+/// resource "aws_auditmanager_assessment_delegation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assessment_id  = exampleAwsAuditmanagerAssessment.id
 ///   role_arn       = exampleAwsIamRole.arn
 ///   role_type      = "RESOURCE_OWNER"
@@ -109,8 +112,8 @@ import 'assessment_delegation_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AssessmentDelegation("example", AssessmentDelegationArgs.builder()
-///             .assessmentId(exampleAwsAuditmanagerAssessment.id())
-///             .roleArn(exampleAwsIamRole.arn())
+///             .assessmentId(exampleAwsAuditmanagerAssessment.get("id"))
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .roleType("RESOURCE_OWNER")
 ///             .controlSetId("example")
 ///             .build());
@@ -169,7 +172,7 @@ class AssessmentDelegation extends pulumi.CustomResource {
           'aws:auditmanager/assessmentDelegation:AssessmentDelegation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     assessmentId = registerOutput<String>('assessmentId');
     comment = registerOutput<String?>('comment');

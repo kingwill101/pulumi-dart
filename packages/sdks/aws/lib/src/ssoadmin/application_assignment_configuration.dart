@@ -69,7 +69,7 @@ import 'application_assignment_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,7 +77,10 @@ import 'application_assignment_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssoadmin_applicationassignmentconfiguration" "example" {
+/// resource "aws_ssoadmin_application_assignment_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_arn     = exampleAwsSsoadminApplication.arn
 ///   assignment_required = true
 /// }
@@ -104,7 +107,7 @@ import 'application_assignment_configuration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ApplicationAssignmentConfiguration("example", ApplicationAssignmentConfigurationArgs.builder()
-///             .applicationArn(exampleAwsSsoadminApplication.arn())
+///             .applicationArn(exampleAwsSsoadminApplication.get("arn"))
 ///             .assignmentRequired(true)
 ///             .build());
 ///
@@ -159,7 +162,7 @@ class ApplicationAssignmentConfiguration extends pulumi.CustomResource {
           'aws:ssoadmin/applicationAssignmentConfiguration:ApplicationAssignmentConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     applicationArn = registerOutput<String>('applicationArn');
     assignmentRequired = registerOutput<bool>('assignmentRequired');

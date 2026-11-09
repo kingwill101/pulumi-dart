@@ -62,7 +62,7 @@ import 'virtual_mfa_device_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'virtual_mfa_device_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_virtualmfadevice" "example" {
+/// resource "aws_iam_virtual_mfa_device" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   virtual_mfa_device_name = "example"
 /// }
 /// ```
@@ -152,7 +155,7 @@ class VirtualMfaDevice extends pulumi.CustomResource {
           'aws:iam/virtualMfaDevice:VirtualMfaDevice',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     base32StringSeed = registerOutput<String>('base32StringSeed');

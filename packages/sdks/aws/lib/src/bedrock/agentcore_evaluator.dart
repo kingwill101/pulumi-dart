@@ -109,13 +109,13 @@ import 'agentcore_evaluator_timeouts.dart';
 ///                         new Aws.Bedrock.Inputs.AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeRatingScaleNumericalArgs
 ///                         {
 ///                             Definition = "Not helpful at all.",
-///                             Value = 1,
+///                             Value = 1.0,
 ///                             Label = "1",
 ///                         },
 ///                         new Aws.Bedrock.Inputs.AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeRatingScaleNumericalArgs
 ///                         {
 ///                             Definition = "Extremely helpful.",
-///                             Value = 5,
+///                             Value = 5.0,
 ///                             Label = "5",
 ///                         },
 ///                     },
@@ -127,8 +127,8 @@ import 'agentcore_evaluator_timeouts.dart';
 ///                         InferenceConfig = new Aws.Bedrock.Inputs.AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeModelConfigBedrockEvaluatorModelConfigInferenceConfigArgs
 ///                         {
 ///                             MaxTokens = 1024,
-///                             Temperature = 0,
-///                             TopP = 1,
+///                             Temperature = 0.0,
+///                             TopP = 1.0,
 ///                         },
 ///                         ModelId = "us.amazon.nova-2-lite-v1:0",
 ///                     },
@@ -195,7 +195,7 @@ import 'agentcore_evaluator_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -203,18 +203,21 @@ import 'agentcore_evaluator_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoreevaluator" "example" {
+/// resource "aws_bedrock_agentcore_evaluator" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   evaluator_config = {
 ///     llm_as_a_judge = {
 ///       rating_scale = {
 ///         numericals = [{
-///           "definition" = "Not helpful at all."
-///           "value"      = 1
-///           "label"      = "1"
+///           definition = "Not helpful at all."
+///           value      = 1
+///           label      = "1"
 ///           }, {
-///           "definition" = "Extremely helpful."
-///           "value"      = 5
-///           "label"      = "5"
+///           definition = "Extremely helpful."
+///           value      = 5
+///           label      = "5"
 ///         }]
 ///       }
 ///       model_config = {
@@ -500,7 +503,7 @@ import 'agentcore_evaluator_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -508,19 +511,22 @@ import 'agentcore_evaluator_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoreevaluator" "example" {
+/// resource "aws_bedrock_agentcore_evaluator" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   evaluator_config = {
 ///     llm_as_a_judge = {
 ///       rating_scale = {
 ///         categoricals = [{
-///           "definition" = "Friendly, helpful tone."
-///           "label"      = "POSITIVE"
+///           definition = "Friendly, helpful tone."
+///           label      = "POSITIVE"
 ///           }, {
-///           "definition" = "Neutral or terse tone."
-///           "label"      = "NEUTRAL"
+///           definition = "Neutral or terse tone."
+///           label      = "NEUTRAL"
 ///           }, {
-///           "definition" = "Unhelpful or dismissive tone."
-///           "label"      = "NEGATIVE"
+///           definition = "Unhelpful or dismissive tone."
+///           label      = "NEGATIVE"
 ///         }]
 ///       }
 ///       model_config = {
@@ -712,7 +718,7 @@ import 'agentcore_evaluator_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -720,7 +726,10 @@ import 'agentcore_evaluator_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoreevaluator" "example" {
+/// resource "aws_bedrock_agentcore_evaluator" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   evaluator_config = {
 ///     code_based = {
 ///       lambda_config = {
@@ -761,7 +770,7 @@ import 'agentcore_evaluator_timeouts.dart';
 ///             .evaluatorConfig(AgentcoreEvaluatorEvaluatorConfigArgs.builder()
 ///                 .codeBased(AgentcoreEvaluatorEvaluatorConfigCodeBasedArgs.builder()
 ///                     .lambdaConfig(AgentcoreEvaluatorEvaluatorConfigCodeBasedLambdaConfigArgs.builder()
-///                         .lambdaArn(exampleAwsLambdaFunction.arn())
+///                         .lambdaArn(exampleAwsLambdaFunction.get("arn"))
 ///                         .lambdaTimeoutInSeconds(60)
 ///                         .build())
 ///                     .build())
@@ -850,7 +859,7 @@ class AgentcoreEvaluator extends pulumi.CustomResource {
           'aws:bedrock/agentcoreEvaluator:AgentcoreEvaluator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');

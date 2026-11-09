@@ -87,7 +87,7 @@ import 'baseline_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -96,7 +96,10 @@ import 'baseline_timeouts.dart';
 /// }
 ///
 /// resource "aws_controltower_baseline" "example" {
-///   parameters = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parameters {
 ///     key   = "IdentityCenterEnabledBaselineArn"
 ///     value = "arn:aws:controltower:us-east-1:664418989480:enabledbaseline/XALULM96QHI525UOC"
 ///   }
@@ -134,7 +137,7 @@ import 'baseline_timeouts.dart';
 ///                 .build())
 ///             .baselineIdentifier("arn:aws:controltower:us-east-1::baseline/17BSJV3IGJ2QSGA2")
 ///             .baselineVersion("4.0")
-///             .targetIdentifier(test.arn())
+///             .targetIdentifier(test.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -195,7 +198,7 @@ class Baseline extends pulumi.CustomResource {
           'aws:controltower/baseline:Baseline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     baselineIdentifier = registerOutput<String>('baselineIdentifier');

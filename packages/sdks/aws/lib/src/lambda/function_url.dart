@@ -67,7 +67,7 @@ import 'function_url_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,7 +75,10 @@ import 'function_url_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_functionurl" "example" {
+/// resource "aws_lambda_function_url" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   function_name      = exampleAwsLambdaFunction.functionName
 ///   authorization_type = "NONE"
 /// }
@@ -102,7 +105,7 @@ import 'function_url_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new FunctionUrl("example", FunctionUrlArgs.builder()
-///             .functionName(exampleAwsLambdaFunction.functionName())
+///             .functionName(exampleAwsLambdaFunction.get("functionName"))
 ///             .authorizationType("NONE")
 ///             .build());
 ///
@@ -262,7 +265,7 @@ import 'function_url_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -270,8 +273,11 @@ import 'function_url_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_functionurl" "example" {
-///   cors = {
+/// resource "aws_lambda_function_url" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cors {
 ///     allow_credentials = true
 ///     allow_origins     = ["https://example.com"]
 ///     allow_methods     = ["GET", "POST"]
@@ -322,7 +328,7 @@ import 'function_url_state.dart';
 ///                     "date")
 ///                 .maxAge(86400)
 ///                 .build())
-///             .functionName(exampleAwsLambdaFunction.functionName())
+///             .functionName(exampleAwsLambdaFunction.get("functionName"))
 ///             .qualifier("my_alias")
 ///             .authorizationType("AWS_IAM")
 ///             .invokeMode("RESPONSE_STREAM")
@@ -398,7 +404,7 @@ class FunctionUrl extends pulumi.CustomResource {
           'aws:lambda/functionUrl:FunctionUrl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     authorizationType = registerOutput<String>('authorizationType');
     cors = registerOutput<FunctionUrlCors?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionUrlCors.fromMap((guardedValue as Map).cast<String, dynamic>()); });

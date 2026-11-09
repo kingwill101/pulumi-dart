@@ -55,7 +55,7 @@ import 'organization_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -63,7 +63,10 @@ import 'organization_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_macie2_organizationconfiguration" "example" {
+/// resource "aws_macie2_organization_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auto_enable = true
 /// }
 /// ```
@@ -120,7 +123,7 @@ class OrganizationConfiguration extends pulumi.CustomResource {
           'aws:macie2/organizationConfiguration:OrganizationConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     autoEnable = registerOutput<bool>('autoEnable');
     region = registerOutput<String>('region');

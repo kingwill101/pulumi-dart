@@ -196,7 +196,7 @@ import 'file_cache_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -204,8 +204,11 @@ import 'file_cache_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fsx_filecache" "example" {
-///   data_repository_associations {
+/// resource "aws_fsx_file_cache" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   data_repository_association {
 ///     nfs {
 ///       dns_ips = ["192.168.0.1", "192.168.0.2"]
 ///       version = "NFS3"
@@ -214,8 +217,8 @@ import 'file_cache_state.dart';
 ///     data_repository_subdirectories = ["test", "test2"]
 ///     file_cache_path                = "/ns1"
 ///   }
-///   lustre_configurations {
-///     metadata_configurations {
+///   lustre_configuration {
+///     metadata_configuration {
 ///       storage_capacity = 2400
 ///     }
 ///     deployment_type               = "CACHE_1"
@@ -277,7 +280,7 @@ import 'file_cache_state.dart';
 ///                 .build())
 ///             .fileCacheType("LUSTRE")
 ///             .fileCacheTypeVersion("2.12")
-///             .subnetIds(test1.id())
+///             .subnetIds(test1.get("id"))
 ///             .storageCapacity(1200)
 ///             .build());
 ///
@@ -372,7 +375,7 @@ class FileCache extends pulumi.CustomResource {
           'aws:fsx/fileCache:FileCache',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     copyTagsToDataRepositoryAssociations = registerOutput<bool?>('copyTagsToDataRepositoryAssociations');

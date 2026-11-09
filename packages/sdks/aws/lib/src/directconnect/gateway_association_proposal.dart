@@ -66,7 +66,7 @@ import 'gateway_association_proposal_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'gateway_association_proposal_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_directconnect_gatewayassociationproposal" "example" {
+/// resource "aws_directconnect_gateway_association_proposal" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dx_gateway_id               = exampleAwsDxGateway.id
 ///   dx_gateway_owner_account_id = exampleAwsDxGateway.ownerAccountId
 ///   associated_gateway_id       = exampleAwsVpnGateway.id
@@ -102,9 +105,9 @@ import 'gateway_association_proposal_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new GatewayAssociationProposal("example", GatewayAssociationProposalArgs.builder()
-///             .dxGatewayId(exampleAwsDxGateway.id())
-///             .dxGatewayOwnerAccountId(exampleAwsDxGateway.ownerAccountId())
-///             .associatedGatewayId(exampleAwsVpnGateway.id())
+///             .dxGatewayId(exampleAwsDxGateway.get("id"))
+///             .dxGatewayOwnerAccountId(exampleAwsDxGateway.get("ownerAccountId"))
+///             .associatedGatewayId(exampleAwsVpnGateway.get("id"))
 ///             .build());
 ///
 ///     }
@@ -170,7 +173,7 @@ class GatewayAssociationProposal extends pulumi.CustomResource {
           'aws:directconnect/gatewayAssociationProposal:GatewayAssociationProposal',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     allowedPrefixes = registerOutput<List<String>>('allowedPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     associatedGatewayId = registerOutput<String>('associatedGatewayId');

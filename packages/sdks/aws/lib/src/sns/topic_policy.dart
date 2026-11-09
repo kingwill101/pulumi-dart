@@ -224,7 +224,7 @@ import 'topic_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -232,9 +232,9 @@ import 'topic_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "snsTopicPolicy" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "snsTopicPolicy" {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
 ///       variable = "AWS:SourceOwner"
 ///       values   = [account-id]
@@ -252,11 +252,17 @@ import 'topic_policy_state.dart';
 /// }
 ///
 /// resource "aws_sns_topic" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-topic-with-policy"
 /// }
-/// resource "aws_sns_topicpolicy" "default" {
+/// resource "aws_sns_topic_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   arn    = aws_sns_topic.test.arn
-///   policy = data.aws_iam_getpolicydocument.snsTopicPolicy.json
+///   policy = data.aws_iam_policy_document.snsTopicPolicy.json
 /// }
 /// ```
 /// ```java
@@ -407,7 +413,7 @@ class TopicPolicy extends pulumi.CustomResource {
           'aws:sns/topicPolicy:TopicPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     owner = registerOutput<String>('owner');

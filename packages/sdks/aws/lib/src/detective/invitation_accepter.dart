@@ -102,7 +102,7 @@ import 'invitation_accepter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -111,16 +111,25 @@ import 'invitation_accepter_state.dart';
 /// }
 ///
 /// resource "aws_detective_graph" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_detective_member" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id    = "ACCOUNT ID"
 ///   email_address = "EMAIL"
 ///   graph_arn     = aws_detective_graph.primary.graph_arn
 ///   message       = "Message of the invite"
 /// }
-/// resource "aws_detective_invitationaccepter" "member" {
+/// resource "aws_detective_invitation_accepter" "member" {
 ///   depends_on = [aws_detective_member.primary]
-///   graph_arn  = aws_detective_graph.primary.graph_arn
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   graph_arn = aws_detective_graph.primary.graph_arn
 /// }
 /// ```
 /// ```java
@@ -213,7 +222,7 @@ class InvitationAccepter extends pulumi.CustomResource {
           'aws:detective/invitationAccepter:InvitationAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     graphArn = registerOutput<String>('graphArn');
     region = registerOutput<String>('region');

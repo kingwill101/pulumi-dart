@@ -70,7 +70,7 @@ import 'trust_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -78,7 +78,10 @@ import 'trust_provider_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_verifiedaccess_trustprovider" "example" {
+/// resource "aws_verifiedaccess_trust_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_reference_name    = "example"
 ///   trust_provider_type      = "user"
 ///   user_trust_provider_type = "iam-identity-center"
@@ -171,7 +174,7 @@ class TrustProvider extends pulumi.CustomResource {
           'aws:verifiedaccess/trustProvider:TrustProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     deviceOptions = registerOutput<TrustProviderDeviceOptions?>('deviceOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustProviderDeviceOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

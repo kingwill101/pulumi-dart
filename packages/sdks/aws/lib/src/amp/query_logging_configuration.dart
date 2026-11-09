@@ -121,7 +121,7 @@ import 'query_logging_configuration_timeouts.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			WorkspaceId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			WorkspaceId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -131,7 +131,7 @@ import 'query_logging_configuration_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -140,15 +140,24 @@ import 'query_logging_configuration_timeouts.dart';
 /// }
 ///
 /// resource "aws_amp_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alias = "example"
 /// }
-/// resource "aws_cloudwatch_loggroup" "example" {
+/// resource "aws_cloudwatch_log_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "/aws/prometheus/query-logs/example"
 /// }
-/// resource "aws_amp_queryloggingconfiguration" "example" {
+/// resource "aws_amp_query_logging_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   destinations {
 ///     cloudwatch_logs = {
-///       log_group_arn ="${aws_cloudwatch_loggroup.example.arn}:*"
+///       log_group_arn ="${aws_cloudwatch_log_group.example.arn}:*"
 ///     }
 ///     filters = {
 ///       qsp_threshold = 1000
@@ -253,7 +262,7 @@ class QueryLoggingConfiguration extends pulumi.CustomResource {
           'aws:amp/queryLoggingConfiguration:QueryLoggingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     destinations = registerOutput<List<QueryLoggingConfigurationDestination>>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<QueryLoggingConfigurationDestination>(guardedValue, (value) => QueryLoggingConfigurationDestination.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');

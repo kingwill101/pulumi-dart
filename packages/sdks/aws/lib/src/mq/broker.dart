@@ -32,7 +32,7 @@ import 'broker_user.dart';
 /// const example = new aws.mq.Broker("example", {
 ///     configuration: {
 ///         id: test.id,
-///         revision: Number(test.latestRevision),
+///         revision: test.latestRevision,
 ///     },
 ///     users: [{
 ///         username: "example_user",
@@ -52,7 +52,7 @@ import 'broker_user.dart';
 /// example = aws.mq.Broker("example",
 ///     configuration={
 ///         "id": test["id"],
-///         "revision": int(test["latestRevision"]),
+///         "revision": test["latestRevision"],
 ///     },
 ///     users=[{
 ///         "username": "example_user",
@@ -136,7 +136,7 @@ import 'broker_user.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -145,11 +145,14 @@ import 'broker_user.dart';
 /// }
 ///
 /// resource "aws_mq_broker" "example" {
-///   configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
 ///     id       = test.id
 ///     revision = test.latestRevision
 ///   }
-///   users {
+///   user {
 ///     username = "example_user"
 ///     password = "<password>"
 ///   }
@@ -185,8 +188,8 @@ import 'broker_user.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Broker("example", BrokerArgs.builder()
 ///             .configuration(BrokerConfigurationArgs.builder()
-///                 .id(test.id())
-///                 .revision(test.latestRevision())
+///                 .id(test.get("id"))
+///                 .revision(test.get("latestRevision"))
 ///                 .build())
 ///             .users(BrokerUserArgs.builder()
 ///                 .username("example_user")
@@ -196,7 +199,7 @@ import 'broker_user.dart';
 ///             .engineType("ActiveMQ")
 ///             .engineVersion("5.17.6")
 ///             .hostInstanceType("mq.t2.micro")
-///             .securityGroups(testAwsSecurityGroup.id())
+///             .securityGroups(testAwsSecurityGroup.get("id"))
 ///             .build());
 ///
 ///     }
@@ -232,7 +235,7 @@ import 'broker_user.dart';
 /// const example = new aws.mq.Broker("example", {
 ///     configuration: {
 ///         id: test.id,
-///         revision: Number(test.latestRevision),
+///         revision: test.latestRevision,
 ///     },
 ///     users: [{
 ///         username: "example_user",
@@ -253,7 +256,7 @@ import 'broker_user.dart';
 /// example = aws.mq.Broker("example",
 ///     configuration={
 ///         "id": test["id"],
-///         "revision": int(test["latestRevision"]),
+///         "revision": test["latestRevision"],
 ///     },
 ///     users=[{
 ///         "username": "example_user",
@@ -340,7 +343,7 @@ import 'broker_user.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -349,11 +352,14 @@ import 'broker_user.dart';
 /// }
 ///
 /// resource "aws_mq_broker" "example" {
-///   configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
 ///     id       = test.id
 ///     revision = test.latestRevision
 ///   }
-///   users {
+///   user {
 ///     username = "example_user"
 ///     password = "<password>"
 ///   }
@@ -390,8 +396,8 @@ import 'broker_user.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Broker("example", BrokerArgs.builder()
 ///             .configuration(BrokerConfigurationArgs.builder()
-///                 .id(test.id())
-///                 .revision(test.latestRevision())
+///                 .id(test.get("id"))
+///                 .revision(test.get("latestRevision"))
 ///                 .build())
 ///             .users(BrokerUserArgs.builder()
 ///                 .username("example_user")
@@ -402,7 +408,7 @@ import 'broker_user.dart';
 ///             .engineVersion("5.17.6")
 ///             .storageType("ebs")
 ///             .hostInstanceType("mq.m5.large")
-///             .securityGroups(testAwsSecurityGroup.id())
+///             .securityGroups(testAwsSecurityGroup.get("id"))
 ///             .build());
 ///
 ///     }
@@ -659,7 +665,7 @@ import 'broker_user.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -668,11 +674,14 @@ import 'broker_user.dart';
 /// }
 ///
 /// resource "aws_mq_broker" "example_primary" {
-///   users {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   user {
 ///     username = "example_user"
 ///     password = "<password>"
 ///   }
-///   users {
+///   user {
 ///     username         = "example_replication_user"
 ///     password         = "<password>"
 ///     replication_user = true
@@ -686,11 +695,14 @@ import 'broker_user.dart';
 ///   deployment_mode    = "ACTIVE_STANDBY_MULTI_AZ"
 /// }
 /// resource "aws_mq_broker" "example" {
-///   users {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   user {
 ///     username = "example_user"
 ///     password = "<password>"
 ///   }
-///   users {
+///   user {
 ///     username         = "example_replication_user"
 ///     password         = "<password>"
 ///     replication_user = true
@@ -744,7 +756,7 @@ import 'broker_user.dart';
 ///             .engineType("ActiveMQ")
 ///             .engineVersion("5.17.6")
 ///             .hostInstanceType("mq.m5.large")
-///             .securityGroups(examplePrimaryAwsSecurityGroup.id())
+///             .securityGroups(examplePrimaryAwsSecurityGroup.get("id"))
 ///             .deploymentMode("ACTIVE_STANDBY_MULTI_AZ")
 ///             .build());
 ///
@@ -764,10 +776,10 @@ import 'broker_user.dart';
 ///             .engineType("ActiveMQ")
 ///             .engineVersion("5.17.6")
 ///             .hostInstanceType("mq.m5.large")
-///             .securityGroups(exampleAwsSecurityGroup.id())
+///             .securityGroups(exampleAwsSecurityGroup.get("id"))
 ///             .deploymentMode("ACTIVE_STANDBY_MULTI_AZ")
 ///             .dataReplicationMode("CRDR")
-///             .dataReplicationPrimaryBrokerArn(primary.arn())
+///             .dataReplicationPrimaryBrokerArn(primary.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -896,7 +908,7 @@ class Broker extends pulumi.CustomResource {
           'aws:mq/broker:Broker',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     applyImmediately = registerOutput<bool?>('applyImmediately');
     arn = registerOutput<String>('arn');

@@ -152,7 +152,7 @@ import 'route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -161,19 +161,23 @@ import 'route_state.dart';
 /// }
 ///
 /// resource "aws_appmesh_route" "serviceb" {
-///   spec = {
-///     http_route = {
-///       match = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   spec {
+///     http_route {
+///       match {
 ///         prefix = "/"
 ///       }
-///       action = {
-///         weighted_targets = [{
-///           "virtualNode" = serviceb1.name
-///           "weight"      = 90
-///           }, {
-///           "virtualNode" = serviceb2.name
-///           "weight"      = 10
-///         }]
+///       action {
+///         weighted_target {
+///           virtual_node = serviceb1.name
+///           weight       = 90
+///         }
+///         weighted_target {
+///           virtual_node = serviceb2.name
+///           weight       = 10
+///         }
 ///       }
 ///     }
 ///   }
@@ -217,19 +221,19 @@ import 'route_state.dart';
 ///                     .action(RouteSpecHttpRouteActionArgs.builder()
 ///                         .weightedTargets(
 ///                             RouteSpecHttpRouteActionWeightedTargetArgs.builder()
-///                                 .virtualNode(serviceb1.name())
+///                                 .virtualNode(serviceb1.get("name"))
 ///                                 .weight(90)
 ///                                 .build(),
 ///                             RouteSpecHttpRouteActionWeightedTargetArgs.builder()
-///                                 .virtualNode(serviceb2.name())
+///                                 .virtualNode(serviceb2.get("name"))
 ///                                 .weight(10)
 ///                                 .build())
 ///                         .build())
 ///                     .build())
 ///                 .build())
 ///             .name("serviceB-route")
-///             .meshName(simple.id())
-///             .virtualRouterName(servicebAwsAppmeshVirtualRouter.name())
+///             .meshName(simple.get("id"))
+///             .virtualRouterName(servicebAwsAppmeshVirtualRouter.get("name"))
 ///             .build());
 ///
 ///     }
@@ -419,7 +423,7 @@ import 'route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -428,24 +432,27 @@ import 'route_state.dart';
 /// }
 ///
 /// resource "aws_appmesh_route" "serviceb" {
-///   spec = {
-///     http_route = {
-///       match = {
-///         headers = [{
-///           "match" = {
-///             "prefix" = "123"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   spec {
+///     http_route {
+///       match {
+///         header {
+///           match {
+///             prefix = "123"
 ///           }
-///           "name" = "clientRequestId"
-///         }]
+///           name = "clientRequestId"
+///         }
 ///         method = "POST"
 ///         prefix = "/"
 ///         scheme = "https"
 ///       }
-///       action = {
-///         weighted_targets = [{
-///           "virtualNode" = servicebAwsAppmeshVirtualNode.name
-///           "weight"      = 100
-///         }]
+///       action {
+///         weighted_target {
+///           virtual_node = servicebAwsAppmeshVirtualNode.name
+///           weight       = 100
+///         }
 ///       }
 ///     }
 ///   }
@@ -498,15 +505,15 @@ import 'route_state.dart';
 ///                         .build())
 ///                     .action(RouteSpecHttpRouteActionArgs.builder()
 ///                         .weightedTargets(RouteSpecHttpRouteActionWeightedTargetArgs.builder()
-///                             .virtualNode(servicebAwsAppmeshVirtualNode.name())
+///                             .virtualNode(servicebAwsAppmeshVirtualNode.get("name"))
 ///                             .weight(100)
 ///                             .build())
 ///                         .build())
 ///                     .build())
 ///                 .build())
 ///             .name("serviceB-route")
-///             .meshName(simple.id())
-///             .virtualRouterName(servicebAwsAppmeshVirtualRouter.name())
+///             .meshName(simple.get("id"))
+///             .virtualRouterName(servicebAwsAppmeshVirtualRouter.get("name"))
 ///             .build());
 ///
 ///     }
@@ -700,7 +707,7 @@ import 'route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -709,24 +716,27 @@ import 'route_state.dart';
 /// }
 ///
 /// resource "aws_appmesh_route" "serviceb" {
-///   spec = {
-///     http_route = {
-///       match = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   spec {
+///     http_route {
+///       match {
 ///         prefix = "/"
 ///       }
-///       retry_policy = {
-///         per_retry_timeout = {
+///       retry_policy {
+///         per_retry_timeout {
 ///           unit  = "s"
 ///           value = 15
 ///         }
 ///         http_retry_events = ["server-error"]
 ///         max_retries       = 1
 ///       }
-///       action = {
-///         weighted_targets = [{
-///           "virtualNode" = servicebAwsAppmeshVirtualNode.name
-///           "weight"      = 100
-///         }]
+///       action {
+///         weighted_target {
+///           virtual_node = servicebAwsAppmeshVirtualNode.name
+///           weight       = 100
+///         }
 ///       }
 ///     }
 ///   }
@@ -779,15 +789,15 @@ import 'route_state.dart';
 ///                         .build())
 ///                     .action(RouteSpecHttpRouteActionArgs.builder()
 ///                         .weightedTargets(RouteSpecHttpRouteActionWeightedTargetArgs.builder()
-///                             .virtualNode(servicebAwsAppmeshVirtualNode.name())
+///                             .virtualNode(servicebAwsAppmeshVirtualNode.get("name"))
 ///                             .weight(100)
 ///                             .build())
 ///                         .build())
 ///                     .build())
 ///                 .build())
 ///             .name("serviceB-route")
-///             .meshName(simple.id())
-///             .virtualRouterName(servicebAwsAppmeshVirtualRouter.name())
+///             .meshName(simple.get("id"))
+///             .virtualRouterName(servicebAwsAppmeshVirtualRouter.get("name"))
 ///             .build());
 ///
 ///     }
@@ -930,7 +940,7 @@ import 'route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -939,13 +949,16 @@ import 'route_state.dart';
 /// }
 ///
 /// resource "aws_appmesh_route" "serviceb" {
-///   spec = {
-///     tcp_route = {
-///       action = {
-///         weighted_targets = [{
-///           "virtualNode" = serviceb1.name
-///           "weight"      = 100
-///         }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   spec {
+///     tcp_route {
+///       action {
+///         weighted_target {
+///           virtual_node = serviceb1.name
+///           weight       = 100
+///         }
 ///       }
 ///     }
 ///   }
@@ -984,15 +997,15 @@ import 'route_state.dart';
 ///                 .tcpRoute(RouteSpecTcpRouteArgs.builder()
 ///                     .action(RouteSpecTcpRouteActionArgs.builder()
 ///                         .weightedTargets(RouteSpecTcpRouteActionWeightedTargetArgs.builder()
-///                             .virtualNode(serviceb1.name())
+///                             .virtualNode(serviceb1.get("name"))
 ///                             .weight(100)
 ///                             .build())
 ///                         .build())
 ///                     .build())
 ///                 .build())
 ///             .name("serviceB-route")
-///             .meshName(simple.id())
-///             .virtualRouterName(servicebAwsAppmeshVirtualRouter.name())
+///             .meshName(simple.get("id"))
+///             .virtualRouterName(servicebAwsAppmeshVirtualRouter.get("name"))
 ///             .build());
 ///
 ///     }
@@ -1060,7 +1073,7 @@ class Route extends pulumi.CustomResource {
           'aws:appmesh/route:Route',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdDate = registerOutput<String>('createdDate');

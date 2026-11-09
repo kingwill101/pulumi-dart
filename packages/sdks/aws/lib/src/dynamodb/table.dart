@@ -242,7 +242,7 @@ import 'table_warm_throughput.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -251,23 +251,26 @@ import 'table_warm_throughput.dart';
 /// }
 ///
 /// resource "aws_dynamodb_table" "basic-dynamodb-table" {
-///   ttl = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ttl {
 ///     attribute_name = "TimeToExist"
 ///     enabled        = true
 ///   }
-///   attributes {
+///   attribute {
 ///     name = "UserId"
 ///     type = "S"
 ///   }
-///   attributes {
+///   attribute {
 ///     name = "GameTitle"
 ///     type = "S"
 ///   }
-///   attributes {
+///   attribute {
 ///     name = "TopScore"
 ///     type = "N"
 ///   }
-///   global_secondary_indexes {
+///   global_secondary_index {
 ///     name               = "GameTitleIndex"
 ///     hash_key           = "GameTitle"
 ///     range_key          = "TopScore"
@@ -839,7 +842,7 @@ import 'table_warm_throughput.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -848,56 +851,59 @@ import 'table_warm_throughput.dart';
 /// }
 ///
 /// resource "aws_dynamodb_table" "basic-dynamodb-table" {
-///   ttl = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ttl {
 ///     attribute_name = "TimeToExist"
 ///     enabled        = true
 ///   }
-///   attributes {
+///   attribute {
 ///     name = "matchId"
 ///     type = "S"
 ///   }
-///   attributes {
+///   attribute {
 ///     name = "tournamentId"
 ///     type = "S"
 ///   }
-///   attributes {
+///   attribute {
 ///     name = "region"
 ///     type = "S"
 ///   }
-///   attributes {
+///   attribute {
 ///     name = "round"
 ///     type = "S"
 ///   }
-///   attributes {
+///   attribute {
 ///     name = "bracket"
 ///     type = "S"
 ///   }
-///   attributes {
+///   attribute {
 ///     name = "playerId"
 ///     type = "N"
 ///   }
-///   attributes {
+///   attribute {
 ///     name = "matchDate"
 ///     type = "S"
 ///   }
-///   global_secondary_indexes {
-///     key_schemas {
+///   global_secondary_index {
+///     key_schema {
 ///       attribute_name = "tournamentId"
 ///       key_type       = "HASH"
 ///     }
-///     key_schemas {
+///     key_schema {
 ///       attribute_name = "region"
 ///       key_type       = "HASH"
 ///     }
-///     key_schemas {
+///     key_schema {
 ///       attribute_name = "round"
 ///       key_type       = "RANGE"
 ///     }
-///     key_schemas {
+///     key_schema {
 ///       attribute_name = "bracket"
 ///       key_type       = "RANGE"
 ///     }
-///     key_schemas {
+///     key_schema {
 ///       attribute_name = "matchId"
 ///       key_type       = "RANGE"
 ///     }
@@ -906,16 +912,16 @@ import 'table_warm_throughput.dart';
 ///     read_capacity   = 10
 ///     projection_type = "ALL"
 ///   }
-///   global_secondary_indexes {
-///     key_schemas {
+///   global_secondary_index {
+///     key_schema {
 ///       attribute_name = "playerId"
 ///       key_type       = "HASH"
 ///     }
-///     key_schemas {
+///     key_schema {
 ///       attribute_name = "matchDate"
 ///       key_type       = "RANGE"
 ///     }
-///     key_schemas {
+///     key_schema {
 ///       attribute_name = "round"
 ///       key_type       = "RANGE"
 ///     }
@@ -1247,7 +1253,7 @@ import 'table_warm_throughput.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1256,14 +1262,17 @@ import 'table_warm_throughput.dart';
 /// }
 ///
 /// resource "aws_dynamodb_table" "example" {
-///   attributes {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   attribute {
 ///     name = "TestTableHashKey"
 ///     type = "S"
 ///   }
-///   replicas {
+///   replica {
 ///     region_name = "us-east-2"
 ///   }
-///   replicas {
+///   replica {
 ///     region_name = "us-west-2"
 ///   }
 ///   name             = "example"
@@ -1482,7 +1491,7 @@ import 'table_warm_throughput.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1491,15 +1500,18 @@ import 'table_warm_throughput.dart';
 /// }
 ///
 /// resource "aws_dynamodb_table" "example" {
-///   attributes {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   attribute {
 ///     name = "TestTableHashKey"
 ///     type = "S"
 ///   }
-///   replicas {
+///   replica {
 ///     region_name      = "us-east-2"
 ///     consistency_mode = "STRONG"
 ///   }
-///   replicas {
+///   replica {
 ///     region_name      = "us-west-2"
 ///     consistency_mode = "STRONG"
 ///   }
@@ -1705,7 +1717,7 @@ import 'table_warm_throughput.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1714,14 +1726,17 @@ import 'table_warm_throughput.dart';
 /// }
 ///
 /// resource "aws_dynamodb_table" "example" {
-///   global_table_witness = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   global_table_witness {
 ///     region_name = "us-west-2"
 ///   }
-///   attributes {
+///   attribute {
 ///     name = "TestTableHashKey"
 ///     type = "S"
 ///   }
-///   replicas {
+///   replica {
 ///     region_name      = "us-east-2"
 ///     consistency_mode = "STRONG"
 ///   }
@@ -2017,7 +2032,7 @@ import 'table_warm_throughput.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2028,23 +2043,26 @@ import 'table_warm_throughput.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
-/// data "aws_getregion" "alternate" {
+/// data "aws_region" "alternate" {
 /// }
-/// data "aws_getregion" "third" {
+/// data "aws_region" "third" {
 /// }
 ///
 /// resource "aws_dynamodb_table" "example" {
-///   attributes {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   attribute {
 ///     name = "TestTableHashKey"
 ///     type = "S"
 ///   }
-///   replicas {
-///     region_name = data.aws_getregion.alternate.region
+///   replica {
+///     region_name = data.aws_region.alternate.region
 ///   }
-///   replicas {
-///     region_name    = data.aws_getregion.third.region
+///   replica {
+///     region_name    = data.aws_region.third.region
 ///     propagate_tags = true
 ///   }
 ///   billing_mode     = "PAY_PER_REQUEST"
@@ -2058,7 +2076,10 @@ import 'table_warm_throughput.dart';
 ///   }
 /// }
 /// resource "aws_dynamodb_tag" "example" {
-///   resource_arn = replace(aws_dynamodb_table.example.arn, data.aws_getregion.current.region, data.aws_getregion.alternate.region)
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_arn = replace(aws_dynamodb_table.example.arn, data.aws_region.current.region, data.aws_region.alternate.region)
 ///   key          = "Architect"
 ///   value        = "Gigi"
 /// }
@@ -2294,7 +2315,7 @@ class Table extends pulumi.CustomResource {
           'aws:dynamodb/table:Table',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attributes = registerOutput<List<TableAttribute>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TableAttribute>(guardedValue, (value) => TableAttribute.fromMap((value as Map).cast<String, dynamic>())); });

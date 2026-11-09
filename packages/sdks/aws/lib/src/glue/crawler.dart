@@ -98,7 +98,7 @@ import 'crawler_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -107,7 +107,10 @@ import 'crawler_state.dart';
 /// }
 ///
 /// resource "aws_glue_crawler" "example" {
-///   dynamodb_targets {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   dynamodb_target {
 ///     path = "table-name"
 ///   }
 ///   database_name = exampleAwsGlueCatalogDatabase.name
@@ -141,9 +144,9 @@ import 'crawler_state.dart';
 ///             .dynamodbTargets(CrawlerDynamodbTargetArgs.builder()
 ///                 .path("table-name")
 ///                 .build())
-///             .databaseName(exampleAwsGlueCatalogDatabase.name())
+///             .databaseName(exampleAwsGlueCatalogDatabase.get("name"))
 ///             .name("example")
-///             .role(exampleAwsIamRole.arn())
+///             .role(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -246,7 +249,7 @@ import 'crawler_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -255,7 +258,10 @@ import 'crawler_state.dart';
 /// }
 ///
 /// resource "aws_glue_crawler" "example" {
-///   jdbc_targets {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   jdbc_target {
 ///     connection_name = exampleAwsGlueConnection.name
 ///     path            = "database-name/%"
 ///   }
@@ -288,12 +294,12 @@ import 'crawler_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Crawler("example", CrawlerArgs.builder()
 ///             .jdbcTargets(CrawlerJdbcTargetArgs.builder()
-///                 .connectionName(exampleAwsGlueConnection.name())
+///                 .connectionName(exampleAwsGlueConnection.get("name"))
 ///                 .path("database-name/%")
 ///                 .build())
-///             .databaseName(exampleAwsGlueCatalogDatabase.name())
+///             .databaseName(exampleAwsGlueCatalogDatabase.get("name"))
 ///             .name("example")
-///             .role(exampleAwsIamRole.arn())
+///             .role(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -393,7 +399,7 @@ import 'crawler_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -402,7 +408,10 @@ import 'crawler_state.dart';
 /// }
 ///
 /// resource "aws_glue_crawler" "example" {
-///   s3_targets {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   s3_target {
 ///     path ="s3://${exampleAwsS3Bucket.bucket}"
 ///   }
 ///   database_name = exampleAwsGlueCatalogDatabase.name
@@ -434,11 +443,11 @@ import 'crawler_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Crawler("example", CrawlerArgs.builder()
 ///             .s3Targets(CrawlerS3TargetArgs.builder()
-///                 .path(String.format("s3://%s", exampleAwsS3Bucket.bucket()))
+///                 .path(String.format("s3://%s", exampleAwsS3Bucket.get("bucket")))
 ///                 .build())
-///             .databaseName(exampleAwsGlueCatalogDatabase.name())
+///             .databaseName(exampleAwsGlueCatalogDatabase.get("name"))
 ///             .name("example")
-///             .role(exampleAwsIamRole.arn())
+///             .role(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -587,7 +596,7 @@ import 'crawler_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -596,17 +605,28 @@ import 'crawler_state.dart';
 /// }
 ///
 /// resource "aws_glue_crawler" "example" {
-///   schema_change_policy = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   schema_change_policy {
 ///     delete_behavior = "LOG"
 ///   }
-///   catalog_targets {
+///   catalog_target {
 ///     database_name = exampleAwsGlueCatalogDatabase.name
 ///     tables        = [exampleAwsGlueCatalogTable.name]
 ///   }
 ///   database_name = exampleAwsGlueCatalogDatabase.name
 ///   name          = "example"
 ///   role          = exampleAwsIamRole.arn
-///   configuration = "{\n  \\\"Version\\\":1.0,\n  \\\"Grouping\\\": {\n    \\\"TableGroupingPolicy\\\": \\\"CombineCompatibleSchemas\\\"\n  }\n}\n"
+///   configuration = <<EOF
+/// {
+///   \"Version\":1.0,
+///   \"Grouping\": {
+///     \"TableGroupingPolicy\": \"CombineCompatibleSchemas\"
+///   }
+/// }
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -637,12 +657,12 @@ import 'crawler_state.dart';
 ///                 .deleteBehavior("LOG")
 ///                 .build())
 ///             .catalogTargets(CrawlerCatalogTargetArgs.builder()
-///                 .databaseName(exampleAwsGlueCatalogDatabase.name())
-///                 .tables(exampleAwsGlueCatalogTable.name())
+///                 .databaseName(exampleAwsGlueCatalogDatabase.get("name"))
+///                 .tables(exampleAwsGlueCatalogTable.get("name"))
 ///                 .build())
-///             .databaseName(exampleAwsGlueCatalogDatabase.name())
+///             .databaseName(exampleAwsGlueCatalogDatabase.get("name"))
 ///             .name("example")
-///             .role(exampleAwsIamRole.arn())
+///             .role(exampleAwsIamRole.get("arn"))
 ///             .configuration("""
 /// {
 ///   \"Version\":1.0,
@@ -764,7 +784,7 @@ import 'crawler_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -773,7 +793,10 @@ import 'crawler_state.dart';
 /// }
 ///
 /// resource "aws_glue_crawler" "example" {
-///   mongodb_targets {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   mongodb_target {
 ///     connection_name = exampleAwsGlueConnection.name
 ///     path            = "database-name/%"
 ///   }
@@ -806,12 +829,12 @@ import 'crawler_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Crawler("example", CrawlerArgs.builder()
 ///             .mongodbTargets(CrawlerMongodbTargetArgs.builder()
-///                 .connectionName(exampleAwsGlueConnection.name())
+///                 .connectionName(exampleAwsGlueConnection.get("name"))
 ///                 .path("database-name/%")
 ///                 .build())
-///             .databaseName(exampleAwsGlueCatalogDatabase.name())
+///             .databaseName(exampleAwsGlueCatalogDatabase.get("name"))
 ///             .name("example")
-///             .role(exampleAwsIamRole.arn())
+///             .role(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -976,7 +999,7 @@ import 'crawler_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -985,7 +1008,10 @@ import 'crawler_state.dart';
 /// }
 ///
 /// resource "aws_glue_crawler" "events_crawler" {
-///   s3_targets {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   s3_target {
 ///     path ="s3://${dataLakeBucket.bucket}"
 ///   }
 ///   database_name = glueDatabase.name
@@ -1031,12 +1057,12 @@ import 'crawler_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var eventsCrawler = new Crawler("eventsCrawler", CrawlerArgs.builder()
 ///             .s3Targets(CrawlerS3TargetArgs.builder()
-///                 .path(String.format("s3://%s", dataLakeBucket.bucket()))
+///                 .path(String.format("s3://%s", dataLakeBucket.get("bucket")))
 ///                 .build())
-///             .databaseName(glueDatabase.name())
+///             .databaseName(glueDatabase.get("name"))
 ///             .schedule("cron(0 1 * * ? *)")
 ///             .name(String.format("events_crawler_%s", environmentName))
-///             .role(glueRole.arn())
+///             .role(glueRole.get("arn"))
 ///             .tags(tags)
 ///             .configuration(serializeJson(
 ///                 jsonObject(
@@ -1152,7 +1178,7 @@ class Crawler extends pulumi.CustomResource {
           'aws:glue/crawler:Crawler',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     catalogTargets = registerOutput<List<CrawlerCatalogTarget>?>('catalogTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerCatalogTarget>(guardedValue, (value) => CrawlerCatalogTarget.fromMap((value as Map).cast<String, dynamic>())); });

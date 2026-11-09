@@ -100,7 +100,7 @@ import 'log_index_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -108,11 +108,17 @@ import 'log_index_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_loggroup" "example" {
+/// resource "aws_cloudwatch_log_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
-/// resource "aws_cloudwatch_logindexpolicy" "example" {
-///   log_group_name = aws_cloudwatch_loggroup.example.name
+/// resource "aws_cloudwatch_log_index_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   log_group_name = aws_cloudwatch_log_group.example.name
 ///   policy_document = jsonencode({
 ///     "Fields" = ["eventName"]
 ///   })
@@ -214,7 +220,7 @@ class LogIndexPolicy extends pulumi.CustomResource {
           'aws:cloudwatch/logIndexPolicy:LogIndexPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     logGroupName = registerOutput<String>('logGroupName');
     policyDocument = registerOutput<String>('policyDocument');

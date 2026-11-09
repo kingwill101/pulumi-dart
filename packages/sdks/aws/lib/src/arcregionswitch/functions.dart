@@ -61,7 +61,7 @@ import 'get_route53_health_checks_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -69,7 +69,7 @@ import 'get_route53_health_checks_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_arcregionswitch_getplan" "example" {
+/// data "aws_arcregionswitch_plan" "example" {
 ///   arn = "arn:aws:arcregionswitch:us-west-2:123456789012:plan/example-plan"
 /// }
 /// ```
@@ -192,7 +192,7 @@ pulumi.Output<GetPlanResult> getPlanOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -200,7 +200,7 @@ pulumi.Output<GetPlanResult> getPlanOutput(
 ///   }
 /// }
 ///
-/// data "aws_arcregionswitch_getroute53healthchecks" "example" {
+/// data "aws_arcregionswitch_route53_health_checks" "example" {
 ///   plan_arn = "arn:aws:arc-region-switch::123456789012:plan/example-plan:abc123"
 /// }
 /// ```

@@ -157,7 +157,7 @@ import 'workspace_vpc_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -166,12 +166,18 @@ import 'workspace_vpc_configuration.dart';
 /// }
 ///
 /// resource "aws_grafana_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_access_type      = "CURRENT_ACCOUNT"
 ///   authentication_providers = ["SAML"]
 ///   permission_type          = "SERVICE_MANAGED"
 ///   role_arn                 = aws_iam_role.assume.arn
 /// }
 /// resource "aws_iam_role" "assume" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "grafana-assume"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -377,7 +383,7 @@ import 'workspace_vpc_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -386,6 +392,9 @@ import 'workspace_vpc_configuration.dart';
 /// }
 ///
 /// resource "aws_grafana_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_access_type      = "CURRENT_ACCOUNT"
 ///   authentication_providers = ["SAML"]
 ///   permission_type          = "SERVICE_MANAGED"
@@ -426,7 +435,7 @@ import 'workspace_vpc_configuration.dart';
 ///             .accountAccessType("CURRENT_ACCOUNT")
 ///             .authenticationProviders("SAML")
 ///             .permissionType("SERVICE_MANAGED")
-///             .roleArn(assume.arn())
+///             .roleArn(assume.get("arn"))
 ///             .configuration(serializeJson(
 ///                 jsonObject(
 ///                     jsonProperty("plugins", jsonObject(
@@ -531,7 +540,7 @@ class Workspace extends pulumi.CustomResource {
           'aws:grafana/workspace:Workspace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accountAccessType = registerOutput<String>('accountAccessType');
     arn = registerOutput<String>('arn');

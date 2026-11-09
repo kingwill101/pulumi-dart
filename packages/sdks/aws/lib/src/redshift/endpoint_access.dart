@@ -67,7 +67,7 @@ import 'endpoint_access_vpc_endpoint.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,7 +75,10 @@ import 'endpoint_access_vpc_endpoint.dart';
 ///   }
 /// }
 ///
-/// resource "aws_redshift_endpointaccess" "example" {
+/// resource "aws_redshift_endpoint_access" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_name      = "example"
 ///   subnet_group_name  = exampleAwsRedshiftSubnetGroup.id
 ///   cluster_identifier = exampleAwsRedshiftCluster.clusterIdentifier
@@ -104,8 +107,8 @@ import 'endpoint_access_vpc_endpoint.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new EndpointAccess("example", EndpointAccessArgs.builder()
 ///             .endpointName("example")
-///             .subnetGroupName(exampleAwsRedshiftSubnetGroup.id())
-///             .clusterIdentifier(exampleAwsRedshiftCluster.clusterIdentifier())
+///             .subnetGroupName(exampleAwsRedshiftSubnetGroup.get("id"))
+///             .clusterIdentifier(exampleAwsRedshiftCluster.get("clusterIdentifier"))
 ///             .build());
 ///
 ///     }
@@ -161,7 +164,7 @@ class EndpointAccess extends pulumi.CustomResource {
           'aws:redshift/endpointAccess:EndpointAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     address = registerOutput<String>('address');
     clusterIdentifier = registerOutput<String>('clusterIdentifier');

@@ -207,7 +207,7 @@ import 'rest_api_put_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -215,7 +215,10 @@ import 'rest_api_put_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_restapiput" "example" {
+/// resource "aws_apigateway_rest_api_put" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   body = jsonencode({
 ///     "swagger" = "2.0"
 ///     "info" = {
@@ -303,7 +306,7 @@ import 'rest_api_put_timeouts.dart';
 ///                     ))
 ///                 )))
 ///             .failOnWarnings(true)
-///             .restApiId(exampleAwsApiGatewayRestApi.id())
+///             .restApiId(exampleAwsApiGatewayRestApi.get("id"))
 ///             .build());
 ///
 ///     }
@@ -376,7 +379,7 @@ class RestApiPut extends pulumi.CustomResource {
           'aws:apigateway/restApiPut:RestApiPut',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     body = registerOutput<String>('body');
     failOnWarnings = registerOutput<bool>('failOnWarnings');

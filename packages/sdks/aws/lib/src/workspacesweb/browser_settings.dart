@@ -93,7 +93,7 @@ import 'browser_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -101,7 +101,10 @@ import 'browser_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_workspacesweb_browsersettings" "example" {
+/// resource "aws_workspacesweb_browser_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   browser_policy = jsonencode({
 ///     "AdditionalSettings" = {
 ///       "DownloadsSettings" = {
@@ -301,7 +304,7 @@ import 'browser_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -310,10 +313,16 @@ import 'browser_settings_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "KMS key for WorkSpaces Web Browser Settings"
 ///   deletion_window_in_days = 7
 /// }
-/// resource "aws_workspacesweb_browsersettings" "example" {
+/// resource "aws_workspacesweb_browser_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   browser_policy = jsonencode({
 ///     "chromePolicies" = {
 ///       "DefaultDownloadDirectory" = {
@@ -439,7 +448,7 @@ class BrowserSettings extends pulumi.CustomResource {
           'aws:workspacesweb/browserSettings:BrowserSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

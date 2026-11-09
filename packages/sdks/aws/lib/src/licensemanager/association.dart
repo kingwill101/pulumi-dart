@@ -156,7 +156,7 @@ import 'association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -164,7 +164,7 @@ import 'association_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2_getami" "example" {
+/// data "aws_ec2_ami" "example" {
 ///   filters {
 ///     name   = "name"
 ///     values = ["amzn-ami-vpc-nat*"]
@@ -174,15 +174,24 @@ import 'association_state.dart';
 /// }
 ///
 /// resource "aws_ec2_instance" "example" {
-///   ami           = data.aws_ec2_getami.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ami           = data.aws_ec2_ami.example.id
 ///   instance_type = "t2.micro"
 /// }
-/// resource "aws_licensemanager_licenseconfiguration" "example" {
+/// resource "aws_licensemanager_license_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "Example"
 ///   license_counting_type = "Instance"
 /// }
 /// resource "aws_licensemanager_association" "example" {
-///   license_configuration_arn = aws_licensemanager_licenseconfiguration.example.arn
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   license_configuration_arn = aws_licensemanager_license_configuration.example.arn
 ///   resource_arn              = aws_ec2_instance.example.arn
 /// }
 /// ```
@@ -303,7 +312,7 @@ class Association extends pulumi.CustomResource {
           'aws:licensemanager/association:Association',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     licenseConfigurationArn = registerOutput<String>('licenseConfigurationArn');
     region = registerOutput<String>('region');

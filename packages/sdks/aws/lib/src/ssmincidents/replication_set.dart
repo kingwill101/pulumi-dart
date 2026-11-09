@@ -92,7 +92,7 @@ import 'replication_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -100,7 +100,10 @@ import 'replication_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssmincidents_replicationset" "replicationSetName" {
+/// resource "aws_ssmincidents_replication_set" "replicationSetName" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   regions {
 ///     name = "us-west-2"
 ///   }
@@ -235,7 +238,7 @@ import 'replication_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -243,7 +246,10 @@ import 'replication_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssmincidents_replicationset" "replicationSetName" {
+/// resource "aws_ssmincidents_replication_set" "replicationSetName" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   regions {
 ///     name = "us-west-2"
 ///   }
@@ -363,7 +369,7 @@ import 'replication_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -371,7 +377,10 @@ import 'replication_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssmincidents_replicationset" "replicationSetName" {
+/// resource "aws_ssmincidents_replication_set" "replicationSetName" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   regions {
 ///     name = "us-west-2"
 ///   }
@@ -514,7 +523,7 @@ import 'replication_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -523,8 +532,14 @@ import 'replication_set_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_ssmincidents_replicationset" "replicationSetName" {
+/// resource "aws_ssmincidents_replication_set" "replicationSetName" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   regions {
 ///     name        = "us-west-2"
 ///     kms_key_arn = aws_kms_key.example_key.arn
@@ -638,7 +653,7 @@ class ReplicationSet extends pulumi.CustomResource {
           'aws:ssmincidents/replicationSet:ReplicationSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdBy = registerOutput<String>('createdBy');

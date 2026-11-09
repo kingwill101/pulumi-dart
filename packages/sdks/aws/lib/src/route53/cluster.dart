@@ -56,7 +56,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,6 +65,9 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_route53recoverycontrol_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "georgefitzgerald"
 /// }
 /// ```
@@ -142,7 +145,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:route53recoverycontrol/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     clusterEndpoints = registerOutput<List<ClusterClusterEndpoint>>('clusterEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterClusterEndpoint>(guardedValue, (value) => ClusterClusterEndpoint.fromMap((value as Map).cast<String, dynamic>())); });

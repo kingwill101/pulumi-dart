@@ -63,7 +63,7 @@ import 'network_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,7 +71,10 @@ import 'network_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2clientvpn_networkassociation" "example" {
+/// resource "aws_ec2clientvpn_network_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_vpn_endpoint_id = exampleAwsEc2ClientVpnEndpoint.id
 ///   subnet_id              = exampleAwsSubnet.id
 /// }
@@ -98,8 +101,8 @@ import 'network_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new NetworkAssociation("example", NetworkAssociationArgs.builder()
-///             .clientVpnEndpointId(exampleAwsEc2ClientVpnEndpoint.id())
-///             .subnetId(exampleAwsSubnet.id())
+///             .clientVpnEndpointId(exampleAwsEc2ClientVpnEndpoint.get("id"))
+///             .subnetId(exampleAwsSubnet.get("id"))
 ///             .build());
 ///
 ///     }
@@ -146,7 +149,7 @@ class NetworkAssociation extends pulumi.CustomResource {
           'aws:ec2clientvpn/networkAssociation:NetworkAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     associationId = registerOutput<String>('associationId');
     clientVpnEndpointId = registerOutput<String>('clientVpnEndpointId');

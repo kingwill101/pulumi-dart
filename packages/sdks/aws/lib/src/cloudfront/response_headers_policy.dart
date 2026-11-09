@@ -143,7 +143,7 @@ import 'response_headers_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -151,15 +151,18 @@ import 'response_headers_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_responseheaderspolicy" "example" {
-///   cors_config = {
-///     access_control_allow_headers = {
+/// resource "aws_cloudfront_response_headers_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cors_config {
+///     access_control_allow_headers {
 ///       items = ["test"]
 ///     }
-///     access_control_allow_methods = {
+///     access_control_allow_methods {
 ///       items = ["GET"]
 ///     }
-///     access_control_allow_origins = {
+///     access_control_allow_origins {
 ///       items = ["test.example.comtest"]
 ///     }
 ///     access_control_allow_credentials = true
@@ -351,7 +354,7 @@ import 'response_headers_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -359,17 +362,21 @@ import 'response_headers_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_responseheaderspolicy" "example" {
-///   custom_headers_config = {
-///     items = [{
-///       "header"   = "X-Permitted-Cross-Domain-Policies"
-///       "override" = true
-///       "value"    = "none"
-///       }, {
-///       "header"   = "X-Test"
-///       "override" = true
-///       "value"    = "none"
-///     }]
+/// resource "aws_cloudfront_response_headers_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   custom_headers_config {
+///     items {
+///       header   = "X-Permitted-Cross-Domain-Policies"
+///       override = true
+///       value    = "none"
+///     }
+///     items {
+///       header   = "X-Test"
+///       override = true
+///       value    = "none"
+///     }
 ///   }
 ///   name = "example-headers-policy"
 /// }
@@ -521,7 +528,7 @@ import 'response_headers_policy_state.dart';
 ///         ServerTimingHeadersConfig = new Aws.CloudFront.Inputs.ResponseHeadersPolicyServerTimingHeadersConfigArgs
 ///         {
 ///             Enabled = true,
-///             SamplingRate = 50,
+///             SamplingRate = 50.0,
 ///         },
 ///         Name = "example-headers-policy",
 ///     });
@@ -569,7 +576,7 @@ import 'response_headers_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -577,20 +584,23 @@ import 'response_headers_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_responseheaderspolicy" "example" {
-///   custom_headers_config = {
-///     items = [{
-///       "header"   = "X-Permitted-Cross-Domain-Policies"
-///       "override" = true
-///       "value"    = "none"
-///     }]
+/// resource "aws_cloudfront_response_headers_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   remove_headers_config = {
-///     items = [{
-///       "header" = "Set-Cookie"
-///     }]
+///   custom_headers_config {
+///     items {
+///       header   = "X-Permitted-Cross-Domain-Policies"
+///       override = true
+///       value    = "none"
+///     }
 ///   }
-///   server_timing_headers_config = {
+///   remove_headers_config {
+///     items {
+///       header = "Set-Cookie"
+///     }
+///   }
+///   server_timing_headers_config {
 ///     enabled       = true
 ///     sampling_rate = 50
 ///   }
@@ -705,7 +715,7 @@ class ResponseHeadersPolicy extends pulumi.CustomResource {
           'aws:cloudfront/responseHeadersPolicy:ResponseHeadersPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String?>('comment');

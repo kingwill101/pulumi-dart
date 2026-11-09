@@ -66,7 +66,7 @@ import 'role_membership_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'role_membership_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_quicksight_rolemembership" "example" {
+/// resource "aws_quicksight_role_membership" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   member_name = "example-group"
 ///   role        = "READER"
 /// }
@@ -151,7 +154,7 @@ class RoleMembership extends pulumi.CustomResource {
           'aws:quicksight/roleMembership:RoleMembership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     memberName = registerOutput<String>('memberName');

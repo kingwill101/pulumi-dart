@@ -61,7 +61,7 @@ import 'application_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,6 +70,9 @@ import 'application_timeouts.dart';
 /// }
 ///
 /// resource "aws_opensearch_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-opensearch-app"
 /// }
 /// ```
@@ -224,7 +227,7 @@ import 'application_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -233,11 +236,14 @@ import 'application_timeouts.dart';
 /// }
 ///
 /// resource "aws_opensearch_application" "example" {
-///   app_configs {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   app_config {
 ///     key   = "opensearchDashboards.dashboardAdmin.users"
 ///     value = "admin-user"
 ///   }
-///   app_configs {
+///   app_config {
 ///     key   = "opensearchDashboards.dashboardAdmin.groups"
 ///     value = "admin-group"
 ///   }
@@ -446,7 +452,7 @@ import 'application_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -455,10 +461,13 @@ import 'application_timeouts.dart';
 /// }
 ///
 /// resource "aws_opensearch_domain" "example" {
-///   cluster_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_config {
 ///     instance_type = "t3.small.search"
 ///   }
-///   ebs_options = {
+///   ebs_options {
 ///     ebs_enabled = true
 ///     volume_size = 20
 ///   }
@@ -466,7 +475,10 @@ import 'application_timeouts.dart';
 ///   engine_version = "OpenSearch_2.3"
 /// }
 /// resource "aws_opensearch_application" "example" {
-///   data_sources {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   data_source {
 ///     data_source_arn         = aws_opensearch_domain.example.arn
 ///     data_source_description = "Primary OpenSearch domain for analytics"
 ///   }
@@ -947,7 +959,7 @@ import 'application_timeouts.dart';
 /// 		}
 /// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
 /// 			"Version": "2012-10-17",
-/// 			"Statement": []map[string]interface{}{
+/// 			"Statement": []interface{}{
 /// 				map[string]interface{}{
 /// 					"Effect": "Allow",
 /// 					"Principal": map[string]string{
@@ -1008,7 +1020,7 @@ import 'application_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1016,15 +1028,18 @@ import 'application_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getregion" "currentGetRegion" {
+/// data "aws_region" "currentGetRegion" {
 /// }
 ///
 /// # IAM Policy for OpenSearch Application Identity Center Integration
 /// resource "aws_iam_policy" "opensearch_identity_center" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "opensearch-identity-center-policy"
 ///   description = "Policy for OpenSearch Application Identity Center integration"
 ///   policy = jsonencode({
@@ -1054,6 +1069,9 @@ import 'application_timeouts.dart';
 /// }
 /// # IAM Role for OpenSearch Application
 /// resource "aws_iam_role" "opensearch_application" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "opensearch-application-role"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -1071,21 +1089,27 @@ import 'application_timeouts.dart';
 ///       "Action" = "sts:SetContext"
 ///       "Condition" = {
 ///         "ForAllValues:ArnEquals" = {
-///           "sts:RequestContextProviders" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:oidc-provider/portal.sso.${data.aws_getregion.currentGetRegion.id}.amazonaws.com/apl/*"
+///           "sts:RequestContextProviders" ="arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/portal.sso.${data.aws_region.currentGetRegion.id}.amazonaws.com/apl/*"
 ///         }
 ///       }
 ///     }]
 ///   })
 /// }
 /// # Attach policy to role
-/// resource "aws_iam_rolepolicyattachment" "opensearch_identity_center" {
+/// resource "aws_iam_role_policy_attachment" "opensearch_identity_center" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role       = aws_iam_role.opensearch_application.name
 ///   policy_arn = aws_iam_policy.opensearch_identity_center.arn
 /// }
 /// resource "aws_opensearch_application" "example" {
-///   iam_identity_center_options = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   iam_identity_center_options {
 ///     enabled                                      = true
-///     iam_identity_center_instance_arn             = data.aws_ssoadmin_getinstances.example.arns[0]
+///     iam_identity_center_instance_arn             = data.aws_ssoadmin_instances.example.arns[0]
 ///     iam_role_for_identity_center_application_arn = aws_iam_role.opensearch_application.arn
 ///   }
 ///   name = "my-opensearch-app"
@@ -1358,7 +1382,7 @@ class Application extends pulumi.CustomResource {
           'aws:opensearch/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     appConfigs = registerOutput<List<ApplicationAppConfig>?>('appConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationAppConfig>(guardedValue, (value) => ApplicationAppConfig.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');

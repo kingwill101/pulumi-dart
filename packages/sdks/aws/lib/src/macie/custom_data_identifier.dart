@@ -108,7 +108,7 @@ import 'custom_data_identifier_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -117,9 +117,15 @@ import 'custom_data_identifier_state.dart';
 /// }
 ///
 /// resource "aws_macie2_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_macie_customdataidentifier" "example" {
-///   depends_on             = [test]
+/// resource "aws_macie_custom_data_identifier" "example" {
+///   depends_on = [test]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "NAME OF CUSTOM DATA IDENTIFIER"
 ///   regex                  = "[0-9]{3}-[0-9]{2}-[0-9]{4}"
 ///   description            = "DESCRIPTION"
@@ -234,7 +240,7 @@ class CustomDataIdentifier extends pulumi.CustomResource {
           'aws:macie/customDataIdentifier:CustomDataIdentifier',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');

@@ -77,7 +77,7 @@ import 'email_identity_feedback_attributes_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -85,11 +85,17 @@ import 'email_identity_feedback_attributes_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sesv2_emailidentity" "example" {
+/// resource "aws_sesv2_email_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   email_identity = "example.com"
 /// }
-/// resource "aws_sesv2_emailidentityfeedbackattributes" "example" {
-///   email_identity           = aws_sesv2_emailidentity.example.email_identity
+/// resource "aws_sesv2_email_identity_feedback_attributes" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   email_identity           = aws_sesv2_email_identity.example.email_identity
 ///   email_forwarding_enabled = true
 /// }
 /// ```
@@ -170,7 +176,7 @@ class EmailIdentityFeedbackAttributes extends pulumi.CustomResource {
           'aws:sesv2/emailIdentityFeedbackAttributes:EmailIdentityFeedbackAttributes',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     emailForwardingEnabled = registerOutput<bool?>('emailForwardingEnabled');
     emailIdentity = registerOutput<String>('emailIdentity');

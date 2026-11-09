@@ -195,7 +195,7 @@ import 'global_cluster_state.dart';
 /// 			MasterUsername:          pulumi.String("username"),
 /// 			MasterPassword:          pulumi.String("somepass123"),
 /// 			DatabaseName:            pulumi.String("example_db"),
-/// 			GlobalClusterIdentifier: example.ID().ToIDOutput().ToStringOutput(),
+/// 			GlobalClusterIdentifier: example.ID(),
 /// 			DbSubnetGroupName:       pulumi.String("default"),
 /// 		})
 /// 		if err != nil {
@@ -205,7 +205,7 @@ import 'global_cluster_state.dart';
 /// 			Engine:            example.Engine.ApplyT(func(x *string) rds.EngineType { return rds.EngineType(*x) }).(rds.EngineTypeOutput),
 /// 			EngineVersion:     example.EngineVersion,
 /// 			Identifier:        pulumi.String("test-primary-cluster-instance"),
-/// 			ClusterIdentifier: primary.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterIdentifier: primary.ID(),
 /// 			InstanceClass:     pulumi.String(rds.InstanceType_R4_Large),
 /// 			DbSubnetGroupName: pulumi.String("default"),
 /// 		})
@@ -216,7 +216,7 @@ import 'global_cluster_state.dart';
 /// 			Engine:                  example.Engine,
 /// 			EngineVersion:           example.EngineVersion,
 /// 			ClusterIdentifier:       pulumi.String("test-secondary-cluster"),
-/// 			GlobalClusterIdentifier: example.ID().ToIDOutput().ToStringOutput(),
+/// 			GlobalClusterIdentifier: example.ID(),
 /// 			DbSubnetGroupName:       pulumi.String("default"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			primaryClusterInstance,
@@ -230,7 +230,7 @@ import 'global_cluster_state.dart';
 /// 			Engine:            example.Engine.ApplyT(func(x *string) rds.EngineType { return rds.EngineType(*x) }).(rds.EngineTypeOutput),
 /// 			EngineVersion:     example.EngineVersion,
 /// 			Identifier:        pulumi.String("test-secondary-cluster-instance"),
-/// 			ClusterIdentifier: secondary.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterIdentifier: secondary.ID(),
 /// 			InstanceClass:     pulumi.String(rds.InstanceType_R4_Large),
 /// 			DbSubnetGroupName: pulumi.String("default"),
 /// 		})
@@ -242,7 +242,7 @@ import 'global_cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -250,44 +250,57 @@ import 'global_cluster_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_rds_globalcluster" "example" {
+/// resource "aws_rds_global_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   global_cluster_identifier = "global-test"
 ///   engine                    = "aurora"
 ///   engine_version            = "5.6.mysql_aurora.1.22.2"
 ///   database_name             = "example_db"
 /// }
 /// resource "aws_rds_cluster" "primary" {
-///   engine                    = aws_rds_globalcluster.example.engine
-///   engine_version            = aws_rds_globalcluster.example.engine_version
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   engine                    = aws_rds_global_cluster.example.engine
+///   engine_version            = aws_rds_global_cluster.example.engine_version
 ///   cluster_identifier        = "test-primary-cluster"
 ///   master_username           = "username"
 ///   master_password           = "somepass123"
 ///   database_name             = "example_db"
-///   global_cluster_identifier = aws_rds_globalcluster.example.id
+///   global_cluster_identifier = aws_rds_global_cluster.example.id
 ///   db_subnet_group_name      = "default"
 /// }
-/// resource "aws_rds_clusterinstance" "primary" {
-///   engine               = aws_rds_globalcluster.example.engine
-///   engine_version       = aws_rds_globalcluster.example.engine_version
+/// resource "aws_rds_cluster_instance" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   engine               = aws_rds_global_cluster.example.engine
+///   engine_version       = aws_rds_global_cluster.example.engine_version
 ///   identifier           = "test-primary-cluster-instance"
 ///   cluster_identifier   = aws_rds_cluster.primary.id
 ///   instance_class       = "db.r4.large"
 ///   db_subnet_group_name = "default"
 /// }
 /// resource "aws_rds_cluster" "secondary" {
+///   depends_on = [aws_rds_cluster_instance.primary]
 ///   lifecycle {
-///     ignore_changes = [replicationSourceIdentifier]
+///     ignore_changes        = [replicationSourceIdentifier]
+///     create_before_destroy = true
 ///   }
-///   depends_on                = [aws_rds_clusterinstance.primary]
-///   engine                    = aws_rds_globalcluster.example.engine
-///   engine_version            = aws_rds_globalcluster.example.engine_version
+///   engine                    = aws_rds_global_cluster.example.engine
+///   engine_version            = aws_rds_global_cluster.example.engine_version
 ///   cluster_identifier        = "test-secondary-cluster"
-///   global_cluster_identifier = aws_rds_globalcluster.example.id
+///   global_cluster_identifier = aws_rds_global_cluster.example.id
 ///   db_subnet_group_name      = "default"
 /// }
-/// resource "aws_rds_clusterinstance" "secondary" {
-///   engine               = aws_rds_globalcluster.example.engine
-///   engine_version       = aws_rds_globalcluster.example.engine_version
+/// resource "aws_rds_cluster_instance" "secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   engine               = aws_rds_global_cluster.example.engine
+///   engine_version       = aws_rds_global_cluster.example.engine_version
 ///   identifier           = "test-secondary-cluster-instance"
 ///   cluster_identifier   = aws_rds_cluster.secondary.id
 ///   instance_class       = "db.r4.large"
@@ -615,7 +628,7 @@ import 'global_cluster_state.dart';
 /// 			MasterUsername:          pulumi.String("username"),
 /// 			MasterPassword:          pulumi.String("somepass123"),
 /// 			DatabaseName:            pulumi.String("example_db"),
-/// 			GlobalClusterIdentifier: example.ID().ToIDOutput().ToStringOutput(),
+/// 			GlobalClusterIdentifier: example.ID(),
 /// 			DbSubnetGroupName:       pulumi.String("default"),
 /// 		})
 /// 		if err != nil {
@@ -625,7 +638,7 @@ import 'global_cluster_state.dart';
 /// 			Engine:            example.Engine.ApplyT(func(x *string) rds.EngineType { return rds.EngineType(*x) }).(rds.EngineTypeOutput),
 /// 			EngineVersion:     example.EngineVersion,
 /// 			Identifier:        pulumi.String("test-primary-cluster-instance"),
-/// 			ClusterIdentifier: primary.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterIdentifier: primary.ID(),
 /// 			InstanceClass:     pulumi.String(rds.InstanceType_R4_Large),
 /// 			DbSubnetGroupName: pulumi.String("default"),
 /// 		})
@@ -636,7 +649,7 @@ import 'global_cluster_state.dart';
 /// 			Engine:                  example.Engine,
 /// 			EngineVersion:           example.EngineVersion,
 /// 			ClusterIdentifier:       pulumi.String("test-secondary-cluster"),
-/// 			GlobalClusterIdentifier: example.ID().ToIDOutput().ToStringOutput(),
+/// 			GlobalClusterIdentifier: example.ID(),
 /// 			SkipFinalSnapshot:       pulumi.Bool(true),
 /// 			DbSubnetGroupName:       pulumi.String("default"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -651,7 +664,7 @@ import 'global_cluster_state.dart';
 /// 			Engine:            example.Engine.ApplyT(func(x *string) rds.EngineType { return rds.EngineType(*x) }).(rds.EngineTypeOutput),
 /// 			EngineVersion:     example.EngineVersion,
 /// 			Identifier:        pulumi.String("test-secondary-cluster-instance"),
-/// 			ClusterIdentifier: secondary.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterIdentifier: secondary.ID(),
 /// 			InstanceClass:     pulumi.String(rds.InstanceType_R4_Large),
 /// 			DbSubnetGroupName: pulumi.String("default"),
 /// 		})
@@ -663,7 +676,7 @@ import 'global_cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -671,45 +684,58 @@ import 'global_cluster_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_rds_globalcluster" "example" {
+/// resource "aws_rds_global_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   global_cluster_identifier = "global-test"
 ///   engine                    = "aurora-postgresql"
 ///   engine_version            = "11.9"
 ///   database_name             = "example_db"
 /// }
 /// resource "aws_rds_cluster" "primary" {
-///   engine                    = aws_rds_globalcluster.example.engine
-///   engine_version            = aws_rds_globalcluster.example.engine_version
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   engine                    = aws_rds_global_cluster.example.engine
+///   engine_version            = aws_rds_global_cluster.example.engine_version
 ///   cluster_identifier        = "test-primary-cluster"
 ///   master_username           = "username"
 ///   master_password           = "somepass123"
 ///   database_name             = "example_db"
-///   global_cluster_identifier = aws_rds_globalcluster.example.id
+///   global_cluster_identifier = aws_rds_global_cluster.example.id
 ///   db_subnet_group_name      = "default"
 /// }
-/// resource "aws_rds_clusterinstance" "primary" {
-///   engine               = aws_rds_globalcluster.example.engine
-///   engine_version       = aws_rds_globalcluster.example.engine_version
+/// resource "aws_rds_cluster_instance" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   engine               = aws_rds_global_cluster.example.engine
+///   engine_version       = aws_rds_global_cluster.example.engine_version
 ///   identifier           = "test-primary-cluster-instance"
 ///   cluster_identifier   = aws_rds_cluster.primary.id
 ///   instance_class       = "db.r4.large"
 ///   db_subnet_group_name = "default"
 /// }
 /// resource "aws_rds_cluster" "secondary" {
+///   depends_on = [aws_rds_cluster_instance.primary]
 ///   lifecycle {
-///     ignore_changes = [replicationSourceIdentifier]
+///     ignore_changes        = [replicationSourceIdentifier]
+///     create_before_destroy = true
 ///   }
-///   depends_on                = [aws_rds_clusterinstance.primary]
-///   engine                    = aws_rds_globalcluster.example.engine
-///   engine_version            = aws_rds_globalcluster.example.engine_version
+///   engine                    = aws_rds_global_cluster.example.engine
+///   engine_version            = aws_rds_global_cluster.example.engine_version
 ///   cluster_identifier        = "test-secondary-cluster"
-///   global_cluster_identifier = aws_rds_globalcluster.example.id
+///   global_cluster_identifier = aws_rds_global_cluster.example.id
 ///   skip_final_snapshot       = true
 ///   db_subnet_group_name      = "default"
 /// }
-/// resource "aws_rds_clusterinstance" "secondary" {
-///   engine               = aws_rds_globalcluster.example.engine
-///   engine_version       = aws_rds_globalcluster.example.engine_version
+/// resource "aws_rds_cluster_instance" "secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   engine               = aws_rds_global_cluster.example.engine
+///   engine_version       = aws_rds_global_cluster.example.engine_version
 ///   identifier           = "test-secondary-cluster-instance"
 ///   cluster_identifier   = aws_rds_cluster.secondary.id
 ///   instance_class       = "db.r4.large"
@@ -932,7 +958,7 @@ import 'global_cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -942,10 +968,14 @@ import 'global_cluster_state.dart';
 ///
 /// resource "aws_rds_cluster" "example" {
 ///   lifecycle {
-///     ignore_changes = [globalClusterIdentifier]
+///     ignore_changes        = [globalClusterIdentifier]
+///     create_before_destroy = true
 ///   }
 /// }
-/// resource "aws_rds_globalcluster" "example" {
+/// resource "aws_rds_global_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   force_destroy                = true
 ///   global_cluster_identifier    = "example"
 ///   source_db_cluster_identifier = aws_rds_cluster.example.arn
@@ -1142,7 +1172,7 @@ import 'global_cluster_state.dart';
 /// 			DatabaseName:             pulumi.String("totoro"),
 /// 			Engine:                   example.Engine,
 /// 			EngineVersion:            example.EngineVersion,
-/// 			GlobalClusterIdentifier:  example.ID().ToIDOutput().ToStringOutput(),
+/// 			GlobalClusterIdentifier:  example.ID(),
 /// 			MasterPassword:           pulumi.String("satsukimae"),
 /// 			MasterUsername:           pulumi.String("maesatsuki"),
 /// 			SkipFinalSnapshot:        pulumi.Bool(true),
@@ -1154,7 +1184,7 @@ import 'global_cluster_state.dart';
 /// 		}
 /// 		_, err = rds.NewClusterInstance(ctx, "primary", &rds.ClusterInstanceArgs{
 /// 			ApplyImmediately:  pulumi.Bool(true),
-/// 			ClusterIdentifier: primary.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterIdentifier: primary.ID(),
 /// 			Engine:            primary.Engine.ApplyT(func(x *string) rds.EngineType { return rds.EngineType(*x) }).(rds.EngineTypeOutput),
 /// 			EngineVersion:     primary.EngineVersion,
 /// 			Identifier:        pulumi.String("donetsklviv"),
@@ -1168,7 +1198,7 @@ import 'global_cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1176,27 +1206,34 @@ import 'global_cluster_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_rds_globalcluster" "example" {
+/// resource "aws_rds_global_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   global_cluster_identifier = "kyivkharkiv"
 ///   engine                    = "aurora-mysql"
 ///   engine_version            = "5.7.mysql_aurora.2.07.5"
 /// }
 /// resource "aws_rds_cluster" "primary" {
 ///   lifecycle {
-///     ignore_changes = [engineVersion]
+///     ignore_changes        = [engineVersion]
+///     create_before_destroy = true
 ///   }
 ///   allow_major_version_upgrade = true
 ///   apply_immediately           = true
 ///   cluster_identifier          = "odessadnipro"
 ///   database_name               = "totoro"
-///   engine                      = aws_rds_globalcluster.example.engine
-///   engine_version              = aws_rds_globalcluster.example.engine_version
-///   global_cluster_identifier   = aws_rds_globalcluster.example.id
+///   engine                      = aws_rds_global_cluster.example.engine
+///   engine_version              = aws_rds_global_cluster.example.engine_version
+///   global_cluster_identifier   = aws_rds_global_cluster.example.id
 ///   master_password             = "satsukimae"
 ///   master_username             = "maesatsuki"
 ///   skip_final_snapshot         = true
 /// }
-/// resource "aws_rds_clusterinstance" "primary" {
+/// resource "aws_rds_cluster_instance" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   apply_immediately  = true
 ///   cluster_identifier = aws_rds_cluster.primary.id
 ///   engine             = aws_rds_cluster.primary.engine
@@ -1369,7 +1406,7 @@ import 'global_cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1377,9 +1414,10 @@ import 'global_cluster_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_rds_globalcluster" "example" {
+/// resource "aws_rds_global_cluster" "example" {
 ///   lifecycle {
-///     ignore_changes = [sourceDbClusterIdentifier]
+///     ignore_changes        = [sourceDbClusterIdentifier]
+///     create_before_destroy = true
 ///   }
 /// }
 /// ```
@@ -1472,7 +1510,7 @@ class GlobalCluster extends pulumi.CustomResource {
           'aws:rds/globalCluster:GlobalCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     databaseName = registerOutput<String>('databaseName');

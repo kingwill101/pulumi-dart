@@ -337,7 +337,7 @@ import 'service_region_vpc_settings.dart';
 ///     key0 := index
 ///     val0 := index
 /// __res, err := ec2.NewSubnet(ctx, fmt.Sprintf("example-%v", key0), &ec2.SubnetArgs{
-/// VpcId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// VpcId: exampleVpc.ID(),
 /// AvailabilityZone: pulumi.String(available.Names[val0]),
 /// CidrBlock: std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
 /// Input: exampleVpc.CidrBlock,
@@ -355,7 +355,7 @@ import 'service_region_vpc_settings.dart';
 /// }
 /// exampleDirectory, err := directoryservice.NewDirectory(ctx, "example", &directoryservice.DirectoryArgs{
 /// VpcSettings: &directoryservice.DirectoryVpcSettingsArgs{
-/// VpcId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// VpcId: exampleVpc.ID(),
 /// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:41,17-36)),
 /// },
 /// Name: pulumi.String("example.com"),
@@ -393,7 +393,7 @@ import 'service_region_vpc_settings.dart';
 ///     key0 := index
 ///     val0 := index
 /// __res, err := ec2.NewSubnet(ctx, fmt.Sprintf("example-secondary-%v", key0), &ec2.SubnetArgs{
-/// VpcId: example_secondary.ID().ToIDOutput().ToStringOutput(),
+/// VpcId: example_secondary.ID(),
 /// AvailabilityZone: pulumi.String(available_secondary.Names[val0]),
 /// CidrBlock: std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
 /// Input: example_secondary.CidrBlock,
@@ -411,10 +411,10 @@ import 'service_region_vpc_settings.dart';
 /// }
 /// _, err = directoryservice.NewServiceRegion(ctx, "example", &directoryservice.ServiceRegionArgs{
 /// VpcSettings: &directoryservice.ServiceRegionVpcSettingsArgs{
-/// VpcId: example_secondary.ID().ToIDOutput().ToStringOutput(),
+/// VpcId: example_secondary.ID(),
 /// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:85,17-46)),
 /// },
-/// DirectoryId: exampleDirectory.ID().ToIDOutput().ToStringOutput(),
+/// DirectoryId: exampleDirectory.ID(),
 /// RegionName: pulumi.String(example.Region),
 /// Tags: pulumi.StringMap{
 /// "Name": pulumi.String("Secondary"),
@@ -428,7 +428,7 @@ import 'service_region_vpc_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -439,17 +439,17 @@ import 'service_region_vpc_settings.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "example" {
+/// data "aws_region" "example" {
 /// }
-/// data "aws_getavailabilityzones" "available" {
-///   filters {
+/// data "aws_availability_zones" "available" {
+///   filter {
 ///     name   = "opt-in-status"
 ///     values = ["opt-in-not-required"]
 ///   }
 ///   state = "available"
 /// }
-/// data "aws_getavailabilityzones" "available-secondary" {
-///   filters {
+/// data "aws_availability_zones" "available-secondary" {
+///   filter {
 ///     name   = "opt-in-status"
 ///     values = ["opt-in-not-required"]
 ///   }
@@ -457,21 +457,33 @@ import 'service_region_vpc_settings.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 ///   tags = {
 ///     "Name" = "Primary"
 ///   }
 /// }
 /// resource "aws_ec2_subnet" "example" {
-///   count             = 2
+///   count = 2
+///   pulumi {
+///     name ="example-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.example.id
-///   availability_zone = data.aws_getavailabilityzones.available.names[count.index]
+///   availability_zone = data.aws_availability_zones.available.names[count.index]
 ///   cidr_block        = cidrsubnet(aws_ec2_vpc.example.cidr_block, 8, count.index)
 ///   tags = {
 ///     "Name" = "Primary"
 ///   }
 /// }
 /// resource "aws_directoryservice_directory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_settings = {
 ///     vpc_id     = aws_ec2_vpc.example.id
 ///     subnet_ids = aws_ec2_subnet.example[*].id
@@ -481,27 +493,39 @@ import 'service_region_vpc_settings.dart';
 ///   type     = "MicrosoftAD"
 /// }
 /// resource "aws_ec2_vpc" "example-secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.1.0.0/16"
 ///   tags = {
 ///     "Name" = "Secondary"
 ///   }
 /// }
 /// resource "aws_ec2_subnet" "example-secondary" {
-///   count             = 2
+///   count = 2
+///   pulumi {
+///     name ="example-secondary-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.example-secondary.id
-///   availability_zone = data.aws_getavailabilityzones.available-secondary.names[count.index]
+///   availability_zone = data.aws_availability_zones.available-secondary.names[count.index]
 ///   cidr_block        = cidrsubnet(aws_ec2_vpc.example-secondary.cidr_block, 8, count.index)
 ///   tags = {
 ///     "Name" = "Secondary"
 ///   }
 /// }
-/// resource "aws_directoryservice_serviceregion" "example" {
+/// resource "aws_directoryservice_service_region" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_settings = {
 ///     vpc_id     = aws_ec2_vpc.example-secondary.id
 ///     subnet_ids = aws_ec2_subnet.example-secondary[*].id
 ///   }
 ///   directory_id = aws_directoryservice_directory.example.id
-///   region_name  = data.aws_getregion.example.region
+///   region_name  = data.aws_region.example.region
 ///   tags = {
 ///     "Name" = "Secondary"
 ///   }
@@ -660,7 +684,7 @@ class ServiceRegion extends pulumi.CustomResource {
           'aws:directoryservice/serviceRegion:ServiceRegion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     desiredNumberOfDomainControllers = registerOutput<int>('desiredNumberOfDomainControllers');
     directoryId = registerOutput<String>('directoryId');

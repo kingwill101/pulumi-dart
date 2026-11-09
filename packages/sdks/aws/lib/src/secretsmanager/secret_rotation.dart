@@ -79,7 +79,7 @@ import 'secret_rotation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -87,8 +87,11 @@ import 'secret_rotation_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_secretsmanager_secretrotation" "example" {
-///   rotation_rules = {
+/// resource "aws_secretsmanager_secret_rotation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rotation_rules {
 ///     automatically_after_days = 30
 ///   }
 ///   secret_id           = exampleAwsSecretsmanagerSecret.id
@@ -121,8 +124,8 @@ import 'secret_rotation_state.dart';
 ///             .rotationRules(SecretRotationRotationRulesArgs.builder()
 ///                 .automaticallyAfterDays(30)
 ///                 .build())
-///             .secretId(exampleAwsSecretsmanagerSecret.id())
-///             .rotationLambdaArn(exampleAwsLambdaFunction.arn())
+///             .secretId(exampleAwsSecretsmanagerSecret.get("id"))
+///             .rotationLambdaArn(exampleAwsLambdaFunction.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -155,7 +158,7 @@ import 'secret_rotation_state.dart';
 /// });
 /// const exampleSecretRotation = new aws.secretsmanager.SecretRotation("example", {
 ///     rotationRules: {
-///         automaticallyAfterDays: Number(rotationDays),
+///         automaticallyAfterDays: rotationDays,
 ///     },
 ///     externalSecretRotationMetadatas: [
 ///         {
@@ -180,7 +183,7 @@ import 'secret_rotation_state.dart';
 ///     type="SalesforceClientSecret")
 /// example_secret_rotation = aws.secretsmanager.SecretRotation("example",
 ///     rotation_rules={
-///         "automatically_after_days": int(rotation_days),
+///         "automatically_after_days": rotation_days,
 ///     },
 ///     external_secret_rotation_metadatas=[
 ///         {
@@ -265,7 +268,7 @@ import 'secret_rotation_state.dart';
 /// 					Value: pulumi.String("v65.0"),
 /// 				},
 /// 			},
-/// 			SecretId:                      example.ID().ToIDOutput().ToStringOutput(),
+/// 			SecretId:                      example.ID(),
 /// 			ExternalSecretRotationRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
@@ -276,7 +279,7 @@ import 'secret_rotation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -285,18 +288,24 @@ import 'secret_rotation_state.dart';
 /// }
 ///
 /// resource "aws_secretsmanager_secret" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-salesforce-client-secret"
 ///   type = "SalesforceClientSecret"
 /// }
-/// resource "aws_secretsmanager_secretrotation" "example" {
-///   rotation_rules = {
+/// resource "aws_secretsmanager_secret_rotation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rotation_rules {
 ///     automatically_after_days = rotationDays
 ///   }
-///   external_secret_rotation_metadatas {
+///   external_secret_rotation_metadata {
 ///     key   = "adminSecretArn"
 ///     value = aws_secretsmanager_secret.example.arn
 ///   }
-///   external_secret_rotation_metadatas {
+///   external_secret_rotation_metadata {
 ///     key   = "apiVersion"
 ///     value = "v65.0"
 ///   }
@@ -348,7 +357,7 @@ import 'secret_rotation_state.dart';
 ///                     .value("v65.0")
 ///                     .build())
 ///             .secretId(example.id())
-///             .externalSecretRotationRoleArn(exampleAwsIamRole.arn())
+///             .externalSecretRotationRoleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -455,7 +464,7 @@ import 'secret_rotation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -464,9 +473,15 @@ import 'secret_rotation_state.dart';
 /// }
 ///
 /// resource "aws_rds_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   manage_master_user_password = true
 /// }
-/// resource "aws_secretsmanager_secretrotation" "example" {
+/// resource "aws_secretsmanager_secret_rotation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id        = aws_rds_instance.example.master_user_secrets[0].secret_arn
 ///   rotation_enabled = false
 /// }
@@ -499,7 +514,7 @@ import 'secret_rotation_state.dart';
 ///             .build());
 ///
 ///         var exampleSecretRotation = new SecretRotation("exampleSecretRotation", SecretRotationArgs.builder()
-///             .secretId(example.masterUserSecrets().applyValue(_masterUserSecrets -> _masterUserSecrets[0].secretArn()))
+///             .secretId(example.masterUserSecrets().applyValue(_masterUserSecrets -> _masterUserSecrets.get(0).secretArn()))
 ///             .rotationEnabled(false)
 ///             .build());
 ///
@@ -586,7 +601,7 @@ import 'secret_rotation_state.dart';
 ///             {
 ///                 { "automaticallyAfterDays", 30 },
 ///             },
-///         } : new[] {}),
+///         } : new object?[] {}),
 ///         SecretId = exampleAwsDbInstance.MasterUserSecret[0].SecretArn,
 ///         RotationEnabled = rotationEnabled,
 ///     });
@@ -629,7 +644,7 @@ import 'secret_rotation_state.dart';
 /// 			tmp0 = []interface{}{}
 /// 		}
 /// 		_, err := secretsmanager.NewSecretRotation(ctx, "example", &secretsmanager.SecretRotationArgs{
-/// 			RotationRules:   singleOrNone(tmp0),
+/// 			RotationRules:   secretsmanager.SecretRotationRotationRulesArgs(singleOrNone(tmp0)),
 /// 			SecretId:        pulumi.Any(exampleAwsDbInstance.MasterUserSecret[0].SecretArn),
 /// 			RotationEnabled: pulumi.Bool(rotationEnabled),
 /// 		})
@@ -641,7 +656,7 @@ import 'secret_rotation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -649,10 +664,15 @@ import 'secret_rotation_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_secretsmanager_secretrotation" "example" {
-///   rotation_rules = one(var.rotationEnabled ? [{
-///     "automaticallyAfterDays" = 30
-///   }] : [])
+/// resource "aws_secretsmanager_secret_rotation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rotation_rules {
+///     content = one(var.rotationEnabled ? [{
+///       "automaticallyAfterDays" = 30
+///     }] : [])
+///   }
 ///   secret_id        = exampleAwsDbInstance.masterUserSecret[0].secretArn
 ///   rotation_enabled = var.rotationEnabled
 /// }
@@ -715,7 +735,7 @@ class SecretRotation extends pulumi.CustomResource {
           'aws:secretsmanager/secretRotation:SecretRotation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     externalSecretRotationMetadatas = registerOutput<List<SecretRotationExternalSecretRotationMetadata>?>('externalSecretRotationMetadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretRotationExternalSecretRotationMetadata>(guardedValue, (value) => SecretRotationExternalSecretRotationMetadata.fromMap((value as Map).cast<String, dynamic>())); });
     externalSecretRotationRoleArn = registerOutput<String?>('externalSecretRotationRoleArn');

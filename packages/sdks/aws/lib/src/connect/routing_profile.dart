@@ -185,7 +185,7 @@ import 'routing_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -193,16 +193,19 @@ import 'routing_profile_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_connect_routingprofile" "example" {
+/// resource "aws_connect_routing_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   media_concurrencies {
-///     cross_channel_behavior = {
+///     cross_channel_behavior {
 ///       behavior_type = "ROUTE_ANY_CHANNEL"
 ///     }
 ///     channel     = "VOICE"
 ///     concurrency = 1
 ///   }
 ///   media_concurrencies {
-///     cross_channel_behavior = {
+///     cross_channel_behavior {
 ///       behavior_type = "ROUTE_CURRENT_CHANNEL_ONLY"
 ///     }
 ///     channel     = "CHAT"
@@ -351,7 +354,7 @@ class RoutingProfile extends pulumi.CustomResource {
           'aws:connect/routingProfile:RoutingProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultOutboundQueueId = registerOutput<String>('defaultOutboundQueueId');

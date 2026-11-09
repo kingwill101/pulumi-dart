@@ -120,7 +120,7 @@ import 'xss_match_set_xss_match_tuple.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -128,15 +128,18 @@ import 'xss_match_set_xss_match_tuple.dart';
 ///   }
 /// }
 ///
-/// resource "aws_waf_xssmatchset" "xss_match_set" {
+/// resource "aws_waf_xss_match_set" "xss_match_set" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   xss_match_tuples {
-///     field_to_match = {
+///     field_to_match {
 ///       type = "URI"
 ///     }
 ///     text_transformation = "NONE"
 ///   }
 ///   xss_match_tuples {
-///     field_to_match = {
+///     field_to_match {
 ///       type = "QUERY_STRING"
 ///     }
 ///     text_transformation = "NONE"
@@ -231,7 +234,7 @@ class XssMatchSet extends pulumi.CustomResource {
           'aws:waf/xssMatchSet:XssMatchSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

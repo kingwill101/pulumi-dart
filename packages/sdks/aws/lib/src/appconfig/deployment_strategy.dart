@@ -54,7 +54,7 @@ import 'deployment_strategy_state.dart';
 ///         Description = "Example Deployment Strategy",
 ///         DeploymentDurationInMinutes = 3,
 ///         FinalBakeTimeInMinutes = 4,
-///         GrowthFactor = 10,
+///         GrowthFactor = 10.0,
 ///         GrowthType = "LINEAR",
 ///         ReplicateTo = "NONE",
 ///         Tags =
@@ -95,7 +95,7 @@ import 'deployment_strategy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -103,7 +103,10 @@ import 'deployment_strategy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appconfig_deploymentstrategy" "example" {
+/// resource "aws_appconfig_deployment_strategy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                           = "example-deployment-strategy-tf"
 ///   description                    = "Example Deployment Strategy"
 ///   deployment_duration_in_minutes = 3
@@ -211,7 +214,7 @@ class DeploymentStrategy extends pulumi.CustomResource {
           'aws:appconfig/deploymentStrategy:DeploymentStrategy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deploymentDurationInMinutes = registerOutput<int>('deploymentDurationInMinutes');

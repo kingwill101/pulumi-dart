@@ -95,7 +95,7 @@ import 'stream_consumer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -104,12 +104,18 @@ import 'stream_consumer_state.dart';
 /// }
 ///
 /// resource "aws_kinesis_stream" "example" {
-///   stream_mode_details = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   stream_mode_details {
 ///     stream_mode = "ON_DEMAND"
 ///   }
 ///   name = "example-stream"
 /// }
-/// resource "aws_kinesis_streamconsumer" "example" {
+/// resource "aws_kinesis_stream_consumer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-consumer"
 ///   stream_arn = aws_kinesis_stream.example.arn
 /// }
@@ -212,7 +218,7 @@ class StreamConsumer extends pulumi.CustomResource {
           'aws:kinesis/streamConsumer:StreamConsumer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationTimestamp = registerOutput<String>('creationTimestamp');

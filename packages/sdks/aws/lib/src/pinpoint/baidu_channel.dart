@@ -75,7 +75,7 @@ import 'baidu_channel_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -84,8 +84,14 @@ import 'baidu_channel_state.dart';
 /// }
 ///
 /// resource "aws_pinpoint_app" "app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_pinpoint_baiduchannel" "channel" {
+/// resource "aws_pinpoint_baidu_channel" "channel" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_id = aws_pinpoint_app.app.application_id
 ///   api_key        = ""
 ///   secret_key     = ""
@@ -168,7 +174,7 @@ class BaiduChannel extends pulumi.CustomResource {
           'aws:pinpoint/baiduChannel:BaiduChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['apiKey', 'secretKey'],
         ) {
     apiKey = registerOutput<String>('apiKey', isSecret: true);

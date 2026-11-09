@@ -130,7 +130,7 @@ import 'event_action_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -138,19 +138,22 @@ import 'event_action_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_dataexchange_eventaction" "example" {
-///   event = {
-///     revision_published = {
+/// resource "aws_dataexchange_event_action" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   event {
+///     revision_published {
 ///       data_set_id = exampleAwsDataexchangeDataSet.id
 ///     }
 ///   }
-///   action = {
-///     export_revision_to_s3 = {
-///       revision_destination = {
+///   action {
+///     export_revision_to_s3 {
+///       revision_destination {
 ///         bucket      = exampleAwsS3Bucket.bucket
 ///         key_pattern = "$${Revision.CreatedAt}/$${Asset.Name}"
 ///       }
-///       encryption = {
+///       encryption {
 ///         type        = "aws:kms"
 ///         kms_key_arn = exampleAwsKmsKey.arn
 ///       }
@@ -188,18 +191,18 @@ import 'event_action_state.dart';
 ///         var example = new EventAction("example", EventActionArgs.builder()
 ///             .event(EventActionEventArgs.builder()
 ///                 .revisionPublished(EventActionEventRevisionPublishedArgs.builder()
-///                     .dataSetId(exampleAwsDataexchangeDataSet.id())
+///                     .dataSetId(exampleAwsDataexchangeDataSet.get("id"))
 ///                     .build())
 ///                 .build())
 ///             .action(EventActionActionArgs.builder()
 ///                 .exportRevisionToS3(EventActionActionExportRevisionToS3Args.builder()
 ///                     .revisionDestination(EventActionActionExportRevisionToS3RevisionDestinationArgs.builder()
-///                         .bucket(exampleAwsS3Bucket.bucket())
+///                         .bucket(exampleAwsS3Bucket.get("bucket"))
 ///                         .keyPattern("${Revision.CreatedAt}/${Asset.Name}")
 ///                         .build())
 ///                     .encryption(EventActionActionExportRevisionToS3EncryptionArgs.builder()
 ///                         .type("aws:kms")
-///                         .kmsKeyArn(exampleAwsKmsKey.arn())
+///                         .kmsKeyArn(exampleAwsKmsKey.get("arn"))
 ///                         .build())
 ///                     .build())
 ///                 .build())
@@ -262,7 +265,7 @@ class EventAction extends pulumi.CustomResource {
           'aws:dataexchange/eventAction:EventAction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     action = registerOutput<EventActionAction>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventActionAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');

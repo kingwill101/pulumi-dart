@@ -98,7 +98,7 @@ import 'vocabulary_filter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -106,7 +106,10 @@ import 'vocabulary_filter_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_transcribe_vocabularyfilter" "example" {
+/// resource "aws_transcribe_vocabulary_filter" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vocabulary_filter_name = "example"
 ///   language_code          = "en-US"
 ///   words                  = ["cars", "bucket"]
@@ -208,7 +211,7 @@ class VocabularyFilter extends pulumi.CustomResource {
           'aws:transcribe/vocabularyFilter:VocabularyFilter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     downloadUri = registerOutput<String>('downloadUri');

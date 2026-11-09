@@ -132,7 +132,7 @@ import 'repository_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -144,7 +144,10 @@ import 'repository_state.dart';
 /// }
 ///
 /// resource "aws_ecrpublic_repository" "foo" {
-///   catalog_data = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   catalog_data {
 ///     about_text        = "About Text"
 ///     architectures     = ["ARM"]
 ///     description       = "Description"
@@ -263,7 +266,7 @@ class Repository extends pulumi.CustomResource {
           'aws:ecrpublic/repository:Repository',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     catalogData = registerOutput<RepositoryCatalogData?>('catalogData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryCatalogData.fromMap((guardedValue as Map).cast<String, dynamic>()); });

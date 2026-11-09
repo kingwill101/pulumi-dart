@@ -120,7 +120,7 @@ import 'custom_db_engine_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -129,15 +129,26 @@ import 'custom_db_engine_version_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "KMS symmetric key for RDS Custom for Oracle"
 /// }
-/// resource "aws_rds_customdbengineversion" "example" {
+/// resource "aws_rds_custom_db_engine_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_installation_files_s3_bucket_name = "DOC-EXAMPLE-BUCKET"
 ///   database_installation_files_s3_prefix      = "1915_GI/"
 ///   engine                                     = "custom-oracle-ee-cdb"
 ///   engine_version                             = "19.cdb_cev1"
 ///   kms_key_id                                 = aws_kms_key.example.arn
-///   manifest                                   = "  {\n\\t\\\"databaseInstallationFileNames\\\":[\\\"V982063-01.zip\\\"]\n  }\n"
+///   manifest                                   = <<JSON
+///   {
+/// \t\"databaseInstallationFileNames\":[\"V982063-01.zip\"]
+///   }
+/// JSON
+///
 ///   tags = {
 ///     "Name" = "example"
 ///     "Key"  = "value"
@@ -340,7 +351,7 @@ import 'custom_db_engine_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -352,9 +363,15 @@ import 'custom_db_engine_version_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "KMS symmetric key for RDS Custom for Oracle"
 /// }
-/// resource "aws_rds_customdbengineversion" "example" {
+/// resource "aws_rds_custom_db_engine_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_installation_files_s3_bucket_name = "DOC-EXAMPLE-BUCKET"
 ///   database_installation_files_s3_prefix      = "1915_GI/"
 ///   engine                                     = "custom-oracle-ee-cdb"
@@ -510,7 +527,7 @@ import 'custom_db_engine_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -519,7 +536,10 @@ import 'custom_db_engine_version_state.dart';
 /// }
 ///
 /// # CEV creation requires an AMI owned by the operator
-/// resource "aws_rds_customdbengineversion" "test" {
+/// resource "aws_rds_custom_db_engine_version" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   engine          = "custom-sqlserver-se"
 ///   engine_version  = "15.00.4249.2.cev-1"
 ///   source_image_id = "ami-0aa12345678a12ab1"
@@ -653,7 +673,7 @@ import 'custom_db_engine_version_state.dart';
 /// 		_, err = rds.NewCustomDbEngineVersion(ctx, "test", &rds.CustomDbEngineVersionArgs{
 /// 			Engine:        pulumi.String("custom-sqlserver-se"),
 /// 			EngineVersion: pulumi.String("15.00.4249.2.cev-1"),
-/// 			SourceImageId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			SourceImageId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -663,7 +683,7 @@ import 'custom_db_engine_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -671,17 +691,23 @@ import 'custom_db_engine_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_amicopy" "example" {
+/// resource "aws_ec2_ami_copy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "sqlserver-se-2019-15.00.4249.2"
 ///   description       = "A copy of ami-xxxxxxxx"
 ///   source_ami_id     = "ami-xxxxxxxx"
 ///   source_ami_region = "us-east-1"
 /// }
 /// # CEV creation requires an AMI owned by the operator
-/// resource "aws_rds_customdbengineversion" "test" {
+/// resource "aws_rds_custom_db_engine_version" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   engine          = "custom-sqlserver-se"
 ///   engine_version  = "15.00.4249.2.cev-1"
-///   source_image_id = aws_ec2_amicopy.example.id
+///   source_image_id = aws_ec2_ami_copy.example.id
 /// }
 /// ```
 /// ```java
@@ -804,7 +830,7 @@ class CustomDbEngineVersion extends pulumi.CustomResource {
           'aws:rds/customDbEngineVersion:CustomDbEngineVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createTime = registerOutput<String>('createTime');

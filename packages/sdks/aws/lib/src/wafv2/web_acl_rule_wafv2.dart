@@ -222,7 +222,7 @@ import 'web_acl_rule_visibility_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -230,14 +230,16 @@ import 'web_acl_rule_visibility_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafv2_webacl" "example" {
+/// resource "aws_wafv2_web_acl" "example" {
 ///   lifecycle {
-///     ignore_changes = [rules]
+///     ignore_changes        = [rules]
+///     create_before_destroy = true
 ///   }
-///   default_action = {
-///     allow = {}
+///   default_action {
+///     allow {
+///     }
 ///   }
-///   visibility_config = {
+///   visibility_config {
 ///     cloudwatch_metrics_enabled = false
 ///     metric_name                = "example"
 ///     sampled_requests_enabled   = false
@@ -246,23 +248,27 @@ import 'web_acl_rule_visibility_config.dart';
 ///   scope = "REGIONAL"
 /// }
 /// # Separate rule resource with identical configuration
-/// resource "aws_wafv2_webaclrule" "block_countries" {
-///   action = {
-///     block = {}
+/// resource "aws_wafv2_web_acl_rule" "block_countries" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   statement = {
-///     geo_match_statement = {
+///   action {
+///     block {
+///     }
+///   }
+///   statement {
+///     geo_match_statement {
 ///       country_codes = ["CN", "RU"]
 ///     }
 ///   }
-///   visibility_config = {
+///   visibility_config {
 ///     cloudwatch_metrics_enabled = false
 ///     metric_name                = "block-countries"
 ///     sampled_requests_enabled   = false
 ///   }
 ///   name        = "block-countries"
 ///   priority    = 1
-///   web_acl_arn = aws_wafv2_webacl.example.arn
+///   web_acl_arn = aws_wafv2_web_acl.example.arn
 /// }
 /// ```
 /// ```java
@@ -585,7 +591,7 @@ import 'web_acl_rule_visibility_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -593,14 +599,16 @@ import 'web_acl_rule_visibility_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafv2_webacl" "example" {
+/// resource "aws_wafv2_web_acl" "example" {
 ///   lifecycle {
-///     ignore_changes = [rules]
+///     ignore_changes        = [rules]
+///     create_before_destroy = true
 ///   }
-///   default_action = {
-///     allow = {}
+///   default_action {
+///     allow {
+///     }
 ///   }
-///   visibility_config = {
+///   visibility_config {
 ///     cloudwatch_metrics_enabled = false
 ///     metric_name                = "example"
 ///     sampled_requests_enabled   = false
@@ -608,23 +616,27 @@ import 'web_acl_rule_visibility_config.dart';
 ///   name  = "example"
 ///   scope = "REGIONAL"
 /// }
-/// resource "aws_wafv2_webaclrule" "block_countries" {
-///   action = {
-///     block = {}
+/// resource "aws_wafv2_web_acl_rule" "block_countries" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   statement = {
-///     geo_match_statement = {
+///   action {
+///     block {
+///     }
+///   }
+///   statement {
+///     geo_match_statement {
 ///       country_codes = ["CN", "RU"]
 ///     }
 ///   }
-///   visibility_config = {
+///   visibility_config {
 ///     cloudwatch_metrics_enabled = false
 ///     metric_name                = "block-countries"
 ///     sampled_requests_enabled   = false
 ///   }
 ///   name        = "block-countries"
 ///   priority    = 1
-///   web_acl_arn = aws_wafv2_webacl.example.arn
+///   web_acl_arn = aws_wafv2_web_acl.example.arn
 /// }
 /// ```
 /// ```java
@@ -963,7 +975,7 @@ import 'web_acl_rule_visibility_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -971,20 +983,25 @@ import 'web_acl_rule_visibility_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafv2_ipset" "blocked_ips" {
+/// resource "aws_wafv2_ip_set" "blocked_ips" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "blocked-ips"
 ///   scope              = "REGIONAL"
 ///   ip_address_version = "IPV4"
 ///   addresses          = ["1.2.3.4/32", "5.6.7.8/32"]
 /// }
-/// resource "aws_wafv2_webacl" "example" {
+/// resource "aws_wafv2_web_acl" "example" {
 ///   lifecycle {
-///     ignore_changes = [rules]
+///     ignore_changes        = [rules]
+///     create_before_destroy = true
 ///   }
-///   default_action = {
-///     allow = {}
+///   default_action {
+///     allow {
+///     }
 ///   }
-///   visibility_config = {
+///   visibility_config {
 ///     cloudwatch_metrics_enabled = true
 ///     metric_name                = "example"
 ///     sampled_requests_enabled   = true
@@ -992,23 +1009,27 @@ import 'web_acl_rule_visibility_config.dart';
 ///   name  = "example"
 ///   scope = "REGIONAL"
 /// }
-/// resource "aws_wafv2_webaclrule" "block_ips" {
-///   action = {
-///     block = {}
+/// resource "aws_wafv2_web_acl_rule" "block_ips" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   statement = {
-///     ip_set_reference_statement = {
-///       arn = aws_wafv2_ipset.blocked_ips.arn
+///   action {
+///     block {
 ///     }
 ///   }
-///   visibility_config = {
+///   statement {
+///     ip_set_reference_statement {
+///       arn = aws_wafv2_ip_set.blocked_ips.arn
+///     }
+///   }
+///   visibility_config {
 ///     cloudwatch_metrics_enabled = true
 ///     metric_name                = "block-bad-ips"
 ///     sampled_requests_enabled   = true
 ///   }
 ///   name        = "block-bad-ips"
 ///   priority    = 1
-///   web_acl_arn = aws_wafv2_webacl.example.arn
+///   web_acl_arn = aws_wafv2_web_acl.example.arn
 /// }
 /// ```
 /// ```java
@@ -1260,7 +1281,7 @@ import 'web_acl_rule_visibility_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1268,17 +1289,21 @@ import 'web_acl_rule_visibility_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafv2_webaclrule" "rate_limit" {
-///   action = {
-///     block = {}
+/// resource "aws_wafv2_web_acl_rule" "rate_limit" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   statement = {
-///     rate_based_statement = {
+///   action {
+///     block {
+///     }
+///   }
+///   statement {
+///     rate_based_statement {
 ///       limit              = 2000
 ///       aggregate_key_type = "IP"
 ///     }
 ///   }
-///   visibility_config = {
+///   visibility_config {
 ///     cloudwatch_metrics_enabled = true
 ///     metric_name                = "rate-limit"
 ///     sampled_requests_enabled   = true
@@ -1332,7 +1357,7 @@ import 'web_acl_rule_visibility_config.dart';
 ///                 .build())
 ///             .name("rate-limit")
 ///             .priority(2)
-///             .webAclArn(example.arn())
+///             .webAclArn(example.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1482,7 +1507,7 @@ import 'web_acl_rule_visibility_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1490,17 +1515,21 @@ import 'web_acl_rule_visibility_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafv2_webaclrule" "aws_managed_rules" {
-///   override_action = {
-///     none = {}
+/// resource "aws_wafv2_web_acl_rule" "aws_managed_rules" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   statement = {
-///     managed_rule_group_statement = {
+///   override_action {
+///     none {
+///     }
+///   }
+///   statement {
+///     managed_rule_group_statement {
 ///       name        = "AWSManagedRulesCommonRuleSet"
 ///       vendor_name = "AWS"
 ///     }
 ///   }
-///   visibility_config = {
+///   visibility_config {
 ///     cloudwatch_metrics_enabled = true
 ///     metric_name                = "aws-managed-rules"
 ///     sampled_requests_enabled   = true
@@ -1554,7 +1583,7 @@ import 'web_acl_rule_visibility_config.dart';
 ///                 .build())
 ///             .name("aws-managed-rules")
 ///             .priority(3)
-///             .webAclArn(example.arn())
+///             .webAclArn(example.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1741,7 +1770,7 @@ import 'web_acl_rule_visibility_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1749,23 +1778,26 @@ import 'web_acl_rule_visibility_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafv2_webaclrule" "captcha_with_headers" {
-///   action = {
-///     captcha = {
-///       custom_request_handling = {
-///         insert_headers = [{
-///           "name"  = "x-captcha-rule"
-///           "value" = "triggered"
-///         }]
+/// resource "aws_wafv2_web_acl_rule" "captcha_with_headers" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   action {
+///     captcha {
+///       custom_request_handling {
+///         insert_header {
+///           name  = "x-captcha-rule"
+///           value = "triggered"
+///         }
 ///       }
 ///     }
 ///   }
-///   statement = {
-///     geo_match_statement = {
+///   statement {
+///     geo_match_statement {
 ///       country_codes = ["US"]
 ///     }
 ///   }
-///   visibility_config = {
+///   visibility_config {
 ///     cloudwatch_metrics_enabled = true
 ///     metric_name                = "captcha-with-headers"
 ///     sampled_requests_enabled   = true
@@ -1826,7 +1858,7 @@ import 'web_acl_rule_visibility_config.dart';
 ///                 .build())
 ///             .name("captcha-with-headers")
 ///             .priority(4)
-///             .webAclArn(example.arn())
+///             .webAclArn(example.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1976,7 +2008,7 @@ import 'web_acl_rule_visibility_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1984,16 +2016,20 @@ import 'web_acl_rule_visibility_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafv2_webaclrule" "blocked_ips" {
-///   action = {
-///     block = {}
+/// resource "aws_wafv2_web_acl_rule" "blocked_ips" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   statement = {
-///     ip_set_reference_statement = {
+///   action {
+///     block {
+///     }
+///   }
+///   statement {
+///     ip_set_reference_statement {
 ///       arn = blockedIpsAwsWafv2IpSet.arn
 ///     }
 ///   }
-///   visibility_config = {
+///   visibility_config {
 ///     cloudwatch_metrics_enabled = true
 ///     metric_name                = "block-bad-ips"
 ///     sampled_requests_enabled   = true
@@ -2036,7 +2072,7 @@ import 'web_acl_rule_visibility_config.dart';
 ///                 .build())
 ///             .statement(WebAclRuleStatementArgs.builder()
 ///                 .ipSetReferenceStatement(WebAclRuleStatementIpSetReferenceStatementArgs.builder()
-///                     .arn(blockedIpsAwsWafv2IpSet.arn())
+///                     .arn(blockedIpsAwsWafv2IpSet.get("arn"))
 ///                     .build())
 ///                 .build())
 ///             .visibilityConfig(WebAclRuleVisibilityConfigArgs.builder()
@@ -2046,7 +2082,7 @@ import 'web_acl_rule_visibility_config.dart';
 ///                 .build())
 ///             .name("blocked-ips")
 ///             .priority(1)
-///             .webAclArn(example.arn())
+///             .webAclArn(example.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -2293,7 +2329,7 @@ import 'web_acl_rule_visibility_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2301,32 +2337,38 @@ import 'web_acl_rule_visibility_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafv2_webaclrule" "block_suspicious" {
-///   action = {
-///     block = {}
+/// resource "aws_wafv2_web_acl_rule" "block_suspicious" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   statement = {
-///     and_statement = {
-///       statements = [{
-///         "geoMatchStatement" = {
-///           "countryCodes" = ["CN"]
-///         }
-///         }, {
-///         "byteMatchStatement" = {
-///           "fieldToMatch" = {
-///             "uriPath" = {}
-///           }
-///           "textTransformations" = [{
-///             "priority" = 0
-///             "type"     = "LOWERCASE"
-///           }]
-///           "searchString"         = "admin"
-///           "positionalConstraint" = "CONTAINS"
-///         }
-///       }]
+///   action {
+///     block {
 ///     }
 ///   }
-///   visibility_config = {
+///   statement {
+///     and_statement {
+///       statement {
+///         geo_match_statement {
+///           country_codes = ["CN"]
+///         }
+///       }
+///       statement {
+///         byte_match_statement {
+///           field_to_match {
+///             uri_path {
+///             }
+///           }
+///           text_transformation {
+///             priority = 0
+///             type     = "LOWERCASE"
+///           }
+///           search_string         = "admin"
+///           positional_constraint = "CONTAINS"
+///         }
+///       }
+///     }
+///   }
+///   visibility_config {
 ///     cloudwatch_metrics_enabled = true
 ///     metric_name                = "block-suspicious"
 ///     sampled_requests_enabled   = true
@@ -2373,26 +2415,28 @@ import 'web_acl_rule_visibility_config.dart';
 ///                     .build())
 ///                 .build())
 ///             .statement(WebAclRuleStatementArgs.builder()
-///                 .andStatement(Map.of("statements", Arrays.asList(
-///                     WebAclRuleStatementArgs.builder()
-///                         .geoMatchStatement(WebAclRuleStatementGeoMatchStatementArgs.builder()
-///                             .countryCodes("CN")
-///                             .build())
-///                         .build(),
-///                     WebAclRuleStatementArgs.builder()
-///                         .byteMatchStatement(WebAclRuleStatementByteMatchStatementArgs.builder()
-///                             .fieldToMatch(WebAclRuleStatementByteMatchStatementFieldToMatchArgs.builder()
-///                                 .uriPath(WebAclRuleStatementByteMatchStatementFieldToMatchUriPathArgs.builder()
+///                 .andStatement(WebAclRuleStatementAndStatementArgs.builder()
+///                     .statements(
+///                         WebAclRuleStatementArgs.builder()
+///                             .geoMatchStatement(WebAclRuleStatementGeoMatchStatementArgs.builder()
+///                                 .countryCodes("CN")
+///                                 .build())
+///                             .build(),
+///                         WebAclRuleStatementArgs.builder()
+///                             .byteMatchStatement(WebAclRuleStatementByteMatchStatementArgs.builder()
+///                                 .fieldToMatch(WebAclRuleStatementByteMatchStatementFieldToMatchArgs.builder()
+///                                     .uriPath(WebAclRuleStatementByteMatchStatementFieldToMatchUriPathArgs.builder()
+///                                         .build())
 ///                                     .build())
+///                                 .textTransformations(WebAclRuleStatementByteMatchStatementTextTransformationArgs.builder()
+///                                     .priority(0)
+///                                     .type("LOWERCASE")
+///                                     .build())
+///                                 .searchString("admin")
+///                                 .positionalConstraint("CONTAINS")
 ///                                 .build())
-///                             .textTransformations(WebAclRuleStatementByteMatchStatementTextTransformationArgs.builder()
-///                                 .priority(0)
-///                                 .type("LOWERCASE")
-///                                 .build())
-///                             .searchString("admin")
-///                             .positionalConstraint("CONTAINS")
 ///                             .build())
-///                         .build())))
+///                     .build())
 ///                 .build())
 ///             .visibilityConfig(WebAclRuleVisibilityConfigArgs.builder()
 ///                 .cloudwatchMetricsEnabled(true)
@@ -2401,7 +2445,7 @@ import 'web_acl_rule_visibility_config.dart';
 ///                 .build())
 ///             .name("block-suspicious")
 ///             .priority(1)
-///             .webAclArn(example.arn())
+///             .webAclArn(example.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -2618,7 +2662,7 @@ import 'web_acl_rule_visibility_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2626,24 +2670,29 @@ import 'web_acl_rule_visibility_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafv2_webaclrule" "block_countries" {
-///   action = {
-///     block = {}
+/// resource "aws_wafv2_web_acl_rule" "block_countries" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   statement = {
-///     or_statement = {
-///       statements = [{
-///         "geoMatchStatement" = {
-///           "countryCodes" = ["CN"]
-///         }
-///         }, {
-///         "geoMatchStatement" = {
-///           "countryCodes" = ["RU"]
-///         }
-///       }]
+///   action {
+///     block {
 ///     }
 ///   }
-///   visibility_config = {
+///   statement {
+///     or_statement {
+///       statement {
+///         geo_match_statement {
+///           country_codes = ["CN"]
+///         }
+///       }
+///       statement {
+///         geo_match_statement {
+///           country_codes = ["RU"]
+///         }
+///       }
+///     }
+///   }
+///   visibility_config {
 ///     cloudwatch_metrics_enabled = true
 ///     metric_name                = "block-countries"
 ///     sampled_requests_enabled   = true
@@ -2686,17 +2735,19 @@ import 'web_acl_rule_visibility_config.dart';
 ///                     .build())
 ///                 .build())
 ///             .statement(WebAclRuleStatementArgs.builder()
-///                 .orStatement(Map.of("statements", Arrays.asList(
-///                     WebAclRuleStatementArgs.builder()
-///                         .geoMatchStatement(WebAclRuleStatementGeoMatchStatementArgs.builder()
-///                             .countryCodes("CN")
+///                 .orStatement(WebAclRuleStatementOrStatementArgs.builder()
+///                     .statements(
+///                         WebAclRuleStatementArgs.builder()
+///                             .geoMatchStatement(WebAclRuleStatementGeoMatchStatementArgs.builder()
+///                                 .countryCodes("CN")
+///                                 .build())
+///                             .build(),
+///                         WebAclRuleStatementArgs.builder()
+///                             .geoMatchStatement(WebAclRuleStatementGeoMatchStatementArgs.builder()
+///                                 .countryCodes("RU")
+///                                 .build())
 ///                             .build())
-///                         .build(),
-///                     WebAclRuleStatementArgs.builder()
-///                         .geoMatchStatement(WebAclRuleStatementGeoMatchStatementArgs.builder()
-///                             .countryCodes("RU")
-///                             .build())
-///                         .build())))
+///                     .build())
 ///                 .build())
 ///             .visibilityConfig(WebAclRuleVisibilityConfigArgs.builder()
 ///                 .cloudwatchMetricsEnabled(true)
@@ -2705,7 +2756,7 @@ import 'web_acl_rule_visibility_config.dart';
 ///                 .build())
 ///             .name("block-countries")
 ///             .priority(2)
-///             .webAclArn(example.arn())
+///             .webAclArn(example.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -2889,7 +2940,7 @@ import 'web_acl_rule_visibility_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2897,20 +2948,24 @@ import 'web_acl_rule_visibility_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafv2_webaclrule" "allow_only_us" {
-///   action = {
-///     block = {}
+/// resource "aws_wafv2_web_acl_rule" "allow_only_us" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   statement = {
-///     not_statement = {
-///       statement = {
-///         geo_match_statement = {
+///   action {
+///     block {
+///     }
+///   }
+///   statement {
+///     not_statement {
+///       statement {
+///         geo_match_statement {
 ///           country_codes = ["US", "CA"]
 ///         }
 ///       }
 ///     }
 ///   }
-///   visibility_config = {
+///   visibility_config {
 ///     cloudwatch_metrics_enabled = true
 ///     metric_name                = "allow-only-us"
 ///     sampled_requests_enabled   = true
@@ -2953,13 +3008,15 @@ import 'web_acl_rule_visibility_config.dart';
 ///                     .build())
 ///                 .build())
 ///             .statement(WebAclRuleStatementArgs.builder()
-///                 .notStatement(Map.of("statement", WebAclRuleStatementArgs.builder()
-///                     .geoMatchStatement(WebAclRuleStatementGeoMatchStatementArgs.builder()
-///                         .countryCodes(
-///                             "US",
-///                             "CA")
+///                 .notStatement(WebAclRuleStatementNotStatementArgs.builder()
+///                     .statement(WebAclRuleStatementArgs.builder()
+///                         .geoMatchStatement(WebAclRuleStatementGeoMatchStatementArgs.builder()
+///                             .countryCodes(
+///                                 "US",
+///                                 "CA")
+///                             .build())
 ///                         .build())
-///                     .build()))
+///                     .build())
 ///                 .build())
 ///             .visibilityConfig(WebAclRuleVisibilityConfigArgs.builder()
 ///                 .cloudwatchMetricsEnabled(true)
@@ -2968,7 +3025,7 @@ import 'web_acl_rule_visibility_config.dart';
 ///                 .build())
 ///             .name("allow-only-us")
 ///             .priority(3)
-///             .webAclArn(example.arn())
+///             .webAclArn(example.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -3058,7 +3115,7 @@ class WebAclRuleWafv2 extends pulumi.CustomResource {
           'aws:wafv2/webAclRule:WebAclRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     action = registerOutput<WebAclRuleAction?>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     captchaConfig = registerOutput<WebAclRuleCaptchaConfig?>('captchaConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleCaptchaConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

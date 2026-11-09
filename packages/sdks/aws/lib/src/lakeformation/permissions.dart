@@ -107,7 +107,7 @@ import 'permissions_table_with_columns.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -115,14 +115,17 @@ import 'permissions_table_with_columns.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_iam_getsessioncontext" "currentGetSessionContext" {
-///   arn = data.aws_getcalleridentity.current.arn
+/// data "aws_iam_session_context" "currentGetSessionContext" {
+///   arn = data.aws_caller_identity.current.arn
 /// }
 ///
-/// resource "aws_lakeformation_datalakesettings" "test" {
-///   admins = [data.aws_iam_getsessioncontext.currentGetSessionContext.issuer_arn]
+/// resource "aws_lakeformation_data_lake_settings" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   admins = [data.aws_iam_session_context.currentGetSessionContext.issuer_arn]
 /// }
 /// ```
 /// ```java
@@ -351,7 +354,7 @@ import 'permissions_table_with_columns.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -359,23 +362,32 @@ import 'permissions_table_with_columns.dart';
 ///   }
 /// }
 ///
-/// resource "aws_glue_catalogdatabase" "example" {
+/// resource "aws_glue_catalog_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "sadabate"
 /// }
-/// resource "aws_glue_catalogtable" "example" {
-///   storage_descriptor = {
-///     columns = [{
-///       "name" = "event"
-///       "type" = "string"
-///     }]
+/// resource "aws_glue_catalog_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   storage_descriptor {
+///     columns {
+///       name = "event"
+///       type = "string"
+///     }
 ///   }
 ///   name          = "abelt"
 ///   database_name = test.name
 /// }
 /// resource "aws_lakeformation_permissions" "example" {
-///   table_with_columns = {
-///     database_name = aws_glue_catalogtable.example.database_name
-///     name          = aws_glue_catalogtable.example.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   table_with_columns {
+///     database_name = aws_glue_catalog_table.example.database_name
+///     name          = aws_glue_catalog_table.example.name
 ///     column_names  = ["event"]
 ///   }
 ///   permissions = ["SELECT"]
@@ -422,7 +434,7 @@ import 'permissions_table_with_columns.dart';
 ///                     .build())
 ///                 .build())
 ///             .name("abelt")
-///             .databaseName(test.name())
+///             .databaseName(test.get("name"))
 ///             .build());
 ///
 ///         var examplePermissions = new Permissions("examplePermissions", PermissionsArgs.builder()
@@ -566,7 +578,7 @@ import 'permissions_table_with_columns.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -575,7 +587,10 @@ import 'permissions_table_with_columns.dart';
 /// }
 ///
 /// resource "aws_lakeformation_permissions" "example" {
-///   table_with_columns = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   table_with_columns {
 ///     database_name = exampleAwsGlueCatalogTable.databaseName
 ///     name          = exampleAwsGlueCatalogTable.name
 ///     column_names  = ["event"]
@@ -608,8 +623,8 @@ import 'permissions_table_with_columns.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Permissions("example", PermissionsArgs.builder()
 ///             .tableWithColumns(PermissionsTableWithColumnsArgs.builder()
-///                 .databaseName(exampleAwsGlueCatalogTable.databaseName())
-///                 .name(exampleAwsGlueCatalogTable.name())
+///                 .databaseName(exampleAwsGlueCatalogTable.get("databaseName"))
+///                 .name(exampleAwsGlueCatalogTable.get("name"))
 ///                 .columnNames("event")
 ///                 .build())
 ///             .permissions("SELECT")
@@ -719,7 +734,7 @@ import 'permissions_table_with_columns.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -728,7 +743,10 @@ import 'permissions_table_with_columns.dart';
 /// }
 ///
 /// resource "aws_lakeformation_permissions" "example" {
-///   data_location = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   data_location {
 ///     arn = exampleAwsLakeformationResource.arn
 ///   }
 ///   principal   = workflowRole.arn
@@ -759,9 +777,9 @@ import 'permissions_table_with_columns.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Permissions("example", PermissionsArgs.builder()
 ///             .dataLocation(PermissionsDataLocationArgs.builder()
-///                 .arn(exampleAwsLakeformationResource.arn())
+///                 .arn(exampleAwsLakeformationResource.get("arn"))
 ///                 .build())
-///             .principal(workflowRole.arn())
+///             .principal(workflowRole.get("arn"))
 ///             .permissions("DATA_LOCATION_ACCESS")
 ///             .build());
 ///
@@ -873,7 +891,7 @@ import 'permissions_table_with_columns.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -882,7 +900,10 @@ import 'permissions_table_with_columns.dart';
 /// }
 ///
 /// resource "aws_lakeformation_permissions" "example" {
-///   database = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   database {
 ///     name       = exampleAwsGlueCatalogDatabase.name
 ///     catalog_id = "110376042874"
 ///   }
@@ -914,10 +935,10 @@ import 'permissions_table_with_columns.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Permissions("example", PermissionsArgs.builder()
 ///             .database(PermissionsDatabaseArgs.builder()
-///                 .name(exampleAwsGlueCatalogDatabase.name())
+///                 .name(exampleAwsGlueCatalogDatabase.get("name"))
 ///                 .catalogId("110376042874")
 ///                 .build())
-///             .principal(workflowRole.arn())
+///             .principal(workflowRole.get("arn"))
 ///             .permissions(
 ///                 "CREATE_TABLE",
 ///                 "ALTER",
@@ -1092,7 +1113,7 @@ import 'permissions_table_with_columns.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1101,14 +1122,18 @@ import 'permissions_table_with_columns.dart';
 /// }
 ///
 /// resource "aws_lakeformation_permissions" "test" {
-///   lf_tag_policy = {
-///     expressions = [{
-///       "key"    = "Team"
-///       "values" = ["Sales"]
-///       }, {
-///       "key"    = "Environment"
-///       "values" = ["Dev", "Production"]
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   lf_tag_policy {
+///     expression {
+///       key    = "Team"
+///       values = ["Sales"]
+///     }
+///     expression {
+///       key    = "Environment"
+///       values = ["Dev", "Production"]
+///     }
 ///     resource_type = "DATABASE"
 ///   }
 ///   principal   = salesRole.arn
@@ -1153,7 +1178,7 @@ import 'permissions_table_with_columns.dart';
 ///                         .build())
 ///                 .resourceType("DATABASE")
 ///                 .build())
-///             .principal(salesRole.arn())
+///             .principal(salesRole.get("arn"))
 ///             .permissions(
 ///                 "CREATE_TABLE",
 ///                 "ALTER",
@@ -1230,7 +1255,7 @@ class Permissions extends pulumi.CustomResource {
           'aws:lakeformation/permissions:Permissions',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     catalogId = registerOutput<String?>('catalogId');
     catalogResource = registerOutput<bool?>('catalogResource');

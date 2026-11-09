@@ -68,7 +68,7 @@ import 'notification_channel_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,8 +76,11 @@ import 'notification_channel_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_devopsguru_notificationchannel" "example" {
-///   sns = {
+/// resource "aws_devopsguru_notification_channel" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   sns {
 ///     topic_arn = exampleAwsSnsTopic.arn
 ///   }
 /// }
@@ -106,7 +109,7 @@ import 'notification_channel_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new NotificationChannel("example", NotificationChannelArgs.builder()
 ///             .sns(NotificationChannelSnsArgs.builder()
-///                 .topicArn(exampleAwsSnsTopic.arn())
+///                 .topicArn(exampleAwsSnsTopic.get("arn"))
 ///                 .build())
 ///             .build());
 ///
@@ -213,7 +216,7 @@ import 'notification_channel_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -221,11 +224,14 @@ import 'notification_channel_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_devopsguru_notificationchannel" "example" {
-///   sns = {
+/// resource "aws_devopsguru_notification_channel" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   sns {
 ///     topic_arn = exampleAwsSnsTopic.arn
 ///   }
-///   filters = {
+///   filters {
 ///     message_types = ["NEW_INSIGHT"]
 ///     severities    = ["HIGH"]
 ///   }
@@ -256,7 +262,7 @@ import 'notification_channel_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new NotificationChannel("example", NotificationChannelArgs.builder()
 ///             .sns(NotificationChannelSnsArgs.builder()
-///                 .topicArn(exampleAwsSnsTopic.arn())
+///                 .topicArn(exampleAwsSnsTopic.get("arn"))
 ///                 .build())
 ///             .filters(NotificationChannelFiltersArgs.builder()
 ///                 .messageTypes("NEW_INSIGHT")
@@ -311,7 +317,7 @@ class NotificationChannel extends pulumi.CustomResource {
           'aws:devopsguru/notificationChannel:NotificationChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     filters = registerOutput<NotificationChannelFilters?>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationChannelFilters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');

@@ -58,7 +58,7 @@ import 'trace_segment_destination_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -66,7 +66,10 @@ import 'trace_segment_destination_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_xray_tracesegmentdestination" "example" {
+/// resource "aws_xray_trace_segment_destination" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   destination = "CloudWatchLogs"
 /// }
 /// ```
@@ -141,7 +144,7 @@ class TraceSegmentDestination extends pulumi.CustomResource {
           'aws:xray/traceSegmentDestination:TraceSegmentDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     destination = registerOutput<String>('destination');
     region = registerOutput<String>('region');

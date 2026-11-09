@@ -73,7 +73,7 @@ import 'profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,6 +82,9 @@ import 'profile_state.dart';
 /// }
 ///
 /// resource "aws_transfer_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   as2_id          = "example"
 ///   certificate_ids = [exampleAwsTransferCertificate.certificateId]
 ///   usage           = "LOCAL"
@@ -110,7 +113,7 @@ import 'profile_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Profile("example", ProfileArgs.builder()
 ///             .as2Id("example")
-///             .certificateIds(exampleAwsTransferCertificate.certificateId())
+///             .certificateIds(exampleAwsTransferCertificate.get("certificateId"))
 ///             .usage("LOCAL")
 ///             .build());
 ///
@@ -165,7 +168,7 @@ class Profile extends pulumi.CustomResource {
           'aws:transfer/profile:Profile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     as2Id = registerOutput<String>('as2Id');

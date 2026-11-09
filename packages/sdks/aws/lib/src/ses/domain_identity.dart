@@ -57,7 +57,7 @@ import 'domain_identity_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,7 +65,10 @@ import 'domain_identity_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ses_domainidentity" "example" {
+/// resource "aws_ses_domain_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain = "example.com"
 /// }
 /// ```
@@ -195,7 +198,7 @@ import 'domain_identity_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -203,15 +206,21 @@ import 'domain_identity_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ses_domainidentity" "example" {
+/// resource "aws_ses_domain_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain = "example.com"
 /// }
 /// resource "aws_route53_record" "example_amazonses_verification_record" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "ABCDEFGHIJ123"
 ///   name    = "_amazonses.example.com"
 ///   type    = "TXT"
 ///   ttl     = "600"
-///   records = [aws_ses_domainidentity.example.verification_token]
+///   records = [aws_ses_domain_identity.example.verification_token]
 /// }
 /// ```
 /// ```java
@@ -300,7 +309,7 @@ class DomainIdentity extends pulumi.CustomResource {
           'aws:ses/domainIdentity:DomainIdentity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     domain = registerOutput<String>('domain');

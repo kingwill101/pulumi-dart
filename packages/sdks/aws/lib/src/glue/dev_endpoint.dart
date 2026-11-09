@@ -166,7 +166,7 @@ import 'dev_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -174,8 +174,8 @@ import 'dev_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["glue.amazonaws.com"]
@@ -184,15 +184,24 @@ import 'dev_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_glue_devendpoint" "example" {
+/// resource "aws_glue_dev_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "foo"
 ///   role_arn = aws_iam_role.example.arn
 /// }
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "AWSGlueServiceRole-foo"
-///   assume_role_policy = data.aws_iam_getpolicydocument.example.json
+///   assume_role_policy = data.aws_iam_policy_document.example.json
 /// }
-/// resource "aws_iam_rolepolicyattachment" "example-AWSGlueServiceRole" {
+/// resource "aws_iam_role_policy_attachment" "example-AWSGlueServiceRole" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole"
 ///   role       = aws_iam_role.example.name
 /// }
@@ -361,7 +370,7 @@ class DevEndpoint extends pulumi.CustomResource {
           'aws:glue/devEndpoint:DevEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arguments = registerOutput<Map<String, String>?>('arguments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     arn = registerOutput<String>('arn');

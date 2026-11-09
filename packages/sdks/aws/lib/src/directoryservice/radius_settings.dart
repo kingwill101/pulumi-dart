@@ -91,7 +91,7 @@ import 'radius_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -99,7 +99,10 @@ import 'radius_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_directoryservice_radiussettings" "example" {
+/// resource "aws_directoryservice_radius_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   directory_id            = exampleAwsDirectoryServiceDirectory.id
 ///   authentication_protocol = "PAP"
 ///   display_label           = "example"
@@ -132,7 +135,7 @@ import 'radius_settings_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RadiusSettings("example", RadiusSettingsArgs.builder()
-///             .directoryId(exampleAwsDirectoryServiceDirectory.id())
+///             .directoryId(exampleAwsDirectoryServiceDirectory.get("id"))
 ///             .authenticationProtocol("PAP")
 ///             .displayLabel("example")
 ///             .radiusPort(1812)
@@ -203,7 +206,7 @@ class RadiusSettings extends pulumi.CustomResource {
           'aws:directoryservice/radiusSettings:RadiusSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['sharedSecret'],
         ) {
     authenticationProtocol = registerOutput<String>('authenticationProtocol');

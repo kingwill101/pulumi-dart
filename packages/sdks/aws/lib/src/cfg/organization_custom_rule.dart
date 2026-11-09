@@ -149,7 +149,7 @@ import 'organization_custom_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -158,17 +158,26 @@ import 'organization_custom_rule_state.dart';
 /// }
 ///
 /// resource "aws_lambda_permission" "example" {
-///   action       = "lambda:InvokeFunction"
-///   function     = exampleAwsLambdaFunction.arn
-///   principal    = "config.amazonaws.com"
-///   statement_id = "AllowExecutionFromConfig"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   action        = "lambda:InvokeFunction"
+///   function_name = exampleAwsLambdaFunction.arn
+///   principal     = "config.amazonaws.com"
+///   statement_id  = "AllowExecutionFromConfig"
 /// }
 /// resource "aws_organizations_organization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   aws_service_access_principals = ["config-multiaccountsetup.amazonaws.com"]
 ///   feature_set                   = "ALL"
 /// }
-/// resource "aws_cfg_organizationcustomrule" "example" {
-///   depends_on          = [aws_lambda_permission.example, aws_organizations_organization.example]
+/// resource "aws_cfg_organization_custom_rule" "example" {
+///   depends_on = [aws_lambda_permission.example, aws_organizations_organization.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   lambda_function_arn = exampleAwsLambdaFunction.arn
 ///   name                = "example"
 ///   trigger_types       = ["ConfigurationItemChangeNotification"]
@@ -202,7 +211,7 @@ import 'organization_custom_rule_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Permission("example", PermissionArgs.builder()
 ///             .action("lambda:InvokeFunction")
-///             .function(exampleAwsLambdaFunction.arn())
+///             .function(exampleAwsLambdaFunction.get("arn"))
 ///             .principal("config.amazonaws.com")
 ///             .statementId("AllowExecutionFromConfig")
 ///             .build());
@@ -213,7 +222,7 @@ import 'organization_custom_rule_state.dart';
 ///             .build());
 ///
 ///         var exampleOrganizationCustomRule = new OrganizationCustomRule("exampleOrganizationCustomRule", OrganizationCustomRuleArgs.builder()
-///             .lambdaFunctionArn(exampleAwsLambdaFunction.arn())
+///             .lambdaFunctionArn(exampleAwsLambdaFunction.get("arn"))
 ///             .name("example")
 ///             .triggerTypes("ConfigurationItemChangeNotification")
 ///             .build(), CustomResourceOptions.builder()
@@ -315,7 +324,7 @@ class OrganizationCustomRule extends pulumi.CustomResource {
           'aws:cfg/organizationCustomRule:OrganizationCustomRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

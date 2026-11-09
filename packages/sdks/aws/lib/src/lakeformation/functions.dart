@@ -61,7 +61,7 @@ import 'get_resource_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -69,7 +69,7 @@ import 'get_resource_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_lakeformation_getdatalakesettings" "example" {
+/// data "aws_lakeformation_data_lake_settings" "example" {
 ///   catalog_id = "14916253649"
 /// }
 /// ```
@@ -207,7 +207,7 @@ pulumi.Output<GetDataLakeSettingsResult> getDataLakeSettingsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -215,8 +215,8 @@ pulumi.Output<GetDataLakeSettingsResult> getDataLakeSettingsOutput(
 ///   }
 /// }
 ///
-/// data "aws_lakeformation_getpermissions" "test" {
-///   data_location = {
+/// data "aws_lakeformation_permissions" "test" {
+///   data_location {
 ///     arn = testAwsLakeformationResource.arn
 ///   }
 ///   principal = workflowRole.arn
@@ -246,9 +246,9 @@ pulumi.Output<GetDataLakeSettingsResult> getDataLakeSettingsOutput(
 ///     public static void stack(Context ctx) {
 ///         final var test = LakeformationFunctions.getPermissions(GetPermissionsArgs.builder()
 ///             .dataLocation(GetPermissionsDataLocationArgs.builder()
-///                 .arn(testAwsLakeformationResource.arn())
+///                 .arn(testAwsLakeformationResource.get("arn"))
 ///                 .build())
-///             .principal(workflowRole.arn())
+///             .principal(workflowRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -336,7 +336,7 @@ pulumi.Output<GetDataLakeSettingsResult> getDataLakeSettingsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -344,8 +344,8 @@ pulumi.Output<GetDataLakeSettingsResult> getDataLakeSettingsOutput(
 ///   }
 /// }
 ///
-/// data "aws_lakeformation_getpermissions" "test" {
-///   database = {
+/// data "aws_lakeformation_permissions" "test" {
+///   database {
 ///     name       = testAwsGlueCatalogDatabase.name
 ///     catalog_id = "110376042874"
 ///   }
@@ -376,10 +376,10 @@ pulumi.Output<GetDataLakeSettingsResult> getDataLakeSettingsOutput(
 ///     public static void stack(Context ctx) {
 ///         final var test = LakeformationFunctions.getPermissions(GetPermissionsArgs.builder()
 ///             .database(GetPermissionsDatabaseArgs.builder()
-///                 .name(testAwsGlueCatalogDatabase.name())
+///                 .name(testAwsGlueCatalogDatabase.get("name"))
 ///                 .catalogId("110376042874")
 ///                 .build())
-///             .principal(workflowRole.arn())
+///             .principal(workflowRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -525,7 +525,7 @@ pulumi.Output<GetDataLakeSettingsResult> getDataLakeSettingsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -533,15 +533,16 @@ pulumi.Output<GetDataLakeSettingsResult> getDataLakeSettingsOutput(
 ///   }
 /// }
 ///
-/// data "aws_lakeformation_getpermissions" "test" {
-///   lf_tag_policy = {
-///     expressions = [{
-///       "key"    = "Team"
-///       "values" = ["Sales"]
-///       }, {
-///       "key"    = "Environment"
-///       "values" = ["Dev", "Production"]
-///     }]
+/// data "aws_lakeformation_permissions" "test" {
+///   lf_tag_policy {
+///     expression {
+///       key    = "Team"
+///       values = ["Sales"]
+///     }
+///     expression {
+///       key    = "Environment"
+///       values = ["Dev", "Production"]
+///     }
 ///     resource_type = "DATABASE"
 ///   }
 ///   principal = workflowRole.arn
@@ -585,7 +586,7 @@ pulumi.Output<GetDataLakeSettingsResult> getDataLakeSettingsOutput(
 ///                         .build())
 ///                 .resourceType("DATABASE")
 ///                 .build())
-///             .principal(workflowRole.arn())
+///             .principal(workflowRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -690,7 +691,7 @@ pulumi.Output<GetPermissionsResult> getPermissionsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -698,7 +699,7 @@ pulumi.Output<GetPermissionsResult> getPermissionsOutput(
 ///   }
 /// }
 ///
-/// data "aws_lakeformation_getresource" "example" {
+/// data "aws_lakeformation_resource" "example" {
 ///   arn = "arn:aws:s3:::tf-acc-test-9151654063908211878"
 /// }
 /// ```

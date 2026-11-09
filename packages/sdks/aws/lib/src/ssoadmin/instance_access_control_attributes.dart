@@ -148,7 +148,7 @@ import 'instance_access_control_attributes_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -156,23 +156,26 @@ import 'instance_access_control_attributes_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
 ///
-/// resource "aws_ssoadmin_instanceaccesscontrolattributes" "example" {
-///   attributes {
-///     values {
-///       sources = ["$${path:name.givenName}"]
+/// resource "aws_ssoadmin_instance_access_control_attributes" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   attribute {
+///     value {
+///       source = ["$${path:name.givenName}"]
 ///     }
 ///     key = "name"
 ///   }
-///   attributes {
-///     values {
-///       sources = ["$${path:name.familyName}"]
+///   attribute {
+///     value {
+///       source = ["$${path:name.familyName}"]
 ///     }
 ///     key = "last"
 ///   }
-///   instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+///   instance_arn = data.aws_ssoadmin_instances.example.arns[0]
 /// }
 /// ```
 /// ```java
@@ -276,7 +279,7 @@ class InstanceAccessControlAttributes extends pulumi.CustomResource {
           'aws:ssoadmin/instanceAccessControlAttributes:InstanceAccessControlAttributes',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     attributes = registerOutput<List<InstanceAccessControlAttributesAttribute>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceAccessControlAttributesAttribute>(guardedValue, (value) => InstanceAccessControlAttributesAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     instanceArn = registerOutput<String>('instanceArn');

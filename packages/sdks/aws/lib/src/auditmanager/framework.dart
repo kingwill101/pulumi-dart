@@ -114,7 +114,7 @@ import 'framework_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -123,6 +123,9 @@ import 'framework_state.dart';
 /// }
 ///
 /// resource "aws_auditmanager_framework" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   control_sets {
 ///     controls {
 ///       id = test1.id
@@ -162,10 +165,10 @@ import 'framework_state.dart';
 ///             .controlSets(FrameworkControlSetArgs.builder()
 ///                 .controls(
 ///                     FrameworkControlSetControlArgs.builder()
-///                         .id(test1.id())
+///                         .id(test1.get("id"))
 ///                         .build(),
 ///                     FrameworkControlSetControlArgs.builder()
-///                         .id(test2.id())
+///                         .id(test2.get("id"))
 ///                         .build())
 ///                 .name("example")
 ///                 .build())
@@ -242,7 +245,7 @@ class Framework extends pulumi.CustomResource {
           'aws:auditmanager/framework:Framework',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     complianceType = registerOutput<String?>('complianceType');

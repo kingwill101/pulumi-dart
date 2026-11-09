@@ -151,7 +151,7 @@ import 'launch_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -159,7 +159,7 @@ import 'launch_configuration_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2_getami" "ubuntu" {
+/// data "aws_ec2_ami" "ubuntu" {
 ///   filters {
 ///     name   = "name"
 ///     values = ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"]
@@ -173,9 +173,12 @@ import 'launch_configuration_state.dart';
 /// }
 ///
 /// # Canonical
-/// resource "aws_ec2_launchconfiguration" "as_conf" {
+/// resource "aws_ec2_launch_configuration" "as_conf" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "web_config"
-///   image_id      = data.aws_ec2_getami.ubuntu.id
+///   image_id      = data.aws_ec2_ami.ubuntu.id
 ///   instance_type = "t2.micro"
 /// }
 /// ```
@@ -320,7 +323,7 @@ class LaunchConfiguration extends pulumi.CustomResource {
           'aws:ec2/launchConfiguration:LaunchConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     associatePublicIpAddress = registerOutput<bool?>('associatePublicIpAddress');

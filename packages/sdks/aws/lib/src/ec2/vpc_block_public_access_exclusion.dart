@@ -67,7 +67,7 @@ import 'vpc_block_public_access_exclusion_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcBlockPublicAccessExclusion(ctx, "test", &ec2.VpcBlockPublicAccessExclusionArgs{
-/// 			VpcId:                        test.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:                        test.ID(),
 /// 			InternetGatewayExclusionMode: pulumi.String("allow-bidirectional"),
 /// 		})
 /// 		if err != nil {
@@ -78,7 +78,7 @@ import 'vpc_block_public_access_exclusion_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -87,9 +87,15 @@ import 'vpc_block_public_access_exclusion_timeouts.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.1.0.0/16"
 /// }
-/// resource "aws_ec2_vpcblockpublicaccessexclusion" "test" {
+/// resource "aws_ec2_vpc_block_public_access_exclusion" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id                          = aws_ec2_vpc.test.id
 ///   internet_gateway_exclusion_mode = "allow-bidirectional"
 /// }
@@ -218,13 +224,13 @@ import 'vpc_block_public_access_exclusion_timeouts.dart';
 /// 		}
 /// 		testSubnet, err := ec2.NewSubnet(ctx, "test", &ec2.SubnetArgs{
 /// 			CidrBlock: pulumi.String("10.1.1.0/24"),
-/// 			VpcId:     test.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:     test.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcBlockPublicAccessExclusion(ctx, "test", &ec2.VpcBlockPublicAccessExclusionArgs{
-/// 			SubnetId:                     testSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetId:                     testSubnet.ID(),
 /// 			InternetGatewayExclusionMode: pulumi.String("allow-egress"),
 /// 		})
 /// 		if err != nil {
@@ -235,7 +241,7 @@ import 'vpc_block_public_access_exclusion_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -244,13 +250,22 @@ import 'vpc_block_public_access_exclusion_timeouts.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.1.0.0/16"
 /// }
 /// resource "aws_ec2_subnet" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.1.1.0/24"
 ///   vpc_id     = aws_ec2_vpc.test.id
 /// }
-/// resource "aws_ec2_vpcblockpublicaccessexclusion" "test" {
+/// resource "aws_ec2_vpc_block_public_access_exclusion" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_id                       = aws_ec2_subnet.test.id
 ///   internet_gateway_exclusion_mode = "allow-egress"
 /// }
@@ -356,7 +371,7 @@ class VpcBlockPublicAccessExclusion extends pulumi.CustomResource {
           'aws:ec2/vpcBlockPublicAccessExclusion:VpcBlockPublicAccessExclusion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     internetGatewayExclusionMode = registerOutput<String>('internetGatewayExclusionMode');
     region = registerOutput<String>('region');

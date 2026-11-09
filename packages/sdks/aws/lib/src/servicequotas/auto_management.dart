@@ -107,7 +107,7 @@ import 'auto_management_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -115,15 +115,21 @@ import 'auto_management_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_servicequotas_automanagement" "example" {
+/// resource "aws_servicequotas_auto_management" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   opt_in_level = "ACCOUNT"
 ///   opt_in_type  = "NotifyOnly"
 ///   exclusion_list = {
 ///     "dynamodb" = ["L-F98FE922"]
 ///   }
-///   notification_arn = aws_notifications_notificationconfiguration.example.arn
+///   notification_arn = aws_notifications_notification_configuration.example.arn
 /// }
-/// resource "aws_notifications_notificationconfiguration" "example" {
+/// resource "aws_notifications_notification_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   description = "example configuration"
 /// }
@@ -227,7 +233,7 @@ class AutoManagement extends pulumi.CustomResource {
           'aws:servicequotas/autoManagement:AutoManagement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     exclusionList = registerOutput<Map<String, List<String>>?>('exclusionList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>()); });
     notificationArn = registerOutput<String?>('notificationArn');

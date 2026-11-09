@@ -89,7 +89,7 @@ import 'device_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -97,8 +97,11 @@ import 'device_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_devicefarm_devicepool" "example" {
-///   rules {
+/// resource "aws_devicefarm_device_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
 ///     attribute = "OS_VERSION"
 ///     operator  = "EQUALS"
 ///     value     = "\"AVAILABLE\""
@@ -136,7 +139,7 @@ import 'device_pool_state.dart';
 ///                 .value("\"AVAILABLE\"")
 ///                 .build())
 ///             .name("example")
-///             .projectArn(exampleAwsDevicefarmProject.arn())
+///             .projectArn(exampleAwsDevicefarmProject.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -203,7 +206,7 @@ class DevicePool extends pulumi.CustomResource {
           'aws:devicefarm/devicePool:DevicePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

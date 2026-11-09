@@ -85,7 +85,7 @@ import 'recommendation_preferences_utilization_preference.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -93,8 +93,11 @@ import 'recommendation_preferences_utilization_preference.dart';
 ///   }
 /// }
 ///
-/// resource "aws_computeoptimizer_recommendationpreferences" "example" {
-///   scope = {
+/// resource "aws_computeoptimizer_recommendation_preferences" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope {
 ///     name  = "AccountId"
 ///     value = "123456789012"
 ///   }
@@ -272,7 +275,7 @@ import 'recommendation_preferences_utilization_preference.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -280,17 +283,20 @@ import 'recommendation_preferences_utilization_preference.dart';
 ///   }
 /// }
 ///
-/// resource "aws_computeoptimizer_recommendationpreferences" "example" {
-///   scope = {
+/// resource "aws_computeoptimizer_recommendation_preferences" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope {
 ///     name  = "AccountId"
 ///     value = "123456789012"
 ///   }
-///   external_metrics_preference = {
+///   external_metrics_preference {
 ///     source = "Datadog"
 ///   }
-///   preferred_resources {
-///     include_lists = ["m5.xlarge", "r5"]
-///     name          = "Ec2InstanceTypes"
+///   preferred_resource {
+///     include_list = ["m5.xlarge", "r5"]
+///     name         = "Ec2InstanceTypes"
 ///   }
 ///   resource_type                   = "Ec2Instance"
 ///   enhanced_infrastructure_metrics = "Active"
@@ -402,7 +408,7 @@ class RecommendationPreferences extends pulumi.CustomResource {
           'aws:computeoptimizer/recommendationPreferences:RecommendationPreferences',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     enhancedInfrastructureMetrics = registerOutput<String?>('enhancedInfrastructureMetrics');
     externalMetricsPreference = registerOutput<RecommendationPreferencesExternalMetricsPreference?>('externalMetricsPreference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecommendationPreferencesExternalMetricsPreference.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -126,7 +126,7 @@ import 'rate_based_rule_state.dart';
 /// 		_, err = wafregional.NewRateBasedRule(ctx, "wafrule", &wafregional.RateBasedRuleArgs{
 /// 			Predicates: wafregional.RateBasedRulePredicateArray{
 /// 				&wafregional.RateBasedRulePredicateArgs{
-/// 					DataId:  ipset.ID().ToIDOutput().ToStringOutput(),
+/// 					DataId:  ipset.ID(),
 /// 					Negated: pulumi.Bool(false),
 /// 					Type:    pulumi.String("IPMatch"),
 /// 				},
@@ -146,7 +146,7 @@ import 'rate_based_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -154,17 +154,23 @@ import 'rate_based_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafregional_ipset" "ipset" {
+/// resource "aws_wafregional_ip_set" "ipset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ip_set_descriptors {
 ///     type  = "IPV4"
 ///     value = "192.0.7.0/24"
 ///   }
 ///   name = "tfIPSet"
 /// }
-/// resource "aws_wafregional_ratebasedrule" "wafrule" {
-///   depends_on = [aws_wafregional_ipset.ipset]
-///   predicates {
-///     data_id = aws_wafregional_ipset.ipset.id
+/// resource "aws_wafregional_rate_based_rule" "wafrule" {
+///   depends_on = [aws_wafregional_ip_set.ipset]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   predicate {
+///     data_id = aws_wafregional_ip_set.ipset.id
 ///     negated = false
 ///     type    = "IPMatch"
 ///   }
@@ -290,7 +296,7 @@ class RateBasedRule extends pulumi.CustomResource {
           'aws:wafregional/rateBasedRule:RateBasedRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     metricName = registerOutput<String>('metricName');

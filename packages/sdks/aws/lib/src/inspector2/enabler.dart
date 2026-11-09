@@ -76,7 +76,7 @@ import 'enabler_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -85,6 +85,9 @@ import 'enabler_state.dart';
 /// }
 ///
 /// resource "aws_inspector2_enabler" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_ids    = ["123456789012"]
 ///   resource_types = ["EC2"]
 /// }
@@ -215,7 +218,7 @@ import 'enabler_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -223,11 +226,14 @@ import 'enabler_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
 /// resource "aws_inspector2_enabler" "test" {
-///   account_ids    = [data.aws_getcalleridentity.current.account_id]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   account_ids    = [data.aws_caller_identity.current.account_id]
 ///   resource_types = ["ECR", "EC2"]
 /// }
 /// ```
@@ -315,7 +321,7 @@ class Enabler extends pulumi.CustomResource {
           'aws:inspector2/enabler:Enabler',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accountIds = registerOutput<List<String>>('accountIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');

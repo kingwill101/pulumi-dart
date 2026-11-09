@@ -70,7 +70,7 @@ import 'source_api_association_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -78,7 +78,10 @@ import 'source_api_association_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appsync_sourceapiassociation" "test" {
+/// resource "aws_appsync_source_api_association" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description   = "My source API Merged"
 ///   merged_api_id = "gzos6bteufdunffzzifiowisoe"
 ///   source_api_id = "fzzifiowisoegzos6bteufdunf"
@@ -165,7 +168,7 @@ class SourceApiAssociation extends pulumi.CustomResource {
           'aws:appsync/sourceApiAssociation:SourceApiAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     associationId = registerOutput<String>('associationId');

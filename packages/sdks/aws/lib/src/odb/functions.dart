@@ -91,7 +91,7 @@ import 'get_networks_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -99,7 +99,7 @@ import 'get_networks_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_odb_getautonomousdatabase" "example" {
+/// data "aws_odb_autonomous_database" "example" {
 ///   id = exampleAwsOdbAutonomousDatabase.id
 /// }
 /// ```
@@ -125,7 +125,7 @@ import 'get_networks_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = OdbFunctions.getAutonomousDatabase(GetAutonomousDatabaseArgs.builder()
-///             .id(exampleAwsOdbAutonomousDatabase.id())
+///             .id(exampleAwsOdbAutonomousDatabase.get("id"))
 ///             .build());
 ///
 ///     }
@@ -224,7 +224,7 @@ pulumi.Output<GetAutonomousDatabaseResult> getAutonomousDatabaseOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -232,7 +232,7 @@ pulumi.Output<GetAutonomousDatabaseResult> getAutonomousDatabaseOutput(
 ///   }
 /// }
 ///
-/// data "aws_odb_getcloudautonomousvmcluster" "example" {
+/// data "aws_odb_cloud_autonomous_vm_cluster" "example" {
 ///   id = "example"
 /// }
 /// ```
@@ -350,7 +350,7 @@ pulumi.Output<GetCloudAutonomousVmClusterResult> getCloudAutonomousVmClusterOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -358,7 +358,7 @@ pulumi.Output<GetCloudAutonomousVmClusterResult> getCloudAutonomousVmClusterOutp
 ///   }
 /// }
 ///
-/// data "aws_odb_getcloudautonomousvmclusters" "example" {
+/// data "aws_odb_cloud_autonomous_vm_clusters" "example" {
 /// }
 /// ```
 /// ```java
@@ -480,7 +480,7 @@ pulumi.Output<GetCloudAutonomousVmClustersResult> getCloudAutonomousVmClustersOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -488,7 +488,7 @@ pulumi.Output<GetCloudAutonomousVmClustersResult> getCloudAutonomousVmClustersOu
 ///   }
 /// }
 ///
-/// data "aws_odb_getcloudexadatainfrastructure" "example" {
+/// data "aws_odb_cloud_exadata_infrastructure" "example" {
 ///   id = "example"
 /// }
 /// ```
@@ -606,7 +606,7 @@ pulumi.Output<GetCloudExadataInfrastructureResult> getCloudExadataInfrastructure
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -614,7 +614,7 @@ pulumi.Output<GetCloudExadataInfrastructureResult> getCloudExadataInfrastructure
 ///   }
 /// }
 ///
-/// data "aws_odb_getcloudexadatainfrastructures" "example" {
+/// data "aws_odb_cloud_exadata_infrastructures" "example" {
 /// }
 /// ```
 /// ```java
@@ -736,7 +736,7 @@ pulumi.Output<GetCloudExadataInfrastructuresResult> getCloudExadataInfrastructur
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -744,7 +744,7 @@ pulumi.Output<GetCloudExadataInfrastructuresResult> getCloudExadataInfrastructur
 ///   }
 /// }
 ///
-/// data "aws_odb_getcloudvmcluster" "example" {
+/// data "aws_odb_cloud_vm_cluster" "example" {
 ///   id = "example-id"
 /// }
 /// ```
@@ -862,7 +862,7 @@ pulumi.Output<GetCloudVmClusterResult> getCloudVmClusterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -870,7 +870,7 @@ pulumi.Output<GetCloudVmClusterResult> getCloudVmClusterOutput(
 ///   }
 /// }
 ///
-/// data "aws_odb_getcloudvmclusters" "example" {
+/// data "aws_odb_cloud_vm_clusters" "example" {
 /// }
 /// ```
 /// ```java
@@ -996,7 +996,7 @@ pulumi.Output<GetCloudVmClustersResult> getCloudVmClustersOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1004,7 +1004,7 @@ pulumi.Output<GetCloudVmClustersResult> getCloudVmClustersOutput(
 ///   }
 /// }
 ///
-/// data "aws_odb_getdbnode" "example" {
+/// data "aws_odb_db_node" "example" {
 ///   cloud_vm_cluster_id = "cloud_vm_cluster_id"
 ///   id                  = "db_node_id"
 /// }
@@ -1132,7 +1132,7 @@ pulumi.Output<GetDbNodeResult> getDbNodeOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1140,7 +1140,7 @@ pulumi.Output<GetDbNodeResult> getDbNodeOutput(
 ///   }
 /// }
 ///
-/// data "aws_odb_getdbnodes" "example" {
+/// data "aws_odb_db_nodes" "example" {
 ///   cloud_vm_cluster_id = "example"
 /// }
 /// ```
@@ -1269,7 +1269,7 @@ pulumi.Output<GetDbNodesResult> getDbNodesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1277,7 +1277,7 @@ pulumi.Output<GetDbNodesResult> getDbNodesOutput(
 ///   }
 /// }
 ///
-/// data "aws_odb_getdbserver" "example" {
+/// data "aws_odb_db_server" "example" {
 ///   cloud_exadata_infrastructure_id = "exadata_infra_id"
 ///   id                              = "db_server_id"
 /// }
@@ -1405,7 +1405,7 @@ pulumi.Output<GetDbServerResult> getDbServerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1413,7 +1413,7 @@ pulumi.Output<GetDbServerResult> getDbServerOutput(
 ///   }
 /// }
 ///
-/// data "aws_odb_getdbservers" "example" {
+/// data "aws_odb_db_servers" "example" {
 ///   cloud_exadata_infrastructure_id = "exadata_infra_id"
 /// }
 /// ```
@@ -1531,7 +1531,7 @@ pulumi.Output<GetDbServersResult> getDbServersOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1539,7 +1539,7 @@ pulumi.Output<GetDbServersResult> getDbServersOutput(
 ///   }
 /// }
 ///
-/// data "aws_odb_getdbsystemshapes" "example" {
+/// data "aws_odb_db_system_shapes" "example" {
 /// }
 /// ```
 /// ```java
@@ -1692,7 +1692,7 @@ pulumi.Output<GetGiVersionsResult> getGiVersionsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1700,7 +1700,7 @@ pulumi.Output<GetGiVersionsResult> getGiVersionsOutput(
 ///   }
 /// }
 ///
-/// data "aws_odb_getiamroleassociation" "example" {
+/// data "aws_odb_iam_role_association" "example" {
 ///   iam_role_arn = "arn:aws:iam::123456789012:role/odb-iam-role-example"
 ///   resource_arn = "arn:aws:odb:us-east-1:123456789012:cloud-vm-cluster/odb-example-cluster-id"
 /// }
@@ -1826,7 +1826,7 @@ pulumi.Output<GetIamRoleAssociationResult> getIamRoleAssociationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1834,7 +1834,7 @@ pulumi.Output<GetIamRoleAssociationResult> getIamRoleAssociationOutput(
 ///   }
 /// }
 ///
-/// data "aws_odb_getnetwork" "example" {
+/// data "aws_odb_network" "example" {
 ///   id = "example"
 /// }
 /// ```
@@ -1959,7 +1959,7 @@ pulumi.Output<GetNetworkResult> getNetworkOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1967,7 +1967,7 @@ pulumi.Output<GetNetworkResult> getNetworkOutput(
 ///   }
 /// }
 ///
-/// data "aws_odb_getnetworkpeeringconnection" "example" {
+/// data "aws_odb_network_peering_connection" "example" {
 ///   id = "example"
 /// }
 /// ```
@@ -2085,7 +2085,7 @@ pulumi.Output<GetNetworkPeeringConnectionResult> getNetworkPeeringConnectionOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2093,7 +2093,7 @@ pulumi.Output<GetNetworkPeeringConnectionResult> getNetworkPeeringConnectionOutp
 ///   }
 /// }
 ///
-/// data "aws_odb_getnetworkpeeringconnections" "example" {
+/// data "aws_odb_network_peering_connections" "example" {
 /// }
 /// ```
 /// ```java
@@ -2206,7 +2206,7 @@ pulumi.Output<GetNetworkPeeringConnectionsResult> getNetworkPeeringConnectionsOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2214,7 +2214,7 @@ pulumi.Output<GetNetworkPeeringConnectionsResult> getNetworkPeeringConnectionsOu
 ///   }
 /// }
 ///
-/// data "aws_odb_getnetworks" "example" {
+/// data "aws_odb_networks" "example" {
 /// }
 /// ```
 /// ```java

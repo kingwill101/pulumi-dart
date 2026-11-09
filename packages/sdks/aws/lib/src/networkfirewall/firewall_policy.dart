@@ -161,7 +161,7 @@ import 'firewall_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -169,22 +169,25 @@ import 'firewall_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
-/// data "aws_getcalleridentity" "currentGetCallerIdentity" {
+/// data "aws_caller_identity" "currentGetCallerIdentity" {
 /// }
 ///
-/// resource "aws_networkfirewall_firewallpolicy" "example" {
-///   firewall_policy = {
-///     stateless_rule_group_references = [{
-///       "priority"    = 1
-///       "resourceArn" = exampleAwsNetworkfirewallRuleGroup.arn
-///     }]
+/// resource "aws_networkfirewall_firewall_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   firewall_policy {
+///     stateless_rule_group_reference {
+///       priority     = 1
+///       resource_arn = exampleAwsNetworkfirewallRuleGroup.arn
+///     }
 ///     stateless_default_actions          = ["aws:pass"]
 ///     stateless_fragment_default_actions = ["aws:drop"]
-///     tls_inspection_configuration_arn   ="arn:${data.aws_getpartition.currentGetPartition.partition}:network-firewall:${data.aws_getregion.current.region}:${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:tls-configuration/example"
+///     tls_inspection_configuration_arn   ="arn:${data.aws_partition.currentGetPartition.partition}:network-firewall:${data.aws_region.current.region}:${data.aws_caller_identity.currentGetCallerIdentity.account_id}:tls-configuration/example"
 ///   }
 ///   name = "example"
 ///   tags = {
@@ -233,7 +236,7 @@ import 'firewall_policy_state.dart';
 ///             .firewallPolicy(FirewallPolicyFirewallPolicyArgs.builder()
 ///                 .statelessRuleGroupReferences(FirewallPolicyFirewallPolicyStatelessRuleGroupReferenceArgs.builder()
 ///                     .priority(1)
-///                     .resourceArn(exampleAwsNetworkfirewallRuleGroup.arn())
+///                     .resourceArn(exampleAwsNetworkfirewallRuleGroup.get("arn"))
 ///                     .build())
 ///                 .statelessDefaultActions("aws:pass")
 ///                 .statelessFragmentDefaultActions("aws:drop")
@@ -456,7 +459,7 @@ import 'firewall_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -464,20 +467,23 @@ import 'firewall_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkfirewall_firewallpolicy" "example" {
-///   firewall_policy = {
-///     policy_variables = {
-///       rule_variables = [{
-///         "ipSet" = {
-///           "definitions" = ["10.0.0.0/16", "10.1.0.0/24"]
+/// resource "aws_networkfirewall_firewall_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   firewall_policy {
+///     policy_variables {
+///       rule_variables {
+///         ip_set {
+///           definition = ["10.0.0.0/16", "10.1.0.0/24"]
 ///         }
-///         "key" = "HOME_NET"
-///       }]
+///         key = "HOME_NET"
+///       }
 ///     }
-///     stateless_rule_group_references = [{
-///       "priority"    = 1
-///       "resourceArn" = exampleAwsNetworkfirewallRuleGroup.arn
-///     }]
+///     stateless_rule_group_reference {
+///       priority     = 1
+///       resource_arn = exampleAwsNetworkfirewallRuleGroup.arn
+///     }
 ///     stateless_default_actions          = ["aws:pass"]
 ///     stateless_fragment_default_actions = ["aws:drop"]
 ///   }
@@ -528,7 +534,7 @@ import 'firewall_policy_state.dart';
 ///                     .build())
 ///                 .statelessRuleGroupReferences(FirewallPolicyFirewallPolicyStatelessRuleGroupReferenceArgs.builder()
 ///                     .priority(1)
-///                     .resourceArn(exampleAwsNetworkfirewallRuleGroup.arn())
+///                     .resourceArn(exampleAwsNetworkfirewallRuleGroup.get("arn"))
 ///                     .build())
 ///                 .statelessDefaultActions("aws:pass")
 ///                 .statelessFragmentDefaultActions("aws:drop")
@@ -567,6 +573,233 @@ import 'firewall_policy_state.dart';
 ///       tags:
 ///         Tag1: Value1
 ///         Tag2: Value2
+/// ```
+///
+///
+/// ### Policy with Route 53 Resolved IP Validation
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.route53.ResolverFirewallRuleGroup("example", {name: "example"});
+/// const exampleFirewallPolicy = new aws.networkfirewall.FirewallPolicy("example", {
+///     firewallPolicy: {
+///         route53ResolvedIpValidation: {
+///             action: "DROP",
+///             dnsExpiryExceptionPolicy: "CONTINUE",
+///             dnsFirewallRuleGroupId: example.id,
+///             sourceIpRanges: ["10.0.0.0/16"],
+///         },
+///         statelessDefaultActions: ["aws:forward_to_sfe"],
+///         statelessFragmentDefaultActions: ["aws:forward_to_sfe"],
+///     },
+///     name: "example",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.route53.ResolverFirewallRuleGroup("example", name="example")
+/// example_firewall_policy = aws.networkfirewall.FirewallPolicy("example",
+///     firewall_policy={
+///         "route53_resolved_ip_validation": {
+///             "action": "DROP",
+///             "dns_expiry_exception_policy": "CONTINUE",
+///             "dns_firewall_rule_group_id": example.id,
+///             "source_ip_ranges": ["10.0.0.0/16"],
+///         },
+///         "stateless_default_actions": ["aws:forward_to_sfe"],
+///         "stateless_fragment_default_actions": ["aws:forward_to_sfe"],
+///     },
+///     name="example")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.Route53.ResolverFirewallRuleGroup("example", new()
+///     {
+///         Name = "example",
+///     });
+///
+///     var exampleFirewallPolicy = new Aws.NetworkFirewall.FirewallPolicy("example", new()
+///     {
+///         FirewallPolicyConfiguration = new Aws.NetworkFirewall.Inputs.FirewallPolicyFirewallPolicyArgs
+///         {
+///             Route53ResolvedIpValidation = new Aws.NetworkFirewall.Inputs.FirewallPolicyFirewallPolicyRoute53ResolvedIpValidationArgs
+///             {
+///                 Action = "DROP",
+///                 DnsExpiryExceptionPolicy = "CONTINUE",
+///                 DnsFirewallRuleGroupId = example.Id,
+///                 SourceIpRanges = new[]
+///                 {
+///                     "10.0.0.0/16",
+///                 },
+///             },
+///             StatelessDefaultActions = new[]
+///             {
+///                 "aws:forward_to_sfe",
+///             },
+///             StatelessFragmentDefaultActions = new[]
+///             {
+///                 "aws:forward_to_sfe",
+///             },
+///         },
+///         Name = "example",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/networkfirewall"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/route53"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := route53.NewResolverFirewallRuleGroup(ctx, "example", &route53.ResolverFirewallRuleGroupArgs{
+/// 			Name: pulumi.String("example"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = networkfirewall.NewFirewallPolicy(ctx, "example", &networkfirewall.FirewallPolicyArgs{
+/// 			FirewallPolicy: &networkfirewall.FirewallPolicyFirewallPolicyArgs{
+/// 				Route53ResolvedIpValidation: &networkfirewall.FirewallPolicyFirewallPolicyRoute53ResolvedIpValidationArgs{
+/// 					Action:                   pulumi.String("DROP"),
+/// 					DnsExpiryExceptionPolicy: pulumi.String("CONTINUE"),
+/// 					DnsFirewallRuleGroupId:   example.ID(),
+/// 					SourceIpRanges: pulumi.StringArray{
+/// 						pulumi.String("10.0.0.0/16"),
+/// 					},
+/// 				},
+/// 				StatelessDefaultActions: pulumi.StringArray{
+/// 					pulumi.String("aws:forward_to_sfe"),
+/// 				},
+/// 				StatelessFragmentDefaultActions: pulumi.StringArray{
+/// 					pulumi.String("aws:forward_to_sfe"),
+/// 				},
+/// 			},
+/// 			Name: pulumi.String("example"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_resolver_firewall_rule_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name = "example"
+/// }
+/// resource "aws_networkfirewall_firewall_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   firewall_policy {
+///     route53_resolved_ip_validation {
+///       action                      = "DROP"
+///       dns_expiry_exception_policy = "CONTINUE"
+///       dns_firewall_rule_group_id  = aws_route53_resolver_firewall_rule_group.example.id
+///       source_ip_ranges            = ["10.0.0.0/16"]
+///     }
+///     stateless_default_actions          = ["aws:forward_to_sfe"]
+///     stateless_fragment_default_actions = ["aws:forward_to_sfe"]
+///   }
+///   name = "example"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.route53.ResolverFirewallRuleGroup;
+/// import com.pulumi.aws.route53.ResolverFirewallRuleGroupArgs;
+/// import com.pulumi.aws.networkfirewall.FirewallPolicy;
+/// import com.pulumi.aws.networkfirewall.FirewallPolicyArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.FirewallPolicyFirewallPolicyArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.FirewallPolicyFirewallPolicyRoute53ResolvedIpValidationArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new ResolverFirewallRuleGroup("example", ResolverFirewallRuleGroupArgs.builder()
+///             .name("example")
+///             .build());
+///
+///         var exampleFirewallPolicy = new FirewallPolicy("exampleFirewallPolicy", FirewallPolicyArgs.builder()
+///             .firewallPolicy(FirewallPolicyFirewallPolicyArgs.builder()
+///                 .route53ResolvedIpValidation(FirewallPolicyFirewallPolicyRoute53ResolvedIpValidationArgs.builder()
+///                     .action("DROP")
+///                     .dnsExpiryExceptionPolicy("CONTINUE")
+///                     .dnsFirewallRuleGroupId(example.id())
+///                     .sourceIpRanges("10.0.0.0/16")
+///                     .build())
+///                 .statelessDefaultActions("aws:forward_to_sfe")
+///                 .statelessFragmentDefaultActions("aws:forward_to_sfe")
+///                 .build())
+///             .name("example")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:route53:ResolverFirewallRuleGroup
+///     properties:
+///       name: example
+///   exampleFirewallPolicy:
+///     type: aws:networkfirewall:FirewallPolicy
+///     name: example
+///     properties:
+///       firewallPolicy:
+///         route53ResolvedIpValidation:
+///           action: DROP
+///           dnsExpiryExceptionPolicy: CONTINUE
+///           dnsFirewallRuleGroupId: ${example.id}
+///           sourceIpRanges:
+///             - 10.0.0.0/16
+///         statelessDefaultActions:
+///           - aws:forward_to_sfe
+///         statelessFragmentDefaultActions:
+///           - aws:forward_to_sfe
+///       name: example
 /// ```
 ///
 ///
@@ -713,7 +946,7 @@ import 'firewall_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -721,18 +954,21 @@ import 'firewall_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkfirewall_firewallpolicy" "example" {
-///   firewall_policy = {
-///     stateless_custom_actions = [{
-///       "actionDefinition" = {
-///         "publishMetricAction" = {
-///           "dimensions" = [{
-///             "value" = "1"
-///           }]
+/// resource "aws_networkfirewall_firewall_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   firewall_policy {
+///     stateless_custom_action {
+///       action_definition {
+///         publish_metric_action {
+///           dimension {
+///             value = "1"
+///           }
 ///         }
 ///       }
-///       "actionName" = "ExampleCustomAction"
-///     }]
+///       action_name = "ExampleCustomAction"
+///     }
 ///     stateless_default_actions          = ["aws:pass", "ExampleCustomAction"]
 ///     stateless_fragment_default_actions = ["aws:drop"]
 ///   }
@@ -934,7 +1170,7 @@ import 'firewall_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -942,17 +1178,20 @@ import 'firewall_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
 ///
-/// resource "aws_networkfirewall_firewallpolicy" "example" {
-///   firewall_policy = {
-///     stateful_rule_group_references = [{
-///       "deepThreatInspection" = true
-///       "resourceArn"          ="arn:${data.aws_getpartition.currentGetPartition.partition}:network-firewall:${data.aws_getregion.current.region}:aws-managed:stateful-rulegroup/AttackInfrastructureActionOrder"
-///     }]
+/// resource "aws_networkfirewall_firewall_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   firewall_policy {
+///     stateful_rule_group_reference {
+///       deep_threat_inspection = true
+///       resource_arn           ="arn:${data.aws_partition.currentGetPartition.partition}:network-firewall:${data.aws_region.current.region}:aws-managed:stateful-rulegroup/AttackInfrastructureActionOrder"
+///     }
 ///     stateless_fragment_default_actions = ["aws:drop"]
 ///     stateless_default_actions          = ["aws:pass"]
 ///   }
@@ -1174,7 +1413,7 @@ import 'firewall_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1182,21 +1421,24 @@ import 'firewall_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
 ///
-/// resource "aws_networkfirewall_firewallpolicy" "example" {
-///   firewall_policy = {
-///     stateful_engine_options = {
+/// resource "aws_networkfirewall_firewall_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   firewall_policy {
+///     stateful_engine_options {
 ///       rule_order = "STRICT_ORDER"
 ///     }
-///     stateful_rule_group_references = [{
-///       "deepThreatInspection" = false
-///       "priority"             = 1
-///       "resourceArn"          ="arn:${data.aws_getpartition.currentGetPartition.partition}:network-firewall:${data.aws_getregion.current.region}:aws-managed:stateful-rulegroup/AttackInfrastructureStrictOrder"
-///     }]
+///     stateful_rule_group_reference {
+///       deep_threat_inspection = false
+///       priority               = 1
+///       resource_arn           ="arn:${data.aws_partition.currentGetPartition.partition}:network-firewall:${data.aws_region.current.region}:aws-managed:stateful-rulegroup/AttackInfrastructureStrictOrder"
+///     }
 ///     stateless_fragment_default_actions = ["aws:drop"]
 ///     stateless_default_actions          = ["aws:pass"]
 ///   }
@@ -1323,7 +1565,7 @@ class FirewallPolicy extends pulumi.CustomResource {
           'aws:networkfirewall/firewallPolicy:FirewallPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

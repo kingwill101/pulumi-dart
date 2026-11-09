@@ -144,7 +144,7 @@ import 'serverless_collection_vector_option.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -152,7 +152,10 @@ import 'serverless_collection_vector_option.dart';
 ///   }
 /// }
 ///
-/// resource "aws_opensearch_serverlesssecuritypolicy" "example" {
+/// resource "aws_opensearch_serverless_security_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 ///   type = "encryption"
 ///   policy = jsonencode({
@@ -163,9 +166,12 @@ import 'serverless_collection_vector_option.dart';
 ///     "AWSOwnedKey" = true
 ///   })
 /// }
-/// resource "aws_opensearch_serverlesscollection" "example" {
-///   depends_on = [aws_opensearch_serverlesssecuritypolicy.example]
-///   name       = "example"
+/// resource "aws_opensearch_serverless_collection" "example" {
+///   depends_on = [aws_opensearch_serverless_security_policy.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -361,7 +367,7 @@ import 'serverless_collection_vector_option.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -370,20 +376,29 @@ import 'serverless_collection_vector_option.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "example"
 ///   deletion_window_in_days = 7
 /// }
-/// resource "aws_opensearch_serverlesscollectiongroup" "example" {
+/// resource "aws_opensearch_serverless_collection_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "example-group"
 ///   standby_replicas = "ENABLED"
 /// }
-/// resource "aws_opensearch_serverlesscollection" "example" {
+/// resource "aws_opensearch_serverless_collection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   encryption_configs {
 ///     kms_key_arn = aws_kms_key.example.arn
 ///   }
 ///   name                  = "example"
 ///   type                  = "SEARCH"
-///   collection_group_name = aws_opensearch_serverlesscollectiongroup.example.name
+///   collection_group_name = aws_opensearch_serverless_collection_group.example.name
 /// }
 /// ```
 /// ```java
@@ -523,7 +538,7 @@ class ServerlessCollection extends pulumi.CustomResource {
           'aws:opensearch/serverlessCollection:ServerlessCollection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     collectionEndpoint = registerOutput<String>('collectionEndpoint');

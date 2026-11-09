@@ -170,7 +170,7 @@ import 'mail_from_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -178,26 +178,38 @@ import 'mail_from_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ses_mailfrom" "example" {
-///   domain           = aws_ses_domainidentity.example.domain
-///   mail_from_domain ="bounce.${aws_ses_domainidentity.example.domain}"
+/// resource "aws_ses_mail_from" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   domain           = aws_ses_domain_identity.example.domain
+///   mail_from_domain ="bounce.${aws_ses_domain_identity.example.domain}"
 /// }
 /// # Example SES Domain Identity
-/// resource "aws_ses_domainidentity" "example" {
+/// resource "aws_ses_domain_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain = "example.com"
 /// }
 /// # Example Route53 MX record
 /// resource "aws_route53_record" "example_ses_domain_mail_from_mx" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = exampleAwsRoute53Zone.id
-///   name    = aws_ses_mailfrom.example.mail_from_domain
+///   name    = aws_ses_mail_from.example.mail_from_domain
 ///   type    = "MX"
 ///   ttl     = "600"
 ///   records = ["10 feedback-smtp.us-east-1.amazonses.com"] # Change to the region in which `aws_ses_domain_identity.example` is created
 /// }
 /// # Example Route53 TXT record for SPF
 /// resource "aws_route53_record" "example_ses_domain_mail_from_txt" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = exampleAwsRoute53Zone.id
-///   name    = aws_ses_mailfrom.example.mail_from_domain
+///   name    = aws_ses_mail_from.example.mail_from_domain
 ///   type    = "TXT"
 ///   ttl     = "600"
 ///   records = ["v=spf1 include:amazonses.com ~all"]
@@ -240,7 +252,7 @@ import 'mail_from_state.dart';
 ///
 ///         // Example Route53 MX record
 ///         var exampleSesDomainMailFromMx = new Record("exampleSesDomainMailFromMx", RecordArgs.builder()
-///             .zoneId(exampleAwsRoute53Zone.id())
+///             .zoneId(exampleAwsRoute53Zone.get("id"))
 ///             .name(example.mailFromDomain())
 ///             .type("MX")
 ///             .ttl(600)
@@ -249,7 +261,7 @@ import 'mail_from_state.dart';
 ///
 ///         // Example Route53 TXT record for SPF
 ///         var exampleSesDomainMailFromTxt = new Record("exampleSesDomainMailFromTxt", RecordArgs.builder()
-///             .zoneId(exampleAwsRoute53Zone.id())
+///             .zoneId(exampleAwsRoute53Zone.get("id"))
 ///             .name(example.mailFromDomain())
 ///             .type("TXT")
 ///             .ttl(600)
@@ -372,7 +384,7 @@ import 'mail_from_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -381,11 +393,17 @@ import 'mail_from_state.dart';
 /// }
 ///
 /// # Example SES Email Identity
-/// resource "aws_ses_emailidentity" "example" {
+/// resource "aws_ses_email_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   email = "user@example.com"
 /// }
-/// resource "aws_ses_mailfrom" "example" {
-///   domain           = aws_ses_emailidentity.example.email
+/// resource "aws_ses_mail_from" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   domain           = aws_ses_email_identity.example.email
 ///   mail_from_domain = "mail.example.com"
 /// }
 /// ```
@@ -472,7 +490,7 @@ class MailFrom extends pulumi.CustomResource {
           'aws:ses/mailFrom:MailFrom',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     behaviorOnMxFailure = registerOutput<String?>('behaviorOnMxFailure');
     domain = registerOutput<String>('domain');

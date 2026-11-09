@@ -76,7 +76,7 @@ import 'resolver_firewall_config_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = route53.NewResolverFirewallConfig(ctx, "example", &route53.ResolverFirewallConfigArgs{
-/// 			ResourceId:       example.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceId:       example.ID(),
 /// 			FirewallFailOpen: pulumi.String("ENABLED"),
 /// 		})
 /// 		if err != nil {
@@ -87,7 +87,7 @@ import 'resolver_firewall_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -96,11 +96,17 @@ import 'resolver_firewall_config_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block           = "10.0.0.0/16"
 ///   enable_dns_support   = true
 ///   enable_dns_hostnames = true
 /// }
-/// resource "aws_route53_resolverfirewallconfig" "example" {
+/// resource "aws_route53_resolver_firewall_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_id        = aws_ec2_vpc.example.id
 ///   firewall_fail_open = "ENABLED"
 /// }
@@ -188,7 +194,7 @@ class ResolverFirewallConfig extends pulumi.CustomResource {
           'aws:route53/resolverFirewallConfig:ResolverFirewallConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     firewallFailOpen = registerOutput<String>('firewallFailOpen');
     ownerId = registerOutput<String>('ownerId');

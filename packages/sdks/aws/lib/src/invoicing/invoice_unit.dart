@@ -104,7 +104,7 @@ import 'invoice_unit_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -112,8 +112,11 @@ import 'invoice_unit_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_invoicing_invoiceunit" "example" {
-///   rules {
+/// resource "aws_invoicing_invoice_unit" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
 ///     linked_accounts = ["098765432109"]
 ///   }
 ///   name             = "example-unit"
@@ -226,7 +229,7 @@ class InvoiceUnit extends pulumi.CustomResource {
           'aws:invoicing/invoiceUnit:InvoiceUnit',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

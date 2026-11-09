@@ -81,7 +81,7 @@ import 'transit_gateway_peering_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -89,8 +89,11 @@ import 'transit_gateway_peering_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkmanager_transitgatewaypeering" "example" {
-///   depends_on          = [exampleAwsEc2TransitGatewayPolicyTable, exampleAwsNetworkmanagerCoreNetworkPolicyAttachment]
+/// resource "aws_networkmanager_transit_gateway_peering" "example" {
+///   depends_on = [exampleAwsEc2TransitGatewayPolicyTable, exampleAwsNetworkmanagerCoreNetworkPolicyAttachment]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   core_network_id     = exampleAwsccNetworkmanagerCoreNetwork.id
 ///   transit_gateway_arn = exampleAwsEc2TransitGateway.arn
 /// }
@@ -118,8 +121,8 @@ import 'transit_gateway_peering_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TransitGatewayPeering("example", TransitGatewayPeeringArgs.builder()
-///             .coreNetworkId(exampleAwsccNetworkmanagerCoreNetwork.id())
-///             .transitGatewayArn(exampleAwsEc2TransitGateway.arn())
+///             .coreNetworkId(exampleAwsccNetworkmanagerCoreNetwork.get("id"))
+///             .transitGatewayArn(exampleAwsEc2TransitGateway.get("arn"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(
 ///                     exampleAwsEc2TransitGatewayPolicyTable,
@@ -188,7 +191,7 @@ class TransitGatewayPeering extends pulumi.CustomResource {
           'aws:networkmanager/transitGatewayPeering:TransitGatewayPeering',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     coreNetworkArn = registerOutput<String>('coreNetworkArn');

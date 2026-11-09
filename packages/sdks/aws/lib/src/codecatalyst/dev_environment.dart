@@ -129,7 +129,7 @@ import 'dev_environment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -137,11 +137,14 @@ import 'dev_environment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_codecatalyst_devenvironment" "test" {
-///   persistent_storage = {
+/// resource "aws_codecatalyst_dev_environment" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   persistent_storage {
 ///     size = 16
 ///   }
-///   ides = {
+///   ides {
 ///     name    = "PyCharm"
 ///     runtime = "public.ecr.aws/jetbrains/py"
 ///   }
@@ -254,7 +257,7 @@ class DevEnvironment extends pulumi.CustomResource {
           'aws:codecatalyst/devEnvironment:DevEnvironment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     alias = registerOutput<String?>('alias');
     ides = registerOutput<DevEnvironmentIdes>('ides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DevEnvironmentIdes.fromMap((guardedValue as Map).cast<String, dynamic>()); });

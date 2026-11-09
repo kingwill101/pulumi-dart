@@ -70,7 +70,7 @@ import 'security_group_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -78,7 +78,10 @@ import 'security_group_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_securitygroupassociation" "sg_ec2" {
+/// resource "aws_ec2_security_group_association" "sg_ec2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_endpoint_id   = ec2.id
 ///   security_group_id = sg.id
 /// }
@@ -105,8 +108,8 @@ import 'security_group_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var sgEc2 = new SecurityGroupAssociation("sgEc2", SecurityGroupAssociationArgs.builder()
-///             .vpcEndpointId(ec2.id())
-///             .securityGroupId(sg.id())
+///             .vpcEndpointId(ec2.get("id"))
+///             .securityGroupId(sg.get("id"))
 ///             .build());
 ///
 ///     }
@@ -152,7 +155,7 @@ class SecurityGroupAssociation extends pulumi.CustomResource {
           'aws:ec2/securityGroupAssociation:SecurityGroupAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     replaceDefaultAssociation = registerOutput<bool?>('replaceDefaultAssociation');

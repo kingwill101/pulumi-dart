@@ -153,7 +153,7 @@ import 'resolver_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -161,11 +161,14 @@ import 'resolver_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53_resolverendpoint" "foo" {
-///   ip_addresses {
+/// resource "aws_route53_resolver_endpoint" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ip_address {
 ///     subnet_id = sn1.id
 ///   }
-///   ip_addresses {
+///   ip_address {
 ///     subnet_id = sn2.id
 ///     ip        = "10.0.64.4"
 ///   }
@@ -204,18 +207,18 @@ import 'resolver_endpoint_state.dart';
 ///         var foo = new ResolverEndpoint("foo", ResolverEndpointArgs.builder()
 ///             .ipAddresses(
 ///                 ResolverEndpointIpAddressArgs.builder()
-///                     .subnetId(sn1.id())
+///                     .subnetId(sn1.get("id"))
 ///                     .build(),
 ///                 ResolverEndpointIpAddressArgs.builder()
-///                     .subnetId(sn2.id())
+///                     .subnetId(sn2.get("id"))
 ///                     .ip("10.0.64.4")
 ///                     .build())
 ///             .name("foo")
 ///             .direction("INBOUND")
 ///             .resolverEndpointType("IPV4")
 ///             .securityGroupIds(
-///                 sg1.id(),
-///                 sg2.id())
+///                 sg1.get("id"),
+///                 sg2.get("id"))
 ///             .protocols(
 ///                 "Do53",
 ///                 "DoH")
@@ -299,7 +302,7 @@ class ResolverEndpoint extends pulumi.CustomResource {
           'aws:route53/resolverEndpoint:ResolverEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     direction = registerOutput<String>('direction');

@@ -62,7 +62,7 @@ import 'cluster_snapshot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'cluster_snapshot_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_rds_clustersnapshot" "example" {
+/// resource "aws_rds_cluster_snapshot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   db_cluster_identifier          = exampleAwsRdsCluster.id
 ///   db_cluster_snapshot_identifier = "resourcetestsnapshot1234"
 /// }
@@ -97,7 +100,7 @@ import 'cluster_snapshot_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ClusterSnapshot("example", ClusterSnapshotArgs.builder()
-///             .dbClusterIdentifier(exampleAwsRdsCluster.id())
+///             .dbClusterIdentifier(exampleAwsRdsCluster.get("id"))
 ///             .dbClusterSnapshotIdentifier("resourcetestsnapshot1234")
 ///             .build());
 ///
@@ -173,7 +176,7 @@ class ClusterSnapshot extends pulumi.CustomResource {
           'aws:rds/clusterSnapshot:ClusterSnapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     allocatedStorage = registerOutput<int>('allocatedStorage');
     availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

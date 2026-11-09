@@ -69,7 +69,7 @@ import 'connection_group_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,7 +77,10 @@ import 'connection_group_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_connectiongroup" "example" {
+/// resource "aws_cloudfront_connection_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example"
 ///   enabled      = true
 ///   ipv6_enabled = true
@@ -171,7 +174,7 @@ class ConnectionGroup extends pulumi.CustomResource {
           'aws:cloudfront/connectionGroup:ConnectionGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     anycastIpListId = registerOutput<String?>('anycastIpListId');
     arn = registerOutput<String>('arn');

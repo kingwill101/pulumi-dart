@@ -78,7 +78,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -87,6 +87,9 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_directoryservicedata_user" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   directory_id     = "d-1234567890"
 ///   sam_account_name = "exampleuser"
 ///   email_address    = "exampleuser@example.com"
@@ -197,7 +200,7 @@ class User extends pulumi.CustomResource {
           'aws:directoryservicedata/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     directoryId = registerOutput<String>('directoryId');
     distinguishedName = registerOutput<String>('distinguishedName');

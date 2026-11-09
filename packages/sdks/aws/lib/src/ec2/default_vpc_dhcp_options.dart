@@ -75,7 +75,7 @@ import 'default_vpc_dhcp_options_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -83,7 +83,10 @@ import 'default_vpc_dhcp_options_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_defaultvpcdhcpoptions" "default" {
+/// resource "aws_ec2_default_vpc_dhcp_options" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tags = {
 ///     "Name" = "Default DHCP Option Set"
 ///   }
@@ -165,7 +168,7 @@ class DefaultVpcDhcpOptions extends pulumi.CustomResource {
           'aws:ec2/defaultVpcDhcpOptions:DefaultVpcDhcpOptions',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     domainName = registerOutput<String>('domainName');

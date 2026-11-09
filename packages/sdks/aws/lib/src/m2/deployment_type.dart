@@ -73,7 +73,7 @@ import 'deployment_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,6 +82,9 @@ import 'deployment_timeouts.dart';
 /// }
 ///
 /// resource "aws_m2_deployment" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   environment_id      = "01234567890abcdef012345678"
 ///   application_id      = "34567890abcdef012345678012"
 ///   application_version = 1
@@ -167,7 +170,7 @@ class DeploymentType extends pulumi.CustomResource {
           'aws:m2/deployment:Deployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     applicationVersion = registerOutput<int>('applicationVersion');

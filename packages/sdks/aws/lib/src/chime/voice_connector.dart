@@ -66,7 +66,7 @@ import 'voice_connector_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'voice_connector_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_chime_voiceconnector" "test" {
+/// resource "aws_chime_voice_connector" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "connector-test-1"
 ///   require_encryption = true
 ///   aws_region         = "us-east-1"
@@ -160,7 +163,7 @@ class VoiceConnector extends pulumi.CustomResource {
           'aws:chime/voiceConnector:VoiceConnector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsRegion = registerOutput<String>('awsRegion');

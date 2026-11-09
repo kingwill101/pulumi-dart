@@ -504,7 +504,7 @@ import 'cluster_step.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -513,27 +513,63 @@ import 'cluster_step.dart';
 /// }
 ///
 /// resource "aws_emr_cluster" "cluster" {
-///   ec2_attributes = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ec2_attributes {
 ///     subnet_id                         = main.id
 ///     emr_managed_master_security_group = sg.id
 ///     emr_managed_slave_security_group  = sg.id
 ///     instance_profile                  = emrProfile.arn
 ///   }
-///   master_instance_group = {
+///   master_instance_group {
 ///     instance_type = "m4.large"
 ///   }
-///   core_instance_group = {
-///     ebs_configs = [{
-///       "size"               = "40"
-///       "type"               = "gp2"
-///       "volumesPerInstance" = 1
-///     }]
+///   core_instance_group {
+///     ebs_config {
+///       size                 = "40"
+///       type                 = "gp2"
+///       volumes_per_instance = 1
+///     }
 ///     instance_type      = "c4.large"
 ///     instance_count     = 1
 ///     bid_price          = "0.30"
-///     autoscaling_policy = "{\n\\\"Constraints\\\": {\n  \\\"MinCapacity\\\": 1,\n  \\\"MaxCapacity\\\": 2\n},\n\\\"Rules\\\": [\n  {\n    \\\"Name\\\": \\\"ScaleOutMemoryPercentage\\\",\n    \\\"Description\\\": \\\"Scale out if YARNMemoryAvailablePercentage is less than 15\\\",\n    \\\"Action\\\": {\n      \\\"SimpleScalingPolicyConfiguration\\\": {\n        \\\"AdjustmentType\\\": \\\"CHANGE_IN_CAPACITY\\\",\n        \\\"ScalingAdjustment\\\": 1,\n        \\\"CoolDown\\\": 300\n      }\n    },\n    \\\"Trigger\\\": {\n      \\\"CloudWatchAlarmDefinition\\\": {\n        \\\"ComparisonOperator\\\": \\\"LESS_THAN\\\",\n        \\\"EvaluationPeriods\\\": 1,\n        \\\"MetricName\\\": \\\"YARNMemoryAvailablePercentage\\\",\n        \\\"Namespace\\\": \\\"AWS/ElasticMapReduce\\\",\n        \\\"Period\\\": 300,\n        \\\"Statistic\\\": \\\"AVERAGE\\\",\n        \\\"Threshold\\\": 15.0,\n        \\\"Unit\\\": \\\"PERCENT\\\"\n      }\n    }\n  }\n]\n}\n"
+///     autoscaling_policy = <<EOF
+/// {
+/// \"Constraints\": {
+///   \"MinCapacity\": 1,
+///   \"MaxCapacity\": 2
+/// },
+/// \"Rules\": [
+///   {
+///     \"Name\": \"ScaleOutMemoryPercentage\",
+///     \"Description\": \"Scale out if YARNMemoryAvailablePercentage is less than 15\",
+///     \"Action\": {
+///       \"SimpleScalingPolicyConfiguration\": {
+///         \"AdjustmentType\": \"CHANGE_IN_CAPACITY\",
+///         \"ScalingAdjustment\": 1,
+///         \"CoolDown\": 300
+///       }
+///     },
+///     \"Trigger\": {
+///       \"CloudWatchAlarmDefinition\": {
+///         \"ComparisonOperator\": \"LESS_THAN\",
+///         \"EvaluationPeriods\": 1,
+///         \"MetricName\": \"YARNMemoryAvailablePercentage\",
+///         \"Namespace\": \"AWS/ElasticMapReduce\",
+///         \"Period\": 300,
+///         \"Statistic\": \"AVERAGE\",
+///         \"Threshold\": 15.0,
+///         \"Unit\": \"PERCENT\"
+///       }
+///     }
 ///   }
-///   bootstrap_actions {
+/// ]
+/// }
+/// EOF
+///
+///   }
+///   bootstrap_action {
 ///     path = "s3://elasticmapreduce/bootstrap-actions/run-if"
 ///     name = "runif"
 ///     args = ["instance.isMaster=true", "echo running on master node"]
@@ -541,7 +577,15 @@ import 'cluster_step.dart';
 ///   name                              = "emr-test-arn"
 ///   release_label                     = "emr-4.6.0"
 ///   applications                      = ["Spark"]
-///   additional_info                   = "{\n  \\\"instanceAwsClientConfiguration\\\": {\n    \\\"proxyPort\\\": 8099,\n    \\\"proxyHost\\\": \\\"myproxy.example.com\\\"\n  }\n}\n"
+///   additional_info                   = <<EOF
+/// {
+///   \"instanceAwsClientConfiguration\": {
+///     \"proxyPort\": 8099,
+///     \"proxyHost\": \"myproxy.example.com\"
+///   }
+/// }
+/// EOF
+///
 ///   termination_protection            = false
 ///   keep_job_flow_alive_when_no_steps = true
 ///   ebs_root_volume_size              = 100
@@ -549,7 +593,35 @@ import 'cluster_step.dart';
 ///     "role" = "rolename"
 ///     "env"  = "env"
 ///   }
-///   configurations_json = "  [\n    {\n      \\\"Classification\\\": \\\"hadoop-env\\\",\n      \\\"Configurations\\\": [\n        {\n          \\\"Classification\\\": \\\"export\\\",\n          \\\"Properties\\\": {\n            \\\"JAVA_HOME\\\": \\\"/usr/lib/jvm/java-1.8.0\\\"\n          }\n        }\n      ],\n      \\\"Properties\\\": {}\n    },\n    {\n      \\\"Classification\\\": \\\"spark-env\\\",\n      \\\"Configurations\\\": [\n        {\n          \\\"Classification\\\": \\\"export\\\",\n          \\\"Properties\\\": {\n            \\\"JAVA_HOME\\\": \\\"/usr/lib/jvm/java-1.8.0\\\"\n          }\n        }\n      ],\n      \\\"Properties\\\": {}\n    }\n  ]\n"
+///   configurations_json = <<EOF
+///   [
+///     {
+///       \"Classification\": \"hadoop-env\",
+///       \"Configurations\": [
+///         {
+///           \"Classification\": \"export\",
+///           \"Properties\": {
+///             \"JAVA_HOME\": \"/usr/lib/jvm/java-1.8.0\"
+///           }
+///         }
+///       ],
+///       \"Properties\": {}
+///     },
+///     {
+///       \"Classification\": \"spark-env\",
+///       \"Configurations\": [
+///         {
+///           \"Classification\": \"export\",
+///           \"Properties\": {
+///             \"JAVA_HOME\": \"/usr/lib/jvm/java-1.8.0\"
+///           }
+///         }
+///       ],
+///       \"Properties\": {}
+///     }
+///   ]
+/// EOF
+///
 ///   service_role        = iamEmrServiceRole.arn
 /// }
 /// ```
@@ -581,10 +653,10 @@ import 'cluster_step.dart';
 ///     public static void stack(Context ctx) {
 ///         var cluster = new Cluster("cluster", ClusterArgs.builder()
 ///             .ec2Attributes(ClusterEc2AttributesArgs.builder()
-///                 .subnetId(main.id())
-///                 .emrManagedMasterSecurityGroup(sg.id())
-///                 .emrManagedSlaveSecurityGroup(sg.id())
-///                 .instanceProfile(emrProfile.arn())
+///                 .subnetId(main.get("id"))
+///                 .emrManagedMasterSecurityGroup(sg.get("id"))
+///                 .emrManagedSlaveSecurityGroup(sg.get("id"))
+///                 .instanceProfile(emrProfile.get("arn"))
 ///                 .build())
 ///             .masterInstanceGroup(ClusterMasterInstanceGroupArgs.builder()
 ///                 .instanceType("m4.large")
@@ -685,7 +757,7 @@ import 'cluster_step.dart';
 ///     }
 ///   ]
 ///             """)
-///             .serviceRole(iamEmrServiceRole.arn())
+///             .serviceRole(iamEmrServiceRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1039,7 +1111,7 @@ import 'cluster_step.dart';
 ///                             VolumesPerInstance = 1,
 ///                         },
 ///                     },
-///                     BidPriceAsPercentageOfOnDemandPrice = 80,
+///                     BidPriceAsPercentageOfOnDemandPrice = 80.0,
 ///                     InstanceType = "m3.xlarge",
 ///                     WeightedCapacity = 1,
 ///                 },
@@ -1054,7 +1126,7 @@ import 'cluster_step.dart';
 ///                             VolumesPerInstance = 1,
 ///                         },
 ///                     },
-///                     BidPriceAsPercentageOfOnDemandPrice = 100,
+///                     BidPriceAsPercentageOfOnDemandPrice = 100.0,
 ///                     InstanceType = "m4.xlarge",
 ///                     WeightedCapacity = 1,
 ///                 },
@@ -1069,7 +1141,7 @@ import 'cluster_step.dart';
 ///                             VolumesPerInstance = 1,
 ///                         },
 ///                     },
-///                     BidPriceAsPercentageOfOnDemandPrice = 100,
+///                     BidPriceAsPercentageOfOnDemandPrice = 100.0,
 ///                     InstanceType = "m4.2xlarge",
 ///                     WeightedCapacity = 2,
 ///                 },
@@ -1108,7 +1180,7 @@ import 'cluster_step.dart';
 ///                         VolumesPerInstance = 1,
 ///                     },
 ///                 },
-///                 BidPriceAsPercentageOfOnDemandPrice = 100,
+///                 BidPriceAsPercentageOfOnDemandPrice = 100.0,
 ///                 InstanceType = "m4.xlarge",
 ///                 WeightedCapacity = 1,
 ///             },
@@ -1123,7 +1195,7 @@ import 'cluster_step.dart';
 ///                         VolumesPerInstance = 1,
 ///                     },
 ///                 },
-///                 BidPriceAsPercentageOfOnDemandPrice = 100,
+///                 BidPriceAsPercentageOfOnDemandPrice = 100.0,
 ///                 InstanceType = "m4.2xlarge",
 ///                 WeightedCapacity = 2,
 ///             },
@@ -1249,7 +1321,7 @@ import 'cluster_step.dart';
 /// 					WeightedCapacity:                    pulumi.Int(2),
 /// 				},
 /// 			},
-/// 			ClusterId:              example.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterId:              example.ID(),
 /// 			Name:                   pulumi.String("task fleet"),
 /// 			TargetOnDemandCapacity: pulumi.Int(1),
 /// 			TargetSpotCapacity:     pulumi.Int(1),
@@ -1262,7 +1334,7 @@ import 'cluster_step.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1271,65 +1343,73 @@ import 'cluster_step.dart';
 /// }
 ///
 /// resource "aws_emr_cluster" "example" {
-///   master_instance_fleet = {
-///     instance_type_configs = [{
-///       "instanceType" = "m4.xlarge"
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   master_instance_fleet {
+///     instance_type_configs {
+///       instance_type = "m4.xlarge"
+///     }
 ///     target_on_demand_capacity = 1
 ///   }
-///   core_instance_fleet = {
-///     launch_specifications = {
-///       spot_specifications = [{
-///         "allocationStrategy"     = "capacity-optimized"
-///         "blockDurationMinutes"   = 0
-///         "timeoutAction"          = "SWITCH_TO_ON_DEMAND"
-///         "timeoutDurationMinutes" = 10
-///       }]
+///   core_instance_fleet {
+///     launch_specifications {
+///       spot_specification {
+///         allocation_strategy      = "capacity-optimized"
+///         block_duration_minutes   = 0
+///         timeout_action           = "SWITCH_TO_ON_DEMAND"
+///         timeout_duration_minutes = 10
+///       }
 ///     }
-///     instance_type_configs = [{
-///       "ebsConfigs" = [{
-///         "size"               = 100
-///         "type"               = "gp2"
-///         "volumesPerInstance" = 1
-///       }]
-///       "bidPriceAsPercentageOfOnDemandPrice" = 80
-///       "instanceType"                        = "m3.xlarge"
-///       "weightedCapacity"                    = 1
-///       }, {
-///       "ebsConfigs" = [{
-///         "size"               = 100
-///         "type"               = "gp2"
-///         "volumesPerInstance" = 1
-///       }]
-///       "bidPriceAsPercentageOfOnDemandPrice" = 100
-///       "instanceType"                        = "m4.xlarge"
-///       "weightedCapacity"                    = 1
-///       }, {
-///       "ebsConfigs" = [{
-///         "size"               = 100
-///         "type"               = "gp2"
-///         "volumesPerInstance" = 1
-///       }]
-///       "bidPriceAsPercentageOfOnDemandPrice" = 100
-///       "instanceType"                        = "m4.2xlarge"
-///       "weightedCapacity"                    = 2
-///     }]
+///     instance_type_configs {
+///       ebs_config {
+///         size                 = 100
+///         type                 = "gp2"
+///         volumes_per_instance = 1
+///       }
+///       bid_price_as_percentage_of_on_demand_price = 80
+///       instance_type                              = "m3.xlarge"
+///       weighted_capacity                          = 1
+///     }
+///     instance_type_configs {
+///       ebs_config {
+///         size                 = 100
+///         type                 = "gp2"
+///         volumes_per_instance = 1
+///       }
+///       bid_price_as_percentage_of_on_demand_price = 100
+///       instance_type                              = "m4.xlarge"
+///       weighted_capacity                          = 1
+///     }
+///     instance_type_configs {
+///       ebs_config {
+///         size                 = 100
+///         type                 = "gp2"
+///         volumes_per_instance = 1
+///       }
+///       bid_price_as_percentage_of_on_demand_price = 100
+///       instance_type                              = "m4.2xlarge"
+///       weighted_capacity                          = 2
+///     }
 ///     name                      = "core fleet"
 ///     target_on_demand_capacity = 2
 ///     target_spot_capacity      = 2
 ///   }
 /// }
-/// resource "aws_emr_instancefleet" "task" {
-///   launch_specifications = {
-///     spot_specifications = [{
-///       "allocationStrategy"     = "capacity-optimized"
-///       "blockDurationMinutes"   = 0
-///       "timeoutAction"          = "TERMINATE_CLUSTER"
-///       "timeoutDurationMinutes" = 10
-///     }]
+/// resource "aws_emr_instance_fleet" "task" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   launch_specifications {
+///     spot_specification {
+///       allocation_strategy      = "capacity-optimized"
+///       block_duration_minutes   = 0
+///       timeout_action           = "TERMINATE_CLUSTER"
+///       timeout_duration_minutes = 10
+///     }
 ///   }
 ///   instance_type_configs {
-///     ebs_configs {
+///     ebs_config {
 ///       size                 = 100
 ///       type                 = "gp2"
 ///       volumes_per_instance = 1
@@ -1339,7 +1419,7 @@ import 'cluster_step.dart';
 ///     weighted_capacity                          = 1
 ///   }
 ///   instance_type_configs {
-///     ebs_configs {
+///     ebs_config {
 ///       size                 = 100
 ///       type                 = "gp2"
 ///       volumes_per_instance = 1
@@ -1656,7 +1736,7 @@ import 'cluster_step.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1666,10 +1746,11 @@ import 'cluster_step.dart';
 ///
 /// resource "aws_emr_cluster" "example" {
 ///   lifecycle {
-///     ignore_changes = [steps]
+///     ignore_changes        = [steps]
+///     create_before_destroy = true
 ///   }
-///   steps {
-///     hadoop_jar_step = {
+///   step {
+///     hadoop_jar_step {
 ///       jar  = "command-runner.jar"
 ///       args = ["state-pusher-script"]
 ///     }
@@ -1806,7 +1887,7 @@ import 'cluster_step.dart';
 ///         {
 ///             InstanceCount = 3,
 ///         },
-///         CoreInstanceGroup = null,
+///         CoreInstanceGroup = new() { },
 ///         ReleaseLabel = "emr-5.24.1",
 ///         TerminationProtection = true,
 ///     });
@@ -1835,7 +1916,7 @@ import 'cluster_step.dart';
 /// 		}
 /// 		_, err = emr.NewCluster(ctx, "example", &emr.ClusterArgs{
 /// 			Ec2Attributes: &emr.ClusterEc2AttributesArgs{
-/// 				SubnetId: example.ID().ToIDOutput().ToStringOutput(),
+/// 				SubnetId: example.ID(),
 /// 			},
 /// 			MasterInstanceGroup: &emr.ClusterMasterInstanceGroupArgs{
 /// 				InstanceCount: pulumi.Int(3),
@@ -1852,7 +1933,7 @@ import 'cluster_step.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1864,19 +1945,26 @@ import 'cluster_step.dart';
 /// # only relevant configurations for working with this functionality.
 /// # Map public IP on launch must be enabled for public (Internet accessible) subnets
 /// resource "aws_ec2_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   map_public_ip_on_launch = true
 /// }
 /// resource "aws_emr_cluster" "example" {
-///   ec2_attributes = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ec2_attributes {
 ///     subnet_id = aws_ec2_subnet.example.id
 ///   }
 ///   # ... other configuration ...
-///   master_instance_group = {
+///   master_instance_group {
 ///     instance_count = 3
 ///   }
 ///   # ... other configuration ...
 ///   # Master instance count must be set to 3
-///   core_instance_group    = {}
+///   core_instance_group {
+///   }
 ///   release_label          = "emr-5.24.1"
 ///   termination_protection = true
 /// }
@@ -2020,7 +2108,7 @@ import 'cluster_step.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2030,7 +2118,8 @@ import 'cluster_step.dart';
 ///
 /// resource "aws_emr_cluster" "example" {
 ///   lifecycle {
-///     ignore_changes = [kerberosAttributes]
+///     ignore_changes        = [kerberosAttributes]
+///     create_before_destroy = true
 ///   }
 /// }
 /// ```
@@ -2196,7 +2285,7 @@ class Cluster extends pulumi.CustomResource {
   /// }
   /// ```
   /// ```hcl
-  /// pulumi {
+  /// terraform {
   ///   required_providers {
   ///     aws = {
   ///       source = "pulumi/aws"
@@ -2205,7 +2294,26 @@ class Cluster extends pulumi.CustomResource {
   /// }
   ///
   /// resource "aws_emr_cluster" "cluster" {
-  ///   configurations_json = "[\n{\n\\\"Classification\\\": \\\"hadoop-env\\\",\n\\\"Configurations\\\": [\n{\n\\\"Classification\\\": \\\"export\\\",\n\\\"Properties\\\": {\n\\\"JAVA_HOME\\\": \\\"/usr/lib/jvm/java-1.8.0\\\"\n}\n}\n],\n\\\"Properties\\\": {}\n}\n]\n"
+  ///   lifecycle {
+  ///     create_before_destroy = true
+  ///   }
+  ///   configurations_json = <<EOF
+  /// [
+  /// {
+  /// \"Classification\": \"hadoop-env\",
+  /// \"Configurations\": [
+  /// {
+  /// \"Classification\": \"export\",
+  /// \"Properties\": {
+  /// \"JAVA_HOME\": \"/usr/lib/jvm/java-1.8.0\"
+  /// }
+  /// }
+  /// ],
+  /// \"Properties\": {}
+  /// }
+  /// ]
+  /// EOF
+  ///
   /// }
   /// ```
   /// ```java
@@ -2346,7 +2454,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:emr/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     additionalInfo = registerOutput<String?>('additionalInfo');
     applications = registerOutput<List<String>?>('applications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

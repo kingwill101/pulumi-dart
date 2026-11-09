@@ -115,7 +115,7 @@ import 'prefix_list_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -123,8 +123,11 @@ import 'prefix_list_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_managedprefixlist" "prefix_list" {
-///   entries {
+/// resource "aws_ec2_managed_prefix_list" "prefix_list" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   entry {
 ///     cidr        = "10.0.0.0/8"
 ///     description = "Example CIDR"
 ///   }
@@ -132,9 +135,12 @@ import 'prefix_list_association_state.dart';
 ///   address_family = "IPv4"
 ///   max_entries    = 5
 /// }
-/// resource "aws_networkmanager_prefixlistassociation" "pl_association" {
+/// resource "aws_networkmanager_prefix_list_association" "pl_association" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   core_network_id   = coreNetwork.id
-///   prefix_list_arn   = aws_ec2_managedprefixlist.prefix_list.arn
+///   prefix_list_arn   = aws_ec2_managed_prefix_list.prefix_list.arn
 ///   prefix_list_alias = "exampleprefixlist"
 /// }
 /// ```
@@ -173,7 +179,7 @@ import 'prefix_list_association_state.dart';
 ///             .build());
 ///
 ///         var plAssociation = new PrefixListAssociation("plAssociation", PrefixListAssociationArgs.builder()
-///             .coreNetworkId(coreNetwork.id())
+///             .coreNetworkId(coreNetwork.get("id"))
 ///             .prefixListArn(prefixList.arn())
 ///             .prefixListAlias("exampleprefixlist")
 ///             .build());
@@ -242,7 +248,7 @@ class PrefixListAssociation extends pulumi.CustomResource {
           'aws:networkmanager/prefixListAssociation:PrefixListAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     coreNetworkId = registerOutput<String>('coreNetworkId');
     prefixListAlias = registerOutput<String>('prefixListAlias');

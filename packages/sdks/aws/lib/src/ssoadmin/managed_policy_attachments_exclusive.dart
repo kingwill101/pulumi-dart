@@ -108,7 +108,7 @@ import 'managed_policy_attachments_exclusive_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -116,16 +116,22 @@ import 'managed_policy_attachments_exclusive_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
 ///
-/// resource "aws_ssoadmin_permissionset" "example" {
+/// resource "aws_ssoadmin_permission_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "Example"
-///   instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+///   instance_arn = data.aws_ssoadmin_instances.example.arns[0]
 /// }
-/// resource "aws_ssoadmin_managedpolicyattachmentsexclusive" "example" {
-///   instance_arn        = data.aws_ssoadmin_getinstances.example.arns[0]
-///   permission_set_arn  = aws_ssoadmin_permissionset.example.arn
+/// resource "aws_ssoadmin_managed_policy_attachments_exclusive" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   instance_arn        = data.aws_ssoadmin_instances.example.arns[0]
+///   permission_set_arn  = aws_ssoadmin_permission_set.example.arn
 ///   managed_policy_arns = ["arn:aws:iam::aws:policy/ReadOnlyAccess"]
 /// }
 /// ```
@@ -233,7 +239,7 @@ import 'managed_policy_attachments_exclusive_timeouts.dart';
 ///     {
 ///         InstanceArn = exampleAwsSsoadminInstances.Arns[0],
 ///         PermissionSetArn = exampleAwsSsoadminPermissionSet.Arn,
-///         ManagedPolicyArns = new[] {},
+///         ManagedPolicyArns = new() {},
 ///     });
 ///
 /// });
@@ -261,7 +267,7 @@ import 'managed_policy_attachments_exclusive_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -269,7 +275,10 @@ import 'managed_policy_attachments_exclusive_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssoadmin_managedpolicyattachmentsexclusive" "example" {
+/// resource "aws_ssoadmin_managed_policy_attachments_exclusive" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_arn        = exampleAwsSsoadminInstances.arns[0]
 ///   permission_set_arn  = exampleAwsSsoadminPermissionSet.arn
 ///   managed_policy_arns = []
@@ -297,8 +306,8 @@ import 'managed_policy_attachments_exclusive_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ManagedPolicyAttachmentsExclusive("example", ManagedPolicyAttachmentsExclusiveArgs.builder()
-///             .instanceArn(exampleAwsSsoadminInstances.arns()[0])
-///             .permissionSetArn(exampleAwsSsoadminPermissionSet.arn())
+///             .instanceArn(exampleAwsSsoadminInstances.get("arns")[0])
+///             .permissionSetArn(exampleAwsSsoadminPermissionSet.get("arn"))
 ///             .managedPolicyArns()
 ///             .build());
 ///
@@ -361,7 +370,7 @@ class ManagedPolicyAttachmentsExclusive extends pulumi.CustomResource {
           'aws:ssoadmin/managedPolicyAttachmentsExclusive:ManagedPolicyAttachmentsExclusive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     instanceArn = registerOutput<String>('instanceArn');
     managedPolicyArns = registerOutput<List<String>>('managedPolicyArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

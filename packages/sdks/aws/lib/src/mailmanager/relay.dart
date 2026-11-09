@@ -82,7 +82,7 @@ import 'relay_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -91,8 +91,12 @@ import 'relay_state.dart';
 /// }
 ///
 /// resource "aws_mailmanager_relay" "example" {
-///   authentication = {
-///     no_authentication = {}
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   authentication {
+///     no_authentication {
+///     }
 ///   }
 ///   name        = "example"
 ///   server_name = "smtp.example.com"
@@ -257,7 +261,7 @@ import 'relay_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		exampleSecretVersion, err := secretsmanager.NewSecretVersion(ctx, "example", &secretsmanager.SecretVersionArgs{
-/// 			SecretId:     example.ID().ToIDOutput().ToStringOutput(),
+/// 			SecretId:     example.ID(),
 /// 			SecretString: pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
@@ -279,7 +283,7 @@ import 'relay_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -288,9 +292,15 @@ import 'relay_state.dart';
 /// }
 ///
 /// resource "aws_secretsmanager_secret" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
-/// resource "aws_secretsmanager_secretversion" "example" {
+/// resource "aws_secretsmanager_secret_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = aws_secretsmanager_secret.example.id
 ///   secret_string = jsonencode({
 ///     "username" = "user"
@@ -298,8 +308,11 @@ import 'relay_state.dart';
 ///   })
 /// }
 /// resource "aws_mailmanager_relay" "example" {
-///   authentication = {
-///     secret_arn = aws_secretsmanager_secretversion.example.arn
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   authentication {
+///     secret_arn = aws_secretsmanager_secret_version.example.arn
 ///   }
 ///   name        = "example"
 ///   server_name = "smtp.example.com"
@@ -440,7 +453,7 @@ class Relay extends pulumi.CustomResource {
           'aws:mailmanager/relay:Relay',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     authentication = registerOutput<RelayAuthentication?>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RelayAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });

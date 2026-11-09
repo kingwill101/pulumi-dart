@@ -119,7 +119,7 @@ import 'cluster_snapshot_copy_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -128,6 +128,9 @@ import 'cluster_snapshot_copy_timeouts.dart';
 /// }
 ///
 /// resource "aws_rds_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier  = "aurora-cluster-demo"
 ///   database_name       = "test"
 ///   engine              = "aurora-mysql"
@@ -135,12 +138,18 @@ import 'cluster_snapshot_copy_timeouts.dart';
 ///   master_password     = "avoid-plaintext-passwords"
 ///   skip_final_snapshot = true
 /// }
-/// resource "aws_rds_clustersnapshot" "example" {
+/// resource "aws_rds_cluster_snapshot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   db_cluster_identifier          = aws_rds_cluster.example.cluster_identifier
 ///   db_cluster_snapshot_identifier = "example"
 /// }
-/// resource "aws_rds_clustersnapshotcopy" "example" {
-///   source_db_cluster_snapshot_identifier = aws_rds_clustersnapshot.example.db_cluster_snapshot_arn
+/// resource "aws_rds_cluster_snapshot_copy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   source_db_cluster_snapshot_identifier = aws_rds_cluster_snapshot.example.db_cluster_snapshot_arn
 ///   target_db_cluster_snapshot_identifier = "example-copy"
 /// }
 /// ```
@@ -279,7 +288,7 @@ class ClusterSnapshotCopy extends pulumi.CustomResource {
           'aws:rds/clusterSnapshotCopy:ClusterSnapshotCopy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     allocatedStorage = registerOutput<int>('allocatedStorage');
     copyTags = registerOutput<bool?>('copyTags');

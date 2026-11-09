@@ -142,7 +142,7 @@ import 'files_file_system_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -150,19 +150,22 @@ import 'files_file_system_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
 ///
-/// resource "aws_s3_filesfilesystempolicy" "example" {
+/// resource "aws_s3_files_file_system_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   file_system_id = exampleAwsS3filesFileSystem.id
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
 ///     "Statement" = [{
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:${data.aws_getpartition.currentGetPartition.partition}:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///         "AWS" ="arn:${data.aws_partition.currentGetPartition.partition}:iam::${data.aws_caller_identity.current.account_id}:root"
 ///       }
 ///       "Action"   = "s3files:ClientMount"
 ///       "Resource" = "*"
@@ -202,7 +205,7 @@ import 'files_file_system_policy_state.dart';
 ///             .build());
 ///
 ///         var example = new FilesFileSystemPolicy("example", FilesFileSystemPolicyArgs.builder()
-///             .fileSystemId(exampleAwsS3filesFileSystem.id())
+///             .fileSystemId(exampleAwsS3filesFileSystem.get("id"))
 ///             .policy(serializeJson(
 ///                 jsonObject(
 ///                     jsonProperty("Version", "2012-10-17"),
@@ -288,7 +291,7 @@ class FilesFileSystemPolicy extends pulumi.CustomResource {
           'aws:s3/filesFileSystemPolicy:FilesFileSystemPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     fileSystemId = registerOutput<String>('fileSystemId');
     policy = registerOutput<String>('policy');

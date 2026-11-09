@@ -77,7 +77,7 @@ import 'event_archive_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -85,12 +85,18 @@ import 'event_archive_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_eventbus" "order" {
+/// resource "aws_cloudwatch_event_bus" "order" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "orders"
 /// }
-/// resource "aws_cloudwatch_eventarchive" "order" {
+/// resource "aws_cloudwatch_event_archive" "order" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "order-archive"
-///   event_source_arn = aws_cloudwatch_eventbus.order.arn
+///   event_source_arn = aws_cloudwatch_event_bus.order.arn
 /// }
 /// ```
 /// ```java
@@ -249,7 +255,7 @@ import 'event_archive_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -257,13 +263,19 @@ import 'event_archive_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_eventbus" "order" {
+/// resource "aws_cloudwatch_event_bus" "order" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "orders"
 /// }
-/// resource "aws_cloudwatch_eventarchive" "order" {
+/// resource "aws_cloudwatch_event_archive" "order" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "order-archive"
 ///   description      = "Archived events from order service"
-///   event_source_arn = aws_cloudwatch_eventbus.order.arn
+///   event_source_arn = aws_cloudwatch_event_bus.order.arn
 ///   retention_days   = 7
 ///   event_pattern = jsonencode({
 ///     "source" = ["company.team.order"]
@@ -647,7 +659,7 @@ import 'event_archive_state.dart';
 /// 		_, err = cloudwatch.NewEventArchive(ctx, "example", &cloudwatch.EventArchiveArgs{
 /// 			Name:             pulumi.String("example"),
 /// 			EventSourceArn:   example.Arn,
-/// 			KmsKeyIdentifier: exampleKey.ID().ToIDOutput().ToStringOutput(),
+/// 			KmsKeyIdentifier: exampleKey.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -657,7 +669,7 @@ import 'event_archive_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -665,15 +677,21 @@ import 'event_archive_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
 ///
-/// resource "aws_cloudwatch_eventbus" "example" {
+/// resource "aws_cloudwatch_event_bus" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_window_in_days = 7
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -682,7 +700,7 @@ import 'event_archive_state.dart';
 ///       "Sid"    = "Enable IAM User Permissions"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:${data.aws_getpartition.currentGetPartition.partition}:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///         "AWS" ="arn:${data.aws_partition.currentGetPartition.partition}:iam::${data.aws_caller_identity.current.account_id}:root"
 ///       }
 ///       "Action"   = "kms:*"
 ///       "Resource" = "*"
@@ -704,7 +722,7 @@ import 'event_archive_state.dart';
 ///       "Resource" = "*"
 ///       "Condition" = {
 ///         "StringEquals" = {
-///           "kms:EncryptionContext:aws:events:event-bus:arn" = aws_cloudwatch_eventbus.example.arn
+///           "kms:EncryptionContext:aws:events:event-bus:arn" = aws_cloudwatch_event_bus.example.arn
 ///         }
 ///       }
 ///     }]
@@ -713,9 +731,12 @@ import 'event_archive_state.dart';
 ///     "EventBridgeApiDestinations" = "true"
 ///   }
 /// }
-/// resource "aws_cloudwatch_eventarchive" "example" {
+/// resource "aws_cloudwatch_event_archive" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
-///   event_source_arn   = aws_cloudwatch_eventbus.example.arn
+///   event_source_arn   = aws_cloudwatch_event_bus.example.arn
 ///   kms_key_identifier = aws_kms_key.example.id
 /// }
 /// ```
@@ -926,7 +947,7 @@ class EventArchive extends pulumi.CustomResource {
           'aws:cloudwatch/eventArchive:EventArchive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

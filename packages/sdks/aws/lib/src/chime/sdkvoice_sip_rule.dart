@@ -95,7 +95,7 @@ import 'sdkvoice_sip_rule_target_application.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -103,7 +103,10 @@ import 'sdkvoice_sip_rule_target_application.dart';
 ///   }
 /// }
 ///
-/// resource "aws_chime_sdkvoicesiprule" "example" {
+/// resource "aws_chime_sdkvoice_sip_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   target_applications {
 ///     priority                 = 1
 ///     sip_media_application_id = example-sma.id
@@ -139,12 +142,12 @@ import 'sdkvoice_sip_rule_target_application.dart';
 ///         var example = new SdkvoiceSipRule("example", SdkvoiceSipRuleArgs.builder()
 ///             .targetApplications(SdkvoiceSipRuleTargetApplicationArgs.builder()
 ///                 .priority(1)
-///                 .sipMediaApplicationId(example_sma.id())
+///                 .sipMediaApplicationId(example_sma.get("id"))
 ///                 .awsRegion("us-east-1")
 ///                 .build())
 ///             .name("example-sip-rule")
 ///             .triggerType("RequestUriHostname")
-///             .triggerValue(example_voice_connector.outboundHostName())
+///             .triggerValue(example_voice_connector.get("outboundHostName"))
 ///             .build());
 ///
 ///     }
@@ -200,7 +203,7 @@ class SdkvoiceSipRule extends pulumi.CustomResource {
           'aws:chime/sdkvoiceSipRule:SdkvoiceSipRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     disabled = registerOutput<bool?>('disabled');
     this.name = registerOutput<String>('name');

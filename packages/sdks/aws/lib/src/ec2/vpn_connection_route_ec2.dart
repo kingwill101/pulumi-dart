@@ -106,7 +106,7 @@ import 'vpn_connection_route_state.dart';
 /// 			return err
 /// 		}
 /// 		vpnGateway, err := ec2.NewVpnGateway(ctx, "vpn_gateway", &ec2.VpnGatewayArgs{
-/// 			VpcId: vpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId: vpc.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -120,8 +120,8 @@ import 'vpn_connection_route_state.dart';
 /// 			return err
 /// 		}
 /// 		main, err := ec2.NewVpnConnection(ctx, "main", &ec2.VpnConnectionArgs{
-/// 			VpnGatewayId:      vpnGateway.ID().ToIDOutput().ToStringOutput(),
-/// 			CustomerGatewayId: customerGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			VpnGatewayId:      vpnGateway.ID(),
+/// 			CustomerGatewayId: customerGateway.ID(),
 /// 			Type:              pulumi.String("ipsec.1"),
 /// 			StaticRoutesOnly:  pulumi.Bool(true),
 /// 		})
@@ -130,7 +130,7 @@ import 'vpn_connection_route_state.dart';
 /// 		}
 /// 		_, err = ec2.NewVpnConnectionRoute(ctx, "office", &ec2.VpnConnectionRouteArgs{
 /// 			DestinationCidrBlock: pulumi.String("192.168.10.0/24"),
-/// 			VpnConnectionId:      main.ID().ToIDOutput().ToStringOutput(),
+/// 			VpnConnectionId:      main.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -140,7 +140,7 @@ import 'vpn_connection_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -149,25 +149,40 @@ import 'vpn_connection_route_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "vpc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
-/// resource "aws_ec2_vpngateway" "vpn_gateway" {
+/// resource "aws_ec2_vpn_gateway" "vpn_gateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id = aws_ec2_vpc.vpc.id
 /// }
-/// resource "aws_ec2_customergateway" "customer_gateway" {
+/// resource "aws_ec2_customer_gateway" "customer_gateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bgp_asn    = 65000
 ///   ip_address = "172.0.0.1"
 ///   type       = "ipsec.1"
 /// }
-/// resource "aws_ec2_vpnconnection" "main" {
-///   vpn_gateway_id      = aws_ec2_vpngateway.vpn_gateway.id
-///   customer_gateway_id = aws_ec2_customergateway.customer_gateway.id
+/// resource "aws_ec2_vpn_connection" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   vpn_gateway_id      = aws_ec2_vpn_gateway.vpn_gateway.id
+///   customer_gateway_id = aws_ec2_customer_gateway.customer_gateway.id
 ///   type                = "ipsec.1"
 ///   static_routes_only  = true
 /// }
-/// resource "aws_ec2_vpnconnectionroute" "office" {
+/// resource "aws_ec2_vpn_connection_route" "office" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   destination_cidr_block = "192.168.10.0/24"
-///   vpn_connection_id      = aws_ec2_vpnconnection.main.id
+///   vpn_connection_id      = aws_ec2_vpn_connection.main.id
 /// }
 /// ```
 /// ```java
@@ -279,7 +294,7 @@ class VpnConnectionRouteEc2 extends pulumi.CustomResource {
           'aws:ec2/vpnConnectionRoute:VpnConnectionRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
     region = registerOutput<String>('region');

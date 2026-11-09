@@ -79,7 +79,7 @@ import 'certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -91,6 +91,9 @@ import 'certificate_state.dart';
 /// }
 ///
 /// resource "aws_iot_certificate" "cert" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   csr    = file("/my/csr.pem")
 ///   active = true
 /// }
@@ -194,7 +197,7 @@ import 'certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -203,6 +206,9 @@ import 'certificate_state.dart';
 /// }
 ///
 /// resource "aws_iot_certificate" "cert" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   active = true
 /// }
 /// ```
@@ -316,7 +322,7 @@ import 'certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -328,6 +334,9 @@ import 'certificate_state.dart';
 /// }
 ///
 /// resource "aws_iot_certificate" "cert" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_pem = file("/my/cert.pem")
 ///   active          = true
 /// }
@@ -418,7 +427,7 @@ class Certificate extends pulumi.CustomResource {
           'aws:iot/certificate:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['caPem', 'certificatePem', 'privateKey', 'publicKey'],
         ) {
     active = registerOutput<bool>('active');

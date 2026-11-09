@@ -70,7 +70,7 @@ import 'request_validator_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -78,7 +78,10 @@ import 'request_validator_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_requestvalidator" "example" {
+/// resource "aws_apigateway_request_validator" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example"
 ///   rest_api                    = exampleAwsApiGatewayRestApi.id
 ///   validate_request_body       = true
@@ -108,7 +111,7 @@ import 'request_validator_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new RequestValidator("example", RequestValidatorArgs.builder()
 ///             .name("example")
-///             .restApi(exampleAwsApiGatewayRestApi.id())
+///             .restApi(exampleAwsApiGatewayRestApi.get("id"))
 ///             .validateRequestBody(true)
 ///             .validateRequestParameters(true)
 ///             .build());
@@ -159,7 +162,7 @@ class RequestValidator extends pulumi.CustomResource {
           'aws:apigateway/requestValidator:RequestValidator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

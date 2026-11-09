@@ -72,7 +72,7 @@ import 'lustre_file_system_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -80,7 +80,10 @@ import 'lustre_file_system_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fsx_lustrefilesystem" "example" {
+/// resource "aws_fsx_lustre_file_system" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   import_path      ="s3://${exampleAwsS3Bucket.bucket}"
 ///   storage_capacity = 1200
 ///   subnet_ids       = exampleAwsSubnet.id
@@ -108,9 +111,9 @@ import 'lustre_file_system_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new LustreFileSystem("example", LustreFileSystemArgs.builder()
-///             .importPath(String.format("s3://%s", exampleAwsS3Bucket.bucket()))
+///             .importPath(String.format("s3://%s", exampleAwsS3Bucket.get("bucket")))
 ///             .storageCapacity(1200)
-///             .subnetIds(exampleAwsSubnet.id())
+///             .subnetIds(exampleAwsSubnet.get("id"))
 ///             .build());
 ///
 ///     }
@@ -202,7 +205,7 @@ import 'lustre_file_system_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -210,9 +213,10 @@ import 'lustre_file_system_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fsx_lustrefilesystem" "example" {
+/// resource "aws_fsx_lustre_file_system" "example" {
 ///   lifecycle {
-///     ignore_changes = [securityGroupIds]
+///     ignore_changes        = [securityGroupIds]
+///     create_before_destroy = true
 ///   }
 ///   security_group_ids = [exampleAwsSecurityGroup.id]
 /// }
@@ -240,7 +244,7 @@ import 'lustre_file_system_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new LustreFileSystem("example", LustreFileSystemArgs.builder()
-///             .securityGroupIds(exampleAwsSecurityGroup.id())
+///             .securityGroupIds(exampleAwsSecurityGroup.get("id"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .ignoreChanges("securityGroupIds")
 ///                 .build());
@@ -348,7 +352,7 @@ class LustreFileSystem extends pulumi.CustomResource {
           'aws:fsx/lustreFileSystem:LustreFileSystem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoImportPolicy = registerOutput<String>('autoImportPolicy');

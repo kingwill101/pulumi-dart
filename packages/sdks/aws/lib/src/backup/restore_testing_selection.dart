@@ -82,7 +82,7 @@ import 'restore_testing_selection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -90,7 +90,10 @@ import 'restore_testing_selection_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_backup_restoretestingselection" "example" {
+/// resource "aws_backup_restore_testing_selection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "ec2_selection"
 ///   restore_testing_plan_name = exampleAwsBackupRestoreTestingPlan.name
 ///   protected_resource_type   = "EC2"
@@ -121,9 +124,9 @@ import 'restore_testing_selection_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new RestoreTestingSelection("example", RestoreTestingSelectionArgs.builder()
 ///             .name("ec2_selection")
-///             .restoreTestingPlanName(exampleAwsBackupRestoreTestingPlan.name())
+///             .restoreTestingPlanName(exampleAwsBackupRestoreTestingPlan.get("name"))
 ///             .protectedResourceType("EC2")
-///             .iamRoleArn(exampleAwsIamRole.arn())
+///             .iamRoleArn(exampleAwsIamRole.get("arn"))
 ///             .protectedResourceArns("*")
 ///             .build());
 ///
@@ -241,7 +244,7 @@ import 'restore_testing_selection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -249,12 +252,15 @@ import 'restore_testing_selection_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_backup_restoretestingselection" "example" {
-///   protected_resource_conditions = {
-///     string_equals = [{
-///       "key"   = "aws:ResourceTag/backup"
-///       "value" = true
-///     }]
+/// resource "aws_backup_restore_testing_selection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   protected_resource_conditions {
+///     string_equals {
+///       key   = "aws:ResourceTag/backup"
+///       value = true
+///     }
 ///   }
 ///   name                      = "ec2_selection"
 ///   restore_testing_plan_name = exampleAwsBackupRestoreTestingPlan.name
@@ -293,9 +299,9 @@ import 'restore_testing_selection_state.dart';
 ///                     .build())
 ///                 .build())
 ///             .name("ec2_selection")
-///             .restoreTestingPlanName(exampleAwsBackupRestoreTestingPlan.name())
+///             .restoreTestingPlanName(exampleAwsBackupRestoreTestingPlan.get("name"))
 ///             .protectedResourceType("EC2")
-///             .iamRoleArn(exampleAwsIamRole.arn())
+///             .iamRoleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -356,7 +362,7 @@ class RestoreTestingSelection extends pulumi.CustomResource {
           'aws:backup/restoreTestingSelection:RestoreTestingSelection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     iamRoleArn = registerOutput<String>('iamRoleArn');
     this.name = registerOutput<String>('name');

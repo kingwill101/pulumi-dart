@@ -196,7 +196,7 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -204,14 +204,20 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
 ///
-/// resource "aws_ssoadmin_permissionset" "example" {
+/// resource "aws_ssoadmin_permission_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "Example"
-///   instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+///   instance_arn = data.aws_ssoadmin_instances.example.arns[0]
 /// }
 /// resource "aws_iam_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "TestPolicy"
 ///   description = "My test policy"
 ///   policy = jsonencode({
@@ -223,13 +229,16 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_ssoadmin_customermanagedpolicyattachmentsexclusive" "example" {
-///   customer_managed_policy_references {
+/// resource "aws_ssoadmin_customer_managed_policy_attachments_exclusive" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   customer_managed_policy_reference {
 ///     name = aws_iam_policy.example.name
 ///     path = "/"
 ///   }
-///   instance_arn       = data.aws_ssoadmin_getinstances.example.arns[0]
-///   permission_set_arn = aws_ssoadmin_permissionset.example.arn
+///   instance_arn       = data.aws_ssoadmin_instances.example.arns[0]
+///   permission_set_arn = aws_ssoadmin_permission_set.example.arn
 /// }
 /// ```
 /// ```java
@@ -396,7 +405,7 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -404,7 +413,10 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssoadmin_customermanagedpolicyattachmentsexclusive" "example" {
+/// resource "aws_ssoadmin_customer_managed_policy_attachments_exclusive" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_arn       = exampleAwsSsoadminInstances.arns[0]
 ///   permission_set_arn = exampleAwsSsoadminPermissionSet.arn
 /// }
@@ -431,8 +443,8 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CustomerManagedPolicyAttachmentsExclusive("example", CustomerManagedPolicyAttachmentsExclusiveArgs.builder()
-///             .instanceArn(exampleAwsSsoadminInstances.arns()[0])
-///             .permissionSetArn(exampleAwsSsoadminPermissionSet.arn())
+///             .instanceArn(exampleAwsSsoadminInstances.get("arns")[0])
+///             .permissionSetArn(exampleAwsSsoadminPermissionSet.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -493,7 +505,7 @@ class CustomerManagedPolicyAttachmentsExclusive extends pulumi.CustomResource {
           'aws:ssoadmin/customerManagedPolicyAttachmentsExclusive:CustomerManagedPolicyAttachmentsExclusive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     customerManagedPolicyReferences = registerOutput<List<CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference>?>('customerManagedPolicyReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference>(guardedValue, (value) => CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference.fromMap((value as Map).cast<String, dynamic>())); });
     instanceArn = registerOutput<String>('instanceArn');

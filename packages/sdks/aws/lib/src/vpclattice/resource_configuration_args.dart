@@ -17,9 +17,9 @@ class ResourceConfigurationArgs {
   final pulumi.Input<String?>? domainVerificationId;
   /// Name for the Resource Configuration.
   final pulumi.Input<String?>? name;
-  /// Port ranges to access the Resource either single port `80` or range `80-81` range.
+  /// Port ranges to access the Resource either single port `80` or range `80-81` range. For `CIDR` resource configurations, include port `53` to allow DNS.
   final pulumi.Input<List<String>?>? portRanges;
-  /// Protocol for the Resource `TCP` is currently the only supported value.  MUST be specified if `resourceConfigurationGroupId` is not.
+  /// Protocol for the Resource. Valid values are `TCP` and `TCP_UDP`. `TCP_UDP` is only supported when `type` is `CIDR` (UDP is only supported for DNS). MUST be specified if `resourceConfigurationGroupId` is not.
   final pulumi.Input<String?>? protocol;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -34,7 +34,7 @@ class ResourceConfigurationArgs {
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
   final pulumi.Input<ResourceConfigurationTimeouts?>? timeouts;
-  /// Type of Resource Configuration. Must be one of `GROUP`, `CHILD`, `SINGLE`, `ARN`.
+  /// Type of Resource Configuration. Must be one of `GROUP`, `CHILD`, `SINGLE`, `ARN`, `CIDR`. Use `CIDR` with a `cidrResource` block.
   final pulumi.Input<String?>? type;
 
   /// Creates a new [ResourceConfigurationArgs].
@@ -42,15 +42,15 @@ class ResourceConfigurationArgs {
   /// [customDomainName] Custom domain name for your resource configuration. Additionally, provide a `domainVerificationId` to prove your ownership of a domain.
   /// [domainVerificationId] Domain verification ID of your verified custom domain name. If you don't provide an ID, you must configure the DNS settings yourself.
   /// [name] Name for the Resource Configuration.
-  /// [portRanges] Port ranges to access the Resource either single port `80` or range `80-81` range.
-  /// [protocol] Protocol for the Resource `TCP` is currently the only supported value.  MUST be specified if `resourceConfigurationGroupId` is not.
+  /// [portRanges] Port ranges to access the Resource either single port `80` or range `80-81` range. For `CIDR` resource configurations, include port `53` to allow DNS.
+  /// [protocol] Protocol for the Resource. Valid values are `TCP` and `TCP_UDP`. `TCP_UDP` is only supported when `type` is `CIDR` (UDP is only supported for DNS). MUST be specified if `resourceConfigurationGroupId` is not.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceConfigurationDefinition] Details of the Resource Configuration. See `resourceConfigurationDefinition` Block for details.
   /// [resourceConfigurationGroupId] ID of Resource Configuration where `type` is `CHILD`.
   /// [resourceGatewayIdentifier] ID of the Resource Gateway used to access the resource. MUST be specified if `resourceConfigurationGroupId` is not.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  /// [type] Type of Resource Configuration. Must be one of `GROUP`, `CHILD`, `SINGLE`, `ARN`.
+  /// [type] Type of Resource Configuration. Must be one of `GROUP`, `CHILD`, `SINGLE`, `ARN`, `CIDR`. Use `CIDR` with a `cidrResource` block.
   const ResourceConfigurationArgs({
     this.allowAssociationToShareableServiceNetwork,
     this.customDomainName,

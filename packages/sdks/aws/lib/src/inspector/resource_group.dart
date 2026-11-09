@@ -68,7 +68,7 @@ import 'resource_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,7 +76,10 @@ import 'resource_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_inspector_resourcegroup" "example" {
+/// resource "aws_inspector_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tags = {
 ///     "Name" = "foo"
 ///     "Env"  = "bar"
@@ -143,7 +146,7 @@ class ResourceGroup extends pulumi.CustomResource {
           'aws:inspector/resourceGroup:ResourceGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');

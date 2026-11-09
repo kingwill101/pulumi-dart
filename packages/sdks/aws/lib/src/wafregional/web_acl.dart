@@ -167,7 +167,7 @@ import 'web_acl_state.dart';
 /// 		wafrule, err := wafregional.NewRule(ctx, "wafrule", &wafregional.RuleArgs{
 /// 			Predicates: wafregional.RulePredicateArray{
 /// 				&wafregional.RulePredicateArgs{
-/// 					DataId:  ipset.ID().ToIDOutput().ToStringOutput(),
+/// 					DataId:  ipset.ID(),
 /// 					Negated: pulumi.Bool(false),
 /// 					Type:    pulumi.String("IPMatch"),
 /// 				},
@@ -188,7 +188,7 @@ import 'web_acl_state.dart';
 /// 						Type: pulumi.String("BLOCK"),
 /// 					},
 /// 					Priority: pulumi.Int(1),
-/// 					RuleId:   wafrule.ID().ToIDOutput().ToStringOutput(),
+/// 					RuleId:   wafrule.ID(),
 /// 					Type:     pulumi.String("REGULAR"),
 /// 				},
 /// 			},
@@ -203,7 +203,7 @@ import 'web_acl_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -211,7 +211,10 @@ import 'web_acl_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafregional_ipset" "ipset" {
+/// resource "aws_wafregional_ip_set" "ipset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ip_set_descriptors {
 ///     type  = "IPV4"
 ///     value = "192.0.7.0/24"
@@ -219,20 +222,26 @@ import 'web_acl_state.dart';
 ///   name = "tfIPSet"
 /// }
 /// resource "aws_wafregional_rule" "wafrule" {
-///   predicates {
-///     data_id = aws_wafregional_ipset.ipset.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   predicate {
+///     data_id = aws_wafregional_ip_set.ipset.id
 ///     negated = false
 ///     type    = "IPMatch"
 ///   }
 ///   name        = "tfWAFRule"
 ///   metric_name = "tfWAFRule"
 /// }
-/// resource "aws_wafregional_webacl" "wafacl" {
-///   default_action = {
+/// resource "aws_wafregional_web_acl" "wafacl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_action {
 ///     type = "ALLOW"
 ///   }
-///   rules {
-///     action = {
+///   rule {
+///     action {
 ///       type = "BLOCK"
 ///     }
 ///     priority = 1
@@ -454,7 +463,7 @@ import 'web_acl_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -462,12 +471,15 @@ import 'web_acl_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafregional_webacl" "example" {
-///   default_action = {
+/// resource "aws_wafregional_web_acl" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_action {
 ///     type = "ALLOW"
 ///   }
-///   rules {
-///     override_action = {
+///   rule {
+///     override_action {
 ///       type = "NONE"
 ///     }
 ///     priority = 1
@@ -511,7 +523,7 @@ import 'web_acl_state.dart';
 ///                     .type("NONE")
 ///                     .build())
 ///                 .priority(1)
-///                 .ruleId(exampleAwsWafregionalRuleGroup.id())
+///                 .ruleId(exampleAwsWafregionalRuleGroup.get("id"))
 ///                 .type("GROUP")
 ///                 .build())
 ///             .name("example")
@@ -649,7 +661,7 @@ import 'web_acl_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -657,15 +669,19 @@ import 'web_acl_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafregional_webacl" "example" {
-///   logging_configuration = {
-///     redacted_fields = {
-///       field_to_matches = [{
-///         "type" = "URI"
-///         }, {
-///         "data" = "referer"
-///         "type" = "HEADER"
-///       }]
+/// resource "aws_wafregional_web_acl" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   logging_configuration {
+///     redacted_fields {
+///       field_to_match {
+///         type = "URI"
+///       }
+///       field_to_match {
+///         data = "referer"
+///         type = "HEADER"
+///       }
 ///     }
 ///     log_destination = exampleAwsKinesisFirehoseDeliveryStream.arn
 ///   }
@@ -707,7 +723,7 @@ import 'web_acl_state.dart';
 ///                             .type("HEADER")
 ///                             .build())
 ///                     .build())
-///                 .logDestination(exampleAwsKinesisFirehoseDeliveryStream.arn())
+///                 .logDestination(exampleAwsKinesisFirehoseDeliveryStream.get("arn"))
 ///                 .build())
 ///             .build());
 ///
@@ -768,7 +784,7 @@ class WebAcl extends pulumi.CustomResource {
           'aws:wafregional/webAcl:WebAcl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultAction = registerOutput<WebAclDefaultAction>('defaultAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclDefaultAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });

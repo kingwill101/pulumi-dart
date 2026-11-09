@@ -82,7 +82,7 @@ import 'member_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -91,8 +91,14 @@ import 'member_state.dart';
 /// }
 ///
 /// resource "aws_detective_graph" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_detective_member" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id                 = "AWS ACCOUNT ID"
 ///   email_address              = "EMAIL"
 ///   graph_arn                  = aws_detective_graph.example.graph_arn
@@ -195,7 +201,7 @@ class Member extends pulumi.CustomResource {
           'aws:detective/member:Member',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     administratorId = registerOutput<String>('administratorId');

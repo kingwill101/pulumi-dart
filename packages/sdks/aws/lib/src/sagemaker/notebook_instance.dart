@@ -82,7 +82,7 @@ import 'notebook_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -90,7 +90,10 @@ import 'notebook_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_notebookinstance" "ni" {
+/// resource "aws_sagemaker_notebook_instance" "ni" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-notebook-instance"
 ///   role_arn      = role.arn
 ///   instance_type = "ml.t2.medium"
@@ -122,7 +125,7 @@ import 'notebook_instance_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var ni = new NotebookInstance("ni", NotebookInstanceArgs.builder()
 ///             .name("my-notebook-instance")
-///             .roleArn(role.arn())
+///             .roleArn(role.get("arn"))
 ///             .instanceType("ml.t2.medium")
 ///             .tags(Map.of("Name", "foo"))
 ///             .build());
@@ -251,7 +254,7 @@ import 'notebook_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -259,17 +262,23 @@ import 'notebook_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_coderepository" "example" {
-///   git_config = {
+/// resource "aws_sagemaker_code_repository" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   git_config {
 ///     repository_url = "https://github.com/github/docs.git"
 ///   }
 ///   code_repository_name = "my-notebook-instance-code-repo"
 /// }
-/// resource "aws_sagemaker_notebookinstance" "ni" {
+/// resource "aws_sagemaker_notebook_instance" "ni" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-notebook-instance"
 ///   role_arn                = role.arn
 ///   instance_type           = "ml.t2.medium"
-///   default_code_repository = aws_sagemaker_coderepository.example.code_repository_name
+///   default_code_repository = aws_sagemaker_code_repository.example.code_repository_name
 ///   tags = {
 ///     "Name" = "foo"
 ///   }
@@ -308,7 +317,7 @@ import 'notebook_instance_state.dart';
 ///
 ///         var ni = new NotebookInstance("ni", NotebookInstanceArgs.builder()
 ///             .name("my-notebook-instance")
-///             .roleArn(role.arn())
+///             .roleArn(role.get("arn"))
 ///             .instanceType("ml.t2.medium")
 ///             .defaultCodeRepository(example.codeRepositoryName())
 ///             .tags(Map.of("Name", "foo"))
@@ -399,7 +408,7 @@ class NotebookInstance extends pulumi.CustomResource {
           'aws:sagemaker/notebookInstance:NotebookInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     additionalCodeRepositories = registerOutput<List<String>?>('additionalCodeRepositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');

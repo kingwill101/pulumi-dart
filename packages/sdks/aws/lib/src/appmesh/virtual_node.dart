@@ -156,7 +156,7 @@ import 'virtual_node_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -164,24 +164,27 @@ import 'virtual_node_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appmesh_virtualnode" "serviceb1" {
-///   spec = {
-///     service_discovery = {
-///       dns = {
+/// resource "aws_appmesh_virtual_node" "serviceb1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   spec {
+///     service_discovery {
+///       dns {
 ///         hostname = "serviceb.simpleapp.local"
 ///       }
 ///     }
-///     backends = [{
-///       "virtualService" = {
-///         "virtualServiceName" = "servicea.simpleapp.local"
+///     backend {
+///       virtual_service {
+///         virtual_service_name = "servicea.simpleapp.local"
 ///       }
-///     }]
-///     listeners = [{
-///       "portMapping" = {
-///         "port"     = 8080
-///         "protocol" = "http"
+///     }
+///     listener {
+///       port_mapping {
+///         port     = 8080
+///         protocol = "http"
 ///       }
-///     }]
+///     }
 ///   }
 ///   name      = "serviceBv1"
 ///   mesh_name = simple.id
@@ -235,7 +238,7 @@ import 'virtual_node_state.dart';
 ///                     .build())
 ///                 .build())
 ///             .name("serviceBv1")
-///             .meshName(simple.id())
+///             .meshName(simple.get("id"))
 ///             .build());
 ///
 ///     }
@@ -440,7 +443,7 @@ import 'virtual_node_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -448,31 +451,37 @@ import 'virtual_node_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_servicediscovery_httpnamespace" "example" {
+/// resource "aws_servicediscovery_http_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-ns"
 /// }
-/// resource "aws_appmesh_virtualnode" "serviceb1" {
-///   spec = {
-///     service_discovery = {
-///       aws_cloud_map = {
+/// resource "aws_appmesh_virtual_node" "serviceb1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   spec {
+///     service_discovery {
+///       aws_cloud_map {
 ///         attributes = {
 ///           "stack" = "blue"
 ///         }
 ///         service_name   = "serviceb1"
-///         namespace_name = aws_servicediscovery_httpnamespace.example.name
+///         namespace_name = aws_servicediscovery_http_namespace.example.name
 ///       }
 ///     }
-///     backends = [{
-///       "virtualService" = {
-///         "virtualServiceName" = "servicea.simpleapp.local"
+///     backend {
+///       virtual_service {
+///         virtual_service_name = "servicea.simpleapp.local"
 ///       }
-///     }]
-///     listeners = [{
-///       "portMapping" = {
-///         "port"     = 8080
-///         "protocol" = "http"
+///     }
+///     listener {
+///       port_mapping {
+///         port     = 8080
+///         protocol = "http"
 ///       }
-///     }]
+///     }
 ///   }
 ///   name      = "serviceBv1"
 ///   mesh_name = simple.id
@@ -534,7 +543,7 @@ import 'virtual_node_state.dart';
 ///                     .build())
 ///                 .build())
 ///             .name("serviceBv1")
-///             .meshName(simple.id())
+///             .meshName(simple.get("id"))
 ///             .build());
 ///
 ///     }
@@ -748,7 +757,7 @@ import 'virtual_node_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -756,32 +765,35 @@ import 'virtual_node_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appmesh_virtualnode" "serviceb1" {
-///   spec = {
-///     service_discovery = {
-///       dns = {
+/// resource "aws_appmesh_virtual_node" "serviceb1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   spec {
+///     service_discovery {
+///       dns {
 ///         hostname = "serviceb.simpleapp.local"
 ///       }
 ///     }
-///     backends = [{
-///       "virtualService" = {
-///         "virtualServiceName" = "servicea.simpleapp.local"
+///     backend {
+///       virtual_service {
+///         virtual_service_name = "servicea.simpleapp.local"
 ///       }
-///     }]
-///     listeners = [{
-///       "portMapping" = {
-///         "port"     = 8080
-///         "protocol" = "http"
+///     }
+///     listener {
+///       port_mapping {
+///         port     = 8080
+///         protocol = "http"
 ///       }
-///       "healthCheck" = {
-///         "protocol"           = "http"
-///         "path"               = "/ping"
-///         "healthyThreshold"   = 2
-///         "unhealthyThreshold" = 2
-///         "timeoutMillis"      = 2000
-///         "intervalMillis"     = 5000
+///       health_check {
+///         protocol            = "http"
+///         path                = "/ping"
+///         healthy_threshold   = 2
+///         unhealthy_threshold = 2
+///         timeout_millis      = 2000
+///         interval_millis     = 5000
 ///       }
-///     }]
+///     }
 ///   }
 ///   name      = "serviceBv1"
 ///   mesh_name = simple.id
@@ -844,7 +856,7 @@ import 'virtual_node_state.dart';
 ///                     .build())
 ///                 .build())
 ///             .name("serviceBv1")
-///             .meshName(simple.id())
+///             .meshName(simple.get("id"))
 ///             .build());
 ///
 ///     }
@@ -1056,7 +1068,7 @@ import 'virtual_node_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1064,31 +1076,34 @@ import 'virtual_node_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appmesh_virtualnode" "serviceb1" {
-///   spec = {
-///     service_discovery = {
-///       dns = {
+/// resource "aws_appmesh_virtual_node" "serviceb1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   spec {
+///     service_discovery {
+///       dns {
 ///         hostname = "serviceb.simpleapp.local"
 ///       }
 ///     }
-///     logging = {
-///       access_log = {
-///         file = {
+///     logging {
+///       access_log {
+///         file {
 ///           path = "/dev/stdout"
 ///         }
 ///       }
 ///     }
-///     backends = [{
-///       "virtualService" = {
-///         "virtualServiceName" = "servicea.simpleapp.local"
+///     backend {
+///       virtual_service {
+///         virtual_service_name = "servicea.simpleapp.local"
 ///       }
-///     }]
-///     listeners = [{
-///       "portMapping" = {
-///         "port"     = 8080
-///         "protocol" = "http"
+///     }
+///     listener {
+///       port_mapping {
+///         port     = 8080
+///         protocol = "http"
 ///       }
-///     }]
+///     }
 ///   }
 ///   name      = "serviceBv1"
 ///   mesh_name = simple.id
@@ -1152,7 +1167,7 @@ import 'virtual_node_state.dart';
 ///                     .build())
 ///                 .build())
 ///             .name("serviceBv1")
-///             .meshName(simple.id())
+///             .meshName(simple.get("id"))
 ///             .build());
 ///
 ///     }
@@ -1226,7 +1241,7 @@ class VirtualNode extends pulumi.CustomResource {
           'aws:appmesh/virtualNode:VirtualNode',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdDate = registerOutput<String>('createdDate');

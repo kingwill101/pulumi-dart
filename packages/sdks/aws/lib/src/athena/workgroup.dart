@@ -106,7 +106,7 @@ import 'workgroup_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -115,9 +115,12 @@ import 'workgroup_state.dart';
 /// }
 ///
 /// resource "aws_athena_workgroup" "example" {
-///   configuration = {
-///     result_configuration = {
-///       encryption_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     result_configuration {
+///       encryption_configuration {
 ///         encryption_option = "SSE_KMS"
 ///         kms_key_arn       = exampleAwsKmsKey.arn
 ///       }
@@ -158,9 +161,9 @@ import 'workgroup_state.dart';
 ///                 .resultConfiguration(WorkgroupConfigurationResultConfigurationArgs.builder()
 ///                     .encryptionConfiguration(WorkgroupConfigurationResultConfigurationEncryptionConfigurationArgs.builder()
 ///                         .encryptionOption("SSE_KMS")
-///                         .kmsKeyArn(exampleAwsKmsKey.arn())
+///                         .kmsKeyArn(exampleAwsKmsKey.get("arn"))
 ///                         .build())
-///                     .outputLocation(String.format("s3://%s/output/", exampleAwsS3Bucket.bucket()))
+///                     .outputLocation(String.format("s3://%s/output/", exampleAwsS3Bucket.get("bucket")))
 ///                     .build())
 ///                 .enforceWorkgroupConfiguration(true)
 ///                 .publishCloudwatchMetricsEnabled(true)
@@ -227,7 +230,7 @@ class Workgroup extends pulumi.CustomResource {
           'aws:athena/workgroup:Workgroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     configuration = registerOutput<WorkgroupConfiguration?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkgroupConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

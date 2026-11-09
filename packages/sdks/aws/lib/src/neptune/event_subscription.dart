@@ -178,7 +178,7 @@ import 'event_subscription_state.dart';
 /// 			return err
 /// 		}
 /// 		example, err := neptune.NewClusterInstance(ctx, "example", &neptune.ClusterInstanceArgs{
-/// 			ClusterIdentifier: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterIdentifier: _default.ID(),
 /// 			Engine:            pulumi.String("neptune"),
 /// 			InstanceClass:     pulumi.String("db.r4.large"),
 /// 			ApplyImmediately:  pulumi.Bool(true),
@@ -197,7 +197,7 @@ import 'event_subscription_state.dart';
 /// 			SnsTopicArn: defaultTopic.Arn,
 /// 			SourceType:  pulumi.String("db-instance"),
 /// 			SourceIds: pulumi.StringArray{
-/// 				example.ID().ToIDOutput().ToStringOutput(),
+/// 				example.ID(),
 /// 			},
 /// 			EventCategories: pulumi.StringArray{
 /// 				pulumi.String("maintenance"),
@@ -225,7 +225,7 @@ import 'event_subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -234,6 +234,9 @@ import 'event_subscription_state.dart';
 /// }
 ///
 /// resource "aws_neptune_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier                  = "neptune-cluster-demo"
 ///   engine                              = "neptune"
 ///   backup_retention_period             = 5
@@ -242,20 +245,29 @@ import 'event_subscription_state.dart';
 ///   iam_database_authentication_enabled = "true"
 ///   apply_immediately                   = "true"
 /// }
-/// resource "aws_neptune_clusterinstance" "example" {
+/// resource "aws_neptune_cluster_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier = aws_neptune_cluster.default.id
 ///   engine             = "neptune"
 ///   instance_class     = "db.r4.large"
 ///   apply_immediately  = "true"
 /// }
 /// resource "aws_sns_topic" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "neptune-events"
 /// }
-/// resource "aws_neptune_eventsubscription" "default" {
+/// resource "aws_neptune_event_subscription" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "neptune-event-sub"
 ///   sns_topic_arn    = aws_sns_topic.default.arn
 ///   source_type      = "db-instance"
-///   source_ids       = [aws_neptune_clusterinstance.example.id]
+///   source_ids       = [aws_neptune_cluster_instance.example.id]
 ///   event_categories = ["maintenance", "availability", "creation", "backup", "restoration", "recovery", "deletion", "failover", "failure", "notification", "configuration change", "read replica"]
 ///   tags = {
 ///     "env" = "test"
@@ -430,7 +442,7 @@ class EventSubscription extends pulumi.CustomResource {
           'aws:neptune/eventSubscription:EventSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     customerAwsId = registerOutput<String>('customerAwsId');

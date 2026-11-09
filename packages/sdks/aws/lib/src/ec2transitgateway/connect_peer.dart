@@ -81,7 +81,7 @@ import 'connect_peer_state.dart';
 /// 			InsideCidrBlocks: pulumi.StringArray{
 /// 				pulumi.String("169.254.100.0/29"),
 /// 			},
-/// 			TransitGatewayAttachmentId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			TransitGatewayAttachmentId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -91,7 +91,7 @@ import 'connect_peer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -100,10 +100,16 @@ import 'connect_peer_state.dart';
 /// }
 ///
 /// resource "aws_ec2transitgateway_connect" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   transport_attachment_id = exampleAwsEc2TransitGatewayVpcAttachment.id
 ///   transit_gateway_id      = exampleAwsEc2TransitGateway.id
 /// }
-/// resource "aws_ec2transitgateway_connectpeer" "example" {
+/// resource "aws_ec2transitgateway_connect_peer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   peer_address                  = "10.1.2.3"
 ///   inside_cidr_blocks            = ["169.254.100.0/29"]
 ///   transit_gateway_attachment_id = aws_ec2transitgateway_connect.example.id
@@ -133,8 +139,8 @@ import 'connect_peer_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Connect("example", ConnectArgs.builder()
-///             .transportAttachmentId(exampleAwsEc2TransitGatewayVpcAttachment.id())
-///             .transitGatewayId(exampleAwsEc2TransitGateway.id())
+///             .transportAttachmentId(exampleAwsEc2TransitGatewayVpcAttachment.get("id"))
+///             .transitGatewayId(exampleAwsEc2TransitGateway.get("id"))
 ///             .build());
 ///
 ///         var exampleConnectPeer = new ConnectPeer("exampleConnectPeer", ConnectPeerArgs.builder()
@@ -207,7 +213,7 @@ class ConnectPeer extends pulumi.CustomResource {
           'aws:ec2transitgateway/connectPeer:ConnectPeer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     bgpAsn = registerOutput<String>('bgpAsn');

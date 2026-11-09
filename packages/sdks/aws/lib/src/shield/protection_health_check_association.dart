@@ -193,7 +193,7 @@ import 'protection_health_check_association_state.dart';
 /// 		}
 /// 		_, err = shield.NewProtectionHealthCheckAssociation(ctx, "example", &shield.ProtectionHealthCheckAssociationArgs{
 /// 			HealthCheckArn:     exampleHealthCheck.Arn,
-/// 			ShieldProtectionId: exampleProtection.ID().ToIDOutput().ToStringOutput(),
+/// 			ShieldProtectionId: exampleProtection.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -203,7 +203,7 @@ import 'protection_health_check_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -211,24 +211,33 @@ import 'protection_health_check_association_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
-/// data "aws_getcalleridentity" "currentGetCallerIdentity" {
+/// data "aws_caller_identity" "currentGetCallerIdentity" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
 ///
 /// resource "aws_ec2_eip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain = "vpc"
 ///   tags = {
 ///     "Name" = "example"
 ///   }
 /// }
 /// resource "aws_shield_protection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-protection"
-///   resource_arn ="arn:${data.aws_getpartition.currentGetPartition.partition}:ec2:${data.aws_getregion.current.region}:${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:eip-allocation/${aws_ec2_eip.example.id}"
+///   resource_arn ="arn:${data.aws_partition.currentGetPartition.partition}:ec2:${data.aws_region.current.region}:${data.aws_caller_identity.currentGetCallerIdentity.account_id}:eip-allocation/${aws_ec2_eip.example.id}"
 /// }
-/// resource "aws_route53_healthcheck" "example" {
+/// resource "aws_route53_health_check" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ip_address        = aws_ec2_eip.example.public_ip
 ///   port              = 80
 ///   type              = "HTTP"
@@ -239,8 +248,11 @@ import 'protection_health_check_association_state.dart';
 ///     "Name" = "tf-example-health-check"
 ///   }
 /// }
-/// resource "aws_shield_protectionhealthcheckassociation" "example" {
-///   health_check_arn     = aws_route53_healthcheck.example.arn
+/// resource "aws_shield_protection_health_check_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   health_check_arn     = aws_route53_health_check.example.arn
 ///   shield_protection_id = aws_shield_protection.example.id
 /// }
 /// ```
@@ -385,7 +397,7 @@ class ProtectionHealthCheckAssociation extends pulumi.CustomResource {
           'aws:shield/protectionHealthCheckAssociation:ProtectionHealthCheckAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     healthCheckArn = registerOutput<String>('healthCheckArn');
     shieldProtectionId = registerOutput<String>('shieldProtectionId');

@@ -70,7 +70,7 @@ import 'resolver_dns_sec_config_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = route53.NewResolverDnsSecConfig(ctx, "example", &route53.ResolverDnsSecConfigArgs{
-/// 			ResourceId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -80,7 +80,7 @@ import 'resolver_dns_sec_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -89,11 +89,17 @@ import 'resolver_dns_sec_config_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block           = "10.0.0.0/16"
 ///   enable_dns_support   = true
 ///   enable_dns_hostnames = true
 /// }
-/// resource "aws_route53_resolverdnssecconfig" "example" {
+/// resource "aws_route53_resolver_dns_sec_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_id = aws_ec2_vpc.example.id
 /// }
 /// ```
@@ -180,7 +186,7 @@ class ResolverDnsSecConfig extends pulumi.CustomResource {
           'aws:route53/resolverDnsSecConfig:ResolverDnsSecConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     ownerId = registerOutput<String>('ownerId');

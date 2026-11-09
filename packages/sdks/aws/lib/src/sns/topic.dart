@@ -55,7 +55,7 @@ import 'topic_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -64,6 +64,9 @@ import 'topic_state.dart';
 /// }
 ///
 /// resource "aws_sns_topic" "user_updates" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "user-updates-topic"
 /// }
 /// ```
@@ -231,7 +234,7 @@ import 'topic_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -240,8 +243,30 @@ import 'topic_state.dart';
 /// }
 ///
 /// resource "aws_sns_topic" "user_updates" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "user-updates-topic"
-///   delivery_policy = "{\n  \\\"http\\\": {\n    \\\"defaultHealthyRetryPolicy\\\": {\n      \\\"minDelayTarget\\\": 20,\n      \\\"maxDelayTarget\\\": 20,\n      \\\"numRetries\\\": 3,\n      \\\"numMaxDelayRetries\\\": 0,\n      \\\"numNoDelayRetries\\\": 0,\n      \\\"numMinDelayRetries\\\": 0,\n      \\\"backoffFunction\\\": \\\"linear\\\"\n    },\n    \\\"disableSubscriptionOverrides\\\": false,\n    \\\"defaultThrottlePolicy\\\": {\n      \\\"maxReceivesPerSecond\\\": 1\n    }\n  }\n}\n"
+///   delivery_policy = <<EOF
+/// {
+///   \"http\": {
+///     \"defaultHealthyRetryPolicy\": {
+///       \"minDelayTarget\": 20,
+///       \"maxDelayTarget\": 20,
+///       \"numRetries\": 3,
+///       \"numMaxDelayRetries\": 0,
+///       \"numNoDelayRetries\": 0,
+///       \"numMinDelayRetries\": 0,
+///       \"backoffFunction\": \"linear\"
+///     },
+///     \"disableSubscriptionOverrides\": false,
+///     \"defaultThrottlePolicy\": {
+///       \"maxReceivesPerSecond\": 1
+///     }
+///   }
+/// }
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -377,7 +402,7 @@ import 'topic_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -386,6 +411,9 @@ import 'topic_state.dart';
 /// }
 ///
 /// resource "aws_sns_topic" "user_updates" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "user-updates-topic"
 ///   kms_master_key_id = "alias/aws/sns"
 /// }
@@ -492,7 +520,7 @@ import 'topic_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -501,6 +529,9 @@ import 'topic_state.dart';
 /// }
 ///
 /// resource "aws_sns_topic" "user_updates" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "user-updates-topic.fifo"
 ///   fifo_topic                  = true
 ///   content_based_deduplication = true
@@ -648,7 +679,7 @@ class Topic extends pulumi.CustomResource {
           'aws:sns/topic:Topic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     applicationFailureFeedbackRoleArn = registerOutput<String?>('applicationFailureFeedbackRoleArn');
     applicationSuccessFeedbackRoleArn = registerOutput<String?>('applicationSuccessFeedbackRoleArn');

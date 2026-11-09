@@ -116,7 +116,7 @@ import 'feature_variation.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -125,8 +125,11 @@ import 'feature_variation.dart';
 /// }
 ///
 /// resource "aws_evidently_feature" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   variations {
-///     value = {
+///     value {
 ///       string_value = "example"
 ///     }
 ///     name = "Variation1"
@@ -170,7 +173,7 @@ import 'feature_variation.dart';
 ///                 .name("Variation1")
 ///                 .build())
 ///             .name("example")
-///             .project(exampleAwsEvidentlyProject.name())
+///             .project(exampleAwsEvidentlyProject.get("name"))
 ///             .description("example description")
 ///             .tags(Map.of("Key1", "example Feature"))
 ///             .build());
@@ -318,7 +321,7 @@ import 'feature_variation.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -327,14 +330,17 @@ import 'feature_variation.dart';
 /// }
 ///
 /// resource "aws_evidently_feature" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   variations {
-///     value = {
+///     value {
 ///       string_value = "exampleval1"
 ///     }
 ///     name = "Variation1"
 ///   }
 ///   variations {
-///     value = {
+///     value {
 ///       string_value = "exampleval2"
 ///     }
 ///     name = "Variation2"
@@ -382,7 +388,7 @@ import 'feature_variation.dart';
 ///                     .name("Variation2")
 ///                     .build())
 ///             .name("example")
-///             .project(exampleAwsEvidentlyProject.name())
+///             .project(exampleAwsEvidentlyProject.get("name"))
 ///             .defaultVariation("Variation2")
 ///             .build());
 ///
@@ -539,7 +545,7 @@ import 'feature_variation.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -548,14 +554,17 @@ import 'feature_variation.dart';
 /// }
 ///
 /// resource "aws_evidently_feature" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   variations {
-///     value = {
+///     value {
 ///       string_value = "exampleval1"
 ///     }
 ///     name = "Variation1"
 ///   }
 ///   variations {
-///     value = {
+///     value {
 ///       string_value = "exampleval2"
 ///     }
 ///     name = "Variation2"
@@ -605,7 +614,7 @@ import 'feature_variation.dart';
 ///                     .name("Variation2")
 ///                     .build())
 ///             .name("example")
-///             .project(exampleAwsEvidentlyProject.name())
+///             .project(exampleAwsEvidentlyProject.get("name"))
 ///             .entityOverrides(Map.of("test1", "Variation1"))
 ///             .build());
 ///
@@ -737,7 +746,7 @@ import 'feature_variation.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -746,8 +755,11 @@ import 'feature_variation.dart';
 /// }
 ///
 /// resource "aws_evidently_feature" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   variations {
-///     value = {
+///     value {
 ///       string_value = "exampleval1"
 ///     }
 ///     name = "Variation1"
@@ -791,7 +803,7 @@ import 'feature_variation.dart';
 ///                 .name("Variation1")
 ///                 .build())
 ///             .name("example")
-///             .project(exampleAwsEvidentlyProject.name())
+///             .project(exampleAwsEvidentlyProject.get("name"))
 ///             .evaluationStrategy("ALL_RULES")
 ///             .entityOverrides(Map.of("test1", "Variation1"))
 ///             .build());
@@ -869,7 +881,7 @@ class Feature extends pulumi.CustomResource {
           'aws:evidently/feature:Feature',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdTime = registerOutput<String>('createdTime');

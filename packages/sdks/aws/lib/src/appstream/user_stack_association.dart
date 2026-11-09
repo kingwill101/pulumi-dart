@@ -99,7 +99,7 @@ import 'user_stack_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -108,13 +108,22 @@ import 'user_stack_association_state.dart';
 /// }
 ///
 /// resource "aws_appstream_stack" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "STACK NAME"
 /// }
 /// resource "aws_appstream_user" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authentication_type = "USERPOOL"
 ///   user_name           = "EMAIL"
 /// }
-/// resource "aws_appstream_userstackassociation" "test" {
+/// resource "aws_appstream_user_stack_association" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authentication_type = aws_appstream_user.test.authentication_type
 ///   stack_name          = aws_appstream_stack.test.name
 ///   user_name           = aws_appstream_user.test.user_name
@@ -218,7 +227,7 @@ class UserStackAssociation extends pulumi.CustomResource {
           'aws:appstream/userStackAssociation:UserStackAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     authenticationType = registerOutput<String>('authenticationType');
     region = registerOutput<String>('region');

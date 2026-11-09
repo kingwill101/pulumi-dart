@@ -58,7 +58,7 @@ import 'contact_list_topic.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -66,7 +66,10 @@ import 'contact_list_topic.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sesv2_contactlist" "example" {
+/// resource "aws_sesv2_contact_list" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   contact_list_name = "example"
 /// }
 /// ```
@@ -195,7 +198,7 @@ import 'contact_list_topic.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -203,8 +206,11 @@ import 'contact_list_topic.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sesv2_contactlist" "example" {
-///   topics {
+/// resource "aws_sesv2_contact_list" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   topic {
 ///     default_subscription_status = "OPT_IN"
 ///     description                 = "topic description"
 ///     display_name                = "Example Topic"
@@ -305,7 +311,7 @@ class ContactList extends pulumi.CustomResource {
           'aws:sesv2/contactList:ContactList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     contactListName = registerOutput<String>('contactListName');

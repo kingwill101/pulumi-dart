@@ -79,7 +79,7 @@ import 'hsm_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -87,13 +87,16 @@ import 'hsm_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_cloudhsmv2_getcluster" "cluster" {
+/// data "aws_cloudhsmv2_cluster" "cluster" {
 ///   cluster_id = cloudhsmClusterId
 /// }
 ///
 /// resource "aws_cloudhsmv2_hsm" "cloudhsm_v2_hsm" {
-///   subnet_id  = data.aws_cloudhsmv2_getcluster.cluster.subnet_ids[0]
-///   cluster_id = data.aws_cloudhsmv2_getcluster.cluster.cluster_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   subnet_id  = data.aws_cloudhsmv2_cluster.cluster.subnet_ids[0]
+///   cluster_id = data.aws_cloudhsmv2_cluster.cluster.cluster_id
 /// }
 /// ```
 /// ```java
@@ -187,7 +190,7 @@ class Hsm extends pulumi.CustomResource {
           'aws:cloudhsmv2/hsm:Hsm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     availabilityZone = registerOutput<String>('availabilityZone');
     clusterId = registerOutput<String>('clusterId');

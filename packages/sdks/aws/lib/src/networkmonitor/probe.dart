@@ -100,7 +100,7 @@ import 'probe_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -109,10 +109,16 @@ import 'probe_state.dart';
 /// }
 ///
 /// resource "aws_networkmonitor_monitor" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   aggregation_period = 30
 ///   monitor_name       = "example"
 /// }
 /// resource "aws_networkmonitor_probe" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   monitor_name     = aws_networkmonitor_monitor.example.monitor_name
 ///   destination      = "127.0.0.1"
 ///   destination_port = 80
@@ -154,7 +160,7 @@ import 'probe_state.dart';
 ///             .destination("127.0.0.1")
 ///             .destinationPort(80)
 ///             .protocol("TCP")
-///             .sourceArn(exampleAwsSubnet.arn())
+///             .sourceArn(exampleAwsSubnet.get("arn"))
 ///             .packetSize(200)
 ///             .build());
 ///
@@ -225,7 +231,7 @@ class Probe extends pulumi.CustomResource {
           'aws:networkmonitor/probe:Probe',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     addressFamily = registerOutput<String>('addressFamily');
     arn = registerOutput<String>('arn');

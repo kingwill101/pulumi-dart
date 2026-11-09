@@ -259,7 +259,7 @@ import 'proactive_engagement_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -267,14 +267,17 @@ import 'proactive_engagement_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_shield_proactiveengagement" "example" {
-///   depends_on = [aws_shield_drtaccessrolearnassociation.example]
-///   emergency_contacts {
+/// resource "aws_shield_proactive_engagement" "example" {
+///   depends_on = [aws_shield_drt_access_role_arn_association.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   emergency_contact {
 ///     contact_notes = "Notes"
 ///     email_address = "contact1@example.com"
 ///     phone_number  = "+12358132134"
 ///   }
-///   emergency_contacts {
+///   emergency_contact {
 ///     contact_notes = "Notes 2"
 ///     email_address = "contact2@example.com"
 ///     phone_number  = "+12358132134"
@@ -282,6 +285,9 @@ import 'proactive_engagement_state.dart';
 ///   enabled = true
 /// }
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-role"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -295,14 +301,23 @@ import 'proactive_engagement_state.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_iam_rolepolicyattachment" "example" {
+/// resource "aws_iam_role_policy_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role       = aws_iam_role.example.name
 ///   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy"
 /// }
-/// resource "aws_shield_drtaccessrolearnassociation" "example" {
+/// resource "aws_shield_drt_access_role_arn_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role_arn = aws_iam_role.example.arn
 /// }
-/// resource "aws_shield_protectiongroup" "example" {
+/// resource "aws_shield_protection_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   protection_group_id = "example"
 ///   aggregation         = "MAX"
 ///   pattern             = "ALL"
@@ -467,7 +482,7 @@ class ProactiveEngagement extends pulumi.CustomResource {
           'aws:shield/proactiveEngagement:ProactiveEngagement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     emergencyContacts = registerOutput<List<ProactiveEngagementEmergencyContact>>('emergencyContacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProactiveEngagementEmergencyContact>(guardedValue, (value) => ProactiveEngagementEmergencyContact.fromMap((value as Map).cast<String, dynamic>())); });
     enabled = registerOutput<bool>('enabled');

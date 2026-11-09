@@ -70,7 +70,7 @@ import 'anomaly_monitor_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -78,7 +78,10 @@ import 'anomaly_monitor_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_costexplorer_anomalymonitor" "service_monitor" {
+/// resource "aws_costexplorer_anomaly_monitor" "service_monitor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "AWSServiceMonitor"
 ///   monitor_type      = "DIMENSIONAL"
 ///   monitor_dimension = "SERVICE"
@@ -248,7 +251,7 @@ import 'anomaly_monitor_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -256,7 +259,10 @@ import 'anomaly_monitor_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_costexplorer_anomalymonitor" "test" {
+/// resource "aws_costexplorer_anomaly_monitor" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "AWSCustomAnomalyMonitor"
 ///   monitor_type = "CUSTOM"
 ///   monitor_specification = jsonencode({
@@ -380,7 +386,7 @@ class AnomalyMonitor extends pulumi.CustomResource {
           'aws:costexplorer/anomalyMonitor:AnomalyMonitor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     monitorDimension = registerOutput<String?>('monitorDimension');

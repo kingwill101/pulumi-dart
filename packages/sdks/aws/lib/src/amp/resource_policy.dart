@@ -174,7 +174,7 @@ import 'resource_policy_timeouts.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = amp.NewResourcePolicy(ctx, "example", &amp.ResourcePolicyArgs{
-/// 			WorkspaceId:    exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
+/// 			WorkspaceId:    exampleWorkspace.ID(),
 /// 			PolicyDocument: example.Json(),
 /// 		})
 /// 		if err != nil {
@@ -185,7 +185,7 @@ import 'resource_policy_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -193,13 +193,13 @@ import 'resource_policy_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
-///       identifiers = [data.aws_getcalleridentity.current.account_id]
+///       identifiers = [data.aws_caller_identity.current.account_id]
 ///     }
 ///     effect    = "Allow"
 ///     actions   = ["aps:RemoteWrite", "aps:QueryMetrics", "aps:GetSeries", "aps:GetLabels", "aps:GetMetricMetadata"]
@@ -208,11 +208,17 @@ import 'resource_policy_timeouts.dart';
 /// }
 ///
 /// resource "aws_amp_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alias = "example-workspace"
 /// }
-/// resource "aws_amp_resourcepolicy" "example" {
+/// resource "aws_amp_resource_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workspace_id    = aws_amp_workspace.example.id
-///   policy_document = data.aws_iam_getpolicydocument.example.json
+///   policy_document = data.aws_iam_policy_document.example.json
 /// }
 /// ```
 /// ```java
@@ -455,7 +461,7 @@ import 'resource_policy_timeouts.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = amp.NewResourcePolicy(ctx, "cross_account", &amp.ResourcePolicyArgs{
-/// 			WorkspaceId:    example.ID().ToIDOutput().ToStringOutput(),
+/// 			WorkspaceId:    example.ID(),
 /// 			PolicyDocument: crossAccount.Json(),
 /// 		})
 /// 		if err != nil {
@@ -466,7 +472,7 @@ import 'resource_policy_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -474,8 +480,8 @@ import 'resource_policy_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "crossAccount" {
-///   statements {
+/// data "aws_iam_policy_document" "crossAccount" {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = ["arn:aws:iam::123456789012:root"]
@@ -487,11 +493,17 @@ import 'resource_policy_timeouts.dart';
 /// }
 ///
 /// resource "aws_amp_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alias = "example-workspace"
 /// }
-/// resource "aws_amp_resourcepolicy" "cross_account" {
+/// resource "aws_amp_resource_policy" "cross_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workspace_id    = aws_amp_workspace.example.id
-///   policy_document = data.aws_iam_getpolicydocument.crossAccount.json
+///   policy_document = data.aws_iam_policy_document.crossAccount.json
 /// }
 /// ```
 /// ```java
@@ -726,7 +738,7 @@ import 'resource_policy_timeouts.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = amp.NewResourcePolicy(ctx, "service_access", &amp.ResourcePolicyArgs{
-/// 			WorkspaceId:    example.ID().ToIDOutput().ToStringOutput(),
+/// 			WorkspaceId:    example.ID(),
 /// 			PolicyDocument: serviceAccess.Json(),
 /// 		})
 /// 		if err != nil {
@@ -737,7 +749,7 @@ import 'resource_policy_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -745,8 +757,8 @@ import 'resource_policy_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "serviceAccess" {
-///   statements {
+/// data "aws_iam_policy_document" "serviceAccess" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["grafana.amazonaws.com"]
@@ -758,11 +770,17 @@ import 'resource_policy_timeouts.dart';
 /// }
 ///
 /// resource "aws_amp_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alias = "example-workspace"
 /// }
-/// resource "aws_amp_resourcepolicy" "service_access" {
+/// resource "aws_amp_resource_policy" "service_access" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workspace_id    = aws_amp_workspace.example.id
-///   policy_document = data.aws_iam_getpolicydocument.serviceAccess.json
+///   policy_document = data.aws_iam_policy_document.serviceAccess.json
 /// }
 /// ```
 /// ```java
@@ -885,7 +903,7 @@ class ResourcePolicy extends pulumi.CustomResource {
           'aws:amp/resourcePolicy:ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     policyDocument = registerOutput<String>('policyDocument');
     region = registerOutput<String>('region');

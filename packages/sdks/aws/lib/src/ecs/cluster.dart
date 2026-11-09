@@ -83,7 +83,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -92,7 +92,10 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_ecs_cluster" "foo" {
-///   settings {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   setting {
 ///     name  = "containerInsights"
 ///     value = "enabled"
 ///   }
@@ -276,7 +279,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -285,18 +288,27 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "example"
 ///   deletion_window_in_days = 7
 /// }
-/// resource "aws_cloudwatch_loggroup" "example" {
+/// resource "aws_cloudwatch_log_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// resource "aws_ecs_cluster" "test" {
-///   configuration = {
-///     execute_command_configuration = {
-///       log_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     execute_command_configuration {
+///       log_configuration {
 ///         cloud_watch_encryption_enabled = true
-///         cloud_watch_log_group_name     = aws_cloudwatch_loggroup.example.name
+///         cloud_watch_log_group_name     = aws_cloudwatch_log_group.example.name
 ///       }
 ///       kms_key_id = aws_kms_key.example.arn
 ///       logging    = "OVERRIDE"
@@ -743,7 +755,7 @@ import 'cluster_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		exampleKeyPolicy, err := kms.NewKeyPolicy(ctx, "example", &kms.KeyPolicyArgs{
-/// 			KeyId:  example.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyId:  example.ID(),
 /// 			Policy: json0,
 /// 		})
 /// 		if err != nil {
@@ -767,7 +779,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -775,14 +787,20 @@ import 'cluster_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "example"
 ///   deletion_window_in_days = 7
 /// }
-/// resource "aws_kms_keypolicy" "example" {
+/// resource "aws_kms_key_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key_id = aws_kms_key.example.id
 ///   policy = jsonencode({
 ///     "Id" = "ECSClusterFargatePolicy"
@@ -803,7 +821,7 @@ import 'cluster_state.dart';
 ///       "Action" = ["kms:GenerateDataKeyWithoutPlaintext"]
 ///       "Condition" = {
 ///         "StringEquals" = {
-///           "kms:EncryptionContext:aws:ecs:clusterAccount" = [data.aws_getcalleridentity.current.account_id]
+///           "kms:EncryptionContext:aws:ecs:clusterAccount" = [data.aws_caller_identity.current.account_id]
 ///           "kms:EncryptionContext:aws:ecs:clusterName"    = ["example"]
 ///         }
 ///       }
@@ -817,7 +835,7 @@ import 'cluster_state.dart';
 ///       "Action" = ["kms:CreateGrant"]
 ///       "Condition" = {
 ///         "StringEquals" = {
-///           "kms:EncryptionContext:aws:ecs:clusterAccount" = [data.aws_getcalleridentity.current.account_id]
+///           "kms:EncryptionContext:aws:ecs:clusterAccount" = [data.aws_caller_identity.current.account_id]
 ///           "kms:EncryptionContext:aws:ecs:clusterName"    = ["example"]
 ///         }
 ///         "ForAllValues:StringEquals" = {
@@ -830,9 +848,12 @@ import 'cluster_state.dart';
 ///   })
 /// }
 /// resource "aws_ecs_cluster" "test" {
-///   depends_on = [aws_kms_keypolicy.example]
-///   configuration = {
-///     managed_storage_configuration = {
+///   depends_on = [aws_kms_key_policy.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     managed_storage_configuration {
 ///       fargate_ephemeral_storage_kms_key_id = aws_kms_key.example.arn
 ///     }
 ///   }
@@ -1066,7 +1087,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:ecs/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     configuration = registerOutput<ClusterConfiguration?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

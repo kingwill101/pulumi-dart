@@ -123,7 +123,7 @@ import 'parameter_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -131,16 +131,19 @@ import 'parameter_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_redshift_parametergroup" "bar" {
-///   parameters {
+/// resource "aws_redshift_parameter_group" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parameter {
 ///     name  = "require_ssl"
 ///     value = "true"
 ///   }
-///   parameters {
+///   parameter {
 ///     name  = "query_group"
 ///     value = "example"
 ///   }
-///   parameters {
+///   parameter {
 ///     name  = "enable_user_activity_logging"
 ///     value = "true"
 ///   }
@@ -247,7 +250,7 @@ class ParameterGroup extends pulumi.CustomResource {
           'aws:redshift/parameterGroup:ParameterGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');

@@ -68,7 +68,7 @@ import 'route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,6 +77,9 @@ import 'route_state.dart';
 /// }
 ///
 /// resource "aws_ec2transitgateway_route" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   destination_cidr_block         = "0.0.0.0/0"
 ///   transit_gateway_attachment_id  = exampleAwsEc2TransitGatewayVpcAttachment.id
 ///   transit_gateway_route_table_id = exampleAwsEc2TransitGateway.associationDefaultRouteTableId
@@ -105,8 +108,8 @@ import 'route_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Route("example", RouteArgs.builder()
 ///             .destinationCidrBlock("0.0.0.0/0")
-///             .transitGatewayAttachmentId(exampleAwsEc2TransitGatewayVpcAttachment.id())
-///             .transitGatewayRouteTableId(exampleAwsEc2TransitGateway.associationDefaultRouteTableId())
+///             .transitGatewayAttachmentId(exampleAwsEc2TransitGatewayVpcAttachment.get("id"))
+///             .transitGatewayRouteTableId(exampleAwsEc2TransitGateway.get("associationDefaultRouteTableId"))
 ///             .build());
 ///
 ///     }
@@ -185,7 +188,7 @@ import 'route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -194,6 +197,9 @@ import 'route_state.dart';
 /// }
 ///
 /// resource "aws_ec2transitgateway_route" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   destination_cidr_block         = "0.0.0.0/0"
 ///   blackhole                      = true
 ///   transit_gateway_route_table_id = exampleAwsEc2TransitGateway.associationDefaultRouteTableId
@@ -223,7 +229,7 @@ import 'route_state.dart';
 ///         var example = new Route("example", RouteArgs.builder()
 ///             .destinationCidrBlock("0.0.0.0/0")
 ///             .blackhole(true)
-///             .transitGatewayRouteTableId(exampleAwsEc2TransitGateway.associationDefaultRouteTableId())
+///             .transitGatewayRouteTableId(exampleAwsEc2TransitGateway.get("associationDefaultRouteTableId"))
 ///             .build());
 ///
 ///     }
@@ -284,7 +290,7 @@ class Route extends pulumi.CustomResource {
           'aws:ec2transitgateway/route:Route',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     blackhole = registerOutput<bool?>('blackhole');
     destinationCidrBlock = registerOutput<String>('destinationCidrBlock');

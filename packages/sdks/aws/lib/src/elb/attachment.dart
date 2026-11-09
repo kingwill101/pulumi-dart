@@ -73,7 +73,7 @@ import 'attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -83,6 +83,9 @@ import 'attachment_state.dart';
 ///
 /// # Create a new load balancer attachment
 /// resource "aws_elb_attachment" "baz" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   elb      = bar.id
 ///   instance = foo.id
 /// }
@@ -110,8 +113,8 @@ import 'attachment_state.dart';
 ///     public static void stack(Context ctx) {
 ///         // Create a new load balancer attachment
 ///         var baz = new Attachment("baz", AttachmentArgs.builder()
-///             .elb(bar.id())
-///             .instance(foo.id())
+///             .elb(bar.get("id"))
+///             .instance(foo.get("id"))
 ///             .build());
 ///
 ///     }
@@ -146,7 +149,7 @@ class Attachment extends pulumi.CustomResource {
           'aws:elb/attachment:Attachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     elb = registerOutput<String>('elb');
     instance = registerOutput<String>('instance');

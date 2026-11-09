@@ -97,7 +97,7 @@ import 'account_settings_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -105,14 +105,20 @@ import 'account_settings_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_quicksight_accountsubscription" "subscription" {
+/// resource "aws_quicksight_account_subscription" "subscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name          = "quicksight-terraform"
 ///   authentication_method = "IAM_AND_QUICKSIGHT"
 ///   edition               = "ENTERPRISE"
 ///   notification_email    = "notification@email.com"
 /// }
-/// resource "aws_quicksight_accountsettings" "example" {
-///   depends_on                     = [aws_quicksight_accountsubscription.subscription]
+/// resource "aws_quicksight_account_settings" "example" {
+///   depends_on = [aws_quicksight_account_subscription.subscription]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   termination_protection_enabled = false
 /// }
 /// ```
@@ -205,7 +211,7 @@ class AccountSettings extends pulumi.CustomResource {
           'aws:quicksight/accountSettings:AccountSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     defaultNamespace = registerOutput<String>('defaultNamespace');

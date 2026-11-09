@@ -80,7 +80,7 @@ import 'alias_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -89,7 +89,10 @@ import 'alias_state.dart';
 /// }
 ///
 /// resource "aws_gamelift_alias" "example" {
-///   routing_strategy = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   routing_strategy {
 ///     message = "Example Message"
 ///     type    = "TERMINAL"
 ///   }
@@ -179,7 +182,7 @@ class Alias extends pulumi.CustomResource {
           'aws:gamelift/alias:Alias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

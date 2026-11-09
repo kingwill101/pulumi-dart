@@ -59,7 +59,7 @@ import 'v2_system_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,10 @@ import 'v2_system_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_resiliencehub_v2system" "example" {
+/// resource "aws_resiliencehub_v2_system" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-system"
 /// }
 /// ```
@@ -183,7 +186,7 @@ import 'v2_system_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -191,7 +194,10 @@ import 'v2_system_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_resiliencehub_v2system" "example" {
+/// resource "aws_resiliencehub_v2_system" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example-system"
 ///   description     = "Production system grouping"
 ///   sharing_enabled = true
@@ -296,7 +302,7 @@ class V2System extends pulumi.CustomResource {
           'aws:resiliencehub/v2System:V2System',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

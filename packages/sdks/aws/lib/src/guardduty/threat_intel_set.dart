@@ -128,7 +128,7 @@ import 'threat_intel_set_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "bucket_acl", &s3.BucketAclArgs{
-/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: bucket.ID(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -137,7 +137,7 @@ import 'threat_intel_set_state.dart';
 /// 		myThreatIntelSet, err := s3.NewBucketObjectv2(ctx, "MyThreatIntelSet", &s3.BucketObjectv2Args{
 /// 			Acl:     pulumi.String("public-read"),
 /// 			Content: pulumi.String("10.0.0.0/8\n"),
-/// 			Bucket:  bucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket:  bucket.ID(),
 /// 			Key:     pulumi.String("MyThreatIntelSet"),
 /// 		})
 /// 		if err != nil {
@@ -145,7 +145,7 @@ import 'threat_intel_set_state.dart';
 /// 		}
 /// 		_, err = guardduty.NewThreatIntelSet(ctx, "MyThreatIntelSet", &guardduty.ThreatIntelSetArgs{
 /// 			Activate:   pulumi.Bool(true),
-/// 			DetectorId: primary.ID().ToIDOutput().ToStringOutput(),
+/// 			DetectorId: primary.ID(),
 /// 			Format:     pulumi.String("TXT"),
 /// 			Location: pulumi.All(myThreatIntelSet.Bucket, myThreatIntelSet.Key).ApplyT(func(_args []interface{}) (string, error) {
 /// 				bucket := _args[0].(string)
@@ -162,7 +162,7 @@ import 'threat_intel_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -171,25 +171,40 @@ import 'threat_intel_set_state.dart';
 /// }
 ///
 /// resource "aws_guardduty_detector" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enable = true
 /// }
 /// resource "aws_s3_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_s3_bucketacl" "bucket_acl" {
+/// resource "aws_s3_bucket_acl" "bucket_acl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.bucket.id
 ///   acl    = "private"
 /// }
-/// resource "aws_s3_bucketobjectv2" "MyThreatIntelSet" {
+/// resource "aws_s3_bucket_objectv2" "MyThreatIntelSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   acl     = "public-read"
 ///   content = "10.0.0.0/8\n"
 ///   bucket  = aws_s3_bucket.bucket.id
 ///   key     = "MyThreatIntelSet"
 /// }
-/// resource "aws_guardduty_threatintelset" "MyThreatIntelSet" {
+/// resource "aws_guardduty_threat_intel_set" "MyThreatIntelSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   activate    = true
 ///   detector_id = aws_guardduty_detector.primary.id
 ///   format      = "TXT"
-///   location    ="https://s3.amazonaws.com/${aws_s3_bucketobjectv2.MyThreatIntelSet.bucket}/${aws_s3_bucketobjectv2.MyThreatIntelSet.key}"
+///   location    ="https://s3.amazonaws.com/${aws_s3_bucket_objectv2.MyThreatIntelSet.bucket}/${aws_s3_bucket_objectv2.MyThreatIntelSet.key}"
 ///   name        = "MyThreatIntelSet"
 /// }
 /// ```
@@ -332,7 +347,7 @@ class ThreatIntelSet extends pulumi.CustomResource {
           'aws:guardduty/threatIntelSet:ThreatIntelSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     activate = registerOutput<bool>('activate');
     arn = registerOutput<String>('arn');

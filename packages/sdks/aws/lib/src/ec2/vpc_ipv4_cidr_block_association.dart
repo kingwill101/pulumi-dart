@@ -67,7 +67,7 @@ import 'vpc_ipv4_cidr_block_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcIpv4CidrBlockAssociation(ctx, "secondary_cidr", &ec2.VpcIpv4CidrBlockAssociationArgs{
-/// 			VpcId:     main.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:     main.ID(),
 /// 			CidrBlock: pulumi.String("172.20.0.0/16"),
 /// 		})
 /// 		if err != nil {
@@ -78,7 +78,7 @@ import 'vpc_ipv4_cidr_block_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -87,9 +87,15 @@ import 'vpc_ipv4_cidr_block_association_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
-/// resource "aws_ec2_vpcipv4cidrblockassociation" "secondary_cidr" {
+/// resource "aws_ec2_vpc_ipv4_cidr_block_association" "secondary_cidr" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id     = aws_ec2_vpc.main.id
 ///   cidr_block = "172.20.0.0/16"
 /// }
@@ -193,7 +199,7 @@ class VpcIpv4CidrBlockAssociation extends pulumi.CustomResource {
           'aws:ec2/vpcIpv4CidrBlockAssociation:VpcIpv4CidrBlockAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     cidrBlock = registerOutput<String>('cidrBlock');
     ipv4IpamPoolId = registerOutput<String?>('ipv4IpamPoolId');

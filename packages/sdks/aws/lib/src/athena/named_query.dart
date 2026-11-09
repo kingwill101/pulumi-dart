@@ -159,14 +159,14 @@ import 'named_query_state.dart';
 /// 		}
 /// 		hogeDatabase, err := athena.NewDatabase(ctx, "hoge", &athena.DatabaseArgs{
 /// 			Name:   pulumi.String("users"),
-/// 			Bucket: hoge.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: hoge.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = athena.NewNamedQuery(ctx, "foo", &athena.NamedQueryArgs{
 /// 			Name:      pulumi.String("bar"),
-/// 			Workgroup: testWorkgroup.ID().ToIDOutput().ToStringOutput(),
+/// 			Workgroup: testWorkgroup.ID(),
 /// 			Database:  hogeDatabase.Name,
 /// 			Query: hogeDatabase.Name.ApplyT(func(name string) (string, error) {
 /// 				return fmt.Sprintf("SELECT * FROM %v limit 10;", name), nil
@@ -180,7 +180,7 @@ import 'named_query_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -189,16 +189,25 @@ import 'named_query_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "hoge" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "tf-test"
 /// }
 /// resource "aws_kms_key" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_window_in_days = 7
 ///   description             = "Athena KMS Key"
 /// }
 /// resource "aws_athena_workgroup" "test" {
-///   configuration = {
-///     result_configuration = {
-///       encryption_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     result_configuration {
+///       encryption_configuration {
 ///         encryption_option = "SSE_KMS"
 ///         kms_key_arn       = aws_kms_key.test.arn
 ///       }
@@ -207,10 +216,16 @@ import 'named_query_state.dart';
 ///   name = "example"
 /// }
 /// resource "aws_athena_database" "hoge" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "users"
 ///   bucket = aws_s3_bucket.hoge.id
 /// }
-/// resource "aws_athena_namedquery" "foo" {
+/// resource "aws_athena_named_query" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "bar"
 ///   workgroup = aws_athena_workgroup.test.id
 ///   database  = aws_athena_database.hoge.name
@@ -355,7 +370,7 @@ class NamedQuery extends pulumi.CustomResource {
           'aws:athena/namedQuery:NamedQuery',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     database = registerOutput<String>('database');
     description = registerOutput<String?>('description');

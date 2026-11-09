@@ -136,7 +136,7 @@ import 'schedule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -145,6 +145,9 @@ import 'schedule_state.dart';
 /// }
 ///
 /// resource "aws_autoscaling_group" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_zones        = ["us-west-2a"]
 ///   name                      = "test-foobar5"
 ///   max_size                  = 1
@@ -155,6 +158,9 @@ import 'schedule_state.dart';
 ///   termination_policies      = ["OldestInstance"]
 /// }
 /// resource "aws_autoscaling_schedule" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   scheduled_action_name  = "foobar"
 ///   min_size               = 0
 ///   max_size               = 1
@@ -300,7 +306,7 @@ class Schedule extends pulumi.CustomResource {
           'aws:autoscaling/schedule:Schedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');

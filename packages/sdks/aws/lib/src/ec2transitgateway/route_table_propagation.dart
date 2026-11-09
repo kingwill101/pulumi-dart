@@ -62,7 +62,7 @@ import 'route_table_propagation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'route_table_propagation_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2transitgateway_routetablepropagation" "example" {
+/// resource "aws_ec2transitgateway_route_table_propagation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   transit_gateway_attachment_id  = exampleAwsEc2TransitGatewayVpcAttachment.id
 ///   transit_gateway_route_table_id = exampleAwsEc2TransitGatewayRouteTable.id
 /// }
@@ -97,8 +100,8 @@ import 'route_table_propagation_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RouteTablePropagation("example", RouteTablePropagationArgs.builder()
-///             .transitGatewayAttachmentId(exampleAwsEc2TransitGatewayVpcAttachment.id())
-///             .transitGatewayRouteTableId(exampleAwsEc2TransitGatewayRouteTable.id())
+///             .transitGatewayAttachmentId(exampleAwsEc2TransitGatewayVpcAttachment.get("id"))
+///             .transitGatewayRouteTableId(exampleAwsEc2TransitGatewayRouteTable.get("id"))
 ///             .build());
 ///
 ///     }
@@ -226,8 +229,8 @@ import 'route_table_propagation_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleGatewayAssociation, err := directconnect.NewGatewayAssociation(ctx, "example", &directconnect.GatewayAssociationArgs{
-/// 			DxGatewayId:         example.ID().ToIDOutput().ToStringOutput(),
-/// 			AssociatedGatewayId: exampleTransitGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			DxGatewayId:         example.ID(),
+/// 			AssociatedGatewayId: exampleTransitGateway.ID(),
 /// 			AllowedPrefixes: pulumi.StringArray{
 /// 				pulumi.String("10.0.0.0/16"),
 /// 			},
@@ -236,7 +239,7 @@ import 'route_table_propagation_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleRouteTable, err := ec2transitgateway.NewRouteTable(ctx, "example", &ec2transitgateway.RouteTableArgs{
-/// 			TransitGatewayId: exampleTransitGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			TransitGatewayId: exampleTransitGateway.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -244,7 +247,7 @@ import 'route_table_propagation_state.dart';
 /// 		// Correct: Reference the attachment ID directly from the association resource
 /// 		_, err = ec2transitgateway.NewRouteTablePropagation(ctx, "example", &ec2transitgateway.RouteTablePropagationArgs{
 /// 			TransitGatewayAttachmentId: exampleGatewayAssociation.TransitGatewayAttachmentId,
-/// 			TransitGatewayRouteTableId: exampleRouteTable.ID().ToIDOutput().ToStringOutput(),
+/// 			TransitGatewayRouteTableId: exampleRouteTable.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -254,7 +257,7 @@ import 'route_table_propagation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -263,24 +266,39 @@ import 'route_table_propagation_state.dart';
 /// }
 ///
 /// resource "aws_directconnect_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
 ///   amazon_side_asn = 64512
 /// }
-/// resource "aws_ec2transitgateway_transitgateway" "example" {
+/// resource "aws_ec2transitgateway_transit_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "example"
 /// }
-/// resource "aws_directconnect_gatewayassociation" "example" {
+/// resource "aws_directconnect_gateway_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dx_gateway_id         = aws_directconnect_gateway.example.id
-///   associated_gateway_id = aws_ec2transitgateway_transitgateway.example.id
+///   associated_gateway_id = aws_ec2transitgateway_transit_gateway.example.id
 ///   allowed_prefixes      = ["10.0.0.0/16"]
 /// }
-/// resource "aws_ec2transitgateway_routetable" "example" {
-///   transit_gateway_id = aws_ec2transitgateway_transitgateway.example.id
+/// resource "aws_ec2transitgateway_route_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   transit_gateway_id = aws_ec2transitgateway_transit_gateway.example.id
 /// }
 /// # Correct: Reference the attachment ID directly from the association resource
-/// resource "aws_ec2transitgateway_routetablepropagation" "example" {
-///   transit_gateway_attachment_id  = aws_directconnect_gatewayassociation.example.transit_gateway_attachment_id
-///   transit_gateway_route_table_id = aws_ec2transitgateway_routetable.example.id
+/// resource "aws_ec2transitgateway_route_table_propagation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   transit_gateway_attachment_id  = aws_directconnect_gateway_association.example.transit_gateway_attachment_id
+///   transit_gateway_route_table_id = aws_ec2transitgateway_route_table.example.id
 /// }
 /// ```
 /// ```java
@@ -489,7 +507,7 @@ import 'route_table_propagation_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSubnet, err := ec2.NewSubnet(ctx, "example", &ec2.SubnetArgs{
-/// 			VpcId:     example.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:     example.ID(),
 /// 			CidrBlock: pulumi.String("10.0.1.0/24"),
 /// 		})
 /// 		if err != nil {
@@ -503,24 +521,24 @@ import 'route_table_propagation_state.dart';
 /// 		}
 /// 		exampleVpcAttachment, err := ec2transitgateway.NewVpcAttachment(ctx, "example", &ec2transitgateway.VpcAttachmentArgs{
 /// 			SubnetIds: pulumi.StringArray{
-/// 				exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleSubnet.ID(),
 /// 			},
-/// 			TransitGatewayId: exampleTransitGateway.ID().ToIDOutput().ToStringOutput(),
-/// 			VpcId:            example.ID().ToIDOutput().ToStringOutput(),
+/// 			TransitGatewayId: exampleTransitGateway.ID(),
+/// 			VpcId:            example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleRouteTable, err := ec2transitgateway.NewRouteTable(ctx, "example", &ec2transitgateway.RouteTableArgs{
-/// 			TransitGatewayId: exampleTransitGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			TransitGatewayId: exampleTransitGateway.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		// Correct: Reference the VPC attachment ID directly
 /// 		_, err = ec2transitgateway.NewRouteTablePropagation(ctx, "example", &ec2transitgateway.RouteTablePropagationArgs{
-/// 			TransitGatewayAttachmentId: exampleVpcAttachment.ID().ToIDOutput().ToStringOutput(),
-/// 			TransitGatewayRouteTableId: exampleRouteTable.ID().ToIDOutput().ToStringOutput(),
+/// 			TransitGatewayAttachmentId: exampleVpcAttachment.ID(),
+/// 			TransitGatewayRouteTableId: exampleRouteTable.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -530,7 +548,7 @@ import 'route_table_propagation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -539,27 +557,45 @@ import 'route_table_propagation_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
 /// resource "aws_ec2_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id     = aws_ec2_vpc.example.id
 ///   cidr_block = "10.0.1.0/24"
 /// }
-/// resource "aws_ec2transitgateway_transitgateway" "example" {
+/// resource "aws_ec2transitgateway_transit_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "example"
 /// }
-/// resource "aws_ec2transitgateway_vpcattachment" "example" {
+/// resource "aws_ec2transitgateway_vpc_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_ids         = [aws_ec2_subnet.example.id]
-///   transit_gateway_id = aws_ec2transitgateway_transitgateway.example.id
+///   transit_gateway_id = aws_ec2transitgateway_transit_gateway.example.id
 ///   vpc_id             = aws_ec2_vpc.example.id
 /// }
-/// resource "aws_ec2transitgateway_routetable" "example" {
-///   transit_gateway_id = aws_ec2transitgateway_transitgateway.example.id
+/// resource "aws_ec2transitgateway_route_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   transit_gateway_id = aws_ec2transitgateway_transit_gateway.example.id
 /// }
 /// # Correct: Reference the VPC attachment ID directly
-/// resource "aws_ec2transitgateway_routetablepropagation" "example" {
-///   transit_gateway_attachment_id  = aws_ec2transitgateway_vpcattachment.example.id
-///   transit_gateway_route_table_id = aws_ec2transitgateway_routetable.example.id
+/// resource "aws_ec2transitgateway_route_table_propagation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   transit_gateway_attachment_id  = aws_ec2transitgateway_vpc_attachment.example.id
+///   transit_gateway_route_table_id = aws_ec2transitgateway_route_table.example.id
 /// }
 /// ```
 /// ```java
@@ -713,7 +749,7 @@ class RouteTablePropagation extends pulumi.CustomResource {
           'aws:ec2transitgateway/routeTablePropagation:RouteTablePropagation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     resourceId = registerOutput<String>('resourceId');

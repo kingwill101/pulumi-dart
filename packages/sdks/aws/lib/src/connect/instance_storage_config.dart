@@ -92,7 +92,7 @@ import 'instance_storage_config_storage_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -100,9 +100,12 @@ import 'instance_storage_config_storage_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_connect_instancestorageconfig" "example" {
-///   storage_config = {
-///     kinesis_firehose_config = {
+/// resource "aws_connect_instance_storage_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   storage_config {
+///     kinesis_firehose_config {
 ///       firehose_arn = exampleAwsKinesisFirehoseDeliveryStream.arn
 ///     }
 ///     storage_type = "KINESIS_FIREHOSE"
@@ -137,11 +140,11 @@ import 'instance_storage_config_storage_config.dart';
 ///         var example = new InstanceStorageConfig("example", InstanceStorageConfigArgs.builder()
 ///             .storageConfig(InstanceStorageConfigStorageConfigArgs.builder()
 ///                 .kinesisFirehoseConfig(InstanceStorageConfigStorageConfigKinesisFirehoseConfigArgs.builder()
-///                     .firehoseArn(exampleAwsKinesisFirehoseDeliveryStream.arn())
+///                     .firehoseArn(exampleAwsKinesisFirehoseDeliveryStream.get("arn"))
 ///                     .build())
 ///                 .storageType("KINESIS_FIREHOSE")
 ///                 .build())
-///             .instanceId(exampleAwsConnectInstance.id())
+///             .instanceId(exampleAwsConnectInstance.get("id"))
 ///             .resourceType("CONTACT_TRACE_RECORDS")
 ///             .build());
 ///
@@ -246,7 +249,7 @@ import 'instance_storage_config_storage_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -254,9 +257,12 @@ import 'instance_storage_config_storage_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_connect_instancestorageconfig" "example" {
-///   storage_config = {
-///     kinesis_stream_config = {
+/// resource "aws_connect_instance_storage_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   storage_config {
+///     kinesis_stream_config {
 ///       stream_arn = exampleAwsKinesisStream.arn
 ///     }
 ///     storage_type = "KINESIS_STREAM"
@@ -291,11 +297,11 @@ import 'instance_storage_config_storage_config.dart';
 ///         var example = new InstanceStorageConfig("example", InstanceStorageConfigArgs.builder()
 ///             .storageConfig(InstanceStorageConfigStorageConfigArgs.builder()
 ///                 .kinesisStreamConfig(InstanceStorageConfigStorageConfigKinesisStreamConfigArgs.builder()
-///                     .streamArn(exampleAwsKinesisStream.arn())
+///                     .streamArn(exampleAwsKinesisStream.get("arn"))
 ///                     .build())
 ///                 .storageType("KINESIS_STREAM")
 ///                 .build())
-///             .instanceId(exampleAwsConnectInstance.id())
+///             .instanceId(exampleAwsConnectInstance.get("id"))
 ///             .resourceType("CONTACT_TRACE_RECORDS")
 ///             .build());
 ///
@@ -421,7 +427,7 @@ import 'instance_storage_config_storage_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -429,10 +435,13 @@ import 'instance_storage_config_storage_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_connect_instancestorageconfig" "example" {
-///   storage_config = {
-///     kinesis_video_stream_config = {
-///       encryption_config = {
+/// resource "aws_connect_instance_storage_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   storage_config {
+///     kinesis_video_stream_config {
+///       encryption_config {
 ///         encryption_type = "KMS"
 ///         key_id          = exampleAwsKmsKey.arn
 ///       }
@@ -474,14 +483,14 @@ import 'instance_storage_config_storage_config.dart';
 ///                 .kinesisVideoStreamConfig(InstanceStorageConfigStorageConfigKinesisVideoStreamConfigArgs.builder()
 ///                     .encryptionConfig(InstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfigArgs.builder()
 ///                         .encryptionType("KMS")
-///                         .keyId(exampleAwsKmsKey.arn())
+///                         .keyId(exampleAwsKmsKey.get("arn"))
 ///                         .build())
 ///                     .prefix("example")
 ///                     .retentionPeriodHours(3)
 ///                     .build())
 ///                 .storageType("KINESIS_VIDEO_STREAM")
 ///                 .build())
-///             .instanceId(exampleAwsConnectInstance.id())
+///             .instanceId(exampleAwsConnectInstance.get("id"))
 ///             .resourceType("MEDIA_STREAMS")
 ///             .build());
 ///
@@ -594,7 +603,7 @@ import 'instance_storage_config_storage_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -602,9 +611,12 @@ import 'instance_storage_config_storage_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_connect_instancestorageconfig" "example" {
-///   storage_config = {
-///     s3_config = {
+/// resource "aws_connect_instance_storage_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   storage_config {
+///     s3_config {
 ///       bucket_name   = exampleAwsS3Bucket.id
 ///       bucket_prefix = "example"
 ///     }
@@ -640,12 +652,12 @@ import 'instance_storage_config_storage_config.dart';
 ///         var example = new InstanceStorageConfig("example", InstanceStorageConfigArgs.builder()
 ///             .storageConfig(InstanceStorageConfigStorageConfigArgs.builder()
 ///                 .s3Config(InstanceStorageConfigStorageConfigS3ConfigArgs.builder()
-///                     .bucketName(exampleAwsS3Bucket.id())
+///                     .bucketName(exampleAwsS3Bucket.get("id"))
 ///                     .bucketPrefix("example")
 ///                     .build())
 ///                 .storageType("S3")
 ///                 .build())
-///             .instanceId(exampleAwsConnectInstance.id())
+///             .instanceId(exampleAwsConnectInstance.get("id"))
 ///             .resourceType("CHAT_TRANSCRIPTS")
 ///             .build());
 ///
@@ -772,7 +784,7 @@ import 'instance_storage_config_storage_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -780,10 +792,13 @@ import 'instance_storage_config_storage_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_connect_instancestorageconfig" "example" {
-///   storage_config = {
-///     s3_config = {
-///       encryption_config = {
+/// resource "aws_connect_instance_storage_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   storage_config {
+///     s3_config {
+///       encryption_config {
 ///         encryption_type = "KMS"
 ///         key_id          = exampleAwsKmsKey.arn
 ///       }
@@ -825,14 +840,14 @@ import 'instance_storage_config_storage_config.dart';
 ///                 .s3Config(InstanceStorageConfigStorageConfigS3ConfigArgs.builder()
 ///                     .encryptionConfig(InstanceStorageConfigStorageConfigS3ConfigEncryptionConfigArgs.builder()
 ///                         .encryptionType("KMS")
-///                         .keyId(exampleAwsKmsKey.arn())
+///                         .keyId(exampleAwsKmsKey.get("arn"))
 ///                         .build())
-///                     .bucketName(exampleAwsS3Bucket.id())
+///                     .bucketName(exampleAwsS3Bucket.get("id"))
 ///                     .bucketPrefix("example")
 ///                     .build())
 ///                 .storageType("S3")
 ///                 .build())
-///             .instanceId(exampleAwsConnectInstance.id())
+///             .instanceId(exampleAwsConnectInstance.get("id"))
 ///             .resourceType("CHAT_TRANSCRIPTS")
 ///             .build());
 ///
@@ -888,7 +903,7 @@ class InstanceStorageConfig extends pulumi.CustomResource {
           'aws:connect/instanceStorageConfig:InstanceStorageConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     associationId = registerOutput<String>('associationId');
     instanceId = registerOutput<String>('instanceId');

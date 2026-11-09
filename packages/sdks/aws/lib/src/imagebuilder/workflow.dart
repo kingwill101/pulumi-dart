@@ -178,7 +178,7 @@ import 'workflow_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -187,10 +187,41 @@ import 'workflow_state.dart';
 /// }
 ///
 /// resource "aws_imagebuilder_workflow" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "example"
 ///   version = "1.0.0"
 ///   type    = "TEST"
-///   data    = "name: example\ndescription: Workflow to test an image\nschemaVersion: 1.0\n\nparameters:\n  - name: waitForActionAtEnd\n    type: boolean\n\nsteps:\n  - name: LaunchTestInstance\n    action: LaunchInstance\n    onFailure: Abort\n    inputs:\n      waitFor: \\\"ssmAgent\\\"\n\n  - name: TerminateTestInstance\n    action: TerminateInstance\n    onFailure: Continue\n    inputs:\n      instanceId.$: \\\"$.stepOutputs.LaunchTestInstance.instanceId\\\"\n\n  - name: WaitForActionAtEnd\n    action: WaitForAction\n    if:\n      booleanEquals: true\n      value: \\\"$.parameters.waitForActionAtEnd\\\"\n"
+///   data    = <<-EOT
+/// name: example
+/// description: Workflow to test an image
+/// schemaVersion: 1.0
+///
+/// parameters:
+///   - name: waitForActionAtEnd
+///     type: boolean
+///
+/// steps:
+///   - name: LaunchTestInstance
+///     action: LaunchInstance
+///     onFailure: Abort
+///     inputs:
+///       waitFor: \"ssmAgent\"
+///
+///   - name: TerminateTestInstance
+///     action: TerminateInstance
+///     onFailure: Continue
+///     inputs:
+///       instanceId.$: \"$.stepOutputs.LaunchTestInstance.instanceId\"
+///
+///   - name: WaitForActionAtEnd
+///     action: WaitForAction
+///     if:
+///       booleanEquals: true
+///       value: \"$.parameters.waitForActionAtEnd\"
+/// EOT
+///
 /// }
 /// ```
 /// ```java
@@ -348,7 +379,7 @@ class Workflow extends pulumi.CustomResource {
           'aws:imagebuilder/workflow:Workflow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     changeDescription = registerOutput<String?>('changeDescription');

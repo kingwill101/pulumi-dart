@@ -59,7 +59,7 @@ import 'get_workspace_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,7 @@ import 'get_workspace_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_grafana_getworkspace" "example" {
+/// data "aws_grafana_workspace" "example" {
 ///   workspace_id = "g-2054c75a02"
 /// }
 /// ```

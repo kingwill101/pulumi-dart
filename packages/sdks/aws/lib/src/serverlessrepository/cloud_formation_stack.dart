@@ -122,7 +122,7 @@ import 'cloud_formation_stack_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -130,18 +130,21 @@ import 'cloud_formation_stack_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getpartition" "current" {
+/// data "aws_partition" "current" {
 /// }
-/// data "aws_getregion" "currentGetRegion" {
+/// data "aws_region" "currentGetRegion" {
 /// }
 ///
-/// resource "aws_serverlessrepository_cloudformationstack" "postgres-rotator" {
+/// resource "aws_serverlessrepository_cloud_formation_stack" "postgres-rotator" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "postgres-rotator"
 ///   application_id = "arn:aws:serverlessrepo:us-east-1:297356227824:applications/SecretsManagerRDSPostgreSQLRotationSingleUser"
 ///   capabilities   = ["CAPABILITY_IAM", "CAPABILITY_RESOURCE_POLICY"]
 ///   parameters = {
 ///     "functionName" = "func-postgres-rotator"
-///     "endpoint"     ="secretsmanager.${data.aws_getregion.currentGetRegion.region}.${data.aws_getpartition.current.dns_suffix}"
+///     "endpoint"     ="secretsmanager.${data.aws_region.currentGetRegion.region}.${data.aws_partition.current.dns_suffix}"
 ///   }
 /// }
 /// ```
@@ -254,7 +257,7 @@ class CloudFormationStack extends pulumi.CustomResource {
           'aws:serverlessrepository/cloudFormationStack:CloudFormationStack',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     capabilities = registerOutput<List<String>>('capabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

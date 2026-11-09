@@ -57,7 +57,7 @@ import 'api_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,7 +65,10 @@ import 'api_key_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_apikey" "example" {
+/// resource "aws_apigateway_api_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// ```
@@ -149,7 +152,7 @@ class ApiKey extends pulumi.CustomResource {
           'aws:apigateway/apiKey:ApiKey',
           name,
           pulumi.Input.mapToInputs((args ?? ApiKeyArgs()).toMap()),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['value'],
         ) {
     arn = registerOutput<String>('arn');

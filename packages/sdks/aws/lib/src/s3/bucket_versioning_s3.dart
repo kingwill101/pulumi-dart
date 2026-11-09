@@ -95,7 +95,7 @@ import 'bucket_versioning_versioning_configuration.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -105,7 +105,7 @@ import 'bucket_versioning_versioning_configuration.dart';
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -115,7 +115,7 @@ import 'bucket_versioning_versioning_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -124,14 +124,23 @@ import 'bucket_versioning_versioning_configuration.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example-bucket"
 /// }
-/// resource "aws_s3_bucketacl" "example" {
+/// resource "aws_s3_bucket_acl" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.id
 ///   acl    = "private"
 /// }
-/// resource "aws_s3_bucketversioning" "versioning_example" {
-///   versioning_configuration = {
+/// resource "aws_s3_bucket_versioning" "versioning_example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   versioning_configuration {
 ///     status = "Enabled"
 ///   }
 ///   bucket = aws_s3_bucket.example.id
@@ -284,7 +293,7 @@ import 'bucket_versioning_versioning_configuration.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -294,7 +303,7 @@ import 'bucket_versioning_versioning_configuration.dart';
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Disabled"),
 /// 			},
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -304,7 +313,7 @@ import 'bucket_versioning_versioning_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -313,14 +322,23 @@ import 'bucket_versioning_versioning_configuration.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example-bucket"
 /// }
-/// resource "aws_s3_bucketacl" "example" {
+/// resource "aws_s3_bucket_acl" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.id
 ///   acl    = "private"
 /// }
-/// resource "aws_s3_bucketversioning" "versioning_example" {
-///   versioning_configuration = {
+/// resource "aws_s3_bucket_versioning" "versioning_example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   versioning_configuration {
 ///     status = "Disabled"
 ///   }
 ///   bucket = aws_s3_bucket.example.id
@@ -485,13 +503,13 @@ import 'bucket_versioning_versioning_configuration.dart';
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketObjectv2(ctx, "example", &s3.BucketObjectv2Args{
-/// 			Bucket: exampleBucketVersioning.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: exampleBucketVersioning.ID(),
 /// 			Key:    pulumi.String("droeloe"),
 /// 			Source: pulumi.NewFileAsset("example.txt"),
 /// 		})
@@ -503,7 +521,7 @@ import 'bucket_versioning_versioning_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -512,18 +530,27 @@ import 'bucket_versioning_versioning_configuration.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "yotto"
 /// }
-/// resource "aws_s3_bucketversioning" "example" {
-///   versioning_configuration = {
+/// resource "aws_s3_bucket_versioning" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   versioning_configuration {
 ///     status = "Enabled"
 ///   }
 ///   bucket = aws_s3_bucket.example.id
 /// }
-/// resource "aws_s3_bucketobjectv2" "example" {
-///   bucket = aws_s3_bucketversioning.example.id
+/// resource "aws_s3_bucket_objectv2" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   bucket = aws_s3_bucket_versioning.example.id
 ///   key    = "droeloe"
-///   source = fileAsset("example.txt")
+///   source = fileasset("example.txt")
 /// }
 /// ```
 /// ```java
@@ -651,7 +678,7 @@ class BucketVersioningS3 extends pulumi.CustomResource {
           'aws:s3/bucketVersioning:BucketVersioning',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');

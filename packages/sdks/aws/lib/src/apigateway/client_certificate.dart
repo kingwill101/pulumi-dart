@@ -55,7 +55,7 @@ import 'client_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -63,7 +63,10 @@ import 'client_certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_clientcertificate" "demo" {
+/// resource "aws_apigateway_client_certificate" "demo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "My client certificate"
 /// }
 /// ```
@@ -141,7 +144,7 @@ class ClientCertificate extends pulumi.CustomResource {
           'aws:apigateway/clientCertificate:ClientCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdDate = registerOutput<String>('createdDate');

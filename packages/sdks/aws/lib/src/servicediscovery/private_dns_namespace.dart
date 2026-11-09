@@ -70,7 +70,7 @@ import 'private_dns_namespace_state.dart';
 /// 		_, err = servicediscovery.NewPrivateDnsNamespace(ctx, "example", &servicediscovery.PrivateDnsNamespaceArgs{
 /// 			Name:        pulumi.String("hoge.example.local"),
 /// 			Description: pulumi.String("example"),
-/// 			Vpc:         example.ID().ToIDOutput().ToStringOutput(),
+/// 			Vpc:         example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -80,7 +80,7 @@ import 'private_dns_namespace_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -89,9 +89,15 @@ import 'private_dns_namespace_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
-/// resource "aws_servicediscovery_privatednsnamespace" "example" {
+/// resource "aws_servicediscovery_private_dns_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "hoge.example.local"
 ///   description = "example"
 ///   vpc         = aws_ec2_vpc.example.id
@@ -186,7 +192,7 @@ class PrivateDnsNamespace extends pulumi.CustomResource {
           'aws:servicediscovery/privateDnsNamespace:PrivateDnsNamespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

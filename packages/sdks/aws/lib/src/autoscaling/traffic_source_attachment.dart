@@ -80,7 +80,7 @@ import 'traffic_source_attachment_traffic_source.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -88,8 +88,11 @@ import 'traffic_source_attachment_traffic_source.dart';
 ///   }
 /// }
 ///
-/// resource "aws_autoscaling_trafficsourceattachment" "example" {
-///   traffic_source = {
+/// resource "aws_autoscaling_traffic_source_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   traffic_source {
 ///     identifier = exampleAwsLbTargetGroup.arn
 ///     type       = "elbv2"
 ///   }
@@ -120,10 +123,10 @@ import 'traffic_source_attachment_traffic_source.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new TrafficSourceAttachment("example", TrafficSourceAttachmentArgs.builder()
 ///             .trafficSource(TrafficSourceAttachmentTrafficSourceArgs.builder()
-///                 .identifier(exampleAwsLbTargetGroup.arn())
+///                 .identifier(exampleAwsLbTargetGroup.get("arn"))
 ///                 .type("elbv2")
 ///                 .build())
-///             .autoscalingGroupName(exampleAwsAutoscalingGroup.id())
+///             .autoscalingGroupName(exampleAwsAutoscalingGroup.get("id"))
 ///             .build());
 ///
 ///     }
@@ -168,7 +171,7 @@ class TrafficSourceAttachment extends pulumi.CustomResource {
           'aws:autoscaling/trafficSourceAttachment:TrafficSourceAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     region = registerOutput<String>('region');

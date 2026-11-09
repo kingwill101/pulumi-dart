@@ -71,13 +71,13 @@ import 'resolver_firewall_rule_state.dart';
 ///         {
 ///             "example.com",
 ///         },
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 ///     var exampleResolverFirewallRuleGroup = new Aws.Route53.ResolverFirewallRuleGroup("example", new()
 ///     {
 ///         Name = "example",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 ///     var exampleResolverFirewallRule = new Aws.Route53.ResolverFirewallRule("example", new()
@@ -129,8 +129,8 @@ import 'resolver_firewall_rule_state.dart';
 /// 			BlockOverrideDomain:  pulumi.String("example.com"),
 /// 			BlockOverrideTtl:     pulumi.Int(1),
 /// 			BlockResponse:        pulumi.String("OVERRIDE"),
-/// 			FirewallDomainListId: example.ID().ToIDOutput().ToStringOutput(),
-/// 			FirewallRuleGroupId:  exampleResolverFirewallRuleGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			FirewallDomainListId: example.ID(),
+/// 			FirewallRuleGroupId:  exampleResolverFirewallRuleGroup.ID(),
 /// 			Priority:             pulumi.Int(100),
 /// 		})
 /// 		if err != nil {
@@ -141,7 +141,7 @@ import 'resolver_firewall_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -149,24 +149,33 @@ import 'resolver_firewall_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53_resolverfirewalldomainlist" "example" {
+/// resource "aws_route53_resolver_firewall_domain_list" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "example"
 ///   domains = ["example.com"]
 ///   tags    = {}
 /// }
-/// resource "aws_route53_resolverfirewallrulegroup" "example" {
+/// resource "aws_route53_resolver_firewall_rule_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 ///   tags = {}
 /// }
-/// resource "aws_route53_resolverfirewallrule" "example" {
+/// resource "aws_route53_resolver_firewall_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example"
 ///   action                  = "BLOCK"
 ///   block_override_dns_type = "CNAME"
 ///   block_override_domain   = "example.com"
 ///   block_override_ttl      = 1
 ///   block_response          = "OVERRIDE"
-///   firewall_domain_list_id = aws_route53_resolverfirewalldomainlist.example.id
-///   firewall_rule_group_id  = aws_route53_resolverfirewallrulegroup.example.id
+///   firewall_domain_list_id = aws_route53_resolver_firewall_domain_list.example.id
+///   firewall_rule_group_id  = aws_route53_resolver_firewall_rule_group.example.id
 ///   priority                = 100
 /// }
 /// ```
@@ -302,7 +311,7 @@ import 'resolver_firewall_rule_state.dart';
 ///     var example = new Aws.Route53.ResolverFirewallRuleGroup("example", new()
 ///     {
 ///         Name = "example",
-///         Tags = null,
+///         Tags = new() { },
 ///     });
 ///
 ///     var exampleResolverFirewallRule = new Aws.Route53.ResolverFirewallRule("example", new()
@@ -339,7 +348,7 @@ import 'resolver_firewall_rule_state.dart';
 /// 			Name:                pulumi.String("block-dga"),
 /// 			Action:              pulumi.String("BLOCK"),
 /// 			BlockResponse:       pulumi.String("NODATA"),
-/// 			FirewallRuleGroupId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			FirewallRuleGroupId: example.ID(),
 /// 			DnsThreatProtection: pulumi.String("DGA"),
 /// 			ConfidenceThreshold: pulumi.String("HIGH"),
 /// 			Priority:            pulumi.Int(100),
@@ -352,7 +361,7 @@ import 'resolver_firewall_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -360,15 +369,21 @@ import 'resolver_firewall_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53_resolverfirewallrulegroup" "example" {
+/// resource "aws_route53_resolver_firewall_rule_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 ///   tags = {}
 /// }
-/// resource "aws_route53_resolverfirewallrule" "example" {
+/// resource "aws_route53_resolver_firewall_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "block-dga"
 ///   action                 = "BLOCK"
 ///   block_response         = "NODATA"
-///   firewall_rule_group_id = aws_route53_resolverfirewallrulegroup.example.id
+///   firewall_rule_group_id = aws_route53_resolver_firewall_rule_group.example.id
 ///   dns_threat_protection  = "DGA"
 ///   confidence_threshold   = "HIGH"
 ///   priority               = 100
@@ -491,7 +506,7 @@ class ResolverFirewallRule extends pulumi.CustomResource {
           'aws:route53/resolverFirewallRule:ResolverFirewallRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     action = registerOutput<String>('action');
     blockOverrideDnsType = registerOutput<String?>('blockOverrideDnsType');

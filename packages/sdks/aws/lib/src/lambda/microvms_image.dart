@@ -251,7 +251,7 @@ import 'microvms_image_timeouts.dart';
 /// 		}
 /// 		_, err = iam.NewRolePolicy(ctx, "example", &iam.RolePolicyArgs{
 /// 			Name: pulumi.String("example"),
-/// 			Role: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Role: example.ID(),
 /// 			Policy: exampleBucket.Arn.ApplyT(func(arn string) (pulumi.String, error) {
 /// 				var _zero pulumi.String
 /// 				tmpJSON1, err := json.Marshal(map[string]interface{}{
@@ -304,7 +304,7 @@ import 'microvms_image_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -312,12 +312,15 @@ import 'microvms_image_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_getpartition" "current" {
+/// data "aws_partition" "current" {
 /// }
-/// data "aws_getregion" "currentGetRegion" {
+/// data "aws_region" "currentGetRegion" {
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -330,7 +333,10 @@ import 'microvms_image_timeouts.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_iam_rolepolicy" "example" {
+/// resource "aws_iam_role_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 ///   role = aws_iam_role.example.id
 ///   policy = jsonencode({
@@ -343,19 +349,28 @@ import 'microvms_image_timeouts.dart';
 ///   })
 /// }
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example"
 /// }
-/// resource "aws_s3_bucketobjectv2" "example" {
+/// resource "aws_s3_bucket_objectv2" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.bucket
 ///   key    = "code.zip"
-///   source = fileAsset("code.zip")
+///   source = fileasset("code.zip")
 /// }
 /// resource "aws_lambdamicrovms_image" "example" {
-///   code_artifact = {
-///     uri ="s3://${aws_s3_bucket.example.bucket}/${aws_s3_bucketobjectv2.example.key}"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   code_artifact {
+///     uri ="s3://${aws_s3_bucket.example.bucket}/${aws_s3_bucket_objectv2.example.key}"
 ///   }
 ///   name           = "example"
-///   base_image_arn ="arn:${data.aws_getpartition.current.partition}:lambda:${data.aws_getregion.currentGetRegion.region}:aws:microvm-image:al2023-1"
+///   base_image_arn ="arn:${data.aws_partition.current.partition}:lambda:${data.aws_region.currentGetRegion.region}:aws:microvm-image:al2023-1"
 ///   build_role_arn = aws_iam_role.example.arn
 /// }
 /// ```
@@ -588,7 +603,7 @@ class MicrovmsImage extends pulumi.CustomResource {
           'aws:lambda/microvmsImage:MicrovmsImage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     additionalOsCapabilities = registerOutput<List<String>?>('additionalOsCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');

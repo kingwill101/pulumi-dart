@@ -95,7 +95,7 @@ import 'tag_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -103,13 +103,19 @@ import 'tag_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_batch_computeenvironment" "example" {
+/// resource "aws_batch_compute_environment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example"
 ///   service_role = exampleAwsIamRole.arn
 ///   type         = "UNMANAGED"
 /// }
 /// resource "aws_ecs_tag" "example" {
-///   resource_arn = aws_batch_computeenvironment.example.ecs_cluster_arn
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_arn = aws_batch_compute_environment.example.ecs_cluster_arn
 ///   key          = "Name"
 ///   value        = "Hello World"
 /// }
@@ -139,7 +145,7 @@ import 'tag_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new ComputeEnvironment("example", ComputeEnvironmentArgs.builder()
 ///             .name("example")
-///             .serviceRole(exampleAwsIamRole.arn())
+///             .serviceRole(exampleAwsIamRole.get("arn"))
 ///             .type("UNMANAGED")
 ///             .build());
 ///
@@ -199,7 +205,7 @@ class Tag extends pulumi.CustomResource {
           'aws:ecs/tag:Tag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     key = registerOutput<String>('key');
     region = registerOutput<String>('region');

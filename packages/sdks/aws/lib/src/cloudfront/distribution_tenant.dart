@@ -108,7 +108,7 @@ import 'distribution_tenant_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -116,8 +116,11 @@ import 'distribution_tenant_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_distributiontenant" "example" {
-///   domains {
+/// resource "aws_cloudfront_distribution_tenant" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   domain {
 ///     domain = "tenant.example.com"
 ///   }
 ///   name            = "example-tenant"
@@ -155,7 +158,7 @@ import 'distribution_tenant_timeouts.dart';
 ///                 .domain("tenant.example.com")
 ///                 .build())
 ///             .name("example-tenant")
-///             .distributionId(exampleAwsCloudfrontMultitenantDistribution.id())
+///             .distributionId(exampleAwsCloudfrontMultitenantDistribution.get("id"))
 ///             .enabled(true)
 ///             .tags(Map.of("Environment", "production"))
 ///             .build());
@@ -344,7 +347,7 @@ import 'distribution_tenant_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -352,21 +355,24 @@ import 'distribution_tenant_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_distributiontenant" "example" {
-///   customizations = {
-///     geo_restriction = {
+/// resource "aws_cloudfront_distribution_tenant" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   customizations {
+///     geo_restriction {
 ///       restriction_type = "whitelist"
 ///       locations        = ["US", "CA"]
 ///     }
-///     certificate = {
+///     certificate {
 ///       arn = tenantCert.arn
 ///     }
-///     web_acl = {
+///     web_acl {
 ///       action = "override"
 ///       arn    = tenantWaf.arn
 ///     }
 ///   }
-///   domains {
+///   domain {
 ///     domain = "tenant.example.com"
 ///   }
 ///   name            = "example-tenant"
@@ -413,18 +419,18 @@ import 'distribution_tenant_timeouts.dart';
 ///                         "CA")
 ///                     .build())
 ///                 .certificate(DistributionTenantCustomizationsCertificateArgs.builder()
-///                     .arn(tenantCert.arn())
+///                     .arn(tenantCert.get("arn"))
 ///                     .build())
 ///                 .webAcl(DistributionTenantCustomizationsWebAclArgs.builder()
 ///                     .action("override")
-///                     .arn(tenantWaf.arn())
+///                     .arn(tenantWaf.get("arn"))
 ///                     .build())
 ///                 .build())
 ///             .domains(DistributionTenantDomainArgs.builder()
 ///                 .domain("tenant.example.com")
 ///                 .build())
 ///             .name("example-tenant")
-///             .distributionId(exampleAwsCloudfrontMultitenantDistribution.id())
+///             .distributionId(exampleAwsCloudfrontMultitenantDistribution.get("id"))
 ///             .enabled(false)
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Environment", "production"),
@@ -512,7 +518,7 @@ class DistributionTenant extends pulumi.CustomResource {
           'aws:cloudfront/distributionTenant:DistributionTenant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     connectionGroupId = registerOutput<String>('connectionGroupId');

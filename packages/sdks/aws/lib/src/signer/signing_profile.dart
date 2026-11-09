@@ -112,7 +112,7 @@ import 'signing_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -120,11 +120,17 @@ import 'signing_profile_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_signer_signingprofile" "test_sp" {
+/// resource "aws_signer_signing_profile" "test_sp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   platform_id = "AWSLambda-SHA384-ECDSA"
 /// }
-/// resource "aws_signer_signingprofile" "prod_sp" {
-///   signature_validity_period = {
+/// resource "aws_signer_signing_profile" "prod_sp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   signature_validity_period {
 ///     value = 5
 ///     type  = "YEARS"
 ///   }
@@ -251,7 +257,7 @@ class SigningProfile extends pulumi.CustomResource {
           'aws:signer/signingProfile:SigningProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

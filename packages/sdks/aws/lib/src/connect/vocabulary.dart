@@ -93,7 +93,7 @@ import 'vocabulary_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -102,6 +102,9 @@ import 'vocabulary_state.dart';
 /// }
 ///
 /// resource "aws_connect_vocabulary" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id   = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   name          = "example"
 ///   content       = "Phrase\tIPA\tSoundsLike\tDisplayAs\nLos-Angeles\t\t\tLos Angeles\nF.B.I.\tɛ f b i aɪ\t\tFBI\nEtienne\t\teh-tee-en\t"
@@ -211,7 +214,7 @@ class Vocabulary extends pulumi.CustomResource {
           'aws:connect/vocabulary:Vocabulary',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     content = registerOutput<String>('content');

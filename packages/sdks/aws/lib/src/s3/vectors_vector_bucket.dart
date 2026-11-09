@@ -58,7 +58,7 @@ import 'vectors_vector_bucket_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -66,7 +66,10 @@ import 'vectors_vector_bucket_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_vectorsvectorbucket" "example" {
+/// resource "aws_s3_vectors_vector_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vector_bucket_name = "example-bucket"
 /// }
 /// ```
@@ -183,7 +186,7 @@ import 'vectors_vector_bucket_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -191,7 +194,10 @@ import 'vectors_vector_bucket_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_vectorsvectorbucket" "example" {
+/// resource "aws_s3_vectors_vector_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   encryption_configurations {
 ///     sse_type    = "aws:kms"
 ///     kms_key_arn = exampleAwsKmsKey.arn
@@ -224,7 +230,7 @@ import 'vectors_vector_bucket_state.dart';
 ///         var example = new VectorsVectorBucket("example", VectorsVectorBucketArgs.builder()
 ///             .encryptionConfigurations(VectorsVectorBucketEncryptionConfigurationArgs.builder()
 ///                 .sseType("aws:kms")
-///                 .kmsKeyArn(exampleAwsKmsKey.arn())
+///                 .kmsKeyArn(exampleAwsKmsKey.get("arn"))
 ///                 .build())
 ///             .vectorBucketName("example-bucket")
 ///             .build());
@@ -290,7 +296,7 @@ class VectorsVectorBucket extends pulumi.CustomResource {
           'aws:s3/vectorsVectorBucket:VectorsVectorBucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     creationTime = registerOutput<String>('creationTime');
     encryptionConfigurations = registerOutput<List<VectorsVectorBucketEncryptionConfiguration>>('encryptionConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VectorsVectorBucketEncryptionConfiguration>(guardedValue, (value) => VectorsVectorBucketEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())); });

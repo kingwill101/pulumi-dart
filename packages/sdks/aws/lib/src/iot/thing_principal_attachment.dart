@@ -110,7 +110,7 @@ import 'thing_principal_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -122,13 +122,22 @@ import 'thing_principal_attachment_state.dart';
 /// }
 ///
 /// resource "aws_iot_thing" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// resource "aws_iot_certificate" "cert" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   csr    = file("csr.pem")
 ///   active = true
 /// }
-/// resource "aws_iot_thingprincipalattachment" "att" {
+/// resource "aws_iot_thing_principal_attachment" "att" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   principal = aws_iot_certificate.cert.arn
 ///   thing     = aws_iot_thing.example.name
 /// }
@@ -223,7 +232,7 @@ class ThingPrincipalAttachment extends pulumi.CustomResource {
           'aws:iot/thingPrincipalAttachment:ThingPrincipalAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     principal = registerOutput<String>('principal');
     region = registerOutput<String>('region');

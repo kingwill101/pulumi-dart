@@ -69,7 +69,7 @@ import 'policy_table_entry_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,7 +77,10 @@ import 'policy_table_entry_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2transitgateway_policytableentry" "example" {
+/// resource "aws_ec2transitgateway_policy_table_entry" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   transit_gateway_policy_table_id = exampleAwsEc2TransitGatewayPolicyTable.id
 ///   policy_rule_number              = 100
 ///   target_route_table_id           = exampleAwsEc2TransitGatewayRouteTable.id
@@ -105,9 +108,9 @@ import 'policy_table_entry_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new PolicyTableEntry("example", PolicyTableEntryArgs.builder()
-///             .transitGatewayPolicyTableId(exampleAwsEc2TransitGatewayPolicyTable.id())
+///             .transitGatewayPolicyTableId(exampleAwsEc2TransitGatewayPolicyTable.get("id"))
 ///             .policyRuleNumber("100")
-///             .targetRouteTableId(exampleAwsEc2TransitGatewayRouteTable.id())
+///             .targetRouteTableId(exampleAwsEc2TransitGatewayRouteTable.get("id"))
 ///             .build());
 ///
 ///     }
@@ -232,7 +235,7 @@ import 'policy_table_entry_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -240,7 +243,10 @@ import 'policy_table_entry_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2transitgateway_policytableentry" "example" {
+/// resource "aws_ec2transitgateway_policy_table_entry" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_rule = {
 ///     metadata = {
 ///       key   = "test"
@@ -292,9 +298,9 @@ import 'policy_table_entry_state.dart';
 ///                 .destinationPortRange("443")
 ///                 .protocol("6")
 ///                 .build())
-///             .transitGatewayPolicyTableId(exampleAwsEc2TransitGatewayPolicyTable.id())
+///             .transitGatewayPolicyTableId(exampleAwsEc2TransitGatewayPolicyTable.get("id"))
 ///             .policyRuleNumber("200")
-///             .targetRouteTableId(exampleAwsEc2TransitGatewayRouteTable.id())
+///             .targetRouteTableId(exampleAwsEc2TransitGatewayRouteTable.get("id"))
 ///             .build());
 ///
 ///     }
@@ -366,7 +372,7 @@ class PolicyTableEntry extends pulumi.CustomResource {
           'aws:ec2transitgateway/policyTableEntry:PolicyTableEntry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     policyRule = registerOutput<PolicyTableEntryPolicyRule?>('policyRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyTableEntryPolicyRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     policyRuleNumber = registerOutput<String>('policyRuleNumber');

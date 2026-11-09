@@ -66,7 +66,7 @@ import 'attachment_routing_policy_label_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'attachment_routing_policy_label_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkmanager_attachmentroutingpolicylabel" "example" {
+/// resource "aws_networkmanager_attachment_routing_policy_label" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   core_network_id      = exampleAwsNetworkmanagerCoreNetwork.id
 ///   attachment_id        = exampleAwsNetworkmanagerVpcAttachment.id
 ///   routing_policy_label = "attachmentPolicyLabel"
@@ -102,8 +105,8 @@ import 'attachment_routing_policy_label_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AttachmentRoutingPolicyLabel("example", AttachmentRoutingPolicyLabelArgs.builder()
-///             .coreNetworkId(exampleAwsNetworkmanagerCoreNetwork.id())
-///             .attachmentId(exampleAwsNetworkmanagerVpcAttachment.id())
+///             .coreNetworkId(exampleAwsNetworkmanagerCoreNetwork.get("id"))
+///             .attachmentId(exampleAwsNetworkmanagerVpcAttachment.get("id"))
 ///             .routingPolicyLabel("attachmentPolicyLabel")
 ///             .build());
 ///
@@ -148,7 +151,7 @@ class AttachmentRoutingPolicyLabel extends pulumi.CustomResource {
           'aws:networkmanager/attachmentRoutingPolicyLabel:AttachmentRoutingPolicyLabel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     attachmentId = registerOutput<String>('attachmentId');
     coreNetworkId = registerOutput<String>('coreNetworkId');

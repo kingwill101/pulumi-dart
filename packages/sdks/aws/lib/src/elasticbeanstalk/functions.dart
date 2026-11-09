@@ -72,7 +72,7 @@ import 'get_solution_stack_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -80,15 +80,15 @@ import 'get_solution_stack_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_elasticbeanstalk_getapplication" "example" {
+/// data "aws_elasticbeanstalk_application" "example" {
 ///   name = "example"
 /// }
 ///
 /// output "arn" {
-///   value = data.aws_elasticbeanstalk_getapplication.example.arn
+///   value = data.aws_elasticbeanstalk_application.example.arn
 /// }
 /// output "description" {
-///   value = data.aws_elasticbeanstalk_getapplication.example.description
+///   value = data.aws_elasticbeanstalk_application.example.description
 /// }
 /// ```
 /// ```java
@@ -206,7 +206,7 @@ pulumi.Output<GetApplicationResult> getApplicationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -214,7 +214,7 @@ pulumi.Output<GetApplicationResult> getApplicationOutput(
 ///   }
 /// }
 ///
-/// data "aws_elasticbeanstalk_gethostedzone" "current" {
+/// data "aws_elasticbeanstalk_hosted_zone" "current" {
 /// }
 /// ```
 /// ```java
@@ -336,7 +336,7 @@ pulumi.Output<GetHostedZoneResult> getHostedZoneOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -344,7 +344,7 @@ pulumi.Output<GetHostedZoneResult> getHostedZoneOutput(
 ///   }
 /// }
 ///
-/// data "aws_elasticbeanstalk_getsolutionstack" "multiDocker" {
+/// data "aws_elasticbeanstalk_solution_stack" "multiDocker" {
 ///   most_recent = true
 ///   name_regex  = "^64bit Amazon Linux (.*) Multi-container Docker (.*)$"
 /// }

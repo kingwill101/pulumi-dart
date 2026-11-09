@@ -89,7 +89,7 @@ import 'configuration_aggregator_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -97,7 +97,10 @@ import 'configuration_aggregator_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cfg_configurationaggregator" "account" {
+/// resource "aws_cfg_configuration_aggregator" "account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_aggregation_source = {
 ///     account_ids = ["123456789012"]
 ///     regions     = ["us-west-2"]
@@ -340,7 +343,7 @@ import 'configuration_aggregator_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -348,8 +351,8 @@ import 'configuration_aggregator_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["config.amazonaws.com"]
@@ -359,8 +362,11 @@ import 'configuration_aggregator_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cfg_configurationaggregator" "organization" {
-///   depends_on = [aws_iam_rolepolicyattachment.organization]
+/// resource "aws_cfg_configuration_aggregator" "organization" {
+///   depends_on = [aws_iam_role_policy_attachment.organization]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization_aggregation_source = {
 ///     all_regions = true
 ///     role_arn    = aws_iam_role.organization.arn
@@ -368,10 +374,16 @@ import 'configuration_aggregator_state.dart';
 ///   name = "example"
 /// }
 /// resource "aws_iam_role" "organization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iam_rolepolicyattachment" "organization" {
+/// resource "aws_iam_role_policy_attachment" "organization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role       = aws_iam_role.organization.name
 ///   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSConfigRoleForOrganizations"
 /// }
@@ -530,7 +542,7 @@ class ConfigurationAggregator extends pulumi.CustomResource {
           'aws:cfg/configurationAggregator:ConfigurationAggregator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accountAggregationSource = registerOutput<ConfigurationAggregatorAccountAggregationSource?>('accountAggregationSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationAggregatorAccountAggregationSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');

@@ -69,7 +69,7 @@ import 'pull_through_cache_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,7 +77,10 @@ import 'pull_through_cache_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecr_pullthroughcacherule" "example" {
+/// resource "aws_ecr_pull_through_cache_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ecr_repository_prefix = "ecr-public"
 ///   upstream_registry_url = "public.ecr.aws"
 ///   credential_arn        = "arn:aws:secretsmanager:us-east-1:123456789:secret:ecr-pullthroughcache/ecrpublic"
@@ -159,7 +162,7 @@ class PullThroughCacheRule extends pulumi.CustomResource {
           'aws:ecr/pullThroughCacheRule:PullThroughCacheRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     credentialArn = registerOutput<String?>('credentialArn');
     customRoleArn = registerOutput<String?>('customRoleArn');

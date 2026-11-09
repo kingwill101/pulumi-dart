@@ -104,7 +104,7 @@ import 'schedule_target.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -113,10 +113,13 @@ import 'schedule_target.dart';
 /// }
 ///
 /// resource "aws_scheduler_schedule" "example" {
-///   flexible_time_window = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   flexible_time_window {
 ///     mode = "OFF"
 ///   }
-///   target = {
+///   target {
 ///     arn      = exampleAwsSqsQueue.arn
 ///     role_arn = exampleAwsIamRole.arn
 ///   }
@@ -153,8 +156,8 @@ import 'schedule_target.dart';
 ///                 .mode("OFF")
 ///                 .build())
 ///             .target(ScheduleTargetArgs.builder()
-///                 .arn(exampleAwsSqsQueue.arn())
-///                 .roleArn(exampleAwsIamRole.arn())
+///                 .arn(exampleAwsSqsQueue.get("arn"))
+///                 .roleArn(exampleAwsIamRole.get("arn"))
 ///                 .build())
 ///             .name("my-schedule")
 ///             .groupName("default")
@@ -306,7 +309,7 @@ import 'schedule_target.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -315,12 +318,18 @@ import 'schedule_target.dart';
 /// }
 ///
 /// resource "aws_sqs_queue" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_scheduler_schedule" "example" {
-///   flexible_time_window = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   flexible_time_window {
 ///     mode = "OFF"
 ///   }
-///   target = {
+///   target {
 ///     arn      = "arn:aws:scheduler:::aws-sdk:sqs:sendMessage"
 ///     role_arn = exampleAwsIamRole.arn
 ///     input = jsonencode({
@@ -365,7 +374,7 @@ import 'schedule_target.dart';
 ///                 .build())
 ///             .target(ScheduleTargetArgs.builder()
 ///                 .arn("arn:aws:scheduler:::aws-sdk:sqs:sendMessage")
-///                 .roleArn(exampleAwsIamRole.arn())
+///                 .roleArn(exampleAwsIamRole.get("arn"))
 ///                 .input(example.url().applyValue(_url -> serializeJson(
 ///                     jsonObject(
 ///                         jsonProperty("MessageBody", "Greetings, programs!"),
@@ -467,7 +476,7 @@ class Schedule extends pulumi.CustomResource {
           'aws:scheduler/schedule:Schedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     actionAfterCompletion = registerOutput<String>('actionAfterCompletion');
     arn = registerOutput<String>('arn');

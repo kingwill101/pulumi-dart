@@ -84,7 +84,7 @@ import 'task_task_report_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -93,7 +93,10 @@ import 'task_task_report_config.dart';
 /// }
 ///
 /// resource "aws_datasync_task" "example" {
-///   options = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   options {
 ///     bytes_per_second = -1
 ///   }
 ///   destination_location_arn = destination.arn
@@ -127,9 +130,9 @@ import 'task_task_report_config.dart';
 ///             .options(TaskOptionsArgs.builder()
 ///                 .bytesPerSecond(-1)
 ///                 .build())
-///             .destinationLocationArn(destination.arn())
+///             .destinationLocationArn(destination.get("arn"))
 ///             .name("example")
-///             .sourceLocationArn(source.arn())
+///             .sourceLocationArn(source.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -223,7 +226,7 @@ import 'task_task_report_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -232,7 +235,10 @@ import 'task_task_report_config.dart';
 /// }
 ///
 /// resource "aws_datasync_task" "example" {
-///   schedule = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   schedule {
 ///     schedule_expression = "cron(0 12 ? * SUN,WED *)"
 ///   }
 ///   destination_location_arn = destination.arn
@@ -266,9 +272,9 @@ import 'task_task_report_config.dart';
 ///             .schedule(TaskScheduleArgs.builder()
 ///                 .scheduleExpression("cron(0 12 ? * SUN,WED *)")
 ///                 .build())
-///             .destinationLocationArn(destination.arn())
+///             .destinationLocationArn(destination.get("arn"))
 ///             .name("example")
-///             .sourceLocationArn(source.arn())
+///             .sourceLocationArn(source.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -383,7 +389,7 @@ import 'task_task_report_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -392,11 +398,14 @@ import 'task_task_report_config.dart';
 /// }
 ///
 /// resource "aws_datasync_task" "example" {
-///   excludes = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   excludes {
 ///     filter_type = "SIMPLE_PATTERN"
 ///     value       = "/folder1|/folder2"
 ///   }
-///   includes = {
+///   includes {
 ///     filter_type = "SIMPLE_PATTERN"
 ///     value       = "/folder1|/folder2"
 ///   }
@@ -437,9 +446,9 @@ import 'task_task_report_config.dart';
 ///                 .filterType("SIMPLE_PATTERN")
 ///                 .value("/folder1|/folder2")
 ///                 .build())
-///             .destinationLocationArn(destination.arn())
+///             .destinationLocationArn(destination.get("arn"))
 ///             .name("example")
-///             .sourceLocationArn(source.arn())
+///             .sourceLocationArn(source.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -553,7 +562,7 @@ import 'task_task_report_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -562,7 +571,10 @@ import 'task_task_report_config.dart';
 /// }
 ///
 /// resource "aws_datasync_task" "example" {
-///   options = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   options {
 ///     gid               = "NONE"
 ///     posix_permissions = "NONE"
 ///     uid               = "NONE"
@@ -603,9 +615,9 @@ import 'task_task_report_config.dart';
 ///                 .uid("NONE")
 ///                 .verifyMode("ONLY_FILES_TRANSFERRED")
 ///                 .build())
-///             .destinationLocationArn(destination.arn())
+///             .destinationLocationArn(destination.get("arn"))
 ///             .name("example")
-///             .sourceLocationArn(source.arn())
+///             .sourceLocationArn(source.get("arn"))
 ///             .taskMode("ENHANCED")
 ///             .build());
 ///
@@ -687,7 +699,7 @@ class Task extends pulumi.CustomResource {
           'aws:datasync/task:Task',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cloudwatchLogGroupArn = registerOutput<String?>('cloudwatchLogGroupArn');

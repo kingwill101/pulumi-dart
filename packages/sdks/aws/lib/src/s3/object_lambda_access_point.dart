@@ -120,7 +120,7 @@ import 'object_lambda_access_point_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleAccessPoint, err := s3.NewAccessPoint(ctx, "example", &s3.AccessPointArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Name:   pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
@@ -152,7 +152,7 @@ import 'object_lambda_access_point_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -161,23 +161,32 @@ import 'object_lambda_access_point_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example"
 /// }
-/// resource "aws_s3_accesspoint" "example" {
+/// resource "aws_s3_access_point" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.id
 ///   name   = "example"
 /// }
-/// resource "aws_s3control_objectlambdaaccesspoint" "example" {
-///   configuration = {
-///     transformation_configurations = [{
-///       "contentTransformation" = {
-///         "awsLambda" = {
-///           "functionArn" = exampleAwsLambdaFunction.arn
+/// resource "aws_s3control_object_lambda_access_point" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     transformation_configuration {
+///       content_transformation {
+///         aws_lambda {
+///           function_arn = exampleAwsLambdaFunction.arn
 ///         }
 ///       }
-///       "actions" = ["GetObject"]
-///     }]
-///     supporting_access_point = aws_s3_accesspoint.example.arn
+///       actions = ["GetObject"]
+///     }
+///     supporting_access_point = aws_s3_access_point.example.arn
 ///   }
 ///   name = "example"
 /// }
@@ -225,7 +234,7 @@ import 'object_lambda_access_point_state.dart';
 ///                 .transformationConfigurations(ObjectLambdaAccessPointConfigurationTransformationConfigurationArgs.builder()
 ///                     .contentTransformation(ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationArgs.builder()
 ///                         .awsLambda(ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambdaArgs.builder()
-///                             .functionArn(exampleAwsLambdaFunction.arn())
+///                             .functionArn(exampleAwsLambdaFunction.get("arn"))
 ///                             .build())
 ///                         .build())
 ///                     .actions("GetObject")
@@ -299,7 +308,7 @@ class ObjectLambdaAccessPoint extends pulumi.CustomResource {
           'aws:s3control/objectLambdaAccessPoint:ObjectLambdaAccessPoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     alias = registerOutput<String>('alias');

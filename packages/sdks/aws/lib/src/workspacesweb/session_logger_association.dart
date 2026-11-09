@@ -228,7 +228,7 @@ import 'session_logger_association_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		exampleBucketPolicy, err := s3.NewBucketPolicy(ctx, "example", &s3.BucketPolicyArgs{
-/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: exampleBucket.ID(),
 /// 			Policy: example.Json(),
 /// 		})
 /// 		if err != nil {
@@ -236,11 +236,11 @@ import 'session_logger_association_state.dart';
 /// 		}
 /// 		exampleSessionLogger, err := workspacesweb.NewSessionLogger(ctx, "example", &workspacesweb.SessionLoggerArgs{
 /// 			EventFilter: &workspacesweb.SessionLoggerEventFilterArgs{
-/// 				All: map[string]interface{}{}[0],
+/// 				All: map[string]interface{}{}[0].(workspacesweb.SessionLoggerEventFilterAllArgs),
 /// 			},
 /// 			LogConfiguration: &workspacesweb.SessionLoggerLogConfigurationArgs{
 /// 				S3: &workspacesweb.SessionLoggerLogConfigurationS3Args{
-/// 					Bucket:          exampleBucket.ID().ToIDOutput().ToStringOutput(),
+/// 					Bucket:          exampleBucket.ID(),
 /// 					FolderStructure: pulumi.String("Flat"),
 /// 					LogFileFormat:   pulumi.String("Json"),
 /// 				},
@@ -264,7 +264,7 @@ import 'session_logger_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -272,8 +272,8 @@ import 'session_logger_association_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["workspaces-web.amazonaws.com"]
@@ -285,23 +285,37 @@ import 'session_logger_association_state.dart';
 /// }
 ///
 /// resource "aws_workspacesweb_portal" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket        = "example-session-logs"
 ///   force_destroy = true
 /// }
-/// resource "aws_s3_bucketpolicy" "example" {
-///   bucket = aws_s3_bucket.example.id
-///   policy = data.aws_iam_getpolicydocument.example.json
-/// }
-/// resource "aws_workspacesweb_sessionlogger" "example" {
-///   depends_on = [aws_s3_bucketpolicy.example]
-///   event_filter = {
-///     all = {}[0]
+/// resource "aws_s3_bucket_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   log_configuration = {
-///     s3 = {
+///   bucket = aws_s3_bucket.example.id
+///   policy = data.aws_iam_policy_document.example.json
+/// }
+/// resource "aws_workspacesweb_session_logger" "example" {
+///   depends_on = [aws_s3_bucket_policy.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   event_filter {
+///     all {
+///       content = {}[0]
+///     }
+///   }
+///   log_configuration {
+///     s3 {
 ///       bucket           = aws_s3_bucket.example.id
 ///       folder_structure = "Flat"
 ///       log_file_format  = "Json"
@@ -309,9 +323,12 @@ import 'session_logger_association_state.dart';
 ///   }
 ///   display_name = "example"
 /// }
-/// resource "aws_workspacesweb_sessionloggerassociation" "example" {
+/// resource "aws_workspacesweb_session_logger_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   portal_arn         = aws_workspacesweb_portal.example.portal_arn
-///   session_logger_arn = aws_workspacesweb_sessionlogger.example.session_logger_arn
+///   session_logger_arn = aws_workspacesweb_session_logger.example.session_logger_arn
 /// }
 /// ```
 /// ```java
@@ -433,7 +450,7 @@ class SessionLoggerAssociation extends pulumi.CustomResource {
           'aws:workspacesweb/sessionLoggerAssociation:SessionLoggerAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     portalArn = registerOutput<String>('portalArn');
     region = registerOutput<String>('region');

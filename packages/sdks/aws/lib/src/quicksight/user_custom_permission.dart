@@ -62,7 +62,7 @@ import 'user_custom_permission_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'user_custom_permission_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_quicksight_usercustompermission" "example" {
+/// resource "aws_quicksight_user_custom_permission" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user_name               = exampleAwsQuicksightUser.userName
 ///   custom_permissions_name = exampleAwsQuicksightCustomPermissions.customPermissionsName
 /// }
@@ -97,8 +100,8 @@ import 'user_custom_permission_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new UserCustomPermission("example", UserCustomPermissionArgs.builder()
-///             .userName(exampleAwsQuicksightUser.userName())
-///             .customPermissionsName(exampleAwsQuicksightCustomPermissions.customPermissionsName())
+///             .userName(exampleAwsQuicksightUser.get("userName"))
+///             .customPermissionsName(exampleAwsQuicksightCustomPermissions.get("customPermissionsName"))
 ///             .build());
 ///
 ///     }
@@ -147,7 +150,7 @@ class UserCustomPermission extends pulumi.CustomResource {
           'aws:quicksight/userCustomPermission:UserCustomPermission',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     customPermissionsName = registerOutput<String>('customPermissionsName');

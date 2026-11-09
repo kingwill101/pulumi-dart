@@ -57,7 +57,7 @@ import 'organization_admin_account_registration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,7 +65,10 @@ import 'organization_admin_account_registration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_auditmanager_organizationadminaccountregistration" "example" {
+/// resource "aws_auditmanager_organization_admin_account_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   admin_account_id = "123456789012"
 /// }
 /// ```
@@ -133,7 +136,7 @@ class OrganizationAdminAccountRegistration extends pulumi.CustomResource {
           'aws:auditmanager/organizationAdminAccountRegistration:OrganizationAdminAccountRegistration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     adminAccountId = registerOutput<String>('adminAccountId');
     organizationId = registerOutput<String>('organizationId');

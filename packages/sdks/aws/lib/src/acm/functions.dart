@@ -131,7 +131,7 @@ import 'get_certificate_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -139,16 +139,16 @@ import 'get_certificate_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_acm_getcertificate" "issued" {
+/// data "aws_acm_certificate" "issued" {
 ///   domain   = "tf.example.com"
 ///   statuses = ["ISSUED"]
 /// }
-/// data "aws_acm_getcertificate" "amazonIssued" {
+/// data "aws_acm_certificate" "amazonIssued" {
 ///   domain      = "tf.example.com"
 ///   types       = ["AMAZON_ISSUED"]
 ///   most_recent = true
 /// }
-/// data "aws_acm_getcertificate" "rsa4096" {
+/// data "aws_acm_certificate" "rsa4096" {
 ///   domain    = "tf.example.com"
 ///   key_types = ["RSA_4096"]
 /// }

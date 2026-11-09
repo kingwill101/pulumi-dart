@@ -120,7 +120,7 @@ import 'classification_job_user_paused_detail.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -129,14 +129,20 @@ import 'classification_job_user_paused_detail.dart';
 /// }
 ///
 /// resource "aws_macie2_account" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_macie2_classificationjob" "test" {
+/// resource "aws_macie2_classification_job" "test" {
 ///   depends_on = [aws_macie2_account.test]
-///   s3_job_definition = {
-///     bucket_definitions = [{
-///       "accountId" = "ACCOUNT ID"
-///       "buckets"   = ["S3 BUCKET NAME"]
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   s3_job_definition {
+///     bucket_definitions {
+///       account_id = "ACCOUNT ID"
+///       buckets    = ["S3 BUCKET NAME"]
+///     }
 ///   }
 ///   job_type = "ONE_TIME"
 ///   name     = "NAME OF THE CLASSIFICATION JOB"
@@ -261,7 +267,7 @@ class ClassificationJob extends pulumi.CustomResource {
           'aws:macie2/classificationJob:ClassificationJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     customDataIdentifierIds = registerOutput<List<String>>('customDataIdentifierIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

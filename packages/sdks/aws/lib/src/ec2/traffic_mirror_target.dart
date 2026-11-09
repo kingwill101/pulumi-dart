@@ -105,7 +105,7 @@ import 'traffic_mirror_target_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -113,15 +113,24 @@ import 'traffic_mirror_target_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_trafficmirrortarget" "nlb" {
+/// resource "aws_ec2_traffic_mirror_target" "nlb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description               = "NLB target"
 ///   network_load_balancer_arn = lb.arn
 /// }
-/// resource "aws_ec2_trafficmirrortarget" "eni" {
+/// resource "aws_ec2_traffic_mirror_target" "eni" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description          = "ENI target"
 ///   network_interface_id = test.primaryNetworkInterfaceId
 /// }
-/// resource "aws_ec2_trafficmirrortarget" "gwlb" {
+/// resource "aws_ec2_traffic_mirror_target" "gwlb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description                       = "GWLB target"
 ///   gateway_load_balancer_endpoint_id = example.id
 /// }
@@ -149,17 +158,17 @@ import 'traffic_mirror_target_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var nlb = new TrafficMirrorTarget("nlb", TrafficMirrorTargetArgs.builder()
 ///             .description("NLB target")
-///             .networkLoadBalancerArn(lb.arn())
+///             .networkLoadBalancerArn(lb.get("arn"))
 ///             .build());
 ///
 ///         var eni = new TrafficMirrorTarget("eni", TrafficMirrorTargetArgs.builder()
 ///             .description("ENI target")
-///             .networkInterfaceId(test.primaryNetworkInterfaceId())
+///             .networkInterfaceId(test.get("primaryNetworkInterfaceId"))
 ///             .build());
 ///
 ///         var gwlb = new TrafficMirrorTarget("gwlb", TrafficMirrorTargetArgs.builder()
 ///             .description("GWLB target")
-///             .gatewayLoadBalancerEndpointId(example.id())
+///             .gatewayLoadBalancerEndpointId(example.get("id"))
 ///             .build());
 ///
 ///     }
@@ -226,7 +235,7 @@ class TrafficMirrorTarget extends pulumi.CustomResource {
           'aws:ec2/trafficMirrorTarget:TrafficMirrorTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

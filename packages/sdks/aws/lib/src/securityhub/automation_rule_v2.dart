@@ -150,7 +150,7 @@ import 'automation_rule_v2_state.dart';
 ///         },
 ///         RuleName = "suppress-guardduty-low",
 ///         Description = "Suppress low severity GuardDuty findings",
-///         RuleOrder = 100,
+///         RuleOrder = 100.0,
 ///         RuleStatus = "ENABLED",
 ///     }, new CustomResourceOptions
 ///     {
@@ -233,7 +233,7 @@ import 'automation_rule_v2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -241,15 +241,24 @@ import 'automation_rule_v2_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_securityhub_accountv2" "example" {
+/// resource "aws_securityhub_account_v2" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_securityhub_aggregatorv2" "example" {
-///   depends_on          = [aws_securityhub_accountv2.example]
+/// resource "aws_securityhub_aggregator_v2" "example" {
+///   depends_on = [aws_securityhub_account_v2.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region_linking_mode = "ALL_REGIONS"
 /// }
-/// resource "aws_securityhub_automationrulev2" "example" {
-///   depends_on = [aws_securityhub_aggregatorv2.example]
-///   criteria = {
+/// resource "aws_securityhub_automation_rule_v2" "example" {
+///   depends_on = [aws_securityhub_aggregator_v2.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   criteria {
 ///     ocsf_finding_criteria_json = jsonencode({
 ///       "CompositeFilters" = [{
 ///         "StringFilters" = [{
@@ -263,8 +272,8 @@ import 'automation_rule_v2_state.dart';
 ///       "CompositeOperator" = "AND"
 ///     })
 ///   }
-///   action = {
-///     finding_fields_update = {
+///   action {
+///     finding_fields_update {
 ///       severity_id = 99
 ///       status_id   = 3
 ///       comment     = "Low severity GuardDuty finding suppressed"
@@ -440,7 +449,7 @@ class AutomationRuleV2 extends pulumi.CustomResource {
           'aws:securityhub/automationRuleV2:AutomationRuleV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     action = registerOutput<AutomationRuleV2Action>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutomationRuleV2Action.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');

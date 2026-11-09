@@ -98,7 +98,7 @@ import 'open_zfs_snapshot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -106,11 +106,17 @@ import 'open_zfs_snapshot_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fsx_openzfssnapshot" "example" {
+/// resource "aws_fsx_open_zfs_snapshot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "example"
-///   volume_id = aws_fsx_openzfsfilesystem.example.root_volume_id
+///   volume_id = aws_fsx_open_zfs_file_system.example.root_volume_id
 /// }
-/// resource "aws_fsx_openzfsfilesystem" "example" {
+/// resource "aws_fsx_open_zfs_file_system" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   storage_capacity    = 64
 ///   subnet_ids          = [exampleAwsSubnet.id]
 ///   deployment_type     = "SINGLE_AZ_1"
@@ -142,7 +148,7 @@ import 'open_zfs_snapshot_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var exampleOpenZfsFileSystem = new OpenZfsFileSystem("exampleOpenZfsFileSystem", OpenZfsFileSystemArgs.builder()
 ///             .storageCapacity(64)
-///             .subnetIds(exampleAwsSubnet.id())
+///             .subnetIds(exampleAwsSubnet.get("id"))
 ///             .deploymentType("SINGLE_AZ_1")
 ///             .throughputCapacity(64)
 ///             .build());
@@ -275,7 +281,7 @@ import 'open_zfs_snapshot_state.dart';
 /// 		}
 /// 		_, err = fsx.NewOpenZfsSnapshot(ctx, "example", &fsx.OpenZfsSnapshotArgs{
 /// 			Name:     pulumi.String("example"),
-/// 			VolumeId: exampleOpenZfsVolume.ID().ToIDOutput().ToStringOutput(),
+/// 			VolumeId: exampleOpenZfsVolume.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -285,7 +291,7 @@ import 'open_zfs_snapshot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -293,15 +299,24 @@ import 'open_zfs_snapshot_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fsx_openzfssnapshot" "example" {
+/// resource "aws_fsx_open_zfs_snapshot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "example"
-///   volume_id = aws_fsx_openzfsvolume.example.id
+///   volume_id = aws_fsx_open_zfs_volume.example.id
 /// }
-/// resource "aws_fsx_openzfsvolume" "example" {
+/// resource "aws_fsx_open_zfs_volume" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "example"
-///   parent_volume_id = aws_fsx_openzfsfilesystem.example.root_volume_id
+///   parent_volume_id = aws_fsx_open_zfs_file_system.example.root_volume_id
 /// }
-/// resource "aws_fsx_openzfsfilesystem" "example" {
+/// resource "aws_fsx_open_zfs_file_system" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   storage_capacity    = 64
 ///   subnet_ids          = [exampleAwsSubnet.id]
 ///   deployment_type     = "SINGLE_AZ_1"
@@ -335,7 +350,7 @@ import 'open_zfs_snapshot_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var exampleOpenZfsFileSystem = new OpenZfsFileSystem("exampleOpenZfsFileSystem", OpenZfsFileSystemArgs.builder()
 ///             .storageCapacity(64)
-///             .subnetIds(exampleAwsSubnet.id())
+///             .subnetIds(exampleAwsSubnet.get("id"))
 ///             .deploymentType("SINGLE_AZ_1")
 ///             .throughputCapacity(64)
 ///             .build());
@@ -413,7 +428,7 @@ class OpenZfsSnapshot extends pulumi.CustomResource {
           'aws:fsx/openZfsSnapshot:OpenZfsSnapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationTime = registerOutput<String>('creationTime');

@@ -91,8 +91,8 @@ import 'vpn_gateway_attachment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpnGatewayAttachment(ctx, "vpn_attachment", &ec2.VpnGatewayAttachmentArgs{
-/// 			VpcId:        network.ID().ToIDOutput().ToStringOutput(),
-/// 			VpnGatewayId: vpn.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:        network.ID(),
+/// 			VpnGatewayId: vpn.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -102,7 +102,7 @@ import 'vpn_gateway_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -111,16 +111,25 @@ import 'vpn_gateway_attachment_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
-/// resource "aws_ec2_vpngateway" "vpn" {
+/// resource "aws_ec2_vpn_gateway" "vpn" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tags = {
 ///     "Name" = "example-vpn-gateway"
 ///   }
 /// }
-/// resource "aws_ec2_vpngatewayattachment" "vpn_attachment" {
+/// resource "aws_ec2_vpn_gateway_attachment" "vpn_attachment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id         = aws_ec2_vpc.network.id
-///   vpn_gateway_id = aws_ec2_vpngateway.vpn.id
+///   vpn_gateway_id = aws_ec2_vpn_gateway.vpn.id
 /// }
 /// ```
 /// ```java
@@ -211,7 +220,7 @@ class VpnGatewayAttachment extends pulumi.CustomResource {
           'aws:ec2/vpnGatewayAttachment:VpnGatewayAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     vpcId = registerOutput<String>('vpcId');

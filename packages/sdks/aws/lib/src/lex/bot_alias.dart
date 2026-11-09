@@ -72,7 +72,7 @@ import 'bot_alias_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -80,7 +80,10 @@ import 'bot_alias_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lex_botalias" "order_flowers_prod" {
+/// resource "aws_lex_bot_alias" "order_flowers_prod" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bot_name    = "OrderFlowers"
 ///   bot_version = "1"
 ///   description = "Production Version of the OrderFlowers Bot."
@@ -172,7 +175,7 @@ class BotAlias extends pulumi.CustomResource {
           'aws:lex/botAlias:BotAlias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     botName = registerOutput<String>('botName');

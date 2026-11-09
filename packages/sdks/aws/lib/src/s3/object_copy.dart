@@ -99,7 +99,7 @@ import 'object_copy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -107,8 +107,11 @@ import 'object_copy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_objectcopy" "test" {
-///   grants {
+/// resource "aws_s3_object_copy" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   grant {
 ///     uri         = "http://acs.amazonaws.com/groups/global/AllUsers"
 ///     type        = "Group"
 ///     permissions = ["READ"]
@@ -257,7 +260,7 @@ import 'object_copy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -265,9 +268,12 @@ import 'object_copy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_objectcopy" "test" {
-///   override_provider = {
-///     default_tags = {
+/// resource "aws_s3_object_copy" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   override_provider {
+///     default_tags {
 ///       tags = {}
 ///     }
 ///   }
@@ -337,7 +343,7 @@ class ObjectCopy extends pulumi.CustomResource {
   late final pulumi.Output<bool> bucketKeyEnabled;
   /// Caching behavior along the request/reply chain. Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
   late final pulumi.Output<String> cacheControl;
-  /// Algorithm used to create the checksum for the object. If a value is specified and the object is encrypted with KMS, you must have permission to use the `kms:Decrypt` action. Valid values: `CRC32`, `CRC32C`, `CRC64NVME` `SHA1`, `SHA256`.
+  /// Algorithm used to create the checksum for the object. If a value is specified and the object is encrypted with KMS, you must have permission to use the `kms:Decrypt` action. Valid values: `CRC32`, `CRC32C`, `CRC64NVME`, `SHA1`, `SHA256`, `SHA512`, `MD5`, `XXHASH64`, `XXHASH3`, `XXHASH128`.
   late final pulumi.Output<String?> checksumAlgorithm;
   /// Base64-encoded, 32-bit CRC32 checksum of the object.
   late final pulumi.Output<String> checksumCrc32;
@@ -449,7 +455,7 @@ class ObjectCopy extends pulumi.CustomResource {
           'aws:s3/objectCopy:ObjectCopy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['customerKey', 'kmsEncryptionContext', 'kmsKeyId', 'sourceCustomerKey'],
         ) {
     acl = registerOutput<String>('acl');

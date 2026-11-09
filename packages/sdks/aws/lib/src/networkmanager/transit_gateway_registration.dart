@@ -73,7 +73,7 @@ import 'transit_gateway_registration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = networkmanager.NewTransitGatewayRegistration(ctx, "example", &networkmanager.TransitGatewayRegistrationArgs{
-/// 			GlobalNetworkId:   example.ID().ToIDOutput().ToStringOutput(),
+/// 			GlobalNetworkId:   example.ID(),
 /// 			TransitGatewayArn: exampleTransitGateway.Arn,
 /// 		})
 /// 		if err != nil {
@@ -84,7 +84,7 @@ import 'transit_gateway_registration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -92,14 +92,23 @@ import 'transit_gateway_registration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkmanager_globalnetwork" "example" {
+/// resource "aws_networkmanager_global_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "example"
 /// }
-/// resource "aws_ec2transitgateway_transitgateway" "example" {
+/// resource "aws_ec2transitgateway_transit_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_networkmanager_transitgatewayregistration" "example" {
-///   global_network_id   = aws_networkmanager_globalnetwork.example.id
-///   transit_gateway_arn = aws_ec2transitgateway_transitgateway.example.arn
+/// resource "aws_networkmanager_transit_gateway_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   global_network_id   = aws_networkmanager_global_network.example.id
+///   transit_gateway_arn = aws_ec2transitgateway_transit_gateway.example.arn
 /// }
 /// ```
 /// ```java
@@ -183,7 +192,7 @@ class TransitGatewayRegistration extends pulumi.CustomResource {
           'aws:networkmanager/transitGatewayRegistration:TransitGatewayRegistration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     globalNetworkId = registerOutput<String>('globalNetworkId');
     transitGatewayArn = registerOutput<String>('transitGatewayArn');

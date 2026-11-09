@@ -81,7 +81,7 @@ import 'mount_target_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSubnet, err := ec2.NewSubnet(ctx, "example", &ec2.SubnetArgs{
-/// 			VpcId:            exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            exampleVpc.ID(),
 /// 			AvailabilityZone: pulumi.String("us-west-2a"),
 /// 			CidrBlock:        pulumi.String("10.0.1.0/24"),
 /// 		})
@@ -90,7 +90,7 @@ import 'mount_target_state.dart';
 /// 		}
 /// 		_, err = efs.NewMountTarget(ctx, "example", &efs.MountTargetArgs{
 /// 			FileSystemId: pulumi.Any(exampleAwsEfsFileSystem.Id),
-/// 			SubnetId:     exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetId:     exampleSubnet.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -100,7 +100,7 @@ import 'mount_target_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -108,14 +108,23 @@ import 'mount_target_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_efs_mounttarget" "example" {
+/// resource "aws_efs_mount_target" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   file_system_id = exampleAwsEfsFileSystem.id
 ///   subnet_id      = aws_ec2_subnet.example.id
 /// }
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
 /// resource "aws_ec2_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.example.id
 ///   availability_zone = "us-west-2a"
 ///   cidr_block        = "10.0.1.0/24"
@@ -157,7 +166,7 @@ import 'mount_target_state.dart';
 ///             .build());
 ///
 ///         var example = new MountTarget("example", MountTargetArgs.builder()
-///             .fileSystemId(exampleAwsEfsFileSystem.id())
+///             .fileSystemId(exampleAwsEfsFileSystem.get("id"))
 ///             .subnetId(exampleSubnet.id())
 ///             .build());
 ///
@@ -249,7 +258,7 @@ class MountTarget extends pulumi.CustomResource {
           'aws:efs/mountTarget:MountTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     availabilityZoneId = registerOutput<String>('availabilityZoneId');
     availabilityZoneName = registerOutput<String>('availabilityZoneName');

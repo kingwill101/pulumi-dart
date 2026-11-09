@@ -63,7 +63,7 @@ import 'security_group_vpc_association_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,7 +71,10 @@ import 'security_group_vpc_association_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpc_securitygroupvpcassociation" "example" {
+/// resource "aws_vpc_security_group_vpc_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   security_group_id = "sg-05f1f54ab49bb39a3"
 ///   vpc_id            = "vpc-01df9d105095412ba"
 /// }
@@ -158,7 +161,7 @@ class SecurityGroupVpcAssociation extends pulumi.CustomResource {
           'aws:vpc/securityGroupVpcAssociation:SecurityGroupVpcAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     securityGroupId = registerOutput<String>('securityGroupId');

@@ -158,7 +158,7 @@ import 'theme_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -167,11 +167,14 @@ import 'theme_state.dart';
 /// }
 ///
 /// resource "aws_quicksight_theme" "example" {
-///   configuration = {
-///     data_color_palette = {
-///       colors            = ["#FFFFFF", "#111111", "#222222", "#333333", "#444444", "#555555", "#666666", "#777777", "#888888", "#999999"]
-///       empty_fill_color  = "#FFFFFF"
-///       min_max_gradients = ["#FFFFFF", "#111111"]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     data_color_palette {
+///       colors           = ["#FFFFFF", "#111111", "#222222", "#333333", "#444444", "#555555", "#666666", "#777777", "#888888", "#999999"]
+///       empty_fill_color = "#FFFFFF"
+///       min_max_gradient = ["#FFFFFF", "#111111"]
 ///     }
 ///   }
 ///   theme_id      = "example"
@@ -311,7 +314,7 @@ class Theme extends pulumi.CustomResource {
           'aws:quicksight/theme:Theme',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');

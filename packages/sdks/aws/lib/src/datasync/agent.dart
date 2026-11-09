@@ -64,7 +64,7 @@ import 'agent_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,6 +73,9 @@ import 'agent_state.dart';
 /// }
 ///
 /// resource "aws_datasync_agent" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ip_address = "1.2.3.4"
 ///   name       = "example"
 /// }
@@ -254,7 +257,7 @@ import 'agent_state.dart';
 /// 			SubnetArns: pulumi.StringArray{
 /// 				exampleAwsSubnet.Arn,
 /// 			},
-/// 			VpcEndpointId:       exampleVpcEndpoint.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcEndpointId:       exampleVpcEndpoint.ID(),
 /// 			PrivateLinkEndpoint: example.PrivateIp(),
 /// 			Name:                pulumi.String("example"),
 /// 		})
@@ -266,7 +269,7 @@ import 'agent_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -274,22 +277,28 @@ import 'agent_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
-/// data "aws_ec2_getnetworkinterface" "example" {
-///   id = aws_ec2_vpcendpoint.example.network_interface_ids[0]
+/// data "aws_ec2_network_interface" "example" {
+///   id = aws_ec2_vpc_endpoint.example.network_interface_ids[0]
 /// }
 ///
 /// resource "aws_datasync_agent" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ip_address            = "1.2.3.4"
 ///   security_group_arns   = [exampleAwsSecurityGroup.arn]
 ///   subnet_arns           = [exampleAwsSubnet.arn]
-///   vpc_endpoint_id       = aws_ec2_vpcendpoint.example.id
-///   private_link_endpoint = data.aws_ec2_getnetworkinterface.example.private_ip
+///   vpc_endpoint_id       = aws_ec2_vpc_endpoint.example.id
+///   private_link_endpoint = data.aws_ec2_network_interface.example.private_ip
 ///   name                  = "example"
 /// }
-/// resource "aws_ec2_vpcendpoint" "example" {
-///   service_name       ="com.amazonaws.${data.aws_getregion.current.region}.datasync"
+/// resource "aws_ec2_vpc_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service_name       ="com.amazonaws.${data.aws_region.current.region}.datasync"
 ///   vpc_id             = exampleAwsVpc.id
 ///   security_group_ids = [exampleAwsSecurityGroup.id]
 ///   subnet_ids         = [exampleAwsSubnet.id]
@@ -328,20 +337,20 @@ import 'agent_state.dart';
 ///
 ///         var exampleVpcEndpoint = new VpcEndpoint("exampleVpcEndpoint", VpcEndpointArgs.builder()
 ///             .serviceName(String.format("com.amazonaws.%s.datasync", current.region()))
-///             .vpcId(exampleAwsVpc.id())
-///             .securityGroupIds(exampleAwsSecurityGroup.id())
-///             .subnetIds(exampleAwsSubnet.id())
+///             .vpcId(exampleAwsVpc.get("id"))
+///             .securityGroupIds(exampleAwsSecurityGroup.get("id"))
+///             .subnetIds(exampleAwsSubnet.get("id"))
 ///             .vpcEndpointType("Interface")
 ///             .build());
 ///
 ///         final var example = Ec2Functions.getNetworkInterface(GetNetworkInterfaceArgs.builder()
-///             .id(exampleVpcEndpoint.networkInterfaceIds().applyValue(_networkInterfaceIds -> _networkInterfaceIds[0]))
+///             .id(exampleVpcEndpoint.networkInterfaceIds().applyValue(_networkInterfaceIds -> _networkInterfaceIds.get(0)))
 ///             .build());
 ///
 ///         var exampleAgent = new Agent("exampleAgent", AgentArgs.builder()
 ///             .ipAddress("1.2.3.4")
-///             .securityGroupArns(exampleAwsSecurityGroup.arn())
-///             .subnetArns(exampleAwsSubnet.arn())
+///             .securityGroupArns(exampleAwsSecurityGroup.get("arn"))
+///             .subnetArns(exampleAwsSubnet.get("arn"))
 ///             .vpcEndpointId(exampleVpcEndpoint.id())
 ///             .privateLinkEndpoint(example.applyValue(_example -> _example.privateIp()))
 ///             .name("example")
@@ -438,7 +447,7 @@ class Agent extends pulumi.CustomResource {
           'aws:datasync/agent:Agent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     activationKey = registerOutput<String>('activationKey');
     arn = registerOutput<String>('arn');

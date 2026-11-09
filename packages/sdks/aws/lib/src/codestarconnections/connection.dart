@@ -224,7 +224,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -233,10 +233,16 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "aws_codestarconnections_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "example-connection"
 ///   provider_type = "Bitbucket"
 /// }
 /// resource "aws_codepipeline_pipeline" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   artifact_stores {
 ///   }
 ///   stages {
@@ -331,7 +337,7 @@ import 'connection_state.dart';
 ///                     .name("Deploy")
 ///                     .build())
 ///             .name("tf-test-pipeline")
-///             .roleArn(codepipelineRole.arn())
+///             .roleArn(codepipelineRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -419,7 +425,7 @@ class Connection extends pulumi.CustomResource {
           'aws:codestarconnections/connection:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     connectionStatus = registerOutput<String>('connectionStatus');

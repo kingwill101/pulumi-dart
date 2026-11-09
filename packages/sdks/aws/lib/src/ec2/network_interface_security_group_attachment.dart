@@ -172,7 +172,7 @@ import 'network_interface_security_group_attachment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewNetworkInterfaceSecurityGroupAttachment(ctx, "sg_attachment", &ec2.NetworkInterfaceSecurityGroupAttachmentArgs{
-/// 			SecurityGroupId:    sg.ID().ToIDOutput().ToStringOutput(),
+/// 			SecurityGroupId:    sg.ID(),
 /// 			NetworkInterfaceId: instance.PrimaryNetworkInterfaceId,
 /// 		})
 /// 		if err != nil {
@@ -183,7 +183,7 @@ import 'network_interface_security_group_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -191,7 +191,7 @@ import 'network_interface_security_group_attachment_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2_getami" "ami" {
+/// data "aws_ec2_ami" "ami" {
 ///   filters {
 ///     name   = "name"
 ///     values = ["amzn-ami-hvm-*"]
@@ -201,19 +201,28 @@ import 'network_interface_security_group_attachment_state.dart';
 /// }
 ///
 /// resource "aws_ec2_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_type = "t2.micro"
-///   ami           = data.aws_ec2_getami.ami.id
+///   ami           = data.aws_ec2_ami.ami.id
 ///   tags = {
 ///     "type" = "test-instance"
 ///   }
 /// }
-/// resource "aws_ec2_securitygroup" "sg" {
+/// resource "aws_ec2_security_group" "sg" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tags = {
 ///     "type" = "test-security-group"
 ///   }
 /// }
-/// resource "aws_ec2_networkinterfacesecuritygroupattachment" "sg_attachment" {
-///   security_group_id    = aws_ec2_securitygroup.sg.id
+/// resource "aws_ec2_network_interface_security_group_attachment" "sg_attachment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_group_id    = aws_ec2_security_group.sg.id
 ///   network_interface_id = aws_ec2_instance.instance.primary_network_interface_id
 /// }
 /// ```
@@ -393,7 +402,7 @@ import 'network_interface_security_group_attachment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewNetworkInterfaceSecurityGroupAttachment(ctx, "sg_attachment", &ec2.NetworkInterfaceSecurityGroupAttachmentArgs{
-/// 			SecurityGroupId:    sg.ID().ToIDOutput().ToStringOutput(),
+/// 			SecurityGroupId:    sg.ID(),
 /// 			NetworkInterfaceId: pulumi.String(instance.NetworkInterfaceId),
 /// 		})
 /// 		if err != nil {
@@ -404,7 +413,7 @@ import 'network_interface_security_group_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -412,18 +421,24 @@ import 'network_interface_security_group_attachment_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2_getinstance" "instance" {
+/// data "aws_ec2_instance" "instance" {
 ///   instance_id = "i-1234567890abcdef0"
 /// }
 ///
-/// resource "aws_ec2_securitygroup" "sg" {
+/// resource "aws_ec2_security_group" "sg" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tags = {
 ///     "type" = "test-security-group"
 ///   }
 /// }
-/// resource "aws_ec2_networkinterfacesecuritygroupattachment" "sg_attachment" {
-///   security_group_id    = aws_ec2_securitygroup.sg.id
-///   network_interface_id = data.aws_ec2_getinstance.instance.network_interface_id
+/// resource "aws_ec2_network_interface_security_group_attachment" "sg_attachment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_group_id    = aws_ec2_security_group.sg.id
+///   network_interface_id = data.aws_ec2_instance.instance.network_interface_id
 /// }
 /// ```
 /// ```java
@@ -516,7 +531,7 @@ class NetworkInterfaceSecurityGroupAttachment extends pulumi.CustomResource {
           'aws:ec2/networkInterfaceSecurityGroupAttachment:NetworkInterfaceSecurityGroupAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
     region = registerOutput<String>('region');

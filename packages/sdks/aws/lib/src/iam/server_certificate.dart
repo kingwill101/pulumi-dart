@@ -103,7 +103,7 @@ import 'server_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -114,7 +114,10 @@ import 'server_certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_servercertificate" "test_cert" {
+/// resource "aws_iam_server_certificate" "test_cert" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "some_test_cert"
 ///   certificate_body = file("self-ca-cert.pem")
 ///   private_key      = file("test-key.pem")
@@ -258,7 +261,7 @@ import 'server_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -266,10 +269,23 @@ import 'server_certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_servercertificate" "test_cert_alt" {
+/// resource "aws_iam_server_certificate" "test_cert_alt" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "alt_test_cert"
-///   certificate_body = "-----BEGIN CERTIFICATE-----\n[......] # cert contents\n-----END CERTIFICATE-----\n"
-///   private_key      = "-----BEGIN RSA PRIVATE KEY-----\n[......] # cert contents\n-----END RSA PRIVATE KEY-----\n"
+///   certificate_body = <<EOF
+/// -----BEGIN CERTIFICATE-----
+/// [......] # cert contents
+/// -----END CERTIFICATE-----
+/// EOF
+///
+///   private_key      = <<EOF
+/// -----BEGIN RSA PRIVATE KEY-----
+/// [......] # cert contents
+/// -----END RSA PRIVATE KEY-----
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -389,7 +405,7 @@ class ServerCertificate extends pulumi.CustomResource {
           'aws:iam/serverCertificate:ServerCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['privateKey'],
         ) {
     arn = registerOutput<String>('arn');

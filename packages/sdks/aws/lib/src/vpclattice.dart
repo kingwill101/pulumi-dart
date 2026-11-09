@@ -51,6 +51,7 @@ export 'vpclattice/resource_configuration.dart';
 export 'vpclattice/resource_configuration_args.dart';
 export 'vpclattice/resource_configuration_resource_configuration_definition.dart';
 export 'vpclattice/resource_configuration_resource_configuration_definition_arn_resource.dart';
+export 'vpclattice/resource_configuration_resource_configuration_definition_cidr_resource.dart';
 export 'vpclattice/resource_configuration_resource_configuration_definition_dns_resource.dart';
 export 'vpclattice/resource_configuration_resource_configuration_definition_ip_resource.dart';
 export 'vpclattice/resource_configuration_state.dart';

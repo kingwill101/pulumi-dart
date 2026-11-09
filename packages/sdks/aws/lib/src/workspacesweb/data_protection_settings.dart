@@ -58,7 +58,7 @@ import 'data_protection_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -66,7 +66,10 @@ import 'data_protection_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_workspacesweb_dataprotectionsettings" "example" {
+/// resource "aws_workspacesweb_data_protection_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
 /// ```
@@ -231,7 +234,7 @@ import 'data_protection_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -239,16 +242,19 @@ import 'data_protection_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_workspacesweb_dataprotectionsettings" "example" {
-///   inline_redaction_configuration = {
-///     inline_redaction_patterns = [{
-///       "redactionPlaceHolders" = [{
-///         "redactionPlaceHolderType" = "CustomText"
-///         "redactionPlaceHolderText" = "REDACTED"
-///       }]
-///       "builtInPatternId" = "ssn"
-///       "confidenceLevel"  = 3
-///     }]
+/// resource "aws_workspacesweb_data_protection_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   inline_redaction_configuration {
+///     inline_redaction_pattern {
+///       redaction_place_holder {
+///         redaction_place_holder_type = "CustomText"
+///         redaction_place_holder_text = "REDACTED"
+///       }
+///       built_in_pattern_id = "ssn"
+///       confidence_level    = 3
+///     }
 ///     global_confidence_level = 2
 ///     global_enforced_urls    = ["https://example.com"]
 ///   }
@@ -590,7 +596,7 @@ import 'data_protection_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -599,32 +605,39 @@ import 'data_protection_settings_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "KMS key for WorkSpaces Web Data Protection Settings"
 ///   deletion_window_in_days = 7
 /// }
-/// resource "aws_workspacesweb_dataprotectionsettings" "example" {
-///   inline_redaction_configuration = {
-///     inline_redaction_patterns = [{
-///       "redactionPlaceHolders" = [{
-///         "redactionPlaceHolderType" = "CustomText"
-///         "redactionPlaceHolderText" = "REDACTED-SSN"
-///       }]
-///       "builtInPatternId" = "ssn"
-///       "confidenceLevel"  = 3
-///       "enforcedUrls"     = ["https://pattern1.example.com"]
-///       "exemptUrls"       = ["https://exempt-pattern1.example.com"]
-///       }, {
-///       "customPattern" = {
-///         "patternName"        = "CustomPattern"
-///         "patternRegex"       = "/\\d{3}-\\d{2}-\\d{4}/g"
-///         "keywordRegex"       = "/SSN|Social Security/gi"
-///         "patternDescription" = "Custom SSN pattern"
+/// resource "aws_workspacesweb_data_protection_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   inline_redaction_configuration {
+///     inline_redaction_pattern {
+///       redaction_place_holder {
+///         redaction_place_holder_type = "CustomText"
+///         redaction_place_holder_text = "REDACTED-SSN"
 ///       }
-///       "redactionPlaceHolders" = [{
-///         "redactionPlaceHolderType" = "CustomText"
-///         "redactionPlaceHolderText" = "REDACTED-CUSTOM"
-///       }]
-///     }]
+///       built_in_pattern_id = "ssn"
+///       confidence_level    = 3
+///       enforced_urls       = ["https://pattern1.example.com"]
+///       exempt_urls         = ["https://exempt-pattern1.example.com"]
+///     }
+///     inline_redaction_pattern {
+///       custom_pattern {
+///         pattern_name        = "CustomPattern"
+///         pattern_regex       = "/\\d{3}-\\d{2}-\\d{4}/g"
+///         keyword_regex       = "/SSN|Social Security/gi"
+///         pattern_description = "Custom SSN pattern"
+///       }
+///       redaction_place_holder {
+///         redaction_place_holder_type = "CustomText"
+///         redaction_place_holder_text = "REDACTED-CUSTOM"
+///       }
+///     }
 ///     global_confidence_level = 2
 ///     global_enforced_urls    = ["https://example.com", "https://test.example.com"]
 ///     global_exempt_urls      = ["https://exempt.example.com"]
@@ -802,7 +815,7 @@ class DataProtectionSettings extends pulumi.CustomResource {
           'aws:workspacesweb/dataProtectionSettings:DataProtectionSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

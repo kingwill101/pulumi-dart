@@ -58,7 +58,7 @@ import 'domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,6 +67,9 @@ import 'domain_state.dart';
 /// }
 ///
 /// resource "aws_customerprofiles_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name = "example"
 /// }
 /// ```
@@ -365,7 +368,7 @@ import 'domain_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketPolicy(ctx, "example", &s3.BucketPolicyArgs{
-/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: exampleBucket.ID(),
 /// 			Policy: exampleBucket.Arn.ApplyT(func(arn string) (pulumi.String, error) {
 /// 				var _zero pulumi.String
 /// 				tmpJSON1, err := json.Marshal(map[string]interface{}{
@@ -401,7 +404,7 @@ import 'domain_state.dart';
 /// 		}
 /// 		_, err = customerprofiles.NewDomain(ctx, "test", &customerprofiles.DomainArgs{
 /// 			DomainName:            example,
-/// 			DeadLetterQueueUrl:    example.ID().ToIDOutput().ToStringOutput(),
+/// 			DeadLetterQueueUrl:    example.ID(),
 /// 			DefaultEncryptionKey:  exampleKey.Arn,
 /// 			DefaultExpirationDays: pulumi.Int(365),
 /// 		})
@@ -413,7 +416,7 @@ import 'domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -422,6 +425,9 @@ import 'domain_state.dart';
 /// }
 ///
 /// resource "aws_sqs_queue" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -437,14 +443,23 @@ import 'domain_state.dart';
 ///   })
 /// }
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "example"
 ///   deletion_window_in_days = 10
 /// }
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket        = "example"
 ///   force_destroy = true
 /// }
-/// resource "aws_s3_bucketpolicy" "example" {
+/// resource "aws_s3_bucket_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.id
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -460,6 +475,9 @@ import 'domain_state.dart';
 ///   })
 /// }
 /// resource "aws_customerprofiles_domain" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name             = aws_sqs_queue.example
 ///   dead_letter_queue_url   = aws_sqs_queue.example.id
 ///   default_encryption_key  = aws_kms_key.example.arn
@@ -659,7 +677,7 @@ class Domain extends pulumi.CustomResource {
           'aws:customerprofiles/domain:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deadLetterQueueUrl = registerOutput<String?>('deadLetterQueueUrl');

@@ -82,7 +82,7 @@ import 'account_password_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -90,7 +90,10 @@ import 'account_password_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_accountpasswordpolicy" "strict" {
+/// resource "aws_iam_account_password_policy" "strict" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   minimum_password_length        = 8
 ///   require_lowercase_characters   = true
 ///   require_numbers                = true
@@ -187,7 +190,7 @@ class AccountPasswordPolicy extends pulumi.CustomResource {
           'aws:iam/accountPasswordPolicy:AccountPasswordPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     allowUsersToChangePassword = registerOutput<bool?>('allowUsersToChangePassword');
     expirePasswords = registerOutput<bool>('expirePasswords');

@@ -122,7 +122,7 @@ import 'inbound_connection_accepter_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = opensearch.NewInboundConnectionAccepter(ctx, "foo", &opensearch.InboundConnectionAccepterArgs{
-/// 			ConnectionId: foo.ID().ToIDOutput().ToStringOutput(),
+/// 			ConnectionId: foo.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -132,7 +132,7 @@ import 'inbound_connection_accepter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -140,26 +140,32 @@ import 'inbound_connection_accepter_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getregion" "currentGetRegion" {
+/// data "aws_region" "currentGetRegion" {
 /// }
 ///
-/// resource "aws_opensearch_outboundconnection" "foo" {
-///   local_domain_info = {
-///     owner_id    = data.aws_getcalleridentity.current.account_id
-///     region      = data.aws_getregion.currentGetRegion.region
+/// resource "aws_opensearch_outbound_connection" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   local_domain_info {
+///     owner_id    = data.aws_caller_identity.current.account_id
+///     region      = data.aws_region.currentGetRegion.region
 ///     domain_name = localDomain.domainName
 ///   }
-///   remote_domain_info = {
-///     owner_id    = data.aws_getcalleridentity.current.account_id
-///     region      = data.aws_getregion.currentGetRegion.region
+///   remote_domain_info {
+///     owner_id    = data.aws_caller_identity.current.account_id
+///     region      = data.aws_region.currentGetRegion.region
 ///     domain_name = remoteDomain.domainName
 ///   }
 ///   connection_alias = "outbound_connection"
 /// }
-/// resource "aws_opensearch_inboundconnectionaccepter" "foo" {
-///   connection_id = aws_opensearch_outboundconnection.foo.id
+/// resource "aws_opensearch_inbound_connection_accepter" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   connection_id = aws_opensearch_outbound_connection.foo.id
 /// }
 /// ```
 /// ```java
@@ -200,12 +206,12 @@ import 'inbound_connection_accepter_state.dart';
 ///             .localDomainInfo(OutboundConnectionLocalDomainInfoArgs.builder()
 ///                 .ownerId(current.accountId())
 ///                 .region(currentGetRegion.region())
-///                 .domainName(localDomain.domainName())
+///                 .domainName(localDomain.get("domainName"))
 ///                 .build())
 ///             .remoteDomainInfo(OutboundConnectionRemoteDomainInfoArgs.builder()
 ///                 .ownerId(current.accountId())
 ///                 .region(currentGetRegion.region())
-///                 .domainName(remoteDomain.domainName())
+///                 .domainName(remoteDomain.get("domainName"))
 ///                 .build())
 ///             .connectionAlias("outbound_connection")
 ///             .build());
@@ -275,7 +281,7 @@ class InboundConnectionAccepter extends pulumi.CustomResource {
           'aws:opensearch/inboundConnectionAccepter:InboundConnectionAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     connectionId = registerOutput<String>('connectionId');
     connectionStatus = registerOutput<String>('connectionStatus');

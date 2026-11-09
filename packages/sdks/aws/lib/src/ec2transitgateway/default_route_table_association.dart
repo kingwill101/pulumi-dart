@@ -65,7 +65,7 @@ import 'default_route_table_association_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,10 @@ import 'default_route_table_association_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2transitgateway_defaultroutetableassociation" "example" {
+/// resource "aws_ec2transitgateway_default_route_table_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   transit_gateway_id             = exampleAwsEc2TransitGateway.id
 ///   transit_gateway_route_table_id = exampleAwsEc2TransitGatewayRouteTable.id
 /// }
@@ -100,8 +103,8 @@ import 'default_route_table_association_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DefaultRouteTableAssociation("example", DefaultRouteTableAssociationArgs.builder()
-///             .transitGatewayId(exampleAwsEc2TransitGateway.id())
-///             .transitGatewayRouteTableId(exampleAwsEc2TransitGatewayRouteTable.id())
+///             .transitGatewayId(exampleAwsEc2TransitGateway.get("id"))
+///             .transitGatewayRouteTableId(exampleAwsEc2TransitGatewayRouteTable.get("id"))
 ///             .build());
 ///
 ///     }
@@ -137,7 +140,7 @@ class DefaultRouteTableAssociation extends pulumi.CustomResource {
           'aws:ec2transitgateway/defaultRouteTableAssociation:DefaultRouteTableAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     originalDefaultRouteTableId = registerOutput<String>('originalDefaultRouteTableId');
     region = registerOutput<String>('region');

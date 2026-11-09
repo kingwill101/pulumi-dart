@@ -178,7 +178,7 @@ import 'integration_response_state.dart';
 /// 			return err
 /// 		}
 /// 		myDemoResource, err := apigateway.NewResource(ctx, "MyDemoResource", &apigateway.ResourceArgs{
-/// 			RestApi:  myDemoAPI.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:  myDemoAPI.ID(),
 /// 			ParentId: myDemoAPI.RootResourceId,
 /// 			PathPart: pulumi.String("mydemoresource"),
 /// 		})
@@ -186,8 +186,8 @@ import 'integration_response_state.dart';
 /// 			return err
 /// 		}
 /// 		myDemoMethod, err := apigateway.NewMethod(ctx, "MyDemoMethod", &apigateway.MethodArgs{
-/// 			RestApi:       myDemoAPI.ID().ToIDOutput().ToStringOutput(),
-/// 			ResourceId:    myDemoResource.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:       myDemoAPI.ID(),
+/// 			ResourceId:    myDemoResource.ID(),
 /// 			HttpMethod:    pulumi.String("GET"),
 /// 			Authorization: pulumi.String("NONE"),
 /// 		})
@@ -195,8 +195,8 @@ import 'integration_response_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewIntegration(ctx, "MyDemoIntegration", &apigateway.IntegrationArgs{
-/// 			RestApi:    myDemoAPI.ID().ToIDOutput().ToStringOutput(),
-/// 			ResourceId: myDemoResource.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:    myDemoAPI.ID(),
+/// 			ResourceId: myDemoResource.ID(),
 /// 			HttpMethod: myDemoMethod.HttpMethod,
 /// 			Type:       pulumi.String("MOCK"),
 /// 		})
@@ -204,8 +204,8 @@ import 'integration_response_state.dart';
 /// 			return err
 /// 		}
 /// 		response200, err := apigateway.NewMethodResponse(ctx, "response_200", &apigateway.MethodResponseArgs{
-/// 			RestApi:    myDemoAPI.ID().ToIDOutput().ToStringOutput(),
-/// 			ResourceId: myDemoResource.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:    myDemoAPI.ID(),
+/// 			ResourceId: myDemoResource.ID(),
 /// 			HttpMethod: myDemoMethod.HttpMethod,
 /// 			StatusCode: pulumi.String("200"),
 /// 		})
@@ -213,8 +213,8 @@ import 'integration_response_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewIntegrationResponse(ctx, "MyDemoIntegrationResponse", &apigateway.IntegrationResponseArgs{
-/// 			RestApi:    myDemoAPI.ID().ToIDOutput().ToStringOutput(),
-/// 			ResourceId: myDemoResource.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:    myDemoAPI.ID(),
+/// 			ResourceId: myDemoResource.ID(),
 /// 			HttpMethod: myDemoMethod.HttpMethod,
 /// 			StatusCode: response200.StatusCode,
 /// 			ResponseTemplates: pulumi.StringMap{
@@ -234,7 +234,7 @@ import 'integration_response_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -242,40 +242,65 @@ import 'integration_response_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_restapi" "MyDemoAPI" {
+/// resource "aws_apigateway_rest_api" "MyDemoAPI" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "MyDemoAPI"
 ///   description = "This is my API for demonstration purposes"
 /// }
 /// resource "aws_apigateway_resource" "MyDemoResource" {
-///   rest_api  = aws_apigateway_restapi.MyDemoAPI.id
-///   parent_id = aws_apigateway_restapi.MyDemoAPI.root_resource_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api  = aws_apigateway_rest_api.MyDemoAPI.id
+///   parent_id = aws_apigateway_rest_api.MyDemoAPI.root_resource_id
 ///   path_part = "mydemoresource"
 /// }
 /// resource "aws_apigateway_method" "MyDemoMethod" {
-///   rest_api      = aws_apigateway_restapi.MyDemoAPI.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api      = aws_apigateway_rest_api.MyDemoAPI.id
 ///   resource_id   = aws_apigateway_resource.MyDemoResource.id
 ///   http_method   = "GET"
 ///   authorization = "NONE"
 /// }
 /// resource "aws_apigateway_integration" "MyDemoIntegration" {
-///   rest_api    = aws_apigateway_restapi.MyDemoAPI.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api    = aws_apigateway_rest_api.MyDemoAPI.id
 ///   resource_id = aws_apigateway_resource.MyDemoResource.id
 ///   http_method = aws_apigateway_method.MyDemoMethod.http_method
 ///   type        = "MOCK"
 /// }
-/// resource "aws_apigateway_methodresponse" "response_200" {
-///   rest_api    = aws_apigateway_restapi.MyDemoAPI.id
+/// resource "aws_apigateway_method_response" "response_200" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api    = aws_apigateway_rest_api.MyDemoAPI.id
 ///   resource_id = aws_apigateway_resource.MyDemoResource.id
 ///   http_method = aws_apigateway_method.MyDemoMethod.http_method
 ///   status_code = "200"
 /// }
-/// resource "aws_apigateway_integrationresponse" "MyDemoIntegrationResponse" {
-///   rest_api    = aws_apigateway_restapi.MyDemoAPI.id
+/// resource "aws_apigateway_integration_response" "MyDemoIntegrationResponse" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api    = aws_apigateway_rest_api.MyDemoAPI.id
 ///   resource_id = aws_apigateway_resource.MyDemoResource.id
 ///   http_method = aws_apigateway_method.MyDemoMethod.http_method
-///   status_code = aws_apigateway_methodresponse.response_200.status_code
+///   status_code = aws_apigateway_method_response.response_200.status_code
 ///   response_templates = {
-///     "application/xml" = "#set($inputRoot = $input.path('$'))\n<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\n<message>\n    $inputRoot.body\n</message>\n"
+///     "application/xml" = <<EOF
+/// #set($inputRoot = $input.path('$'))
+/// <?xml version=\"1.0\" encoding=\"UTF-8\"?>
+/// <message>
+///     $inputRoot.body
+/// </message>
+/// EOF
+///
 ///   }
 /// }
 /// ```
@@ -472,7 +497,7 @@ class IntegrationResponse extends pulumi.CustomResource {
           'aws:apigateway/integrationResponse:IntegrationResponse',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     contentHandling = registerOutput<String?>('contentHandling');
     httpMethod = registerOutput<String>('httpMethod');

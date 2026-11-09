@@ -80,6 +80,8 @@ class ProviderEndpoint {
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String?>? bedrockagentcore;
   /// Use this to override the default service endpoint URL
+  final pulumi.Input<String?>? bedrockdataautomation;
+  /// Use this to override the default service endpoint URL
   final pulumi.Input<String?>? bedrockruntime;
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String?>? billing;
@@ -566,6 +568,8 @@ class ProviderEndpoint {
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String?>? securityhub;
   /// Use this to override the default service endpoint URL
+  final pulumi.Input<String?>? securityir;
+  /// Use this to override the default service endpoint URL
   final pulumi.Input<String?>? securitylake;
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String?>? serverlessapplicationrepository;
@@ -695,6 +699,7 @@ class ProviderEndpoint {
   /// [bedrock] Use this to override the default service endpoint URL
   /// [bedrockagent] Use this to override the default service endpoint URL
   /// [bedrockagentcore] Use this to override the default service endpoint URL
+  /// [bedrockdataautomation] Use this to override the default service endpoint URL
   /// [bedrockruntime] Use this to override the default service endpoint URL
   /// [billing] Use this to override the default service endpoint URL
   /// [budgets] Use this to override the default service endpoint URL
@@ -938,6 +943,7 @@ class ProviderEndpoint {
   /// [schemas] Use this to override the default service endpoint URL
   /// [secretsmanager] Use this to override the default service endpoint URL
   /// [securityhub] Use this to override the default service endpoint URL
+  /// [securityir] Use this to override the default service endpoint URL
   /// [securitylake] Use this to override the default service endpoint URL
   /// [serverlessapplicationrepository] Use this to override the default service endpoint URL
   /// [serverlessapprepo] Use this to override the default service endpoint URL
@@ -1022,6 +1028,7 @@ class ProviderEndpoint {
     this.bedrock,
     this.bedrockagent,
     this.bedrockagentcore,
+    this.bedrockdataautomation,
     this.bedrockruntime,
     this.billing,
     this.budgets,
@@ -1265,6 +1272,7 @@ class ProviderEndpoint {
     this.schemas,
     this.secretsmanager,
     this.securityhub,
+    this.securityir,
     this.securitylake,
     this.serverlessapplicationrepository,
     this.serverlessapprepo,
@@ -1352,6 +1360,7 @@ class ProviderEndpoint {
       'bedrock': ?bedrock,
       'bedrockagent': ?bedrockagent,
       'bedrockagentcore': ?bedrockagentcore,
+      'bedrockdataautomation': ?bedrockdataautomation,
       'bedrockruntime': ?bedrockruntime,
       'billing': ?billing,
       'budgets': ?budgets,
@@ -1595,6 +1604,7 @@ class ProviderEndpoint {
       'schemas': ?schemas,
       'secretsmanager': ?secretsmanager,
       'securityhub': ?securityhub,
+      'securityir': ?securityir,
       'securitylake': ?securitylake,
       'serverlessapplicationrepository': ?serverlessapplicationrepository,
       'serverlessapprepo': ?serverlessapprepo,
@@ -1683,6 +1693,7 @@ class ProviderEndpoint {
       bedrock: (() { final guardedValue = map['bedrock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bedrockagent: (() { final guardedValue = map['bedrockagent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bedrockagentcore: (() { final guardedValue = map['bedrockagentcore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bedrockdataautomation: (() { final guardedValue = map['bedrockdataautomation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bedrockruntime: (() { final guardedValue = map['bedrockruntime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       billing: (() { final guardedValue = map['billing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       budgets: (() { final guardedValue = map['budgets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -1926,6 +1937,7 @@ class ProviderEndpoint {
       schemas: (() { final guardedValue = map['schemas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secretsmanager: (() { final guardedValue = map['secretsmanager']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       securityhub: (() { final guardedValue = map['securityhub']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      securityir: (() { final guardedValue = map['securityir']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       securitylake: (() { final guardedValue = map['securitylake']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serverlessapplicationrepository: (() { final guardedValue = map['serverlessapplicationrepository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serverlessapprepo: (() { final guardedValue = map['serverlessapprepo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

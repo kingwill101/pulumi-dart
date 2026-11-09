@@ -15,7 +15,7 @@ import 'event_subscription_state.dart';
 ///     allocatedStorage: 10,
 ///     engine: "mysql",
 ///     engineVersion: "5.6.17",
-///     instanceClass: aws.rds.InstanceType.T2_Micro,
+///     instanceClass: aws.rds.InstanceType.T4G_Micro,
 ///     dbName: "mydb",
 ///     username: "foo",
 ///     password: "bar",
@@ -50,7 +50,7 @@ import 'event_subscription_state.dart';
 ///     allocated_storage=10,
 ///     engine="mysql",
 ///     engine_version="5.6.17",
-///     instance_class=aws.rds.InstanceType.T2_MICRO,
+///     instance_class=aws.rds.InstanceType.T4_G_MICRO,
 ///     db_name="mydb",
 ///     username="foo",
 ///     password="bar",
@@ -88,7 +88,7 @@ import 'event_subscription_state.dart';
 ///         AllocatedStorage = 10,
 ///         Engine = "mysql",
 ///         EngineVersion = "5.6.17",
-///         InstanceClass = Aws.Rds.InstanceType.T2_Micro,
+///         InstanceClass = Aws.Rds.InstanceType.T4G_Micro,
 ///         DbName = "mydb",
 ///         Username = "foo",
 ///         Password = "bar",
@@ -142,7 +142,7 @@ import 'event_subscription_state.dart';
 /// 			AllocatedStorage:   pulumi.Int(10),
 /// 			Engine:             pulumi.String("mysql"),
 /// 			EngineVersion:      pulumi.String("5.6.17"),
-/// 			InstanceClass:      pulumi.String(rds.InstanceType_T2_Micro),
+/// 			InstanceClass:      pulumi.String(rds.InstanceType_T4G_Micro),
 /// 			DbName:             pulumi.String("mydb"),
 /// 			Username:           pulumi.String("foo"),
 /// 			Password:           pulumi.String("bar"),
@@ -186,7 +186,7 @@ import 'event_subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -195,10 +195,13 @@ import 'event_subscription_state.dart';
 /// }
 ///
 /// resource "aws_rds_instance" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocated_storage    = 10
 ///   engine               = "mysql"
 ///   engine_version       = "5.6.17"
-///   instance_class       = "db.t2.micro"
+///   instance_class       = "db.t4g.micro"
 ///   db_name              = "mydb"
 ///   username             = "foo"
 ///   password             = "bar"
@@ -206,9 +209,15 @@ import 'event_subscription_state.dart';
 ///   parameter_group_name = "default.mysql5.6"
 /// }
 /// resource "aws_sns_topic" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "rds-events"
 /// }
-/// resource "aws_rds_eventsubscription" "default" {
+/// resource "aws_rds_event_subscription" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "rds-event-sub"
 ///   sns_topic        = aws_sns_topic.default.arn
 ///   source_type      = "db-instance"
@@ -245,7 +254,7 @@ import 'event_subscription_state.dart';
 ///             .allocatedStorage(10)
 ///             .engine("mysql")
 ///             .engineVersion("5.6.17")
-///             .instanceClass("db.t2.micro")
+///             .instanceClass("db.t4g.micro")
 ///             .dbName("mydb")
 ///             .username("foo")
 ///             .password("bar")
@@ -286,7 +295,7 @@ import 'event_subscription_state.dart';
 ///       allocatedStorage: 10
 ///       engine: mysql
 ///       engineVersion: 5.6.17
-///       instanceClass: db.t2.micro
+///       instanceClass: db.t4g.micro
 ///       dbName: mydb
 ///       username: foo
 ///       password: bar
@@ -365,7 +374,7 @@ class EventSubscription extends pulumi.CustomResource {
           'aws:rds/eventSubscription:EventSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     customerAwsId = registerOutput<String>('customerAwsId');

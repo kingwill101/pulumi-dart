@@ -91,7 +91,7 @@ import 'data_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -99,7 +99,10 @@ import 'data_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kendra_datasource" "example" {
+/// resource "aws_kendra_data_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   index_id      = exampleAwsKendraIndex.id
 ///   name          = "example"
 ///   description   = "example"
@@ -132,7 +135,7 @@ import 'data_source_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DataSource("example", DataSourceArgs.builder()
-///             .indexId(exampleAwsKendraIndex.id())
+///             .indexId(exampleAwsKendraIndex.get("id"))
 ///             .name("example")
 ///             .description("example")
 ///             .languageCode("en")
@@ -252,7 +255,7 @@ import 'data_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -260,9 +263,12 @@ import 'data_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kendra_datasource" "example" {
-///   configuration = {
-///     s3_configuration = {
+/// resource "aws_kendra_data_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     s3_configuration {
 ///       bucket_name = exampleAwsS3Bucket.id
 ///     }
 ///   }
@@ -299,13 +305,13 @@ import 'data_source_state.dart';
 ///         var example = new DataSource("example", DataSourceArgs.builder()
 ///             .configuration(DataSourceConfigurationArgs.builder()
 ///                 .s3Configuration(DataSourceConfigurationS3ConfigurationArgs.builder()
-///                     .bucketName(exampleAwsS3Bucket.id())
+///                     .bucketName(exampleAwsS3Bucket.get("id"))
 ///                     .build())
 ///                 .build())
-///             .indexId(exampleAwsKendraIndex.id())
+///             .indexId(exampleAwsKendraIndex.get("id"))
 ///             .name("example")
 ///             .type("S3")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .schedule("cron(9 10 1 * ? *)")
 ///             .build());
 ///
@@ -429,7 +435,7 @@ import 'data_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -437,10 +443,13 @@ import 'data_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kendra_datasource" "example" {
-///   configuration = {
-///     s3_configuration = {
-///       access_control_list_configuration = {
+/// resource "aws_kendra_data_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     s3_configuration {
+///       access_control_list_configuration {
 ///         key_path ="s3://${exampleAwsS3Bucket.id}/path-1"
 ///       }
 ///       bucket_name = exampleAwsS3Bucket.id
@@ -480,15 +489,15 @@ import 'data_source_state.dart';
 ///             .configuration(DataSourceConfigurationArgs.builder()
 ///                 .s3Configuration(DataSourceConfigurationS3ConfigurationArgs.builder()
 ///                     .accessControlListConfiguration(DataSourceConfigurationS3ConfigurationAccessControlListConfigurationArgs.builder()
-///                         .keyPath(String.format("s3://%s/path-1", exampleAwsS3Bucket.id()))
+///                         .keyPath(String.format("s3://%s/path-1", exampleAwsS3Bucket.get("id")))
 ///                         .build())
-///                     .bucketName(exampleAwsS3Bucket.id())
+///                     .bucketName(exampleAwsS3Bucket.get("id"))
 ///                     .build())
 ///                 .build())
-///             .indexId(exampleAwsKendraIndex.id())
+///             .indexId(exampleAwsKendraIndex.get("id"))
 ///             .name("example")
 ///             .type("S3")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -639,7 +648,7 @@ import 'data_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -647,10 +656,13 @@ import 'data_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kendra_datasource" "example" {
-///   configuration = {
-///     s3_configuration = {
-///       documents_metadata_configuration = {
+/// resource "aws_kendra_data_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     s3_configuration {
+///       documents_metadata_configuration {
 ///         s3_prefix = "example"
 ///       }
 ///       bucket_name        = exampleAwsS3Bucket.id
@@ -695,16 +707,16 @@ import 'data_source_state.dart';
 ///                     .documentsMetadataConfiguration(DataSourceConfigurationS3ConfigurationDocumentsMetadataConfigurationArgs.builder()
 ///                         .s3Prefix("example")
 ///                         .build())
-///                     .bucketName(exampleAwsS3Bucket.id())
+///                     .bucketName(exampleAwsS3Bucket.get("id"))
 ///                     .exclusionPatterns("example")
 ///                     .inclusionPatterns("hello")
 ///                     .inclusionPrefixes("world")
 ///                     .build())
 ///                 .build())
-///             .indexId(exampleAwsKendraIndex.id())
+///             .indexId(exampleAwsKendraIndex.get("id"))
 ///             .name("example")
 ///             .type("S3")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -846,7 +858,7 @@ import 'data_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -854,11 +866,14 @@ import 'data_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kendra_datasource" "example" {
-///   configuration = {
-///     web_crawler_configuration = {
-///       urls = {
-///         seed_url_configuration = {
+/// resource "aws_kendra_data_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     web_crawler_configuration {
+///       urls {
+///         seed_url_configuration {
 ///           seed_urls = ["REPLACE_WITH_YOUR_URL"]
 ///         }
 ///       }
@@ -905,10 +920,10 @@ import 'data_source_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
-///             .indexId(exampleAwsKendraIndex.id())
+///             .indexId(exampleAwsKendraIndex.get("id"))
 ///             .name("example")
 ///             .type("WEBCRAWLER")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1043,7 +1058,7 @@ import 'data_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1051,11 +1066,14 @@ import 'data_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kendra_datasource" "example" {
-///   configuration = {
-///     web_crawler_configuration = {
-///       urls = {
-///         site_maps_configuration = {
+/// resource "aws_kendra_data_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     web_crawler_configuration {
+///       urls {
+///         site_maps_configuration {
 ///           site_maps = ["REPLACE_WITH_YOUR_URL"]
 ///         }
 ///       }
@@ -1102,10 +1120,10 @@ import 'data_source_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
-///             .indexId(exampleAwsKendraIndex.id())
+///             .indexId(exampleAwsKendraIndex.get("id"))
 ///             .name("example")
 ///             .type("WEBCRAWLER")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1244,7 +1262,7 @@ import 'data_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1252,11 +1270,14 @@ import 'data_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kendra_datasource" "example" {
-///   configuration = {
-///     web_crawler_configuration = {
-///       urls = {
-///         seed_url_configuration = {
+/// resource "aws_kendra_data_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     web_crawler_configuration {
+///       urls {
+///         seed_url_configuration {
 ///           web_crawler_mode = "SUBDOMAINS"
 ///           seed_urls        = ["REPLACE_WITH_YOUR_URL"]
 ///         }
@@ -1305,10 +1326,10 @@ import 'data_source_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
-///             .indexId(exampleAwsKendraIndex.id())
+///             .indexId(exampleAwsKendraIndex.get("id"))
 ///             .name("example")
 ///             .type("WEBCRAWLER")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1490,7 +1511,7 @@ import 'data_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1498,19 +1519,22 @@ import 'data_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kendra_datasource" "example" {
+/// resource "aws_kendra_data_source" "example" {
 ///   depends_on = [exampleAwsSecretsmanagerSecretVersion]
-///   configuration = {
-///     web_crawler_configuration = {
-///       authentication_configuration = {
-///         basic_authentications = [{
-///           "credentials" = exampleAwsSecretsmanagerSecret.arn
-///           "host"        = "a.example.com"
-///           "port"        = "443"
-///         }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     web_crawler_configuration {
+///       authentication_configuration {
+///         basic_authentication {
+///           credentials = exampleAwsSecretsmanagerSecret.arn
+///           host        = "a.example.com"
+///           port        = "443"
+///         }
 ///       }
-///       urls = {
-///         seed_url_configuration = {
+///       urls {
+///         seed_url_configuration {
 ///           seed_urls = ["REPLACE_WITH_YOUR_URL"]
 ///         }
 ///       }
@@ -1555,7 +1579,7 @@ import 'data_source_state.dart';
 ///                 .webCrawlerConfiguration(DataSourceConfigurationWebCrawlerConfigurationArgs.builder()
 ///                     .authenticationConfiguration(DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationArgs.builder()
 ///                         .basicAuthentications(DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationBasicAuthenticationArgs.builder()
-///                             .credentials(exampleAwsSecretsmanagerSecret.arn())
+///                             .credentials(exampleAwsSecretsmanagerSecret.get("arn"))
 ///                             .host("a.example.com")
 ///                             .port(443)
 ///                             .build())
@@ -1567,10 +1591,10 @@ import 'data_source_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
-///             .indexId(exampleAwsKendraIndex.id())
+///             .indexId(exampleAwsKendraIndex.get("id"))
 ///             .name("example")
 ///             .type("WEBCRAWLER")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleAwsSecretsmanagerSecretVersion)
 ///                 .build());
@@ -1719,7 +1743,7 @@ import 'data_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1727,11 +1751,14 @@ import 'data_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kendra_datasource" "example" {
-///   configuration = {
-///     web_crawler_configuration = {
-///       urls = {
-///         seed_url_configuration = {
+/// resource "aws_kendra_data_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     web_crawler_configuration {
+///       urls {
+///         seed_url_configuration {
 ///           seed_urls = ["REPLACE_WITH_YOUR_URL"]
 ///         }
 ///       }
@@ -1780,10 +1807,10 @@ import 'data_source_state.dart';
 ///                     .crawlDepth(3)
 ///                     .build())
 ///                 .build())
-///             .indexId(exampleAwsKendraIndex.id())
+///             .indexId(exampleAwsKendraIndex.get("id"))
 ///             .name("example")
 ///             .type("WEBCRAWLER")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1923,7 +1950,7 @@ import 'data_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1931,11 +1958,14 @@ import 'data_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kendra_datasource" "example" {
-///   configuration = {
-///     web_crawler_configuration = {
-///       urls = {
-///         seed_url_configuration = {
+/// resource "aws_kendra_data_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     web_crawler_configuration {
+///       urls {
+///         seed_url_configuration {
 ///           seed_urls = ["REPLACE_WITH_YOUR_URL"]
 ///         }
 ///       }
@@ -1984,10 +2014,10 @@ import 'data_source_state.dart';
 ///                     .maxLinksPerPage(100)
 ///                     .build())
 ///                 .build())
-///             .indexId(exampleAwsKendraIndex.id())
+///             .indexId(exampleAwsKendraIndex.get("id"))
 ///             .name("example")
 ///             .type("WEBCRAWLER")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -2127,7 +2157,7 @@ import 'data_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2135,11 +2165,14 @@ import 'data_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kendra_datasource" "example" {
-///   configuration = {
-///     web_crawler_configuration = {
-///       urls = {
-///         seed_url_configuration = {
+/// resource "aws_kendra_data_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     web_crawler_configuration {
+///       urls {
+///         seed_url_configuration {
 ///           seed_urls = ["REPLACE_WITH_YOUR_URL"]
 ///         }
 ///       }
@@ -2188,10 +2221,10 @@ import 'data_source_state.dart';
 ///                     .maxUrlsPerMinuteCrawlRate(300)
 ///                     .build())
 ///                 .build())
-///             .indexId(exampleAwsKendraIndex.id())
+///             .indexId(exampleAwsKendraIndex.get("id"))
 ///             .name("example")
 ///             .type("WEBCRAWLER")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -2359,7 +2392,7 @@ import 'data_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2367,17 +2400,20 @@ import 'data_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kendra_datasource" "example" {
+/// resource "aws_kendra_data_source" "example" {
 ///   depends_on = [exampleAwsSecretsmanagerSecretVersion]
-///   configuration = {
-///     web_crawler_configuration = {
-///       proxy_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     web_crawler_configuration {
+///       proxy_configuration {
 ///         credentials = exampleAwsSecretsmanagerSecret.arn
 ///         host        = "a.example.com"
 ///         port        = "443"
 ///       }
-///       urls = {
-///         seed_url_configuration = {
+///       urls {
+///         seed_url_configuration {
 ///           seed_urls = ["REPLACE_WITH_YOUR_URL"]
 ///         }
 ///       }
@@ -2420,7 +2456,7 @@ import 'data_source_state.dart';
 ///             .configuration(DataSourceConfigurationArgs.builder()
 ///                 .webCrawlerConfiguration(DataSourceConfigurationWebCrawlerConfigurationArgs.builder()
 ///                     .proxyConfiguration(DataSourceConfigurationWebCrawlerConfigurationProxyConfigurationArgs.builder()
-///                         .credentials(exampleAwsSecretsmanagerSecret.arn())
+///                         .credentials(exampleAwsSecretsmanagerSecret.get("arn"))
 ///                         .host("a.example.com")
 ///                         .port(443)
 ///                         .build())
@@ -2431,10 +2467,10 @@ import 'data_source_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
-///             .indexId(exampleAwsKendraIndex.id())
+///             .indexId(exampleAwsKendraIndex.get("id"))
 ///             .name("example")
 ///             .type("WEBCRAWLER")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleAwsSecretsmanagerSecretVersion)
 ///                 .build());
@@ -2596,7 +2632,7 @@ import 'data_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2604,11 +2640,14 @@ import 'data_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kendra_datasource" "example" {
-///   configuration = {
-///     web_crawler_configuration = {
-///       urls = {
-///         seed_url_configuration = {
+/// resource "aws_kendra_data_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     web_crawler_configuration {
+///       urls {
+///         seed_url_configuration {
 ///           seed_urls = ["REPLACE_WITH_YOUR_URL"]
 ///         }
 ///       }
@@ -2659,10 +2698,10 @@ import 'data_source_state.dart';
 ///                     .urlInclusionPatterns("hello")
 ///                     .build())
 ///                 .build())
-///             .indexId(exampleAwsKendraIndex.id())
+///             .indexId(exampleAwsKendraIndex.get("id"))
 ///             .name("example")
 ///             .type("WEBCRAWLER")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -2858,7 +2897,7 @@ import 'data_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2866,9 +2905,12 @@ import 'data_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kendra_datasource" "example" {
-///   configuration = {
-///     template_configuration = {
+/// resource "aws_kendra_data_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     template_configuration {
 ///       template = jsonencode({
 ///         "connectionConfiguration" = {
 ///           "repositoryEndpointMetadata" = {
@@ -2937,10 +2979,10 @@ import 'data_source_state.dart';
 ///                         )))
 ///                     .build())
 ///                 .build())
-///             .indexId(exampleAwsKendraIndex.id())
+///             .indexId(exampleAwsKendraIndex.get("id"))
 ///             .name("example")
 ///             .type("TEMPLATE")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -3031,7 +3073,7 @@ class DataSource extends pulumi.CustomResource {
           'aws:kendra/dataSource:DataSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     configuration = registerOutput<DataSourceConfiguration?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

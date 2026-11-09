@@ -45,7 +45,7 @@ import 'template_state.dart';
 ///         AwsRegion = "us-east-1",
 ///         QuotaCode = "L-2ACBD22F",
 ///         ServiceCode = "lambda",
-///         Value = 80,
+///         Value = 80.0,
 ///     });
 ///
 /// });
@@ -74,7 +74,7 @@ import 'template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -83,6 +83,9 @@ import 'template_state.dart';
 /// }
 ///
 /// resource "aws_servicequotas_template" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   aws_region   = "us-east-1"
 ///   quota_code   = "L-2ACBD22F"
 ///   service_code = "lambda"
@@ -171,7 +174,7 @@ class Template extends pulumi.CustomResource {
           'aws:servicequotas/template:Template',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     awsRegion = registerOutput<String>('awsRegion');
     globalQuota = registerOutput<bool>('globalQuota');

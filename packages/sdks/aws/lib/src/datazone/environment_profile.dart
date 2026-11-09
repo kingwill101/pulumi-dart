@@ -353,7 +353,7 @@ import 'environment_profile_user_parameter.dart';
 /// 		json0 := string(tmpJSON0)
 /// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
 /// 			"Version": "2012-10-17",
-/// 			"Statement": []map[string]interface{}{
+/// 			"Statement": []interface{}{
 /// 				map[string]interface{}{
 /// 					"Action": []string{
 /// 						"sts:AssumeRole",
@@ -407,7 +407,7 @@ import 'environment_profile_user_parameter.dart';
 /// 			return err
 /// 		}
 /// 		testProject, err := datazone.NewProject(ctx, "test", &datazone.ProjectArgs{
-/// 			DomainIdentifier: testDomain.ID().ToIDOutput().ToStringOutput(),
+/// 			DomainIdentifier: testDomain.ID(),
 /// 			GlossaryTerms: pulumi.StringArray{
 /// 				pulumi.String("2N8w6XJCwZf"),
 /// 			},
@@ -427,12 +427,12 @@ import 'environment_profile_user_parameter.dart';
 /// 			return err
 /// 		}
 /// 		testGetEnvironmentBlueprint := datazone.GetEnvironmentBlueprintOutput(ctx, datazone.GetEnvironmentBlueprintOutputArgs{
-/// 			DomainId: testDomain.ID().ToIDOutput().ToStringOutput(),
+/// 			DomainId: testDomain.ID(),
 /// 			Name:     pulumi.String("DefaultDataLake"),
 /// 			Managed:  pulumi.Bool(true),
 /// 		}, nil)
 /// 		_, err = datazone.NewEnvironmentBlueprintConfiguration(ctx, "test", &datazone.EnvironmentBlueprintConfigurationArgs{
-/// 			DomainId:               testDomain.ID().ToIDOutput().ToStringOutput(),
+/// 			DomainId:               testDomain.ID(),
 /// 			EnvironmentBlueprintId: testGetEnvironmentBlueprint.Id(),
 /// 			ProvisioningRoleArn:    domainExecutionRole.Arn,
 /// 			EnabledRegions: pulumi.StringArray{
@@ -454,8 +454,8 @@ import 'environment_profile_user_parameter.dart';
 /// 			Description:                    pulumi.String("description"),
 /// 			EnvironmentBlueprintIdentifier: testGetEnvironmentBlueprint.Id(),
 /// 			Name:                           pulumi.String("example-name"),
-/// 			ProjectIdentifier:              testProject.ID().ToIDOutput().ToStringOutput(),
-/// 			DomainIdentifier:               testDomain.ID().ToIDOutput().ToStringOutput(),
+/// 			ProjectIdentifier:              testProject.ID(),
+/// 			DomainIdentifier:               testDomain.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -465,7 +465,7 @@ import 'environment_profile_user_parameter.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -473,18 +473,21 @@ import 'environment_profile_user_parameter.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "test" {
+/// data "aws_caller_identity" "test" {
 /// }
-/// data "aws_getregion" "testGetRegion" {
+/// data "aws_region" "testGetRegion" {
 /// }
-/// data "aws_datazone_getenvironmentblueprint" "testGetEnvironmentBlueprint" {
+/// data "aws_datazone_environment_blueprint" "testGetEnvironmentBlueprint" {
 ///   domain_id = aws_datazone_domain.test.id
 ///   name      = "DefaultDataLake"
 ///   managed   = true
 /// }
 ///
 /// resource "aws_iam_role" "domain_execution_role" {
-///   inline_policies {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   inline_policy {
 ///     name = "example-name"
 ///     policy = jsonencode({
 ///       "Version" = "2012-10-17"
@@ -514,34 +517,49 @@ import 'environment_profile_user_parameter.dart';
 ///   })
 /// }
 /// resource "aws_datazone_domain" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-name"
 ///   domain_execution_role = aws_iam_role.domain_execution_role.arn
 /// }
-/// resource "aws_ec2_securitygroup" "test" {
+/// resource "aws_ec2_security_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-name"
 /// }
 /// resource "aws_datazone_project" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_identifier   = aws_datazone_domain.test.id
 ///   glossary_terms      = ["2N8w6XJCwZf"]
 ///   name                = "example-name"
 ///   description         = "desc"
 ///   skip_deletion_check = true
 /// }
-/// resource "aws_datazone_environmentblueprintconfiguration" "test" {
+/// resource "aws_datazone_environment_blueprint_configuration" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_id                = aws_datazone_domain.test.id
-///   environment_blueprint_id = data.aws_datazone_getenvironmentblueprint.testGetEnvironmentBlueprint.id
+///   environment_blueprint_id = data.aws_datazone_environment_blueprint.testGetEnvironmentBlueprint.id
 ///   provisioning_role_arn    = aws_iam_role.domain_execution_role.arn
-///   enabled_regions          = [data.aws_getregion.testGetRegion.region]
+///   enabled_regions          = [data.aws_region.testGetRegion.region]
 /// }
-/// resource "aws_datazone_environmentprofile" "test" {
+/// resource "aws_datazone_environment_profile" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user_parameters {
 ///     name  = "consumerGlueDbName"
 ///     value = "value"
 ///   }
-///   aws_account_id                   = data.aws_getcalleridentity.test.account_id
-///   aws_account_region               = data.aws_getregion.testGetRegion.region
+///   aws_account_id                   = data.aws_caller_identity.test.account_id
+///   aws_account_region               = data.aws_region.testGetRegion.region
 ///   description                      = "description"
-///   environment_blueprint_identifier = data.aws_datazone_getenvironmentblueprint.testGetEnvironmentBlueprint.id
+///   environment_blueprint_identifier = data.aws_datazone_environment_blueprint.testGetEnvironmentBlueprint.id
 ///   name                             = "example-name"
 ///   project_identifier               = aws_datazone_project.test.id
 ///   domain_identifier                = aws_datazone_domain.test.id
@@ -843,7 +861,7 @@ class EnvironmentProfile extends pulumi.CustomResource {
           'aws:datazone/environmentProfile:EnvironmentProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     awsAccountRegion = registerOutput<String>('awsAccountRegion');

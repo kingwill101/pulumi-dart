@@ -77,7 +77,7 @@ import 'network_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,9 +86,15 @@ import 'network_profile_state.dart';
 /// }
 ///
 /// resource "aws_devicefarm_project" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
-/// resource "aws_devicefarm_networkprofile" "example" {
+/// resource "aws_devicefarm_network_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   project_arn = aws_devicefarm_project.example.arn
 /// }
@@ -203,7 +209,7 @@ class NetworkProfile extends pulumi.CustomResource {
           'aws:devicefarm/networkProfile:NetworkProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

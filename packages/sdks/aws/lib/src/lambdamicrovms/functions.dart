@@ -63,7 +63,7 @@ import 'get_image_version_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,7 +71,7 @@ import 'get_image_version_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_lambdamicrovms_getimageversion" "example" {
+/// data "aws_lambdamicrovms_image_version" "example" {
 ///   image_identifier = exampleAwsLambdamicrovmsImage.arn
 ///   image_version    = exampleAwsLambdamicrovmsImage.imageVersion
 /// }
@@ -98,8 +98,8 @@ import 'get_image_version_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = LambdamicrovmsFunctions.getImageVersion(GetImageVersionArgs.builder()
-///             .imageIdentifier(exampleAwsLambdamicrovmsImage.arn())
-///             .imageVersion(exampleAwsLambdamicrovmsImage.imageVersion())
+///             .imageIdentifier(exampleAwsLambdamicrovmsImage.get("arn"))
+///             .imageVersion(exampleAwsLambdamicrovmsImage.get("imageVersion"))
 ///             .build());
 ///
 ///     }

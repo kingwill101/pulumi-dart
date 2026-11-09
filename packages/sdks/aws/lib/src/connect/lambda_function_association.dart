@@ -63,7 +63,7 @@ import 'lambda_function_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,7 +71,10 @@ import 'lambda_function_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_connect_lambdafunctionassociation" "example" {
+/// resource "aws_connect_lambda_function_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   function_arn = exampleAwsLambdaFunction.arn
 ///   instance_id  = exampleAwsConnectInstance.id
 /// }
@@ -98,8 +101,8 @@ import 'lambda_function_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new LambdaFunctionAssociation("example", LambdaFunctionAssociationArgs.builder()
-///             .functionArn(exampleAwsLambdaFunction.arn())
-///             .instanceId(exampleAwsConnectInstance.id())
+///             .functionArn(exampleAwsLambdaFunction.get("arn"))
+///             .instanceId(exampleAwsConnectInstance.get("id"))
 ///             .build());
 ///
 ///     }
@@ -142,7 +145,7 @@ class LambdaFunctionAssociation extends pulumi.CustomResource {
           'aws:connect/lambdaFunctionAssociation:LambdaFunctionAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     functionArn = registerOutput<String>('functionArn');
     instanceId = registerOutput<String>('instanceId');

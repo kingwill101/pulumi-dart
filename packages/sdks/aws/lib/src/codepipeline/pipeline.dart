@@ -637,7 +637,7 @@ import 'pipeline_variable.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketPublicAccessBlock(ctx, "codepipeline_bucket_pab", &s3.BucketPublicAccessBlockArgs{
-/// 			Bucket:                codepipelineBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket:                codepipelineBucket.ID(),
 /// 			BlockPublicAcls:       pulumi.Bool(true),
 /// 			BlockPublicPolicy:     pulumi.Bool(true),
 /// 			IgnorePublicAcls:      pulumi.Bool(true),
@@ -687,7 +687,7 @@ import 'pipeline_variable.dart';
 /// 		}, nil)
 /// 		_, err = iam.NewRolePolicy(ctx, "codepipeline_policy", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("codepipeline_policy"),
-/// 			Role:   codepipelineRole.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   codepipelineRole.ID(),
 /// 			Policy: codepipelinePolicy.Json(),
 /// 		})
 /// 		if err != nil {
@@ -698,7 +698,7 @@ import 'pipeline_variable.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -706,8 +706,8 @@ import 'pipeline_variable.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["codepipeline.amazonaws.com"]
@@ -716,31 +716,34 @@ import 'pipeline_variable.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "codepipelinePolicy" {
-///   statements {
+/// data "aws_iam_policy_document" "codepipelinePolicy" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["s3:GetObject", "s3:GetObjectVersion", "s3:GetBucketVersioning", "s3:PutObjectAcl", "s3:PutObject"]
 ///     resources = [aws_s3_bucket.codepipeline_bucket.arn, "${aws_s3_bucket.codepipeline_bucket.arn}/*"]
 ///   }
-///   statements {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["codestar-connections:UseConnection"]
 ///     resources = [aws_codestarconnections_connection.example.arn]
 ///   }
-///   statements {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["codebuild:BatchGetBuilds", "codebuild:StartBuild"]
 ///     resources = ["*"]
 ///   }
 /// }
-/// data "aws_kms_getalias" "s3kmskey" {
+/// data "aws_kms_alias" "s3kmskey" {
 ///   name = "alias/myKmsKey"
 /// }
 ///
 /// resource "aws_codepipeline_pipeline" "codepipeline" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   artifact_stores {
 ///     encryption_key = {
-///       id   = data.aws_kms_getalias.s3kmskey.arn
+///       id   = data.aws_kms_alias.s3kmskey.arn
 ///       type = "KMS"
 ///     }
 ///     location = aws_s3_bucket.codepipeline_bucket.bucket
@@ -799,13 +802,22 @@ import 'pipeline_variable.dart';
 ///   role_arn = aws_iam_role.codepipeline_role.arn
 /// }
 /// resource "aws_codestarconnections_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "example-connection"
 ///   provider_type = "GitHub"
 /// }
 /// resource "aws_s3_bucket" "codepipeline_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "test-bucket"
 /// }
-/// resource "aws_s3_bucketpublicaccessblock" "codepipeline_bucket_pab" {
+/// resource "aws_s3_bucket_public_access_block" "codepipeline_bucket_pab" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket                  = aws_s3_bucket.codepipeline_bucket.id
 ///   block_public_acls       = true
 ///   block_public_policy     = true
@@ -813,13 +825,19 @@ import 'pipeline_variable.dart';
 ///   restrict_public_buckets = true
 /// }
 /// resource "aws_iam_role" "codepipeline_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "test-role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iam_rolepolicy" "codepipeline_policy" {
+/// resource "aws_iam_role_policy" "codepipeline_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "codepipeline_policy"
 ///   role   = aws_iam_role.codepipeline_role.id
-///   policy = data.aws_iam_getpolicydocument.codepipelinePolicy.json
+///   policy = data.aws_iam_policy_document.codepipelinePolicy.json
 /// }
 /// ```
 /// ```java
@@ -1193,7 +1211,7 @@ class Pipeline extends pulumi.CustomResource {
           'aws:codepipeline/pipeline:Pipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     artifactStores = registerOutput<List<PipelineArtifactStore>>('artifactStores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineArtifactStore>(guardedValue, (value) => PipelineArtifactStore.fromMap((value as Map).cast<String, dynamic>())); });

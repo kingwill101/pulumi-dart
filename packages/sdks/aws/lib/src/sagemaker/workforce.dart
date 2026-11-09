@@ -112,21 +112,21 @@ import 'workforce_workforce_vpc_config.dart';
 /// 		exampleUserPoolClient, err := cognito.NewUserPoolClient(ctx, "example", &cognito.UserPoolClientArgs{
 /// 			Name:           pulumi.String("example"),
 /// 			GenerateSecret: pulumi.Bool(true),
-/// 			UserPoolId:     exampleUserPool.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId:     exampleUserPool.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleUserPoolDomain, err := cognito.NewUserPoolDomain(ctx, "example", &cognito.UserPoolDomainArgs{
 /// 			Domain:     pulumi.String("example"),
-/// 			UserPoolId: exampleUserPool.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId: exampleUserPool.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = sagemaker.NewWorkforce(ctx, "example", &sagemaker.WorkforceArgs{
 /// 			CognitoConfig: &sagemaker.WorkforceCognitoConfigArgs{
-/// 				ClientId: exampleUserPoolClient.ID().ToIDOutput().ToStringOutput(),
+/// 				ClientId: exampleUserPoolClient.ID(),
 /// 				UserPool: exampleUserPoolDomain.UserPoolId,
 /// 			},
 /// 			WorkforceName: pulumi.String("example"),
@@ -139,7 +139,7 @@ import 'workforce_workforce_vpc_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -148,23 +148,35 @@ import 'workforce_workforce_vpc_config.dart';
 /// }
 ///
 /// resource "aws_sagemaker_workforce" "example" {
-///   cognito_config = {
-///     client_id = aws_cognito_userpoolclient.example.id
-///     user_pool = aws_cognito_userpooldomain.example.user_pool_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cognito_config {
+///     client_id = aws_cognito_user_pool_client.example.id
+///     user_pool = aws_cognito_user_pool_domain.example.user_pool_id
 ///   }
 ///   workforce_name = "example"
 /// }
-/// resource "aws_cognito_userpool" "example" {
+/// resource "aws_cognito_user_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
-/// resource "aws_cognito_userpoolclient" "example" {
+/// resource "aws_cognito_user_pool_client" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
 ///   generate_secret = true
-///   user_pool_id    = aws_cognito_userpool.example.id
+///   user_pool_id    = aws_cognito_user_pool.example.id
 /// }
-/// resource "aws_cognito_userpooldomain" "example" {
+/// resource "aws_cognito_user_pool_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain       = "example"
-///   user_pool_id = aws_cognito_userpool.example.id
+///   user_pool_id = aws_cognito_user_pool.example.id
 /// }
 /// ```
 /// ```java
@@ -346,7 +358,7 @@ import 'workforce_workforce_vpc_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -355,7 +367,10 @@ import 'workforce_workforce_vpc_config.dart';
 /// }
 ///
 /// resource "aws_sagemaker_workforce" "example" {
-///   oidc_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   oidc_config {
 ///     authorization_endpoint = "https://example.com"
 ///     client_id              = "example"
 ///     client_secret          = "example"
@@ -462,7 +477,7 @@ class Workforce extends pulumi.CustomResource {
           'aws:sagemaker/workforce:Workforce',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cognitoConfig = registerOutput<WorkforceCognitoConfig?>('cognitoConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforceCognitoConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

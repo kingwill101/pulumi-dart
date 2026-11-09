@@ -114,7 +114,7 @@ import 'replication_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -122,19 +122,22 @@ import 'replication_configuration_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getregions" "example" {
+/// data "aws_regions" "example" {
 /// }
 ///
-/// resource "aws_ecr_replicationconfiguration" "example" {
-///   replication_configuration = {
-///     rules = [{
-///       "destinations" = [{
-///         "region"     = data.aws_getregions.example.names[0]
-///         "registryId" = data.aws_getcalleridentity.current.account_id
-///       }]
-///     }]
+/// resource "aws_ecr_replication_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   replication_configuration {
+///     rule {
+///       destination {
+///         region      = data.aws_regions.example.names[0]
+///         registry_id = data.aws_caller_identity.current.account_id
+///       }
+///     }
 ///   }
 /// }
 /// ```
@@ -338,7 +341,7 @@ import 'replication_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -346,22 +349,26 @@ import 'replication_configuration_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getregions" "example" {
+/// data "aws_regions" "example" {
 /// }
 ///
-/// resource "aws_ecr_replicationconfiguration" "example" {
-///   replication_configuration = {
-///     rules = [{
-///       "destinations" = [{
-///         "region"     = data.aws_getregions.example.names[0]
-///         "registryId" = data.aws_getcalleridentity.current.account_id
-///         }, {
-///         "region"     = data.aws_getregions.example.names[1]
-///         "registryId" = data.aws_getcalleridentity.current.account_id
-///       }]
-///     }]
+/// resource "aws_ecr_replication_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   replication_configuration {
+///     rule {
+///       destination {
+///         region      = data.aws_regions.example.names[0]
+///         registry_id = data.aws_caller_identity.current.account_id
+///       }
+///       destination {
+///         region      = data.aws_regions.example.names[1]
+///         registry_id = data.aws_caller_identity.current.account_id
+///       }
+///     }
 ///   }
 /// }
 /// ```
@@ -573,7 +580,7 @@ import 'replication_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -581,23 +588,26 @@ import 'replication_configuration_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getregions" "example" {
+/// data "aws_regions" "example" {
 /// }
 ///
-/// resource "aws_ecr_replicationconfiguration" "example" {
-///   replication_configuration = {
-///     rules = [{
-///       "destinations" = [{
-///         "region"     = data.aws_getregions.example.names[0]
-///         "registryId" = data.aws_getcalleridentity.current.account_id
-///       }]
-///       "repositoryFilters" = [{
-///         "filter"     = "prod-microservice"
-///         "filterType" = "PREFIX_MATCH"
-///       }]
-///     }]
+/// resource "aws_ecr_replication_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   replication_configuration {
+///     rule {
+///       destination {
+///         region      = data.aws_regions.example.names[0]
+///         registry_id = data.aws_caller_identity.current.account_id
+///       }
+///       repository_filter {
+///         filter      = "prod-microservice"
+///         filter_type = "PREFIX_MATCH"
+///       }
+///     }
 ///   }
 /// }
 /// ```
@@ -706,7 +716,7 @@ class ReplicationConfiguration extends pulumi.CustomResource {
           'aws:ecr/replicationConfiguration:ReplicationConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     registryId = registerOutput<String>('registryId');

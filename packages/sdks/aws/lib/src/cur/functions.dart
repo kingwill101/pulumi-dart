@@ -61,7 +61,7 @@ import 'get_report_definition_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -69,7 +69,7 @@ import 'get_report_definition_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_cur_getreportdefinition" "reportDefinition" {
+/// data "aws_cur_report_definition" "reportDefinition" {
 ///   report_name = "example"
 /// }
 /// ```

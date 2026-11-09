@@ -86,7 +86,7 @@ import 'usage_limit_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -95,10 +95,16 @@ import 'usage_limit_state.dart';
 /// }
 ///
 /// resource "aws_redshiftserverless_workgroup" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   namespace_name = exampleAwsRedshiftserverlessNamespace.namespaceName
 ///   workgroup_name = "example"
 /// }
-/// resource "aws_redshiftserverless_usagelimit" "example" {
+/// resource "aws_redshiftserverless_usage_limit" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_arn = aws_redshiftserverless_workgroup.example.arn
 ///   usage_type   = "serverless-compute"
 ///   amount       = 60
@@ -128,7 +134,7 @@ import 'usage_limit_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Workgroup("example", WorkgroupArgs.builder()
-///             .namespaceName(exampleAwsRedshiftserverlessNamespace.namespaceName())
+///             .namespaceName(exampleAwsRedshiftserverlessNamespace.get("namespaceName"))
 ///             .workgroupName("example")
 ///             .build());
 ///
@@ -193,7 +199,7 @@ class UsageLimit extends pulumi.CustomResource {
           'aws:redshiftserverless/usageLimit:UsageLimit',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     amount = registerOutput<int>('amount');
     arn = registerOutput<String>('arn');

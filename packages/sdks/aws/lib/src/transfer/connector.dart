@@ -108,7 +108,7 @@ import 'connector_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -117,7 +117,10 @@ import 'connector_state.dart';
 /// }
 ///
 /// resource "aws_transfer_connector" "example" {
-///   as2_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   as2_config {
 ///     compression           = "DISABLED"
 ///     encryption_algorithm  = "AWS128_CBC"
 ///     message_subject       = "For Connector"
@@ -158,13 +161,13 @@ import 'connector_state.dart';
 ///                 .compression("DISABLED")
 ///                 .encryptionAlgorithm("AWS128_CBC")
 ///                 .messageSubject("For Connector")
-///                 .localProfileId(local.profileId())
+///                 .localProfileId(local.get("profileId"))
 ///                 .mdnResponse("NONE")
 ///                 .mdnSigningAlgorithm("NONE")
-///                 .partnerProfileId(partner.profileId())
+///                 .partnerProfileId(partner.get("profileId"))
 ///                 .signingAlgorithm("NONE")
 ///                 .build())
-///             .accessRole(test.arn())
+///             .accessRole(test.get("arn"))
 ///             .url("http://www.test.com")
 ///             .build());
 ///
@@ -270,7 +273,7 @@ import 'connector_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -279,7 +282,10 @@ import 'connector_state.dart';
 /// }
 ///
 /// resource "aws_transfer_connector" "example" {
-///   sftp_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   sftp_config {
 ///     trusted_host_keys = ["ssh-rsa AAAAB3NYourKeysHere"]
 ///     user_secret_id    = exampleAwsSecretsmanagerSecret.id
 ///   }
@@ -312,9 +318,9 @@ import 'connector_state.dart';
 ///         var example = new Connector("example", ConnectorArgs.builder()
 ///             .sftpConfig(ConnectorSftpConfigArgs.builder()
 ///                 .trustedHostKeys("ssh-rsa AAAAB3NYourKeysHere")
-///                 .userSecretId(exampleAwsSecretsmanagerSecret.id())
+///                 .userSecretId(exampleAwsSecretsmanagerSecret.get("id"))
 ///                 .build())
-///             .accessRole(test.arn())
+///             .accessRole(test.get("arn"))
 ///             .url("sftp://test.com")
 ///             .build());
 ///
@@ -437,7 +443,7 @@ import 'connector_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -446,12 +452,15 @@ import 'connector_state.dart';
 /// }
 ///
 /// resource "aws_transfer_connector" "example" {
-///   sftp_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   sftp_config {
 ///     trusted_host_keys = ["ssh-rsa AAAAB3NYourKeysHere"]
 ///     user_secret_id    = exampleAwsSecretsmanagerSecret.id
 ///   }
-///   egress_config = {
-///     vpc_lattice = {
+///   egress_config {
+///     vpc_lattice {
 ///       resource_configuration_arn = "arn:aws:vpc-lattice:us-east-1:123456789012:resourceconfiguration/rcfg-12345678901234567"
 ///       port_number                = 22
 ///     }
@@ -486,7 +495,7 @@ import 'connector_state.dart';
 ///         var example = new Connector("example", ConnectorArgs.builder()
 ///             .sftpConfig(ConnectorSftpConfigArgs.builder()
 ///                 .trustedHostKeys("ssh-rsa AAAAB3NYourKeysHere")
-///                 .userSecretId(exampleAwsSecretsmanagerSecret.id())
+///                 .userSecretId(exampleAwsSecretsmanagerSecret.get("id"))
 ///                 .build())
 ///             .egressConfig(ConnectorEgressConfigArgs.builder()
 ///                 .vpcLattice(ConnectorEgressConfigVpcLatticeArgs.builder()
@@ -494,7 +503,7 @@ import 'connector_state.dart';
 ///                     .portNumber(22)
 ///                     .build())
 ///                 .build())
-///             .accessRole(test.arn())
+///             .accessRole(test.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -561,7 +570,7 @@ class Connector extends pulumi.CustomResource {
           'aws:transfer/connector:Connector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accessRole = registerOutput<String>('accessRole');
     arn = registerOutput<String>('arn');

@@ -68,7 +68,7 @@ import 'prefix_list_reference_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,7 +76,10 @@ import 'prefix_list_reference_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2transitgateway_prefixlistreference" "example" {
+/// resource "aws_ec2transitgateway_prefix_list_reference" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   prefix_list_id                 = exampleAwsEc2ManagedPrefixList.id
 ///   transit_gateway_attachment_id  = exampleAwsEc2TransitGatewayVpcAttachment.id
 ///   transit_gateway_route_table_id = exampleAwsEc2TransitGateway.associationDefaultRouteTableId
@@ -104,9 +107,9 @@ import 'prefix_list_reference_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new PrefixListReference("example", PrefixListReferenceArgs.builder()
-///             .prefixListId(exampleAwsEc2ManagedPrefixList.id())
-///             .transitGatewayAttachmentId(exampleAwsEc2TransitGatewayVpcAttachment.id())
-///             .transitGatewayRouteTableId(exampleAwsEc2TransitGateway.associationDefaultRouteTableId())
+///             .prefixListId(exampleAwsEc2ManagedPrefixList.get("id"))
+///             .transitGatewayAttachmentId(exampleAwsEc2TransitGatewayVpcAttachment.get("id"))
+///             .transitGatewayRouteTableId(exampleAwsEc2TransitGateway.get("associationDefaultRouteTableId"))
 ///             .build());
 ///
 ///     }
@@ -185,7 +188,7 @@ import 'prefix_list_reference_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -193,7 +196,10 @@ import 'prefix_list_reference_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2transitgateway_prefixlistreference" "example" {
+/// resource "aws_ec2transitgateway_prefix_list_reference" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   blackhole                      = true
 ///   prefix_list_id                 = exampleAwsEc2ManagedPrefixList.id
 ///   transit_gateway_route_table_id = exampleAwsEc2TransitGateway.associationDefaultRouteTableId
@@ -222,8 +228,8 @@ import 'prefix_list_reference_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new PrefixListReference("example", PrefixListReferenceArgs.builder()
 ///             .blackhole(true)
-///             .prefixListId(exampleAwsEc2ManagedPrefixList.id())
-///             .transitGatewayRouteTableId(exampleAwsEc2TransitGateway.associationDefaultRouteTableId())
+///             .prefixListId(exampleAwsEc2ManagedPrefixList.get("id"))
+///             .transitGatewayRouteTableId(exampleAwsEc2TransitGateway.get("associationDefaultRouteTableId"))
 ///             .build());
 ///
 ///     }
@@ -274,7 +280,7 @@ class PrefixListReference extends pulumi.CustomResource {
           'aws:ec2transitgateway/prefixListReference:PrefixListReference',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     blackhole = registerOutput<bool?>('blackhole');
     prefixListId = registerOutput<String>('prefixListId');

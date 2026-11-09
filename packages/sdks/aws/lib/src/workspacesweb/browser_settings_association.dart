@@ -126,7 +126,7 @@ import 'browser_settings_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -135,9 +135,15 @@ import 'browser_settings_association_state.dart';
 /// }
 ///
 /// resource "aws_workspacesweb_portal" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "aws_workspacesweb_browsersettings" "example" {
+/// resource "aws_workspacesweb_browser_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   browser_policy = jsonencode({
 ///     "chromePolicies" = {
 ///       "DefaultDownloadDirectory" = {
@@ -146,8 +152,11 @@ import 'browser_settings_association_state.dart';
 ///     }
 ///   })
 /// }
-/// resource "aws_workspacesweb_browsersettingsassociation" "example" {
-///   browser_settings_arn = aws_workspacesweb_browsersettings.example.browser_settings_arn
+/// resource "aws_workspacesweb_browser_settings_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   browser_settings_arn = aws_workspacesweb_browser_settings.example.browser_settings_arn
 ///   portal_arn           = aws_workspacesweb_portal.example.portal_arn
 /// }
 /// ```
@@ -253,7 +262,7 @@ class BrowserSettingsAssociation extends pulumi.CustomResource {
           'aws:workspacesweb/browserSettingsAssociation:BrowserSettingsAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     browserSettingsArn = registerOutput<String>('browserSettingsArn');
     portalArn = registerOutput<String>('portalArn');

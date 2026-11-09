@@ -167,7 +167,7 @@ import 'data_quality_job_definition_stopping_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -175,24 +175,27 @@ import 'data_quality_job_definition_stopping_condition.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_dataqualityjobdefinition" "test" {
-///   data_quality_app_specification = {
+/// resource "aws_sagemaker_data_quality_job_definition" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   data_quality_app_specification {
 ///     image_uri = monitor.registryPath
 ///   }
-///   data_quality_job_input = {
-///     endpoint_input = {
+///   data_quality_job_input {
+///     endpoint_input {
 ///       endpoint_name = myEndpoint.name
 ///     }
 ///   }
-///   data_quality_job_output_config = {
-///     monitoring_outputs = {
-///       s3_output = {
+///   data_quality_job_output_config {
+///     monitoring_outputs {
+///       s3_output {
 ///         s3_uri ="https://${myBucket.bucketRegionalDomainName}/output"
 ///       }
 ///     }
 ///   }
-///   job_resources = {
-///     cluster_config = {
+///   job_resources {
+///     cluster_config {
 ///       instance_count    = 1
 ///       instance_type     = "ml.t3.medium"
 ///       volume_size_in_gb = 20
@@ -233,17 +236,17 @@ import 'data_quality_job_definition_stopping_condition.dart';
 ///     public static void stack(Context ctx) {
 ///         var test = new DataQualityJobDefinition("test", DataQualityJobDefinitionArgs.builder()
 ///             .dataQualityAppSpecification(DataQualityJobDefinitionDataQualityAppSpecificationArgs.builder()
-///                 .imageUri(monitor.registryPath())
+///                 .imageUri(monitor.get("registryPath"))
 ///                 .build())
 ///             .dataQualityJobInput(DataQualityJobDefinitionDataQualityJobInputArgs.builder()
 ///                 .endpointInput(DataQualityJobDefinitionDataQualityJobInputEndpointInputArgs.builder()
-///                     .endpointName(myEndpoint.name())
+///                     .endpointName(myEndpoint.get("name"))
 ///                     .build())
 ///                 .build())
 ///             .dataQualityJobOutputConfig(DataQualityJobDefinitionDataQualityJobOutputConfigArgs.builder()
 ///                 .monitoringOutputs(DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputsArgs.builder()
 ///                     .s3Output(DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputsS3OutputArgs.builder()
-///                         .s3Uri(String.format("https://%s/output", myBucket.bucketRegionalDomainName()))
+///                         .s3Uri(String.format("https://%s/output", myBucket.get("bucketRegionalDomainName")))
 ///                         .build())
 ///                     .build())
 ///                 .build())
@@ -255,7 +258,7 @@ import 'data_quality_job_definition_stopping_condition.dart';
 ///                     .build())
 ///                 .build())
 ///             .name("my-data-quality-job-definition")
-///             .roleArn(myRole.arn())
+///             .roleArn(myRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -332,7 +335,7 @@ class DataQualityJobDefinition extends pulumi.CustomResource {
           'aws:sagemaker/dataQualityJobDefinition:DataQualityJobDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dataQualityAppSpecification = registerOutput<DataQualityJobDefinitionDataQualityAppSpecification>('dataQualityAppSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataQualityJobDefinitionDataQualityAppSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });

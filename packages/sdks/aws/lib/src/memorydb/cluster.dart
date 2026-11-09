@@ -99,7 +99,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -108,6 +108,9 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_memorydb_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   acl_name                 = "open-access"
 ///   name                     = "my-cluster"
 ///   node_type                = "db.t4g.small"
@@ -147,9 +150,9 @@ import 'cluster_state.dart';
 ///             .engine("redis")
 ///             .engineVersion("7.1")
 ///             .numShards(2)
-///             .securityGroupIds(exampleAwsSecurityGroup.id())
+///             .securityGroupIds(exampleAwsSecurityGroup.get("id"))
 ///             .snapshotRetentionLimit(7)
-///             .subnetGroupName(exampleAwsMemorydbSubnetGroup.id())
+///             .subnetGroupName(exampleAwsMemorydbSubnetGroup.get("id"))
 ///             .build());
 ///
 ///     }
@@ -263,7 +266,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:memorydb/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     aclName = registerOutput<String>('aclName');
     arn = registerOutput<String>('arn');

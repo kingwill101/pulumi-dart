@@ -40,7 +40,7 @@ class ProxyDefaultTargetGroup extends pulumi.CustomResource {
           'aws:rds/proxyDefaultTargetGroup:ProxyDefaultTargetGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     connectionPoolConfig = registerOutput<ProxyDefaultTargetGroupConnectionPoolConfig>('connectionPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProxyDefaultTargetGroupConnectionPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

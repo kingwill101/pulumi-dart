@@ -74,7 +74,7 @@ import 'data_lake_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,7 +82,10 @@ import 'data_lake_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lakeformation_datalakesettings" "example" {
+/// resource "aws_lakeformation_data_lake_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   admins = [test.arn, testAwsIamRole.arn]
 /// }
 /// ```
@@ -109,8 +112,8 @@ import 'data_lake_settings_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new DataLakeSettings("example", DataLakeSettingsArgs.builder()
 ///             .admins(
-///                 test.arn(),
-///                 testAwsIamRole.arn())
+///                 test.get("arn"),
+///                 testAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -260,7 +263,7 @@ import 'data_lake_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -268,7 +271,10 @@ import 'data_lake_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lakeformation_datalakesettings" "example" {
+/// resource "aws_lakeformation_data_lake_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_database_default_permissions {
 ///     permissions = ["SELECT", "ALTER", "DROP"]
 ///     principal   = test.arn
@@ -309,15 +315,15 @@ import 'data_lake_settings_state.dart';
 ///                     "SELECT",
 ///                     "ALTER",
 ///                     "DROP")
-///                 .principal(test.arn())
+///                 .principal(test.get("arn"))
 ///                 .build())
 ///             .createTableDefaultPermissions(DataLakeSettingsCreateTableDefaultPermissionArgs.builder()
 ///                 .permissions("ALL")
-///                 .principal(testAwsIamRole.arn())
+///                 .principal(testAwsIamRole.get("arn"))
 ///                 .build())
 ///             .admins(
-///                 test.arn(),
-///                 testAwsIamRole.arn())
+///                 test.get("arn"),
+///                 testAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -511,7 +517,7 @@ import 'data_lake_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -519,7 +525,10 @@ import 'data_lake_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lakeformation_datalakesettings" "example" {
+/// resource "aws_lakeformation_data_lake_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_database_default_permissions {
 ///     permissions = ["SELECT", "ALTER", "DROP"]
 ///     principal   = test.arn
@@ -530,8 +539,8 @@ import 'data_lake_settings_state.dart';
 ///   }
 ///   admins                                = [test.arn, testAwsIamRole.arn]
 ///   allow_external_data_filtering         = true
-///   external_data_filtering_allow_lists   = [current.accountId, thirdParty.accountId]
-///   authorized_session_tag_value_lists    = ["Amazon EMR"]
+///   external_data_filtering_allow_list    = [current.accountId, thirdParty.accountId]
+///   authorized_session_tag_value_list     = ["Amazon EMR"]
 ///   allow_full_table_external_data_access = true
 /// }
 /// ```
@@ -564,19 +573,19 @@ import 'data_lake_settings_state.dart';
 ///                     "SELECT",
 ///                     "ALTER",
 ///                     "DROP")
-///                 .principal(test.arn())
+///                 .principal(test.get("arn"))
 ///                 .build())
 ///             .createTableDefaultPermissions(DataLakeSettingsCreateTableDefaultPermissionArgs.builder()
 ///                 .permissions("ALL")
-///                 .principal(testAwsIamRole.arn())
+///                 .principal(testAwsIamRole.get("arn"))
 ///                 .build())
 ///             .admins(
-///                 test.arn(),
-///                 testAwsIamRole.arn())
+///                 test.get("arn"),
+///                 testAwsIamRole.get("arn"))
 ///             .allowExternalDataFiltering(true)
 ///             .externalDataFilteringAllowLists(
-///                 current.accountId(),
-///                 thirdParty.accountId())
+///                 current.get("accountId"),
+///                 thirdParty.get("accountId"))
 ///             .authorizedSessionTagValueLists("Amazon EMR")
 ///             .allowFullTableExternalDataAccess(true)
 ///             .build());
@@ -672,7 +681,7 @@ import 'data_lake_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -680,7 +689,10 @@ import 'data_lake_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lakeformation_datalakesettings" "example" {
+/// resource "aws_lakeformation_data_lake_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameters = {
 ///     "CROSS_ACCOUNT_VERSION" = "3"
 ///   }
@@ -762,7 +774,7 @@ class DataLakeSettings extends pulumi.CustomResource {
           'aws:lakeformation/dataLakeSettings:DataLakeSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     admins = registerOutput<List<String>>('admins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     allowExternalDataFiltering = registerOutput<bool?>('allowExternalDataFiltering');

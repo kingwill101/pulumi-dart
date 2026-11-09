@@ -260,7 +260,7 @@ import 'user_state.dart';
 /// 		}
 /// 		_, err = iam.NewRolePolicy(ctx, "foo", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("tf-test-transfer-user-iam-policy"),
-/// 			Role:   fooRole.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   fooRole.ID(),
 /// 			Policy: pulumi.String(foo.Json),
 /// 		})
 /// 		if err != nil {
@@ -273,7 +273,7 @@ import 'user_state.dart';
 /// 					Target: pulumi.String("/bucket3/test-path/tftestuser.pdf"),
 /// 				},
 /// 			},
-/// 			ServerId:          fooServer.ID().ToIDOutput().ToStringOutput(),
+/// 			ServerId:          fooServer.ID(),
 /// 			UserName:          pulumi.String("tftestuser"),
 /// 			Role:              fooRole.Arn,
 /// 			HomeDirectoryType: pulumi.String("LOGICAL"),
@@ -286,7 +286,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -294,8 +294,8 @@ import 'user_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["transfer.amazonaws.com"]
@@ -304,8 +304,8 @@ import 'user_state.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "foo" {
-///   statements {
+/// data "aws_iam_policy_document" "foo" {
+///   statement {
 ///     sid       = "AllowFullAccesstoS3"
 ///     effect    = "Allow"
 ///     actions   = ["s3:*"]
@@ -314,21 +314,33 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_transfer_server" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity_provider_type = "SERVICE_MANAGED"
 ///   tags = {
 ///     "NAME" = "tf-acc-test-transfer-server"
 ///   }
 /// }
 /// resource "aws_iam_role" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "tf-test-transfer-user-iam-role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iam_rolepolicy" "foo" {
+/// resource "aws_iam_role_policy" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "tf-test-transfer-user-iam-policy"
 ///   role   = aws_iam_role.foo.id
-///   policy = data.aws_iam_getpolicydocument.foo.json
+///   policy = data.aws_iam_policy_document.foo.json
 /// }
 /// resource "aws_transfer_user" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   home_directory_mappings {
 ///     entry  = "/test.pdf"
 ///     target = "/bucket3/test-path/tftestuser.pdf"
@@ -557,7 +569,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -566,6 +578,9 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_transfer_user" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   home_directory_mappings {
 ///     entry  = "/"
 ///     target ="/${foo.id}/${Transfer:UserName}"
@@ -598,7 +613,7 @@ import 'user_state.dart';
 ///         var example = new User("example", UserArgs.builder()
 ///             .homeDirectoryMappings(UserHomeDirectoryMappingArgs.builder()
 ///                 .entry("/")
-///                 .target(String.format("/%s/${{Transfer:UserName}}", foo.id()))
+///                 .target(String.format("/%s/${{Transfer:UserName}}", foo.get("id")))
 ///                 .build())
 ///             .homeDirectoryType("LOGICAL")
 ///             .build());
@@ -663,7 +678,7 @@ class User extends pulumi.CustomResource {
           'aws:transfer/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     homeDirectory = registerOutput<String?>('homeDirectory');

@@ -232,7 +232,7 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -240,35 +240,38 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkfirewall_tlsinspectionconfiguration" "example" {
-///   tls_inspection_configuration = {
-///     server_certificate_configuration = {
-///       scopes = [{
-///         "destinationPorts" = [{
-///           "fromPort" = 443
-///           "toPort"   = 443
-///         }]
-///         "destinations" = [{
-///           "addressDefinition" = "0.0.0.0/0"
-///         }]
-///         "sourcePorts" = [{
-///           "fromPort" = 0
-///           "toPort"   = 65535
-///         }]
-///         "sources" = [{
-///           "addressDefinition" = "0.0.0.0/0"
-///         }]
-///         "protocols" = [6]
-///       }]
-///       server_certificates = [{
-///         "resourceArn" = example1.arn
-///       }]
+/// resource "aws_networkfirewall_tls_inspection_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   tls_inspection_configuration {
+///     server_certificate_configuration {
+///       scope {
+///         destination_ports {
+///           from_port = 443
+///           to_port   = 443
+///         }
+///         destination {
+///           address_definition = "0.0.0.0/0"
+///         }
+///         source_ports {
+///           from_port = 0
+///           to_port   = 65535
+///         }
+///         source {
+///           address_definition = "0.0.0.0/0"
+///         }
+///         protocols = [6]
+///       }
+///       server_certificate {
+///         resource_arn = example1.arn
+///       }
 ///     }
 ///   }
-///   encryption_configurations {
+///   encryption_configuration = [{
 ///     key_id = "AWS_OWNED_KMS_KEY"
 ///     type   = "AWS_OWNED_KMS_KEY"
-///   }
+///   }]
 ///   name        = "example"
 ///   description = "example"
 /// }
@@ -324,7 +327,7 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                         .protocols(6)
 ///                         .build())
 ///                     .serverCertificates(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs.builder()
-///                         .resourceArn(example1.arn())
+///                         .resourceArn(example1.get("arn"))
 ///                         .build())
 ///                     .build())
 ///                 .build())
@@ -591,7 +594,7 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -599,37 +602,40 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkfirewall_tlsinspectionconfiguration" "example" {
-///   tls_inspection_configuration = {
-///     server_certificate_configuration = {
-///       check_certificate_revocation_status = {
+/// resource "aws_networkfirewall_tls_inspection_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   tls_inspection_configuration {
+///     server_certificate_configuration {
+///       check_certificate_revocation_status {
 ///         revoked_status_action = "REJECT"
 ///         unknown_status_action = "PASS"
 ///       }
-///       scopes = [{
-///         "destinationPorts" = [{
-///           "fromPort" = 443
-///           "toPort"   = 443
-///         }]
-///         "destinations" = [{
-///           "addressDefinition" = "0.0.0.0/0"
-///         }]
-///         "sourcePorts" = [{
-///           "fromPort" = 0
-///           "toPort"   = 65535
-///         }]
-///         "sources" = [{
-///           "addressDefinition" = "0.0.0.0/0"
-///         }]
-///         "protocols" = [6]
-///       }]
+///       scope {
+///         destination_ports {
+///           from_port = 443
+///           to_port   = 443
+///         }
+///         destination {
+///           address_definition = "0.0.0.0/0"
+///         }
+///         source_ports {
+///           from_port = 0
+///           to_port   = 65535
+///         }
+///         source {
+///           address_definition = "0.0.0.0/0"
+///         }
+///         protocols = [6]
+///       }
 ///       certificate_authority_arn = example1.arn
 ///     }
 ///   }
-///   encryption_configurations {
+///   encryption_configuration = [{
 ///     key_id = "AWS_OWNED_KMS_KEY"
 ///     type   = "AWS_OWNED_KMS_KEY"
-///   }
+///   }]
 ///   name        = "example"
 ///   description = "example"
 /// }
@@ -688,7 +694,7 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                             .build())
 ///                         .protocols(6)
 ///                         .build())
-///                     .certificateAuthorityArn(example1.arn())
+///                     .certificateAuthorityArn(example1.get("arn"))
 ///                     .build())
 ///                 .build())
 ///             .encryptionConfigurations(TlsInspectionConfigurationEncryptionConfigurationArgs.builder()
@@ -974,7 +980,7 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -983,38 +989,44 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "example"
 ///   deletion_window_in_days = 7
 /// }
-/// resource "aws_networkfirewall_tlsinspectionconfiguration" "example" {
-///   tls_inspection_configuration = {
-///     server_certificate_configuration = {
-///       scopes = [{
-///         "destinationPorts" = [{
-///           "fromPort" = 443
-///           "toPort"   = 443
-///         }]
-///         "destinations" = [{
-///           "addressDefinition" = "0.0.0.0/0"
-///         }]
-///         "sourcePorts" = [{
-///           "fromPort" = 0
-///           "toPort"   = 65535
-///         }]
-///         "sources" = [{
-///           "addressDefinition" = "0.0.0.0/0"
-///         }]
-///         "protocols" = [6]
-///       }]
-///       server_certificates = [{
-///         "resourceArn" = example1.arn
-///       }]
+/// resource "aws_networkfirewall_tls_inspection_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   tls_inspection_configuration {
+///     server_certificate_configuration {
+///       scope {
+///         destination_ports {
+///           from_port = 443
+///           to_port   = 443
+///         }
+///         destination {
+///           address_definition = "0.0.0.0/0"
+///         }
+///         source_ports {
+///           from_port = 0
+///           to_port   = 65535
+///         }
+///         source {
+///           address_definition = "0.0.0.0/0"
+///         }
+///         protocols = [6]
+///       }
+///       server_certificate {
+///         resource_arn = example1.arn
+///       }
 ///     }
 ///   }
-///   encryption_configurations {
+///   encryption_configuration = [{
 ///     key_id = aws_kms_key.example.arn
 ///     type   = "CUSTOMER_KMS"
-///   }
+///   }]
 ///   name        = "example"
 ///   description = "example"
 /// }
@@ -1077,7 +1089,7 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                         .protocols(6)
 ///                         .build())
 ///                     .serverCertificates(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs.builder()
-///                         .resourceArn(example1.arn())
+///                         .resourceArn(example1.get("arn"))
 ///                         .build())
 ///                     .build())
 ///                 .build())
@@ -1381,7 +1393,7 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1390,11 +1402,17 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "example"
 ///   deletion_window_in_days = 7
 /// }
-/// resource "aws_networkfirewall_tlsinspectionconfiguration" "example" {
-///   tls_inspection_configuration = {
+/// resource "aws_networkfirewall_tls_inspection_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   tls_inspection_configuration {
 ///     server_certificate_configurations = [{
 ///       "checkCertificateRevocationStatus" = [{
 ///         "revokedStatusAction" = "REJECT"
@@ -1420,10 +1438,10 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///       "certificateAuthorityArn" = example1.arn
 ///     }]
 ///   }
-///   encryption_configurations {
+///   encryption_configuration = [{
 ///     key_id = aws_kms_key.example.arn
 ///     type   = "CUSTOMER_KMS"
-///   }
+///   }]
 ///   name        = "example"
 ///   description = "example"
 /// }
@@ -1478,7 +1496,7 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                         ))),
 ///                         Map.entry("protocols", Arrays.asList(6))
 ///                     ))),
-///                     Map.entry("certificateAuthorityArn", example1.arn())
+///                     Map.entry("certificateAuthorityArn", example1.get("arn"))
 ///                 )))
 ///                 .build())
 ///             .encryptionConfigurations(TlsInspectionConfigurationEncryptionConfigurationArgs.builder()
@@ -1770,7 +1788,7 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1778,40 +1796,43 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkfirewall_tlsinspectionconfiguration" "example" {
-///   tls_inspection_configuration = {
-///     server_certificate_configuration = {
-///       check_certificate_revocation_status = {
+/// resource "aws_networkfirewall_tls_inspection_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   tls_inspection_configuration {
+///     server_certificate_configuration {
+///       check_certificate_revocation_status {
 ///         revoked_status_action = "REJECT"
 ///         unknown_status_action = "PASS"
 ///       }
-///       scopes = [{
-///         "destinationPorts" = [{
-///           "fromPort" = 443
-///           "toPort"   = 443
-///         }]
-///         "destinations" = [{
-///           "addressDefinition" = "0.0.0.0/0"
-///         }]
-///         "sourcePorts" = [{
-///           "fromPort" = 0
-///           "toPort"   = 65535
-///         }]
-///         "sources" = [{
-///           "addressDefinition" = "0.0.0.0/0"
-///         }]
-///         "protocols" = [6]
-///       }]
-///       server_certificates = [{
-///         "resourceArn" = example2.arn
-///       }]
+///       scope {
+///         destination_ports {
+///           from_port = 443
+///           to_port   = 443
+///         }
+///         destination {
+///           address_definition = "0.0.0.0/0"
+///         }
+///         source_ports {
+///           from_port = 0
+///           to_port   = 65535
+///         }
+///         source {
+///           address_definition = "0.0.0.0/0"
+///         }
+///         protocols = [6]
+///       }
+///       server_certificate {
+///         resource_arn = example2.arn
+///       }
 ///       certificate_authority_arn = example1.arn
 ///     }
 ///   }
-///   encryption_configurations {
+///   encryption_configuration = [{
 ///     key_id = "AWS_OWNED_KMS_KEY"
 ///     type   = "AWS_OWNED_KMS_KEY"
-///   }
+///   }]
 ///   name        = "example"
 ///   description = "example"
 /// }
@@ -1872,9 +1893,9 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                         .protocols(6)
 ///                         .build())
 ///                     .serverCertificates(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs.builder()
-///                         .resourceArn(example2.arn())
+///                         .resourceArn(example2.get("arn"))
 ///                         .build())
-///                     .certificateAuthorityArn(example1.arn())
+///                     .certificateAuthorityArn(example1.get("arn"))
 ///                     .build())
 ///                 .build())
 ///             .encryptionConfigurations(TlsInspectionConfigurationEncryptionConfigurationArgs.builder()
@@ -1977,7 +1998,7 @@ class TlsInspectionConfiguration extends pulumi.CustomResource {
           'aws:networkfirewall/tlsInspectionConfiguration:TlsInspectionConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     certificateAuthorities = registerOutput<List<TlsInspectionConfigurationCertificateAuthority>>('certificateAuthorities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TlsInspectionConfigurationCertificateAuthority>(guardedValue, (value) => TlsInspectionConfigurationCertificateAuthority.fromMap((value as Map).cast<String, dynamic>())); });

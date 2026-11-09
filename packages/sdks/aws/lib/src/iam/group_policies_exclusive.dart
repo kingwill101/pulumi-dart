@@ -73,7 +73,7 @@ import 'group_policies_exclusive_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -81,7 +81,10 @@ import 'group_policies_exclusive_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_grouppoliciesexclusive" "example" {
+/// resource "aws_iam_group_policies_exclusive" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_name   = exampleAwsIamGroup.name
 ///   policy_names = [exampleAwsIamGroupPolicy.name]
 /// }
@@ -108,8 +111,8 @@ import 'group_policies_exclusive_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new GroupPoliciesExclusive("example", GroupPoliciesExclusiveArgs.builder()
-///             .groupName(exampleAwsIamGroup.name())
-///             .policyNames(exampleAwsIamGroupPolicy.name())
+///             .groupName(exampleAwsIamGroup.get("name"))
+///             .policyNames(exampleAwsIamGroupPolicy.get("name"))
 ///             .build());
 ///
 ///     }
@@ -161,7 +164,7 @@ import 'group_policies_exclusive_state.dart';
 ///     var example = new Aws.Iam.GroupPoliciesExclusive("example", new()
 ///     {
 ///         GroupName = exampleAwsIamGroup.Name,
-///         PolicyNames = new[] {},
+///         PolicyNames = new() {},
 ///     });
 ///
 /// });
@@ -188,7 +191,7 @@ import 'group_policies_exclusive_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -196,7 +199,10 @@ import 'group_policies_exclusive_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_grouppoliciesexclusive" "example" {
+/// resource "aws_iam_group_policies_exclusive" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_name   = exampleAwsIamGroup.name
 ///   policy_names = []
 /// }
@@ -223,7 +229,7 @@ import 'group_policies_exclusive_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new GroupPoliciesExclusive("example", GroupPoliciesExclusiveArgs.builder()
-///             .groupName(exampleAwsIamGroup.name())
+///             .groupName(exampleAwsIamGroup.get("name"))
 ///             .policyNames()
 ///             .build());
 ///
@@ -265,7 +271,7 @@ class GroupPoliciesExclusive extends pulumi.CustomResource {
           'aws:iam/groupPoliciesExclusive:GroupPoliciesExclusive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     groupName = registerOutput<String>('groupName');
     policyNames = registerOutput<List<String>>('policyNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

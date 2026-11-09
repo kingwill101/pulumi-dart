@@ -109,7 +109,7 @@ import 'logging_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -117,16 +117,19 @@ import 'logging_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkfirewall_loggingconfiguration" "example" {
-///   logging_configuration = {
-///     log_destination_configs = [{
-///       "logDestination" = {
+/// resource "aws_networkfirewall_logging_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   logging_configuration {
+///     log_destination_config {
+///       log_destination = {
 ///         "bucketName" = exampleAwsS3Bucket.bucket
 ///         "prefix"     = "example"
 ///       }
-///       "logDestinationType" = "S3"
-///       "logType"            = "FLOW"
-///     }]
+///       log_destination_type = "S3"
+///       log_type             = "FLOW"
+///     }
 ///   }
 ///   firewall_arn = exampleAwsNetworkfirewallFirewall.arn
 /// }
@@ -158,14 +161,14 @@ import 'logging_configuration_state.dart';
 ///             .loggingConfiguration(LoggingConfigurationLoggingConfigurationArgs.builder()
 ///                 .logDestinationConfigs(LoggingConfigurationLoggingConfigurationLogDestinationConfigArgs.builder()
 ///                     .logDestination(Map.ofEntries(
-///                         Map.entry("bucketName", exampleAwsS3Bucket.bucket()),
+///                         Map.entry("bucketName", exampleAwsS3Bucket.get("bucket")),
 ///                         Map.entry("prefix", "example")
 ///                     ))
 ///                     .logDestinationType("S3")
 ///                     .logType("FLOW")
 ///                     .build())
 ///                 .build())
-///             .firewallArn(exampleAwsNetworkfirewallFirewall.arn())
+///             .firewallArn(exampleAwsNetworkfirewallFirewall.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -285,7 +288,7 @@ import 'logging_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -293,15 +296,18 @@ import 'logging_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkfirewall_loggingconfiguration" "example" {
-///   logging_configuration = {
-///     log_destination_configs = [{
-///       "logDestination" = {
+/// resource "aws_networkfirewall_logging_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   logging_configuration {
+///     log_destination_config {
+///       log_destination = {
 ///         "logGroup" = exampleAwsCloudwatchLogGroup.name
 ///       }
-///       "logDestinationType" = "CloudWatchLogs"
-///       "logType"            = "ALERT"
-///     }]
+///       log_destination_type = "CloudWatchLogs"
+///       log_type             = "ALERT"
+///     }
 ///   }
 ///   firewall_arn = exampleAwsNetworkfirewallFirewall.arn
 /// }
@@ -332,12 +338,12 @@ import 'logging_configuration_state.dart';
 ///         var example = new LoggingConfiguration("example", LoggingConfigurationArgs.builder()
 ///             .loggingConfiguration(LoggingConfigurationLoggingConfigurationArgs.builder()
 ///                 .logDestinationConfigs(LoggingConfigurationLoggingConfigurationLogDestinationConfigArgs.builder()
-///                     .logDestination(Map.of("logGroup", exampleAwsCloudwatchLogGroup.name()))
+///                     .logDestination(Map.of("logGroup", exampleAwsCloudwatchLogGroup.get("name")))
 ///                     .logDestinationType("CloudWatchLogs")
 ///                     .logType("ALERT")
 ///                     .build())
 ///                 .build())
-///             .firewallArn(exampleAwsNetworkfirewallFirewall.arn())
+///             .firewallArn(exampleAwsNetworkfirewallFirewall.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -456,7 +462,7 @@ import 'logging_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -464,15 +470,18 @@ import 'logging_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkfirewall_loggingconfiguration" "example" {
-///   logging_configuration = {
-///     log_destination_configs = [{
-///       "logDestination" = {
+/// resource "aws_networkfirewall_logging_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   logging_configuration {
+///     log_destination_config {
+///       log_destination = {
 ///         "deliveryStream" = exampleAwsKinesisFirehoseDeliveryStream.name
 ///       }
-///       "logDestinationType" = "KinesisDataFirehose"
-///       "logType"            = "TLS"
-///     }]
+///       log_destination_type = "KinesisDataFirehose"
+///       log_type             = "TLS"
+///     }
 ///   }
 ///   firewall_arn = exampleAwsNetworkfirewallFirewall.arn
 /// }
@@ -503,12 +512,12 @@ import 'logging_configuration_state.dart';
 ///         var example = new LoggingConfiguration("example", LoggingConfigurationArgs.builder()
 ///             .loggingConfiguration(LoggingConfigurationLoggingConfigurationArgs.builder()
 ///                 .logDestinationConfigs(LoggingConfigurationLoggingConfigurationLogDestinationConfigArgs.builder()
-///                     .logDestination(Map.of("deliveryStream", exampleAwsKinesisFirehoseDeliveryStream.name()))
+///                     .logDestination(Map.of("deliveryStream", exampleAwsKinesisFirehoseDeliveryStream.get("name")))
 ///                     .logDestinationType("KinesisDataFirehose")
 ///                     .logType("TLS")
 ///                     .build())
 ///                 .build())
-///             .firewallArn(exampleAwsNetworkfirewallFirewall.arn())
+///             .firewallArn(exampleAwsNetworkfirewallFirewall.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -558,7 +567,7 @@ class LoggingConfiguration extends pulumi.CustomResource {
           'aws:networkfirewall/loggingConfiguration:LoggingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     enableMonitoringDashboard = registerOutput<bool>('enableMonitoringDashboard');
     firewallArn = registerOutput<String>('firewallArn');

@@ -58,7 +58,7 @@ import 'zone_vpc.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,6 +67,9 @@ import 'zone_vpc.dart';
 /// }
 ///
 /// resource "aws_route53_zone" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example.com"
 /// }
 /// ```
@@ -223,7 +226,7 @@ import 'zone_vpc.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -232,15 +235,24 @@ import 'zone_vpc.dart';
 /// }
 ///
 /// resource "aws_route53_zone" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example.com"
 /// }
 /// resource "aws_route53_zone" "dev" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "dev.example.com"
 ///   tags = {
 ///     "Environment" = "dev"
 ///   }
 /// }
 /// resource "aws_route53_record" "dev-ns" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = aws_route53_zone.main.zone_id
 ///   name    = "dev.example.com"
 ///   type    = "NS"
@@ -440,10 +452,10 @@ import 'zone_vpc.dart';
 /// 		_, err = route53.NewZone(ctx, "private", &route53.ZoneArgs{
 /// 			Vpcs: route53.ZoneVpcArray{
 /// 				&route53.ZoneVpcArgs{
-/// 					VpcId: primary.ID().ToIDOutput().ToStringOutput(),
+/// 					VpcId: primary.ID(),
 /// 				},
 /// 				&route53.ZoneVpcArgs{
-/// 					VpcId: secondary.ID().ToIDOutput().ToStringOutput(),
+/// 					VpcId: secondary.ID(),
 /// 				},
 /// 			},
 /// 			Name: pulumi.String("example.com"),
@@ -456,7 +468,7 @@ import 'zone_vpc.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -465,20 +477,29 @@ import 'zone_vpc.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block           = "10.6.0.0/16"
 ///   enable_dns_hostnames = true
 ///   enable_dns_support   = true
 /// }
 /// resource "aws_ec2_vpc" "secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block           = "10.7.0.0/16"
 ///   enable_dns_hostnames = true
 ///   enable_dns_support   = true
 /// }
 /// resource "aws_route53_zone" "private" {
-///   vpcs {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   vpc {
 ///     vpc_id = aws_ec2_vpc.primary.id
 ///   }
-///   vpcs {
+///   vpc {
 ///     vpc_id = aws_ec2_vpc.secondary.id
 ///   }
 ///   name = "example.com"
@@ -615,7 +636,7 @@ class Zone extends pulumi.CustomResource {
           'aws:route53/zone:Zone',
           name,
           pulumi.Input.mapToInputs((args ?? ZoneArgs()).toMap()),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String>('comment');

@@ -61,7 +61,7 @@ import 'get_entitlements_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -69,7 +69,7 @@ import 'get_entitlements_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_accountaccess_getapplication" "example" {
+/// data "aws_accountaccess_application" "example" {
 ///   arn = "arn:aws:account-access:us-east-1:123456789012:application/aam-0123456789abcdef"
 /// }
 /// ```
@@ -173,7 +173,7 @@ import 'get_entitlements_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -181,10 +181,10 @@ import 'get_entitlements_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
-/// data "aws_accountaccess_getapplication" "exampleGetApplication" {
-///   identity_center_instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+/// data "aws_accountaccess_application" "exampleGetApplication" {
+///   identity_center_instance_arn = data.aws_ssoadmin_instances.example.arns[0]
 /// }
 /// ```
 /// ```java
@@ -355,7 +355,7 @@ pulumi.Output<GetApplicationResult> getApplicationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -363,11 +363,11 @@ pulumi.Output<GetApplicationResult> getApplicationOutput(
 ///   }
 /// }
 ///
-/// data "aws_accountaccess_getentitlements" "example" {
-///   filter = {
-///     principal_role = {
-///       principal = {
-///         identity_center = {
+/// data "aws_accountaccess_entitlements" "example" {
+///   filter {
+///     principal_role {
+///       principal {
+///         identity_center {
 ///           user_id = "11111111-2222-3333-4444-555555555555"
 ///         }
 ///       }
@@ -411,7 +411,7 @@ pulumi.Output<GetApplicationResult> getApplicationOutput(
 ///                         .build())
 ///                     .build())
 ///                 .build())
-///             .applicationArn(exampleAwsAccountaccessApplication.arn())
+///             .applicationArn(exampleAwsAccountaccessApplication.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -507,7 +507,7 @@ pulumi.Output<GetApplicationResult> getApplicationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -515,9 +515,9 @@ pulumi.Output<GetApplicationResult> getApplicationOutput(
 ///   }
 /// }
 ///
-/// data "aws_accountaccess_getentitlements" "example" {
-///   filter = {
-///     principal_role = {
+/// data "aws_accountaccess_entitlements" "example" {
+///   filter {
+///     principal_role {
 ///       account_id = "123456789012"
 ///     }
 ///   }
@@ -553,7 +553,7 @@ pulumi.Output<GetApplicationResult> getApplicationOutput(
 ///                     .accountId("123456789012")
 ///                     .build())
 ///                 .build())
-///             .applicationArn(exampleAwsAccountaccessApplication.arn())
+///             .applicationArn(exampleAwsAccountaccessApplication.get("arn"))
 ///             .build());
 ///
 ///     }

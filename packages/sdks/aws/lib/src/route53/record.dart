@@ -88,7 +88,7 @@ import 'record_weighted_routing_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -97,6 +97,9 @@ import 'record_weighted_routing_policy.dart';
 /// }
 ///
 /// resource "aws_route53_record" "www" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = primary.zoneId
 ///   name    = "www.example.com"
 ///   type    = "A"
@@ -126,11 +129,11 @@ import 'record_weighted_routing_policy.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var www = new Record("www", RecordArgs.builder()
-///             .zoneId(primary.zoneId())
+///             .zoneId(primary.get("zoneId"))
 ///             .name("www.example.com")
 ///             .type("A")
 ///             .ttl(300)
-///             .records(lb.publicIp())
+///             .records(lb.get("publicIp"))
 ///             .build());
 ///
 ///     }
@@ -308,7 +311,7 @@ import 'record_weighted_routing_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -317,7 +320,10 @@ import 'record_weighted_routing_policy.dart';
 /// }
 ///
 /// resource "aws_route53_record" "www-dev" {
-///   weighted_routing_policies {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   weighted_routing_policy {
 ///     weight = 10
 ///   }
 ///   zone_id        = primary.zoneId
@@ -328,7 +334,10 @@ import 'record_weighted_routing_policy.dart';
 ///   records        = ["dev.example.com"]
 /// }
 /// resource "aws_route53_record" "www-live" {
-///   weighted_routing_policies {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   weighted_routing_policy {
 ///     weight = 90
 ///   }
 ///   zone_id        = primary.zoneId
@@ -365,7 +374,7 @@ import 'record_weighted_routing_policy.dart';
 ///             .weightedRoutingPolicies(RecordWeightedRoutingPolicyArgs.builder()
 ///                 .weight(10)
 ///                 .build())
-///             .zoneId(primary.zoneId())
+///             .zoneId(primary.get("zoneId"))
 ///             .name("www")
 ///             .type("CNAME")
 ///             .ttl(5)
@@ -377,7 +386,7 @@ import 'record_weighted_routing_policy.dart';
 ///             .weightedRoutingPolicies(RecordWeightedRoutingPolicyArgs.builder()
 ///                 .weight(90)
 ///                 .build())
-///             .zoneId(primary.zoneId())
+///             .zoneId(primary.get("zoneId"))
 ///             .name("www")
 ///             .type("CNAME")
 ///             .ttl(5)
@@ -527,7 +536,7 @@ import 'record_weighted_routing_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -536,11 +545,14 @@ import 'record_weighted_routing_policy.dart';
 /// }
 ///
 /// resource "aws_route53_record" "www" {
-///   geoproximity_routing_policy = {
-///     coordinates = [{
-///       "latitude"  = "49.22"
-///       "longitude" = "-74.01"
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   geoproximity_routing_policy {
+///     coordinates {
+///       latitude  = "49.22"
+///       longitude = "-74.01"
+///     }
 ///   }
 ///   zone_id        = primary.zoneId
 ///   name           = "www.example.com"
@@ -580,7 +592,7 @@ import 'record_weighted_routing_policy.dart';
 ///                     .longitude("-74.01")
 ///                     .build())
 ///                 .build())
-///             .zoneId(primary.zoneId())
+///             .zoneId(primary.get("zoneId"))
 ///             .name("www.example.com")
 ///             .type("CNAME")
 ///             .ttl(300)
@@ -760,7 +772,7 @@ import 'record_weighted_routing_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -768,7 +780,10 @@ import 'record_weighted_routing_policy.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elb_loadbalancer" "main" {
+/// resource "aws_elb_load_balancer" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   listeners {
 ///     instance_port     = 80
 ///     instance_protocol = "http"
@@ -779,9 +794,12 @@ import 'record_weighted_routing_policy.dart';
 ///   availability_zones = ["us-east-1c"]
 /// }
 /// resource "aws_route53_record" "www" {
-///   aliases {
-///     name                   = aws_elb_loadbalancer.main.dns_name
-///     zone_id                = aws_elb_loadbalancer.main.zone_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   alias {
+///     name                   = aws_elb_load_balancer.main.dns_name
+///     zone_id                = aws_elb_load_balancer.main.zone_id
 ///     evaluate_target_health = true
 ///   }
 ///   zone_id = primary.zoneId
@@ -831,7 +849,7 @@ import 'record_weighted_routing_policy.dart';
 ///                 .zoneId(main.zoneId())
 ///                 .evaluateTargetHealth(true)
 ///                 .build())
-///             .zoneId(primary.zoneId())
+///             .zoneId(primary.get("zoneId"))
 ///             .name("example.com")
 ///             .type("A")
 ///             .build());
@@ -978,7 +996,7 @@ import 'record_weighted_routing_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -987,12 +1005,18 @@ import 'record_weighted_routing_policy.dart';
 /// }
 ///
 /// resource "aws_globalaccelerator_accelerator" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "foobar-pulumi-accelerator"
 ///   enabled         = true
 ///   ip_address_type = "IPV4"
 /// }
 /// resource "aws_route53_record" "www" {
-///   aliases {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   alias {
 ///     name                   = aws_globalaccelerator_accelerator.main.dns_name
 ///     zone_id                = aws_globalaccelerator_accelerator.main.hosted_zone_id
 ///     evaluate_target_health = false
@@ -1038,7 +1062,7 @@ import 'record_weighted_routing_policy.dart';
 ///                 .zoneId(main.hostedZoneId())
 ///                 .evaluateTargetHealth(false)
 ///                 .build())
-///             .zoneId(primary.zoneId())
+///             .zoneId(primary.get("zoneId"))
 ///             .name("example.com")
 ///             .type("A")
 ///             .build());
@@ -1185,7 +1209,7 @@ import 'record_weighted_routing_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1194,9 +1218,15 @@ import 'record_weighted_routing_policy.dart';
 /// }
 ///
 /// resource "aws_route53_zone" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test.example.com"
 /// }
 /// resource "aws_route53_record" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allow_overwrite = true
 ///   name            = "test.example.com"
 ///   ttl             = 172800
@@ -1239,10 +1269,10 @@ import 'record_weighted_routing_policy.dart';
 ///             .type("NS")
 ///             .zoneId(example.zoneId())
 ///             .records(
-///                 example.nameServers().applyValue(_nameServers -> _nameServers[0]),
-///                 example.nameServers().applyValue(_nameServers -> _nameServers[1]),
-///                 example.nameServers().applyValue(_nameServers -> _nameServers[2]),
-///                 example.nameServers().applyValue(_nameServers -> _nameServers[3]))
+///                 example.nameServers().applyValue(_nameServers -> _nameServers.get(0)),
+///                 example.nameServers().applyValue(_nameServers -> _nameServers.get(1)),
+///                 example.nameServers().applyValue(_nameServers -> _nameServers.get(2)),
+///                 example.nameServers().applyValue(_nameServers -> _nameServers.get(3)))
 ///             .build());
 ///
 ///     }
@@ -1371,7 +1401,7 @@ class Record extends pulumi.CustomResource {
           'aws:route53/record:Record',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     aliases = registerOutput<List<RecordAlias>?>('aliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecordAlias>(guardedValue, (value) => RecordAlias.fromMap((value as Map).cast<String, dynamic>())); });
     allowOverwrite = registerOutput<bool>('allowOverwrite');

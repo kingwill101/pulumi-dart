@@ -78,7 +78,7 @@ import 'hsm_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,7 +86,10 @@ import 'hsm_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_redshift_hsmconfiguration" "example" {
+/// resource "aws_redshift_hsm_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description                   = "example"
 ///   hsm_configuration_identifier  = "example"
 ///   hsm_ip_address                = "10.0.0.1"
@@ -183,7 +186,7 @@ class HsmConfiguration extends pulumi.CustomResource {
           'aws:redshift/hsmConfiguration:HsmConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['hsmPartitionPassword'],
         ) {
     arn = registerOutput<String>('arn');

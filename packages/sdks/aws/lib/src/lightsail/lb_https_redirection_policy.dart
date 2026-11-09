@@ -120,7 +120,7 @@ import 'lb_https_redirection_policy_state.dart';
 /// 		}
 /// 		exampleLbCertificate, err := lightsail.NewLbCertificate(ctx, "example", &lightsail.LbCertificateArgs{
 /// 			Name:       pulumi.String("example-load-balancer-certificate"),
-/// 			LbName:     example.ID().ToIDOutput().ToStringOutput(),
+/// 			LbName:     example.ID(),
 /// 			DomainName: pulumi.String("example.com"),
 /// 		})
 /// 		if err != nil {
@@ -145,7 +145,7 @@ import 'lb_https_redirection_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -154,6 +154,9 @@ import 'lb_https_redirection_policy_state.dart';
 /// }
 ///
 /// resource "aws_lightsail_lb" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-load-balancer"
 ///   health_check_path = "/"
 ///   instance_port     = "80"
@@ -161,16 +164,25 @@ import 'lb_https_redirection_policy_state.dart';
 ///     "foo" = "bar"
 ///   }
 /// }
-/// resource "aws_lightsail_lbcertificate" "example" {
+/// resource "aws_lightsail_lb_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example-load-balancer-certificate"
 ///   lb_name     = aws_lightsail_lb.example.id
 ///   domain_name = "example.com"
 /// }
-/// resource "aws_lightsail_lbcertificateattachment" "example" {
+/// resource "aws_lightsail_lb_certificate_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   lb_name          = aws_lightsail_lb.example.name
-///   certificate_name = aws_lightsail_lbcertificate.example.name
+///   certificate_name = aws_lightsail_lb_certificate.example.name
 /// }
-/// resource "aws_lightsail_lbhttpsredirectionpolicy" "example" {
+/// resource "aws_lightsail_lb_https_redirection_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   lb_name = aws_lightsail_lb.example.name
 ///   enabled = true
 /// }
@@ -289,7 +301,7 @@ class LbHttpsRedirectionPolicy extends pulumi.CustomResource {
           'aws:lightsail/lbHttpsRedirectionPolicy:LbHttpsRedirectionPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     enabled = registerOutput<bool>('enabled');
     lbName = registerOutput<String>('lbName');

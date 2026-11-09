@@ -78,7 +78,7 @@ import 'rule_group_namespace_state.dart';
 /// 		}
 /// 		_, err = amp.NewRuleGroupNamespace(ctx, "demo", &amp.RuleGroupNamespaceArgs{
 /// 			Name:        pulumi.String("rules"),
-/// 			WorkspaceId: demo.ID().ToIDOutput().ToStringOutput(),
+/// 			WorkspaceId: demo.ID(),
 /// 			Data: pulumi.String(`groups:
 ///   - name: test
 ///     rules:
@@ -94,7 +94,7 @@ import 'rule_group_namespace_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -103,11 +103,24 @@ import 'rule_group_namespace_state.dart';
 /// }
 ///
 /// resource "aws_amp_workspace" "demo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_amp_rulegroupnamespace" "demo" {
+/// resource "aws_amp_rule_group_namespace" "demo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "rules"
 ///   workspace_id = aws_amp_workspace.demo.id
-///   data         = "groups:\n  - name: test\n    rules:\n    - record: metric:recording_rule\n      expr: avg(rate(container_cpu_usage_seconds_total[5m]))\n"
+///   data         = <<EOF
+/// groups:
+///   - name: test
+///     rules:
+///     - record: metric:recording_rule
+///       expr: avg(rate(container_cpu_usage_seconds_total[5m]))
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -210,7 +223,7 @@ class RuleGroupNamespace extends pulumi.CustomResource {
           'aws:amp/ruleGroupNamespace:RuleGroupNamespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     data = registerOutput<String>('data');

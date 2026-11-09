@@ -125,7 +125,7 @@ import 'group_membership_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -133,18 +133,30 @@ import 'group_membership_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_groupmembership" "team" {
+/// resource "aws_iam_group_membership" "team" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "tf-testing-group-membership"
 ///   users = [aws_iam_user.user_one.name, aws_iam_user.user_two.name]
 ///   group = aws_iam_group.group.name
 /// }
 /// resource "aws_iam_group" "group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test-group"
 /// }
 /// resource "aws_iam_user" "user_one" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test-user"
 /// }
 /// resource "aws_iam_user" "user_two" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test-user-two"
 /// }
 /// ```
@@ -241,7 +253,7 @@ class GroupMembership extends pulumi.CustomResource {
           'aws:iam/groupMembership:GroupMembership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     group = registerOutput<String>('group');
     this.name = registerOutput<String>('name');

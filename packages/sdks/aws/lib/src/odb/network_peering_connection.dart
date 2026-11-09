@@ -84,7 +84,7 @@ import 'network_peering_connection_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -92,7 +92,10 @@ import 'network_peering_connection_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_odb_networkpeeringconnection" "example" {
+/// resource "aws_odb_network_peering_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name    = "example"
 ///   odb_network_id  = "my-odb-network-id"
 ///   peer_network_id = "my-vpc-id"
@@ -199,7 +202,7 @@ class NetworkPeeringConnection extends pulumi.CustomResource {
           'aws:odb/networkPeeringConnection:NetworkPeeringConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');

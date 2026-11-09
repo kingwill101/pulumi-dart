@@ -140,7 +140,7 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// 		}
 /// 		_, err = cloudfront.NewDistribution(ctx, "production", &cloudfront.DistributionArgs{
 /// 			Enabled:                      pulumi.Bool(true),
-/// 			ContinuousDeploymentPolicyId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			ContinuousDeploymentPolicyId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -150,7 +150,7 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -159,16 +159,22 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// }
 ///
 /// resource "aws_cloudfront_distribution" "staging" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enabled = true
 ///   staging = true
 /// }
-/// resource "aws_cloudfront_continuousdeploymentpolicy" "example" {
-///   staging_distribution_dns_names = {
+/// resource "aws_cloudfront_continuous_deployment_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   staging_distribution_dns_names {
 ///     items    = [aws_cloudfront_distribution.staging.domain_name]
 ///     quantity = 1
 ///   }
-///   traffic_config = {
-///     single_weight_config = {
+///   traffic_config {
+///     single_weight_config {
 ///       weight = "0.01"
 ///     }
 ///     type = "SingleWeight"
@@ -176,10 +182,13 @@ import 'continuous_deployment_policy_traffic_config.dart';
 ///   enabled = true
 /// }
 /// resource "aws_cloudfront_distribution" "production" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enabled = true
 ///   # NOTE: A continuous deployment policy cannot be associated to distribution
 ///   # on creation. Set this argument once the resource exists.
-///   continuous_deployment_policy_id = aws_cloudfront_continuousdeploymentpolicy.example.id
+///   continuous_deployment_policy_id = aws_cloudfront_continuous_deployment_policy.example.id
 /// }
 /// ```
 /// ```java
@@ -382,7 +391,7 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -390,14 +399,17 @@ import 'continuous_deployment_policy_traffic_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_continuousdeploymentpolicy" "example" {
-///   staging_distribution_dns_names = {
+/// resource "aws_cloudfront_continuous_deployment_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   staging_distribution_dns_names {
 ///     items    = [staging.domainName]
 ///     quantity = 1
 ///   }
-///   traffic_config = {
-///     single_weight_config = {
-///       session_stickiness_config = {
+///   traffic_config {
+///     single_weight_config {
+///       session_stickiness_config {
 ///         idle_ttl    = 300
 ///         maximum_ttl = 600
 ///       }
@@ -435,7 +447,7 @@ import 'continuous_deployment_policy_traffic_config.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new ContinuousDeploymentPolicy("example", ContinuousDeploymentPolicyArgs.builder()
 ///             .stagingDistributionDnsNames(ContinuousDeploymentPolicyStagingDistributionDnsNamesArgs.builder()
-///                 .items(staging.domainName())
+///                 .items(staging.get("domainName"))
 ///                 .quantity(1)
 ///                 .build())
 ///             .trafficConfig(ContinuousDeploymentPolicyTrafficConfigArgs.builder()
@@ -580,7 +592,7 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -588,13 +600,16 @@ import 'continuous_deployment_policy_traffic_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_continuousdeploymentpolicy" "example" {
-///   staging_distribution_dns_names = {
+/// resource "aws_cloudfront_continuous_deployment_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   staging_distribution_dns_names {
 ///     items    = [staging.domainName]
 ///     quantity = 1
 ///   }
-///   traffic_config = {
-///     single_header_config = {
+///   traffic_config {
+///     single_header_config {
 ///       header = "aws-cf-cd-example"
 ///       value  = "example"
 ///     }
@@ -629,7 +644,7 @@ import 'continuous_deployment_policy_traffic_config.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new ContinuousDeploymentPolicy("example", ContinuousDeploymentPolicyArgs.builder()
 ///             .stagingDistributionDnsNames(ContinuousDeploymentPolicyStagingDistributionDnsNamesArgs.builder()
-///                 .items(staging.domainName())
+///                 .items(staging.get("domainName"))
 ///                 .quantity(1)
 ///                 .build())
 ///             .trafficConfig(ContinuousDeploymentPolicyTrafficConfigArgs.builder()
@@ -696,7 +711,7 @@ class ContinuousDeploymentPolicy extends pulumi.CustomResource {
           'aws:cloudfront/continuousDeploymentPolicy:ContinuousDeploymentPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     enabled = registerOutput<bool>('enabled');

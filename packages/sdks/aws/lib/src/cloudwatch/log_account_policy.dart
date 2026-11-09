@@ -191,7 +191,7 @@ import 'log_account_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -199,7 +199,10 @@ import 'log_account_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_logaccountpolicy" "data_protection" {
+/// resource "aws_cloudwatch_log_account_policy" "data_protection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_name = "data-protection"
 ///   policy_type = "DATA_PROTECTION_POLICY"
 ///   policy_document = jsonencode({
@@ -400,7 +403,7 @@ import 'log_account_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -408,7 +411,10 @@ import 'log_account_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_logaccountpolicy" "subscription_filter" {
+/// resource "aws_cloudwatch_log_account_policy" "subscription_filter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_name = "subscription-filter"
 ///   policy_type = "SUBSCRIPTION_FILTER_POLICY"
 ///   policy_document = jsonencode({
@@ -445,7 +451,7 @@ import 'log_account_policy_state.dart';
 ///             .policyType("SUBSCRIPTION_FILTER_POLICY")
 ///             .policyDocument(serializeJson(
 ///                 jsonObject(
-///                     jsonProperty("DestinationArn", test.arn()),
+///                     jsonProperty("DestinationArn", test.get("arn")),
 ///                     jsonProperty("FilterPattern", "test")
 ///                 )))
 ///             .selectionCriteria("LogGroupName NOT IN [\"excluded_log_group_name\"]")
@@ -563,7 +569,7 @@ import 'log_account_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -571,7 +577,10 @@ import 'log_account_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_logaccountpolicy" "field_index" {
+/// resource "aws_cloudwatch_log_account_policy" "field_index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_name = "field-index"
 ///   policy_type = "FIELD_INDEX_POLICY"
 ///   policy_document = jsonencode({
@@ -678,7 +687,7 @@ class LogAccountPolicy extends pulumi.CustomResource {
           'aws:cloudwatch/logAccountPolicy:LogAccountPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     policyDocument = registerOutput<String>('policyDocument');
     policyName = registerOutput<String>('policyName');

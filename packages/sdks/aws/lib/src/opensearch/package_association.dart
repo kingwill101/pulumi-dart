@@ -123,7 +123,7 @@ import 'package_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = opensearch.NewPackageAssociation(ctx, "example", &opensearch.PackageAssociationArgs{
-/// 			PackageId:  example.ID().ToIDOutput().ToStringOutput(),
+/// 			PackageId:  example.ID(),
 /// 			DomainName: myDomain.DomainName,
 /// 		})
 /// 		if err != nil {
@@ -134,7 +134,7 @@ import 'package_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -143,21 +143,30 @@ import 'package_association_state.dart';
 /// }
 ///
 /// resource "aws_opensearch_domain" "my_domain" {
-///   cluster_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_config {
 ///     instance_type = "r4.large.search"
 ///   }
 ///   domain_name    = "my-opensearch-domain"
 ///   engine_version = "Elasticsearch_7.10"
 /// }
 /// resource "aws_opensearch_package" "example" {
-///   package_source = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   package_source {
 ///     s3_bucket_name = myOpensearchPackages.bucket
 ///     s3_key         = exampleAwsS3Object.key
 ///   }
 ///   package_name = "example-txt"
 ///   package_type = "TXT-DICTIONARY"
 /// }
-/// resource "aws_opensearch_packageassociation" "example" {
+/// resource "aws_opensearch_package_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   package_id  = aws_opensearch_package.example.id
 ///   domain_name = aws_opensearch_domain.my_domain.domain_name
 /// }
@@ -199,8 +208,8 @@ import 'package_association_state.dart';
 ///
 ///         var example = new Package("example", PackageArgs.builder()
 ///             .packageSource(PackagePackageSourceArgs.builder()
-///                 .s3BucketName(myOpensearchPackages.bucket())
-///                 .s3Key(exampleAwsS3Object.key())
+///                 .s3BucketName(myOpensearchPackages.get("bucket"))
+///                 .s3Key(exampleAwsS3Object.get("key"))
 ///                 .build())
 ///             .packageName("example-txt")
 ///             .packageType("TXT-DICTIONARY")
@@ -269,7 +278,7 @@ class PackageAssociation extends pulumi.CustomResource {
           'aws:opensearch/packageAssociation:PackageAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     domainName = registerOutput<String>('domainName');
     packageId = registerOutput<String>('packageId');

@@ -97,7 +97,7 @@ import 'environment_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -106,6 +106,9 @@ import 'environment_timeouts.dart';
 /// }
 ///
 /// resource "aws_m2_environment" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "test-env"
 ///   engine_type     = "bluage"
 ///   instance_type   = "M2.m5.large"
@@ -264,7 +267,7 @@ import 'environment_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -273,7 +276,10 @@ import 'environment_timeouts.dart';
 /// }
 ///
 /// resource "aws_m2_environment" "test" {
-///   high_availability_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   high_availability_config {
 ///     desired_capacity = 2
 ///   }
 ///   name            = "test-env"
@@ -453,7 +459,7 @@ import 'environment_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -462,8 +468,11 @@ import 'environment_timeouts.dart';
 /// }
 ///
 /// resource "aws_m2_environment" "test" {
-///   storage_configuration = {
-///     efs = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   storage_configuration {
+///     efs {
 ///       file_system_id = "fs-01234567890abcdef"
 ///       mount_point    = "/m2/mount/example"
 ///     }
@@ -651,7 +660,7 @@ import 'environment_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -660,8 +669,11 @@ import 'environment_timeouts.dart';
 /// }
 ///
 /// resource "aws_m2_environment" "test" {
-///   storage_configuration = {
-///     fsx = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   storage_configuration {
+///     fsx {
 ///       file_system_id = "fs-01234567890abcdef"
 ///       mount_point    = "/m2/mount/example"
 ///     }
@@ -796,7 +808,7 @@ class Environment extends pulumi.CustomResource {
           'aws:m2/environment:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     applyChangesDuringMaintenanceWindow = registerOutput<bool?>('applyChangesDuringMaintenanceWindow');
     arn = registerOutput<String>('arn');

@@ -105,8 +105,8 @@ import 'eip_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewEipAssociation(ctx, "eip_assoc", &ec2.EipAssociationArgs{
-/// 			InstanceId:   web.ID().ToIDOutput().ToStringOutput(),
-/// 			AllocationId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			InstanceId:   web.ID(),
+/// 			AllocationId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -116,7 +116,7 @@ import 'eip_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -124,11 +124,17 @@ import 'eip_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_eipassociation" "eip_assoc" {
+/// resource "aws_ec2_eip_association" "eip_assoc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id   = aws_ec2_instance.web.id
 ///   allocation_id = aws_ec2_eip.example.id
 /// }
 /// resource "aws_ec2_instance" "web" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ami               = "ami-21f78e11"
 ///   availability_zone = "us-west-2a"
 ///   instance_type     = "t2.micro"
@@ -137,6 +143,9 @@ import 'eip_association_state.dart';
 ///   }
 /// }
 /// resource "aws_ec2_eip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain = "vpc"
 /// }
 /// ```
@@ -249,7 +258,7 @@ class EipAssociation extends pulumi.CustomResource {
           'aws:ec2/eipAssociation:EipAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     allocationId = registerOutput<String>('allocationId');
     allowReassociation = registerOutput<bool?>('allowReassociation');

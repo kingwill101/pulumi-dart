@@ -92,7 +92,7 @@ import 'template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -101,8 +101,11 @@ import 'template_state.dart';
 /// }
 ///
 /// resource "aws_quicksight_template" "example" {
-///   source_entity = {
-///     source_template = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   source_entity {
+///     source_template {
 ///       arn = source.arn
 ///     }
 ///   }
@@ -137,7 +140,7 @@ import 'template_state.dart';
 ///         var example = new Template("example", TemplateArgs.builder()
 ///             .sourceEntity(TemplateSourceEntityArgs.builder()
 ///                 .sourceTemplate(TemplateSourceEntitySourceTemplateArgs.builder()
-///                     .arn(source.arn())
+///                     .arn(source.get("arn"))
 ///                     .build())
 ///                 .build())
 ///             .templateId("example-id")
@@ -408,13 +411,13 @@ import 'template_state.dart';
 /// 			Definition: map[string][]map[string]interface{}{
 /// 				"dataSetConfigurations": []map[string]interface{}{
 /// 					map[string]interface{}{
-/// 						"dataSetSchema": map[string][]map[string]string{
-/// 							"columnSchemaLists": []map[string]string{
-/// 								{
+/// 						"dataSetSchema": map[string][]interface{}{
+/// 							"columnSchemaLists": []interface{}{
+/// 								map[string]string{
 /// 									"name":     "Column1",
 /// 									"dataType": "STRING",
 /// 								},
-/// 								{
+/// 								map[string]string{
 /// 									"name":     "Column2",
 /// 									"dataType": "INTEGER",
 /// 								},
@@ -480,7 +483,7 @@ import 'template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -489,6 +492,9 @@ import 'template_state.dart';
 /// }
 ///
 /// resource "aws_quicksight_template" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   definition = {
 ///     "dataSetConfigurations" = [{
 ///       "dataSetSchema" = {
@@ -708,7 +714,7 @@ class Template extends pulumi.CustomResource {
           'aws:quicksight/template:Template',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');

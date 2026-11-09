@@ -79,7 +79,7 @@ import 'v2_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -87,7 +87,10 @@ import 'v2_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_resiliencehub_v2policy" "example" {
+/// resource "aws_resiliencehub_v2_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_slo = {
 ///     target = 99.9
 ///   }
@@ -255,7 +258,7 @@ import 'v2_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -263,7 +266,10 @@ import 'v2_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_resiliencehub_v2policy" "example" {
+/// resource "aws_resiliencehub_v2_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_slo = {
 ///     target = 99.99
 ///   }
@@ -434,7 +440,7 @@ import 'v2_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -442,7 +448,10 @@ import 'v2_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_resiliencehub_v2policy" "example" {
+/// resource "aws_resiliencehub_v2_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_slo = {
 ///     target = 99.95
 ///   }
@@ -584,7 +593,7 @@ import 'v2_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -592,7 +601,10 @@ import 'v2_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_resiliencehub_v2policy" "example" {
+/// resource "aws_resiliencehub_v2_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_slo = {
 ///     target = 99.9
 ///   }
@@ -702,7 +714,7 @@ class V2Policy extends pulumi.CustomResource {
           'aws:resiliencehub/v2Policy:V2Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilitySlo = registerOutput<V2PolicyAvailabilitySlo?>('availabilitySlo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyAvailabilitySlo.fromMap((guardedValue as Map).cast<String, dynamic>()); });

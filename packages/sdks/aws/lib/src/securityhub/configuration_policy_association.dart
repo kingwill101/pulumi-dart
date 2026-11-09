@@ -224,21 +224,21 @@ import 'configuration_policy_association_state.dart';
 /// 		}
 /// 		_, err = securityhub.NewConfigurationPolicyAssociation(ctx, "account_example", &securityhub.ConfigurationPolicyAssociationArgs{
 /// 			TargetId: pulumi.String("123456789012"),
-/// 			PolicyId: exampleConfigurationPolicy.ID().ToIDOutput().ToStringOutput(),
+/// 			PolicyId: exampleConfigurationPolicy.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = securityhub.NewConfigurationPolicyAssociation(ctx, "root_example", &securityhub.ConfigurationPolicyAssociationArgs{
 /// 			TargetId: pulumi.String("r-abcd"),
-/// 			PolicyId: exampleConfigurationPolicy.ID().ToIDOutput().ToStringOutput(),
+/// 			PolicyId: exampleConfigurationPolicy.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = securityhub.NewConfigurationPolicyAssociation(ctx, "ou_example", &securityhub.ConfigurationPolicyAssociationArgs{
 /// 			TargetId: pulumi.String("ou-abcd-12345678"),
-/// 			PolicyId: exampleConfigurationPolicy.ID().ToIDOutput().ToStringOutput(),
+/// 			PolicyId: exampleConfigurationPolicy.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -255,7 +255,7 @@ import 'configuration_policy_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -263,21 +263,30 @@ import 'configuration_policy_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_securityhub_findingaggregator" "example" {
+/// resource "aws_securityhub_finding_aggregator" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   linking_mode = "ALL_REGIONS"
 /// }
-/// resource "aws_securityhub_organizationconfiguration" "example" {
-///   depends_on = [aws_securityhub_findingaggregator.example]
-///   organization_configuration = {
+/// resource "aws_securityhub_organization_configuration" "example" {
+///   depends_on = [aws_securityhub_finding_aggregator.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   organization_configuration {
 ///     configuration_type = "CENTRAL"
 ///   }
 ///   auto_enable           = false
 ///   auto_enable_standards = "NONE"
 /// }
-/// resource "aws_securityhub_configurationpolicy" "example" {
-///   depends_on = [aws_securityhub_organizationconfiguration.example]
-///   configuration_policy = {
-///     security_controls_configuration = {
+/// resource "aws_securityhub_configuration_policy" "example" {
+///   depends_on = [aws_securityhub_organization_configuration.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration_policy {
+///     security_controls_configuration {
 ///       disabled_control_identifiers = []
 ///     }
 ///     service_enabled       = true
@@ -286,19 +295,31 @@ import 'configuration_policy_association_state.dart';
 ///   name        = "Example"
 ///   description = "This is an example configuration policy"
 /// }
-/// resource "aws_securityhub_configurationpolicyassociation" "account_example" {
+/// resource "aws_securityhub_configuration_policy_association" "account_example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   target_id = "123456789012"
-///   policy_id = aws_securityhub_configurationpolicy.example.id
+///   policy_id = aws_securityhub_configuration_policy.example.id
 /// }
-/// resource "aws_securityhub_configurationpolicyassociation" "root_example" {
+/// resource "aws_securityhub_configuration_policy_association" "root_example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   target_id = "r-abcd"
-///   policy_id = aws_securityhub_configurationpolicy.example.id
+///   policy_id = aws_securityhub_configuration_policy.example.id
 /// }
-/// resource "aws_securityhub_configurationpolicyassociation" "ou_example" {
+/// resource "aws_securityhub_configuration_policy_association" "ou_example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   target_id = "ou-abcd-12345678"
-///   policy_id = aws_securityhub_configurationpolicy.example.id
+///   policy_id = aws_securityhub_configuration_policy.example.id
 /// }
-/// resource "aws_securityhub_configurationpolicyassociation" "self_managed_example" {
+/// resource "aws_securityhub_configuration_policy_association" "self_managed_example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   target_id = "123456789012"
 ///   policy_id = "SELF_MANAGED_SECURITY_HUB"
 /// }
@@ -486,7 +507,7 @@ class ConfigurationPolicyAssociation extends pulumi.CustomResource {
           'aws:securityhub/configurationPolicyAssociation:ConfigurationPolicyAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     policyId = registerOutput<String>('policyId');
     region = registerOutput<String>('region');

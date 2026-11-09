@@ -88,7 +88,7 @@ import 'assessment_target_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -96,15 +96,21 @@ import 'assessment_target_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_inspector_resourcegroup" "bar" {
+/// resource "aws_inspector_resource_group" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tags = {
 ///     "Name" = "foo"
 ///     "Env"  = "bar"
 ///   }
 /// }
-/// resource "aws_inspector_assessmenttarget" "foo" {
+/// resource "aws_inspector_assessment_target" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "assessment target"
-///   resource_group_arn = aws_inspector_resourcegroup.bar.arn
+///   resource_group_arn = aws_inspector_resource_group.bar.arn
 /// }
 /// ```
 /// ```java
@@ -197,7 +203,7 @@ class AssessmentTarget extends pulumi.CustomResource {
           'aws:inspector/assessmentTarget:AssessmentTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

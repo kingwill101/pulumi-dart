@@ -112,7 +112,7 @@ import 'vpc_link_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -120,7 +120,10 @@ import 'vpc_link_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lb_loadbalancer" "example" {
+/// resource "aws_lb_load_balancer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_mappings {
 ///     subnet_id = "12345"
 ///   }
@@ -128,10 +131,13 @@ import 'vpc_link_state.dart';
 ///   internal           = true
 ///   load_balancer_type = "network"
 /// }
-/// resource "aws_apigateway_vpclink" "example" {
+/// resource "aws_apigateway_vpc_link" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   description = "example description"
-///   target_arn  = aws_lb_loadbalancer.example.arn
+///   target_arn  = aws_lb_load_balancer.example.arn
 /// }
 /// ```
 /// ```java
@@ -231,7 +237,7 @@ class VpcLink extends pulumi.CustomResource {
           'aws:apigateway/vpcLink:VpcLink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

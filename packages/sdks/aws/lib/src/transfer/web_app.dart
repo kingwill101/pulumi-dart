@@ -342,7 +342,7 @@ import 'web_app_web_app_unit.dart';
 /// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
 /// 						{
 /// 							Test: "StringEquals",
-/// 							Values: pulumi.StringArray{
+/// 							Values: []string{
 /// 								current.AccountId,
 /// 							},
 /// 							Variable: "aws:SourceAccount",
@@ -380,7 +380,7 @@ import 'web_app_web_app_unit.dart';
 /// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
 /// 						{
 /// 							Test: "StringEquals",
-/// 							Values: pulumi.StringArray{
+/// 							Values: []string{
 /// 								current.AccountId,
 /// 							},
 /// 							Variable: "s3:ResourceAccount",
@@ -399,7 +399,7 @@ import 'web_app_web_app_unit.dart';
 /// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
 /// 						{
 /// 							Test: "StringEquals",
-/// 							Values: pulumi.StringArray{
+/// 							Values: []string{
 /// 								current.AccountId,
 /// 							},
 /// 							Variable: "s3:ResourceAccount",
@@ -449,7 +449,7 @@ import 'web_app_web_app_unit.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -457,19 +457,19 @@ import 'web_app_web_app_unit.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getregion" "currentGetRegion" {
+/// data "aws_region" "currentGetRegion" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
-/// data "aws_iam_getpolicydocument" "assumeRoleTransfer" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "assumeRoleTransfer" {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
-///       values   = [data.aws_getcalleridentity.current.account_id]
+///       values   = [data.aws_caller_identity.current.account_id]
 ///       variable = "aws:SourceAccount"
 ///     }
 ///     principals {
@@ -480,21 +480,21 @@ import 'web_app_web_app_unit.dart';
 ///     actions = ["sts:AssumeRole", "sts:SetContext"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "exampleGetPolicyDocument" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "exampleGetPolicyDocument" {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
-///       values   = [data.aws_getcalleridentity.current.account_id]
+///       values   = [data.aws_caller_identity.current.account_id]
 ///       variable = "s3:ResourceAccount"
 ///     }
 ///     effect    = "Allow"
 ///     actions   = ["s3:GetDataAccess", "s3:ListCallerAccessGrants"]
-///     resources = ["arn:${data.aws_getpartition.currentGetPartition.partition}:s3:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:access-grants/*"]
+///     resources = ["arn:${data.aws_partition.currentGetPartition.partition}:s3:${data.aws_region.currentGetRegion.region}:${data.aws_caller_identity.current.account_id}:access-grants/*"]
 ///   }
-///   statements {
-///     conditions {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
-///       values   = [data.aws_getcalleridentity.current.account_id]
+///       values   = [data.aws_caller_identity.current.account_id]
 ///       variable = "s3:ResourceAccount"
 ///     }
 ///     effect    = "Allow"
@@ -504,23 +504,32 @@ import 'web_app_web_app_unit.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRoleTransfer.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRoleTransfer.json
 /// }
-/// resource "aws_iam_rolepolicy" "example" {
-///   policy = data.aws_iam_getpolicydocument.exampleGetPolicyDocument.json
+/// resource "aws_iam_role_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy = data.aws_iam_policy_document.exampleGetPolicyDocument.json
 ///   role   = aws_iam_role.example.name
 /// }
-/// resource "aws_transfer_webapp" "example" {
-///   identity_provider_details = {
-///     identity_center_config = {
-///       instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+/// resource "aws_transfer_web_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   identity_provider_details {
+///     identity_center_config {
+///       instance_arn = data.aws_ssoadmin_instances.example.arns[0]
 ///       role         = aws_iam_role.example.arn
 ///     }
 ///   }
-///   web_app_units {
+///   web_app_units = [{
 ///     provisioned = 1
-///   }
+///   }]
 ///   tags = {
 ///     "Name" = "test"
 ///   }
@@ -779,7 +788,7 @@ class WebApp extends pulumi.CustomResource {
           'aws:transfer/webApp:WebApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     accessEndpoint = registerOutput<String>('accessEndpoint');
     arn = registerOutput<String>('arn');

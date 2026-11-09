@@ -57,7 +57,7 @@ import 'model_package_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,7 +65,10 @@ import 'model_package_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_modelpackagegroup" "example" {
+/// resource "aws_sagemaker_model_package_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   model_package_group_name = "example"
 /// }
 /// ```
@@ -139,7 +142,7 @@ class ModelPackageGroup extends pulumi.CustomResource {
           'aws:sagemaker/modelPackageGroup:ModelPackageGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     modelPackageGroupDescription = registerOutput<String?>('modelPackageGroupDescription');

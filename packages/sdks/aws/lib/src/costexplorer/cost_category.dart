@@ -232,7 +232,7 @@ import 'cost_category_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -240,7 +240,10 @@ import 'cost_category_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_costexplorer_costcategory" "test" {
+/// resource "aws_costexplorer_cost_category" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   rules {
 ///     rule = {
 ///       dimension = {
@@ -423,7 +426,7 @@ class CostCategory extends pulumi.CustomResource {
           'aws:costexplorer/costCategory:CostCategory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultValue = registerOutput<String?>('defaultValue');

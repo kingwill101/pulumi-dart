@@ -199,7 +199,7 @@ import 'deployment_config_zonal_config.dart';
 /// 			AppName:              pulumi.Any(fooApp.Name),
 /// 			DeploymentGroupName:  pulumi.String("bar"),
 /// 			ServiceRoleArn:       pulumi.Any(fooRole.Arn),
-/// 			DeploymentConfigName: foo.ID().ToIDOutput().ToStringOutput(),
+/// 			DeploymentConfigName: foo.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -209,7 +209,7 @@ import 'deployment_config_zonal_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -217,28 +217,34 @@ import 'deployment_config_zonal_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_codedeploy_deploymentconfig" "foo" {
-///   minimum_healthy_hosts = {
+/// resource "aws_codedeploy_deployment_config" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   minimum_healthy_hosts {
 ///     type  = "HOST_COUNT"
 ///     value = 2
 ///   }
 ///   deployment_config_name = "test-deployment-config"
 /// }
-/// resource "aws_codedeploy_deploymentgroup" "foo" {
-///   auto_rollback_configuration = {
+/// resource "aws_codedeploy_deployment_group" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   auto_rollback_configuration {
 ///     enabled = true
 ///     events  = ["DEPLOYMENT_FAILURE"]
 ///   }
-///   alarm_configuration = {
+///   alarm_configuration {
 ///     alarms  = ["my-alarm-name"]
 ///     enabled = true
 ///   }
-///   ec2_tag_filters {
+///   ec2_tag_filter {
 ///     key   = "filterkey"
 ///     type  = "KEY_AND_VALUE"
 ///     value = "filtervalue"
 ///   }
-///   trigger_configurations {
+///   trigger_configuration {
 ///     trigger_events     = ["DeploymentFailure"]
 ///     trigger_name       = "foo-trigger"
 ///     trigger_target_arn = "foo-topic-arn"
@@ -246,7 +252,7 @@ import 'deployment_config_zonal_config.dart';
 ///   app_name               = fooApp.name
 ///   deployment_group_name  = "bar"
 ///   service_role_arn       = fooRole.arn
-///   deployment_config_name = aws_codedeploy_deploymentconfig.foo.id
+///   deployment_config_name = aws_codedeploy_deployment_config.foo.id
 /// }
 /// ```
 /// ```java
@@ -304,9 +310,9 @@ import 'deployment_config_zonal_config.dart';
 ///                 .triggerName("foo-trigger")
 ///                 .triggerTargetArn("foo-topic-arn")
 ///                 .build())
-///             .appName(fooApp.name())
+///             .appName(fooApp.get("name"))
 ///             .deploymentGroupName("bar")
-///             .serviceRoleArn(fooRole.arn())
+///             .serviceRoleArn(fooRole.get("arn"))
 ///             .deploymentConfigName(foo.id())
 ///             .build());
 ///
@@ -500,7 +506,7 @@ import 'deployment_config_zonal_config.dart';
 /// 			AppName:              pulumi.Any(fooApp.Name),
 /// 			DeploymentGroupName:  pulumi.String("bar"),
 /// 			ServiceRoleArn:       pulumi.Any(fooRole.Arn),
-/// 			DeploymentConfigName: foo.ID().ToIDOutput().ToStringOutput(),
+/// 			DeploymentConfigName: foo.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -510,7 +516,7 @@ import 'deployment_config_zonal_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -518,9 +524,12 @@ import 'deployment_config_zonal_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_codedeploy_deploymentconfig" "foo" {
-///   traffic_routing_config = {
-///     time_based_linear = {
+/// resource "aws_codedeploy_deployment_config" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   traffic_routing_config {
+///     time_based_linear {
 ///       interval   = 10
 ///       percentage = 10
 ///     }
@@ -529,19 +538,22 @@ import 'deployment_config_zonal_config.dart';
 ///   deployment_config_name = "test-deployment-config"
 ///   compute_platform       = "Lambda"
 /// }
-/// resource "aws_codedeploy_deploymentgroup" "foo" {
-///   auto_rollback_configuration = {
+/// resource "aws_codedeploy_deployment_group" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   auto_rollback_configuration {
 ///     enabled = true
 ///     events  = ["DEPLOYMENT_STOP_ON_ALARM"]
 ///   }
-///   alarm_configuration = {
+///   alarm_configuration {
 ///     alarms  = ["my-alarm-name"]
 ///     enabled = true
 ///   }
 ///   app_name               = fooApp.name
 ///   deployment_group_name  = "bar"
 ///   service_role_arn       = fooRole.arn
-///   deployment_config_name = aws_codedeploy_deploymentconfig.foo.id
+///   deployment_config_name = aws_codedeploy_deployment_config.foo.id
 /// }
 /// ```
 /// ```java
@@ -592,9 +604,9 @@ import 'deployment_config_zonal_config.dart';
 ///                 .alarms("my-alarm-name")
 ///                 .enabled(true)
 ///                 .build())
-///             .appName(fooApp.name())
+///             .appName(fooApp.get("name"))
 ///             .deploymentGroupName("bar")
-///             .serviceRoleArn(fooRole.arn())
+///             .serviceRoleArn(fooRole.get("arn"))
 ///             .deploymentConfigName(foo.id())
 ///             .build());
 ///
@@ -669,7 +681,7 @@ class DeploymentConfig extends pulumi.CustomResource {
           'aws:codedeploy/deploymentConfig:DeploymentConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     computePlatform = registerOutput<String?>('computePlatform');

@@ -118,7 +118,7 @@ import 'experience_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -127,12 +127,15 @@ import 'experience_state.dart';
 /// }
 ///
 /// resource "aws_kendra_experience" "example" {
-///   configuration = {
-///     content_source_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     content_source_configuration {
 ///       direct_put_content = true
 ///       faq_ids            = [exampleAwsKendraFaq.faqId]
 ///     }
-///     user_identity_configuration = {
+///     user_identity_configuration {
 ///       identity_attribute_name = "12345ec453-1546651e-79c4-4554-91fa-00b43ccfa245"
 ///     }
 ///   }
@@ -170,16 +173,16 @@ import 'experience_state.dart';
 ///             .configuration(ExperienceConfigurationArgs.builder()
 ///                 .contentSourceConfiguration(ExperienceConfigurationContentSourceConfigurationArgs.builder()
 ///                     .directPutContent(true)
-///                     .faqIds(exampleAwsKendraFaq.faqId())
+///                     .faqIds(exampleAwsKendraFaq.get("faqId"))
 ///                     .build())
 ///                 .userIdentityConfiguration(ExperienceConfigurationUserIdentityConfigurationArgs.builder()
 ///                     .identityAttributeName("12345ec453-1546651e-79c4-4554-91fa-00b43ccfa245")
 ///                     .build())
 ///                 .build())
-///             .indexId(exampleAwsKendraIndex.id())
+///             .indexId(exampleAwsKendraIndex.get("id"))
 ///             .description("My Kendra Experience")
 ///             .name("example")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -249,7 +252,7 @@ class Experience extends pulumi.CustomResource {
           'aws:kendra/experience:Experience',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     configuration = registerOutput<ExperienceConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperienceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -76,7 +76,7 @@ import 'access_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -85,6 +85,9 @@ import 'access_state.dart';
 /// }
 ///
 /// resource "aws_transfer_access" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   external_id    = "S-1-1-12-1234567890-123456789-1234567890-1234"
 ///   server_id      = exampleAwsTransferServer.id
 ///   role           = exampleAwsIamRole.arn
@@ -114,9 +117,9 @@ import 'access_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Access("example", AccessArgs.builder()
 ///             .externalId("S-1-1-12-1234567890-123456789-1234567890-1234")
-///             .serverId(exampleAwsTransferServer.id())
-///             .role(exampleAwsIamRole.arn())
-///             .homeDirectory(String.format("/%s/", exampleAwsS3Bucket.id()))
+///             .serverId(exampleAwsTransferServer.get("id"))
+///             .role(exampleAwsIamRole.get("arn"))
+///             .homeDirectory(String.format("/%s/", exampleAwsS3Bucket.get("id")))
 ///             .build());
 ///
 ///     }
@@ -217,7 +220,7 @@ import 'access_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -226,7 +229,10 @@ import 'access_state.dart';
 /// }
 ///
 /// resource "aws_transfer_access" "test" {
-///   posix_profile = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   posix_profile {
 ///     gid = 1000
 ///     uid = 1000
 ///   }
@@ -264,9 +270,9 @@ import 'access_state.dart';
 ///                 .uid(1000)
 ///                 .build())
 ///             .externalId("S-1-1-12-1234567890-123456789-1234567890-1234")
-///             .serverId(testAwsTransferServer.id())
-///             .role(testAwsIamRole.arn())
-///             .homeDirectory(String.format("/%s/", testAwsEfsFileSystem.id()))
+///             .serverId(testAwsTransferServer.get("id"))
+///             .role(testAwsIamRole.get("arn"))
+///             .homeDirectory(String.format("/%s/", testAwsEfsFileSystem.get("id")))
 ///             .build());
 ///
 ///     }
@@ -326,7 +332,7 @@ class Access extends pulumi.CustomResource {
           'aws:transfer/access:Access',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     externalId = registerOutput<String>('externalId');
     homeDirectory = registerOutput<String?>('homeDirectory');

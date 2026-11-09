@@ -58,7 +58,7 @@ import 'agentcore_browser_profile_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -66,7 +66,10 @@ import 'agentcore_browser_profile_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcorebrowserprofile" "example" {
+/// resource "aws_bedrock_agentcore_browser_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// ```
@@ -165,7 +168,7 @@ import 'agentcore_browser_profile_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -173,7 +176,10 @@ import 'agentcore_browser_profile_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcorebrowserprofile" "example" {
+/// resource "aws_bedrock_agentcore_browser_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   description = "Example browser profile for web data extraction"
 /// }
@@ -292,7 +298,7 @@ import 'agentcore_browser_profile_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -300,7 +306,10 @@ import 'agentcore_browser_profile_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcorebrowserprofile" "example" {
+/// resource "aws_bedrock_agentcore_browser_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   description = "Browser profile with tags"
 ///   tags = {
@@ -405,7 +414,7 @@ class AgentcoreBrowserProfile extends pulumi.CustomResource {
           'aws:bedrock/agentcoreBrowserProfile:AgentcoreBrowserProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

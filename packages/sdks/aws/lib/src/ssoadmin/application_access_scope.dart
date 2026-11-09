@@ -105,7 +105,7 @@ import 'application_access_scope_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -113,15 +113,21 @@ import 'application_access_scope_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
 ///
 /// resource "aws_ssoadmin_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example"
 ///   application_provider_arn = "arn:aws:sso::aws:applicationProvider/custom"
-///   instance_arn             = data.aws_ssoadmin_getinstances.example.arns[0]
+///   instance_arn             = data.aws_ssoadmin_instances.example.arns[0]
 /// }
-/// resource "aws_ssoadmin_applicationaccessscope" "example" {
+/// resource "aws_ssoadmin_application_access_scope" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_arn    = aws_ssoadmin_application.example.arn
 ///   authorized_targets = ["arn:aws:sso::123456789012:application/ssoins-123456789012/apl-123456789012"]
 ///   scope              = "sso:account:access"
@@ -226,7 +232,7 @@ class ApplicationAccessScope extends pulumi.CustomResource {
           'aws:ssoadmin/applicationAccessScope:ApplicationAccessScope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     applicationArn = registerOutput<String>('applicationArn');
     authorizedTargets = registerOutput<List<String>?>('authorizedTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

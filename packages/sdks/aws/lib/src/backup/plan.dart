@@ -131,7 +131,7 @@ import 'plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -140,14 +140,17 @@ import 'plan_state.dart';
 /// }
 ///
 /// resource "aws_backup_plan" "example" {
-///   advanced_backup_settings {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   advanced_backup_setting {
 ///     backup_options = {
 ///       "WindowsVSS" = "enabled"
 ///     }
 ///     resource_type = "EC2"
 ///   }
-///   rules {
-///     lifecycle = {
+///   rule {
+///     lifecycle {
 ///       delete_after = 14
 ///     }
 ///     rule_name         = "my_example_backup_rule"
@@ -191,7 +194,7 @@ import 'plan_state.dart';
 ///                     .deleteAfter(14)
 ///                     .build())
 ///                 .ruleName("my_example_backup_rule")
-///                 .targetVaultName(test.name())
+///                 .targetVaultName(test.get("name"))
 ///                 .schedule("cron(0 12 * * ? *)")
 ///                 .build())
 ///             .name("my_example_backup_plan")
@@ -270,7 +273,7 @@ class Plan extends pulumi.CustomResource {
           'aws:backup/plan:Plan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     advancedBackupSettings = registerOutput<List<PlanAdvancedBackupSetting>?>('advancedBackupSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanAdvancedBackupSetting>(guardedValue, (value) => PlanAdvancedBackupSetting.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');

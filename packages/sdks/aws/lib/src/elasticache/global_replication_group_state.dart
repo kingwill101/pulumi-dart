@@ -52,10 +52,14 @@ class GlobalReplicationGroupState {
   /// An ElastiCache Parameter Group to use for the Global Replication Group.
   /// Required when upgrading a major engine version, but will be ignored if left configured after the upgrade is complete. Specifying without a major version upgrade will fail. When a replication group joins a global datastore, AWS auto-generates a new parameter group (prefixed `global-datastore-`) derived from the primary's parameter group. Note that ElastiCache creates a copy of this parameter group for each member replication group.
   final pulumi.Input<String?>? parameterGroupName;
-  /// The ID of the primary cluster that accepts writes and will replicate updates to the secondary cluster. If `primaryReplicationGroupId` is changed, creates a new resource.
+  /// The ID of the primary cluster that accepts writes and will replicate updates to the secondary cluster. Changing this value will trigger a failover to the specified replication group.
   final pulumi.Input<String?>? primaryReplicationGroupId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final pulumi.Input<Map<String, String>?>? tags;
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// A flag that indicates whether the encryption in transit is enabled.
   final pulumi.Input<bool?>? transitEncryptionEnabled;
 
@@ -75,8 +79,10 @@ class GlobalReplicationGroupState {
   /// [globalReplicationGroupIdSuffix] The suffix name of a Global Datastore. If `globalReplicationGroupIdSuffix` is changed, creates a new resource.
   /// [numNodeGroups] The number of node groups (shards) on the global replication group.
   /// [parameterGroupName] An ElastiCache Parameter Group to use for the Global Replication Group.
-  /// [primaryReplicationGroupId] The ID of the primary cluster that accepts writes and will replicate updates to the secondary cluster. If `primaryReplicationGroupId` is changed, creates a new resource.
+  /// [primaryReplicationGroupId] The ID of the primary cluster that accepts writes and will replicate updates to the secondary cluster. Changing this value will trigger a failover to the specified replication group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [transitEncryptionEnabled] A flag that indicates whether the encryption in transit is enabled.
   const GlobalReplicationGroupState({
     this.arn,
@@ -96,6 +102,8 @@ class GlobalReplicationGroupState {
     this.parameterGroupName,
     this.primaryReplicationGroupId,
     this.region,
+    this.tags,
+    this.tagsAll,
     this.transitEncryptionEnabled,
   });
 
@@ -118,6 +126,8 @@ class GlobalReplicationGroupState {
       'parameterGroupName': ?parameterGroupName,
       'primaryReplicationGroupId': ?primaryReplicationGroupId,
       'region': ?region,
+      'tags': ?tags,
+      'tagsAll': ?tagsAll,
       'transitEncryptionEnabled': ?transitEncryptionEnabled,
     };
   }
@@ -141,6 +151,8 @@ class GlobalReplicationGroupState {
       parameterGroupName: (() { final guardedValue = map['parameterGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       primaryReplicationGroupId: (() { final guardedValue = map['primaryReplicationGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       transitEncryptionEnabled: (() { final guardedValue = map['transitEncryptionEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

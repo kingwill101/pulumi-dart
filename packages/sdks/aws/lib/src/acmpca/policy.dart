@@ -198,7 +198,7 @@ import 'policy_state.dart';
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "AWS",
-/// 							Identifiers: pulumi.StringArray{
+/// 							Identifiers: []string{
 /// 								current.AccountId,
 /// 							},
 /// 						},
@@ -212,7 +212,7 @@ import 'policy_state.dart';
 /// 						"acm-pca:ListPermissions",
 /// 						"acm-pca:ListTags",
 /// 					},
-/// 					Resources: pulumi.StringArray{
+/// 					Resources: []string{
 /// 						exampleAwsAcmpcaCertificateAuthority.Arn,
 /// 					},
 /// 				},
@@ -229,7 +229,7 @@ import 'policy_state.dart';
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "AWS",
-/// 							Identifiers: pulumi.StringArray{
+/// 							Identifiers: []string{
 /// 								current.AccountId,
 /// 							},
 /// 						},
@@ -239,7 +239,7 @@ import 'policy_state.dart';
 /// 					Actions: []string{
 /// 						"acm-pca:IssueCertificate",
 /// 					},
-/// 					Resources: pulumi.StringArray{
+/// 					Resources: []string{
 /// 						exampleAwsAcmpcaCertificateAuthority.Arn,
 /// 					},
 /// 				},
@@ -260,7 +260,7 @@ import 'policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -268,8 +268,8 @@ import 'policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = [current.accountId]
@@ -279,8 +279,8 @@ import 'policy_state.dart';
 ///     actions   = ["acm-pca:DescribeCertificateAuthority", "acm-pca:GetCertificate", "acm-pca:GetCertificateAuthorityCertificate", "acm-pca:ListPermissions", "acm-pca:ListTags"]
 ///     resources = [exampleAwsAcmpcaCertificateAuthority.arn]
 ///   }
-///   statements {
-///     conditions {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
 ///       variable = "acm-pca:TemplateArn"
 ///       values   = ["arn:aws:acm-pca:::template/EndEntityCertificate/V1"]
@@ -297,8 +297,11 @@ import 'policy_state.dart';
 /// }
 ///
 /// resource "aws_acmpca_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_arn = exampleAwsAcmpcaCertificateAuthority.arn
-///   policy       = data.aws_iam_getpolicydocument.example.json
+///   policy       = data.aws_iam_policy_document.example.json
 /// }
 /// ```
 /// ```java
@@ -332,7 +335,7 @@ import 'policy_state.dart';
 ///                 GetPolicyDocumentStatementArgs.builder()
 ///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                         .type("AWS")
-///                         .identifiers(current.accountId())
+///                         .identifiers(current.get("accountId"))
 ///                         .build())
 ///                     .sid("1")
 ///                     .effect("Allow")
@@ -342,7 +345,7 @@ import 'policy_state.dart';
 ///                         "acm-pca:GetCertificateAuthorityCertificate",
 ///                         "acm-pca:ListPermissions",
 ///                         "acm-pca:ListTags")
-///                     .resources(exampleAwsAcmpcaCertificateAuthority.arn())
+///                     .resources(exampleAwsAcmpcaCertificateAuthority.get("arn"))
 ///                     .build(),
 ///                 GetPolicyDocumentStatementArgs.builder()
 ///                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
@@ -352,17 +355,17 @@ import 'policy_state.dart';
 ///                         .build())
 ///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                         .type("AWS")
-///                         .identifiers(current.accountId())
+///                         .identifiers(current.get("accountId"))
 ///                         .build())
 ///                     .sid("2")
 ///                     .effect(allow)
 ///                     .actions("acm-pca:IssueCertificate")
-///                     .resources(exampleAwsAcmpcaCertificateAuthority.arn())
+///                     .resources(exampleAwsAcmpcaCertificateAuthority.get("arn"))
 ///                     .build())
 ///             .build());
 ///
 ///         var examplePolicy = new Policy("examplePolicy", PolicyArgs.builder()
-///             .resourceArn(exampleAwsAcmpcaCertificateAuthority.arn())
+///             .resourceArn(exampleAwsAcmpcaCertificateAuthority.get("arn"))
 ///             .policy(example.json())
 ///             .build());
 ///
@@ -449,7 +452,7 @@ class Policy extends pulumi.CustomResource {
           'aws:acmpca/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

@@ -150,7 +150,7 @@ import 'user_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -158,7 +158,10 @@ import 'user_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_userpolicy" "lb_ro" {
+/// resource "aws_iam_user_policy" "lb_ro" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test"
 ///   user = aws_iam_user.lb.name
 ///   policy = jsonencode({
@@ -171,10 +174,16 @@ import 'user_policy_state.dart';
 ///   })
 /// }
 /// resource "aws_iam_user" "lb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "loadbalancer"
 ///   path = "/system/"
 /// }
-/// resource "aws_iam_accesskey" "lb" {
+/// resource "aws_iam_access_key" "lb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user = aws_iam_user.lb.name
 /// }
 /// ```
@@ -300,7 +309,7 @@ class UserPolicy extends pulumi.CustomResource {
           'aws:iam/userPolicy:UserPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');

@@ -71,7 +71,7 @@ import 'vpc_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -79,7 +79,10 @@ import 'vpc_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2transitgateway_vpcattachment" "example" {
+/// resource "aws_ec2transitgateway_vpc_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_ids         = [exampleAwsSubnet.id]
 ///   transit_gateway_id = exampleAwsEc2TransitGateway.id
 ///   vpc_id             = exampleAwsVpc.id
@@ -107,9 +110,9 @@ import 'vpc_attachment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new VpcAttachment("example", VpcAttachmentArgs.builder()
-///             .subnetIds(exampleAwsSubnet.id())
-///             .transitGatewayId(exampleAwsEc2TransitGateway.id())
-///             .vpcId(exampleAwsVpc.id())
+///             .subnetIds(exampleAwsSubnet.get("id"))
+///             .transitGatewayId(exampleAwsEc2TransitGateway.get("id"))
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .build());
 ///
 ///     }
@@ -176,7 +179,7 @@ class VpcAttachment extends pulumi.CustomResource {
           'aws:ec2transitgateway/vpcAttachment:VpcAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     applianceModeSupport = registerOutput<String?>('applianceModeSupport');
     arn = registerOutput<String>('arn');

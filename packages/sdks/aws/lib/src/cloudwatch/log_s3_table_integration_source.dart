@@ -82,7 +82,7 @@ import 'log_s3_table_integration_source_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -90,8 +90,11 @@ import 'log_s3_table_integration_source_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_logs3tableintegrationsource" "example" {
-///   data_source = {
+/// resource "aws_cloudwatch_log_s3_table_integration_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   data_source {
 ///     name = "*"
 ///     type = "*"
 ///   }
@@ -125,7 +128,7 @@ import 'log_s3_table_integration_source_timeouts.dart';
 ///                 .name("*")
 ///                 .type("*")
 ///                 .build())
-///             .integrationArn(exampleAwsObservabilityadminS3TableIntegration.arn())
+///             .integrationArn(exampleAwsObservabilityadminS3TableIntegration.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -152,7 +155,7 @@ import 'log_s3_table_integration_source_timeouts.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// // Tag the log group to declare it as a custom data source.
+/// // Tag the log group to declare it as a custom function.
 /// // Log stream messages are written to the "myapp__events" table
 /// // in the aws-cloudwatch table bucket.
 /// const example = new aws.cloudwatch.LogGroup("example", {
@@ -174,7 +177,7 @@ import 'log_s3_table_integration_source_timeouts.dart';
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// # Tag the log group to declare it as a custom data source.
+/// # Tag the log group to declare it as a custom function.
 /// # Log stream messages are written to the "myapp__events" table
 /// # in the aws-cloudwatch table bucket.
 /// example = aws.cloudwatch.LogGroup("example",
@@ -198,7 +201,7 @@ import 'log_s3_table_integration_source_timeouts.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     // Tag the log group to declare it as a custom data source.
+///     // Tag the log group to declare it as a custom function.
 ///     // Log stream messages are written to the "myapp__events" table
 ///     // in the aws-cloudwatch table bucket.
 ///     var example = new Aws.CloudWatch.LogGroup("example", new()
@@ -233,7 +236,7 @@ import 'log_s3_table_integration_source_timeouts.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		// Tag the log group to declare it as a custom data source.
+/// 		// Tag the log group to declare it as a custom function.
 /// 		// Log stream messages are written to the "myapp__events" table
 /// 		// in the aws-cloudwatch table bucket.
 /// 		_, err := cloudwatch.NewLogGroup(ctx, "example", &cloudwatch.LogGroupArgs{
@@ -261,7 +264,7 @@ import 'log_s3_table_integration_source_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -269,18 +272,24 @@ import 'log_s3_table_integration_source_timeouts.dart';
 ///   }
 /// }
 ///
-/// # Tag the log group to declare it as a custom data source.
+/// # Tag the log group to declare it as a custom function.
 /// # Log stream messages are written to the "myapp__events" table
 /// # in the aws-cloudwatch table bucket.
-/// resource "aws_cloudwatch_loggroup" "example" {
+/// resource "aws_cloudwatch_log_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "/example/myapp"
 ///   tags = {
 ///     "cw:datasource:name" = "myapp"
 ///     "cw:datasource:type" = "events"
 ///   }
 /// }
-/// resource "aws_cloudwatch_logs3tableintegrationsource" "example" {
-///   data_source = {
+/// resource "aws_cloudwatch_log_s3_table_integration_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   data_source {
 ///     name = "myapp"
 ///     type = "events"
 ///   }
@@ -311,7 +320,7 @@ import 'log_s3_table_integration_source_timeouts.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         // Tag the log group to declare it as a custom data source.
+///         // Tag the log group to declare it as a custom function.
 ///         // Log stream messages are written to the "myapp__events" table
 ///         // in the aws-cloudwatch table bucket.
 ///         var example = new LogGroup("example", LogGroupArgs.builder()
@@ -327,7 +336,7 @@ import 'log_s3_table_integration_source_timeouts.dart';
 ///                 .name("myapp")
 ///                 .type("events")
 ///                 .build())
-///             .integrationArn(exampleAwsObservabilityadminS3TableIntegration.arn())
+///             .integrationArn(exampleAwsObservabilityadminS3TableIntegration.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -335,7 +344,7 @@ import 'log_s3_table_integration_source_timeouts.dart';
 /// ```
 /// ```yaml
 /// resources:
-///   # Tag the log group to declare it as a custom data source.
+///   # Tag the log group to declare it as a custom function.
 ///   # Log stream messages are written to the "myapp__events" table
 ///   # in the aws-cloudwatch table bucket.
 ///   example:
@@ -397,7 +406,7 @@ class LogS3TableIntegrationSource extends pulumi.CustomResource {
           'aws:cloudwatch/logS3TableIntegrationSource:LogS3TableIntegrationSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     dataSource = registerOutput<LogS3TableIntegrationSourceDataSource>('dataSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogS3TableIntegrationSourceDataSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     integrationArn = registerOutput<String>('integrationArn');

@@ -78,7 +78,7 @@ import 'monitoring_schedule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,8 +86,11 @@ import 'monitoring_schedule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_monitoringschedule" "test" {
-///   monitoring_schedule_config = {
+/// resource "aws_sagemaker_monitoring_schedule" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   monitoring_schedule_config {
 ///     monitoring_job_definition_name = testAwsSagemakerDataQualityJobDefinition.name
 ///     monitoring_type                = "DataQuality"
 ///   }
@@ -118,7 +121,7 @@ import 'monitoring_schedule_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var test = new MonitoringSchedule("test", MonitoringScheduleArgs.builder()
 ///             .monitoringScheduleConfig(MonitoringScheduleMonitoringScheduleConfigArgs.builder()
-///                 .monitoringJobDefinitionName(testAwsSagemakerDataQualityJobDefinition.name())
+///                 .monitoringJobDefinitionName(testAwsSagemakerDataQualityJobDefinition.get("name"))
 ///                 .monitoringType("DataQuality")
 ///                 .build())
 ///             .name("my-monitoring-schedule")
@@ -172,7 +175,7 @@ class MonitoringSchedule extends pulumi.CustomResource {
           'aws:sagemaker/monitoringSchedule:MonitoringSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     monitoringScheduleConfig = registerOutput<MonitoringScheduleMonitoringScheduleConfig>('monitoringScheduleConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitoringScheduleMonitoringScheduleConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

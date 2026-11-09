@@ -207,7 +207,7 @@ import 'resource_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -215,20 +215,26 @@ import 'resource_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getpartition" "current" {
+/// data "aws_partition" "current" {
 /// }
-/// data "aws_getcalleridentity" "currentGetCallerIdentity" {
+/// data "aws_caller_identity" "currentGetCallerIdentity" {
 /// }
 ///
-/// resource "aws_codebuild_reportgroup" "example" {
-///   export_config = {
+/// resource "aws_codebuild_report_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   export_config {
 ///     type = "NO_EXPORT"
 ///   }
 ///   name = "example"
 ///   type = "TEST"
 /// }
-/// resource "aws_codebuild_resourcepolicy" "example" {
-///   resource_arn = aws_codebuild_reportgroup.example.arn
+/// resource "aws_codebuild_resource_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_arn = aws_codebuild_report_group.example.arn
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
 ///     "Id"      = "default"
@@ -236,10 +242,10 @@ import 'resource_policy_state.dart';
 ///       "Sid"    = "default"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:${data.aws_getpartition.current.partition}:iam::${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:root"
+///         "AWS" ="arn:${data.aws_partition.current.partition}:iam::${data.aws_caller_identity.currentGetCallerIdentity.account_id}:root"
 ///       }
 ///       "Action"   = ["codebuild:BatchGetReportGroups", "codebuild:BatchGetReports", "codebuild:ListReportsForReportGroup", "codebuild:DescribeTestCases"]
-///       "Resource" = aws_codebuild_reportgroup.example.arn
+///       "Resource" = aws_codebuild_report_group.example.arn
 ///     }]
 ///   })
 /// }
@@ -387,7 +393,7 @@ class ResourcePolicy extends pulumi.CustomResource {
           'aws:codebuild/resourcePolicy:ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

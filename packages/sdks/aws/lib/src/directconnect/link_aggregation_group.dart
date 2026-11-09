@@ -73,7 +73,7 @@ import 'link_aggregation_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -81,7 +81,10 @@ import 'link_aggregation_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_directconnect_linkaggregationgroup" "hoge" {
+/// resource "aws_directconnect_link_aggregation_group" "hoge" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "tf-dx-lag"
 ///   connections_bandwidth = "1Gbps"
 ///   location              = "EqDC2"
@@ -180,7 +183,7 @@ class LinkAggregationGroup extends pulumi.CustomResource {
           'aws:directconnect/linkAggregationGroup:LinkAggregationGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     connectionId = registerOutput<String?>('connectionId');

@@ -63,7 +63,7 @@ import 'endpoint_access_vpc_endpoint.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,7 +71,10 @@ import 'endpoint_access_vpc_endpoint.dart';
 ///   }
 /// }
 ///
-/// resource "aws_redshiftserverless_endpointaccess" "example" {
+/// resource "aws_redshiftserverless_endpoint_access" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_name  = "example"
 ///   workgroup_name = "example"
 /// }
@@ -156,7 +159,7 @@ class EndpointAccess extends pulumi.CustomResource {
           'aws:redshiftserverless/endpointAccess:EndpointAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     address = registerOutput<String>('address');
     arn = registerOutput<String>('arn');

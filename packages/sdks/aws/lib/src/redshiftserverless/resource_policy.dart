@@ -129,7 +129,7 @@ import 'resource_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -137,7 +137,10 @@ import 'resource_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_redshiftserverless_resourcepolicy" "example" {
+/// resource "aws_redshiftserverless_resource_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_arn = exampleAwsRedshiftserverlessSnapshot.arn
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -175,7 +178,7 @@ import 'resource_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ResourcePolicy("example", ResourcePolicyArgs.builder()
-///             .resourceArn(exampleAwsRedshiftserverlessSnapshot.arn())
+///             .resourceArn(exampleAwsRedshiftserverlessSnapshot.get("arn"))
 ///             .policy(serializeJson(
 ///                 jsonObject(
 ///                     jsonProperty("Version", "2012-10-17"),
@@ -240,7 +243,7 @@ class ResourcePolicy extends pulumi.CustomResource {
           'aws:redshiftserverless/resourcePolicy:ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

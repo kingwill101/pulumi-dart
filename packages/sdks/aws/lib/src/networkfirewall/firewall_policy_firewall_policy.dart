@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_policy_firewall_policy_policy_variables.dart';
+import 'firewall_policy_firewall_policy_route53_resolved_ip_validation.dart';
 import 'firewall_policy_firewall_policy_stateful_engine_options.dart';
 import 'firewall_policy_firewall_policy_stateful_rule_group_reference.dart';
 import 'firewall_policy_firewall_policy_stateless_custom_action.dart';
@@ -12,6 +13,8 @@ class FirewallPolicyFirewallPolicy {
   final pulumi.Input<bool?>? enableTlsSessionHolding;
   /// . Contains variables that you can use to override default Suricata settings in your firewall policy. See Rule Variables for details.
   final pulumi.Input<FirewallPolicyFirewallPolicyPolicyVariables?>? policyVariables;
+  /// Resolved IP validation settings, which check that a connection's destination IP address was returned by the Route 53 Resolver in a VPC associated with a DNS Firewall rule group. See Route 53 Resolved IP Validation below for details.
+  final pulumi.Input<FirewallPolicyFirewallPolicyRoute53ResolvedIpValidation?>? route53ResolvedIpValidation;
   /// Set of actions to take on a packet if it does not match any stateful rules in the policy. This can only be specified if the policy has a `statefulEngineOptions` block with a `ruleOrder` value of `STRICT_ORDER`. Value values: `aws:drop_strict`, `aws:drop_established`, `aws:drop_established_app_layer`, `aws:alert_strict`, `aws:alert_established, `aws:alert_established_app_layer`. For more information, see [Strict evaluation order](https://docs.aws.amazon.com/network-firewall/latest/developerguide/suricata-rule-evaluation-order.html#suricata-strict-rule-evaluation-order.html) in the AWS Network Firewall Developer Guide.
   final pulumi.Input<List<String>?>? statefulDefaultActions;
   /// A configuration block that defines options on how the policy handles stateful rules. See Stateful Engine Options below for details.
@@ -34,6 +37,7 @@ class FirewallPolicyFirewallPolicy {
   /// Creates a new [FirewallPolicyFirewallPolicy].
   /// [enableTlsSessionHolding] Boolean indicating whether to prevent TCP and TLS packets from reaching destination servers until TLS Inspection has evaluated Server Name Indication (SNI) rules. If `true`, `tlsInspectionConfigurationArn` is required. Default value: `false`.
   /// [policyVariables] . Contains variables that you can use to override default Suricata settings in your firewall policy. See Rule Variables for details.
+  /// [route53ResolvedIpValidation] Resolved IP validation settings, which check that a connection's destination IP address was returned by the Route 53 Resolver in a VPC associated with a DNS Firewall rule group. See Route 53 Resolved IP Validation below for details.
   /// [statefulDefaultActions] Set of actions to take on a packet if it does not match any stateful rules in the policy. This can only be specified if the policy has a `statefulEngineOptions` block with a `ruleOrder` value of `STRICT_ORDER`. Value values: `aws:drop_strict`, `aws:drop_established`, `aws:drop_established_app_layer`, `aws:alert_strict`, `aws:alert_established, `aws:alert_established_app_layer`. For more information, see [Strict evaluation order](https://docs.aws.amazon.com/network-firewall/latest/developerguide/suricata-rule-evaluation-order.html#suricata-strict-rule-evaluation-order.html) in the AWS Network Firewall Developer Guide.
   /// [statefulEngineOptions] A configuration block that defines options on how the policy handles stateful rules. See Stateful Engine Options below for details.
   /// [statefulRuleGroupReferences] Set of configuration blocks containing references to the stateful rule groups that are used in the policy. See Stateful Rule Group Reference below for details.
@@ -45,6 +49,7 @@ class FirewallPolicyFirewallPolicy {
   const FirewallPolicyFirewallPolicy({
     this.enableTlsSessionHolding,
     this.policyVariables,
+    this.route53ResolvedIpValidation,
     this.statefulDefaultActions,
     this.statefulEngineOptions,
     this.statefulRuleGroupReferences,
@@ -59,6 +64,7 @@ class FirewallPolicyFirewallPolicy {
     return <String, dynamic>{
       'enableTlsSessionHolding': ?enableTlsSessionHolding,
       'policyVariables': ?pulumi.Input.mapOptionalInputValue<FirewallPolicyFirewallPolicyPolicyVariables, Map<String, dynamic>>(policyVariables, (value) => value.toMap()),
+      'route53ResolvedIpValidation': ?pulumi.Input.mapOptionalInputValue<FirewallPolicyFirewallPolicyRoute53ResolvedIpValidation, Map<String, dynamic>>(route53ResolvedIpValidation, (value) => value.toMap()),
       'statefulDefaultActions': ?statefulDefaultActions,
       'statefulEngineOptions': ?pulumi.Input.mapOptionalInputValue<FirewallPolicyFirewallPolicyStatefulEngineOptions, Map<String, dynamic>>(statefulEngineOptions, (value) => value.toMap()),
       'statefulRuleGroupReferences': ?pulumi.Input.mapOptionalInputValue<List<FirewallPolicyFirewallPolicyStatefulRuleGroupReference>, List<Map<String, dynamic>>>(statefulRuleGroupReferences, (value) => pulumi.Input.encodeList<FirewallPolicyFirewallPolicyStatefulRuleGroupReference, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -74,6 +80,7 @@ class FirewallPolicyFirewallPolicy {
     return FirewallPolicyFirewallPolicy(
       enableTlsSessionHolding: (() { final guardedValue = map['enableTlsSessionHolding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       policyVariables: (() { final guardedValue = map['policyVariables']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirewallPolicyFirewallPolicyPolicyVariables.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      route53ResolvedIpValidation: (() { final guardedValue = map['route53ResolvedIpValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirewallPolicyFirewallPolicyRoute53ResolvedIpValidation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       statefulDefaultActions: (() { final guardedValue = map['statefulDefaultActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       statefulEngineOptions: (() { final guardedValue = map['statefulEngineOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirewallPolicyFirewallPolicyStatefulEngineOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       statefulRuleGroupReferences: (() { final guardedValue = map['statefulRuleGroupReferences']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FirewallPolicyFirewallPolicyStatefulRuleGroupReference>(guardedValue, (value) => FirewallPolicyFirewallPolicyStatefulRuleGroupReference.fromMap((value as Map).cast<String, dynamic>()))); })(),

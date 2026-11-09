@@ -88,7 +88,7 @@ import 'query_definition_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -96,10 +96,18 @@ import 'query_definition_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_querydefinition" "example" {
+/// resource "aws_cloudwatch_query_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "custom_query"
 ///   log_group_names = ["/aws/logGroup1", "/aws/logGroup2"]
-///   query_string    = "fields @timestamp, @message\n| sort @timestamp desc\n| limit 25\n"
+///   query_string    = <<EOF
+/// fields @timestamp, @message
+/// | sort @timestamp desc
+/// | limit 25
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -199,7 +207,7 @@ class QueryDefinition extends pulumi.CustomResource {
           'aws:cloudwatch/queryDefinition:QueryDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     logGroupNames = registerOutput<List<String>?>('logGroupNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

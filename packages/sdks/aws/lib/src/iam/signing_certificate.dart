@@ -80,7 +80,7 @@ import 'signing_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -91,7 +91,10 @@ import 'signing_certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_signingcertificate" "test_cert" {
+/// resource "aws_iam_signing_certificate" "test_cert" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   username         = "some_test_cert"
 ///   certificate_body = file("self-ca-cert.pem")
 /// }
@@ -212,7 +215,7 @@ import 'signing_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -220,9 +223,17 @@ import 'signing_certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_signingcertificate" "test_cert_alt" {
+/// resource "aws_iam_signing_certificate" "test_cert_alt" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   username         = "some_test_cert"
-///   certificate_body = "-----BEGIN CERTIFICATE-----\n[......] # cert contents\n-----END CERTIFICATE-----\n"
+///   certificate_body = <<EOF
+/// -----BEGIN CERTIFICATE-----
+/// [......] # cert contents
+/// -----END CERTIFICATE-----
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -301,7 +312,7 @@ class SigningCertificate extends pulumi.CustomResource {
           'aws:iam/signingCertificate:SigningCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     certificateBody = registerOutput<String>('certificateBody');
     certificateId = registerOutput<String>('certificateId');

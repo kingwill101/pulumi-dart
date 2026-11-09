@@ -66,7 +66,7 @@ import 'bucket_accelerate_configuration_v2_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAccelerateConfiguration(ctx, "example", &s3.BucketAccelerateConfigurationArgs{
-/// 			Bucket: mybucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: mybucket.ID(),
 /// 			Status: pulumi.String("Enabled"),
 /// 		})
 /// 		if err != nil {
@@ -77,7 +77,7 @@ import 'bucket_accelerate_configuration_v2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,9 +86,15 @@ import 'bucket_accelerate_configuration_v2_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "mybucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "mybucket"
 /// }
-/// resource "aws_s3_bucketaccelerateconfiguration" "example" {
+/// resource "aws_s3_bucket_accelerate_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.mybucket.id
 ///   status = "Enabled"
 /// }
@@ -182,7 +188,7 @@ class BucketAccelerateConfigurationV2 extends pulumi.CustomResource {
           'aws:s3/bucketAccelerateConfigurationV2:BucketAccelerateConfigurationV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');

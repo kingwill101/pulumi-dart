@@ -63,7 +63,7 @@ import 'channel_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,6 +72,9 @@ import 'channel_state.dart';
 /// }
 ///
 /// resource "aws_mediapackage_channel" "kittens" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   channel_id  = "kitten-channel"
 ///   description = "A channel dedicated to amusing videos of kittens."
 /// }
@@ -150,7 +153,7 @@ class Channel extends pulumi.CustomResource {
           'aws:mediapackage/channel:Channel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     channelId = registerOutput<String>('channelId');

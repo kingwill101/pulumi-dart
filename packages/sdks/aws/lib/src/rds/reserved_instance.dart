@@ -17,7 +17,7 @@ import 'reserved_instance_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = aws.rds.getReservedInstanceOffering({
-///     dbInstanceClass: "db.t2.micro",
+///     dbInstanceClass: "db.t4g.micro",
 ///     duration: 31536000,
 ///     multiAz: false,
 ///     offeringType: "All Upfront",
@@ -33,7 +33,7 @@ import 'reserved_instance_state.dart';
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// test = aws.rds.get_reserved_instance_offering(db_instance_class="db.t2.micro",
+/// test = aws.rds.get_reserved_instance_offering(db_instance_class="db.t4g.micro",
 ///     duration=31536000,
 ///     multi_az=False,
 ///     offering_type="All Upfront",
@@ -53,7 +53,7 @@ import 'reserved_instance_state.dart';
 /// {
 ///     var test = Aws.Rds.GetReservedInstanceOffering.Invoke(new()
 ///     {
-///         DbInstanceClass = "db.t2.micro",
+///         DbInstanceClass = "db.t4g.micro",
 ///         Duration = 31536000,
 ///         MultiAz = false,
 ///         OfferingType = "All Upfront",
@@ -80,7 +80,7 @@ import 'reserved_instance_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		test, err := rds.GetReservedInstanceOffering(ctx, &rds.GetReservedInstanceOfferingArgs{
-/// 			DbInstanceClass:    "db.t2.micro",
+/// 			DbInstanceClass:    "db.t4g.micro",
 /// 			Duration:           31536000,
 /// 			MultiAz:            false,
 /// 			OfferingType:       "All Upfront",
@@ -102,7 +102,7 @@ import 'reserved_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -110,16 +110,19 @@ import 'reserved_instance_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_rds_getreservedinstanceoffering" "test" {
-///   db_instance_class   = "db.t2.micro"
+/// data "aws_rds_reserved_instance_offering" "test" {
+///   db_instance_class   = "db.t4g.micro"
 ///   duration            = 31536000
 ///   multi_az            = false
 ///   offering_type       = "All Upfront"
 ///   product_description = "mysql"
 /// }
 ///
-/// resource "aws_rds_reservedinstance" "example" {
-///   offering_id    = data.aws_rds_getreservedinstanceoffering.test.offering_id
+/// resource "aws_rds_reserved_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   offering_id    = data.aws_rds_reserved_instance_offering.test.offering_id
 ///   reservation_id = "optionalCustomReservationID"
 ///   instance_count = 3
 /// }
@@ -148,7 +151,7 @@ import 'reserved_instance_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = RdsFunctions.getReservedInstanceOffering(GetReservedInstanceOfferingArgs.builder()
-///             .dbInstanceClass("db.t2.micro")
+///             .dbInstanceClass("db.t4g.micro")
 ///             .duration(31536000)
 ///             .multiAz(false)
 ///             .offeringType("All Upfront")
@@ -177,7 +180,7 @@ import 'reserved_instance_state.dart';
 ///     fn::invoke:
 ///       function: aws:rds:getReservedInstanceOffering
 ///       arguments:
-///         dbInstanceClass: db.t2.micro
+///         dbInstanceClass: db.t4g.micro
 ///         duration: 3.1536e+07
 ///         multiAz: false
 ///         offeringType: All Upfront
@@ -246,7 +249,7 @@ class ReservedInstance extends pulumi.CustomResource {
           'aws:rds/reservedInstance:ReservedInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     currencyCode = registerOutput<String>('currencyCode');

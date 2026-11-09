@@ -81,7 +81,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -90,6 +90,9 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_elasticache_user" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user_id       = "testUserId"
 ///   user_name     = "testUserName"
 ///   access_string = "on ~app::* -@all +@read +@hash +@bitmap +@geo -setbit -bitfield -hset -hsetnx -hmset -hincrby -hincrbyfloat -hdel -bitop -geoadd -georadius -georadiusbymember"
@@ -220,7 +223,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -229,7 +232,10 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_elasticache_user" "test" {
-///   authentication_mode = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   authentication_mode {
 ///     type = "iam"
 ///   }
 ///   user_id       = "testuserid"
@@ -381,7 +387,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -390,7 +396,10 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_elasticache_user" "test" {
-///   authentication_mode = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   authentication_mode {
 ///     type      = "password"
 ///     passwords = ["password1", "password2"]
 ///   }
@@ -529,7 +538,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -538,6 +547,9 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_elasticache_user" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user_id              = "testUserId"
 ///   user_name            = "testUserName"
 ///   access_string        = "on ~* +@all"
@@ -642,7 +654,7 @@ class User extends pulumi.CustomResource {
           'aws:elasticache/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
           additionalSecretOutputs: const ['passwords', 'passwordsWo'],
         ) {
     accessString = registerOutput<String>('accessString');

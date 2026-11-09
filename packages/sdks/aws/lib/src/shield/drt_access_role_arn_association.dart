@@ -157,7 +157,7 @@ import 'drt_access_role_arn_association_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -165,10 +165,16 @@ import 'drt_access_role_arn_association_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_shield_drtaccessrolearnassociation" "example" {
+/// resource "aws_shield_drt_access_role_arn_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role_arn = aws_iam_role.example.arn
 /// }
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-role"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -182,7 +188,10 @@ import 'drt_access_role_arn_association_timeouts.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_iam_rolepolicyattachment" "example" {
+/// resource "aws_iam_role_policy_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role       = aws_iam_role.example.name
 ///   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy"
 /// }
@@ -294,7 +303,7 @@ class DrtAccessRoleArnAssociation extends pulumi.CustomResource {
           'aws:shield/drtAccessRoleArnAssociation:DrtAccessRoleArnAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     roleArn = registerOutput<String>('roleArn');
     timeouts = registerOutput<DrtAccessRoleArnAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DrtAccessRoleArnAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -285,7 +285,7 @@ import 'data_source_state.dart';
 /// 		}, nil)
 /// 		_, err = iam.NewRolePolicy(ctx, "example", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("example"),
-/// 			Role:   exampleRole.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   exampleRole.ID(),
 /// 			Policy: example.Json(),
 /// 		})
 /// 		if err != nil {
@@ -302,7 +302,7 @@ import 'data_source_state.dart';
 /// 			DynamodbConfig: &appsync.DataSourceDynamodbConfigArgs{
 /// 				TableName: exampleTable.Name,
 /// 			},
-/// 			ApiId:          exampleGraphQLApi.ID().ToIDOutput().ToStringOutput(),
+/// 			ApiId:          exampleGraphQLApi.ID(),
 /// 			Name:           pulumi.String("my_appsync_example"),
 /// 			ServiceRoleArn: exampleRole.Arn,
 /// 			Type:           pulumi.String("AMAZON_DYNAMODB"),
@@ -315,7 +315,7 @@ import 'data_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -323,8 +323,8 @@ import 'data_source_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["appsync.amazonaws.com"]
@@ -333,8 +333,8 @@ import 'data_source_state.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["dynamodb:*"]
 ///     resources = [aws_dynamodb_table.example.arn]
@@ -342,7 +342,10 @@ import 'data_source_state.dart';
 /// }
 ///
 /// resource "aws_dynamodb_table" "example" {
-///   attributes {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   attribute {
 ///     name = "UserId"
 ///     type = "S"
 ///   }
@@ -352,23 +355,35 @@ import 'data_source_state.dart';
 ///   hash_key       = "UserId"
 /// }
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iam_rolepolicy" "example" {
+/// resource "aws_iam_role_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "example"
 ///   role   = aws_iam_role.example.id
-///   policy = data.aws_iam_getpolicydocument.example.json
+///   policy = data.aws_iam_policy_document.example.json
 /// }
-/// resource "aws_appsync_graphqlapi" "example" {
+/// resource "aws_appsync_graph_q_l_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authentication_type = "API_KEY"
 ///   name                = "my_appsync_example"
 /// }
-/// resource "aws_appsync_datasource" "example" {
+/// resource "aws_appsync_data_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dynamodb_config = {
 ///     table_name = aws_dynamodb_table.example.name
 ///   }
-///   api_id           = aws_appsync_graphqlapi.example.id
+///   api_id           = aws_appsync_graph_q_l_api.example.id
 ///   name             = "my_appsync_example"
 ///   service_role_arn = aws_iam_role.example.arn
 ///   type             = "AMAZON_DYNAMODB"
@@ -585,7 +600,7 @@ class DataSource extends pulumi.CustomResource {
           'aws:appsync/dataSource:DataSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     arn = registerOutput<String>('arn');

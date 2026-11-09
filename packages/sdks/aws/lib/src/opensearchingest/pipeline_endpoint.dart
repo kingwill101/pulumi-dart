@@ -89,7 +89,7 @@ import 'pipeline_endpoint_vpc_options.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -97,7 +97,10 @@ import 'pipeline_endpoint_vpc_options.dart';
 ///   }
 /// }
 ///
-/// resource "aws_opensearchingest_pipelineendpoint" "example" {
+/// resource "aws_opensearchingest_pipeline_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_options = {
 ///     security_group_ids = [exampleAwsSecurityGroup.id]
 ///     subnet_ids         = [exampleAwsSubnet.id]
@@ -129,10 +132,10 @@ import 'pipeline_endpoint_vpc_options.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new PipelineEndpoint("example", PipelineEndpointArgs.builder()
 ///             .vpcOptions(PipelineEndpointVpcOptionsArgs.builder()
-///                 .securityGroupIds(exampleAwsSecurityGroup.id())
-///                 .subnetIds(exampleAwsSubnet.id())
+///                 .securityGroupIds(exampleAwsSecurityGroup.get("id"))
+///                 .subnetIds(exampleAwsSubnet.get("id"))
 ///                 .build())
-///             .pipelineArn(exampleAwsOsisPipeline.pipelineArn())
+///             .pipelineArn(exampleAwsOsisPipeline.get("pipelineArn"))
 ///             .build());
 ///
 ///     }
@@ -198,7 +201,7 @@ class PipelineEndpoint extends pulumi.CustomResource {
           'aws:opensearchingest/pipelineEndpoint:PipelineEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     pipelineArn = registerOutput<String>('pipelineArn');
     region = registerOutput<String>('region');

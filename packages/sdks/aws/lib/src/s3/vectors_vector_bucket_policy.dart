@@ -124,7 +124,7 @@ import 'vectors_vector_bucket_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -132,9 +132,29 @@ import 'vectors_vector_bucket_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_vectorsvectorbucketpolicy" "example" {
+/// resource "aws_s3_vectors_vector_bucket_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vector_bucket_arn = exampleAwsS3vectorsVectorBucket.arn
-///   policy            = "{\n  \\\"Version\\\": \\\"2012-10-17\\\",\n  \\\"Id\\\": \\\"writePolicy\\\",\n  \\\"Statement\\\": [{\n    \\\"Sid\\\": \\\"writeStatement\\\",\n    \\\"Effect\\\": \\\"Allow\\\",\n    \\\"Principal\\\": {\n      \\\"AWS\\\": \\\"123456789012\\\"\n    },\n    \\\"Action\\\": [\n      \\\"s3vectors:PutVectors\\\"\n    ],\n    \\\"Resource\\\": \\\"*\\\"\n  }]\n}\n"
+///   policy            = <<EOF
+/// {
+///   \"Version\": \"2012-10-17\",
+///   \"Id\": \"writePolicy\",
+///   \"Statement\": [{
+///     \"Sid\": \"writeStatement\",
+///     \"Effect\": \"Allow\",
+///     \"Principal\": {
+///       \"AWS\": \"123456789012\"
+///     },
+///     \"Action\": [
+///       \"s3vectors:PutVectors\"
+///     ],
+///     \"Resource\": \"*\"
+///   }]
+/// }
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -159,7 +179,7 @@ import 'vectors_vector_bucket_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new VectorsVectorBucketPolicy("example", VectorsVectorBucketPolicyArgs.builder()
-///             .vectorBucketArn(exampleAwsS3vectorsVectorBucket.arn())
+///             .vectorBucketArn(exampleAwsS3vectorsVectorBucket.get("arn"))
 ///             .policy("""
 /// {
 ///   \"Version\": \"2012-10-17\",
@@ -243,7 +263,7 @@ class VectorsVectorBucketPolicy extends pulumi.CustomResource {
           'aws:s3/vectorsVectorBucketPolicy:VectorsVectorBucketPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

@@ -78,7 +78,7 @@ import 'profiling_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,8 +86,11 @@ import 'profiling_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_codeguruprofiler_profilinggroup" "example" {
-///   agent_orchestration_config = {
+/// resource "aws_codeguruprofiler_profiling_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   agent_orchestration_config {
 ///     profiling_enabled = true
 ///   }
 ///   name             = "example"
@@ -176,7 +179,7 @@ class ProfilingGroup extends pulumi.CustomResource {
           'aws:codeguruprofiler/profilingGroup:ProfilingGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     agentOrchestrationConfig = registerOutput<ProfilingGroupAgentOrchestrationConfig>('agentOrchestrationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfilingGroupAgentOrchestrationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');

@@ -72,7 +72,7 @@ import 'kx_scaling_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -80,7 +80,10 @@ import 'kx_scaling_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_finspace_kxscalinggroup" "example" {
+/// resource "aws_finspace_kx_scaling_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "my-tf-kx-scalinggroup"
 ///   environment_id       = exampleAwsFinspaceKxEnvironment.id
 ///   availability_zone_id = "use1-az2"
@@ -110,7 +113,7 @@ import 'kx_scaling_group_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new KxScalingGroup("example", KxScalingGroupArgs.builder()
 ///             .name("my-tf-kx-scalinggroup")
-///             .environmentId(exampleAwsFinspaceKxEnvironment.id())
+///             .environmentId(exampleAwsFinspaceKxEnvironment.get("id"))
 ///             .availabilityZoneId("use1-az2")
 ///             .hostType("kx.sg.4xlarge")
 ///             .build());
@@ -179,7 +182,7 @@ class KxScalingGroup extends pulumi.CustomResource {
           'aws:finspace/kxScalingGroup:KxScalingGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZoneId = registerOutput<String>('availabilityZoneId');

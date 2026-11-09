@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MemberDetectorFeatureAdditionalConfiguration {
-  /// Name of the additional configuration. Valid values: `EKS_ADDON_MANAGEMENT`, `ECS_FARGATE_AGENT_MANAGEMENT`.
+  /// Name of the additional configuration. Valid values: `EKS_ADDON_MANAGEMENT`, `ECS_FARGATE_AGENT_MANAGEMENT`, or `RDS_DATA_RISK`. `RDS_DATA_RISK` applies to the `RDS_LOGIN_EVENTS` feature.
   final pulumi.Input<String> name;
   /// Status of the additional configuration. Valid values: `ENABLED`, `DISABLED`.
   final pulumi.Input<String> status;
 
   /// Creates a new [MemberDetectorFeatureAdditionalConfiguration].
-  /// [name] Name of the additional configuration. Valid values: `EKS_ADDON_MANAGEMENT`, `ECS_FARGATE_AGENT_MANAGEMENT`.
+  /// [name] Name of the additional configuration. Valid values: `EKS_ADDON_MANAGEMENT`, `ECS_FARGATE_AGENT_MANAGEMENT`, or `RDS_DATA_RISK`. `RDS_DATA_RISK` applies to the `RDS_LOGIN_EVENTS` feature.
   /// [status] Status of the additional configuration. Valid values: `ENABLED`, `DISABLED`.
   const MemberDetectorFeatureAdditionalConfiguration({
     required this.name,

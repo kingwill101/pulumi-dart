@@ -356,7 +356,7 @@ import 'scheduled_query_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -364,48 +364,56 @@ import 'scheduled_query_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_timestreamquery_scheduledquery" "example" {
-///   error_report_configuration = {
-///     s3_configuration = {
+/// resource "aws_timestreamquery_scheduled_query" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   error_report_configuration {
+///     s3_configuration {
 ///       bucket_name = exampleAwsS3Bucket.bucket
 ///     }
 ///   }
-///   notification_configuration = {
-///     sns_configuration = {
+///   notification_configuration {
+///     sns_configuration {
 ///       topic_arn = exampleAwsSnsTopic.arn
 ///     }
 ///   }
-///   schedule_configuration = {
+///   schedule_configuration {
 ///     schedule_expression = "rate(1 hour)"
 ///   }
-///   target_configuration = {
-///     timestream_configuration = {
-///       multi_measure_mappings = {
-///         multi_measure_attribute_mappings = [{
-///           "measureValueType" = "DOUBLE"
-///           "sourceColumn"     = "avg_cpu_utilization"
-///           }, {
-///           "measureValueType" = "DOUBLE"
-///           "sourceColumn"     = "p90_cpu_utilization"
-///           }, {
-///           "measureValueType" = "DOUBLE"
-///           "sourceColumn"     = "p95_cpu_utilization"
-///           }, {
-///           "measureValueType" = "DOUBLE"
-///           "sourceColumn"     = "p99_cpu_utilization"
-///         }]
+///   target_configuration {
+///     timestream_configuration {
+///       multi_measure_mappings {
+///         multi_measure_attribute_mapping {
+///           measure_value_type = "DOUBLE"
+///           source_column      = "avg_cpu_utilization"
+///         }
+///         multi_measure_attribute_mapping {
+///           measure_value_type = "DOUBLE"
+///           source_column      = "p90_cpu_utilization"
+///         }
+///         multi_measure_attribute_mapping {
+///           measure_value_type = "DOUBLE"
+///           source_column      = "p95_cpu_utilization"
+///         }
+///         multi_measure_attribute_mapping {
+///           measure_value_type = "DOUBLE"
+///           source_column      = "p99_cpu_utilization"
+///         }
 ///         target_multi_measure_name = "multi-metrics"
 ///       }
-///       dimension_mappings = [{
-///         "dimensionValueType" = "VARCHAR"
-///         "name"               = "az"
-///         }, {
-///         "dimensionValueType" = "VARCHAR"
-///         "name"               = "region"
-///         }, {
-///         "dimensionValueType" = "VARCHAR"
-///         "name"               = "hostname"
-///       }]
+///       dimension_mapping {
+///         dimension_value_type = "VARCHAR"
+///         name                 = "az"
+///       }
+///       dimension_mapping {
+///         dimension_value_type = "VARCHAR"
+///         name                 = "region"
+///       }
+///       dimension_mapping {
+///         dimension_value_type = "VARCHAR"
+///         name                 = "hostname"
+///       }
 ///       database_name = results.databaseName
 ///       table_name    = resultsAwsTimestreamwriteTable.tableName
 ///       time_column   = "binned_timestamp"
@@ -413,7 +421,19 @@ import 'scheduled_query_timeouts.dart';
 ///   }
 ///   execution_role_arn = exampleAwsIamRole.arn
 ///   name               = exampleAwsTimestreamwriteTable.tableName
-///   query_string       = "SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,\n\\tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,\n\\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,\n\\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,\n\\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization\nFROM exampledatabase.exampletable\nWHERE measure_name = 'metrics' AND time > ago(2h)\nGROUP BY region, hostname, az, BIN(time, 15s)\nORDER BY binned_timestamp ASC\nLIMIT 5\n"
+///   query_string       = <<EOF
+/// SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,
+/// \tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization
+/// FROM exampledatabase.exampletable
+/// WHERE measure_name = 'metrics' AND time > ago(2h)
+/// GROUP BY region, hostname, az, BIN(time, 15s)
+/// ORDER BY binned_timestamp ASC
+/// LIMIT 5
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -450,12 +470,12 @@ import 'scheduled_query_timeouts.dart';
 ///         var example = new ScheduledQuery("example", ScheduledQueryArgs.builder()
 ///             .errorReportConfiguration(ScheduledQueryErrorReportConfigurationArgs.builder()
 ///                 .s3Configuration(ScheduledQueryErrorReportConfigurationS3ConfigurationArgs.builder()
-///                     .bucketName(exampleAwsS3Bucket.bucket())
+///                     .bucketName(exampleAwsS3Bucket.get("bucket"))
 ///                     .build())
 ///                 .build())
 ///             .notificationConfiguration(ScheduledQueryNotificationConfigurationArgs.builder()
 ///                 .snsConfiguration(ScheduledQueryNotificationConfigurationSnsConfigurationArgs.builder()
-///                     .topicArn(exampleAwsSnsTopic.arn())
+///                     .topicArn(exampleAwsSnsTopic.get("arn"))
 ///                     .build())
 ///                 .build())
 ///             .scheduleConfiguration(ScheduledQueryScheduleConfigurationArgs.builder()
@@ -496,13 +516,13 @@ import 'scheduled_query_timeouts.dart';
 ///                             .dimensionValueType("VARCHAR")
 ///                             .name("hostname")
 ///                             .build())
-///                     .databaseName(results.databaseName())
-///                     .tableName(resultsAwsTimestreamwriteTable.tableName())
+///                     .databaseName(results.get("databaseName"))
+///                     .tableName(resultsAwsTimestreamwriteTable.get("tableName"))
 ///                     .timeColumn("binned_timestamp")
 ///                     .build())
 ///                 .build())
-///             .executionRoleArn(exampleAwsIamRole.arn())
-///             .name(exampleAwsTimestreamwriteTable.tableName())
+///             .executionRoleArn(exampleAwsIamRole.get("arn"))
+///             .name(exampleAwsTimestreamwriteTable.get("tableName"))
 ///             .queryString("""
 /// SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,
 /// \tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,
@@ -977,7 +997,7 @@ import 'scheduled_query_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = sqs.NewQueuePolicy(ctx, "test", &sqs.QueuePolicyArgs{
-/// 			QueueUrl: testQueue.ID().ToIDOutput().ToStringOutput(),
+/// 			QueueUrl: testQueue.ID(),
 /// 			Policy: pulumi.All(testQueue.Arn, testTopic.Arn).ApplyT(func(_args []interface{}) (string, error) {
 /// 				testQueueArn := _args[0].(string)
 /// 				testTopicArn := _args[1].(string)
@@ -1062,7 +1082,7 @@ import 'scheduled_query_timeouts.dart';
 /// 		json2 := string(tmpJSON2)
 /// 		_, err = iam.NewRolePolicy(ctx, "test", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("example"),
-/// 			Role:   testRole.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   testRole.ID(),
 /// 			Policy: pulumi.String(json2),
 /// 		})
 /// 		if err != nil {
@@ -1113,7 +1133,7 @@ import 'scheduled_query_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1122,22 +1142,37 @@ import 'scheduled_query_timeouts.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket        = "example"
 ///   force_destroy = true
 /// }
 /// resource "aws_sns_topic" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// resource "aws_sqs_queue" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example"
 ///   sqs_managed_sse_enabled = true
 /// }
-/// resource "aws_sns_topicsubscription" "test" {
-///   topic    = aws_sns_topic.test.arn
-///   protocol = "sqs"
-///   endpoint = aws_sqs_queue.test.arn
+/// resource "aws_sns_topic_subscription" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   topic_arn = aws_sns_topic.test.arn
+///   protocol  = "sqs"
+///   endpoint  = aws_sqs_queue.test.arn
 /// }
-/// resource "aws_sqs_queuepolicy" "test" {
+/// resource "aws_sqs_queue_policy" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   queue_url = aws_sqs_queue.test.id
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -1157,6 +1192,9 @@ import 'scheduled_query_timeouts.dart';
 ///   })
 /// }
 /// resource "aws_iam_role" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -1172,7 +1210,10 @@ import 'scheduled_query_timeouts.dart';
 ///     "Name" = "example"
 ///   }
 /// }
-/// resource "aws_iam_rolepolicy" "test" {
+/// resource "aws_iam_role_policy" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 ///   role = aws_iam_role.test.id
 ///   policy = jsonencode({
@@ -1185,13 +1226,19 @@ import 'scheduled_query_timeouts.dart';
 ///   })
 /// }
 /// resource "aws_timestreamwrite_database" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name = "exampledatabase"
 /// }
 /// resource "aws_timestreamwrite_table" "test" {
-///   magnetic_store_write_properties = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   magnetic_store_write_properties {
 ///     enable_magnetic_store_writes = true
 ///   }
-///   retention_properties = {
+///   retention_properties {
 ///     magnetic_store_retention_period_in_days = 1
 ///     memory_store_retention_period_in_hours  = 1
 ///   }
@@ -1199,13 +1246,19 @@ import 'scheduled_query_timeouts.dart';
 ///   table_name    = "exampletable"
 /// }
 /// resource "aws_timestreamwrite_database" "results" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_name = "exampledatabase-results"
 /// }
 /// resource "aws_timestreamwrite_table" "results" {
-///   magnetic_store_write_properties = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   magnetic_store_write_properties {
 ///     enable_magnetic_store_writes = true
 ///   }
-///   retention_properties = {
+///   retention_properties {
 ///     magnetic_store_retention_period_in_days = 1
 ///     memory_store_retention_period_in_hours  = 1
 ///   }
@@ -1826,7 +1879,7 @@ import 'scheduled_query_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1834,48 +1887,56 @@ import 'scheduled_query_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_timestreamquery_scheduledquery" "example" {
-///   error_report_configuration = {
-///     s3_configuration = {
+/// resource "aws_timestreamquery_scheduled_query" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   error_report_configuration {
+///     s3_configuration {
 ///       bucket_name = exampleAwsS3Bucket.bucket
 ///     }
 ///   }
-///   notification_configuration = {
-///     sns_configuration = {
+///   notification_configuration {
+///     sns_configuration {
 ///       topic_arn = exampleAwsSnsTopic.arn
 ///     }
 ///   }
-///   schedule_configuration = {
+///   schedule_configuration {
 ///     schedule_expression = "rate(1 hour)"
 ///   }
-///   target_configuration = {
-///     timestream_configuration = {
-///       multi_measure_mappings = {
-///         multi_measure_attribute_mappings = [{
-///           "measureValueType" = "DOUBLE"
-///           "sourceColumn"     = "avg_cpu_utilization"
-///           }, {
-///           "measureValueType" = "DOUBLE"
-///           "sourceColumn"     = "p90_cpu_utilization"
-///           }, {
-///           "measureValueType" = "DOUBLE"
-///           "sourceColumn"     = "p95_cpu_utilization"
-///           }, {
-///           "measureValueType" = "DOUBLE"
-///           "sourceColumn"     = "p99_cpu_utilization"
-///         }]
+///   target_configuration {
+///     timestream_configuration {
+///       multi_measure_mappings {
+///         multi_measure_attribute_mapping {
+///           measure_value_type = "DOUBLE"
+///           source_column      = "avg_cpu_utilization"
+///         }
+///         multi_measure_attribute_mapping {
+///           measure_value_type = "DOUBLE"
+///           source_column      = "p90_cpu_utilization"
+///         }
+///         multi_measure_attribute_mapping {
+///           measure_value_type = "DOUBLE"
+///           source_column      = "p95_cpu_utilization"
+///         }
+///         multi_measure_attribute_mapping {
+///           measure_value_type = "DOUBLE"
+///           source_column      = "p99_cpu_utilization"
+///         }
 ///         target_multi_measure_name = "multi-metrics"
 ///       }
-///       dimension_mappings = [{
-///         "dimensionValueType" = "VARCHAR"
-///         "name"               = "az"
-///         }, {
-///         "dimensionValueType" = "VARCHAR"
-///         "name"               = "region"
-///         }, {
-///         "dimensionValueType" = "VARCHAR"
-///         "name"               = "hostname"
-///       }]
+///       dimension_mapping {
+///         dimension_value_type = "VARCHAR"
+///         name                 = "az"
+///       }
+///       dimension_mapping {
+///         dimension_value_type = "VARCHAR"
+///         name                 = "region"
+///       }
+///       dimension_mapping {
+///         dimension_value_type = "VARCHAR"
+///         name                 = "hostname"
+///       }
 ///       database_name = results.databaseName
 ///       table_name    = resultsAwsTimestreamwriteTable.tableName
 ///       time_column   = "binned_timestamp"
@@ -1883,7 +1944,19 @@ import 'scheduled_query_timeouts.dart';
 ///   }
 ///   execution_role_arn = exampleAwsIamRole.arn
 ///   name               = exampleAwsTimestreamwriteTable.tableName
-///   query_string       = "SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,\n\\tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,\n\\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,\n\\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,\n\\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization\nFROM exampledatabase.exampletable\nWHERE measure_name = 'metrics' AND time > ago(2h)\nGROUP BY region, hostname, az, BIN(time, 15s)\nORDER BY binned_timestamp ASC\nLIMIT 5\n"
+///   query_string       = <<EOF
+/// SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,
+/// \tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization
+/// FROM exampledatabase.exampletable
+/// WHERE measure_name = 'metrics' AND time > ago(2h)
+/// GROUP BY region, hostname, az, BIN(time, 15s)
+/// ORDER BY binned_timestamp ASC
+/// LIMIT 5
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -1920,12 +1993,12 @@ import 'scheduled_query_timeouts.dart';
 ///         var example = new ScheduledQuery("example", ScheduledQueryArgs.builder()
 ///             .errorReportConfiguration(ScheduledQueryErrorReportConfigurationArgs.builder()
 ///                 .s3Configuration(ScheduledQueryErrorReportConfigurationS3ConfigurationArgs.builder()
-///                     .bucketName(exampleAwsS3Bucket.bucket())
+///                     .bucketName(exampleAwsS3Bucket.get("bucket"))
 ///                     .build())
 ///                 .build())
 ///             .notificationConfiguration(ScheduledQueryNotificationConfigurationArgs.builder()
 ///                 .snsConfiguration(ScheduledQueryNotificationConfigurationSnsConfigurationArgs.builder()
-///                     .topicArn(exampleAwsSnsTopic.arn())
+///                     .topicArn(exampleAwsSnsTopic.get("arn"))
 ///                     .build())
 ///                 .build())
 ///             .scheduleConfiguration(ScheduledQueryScheduleConfigurationArgs.builder()
@@ -1966,13 +2039,13 @@ import 'scheduled_query_timeouts.dart';
 ///                             .dimensionValueType("VARCHAR")
 ///                             .name("hostname")
 ///                             .build())
-///                     .databaseName(results.databaseName())
-///                     .tableName(resultsAwsTimestreamwriteTable.tableName())
+///                     .databaseName(results.get("databaseName"))
+///                     .tableName(resultsAwsTimestreamwriteTable.get("tableName"))
 ///                     .timeColumn("binned_timestamp")
 ///                     .build())
 ///                 .build())
-///             .executionRoleArn(exampleAwsIamRole.arn())
-///             .name(exampleAwsTimestreamwriteTable.tableName())
+///             .executionRoleArn(exampleAwsIamRole.get("arn"))
+///             .name(exampleAwsTimestreamwriteTable.get("tableName"))
 ///             .queryString("""
 /// SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,
 /// \tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,
@@ -2102,7 +2175,7 @@ class ScheduledQuery extends pulumi.CustomResource {
           'aws:timestreamquery/scheduledQuery:ScheduledQuery',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationTime = registerOutput<String>('creationTime');

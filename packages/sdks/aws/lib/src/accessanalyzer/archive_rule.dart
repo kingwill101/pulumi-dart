@@ -135,7 +135,7 @@ import 'archive_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -143,18 +143,21 @@ import 'archive_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_accessanalyzer_archiverule" "example" {
-///   filters {
-///     criteria = "condition.aws:UserId"
-///     eqs      = ["userid"]
+/// resource "aws_accessanalyzer_archive_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   filters {
+///   filter {
+///     criteria = "condition.aws:UserId"
+///     eq       = ["userid"]
+///   }
+///   filter {
 ///     criteria = "error"
 ///     exists   = true
 ///   }
-///   filters {
+///   filter {
 ///     criteria = "isPublic"
-///     eqs      = ["false"]
+///     eq       = ["false"]
 ///   }
 ///   analyzer_name = "example-analyzer"
 ///   rule_name     = "example-rule"
@@ -251,7 +254,7 @@ class ArchiveRule extends pulumi.CustomResource {
           'aws:accessanalyzer/archiveRule:ArchiveRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     analyzerName = registerOutput<String>('analyzerName');
     filters = registerOutput<List<ArchiveRuleFilter>>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ArchiveRuleFilter>(guardedValue, (value) => ArchiveRuleFilter.fromMap((value as Map).cast<String, dynamic>())); });

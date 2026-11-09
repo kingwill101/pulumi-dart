@@ -74,7 +74,7 @@ import 'alert_manager_definition_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = amp.NewAlertManagerDefinition(ctx, "demo", &amp.AlertManagerDefinitionArgs{
-/// 			WorkspaceId: demo.ID().ToIDOutput().ToStringOutput(),
+/// 			WorkspaceId: demo.ID(),
 /// 			Definition: pulumi.String(`alertmanager_config: |
 ///   route:
 ///     receiver: 'default'
@@ -90,7 +90,7 @@ import 'alert_manager_definition_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -99,10 +99,23 @@ import 'alert_manager_definition_state.dart';
 /// }
 ///
 /// resource "aws_amp_workspace" "demo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_amp_alertmanagerdefinition" "demo" {
+/// resource "aws_amp_alert_manager_definition" "demo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workspace_id = aws_amp_workspace.demo.id
-///   definition   = "alertmanager_config: |\n  route:\n    receiver: 'default'\n  receivers:\n    - name: 'default'\n"
+///   definition   = <<EOF
+/// alertmanager_config: |
+///   route:
+///     receiver: 'default'
+///   receivers:
+///     - name: 'default'
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -188,7 +201,7 @@ class AlertManagerDefinition extends pulumi.CustomResource {
           'aws:amp/alertManagerDefinition:AlertManagerDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     definition = registerOutput<String>('definition');
     region = registerOutput<String>('region');

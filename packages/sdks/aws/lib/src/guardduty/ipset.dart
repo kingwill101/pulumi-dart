@@ -126,7 +126,7 @@ import 'ipset_state.dart';
 /// 		}
 /// 		myIPSet, err := s3.NewBucketObjectv2(ctx, "MyIPSet", &s3.BucketObjectv2Args{
 /// 			Content: pulumi.String("10.0.0.0/8\n"),
-/// 			Bucket:  bucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket:  bucket.ID(),
 /// 			Key:     pulumi.String("MyIPSet"),
 /// 		})
 /// 		if err != nil {
@@ -134,7 +134,7 @@ import 'ipset_state.dart';
 /// 		}
 /// 		_, err = guardduty.NewIPSet(ctx, "example", &guardduty.IPSetArgs{
 /// 			Activate:   pulumi.Bool(true),
-/// 			DetectorId: primary.ID().ToIDOutput().ToStringOutput(),
+/// 			DetectorId: primary.ID(),
 /// 			Format:     pulumi.String("TXT"),
 /// 			Location: pulumi.All(myIPSet.Bucket, myIPSet.Key).ApplyT(func(_args []interface{}) (string, error) {
 /// 				bucket := _args[0].(string)
@@ -147,7 +147,7 @@ import 'ipset_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "bucket_acl", &s3.BucketAclArgs{
-/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: bucket.ID(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -158,7 +158,7 @@ import 'ipset_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -166,23 +166,38 @@ import 'ipset_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_guardduty_ipset" "example" {
+/// resource "aws_guardduty_i_p_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   activate    = true
 ///   detector_id = aws_guardduty_detector.primary.id
 ///   format      = "TXT"
-///   location    ="https://s3.amazonaws.com/${aws_s3_bucketobjectv2.MyIPSet.bucket}/${aws_s3_bucketobjectv2.MyIPSet.key}"
+///   location    ="https://s3.amazonaws.com/${aws_s3_bucket_objectv2.MyIPSet.bucket}/${aws_s3_bucket_objectv2.MyIPSet.key}"
 ///   name        = "MyIPSet"
 /// }
 /// resource "aws_guardduty_detector" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enable = true
 /// }
 /// resource "aws_s3_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_s3_bucketacl" "bucket_acl" {
+/// resource "aws_s3_bucket_acl" "bucket_acl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.bucket.id
 ///   acl    = "private"
 /// }
-/// resource "aws_s3_bucketobjectv2" "MyIPSet" {
+/// resource "aws_s3_bucket_objectv2" "MyIPSet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   content = "10.0.0.0/8\n"
 ///   bucket  = aws_s3_bucket.bucket.id
 ///   key     = "MyIPSet"
@@ -324,7 +339,7 @@ class IPSet extends pulumi.CustomResource {
           'aws:guardduty/iPSet:IPSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     activate = registerOutput<bool>('activate');
     arn = registerOutput<String>('arn');

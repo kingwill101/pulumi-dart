@@ -69,7 +69,7 @@ import 'event_permission_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,7 +77,10 @@ import 'event_permission_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_eventpermission" "DevAccountAccess" {
+/// resource "aws_cloudwatch_event_permission" "DevAccountAccess" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   principal    = "123456789012"
 ///   statement_id = "DevAccountAccess"
 /// }
@@ -201,7 +204,7 @@ import 'event_permission_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -209,8 +212,11 @@ import 'event_permission_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_eventpermission" "OrganizationAccess" {
-///   condition = {
+/// resource "aws_cloudwatch_event_permission" "OrganizationAccess" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   condition {
 ///     key   = "aws:PrincipalOrgID"
 ///     type  = "StringEquals"
 ///     value = example.id
@@ -245,7 +251,7 @@ import 'event_permission_state.dart';
 ///             .condition(EventPermissionConditionArgs.builder()
 ///                 .key("aws:PrincipalOrgID")
 ///                 .type("StringEquals")
-///                 .value(example.id())
+///                 .value(example.get("id"))
 ///                 .build())
 ///             .principal("*")
 ///             .statementId("OrganizationAccess")
@@ -315,7 +321,7 @@ class EventPermission extends pulumi.CustomResource {
           'aws:cloudwatch/eventPermission:EventPermission',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     action = registerOutput<String?>('action');
     condition = registerOutput<EventPermissionCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventPermissionCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

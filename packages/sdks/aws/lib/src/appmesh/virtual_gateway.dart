@@ -118,7 +118,7 @@ import 'virtual_gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -126,14 +126,17 @@ import 'virtual_gateway_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appmesh_virtualgateway" "example" {
-///   spec = {
-///     listeners = [{
-///       "portMapping" = {
-///         "port"     = 8080
-///         "protocol" = "http"
+/// resource "aws_appmesh_virtual_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   spec {
+///     listener {
+///       port_mapping {
+///         port     = 8080
+///         protocol = "http"
 ///       }
-///     }]
+///     }
 ///   }
 ///   name      = "example-virtual-gateway"
 ///   mesh_name = "example-service-mesh"
@@ -364,7 +367,7 @@ import 'virtual_gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -372,29 +375,32 @@ import 'virtual_gateway_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appmesh_virtualgateway" "example" {
-///   spec = {
-///     logging = {
-///       access_log = {
-///         file = {
+/// resource "aws_appmesh_virtual_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   spec {
+///     logging {
+///       access_log {
+///         file {
 ///           path = "/var/log/access.log"
 ///         }
 ///       }
 ///     }
-///     listeners = [{
-///       "portMapping" = {
-///         "port"     = 8080
-///         "protocol" = "http"
+///     listener {
+///       port_mapping {
+///         port     = 8080
+///         protocol = "http"
 ///       }
-///       "tls" = {
-///         "certificate" = {
-///           "acm" = {
-///             "certificateArn" = exampleAwsAcmCertificate.arn
+///       tls {
+///         certificate {
+///           acm {
+///             certificate_arn = exampleAwsAcmCertificate.arn
 ///           }
 ///         }
-///         "mode" = "STRICT"
+///         mode = "STRICT"
 ///       }
-///     }]
+///     }
 ///   }
 ///   name      = "example-virtual-gateway"
 ///   mesh_name = "example-service-mesh"
@@ -447,7 +453,7 @@ import 'virtual_gateway_state.dart';
 ///                     .tls(VirtualGatewaySpecListenerTlsArgs.builder()
 ///                         .certificate(VirtualGatewaySpecListenerTlsCertificateArgs.builder()
 ///                             .acm(VirtualGatewaySpecListenerTlsCertificateAcmArgs.builder()
-///                                 .certificateArn(exampleAwsAcmCertificate.arn())
+///                                 .certificateArn(exampleAwsAcmCertificate.get("arn"))
 ///                                 .build())
 ///                             .build())
 ///                         .mode("STRICT")
@@ -528,7 +534,7 @@ class VirtualGateway extends pulumi.CustomResource {
           'aws:appmesh/virtualGateway:VirtualGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdDate = registerOutput<String>('createdDate');

@@ -117,7 +117,7 @@ import 'ami_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -129,6 +129,9 @@ import 'ami_state.dart';
 /// # an EBS volume populated from a snapshot. We assume that such a snapshot
 /// # already exists with the id "snap-xxxxxxxx".
 /// resource "aws_ec2_ami" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ebs_block_devices {
 ///     device_name = "/dev/xvda"
 ///     snapshot_id = "snap-xxxxxxxx"
@@ -283,7 +286,7 @@ class Ami extends pulumi.CustomResource {
           'aws:ec2/ami:Ami',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     architecture = registerOutput<String?>('architecture');
     arn = registerOutput<String>('arn');

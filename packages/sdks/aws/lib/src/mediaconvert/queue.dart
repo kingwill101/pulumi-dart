@@ -56,7 +56,7 @@ import 'queue_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,6 +65,9 @@ import 'queue_state.dart';
 /// }
 ///
 /// resource "aws_mediaconvert_queue" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "tf-test-queue"
 /// }
 /// ```
@@ -127,7 +130,7 @@ class Queue extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Detail pricing plan of the reserved queue. See below.
   late final pulumi.Output<QueueReservationPlanSettings> reservationPlanSettings;
-  /// Status of the queue. Valid values are `ACTIVE` or `RESERVED`. Default to `PAUSED`.
+  /// Status of the queue. Valid values are `ACTIVE` or `PAUSED`. Default value: `ACTIVE`.
   late final pulumi.Output<String?> status;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -146,7 +149,7 @@ class Queue extends pulumi.CustomResource {
           'aws:mediaconvert/queue:Queue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     concurrentJobs = registerOutput<int>('concurrentJobs');

@@ -74,7 +74,7 @@ import 'snapshot_copy_grant_state.dart';
 /// 		}
 /// 		_, err = redshift.NewCluster(ctx, "test", &redshift.ClusterArgs{
 /// 			SnapshotCopy: []map[string]interface{}{
-/// 				map[string]interface{}{
+/// 				map[string]string{
 /// 					"destinationRegion": "us-east-2",
 /// 					"grantName":         test.SnapshotCopyGrantName,
 /// 				},
@@ -88,7 +88,7 @@ import 'snapshot_copy_grant_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -96,13 +96,19 @@ import 'snapshot_copy_grant_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_redshift_snapshotcopygrant" "test" {
+/// resource "aws_redshift_snapshot_copy_grant" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   snapshot_copy_grant_name = "my-grant"
 /// }
 /// resource "aws_redshift_cluster" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   snapshot_copy = [{
 ///     "destinationRegion" = "us-east-2"
-///     "grantName"         = aws_redshift_snapshotcopygrant.test.snapshot_copy_grant_name
+///     "grantName"         = aws_redshift_snapshot_copy_grant.test.snapshot_copy_grant_name
 ///   }]
 /// }
 /// ```
@@ -192,7 +198,7 @@ class SnapshotCopyGrant extends pulumi.CustomResource {
           'aws:redshift/snapshotCopyGrant:SnapshotCopyGrant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     kmsKeyId = registerOutput<String>('kmsKeyId');

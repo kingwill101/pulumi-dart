@@ -439,7 +439,7 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -447,77 +447,83 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_hyperparametertuningjob" "example" {
-///   config = {
-///     objective = {
+/// resource "aws_sagemaker_hyper_parameter_tuning_job" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   config {
+///     objective {
 ///       metric_name = "test:msd"
 ///       type        = "Minimize"
 ///     }
-///     parameter_ranges = {
-///       categorical_parameter_ranges = [{
-///         "name"   = "init_method"
-///         "values" = ["kmeans++", "random"]
-///       }]
-///       integer_parameter_ranges = [{
-///         "name"        = "epochs"
-///         "minValue"    = "1"
-///         "maxValue"    = "10"
-///         "scalingType" = "Auto"
-///         }, {
-///         "name"        = "extra_center_factor"
-///         "minValue"    = "4"
-///         "maxValue"    = "10"
-///         "scalingType" = "Auto"
-///         }, {
-///         "name"        = "mini_batch_size"
-///         "minValue"    = "3000"
-///         "maxValue"    = "15000"
-///         "scalingType" = "Auto"
-///       }]
+///     parameter_ranges {
+///       categorical_parameter_ranges {
+///         name   = "init_method"
+///         values = ["kmeans++", "random"]
+///       }
+///       integer_parameter_ranges {
+///         name         = "epochs"
+///         min_value    = "1"
+///         max_value    = "10"
+///         scaling_type = "Auto"
+///       }
+///       integer_parameter_ranges {
+///         name         = "extra_center_factor"
+///         min_value    = "4"
+///         max_value    = "10"
+///         scaling_type = "Auto"
+///       }
+///       integer_parameter_ranges {
+///         name         = "mini_batch_size"
+///         min_value    = "3000"
+///         max_value    = "15000"
+///         scaling_type = "Auto"
+///       }
 ///     }
-///     resource_limits = {
+///     resource_limits {
 ///       max_number_of_training_jobs = 2
 ///       max_parallel_training_jobs  = 1
 ///     }
 ///     strategy = "Bayesian"
 ///   }
-///   training_job_definition = {
-///     algorithm_specification = {
+///   training_job_definition {
+///     algorithm_specification {
 ///       training_image      = "174872318107.dkr.ecr.us-west-2.amazonaws.com/kmeans:1"
 ///       training_input_mode = "File"
 ///     }
-///     output_data_config = {
+///     output_data_config {
 ///       s3_output_path = "s3://example-bucket/output/"
 ///     }
-///     resource_config = {
+///     resource_config {
 ///       instance_count    = 1
 ///       instance_type     = "ml.m5.large"
 ///       volume_size_in_gb = 30
 ///     }
-///     stopping_condition = {
+///     stopping_condition {
 ///       max_runtime_in_seconds = 3600
 ///     }
-///     input_data_configs = [{
-///       "dataSource" = {
-///         "s3DataSource" = {
-///           "s3DataType" = "S3Prefix"
-///           "s3Uri"      = "s3://example-bucket/input/"
+///     input_data_config {
+///       data_source {
+///         s3_data_source {
+///           s3_data_type = "S3Prefix"
+///           s3_uri       = "s3://example-bucket/input/"
 ///         }
 ///       }
-///       "channelName" = "train"
-///       "contentType" = "text/csv"
-///       "inputMode"   = "File"
-///       }, {
-///       "dataSource" = {
-///         "s3DataSource" = {
-///           "s3DataType" = "S3Prefix"
-///           "s3Uri"      = "s3://example-bucket/input/"
+///       channel_name = "train"
+///       content_type = "text/csv"
+///       input_mode   = "File"
+///     }
+///     input_data_config {
+///       data_source {
+///         s3_data_source {
+///           s3_data_type = "S3Prefix"
+///           s3_uri       = "s3://example-bucket/input/"
 ///         }
 ///       }
-///       "channelName" = "test"
-///       "contentType" = "text/csv"
-///       "inputMode"   = "File"
-///     }]
+///       channel_name = "test"
+///       content_type = "text/csv"
+///       input_mode   = "File"
+///     }
 ///     role_arn = "arn:aws:iam::123456789012:role/example-sagemaker-execution-role"
 ///     static_hyper_parameters = {
 ///       "feature_dim" = "3"
@@ -779,7 +785,7 @@ class HyperParameterTuningJob extends pulumi.CustomResource {
           'aws:sagemaker/hyperParameterTuningJob:HyperParameterTuningJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autotune = registerOutput<HyperParameterTuningJobAutotune?>('autotune', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperParameterTuningJobAutotune.fromMap((guardedValue as Map).cast<String, dynamic>()); });

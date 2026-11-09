@@ -439,7 +439,7 @@ import 'mltransform_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -447,8 +447,11 @@ import 'mltransform_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_glue_mltransform" "test" {
+/// resource "aws_glue_m_l_transform" "test" {
 ///   depends_on = [testAwsIamRolePolicyAttachment]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameters = {
 ///     find_matches_parameters = {
 ///       primary_key_column_name = "my_column_1"
@@ -456,44 +459,51 @@ import 'mltransform_state.dart';
 ///     transform_type = "FIND_MATCHES"
 ///   }
 ///   input_record_tables {
-///     database_name = aws_glue_catalogtable.test.database_name
-///     table_name    = aws_glue_catalogtable.test.name
+///     database_name = aws_glue_catalog_table.test.database_name
+///     table_name    = aws_glue_catalog_table.test.name
 ///   }
 ///   name     = "example"
 ///   role_arn = testAwsIamRole.arn
 /// }
-/// resource "aws_glue_catalogdatabase" "test" {
+/// resource "aws_glue_catalog_database" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
-/// resource "aws_glue_catalogtable" "test" {
-///   storage_descriptor = {
-///     ser_de_info = {
+/// resource "aws_glue_catalog_table" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   storage_descriptor {
+///     ser_de_info {
 ///       name = "ser_de_name"
 ///       parameters = {
 ///         "param1" = "param_val_1"
 ///       }
 ///       serialization_library = "org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe"
 ///     }
-///     skewed_info = {
+///     skewed_info {
 ///       skewed_column_names = ["my_column_1"]
 ///       skewed_column_value_location_maps = {
 ///         "my_column_1" = "my_column_1_val_loc_map"
 ///       }
 ///       skewed_column_values = ["skewed_val_1"]
 ///     }
-///     columns = [{
-///       "name"    = "my_column_1"
-///       "type"    = "int"
-///       "comment" = "my_column1_comment"
-///       }, {
-///       "name"    = "my_column_2"
-///       "type"    = "string"
-///       "comment" = "my_column2_comment"
-///     }]
-///     sort_columns = [{
-///       "column"    = "my_column_1"
-///       "sortOrder" = 1
-///     }]
+///     columns {
+///       name    = "my_column_1"
+///       type    = "int"
+///       comment = "my_column1_comment"
+///     }
+///     columns {
+///       name    = "my_column_2"
+///       type    = "string"
+///       comment = "my_column2_comment"
+///     }
+///     sort_columns {
+///       column     = "my_column_1"
+///       sort_order = 1
+///     }
 ///     bucket_columns            = ["bucket_column_1"]
 ///     compressed                = false
 ///     input_format              = "SequenceFileInputFormat"
@@ -516,7 +526,7 @@ import 'mltransform_state.dart';
 ///     comment = "my_column_2_comment"
 ///   }
 ///   name               = "example"
-///   database_name      = aws_glue_catalogdatabase.test.name
+///   database_name      = aws_glue_catalog_database.test.name
 ///   owner              = "my_owner"
 ///   retention          = 1
 ///   table_type         = "VIRTUAL_VIEW"
@@ -635,7 +645,7 @@ import 'mltransform_state.dart';
 ///                 .tableName(testCatalogTable.name())
 ///                 .build())
 ///             .name("example")
-///             .roleArn(testAwsIamRole.arn())
+///             .roleArn(testAwsIamRole.get("arn"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(testAwsIamRolePolicyAttachment)
 ///                 .build());
@@ -776,7 +786,7 @@ class MLTransform extends pulumi.CustomResource {
           'aws:glue/mLTransform:MLTransform',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

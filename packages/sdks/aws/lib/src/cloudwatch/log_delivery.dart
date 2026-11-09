@@ -86,7 +86,7 @@ import 'log_delivery_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -94,7 +94,10 @@ import 'log_delivery_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_logdelivery" "example" {
+/// resource "aws_cloudwatch_log_delivery" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   delivery_source_name     = exampleAwsCloudwatchLogDeliverySource.name
 ///   delivery_destination_arn = exampleAwsCloudwatchLogDeliveryDestination.arn
 ///   field_delimiter          = ","
@@ -123,8 +126,8 @@ import 'log_delivery_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new LogDelivery("example", LogDeliveryArgs.builder()
-///             .deliverySourceName(exampleAwsCloudwatchLogDeliverySource.name())
-///             .deliveryDestinationArn(exampleAwsCloudwatchLogDeliveryDestination.arn())
+///             .deliverySourceName(exampleAwsCloudwatchLogDeliverySource.get("name"))
+///             .deliveryDestinationArn(exampleAwsCloudwatchLogDeliveryDestination.get("arn"))
 ///             .fieldDelimiter(",")
 ///             .recordFields(
 ///                 "event_timestamp",
@@ -298,7 +301,7 @@ import 'log_delivery_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -306,21 +309,30 @@ import 'log_delivery_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_logdeliverysource" "example" {
+/// resource "aws_cloudwatch_log_delivery_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "cloudfront-access-logs"
 ///   log_type     = "ACCESS_LOGS"
 ///   resource_arn = exampleAwsCloudfrontDistribution.arn
 /// }
-/// resource "aws_cloudwatch_logdeliverydestination" "example" {
-///   delivery_destination_configuration = {
+/// resource "aws_cloudwatch_log_delivery_destination" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   delivery_destination_configuration {
 ///     destination_resource_arn = exampleAwsCloudwatchLogGroup.arn
 ///   }
 ///   name          = "cloudfront-access-logs"
 ///   output_format = "json"
 /// }
-/// resource "aws_cloudwatch_logdelivery" "example" {
-///   delivery_source_name     = aws_cloudwatch_logdeliverysource.example.name
-///   delivery_destination_arn = aws_cloudwatch_logdeliverydestination.example.arn
+/// resource "aws_cloudwatch_log_delivery" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   delivery_source_name     = aws_cloudwatch_log_delivery_source.example.name
+///   delivery_destination_arn = aws_cloudwatch_log_delivery_destination.example.arn
 ///   record_fields            = ["date", "time", "c-ip", "sc-status", "viewer-request-log-data", "viewer-response-log-data"]
 /// }
 /// ```
@@ -353,12 +365,12 @@ import 'log_delivery_state.dart';
 ///         var example = new LogDeliverySource("example", LogDeliverySourceArgs.builder()
 ///             .name("cloudfront-access-logs")
 ///             .logType("ACCESS_LOGS")
-///             .resourceArn(exampleAwsCloudfrontDistribution.arn())
+///             .resourceArn(exampleAwsCloudfrontDistribution.get("arn"))
 ///             .build());
 ///
 ///         var exampleLogDeliveryDestination = new LogDeliveryDestination("exampleLogDeliveryDestination", LogDeliveryDestinationArgs.builder()
 ///             .deliveryDestinationConfiguration(LogDeliveryDestinationDeliveryDestinationConfigurationArgs.builder()
-///                 .destinationResourceArn(exampleAwsCloudwatchLogGroup.arn())
+///                 .destinationResourceArn(exampleAwsCloudwatchLogGroup.get("arn"))
 ///                 .build())
 ///             .name("cloudfront-access-logs")
 ///             .outputFormat("json")
@@ -462,7 +474,7 @@ class LogDelivery extends pulumi.CustomResource {
           'aws:cloudwatch/logDelivery:LogDelivery',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.54.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deliveryDestinationArn = registerOutput<String>('deliveryDestinationArn');
