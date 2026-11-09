@@ -88,9 +88,9 @@ class MagicWanGreTunnelArgs {
       healthCheck: (() { final guardedValue = map['healthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MagicWanGreTunnelHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       interfaceAddress: pulumi.Input.fromValue(map['interfaceAddress'] as String),
       interfaceAddress6: (() { final guardedValue = map['interfaceAddress6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      mtu: (() { final guardedValue = map['mtu']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      mtu: (() { final guardedValue = map['mtu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

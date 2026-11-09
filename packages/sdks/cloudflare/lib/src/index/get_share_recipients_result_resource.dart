@@ -37,7 +37,7 @@ class GetShareRecipientsResultResource {
     return GetShareRecipientsResultResource(
       error: pulumi.Input.fromValue(map['error'] as String),
       resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
-      resourceVersion: pulumi.Input.fromValue((map['resourceVersion'] as num).toInt()),
+      resourceVersion: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['resourceVersion'])),
       terminal: pulumi.Input.fromValue(map['terminal'] as bool),
     );
   }

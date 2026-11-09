@@ -19,6 +19,8 @@ class StreamState {
   final pulumi.Input<String?>? created;
   /// A user-defined identifier for the media creator.
   final pulumi.Input<String?>? creator;
+  /// Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+  final pulumi.Input<bool?>? directUser;
   /// The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.
   final pulumi.Input<double?>? duration;
   /// A Cloudflare-generated unique identifier for a media item.
@@ -69,6 +71,7 @@ class StreamState {
   /// [clippedFrom] The unique identifier of the source video this video was clipped from.
   /// [created] The date and time the media item was created.
   /// [creator] A user-defined identifier for the media creator.
+  /// [directUser] Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
   /// [duration] The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.
   /// [identifier] A Cloudflare-generated unique identifier for a media item.
   /// [input] Optional.
@@ -98,6 +101,7 @@ class StreamState {
     this.clippedFrom,
     this.created,
     this.creator,
+    this.directUser,
     this.duration,
     this.identifier,
     this.input,
@@ -130,6 +134,7 @@ class StreamState {
       'clippedFrom': ?clippedFrom,
       'created': ?created,
       'creator': ?creator,
+      'directUser': ?directUser,
       'duration': ?duration,
       'identifier': ?identifier,
       'input': ?pulumi.Input.mapOptionalInputValue<StreamInput, Map<String, dynamic>>(input, (value) => value.toMap()),
@@ -163,12 +168,13 @@ class StreamState {
       clippedFrom: (() { final guardedValue = map['clippedFrom']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       created: (() { final guardedValue = map['created']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       creator: (() { final guardedValue = map['creator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      directUser: (() { final guardedValue = map['directUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       identifier: (() { final guardedValue = map['identifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       input: (() { final guardedValue = map['input']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StreamInput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       liveInput: (() { final guardedValue = map['liveInput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxDurationSeconds: (() { final guardedValue = map['maxDurationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxSizeBytes: (() { final guardedValue = map['maxSizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxDurationSeconds: (() { final guardedValue = map['maxDurationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxSizeBytes: (() { final guardedValue = map['maxSizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       meta: (() { final guardedValue = map['meta']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       modified: (() { final guardedValue = map['modified']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       playback: (() { final guardedValue = map['playback']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StreamPlayback.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

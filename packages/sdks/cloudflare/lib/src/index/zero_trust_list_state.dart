@@ -5,6 +5,7 @@ import 'zero_trust_list_item.dart';
 
 /// Input properties used for looking up and filtering ZeroTrustList resources.
 class ZeroTrustListState {
+  /// Specify the Cloudflare account identifier.
   final pulumi.Input<String?>? accountId;
   final pulumi.Input<String?>? createdAt;
   /// Provide the list description.
@@ -21,7 +22,7 @@ class ZeroTrustListState {
   final pulumi.Input<String?>? updatedAt;
 
   /// Creates a new [ZeroTrustListState].
-  /// [accountId] Optional.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [createdAt] Optional.
   /// [description] Provide the list description.
   /// [items] Add items to the list.

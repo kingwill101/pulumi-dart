@@ -8,22 +8,22 @@ import 'r2_bucket_event_notification_rule.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_r2_bucket_event_notification_r2_bucket_event_notification_args_doc}
 class R2BucketEventNotificationArgs {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   final pulumi.Input<String> accountId;
   /// Name of the bucket.
   final pulumi.Input<String> bucketName;
   /// Jurisdiction of the bucket
   final pulumi.Input<String?>? jurisdiction;
-  /// Queue ID.
+  /// ID of the Cloudflare Queue that receives notifications for matching R2 object events.
   final pulumi.Input<String> queueId;
   /// Array of rules to drive notifications.
   final pulumi.Input<List<R2BucketEventNotificationRule>> rules;
 
   /// Creates a new [R2BucketEventNotificationArgs].
-  /// [accountId] Account ID.
+  /// [accountId] Cloudflare account ID that owns the R2 resource.
   /// [bucketName] Name of the bucket.
   /// [jurisdiction] Jurisdiction of the bucket
-  /// [queueId] Queue ID.
+  /// [queueId] ID of the Cloudflare Queue that receives notifications for matching R2 object events.
   /// [rules] Array of rules to drive notifications.
   const R2BucketEventNotificationArgs({
     required this.accountId,

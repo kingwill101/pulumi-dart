@@ -30,7 +30,7 @@ class GetApiShieldDiscoveryOperationsResultFeaturesTrafficStats {
   factory GetApiShieldDiscoveryOperationsResultFeaturesTrafficStats.fromMap(Map<String, dynamic> map) {
     return GetApiShieldDiscoveryOperationsResultFeaturesTrafficStats(
       lastUpdated: pulumi.Input.fromValue(map['lastUpdated'] as String),
-      periodSeconds: pulumi.Input.fromValue((map['periodSeconds'] as num).toInt()),
+      periodSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['periodSeconds'])),
       requests: pulumi.Input.fromValue((map['requests'] as num).toDouble()),
     );
   }

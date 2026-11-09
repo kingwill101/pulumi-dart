@@ -14,6 +14,8 @@ class ApiShieldSchemaArgs {
   final pulumi.Input<String> kind;
   /// Name of the schema
   final pulumi.Input<String?>? name;
+  /// Omit the source-files of schemas and only retrieve their meta-data.
+  final pulumi.Input<bool?>? omitSource;
   final pulumi.Input<String?>? schemaId;
   /// Flag whether schema is enabled for validation.
   /// Available values: "true", "false".
@@ -25,6 +27,7 @@ class ApiShieldSchemaArgs {
   /// [file] Schema file bytes
   /// [kind] Kind of schema
   /// [name] Name of the schema
+  /// [omitSource] Omit the source-files of schemas and only retrieve their meta-data.
   /// [schemaId] Optional.
   /// [validationEnabled] Flag whether schema is enabled for validation.
   /// [zoneId] Identifier.
@@ -32,6 +35,7 @@ class ApiShieldSchemaArgs {
     required this.file,
     required this.kind,
     this.name,
+    this.omitSource,
     this.schemaId,
     this.validationEnabled,
     required this.zoneId,
@@ -42,6 +46,7 @@ class ApiShieldSchemaArgs {
       'file': file,
       'kind': kind,
       'name': ?name,
+      'omitSource': ?omitSource,
       'schemaId': ?schemaId,
       'validationEnabled': ?validationEnabled,
       'zoneId': zoneId,
@@ -53,6 +58,7 @@ class ApiShieldSchemaArgs {
       file: pulumi.Input.fromValue(map['file'] as String),
       kind: pulumi.Input.fromValue(map['kind'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      omitSource: (() { final guardedValue = map['omitSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       schemaId: (() { final guardedValue = map['schemaId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       validationEnabled: (() { final guardedValue = map['validationEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zoneId: pulumi.Input.fromValue(map['zoneId'] as String),

@@ -10,7 +10,7 @@ class ShareResource {
   /// Share Resource identifier.
   final pulumi.Input<String> resourceId;
   /// Resource Type.
-  /// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+  /// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
   final pulumi.Input<String> resourceType;
 
   /// Creates a new [ShareResource].

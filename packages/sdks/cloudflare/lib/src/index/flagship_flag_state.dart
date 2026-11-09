@@ -5,22 +5,21 @@ import 'flagship_flag_rule.dart';
 
 /// Input properties used for looking up and filtering FlagshipFlag resources.
 class FlagshipFlagState {
-  /// Cloudflare account ID.
+  /// Cloudflare account ID that owns the Flagship app.
   final pulumi.Input<String?>? accountId;
-  /// App identifier.
+  /// Flagship app ID returned when the app was created.
   final pulumi.Input<String?>? appId;
   /// Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.
   final pulumi.Input<String?>? defaultVariation;
+  /// Optional operator-facing description. It does not affect flag evaluation.
   final pulumi.Input<String?>? description;
   /// When false, the flag bypasses all rules and always serves `defaultVariation`.
   final pulumi.Input<bool?>? enabled;
-  /// Flag key (slug).
-  final pulumi.Input<String?>? flagKey;
   /// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
   final pulumi.Input<String?>? key;
   /// Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
   final pulumi.Input<List<FlagshipFlagRule>?>? rules;
-  /// Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+  /// Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
   /// Available values: "boolean", "string", "number", "json".
   final pulumi.Input<String?>? type;
   final pulumi.Input<String?>? updatedAt;
@@ -29,15 +28,14 @@ class FlagshipFlagState {
   final pulumi.Input<Map<String, String>?>? variations;
 
   /// Creates a new [FlagshipFlagState].
-  /// [accountId] Cloudflare account ID.
-  /// [appId] App identifier.
+  /// [accountId] Cloudflare account ID that owns the Flagship app.
+  /// [appId] Flagship app ID returned when the app was created.
   /// [defaultVariation] Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.
-  /// [description] Optional.
+  /// [description] Optional operator-facing description. It does not affect flag evaluation.
   /// [enabled] When false, the flag bypasses all rules and always serves `defaultVariation`.
-  /// [flagKey] Flag key (slug).
   /// [key] Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
   /// [rules] Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
-  /// [type] Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+  /// [type] Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
   /// [updatedAt] Optional.
   /// [updatedBy] Optional.
   /// [variations] Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.
@@ -47,7 +45,6 @@ class FlagshipFlagState {
     this.defaultVariation,
     this.description,
     this.enabled,
-    this.flagKey,
     this.key,
     this.rules,
     this.type,
@@ -63,7 +60,6 @@ class FlagshipFlagState {
       'defaultVariation': ?defaultVariation,
       'description': ?description,
       'enabled': ?enabled,
-      'flagKey': ?flagKey,
       'key': ?key,
       'rules': ?pulumi.Input.mapOptionalInputValue<List<FlagshipFlagRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<FlagshipFlagRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': ?type,
@@ -80,7 +76,6 @@ class FlagshipFlagState {
       defaultVariation: (() { final guardedValue = map['defaultVariation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      flagKey: (() { final guardedValue = map['flagKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FlagshipFlagRule>(guardedValue, (value) => FlagshipFlagRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

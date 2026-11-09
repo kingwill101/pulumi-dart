@@ -7,10 +7,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_get_zero_trust_gateway_settings_get_zero_trust_gateway_settings_args_doc}
 class GetZeroTrustGatewaySettingsArgs {
+  /// Specify the Cloudflare account identifier.
   final pulumi.Input<String?>? accountId;
 
   /// Creates a new [GetZeroTrustGatewaySettingsArgs].
-  /// [accountId] Optional.
+  /// [accountId] Specify the Cloudflare account identifier.
   const GetZeroTrustGatewaySettingsArgs({
     this.accountId,
   });

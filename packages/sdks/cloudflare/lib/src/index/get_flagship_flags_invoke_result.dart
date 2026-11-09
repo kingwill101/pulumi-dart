@@ -5,20 +5,20 @@ import 'get_flagship_flags_result.dart';
 
 /// Result data returned by getFlagshipFlags.
 class GetFlagshipFlagsInvokeResult {
-  /// Cloudflare account ID.
+  /// Cloudflare account ID that owns the Flagship app.
   final String? accountId;
-  /// App identifier.
+  /// Flagship app ID returned when the app was created.
   final String? appId;
   /// Max items to return (1–200).
-  final String? limit;
+  final int? limit;
   /// Max items to fetch, default: 1000
   final int? maxItems;
   /// The items returned by the data source
   final List<GetFlagshipFlagsResult>? results;
 
   /// Creates a new [GetFlagshipFlagsInvokeResult].
-  /// [accountId] Cloudflare account ID.
-  /// [appId] App identifier.
+  /// [accountId] Cloudflare account ID that owns the Flagship app.
+  /// [appId] Flagship app ID returned when the app was created.
   /// [limit] Max items to return (1–200).
   /// [maxItems] Max items to fetch, default: 1000
   /// [results] The items returned by the data source
@@ -44,8 +44,8 @@ class GetFlagshipFlagsInvokeResult {
     return GetFlagshipFlagsInvokeResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       appId: (() { final guardedValue = map['appId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      limit: (() { final guardedValue = map['limit']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      limit: (() { final guardedValue = map['limit']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetFlagshipFlagsResult>(guardedValue, (value) => GetFlagshipFlagsResult.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }

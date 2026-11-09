@@ -126,7 +126,7 @@ import 'zero_trust_access_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -134,19 +134,22 @@ import 'zero_trust_access_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustaccessgroup" "example_zero_trust_access_group" {
-///   includes {
-///     certificate = {}
+/// resource "cloudflare_zero_trust_access_group" "example_zero_trust_access_group" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
+///   include = [{
+///     certificate = {}
+///   }]
 ///   name    = "Allow devs"
 ///   zone_id = "zone_id"
-///   excludes {
+///   exclude = [{
 ///     certificate = {}
-///   }
+///   }]
 ///   is_default = true
-///   requires {
+///   require = [{
 ///     certificate = {}
-///   }
+///   }]
 /// }
 /// ```
 /// ```java
@@ -248,7 +251,7 @@ class ZeroTrustAccessGroup extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.3').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     excludes = registerOutput<List<ZeroTrustAccessGroupExclude>?>('excludes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZeroTrustAccessGroupExclude>(guardedValue, (value) => ZeroTrustAccessGroupExclude.fromMap((value as Map).cast<String, dynamic>())); });

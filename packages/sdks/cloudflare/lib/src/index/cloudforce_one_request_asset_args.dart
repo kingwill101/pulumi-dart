@@ -45,8 +45,8 @@ class CloudforceOneRequestAssetArgs {
   factory CloudforceOneRequestAssetArgs.fromMap(Map<String, dynamic> map) {
     return CloudforceOneRequestAssetArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
-      page: pulumi.Input.fromValue((map['page'] as num).toInt()),
-      perPage: pulumi.Input.fromValue((map['perPage'] as num).toInt()),
+      page: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['page'])),
+      perPage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['perPage'])),
       requestId: pulumi.Input.fromValue(map['requestId'] as String),
       source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

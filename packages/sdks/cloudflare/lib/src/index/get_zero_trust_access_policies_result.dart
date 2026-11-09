@@ -9,6 +9,8 @@ import 'get_zero_trust_access_policies_result_mfa_config.dart';
 import 'get_zero_trust_access_policies_result_require.dart';
 
 class GetZeroTrustAccessPoliciesResult {
+  /// Identifier.
+  final pulumi.Input<String> accountId;
   /// Number of access applications currently using this policy.
   final pulumi.Input<int> appCount;
   /// Administrators who can approve a temporary authentication request.
@@ -45,6 +47,7 @@ class GetZeroTrustAccessPoliciesResult {
   final pulumi.Input<String> updatedAt;
 
   /// Creates a new [GetZeroTrustAccessPoliciesResult].
+  /// [accountId] Identifier.
   /// [appCount] Number of access applications currently using this policy.
   /// [approvalGroups] Administrators who can approve a temporary authentication request.
   /// [approvalRequired] Requires the user to request access from an administrator at the start of each session.
@@ -64,6 +67,7 @@ class GetZeroTrustAccessPoliciesResult {
   /// [sessionDuration] The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
   /// [updatedAt] Required.
   const GetZeroTrustAccessPoliciesResult({
+    required this.accountId,
     required this.appCount,
     required this.approvalGroups,
     required this.approvalRequired,
@@ -86,6 +90,7 @@ class GetZeroTrustAccessPoliciesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'accountId': accountId,
       'appCount': appCount,
       'approvalGroups': pulumi.Input.mapInputValue<List<GetZeroTrustAccessPoliciesResultApprovalGroup>, List<Map<String, dynamic>>>(approvalGroups, (value) => pulumi.Input.encodeList<GetZeroTrustAccessPoliciesResultApprovalGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
       'approvalRequired': approvalRequired,
@@ -109,7 +114,8 @@ class GetZeroTrustAccessPoliciesResult {
 
   factory GetZeroTrustAccessPoliciesResult.fromMap(Map<String, dynamic> map) {
     return GetZeroTrustAccessPoliciesResult(
-      appCount: pulumi.Input.fromValue((map['appCount'] as num).toInt()),
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      appCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['appCount'])),
       approvalGroups: pulumi.Input.fromValue(pulumi.Input.decodeList<GetZeroTrustAccessPoliciesResultApprovalGroup>(map['approvalGroups']!, (value) => GetZeroTrustAccessPoliciesResultApprovalGroup.fromMap((value as Map).cast<String, dynamic>()))),
       approvalRequired: pulumi.Input.fromValue(map['approvalRequired'] as bool),
       connectionRules: pulumi.Input.fromValue(GetZeroTrustAccessPoliciesResultConnectionRules.fromMap((map['connectionRules']! as Map).cast<String, dynamic>())),

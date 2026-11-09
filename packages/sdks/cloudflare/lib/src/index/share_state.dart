@@ -20,6 +20,10 @@ class ShareState {
   final pulumi.Input<int?>? disassociatedRecipientCount;
   /// The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include*recipient*counts' parameter.
   final pulumi.Input<int?>? disassociatingRecipientCount;
+  /// Include recipient counts in the response.
+  final pulumi.Input<bool?>? includeRecipientCounts;
+  /// Include resources in the response.
+  final pulumi.Input<bool?>? includeResources;
   /// Available values: "sent", "received".
   final pulumi.Input<String?>? kind;
   /// When the share was modified.
@@ -43,6 +47,8 @@ class ShareState {
   /// [created] When the share was created.
   /// [disassociatedRecipientCount] The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include*recipient*counts' parameter.
   /// [disassociatingRecipientCount] The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include*recipient*counts' parameter.
+  /// [includeRecipientCounts] Include recipient counts in the response.
+  /// [includeResources] Include resources in the response.
   /// [kind] Available values: "sent", "received".
   /// [modified] When the share was modified.
   /// [name] The name of the share.
@@ -59,6 +65,8 @@ class ShareState {
     this.created,
     this.disassociatedRecipientCount,
     this.disassociatingRecipientCount,
+    this.includeRecipientCounts,
+    this.includeResources,
     this.kind,
     this.modified,
     this.name,
@@ -78,6 +86,8 @@ class ShareState {
       'created': ?created,
       'disassociatedRecipientCount': ?disassociatedRecipientCount,
       'disassociatingRecipientCount': ?disassociatingRecipientCount,
+      'includeRecipientCounts': ?includeRecipientCounts,
+      'includeResources': ?includeResources,
       'kind': ?kind,
       'modified': ?modified,
       'name': ?name,
@@ -93,11 +103,13 @@ class ShareState {
     return ShareState(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       accountName: (() { final guardedValue = map['accountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      associatedRecipientCount: (() { final guardedValue = map['associatedRecipientCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      associatingRecipientCount: (() { final guardedValue = map['associatingRecipientCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      associatedRecipientCount: (() { final guardedValue = map['associatedRecipientCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      associatingRecipientCount: (() { final guardedValue = map['associatingRecipientCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       created: (() { final guardedValue = map['created']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      disassociatedRecipientCount: (() { final guardedValue = map['disassociatedRecipientCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      disassociatingRecipientCount: (() { final guardedValue = map['disassociatingRecipientCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      disassociatedRecipientCount: (() { final guardedValue = map['disassociatedRecipientCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      disassociatingRecipientCount: (() { final guardedValue = map['disassociatingRecipientCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      includeRecipientCounts: (() { final guardedValue = map['includeRecipientCounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      includeResources: (() { final guardedValue = map['includeResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       modified: (() { final guardedValue = map['modified']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -6,22 +6,27 @@ class GetAiSearchInstancesResultIndexingOptions {
   /// Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.
   /// Available values: "porter", "trigram".
   final pulumi.Input<String> keywordTokenizer;
+  final pulumi.Input<bool> useOcr;
 
   /// Creates a new [GetAiSearchInstancesResultIndexingOptions].
   /// [keywordTokenizer] Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.
+  /// [useOcr] Required.
   const GetAiSearchInstancesResultIndexingOptions({
     required this.keywordTokenizer,
+    required this.useOcr,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'keywordTokenizer': keywordTokenizer,
+      'useOcr': useOcr,
     };
   }
 
   factory GetAiSearchInstancesResultIndexingOptions.fromMap(Map<String, dynamic> map) {
     return GetAiSearchInstancesResultIndexingOptions(
       keywordTokenizer: pulumi.Input.fromValue(map['keywordTokenizer'] as String),
+      useOcr: pulumi.Input.fromValue(map['useOcr'] as bool),
     );
   }
 }

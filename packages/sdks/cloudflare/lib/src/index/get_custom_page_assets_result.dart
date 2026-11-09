@@ -48,7 +48,7 @@ class GetCustomPageAssetsResult {
       id: pulumi.Input.fromValue(map['id'] as String),
       lastUpdated: pulumi.Input.fromValue(map['lastUpdated'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      sizeBytes: pulumi.Input.fromValue((map['sizeBytes'] as num).toInt()),
+      sizeBytes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sizeBytes'])),
       url: pulumi.Input.fromValue(map['url'] as String),
     );
   }

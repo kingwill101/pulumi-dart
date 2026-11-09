@@ -8,7 +8,7 @@ import 'r2_bucket_cors_rule.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_r2_bucket_cors_r2_bucket_cors_args_doc}
 class R2BucketCorsArgs {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   final pulumi.Input<String> accountId;
   /// Name of the bucket.
   final pulumi.Input<String> bucketName;
@@ -17,7 +17,7 @@ class R2BucketCorsArgs {
   final pulumi.Input<List<R2BucketCorsRule>?>? rules;
 
   /// Creates a new [R2BucketCorsArgs].
-  /// [accountId] Account ID.
+  /// [accountId] Cloudflare account ID that owns the R2 resource.
   /// [bucketName] Name of the bucket.
   /// [jurisdiction] Jurisdiction of the bucket
   /// [rules] Optional.

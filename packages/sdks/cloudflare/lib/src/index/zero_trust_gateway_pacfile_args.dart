@@ -7,6 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_zero_trust_gateway_pacfile_zero_trust_gateway_pacfile_args_doc}
 class ZeroTrustGatewayPacfileArgs {
+  /// Specify the Cloudflare account identifier.
   final pulumi.Input<String> accountId;
   /// Actual contents of the PAC file
   final pulumi.Input<String> contents;
@@ -18,7 +19,7 @@ class ZeroTrustGatewayPacfileArgs {
   final pulumi.Input<String?>? slug;
 
   /// Creates a new [ZeroTrustGatewayPacfileArgs].
-  /// [accountId] Required.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [contents] Actual contents of the PAC file
   /// [description] Detailed description of the PAC file.
   /// [name] Name of the PAC file.

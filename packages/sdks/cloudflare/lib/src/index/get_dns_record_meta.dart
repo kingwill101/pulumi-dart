@@ -38,7 +38,7 @@ class GetDnsRecordMeta {
       deadGlue: pulumi.Input.fromValue(map['deadGlue'] as bool),
       isGlue: pulumi.Input.fromValue(map['isGlue'] as bool),
       shadowedBies: pulumi.Input.fromValue((map['shadowedBies'] as List).cast<String>()),
-      shadowedRecordsCount: pulumi.Input.fromValue((map['shadowedRecordsCount'] as num).toInt()),
+      shadowedRecordsCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['shadowedRecordsCount'])),
     );
   }
 }

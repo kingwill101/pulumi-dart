@@ -108,7 +108,7 @@ class DnsFirewallState {
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       attackMitigation: (() { final guardedValue = map['attackMitigation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DnsFirewallAttackMitigation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deprecateAnyRequests: (() { final guardedValue = map['deprecateAnyRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      dnsFirewallIpCount: (() { final guardedValue = map['dnsFirewallIpCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      dnsFirewallIpCount: (() { final guardedValue = map['dnsFirewallIpCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       dnsFirewallIps: (() { final guardedValue = map['dnsFirewallIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       ecsFallback: (() { final guardedValue = map['ecsFallback']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       maximumCacheTtl: (() { final guardedValue = map['maximumCacheTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),

@@ -7,18 +7,18 @@ class GetWorkersScriptResult {
   /// Identifier.
   final String? accountId;
   final GetWorkersScriptFilter? filter;
-  /// Name of the script, used in URLs and route configuration.
+  /// Name of the script.
   final String? id;
   final String? script;
-  /// Name of the script, used in URLs and route configuration.
+  /// Name of the script.
   final String? scriptName;
 
   /// Creates a new [GetWorkersScriptResult].
   /// [accountId] Identifier.
   /// [filter] Optional.
-  /// [id] Name of the script, used in URLs and route configuration.
+  /// [id] Name of the script.
   /// [script] Optional.
-  /// [scriptName] Name of the script, used in URLs and route configuration.
+  /// [scriptName] Name of the script.
   const GetWorkersScriptResult({
     this.accountId,
     this.filter,

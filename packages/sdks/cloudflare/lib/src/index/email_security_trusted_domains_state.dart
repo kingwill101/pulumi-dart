@@ -10,12 +10,14 @@ class EmailSecurityTrustedDomainsState {
   final pulumi.Input<String?>? createdAt;
   /// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
   final pulumi.Input<bool?>? isRecent;
+  /// Whether `pattern` is a regular expression instead of a literal domain.
   final pulumi.Input<bool?>? isRegex;
   /// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
   final pulumi.Input<bool?>? isSimilarity;
   /// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
   final pulumi.Input<String?>? lastModified;
   final pulumi.Input<String?>? modifiedAt;
+  /// The domain pattern to trust, e.g. `example.com`.
   final pulumi.Input<String?>? pattern;
 
   /// Creates a new [EmailSecurityTrustedDomainsState].
@@ -23,11 +25,11 @@ class EmailSecurityTrustedDomainsState {
   /// [comments] Optional.
   /// [createdAt] Optional.
   /// [isRecent] Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
-  /// [isRegex] Optional.
+  /// [isRegex] Whether `pattern` is a regular expression instead of a literal domain.
   /// [isSimilarity] Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
   /// [lastModified] Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
   /// [modifiedAt] Optional.
-  /// [pattern] Optional.
+  /// [pattern] The domain pattern to trust, e.g. `example.com`.
   const EmailSecurityTrustedDomainsState({
     this.accountId,
     this.comments,

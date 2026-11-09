@@ -5,33 +5,45 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMagicWanIpsecTunnelIpsecTunnelBgp {
   /// ASN used on the customer end of the BGP session
   final pulumi.Input<int> customerAsn;
+  /// ID of the BGP filter profile applied to routes advertised to the customer.
+  final pulumi.Input<String> exportFilterId;
   /// Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
   final pulumi.Input<List<String>> extraPrefixes;
+  /// ID of the BGP filter profile applied to routes received from the customer.
+  final pulumi.Input<String> importFilterId;
   /// MD5 key to use for session authentication.
   final pulumi.Input<String> md5Key;
 
   /// Creates a new [GetMagicWanIpsecTunnelIpsecTunnelBgp].
   /// [customerAsn] ASN used on the customer end of the BGP session
+  /// [exportFilterId] ID of the BGP filter profile applied to routes advertised to the customer.
   /// [extraPrefixes] Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+  /// [importFilterId] ID of the BGP filter profile applied to routes received from the customer.
   /// [md5Key] MD5 key to use for session authentication.
   const GetMagicWanIpsecTunnelIpsecTunnelBgp({
     required this.customerAsn,
+    required this.exportFilterId,
     required this.extraPrefixes,
+    required this.importFilterId,
     required this.md5Key,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'customerAsn': customerAsn,
+      'exportFilterId': exportFilterId,
       'extraPrefixes': extraPrefixes,
+      'importFilterId': importFilterId,
       'md5Key': md5Key,
     };
   }
 
   factory GetMagicWanIpsecTunnelIpsecTunnelBgp.fromMap(Map<String, dynamic> map) {
     return GetMagicWanIpsecTunnelIpsecTunnelBgp(
-      customerAsn: pulumi.Input.fromValue((map['customerAsn'] as num).toInt()),
+      customerAsn: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['customerAsn'])),
+      exportFilterId: pulumi.Input.fromValue(map['exportFilterId'] as String),
       extraPrefixes: pulumi.Input.fromValue((map['extraPrefixes'] as List).cast<String>()),
+      importFilterId: pulumi.Input.fromValue(map['importFilterId'] as String),
       md5Key: pulumi.Input.fromValue(map['md5Key'] as String),
     );
   }

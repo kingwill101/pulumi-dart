@@ -18,6 +18,8 @@ class GetMagicTransitConnectorsResult {
   final pulumi.Input<String> lastUpdated;
   final pulumi.Input<String> licenseKey;
   final pulumi.Input<String> notes;
+  final pulumi.Input<bool> primary;
+  final pulumi.Input<String> siteId;
   final pulumi.Input<String> timezone;
 
   /// Creates a new [GetMagicTransitConnectorsResult].
@@ -33,6 +35,8 @@ class GetMagicTransitConnectorsResult {
   /// [lastUpdated] Required.
   /// [licenseKey] Required.
   /// [notes] Required.
+  /// [primary] Required.
+  /// [siteId] Required.
   /// [timezone] Required.
   const GetMagicTransitConnectorsResult({
     required this.activated,
@@ -47,6 +51,8 @@ class GetMagicTransitConnectorsResult {
     required this.lastUpdated,
     required this.licenseKey,
     required this.notes,
+    required this.primary,
+    required this.siteId,
     required this.timezone,
   });
 
@@ -64,6 +70,8 @@ class GetMagicTransitConnectorsResult {
       'lastUpdated': lastUpdated,
       'licenseKey': licenseKey,
       'notes': notes,
+      'primary': primary,
+      'siteId': siteId,
       'timezone': timezone,
     };
   }
@@ -82,6 +90,8 @@ class GetMagicTransitConnectorsResult {
       lastUpdated: pulumi.Input.fromValue(map['lastUpdated'] as String),
       licenseKey: pulumi.Input.fromValue(map['licenseKey'] as String),
       notes: pulumi.Input.fromValue(map['notes'] as String),
+      primary: pulumi.Input.fromValue(map['primary'] as bool),
+      siteId: pulumi.Input.fromValue(map['siteId'] as String),
       timezone: pulumi.Input.fromValue(map['timezone'] as String),
     );
   }

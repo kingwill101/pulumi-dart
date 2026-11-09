@@ -27,7 +27,7 @@ class TeamsLocationMaxTtl {
   factory TeamsLocationMaxTtl.fromMap(Map<String, dynamic> map) {
     return TeamsLocationMaxTtl(
       mode: pulumi.Input.fromValue(map['mode'] as String),
-      ttlSecs: (() { final guardedValue = map['ttlSecs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      ttlSecs: (() { final guardedValue = map['ttlSecs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

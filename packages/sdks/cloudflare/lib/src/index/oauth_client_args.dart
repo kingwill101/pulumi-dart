@@ -21,6 +21,8 @@ class OauthClientArgs {
   final pulumi.Input<String?>? logoUri;
   /// The unique identifier for an OAuth client.
   final pulumi.Input<String?>? oauthClientId;
+  /// Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+  final pulumi.Input<List<String>?>? optionalScopes;
   /// URL that points to a privacy policy document.
   final pulumi.Input<String?>? policyUri;
   /// Array of allowed post-logout redirect URIs.
@@ -48,6 +50,7 @@ class OauthClientArgs {
   /// [grantTypes] Array of OAuth grant types the client is allowed to use. `authorizationCode` is required; `refreshToken` may be included optionally.
   /// [logoUri] URL of the client's logo.
   /// [oauthClientId] The unique identifier for an OAuth client.
+  /// [optionalScopes] Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
   /// [policyUri] URL that points to a privacy policy document.
   /// [postLogoutRedirectUris] Array of allowed post-logout redirect URIs.
   /// [redirectUris] Array of allowed redirect URIs for the client.
@@ -64,6 +67,7 @@ class OauthClientArgs {
     required this.grantTypes,
     this.logoUri,
     this.oauthClientId,
+    this.optionalScopes,
     this.policyUri,
     this.postLogoutRedirectUris,
     required this.redirectUris,
@@ -83,6 +87,7 @@ class OauthClientArgs {
       'grantTypes': grantTypes,
       'logoUri': ?logoUri,
       'oauthClientId': ?oauthClientId,
+      'optionalScopes': ?optionalScopes,
       'policyUri': ?policyUri,
       'postLogoutRedirectUris': ?postLogoutRedirectUris,
       'redirectUris': redirectUris,
@@ -103,6 +108,7 @@ class OauthClientArgs {
       grantTypes: pulumi.Input.fromValue((map['grantTypes'] as List).cast<String>()),
       logoUri: (() { final guardedValue = map['logoUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       oauthClientId: (() { final guardedValue = map['oauthClientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      optionalScopes: (() { final guardedValue = map['optionalScopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       policyUri: (() { final guardedValue = map['policyUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       postLogoutRedirectUris: (() { final guardedValue = map['postLogoutRedirectUris']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       redirectUris: pulumi.Input.fromValue((map['redirectUris'] as List).cast<String>()),

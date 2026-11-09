@@ -10,13 +10,12 @@ import 'get_zero_trust_list_filter.dart';
 class GetZeroTrustListArgs {
   final pulumi.Input<String?>? accountId;
   final pulumi.Input<GetZeroTrustListFilter?>? filter;
-  /// Identify the API resource with a UUID.
   final pulumi.Input<String?>? listId;
 
   /// Creates a new [GetZeroTrustListArgs].
   /// [accountId] Optional.
   /// [filter] Optional.
-  /// [listId] Identify the API resource with a UUID.
+  /// [listId] Optional.
   const GetZeroTrustListArgs({
     this.accountId,
     this.filter,

@@ -13,19 +13,21 @@ import 'pipeline_stream_worker_binding.dart';
 class PipelineStreamArgs {
   /// Specifies the public ID of the account.
   final pulumi.Input<String> accountId;
+  /// Defines the data format of the events.
   final pulumi.Input<PipelineStreamFormat?>? format;
   final pulumi.Input<PipelineStreamHttp?>? http;
   /// Specifies the name of the Stream.
   final pulumi.Input<String> name;
+  /// Defines the schema of the events in the data stream.
   final pulumi.Input<PipelineStreamSchema?>? schema;
   final pulumi.Input<PipelineStreamWorkerBinding?>? workerBinding;
 
   /// Creates a new [PipelineStreamArgs].
   /// [accountId] Specifies the public ID of the account.
-  /// [format] Optional.
+  /// [format] Defines the data format of the events.
   /// [http] Optional.
   /// [name] Specifies the name of the Stream.
-  /// [schema] Optional.
+  /// [schema] Defines the schema of the events in the data stream.
   /// [workerBinding] Optional.
   const PipelineStreamArgs({
     required this.accountId,

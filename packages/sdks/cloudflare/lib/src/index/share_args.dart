@@ -11,6 +11,10 @@ import 'share_resource.dart';
 class ShareArgs {
   /// Account identifier.
   final pulumi.Input<String> accountId;
+  /// Include recipient counts in the response.
+  final pulumi.Input<bool?>? includeRecipientCounts;
+  /// Include resources in the response.
+  final pulumi.Input<bool?>? includeResources;
   /// The name of the share.
   final pulumi.Input<String> name;
   final pulumi.Input<List<ShareRecipient>> recipients;
@@ -18,11 +22,15 @@ class ShareArgs {
 
   /// Creates a new [ShareArgs].
   /// [accountId] Account identifier.
+  /// [includeRecipientCounts] Include recipient counts in the response.
+  /// [includeResources] Include resources in the response.
   /// [name] The name of the share.
   /// [recipients] Required.
   /// [resources] Required.
   const ShareArgs({
     required this.accountId,
+    this.includeRecipientCounts,
+    this.includeResources,
     required this.name,
     required this.recipients,
     required this.resources,
@@ -31,6 +39,8 @@ class ShareArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountId': accountId,
+      'includeRecipientCounts': ?includeRecipientCounts,
+      'includeResources': ?includeResources,
       'name': name,
       'recipients': pulumi.Input.mapInputValue<List<ShareRecipient>, List<Map<String, dynamic>>>(recipients, (value) => pulumi.Input.encodeList<ShareRecipient, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resources': pulumi.Input.mapInputValue<List<ShareResource>, List<Map<String, dynamic>>>(resources, (value) => pulumi.Input.encodeList<ShareResource, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -40,6 +50,8 @@ class ShareArgs {
   factory ShareArgs.fromMap(Map<String, dynamic> map) {
     return ShareArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      includeRecipientCounts: (() { final guardedValue = map['includeRecipientCounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      includeResources: (() { final guardedValue = map['includeResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       recipients: pulumi.Input.fromValue(pulumi.Input.decodeList<ShareRecipient>(map['recipients']!, (value) => ShareRecipient.fromMap((value as Map).cast<String, dynamic>()))),
       resources: pulumi.Input.fromValue(pulumi.Input.decodeList<ShareResource>(map['resources']!, (value) => ShareResource.fromMap((value as Map).cast<String, dynamic>()))),

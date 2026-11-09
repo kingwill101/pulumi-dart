@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_r2_managed_domain_r2_managed_domain_args_doc}
 class R2ManagedDomainArgs {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   final pulumi.Input<String> accountId;
   /// Name of the bucket.
   final pulumi.Input<String> bucketName;
@@ -17,7 +17,7 @@ class R2ManagedDomainArgs {
   final pulumi.Input<String?>? jurisdiction;
 
   /// Creates a new [R2ManagedDomainArgs].
-  /// [accountId] Account ID.
+  /// [accountId] Cloudflare account ID that owns the R2 resource.
   /// [bucketName] Name of the bucket.
   /// [enabled] Whether to enable public bucket access at the r2.dev domain.
   /// [jurisdiction] Jurisdiction of the bucket

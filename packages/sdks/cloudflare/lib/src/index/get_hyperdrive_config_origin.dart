@@ -9,7 +9,7 @@ class GetHyperdriveConfigOrigin {
   final pulumi.Input<String> accessClientSecret;
   /// Set the name of your origin database.
   final pulumi.Input<String> database;
-  /// Defines the host (hostname or IP) of your origin database.
+  /// Defines the publicly reachable hostname or IP of your origin database. Private, loopback, and link-local IP addresses are not allowed.
   final pulumi.Input<String> host;
   /// Set the password needed to access your origin database. The API never returns this write-only value.
   final pulumi.Input<String> password;
@@ -27,7 +27,7 @@ class GetHyperdriveConfigOrigin {
   /// [accessClientId] Defines the Client ID of the Access token to use when connecting to the origin database.
   /// [accessClientSecret] Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value.
   /// [database] Set the name of your origin database.
-  /// [host] Defines the host (hostname or IP) of your origin database.
+  /// [host] Defines the publicly reachable hostname or IP of your origin database. Private, loopback, and link-local IP addresses are not allowed.
   /// [password] Set the password needed to access your origin database. The API never returns this write-only value.
   /// [port] Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
   /// [scheme] Specifies the URL scheme used to connect to your origin database.
@@ -66,7 +66,7 @@ class GetHyperdriveConfigOrigin {
       database: pulumi.Input.fromValue(map['database'] as String),
       host: pulumi.Input.fromValue(map['host'] as String),
       password: pulumi.Input.fromValue(map['password'] as String),
-      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       scheme: pulumi.Input.fromValue(map['scheme'] as String),
       serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
       user: pulumi.Input.fromValue(map['user'] as String),

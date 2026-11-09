@@ -143,15 +143,15 @@ import 'load_balancer_pool_state.dart';
 ///         },
 ///         Description = "Primary data center - Provider XYZ",
 ///         Enabled = false,
-///         Latitude = 0,
+///         Latitude = 0.0,
 ///         LoadShedding = new Cloudflare.Inputs.LoadBalancerPoolLoadSheddingArgs
 ///         {
-///             DefaultPercent = 0,
+///             DefaultPercent = 0.0,
 ///             DefaultPolicy = "random",
-///             SessionPercent = 0,
+///             SessionPercent = 0.0,
 ///             SessionPolicy = "hash",
 ///         },
-///         Longitude = 0,
+///         Longitude = 0.0,
 ///         MinimumOrigins = 0,
 ///         Monitor = "monitor",
 ///         MonitorGroup = "monitor_group",
@@ -242,7 +242,7 @@ import 'load_balancer_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -250,10 +250,13 @@ import 'load_balancer_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_loadbalancerpool" "example_load_balancer_pool" {
+/// resource "cloudflare_load_balancer_pool" "example_load_balancer_pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   name       = "primary-dc-1"
-///   origins {
+///   origins = [{
 ///     address       = "0.0.0.0"
 ///     enabled       = true
 ///     flatten_cname = true
@@ -264,7 +267,7 @@ import 'load_balancer_pool_state.dart';
 ///     port               = 0
 ///     virtual_network_id = "a5624d4e-044a-4ff0-b3e1-e2465353d4b4"
 ///     weight             = 0.6
-///   }
+///   }]
 ///   description = "Primary data center - Provider XYZ"
 ///   enabled     = false
 ///   latitude    = 0
@@ -470,7 +473,7 @@ class LoadBalancerPool extends pulumi.CustomResource {
           'cloudflare:index/loadBalancerPool:LoadBalancerPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.3').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     checkRegions = registerOutput<List<String>?>('checkRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

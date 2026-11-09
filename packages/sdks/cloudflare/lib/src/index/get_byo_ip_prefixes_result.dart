@@ -107,7 +107,7 @@ class GetByoIpPrefixesResult {
       advertised: pulumi.Input.fromValue(map['advertised'] as bool),
       advertisedModifiedAt: pulumi.Input.fromValue(map['advertisedModifiedAt'] as String),
       approved: pulumi.Input.fromValue(map['approved'] as String),
-      asn: pulumi.Input.fromValue((map['asn'] as num).toInt()),
+      asn: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['asn'])),
       cidr: pulumi.Input.fromValue(map['cidr'] as String),
       createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
       delegateLoaCreation: pulumi.Input.fromValue(map['delegateLoaCreation'] as bool),
