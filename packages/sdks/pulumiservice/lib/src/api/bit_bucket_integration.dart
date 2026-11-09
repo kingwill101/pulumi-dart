@@ -52,4 +52,26 @@ class BitBucketIntegration extends pulumi.CustomResource {
     workspaceSlug = registerOutput<String>('workspaceSlug');
     workspaceUuid = registerOutput<String>('workspaceUuid');
   }
+
+  /// Creates a typed reference to an existing [BitBucketIntegration] resource.
+  BitBucketIntegration.reference(String urn)
+    : super(
+        'pulumiservice:api/integrations:BitBucketIntegration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authType = registerOutput<String?>('authType');
+    authUser = registerOutput<dynamic>('authUser');
+    avatarUrl = registerOutput<String?>('avatarUrl');
+    disableDetailedDiff = registerOutput<bool>('disableDetailedDiff');
+    disableNeoSummaries = registerOutput<bool>('disableNeoSummaries');
+    disablePRComments = registerOutput<bool>('disablePRComments');
+    installed = registerOutput<bool>('installed');
+    valid = registerOutput<bool>('valid');
+    workspaceName = registerOutput<String?>('workspaceName');
+    workspaceSlug = registerOutput<String>('workspaceSlug');
+    workspaceUuid = registerOutput<String>('workspaceUuid');
+  }
 }

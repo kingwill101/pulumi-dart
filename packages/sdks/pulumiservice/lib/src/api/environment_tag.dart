@@ -37,4 +37,21 @@ class EnvironmentTag extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     value = registerOutput<String>('value');
   }
+
+  /// Creates a typed reference to an existing [EnvironmentTag] resource.
+  EnvironmentTag.reference(String urn)
+    : super(
+        'pulumiservice:api/esc:EnvironmentTag',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    created = registerOutput<String>('created');
+    editorLogin = registerOutput<String>('editorLogin');
+    editorName = registerOutput<String>('editorName');
+    modified = registerOutput<String>('modified');
+    this.name = registerOutput<String>('name');
+    value = registerOutput<String>('value');
+  }
 }

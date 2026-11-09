@@ -41,6 +41,7 @@ class GitLabIntegration extends pulumi.CustomResource {
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
+          additionalSecretOutputs: const ['groupAccessTokenExpiration'],
         ) {
     authUser = registerOutput<dynamic>('authUser');
     avatarUrl = registerOutput<String?>('avatarUrl');
@@ -49,7 +50,31 @@ class GitLabIntegration extends pulumi.CustomResource {
     disablePRComments = registerOutput<bool>('disablePRComments');
     gitLabGroupId = registerOutput<int>('gitLabGroupId');
     gitLabOrg = registerOutput<dynamic>('gitLabOrg');
-    groupAccessTokenExpiration = registerOutput<String?>('groupAccessTokenExpiration');
+    groupAccessTokenExpiration = registerOutput<String?>('groupAccessTokenExpiration', isSecret: true);
+    groupName = registerOutput<String?>('groupName');
+    groupPath = registerOutput<String?>('groupPath');
+    installed = registerOutput<bool>('installed');
+    valid = registerOutput<bool>('valid');
+  }
+
+  /// Creates a typed reference to an existing [GitLabIntegration] resource.
+  GitLabIntegration.reference(String urn)
+    : super(
+        'pulumiservice:api/integrations:GitLabIntegration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['groupAccessTokenExpiration'],
+        isResourceReference: true,
+      ) {
+    authUser = registerOutput<dynamic>('authUser');
+    avatarUrl = registerOutput<String?>('avatarUrl');
+    disableDetailedDiff = registerOutput<bool>('disableDetailedDiff');
+    disableNeoSummaries = registerOutput<bool>('disableNeoSummaries');
+    disablePRComments = registerOutput<bool>('disablePRComments');
+    gitLabGroupId = registerOutput<int>('gitLabGroupId');
+    gitLabOrg = registerOutput<dynamic>('gitLabOrg');
+    groupAccessTokenExpiration = registerOutput<String?>('groupAccessTokenExpiration', isSecret: true);
     groupName = registerOutput<String?>('groupName');
     groupPath = registerOutput<String?>('groupPath');
     installed = registerOutput<bool>('installed');

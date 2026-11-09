@@ -8,21 +8,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_api_role_api_args_doc}
 class RoleApiArgs {
   /// Also create an associated policy and role binding alongside the role
-  final pulumi.Input<bool>? createPolicyAndRole;
+  final pulumi.Input<bool?>? createPolicyAndRole;
   /// A human-readable description of the permission descriptor.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The detailed permission descriptor tree.
   final pulumi.Input<dynamic>? details;
   /// The name of the permission descriptor.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The organization name
   final pulumi.Input<String> orgName;
   /// The resource type this permission descriptor applies to.
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
   /// The role identifier
-  final pulumi.Input<String>? roleID;
+  final pulumi.Input<String?>? roleID;
   /// The UX purpose of this permission descriptor (e.g. role, policy, set).
-  final pulumi.Input<String>? uxPurpose;
+  final pulumi.Input<String?>? uxPurpose;
 
   /// Creates a new [RoleApiArgs].
   /// [createPolicyAndRole] Also create an associated policy and role binding alongside the role

@@ -6,11 +6,11 @@ class PolicyPackComplianceFrameworkInput {
   /// Compliance framework name (e.g. "PCI-DSS", "SOC2").
   final pulumi.Input<String> name;
   /// Reference to the framework (e.g. a control ID).
-  final pulumi.Input<String>? reference;
+  final pulumi.Input<String?>? reference;
   /// Free-form specification text.
-  final pulumi.Input<String>? specification;
+  final pulumi.Input<String?>? specification;
   /// Compliance framework version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [PolicyPackComplianceFrameworkInput].
   /// [name] Compliance framework name (e.g. "PCI-DSS", "SOC2").

@@ -42,4 +42,22 @@ class SAML extends pulumi.CustomResource {
     validUntil = registerOutput<String?>('validUntil');
     validationError = registerOutput<String?>('validationError');
   }
+
+  /// Creates a typed reference to an existing [SAML] resource.
+  SAML.reference(String urn)
+    : super(
+        'pulumiservice:api/auth:SAML',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    entityId = registerOutput<String?>('entityId');
+    idpSsoDescriptor = registerOutput<String>('idpSsoDescriptor');
+    nameIdFormat = registerOutput<String?>('nameIdFormat');
+    organization = registerOutput<dynamic>('organization');
+    ssoUrl = registerOutput<String?>('ssoUrl');
+    validUntil = registerOutput<String?>('validUntil');
+    validationError = registerOutput<String?>('validationError');
+  }
 }

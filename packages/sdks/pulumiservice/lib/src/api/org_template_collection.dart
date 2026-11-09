@@ -40,4 +40,22 @@ class OrgTemplateCollection extends pulumi.CustomResource {
     sourceURL = registerOutput<String>('sourceURL');
     templateID = registerOutput<String>('templateID');
   }
+
+  /// Creates a typed reference to an existing [OrgTemplateCollection] resource.
+  OrgTemplateCollection.reference(String urn)
+    : super(
+        'pulumiservice:api:OrgTemplateCollection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    destination = registerOutput<dynamic>('destination');
+    destinationURL = registerOutput<String?>('destinationURL');
+    error = registerOutput<String?>('error');
+    isValid = registerOutput<bool>('isValid');
+    this.name = registerOutput<String>('name');
+    sourceURL = registerOutput<String>('sourceURL');
+    templateID = registerOutput<String>('templateID');
+  }
 }

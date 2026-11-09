@@ -2,11 +2,12 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
+/// AWS configuration for Deployments OIDC. Pulumi ESC is the recommended way to supply cloud credentials to Pulumi Deployments. See [Supplying Cloud Credentials to Pulumi Deployments](https://www.pulumi.com/docs/deployments/guides/cloud-credentials/).
 class AWSOIDCConfiguration {
   /// Duration of the assume-role session in “XhYmZs” format
-  final pulumi.Input<String>? duration;
+  final pulumi.Input<String?>? duration;
   /// Optional set of IAM policy ARNs that further restrict the assume-role session
-  final pulumi.Input<List<String>>? policyARNs;
+  final pulumi.Input<List<String>?>? policyARNs;
   /// The ARN of the role to assume using the OIDC token.
   final pulumi.Input<String> roleARN;
   /// The name of the assume-role session.

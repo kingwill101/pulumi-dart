@@ -47,20 +47,47 @@ class Webhook extends pulumi.CustomResource {
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
+          additionalSecretOutputs: const ['hasSecret', 'secret', 'secretCiphertext'],
         ) {
     active = registerOutput<bool>('active');
     displayName = registerOutput<String>('displayName');
     envName = registerOutput<String?>('envName');
-    filters = registerOutput<List<String>?>('filters');
+    filters = registerOutput<List<String>?>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     format = registerOutput<String?>('format');
-    groups = registerOutput<List<String>?>('groups');
-    hasSecret = registerOutput<bool>('hasSecret');
+    groups = registerOutput<List<String>?>('groups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    hasSecret = registerOutput<bool>('hasSecret', isSecret: true);
     this.name = registerOutput<String?>('name');
     organizationName = registerOutput<String>('organizationName');
     payloadUrl = registerOutput<String>('payloadUrl');
     projectName = registerOutput<String?>('projectName');
-    secret = registerOutput<String?>('secret');
-    secretCiphertext = registerOutput<String>('secretCiphertext');
+    secret = registerOutput<String?>('secret', isSecret: true);
+    secretCiphertext = registerOutput<String>('secretCiphertext', isSecret: true);
+    stackName = registerOutput<String?>('stackName');
+  }
+
+  /// Creates a typed reference to an existing [Webhook] resource.
+  Webhook.reference(String urn)
+    : super(
+        'pulumiservice:api/esc:Webhook',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['hasSecret', 'secret', 'secretCiphertext'],
+        isResourceReference: true,
+      ) {
+    active = registerOutput<bool>('active');
+    displayName = registerOutput<String>('displayName');
+    envName = registerOutput<String?>('envName');
+    filters = registerOutput<List<String>?>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    format = registerOutput<String?>('format');
+    groups = registerOutput<List<String>?>('groups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    hasSecret = registerOutput<bool>('hasSecret', isSecret: true);
+    this.name = registerOutput<String?>('name');
+    organizationName = registerOutput<String>('organizationName');
+    payloadUrl = registerOutput<String>('payloadUrl');
+    projectName = registerOutput<String?>('projectName');
+    secret = registerOutput<String?>('secret', isSecret: true);
+    secretCiphertext = registerOutput<String>('secretCiphertext', isSecret: true);
     stackName = registerOutput<String?>('stackName');
   }
 }

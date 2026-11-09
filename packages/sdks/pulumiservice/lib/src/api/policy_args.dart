@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_api_auth_policy_args_doc}
 class PolicyArgs {
   /// The OIDC issuer identifier
-  final pulumi.Input<String>? issuerId;
+  final pulumi.Input<String?>? issuerId;
   /// The organization name
   final pulumi.Input<String> orgName;
   /// List of policies

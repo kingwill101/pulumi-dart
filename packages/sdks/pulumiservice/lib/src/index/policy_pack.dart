@@ -1,7 +1,18 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_pack_args.dart';
+import 'policy_pack_policy_input.dart';
 
 /// A Policy Pack published to Pulumi Cloud. The source directory is tarballed and uploaded on Create; changing source content publishes a new version (replace).
+///
+/// ## Import
+///
+/// This resource can be imported using its `id`, which has the format `{organization}/{name}/{versionTag}`, e.g.,
+///
+/// ```sh
+///  $ pulumi import pulumiservice:index:PolicyPack my-policy-pack my-org/my-policy-pack/1.0.0
+/// ```
+///
+/// Only the organization, name, version tag and display name are read back. Set `sourcePath` in your program after import.
 class PolicyPack extends pulumi.CustomResource {
   late final pulumi.Output<String> contentHash;
   /// Optional display name. Changing it requires a new versionTag (policy pack versions are immutable in Pulumi Cloud).
@@ -11,7 +22,7 @@ class PolicyPack extends pulumi.CustomResource {
   /// Organization name.
   late final pulumi.Output<String> organization;
   /// Metadata for each policy in the pack.
-  late final pulumi.Output<List<Map<String, dynamic>>?> policies;
+  late final pulumi.Output<List<PolicyPackPolicyInput>?> policies;
   /// Path to the directory containing the policy pack source. The directory is tarballed and uploaded.
   late final pulumi.Output<String> sourcePath;
   late final pulumi.Output<int> version;
@@ -36,7 +47,26 @@ class PolicyPack extends pulumi.CustomResource {
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
     organization = registerOutput<String>('organization');
-    policies = registerOutput<List<Map<String, dynamic>>?>('policies');
+    policies = registerOutput<List<PolicyPackPolicyInput>?>('policies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyPackPolicyInput>(guardedValue, (value) => PolicyPackPolicyInput.fromMap((value as Map).cast<String, dynamic>())); });
+    sourcePath = registerOutput<String>('sourcePath');
+    version = registerOutput<int>('version');
+    versionTag = registerOutput<String>('versionTag');
+  }
+
+  /// Creates a typed reference to an existing [PolicyPack] resource.
+  PolicyPack.reference(String urn)
+    : super(
+        'pulumiservice:index:PolicyPack',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    contentHash = registerOutput<String>('contentHash');
+    displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    organization = registerOutput<String>('organization');
+    policies = registerOutput<List<PolicyPackPolicyInput>?>('policies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyPackPolicyInput>(guardedValue, (value) => PolicyPackPolicyInput.fromMap((value as Map).cast<String, dynamic>())); });
     sourcePath = registerOutput<String>('sourcePath');
     version = registerOutput<int>('version');
     versionTag = registerOutput<String>('versionTag');

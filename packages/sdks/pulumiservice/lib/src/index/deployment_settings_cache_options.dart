@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Dependency cache settings for the deployment
 class DeploymentSettingsCacheOptions {
   /// Enable dependency caching
-  final pulumi.Input<bool>? enable;
+  final pulumi.Input<bool?>? enable;
 
   /// Creates a new [DeploymentSettingsCacheOptions].
   /// [enable] Enable dependency caching
-  const DeploymentSettingsCacheOptions({
-    this.enable,
-  });
+  DeploymentSettingsCacheOptions({
+    pulumi.Input<bool?>? enable,
+  }) : enable = enable ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

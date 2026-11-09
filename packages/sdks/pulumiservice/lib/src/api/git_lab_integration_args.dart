@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_api_integrations_git_lab_integration_args_doc}
 class GitLabIntegrationArgs {
   /// Whether detailed property-level diffs are disabled for PR comments.
-  final pulumi.Input<bool>? disableDetailedDiff;
+  final pulumi.Input<bool?>? disableDetailedDiff;
   /// Whether Neo AI summaries are disabled for this integration.
-  final pulumi.Input<bool>? disableNeoSummaries;
+  final pulumi.Input<bool?>? disableNeoSummaries;
   /// Whether PR comments are disabled for this integration.
-  final pulumi.Input<bool>? disablePRComments;
+  final pulumi.Input<bool?>? disablePRComments;
   /// The GitLab integration identifier
   final pulumi.Input<String> integrationId;
   /// The organization name

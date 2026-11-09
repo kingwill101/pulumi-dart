@@ -1,10 +1,13 @@
-enum AuthPolicyTokenType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum AuthPolicyTokenType implements pulumi.PulumiEnum<String> {
   valuePersonal("personal"),
   valueTeam("team"),
   valueOrganization("organization"),
   valueRunner("runner");
 
   const AuthPolicyTokenType(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthPolicyTokenType fromValue(String value) {

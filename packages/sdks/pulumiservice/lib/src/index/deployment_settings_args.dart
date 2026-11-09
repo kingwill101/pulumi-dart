@@ -14,25 +14,25 @@ import 'deployment_settings_vcs.dart';
 /// {@macro pulumi_index_deployment_settings_args_doc}
 class DeploymentSettingsArgs {
   /// The agent pool identifier to use for the deployment.
-  final pulumi.Input<String>? agentPoolId;
+  final pulumi.Input<String?>? agentPoolId;
   /// Dependency cache settings for the deployment
-  final pulumi.Input<DeploymentSettingsCacheOptions>? cacheOptions;
+  final pulumi.Input<DeploymentSettingsCacheOptions?>? cacheOptions;
   /// Settings related to the deployment executor.
-  final pulumi.Input<DeploymentSettingsExecutorContext>? executorContext;
+  final pulumi.Input<DeploymentSettingsExecutorContext?>? executorContext;
   /// GitHub settings for the deployment.
-  final pulumi.Input<DeploymentSettingsGithub>? github;
+  final pulumi.Input<DeploymentSettingsGithub?>? github;
   /// Settings related to the Pulumi operation environment during the deployment.
-  final pulumi.Input<DeploymentSettingsOperationContext>? operationContext;
+  final pulumi.Input<DeploymentSettingsOperationContext?>? operationContext;
   /// Organization name.
   final pulumi.Input<String> organization;
   /// Project name.
   final pulumi.Input<String> project;
   /// Settings related to the source of the deployment.
-  final pulumi.Input<DeploymentSettingsSourceContext>? sourceContext;
+  final pulumi.Input<DeploymentSettingsSourceContext?>? sourceContext;
   /// Stack name.
   final pulumi.Input<String> stack;
   /// VCS settings for the deployment. Supports Azure DevOps and GitHub via the 'provider' discriminator field.
-  final pulumi.Input<DeploymentSettingsVcs>? vcs;
+  final pulumi.Input<DeploymentSettingsVcs?>? vcs;
 
   /// Creates a new [DeploymentSettingsArgs].
   /// [agentPoolId] The agent pool identifier to use for the deployment.

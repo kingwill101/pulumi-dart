@@ -2,8 +2,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'stack_args.dart';
 
 /// A stack is a collection of resources that share a common lifecycle. Stacks are uniquely identified by their name and the project they belong to.
+///
+/// ## Import
+///
+/// This resource can be imported using its `id`, which has the format `{organization}/{project}/{stack}`, e.g.,
+///
+/// ```sh
+///  $ pulumi import pulumiservice:index:Stack my-stack my-org/my-project/my-stack
+/// ```
 class Stack extends pulumi.CustomResource {
-  /// Optional. Flag indicating whether to delete the stack even if it still contains resources.
+  /// Optional. Flag indicating whether to delete the stack even if it still contains resources. Defaults to `false`.
   late final pulumi.Output<bool?> forceDestroy;
   /// The name of the organization.
   late final pulumi.Output<String> organizationName;
@@ -24,8 +32,23 @@ class Stack extends pulumi.CustomResource {
           'pulumiservice:index:Stack',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['organizationName', 'projectName', 'stackName']).merge(options),
         ) {
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    organizationName = registerOutput<String>('organizationName');
+    projectName = registerOutput<String>('projectName');
+    stackName = registerOutput<String>('stackName');
+  }
+
+  /// Creates a typed reference to an existing [Stack] resource.
+  Stack.reference(String urn)
+    : super(
+        'pulumiservice:index:Stack',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     forceDestroy = registerOutput<bool?>('forceDestroy');
     organizationName = registerOutput<String>('organizationName');
     projectName = registerOutput<String>('projectName');

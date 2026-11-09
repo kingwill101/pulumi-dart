@@ -2,6 +2,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'team_args.dart';
 
 /// The Pulumi Cloud offers role-based access control (RBAC) using teams. Teams allow organization admins to assign a set of stack permissions to a group of users.
+///
+/// ## Import
+///
+/// This resource can be imported using its `id`, which has the format `{organization}/{teamName}`, e.g.,
+///
+/// ```sh
+///  $ pulumi import pulumiservice:index:Team my-team my-org/my-team
+/// ```
+///
+/// For GitHub teams, `githubTeamId` isn't read back, so set it in your program after import.
 class Team extends pulumi.CustomResource {
   /// Optional. Team description.
   late final pulumi.Output<String?> description;
@@ -30,12 +40,30 @@ class Team extends pulumi.CustomResource {
           'pulumiservice:index:Team',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['name', 'organizationName', 'teamType']).merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     githubTeamId = registerOutput<double?>('githubTeamId');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String?>('name');
+    organizationName = registerOutput<String>('organizationName');
+    teamType = registerOutput<String>('teamType');
+  }
+
+  /// Creates a typed reference to an existing [Team] resource.
+  Team.reference(String urn)
+    : super(
+        'pulumiservice:index:Team',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    githubTeamId = registerOutput<double?>('githubTeamId');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String?>('name');
     organizationName = registerOutput<String>('organizationName');
     teamType = registerOutput<String>('teamType');

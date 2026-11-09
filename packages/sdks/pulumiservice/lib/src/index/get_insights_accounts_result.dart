@@ -5,23 +5,23 @@ import 'insights_account_state.dart';
 
 /// Result data returned by getInsightsAccounts.
 class GetInsightsAccountsResult {
-  final List<InsightsAccountState> accounts;
+  final List<InsightsAccountState>? accounts;
 
   /// Creates a new [GetInsightsAccountsResult].
-  /// [accounts] Required.
+  /// [accounts] Optional.
   const GetInsightsAccountsResult({
-    required this.accounts,
+    this.accounts,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accounts': pulumi.Input.encodeList<InsightsAccountState, Map<String, dynamic>>(accounts, (value) => value.toMap()),
+      'accounts': ?(() { final guardedValue = accounts; if (guardedValue == null) return null; return pulumi.Input.encodeList<InsightsAccountState, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetInsightsAccountsResult.fromMap(Map<String, dynamic> map) {
     return GetInsightsAccountsResult(
-      accounts: pulumi.Input.decodeList<InsightsAccountState>(map['accounts']!, (value) => InsightsAccountState.fromMap((value as Map).cast<String, dynamic>())),
+      accounts: (() { final guardedValue = map['accounts']; if (guardedValue == null) return null; return pulumi.Input.decodeList<InsightsAccountState>(guardedValue, (value) => InsightsAccountState.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

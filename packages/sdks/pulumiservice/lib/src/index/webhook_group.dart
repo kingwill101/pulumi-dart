@@ -1,9 +1,12 @@
-enum WebhookGroup {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum WebhookGroup implements pulumi.PulumiEnum<String> {
   stacks("stacks"),
   deployments("deployments"),
   environments("environments");
 
   const WebhookGroup(this.wireValue);
+  @override
   final String wireValue;
 
   static WebhookGroup fromValue(String value) {

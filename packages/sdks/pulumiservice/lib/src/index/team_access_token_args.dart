@@ -7,9 +7,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_team_access_token_args_doc}
 class TeamAccessTokenArgs {
-  /// Optional. Description for the token.
-  final pulumi.Input<String>? description;
-  /// The name for the token. This must be unique amongst all machine tokens within your organization.
+  /// A description of the token.
+  final pulumi.Input<String?>? description;
+  /// The name for the token. This must be unique among all organization and team tokens in the organization.
   final pulumi.Input<String> name;
   /// The organization's name.
   final pulumi.Input<String> organizationName;
@@ -17,8 +17,8 @@ class TeamAccessTokenArgs {
   final pulumi.Input<String> teamName;
 
   /// Creates a new [TeamAccessTokenArgs].
-  /// [description] Optional. Description for the token.
-  /// [name] The name for the token. This must be unique amongst all machine tokens within your organization.
+  /// [description] A description of the token.
+  /// [name] The name for the token. This must be unique among all organization and team tokens in the organization.
   /// [organizationName] The organization's name.
   /// [teamName] The team name.
   const TeamAccessTokenArgs({

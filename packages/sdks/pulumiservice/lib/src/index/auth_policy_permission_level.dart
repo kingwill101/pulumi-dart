@@ -1,8 +1,11 @@
-enum AuthPolicyPermissionLevel {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum AuthPolicyPermissionLevel implements pulumi.PulumiEnum<String> {
   valueStandard("standard"),
   valueAdmin("admin");
 
   const AuthPolicyPermissionLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthPolicyPermissionLevel fromValue(String value) {

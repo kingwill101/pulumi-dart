@@ -28,4 +28,18 @@ class AuditLogExportConfiguration extends pulumi.CustomResource {
     lastResult = registerOutput<dynamic>('lastResult');
     s3Config = registerOutput<dynamic>('s3Config');
   }
+
+  /// Creates a typed reference to an existing [AuditLogExportConfiguration] resource.
+  AuditLogExportConfiguration.reference(String urn)
+    : super(
+        'pulumiservice:api:AuditLogExportConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    enabled = registerOutput<bool>('enabled');
+    lastResult = registerOutput<dynamic>('lastResult');
+    s3Config = registerOutput<dynamic>('s3Config');
+  }
 }
