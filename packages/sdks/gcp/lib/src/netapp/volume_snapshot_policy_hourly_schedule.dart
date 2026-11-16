@@ -25,8 +25,8 @@ class VolumeSnapshotPolicyHourlySchedule {
 
   factory VolumeSnapshotPolicyHourlySchedule.fromMap(Map<String, dynamic> map) {
     return VolumeSnapshotPolicyHourlySchedule(
-      minute: (() { final guardedValue = map['minute']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      snapshotsToKeep: pulumi.Input.fromValue((map['snapshotsToKeep'] as num).toInt()),
+      minute: (() { final guardedValue = map['minute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      snapshotsToKeep: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['snapshotsToKeep'])),
     );
   }
 }

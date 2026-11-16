@@ -7,6 +7,7 @@ import 'backup_vault_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Backup Dr Backup Vault Simple
@@ -100,7 +101,7 @@ import 'backup_vault_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -134,7 +135,7 @@ import 'backup_vault_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -142,7 +143,10 @@ import 'backup_vault_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_backupdisasterrecovery_backupvault" "backup-vault-test" {
+/// resource "gcp_backupdisasterrecovery_backup_vault" "backup-vault-test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                                   = "us-central1"
 ///   backup_vault_id                            = "backup-vault-test"
 ///   description                                = "This is a second backup vault built by Terraform."
@@ -230,6 +234,7 @@ import 'backup_vault_state.dart';
 ///       ignoreBackupPlanReferences: 'true'
 ///       allowMissing: 'true'
 /// ```
+///
 ///
 /// ### Backup Dr Backup Vault Cmek
 ///
@@ -341,8 +346,8 @@ import 'backup_vault_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -385,7 +390,7 @@ import 'backup_vault_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -393,11 +398,14 @@ import 'backup_vault_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "testProject" {
+/// data "gcp_organizations_project" "testProject" {
 ///   project_id = "my-project-name"
 /// }
 ///
-/// resource "gcp_backupdisasterrecovery_backupvault" "backup-vault-cmek" {
+/// resource "gcp_backupdisasterrecovery_backup_vault" "backup-vault-cmek" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                                   = "us-central1"
 ///   backup_vault_id                            = "backup-vault-cmek"
 ///   description                                = "This is a second backup vault built by Terraform."
@@ -633,7 +641,7 @@ class BackupVault extends pulumi.CustomResource {
           'gcp:backupdisasterrecovery/backupVault:BackupVault',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     accessRestriction = registerOutput<String?>('accessRestriction');

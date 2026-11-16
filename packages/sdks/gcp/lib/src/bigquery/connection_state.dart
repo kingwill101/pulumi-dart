@@ -7,6 +7,7 @@ import 'connection_cloud_resource.dart';
 import 'connection_cloud_spanner.dart';
 import 'connection_cloud_sql.dart';
 import 'connection_configuration.dart';
+import 'connection_salesforce_data_cloud.dart';
 import 'connection_spark.dart';
 
 /// Input properties used for looking up and filtering Connection resources.
@@ -63,6 +64,10 @@ class ConnectionState {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
+  /// Connection properties specific to Salesforce Data Cloud.
+  /// This connection type is intended for use only by Salesforce partner projects.
+  /// Structure is documented below.
+  final pulumi.Input<ConnectionSalesforceDataCloud?>? salesforceDataCloud;
   /// Container for connection properties to execute stored procedures for Apache Spark. resources.
   /// Structure is documented below.
   final pulumi.Input<ConnectionSpark?>? spark;
@@ -83,6 +88,7 @@ class ConnectionState {
   /// [location] The geographic location where the connection should reside.
   /// [name] The resource name of the connection in the form of:
   /// [project] The ID of the project in which the resource belongs.
+  /// [salesforceDataCloud] Connection properties specific to Salesforce Data Cloud.
   /// [spark] Container for connection properties to execute stored procedures for Apache Spark. resources.
   const ConnectionState({
     this.aws,
@@ -100,6 +106,7 @@ class ConnectionState {
     this.location,
     this.name,
     this.project,
+    this.salesforceDataCloud,
     this.spark,
   });
 
@@ -120,6 +127,7 @@ class ConnectionState {
       'location': ?location,
       'name': ?name,
       'project': ?project,
+      'salesforceDataCloud': ?pulumi.Input.mapOptionalInputValue<ConnectionSalesforceDataCloud, Map<String, dynamic>>(salesforceDataCloud, (value) => value.toMap()),
       'spark': ?pulumi.Input.mapOptionalInputValue<ConnectionSpark, Map<String, dynamic>>(spark, (value) => value.toMap()),
     };
   }
@@ -141,6 +149,7 @@ class ConnectionState {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      salesforceDataCloud: (() { final guardedValue = map['salesforceDataCloud']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionSalesforceDataCloud.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       spark: (() { final guardedValue = map['spark']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionSpark.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

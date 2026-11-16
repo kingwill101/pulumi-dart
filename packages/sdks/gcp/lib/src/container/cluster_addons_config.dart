@@ -99,21 +99,14 @@ class ClusterAddonsConfig {
   /// It is disabled by default for Standard clusters; set `enabled = true` to enable.
   /// It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
   /// See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+  /// `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
   final pulumi.Input<ClusterAddonsConfigParallelstoreCsiDriverConfig?>? parallelstoreCsiDriverConfig;
   /// The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
   final pulumi.Input<ClusterAddonsConfigPodSnapshotConfig?>? podSnapshotConfig;
-  /// . The status of the [Ray Operator
+  /// The status of the [Ray Operator
   /// addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
   /// It is disabled by default. Set `enabled = true` to enable. The minimum
-  /// cluster version to enable Ray is 1.30.0-gke.1747000.
-  ///
-  /// Ray Operator config has optional subfields
-  /// `ray_cluster_logging_config.enabled` and
-  /// `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
-  /// and monitoring respectively. See [Collect and view logs and metrics for Ray
-  /// clusters on
-  /// GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
-  /// for more information.
+  /// cluster version to enable Ray is 1.30.0-gke.1747000. Structure is documented below.
   final pulumi.Input<List<ClusterAddonsConfigRayOperatorConfig>?>? rayOperatorConfigs;
   /// .
   /// The status of the slice controller addon.
@@ -148,7 +141,7 @@ class ClusterAddonsConfig {
   /// [nodeReadinessConfig] The status of the Node Readiness Controller addon. It is disabled by default. Set `enabled = true` to enable.
   /// [parallelstoreCsiDriverConfig] The status of the Parallelstore CSI driver addon,
   /// [podSnapshotConfig] The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
-  /// [rayOperatorConfigs] . The status of the [Ray Operator
+  /// [rayOperatorConfigs] The status of the [Ray Operator
   /// [sliceControllerConfig] .
   /// [slurmOperatorConfig] The status of the Slurm Operator addon,
   /// [statefulHaConfig] .

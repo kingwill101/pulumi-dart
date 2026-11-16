@@ -11,6 +11,7 @@ import 'env_group_attachment_state.dart';
 /// * How-to Guides
 /// * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
 ///
+///
 /// ## Example Usage
 ///
 /// ## Import
@@ -55,7 +56,7 @@ class EnvGroupAttachment extends pulumi.CustomResource {
           'gcp:apigee/envGroupAttachment:EnvGroupAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     envgroupId = registerOutput<String>('envgroupId');

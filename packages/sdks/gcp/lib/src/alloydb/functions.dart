@@ -41,7 +41,7 @@ import 'get_supported_database_flags_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/alloydb"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/alloydb"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -56,7 +56,7 @@ import 'get_supported_database_flags_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -64,7 +64,7 @@ import 'get_supported_database_flags_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_alloydb_getcluster" "qa" {
+/// data "gcp_alloydb_cluster" "qa" {
 /// }
 /// ```
 /// ```java
@@ -160,7 +160,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/alloydb"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/alloydb"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -175,7 +175,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -183,7 +183,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 ///   }
 /// }
 ///
-/// data "gcp_alloydb_getinstance" "qa" {
+/// data "gcp_alloydb_instance" "qa" {
 /// }
 /// ```
 /// ```java
@@ -279,7 +279,7 @@ pulumi.Output<GetInstanceResult> getInstanceOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/alloydb"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/alloydb"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -294,7 +294,7 @@ pulumi.Output<GetInstanceResult> getInstanceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -302,7 +302,7 @@ pulumi.Output<GetInstanceResult> getInstanceOutput(
 ///   }
 /// }
 ///
-/// data "gcp_alloydb_getlocations" "qa" {
+/// data "gcp_alloydb_locations" "qa" {
 /// }
 /// ```
 /// ```java
@@ -403,7 +403,7 @@ pulumi.Output<GetLocationsResult> getLocationsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/alloydb"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/alloydb"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -420,7 +420,7 @@ pulumi.Output<GetLocationsResult> getLocationsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -428,7 +428,7 @@ pulumi.Output<GetLocationsResult> getLocationsOutput(
 ///   }
 /// }
 ///
-/// data "gcp_alloydb_getsupporteddatabaseflags" "qa" {
+/// data "gcp_alloydb_supported_database_flags" "qa" {
 ///   location = "us-central1"
 /// }
 /// ```

@@ -52,8 +52,8 @@ class ResizeRequestStatusErrorErrorErrorDetailQuotaInfo {
   factory ResizeRequestStatusErrorErrorErrorDetailQuotaInfo.fromMap(Map<String, dynamic> map) {
     return ResizeRequestStatusErrorErrorErrorDetailQuotaInfo(
       dimensions: (() { final guardedValue = map['dimensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      futureLimit: (() { final guardedValue = map['futureLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      limit: (() { final guardedValue = map['limit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      futureLimit: (() { final guardedValue = map['futureLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      limit: (() { final guardedValue = map['limit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       limitName: (() { final guardedValue = map['limitName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metricName: (() { final guardedValue = map['metricName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rolloutStatus: (() { final guardedValue = map['rolloutStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

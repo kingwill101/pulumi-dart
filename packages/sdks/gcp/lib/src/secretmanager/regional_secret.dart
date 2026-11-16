@@ -14,6 +14,7 @@ import 'regional_secret_topic.dart';
 /// * How-to Guides
 /// * [Create and deploy a Regional Secret](https://cloud.google.com/secret-manager/regional-secrets/create-regional-secret)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Regional Secret Config Basic
@@ -86,7 +87,7 @@ import 'regional_secret_topic.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -113,7 +114,7 @@ import 'regional_secret_topic.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -121,7 +122,10 @@ import 'regional_secret_topic.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_secretmanager_regionalsecret" "regional-secret-basic" {
+/// resource "gcp_secretmanager_regional_secret" "regional-secret-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "tf-reg-secret"
 ///   location  = "us-central1"
 ///   labels = {
@@ -186,6 +190,7 @@ import 'regional_secret_topic.dart';
 ///         key3: value3
 ///       deletionProtection: false
 /// ```
+///
 ///
 /// ### Regional Secret With Cmek
 ///
@@ -267,9 +272,9 @@ import 'regional_secret_topic.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -304,7 +309,7 @@ import 'regional_secret_topic.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -312,18 +317,24 @@ import 'regional_secret_topic.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_kms_cryptokeyiammember" "kms-secret-binding" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "kms-secret-binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = "kms-key"
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-secretmanager.iam.gserviceaccount.com"
+///   member        ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-secretmanager.iam.gserviceaccount.com"
 /// }
-/// resource "gcp_secretmanager_regionalsecret" "regional-secret-with-cmek" {
-///   depends_on = [gcp_kms_cryptokeyiammember.kms-secret-binding]
-///   secret_id  = "tf-reg-secret"
-///   location   = "us-central1"
+/// resource "gcp_secretmanager_regional_secret" "regional-secret-with-cmek" {
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.kms-secret-binding]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   secret_id = "tf-reg-secret"
+///   location  = "us-central1"
 ///   customer_managed_encryption = {
 ///     kms_key_name = "kms-key"
 ///   }
@@ -402,6 +413,7 @@ import 'regional_secret_topic.dart';
 ///       function: gcp:organizations:getProject
 ///       arguments: {}
 /// ```
+///
 ///
 /// ### Regional Secret With Rotation
 ///
@@ -506,9 +518,9 @@ import 'regional_secret_topic.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -537,7 +549,7 @@ import 'regional_secret_topic.dart';
 /// 			Location: pulumi.String("us-central1"),
 /// 			Topics: secretmanager.RegionalSecretTopicArray{
 /// 				&secretmanager.RegionalSecretTopicArgs{
-/// 					Name: topic.ID().ToIDOutput().ToStringOutput(),
+/// 					Name: topic.ID(),
 /// 				},
 /// 			},
 /// 			Rotation: &secretmanager.RegionalSecretRotationArgs{
@@ -555,7 +567,7 @@ import 'regional_secret_topic.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -563,21 +575,30 @@ import 'regional_secret_topic.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_pubsub_topic" "topic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "tf-topic"
 /// }
-/// resource "gcp_pubsub_topiciammember" "secrets_manager_access" {
+/// resource "gcp_pubsub_topic_i_a_m_member" "secrets_manager_access" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   topic  = gcp_pubsub_topic.topic.name
 ///   role   = "roles/pubsub.publisher"
-///   member ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-secretmanager.iam.gserviceaccount.com"
+///   member ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-secretmanager.iam.gserviceaccount.com"
 /// }
-/// resource "gcp_secretmanager_regionalsecret" "regional-secret-with-rotation" {
-///   depends_on = [gcp_pubsub_topiciammember.secrets_manager_access]
-///   secret_id  = "tf-reg-secret"
-///   location   = "us-central1"
+/// resource "gcp_secretmanager_regional_secret" "regional-secret-with-rotation" {
+///   depends_on = [gcp_pubsub_topic_i_a_m_member.secrets_manager_access]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   secret_id = "tf-reg-secret"
+///   location  = "us-central1"
 ///   topics {
 ///     name = gcp_pubsub_topic.topic.id
 ///   }
@@ -680,6 +701,7 @@ import 'regional_secret_topic.dart';
 ///       arguments: {}
 /// ```
 ///
+///
 /// ### Regional Secret With Ttl
 ///
 ///
@@ -700,6 +722,7 @@ import 'regional_secret_topic.dart';
 ///         key3: "value3",
 ///     },
 ///     ttl: "36000s",
+///     secretType: "ACCESS_KEY",
 /// });
 /// ```
 /// ```python
@@ -717,7 +740,8 @@ import 'regional_secret_topic.dart';
 ///         "key2": "value2",
 ///         "key3": "value3",
 ///     },
-///     ttl="36000s")
+///     ttl="36000s",
+///     secret_type="ACCESS_KEY")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -742,6 +766,7 @@ import 'regional_secret_topic.dart';
 ///             { "key3", "value3" },
 ///         },
 ///         Ttl = "36000s",
+///         SecretType = "ACCESS_KEY",
 ///     });
 ///
 /// });
@@ -750,7 +775,7 @@ import 'regional_secret_topic.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -767,7 +792,8 @@ import 'regional_secret_topic.dart';
 /// 				"key2": pulumi.String("value2"),
 /// 				"key3": pulumi.String("value3"),
 /// 			},
-/// 			Ttl: pulumi.String("36000s"),
+/// 			Ttl:        pulumi.String("36000s"),
+/// 			SecretType: pulumi.String("ACCESS_KEY"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -777,7 +803,7 @@ import 'regional_secret_topic.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -785,7 +811,10 @@ import 'regional_secret_topic.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_secretmanager_regionalsecret" "regional-secret-with-ttl" {
+/// resource "gcp_secretmanager_regional_secret" "regional-secret-with-ttl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "tf-reg-secret"
 ///   location  = "us-central1"
 ///   labels = {
@@ -796,7 +825,8 @@ import 'regional_secret_topic.dart';
 ///     "key2" = "value2"
 ///     "key3" = "value3"
 ///   }
-///   ttl = "36000s"
+///   ttl         = "36000s"
+///   secret_type = "ACCESS_KEY"
 /// }
 /// ```
 /// ```java
@@ -830,6 +860,7 @@ import 'regional_secret_topic.dart';
 ///                 Map.entry("key3", "value3")
 ///             ))
 ///             .ttl("36000s")
+///             .secretType("ACCESS_KEY")
 ///             .build());
 ///
 ///     }
@@ -849,7 +880,9 @@ import 'regional_secret_topic.dart';
 ///         key2: value2
 ///         key3: value3
 ///       ttl: 36000s
+///       secretType: ACCESS_KEY
 /// ```
+///
 ///
 /// ### Regional Secret With Expire Time
 ///
@@ -921,7 +954,7 @@ import 'regional_secret_topic.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -948,7 +981,7 @@ import 'regional_secret_topic.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -956,7 +989,10 @@ import 'regional_secret_topic.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_secretmanager_regionalsecret" "regional-secret-with-expire-time" {
+/// resource "gcp_secretmanager_regional_secret" "regional-secret-with-expire-time" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "tf-reg-secret"
 ///   location  = "us-central1"
 ///   labels = {
@@ -1021,6 +1057,7 @@ import 'regional_secret_topic.dart';
 ///         key3: value3
 ///       expireTime: 2055-11-30T00:00:00Z
 /// ```
+///
 ///
 /// ### Regional Secret With Version Destroy Ttl
 ///
@@ -1092,7 +1129,7 @@ import 'regional_secret_topic.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1119,7 +1156,7 @@ import 'regional_secret_topic.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1127,7 +1164,10 @@ import 'regional_secret_topic.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_secretmanager_regionalsecret" "regional-secret-with-version-destroy-ttl" {
+/// resource "gcp_secretmanager_regional_secret" "regional-secret-with-version-destroy-ttl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "tf-reg-secret"
 ///   location  = "us-central1"
 ///   labels = {
@@ -1280,6 +1320,9 @@ class RegionalSecret extends pulumi.CustomResource {
   late final pulumi.Output<RegionalSecretRotation?> rotation;
   /// This must be unique within the project.
   late final pulumi.Output<String> secretId;
+  /// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+  /// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+  late final pulumi.Output<String?> secretType;
   /// A map of resource manager tags.
   /// Resource manager tag keys and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -1318,7 +1361,7 @@ class RegionalSecret extends pulumi.CustomResource {
           'gcp:secretmanager/regionalSecret:RegionalSecret',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
@@ -1336,6 +1379,7 @@ class RegionalSecret extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     rotation = registerOutput<RegionalSecretRotation?>('rotation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionalSecretRotation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secretId = registerOutput<String>('secretId');
+    secretType = registerOutput<String?>('secretType');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     topics = registerOutput<List<RegionalSecretTopic>?>('topics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionalSecretTopic>(guardedValue, (value) => RegionalSecretTopic.fromMap((value as Map).cast<String, dynamic>())); });
     ttl = registerOutput<String?>('ttl');
@@ -1382,6 +1426,7 @@ class RegionalSecret extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     rotation = registerOutput<RegionalSecretRotation?>('rotation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionalSecretRotation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secretId = registerOutput<String>('secretId');
+    secretType = registerOutput<String?>('secretType');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     topics = registerOutput<List<RegionalSecretTopic>?>('topics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionalSecretTopic>(guardedValue, (value) => RegionalSecretTopic.fromMap((value as Map).cast<String, dynamic>())); });
     ttl = registerOutput<String?>('ttl');
@@ -1414,6 +1459,7 @@ class RegionalSecret extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     rotation = registerOutput<RegionalSecretRotation?>('rotation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionalSecretRotation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secretId = registerOutput<String>('secretId');
+    secretType = registerOutput<String?>('secretType');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     topics = registerOutput<List<RegionalSecretTopic>?>('topics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionalSecretTopic>(guardedValue, (value) => RegionalSecretTopic.fromMap((value as Map).cast<String, dynamic>())); });
     ttl = registerOutput<String?>('ttl');

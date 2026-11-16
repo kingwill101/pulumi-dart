@@ -14,6 +14,7 @@ import 'group_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/monitoring/groups/)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Monitoring Group Basic
@@ -57,7 +58,7 @@ import 'group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -75,7 +76,7 @@ import 'group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -84,6 +85,9 @@ import 'group_state.dart';
 /// }
 ///
 /// resource "gcp_monitoring_group" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "tf-test MonitoringGroup"
 ///   filter       = "resource.metadata.region=\"europe-west2\""
 /// }
@@ -125,6 +129,7 @@ import 'group_state.dart';
 ///       displayName: tf-test MonitoringGroup
 ///       filter: resource.metadata.region="europe-west2"
 /// ```
+///
 ///
 /// ### Monitoring Group Subgroup
 ///
@@ -183,7 +188,7 @@ import 'group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -209,7 +214,7 @@ import 'group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -218,10 +223,16 @@ import 'group_state.dart';
 /// }
 ///
 /// resource "gcp_monitoring_group" "parent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "tf-test MonitoringParentGroup"
 ///   filter       = "resource.metadata.region=\"europe-west2\""
 /// }
 /// resource "gcp_monitoring_group" "subgroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "tf-test MonitoringSubGroup"
 ///   filter       = "resource.metadata.region=\"europe-west2\""
 ///   parent_name  = gcp_monitoring_group.parent.name
@@ -335,7 +346,7 @@ class Group extends pulumi.CustomResource {
           'gcp:monitoring/group:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');

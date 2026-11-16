@@ -1,3 +1,11 @@
 export 'documentai/schema.dart';
 export 'documentai/schema_args.dart';
 export 'documentai/schema_state.dart';
+export 'documentai/schema_version.dart';
+export 'documentai/schema_version_args.dart';
+export 'documentai/schema_version_schema.dart';
+export 'documentai/schema_version_schema_entity_type.dart';
+export 'documentai/schema_version_schema_entity_type_enum_values.dart';
+export 'documentai/schema_version_schema_entity_type_property.dart';
+export 'documentai/schema_version_schema_metadata.dart';
+export 'documentai/schema_version_state.dart';

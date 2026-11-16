@@ -54,7 +54,7 @@ class GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdC
   factory GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig(
       autoDeployConfidenceThreshold: pulumi.Input.fromValue((map['autoDeployConfidenceThreshold'] as num).toDouble()),
-      autoDeployExpirationSec: pulumi.Input.fromValue((map['autoDeployExpirationSec'] as num).toInt()),
+      autoDeployExpirationSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['autoDeployExpirationSec'])),
       autoDeployImpactedBaselineThreshold: pulumi.Input.fromValue((map['autoDeployImpactedBaselineThreshold'] as num).toDouble()),
       autoDeployLoadThreshold: pulumi.Input.fromValue((map['autoDeployLoadThreshold'] as num).toDouble()),
       detectionAbsoluteQps: pulumi.Input.fromValue((map['detectionAbsoluteQps'] as num).toDouble()),

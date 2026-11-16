@@ -43,8 +43,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     return PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig(
       context: (() { final guardedValue = map['context']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContext.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cryptoKey: (() { final guardedValue = map['cryptoKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKey.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      lowerBoundDays: pulumi.Input.fromValue((map['lowerBoundDays'] as num).toInt()),
-      upperBoundDays: pulumi.Input.fromValue((map['upperBoundDays'] as num).toInt()),
+      lowerBoundDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['lowerBoundDays'])),
+      upperBoundDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['upperBoundDays'])),
     );
   }
 }

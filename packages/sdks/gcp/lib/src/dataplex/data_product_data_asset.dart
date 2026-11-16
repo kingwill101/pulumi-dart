@@ -12,6 +12,7 @@ import 'data_product_data_asset_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://docs.cloud.google.com/dataplex/docs/manage-data-products)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Dataplex Data Product Data Asset Basic
@@ -25,7 +26,7 @@ import 'data_product_data_asset_state.dart';
 /// const example = new gcp.dataplex.DataProduct("example", {
 ///     project: "my-project-name",
 ///     location: "us-central1",
-///     dataProductId: "tf-test-dp-_32081",
+///     dataProductId: "tf-test-dp-_55438",
 ///     displayName: "Parent Data Product",
 ///     ownerEmails: ["gterraformtestuser@gmail.com"],
 ///     accessGroups: [{
@@ -33,13 +34,13 @@ import 'data_product_data_asset_state.dart';
 ///         groupId: "analyst",
 ///         displayName: "Data Analyst",
 ///         principal: {
-///             googleGroup: "tf-test-analysts-_10393@example.com",
+///             googleGroup: "tf-test-analysts-_32706@example.com",
 ///         },
 ///     }],
 /// });
 /// const exampleDataset = new gcp.bigquery.Dataset("example", {
 ///     project: "my-project-name",
-///     datasetId: "tf_test_dataset__33052",
+///     datasetId: "tf_test_dataset__49082",
 ///     location: "us-central1",
 /// });
 /// const exampleDataProductDataAsset = new gcp.dataplex.DataProductDataAsset("example", {
@@ -57,7 +58,7 @@ import 'data_product_data_asset_state.dart';
 /// example = gcp.dataplex.DataProduct("example",
 ///     project="my-project-name",
 ///     location="us-central1",
-///     data_product_id="tf-test-dp-_32081",
+///     data_product_id="tf-test-dp-_55438",
 ///     display_name="Parent Data Product",
 ///     owner_emails=["gterraformtestuser@gmail.com"],
 ///     access_groups=[{
@@ -65,12 +66,12 @@ import 'data_product_data_asset_state.dart';
 ///         "group_id": "analyst",
 ///         "display_name": "Data Analyst",
 ///         "principal": {
-///             "google_group": "tf-test-analysts-_10393@example.com",
+///             "google_group": "tf-test-analysts-_32706@example.com",
 ///         },
 ///     }])
 /// example_dataset = gcp.bigquery.Dataset("example",
 ///     project="my-project-name",
-///     dataset_id="tf_test_dataset__33052",
+///     dataset_id="tf_test_dataset__49082",
 ///     location="us-central1")
 /// example_data_product_data_asset = gcp.dataplex.DataProductDataAsset("example",
 ///     project="my-project-name",
@@ -95,7 +96,7 @@ import 'data_product_data_asset_state.dart';
 ///     {
 ///         Project = "my-project-name",
 ///         Location = "us-central1",
-///         DataProductId = "tf-test-dp-_32081",
+///         DataProductId = "tf-test-dp-_55438",
 ///         DisplayName = "Parent Data Product",
 ///         OwnerEmails = new[]
 ///         {
@@ -110,7 +111,7 @@ import 'data_product_data_asset_state.dart';
 ///                 DisplayName = "Data Analyst",
 ///                 Principal = new Gcp.DataPlex.Inputs.DataProductAccessGroupPrincipalArgs
 ///                 {
-///                     GoogleGroup = "tf-test-analysts-_10393@example.com",
+///                     GoogleGroup = "tf-test-analysts-_32706@example.com",
 ///                 },
 ///             },
 ///         },
@@ -119,7 +120,7 @@ import 'data_product_data_asset_state.dart';
 ///     var exampleDataset = new Gcp.BigQuery.Dataset("example", new()
 ///     {
 ///         Project = "my-project-name",
-///         DatasetId = "tf_test_dataset__33052",
+///         DatasetId = "tf_test_dataset__49082",
 ///         Location = "us-central1",
 ///     });
 ///
@@ -145,8 +146,8 @@ import 'data_product_data_asset_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -155,7 +156,7 @@ import 'data_product_data_asset_state.dart';
 /// 		example, err := dataplex.NewDataProduct(ctx, "example", &dataplex.DataProductArgs{
 /// 			Project:       pulumi.String("my-project-name"),
 /// 			Location:      pulumi.String("us-central1"),
-/// 			DataProductId: pulumi.String("tf-test-dp-_32081"),
+/// 			DataProductId: pulumi.String("tf-test-dp-_55438"),
 /// 			DisplayName:   pulumi.String("Parent Data Product"),
 /// 			OwnerEmails: pulumi.StringArray{
 /// 				pulumi.String("gterraformtestuser@gmail.com"),
@@ -166,7 +167,7 @@ import 'data_product_data_asset_state.dart';
 /// 					GroupId:     pulumi.String("analyst"),
 /// 					DisplayName: pulumi.String("Data Analyst"),
 /// 					Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
-/// 						GoogleGroup: pulumi.String("tf-test-analysts-_10393@example.com"),
+/// 						GoogleGroup: pulumi.String("tf-test-analysts-_32706@example.com"),
 /// 					},
 /// 				},
 /// 			},
@@ -176,7 +177,7 @@ import 'data_product_data_asset_state.dart';
 /// 		}
 /// 		exampleDataset, err := bigquery.NewDataset(ctx, "example", &bigquery.DatasetArgs{
 /// 			Project:   pulumi.String("my-project-name"),
-/// 			DatasetId: pulumi.String("tf_test_dataset__33052"),
+/// 			DatasetId: pulumi.String("tf_test_dataset__49082"),
 /// 			Location:  pulumi.String("us-central1"),
 /// 		})
 /// 		if err != nil {
@@ -201,7 +202,7 @@ import 'data_product_data_asset_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -209,10 +210,13 @@ import 'data_product_data_asset_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataplex_dataproduct" "example" {
+/// resource "gcp_dataplex_data_product" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project         = "my-project-name"
 ///   location        = "us-central1"
-///   data_product_id = "tf-test-dp-_32081"
+///   data_product_id = "tf-test-dp-_55438"
 ///   display_name    = "Parent Data Product"
 ///   owner_emails    = ["gterraformtestuser@gmail.com"]
 ///   access_groups {
@@ -220,19 +224,25 @@ import 'data_product_data_asset_state.dart';
 ///     group_id     = "analyst"
 ///     display_name = "Data Analyst"
 ///     principal = {
-///       google_group = "tf-test-analysts-_10393@example.com"
+///       google_group = "tf-test-analysts-_32706@example.com"
 ///     }
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project    = "my-project-name"
-///   dataset_id = "tf_test_dataset__33052"
+///   dataset_id = "tf_test_dataset__49082"
 ///   location   = "us-central1"
 /// }
-/// resource "gcp_dataplex_dataproductdataasset" "example" {
+/// resource "gcp_dataplex_data_product_data_asset" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project         = "my-project-name"
 ///   location        = "us-central1"
-///   data_product_id = gcp_dataplex_dataproduct.example.data_product_id
+///   data_product_id = gcp_dataplex_data_product.example.data_product_id
 ///   data_asset_id   = "data-product-data-asset"
 ///   resource        ="//bigquery.googleapis.com/projects/${gcp_bigquery_dataset.example.project}/datasets/${gcp_bigquery_dataset.example.dataset_id}"
 /// }
@@ -267,7 +277,7 @@ import 'data_product_data_asset_state.dart';
 ///         var example = new DataProduct("example", DataProductArgs.builder()
 ///             .project("my-project-name")
 ///             .location("us-central1")
-///             .dataProductId("tf-test-dp-_32081")
+///             .dataProductId("tf-test-dp-_55438")
 ///             .displayName("Parent Data Product")
 ///             .ownerEmails("gterraformtestuser@gmail.com")
 ///             .accessGroups(DataProductAccessGroupArgs.builder()
@@ -275,14 +285,14 @@ import 'data_product_data_asset_state.dart';
 ///                 .groupId("analyst")
 ///                 .displayName("Data Analyst")
 ///                 .principal(DataProductAccessGroupPrincipalArgs.builder()
-///                     .googleGroup("tf-test-analysts-_10393@example.com")
+///                     .googleGroup("tf-test-analysts-_32706@example.com")
 ///                     .build())
 ///                 .build())
 ///             .build());
 ///
 ///         var exampleDataset = new Dataset("exampleDataset", DatasetArgs.builder()
 ///             .project("my-project-name")
-///             .datasetId("tf_test_dataset__33052")
+///             .datasetId("tf_test_dataset__49082")
 ///             .location("us-central1")
 ///             .build());
 ///
@@ -308,7 +318,7 @@ import 'data_product_data_asset_state.dart';
 ///     properties:
 ///       project: my-project-name
 ///       location: us-central1
-///       dataProductId: tf-test-dp-_32081
+///       dataProductId: tf-test-dp-_55438
 ///       displayName: Parent Data Product
 ///       ownerEmails:
 ///         - gterraformtestuser@gmail.com
@@ -317,13 +327,13 @@ import 'data_product_data_asset_state.dart';
 ///           groupId: analyst
 ///           displayName: Data Analyst
 ///           principal:
-///             googleGroup: tf-test-analysts-_10393@example.com
+///             googleGroup: tf-test-analysts-_32706@example.com
 ///   exampleDataset:
 ///     type: gcp:bigquery:Dataset
 ///     name: example
 ///     properties:
 ///       project: my-project-name
-///       datasetId: tf_test_dataset__33052
+///       datasetId: tf_test_dataset__49082
 ///       location: us-central1
 ///   exampleDataProductDataAsset:
 ///     type: gcp:dataplex:DataProductDataAsset
@@ -336,6 +346,7 @@ import 'data_product_data_asset_state.dart';
 ///       resource: //bigquery.googleapis.com/projects/${exampleDataset.project}/datasets/${exampleDataset.datasetId}
 /// ```
 ///
+///
 /// ### Dataplex Data Product Data Asset Full
 ///
 ///
@@ -347,7 +358,7 @@ import 'data_product_data_asset_state.dart';
 /// const example = new gcp.dataplex.DataProduct("example", {
 ///     project: "my-project-name",
 ///     location: "us-central1",
-///     dataProductId: "tf-test-dp-_3684",
+///     dataProductId: "tf-test-dp-_60365",
 ///     displayName: "Full Example Parent DP",
 ///     ownerEmails: ["gterraformtestuser@gmail.com"],
 ///     accessGroups: [
@@ -371,7 +382,7 @@ import 'data_product_data_asset_state.dart';
 /// });
 /// const exampleDataset = new gcp.bigquery.Dataset("example", {
 ///     project: "my-project-name",
-///     datasetId: "tf_test_dataset__10719",
+///     datasetId: "tf_test_dataset__80215",
 ///     location: "us-central1",
 /// });
 /// const exampleDataProductDataAsset = new gcp.dataplex.DataProductDataAsset("example", {
@@ -403,7 +414,7 @@ import 'data_product_data_asset_state.dart';
 /// example = gcp.dataplex.DataProduct("example",
 ///     project="my-project-name",
 ///     location="us-central1",
-///     data_product_id="tf-test-dp-_3684",
+///     data_product_id="tf-test-dp-_60365",
 ///     display_name="Full Example Parent DP",
 ///     owner_emails=["gterraformtestuser@gmail.com"],
 ///     access_groups=[
@@ -426,7 +437,7 @@ import 'data_product_data_asset_state.dart';
 ///     ])
 /// example_dataset = gcp.bigquery.Dataset("example",
 ///     project="my-project-name",
-///     dataset_id="tf_test_dataset__10719",
+///     dataset_id="tf_test_dataset__80215",
 ///     location="us-central1")
 /// example_data_product_data_asset = gcp.dataplex.DataProductDataAsset("example",
 ///     project="my-project-name",
@@ -465,7 +476,7 @@ import 'data_product_data_asset_state.dart';
 ///     {
 ///         Project = "my-project-name",
 ///         Location = "us-central1",
-///         DataProductId = "tf-test-dp-_3684",
+///         DataProductId = "tf-test-dp-_60365",
 ///         DisplayName = "Full Example Parent DP",
 ///         OwnerEmails = new[]
 ///         {
@@ -499,7 +510,7 @@ import 'data_product_data_asset_state.dart';
 ///     var exampleDataset = new Gcp.BigQuery.Dataset("example", new()
 ///     {
 ///         Project = "my-project-name",
-///         DatasetId = "tf_test_dataset__10719",
+///         DatasetId = "tf_test_dataset__80215",
 ///         Location = "us-central1",
 ///     });
 ///
@@ -549,8 +560,8 @@ import 'data_product_data_asset_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -559,7 +570,7 @@ import 'data_product_data_asset_state.dart';
 /// 		example, err := dataplex.NewDataProduct(ctx, "example", &dataplex.DataProductArgs{
 /// 			Project:       pulumi.String("my-project-name"),
 /// 			Location:      pulumi.String("us-central1"),
-/// 			DataProductId: pulumi.String("tf-test-dp-_3684"),
+/// 			DataProductId: pulumi.String("tf-test-dp-_60365"),
 /// 			DisplayName:   pulumi.String("Full Example Parent DP"),
 /// 			OwnerEmails: pulumi.StringArray{
 /// 				pulumi.String("gterraformtestuser@gmail.com"),
@@ -588,7 +599,7 @@ import 'data_product_data_asset_state.dart';
 /// 		}
 /// 		exampleDataset, err := bigquery.NewDataset(ctx, "example", &bigquery.DatasetArgs{
 /// 			Project:   pulumi.String("my-project-name"),
-/// 			DatasetId: pulumi.String("tf_test_dataset__10719"),
+/// 			DatasetId: pulumi.String("tf_test_dataset__80215"),
 /// 			Location:  pulumi.String("us-central1"),
 /// 		})
 /// 		if err != nil {
@@ -631,7 +642,7 @@ import 'data_product_data_asset_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -639,10 +650,13 @@ import 'data_product_data_asset_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataplex_dataproduct" "example" {
+/// resource "gcp_dataplex_data_product" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project         = "my-project-name"
 ///   location        = "us-central1"
-///   data_product_id = "tf-test-dp-_3684"
+///   data_product_id = "tf-test-dp-_60365"
 ///   display_name    = "Full Example Parent DP"
 ///   owner_emails    = ["gterraformtestuser@gmail.com"]
 ///   access_groups {
@@ -663,14 +677,20 @@ import 'data_product_data_asset_state.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project    = "my-project-name"
-///   dataset_id = "tf_test_dataset__10719"
+///   dataset_id = "tf_test_dataset__80215"
 ///   location   = "us-central1"
 /// }
-/// resource "gcp_dataplex_dataproductdataasset" "example" {
+/// resource "gcp_dataplex_data_product_data_asset" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project         = "my-project-name"
 ///   location        = "us-central1"
-///   data_product_id = gcp_dataplex_dataproduct.example.data_product_id
+///   data_product_id = gcp_dataplex_data_product.example.data_product_id
 ///   data_asset_id   = "data-product-data-asset"
 ///   resource        ="//bigquery.googleapis.com/projects/${gcp_bigquery_dataset.example.project}/datasets/${gcp_bigquery_dataset.example.dataset_id}"
 ///   labels = {
@@ -718,7 +738,7 @@ import 'data_product_data_asset_state.dart';
 ///         var example = new DataProduct("example", DataProductArgs.builder()
 ///             .project("my-project-name")
 ///             .location("us-central1")
-///             .dataProductId("tf-test-dp-_3684")
+///             .dataProductId("tf-test-dp-_60365")
 ///             .displayName("Full Example Parent DP")
 ///             .ownerEmails("gterraformtestuser@gmail.com")
 ///             .accessGroups(
@@ -742,7 +762,7 @@ import 'data_product_data_asset_state.dart';
 ///
 ///         var exampleDataset = new Dataset("exampleDataset", DatasetArgs.builder()
 ///             .project("my-project-name")
-///             .datasetId("tf_test_dataset__10719")
+///             .datasetId("tf_test_dataset__80215")
 ///             .location("us-central1")
 ///             .build());
 ///
@@ -781,7 +801,7 @@ import 'data_product_data_asset_state.dart';
 ///     properties:
 ///       project: my-project-name
 ///       location: us-central1
-///       dataProductId: tf-test-dp-_3684
+///       dataProductId: tf-test-dp-_60365
 ///       displayName: Full Example Parent DP
 ///       ownerEmails:
 ///         - gterraformtestuser@gmail.com
@@ -801,7 +821,7 @@ import 'data_product_data_asset_state.dart';
 ///     name: example
 ///     properties:
 ///       project: my-project-name
-///       datasetId: tf_test_dataset__10719
+///       datasetId: tf_test_dataset__80215
 ///       location: us-central1
 ///   exampleDataProductDataAsset:
 ///     type: gcp:dataplex:DataProductDataAsset
@@ -889,7 +909,7 @@ class DataProductDataAsset extends pulumi.CustomResource {
           'gcp:dataplex/dataProductDataAsset:DataProductDataAsset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     accessGroupConfigs = registerOutput<List<DataProductDataAssetAccessGroupConfig>?>('accessGroupConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataProductDataAssetAccessGroupConfig>(guardedValue, (value) => DataProductDataAssetAccessGroupConfig.fromMap((value as Map).cast<String, dynamic>())); });

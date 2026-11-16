@@ -6,6 +6,7 @@ import 'organization_vpc_flow_logs_config_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Network Management Org Vpc Flow Logs Config Basic
@@ -52,7 +53,7 @@ import 'organization_vpc_flow_logs_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkmanagement"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkmanagement"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -71,7 +72,7 @@ import 'organization_vpc_flow_logs_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -79,7 +80,10 @@ import 'organization_vpc_flow_logs_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkmanagement_organizationvpcflowlogsconfig" "org-test" {
+/// resource "gcp_networkmanagement_organization_vpc_flow_logs_config" "org-test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_flow_logs_config_id = "basic-org-test-id"
 ///   location                = "global"
 ///   organization            = "123456789"
@@ -217,7 +221,7 @@ class OrganizationVpcFlowLogsConfig extends pulumi.CustomResource {
           'gcp:networkmanagement/organizationVpcFlowLogsConfig:OrganizationVpcFlowLogsConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     aggregationInterval = registerOutput<String>('aggregationInterval');

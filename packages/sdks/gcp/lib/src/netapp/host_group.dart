@@ -12,6 +12,7 @@ import 'host_group_state.dart';
 /// * How-to Guides
 /// * [Documentation](https://docs.cloud.google.com/netapp/volumes/docs/configure-and-use/host-groups/overview)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Netapp Host Group
@@ -67,7 +68,7 @@ import 'host_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/netapp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/netapp"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -90,7 +91,7 @@ import 'host_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -98,7 +99,10 @@ import 'host_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_netapp_hostgroup" "test_host_group" {
+/// resource "gcp_netapp_host_group" "test_host_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "test-host-group"
 ///   location = "us-central1"
 ///   os_type  = "LINUX"
@@ -223,7 +227,7 @@ class HostGroup extends pulumi.CustomResource {
           'gcp:netapp/hostGroup:HostGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

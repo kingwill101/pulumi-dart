@@ -11,6 +11,7 @@ import 'regional_endpoint_state.dart';
 /// * How-to Guides
 /// * [Access regional Google APIs through endpoints](https://cloud.google.com/vpc/docs/access-regional-google-apis-endpoints)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Network Connectivity Regional Endpoint Regional Access
@@ -114,8 +115,8 @@ import 'regional_endpoint_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -132,7 +133,7 @@ import 'regional_endpoint_state.dart';
 /// 			Name:        pulumi.String("my-subnetwork"),
 /// 			IpCidrRange: pulumi.String("192.168.0.0/24"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     myNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     myNetwork.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -143,8 +144,8 @@ import 'regional_endpoint_state.dart';
 /// 			TargetGoogleApi: pulumi.String("storage.us-central1.rep.googleapis.com"),
 /// 			AccessType:      pulumi.String("REGIONAL"),
 /// 			Address:         pulumi.String("192.168.0.5"),
-/// 			Network:         myNetwork.ID().ToIDOutput().ToStringOutput(),
-/// 			Subnetwork:      mySubnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:         myNetwork.ID(),
+/// 			Subnetwork:      mySubnetwork.ID(),
 /// 			Description:     pulumi.String("My RegionalEndpoint targeting Google API storage.us-central1.rep.googleapis.com"),
 /// 			Labels: pulumi.StringMap{
 /// 				"env": pulumi.String("default"),
@@ -158,7 +159,7 @@ import 'regional_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -167,16 +168,25 @@ import 'regional_endpoint_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "my_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "my_subnetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-subnetwork"
 ///   ip_cidr_range = "192.168.0.0/24"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.my_network.id
 /// }
-/// resource "gcp_networkconnectivity_regionalendpoint" "default" {
+/// resource "gcp_networkconnectivity_regional_endpoint" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "my-rep"
 ///   location          = "us-central1"
 ///   target_google_api = "storage.us-central1.rep.googleapis.com"
@@ -273,6 +283,7 @@ import 'regional_endpoint_state.dart';
 ///         env: default
 /// ```
 ///
+///
 /// ### Network Connectivity Regional Endpoint Global Access
 ///
 ///
@@ -361,8 +372,8 @@ import 'regional_endpoint_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -379,7 +390,7 @@ import 'regional_endpoint_state.dart';
 /// 			Name:        pulumi.String("my-subnetwork"),
 /// 			IpCidrRange: pulumi.String("192.168.0.0/24"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     myNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     myNetwork.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -390,8 +401,8 @@ import 'regional_endpoint_state.dart';
 /// 			TargetGoogleApi: pulumi.String("storage.us-central1.rep.googleapis.com"),
 /// 			AccessType:      pulumi.String("GLOBAL"),
 /// 			Address:         pulumi.String("192.168.0.4"),
-/// 			Network:         myNetwork.ID().ToIDOutput().ToStringOutput(),
-/// 			Subnetwork:      mySubnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:         myNetwork.ID(),
+/// 			Subnetwork:      mySubnetwork.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -401,7 +412,7 @@ import 'regional_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -410,16 +421,25 @@ import 'regional_endpoint_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "my_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "my_subnetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-subnetwork"
 ///   ip_cidr_range = "192.168.0.0/24"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.my_network.id
 /// }
-/// resource "gcp_networkconnectivity_regionalendpoint" "default" {
+/// resource "gcp_networkconnectivity_regional_endpoint" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "my-rep"
 ///   location          = "us-central1"
 ///   target_google_api = "storage.us-central1.rep.googleapis.com"
@@ -582,7 +602,7 @@ class RegionalEndpoint extends pulumi.CustomResource {
           'gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     accessType = registerOutput<String>('accessType');

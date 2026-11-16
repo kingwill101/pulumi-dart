@@ -9,6 +9,7 @@ import 'release_channel_setting_binding_state.dart';
 /// * How-to Guides
 /// * [Gemini Cloud Assist overview](https://cloud.google.com/gemini/docs/cloud-assist/overview)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Gemini Release Channel Setting Binding Basic
@@ -84,7 +85,7 @@ import 'release_channel_setting_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gemini"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gemini"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -115,7 +116,7 @@ import 'release_channel_setting_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -123,7 +124,10 @@ import 'release_channel_setting_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_gemini_releasechannelsetting" "basic" {
+/// resource "gcp_gemini_release_channel_setting" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   release_channel_setting_id = "ls-tf1"
 ///   location                   = "global"
 ///   labels = {
@@ -131,8 +135,11 @@ import 'release_channel_setting_binding_state.dart';
 ///   }
 ///   release_channel = "EXPERIMENTAL"
 /// }
-/// resource "gcp_gemini_releasechannelsettingbinding" "example" {
-///   release_channel_setting_id = gcp_gemini_releasechannelsetting.basic.release_channel_setting_id
+/// resource "gcp_gemini_release_channel_setting_binding" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   release_channel_setting_id = gcp_gemini_release_channel_setting.basic.release_channel_setting_id
 ///   setting_binding_id         = "ls-tf1b1"
 ///   location                   = "global"
 ///   target                     = "projects/980109375338"
@@ -265,7 +272,7 @@ class ReleaseChannelSettingBinding extends pulumi.CustomResource {
           'gcp:gemini/releaseChannelSettingBinding:ReleaseChannelSettingBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

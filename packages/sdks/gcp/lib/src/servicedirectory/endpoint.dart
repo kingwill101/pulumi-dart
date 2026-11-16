@@ -11,6 +11,7 @@ import 'endpoint_state.dart';
 /// * How-to Guides
 /// * [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Service Directory Endpoint Basic
@@ -99,7 +100,7 @@ import 'endpoint_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicedirectory"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicedirectory"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -114,14 +115,14 @@ import 'endpoint_state.dart';
 /// 		}
 /// 		exampleService, err := servicedirectory.NewService(ctx, "example", &servicedirectory.ServiceArgs{
 /// 			ServiceId: pulumi.String("example-service"),
-/// 			Namespace: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Namespace: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = servicedirectory.NewEndpoint(ctx, "example", &servicedirectory.EndpointArgs{
 /// 			EndpointId: pulumi.String("example-endpoint"),
-/// 			Service:    exampleService.ID().ToIDOutput().ToStringOutput(),
+/// 			Service:    exampleService.ID(),
 /// 			Metadata: pulumi.StringMap{
 /// 				"stage":  pulumi.String("prod"),
 /// 				"region": pulumi.String("us-central1"),
@@ -137,7 +138,7 @@ import 'endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -146,14 +147,23 @@ import 'endpoint_state.dart';
 /// }
 ///
 /// resource "gcp_servicedirectory_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   namespace_id = "example-namespace"
 ///   location     = "us-central1"
 /// }
 /// resource "gcp_servicedirectory_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id = "example-service"
 ///   namespace  = gcp_servicedirectory_namespace.example.id
 /// }
 /// resource "gcp_servicedirectory_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_id = "example-endpoint"
 ///   service     = gcp_servicedirectory_service.example.id
 ///   metadata = {
@@ -238,6 +248,7 @@ import 'endpoint_state.dart';
 ///       address: 1.2.3.4
 ///       port: 5353
 /// ```
+///
 ///
 /// ### Service Directory Endpoint With Network
 ///
@@ -346,9 +357,9 @@ import 'endpoint_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicedirectory"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicedirectory"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -373,14 +384,14 @@ import 'endpoint_state.dart';
 /// 		}
 /// 		exampleService, err := servicedirectory.NewService(ctx, "example", &servicedirectory.ServiceArgs{
 /// 			ServiceId: pulumi.String("example-service"),
-/// 			Namespace: exampleNamespace.ID().ToIDOutput().ToStringOutput(),
+/// 			Namespace: exampleNamespace.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = servicedirectory.NewEndpoint(ctx, "example", &servicedirectory.EndpointArgs{
 /// 			EndpointId: pulumi.String("example-endpoint"),
-/// 			Service:    exampleService.ID().ToIDOutput().ToStringOutput(),
+/// 			Service:    exampleService.ID(),
 /// 			Metadata: pulumi.StringMap{
 /// 				"stage":  pulumi.String("prod"),
 /// 				"region": pulumi.String("us-central1"),
@@ -399,7 +410,7 @@ import 'endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -407,28 +418,40 @@ import 'endpoint_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_compute_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-network"
 /// }
 /// resource "gcp_servicedirectory_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   namespace_id = "example-namespace"
 ///   location     = "us-central1"
 /// }
 /// resource "gcp_servicedirectory_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id = "example-service"
 ///   namespace  = gcp_servicedirectory_namespace.example.id
 /// }
 /// resource "gcp_servicedirectory_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_id = "example-endpoint"
 ///   service     = gcp_servicedirectory_service.example.id
 ///   metadata = {
 ///     "stage"  = "prod"
 ///     "region" = "us-central1"
 ///   }
-///   network ="projects/${data.gcp_organizations_getproject.project.number}/locations/global/networks/${gcp_compute_network.example.name}"
+///   network ="projects/${data.gcp_organizations_project.project.number}/locations/global/networks/${gcp_compute_network.example.name}"
 ///   address = "1.2.3.4"
 ///   port    = 5353
 /// }
@@ -570,7 +593,7 @@ class Endpoint extends pulumi.CustomResource {
   /// `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
   late final pulumi.Output<String> name;
   /// The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
-  late final pulumi.Output<String?> network;
+  late final pulumi.Output<String> network;
   /// Port that the endpoint is running on, must be in the
   /// range of [0, 65535]. If unspecified, the default is 0.
   late final pulumi.Output<int?> port;
@@ -589,14 +612,14 @@ class Endpoint extends pulumi.CustomResource {
           'gcp:servicedirectory/endpoint:Endpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     address = registerOutput<String?>('address');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     endpointId = registerOutput<String>('endpointId');
     metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
-    network = registerOutput<String?>('network');
+    network = registerOutput<String>('network');
     port = registerOutput<int?>('port');
     service = registerOutput<String>('service');
   }
@@ -630,7 +653,7 @@ class Endpoint extends pulumi.CustomResource {
     endpointId = registerOutput<String>('endpointId');
     metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
-    network = registerOutput<String?>('network');
+    network = registerOutput<String>('network');
     port = registerOutput<int?>('port');
     service = registerOutput<String>('service');
   }
@@ -649,7 +672,7 @@ class Endpoint extends pulumi.CustomResource {
     endpointId = registerOutput<String>('endpointId');
     metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
-    network = registerOutput<String?>('network');
+    network = registerOutput<String>('network');
     port = registerOutput<int?>('port');
     service = registerOutput<String>('service');
   }

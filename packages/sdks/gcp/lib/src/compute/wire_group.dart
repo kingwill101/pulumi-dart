@@ -16,6 +16,7 @@ import 'wire_group_wire_properties.dart';
 /// * How-to Guides
 /// * [Create a WireGroup](https://cloud.google.com/network-connectivity/docs/interconnect/how-to/cross-site/modify-network#add-wire-group)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Compute Wire Group Basic
@@ -107,8 +108,8 @@ import 'wire_group_wire_properties.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -146,7 +147,7 @@ import 'wire_group_wire_properties.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -154,15 +155,21 @@ import 'wire_group_wire_properties.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_compute_crosssitenetwork" "example-cross-site-network" {
+/// resource "gcp_compute_cross_site_network" "example-cross-site-network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "test-cross-site-network"
 ///   description = "Example cross site network"
 /// }
-/// resource "gcp_compute_wiregroup" "example-test-wire-group" {
-///   depends_on         = [gcp_compute_crosssitenetwork.example-cross-site-network]
+/// resource "gcp_compute_wire_group" "example-test-wire-group" {
+///   depends_on = [gcp_compute_cross_site_network.example-cross-site-network]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "test-wire-group"
 ///   description        = "Example Wire Group"
 ///   cross_site_network = "test-cross-site-network"
@@ -253,6 +260,7 @@ import 'wire_group_wire_properties.dart';
 ///       function: gcp:organizations:getProject
 ///       arguments: {}
 /// ```
+///
 ///
 /// ### Compute Wire Group Basic Beta
 ///
@@ -353,8 +361,8 @@ import 'wire_group_wire_properties.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -395,7 +403,7 @@ import 'wire_group_wire_properties.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -403,15 +411,21 @@ import 'wire_group_wire_properties.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_compute_crosssitenetwork" "example-cross-site-network" {
+/// resource "gcp_compute_cross_site_network" "example-cross-site-network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "test-cross-site-network-beta"
 ///   description = "Example cross site network"
 /// }
-/// resource "gcp_compute_wiregroup" "example-test-wire-group-beta" {
-///   depends_on         = [gcp_compute_crosssitenetwork.example-cross-site-network]
+/// resource "gcp_compute_wire_group" "example-test-wire-group-beta" {
+///   depends_on = [gcp_compute_cross_site_network.example-cross-site-network]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "test-wire-group-beta"
 ///   description        = "Example Wire Group Beta"
 ///   cross_site_network = "test-cross-site-network-beta"
@@ -583,7 +597,7 @@ class WireGroup extends pulumi.CustomResource {
           'gcp:compute/wireGroup:WireGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     adminEnabled = registerOutput<bool?>('adminEnabled');
     creationTimestamp = registerOutput<String>('creationTimestamp');

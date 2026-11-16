@@ -49,6 +49,10 @@ class ParameterState {
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>?>? pulumiLabels;
+  /// A map of resource manager tags.
+  /// Resource manager tag keys and values have the same definition as resource manager tags.
+  /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The time at which the Parameter was updated.
   final pulumi.Input<String?>? updateTime;
 
@@ -64,6 +68,7 @@ class ParameterState {
   /// [policyMembers] Policy member strings of a Google Cloud resource.
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
+  /// [tags] A map of resource manager tags.
   /// [updateTime] The time at which the Parameter was updated.
   const ParameterState({
     this.createTime,
@@ -77,6 +82,7 @@ class ParameterState {
     this.policyMembers,
     this.project,
     this.pulumiLabels,
+    this.tags,
     this.updateTime,
   });
 
@@ -93,6 +99,7 @@ class ParameterState {
       'policyMembers': ?pulumi.Input.mapOptionalInputValue<List<ParameterPolicyMember>, List<Map<String, dynamic>>>(policyMembers, (value) => pulumi.Input.encodeList<ParameterPolicyMember, Map<String, dynamic>>(value, (value) => value.toMap())),
       'project': ?project,
       'pulumiLabels': ?pulumiLabels,
+      'tags': ?tags,
       'updateTime': ?updateTime,
     };
   }
@@ -110,6 +117,7 @@ class ParameterState {
       policyMembers: (() { final guardedValue = map['policyMembers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ParameterPolicyMember>(guardedValue, (value) => ParameterPolicyMember.fromMap((value as Map).cast<String, dynamic>()))); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

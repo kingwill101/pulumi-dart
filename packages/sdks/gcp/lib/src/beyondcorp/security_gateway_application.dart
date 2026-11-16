@@ -8,6 +8,7 @@ import 'security_gateway_application_upstream.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Beyondcorp Security Gateway Application Basic
@@ -103,7 +104,7 @@ import 'security_gateway_application_upstream.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/beyondcorp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/beyondcorp"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -142,7 +143,7 @@ import 'security_gateway_application_upstream.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -150,15 +151,21 @@ import 'security_gateway_application_upstream.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_beyondcorp_securitygateway" "default" {
+/// resource "gcp_beyondcorp_security_gateway" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   security_gateway_id = "default-sg"
 ///   display_name        = "My Security Gateway resource"
 ///   hubs {
 ///     region = "us-central1"
 ///   }
 /// }
-/// resource "gcp_beyondcorp_securitygatewayapplication" "example" {
-///   security_gateway_id = gcp_beyondcorp_securitygateway.default.security_gateway_id
+/// resource "gcp_beyondcorp_security_gateway_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_gateway_id = gcp_beyondcorp_security_gateway.default.security_gateway_id
 ///   application_id      = "google-sga"
 ///   endpoint_matchers {
 ///     hostname = "google.com"
@@ -233,6 +240,7 @@ import 'security_gateway_application_upstream.dart';
 ///             - 80
 ///             - 443
 /// ```
+///
 ///
 /// ### Beyondcorp Security Gateway Application Vpc
 ///
@@ -364,8 +372,8 @@ import 'security_gateway_application_upstream.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/beyondcorp"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/beyondcorp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -420,7 +428,7 @@ import 'security_gateway_application_upstream.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -428,18 +436,24 @@ import 'security_gateway_application_upstream.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_beyondcorp_securitygateway" "default" {
+/// resource "gcp_beyondcorp_security_gateway" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   security_gateway_id = "default-sg"
 ///   display_name        = "My Security Gateway resource"
 ///   hubs {
 ///     region = "us-central1"
 ///   }
 /// }
-/// resource "gcp_beyondcorp_securitygatewayapplication" "example" {
-///   security_gateway_id = gcp_beyondcorp_securitygateway.default.security_gateway_id
+/// resource "gcp_beyondcorp_security_gateway_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_gateway_id = gcp_beyondcorp_security_gateway.default.security_gateway_id
 ///   application_id      = "my-vm-service2"
 ///   endpoint_matchers {
 ///     hostname = "my-vm-service.com"
@@ -450,7 +464,7 @@ import 'security_gateway_application_upstream.dart';
 ///       regions = ["us-central1"]
 ///     }
 ///     network = {
-///       name ="projects/${data.gcp_organizations_getproject.project.project_id}/global/networks/default"
+///       name ="projects/${data.gcp_organizations_project.project.project_id}/global/networks/default"
 ///     }
 ///   }
 /// }
@@ -549,6 +563,7 @@ import 'security_gateway_application_upstream.dart';
 ///       function: gcp:organizations:getProject
 ///       arguments: {}
 /// ```
+///
 ///
 /// ### Beyondcorp Security Gateway Application Spa Api
 ///
@@ -653,7 +668,7 @@ import 'security_gateway_application_upstream.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/beyondcorp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/beyondcorp"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -696,7 +711,7 @@ import 'security_gateway_application_upstream.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -704,18 +719,24 @@ import 'security_gateway_application_upstream.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_beyondcorp_securitygateway" "default" {
+/// resource "gcp_beyondcorp_security_gateway" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   security_gateway_id = "default-sg-spa-api"
 ///   display_name        = "My SPA Security Gateway resource"
 /// }
-/// resource "gcp_beyondcorp_securitygatewayapplication" "example-spa" {
-///   security_gateway_id = gcp_beyondcorp_securitygateway.default.security_gateway_id
+/// resource "gcp_beyondcorp_security_gateway_application" "example-spa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_gateway_id = gcp_beyondcorp_security_gateway.default.security_gateway_id
 ///   application_id      = "app-discovery"
 ///   upstreams {
 ///     external = {
 ///       endpoints = [{
-///         "hostname" = "my.discovery.service.com"
-///         "port"     = 443
+///         hostname = "my.discovery.service.com"
+///         port     = 443
 ///       }]
 ///     }
 ///     proxy_protocol = {
@@ -799,6 +820,7 @@ import 'security_gateway_application_upstream.dart';
 ///               - header
 ///       schema: API_GATEWAY
 /// ```
+///
 ///
 /// ### Beyondcorp Security Gateway Application Spa Proxy
 ///
@@ -988,7 +1010,7 @@ import 'security_gateway_application_upstream.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/beyondcorp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/beyondcorp"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1058,7 +1080,7 @@ import 'security_gateway_application_upstream.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1066,12 +1088,18 @@ import 'security_gateway_application_upstream.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_beyondcorp_securitygateway" "default" {
+/// resource "gcp_beyondcorp_security_gateway" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   security_gateway_id = "default-sg-spa-proxy"
 ///   display_name        = "My SPA Security Gateway resource"
 /// }
-/// resource "gcp_beyondcorp_securitygatewayapplication" "example-spa" {
-///   security_gateway_id = gcp_beyondcorp_securitygateway.default.security_gateway_id
+/// resource "gcp_beyondcorp_security_gateway_application" "example-spa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_gateway_id = gcp_beyondcorp_security_gateway.default.security_gateway_id
 ///   application_id      = "app-proxy"
 ///   endpoint_matchers {
 ///     hostname = "a.site.com"
@@ -1080,8 +1108,8 @@ import 'security_gateway_application_upstream.dart';
 ///   upstreams {
 ///     external = {
 ///       endpoints = [{
-///         "hostname" = "my.proxy.service.com"
-///         "port"     = 443
+///         hostname = "my.proxy.service.com"
+///         port     = 443
 ///       }]
 ///     }
 ///     proxy_protocol = {
@@ -1307,7 +1335,7 @@ class SecurityGatewayApplication extends pulumi.CustomResource {
           'gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     createTime = registerOutput<String>('createTime');

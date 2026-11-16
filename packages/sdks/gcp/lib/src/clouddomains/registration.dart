@@ -19,6 +19,7 @@ import 'registration_yearly_price.dart';
 /// `terraform destroy`. Instead it will "abandon" the resource and remove it from state.
 /// For information on deleting a registered domain, see https://cloud.google.com/domains/docs/delete-domain
 ///
+///
 /// ## Example Usage
 ///
 /// ### Clouddomains Registration Full
@@ -260,7 +261,7 @@ import 'registration_yearly_price.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/clouddomains"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/clouddomains"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -346,7 +347,7 @@ import 'registration_yearly_price.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -355,6 +356,9 @@ import 'registration_yearly_price.dart';
 /// }
 ///
 /// resource "gcp_clouddomains_registration" "my_registration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name = "example-domain.com"
 ///   location    = "global"
 ///   labels = {
@@ -640,7 +644,7 @@ class Registration extends pulumi.CustomResource {
           'gcp:clouddomains/registration:Registration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     contactNotices = registerOutput<List<String>?>('contactNotices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

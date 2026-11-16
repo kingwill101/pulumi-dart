@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'reservation_assignment_scheduling_policy.dart';
 
 /// Input properties used for looking up and filtering ReservationAssignment resources.
 class ReservationAssignmentState {
@@ -30,6 +31,12 @@ class ReservationAssignmentState {
   final pulumi.Input<String?>? project;
   /// The reservation for the resource
   final pulumi.Input<String?>? reservation;
+  /// The scheduling policy to use for jobs and queries of this assignee when
+  /// running under the associated reservation. The scheduling policy controls
+  /// how the reservation's resources are distributed. This overrides the default
+  /// scheduling policy specified on the reservation.
+  /// Structure is documented below.
+  final pulumi.Input<ReservationAssignmentSchedulingPolicy?>? schedulingPolicy;
   /// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
   /// Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
   final pulumi.Input<String?>? state;
@@ -43,6 +50,7 @@ class ReservationAssignmentState {
   /// [principal] Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will utilize the associated reservation. Otherwise, jobs will fall back to using the reservation assigned to the project, folder, or organization (in that order). If no reservation is assigned at any of these levels, on-demand capacity will be used. The supported formats are:
   /// [project] The ID of the project in which the resource belongs.
   /// [reservation] The reservation for the resource
+  /// [schedulingPolicy] The scheduling policy to use for jobs and queries of this assignee when
   /// [state] Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
   const ReservationAssignmentState({
     this.assignee,
@@ -53,6 +61,7 @@ class ReservationAssignmentState {
     this.principal,
     this.project,
     this.reservation,
+    this.schedulingPolicy,
     this.state,
   });
 
@@ -66,6 +75,7 @@ class ReservationAssignmentState {
       'principal': ?principal,
       'project': ?project,
       'reservation': ?reservation,
+      'schedulingPolicy': ?pulumi.Input.mapOptionalInputValue<ReservationAssignmentSchedulingPolicy, Map<String, dynamic>>(schedulingPolicy, (value) => value.toMap()),
       'state': ?state,
     };
   }
@@ -80,6 +90,7 @@ class ReservationAssignmentState {
       principal: (() { final guardedValue = map['principal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       reservation: (() { final guardedValue = map['reservation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      schedulingPolicy: (() { final guardedValue = map['schedulingPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReservationAssignmentSchedulingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -51,12 +51,12 @@ class GetServiceTemplateSpecContainerReadinessProbe {
 
   factory GetServiceTemplateSpecContainerReadinessProbe.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateSpecContainerReadinessProbe(
-      failureThreshold: pulumi.Input.fromValue((map['failureThreshold'] as num).toInt()),
+      failureThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['failureThreshold'])),
       grpcs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateSpecContainerReadinessProbeGrpc>(map['grpcs']!, (value) => GetServiceTemplateSpecContainerReadinessProbeGrpc.fromMap((value as Map).cast<String, dynamic>()))),
       httpGets: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateSpecContainerReadinessProbeHttpGet>(map['httpGets']!, (value) => GetServiceTemplateSpecContainerReadinessProbeHttpGet.fromMap((value as Map).cast<String, dynamic>()))),
-      periodSeconds: pulumi.Input.fromValue((map['periodSeconds'] as num).toInt()),
-      successThreshold: pulumi.Input.fromValue((map['successThreshold'] as num).toInt()),
-      timeoutSeconds: pulumi.Input.fromValue((map['timeoutSeconds'] as num).toInt()),
+      periodSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['periodSeconds'])),
+      successThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['successThreshold'])),
+      timeoutSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['timeoutSeconds'])),
     );
   }
 }

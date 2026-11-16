@@ -17,6 +17,7 @@ import 'workload_identity_pool_state.dart';
 /// * [Configure managed workload identity authentication for GKE](https://cloud.google.com/iam/docs/create-managed-workload-identities-gke)
 /// * [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Iam Workload Identity Pool Basic
@@ -54,7 +55,7 @@ import 'workload_identity_pool_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -71,7 +72,7 @@ import 'workload_identity_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -79,7 +80,10 @@ import 'workload_identity_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workloadidentitypool" "example" {
+/// resource "gcp_iam_workload_identity_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workload_identity_pool_id = "example-pool"
 /// }
 /// ```
@@ -118,6 +122,7 @@ import 'workload_identity_pool_state.dart';
 ///     properties:
 ///       workloadIdentityPoolId: example-pool
 /// ```
+///
 ///
 /// ### Iam Workload Identity Pool Full Federation Only Mode
 ///
@@ -169,7 +174,7 @@ import 'workload_identity_pool_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -190,7 +195,7 @@ import 'workload_identity_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -198,7 +203,10 @@ import 'workload_identity_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workloadidentitypool" "example" {
+/// resource "gcp_iam_workload_identity_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workload_identity_pool_id = "example-pool"
 ///   display_name              = "Name of the pool"
 ///   description               = "Identity pool operates in FEDERATION_ONLY mode"
@@ -249,6 +257,7 @@ import 'workload_identity_pool_state.dart';
 ///       disabled: true
 ///       mode: FEDERATION_ONLY
 /// ```
+///
 ///
 /// ### Iam Workload Identity Pool Full Trust Domain Mode
 ///
@@ -459,7 +468,7 @@ import 'workload_identity_pool_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -547,7 +556,7 @@ import 'workload_identity_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -558,7 +567,10 @@ import 'workload_identity_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workloadidentitypool" "example" {
+/// resource "gcp_iam_workload_identity_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workload_identity_pool_id = "example-pool"
 ///   display_name              = "Name of the pool"
 ///   description               = "Identity pool operates in TRUST_DOMAIN mode"
@@ -575,20 +587,20 @@ import 'workload_identity_pool_state.dart';
 ///   }
 ///   inline_trust_config = {
 ///     additional_trust_bundles = [{
-///       "trustDomain"          = "example.com"
-///       "trustDefaultSharedCa" = false
-///       "trustAnchors" = [{
-///         "pemCertificate" = file("test-fixtures/trust_anchor_1.pem")
+///       trust_domain            = "example.com"
+///       trust_default_shared_ca = false
+///       trust_anchors = [{
+///         pem_certificate = file("test-fixtures/trust_anchor_1.pem")
 ///         }, {
-///         "pemCertificate" = file("test-fixtures/trust_anchor_2.pem")
+///         pem_certificate = file("test-fixtures/trust_anchor_2.pem")
 ///       }]
 ///       }, {
-///       "trustDomain"          = "example.net"
-///       "trustDefaultSharedCa" = false
-///       "trustAnchors" = [{
-///         "pemCertificate" = file("test-fixtures/trust_anchor_3.pem")
+///       trust_domain            = "example.net"
+///       trust_default_shared_ca = false
+///       trust_anchors = [{
+///         pem_certificate = file("test-fixtures/trust_anchor_3.pem")
 ///         }, {
-///         "pemCertificate" = file("test-fixtures/trust_anchor_4.pem")
+///         pem_certificate = file("test-fixtures/trust_anchor_4.pem")
 ///       }]
 ///     }]
 ///   }
@@ -733,6 +745,7 @@ import 'workload_identity_pool_state.dart';
 ///       attestationRules:
 ///         - googleCloudResource: //run.googleapis.com/projects/1111111111111/type/Service/*
 /// ```
+///
 ///
 /// ### Iam Workload Identity Pool Full Trust Domain Mode With Default Shared Ca
 ///
@@ -920,7 +933,7 @@ import 'workload_identity_pool_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1000,7 +1013,7 @@ import 'workload_identity_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1011,7 +1024,10 @@ import 'workload_identity_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workloadidentitypool" "example" {
+/// resource "gcp_iam_workload_identity_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workload_identity_pool_id = "example-pool"
 ///   display_name              = "Name of the pool"
 ///   description               = "Identity pool operates in TRUST_DOMAIN mode"
@@ -1025,20 +1041,20 @@ import 'workload_identity_pool_state.dart';
 ///   }
 ///   inline_trust_config = {
 ///     additional_trust_bundles = [{
-///       "trustDomain"          = "example.com"
-///       "trustDefaultSharedCa" = true
-///       "trustAnchors" = [{
-///         "pemCertificate" = file("test-fixtures/trust_anchor_1.pem")
+///       trust_domain            = "example.com"
+///       trust_default_shared_ca = true
+///       trust_anchors = [{
+///         pem_certificate = file("test-fixtures/trust_anchor_1.pem")
 ///         }, {
-///         "pemCertificate" = file("test-fixtures/trust_anchor_2.pem")
+///         pem_certificate = file("test-fixtures/trust_anchor_2.pem")
 ///       }]
 ///       }, {
-///       "trustDomain"          = "example.net"
-///       "trustDefaultSharedCa" = true
-///       "trustAnchors" = [{
-///         "pemCertificate" = file("test-fixtures/trust_anchor_3.pem")
+///       trust_domain            = "example.net"
+///       trust_default_shared_ca = true
+///       trust_anchors = [{
+///         pem_certificate = file("test-fixtures/trust_anchor_3.pem")
 ///         }, {
-///         "pemCertificate" = file("test-fixtures/trust_anchor_4.pem")
+///         pem_certificate = file("test-fixtures/trust_anchor_4.pem")
 ///       }]
 ///     }]
 ///   }
@@ -1277,7 +1293,7 @@ class WorkloadIdentityPool extends pulumi.CustomResource {
           'gcp:iam/workloadIdentityPool:WorkloadIdentityPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     attestationRules = registerOutput<List<WorkloadIdentityPoolAttestationRule>?>('attestationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadIdentityPoolAttestationRule>(guardedValue, (value) => WorkloadIdentityPoolAttestationRule.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

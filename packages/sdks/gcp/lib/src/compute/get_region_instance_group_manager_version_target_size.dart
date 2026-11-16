@@ -25,8 +25,8 @@ class GetRegionInstanceGroupManagerVersionTargetSize {
 
   factory GetRegionInstanceGroupManagerVersionTargetSize.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceGroupManagerVersionTargetSize(
-      fixed: pulumi.Input.fromValue((map['fixed'] as num).toInt()),
-      percent: pulumi.Input.fromValue((map['percent'] as num).toInt()),
+      fixed: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['fixed'])),
+      percent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['percent'])),
     );
   }
 }

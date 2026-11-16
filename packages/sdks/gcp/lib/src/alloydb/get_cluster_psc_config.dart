@@ -27,7 +27,7 @@ class GetClusterPscConfig {
   factory GetClusterPscConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterPscConfig(
       pscEnabled: pulumi.Input.fromValue(map['pscEnabled'] as bool),
-      serviceOwnedProjectNumber: pulumi.Input.fromValue((map['serviceOwnedProjectNumber'] as num).toInt()),
+      serviceOwnedProjectNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['serviceOwnedProjectNumber'])),
     );
   }
 }

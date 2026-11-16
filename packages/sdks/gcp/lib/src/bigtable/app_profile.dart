@@ -12,6 +12,7 @@ import 'app_profile_state.dart';
 ///
 /// * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.appProfiles)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Bigtable App Profile Anycluster
@@ -138,7 +139,7 @@ import 'app_profile_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigtable"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -185,7 +186,7 @@ import 'app_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -194,6 +195,9 @@ import 'app_profile_state.dart';
 /// }
 ///
 /// resource "gcp_bigtable_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "bt-instance"
 ///   clusters {
 ///     cluster_id   = "cluster-1"
@@ -215,7 +219,10 @@ import 'app_profile_state.dart';
 ///   }
 ///   deletion_protection = true
 /// }
-/// resource "gcp_bigtable_appprofile" "ap" {
+/// resource "gcp_bigtable_app_profile" "ap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance                      = gcp_bigtable_instance.instance.name
 ///   app_profile_id                = "bt-profile"
 ///   multi_cluster_routing_use_any = true
@@ -309,6 +316,7 @@ import 'app_profile_state.dart';
 ///       ignoreWarnings: true
 /// ```
 ///
+///
 /// ### Bigtable App Profile Singlecluster
 ///
 ///
@@ -401,7 +409,7 @@ import 'app_profile_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigtable"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -439,7 +447,7 @@ import 'app_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -448,6 +456,9 @@ import 'app_profile_state.dart';
 /// }
 ///
 /// resource "gcp_bigtable_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "bt-instance"
 ///   clusters {
 ///     cluster_id   = "cluster-1"
@@ -457,7 +468,10 @@ import 'app_profile_state.dart';
 ///   }
 ///   deletion_protection = true
 /// }
-/// resource "gcp_bigtable_appprofile" "ap" {
+/// resource "gcp_bigtable_app_profile" "ap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance       = gcp_bigtable_instance.instance.name
 ///   app_profile_id = "bt-profile"
 ///   single_cluster_routing = {
@@ -538,6 +552,7 @@ import 'app_profile_state.dart';
 ///         allowTransactionalWrites: true
 ///       ignoreWarnings: true
 /// ```
+///
 ///
 /// ### Bigtable App Profile Multicluster
 ///
@@ -676,7 +691,7 @@ import 'app_profile_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigtable"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -727,7 +742,7 @@ import 'app_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -736,6 +751,9 @@ import 'app_profile_state.dart';
 /// }
 ///
 /// resource "gcp_bigtable_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "bt-instance"
 ///   clusters {
 ///     cluster_id   = "cluster-1"
@@ -757,7 +775,10 @@ import 'app_profile_state.dart';
 ///   }
 ///   deletion_protection = true
 /// }
-/// resource "gcp_bigtable_appprofile" "ap" {
+/// resource "gcp_bigtable_app_profile" "ap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance                          = gcp_bigtable_instance.instance.name
 ///   app_profile_id                    = "bt-profile"
 ///   multi_cluster_routing_use_any     = true
@@ -857,6 +878,7 @@ import 'app_profile_state.dart';
 ///         - cluster-2
 ///       ignoreWarnings: true
 /// ```
+///
 ///
 /// ### Bigtable App Profile Priority
 ///
@@ -960,7 +982,7 @@ import 'app_profile_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigtable"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1001,7 +1023,7 @@ import 'app_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1010,6 +1032,9 @@ import 'app_profile_state.dart';
 /// }
 ///
 /// resource "gcp_bigtable_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "bt-instance"
 ///   clusters {
 ///     cluster_id   = "cluster-1"
@@ -1019,7 +1044,10 @@ import 'app_profile_state.dart';
 ///   }
 ///   deletion_protection = true
 /// }
-/// resource "gcp_bigtable_appprofile" "ap" {
+/// resource "gcp_bigtable_app_profile" "ap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance       = gcp_bigtable_instance.instance.name
 ///   app_profile_id = "bt-profile"
 ///   single_cluster_routing = {
@@ -1178,7 +1206,7 @@ class AppProfile extends pulumi.CustomResource {
           'gcp:bigtable/appProfile:AppProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     appProfileId = registerOutput<String>('appProfileId');
     dataBoostIsolationReadOnly = registerOutput<AppProfileDataBoostIsolationReadOnly?>('dataBoostIsolationReadOnly', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppProfileDataBoostIsolationReadOnly.fromMap((guardedValue as Map).cast<String, dynamic>()); });

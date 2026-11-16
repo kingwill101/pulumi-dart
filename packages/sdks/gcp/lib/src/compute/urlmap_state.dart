@@ -150,7 +150,7 @@ class URLMapState {
       fingerprint: (() { final guardedValue = map['fingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       headerAction: (() { final guardedValue = map['headerAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapHeaderAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       hostRules: (() { final guardedValue = map['hostRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<URLMapHostRule>(guardedValue, (value) => URLMapHostRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      mapId: (() { final guardedValue = map['mapId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      mapId: (() { final guardedValue = map['mapId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pathMatchers: (() { final guardedValue = map['pathMatchers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<URLMapPathMatcher>(guardedValue, (value) => URLMapPathMatcher.fromMap((value as Map).cast<String, dynamic>()))); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

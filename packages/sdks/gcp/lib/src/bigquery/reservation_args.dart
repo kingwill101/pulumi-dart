@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'reservation_autoscale.dart';
+import 'reservation_scheduling_policy.dart';
 
 /// {@template pulumi_bigquery_reservation_reservation_args_doc}
 /// The set of arguments for Reservation.
@@ -111,6 +112,11 @@ class ReservationArgs {
   /// Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
   /// Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
   final pulumi.Input<String?>? scalingMode;
+  /// The scheduling policy to use for jobs and queries running under this
+  /// reservation. The scheduling policy controls how the reservation's resources
+  /// are distributed.
+  /// Structure is documented below.
+  final pulumi.Input<ReservationSchedulingPolicy?>? schedulingPolicy;
   /// The current location of the reservation's secondary replica. This field is only set for
   /// reservations using the managed disaster recovery feature. Users can set this in create
   /// reservation calls to create a failover reservation or in update reservation calls to convert
@@ -133,6 +139,7 @@ class ReservationArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [reservationGroup] The reservation group that this reservation belongs to.
   /// [scalingMode] (Optional, Beta)
+  /// [schedulingPolicy] The scheduling policy to use for jobs and queries running under this
   /// [secondaryLocation] The current location of the reservation's secondary replica. This field is only set for
   /// [slotCapacity] Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
   const ReservationArgs({
@@ -148,6 +155,7 @@ class ReservationArgs {
     this.project,
     this.reservationGroup,
     this.scalingMode,
+    this.schedulingPolicy,
     this.secondaryLocation,
     required this.slotCapacity,
   });
@@ -166,6 +174,7 @@ class ReservationArgs {
       'project': ?project,
       'reservationGroup': ?reservationGroup,
       'scalingMode': ?scalingMode,
+      'schedulingPolicy': ?pulumi.Input.mapOptionalInputValue<ReservationSchedulingPolicy, Map<String, dynamic>>(schedulingPolicy, (value) => value.toMap()),
       'secondaryLocation': ?secondaryLocation,
       'slotCapacity': slotCapacity,
     };
@@ -174,19 +183,20 @@ class ReservationArgs {
   factory ReservationArgs.fromMap(Map<String, dynamic> map) {
     return ReservationArgs(
       autoscale: (() { final guardedValue = map['autoscale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReservationAutoscale.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      concurrency: (() { final guardedValue = map['concurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      concurrency: (() { final guardedValue = map['concurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       edition: (() { final guardedValue = map['edition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ignoreIdleSlots: (() { final guardedValue = map['ignoreIdleSlots']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxSlots: (() { final guardedValue = map['maxSlots']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxSlots: (() { final guardedValue = map['maxSlots']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       reservationGroup: (() { final guardedValue = map['reservationGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scalingMode: (() { final guardedValue = map['scalingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      schedulingPolicy: (() { final guardedValue = map['schedulingPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReservationSchedulingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       secondaryLocation: (() { final guardedValue = map['secondaryLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      slotCapacity: pulumi.Input.fromValue((map['slotCapacity'] as num).toInt()),
+      slotCapacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['slotCapacity'])),
     );
   }
 }

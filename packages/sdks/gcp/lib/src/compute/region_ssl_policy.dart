@@ -12,6 +12,7 @@ import 'region_ssl_policy_state.dart';
 /// * How-to Guides
 /// * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Region Ssl Policy Basic
@@ -58,7 +59,7 @@ import 'region_ssl_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -77,7 +78,7 @@ import 'region_ssl_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -85,7 +86,10 @@ import 'region_ssl_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionsslpolicy" "region-ssl-policy" {
+/// resource "gcp_compute_region_ssl_policy" "region-ssl-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "region-ssl-policy"
 ///   region  = "us-central1"
 ///   profile = "MODERN"
@@ -130,6 +134,7 @@ import 'region_ssl_policy_state.dart';
 ///       region: us-central1
 ///       profile: MODERN
 /// ```
+///
 ///
 /// ### Region Ssl Policy Post Quantum
 ///
@@ -181,7 +186,7 @@ import 'region_ssl_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -202,7 +207,7 @@ import 'region_ssl_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -210,7 +215,10 @@ import 'region_ssl_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionsslpolicy" "post-quantum-region-ssl-policy" {
+/// resource "gcp_compute_region_ssl_policy" "post-quantum-region-ssl-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "post-quantum-region-ssl-policy"
 ///   region                    = "us-central1"
 ///   profile                   = "MODERN"
@@ -363,7 +371,7 @@ class RegionSslPolicy extends pulumi.CustomResource {
           'gcp:compute/regionSslPolicy:RegionSslPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     customFeatures = registerOutput<List<String>?>('customFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

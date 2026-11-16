@@ -15,6 +15,7 @@ import 'repository_release_config_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/dataform/docs/release-configurations)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Dataform Repository Release Config
@@ -196,9 +197,9 @@ import 'repository_release_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataform"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sourcerepo"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataform"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sourcerepo"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -220,7 +221,7 @@ import 'repository_release_config_state.dart';
 /// 			return err
 /// 		}
 /// 		secretVersion, err := secretmanager.NewSecretVersion(ctx, "secret_version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     secret.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:     secret.ID(),
 /// 			SecretData: pulumi.String("secret-data"),
 /// 		})
 /// 		if err != nil {
@@ -232,7 +233,7 @@ import 'repository_release_config_state.dart';
 /// 			GitRemoteSettings: &dataform.RepositoryGitRemoteSettingsArgs{
 /// 				Url:                              gitRepository.Url,
 /// 				DefaultBranch:                    pulumi.String("main"),
-/// 				AuthenticationTokenSecretVersion: secretVersion.ID().ToIDOutput().ToStringOutput(),
+/// 				AuthenticationTokenSecretVersion: secretVersion.ID(),
 /// 			},
 /// 			WorkspaceCompilationOverrides: &dataform.RepositoryWorkspaceCompilationOverridesArgs{
 /// 				DefaultDatabase: pulumi.String("database"),
@@ -272,7 +273,7 @@ import 'repository_release_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -281,25 +282,37 @@ import 'repository_release_config_state.dart';
 /// }
 ///
 /// resource "gcp_sourcerepo_repository" "git_repository" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my/repository"
 /// }
 /// resource "gcp_secretmanager_secret" "secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "my_secret"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "secret_version" {
+/// resource "gcp_secretmanager_secret_version" "secret_version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.secret.id
 ///   secret_data = "secret-data"
 /// }
 /// resource "gcp_dataform_repository" "repository" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "dataform_repository"
 ///   region = "us-central1"
 ///   git_remote_settings = {
 ///     url                                 = gcp_sourcerepo_repository.git_repository.url
 ///     default_branch                      = "main"
-///     authentication_token_secret_version = gcp_secretmanager_secretversion.secret_version.id
+///     authentication_token_secret_version = gcp_secretmanager_secret_version.secret_version.id
 ///   }
 ///   workspace_compilation_overrides = {
 ///     default_database = "database"
@@ -307,7 +320,10 @@ import 'repository_release_config_state.dart';
 ///     table_prefix     = "prefix_"
 ///   }
 /// }
-/// resource "gcp_dataform_repositoryreleaseconfig" "release" {
+/// resource "gcp_dataform_repository_release_config" "release" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project       = gcp_dataform_repository.repository.project
 ///   region        = gcp_dataform_repository.repository.region
 ///   repository    = gcp_dataform_repository.repository.name
@@ -468,6 +484,7 @@ import 'repository_release_config_state.dart';
 ///           var1: value
 /// ```
 ///
+///
 /// ### Dataform Repository Release Config Disabled
 ///
 ///
@@ -612,9 +629,9 @@ import 'repository_release_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataform"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sourcerepo"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataform"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sourcerepo"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -636,7 +653,7 @@ import 'repository_release_config_state.dart';
 /// 			return err
 /// 		}
 /// 		secretVersion, err := secretmanager.NewSecretVersion(ctx, "secret_version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     secret.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:     secret.ID(),
 /// 			SecretData: pulumi.String("secret-data"),
 /// 		})
 /// 		if err != nil {
@@ -648,7 +665,7 @@ import 'repository_release_config_state.dart';
 /// 			GitRemoteSettings: &dataform.RepositoryGitRemoteSettingsArgs{
 /// 				Url:                              gitRepository.Url,
 /// 				DefaultBranch:                    pulumi.String("main"),
-/// 				AuthenticationTokenSecretVersion: secretVersion.ID().ToIDOutput().ToStringOutput(),
+/// 				AuthenticationTokenSecretVersion: secretVersion.ID(),
 /// 			},
 /// 			WorkspaceCompilationOverrides: &dataform.RepositoryWorkspaceCompilationOverridesArgs{
 /// 				DefaultDatabase: pulumi.String("database"),
@@ -677,7 +694,7 @@ import 'repository_release_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -686,25 +703,37 @@ import 'repository_release_config_state.dart';
 /// }
 ///
 /// resource "gcp_sourcerepo_repository" "git_repository" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my/repository"
 /// }
 /// resource "gcp_secretmanager_secret" "secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "my_secret"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "secret_version" {
+/// resource "gcp_secretmanager_secret_version" "secret_version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.secret.id
 ///   secret_data = "secret-data"
 /// }
 /// resource "gcp_dataform_repository" "repository" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "dataform_repository"
 ///   region = "us-central1"
 ///   git_remote_settings = {
 ///     url                                 = gcp_sourcerepo_repository.git_repository.url
 ///     default_branch                      = "main"
-///     authentication_token_secret_version = gcp_secretmanager_secretversion.secret_version.id
+///     authentication_token_secret_version = gcp_secretmanager_secret_version.secret_version.id
 ///   }
 ///   workspace_compilation_overrides = {
 ///     default_database = "database"
@@ -712,7 +741,10 @@ import 'repository_release_config_state.dart';
 ///     table_prefix     = "prefix_"
 ///   }
 /// }
-/// resource "gcp_dataform_repositoryreleaseconfig" "release" {
+/// resource "gcp_dataform_repository_release_config" "release" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project       = gcp_dataform_repository.repository.project
 ///   region        = gcp_dataform_repository.repository.region
 ///   repository    = gcp_dataform_repository.repository.name
@@ -906,7 +938,7 @@ class RepositoryReleaseConfig extends pulumi.CustomResource {
           'gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     codeCompilationConfig = registerOutput<RepositoryReleaseConfigCodeCompilationConfig?>('codeCompilationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryReleaseConfigCodeCompilationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cronSchedule = registerOutput<String?>('cronSchedule');

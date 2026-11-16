@@ -27,7 +27,7 @@ class ConnectionGithubConfig {
 
   factory ConnectionGithubConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionGithubConfig(
-      appInstallationId: (() { final guardedValue = map['appInstallationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      appInstallationId: (() { final guardedValue = map['appInstallationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       authorizerCredential: (() { final guardedValue = map['authorizerCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionGithubConfigAuthorizerCredential.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

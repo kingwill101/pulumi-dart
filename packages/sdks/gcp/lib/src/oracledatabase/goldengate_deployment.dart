@@ -7,6 +7,7 @@ import 'goldengate_deployment_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Oracledatabase Goldengate Deployment Basic
@@ -31,6 +32,9 @@ import 'goldengate_deployment_state.dart';
 ///             deployment: "deployment",
 ///         },
 ///     },
+///     labels: {
+///         "label-one": "value-one",
+///     },
 ///     deletionPolicy: "PREVENT",
 /// });
 /// ```
@@ -51,6 +55,9 @@ import 'goldengate_deployment_state.dart';
 ///             "admin_password": "123Abpassword!",
 ///             "deployment": "deployment",
 ///         },
+///     },
+///     labels={
+///         "label-one": "value-one",
 ///     },
 ///     deletion_policy="PREVENT")
 /// ```
@@ -79,6 +86,10 @@ import 'goldengate_deployment_state.dart';
 ///                 Deployment = "deployment",
 ///             },
 ///         },
+///         Labels =
+///         {
+///             { "label-one", "value-one" },
+///         },
 ///         DeletionPolicy = "PREVENT",
 ///     });
 ///
@@ -88,7 +99,7 @@ import 'goldengate_deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -108,6 +119,9 @@ import 'goldengate_deployment_state.dart';
 /// 					Deployment:    pulumi.String("deployment"),
 /// 				},
 /// 			},
+/// 			Labels: pulumi.StringMap{
+/// 				"label-one": pulumi.String("value-one"),
+/// 			},
 /// 			DeletionPolicy: pulumi.String("PREVENT"),
 /// 		})
 /// 		if err != nil {
@@ -118,7 +132,7 @@ import 'goldengate_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -126,7 +140,10 @@ import 'goldengate_deployment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_goldengatedeployment" "deployment" {
+/// resource "gcp_oracledatabase_goldengate_deployment" "deployment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   goldengate_deployment_id = "my-deployment"
 ///   display_name             = "my-deployment display name"
 ///   location                 = "us-east4"
@@ -139,6 +156,9 @@ import 'goldengate_deployment_state.dart';
 ///       admin_password = "123Abpassword!"
 ///       deployment     = "deployment"
 ///     }
+///   }
+///   labels = {
+///     "label-one" = "value-one"
 ///   }
 ///   deletion_policy = "PREVENT"
 /// }
@@ -180,6 +200,7 @@ import 'goldengate_deployment_state.dart';
 ///                     .deployment("deployment")
 ///                     .build())
 ///                 .build())
+///             .labels(Map.of("label-one", "value-one"))
 ///             .deletionPolicy("PREVENT")
 ///             .build());
 ///
@@ -202,8 +223,11 @@ import 'goldengate_deployment_state.dart';
 ///           adminUsername: admin
 ///           adminPassword: 123Abpassword!
 ///           deployment: deployment
+///       labels:
+///         label-one: value-one
 ///       deletionPolicy: PREVENT
 /// ```
+///
 ///
 /// ### Oracledatabase Goldengate Deployment Full
 ///
@@ -350,7 +374,7 @@ import 'goldengate_deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -401,7 +425,7 @@ import 'goldengate_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -409,7 +433,10 @@ import 'goldengate_deployment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_goldengatedeployment" "deployment" {
+/// resource "gcp_oracledatabase_goldengate_deployment" "deployment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   goldengate_deployment_id = "my-deployment"
 ///   display_name             = "my-deployment display name"
 ///   location                 = "us-east4"
@@ -629,7 +656,7 @@ class GoldengateDeployment extends pulumi.CustomResource {
           'gcp:oracledatabase/goldengateDeployment:GoldengateDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

@@ -12,6 +12,7 @@ import 'custom_constraint_state.dart';
 /// * [Official Documentation](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
 /// * [Supported Services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Org Policy Custom Constraint Basic
@@ -80,7 +81,7 @@ import 'custom_constraint_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/orgpolicy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/orgpolicy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -107,7 +108,7 @@ import 'custom_constraint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -115,7 +116,10 @@ import 'custom_constraint_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_orgpolicy_customconstraint" "constraint" {
+/// resource "gcp_orgpolicy_custom_constraint" "constraint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "custom.disableGkeAutoUpgrade"
 ///   parent         = "organizations/123456789"
 ///   action_type    = "ALLOW"
@@ -174,6 +178,7 @@ import 'custom_constraint_state.dart';
 ///       resourceTypes:
 ///         - container.googleapis.com/NodePool
 /// ```
+///
 ///
 /// ### Org Policy Custom Constraint Full
 ///
@@ -282,7 +287,7 @@ import 'custom_constraint_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/orgpolicy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/orgpolicy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -327,7 +332,7 @@ import 'custom_constraint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -335,7 +340,10 @@ import 'custom_constraint_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_orgpolicy_customconstraint" "constraint" {
+/// resource "gcp_orgpolicy_custom_constraint" "constraint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "custom.disableGkeAutoUpgrade"
 ///   parent         = "organizations/123456789"
 ///   display_name   = "Disable GKE auto upgrade"
@@ -346,11 +354,14 @@ import 'custom_constraint_state.dart';
 ///   resource_types = ["container.googleapis.com/NodePool"]
 /// }
 /// resource "gcp_orgpolicy_policy" "bool" {
-///   name   ="organizations/123456789/policies/${gcp_orgpolicy_customconstraint.constraint.name}"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name   ="organizations/123456789/policies/${gcp_orgpolicy_custom_constraint.constraint.name}"
 ///   parent = "organizations/123456789"
 ///   spec = {
 ///     rules = [{
-///       "enforce" = "TRUE"
+///       enforce = "TRUE"
 ///     }]
 ///   }
 /// }
@@ -485,7 +496,7 @@ class CustomConstraint extends pulumi.CustomResource {
           'gcp:orgpolicy/customConstraint:CustomConstraint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     actionType = registerOutput<String>('actionType');
     condition = registerOutput<String>('condition');

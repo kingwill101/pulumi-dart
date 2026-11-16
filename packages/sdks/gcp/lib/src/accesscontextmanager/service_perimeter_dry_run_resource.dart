@@ -4,7 +4,7 @@ import 'service_perimeter_dry_run_resource_state.dart';
 
 /// Allows configuring a single GCP resource that should be inside of the `spec` block of a dry run service perimeter.
 /// This resource is intended to be used in cases where it is not possible to compile a full list
-/// of projects to include in a `gcp.accesscontextmanager.ServicePerimeter` resource,
+/// of resources (projects, folders, or VPC networks) to include in a `gcp.accesscontextmanager.ServicePerimeter` resource,
 /// to enable them to be added separately.
 /// If your perimeter is NOT in dry-run mode use `gcp.accesscontextmanager.ServicePerimeterResource` instead.
 ///
@@ -24,6 +24,7 @@ import 'service_perimeter_dry_run_resource_state.dart';
 /// in the provider configuration. Otherwise the ACM API will return a 403 error.
 /// Your account must have the `serviceusage.services.use` permission on the
 /// `billingProject` you defined.
+///
 ///
 /// ## Example Usage
 ///
@@ -115,7 +116,7 @@ import 'service_perimeter_dry_run_resource_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accesscontextmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accesscontextmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -158,7 +159,7 @@ import 'service_perimeter_dry_run_resource_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -166,20 +167,29 @@ import 'service_perimeter_dry_run_resource_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_accesscontextmanager_serviceperimeterdryrunresource" "service-perimeter-dry-run-resource" {
-///   perimeter_name = gcp_accesscontextmanager_serviceperimeter.service-perimeter-dry-run-resource.name
+/// resource "gcp_accesscontextmanager_service_perimeter_dry_run_resource" "service-perimeter-dry-run-resource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   perimeter_name = gcp_accesscontextmanager_service_perimeter.service-perimeter-dry-run-resource.name
 ///   resource       = "projects/987654321"
 /// }
-/// resource "gcp_accesscontextmanager_serviceperimeter" "service-perimeter-dry-run-resource" {
-///   parent ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}"
-///   name   ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}/servicePerimeters/restrict_all"
+/// resource "gcp_accesscontextmanager_service_perimeter" "service-perimeter-dry-run-resource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent ="accessPolicies/${gcp_accesscontextmanager_access_policy.access-policy.name}"
+///   name   ="accessPolicies/${gcp_accesscontextmanager_access_policy.access-policy.name}/servicePerimeters/restrict_all"
 ///   title  = "restrict_all"
 ///   spec = {
 ///     restricted_services = ["storage.googleapis.com"]
 ///   }
 ///   use_explicit_dry_run_spec = true
 /// }
-/// resource "gcp_accesscontextmanager_accesspolicy" "access-policy" {
+/// resource "gcp_accesscontextmanager_access_policy" "access-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent = "organizations/123456789"
 ///   title  = "my policy"
 /// }
@@ -286,8 +296,10 @@ class ServicePerimeterDryRunResource extends pulumi.CustomResource {
   /// The name of the Service Perimeter to add this resource to.
   late final pulumi.Output<String> perimeterName;
   /// A GCP resource that is inside of the service perimeter.
-  /// Currently only projects are allowed.
-  /// Format: projects/{project_number}
+  /// Projects, folders, and VPC networks are allowed.
+  /// Project format: `projects/{project_number}`
+  /// Folder format: `folders/{folder_number}`
+  /// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
   late final pulumi.Output<String> resource;
 
   /// Creates a new [ServicePerimeterDryRunResource].
@@ -302,7 +314,7 @@ class ServicePerimeterDryRunResource extends pulumi.CustomResource {
           'gcp:accesscontextmanager/servicePerimeterDryRunResource:ServicePerimeterDryRunResource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
     deletionPolicy = registerOutput<String>('deletionPolicy');

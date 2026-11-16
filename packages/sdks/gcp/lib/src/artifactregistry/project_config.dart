@@ -17,6 +17,7 @@ import 'project_config_state.dart';
 /// resource of this type will acquire and update the resource that already
 /// exists at the location. Deleting this resource will remove the config from
 /// your Terraform state but leave the resource as is.
+///
 /// ## Example Usage
 ///
 /// ### Artifact Registry Project Config
@@ -70,7 +71,7 @@ import 'project_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -91,7 +92,7 @@ import 'project_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -99,7 +100,10 @@ import 'project_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_artifactregistry_projectconfig" "my-config" {
+/// resource "gcp_artifactregistry_project_config" "my-config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-central1"
 ///   platform_logs_config = {
 ///     logging_state  = "ENABLED"
@@ -197,7 +201,7 @@ class ProjectConfig extends pulumi.CustomResource {
           'gcp:artifactregistry/projectConfig:ProjectConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

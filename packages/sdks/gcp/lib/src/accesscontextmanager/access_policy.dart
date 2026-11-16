@@ -24,6 +24,7 @@ import 'access_policy_state.dart';
 /// &gt; **Note:** When importing this resource by ID, use only the numeric access policy ID
 /// (for example, `123456789`) and omit the `accessPolicies/` prefix.
 ///
+///
 /// ## Example Usage
 ///
 /// ### Access Context Manager Access Policy Basic
@@ -67,7 +68,7 @@ import 'access_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accesscontextmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accesscontextmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -85,7 +86,7 @@ import 'access_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -93,7 +94,10 @@ import 'access_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_accesscontextmanager_accesspolicy" "access-policy" {
+/// resource "gcp_accesscontextmanager_access_policy" "access-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent = "organizations/123456789"
 ///   title  = "Org Access Policy"
 /// }
@@ -135,6 +139,7 @@ import 'access_policy_state.dart';
 ///       parent: organizations/123456789
 ///       title: Org Access Policy
 /// ```
+///
 ///
 /// ### Access Context Manager Access Policy Scoped
 ///
@@ -201,8 +206,8 @@ import 'access_policy_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accesscontextmanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accesscontextmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -232,7 +237,7 @@ import 'access_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -241,12 +246,18 @@ import 'access_policy_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "my-project-name"
 ///   name            = "my-project-name"
 ///   org_id          = "123456789"
 ///   deletion_policy = "DELETE"
 /// }
-/// resource "gcp_accesscontextmanager_accesspolicy" "access-policy" {
+/// resource "gcp_accesscontextmanager_access_policy" "access-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent = "organizations/123456789"
 ///   title  = "Scoped Access Policy"
 ///   scopes ="projects/${gcp_organizations_project.project.number}"
@@ -356,7 +367,7 @@ class AccessPolicy extends pulumi.CustomResource {
           'gcp:accesscontextmanager/accessPolicy:AccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

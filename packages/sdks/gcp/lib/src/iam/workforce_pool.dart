@@ -16,6 +16,7 @@ import 'workforce_pool_state.dart';
 /// &gt; **Note:** Ask your Google Cloud account team to request access to workforce identity federation for
 /// your billing/quota project. The account team notifies you when the project is granted access.
 ///
+///
 /// ## Example Usage
 ///
 /// ### Iam Workforce Pool Basic
@@ -62,7 +63,7 @@ import 'workforce_pool_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -81,7 +82,7 @@ import 'workforce_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -89,7 +90,10 @@ import 'workforce_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workforcepool" "example" {
+/// resource "gcp_iam_workforce_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workforce_pool_id = "example-pool"
 ///   parent            = "organizations/123456789"
 ///   location          = "global"
@@ -134,6 +138,7 @@ import 'workforce_pool_state.dart';
 ///       parent: organizations/123456789
 ///       location: global
 /// ```
+///
 ///
 /// ### Iam Workforce Pool Full
 ///
@@ -214,7 +219,7 @@ import 'workforce_pool_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -245,7 +250,7 @@ import 'workforce_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -253,7 +258,10 @@ import 'workforce_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workforcepool" "example" {
+/// resource "gcp_iam_workforce_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workforce_pool_id = "example-pool"
 ///   parent            = "organizations/123456789"
 ///   location          = "global"
@@ -263,7 +271,7 @@ import 'workforce_pool_state.dart';
 ///   session_duration  = "7200s"
 ///   access_restrictions = {
 ///     allowed_services = [{
-///       "domain" = "backstory.chronicle.security"
+///       domain = "backstory.chronicle.security"
 ///     }]
 ///     disable_programmatic_signin = false
 ///   }
@@ -404,7 +412,7 @@ class WorkforcePool extends pulumi.CustomResource {
           'gcp:iam/workforcePool:WorkforcePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     accessRestrictions = registerOutput<WorkforcePoolAccessRestrictions?>('accessRestrictions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforcePoolAccessRestrictions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

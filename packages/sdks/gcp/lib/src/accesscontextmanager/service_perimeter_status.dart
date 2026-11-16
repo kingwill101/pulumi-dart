@@ -29,8 +29,10 @@ class ServicePerimeterStatus {
   /// Structure is documented below.
   final pulumi.Input<List<ServicePerimeterStatusIngressPolicy>?>? ingressPolicies;
   /// A list of GCP resources that are inside of the service perimeter.
-  /// Currently only projects are allowed.
-  /// Format: projects/{project_number}
+  /// Projects, folders, and VPC networks are allowed.
+  /// Project format: `projects/{project_number}`
+  /// Folder format: `folders/{folder_number}`
+  /// VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
   final pulumi.Input<List<String>?>? resources;
   /// GCP services that are subject to the Service Perimeter
   /// restrictions. Must contain a list of services. For example, if

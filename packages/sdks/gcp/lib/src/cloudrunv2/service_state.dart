@@ -68,6 +68,14 @@ class ServiceState {
   final pulumi.Input<String?>? etag;
   /// For a deleted resource, the time after which it will be permanently deleted.
   final pulumi.Input<String?>? expireTime;
+  /// (Optional, Beta)
+  /// The functional type of the Service. Declares the primary purpose of the workload so that it can be
+  /// registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+  /// Once set, this field cannot be changed or unset.
+  /// A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+  /// to `IDENTITY_TYPE_AGENT_IDENTITY`.
+  /// Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+  final pulumi.Input<String?>? functionalType;
   /// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
   final pulumi.Input<String?>? generation;
   /// Used to enable/disable IAP for the cloud-run service.
@@ -118,6 +126,8 @@ class ServiceState {
   /// Scaling settings that apply to the whole service
   /// Structure is documented below.
   final pulumi.Input<ServiceScaling?>? scaling;
+  /// Enables SSH access to the Service.
+  final pulumi.Input<bool?>? sshEnabled;
   /// A map of resource manager tags.
   /// Resource manager tag keys and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -163,6 +173,7 @@ class ServiceState {
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [etag] A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
   /// [expireTime] For a deleted resource, the time after which it will be permanently deleted.
+  /// [functionalType] (Optional, Beta)
   /// [generation] A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
   /// [iapEnabled] Used to enable/disable IAP for the cloud-run service.
   /// [ingress] Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
@@ -180,6 +191,7 @@ class ServiceState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [reconciling] Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
   /// [scaling] Scaling settings that apply to the whole service
+  /// [sshEnabled] Enables SSH access to the Service.
   /// [tags] A map of resource manager tags.
   /// [template] The template used to create revisions for this Service.
   /// [terminalConditions] The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
@@ -208,6 +220,7 @@ class ServiceState {
     this.effectiveLabels,
     this.etag,
     this.expireTime,
+    this.functionalType,
     this.generation,
     this.iapEnabled,
     this.ingress,
@@ -225,6 +238,7 @@ class ServiceState {
     this.pulumiLabels,
     this.reconciling,
     this.scaling,
+    this.sshEnabled,
     this.tags,
     this.template,
     this.terminalConditions,
@@ -256,6 +270,7 @@ class ServiceState {
       'effectiveLabels': ?effectiveLabels,
       'etag': ?etag,
       'expireTime': ?expireTime,
+      'functionalType': ?functionalType,
       'generation': ?generation,
       'iapEnabled': ?iapEnabled,
       'ingress': ?ingress,
@@ -273,6 +288,7 @@ class ServiceState {
       'pulumiLabels': ?pulumiLabels,
       'reconciling': ?reconciling,
       'scaling': ?pulumi.Input.mapOptionalInputValue<ServiceScaling, Map<String, dynamic>>(scaling, (value) => value.toMap()),
+      'sshEnabled': ?sshEnabled,
       'tags': ?tags,
       'template': ?pulumi.Input.mapOptionalInputValue<ServiceTemplate, Map<String, dynamic>>(template, (value) => value.toMap()),
       'terminalConditions': ?pulumi.Input.mapOptionalInputValue<List<ServiceTerminalCondition>, List<Map<String, dynamic>>>(terminalConditions, (value) => pulumi.Input.encodeList<ServiceTerminalCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -305,6 +321,7 @@ class ServiceState {
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      functionalType: (() { final guardedValue = map['functionalType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       iapEnabled: (() { final guardedValue = map['iapEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       ingress: (() { final guardedValue = map['ingress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -322,6 +339,7 @@ class ServiceState {
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       reconciling: (() { final guardedValue = map['reconciling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       scaling: (() { final guardedValue = map['scaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceScaling.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sshEnabled: (() { final guardedValue = map['sshEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       template: (() { final guardedValue = map['template']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTemplate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       terminalConditions: (() { final guardedValue = map['terminalConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceTerminalCondition>(guardedValue, (value) => ServiceTerminalCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),

@@ -90,7 +90,7 @@ class GoldengateConnectionPropertiesDb2ConnectionProperties {
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       passwordSecretVersion: (() { final guardedValue = map['passwordSecretVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       securityProtocol: (() { final guardedValue = map['securityProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sslClientKeystashFile: (() { final guardedValue = map['sslClientKeystashFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sslClientKeystoredbFile: (() { final guardedValue = map['sslClientKeystoredbFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

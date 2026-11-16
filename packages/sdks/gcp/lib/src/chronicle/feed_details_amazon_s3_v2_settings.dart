@@ -46,7 +46,7 @@ class FeedDetailsAmazonS3V2Settings {
     return FeedDetailsAmazonS3V2Settings(
       authentication: pulumi.Input.fromValue(FeedDetailsAmazonS3V2SettingsAuthentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())),
       chronicleServiceAccount: (() { final guardedValue = map['chronicleServiceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxLookbackDays: (() { final guardedValue = map['maxLookbackDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxLookbackDays: (() { final guardedValue = map['maxLookbackDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       s3Uri: pulumi.Input.fromValue(map['s3Uri'] as String),
       sourceDeletionOption: (() { final guardedValue = map['sourceDeletionOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

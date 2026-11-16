@@ -5,6 +5,8 @@
 class GetEngineVersionsResult {
   /// Version of Kubernetes the service deploys by default.
   final String? defaultClusterVersion;
+  /// The default image type provided by this version of the API.
+  final String? defaultImageType;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
   /// The latest version available in the given zone for use with master instances.
@@ -19,6 +21,8 @@ class GetEngineVersionsResult {
   final Map<String, String>? releaseChannelLatestVersion;
   /// A map from a release channel name to the channel's auto upgrade target version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
   final Map<String, String>? releaseChannelUpgradeTargetVersion;
+  /// A list of the valid image types available in the given zone.
+  final List<String>? validImageTypes;
   /// A list of versions available in the given zone for use with master instances.
   final List<String>? validMasterVersions;
   /// A list of versions available in the given zone for use with node instances.
@@ -27,6 +31,7 @@ class GetEngineVersionsResult {
 
   /// Creates a new [GetEngineVersionsResult].
   /// [defaultClusterVersion] Version of Kubernetes the service deploys by default.
+  /// [defaultImageType] The default image type provided by this version of the API.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [latestMasterVersion] The latest version available in the given zone for use with master instances.
   /// [latestNodeVersion] The latest version available in the given zone for use with node instances.
@@ -35,11 +40,13 @@ class GetEngineVersionsResult {
   /// [releaseChannelDefaultVersion] A map from a release channel name to the channel's default version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
   /// [releaseChannelLatestVersion] A map from a release channel name to the channel's latest version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
   /// [releaseChannelUpgradeTargetVersion] A map from a release channel name to the channel's auto upgrade target version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
+  /// [validImageTypes] A list of the valid image types available in the given zone.
   /// [validMasterVersions] A list of versions available in the given zone for use with master instances.
   /// [validNodeVersions] A list of versions available in the given zone for use with node instances.
   /// [versionPrefix] Optional.
   const GetEngineVersionsResult({
     this.defaultClusterVersion,
+    this.defaultImageType,
     this.id,
     this.latestMasterVersion,
     this.latestNodeVersion,
@@ -48,6 +55,7 @@ class GetEngineVersionsResult {
     this.releaseChannelDefaultVersion,
     this.releaseChannelLatestVersion,
     this.releaseChannelUpgradeTargetVersion,
+    this.validImageTypes,
     this.validMasterVersions,
     this.validNodeVersions,
     this.versionPrefix,
@@ -56,6 +64,7 @@ class GetEngineVersionsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'defaultClusterVersion': ?defaultClusterVersion,
+      'defaultImageType': ?defaultImageType,
       'id': ?id,
       'latestMasterVersion': ?latestMasterVersion,
       'latestNodeVersion': ?latestNodeVersion,
@@ -64,6 +73,7 @@ class GetEngineVersionsResult {
       'releaseChannelDefaultVersion': ?releaseChannelDefaultVersion,
       'releaseChannelLatestVersion': ?releaseChannelLatestVersion,
       'releaseChannelUpgradeTargetVersion': ?releaseChannelUpgradeTargetVersion,
+      'validImageTypes': ?validImageTypes,
       'validMasterVersions': ?validMasterVersions,
       'validNodeVersions': ?validNodeVersions,
       'versionPrefix': ?versionPrefix,
@@ -73,6 +83,7 @@ class GetEngineVersionsResult {
   factory GetEngineVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetEngineVersionsResult(
       defaultClusterVersion: (() { final guardedValue = map['defaultClusterVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      defaultImageType: (() { final guardedValue = map['defaultImageType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       latestMasterVersion: (() { final guardedValue = map['latestMasterVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       latestNodeVersion: (() { final guardedValue = map['latestNodeVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -81,6 +92,7 @@ class GetEngineVersionsResult {
       releaseChannelDefaultVersion: (() { final guardedValue = map['releaseChannelDefaultVersion']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       releaseChannelLatestVersion: (() { final guardedValue = map['releaseChannelLatestVersion']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       releaseChannelUpgradeTargetVersion: (() { final guardedValue = map['releaseChannelUpgradeTargetVersion']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      validImageTypes: (() { final guardedValue = map['validImageTypes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       validMasterVersions: (() { final guardedValue = map['validMasterVersions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       validNodeVersions: (() { final guardedValue = map['validNodeVersions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       versionPrefix: (() { final guardedValue = map['versionPrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),

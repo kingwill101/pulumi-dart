@@ -16,6 +16,7 @@ import 'principal_access_boundary_policy_state.dart';
 /// * How-to Guides
 /// * [Create and apply Principal Access Boundaries](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Iam Principal Access Boundary Policy
@@ -65,7 +66,7 @@ import 'principal_access_boundary_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -85,7 +86,7 @@ import 'principal_access_boundary_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -93,7 +94,10 @@ import 'principal_access_boundary_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_principalaccessboundarypolicy" "pab-policy-for-org" {
+/// resource "gcp_iam_principal_access_boundary_policy" "pab-policy-for-org" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization                        = "123456789"
 ///   location                            = "global"
 ///   display_name                        = "PAB policy for Organization"
@@ -141,6 +145,7 @@ import 'principal_access_boundary_policy_state.dart';
 ///       displayName: PAB policy for Organization
 ///       principalAccessBoundaryPolicyId: pab-policy-for-org
 /// ```
+///
 ///
 /// ### Iam Organizations Policy Binding
 ///
@@ -254,7 +259,7 @@ import 'principal_access_boundary_policy_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -301,7 +306,7 @@ import 'principal_access_boundary_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -312,24 +317,33 @@ import 'principal_access_boundary_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_principalaccessboundarypolicy" "pab_policy" {
+/// resource "gcp_iam_principal_access_boundary_policy" "pab_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization                        = "123456789"
 ///   location                            = "global"
 ///   display_name                        = "Binding for all principals in the Organization"
 ///   principal_access_boundary_policy_id = "my-pab-policy"
 /// }
 /// resource "time_sleep" "wait_60_seconds" {
-///   depends_on      = [gcp_iam_principalaccessboundarypolicy.pab_policy]
+///   depends_on = [gcp_iam_principal_access_boundary_policy.pab_policy]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "60s"
 /// }
-/// resource "gcp_iam_organizationspolicybinding" "my-pab-policy" {
-///   depends_on        = [time_sleep.wait_60_seconds]
+/// resource "gcp_iam_organizations_policy_binding" "my-pab-policy" {
+///   depends_on = [time_sleep.wait_60_seconds]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization      = "123456789"
 ///   location          = "global"
 ///   display_name      = "Binding for all principals in the Organization"
 ///   policy_kind       = "PRINCIPAL_ACCESS_BOUNDARY"
 ///   policy_binding_id = "binding-for-all-org-principals"
-///   policy            ="organizations/123456789/locations/global/principalAccessBoundaryPolicies/${gcp_iam_principalaccessboundarypolicy.pab_policy.principal_access_boundary_policy_id}"
+///   policy            ="organizations/123456789/locations/global/principalAccessBoundaryPolicies/${gcp_iam_principal_access_boundary_policy.pab_policy.principal_access_boundary_policy_id}"
 ///   target = {
 ///     principal_set = "//cloudresourcemanager.googleapis.com/organizations/123456789"
 ///   }
@@ -493,7 +507,7 @@ class PrincipalAccessBoundaryPolicy extends pulumi.CustomResource {
           'gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     createTime = registerOutput<String>('createTime');

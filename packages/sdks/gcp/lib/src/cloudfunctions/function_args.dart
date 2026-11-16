@@ -211,7 +211,7 @@ class FunctionArgs {
   factory FunctionArgs.fromMap(Map<String, dynamic> map) {
     return FunctionArgs(
       automaticUpdatePolicy: (() { final guardedValue = map['automaticUpdatePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
-      availableMemoryMb: (() { final guardedValue = map['availableMemoryMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      availableMemoryMb: (() { final guardedValue = map['availableMemoryMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       buildEnvironmentVariables: (() { final guardedValue = map['buildEnvironmentVariables']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       buildServiceAccount: (() { final guardedValue = map['buildServiceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       buildWorkerPool: (() { final guardedValue = map['buildWorkerPool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -227,8 +227,8 @@ class FunctionArgs {
       ingressSettings: (() { final guardedValue = map['ingressSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      maxInstances: (() { final guardedValue = map['maxInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minInstances: (() { final guardedValue = map['minInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxInstances: (() { final guardedValue = map['maxInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minInstances: (() { final guardedValue = map['minInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       onDeployUpdatePolicy: (() { final guardedValue = map['onDeployUpdatePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FunctionOnDeployUpdatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -240,7 +240,7 @@ class FunctionArgs {
       sourceArchiveBucket: (() { final guardedValue = map['sourceArchiveBucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceArchiveObject: (() { final guardedValue = map['sourceArchiveObject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceRepository: (() { final guardedValue = map['sourceRepository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FunctionSourceRepository.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       triggerHttp: (() { final guardedValue = map['triggerHttp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       vpcConnector: (() { final guardedValue = map['vpcConnector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpcConnectorEgressSettings: (() { final guardedValue = map['vpcConnectorEgressSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

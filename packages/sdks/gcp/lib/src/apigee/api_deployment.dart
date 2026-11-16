@@ -11,6 +11,7 @@ import 'api_deployment_state.dart';
 /// * How-to Guides
 /// * [QUICKSTART_TITLE](https://cloud.google.com/apigee/docs/api-platform/deploy/ui-deploy-overview)
 ///
+///
 /// ## Example Usage
 ///
 /// ## Import
@@ -62,7 +63,7 @@ class ApiDeployment extends pulumi.CustomResource {
           'gcp:apigee/apiDeployment:ApiDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');

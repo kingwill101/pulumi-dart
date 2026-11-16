@@ -100,7 +100,7 @@ class GetTriggerBuildOption {
 
   factory GetTriggerBuildOption.fromMap(Map<String, dynamic> map) {
     return GetTriggerBuildOption(
-      diskSizeGb: pulumi.Input.fromValue((map['diskSizeGb'] as num).toInt()),
+      diskSizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['diskSizeGb'])),
       dynamicSubstitutions: pulumi.Input.fromValue(map['dynamicSubstitutions'] as bool),
       envs: pulumi.Input.fromValue((map['envs'] as List).cast<String>()),
       logStreamingOption: pulumi.Input.fromValue(map['logStreamingOption'] as String),

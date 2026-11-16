@@ -48,7 +48,7 @@ class BigQueryExportEntityGraphSettings {
       dataVolume: (() { final guardedValue = map['dataVolume']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       latestExportJobState: (() { final guardedValue = map['latestExportJobState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      retentionDays: pulumi.Input.fromValue((map['retentionDays'] as num).toInt()),
+      retentionDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retentionDays'])),
     );
   }
 }

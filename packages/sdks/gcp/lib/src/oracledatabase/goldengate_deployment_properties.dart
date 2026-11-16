@@ -309,7 +309,7 @@ class GoldengateDeploymentProperties {
     return GoldengateDeploymentProperties(
       backupSchedule: (() { final guardedValue = map['backupSchedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoldengateDeploymentPropertiesBackupSchedule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      cpuCoreCount: (() { final guardedValue = map['cpuCoreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      cpuCoreCount: (() { final guardedValue = map['cpuCoreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       deploymentBackupId: (() { final guardedValue = map['deploymentBackupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deploymentDiagnosticData: (() { final guardedValue = map['deploymentDiagnosticData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoldengateDeploymentPropertiesDeploymentDiagnosticData.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deploymentRole: (() { final guardedValue = map['deploymentRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

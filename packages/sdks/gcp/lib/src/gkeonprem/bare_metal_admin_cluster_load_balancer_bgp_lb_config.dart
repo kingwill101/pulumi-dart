@@ -43,7 +43,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfig {
   factory BareMetalAdminClusterLoadBalancerBgpLbConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterLoadBalancerBgpLbConfig(
       addressPools: (() { final guardedValue = map['addressPools']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool>(guardedValue, (value) => BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      asn: (() { final guardedValue = map['asn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      asn: (() { final guardedValue = map['asn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       bgpPeerConfigs: (() { final guardedValue = map['bgpPeerConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig>(guardedValue, (value) => BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       loadBalancerNodePoolConfig: (() { final guardedValue = map['loadBalancerNodePoolConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

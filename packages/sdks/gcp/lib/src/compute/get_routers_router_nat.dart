@@ -56,15 +56,15 @@ class GetRoutersRouterNat {
   factory GetRoutersRouterNat.fromMap(Map<String, dynamic> map) {
     return GetRoutersRouterNat(
       enableEndpointIndependentMapping: pulumi.Input.fromValue(map['enableEndpointIndependentMapping'] as bool),
-      icmpIdleTimeoutSec: pulumi.Input.fromValue((map['icmpIdleTimeoutSec'] as num).toInt()),
-      minPortsPerVm: pulumi.Input.fromValue((map['minPortsPerVm'] as num).toInt()),
+      icmpIdleTimeoutSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['icmpIdleTimeoutSec'])),
+      minPortsPerVm: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minPortsPerVm'])),
       name: pulumi.Input.fromValue(map['name'] as String),
       natIpAllocateOption: pulumi.Input.fromValue(map['natIpAllocateOption'] as String),
       natIps: pulumi.Input.fromValue((map['natIps'] as List).cast<String>()),
       sourceSubnetworkIpRangesToNat: pulumi.Input.fromValue(map['sourceSubnetworkIpRangesToNat'] as String),
-      tcpEstablishedIdleTimeoutSec: pulumi.Input.fromValue((map['tcpEstablishedIdleTimeoutSec'] as num).toInt()),
-      tcpTransitoryIdleTimeoutSec: pulumi.Input.fromValue((map['tcpTransitoryIdleTimeoutSec'] as num).toInt()),
-      udpIdleTimeoutSec: pulumi.Input.fromValue((map['udpIdleTimeoutSec'] as num).toInt()),
+      tcpEstablishedIdleTimeoutSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['tcpEstablishedIdleTimeoutSec'])),
+      tcpTransitoryIdleTimeoutSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['tcpTransitoryIdleTimeoutSec'])),
+      udpIdleTimeoutSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['udpIdleTimeoutSec'])),
     );
   }
 }

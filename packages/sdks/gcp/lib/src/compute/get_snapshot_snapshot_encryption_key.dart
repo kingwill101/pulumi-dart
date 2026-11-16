@@ -4,6 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSnapshotSnapshotEncryptionKey {
   /// The name of the encryption key that is stored in Google Cloud KMS.
+  ///
+  /// Specify the key without a '/cryptoKeyVersions/' suffix.
   final pulumi.Input<String> kmsKeySelfLink;
   /// The service account used for the encryption request for the given KMS key.
   /// If absent, the Compute Engine Service Agent service account is used.

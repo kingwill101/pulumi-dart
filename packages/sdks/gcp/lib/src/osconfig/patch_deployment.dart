@@ -17,6 +17,7 @@ import 'patch_deployment_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/compute/docs/os-patch-management)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Os Config Patch Deployment Basic
@@ -77,7 +78,7 @@ import 'patch_deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/osconfig"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/osconfig"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -100,7 +101,7 @@ import 'patch_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -108,7 +109,10 @@ import 'patch_deployment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_osconfig_patchdeployment" "patch" {
+/// resource "gcp_osconfig_patch_deployment" "patch" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   patch_deployment_id = "patch-deploy"
 ///   instance_filter = {
 ///     all = true
@@ -165,6 +169,7 @@ import 'patch_deployment_state.dart';
 ///       oneTimeSchedule:
 ///         executeTime: 2999-10-10T10:10:10.045123456Z
 /// ```
+///
 ///
 /// ### Os Config Patch Deployment Daily
 ///
@@ -250,7 +255,7 @@ import 'patch_deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/osconfig"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/osconfig"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -281,7 +286,7 @@ import 'patch_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -289,7 +294,10 @@ import 'patch_deployment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_osconfig_patchdeployment" "patch" {
+/// resource "gcp_osconfig_patch_deployment" "patch" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   patch_deployment_id = "patch-deploy"
 ///   instance_filter = {
 ///     all = true
@@ -370,6 +378,7 @@ import 'patch_deployment_state.dart';
 ///           seconds: 30
 ///           nanos: 20
 /// ```
+///
 ///
 /// ### Os Config Patch Deployment Daily Midnight
 ///
@@ -455,7 +464,7 @@ import 'patch_deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/osconfig"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/osconfig"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -486,7 +495,7 @@ import 'patch_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -494,7 +503,10 @@ import 'patch_deployment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_osconfig_patchdeployment" "patch" {
+/// resource "gcp_osconfig_patch_deployment" "patch" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   patch_deployment_id = "patch-deploy"
 ///   instance_filter = {
 ///     all = true
@@ -576,6 +588,7 @@ import 'patch_deployment_state.dart';
 ///           nanos: 0
 /// ```
 ///
+///
 /// ### Os Config Patch Deployment Instance
 ///
 ///
@@ -585,7 +598,7 @@ import 'patch_deployment_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const myImage = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const foobar = new gcp.compute.Instance("foobar", {
@@ -641,7 +654,7 @@ import 'patch_deployment_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// my_image = gcp.compute.get_image(family="debian-11",
+/// my_image = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// foobar = gcp.compute.Instance("foobar",
 ///     name="patch-deploy-inst",
@@ -700,7 +713,7 @@ import 'patch_deployment_state.dart';
 /// {
 ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -783,15 +796,15 @@ import 'patch_deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/osconfig"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/osconfig"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -827,7 +840,7 @@ import 'patch_deployment_state.dart';
 /// 			PatchDeploymentId: pulumi.String("patch-deploy"),
 /// 			InstanceFilter: &osconfig.PatchDeploymentInstanceFilterArgs{
 /// 				Instances: pulumi.StringArray{
-/// 					foobar.ID().ToIDOutput().ToStringOutput(),
+/// 					foobar.ID(),
 /// 				},
 /// 			},
 /// 			PatchConfig: &osconfig.PatchDeploymentPatchConfigArgs{
@@ -862,7 +875,7 @@ import 'patch_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -870,12 +883,15 @@ import 'patch_deployment_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "myImage" {
-///   family  = "debian-11"
+/// data "gcp_compute_image" "myImage" {
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
 /// resource "gcp_compute_instance" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "patch-deploy-inst"
 ///   machine_type   = "e2-medium"
 ///   zone           = "us-central1-a"
@@ -883,7 +899,7 @@ import 'patch_deployment_state.dart';
 ///   tags           = ["foo", "bar"]
 ///   boot_disk = {
 ///     initialize_params = {
-///       image = data.gcp_compute_getimage.myImage.self_link
+///       image = data.gcp_compute_image.myImage.self_link
 ///     }
 ///   }
 ///   network_interfaces {
@@ -893,7 +909,10 @@ import 'patch_deployment_state.dart';
 ///     "foo" = "bar"
 ///   }
 /// }
-/// resource "gcp_osconfig_patchdeployment" "patch" {
+/// resource "gcp_osconfig_patch_deployment" "patch" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   patch_deployment_id = "patch-deploy"
 ///   instance_filter = {
 ///     instances = [gcp_compute_instance.foobar.id]
@@ -957,7 +976,7 @@ import 'patch_deployment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -1058,9 +1077,10 @@ import 'patch_deployment_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
+///
 ///
 /// ### Os Config Patch Deployment Full
 ///
@@ -1446,7 +1466,7 @@ import 'patch_deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/osconfig"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/osconfig"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1575,7 +1595,7 @@ import 'patch_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1583,11 +1603,14 @@ import 'patch_deployment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_osconfig_patchdeployment" "patch" {
+/// resource "gcp_osconfig_patch_deployment" "patch" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   patch_deployment_id = "patch-deploy"
 ///   instance_filter = {
 ///     group_labels = [{
-///       "labels" = {
+///       labels = {
 ///         "env" = "dev"
 ///         "app" = "web"
 ///       }
@@ -1986,7 +2009,7 @@ class PatchDeployment extends pulumi.CustomResource {
           'gcp:osconfig/patchDeployment:PatchDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

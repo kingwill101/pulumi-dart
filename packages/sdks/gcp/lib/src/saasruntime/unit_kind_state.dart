@@ -1,6 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'unit_kind_app_params.dart';
+import 'unit_kind_application_template_component.dart';
 import 'unit_kind_dependency.dart';
 import 'unit_kind_input_variable_mapping.dart';
 import 'unit_kind_output_variable_mapping.dart';
@@ -14,6 +16,14 @@ class UnitKindState {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>?>? annotations;
+  /// Parameters for creating an App Hub Application for the Units of this
+  /// UnitKind.
+  /// Structure is documented below.
+  final pulumi.Input<UnitKindAppParams?>? appParams;
+  /// Reference to a component and revision in a composite Application Design
+  /// Center ApplicationTemplate.
+  /// Structure is documented below.
+  final pulumi.Input<UnitKindApplicationTemplateComponent?>? applicationTemplateComponent;
   /// The timestamp when the resource was created.
   final pulumi.Input<String?>? createTime;
   /// A reference to the Release object to use as default for creating new units
@@ -85,6 +95,8 @@ class UnitKindState {
 
   /// Creates a new [UnitKindState].
   /// [annotations] Annotations is an unstructured key-value map stored with a resource that
+  /// [appParams] Parameters for creating an App Hub Application for the Units of this
+  /// [applicationTemplateComponent] Reference to a component and revision in a composite Application Design
   /// [createTime] The timestamp when the resource was created.
   /// [defaultRelease] A reference to the Release object to use as default for creating new units
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -105,6 +117,8 @@ class UnitKindState {
   /// [updateTime] The timestamp when the resource was last updated. Any
   const UnitKindState({
     this.annotations,
+    this.appParams,
+    this.applicationTemplateComponent,
     this.createTime,
     this.defaultRelease,
     this.deletionPolicy,
@@ -128,6 +142,8 @@ class UnitKindState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
+      'appParams': ?pulumi.Input.mapOptionalInputValue<UnitKindAppParams, Map<String, dynamic>>(appParams, (value) => value.toMap()),
+      'applicationTemplateComponent': ?pulumi.Input.mapOptionalInputValue<UnitKindApplicationTemplateComponent, Map<String, dynamic>>(applicationTemplateComponent, (value) => value.toMap()),
       'createTime': ?createTime,
       'defaultRelease': ?defaultRelease,
       'deletionPolicy': ?deletionPolicy,
@@ -152,6 +168,8 @@ class UnitKindState {
   factory UnitKindState.fromMap(Map<String, dynamic> map) {
     return UnitKindState(
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      appParams: (() { final guardedValue = map['appParams']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UnitKindAppParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      applicationTemplateComponent: (() { final guardedValue = map['applicationTemplateComponent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UnitKindApplicationTemplateComponent.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultRelease: (() { final guardedValue = map['defaultRelease']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -97,6 +97,18 @@ class GetCloudVmClustersCloudVmClusterProperty {
   /// Represents a time zone from the
   /// [IANA Time Zone Database](https://www.iana.org/time-zones).
   final pulumi.Input<List<GetCloudVmClustersCloudVmClusterPropertyTimeZone>> timeZones;
+  /// Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+  /// Possible values:
+  /// VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+  /// VM_BACKUP_STORAGE_TYPE_LOCAL
+  /// VM_BACKUP_STORAGE_TYPE_EXASCALE
+  final pulumi.Input<String> vmBackupStorageType;
+  /// Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+  /// Possible values:
+  /// VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+  /// VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+  /// VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+  final pulumi.Input<String> vmFileSystemStorageType;
 
   /// Creates a new [GetCloudVmClustersCloudVmClusterProperty].
   /// [clusterName] OCI Cluster name.
@@ -132,6 +144,8 @@ class GetCloudVmClustersCloudVmClusterProperty {
   /// [storageSizeGb] The storage allocation for the disk group, in gigabytes (GB).
   /// [systemVersion] Operating system version of the image.
   /// [timeZones] Represents a time zone from the
+  /// [vmBackupStorageType] Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+  /// [vmFileSystemStorageType] Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
   const GetCloudVmClustersCloudVmClusterProperty({
     required this.clusterName,
     required this.compartmentId,
@@ -166,6 +180,8 @@ class GetCloudVmClustersCloudVmClusterProperty {
     required this.storageSizeGb,
     required this.systemVersion,
     required this.timeZones,
+    required this.vmBackupStorageType,
+    required this.vmFileSystemStorageType,
   });
 
   Map<String, dynamic> toMap() {
@@ -203,6 +219,8 @@ class GetCloudVmClustersCloudVmClusterProperty {
       'storageSizeGb': storageSizeGb,
       'systemVersion': systemVersion,
       'timeZones': pulumi.Input.mapInputValue<List<GetCloudVmClustersCloudVmClusterPropertyTimeZone>, List<Map<String, dynamic>>>(timeZones, (value) => pulumi.Input.encodeList<GetCloudVmClustersCloudVmClusterPropertyTimeZone, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vmBackupStorageType': vmBackupStorageType,
+      'vmFileSystemStorageType': vmFileSystemStorageType,
     };
   }
 
@@ -210,9 +228,9 @@ class GetCloudVmClustersCloudVmClusterProperty {
     return GetCloudVmClustersCloudVmClusterProperty(
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
       compartmentId: pulumi.Input.fromValue(map['compartmentId'] as String),
-      cpuCoreCount: pulumi.Input.fromValue((map['cpuCoreCount'] as num).toInt()),
+      cpuCoreCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cpuCoreCount'])),
       dataStorageSizeTb: pulumi.Input.fromValue((map['dataStorageSizeTb'] as num).toDouble()),
-      dbNodeStorageSizeGb: pulumi.Input.fromValue((map['dbNodeStorageSizeGb'] as num).toInt()),
+      dbNodeStorageSizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dbNodeStorageSizeGb'])),
       dbServerOcids: pulumi.Input.fromValue((map['dbServerOcids'] as List).cast<String>()),
       diagnosticsDataCollectionOptions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCloudVmClustersCloudVmClusterPropertyDiagnosticsDataCollectionOption>(map['diagnosticsDataCollectionOptions']!, (value) => GetCloudVmClustersCloudVmClusterPropertyDiagnosticsDataCollectionOption.fromMap((value as Map).cast<String, dynamic>()))),
       diskRedundancy: pulumi.Input.fromValue(map['diskRedundancy'] as String),
@@ -223,24 +241,26 @@ class GetCloudVmClustersCloudVmClusterProperty {
       hostnamePrefix: pulumi.Input.fromValue(map['hostnamePrefix'] as String),
       licenseType: pulumi.Input.fromValue(map['licenseType'] as String),
       localBackupEnabled: pulumi.Input.fromValue(map['localBackupEnabled'] as bool),
-      memorySizeGb: pulumi.Input.fromValue((map['memorySizeGb'] as num).toInt()),
-      nodeCount: pulumi.Input.fromValue((map['nodeCount'] as num).toInt()),
+      memorySizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['memorySizeGb'])),
+      nodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nodeCount'])),
       ociUrl: pulumi.Input.fromValue(map['ociUrl'] as String),
       ocid: pulumi.Input.fromValue(map['ocid'] as String),
       ocpuCount: pulumi.Input.fromValue((map['ocpuCount'] as num).toDouble()),
       scanDns: pulumi.Input.fromValue(map['scanDns'] as String),
       scanDnsRecordId: pulumi.Input.fromValue(map['scanDnsRecordId'] as String),
       scanIpIds: pulumi.Input.fromValue((map['scanIpIds'] as List).cast<String>()),
-      scanListenerPortTcp: pulumi.Input.fromValue((map['scanListenerPortTcp'] as num).toInt()),
-      scanListenerPortTcpSsl: pulumi.Input.fromValue((map['scanListenerPortTcpSsl'] as num).toInt()),
+      scanListenerPortTcp: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['scanListenerPortTcp'])),
+      scanListenerPortTcpSsl: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['scanListenerPortTcpSsl'])),
       shape: pulumi.Input.fromValue(map['shape'] as String),
       sparseDiskgroupEnabled: pulumi.Input.fromValue(map['sparseDiskgroupEnabled'] as bool),
       sshPublicKeys: pulumi.Input.fromValue((map['sshPublicKeys'] as List).cast<String>()),
       state: pulumi.Input.fromValue(map['state'] as String),
       storageManagementType: pulumi.Input.fromValue(map['storageManagementType'] as String),
-      storageSizeGb: pulumi.Input.fromValue((map['storageSizeGb'] as num).toInt()),
+      storageSizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['storageSizeGb'])),
       systemVersion: pulumi.Input.fromValue(map['systemVersion'] as String),
       timeZones: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCloudVmClustersCloudVmClusterPropertyTimeZone>(map['timeZones']!, (value) => GetCloudVmClustersCloudVmClusterPropertyTimeZone.fromMap((value as Map).cast<String, dynamic>()))),
+      vmBackupStorageType: pulumi.Input.fromValue(map['vmBackupStorageType'] as String),
+      vmFileSystemStorageType: pulumi.Input.fromValue(map['vmFileSystemStorageType'] as String),
     );
   }
 }

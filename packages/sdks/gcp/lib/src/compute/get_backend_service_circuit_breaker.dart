@@ -54,11 +54,11 @@ class GetBackendServiceCircuitBreaker {
   factory GetBackendServiceCircuitBreaker.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceCircuitBreaker(
       connectTimeouts: pulumi.Input.fromValue(pulumi.Input.decodeList<GetBackendServiceCircuitBreakerConnectTimeout>(map['connectTimeouts']!, (value) => GetBackendServiceCircuitBreakerConnectTimeout.fromMap((value as Map).cast<String, dynamic>()))),
-      maxConnections: pulumi.Input.fromValue((map['maxConnections'] as num).toInt()),
-      maxPendingRequests: pulumi.Input.fromValue((map['maxPendingRequests'] as num).toInt()),
-      maxRequests: pulumi.Input.fromValue((map['maxRequests'] as num).toInt()),
-      maxRequestsPerConnection: pulumi.Input.fromValue((map['maxRequestsPerConnection'] as num).toInt()),
-      maxRetries: pulumi.Input.fromValue((map['maxRetries'] as num).toInt()),
+      maxConnections: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxConnections'])),
+      maxPendingRequests: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxPendingRequests'])),
+      maxRequests: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRequests'])),
+      maxRequestsPerConnection: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRequestsPerConnection'])),
+      maxRetries: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRetries'])),
     );
   }
 }

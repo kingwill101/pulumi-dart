@@ -36,9 +36,9 @@ class GetClusterNodeConfigBootDisk {
   factory GetClusterNodeConfigBootDisk.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeConfigBootDisk(
       diskType: pulumi.Input.fromValue(map['diskType'] as String),
-      provisionedIops: pulumi.Input.fromValue((map['provisionedIops'] as num).toInt()),
-      provisionedThroughput: pulumi.Input.fromValue((map['provisionedThroughput'] as num).toInt()),
-      sizeGb: pulumi.Input.fromValue((map['sizeGb'] as num).toInt()),
+      provisionedIops: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['provisionedIops'])),
+      provisionedThroughput: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['provisionedThroughput'])),
+      sizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sizeGb'])),
     );
   }
 }

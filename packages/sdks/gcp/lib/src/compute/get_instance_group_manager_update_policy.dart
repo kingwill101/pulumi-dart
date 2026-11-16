@@ -60,11 +60,11 @@ class GetInstanceGroupManagerUpdatePolicy {
 
   factory GetInstanceGroupManagerUpdatePolicy.fromMap(Map<String, dynamic> map) {
     return GetInstanceGroupManagerUpdatePolicy(
-      maxSurgeFixed: pulumi.Input.fromValue((map['maxSurgeFixed'] as num).toInt()),
-      maxSurgePercent: pulumi.Input.fromValue((map['maxSurgePercent'] as num).toInt()),
-      maxUnavailableFixed: pulumi.Input.fromValue((map['maxUnavailableFixed'] as num).toInt()),
-      maxUnavailablePercent: pulumi.Input.fromValue((map['maxUnavailablePercent'] as num).toInt()),
-      minReadySec: pulumi.Input.fromValue((map['minReadySec'] as num).toInt()),
+      maxSurgeFixed: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxSurgeFixed'])),
+      maxSurgePercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxSurgePercent'])),
+      maxUnavailableFixed: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxUnavailableFixed'])),
+      maxUnavailablePercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxUnavailablePercent'])),
+      minReadySec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minReadySec'])),
       minimalAction: pulumi.Input.fromValue(map['minimalAction'] as String),
       mostDisruptiveAllowedAction: pulumi.Input.fromValue(map['mostDisruptiveAllowedAction'] as String),
       replacementMethod: pulumi.Input.fromValue(map['replacementMethod'] as String),

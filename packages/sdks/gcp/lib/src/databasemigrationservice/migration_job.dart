@@ -18,6 +18,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// * How-to Guides
 /// * [Database Migration](https://cloud.google.com/database-migration/docs/)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Database Migration Service Migration Job Mysql To Mysql
@@ -54,7 +55,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// const sourceCp = new gcp.databasemigrationservice.ConnectionProfile("source_cp", {
 ///     location: "us-central1",
 ///     connectionProfileId: "source-cp",
-///     displayName: "source-cp_display",
+///     displayName: "source-cp-display",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -86,7 +87,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// const destinationCp = new gcp.databasemigrationservice.ConnectionProfile("destination_cp", {
 ///     location: "us-central1",
 ///     connectionProfileId: "destination-cp",
-///     displayName: "destination-cp_display",
+///     displayName: "destination-cp-display",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -100,7 +101,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// const mysqltomysql = new gcp.databasemigrationservice.MigrationJob("mysqltomysql", {
 ///     location: "us-central1",
 ///     migrationJobId: "my-migrationid",
-///     displayName: "my-migrationid_display",
+///     displayName: "my-migrationid-display",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -147,7 +148,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// source_cp = gcp.databasemigrationservice.ConnectionProfile("source_cp",
 ///     location="us-central1",
 ///     connection_profile_id="source-cp",
-///     display_name="source-cp_display",
+///     display_name="source-cp-display",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -176,7 +177,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// destination_cp = gcp.databasemigrationservice.ConnectionProfile("destination_cp",
 ///     location="us-central1",
 ///     connection_profile_id="destination-cp",
-///     display_name="destination-cp_display",
+///     display_name="destination-cp-display",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -188,7 +189,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// mysqltomysql = gcp.databasemigrationservice.MigrationJob("mysqltomysql",
 ///     location="us-central1",
 ///     migration_job_id="my-migrationid",
-///     display_name="my-migrationid_display",
+///     display_name="my-migrationid-display",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -260,7 +261,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     {
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "source-cp",
-///         DisplayName = "source-cp_display",
+///         DisplayName = "source-cp-display",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -304,7 +305,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     {
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "destination-cp",
-///         DisplayName = "destination-cp_display",
+///         DisplayName = "destination-cp-display",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -330,7 +331,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     {
 ///         Location = "us-central1",
 ///         MigrationJobId = "my-migrationid",
-///         DisplayName = "my-migrationid_display",
+///         DisplayName = "my-migrationid-display",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -366,10 +367,10 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -413,7 +414,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 		sourceCp, err := databasemigrationservice.NewConnectionProfile(ctx, "source_cp", &databasemigrationservice.ConnectionProfileArgs{
 /// 			Location:            pulumi.String("us-central1"),
 /// 			ConnectionProfileId: pulumi.String("source-cp"),
-/// 			DisplayName:         pulumi.String("source-cp_display"),
+/// 			DisplayName:         pulumi.String("source-cp-display"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -453,7 +454,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 		destinationCp, err := databasemigrationservice.NewConnectionProfile(ctx, "destination_cp", &databasemigrationservice.ConnectionProfileArgs{
 /// 			Location:            pulumi.String("us-central1"),
 /// 			ConnectionProfileId: pulumi.String("destination-cp"),
-/// 			DisplayName:         pulumi.String("destination-cp_display"),
+/// 			DisplayName:         pulumi.String("destination-cp-display"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -475,7 +476,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 		_, err = databasemigrationservice.NewMigrationJob(ctx, "mysqltomysql", &databasemigrationservice.MigrationJobArgs{
 /// 			Location:       pulumi.String("us-central1"),
 /// 			MigrationJobId: pulumi.String("my-migrationid"),
-/// 			DisplayName:    pulumi.String("my-migrationid_display"),
+/// 			DisplayName:    pulumi.String("my-migrationid-display"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -483,7 +484,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 				DumpParallelLevel: pulumi.String("MAX"),
 /// 			},
 /// 			VpcPeeringConnectivity: &databasemigrationservice.MigrationJobVpcPeeringConnectivityArgs{
-/// 				Vpc: _default.ID().ToIDOutput().ToStringOutput(),
+/// 				Vpc: _default.ID(),
 /// 			},
 /// 			DumpType: pulumi.String("LOGICAL"),
 /// 			DumpFlags: &databasemigrationservice.MigrationJobDumpFlagsArgs{
@@ -506,7 +507,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -514,10 +515,13 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "source_csql" {
+/// resource "gcp_sql_database_instance" "source_csql" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "source-csql"
 ///   database_version = "MYSQL_5_7"
 ///   settings = {
@@ -526,40 +530,52 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///   }
 ///   deletion_protection = false
 /// }
-/// resource "gcp_sql_sslcert" "source_sql_client_cert" {
-///   depends_on  = [gcp_sql_databaseinstance.source_csql]
+/// resource "gcp_sql_ssl_cert" "source_sql_client_cert" {
+///   depends_on = [gcp_sql_database_instance.source_csql]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   common_name = "cert"
-///   instance    = gcp_sql_databaseinstance.source_csql.name
+///   instance    = gcp_sql_database_instance.source_csql.name
 /// }
 /// resource "gcp_sql_user" "source_sqldb_user" {
-///   depends_on = [gcp_sql_sslcert.source_sql_client_cert]
-///   name       = "username"
-///   instance   = gcp_sql_databaseinstance.source_csql.name
-///   password   = "password"
+///   depends_on = [gcp_sql_ssl_cert.source_sql_client_cert]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = "username"
+///   instance = gcp_sql_database_instance.source_csql.name
+///   password = "password"
 /// }
-/// resource "gcp_databasemigrationservice_connectionprofile" "source_cp" {
-///   depends_on            = [gcp_sql_user.source_sqldb_user]
+/// resource "gcp_databasemigrationservice_connection_profile" "source_cp" {
+///   depends_on = [gcp_sql_user.source_sqldb_user]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "us-central1"
 ///   connection_profile_id = "source-cp"
-///   display_name          = "source-cp_display"
+///   display_name          = "source-cp-display"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
 ///   mysql = {
-///     host     = gcp_sql_databaseinstance.source_csql.ip_addresses[0].ip_address
+///     host     = gcp_sql_database_instance.source_csql.ip_addresses[0].ip_address
 ///     port     = 3306
 ///     username = gcp_sql_user.source_sqldb_user.name
 ///     password = gcp_sql_user.source_sqldb_user.password
 ///     ssl = {
-///       client_key         = gcp_sql_sslcert.source_sql_client_cert.private_key
-///       client_certificate = gcp_sql_sslcert.source_sql_client_cert.cert
-///       ca_certificate     = gcp_sql_sslcert.source_sql_client_cert.server_ca_cert
+///       client_key         = gcp_sql_ssl_cert.source_sql_client_cert.private_key
+///       client_certificate = gcp_sql_ssl_cert.source_sql_client_cert.cert
+///       ca_certificate     = gcp_sql_ssl_cert.source_sql_client_cert.server_ca_cert
 ///       type               = "SERVER_CLIENT"
 ///     }
 ///     cloud_sql_id = "source-csql"
 ///   }
 /// }
-/// resource "gcp_sql_databaseinstance" "destination_csql" {
+/// resource "gcp_sql_database_instance" "destination_csql" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "destination-csql"
 ///   database_version = "MYSQL_5_7"
 ///   settings = {
@@ -568,11 +584,14 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///   }
 ///   deletion_protection = false
 /// }
-/// resource "gcp_databasemigrationservice_connectionprofile" "destination_cp" {
-///   depends_on            = [gcp_sql_databaseinstance.destination_csql]
+/// resource "gcp_databasemigrationservice_connection_profile" "destination_cp" {
+///   depends_on = [gcp_sql_database_instance.destination_csql]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "us-central1"
 ///   connection_profile_id = "destination-cp"
-///   display_name          = "destination-cp_display"
+///   display_name          = "destination-cp-display"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -581,12 +600,18 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///   }
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "destination-csql"
 /// }
-/// resource "gcp_databasemigrationservice_migrationjob" "mysqltomysql" {
+/// resource "gcp_databasemigrationservice_migration_job" "mysqltomysql" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us-central1"
 ///   migration_job_id = "my-migrationid"
-///   display_name     = "my-migrationid_display"
+///   display_name     = "my-migrationid-display"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -599,12 +624,12 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///   dump_type = "LOGICAL"
 ///   dump_flags = {
 ///     dump_flags = [{
-///       "name"  = "max-allowed-packet"
-///       "value" = "1073741824"
+///       name  = "max-allowed-packet"
+///       value = "1073741824"
 ///     }]
 ///   }
-///   source      = gcp_databasemigrationservice_connectionprofile.source_cp.name
-///   destination = gcp_databasemigrationservice_connectionprofile.destination_cp.name
+///   source      = gcp_databasemigrationservice_connection_profile.source_cp.name
+///   destination = gcp_databasemigrationservice_connection_profile.destination_cp.name
 ///   type        = "CONTINUOUS"
 /// }
 /// ```
@@ -680,7 +705,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         var sourceCp = new ConnectionProfile("sourceCp", ConnectionProfileArgs.builder()
 ///             .location("us-central1")
 ///             .connectionProfileId("source-cp")
-///             .displayName("source-cp_display")
+///             .displayName("source-cp-display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .mysql(ConnectionProfileMysqlArgs.builder()
 ///                 .host(sourceCsql.ipAddresses().applyValue(_ipAddresses -> _ipAddresses.get(0).ipAddress()))
@@ -712,7 +737,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         var destinationCp = new ConnectionProfile("destinationCp", ConnectionProfileArgs.builder()
 ///             .location("us-central1")
 ///             .connectionProfileId("destination-cp")
-///             .displayName("destination-cp_display")
+///             .displayName("destination-cp-display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .mysql(ConnectionProfileMysqlArgs.builder()
 ///                 .cloudSqlId("destination-csql")
@@ -728,7 +753,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         var mysqltomysql = new MigrationJob("mysqltomysql", MigrationJobArgs.builder()
 ///             .location("us-central1")
 ///             .migrationJobId("my-migrationid")
-///             .displayName("my-migrationid_display")
+///             .displayName("my-migrationid-display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .performanceConfig(MigrationJobPerformanceConfigArgs.builder()
 ///                 .dumpParallelLevel("MAX")
@@ -788,7 +813,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     properties:
 ///       location: us-central1
 ///       connectionProfileId: source-cp
-///       displayName: source-cp_display
+///       displayName: source-cp-display
 ///       labels:
 ///         foo: bar
 ///       mysql:
@@ -821,7 +846,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     properties:
 ///       location: us-central1
 ///       connectionProfileId: destination-cp
-///       displayName: destination-cp_display
+///       displayName: destination-cp-display
 ///       labels:
 ///         foo: bar
 ///       mysql:
@@ -838,7 +863,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     properties:
 ///       location: us-central1
 ///       migrationJobId: my-migrationid
-///       displayName: my-migrationid_display
+///       displayName: my-migrationid-display
 ///       labels:
 ///         foo: bar
 ///       performanceConfig:
@@ -859,6 +884,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///       function: gcp:organizations:getProject
 ///       arguments: {}
 /// ```
+///
 ///
 /// ### Database Migration Service Migration Job Postgres To Postgres
 ///
@@ -894,7 +920,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// const sourceCp = new gcp.databasemigrationservice.ConnectionProfile("source_cp", {
 ///     location: "us-central1",
 ///     connectionProfileId: "source-cp",
-///     displayName: "source-cp_display",
+///     displayName: "source-cp-display",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -903,6 +929,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         port: 3306,
 ///         username: sourceSqldbUser.name,
 ///         password: sourceSqldbUser.password,
+///         database: "postgres",
 ///         ssl: {
 ///             clientKey: sourceSqlClientCert.privateKey,
 ///             clientCertificate: sourceSqlClientCert.cert,
@@ -926,7 +953,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// const destinationCp = new gcp.databasemigrationservice.ConnectionProfile("destination_cp", {
 ///     location: "us-central1",
 ///     connectionProfileId: "destination-cp",
-///     displayName: "destination-cp_display",
+///     displayName: "destination-cp-display",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -939,7 +966,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// const psqltopsql = new gcp.databasemigrationservice.MigrationJob("psqltopsql", {
 ///     location: "us-central1",
 ///     migrationJobId: "my-migrationid",
-///     displayName: "my-migrationid_display",
+///     displayName: "my-migrationid-display",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -974,7 +1001,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// source_cp = gcp.databasemigrationservice.ConnectionProfile("source_cp",
 ///     location="us-central1",
 ///     connection_profile_id="source-cp",
-///     display_name="source-cp_display",
+///     display_name="source-cp-display",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -983,6 +1010,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         "port": 3306,
 ///         "username": source_sqldb_user.name,
 ///         "password": source_sqldb_user.password,
+///         "database": "postgres",
 ///         "ssl": {
 ///             "client_key": source_sql_client_cert.private_key,
 ///             "client_certificate": source_sql_client_cert.cert,
@@ -1003,7 +1031,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// destination_cp = gcp.databasemigrationservice.ConnectionProfile("destination_cp",
 ///     location="us-central1",
 ///     connection_profile_id="destination-cp",
-///     display_name="destination-cp_display",
+///     display_name="destination-cp-display",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -1014,7 +1042,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// psqltopsql = gcp.databasemigrationservice.MigrationJob("psqltopsql",
 ///     location="us-central1",
 ///     migration_job_id="my-migrationid",
-///     display_name="my-migrationid_display",
+///     display_name="my-migrationid-display",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -1074,7 +1102,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     {
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "source-cp",
-///         DisplayName = "source-cp_display",
+///         DisplayName = "source-cp-display",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -1085,6 +1113,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///             Port = 3306,
 ///             Username = sourceSqldbUser.Name,
 ///             Password = sourceSqldbUser.Password,
+///             Database = "postgres",
 ///             Ssl = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfilePostgresqlSslArgs
 ///             {
 ///                 ClientKey = sourceSqlClientCert.PrivateKey,
@@ -1118,7 +1147,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     {
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "destination-cp",
-///         DisplayName = "destination-cp_display",
+///         DisplayName = "destination-cp-display",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -1139,7 +1168,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     {
 ///         Location = "us-central1",
 ///         MigrationJobId = "my-migrationid",
-///         DisplayName = "my-migrationid_display",
+///         DisplayName = "my-migrationid-display",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -1156,9 +1185,9 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1202,7 +1231,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 		sourceCp, err := databasemigrationservice.NewConnectionProfile(ctx, "source_cp", &databasemigrationservice.ConnectionProfileArgs{
 /// 			Location:            pulumi.String("us-central1"),
 /// 			ConnectionProfileId: pulumi.String("source-cp"),
-/// 			DisplayName:         pulumi.String("source-cp_display"),
+/// 			DisplayName:         pulumi.String("source-cp-display"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -1213,6 +1242,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 				Port:     pulumi.Int(3306),
 /// 				Username: sourceSqldbUser.Name,
 /// 				Password: sourceSqldbUser.Password,
+/// 				Database: pulumi.String("postgres"),
 /// 				Ssl: &databasemigrationservice.ConnectionProfilePostgresqlSslArgs{
 /// 					ClientKey:         sourceSqlClientCert.PrivateKey,
 /// 					ClientCertificate: sourceSqlClientCert.Cert,
@@ -1242,7 +1272,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 		destinationCp, err := databasemigrationservice.NewConnectionProfile(ctx, "destination_cp", &databasemigrationservice.ConnectionProfileArgs{
 /// 			Location:            pulumi.String("us-central1"),
 /// 			ConnectionProfileId: pulumi.String("destination-cp"),
-/// 			DisplayName:         pulumi.String("destination-cp_display"),
+/// 			DisplayName:         pulumi.String("destination-cp-display"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -1258,7 +1288,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 		_, err = databasemigrationservice.NewMigrationJob(ctx, "psqltopsql", &databasemigrationservice.MigrationJobArgs{
 /// 			Location:       pulumi.String("us-central1"),
 /// 			MigrationJobId: pulumi.String("my-migrationid"),
-/// 			DisplayName:    pulumi.String("my-migrationid_display"),
+/// 			DisplayName:    pulumi.String("my-migrationid-display"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -1275,7 +1305,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1283,10 +1313,13 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "source_csql" {
+/// resource "gcp_sql_database_instance" "source_csql" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "source-csql"
 ///   database_version = "POSTGRES_15"
 ///   settings = {
@@ -1295,40 +1328,53 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///   }
 ///   deletion_protection = false
 /// }
-/// resource "gcp_sql_sslcert" "source_sql_client_cert" {
-///   depends_on  = [gcp_sql_databaseinstance.source_csql]
+/// resource "gcp_sql_ssl_cert" "source_sql_client_cert" {
+///   depends_on = [gcp_sql_database_instance.source_csql]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   common_name = "cert"
-///   instance    = gcp_sql_databaseinstance.source_csql.name
+///   instance    = gcp_sql_database_instance.source_csql.name
 /// }
 /// resource "gcp_sql_user" "source_sqldb_user" {
-///   depends_on = [gcp_sql_sslcert.source_sql_client_cert]
-///   name       = "username"
-///   instance   = gcp_sql_databaseinstance.source_csql.name
-///   password   = "password"
+///   depends_on = [gcp_sql_ssl_cert.source_sql_client_cert]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = "username"
+///   instance = gcp_sql_database_instance.source_csql.name
+///   password = "password"
 /// }
-/// resource "gcp_databasemigrationservice_connectionprofile" "source_cp" {
-///   depends_on            = [gcp_sql_user.source_sqldb_user]
+/// resource "gcp_databasemigrationservice_connection_profile" "source_cp" {
+///   depends_on = [gcp_sql_user.source_sqldb_user]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "us-central1"
 ///   connection_profile_id = "source-cp"
-///   display_name          = "source-cp_display"
+///   display_name          = "source-cp-display"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
 ///   postgresql = {
-///     host     = gcp_sql_databaseinstance.source_csql.ip_addresses[0].ip_address
+///     host     = gcp_sql_database_instance.source_csql.ip_addresses[0].ip_address
 ///     port     = 3306
 ///     username = gcp_sql_user.source_sqldb_user.name
 ///     password = gcp_sql_user.source_sqldb_user.password
+///     database = "postgres"
 ///     ssl = {
-///       client_key         = gcp_sql_sslcert.source_sql_client_cert.private_key
-///       client_certificate = gcp_sql_sslcert.source_sql_client_cert.cert
-///       ca_certificate     = gcp_sql_sslcert.source_sql_client_cert.server_ca_cert
+///       client_key         = gcp_sql_ssl_cert.source_sql_client_cert.private_key
+///       client_certificate = gcp_sql_ssl_cert.source_sql_client_cert.cert
+///       ca_certificate     = gcp_sql_ssl_cert.source_sql_client_cert.server_ca_cert
 ///       type               = "SERVER_CLIENT"
 ///     }
 ///     cloud_sql_id = "source-csql"
 ///   }
 /// }
-/// resource "gcp_sql_databaseinstance" "destination_csql" {
+/// resource "gcp_sql_database_instance" "destination_csql" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "destination-csql"
 ///   database_version = "POSTGRES_15"
 ///   settings = {
@@ -1337,11 +1383,14 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///   }
 ///   deletion_protection = false
 /// }
-/// resource "gcp_databasemigrationservice_connectionprofile" "destination_cp" {
-///   depends_on            = [gcp_sql_databaseinstance.destination_csql]
+/// resource "gcp_databasemigrationservice_connection_profile" "destination_cp" {
+///   depends_on = [gcp_sql_database_instance.destination_csql]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "us-central1"
 ///   connection_profile_id = "destination-cp"
-///   display_name          = "destination-cp_display"
+///   display_name          = "destination-cp-display"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -1349,16 +1398,19 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     cloud_sql_id = "destination-csql"
 ///   }
 /// }
-/// resource "gcp_databasemigrationservice_migrationjob" "psqltopsql" {
+/// resource "gcp_databasemigrationservice_migration_job" "psqltopsql" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us-central1"
 ///   migration_job_id = "my-migrationid"
-///   display_name     = "my-migrationid_display"
+///   display_name     = "my-migrationid-display"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
 ///   static_ip_connectivity = {}
-///   source                 = gcp_databasemigrationservice_connectionprofile.source_cp.name
-///   destination            = gcp_databasemigrationservice_connectionprofile.destination_cp.name
+///   source                 = gcp_databasemigrationservice_connection_profile.source_cp.name
+///   destination            = gcp_databasemigrationservice_connection_profile.destination_cp.name
 ///   type                   = "CONTINUOUS"
 /// }
 /// ```
@@ -1429,13 +1481,14 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         var sourceCp = new ConnectionProfile("sourceCp", ConnectionProfileArgs.builder()
 ///             .location("us-central1")
 ///             .connectionProfileId("source-cp")
-///             .displayName("source-cp_display")
+///             .displayName("source-cp-display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .postgresql(ConnectionProfilePostgresqlArgs.builder()
 ///                 .host(sourceCsql.ipAddresses().applyValue(_ipAddresses -> _ipAddresses.get(0).ipAddress()))
 ///                 .port(3306)
 ///                 .username(sourceSqldbUser.name())
 ///                 .password(sourceSqldbUser.password())
+///                 .database("postgres")
 ///                 .ssl(ConnectionProfilePostgresqlSslArgs.builder()
 ///                     .clientKey(sourceSqlClientCert.privateKey())
 ///                     .clientCertificate(sourceSqlClientCert.cert())
@@ -1461,7 +1514,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         var destinationCp = new ConnectionProfile("destinationCp", ConnectionProfileArgs.builder()
 ///             .location("us-central1")
 ///             .connectionProfileId("destination-cp")
-///             .displayName("destination-cp_display")
+///             .displayName("destination-cp-display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .postgresql(ConnectionProfilePostgresqlArgs.builder()
 ///                 .cloudSqlId("destination-csql")
@@ -1473,7 +1526,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         var psqltopsql = new MigrationJob("psqltopsql", MigrationJobArgs.builder()
 ///             .location("us-central1")
 ///             .migrationJobId("my-migrationid")
-///             .displayName("my-migrationid_display")
+///             .displayName("my-migrationid-display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .staticIpConnectivity(MigrationJobStaticIpConnectivityArgs.builder()
 ///                 .build())
@@ -1522,7 +1575,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     properties:
 ///       location: us-central1
 ///       connectionProfileId: source-cp
-///       displayName: source-cp_display
+///       displayName: source-cp-display
 ///       labels:
 ///         foo: bar
 ///       postgresql:
@@ -1530,6 +1583,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         port: 3306
 ///         username: ${sourceSqldbUser.name}
 ///         password: ${sourceSqldbUser.password}
+///         database: postgres
 ///         ssl:
 ///           clientKey: ${sourceSqlClientCert.privateKey}
 ///           clientCertificate: ${sourceSqlClientCert.cert}
@@ -1555,7 +1609,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     properties:
 ///       location: us-central1
 ///       connectionProfileId: destination-cp
-///       displayName: destination-cp_display
+///       displayName: destination-cp-display
 ///       labels:
 ///         foo: bar
 ///       postgresql:
@@ -1568,7 +1622,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     properties:
 ///       location: us-central1
 ///       migrationJobId: my-migrationid
-///       displayName: my-migrationid_display
+///       displayName: my-migrationid-display
 ///       labels:
 ///         foo: bar
 ///       staticIpConnectivity: {}
@@ -1581,6 +1635,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///       function: gcp:organizations:getProject
 ///       arguments: {}
 /// ```
+///
 ///
 /// ### Database Migration Service Migration Job Postgres To Postgres Objects
 ///
@@ -1616,7 +1671,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// const sourceCp = new gcp.databasemigrationservice.ConnectionProfile("source_cp", {
 ///     location: "us-central1",
 ///     connectionProfileId: "source-cp",
-///     displayName: "source-cp_display",
+///     displayName: "source-cp-display",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -1625,6 +1680,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         port: 3306,
 ///         username: sourceSqldbUser.name,
 ///         password: sourceSqldbUser.password,
+///         database: "postgres",
 ///         ssl: {
 ///             clientKey: sourceSqlClientCert.privateKey,
 ///             clientCertificate: sourceSqlClientCert.cert,
@@ -1648,7 +1704,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// const destinationCp = new gcp.databasemigrationservice.ConnectionProfile("destination_cp", {
 ///     location: "us-central1",
 ///     connectionProfileId: "destination-cp",
-///     displayName: "destination-cp_display",
+///     displayName: "destination-cp-display",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -1661,7 +1717,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// const psqltopsqlobjects = new gcp.databasemigrationservice.MigrationJob("psqltopsqlobjects", {
 ///     location: "us-central1",
 ///     migrationJobId: "my-migrationid",
-///     displayName: "my-migrationid_display",
+///     displayName: "my-migrationid-display",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -1681,10 +1737,8 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///                 },
 ///                 {
 ///                     objectIdentifier: {
-///                         type: "TABLE",
+///                         type: "DATABASE",
 ///                         database: "my_other_database",
-///                         schema: "public",
-///                         table: "users",
 ///                     },
 ///                 },
 ///             ],
@@ -1717,7 +1771,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// source_cp = gcp.databasemigrationservice.ConnectionProfile("source_cp",
 ///     location="us-central1",
 ///     connection_profile_id="source-cp",
-///     display_name="source-cp_display",
+///     display_name="source-cp-display",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -1726,6 +1780,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         "port": 3306,
 ///         "username": source_sqldb_user.name,
 ///         "password": source_sqldb_user.password,
+///         "database": "postgres",
 ///         "ssl": {
 ///             "client_key": source_sql_client_cert.private_key,
 ///             "client_certificate": source_sql_client_cert.cert,
@@ -1746,7 +1801,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// destination_cp = gcp.databasemigrationservice.ConnectionProfile("destination_cp",
 ///     location="us-central1",
 ///     connection_profile_id="destination-cp",
-///     display_name="destination-cp_display",
+///     display_name="destination-cp-display",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -1757,7 +1812,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// psqltopsqlobjects = gcp.databasemigrationservice.MigrationJob("psqltopsqlobjects",
 ///     location="us-central1",
 ///     migration_job_id="my-migrationid",
-///     display_name="my-migrationid_display",
+///     display_name="my-migrationid-display",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -1777,10 +1832,8 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///                 },
 ///                 {
 ///                     "object_identifier": {
-///                         "type": "TABLE",
+///                         "type": "DATABASE",
 ///                         "database": "my_other_database",
-///                         "schema": "public",
-///                         "table": "users",
 ///                     },
 ///                 },
 ///             ],
@@ -1838,7 +1891,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     {
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "source-cp",
-///         DisplayName = "source-cp_display",
+///         DisplayName = "source-cp-display",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -1849,6 +1902,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///             Port = 3306,
 ///             Username = sourceSqldbUser.Name,
 ///             Password = sourceSqldbUser.Password,
+///             Database = "postgres",
 ///             Ssl = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfilePostgresqlSslArgs
 ///             {
 ///                 ClientKey = sourceSqlClientCert.PrivateKey,
@@ -1882,7 +1936,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     {
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "destination-cp",
-///         DisplayName = "destination-cp_display",
+///         DisplayName = "destination-cp-display",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -1903,7 +1957,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     {
 ///         Location = "us-central1",
 ///         MigrationJobId = "my-migrationid",
-///         DisplayName = "my-migrationid_display",
+///         DisplayName = "my-migrationid-display",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -1931,10 +1985,8 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///                     {
 ///                         ObjectIdentifier = new Gcp.DatabaseMigrationService.Inputs.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs
 ///                         {
-///                             Type = "TABLE",
+///                             Type = "DATABASE",
 ///                             Database = "my_other_database",
-///                             Schema = "public",
-///                             Table = "users",
 ///                         },
 ///                     },
 ///                 },
@@ -1948,9 +2000,9 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1994,7 +2046,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 		sourceCp, err := databasemigrationservice.NewConnectionProfile(ctx, "source_cp", &databasemigrationservice.ConnectionProfileArgs{
 /// 			Location:            pulumi.String("us-central1"),
 /// 			ConnectionProfileId: pulumi.String("source-cp"),
-/// 			DisplayName:         pulumi.String("source-cp_display"),
+/// 			DisplayName:         pulumi.String("source-cp-display"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -2005,6 +2057,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 				Port:     pulumi.Int(3306),
 /// 				Username: sourceSqldbUser.Name,
 /// 				Password: sourceSqldbUser.Password,
+/// 				Database: pulumi.String("postgres"),
 /// 				Ssl: &databasemigrationservice.ConnectionProfilePostgresqlSslArgs{
 /// 					ClientKey:         sourceSqlClientCert.PrivateKey,
 /// 					ClientCertificate: sourceSqlClientCert.Cert,
@@ -2034,7 +2087,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 		destinationCp, err := databasemigrationservice.NewConnectionProfile(ctx, "destination_cp", &databasemigrationservice.ConnectionProfileArgs{
 /// 			Location:            pulumi.String("us-central1"),
 /// 			ConnectionProfileId: pulumi.String("destination-cp"),
-/// 			DisplayName:         pulumi.String("destination-cp_display"),
+/// 			DisplayName:         pulumi.String("destination-cp-display"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -2050,7 +2103,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 		_, err = databasemigrationservice.NewMigrationJob(ctx, "psqltopsqlobjects", &databasemigrationservice.MigrationJobArgs{
 /// 			Location:       pulumi.String("us-central1"),
 /// 			MigrationJobId: pulumi.String("my-migrationid"),
-/// 			DisplayName:    pulumi.String("my-migrationid_display"),
+/// 			DisplayName:    pulumi.String("my-migrationid-display"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -2070,10 +2123,8 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 						},
 /// 						&databasemigrationservice.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs{
 /// 							ObjectIdentifier: &databasemigrationservice.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs{
-/// 								Type:     pulumi.String("TABLE"),
+/// 								Type:     pulumi.String("DATABASE"),
 /// 								Database: pulumi.String("my_other_database"),
-/// 								Schema:   pulumi.String("public"),
-/// 								Table:    pulumi.String("users"),
 /// 							},
 /// 						},
 /// 					},
@@ -2088,7 +2139,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2096,10 +2147,13 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "source_csql" {
+/// resource "gcp_sql_database_instance" "source_csql" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "source-csql"
 ///   database_version = "POSTGRES_15"
 ///   settings = {
@@ -2108,40 +2162,53 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///   }
 ///   deletion_protection = false
 /// }
-/// resource "gcp_sql_sslcert" "source_sql_client_cert" {
-///   depends_on  = [gcp_sql_databaseinstance.source_csql]
+/// resource "gcp_sql_ssl_cert" "source_sql_client_cert" {
+///   depends_on = [gcp_sql_database_instance.source_csql]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   common_name = "cert"
-///   instance    = gcp_sql_databaseinstance.source_csql.name
+///   instance    = gcp_sql_database_instance.source_csql.name
 /// }
 /// resource "gcp_sql_user" "source_sqldb_user" {
-///   depends_on = [gcp_sql_sslcert.source_sql_client_cert]
-///   name       = "username"
-///   instance   = gcp_sql_databaseinstance.source_csql.name
-///   password   = "password"
+///   depends_on = [gcp_sql_ssl_cert.source_sql_client_cert]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = "username"
+///   instance = gcp_sql_database_instance.source_csql.name
+///   password = "password"
 /// }
-/// resource "gcp_databasemigrationservice_connectionprofile" "source_cp" {
-///   depends_on            = [gcp_sql_user.source_sqldb_user]
+/// resource "gcp_databasemigrationservice_connection_profile" "source_cp" {
+///   depends_on = [gcp_sql_user.source_sqldb_user]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "us-central1"
 ///   connection_profile_id = "source-cp"
-///   display_name          = "source-cp_display"
+///   display_name          = "source-cp-display"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
 ///   postgresql = {
-///     host     = gcp_sql_databaseinstance.source_csql.ip_addresses[0].ip_address
+///     host     = gcp_sql_database_instance.source_csql.ip_addresses[0].ip_address
 ///     port     = 3306
 ///     username = gcp_sql_user.source_sqldb_user.name
 ///     password = gcp_sql_user.source_sqldb_user.password
+///     database = "postgres"
 ///     ssl = {
-///       client_key         = gcp_sql_sslcert.source_sql_client_cert.private_key
-///       client_certificate = gcp_sql_sslcert.source_sql_client_cert.cert
-///       ca_certificate     = gcp_sql_sslcert.source_sql_client_cert.server_ca_cert
+///       client_key         = gcp_sql_ssl_cert.source_sql_client_cert.private_key
+///       client_certificate = gcp_sql_ssl_cert.source_sql_client_cert.cert
+///       ca_certificate     = gcp_sql_ssl_cert.source_sql_client_cert.server_ca_cert
 ///       type               = "SERVER_CLIENT"
 ///     }
 ///     cloud_sql_id = "source-csql"
 ///   }
 /// }
-/// resource "gcp_sql_databaseinstance" "destination_csql" {
+/// resource "gcp_sql_database_instance" "destination_csql" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "destination-csql"
 ///   database_version = "POSTGRES_15"
 ///   settings = {
@@ -2150,11 +2217,14 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///   }
 ///   deletion_protection = false
 /// }
-/// resource "gcp_databasemigrationservice_connectionprofile" "destination_cp" {
-///   depends_on            = [gcp_sql_databaseinstance.destination_csql]
+/// resource "gcp_databasemigrationservice_connection_profile" "destination_cp" {
+///   depends_on = [gcp_sql_database_instance.destination_csql]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "us-central1"
 ///   connection_profile_id = "destination-cp"
-///   display_name          = "destination-cp_display"
+///   display_name          = "destination-cp-display"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -2162,31 +2232,32 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     cloud_sql_id = "destination-csql"
 ///   }
 /// }
-/// resource "gcp_databasemigrationservice_migrationjob" "psqltopsqlobjects" {
+/// resource "gcp_databasemigrationservice_migration_job" "psqltopsqlobjects" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us-central1"
 ///   migration_job_id = "my-migrationid"
-///   display_name     = "my-migrationid_display"
+///   display_name     = "my-migrationid-display"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
 ///   static_ip_connectivity = {}
-///   source                 = gcp_databasemigrationservice_connectionprofile.source_cp.name
-///   destination            = gcp_databasemigrationservice_connectionprofile.destination_cp.name
+///   source                 = gcp_databasemigrationservice_connection_profile.source_cp.name
+///   destination            = gcp_databasemigrationservice_connection_profile.destination_cp.name
 ///   type                   = "CONTINUOUS"
 ///   objects_config = {
 ///     source_objects_config = {
 ///       objects_selection_type = "SPECIFIED_OBJECTS"
 ///       object_configs = [{
-///         "objectIdentifier" = {
-///           "type"     = "DATABASE"
-///           "database" = "my_database"
+///         object_identifier = {
+///           type     = "DATABASE"
+///           database = "my_database"
 ///         }
 ///         }, {
-///         "objectIdentifier" = {
-///           "type"     = "TABLE"
-///           "database" = "my_other_database"
-///           "schema"   = "public"
-///           "table"    = "users"
+///         object_identifier = {
+///           type     = "DATABASE"
+///           database = "my_other_database"
 ///         }
 ///       }]
 ///     }
@@ -2264,13 +2335,14 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         var sourceCp = new ConnectionProfile("sourceCp", ConnectionProfileArgs.builder()
 ///             .location("us-central1")
 ///             .connectionProfileId("source-cp")
-///             .displayName("source-cp_display")
+///             .displayName("source-cp-display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .postgresql(ConnectionProfilePostgresqlArgs.builder()
 ///                 .host(sourceCsql.ipAddresses().applyValue(_ipAddresses -> _ipAddresses.get(0).ipAddress()))
 ///                 .port(3306)
 ///                 .username(sourceSqldbUser.name())
 ///                 .password(sourceSqldbUser.password())
+///                 .database("postgres")
 ///                 .ssl(ConnectionProfilePostgresqlSslArgs.builder()
 ///                     .clientKey(sourceSqlClientCert.privateKey())
 ///                     .clientCertificate(sourceSqlClientCert.cert())
@@ -2296,7 +2368,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         var destinationCp = new ConnectionProfile("destinationCp", ConnectionProfileArgs.builder()
 ///             .location("us-central1")
 ///             .connectionProfileId("destination-cp")
-///             .displayName("destination-cp_display")
+///             .displayName("destination-cp-display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .postgresql(ConnectionProfilePostgresqlArgs.builder()
 ///                 .cloudSqlId("destination-csql")
@@ -2308,7 +2380,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         var psqltopsqlobjects = new MigrationJob("psqltopsqlobjects", MigrationJobArgs.builder()
 ///             .location("us-central1")
 ///             .migrationJobId("my-migrationid")
-///             .displayName("my-migrationid_display")
+///             .displayName("my-migrationid-display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .staticIpConnectivity(MigrationJobStaticIpConnectivityArgs.builder()
 ///                 .build())
@@ -2327,10 +2399,8 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///                             .build(),
 ///                         MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs.builder()
 ///                             .objectIdentifier(MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs.builder()
-///                                 .type("TABLE")
+///                                 .type("DATABASE")
 ///                                 .database("my_other_database")
-///                                 .schema("public")
-///                                 .table("users")
 ///                                 .build())
 ///                             .build())
 ///                     .build())
@@ -2377,7 +2447,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     properties:
 ///       location: us-central1
 ///       connectionProfileId: source-cp
-///       displayName: source-cp_display
+///       displayName: source-cp-display
 ///       labels:
 ///         foo: bar
 ///       postgresql:
@@ -2385,6 +2455,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         port: 3306
 ///         username: ${sourceSqldbUser.name}
 ///         password: ${sourceSqldbUser.password}
+///         database: postgres
 ///         ssl:
 ///           clientKey: ${sourceSqlClientCert.privateKey}
 ///           clientCertificate: ${sourceSqlClientCert.cert}
@@ -2410,7 +2481,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     properties:
 ///       location: us-central1
 ///       connectionProfileId: destination-cp
-///       displayName: destination-cp_display
+///       displayName: destination-cp-display
 ///       labels:
 ///         foo: bar
 ///       postgresql:
@@ -2423,7 +2494,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     properties:
 ///       location: us-central1
 ///       migrationJobId: my-migrationid
-///       displayName: my-migrationid_display
+///       displayName: my-migrationid-display
 ///       labels:
 ///         foo: bar
 ///       staticIpConnectivity: {}
@@ -2438,16 +2509,15 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///                 type: DATABASE
 ///                 database: my_database
 ///             - objectIdentifier:
-///                 type: TABLE
+///                 type: DATABASE
 ///                 database: my_other_database
-///                 schema: public
-///                 table: users
 /// variables:
 ///   project:
 ///     fn::invoke:
 ///       function: gcp:organizations:getProject
 ///       arguments: {}
 /// ```
+///
 ///
 /// ### Database Migration Service Migration Job Postgres To Alloydb
 ///
@@ -2483,7 +2553,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// const sourceCp = new gcp.databasemigrationservice.ConnectionProfile("source_cp", {
 ///     location: "us-central1",
 ///     connectionProfileId: "source-cp",
-///     displayName: "source-cp_display",
+///     displayName: "source-cp-display",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -2492,6 +2562,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         port: 3306,
 ///         username: sourceSqldbUser.name,
 ///         password: sourceSqldbUser.password,
+///         database: "postgres",
 ///         ssl: {
 ///             clientKey: sourceSqlClientCert.privateKey,
 ///             clientCertificate: sourceSqlClientCert.cert,
@@ -2503,12 +2574,14 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// }, {
 ///     dependsOn: [sourceSqldbUser],
 /// });
-/// const _default = new gcp.compute.Network("default", {name: "destination-alloydb"});
+/// const _default = gcp.compute.getNetwork({
+///     name: "destination-alloydb",
+/// });
 /// const destinationAlloydb = new gcp.alloydb.Cluster("destination_alloydb", {
 ///     clusterId: "destination-alloydb",
 ///     location: "us-central1",
 ///     networkConfig: {
-///         network: _default.id,
+///         network: _default.then(_default => _default.id),
 ///     },
 ///     databaseVersion: "POSTGRES_15",
 ///     initialUser: {
@@ -2517,29 +2590,15 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     },
 ///     deletionProtection: false,
 /// });
-/// const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
-///     name: "destination-alloydb",
-///     addressType: "INTERNAL",
-///     purpose: "VPC_PEERING",
-///     prefixLength: 16,
-///     network: _default.id,
-/// });
-/// const vpcConnection = new gcp.servicenetworking.Connection("vpc_connection", {
-///     network: _default.id,
-///     service: "servicenetworking.googleapis.com",
-///     reservedPeeringRanges: [privateIpAlloc.name],
-/// });
 /// const destinationAlloydbPrimary = new gcp.alloydb.Instance("destination_alloydb_primary", {
 ///     cluster: destinationAlloydb.name,
 ///     instanceId: "destination-alloydb-primary",
 ///     instanceType: "PRIMARY",
-/// }, {
-///     dependsOn: [vpcConnection],
 /// });
 /// const destinationCp = new gcp.databasemigrationservice.ConnectionProfile("destination_cp", {
 ///     location: "us-central1",
 ///     connectionProfileId: "destination-cp",
-///     displayName: "destination-cp_display",
+///     displayName: "destination-cp-display",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -2555,7 +2614,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// const psqltoalloydb = new gcp.databasemigrationservice.MigrationJob("psqltoalloydb", {
 ///     location: "us-central1",
 ///     migrationJobId: "my-migrationid",
-///     displayName: "my-migrationid_display",
+///     displayName: "my-migrationid-display",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -2590,7 +2649,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// source_cp = gcp.databasemigrationservice.ConnectionProfile("source_cp",
 ///     location="us-central1",
 ///     connection_profile_id="source-cp",
-///     display_name="source-cp_display",
+///     display_name="source-cp-display",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -2599,6 +2658,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         "port": 3306,
 ///         "username": source_sqldb_user.name,
 ///         "password": source_sqldb_user.password,
+///         "database": "postgres",
 ///         "ssl": {
 ///             "client_key": source_sql_client_cert.private_key,
 ///             "client_certificate": source_sql_client_cert.cert,
@@ -2608,7 +2668,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         "cloud_sql_id": "source-csql",
 ///     },
 ///     opts = pulumi.ResourceOptions(depends_on=[source_sqldb_user]))
-/// default = gcp.compute.Network("default", name="destination-alloydb")
+/// default = gcp.compute.get_network(name="destination-alloydb")
 /// destination_alloydb = gcp.alloydb.Cluster("destination_alloydb",
 ///     cluster_id="destination-alloydb",
 ///     location="us-central1",
@@ -2621,25 +2681,14 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         "password": "destination-alloydb",
 ///     },
 ///     deletion_protection=False)
-/// private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
-///     name="destination-alloydb",
-///     address_type="INTERNAL",
-///     purpose="VPC_PEERING",
-///     prefix_length=16,
-///     network=default.id)
-/// vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
-///     network=default.id,
-///     service="servicenetworking.googleapis.com",
-///     reserved_peering_ranges=[private_ip_alloc.name])
 /// destination_alloydb_primary = gcp.alloydb.Instance("destination_alloydb_primary",
 ///     cluster=destination_alloydb.name,
 ///     instance_id="destination-alloydb-primary",
-///     instance_type="PRIMARY",
-///     opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
+///     instance_type="PRIMARY")
 /// destination_cp = gcp.databasemigrationservice.ConnectionProfile("destination_cp",
 ///     location="us-central1",
 ///     connection_profile_id="destination-cp",
-///     display_name="destination-cp_display",
+///     display_name="destination-cp-display",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -2653,7 +2702,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// psqltoalloydb = gcp.databasemigrationservice.MigrationJob("psqltoalloydb",
 ///     location="us-central1",
 ///     migration_job_id="my-migrationid",
-///     display_name="my-migrationid_display",
+///     display_name="my-migrationid-display",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -2713,7 +2762,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     {
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "source-cp",
-///         DisplayName = "source-cp_display",
+///         DisplayName = "source-cp-display",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -2724,6 +2773,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///             Port = 3306,
 ///             Username = sourceSqldbUser.Name,
 ///             Password = sourceSqldbUser.Password,
+///             Database = "postgres",
 ///             Ssl = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfilePostgresqlSslArgs
 ///             {
 ///                 ClientKey = sourceSqlClientCert.PrivateKey,
@@ -2741,7 +2791,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         },
 ///     });
 ///
-///     var @default = new Gcp.Compute.Network("default", new()
+///     var @default = Gcp.Compute.GetNetwork.Invoke(new()
 ///     {
 ///         Name = "destination-alloydb",
 ///     });
@@ -2752,7 +2802,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         Location = "us-central1",
 ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
 ///         {
-///             Network = @default.Id,
+///             Network = @default.Apply(@default => @default.Apply(getNetworkResult => getNetworkResult.Id)),
 ///         },
 ///         DatabaseVersion = "POSTGRES_15",
 ///         InitialUser = new Gcp.Alloydb.Inputs.ClusterInitialUserArgs
@@ -2763,43 +2813,18 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         DeletionProtection = false,
 ///     });
 ///
-///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
-///     {
-///         Name = "destination-alloydb",
-///         AddressType = "INTERNAL",
-///         Purpose = "VPC_PEERING",
-///         PrefixLength = 16,
-///         Network = @default.Id,
-///     });
-///
-///     var vpcConnection = new Gcp.ServiceNetworking.Connection("vpc_connection", new()
-///     {
-///         Network = @default.Id,
-///         Service = "servicenetworking.googleapis.com",
-///         ReservedPeeringRanges = new[]
-///         {
-///             privateIpAlloc.Name,
-///         },
-///     });
-///
 ///     var destinationAlloydbPrimary = new Gcp.Alloydb.Instance("destination_alloydb_primary", new()
 ///     {
 ///         Cluster = destinationAlloydb.Name,
 ///         InstanceId = "destination-alloydb-primary",
 ///         InstanceType = "PRIMARY",
-///     }, new CustomResourceOptions
-///     {
-///         DependsOn =
-///         {
-///             vpcConnection,
-///         },
 ///     });
 ///
 ///     var destinationCp = new Gcp.DatabaseMigrationService.ConnectionProfile("destination_cp", new()
 ///     {
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "destination-cp",
-///         DisplayName = "destination-cp_display",
+///         DisplayName = "destination-cp-display",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -2821,7 +2846,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     {
 ///         Location = "us-central1",
 ///         MigrationJobId = "my-migrationid",
-///         DisplayName = "my-migrationid_display",
+///         DisplayName = "my-migrationid-display",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -2838,12 +2863,11 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/alloydb"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/alloydb"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2887,7 +2911,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 		sourceCp, err := databasemigrationservice.NewConnectionProfile(ctx, "source_cp", &databasemigrationservice.ConnectionProfileArgs{
 /// 			Location:            pulumi.String("us-central1"),
 /// 			ConnectionProfileId: pulumi.String("source-cp"),
-/// 			DisplayName:         pulumi.String("source-cp_display"),
+/// 			DisplayName:         pulumi.String("source-cp-display"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -2898,6 +2922,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 				Port:     pulumi.Int(3306),
 /// 				Username: sourceSqldbUser.Name,
 /// 				Password: sourceSqldbUser.Password,
+/// 				Database: pulumi.String("postgres"),
 /// 				Ssl: &databasemigrationservice.ConnectionProfilePostgresqlSslArgs{
 /// 					ClientKey:         sourceSqlClientCert.PrivateKey,
 /// 					ClientCertificate: sourceSqlClientCert.Cert,
@@ -2912,9 +2937,9 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-/// 			Name: pulumi.String("destination-alloydb"),
-/// 		})
+/// 		_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+/// 			Name: pulumi.StringRef("destination-alloydb"),
+/// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -2922,7 +2947,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 			ClusterId: pulumi.String("destination-alloydb"),
 /// 			Location:  pulumi.String("us-central1"),
 /// 			NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-/// 				Network: _default.ID().ToIDOutput().ToStringOutput(),
+/// 				Network: pulumi.String(_default.Id),
 /// 			},
 /// 			DatabaseVersion: pulumi.String("POSTGRES_15"),
 /// 			InitialUser: &alloydb.ClusterInitialUserArgs{
@@ -2934,40 +2959,18 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		privateIpAlloc, err := compute.NewGlobalAddress(ctx, "private_ip_alloc", &compute.GlobalAddressArgs{
-/// 			Name:         pulumi.String("destination-alloydb"),
-/// 			AddressType:  pulumi.String("INTERNAL"),
-/// 			Purpose:      pulumi.String("VPC_PEERING"),
-/// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      _default.ID().ToIDOutput().ToStringOutput(),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: _default.ID().ToIDOutput().ToStringOutput(),
-/// 			Service: pulumi.String("servicenetworking.googleapis.com"),
-/// 			ReservedPeeringRanges: pulumi.StringArray{
-/// 				privateIpAlloc.Name,
-/// 			},
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
 /// 		destinationAlloydbPrimary, err := alloydb.NewInstance(ctx, "destination_alloydb_primary", &alloydb.InstanceArgs{
 /// 			Cluster:      destinationAlloydb.Name,
 /// 			InstanceId:   pulumi.String("destination-alloydb-primary"),
 /// 			InstanceType: pulumi.String("PRIMARY"),
-/// 		}, pulumi.DependsOn([]pulumi.Resource{
-/// 			vpcConnection,
-/// 		}))
+/// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		destinationCp, err := databasemigrationservice.NewConnectionProfile(ctx, "destination_cp", &databasemigrationservice.ConnectionProfileArgs{
 /// 			Location:            pulumi.String("us-central1"),
 /// 			ConnectionProfileId: pulumi.String("destination-cp"),
-/// 			DisplayName:         pulumi.String("destination-cp_display"),
+/// 			DisplayName:         pulumi.String("destination-cp-display"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -2984,7 +2987,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 		_, err = databasemigrationservice.NewMigrationJob(ctx, "psqltoalloydb", &databasemigrationservice.MigrationJobArgs{
 /// 			Location:       pulumi.String("us-central1"),
 /// 			MigrationJobId: pulumi.String("my-migrationid"),
-/// 			DisplayName:    pulumi.String("my-migrationid_display"),
+/// 			DisplayName:    pulumi.String("my-migrationid-display"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -3001,7 +3004,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3009,10 +3012,16 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
+/// }
+/// data "gcp_compute_network" "default" {
+///   name = "destination-alloydb"
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "source_csql" {
+/// resource "gcp_sql_database_instance" "source_csql" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "source-csql"
 ///   database_version = "POSTGRES_15"
 ///   settings = {
@@ -3021,44 +3030,57 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///   }
 ///   deletion_protection = false
 /// }
-/// resource "gcp_sql_sslcert" "source_sql_client_cert" {
-///   depends_on  = [gcp_sql_databaseinstance.source_csql]
+/// resource "gcp_sql_ssl_cert" "source_sql_client_cert" {
+///   depends_on = [gcp_sql_database_instance.source_csql]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   common_name = "cert"
-///   instance    = gcp_sql_databaseinstance.source_csql.name
+///   instance    = gcp_sql_database_instance.source_csql.name
 /// }
 /// resource "gcp_sql_user" "source_sqldb_user" {
-///   depends_on = [gcp_sql_sslcert.source_sql_client_cert]
-///   name       = "username"
-///   instance   = gcp_sql_databaseinstance.source_csql.name
-///   password   = "password"
+///   depends_on = [gcp_sql_ssl_cert.source_sql_client_cert]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = "username"
+///   instance = gcp_sql_database_instance.source_csql.name
+///   password = "password"
 /// }
-/// resource "gcp_databasemigrationservice_connectionprofile" "source_cp" {
-///   depends_on            = [gcp_sql_user.source_sqldb_user]
+/// resource "gcp_databasemigrationservice_connection_profile" "source_cp" {
+///   depends_on = [gcp_sql_user.source_sqldb_user]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "us-central1"
 ///   connection_profile_id = "source-cp"
-///   display_name          = "source-cp_display"
+///   display_name          = "source-cp-display"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
 ///   postgresql = {
-///     host     = gcp_sql_databaseinstance.source_csql.ip_addresses[0].ip_address
+///     host     = gcp_sql_database_instance.source_csql.ip_addresses[0].ip_address
 ///     port     = 3306
 ///     username = gcp_sql_user.source_sqldb_user.name
 ///     password = gcp_sql_user.source_sqldb_user.password
+///     database = "postgres"
 ///     ssl = {
-///       client_key         = gcp_sql_sslcert.source_sql_client_cert.private_key
-///       client_certificate = gcp_sql_sslcert.source_sql_client_cert.cert
-///       ca_certificate     = gcp_sql_sslcert.source_sql_client_cert.server_ca_cert
+///       client_key         = gcp_sql_ssl_cert.source_sql_client_cert.private_key
+///       client_certificate = gcp_sql_ssl_cert.source_sql_client_cert.cert
+///       ca_certificate     = gcp_sql_ssl_cert.source_sql_client_cert.server_ca_cert
 ///       type               = "SERVER_CLIENT"
 ///     }
 ///     cloud_sql_id = "source-csql"
 ///   }
 /// }
 /// resource "gcp_alloydb_cluster" "destination_alloydb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id = "destination-alloydb"
 ///   location   = "us-central1"
 ///   network_config = {
-///     network = gcp_compute_network.default.id
+///     network = data.gcp_compute_network.default.id
 ///   }
 ///   database_version = "POSTGRES_15"
 ///   initial_user = {
@@ -3068,31 +3090,21 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///   deletion_protection = false
 /// }
 /// resource "gcp_alloydb_instance" "destination_alloydb_primary" {
-///   depends_on    = [gcp_servicenetworking_connection.vpc_connection]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster       = gcp_alloydb_cluster.destination_alloydb.name
 ///   instance_id   = "destination-alloydb-primary"
 ///   instance_type = "PRIMARY"
 /// }
-/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
-///   name          = "destination-alloydb"
-///   address_type  = "INTERNAL"
-///   purpose       = "VPC_PEERING"
-///   prefix_length = 16
-///   network       = gcp_compute_network.default.id
-/// }
-/// resource "gcp_servicenetworking_connection" "vpc_connection" {
-///   network                 = gcp_compute_network.default.id
-///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
-/// }
-/// resource "gcp_compute_network" "default" {
-///   name = "destination-alloydb"
-/// }
-/// resource "gcp_databasemigrationservice_connectionprofile" "destination_cp" {
-///   depends_on            = [gcp_alloydb_cluster.destination_alloydb, gcp_alloydb_instance.destination_alloydb_primary]
+/// resource "gcp_databasemigrationservice_connection_profile" "destination_cp" {
+///   depends_on = [gcp_alloydb_cluster.destination_alloydb, gcp_alloydb_instance.destination_alloydb_primary]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "us-central1"
 ///   connection_profile_id = "destination-cp"
-///   display_name          = "destination-cp_display"
+///   display_name          = "destination-cp-display"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -3100,16 +3112,19 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     alloydb_cluster_id = "destination-alloydb"
 ///   }
 /// }
-/// resource "gcp_databasemigrationservice_migrationjob" "psqltoalloydb" {
+/// resource "gcp_databasemigrationservice_migration_job" "psqltoalloydb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us-central1"
 ///   migration_job_id = "my-migrationid"
-///   display_name     = "my-migrationid_display"
+///   display_name     = "my-migrationid-display"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
 ///   static_ip_connectivity = {}
-///   source                 = gcp_databasemigrationservice_connectionprofile.source_cp.name
-///   destination            = gcp_databasemigrationservice_connectionprofile.destination_cp.name
+///   source                 = gcp_databasemigrationservice_connection_profile.source_cp.name
+///   destination            = gcp_databasemigrationservice_connection_profile.destination_cp.name
 ///   type                   = "CONTINUOUS"
 /// }
 /// ```
@@ -3132,16 +3147,12 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// import com.pulumi.gcp.databasemigrationservice.ConnectionProfileArgs;
 /// import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlArgs;
 /// import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlSslArgs;
-/// import com.pulumi.gcp.compute.Network;
-/// import com.pulumi.gcp.compute.NetworkArgs;
+/// import com.pulumi.gcp.compute.ComputeFunctions;
+/// import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
 /// import com.pulumi.gcp.alloydb.Cluster;
 /// import com.pulumi.gcp.alloydb.ClusterArgs;
 /// import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
 /// import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
-/// import com.pulumi.gcp.compute.GlobalAddress;
-/// import com.pulumi.gcp.compute.GlobalAddressArgs;
-/// import com.pulumi.gcp.servicenetworking.Connection;
-/// import com.pulumi.gcp.servicenetworking.ConnectionArgs;
 /// import com.pulumi.gcp.alloydb.Instance;
 /// import com.pulumi.gcp.alloydb.InstanceArgs;
 /// import com.pulumi.gcp.databasemigrationservice.MigrationJob;
@@ -3192,13 +3203,14 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         var sourceCp = new ConnectionProfile("sourceCp", ConnectionProfileArgs.builder()
 ///             .location("us-central1")
 ///             .connectionProfileId("source-cp")
-///             .displayName("source-cp_display")
+///             .displayName("source-cp-display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .postgresql(ConnectionProfilePostgresqlArgs.builder()
 ///                 .host(sourceCsql.ipAddresses().applyValue(_ipAddresses -> _ipAddresses.get(0).ipAddress()))
 ///                 .port(3306)
 ///                 .username(sourceSqldbUser.name())
 ///                 .password(sourceSqldbUser.password())
+///                 .database("postgres")
 ///                 .ssl(ConnectionProfilePostgresqlSslArgs.builder()
 ///                     .clientKey(sourceSqlClientCert.privateKey())
 ///                     .clientCertificate(sourceSqlClientCert.cert())
@@ -3211,7 +3223,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///                 .dependsOn(sourceSqldbUser)
 ///                 .build());
 ///
-///         var default_ = new Network("default", NetworkArgs.builder()
+///         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
 ///             .name("destination-alloydb")
 ///             .build());
 ///
@@ -3229,32 +3241,16 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///             .deletionProtection(false)
 ///             .build());
 ///
-///         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
-///             .name("destination-alloydb")
-///             .addressType("INTERNAL")
-///             .purpose("VPC_PEERING")
-///             .prefixLength(16)
-///             .network(default_.id())
-///             .build());
-///
-///         var vpcConnection = new Connection("vpcConnection", ConnectionArgs.builder()
-///             .network(default_.id())
-///             .service("servicenetworking.googleapis.com")
-///             .reservedPeeringRanges(privateIpAlloc.name())
-///             .build());
-///
 ///         var destinationAlloydbPrimary = new Instance("destinationAlloydbPrimary", InstanceArgs.builder()
 ///             .cluster(destinationAlloydb.name())
 ///             .instanceId("destination-alloydb-primary")
 ///             .instanceType("PRIMARY")
-///             .build(), CustomResourceOptions.builder()
-///                 .dependsOn(vpcConnection)
-///                 .build());
+///             .build());
 ///
 ///         var destinationCp = new ConnectionProfile("destinationCp", ConnectionProfileArgs.builder()
 ///             .location("us-central1")
 ///             .connectionProfileId("destination-cp")
-///             .displayName("destination-cp_display")
+///             .displayName("destination-cp-display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .postgresql(ConnectionProfilePostgresqlArgs.builder()
 ///                 .alloydbClusterId("destination-alloydb")
@@ -3268,7 +3264,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         var psqltoalloydb = new MigrationJob("psqltoalloydb", MigrationJobArgs.builder()
 ///             .location("us-central1")
 ///             .migrationJobId("my-migrationid")
-///             .displayName("my-migrationid_display")
+///             .displayName("my-migrationid-display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .staticIpConnectivity(MigrationJobStaticIpConnectivityArgs.builder()
 ///                 .build())
@@ -3317,7 +3313,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     properties:
 ///       location: us-central1
 ///       connectionProfileId: source-cp
-///       displayName: source-cp_display
+///       displayName: source-cp-display
 ///       labels:
 ///         foo: bar
 ///       postgresql:
@@ -3325,6 +3321,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         port: 3306
 ///         username: ${sourceSqldbUser.name}
 ///         password: ${sourceSqldbUser.password}
+///         database: postgres
 ///         ssl:
 ///           clientKey: ${sourceSqlClientCert.privateKey}
 ///           clientCertificate: ${sourceSqlClientCert.cert}
@@ -3354,37 +3351,13 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///       cluster: ${destinationAlloydb.name}
 ///       instanceId: destination-alloydb-primary
 ///       instanceType: PRIMARY
-///     options:
-///       dependsOn:
-///         - ${vpcConnection}
-///   privateIpAlloc:
-///     type: gcp:compute:GlobalAddress
-///     name: private_ip_alloc
-///     properties:
-///       name: destination-alloydb
-///       addressType: INTERNAL
-///       purpose: VPC_PEERING
-///       prefixLength: 16
-///       network: ${default.id}
-///   vpcConnection:
-///     type: gcp:servicenetworking:Connection
-///     name: vpc_connection
-///     properties:
-///       network: ${default.id}
-///       service: servicenetworking.googleapis.com
-///       reservedPeeringRanges:
-///         - ${privateIpAlloc.name}
-///   default:
-///     type: gcp:compute:Network
-///     properties:
-///       name: destination-alloydb
 ///   destinationCp:
 ///     type: gcp:databasemigrationservice:ConnectionProfile
 ///     name: destination_cp
 ///     properties:
 ///       location: us-central1
 ///       connectionProfileId: destination-cp
-///       displayName: destination-cp_display
+///       displayName: destination-cp-display
 ///       labels:
 ///         foo: bar
 ///       postgresql:
@@ -3398,7 +3371,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     properties:
 ///       location: us-central1
 ///       migrationJobId: my-migrationid
-///       displayName: my-migrationid_display
+///       displayName: my-migrationid-display
 ///       labels:
 ///         foo: bar
 ///       staticIpConnectivity: {}
@@ -3410,6 +3383,11 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///     fn::invoke:
 ///       function: gcp:organizations:getProject
 ///       arguments: {}
+///   default:
+///     fn::invoke:
+///       function: gcp:compute:getNetwork
+///       arguments:
+///         name: destination-alloydb
 /// ```
 ///
 ///
@@ -3524,7 +3502,7 @@ class MigrationJob extends pulumi.CustomResource {
           'gcp:databasemigrationservice/migrationJob:MigrationJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

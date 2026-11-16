@@ -146,7 +146,7 @@ class GetGlobalForwardingRuleResult {
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       externalManagedBackendBucketMigrationState: (() { final guardedValue = map['externalManagedBackendBucketMigrationState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       externalManagedBackendBucketMigrationTestingPercentage: (() { final guardedValue = map['externalManagedBackendBucketMigrationTestingPercentage']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
-      forwardingRuleId: (() { final guardedValue = map['forwardingRuleId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      forwardingRuleId: (() { final guardedValue = map['forwardingRuleId']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipProtocol: (() { final guardedValue = map['ipProtocol']; if (guardedValue == null) return null; return guardedValue as String; })(),

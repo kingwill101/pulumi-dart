@@ -50,6 +50,10 @@ class CertificateArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
+  /// The requested notBeforeTime of this Certificate. This field may only be set
+  /// if the allowRequesterSpecifiedNotBeforeTime field is set to true for the
+  /// issuing CaPool.
+  final pulumi.Input<String?>? requestedNotBeforeTime;
 
   /// Creates a new [CertificateArgs].
   /// [certificateAuthority] The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
@@ -63,6 +67,7 @@ class CertificateArgs {
   /// [pemCsr] Immutable. A pem-encoded X.509 certificate signing request (CSR).
   /// [pool] The name of the CaPool this Certificate belongs to.
   /// [project] The ID of the project in which the resource belongs.
+  /// [requestedNotBeforeTime] The requested notBeforeTime of this Certificate. This field may only be set
   const CertificateArgs({
     this.certificateAuthority,
     this.certificateTemplate,
@@ -75,6 +80,7 @@ class CertificateArgs {
     this.pemCsr,
     required this.pool,
     this.project,
+    this.requestedNotBeforeTime,
   });
 
   Map<String, dynamic> toMap() {
@@ -90,6 +96,7 @@ class CertificateArgs {
       'pemCsr': ?pemCsr,
       'pool': pool,
       'project': ?project,
+      'requestedNotBeforeTime': ?requestedNotBeforeTime,
     };
   }
 
@@ -106,6 +113,7 @@ class CertificateArgs {
       pemCsr: (() { final guardedValue = map['pemCsr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pool: pulumi.Input.fromValue(map['pool'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requestedNotBeforeTime: (() { final guardedValue = map['requestedNotBeforeTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }

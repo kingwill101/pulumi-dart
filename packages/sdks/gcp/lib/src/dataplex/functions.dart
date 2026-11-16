@@ -67,7 +67,7 @@ import 'get_zone_iam_policy_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -86,7 +86,7 @@ import 'get_zone_iam_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -94,7 +94,7 @@ import 'get_zone_iam_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_dataplex_getaspecttypeiampolicy" "policy" {
+/// data "gcp_dataplex_aspect_type_iam_policy" "policy" {
 ///   project        = testAspectTypeBasic.project
 ///   location       = testAspectTypeBasic.location
 ///   aspect_type_id = testAspectTypeBasic.aspectTypeId
@@ -217,7 +217,7 @@ pulumi.Output<GetAspectTypeIamPolicyResult> getAspectTypeIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -238,7 +238,7 @@ pulumi.Output<GetAspectTypeIamPolicyResult> getAspectTypeIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -246,7 +246,7 @@ pulumi.Output<GetAspectTypeIamPolicyResult> getAspectTypeIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_dataplex_getassetiampolicy" "policy" {
+/// data "gcp_dataplex_asset_iam_policy" "policy" {
 ///   project       = example.project
 ///   location      = example.location
 ///   lake          = example.lake
@@ -369,7 +369,7 @@ pulumi.Output<GetAssetIamPolicyResult> getAssetIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -388,7 +388,7 @@ pulumi.Output<GetAssetIamPolicyResult> getAssetIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -396,7 +396,7 @@ pulumi.Output<GetAssetIamPolicyResult> getAssetIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_dataplex_getdataproductiampolicy" "policy" {
+/// data "gcp_dataplex_data_product_iam_policy" "policy" {
 ///   project         = example.project
 ///   location        = example.location
 ///   data_product_id = example.dataProductId
@@ -515,7 +515,7 @@ pulumi.Output<GetDataProductIamPolicyResult> getDataProductIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -534,7 +534,7 @@ pulumi.Output<GetDataProductIamPolicyResult> getDataProductIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -542,7 +542,7 @@ pulumi.Output<GetDataProductIamPolicyResult> getDataProductIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_dataplex_getdataqualityrules" "dqrs" {
+/// data "gcp_dataplex_data_quality_rules" "dqrs" {
 ///   project      = "my-project"
 ///   location     = "use-central1"
 ///   data_scan_id = "my-datascan-profile"
@@ -659,7 +659,7 @@ pulumi.Output<GetDataQualityRulesResult> getDataQualityRulesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -678,7 +678,7 @@ pulumi.Output<GetDataQualityRulesResult> getDataQualityRulesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -686,7 +686,7 @@ pulumi.Output<GetDataQualityRulesResult> getDataQualityRulesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_dataplex_getdatascaniampolicy" "policy" {
+/// data "gcp_dataplex_datascan_iam_policy" "policy" {
 ///   project      = basicProfile.project
 ///   location     = basicProfile.location
 ///   data_scan_id = basicProfile.dataScanId
@@ -803,7 +803,7 @@ pulumi.Output<GetDatascanIamPolicyResult> getDatascanIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -822,7 +822,7 @@ pulumi.Output<GetDatascanIamPolicyResult> getDatascanIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -830,7 +830,7 @@ pulumi.Output<GetDatascanIamPolicyResult> getDatascanIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_dataplex_getentrygroupiampolicy" "policy" {
+/// data "gcp_dataplex_entry_group_iam_policy" "policy" {
 ///   project        = testEntryGroupBasic.project
 ///   location       = testEntryGroupBasic.location
 ///   entry_group_id = testEntryGroupBasic.entryGroupId
@@ -947,7 +947,7 @@ pulumi.Output<GetEntryGroupIamPolicyResult> getEntryGroupIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -966,7 +966,7 @@ pulumi.Output<GetEntryGroupIamPolicyResult> getEntryGroupIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -974,7 +974,7 @@ pulumi.Output<GetEntryGroupIamPolicyResult> getEntryGroupIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_dataplex_getentrytypeiampolicy" "policy" {
+/// data "gcp_dataplex_entry_type_iam_policy" "policy" {
 ///   project       = testEntryTypeBasic.project
 ///   location      = testEntryTypeBasic.location
 ///   entry_type_id = testEntryTypeBasic.entryTypeId
@@ -1091,7 +1091,7 @@ pulumi.Output<GetEntryTypeIamPolicyResult> getEntryTypeIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1110,7 +1110,7 @@ pulumi.Output<GetEntryTypeIamPolicyResult> getEntryTypeIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1118,7 +1118,7 @@ pulumi.Output<GetEntryTypeIamPolicyResult> getEntryTypeIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_dataplex_getglossaryiampolicy" "policy" {
+/// data "gcp_dataplex_glossary_iam_policy" "policy" {
 ///   project     = glossaryTestId.project
 ///   location    = glossaryTestId.location
 ///   glossary_id = glossaryTestId.glossaryId
@@ -1235,7 +1235,7 @@ pulumi.Output<GetGlossaryIamPolicyResult> getGlossaryIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1254,7 +1254,7 @@ pulumi.Output<GetGlossaryIamPolicyResult> getGlossaryIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1262,7 +1262,7 @@ pulumi.Output<GetGlossaryIamPolicyResult> getGlossaryIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_dataplex_getlakeiampolicy" "policy" {
+/// data "gcp_dataplex_lake_iam_policy" "policy" {
 ///   project  = example.project
 ///   location = example.location
 ///   lake     = example.name
@@ -1382,7 +1382,7 @@ pulumi.Output<GetLakeIamPolicyResult> getLakeIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1402,7 +1402,7 @@ pulumi.Output<GetLakeIamPolicyResult> getLakeIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1410,7 +1410,7 @@ pulumi.Output<GetLakeIamPolicyResult> getLakeIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_dataplex_gettaskiampolicy" "policy" {
+/// data "gcp_dataplex_task_iam_policy" "policy" {
 ///   project  = example.project
 ///   location = example.location
 ///   lake     = example.lake
@@ -1533,7 +1533,7 @@ pulumi.Output<GetTaskIamPolicyResult> getTaskIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1553,7 +1553,7 @@ pulumi.Output<GetTaskIamPolicyResult> getTaskIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1561,7 +1561,7 @@ pulumi.Output<GetTaskIamPolicyResult> getTaskIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_dataplex_getzoneiampolicy" "policy" {
+/// data "gcp_dataplex_zone_iam_policy" "policy" {
 ///   project       = example.project
 ///   location      = example.location
 ///   lake          = example.lake

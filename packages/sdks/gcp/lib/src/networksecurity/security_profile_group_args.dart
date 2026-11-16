@@ -37,6 +37,8 @@ class SecurityProfileGroupArgs {
   final pulumi.Input<String?>? threatPreventionProfile;
   /// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
   final pulumi.Input<String?>? urlFilteringProfile;
+  /// Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+  final pulumi.Input<String?>? wildfireAnalysisProfile;
 
   /// Creates a new [SecurityProfileGroupArgs].
   /// [customInterceptProfile] Reference to a SecurityProfile with the CustomIntercept configuration.
@@ -49,6 +51,7 @@ class SecurityProfileGroupArgs {
   /// [parent] The name of the parent this security profile group belongs to.
   /// [threatPreventionProfile] Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
   /// [urlFilteringProfile] Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+  /// [wildfireAnalysisProfile] Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
   const SecurityProfileGroupArgs({
     this.customInterceptProfile,
     this.customMirroringProfile,
@@ -60,6 +63,7 @@ class SecurityProfileGroupArgs {
     this.parent,
     this.threatPreventionProfile,
     this.urlFilteringProfile,
+    this.wildfireAnalysisProfile,
   });
 
   Map<String, dynamic> toMap() {
@@ -74,6 +78,7 @@ class SecurityProfileGroupArgs {
       'parent': ?parent,
       'threatPreventionProfile': ?threatPreventionProfile,
       'urlFilteringProfile': ?urlFilteringProfile,
+      'wildfireAnalysisProfile': ?wildfireAnalysisProfile,
     };
   }
 
@@ -89,6 +94,7 @@ class SecurityProfileGroupArgs {
       parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       threatPreventionProfile: (() { final guardedValue = map['threatPreventionProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       urlFilteringProfile: (() { final guardedValue = map['urlFilteringProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      wildfireAnalysisProfile: (() { final guardedValue = map['wildfireAnalysisProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }

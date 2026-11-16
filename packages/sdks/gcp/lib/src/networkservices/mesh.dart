@@ -11,6 +11,7 @@ import 'mesh_state.dart';
 ///
 /// * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1beta1/projects.locations.meshes)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Network Services Mesh Basic
@@ -67,7 +68,7 @@ import 'mesh_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -89,7 +90,7 @@ import 'mesh_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -98,6 +99,9 @@ import 'mesh_state.dart';
 /// }
 ///
 /// resource "gcp_networkservices_mesh" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-mesh"
 ///   labels = {
 ///     "foo" = "bar"
@@ -148,6 +152,7 @@ import 'mesh_state.dart';
 ///       description: my description
 ///       interceptionPort: 443
 /// ```
+///
 ///
 /// ### Network Services Mesh No Port
 ///
@@ -200,7 +205,7 @@ import 'mesh_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -221,7 +226,7 @@ import 'mesh_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -230,6 +235,9 @@ import 'mesh_state.dart';
 /// }
 ///
 /// resource "gcp_networkservices_mesh" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-mesh-noport"
 ///   labels = {
 ///     "foo" = "bar"
@@ -278,6 +286,7 @@ import 'mesh_state.dart';
 ///       description: my description
 /// ```
 ///
+///
 /// ### Network Services Mesh Location
 ///
 ///
@@ -319,7 +328,7 @@ import 'mesh_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -337,7 +346,7 @@ import 'mesh_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -346,6 +355,9 @@ import 'mesh_state.dart';
 /// }
 ///
 /// resource "gcp_networkservices_mesh" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-mesh"
 ///   location = "global"
 /// }
@@ -456,7 +468,7 @@ class Mesh extends pulumi.CustomResource {
           'gcp:networkservices/mesh:Mesh',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

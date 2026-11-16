@@ -9,6 +9,7 @@ import 'iceberg_table_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Biglake Iceberg Table Basic
@@ -204,8 +205,8 @@ import 'iceberg_table_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -282,7 +283,7 @@ import 'iceberg_table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -291,45 +292,57 @@ import 'iceberg_table_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my-bucket"
 ///   location                    = "us-central1"
 ///   force_destroy               = true
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_biglake_icebergcatalog" "catalog" {
+/// resource "gcp_biglake_iceberg_catalog" "catalog" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = gcp_storage_bucket.bucket.name
 ///   catalog_type = "CATALOG_TYPE_GCS_BUCKET"
 /// }
-/// resource "gcp_biglake_icebergnamespace" "namespace" {
-///   catalog      = gcp_biglake_icebergcatalog.catalog.name
+/// resource "gcp_biglake_iceberg_namespace" "namespace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   catalog      = gcp_biglake_iceberg_catalog.catalog.name
 ///   namespace_id = "my_namespace"
 /// }
-/// resource "gcp_biglake_icebergtable" "my_iceberg_table" {
-///   catalog   = gcp_biglake_icebergcatalog.catalog.name
-///   namespace = gcp_biglake_icebergnamespace.namespace.namespace_id
+/// resource "gcp_biglake_iceberg_table" "my_iceberg_table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   catalog   = gcp_biglake_iceberg_catalog.catalog.name
+///   namespace = gcp_biglake_iceberg_namespace.namespace.namespace_id
 ///   name      = "my_table"
-///   location  ="gs://${gcp_storage_bucket.bucket.name}/${gcp_biglake_icebergnamespace.namespace.namespace_id}/my_table"
+///   location  ="gs://${gcp_storage_bucket.bucket.name}/${gcp_biglake_iceberg_namespace.namespace.namespace_id}/my_table"
 ///   schema = {
 ///     type = "struct"
 ///     fields = [{
-///       "id"       = 1
-///       "name"     = "id"
-///       "type"     = "long"
-///       "required" = true
-///       "doc"      = "The ID of the record"
+///       id       = 1
+///       name     = "id"
+///       type     = "long"
+///       required = true
+///       doc      = "The ID of the record"
 ///       }, {
-///       "id"       = 2
-///       "name"     = "name"
-///       "type"     = "string"
-///       "required" = false
+///       id       = 2
+///       name     = "name"
+///       type     = "string"
+///       required = false
 ///     }]
 ///     identifier_field_ids = [1]
 ///   }
 ///   partition_spec = {
 ///     fields = [{
-///       "name"      = "id_partition"
-///       "sourceId"  = 1
-///       "transform" = "identity"
+///       name      = "id_partition"
+///       source_id = 1
+///       transform = "identity"
 ///     }]
 ///   }
 /// }
@@ -468,6 +481,7 @@ import 'iceberg_table_state.dart';
 ///             sourceId: 1
 ///             transform: identity
 /// ```
+///
 ///
 /// ### Biglake Iceberg Table Sort Order
 ///
@@ -619,8 +633,8 @@ import 'iceberg_table_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -683,7 +697,7 @@ import 'iceberg_table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -692,38 +706,50 @@ import 'iceberg_table_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my-bucket"
 ///   location                    = "us-central1"
 ///   force_destroy               = true
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_biglake_icebergcatalog" "catalog" {
+/// resource "gcp_biglake_iceberg_catalog" "catalog" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = gcp_storage_bucket.bucket.name
 ///   catalog_type = "CATALOG_TYPE_GCS_BUCKET"
 /// }
-/// resource "gcp_biglake_icebergnamespace" "namespace" {
-///   catalog      = gcp_biglake_icebergcatalog.catalog.name
+/// resource "gcp_biglake_iceberg_namespace" "namespace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   catalog      = gcp_biglake_iceberg_catalog.catalog.name
 ///   namespace_id = "my_namespace"
 /// }
-/// resource "gcp_biglake_icebergtable" "my_iceberg_table" {
-///   catalog   = gcp_biglake_icebergcatalog.catalog.name
-///   namespace = gcp_biglake_icebergnamespace.namespace.namespace_id
+/// resource "gcp_biglake_iceberg_table" "my_iceberg_table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   catalog   = gcp_biglake_iceberg_catalog.catalog.name
+///   namespace = gcp_biglake_iceberg_namespace.namespace.namespace_id
 ///   name      = "my_table"
 ///   schema = {
 ///     type = "struct"
 ///     fields = [{
-///       "id"       = 1
-///       "name"     = "id"
-///       "type"     = "long"
-///       "required" = true
+///       id       = 1
+///       name     = "id"
+///       type     = "long"
+///       required = true
 ///     }]
 ///   }
 ///   sort_order = {
 ///     fields = [{
-///       "sourceId"  = 1
-///       "transform" = "identity"
-///       "direction" = "asc"
-///       "nullOrder" = "nulls-first"
+///       source_id  = 1
+///       transform  = "identity"
+///       direction  = "asc"
+///       null_order = "nulls-first"
 ///     }]
 ///   }
 /// }
@@ -842,6 +868,7 @@ import 'iceberg_table_state.dart';
 ///             direction: asc
 ///             nullOrder: nulls-first
 /// ```
+///
 ///
 /// ### Biglake Iceberg Table Update
 ///
@@ -974,8 +1001,8 @@ import 'iceberg_table_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1031,7 +1058,7 @@ import 'iceberg_table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1040,30 +1067,42 @@ import 'iceberg_table_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my-bucket"
 ///   location                    = "us-central1"
 ///   force_destroy               = true
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_biglake_icebergcatalog" "catalog" {
+/// resource "gcp_biglake_iceberg_catalog" "catalog" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = gcp_storage_bucket.bucket.name
 ///   catalog_type = "CATALOG_TYPE_GCS_BUCKET"
 /// }
-/// resource "gcp_biglake_icebergnamespace" "namespace" {
-///   catalog      = gcp_biglake_icebergcatalog.catalog.name
+/// resource "gcp_biglake_iceberg_namespace" "namespace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   catalog      = gcp_biglake_iceberg_catalog.catalog.name
 ///   namespace_id = "my_namespace"
 /// }
-/// resource "gcp_biglake_icebergtable" "my_iceberg_table" {
-///   catalog   = gcp_biglake_icebergcatalog.catalog.name
-///   namespace = gcp_biglake_icebergnamespace.namespace.namespace_id
+/// resource "gcp_biglake_iceberg_table" "my_iceberg_table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   catalog   = gcp_biglake_iceberg_catalog.catalog.name
+///   namespace = gcp_biglake_iceberg_namespace.namespace.namespace_id
 ///   name      = "my_table"
 ///   schema = {
 ///     type = "struct"
 ///     fields = [{
-///       "id"       = 1
-///       "name"     = "id"
-///       "type"     = "long"
-///       "required" = true
+///       id       = 1
+///       name     = "id"
+///       type     = "long"
+///       required = true
 ///     }]
 ///   }
 ///   properties = {
@@ -1233,7 +1272,7 @@ class IcebergTable extends pulumi.CustomResource {
           'gcp:biglake/icebergTable:IcebergTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     catalog = registerOutput<String>('catalog');
     deletionPolicy = registerOutput<String>('deletionPolicy');

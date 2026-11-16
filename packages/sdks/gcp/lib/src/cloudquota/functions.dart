@@ -48,7 +48,7 @@ import 'get_squota_infos_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudquota"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudquota"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -67,7 +67,7 @@ import 'get_squota_infos_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -75,7 +75,7 @@ import 'get_squota_infos_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_cloudquota_getsquotainfo" "myQuotaInfo" {
+/// data "gcp_cloudquota_s_quota_info" "myQuotaInfo" {
 ///   parent   = "projects/my-project"
 ///   service  = "compute.googleapis.com"
 ///   quota_id = "CPUS-per-project-region"
@@ -188,7 +188,7 @@ pulumi.Output<GetSQuotaInfoResult> getSQuotaInfoOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudquota"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudquota"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -206,7 +206,7 @@ pulumi.Output<GetSQuotaInfoResult> getSQuotaInfoOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -214,7 +214,7 @@ pulumi.Output<GetSQuotaInfoResult> getSQuotaInfoOutput(
 ///   }
 /// }
 ///
-/// data "gcp_cloudquota_getsquotainfos" "myQuotaInfos" {
+/// data "gcp_cloudquota_s_quota_infos" "myQuotaInfos" {
 ///   parent  = "projects/my-project"
 ///   service = "compute.googleapis.com"
 /// }

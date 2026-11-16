@@ -47,7 +47,7 @@ class GetControlProjectIntelligenceFindingsResult {
       findings: (() { final guardedValue = map['findings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetControlProjectIntelligenceFindingsFinding>(guardedValue, (value) => GetControlProjectIntelligenceFindingsFinding.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

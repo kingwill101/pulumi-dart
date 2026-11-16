@@ -8,7 +8,6 @@ import 'ai_reasoning_engine_spec_source_code_spec_inline_source.dart';
 import 'ai_reasoning_engine_spec_source_code_spec_python_spec.dart';
 
 class AiReasoningEngineSpecSourceCodeSpec {
-  /// (Optional, Beta)
   /// Optional. Specification for the deploying from agent config.
   /// Structure is documented below.
   final pulumi.Input<AiReasoningEngineSpecSourceCodeSpecAgentConfigSource?>? agentConfigSource;
@@ -26,7 +25,7 @@ class AiReasoningEngineSpecSourceCodeSpec {
   final pulumi.Input<AiReasoningEngineSpecSourceCodeSpecPythonSpec?>? pythonSpec;
 
   /// Creates a new [AiReasoningEngineSpecSourceCodeSpec].
-  /// [agentConfigSource] (Optional, Beta)
+  /// [agentConfigSource] Optional. Specification for the deploying from agent config.
   /// [developerConnectSource] Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
   /// [imageSpec] Configuration for building an image with custom config file.
   /// [inlineSource] Source code is provided directly in the request.

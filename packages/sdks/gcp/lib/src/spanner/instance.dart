@@ -13,6 +13,7 @@ import 'instance_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/spanner/)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Spanner Instance Basic
@@ -75,7 +76,7 @@ import 'instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/spanner"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/spanner"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -99,7 +100,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -108,6 +109,9 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "gcp_spanner_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   config                       = "regional-us-central1"
 ///   display_name                 = "Test Spanner Instance"
 ///   num_nodes                    = 2
@@ -165,6 +169,7 @@ import 'instance_state.dart';
 ///         foo: bar
 /// ```
 ///
+///
 /// ### Spanner Instance Processing Units
 ///
 ///
@@ -219,7 +224,7 @@ import 'instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/spanner"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/spanner"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -241,7 +246,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -250,6 +255,9 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "gcp_spanner_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   config           = "regional-us-central1"
 ///   display_name     = "Test Spanner Instance"
 ///   processing_units = 200
@@ -300,6 +308,7 @@ import 'instance_state.dart';
 ///       labels:
 ///         foo: bar
 /// ```
+///
 ///
 /// ### Spanner Instance Multi Regional
 ///
@@ -355,7 +364,7 @@ import 'instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/spanner"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/spanner"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -377,7 +386,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -386,6 +395,9 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "gcp_spanner_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   config       = "nam-eur-asia1"
 ///   display_name = "Multi Regional Instance"
 ///   num_nodes    = 2
@@ -536,7 +548,7 @@ class Instance extends pulumi.CustomResource {
           'gcp:spanner/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     autoscalingConfig = registerOutput<InstanceAutoscalingConfig?>('autoscalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAutoscalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

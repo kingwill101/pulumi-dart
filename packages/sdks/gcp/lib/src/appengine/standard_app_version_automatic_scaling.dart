@@ -50,10 +50,10 @@ class StandardAppVersionAutomaticScaling {
 
   factory StandardAppVersionAutomaticScaling.fromMap(Map<String, dynamic> map) {
     return StandardAppVersionAutomaticScaling(
-      maxConcurrentRequests: (() { final guardedValue = map['maxConcurrentRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxIdleInstances: (() { final guardedValue = map['maxIdleInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxConcurrentRequests: (() { final guardedValue = map['maxConcurrentRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxIdleInstances: (() { final guardedValue = map['maxIdleInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       maxPendingLatency: (() { final guardedValue = map['maxPendingLatency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      minIdleInstances: (() { final guardedValue = map['minIdleInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minIdleInstances: (() { final guardedValue = map['minIdleInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       minPendingLatency: (() { final guardedValue = map['minPendingLatency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       standardSchedulerSettings: (() { final guardedValue = map['standardSchedulerSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StandardAppVersionAutomaticScalingStandardSchedulerSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

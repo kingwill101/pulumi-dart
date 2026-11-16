@@ -22,6 +22,7 @@ import 'index_state.dart';
 /// instead create a `gcp.appengine.Application` resource.
 /// Your Firestore location will be the same as the App Engine location specified.
 ///
+///
 /// ## Example Usage
 ///
 /// ### Firestore Index Basic
@@ -126,7 +127,7 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -166,7 +167,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -175,6 +176,9 @@ import 'index_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "database-id"
 ///   location_id             = "nam5"
@@ -183,6 +187,9 @@ import 'index_state.dart';
 ///   deletion_policy         = "DELETE"
 /// }
 /// resource "gcp_firestore_index" "my-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project    = "my-project-name"
 ///   database   = gcp_firestore_database.database.name
 ///   collection = "atestcollection"
@@ -270,6 +277,7 @@ import 'index_state.dart';
 ///         - fieldPath: description
 ///           order: DESCENDING
 /// ```
+///
 ///
 /// ### Firestore Index Datastore Mode
 ///
@@ -382,7 +390,7 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -425,7 +433,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -434,6 +442,9 @@ import 'index_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "database-id-dm"
 ///   location_id             = "nam5"
@@ -442,6 +453,9 @@ import 'index_state.dart';
 ///   deletion_policy         = "DELETE"
 /// }
 /// resource "gcp_firestore_index" "my-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "my-project-name"
 ///   database    = gcp_firestore_database.database.name
 ///   collection  = "atestcollection"
@@ -538,6 +552,7 @@ import 'index_state.dart';
 ///         - fieldPath: description
 ///           order: DESCENDING
 /// ```
+///
 ///
 /// ### Firestore Index Vector
 ///
@@ -664,7 +679,7 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -711,7 +726,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -720,6 +735,9 @@ import 'index_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "database-id-vector"
 ///   location_id             = "nam5"
@@ -728,6 +746,9 @@ import 'index_state.dart';
 ///   deletion_policy         = "DELETE"
 /// }
 /// resource "gcp_firestore_index" "my-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project    = "my-project-name"
 ///   database   = gcp_firestore_database.database.name
 ///   collection = "atestcollection"
@@ -837,6 +858,7 @@ import 'index_state.dart';
 ///             flat: {}
 /// ```
 ///
+///
 /// ### Firestore Index Name Descending
 ///
 ///
@@ -922,7 +944,7 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -958,7 +980,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -967,6 +989,9 @@ import 'index_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "database-id"
 ///   location_id             = "nam5"
@@ -975,6 +1000,9 @@ import 'index_state.dart';
 ///   deletion_policy         = "DELETE"
 /// }
 /// resource "gcp_firestore_index" "my-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project    = "my-project-name"
 ///   database   = gcp_firestore_database.database.name
 ///   collection = "atestcollection"
@@ -1051,6 +1079,7 @@ import 'index_state.dart';
 ///         - fieldPath: __name__
 ///           order: DESCENDING
 /// ```
+///
 ///
 /// ### Firestore Index Mongodb Compatible Scope
 ///
@@ -1169,7 +1198,7 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1214,7 +1243,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1223,6 +1252,9 @@ import 'index_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "database-id-mongodb-compatible"
 ///   location_id             = "nam5"
@@ -1232,6 +1264,9 @@ import 'index_state.dart';
 ///   deletion_policy         = "DELETE"
 /// }
 /// resource "gcp_firestore_index" "my-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "my-project-name"
 ///   database    = gcp_firestore_database.database.name
 ///   collection  = "atestcollection"
@@ -1333,6 +1368,7 @@ import 'index_state.dart';
 ///         - fieldPath: description
 ///           order: DESCENDING
 /// ```
+///
 ///
 /// ### Firestore Index Sparse Any
 ///
@@ -1451,7 +1487,7 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1496,7 +1532,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1505,6 +1541,9 @@ import 'index_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "database-id-sparse-any"
 ///   location_id             = "nam5"
@@ -1514,6 +1553,9 @@ import 'index_state.dart';
 ///   deletion_policy         = "DELETE"
 /// }
 /// resource "gcp_firestore_index" "my-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "my-project-name"
 ///   database    = gcp_firestore_database.database.name
 ///   collection  = "atestcollection"
@@ -1615,6 +1657,7 @@ import 'index_state.dart';
 ///         - fieldPath: description
 ///           order: DESCENDING
 /// ```
+///
 ///
 /// ### Firestore Index Unique
 ///
@@ -1736,7 +1779,7 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1782,7 +1825,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1791,6 +1834,9 @@ import 'index_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "database-id-unique"
 ///   location_id             = "nam5"
@@ -1800,6 +1846,9 @@ import 'index_state.dart';
 ///   deletion_policy         = "DELETE"
 /// }
 /// resource "gcp_firestore_index" "my-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "my-project-name"
 ///   database    = gcp_firestore_database.database.name
 ///   collection  = "atestcollection"
@@ -1904,6 +1953,7 @@ import 'index_state.dart';
 ///         - fieldPath: description
 ///           order: DESCENDING
 /// ```
+///
 ///
 /// ### Firestore Index Skip Wait
 ///
@@ -2010,7 +2060,7 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2051,7 +2101,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2060,6 +2110,9 @@ import 'index_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "database-id-skip-wait"
 ///   location_id             = "nam5"
@@ -2068,6 +2121,9 @@ import 'index_state.dart';
 ///   deletion_policy         = "DELETE"
 /// }
 /// resource "gcp_firestore_index" "my-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project    = "my-project-name"
 ///   database   = gcp_firestore_database.database.name
 ///   collection = "atestcollection"
@@ -2158,6 +2214,268 @@ import 'index_state.dart';
 ///           order: DESCENDING
 ///       skipWait: true
 /// ```
+///
+///
+/// ### Firestore Index Deletion Policy
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const database = new gcp.firestore.Database("database", {
+///     project: "my-project-name",
+///     name: "database-id-deletion-policy",
+///     locationId: "nam5",
+///     type: "FIRESTORE_NATIVE",
+///     deleteProtectionState: "DELETE_PROTECTION_DISABLED",
+///     deletionPolicy: "DELETE",
+/// });
+/// const my_index = new gcp.firestore.Index("my-index", {
+///     project: "my-project-name",
+///     database: database.name,
+///     collection: "atestcollection",
+///     fields: [
+///         {
+///             fieldPath: "name",
+///             order: "ASCENDING",
+///         },
+///         {
+///             fieldPath: "description",
+///             order: "DESCENDING",
+///         },
+///     ],
+///     deletionPolicy: "PREVENT",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// database = gcp.firestore.Database("database",
+///     project="my-project-name",
+///     name="database-id-deletion-policy",
+///     location_id="nam5",
+///     type="FIRESTORE_NATIVE",
+///     delete_protection_state="DELETE_PROTECTION_DISABLED",
+///     deletion_policy="DELETE")
+/// my_index = gcp.firestore.Index("my-index",
+///     project="my-project-name",
+///     database=database.name,
+///     collection="atestcollection",
+///     fields=[
+///         {
+///             "field_path": "name",
+///             "order": "ASCENDING",
+///         },
+///         {
+///             "field_path": "description",
+///             "order": "DESCENDING",
+///         },
+///     ],
+///     deletion_policy="PREVENT")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var database = new Gcp.Firestore.Database("database", new()
+///     {
+///         Project = "my-project-name",
+///         Name = "database-id-deletion-policy",
+///         LocationId = "nam5",
+///         Type = "FIRESTORE_NATIVE",
+///         DeleteProtectionState = "DELETE_PROTECTION_DISABLED",
+///         DeletionPolicy = "DELETE",
+///     });
+///
+///     var my_index = new Gcp.Firestore.Index("my-index", new()
+///     {
+///         Project = "my-project-name",
+///         Database = database.Name,
+///         Collection = "atestcollection",
+///         Fields = new[]
+///         {
+///             new Gcp.Firestore.Inputs.IndexFieldArgs
+///             {
+///                 FieldPath = "name",
+///                 Order = "ASCENDING",
+///             },
+///             new Gcp.Firestore.Inputs.IndexFieldArgs
+///             {
+///                 FieldPath = "description",
+///                 Order = "DESCENDING",
+///             },
+///         },
+///         DeletionPolicy = "PREVENT",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		database, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+/// 			Project:               pulumi.String("my-project-name"),
+/// 			Name:                  pulumi.String("database-id-deletion-policy"),
+/// 			LocationId:            pulumi.String("nam5"),
+/// 			Type:                  pulumi.String("FIRESTORE_NATIVE"),
+/// 			DeleteProtectionState: pulumi.String("DELETE_PROTECTION_DISABLED"),
+/// 			DeletionPolicy:        pulumi.String("DELETE"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = firestore.NewIndex(ctx, "my-index", &firestore.IndexArgs{
+/// 			Project:    pulumi.String("my-project-name"),
+/// 			Database:   database.Name,
+/// 			Collection: pulumi.String("atestcollection"),
+/// 			Fields: firestore.IndexFieldArray{
+/// 				&firestore.IndexFieldArgs{
+/// 					FieldPath: pulumi.String("name"),
+/// 					Order:     pulumi.String("ASCENDING"),
+/// 				},
+/// 				&firestore.IndexFieldArgs{
+/// 					FieldPath: pulumi.String("description"),
+/// 					Order:     pulumi.String("DESCENDING"),
+/// 				},
+/// 			},
+/// 			DeletionPolicy: pulumi.String("PREVENT"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project                 = "my-project-name"
+///   name                    = "database-id-deletion-policy"
+///   location_id             = "nam5"
+///   type                    = "FIRESTORE_NATIVE"
+///   delete_protection_state = "DELETE_PROTECTION_DISABLED"
+///   deletion_policy         = "DELETE"
+/// }
+/// resource "gcp_firestore_index" "my-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project    = "my-project-name"
+///   database   = gcp_firestore_database.database.name
+///   collection = "atestcollection"
+///   fields {
+///     field_path = "name"
+///     order      = "ASCENDING"
+///   }
+///   fields {
+///     field_path = "description"
+///     order      = "DESCENDING"
+///   }
+///   deletion_policy = "PREVENT"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.firestore.Database;
+/// import com.pulumi.gcp.firestore.DatabaseArgs;
+/// import com.pulumi.gcp.firestore.Index;
+/// import com.pulumi.gcp.firestore.IndexArgs;
+/// import com.pulumi.gcp.firestore.inputs.IndexFieldArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var database = new Database("database", DatabaseArgs.builder()
+///             .project("my-project-name")
+///             .name("database-id-deletion-policy")
+///             .locationId("nam5")
+///             .type("FIRESTORE_NATIVE")
+///             .deleteProtectionState("DELETE_PROTECTION_DISABLED")
+///             .deletionPolicy("DELETE")
+///             .build());
+///
+///         var my_index = new Index("my-index", IndexArgs.builder()
+///             .project("my-project-name")
+///             .database(database.name())
+///             .collection("atestcollection")
+///             .fields(
+///                 IndexFieldArgs.builder()
+///                     .fieldPath("name")
+///                     .order("ASCENDING")
+///                     .build(),
+///                 IndexFieldArgs.builder()
+///                     .fieldPath("description")
+///                     .order("DESCENDING")
+///                     .build())
+///             .deletionPolicy("PREVENT")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   database:
+///     type: gcp:firestore:Database
+///     properties:
+///       project: my-project-name
+///       name: database-id-deletion-policy
+///       locationId: nam5
+///       type: FIRESTORE_NATIVE
+///       deleteProtectionState: DELETE_PROTECTION_DISABLED
+///       deletionPolicy: DELETE
+///   my-index:
+///     type: gcp:firestore:Index
+///     properties:
+///       project: my-project-name
+///       database: ${database.name}
+///       collection: atestcollection
+///       fields:
+///         - fieldPath: name
+///           order: ASCENDING
+///         - fieldPath: description
+///           order: DESCENDING
+///       deletionPolicy: PREVENT
+/// ```
+///
 ///
 /// ### Firestore Index Text Search
 ///
@@ -2283,7 +2601,7 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2332,7 +2650,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2341,6 +2659,9 @@ import 'index_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "text-search-database-id"
 ///   location_id             = "nam5"
@@ -2350,6 +2671,9 @@ import 'index_state.dart';
 ///   deletion_policy         = "DELETE"
 /// }
 /// resource "gcp_firestore_index" "my-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "my-project-name"
 ///   database    = gcp_firestore_database.database.name
 ///   collection  = "atestcollection"
@@ -2361,8 +2685,8 @@ import 'index_state.dart';
 ///     search_config = {
 ///       text_spec = {
 ///         index_specs = [{
-///           "indexType" = "TOKENIZED"
-///           "matchType" = "MATCH_GLOBALLY"
+///           index_type = "TOKENIZED"
+///           match_type = "MATCH_GLOBALLY"
 ///         }]
 ///       }
 ///     }
@@ -2458,6 +2782,7 @@ import 'index_state.dart';
 ///                 - indexType: TOKENIZED
 ///                   matchType: MATCH_GLOBALLY
 /// ```
+///
 ///
 /// ### Firestore Index Suppress Geojson Indexing
 ///
@@ -2567,7 +2892,7 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2610,7 +2935,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2619,6 +2944,9 @@ import 'index_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "suppress-geojson-indexing-database-id"
 ///   location_id             = "nam5"
@@ -2628,6 +2956,9 @@ import 'index_state.dart';
 ///   deletion_policy         = "DELETE"
 /// }
 /// resource "gcp_firestore_index" "my-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "my-project-name"
 ///   database    = gcp_firestore_database.database.name
 ///   collection  = "atestcollection"
@@ -2724,6 +3055,7 @@ import 'index_state.dart';
 ///             geoSpec:
 ///               geoJsonIndexingDisabled: true
 /// ```
+///
 ///
 /// ### Firestore Index Geo Search
 ///
@@ -2836,7 +3168,7 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2880,7 +3212,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2889,6 +3221,9 @@ import 'index_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "geo-search-database-id"
 ///   location_id             = "nam5"
@@ -2898,6 +3233,9 @@ import 'index_state.dart';
 ///   deletion_policy         = "DELETE"
 /// }
 /// resource "gcp_firestore_index" "my-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "my-project-name"
 ///   database    = gcp_firestore_database.database.name
 ///   collection  = "atestcollection"
@@ -3068,7 +3406,7 @@ class Index extends pulumi.CustomResource {
           'gcp:firestore/index:Index',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     apiScope = registerOutput<String?>('apiScope');
     collection = registerOutput<String>('collection');

@@ -35,3 +35,6 @@ export 'parametermanager/regional_parameter_state.dart';
 export 'parametermanager/regional_parameter_version.dart';
 export 'parametermanager/regional_parameter_version_args.dart';
 export 'parametermanager/regional_parameter_version_state.dart';
+export 'parametermanager/template.dart';
+export 'parametermanager/template_args.dart';
+export 'parametermanager/template_state.dart';

@@ -45,7 +45,7 @@ import 'get_instance_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/memorystore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -63,7 +63,7 @@ import 'get_instance_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -71,7 +71,7 @@ import 'get_instance_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_memorystore_getaclpolicy" "qa" {
+/// data "gcp_memorystore_acl_policy" "qa" {
 ///   acl_policy_id = "my-acl-policy"
 ///   location      = "us-central1"
 /// }
@@ -173,7 +173,7 @@ pulumi.Output<GetAclPolicyResult> getAclPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/memorystore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -188,7 +188,7 @@ pulumi.Output<GetAclPolicyResult> getAclPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -196,7 +196,7 @@ pulumi.Output<GetAclPolicyResult> getAclPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_memorystore_getinstance" "qa" {
+/// data "gcp_memorystore_instance" "qa" {
 /// }
 /// ```
 /// ```java

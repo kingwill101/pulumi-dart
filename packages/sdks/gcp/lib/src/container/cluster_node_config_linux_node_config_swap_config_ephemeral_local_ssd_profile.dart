@@ -25,8 +25,8 @@ class ClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile {
 
   factory ClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile(
-      swapSizeGib: (() { final guardedValue = map['swapSizeGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      swapSizePercent: (() { final guardedValue = map['swapSizePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      swapSizeGib: (() { final guardedValue = map['swapSizeGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      swapSizePercent: (() { final guardedValue = map['swapSizePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

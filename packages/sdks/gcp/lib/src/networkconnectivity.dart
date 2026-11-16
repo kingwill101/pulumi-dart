@@ -16,6 +16,7 @@ export 'networkconnectivity/group_auto_accept.dart';
 export 'networkconnectivity/group_state.dart';
 export 'networkconnectivity/hub.dart';
 export 'networkconnectivity/hub_args.dart';
+export 'networkconnectivity/hub_export_psc_config.dart';
 export 'networkconnectivity/hub_iam_binding.dart';
 export 'networkconnectivity/hub_iam_binding_args.dart';
 export 'networkconnectivity/hub_iam_binding_condition.dart';

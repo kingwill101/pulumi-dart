@@ -39,10 +39,10 @@ class VMwareClusterLoadBalancerManualLbConfig {
 
   factory VMwareClusterLoadBalancerManualLbConfig.fromMap(Map<String, dynamic> map) {
     return VMwareClusterLoadBalancerManualLbConfig(
-      controlPlaneNodePort: (() { final guardedValue = map['controlPlaneNodePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      ingressHttpNodePort: (() { final guardedValue = map['ingressHttpNodePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      ingressHttpsNodePort: (() { final guardedValue = map['ingressHttpsNodePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      konnectivityServerNodePort: (() { final guardedValue = map['konnectivityServerNodePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      controlPlaneNodePort: (() { final guardedValue = map['controlPlaneNodePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      ingressHttpNodePort: (() { final guardedValue = map['ingressHttpNodePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      ingressHttpsNodePort: (() { final guardedValue = map['ingressHttpsNodePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      konnectivityServerNodePort: (() { final guardedValue = map['konnectivityServerNodePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

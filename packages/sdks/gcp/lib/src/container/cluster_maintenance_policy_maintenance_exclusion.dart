@@ -4,17 +4,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_maintenance_policy_maintenance_exclusion_exclusion_options.dart';
 
 class ClusterMaintenancePolicyMaintenanceExclusion {
+  /// The end time of the exclusion window, in RFC3339 format. Exactly one of `endTime` and `exclusion_options.end_time_behavior` should be specified.
   final pulumi.Input<String?>? endTime;
+  /// The name of the maintenance exclusion.
   final pulumi.Input<String> exclusionName;
-  /// MaintenanceExclusionOptions provides maintenance exclusion related options.
+  /// MaintenanceExclusionOptions provides maintenance exclusion related options. Structure is documented below.
   final pulumi.Input<ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions?>? exclusionOptions;
+  /// The start time of the exclusion window, in RFC3339 format.
   final pulumi.Input<String> startTime;
 
   /// Creates a new [ClusterMaintenancePolicyMaintenanceExclusion].
-  /// [endTime] Optional.
-  /// [exclusionName] Required.
-  /// [exclusionOptions] MaintenanceExclusionOptions provides maintenance exclusion related options.
-  /// [startTime] Required.
+  /// [endTime] The end time of the exclusion window, in RFC3339 format. Exactly one of `endTime` and `exclusion_options.end_time_behavior` should be specified.
+  /// [exclusionName] The name of the maintenance exclusion.
+  /// [exclusionOptions] MaintenanceExclusionOptions provides maintenance exclusion related options. Structure is documented below.
+  /// [startTime] The start time of the exclusion window, in RFC3339 format.
   const ClusterMaintenancePolicyMaintenanceExclusion({
     this.endTime,
     required this.exclusionName,

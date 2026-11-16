@@ -33,6 +33,7 @@ import 'notification_channel_state.dart';
 /// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `sensitive_labels.auth_token_wo`, `sensitive_labels.password_wo`, `sensitive_labels.service_key_wo`.
 /// Read more about Write-only Arguments.
 ///
+///
 /// ## Example Usage
 ///
 /// ### Notification Channel Basic
@@ -89,7 +90,7 @@ import 'notification_channel_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -111,7 +112,7 @@ import 'notification_channel_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -119,7 +120,10 @@ import 'notification_channel_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_monitoring_notificationchannel" "basic" {
+/// resource "gcp_monitoring_notification_channel" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Test Notification Channel"
 ///   type         = "email"
 ///   labels = {
@@ -170,6 +174,7 @@ import 'notification_channel_state.dart';
 ///         email_address: fake_email@blahblah.com
 ///       forceDelete: false
 /// ```
+///
 ///
 /// ### Notification Channel Sensitive
 ///
@@ -232,7 +237,7 @@ import 'notification_channel_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -256,7 +261,7 @@ import 'notification_channel_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -264,7 +269,10 @@ import 'notification_channel_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_monitoring_notificationchannel" "default" {
+/// resource "gcp_monitoring_notification_channel" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Test Slack Channel"
 ///   type         = "slack"
 ///   labels = {
@@ -396,7 +404,7 @@ class NotificationChannel extends pulumi.CustomResource {
           'gcp:monitoring/notificationChannel:NotificationChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

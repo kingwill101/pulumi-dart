@@ -78,7 +78,7 @@ class ToolDataStoreTool {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       engineSource: (() { final guardedValue = map['engineSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ToolDataStoreToolEngineSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       filterParameterBehavior: (() { final guardedValue = map['filterParameterBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxResults: (() { final guardedValue = map['maxResults']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxResults: (() { final guardedValue = map['maxResults']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       modalityConfigs: (() { final guardedValue = map['modalityConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ToolDataStoreToolModalityConfig>(guardedValue, (value) => ToolDataStoreToolModalityConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );

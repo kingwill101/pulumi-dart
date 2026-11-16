@@ -5,6 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AnalystAgentPersonaMcpDataSource {
   /// Input only. The API key of the MCP server.
   final pulumi.Input<String?>? apiKey;
+  /// The HTTP header when the API key is passed in a request header
+  /// (e.g. 'x-api-key', 'api-key', 'X-Auth-Token').
+  final pulumi.Input<String?>? apiKeyHeader;
   /// The API key parameter name.
   final pulumi.Input<String?>? apiKeyName;
   /// The client ID for authentication.
@@ -26,6 +29,7 @@ class AnalystAgentPersonaMcpDataSource {
 
   /// Creates a new [AnalystAgentPersonaMcpDataSource].
   /// [apiKey] Input only. The API key of the MCP server.
+  /// [apiKeyHeader] The HTTP header when the API key is passed in a request header
   /// [apiKeyName] The API key parameter name.
   /// [clientId] The client ID for authentication.
   /// [clientSecret] Input only. The client secret for authentication.
@@ -37,6 +41,7 @@ class AnalystAgentPersonaMcpDataSource {
   /// [serverUrl] The URL of the MCP server.
   const AnalystAgentPersonaMcpDataSource({
     this.apiKey,
+    this.apiKeyHeader,
     this.apiKeyName,
     this.clientId,
     this.clientSecret,
@@ -51,6 +56,7 @@ class AnalystAgentPersonaMcpDataSource {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiKey': ?apiKey,
+      'apiKeyHeader': ?apiKeyHeader,
       'apiKeyName': ?apiKeyName,
       'clientId': ?clientId,
       'clientSecret': ?clientSecret,
@@ -66,6 +72,7 @@ class AnalystAgentPersonaMcpDataSource {
   factory AnalystAgentPersonaMcpDataSource.fromMap(Map<String, dynamic> map) {
     return AnalystAgentPersonaMcpDataSource(
       apiKey: (() { final guardedValue = map['apiKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      apiKeyHeader: (() { final guardedValue = map['apiKeyHeader']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       apiKeyName: (() { final guardedValue = map['apiKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clientSecret: (() { final guardedValue = map['clientSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

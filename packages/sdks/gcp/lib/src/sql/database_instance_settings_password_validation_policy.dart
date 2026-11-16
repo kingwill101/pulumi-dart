@@ -50,9 +50,9 @@ class DatabaseInstanceSettingsPasswordValidationPolicy {
       complexity: (() { final guardedValue = map['complexity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disallowUsernameSubstring: (() { final guardedValue = map['disallowUsernameSubstring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enablePasswordPolicy: pulumi.Input.fromValue(map['enablePasswordPolicy'] as bool),
-      minLength: (() { final guardedValue = map['minLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minLength: (() { final guardedValue = map['minLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       passwordChangeInterval: (() { final guardedValue = map['passwordChangeInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      reuseInterval: (() { final guardedValue = map['reuseInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      reuseInterval: (() { final guardedValue = map['reuseInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

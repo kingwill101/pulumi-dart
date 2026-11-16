@@ -76,9 +76,9 @@ class RouterBgp {
       advertiseMode: (() { final guardedValue = map['advertiseMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       advertisedGroups: (() { final guardedValue = map['advertisedGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       advertisedIpRanges: (() { final guardedValue = map['advertisedIpRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RouterBgpAdvertisedIpRange>(guardedValue, (value) => RouterBgpAdvertisedIpRange.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      asn: pulumi.Input.fromValue((map['asn'] as num).toInt()),
+      asn: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['asn'])),
       identifierRange: (() { final guardedValue = map['identifierRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      keepaliveInterval: (() { final guardedValue = map['keepaliveInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      keepaliveInterval: (() { final guardedValue = map['keepaliveInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -11,6 +11,7 @@ import 'cloud_control_state.dart';
 ///
 /// * [API documentation](https://docs.cloud.google.com/security-command-center/docs/reference/cloudsecuritycompliance/rest/v1/organizations.locations.cloudControls)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Cloudsecuritycompliance Cloudcontrol Org Basic
@@ -543,7 +544,7 @@ import 'cloud_control_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudsecuritycompliance"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -718,7 +719,7 @@ import 'cloud_control_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -726,7 +727,10 @@ import 'cloud_control_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_cloudsecuritycompliance_cloudcontrol" "example" {
+/// resource "gcp_cloudsecuritycompliance_cloud_control" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent                    = "organizations/123456789"
 ///   location                  = "global"
 ///   cloud_control_id          = "example-cloudcontrol"
@@ -779,7 +783,7 @@ import 'cloud_control_state.dart';
 ///     validation = {
 ///       allowed_values = {
 ///         values = [{
-///           "boolValue" = true
+///           bool_value = true
 ///         }]
 ///       }
 ///     }
@@ -819,12 +823,12 @@ import 'cloud_control_state.dart';
 ///     validation = {
 ///       allowed_values = {
 ///         values = [{
-///           "stringListValue" = {
-///             "values" = ["us-central1", "us-east1"]
+///           string_list_value = {
+///             values = ["us-central1", "us-east1"]
 ///           }
 ///           }, {
-///           "stringListValue" = {
-///             "values" = ["us-west1", "us-west2"]
+///           string_list_value = {
+///             values = ["us-west1", "us-west2"]
 ///           }
 ///         }]
 ///       }
@@ -842,11 +846,11 @@ import 'cloud_control_state.dart';
 ///     validation = {
 ///       allowed_values = {
 ///         values = [{
-///           "stringValue" = "production"
+///           string_value = "production"
 ///           }, {
-///           "stringValue" = "staging"
+///           string_value = "staging"
 ///           }, {
-///           "numberValue" = 1
+///           number_value = 1
 ///         }]
 ///       }
 ///     }
@@ -1133,6 +1137,7 @@ import 'cloud_control_state.dart';
 ///                 - stringValue: staging
 ///                 - numberValue: 1
 /// ```
+///
 ///
 /// ### Cloudsecuritycompliance Cloudcontrol Project Basic
 ///
@@ -1668,8 +1673,8 @@ import 'cloud_control_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudsecuritycompliance"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1848,7 +1853,7 @@ import 'cloud_control_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1856,11 +1861,14 @@ import 'cloud_control_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_cloudsecuritycompliance_cloudcontrol" "example" {
-///   parent                    ="projects/${data.gcp_organizations_getproject.project.number}"
+/// resource "gcp_cloudsecuritycompliance_cloud_control" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent                    ="projects/${data.gcp_organizations_project.project.number}"
 ///   location                  = "global"
 ///   cloud_control_id          = "example-cloudcontrol"
 ///   display_name              = "TF test CloudControl Name"
@@ -1912,7 +1920,7 @@ import 'cloud_control_state.dart';
 ///     validation = {
 ///       allowed_values = {
 ///         values = [{
-///           "boolValue" = true
+///           bool_value = true
 ///         }]
 ///       }
 ///     }
@@ -1952,12 +1960,12 @@ import 'cloud_control_state.dart';
 ///     validation = {
 ///       allowed_values = {
 ///         values = [{
-///           "stringListValue" = {
-///             "values" = ["us-central1", "us-east1"]
+///           string_list_value = {
+///             values = ["us-central1", "us-east1"]
 ///           }
 ///           }, {
-///           "stringListValue" = {
-///             "values" = ["us-west1", "us-west2"]
+///           string_list_value = {
+///             values = ["us-west1", "us-west2"]
 ///           }
 ///         }]
 ///       }
@@ -1975,11 +1983,11 @@ import 'cloud_control_state.dart';
 ///     validation = {
 ///       allowed_values = {
 ///         values = [{
-///           "stringValue" = "production"
+///           string_value = "production"
 ///           }, {
-///           "stringValue" = "staging"
+///           string_value = "staging"
 ///           }, {
-///           "numberValue" = 1
+///           number_value = 1
 ///         }]
 ///       }
 ///     }
@@ -2276,6 +2284,7 @@ import 'cloud_control_state.dart';
 ///       function: gcp:organizations:getProject
 ///       arguments: {}
 /// ```
+///
 ///
 /// ### Cloudsecuritycompliance Cloudcontrol Org Basic Backward
 ///
@@ -2807,7 +2816,7 @@ import 'cloud_control_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudsecuritycompliance"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2982,7 +2991,7 @@ import 'cloud_control_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2990,7 +2999,10 @@ import 'cloud_control_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_cloudsecuritycompliance_cloudcontrol" "example" {
+/// resource "gcp_cloudsecuritycompliance_cloud_control" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization              = "123456789"
 ///   location                  = "global"
 ///   cloud_control_id          = "example-cloudcontrol"
@@ -3043,7 +3055,7 @@ import 'cloud_control_state.dart';
 ///     validation = {
 ///       allowed_values = {
 ///         values = [{
-///           "boolValue" = true
+///           bool_value = true
 ///         }]
 ///       }
 ///     }
@@ -3083,12 +3095,12 @@ import 'cloud_control_state.dart';
 ///     validation = {
 ///       allowed_values = {
 ///         values = [{
-///           "stringListValue" = {
-///             "values" = ["us-central1", "us-east1"]
+///           string_list_value = {
+///             values = ["us-central1", "us-east1"]
 ///           }
 ///           }, {
-///           "stringListValue" = {
-///             "values" = ["us-west1", "us-west2"]
+///           string_list_value = {
+///             values = ["us-west1", "us-west2"]
 ///           }
 ///         }]
 ///       }
@@ -3106,11 +3118,11 @@ import 'cloud_control_state.dart';
 ///     validation = {
 ///       allowed_values = {
 ///         values = [{
-///           "stringValue" = "production"
+///           string_value = "production"
 ///           }, {
-///           "stringValue" = "staging"
+///           string_value = "staging"
 ///           }, {
-///           "numberValue" = 1
+///           number_value = 1
 ///         }]
 ///       }
 ///     }
@@ -3493,7 +3505,7 @@ class CloudControl extends pulumi.CustomResource {
           'gcp:cloudsecuritycompliance/cloudControl:CloudControl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     categories = registerOutput<List<String>?>('categories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     cloudControlId = registerOutput<String>('cloudControlId');

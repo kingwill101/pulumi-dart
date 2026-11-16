@@ -40,7 +40,7 @@ class SSLCertificateState {
   /// Resulting name for a `namePrefix` &lt;= 37 characters:
   /// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
   /// Resulting name for a `namePrefix` 38 - 54 characters:
-  /// `namePrefix` + YYmmdd + 3 digit incremental counter
+  /// `namePrefix` + 9 random lowercase alphanumeric characters
   final pulumi.Input<String?>? namePrefix;
   /// The write-only private key in PEM format.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -111,7 +111,7 @@ class SSLCertificateState {
   factory SSLCertificateState.fromMap(Map<String, dynamic> map) {
     return SSLCertificateState(
       certificate: (() { final guardedValue = map['certificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      certificateId: (() { final guardedValue = map['certificateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      certificateId: (() { final guardedValue = map['certificateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

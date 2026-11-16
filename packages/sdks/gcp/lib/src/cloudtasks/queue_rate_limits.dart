@@ -39,8 +39,8 @@ class QueueRateLimits {
 
   factory QueueRateLimits.fromMap(Map<String, dynamic> map) {
     return QueueRateLimits(
-      maxBurstSize: (() { final guardedValue = map['maxBurstSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxConcurrentDispatches: (() { final guardedValue = map['maxConcurrentDispatches']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxBurstSize: (() { final guardedValue = map['maxBurstSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxConcurrentDispatches: (() { final guardedValue = map['maxConcurrentDispatches']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       maxDispatchesPerSecond: (() { final guardedValue = map['maxDispatchesPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }

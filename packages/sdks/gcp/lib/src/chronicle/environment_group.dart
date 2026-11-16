@@ -11,6 +11,7 @@ import 'environment_group_state.dart';
 /// * How-to Guides
 /// * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Chronicle Environmentgroup Basic
@@ -66,7 +67,7 @@ import 'environment_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -89,7 +90,7 @@ import 'environment_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -97,7 +98,10 @@ import 'environment_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_chronicle_environmentgroup" "sample" {
+/// resource "gcp_chronicle_environment_group" "sample" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us"
 ///   instance         = "00000000-0000-0000-0000-000000000000"
 ///   display_name     = "myEnvironmentGroup"
@@ -209,7 +213,7 @@ class EnvironmentGroup extends pulumi.CustomResource {
           'gcp:chronicle/environmentGroup:EnvironmentGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');

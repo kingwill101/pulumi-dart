@@ -21,6 +21,7 @@ import 'slo_windows_based_sli.dart';
 /// * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 /// * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Monitoring Slo Appengine
@@ -112,7 +113,7 @@ import 'slo_windows_based_sli.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -148,7 +149,7 @@ import 'slo_windows_based_sli.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -156,12 +157,15 @@ import 'slo_windows_based_sli.dart';
 ///   }
 /// }
 ///
-/// data "gcp_monitoring_getappengineservice" "default" {
+/// data "gcp_monitoring_app_engine_service" "default" {
 ///   module_id = "default"
 /// }
 ///
 /// resource "gcp_monitoring_slo" "appeng_slo" {
-///   service         = data.gcp_monitoring_getappengineservice.default.service_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service         = data.gcp_monitoring_app_engine_service.default.service_id
 ///   slo_id          = "ae-slo"
 ///   display_name    = "Test SLO for App Engine"
 ///   goal            = 0.9
@@ -250,6 +254,7 @@ import 'slo_windows_based_sli.dart';
 ///       arguments:
 ///         moduleId: default
 /// ```
+///
 ///
 /// ### Monitoring Slo Request Based
 ///
@@ -341,7 +346,7 @@ import 'slo_windows_based_sli.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -377,7 +382,7 @@ import 'slo_windows_based_sli.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -385,12 +390,18 @@ import 'slo_windows_based_sli.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_monitoring_customservice" "customsrv" {
+/// resource "gcp_monitoring_custom_service" "customsrv" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id   = "custom-srv-request-slos"
 ///   display_name = "My Custom Service"
 /// }
 /// resource "gcp_monitoring_slo" "request_based_slo" {
-///   service             = gcp_monitoring_customservice.customsrv.service_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service             = gcp_monitoring_custom_service.customsrv.service_id
 ///   slo_id              = "consumed-api-slo"
 ///   display_name        = "Test SLO with request based SLI (good total ratio)"
 ///   goal                = 0.9
@@ -477,6 +488,7 @@ import 'slo_windows_based_sli.dart';
 ///           range:
 ///             max: 0.5
 /// ```
+///
 ///
 /// ### Monitoring Slo Windows Based Good Bad Metric Filter
 ///
@@ -572,7 +584,7 @@ import 'slo_windows_based_sli.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -614,7 +626,7 @@ import 'slo_windows_based_sli.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -625,12 +637,18 @@ import 'slo_windows_based_sli.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_monitoring_customservice" "customsrv" {
+/// resource "gcp_monitoring_custom_service" "customsrv" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id   = "custom-srv-windows-slos"
 ///   display_name = "My Custom Service"
 /// }
 /// resource "gcp_monitoring_slo" "windows_based" {
-///   service         = gcp_monitoring_customservice.customsrv.service_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service         = gcp_monitoring_custom_service.customsrv.service_id
 ///   display_name    = "Test SLO with window based SLI"
 ///   goal            = 0.95
 ///   calendar_period = "FORTNIGHT"
@@ -717,6 +735,7 @@ import 'slo_windows_based_sli.dart';
 ///                 - resource.type="uptime_url"
 ///             return: result
 /// ```
+///
 ///
 /// ### Monitoring Slo Windows Based Metric Mean
 ///
@@ -829,7 +848,7 @@ import 'slo_windows_based_sli.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -876,7 +895,7 @@ import 'slo_windows_based_sli.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -887,12 +906,18 @@ import 'slo_windows_based_sli.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_monitoring_customservice" "customsrv" {
+/// resource "gcp_monitoring_custom_service" "customsrv" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id   = "custom-srv-windows-slos"
 ///   display_name = "My Custom Service"
 /// }
 /// resource "gcp_monitoring_slo" "windows_based" {
-///   service             = gcp_monitoring_customservice.customsrv.service_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service             = gcp_monitoring_custom_service.customsrv.service_id
 ///   display_name        = "Test SLO with window based SLI"
 ///   goal                = 0.9
 ///   rolling_period_days = 20
@@ -994,6 +1019,7 @@ import 'slo_windows_based_sli.dart';
 ///           range:
 ///             max: 5
 /// ```
+///
 ///
 /// ### Monitoring Slo Windows Based Metric Sum
 ///
@@ -1106,7 +1132,7 @@ import 'slo_windows_based_sli.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1153,7 +1179,7 @@ import 'slo_windows_based_sli.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1164,12 +1190,18 @@ import 'slo_windows_based_sli.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_monitoring_customservice" "customsrv" {
+/// resource "gcp_monitoring_custom_service" "customsrv" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id   = "custom-srv-windows-slos"
 ///   display_name = "My Custom Service"
 /// }
 /// resource "gcp_monitoring_slo" "windows_based" {
-///   service             = gcp_monitoring_customservice.customsrv.service_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service             = gcp_monitoring_custom_service.customsrv.service_id
 ///   display_name        = "Test SLO with window based SLI"
 ///   goal                = 0.9
 ///   rolling_period_days = 20
@@ -1271,6 +1303,7 @@ import 'slo_windows_based_sli.dart';
 ///           range:
 ///             max: 5000
 /// ```
+///
 ///
 /// ### Monitoring Slo Windows Based Ratio Threshold
 ///
@@ -1403,7 +1436,7 @@ import 'slo_windows_based_sli.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1456,7 +1489,7 @@ import 'slo_windows_based_sli.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1467,12 +1500,18 @@ import 'slo_windows_based_sli.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_monitoring_customservice" "customsrv" {
+/// resource "gcp_monitoring_custom_service" "customsrv" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id   = "custom-srv-windows-slos"
 ///   display_name = "My Custom Service"
 /// }
 /// resource "gcp_monitoring_slo" "windows_based" {
-///   service             = gcp_monitoring_customservice.customsrv.service_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service             = gcp_monitoring_custom_service.customsrv.service_id
 ///   display_name        = "Test SLO with window based SLI"
 ///   goal                = 0.9
 ///   rolling_period_days = 20
@@ -1686,7 +1725,7 @@ class Slo extends pulumi.CustomResource {
           'gcp:monitoring/slo:Slo',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     basicSli = registerOutput<SloBasicSli?>('basicSli', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SloBasicSli.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     calendarPeriod = registerOutput<String?>('calendarPeriod');

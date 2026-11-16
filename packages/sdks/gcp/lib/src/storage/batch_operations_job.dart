@@ -13,6 +13,7 @@ import 'batch_operations_job_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Storage Batch Operations
@@ -119,7 +120,7 @@ import 'batch_operations_job_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -160,7 +161,7 @@ import 'batch_operations_job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -169,11 +170,17 @@ import 'batch_operations_job_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "tf-sample-bucket"
 ///   location      = "us-central1"
 ///   force_destroy = true
 /// }
-/// resource "gcp_storage_batchoperationsjob" "tf-job" {
+/// resource "gcp_storage_batch_operations_job" "tf-job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   job_id = "tf-job"
 ///   bucket_list = {
 ///     buckets = {
@@ -266,6 +273,7 @@ import 'batch_operations_job_state.dart';
 ///           key: value
 ///       deleteProtection: false
 /// ```
+///
 ///
 /// ### Storage Batch Operations Description
 ///
@@ -374,7 +382,7 @@ import 'batch_operations_job_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -416,7 +424,7 @@ import 'batch_operations_job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -425,11 +433,17 @@ import 'batch_operations_job_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "tf-sample-bucket"
 ///   location      = "us-central1"
 ///   force_destroy = true
 /// }
-/// resource "gcp_storage_batchoperationsjob" "tf-job" {
+/// resource "gcp_storage_batch_operations_job" "tf-job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   job_id      = "tf-job"
 ///   description = "A sample job description"
 ///   bucket_list = {
@@ -598,7 +612,7 @@ class BatchOperationsJob extends pulumi.CustomResource {
           'gcp:storage/batchOperationsJob:BatchOperationsJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     bucketList = registerOutput<BatchOperationsJobBucketList?>('bucketList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BatchOperationsJobBucketList.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     completeTime = registerOutput<String>('completeTime');

@@ -11,6 +11,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///
 /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networkFirewallPolicies/addRule)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Network Firewall Policy Rule
@@ -242,9 +243,9 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -294,7 +295,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// 		}
 /// 		basicValue, err := tags.NewTagValue(ctx, "basic_value", &tags.TagValueArgs{
 /// 			Description: pulumi.String("For valuename resources."),
-/// 			Parent:      basicKey.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent:      basicKey.ID(),
 /// 			ShortName:   pulumi.String("tag-value"),
 /// 		})
 /// 		if err != nil {
@@ -314,7 +315,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// 			},
 /// 			Match: &compute.NetworkFirewallPolicyRuleMatchArgs{
 /// 				SrcAddressGroups: pulumi.StringArray{
-/// 					basicGlobalNetworksecurityAddressGroup.ID().ToIDOutput().ToStringOutput(),
+/// 					basicGlobalNetworksecurityAddressGroup.ID(),
 /// 				},
 /// 				SrcIpRanges: pulumi.StringArray{
 /// 					pulumi.String("10.100.0.1/32"),
@@ -330,7 +331,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// 				},
 /// 				SrcSecureTags: compute.NetworkFirewallPolicyRuleMatchSrcSecureTagArray{
 /// 					&compute.NetworkFirewallPolicyRuleMatchSrcSecureTagArgs{
-/// 						Name: basicValue.ID().ToIDOutput().ToStringOutput(),
+/// 						Name: basicValue.ID(),
 /// 					},
 /// 				},
 /// 				Layer4Configs: compute.NetworkFirewallPolicyRuleMatchLayer4ConfigArray{
@@ -348,7 +349,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -356,7 +357,10 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_addressgroup" "basic_global_networksecurity_address_group" {
+/// resource "gcp_networksecurity_address_group" "basic_global_networksecurity_address_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "address-group"
 ///   parent      = "projects/my-project-name"
 ///   description = "Sample global networksecurity_address_group"
@@ -365,39 +369,51 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///   type        = "IPV4"
 ///   capacity    = 100
 /// }
-/// resource "gcp_compute_networkfirewallpolicy" "basic_network_firewall_policy" {
+/// resource "gcp_compute_network_firewall_policy" "basic_network_firewall_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "fw-policy"
 ///   description = "Sample global network firewall policy"
 ///   project     = "my-project-name"
 /// }
-/// resource "gcp_compute_networkfirewallpolicyrule" "primary" {
+/// resource "gcp_compute_network_firewall_policy_rule" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   action                  = "allow"
 ///   description             = "This is a simple rule description"
 ///   direction               = "INGRESS"
 ///   disabled                = false
 ///   enable_logging          = true
-///   firewall_policy         = gcp_compute_networkfirewallpolicy.basic_network_firewall_policy.name
+///   firewall_policy         = gcp_compute_network_firewall_policy.basic_network_firewall_policy.name
 ///   priority                = 1000
 ///   rule_name               = "test-rule"
 ///   target_service_accounts = ["my@service-account.com"]
 ///   match = {
-///     src_address_groups       = [gcp_networksecurity_addressgroup.basic_global_networksecurity_address_group.id]
+///     src_address_groups       = [gcp_networksecurity_address_group.basic_global_networksecurity_address_group.id]
 ///     src_ip_ranges            = ["10.100.0.1/32"]
 ///     src_fqdns                = ["google.com"]
 ///     src_region_codes         = ["US"]
 ///     src_threat_intelligences = ["iplist-known-malicious-ips"]
 ///     src_secure_tags = [{
-///       "name" = gcp_tags_tagvalue.basic_value.id
+///       name = gcp_tags_tag_value.basic_value.id
 ///     }]
 ///     layer4_configs = [{
-///       "ipProtocol" = "all"
+///       ip_protocol = "all"
 ///     }]
 ///   }
 /// }
 /// resource "gcp_compute_network" "basic_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "network"
 /// }
-/// resource "gcp_tags_tagkey" "basic_key" {
+/// resource "gcp_tags_tag_key" "basic_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "For keyname resources."
 ///   parent      = "organizations/123456789"
 ///   purpose     = "GCE_FIREWALL"
@@ -406,9 +422,12 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///     "network" ="my-project-name/${gcp_compute_network.basic_network.name}"
 ///   }
 /// }
-/// resource "gcp_tags_tagvalue" "basic_value" {
+/// resource "gcp_tags_tag_value" "basic_value" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "For valuename resources."
-///   parent      = gcp_tags_tagkey.basic_key.id
+///   parent      = gcp_tags_tag_key.basic_key.id
 ///   short_name  = "tag-value"
 /// }
 /// ```
@@ -581,6 +600,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///       shortName: tag-value
 /// ```
 ///
+///
 /// ### Network Firewall Policy Rule Network Scope Egress
 ///
 ///
@@ -685,7 +705,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -728,7 +748,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -736,25 +756,31 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_networkfirewallpolicy" "basic_network_firewall_policy" {
+/// resource "gcp_compute_network_firewall_policy" "basic_network_firewall_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "fw-policy"
 ///   description = "Sample global network firewall policy"
 ///   project     = "my-project-name"
 /// }
-/// resource "gcp_compute_networkfirewallpolicyrule" "primary" {
+/// resource "gcp_compute_network_firewall_policy_rule" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   action          = "allow"
 ///   description     = "This is a simple rule description"
 ///   direction       = "EGRESS"
 ///   disabled        = false
 ///   enable_logging  = true
-///   firewall_policy = gcp_compute_networkfirewallpolicy.basic_network_firewall_policy.name
+///   firewall_policy = gcp_compute_network_firewall_policy.basic_network_firewall_policy.name
 ///   priority        = 1000
 ///   rule_name       = "test-rule"
 ///   match = {
 ///     dest_ip_ranges     = ["10.100.0.1/32"]
 ///     dest_network_scope = "INTERNET"
 ///     layer4_configs = [{
-///       "ipProtocol" = "all"
+///       ip_protocol = "all"
 ///     }]
 ///   }
 /// }
@@ -838,6 +864,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///         layer4Configs:
 ///           - ipProtocol: all
 /// ```
+///
 ///
 /// ### Network Firewall Policy Rule Network Scope Ingress
 ///
@@ -956,7 +983,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -991,7 +1018,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// 				},
 /// 				SrcNetworkScope: pulumi.String("VPC_NETWORKS"),
 /// 				SrcNetworks: pulumi.StringArray{
-/// 					network.ID().ToIDOutput().ToStringOutput(),
+/// 					network.ID(),
 /// 				},
 /// 				Layer4Configs: compute.NetworkFirewallPolicyRuleMatchLayer4ConfigArray{
 /// 					&compute.NetworkFirewallPolicyRuleMatchLayer4ConfigArgs{
@@ -1008,7 +1035,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1016,18 +1043,24 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_networkfirewallpolicy" "basic_network_firewall_policy" {
+/// resource "gcp_compute_network_firewall_policy" "basic_network_firewall_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "fw-policy"
 ///   description = "Sample global network firewall policy"
 ///   project     = "my-project-name"
 /// }
-/// resource "gcp_compute_networkfirewallpolicyrule" "primary" {
+/// resource "gcp_compute_network_firewall_policy_rule" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   action          = "allow"
 ///   description     = "This is a simple rule description"
 ///   direction       = "INGRESS"
 ///   disabled        = false
 ///   enable_logging  = true
-///   firewall_policy = gcp_compute_networkfirewallpolicy.basic_network_firewall_policy.name
+///   firewall_policy = gcp_compute_network_firewall_policy.basic_network_firewall_policy.name
 ///   priority        = 1000
 ///   rule_name       = "test-rule"
 ///   match = {
@@ -1035,11 +1068,14 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///     src_network_scope = "VPC_NETWORKS"
 ///     src_networks      = [gcp_compute_network.network.id]
 ///     layer4_configs = [{
-///       "ipProtocol" = "all"
+///       ip_protocol = "all"
 ///     }]
 ///   }
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "network"
 /// }
 /// ```
@@ -1135,6 +1171,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///     properties:
 ///       name: network
 /// ```
+///
 ///
 /// ### Network Firewall Policy Rule Network Context Egress
 ///
@@ -1240,7 +1277,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1283,7 +1320,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1291,25 +1328,31 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_networkfirewallpolicy" "basic_network_firewall_policy" {
+/// resource "gcp_compute_network_firewall_policy" "basic_network_firewall_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "fw-policy"
 ///   description = "Sample global network firewall policy"
 ///   project     = "my-project-name"
 /// }
-/// resource "gcp_compute_networkfirewallpolicyrule" "primary" {
+/// resource "gcp_compute_network_firewall_policy_rule" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   action          = "allow"
 ///   description     = "This is a simple rule description"
 ///   direction       = "EGRESS"
 ///   disabled        = false
 ///   enable_logging  = true
-///   firewall_policy = gcp_compute_networkfirewallpolicy.basic_network_firewall_policy.name
+///   firewall_policy = gcp_compute_network_firewall_policy.basic_network_firewall_policy.name
 ///   priority        = 1000
 ///   rule_name       = "test-rule"
 ///   match = {
 ///     dest_ip_ranges       = ["10.100.0.1/32"]
 ///     dest_network_context = "INTERNET"
 ///     layer4_configs = [{
-///       "ipProtocol" = "all"
+///       ip_protocol = "all"
 ///     }]
 ///   }
 /// }
@@ -1393,6 +1436,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///         layer4Configs:
 ///           - ipProtocol: all
 /// ```
+///
 ///
 /// ### Network Firewall Policy Rule Network Context Ingress
 ///
@@ -1511,7 +1555,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1546,7 +1590,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// 				},
 /// 				SrcNetworkContext: pulumi.String("VPC_NETWORKS"),
 /// 				SrcNetworks: pulumi.StringArray{
-/// 					network.ID().ToIDOutput().ToStringOutput(),
+/// 					network.ID(),
 /// 				},
 /// 				Layer4Configs: compute.NetworkFirewallPolicyRuleMatchLayer4ConfigArray{
 /// 					&compute.NetworkFirewallPolicyRuleMatchLayer4ConfigArgs{
@@ -1563,7 +1607,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1571,18 +1615,24 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_networkfirewallpolicy" "basic_network_firewall_policy" {
+/// resource "gcp_compute_network_firewall_policy" "basic_network_firewall_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "fw-policy"
 ///   description = "Sample global network firewall policy"
 ///   project     = "my-project-name"
 /// }
-/// resource "gcp_compute_networkfirewallpolicyrule" "primary" {
+/// resource "gcp_compute_network_firewall_policy_rule" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   action          = "allow"
 ///   description     = "This is a simple rule description"
 ///   direction       = "INGRESS"
 ///   disabled        = false
 ///   enable_logging  = true
-///   firewall_policy = gcp_compute_networkfirewallpolicy.basic_network_firewall_policy.name
+///   firewall_policy = gcp_compute_network_firewall_policy.basic_network_firewall_policy.name
 ///   priority        = 1000
 ///   rule_name       = "test-rule"
 ///   match = {
@@ -1590,11 +1640,14 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///     src_network_context = "VPC_NETWORKS"
 ///     src_networks        = [gcp_compute_network.network.id]
 ///     layer4_configs = [{
-///       "ipProtocol" = "all"
+///       ip_protocol = "all"
 ///     }]
 ///   }
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "network"
 /// }
 /// ```
@@ -1691,6 +1744,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///       name: network
 /// ```
 ///
+///
 /// ### Network Firewall Policy Rule Target Type Internal Managed Lb
 ///
 ///
@@ -1772,7 +1826,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///     },
 /// });
 /// const globalAssoc = new gcp.compute.NetworkFirewallPolicyAssociation("global_assoc", {
-///     name: "global-policy-assoc-_27169",
+///     name: "global-policy-assoc",
 ///     firewallPolicy: fwPolicy.id,
 ///     attachmentTarget: net.id,
 /// });
@@ -1843,7 +1897,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///         }],
 ///     })
 /// global_assoc = gcp.compute.NetworkFirewallPolicyAssociation("global_assoc",
-///     name="global-policy-assoc-_27169",
+///     name="global-policy-assoc",
 ///     firewall_policy=fw_policy.id,
 ///     attachment_target=net.id)
 /// ```
@@ -1965,7 +2019,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///
 ///     var globalAssoc = new Gcp.Compute.NetworkFirewallPolicyAssociation("global_assoc", new()
 ///     {
-///         Name = "global-policy-assoc-_27169",
+///         Name = "global-policy-assoc",
 ///         FirewallPolicy = fwPolicy.Id,
 ///         AttachmentTarget = net.Id,
 ///     });
@@ -1976,7 +2030,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1992,7 +2046,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// 		backend, err := compute.NewSubnetwork(ctx, "backend", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("backend-subnet"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     net.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     net.ID(),
 /// 			IpCidrRange: pulumi.String("10.10.0.0/24"),
 /// 		})
 /// 		if err != nil {
@@ -2001,7 +2055,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// 		proxy, err := compute.NewSubnetwork(ctx, "proxy", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("proxy-subnet"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     net.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     net.ID(),
 /// 			IpCidrRange: pulumi.String("10.20.0.0/24"),
 /// 			Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
 /// 			Role:        pulumi.String("ACTIVE"),
@@ -2024,7 +2078,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// 			Region:              pulumi.String("us-central1"),
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-/// 			HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks:        _default.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2032,7 +2086,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// 		defaultRegionUrlMap, err := compute.NewRegionUrlMap(ctx, "default", &compute.RegionUrlMapArgs{
 /// 			Name:           pulumi.String("url-map"),
 /// 			Region:         pulumi.String("us-central1"),
-/// 			DefaultService: defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
+/// 			DefaultService: defaultRegionBackendService.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2040,7 +2094,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// 		defaultRegionTargetHttpProxy, err := compute.NewRegionTargetHttpProxy(ctx, "default", &compute.RegionTargetHttpProxyArgs{
 /// 			Name:   pulumi.String("target-http-proxy"),
 /// 			Region: pulumi.String("us-central1"),
-/// 			UrlMap: defaultRegionUrlMap.ID().ToIDOutput().ToStringOutput(),
+/// 			UrlMap: defaultRegionUrlMap.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2048,10 +2102,10 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// 		ilb, err := compute.NewForwardingRule(ctx, "ilb", &compute.ForwardingRuleArgs{
 /// 			Name:                pulumi.String("forwarding-rule"),
 /// 			Region:              pulumi.String("us-central1"),
-/// 			Network:             net.ID().ToIDOutput().ToStringOutput(),
-/// 			Subnetwork:          backend.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:             net.ID(),
+/// 			Subnetwork:          backend.ID(),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-/// 			Target:              defaultRegionTargetHttpProxy.ID().ToIDOutput().ToStringOutput(),
+/// 			Target:              defaultRegionTargetHttpProxy.ID(),
 /// 			IpProtocol:          pulumi.String("TCP"),
 /// 			PortRange:           pulumi.String("80"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -2074,7 +2128,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// 			Direction:      pulumi.String("INGRESS"),
 /// 			TargetType:     pulumi.String("INTERNAL_MANAGED_LB"),
 /// 			TargetForwardingRules: pulumi.StringArray{
-/// 				ilb.ID().ToIDOutput().ToStringOutput(),
+/// 				ilb.ID(),
 /// 			},
 /// 			Match: &compute.NetworkFirewallPolicyRuleMatchArgs{
 /// 				SrcIpRanges: pulumi.StringArray{
@@ -2091,9 +2145,9 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewNetworkFirewallPolicyAssociation(ctx, "global_assoc", &compute.NetworkFirewallPolicyAssociationArgs{
-/// 			Name:             pulumi.String("global-policy-assoc-_27169"),
-/// 			FirewallPolicy:   fwPolicy.ID().ToIDOutput().ToStringOutput(),
-/// 			AttachmentTarget: net.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:             pulumi.String("global-policy-assoc"),
+/// 			FirewallPolicy:   fwPolicy.ID(),
+/// 			AttachmentTarget: net.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2103,7 +2157,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2112,16 +2166,25 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "backend-subnet"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.net.id
 ///   ip_cidr_range = "10.10.0.0/24"
 /// }
 /// resource "gcp_compute_subnetwork" "proxy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "proxy-subnet"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.net.id
@@ -2129,62 +2192,86 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///   purpose       = "REGIONAL_MANAGED_PROXY"
 ///   role          = "ACTIVE"
 /// }
-/// resource "gcp_compute_regionhealthcheck" "default" {
+/// resource "gcp_compute_region_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "health-check"
 ///   region = "us-central1"
 ///   http_health_check = {
 ///     port = 80
 ///   }
 /// }
-/// resource "gcp_compute_regionbackendservice" "default" {
+/// resource "gcp_compute_region_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "backend-service"
 ///   region                = "us-central1"
 ///   protocol              = "HTTP"
 ///   load_balancing_scheme = "INTERNAL_MANAGED"
-///   health_checks         = gcp_compute_regionhealthcheck.default.id
+///   health_checks         = gcp_compute_region_health_check.default.id
 /// }
-/// resource "gcp_compute_regionurlmap" "default" {
+/// resource "gcp_compute_region_url_map" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "url-map"
 ///   region          = "us-central1"
-///   default_service = gcp_compute_regionbackendservice.default.id
+///   default_service = gcp_compute_region_backend_service.default.id
 /// }
-/// resource "gcp_compute_regiontargethttpproxy" "default" {
+/// resource "gcp_compute_region_target_http_proxy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "target-http-proxy"
 ///   region  = "us-central1"
-///   url_map = gcp_compute_regionurlmap.default.id
+///   url_map = gcp_compute_region_url_map.default.id
 /// }
-/// resource "gcp_compute_forwardingrule" "ilb" {
-///   depends_on            = [gcp_compute_subnetwork.proxy]
+/// resource "gcp_compute_forwarding_rule" "ilb" {
+///   depends_on = [gcp_compute_subnetwork.proxy]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "forwarding-rule"
 ///   region                = "us-central1"
 ///   network               = gcp_compute_network.net.id
 ///   subnetwork            = gcp_compute_subnetwork.backend.id
 ///   load_balancing_scheme = "INTERNAL_MANAGED"
-///   target                = gcp_compute_regiontargethttpproxy.default.id
+///   target                = gcp_compute_region_target_http_proxy.default.id
 ///   ip_protocol           = "TCP"
 ///   port_range            = "80"
 /// }
-/// resource "gcp_compute_networkfirewallpolicy" "fw_policy" {
+/// resource "gcp_compute_network_firewall_policy" "fw_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "fw-policy"
 ///   project = "my-project-name"
 /// }
-/// resource "gcp_compute_networkfirewallpolicyrule" "primary" {
-///   firewall_policy         = gcp_compute_networkfirewallpolicy.fw_policy.name
+/// resource "gcp_compute_network_firewall_policy_rule" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   firewall_policy         = gcp_compute_network_firewall_policy.fw_policy.name
 ///   priority                = 1000
 ///   action                  = "allow"
 ///   direction               = "INGRESS"
 ///   target_type             = "INTERNAL_MANAGED_LB"
-///   target_forwarding_rules = [gcp_compute_forwardingrule.ilb.id]
+///   target_forwarding_rules = [gcp_compute_forwarding_rule.ilb.id]
 ///   match = {
 ///     src_ip_ranges = ["10.0.0.0/8"]
 ///     layer4_configs = [{
-///       "ipProtocol" = "tcp"
+///       ip_protocol = "tcp"
 ///     }]
 ///   }
 /// }
-/// resource "gcp_compute_networkfirewallpolicyassociation" "global_assoc" {
-///   name              = "global-policy-assoc-_27169"
-///   firewall_policy   = gcp_compute_networkfirewallpolicy.fw_policy.id
+/// resource "gcp_compute_network_firewall_policy_association" "global_assoc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name              = "global-policy-assoc"
+///   firewall_policy   = gcp_compute_network_firewall_policy.fw_policy.id
 ///   attachment_target = gcp_compute_network.net.id
 /// }
 /// ```
@@ -2314,7 +2401,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///             .build());
 ///
 ///         var globalAssoc = new NetworkFirewallPolicyAssociation("globalAssoc", NetworkFirewallPolicyAssociationArgs.builder()
-///             .name("global-policy-assoc-_27169")
+///             .name("global-policy-assoc")
 ///             .firewallPolicy(fwPolicy.id())
 ///             .attachmentTarget(net.id())
 ///             .build());
@@ -2414,7 +2501,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///     type: gcp:compute:NetworkFirewallPolicyAssociation
 ///     name: global_assoc
 ///     properties:
-///       name: global-policy-assoc-_27169
+///       name: global-policy-assoc
 ///       firewallPolicy: ${fwPolicy.id}
 ///       attachmentTarget: ${net.id}
 /// ```
@@ -2520,7 +2607,7 @@ class NetworkFirewallPolicyRule extends pulumi.CustomResource {
           'gcp:compute/networkFirewallPolicyRule:NetworkFirewallPolicyRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     action = registerOutput<String>('action');
     creationTimestamp = registerOutput<String>('creationTimestamp');

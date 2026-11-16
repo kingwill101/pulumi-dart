@@ -12,6 +12,7 @@ import 'snapshot_settings_storage_location.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/compute/docs/disks/snapshot-settings#snapshot_settings_how_to_update)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Snapshot Settings Specific Locations
@@ -72,7 +73,7 @@ import 'snapshot_settings_storage_location.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -97,7 +98,7 @@ import 'snapshot_settings_storage_location.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -105,12 +106,15 @@ import 'snapshot_settings_storage_location.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_snapshotsettings" "tf-test-snapshot-settings" {
+/// resource "gcp_compute_snapshot_settings" "tf-test-snapshot-settings" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   storage_location = {
 ///     policy = "SPECIFIC_LOCATIONS"
 ///     locations = [{
-///       "name"     = "us-central1"
-///       "location" = "us-central1"
+///       name     = "us-central1"
+///       location = "us-central1"
 ///     }]
 ///   }
 /// }
@@ -199,7 +203,7 @@ class SnapshotSettings extends pulumi.CustomResource {
           'gcp:compute/snapshotSettings:SnapshotSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     project = registerOutput<String>('project');
     storageLocation = registerOutput<SnapshotSettingsStorageLocation>('storageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotSettingsStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });

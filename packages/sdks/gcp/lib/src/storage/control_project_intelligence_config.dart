@@ -14,6 +14,7 @@ import 'control_project_intelligence_config_trial_config.dart';
 /// &gt; **Warning:** Storage Intelligence Config is a singleton resource which cannot be created or deleted. A single instance of Storage Intelligence Config exist for each GCP Project. Terraform does not create or destroy this resource.
 /// Terraform resource creation for this resource is simply an update operation on existing resource with specified properties, absence of any optional field in the create operation will result in clearance of that field. Terraform deletion won't have any effect on this resource rather it will only remove it from the state file.
 ///
+///
 /// ## Example Usage
 ///
 /// ### Storage Control Project Intelligence Config Basic
@@ -84,7 +85,7 @@ import 'control_project_intelligence_config_trial_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -110,7 +111,7 @@ import 'control_project_intelligence_config_trial_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -118,7 +119,10 @@ import 'control_project_intelligence_config_trial_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_storage_controlprojectintelligenceconfig" "example" {
+/// resource "gcp_storage_control_project_intelligence_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "test-project"
 ///   edition_config = "TRIAL"
 ///   filter = {
@@ -224,7 +228,7 @@ class ControlProjectIntelligenceConfig extends pulumi.CustomResource {
           'gcp:storage/controlProjectIntelligenceConfig:ControlProjectIntelligenceConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     editionConfig = registerOutput<String>('editionConfig');
     effectiveIntelligenceConfigs = registerOutput<List<ControlProjectIntelligenceConfigEffectiveIntelligenceConfig>>('effectiveIntelligenceConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ControlProjectIntelligenceConfigEffectiveIntelligenceConfig>(guardedValue, (value) => ControlProjectIntelligenceConfigEffectiveIntelligenceConfig.fromMap((value as Map).cast<String, dynamic>())); });

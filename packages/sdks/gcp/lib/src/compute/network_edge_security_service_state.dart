@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'network_edge_security_service_params.dart';
 
 /// Input properties used for looking up and filtering NetworkEdgeSecurityService resources.
 class NetworkEdgeSecurityServiceState {
@@ -20,6 +21,9 @@ class NetworkEdgeSecurityServiceState {
   final pulumi.Input<String?>? fingerprint;
   /// Name of the resource. Provided by the client when the resource is created.
   final pulumi.Input<String?>? name;
+  /// Additional params passed with the request, but not persisted as part of resource payload
+  /// Structure is documented below.
+  final pulumi.Input<NetworkEdgeSecurityServiceParams?>? params;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
@@ -40,6 +44,7 @@ class NetworkEdgeSecurityServiceState {
   /// [description] Free-text description of the resource.
   /// [fingerprint] Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a NetworkEdgeSecurityService.
   /// [name] Name of the resource. Provided by the client when the resource is created.
+  /// [params] Additional params passed with the request, but not persisted as part of resource payload
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the gateway security policy.
   /// [securityPolicy] The resource URL for the network edge security service associated with this network edge security service.
@@ -52,6 +57,7 @@ class NetworkEdgeSecurityServiceState {
     this.description,
     this.fingerprint,
     this.name,
+    this.params,
     this.project,
     this.region,
     this.securityPolicy,
@@ -67,6 +73,7 @@ class NetworkEdgeSecurityServiceState {
       'description': ?description,
       'fingerprint': ?fingerprint,
       'name': ?name,
+      'params': ?pulumi.Input.mapOptionalInputValue<NetworkEdgeSecurityServiceParams, Map<String, dynamic>>(params, (value) => value.toMap()),
       'project': ?project,
       'region': ?region,
       'securityPolicy': ?securityPolicy,
@@ -83,6 +90,7 @@ class NetworkEdgeSecurityServiceState {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fingerprint: (() { final guardedValue = map['fingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkEdgeSecurityServiceParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       securityPolicy: (() { final guardedValue = map['securityPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

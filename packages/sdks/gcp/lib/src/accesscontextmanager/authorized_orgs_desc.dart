@@ -21,6 +21,7 @@ import 'authorized_orgs_desc_state.dart';
 /// Your account must have the `serviceusage.services.use` permission on the
 /// `billingProject` you defined.
 ///
+///
 /// ## Example Usage
 ///
 /// ### Access Context Manager Authorized Orgs Desc Basic
@@ -101,7 +102,7 @@ import 'authorized_orgs_desc_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accesscontextmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accesscontextmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -137,7 +138,7 @@ import 'authorized_orgs_desc_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -145,15 +146,21 @@ import 'authorized_orgs_desc_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_accesscontextmanager_authorizedorgsdesc" "authorized-orgs-desc" {
-///   parent                  ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.test-access.name}"
-///   name                    ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.test-access.name}/authorizedOrgsDescs/fakeDescName"
+/// resource "gcp_accesscontextmanager_authorized_orgs_desc" "authorized-orgs-desc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent                  ="accessPolicies/${gcp_accesscontextmanager_access_policy.test-access.name}"
+///   name                    ="accessPolicies/${gcp_accesscontextmanager_access_policy.test-access.name}/authorizedOrgsDescs/fakeDescName"
 ///   authorization_type      = "AUTHORIZATION_TYPE_TRUST"
 ///   asset_type              = "ASSET_TYPE_CREDENTIAL_STRENGTH"
 ///   authorization_direction = "AUTHORIZATION_DIRECTION_TO"
 ///   orgs                    = ["organizations/12345", "organizations/98765"]
 /// }
-/// resource "gcp_accesscontextmanager_accesspolicy" "test-access" {
+/// resource "gcp_accesscontextmanager_access_policy" "test-access" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent = "organizations/123456789"
 ///   title  = "my policy"
 /// }
@@ -294,7 +301,7 @@ class AuthorizedOrgsDesc extends pulumi.CustomResource {
           'gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     assetType = registerOutput<String?>('assetType');
     authorizationDirection = registerOutput<String?>('authorizationDirection');

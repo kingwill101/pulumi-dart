@@ -18,7 +18,6 @@ class GetWorkerPoolResult {
   final List<GetWorkerPoolCondition>? conditions;
   final String? createTime;
   final String? creator;
-  final List<String>? customAudiences;
   final String? deleteTime;
   final String? deletionPolicy;
   final bool? deletionProtection;
@@ -57,7 +56,6 @@ class GetWorkerPoolResult {
   /// [conditions] Optional.
   /// [createTime] Optional.
   /// [creator] Optional.
-  /// [customAudiences] Optional.
   /// [deleteTime] Optional.
   /// [deletionPolicy] Optional.
   /// [deletionProtection] Optional.
@@ -94,7 +92,6 @@ class GetWorkerPoolResult {
     this.conditions,
     this.createTime,
     this.creator,
-    this.customAudiences,
     this.deleteTime,
     this.deletionPolicy,
     this.deletionProtection,
@@ -134,7 +131,6 @@ class GetWorkerPoolResult {
       'conditions': ?(() { final guardedValue = conditions; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetWorkerPoolCondition, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'createTime': ?createTime,
       'creator': ?creator,
-      'customAudiences': ?customAudiences,
       'deleteTime': ?deleteTime,
       'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
@@ -175,7 +171,6 @@ class GetWorkerPoolResult {
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetWorkerPoolCondition>(guardedValue, (value) => GetWorkerPoolCondition.fromMap((value as Map).cast<String, dynamic>())); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       creator: (() { final guardedValue = map['creator']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      customAudiences: (() { final guardedValue = map['customAudiences']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return guardedValue as bool; })(),

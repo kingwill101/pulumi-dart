@@ -6,6 +6,7 @@ import 'data_connector_bap_config.dart';
 import 'data_connector_destination_config.dart';
 import 'data_connector_entity.dart';
 import 'data_connector_error.dart';
+import 'data_connector_metadata.dart';
 
 /// Input properties used for looking up and filtering DataConnector resources.
 class DataConnectorState {
@@ -108,6 +109,9 @@ class DataConnectorState {
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   final pulumi.Input<String?>? location;
+  /// User-facing metadata for the connector.
+  /// Structure is documented below.
+  final pulumi.Input<DataConnectorMetadata?>? metadata;
   /// The full resource name of the Data Connector.
   /// Format: `projects/*/locations/*/collections/*/dataConnector`.
   final pulumi.Input<String?>? name;
@@ -140,6 +144,8 @@ class DataConnectorState {
   /// The data synchronization mode supported by the data connector. The possible value can be:
   /// 'PERIODIC', 'STREAMING'.
   final pulumi.Input<String?>? syncMode;
+  /// User-facing, version-independent label for this connector.
+  final pulumi.Input<String?>? tag;
   /// Timestamp when the DataConnector was updated.
   final pulumi.Input<String?>? updateTime;
 
@@ -167,6 +173,7 @@ class DataConnectorState {
   /// [lastSyncTime] For periodic connectors only, the last time a data sync was completed.
   /// [latestPauseTime] The most recent timestamp when this [DataConnector][] was paused,
   /// [location] The geographic location where the data store should reside. The value can
+  /// [metadata] User-facing metadata for the connector.
   /// [name] The full resource name of the Data Connector.
   /// [params] Params needed to access the source in the format of String-to-String (Key, Value) pairs.
   /// [privateConnectivityProjectId] The tenant project ID associated with private connectivity connectors.
@@ -177,6 +184,7 @@ class DataConnectorState {
   /// [staticIpAddresses] The static IP addresses used by this connector.
   /// [staticIpEnabled] Whether customer has enabled static IP addresses for this connector.
   /// [syncMode] The data synchronization mode supported by the data connector. The possible value can be:
+  /// [tag] User-facing, version-independent label for this connector.
   /// [updateTime] Timestamp when the DataConnector was updated.
   const DataConnectorState({
     this.actionConfig,
@@ -202,6 +210,7 @@ class DataConnectorState {
     this.lastSyncTime,
     this.latestPauseTime,
     this.location,
+    this.metadata,
     this.name,
     this.params,
     this.privateConnectivityProjectId,
@@ -212,6 +221,7 @@ class DataConnectorState {
     this.staticIpAddresses,
     this.staticIpEnabled,
     this.syncMode,
+    this.tag,
     this.updateTime,
   });
 
@@ -240,6 +250,7 @@ class DataConnectorState {
       'lastSyncTime': ?lastSyncTime,
       'latestPauseTime': ?latestPauseTime,
       'location': ?location,
+      'metadata': ?pulumi.Input.mapOptionalInputValue<DataConnectorMetadata, Map<String, dynamic>>(metadata, (value) => value.toMap()),
       'name': ?name,
       'params': ?params,
       'privateConnectivityProjectId': ?privateConnectivityProjectId,
@@ -250,6 +261,7 @@ class DataConnectorState {
       'staticIpAddresses': ?staticIpAddresses,
       'staticIpEnabled': ?staticIpEnabled,
       'syncMode': ?syncMode,
+      'tag': ?tag,
       'updateTime': ?updateTime,
     };
   }
@@ -267,7 +279,7 @@ class DataConnectorState {
       connectorType: (() { final guardedValue = map['connectorType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataSource: (() { final guardedValue = map['dataSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      dataSourceVersion: (() { final guardedValue = map['dataSourceVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      dataSourceVersion: (() { final guardedValue = map['dataSourceVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationConfigs: (() { final guardedValue = map['destinationConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataConnectorDestinationConfig>(guardedValue, (value) => DataConnectorDestinationConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       entities: (() { final guardedValue = map['entities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataConnectorEntity>(guardedValue, (value) => DataConnectorEntity.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -279,6 +291,7 @@ class DataConnectorState {
       lastSyncTime: (() { final guardedValue = map['lastSyncTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       latestPauseTime: (() { final guardedValue = map['latestPauseTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataConnectorMetadata.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       privateConnectivityProjectId: (() { final guardedValue = map['privateConnectivityProjectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -289,6 +302,7 @@ class DataConnectorState {
       staticIpAddresses: (() { final guardedValue = map['staticIpAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       staticIpEnabled: (() { final guardedValue = map['staticIpEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       syncMode: (() { final guardedValue = map['syncMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tag: (() { final guardedValue = map['tag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

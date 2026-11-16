@@ -73,8 +73,8 @@ class GetKeysKeySigningKey {
       dsRecord: pulumi.Input.fromValue(map['dsRecord'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       isActive: pulumi.Input.fromValue(map['isActive'] as bool),
-      keyLength: pulumi.Input.fromValue((map['keyLength'] as num).toInt()),
-      keyTag: pulumi.Input.fromValue((map['keyTag'] as num).toInt()),
+      keyLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['keyLength'])),
+      keyTag: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['keyTag'])),
       publicKey: pulumi.Input.fromValue(map['publicKey'] as String),
     );
   }

@@ -13,6 +13,8 @@ class V2ProjectSccBigQueryExportArgs {
   /// Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
   /// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
   final pulumi.Input<String?>? dataset;
+  /// Indicates whether the notifications will be sent for deleted findings.
+  final pulumi.Input<bool?>? deletionNotificationsEnabled;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -51,6 +53,7 @@ class V2ProjectSccBigQueryExportArgs {
   /// Creates a new [V2ProjectSccBigQueryExportArgs].
   /// [bigQueryExportId] This must be unique within the organization.
   /// [dataset] The dataset to write findings' updates to.
+  /// [deletionNotificationsEnabled] Indicates whether the notifications will be sent for deleted findings.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] The description of the notification config (max of 1024 characters).
   /// [filter] Expression that defines the filter to apply across create/update
@@ -59,6 +62,7 @@ class V2ProjectSccBigQueryExportArgs {
   const V2ProjectSccBigQueryExportArgs({
     required this.bigQueryExportId,
     this.dataset,
+    this.deletionNotificationsEnabled,
     this.deletionPolicy,
     this.description,
     this.filter,
@@ -70,6 +74,7 @@ class V2ProjectSccBigQueryExportArgs {
     return <String, dynamic>{
       'bigQueryExportId': bigQueryExportId,
       'dataset': ?dataset,
+      'deletionNotificationsEnabled': ?deletionNotificationsEnabled,
       'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'filter': ?filter,
@@ -82,6 +87,7 @@ class V2ProjectSccBigQueryExportArgs {
     return V2ProjectSccBigQueryExportArgs(
       bigQueryExportId: pulumi.Input.fromValue(map['bigQueryExportId'] as String),
       dataset: (() { final guardedValue = map['dataset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionNotificationsEnabled: (() { final guardedValue = map['deletionNotificationsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

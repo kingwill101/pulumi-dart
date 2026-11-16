@@ -13,6 +13,7 @@ import 'backup_policy_state.dart';
 /// * How-to Guides
 /// * [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-backups#about_backup_policies)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Netapp Backup Policy Full
@@ -81,7 +82,7 @@ import 'backup_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/netapp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/netapp"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -107,7 +108,7 @@ import 'backup_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -115,7 +116,10 @@ import 'backup_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_netapp_backuppolicy" "test_backup_policy_full" {
+/// resource "gcp_netapp_backup_policy" "test_backup_policy_full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "test-backup-policy-full"
 ///   location             = "us-central1"
 ///   daily_backup_limit   = 2
@@ -252,7 +256,7 @@ class BackupPolicy extends pulumi.CustomResource {
           'gcp:netapp/backupPolicy:BackupPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     assignedVolumeCount = registerOutput<int>('assignedVolumeCount');

@@ -19,6 +19,7 @@ import 'backup_schedule_weekly_recurrence.dart';
 /// This resource is owned by the database it is backing up, and is deleted along
 /// with the database. The actual backups are not though.
 ///
+///
 /// ## Example Usage
 ///
 /// ### Firestore Backup Schedule Daily
@@ -93,7 +94,7 @@ import 'backup_schedule_weekly_recurrence.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -124,7 +125,7 @@ import 'backup_schedule_weekly_recurrence.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -133,6 +134,9 @@ import 'backup_schedule_weekly_recurrence.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "database-id"
 ///   location_id             = "nam5"
@@ -140,7 +144,10 @@ import 'backup_schedule_weekly_recurrence.dart';
 ///   delete_protection_state = "DELETE_PROTECTION_ENABLED"
 ///   deletion_policy         = "DELETE"
 /// }
-/// resource "gcp_firestore_backupschedule" "daily-backup" {
+/// resource "gcp_firestore_backup_schedule" "daily-backup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = "my-project-name"
 ///   database         = gcp_firestore_database.database.name
 ///   retention        = "8467200s"
@@ -210,6 +217,7 @@ import 'backup_schedule_weekly_recurrence.dart';
 ///       retention: 8467200s
 ///       dailyRecurrence: {}
 /// ```
+///
 ///
 /// ### Firestore Backup Schedule Weekly
 ///
@@ -290,7 +298,7 @@ import 'backup_schedule_weekly_recurrence.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -323,7 +331,7 @@ import 'backup_schedule_weekly_recurrence.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -332,6 +340,9 @@ import 'backup_schedule_weekly_recurrence.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "database-id"
 ///   location_id             = "nam5"
@@ -339,7 +350,10 @@ import 'backup_schedule_weekly_recurrence.dart';
 ///   delete_protection_state = "DELETE_PROTECTION_ENABLED"
 ///   deletion_policy         = "DELETE"
 /// }
-/// resource "gcp_firestore_backupschedule" "weekly-backup" {
+/// resource "gcp_firestore_backup_schedule" "weekly-backup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project   = "my-project-name"
 ///   database  = gcp_firestore_database.database.name
 ///   retention = "8467200s"
@@ -469,7 +483,7 @@ class BackupSchedule extends pulumi.CustomResource {
           'gcp:firestore/backupSchedule:BackupSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     dailyRecurrence = registerOutput<Map<String, dynamic>?>('dailyRecurrence');
     database = registerOutput<String?>('database');

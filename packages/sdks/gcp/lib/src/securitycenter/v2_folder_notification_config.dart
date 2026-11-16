@@ -12,6 +12,7 @@ import 'v2_folder_notification_config_streaming_config.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/security-command-center/docs)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Scc V2 Folder Notification Config Basic
@@ -94,9 +95,9 @@ import 'v2_folder_notification_config_streaming_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -120,7 +121,7 @@ import 'v2_folder_notification_config_streaming_config.dart';
 /// 			Folder:      folder.FolderId,
 /// 			Location:    pulumi.String("global"),
 /// 			Description: pulumi.String("My custom Cloud Security Command Center Finding Notification Configuration"),
-/// 			PubsubTopic: sccV2FolderNotificationConfig.ID().ToIDOutput().ToStringOutput(),
+/// 			PubsubTopic: sccV2FolderNotificationConfig.ID(),
 /// 			StreamingConfig: &securitycenter.V2FolderNotificationConfigStreamingConfigArgs{
 /// 				Filter: pulumi.String("category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\""),
 /// 			},
@@ -133,7 +134,7 @@ import 'v2_folder_notification_config_streaming_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -142,13 +143,22 @@ import 'v2_folder_notification_config_streaming_config.dart';
 /// }
 ///
 /// resource "gcp_organizations_folder" "folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "organizations/123456789"
 ///   display_name = "folder-name"
 /// }
 /// resource "gcp_pubsub_topic" "scc_v2_folder_notification_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-topic"
 /// }
-/// resource "gcp_securitycenter_v2foldernotificationconfig" "custom_notification_config" {
+/// resource "gcp_securitycenter_v2_folder_notification_config" "custom_notification_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   config_id    = "my-config"
 ///   folder       = gcp_organizations_folder.folder.folder_id
 ///   location     = "global"
@@ -251,6 +261,8 @@ import 'v2_folder_notification_config_streaming_config.dart';
 class V2FolderNotificationConfig extends pulumi.CustomResource {
   /// This must be unique within the organization.
   late final pulumi.Output<String> configId;
+  /// Indicates whether the notifications will be sent for deleted findings.
+  late final pulumi.Output<bool?> deletionNotificationsEnabled;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -289,9 +301,10 @@ class V2FolderNotificationConfig extends pulumi.CustomResource {
           'gcp:securitycenter/v2FolderNotificationConfig:V2FolderNotificationConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     configId = registerOutput<String>('configId');
+    deletionNotificationsEnabled = registerOutput<bool?>('deletionNotificationsEnabled');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     folder = registerOutput<String>('folder');
@@ -327,6 +340,7 @@ class V2FolderNotificationConfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     configId = registerOutput<String>('configId');
+    deletionNotificationsEnabled = registerOutput<bool?>('deletionNotificationsEnabled');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     folder = registerOutput<String>('folder');
@@ -347,6 +361,7 @@ class V2FolderNotificationConfig extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     configId = registerOutput<String>('configId');
+    deletionNotificationsEnabled = registerOutput<bool?>('deletionNotificationsEnabled');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     folder = registerOutput<String>('folder');

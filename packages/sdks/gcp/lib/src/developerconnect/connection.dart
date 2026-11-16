@@ -20,6 +20,7 @@ import 'connection_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/developer-connect/docs/overview)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Developer Connect Connection New
@@ -114,8 +115,8 @@ import 'connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/developerconnect"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -154,7 +155,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -163,7 +164,10 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "gcp_developerconnect_connection" "my-connection" {
-///   depends_on    = [gcp_projects_iammember.devconnect-secret]
+///   depends_on = [gcp_projects_i_a_m_member.devconnect-secret]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   connection_id = "tf-test-connection-new"
 ///   github_config = {
@@ -171,13 +175,19 @@ import 'connection_state.dart';
 ///   }
 /// }
 /// # Setup permissions. Only needed once per project
-/// resource "gcp_projects_serviceidentity" "devconnect-p4sa" {
+/// resource "gcp_projects_service_identity" "devconnect-p4sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service = "developerconnect.googleapis.com"
 /// }
-/// resource "gcp_projects_iammember" "devconnect-secret" {
+/// resource "gcp_projects_i_a_m_member" "devconnect-secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   role    = "roles/secretmanager.admin"
-///   member  = gcp_projects_serviceidentity.devconnect-p4sa.member
+///   member  = gcp_projects_service_identity.devconnect-p4sa.member
 /// }
 /// output "nextSteps" {
 ///   value = gcp_developerconnect_connection.my-connection.installation_states
@@ -262,6 +272,7 @@ import 'connection_state.dart';
 ///   nextSteps: ${["my-connection"].installationStates}
 /// ```
 ///
+///
 /// ### Developer Connect Connection Existing Credentials
 ///
 ///
@@ -329,7 +340,7 @@ import 'connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/developerconnect"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -354,7 +365,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -363,6 +374,9 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "gcp_developerconnect_connection" "my-connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   connection_id = "tf-test-connection-cred"
 ///   github_config = {
@@ -428,6 +442,7 @@ import 'connection_state.dart';
 /// outputs:
 ///   nextSteps: ${["my-connection"].installationStates}
 /// ```
+///
 ///
 /// ### Developer Connect Connection Existing Installation
 ///
@@ -579,10 +594,10 @@ import 'connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/developerconnect"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -605,7 +620,7 @@ import 'connection_state.dart';
 /// 			return err
 /// 		}
 /// 		github_token_secret_version, err := secretmanager.NewSecretVersion(ctx, "github-token-secret-version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     github_token_secret.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:     github_token_secret.ID(),
 /// 			SecretData: pulumi.String(invokeFile.Result),
 /// 		})
 /// 		if err != nil {
@@ -641,7 +656,7 @@ import 'connection_state.dart';
 /// 				GithubApp:         pulumi.String("DEVELOPER_CONNECT"),
 /// 				AppInstallationId: pulumi.String("123123"),
 /// 				AuthorizerCredential: &developerconnect.ConnectionGithubConfigAuthorizerCredentialArgs{
-/// 					OauthTokenSecretVersion: github_token_secret_version.ID().ToIDOutput().ToStringOutput(),
+/// 					OauthTokenSecretVersion: github_token_secret_version.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -653,7 +668,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -664,39 +679,54 @@ import 'connection_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "p4sa-secretAccessor" {
+/// data "gcp_organizations_i_a_m_policy" "p4sa-secretAccessor" {
 ///   bindings {
 ///     role    = "roles/secretmanager.secretAccessor"
-///     members = [gcp_projects_serviceidentity.devconnect-p4sa.member]
+///     members = [gcp_projects_service_identity.devconnect-p4sa.member]
 ///   }
 /// }
 ///
 /// resource "gcp_secretmanager_secret" "github-token-secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "github-token-secret"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "github-token-secret-version" {
+/// resource "gcp_secretmanager_secret_version" "github-token-secret-version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.github-token-secret.id
 ///   secret_data = file("my-github-token.txt")
 /// }
-/// resource "gcp_projects_serviceidentity" "devconnect-p4sa" {
+/// resource "gcp_projects_service_identity" "devconnect-p4sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service = "developerconnect.googleapis.com"
 /// }
 /// // Here, 123456789 is the Google Cloud project number for the project that contains the connection.
-/// resource "gcp_secretmanager_secretiampolicy" "policy" {
+/// resource "gcp_secretmanager_secret_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id   = gcp_secretmanager_secret.github-token-secret.secret_id
-///   policy_data = data.gcp_organizations_getiampolicy.p4sa-secretAccessor.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.p4sa-secretAccessor.policy_data
 /// }
 /// resource "gcp_developerconnect_connection" "my-connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   connection_id = "my-connection"
 ///   github_config = {
 ///     github_app          = "DEVELOPER_CONNECT"
 ///     app_installation_id = 123123
 ///     authorizer_credential = {
-///       oauth_token_secret_version = gcp_secretmanager_secretversion.github-token-secret-version.id
+///       oauth_token_secret_version = gcp_secretmanager_secret_version.github-token-secret-version.id
 ///     }
 ///   }
 /// }
@@ -833,6 +863,7 @@ import 'connection_state.dart';
 ///               - ${["devconnect-p4sa"].member}
 /// ```
 ///
+///
 /// ### Developer Connect Connection Github
 ///
 ///
@@ -894,7 +925,7 @@ import 'connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/developerconnect"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -918,7 +949,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -927,6 +958,9 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "gcp_developerconnect_connection" "my-connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   connection_id = "tf-test-connection"
 ///   github_config = {
@@ -986,6 +1020,7 @@ import 'connection_state.dart';
 ///         authorizerCredential:
 ///           oauthTokenSecretVersion: projects/devconnect-terraform-creds/secrets/tf-test-do-not-change-github-oauthtoken-e0b9e7/versions/1
 /// ```
+///
 ///
 /// ### Developer Connect Connection Github Doc
 ///
@@ -1130,9 +1165,9 @@ import 'connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/developerconnect"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1155,7 +1190,7 @@ import 'connection_state.dart';
 /// 			return err
 /// 		}
 /// 		github_token_secret_version, err := secretmanager.NewSecretVersion(ctx, "github-token-secret-version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     github_token_secret.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:     github_token_secret.ID(),
 /// 			SecretData: pulumi.String(invokeFile.Result),
 /// 		})
 /// 		if err != nil {
@@ -1188,7 +1223,7 @@ import 'connection_state.dart';
 /// 				GithubApp:         pulumi.String("DEVELOPER_CONNECT"),
 /// 				AppInstallationId: pulumi.String("123123"),
 /// 				AuthorizerCredential: &developerconnect.ConnectionGithubConfigAuthorizerCredentialArgs{
-/// 					OauthTokenSecretVersion: github_token_secret_version.ID().ToIDOutput().ToStringOutput(),
+/// 					OauthTokenSecretVersion: github_token_secret_version.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -1200,7 +1235,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1211,7 +1246,7 @@ import 'connection_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "p4sa-secretAccessor" {
+/// data "gcp_organizations_i_a_m_policy" "p4sa-secretAccessor" {
 ///   bindings {
 ///     role    = "roles/secretmanager.secretAccessor"
 ///     members = ["serviceAccount:service-123456789@gcp-sa-devconnect.iam.gserviceaccount.com"]
@@ -1219,28 +1254,40 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "gcp_secretmanager_secret" "github-token-secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "github-token-secret"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "github-token-secret-version" {
+/// resource "gcp_secretmanager_secret_version" "github-token-secret-version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.github-token-secret.id
 ///   secret_data = file("my-github-token.txt")
 /// }
 /// // Here, 123456789 is the Google Cloud project number for the project that contains the connection.
-/// resource "gcp_secretmanager_secretiampolicy" "policy" {
+/// resource "gcp_secretmanager_secret_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id   = gcp_secretmanager_secret.github-token-secret.secret_id
-///   policy_data = data.gcp_organizations_getiampolicy.p4sa-secretAccessor.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.p4sa-secretAccessor.policy_data
 /// }
 /// resource "gcp_developerconnect_connection" "my-connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   connection_id = "my-connection"
 ///   github_config = {
 ///     github_app          = "DEVELOPER_CONNECT"
 ///     app_installation_id = 123123
 ///     authorizer_credential = {
-///       oauth_token_secret_version = gcp_secretmanager_secretversion.github-token-secret-version.id
+///       oauth_token_secret_version = gcp_secretmanager_secret_version.github-token-secret-version.id
 ///     }
 ///   }
 /// }
@@ -1367,6 +1414,7 @@ import 'connection_state.dart';
 ///               - serviceAccount:service-123456789@gcp-sa-devconnect.iam.gserviceaccount.com
 /// ```
 ///
+///
 /// ### Developer Connect Connection Github Enterprise
 ///
 ///
@@ -1430,7 +1478,7 @@ import 'connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/developerconnect"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1455,7 +1503,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1464,6 +1512,9 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "gcp_developerconnect_connection" "my-connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   connection_id = "tf-test-connection"
 ///   github_enterprise_config = {
@@ -1526,6 +1577,7 @@ import 'connection_state.dart';
 ///         webhookSecretSecretVersion: projects/devconnect-terraform-creds/secrets/tf-test-ghe-do-not-change-ghe-webhook-secret-3c806f/versions/latest
 ///         appInstallationId: 837537
 /// ```
+///
 ///
 /// ### Developer Connect Connection Github Enterprise Doc
 ///
@@ -1731,9 +1783,9 @@ import 'connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/developerconnect"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1756,7 +1808,7 @@ import 'connection_state.dart';
 /// 			return err
 /// 		}
 /// 		private_key_secret_version, err := secretmanager.NewSecretVersion(ctx, "private-key-secret-version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     private_key_secret.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:     private_key_secret.ID(),
 /// 			SecretData: pulumi.String(invokeFile.Result),
 /// 		})
 /// 		if err != nil {
@@ -1772,7 +1824,7 @@ import 'connection_state.dart';
 /// 			return err
 /// 		}
 /// 		webhook_secret_secret_version, err := secretmanager.NewSecretVersion(ctx, "webhook-secret-secret-version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     webhook_secret_secret.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:     webhook_secret_secret.ID(),
 /// 			SecretData: pulumi.String("<webhook-secret-data>"),
 /// 		})
 /// 		if err != nil {
@@ -1810,8 +1862,8 @@ import 'connection_state.dart';
 /// 			ConnectionId: pulumi.String("my-connection"),
 /// 			GithubEnterpriseConfig: &developerconnect.ConnectionGithubEnterpriseConfigArgs{
 /// 				HostUri:                    pulumi.String("https://ghe.com"),
-/// 				PrivateKeySecretVersion:    private_key_secret_version.ID().ToIDOutput().ToStringOutput(),
-/// 				WebhookSecretSecretVersion: webhook_secret_secret_version.ID().ToIDOutput().ToStringOutput(),
+/// 				PrivateKeySecretVersion:    private_key_secret_version.ID(),
+/// 				WebhookSecretSecretVersion: webhook_secret_secret_version.ID(),
 /// 				AppId:                      pulumi.String("100"),
 /// 				AppInstallationId:          pulumi.String("123123"),
 /// 			},
@@ -1827,7 +1879,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1838,7 +1890,7 @@ import 'connection_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "p4sa-secretAccessor" {
+/// data "gcp_organizations_i_a_m_policy" "p4sa-secretAccessor" {
 ///   bindings {
 ///     role    = "roles/secretmanager.secretAccessor"
 ///     members = ["serviceAccount:service-123456789@gcp-sa-devconnect.iam.gserviceaccount.com"]
@@ -1846,42 +1898,63 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "gcp_secretmanager_secret" "private-key-secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "ghe-pk-secret"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "private-key-secret-version" {
+/// resource "gcp_secretmanager_secret_version" "private-key-secret-version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.private-key-secret.id
 ///   secret_data = file("private-key.pem")
 /// }
 /// resource "gcp_secretmanager_secret" "webhook-secret-secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "ghe-token-secret"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "webhook-secret-secret-version" {
+/// resource "gcp_secretmanager_secret_version" "webhook-secret-secret-version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.webhook-secret-secret.id
 ///   secret_data = "<webhook-secret-data>"
 /// }
 /// // Here, 123456789 is the Google Cloud project number for the project that contains the connection.
-/// resource "gcp_secretmanager_secretiampolicy" "policy-pk" {
+/// resource "gcp_secretmanager_secret_iam_policy" "policy-pk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id   = gcp_secretmanager_secret.private-key-secret.secret_id
-///   policy_data = data.gcp_organizations_getiampolicy.p4sa-secretAccessor.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.p4sa-secretAccessor.policy_data
 /// }
-/// resource "gcp_secretmanager_secretiampolicy" "policy-whs" {
+/// resource "gcp_secretmanager_secret_iam_policy" "policy-whs" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id   = gcp_secretmanager_secret.webhook-secret-secret.secret_id
-///   policy_data = data.gcp_organizations_getiampolicy.p4sa-secretAccessor.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.p4sa-secretAccessor.policy_data
 /// }
 /// resource "gcp_developerconnect_connection" "my-connection" {
-///   depends_on    = [gcp_secretmanager_secretiampolicy.policy-pk, gcp_secretmanager_secretiampolicy.policy-whs]
+///   depends_on = [gcp_secretmanager_secret_iam_policy.policy-pk, gcp_secretmanager_secret_iam_policy.policy-whs]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   connection_id = "my-connection"
 ///   github_enterprise_config = {
 ///     host_uri                      = "https://ghe.com"
-///     private_key_secret_version    = gcp_secretmanager_secretversion.private-key-secret-version.id
-///     webhook_secret_secret_version = gcp_secretmanager_secretversion.webhook-secret-secret-version.id
+///     private_key_secret_version    = gcp_secretmanager_secret_version.private-key-secret-version.id
+///     webhook_secret_secret_version = gcp_secretmanager_secret_version.webhook-secret-secret-version.id
 ///     app_id                        = 100
 ///     app_installation_id           = 123123
 ///   }
@@ -2052,6 +2125,7 @@ import 'connection_state.dart';
 ///               - serviceAccount:service-123456789@gcp-sa-devconnect.iam.gserviceaccount.com
 /// ```
 ///
+///
 /// ### Developer Connect Connection Gitlab
 ///
 ///
@@ -2123,7 +2197,7 @@ import 'connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/developerconnect"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2150,7 +2224,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2159,6 +2233,9 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "gcp_developerconnect_connection" "my-connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   connection_id = "tf-test-connection"
 ///   gitlab_config = {
@@ -2227,6 +2304,7 @@ import 'connection_state.dart';
 ///         authorizerCredential:
 ///           userTokenSecretVersion: projects/devconnect-terraform-creds/secrets/gitlab-auth-cred/versions/latest
 /// ```
+///
 ///
 /// ### Developer Connect Connection Gitlab Enterprise
 ///
@@ -2302,7 +2380,7 @@ import 'connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/developerconnect"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2330,7 +2408,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2339,6 +2417,9 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "gcp_developerconnect_connection" "my-connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   connection_id = "tf-test-connection"
 ///   gitlab_enterprise_config = {
@@ -2410,6 +2491,7 @@ import 'connection_state.dart';
 ///         authorizerCredential:
 ///           userTokenSecretVersion: projects/devconnect-terraform-creds/secrets/gitlab-enterprise-auth-cred/versions/latest
 /// ```
+///
 ///
 /// ### Developer Connect Connection Bbc
 ///
@@ -2485,7 +2567,7 @@ import 'connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/developerconnect"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2513,7 +2595,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2522,6 +2604,9 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "gcp_developerconnect_connection" "my-connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   connection_id = "tf-test-connection"
 ///   bitbucket_cloud_config = {
@@ -2593,6 +2678,7 @@ import 'connection_state.dart';
 ///         authorizerCredential:
 ///           userTokenSecretVersion: projects/devconnect-terraform-creds/secrets/bbc-auth-token/versions/latest
 /// ```
+///
 ///
 /// ### Developer Connect Connection Bbdc
 ///
@@ -2668,7 +2754,7 @@ import 'connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/developerconnect"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2696,7 +2782,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2705,6 +2791,9 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "gcp_developerconnect_connection" "my-connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   connection_id = "tf-test-connection"
 ///   bitbucket_data_center_config = {
@@ -2777,6 +2866,7 @@ import 'connection_state.dart';
 ///           userTokenSecretVersion: projects/devconnect-terraform-creds/secrets/bbdc-auth-token/versions/latest
 /// ```
 ///
+///
 /// ### Developer Connect Connection Http Conn Basic
 ///
 ///
@@ -2841,7 +2931,7 @@ import 'connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/developerconnect"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2866,7 +2956,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2875,6 +2965,9 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "gcp_developerconnect_connection" "my-connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   connection_id = "tf-test-connection"
 ///   http_config = {
@@ -2938,6 +3031,7 @@ import 'connection_state.dart';
 ///         hostUri: https://devconnectprober.atlassian.net
 /// ```
 ///
+///
 /// ### Developer Connect Connection Http Conn Bearer
 ///
 ///
@@ -2999,7 +3093,7 @@ import 'connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/developerconnect"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3023,7 +3117,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3032,6 +3126,9 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "gcp_developerconnect_connection" "my-connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   connection_id = "tf-test-connection"
 ///   http_config = {
@@ -3206,7 +3303,7 @@ class Connection extends pulumi.CustomResource {
           'gcp:developerconnect/connection:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

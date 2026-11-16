@@ -11,6 +11,7 @@ import 'bare_metal_node_pool_status.dart';
 ///
 /// * [API documentation](https://cloud.google.com/kubernetes-engine/distributed-cloud/reference/on-prem-api/rest/v1/projects.locations.bareMetalClusters.bareMetalNodePools)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Gkeonprem Bare Metal Node Pool Basic
@@ -322,7 +323,7 @@ import 'bare_metal_node_pool_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkeonprem"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkeonprem"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -431,7 +432,7 @@ import 'bare_metal_node_pool_status.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -439,7 +440,10 @@ import 'bare_metal_node_pool_status.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_gkeonprem_baremetalcluster" "default-basic" {
+/// resource "gcp_gkeonprem_bare_metal_cluster" "default-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "my-cluster"
 ///   location                 = "us-west1"
 ///   admin_cluster_membership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"
@@ -456,8 +460,8 @@ import 'bare_metal_node_pool_status.dart';
 ///         labels           = {}
 ///         operating_system = "LINUX"
 ///         node_configs = [{
-///           "labels" = {}
-///           "nodeIp" = "10.200.0.9"
+///           labels  = {}
+///           node_ip = "10.200.0.9"
 ///         }]
 ///       }
 ///     }
@@ -472,8 +476,8 @@ import 'bare_metal_node_pool_status.dart';
 ///     }
 ///     metal_lb_config = {
 ///       address_pools = [{
-///         "pool"      = "pool1"
-///         "addresses" = ["10.200.0.14/32", "10.200.0.15/32", "10.200.0.16/32", "10.200.0.17/32", "10.200.0.18/32", "fd00:1::f/128", "fd00:1::10/128", "fd00:1::11/128", "fd00:1::12/128"]
+///         pool      = "pool1"
+///         addresses = ["10.200.0.14/32", "10.200.0.15/32", "10.200.0.16/32", "10.200.0.17/32", "10.200.0.18/32", "fd00:1::f/128", "fd00:1::10/128", "fd00:1::11/128", "fd00:1::12/128"]
 ///       }]
 ///     }
 ///   }
@@ -493,19 +497,22 @@ import 'bare_metal_node_pool_status.dart';
 ///   security_config = {
 ///     authorization = {
 ///       admin_users = [{
-///         "username" = "admin@hashicorptest.com"
+///         username = "admin@hashicorptest.com"
 ///       }]
 ///     }
 ///   }
 /// }
-/// resource "gcp_gkeonprem_baremetalnodepool" "nodepool-basic" {
+/// resource "gcp_gkeonprem_bare_metal_node_pool" "nodepool-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-nodepool"
-///   bare_metal_cluster = gcp_gkeonprem_baremetalcluster.default-basic.name
+///   bare_metal_cluster = gcp_gkeonprem_bare_metal_cluster.default-basic.name
 ///   location           = "us-west1"
 ///   node_pool_config = {
 ///     operating_system = "LINUX"
 ///     node_configs = [{
-///       "nodeIp" = "10.200.0.11"
+///       node_ip = "10.200.0.11"
 ///     }]
 ///   }
 /// }
@@ -705,6 +712,7 @@ import 'bare_metal_node_pool_status.dart';
 ///         nodeConfigs:
 ///           - nodeIp: 10.200.0.11
 /// ```
+///
 ///
 /// ### Gkeonprem Bare Metal Node Pool Full
 ///
@@ -1046,7 +1054,7 @@ import 'bare_metal_node_pool_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkeonprem"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkeonprem"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1166,7 +1174,7 @@ import 'bare_metal_node_pool_status.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1174,7 +1182,10 @@ import 'bare_metal_node_pool_status.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_gkeonprem_baremetalcluster" "default-full" {
+/// resource "gcp_gkeonprem_bare_metal_cluster" "default-full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "my-cluster"
 ///   location                 = "us-west1"
 ///   admin_cluster_membership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"
@@ -1191,8 +1202,8 @@ import 'bare_metal_node_pool_status.dart';
 ///         labels           = {}
 ///         operating_system = "LINUX"
 ///         node_configs = [{
-///           "labels" = {}
-///           "nodeIp" = "10.200.0.9"
+///           labels  = {}
+///           node_ip = "10.200.0.9"
 ///         }]
 ///       }
 ///     }
@@ -1207,8 +1218,8 @@ import 'bare_metal_node_pool_status.dart';
 ///     }
 ///     metal_lb_config = {
 ///       address_pools = [{
-///         "pool"      = "pool1"
-///         "addresses" = ["10.200.0.14/32", "10.200.0.15/32", "10.200.0.16/32", "10.200.0.17/32", "10.200.0.18/32", "fd00:1::f/128", "fd00:1::10/128", "fd00:1::11/128", "fd00:1::12/128"]
+///         pool      = "pool1"
+///         addresses = ["10.200.0.14/32", "10.200.0.15/32", "10.200.0.16/32", "10.200.0.17/32", "10.200.0.18/32", "fd00:1::f/128", "fd00:1::10/128", "fd00:1::11/128", "fd00:1::12/128"]
 ///       }]
 ///     }
 ///   }
@@ -1228,28 +1239,31 @@ import 'bare_metal_node_pool_status.dart';
 ///   security_config = {
 ///     authorization = {
 ///       admin_users = [{
-///         "username" = "admin@hashicorptest.com"
+///         username = "admin@hashicorptest.com"
 ///       }]
 ///     }
 ///   }
 /// }
-/// resource "gcp_gkeonprem_baremetalnodepool" "nodepool-full" {
+/// resource "gcp_gkeonprem_bare_metal_node_pool" "nodepool-full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-nodepool"
 ///   display_name       = "test-name"
-///   bare_metal_cluster = gcp_gkeonprem_baremetalcluster.default-full.name
+///   bare_metal_cluster = gcp_gkeonprem_bare_metal_cluster.default-full.name
 ///   location           = "us-west1"
 ///   annotations        = {}
 ///   node_pool_config = {
 ///     operating_system = "LINUX"
 ///     labels           = {}
 ///     node_configs = [{
-///       "nodeIp" = "10.200.0.11"
-///       "labels" = {}
+///       node_ip = "10.200.0.11"
+///       labels  = {}
 ///     }]
 ///     taints = [{
-///       "key"    = "test-key"
-///       "value"  = "test-value"
-///       "effect" = "NO_EXECUTE"
+///       key    = "test-key"
+///       value  = "test-value"
+///       effect = "NO_EXECUTE"
 ///     }]
 ///   }
 /// }
@@ -1559,7 +1573,7 @@ class BareMetalNodePool extends pulumi.CustomResource {
           'gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     bareMetalCluster = registerOutput<String>('bareMetalCluster');

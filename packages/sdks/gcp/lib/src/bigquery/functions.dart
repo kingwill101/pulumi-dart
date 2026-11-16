@@ -65,7 +65,7 @@ import 'get_tables_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -84,7 +84,7 @@ import 'get_tables_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -92,7 +92,7 @@ import 'get_tables_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_bigquery_getconnectioniampolicy" "policy" {
+/// data "gcp_bigquery_connection_iam_policy" "policy" {
 ///   project       = connection.project
 ///   location      = connection.location
 ///   connection_id = connection.connectionId
@@ -209,7 +209,7 @@ pulumi.Output<GetConnectionIamPolicyResult> getConnectionIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -228,7 +228,7 @@ pulumi.Output<GetConnectionIamPolicyResult> getConnectionIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -236,7 +236,7 @@ pulumi.Output<GetConnectionIamPolicyResult> getConnectionIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_bigquery_getdatapolicyv2datapolicyiampolicy" "policy" {
+/// data "gcp_bigquery_datapolicyv2_data_policy_iam_policy" "policy" {
 ///   project        = basicDataPolicy.project
 ///   location       = basicDataPolicy.location
 ///   data_policy_id = basicDataPolicy.dataPolicyId
@@ -351,7 +351,7 @@ pulumi.Output<GetDatapolicyv2DataPolicyIamPolicyResult> getDatapolicyv2DataPolic
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -369,7 +369,7 @@ pulumi.Output<GetDatapolicyv2DataPolicyIamPolicyResult> getDatapolicyv2DataPolic
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -377,7 +377,7 @@ pulumi.Output<GetDatapolicyv2DataPolicyIamPolicyResult> getDatapolicyv2DataPolic
 ///   }
 /// }
 ///
-/// data "gcp_bigquery_getdataset" "dataset" {
+/// data "gcp_bigquery_dataset" "dataset" {
 ///   dataset_id = "my-bq-dataset"
 ///   project    = "my-project"
 /// }
@@ -484,7 +484,7 @@ pulumi.Output<GetDatasetResult> getDatasetOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -501,7 +501,7 @@ pulumi.Output<GetDatasetResult> getDatasetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -509,7 +509,7 @@ pulumi.Output<GetDatasetResult> getDatasetOutput(
 ///   }
 /// }
 ///
-/// data "gcp_bigquery_getdatasetiampolicy" "policy" {
+/// data "gcp_bigquery_dataset_iam_policy" "policy" {
 ///   dataset_id = dataset.datasetId
 /// }
 /// ```
@@ -615,7 +615,7 @@ pulumi.Output<GetDatasetIamPolicyResult> getDatasetIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -632,7 +632,7 @@ pulumi.Output<GetDatasetIamPolicyResult> getDatasetIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -640,7 +640,7 @@ pulumi.Output<GetDatasetIamPolicyResult> getDatasetIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_bigquery_getdatasets" "datasets" {
+/// data "gcp_bigquery_datasets" "datasets" {
 ///   project = "my-project"
 /// }
 /// ```
@@ -763,8 +763,8 @@ pulumi.Output<GetDatasetsResult> getDatasetsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -787,7 +787,7 @@ pulumi.Output<GetDatasetsResult> getDatasetsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -795,13 +795,16 @@ pulumi.Output<GetDatasetsResult> getDatasetsOutput(
 ///   }
 /// }
 ///
-/// data "gcp_bigquery_getdefaultserviceaccount" "bqSa" {
+/// data "gcp_bigquery_default_service_account" "bqSa" {
 /// }
 ///
-/// resource "gcp_kms_cryptokeyiammember" "key_sa_user" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "key_sa_user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = key.id
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        ="serviceAccount:${data.gcp_bigquery_getdefaultserviceaccount.bqSa.email}"
+///   member        ="serviceAccount:${data.gcp_bigquery_default_service_account.bqSa.email}"
 /// }
 /// ```
 /// ```java
@@ -925,7 +928,7 @@ pulumi.Output<GetDefaultServiceAccountResult> getDefaultServiceAccountOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -944,7 +947,7 @@ pulumi.Output<GetDefaultServiceAccountResult> getDefaultServiceAccountOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -952,7 +955,7 @@ pulumi.Output<GetDefaultServiceAccountResult> getDefaultServiceAccountOutput(
 ///   }
 /// }
 ///
-/// data "gcp_bigquery_getroutineiampolicy" "policy" {
+/// data "gcp_bigquery_routine_iam_policy" "policy" {
 ///   project    = sproc.project
 ///   dataset_id = sproc.datasetId
 ///   routine_id = sproc.routineId
@@ -1070,7 +1073,7 @@ pulumi.Output<GetRoutineIamPolicyResult> getRoutineIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1089,7 +1092,7 @@ pulumi.Output<GetRoutineIamPolicyResult> getRoutineIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1097,7 +1100,7 @@ pulumi.Output<GetRoutineIamPolicyResult> getRoutineIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_bigquery_gettable" "table" {
+/// data "gcp_bigquery_table" "table" {
 ///   project    = "my-project"
 ///   dataset_id = "my-bq-dataset"
 ///   table_id   = "my-table"
@@ -1214,7 +1217,7 @@ pulumi.Output<GetTableResult> getTableOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1233,7 +1236,7 @@ pulumi.Output<GetTableResult> getTableOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1241,7 +1244,7 @@ pulumi.Output<GetTableResult> getTableOutput(
 ///   }
 /// }
 ///
-/// data "gcp_bigquery_gettableiampolicy" "policy" {
+/// data "gcp_bigquery_table_iam_policy" "policy" {
 ///   project    = test.project
 ///   dataset_id = test.datasetId
 ///   table_id   = test.tableId
@@ -1356,7 +1359,7 @@ pulumi.Output<GetTableIamPolicyResult> getTableIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1374,7 +1377,7 @@ pulumi.Output<GetTableIamPolicyResult> getTableIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1382,7 +1385,7 @@ pulumi.Output<GetTableIamPolicyResult> getTableIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_bigquery_gettables" "tables" {
+/// data "gcp_bigquery_tables" "tables" {
 ///   dataset_id = "my-bq-dataset"
 ///   project    = "my-project"
 /// }

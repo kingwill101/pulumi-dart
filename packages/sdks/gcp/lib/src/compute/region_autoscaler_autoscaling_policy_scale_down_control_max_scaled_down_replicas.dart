@@ -27,8 +27,8 @@ class RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas {
 
   factory RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas.fromMap(Map<String, dynamic> map) {
     return RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas(
-      fixed: (() { final guardedValue = map['fixed']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      percent: (() { final guardedValue = map['percent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      fixed: (() { final guardedValue = map['fixed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      percent: (() { final guardedValue = map['percent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

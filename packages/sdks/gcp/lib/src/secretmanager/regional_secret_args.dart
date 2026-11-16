@@ -67,6 +67,9 @@ class RegionalSecretArgs {
   final pulumi.Input<RegionalSecretRotation?>? rotation;
   /// This must be unique within the project.
   final pulumi.Input<String> secretId;
+  /// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+  /// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+  final pulumi.Input<String?>? secretType;
   /// A map of resource manager tags.
   /// Resource manager tag keys and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -104,6 +107,7 @@ class RegionalSecretArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [rotation] The rotation time and period for a regional secret. At `nextRotationTime`, Secret Manager
   /// [secretId] This must be unique within the project.
+  /// [secretType] This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
   /// [tags] A map of resource manager tags.
   /// [topics] A list of up to 10 Pub/Sub topics to which messages are published when control plane
   /// [ttl] The TTL for the regional secret. A duration in seconds with up to nine fractional digits,
@@ -120,6 +124,7 @@ class RegionalSecretArgs {
     this.project,
     this.rotation,
     required this.secretId,
+    this.secretType,
     this.tags,
     this.topics,
     this.ttl,
@@ -139,6 +144,7 @@ class RegionalSecretArgs {
       'project': ?project,
       'rotation': ?pulumi.Input.mapOptionalInputValue<RegionalSecretRotation, Map<String, dynamic>>(rotation, (value) => value.toMap()),
       'secretId': secretId,
+      'secretType': ?secretType,
       'tags': ?tags,
       'topics': ?pulumi.Input.mapOptionalInputValue<List<RegionalSecretTopic>, List<Map<String, dynamic>>>(topics, (value) => pulumi.Input.encodeList<RegionalSecretTopic, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ttl': ?ttl,
@@ -159,6 +165,7 @@ class RegionalSecretArgs {
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rotation: (() { final guardedValue = map['rotation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionalSecretRotation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       secretId: pulumi.Input.fromValue(map['secretId'] as String),
+      secretType: (() { final guardedValue = map['secretType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       topics: (() { final guardedValue = map['topics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionalSecretTopic>(guardedValue, (value) => RegionalSecretTopic.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

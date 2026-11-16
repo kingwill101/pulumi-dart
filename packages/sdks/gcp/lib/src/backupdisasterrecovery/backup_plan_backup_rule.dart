@@ -32,7 +32,7 @@ class BackupPlanBackupRule {
 
   factory BackupPlanBackupRule.fromMap(Map<String, dynamic> map) {
     return BackupPlanBackupRule(
-      backupRetentionDays: pulumi.Input.fromValue((map['backupRetentionDays'] as num).toInt()),
+      backupRetentionDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['backupRetentionDays'])),
       ruleId: pulumi.Input.fromValue(map['ruleId'] as String),
       standardSchedule: pulumi.Input.fromValue(BackupPlanBackupRuleStandardSchedule.fromMap((map['standardSchedule']! as Map).cast<String, dynamic>())),
     );

@@ -14,6 +14,7 @@ import 'policy_state.dart';
 /// * [Official Documentation](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
 /// * [Supported Services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Org Policy Policy Enforce
@@ -98,8 +99,8 @@ import 'policy_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/orgpolicy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/orgpolicy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -137,7 +138,7 @@ import 'policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -146,15 +147,21 @@ import 'policy_state.dart';
 /// }
 ///
 /// resource "gcp_orgpolicy_policy" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   ="projects/${gcp_organizations_project.basic.project_id}/policies/iam.disableServiceAccountKeyUpload"
 ///   parent ="projects/${gcp_organizations_project.basic.project_id}"
 ///   spec = {
 ///     rules = [{
-///       "enforce" = "FALSE"
+///       enforce = "FALSE"
 ///     }]
 ///   }
 /// }
 /// resource "gcp_organizations_project" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "id"
 ///   name            = "id"
 ///   org_id          = "123456789"
@@ -224,6 +231,7 @@ import 'policy_state.dart';
 ///       orgId: '123456789'
 ///       deletionPolicy: DELETE
 /// ```
+///
 ///
 /// ### Org Policy Policy Folder
 ///
@@ -307,8 +315,8 @@ import 'policy_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/orgpolicy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/orgpolicy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -344,7 +352,7 @@ import 'policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -353,16 +361,22 @@ import 'policy_state.dart';
 /// }
 ///
 /// resource "gcp_orgpolicy_policy" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   ="${gcp_organizations_folder.basic.name}/policies/gcp.resourceLocations"
 ///   parent = gcp_organizations_folder.basic.name
 ///   spec = {
 ///     inherit_from_parent = true
 ///     rules = [{
-///       "denyAll" = "TRUE"
+///       deny_all = "TRUE"
 ///     }]
 ///   }
 /// }
 /// resource "gcp_organizations_folder" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent              = "organizations/123456789"
 ///   display_name        = "folder"
 ///   deletion_protection = false
@@ -432,6 +446,7 @@ import 'policy_state.dart';
 ///       deletionProtection: false
 /// ```
 ///
+///
 /// ### Org Policy Policy Organization
 ///
 ///
@@ -483,7 +498,7 @@ import 'policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/orgpolicy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/orgpolicy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -504,7 +519,7 @@ import 'policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -513,6 +528,9 @@ import 'policy_state.dart';
 /// }
 ///
 /// resource "gcp_orgpolicy_policy" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "organizations/123456789/policies/gcp.detailedAuditLoggingMode"
 ///   parent = "organizations/123456789"
 ///   spec = {
@@ -563,6 +581,7 @@ import 'policy_state.dart';
 ///       spec:
 ///         reset: true
 /// ```
+///
 ///
 /// ### Org Policy Policy Project
 ///
@@ -695,8 +714,8 @@ import 'policy_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/orgpolicy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/orgpolicy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -750,7 +769,7 @@ import 'policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -759,26 +778,32 @@ import 'policy_state.dart';
 /// }
 ///
 /// resource "gcp_orgpolicy_policy" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   ="projects/${gcp_organizations_project.basic.project_id}/policies/gcp.resourceLocations"
 ///   parent ="projects/${gcp_organizations_project.basic.project_id}"
 ///   spec = {
 ///     rules = [{
-///       "condition" = {
-///         "description" = "A sample condition for the policy"
-///         "expression"  = "resource.matchTagId('tagKeys/123', 'tagValues/345')"
-///         "location"    = "sample-location.log"
-///         "title"       = "sample-condition"
+///       condition = {
+///         description = "A sample condition for the policy"
+///         expression  = "resource.matchTagId('tagKeys/123', 'tagValues/345')"
+///         location    = "sample-location.log"
+///         title       = "sample-condition"
 ///       }
-///       "values" = {
-///         "allowedValues" = ["projects/allowed-project"]
-///         "deniedValues"  = ["projects/denied-project"]
+///       values = {
+///         allowed_values = ["projects/allowed-project"]
+///         denied_values  = ["projects/denied-project"]
 ///       }
 ///       }, {
-///       "allowAll" = "TRUE"
+///       allow_all = "TRUE"
 ///     }]
 ///   }
 /// }
 /// resource "gcp_organizations_project" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "id"
 ///   name            = "id"
 ///   org_id          = "123456789"
@@ -874,6 +899,7 @@ import 'policy_state.dart';
 ///       deletionPolicy: DELETE
 /// ```
 ///
+///
 /// ### Org Policy Policy Dry Run Spec
 ///
 ///
@@ -883,7 +909,7 @@ import 'policy_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const constraint = new gcp.orgpolicy.CustomConstraint("constraint", {
-///     name: "custom.disableGkeAutoUpgrade_74065",
+///     name: "custom.disableGkeAutoUpgrade_84735",
 ///     parent: "organizations/123456789",
 ///     displayName: "Disable GKE auto upgrade",
 ///     description: "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
@@ -914,7 +940,7 @@ import 'policy_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// constraint = gcp.orgpolicy.CustomConstraint("constraint",
-///     name="custom.disableGkeAutoUpgrade_74065",
+///     name="custom.disableGkeAutoUpgrade_84735",
 ///     parent="organizations/123456789",
 ///     display_name="Disable GKE auto upgrade",
 ///     description="Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
@@ -948,7 +974,7 @@ import 'policy_state.dart';
 /// {
 ///     var constraint = new Gcp.OrgPolicy.CustomConstraint("constraint", new()
 ///     {
-///         Name = "custom.disableGkeAutoUpgrade_74065",
+///         Name = "custom.disableGkeAutoUpgrade_84735",
 ///         Parent = "organizations/123456789",
 ///         DisplayName = "Disable GKE auto upgrade",
 ///         Description = "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
@@ -1000,14 +1026,14 @@ import 'policy_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/orgpolicy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/orgpolicy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		constraint, err := orgpolicy.NewCustomConstraint(ctx, "constraint", &orgpolicy.CustomConstraintArgs{
-/// 			Name:        pulumi.String("custom.disableGkeAutoUpgrade_74065"),
+/// 			Name:        pulumi.String("custom.disableGkeAutoUpgrade_84735"),
 /// 			Parent:      pulumi.String("organizations/123456789"),
 /// 			DisplayName: pulumi.String("Disable GKE auto upgrade"),
 /// 			Description: pulumi.String("Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced."),
@@ -1053,7 +1079,7 @@ import 'policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1061,8 +1087,11 @@ import 'policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_orgpolicy_customconstraint" "constraint" {
-///   name           = "custom.disableGkeAutoUpgrade_74065"
+/// resource "gcp_orgpolicy_custom_constraint" "constraint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name           = "custom.disableGkeAutoUpgrade_84735"
 ///   parent         = "organizations/123456789"
 ///   display_name   = "Disable GKE auto upgrade"
 ///   description    = "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced."
@@ -1072,18 +1101,21 @@ import 'policy_state.dart';
 ///   resource_types = ["container.googleapis.com/NodePool"]
 /// }
 /// resource "gcp_orgpolicy_policy" "primary" {
-///   name   ="organizations/123456789/policies/${gcp_orgpolicy_customconstraint.constraint.name}"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name   ="organizations/123456789/policies/${gcp_orgpolicy_custom_constraint.constraint.name}"
 ///   parent = "organizations/123456789"
 ///   spec = {
 ///     rules = [{
-///       "enforce" = "FALSE"
+///       enforce = "FALSE"
 ///     }]
 ///   }
 ///   dry_run_spec = {
 ///     inherit_from_parent = false
 ///     reset               = false
 ///     rules = [{
-///       "enforce" = "FALSE"
+///       enforce = "FALSE"
 ///     }]
 ///   }
 /// }
@@ -1116,7 +1148,7 @@ import 'policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var constraint = new CustomConstraint("constraint", CustomConstraintArgs.builder()
-///             .name("custom.disableGkeAutoUpgrade_74065")
+///             .name("custom.disableGkeAutoUpgrade_84735")
 ///             .parent("organizations/123456789")
 ///             .displayName("Disable GKE auto upgrade")
 ///             .description("Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.")
@@ -1151,7 +1183,7 @@ import 'policy_state.dart';
 ///   constraint:
 ///     type: gcp:orgpolicy:CustomConstraint
 ///     properties:
-///       name: custom.disableGkeAutoUpgrade_74065
+///       name: custom.disableGkeAutoUpgrade_84735
 ///       parent: organizations/123456789
 ///       displayName: Disable GKE auto upgrade
 ///       description: Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.
@@ -1175,6 +1207,7 @@ import 'policy_state.dart';
 ///         rules:
 ///           - enforce: FALSE
 /// ```
+///
 ///
 /// ### Org Policy Policy Parameters Enforce
 ///
@@ -1284,8 +1317,8 @@ import 'policy_state.dart';
 /// 	"encoding/json"
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/orgpolicy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/orgpolicy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1335,7 +1368,7 @@ import 'policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1344,12 +1377,15 @@ import 'policy_state.dart';
 /// }
 ///
 /// resource "gcp_orgpolicy_policy" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   ="projects/${gcp_organizations_project.basic.name}/policies/compute.managed.restrictDiskCreation"
 ///   parent ="projects/${gcp_organizations_project.basic.name}"
 ///   spec = {
 ///     rules = [{
-///       "enforce" = "TRUE"
-///       "parameters" = jsonencode({
+///       enforce = "TRUE"
+///       parameters = jsonencode({
 ///         "isSizeLimitCheck" = true
 ///         "allowedDiskTypes" = ["pd-ssd", "pd-standard"]
 ///       })
@@ -1357,6 +1393,9 @@ import 'policy_state.dart';
 ///   }
 /// }
 /// resource "gcp_organizations_project" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "id"
 ///   name            = "id"
 ///   org_id          = "123456789"
@@ -1488,7 +1527,7 @@ class Policy extends pulumi.CustomResource {
           'gcp:orgpolicy/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     dryRunSpec = registerOutput<PolicyDryRunSpec?>('dryRunSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyDryRunSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });

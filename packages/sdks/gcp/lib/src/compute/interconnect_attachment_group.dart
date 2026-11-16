@@ -16,6 +16,7 @@ import 'interconnect_attachment_group_state.dart';
 /// * How-to Guides
 /// * [Create a Dedicated Interconnect](https://cloud.google.com/network-connectivity/docs/interconnect/concepts/dedicated-overview)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Interconnect Attachment Group Basic
@@ -66,7 +67,7 @@ import 'interconnect_attachment_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -86,7 +87,7 @@ import 'interconnect_attachment_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -94,7 +95,10 @@ import 'interconnect_attachment_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_interconnectattachmentgroup" "example-interconnect-attachment-group" {
+/// resource "gcp_compute_interconnect_attachment_group" "example-interconnect-attachment-group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-interconnect-attachment-group"
 ///   intent = {
 ///     availability_sla = "NO_SLA"
@@ -218,7 +222,7 @@ class InterconnectAttachmentGroup extends pulumi.CustomResource {
           'gcp:compute/interconnectAttachmentGroup:InterconnectAttachmentGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     attachments = registerOutput<List<InterconnectAttachmentGroupAttachment>?>('attachments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectAttachmentGroupAttachment>(guardedValue, (value) => InterconnectAttachmentGroupAttachment.fromMap((value as Map).cast<String, dynamic>())); });
     configureds = registerOutput<List<InterconnectAttachmentGroupConfigured>>('configureds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectAttachmentGroupConfigured>(guardedValue, (value) => InterconnectAttachmentGroupConfigured.fromMap((value as Map).cast<String, dynamic>())); });

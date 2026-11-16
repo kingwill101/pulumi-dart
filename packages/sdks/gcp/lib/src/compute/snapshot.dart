@@ -27,6 +27,7 @@ import 'snapshot_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Snapshot Basic
@@ -38,7 +39,7 @@ import 'snapshot_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const debian = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const persistent = new gcp.compute.Disk("persistent", {
@@ -62,7 +63,7 @@ import 'snapshot_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// debian = gcp.compute.get_image(family="debian-11",
+/// debian = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// persistent = gcp.compute.Disk("persistent",
 ///     name="debian-disk",
@@ -89,7 +90,7 @@ import 'snapshot_state.dart';
 /// {
 ///     var debian = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -123,14 +124,14 @@ import 'snapshot_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		debian, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -148,7 +149,7 @@ import 'snapshot_state.dart';
 /// 		}
 /// 		_, err = compute.NewSnapshot(ctx, "snapshot", &compute.SnapshotArgs{
 /// 			Name:       pulumi.String("my-snapshot"),
-/// 			SourceDisk: persistent.ID().ToIDOutput().ToStringOutput(),
+/// 			SourceDisk: persistent.ID(),
 /// 			Zone:       pulumi.String("us-central1-a"),
 /// 			Labels: pulumi.StringMap{
 /// 				"my_label": pulumi.String("value"),
@@ -165,7 +166,7 @@ import 'snapshot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -173,12 +174,15 @@ import 'snapshot_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "debian" {
-///   family  = "debian-11"
+/// data "gcp_compute_image" "debian" {
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
 /// resource "gcp_compute_snapshot" "snapshot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-snapshot"
 ///   source_disk = gcp_compute_disk.persistent.id
 ///   zone        = "us-central1-a"
@@ -188,8 +192,11 @@ import 'snapshot_state.dart';
 ///   storage_locations = ["us-central1"]
 /// }
 /// resource "gcp_compute_disk" "persistent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "debian-disk"
-///   image = data.gcp_compute_getimage.debian.self_link
+///   image = data.gcp_compute_image.debian.self_link
 ///   size  = 10
 ///   type  = "pd-ssd"
 ///   zone  = "us-central1-a"
@@ -221,7 +228,7 @@ import 'snapshot_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var debian = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -269,9 +276,10 @@ import 'snapshot_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
+///
 ///
 /// ### Snapshot Basic2
 ///
@@ -282,7 +290,7 @@ import 'snapshot_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const debian = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const persistent = new gcp.compute.Disk("persistent", {
@@ -307,7 +315,7 @@ import 'snapshot_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// debian = gcp.compute.get_image(family="debian-11",
+/// debian = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// persistent = gcp.compute.Disk("persistent",
 ///     name="debian-disk",
@@ -335,7 +343,7 @@ import 'snapshot_state.dart';
 /// {
 ///     var debian = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -370,14 +378,14 @@ import 'snapshot_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		debian, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -395,7 +403,7 @@ import 'snapshot_state.dart';
 /// 		}
 /// 		_, err = compute.NewSnapshot(ctx, "snapshot", &compute.SnapshotArgs{
 /// 			Name:       pulumi.String("my-snapshot"),
-/// 			SourceDisk: persistent.ID().ToIDOutput().ToStringOutput(),
+/// 			SourceDisk: persistent.ID(),
 /// 			Zone:       pulumi.String("us-central1-a"),
 /// 			Labels: pulumi.StringMap{
 /// 				"my_label": pulumi.String("value"),
@@ -413,7 +421,7 @@ import 'snapshot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -421,12 +429,15 @@ import 'snapshot_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "debian" {
-///   family  = "debian-11"
+/// data "gcp_compute_image" "debian" {
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
 /// resource "gcp_compute_snapshot" "snapshot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-snapshot"
 ///   source_disk = gcp_compute_disk.persistent.id
 ///   zone        = "us-central1-a"
@@ -437,8 +448,11 @@ import 'snapshot_state.dart';
 ///   guest_flush       = true
 /// }
 /// resource "gcp_compute_disk" "persistent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "debian-disk"
-///   image = data.gcp_compute_getimage.debian.self_link
+///   image = data.gcp_compute_image.debian.self_link
 ///   size  = 10
 ///   type  = "pd-ssd"
 ///   zone  = "us-central1-a"
@@ -470,7 +484,7 @@ import 'snapshot_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var debian = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -520,9 +534,10 @@ import 'snapshot_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
+///
 ///
 /// ### Snapshot Basic Source Instant Snapshot
 ///
@@ -533,7 +548,7 @@ import 'snapshot_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const debian = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const persistent = new gcp.compute.Disk("persistent", {
@@ -562,7 +577,7 @@ import 'snapshot_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// debian = gcp.compute.get_image(family="debian-11",
+/// debian = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// persistent = gcp.compute.Disk("persistent",
 ///     name="debian-disk",
@@ -593,7 +608,7 @@ import 'snapshot_state.dart';
 /// {
 ///     var debian = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -631,14 +646,14 @@ import 'snapshot_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		debian, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -669,7 +684,7 @@ import 'snapshot_state.dart';
 /// 		_, err = compute.NewSnapshot(ctx, "snapshot", &compute.SnapshotArgs{
 /// 			Name:                  pulumi.String("my-snapshot"),
 /// 			Zone:                  pulumi.String("us-central1-a"),
-/// 			SourceInstantSnapshot: instantSnapshot.ID().ToIDOutput().ToStringOutput(),
+/// 			SourceInstantSnapshot: instantSnapshot.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -679,7 +694,7 @@ import 'snapshot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -687,17 +702,23 @@ import 'snapshot_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "debian" {
-///   family  = "debian-11"
+/// data "gcp_compute_image" "debian" {
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
 /// resource "gcp_compute_snapshot" "snapshot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-snapshot"
 ///   zone                    = "us-central1-a"
-///   source_instant_snapshot = gcp_compute_instantsnapshot.instant_snapshot.id
+///   source_instant_snapshot = gcp_compute_instant_snapshot.instant_snapshot.id
 /// }
-/// resource "gcp_compute_instantsnapshot" "instant_snapshot" {
+/// resource "gcp_compute_instant_snapshot" "instant_snapshot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-instant-snapshot"
 ///   source_disk = gcp_compute_disk.persistent.self_link
 ///   zone        = gcp_compute_disk.persistent.zone
@@ -707,8 +728,11 @@ import 'snapshot_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_disk" "persistent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "debian-disk"
-///   image = data.gcp_compute_getimage.debian.self_link
+///   image = data.gcp_compute_image.debian.self_link
 ///   size  = 10
 ///   type  = "pd-ssd"
 ///   zone  = "us-central1-a"
@@ -742,7 +766,7 @@ import 'snapshot_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var debian = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -802,9 +826,10 @@ import 'snapshot_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
+///
 ///
 /// ### Snapshot Chainname
 ///
@@ -815,7 +840,7 @@ import 'snapshot_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const debian = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const persistent = new gcp.compute.Disk("persistent", {
@@ -840,7 +865,7 @@ import 'snapshot_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// debian = gcp.compute.get_image(family="debian-11",
+/// debian = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// persistent = gcp.compute.Disk("persistent",
 ///     name="debian-disk",
@@ -868,7 +893,7 @@ import 'snapshot_state.dart';
 /// {
 ///     var debian = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -903,14 +928,14 @@ import 'snapshot_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		debian, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -928,7 +953,7 @@ import 'snapshot_state.dart';
 /// 		}
 /// 		_, err = compute.NewSnapshot(ctx, "snapshot", &compute.SnapshotArgs{
 /// 			Name:       pulumi.String("my-snapshot"),
-/// 			SourceDisk: persistent.ID().ToIDOutput().ToStringOutput(),
+/// 			SourceDisk: persistent.ID(),
 /// 			Zone:       pulumi.String("us-central1-a"),
 /// 			ChainName:  pulumi.String("snapshot-chain"),
 /// 			Labels: pulumi.StringMap{
@@ -946,7 +971,7 @@ import 'snapshot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -954,12 +979,15 @@ import 'snapshot_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "debian" {
-///   family  = "debian-11"
+/// data "gcp_compute_image" "debian" {
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
 /// resource "gcp_compute_snapshot" "snapshot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-snapshot"
 ///   source_disk = gcp_compute_disk.persistent.id
 ///   zone        = "us-central1-a"
@@ -970,8 +998,11 @@ import 'snapshot_state.dart';
 ///   storage_locations = ["us-central1"]
 /// }
 /// resource "gcp_compute_disk" "persistent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "debian-disk"
-///   image = data.gcp_compute_getimage.debian.self_link
+///   image = data.gcp_compute_image.debian.self_link
 ///   size  = 10
 ///   type  = "pd-ssd"
 ///   zone  = "us-central1-a"
@@ -1003,7 +1034,7 @@ import 'snapshot_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var debian = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -1053,7 +1084,7 @@ import 'snapshot_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
 ///
@@ -1141,6 +1172,9 @@ class Snapshot extends pulumi.CustomResource {
   /// If you do not provide an encryption key when creating the snapshot,
   /// then the snapshot will be encrypted using an automatically generated
   /// key and you do not need to provide a key to use the snapshot later.
+  /// ~&gt;**NOTE** `kmsKeySelfLink` can be added or changed in place.
+  /// Removing it, or changing it while `kmsKeyServiceAccount` is set,
+  /// fails at plan time. Other changes to this block recreate the snapshot.
   /// Structure is documented below.
   late final pulumi.Output<SnapshotSnapshotEncryptionKey?> snapshotEncryptionKey;
   /// The unique identifier for the resource.
@@ -1178,7 +1212,7 @@ class Snapshot extends pulumi.CustomResource {
           'gcp:compute/snapshot:Snapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     chainName = registerOutput<String?>('chainName');

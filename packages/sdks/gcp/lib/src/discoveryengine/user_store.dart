@@ -9,6 +9,7 @@ import 'user_store_state.dart';
 ///
 /// * [API documentation](https://cloud.google.com/gemini/enterprise/docs/reference/rest/v1/projects.locations.userStores)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Discoveryengine Userstore Basic
@@ -125,8 +126,8 @@ import 'user_store_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -173,7 +174,7 @@ import 'user_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -181,10 +182,13 @@ import 'user_store_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_discoveryengine_licenseconfig" "basic" {
+/// resource "gcp_discoveryengine_license_config" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "us"
 ///   license_config_id = "license-config-id"
 ///   license_count     = 50
@@ -201,9 +205,12 @@ import 'user_store_state.dart';
 ///   }
 ///   subscription_term = "SUBSCRIPTION_TERM_ONE_YEAR"
 /// }
-/// resource "gcp_discoveryengine_userstore" "basic" {
-///   location                     = gcp_discoveryengine_licenseconfig.basic.location
-///   default_license_config       ="projects/${data.gcp_organizations_getproject.project.number}/locations/${gcp_discoveryengine_licenseconfig.basic.location}/licenseConfigs/${gcp_discoveryengine_licenseconfig.basic.license_config_id}"
+/// resource "gcp_discoveryengine_user_store" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location                     = gcp_discoveryengine_license_config.basic.location
+///   default_license_config       ="projects/${data.gcp_organizations_project.project.number}/locations/${gcp_discoveryengine_license_config.basic.location}/licenseConfigs/${gcp_discoveryengine_license_config.basic.license_config_id}"
 ///   enable_license_auto_register = true
 /// }
 /// ```
@@ -359,7 +366,7 @@ class UserStore extends pulumi.CustomResource {
           'gcp:discoveryengine/userStore:UserStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     defaultLicenseConfig = registerOutput<String?>('defaultLicenseConfig');
     enableExpiredLicenseAutoUpdate = registerOutput<bool?>('enableExpiredLicenseAutoUpdate');

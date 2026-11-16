@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hub_args.dart';
+import 'hub_export_psc_config.dart';
 import 'hub_routing_vpc.dart';
 import 'hub_state.dart';
 
@@ -11,6 +12,7 @@ import 'hub_state.dart';
 /// * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.global.hubs)
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
+///
 ///
 /// ## Example Usage
 ///
@@ -65,7 +67,7 @@ import 'hub_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -86,7 +88,7 @@ import 'hub_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -95,6 +97,9 @@ import 'hub_state.dart';
 /// }
 ///
 /// resource "gcp_networkconnectivity_hub" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "basic"
 ///   description = "A sample hub"
 ///   labels = {
@@ -143,6 +148,7 @@ import 'hub_state.dart';
 ///         label-one: value-one
 /// ```
 ///
+///
 /// ### Network Connectivity Hub With Export Psc
 ///
 ///
@@ -187,7 +193,7 @@ import 'hub_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -206,7 +212,7 @@ import 'hub_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -215,6 +221,9 @@ import 'hub_state.dart';
 /// }
 ///
 /// resource "gcp_networkconnectivity_hub" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "basic"
 ///   description = "A sample hub with Private Service Connect transitivity is enabled"
 ///   export_psc  = true
@@ -259,6 +268,157 @@ import 'hub_state.dart';
 ///       description: A sample hub with Private Service Connect transitivity is enabled
 ///       exportPsc: true
 /// ```
+///
+///
+/// ### Network Connectivity Hub With Export Psc Config
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const primary = new gcp.networkconnectivity.Hub("primary", {
+///     name: "psc-config",
+///     description: "A sample hub that propagates Private Service Connect endpoints for global Google APIs only",
+///     exportPsc: true,
+///     exportPscConfig: {
+///         publishedServicesAndRegionalGoogleApis: false,
+///         globalGoogleApis: true,
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// primary = gcp.networkconnectivity.Hub("primary",
+///     name="psc-config",
+///     description="A sample hub that propagates Private Service Connect endpoints for global Google APIs only",
+///     export_psc=True,
+///     export_psc_config={
+///         "published_services_and_regional_google_apis": False,
+///         "global_google_apis": True,
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var primary = new Gcp.NetworkConnectivity.Hub("primary", new()
+///     {
+///         Name = "psc-config",
+///         Description = "A sample hub that propagates Private Service Connect endpoints for global Google APIs only",
+///         ExportPsc = true,
+///         ExportPscConfig = new Gcp.NetworkConnectivity.Inputs.HubExportPscConfigArgs
+///         {
+///             PublishedServicesAndRegionalGoogleApis = false,
+///             GlobalGoogleApis = true,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := networkconnectivity.NewHub(ctx, "primary", &networkconnectivity.HubArgs{
+/// 			Name:        pulumi.String("psc-config"),
+/// 			Description: pulumi.String("A sample hub that propagates Private Service Connect endpoints for global Google APIs only"),
+/// 			ExportPsc:   pulumi.Bool(true),
+/// 			ExportPscConfig: &networkconnectivity.HubExportPscConfigArgs{
+/// 				PublishedServicesAndRegionalGoogleApis: pulumi.Bool(false),
+/// 				GlobalGoogleApis:                       pulumi.Bool(true),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkconnectivity_hub" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name        = "psc-config"
+///   description = "A sample hub that propagates Private Service Connect endpoints for global Google APIs only"
+///   export_psc  = true
+///   export_psc_config = {
+///     published_services_and_regional_google_apis = false
+///     global_google_apis                          = true
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.networkconnectivity.Hub;
+/// import com.pulumi.gcp.networkconnectivity.HubArgs;
+/// import com.pulumi.gcp.networkconnectivity.inputs.HubExportPscConfigArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var primary = new Hub("primary", HubArgs.builder()
+///             .name("psc-config")
+///             .description("A sample hub that propagates Private Service Connect endpoints for global Google APIs only")
+///             .exportPsc(true)
+///             .exportPscConfig(HubExportPscConfigArgs.builder()
+///                 .publishedServicesAndRegionalGoogleApis(false)
+///                 .globalGoogleApis(true)
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   primary:
+///     type: gcp:networkconnectivity:Hub
+///     properties:
+///       name: psc-config
+///       description: A sample hub that propagates Private Service Connect endpoints for global Google APIs only
+///       exportPsc: true
+///       exportPscConfig:
+///         publishedServicesAndRegionalGoogleApis: false
+///         globalGoogleApis: true
+/// ```
+///
 ///
 /// ### Network Connectivity Hub Mesh Topology
 ///
@@ -311,7 +471,7 @@ import 'hub_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -332,7 +492,7 @@ import 'hub_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -341,6 +501,9 @@ import 'hub_state.dart';
 /// }
 ///
 /// resource "gcp_networkconnectivity_hub" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "mesh"
 ///   description = "A sample mesh hub"
 ///   labels = {
@@ -388,6 +551,7 @@ import 'hub_state.dart';
 ///       labels:
 ///         label-one: value-one
 /// ```
+///
 ///
 /// ### Network Connectivity Hub Star Topology
 ///
@@ -443,7 +607,7 @@ import 'hub_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -465,7 +629,7 @@ import 'hub_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -474,6 +638,9 @@ import 'hub_state.dart';
 /// }
 ///
 /// resource "gcp_networkconnectivity_hub" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "star"
 ///   description = "A sample star hub"
 ///   labels = {
@@ -524,6 +691,7 @@ import 'hub_state.dart';
 ///         label-one: value-one
 ///       presetTopology: STAR
 /// ```
+///
 ///
 /// ### Network Connectivity Hub Policy Mode
 ///
@@ -582,7 +750,7 @@ import 'hub_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -605,7 +773,7 @@ import 'hub_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -614,6 +782,9 @@ import 'hub_state.dart';
 /// }
 ///
 /// resource "gcp_networkconnectivity_hub" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "policy"
 ///   description     = "A sample hub with PRESET policy_mode and STAR topology"
 ///   policy_mode     = "PRESET"
@@ -701,6 +872,11 @@ class Hub extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
   late final pulumi.Output<bool> exportPsc;
+  /// (Optional, Beta)
+  /// Config for more granular control of Private Service Connect transitivity. Only takes effect when `exportPsc` is true.
+  /// If `exportPsc` is true, at least one of `publishedServicesAndRegionalGoogleApis` and `globalGoogleApis` must be true.
+  /// Structure is documented below.
+  late final pulumi.Output<HubExportPscConfig> exportPscConfig;
   /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -741,7 +917,7 @@ class Hub extends pulumi.CustomResource {
           'gcp:networkconnectivity/hub:Hub',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
@@ -749,6 +925,7 @@ class Hub extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     exportPsc = registerOutput<bool>('exportPsc');
+    exportPscConfig = registerOutput<HubExportPscConfig>('exportPscConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubExportPscConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     policyMode = registerOutput<String>('policyMode');
@@ -790,6 +967,7 @@ class Hub extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     exportPsc = registerOutput<bool>('exportPsc');
+    exportPscConfig = registerOutput<HubExportPscConfig>('exportPscConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubExportPscConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     policyMode = registerOutput<String>('policyMode');
@@ -817,6 +995,7 @@ class Hub extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     exportPsc = registerOutput<bool>('exportPsc');
+    exportPscConfig = registerOutput<HubExportPscConfig>('exportPscConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubExportPscConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     policyMode = registerOutput<String>('policyMode');

@@ -7,6 +7,11 @@ import 'ca_pool_issuance_policy_baseline_values.dart';
 import 'ca_pool_issuance_policy_identity_constraints.dart';
 
 class CaPoolIssuancePolicy {
+  /// If set to true, allows requesters to specify the requestedNotBeforeTime
+  /// field when creating a Certificate. Certificates requested with this
+  /// option enabled will have a 'not_before_time' equal to the value
+  /// specified in the request.
+  final pulumi.Input<bool?>? allowRequesterSpecifiedNotBeforeTime;
   /// IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
   /// Structure is documented below.
   final pulumi.Input<CaPoolIssuancePolicyAllowedIssuanceModes?>? allowedIssuanceModes;
@@ -35,6 +40,7 @@ class CaPoolIssuancePolicy {
   final pulumi.Input<String?>? maximumLifetime;
 
   /// Creates a new [CaPoolIssuancePolicy].
+  /// [allowRequesterSpecifiedNotBeforeTime] If set to true, allows requesters to specify the requestedNotBeforeTime
   /// [allowedIssuanceModes] IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
   /// [allowedKeyTypes] If any AllowedKeyType is specified, then the certificate request's public key must match one of the key types listed here.
   /// [backdateDuration] The duration to backdate all certificates issued from this CaPool. If not set, the
@@ -42,6 +48,7 @@ class CaPoolIssuancePolicy {
   /// [identityConstraints] Describes constraints on identities that may appear in Certificates issued through this CaPool.
   /// [maximumLifetime] The maximum lifetime allowed for issued Certificates. Note that if the issuing CertificateAuthority
   const CaPoolIssuancePolicy({
+    this.allowRequesterSpecifiedNotBeforeTime,
     this.allowedIssuanceModes,
     this.allowedKeyTypes,
     this.backdateDuration,
@@ -52,6 +59,7 @@ class CaPoolIssuancePolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'allowRequesterSpecifiedNotBeforeTime': ?allowRequesterSpecifiedNotBeforeTime,
       'allowedIssuanceModes': ?pulumi.Input.mapOptionalInputValue<CaPoolIssuancePolicyAllowedIssuanceModes, Map<String, dynamic>>(allowedIssuanceModes, (value) => value.toMap()),
       'allowedKeyTypes': ?pulumi.Input.mapOptionalInputValue<List<CaPoolIssuancePolicyAllowedKeyType>, List<Map<String, dynamic>>>(allowedKeyTypes, (value) => pulumi.Input.encodeList<CaPoolIssuancePolicyAllowedKeyType, Map<String, dynamic>>(value, (value) => value.toMap())),
       'backdateDuration': ?backdateDuration,
@@ -63,6 +71,7 @@ class CaPoolIssuancePolicy {
 
   factory CaPoolIssuancePolicy.fromMap(Map<String, dynamic> map) {
     return CaPoolIssuancePolicy(
+      allowRequesterSpecifiedNotBeforeTime: (() { final guardedValue = map['allowRequesterSpecifiedNotBeforeTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       allowedIssuanceModes: (() { final guardedValue = map['allowedIssuanceModes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CaPoolIssuancePolicyAllowedIssuanceModes.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       allowedKeyTypes: (() { final guardedValue = map['allowedKeyTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CaPoolIssuancePolicyAllowedKeyType>(guardedValue, (value) => CaPoolIssuancePolicyAllowedKeyType.fromMap((value as Map).cast<String, dynamic>()))); })(),
       backdateDuration: (() { final guardedValue = map['backdateDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

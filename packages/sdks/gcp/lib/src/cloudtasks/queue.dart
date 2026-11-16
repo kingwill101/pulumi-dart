@@ -11,6 +11,7 @@ import 'queue_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Queue Basic
@@ -54,7 +55,7 @@ import 'queue_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudtasks"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudtasks"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -72,7 +73,7 @@ import 'queue_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -81,6 +82,9 @@ import 'queue_state.dart';
 /// }
 ///
 /// resource "gcp_cloudtasks_queue" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "cloud-tasks-queue-test"
 ///   location = "us-central1"
 /// }
@@ -122,6 +126,7 @@ import 'queue_state.dart';
 ///       name: cloud-tasks-queue-test
 ///       location: us-central1
 /// ```
+///
 ///
 /// ### Cloud Tasks Queue Advanced
 ///
@@ -225,7 +230,7 @@ import 'queue_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudtasks"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudtasks"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -262,7 +267,7 @@ import 'queue_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -271,6 +276,9 @@ import 'queue_state.dart';
 /// }
 ///
 /// resource "gcp_cloudtasks_queue" "advanced_configuration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "instance-name"
 ///   location = "us-central1"
 ///   app_engine_routing_override = {
@@ -370,6 +378,7 @@ import 'queue_state.dart';
 ///       stackdriverLoggingConfig:
 ///         samplingRatio: 0.9
 /// ```
+///
 ///
 /// ### Cloud Tasks Queue Http Target Oidc
 ///
@@ -534,8 +543,8 @@ import 'queue_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudtasks"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudtasks"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -593,7 +602,7 @@ import 'queue_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -602,6 +611,9 @@ import 'queue_state.dart';
 /// }
 ///
 /// resource "gcp_cloudtasks_queue" "http_target_oidc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "cloud-tasks-queue-http-target-oidc"
 ///   location = "us-central1"
 ///   http_target = {
@@ -619,14 +631,14 @@ import 'queue_state.dart';
 ///       uri_override_enforce_mode = "IF_NOT_EXISTS"
 ///     }
 ///     header_overrides = [{
-///       "header" = {
-///         "key"   = "AddSomethingElse"
-///         "value" = "MyOtherValue"
+///       header = {
+///         key   = "AddSomethingElse"
+///         value = "MyOtherValue"
 ///       }
 ///       }, {
-///       "header" = {
-///         "key"   = "AddMe"
-///         "value" = "MyValue"
+///       header = {
+///         key   = "AddMe"
+///         value = "MyValue"
 ///       }
 ///     }]
 ///     oidc_token = {
@@ -636,6 +648,9 @@ import 'queue_state.dart';
 ///   }
 /// }
 /// resource "gcp_serviceaccount_account" "oidc_service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "example-oidc"
 ///   display_name = "Tasks Queue OIDC Service Account"
 /// }
@@ -751,6 +766,7 @@ import 'queue_state.dart';
 ///       accountId: example-oidc
 ///       displayName: Tasks Queue OIDC Service Account
 /// ```
+///
 ///
 /// ### Cloud Tasks Queue Http Target Oauth
 ///
@@ -915,8 +931,8 @@ import 'queue_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudtasks"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudtasks"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -974,7 +990,7 @@ import 'queue_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -983,6 +999,9 @@ import 'queue_state.dart';
 /// }
 ///
 /// resource "gcp_cloudtasks_queue" "http_target_oauth" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "cloud-tasks-queue-http-target-oauth"
 ///   location = "us-central1"
 ///   http_target = {
@@ -1000,14 +1019,14 @@ import 'queue_state.dart';
 ///       uri_override_enforce_mode = "IF_NOT_EXISTS"
 ///     }
 ///     header_overrides = [{
-///       "header" = {
-///         "key"   = "AddSomethingElse"
-///         "value" = "MyOtherValue"
+///       header = {
+///         key   = "AddSomethingElse"
+///         value = "MyOtherValue"
 ///       }
 ///       }, {
-///       "header" = {
-///         "key"   = "AddMe"
-///         "value" = "MyValue"
+///       header = {
+///         key   = "AddMe"
+///         value = "MyValue"
 ///       }
 ///     }]
 ///     oauth_token = {
@@ -1017,6 +1036,9 @@ import 'queue_state.dart';
 ///   }
 /// }
 /// resource "gcp_serviceaccount_account" "oauth_service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "example-oauth"
 ///   display_name = "Tasks Queue OAuth Service Account"
 /// }
@@ -1207,7 +1229,7 @@ class Queue extends pulumi.CustomResource {
           'gcp:cloudtasks/queue:Queue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     appEngineRoutingOverride = registerOutput<QueueAppEngineRoutingOverride?>('appEngineRoutingOverride', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueueAppEngineRoutingOverride.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

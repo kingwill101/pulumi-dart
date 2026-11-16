@@ -13,6 +13,7 @@ import 'multicast_group_range_state.dart';
 /// * How-to Guides
 /// * [Create Multicast Group Range](https://docs.cloud.google.com/vpc/docs/multicast/create-group-ranges#create_a_group_range)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Network Services Multicast Group Range Basic
@@ -135,9 +136,9 @@ import 'multicast_group_range_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -153,7 +154,7 @@ import 'multicast_group_range_state.dart';
 /// 		multicastDomain, err := networkservices.NewMulticastDomain(ctx, "multicast_domain", &networkservices.MulticastDomainArgs{
 /// 			MulticastDomainId: pulumi.String("test-mgr-domain"),
 /// 			Location:          pulumi.String("global"),
-/// 			AdminNetwork:      network.ID().ToIDOutput().ToStringOutput(),
+/// 			AdminNetwork:      network.ID(),
 /// 			ConnectionConfig: &networkservices.MulticastDomainConnectionConfigArgs{
 /// 				ConnectionType: pulumi.String("SAME_VPC"),
 /// 			},
@@ -176,8 +177,8 @@ import 'multicast_group_range_state.dart';
 /// 		_, err = networkservices.NewMulticastGroupRange(ctx, "mgr_test", &networkservices.MulticastGroupRangeArgs{
 /// 			MulticastGroupRangeId: pulumi.String("test-mgr-group-range"),
 /// 			Location:              pulumi.String("global"),
-/// 			ReservedInternalRange: internalRange.ID().ToIDOutput().ToStringOutput(),
-/// 			MulticastDomain:       multicastDomain.ID().ToIDOutput().ToStringOutput(),
+/// 			ReservedInternalRange: internalRange.ID(),
+/// 			MulticastDomain:       multicastDomain.ID(),
 /// 			DistributionScope:     pulumi.String("INTRA_ZONE"),
 /// 		})
 /// 		if err != nil {
@@ -188,7 +189,7 @@ import 'multicast_group_range_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -197,11 +198,17 @@ import 'multicast_group_range_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "test-mgr-network"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_networkservices_multicastdomain" "multicast_domain" {
-///   depends_on          = [gcp_compute_network.network]
+/// resource "gcp_networkservices_multicast_domain" "multicast_domain" {
+///   depends_on = [gcp_compute_network.network]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   multicast_domain_id = "test-mgr-domain"
 ///   location            = "global"
 ///   admin_network       = gcp_compute_network.network.id
@@ -209,18 +216,24 @@ import 'multicast_group_range_state.dart';
 ///     connection_type = "SAME_VPC"
 ///   }
 /// }
-/// resource "gcp_networkconnectivity_internalrange" "internal_range" {
+/// resource "gcp_networkconnectivity_internal_range" "internal_range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "test-mgr-internal-range"
 ///   network       = gcp_compute_network.network.self_link
 ///   usage         = "FOR_VPC"
 ///   peering       = "FOR_SELF"
 ///   ip_cidr_range = "224.2.0.2/32"
 /// }
-/// resource "gcp_networkservices_multicastgrouprange" "mgr_test" {
+/// resource "gcp_networkservices_multicast_group_range" "mgr_test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   multicast_group_range_id = "test-mgr-group-range"
 ///   location                 = "global"
-///   reserved_internal_range  = gcp_networkconnectivity_internalrange.internal_range.id
-///   multicast_domain         = gcp_networkservices_multicastdomain.multicast_domain.id
+///   reserved_internal_range  = gcp_networkconnectivity_internal_range.internal_range.id
+///   multicast_domain         = gcp_networkservices_multicast_domain.multicast_domain.id
 ///   distribution_scope       = "INTRA_ZONE"
 /// }
 /// ```
@@ -446,7 +459,7 @@ class MulticastGroupRange extends pulumi.CustomResource {
           'gcp:networkservices/multicastGroupRange:MulticastGroupRange',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     consumerAcceptLists = registerOutput<List<String>?>('consumerAcceptLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

@@ -53,7 +53,7 @@ class PrivateCloudNetworkConfig {
     return PrivateCloudNetworkConfig(
       dnsServerIp: (() { final guardedValue = map['dnsServerIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managementCidr: pulumi.Input.fromValue(map['managementCidr'] as String),
-      managementIpAddressLayoutVersion: (() { final guardedValue = map['managementIpAddressLayoutVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      managementIpAddressLayoutVersion: (() { final guardedValue = map['managementIpAddressLayoutVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       vmwareEngineNetwork: (() { final guardedValue = map['vmwareEngineNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vmwareEngineNetworkCanonical: (() { final guardedValue = map['vmwareEngineNetworkCanonical']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

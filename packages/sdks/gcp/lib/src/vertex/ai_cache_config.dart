@@ -11,6 +11,7 @@ import 'ai_cache_config_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/vertex-ai/generative-ai/docs/reference/rest/Shared.Types/CacheConfig)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Vertex Ai Cache Config
@@ -54,7 +55,7 @@ import 'ai_cache_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -72,7 +73,7 @@ import 'ai_cache_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -80,7 +81,10 @@ import 'ai_cache_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aicacheconfig" "cache_config" {
+/// resource "gcp_vertex_ai_cache_config" "cache_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project       = "my-project-name"
 ///   disable_cache = true
 /// }
@@ -160,7 +164,7 @@ class AiCacheConfig extends pulumi.CustomResource {
           'gcp:vertex/aiCacheConfig:AiCacheConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     disableCache = registerOutput<bool>('disableCache');
     this.name = registerOutput<String>('name');

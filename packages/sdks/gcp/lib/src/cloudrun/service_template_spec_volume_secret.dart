@@ -47,7 +47,7 @@ class ServiceTemplateSpecVolumeSecret {
 
   factory ServiceTemplateSpecVolumeSecret.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateSpecVolumeSecret(
-      defaultMode: (() { final guardedValue = map['defaultMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      defaultMode: (() { final guardedValue = map['defaultMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       items: (() { final guardedValue = map['items']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceTemplateSpecVolumeSecretItem>(guardedValue, (value) => ServiceTemplateSpecVolumeSecretItem.fromMap((value as Map).cast<String, dynamic>()))); })(),
       secretName: pulumi.Input.fromValue(map['secretName'] as String),
     );

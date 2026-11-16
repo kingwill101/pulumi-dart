@@ -30,9 +30,9 @@ class GetReservationResourceStatusHealthInfo {
 
   factory GetReservationResourceStatusHealthInfo.fromMap(Map<String, dynamic> map) {
     return GetReservationResourceStatusHealthInfo(
-      degradedBlockCount: pulumi.Input.fromValue((map['degradedBlockCount'] as num).toInt()),
+      degradedBlockCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['degradedBlockCount'])),
       healthStatus: pulumi.Input.fromValue(map['healthStatus'] as String),
-      healthyBlockCount: pulumi.Input.fromValue((map['healthyBlockCount'] as num).toInt()),
+      healthyBlockCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['healthyBlockCount'])),
     );
   }
 }

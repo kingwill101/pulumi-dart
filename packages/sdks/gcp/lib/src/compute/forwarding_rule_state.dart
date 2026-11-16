@@ -148,9 +148,10 @@ class ForwardingRuleState {
   /// APIs, the forwarding rule name must be a 1-20 characters string with
   /// lowercase letters and numbers and must start with a letter.
   final pulumi.Input<String?>? name;
-  /// This field is not used for external load balancing.
-  /// For Internal TCP/UDP Load Balancing, this field identifies the network that
-  /// the load balanced IP should belong to for this Forwarding Rule.
+  /// This field is not used for global external load balancing.
+  /// For Internal TCP/UDP Load Balancing and Regional External Load Balancing (`EXTERNAL_MANAGED`),
+  /// this field identifies the network that the load balanced IP should belong to
+  /// for this Forwarding Rule.
   /// If the subnetwork is specified, the network of the subnetwork will be used.
   /// If neither subnetwork nor this field is specified, the default network will
   /// be used.
@@ -248,8 +249,9 @@ class ForwardingRuleState {
   /// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
   final pulumi.Input<List<String>?>? sourceIpRanges;
   /// This field identifies the subnetwork that the load balanced IP should
-  /// belong to for this Forwarding Rule, used in internal load balancing and
-  /// network load balancing with IPv6.
+  /// belong to for this Forwarding Rule, used in internal load balancing,
+  /// network load balancing with IPv6, and regional external (`EXTERNAL_MANAGED`)
+  /// load balancing with IPv6.
   /// If the network specified is in auto subnet mode, this field is optional.
   /// However, a subnetwork must be specified if the network is in custom subnet
   /// mode or when creating external forwarding rule with IPv6.
@@ -283,7 +285,7 @@ class ForwardingRuleState {
   /// [labels] Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
   /// [loadBalancingScheme] Specifies the forwarding rule type.
   /// [name] Name of the resource; provided by the client when the resource is created.
-  /// [network] This field is not used for external load balancing.
+  /// [network] This field is not used for global external load balancing.
   /// [networkTier] This signifies the networking tier used for configuring
   /// [noAutomateDnsZone] This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
   /// [portRange] The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
@@ -394,7 +396,7 @@ class ForwardingRuleState {
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      forwardingRuleId: (() { final guardedValue = map['forwardingRuleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      forwardingRuleId: (() { final guardedValue = map['forwardingRuleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipCollection: (() { final guardedValue = map['ipCollection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipProtocol: (() { final guardedValue = map['ipProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

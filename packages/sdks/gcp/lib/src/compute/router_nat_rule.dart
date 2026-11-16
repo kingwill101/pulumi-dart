@@ -47,7 +47,7 @@ class RouterNatRule {
       action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RouterNatRuleAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       match: pulumi.Input.fromValue(map['match'] as String),
-      ruleNumber: pulumi.Input.fromValue((map['ruleNumber'] as num).toInt()),
+      ruleNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ruleNumber'])),
     );
   }
 }

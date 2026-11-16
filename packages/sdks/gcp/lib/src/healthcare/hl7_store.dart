@@ -15,6 +15,7 @@ import 'hl7_store_state.dart';
 /// * How-to Guides
 /// * [Creating a HL7v2 Store](https://cloud.google.com/healthcare/docs/how-tos/hl7v2)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Healthcare Hl7 V2 Store Basic
@@ -104,8 +105,8 @@ import 'hl7_store_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -126,11 +127,11 @@ import 'hl7_store_state.dart';
 /// 		}
 /// 		_, err = healthcare.NewHl7Store(ctx, "store", &healthcare.Hl7StoreArgs{
 /// 			Name:                   pulumi.String("example-hl7-v2-store"),
-/// 			Dataset:                dataset.ID().ToIDOutput().ToStringOutput(),
+/// 			Dataset:                dataset.ID(),
 /// 			RejectDuplicateMessage: pulumi.Bool(true),
 /// 			NotificationConfigs: healthcare.Hl7StoreNotificationConfigsArray{
 /// 				&healthcare.Hl7StoreNotificationConfigsArgs{
-/// 					PubsubTopic: topic.ID().ToIDOutput().ToStringOutput(),
+/// 					PubsubTopic: topic.ID(),
 /// 				},
 /// 			},
 /// 			Labels: pulumi.StringMap{
@@ -145,7 +146,7 @@ import 'hl7_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -153,7 +154,10 @@ import 'hl7_store_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_hl7store" "store" {
+/// resource "gcp_healthcare_hl7_store" "store" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-hl7-v2-store"
 ///   dataset                  = gcp_healthcare_dataset.dataset.id
 ///   reject_duplicate_message = true
@@ -165,9 +169,15 @@ import 'hl7_store_state.dart';
 ///   }
 /// }
 /// resource "gcp_pubsub_topic" "topic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "hl7-v2-notifications"
 /// }
 /// resource "gcp_healthcare_dataset" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-dataset"
 ///   location = "us-central1"
 /// }
@@ -242,6 +252,7 @@ import 'hl7_store_state.dart';
 ///       name: example-dataset
 ///       location: us-central1
 /// ```
+///
 ///
 /// ### Healthcare Hl7 V2 Store Parser Config
 ///
@@ -547,7 +558,7 @@ import 'hl7_store_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -562,7 +573,7 @@ import 'hl7_store_state.dart';
 /// 		}
 /// 		_, err = healthcare.NewHl7Store(ctx, "store", &healthcare.Hl7StoreArgs{
 /// 			Name:    pulumi.String("example-hl7-v2-store"),
-/// 			Dataset: dataset.ID().ToIDOutput().ToStringOutput(),
+/// 			Dataset: dataset.ID(),
 /// 			ParserConfig: &healthcare.Hl7StoreParserConfigArgs{
 /// 				AllowNullHeader:   pulumi.Bool(false),
 /// 				SegmentTerminator: pulumi.String("Jw=="),
@@ -655,7 +666,7 @@ import 'hl7_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -663,16 +674,102 @@ import 'hl7_store_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_hl7store" "store" {
+/// resource "gcp_healthcare_hl7_store" "store" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "example-hl7-v2-store"
 ///   dataset = gcp_healthcare_dataset.dataset.id
 ///   parser_config = {
 ///     allow_null_header  = false
 ///     segment_terminator = "Jw=="
-///     schema             = "{\n  \\\"schemas\\\": [{\n    \\\"messageSchemaConfigs\\\": {\n      \\\"ADT_A01\\\": {\n        \\\"name\\\": \\\"ADT_A01\\\",\n        \\\"minOccurs\\\": 1,\n        \\\"maxOccurs\\\": 1,\n        \\\"members\\\": [{\n            \\\"segment\\\": {\n              \\\"type\\\": \\\"MSH\\\",\n              \\\"minOccurs\\\": 1,\n              \\\"maxOccurs\\\": 1\n            }\n          },\n          {\n            \\\"segment\\\": {\n              \\\"type\\\": \\\"EVN\\\",\n              \\\"minOccurs\\\": 1,\n              \\\"maxOccurs\\\": 1\n            }\n          },\n          {\n            \\\"segment\\\": {\n              \\\"type\\\": \\\"PID\\\",\n              \\\"minOccurs\\\": 1,\n              \\\"maxOccurs\\\": 1\n            }\n          },\n          {\n            \\\"segment\\\": {\n              \\\"type\\\": \\\"ZPD\\\",\n              \\\"minOccurs\\\": 1,\n              \\\"maxOccurs\\\": 1\n            }\n          },\n          {\n            \\\"segment\\\": {\n              \\\"type\\\": \\\"OBX\\\"\n            }\n          },\n          {\n            \\\"group\\\": {\n              \\\"name\\\": \\\"PROCEDURE\\\",\n              \\\"members\\\": [{\n                  \\\"segment\\\": {\n                    \\\"type\\\": \\\"PR1\\\",\n                    \\\"minOccurs\\\": 1,\n                    \\\"maxOccurs\\\": 1\n                  }\n                },\n                {\n                  \\\"segment\\\": {\n                    \\\"type\\\": \\\"ROL\\\"\n                  }\n                }\n              ]\n            }\n          },\n          {\n            \\\"segment\\\": {\n              \\\"type\\\": \\\"PDA\\\",\n              \\\"maxOccurs\\\": 1\n            }\n          }\n        ]\n      }\n    }\n  }],\n  \\\"types\\\": [{\n    \\\"type\\\": [{\n        \\\"name\\\": \\\"ZPD\\\",\n        \\\"primitive\\\": \\\"VARIES\\\"\n      }\n\n    ]\n  }],\n  \\\"ignoreMinOccurs\\\": true\n}\n"
+///     schema             = <<EOF
+/// {
+///   \"schemas\": [{
+///     \"messageSchemaConfigs\": {
+///       \"ADT_A01\": {
+///         \"name\": \"ADT_A01\",
+///         \"minOccurs\": 1,
+///         \"maxOccurs\": 1,
+///         \"members\": [{
+///             \"segment\": {
+///               \"type\": \"MSH\",
+///               \"minOccurs\": 1,
+///               \"maxOccurs\": 1
+///             }
+///           },
+///           {
+///             \"segment\": {
+///               \"type\": \"EVN\",
+///               \"minOccurs\": 1,
+///               \"maxOccurs\": 1
+///             }
+///           },
+///           {
+///             \"segment\": {
+///               \"type\": \"PID\",
+///               \"minOccurs\": 1,
+///               \"maxOccurs\": 1
+///             }
+///           },
+///           {
+///             \"segment\": {
+///               \"type\": \"ZPD\",
+///               \"minOccurs\": 1,
+///               \"maxOccurs\": 1
+///             }
+///           },
+///           {
+///             \"segment\": {
+///               \"type\": \"OBX\"
+///             }
+///           },
+///           {
+///             \"group\": {
+///               \"name\": \"PROCEDURE\",
+///               \"members\": [{
+///                   \"segment\": {
+///                     \"type\": \"PR1\",
+///                     \"minOccurs\": 1,
+///                     \"maxOccurs\": 1
+///                   }
+///                 },
+///                 {
+///                   \"segment\": {
+///                     \"type\": \"ROL\"
+///                   }
+///                 }
+///               ]
+///             }
+///           },
+///           {
+///             \"segment\": {
+///               \"type\": \"PDA\",
+///               \"maxOccurs\": 1
+///             }
+///           }
+///         ]
+///       }
+///     }
+///   }],
+///   \"types\": [{
+///     \"type\": [{
+///         \"name\": \"ZPD\",
+///         \"primitive\": \"VARIES\"
+///       }
+///
+///     ]
+///   }],
+///   \"ignoreMinOccurs\": true
+/// }
+/// EOF
+///
 ///   }
 /// }
 /// resource "gcp_healthcare_dataset" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-dataset"
 ///   location = "us-central1"
 /// }
@@ -894,6 +991,7 @@ import 'hl7_store_state.dart';
 ///       location: us-central1
 /// ```
 ///
+///
 /// ### Healthcare Hl7 V2 Store Unschematized
 ///
 ///
@@ -964,7 +1062,7 @@ import 'hl7_store_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -979,7 +1077,7 @@ import 'hl7_store_state.dart';
 /// 		}
 /// 		_, err = healthcare.NewHl7Store(ctx, "store", &healthcare.Hl7StoreArgs{
 /// 			Name:    pulumi.String("example-hl7-v2-store"),
-/// 			Dataset: dataset.ID().ToIDOutput().ToStringOutput(),
+/// 			Dataset: dataset.ID(),
 /// 			ParserConfig: &healthcare.Hl7StoreParserConfigArgs{
 /// 				AllowNullHeader:   pulumi.Bool(false),
 /// 				SegmentTerminator: pulumi.String("Jw=="),
@@ -994,7 +1092,7 @@ import 'hl7_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1002,7 +1100,10 @@ import 'hl7_store_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_hl7store" "store" {
+/// resource "gcp_healthcare_hl7_store" "store" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "example-hl7-v2-store"
 ///   dataset = gcp_healthcare_dataset.dataset.id
 ///   parser_config = {
@@ -1012,6 +1113,9 @@ import 'hl7_store_state.dart';
 ///   }
 /// }
 /// resource "gcp_healthcare_dataset" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-dataset"
 ///   location = "us-central1"
 /// }
@@ -1153,7 +1257,7 @@ class Hl7Store extends pulumi.CustomResource {
           'gcp:healthcare/hl7Store:Hl7Store',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     dataset = registerOutput<String>('dataset');

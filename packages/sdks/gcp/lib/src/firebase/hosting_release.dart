@@ -13,6 +13,7 @@ import 'hosting_release_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://firebase.google.com/docs/hosting)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Firebasehosting Release In Site
@@ -108,7 +109,7 @@ import 'hosting_release_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -149,7 +150,7 @@ import 'hosting_release_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -157,23 +158,32 @@ import 'hosting_release_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_hostingsite" "default" {
+/// resource "gcp_firebase_hosting_site" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   site_id = "site-id"
 /// }
-/// resource "gcp_firebase_hostingversion" "default" {
-///   site_id = gcp_firebase_hostingsite.default.site_id
+/// resource "gcp_firebase_hosting_version" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   site_id = gcp_firebase_hosting_site.default.site_id
 ///   config = {
 ///     redirects = [{
-///       "glob"       = "/google/**"
-///       "statusCode" = 302
-///       "location"   = "https://www.google.com"
+///       glob        = "/google/**"
+///       status_code = 302
+///       location    = "https://www.google.com"
 ///     }]
 ///   }
 /// }
-/// resource "gcp_firebase_hostingrelease" "default" {
-///   site_id      = gcp_firebase_hostingsite.default.site_id
-///   version_name = gcp_firebase_hostingversion.default.name
+/// resource "gcp_firebase_hosting_release" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   site_id      = gcp_firebase_hosting_site.default.site_id
+///   version_name = gcp_firebase_hosting_version.default.name
 ///   message      = "Test release"
 /// }
 /// ```
@@ -254,6 +264,7 @@ import 'hosting_release_state.dart';
 ///       versionName: ${defaultHostingVersion.name}
 ///       message: Test release
 /// ```
+///
 ///
 /// ### Firebasehosting Release In Channel
 ///
@@ -364,7 +375,7 @@ import 'hosting_release_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -413,7 +424,7 @@ import 'hosting_release_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -421,28 +432,40 @@ import 'hosting_release_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_hostingsite" "default" {
+/// resource "gcp_firebase_hosting_site" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   site_id = "site-with-channel"
 /// }
-/// resource "gcp_firebase_hostingversion" "default" {
-///   site_id = gcp_firebase_hostingsite.default.site_id
+/// resource "gcp_firebase_hosting_version" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   site_id = gcp_firebase_hosting_site.default.site_id
 ///   config = {
 ///     redirects = [{
-///       "glob"       = "/google/**"
-///       "statusCode" = 302
-///       "location"   = "https://www.google.com"
+///       glob        = "/google/**"
+///       status_code = 302
+///       location    = "https://www.google.com"
 ///     }]
 ///   }
 /// }
-/// resource "gcp_firebase_hostingchannel" "default" {
-///   site_id    = gcp_firebase_hostingsite.default.site_id
+/// resource "gcp_firebase_hosting_channel" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   site_id    = gcp_firebase_hosting_site.default.site_id
 ///   channel_id = "channel-id"
 /// }
-/// resource "gcp_firebase_hostingrelease" "default" {
-///   site_id      = gcp_firebase_hostingsite.default.site_id
-///   channel_id   = gcp_firebase_hostingchannel.default.channel_id
-///   version_name = gcp_firebase_hostingversion.default.name
+/// resource "gcp_firebase_hosting_release" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   site_id      = gcp_firebase_hosting_site.default.site_id
+///   channel_id   = gcp_firebase_hosting_channel.default.channel_id
+///   version_name = gcp_firebase_hosting_version.default.name
 ///   message      = "Test release in channel"
 /// }
 /// ```
@@ -539,6 +562,7 @@ import 'hosting_release_state.dart';
 ///       message: Test release in channel
 /// ```
 ///
+///
 /// ### Firebasehosting Release Disable
 ///
 ///
@@ -596,7 +620,7 @@ import 'hosting_release_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -622,7 +646,7 @@ import 'hosting_release_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -630,12 +654,18 @@ import 'hosting_release_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_hostingsite" "default" {
+/// resource "gcp_firebase_hosting_site" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   site_id = "site-id"
 /// }
-/// resource "gcp_firebase_hostingrelease" "default" {
-///   site_id = gcp_firebase_hostingsite.default.site_id
+/// resource "gcp_firebase_hosting_release" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   site_id = gcp_firebase_hosting_site.default.site_id
 ///   type    = "SITE_DISABLE"
 ///   message = "Take down site"
 /// }
@@ -751,7 +781,7 @@ class HostingRelease extends pulumi.CustomResource {
           'gcp:firebase/hostingRelease:HostingRelease',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     channelId = registerOutput<String?>('channelId');
     message = registerOutput<String?>('message');

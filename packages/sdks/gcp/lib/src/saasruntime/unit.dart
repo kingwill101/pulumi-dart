@@ -12,6 +12,7 @@ import 'unit_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Saas Runtime Unit Basic
@@ -103,7 +104,7 @@ import 'unit_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/saasruntime"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/saasruntime"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -124,7 +125,7 @@ import 'unit_state.dart';
 /// 		exampleUnitKind, err := saasruntime.NewUnitKind(ctx, "example_unit_kind", &saasruntime.UnitKindArgs{
 /// 			Location:   pulumi.String("us-central1"),
 /// 			UnitKindId: pulumi.String("example-unitkind"),
-/// 			Saas:       exampleSaasRegional.ID().ToIDOutput().ToStringOutput(),
+/// 			Saas:       exampleSaasRegional.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -132,7 +133,7 @@ import 'unit_state.dart';
 /// 		_, err = saasruntime.NewUnit(ctx, "example", &saasruntime.UnitArgs{
 /// 			Location:       pulumi.String("us-central1"),
 /// 			UnitId:         pulumi.String("example-unit"),
-/// 			UnitKind:       exampleUnitKind.ID().ToIDOutput().ToStringOutput(),
+/// 			UnitKind:       exampleUnitKind.ID(),
 /// 			ManagementMode: pulumi.String("MANAGEMENT_MODE_USER"),
 /// 		})
 /// 		if err != nil {
@@ -143,7 +144,7 @@ import 'unit_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -151,22 +152,31 @@ import 'unit_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_saasruntime_saas" "example_saas_regional" {
+/// resource "gcp_saasruntime_saa_s" "example_saas_regional" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   saas_id  = "example-saas"
 ///   location = "us-central1"
 ///   locations {
 ///     name = "us-central1"
 ///   }
 /// }
-/// resource "gcp_saasruntime_unitkind" "example_unit_kind" {
+/// resource "gcp_saasruntime_unit_kind" "example_unit_kind" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us-central1"
 ///   unit_kind_id = "example-unitkind"
-///   saas         = gcp_saasruntime_saas.example_saas_regional.id
+///   saas         = gcp_saasruntime_saa_s.example_saas_regional.id
 /// }
 /// resource "gcp_saasruntime_unit" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
 ///   unit_id         = "example-unit"
-///   unit_kind       = gcp_saasruntime_unitkind.example_unit_kind.id
+///   unit_kind       = gcp_saasruntime_unit_kind.example_unit_kind.id
 ///   management_mode = "MANAGEMENT_MODE_USER"
 /// }
 /// ```
@@ -271,6 +281,12 @@ class Unit extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
+  /// Reference to the App Hub Application this Unit belongs to, in the format
+  /// `projects/{project}/locations/{location}/applications/{application}`.
+  /// All resources deployed in this Unit are associated with the specified
+  /// Application. If empty, the service sets it during any UnitOperation
+  /// when the UnitKind has `app_params.group` and App Hub is enabled.
+  late final pulumi.Output<String> application;
   /// A set of conditions which indicate the various conditions this resource can
   /// have.
   /// Structure is documented below.
@@ -391,10 +407,11 @@ class Unit extends pulumi.CustomResource {
           'gcp:saasruntime/unit:Unit',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    application = registerOutput<String>('application');
     conditions = registerOutput<List<UnitCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UnitCondition>(guardedValue, (value) => UnitCondition.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -450,6 +467,7 @@ class Unit extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    application = registerOutput<String>('application');
     conditions = registerOutput<List<UnitCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UnitCondition>(guardedValue, (value) => UnitCondition.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -491,6 +509,7 @@ class Unit extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    application = registerOutput<String>('application');
     conditions = registerOutput<List<UnitCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UnitCondition>(guardedValue, (value) => UnitCondition.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

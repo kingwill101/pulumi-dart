@@ -8,6 +8,7 @@ import 'application_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Apphub Application Basic
@@ -61,7 +62,7 @@ import 'application_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apphub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apphub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -82,7 +83,7 @@ import 'application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -91,6 +92,9 @@ import 'application_state.dart';
 /// }
 ///
 /// resource "gcp_apphub_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us-east1"
 ///   application_id = "example-application"
 ///   scope = {
@@ -141,6 +145,7 @@ import 'application_state.dart';
 ///       scope:
 ///         type: REGIONAL
 /// ```
+///
 ///
 /// ### Apphub Application Global Basic
 ///
@@ -193,7 +198,7 @@ import 'application_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apphub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apphub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -214,7 +219,7 @@ import 'application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -223,6 +228,9 @@ import 'application_state.dart';
 /// }
 ///
 /// resource "gcp_apphub_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "global"
 ///   application_id = "example-application"
 ///   scope = {
@@ -273,6 +281,7 @@ import 'application_state.dart';
 ///       scope:
 ///         type: GLOBAL
 /// ```
+///
 ///
 /// ### Apphub Application Full
 ///
@@ -406,7 +415,7 @@ import 'application_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apphub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apphub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -455,7 +464,7 @@ import 'application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -464,6 +473,9 @@ import 'application_state.dart';
 /// }
 ///
 /// resource "gcp_apphub_application" "example2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us-east1"
 ///   application_id = "example-application"
 ///   display_name   = "Application Full"
@@ -479,16 +491,16 @@ import 'application_state.dart';
 ///       type = "MISSION_CRITICAL"
 ///     }
 ///     business_owners = [{
-///       "displayName" = "Alice"
-///       "email"       = "alice@google.com"
+///       display_name = "Alice"
+///       email        = "alice@google.com"
 ///     }]
 ///     developer_owners = [{
-///       "displayName" = "Bob"
-///       "email"       = "bob@google.com"
+///       display_name = "Bob"
+///       email        = "bob@google.com"
 ///     }]
 ///     operator_owners = [{
-///       "displayName" = "Charlie"
-///       "email"       = "charlie@google.com"
+///       display_name = "Charlie"
+///       email        = "charlie@google.com"
 ///     }]
 ///   }
 /// }
@@ -652,7 +664,7 @@ class Application extends pulumi.CustomResource {
           'gcp:apphub/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     attributes = registerOutput<ApplicationAttributes?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -33,7 +33,7 @@ class GoldengateDeploymentPropertiesMaintenanceWindow {
   factory GoldengateDeploymentPropertiesMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return GoldengateDeploymentPropertiesMaintenanceWindow(
       day: pulumi.Input.fromValue(map['day'] as String),
-      startHour: pulumi.Input.fromValue((map['startHour'] as num).toInt()),
+      startHour: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['startHour'])),
     );
   }
 }

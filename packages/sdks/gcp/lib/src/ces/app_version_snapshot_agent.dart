@@ -10,6 +10,7 @@ import 'app_version_snapshot_agent_before_tool_callback.dart';
 import 'app_version_snapshot_agent_model_setting.dart';
 import 'app_version_snapshot_agent_remote_dialogflow_agent.dart';
 import 'app_version_snapshot_agent_toolset.dart';
+import 'app_version_snapshot_agent_transfer_rule.dart';
 
 class AppVersionSnapshotAgent {
   /// (Output)
@@ -116,6 +117,11 @@ class AppVersionSnapshotAgent {
   /// Structure is documented below.
   final pulumi.Input<List<AppVersionSnapshotAgentToolset>?>? toolsets;
   /// (Output)
+  /// List of transfer rules for the agent.
+  /// If multiple rules match, the first one in the list will be used.
+  /// Structure is documented below.
+  final pulumi.Input<List<AppVersionSnapshotAgentTransferRule>?>? transferRules;
+  /// (Output)
   /// Timestamp when the toolset was last updated.
   final pulumi.Input<String?>? updateTime;
 
@@ -140,6 +146,7 @@ class AppVersionSnapshotAgent {
   /// [remoteDialogflowAgents] (Output)
   /// [tools] (Output)
   /// [toolsets] (Output)
+  /// [transferRules] (Output)
   /// [updateTime] (Output)
   const AppVersionSnapshotAgent({
     this.afterAgentCallbacks,
@@ -162,6 +169,7 @@ class AppVersionSnapshotAgent {
     this.remoteDialogflowAgents,
     this.tools,
     this.toolsets,
+    this.transferRules,
     this.updateTime,
   });
 
@@ -187,6 +195,7 @@ class AppVersionSnapshotAgent {
       'remoteDialogflowAgents': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotAgentRemoteDialogflowAgent>, List<Map<String, dynamic>>>(remoteDialogflowAgents, (value) => pulumi.Input.encodeList<AppVersionSnapshotAgentRemoteDialogflowAgent, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tools': ?tools,
       'toolsets': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotAgentToolset>, List<Map<String, dynamic>>>(toolsets, (value) => pulumi.Input.encodeList<AppVersionSnapshotAgentToolset, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'transferRules': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotAgentTransferRule>, List<Map<String, dynamic>>>(transferRules, (value) => pulumi.Input.encodeList<AppVersionSnapshotAgentTransferRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'updateTime': ?updateTime,
     };
   }
@@ -213,6 +222,7 @@ class AppVersionSnapshotAgent {
       remoteDialogflowAgents: (() { final guardedValue = map['remoteDialogflowAgents']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotAgentRemoteDialogflowAgent>(guardedValue, (value) => AppVersionSnapshotAgentRemoteDialogflowAgent.fromMap((value as Map).cast<String, dynamic>()))); })(),
       tools: (() { final guardedValue = map['tools']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       toolsets: (() { final guardedValue = map['toolsets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotAgentToolset>(guardedValue, (value) => AppVersionSnapshotAgentToolset.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      transferRules: (() { final guardedValue = map['transferRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotAgentTransferRule>(guardedValue, (value) => AppVersionSnapshotAgentTransferRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

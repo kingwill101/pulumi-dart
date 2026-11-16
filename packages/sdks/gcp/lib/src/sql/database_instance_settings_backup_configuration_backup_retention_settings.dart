@@ -26,7 +26,7 @@ class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings {
 
   factory DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings(
-      retainedBackups: pulumi.Input.fromValue((map['retainedBackups'] as num).toInt()),
+      retainedBackups: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retainedBackups'])),
       retentionUnit: (() { final guardedValue = map['retentionUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

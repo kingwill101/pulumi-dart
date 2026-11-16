@@ -12,6 +12,7 @@ class ClusterNodeConfigSandboxConfig {
   /// Accepted values are:
   ///
   /// * `"GVISOR"`: Pods run within a gVisor sandbox.
+  /// * `"MICROVM"`: Pods run within a microVM sandbox.
   final pulumi.Input<String?>? type;
 
   /// Creates a new [ClusterNodeConfigSandboxConfig].

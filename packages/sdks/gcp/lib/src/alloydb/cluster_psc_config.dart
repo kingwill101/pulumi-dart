@@ -28,7 +28,7 @@ class ClusterPscConfig {
   factory ClusterPscConfig.fromMap(Map<String, dynamic> map) {
     return ClusterPscConfig(
       pscEnabled: (() { final guardedValue = map['pscEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      serviceOwnedProjectNumber: (() { final guardedValue = map['serviceOwnedProjectNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      serviceOwnedProjectNumber: (() { final guardedValue = map['serviceOwnedProjectNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

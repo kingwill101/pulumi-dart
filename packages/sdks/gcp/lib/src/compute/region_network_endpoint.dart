@@ -15,6 +15,7 @@ import 'region_network_endpoint_state.dart';
 /// * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
 /// * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Region Network Endpoint Internet Ip Port
@@ -96,7 +97,7 @@ import 'region_network_endpoint_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -111,7 +112,7 @@ import 'region_network_endpoint_state.dart';
 /// 		}
 /// 		group, err := compute.NewRegionNetworkEndpointGroup(ctx, "group", &compute.RegionNetworkEndpointGroupArgs{
 /// 			Name:                pulumi.String("ip-port-neg"),
-/// 			Network:             _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:             _default.ID(),
 /// 			Region:              pulumi.String("us-central1"),
 /// 			NetworkEndpointType: pulumi.String("INTERNET_IP_PORT"),
 /// 		})
@@ -132,7 +133,7 @@ import 'region_network_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -140,19 +141,28 @@ import 'region_network_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionnetworkendpoint" "region-internet-ip-port-endpoint" {
-///   region_network_endpoint_group = gcp_compute_regionnetworkendpointgroup.group.name
+/// resource "gcp_compute_region_network_endpoint" "region-internet-ip-port-endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   region_network_endpoint_group = gcp_compute_region_network_endpoint_group.group.name
 ///   region                        = "us-central1"
 ///   ip_address                    = "8.8.8.8"
 ///   port                          = 443
 /// }
-/// resource "gcp_compute_regionnetworkendpointgroup" "group" {
+/// resource "gcp_compute_region_network_endpoint_group" "group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "ip-port-neg"
 ///   network               = gcp_compute_network.default.id
 ///   region                = "us-central1"
 ///   network_endpoint_type = "INTERNET_IP_PORT"
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network"
 ///   auto_create_subnetworks = false
 /// }
@@ -226,6 +236,7 @@ import 'region_network_endpoint_state.dart';
 ///       name: network
 ///       autoCreateSubnetworks: false
 /// ```
+///
 ///
 /// ### Region Network Endpoint Internet Fqdn Port
 ///
@@ -306,7 +317,7 @@ import 'region_network_endpoint_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -321,7 +332,7 @@ import 'region_network_endpoint_state.dart';
 /// 		}
 /// 		group, err := compute.NewRegionNetworkEndpointGroup(ctx, "group", &compute.RegionNetworkEndpointGroupArgs{
 /// 			Name:                pulumi.String("fqdn-port-neg"),
-/// 			Network:             _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:             _default.ID(),
 /// 			Region:              pulumi.String("us-central1"),
 /// 			NetworkEndpointType: pulumi.String("INTERNET_FQDN_PORT"),
 /// 		})
@@ -342,7 +353,7 @@ import 'region_network_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -350,19 +361,28 @@ import 'region_network_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionnetworkendpoint" "region-internet-fqdn-port-endpoint" {
-///   region_network_endpoint_group = gcp_compute_regionnetworkendpointgroup.group.name
+/// resource "gcp_compute_region_network_endpoint" "region-internet-fqdn-port-endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   region_network_endpoint_group = gcp_compute_region_network_endpoint_group.group.name
 ///   region                        = "us-central1"
 ///   fqdn                          = "backend.example.com"
 ///   port                          = 443
 /// }
-/// resource "gcp_compute_regionnetworkendpointgroup" "group" {
+/// resource "gcp_compute_region_network_endpoint_group" "group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "fqdn-port-neg"
 ///   network               = gcp_compute_network.default.id
 ///   region                = "us-central1"
 ///   network_endpoint_type = "INTERNET_FQDN_PORT"
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network"
 ///   auto_create_subnetworks = false
 /// }
@@ -437,6 +457,7 @@ import 'region_network_endpoint_state.dart';
 ///       autoCreateSubnetworks: false
 /// ```
 ///
+///
 /// ### Region Network Endpoint Portmap
 ///
 ///
@@ -463,7 +484,7 @@ import 'region_network_endpoint_state.dart';
 ///     networkEndpointType: "GCE_VM_IP_PORTMAP",
 /// });
 /// const myImage = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const defaultInstance = new gcp.compute.Instance("default", {
@@ -507,7 +528,7 @@ import 'region_network_endpoint_state.dart';
 ///     network=default.id,
 ///     subnetwork=default_subnetwork.id,
 ///     network_endpoint_type="GCE_VM_IP_PORTMAP")
-/// my_image = gcp.compute.get_image(family="debian-11",
+/// my_image = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// default_instance = gcp.compute.Instance("default",
 ///     network_interfaces=[{
@@ -563,7 +584,7 @@ import 'region_network_endpoint_state.dart';
 ///
 ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -608,7 +629,7 @@ import 'region_network_endpoint_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -625,7 +646,7 @@ import 'region_network_endpoint_state.dart';
 /// 			Name:        pulumi.String("subnetwork"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     _default.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -633,15 +654,15 @@ import 'region_network_endpoint_state.dart';
 /// 		defaultRegionNetworkEndpointGroup, err := compute.NewRegionNetworkEndpointGroup(ctx, "default", &compute.RegionNetworkEndpointGroupArgs{
 /// 			Name:                pulumi.String("portmap-neg"),
 /// 			Region:              pulumi.String("us-central1"),
-/// 			Network:             _default.ID().ToIDOutput().ToStringOutput(),
-/// 			Subnetwork:          defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:             _default.ID(),
+/// 			Subnetwork:          defaultSubnetwork.ID(),
 /// 			NetworkEndpointType: pulumi.String("GCE_VM_IP_PORTMAP"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -653,7 +674,7 @@ import 'region_network_endpoint_state.dart';
 /// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 /// 						&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 /// 					},
-/// 					Subnetwork: defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 					Subnetwork: defaultSubnetwork.ID(),
 /// 				},
 /// 			},
 /// 			Name:        pulumi.String("instance"),
@@ -686,7 +707,7 @@ import 'region_network_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -694,30 +715,42 @@ import 'region_network_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "myImage" {
-///   family  = "debian-11"
+/// data "gcp_compute_image" "myImage" {
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "subnetwork"
 ///   ip_cidr_range = "10.0.0.0/16"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.default.id
 /// }
-/// resource "gcp_compute_regionnetworkendpointgroup" "default" {
+/// resource "gcp_compute_region_network_endpoint_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "portmap-neg"
 ///   region                = "us-central1"
 ///   network               = gcp_compute_network.default.id
 ///   subnetwork            = gcp_compute_subnetwork.default.id
 ///   network_endpoint_type = "GCE_VM_IP_PORTMAP"
 /// }
-/// resource "gcp_compute_regionnetworkendpoint" "region_network_endpoint_portmap" {
-///   region_network_endpoint_group = gcp_compute_regionnetworkendpointgroup.default.name
+/// resource "gcp_compute_region_network_endpoint" "region_network_endpoint_portmap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   region_network_endpoint_group = gcp_compute_region_network_endpoint_group.default.name
 ///   region                        = "us-central1"
 ///   instance                      = gcp_compute_instance.default.self_link
 ///   port                          = 80
@@ -725,6 +758,9 @@ import 'region_network_endpoint_state.dart';
 ///   client_destination_port       = 8080
 /// }
 /// resource "gcp_compute_instance" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_interfaces {
 ///     access_configs {
 ///     }
@@ -735,7 +771,7 @@ import 'region_network_endpoint_state.dart';
 ///   zone         = "us-central1-a"
 ///   boot_disk = {
 ///     initialize_params = {
-///       image = data.gcp_compute_getimage.myImage.self_link
+///       image = data.gcp_compute_image.myImage.self_link
 ///     }
 ///   }
 /// }
@@ -796,7 +832,7 @@ import 'region_network_endpoint_state.dart';
 ///             .build());
 ///
 ///         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -881,7 +917,7 @@ import 'region_network_endpoint_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
 ///
@@ -947,7 +983,7 @@ class RegionNetworkEndpoint extends pulumi.CustomResource {
           'gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     clientDestinationPort = registerOutput<int?>('clientDestinationPort');
     deletionPolicy = registerOutput<String>('deletionPolicy');

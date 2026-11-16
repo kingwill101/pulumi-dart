@@ -26,7 +26,7 @@ class GetTableExternalDataConfigurationGoogleSheetsOption {
   factory GetTableExternalDataConfigurationGoogleSheetsOption.fromMap(Map<String, dynamic> map) {
     return GetTableExternalDataConfigurationGoogleSheetsOption(
       range: pulumi.Input.fromValue(map['range'] as String),
-      skipLeadingRows: pulumi.Input.fromValue((map['skipLeadingRows'] as num).toInt()),
+      skipLeadingRows: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['skipLeadingRows'])),
     );
   }
 }

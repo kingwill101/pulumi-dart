@@ -30,9 +30,9 @@ class BudgetBudgetFilterCustomPeriodStartDate {
 
   factory BudgetBudgetFilterCustomPeriodStartDate.fromMap(Map<String, dynamic> map) {
     return BudgetBudgetFilterCustomPeriodStartDate(
-      day: pulumi.Input.fromValue((map['day'] as num).toInt()),
-      month: pulumi.Input.fromValue((map['month'] as num).toInt()),
-      year: pulumi.Input.fromValue((map['year'] as num).toInt()),
+      day: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['day'])),
+      month: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['month'])),
+      year: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['year'])),
     );
   }
 }

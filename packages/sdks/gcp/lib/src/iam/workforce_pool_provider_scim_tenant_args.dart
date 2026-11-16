@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_iam_workforce_pool_provider_scim_tenant_workforce_pool_provider_scim_tenant_args_doc}
 class WorkforcePoolProviderScimTenantArgs {
   /// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
-  final pulumi.Input<Map<String, String>?>? claimMapping;
+  final pulumi.Input<Map<String, String>> claimMapping;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -42,7 +42,7 @@ class WorkforcePoolProviderScimTenantArgs {
   /// [scimTenantId] The ID to use for the SCIM tenant, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
   /// [workforcePoolId] The ID of the workforce pool.
   const WorkforcePoolProviderScimTenantArgs({
-    this.claimMapping,
+    required this.claimMapping,
     this.deletionPolicy,
     this.description,
     this.displayName,
@@ -55,7 +55,7 @@ class WorkforcePoolProviderScimTenantArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'claimMapping': ?claimMapping,
+      'claimMapping': claimMapping,
       'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
@@ -69,7 +69,7 @@ class WorkforcePoolProviderScimTenantArgs {
 
   factory WorkforcePoolProviderScimTenantArgs.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderScimTenantArgs(
-      claimMapping: (() { final guardedValue = map['claimMapping']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      claimMapping: pulumi.Input.fromValue((map['claimMapping'] as Map).cast<String, String>()),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

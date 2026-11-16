@@ -12,6 +12,7 @@ import 'v2_project_mute_config_state.dart';
 ///
 /// * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v2/projects.muteConfigs)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Scc V2 Project Mute Config Basic
@@ -67,7 +68,7 @@ import 'v2_project_mute_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -89,7 +90,7 @@ import 'v2_project_mute_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -97,7 +98,10 @@ import 'v2_project_mute_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_securitycenter_v2projectmuteconfig" "default" {
+/// resource "gcp_securitycenter_v2_project_mute_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mute_config_id = "my-config"
 ///   project        = "my-project-name"
 ///   location       = "global"
@@ -223,7 +227,7 @@ class V2ProjectMuteConfig extends pulumi.CustomResource {
           'gcp:securitycenter/v2ProjectMuteConfig:V2ProjectMuteConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

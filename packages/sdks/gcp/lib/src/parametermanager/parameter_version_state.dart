@@ -6,6 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParameterVersionState {
   /// The time at which the Parameter Version was created.
   final pulumi.Input<String?>? createTime;
+  /// The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+  final pulumi.Input<String?>? dataCrc32c;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -33,6 +35,7 @@ class ParameterVersionState {
 
   /// Creates a new [ParameterVersionState].
   /// [createTime] The time at which the Parameter Version was created.
+  /// [dataCrc32c] The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [disabled] The current state of Parameter Version. This field is only applicable for updating Parameter Version.
   /// [kmsKeyVersion] The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
@@ -43,6 +46,7 @@ class ParameterVersionState {
   /// [updateTime] The time at which the Parameter Version was updated.
   const ParameterVersionState({
     this.createTime,
+    this.dataCrc32c,
     this.deletionPolicy,
     this.disabled,
     this.kmsKeyVersion,
@@ -56,6 +60,7 @@ class ParameterVersionState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'dataCrc32c': ?dataCrc32c,
       'deletionPolicy': ?deletionPolicy,
       'disabled': ?disabled,
       'kmsKeyVersion': ?kmsKeyVersion,
@@ -70,6 +75,7 @@ class ParameterVersionState {
   factory ParameterVersionState.fromMap(Map<String, dynamic> map) {
     return ParameterVersionState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataCrc32c: (() { final guardedValue = map['dataCrc32c']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       kmsKeyVersion: (() { final guardedValue = map['kmsKeyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

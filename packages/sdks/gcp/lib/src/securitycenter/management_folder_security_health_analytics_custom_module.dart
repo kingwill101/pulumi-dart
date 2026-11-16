@@ -16,6 +16,7 @@ import 'management_folder_security_health_analytics_custom_module_state.dart';
 /// * How-to Guides
 /// * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Scc Management Folder Security Health Analytics Custom Module Basic
@@ -120,8 +121,8 @@ import 'management_folder_security_health_analytics_custom_module_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -162,7 +163,7 @@ import 'management_folder_security_health_analytics_custom_module_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -171,11 +172,17 @@ import 'management_folder_security_health_analytics_custom_module_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_folder" "folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent              = "organizations/123456789"
 ///   display_name        = "folder-name"
 ///   deletion_protection = false
 /// }
-/// resource "gcp_securitycenter_managementfoldersecurityhealthanalyticscustommodule" "example" {
+/// resource "gcp_securitycenter_management_folder_security_health_analytics_custom_module" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   folder           = gcp_organizations_folder.folder.folder_id
 ///   location         = "global"
 ///   display_name     = "basic_custom_module"
@@ -271,6 +278,7 @@ import 'management_folder_security_health_analytics_custom_module_state.dart';
 ///         recommendation: Set the rotation period to at most 30 days.
 ///         severity: MEDIUM
 /// ```
+///
 ///
 /// ### Scc Management Folder Security Health Analytics Custom Module Full
 ///
@@ -422,8 +430,8 @@ import 'management_folder_security_health_analytics_custom_module_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -480,7 +488,7 @@ import 'management_folder_security_health_analytics_custom_module_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -489,11 +497,17 @@ import 'management_folder_security_health_analytics_custom_module_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_folder" "folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent              = "organizations/123456789"
 ///   display_name        = "folder-name"
 ///   deletion_protection = false
 /// }
-/// resource "gcp_securitycenter_managementfoldersecurityhealthanalyticscustommodule" "example" {
+/// resource "gcp_securitycenter_management_folder_security_health_analytics_custom_module" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   folder           = gcp_organizations_folder.folder.folder_id
 ///   location         = "global"
 ///   display_name     = "full_custom_module"
@@ -507,12 +521,12 @@ import 'management_folder_security_health_analytics_custom_module_state.dart';
 ///     }
 ///     custom_output = {
 ///       properties = [{
-///         "name" = "duration"
-///         "valueExpression" = {
-///           "expression"  = "resource.rotationPeriod"
-///           "title"       = "Purpose of the expression"
-///           "description" = "description of the expression"
-///           "location"    = "location of the expression"
+///         name = "duration"
+///         value_expression = {
+///           expression  = "resource.rotationPeriod"
+///           title       = "Purpose of the expression"
+///           description = "description of the expression"
+///           location    = "location of the expression"
 ///         }
 ///       }]
 ///     }
@@ -697,7 +711,7 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule extends pulumi.CustomR
           'gcp:securitycenter/managementFolderSecurityHealthAnalyticsCustomModule:ManagementFolderSecurityHealthAnalyticsCustomModule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     ancestorModule = registerOutput<String>('ancestorModule');
     customConfig = registerOutput<ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig?>('customConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -21,6 +21,7 @@ import 'managed_folder_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/storage/docs/managed-folders)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Storage Managed Folder Basic
@@ -83,7 +84,7 @@ import 'managed_folder_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -110,7 +111,7 @@ import 'managed_folder_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -119,11 +120,17 @@ import 'managed_folder_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my-bucket"
 ///   location                    = "EU"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_managedfolder" "folder" {
+/// resource "gcp_storage_managed_folder" "folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket        = gcp_storage_bucket.bucket.name
 ///   name          = "managed/folder/name/"
 ///   force_destroy = true
@@ -237,7 +244,7 @@ class ManagedFolder extends pulumi.CustomResource {
           'gcp:storage/managedFolder:ManagedFolder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');

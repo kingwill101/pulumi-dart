@@ -21,6 +21,7 @@ import 'document_state.dart';
 /// `"CLOUD_FIRESTORE"`. Your Firestore location will be the same as
 /// the App Engine location specified.
 ///
+///
 /// ## Example Usage
 ///
 /// ### Firestore Document Basic
@@ -161,9 +162,9 @@ import 'document_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -222,7 +223,7 @@ import 'document_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -234,28 +235,43 @@ import 'document_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "project-id"
 ///   name            = "project-id"
 ///   org_id          = "123456789"
 ///   deletion_policy = "DELETE"
 /// }
 /// resource "time_sleep" "wait_60_seconds" {
-///   depends_on      = [gcp_organizations_project.project]
+///   depends_on = [gcp_organizations_project.project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "60s"
 /// }
 /// resource "gcp_projects_service" "firestore" {
 ///   depends_on = [time_sleep.wait_60_seconds]
-///   project    = gcp_organizations_project.project.project_id
-///   service    = "firestore.googleapis.com"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = gcp_organizations_project.project.project_id
+///   service = "firestore.googleapis.com"
 /// }
 /// resource "gcp_firestore_database" "database" {
-///   depends_on  = [gcp_projects_service.firestore]
+///   depends_on = [gcp_projects_service.firestore]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = gcp_organizations_project.project.project_id
 ///   name        = "(default)"
 ///   location_id = "nam5"
 ///   type        = "FIRESTORE_NATIVE"
 /// }
 /// resource "gcp_firestore_document" "mydoc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = gcp_organizations_project.project.project_id
 ///   database    = gcp_firestore_database.database.name
 ///   collection  = "somenewcollection"
@@ -377,6 +393,7 @@ import 'document_state.dart';
 ///       documentId: my-doc-id
 ///       fields: '{"something":{"mapValue":{"fields":{"akey":{"stringValue":"avalue"}}}}}'
 /// ```
+///
 ///
 /// ### Firestore Document Nested Document
 ///
@@ -562,9 +579,9 @@ import 'document_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -647,7 +664,7 @@ import 'document_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -659,28 +676,43 @@ import 'document_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "project-id"
 ///   name            = "project-id"
 ///   org_id          = "123456789"
 ///   deletion_policy = "DELETE"
 /// }
 /// resource "time_sleep" "wait_60_seconds" {
-///   depends_on      = [gcp_organizations_project.project]
+///   depends_on = [gcp_organizations_project.project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "60s"
 /// }
 /// resource "gcp_projects_service" "firestore" {
 ///   depends_on = [time_sleep.wait_60_seconds]
-///   project    = gcp_organizations_project.project.project_id
-///   service    = "firestore.googleapis.com"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = gcp_organizations_project.project.project_id
+///   service = "firestore.googleapis.com"
 /// }
 /// resource "gcp_firestore_database" "database" {
-///   depends_on  = [gcp_projects_service.firestore]
+///   depends_on = [gcp_projects_service.firestore]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = gcp_organizations_project.project.project_id
 ///   name        = "(default)"
 ///   location_id = "nam5"
 ///   type        = "FIRESTORE_NATIVE"
 /// }
 /// resource "gcp_firestore_document" "mydoc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = gcp_organizations_project.project.project_id
 ///   database    = gcp_firestore_database.database.name
 ///   collection  = "somenewcollection"
@@ -688,6 +720,9 @@ import 'document_state.dart';
 ///   fields      = "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}"
 /// }
 /// resource "gcp_firestore_document" "sub_document" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = gcp_organizations_project.project.project_id
 ///   database    = gcp_firestore_database.database.name
 ///   collection  ="${gcp_firestore_document.mydoc.path}/subdocs"
@@ -695,6 +730,9 @@ import 'document_state.dart';
 ///   fields      = "{\"something\":{\"mapValue\":{\"fields\":{\"ayo\":{\"stringValue\":\"val2\"}}}}}"
 /// }
 /// resource "gcp_firestore_document" "sub_sub_document" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = gcp_organizations_project.project.project_id
 ///   database    = gcp_firestore_database.database.name
 ///   collection  ="${gcp_firestore_document.sub_document.path}/subsubdocs"
@@ -905,7 +943,7 @@ class Document extends pulumi.CustomResource {
           'gcp:firestore/document:Document',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     collection = registerOutput<String>('collection');
     createTime = registerOutput<String>('createTime');

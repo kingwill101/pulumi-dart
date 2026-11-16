@@ -7,11 +7,12 @@ class ClusterMaintenancePolicyDailyMaintenanceWindow {
   /// smallest possible in the given scenario.
   /// Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "PTnHnMnS".
   final pulumi.Input<String?>? duration;
+  /// The start time of the exclusion window, in RFC3339 format.
   final pulumi.Input<String> startTime;
 
   /// Creates a new [ClusterMaintenancePolicyDailyMaintenanceWindow].
   /// [duration] Duration of the time window, automatically chosen to be
-  /// [startTime] Required.
+  /// [startTime] The start time of the exclusion window, in RFC3339 format.
   const ClusterMaintenancePolicyDailyMaintenanceWindow({
     this.duration,
     required this.startTime,

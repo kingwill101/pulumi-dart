@@ -52,7 +52,7 @@ class GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy {
       consumedMemoryThresholds: pulumi.Input.fromValue(pulumi.Input.decodeList<GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold>(map['consumedMemoryThresholds']!, (value) => GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold.fromMap((value as Map).cast<String, dynamic>()))),
       cpuThresholds: pulumi.Input.fromValue(pulumi.Input.decodeList<GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold>(map['cpuThresholds']!, (value) => GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold.fromMap((value as Map).cast<String, dynamic>()))),
       nodeTypeId: pulumi.Input.fromValue(map['nodeTypeId'] as String),
-      scaleOutSize: pulumi.Input.fromValue((map['scaleOutSize'] as num).toInt()),
+      scaleOutSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['scaleOutSize'])),
       storageThresholds: pulumi.Input.fromValue(pulumi.Input.decodeList<GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold>(map['storageThresholds']!, (value) => GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

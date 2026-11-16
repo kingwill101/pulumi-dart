@@ -20,6 +20,8 @@ class GetRegionInstanceTemplateNetworkInterface {
   final pulumi.Input<List<GetRegionInstanceTemplateNetworkInterfaceAliasIpRange>> aliasIpRanges;
   /// An array of alias IPv6 ranges for this network interface. Can only be specified for network interfaces on subnet-mode networks.
   final pulumi.Input<List<GetRegionInstanceTemplateNetworkInterfaceAliasIpv6Range>> aliasIpv6Ranges;
+  /// If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
+  final pulumi.Input<bool> enableVpcScopedDns;
   /// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
   final pulumi.Input<String> igmpQuery;
   /// The prefix length of the primary internal IPv6 range.
@@ -47,6 +49,8 @@ class GetRegionInstanceTemplateNetworkInterface {
   final pulumi.Input<String> parentNicName;
   /// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
   final pulumi.Input<int> queueCount;
+  /// Producer Service's Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, networkAttachment can be used without service_class_id.
+  final pulumi.Input<String> serviceClassId;
   /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
   final pulumi.Input<String> stackType;
   /// the name of the subnetwork to attach this interface
@@ -63,6 +67,7 @@ class GetRegionInstanceTemplateNetworkInterface {
   /// [accessConfigs] Access configurations, i.e. IPs via which this
   /// [aliasIpRanges] An
   /// [aliasIpv6Ranges] An array of alias IPv6 ranges for this network interface. Can only be specified for network interfaces on subnet-mode networks.
+  /// [enableVpcScopedDns] If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
   /// [igmpQuery] Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
   /// [internalIpv6PrefixLength] The prefix length of the primary internal IPv6 range.
   /// [ipv6AccessConfigs] An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
@@ -75,6 +80,7 @@ class GetRegionInstanceTemplateNetworkInterface {
   /// [nicType] The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, IRDMA and IDPF
   /// [parentNicName] Name of the parent network interface of a dynamic network interface.
   /// [queueCount] The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+  /// [serviceClassId] Producer Service's Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, networkAttachment can be used without service_class_id.
   /// [stackType] The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
   /// [subnetwork] the name of the subnetwork to attach this interface
   /// [subnetworkProject] The ID of the project in which the subnetwork belongs.
@@ -83,6 +89,7 @@ class GetRegionInstanceTemplateNetworkInterface {
     required this.accessConfigs,
     required this.aliasIpRanges,
     required this.aliasIpv6Ranges,
+    required this.enableVpcScopedDns,
     required this.igmpQuery,
     required this.internalIpv6PrefixLength,
     required this.ipv6AccessConfigs,
@@ -95,6 +102,7 @@ class GetRegionInstanceTemplateNetworkInterface {
     required this.nicType,
     required this.parentNicName,
     required this.queueCount,
+    required this.serviceClassId,
     required this.stackType,
     required this.subnetwork,
     required this.subnetworkProject,
@@ -106,6 +114,7 @@ class GetRegionInstanceTemplateNetworkInterface {
       'accessConfigs': pulumi.Input.mapInputValue<List<GetRegionInstanceTemplateNetworkInterfaceAccessConfig>, List<Map<String, dynamic>>>(accessConfigs, (value) => pulumi.Input.encodeList<GetRegionInstanceTemplateNetworkInterfaceAccessConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'aliasIpRanges': pulumi.Input.mapInputValue<List<GetRegionInstanceTemplateNetworkInterfaceAliasIpRange>, List<Map<String, dynamic>>>(aliasIpRanges, (value) => pulumi.Input.encodeList<GetRegionInstanceTemplateNetworkInterfaceAliasIpRange, Map<String, dynamic>>(value, (value) => value.toMap())),
       'aliasIpv6Ranges': pulumi.Input.mapInputValue<List<GetRegionInstanceTemplateNetworkInterfaceAliasIpv6Range>, List<Map<String, dynamic>>>(aliasIpv6Ranges, (value) => pulumi.Input.encodeList<GetRegionInstanceTemplateNetworkInterfaceAliasIpv6Range, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'enableVpcScopedDns': enableVpcScopedDns,
       'igmpQuery': igmpQuery,
       'internalIpv6PrefixLength': internalIpv6PrefixLength,
       'ipv6AccessConfigs': pulumi.Input.mapInputValue<List<GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig>, List<Map<String, dynamic>>>(ipv6AccessConfigs, (value) => pulumi.Input.encodeList<GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -118,6 +127,7 @@ class GetRegionInstanceTemplateNetworkInterface {
       'nicType': nicType,
       'parentNicName': parentNicName,
       'queueCount': queueCount,
+      'serviceClassId': serviceClassId,
       'stackType': stackType,
       'subnetwork': subnetwork,
       'subnetworkProject': subnetworkProject,
@@ -130,8 +140,9 @@ class GetRegionInstanceTemplateNetworkInterface {
       accessConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionInstanceTemplateNetworkInterfaceAccessConfig>(map['accessConfigs']!, (value) => GetRegionInstanceTemplateNetworkInterfaceAccessConfig.fromMap((value as Map).cast<String, dynamic>()))),
       aliasIpRanges: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionInstanceTemplateNetworkInterfaceAliasIpRange>(map['aliasIpRanges']!, (value) => GetRegionInstanceTemplateNetworkInterfaceAliasIpRange.fromMap((value as Map).cast<String, dynamic>()))),
       aliasIpv6Ranges: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionInstanceTemplateNetworkInterfaceAliasIpv6Range>(map['aliasIpv6Ranges']!, (value) => GetRegionInstanceTemplateNetworkInterfaceAliasIpv6Range.fromMap((value as Map).cast<String, dynamic>()))),
+      enableVpcScopedDns: pulumi.Input.fromValue(map['enableVpcScopedDns'] as bool),
       igmpQuery: pulumi.Input.fromValue(map['igmpQuery'] as String),
-      internalIpv6PrefixLength: pulumi.Input.fromValue((map['internalIpv6PrefixLength'] as num).toInt()),
+      internalIpv6PrefixLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['internalIpv6PrefixLength'])),
       ipv6AccessConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig>(map['ipv6AccessConfigs']!, (value) => GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig.fromMap((value as Map).cast<String, dynamic>()))),
       ipv6AccessType: pulumi.Input.fromValue(map['ipv6AccessType'] as String),
       ipv6Address: pulumi.Input.fromValue(map['ipv6Address'] as String),
@@ -141,11 +152,12 @@ class GetRegionInstanceTemplateNetworkInterface {
       networkIp: pulumi.Input.fromValue(map['networkIp'] as String),
       nicType: pulumi.Input.fromValue(map['nicType'] as String),
       parentNicName: pulumi.Input.fromValue(map['parentNicName'] as String),
-      queueCount: pulumi.Input.fromValue((map['queueCount'] as num).toInt()),
+      queueCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['queueCount'])),
+      serviceClassId: pulumi.Input.fromValue(map['serviceClassId'] as String),
       stackType: pulumi.Input.fromValue(map['stackType'] as String),
       subnetwork: pulumi.Input.fromValue(map['subnetwork'] as String),
       subnetworkProject: pulumi.Input.fromValue(map['subnetworkProject'] as String),
-      vlan: pulumi.Input.fromValue((map['vlan'] as num).toInt()),
+      vlan: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vlan'])),
     );
   }
 }

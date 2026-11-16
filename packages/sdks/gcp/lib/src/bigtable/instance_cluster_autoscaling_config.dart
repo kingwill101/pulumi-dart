@@ -37,10 +37,10 @@ class InstanceClusterAutoscalingConfig {
 
   factory InstanceClusterAutoscalingConfig.fromMap(Map<String, dynamic> map) {
     return InstanceClusterAutoscalingConfig(
-      cpuTarget: pulumi.Input.fromValue((map['cpuTarget'] as num).toInt()),
-      maxNodes: pulumi.Input.fromValue((map['maxNodes'] as num).toInt()),
-      minNodes: pulumi.Input.fromValue((map['minNodes'] as num).toInt()),
-      storageTarget: (() { final guardedValue = map['storageTarget']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      cpuTarget: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cpuTarget'])),
+      maxNodes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxNodes'])),
+      minNodes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minNodes'])),
+      storageTarget: (() { final guardedValue = map['storageTarget']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }
