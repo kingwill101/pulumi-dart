@@ -63,7 +63,7 @@ import 'get_queues_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,7 +71,7 @@ import 'get_queues_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_sqs_getqueue" "example" {
+/// data "aws_sqs_queue" "example" {
 ///   name = "queue"
 /// }
 /// ```
@@ -194,7 +194,7 @@ pulumi.Output<GetQueueResult> getQueueOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -202,7 +202,7 @@ pulumi.Output<GetQueueResult> getQueueOutput(
 ///   }
 /// }
 ///
-/// data "aws_sqs_getqueues" "example" {
+/// data "aws_sqs_queues" "example" {
 ///   queue_name_prefix = "example"
 /// }
 /// ```

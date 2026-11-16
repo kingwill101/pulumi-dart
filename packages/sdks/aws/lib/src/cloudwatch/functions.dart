@@ -73,7 +73,7 @@ import 'get_log_groups_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -81,7 +81,7 @@ import 'get_log_groups_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_cloudwatch_getcontributormanagedinsightrules" "example" {
+/// data "aws_cloudwatch_contributor_managed_insight_rules" "example" {
 ///   resource_arn = "arn:aws:ec2:us-west-2:123456789012:resource-name/resourceid"
 /// }
 /// ```
@@ -204,7 +204,7 @@ pulumi.Output<GetContributorManagedInsightRulesResult> getContributorManagedInsi
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -212,7 +212,7 @@ pulumi.Output<GetContributorManagedInsightRulesResult> getContributorManagedInsi
 ///   }
 /// }
 ///
-/// data "aws_cloudwatch_geteventbus" "example" {
+/// data "aws_cloudwatch_event_bus" "example" {
 ///   name = "example-bus-name"
 /// }
 /// ```
@@ -335,7 +335,7 @@ pulumi.Output<GetEventBusResult> getEventBusOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -343,7 +343,7 @@ pulumi.Output<GetEventBusResult> getEventBusOutput(
 ///   }
 /// }
 ///
-/// data "aws_cloudwatch_geteventbuses" "example" {
+/// data "aws_cloudwatch_event_buses" "example" {
 ///   name_prefix = "test"
 /// }
 /// ```
@@ -466,7 +466,7 @@ pulumi.Output<GetEventBusesResult> getEventBusesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -474,7 +474,7 @@ pulumi.Output<GetEventBusesResult> getEventBusesOutput(
 ///   }
 /// }
 ///
-/// data "aws_cloudwatch_geteventconnection" "test" {
+/// data "aws_cloudwatch_event_connection" "test" {
 ///   name = "test"
 /// }
 /// ```
@@ -597,7 +597,7 @@ pulumi.Output<GetEventConnectionResult> getEventConnectionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -605,7 +605,7 @@ pulumi.Output<GetEventConnectionResult> getEventConnectionOutput(
 ///   }
 /// }
 ///
-/// data "aws_cloudwatch_geteventsource" "examplepartner" {
+/// data "aws_cloudwatch_event_source" "examplepartner" {
 ///   name_prefix = "aws.partner/example.com"
 /// }
 /// ```
@@ -905,7 +905,7 @@ pulumi.Output<GetEventSourceResult> getEventSourceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -913,18 +913,18 @@ pulumi.Output<GetEventSourceResult> getEventSourceOutput(
 ///   }
 /// }
 ///
-/// data "aws_cloudwatch_getlogdataprotectionpolicydocument" "example" {
-///   statements {
-///     operation = {
-///       audit = {
-///         findings_destination = {
-///           cloudwatch_logs = {
+/// data "aws_cloudwatch_log_data_protection_policy_document" "example" {
+///   statement {
+///     operation {
+///       audit {
+///         findings_destination {
+///           cloudwatch_logs {
 ///             log_group = audit.name
 ///           }
-///           firehose = {
+///           firehose {
 ///             delivery_stream = auditAwsKinesisFirehoseDeliveryStream.name
 ///           }
-///           s3 = {
+///           s3 {
 ///             bucket = auditAwsS3Bucket.bucket
 ///           }
 ///         }
@@ -933,10 +933,11 @@ pulumi.Output<GetEventSourceResult> getEventSourceOutput(
 ///     sid              = "Audit"
 ///     data_identifiers = ["arn:aws:dataprotection::aws:data-identifier/EmailAddress", "arn:aws:dataprotection::aws:data-identifier/DriversLicense-US"]
 ///   }
-///   statements {
-///     operation = {
-///       deidentify = {
-///         mask_config = {}
+///   statement {
+///     operation {
+///       deidentify {
+///         mask_config {
+///         }
 ///       }
 ///     }
 ///     sid              = "Deidentify"
@@ -945,9 +946,12 @@ pulumi.Output<GetEventSourceResult> getEventSourceOutput(
 ///   name = "Example"
 /// }
 ///
-/// resource "aws_cloudwatch_logdataprotectionpolicy" "example" {
+/// resource "aws_cloudwatch_log_data_protection_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   log_group_name  = exampleAwsCloudwatchLogGroup.name
-///   policy_document = data.aws_cloudwatch_getlogdataprotectionpolicydocument.example.json
+///   policy_document = data.aws_cloudwatch_log_data_protection_policy_document.example.json
 /// }
 /// ```
 /// ```java
@@ -989,13 +993,13 @@ pulumi.Output<GetEventSourceResult> getEventSourceOutput(
 ///                         .audit(GetLogDataProtectionPolicyDocumentStatementOperationAuditArgs.builder()
 ///                             .findingsDestination(GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationArgs.builder()
 ///                                 .cloudwatchLogs(GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationCloudwatchLogsArgs.builder()
-///                                     .logGroup(audit.name())
+///                                     .logGroup(audit.get("name"))
 ///                                     .build())
 ///                                 .firehose(GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationFirehoseArgs.builder()
-///                                     .deliveryStream(auditAwsKinesisFirehoseDeliveryStream.name())
+///                                     .deliveryStream(auditAwsKinesisFirehoseDeliveryStream.get("name"))
 ///                                     .build())
 ///                                 .s3(GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationS3Args.builder()
-///                                     .bucket(auditAwsS3Bucket.bucket())
+///                                     .bucket(auditAwsS3Bucket.get("bucket"))
 ///                                     .build())
 ///                                 .build())
 ///                             .build())
@@ -1021,7 +1025,7 @@ pulumi.Output<GetEventSourceResult> getEventSourceOutput(
 ///             .build());
 ///
 ///         var exampleLogDataProtectionPolicy = new LogDataProtectionPolicy("exampleLogDataProtectionPolicy", LogDataProtectionPolicyArgs.builder()
-///             .logGroupName(exampleAwsCloudwatchLogGroup.name())
+///             .logGroupName(exampleAwsCloudwatchLogGroup.get("name"))
 ///             .policyDocument(example.json())
 ///             .build());
 ///
@@ -1145,7 +1149,7 @@ pulumi.Output<GetLogDataProtectionPolicyDocumentResult> getLogDataProtectionPoli
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1153,7 +1157,7 @@ pulumi.Output<GetLogDataProtectionPolicyDocumentResult> getLogDataProtectionPoli
 ///   }
 /// }
 ///
-/// data "aws_cloudwatch_getloggroup" "example" {
+/// data "aws_cloudwatch_log_group" "example" {
 ///   name = "MyImportantLogs"
 /// }
 /// ```
@@ -1274,7 +1278,7 @@ pulumi.Output<GetLogGroupResult> getLogGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1282,7 +1286,7 @@ pulumi.Output<GetLogGroupResult> getLogGroupOutput(
 ///   }
 /// }
 ///
-/// data "aws_cloudwatch_getloggroups" "example" {
+/// data "aws_cloudwatch_log_groups" "example" {
 ///   log_group_name_prefix = "/MyImportantLogs"
 /// }
 /// ```

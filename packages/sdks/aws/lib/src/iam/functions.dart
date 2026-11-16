@@ -94,7 +94,7 @@ import 'get_users_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -102,7 +102,7 @@ import 'get_users_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getaccesskeys" "example" {
+/// data "aws_iam_access_keys" "example" {
 ///   user = "an_example_user_name"
 /// }
 /// ```
@@ -224,7 +224,7 @@ pulumi.Output<GetAccessKeysResult> getAccessKeysOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -232,11 +232,11 @@ pulumi.Output<GetAccessKeysResult> getAccessKeysOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getaccountalias" "current" {
+/// data "aws_iam_account_alias" "current" {
 /// }
 ///
 /// output "accountAlias" {
-///   value = data.aws_iam_getaccountalias.current.account_alias
+///   value = data.aws_iam_account_alias.current.account_alias
 /// }
 /// ```
 /// ```java
@@ -356,7 +356,7 @@ pulumi.Output<GetAccountAliasResult> getAccountAliasOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -364,7 +364,7 @@ pulumi.Output<GetAccountAliasResult> getAccountAliasOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getgroup" "example" {
+/// data "aws_iam_group" "example" {
 ///   group_name = "an_example_group_name"
 /// }
 /// ```
@@ -487,7 +487,7 @@ pulumi.Output<GetGroupResult> getGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -495,7 +495,7 @@ pulumi.Output<GetGroupResult> getGroupOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getinstanceprofile" "example" {
+/// data "aws_iam_instance_profile" "example" {
 ///   name = "an_example_instance_profile_name"
 /// }
 /// ```
@@ -618,7 +618,7 @@ pulumi.Output<GetInstanceProfileResult> getInstanceProfileOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -626,7 +626,7 @@ pulumi.Output<GetInstanceProfileResult> getInstanceProfileOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getinstanceprofiles" "example" {
+/// data "aws_iam_instance_profiles" "example" {
 ///   role_name = "an_example_iam_role_name"
 /// }
 /// ```
@@ -749,7 +749,7 @@ pulumi.Output<GetInstanceProfilesResult> getInstanceProfilesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -757,7 +757,7 @@ pulumi.Output<GetInstanceProfilesResult> getInstanceProfilesOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getopenidconnectprovider" "example" {
+/// data "aws_iam_open_id_connect_provider" "example" {
 ///   arn = "arn:aws:iam::123456789012:oidc-provider/accounts.google.com"
 /// }
 /// ```
@@ -850,7 +850,7 @@ pulumi.Output<GetInstanceProfilesResult> getInstanceProfilesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -858,7 +858,7 @@ pulumi.Output<GetInstanceProfilesResult> getInstanceProfilesOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getopenidconnectprovider" "example" {
+/// data "aws_iam_open_id_connect_provider" "example" {
 ///   url = "https://accounts.google.com"
 /// }
 /// ```
@@ -972,7 +972,7 @@ pulumi.Output<GetOpenIdConnectProviderResult> getOpenIdConnectProviderOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -980,7 +980,7 @@ pulumi.Output<GetOpenIdConnectProviderResult> getOpenIdConnectProviderOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getoutboundwebidentityfederation" "example" {
+/// data "aws_iam_outbound_web_identity_federation" "example" {
 /// }
 /// ```
 /// ```java
@@ -1098,7 +1098,7 @@ pulumi.Output<GetOutboundWebIdentityFederationResult> getOutboundWebIdentityFede
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1106,7 +1106,7 @@ pulumi.Output<GetOutboundWebIdentityFederationResult> getOutboundWebIdentityFede
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicy" "example" {
+/// data "aws_iam_policy" "example" {
 ///   arn = "arn:aws:iam::123456789012:policy/UsersManageOwnCredentials"
 /// }
 /// ```
@@ -1201,7 +1201,7 @@ pulumi.Output<GetOutboundWebIdentityFederationResult> getOutboundWebIdentityFede
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1209,7 +1209,7 @@ pulumi.Output<GetOutboundWebIdentityFederationResult> getOutboundWebIdentityFede
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicy" "example" {
+/// data "aws_iam_policy" "example" {
 ///   name = "test_policy"
 /// }
 /// ```
@@ -1509,7 +1509,7 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1517,14 +1517,14 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     sid       = "1"
 ///     actions   = ["s3:ListAllMyBuckets", "s3:GetBucketLocation"]
 ///     resources = ["arn:aws:s3:::*"]
 ///   }
-///   statements {
-///     conditions {
+///   statement {
+///     condition {
 ///       test     = "StringLike"
 ///       variable = "s3:prefix"
 ///       values   = ["", "home/", "home/&{aws:username}/"]
@@ -1532,16 +1532,19 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 ///     actions   = ["s3:ListBucket"]
 ///     resources = ["arn:aws:s3:::${s3BucketName}"]
 ///   }
-///   statements {
+///   statement {
 ///     actions   = ["s3:*"]
 ///     resources = ["arn:aws:s3:::${s3BucketName}/home/&{aws:username}", "arn:aws:s3:::${s3BucketName}/home/&{aws:username}/*"]
 ///   }
 /// }
 ///
 /// resource "aws_iam_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "example_policy"
 ///   path   = "/"
-///   policy = data.aws_iam_getpolicydocument.example.json
+///   policy = data.aws_iam_policy_document.example.json
 /// }
 /// ```
 /// ```java
@@ -1833,7 +1836,7 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1841,19 +1844,19 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "exampleMultipleConditionKeysAndValues" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "exampleMultipleConditionKeysAndValues" {
+///   statement {
+///     condition {
 ///       test     = "ForAnyValue:StringEquals"
 ///       variable = "kms:EncryptionContext:service"
 ///       values   = ["pi"]
 ///     }
-///     conditions {
+///     condition {
 ///       test     = "ForAnyValue:StringEquals"
 ///       variable = "kms:EncryptionContext:aws:pi:service"
 ///       values   = ["rds"]
 ///     }
-///     conditions {
+///     condition {
 ///       test     = "ForAnyValue:StringEquals"
 ///       variable = "kms:EncryptionContext:aws:rds:db-id"
 ///       values   = ["db-AAAAABBBBBCCCCCDDDDDEEEEE", "db-EEEEEDDDDDCCCCCBBBBBAAAAA"]
@@ -2107,7 +2110,7 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 /// 						},
 /// 						{
 /// 							Type: "AWS",
-/// 							Identifiers: pulumi.StringArray{
+/// 							Identifiers: []string{
 /// 								trustedRoleArn,
 /// 							},
 /// 						},
@@ -2133,7 +2136,7 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2141,8 +2144,8 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "eventStreamBucketRoleAssumeRolePolicy" {
-///   statements {
+/// data "aws_iam_policy_document" "eventStreamBucketRoleAssumeRolePolicy" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["firehose.amazonaws.com"]
@@ -2397,7 +2400,7 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 /// 					},
 /// 				},
 /// 			},
-/// 			SourcePolicyDocuments: pulumi.StringArray{
+/// 			SourcePolicyDocuments: []string{
 /// 				source.Json,
 /// 			},
 /// 		}, nil)
@@ -2409,7 +2412,7 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2417,24 +2420,24 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "source" {
-///   statements {
+/// data "aws_iam_policy_document" "source" {
+///   statement {
 ///     actions   = ["ec2:*"]
 ///     resources = ["*"]
 ///   }
-///   statements {
+///   statement {
 ///     sid       = "SidToOverride"
 ///     actions   = ["s3:*"]
 ///     resources = ["*"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "sourceDocumentExample" {
-///   statements {
+/// data "aws_iam_policy_document" "sourceDocumentExample" {
+///   statement {
 ///     sid       = "SidToOverride"
 ///     actions   = ["s3:*"]
 ///     resources = ["arn:aws:s3:::somebucket", "arn:aws:s3:::somebucket/*"]
 ///   }
-///   source_policy_documents = [data.aws_iam_getpolicydocument.source.json]
+///   source_policy_documents = [data.aws_iam_policy_document.source.json]
 /// }
 /// ```
 /// ```java
@@ -2711,7 +2714,7 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 /// 					},
 /// 				},
 /// 			},
-/// 			OverridePolicyDocuments: pulumi.StringArray{
+/// 			OverridePolicyDocuments: []string{
 /// 				override.Json,
 /// 			},
 /// 		}, nil)
@@ -2723,7 +2726,7 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2731,24 +2734,24 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "override" {
-///   statements {
+/// data "aws_iam_policy_document" "override" {
+///   statement {
 ///     sid       = "SidToOverride"
 ///     actions   = ["s3:*"]
 ///     resources = ["*"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "overridePolicyDocumentExample" {
-///   statements {
+/// data "aws_iam_policy_document" "overridePolicyDocumentExample" {
+///   statement {
 ///     actions   = ["ec2:*"]
 ///     resources = ["*"]
 ///   }
-///   statements {
+///   statement {
 ///     sid       = "SidToOverride"
 ///     actions   = ["s3:*"]
 ///     resources = ["arn:aws:s3:::somebucket", "arn:aws:s3:::somebucket/*"]
 ///   }
-///   override_policy_documents = [data.aws_iam_getpolicydocument.override.json]
+///   override_policy_documents = [data.aws_iam_policy_document.override.json]
 /// }
 /// ```
 /// ```java
@@ -3002,10 +3005,10 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 /// 			return err
 /// 		}
 /// 		_, err = iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// 			SourcePolicyDocuments: pulumi.StringArray{
+/// 			SourcePolicyDocuments: []string{
 /// 				source.Json,
 /// 			},
-/// 			OverridePolicyDocuments: pulumi.StringArray{
+/// 			OverridePolicyDocuments: []string{
 /// 				override.Json,
 /// 			},
 /// 		}, nil)
@@ -3017,7 +3020,7 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3025,23 +3028,23 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "source" {
-///   statements {
+/// data "aws_iam_policy_document" "source" {
+///   statement {
 ///     sid       = "OverridePlaceholder"
 ///     actions   = ["ec2:DescribeAccountAttributes"]
 ///     resources = ["*"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "override" {
-///   statements {
+/// data "aws_iam_policy_document" "override" {
+///   statement {
 ///     sid       = "OverridePlaceholder"
 ///     actions   = ["s3:GetObject"]
 ///     resources = ["*"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "politik" {
-///   source_policy_documents   = [data.aws_iam_getpolicydocument.source.json]
-///   override_policy_documents = [data.aws_iam_getpolicydocument.override.json]
+/// data "aws_iam_policy_document" "politik" {
+///   source_policy_documents   = [data.aws_iam_policy_document.source.json]
+///   override_policy_documents = [data.aws_iam_policy_document.override.json]
 /// }
 /// ```
 /// ```java
@@ -3350,7 +3353,7 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 /// 			return err
 /// 		}
 /// 		_, err = iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// 			SourcePolicyDocuments: pulumi.StringArray{
+/// 			SourcePolicyDocuments: []string{
 /// 				sourceOne.Json,
 /// 				sourceTwo.Json,
 /// 			},
@@ -3363,7 +3366,7 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3371,30 +3374,30 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "sourceOne" {
-///   statements {
+/// data "aws_iam_policy_document" "sourceOne" {
+///   statement {
 ///     actions   = ["ec2:*"]
 ///     resources = ["*"]
 ///   }
-///   statements {
+///   statement {
 ///     sid       = "UniqueSidOne"
 ///     actions   = ["s3:*"]
 ///     resources = ["*"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "sourceTwo" {
-///   statements {
+/// data "aws_iam_policy_document" "sourceTwo" {
+///   statement {
 ///     sid       = "UniqueSidTwo"
 ///     actions   = ["iam:*"]
 ///     resources = ["*"]
 ///   }
-///   statements {
+///   statement {
 ///     actions   = ["lambda:*"]
 ///     resources = ["*"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "combined" {
-///   source_policy_documents = [data.aws_iam_getpolicydocument.sourceOne.json, data.aws_iam_getpolicydocument.sourceTwo.json]
+/// data "aws_iam_policy_document" "combined" {
+///   source_policy_documents = [data.aws_iam_policy_document.sourceOne.json, data.aws_iam_policy_document.sourceTwo.json]
 /// }
 /// ```
 /// ```java
@@ -3812,7 +3815,7 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 /// 					},
 /// 				},
 /// 			},
-/// 			OverridePolicyDocuments: pulumi.StringArray{
+/// 			OverridePolicyDocuments: []string{
 /// 				policyOne.Json,
 /// 				policyTwo.Json,
 /// 				policyThree.Json,
@@ -3826,7 +3829,7 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3834,43 +3837,43 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "policyOne" {
-///   statements {
+/// data "aws_iam_policy_document" "policyOne" {
+///   statement {
 ///     sid       = "OverridePlaceHolderOne"
 ///     effect    = "Allow"
 ///     actions   = ["s3:*"]
 ///     resources = ["*"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "policyTwo" {
-///   statements {
+/// data "aws_iam_policy_document" "policyTwo" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["ec2:*"]
 ///     resources = ["*"]
 ///   }
-///   statements {
+///   statement {
 ///     sid       = "OverridePlaceHolderTwo"
 ///     effect    = "Allow"
 ///     actions   = ["iam:*"]
 ///     resources = ["*"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "policyThree" {
-///   statements {
+/// data "aws_iam_policy_document" "policyThree" {
+///   statement {
 ///     sid       = "OverridePlaceHolderOne"
 ///     effect    = "Deny"
 ///     actions   = ["logs:*"]
 ///     resources = ["*"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "combined" {
-///   statements {
+/// data "aws_iam_policy_document" "combined" {
+///   statement {
 ///     sid       = "OverridePlaceHolderTwo"
 ///     effect    = "Deny"
 ///     actions   = ["*"]
 ///     resources = ["*"]
 ///   }
-///   override_policy_documents = [data.aws_iam_getpolicydocument.policyOne.json, data.aws_iam_getpolicydocument.policyTwo.json, data.aws_iam_getpolicydocument.policyThree.json]
+///   override_policy_documents = [data.aws_iam_policy_document.policyOne.json, data.aws_iam_policy_document.policyTwo.json, data.aws_iam_policy_document.policyThree.json]
 /// }
 /// ```
 /// ```java
@@ -4158,7 +4161,7 @@ pulumi.Output<GetPolicyDocumentResult> getPolicyDocumentOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -4166,11 +4169,11 @@ pulumi.Output<GetPolicyDocumentResult> getPolicyDocumentOutput(
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_iam_getprincipalpolicysimulation" "s3ObjectAccess" {
+/// data "aws_iam_principal_policy_simulation" "s3ObjectAccess" {
 ///   action_names      = ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"]
-///   policy_source_arn = data.aws_getcalleridentity.current.arn
+///   policy_source_arn = data.aws_caller_identity.current.arn
 ///   resource_arns     = ["arn:aws:s3:::my-test-bucket"]
 /// }
 /// ```
@@ -4294,7 +4297,7 @@ pulumi.Output<GetPolicyDocumentResult> getPolicyDocumentOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -4302,9 +4305,12 @@ pulumi.Output<GetPolicyDocumentResult> getPolicyDocumentOutput(
 ///   }
 /// }
 ///
-/// resource "aws_s3_bucketobjectv2" "example" {
+/// resource "aws_s3_bucket_objectv2" "example" {
 ///   depends_on = [s3ObjectAccess]
-///   bucket     = "my-test-bucket"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   bucket = "my-test-bucket"
 /// }
 /// ```
 /// ```java
@@ -4621,7 +4627,7 @@ pulumi.Output<GetPolicyDocumentResult> getPolicyDocumentOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -4629,22 +4635,31 @@ pulumi.Output<GetPolicyDocumentResult> getPolicyDocumentOutput(
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_iam_getprincipalpolicysimulation" "s3ObjectAccess" {
+/// data "aws_iam_principal_policy_simulation" "s3ObjectAccess" {
 ///   action_names         = ["s3:GetObject"]
 ///   policy_source_arn    = aws_iam_user.example.arn
 ///   resource_arns        = [aws_s3_bucket.example.arn]
-///   resource_policy_json = aws_s3_bucketpolicy.account_access.policy
+///   resource_policy_json = aws_s3_bucket_policy.account_access.policy
 /// }
 ///
 /// resource "aws_iam_user" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "my-test-bucket"
 /// }
-/// resource "aws_iam_userpolicy" "s3_access" {
+/// resource "aws_iam_user_policy" "s3_access" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example_s3_access"
 ///   user = aws_iam_user.example.name
 ///   policy = jsonencode({
@@ -4656,7 +4671,10 @@ pulumi.Output<GetPolicyDocumentResult> getPolicyDocumentOutput(
 ///     }]
 ///   })
 /// }
-/// resource "aws_s3_bucketpolicy" "account_access" {
+/// resource "aws_s3_bucket_policy" "account_access" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.bucket
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -4664,7 +4682,7 @@ pulumi.Output<GetPolicyDocumentResult> getPolicyDocumentOutput(
 ///       "Action" = "s3:*"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" = data.aws_getcalleridentity.current.account_id
+///         "AWS" = data.aws_caller_identity.current.account_id
 ///       }
 ///       "Resource" = [aws_s3_bucket.example.arn, "${aws_s3_bucket.example.arn}/*"]
 ///     }]
@@ -4899,7 +4917,7 @@ pulumi.Output<GetPrincipalPolicySimulationIamResult> getPrincipalPolicySimulatio
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -4907,7 +4925,7 @@ pulumi.Output<GetPrincipalPolicySimulationIamResult> getPrincipalPolicySimulatio
 ///   }
 /// }
 ///
-/// data "aws_iam_getrole" "example" {
+/// data "aws_iam_role" "example" {
 ///   name = "an_example_role_name"
 /// }
 /// ```
@@ -5028,7 +5046,7 @@ pulumi.Output<GetRoleResult> getRoleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -5036,7 +5054,7 @@ pulumi.Output<GetRoleResult> getRoleOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getrolepolicies" "example" {
+/// data "aws_iam_role_policies" "example" {
 ///   role_name = "my-role-name"
 /// }
 /// ```
@@ -5159,7 +5177,7 @@ pulumi.Output<GetRolePoliciesResult> getRolePoliciesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -5167,7 +5185,7 @@ pulumi.Output<GetRolePoliciesResult> getRolePoliciesOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getrolepolicyattachments" "example" {
+/// data "aws_iam_role_policy_attachments" "example" {
 ///   role_name = "example-role"
 /// }
 /// ```
@@ -5283,7 +5301,7 @@ pulumi.Output<GetRolePolicyAttachmentsResult> getRolePolicyAttachmentsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -5291,7 +5309,7 @@ pulumi.Output<GetRolePolicyAttachmentsResult> getRolePolicyAttachmentsOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getroles" "roles" {
+/// data "aws_iam_roles" "roles" {
 /// }
 /// ```
 /// ```java
@@ -5385,7 +5403,7 @@ pulumi.Output<GetRolePolicyAttachmentsResult> getRolePolicyAttachmentsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -5393,7 +5411,7 @@ pulumi.Output<GetRolePolicyAttachmentsResult> getRolePolicyAttachmentsOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getroles" "roles" {
+/// data "aws_iam_roles" "roles" {
 ///   name_regex = ".*project.*"
 /// }
 /// ```
@@ -5488,7 +5506,7 @@ pulumi.Output<GetRolePolicyAttachmentsResult> getRolePolicyAttachmentsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -5496,7 +5514,7 @@ pulumi.Output<GetRolePolicyAttachmentsResult> getRolePolicyAttachmentsOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getroles" "roles" {
+/// data "aws_iam_roles" "roles" {
 ///   path_prefix = "/custom-path"
 /// }
 /// ```
@@ -5593,7 +5611,7 @@ pulumi.Output<GetRolePolicyAttachmentsResult> getRolePolicyAttachmentsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -5601,7 +5619,7 @@ pulumi.Output<GetRolePolicyAttachmentsResult> getRolePolicyAttachmentsOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getroles" "roles" {
+/// data "aws_iam_roles" "roles" {
 ///   path_prefix = "/aws-reserved/sso.amazonaws.com/"
 /// }
 /// ```
@@ -5700,7 +5718,7 @@ pulumi.Output<GetRolePolicyAttachmentsResult> getRolePolicyAttachmentsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -5708,7 +5726,7 @@ pulumi.Output<GetRolePolicyAttachmentsResult> getRolePolicyAttachmentsOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getroles" "roles" {
+/// data "aws_iam_roles" "roles" {
 ///   name_regex  = "AWSReservedSSO_permission_set_name_.*"
 ///   path_prefix = "/aws-reserved/sso.amazonaws.com/"
 /// }
@@ -5834,7 +5852,7 @@ pulumi.Output<GetRolesResult> getRolesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -5842,7 +5860,7 @@ pulumi.Output<GetRolesResult> getRolesOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getsamlprovider" "example" {
+/// data "aws_iam_saml_provider" "example" {
 ///   arn = "arn:aws:iam::123456789:saml-provider/myprovider"
 /// }
 /// ```
@@ -6018,7 +6036,7 @@ pulumi.Output<GetSamlProviderResult> getSamlProviderOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -6026,18 +6044,21 @@ pulumi.Output<GetSamlProviderResult> getSamlProviderOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getservercertificate" "my-domain" {
+/// data "aws_iam_server_certificate" "my-domain" {
 ///   name_prefix = "my-domain.org"
 ///   latest      = true
 /// }
 ///
-/// resource "aws_elb_loadbalancer" "elb" {
+/// resource "aws_elb_load_balancer" "elb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   listeners {
 ///     instance_port      = 8000
 ///     instance_protocol  = "https"
 ///     lb_port            = 443
 ///     lb_protocol        = "https"
-///     ssl_certificate_id = data.aws_iam_getservercertificate.my-domain.arn
+///     ssl_certificate_id = data.aws_iam_server_certificate.my-domain.arn
 ///   }
 ///   name = "my-domain-elb"
 /// }
@@ -6190,7 +6211,7 @@ pulumi.Output<GetServerCertificateResult> getServerCertificateOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -6198,7 +6219,7 @@ pulumi.Output<GetServerCertificateResult> getServerCertificateOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getsessioncontext" "example" {
+/// data "aws_iam_session_context" "example" {
 ///   arn = "arn:aws:sts::123456789012:assumed-role/Audien-Heaven/MatyNoyes"
 /// }
 /// ```
@@ -6304,7 +6325,7 @@ pulumi.Output<GetServerCertificateResult> getServerCertificateOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -6312,10 +6333,10 @@ pulumi.Output<GetServerCertificateResult> getServerCertificateOutput(
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_iam_getsessioncontext" "example" {
-///   arn = data.aws_getcalleridentity.current.arn
+/// data "aws_iam_session_context" "example" {
+///   arn = data.aws_caller_identity.current.arn
 /// }
 /// ```
 /// ```java
@@ -6446,7 +6467,7 @@ pulumi.Output<GetSessionContextResult> getSessionContextOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -6454,7 +6475,7 @@ pulumi.Output<GetSessionContextResult> getSessionContextOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getuser" "example" {
+/// data "aws_iam_user" "example" {
 ///   user_name = "an_example_user_name"
 /// }
 /// ```
@@ -6583,7 +6604,7 @@ pulumi.Output<GetUserResult> getUserOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -6591,7 +6612,7 @@ pulumi.Output<GetUserResult> getUserOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getusersshkey" "example" {
+/// data "aws_iam_user_ssh_key" "example" {
 ///   encoding          = "SSH"
 ///   ssh_public_key_id = "APKARUZ32GUTKIGARLXE"
 ///   username          = "test-user"
@@ -6713,7 +6734,7 @@ pulumi.Output<GetUserSshKeyResult> getUserSshKeyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -6721,7 +6742,7 @@ pulumi.Output<GetUserSshKeyResult> getUserSshKeyOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getusers" "users" {
+/// data "aws_iam_users" "users" {
 /// }
 /// ```
 /// ```java
@@ -6815,7 +6836,7 @@ pulumi.Output<GetUserSshKeyResult> getUserSshKeyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -6823,7 +6844,7 @@ pulumi.Output<GetUserSshKeyResult> getUserSshKeyOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getusers" "users" {
+/// data "aws_iam_users" "users" {
 ///   name_regex = ".*abc.*"
 /// }
 /// ```
@@ -6918,7 +6939,7 @@ pulumi.Output<GetUserSshKeyResult> getUserSshKeyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -6926,7 +6947,7 @@ pulumi.Output<GetUserSshKeyResult> getUserSshKeyOutput(
 ///   }
 /// }
 ///
-/// data "aws_iam_getusers" "users" {
+/// data "aws_iam_users" "users" {
 ///   path_prefix = "/custom-path"
 /// }
 /// ```

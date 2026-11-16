@@ -102,7 +102,7 @@ import 'get_vocabulary_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -110,8 +110,8 @@ import 'get_vocabulary_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_connect_getbotassociation" "example" {
-///   lex_bot = {
+/// data "aws_connect_bot_association" "example" {
+///   lex_bot {
 ///     name = "Test"
 ///   }
 ///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
@@ -246,7 +246,7 @@ pulumi.Output<GetBotAssociationResult> getBotAssociationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -254,7 +254,7 @@ pulumi.Output<GetBotAssociationResult> getBotAssociationOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_getcontactflow" "test" {
+/// data "aws_connect_contact_flow" "test" {
 ///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   name        = "Test"
 /// }
@@ -356,7 +356,7 @@ pulumi.Output<GetBotAssociationResult> getBotAssociationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -364,7 +364,7 @@ pulumi.Output<GetBotAssociationResult> getBotAssociationOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_getcontactflow" "test" {
+/// data "aws_connect_contact_flow" "test" {
 ///   instance_id     = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   contact_flow_id = "cccccccc-bbbb-cccc-dddd-111111111111"
 /// }
@@ -494,7 +494,7 @@ pulumi.Output<GetContactFlowResult> getContactFlowOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -502,7 +502,7 @@ pulumi.Output<GetContactFlowResult> getContactFlowOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_getcontactflowmodule" "example" {
+/// data "aws_connect_contact_flow_module" "example" {
 ///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   name        = "example"
 /// }
@@ -604,7 +604,7 @@ pulumi.Output<GetContactFlowResult> getContactFlowOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -612,7 +612,7 @@ pulumi.Output<GetContactFlowResult> getContactFlowOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_getcontactflowmodule" "example" {
+/// data "aws_connect_contact_flow_module" "example" {
 ///   instance_id            = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   contact_flow_module_id = "cccccccc-bbbb-cccc-dddd-111111111111"
 /// }
@@ -742,7 +742,7 @@ pulumi.Output<GetContactFlowModuleResult> getContactFlowModuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -750,7 +750,7 @@ pulumi.Output<GetContactFlowModuleResult> getContactFlowModuleOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_gethoursofoperation" "test" {
+/// data "aws_connect_hours_of_operation" "test" {
 ///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   name        = "Test"
 /// }
@@ -852,7 +852,7 @@ pulumi.Output<GetContactFlowModuleResult> getContactFlowModuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -860,7 +860,7 @@ pulumi.Output<GetContactFlowModuleResult> getContactFlowModuleOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_gethoursofoperation" "test" {
+/// data "aws_connect_hours_of_operation" "test" {
 ///   instance_id           = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   hours_of_operation_id = "cccccccc-bbbb-cccc-dddd-111111111111"
 /// }
@@ -986,7 +986,7 @@ pulumi.Output<GetHoursOfOperationResult> getHoursOfOperationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -994,7 +994,7 @@ pulumi.Output<GetHoursOfOperationResult> getHoursOfOperationOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_getinstance" "foo" {
+/// data "aws_connect_instance" "foo" {
 ///   instance_alias = "foo"
 /// }
 /// ```
@@ -1089,7 +1089,7 @@ pulumi.Output<GetHoursOfOperationResult> getHoursOfOperationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1097,7 +1097,7 @@ pulumi.Output<GetHoursOfOperationResult> getHoursOfOperationOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_getinstance" "foo" {
+/// data "aws_connect_instance" "foo" {
 ///   instance_id = "97afc98d-101a-ba98-ab97-ae114fc115ec"
 /// }
 /// ```
@@ -1226,7 +1226,7 @@ pulumi.Output<GetInstanceResult> getInstanceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1234,7 +1234,7 @@ pulumi.Output<GetInstanceResult> getInstanceOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_getinstancestorageconfig" "example" {
+/// data "aws_connect_instance_storage_config" "example" {
 ///   association_id = "1234567891234567890122345678912345678901223456789123456789012234"
 ///   instance_id    = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   resource_type  = "CONTACT_TRACE_RECORDS"
@@ -1365,7 +1365,7 @@ pulumi.Output<GetInstanceStorageConfigResult> getInstanceStorageConfigOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1373,7 +1373,7 @@ pulumi.Output<GetInstanceStorageConfigResult> getInstanceStorageConfigOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_getlambdafunctionassociation" "example" {
+/// data "aws_connect_lambda_function_association" "example" {
 ///   function_arn = "arn:aws:lambda:us-west-2:123456789123:function:abcdefg"
 ///   instance_id  = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 /// }
@@ -1503,7 +1503,7 @@ pulumi.Output<GetLambdaFunctionAssociationResult> getLambdaFunctionAssociationOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1511,7 +1511,7 @@ pulumi.Output<GetLambdaFunctionAssociationResult> getLambdaFunctionAssociationOu
 ///   }
 /// }
 ///
-/// data "aws_connect_getprompt" "example" {
+/// data "aws_connect_prompt" "example" {
 ///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   name        = "Beep.wav"
 /// }
@@ -1641,7 +1641,7 @@ pulumi.Output<GetPromptResult> getPromptOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1649,7 +1649,7 @@ pulumi.Output<GetPromptResult> getPromptOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_getqueue" "example" {
+/// data "aws_connect_queue" "example" {
 ///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   name        = "Example"
 /// }
@@ -1751,7 +1751,7 @@ pulumi.Output<GetPromptResult> getPromptOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1759,7 +1759,7 @@ pulumi.Output<GetPromptResult> getPromptOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_getqueue" "example" {
+/// data "aws_connect_queue" "example" {
 ///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   queue_id    = "cccccccc-bbbb-cccc-dddd-111111111111"
 /// }
@@ -1889,7 +1889,7 @@ pulumi.Output<GetQueueResult> getQueueOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1897,7 +1897,7 @@ pulumi.Output<GetQueueResult> getQueueOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_getquickconnect" "example" {
+/// data "aws_connect_quick_connect" "example" {
 ///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   name        = "Example"
 /// }
@@ -1999,7 +1999,7 @@ pulumi.Output<GetQueueResult> getQueueOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2007,7 +2007,7 @@ pulumi.Output<GetQueueResult> getQueueOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_getquickconnect" "example" {
+/// data "aws_connect_quick_connect" "example" {
 ///   instance_id      = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   quick_connect_id = "cccccccc-bbbb-cccc-dddd-111111111111"
 /// }
@@ -2137,7 +2137,7 @@ pulumi.Output<GetQuickConnectResult> getQuickConnectOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2145,7 +2145,7 @@ pulumi.Output<GetQuickConnectResult> getQuickConnectOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_getroutingprofile" "example" {
+/// data "aws_connect_routing_profile" "example" {
 ///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   name        = "Example"
 /// }
@@ -2247,7 +2247,7 @@ pulumi.Output<GetQuickConnectResult> getQuickConnectOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2255,7 +2255,7 @@ pulumi.Output<GetQuickConnectResult> getQuickConnectOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_getroutingprofile" "example" {
+/// data "aws_connect_routing_profile" "example" {
 ///   instance_id        = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   routing_profile_id = "cccccccc-bbbb-cccc-dddd-111111111111"
 /// }
@@ -2385,7 +2385,7 @@ pulumi.Output<GetRoutingProfileResult> getRoutingProfileOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2393,7 +2393,7 @@ pulumi.Output<GetRoutingProfileResult> getRoutingProfileOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_getsecurityprofile" "example" {
+/// data "aws_connect_security_profile" "example" {
 ///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   name        = "Example"
 /// }
@@ -2495,7 +2495,7 @@ pulumi.Output<GetRoutingProfileResult> getRoutingProfileOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2503,7 +2503,7 @@ pulumi.Output<GetRoutingProfileResult> getRoutingProfileOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_getsecurityprofile" "example" {
+/// data "aws_connect_security_profile" "example" {
 ///   instance_id         = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   security_profile_id = "cccccccc-bbbb-cccc-dddd-111111111111"
 /// }
@@ -2633,7 +2633,7 @@ pulumi.Output<GetSecurityProfileResult> getSecurityProfileOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2641,7 +2641,7 @@ pulumi.Output<GetSecurityProfileResult> getSecurityProfileOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_getuser" "example" {
+/// data "aws_connect_user" "example" {
 ///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   name        = "Example"
 /// }
@@ -2743,7 +2743,7 @@ pulumi.Output<GetSecurityProfileResult> getSecurityProfileOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2751,7 +2751,7 @@ pulumi.Output<GetSecurityProfileResult> getSecurityProfileOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_getuser" "example" {
+/// data "aws_connect_user" "example" {
 ///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   user_id     = "cccccccc-bbbb-cccc-dddd-111111111111"
 /// }
@@ -2881,7 +2881,7 @@ pulumi.Output<GetUserResult> getUserOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2889,7 +2889,7 @@ pulumi.Output<GetUserResult> getUserOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_getuserhierarchygroup" "example" {
+/// data "aws_connect_user_hierarchy_group" "example" {
 ///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   name        = "Example"
 /// }
@@ -2991,7 +2991,7 @@ pulumi.Output<GetUserResult> getUserOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2999,7 +2999,7 @@ pulumi.Output<GetUserResult> getUserOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_getuserhierarchygroup" "example" {
+/// data "aws_connect_user_hierarchy_group" "example" {
 ///   instance_id        = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   hierarchy_group_id = "cccccccc-bbbb-cccc-dddd-111111111111"
 /// }
@@ -3123,7 +3123,7 @@ pulumi.Output<GetUserHierarchyGroupResult> getUserHierarchyGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3131,7 +3131,7 @@ pulumi.Output<GetUserHierarchyGroupResult> getUserHierarchyGroupOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_getuserhierarchystructure" "test" {
+/// data "aws_connect_user_hierarchy_structure" "test" {
 ///   instance_id = testAwsConnectInstance.id
 /// }
 /// ```
@@ -3157,7 +3157,7 @@ pulumi.Output<GetUserHierarchyGroupResult> getUserHierarchyGroupOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = ConnectFunctions.getUserHierarchyStructure(GetUserHierarchyStructureArgs.builder()
-///             .instanceId(testAwsConnectInstance.id())
+///             .instanceId(testAwsConnectInstance.get("id"))
 ///             .build());
 ///
 ///     }
@@ -3258,7 +3258,7 @@ pulumi.Output<GetUserHierarchyStructureResult> getUserHierarchyStructureOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3266,7 +3266,7 @@ pulumi.Output<GetUserHierarchyStructureResult> getUserHierarchyStructureOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_getvocabulary" "example" {
+/// data "aws_connect_vocabulary" "example" {
 ///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   name        = "Example"
 /// }
@@ -3368,7 +3368,7 @@ pulumi.Output<GetUserHierarchyStructureResult> getUserHierarchyStructureOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3376,7 +3376,7 @@ pulumi.Output<GetUserHierarchyStructureResult> getUserHierarchyStructureOutput(
 ///   }
 /// }
 ///
-/// data "aws_connect_getvocabulary" "example" {
+/// data "aws_connect_vocabulary" "example" {
 ///   instance_id   = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   vocabulary_id = "cccccccc-bbbb-cccc-dddd-111111111111"
 /// }

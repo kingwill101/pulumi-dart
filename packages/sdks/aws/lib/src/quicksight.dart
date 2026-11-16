@@ -1,3 +1,6 @@
+export 'quicksight/account_custom_permission.dart';
+export 'quicksight/account_custom_permission_args.dart';
+export 'quicksight/account_custom_permission_state.dart';
 export 'quicksight/account_settings.dart';
 export 'quicksight/account_settings_args.dart';
 export 'quicksight/account_settings_state.dart';

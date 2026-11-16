@@ -28,6 +28,8 @@ class HubContentReferenceState {
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
   final pulumi.Input<HubContentReferenceTimeouts?>? timeouts;
+  /// ARN of the hub content reference, including the version suffix. Use this for `hub_access_config.hub_content_arn` in `aws.sagemaker.Model`.
+  final pulumi.Input<String?>? versionedHubContentArn;
 
   /// Creates a new [HubContentReferenceState].
   /// [hubArn] ARN of the private SageMaker Hub that contains the content reference.
@@ -42,6 +44,7 @@ class HubContentReferenceState {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
+  /// [versionedHubContentArn] ARN of the hub content reference, including the version suffix. Use this for `hub_access_config.hub_content_arn` in `aws.sagemaker.Model`.
   const HubContentReferenceState({
     this.hubArn,
     this.hubContentArn,
@@ -55,6 +58,7 @@ class HubContentReferenceState {
     this.tags,
     this.tagsAll,
     this.timeouts,
+    this.versionedHubContentArn,
   });
 
   Map<String, dynamic> toMap() {
@@ -71,6 +75,7 @@ class HubContentReferenceState {
       'tags': ?tags,
       'tagsAll': ?tagsAll,
       'timeouts': ?pulumi.Input.mapOptionalInputValue<HubContentReferenceTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'versionedHubContentArn': ?versionedHubContentArn,
     };
   }
 
@@ -88,6 +93,7 @@ class HubContentReferenceState {
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HubContentReferenceTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      versionedHubContentArn: (() { final guardedValue = map['versionedHubContentArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }

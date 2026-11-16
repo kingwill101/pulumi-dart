@@ -63,7 +63,7 @@ import 'get_plan_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,7 +71,7 @@ import 'get_plan_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssmcontacts_getcontact" "example" {
+/// data "aws_ssmcontacts_contact" "example" {
 ///   arn = "arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias"
 /// }
 /// ```
@@ -194,7 +194,7 @@ pulumi.Output<GetContactResult> getContactOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -202,7 +202,7 @@ pulumi.Output<GetContactResult> getContactOutput(
 ///   }
 /// }
 ///
-/// data "aws_ssmcontacts_getcontactchannel" "example" {
+/// data "aws_ssmcontacts_contact_channel" "example" {
 ///   arn = "arn:aws:ssm-contacts:us-west-2:123456789012:contact-channel/example"
 /// }
 /// ```
@@ -325,7 +325,7 @@ pulumi.Output<GetContactChannelResult> getContactChannelOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -333,7 +333,7 @@ pulumi.Output<GetContactChannelResult> getContactChannelOutput(
 ///   }
 /// }
 ///
-/// data "aws_ssmcontacts_getplan" "test" {
+/// data "aws_ssmcontacts_plan" "test" {
 ///   contact_id = "arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias"
 /// }
 /// ```

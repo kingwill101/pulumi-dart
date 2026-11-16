@@ -65,7 +65,7 @@ import 'get_email_identity_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,7 @@ import 'get_email_identity_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_sesv2_getconfigurationset" "example" {
+/// data "aws_sesv2_configuration_set" "example" {
 ///   configuration_set_name = "example"
 /// }
 /// ```
@@ -196,7 +196,7 @@ pulumi.Output<GetConfigurationSetResult> getConfigurationSetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -204,7 +204,7 @@ pulumi.Output<GetConfigurationSetResult> getConfigurationSetOutput(
 ///   }
 /// }
 ///
-/// data "aws_sesv2_getdedicatedippool" "example" {
+/// data "aws_sesv2_dedicated_ip_pool" "example" {
 ///   pool_name = "my-pool"
 /// }
 /// ```
@@ -327,7 +327,7 @@ pulumi.Output<GetDedicatedIpPoolResult> getDedicatedIpPoolOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -335,7 +335,7 @@ pulumi.Output<GetDedicatedIpPoolResult> getDedicatedIpPoolOutput(
 ///   }
 /// }
 ///
-/// data "aws_sesv2_getemailidentity" "example" {
+/// data "aws_sesv2_email_identity" "example" {
 ///   email_identity = "example.com"
 /// }
 /// ```
@@ -473,7 +473,7 @@ pulumi.Output<GetEmailIdentityResult> getEmailIdentityOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -481,11 +481,11 @@ pulumi.Output<GetEmailIdentityResult> getEmailIdentityOutput(
 ///   }
 /// }
 ///
-/// data "aws_sesv2_getemailidentity" "example" {
+/// data "aws_sesv2_email_identity" "example" {
 ///   email_identity = "example.com"
 /// }
-/// data "aws_sesv2_getemailidentitymailfromattributes" "exampleGetEmailIdentityMailFromAttributes" {
-///   email_identity = data.aws_sesv2_getemailidentity.example.email_identity
+/// data "aws_sesv2_email_identity_mail_from_attributes" "exampleGetEmailIdentityMailFromAttributes" {
+///   email_identity = data.aws_sesv2_email_identity.example.email_identity
 /// }
 /// ```
 /// ```java

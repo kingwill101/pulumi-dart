@@ -186,7 +186,7 @@ import 'get_product_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -194,7 +194,7 @@ import 'get_product_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_pricing_getproduct" "example" {
+/// data "aws_pricing_product" "example" {
 ///   filters {
 ///     field = "instanceType"
 ///     value = "c5.xlarge"
@@ -403,7 +403,7 @@ import 'get_product_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -411,7 +411,7 @@ import 'get_product_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_pricing_getproduct" "example" {
+/// data "aws_pricing_product" "example" {
 ///   filters {
 ///     field = "instanceType"
 ///     value = "ds1.xlarge"

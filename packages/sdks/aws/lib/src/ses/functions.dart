@@ -54,7 +54,7 @@ import 'get_email_identity_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -62,7 +62,7 @@ import 'get_email_identity_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_ses_getactivereceiptruleset" "main" {
+/// data "aws_ses_active_receipt_rule_set" "main" {
 /// }
 /// ```
 /// ```java
@@ -180,7 +180,7 @@ pulumi.Output<GetActiveReceiptRuleSetResult> getActiveReceiptRuleSetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -188,7 +188,7 @@ pulumi.Output<GetActiveReceiptRuleSetResult> getActiveReceiptRuleSetOutput(
 ///   }
 /// }
 ///
-/// data "aws_ses_getdomainidentity" "example" {
+/// data "aws_ses_domain_identity" "example" {
 ///   domain = "example.com"
 /// }
 /// ```
@@ -309,7 +309,7 @@ pulumi.Output<GetDomainIdentityResult> getDomainIdentityOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -317,7 +317,7 @@ pulumi.Output<GetDomainIdentityResult> getDomainIdentityOutput(
 ///   }
 /// }
 ///
-/// data "aws_ses_getemailidentity" "example" {
+/// data "aws_ses_email_identity" "example" {
 ///   email = "awesome@example.com"
 /// }
 /// ```

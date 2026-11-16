@@ -73,7 +73,7 @@ import 'get_serverless_vpc_endpoint_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -81,7 +81,7 @@ import 'get_serverless_vpc_endpoint_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_opensearch_getdomain" "myDomain" {
+/// data "aws_opensearch_domain" "myDomain" {
 ///   domain_name = "my-domain-name"
 /// }
 /// ```
@@ -208,7 +208,7 @@ pulumi.Output<GetDomainResult> getDomainOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -216,7 +216,7 @@ pulumi.Output<GetDomainResult> getDomainOutput(
 ///   }
 /// }
 ///
-/// data "aws_opensearch_getserverlessaccesspolicy" "example" {
+/// data "aws_opensearch_serverless_access_policy" "example" {
 ///   name = exampleAwsOpensearchserverlessAccessPolicy.name
 ///   type = exampleAwsOpensearchserverlessAccessPolicy.type
 /// }
@@ -243,8 +243,8 @@ pulumi.Output<GetDomainResult> getDomainOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = OpensearchFunctions.getServerlessAccessPolicy(GetServerlessAccessPolicyArgs.builder()
-///             .name(exampleAwsOpensearchserverlessAccessPolicy.name())
-///             .type(exampleAwsOpensearchserverlessAccessPolicy.type())
+///             .name(exampleAwsOpensearchserverlessAccessPolicy.get("name"))
+///             .type(exampleAwsOpensearchserverlessAccessPolicy.get("type"))
 ///             .build());
 ///
 ///     }
@@ -342,7 +342,7 @@ pulumi.Output<GetServerlessAccessPolicyResult> getServerlessAccessPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -350,7 +350,7 @@ pulumi.Output<GetServerlessAccessPolicyResult> getServerlessAccessPolicyOutput(
 ///   }
 /// }
 ///
-/// data "aws_opensearch_getserverlesscollection" "example" {
+/// data "aws_opensearch_serverless_collection" "example" {
 ///   name = "example"
 /// }
 /// ```
@@ -473,7 +473,7 @@ pulumi.Output<GetServerlessCollectionResult> getServerlessCollectionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -481,7 +481,7 @@ pulumi.Output<GetServerlessCollectionResult> getServerlessCollectionOutput(
 ///   }
 /// }
 ///
-/// data "aws_opensearch_getserverlesscollectiongroup" "example" {
+/// data "aws_opensearch_serverless_collection_group" "example" {
 ///   name = "example-group"
 /// }
 /// ```
@@ -597,7 +597,7 @@ pulumi.Output<GetServerlessCollectionGroupResult> getServerlessCollectionGroupOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -605,7 +605,7 @@ pulumi.Output<GetServerlessCollectionGroupResult> getServerlessCollectionGroupOu
 ///   }
 /// }
 ///
-/// data "aws_opensearch_getserverlesscollectiongroups" "example" {
+/// data "aws_opensearch_serverless_collection_groups" "example" {
 /// }
 /// ```
 /// ```java
@@ -729,7 +729,7 @@ pulumi.Output<GetServerlessCollectionGroupsResult> getServerlessCollectionGroups
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -737,7 +737,7 @@ pulumi.Output<GetServerlessCollectionGroupsResult> getServerlessCollectionGroups
 ///   }
 /// }
 ///
-/// data "aws_opensearch_getserverlesslifecyclepolicy" "example" {
+/// data "aws_opensearch_serverless_lifecycle_policy" "example" {
 ///   name = "example-lifecycle-policy"
 ///   type = "retention"
 /// }
@@ -863,7 +863,7 @@ pulumi.Output<GetServerlessLifecyclePolicyResult> getServerlessLifecyclePolicyOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -871,7 +871,7 @@ pulumi.Output<GetServerlessLifecyclePolicyResult> getServerlessLifecyclePolicyOu
 ///   }
 /// }
 ///
-/// data "aws_opensearch_getserverlesssecurityconfig" "example" {
+/// data "aws_opensearch_serverless_security_config" "example" {
 ///   id = "saml/12345678912/example"
 /// }
 /// ```
@@ -996,7 +996,7 @@ pulumi.Output<GetServerlessSecurityConfigResult> getServerlessSecurityConfigOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1004,7 +1004,7 @@ pulumi.Output<GetServerlessSecurityConfigResult> getServerlessSecurityConfigOutp
 ///   }
 /// }
 ///
-/// data "aws_opensearch_getserverlesssecuritypolicy" "example" {
+/// data "aws_opensearch_serverless_security_policy" "example" {
 ///   name = "example-security-policy"
 ///   type = "encryption"
 /// }
@@ -1128,7 +1128,7 @@ pulumi.Output<GetServerlessSecurityPolicyResult> getServerlessSecurityPolicyOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1136,7 +1136,7 @@ pulumi.Output<GetServerlessSecurityPolicyResult> getServerlessSecurityPolicyOutp
 ///   }
 /// }
 ///
-/// data "aws_opensearch_getserverlessvpcendpoint" "example" {
+/// data "aws_opensearch_serverless_vpc_endpoint" "example" {
 ///   vpc_endpoint_id = "vpce-829a4487959e2a839"
 /// }
 /// ```

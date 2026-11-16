@@ -72,7 +72,7 @@ import 'get_supported_instance_types_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -80,8 +80,8 @@ import 'get_supported_instance_types_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_emr_getreleaselabels" "example" {
-///   filters = {
+/// data "aws_emr_release_labels" "example" {
+///   filters {
 ///     application = "spark@2.1.0"
 ///     prefix      = "emr-5"
 ///   }
@@ -212,7 +212,7 @@ pulumi.Output<GetReleaseLabelsResult> getReleaseLabelsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -220,7 +220,7 @@ pulumi.Output<GetReleaseLabelsResult> getReleaseLabelsOutput(
 ///   }
 /// }
 ///
-/// data "aws_emr_getsupportedinstancetypes" "example" {
+/// data "aws_emr_supported_instance_types" "example" {
 ///   release_label = "ebs-6.15.0"
 /// }
 /// ```
@@ -356,7 +356,7 @@ pulumi.Output<GetReleaseLabelsResult> getReleaseLabelsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -364,12 +364,15 @@ pulumi.Output<GetReleaseLabelsResult> getReleaseLabelsOutput(
 ///   }
 /// }
 ///
-/// data "aws_emr_getsupportedinstancetypes" "test" {
+/// data "aws_emr_supported_instance_types" "test" {
 ///   release_label = local.releaseLabel
 /// }
 ///
 /// resource "aws_emr_cluster" "test" {
-///   master_instance_group = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   master_instance_group {
 ///     instance_type = local.instanceType
 ///   }
 ///   release_label = local.releaseLabel

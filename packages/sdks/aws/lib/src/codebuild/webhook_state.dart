@@ -9,7 +9,7 @@ import 'webhook_scope_configuration.dart';
 class WebhookState {
   /// A regular expression used to determine which branches get built. Default is all branches are built. We recommend using `filterGroup` over `branchFilter`.
   final pulumi.Input<String?>? branchFilter;
-  /// The type of build this webhook will trigger. Valid values for this parameter are: `BUILD`, `BUILD_BATCH`.
+  /// Type of build this webhook triggers. Valid values: `BUILD`, `BUILD_BATCH`, `RUNNER_BUILDKITE_BUILD`. `RUNNER_BUILDKITE_BUILD` is available only for `NO_SOURCE` projects configured for Buildkite runner builds.
   final pulumi.Input<String?>? buildType;
   /// Information about the webhook's trigger. See filterGroup for details.
   final pulumi.Input<List<WebhookFilterGroup>?>? filterGroups;
@@ -32,7 +32,7 @@ class WebhookState {
 
   /// Creates a new [WebhookState].
   /// [branchFilter] A regular expression used to determine which branches get built. Default is all branches are built. We recommend using `filterGroup` over `branchFilter`.
-  /// [buildType] The type of build this webhook will trigger. Valid values for this parameter are: `BUILD`, `BUILD_BATCH`.
+  /// [buildType] Type of build this webhook triggers. Valid values: `BUILD`, `BUILD_BATCH`, `RUNNER_BUILDKITE_BUILD`. `RUNNER_BUILDKITE_BUILD` is available only for `NO_SOURCE` projects configured for Buildkite runner builds.
   /// [filterGroups] Information about the webhook's trigger. See filterGroup for details.
   /// [manualCreation] If true, CodeBuild doesn't create a webhook in GitHub and instead returns `payloadUrl` and `secret` values for the webhook. The `payloadUrl` and `secret` values in the output can be used to manually create a webhook within GitHub.
   /// [payloadUrl] The CodeBuild endpoint where webhook events are sent.

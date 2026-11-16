@@ -68,7 +68,7 @@ import 'get_virtual_cluster_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,15 +76,15 @@ import 'get_virtual_cluster_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_emrcontainers_getvirtualcluster" "example" {
+/// data "aws_emrcontainers_virtual_cluster" "example" {
 ///   virtual_cluster_id = "example id"
 /// }
 ///
 /// output "name" {
-///   value = data.aws_emrcontainers_getvirtualcluster.example.name
+///   value = data.aws_emrcontainers_virtual_cluster.example.name
 /// }
 /// output "arn" {
-///   value = data.aws_emrcontainers_getvirtualcluster.example.arn
+///   value = data.aws_emrcontainers_virtual_cluster.example.arn
 /// }
 /// ```
 /// ```java

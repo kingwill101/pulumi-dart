@@ -52,7 +52,7 @@ import 'get_regions_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -60,7 +60,7 @@ import 'get_regions_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_account_getprimarycontact" "test" {
+/// data "aws_account_primary_contact" "test" {
 /// }
 /// ```
 /// ```java
@@ -175,7 +175,7 @@ pulumi.Output<GetPrimaryContactResult> getPrimaryContactOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -183,7 +183,7 @@ pulumi.Output<GetPrimaryContactResult> getPrimaryContactOutput(
 ///   }
 /// }
 ///
-/// data "aws_account_getregions" "example" {
+/// data "aws_account_regions" "example" {
 /// }
 /// ```
 /// ```java

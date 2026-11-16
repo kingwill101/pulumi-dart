@@ -59,7 +59,7 @@ import 'get_registry_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,7 @@ import 'get_registry_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_agentregistry_getregistry" "example" {
+/// data "aws_agentregistry_registry" "example" {
 ///   registry_id = "registry-id-12345678"
 /// }
 /// ```
@@ -162,7 +162,7 @@ import 'get_registry_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -170,7 +170,7 @@ import 'get_registry_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_agentregistry_getregistry" "example" {
+/// data "aws_agentregistry_registry" "example" {
 ///   registry_id = "arn:aws:agent-registry:us-west-2:123456789012:registry/registry-id-12345678"
 /// }
 /// ```

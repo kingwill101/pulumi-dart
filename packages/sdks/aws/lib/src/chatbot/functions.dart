@@ -59,7 +59,7 @@ import 'get_slack_workspace_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,7 @@ import 'get_slack_workspace_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_chatbot_getslackworkspace" "example" {
+/// data "aws_chatbot_slack_workspace" "example" {
 ///   slack_team_name = "abc"
 /// }
 /// ```

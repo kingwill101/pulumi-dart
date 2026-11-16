@@ -63,7 +63,7 @@ import 'get_mount_target_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,7 +71,7 @@ import 'get_mount_target_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_efs_getaccesspoint" "test" {
+/// data "aws_efs_access_point" "test" {
 ///   access_point_id = "fsap-12345678"
 /// }
 /// ```
@@ -192,7 +192,7 @@ pulumi.Output<GetAccessPointResult> getAccessPointOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -200,7 +200,7 @@ pulumi.Output<GetAccessPointResult> getAccessPointOutput(
 ///   }
 /// }
 ///
-/// data "aws_efs_getaccesspoints" "test" {
+/// data "aws_efs_access_points" "test" {
 ///   file_system_id = "fs-12345678"
 /// }
 /// ```
@@ -359,7 +359,7 @@ pulumi.Output<GetAccessPointsResult> getAccessPointsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -367,10 +367,10 @@ pulumi.Output<GetAccessPointsResult> getAccessPointsOutput(
 ///   }
 /// }
 ///
-/// data "aws_efs_getfilesystem" "byId" {
+/// data "aws_efs_file_system" "byId" {
 ///   file_system_id = var.fileSystemId
 /// }
-/// data "aws_efs_getfilesystem" "byTag" {
+/// data "aws_efs_file_system" "byTag" {
 ///   tags = {
 ///     "Environment" = "dev"
 ///   }
@@ -528,7 +528,7 @@ pulumi.Output<GetFileSystemResult> getFileSystemOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -536,7 +536,7 @@ pulumi.Output<GetFileSystemResult> getFileSystemOutput(
 ///   }
 /// }
 ///
-/// data "aws_efs_getmounttarget" "byId" {
+/// data "aws_efs_mount_target" "byId" {
 ///   mount_target_id = var.mountTargetId
 /// }
 ///

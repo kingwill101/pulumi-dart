@@ -59,7 +59,7 @@ import 'get_policy_store_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,7 @@ import 'get_policy_store_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_verifiedpermissions_getpolicystore" "example" {
+/// data "aws_verifiedpermissions_policy_store" "example" {
 ///   id = "example"
 /// }
 /// ```

@@ -11,6 +11,8 @@ import 'serverless_cache_timeouts.dart';
 class ServerlessCacheArgs {
   /// Sets the cache usage limits for storage and ElastiCache Processing Units for the cache. See `cacheUsageLimits` Block for details.
   final pulumi.Input<ServerlessCacheCacheUsageLimits?>? cacheUsageLimits;
+  /// Connectivity option for the cache. Valid values are `vpc` (reachable only from within a VPC) and `public` (reachable over the internet, `valkey` only). Defaults to `vpc`. A `public` endpoint requires `engine` `valkey` with `majorEngineVersion` `9` or later, requires IAM authentication over TLS 1.3, and is created without `subnetIds` or `securityGroupIds`. These `public` requirements are enforced by AWS and are not validated by the provider, so an invalid combination fails at apply time with the AWS API error rather than during `plan`. This value cannot be changed after creation.
+  final pulumi.Input<String?>? connectionType;
   /// The daily time that snapshots will be created from the new serverless cache. Only supported for engine types `"redis"` or `"valkey"`. Defaults to `0`.
   final pulumi.Input<String?>? dailySnapshotTime;
   /// User-provided description for the serverless cache. The default is NULL.
@@ -46,6 +48,7 @@ class ServerlessCacheArgs {
 
   /// Creates a new [ServerlessCacheArgs].
   /// [cacheUsageLimits] Sets the cache usage limits for storage and ElastiCache Processing Units for the cache. See `cacheUsageLimits` Block for details.
+  /// [connectionType] Connectivity option for the cache. Valid values are `vpc` (reachable only from within a VPC) and `public` (reachable over the internet, `valkey` only). Defaults to `vpc`. A `public` endpoint requires `engine` `valkey` with `majorEngineVersion` `9` or later, requires IAM authentication over TLS 1.3, and is created without `subnetIds` or `securityGroupIds`. These `public` requirements are enforced by AWS and are not validated by the provider, so an invalid combination fails at apply time with the AWS API error rather than during `plan`. This value cannot be changed after creation.
   /// [dailySnapshotTime] The daily time that snapshots will be created from the new serverless cache. Only supported for engine types `"redis"` or `"valkey"`. Defaults to `0`.
   /// [description] User-provided description for the serverless cache. The default is NULL.
   /// [engine] Name of the cache engine to be used for this cache cluster. Valid values are `memcached`, `redis` or `valkey`.
@@ -63,6 +66,7 @@ class ServerlessCacheArgs {
   /// [userGroupId] The identifier of the UserGroup to be associated with the serverless cache. Available for Redis and Valkey. Default is NULL.
   const ServerlessCacheArgs({
     this.cacheUsageLimits,
+    this.connectionType,
     this.dailySnapshotTime,
     this.description,
     required this.engine,
@@ -83,6 +87,7 @@ class ServerlessCacheArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cacheUsageLimits': ?pulumi.Input.mapOptionalInputValue<ServerlessCacheCacheUsageLimits, Map<String, dynamic>>(cacheUsageLimits, (value) => value.toMap()),
+      'connectionType': ?connectionType,
       'dailySnapshotTime': ?dailySnapshotTime,
       'description': ?description,
       'engine': engine,
@@ -104,6 +109,7 @@ class ServerlessCacheArgs {
   factory ServerlessCacheArgs.fromMap(Map<String, dynamic> map) {
     return ServerlessCacheArgs(
       cacheUsageLimits: (() { final guardedValue = map['cacheUsageLimits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServerlessCacheCacheUsageLimits.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      connectionType: (() { final guardedValue = map['connectionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dailySnapshotTime: (() { final guardedValue = map['dailySnapshotTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       engine: pulumi.Input.fromValue(map['engine'] as String),

@@ -4,24 +4,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_rule_statement_managed_rule_group_statement_scope_down_statement.dart';
 
 class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatement {
-  /// List of statements to combine. At least one statement is required. Each nested statement supports the same statement types listed above.
-  final pulumi.Input<List<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatement>?>? statements;
+  /// List of statements to combine. At least two statements are required. Each nested statement supports the statement types listed above except `andStatement`, `managedRuleGroupStatement`, `rateBasedStatement` and `ruleGroupReferenceStatement`.
+  final pulumi.Input<List<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatement>> statements;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatement].
-  /// [statements] List of statements to combine. At least one statement is required. Each nested statement supports the same statement types listed above.
+  /// [statements] List of statements to combine. At least two statements are required. Each nested statement supports the statement types listed above except `andStatement`, `managedRuleGroupStatement`, `rateBasedStatement` and `ruleGroupReferenceStatement`.
   const WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatement({
-    this.statements,
+    required this.statements,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'statements': ?pulumi.Input.mapOptionalInputValue<List<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatement>, List<Map<String, dynamic>>>(statements, (value) => pulumi.Input.encodeList<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatement, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'statements': pulumi.Input.mapInputValue<List<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatement>, List<Map<String, dynamic>>>(statements, (value) => pulumi.Input.encodeList<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatement, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatement(
-      statements: (() { final guardedValue = map['statements']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatement>(guardedValue, (value) => WebAclRuleStatementManagedRuleGroupStatementScopeDownStatement.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      statements: pulumi.Input.fromValue(pulumi.Input.decodeList<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatement>(map['statements']!, (value) => WebAclRuleStatementManagedRuleGroupStatementScopeDownStatement.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }

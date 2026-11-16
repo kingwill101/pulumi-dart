@@ -63,7 +63,7 @@ import 'get_state_machine_versions_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,7 +71,7 @@ import 'get_state_machine_versions_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_sfn_getactivity" "sfnActivity" {
+/// data "aws_sfn_activity" "sfnActivity" {
 ///   name = "my-activity"
 /// }
 /// ```
@@ -198,7 +198,7 @@ pulumi.Output<GetActivityResult> getActivityOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -206,7 +206,7 @@ pulumi.Output<GetActivityResult> getActivityOutput(
 ///   }
 /// }
 ///
-/// data "aws_sfn_getalias" "example" {
+/// data "aws_sfn_alias" "example" {
 ///   name             = "my_sfn_alias"
 ///   statemachine_arn = sfnTest.arn
 /// }
@@ -234,7 +234,7 @@ pulumi.Output<GetActivityResult> getActivityOutput(
 ///     public static void stack(Context ctx) {
 ///         final var example = SfnFunctions.getAlias(GetAliasArgs.builder()
 ///             .name("my_sfn_alias")
-///             .statemachineArn(sfnTest.arn())
+///             .statemachineArn(sfnTest.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -332,7 +332,7 @@ pulumi.Output<GetAliasResult> getAliasOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -340,7 +340,7 @@ pulumi.Output<GetAliasResult> getAliasOutput(
 ///   }
 /// }
 ///
-/// data "aws_sfn_getstatemachine" "example" {
+/// data "aws_sfn_state_machine" "example" {
 ///   name = "an_example_sfn_name"
 /// }
 /// ```
@@ -463,7 +463,7 @@ pulumi.Output<GetStateMachineResult> getStateMachineOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -471,7 +471,7 @@ pulumi.Output<GetStateMachineResult> getStateMachineOutput(
 ///   }
 /// }
 ///
-/// data "aws_sfn_getstatemachineversions" "test" {
+/// data "aws_sfn_state_machine_versions" "test" {
 ///   statemachine_arn = testAwsSfnStateMachine.arn
 /// }
 /// ```
@@ -497,7 +497,7 @@ pulumi.Output<GetStateMachineResult> getStateMachineOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = SfnFunctions.getStateMachineVersions(GetStateMachineVersionsArgs.builder()
-///             .statemachineArn(testAwsSfnStateMachine.arn())
+///             .statemachineArn(testAwsSfnStateMachine.get("arn"))
 ///             .build());
 ///
 ///     }

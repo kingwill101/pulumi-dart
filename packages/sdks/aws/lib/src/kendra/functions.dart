@@ -69,7 +69,7 @@ import 'get_thesaurus_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,7 +77,7 @@ import 'get_thesaurus_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_kendra_getexperience" "example" {
+/// data "aws_kendra_experience" "example" {
 ///   experience_id = "87654321-1234-4321-4321-321987654321"
 ///   index_id      = "12345678-1234-1234-1234-123456789123"
 /// }
@@ -205,7 +205,7 @@ pulumi.Output<GetExperienceResult> getExperienceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -213,7 +213,7 @@ pulumi.Output<GetExperienceResult> getExperienceOutput(
 ///   }
 /// }
 ///
-/// data "aws_kendra_getfaq" "test" {
+/// data "aws_kendra_faq" "test" {
 ///   faq_id   = "87654321-1234-4321-4321-321987654321"
 ///   index_id = "12345678-1234-1234-1234-123456789123"
 /// }
@@ -337,7 +337,7 @@ pulumi.Output<GetFaqResult> getFaqOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -345,7 +345,7 @@ pulumi.Output<GetFaqResult> getFaqOutput(
 ///   }
 /// }
 ///
-/// data "aws_kendra_getindex" "example" {
+/// data "aws_kendra_index" "example" {
 ///   id = "12345678-1234-1234-1234-123456789123"
 /// }
 /// ```
@@ -470,7 +470,7 @@ pulumi.Output<GetIndexResult> getIndexOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -478,7 +478,7 @@ pulumi.Output<GetIndexResult> getIndexOutput(
 ///   }
 /// }
 ///
-/// data "aws_kendra_getquerysuggestionsblocklist" "example" {
+/// data "aws_kendra_query_suggestions_block_list" "example" {
 ///   index_id                        = "12345678-1234-1234-1234-123456789123"
 ///   query_suggestions_block_list_id = "87654321-1234-4321-4321-321987654321"
 /// }
@@ -606,7 +606,7 @@ pulumi.Output<GetQuerySuggestionsBlockListResult> getQuerySuggestionsBlockListOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -614,7 +614,7 @@ pulumi.Output<GetQuerySuggestionsBlockListResult> getQuerySuggestionsBlockListOu
 ///   }
 /// }
 ///
-/// data "aws_kendra_getthesaurus" "example" {
+/// data "aws_kendra_thesaurus" "example" {
 ///   index_id     = "12345678-1234-1234-1234-123456789123"
 ///   thesaurus_id = "87654321-1234-4321-4321-321987654321"
 /// }

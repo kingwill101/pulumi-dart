@@ -16,7 +16,7 @@ class BucketObjectv2Args {
   final pulumi.Input<bool?>? bucketKeyEnabled;
   /// Caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
   final pulumi.Input<String?>? cacheControl;
-  /// Algorithm used to create the checksum for the object. If a value is specified and the object is encrypted with KMS, you must have permission to use the `kms:Decrypt` action. Valid values: `CRC32`, `CRC32C`, `CRC64NVME`, `SHA1`, `SHA256`.
+  /// Algorithm used to create the checksum for the object. If a value is specified and the object is encrypted with KMS, you must have permission to use the `kms:Decrypt` action. Valid values: `CRC32`, `CRC32C`, `CRC64NVME`, `SHA1`, `SHA256`, `SHA512`. Validation also accepts `MD5`, `XXHASH64`, `XXHASH3`, and `XXHASH128`, but the AWS SDK for Go does not currently calculate these checksums for uploads.
   final pulumi.Input<String?>? checksumAlgorithm;
   /// Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
   final pulumi.Input<String?>? content;
@@ -76,7 +76,7 @@ class BucketObjectv2Args {
   /// [bucket] Name of the bucket to put the file in. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified.
   /// [bucketKeyEnabled] Whether or not to use [Amazon S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html) for SSE-KMS.
   /// [cacheControl] Caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
-  /// [checksumAlgorithm] Algorithm used to create the checksum for the object. If a value is specified and the object is encrypted with KMS, you must have permission to use the `kms:Decrypt` action. Valid values: `CRC32`, `CRC32C`, `CRC64NVME`, `SHA1`, `SHA256`.
+  /// [checksumAlgorithm] Algorithm used to create the checksum for the object. If a value is specified and the object is encrypted with KMS, you must have permission to use the `kms:Decrypt` action. Valid values: `CRC32`, `CRC32C`, `CRC64NVME`, `SHA1`, `SHA256`, `SHA512`. Validation also accepts `MD5`, `XXHASH64`, `XXHASH3`, and `XXHASH128`, but the AWS SDK for Go does not currently calculate these checksums for uploads.
   /// [content] Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
   /// [contentBase64] Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
   /// [contentDisposition] Presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.

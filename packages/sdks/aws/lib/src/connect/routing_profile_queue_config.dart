@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RoutingProfileQueueConfig {
-  /// Specifies the channels agents can handle in the Contact Control Panel (CCP) for this routing profile. Valid values are `VOICE`, `CHAT`, `TASK`.
+  /// Channels agents can handle in the Contact Control Panel (CCP) for this routing profile. Valid values are `VOICE`, `CHAT`, `TASK`, and `EMAIL`.
   final pulumi.Input<String> channel;
   /// Specifies the delay, in seconds, that a contact should be in the queue before they are routed to an available agent
   final pulumi.Input<int> delay;
@@ -17,7 +17,7 @@ class RoutingProfileQueueConfig {
   final pulumi.Input<String?>? queueName;
 
   /// Creates a new [RoutingProfileQueueConfig].
-  /// [channel] Specifies the channels agents can handle in the Contact Control Panel (CCP) for this routing profile. Valid values are `VOICE`, `CHAT`, `TASK`.
+  /// [channel] Channels agents can handle in the Contact Control Panel (CCP) for this routing profile. Valid values are `VOICE`, `CHAT`, `TASK`, and `EMAIL`.
   /// [delay] Specifies the delay, in seconds, that a contact should be in the queue before they are routed to an available agent
   /// [priority] Specifies the order in which contacts are to be handled for the queue.
   /// [queueArn] ARN for the queue.

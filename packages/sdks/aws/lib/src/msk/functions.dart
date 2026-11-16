@@ -69,7 +69,7 @@ import 'get_vpc_connection_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,7 +77,7 @@ import 'get_vpc_connection_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_msk_getbootstrapbrokers" "example" {
+/// data "aws_msk_bootstrap_brokers" "example" {
 ///   cluster_arn = exampleAwsMskCluster.arn
 /// }
 /// ```
@@ -103,7 +103,7 @@ import 'get_vpc_connection_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = MskFunctions.getBootstrapBrokers(GetBootstrapBrokersArgs.builder()
-///             .clusterArn(exampleAwsMskCluster.arn())
+///             .clusterArn(exampleAwsMskCluster.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -198,7 +198,7 @@ pulumi.Output<GetBootstrapBrokersResult> getBootstrapBrokersOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -206,7 +206,7 @@ pulumi.Output<GetBootstrapBrokersResult> getBootstrapBrokersOutput(
 ///   }
 /// }
 ///
-/// data "aws_msk_getbrokernodes" "example" {
+/// data "aws_msk_broker_nodes" "example" {
 ///   cluster_arn = exampleAwsMskCluster.arn
 /// }
 /// ```
@@ -232,7 +232,7 @@ pulumi.Output<GetBootstrapBrokersResult> getBootstrapBrokersOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = MskFunctions.getBrokerNodes(GetBrokerNodesArgs.builder()
-///             .clusterArn(exampleAwsMskCluster.arn())
+///             .clusterArn(exampleAwsMskCluster.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -329,7 +329,7 @@ pulumi.Output<GetBrokerNodesResult> getBrokerNodesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -337,7 +337,7 @@ pulumi.Output<GetBrokerNodesResult> getBrokerNodesOutput(
 ///   }
 /// }
 ///
-/// data "aws_msk_getcluster" "example" {
+/// data "aws_msk_cluster" "example" {
 ///   cluster_name = "example"
 /// }
 /// ```
@@ -458,7 +458,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -466,7 +466,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 ///   }
 /// }
 ///
-/// data "aws_msk_getconfiguration" "example" {
+/// data "aws_msk_configuration" "example" {
 ///   name = "example"
 /// }
 /// ```
@@ -619,7 +619,7 @@ pulumi.Output<GetConfigurationResult> getConfigurationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -627,10 +627,10 @@ pulumi.Output<GetConfigurationResult> getConfigurationOutput(
 ///   }
 /// }
 ///
-/// data "aws_msk_getkafkaversion" "preferred" {
+/// data "aws_msk_kafka_version" "preferred" {
 ///   preferred_versions = ["2.4.1.1", "2.4.1", "2.2.1"]
 /// }
-/// data "aws_msk_getkafkaversion" "example" {
+/// data "aws_msk_kafka_version" "example" {
 ///   version = "2.8.0"
 /// }
 /// ```
@@ -770,7 +770,7 @@ pulumi.Output<GetKafkaVersionResult> getKafkaVersionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -778,7 +778,7 @@ pulumi.Output<GetKafkaVersionResult> getKafkaVersionOutput(
 ///   }
 /// }
 ///
-/// data "aws_msk_gettopic" "example" {
+/// data "aws_msk_topic" "example" {
 ///   cluster_arn = exampleAwsMskCluster.arn
 ///   name        = "example"
 /// }
@@ -805,7 +805,7 @@ pulumi.Output<GetKafkaVersionResult> getKafkaVersionOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = MskFunctions.getTopic(GetTopicArgs.builder()
-///             .clusterArn(exampleAwsMskCluster.arn())
+///             .clusterArn(exampleAwsMskCluster.get("arn"))
 ///             .name("example")
 ///             .build());
 ///
@@ -902,7 +902,7 @@ pulumi.Output<GetTopicResult> getTopicOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -910,7 +910,7 @@ pulumi.Output<GetTopicResult> getTopicOutput(
 ///   }
 /// }
 ///
-/// data "aws_msk_getvpcconnection" "example" {
+/// data "aws_msk_vpc_connection" "example" {
 ///   arn = exampleAwsMskVpcConnection.arn
 /// }
 /// ```
@@ -936,7 +936,7 @@ pulumi.Output<GetTopicResult> getTopicOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = MskFunctions.getVpcConnection(GetVpcConnectionArgs.builder()
-///             .arn(exampleAwsMskVpcConnection.arn())
+///             .arn(exampleAwsMskVpcConnection.get("arn"))
 ///             .build());
 ///
 ///     }

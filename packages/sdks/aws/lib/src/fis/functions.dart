@@ -63,7 +63,7 @@ import 'get_experiment_templates_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,11 +71,11 @@ import 'get_experiment_templates_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_fis_getexperimenttemplates" "all" {
+/// data "aws_fis_experiment_templates" "all" {
 /// }
 ///
 /// output "all" {
-///   value = data.aws_fis_getexperimenttemplates.all.ids
+///   value = data.aws_fis_experiment_templates.all.ids
 /// }
 /// ```
 /// ```java
@@ -245,7 +245,7 @@ import 'get_experiment_templates_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -253,18 +253,18 @@ import 'get_experiment_templates_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_fis_getexperimenttemplates" "example" {
+/// data "aws_fis_experiment_templates" "example" {
 ///   tags = {
 ///     "Name" = "example"
 ///     "Tier" = 1
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "exampleGetPolicyDocument" {
-///   statements {
+/// data "aws_iam_policy_document" "exampleGetPolicyDocument" {
+///   statement {
 ///     sid       = "StartFISExperiment"
 ///     effect    = "Allow"
 ///     actions   = ["fis:StartExperiment"]
-///     resources = ["arn:aws:fis:*:*:experiment-template/${data.aws_fis_getexperimenttemplates.example.ids[0]}", "arn:aws:fis:*:*:experiment/*"]
+///     resources = ["arn:aws:fis:*:*:experiment-template/${data.aws_fis_experiment_templates.example.ids[0]}", "arn:aws:fis:*:*:experiment/*"]
 ///   }
 /// }
 /// ```

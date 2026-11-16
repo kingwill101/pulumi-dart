@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebhookScopeConfiguration {
   /// The domain of the GitHub Enterprise organization. Required if your project's source type is GITHUB_ENTERPRISE.
   final pulumi.Input<String?>? domain;
-  /// The name of either the enterprise or organization.
+  /// Name of the enterprise, organization, or GitLab group.
   final pulumi.Input<String> name;
-  /// The type of scope for a GitHub webhook. Valid values for this parameter are: `GITHUB_ORGANIZATION`, `GITHUB_GLOBAL`.
+  /// Scope of the webhook. Valid values: `GITHUB_ORGANIZATION`, `GITHUB_GLOBAL`, `GITLAB_GROUP`.
   final pulumi.Input<String> scope;
 
   /// Creates a new [WebhookScopeConfiguration].
   /// [domain] The domain of the GitHub Enterprise organization. Required if your project's source type is GITHUB_ENTERPRISE.
-  /// [name] The name of either the enterprise or organization.
-  /// [scope] The type of scope for a GitHub webhook. Valid values for this parameter are: `GITHUB_ORGANIZATION`, `GITHUB_GLOBAL`.
+  /// [name] Name of the enterprise, organization, or GitLab group.
+  /// [scope] Scope of the webhook. Valid values: `GITHUB_ORGANIZATION`, `GITHUB_GLOBAL`, `GITLAB_GROUP`.
   const WebhookScopeConfiguration({
     this.domain,
     required this.name,

@@ -92,7 +92,7 @@ import 'get_application_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -100,15 +100,18 @@ import 'get_application_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_serverlessrepository_getapplication" "example" {
+/// data "aws_serverlessrepository_application" "example" {
 ///   application_id = "arn:aws:serverlessrepo:us-east-1:123456789012:applications/ExampleApplication"
 /// }
 ///
-/// resource "aws_serverlessrepository_cloudformationstack" "example" {
+/// resource "aws_serverlessrepository_cloud_formation_stack" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "Example"
-///   application_id   = data.aws_serverlessrepository_getapplication.example.application_id
-///   semantic_version = data.aws_serverlessrepository_getapplication.example.semantic_version
-///   capabilities     = data.aws_serverlessrepository_getapplication.example.required_capabilities
+///   application_id   = data.aws_serverlessrepository_application.example.application_id
+///   semantic_version = data.aws_serverlessrepository_application.example.semantic_version
+///   capabilities     = data.aws_serverlessrepository_application.example.required_capabilities
 /// }
 /// ```
 /// ```java

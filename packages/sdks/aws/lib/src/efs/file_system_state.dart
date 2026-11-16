@@ -20,9 +20,9 @@ class FileSystemState {
   final pulumi.Input<String?>? creationToken;
   /// The DNS name for the filesystem per [documented convention](http://docs.aws.amazon.com/efs/latest/ug/mounting-fs-mount-cmd-dns-name.html).
   final pulumi.Input<String?>? dnsName;
-  /// If true, the disk will be encrypted.
+  /// Whether the file system is encrypted at rest. Defaults to `true`. AWS encrypts all new file systems regardless of this value. Encryption at rest [cannot be changed after the file system is created](https://docs.aws.amazon.com/efs/latest/ug/encryption-at-rest.html). Changing an existing unencrypted file system from `false` to `true` forces replacement; changing `true` to `false` is ignored.
   final pulumi.Input<bool?>? encrypted;
-  /// The ARN for the KMS encryption key. When specifying kms_key_id, encrypted needs to be set to true.
+  /// ARN of the KMS encryption key. Cannot be specified when `encrypted` is explicitly set to `false`.
   final pulumi.Input<String?>? kmsKeyId;
   /// A file system [lifecycle policy](https://docs.aws.amazon.com/efs/latest/ug/API_LifecyclePolicy.html) object. See `lifecyclePolicy` block below for details.
   final pulumi.Input<List<FileSystemLifecyclePolicy>?>? lifecyclePolicies;
@@ -55,8 +55,8 @@ class FileSystemState {
   /// [availabilityZoneName] the AWS Availability Zone in which to create the file system. Used to create a file system that uses One Zone storage classes. See [user guide](https://docs.aws.amazon.com/efs/latest/ug/availability-durability.html) for more information.
   /// [creationToken] A unique name (a maximum of 64 characters are allowed)
   /// [dnsName] The DNS name for the filesystem per [documented convention](http://docs.aws.amazon.com/efs/latest/ug/mounting-fs-mount-cmd-dns-name.html).
-  /// [encrypted] If true, the disk will be encrypted.
-  /// [kmsKeyId] The ARN for the KMS encryption key. When specifying kms_key_id, encrypted needs to be set to true.
+  /// [encrypted] Whether the file system is encrypted at rest. Defaults to `true`. AWS encrypts all new file systems regardless of this value. Encryption at rest [cannot be changed after the file system is created](https://docs.aws.amazon.com/efs/latest/ug/encryption-at-rest.html). Changing an existing unencrypted file system from `false` to `true` forces replacement; changing `true` to `false` is ignored.
+  /// [kmsKeyId] ARN of the KMS encryption key. Cannot be specified when `encrypted` is explicitly set to `false`.
   /// [lifecyclePolicies] A file system [lifecycle policy](https://docs.aws.amazon.com/efs/latest/ug/API_LifecyclePolicy.html) object. See `lifecyclePolicy` block below for details.
   /// [name] The value of the file system's `Name` tag.
   /// [numberOfMountTargets] The current number of mount targets that the file system has.

@@ -67,7 +67,7 @@ import 'get_theme_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,7 +75,7 @@ import 'get_theme_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_quicksight_getdataset" "example" {
+/// data "aws_quicksight_data_set" "example" {
 ///   data_set_id = "example-id"
 /// }
 /// ```
@@ -198,7 +198,7 @@ pulumi.Output<GetDataSetResult> getDataSetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -206,7 +206,7 @@ pulumi.Output<GetDataSetResult> getDataSetOutput(
 ///   }
 /// }
 ///
-/// data "aws_quicksight_getquicksightanalysis" "example" {
+/// data "aws_quicksight_quicksight_analysis" "example" {
 ///   analysis_id = "example-id"
 /// }
 /// ```
@@ -331,7 +331,7 @@ pulumi.Output<GetQuicksightAnalysisResult> getQuicksightAnalysisOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -339,7 +339,7 @@ pulumi.Output<GetQuicksightAnalysisResult> getQuicksightAnalysisOutput(
 ///   }
 /// }
 ///
-/// data "aws_quicksight_getquicksightgroup" "example" {
+/// data "aws_quicksight_quicksight_group" "example" {
 ///   group_name = "example"
 /// }
 /// ```
@@ -464,7 +464,7 @@ pulumi.Output<GetQuicksightGroupResult> getQuicksightGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -472,7 +472,7 @@ pulumi.Output<GetQuicksightGroupResult> getQuicksightGroupOutput(
 ///   }
 /// }
 ///
-/// data "aws_quicksight_getquicksightuser" "example" {
+/// data "aws_quicksight_quicksight_user" "example" {
 ///   user_name = "example"
 /// }
 /// ```
@@ -595,7 +595,7 @@ pulumi.Output<GetQuicksightUserResult> getQuicksightUserOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -603,7 +603,7 @@ pulumi.Output<GetQuicksightUserResult> getQuicksightUserOutput(
 ///   }
 /// }
 ///
-/// data "aws_quicksight_gettheme" "example" {
+/// data "aws_quicksight_theme" "example" {
 ///   theme_id = "example"
 /// }
 /// ```

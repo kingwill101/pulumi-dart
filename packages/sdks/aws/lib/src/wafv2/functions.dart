@@ -69,7 +69,7 @@ import 'get_web_acl_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,7 +77,7 @@ import 'get_web_acl_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_wafv2_getipset" "example" {
+/// data "aws_wafv2_ip_set" "example" {
 ///   name  = "some-ip-set"
 ///   scope = "REGIONAL"
 /// }
@@ -209,7 +209,7 @@ pulumi.Output<GetIpSetResult> getIpSetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -217,7 +217,7 @@ pulumi.Output<GetIpSetResult> getIpSetOutput(
 ///   }
 /// }
 ///
-/// data "aws_wafv2_getmanagedrulegroup" "example" {
+/// data "aws_wafv2_managed_rule_group" "example" {
 ///   name        = "AWSManagedRulesCommonRuleSet"
 ///   scope       = "REGIONAL"
 ///   vendor_name = "AWS"
@@ -348,7 +348,7 @@ pulumi.Output<GetManagedRuleGroupResult> getManagedRuleGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -356,7 +356,7 @@ pulumi.Output<GetManagedRuleGroupResult> getManagedRuleGroupOutput(
 ///   }
 /// }
 ///
-/// data "aws_wafv2_getregexpatternset" "example" {
+/// data "aws_wafv2_regex_pattern_set" "example" {
 ///   name  = "some-regex-pattern-set"
 ///   scope = "REGIONAL"
 /// }
@@ -484,7 +484,7 @@ pulumi.Output<GetRegexPatternSetResult> getRegexPatternSetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -492,7 +492,7 @@ pulumi.Output<GetRegexPatternSetResult> getRegexPatternSetOutput(
 ///   }
 /// }
 ///
-/// data "aws_wafv2_getrulegroup" "example" {
+/// data "aws_wafv2_rule_group" "example" {
 ///   name  = "some-rule-group"
 ///   scope = "REGIONAL"
 /// }

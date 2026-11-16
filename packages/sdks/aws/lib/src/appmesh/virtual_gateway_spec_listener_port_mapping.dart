@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualGatewaySpecListenerPortMapping {
   /// Port used for the port mapping.
   final pulumi.Input<int> port;
-  /// Protocol used for the port mapping. Valid values are `http`, `http2`, `tcp` and `grpc`.
+  /// Protocol used for the port mapping. Valid values are `http`, `http2`, and `grpc`.
   final pulumi.Input<String> protocol;
 
   /// Creates a new [VirtualGatewaySpecListenerPortMapping].
   /// [port] Port used for the port mapping.
-  /// [protocol] Protocol used for the port mapping. Valid values are `http`, `http2`, `tcp` and `grpc`.
+  /// [protocol] Protocol used for the port mapping. Valid values are `http`, `http2`, and `grpc`.
   const VirtualGatewaySpecListenerPortMapping({
     required this.port,
     required this.protocol,

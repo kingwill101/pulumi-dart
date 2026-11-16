@@ -57,7 +57,7 @@ import 'get_queue_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,7 +65,7 @@ import 'get_queue_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_mediaconvert_getqueue" "example" {
+/// data "aws_mediaconvert_queue" "example" {
 ///   id = "tf-example-queue"
 /// }
 /// ```

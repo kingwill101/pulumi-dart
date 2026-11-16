@@ -16,6 +16,7 @@ import 'plan_workflow_step_neptune_global_database_config.dart';
 import 'plan_workflow_step_parallel_config.dart';
 import 'plan_workflow_step_rds_create_cross_region_read_replica_config.dart';
 import 'plan_workflow_step_rds_promote_read_replica_config.dart';
+import 'plan_workflow_step_rds_switchover_read_replica_config.dart';
 import 'plan_workflow_step_region_switch_plan_config.dart';
 import 'plan_workflow_step_route53_health_check_config.dart';
 
@@ -40,7 +41,7 @@ class PlanWorkflowStep {
   final pulumi.Input<List<PlanWorkflowStepEksResourceScalingConfig>?>? eksResourceScalingConfigs;
   /// Configuration for manual approval steps. See `executionApprovalConfig` Block for details.
   final pulumi.Input<List<PlanWorkflowStepExecutionApprovalConfig>?>? executionApprovalConfigs;
-  /// Type of execution block. Valid values: `ARCRegionSwitchPlan`, `ARCRoutingControl`, `AuroraGlobalDatabase`, `CustomActionLambda`, `DocumentDb`, `EC2AutoScaling`, `ECSServiceScaling`, `EKSResourceScaling`, `ManualApproval`, `Parallel`, `RdsCreateCrossRegionReplica`, `RdsPromoteReadReplica`, `Route53HealthCheck`.
+  /// Type of execution block. Valid values: `ARCRegionSwitchPlan`, `ARCRoutingControl`, `AuroraGlobalDatabase`, `CustomActionLambda`, `DocumentDb`, `EC2AutoScaling`, `ECSServiceScaling`, `EKSResourceScaling`, `ManualApproval`, `Parallel`, `RdsCreateCrossRegionReplica`, `RdsPromoteReadReplica`, `RdsSwitchoverReadReplica`, `Route53HealthCheck`.
   final pulumi.Input<String> executionBlockType;
   /// Configuration for Aurora Global Database operations. See `globalAuroraConfig` Block for details.
   final pulumi.Input<List<PlanWorkflowStepGlobalAuroraConfig>?>? globalAuroraConfigs;
@@ -56,6 +57,8 @@ class PlanWorkflowStep {
   final pulumi.Input<List<PlanWorkflowStepRdsCreateCrossRegionReadReplicaConfig>?>? rdsCreateCrossRegionReadReplicaConfigs;
   /// Configuration for promoting RDS read replicas. See `rdsPromoteReadReplicaConfig` Block for details.
   final pulumi.Input<List<PlanWorkflowStepRdsPromoteReadReplicaConfig>?>? rdsPromoteReadReplicaConfigs;
+  /// Configuration for switching over RDS read replicas. See `rdsSwitchoverReadReplicaConfig` Block for details.
+  final pulumi.Input<PlanWorkflowStepRdsSwitchoverReadReplicaConfig?>? rdsSwitchoverReadReplicaConfig;
   /// Configuration for executing a nested region switch plan. See `regionSwitchPlanConfig` Block for details.
   final pulumi.Input<List<PlanWorkflowStepRegionSwitchPlanConfig>?>? regionSwitchPlanConfigs;
   /// Configuration for Route53 health check operations. See `route53HealthCheckConfig` Block for details.
@@ -72,7 +75,7 @@ class PlanWorkflowStep {
   /// [ecsCapacityIncreaseConfigs] Configuration for ECS service capacity increase. See `ecsCapacityIncreaseConfig` Block for details.
   /// [eksResourceScalingConfigs] Configuration for EKS resource scaling. See `eksResourceScalingConfig` Block for details.
   /// [executionApprovalConfigs] Configuration for manual approval steps. See `executionApprovalConfig` Block for details.
-  /// [executionBlockType] Type of execution block. Valid values: `ARCRegionSwitchPlan`, `ARCRoutingControl`, `AuroraGlobalDatabase`, `CustomActionLambda`, `DocumentDb`, `EC2AutoScaling`, `ECSServiceScaling`, `EKSResourceScaling`, `ManualApproval`, `Parallel`, `RdsCreateCrossRegionReplica`, `RdsPromoteReadReplica`, `Route53HealthCheck`.
+  /// [executionBlockType] Type of execution block. Valid values: `ARCRegionSwitchPlan`, `ARCRoutingControl`, `AuroraGlobalDatabase`, `CustomActionLambda`, `DocumentDb`, `EC2AutoScaling`, `ECSServiceScaling`, `EKSResourceScaling`, `ManualApproval`, `Parallel`, `RdsCreateCrossRegionReplica`, `RdsPromoteReadReplica`, `RdsSwitchoverReadReplica`, `Route53HealthCheck`.
   /// [globalAuroraConfigs] Configuration for Aurora Global Database operations. See `globalAuroraConfig` Block for details.
   /// [lambdaEventSourceMappingConfigs] Configuration for Lambda event source mapping operations. See `lambdaEventSourceMappingConfig` Block for details.
   /// [name] Name of the plan. Must be unique within the account.
@@ -80,6 +83,7 @@ class PlanWorkflowStep {
   /// [parallelConfigs] Configuration for parallel execution of multiple steps. See `parallelConfig` Block for details.
   /// [rdsCreateCrossRegionReadReplicaConfigs] Configuration for creating cross-region RDS read replicas. See `rdsCreateCrossRegionReadReplicaConfig` Block for details.
   /// [rdsPromoteReadReplicaConfigs] Configuration for promoting RDS read replicas. See `rdsPromoteReadReplicaConfig` Block for details.
+  /// [rdsSwitchoverReadReplicaConfig] Configuration for switching over RDS read replicas. See `rdsSwitchoverReadReplicaConfig` Block for details.
   /// [regionSwitchPlanConfigs] Configuration for executing a nested region switch plan. See `regionSwitchPlanConfig` Block for details.
   /// [route53HealthCheckConfigs] Configuration for Route53 health check operations. See `route53HealthCheckConfig` Block for details.
   const PlanWorkflowStep({
@@ -101,6 +105,7 @@ class PlanWorkflowStep {
     this.parallelConfigs,
     this.rdsCreateCrossRegionReadReplicaConfigs,
     this.rdsPromoteReadReplicaConfigs,
+    this.rdsSwitchoverReadReplicaConfig,
     this.regionSwitchPlanConfigs,
     this.route53HealthCheckConfigs,
   });
@@ -125,6 +130,7 @@ class PlanWorkflowStep {
       'parallelConfigs': ?pulumi.Input.mapOptionalInputValue<List<PlanWorkflowStepParallelConfig>, List<Map<String, dynamic>>>(parallelConfigs, (value) => pulumi.Input.encodeList<PlanWorkflowStepParallelConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'rdsCreateCrossRegionReadReplicaConfigs': ?pulumi.Input.mapOptionalInputValue<List<PlanWorkflowStepRdsCreateCrossRegionReadReplicaConfig>, List<Map<String, dynamic>>>(rdsCreateCrossRegionReadReplicaConfigs, (value) => pulumi.Input.encodeList<PlanWorkflowStepRdsCreateCrossRegionReadReplicaConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'rdsPromoteReadReplicaConfigs': ?pulumi.Input.mapOptionalInputValue<List<PlanWorkflowStepRdsPromoteReadReplicaConfig>, List<Map<String, dynamic>>>(rdsPromoteReadReplicaConfigs, (value) => pulumi.Input.encodeList<PlanWorkflowStepRdsPromoteReadReplicaConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rdsSwitchoverReadReplicaConfig': ?pulumi.Input.mapOptionalInputValue<PlanWorkflowStepRdsSwitchoverReadReplicaConfig, Map<String, dynamic>>(rdsSwitchoverReadReplicaConfig, (value) => value.toMap()),
       'regionSwitchPlanConfigs': ?pulumi.Input.mapOptionalInputValue<List<PlanWorkflowStepRegionSwitchPlanConfig>, List<Map<String, dynamic>>>(regionSwitchPlanConfigs, (value) => pulumi.Input.encodeList<PlanWorkflowStepRegionSwitchPlanConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'route53HealthCheckConfigs': ?pulumi.Input.mapOptionalInputValue<List<PlanWorkflowStepRoute53HealthCheckConfig>, List<Map<String, dynamic>>>(route53HealthCheckConfigs, (value) => pulumi.Input.encodeList<PlanWorkflowStepRoute53HealthCheckConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
@@ -150,6 +156,7 @@ class PlanWorkflowStep {
       parallelConfigs: (() { final guardedValue = map['parallelConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepParallelConfig>(guardedValue, (value) => PlanWorkflowStepParallelConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       rdsCreateCrossRegionReadReplicaConfigs: (() { final guardedValue = map['rdsCreateCrossRegionReadReplicaConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepRdsCreateCrossRegionReadReplicaConfig>(guardedValue, (value) => PlanWorkflowStepRdsCreateCrossRegionReadReplicaConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       rdsPromoteReadReplicaConfigs: (() { final guardedValue = map['rdsPromoteReadReplicaConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepRdsPromoteReadReplicaConfig>(guardedValue, (value) => PlanWorkflowStepRdsPromoteReadReplicaConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      rdsSwitchoverReadReplicaConfig: (() { final guardedValue = map['rdsSwitchoverReadReplicaConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PlanWorkflowStepRdsSwitchoverReadReplicaConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       regionSwitchPlanConfigs: (() { final guardedValue = map['regionSwitchPlanConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepRegionSwitchPlanConfig>(guardedValue, (value) => PlanWorkflowStepRegionSwitchPlanConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       route53HealthCheckConfigs: (() { final guardedValue = map['route53HealthCheckConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepRoute53HealthCheckConfig>(guardedValue, (value) => PlanWorkflowStepRoute53HealthCheckConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

@@ -89,7 +89,7 @@ class GetEbsVolumesFilter {
   /// }
   /// ```
   /// ```hcl
-  /// pulumi {
+  /// terraform {
   ///   required_providers {
   ///     aws = {
   ///       source = "pulumi/aws"
@@ -97,7 +97,7 @@ class GetEbsVolumesFilter {
   ///   }
   /// }
   ///
-  /// data "aws_ebs_getebsvolumes" "tenOrTwentyGbVolumes" {
+  /// data "aws_ebs_ebs_volumes" "tenOrTwentyGbVolumes" {
   ///   filters {
   ///     name   = "size"
   ///     values = ["10", "20"]

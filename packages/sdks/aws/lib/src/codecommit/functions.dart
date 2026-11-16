@@ -59,7 +59,7 @@ import 'get_repository_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,7 @@ import 'get_repository_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_codecommit_getapprovalruletemplate" "example" {
+/// data "aws_codecommit_approval_rule_template" "example" {
 ///   name = "MyExampleApprovalRuleTemplate"
 /// }
 /// ```
@@ -188,7 +188,7 @@ pulumi.Output<GetApprovalRuleTemplateResult> getApprovalRuleTemplateOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -196,7 +196,7 @@ pulumi.Output<GetApprovalRuleTemplateResult> getApprovalRuleTemplateOutput(
 ///   }
 /// }
 ///
-/// data "aws_codecommit_getrepository" "test" {
+/// data "aws_codecommit_repository" "test" {
 ///   repository_name = "MyTestRepository"
 /// }
 /// ```

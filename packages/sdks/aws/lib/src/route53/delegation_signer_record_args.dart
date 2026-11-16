@@ -12,7 +12,7 @@ class DelegationSignerRecordArgs {
   /// The name of the domain that will have its parent DNS zone updated with the Delegation Signer record.
   final pulumi.Input<String> domainName;
   /// The information about a key, including the algorithm, public key-value, and flags.
-  final pulumi.Input<DelegationSignerRecordSigningAttributes?>? signingAttributes;
+  final pulumi.Input<DelegationSignerRecordSigningAttributes> signingAttributes;
   final pulumi.Input<DelegationSignerRecordTimeouts?>? timeouts;
 
   /// Creates a new [DelegationSignerRecordArgs].
@@ -21,14 +21,14 @@ class DelegationSignerRecordArgs {
   /// [timeouts] Optional.
   const DelegationSignerRecordArgs({
     required this.domainName,
-    this.signingAttributes,
+    required this.signingAttributes,
     this.timeouts,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'domainName': domainName,
-      'signingAttributes': ?pulumi.Input.mapOptionalInputValue<DelegationSignerRecordSigningAttributes, Map<String, dynamic>>(signingAttributes, (value) => value.toMap()),
+      'signingAttributes': pulumi.Input.mapInputValue<DelegationSignerRecordSigningAttributes, Map<String, dynamic>>(signingAttributes, (value) => value.toMap()),
       'timeouts': ?pulumi.Input.mapOptionalInputValue<DelegationSignerRecordTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
@@ -36,7 +36,7 @@ class DelegationSignerRecordArgs {
   factory DelegationSignerRecordArgs.fromMap(Map<String, dynamic> map) {
     return DelegationSignerRecordArgs(
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
-      signingAttributes: (() { final guardedValue = map['signingAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DelegationSignerRecordSigningAttributes.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      signingAttributes: pulumi.Input.fromValue(DelegationSignerRecordSigningAttributes.fromMap((map['signingAttributes']! as Map).cast<String, dynamic>())),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DelegationSignerRecordTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlanWorkflowStepParallelConfigStepRdsCreateCrossRegionReadReplicaConfig {
   /// ARN of the cross-account role to assume.
   final pulumi.Input<String?>? crossAccountRole;
-  /// Map of source DB instance identifiers to target DB instance ARNs.
+  /// Map of regions to DB instance ARNs. Provide an ARN for each region in the plan.
   final pulumi.Input<Map<String, String>> dbInstanceArnMap;
   /// External ID for cross-account role assumption.
   final pulumi.Input<String?>? externalId;
@@ -14,7 +14,7 @@ class PlanWorkflowStepParallelConfigStepRdsCreateCrossRegionReadReplicaConfig {
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepRdsCreateCrossRegionReadReplicaConfig].
   /// [crossAccountRole] ARN of the cross-account role to assume.
-  /// [dbInstanceArnMap] Map of source DB instance identifiers to target DB instance ARNs.
+  /// [dbInstanceArnMap] Map of regions to DB instance ARNs. Provide an ARN for each region in the plan.
   /// [externalId] External ID for cross-account role assumption.
   /// [timeoutMinutes] Timeout in minutes.
   const PlanWorkflowStepParallelConfigStepRdsCreateCrossRegionReadReplicaConfig({

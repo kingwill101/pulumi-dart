@@ -42,7 +42,7 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatement {
   final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatement?>? sqliMatchStatement;
   /// Match requests that appear to contain cross-site scripting attacks.
   ///
-  /// &gt; **NOTE:** Logical statements (`andStatement`, `notStatement`, `orStatement`) within a scope down statement wrap the leaf statement types listed above.
+  /// &gt; **NOTE:** Logical statements (`andStatement`, `notStatement`, `orStatement`) can be nested up to 2 levels deep. This matches the nesting limit of the `aws.wafv2.WebAcl` resource.
   final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatement?>? xssMatchStatement;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementScopeDownStatement].

@@ -28,6 +28,8 @@ class ComputeEnvironmentArgs {
   final pulumi.Input<Map<String, String>?>? tags;
   /// Type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
   final pulumi.Input<String> type;
+  /// Number of vCPUs for an unmanaged compute environment. This parameter is only used for fair-share scheduling to ensure that each compute environment has the correct number of vCPUs when it is used in a fair-share job queue. Only valid when `type` is `UNMANAGED`.
+  final pulumi.Input<int?>? unmanagedVcpus;
   /// Infrastructure update policy for the compute environment. See details below.
   final pulumi.Input<ComputeEnvironmentUpdatePolicy?>? updatePolicy;
 
@@ -41,6 +43,7 @@ class ComputeEnvironmentArgs {
   /// [state] State of the compute environment. If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues. Valid items are `ENABLED` or `DISABLED`. Defaults to `ENABLED`.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] Type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
+  /// [unmanagedVcpus] Number of vCPUs for an unmanaged compute environment. This parameter is only used for fair-share scheduling to ensure that each compute environment has the correct number of vCPUs when it is used in a fair-share job queue. Only valid when `type` is `UNMANAGED`.
   /// [updatePolicy] Infrastructure update policy for the compute environment. See details below.
   const ComputeEnvironmentArgs({
     this.computeResources,
@@ -52,6 +55,7 @@ class ComputeEnvironmentArgs {
     this.state,
     this.tags,
     required this.type,
+    this.unmanagedVcpus,
     this.updatePolicy,
   });
 
@@ -66,6 +70,7 @@ class ComputeEnvironmentArgs {
       'state': ?state,
       'tags': ?tags,
       'type': type,
+      'unmanagedVcpus': ?unmanagedVcpus,
       'updatePolicy': ?pulumi.Input.mapOptionalInputValue<ComputeEnvironmentUpdatePolicy, Map<String, dynamic>>(updatePolicy, (value) => value.toMap()),
     };
   }
@@ -81,6 +86,7 @@ class ComputeEnvironmentArgs {
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
+      unmanagedVcpus: (() { final guardedValue = map['unmanagedVcpus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       updatePolicy: (() { final guardedValue = map['updatePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ComputeEnvironmentUpdatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

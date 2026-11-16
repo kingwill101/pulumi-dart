@@ -45,7 +45,7 @@ class GetFunctionResult {
   final String? imageUri;
   /// ARN to be used for invoking Lambda Function from API Gateway. **Note:** Starting with `v4.51.0` of the provider, this will not include the qualifier.
   final String? invokeArn;
-  /// ARN for the KMS encryption key.
+  /// ARN of the KMS key used to encrypt the durable function's execution state.
   final String? kmsKeyArn;
   /// Date this resource was last modified.
   final String? lastModified;
@@ -109,7 +109,7 @@ class GetFunctionResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [imageUri] URI of the container image.
   /// [invokeArn] ARN to be used for invoking Lambda Function from API Gateway. **Note:** Starting with `v4.51.0` of the provider, this will not include the qualifier.
-  /// [kmsKeyArn] ARN for the KMS encryption key.
+  /// [kmsKeyArn] ARN of the KMS key used to encrypt the durable function's execution state.
   /// [lastModified] Date this resource was last modified.
   /// [layers] List of Lambda Layer ARNs attached to your Lambda Function.
   /// [loggingConfigs] Advanced logging settings. See `loggingConfig` below.

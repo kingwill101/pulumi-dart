@@ -66,7 +66,7 @@ import 'get_repository_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,7 @@ import 'get_repository_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_ecr_getauthorizationtoken" "token" {
+/// data "aws_ecr_authorization_token" "token" {
 /// }
 /// ```
 /// ```java
@@ -222,7 +222,7 @@ pulumi.Output<GetCredentialsResult> getCredentialsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -230,7 +230,7 @@ pulumi.Output<GetCredentialsResult> getCredentialsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ecr_getimage" "serviceImage" {
+/// data "aws_ecr_image" "serviceImage" {
 ///   repository_name = "my/service"
 ///   image_tag       = "latest"
 /// }
@@ -349,7 +349,7 @@ pulumi.Output<GetImageResult> getImageOutput(
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -357,15 +357,15 @@ pulumi.Output<GetImageResult> getImageOutput(
 ///   }
 /// }
 ///
-/// data "aws_ecr_getimages" "example" {
+/// data "aws_ecr_images" "example" {
 ///   repository_name = "my-repository"
 /// }
 ///
 /// output "imageDigests" {
-///   value = [for img in data.aws_ecr_getimages.example.image_ids : img.imageDigest if img.imageDigest != null]
+///   value = [for img in data.aws_ecr_images.example.image_ids : img.imageDigest if img.imageDigest != null]
 /// }
 /// output "imageTags" {
-///   value = [for img in data.aws_ecr_getimages.example.image_ids : img.imageTag if img.imageTag != null]
+///   value = [for img in data.aws_ecr_images.example.image_ids : img.imageTag if img.imageTag != null]
 /// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ecr_get_images_get_images_args_doc}
@@ -519,7 +519,7 @@ pulumi.Output<GetImagesResult> getImagesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -527,22 +527,25 @@ pulumi.Output<GetImagesResult> getImagesOutput(
 ///   }
 /// }
 ///
-/// data "aws_ecr_getlifecyclepolicydocument" "example" {
-///   rules {
-///     selection = {
-///       tag_status       = "tagged"
-///       tag_prefix_lists = ["prod"]
-///       count_type       = "imageCountMoreThan"
-///       count_number     = 100
+/// data "aws_ecr_lifecycle_policy_document" "example" {
+///   rule {
+///     selection {
+///       tag_status      = "tagged"
+///       tag_prefix_list = ["prod"]
+///       count_type      = "imageCountMoreThan"
+///       count_number    = 100
 ///     }
 ///     priority    = 1
 ///     description = "This is a test."
 ///   }
 /// }
 ///
-/// resource "aws_ecr_lifecyclepolicy" "example" {
+/// resource "aws_ecr_lifecycle_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   repository = exampleAwsEcrRepository.name
-///   policy     = data.aws_ecr_getlifecyclepolicydocument.example.json
+///   policy     = data.aws_ecr_lifecycle_policy_document.example.json
 /// }
 /// ```
 /// ```java
@@ -584,7 +587,7 @@ pulumi.Output<GetImagesResult> getImagesOutput(
 ///             .build());
 ///
 ///         var exampleLifecyclePolicy = new LifecyclePolicy("exampleLifecyclePolicy", LifecyclePolicyArgs.builder()
-///             .repository(exampleAwsEcrRepository.name())
+///             .repository(exampleAwsEcrRepository.get("name"))
 ///             .policy(example.json())
 ///             .build());
 ///
@@ -695,7 +698,7 @@ pulumi.Output<GetLifecyclePolicyDocumentResult> getLifecyclePolicyDocumentOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -703,7 +706,7 @@ pulumi.Output<GetLifecyclePolicyDocumentResult> getLifecyclePolicyDocumentOutput
 ///   }
 /// }
 ///
-/// data "aws_ecr_getpullthroughcacherule" "ecrPublic" {
+/// data "aws_ecr_pull_through_cache_rule" "ecrPublic" {
 ///   ecr_repository_prefix = "ecr-public"
 /// }
 /// ```
@@ -819,7 +822,7 @@ pulumi.Output<GetPullThroughCacheRuleResult> getPullThroughCacheRuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -827,7 +830,7 @@ pulumi.Output<GetPullThroughCacheRuleResult> getPullThroughCacheRuleOutput(
 ///   }
 /// }
 ///
-/// data "aws_ecr_getrepositories" "example" {
+/// data "aws_ecr_repositories" "example" {
 /// }
 /// ```
 /// ```java
@@ -945,7 +948,7 @@ pulumi.Output<GetRepositoriesResult> getRepositoriesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -953,7 +956,7 @@ pulumi.Output<GetRepositoriesResult> getRepositoriesOutput(
 ///   }
 /// }
 ///
-/// data "aws_ecr_getrepository" "service" {
+/// data "aws_ecr_repository" "service" {
 ///   name = "ecr-repository"
 /// }
 /// ```
@@ -1074,7 +1077,7 @@ pulumi.Output<GetRepositoryResult> getRepositoryOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1082,7 +1085,7 @@ pulumi.Output<GetRepositoryResult> getRepositoryOutput(
 ///   }
 /// }
 ///
-/// data "aws_ecr_getrepositorycreationtemplate" "example" {
+/// data "aws_ecr_repository_creation_template" "example" {
 ///   prefix = "example"
 /// }
 /// ```

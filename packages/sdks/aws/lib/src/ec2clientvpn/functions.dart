@@ -82,7 +82,7 @@ import 'get_endpoint_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -90,7 +90,7 @@ import 'get_endpoint_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2clientvpn_getendpoint" "example" {
+/// data "aws_ec2clientvpn_endpoint" "example" {
 ///   filters {
 ///     name   = "tag:Name"
 ///     values = ["ExampleVpn"]
@@ -195,7 +195,7 @@ import 'get_endpoint_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -203,7 +203,7 @@ import 'get_endpoint_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2clientvpn_getendpoint" "example" {
+/// data "aws_ec2clientvpn_endpoint" "example" {
 ///   client_vpn_endpoint_id = "cvpn-endpoint-083cf50d6eb314f21"
 /// }
 /// ```

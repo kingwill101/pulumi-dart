@@ -71,7 +71,7 @@ import 'get_tracker_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -79,7 +79,7 @@ import 'get_tracker_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_location_getgeofencecollection" "example" {
+/// data "aws_location_geofence_collection" "example" {
 ///   collection_name = "example"
 /// }
 /// ```
@@ -200,7 +200,7 @@ pulumi.Output<GetGeofenceCollectionResult> getGeofenceCollectionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -208,7 +208,7 @@ pulumi.Output<GetGeofenceCollectionResult> getGeofenceCollectionOutput(
 ///   }
 /// }
 ///
-/// data "aws_location_getmap" "example" {
+/// data "aws_location_map" "example" {
 ///   map_name = "example"
 /// }
 /// ```
@@ -329,7 +329,7 @@ pulumi.Output<GetMapResult> getMapOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -337,7 +337,7 @@ pulumi.Output<GetMapResult> getMapOutput(
 ///   }
 /// }
 ///
-/// data "aws_location_getplaceindex" "example" {
+/// data "aws_location_place_index" "example" {
 ///   index_name = "example"
 /// }
 /// ```
@@ -458,7 +458,7 @@ pulumi.Output<GetPlaceIndexResult> getPlaceIndexOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -466,7 +466,7 @@ pulumi.Output<GetPlaceIndexResult> getPlaceIndexOutput(
 ///   }
 /// }
 ///
-/// data "aws_location_getroutecalculator" "example" {
+/// data "aws_location_route_calculator" "example" {
 ///   calculator_name = "example"
 /// }
 /// ```
@@ -587,7 +587,7 @@ pulumi.Output<GetRouteCalculatorResult> getRouteCalculatorOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -595,7 +595,7 @@ pulumi.Output<GetRouteCalculatorResult> getRouteCalculatorOutput(
 ///   }
 /// }
 ///
-/// data "aws_location_gettracker" "example" {
+/// data "aws_location_tracker" "example" {
 ///   tracker_name = "example"
 /// }
 /// ```
@@ -722,7 +722,7 @@ pulumi.Output<GetTrackerResult> getTrackerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -730,7 +730,7 @@ pulumi.Output<GetTrackerResult> getTrackerOutput(
 ///   }
 /// }
 ///
-/// data "aws_location_gettrackerassociation" "example" {
+/// data "aws_location_tracker_association" "example" {
 ///   consumer_arn = "arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollectionConsumer"
 ///   tracker_name = "example"
 /// }
@@ -856,7 +856,7 @@ pulumi.Output<GetTrackerAssociationResult> getTrackerAssociationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -864,7 +864,7 @@ pulumi.Output<GetTrackerAssociationResult> getTrackerAssociationOutput(
 ///   }
 /// }
 ///
-/// data "aws_location_gettrackerassociations" "example" {
+/// data "aws_location_tracker_associations" "example" {
 ///   tracker_name = "example"
 /// }
 /// ```

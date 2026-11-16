@@ -22,7 +22,7 @@ class GetVpcEndpointArgs {
   final pulumi.Input<String?>? state;
   /// Map of tags, each pair of which must exactly match a pair on the specific VPC Endpoint to retrieve.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// VPC Endpoint type. Valid values are `Interface`, `Gateway`, `GatewayLoadBalancer`, `Resource`, and `ServiceNetwork`.
+  /// VPC Endpoint type. Valid values are `Interface`, `Gateway`, `GatewayLoadBalancer`, `Resource`, `ServiceNetwork`, and `Tunnel`.
   final pulumi.Input<String?>? vpcEndpointType;
   /// ID of the VPC in which the specific VPC Endpoint is used.
   final pulumi.Input<String?>? vpcId;
@@ -35,7 +35,7 @@ class GetVpcEndpointArgs {
   /// [serviceRegion] AWS region of the VPC Endpoint Service. Applicable for endpoints of type `Interface`.
   /// [state] State of the specific VPC Endpoint to retrieve.
   /// [tags] Map of tags, each pair of which must exactly match a pair on the specific VPC Endpoint to retrieve.
-  /// [vpcEndpointType] VPC Endpoint type. Valid values are `Interface`, `Gateway`, `GatewayLoadBalancer`, `Resource`, and `ServiceNetwork`.
+  /// [vpcEndpointType] VPC Endpoint type. Valid values are `Interface`, `Gateway`, `GatewayLoadBalancer`, `Resource`, `ServiceNetwork`, and `Tunnel`.
   /// [vpcId] ID of the VPC in which the specific VPC Endpoint is used.
   const GetVpcEndpointArgs({
     this.filters,

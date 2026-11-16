@@ -56,7 +56,7 @@ import 'get_response_plan_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -64,7 +64,7 @@ import 'get_response_plan_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssmincidents_getreplicationset" "example" {
+/// data "aws_ssmincidents_replication_set" "example" {
 /// }
 /// ```
 /// ```java
@@ -182,7 +182,7 @@ pulumi.Output<GetReplicationSetResult> getReplicationSetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -190,7 +190,10 @@ pulumi.Output<GetReplicationSetResult> getReplicationSetOutput(
 ///   }
 /// }
 ///
-/// resource "aws_ssmincidents_responseplan" "example" {
+/// resource "aws_ssmincidents_response_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   arn = "exampleARN"
 /// }
 /// ```

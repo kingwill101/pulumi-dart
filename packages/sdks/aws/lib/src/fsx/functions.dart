@@ -67,7 +67,7 @@ import 'get_windows_file_system_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,7 +75,7 @@ import 'get_windows_file_system_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_fsx_getontapfilesystem" "example" {
+/// data "aws_fsx_ontap_file_system" "example" {
 ///   id = "fs-12345678"
 /// }
 /// ```
@@ -200,7 +200,7 @@ pulumi.Output<GetOntapFileSystemResult> getOntapFileSystemOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -208,7 +208,7 @@ pulumi.Output<GetOntapFileSystemResult> getOntapFileSystemOutput(
 ///   }
 /// }
 ///
-/// data "aws_fsx_getontapstoragevirtualmachine" "example" {
+/// data "aws_fsx_ontap_storage_virtual_machine" "example" {
 ///   id = "svm-12345678"
 /// }
 /// ```
@@ -326,7 +326,7 @@ pulumi.Output<GetOntapFileSystemResult> getOntapFileSystemOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -334,8 +334,8 @@ pulumi.Output<GetOntapFileSystemResult> getOntapFileSystemOutput(
 ///   }
 /// }
 ///
-/// data "aws_fsx_getontapstoragevirtualmachine" "example" {
-///   filters {
+/// data "aws_fsx_ontap_storage_virtual_machine" "example" {
+///   filter {
 ///     name   = "file-system-id"
 ///     values = ["fs-12345678"]
 ///   }
@@ -490,7 +490,7 @@ pulumi.Output<GetOntapStorageVirtualMachineResult> getOntapStorageVirtualMachine
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -498,8 +498,8 @@ pulumi.Output<GetOntapStorageVirtualMachineResult> getOntapStorageVirtualMachine
 ///   }
 /// }
 ///
-/// data "aws_fsx_getontapstoragevirtualmachines" "example" {
-///   filters {
+/// data "aws_fsx_ontap_storage_virtual_machines" "example" {
+///   filter {
 ///     name   = "file-system-id"
 ///     values = ["fs-12345678"]
 ///   }
@@ -658,7 +658,7 @@ pulumi.Output<GetOntapStorageVirtualMachinesResult> getOntapStorageVirtualMachin
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -666,7 +666,7 @@ pulumi.Output<GetOntapStorageVirtualMachinesResult> getOntapStorageVirtualMachin
 ///   }
 /// }
 ///
-/// data "aws_fsx_getopenzfssnapshot" "example" {
+/// data "aws_fsx_open_zfs_snapshot" "example" {
 ///   filters {
 ///     name   = "volume-id"
 ///     values = ["fsvol-073a32b6098a73feb"]
@@ -802,7 +802,7 @@ pulumi.Output<GetOpenZfsSnapshotResult> getOpenZfsSnapshotOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -810,7 +810,7 @@ pulumi.Output<GetOpenZfsSnapshotResult> getOpenZfsSnapshotOutput(
 ///   }
 /// }
 ///
-/// data "aws_fsx_getwindowsfilesystem" "example" {
+/// data "aws_fsx_windows_file_system" "example" {
 ///   id = "fs-12345678"
 /// }
 /// ```

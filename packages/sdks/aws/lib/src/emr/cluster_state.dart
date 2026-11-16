@@ -138,7 +138,7 @@ class ClusterState {
   /// }
   /// ```
   /// ```hcl
-  /// pulumi {
+  /// terraform {
   ///   required_providers {
   ///     aws = {
   ///       source = "pulumi/aws"
@@ -147,7 +147,26 @@ class ClusterState {
   /// }
   ///
   /// resource "aws_emr_cluster" "cluster" {
-  ///   configurations_json = "[\n{\n\\\"Classification\\\": \\\"hadoop-env\\\",\n\\\"Configurations\\\": [\n{\n\\\"Classification\\\": \\\"export\\\",\n\\\"Properties\\\": {\n\\\"JAVA_HOME\\\": \\\"/usr/lib/jvm/java-1.8.0\\\"\n}\n}\n],\n\\\"Properties\\\": {}\n}\n]\n"
+  ///   lifecycle {
+  ///     create_before_destroy = true
+  ///   }
+  ///   configurations_json = <<EOF
+  /// [
+  /// {
+  /// \"Classification\": \"hadoop-env\",
+  /// \"Configurations\": [
+  /// {
+  /// \"Classification\": \"export\",
+  /// \"Properties\": {
+  /// \"JAVA_HOME\": \"/usr/lib/jvm/java-1.8.0\"
+  /// }
+  /// }
+  /// ],
+  /// \"Properties\": {}
+  /// }
+  /// ]
+  /// EOF
+  ///
   /// }
   /// ```
   /// ```java

@@ -8,7 +8,7 @@ class CatalogTableViewDefinition {
   final pulumi.Input<String?>? definer;
   /// You can set this flag as true to instruct the engine not to push user-provided operations into the logical plan of the view during query planning. However, setting this flag does not guarantee that the engine will comply. Refer to the engine's documentation to understand the guarantees provided, if any.
   final pulumi.Input<bool?>? isProtected;
-  /// Type of the materialized view's last refresh. Valid values: `Full`, `Incremental`.
+  /// Type of the materialized view's last refresh. Valid values: `FULL`, `INCREMENTAL`.
   final pulumi.Input<String?>? lastRefreshType;
   /// Auto refresh interval in seconds for the materialized view.
   final pulumi.Input<int?>? refreshSeconds;
@@ -26,7 +26,7 @@ class CatalogTableViewDefinition {
   /// Creates a new [CatalogTableViewDefinition].
   /// [definer] Definer of a view in SQL.
   /// [isProtected] You can set this flag as true to instruct the engine not to push user-provided operations into the logical plan of the view during query planning. However, setting this flag does not guarantee that the engine will comply. Refer to the engine's documentation to understand the guarantees provided, if any.
-  /// [lastRefreshType] Type of the materialized view's last refresh. Valid values: `Full`, `Incremental`.
+  /// [lastRefreshType] Type of the materialized view's last refresh. Valid values: `FULL`, `INCREMENTAL`.
   /// [refreshSeconds] Auto refresh interval in seconds for the materialized view.
   /// [representations] List of structures that contains the dialect of the view, and the query that defines the view. See `representations` below.
   /// [subObjectVersionIds] List of the Apache Iceberg table versions referenced by the materialized view.

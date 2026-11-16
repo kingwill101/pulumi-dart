@@ -65,7 +65,7 @@ import 'get_vault_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,7 @@ import 'get_vault_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_backup_getframework" "example" {
+/// data "aws_backup_framework" "example" {
 ///   name = "my_example_backup_framework_name"
 /// }
 /// ```
@@ -194,7 +194,7 @@ pulumi.Output<GetFrameworkResult> getFrameworkOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -202,7 +202,7 @@ pulumi.Output<GetFrameworkResult> getFrameworkOutput(
 ///   }
 /// }
 ///
-/// data "aws_backup_getplan" "example" {
+/// data "aws_backup_plan" "example" {
 ///   plan_id = "my_example_backup_plan_id"
 /// }
 /// ```
@@ -323,7 +323,7 @@ pulumi.Output<GetPlanResult> getPlanOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -331,7 +331,7 @@ pulumi.Output<GetPlanResult> getPlanOutput(
 ///   }
 /// }
 ///
-/// data "aws_backup_getreportplan" "example" {
+/// data "aws_backup_report_plan" "example" {
 ///   name = "my_example_backup_report_plan_name"
 /// }
 /// ```
@@ -456,7 +456,7 @@ pulumi.Output<GetReportPlanResult> getReportPlanOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -464,7 +464,7 @@ pulumi.Output<GetReportPlanResult> getReportPlanOutput(
 ///   }
 /// }
 ///
-/// data "aws_backup_getselection" "example" {
+/// data "aws_backup_selection" "example" {
 ///   plan_id      = exampleAwsBackupPlan.id
 ///   selection_id = "selection-id-example"
 /// }
@@ -491,7 +491,7 @@ pulumi.Output<GetReportPlanResult> getReportPlanOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = BackupFunctions.getSelection(GetSelectionArgs.builder()
-///             .planId(exampleAwsBackupPlan.id())
+///             .planId(exampleAwsBackupPlan.get("id"))
 ///             .selectionId("selection-id-example")
 ///             .build());
 ///
@@ -588,7 +588,7 @@ pulumi.Output<GetSelectionResult> getSelectionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -596,7 +596,7 @@ pulumi.Output<GetSelectionResult> getSelectionOutput(
 ///   }
 /// }
 ///
-/// data "aws_backup_getvault" "example" {
+/// data "aws_backup_vault" "example" {
 ///   name = "example_backup_vault"
 /// }
 /// ```

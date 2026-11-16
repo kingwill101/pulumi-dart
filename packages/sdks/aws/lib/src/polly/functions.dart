@@ -52,7 +52,7 @@ import 'get_voices_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -60,7 +60,7 @@ import 'get_voices_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_polly_getvoices" "example" {
+/// data "aws_polly_voices" "example" {
 /// }
 /// ```
 /// ```java
@@ -152,7 +152,7 @@ import 'get_voices_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -160,7 +160,7 @@ import 'get_voices_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_polly_getvoices" "example" {
+/// data "aws_polly_voices" "example" {
 ///   language_code = "en-GB"
 /// }
 /// ```

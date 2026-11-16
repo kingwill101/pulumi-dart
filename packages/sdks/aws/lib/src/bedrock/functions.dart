@@ -68,7 +68,7 @@ import 'get_use_case_for_model_access_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,7 +76,7 @@ import 'get_use_case_for_model_access_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_bedrock_getagentagentversions" "example" {
+/// data "aws_bedrock_agent_agent_versions" "example" {
 ///   agent_id = exampleAwsBedrockagentAgent.agentId
 /// }
 /// ```
@@ -102,7 +102,7 @@ import 'get_use_case_for_model_access_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = BedrockFunctions.getAgentAgentVersions(GetAgentAgentVersionsArgs.builder()
-///             .agentId(exampleAwsBedrockagentAgent.agentId())
+///             .agentId(exampleAwsBedrockagentAgent.get("agentId"))
 ///             .build());
 ///
 ///     }
@@ -197,7 +197,7 @@ pulumi.Output<GetAgentAgentVersionsResult> getAgentAgentVersionsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -205,7 +205,7 @@ pulumi.Output<GetAgentAgentVersionsResult> getAgentAgentVersionsOutput(
 ///   }
 /// }
 ///
-/// data "aws_bedrock_getcustommodel" "example" {
+/// data "aws_bedrock_custom_model" "example" {
 ///   model_id = "arn:aws:bedrock:us-west-2:123456789012:custom-model/amazon.titan-text-express-v1:0:8k/ly16hhi765j4"
 /// }
 /// ```
@@ -319,7 +319,7 @@ pulumi.Output<GetCustomModelResult> getCustomModelOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -327,7 +327,7 @@ pulumi.Output<GetCustomModelResult> getCustomModelOutput(
 ///   }
 /// }
 ///
-/// data "aws_bedrock_getcustommodels" "example" {
+/// data "aws_bedrock_custom_models" "example" {
 /// }
 /// ```
 /// ```java
@@ -455,7 +455,7 @@ pulumi.Output<GetCustomModelsResult> getCustomModelsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -463,10 +463,10 @@ pulumi.Output<GetCustomModelsResult> getCustomModelsOutput(
 ///   }
 /// }
 ///
-/// data "aws_bedrock_getinferenceprofiles" "example" {
+/// data "aws_bedrock_inference_profiles" "example" {
 /// }
-/// data "aws_bedrock_getinferenceprofile" "exampleGetInferenceProfile" {
-///   inference_profile_id = data.aws_bedrock_getinferenceprofiles.example.inference_profile_summaries[0].inference_profile_id
+/// data "aws_bedrock_inference_profile" "exampleGetInferenceProfile" {
+///   inference_profile_id = data.aws_bedrock_inference_profiles.example.inference_profile_summaries[0].inference_profile_id
 /// }
 /// ```
 /// ```java
@@ -589,7 +589,7 @@ pulumi.Output<GetInferenceProfileResult> getInferenceProfileOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -597,7 +597,7 @@ pulumi.Output<GetInferenceProfileResult> getInferenceProfileOutput(
 ///   }
 /// }
 ///
-/// data "aws_bedrock_getinferenceprofiles" "example" {
+/// data "aws_bedrock_inference_profiles" "example" {
 /// }
 /// ```
 /// ```java
@@ -689,7 +689,7 @@ pulumi.Output<GetInferenceProfileResult> getInferenceProfileOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -697,7 +697,7 @@ pulumi.Output<GetInferenceProfileResult> getInferenceProfileOutput(
 ///   }
 /// }
 ///
-/// data "aws_bedrock_getinferenceprofiles" "example" {
+/// data "aws_bedrock_inference_profiles" "example" {
 ///   type = "APPLICATION"
 /// }
 /// ```
@@ -813,7 +813,7 @@ pulumi.Output<GetInferenceProfilesResult> getInferenceProfilesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -821,7 +821,7 @@ pulumi.Output<GetInferenceProfilesResult> getInferenceProfilesOutput(
 ///   }
 /// }
 ///
-/// data "aws_bedrock_getusecaseformodelaccess" "example" {
+/// data "aws_bedrock_use_case_for_model_access" "example" {
 /// }
 /// ```
 /// ```java

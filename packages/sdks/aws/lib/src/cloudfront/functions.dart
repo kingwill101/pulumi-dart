@@ -81,7 +81,7 @@ import 'get_response_headers_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -89,7 +89,7 @@ import 'get_response_headers_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_cloudfront_getcachepolicy" "example" {
+/// data "aws_cloudfront_cache_policy" "example" {
 ///   name = "example-policy"
 /// }
 /// ```
@@ -201,7 +201,7 @@ import 'get_response_headers_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -209,10 +209,10 @@ import 'get_response_headers_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_cloudfront_getcachepolicy" "example1" {
+/// data "aws_cloudfront_cache_policy" "example1" {
 ///   name = "Managed-CachingOptimized"
 /// }
-/// data "aws_cloudfront_getcachepolicy" "example2" {
+/// data "aws_cloudfront_cache_policy" "example2" {
 ///   name = "UseOriginCacheControlHeaders"
 /// }
 /// ```
@@ -342,7 +342,7 @@ pulumi.Output<GetCachePolicyResult> getCachePolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -350,7 +350,7 @@ pulumi.Output<GetCachePolicyResult> getCachePolicyOutput(
 ///   }
 /// }
 ///
-/// data "aws_cloudfront_getconnectiongroup" "test" {
+/// data "aws_cloudfront_connection_group" "test" {
 ///   id = "EDFDVBD632BHDS5"
 /// }
 /// ```
@@ -471,7 +471,7 @@ pulumi.Output<GetConnectionGroupResult> getConnectionGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -479,7 +479,7 @@ pulumi.Output<GetConnectionGroupResult> getConnectionGroupOutput(
 ///   }
 /// }
 ///
-/// data "aws_cloudfront_getdistribution" "test" {
+/// data "aws_cloudfront_distribution" "test" {
 ///   id = "EDFDVBD632BHDS5"
 /// }
 /// ```
@@ -600,7 +600,7 @@ pulumi.Output<GetDistributionResult> getDistributionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -608,7 +608,7 @@ pulumi.Output<GetDistributionResult> getDistributionOutput(
 ///   }
 /// }
 ///
-/// data "aws_cloudfront_getdistributiontenant" "test" {
+/// data "aws_cloudfront_distribution_tenant" "test" {
 ///   id = "EDFDVBD632BHDS5"
 /// }
 /// ```
@@ -742,7 +742,7 @@ pulumi.Output<GetDistributionTenantResult> getDistributionTenantOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -750,7 +750,7 @@ pulumi.Output<GetDistributionTenantResult> getDistributionTenantOutput(
 ///   }
 /// }
 ///
-/// data "aws_cloudfront_getfunction" "existing" {
+/// data "aws_cloudfront_function" "existing" {
 ///   name  = var.functionName
 ///   stage = "LIVE"
 /// }
@@ -980,7 +980,7 @@ pulumi.Output<GetFunctionResult> getFunctionOutput(
 /// 			Rule: &s3.BucketOwnershipControlsRuleArgs{
 /// 				ObjectOwnership: pulumi.String("BucketOwnerPreferred"),
 /// 			},
-/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: exampleBucket.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1000,7 +1000,7 @@ pulumi.Output<GetFunctionResult> getFunctionOutput(
 /// 					},
 /// 				},
 /// 			},
-/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: exampleBucket.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleBucketOwnershipControls,
 /// 		}))
@@ -1012,7 +1012,7 @@ pulumi.Output<GetFunctionResult> getFunctionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1020,33 +1020,42 @@ pulumi.Output<GetFunctionResult> getFunctionOutput(
 ///   }
 /// }
 ///
-/// data "aws_s3_getcanonicaluserid" "current" {
+/// data "aws_s3_canonical_user_id" "current" {
 /// }
-/// data "aws_cloudfront_getlogdeliverycanonicaluserid" "example" {
+/// data "aws_cloudfront_log_delivery_canonical_user_id" "example" {
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example"
 /// }
-/// resource "aws_s3_bucketownershipcontrols" "example" {
-///   rule = {
+/// resource "aws_s3_bucket_ownership_controls" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
 ///     object_ownership = "BucketOwnerPreferred"
 ///   }
 ///   bucket = aws_s3_bucket.example.id
 /// }
-/// resource "aws_s3_bucketacl" "example" {
-///   depends_on = [aws_s3_bucketownershipcontrols.example]
-///   access_control_policy = {
-///     owner = {
-///       id = data.aws_s3_getcanonicaluserid.current.id
+/// resource "aws_s3_bucket_acl" "example" {
+///   depends_on = [aws_s3_bucket_ownership_controls.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   access_control_policy {
+///     owner {
+///       id = data.aws_s3_canonical_user_id.current.id
 ///     }
-///     grants = [{
-///       "grantee" = {
-///         "id"   = data.aws_cloudfront_getlogdeliverycanonicaluserid.example.id
-///         "type" = "CanonicalUser"
+///     grant {
+///       grantee {
+///         id   = data.aws_cloudfront_log_delivery_canonical_user_id.example.id
+///         type = "CanonicalUser"
 ///       }
-///       "permission" = "FULL_CONTROL"
-///     }]
+///       permission = "FULL_CONTROL"
+///     }
 ///   }
 ///   bucket = aws_s3_bucket.example.id
 /// }
@@ -1245,7 +1254,7 @@ pulumi.Output<GetLogDeliveryCanonicalUserIdResult> getLogDeliveryCanonicalUserId
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1253,7 +1262,7 @@ pulumi.Output<GetLogDeliveryCanonicalUserIdResult> getLogDeliveryCanonicalUserId
 ///   }
 /// }
 ///
-/// data "aws_cloudfront_getoriginaccesscontrol" "example" {
+/// data "aws_cloudfront_origin_access_control" "example" {
 ///   id = "E2T5VTFBZJ3BJB"
 /// }
 /// ```
@@ -1369,7 +1378,7 @@ pulumi.Output<GetOriginAccessControlResult> getOriginAccessControlOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1377,7 +1386,7 @@ pulumi.Output<GetOriginAccessControlResult> getOriginAccessControlOutput(
 ///   }
 /// }
 ///
-/// data "aws_cloudfront_getoriginaccessidentities" "example" {
+/// data "aws_cloudfront_origin_access_identities" "example" {
 /// }
 /// ```
 /// ```java
@@ -1484,7 +1493,7 @@ pulumi.Output<GetOriginAccessControlResult> getOriginAccessControlOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1492,7 +1501,7 @@ pulumi.Output<GetOriginAccessControlResult> getOriginAccessControlOutput(
 ///   }
 /// }
 ///
-/// data "aws_cloudfront_getoriginaccessidentities" "example" {
+/// data "aws_cloudfront_origin_access_identities" "example" {
 ///   comments = ["example-comment1", "example-comment2"]
 /// }
 /// ```
@@ -1619,7 +1628,7 @@ pulumi.Output<GetOriginAccessIdentitiesResult> getOriginAccessIdentitiesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1627,7 +1636,7 @@ pulumi.Output<GetOriginAccessIdentitiesResult> getOriginAccessIdentitiesOutput(
 ///   }
 /// }
 ///
-/// data "aws_cloudfront_getoriginaccessidentity" "example" {
+/// data "aws_cloudfront_origin_access_identity" "example" {
 ///   id = "E1ZAKK699EOLAL"
 /// }
 /// ```
@@ -1748,7 +1757,7 @@ pulumi.Output<GetOriginAccessIdentityResult> getOriginAccessIdentityOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1756,7 +1765,7 @@ pulumi.Output<GetOriginAccessIdentityResult> getOriginAccessIdentityOutput(
 ///   }
 /// }
 ///
-/// data "aws_cloudfront_getoriginrequestpolicy" "example" {
+/// data "aws_cloudfront_origin_request_policy" "example" {
 ///   name = "example-policy"
 /// }
 /// ```
@@ -1853,7 +1862,7 @@ pulumi.Output<GetOriginAccessIdentityResult> getOriginAccessIdentityOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1861,7 +1870,7 @@ pulumi.Output<GetOriginAccessIdentityResult> getOriginAccessIdentityOutput(
 ///   }
 /// }
 ///
-/// data "aws_cloudfront_getoriginrequestpolicy" "uaReferer" {
+/// data "aws_cloudfront_origin_request_policy" "uaReferer" {
 ///   name = "Managed-UserAgentRefererHeaders"
 /// }
 /// ```
@@ -1982,7 +1991,7 @@ pulumi.Output<GetOriginRequestPolicyResult> getOriginRequestPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1990,7 +1999,7 @@ pulumi.Output<GetOriginRequestPolicyResult> getOriginRequestPolicyOutput(
 ///   }
 /// }
 ///
-/// data "aws_cloudfront_getrealtimelogconfig" "example" {
+/// data "aws_cloudfront_realtime_log_config" "example" {
 ///   name = "example"
 /// }
 /// ```
@@ -2113,7 +2122,7 @@ pulumi.Output<GetRealtimeLogConfigResult> getRealtimeLogConfigOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2121,7 +2130,7 @@ pulumi.Output<GetRealtimeLogConfigResult> getRealtimeLogConfigOutput(
 ///   }
 /// }
 ///
-/// data "aws_cloudfront_getresponseheaderspolicy" "example" {
+/// data "aws_cloudfront_response_headers_policy" "example" {
 ///   name = "example-policy"
 /// }
 /// ```
@@ -2218,7 +2227,7 @@ pulumi.Output<GetRealtimeLogConfigResult> getRealtimeLogConfigOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2226,7 +2235,7 @@ pulumi.Output<GetRealtimeLogConfigResult> getRealtimeLogConfigOutput(
 ///   }
 /// }
 ///
-/// data "aws_cloudfront_getresponseheaderspolicy" "example" {
+/// data "aws_cloudfront_response_headers_policy" "example" {
 ///   name = "Managed-SimpleCORS"
 /// }
 /// ```
