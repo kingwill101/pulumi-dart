@@ -154,7 +154,7 @@ import 'get_subnet_group_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -162,13 +162,16 @@ import 'get_subnet_group_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_redshift_getcluster" "example" {
+/// data "aws_redshift_cluster" "example" {
 ///   cluster_identifier = "example-cluster"
 /// }
 ///
-/// resource "aws_kinesis_firehosedeliverystream" "example_stream" {
-///   redshift_configuration = {
-///     s3_configuration = {
+/// resource "aws_kinesis_firehose_delivery_stream" "example_stream" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   redshift_configuration {
+///     s3_configuration {
 ///       role_arn           = firehoseRole.arn
 ///       bucket_arn         = bucket.arn
 ///       buffer_size        = 10
@@ -176,7 +179,7 @@ import 'get_subnet_group_result.dart';
 ///       compression_format = "GZIP"
 ///     }
 ///     role_arn           = firehoseRole.arn
-///     cluster_jdbcurl    ="jdbc:redshift://${data.aws_redshift_getcluster.example.endpoint}/${data.aws_redshift_getcluster.example.database_name}"
+///     cluster_jdbcurl    ="jdbc:redshift://${data.aws_redshift_cluster.example.endpoint}/${data.aws_redshift_cluster.example.database_name}"
 ///     username           = "exampleuser"
 ///     password           = "Exampl3Pass"
 ///     data_table_name    = "example-table"
@@ -220,13 +223,13 @@ import 'get_subnet_group_result.dart';
 ///         var exampleStream = new FirehoseDeliveryStream("exampleStream", FirehoseDeliveryStreamArgs.builder()
 ///             .redshiftConfiguration(FirehoseDeliveryStreamRedshiftConfigurationArgs.builder()
 ///                 .s3Configuration(FirehoseDeliveryStreamRedshiftConfigurationS3ConfigurationArgs.builder()
-///                     .roleArn(firehoseRole.arn())
-///                     .bucketArn(bucket.arn())
+///                     .roleArn(firehoseRole.get("arn"))
+///                     .bucketArn(bucket.get("arn"))
 ///                     .bufferSize(10)
 ///                     .bufferInterval(400)
 ///                     .compressionFormat("GZIP")
 ///                     .build())
-///                 .roleArn(firehoseRole.arn())
+///                 .roleArn(firehoseRole.get("arn"))
 ///                 .clusterJdbcurl(String.format("jdbc:redshift://%s/%s", example.endpoint(),example.databaseName()))
 ///                 .username("exampleuser")
 ///                 .password("Exampl3Pass")
@@ -355,7 +358,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -363,7 +366,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 ///   }
 /// }
 ///
-/// data "aws_redshift_getclustercredentials" "example" {
+/// data "aws_redshift_cluster_credentials" "example" {
 ///   cluster_identifier = exampleAwsRedshiftCluster.clusterIdentifier
 ///   db_user            = exampleAwsRedshiftCluster.masterUsername
 /// }
@@ -390,8 +393,8 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = RedshiftFunctions.getClusterCredentials(GetClusterCredentialsArgs.builder()
-///             .clusterIdentifier(exampleAwsRedshiftCluster.clusterIdentifier())
-///             .dbUser(exampleAwsRedshiftCluster.masterUsername())
+///             .clusterIdentifier(exampleAwsRedshiftCluster.get("clusterIdentifier"))
+///             .dbUser(exampleAwsRedshiftCluster.get("masterUsername"))
 ///             .build());
 ///
 ///     }
@@ -482,7 +485,7 @@ pulumi.Output<GetClusterCredentialsResult> getClusterCredentialsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -490,7 +493,7 @@ pulumi.Output<GetClusterCredentialsResult> getClusterCredentialsOutput(
 ///   }
 /// }
 ///
-/// data "aws_redshift_getdatashares" "example" {
+/// data "aws_redshift_data_shares" "example" {
 /// }
 /// ```
 /// ```java
@@ -625,7 +628,7 @@ pulumi.Output<GetDataSharesResult> getDataSharesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -633,7 +636,7 @@ pulumi.Output<GetDataSharesResult> getDataSharesOutput(
 ///   }
 /// }
 ///
-/// data "aws_redshift_getorderablecluster" "test" {
+/// data "aws_redshift_orderable_cluster" "test" {
 ///   cluster_type         = "multi-node"
 ///   preferred_node_types = ["dc2.large", "ds2.xlarge"]
 /// }
@@ -763,7 +766,7 @@ pulumi.Output<GetOrderableClusterResult> getOrderableClusterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -771,7 +774,7 @@ pulumi.Output<GetOrderableClusterResult> getOrderableClusterOutput(
 ///   }
 /// }
 ///
-/// data "aws_redshift_getproducerdatashares" "example" {
+/// data "aws_redshift_producer_data_shares" "example" {
 ///   producer_arn = ""
 /// }
 /// ```
@@ -892,7 +895,7 @@ pulumi.Output<GetProducerDataSharesResult> getProducerDataSharesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -900,7 +903,7 @@ pulumi.Output<GetProducerDataSharesResult> getProducerDataSharesOutput(
 ///   }
 /// }
 ///
-/// data "aws_redshift_getsubnetgroup" "example" {
+/// data "aws_redshift_subnet_group" "example" {
 ///   name = exampleAwsRedshiftSubnetGroup.name
 /// }
 /// ```
@@ -926,7 +929,7 @@ pulumi.Output<GetProducerDataSharesResult> getProducerDataSharesOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = RedshiftFunctions.getSubnetGroup(GetSubnetGroupArgs.builder()
-///             .name(exampleAwsRedshiftSubnetGroup.name())
+///             .name(exampleAwsRedshiftSubnetGroup.get("name"))
 ///             .build());
 ///
 ///     }

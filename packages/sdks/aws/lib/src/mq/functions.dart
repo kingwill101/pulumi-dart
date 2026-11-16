@@ -88,7 +88,7 @@ pulumi.Output<GetBrokerResult> getBrokerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -96,7 +96,7 @@ pulumi.Output<GetBrokerResult> getBrokerOutput(
 ///   }
 /// }
 ///
-/// data "aws_mq_getbrokerenginetypes" "example" {
+/// data "aws_mq_broker_engine_types" "example" {
 ///   engine_type = "ACTIVEMQ"
 /// }
 /// ```
@@ -298,7 +298,7 @@ pulumi.Output<GetBrokerEngineTypesResult> getBrokerEngineTypesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -306,18 +306,18 @@ pulumi.Output<GetBrokerEngineTypesResult> getBrokerEngineTypesOutput(
 ///   }
 /// }
 ///
-/// data "aws_mq_getinstancetypeofferings" "all" {
+/// data "aws_mq_instance_type_offerings" "all" {
 /// }
-/// data "aws_mq_getinstancetypeofferings" "activemq" {
+/// data "aws_mq_instance_type_offerings" "activemq" {
 ///   engine_type = "ACTIVEMQ"
 /// }
-/// data "aws_mq_getinstancetypeofferings" "ebs" {
+/// data "aws_mq_instance_type_offerings" "ebs" {
 ///   storage_type = "EBS"
 /// }
-/// data "aws_mq_getinstancetypeofferings" "m5" {
+/// data "aws_mq_instance_type_offerings" "m5" {
 ///   host_instance_type = "mq.m5.large"
 /// }
-/// data "aws_mq_getinstancetypeofferings" "filtered" {
+/// data "aws_mq_instance_type_offerings" "filtered" {
 ///   engine_type        = "ACTIVEMQ"
 ///   storage_type       = "EBS"
 ///   host_instance_type = "mq.m5.large"

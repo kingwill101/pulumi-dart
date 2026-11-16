@@ -90,7 +90,7 @@ import 'get_zones_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -98,7 +98,7 @@ import 'get_zones_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_route53_getdelegationset" "dset" {
+/// data "aws_route53_delegation_set" "dset" {
 ///   id = "MQWGHCBFAKEID"
 /// }
 /// ```
@@ -221,7 +221,7 @@ pulumi.Output<GetDelegationSetResult> getDelegationSetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -229,7 +229,7 @@ pulumi.Output<GetDelegationSetResult> getDelegationSetOutput(
 ///   }
 /// }
 ///
-/// data "aws_route53_getprofilesprofile" "example" {
+/// data "aws_route53_profiles_profile" "example" {
 ///   name = "example"
 /// }
 /// ```
@@ -324,7 +324,7 @@ pulumi.Output<GetDelegationSetResult> getDelegationSetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -332,7 +332,7 @@ pulumi.Output<GetDelegationSetResult> getDelegationSetOutput(
 ///   }
 /// }
 ///
-/// data "aws_route53_getprofilesprofile" "example" {
+/// data "aws_route53_profiles_profile" "example" {
 ///   id = "rp-12345678"
 /// }
 /// ```
@@ -448,7 +448,7 @@ pulumi.Output<GetProfilesProfileResult> getProfilesProfileOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -456,7 +456,7 @@ pulumi.Output<GetProfilesProfileResult> getProfilesProfileOutput(
 ///   }
 /// }
 ///
-/// data "aws_route53_getprofilesprofiles" "example" {
+/// data "aws_route53_profiles_profiles" "example" {
 /// }
 /// ```
 /// ```java
@@ -574,7 +574,7 @@ pulumi.Output<GetProfilesProfilesResult> getProfilesProfilesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -582,7 +582,7 @@ pulumi.Output<GetProfilesProfilesResult> getProfilesProfilesOutput(
 ///   }
 /// }
 ///
-/// data "aws_route53_getquerylogconfig" "example" {
+/// data "aws_route53_query_log_config" "example" {
 ///   resolver_query_log_config_id = "rqlc-1abc2345ef678g91h"
 /// }
 /// ```
@@ -724,7 +724,7 @@ pulumi.Output<GetProfilesProfilesResult> getProfilesProfilesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -732,7 +732,7 @@ pulumi.Output<GetProfilesProfilesResult> getProfilesProfilesOutput(
 ///   }
 /// }
 ///
-/// data "aws_route53_getquerylogconfig" "example" {
+/// data "aws_route53_query_log_config" "example" {
 ///   filters {
 ///     name   = "Name"
 ///     values = ["shared-query-log-config"]
@@ -898,7 +898,7 @@ pulumi.Output<GetQueryLogConfigResult> getQueryLogConfigOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -906,12 +906,12 @@ pulumi.Output<GetQueryLogConfigResult> getQueryLogConfigOutput(
 ///   }
 /// }
 ///
-/// data "aws_route53_getzone" "selected" {
+/// data "aws_route53_zone" "selected" {
 ///   name         = "test.com."
 ///   private_zone = true
 /// }
-/// data "aws_route53_getrecords" "example" {
-///   zone_id = data.aws_route53_getzone.selected.zone_id
+/// data "aws_route53_records" "example" {
+///   zone_id = data.aws_route53_zone.selected.zone_id
 /// }
 /// ```
 /// ```java
@@ -1042,7 +1042,7 @@ pulumi.Output<GetQueryLogConfigResult> getQueryLogConfigOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1050,12 +1050,12 @@ pulumi.Output<GetQueryLogConfigResult> getQueryLogConfigOutput(
 ///   }
 /// }
 ///
-/// data "aws_route53_getzone" "selected" {
+/// data "aws_route53_zone" "selected" {
 ///   name         = "test.com."
 ///   private_zone = true
 /// }
-/// data "aws_route53_getrecords" "example" {
-///   zone_id    = data.aws_route53_getzone.selected.zone_id
+/// data "aws_route53_records" "example" {
+///   zone_id    = data.aws_route53_zone.selected.zone_id
 ///   name_regex = "^www"
 /// }
 /// ```
@@ -1192,7 +1192,7 @@ pulumi.Output<GetRecordsResult> getRecordsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1200,7 +1200,7 @@ pulumi.Output<GetRecordsResult> getRecordsOutput(
 ///   }
 /// }
 ///
-/// data "aws_route53_getresolverendpoint" "example" {
+/// data "aws_route53_resolver_endpoint" "example" {
 ///   resolver_endpoint_id = "rslvr-in-1abc2345ef678g91h"
 /// }
 /// ```
@@ -1316,7 +1316,7 @@ pulumi.Output<GetRecordsResult> getRecordsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1324,8 +1324,8 @@ pulumi.Output<GetRecordsResult> getRecordsOutput(
 ///   }
 /// }
 ///
-/// data "aws_route53_getresolverendpoint" "example" {
-///   filters {
+/// data "aws_route53_resolver_endpoint" "example" {
+///   filter {
 ///     name   = "NAME"
 ///     values = ["MyResolverExampleName"]
 ///   }
@@ -1459,7 +1459,7 @@ pulumi.Output<GetResolverEndpointResult> getResolverEndpointOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1467,7 +1467,7 @@ pulumi.Output<GetResolverEndpointResult> getResolverEndpointOutput(
 ///   }
 /// }
 ///
-/// data "aws_route53_getresolverfirewallconfig" "example" {
+/// data "aws_route53_resolver_firewall_config" "example" {
 ///   resource_id = "vpc-exampleid"
 /// }
 /// ```
@@ -1592,7 +1592,7 @@ pulumi.Output<GetResolverFirewallConfigResult> getResolverFirewallConfigOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1600,7 +1600,7 @@ pulumi.Output<GetResolverFirewallConfigResult> getResolverFirewallConfigOutput(
 ///   }
 /// }
 ///
-/// data "aws_route53_getresolverfirewalldomainlist" "example" {
+/// data "aws_route53_resolver_firewall_domain_list" "example" {
 ///   firewall_domain_list_id = "rslvr-fdl-example"
 /// }
 /// ```
@@ -1725,7 +1725,7 @@ pulumi.Output<GetResolverFirewallDomainListResult> getResolverFirewallDomainList
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1733,7 +1733,7 @@ pulumi.Output<GetResolverFirewallDomainListResult> getResolverFirewallDomainList
 ///   }
 /// }
 ///
-/// data "aws_route53_getresolverfirewallrulegroup" "example" {
+/// data "aws_route53_resolver_firewall_rule_group" "example" {
 ///   firewall_rule_group_id = "rslvr-frg-example"
 /// }
 /// ```
@@ -1858,7 +1858,7 @@ pulumi.Output<GetResolverFirewallRuleGroupResult> getResolverFirewallRuleGroupOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1866,7 +1866,7 @@ pulumi.Output<GetResolverFirewallRuleGroupResult> getResolverFirewallRuleGroupOu
 ///   }
 /// }
 ///
-/// data "aws_route53_getresolverfirewallrulegroupassociation" "example" {
+/// data "aws_route53_resolver_firewall_rule_group_association" "example" {
 ///   firewall_rule_group_association_id = "rslvr-frgassoc-example"
 /// }
 /// ```
@@ -1989,7 +1989,7 @@ pulumi.Output<GetResolverFirewallRuleGroupAssociationResult> getResolverFirewall
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1997,7 +1997,7 @@ pulumi.Output<GetResolverFirewallRuleGroupAssociationResult> getResolverFirewall
 ///   }
 /// }
 ///
-/// data "aws_route53_getresolverfirewallrules" "example" {
+/// data "aws_route53_resolver_firewall_rules" "example" {
 ///   firewall_rule_group_id = exampleAwsRoute53ResolverFirewallRuleGroup.id
 /// }
 /// ```
@@ -2023,7 +2023,7 @@ pulumi.Output<GetResolverFirewallRuleGroupAssociationResult> getResolverFirewall
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = Route53Functions.getResolverFirewallRules(GetResolverFirewallRulesArgs.builder()
-///             .firewallRuleGroupId(exampleAwsRoute53ResolverFirewallRuleGroup.id())
+///             .firewallRuleGroupId(exampleAwsRoute53ResolverFirewallRuleGroup.get("id"))
 ///             .build());
 ///
 ///     }
@@ -2124,7 +2124,7 @@ pulumi.Output<GetResolverFirewallRulesResult> getResolverFirewallRulesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2132,7 +2132,7 @@ pulumi.Output<GetResolverFirewallRulesResult> getResolverFirewallRulesOutput(
 ///   }
 /// }
 ///
-/// data "aws_route53_getresolverrule" "example" {
+/// data "aws_route53_resolver_rule" "example" {
 ///   domain_name = "subdomain.example.com"
 ///   rule_type   = "SYSTEM"
 /// }
@@ -2266,7 +2266,7 @@ pulumi.Output<GetResolverRuleResult> getResolverRuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2274,7 +2274,7 @@ pulumi.Output<GetResolverRuleResult> getResolverRuleOutput(
 ///   }
 /// }
 ///
-/// data "aws_route53_getresolverrules" "example" {
+/// data "aws_route53_resolver_rules" "example" {
 ///   owner_id     = "Route 53 Resolver"
 ///   rule_type    = "RECURSIVE"
 ///   share_status = "NOT_SHARED"
@@ -2379,7 +2379,7 @@ pulumi.Output<GetResolverRuleResult> getResolverRuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2387,7 +2387,7 @@ pulumi.Output<GetResolverRuleResult> getResolverRuleOutput(
 ///   }
 /// }
 ///
-/// data "aws_route53_getresolverrules" "example" {
+/// data "aws_route53_resolver_rules" "example" {
 ///   rule_type    = "FORWARD"
 ///   share_status = "SHARED_WITH_ME"
 /// }
@@ -2487,7 +2487,7 @@ pulumi.Output<GetResolverRuleResult> getResolverRuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2495,7 +2495,7 @@ pulumi.Output<GetResolverRuleResult> getResolverRuleOutput(
 ///   }
 /// }
 ///
-/// data "aws_route53_getresolverrules" "example" {
+/// data "aws_route53_resolver_rules" "example" {
 ///   name_regex = ".*abc.*"
 /// }
 /// ```
@@ -2760,7 +2760,7 @@ pulumi.Output<GetResolverRulesResult> getResolverRulesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2768,25 +2768,25 @@ pulumi.Output<GetResolverRulesResult> getResolverRulesOutput(
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
-/// data "aws_route53_gettrafficpolicydocument" "example" {
-///   endpoints {
+/// data "aws_route53_traffic_policy_document" "example" {
+///   endpoint {
 ///     id    = "my_elb"
 ///     type  = "elastic-load-balancer"
-///     value ="elb-111111.${data.aws_getregion.current.region}.elb.amazonaws.com"
+///     value ="elb-111111.${data.aws_region.current.region}.elb.amazonaws.com"
 ///   }
-///   endpoints {
+///   endpoint {
 ///     id     = "site_down_banner"
 ///     type   = "s3-website"
-///     region = data.aws_getregion.current.region
+///     region = data.aws_region.current.region
 ///     value  = "www.example.com"
 ///   }
-///   rules {
-///     primary = {
+///   rule {
+///     primary {
 ///       endpoint_reference = "my_elb"
 ///     }
-///     secondary = {
+///     secondary {
 ///       endpoint_reference = "site_down_banner"
 ///     }
 ///     id   = "site_switch"
@@ -2796,10 +2796,13 @@ pulumi.Output<GetResolverRulesResult> getResolverRulesOutput(
 ///   start_rule  = "site_switch"
 /// }
 ///
-/// resource "aws_route53_trafficpolicy" "example" {
+/// resource "aws_route53_traffic_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   comment  = "example comment"
-///   document = data.aws_route53_gettrafficpolicydocument.example.json
+///   document = data.aws_route53_traffic_policy_document.example.json
 /// }
 /// ```
 /// ```java
@@ -3237,7 +3240,7 @@ pulumi.Output<GetResolverRulesResult> getResolverRulesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3245,51 +3248,51 @@ pulumi.Output<GetResolverRulesResult> getResolverRulesOutput(
 ///   }
 /// }
 ///
-/// data "aws_route53_gettrafficpolicydocument" "example" {
-///   endpoints {
+/// data "aws_route53_traffic_policy_document" "example" {
+///   endpoint {
 ///     id    = "na_endpoint_a"
 ///     type  = "elastic-load-balancer"
 ///     value = "elb-111111.us-west-1.elb.amazonaws.com"
 ///   }
-///   endpoints {
+///   endpoint {
 ///     id    = "na_endpoint_b"
 ///     type  = "elastic-load-balancer"
 ///     value = "elb-222222.us-west-1.elb.amazonaws.com"
 ///   }
-///   endpoints {
+///   endpoint {
 ///     id    = "eu_endpoint"
 ///     type  = "elastic-load-balancer"
 ///     value = "elb-333333.eu-west-1.elb.amazonaws.com"
 ///   }
-///   endpoints {
+///   endpoint {
 ///     id    = "ap_endpoint"
 ///     type  = "elastic-load-balancer"
 ///     value = "elb-444444.ap-northeast-2.elb.amazonaws.com"
 ///   }
-///   rules {
-///     primary = {
+///   rule {
+///     primary {
 ///       endpoint_reference = "na_endpoint_a"
 ///     }
-///     secondary = {
+///     secondary {
 ///       endpoint_reference = "na_endpoint_b"
 ///     }
 ///     id   = "na_rule"
 ///     type = "failover"
 ///   }
-///   rules {
-///     geo_proximity_locations {
+///   rule {
+///     geo_proximity_location {
 ///       region                 = "aws:route53:us-west-1"
 ///       bias                   = 10
 ///       evaluate_target_health = true
 ///       rule_reference         = "na_rule"
 ///     }
-///     geo_proximity_locations {
+///     geo_proximity_location {
 ///       region                 = "aws:route53:eu-west-1"
 ///       bias                   = 10
 ///       evaluate_target_health = true
 ///       endpoint_reference     = "eu_endpoint"
 ///     }
-///     geo_proximity_locations {
+///     geo_proximity_location {
 ///       region                 = "aws:route53:ap-northeast-2"
 ///       bias                   = 0
 ///       evaluate_target_health = true
@@ -3302,10 +3305,13 @@ pulumi.Output<GetResolverRulesResult> getResolverRulesOutput(
 ///   start_rule  = "geoproximity_rule"
 /// }
 ///
-/// resource "aws_route53_trafficpolicy" "example" {
+/// resource "aws_route53_traffic_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   comment  = "example comment"
-///   document = data.aws_route53_gettrafficpolicydocument.example.json
+///   document = data.aws_route53_traffic_policy_document.example.json
 /// }
 /// ```
 /// ```java
@@ -3583,7 +3589,7 @@ pulumi.Output<GetTrafficPolicyDocumentResult> getTrafficPolicyDocumentOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3591,14 +3597,17 @@ pulumi.Output<GetTrafficPolicyDocumentResult> getTrafficPolicyDocumentOutput(
 ///   }
 /// }
 ///
-/// data "aws_route53_getzone" "selected" {
+/// data "aws_route53_zone" "selected" {
 ///   name         = "test.com."
 ///   private_zone = true
 /// }
 ///
 /// resource "aws_route53_record" "www" {
-///   zone_id = data.aws_route53_getzone.selected.zone_id
-///   name    ="www.${data.aws_route53_getzone.selected.name}"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   zone_id = data.aws_route53_zone.selected.zone_id
+///   name    ="www.${data.aws_route53_zone.selected.name}"
 ///   type    = "A"
 ///   ttl     = "300"
 ///   records = ["10.0.0.1"]
@@ -3737,7 +3746,7 @@ pulumi.Output<GetTrafficPolicyDocumentResult> getTrafficPolicyDocumentOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3745,7 +3754,7 @@ pulumi.Output<GetTrafficPolicyDocumentResult> getTrafficPolicyDocumentOutput(
 ///   }
 /// }
 ///
-/// data "aws_route53_getzone" "selected" {
+/// data "aws_route53_zone" "selected" {
 ///   tags = {
 ///     "scope"    = "local"
 ///     "category" = "api"
@@ -3753,7 +3762,7 @@ pulumi.Output<GetTrafficPolicyDocumentResult> getTrafficPolicyDocumentOutput(
 /// }
 ///
 /// output "localApiZone" {
-///   value = data.aws_route53_getzone.selected.zone_id
+///   value = data.aws_route53_zone.selected.zone_id
 /// }
 /// ```
 /// ```java
@@ -3883,7 +3892,7 @@ pulumi.Output<GetZoneResult> getZoneOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3891,11 +3900,11 @@ pulumi.Output<GetZoneResult> getZoneOutput(
 ///   }
 /// }
 ///
-/// data "aws_route53_getzones" "all" {
+/// data "aws_route53_zones" "all" {
 /// }
 ///
 /// output "example" {
-///   value = data.aws_route53_getzones.all.ids
+///   value = data.aws_route53_zones.all.ids
 /// }
 /// ```
 /// ```java

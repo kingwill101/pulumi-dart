@@ -11,7 +11,7 @@ class OpenZfsVolumeState {
   final pulumi.Input<String?>? arn;
   /// Whether tags for the file system should be copied to snapshots. Default is false.
   final pulumi.Input<bool?>? copyTagsToSnapshots;
-  /// Method used to compress the data on the volume. Valid values are `NONE` or `ZSTD`. Child volumes that don't specify compression option will inherit from parent volume. This option on file system applies to the root volume.
+  /// Method used to compress the data on the volume. Valid values are `NONE`, `ZSTD`, or `LZ4`. Child volumes that don't specify compression option will inherit from parent volume. This option on file system applies to the root volume.
   final pulumi.Input<String?>? dataCompressionType;
   /// Whether to delete all child volumes and snapshots. Valid values: `DELETE_CHILD_VOLUMES_AND_SNAPSHOTS`. This configuration must be applied separately before attempting to delete the resource to have the desired behavior..
   final pulumi.Input<String?>? deleteVolumeOptions;
@@ -45,7 +45,7 @@ class OpenZfsVolumeState {
   /// Creates a new [OpenZfsVolumeState].
   /// [arn] ARN of the file system.
   /// [copyTagsToSnapshots] Whether tags for the file system should be copied to snapshots. Default is false.
-  /// [dataCompressionType] Method used to compress the data on the volume. Valid values are `NONE` or `ZSTD`. Child volumes that don't specify compression option will inherit from parent volume. This option on file system applies to the root volume.
+  /// [dataCompressionType] Method used to compress the data on the volume. Valid values are `NONE`, `ZSTD`, or `LZ4`. Child volumes that don't specify compression option will inherit from parent volume. This option on file system applies to the root volume.
   /// [deleteVolumeOptions] Whether to delete all child volumes and snapshots. Valid values: `DELETE_CHILD_VOLUMES_AND_SNAPSHOTS`. This configuration must be applied separately before attempting to delete the resource to have the desired behavior..
   /// [name] Name of the volume. You can use a maximum of 203 alphanumeric characters, plus the underscore (_) special character.
   /// [nfsExports] NFS export configuration for the root volume. Exactly 1 item. See `nfsExports` Block Below for details.

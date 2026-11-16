@@ -82,7 +82,7 @@ import 'get_layer_version_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -90,13 +90,13 @@ import 'get_layer_version_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_lambda_getalias" "example" {
+/// data "aws_lambda_alias" "example" {
 ///   function_name = "my-lambda-function"
 ///   name          = "production"
 /// }
 ///
 /// output "aliasArn" {
-///   value = data.aws_lambda_getalias.example.arn
+///   value = data.aws_lambda_alias.example.arn
 /// }
 /// ```
 /// ```java
@@ -276,7 +276,7 @@ import 'get_layer_version_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -284,27 +284,33 @@ import 'get_layer_version_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_lambda_getalias" "apiHandler" {
+/// data "aws_lambda_alias" "apiHandler" {
 ///   function_name = "api-handler"
 ///   name          = "live"
 /// }
 ///
 /// resource "aws_apigateway_integration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   rest_api                = exampleAwsApiGatewayRestApi.id
 ///   resource_id             = exampleAwsApiGatewayResource.id
 ///   http_method             = exampleAwsApiGatewayMethod.httpMethod
 ///   integration_http_method = "POST"
 ///   type                    = "AWS_PROXY"
-///   uri                     = data.aws_lambda_getalias.apiHandler.invoke_arn
+///   uri                     = data.aws_lambda_alias.apiHandler.invoke_arn
 /// }
 /// # Grant API Gateway permission to invoke the alias
 /// resource "aws_lambda_permission" "api_gateway" {
-///   statement_id = "AllowExecutionFromAPIGateway"
-///   action       = "lambda:InvokeFunction"
-///   function     = data.aws_lambda_getalias.apiHandler.function_name
-///   principal    = "apigateway.amazonaws.com"
-///   qualifier    = data.aws_lambda_getalias.apiHandler.name
-///   source_arn   ="${exampleAwsApiGatewayRestApi.executionArn}/*/*"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   statement_id  = "AllowExecutionFromAPIGateway"
+///   action        = "lambda:InvokeFunction"
+///   function_name = data.aws_lambda_alias.apiHandler.function_name
+///   principal     = "apigateway.amazonaws.com"
+///   qualifier     = data.aws_lambda_alias.apiHandler.name
+///   source_arn    ="${exampleAwsApiGatewayRestApi.executionArn}/*/*"
 /// }
 /// ```
 /// ```java
@@ -338,9 +344,9 @@ import 'get_layer_version_result.dart';
 ///             .build());
 ///
 ///         var example = new Integration("example", IntegrationArgs.builder()
-///             .restApi(exampleAwsApiGatewayRestApi.id())
-///             .resourceId(exampleAwsApiGatewayResource.id())
-///             .httpMethod(exampleAwsApiGatewayMethod.httpMethod())
+///             .restApi(exampleAwsApiGatewayRestApi.get("id"))
+///             .resourceId(exampleAwsApiGatewayResource.get("id"))
+///             .httpMethod(exampleAwsApiGatewayMethod.get("httpMethod"))
 ///             .integrationHttpMethod("POST")
 ///             .type("AWS_PROXY")
 ///             .uri(apiHandler.invokeArn())
@@ -353,7 +359,7 @@ import 'get_layer_version_result.dart';
 ///             .function(apiHandler.functionName())
 ///             .principal("apigateway.amazonaws.com")
 ///             .qualifier(apiHandler.name())
-///             .sourceArn(String.format("%s/*/*", exampleAwsApiGatewayRestApi.executionArn()))
+///             .sourceArn(String.format("%s/*/*", exampleAwsApiGatewayRestApi.get("executionArn")))
 ///             .build());
 ///
 ///     }
@@ -465,12 +471,12 @@ import 'get_layer_version_result.dart';
 ///
 ///     return new Dictionary<string, object?>
 ///     {
-///         ["deploymentStatus"] =
+///         ["deploymentStatus"] = new Dictionary<string, object?>
 ///         {
-///             { "productionVersion", production.Apply(getAliasResult => getAliasResult.FunctionVersion) },
-///             { "stagingVersion", staging.Apply(getAliasResult => getAliasResult.FunctionVersion) },
-///             { "versionDrift", versionDrift },
-///             { "readyForPromotion", !versionDrift },
+///             ["productionVersion"] = production.Apply(getAliasResult => getAliasResult.FunctionVersion),
+///             ["stagingVersion"] = staging.Apply(getAliasResult => getAliasResult.FunctionVersion),
+///             ["versionDrift"] = versionDrift,
+///             ["readyForPromotion"] = !versionDrift,
 ///         },
 ///     };
 /// });
@@ -513,7 +519,7 @@ import 'get_layer_version_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -521,11 +527,11 @@ import 'get_layer_version_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_lambda_getalias" "production" {
+/// data "aws_lambda_alias" "production" {
 ///   function_name = "payment-processor"
 ///   name          = "production"
 /// }
-/// data "aws_lambda_getalias" "staging" {
+/// data "aws_lambda_alias" "staging" {
 ///   function_name = "payment-processor"
 ///   name          = "staging"
 /// }
@@ -533,12 +539,12 @@ import 'get_layer_version_result.dart';
 /// # Get production alias details
 /// # Get staging alias details
 /// locals {
-///   versionDrift = data.aws_lambda_getalias.production.function_version != data.aws_lambda_getalias.staging.function_version
+///   versionDrift = data.aws_lambda_alias.production.function_version != data.aws_lambda_alias.staging.function_version
 /// }
 /// output "deploymentStatus" {
 ///   value = {
-///     "productionVersion" = data.aws_lambda_getalias.production.function_version
-///     "stagingVersion"    = data.aws_lambda_getalias.staging.function_version
+///     "productionVersion" = data.aws_lambda_alias.production.function_version
+///     "stagingVersion"    = data.aws_lambda_alias.staging.function_version
 ///     "versionDrift"      = local.versionDrift
 ///     "readyForPromotion" = ! local.versionDrift
 ///   }
@@ -764,7 +770,7 @@ import 'get_layer_version_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -772,12 +778,15 @@ import 'get_layer_version_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_lambda_getalias" "eventProcessor" {
+/// data "aws_lambda_alias" "eventProcessor" {
 ///   function_name = "event-processor"
 ///   name          = "stable"
 /// }
 ///
-/// resource "aws_cloudwatch_eventrule" "example" {
+/// resource "aws_cloudwatch_event_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "capture-events"
 ///   description = "Capture events for processing"
 ///   event_pattern = jsonencode({
@@ -785,18 +794,24 @@ import 'get_layer_version_result.dart';
 ///     "detail-type" = ["Order Placed"]
 ///   })
 /// }
-/// resource "aws_cloudwatch_eventtarget" "lambda" {
-///   rule      = aws_cloudwatch_eventrule.example.name
+/// resource "aws_cloudwatch_event_target" "lambda" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule      = aws_cloudwatch_event_rule.example.name
 ///   target_id = "SendToLambda"
-///   arn       = data.aws_lambda_getalias.eventProcessor.arn
+///   arn       = data.aws_lambda_alias.eventProcessor.arn
 /// }
 /// resource "aws_lambda_permission" "allow_eventbridge" {
-///   statement_id = "AllowExecutionFromEventBridge"
-///   action       = "lambda:InvokeFunction"
-///   function     = data.aws_lambda_getalias.eventProcessor.function_name
-///   principal    = "events.amazonaws.com"
-///   qualifier    = data.aws_lambda_getalias.eventProcessor.name
-///   source_arn   = aws_cloudwatch_eventrule.example.arn
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   statement_id  = "AllowExecutionFromEventBridge"
+///   action        = "lambda:InvokeFunction"
+///   function_name = data.aws_lambda_alias.eventProcessor.function_name
+///   principal     = "events.amazonaws.com"
+///   qualifier     = data.aws_lambda_alias.eventProcessor.name
+///   source_arn    = aws_cloudwatch_event_rule.example.arn
 /// }
 /// ```
 /// ```java
@@ -971,11 +986,11 @@ pulumi.Output<GetAliasResult> getAliasOutput(
 ///
 ///     return new Dictionary<string, object?>
 ///     {
-///         ["configDetails"] =
+///         ["configDetails"] = new Dictionary<string, object?>
 ///         {
-///             { "configId", example.Apply(getCodeSigningConfigResult => getCodeSigningConfigResult.ConfigId) },
-///             { "description", example.Apply(getCodeSigningConfigResult => getCodeSigningConfigResult.Description) },
-///             { "policy", example.Apply(getCodeSigningConfigResult => getCodeSigningConfigResult.Policies[0]?.UntrustedArtifactOnDeployment) },
+///             ["configId"] = example.Apply(getCodeSigningConfigResult => getCodeSigningConfigResult.ConfigId),
+///             ["description"] = example.Apply(getCodeSigningConfigResult => getCodeSigningConfigResult.Description),
+///             ["policy"] = example.Apply(getCodeSigningConfigResult => getCodeSigningConfigResult.Policies[0]?.UntrustedArtifactOnDeployment),
 ///         },
 ///     };
 /// });
@@ -1006,7 +1021,7 @@ pulumi.Output<GetAliasResult> getAliasOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1014,15 +1029,15 @@ pulumi.Output<GetAliasResult> getAliasOutput(
 ///   }
 /// }
 ///
-/// data "aws_lambda_getcodesigningconfig" "example" {
+/// data "aws_lambda_code_signing_config" "example" {
 ///   arn = "arn:aws:lambda:us-west-2:123456789012:code-signing-config:csc-0f6c334abcdea4d8b"
 /// }
 ///
 /// output "configDetails" {
 ///   value = {
-///     "configId"    = data.aws_lambda_getcodesigningconfig.example.config_id
-///     "description" = data.aws_lambda_getcodesigningconfig.example.description
-///     "policy"      = data.aws_lambda_getcodesigningconfig.example.policies[0].untrusted_artifact_on_deployment
+///     "configId"    = data.aws_lambda_code_signing_config.example.config_id
+///     "description" = data.aws_lambda_code_signing_config.example.description
+///     "policy"      = data.aws_lambda_code_signing_config.example.policies[0].untrusted_artifact_on_deployment
 ///   }
 /// }
 /// ```
@@ -1188,7 +1203,7 @@ pulumi.Output<GetAliasResult> getAliasOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1196,18 +1211,21 @@ pulumi.Output<GetAliasResult> getAliasOutput(
 ///   }
 /// }
 ///
-/// data "aws_lambda_getcodesigningconfig" "securityConfig" {
+/// data "aws_lambda_code_signing_config" "securityConfig" {
 ///   arn = codeSigningConfigArn
 /// }
 ///
 /// # Create Lambda function with code signing
 /// resource "aws_lambda_function" "example" {
-///   code                    = fileArchive("function.zip")
-///   name                    = "secure-function"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filename                = filearchive("function.zip")
+///   function_name           = "secure-function"
 ///   role                    = lambdaRole.arn
 ///   handler                 = "index.handler"
 ///   runtime                 = "nodejs24.x"
-///   code_signing_config_arn = data.aws_lambda_getcodesigningconfig.securityConfig.arn
+///   code_signing_config_arn = data.aws_lambda_code_signing_config.securityConfig.arn
 ///   tags = {
 ///     "Environment" = "production"
 ///     "Security"    = "code-signed"
@@ -1248,7 +1266,7 @@ pulumi.Output<GetAliasResult> getAliasOutput(
 ///         var example = new Function("example", FunctionArgs.builder()
 ///             .code(new FileArchive("function.zip"))
 ///             .name("secure-function")
-///             .role(lambdaRole.arn())
+///             .role(lambdaRole.get("arn"))
 ///             .handler("index.handler")
 ///             .runtime("nodejs24.x")
 ///             .codeSigningConfigArn(securityConfig.arn())
@@ -1380,7 +1398,7 @@ pulumi.Output<GetAliasResult> getAliasOutput(
 ///
 ///     // Conditional resource creation based on signing profile validation
 ///     var conditional = new List<Aws.Lambda.Function>();
-///     for (var rangeIndex = 0; rangeIndex < profileAllowed ? 1 : 0; rangeIndex++)
+///     for (var rangeIndex = 0; rangeIndex < (profileAllowed ? 1 : 0); rangeIndex++)
 ///     {
 ///         var range = new { Value = rangeIndex };
 ///         conditional.Add(new Aws.Lambda.Function($"conditional-{range.Value}", new()
@@ -1395,11 +1413,11 @@ pulumi.Output<GetAliasResult> getAliasOutput(
 ///     }
 ///     return new Dictionary<string, object?>
 ///     {
-///         ["deploymentStatus"] =
+///         ["deploymentStatus"] = new Dictionary<string, object?>
 ///         {
-///             { "profileAllowed", profileAllowed },
-///             { "functionCreated", profileAllowed },
-///             { "message", profileAllowed ? "Function deployed with valid signing profile" : "Deployment blocked - signing profile not allowed" },
+///             ["profileAllowed"] = profileAllowed,
+///             ["functionCreated"] = profileAllowed,
+///             ["message"] = profileAllowed ? "Function deployed with valid signing profile" : "Deployment blocked - signing profile not allowed",
 ///         },
 ///     };
 /// });
@@ -1431,7 +1449,7 @@ pulumi.Output<GetAliasResult> getAliasOutput(
 /// 		}, nil).Result
 /// 		// Conditional resource creation based on signing profile validation
 /// 		var tmp0 int
-/// 		if pulumi.Bool(profileAllowed) {
+/// 		if profileAllowed {
 /// 			tmp0 = 1
 /// 		} else {
 /// 			tmp0 = 0
@@ -1453,7 +1471,7 @@ pulumi.Output<GetAliasResult> getAliasOutput(
 /// 			conditional = append(conditional, __res)
 /// 		}
 /// 		var tmp1 string
-/// 		if pulumi.Bool(profileAllowed) {
+/// 		if profileAllowed {
 /// 			tmp1 = "Function deployed with valid signing profile"
 /// 		} else {
 /// 			tmp1 = "Deployment blocked - signing profile not allowed"
@@ -1461,14 +1479,14 @@ pulumi.Output<GetAliasResult> getAliasOutput(
 /// 		ctx.Export("deploymentStatus", pulumi.Map{
 /// 			"profileAllowed":  profileAllowed,
 /// 			"functionCreated": profileAllowed,
-/// 			"message":         pulumi.String(tmp1),
+/// 			"message":         tmp1,
 /// 		})
 /// 		return nil
 /// 	})
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1479,22 +1497,28 @@ pulumi.Output<GetAliasResult> getAliasOutput(
 ///   }
 /// }
 ///
-/// data "aws_lambda_getcodesigningconfig" "example" {
+/// data "aws_lambda_code_signing_config" "example" {
 ///   arn = codeSigningConfigArn
 /// }
 ///
 /// # Conditional resource creation based on signing profile validation
 /// resource "aws_lambda_function" "conditional" {
-///   count                   = local.profileAllowed ? 1 : 0
-///   code                    = fileArchive("function.zip")
-///   name                    = "conditional-function"
+///   count = local.profileAllowed ? 1 : 0
+///   pulumi {
+///     name ="conditional-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filename                = filearchive("function.zip")
+///   function_name           = "conditional-function"
 ///   role                    = lambdaRole.arn
 ///   handler                 = "index.handler"
 ///   runtime                 = "python3.12"
-///   code_signing_config_arn = data.aws_lambda_getcodesigningconfig.example.arn
+///   code_signing_config_arn = data.aws_lambda_code_signing_config.example.arn
 /// }
 /// locals {
-///   allowedProfiles = data.aws_lambda_getcodesigningconfig.example.allowed_publishers[0].signing_profile_version_arns
+///   allowedProfiles = data.aws_lambda_code_signing_config.example.allowed_publishers[0].signing_profile_version_arns
 /// }
 /// locals {
 ///   requiredProfile = "arn:aws:signer:us-west-2:123456789012:/signing-profiles/MyProfile"
@@ -1555,7 +1579,7 @@ pulumi.Output<GetAliasResult> getAliasOutput(
 ///             new Function("conditional-" + i, FunctionArgs.builder()
 ///                 .code(new FileArchive("function.zip"))
 ///                 .name("conditional-function")
-///                 .role(lambdaRole.arn())
+///                 .role(lambdaRole.get("arn"))
 ///                 .handler("index.handler")
 ///                 .runtime("python3.12")
 ///                 .codeSigningConfigArn(example.arn())
@@ -1638,16 +1662,16 @@ pulumi.Output<GetAliasResult> getAliasOutput(
 ///
 ///     var devPolicy = dev.Apply(getCodeSigningConfigResult => getCodeSigningConfigResult.Policies[0]?.UntrustedArtifactOnDeployment);
 ///
-///     var configComparison =
+///     var configComparison = new Dictionary<string, object?>
 ///     {
-///         { "prodEnforcement", prodPolicy },
-///         { "devEnforcement", devPolicy },
-///         { "policiesMatch", Output.Tuple(prodPolicy, devPolicy).Apply(values =>
+///         ["prodEnforcement"] = prodPolicy,
+///         ["devEnforcement"] = devPolicy,
+///         ["policiesMatch"] = Output.Tuple(prodPolicy, devPolicy).Apply(values =>
 ///         {
 ///             var prodPolicy = values.Item1;
 ///             var devPolicy = values.Item2;
 ///             return prodPolicy == devPolicy;
-///         }) },
+///         }),
 ///     };
 ///
 ///     return new Dictionary<string, object?>
@@ -1693,7 +1717,7 @@ pulumi.Output<GetAliasResult> getAliasOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1701,20 +1725,20 @@ pulumi.Output<GetAliasResult> getAliasOutput(
 ///   }
 /// }
 ///
-/// data "aws_lambda_getcodesigningconfig" "prod" {
+/// data "aws_lambda_code_signing_config" "prod" {
 ///   arn = "arn:aws:lambda:us-west-2:123456789012:code-signing-config:csc-prod-123"
 /// }
-/// data "aws_lambda_getcodesigningconfig" "dev" {
+/// data "aws_lambda_code_signing_config" "dev" {
 ///   arn = "arn:aws:lambda:us-west-2:123456789012:code-signing-config:csc-dev-456"
 /// }
 ///
 /// # Production code signing config
 /// # Development code signing config
 /// locals {
-///   prodPolicy = data.aws_lambda_getcodesigningconfig.prod.policies[0].untrusted_artifact_on_deployment
+///   prodPolicy = data.aws_lambda_code_signing_config.prod.policies[0].untrusted_artifact_on_deployment
 /// }
 /// locals {
-///   devPolicy = data.aws_lambda_getcodesigningconfig.dev.policies[0].untrusted_artifact_on_deployment
+///   devPolicy = data.aws_lambda_code_signing_config.dev.policies[0].untrusted_artifact_on_deployment
 /// }
 /// locals {
 ///   configComparison = {
@@ -1864,7 +1888,7 @@ pulumi.Output<GetCodeSigningConfigResult> getCodeSigningConfigOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1872,12 +1896,12 @@ pulumi.Output<GetCodeSigningConfigResult> getCodeSigningConfigOutput(
 ///   }
 /// }
 ///
-/// data "aws_lambda_getfunction" "example" {
+/// data "aws_lambda_function" "example" {
 ///   function_name = "my-lambda-function"
 /// }
 ///
 /// output "functionArn" {
-///   value = data.aws_lambda_getfunction.example.arn
+///   value = data.aws_lambda_function.example.arn
 /// }
 /// ```
 /// ```java
@@ -2019,7 +2043,7 @@ pulumi.Output<GetCodeSigningConfigResult> getCodeSigningConfigOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2027,19 +2051,22 @@ pulumi.Output<GetCodeSigningConfigResult> getCodeSigningConfigOutput(
 ///   }
 /// }
 ///
-/// data "aws_lambda_getfunction" "example" {
+/// data "aws_lambda_function" "example" {
 ///   function_name = "api-handler"
 ///   qualifier     = "production"
 /// }
 ///
 /// # Use in API Gateway integration
 /// resource "aws_apigateway_integration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   rest_api                = exampleAwsApiGatewayRestApi.id
 ///   resource_id             = exampleAwsApiGatewayResource.id
 ///   http_method             = exampleAwsApiGatewayMethod.httpMethod
 ///   integration_http_method = "POST"
 ///   type                    = "AWS_PROXY"
-///   uri                     = data.aws_lambda_getfunction.example.invoke_arn
+///   uri                     = data.aws_lambda_function.example.invoke_arn
 /// }
 /// ```
 /// ```java
@@ -2072,9 +2099,9 @@ pulumi.Output<GetCodeSigningConfigResult> getCodeSigningConfigOutput(
 ///
 ///         // Use in API Gateway integration
 ///         var exampleIntegration = new Integration("exampleIntegration", IntegrationArgs.builder()
-///             .restApi(exampleAwsApiGatewayRestApi.id())
-///             .resourceId(exampleAwsApiGatewayResource.id())
-///             .httpMethod(exampleAwsApiGatewayMethod.httpMethod())
+///             .restApi(exampleAwsApiGatewayRestApi.get("id"))
+///             .resourceId(exampleAwsApiGatewayResource.get("id"))
+///             .httpMethod(exampleAwsApiGatewayMethod.get("httpMethod"))
 ///             .integrationHttpMethod("POST")
 ///             .type("AWS_PROXY")
 ///             .uri(example.invokeArn())
@@ -2141,7 +2168,7 @@ pulumi.Output<GetCodeSigningConfigResult> getCodeSigningConfigOutput(
 ///     name: "new-function",
 ///     role: reference.then(reference => reference.role),
 ///     handler: reference.then(reference => reference.handler),
-///     runtime: aws.lambda.Runtime[reference.then(reference => reference.runtime)],
+///     runtime: reference.then(reference => reference.runtime),
 ///     memorySize: reference.then(reference => reference.memorySize),
 ///     timeout: reference.then(reference => reference.timeout),
 ///     architectures: reference.then(reference => reference.architectures),
@@ -2176,7 +2203,7 @@ pulumi.Output<GetCodeSigningConfigResult> getCodeSigningConfigOutput(
 ///     name="new-function",
 ///     role=reference.role,
 ///     handler=reference.handler,
-///     runtime=aws.lambda_.Runtime(reference.runtime),
+///     runtime=reference.runtime,
 ///     memory_size=reference.memory_size,
 ///     timeout=reference.timeout,
 ///     architectures=reference.architectures)
@@ -2219,7 +2246,7 @@ pulumi.Output<GetCodeSigningConfigResult> getCodeSigningConfigOutput(
 ///         Name = "new-function",
 ///         Role = reference.Apply(getFunctionResult => getFunctionResult.Role),
 ///         Handler = reference.Apply(getFunctionResult => getFunctionResult.Handler),
-///         Runtime = reference.Apply(getFunctionResult => getFunctionResult.Runtime).Apply(System.Enum.Parse<Aws.Lambda.Runtime>),
+///         Runtime = reference.Apply(getFunctionResult => getFunctionResult.Runtime),
 ///         MemorySize = reference.Apply(getFunctionResult => getFunctionResult.MemorySize),
 ///         Timeout = reference.Apply(getFunctionResult => getFunctionResult.Timeout),
 ///         Architectures = reference.Apply(getFunctionResult => getFunctionResult.Architectures),
@@ -2228,7 +2255,7 @@ pulumi.Output<GetCodeSigningConfigResult> getCodeSigningConfigOutput(
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2236,31 +2263,36 @@ pulumi.Output<GetCodeSigningConfigResult> getCodeSigningConfigOutput(
 ///   }
 /// }
 ///
-/// data "aws_lambda_getfunction" "reference" {
+/// data "aws_lambda_function" "reference" {
 ///   function_name = "existing-function"
 /// }
 ///
 /// # Create new function with similar configuration
 /// resource "aws_lambda_function" "example" {
-///   vpc_config = {
-///     subnet_ids         = data.aws_lambda_getfunction.reference.vpc_config.subnet_ids
-///     security_group_ids = data.aws_lambda_getfunction.reference.vpc_config.security_group_ids
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   environment = {
-///     variables = data.aws_lambda_getfunction.reference.environment.variables
+///   vpc_config {
+///     subnet_ids         = data.aws_lambda_function.reference.vpc_config[0].subnet_ids
+///     security_group_ids = data.aws_lambda_function.reference.vpc_config[0].security_group_ids
 ///   }
-///   durable_config = one([for entry in data.aws_lambda_getfunction.reference.durable_configs : {
-///     "executionTimeout" = entry.executionTimeout
-///     "retentionPeriod"  = entry.retentionPeriod
-///   } ])
-///   code          = fileArchive("new-function.zip")
-///   name          = "new-function"
-///   role          = data.aws_lambda_getfunction.reference.role
-///   handler       = data.aws_lambda_getfunction.reference.handler
-///   runtime       = data.aws_lambda_getfunction.reference.runtime
-///   memory_size   = data.aws_lambda_getfunction.reference.memory_size
-///   timeout       = data.aws_lambda_getfunction.reference.timeout
-///   architectures = data.aws_lambda_getfunction.reference.architectures
+///   environment {
+///     variables = data.aws_lambda_function.reference.environment[0].variables
+///   }
+///   durable_config {
+///     content = one([for entry in data.aws_lambda_function.reference.durable_config : {
+///       "executionTimeout" = entry.executionTimeout
+///       "retentionPeriod"  = entry.retentionPeriod
+///     } ])
+///   }
+///   filename      = filearchive("new-function.zip")
+///   function_name = "new-function"
+///   role          = data.aws_lambda_function.reference.role
+///   handler       = data.aws_lambda_function.reference.handler
+///   runtime       = data.aws_lambda_function.reference.runtime
+///   memory_size   = data.aws_lambda_function.reference.memory_size
+///   timeout       = data.aws_lambda_function.reference.timeout
+///   architectures = data.aws_lambda_function.reference.architectures
 /// }
 /// # Get existing function details
 /// ```
@@ -2329,16 +2361,16 @@ pulumi.Output<GetCodeSigningConfigResult> getCodeSigningConfigOutput(
 ///
 ///     return new Dictionary<string, object?>
 ///     {
-///         ["versionComparison"] =
+///         ["versionComparison"] = new Dictionary<string, object?>
 ///         {
-///             { "specificVersion", version.Apply(getFunctionResult => getFunctionResult.Version) },
-///             { "latestVersion", latest.Apply(getFunctionResult => getFunctionResult.Version) },
-///             { "codeDifference", Output.Tuple(version, latest).Apply(values =>
+///             ["specificVersion"] = version.Apply(getFunctionResult => getFunctionResult.Version),
+///             ["latestVersion"] = latest.Apply(getFunctionResult => getFunctionResult.Version),
+///             ["codeDifference"] = Output.Tuple(version, latest).Apply(values =>
 ///             {
 ///                 var version = values.Item1;
 ///                 var latest = values.Item2;
 ///                 return version.Apply(getFunctionResult => getFunctionResult.CodeSha256) != latest.Apply(getFunctionResult => getFunctionResult.CodeSha256);
-///             }) },
+///             }),
 ///         },
 ///     };
 /// });
@@ -2379,7 +2411,7 @@ pulumi.Output<GetCodeSigningConfigResult> getCodeSigningConfigOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2387,11 +2419,11 @@ pulumi.Output<GetCodeSigningConfigResult> getCodeSigningConfigOutput(
 ///   }
 /// }
 ///
-/// data "aws_lambda_getfunction" "version" {
+/// data "aws_lambda_function" "version" {
 ///   function_name = "my-function"
 ///   qualifier     = "3"
 /// }
-/// data "aws_lambda_getfunction" "latest" {
+/// data "aws_lambda_function" "latest" {
 ///   function_name = "my-function"
 ///   qualifier     = "$LATEST"
 /// }
@@ -2401,9 +2433,9 @@ pulumi.Output<GetCodeSigningConfigResult> getCodeSigningConfigOutput(
 /// # Compare versions
 /// output "versionComparison" {
 ///   value = {
-///     "specificVersion" = data.aws_lambda_getfunction.version.version
-///     "latestVersion"   = data.aws_lambda_getfunction.latest.version
-///     "codeDifference"  = data.aws_lambda_getfunction.version.code_sha256 != data.aws_lambda_getfunction.latest.code_sha256
+///     "specificVersion" = data.aws_lambda_function.version.version
+///     "latestVersion"   = data.aws_lambda_function.latest.version
+///     "codeDifference"  = data.aws_lambda_function.version.code_sha256 != data.aws_lambda_function.latest.code_sha256
 ///   }
 /// }
 /// ```
@@ -2461,9 +2493,9 @@ pulumi.Output<GetCodeSigningConfigResult> getCodeSigningConfigOutput(
 ///     functionName: "my-durable-function",
 /// });
 /// export const durableSettings = {
-///     hasDurableConfig: durableFunction.then(durableFunction => durableFunction.durableConfigs).length.apply(length => length > 0),
-///     executionTimeout: pulumi.all([durableFunction.then(durableFunction => durableFunction.durableConfigs).length, durableFunction]).apply(([length, durableFunction]) => length > 0 ? durableFunction.durableConfigs?.[0]?.executionTimeout : null),
-///     retentionPeriod: pulumi.all([durableFunction.then(durableFunction => durableFunction.durableConfigs).length, durableFunction]).apply(([length, durableFunction]) => length > 0 ? durableFunction.durableConfigs?.[0]?.retentionPeriod : null),
+///     hasDurableConfig: durableFunction.then(durableFunction => durableFunction.durableConfigs.length).then(length => length > 0),
+///     executionTimeout: Promise.all([durableFunction.then(durableFunction => durableFunction.durableConfigs.length), durableFunction]).then(([length, durableFunction]) => length > 0 ? durableFunction.durableConfigs?.[0]?.executionTimeout : null),
+///     retentionPeriod: Promise.all([durableFunction.then(durableFunction => durableFunction.durableConfigs.length), durableFunction]).then(([length, durableFunction]) => length > 0 ? durableFunction.durableConfigs?.[0]?.retentionPeriod : null),
 /// };
 /// ```
 /// ```python
@@ -2472,9 +2504,9 @@ pulumi.Output<GetCodeSigningConfigResult> getCodeSigningConfigOutput(
 ///
 /// durable_function = aws.lambda_.get_function(function_name="my-durable-function")
 /// pulumi.export("durableSettings", {
-///     "hasDurableConfig": len(durable_function.durable_configs).apply(lambda length: length > 0),
-///     "executionTimeout": len(durable_function.durable_configs).apply(lambda length: durable_function.durable_configs[0].execution_timeout if length > 0 else None),
-///     "retentionPeriod": len(durable_function.durable_configs).apply(lambda length: durable_function.durable_configs[0].retention_period if length > 0 else None),
+///     "hasDurableConfig": len(durable_function.durable_configs) > 0,
+///     "executionTimeout": durable_function.durable_configs[0].execution_timeout if len(durable_function.durable_configs) > 0 else None,
+///     "retentionPeriod": durable_function.durable_configs[0].retention_period if len(durable_function.durable_configs) > 0 else None,
 /// })
 /// ```
 /// ```csharp
@@ -2492,21 +2524,21 @@ pulumi.Output<GetCodeSigningConfigResult> getCodeSigningConfigOutput(
 ///
 ///     return new Dictionary<string, object?>
 ///     {
-///         ["durableSettings"] =
+///         ["durableSettings"] = new Dictionary<string, object?>
 ///         {
-///             { "hasDurableConfig", durableFunction.Apply(getFunctionResult => getFunctionResult.DurableConfigs).Length().Apply(length => length > 0) },
-///             { "executionTimeout", Output.Tuple(durableFunction.Apply(getFunctionResult => getFunctionResult.DurableConfigs).Length(), durableFunction).Apply(values =>
+///             ["hasDurableConfig"] = durableFunction.Apply(getFunctionResult => getFunctionResult.DurableConfigs).Length.Apply(length => length > 0),
+///             ["executionTimeout"] = Output.Tuple(durableFunction.Apply(getFunctionResult => getFunctionResult.DurableConfigs).Length, durableFunction).Apply(values =>
 ///             {
 ///                 var length = values.Item1;
 ///                 var durableFunction = values.Item2;
 ///                 return length > 0 ? durableFunction.Apply(getFunctionResult => getFunctionResult.DurableConfigs[0]?.ExecutionTimeout) : null;
-///             }) },
-///             { "retentionPeriod", Output.Tuple(durableFunction.Apply(getFunctionResult => getFunctionResult.DurableConfigs).Length(), durableFunction).Apply(values =>
+///             }),
+///             ["retentionPeriod"] = Output.Tuple(durableFunction.Apply(getFunctionResult => getFunctionResult.DurableConfigs).Length, durableFunction).Apply(values =>
 ///             {
 ///                 var length = values.Item1;
 ///                 var durableFunction = values.Item2;
 ///                 return length > 0 ? durableFunction.Apply(getFunctionResult => getFunctionResult.DurableConfigs[0]?.RetentionPeriod) : null;
-///             }) },
+///             }),
 ///         },
 ///     };
 /// });
@@ -2527,35 +2559,29 @@ pulumi.Output<GetCodeSigningConfigResult> getCodeSigningConfigOutput(
 /// 		if err != nil {
 /// 			return err
 /// 		}
+/// 		var tmp0 pulumi.Int
+/// 		if bool(len(durableFunction.DurableConfigs) > 0) {
+/// 			tmp0 = durableFunction.DurableConfigs[0].ExecutionTimeout
+/// 		} else {
+/// 			tmp0 = nil
+/// 		}
+/// 		var tmp1 pulumi.Int
+/// 		if bool(len(durableFunction.DurableConfigs) > 0) {
+/// 			tmp1 = durableFunction.DurableConfigs[0].RetentionPeriod
+/// 		} else {
+/// 			tmp1 = nil
+/// 		}
 /// 		ctx.Export("durableSettings", pulumi.Map{
-/// 			"hasDurableConfig": len(durableFunction.DurableConfigs).ApplyT(func(length int) (bool, error) {
-/// 				return length > 0, nil
-/// 			}).(pulumi.BoolOutput),
-/// 			"executionTimeout": len(durableFunction.DurableConfigs).ApplyT(func(length int) (*int, error) {
-/// 				var tmp0 *int
-/// 				if length > 0 {
-/// 					tmp0 = durableFunction.DurableConfigs[0].ExecutionTimeout
-/// 				} else {
-/// 					tmp0 = nil
-/// 				}
-/// 				return &tmp0, nil
-/// 			}).(pulumi.IntPtrOutput),
-/// 			"retentionPeriod": len(durableFunction.DurableConfigs).ApplyT(func(length int) (*int, error) {
-/// 				var tmp1 *int
-/// 				if length > 0 {
-/// 					tmp1 = durableFunction.DurableConfigs[0].RetentionPeriod
-/// 				} else {
-/// 					tmp1 = nil
-/// 				}
-/// 				return &tmp1, nil
-/// 			}).(pulumi.IntPtrOutput),
+/// 			"hasDurableConfig": len(durableFunction.DurableConfigs) > 0,
+/// 			"executionTimeout": tmp0,
+/// 			"retentionPeriod":  tmp1,
 /// 		})
 /// 		return nil
 /// 	})
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2563,16 +2589,16 @@ pulumi.Output<GetCodeSigningConfigResult> getCodeSigningConfigOutput(
 ///   }
 /// }
 ///
-/// data "aws_lambda_getfunction" "durableFunction" {
+/// data "aws_lambda_function" "durableFunction" {
 ///   function_name = "my-durable-function"
 /// }
 ///
 /// # Output durable configuration details
 /// output "durableSettings" {
 ///   value = {
-///     "hasDurableConfig" = length(data.aws_lambda_getfunction.durableFunction.durable_configs) > 0
-///     "executionTimeout" = length(data.aws_lambda_getfunction.durableFunction.durable_configs) > 0 ? data.aws_lambda_getfunction.durableFunction.durable_configs[0].execution_timeout : null
-///     "retentionPeriod"  = length(data.aws_lambda_getfunction.durableFunction.durable_configs) > 0 ? data.aws_lambda_getfunction.durableFunction.durable_configs[0].retention_period : null
+///     "hasDurableConfig" = length(data.aws_lambda_function.durableFunction.durable_config) > 0
+///     "executionTimeout" = length(data.aws_lambda_function.durableFunction.durable_config) > 0 ? data.aws_lambda_function.durableFunction.durable_config[0].execution_timeout : null
+///     "retentionPeriod"  = length(data.aws_lambda_function.durableFunction.durable_config) > 0 ? data.aws_lambda_function.durableFunction.durable_config[0].retention_period : null
 ///   }
 /// }
 /// ```
@@ -2602,9 +2628,9 @@ pulumi.Output<GetCodeSigningConfigResult> getCodeSigningConfigOutput(
 ///             .build());
 ///
 ///         ctx.export("durableSettings", Map.ofEntries(
-///             Map.entry("hasDurableConfig", durableFunction.durableConfigs().size().applyValue(_length -> _length > 0)),
-///             Map.entry("executionTimeout", durableFunction.durableConfigs().size().applyValue(_length -> _length > 0 ? durableFunction.durableConfigs()[0].executionTimeout() : null)),
-///             Map.entry("retentionPeriod", durableFunction.durableConfigs().size().applyValue(_length -> _length > 0 ? durableFunction.durableConfigs()[0].retentionPeriod() : null))
+///             Map.entry("hasDurableConfig", durableFunction.durableConfigs().size() > 0),
+///             Map.entry("executionTimeout", durableFunction.durableConfigs().size() > 0 ? durableFunction.durableConfigs()[0].executionTimeout() : null),
+///             Map.entry("retentionPeriod", durableFunction.durableConfigs().size() > 0 ? durableFunction.durableConfigs()[0].retentionPeriod() : null)
 ///         ));
 ///     }
 /// }
@@ -2699,7 +2725,7 @@ pulumi.Output<GetFunctionResult> getFunctionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2707,12 +2733,12 @@ pulumi.Output<GetFunctionResult> getFunctionOutput(
 ///   }
 /// }
 ///
-/// data "aws_lambda_getfunctionurl" "example" {
+/// data "aws_lambda_function_url" "example" {
 ///   function_name = "my_lambda_function"
 /// }
 ///
 /// output "functionUrl" {
-///   value = data.aws_lambda_getfunctionurl.example.function_url
+///   value = data.aws_lambda_function_url.example.function_url
 /// }
 /// ```
 /// ```java
@@ -2878,7 +2904,7 @@ pulumi.Output<GetFunctionResult> getFunctionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2889,18 +2915,21 @@ pulumi.Output<GetFunctionResult> getFunctionOutput(
 ///   }
 /// }
 ///
-/// data "aws_lambda_getfunctionurl" "example" {
+/// data "aws_lambda_function_url" "example" {
 ///   function_name = exampleAwsLambdaFunction.functionName
 ///   qualifier     = "production"
 /// }
 ///
 /// # Use the URL in other resources
 /// resource "aws_route53_record" "lambda_alias" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = exampleAwsRoute53Zone.zoneId
 ///   name    = "api.example.com"
 ///   type    = "CNAME"
 ///   ttl     = 300
-///   records = [replace(data.aws_lambda_getfunctionurl.example.function_url, "https://", "")]
+///   records = [replace(data.aws_lambda_function_url.example.function_url, "https://", "")]
 /// }
 /// ```
 /// ```java
@@ -2929,13 +2958,13 @@ pulumi.Output<GetFunctionResult> getFunctionOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = LambdaFunctions.getFunctionUrl(GetFunctionUrlArgs.builder()
-///             .functionName(exampleAwsLambdaFunction.functionName())
+///             .functionName(exampleAwsLambdaFunction.get("functionName"))
 ///             .qualifier("production")
 ///             .build());
 ///
 ///         // Use the URL in other resources
 ///         var lambdaAlias = new Record("lambdaAlias", RecordArgs.builder()
-///             .zoneId(exampleAwsRoute53Zone.zoneId())
+///             .zoneId(exampleAwsRoute53Zone.get("zoneId"))
 ///             .name("api.example.com")
 ///             .type("CNAME")
 ///             .ttl(300)
@@ -2988,7 +3017,7 @@ pulumi.Output<GetFunctionResult> getFunctionOutput(
 /// const example = aws.lambda.getFunctionUrl({
 ///     functionName: "api_function",
 /// });
-/// const corsConfig = pulumi.all([example.then(example => example.cors).length, example]).apply(([length, example]) => length > 0 ? example.cors?.[0] : null);
+/// const corsConfig = Promise.all([example.then(example => example.cors.length), example]).then(([length, example]) => length > 0 ? example.cors?.[0] : null);
 /// const allowedOrigins = corsConfig != null ? corsConfig?.allowOrigins : [];
 /// export const corsAllowedOrigins = allowedOrigins;
 /// ```
@@ -2997,8 +3026,8 @@ pulumi.Output<GetFunctionResult> getFunctionOutput(
 /// import pulumi_aws as aws
 ///
 /// example = aws.lambda_.get_function_url(function_name="api_function")
-/// cors_config = len(example.cors).apply(lambda length: example.cors[0] if length > 0 else None)
-/// allowed_origins = cors_config["allowOrigins"] if cors_config is not None else []
+/// cors_config = example.cors[0] if len(example.cors) > 0 else None
+/// allowed_origins = cors_config.apply(lambda cors_config: cors_config.allow_origins if cors_config is not None else [])
 /// pulumi.export("corsAllowedOrigins", allowed_origins)
 /// ```
 /// ```csharp
@@ -3014,14 +3043,14 @@ pulumi.Output<GetFunctionResult> getFunctionOutput(
 ///         FunctionName = "api_function",
 ///     });
 ///
-///     var corsConfig = Output.Tuple(example.Apply(getFunctionUrlResult => getFunctionUrlResult.Cors).Length(), example).Apply(values =>
+///     var corsConfig = Output.Tuple(example.Apply(getFunctionUrlResult => getFunctionUrlResult.Cors).Length, example).Apply(values =>
 ///     {
 ///         var length = values.Item1;
 ///         var example = values.Item2;
 ///         return length > 0 ? example.Apply(getFunctionUrlResult => getFunctionUrlResult.Cors[0]) : null;
 ///     });
 ///
-///     var allowedOrigins = corsConfig != null ? corsConfig?.AllowOrigins : new[] {};
+///     var allowedOrigins = corsConfig != null ? corsConfig?.AllowOrigins : new object?[] {};
 ///
 ///     return new Dictionary<string, object?>
 ///     {
@@ -3045,29 +3074,29 @@ pulumi.Output<GetFunctionResult> getFunctionOutput(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		corsConfig := len(example.Cors).ApplyT(func(length int) (lambda.GetFunctionUrlCor, error) {
-/// 			var tmp0 lambda.GetFunctionUrlCor
-/// 			if length > 0 {
-/// 				tmp0 = example.Cors[0].(lambda.GetFunctionUrlCor)
-/// 			} else {
-/// 				tmp0 = nil
-/// 			}
-/// 			return tmp0, nil
-/// 		}).(lambda.GetFunctionUrlCorOutput)
-/// 		var tmp1 []string
-/// 		if corsConfig != nil {
-/// 			tmp1 = corsConfig.AllowOrigins
+/// 		var tmp0 lambda.GetFunctionUrlCor
+/// 		if bool(len(example.Cors) > 0) {
+/// 			tmp0 = example.Cors[0]
 /// 		} else {
-/// 			tmp1 = []interface{}{}
+/// 			tmp0 = nil
 /// 		}
-/// 		allowedOrigins := tmp1
+/// 		corsConfig := tmp0
+/// 		allowedOrigins := corsConfig.ApplyT(func(corsConfig *lambda.GetFunctionUrlCor) ([]string, error) {
+/// 			var tmp1 []string
+/// 			if corsConfig != nil {
+/// 				tmp1 = corsConfig.AllowOrigins
+/// 			} else {
+/// 				tmp1 = []interface{}{}
+/// 			}
+/// 			return tmp1, nil
+/// 		}).(pulumi.StringArrayOutput)
 /// 		ctx.Export("corsAllowedOrigins", allowedOrigins)
 /// 		return nil
 /// 	})
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3075,12 +3104,12 @@ pulumi.Output<GetFunctionResult> getFunctionOutput(
 ///   }
 /// }
 ///
-/// data "aws_lambda_getfunctionurl" "example" {
+/// data "aws_lambda_function_url" "example" {
 ///   function_name = "api_function"
 /// }
 ///
 /// locals {
-///   corsConfig = length(data.aws_lambda_getfunctionurl.example.cors) > 0 ? data.aws_lambda_getfunctionurl.example.cors[0] : null
+///   corsConfig = length(data.aws_lambda_function_url.example.cors) > 0 ? data.aws_lambda_function_url.example.cors[0] : null
 /// }
 /// locals {
 ///   allowedOrigins = local.corsConfig != null ? local.corsConfig.allowOrigins : []
@@ -3114,9 +3143,9 @@ pulumi.Output<GetFunctionResult> getFunctionOutput(
 ///             .functionName("api_function")
 ///             .build());
 ///
-///         final var corsConfig = example.cors().size().applyValue(_length -> _length > 0 ? example.cors()[0] : null);
+///         final var corsConfig = example.cors().size() > 0 ? example.cors()[0] : null;
 ///
-///         final var allowedOrigins = corsConfig != null ? corsConfig.allowOrigins() : Arrays.asList();
+///         final var allowedOrigins = corsConfig.applyValue(_corsConfig -> _corsConfig != null ? _corsConfig.allowOrigins() : Arrays.asList());
 ///
 ///         ctx.export("corsAllowedOrigins", allowedOrigins);
 ///     }
@@ -3160,7 +3189,7 @@ pulumi.Output<GetFunctionUrlResult> getFunctionUrlOutput(
 /// import * as aws from "@pulumi/aws";
 ///
 /// const all = aws.lambda.getFunctions({});
-/// export const functionCount = all.then(all => all.functionNames).length;
+/// export const functionCount = all.then(all => all.functionNames.length);
 /// export const allFunctionNames = all.then(all => all.functionNames);
 /// ```
 /// ```python
@@ -3183,7 +3212,7 @@ pulumi.Output<GetFunctionUrlResult> getFunctionUrlOutput(
 ///
 ///     return new Dictionary<string, object?>
 ///     {
-///         ["functionCount"] = all.Apply(getFunctionsResult => getFunctionsResult.FunctionNames).Length(),
+///         ["functionCount"] = all.Apply(getFunctionsResult => getFunctionsResult.FunctionNames).Length,
 ///         ["allFunctionNames"] = all.Apply(getFunctionsResult => getFunctionsResult.FunctionNames),
 ///     };
 /// });
@@ -3209,7 +3238,7 @@ pulumi.Output<GetFunctionUrlResult> getFunctionUrlOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3217,14 +3246,14 @@ pulumi.Output<GetFunctionUrlResult> getFunctionUrlOutput(
 ///   }
 /// }
 ///
-/// data "aws_lambda_getfunctions" "all" {
+/// data "aws_lambda_functions" "all" {
 /// }
 ///
 /// output "functionCount" {
-///   value = length(data.aws_lambda_getfunctions.all.function_names)
+///   value = length(data.aws_lambda_functions.all.function_names)
 /// }
 /// output "allFunctionNames" {
-///   value = data.aws_lambda_getfunctions.all.function_names
+///   value = data.aws_lambda_functions.all.function_names
 /// }
 /// ```
 /// ```java
@@ -3276,32 +3305,34 @@ pulumi.Output<GetFunctionUrlResult> getFunctionUrlOutput(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// // Get all Lambda functions
-/// const all = aws.lambda.getFunctions({});
-/// // Create CloudWatch alarms for all functions
-/// const lambdaErrors: aws.cloudwatch.MetricAlarm[] = [];
-/// all.then(all => all.functionNames).length.apply(rangeBody => {
-///     for (let range = 0; range < rangeBody; range++) {
-///         lambdaErrors.push(new aws.cloudwatch.MetricAlarm(`lambda_errors-${range}`, {
-///             name: all.then(all => `${all.functionNames[range]}-errors`),
-///             comparisonOperator: "GreaterThanThreshold",
-///             evaluationPeriods: 2,
-///             metricName: "Errors",
-///             namespace: "AWS/Lambda",
-///             period: 300,
-///             statistic: "Sum",
-///             threshold: 5,
-///             alarmDescription: "This metric monitors lambda errors",
-///             dimensions: {
-///                 FunctionName: all.then(all => all.functionNames[range]),
-///             },
-///             tags: {
-///                 Environment: "monitoring",
-///                 Purpose: "lambda-error-tracking",
-///             },
-///         }));
-///     }
-/// });
+/// export = async () => {
+///     // Get all Lambda functions
+///     const all = await aws.lambda.getFunctions({});
+///     // Create CloudWatch alarms for all functions
+///     const lambdaErrors: aws.cloudwatch.MetricAlarm[] = [];
+/// all.functionNames.length.apply(rangeBody => {
+///         for (let range = 0; range < rangeBody; range++) {
+///             lambdaErrors.push(new aws.cloudwatch.MetricAlarm(`lambda_errors-${range}`, {
+///                 name: `${all.functionNames[range]}-errors`,
+///                 comparisonOperator: "GreaterThanThreshold",
+///                 evaluationPeriods: 2,
+///                 metricName: "Errors",
+///                 namespace: "AWS/Lambda",
+///                 period: 300,
+///                 statistic: "Sum",
+///                 threshold: 5,
+///                 alarmDescription: "This metric monitors lambda errors",
+///                 dimensions: {
+///                     FunctionName: all.functionNames[range],
+///                 },
+///                 tags: {
+///                     Environment: "monitoring",
+///                     Purpose: "lambda-error-tracking",
+///                 },
+///             }));
+///         }
+///     });
+/// }
 /// ```
 /// ```python
 /// import pulumi
@@ -3337,35 +3368,36 @@ pulumi.Output<GetFunctionUrlResult> getFunctionUrlOutput(
 /// ```csharp
 /// using System.Collections.Generic;
 /// using System.Linq;
+/// using System.Threading.Tasks;
 /// using Pulumi;
 /// using Aws = Pulumi.Aws;
 ///
-/// return await Deployment.RunAsync(() =>
+/// return await Deployment.RunAsync(async() =>
 /// {
 ///     // Get all Lambda functions
-///     var all = Aws.Lambda.GetFunctions.Invoke();
+///     var all = await Aws.Lambda.GetFunctions.InvokeAsync();
 ///
 ///     // Create CloudWatch alarms for all functions
 ///     var lambdaErrors = new List<Aws.CloudWatch.MetricAlarm>();
-///     all.Apply(getFunctionsResult => getFunctionsResult.FunctionNames).Length().Apply(rangeBody =>
+///     all.FunctionNames.Length.Apply(rangeBody =>
 ///     {
 ///         for (var rangeIndex = 0; rangeIndex < rangeBody; rangeIndex++)
 ///         {
 ///             var range = new { Value = rangeIndex };
 ///             lambdaErrors.Add(new Aws.CloudWatch.MetricAlarm($"lambda_errors-{range.Value}", new()
 ///             {
-///                 Name = $"{all.Apply(getFunctionsResult => getFunctionsResult.FunctionNames)[range.Value]}-errors",
+///                 Name = $"{all.FunctionNames[range.Value]}-errors",
 ///                 ComparisonOperator = "GreaterThanThreshold",
 ///                 EvaluationPeriods = 2,
 ///                 MetricName = "Errors",
 ///                 Namespace = "AWS/Lambda",
 ///                 Period = 300,
 ///                 Statistic = "Sum",
-///                 Threshold = 5,
+///                 Threshold = 5.0,
 ///                 AlarmDescription = "This metric monitors lambda errors",
 ///                 Dimensions =
 ///                 {
-///                     { "FunctionName", all.Apply(getFunctionsResult => getFunctionsResult.FunctionNames)[range.Value] },
+///                     { "FunctionName", all.FunctionNames[range.Value] },
 ///                 },
 ///                 Tags =
 ///                 {
@@ -3429,7 +3461,7 @@ pulumi.Output<GetFunctionUrlResult> getFunctionUrlOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3437,13 +3469,19 @@ pulumi.Output<GetFunctionUrlResult> getFunctionUrlOutput(
 ///   }
 /// }
 ///
-/// data "aws_lambda_getfunctions" "all" {
+/// data "aws_lambda_functions" "all" {
 /// }
 ///
 /// # Create CloudWatch alarms for all functions
-/// resource "aws_cloudwatch_metricalarm" "lambda_errors" {
-///   count               = length(data.aws_lambda_getfunctions.all.function_names)
-///   name                ="${data.aws_lambda_getfunctions.all.function_names[count.index]}-errors"
+/// resource "aws_cloudwatch_metric_alarm" "lambda_errors" {
+///   count = length(data.aws_lambda_functions.all.function_names)
+///   pulumi {
+///     name ="lambda_errors-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   alarm_name          ="${data.aws_lambda_functions.all.function_names[count.index]}-errors"
 ///   comparison_operator = "GreaterThanThreshold"
 ///   evaluation_periods  = "2"
 ///   metric_name         = "Errors"
@@ -3453,7 +3491,7 @@ pulumi.Output<GetFunctionUrlResult> getFunctionUrlOutput(
 ///   threshold           = "5"
 ///   alarm_description   = "This metric monitors lambda errors"
 ///   dimensions = {
-///     "FunctionName" = data.aws_lambda_getfunctions.all.function_names[count.index]
+///     "FunctionName" = data.aws_lambda_functions.all.function_names[count.index]
 ///   }
 ///   tags = {
 ///     "Environment" = "monitoring"
@@ -3581,7 +3619,7 @@ pulumi.Output<GetFunctionUrlResult> getFunctionUrlOutput(
 /// pulumi.export("workerFunctions", worker_functions)
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3592,15 +3630,15 @@ pulumi.Output<GetFunctionUrlResult> getFunctionUrlOutput(
 ///   }
 /// }
 ///
-/// data "aws_lambda_getfunctions" "all" {
+/// data "aws_lambda_functions" "all" {
 /// }
 ///
 /// # Get all functions
 /// locals {
-///   apiFunctions = [for name in data.aws_lambda_getfunctions.all.function_names : name if can(regex("^api-", name))]
+///   apiFunctions = [for name in data.aws_lambda_functions.all.function_names : name if can(regex("^api-", name))]
 /// }
 /// locals {
-///   workerFunctions = [for name in data.aws_lambda_getfunctions.all.function_names : name if can(regex("^worker-", name))]
+///   workerFunctions = [for name in data.aws_lambda_functions.all.function_names : name if can(regex("^worker-", name))]
 /// }
 /// output "apiFunctions" {
 ///   value = local.apiFunctions
@@ -3621,16 +3659,16 @@ pulumi.Output<GetFunctionUrlResult> getFunctionUrlOutput(
 /// export = async () => {
 ///     const all = await aws.lambda.getFunctions({});
 ///     // Get detailed information for each function
-///     const details = .map(__index => (await aws.lambda.getFunction({
+///     const details = Array.from({length: all.functionNames.length}, (_, i) => i).apply(range => range.map(__index => (await aws.lambda.getFunction({
 ///         functionName: all.functionNames[__index],
-///     })));
+///     }))));
 ///     const functionInventory = .map(([i, name]) => ({
 ///         name: name,
 ///         arn: all.functionArns[i],
-///         runtime: details.apply(details => details[i].runtime),
-///         memorySize: details.apply(details => details[i].memorySize),
-///         timeout: details.apply(details => details[i].timeout),
-///         handler: details.apply(details => details[i].handler),
+///         runtime: details[i].runtime,
+///         memorySize: details[i].memorySize,
+///         timeout: details[i].timeout,
+///         handler: details[i].handler,
 ///     }));
 ///     return {
 ///         functionInventory: functionInventory,
@@ -3643,14 +3681,14 @@ pulumi.Output<GetFunctionUrlResult> getFunctionUrlOutput(
 ///
 /// all = aws.lambda_.get_functions()
 /// # Get detailed information for each function
-/// details = [aws.lambda_.get_function(function_name=all.function_names[__index]) for __index in len(all.function_names).apply(lambda length: range(length))]
+/// details = range(len(all.function_names)).apply(lambda range: [aws.lambda_.get_function(function_name=all.function_names[__index]) for __index in range])
 /// function_inventory = [{
 ///     "name": name,
 ///     "arn": all.function_arns[i],
-///     "runtime": details.apply(lambda details: details[i].runtime),
-///     "memorySize": details.apply(lambda details: details[i].memory_size),
-///     "timeout": details.apply(lambda details: details[i].timeout),
-///     "handler": details.apply(lambda details: details[i].handler),
+///     "runtime": details[i]["runtime"],
+///     "memorySize": details[i]["memorySize"],
+///     "timeout": details[i]["timeout"],
+///     "handler": details[i]["handler"],
 /// } for i, name in enumerate(all.function_names)]
 /// pulumi.export("functionInventory", function_inventory)
 /// ```
@@ -3665,7 +3703,7 @@ pulumi.Output<GetFunctionUrlResult> getFunctionUrlOutput(
 ///     var all = Aws.Lambda.GetFunctions.Invoke();
 ///
 ///     // Get detailed information for each function
-///     var details = ;
+///     var details = _arg1_;
 ///
 ///     var functionInventory = Output.Tuple(all, details).Apply(values =>
 ///     {
@@ -3692,7 +3730,7 @@ pulumi.Output<GetFunctionUrlResult> getFunctionUrlOutput(
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3700,21 +3738,21 @@ pulumi.Output<GetFunctionUrlResult> getFunctionUrlOutput(
 ///   }
 /// }
 ///
-/// data "aws_lambda_getfunctions" "all" {
+/// data "aws_lambda_functions" "all" {
 /// }
-/// data "aws_lambda_getfunction" "invoke_1" {
-///   for_each      = toset(range(length(data.aws_lambda_getfunctions.all.function_names)))
-///   function_name = data.aws_lambda_getfunctions.all.function_names[each.value]
+/// data "aws_lambda_function" "invoke_1" {
+///   for_each      = toset(range(length(data.aws_lambda_functions.all.function_names)))
+///   function_name = data.aws_lambda_functions.all.function_names[each.value]
 /// }
 ///
 /// # Get detailed information for each function
 /// locals {
-///   details = [for __index in range(length(data.aws_lambda_getfunctions.all.function_names)) : data.aws_lambda_getfunction.invoke_1[__index]]
+///   details = [for __index in range(length(data.aws_lambda_functions.all.function_names)) : data.aws_lambda_function.invoke_1[__index]]
 /// }
 /// locals {
-///   functionInventory = [for i, name in data.aws_lambda_getfunctions.all.function_names : {
+///   functionInventory = [for i, name in data.aws_lambda_functions.all.function_names : {
 ///     "name"       = name
-///     "arn"        = data.aws_lambda_getfunctions.all.function_arns[i]
+///     "arn"        = data.aws_lambda_functions.all.function_arns[i]
 ///     "runtime"    = local.details[i].runtime
 ///     "memorySize" = local.details[i].memory_size
 ///     "timeout"    = local.details[i].timeout
@@ -3858,7 +3896,7 @@ pulumi.Output<GetFunctionsResult> getFunctionsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3869,7 +3907,7 @@ pulumi.Output<GetFunctionsResult> getFunctionsOutput(
 ///   }
 /// }
 ///
-/// data "aws_lambda_getinvocation" "example" {
+/// data "aws_lambda_invocation" "example" {
 ///   function_name = exampleAwsLambdaFunction.functionName
 ///   input = jsonencode({
 ///     "operation" = "getStatus"
@@ -3878,7 +3916,7 @@ pulumi.Output<GetFunctionsResult> getFunctionsOutput(
 /// }
 ///
 /// output "result" {
-///   value = jsondecode(data.aws_lambda_getinvocation.example.result)
+///   value = jsondecode(data.aws_lambda_invocation.example.result)
 /// }
 /// ```
 /// ```java
@@ -3906,7 +3944,7 @@ pulumi.Output<GetFunctionsResult> getFunctionsOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = LambdaFunctions.getInvocation(GetInvocationArgs.builder()
-///             .functionName(exampleAwsLambdaFunction.functionName())
+///             .functionName(exampleAwsLambdaFunction.get("functionName"))
 ///             .input(serializeJson(
 ///                 jsonObject(
 ///                     jsonProperty("operation", "getStatus"),
@@ -3964,11 +4002,11 @@ pulumi.Output<GetFunctionsResult> getFunctionsOutput(
 /// })).then(invoke => invoke.result);
 /// // Use dynamic configuration
 /// const example = new aws.elasticache.Cluster("example", {
-///     clusterId: config?.cache?.clusterId,
-///     engine: config?.cache?.engine,
-///     nodeType: config?.cache?.nodeType,
+///     clusterId: String(config?.cache?.clusterId),
+///     engine: String(config?.cache?.engine),
+///     nodeType: String(config?.cache?.nodeType),
 ///     numCacheNodes: Number(config?.cache?.nodes),
-///     parameterGroupName: config?.cache?.parameterGroup,
+///     parameterGroupName: String(config?.cache?.parameterGroup),
 ///     tags: config?.tags,
 /// });
 /// ```
@@ -4027,11 +4065,11 @@ pulumi.Output<GetFunctionsResult> getFunctionsOutput(
 ///     // Use dynamic configuration
 ///     var example = new Aws.ElastiCache.Cluster("example", new()
 ///     {
-///         ClusterId = config?.Cache?.ClusterId,
-///         Engine = config?.Cache?.Engine,
-///         NodeType = config?.Cache?.NodeType,
-///         NumCacheNodes = config?.Cache?.Nodes,
-///         ParameterGroupName = config?.Cache?.ParameterGroup,
+///         ClusterId = config?.Cache?.ClusterId.ToString(System.Globalization.CultureInfo.InvariantCulture),
+///         Engine = config?.Cache?.Engine.ToString(System.Globalization.CultureInfo.InvariantCulture),
+///         NodeType = config?.Cache?.NodeType.ToString(System.Globalization.CultureInfo.InvariantCulture),
+///         NumCacheNodes = int.Parse(config?.Cache?.Nodes, System.Globalization.CultureInfo.InvariantCulture),
+///         ParameterGroupName = config?.Cache?.ParameterGroup.ToString(System.Globalization.CultureInfo.InvariantCulture),
 ///         Tags = config?.Tags,
 ///     });
 ///
@@ -4089,7 +4127,7 @@ pulumi.Output<GetFunctionsResult> getFunctionsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -4100,7 +4138,7 @@ pulumi.Output<GetFunctionsResult> getFunctionsOutput(
 ///   }
 /// }
 ///
-/// data "aws_lambda_getinvocation" "resourceConfig" {
+/// data "aws_lambda_invocation" "resourceConfig" {
 ///   function_name = "resource-config-generator"
 ///   qualifier     = "production"
 ///   input = jsonencode({
@@ -4112,6 +4150,9 @@ pulumi.Output<GetFunctionsResult> getFunctionsOutput(
 ///
 /// # Use dynamic configuration
 /// resource "aws_elasticache_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id           = local.config.cache.clusterId
 ///   engine               = local.config.cache.engine
 ///   node_type            = local.config.cache.nodeType
@@ -4121,7 +4162,7 @@ pulumi.Output<GetFunctionsResult> getFunctionsOutput(
 /// }
 /// # Get resource configuration from Lambda
 /// locals {
-///   config = jsondecode(data.aws_lambda_getinvocation.resourceConfig.result)
+///   config = jsondecode(data.aws_lambda_invocation.resourceConfig.result)
 /// }
 /// ```
 /// ```java
@@ -4157,7 +4198,7 @@ pulumi.Output<GetFunctionsResult> getFunctionsOutput(
 ///             .input(serializeJson(
 ///                 jsonObject(
 ///                     jsonProperty("environment", environment),
-///                     jsonProperty("region", current.region()),
+///                     jsonProperty("region", current.get("region")),
 ///                     jsonProperty("service", "api")
 ///                 )))
 ///             .build());
@@ -4168,11 +4209,11 @@ pulumi.Output<GetFunctionsResult> getFunctionsOutput(
 ///
 ///         // Use dynamic configuration
 ///         var example = new Cluster("example", ClusterArgs.builder()
-///             .clusterId(config.cache().clusterId())
-///             .engine(config.cache().engine())
-///             .nodeType(config.cache().nodeType())
-///             .numCacheNodes(config.cache().nodes())
-///             .parameterGroupName(config.cache().parameterGroup())
+///             .clusterId(((String) config.cache().clusterId()))
+///             .engine(((String) config.cache().engine()))
+///             .nodeType(((String) config.cache().nodeType()))
+///             .numCacheNodes(((Number) config.cache().nodes()).intValue())
+///             .parameterGroupName(((String) config.cache().parameterGroup()))
 ///             .tags(config.tags())
 ///             .build());
 ///
@@ -4339,7 +4380,7 @@ pulumi.Output<GetInvocationResult> getInvocationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -4347,18 +4388,21 @@ pulumi.Output<GetInvocationResult> getInvocationOutput(
 ///   }
 /// }
 ///
-/// data "aws_lambda_getlayerversion" "example" {
+/// data "aws_lambda_layer_version" "example" {
 ///   layer_name = "my-shared-utilities"
 /// }
 ///
 /// # Use the layer in a Lambda function
 /// resource "aws_lambda_function" "example" {
-///   code    = fileArchive("function.zip")
-///   name    = "example_function"
-///   role    = lambdaRole.arn
-///   handler = "index.handler"
-///   runtime = "nodejs24.x"
-///   layers  = [data.aws_lambda_getlayerversion.example.arn]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filename      = filearchive("function.zip")
+///   function_name = "example_function"
+///   role          = lambdaRole.arn
+///   handler       = "index.handler"
+///   runtime       = "nodejs24.x"
+///   layers        = [data.aws_lambda_layer_version.example.arn]
 /// }
 /// ```
 /// ```java
@@ -4393,7 +4437,7 @@ pulumi.Output<GetInvocationResult> getInvocationOutput(
 ///         var exampleFunction = new Function("exampleFunction", FunctionArgs.builder()
 ///             .code(new FileArchive("function.zip"))
 ///             .name("example_function")
-///             .role(lambdaRole.arn())
+///             .role(lambdaRole.get("arn"))
 ///             .handler("index.handler")
 ///             .runtime("nodejs24.x")
 ///             .layers(example.arn())
@@ -4471,11 +4515,11 @@ pulumi.Output<GetInvocationResult> getInvocationOutput(
 ///
 ///     return new Dictionary<string, object?>
 ///     {
-///         ["layerInfo"] =
+///         ["layerInfo"] = new Dictionary<string, object?>
 ///         {
-///             { "arn", example.Apply(getLayerVersionResult => getLayerVersionResult.Arn) },
-///             { "version", example.Apply(getLayerVersionResult => getLayerVersionResult.Version) },
-///             { "description", example.Apply(getLayerVersionResult => getLayerVersionResult.Description) },
+///             ["arn"] = example.Apply(getLayerVersionResult => getLayerVersionResult.Arn),
+///             ["version"] = example.Apply(getLayerVersionResult => getLayerVersionResult.Version),
+///             ["description"] = example.Apply(getLayerVersionResult => getLayerVersionResult.Description),
 ///         },
 ///     };
 /// });
@@ -4507,7 +4551,7 @@ pulumi.Output<GetInvocationResult> getInvocationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -4515,16 +4559,16 @@ pulumi.Output<GetInvocationResult> getInvocationOutput(
 ///   }
 /// }
 ///
-/// data "aws_lambda_getlayerversion" "example" {
+/// data "aws_lambda_layer_version" "example" {
 ///   layer_name = "production-utilities"
 ///   version    = 5
 /// }
 ///
 /// output "layerInfo" {
 ///   value = {
-///     "arn"         = data.aws_lambda_getlayerversion.example.arn
-///     "version"     = data.aws_lambda_getlayerversion.example.version
-///     "description" = data.aws_lambda_getlayerversion.example.description
+///     "arn"         = data.aws_lambda_layer_version.example.arn
+///     "version"     = data.aws_lambda_layer_version.example.version
+///     "description" = data.aws_lambda_layer_version.example.description
 ///   }
 /// }
 /// ```
@@ -4724,7 +4768,7 @@ pulumi.Output<GetInvocationResult> getInvocationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -4732,24 +4776,27 @@ pulumi.Output<GetInvocationResult> getInvocationOutput(
 ///   }
 /// }
 ///
-/// data "aws_lambda_getlayerversion" "pythonLayer" {
+/// data "aws_lambda_layer_version" "pythonLayer" {
 ///   layer_name         = "python-dependencies"
 ///   compatible_runtime = "python3.12"
 /// }
-/// data "aws_lambda_getlayerversion" "armLayer" {
+/// data "aws_lambda_layer_version" "armLayer" {
 ///   layer_name              = "optimized-libraries"
 ///   compatible_architecture = "arm64"
 /// }
 ///
 /// # Use both layers in a function
 /// resource "aws_lambda_function" "example" {
-///   code          = fileArchive("function.zip")
-///   name          = "multi_layer_function"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filename      = filearchive("function.zip")
+///   function_name = "multi_layer_function"
 ///   role          = lambdaRole.arn
 ///   handler       = "app.handler"
 ///   runtime       = "python3.12"
 ///   architectures = ["arm64"]
-///   layers        = [data.aws_lambda_getlayerversion.pythonLayer.arn, data.aws_lambda_getlayerversion.armLayer.arn]
+///   layers        = [data.aws_lambda_layer_version.pythonLayer.arn, data.aws_lambda_layer_version.armLayer.arn]
 /// }
 /// # Find latest layer version compatible with Python 3.12
 /// # Find latest layer version compatible with ARM64 architecture
@@ -4794,7 +4841,7 @@ pulumi.Output<GetInvocationResult> getInvocationOutput(
 ///         var example = new Function("example", FunctionArgs.builder()
 ///             .code(new FileArchive("function.zip"))
 ///             .name("multi_layer_function")
-///             .role(lambdaRole.arn())
+///             .role(lambdaRole.get("arn"))
 ///             .handler("app.handler")
 ///             .runtime("python3.12")
 ///             .architectures("arm64")
@@ -4895,7 +4942,7 @@ pulumi.Output<GetInvocationResult> getInvocationOutput(
 ///         Version = 3,
 ///     });
 ///
-///     var useLatestLayer = latest.Apply(getLayerVersionResult => getLayerVersionResult.Version) > 5;
+///     var useLatestLayer = (double)latest.Apply(getLayerVersionResult => getLayerVersionResult.Version) > 5.0;
 ///
 ///     var selectedLayer = useLatestLayer ? latest.Apply(getLayerVersionResult => getLayerVersionResult.Arn) : stable.Apply(getLayerVersionResult => getLayerVersionResult.Arn);
 ///
@@ -4930,7 +4977,7 @@ pulumi.Output<GetInvocationResult> getInvocationOutput(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		useLatestLayer := pulumi.Float64(latest.Version) > 5
+/// 		useLatestLayer := latest.Version > 5
 /// 		var tmp0 *string
 /// 		if useLatestLayer {
 /// 			tmp0 = latest.Arn
@@ -4950,7 +4997,7 @@ pulumi.Output<GetInvocationResult> getInvocationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -4958,10 +5005,10 @@ pulumi.Output<GetInvocationResult> getInvocationOutput(
 ///   }
 /// }
 ///
-/// data "aws_lambda_getlayerversion" "latest" {
+/// data "aws_lambda_layer_version" "latest" {
 ///   layer_name = "shared-layer"
 /// }
-/// data "aws_lambda_getlayerversion" "stable" {
+/// data "aws_lambda_layer_version" "stable" {
 ///   layer_name = "shared-layer"
 ///   version    = 3
 /// }
@@ -4969,13 +5016,13 @@ pulumi.Output<GetInvocationResult> getInvocationOutput(
 /// # Get latest version
 /// # Get specific version for comparison
 /// locals {
-///   useLatestLayer = data.aws_lambda_getlayerversion.latest.version > 5
+///   useLatestLayer = data.aws_lambda_layer_version.latest.version > 5
 /// }
 /// locals {
-///   selectedLayer = local.useLatestLayer ? data.aws_lambda_getlayerversion.latest.arn : data.aws_lambda_getlayerversion.stable.arn
+///   selectedLayer = local.useLatestLayer ? data.aws_lambda_layer_version.latest.arn : data.aws_lambda_layer_version.stable.arn
 /// }
 /// output "selectedLayerVersion" {
-///   value = local.useLatestLayer ? data.aws_lambda_getlayerversion.latest.version : data.aws_lambda_getlayerversion.stable.version
+///   value = local.useLatestLayer ? data.aws_lambda_layer_version.latest.version : data.aws_lambda_layer_version.stable.version
 /// }
 /// ```
 /// ```java
@@ -5122,7 +5169,7 @@ pulumi.Output<GetInvocationResult> getInvocationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -5130,18 +5177,21 @@ pulumi.Output<GetInvocationResult> getInvocationOutput(
 ///   }
 /// }
 ///
-/// data "aws_lambda_getlayerversion" "sharedLayer" {
+/// data "aws_lambda_layer_version" "sharedLayer" {
 ///   layer_version_arn = "arn:aws:lambda:us-east-1:123456789012:layer:shared-utilities:5"
 /// }
 ///
 /// # Use in your Lambda function
 /// resource "aws_lambda_function" "example" {
-///   code    = fileArchive("function.zip")
-///   name    = "cross_account_example"
-///   role    = lambdaRole.arn
-///   handler = "index.handler"
-///   runtime = "nodejs24.x"
-///   layers  = [data.aws_lambda_getlayerversion.sharedLayer.arn]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filename      = filearchive("function.zip")
+///   function_name = "cross_account_example"
+///   role          = lambdaRole.arn
+///   handler       = "index.handler"
+///   runtime       = "nodejs24.x"
+///   layers        = [data.aws_lambda_layer_version.sharedLayer.arn]
 /// }
 /// # Reference a layer from another AWS account using full ARN with version
 /// ```
@@ -5178,7 +5228,7 @@ pulumi.Output<GetInvocationResult> getInvocationOutput(
 ///         var example = new Function("example", FunctionArgs.builder()
 ///             .code(new FileArchive("function.zip"))
 ///             .name("cross_account_example")
-///             .role(lambdaRole.arn())
+///             .role(lambdaRole.get("arn"))
 ///             .handler("index.handler")
 ///             .runtime("nodejs24.x")
 ///             .layers(sharedLayer.arn())
@@ -5266,7 +5316,7 @@ pulumi.Output<GetInvocationResult> getInvocationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -5274,7 +5324,7 @@ pulumi.Output<GetInvocationResult> getInvocationOutput(
 ///   }
 /// }
 ///
-/// data "aws_lambda_getlayerversion" "latestShared" {
+/// data "aws_lambda_layer_version" "latestShared" {
 ///   layer_version_arn = "arn:aws:lambda:us-east-1:123456789012:layer:shared-utilities"
 /// }
 ///

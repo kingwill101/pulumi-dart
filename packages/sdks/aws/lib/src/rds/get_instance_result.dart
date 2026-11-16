@@ -64,6 +64,8 @@ class GetInstanceResult {
   final String? monitoringRoleArn;
   /// If the DB instance is a Multi-AZ deployment.
   final bool? multiAz;
+  /// Whether the DB instance uses the multi-tenant configuration of the Oracle CDB architecture.
+  final bool? multiTenant;
   /// Network type of the DB instance.
   final String? networkType;
   /// Provides the list of option group memberships for this DB instance.
@@ -126,6 +128,7 @@ class GetInstanceResult {
   /// [monitoringInterval] Interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB instance.
   /// [monitoringRoleArn] ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to CloudWatch Logs.
   /// [multiAz] If the DB instance is a Multi-AZ deployment.
+  /// [multiTenant] Whether the DB instance uses the multi-tenant configuration of the Oracle CDB architecture.
   /// [networkType] Network type of the DB instance.
   /// [optionGroupMemberships] Provides the list of option group memberships for this DB instance.
   /// [port] Database endpoint port, primarily used by an Aurora DB cluster. For a conventional RDS DB instance, the `dbInstancePort` is typically the preferred choice.
@@ -173,6 +176,7 @@ class GetInstanceResult {
     this.monitoringInterval,
     this.monitoringRoleArn,
     this.multiAz,
+    this.multiTenant,
     this.networkType,
     this.optionGroupMemberships,
     this.port,
@@ -223,6 +227,7 @@ class GetInstanceResult {
       'monitoringInterval': ?monitoringInterval,
       'monitoringRoleArn': ?monitoringRoleArn,
       'multiAz': ?multiAz,
+      'multiTenant': ?multiTenant,
       'networkType': ?networkType,
       'optionGroupMemberships': ?optionGroupMemberships,
       'port': ?port,
@@ -274,6 +279,7 @@ class GetInstanceResult {
       monitoringInterval: (() { final guardedValue = map['monitoringInterval']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       monitoringRoleArn: (() { final guardedValue = map['monitoringRoleArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       multiAz: (() { final guardedValue = map['multiAz']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      multiTenant: (() { final guardedValue = map['multiTenant']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       networkType: (() { final guardedValue = map['networkType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       optionGroupMemberships: (() { final guardedValue = map['optionGroupMemberships']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),

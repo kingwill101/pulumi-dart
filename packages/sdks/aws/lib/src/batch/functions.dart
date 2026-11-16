@@ -64,7 +64,7 @@ import 'get_scheduling_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,7 @@ import 'get_scheduling_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_batch_getcomputeenvironment" "batch-mongo" {
+/// data "aws_batch_compute_environment" "batch-mongo" {
 ///   name = "batch-mongo-production"
 /// }
 /// ```
@@ -195,7 +195,7 @@ pulumi.Output<GetComputeEnvironmentResult> getComputeEnvironmentOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -203,7 +203,7 @@ pulumi.Output<GetComputeEnvironmentResult> getComputeEnvironmentOutput(
 ///   }
 /// }
 ///
-/// data "aws_batch_getjobdefinition" "arn" {
+/// data "aws_batch_job_definition" "arn" {
 ///   arn = "arn:aws:batch:us-east-1:012345678910:job-definition/example"
 /// }
 /// ```
@@ -302,7 +302,7 @@ pulumi.Output<GetComputeEnvironmentResult> getComputeEnvironmentOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -310,7 +310,7 @@ pulumi.Output<GetComputeEnvironmentResult> getComputeEnvironmentOutput(
 ///   }
 /// }
 ///
-/// data "aws_batch_getjobdefinition" "name" {
+/// data "aws_batch_job_definition" "name" {
 ///   name     = "example"
 ///   revision = 2
 /// }
@@ -435,7 +435,7 @@ pulumi.Output<GetJobDefinitionResult> getJobDefinitionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -443,7 +443,7 @@ pulumi.Output<GetJobDefinitionResult> getJobDefinitionOutput(
 ///   }
 /// }
 ///
-/// data "aws_batch_getjobqueue" "test-queue" {
+/// data "aws_batch_job_queue" "test-queue" {
 ///   name = "tf-test-batch-job-queue"
 /// }
 /// ```
@@ -564,7 +564,7 @@ pulumi.Output<GetJobQueueResult> getJobQueueOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -572,7 +572,7 @@ pulumi.Output<GetJobQueueResult> getJobQueueOutput(
 ///   }
 /// }
 ///
-/// data "aws_batch_getschedulingpolicy" "test" {
+/// data "aws_batch_scheduling_policy" "test" {
 ///   arn = "arn:aws:batch:us-east-1:012345678910:scheduling-policy/example"
 /// }
 /// ```

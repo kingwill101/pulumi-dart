@@ -61,7 +61,7 @@ import 'get_worker_configuration_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -69,7 +69,7 @@ import 'get_worker_configuration_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_mskconnect_getconnector" "example" {
+/// data "aws_mskconnect_connector" "example" {
 ///   name = "example-mskconnector"
 /// }
 /// ```
@@ -190,7 +190,7 @@ pulumi.Output<GetConnectorResult> getConnectorOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -198,7 +198,7 @@ pulumi.Output<GetConnectorResult> getConnectorOutput(
 ///   }
 /// }
 ///
-/// data "aws_mskconnect_getcustomplugin" "example" {
+/// data "aws_mskconnect_custom_plugin" "example" {
 ///   name = "example-debezium-1"
 /// }
 /// ```
@@ -319,7 +319,7 @@ pulumi.Output<GetCustomPluginResult> getCustomPluginOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -327,7 +327,7 @@ pulumi.Output<GetCustomPluginResult> getCustomPluginOutput(
 ///   }
 /// }
 ///
-/// data "aws_mskconnect_getworkerconfiguration" "example" {
+/// data "aws_mskconnect_worker_configuration" "example" {
 ///   name = "example"
 /// }
 /// ```

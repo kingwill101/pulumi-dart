@@ -147,7 +147,7 @@ import 'serverless_cache_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -155,15 +155,18 @@ import 'serverless_cache_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elasticache_serverlesscache" "example" {
-///   cache_usage_limits = {
-///     data_storage = {
+/// resource "aws_elasticache_serverless_cache" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cache_usage_limits {
+///     data_storage {
 ///       maximum = 10
 ///       unit    = "GB"
 ///     }
-///     ecpu_per_seconds = [{
-///       "maximum" = 5000
-///     }]
+///     ecpu_per_second {
+///       maximum = 5000
+///     }
 ///   }
 ///   engine               = "memcached"
 ///   name                 = "example"
@@ -211,10 +214,10 @@ import 'serverless_cache_timeouts.dart';
 ///             .engine("memcached")
 ///             .name("example")
 ///             .description("Test Server")
-///             .kmsKeyId(test.arn())
+///             .kmsKeyId(test.get("arn"))
 ///             .majorEngineVersion("1.6")
-///             .securityGroupIds(testAwsSecurityGroup.id())
-///             .subnetIds(testAwsSubnet.stream().map(element -> element.id()).collect(toList()))
+///             .securityGroupIds(testAwsSecurityGroup.get("id"))
+///             .subnetIds(testAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
 ///             .build());
 ///
 ///     }
@@ -367,7 +370,7 @@ import 'serverless_cache_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -375,15 +378,18 @@ import 'serverless_cache_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elasticache_serverlesscache" "example" {
-///   cache_usage_limits = {
-///     data_storage = {
+/// resource "aws_elasticache_serverless_cache" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cache_usage_limits {
+///     data_storage {
 ///       maximum = 10
 ///       unit    = "GB"
 ///     }
-///     ecpu_per_seconds = [{
-///       "maximum" = 5000
-///     }]
+///     ecpu_per_second {
+///       maximum = 5000
+///     }
 ///   }
 ///   engine                   = "redis"
 ///   name                     = "example"
@@ -434,11 +440,11 @@ import 'serverless_cache_timeouts.dart';
 ///             .name("example")
 ///             .dailySnapshotTime("09:00")
 ///             .description("Test Server")
-///             .kmsKeyId(test.arn())
+///             .kmsKeyId(test.get("arn"))
 ///             .majorEngineVersion("7")
 ///             .snapshotRetentionLimit(1)
-///             .securityGroupIds(testAwsSecurityGroup.id())
-///             .subnetIds(testAwsSubnet.stream().map(element -> element.id()).collect(toList()))
+///             .securityGroupIds(testAwsSecurityGroup.get("id"))
+///             .subnetIds(testAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
 ///             .build());
 ///
 ///     }
@@ -591,7 +597,7 @@ import 'serverless_cache_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -599,15 +605,18 @@ import 'serverless_cache_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elasticache_serverlesscache" "example" {
-///   cache_usage_limits = {
-///     data_storage = {
+/// resource "aws_elasticache_serverless_cache" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cache_usage_limits {
+///     data_storage {
 ///       maximum = 10
 ///       unit    = "GB"
 ///     }
-///     ecpu_per_seconds = [{
-///       "maximum" = 5000
-///     }]
+///     ecpu_per_second {
+///       maximum = 5000
+///     }
 ///   }
 ///   engine                   = "valkey"
 ///   name                     = "example"
@@ -658,15 +667,220 @@ import 'serverless_cache_timeouts.dart';
 ///             .name("example")
 ///             .dailySnapshotTime("09:00")
 ///             .description("Test Server")
-///             .kmsKeyId(test.arn())
+///             .kmsKeyId(test.get("arn"))
 ///             .majorEngineVersion("7")
 ///             .snapshotRetentionLimit(1)
-///             .securityGroupIds(testAwsSecurityGroup.id())
-///             .subnetIds(testAwsSubnet.stream().map(element -> element.id()).collect(toList()))
+///             .securityGroupIds(testAwsSecurityGroup.get("id"))
+///             .subnetIds(testAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
 ///             .build());
 ///
 ///     }
 /// }
+/// ```
+///
+///
+/// ### Valkey Serverless with Public Endpoint
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.elasticache.ServerlessCache("example", {
+///     cacheUsageLimits: {
+///         dataStorage: {
+///             maximum: 10,
+///             unit: "GB",
+///         },
+///         ecpuPerSeconds: [{
+///             maximum: 5000,
+///         }],
+///     },
+///     engine: "valkey",
+///     name: "example",
+///     majorEngineVersion: "9",
+///     connectionType: "public",
+///     userGroupId: "default.iam-user-group",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.elasticache.ServerlessCache("example",
+///     cache_usage_limits={
+///         "data_storage": {
+///             "maximum": 10,
+///             "unit": "GB",
+///         },
+///         "ecpu_per_seconds": [{
+///             "maximum": 5000,
+///         }],
+///     },
+///     engine="valkey",
+///     name="example",
+///     major_engine_version="9",
+///     connection_type="public",
+///     user_group_id="default.iam-user-group")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.ElastiCache.ServerlessCache("example", new()
+///     {
+///         CacheUsageLimits = new Aws.ElastiCache.Inputs.ServerlessCacheCacheUsageLimitsArgs
+///         {
+///             DataStorage = new Aws.ElastiCache.Inputs.ServerlessCacheCacheUsageLimitsDataStorageArgs
+///             {
+///                 Maximum = 10,
+///                 Unit = "GB",
+///             },
+///             EcpuPerSeconds = new[]
+///             {
+///                 new Aws.ElastiCache.Inputs.ServerlessCacheCacheUsageLimitsEcpuPerSecondArgs
+///                 {
+///                     Maximum = 5000,
+///                 },
+///             },
+///         },
+///         Engine = "valkey",
+///         Name = "example",
+///         MajorEngineVersion = "9",
+///         ConnectionType = "public",
+///         UserGroupId = "default.iam-user-group",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/elasticache"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := elasticache.NewServerlessCache(ctx, "example", &elasticache.ServerlessCacheArgs{
+/// 			CacheUsageLimits: &elasticache.ServerlessCacheCacheUsageLimitsArgs{
+/// 				DataStorage: &elasticache.ServerlessCacheCacheUsageLimitsDataStorageArgs{
+/// 					Maximum: pulumi.Int(10),
+/// 					Unit:    pulumi.String("GB"),
+/// 				},
+/// 				EcpuPerSeconds: elasticache.ServerlessCacheCacheUsageLimitsEcpuPerSecondArray{
+/// 					&elasticache.ServerlessCacheCacheUsageLimitsEcpuPerSecondArgs{
+/// 						Maximum: pulumi.Int(5000),
+/// 					},
+/// 				},
+/// 			},
+/// 			Engine:             pulumi.String("valkey"),
+/// 			Name:               pulumi.String("example"),
+/// 			MajorEngineVersion: pulumi.String("9"),
+/// 			ConnectionType:     pulumi.String("public"),
+/// 			UserGroupId:        pulumi.String("default.iam-user-group"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticache_serverless_cache" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cache_usage_limits {
+///     data_storage {
+///       maximum = 10
+///       unit    = "GB"
+///     }
+///     ecpu_per_second {
+///       maximum = 5000
+///     }
+///   }
+///   engine               = "valkey"
+///   name                 = "example"
+///   major_engine_version = "9"
+///   connection_type      = "public"
+///   user_group_id        = "default.iam-user-group"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.elasticache.ServerlessCache;
+/// import com.pulumi.aws.elasticache.ServerlessCacheArgs;
+/// import com.pulumi.aws.elasticache.inputs.ServerlessCacheCacheUsageLimitsArgs;
+/// import com.pulumi.aws.elasticache.inputs.ServerlessCacheCacheUsageLimitsDataStorageArgs;
+/// import com.pulumi.aws.elasticache.inputs.ServerlessCacheCacheUsageLimitsEcpuPerSecondArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new ServerlessCache("example", ServerlessCacheArgs.builder()
+///             .cacheUsageLimits(ServerlessCacheCacheUsageLimitsArgs.builder()
+///                 .dataStorage(ServerlessCacheCacheUsageLimitsDataStorageArgs.builder()
+///                     .maximum(10)
+///                     .unit("GB")
+///                     .build())
+///                 .ecpuPerSeconds(ServerlessCacheCacheUsageLimitsEcpuPerSecondArgs.builder()
+///                     .maximum(5000)
+///                     .build())
+///                 .build())
+///             .engine("valkey")
+///             .name("example")
+///             .majorEngineVersion("9")
+///             .connectionType("public")
+///             .userGroupId("default.iam-user-group")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:elasticache:ServerlessCache
+///     properties:
+///       cacheUsageLimits:
+///         dataStorage:
+///           maximum: 10
+///           unit: GB
+///         ecpuPerSeconds:
+///           - maximum: 5000
+///       engine: valkey
+///       name: example
+///       majorEngineVersion: '9'
+///       connectionType: public
+///       userGroupId: default.iam-user-group
 /// ```
 ///
 ///
@@ -682,6 +896,8 @@ class ServerlessCache extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Sets the cache usage limits for storage and ElastiCache Processing Units for the cache. See `cacheUsageLimits` Block for details.
   late final pulumi.Output<ServerlessCacheCacheUsageLimits?> cacheUsageLimits;
+  /// Connectivity option for the cache. Valid values are `vpc` (reachable only from within a VPC) and `public` (reachable over the internet, `valkey` only). Defaults to `vpc`. A `public` endpoint requires `engine` `valkey` with `majorEngineVersion` `9` or later, requires IAM authentication over TLS 1.3, and is created without `subnetIds` or `securityGroupIds`. These `public` requirements are enforced by AWS and are not validated by the provider, so an invalid combination fails at apply time with the AWS API error rather than during `plan`. This value cannot be changed after creation.
+  late final pulumi.Output<String> connectionType;
   /// Timestamp of when the serverless cache was created.
   late final pulumi.Output<String> createTime;
   /// The daily time that snapshots will be created from the new serverless cache. Only supported for engine types `"redis"` or `"valkey"`. Defaults to `0`.
@@ -738,10 +954,11 @@ class ServerlessCache extends pulumi.CustomResource {
           'aws:elasticache/serverlessCache:ServerlessCache',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.55.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cacheUsageLimits = registerOutput<ServerlessCacheCacheUsageLimits?>('cacheUsageLimits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessCacheCacheUsageLimits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectionType = registerOutput<String>('connectionType');
     createTime = registerOutput<String>('createTime');
     dailySnapshotTime = registerOutput<String>('dailySnapshotTime');
     description = registerOutput<String>('description');
@@ -791,6 +1008,7 @@ class ServerlessCache extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     cacheUsageLimits = registerOutput<ServerlessCacheCacheUsageLimits?>('cacheUsageLimits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessCacheCacheUsageLimits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectionType = registerOutput<String>('connectionType');
     createTime = registerOutput<String>('createTime');
     dailySnapshotTime = registerOutput<String>('dailySnapshotTime');
     description = registerOutput<String>('description');
@@ -825,6 +1043,7 @@ class ServerlessCache extends pulumi.CustomResource {
       ) {
     arn = registerOutput<String>('arn');
     cacheUsageLimits = registerOutput<ServerlessCacheCacheUsageLimits?>('cacheUsageLimits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessCacheCacheUsageLimits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectionType = registerOutput<String>('connectionType');
     createTime = registerOutput<String>('createTime');
     dailySnapshotTime = registerOutput<String>('dailySnapshotTime');
     description = registerOutput<String>('description');

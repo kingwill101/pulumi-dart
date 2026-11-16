@@ -59,7 +59,7 @@ import 'get_budget_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,7 @@ import 'get_budget_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_budgets_getbudget" "test" {
+/// data "aws_budgets_budget" "test" {
 ///   name = testAwsBudgetsBudget.name
 /// }
 /// ```
@@ -93,7 +93,7 @@ import 'get_budget_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = BudgetsFunctions.getBudget(GetBudgetArgs.builder()
-///             .name(testAwsBudgetsBudget.name())
+///             .name(testAwsBudgetsBudget.get("name"))
 ///             .build());
 ///
 ///     }

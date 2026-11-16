@@ -112,7 +112,7 @@ import 'get_target_group_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -120,14 +120,14 @@ import 'get_target_group_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_lb_getlistener" "listener" {
+/// data "aws_lb_listener" "listener" {
 ///   arn = var.listenerArn
 /// }
-/// data "aws_lb_getloadbalancer" "selected" {
+/// data "aws_lb_load_balancer" "selected" {
 ///   name = "default-public"
 /// }
-/// data "aws_lb_getlistener" "selected443" {
-///   load_balancer_arn = data.aws_lb_getloadbalancer.selected.arn
+/// data "aws_lb_listener" "selected443" {
+///   load_balancer_arn = data.aws_lb_load_balancer.selected.arn
 ///   port              = 443
 /// }
 ///
@@ -316,7 +316,7 @@ pulumi.Output<GetListenerResult> getListenerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -324,7 +324,7 @@ pulumi.Output<GetListenerResult> getListenerOutput(
 ///   }
 /// }
 ///
-/// data "aws_lb_getloadbalancer" "test" {
+/// data "aws_lb_load_balancer" "test" {
 ///   arn  = var.lbArn
 ///   name = var.lbName
 /// }
@@ -500,7 +500,7 @@ pulumi.Output<GetLoadBalancerResult> getLoadBalancerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -508,7 +508,7 @@ pulumi.Output<GetLoadBalancerResult> getLoadBalancerOutput(
 ///   }
 /// }
 ///
-/// data "aws_lb_gettargetgroup" "test" {
+/// data "aws_lb_target_group" "test" {
 ///   arn  = var.lbTgArn
 ///   name = var.lbTgName
 /// }

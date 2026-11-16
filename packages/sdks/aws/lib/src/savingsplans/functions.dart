@@ -88,7 +88,7 @@ import 'get_savings_plan_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -96,8 +96,8 @@ import 'get_savings_plan_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_savingsplans_getofferings" "example" {
-///   filters {
+/// data "aws_savingsplans_offerings" "example" {
+///   filter {
 ///     name   = "region"
 ///     values = ["us-west-2"]
 ///   }
@@ -237,7 +237,7 @@ pulumi.Output<GetOfferingsResult> getOfferingsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -245,12 +245,12 @@ pulumi.Output<GetOfferingsResult> getOfferingsOutput(
 ///   }
 /// }
 ///
-/// data "aws_savingsplans_getsavingsplan" "example" {
+/// data "aws_savingsplans_savings_plan" "example" {
 ///   savings_plan_id = "sp-12345678901234567"
 /// }
 ///
 /// output "savingsPlanState" {
-///   value = data.aws_savingsplans_getsavingsplan.example.state
+///   value = data.aws_savingsplans_savings_plan.example.state
 /// }
 /// ```
 /// ```java

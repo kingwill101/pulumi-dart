@@ -54,7 +54,7 @@ class KxClusterArgs {
   final pulumi.Input<Map<String, String>?>? tags;
   /// Configuration to store Tickerplant logs. It consists of a list of volumes that will be mounted to your cluster. For the cluster type Tickerplant, the location of the TP volume on the cluster will be available by using the global variable .aws.tp_log_path. See `tickerplantLogConfiguration` Block.
   final pulumi.Input<List<KxClusterTickerplantLogConfiguration>?>? tickerplantLogConfigurations;
-  /// Type of KDB database. Valid values are `HDB` (Historical Database), `RDB` (Realtime Database, which requires the `savedownStorageConfiguration` parameter), `GATEWAY`, `GP` (general purpose), and `Tickerplant`.
+  /// Type of KDB database. Valid values are `HDB` (Historical Database), `RDB` (Realtime Database, which requires the `savedownStorageConfiguration` parameter), `GATEWAY`, `GP` (general purpose), and `TICKERPLANT`.
   final pulumi.Input<String> type;
   /// Configuration details about the network where the Privatelink endpoint of the cluster resides. See `vpcConfiguration` Block.
   ///
@@ -81,7 +81,7 @@ class KxClusterArgs {
   /// [scalingGroupConfiguration] Structure that stores the configuration details of a scaling group. See `scalingGroupConfiguration` Block.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tickerplantLogConfigurations] Configuration to store Tickerplant logs. It consists of a list of volumes that will be mounted to your cluster. For the cluster type Tickerplant, the location of the TP volume on the cluster will be available by using the global variable .aws.tp_log_path. See `tickerplantLogConfiguration` Block.
-  /// [type] Type of KDB database. Valid values are `HDB` (Historical Database), `RDB` (Realtime Database, which requires the `savedownStorageConfiguration` parameter), `GATEWAY`, `GP` (general purpose), and `Tickerplant`.
+  /// [type] Type of KDB database. Valid values are `HDB` (Historical Database), `RDB` (Realtime Database, which requires the `savedownStorageConfiguration` parameter), `GATEWAY`, `GP` (general purpose), and `TICKERPLANT`.
   /// [vpcConfiguration] Configuration details about the network where the Privatelink endpoint of the cluster resides. See `vpcConfiguration` Block.
   const KxClusterArgs({
     this.autoScalingConfiguration,

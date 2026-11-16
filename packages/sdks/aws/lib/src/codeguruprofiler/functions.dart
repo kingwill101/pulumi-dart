@@ -59,7 +59,7 @@ import 'get_profiling_group_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,7 @@ import 'get_profiling_group_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_codeguruprofiler_getprofilinggroup" "example" {
+/// data "aws_codeguruprofiler_profiling_group" "example" {
 ///   name = "example"
 /// }
 /// ```

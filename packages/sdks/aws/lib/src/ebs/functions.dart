@@ -84,7 +84,7 @@ import 'get_volume_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -92,13 +92,16 @@ import 'get_volume_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_ebs_getdefaultkmskey" "current" {
+/// data "aws_ebs_default_kms_key" "current" {
 /// }
 ///
 /// resource "aws_ebs_volume" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_zone = "us-west-2a"
 ///   encrypted         = true
-///   kms_key_id        = data.aws_ebs_getdefaultkmskey.current.key_arn
+///   kms_key_id        = data.aws_ebs_default_kms_key.current.key_arn
 /// }
 /// ```
 /// ```java
@@ -200,7 +203,7 @@ pulumi.Output<GetDefaultKmsKeyResult> getDefaultKmsKeyOutput(
 ///         values: [__value],
 ///     }],
 /// }) }), {}));
-/// export const availabilityZoneToVolumeId = exampleGetVolume.apply(exampleGetVolume => Object.values(exampleGetVolume).reduce((__obj, s) => ({ ...__obj, [String(s.id)]: s.availabilityZone }), {}));
+/// export const availabilityZoneToVolumeId = Object.values(exampleGetVolume).reduce((__obj, s) => ({ ...__obj, [String(s.id)]: s.availabilityZone }), {});
 /// ```
 /// ```python
 /// import pulumi
@@ -231,22 +234,41 @@ pulumi.Output<GetDefaultKmsKeyResult> getDefaultKmsKeyOutput(
 ///         },
 ///     });
 ///
-///     var exampleGetVolume = ;
+///     var exampleGetVolume = .ToDictionary(item => {
+///         var __key = item.Key;
+///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+///     }, item => {
+///         var __value = item.Value;
+///         return Aws.Ebs.GetVolume.Invoke(new()
+///         {
+///             Filters = new[]
+///             {
+///                 new Aws.Ebs.Inputs.GetVolumeFilterInputArgs
+///                 {
+///                     Name = "volume-id",
+///                     Values = new[]
+///                     {
+///                         __value,
+///                     },
+///                 },
+///             },
+///         });
+///     });
 ///
 ///     return new Dictionary<string, object?>
 ///     {
-///         ["availabilityZoneToVolumeId"] = exampleGetVolume.Apply(exampleGetVolume => (exampleGetVolume).Values.ToDictionary(item => {
+///         ["availabilityZoneToVolumeId"] = (exampleGetVolume).Values.ToDictionary(item => {
 ///             var s = item.Value;
-///             return s.Id;
+///             return s.Id.ToString(System.Globalization.CultureInfo.InvariantCulture);
 ///         }, item => {
 ///             var s = item.Value;
 ///             return s.AvailabilityZone;
-///         })),
+///         }),
 ///     };
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -254,21 +276,21 @@ pulumi.Output<GetDefaultKmsKeyResult> getDefaultKmsKeyOutput(
 ///   }
 /// }
 ///
-/// data "aws_ebs_getebsvolumes" "example" {
+/// data "aws_ebs_ebs_volumes" "example" {
 ///   tags = {
 ///     "VolumeSet" = "TestVolumeSet"
 ///   }
 /// }
-/// data "aws_ebs_getvolume" "invoke_1" {
-///   for_each = data.aws_ebs_getebsvolumes.example.ids
-///   filters {
+/// data "aws_ebs_volume" "invoke_1" {
+///   for_each = data.aws_ebs_ebs_volumes.example.ids
+///   filter {
 ///     name   = "volume-id"
 ///     values = [each.value]
 ///   }
 /// }
 ///
 /// locals {
-///   exampleGetVolume = {for __key, __value in data.aws_ebs_getebsvolumes.example.ids : __key => data.aws_ebs_getvolume.invoke_1[__key]}
+///   exampleGetVolume = {for __key, __value in data.aws_ebs_ebs_volumes.example.ids : __key => data.aws_ebs_volume.invoke_1[__key]}
 /// }
 /// output "availabilityZoneToVolumeId" {
 ///   value = {for s in local.exampleGetVolume : s.id => s.availabilityZone}
@@ -348,7 +370,7 @@ pulumi.Output<GetEbsVolumesResult> getEbsVolumesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -356,7 +378,7 @@ pulumi.Output<GetEbsVolumesResult> getEbsVolumesOutput(
 ///   }
 /// }
 ///
-/// data "aws_ebs_getencryptionbydefault" "current" {
+/// data "aws_ebs_encryption_by_default" "current" {
 /// }
 /// ```
 /// ```java
@@ -536,7 +558,7 @@ pulumi.Output<GetEncryptionByDefaultResult> getEncryptionByDefaultOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -544,12 +566,12 @@ pulumi.Output<GetEncryptionByDefaultResult> getEncryptionByDefaultOutput(
 ///   }
 /// }
 ///
-/// data "aws_ebs_getsnapshot" "ebsVolume" {
-///   filters {
+/// data "aws_ebs_snapshot" "ebsVolume" {
+///   filter {
 ///     name   = "volume-size"
 ///     values = ["40"]
 ///   }
-///   filters {
+///   filter {
 ///     name   = "tag:Name"
 ///     values = ["Example"]
 ///   }
@@ -753,7 +775,7 @@ pulumi.Output<GetSnapshotResult> getSnapshotOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -761,12 +783,12 @@ pulumi.Output<GetSnapshotResult> getSnapshotOutput(
 ///   }
 /// }
 ///
-/// data "aws_ebs_getsnapshotids" "ebsVolumes" {
-///   filters {
+/// data "aws_ebs_snapshot_ids" "ebsVolumes" {
+///   filter {
 ///     name   = "volume-size"
 ///     values = ["40"]
 ///   }
-///   filters {
+///   filter {
 ///     name   = "tag:Name"
 ///     values = ["Example"]
 ///   }
@@ -962,7 +984,7 @@ pulumi.Output<GetSnapshotIdsResult> getSnapshotIdsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -970,12 +992,12 @@ pulumi.Output<GetSnapshotIdsResult> getSnapshotIdsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ebs_getvolume" "ebsVolume" {
-///   filters {
+/// data "aws_ebs_volume" "ebsVolume" {
+///   filter {
 ///     name   = "volume-type"
 ///     values = ["gp2"]
 ///   }
-///   filters {
+///   filter {
 ///     name   = "tag:Name"
 ///     values = ["Example"]
 ///   }

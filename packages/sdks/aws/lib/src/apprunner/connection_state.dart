@@ -8,7 +8,7 @@ class ConnectionState {
   final pulumi.Input<String?>? arn;
   /// Name of the connection.
   final pulumi.Input<String?>? connectionName;
-  /// Source repository provider. Valid values: `GITHUB`.
+  /// Source repository provider. Valid values: `GITHUB`, `BITBUCKET`.
   final pulumi.Input<String?>? providerType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -22,7 +22,7 @@ class ConnectionState {
   /// Creates a new [ConnectionState].
   /// [arn] ARN of the connection.
   /// [connectionName] Name of the connection.
-  /// [providerType] Source repository provider. Valid values: `GITHUB`.
+  /// [providerType] Source repository provider. Valid values: `GITHUB`, `BITBUCKET`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] Current state of the App Runner connection. When the state is `AVAILABLE`, you can use the connection to create an `aws.apprunner.Service` resource.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.

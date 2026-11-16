@@ -76,7 +76,7 @@ import 'file_system_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -84,7 +84,10 @@ import 'file_system_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_efs_filesystem" "example" {
+/// resource "aws_efs_file_system" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_token = "my-product"
 ///   tags = {
 ///     "Name" = "MyProduct"
@@ -203,7 +206,7 @@ import 'file_system_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -211,8 +214,11 @@ import 'file_system_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_efs_filesystem" "foo_with_lifecyle_policy" {
-///   lifecycle_policies {
+/// resource "aws_efs_file_system" "foo_with_lifecyle_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   lifecycle_policy {
 ///     transition_to_ia = "AFTER_30_DAYS"
 ///   }
 ///   creation_token = "my-product"
@@ -295,9 +301,9 @@ class FileSystem extends pulumi.CustomResource {
   late final pulumi.Output<String> creationToken;
   /// The DNS name for the filesystem per [documented convention](http://docs.aws.amazon.com/efs/latest/ug/mounting-fs-mount-cmd-dns-name.html).
   late final pulumi.Output<String> dnsName;
-  /// If true, the disk will be encrypted.
+  /// Whether the file system is encrypted at rest. Defaults to `true`. AWS encrypts all new file systems regardless of this value. Encryption at rest [cannot be changed after the file system is created](https://docs.aws.amazon.com/efs/latest/ug/encryption-at-rest.html). Changing an existing unencrypted file system from `false` to `true` forces replacement; changing `true` to `false` is ignored.
   late final pulumi.Output<bool> encrypted;
-  /// The ARN for the KMS encryption key. When specifying kms_key_id, encrypted needs to be set to true.
+  /// ARN of the KMS encryption key. Cannot be specified when `encrypted` is explicitly set to `false`.
   late final pulumi.Output<String> kmsKeyId;
   /// A file system [lifecycle policy](https://docs.aws.amazon.com/efs/latest/ug/API_LifecyclePolicy.html) object. See `lifecyclePolicy` block below for details.
   late final pulumi.Output<List<FileSystemLifecyclePolicy>?> lifecyclePolicies;
@@ -336,7 +342,7 @@ class FileSystem extends pulumi.CustomResource {
           'aws:efs/fileSystem:FileSystem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.55.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZoneId = registerOutput<String>('availabilityZoneId');

@@ -1,0 +1,57 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'admin_account_admin_scope.dart';
+import 'admin_account_timeouts.dart';
+
+/// {@template pulumi_networksecuritymanager_admin_account_admin_account_args_doc}
+/// The set of arguments for AdminAccount.
+/// {@endtemplate}
+/// {@macro pulumi_networksecuritymanager_admin_account_admin_account_args_doc}
+class AdminAccountArgs {
+  /// AWS account ID to set as a Network Security Manager administrator account.
+  final pulumi.Input<String> accountId;
+  /// Scope of what the administrator account can manage. If omitted, AWS applies its default scope. See `adminScope` Block below.
+  final pulumi.Input<AdminAccountAdminScope?>? adminScope;
+  /// Priority of the administrator account, between `1` and `10`.
+  ///
+  /// The following arguments are optional:
+  final pulumi.Input<int> priority;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<AdminAccountTimeouts?>? timeouts;
+
+  /// Creates a new [AdminAccountArgs].
+  /// [accountId] AWS account ID to set as a Network Security Manager administrator account.
+  /// [adminScope] Scope of what the administrator account can manage. If omitted, AWS applies its default scope. See `adminScope` Block below.
+  /// [priority] Priority of the administrator account, between `1` and `10`.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [timeouts] Optional.
+  const AdminAccountArgs({
+    required this.accountId,
+    this.adminScope,
+    required this.priority,
+    this.region,
+    this.timeouts,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'accountId': accountId,
+      'adminScope': ?pulumi.Input.mapOptionalInputValue<AdminAccountAdminScope, Map<String, dynamic>>(adminScope, (value) => value.toMap()),
+      'priority': priority,
+      'region': ?region,
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<AdminAccountTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+    };
+  }
+
+  factory AdminAccountArgs.fromMap(Map<String, dynamic> map) {
+    return AdminAccountArgs(
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      adminScope: (() { final guardedValue = map['adminScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AdminAccountAdminScope.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AdminAccountTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+    );
+  }
+}

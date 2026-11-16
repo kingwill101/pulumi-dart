@@ -52,7 +52,7 @@ import 'get_finding_ids_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -60,7 +60,7 @@ import 'get_finding_ids_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_guardduty_getdetector" "example" {
+/// data "aws_guardduty_detector" "example" {
 /// }
 /// ```
 /// ```java
@@ -180,7 +180,7 @@ pulumi.Output<GetDetectorResult> getDetectorOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -188,7 +188,7 @@ pulumi.Output<GetDetectorResult> getDetectorOutput(
 ///   }
 /// }
 ///
-/// data "aws_guardduty_getfindingids" "example" {
+/// data "aws_guardduty_finding_ids" "example" {
 ///   detector_id = exampleAwsGuarddutyDetector.id
 /// }
 /// ```
@@ -214,7 +214,7 @@ pulumi.Output<GetDetectorResult> getDetectorOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = GuarddutyFunctions.getFindingIds(GetFindingIdsArgs.builder()
-///             .detectorId(exampleAwsGuarddutyDetector.id())
+///             .detectorId(exampleAwsGuarddutyDetector.get("id"))
 ///             .build());
 ///
 ///     }

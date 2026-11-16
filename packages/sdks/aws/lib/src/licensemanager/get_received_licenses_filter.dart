@@ -81,7 +81,7 @@ class GetReceivedLicensesFilter {
   /// }
   /// ```
   /// ```hcl
-  /// pulumi {
+  /// terraform {
   ///   required_providers {
   ///     aws = {
   ///       source = "pulumi/aws"
@@ -89,8 +89,8 @@ class GetReceivedLicensesFilter {
   ///   }
   /// }
   ///
-  /// data "aws_licensemanager_getreceivedlicenses" "selected" {
-  ///   filters {
+  /// data "aws_licensemanager_received_licenses" "selected" {
+  ///   filter {
   ///     name   = "ProductSKU"
   ///     values = [""]
   ///   }

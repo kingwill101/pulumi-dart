@@ -86,7 +86,7 @@ import 'get_node_groups_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -94,7 +94,7 @@ import 'get_node_groups_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_eks_getaccessentry" "example" {
+/// data "aws_eks_access_entry" "example" {
 ///   cluster_name  = exampleAwsEksCluster.name
 ///   principal_arn = exampleAwsIamRole.arn
 /// }
@@ -125,8 +125,8 @@ import 'get_node_groups_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = EksFunctions.getAccessEntry(GetAccessEntryArgs.builder()
-///             .clusterName(exampleAwsEksCluster.name())
-///             .principalArn(exampleAwsIamRole.arn())
+///             .clusterName(exampleAwsEksCluster.get("name"))
+///             .principalArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///         ctx.export("eksAccessEntryOutputs", exampleAwsEksAccessEntry);
@@ -220,7 +220,7 @@ pulumi.Output<GetAccessEntryResult> getAccessEntryOutput(
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -228,17 +228,17 @@ pulumi.Output<GetAccessEntryResult> getAccessEntryOutput(
 ///   }
 /// }
 ///
-/// data "aws_eks_getaccesspolicies" "example" {
+/// data "aws_eks_access_policies" "example" {
 /// }
 ///
 /// output "eksAccessPolicies" {
-///   value = data.aws_eks_getaccesspolicies.example.access_policies
+///   value = data.aws_eks_access_policies.example.access_policies
 /// }
 /// output "eksNetworkingPolicy" {
-///   value = [for ap in data.aws_eks_getaccesspolicies.example.access_policies : ap if ap.name == "AmazonEKSNetworkingPolicy"]
+///   value = [for ap in data.aws_eks_access_policies.example.access_policies : ap if ap.name == "AmazonEKSNetworkingPolicy"]
 /// }
 /// output "eksAccessPolicyNames" {
-///   value = [for ap in data.aws_eks_getaccesspolicies.example.access_policies : ap.name]
+///   value = [for ap in data.aws_eks_access_policies.example.access_policies : ap.name]
 /// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_eks_get_access_policies_get_access_policies_args_doc}
@@ -333,7 +333,7 @@ pulumi.Output<GetAccessPoliciesResult> getAccessPoliciesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -341,7 +341,7 @@ pulumi.Output<GetAccessPoliciesResult> getAccessPoliciesOutput(
 ///   }
 /// }
 ///
-/// data "aws_eks_getaddon" "example" {
+/// data "aws_eks_addon" "example" {
 ///   addon_name   = "vpc-cni"
 ///   cluster_name = exampleAwsEksCluster.name
 /// }
@@ -373,7 +373,7 @@ pulumi.Output<GetAccessPoliciesResult> getAccessPoliciesOutput(
 ///     public static void stack(Context ctx) {
 ///         final var example = EksFunctions.getAddon(GetAddonArgs.builder()
 ///             .addonName("vpc-cni")
-///             .clusterName(exampleAwsEksCluster.name())
+///             .clusterName(exampleAwsEksCluster.get("name"))
 ///             .build());
 ///
 ///         ctx.export("eksAddonOutputs", exampleAwsEksAddon);
@@ -538,7 +538,7 @@ pulumi.Output<GetAddonResult> getAddonOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -546,26 +546,29 @@ pulumi.Output<GetAddonResult> getAddonOutput(
 ///   }
 /// }
 ///
-/// data "aws_eks_getaddonversion" "default" {
+/// data "aws_eks_addon_version" "default" {
 ///   addon_name         = "vpc-cni"
 ///   kubernetes_version = example.version
 /// }
-/// data "aws_eks_getaddonversion" "latest" {
+/// data "aws_eks_addon_version" "latest" {
 ///   addon_name         = "vpc-cni"
 ///   kubernetes_version = example.version
 ///   most_recent        = true
 /// }
 ///
 /// resource "aws_eks_addon" "vpc_cni" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name  = example.name
 ///   addon_name    = "vpc-cni"
-///   addon_version = data.aws_eks_getaddonversion.latest.version
+///   addon_version = data.aws_eks_addon_version.latest.version
 /// }
 /// output "default" {
-///   value = data.aws_eks_getaddonversion.default.version
+///   value = data.aws_eks_addon_version.default.version
 /// }
 /// output "latest" {
-///   value = data.aws_eks_getaddonversion.latest.version
+///   value = data.aws_eks_addon_version.latest.version
 /// }
 /// ```
 /// ```java
@@ -593,17 +596,17 @@ pulumi.Output<GetAddonResult> getAddonOutput(
 ///     public static void stack(Context ctx) {
 ///         final var default = EksFunctions.getAddonVersion(GetAddonVersionArgs.builder()
 ///             .addonName("vpc-cni")
-///             .kubernetesVersion(example.version())
+///             .kubernetesVersion(example.get("version"))
 ///             .build());
 ///
 ///         final var latest = EksFunctions.getAddonVersion(GetAddonVersionArgs.builder()
 ///             .addonName("vpc-cni")
-///             .kubernetesVersion(example.version())
+///             .kubernetesVersion(example.get("version"))
 ///             .mostRecent(true)
 ///             .build());
 ///
 ///         var vpcCni = new Addon("vpcCni", AddonArgs.builder()
-///             .clusterName(example.name())
+///             .clusterName(example.get("name"))
 ///             .addonName("vpc-cni")
 ///             .addonVersion(latest.version())
 ///             .build());
@@ -736,7 +739,7 @@ pulumi.Output<GetAddonVersionResult> getAddonVersionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -744,15 +747,15 @@ pulumi.Output<GetAddonVersionResult> getAddonVersionOutput(
 ///   }
 /// }
 ///
-/// data "aws_eks_getcluster" "example" {
+/// data "aws_eks_cluster" "example" {
 ///   name = "example"
 /// }
 ///
 /// output "endpoint" {
-///   value = data.aws_eks_getcluster.example.endpoint
+///   value = data.aws_eks_cluster.example.endpoint
 /// }
 /// output "kubeconfig-certificate-authority-data" {
-///   value = data.aws_eks_getcluster.example.certificate_authorities[0].data
+///   value = data.aws_eks_cluster.example.certificate_authority[0].data
 /// }
 /// ```
 /// ```java
@@ -899,7 +902,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -907,10 +910,10 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 ///   }
 /// }
 ///
-/// data "aws_eks_getcluster" "example" {
+/// data "aws_eks_cluster" "example" {
 ///   name = "example"
 /// }
-/// data "aws_eks_getclusterauth" "exampleGetClusterAuth" {
+/// data "aws_eks_cluster_auth" "exampleGetClusterAuth" {
 ///   name = "example"
 /// }
 /// ```
@@ -1036,7 +1039,7 @@ pulumi.Output<GetClusterAuthResult> getClusterAuthOutput(
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1044,17 +1047,17 @@ pulumi.Output<GetClusterAuthResult> getClusterAuthOutput(
 ///   }
 /// }
 ///
-/// data "aws_eks_getclusterversions" "example" {
+/// data "aws_eks_cluster_versions" "example" {
 /// }
 ///
 /// output "eksClusterVersions" {
-///   value = data.aws_eks_getclusterversions.example.cluster_versions
+///   value = data.aws_eks_cluster_versions.example.cluster_versions
 /// }
 /// output "eksClusterVersionFiltered" {
-///   value = [for version in data.aws_eks_getclusterversions.example.cluster_versions : version if version.clusterVersion == "1.33"]
+///   value = [for version in data.aws_eks_cluster_versions.example.cluster_versions : version if version.clusterVersion == "1.33"]
 /// }
 /// output "eksClusterVersionList" {
-///   value = [for version in data.aws_eks_getclusterversions.example.cluster_versions : version.clusterVersion]
+///   value = [for version in data.aws_eks_cluster_versions.example.cluster_versions : version.clusterVersion]
 /// }
 /// ```
 ///
@@ -1112,7 +1115,7 @@ pulumi.Output<GetClusterAuthResult> getClusterAuthOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1120,7 +1123,7 @@ pulumi.Output<GetClusterAuthResult> getClusterAuthOutput(
 ///   }
 /// }
 ///
-/// data "aws_eks_getclusterversions" "example" {
+/// data "aws_eks_cluster_versions" "example" {
 ///   cluster_type = "eks"
 /// }
 /// ```
@@ -1215,7 +1218,7 @@ pulumi.Output<GetClusterAuthResult> getClusterAuthOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1223,7 +1226,7 @@ pulumi.Output<GetClusterAuthResult> getClusterAuthOutput(
 ///   }
 /// }
 ///
-/// data "aws_eks_getclusterversions" "example" {
+/// data "aws_eks_cluster_versions" "example" {
 ///   version_status = "STANDARD_SUPPORT"
 /// }
 /// ```
@@ -1328,12 +1331,21 @@ pulumi.Output<GetClusterVersionsResult> getClusterVersionsOutput(
 ///     var exampleGetCluster = Std.Toset.Invoke(new()
 ///     {
 ///         Input = example.Apply(getClustersResult => getClustersResult.Names),
-///     }).Apply(invoke => );
+///     }).Apply(invoke => .ToDictionary(item => {
+///         var __key = item.Key;
+///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+///     }, item => {
+///         var __value = item.Value;
+///         return Aws.Eks.GetCluster.Invoke(new()
+///         {
+///             Name = __value,
+///         });
+///     }));
 ///
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1344,15 +1356,15 @@ pulumi.Output<GetClusterVersionsResult> getClusterVersionsOutput(
 ///   }
 /// }
 ///
-/// data "aws_eks_getclusters" "example" {
+/// data "aws_eks_clusters" "example" {
 /// }
-/// data "aws_eks_getcluster" "invoke_1" {
-///   for_each = toset(data.aws_eks_getclusters.example.names)
+/// data "aws_eks_cluster" "invoke_1" {
+///   for_each = toset(data.aws_eks_clusters.example.names)
 ///   name     = each.value
 /// }
 ///
 /// locals {
-///   exampleGetCluster = {for __key, __value in toset(data.aws_eks_getclusters.example.names) : __key => data.aws_eks_getcluster.invoke_1[__key]}
+///   exampleGetCluster = {for __key, __value in toset(data.aws_eks_clusters.example.names) : __key => data.aws_eks_cluster.invoke_1[__key]}
 /// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_eks_get_clusters_get_clusters_args_doc}
@@ -1440,7 +1452,7 @@ pulumi.Output<GetClustersResult> getClustersOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1448,7 +1460,7 @@ pulumi.Output<GetClustersResult> getClustersOutput(
 ///   }
 /// }
 ///
-/// data "aws_eks_getnodegroup" "example" {
+/// data "aws_eks_node_group" "example" {
 ///   cluster_name    = "example"
 ///   node_group_name = "example"
 /// }
@@ -1555,12 +1567,22 @@ pulumi.Output<GetNodeGroupResult> getNodeGroupOutput(
 ///         ClusterName = "example",
 ///     });
 ///
-///     var exampleGetNodeGroup = ;
+///     var exampleGetNodeGroup = .ToDictionary(item => {
+///         var __key = item.Key;
+///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+///     }, item => {
+///         var __value = item.Value;
+///         return Aws.Eks.GetNodeGroup.Invoke(new()
+///         {
+///             ClusterName = "example",
+///             NodeGroupName = __value,
+///         });
+///     });
 ///
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1568,17 +1590,17 @@ pulumi.Output<GetNodeGroupResult> getNodeGroupOutput(
 ///   }
 /// }
 ///
-/// data "aws_eks_getnodegroups" "example" {
+/// data "aws_eks_node_groups" "example" {
 ///   cluster_name = "example"
 /// }
-/// data "aws_eks_getnodegroup" "invoke_1" {
-///   for_each        = data.aws_eks_getnodegroups.example.names
+/// data "aws_eks_node_group" "invoke_1" {
+///   for_each        = data.aws_eks_node_groups.example.names
 ///   cluster_name    = "example"
 ///   node_group_name = each.value
 /// }
 ///
 /// locals {
-///   exampleGetNodeGroup = {for __key, __value in data.aws_eks_getnodegroups.example.names : __key => data.aws_eks_getnodegroup.invoke_1[__key]}
+///   exampleGetNodeGroup = {for __key, __value in data.aws_eks_node_groups.example.names : __key => data.aws_eks_node_group.invoke_1[__key]}
 /// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_eks_get_node_groups_get_node_groups_args_doc}

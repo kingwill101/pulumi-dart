@@ -63,7 +63,7 @@ import 'get_vpc_link_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,7 +71,7 @@ import 'get_vpc_link_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_apigatewayv2_getapi" "example" {
+/// data "aws_apigatewayv2_api" "example" {
 ///   api_id = "aabbccddee"
 /// }
 /// ```
@@ -192,7 +192,7 @@ pulumi.Output<GetApiResult> getApiOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -200,7 +200,7 @@ pulumi.Output<GetApiResult> getApiOutput(
 ///   }
 /// }
 ///
-/// data "aws_apigatewayv2_getapis" "example" {
+/// data "aws_apigatewayv2_apis" "example" {
 ///   protocol_type = "HTTP"
 /// }
 /// ```
@@ -329,7 +329,7 @@ pulumi.Output<GetApisResult> getApisOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -337,7 +337,7 @@ pulumi.Output<GetApisResult> getApisOutput(
 ///   }
 /// }
 ///
-/// data "aws_apigatewayv2_getexport" "test" {
+/// data "aws_apigatewayv2_export" "test" {
 ///   api_id        = testAwsApigatewayv2Route.apiId
 ///   specification = "OAS30"
 ///   output_type   = "JSON"
@@ -365,7 +365,7 @@ pulumi.Output<GetApisResult> getApisOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = Apigatewayv2Functions.getExport(GetExportArgs.builder()
-///             .apiId(testAwsApigatewayv2Route.apiId())
+///             .apiId(testAwsApigatewayv2Route.get("apiId"))
 ///             .specification("OAS30")
 ///             .outputType("JSON")
 ///             .build());
@@ -466,7 +466,7 @@ pulumi.Output<GetExportResult> getExportOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -474,7 +474,7 @@ pulumi.Output<GetExportResult> getExportOutput(
 ///   }
 /// }
 ///
-/// data "aws_apigatewayv2_getvpclink" "example" {
+/// data "aws_apigatewayv2_vpc_link" "example" {
 ///   vpc_link_id = "example"
 /// }
 /// ```

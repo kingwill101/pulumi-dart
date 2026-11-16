@@ -16,7 +16,7 @@ class ObjectCopyState {
   final pulumi.Input<bool?>? bucketKeyEnabled;
   /// Caching behavior along the request/reply chain. Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
   final pulumi.Input<String?>? cacheControl;
-  /// Algorithm used to create the checksum for the object. If a value is specified and the object is encrypted with KMS, you must have permission to use the `kms:Decrypt` action. Valid values: `CRC32`, `CRC32C`, `CRC64NVME` `SHA1`, `SHA256`.
+  /// Algorithm used to create the checksum for the object. If a value is specified and the object is encrypted with KMS, you must have permission to use the `kms:Decrypt` action. Valid values: `CRC32`, `CRC32C`, `CRC64NVME`, `SHA1`, `SHA256`, `SHA512`, `MD5`, `XXHASH64`, `XXHASH3`, `XXHASH128`.
   final pulumi.Input<String?>? checksumAlgorithm;
   /// Base64-encoded, 32-bit CRC32 checksum of the object.
   final pulumi.Input<String?>? checksumCrc32;
@@ -122,7 +122,7 @@ class ObjectCopyState {
   /// [bucket] Name of the bucket to put the file in.
   /// [bucketKeyEnabled] Whether to use an S3 Bucket Key for object encryption with server-side encryption using KMS (SSE-KMS).
   /// [cacheControl] Caching behavior along the request/reply chain. Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
-  /// [checksumAlgorithm] Algorithm used to create the checksum for the object. If a value is specified and the object is encrypted with KMS, you must have permission to use the `kms:Decrypt` action. Valid values: `CRC32`, `CRC32C`, `CRC64NVME` `SHA1`, `SHA256`.
+  /// [checksumAlgorithm] Algorithm used to create the checksum for the object. If a value is specified and the object is encrypted with KMS, you must have permission to use the `kms:Decrypt` action. Valid values: `CRC32`, `CRC32C`, `CRC64NVME`, `SHA1`, `SHA256`, `SHA512`, `MD5`, `XXHASH64`, `XXHASH3`, `XXHASH128`.
   /// [checksumCrc32] Base64-encoded, 32-bit CRC32 checksum of the object.
   /// [checksumCrc32c] Base64-encoded, 32-bit CRC32C checksum of the object.
   /// [checksumCrc64nvme] Base64-encoded, 64-bit CRC64NVME checksum of the object.

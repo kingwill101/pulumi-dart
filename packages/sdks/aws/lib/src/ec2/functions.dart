@@ -289,7 +289,7 @@ import 'get_vpn_gateway_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -297,7 +297,7 @@ import 'get_vpn_gateway_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2_getami" "example" {
+/// data "aws_ec2_ami" "example" {
 ///   filters {
 ///     name   = "name"
 ///     values = ["myami-*"]
@@ -497,7 +497,7 @@ pulumi.Output<GetAmiResult> getAmiOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -505,7 +505,7 @@ pulumi.Output<GetAmiResult> getAmiOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getamiids" "ubuntu" {
+/// data "aws_ec2_ami_ids" "ubuntu" {
 ///   filters {
 ///     name   = "name"
 ///     values = ["ubuntu/images/ubuntu-*-*-amd64-server-*"]
@@ -656,7 +656,7 @@ pulumi.Output<GetAmiIdsResult> getAmiIdsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -664,7 +664,7 @@ pulumi.Output<GetAmiIdsResult> getAmiIdsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getcapacityblockoffering" "example" {
+/// data "aws_ec2_capacity_block_offering" "example" {
 ///   capacity_duration_hours = 24
 ///   end_date_range          = "2024-05-30T15:04:05Z"
 ///   instance_count          = 1
@@ -803,7 +803,7 @@ pulumi.Output<GetCapacityBlockOfferingResult> getCapacityBlockOfferingOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -811,7 +811,7 @@ pulumi.Output<GetCapacityBlockOfferingResult> getCapacityBlockOfferingOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getcapacityblockreservation" "example" {
+/// data "aws_ec2_capacity_block_reservation" "example" {
 ///   id = "cr-0123456789abcdef0"
 /// }
 /// ```
@@ -955,7 +955,7 @@ pulumi.Output<GetCapacityBlockOfferingResult> getCapacityBlockOfferingOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -963,12 +963,12 @@ pulumi.Output<GetCapacityBlockOfferingResult> getCapacityBlockOfferingOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getcapacityblockreservation" "example" {
-///   filters {
+/// data "aws_ec2_capacity_block_reservation" "example" {
+///   filter {
 ///     name   = "instance-type"
 ///     values = ["p4d.24xlarge"]
 ///   }
-///   filters {
+///   filter {
 ///     name   = "state"
 ///     values = ["active"]
 ///   }
@@ -1103,7 +1103,7 @@ pulumi.Output<GetCapacityBlockOfferingResult> getCapacityBlockOfferingOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1111,8 +1111,8 @@ pulumi.Output<GetCapacityBlockOfferingResult> getCapacityBlockOfferingOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getcapacityblockreservation" "example" {
-///   filters {
+/// data "aws_ec2_capacity_block_reservation" "example" {
+///   filter {
 ///     name   = "tag:Project"
 ///     values = ["ml-training"]
 ///   }
@@ -1198,8 +1198,67 @@ pulumi.Output<GetCapacityBlockReservationResult> getCapacityBlockReservationOutp
 /// The following example returns a specific CoIP pool ID
 ///
 ///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const config = new pulumi.Config();
+/// const coipPoolId = config.requireObject<any>("coipPoolId");
+/// const selected = aws.ec2.getCoipPool({
+///     id: coipPoolId,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// config = pulumi.Config()
+/// coip_pool_id = config.require_object("coipPoolId")
+/// selected = aws.ec2.get_coip_pool(id=coip_pool_id)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var config = new Config();
+///     var coipPoolId = config.RequireObject<dynamic>("coipPoolId");
+///     var selected = Aws.Ec2.GetCoipPool.Invoke(new()
+///     {
+///         Id = coipPoolId,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		cfg := config.New(ctx, "")
+/// 		var coipPoolId interface{}
+/// 		cfg.RequireObject("coipPoolId", &coipPoolId)
+/// 		_, err := ec2.GetCoipPool(ctx, &ec2.GetCoipPoolArgs{
+/// 			Id: coipPoolId,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1207,11 +1266,42 @@ pulumi.Output<GetCapacityBlockReservationResult> getCapacityBlockReservationOutp
 ///   }
 /// }
 ///
-/// data "aws_ec2_getcoippool" "selected" {
+/// data "aws_ec2_coip_pool" "selected" {
 ///   id = var.coipPoolId
 /// }
 ///
 /// variable "coipPoolId" {
+///   type = any
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.ec2.Ec2Functions;
+/// import com.pulumi.aws.ec2.inputs.GetCoipPoolArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var config = ctx.config();
+///         final var coipPoolId = config.requireObject("coipPoolId", com.pulumi.core.TypeShape.map(String.class, Object.class));
+///         final var selected = Ec2Functions.getCoipPool(GetCoipPoolArgs.builder()
+///             .id(coipPoolId)
+///             .build());
+///
+///     }
 /// }
 /// ```
 /// ```yaml
@@ -1312,7 +1402,7 @@ pulumi.Output<GetCoipPoolResult> getCoipPoolOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1320,11 +1410,11 @@ pulumi.Output<GetCoipPoolResult> getCoipPoolOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getcoippools" "foo" {
+/// data "aws_ec2_coip_pools" "foo" {
 /// }
 ///
 /// output "foo" {
-///   value = data.aws_ec2_getcoippools.foo.ids
+///   value = data.aws_ec2_coip_pools.foo.ids
 /// }
 /// ```
 /// ```java
@@ -1503,7 +1593,7 @@ pulumi.Output<GetCoipPoolsResult> getCoipPoolsOutput(
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpnConnection(ctx, "transit", &ec2.VpnConnectionArgs{
-/// 			VpnGatewayId:      main.ID().ToIDOutput().ToStringOutput(),
+/// 			VpnGatewayId:      main.ID(),
 /// 			CustomerGatewayId: pulumi.String(foo.Id),
 /// 			Type:              pulumi.String(foo.Type),
 /// 			StaticRoutesOnly:  pulumi.Bool(false),
@@ -1516,7 +1606,7 @@ pulumi.Output<GetCoipPoolsResult> getCoipPoolsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1524,21 +1614,27 @@ pulumi.Output<GetCoipPoolsResult> getCoipPoolsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getcustomergateway" "foo" {
+/// data "aws_ec2_customer_gateway" "foo" {
 ///   filters {
 ///     name   = "tag:Name"
 ///     values = ["foo-prod"]
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpngateway" "main" {
+/// resource "aws_ec2_vpn_gateway" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id          = mainAwsVpc.id
 ///   amazon_side_asn = 7224
 /// }
-/// resource "aws_ec2_vpnconnection" "transit" {
-///   vpn_gateway_id      = aws_ec2_vpngateway.main.id
-///   customer_gateway_id = data.aws_ec2_getcustomergateway.foo.id
-///   type                = data.aws_ec2_getcustomergateway.foo.type
+/// resource "aws_ec2_vpn_connection" "transit" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   vpn_gateway_id      = aws_ec2_vpn_gateway.main.id
+///   customer_gateway_id = data.aws_ec2_customer_gateway.foo.id
+///   type                = data.aws_ec2_customer_gateway.foo.type
 ///   static_routes_only  = false
 /// }
 /// ```
@@ -1576,7 +1672,7 @@ pulumi.Output<GetCoipPoolsResult> getCoipPoolsOutput(
 ///             .build());
 ///
 ///         var main = new VpnGateway("main", VpnGatewayArgs.builder()
-///             .vpcId(mainAwsVpc.id())
+///             .vpcId(mainAwsVpc.get("id"))
 ///             .amazonSideAsn("7224")
 ///             .build());
 ///
@@ -1705,14 +1801,14 @@ pulumi.Output<GetCustomerGatewayResult> getCustomerGatewayOutput(
 /// 			return err
 /// 		}
 /// 		_ = ec2.LookupDedicatedHostOutput(ctx, ec2.GetDedicatedHostOutputArgs{
-/// 			HostId: testDedicatedHost.ID().ToIDOutput().ToStringOutput(),
+/// 			HostId: testDedicatedHost.ID(),
 /// 		}, nil)
 /// 		return nil
 /// 	})
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1720,11 +1816,14 @@ pulumi.Output<GetCustomerGatewayResult> getCustomerGatewayOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getdedicatedhost" "test" {
-///   host_id = aws_ec2_dedicatedhost.test.id
+/// data "aws_ec2_dedicated_host" "test" {
+///   host_id = aws_ec2_dedicated_host.test.id
 /// }
 ///
-/// resource "aws_ec2_dedicatedhost" "test" {
+/// resource "aws_ec2_dedicated_host" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_type     = "c5.18xlarge"
 ///   availability_zone = "us-west-2a"
 /// }
@@ -1857,7 +1956,7 @@ pulumi.Output<GetCustomerGatewayResult> getCustomerGatewayOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1865,7 +1964,7 @@ pulumi.Output<GetCustomerGatewayResult> getCustomerGatewayOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getdedicatedhost" "test" {
+/// data "aws_ec2_dedicated_host" "test" {
 ///   filters {
 ///     name   = "instance-type"
 ///     values = ["c5.18xlarge"]
@@ -2018,7 +2117,7 @@ pulumi.Output<GetDedicatedHostResult> getDedicatedHostOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2026,7 +2125,7 @@ pulumi.Output<GetDedicatedHostResult> getDedicatedHostOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_geteips" "example" {
+/// data "aws_ec2_eips" "example" {
 ///   tags = {
 ///     "Env" = "dev"
 ///   }
@@ -2034,11 +2133,11 @@ pulumi.Output<GetDedicatedHostResult> getDedicatedHostOutput(
 ///
 /// # VPC EIPs.
 /// output "allocationIds" {
-///   value = data.aws_ec2_geteips.example.allocation_ids
+///   value = data.aws_ec2_eips.example.allocation_ids
 /// }
 /// # EC2-Classic EIPs.
 /// output "publicIps" {
-///   value = data.aws_ec2_geteips.example.public_ips
+///   value = data.aws_ec2_eips.example.public_ips
 /// }
 /// ```
 /// ```java
@@ -2168,7 +2267,7 @@ pulumi.Output<GetEipsResult> getEipsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2176,7 +2275,7 @@ pulumi.Output<GetEipsResult> getEipsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getelasticip" "byAllocationId" {
+/// data "aws_ec2_elastic_ip" "byAllocationId" {
 ///   id = "eipalloc-12345678"
 /// }
 /// ```
@@ -2294,7 +2393,7 @@ pulumi.Output<GetEipsResult> getEipsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2302,7 +2401,7 @@ pulumi.Output<GetEipsResult> getEipsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getelasticip" "byFilter" {
+/// data "aws_ec2_elastic_ip" "byFilter" {
 ///   filters {
 ///     name   = "tag:Name"
 ///     values = ["exampleNameTagValue"]
@@ -2407,7 +2506,7 @@ pulumi.Output<GetEipsResult> getEipsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2415,7 +2514,7 @@ pulumi.Output<GetEipsResult> getEipsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getelasticip" "byPublicIp" {
+/// data "aws_ec2_elastic_ip" "byPublicIp" {
 ///   public_ip = "1.2.3.4"
 /// }
 /// ```
@@ -2519,7 +2618,7 @@ pulumi.Output<GetEipsResult> getEipsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2527,7 +2626,7 @@ pulumi.Output<GetEipsResult> getEipsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getelasticip" "byTags" {
+/// data "aws_ec2_elastic_ip" "byTags" {
 ///   tags = {
 ///     "Name" = "exampleNameTagValue"
 ///   }
@@ -2702,7 +2801,7 @@ pulumi.Output<GetElasticIpResult> getElasticIpOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2710,12 +2809,12 @@ pulumi.Output<GetElasticIpResult> getElasticIpOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_gethosts" "example" {
-///   filters {
+/// data "aws_ec2_hosts" "example" {
+///   filter {
 ///     name   = "instance-type"
 ///     values = ["c5.large"]
 ///   }
-///   filters {
+///   filter {
 ///     name   = "state"
 ///     values = ["available"]
 ///   }
@@ -2856,7 +2955,7 @@ pulumi.Output<GetElasticIpResult> getElasticIpOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2864,8 +2963,8 @@ pulumi.Output<GetElasticIpResult> getElasticIpOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_gethosts" "outpost" {
-///   filters {
+/// data "aws_ec2_hosts" "outpost" {
+///   filter {
 ///     name   = "state"
 ///     values = ["available"]
 ///   }
@@ -2899,7 +2998,7 @@ pulumi.Output<GetElasticIpResult> getElasticIpOutput(
 ///                 .name("state")
 ///                 .values("available")
 ///                 .build())
-///             .outpostArn(example.arn())
+///             .outpostArn(example.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -3051,7 +3150,7 @@ pulumi.Output<GetHostsResult> getHostsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3059,7 +3158,7 @@ pulumi.Output<GetHostsResult> getHostsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getinstance" "foo" {
+/// data "aws_ec2_instance" "foo" {
 ///   filters {
 ///     name   = "image-id"
 ///     values = ["ami-xxxxxxxx"]
@@ -3205,7 +3304,7 @@ pulumi.Output<GetInstanceResult> getInstanceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3213,7 +3312,7 @@ pulumi.Output<GetInstanceResult> getInstanceOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getinstancetype" "example" {
+/// data "aws_ec2_instance_type" "example" {
 ///   instance_type = "t2.micro"
 /// }
 /// ```
@@ -3382,7 +3481,7 @@ pulumi.Output<GetInstanceTypeResult> getInstanceTypeOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3390,8 +3489,8 @@ pulumi.Output<GetInstanceTypeResult> getInstanceTypeOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getinstancetypeoffering" "example" {
-///   filters {
+/// data "aws_ec2_instance_type_offering" "example" {
+///   filter {
 ///     name   = "instance-type"
 ///     values = ["t2.micro", "t3.micro"]
 ///   }
@@ -3592,7 +3691,7 @@ pulumi.Output<GetInstanceTypeOfferingResult> getInstanceTypeOfferingOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3600,12 +3699,12 @@ pulumi.Output<GetInstanceTypeOfferingResult> getInstanceTypeOfferingOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getinstancetypeofferings" "example" {
-///   filters {
+/// data "aws_ec2_instance_type_offerings" "example" {
+///   filter {
 ///     name   = "instance-type"
 ///     values = ["t2.micro", "t3.micro"]
 ///   }
-///   filters {
+///   filter {
 ///     name   = "location"
 ///     values = ["usw2-az4"]
 ///   }
@@ -3850,7 +3949,7 @@ pulumi.Output<GetInstanceTypeOfferingsResult> getInstanceTypeOfferingsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3858,20 +3957,20 @@ pulumi.Output<GetInstanceTypeOfferingsResult> getInstanceTypeOfferingsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getinstancetypes" "test" {
-///   filters {
+/// data "aws_ec2_instance_types" "test" {
+///   filter {
 ///     name   = "auto-recovery-supported"
 ///     values = ["true"]
 ///   }
-///   filters {
+///   filter {
 ///     name   = "network-info.encryption-in-transit-supported"
 ///     values = ["true"]
 ///   }
-///   filters {
+///   filter {
 ///     name   = "instance-storage-supported"
 ///     values = ["true"]
 ///   }
-///   filters {
+///   filter {
 ///     name   = "instance-type"
 ///     values = ["g5.2xlarge", "g5.4xlarge"]
 ///   }
@@ -3990,25 +4089,27 @@ pulumi.Output<GetInstanceTypesResult> getInstanceTypesOutput(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const test = aws.ec2.getInstances({
-///     filters: [{
-///         name: "instance.group-id",
-///         values: ["sg-12345678"],
-///     }],
-///     instanceTags: {
-///         Role: "HardWorker",
-///     },
-///     instanceStateNames: [
-///         "running",
-///         "stopped",
-///     ],
-/// });
-/// const testEip: aws.ec2.Eip[] = [];
-/// test.then(test => test.ids).length.apply(rangeBody => {
-///     for (let range = 0; range < rangeBody; range++) {
-///         testEip.push(new aws.ec2.Eip(`test-${range}`, {instance: test.then(test => test.ids[range])}));
-///     }
-/// });
+/// export = async () => {
+///     const test = await aws.ec2.getInstances({
+///         filters: [{
+///             name: "instance.group-id",
+///             values: ["sg-12345678"],
+///         }],
+///         instanceTags: {
+///             Role: "HardWorker",
+///         },
+///         instanceStateNames: [
+///             "running",
+///             "stopped",
+///         ],
+///     });
+///     const testEip: aws.ec2.Eip[] = [];
+/// test.ids.length.apply(rangeBody => {
+///         for (let range = 0; range < rangeBody; range++) {
+///             testEip.push(new aws.ec2.Eip(`test-${range}`, {instance: test.ids[range]}));
+///         }
+///     });
+/// }
 /// ```
 /// ```python
 /// import pulumi
@@ -4036,16 +4137,17 @@ pulumi.Output<GetInstanceTypesResult> getInstanceTypesOutput(
 /// ```csharp
 /// using System.Collections.Generic;
 /// using System.Linq;
+/// using System.Threading.Tasks;
 /// using Pulumi;
 /// using Aws = Pulumi.Aws;
 ///
-/// return await Deployment.RunAsync(() =>
+/// return await Deployment.RunAsync(async() =>
 /// {
-///     var test = Aws.Ec2.GetInstances.Invoke(new()
+///     var test = await Aws.Ec2.GetInstances.InvokeAsync(new()
 ///     {
 ///         Filters = new[]
 ///         {
-///             new Aws.Ec2.Inputs.GetInstancesFilterInputArgs
+///             new Aws.Ec2.Inputs.GetInstancesFilterArgs
 ///             {
 ///                 Name = "instance.group-id",
 ///                 Values = new[]
@@ -4066,14 +4168,14 @@ pulumi.Output<GetInstanceTypesResult> getInstanceTypesOutput(
 ///     });
 ///
 ///     var testEip = new List<Aws.Ec2.Eip>();
-///     test.Apply(getInstancesResult => getInstancesResult.Ids).Length().Apply(rangeBody =>
+///     test.Ids.Length.Apply(rangeBody =>
 ///     {
 ///         for (var rangeIndex = 0; rangeIndex < rangeBody; rangeIndex++)
 ///         {
 ///             var range = new { Value = rangeIndex };
 ///             testEip.Add(new Aws.Ec2.Eip($"test-{range.Value}", new()
 ///             {
-///                 Instance = test.Apply(getInstancesResult => getInstancesResult.Ids)[range.Value],
+///                 Instance = test.Ids[range.Value],
 ///             }));
 ///         }
 ///         return 0;
@@ -4129,7 +4231,7 @@ pulumi.Output<GetInstanceTypesResult> getInstanceTypesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -4137,7 +4239,7 @@ pulumi.Output<GetInstanceTypesResult> getInstanceTypesOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getinstances" "test" {
+/// data "aws_ec2_instances" "test" {
 ///   filters {
 ///     name   = "instance.group-id"
 ///     values = ["sg-12345678"]
@@ -4149,8 +4251,14 @@ pulumi.Output<GetInstanceTypesResult> getInstanceTypesOutput(
 /// }
 ///
 /// resource "aws_ec2_eip" "test" {
-///   count    = length(data.aws_ec2_getinstances.test.ids)
-///   instance = data.aws_ec2_getinstances.test.ids[count.index]
+///   count = length(data.aws_ec2_instances.test.ids)
+///   pulumi {
+///     name ="test-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   instance = data.aws_ec2_instances.test.ids[count.index]
 /// }
 /// ```
 /// ```java
@@ -4299,7 +4407,7 @@ pulumi.Output<GetInstancesResult> getInstancesOutput(
 /// 			Filters: []ec2.GetInternetGatewayFilter{
 /// 				{
 /// 					Name: "attachment.vpc-id",
-/// 					Values: pulumi.StringArray{
+/// 					Values: []string{
 /// 						vpcId,
 /// 					},
 /// 				},
@@ -4313,7 +4421,7 @@ pulumi.Output<GetInstancesResult> getInstancesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -4321,7 +4429,7 @@ pulumi.Output<GetInstancesResult> getInstancesOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getinternetgateway" "default" {
+/// data "aws_ec2_internet_gateway" "default" {
 ///   filters {
 ///     name   = "attachment.vpc-id"
 ///     values = [var.vpcId]
@@ -4329,6 +4437,7 @@ pulumi.Output<GetInstancesResult> getInstancesOutput(
 /// }
 ///
 /// variable "vpcId" {
+///   type = any
 /// }
 /// ```
 /// ```java
@@ -4354,7 +4463,7 @@ pulumi.Output<GetInstancesResult> getInstancesOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var vpcId = config.require("vpcId");
+///         final var vpcId = config.requireObject("vpcId", com.pulumi.core.TypeShape.map(String.class, Object.class));
 ///         final var default = Ec2Functions.getInternetGateway(GetInternetGatewayArgs.builder()
 ///             .filters(GetInternetGatewayFilterArgs.builder()
 ///                 .name("attachment.vpc-id")
@@ -4499,7 +4608,7 @@ pulumi.Output<GetInternetGatewayResult> getInternetGatewayOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -4507,17 +4616,18 @@ pulumi.Output<GetInternetGatewayResult> getInternetGatewayOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getipampreviewnextcidr" "test" {
+/// data "aws_ec2_ipam_preview_next_cidr" "test" {
 ///   ipam_pool_id   = testAwsVpcIpamPool.id
 ///   netmask_length = 28
 /// }
 ///
-/// resource "aws_ec2_vpcipampoolcidrallocation" "test" {
+/// resource "aws_ec2_vpc_ipam_pool_cidr_allocation" "test" {
 ///   lifecycle {
-///     ignore_changes = [cidr]
+///     ignore_changes        = [cidr]
+///     create_before_destroy = true
 ///   }
 ///   ipam_pool_id = testAwsVpcIpamPool.id
-///   cidr         = data.aws_ec2_getipampreviewnextcidr.test.cidr
+///   cidr         = data.aws_ec2_ipam_preview_next_cidr.test.cidr
 /// }
 /// ```
 /// ```java
@@ -4545,12 +4655,12 @@ pulumi.Output<GetInternetGatewayResult> getInternetGatewayOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = Ec2Functions.getIpamPreviewNextCidr(GetIpamPreviewNextCidrArgs.builder()
-///             .ipamPoolId(testAwsVpcIpamPool.id())
+///             .ipamPoolId(testAwsVpcIpamPool.get("id"))
 ///             .netmaskLength(28)
 ///             .build());
 ///
 ///         var testVpcIpamPoolCidrAllocation = new VpcIpamPoolCidrAllocation("testVpcIpamPoolCidrAllocation", VpcIpamPoolCidrAllocationArgs.builder()
-///             .ipamPoolId(testAwsVpcIpamPool.id())
+///             .ipamPoolId(testAwsVpcIpamPool.get("id"))
 ///             .cidr(test.cidr())
 ///             .build(), CustomResourceOptions.builder()
 ///                 .ignoreChanges("cidr")
@@ -4707,7 +4817,7 @@ pulumi.Output<GetIpamPreviewNextCidrResult> getIpamPreviewNextCidrOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -4715,7 +4825,7 @@ pulumi.Output<GetIpamPreviewNextCidrResult> getIpamPreviewNextCidrOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getkeypair" "example" {
+/// data "aws_ec2_key_pair" "example" {
 ///   filters {
 ///     name   = "tag:Component"
 ///     values = ["web"]
@@ -4725,13 +4835,13 @@ pulumi.Output<GetIpamPreviewNextCidrResult> getIpamPreviewNextCidrOutput(
 /// }
 ///
 /// output "fingerprint" {
-///   value = data.aws_ec2_getkeypair.example.fingerprint
+///   value = data.aws_ec2_key_pair.example.fingerprint
 /// }
 /// output "name" {
-///   value = data.aws_ec2_getkeypair.example.key_name
+///   value = data.aws_ec2_key_pair.example.key_name
 /// }
 /// output "id" {
-///   value = data.aws_ec2_getkeypair.example.id
+///   value = data.aws_ec2_key_pair.example.id
 /// }
 /// ```
 /// ```java
@@ -4869,7 +4979,7 @@ pulumi.Output<GetKeyPairResult> getKeyPairOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -4877,7 +4987,7 @@ pulumi.Output<GetKeyPairResult> getKeyPairOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getlaunchconfiguration" "ubuntu" {
+/// data "aws_ec2_launch_configuration" "ubuntu" {
 ///   name = "test-launch-config"
 /// }
 /// ```
@@ -4998,7 +5108,7 @@ pulumi.Output<GetLaunchConfigurationResult> getLaunchConfigurationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -5006,7 +5116,7 @@ pulumi.Output<GetLaunchConfigurationResult> getLaunchConfigurationOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getlaunchtemplate" "default" {
+/// data "aws_ec2_launch_template" "default" {
 ///   name = "my-launch-template"
 /// }
 /// ```
@@ -5124,7 +5234,7 @@ pulumi.Output<GetLaunchConfigurationResult> getLaunchConfigurationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -5132,7 +5242,7 @@ pulumi.Output<GetLaunchConfigurationResult> getLaunchConfigurationOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getlaunchtemplate" "test" {
+/// data "aws_ec2_launch_template" "test" {
 ///   filters {
 ///     name   = "launch-template-name"
 ///     values = ["some-template"]
@@ -5275,7 +5385,7 @@ pulumi.Output<GetLaunchTemplateResult> getLaunchTemplateOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -5283,11 +5393,12 @@ pulumi.Output<GetLaunchTemplateResult> getLaunchTemplateOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getlocalgateway" "selected" {
+/// data "aws_ec2_local_gateway" "selected" {
 ///   id = var.localGatewayId
 /// }
 ///
 /// variable "localGatewayId" {
+///   type = any
 /// }
 /// ```
 /// ```java
@@ -5312,7 +5423,7 @@ pulumi.Output<GetLaunchTemplateResult> getLaunchTemplateOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var localGatewayId = config.require("localGatewayId");
+///         final var localGatewayId = config.requireObject("localGatewayId", com.pulumi.core.TypeShape.map(String.class, Object.class));
 ///         final var selected = Ec2Functions.getLocalGateway(GetLocalGatewayArgs.builder()
 ///             .id(localGatewayId)
 ///             .build());
@@ -5427,7 +5538,7 @@ pulumi.Output<GetLocalGatewayResult> getLocalGatewayOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -5435,11 +5546,12 @@ pulumi.Output<GetLocalGatewayResult> getLocalGatewayOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getlocalgatewayroutetable" "selected" {
+/// data "aws_ec2_local_gateway_route_table" "selected" {
 ///   local_gateway_route_table_id = var.awsEc2LocalGatewayRouteTable
 /// }
 ///
 /// variable "awsEc2LocalGatewayRouteTable" {
+///   type = any
 /// }
 /// ```
 /// ```java
@@ -5464,7 +5576,7 @@ pulumi.Output<GetLocalGatewayResult> getLocalGatewayOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var awsEc2LocalGatewayRouteTable = config.require("awsEc2LocalGatewayRouteTable");
+///         final var awsEc2LocalGatewayRouteTable = config.requireObject("awsEc2LocalGatewayRouteTable", com.pulumi.core.TypeShape.map(String.class, Object.class));
 ///         final var selected = Ec2Functions.getLocalGatewayRouteTable(GetLocalGatewayRouteTableArgs.builder()
 ///             .localGatewayRouteTableId(awsEc2LocalGatewayRouteTable)
 ///             .build());
@@ -5570,7 +5682,7 @@ pulumi.Output<GetLocalGatewayRouteTableResult> getLocalGatewayRouteTableOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -5578,11 +5690,11 @@ pulumi.Output<GetLocalGatewayRouteTableResult> getLocalGatewayRouteTableOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getlocalgatewayroutetables" "foo" {
+/// data "aws_ec2_local_gateway_route_tables" "foo" {
 /// }
 ///
 /// output "foo" {
-///   value = data.aws_ec2_getlocalgatewayroutetables.foo.ids
+///   value = data.aws_ec2_local_gateway_route_tables.foo.ids
 /// }
 /// ```
 /// ```java
@@ -5677,7 +5789,7 @@ pulumi.Output<GetLocalGatewayRouteTablesResult> getLocalGatewayRouteTablesOutput
 /// {
 ///     var example = .ToDictionary(item => {
 ///         var __key = item.Key;
-///         return __key;
+///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
 ///     }, item => {
 ///         var __value = item.Value;
 ///         return Aws.Ec2.GetLocalGatewayVirtualInterface.Invoke(new()
@@ -5689,7 +5801,7 @@ pulumi.Output<GetLocalGatewayRouteTablesResult> getLocalGatewayRouteTablesOutput
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -5697,13 +5809,13 @@ pulumi.Output<GetLocalGatewayRouteTablesResult> getLocalGatewayRouteTablesOutput
 ///   }
 /// }
 ///
-/// data "aws_ec2_getlocalgatewayvirtualinterface" "invoke_0" {
+/// data "aws_ec2_local_gateway_virtual_interface" "invoke_0" {
 ///   for_each = exampleAwsEc2LocalGatewayVirtualInterfaceGroup.localGatewayVirtualInterfaceIds
 ///   id       = each.value
 /// }
 ///
 /// locals {
-///   example = {for __key, __value in exampleAwsEc2LocalGatewayVirtualInterfaceGroup.localGatewayVirtualInterfaceIds : __key => data.aws_ec2_getlocalgatewayvirtualinterface.invoke_0[__key]}
+///   example = {for __key, __value in exampleAwsEc2LocalGatewayVirtualInterfaceGroup.localGatewayVirtualInterfaceIds : __key => data.aws_ec2_local_gateway_virtual_interface.invoke_0[__key]}
 /// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ec2_get_local_gateway_virtual_interface_get_local_gateway_virtual_interface_args_doc}
@@ -5787,7 +5899,7 @@ pulumi.Output<GetLocalGatewayVirtualInterfaceResult> getLocalGatewayVirtualInter
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -5795,7 +5907,7 @@ pulumi.Output<GetLocalGatewayVirtualInterfaceResult> getLocalGatewayVirtualInter
 ///   }
 /// }
 ///
-/// data "aws_ec2_getlocalgatewayvirtualinterfacegroup" "example" {
+/// data "aws_ec2_local_gateway_virtual_interface_group" "example" {
 ///   local_gateway_id = exampleAwsEc2LocalGateway.id
 /// }
 /// ```
@@ -5821,7 +5933,7 @@ pulumi.Output<GetLocalGatewayVirtualInterfaceResult> getLocalGatewayVirtualInter
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = Ec2Functions.getLocalGatewayVirtualInterfaceGroup(GetLocalGatewayVirtualInterfaceGroupArgs.builder()
-///             .localGatewayId(exampleAwsEc2LocalGateway.id())
+///             .localGatewayId(exampleAwsEc2LocalGateway.get("id"))
 ///             .build());
 ///
 ///     }
@@ -5909,7 +6021,7 @@ pulumi.Output<GetLocalGatewayVirtualInterfaceGroupResult> getLocalGatewayVirtual
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -5917,7 +6029,7 @@ pulumi.Output<GetLocalGatewayVirtualInterfaceGroupResult> getLocalGatewayVirtual
 ///   }
 /// }
 ///
-/// data "aws_ec2_getlocalgatewayvirtualinterfacegroups" "all" {
+/// data "aws_ec2_local_gateway_virtual_interface_groups" "all" {
 /// }
 /// ```
 /// ```java
@@ -6057,7 +6169,7 @@ pulumi.Output<GetLocalGatewayVirtualInterfaceGroupsResult> getLocalGatewayVirtua
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -6065,14 +6177,14 @@ pulumi.Output<GetLocalGatewayVirtualInterfaceGroupsResult> getLocalGatewayVirtua
 ///   }
 /// }
 ///
-/// data "aws_ec2_getlocalgateways" "foo" {
+/// data "aws_ec2_local_gateways" "foo" {
 ///   tags = {
 ///     "service" = "production"
 ///   }
 /// }
 ///
 /// output "foo" {
-///   value = data.aws_ec2_getlocalgateways.foo.ids
+///   value = data.aws_ec2_local_gateways.foo.ids
 /// }
 /// ```
 /// ```java
@@ -6210,7 +6322,7 @@ pulumi.Output<GetLocalGatewaysResult> getLocalGatewaysOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -6218,10 +6330,10 @@ pulumi.Output<GetLocalGatewaysResult> getLocalGatewaysOutput(
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
-/// data "aws_ec2_getmanagedprefixlist" "example" {
-///   name ="com.amazonaws.${data.aws_getregion.current.region}.dynamodb"
+/// data "aws_ec2_managed_prefix_list" "example" {
+///   name ="com.amazonaws.${data.aws_region.current.region}.dynamodb"
 /// }
 /// ```
 /// ```java
@@ -6347,7 +6459,7 @@ pulumi.Output<GetLocalGatewaysResult> getLocalGatewaysOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -6355,8 +6467,8 @@ pulumi.Output<GetLocalGatewaysResult> getLocalGatewaysOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getmanagedprefixlist" "example" {
-///   filters {
+/// data "aws_ec2_managed_prefix_list" "example" {
+///   filter {
 ///     name   = "prefix-list-name"
 ///     values = ["my-prefix-list"]
 ///   }
@@ -6447,9 +6559,7 @@ pulumi.Output<GetManagedPrefixListResult> getManagedPrefixListOutput(
 ///         Env: "test",
 ///     },
 /// });
-/// const testEnvGetManagedPrefixList = .map(__index => (aws.ec2.getManagedPrefixList({
-///     id: _arg0_.ids[__index],
-/// })));
+/// const testEnvGetManagedPrefixList = _arg1_;
 /// ```
 /// ```python
 /// import pulumi
@@ -6458,7 +6568,7 @@ pulumi.Output<GetManagedPrefixListResult> getManagedPrefixListOutput(
 /// test_env = aws.ec2.get_managed_prefix_lists(tags={
 ///     "Env": "test",
 /// })
-/// test_env_get_managed_prefix_list = [aws.ec2.get_managed_prefix_list(id=test_env.ids[__index]) for __index in len(test_env.ids).apply(lambda length: range(length))]
+/// test_env_get_managed_prefix_list = range(len(test_env.ids)).apply(lambda range: [aws.ec2.get_managed_prefix_list(id=test_env.ids[__index]) for __index in range])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -6476,12 +6586,12 @@ pulumi.Output<GetManagedPrefixListResult> getManagedPrefixListOutput(
 ///         },
 ///     });
 ///
-///     var testEnvGetManagedPrefixList = ;
+///     var testEnvGetManagedPrefixList = _arg1_;
 ///
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -6489,18 +6599,18 @@ pulumi.Output<GetManagedPrefixListResult> getManagedPrefixListOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getmanagedprefixlists" "testEnv" {
+/// data "aws_ec2_managed_prefix_lists" "testEnv" {
 ///   tags = {
 ///     "Env" = "test"
 ///   }
 /// }
-/// data "aws_ec2_getmanagedprefixlist" "invoke_1" {
-///   for_each = toset(range(length(data.aws_ec2_getmanagedprefixlists.testEnv.ids)))
-///   id       = data.aws_ec2_getmanagedprefixlists.testEnv.ids[each.value]
+/// data "aws_ec2_managed_prefix_list" "invoke_1" {
+///   for_each = toset(range(length(data.aws_ec2_managed_prefix_lists.testEnv.ids)))
+///   id       = data.aws_ec2_managed_prefix_lists.testEnv.ids[each.value]
 /// }
 ///
 /// locals {
-///   testEnvGetManagedPrefixList = [for __index in range(length(data.aws_ec2_getmanagedprefixlists.testEnv.ids)) : data.aws_ec2_getmanagedprefixlist.invoke_1[__index]]
+///   testEnvGetManagedPrefixList = [for __index in range(length(data.aws_ec2_managed_prefix_lists.testEnv.ids)) : data.aws_ec2_managed_prefix_list.invoke_1[__index]]
 /// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ec2_get_managed_prefix_lists_get_managed_prefix_lists_args_doc}
@@ -6584,7 +6694,7 @@ pulumi.Output<GetManagedPrefixListsResult> getManagedPrefixListsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -6592,7 +6702,7 @@ pulumi.Output<GetManagedPrefixListsResult> getManagedPrefixListsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getnatgateway" "default" {
+/// data "aws_ec2_nat_gateway" "default" {
 ///   subnet_id = public.id
 /// }
 /// ```
@@ -6618,7 +6728,7 @@ pulumi.Output<GetManagedPrefixListsResult> getManagedPrefixListsOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var default = Ec2Functions.getNatGateway(GetNatGatewayArgs.builder()
-///             .subnetId(public_.id())
+///             .subnetId(public_.get("id"))
 ///             .build());
 ///
 ///     }
@@ -6700,7 +6810,7 @@ pulumi.Output<GetManagedPrefixListsResult> getManagedPrefixListsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -6708,7 +6818,7 @@ pulumi.Output<GetManagedPrefixListsResult> getManagedPrefixListsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getnatgateway" "default" {
+/// data "aws_ec2_nat_gateway" "default" {
 ///   subnet_id = public.id
 ///   tags = {
 ///     "Name" = "gw NAT"
@@ -6737,7 +6847,7 @@ pulumi.Output<GetManagedPrefixListsResult> getManagedPrefixListsOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var default = Ec2Functions.getNatGateway(GetNatGatewayArgs.builder()
-///             .subnetId(public_.id())
+///             .subnetId(public_.get("id"))
 ///             .tags(Map.of("Name", "gw NAT"))
 ///             .build());
 ///
@@ -6798,9 +6908,7 @@ pulumi.Output<GetNatGatewayResult> getNatGatewayOutput(
 ///     }],
 ///     vpcId: vpcId,
 /// });
-/// const ngw = .map(__index => (aws.ec2.getNatGateway({
-///     id: _arg0_.ids[__index],
-/// })));
+/// const ngw = _arg1_;
 /// ```
 /// ```python
 /// import pulumi
@@ -6811,7 +6919,7 @@ pulumi.Output<GetNatGatewayResult> getNatGatewayOutput(
 ///         "values": ["available"],
 ///     }],
 ///     vpc_id=vpc_id)
-/// ngw = [aws.ec2.get_nat_gateway(id=ngws.ids[__index]) for __index in len(ngws.ids).apply(lambda length: range(length))]
+/// ngw = range(len(ngws.ids)).apply(lambda range: [aws.ec2.get_nat_gateway(id=ngws.ids[__index]) for __index in range])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -6837,12 +6945,12 @@ pulumi.Output<GetNatGatewayResult> getNatGatewayOutput(
 ///         VpcId = vpcId,
 ///     });
 ///
-///     var ngw = ;
+///     var ngw = _arg1_;
 ///
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -6850,20 +6958,20 @@ pulumi.Output<GetNatGatewayResult> getNatGatewayOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getnatgateways" "ngws" {
+/// data "aws_ec2_nat_gateways" "ngws" {
 ///   filters {
 ///     name   = "state"
 ///     values = ["available"]
 ///   }
 ///   vpc_id = vpcId
 /// }
-/// data "aws_ec2_getnatgateway" "invoke_1" {
-///   for_each = toset(range(length(data.aws_ec2_getnatgateways.ngws.ids)))
-///   id       = data.aws_ec2_getnatgateways.ngws.ids[each.value]
+/// data "aws_ec2_nat_gateway" "invoke_1" {
+///   for_each = toset(range(length(data.aws_ec2_nat_gateways.ngws.ids)))
+///   id       = data.aws_ec2_nat_gateways.ngws.ids[each.value]
 /// }
 ///
 /// locals {
-///   ngw = [for __index in range(length(data.aws_ec2_getnatgateways.ngws.ids)) : data.aws_ec2_getnatgateway.invoke_1[__index]]
+///   ngw = [for __index in range(length(data.aws_ec2_nat_gateways.ngws.ids)) : data.aws_ec2_nat_gateway.invoke_1[__index]]
 /// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ec2_get_nat_gateways_get_nat_gateways_args_doc}
@@ -6958,7 +7066,7 @@ pulumi.Output<GetNatGatewaysResult> getNatGatewaysOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -6966,12 +7074,12 @@ pulumi.Output<GetNatGatewaysResult> getNatGatewaysOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getnetworkacls" "example" {
+/// data "aws_ec2_network_acls" "example" {
 ///   vpc_id = vpcId
 /// }
 ///
 /// output "example" {
-///   value = data.aws_ec2_getnetworkacls.example.ids
+///   value = data.aws_ec2_network_acls.example.ids
 /// }
 /// ```
 /// ```java
@@ -7082,7 +7190,7 @@ pulumi.Output<GetNatGatewaysResult> getNatGatewaysOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -7090,7 +7198,7 @@ pulumi.Output<GetNatGatewaysResult> getNatGatewaysOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getnetworkacls" "example" {
+/// data "aws_ec2_network_acls" "example" {
 ///   vpc_id = vpcId
 ///   tags = {
 ///     "Tier" = "Private"
@@ -7204,7 +7312,7 @@ pulumi.Output<GetNatGatewaysResult> getNatGatewaysOutput(
 /// 			Filters: []ec2.GetNetworkAclsFilter{
 /// 				{
 /// 					Name: "association.subnet-id",
-/// 					Values: pulumi.StringArray{
+/// 					Values: []string{
 /// 						test.Id,
 /// 					},
 /// 				},
@@ -7219,7 +7327,7 @@ pulumi.Output<GetNatGatewaysResult> getNatGatewaysOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -7227,7 +7335,7 @@ pulumi.Output<GetNatGatewaysResult> getNatGatewaysOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getnetworkacls" "example" {
+/// data "aws_ec2_network_acls" "example" {
 ///   filters {
 ///     name   = "association.subnet-id"
 ///     values = [test.id]
@@ -7260,7 +7368,7 @@ pulumi.Output<GetNatGatewaysResult> getNatGatewaysOutput(
 ///         final var example = Ec2Functions.getNetworkAcls(GetNetworkAclsArgs.builder()
 ///             .filters(GetNetworkAclsFilterArgs.builder()
 ///                 .name("association.subnet-id")
-///                 .values(test.id())
+///                 .values(test.get("id"))
 ///                 .build())
 ///             .vpcId(vpcId)
 ///             .build());
@@ -7361,7 +7469,7 @@ pulumi.Output<GetNetworkAclsResult> getNetworkAclsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -7369,7 +7477,7 @@ pulumi.Output<GetNetworkAclsResult> getNetworkAclsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getnetworkinsightsanalysis" "example" {
+/// data "aws_ec2_network_insights_analysis" "example" {
 ///   network_insights_analysis_id = exampleAwsEc2NetworkInsightsAnalysis.id
 /// }
 /// ```
@@ -7395,7 +7503,7 @@ pulumi.Output<GetNetworkAclsResult> getNetworkAclsOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = Ec2Functions.getNetworkInsightsAnalysis(GetNetworkInsightsAnalysisArgs.builder()
-///             .networkInsightsAnalysisId(exampleAwsEc2NetworkInsightsAnalysis.id())
+///             .networkInsightsAnalysisId(exampleAwsEc2NetworkInsightsAnalysis.get("id"))
 ///             .build());
 ///
 ///     }
@@ -7490,7 +7598,7 @@ pulumi.Output<GetNetworkInsightsAnalysisResult> getNetworkInsightsAnalysisOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -7498,7 +7606,7 @@ pulumi.Output<GetNetworkInsightsAnalysisResult> getNetworkInsightsAnalysisOutput
 ///   }
 /// }
 ///
-/// data "aws_ec2_getnetworkinsightspath" "example" {
+/// data "aws_ec2_network_insights_path" "example" {
 ///   network_insights_path_id = exampleAwsEc2NetworkInsightsPath.id
 /// }
 /// ```
@@ -7524,7 +7632,7 @@ pulumi.Output<GetNetworkInsightsAnalysisResult> getNetworkInsightsAnalysisOutput
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = Ec2Functions.getNetworkInsightsPath(GetNetworkInsightsPathArgs.builder()
-///             .networkInsightsPathId(exampleAwsEc2NetworkInsightsPath.id())
+///             .networkInsightsPathId(exampleAwsEc2NetworkInsightsPath.get("id"))
 ///             .build());
 ///
 ///     }
@@ -7619,7 +7727,7 @@ pulumi.Output<GetNetworkInsightsPathResult> getNetworkInsightsPathOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -7627,7 +7735,7 @@ pulumi.Output<GetNetworkInsightsPathResult> getNetworkInsightsPathOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getnetworkinterface" "bar" {
+/// data "aws_ec2_network_interface" "bar" {
 ///   id = "eni-01234567"
 /// }
 /// ```
@@ -7752,7 +7860,7 @@ pulumi.Output<GetNetworkInterfaceResult> getNetworkInterfaceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -7760,11 +7868,11 @@ pulumi.Output<GetNetworkInterfaceResult> getNetworkInterfaceOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getnetworkinterfaces" "example" {
+/// data "aws_ec2_network_interfaces" "example" {
 /// }
 ///
 /// output "example" {
-///   value = data.aws_ec2_getnetworkinterfaces.example.ids
+///   value = data.aws_ec2_network_interfaces.example.ids
 /// }
 /// ```
 /// ```java
@@ -7875,7 +7983,7 @@ pulumi.Output<GetNetworkInterfaceResult> getNetworkInterfaceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -7883,14 +7991,14 @@ pulumi.Output<GetNetworkInterfaceResult> getNetworkInterfaceOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getnetworkinterfaces" "example" {
+/// data "aws_ec2_network_interfaces" "example" {
 ///   tags = {
 ///     "Name" = "test"
 ///   }
 /// }
 ///
 /// output "example1" {
-///   value = data.aws_ec2_getnetworkinterfaces.example.ids
+///   value = data.aws_ec2_network_interfaces.example.ids
 /// }
 /// ```
 /// ```java
@@ -8008,7 +8116,7 @@ pulumi.Output<GetNetworkInterfaceResult> getNetworkInterfaceOutput(
 /// 			Filters: []ec2.GetNetworkInterfacesFilter{
 /// 				{
 /// 					Name: "subnet-id",
-/// 					Values: pulumi.StringArray{
+/// 					Values: []string{
 /// 						test.Id,
 /// 					},
 /// 				},
@@ -8023,7 +8131,7 @@ pulumi.Output<GetNetworkInterfaceResult> getNetworkInterfaceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -8031,7 +8139,7 @@ pulumi.Output<GetNetworkInterfaceResult> getNetworkInterfaceOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getnetworkinterfaces" "example" {
+/// data "aws_ec2_network_interfaces" "example" {
 ///   filters {
 ///     name   = "subnet-id"
 ///     values = [test.id]
@@ -8039,7 +8147,7 @@ pulumi.Output<GetNetworkInterfaceResult> getNetworkInterfaceOutput(
 /// }
 ///
 /// output "example" {
-///   value = data.aws_ec2_getnetworkinterfaces.example.ids
+///   value = data.aws_ec2_network_interfaces.example.ids
 /// }
 /// ```
 /// ```java
@@ -8067,7 +8175,7 @@ pulumi.Output<GetNetworkInterfaceResult> getNetworkInterfaceOutput(
 ///         final var example = Ec2Functions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
 ///             .filters(GetNetworkInterfacesFilterArgs.builder()
 ///                 .name("subnet-id")
-///                 .values(test.id())
+///                 .values(test.get("id"))
 ///                 .build())
 ///             .build());
 ///
@@ -8234,7 +8342,7 @@ pulumi.Output<GetNetworkInterfacesResult> getNetworkInterfacesOutput(
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewNetworkAclRule(ctx, "private_s3", &ec2.NetworkAclRuleArgs{
-/// 			NetworkAclId: bar.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkAclId: bar.ID(),
 /// 			RuleNumber:   pulumi.Int(200),
 /// 			Egress:       pulumi.Bool(false),
 /// 			Protocol:     pulumi.String("tcp"),
@@ -8253,7 +8361,7 @@ pulumi.Output<GetNetworkInterfacesResult> getNetworkInterfacesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -8261,24 +8369,33 @@ pulumi.Output<GetNetworkInterfacesResult> getNetworkInterfacesOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getprefixlist" "privateS3" {
-///   prefix_list_id = aws_ec2_vpcendpoint.private_s3.prefix_list_id
+/// data "aws_ec2_prefix_list" "privateS3" {
+///   prefix_list_id = aws_ec2_vpc_endpoint.private_s3.prefix_list_id
 /// }
 ///
-/// resource "aws_ec2_vpcendpoint" "private_s3" {
+/// resource "aws_ec2_vpc_endpoint" "private_s3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id       = foo.id
 ///   service_name = "com.amazonaws.us-west-2.s3"
 /// }
-/// resource "aws_ec2_networkacl" "bar" {
+/// resource "aws_ec2_network_acl" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id = foo.id
 /// }
-/// resource "aws_ec2_networkaclrule" "private_s3" {
-///   network_acl_id = aws_ec2_networkacl.bar.id
+/// resource "aws_ec2_network_acl_rule" "private_s3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   network_acl_id = aws_ec2_network_acl.bar.id
 ///   rule_number    = 200
 ///   egress         = false
 ///   protocol       = "tcp"
 ///   rule_action    = "allow"
-///   cidr_block     = data.aws_ec2_getprefixlist.privateS3.cidr_blocks[0]
+///   cidr_block     = data.aws_ec2_prefix_list.privateS3.cidr_blocks[0]
 ///   from_port      = 443
 ///   to_port        = 443
 /// }
@@ -8311,7 +8428,7 @@ pulumi.Output<GetNetworkInterfacesResult> getNetworkInterfacesOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         var privateS3VpcEndpoint = new VpcEndpoint("privateS3VpcEndpoint", VpcEndpointArgs.builder()
-///             .vpcId(foo.id())
+///             .vpcId(foo.get("id"))
 ///             .serviceName("com.amazonaws.us-west-2.s3")
 ///             .build());
 ///
@@ -8320,7 +8437,7 @@ pulumi.Output<GetNetworkInterfacesResult> getNetworkInterfacesOutput(
 ///             .build());
 ///
 ///         var bar = new NetworkAcl("bar", NetworkAclArgs.builder()
-///             .vpcId(foo.id())
+///             .vpcId(foo.get("id"))
 ///             .build());
 ///
 ///         var privateS3NetworkAclRule = new NetworkAclRule("privateS3NetworkAclRule", NetworkAclRuleArgs.builder()
@@ -8329,7 +8446,7 @@ pulumi.Output<GetNetworkInterfacesResult> getNetworkInterfacesOutput(
 ///             .egress(false)
 ///             .protocol("tcp")
 ///             .ruleAction("allow")
-///             .cidrBlock(privateS3.applyValue(_privateS3 -> _privateS3.cidrBlocks()[0]))
+///             .cidrBlock(privateS3.applyValue(_privateS3 -> _privateS3.cidrBlocks().get(0)))
 ///             .fromPort(443)
 ///             .toPort(443)
 ///             .build());
@@ -8446,7 +8563,7 @@ pulumi.Output<GetNetworkInterfacesResult> getNetworkInterfacesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -8454,7 +8571,7 @@ pulumi.Output<GetNetworkInterfacesResult> getNetworkInterfacesOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getprefixlist" "test" {
+/// data "aws_ec2_prefix_list" "test" {
 ///   filters {
 ///     name   = "prefix-list-id"
 ///     values = ["pl-68a54001"]
@@ -8587,7 +8704,7 @@ pulumi.Output<GetPrefixListResult> getPrefixListOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -8595,7 +8712,7 @@ pulumi.Output<GetPrefixListResult> getPrefixListOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getpublicipv4pool" "example" {
+/// data "aws_ec2_public_ipv4_pool" "example" {
 ///   pool_id = "ipv4pool-ec2-000df99cff0c1ec10"
 /// }
 /// ```
@@ -8715,7 +8832,7 @@ pulumi.Output<GetPublicIpv4PoolResult> getPublicIpv4PoolOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -8723,7 +8840,7 @@ pulumi.Output<GetPublicIpv4PoolResult> getPublicIpv4PoolOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getpublicipv4pools" "example" {
+/// data "aws_ec2_public_ipv4_pools" "example" {
 /// }
 ///
 /// # Returns all public IPv4 pools.
@@ -8842,7 +8959,7 @@ pulumi.Output<GetPublicIpv4PoolResult> getPublicIpv4PoolOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -8850,8 +8967,8 @@ pulumi.Output<GetPublicIpv4PoolResult> getPublicIpv4PoolOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getpublicipv4pools" "example" {
-///   filters {
+/// data "aws_ec2_public_ipv4_pools" "example" {
+///   filter {
 ///     name   = "tag-key"
 ///     values = ["ExampleTagKey"]
 ///   }
@@ -9029,7 +9146,7 @@ pulumi.Output<GetPublicIpv4PoolsResult> getPublicIpv4PoolsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -9037,18 +9154,19 @@ pulumi.Output<GetPublicIpv4PoolsResult> getPublicIpv4PoolsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getroutetable" "selected" {
+/// data "aws_ec2_route_table" "selected" {
 ///   subnet_id = var.subnetId
 /// }
-/// data "aws_ec2_getroute" "route" {
+/// data "aws_ec2_route" "route" {
 ///   route_table_id         = selectedAwsRouteTable.id
 ///   destination_cidr_block = "10.0.1.0/24"
 /// }
-/// data "aws_ec2_getnetworkinterface" "interface" {
-///   id = data.aws_ec2_getroute.route.network_interface_id
+/// data "aws_ec2_network_interface" "interface" {
+///   id = data.aws_ec2_route.route.network_interface_id
 /// }
 ///
 /// variable "subnetId" {
+///   type = any
 /// }
 /// ```
 /// ```java
@@ -9075,13 +9193,13 @@ pulumi.Output<GetPublicIpv4PoolsResult> getPublicIpv4PoolsOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var subnetId = config.require("subnetId");
+///         final var subnetId = config.requireObject("subnetId", com.pulumi.core.TypeShape.map(String.class, Object.class));
 ///         final var selected = Ec2Functions.getRouteTable(GetRouteTableArgs.builder()
 ///             .subnetId(subnetId)
 ///             .build());
 ///
 ///         final var route = Ec2Functions.getRoute(GetRouteArgs.builder()
-///             .routeTableId(selectedAwsRouteTable.id())
+///             .routeTableId(selectedAwsRouteTable.get("id"))
 ///             .destinationCidrBlock("10.0.1.0/24")
 ///             .build());
 ///
@@ -9233,7 +9351,7 @@ pulumi.Output<GetRouteResult> getRouteOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -9241,16 +9359,20 @@ pulumi.Output<GetRouteResult> getRouteOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getroutetable" "selected" {
+/// data "aws_ec2_route_table" "selected" {
 ///   subnet_id = var.subnetId
 /// }
 ///
 /// resource "aws_ec2_route" "route" {
-///   route_table_id            = data.aws_ec2_getroutetable.selected.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   route_table_id            = data.aws_ec2_route_table.selected.id
 ///   destination_cidr_block    = "10.0.1.0/22"
 ///   vpc_peering_connection_id = "pcx-45ff3dc1"
 /// }
 /// variable "subnetId" {
+///   type = any
 /// }
 /// ```
 /// ```java
@@ -9277,7 +9399,7 @@ pulumi.Output<GetRouteResult> getRouteOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var subnetId = config.require("subnetId");
+///         final var subnetId = config.requireObject("subnetId", com.pulumi.core.TypeShape.map(String.class, Object.class));
 ///         final var selected = Ec2Functions.getRouteTable(GetRouteTableArgs.builder()
 ///             .subnetId(subnetId)
 ///             .build());
@@ -9348,23 +9470,25 @@ pulumi.Output<GetRouteTableResult> getRouteTableOutput(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const rts = aws.ec2.getRouteTables({
-///     filters: [{
-///         name: "tag:kubernetes.io/kops/role",
-///         values: ["private*"],
-///     }],
-///     vpcId: vpcId,
-/// });
-/// const r: aws.ec2.Route[] = [];
-/// rts.then(rts => rts.ids).length.apply(rangeBody => {
-///     for (let range = 0; range < rangeBody; range++) {
-///         r.push(new aws.ec2.Route(`r-${range}`, {
-///             routeTableId: rts.then(rts => rts.ids[range]),
-///             destinationCidrBlock: "10.0.0.0/22",
-///             vpcPeeringConnectionId: "pcx-0e9a7a9ecd137dc54",
-///         }));
-///     }
-/// });
+/// export = async () => {
+///     const rts = await aws.ec2.getRouteTables({
+///         filters: [{
+///             name: "tag:kubernetes.io/kops/role",
+///             values: ["private*"],
+///         }],
+///         vpcId: vpcId,
+///     });
+///     const r: aws.ec2.Route[] = [];
+/// rts.ids.length.apply(rangeBody => {
+///         for (let range = 0; range < rangeBody; range++) {
+///             r.push(new aws.ec2.Route(`r-${range}`, {
+///                 routeTableId: rts.ids[range],
+///                 destinationCidrBlock: "10.0.0.0/22",
+///                 vpcPeeringConnectionId: "pcx-0e9a7a9ecd137dc54",
+///             }));
+///         }
+///     });
+/// }
 /// ```
 /// ```python
 /// import pulumi
@@ -9389,16 +9513,17 @@ pulumi.Output<GetRouteTableResult> getRouteTableOutput(
 /// ```csharp
 /// using System.Collections.Generic;
 /// using System.Linq;
+/// using System.Threading.Tasks;
 /// using Pulumi;
 /// using Aws = Pulumi.Aws;
 ///
-/// return await Deployment.RunAsync(() =>
+/// return await Deployment.RunAsync(async() =>
 /// {
-///     var rts = Aws.Ec2.GetRouteTables.Invoke(new()
+///     var rts = await Aws.Ec2.GetRouteTables.InvokeAsync(new()
 ///     {
 ///         Filters = new[]
 ///         {
-///             new Aws.Ec2.Inputs.GetRouteTablesFilterInputArgs
+///             new Aws.Ec2.Inputs.GetRouteTablesFilterArgs
 ///             {
 ///                 Name = "tag:kubernetes.io/kops/role",
 ///                 Values = new[]
@@ -9411,14 +9536,14 @@ pulumi.Output<GetRouteTableResult> getRouteTableOutput(
 ///     });
 ///
 ///     var r = new List<Aws.Ec2.Route>();
-///     rts.Apply(getRouteTablesResult => getRouteTablesResult.Ids).Length().Apply(rangeBody =>
+///     rts.Ids.Length.Apply(rangeBody =>
 ///     {
 ///         for (var rangeIndex = 0; rangeIndex < rangeBody; rangeIndex++)
 ///         {
 ///             var range = new { Value = rangeIndex };
 ///             r.Add(new Aws.Ec2.Route($"r-{range.Value}", new()
 ///             {
-///                 RouteTableId = rts.Apply(getRouteTablesResult => getRouteTablesResult.Ids)[range.Value],
+///                 RouteTableId = rts.Ids[range.Value],
 ///                 DestinationCidrBlock = "10.0.0.0/22",
 ///                 VpcPeeringConnectionId = "pcx-0e9a7a9ecd137dc54",
 ///             }));
@@ -9472,7 +9597,7 @@ pulumi.Output<GetRouteTableResult> getRouteTableOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -9480,7 +9605,7 @@ pulumi.Output<GetRouteTableResult> getRouteTableOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getroutetables" "rts" {
+/// data "aws_ec2_route_tables" "rts" {
 ///   filters {
 ///     name   = "tag:kubernetes.io/kops/role"
 ///     values = ["private*"]
@@ -9489,8 +9614,14 @@ pulumi.Output<GetRouteTableResult> getRouteTableOutput(
 /// }
 ///
 /// resource "aws_ec2_route" "r" {
-///   count                     = length(data.aws_ec2_getroutetables.rts.ids)
-///   route_table_id            = data.aws_ec2_getroutetables.rts.ids[count.index]
+///   count = length(data.aws_ec2_route_tables.rts.ids)
+///   pulumi {
+///     name ="r-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   route_table_id            = data.aws_ec2_route_tables.rts.ids[count.index]
 ///   destination_cidr_block    = "10.0.0.0/22"
 ///   vpc_peering_connection_id = "pcx-0e9a7a9ecd137dc54"
 /// }
@@ -9658,7 +9789,7 @@ pulumi.Output<GetRouteTablesResult> getRouteTablesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -9666,15 +9797,19 @@ pulumi.Output<GetRouteTablesResult> getRouteTablesOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getsecuritygroup" "selected" {
+/// data "aws_ec2_security_group" "selected" {
 ///   id = var.securityGroupId
 /// }
 ///
 /// resource "aws_ec2_subnet" "subnet" {
-///   vpc_id     = data.aws_ec2_getsecuritygroup.selected.vpc_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   vpc_id     = data.aws_ec2_security_group.selected.vpc_id
 ///   cidr_block = "10.0.1.0/24"
 /// }
 /// variable "securityGroupId" {
+///   type = any
 /// }
 /// ```
 /// ```java
@@ -9701,7 +9836,7 @@ pulumi.Output<GetRouteTablesResult> getRouteTablesOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var securityGroupId = config.require("securityGroupId");
+///         final var securityGroupId = config.requireObject("securityGroupId", com.pulumi.core.TypeShape.map(String.class, Object.class));
 ///         final var selected = Ec2Functions.getSecurityGroup(GetSecurityGroupArgs.builder()
 ///             .id(securityGroupId)
 ///             .build());
@@ -9825,7 +9960,7 @@ pulumi.Output<GetSecurityGroupResult> getSecurityGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -9833,7 +9968,7 @@ pulumi.Output<GetSecurityGroupResult> getSecurityGroupOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getsecuritygroups" "test" {
+/// data "aws_ec2_security_groups" "test" {
 ///   tags = {
 ///     "Application" = "k8s"
 ///     "Environment" = "dev"
@@ -9969,7 +10104,7 @@ pulumi.Output<GetSecurityGroupResult> getSecurityGroupOutput(
 /// 				},
 /// 				{
 /// 					Name: "vpc-id",
-/// 					Values: pulumi.StringArray{
+/// 					Values: []string{
 /// 						vpcId,
 /// 					},
 /// 				},
@@ -9983,7 +10118,7 @@ pulumi.Output<GetSecurityGroupResult> getSecurityGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -9991,7 +10126,7 @@ pulumi.Output<GetSecurityGroupResult> getSecurityGroupOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getsecuritygroups" "test" {
+/// data "aws_ec2_security_groups" "test" {
 ///   filters {
 ///     name   = "group-name"
 ///     values = ["*nodes*"]
@@ -10127,7 +10262,7 @@ pulumi.Output<GetSecurityGroupsResult> getSecurityGroupsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -10135,7 +10270,7 @@ pulumi.Output<GetSecurityGroupsResult> getSecurityGroupsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getserialconsoleaccess" "current" {
+/// data "aws_ec2_serial_console_access" "current" {
 /// }
 /// ```
 /// ```java
@@ -10253,7 +10388,7 @@ pulumi.Output<GetSerialConsoleAccessResult> getSerialConsoleAccessOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -10261,7 +10396,7 @@ pulumi.Output<GetSerialConsoleAccessResult> getSerialConsoleAccessOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getservicelinkvirtualinterface" "example" {
+/// data "aws_ec2_service_link_virtual_interface" "example" {
 ///   id = "slvif-1234567890abcdef0"
 /// }
 /// ```
@@ -10391,7 +10526,7 @@ pulumi.Output<GetServiceLinkVirtualInterfaceResult> getServiceLinkVirtualInterfa
 /// 			Filters: []ec2.GetServiceLinkVirtualInterfacesFilter{
 /// 				{
 /// 					Name: "outpost-arn",
-/// 					Values: pulumi.StringArray{
+/// 					Values: []string{
 /// 						exampleAwsOutpostsOutpost.Arn,
 /// 					},
 /// 				},
@@ -10405,7 +10540,7 @@ pulumi.Output<GetServiceLinkVirtualInterfaceResult> getServiceLinkVirtualInterfa
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -10413,8 +10548,8 @@ pulumi.Output<GetServiceLinkVirtualInterfaceResult> getServiceLinkVirtualInterfa
 ///   }
 /// }
 ///
-/// data "aws_ec2_getservicelinkvirtualinterfaces" "example" {
-///   filters {
+/// data "aws_ec2_service_link_virtual_interfaces" "example" {
+///   filter {
 ///     name   = "outpost-arn"
 ///     values = [exampleAwsOutpostsOutpost.arn]
 ///   }
@@ -10445,7 +10580,7 @@ pulumi.Output<GetServiceLinkVirtualInterfaceResult> getServiceLinkVirtualInterfa
 ///         final var example = Ec2Functions.getServiceLinkVirtualInterfaces(GetServiceLinkVirtualInterfacesArgs.builder()
 ///             .filters(GetServiceLinkVirtualInterfacesFilterArgs.builder()
 ///                 .name("outpost-arn")
-///                 .values(exampleAwsOutpostsOutpost.arn())
+///                 .values(exampleAwsOutpostsOutpost.get("arn"))
 ///                 .build())
 ///             .build());
 ///
@@ -10539,7 +10674,7 @@ pulumi.Output<GetServiceLinkVirtualInterfacesResult> getServiceLinkVirtualInterf
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -10547,7 +10682,7 @@ pulumi.Output<GetServiceLinkVirtualInterfacesResult> getServiceLinkVirtualInterf
 ///   }
 /// }
 ///
-/// data "aws_ec2_getspotdatafeedsubscription" "default" {
+/// data "aws_ec2_spot_datafeed_subscription" "default" {
 /// }
 /// ```
 /// ```java
@@ -10696,7 +10831,7 @@ pulumi.Output<GetSpotDatafeedSubscriptionResult> getSpotDatafeedSubscriptionOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -10704,8 +10839,8 @@ pulumi.Output<GetSpotDatafeedSubscriptionResult> getSpotDatafeedSubscriptionOutp
 ///   }
 /// }
 ///
-/// data "aws_ec2_getspotprice" "example" {
-///   filters {
+/// data "aws_ec2_spot_price" "example" {
+///   filter {
 ///     name   = "product-description"
 ///     values = ["Linux/UNIX"]
 ///   }
@@ -10906,7 +11041,7 @@ pulumi.Output<GetSpotPriceResult> getSpotPriceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -10914,20 +11049,24 @@ pulumi.Output<GetSpotPriceResult> getSpotPriceOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getsubnet" "selected" {
+/// data "aws_ec2_subnet" "selected" {
 ///   id = var.subnetId
 /// }
 ///
-/// resource "aws_ec2_securitygroup" "subnet_security_group" {
+/// resource "aws_ec2_security_group" "subnet_security_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ingress {
-///     cidr_blocks = [data.aws_ec2_getsubnet.selected.cidr_block]
+///     cidr_blocks = [data.aws_ec2_subnet.selected.cidr_block]
 ///     from_port   = 80
 ///     to_port     = 80
 ///     protocol    = "tcp"
 ///   }
-///   vpc_id = data.aws_ec2_getsubnet.selected.vpc_id
+///   vpc_id = data.aws_ec2_subnet.selected.vpc_id
 /// }
 /// variable "subnetId" {
+///   type = any
 /// }
 /// ```
 /// ```java
@@ -10955,7 +11094,7 @@ pulumi.Output<GetSpotPriceResult> getSpotPriceOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var subnetId = config.require("subnetId");
+///         final var subnetId = config.requireObject("subnetId", com.pulumi.core.TypeShape.map(String.class, Object.class));
 ///         final var selected = Ec2Functions.getSubnet(GetSubnetArgs.builder()
 ///             .id(subnetId)
 ///             .build());
@@ -11076,7 +11215,7 @@ pulumi.Output<GetSpotPriceResult> getSpotPriceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -11084,7 +11223,7 @@ pulumi.Output<GetSpotPriceResult> getSpotPriceOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getsubnet" "selected" {
+/// data "aws_ec2_subnet" "selected" {
 ///   filters {
 ///     name   = "tag:Name"
 ///     values = ["yakdriver"]
@@ -11183,7 +11322,7 @@ pulumi.Output<GetSubnetResult> getSubnetOutput(
 /// })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: aws.ec2.getSubnet({
 ///     id: __value,
 /// }) }), {}));
-/// export const subnetCidrBlocks = exampleGetSubnet.apply(exampleGetSubnet => Object.values(exampleGetSubnet).map(s => (s.cidrBlock)));
+/// export const subnetCidrBlocks = Object.values(exampleGetSubnet).map(s => (s.cidrBlock));
 /// ```
 /// ```python
 /// import pulumi
@@ -11224,19 +11363,28 @@ pulumi.Output<GetSubnetResult> getSubnetOutput(
 ///     var exampleGetSubnet = Std.Toset.Invoke(new()
 ///     {
 ///         Input = example.Apply(getSubnetsResult => getSubnetsResult.Ids),
-///     }).Apply(invoke => );
+///     }).Apply(invoke => .ToDictionary(item => {
+///         var __key = item.Key;
+///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+///     }, item => {
+///         var __value = item.Value;
+///         return Aws.Ec2.GetSubnet.Invoke(new()
+///         {
+///             Id = __value,
+///         });
+///     }));
 ///
 ///     return new Dictionary<string, object?>
 ///     {
-///         ["subnetCidrBlocks"] = exampleGetSubnet.Apply(exampleGetSubnet => (exampleGetSubnet).Values.Select(s =>
+///         ["subnetCidrBlocks"] = (exampleGetSubnet).Values.Select(s =>
 ///         {
 ///             return s.CidrBlock;
-///         }).ToList()),
+///         }).ToList(),
 ///     };
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -11247,19 +11395,19 @@ pulumi.Output<GetSubnetResult> getSubnetOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getsubnets" "example" {
+/// data "aws_ec2_subnets" "example" {
 ///   filters {
 ///     name   = "vpc-id"
 ///     values = [vpcId]
 ///   }
 /// }
-/// data "aws_ec2_getsubnet" "invoke_1" {
-///   for_each = toset(data.aws_ec2_getsubnets.example.ids)
+/// data "aws_ec2_subnet" "invoke_1" {
+///   for_each = toset(data.aws_ec2_subnets.example.ids)
 ///   id       = each.value
 /// }
 ///
 /// locals {
-///   exampleGetSubnet = {for __key, __value in toset(data.aws_ec2_getsubnets.example.ids) : __key => data.aws_ec2_getsubnet.invoke_1[__key]}
+///   exampleGetSubnet = {for __key, __value in toset(data.aws_ec2_subnets.example.ids) : __key => data.aws_ec2_subnet.invoke_1[__key]}
 /// }
 /// output "subnetCidrBlocks" {
 ///   value = [for s in local.exampleGetSubnet : s.cidrBlock]
@@ -11356,7 +11504,7 @@ pulumi.Output<GetSubnetResult> getSubnetOutput(
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -11364,7 +11512,7 @@ pulumi.Output<GetSubnetResult> getSubnetOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getsubnets" "private" {
+/// data "aws_ec2_subnets" "private" {
 ///   filters {
 ///     name   = "vpc-id"
 ///     values = [vpcId]
@@ -11375,7 +11523,13 @@ pulumi.Output<GetSubnetResult> getSubnetOutput(
 /// }
 ///
 /// resource "aws_ec2_instance" "app" {
-///   for_each      = {for entry in data.aws_ec2_getsubnets.private.ids : entry => entry}
+///   for_each = {for entry in data.aws_ec2_subnets.private.ids : entry => entry}
+///   pulumi {
+///     name ="app-${each.key}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ami           = ami
 ///   instance_type = "t2.micro"
 ///   subnet_id     = each.value
@@ -11489,7 +11643,7 @@ pulumi.Output<GetSubnetsResult> getSubnetsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -11497,11 +11651,11 @@ pulumi.Output<GetSubnetsResult> getSubnetsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_gettransitgatewayroutetables" "example" {
+/// data "aws_ec2_transit_gateway_route_tables" "example" {
 /// }
 ///
 /// output "example" {
-///   value = data.aws_ec2_gettransitgatewayroutetables.example.ids
+///   value = data.aws_ec2_transit_gateway_route_tables.example.ids
 /// }
 /// ```
 /// ```java
@@ -11687,7 +11841,7 @@ pulumi.Output<GetTransitGatewayRouteTablesResult> getTransitGatewayRouteTablesOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -11698,16 +11852,20 @@ pulumi.Output<GetTransitGatewayRouteTablesResult> getTransitGatewayRouteTablesOu
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpc" "selected" {
+/// data "aws_ec2_vpc" "selected" {
 ///   id = var.vpcId
 /// }
 ///
 /// resource "aws_ec2_subnet" "example" {
-///   vpc_id            = data.aws_ec2_getvpc.selected.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   vpc_id            = data.aws_ec2_vpc.selected.id
 ///   availability_zone = "us-west-2a"
-///   cidr_block        = cidrsubnet(data.aws_ec2_getvpc.selected.cidr_block, 4, 1)
+///   cidr_block        = cidrsubnet(data.aws_ec2_vpc.selected.cidr_block, 4, 1)
 /// }
 /// variable "vpcId" {
+///   type = any
 /// }
 /// ```
 /// ```java
@@ -11736,7 +11894,7 @@ pulumi.Output<GetTransitGatewayRouteTablesResult> getTransitGatewayRouteTablesOu
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var vpcId = config.require("vpcId");
+///         final var vpcId = config.requireObject("vpcId", com.pulumi.core.TypeShape.map(String.class, Object.class));
 ///         final var selected = Ec2Functions.getVpc(GetVpcArgs.builder()
 ///             .id(vpcId)
 ///             .build());
@@ -11862,7 +12020,7 @@ pulumi.Output<GetVpcResult> getVpcOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -11870,7 +12028,7 @@ pulumi.Output<GetVpcResult> getVpcOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpcdhcpoptions" "example" {
+/// data "aws_ec2_vpc_dhcp_options" "example" {
 ///   dhcp_options_id = "dopts-12345678"
 /// }
 /// ```
@@ -12014,7 +12172,7 @@ pulumi.Output<GetVpcResult> getVpcOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -12022,7 +12180,7 @@ pulumi.Output<GetVpcResult> getVpcOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpcdhcpoptions" "example" {
+/// data "aws_ec2_vpc_dhcp_options" "example" {
 ///   filters {
 ///     name   = "key"
 ///     values = ["domain-name"]
@@ -12120,7 +12278,7 @@ pulumi.Output<GetVpcDhcpOptionsResult> getVpcDhcpOptionsOutput(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// // Declare the data source
+/// // Declare the function
 /// const s3 = aws.ec2.getVpcEndpoint({
 ///     vpcId: foo.id,
 ///     serviceName: "com.amazonaws.us-west-2.s3",
@@ -12134,7 +12292,7 @@ pulumi.Output<GetVpcDhcpOptionsResult> getVpcDhcpOptionsOutput(
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// # Declare the data source
+/// # Declare the function
 /// s3 = aws.ec2.get_vpc_endpoint(vpc_id=foo["id"],
 ///     service_name="com.amazonaws.us-west-2.s3")
 /// private_s3 = aws.ec2.VpcEndpointRouteTableAssociation("private_s3",
@@ -12149,7 +12307,7 @@ pulumi.Output<GetVpcDhcpOptionsResult> getVpcDhcpOptionsOutput(
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     // Declare the data source
+///     // Declare the function
 ///     var s3 = Aws.Ec2.GetVpcEndpoint.Invoke(new()
 ///     {
 ///         VpcId = foo.Id,
@@ -12174,7 +12332,7 @@ pulumi.Output<GetVpcDhcpOptionsResult> getVpcDhcpOptionsOutput(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		// Declare the data source
+/// 		// Declare the function
 /// 		s3, err := ec2.LookupVpcEndpoint(ctx, &ec2.LookupVpcEndpointArgs{
 /// 			VpcId:       pulumi.StringRef(foo.Id),
 /// 			ServiceName: pulumi.StringRef("com.amazonaws.us-west-2.s3"),
@@ -12194,7 +12352,7 @@ pulumi.Output<GetVpcDhcpOptionsResult> getVpcDhcpOptionsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -12202,16 +12360,19 @@ pulumi.Output<GetVpcDhcpOptionsResult> getVpcDhcpOptionsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpcendpoint" "s3" {
+/// data "aws_ec2_vpc_endpoint" "s3" {
 ///   vpc_id       = foo.id
 ///   service_name = "com.amazonaws.us-west-2.s3"
 /// }
 ///
-/// resource "aws_ec2_vpcendpointroutetableassociation" "private_s3" {
-///   vpc_endpoint_id = data.aws_ec2_getvpcendpoint.s3.id
+/// resource "aws_ec2_vpc_endpoint_route_table_association" "private_s3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   vpc_endpoint_id = data.aws_ec2_vpc_endpoint.s3.id
 ///   route_table_id  = private.id
 /// }
-/// # Declare the data source
+/// # Declare the function
 /// ```
 /// ```java
 /// package generated_program;
@@ -12236,15 +12397,15 @@ pulumi.Output<GetVpcDhcpOptionsResult> getVpcDhcpOptionsOutput(
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         // Declare the data source
+///         // Declare the function
 ///         final var s3 = Ec2Functions.getVpcEndpoint(GetVpcEndpointArgs.builder()
-///             .vpcId(foo.id())
+///             .vpcId(foo.get("id"))
 ///             .serviceName("com.amazonaws.us-west-2.s3")
 ///             .build());
 ///
 ///         var privateS3 = new VpcEndpointRouteTableAssociation("privateS3", VpcEndpointRouteTableAssociationArgs.builder()
 ///             .vpcEndpointId(s3.id())
-///             .routeTableId(private_.id())
+///             .routeTableId(private_.get("id"))
 ///             .build());
 ///
 ///     }
@@ -12259,7 +12420,7 @@ pulumi.Output<GetVpcDhcpOptionsResult> getVpcDhcpOptionsOutput(
 ///       vpcEndpointId: ${s3.id}
 ///       routeTableId: ${private.id}
 /// variables:
-///   # Declare the data source
+///   # Declare the function
 ///   s3:
 ///     fn::invoke:
 ///       function: aws:ec2:getVpcEndpoint
@@ -12305,7 +12466,7 @@ pulumi.Output<GetVpcEndpointResult> getVpcEndpointOutput(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// // Declare the data source
+/// // Declare the function
 /// const s3 = aws.ec2.getVpcEndpointService({
 ///     service: "s3",
 ///     serviceType: "Gateway",
@@ -12322,7 +12483,7 @@ pulumi.Output<GetVpcEndpointResult> getVpcEndpointOutput(
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// # Declare the data source
+/// # Declare the function
 /// s3 = aws.ec2.get_vpc_endpoint_service(service="s3",
 ///     service_type="Gateway")
 /// # Create a VPC
@@ -12340,7 +12501,7 @@ pulumi.Output<GetVpcEndpointResult> getVpcEndpointOutput(
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     // Declare the data source
+///     // Declare the function
 ///     var s3 = Aws.Ec2.GetVpcEndpointService.Invoke(new()
 ///     {
 ///         Service = "s3",
@@ -12372,7 +12533,7 @@ pulumi.Output<GetVpcEndpointResult> getVpcEndpointOutput(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		// Declare the data source
+/// 		// Declare the function
 /// 		s3, err := ec2.LookupVpcEndpointService(ctx, &ec2.LookupVpcEndpointServiceArgs{
 /// 			Service:     pulumi.StringRef("s3"),
 /// 			ServiceType: pulumi.StringRef("Gateway"),
@@ -12389,7 +12550,7 @@ pulumi.Output<GetVpcEndpointResult> getVpcEndpointOutput(
 /// 		}
 /// 		// Create a VPC endpoint
 /// 		_, err = ec2.NewVpcEndpoint(ctx, "ep", &ec2.VpcEndpointArgs{
-/// 			VpcId:       foo.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:       foo.ID(),
 /// 			ServiceName: pulumi.String(s3.ServiceName),
 /// 		})
 /// 		if err != nil {
@@ -12400,7 +12561,7 @@ pulumi.Output<GetVpcEndpointResult> getVpcEndpointOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -12408,21 +12569,27 @@ pulumi.Output<GetVpcEndpointResult> getVpcEndpointOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpcendpointservice" "s3" {
+/// data "aws_ec2_vpc_endpoint_service" "s3" {
 ///   service      = "s3"
 ///   service_type = "Gateway"
 /// }
 ///
 /// # Create a VPC
 /// resource "aws_ec2_vpc" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
 /// # Create a VPC endpoint
-/// resource "aws_ec2_vpcendpoint" "ep" {
+/// resource "aws_ec2_vpc_endpoint" "ep" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id       = aws_ec2_vpc.foo.id
-///   service_name = data.aws_ec2_getvpcendpointservice.s3.service_name
+///   service_name = data.aws_ec2_vpc_endpoint_service.s3.service_name
 /// }
-/// # Declare the data source
+/// # Declare the function
 /// ```
 /// ```java
 /// package generated_program;
@@ -12449,7 +12616,7 @@ pulumi.Output<GetVpcEndpointResult> getVpcEndpointOutput(
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         // Declare the data source
+///         // Declare the function
 ///         final var s3 = Ec2Functions.getVpcEndpointService(GetVpcEndpointServiceArgs.builder()
 ///             .service("s3")
 ///             .serviceType("Gateway")
@@ -12483,7 +12650,7 @@ pulumi.Output<GetVpcEndpointResult> getVpcEndpointOutput(
 ///       vpcId: ${foo.id}
 ///       serviceName: ${s3.serviceName}
 /// variables:
-///   # Declare the data source
+///   # Declare the function
 ///   s3:
 ///     fn::invoke:
 ///       function: aws:ec2:getVpcEndpointService
@@ -12546,7 +12713,7 @@ pulumi.Output<GetVpcEndpointResult> getVpcEndpointOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -12554,7 +12721,7 @@ pulumi.Output<GetVpcEndpointResult> getVpcEndpointOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpcendpointservice" "custome" {
+/// data "aws_ec2_vpc_endpoint_service" "custome" {
 ///   service_name = "com.amazonaws.vpce.us-west-2.vpce-svc-0e87519c997c63cd8"
 /// }
 /// ```
@@ -12672,7 +12839,7 @@ pulumi.Output<GetVpcEndpointResult> getVpcEndpointOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -12680,7 +12847,7 @@ pulumi.Output<GetVpcEndpointResult> getVpcEndpointOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpcendpointservice" "test" {
+/// data "aws_ec2_vpc_endpoint_service" "test" {
 ///   filters {
 ///     name   = "service-name"
 ///     values = ["some-service"]
@@ -12813,7 +12980,7 @@ pulumi.Output<GetVpcEndpointServiceResult> getVpcEndpointServiceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -12821,7 +12988,7 @@ pulumi.Output<GetVpcEndpointServiceResult> getVpcEndpointServiceOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpcipam" "example" {
+/// data "aws_ec2_vpc_ipam" "example" {
 ///   id = "ipam-abcd1234"
 /// }
 /// ```
@@ -13019,7 +13186,7 @@ pulumi.Output<GetVpcIpamResult> getVpcIpamOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -13027,7 +13194,7 @@ pulumi.Output<GetVpcIpamResult> getVpcIpamOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpcipampool" "test" {
+/// data "aws_ec2_vpc_ipam_pool" "test" {
 ///   filters {
 ///     name   = "description"
 ///     values = ["*test*"]
@@ -13039,7 +13206,10 @@ pulumi.Output<GetVpcIpamResult> getVpcIpamOutput(
 /// }
 ///
 /// resource "aws_ec2_vpc" "test" {
-///   ipv4_ipam_pool_id   = data.aws_ec2_getvpcipampool.test.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ipv4_ipam_pool_id   = data.aws_ec2_vpc_ipam_pool.test.id
 ///   ipv4_netmask_length = 28
 /// }
 /// ```
@@ -13257,7 +13427,7 @@ pulumi.Output<GetVpcIpamPoolResult> getVpcIpamPoolOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -13265,10 +13435,10 @@ pulumi.Output<GetVpcIpamPoolResult> getVpcIpamPoolOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpcipampoolcidrs" "c" {
-///   ipam_pool_id = data.aws_ec2_getvpcipampool.p.id
+/// data "aws_ec2_vpc_ipam_pool_cidrs" "c" {
+///   ipam_pool_id = data.aws_ec2_vpc_ipam_pool.p.id
 /// }
-/// data "aws_ec2_getvpcipampool" "p" {
+/// data "aws_ec2_vpc_ipam_pool" "p" {
 ///   filters {
 ///     name   = "description"
 ///     values = ["*mypool*"]
@@ -13433,7 +13603,7 @@ pulumi.Output<GetVpcIpamPoolResult> getVpcIpamPoolOutput(
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -13441,7 +13611,7 @@ pulumi.Output<GetVpcIpamPoolResult> getVpcIpamPoolOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpcipampoolcidrs" "c" {
+/// data "aws_ec2_vpc_ipam_pool_cidrs" "c" {
 ///   filters {
 ///     name   = "cidr"
 ///     values = ["10.*"]
@@ -13449,12 +13619,15 @@ pulumi.Output<GetVpcIpamPoolResult> getVpcIpamPoolOutput(
 ///   ipam_pool_id = "ipam-pool-123"
 /// }
 ///
-/// resource "aws_ec2_managedprefixlist" "pls" {
-///   dynamic "entries" {
+/// resource "aws_ec2_managed_prefix_list" "pls" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   dynamic "entry" {
 ///     for_each = local.mycidrs
 ///     content {
-///       cidr        = entries.value
-///       description = entries.value
+///       cidr        = entry.value
+///       description = entry.value
 ///     }
 ///   }
 ///   name           ="IPAM Pool (${test.id}) Cidrs"
@@ -13462,7 +13635,7 @@ pulumi.Output<GetVpcIpamPoolResult> getVpcIpamPoolOutput(
 ///   max_entries    = length(local.mycidrs)
 /// }
 /// locals {
-///   mycidrs = [for cidr in data.aws_ec2_getvpcipampoolcidrs.c.ipam_pool_cidrs : cidr.cidr if cidr.state == "provisioned"]
+///   mycidrs = [for cidr in data.aws_ec2_vpc_ipam_pool_cidrs.c.ipam_pool_cidrs : cidr.cidr if cidr.state == "provisioned"]
 /// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ec2_get_vpc_ipam_pool_cidrs_get_vpc_ipam_pool_cidrs_args_doc}
@@ -13599,7 +13772,7 @@ pulumi.Output<GetVpcIpamPoolCidrsResult> getVpcIpamPoolCidrsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -13607,7 +13780,7 @@ pulumi.Output<GetVpcIpamPoolCidrsResult> getVpcIpamPoolCidrsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpcipampools" "test" {
+/// data "aws_ec2_vpc_ipam_pools" "test" {
 ///   filters {
 ///     name   = "description"
 ///     values = ["*test*"]
@@ -13757,7 +13930,7 @@ pulumi.Output<GetVpcIpamPoolsResult> getVpcIpamPoolsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -13765,7 +13938,7 @@ pulumi.Output<GetVpcIpamPoolsResult> getVpcIpamPoolsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpcipams" "example" {
+/// data "aws_ec2_vpc_ipams" "example" {
 ///   ipam_ids = ["ipam-abcd1234"]
 /// }
 /// ```
@@ -13884,7 +14057,7 @@ pulumi.Output<GetVpcIpamPoolsResult> getVpcIpamPoolsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -13892,7 +14065,7 @@ pulumi.Output<GetVpcIpamPoolsResult> getVpcIpamPoolsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpcipams" "example" {
+/// data "aws_ec2_vpc_ipams" "example" {
 ///   filters {
 ///     name   = "tags.Some"
 ///     values = ["Value"]
@@ -14020,7 +14193,7 @@ pulumi.Output<GetVpcIpamPoolsResult> getVpcIpamPoolsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -14028,7 +14201,7 @@ pulumi.Output<GetVpcIpamPoolsResult> getVpcIpamPoolsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpcipams" "example" {
+/// data "aws_ec2_vpc_ipams" "example" {
 ///   filters {
 ///     name   = "tier"
 ///     values = ["free"]
@@ -14116,7 +14289,7 @@ pulumi.Output<GetVpcIpamsResult> getVpcIpamsOutput(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// // Declare the data source
+/// // Declare the function
 /// const pc = aws.ec2.getVpcPeeringConnection({
 ///     vpcId: foo.id,
 ///     peerCidrBlock: "10.0.1.0/22",
@@ -14134,7 +14307,7 @@ pulumi.Output<GetVpcIpamsResult> getVpcIpamsOutput(
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// # Declare the data source
+/// # Declare the function
 /// pc = aws.ec2.get_vpc_peering_connection(vpc_id=foo["id"],
 ///     peer_cidr_block="10.0.1.0/22")
 /// # Create a route table
@@ -14153,7 +14326,7 @@ pulumi.Output<GetVpcIpamsResult> getVpcIpamsOutput(
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     // Declare the data source
+///     // Declare the function
 ///     var pc = Aws.Ec2.GetVpcPeeringConnection.Invoke(new()
 ///     {
 ///         VpcId = foo.Id,
@@ -14186,7 +14359,7 @@ pulumi.Output<GetVpcIpamsResult> getVpcIpamsOutput(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		// Declare the data source
+/// 		// Declare the function
 /// 		pc, err := ec2.LookupVpcPeeringConnection(ctx, &ec2.LookupVpcPeeringConnectionArgs{
 /// 			VpcId:         pulumi.StringRef(foo.Id),
 /// 			PeerCidrBlock: pulumi.StringRef("10.0.1.0/22"),
@@ -14203,7 +14376,7 @@ pulumi.Output<GetVpcIpamsResult> getVpcIpamsOutput(
 /// 		}
 /// 		// Create a route
 /// 		_, err = ec2.NewRoute(ctx, "r", &ec2.RouteArgs{
-/// 			RouteTableId:           rt.ID().ToIDOutput().ToStringOutput(),
+/// 			RouteTableId:           rt.ID(),
 /// 			DestinationCidrBlock:   pulumi.String(pc.PeerCidrBlock),
 /// 			VpcPeeringConnectionId: pulumi.String(pc.Id),
 /// 		})
@@ -14215,7 +14388,7 @@ pulumi.Output<GetVpcIpamsResult> getVpcIpamsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -14223,22 +14396,28 @@ pulumi.Output<GetVpcIpamsResult> getVpcIpamsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpcpeeringconnection" "pc" {
+/// data "aws_ec2_vpc_peering_connection" "pc" {
 ///   vpc_id          = foo.id
 ///   peer_cidr_block = "10.0.1.0/22"
 /// }
 ///
 /// # Create a route table
-/// resource "aws_ec2_routetable" "rt" {
+/// resource "aws_ec2_route_table" "rt" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id = foo.id
 /// }
 /// # Create a route
 /// resource "aws_ec2_route" "r" {
-///   route_table_id            = aws_ec2_routetable.rt.id
-///   destination_cidr_block    = data.aws_ec2_getvpcpeeringconnection.pc.peer_cidr_block
-///   vpc_peering_connection_id = data.aws_ec2_getvpcpeeringconnection.pc.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   route_table_id            = aws_ec2_route_table.rt.id
+///   destination_cidr_block    = data.aws_ec2_vpc_peering_connection.pc.peer_cidr_block
+///   vpc_peering_connection_id = data.aws_ec2_vpc_peering_connection.pc.id
 /// }
-/// # Declare the data source
+/// # Declare the function
 /// ```
 /// ```java
 /// package generated_program;
@@ -14265,15 +14444,15 @@ pulumi.Output<GetVpcIpamsResult> getVpcIpamsOutput(
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         // Declare the data source
+///         // Declare the function
 ///         final var pc = Ec2Functions.getVpcPeeringConnection(GetVpcPeeringConnectionArgs.builder()
-///             .vpcId(foo.id())
+///             .vpcId(foo.get("id"))
 ///             .peerCidrBlock("10.0.1.0/22")
 ///             .build());
 ///
 ///         // Create a route table
 ///         var rt = new RouteTable("rt", RouteTableArgs.builder()
-///             .vpcId(foo.id())
+///             .vpcId(foo.get("id"))
 ///             .build());
 ///
 ///         // Create a route
@@ -14301,7 +14480,7 @@ pulumi.Output<GetVpcIpamsResult> getVpcIpamsOutput(
 ///       destinationCidrBlock: ${pc.peerCidrBlock}
 ///       vpcPeeringConnectionId: ${pc.id}
 /// variables:
-///   # Declare the data source
+///   # Declare the function
 ///   pc:
 ///     fn::invoke:
 ///       function: aws:ec2:getVpcPeeringConnection
@@ -14348,7 +14527,7 @@ pulumi.Output<GetVpcPeeringConnectionResult> getVpcPeeringConnectionOutput(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// // Declare the data source
+/// // Declare the function
 /// const pcs = aws.ec2.getVpcPeeringConnections({
 ///     filters: [{
 ///         name: "requester-vpc-info.vpc-id",
@@ -14356,21 +14535,19 @@ pulumi.Output<GetVpcPeeringConnectionResult> getVpcPeeringConnectionOutput(
 ///     }],
 /// });
 /// // get the details of each resource
-/// const pc = .map(__index => (aws.ec2.getVpcPeeringConnection({
-///     id: _arg0_.ids[__index],
-/// })));
+/// const pc = _arg1_;
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// # Declare the data source
+/// # Declare the function
 /// pcs = aws.ec2.get_vpc_peering_connections(filters=[{
 ///     "name": "requester-vpc-info.vpc-id",
 ///     "values": [foo["id"]],
 /// }])
 /// # get the details of each resource
-/// pc = [aws.ec2.get_vpc_peering_connection(id=pcs.ids[__index]) for __index in len(pcs.ids).apply(lambda length: range(length))]
+/// pc = range(len(pcs.ids)).apply(lambda range: [aws.ec2.get_vpc_peering_connection(id=pcs.ids[__index]) for __index in range])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -14380,7 +14557,7 @@ pulumi.Output<GetVpcPeeringConnectionResult> getVpcPeeringConnectionOutput(
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     // Declare the data source
+///     // Declare the function
 ///     var pcs = Aws.Ec2.GetVpcPeeringConnections.Invoke(new()
 ///     {
 ///         Filters = new[]
@@ -14397,12 +14574,12 @@ pulumi.Output<GetVpcPeeringConnectionResult> getVpcPeeringConnectionOutput(
 ///     });
 ///
 ///     // get the details of each resource
-///     var pc = ;
+///     var pc = _arg1_;
 ///
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -14410,21 +14587,21 @@ pulumi.Output<GetVpcPeeringConnectionResult> getVpcPeeringConnectionOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpcpeeringconnections" "pcs" {
+/// data "aws_ec2_vpc_peering_connections" "pcs" {
 ///   filters {
 ///     name   = "requester-vpc-info.vpc-id"
 ///     values = [foo.id]
 ///   }
 /// }
-/// data "aws_ec2_getvpcpeeringconnection" "invoke_1" {
-///   for_each = toset(range(length(data.aws_ec2_getvpcpeeringconnections.pcs.ids)))
-///   id       = data.aws_ec2_getvpcpeeringconnections.pcs.ids[each.value]
+/// data "aws_ec2_vpc_peering_connection" "invoke_1" {
+///   for_each = toset(range(length(data.aws_ec2_vpc_peering_connections.pcs.ids)))
+///   id       = data.aws_ec2_vpc_peering_connections.pcs.ids[each.value]
 /// }
 ///
-/// # Declare the data source
+/// # Declare the function
 /// # get the details of each resource
 /// locals {
-///   pc = [for __index in range(length(data.aws_ec2_getvpcpeeringconnections.pcs.ids)) : data.aws_ec2_getvpcpeeringconnection.invoke_1[__index]]
+///   pc = [for __index in range(length(data.aws_ec2_vpc_peering_connections.pcs.ids)) : data.aws_ec2_vpc_peering_connection.invoke_1[__index]]
 /// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ec2_get_vpc_peering_connections_get_vpc_peering_connections_args_doc}
@@ -14532,7 +14709,7 @@ pulumi.Output<GetVpcPeeringConnectionsResult> getVpcPeeringConnectionsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -14540,14 +14717,14 @@ pulumi.Output<GetVpcPeeringConnectionsResult> getVpcPeeringConnectionsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpcs" "foo" {
+/// data "aws_ec2_vpcs" "foo" {
 ///   tags = {
 ///     "service" = "production"
 ///   }
 /// }
 ///
 /// output "foo" {
-///   value = data.aws_ec2_getvpcs.foo.ids
+///   value = data.aws_ec2_vpcs.foo.ids
 /// }
 /// ```
 /// ```java
@@ -14601,13 +14778,13 @@ pulumi.Output<GetVpcPeeringConnectionsResult> getVpcPeeringConnectionsOutput(
 ///
 /// export = async () => {
 ///     const foo = await aws.ec2.getVpcs({});
-///     const fooGetVpc = .map(__index => (await aws.ec2.getVpc({
+///     const fooGetVpc = Array.from({length: foo.ids.length}, (_, i) => i).apply(range => range.map(__index => (await aws.ec2.getVpc({
 ///         id: foo.ids[__index],
-///     })));
+///     }))));
 ///     const testFlowLog: aws.ec2.FlowLog[] = [];
 /// foo.ids.length.apply(rangeBody => {
 ///         for (let range = 0; range < rangeBody; range++) {
-///             testFlowLog.push(new aws.ec2.FlowLog(`test_flow_log-${range}`, {vpcId: fooGetVpc.apply(fooGetVpc => fooGetVpc[range].id)}));
+///             testFlowLog.push(new aws.ec2.FlowLog(`test_flow_log-${range}`, {vpcId: fooGetVpc[range].id}));
 ///         }
 ///     });
 ///     return {
@@ -14621,48 +14798,17 @@ pulumi.Output<GetVpcPeeringConnectionsResult> getVpcPeeringConnectionsOutput(
 /// import pulumi_aws as aws
 ///
 /// foo = aws.ec2.get_vpcs()
-/// foo_get_vpc = [aws.ec2.get_vpc(id=foo.ids[__index]) for __index in len(foo.ids).apply(lambda length: range(length))]
+/// foo_get_vpc = range(len(foo.ids)).apply(lambda range: [aws.ec2.get_vpc(id=foo.ids[__index]) for __index in range])
 /// test_flow_log: list[aws.ec2.FlowLog] = []
 /// def create_test_flow_log(range_body):
 ///     for test_flow_log_range in [{"value": i} for i in range(0, range_body)]:
-///         test_flow_log.append(aws.ec2.FlowLog(f"test_flow_log-{test_flow_log_range['value']}", vpc_id=foo_get_vpc.apply(lambda foo_get_vpc: foo_get_vpc[test_flow_log_range["value"]].id)))
+///         test_flow_log.append(aws.ec2.FlowLog(f"test_flow_log-{test_flow_log_range['value']}", vpc_id=foo_get_vpc[test_flow_log_range["value"]]["id"]))
 ///
 /// (len(foo.ids)).apply(create_test_flow_log)
 /// pulumi.export("foo", foo.ids)
 /// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var foo = Aws.Ec2.GetVpcs.Invoke();
-///
-///     var fooGetVpc = ;
-///
-///     var testFlowLog = new List<Aws.Ec2.FlowLog>();
-///     foo.Apply(getVpcsResult => getVpcsResult.Ids).Length().Apply(rangeBody =>
-///     {
-///         for (var rangeIndex = 0; rangeIndex < rangeBody; rangeIndex++)
-///         {
-///             var range = new { Value = rangeIndex };
-///             testFlowLog.Add(new Aws.Ec2.FlowLog($"test_flow_log-{range.Value}", new()
-///             {
-///                 VpcId = fooGetVpc.Apply(fooGetVpc => fooGetVpc[range.Value].Id),
-///             }));
-///         }
-///         return 0;
-///     });
-///     return new Dictionary<string, object?>
-///     {
-///         ["foo"] = foo.Apply(getVpcsResult => getVpcsResult.Ids),
-///     };
-/// });
-/// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -14670,22 +14816,28 @@ pulumi.Output<GetVpcPeeringConnectionsResult> getVpcPeeringConnectionsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpcs" "foo" {
+/// data "aws_ec2_vpcs" "foo" {
 /// }
-/// data "aws_ec2_getvpc" "invoke_1" {
-///   for_each = toset(range(length(data.aws_ec2_getvpcs.foo.ids)))
-///   id       = data.aws_ec2_getvpcs.foo.ids[each.value]
+/// data "aws_ec2_vpc" "invoke_1" {
+///   for_each = toset(range(length(data.aws_ec2_vpcs.foo.ids)))
+///   id       = data.aws_ec2_vpcs.foo.ids[each.value]
 /// }
 ///
-/// resource "aws_ec2_flowlog" "test_flow_log" {
-///   count  = length(data.aws_ec2_getvpcs.foo.ids)
+/// resource "aws_ec2_flow_log" "test_flow_log" {
+///   count = length(data.aws_ec2_vpcs.foo.ids)
+///   pulumi {
+///     name ="test_flow_log-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id = local.fooGetVpc[count.index].id
 /// }
 /// locals {
-///   fooGetVpc = [for __index in range(length(data.aws_ec2_getvpcs.foo.ids)) : data.aws_ec2_getvpc.invoke_1[__index]]
+///   fooGetVpc = [for __index in range(length(data.aws_ec2_vpcs.foo.ids)) : data.aws_ec2_vpc.invoke_1[__index]]
 /// }
 /// output "foo" {
-///   value = data.aws_ec2_getvpcs.foo.ids
+///   value = data.aws_ec2_vpcs.foo.ids
 /// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ec2_get_vpcs_get_vpcs_args_doc}
@@ -14801,7 +14953,7 @@ pulumi.Output<GetVpcsResult> getVpcsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -14809,7 +14961,7 @@ pulumi.Output<GetVpcsResult> getVpcsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpnconnection" "example" {
+/// data "aws_ec2_vpn_connection" "example" {
 ///   filters {
 ///     name   = "customer-gateway-id"
 ///     values = ["cgw-1234567890"]
@@ -14817,7 +14969,7 @@ pulumi.Output<GetVpcsResult> getVpcsOutput(
 /// }
 ///
 /// output "vpnConnectionId" {
-///   value = data.aws_ec2_getvpnconnection.example.vpn_connection_id
+///   value = data.aws_ec2_vpn_connection.example.vpn_connection_id
 /// }
 /// ```
 /// ```java
@@ -14928,7 +15080,7 @@ pulumi.Output<GetVpcsResult> getVpcsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -14936,12 +15088,12 @@ pulumi.Output<GetVpcsResult> getVpcsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpnconnection" "example" {
+/// data "aws_ec2_vpn_connection" "example" {
 ///   vpn_connection_id = "vpn-abcd1234567890"
 /// }
 ///
 /// output "gatewayAssociationState" {
-///   value = data.aws_ec2_getvpnconnection.example.gateway_association_state
+///   value = data.aws_ec2_vpn_connection.example.gateway_association_state
 /// }
 /// ```
 /// ```java
@@ -15097,7 +15249,7 @@ pulumi.Output<GetVpnConnectionResult> getVpnConnectionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -15105,7 +15257,7 @@ pulumi.Output<GetVpnConnectionResult> getVpnConnectionOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpngateway" "selected" {
+/// data "aws_ec2_vpn_gateway" "selected" {
 ///   filters {
 ///     name   = "tag:Name"
 ///     values = ["vpn-gw"]
@@ -15113,7 +15265,7 @@ pulumi.Output<GetVpnConnectionResult> getVpnConnectionOutput(
 /// }
 ///
 /// output "vpnGatewayId" {
-///   value = data.aws_ec2_getvpngateway.selected.id
+///   value = data.aws_ec2_vpn_gateway.selected.id
 /// }
 /// ```
 /// ```java

@@ -61,7 +61,7 @@ import 'get_resource_share_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -69,7 +69,7 @@ import 'get_resource_share_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_ram_getresourceshare" "example" {
+/// data "aws_ram_resource_share" "example" {
 ///   name           = "example"
 ///   resource_owner = "SELF"
 /// }
@@ -194,7 +194,7 @@ import 'get_resource_share_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -202,8 +202,8 @@ import 'get_resource_share_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_ram_getresourceshare" "tagFilter" {
-///   filters {
+/// data "aws_ram_resource_share" "tagFilter" {
+///   filter {
 ///     name   = "NameOfTag"
 ///     values = ["exampleNameTagValue"]
 ///   }

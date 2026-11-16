@@ -73,7 +73,7 @@ import 'get_patch_baselines_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -81,7 +81,7 @@ import 'get_patch_baselines_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssm_getcontactsrotation" "example" {
+/// data "aws_ssm_contacts_rotation" "example" {
 ///   arn = "arn:aws:ssm-contacts:us-east-1:012345678910:rotation/example"
 /// }
 /// ```
@@ -215,7 +215,7 @@ pulumi.Output<GetContactsRotationResult> getContactsRotationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -223,13 +223,13 @@ pulumi.Output<GetContactsRotationResult> getContactsRotationOutput(
 ///   }
 /// }
 ///
-/// data "aws_ssm_getdocument" "foo" {
+/// data "aws_ssm_document" "foo" {
 ///   name            = "AWS-GatherSoftwareInventory"
 ///   document_format = "YAML"
 /// }
 ///
 /// output "content" {
-///   value = data.aws_ssm_getdocument.foo.content
+///   value = data.aws_ssm_document.foo.content
 /// }
 /// ```
 /// ```java
@@ -332,7 +332,7 @@ pulumi.Output<GetContactsRotationResult> getContactsRotationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -340,7 +340,7 @@ pulumi.Output<GetContactsRotationResult> getContactsRotationOutput(
 ///   }
 /// }
 ///
-/// data "aws_ssm_getdocument" "test" {
+/// data "aws_ssm_document" "test" {
 ///   name            = testAwsSsmDocument.name
 ///   document_format = "JSON"
 /// }
@@ -367,7 +367,7 @@ pulumi.Output<GetContactsRotationResult> getContactsRotationOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = SsmFunctions.getDocument(GetDocumentArgs.builder()
-///             .name(testAwsSsmDocument.name())
+///             .name(testAwsSsmDocument.get("name"))
 ///             .documentFormat("JSON")
 ///             .build());
 ///
@@ -487,7 +487,7 @@ pulumi.Output<GetDocumentResult> getDocumentOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -495,8 +495,8 @@ pulumi.Output<GetDocumentResult> getDocumentOutput(
 ///   }
 /// }
 ///
-/// data "aws_ssm_getinstances" "example" {
-///   filters {
+/// data "aws_ssm_instances" "example" {
+///   filter {
 ///     name   = "PlatformTypes"
 ///     values = ["Linux"]
 ///   }
@@ -649,7 +649,7 @@ pulumi.Output<GetInstancesResult> getInstancesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -657,8 +657,8 @@ pulumi.Output<GetInstancesResult> getInstancesOutput(
 ///   }
 /// }
 ///
-/// data "aws_ssm_getmaintenancewindows" "example" {
-///   filters {
+/// data "aws_ssm_maintenance_windows" "example" {
+///   filter {
 ///     name   = "Enabled"
 ///     values = ["true"]
 ///   }
@@ -790,7 +790,7 @@ pulumi.Output<GetMaintenanceWindowsResult> getMaintenanceWindowsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -798,7 +798,7 @@ pulumi.Output<GetMaintenanceWindowsResult> getMaintenanceWindowsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ssm_getparameter" "foo" {
+/// data "aws_ssm_parameter" "foo" {
 ///   name = "foo"
 /// }
 /// ```
@@ -893,7 +893,7 @@ pulumi.Output<GetMaintenanceWindowsResult> getMaintenanceWindowsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -901,7 +901,7 @@ pulumi.Output<GetMaintenanceWindowsResult> getMaintenanceWindowsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ssm_getparameter" "foo" {
+/// data "aws_ssm_parameter" "foo" {
 ///   name = "foo:3"
 /// }
 /// ```
@@ -1025,7 +1025,7 @@ pulumi.Output<GetParameterResult> getParameterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1033,7 +1033,7 @@ pulumi.Output<GetParameterResult> getParameterOutput(
 ///   }
 /// }
 ///
-/// data "aws_ssm_getparametersbypath" "example" {
+/// data "aws_ssm_parameters_by_path" "example" {
 ///   path = "/site/newyork/department/"
 /// }
 /// ```
@@ -1167,7 +1167,7 @@ pulumi.Output<GetParametersByPathResult> getParametersByPathOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1175,7 +1175,7 @@ pulumi.Output<GetParametersByPathResult> getParametersByPathOutput(
 ///   }
 /// }
 ///
-/// data "aws_ssm_getpatchbaseline" "centos" {
+/// data "aws_ssm_patch_baseline" "centos" {
 ///   owner            = "AWS"
 ///   name_prefix      = "AWS-"
 ///   operating_system = "CENTOS"
@@ -1288,7 +1288,7 @@ pulumi.Output<GetParametersByPathResult> getParametersByPathOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1296,7 +1296,7 @@ pulumi.Output<GetParametersByPathResult> getParametersByPathOutput(
 ///   }
 /// }
 ///
-/// data "aws_ssm_getpatchbaseline" "defaultCustom" {
+/// data "aws_ssm_patch_baseline" "defaultCustom" {
 ///   owner            = "Self"
 ///   name_prefix      = "MyCustomBaseline"
 ///   default_baseline = true
@@ -1421,7 +1421,7 @@ pulumi.Output<GetPatchBaselineResult> getPatchBaselineOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1429,7 +1429,7 @@ pulumi.Output<GetPatchBaselineResult> getPatchBaselineOutput(
 ///   }
 /// }
 ///
-/// data "aws_ssm_getpatchbaselines" "example" {
+/// data "aws_ssm_patch_baselines" "example" {
 /// }
 /// ```
 /// ```java
@@ -1570,7 +1570,7 @@ pulumi.Output<GetPatchBaselineResult> getPatchBaselineOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1578,12 +1578,12 @@ pulumi.Output<GetPatchBaselineResult> getPatchBaselineOutput(
 ///   }
 /// }
 ///
-/// data "aws_ssm_getpatchbaselines" "example" {
-///   filters {
+/// data "aws_ssm_patch_baselines" "example" {
+///   filter {
 ///     key    = "OWNER"
 ///     values = ["AWS"]
 ///   }
-///   filters {
+///   filter {
 ///     key    = "OPERATING_SYSTEM"
 ///     values = ["WINDOWS"]
 ///   }

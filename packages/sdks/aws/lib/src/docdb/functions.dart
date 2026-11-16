@@ -59,7 +59,7 @@ import 'get_orderable_db_instance_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,7 @@ import 'get_orderable_db_instance_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_docdb_getengineversion" "test" {
+/// data "aws_docdb_engine_version" "test" {
 ///   version = "3.6.0"
 /// }
 /// ```
@@ -217,7 +217,7 @@ pulumi.Output<GetEngineVersionResult> getEngineVersionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -225,7 +225,7 @@ pulumi.Output<GetEngineVersionResult> getEngineVersionOutput(
 ///   }
 /// }
 ///
-/// data "aws_docdb_getorderabledbinstance" "test" {
+/// data "aws_docdb_orderable_db_instance" "test" {
 ///   engine                     = "docdb"
 ///   engine_version             = "3.6.0"
 ///   license_model              = "na"

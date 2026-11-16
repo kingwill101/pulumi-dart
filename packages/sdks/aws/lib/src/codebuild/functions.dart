@@ -125,7 +125,7 @@ import 'get_fleet_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -133,16 +133,19 @@ import 'get_fleet_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_codebuild_getfleet" "test" {
+/// data "aws_codebuild_fleet" "test" {
 ///   name = aws_codebuild_fleet.test.name
 /// }
 ///
 /// resource "aws_codebuild_fleet" "test" {
-///   scaling_configuration = {
-///     target_tracking_scaling_configs = [{
-///       "metricType"  = "FLEET_UTILIZATION_RATE"
-///       "targetValue" = 97.5
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scaling_configuration {
+///     target_tracking_scaling_configs {
+///       metric_type  = "FLEET_UTILIZATION_RATE"
+///       target_value = 97.5
+///     }
 ///     max_capacity = 5
 ///     scaling_type = "TARGET_TRACKING_SCALING"
 ///   }
@@ -280,7 +283,7 @@ import 'get_fleet_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -288,7 +291,7 @@ import 'get_fleet_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_codebuild_getfleet" "example" {
+/// data "aws_codebuild_fleet" "example" {
 ///   name = "my-codebuild-fleet-name"
 /// }
 /// ```

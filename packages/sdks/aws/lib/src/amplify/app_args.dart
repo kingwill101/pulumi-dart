@@ -49,7 +49,7 @@ class AppArgs {
   final pulumi.Input<String?>? name;
   /// OAuth token for a third-party source control system for an Amplify app. The OAuth token is used to create a webhook and a read-only deploy key. The OAuth token is not stored.
   final pulumi.Input<String?>? oauthToken;
-  /// Platform or framework for an Amplify app. Valid values: `WEB`, `WEB_COMPUTE`. Default value: `WEB`.
+  /// Platform or framework for an Amplify app. Valid values: `WEB`, `WEB_COMPUTE`, `WEB_DYNAMIC`. Default value: `WEB`.
   final pulumi.Input<String?>? platform;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -78,7 +78,7 @@ class AppArgs {
   /// [jobConfig] Used to configure the [Amplify Application build instance compute type](https://docs.aws.amazon.com/amplify/latest/APIReference/API_JobConfig.html#amplify-Type-JobConfig-buildComputeType). See `jobConfig` Block for details.
   /// [name] Name for an Amplify app.
   /// [oauthToken] OAuth token for a third-party source control system for an Amplify app. The OAuth token is used to create a webhook and a read-only deploy key. The OAuth token is not stored.
-  /// [platform] Platform or framework for an Amplify app. Valid values: `WEB`, `WEB_COMPUTE`. Default value: `WEB`.
+  /// [platform] Platform or framework for an Amplify app. Valid values: `WEB`, `WEB_COMPUTE`, `WEB_DYNAMIC`. Default value: `WEB`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [repository] Repository for an Amplify app.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.

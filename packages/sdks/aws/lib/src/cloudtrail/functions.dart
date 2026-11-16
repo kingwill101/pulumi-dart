@@ -229,7 +229,7 @@ import 'get_service_account_result.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = s3.NewBucketPolicy(ctx, "allow_cloudtrail_logging", &s3.BucketPolicyArgs{
-/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: bucket.ID(),
 /// 			Policy: allowCloudtrailLogging.Json(),
 /// 		})
 /// 		if err != nil {
@@ -240,7 +240,7 @@ import 'get_service_account_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -248,23 +248,23 @@ import 'get_service_account_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_cloudtrail_getserviceaccount" "main" {
+/// data "aws_cloudtrail_service_account" "main" {
 /// }
-/// data "aws_iam_getpolicydocument" "allowCloudtrailLogging" {
-///   statements {
+/// data "aws_iam_policy_document" "allowCloudtrailLogging" {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
-///       identifiers = [data.aws_cloudtrail_getserviceaccount.main.arn]
+///       identifiers = [data.aws_cloudtrail_service_account.main.arn]
 ///     }
 ///     sid       = "Put bucket policy needed for trails"
 ///     effect    = "Allow"
 ///     actions   = ["s3:PutObject"]
 ///     resources = ["${aws_s3_bucket.bucket.arn}/*"]
 ///   }
-///   statements {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
-///       identifiers = [data.aws_cloudtrail_getserviceaccount.main.arn]
+///       identifiers = [data.aws_cloudtrail_service_account.main.arn]
 ///     }
 ///     sid       = "Get bucket policy needed for trails"
 ///     effect    = "Allow"
@@ -274,12 +274,18 @@ import 'get_service_account_result.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket        = "tf-cloudtrail-logging-test-bucket"
 ///   force_destroy = true
 /// }
-/// resource "aws_s3_bucketpolicy" "allow_cloudtrail_logging" {
+/// resource "aws_s3_bucket_policy" "allow_cloudtrail_logging" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.bucket.id
-///   policy = data.aws_iam_getpolicydocument.allowCloudtrailLogging.json
+///   policy = data.aws_iam_policy_document.allowCloudtrailLogging.json
 /// }
 /// ```
 /// ```java

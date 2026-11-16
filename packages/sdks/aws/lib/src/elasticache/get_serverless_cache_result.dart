@@ -10,6 +10,8 @@ class GetServerlessCacheResult {
   final String? arn;
   /// The cache usage limits for storage and ElastiCache Processing Units for the cache. See `cacheUsageLimits` Block for details.
   final GetServerlessCacheCacheUsageLimits? cacheUsageLimits;
+  /// Connectivity option for the cache. Either `vpc` (reachable only from within a VPC) or `public` (reachable over the internet).
+  final String? connectionType;
   /// Timestamp of when the serverless cache was created.
   final String? createTime;
   /// The daily time that snapshots will be created from the new serverless cache. Only available for engine types `"redis"` and `"valkey"`.
@@ -44,6 +46,7 @@ class GetServerlessCacheResult {
   /// Creates a new [GetServerlessCacheResult].
   /// [arn] ARN of the serverless cache.
   /// [cacheUsageLimits] The cache usage limits for storage and ElastiCache Processing Units for the cache. See `cacheUsageLimits` Block for details.
+  /// [connectionType] Connectivity option for the cache. Either `vpc` (reachable only from within a VPC) or `public` (reachable over the internet).
   /// [createTime] Timestamp of when the serverless cache was created.
   /// [dailySnapshotTime] The daily time that snapshots will be created from the new serverless cache. Only available for engine types `"redis"` and `"valkey"`.
   /// [description] Description of the serverless cache.
@@ -63,6 +66,7 @@ class GetServerlessCacheResult {
   const GetServerlessCacheResult({
     this.arn,
     this.cacheUsageLimits,
+    this.connectionType,
     this.createTime,
     this.dailySnapshotTime,
     this.description,
@@ -85,6 +89,7 @@ class GetServerlessCacheResult {
     return <String, dynamic>{
       'arn': ?arn,
       'cacheUsageLimits': ?cacheUsageLimits?.toMap(),
+      'connectionType': ?connectionType,
       'createTime': ?createTime,
       'dailySnapshotTime': ?dailySnapshotTime,
       'description': ?description,
@@ -108,6 +113,7 @@ class GetServerlessCacheResult {
     return GetServerlessCacheResult(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       cacheUsageLimits: (() { final guardedValue = map['cacheUsageLimits']; if (guardedValue == null) return null; return GetServerlessCacheCacheUsageLimits.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      connectionType: (() { final guardedValue = map['connectionType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dailySnapshotTime: (() { final guardedValue = map['dailySnapshotTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),

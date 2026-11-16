@@ -69,7 +69,7 @@ import 'get_service_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,7 +77,7 @@ import 'get_service_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_vpclattice_getauthpolicy" "test" {
+/// data "aws_vpclattice_auth_policy" "test" {
 ///   resource_identifier = testAwsVpclatticeAuthPolicy.resourceIdentifier
 /// }
 /// ```
@@ -103,7 +103,7 @@ import 'get_service_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = VpclatticeFunctions.getAuthPolicy(GetAuthPolicyArgs.builder()
-///             .resourceIdentifier(testAwsVpclatticeAuthPolicy.resourceIdentifier())
+///             .resourceIdentifier(testAwsVpclatticeAuthPolicy.get("resourceIdentifier"))
 ///             .build());
 ///
 ///     }
@@ -193,7 +193,7 @@ pulumi.Output<GetAuthPolicyResult> getAuthPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -201,7 +201,7 @@ pulumi.Output<GetAuthPolicyResult> getAuthPolicyOutput(
 ///   }
 /// }
 ///
-/// data "aws_vpclattice_getlistener" "example" {
+/// data "aws_vpclattice_listener" "example" {
 /// }
 /// ```
 /// ```java
@@ -321,7 +321,7 @@ pulumi.Output<GetListenerResult> getListenerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -329,7 +329,7 @@ pulumi.Output<GetListenerResult> getListenerOutput(
 ///   }
 /// }
 ///
-/// data "aws_vpclattice_getresourcepolicy" "example" {
+/// data "aws_vpclattice_resource_policy" "example" {
 ///   resource_arn = exampleAwsVpclatticeServiceNetwork.arn
 /// }
 /// ```
@@ -355,7 +355,7 @@ pulumi.Output<GetListenerResult> getListenerOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = VpclatticeFunctions.getResourcePolicy(GetResourcePolicyArgs.builder()
-///             .resourceArn(exampleAwsVpclatticeServiceNetwork.arn())
+///             .resourceArn(exampleAwsVpclatticeServiceNetwork.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -452,7 +452,7 @@ pulumi.Output<GetResourcePolicyResult> getResourcePolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -460,7 +460,7 @@ pulumi.Output<GetResourcePolicyResult> getResourcePolicyOutput(
 ///   }
 /// }
 ///
-/// data "aws_vpclattice_getservice" "example" {
+/// data "aws_vpclattice_service" "example" {
 ///   name = "example"
 /// }
 /// ```
@@ -583,7 +583,7 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -591,7 +591,7 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 ///   }
 /// }
 ///
-/// data "aws_vpclattice_getservicenetwork" "example" {
+/// data "aws_vpclattice_service_network" "example" {
 ///   service_network_identifier = "snsa-01112223334445556"
 /// }
 /// ```
@@ -714,7 +714,7 @@ pulumi.Output<GetServiceNetworkResult> getServiceNetworkOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -722,7 +722,7 @@ pulumi.Output<GetServiceNetworkResult> getServiceNetworkOutput(
 ///   }
 /// }
 ///
-/// data "aws_vpclattice_getservicenetworkserviceassociations" "testSn" {
+/// data "aws_vpclattice_service_network_service_associations" "testSn" {
 ///   service_network_identifier = testSnAwsVpclatticeServiceNetwork.id
 /// }
 /// ```
@@ -748,7 +748,7 @@ pulumi.Output<GetServiceNetworkResult> getServiceNetworkOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var testSn = VpclatticeFunctions.getServiceNetworkServiceAssociations(GetServiceNetworkServiceAssociationsArgs.builder()
-///             .serviceNetworkIdentifier(testSnAwsVpclatticeServiceNetwork.id())
+///             .serviceNetworkIdentifier(testSnAwsVpclatticeServiceNetwork.get("id"))
 ///             .build());
 ///
 ///     }
@@ -817,7 +817,7 @@ pulumi.Output<GetServiceNetworkResult> getServiceNetworkOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -825,7 +825,7 @@ pulumi.Output<GetServiceNetworkResult> getServiceNetworkOutput(
 ///   }
 /// }
 ///
-/// data "aws_vpclattice_getservicenetworkserviceassociations" "testSvc" {
+/// data "aws_vpclattice_service_network_service_associations" "testSvc" {
 ///   service_identifier = testSvcAwsVpclatticeService.id
 /// }
 /// ```
@@ -851,7 +851,7 @@ pulumi.Output<GetServiceNetworkResult> getServiceNetworkOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var testSvc = VpclatticeFunctions.getServiceNetworkServiceAssociations(GetServiceNetworkServiceAssociationsArgs.builder()
-///             .serviceIdentifier(testSvcAwsVpclatticeService.id())
+///             .serviceIdentifier(testSvcAwsVpclatticeService.get("id"))
 ///             .build());
 ///
 ///     }

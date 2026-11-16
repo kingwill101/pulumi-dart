@@ -14,6 +14,12 @@ export 'observabilityadmin/centralization_rule_for_organization_rule_source_sour
 export 'observabilityadmin/centralization_rule_for_organization_rule_source_source_metrics_configuration.dart';
 export 'observabilityadmin/centralization_rule_for_organization_state.dart';
 export 'observabilityadmin/centralization_rule_for_organization_timeouts.dart';
+export 'observabilityadmin/dataset_integration.dart';
+export 'observabilityadmin/dataset_integration_args.dart';
+export 'observabilityadmin/dataset_integration_state.dart';
+export 'observabilityadmin/functions.dart';
+export 'observabilityadmin/get_dataset_integration_args.dart';
+export 'observabilityadmin/get_dataset_integration_result.dart';
 export 'observabilityadmin/s3_table_integration.dart';
 export 'observabilityadmin/s3_table_integration_args.dart';
 export 'observabilityadmin/s3_table_integration_encryption.dart';

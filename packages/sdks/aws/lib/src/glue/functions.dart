@@ -67,7 +67,7 @@ import 'get_script_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,7 +75,7 @@ import 'get_script_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_glue_getcatalog" "example" {
+/// data "aws_glue_catalog" "example" {
 ///   name = "example"
 /// }
 /// ```
@@ -200,7 +200,7 @@ pulumi.Output<GetCatalogResult> getCatalogOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -208,7 +208,7 @@ pulumi.Output<GetCatalogResult> getCatalogOutput(
 ///   }
 /// }
 ///
-/// data "aws_glue_getcatalogtable" "example" {
+/// data "aws_glue_catalog_table" "example" {
 ///   name          = "MyCatalogTable"
 ///   database_name = "MyCatalogDatabase"
 /// }
@@ -332,7 +332,7 @@ pulumi.Output<GetCatalogTableResult> getCatalogTableOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -340,7 +340,7 @@ pulumi.Output<GetCatalogTableResult> getCatalogTableOutput(
 ///   }
 /// }
 ///
-/// data "aws_glue_getconnection" "example" {
+/// data "aws_glue_connection" "example" {
 ///   id = "123456789123:connection"
 /// }
 /// ```
@@ -411,8 +411,57 @@ pulumi.Output<GetConnectionResult> getConnectionOutput(
 /// ## Example Usage
 ///
 ///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.glue.getDataCatalogEncryptionSettings({
+///     id: "123456789123",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.glue.get_data_catalog_encryption_settings(id="123456789123")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.Glue.GetDataCatalogEncryptionSettings.Invoke(new()
+///     {
+///         Id = "123456789123",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/glue"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := glue.LookupDataCatalogEncryptionSettings(ctx, &glue.LookupDataCatalogEncryptionSettingsArgs{
+/// 			Id: "123456789123",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -420,8 +469,36 @@ pulumi.Output<GetConnectionResult> getConnectionOutput(
 ///   }
 /// }
 ///
-/// data "aws_glue_getdatacatalogencryptionsettings" "example" {
+/// data "aws_glue_data_catalog_encryption_settings" "example" {
 ///   id = "123456789123"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.glue.GlueFunctions;
+/// import com.pulumi.aws.glue.inputs.GetDataCatalogEncryptionSettingsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = GlueFunctions.getDataCatalogEncryptionSettings(GetDataCatalogEncryptionSettingsArgs.builder()
+///             .id("123456789123")
+///             .build());
+///
+///     }
 /// }
 /// ```
 /// ```yaml
@@ -515,7 +592,7 @@ pulumi.Output<GetDataCatalogEncryptionSettingsResult> getDataCatalogEncryptionSe
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -523,7 +600,7 @@ pulumi.Output<GetDataCatalogEncryptionSettingsResult> getDataCatalogEncryptionSe
 ///   }
 /// }
 ///
-/// data "aws_glue_getregistry" "example" {
+/// data "aws_glue_registry" "example" {
 ///   name = "example"
 /// }
 /// ```
@@ -1016,7 +1093,7 @@ pulumi.Output<GetRegistryResult> getRegistryOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1024,24 +1101,24 @@ pulumi.Output<GetRegistryResult> getRegistryOutput(
 ///   }
 /// }
 ///
-/// data "aws_glue_getscript" "example" {
-///   dag_edges {
+/// data "aws_glue_script" "example" {
+///   dag_edge {
 ///     source = "datasource0"
 ///     target = "applymapping1"
 ///   }
-///   dag_edges {
+///   dag_edge {
 ///     source = "applymapping1"
 ///     target = "selectfields2"
 ///   }
-///   dag_edges {
+///   dag_edge {
 ///     source = "selectfields2"
 ///     target = "resolvechoice3"
 ///   }
-///   dag_edges {
+///   dag_edge {
 ///     source = "resolvechoice3"
 ///     target = "datasink4"
 ///   }
-///   dag_nodes {
+///   dag_node {
 ///     args {
 ///       name  = "database"
 ///       value =""${source.name}""
@@ -1053,7 +1130,7 @@ pulumi.Output<GetRegistryResult> getRegistryOutput(
 ///     id        = "datasource0"
 ///     node_type = "DataSource"
 ///   }
-///   dag_nodes {
+///   dag_node {
 ///     args {
 ///       name  = "mapping"
 ///       value = "[(\"column1\", \"string\", \"column1\", \"string\")]"
@@ -1061,7 +1138,7 @@ pulumi.Output<GetRegistryResult> getRegistryOutput(
 ///     id        = "applymapping1"
 ///     node_type = "ApplyMapping"
 ///   }
-///   dag_nodes {
+///   dag_node {
 ///     args {
 ///       name  = "paths"
 ///       value = "[\"column1\"]"
@@ -1069,7 +1146,7 @@ pulumi.Output<GetRegistryResult> getRegistryOutput(
 ///     id        = "selectfields2"
 ///     node_type = "SelectFields"
 ///   }
-///   dag_nodes {
+///   dag_node {
 ///     args {
 ///       name  = "choice"
 ///       value = "\"MATCH_CATALOG\""
@@ -1085,7 +1162,7 @@ pulumi.Output<GetRegistryResult> getRegistryOutput(
 ///     id        = "resolvechoice3"
 ///     node_type = "ResolveChoice"
 ///   }
-///   dag_nodes {
+///   dag_node {
 ///     args {
 ///       name  = "database"
 ///       value =""${destination.name}""
@@ -1101,7 +1178,7 @@ pulumi.Output<GetRegistryResult> getRegistryOutput(
 /// }
 ///
 /// output "pythonScript" {
-///   value = data.aws_glue_getscript.example.python_script
+///   value = data.aws_glue_script.example.python_script
 /// }
 /// ```
 /// ```java
@@ -1151,11 +1228,11 @@ pulumi.Output<GetRegistryResult> getRegistryOutput(
 ///                     .args(
 ///                         GetScriptDagNodeArgArgs.builder()
 ///                             .name("database")
-///                             .value(String.format("\"%s\"", source.name()))
+///                             .value(String.format("\"%s\"", source.get("name")))
 ///                             .build(),
 ///                         GetScriptDagNodeArgArgs.builder()
 ///                             .name("table_name")
-///                             .value(String.format("\"%s\"", sourceAwsGlueCatalogTable.name()))
+///                             .value(String.format("\"%s\"", sourceAwsGlueCatalogTable.get("name")))
 ///                             .build())
 ///                     .id("datasource0")
 ///                     .nodeType("DataSource")
@@ -1184,11 +1261,11 @@ pulumi.Output<GetRegistryResult> getRegistryOutput(
 ///                             .build(),
 ///                         GetScriptDagNodeArgArgs.builder()
 ///                             .name("database")
-///                             .value(String.format("\"%s\"", destination.name()))
+///                             .value(String.format("\"%s\"", destination.get("name")))
 ///                             .build(),
 ///                         GetScriptDagNodeArgArgs.builder()
 ///                             .name("table_name")
-///                             .value(String.format("\"%s\"", destinationAwsGlueCatalogTable.name()))
+///                             .value(String.format("\"%s\"", destinationAwsGlueCatalogTable.get("name")))
 ///                             .build())
 ///                     .id("resolvechoice3")
 ///                     .nodeType("ResolveChoice")
@@ -1197,11 +1274,11 @@ pulumi.Output<GetRegistryResult> getRegistryOutput(
 ///                     .args(
 ///                         GetScriptDagNodeArgArgs.builder()
 ///                             .name("database")
-///                             .value(String.format("\"%s\"", destination.name()))
+///                             .value(String.format("\"%s\"", destination.get("name")))
 ///                             .build(),
 ///                         GetScriptDagNodeArgArgs.builder()
 ///                             .name("table_name")
-///                             .value(String.format("\"%s\"", destinationAwsGlueCatalogTable.name()))
+///                             .value(String.format("\"%s\"", destinationAwsGlueCatalogTable.get("name")))
 ///                             .build())
 ///                     .id("datasink4")
 ///                     .nodeType("DataSink")
@@ -1691,7 +1768,7 @@ pulumi.Output<GetRegistryResult> getRegistryOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1699,24 +1776,24 @@ pulumi.Output<GetRegistryResult> getRegistryOutput(
 ///   }
 /// }
 ///
-/// data "aws_glue_getscript" "example" {
-///   dag_edges {
+/// data "aws_glue_script" "example" {
+///   dag_edge {
 ///     source = "datasource0"
 ///     target = "applymapping1"
 ///   }
-///   dag_edges {
+///   dag_edge {
 ///     source = "applymapping1"
 ///     target = "selectfields2"
 ///   }
-///   dag_edges {
+///   dag_edge {
 ///     source = "selectfields2"
 ///     target = "resolvechoice3"
 ///   }
-///   dag_edges {
+///   dag_edge {
 ///     source = "resolvechoice3"
 ///     target = "datasink4"
 ///   }
-///   dag_nodes {
+///   dag_node {
 ///     args {
 ///       name  = "database"
 ///       value =""${source.name}""
@@ -1728,7 +1805,7 @@ pulumi.Output<GetRegistryResult> getRegistryOutput(
 ///     id        = "datasource0"
 ///     node_type = "DataSource"
 ///   }
-///   dag_nodes {
+///   dag_node {
 ///     args {
 ///       name  = "mappings"
 ///       value = "[(\"column1\", \"string\", \"column1\", \"string\")]"
@@ -1736,7 +1813,7 @@ pulumi.Output<GetRegistryResult> getRegistryOutput(
 ///     id        = "applymapping1"
 ///     node_type = "ApplyMapping"
 ///   }
-///   dag_nodes {
+///   dag_node {
 ///     args {
 ///       name  = "paths"
 ///       value = "[\"column1\"]"
@@ -1744,7 +1821,7 @@ pulumi.Output<GetRegistryResult> getRegistryOutput(
 ///     id        = "selectfields2"
 ///     node_type = "SelectFields"
 ///   }
-///   dag_nodes {
+///   dag_node {
 ///     args {
 ///       name  = "choice"
 ///       value = "\"MATCH_CATALOG\""
@@ -1760,7 +1837,7 @@ pulumi.Output<GetRegistryResult> getRegistryOutput(
 ///     id        = "resolvechoice3"
 ///     node_type = "ResolveChoice"
 ///   }
-///   dag_nodes {
+///   dag_node {
 ///     args {
 ///       name  = "database"
 ///       value =""${destination.name}""
@@ -1776,7 +1853,7 @@ pulumi.Output<GetRegistryResult> getRegistryOutput(
 /// }
 ///
 /// output "scalaCode" {
-///   value = data.aws_glue_getscript.example.scala_code
+///   value = data.aws_glue_script.example.scala_code
 /// }
 /// ```
 /// ```java
@@ -1826,11 +1903,11 @@ pulumi.Output<GetRegistryResult> getRegistryOutput(
 ///                     .args(
 ///                         GetScriptDagNodeArgArgs.builder()
 ///                             .name("database")
-///                             .value(String.format("\"%s\"", source.name()))
+///                             .value(String.format("\"%s\"", source.get("name")))
 ///                             .build(),
 ///                         GetScriptDagNodeArgArgs.builder()
 ///                             .name("table_name")
-///                             .value(String.format("\"%s\"", sourceAwsGlueCatalogTable.name()))
+///                             .value(String.format("\"%s\"", sourceAwsGlueCatalogTable.get("name")))
 ///                             .build())
 ///                     .id("datasource0")
 ///                     .nodeType("DataSource")
@@ -1859,11 +1936,11 @@ pulumi.Output<GetRegistryResult> getRegistryOutput(
 ///                             .build(),
 ///                         GetScriptDagNodeArgArgs.builder()
 ///                             .name("database")
-///                             .value(String.format("\"%s\"", destination.name()))
+///                             .value(String.format("\"%s\"", destination.get("name")))
 ///                             .build(),
 ///                         GetScriptDagNodeArgArgs.builder()
 ///                             .name("table_name")
-///                             .value(String.format("\"%s\"", destinationAwsGlueCatalogTable.name()))
+///                             .value(String.format("\"%s\"", destinationAwsGlueCatalogTable.get("name")))
 ///                             .build())
 ///                     .id("resolvechoice3")
 ///                     .nodeType("ResolveChoice")
@@ -1872,11 +1949,11 @@ pulumi.Output<GetRegistryResult> getRegistryOutput(
 ///                     .args(
 ///                         GetScriptDagNodeArgArgs.builder()
 ///                             .name("database")
-///                             .value(String.format("\"%s\"", destination.name()))
+///                             .value(String.format("\"%s\"", destination.get("name")))
 ///                             .build(),
 ///                         GetScriptDagNodeArgArgs.builder()
 ///                             .name("table_name")
-///                             .value(String.format("\"%s\"", destinationAwsGlueCatalogTable.name()))
+///                             .value(String.format("\"%s\"", destinationAwsGlueCatalogTable.get("name")))
 ///                             .build())
 ///                     .id("datasink4")
 ///                     .nodeType("DataSink")

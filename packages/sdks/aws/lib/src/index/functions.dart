@@ -172,7 +172,7 @@ pulumi.Output<ArnParseResult> arnParseOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -180,7 +180,7 @@ pulumi.Output<ArnParseResult> arnParseOutput(
 ///   }
 /// }
 ///
-/// data "aws_getarn" "dbInstance" {
+/// data "aws_arn" "dbInstance" {
 ///   arn = "arn:aws:rds:eu-west-1:123456789012:db:mysql-db"
 /// }
 /// ```
@@ -294,7 +294,7 @@ pulumi.Output<GetArnResult> getArnOutput(
 /// const exampleVpc = new aws.ec2.Vpc("example", {cidrBlock: example.then(example => std.cidrsubnet({
 ///     input: "10.0.0.0/8",
 ///     newbits: 4,
-///     netnum: Number(regionNumber[example.region]),
+///     netnum: regionNumber[example.region],
 /// })).then(invoke => invoke.result)});
 /// // Create a subnet for the AZ within the regional VPC
 /// const exampleSubnet = new aws.ec2.Subnet("example", {
@@ -302,7 +302,7 @@ pulumi.Output<GetArnResult> getArnOutput(
 ///     cidrBlock: std.cidrsubnetOutput({
 ///         input: exampleVpc.cidrBlock,
 ///         newbits: 4,
-///         netnum: output(example.then(example => azNumber[example.nameSuffix])).apply(x =>Number(x)),
+///         netnum: example.then(example => azNumber[example.nameSuffix]),
 ///     }).result,
 /// });
 /// ```
@@ -355,22 +355,22 @@ pulumi.Output<GetArnResult> getArnOutput(
 /// return await Deployment.RunAsync(() =>
 /// {
 ///     var config = new Config();
-///     var regionNumber = config.GetObject<dynamic>("regionNumber") ??
+///     var regionNumber = config.GetObject<dynamic>("regionNumber") ?? new Dictionary<string, object?>
 ///     {
-///         { "ap-northeast-1", 5 },
-///         { "eu-central-1", 4 },
-///         { "us-east-1", 1 },
-///         { "us-west-1", 2 },
-///         { "us-west-2", 3 },
+///         ["ap-northeast-1"] = 5,
+///         ["eu-central-1"] = 4,
+///         ["us-east-1"] = 1,
+///         ["us-west-1"] = 2,
+///         ["us-west-2"] = 3,
 ///     };
-///     var azNumber = config.GetObject<dynamic>("azNumber") ??
+///     var azNumber = config.GetObject<dynamic>("azNumber") ?? new Dictionary<string, object?>
 ///     {
-///         { "a", 1 },
-///         { "b", 2 },
-///         { "c", 3 },
-///         { "d", 4 },
-///         { "e", 5 },
-///         { "f", 6 },
+///         ["a"] = 1,
+///         ["b"] = 2,
+///         ["c"] = 3,
+///         ["d"] = 4,
+///         ["e"] = 5,
+///         ["f"] = 6,
 ///     };
 ///     // Retrieve the AZ where we want to create network resources
 ///     // This must be in the region selected on the AWS provider.
@@ -464,7 +464,7 @@ pulumi.Output<GetArnResult> getArnOutput(
 /// 		}
 /// 		// Create a subnet for the AZ within the regional VPC
 /// 		_, err = ec2.NewSubnet(ctx, "example", &ec2.SubnetArgs{
-/// 			VpcId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId: exampleVpc.ID(),
 /// 			CidrBlock: std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
 /// 				Input:   exampleVpc.CidrBlock,
 /// 				Newbits: pulumi.Int(4),
@@ -479,7 +479,7 @@ pulumi.Output<GetArnResult> getArnOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -490,20 +490,27 @@ pulumi.Output<GetArnResult> getArnOutput(
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzone" "example" {
+/// data "aws_availability_zone" "example" {
 ///   name = "eu-central-1a"
 /// }
 ///
 /// # Create a VPC for the region associated with the AZ
 /// resource "aws_ec2_vpc" "example" {
-///   cidr_block = cidrsubnet("10.0.0.0/8", 4, var.regionNumber[data.aws_getavailabilityzone.example.region])
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cidr_block = cidrsubnet("10.0.0.0/8", 4, var.regionNumber[data.aws_availability_zone.example.region])
 /// }
 /// # Create a subnet for the AZ within the regional VPC
 /// resource "aws_ec2_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id     = aws_ec2_vpc.example.id
-///   cidr_block = cidrsubnet(aws_ec2_vpc.example.cidr_block, 4, var.azNumber[data.aws_getavailabilityzone.example.name_suffix])
+///   cidr_block = cidrsubnet(aws_ec2_vpc.example.cidr_block, 4, var.azNumber[data.aws_availability_zone.example.name_suffix])
 /// }
 /// variable "regionNumber" {
+///   type = any
 ///   default = {
 ///     "ap-northeast-1" = 5
 ///     "eu-central-1"   = 4
@@ -513,6 +520,7 @@ pulumi.Output<GetArnResult> getArnOutput(
 ///   }
 /// }
 /// variable "azNumber" {
+///   type = any
 ///   default = {
 ///     "a" = 1
 ///     "b" = 2
@@ -553,14 +561,14 @@ pulumi.Output<GetArnResult> getArnOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var regionNumber = config.get("regionNumber").orElse(Map.ofEntries(
+///         final var regionNumber = config.getObject("regionNumber", com.pulumi.core.TypeShape.map(String.class, Object.class)).orElse(Map.ofEntries(
 ///             Map.entry("ap-northeast-1", 5),
 ///             Map.entry("eu-central-1", 4),
 ///             Map.entry("us-east-1", 1),
 ///             Map.entry("us-west-1", 2),
 ///             Map.entry("us-west-2", 3)
 ///         ));
-///         final var azNumber = config.get("azNumber").orElse(Map.ofEntries(
+///         final var azNumber = config.getObject("azNumber", com.pulumi.core.TypeShape.map(String.class, Object.class)).orElse(Map.ofEntries(
 ///             Map.entry("a", 1),
 ///             Map.entry("b", 2),
 ///             Map.entry("c", 3),
@@ -579,7 +587,7 @@ pulumi.Output<GetArnResult> getArnOutput(
 ///             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
 ///                 .input("10.0.0.0/8")
 ///                 .newbits(4)
-///                 .netnum(regionNumber[example.region()])
+///                 .netnum(regionNumber.get(example.region()))
 ///                 .build()).result())
 ///             .build());
 ///
@@ -589,7 +597,7 @@ pulumi.Output<GetArnResult> getArnOutput(
 ///             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
 ///                 .input(exampleVpc.cidrBlock())
 ///                 .newbits(4)
-///                 .netnum(azNumber[example.nameSuffix()])
+///                 .netnum(azNumber.get(example.nameSuffix()))
 ///                 .build()).applyValue(_invoke -> _invoke.result()))
 ///             .build());
 ///
@@ -640,7 +648,7 @@ pulumi.Output<GetAvailabilityZoneResult> getAvailabilityZoneOutput(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// // Declare the data source
+/// // Declare the function
 /// const available = aws.getAvailabilityZones({
 ///     state: "available",
 /// });
@@ -652,7 +660,7 @@ pulumi.Output<GetAvailabilityZoneResult> getAvailabilityZoneOutput(
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// # Declare the data source
+/// # Declare the function
 /// available = aws.get_availability_zones(state="available")
 /// # e.g., Create subnets in the first two available availability zones
 /// primary = aws.ec2.Subnet("primary", availability_zone=available.names[0])
@@ -666,7 +674,7 @@ pulumi.Output<GetAvailabilityZoneResult> getAvailabilityZoneOutput(
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     // Declare the data source
+///     // Declare the function
 ///     var available = Aws.GetAvailabilityZones.Invoke(new()
 ///     {
 ///         State = "available",
@@ -696,7 +704,7 @@ pulumi.Output<GetAvailabilityZoneResult> getAvailabilityZoneOutput(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		// Declare the data source
+/// 		// Declare the function
 /// 		available, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{
 /// 			State: pulumi.StringRef("available"),
 /// 		}, nil)
@@ -721,7 +729,7 @@ pulumi.Output<GetAvailabilityZoneResult> getAvailabilityZoneOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -729,18 +737,24 @@ pulumi.Output<GetAvailabilityZoneResult> getAvailabilityZoneOutput(
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzones" "available" {
+/// data "aws_availability_zones" "available" {
 ///   state = "available"
 /// }
 ///
 /// # e.g., Create subnets in the first two available availability zones
 /// resource "aws_ec2_subnet" "primary" {
-///   availability_zone = data.aws_getavailabilityzones.available.names[0]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   availability_zone = data.aws_availability_zones.available.names[0]
 /// }
 /// resource "aws_ec2_subnet" "secondary" {
-///   availability_zone = data.aws_getavailabilityzones.available.names[1]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   availability_zone = data.aws_availability_zones.available.names[1]
 /// }
-/// # Declare the data source
+/// # Declare the function
 /// ```
 /// ```java
 /// package generated_program;
@@ -765,7 +779,7 @@ pulumi.Output<GetAvailabilityZoneResult> getAvailabilityZoneOutput(
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         // Declare the data source
+///         // Declare the function
 ///         final var available = AwsFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
 ///             .state("available")
 ///             .build());
@@ -794,7 +808,7 @@ pulumi.Output<GetAvailabilityZoneResult> getAvailabilityZoneOutput(
 ///     properties:
 ///       availabilityZone: ${available.names[1]}
 /// variables:
-///   # Declare the data source
+///   # Declare the function
 ///   available:
 ///     fn::invoke:
 ///       function: aws:getAvailabilityZones
@@ -893,7 +907,7 @@ pulumi.Output<GetAvailabilityZoneResult> getAvailabilityZoneOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -901,8 +915,8 @@ pulumi.Output<GetAvailabilityZoneResult> getAvailabilityZoneOutput(
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzones" "example" {
-///   filters {
+/// data "aws_availability_zones" "example" {
+///   filter {
 ///     name   = "opt-in-status"
 ///     values = ["not-opted-in", "opted-in"]
 ///   }
@@ -1035,7 +1049,7 @@ pulumi.Output<GetAvailabilityZoneResult> getAvailabilityZoneOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1043,8 +1057,8 @@ pulumi.Output<GetAvailabilityZoneResult> getAvailabilityZoneOutput(
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzones" "example" {
-///   filters {
+/// data "aws_availability_zones" "example" {
+///   filter {
 ///     name   = "opt-in-status"
 ///     values = ["opt-in-not-required"]
 ///   }
@@ -1308,7 +1322,7 @@ pulumi.Output<GetAvailabilityZonesResult> getAvailabilityZonesOutput(
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "billing_logs_acl", &s3.BucketAclArgs{
-/// 			Bucket: billingLogs.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: billingLogs.ID(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -1356,7 +1370,7 @@ pulumi.Output<GetAvailabilityZonesResult> getAvailabilityZonesOutput(
 /// 			},
 /// 		}, nil)
 /// 		_, err = s3.NewBucketPolicy(ctx, "allow_billing_logging", &s3.BucketPolicyArgs{
-/// 			Bucket: billingLogs.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: billingLogs.ID(),
 /// 			Policy: allowBillingLogging.Json(),
 /// 		})
 /// 		if err != nil {
@@ -1367,7 +1381,7 @@ pulumi.Output<GetAvailabilityZonesResult> getAvailabilityZonesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1375,22 +1389,22 @@ pulumi.Output<GetAvailabilityZonesResult> getAvailabilityZonesOutput(
 ///   }
 /// }
 ///
-/// data "aws_getbillingserviceaccount" "main" {
+/// data "aws_billing_service_account" "main" {
 /// }
-/// data "aws_iam_getpolicydocument" "allowBillingLogging" {
-///   statements {
+/// data "aws_iam_policy_document" "allowBillingLogging" {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
-///       identifiers = [data.aws_getbillingserviceaccount.main.arn]
+///       identifiers = [data.aws_billing_service_account.main.arn]
 ///     }
 ///     effect    = "Allow"
 ///     actions   = ["s3:GetBucketAcl", "s3:GetBucketPolicy"]
 ///     resources = [aws_s3_bucket.billing_logs.arn]
 ///   }
-///   statements {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
-///       identifiers = [data.aws_getbillingserviceaccount.main.arn]
+///       identifiers = [data.aws_billing_service_account.main.arn]
 ///     }
 ///     effect    = "Allow"
 ///     actions   = ["s3:PutObject"]
@@ -1399,15 +1413,24 @@ pulumi.Output<GetAvailabilityZonesResult> getAvailabilityZonesOutput(
 /// }
 ///
 /// resource "aws_s3_bucket" "billing_logs" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "my-billing-tf-test-bucket"
 /// }
-/// resource "aws_s3_bucketacl" "billing_logs_acl" {
+/// resource "aws_s3_bucket_acl" "billing_logs_acl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.billing_logs.id
 ///   acl    = "private"
 /// }
-/// resource "aws_s3_bucketpolicy" "allow_billing_logging" {
+/// resource "aws_s3_bucket_policy" "allow_billing_logging" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.billing_logs.id
-///   policy = data.aws_iam_getpolicydocument.allowBillingLogging.json
+///   policy = data.aws_iam_policy_document.allowBillingLogging.json
 /// }
 /// ```
 /// ```java
@@ -1624,7 +1647,7 @@ pulumi.Output<GetBillingServiceAccountResult> getBillingServiceAccountOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1632,17 +1655,17 @@ pulumi.Output<GetBillingServiceAccountResult> getBillingServiceAccountOutput(
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
 /// output "accountId" {
-///   value = data.aws_getcalleridentity.current.account_id
+///   value = data.aws_caller_identity.current.account_id
 /// }
 /// output "callerArn" {
-///   value = data.aws_getcalleridentity.current.arn
+///   value = data.aws_caller_identity.current.arn
 /// }
 /// output "callerUser" {
-///   value = data.aws_getcalleridentity.current.user_id
+///   value = data.aws_caller_identity.current.user_id
 /// }
 /// ```
 /// ```java
@@ -1764,7 +1787,7 @@ pulumi.Output<GetCallerIdentityResult> getCallerIdentityOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1772,7 +1795,7 @@ pulumi.Output<GetCallerIdentityResult> getCallerIdentityOutput(
 ///   }
 /// }
 ///
-/// data "aws_getdefaulttags" "example" {
+/// data "aws_default_tags" "example" {
 /// }
 /// ```
 /// ```java
@@ -1862,7 +1885,7 @@ pulumi.Output<GetCallerIdentityResult> getCallerIdentityOutput(
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1870,15 +1893,18 @@ pulumi.Output<GetCallerIdentityResult> getCallerIdentityOutput(
 ///   }
 /// }
 ///
-/// data "aws_getdefaulttags" "example" {
+/// data "aws_default_tags" "example" {
 /// }
 ///
 /// resource "aws_autoscaling_group" "example" {
-///   dynamic "tags" {
-///     for_each = data.aws_getdefaulttags.example.tags
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   dynamic "tag" {
+///     for_each = data.aws_default_tags.example.tags
 ///     content {
-///       key                 = tags.key
-///       value               = tags.value
+///       key                 = tag.key
+///       value               = tag.value
 ///       propagate_at_launch = true
 ///     }
 ///   }
@@ -2002,7 +2028,7 @@ pulumi.Output<GetDefaultTagsResult> getDefaultTagsOutput(
 ///         Tags =
 ///         {
 ///             { "CreateDate", europeanEc2.Apply(getIpRangesResult => getIpRangesResult.CreateDate) },
-///             { "SyncToken", europeanEc2.Apply(getIpRangesResult => getIpRangesResult.SyncToken) },
+///             { "SyncToken", Output.Create(europeanEc2.Apply(getIpRangesResult => getIpRangesResult.SyncToken)).Apply(x => x.ToString(System.Globalization.CultureInfo.InvariantCulture)) },
 ///         },
 ///     });
 ///
@@ -2062,7 +2088,7 @@ pulumi.Output<GetDefaultTagsResult> getDefaultTagsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2070,23 +2096,26 @@ pulumi.Output<GetDefaultTagsResult> getDefaultTagsOutput(
 ///   }
 /// }
 ///
-/// data "aws_getipranges" "europeanEc2" {
+/// data "aws_ip_ranges" "europeanEc2" {
 ///   regions  = ["eu-west-1", "eu-central-1"]
 ///   services = ["ec2"]
 /// }
 ///
-/// resource "aws_ec2_securitygroup" "from_europe" {
+/// resource "aws_ec2_security_group" "from_europe" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ingress {
 ///     from_port        = "443"
 ///     to_port          = "443"
 ///     protocol         = "tcp"
-///     cidr_blocks      = data.aws_getipranges.europeanEc2.cidr_blocks
-///     ipv6_cidr_blocks = data.aws_getipranges.europeanEc2.ipv6_cidr_blocks
+///     cidr_blocks      = data.aws_ip_ranges.europeanEc2.cidr_blocks
+///     ipv6_cidr_blocks = data.aws_ip_ranges.europeanEc2.ipv6_cidr_blocks
 ///   }
 ///   name = "from_europe"
 ///   tags = {
-///     "CreateDate" = data.aws_getipranges.europeanEc2.create_date
-///     "SyncToken"  = data.aws_getipranges.europeanEc2.sync_token
+///     "CreateDate" = data.aws_ip_ranges.europeanEc2.create_date
+///     "SyncToken"  = data.aws_ip_ranges.europeanEc2.sync_token
 ///   }
 /// }
 /// ```
@@ -2291,7 +2320,7 @@ pulumi.Output<GetIpRangesResult> getIpRangesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2299,13 +2328,13 @@ pulumi.Output<GetIpRangesResult> getIpRangesOutput(
 ///   }
 /// }
 ///
-/// data "aws_getpartition" "current" {
+/// data "aws_partition" "current" {
 /// }
-/// data "aws_iam_getpolicydocument" "s3Policy" {
-///   statements {
+/// data "aws_iam_policy_document" "s3Policy" {
+///   statement {
 ///     sid       = "1"
 ///     actions   = ["s3:ListBucket"]
-///     resources = ["arn:${data.aws_getpartition.current.partition}:s3:::my-bucket"]
+///     resources = ["arn:${data.aws_partition.current.partition}:s3:::my-bucket"]
 ///   }
 /// }
 /// ```
@@ -2446,7 +2475,7 @@ pulumi.Output<GetPartitionResult> getPartitionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2454,7 +2483,7 @@ pulumi.Output<GetPartitionResult> getPartitionOutput(
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
 /// ```
 /// ```java
@@ -2567,7 +2596,7 @@ pulumi.Output<GetRegionResult> getRegionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2575,7 +2604,7 @@ pulumi.Output<GetRegionResult> getRegionOutput(
 ///   }
 /// }
 ///
-/// data "aws_getregions" "current" {
+/// data "aws_regions" "current" {
 /// }
 /// ```
 /// ```java
@@ -2667,7 +2696,7 @@ pulumi.Output<GetRegionResult> getRegionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2675,7 +2704,7 @@ pulumi.Output<GetRegionResult> getRegionOutput(
 ///   }
 /// }
 ///
-/// data "aws_getregions" "current" {
+/// data "aws_regions" "current" {
 ///   all_regions = true
 /// }
 /// ```
@@ -2797,7 +2826,7 @@ pulumi.Output<GetRegionResult> getRegionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2805,8 +2834,8 @@ pulumi.Output<GetRegionResult> getRegionOutput(
 ///   }
 /// }
 ///
-/// data "aws_getregions" "current" {
-///   filters {
+/// data "aws_regions" "current" {
+///   filter {
 ///     name   = "opt-in-status"
 ///     values = ["not-opted-in"]
 ///   }
@@ -2953,7 +2982,7 @@ pulumi.Output<GetRegionsResult> getRegionsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2961,10 +2990,10 @@ pulumi.Output<GetRegionsResult> getRegionsOutput(
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
-/// data "aws_getservice" "test" {
-///   region     = data.aws_getregion.current.region
+/// data "aws_service" "test" {
+///   region     = data.aws_region.current.region
 ///   service_id = "ec2"
 /// }
 /// ```
@@ -3069,7 +3098,7 @@ pulumi.Output<GetRegionsResult> getRegionsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3077,7 +3106,7 @@ pulumi.Output<GetRegionsResult> getRegionsOutput(
 ///   }
 /// }
 ///
-/// data "aws_getservice" "s3" {
+/// data "aws_service" "s3" {
 ///   reverse_dns_name = "cn.com.amazonaws.cn-north-1.s3"
 /// }
 /// ```
@@ -3172,7 +3201,7 @@ pulumi.Output<GetRegionsResult> getRegionsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3180,7 +3209,7 @@ pulumi.Output<GetRegionsResult> getRegionsOutput(
 ///   }
 /// }
 ///
-/// data "aws_getservice" "s3" {
+/// data "aws_service" "s3" {
 ///   reverse_dns_name = "com.amazonaws.us-gov-west-1.waf"
 /// }
 /// ```
@@ -3320,7 +3349,7 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3328,10 +3357,10 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 ///   }
 /// }
 ///
-/// data "aws_getserviceprincipal" "current" {
+/// data "aws_service_principal" "current" {
 ///   service_name = "s3"
 /// }
-/// data "aws_getserviceprincipal" "test" {
+/// data "aws_service_principal" "test" {
 ///   service_name = "s3"
 ///   region       = "us-iso-east-1"
 /// }

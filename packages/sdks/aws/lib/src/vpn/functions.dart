@@ -89,7 +89,7 @@ import 'get_connection_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -97,7 +97,7 @@ import 'get_connection_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpnconnection" "example" {
+/// data "aws_ec2_vpn_connection" "example" {
 ///   filters {
 ///     name   = "customer-gateway-id"
 ///     values = ["cgw-1234567890"]
@@ -105,7 +105,7 @@ import 'get_connection_result.dart';
 /// }
 ///
 /// output "vpnConnectionId" {
-///   value = data.aws_ec2_getvpnconnection.example.vpn_connection_id
+///   value = data.aws_ec2_vpn_connection.example.vpn_connection_id
 /// }
 /// ```
 /// ```java
@@ -216,7 +216,7 @@ import 'get_connection_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -224,12 +224,12 @@ import 'get_connection_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2_getvpnconnection" "example" {
+/// data "aws_ec2_vpn_connection" "example" {
 ///   vpn_connection_id = "vpn-abcd1234567890"
 /// }
 ///
 /// output "gatewayAssociationState" {
-///   value = data.aws_ec2_getvpnconnection.example.gateway_association_state
+///   value = data.aws_ec2_vpn_connection.example.gateway_association_state
 /// }
 /// ```
 /// ```java

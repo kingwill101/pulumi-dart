@@ -13,7 +13,7 @@ import 'get_rules_packages_result.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// // Declare the data source
+/// // Declare the function
 /// const rules = aws.inspector.getRulesPackages({});
 /// // e.g., Use in aws_inspector_assessment_template
 /// const group = new aws.inspector.ResourceGroup("group", {tags: {
@@ -34,7 +34,7 @@ import 'get_rules_packages_result.dart';
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// # Declare the data source
+/// # Declare the function
 /// rules = aws.inspector.get_rules_packages()
 /// # e.g., Use in aws_inspector_assessment_template
 /// group = aws.inspector.ResourceGroup("group", tags={
@@ -57,7 +57,7 @@ import 'get_rules_packages_result.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     // Declare the data source
+///     // Declare the function
 ///     var rules = Aws.Inspector.GetRulesPackages.Invoke();
 ///
 ///     // e.g., Use in aws_inspector_assessment_template
@@ -95,7 +95,7 @@ import 'get_rules_packages_result.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		// Declare the data source
+/// 		// Declare the function
 /// 		rules, err := inspector.GetRulesPackages(ctx, &inspector.GetRulesPackagesArgs{}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -137,7 +137,7 @@ import 'get_rules_packages_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -145,26 +145,35 @@ import 'get_rules_packages_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_inspector_getrulespackages" "rules" {
+/// data "aws_inspector_rules_packages" "rules" {
 /// }
 ///
 /// # e.g., Use in aws_inspector_assessment_template
-/// resource "aws_inspector_resourcegroup" "group" {
+/// resource "aws_inspector_resource_group" "group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tags = {
 ///     "test" = "test"
 ///   }
 /// }
-/// resource "aws_inspector_assessmenttarget" "assessment" {
+/// resource "aws_inspector_assessment_target" "assessment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "test"
-///   resource_group_arn = aws_inspector_resourcegroup.group.arn
+///   resource_group_arn = aws_inspector_resource_group.group.arn
 /// }
-/// resource "aws_inspector_assessmenttemplate" "assessment" {
+/// resource "aws_inspector_assessment_template" "assessment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "Test"
-///   target_arn         = aws_inspector_assessmenttarget.assessment.arn
+///   target_arn         = aws_inspector_assessment_target.assessment.arn
 ///   duration           = "60"
-///   rules_package_arns = data.aws_inspector_getrulespackages.rules.arns
+///   rules_package_arns = data.aws_inspector_rules_packages.rules.arns
 /// }
-/// # Declare the data source
+/// # Declare the function
 /// ```
 /// ```java
 /// package generated_program;
@@ -193,7 +202,7 @@ import 'get_rules_packages_result.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         // Declare the data source
+///         // Declare the function
 ///         final var rules = InspectorFunctions.getRulesPackages(GetRulesPackagesArgs.builder()
 ///             .build());
 ///
@@ -239,7 +248,7 @@ import 'get_rules_packages_result.dart';
 ///       duration: '60'
 ///       rulesPackageArns: ${rules.arns}
 /// variables:
-///   # Declare the data source
+///   # Declare the function
 ///   rules:
 ///     fn::invoke:
 ///       function: aws:inspector:getRulesPackages

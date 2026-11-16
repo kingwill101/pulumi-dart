@@ -71,7 +71,7 @@ import 'get_models_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -79,10 +79,10 @@ import 'get_models_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_bedrockfoundation_getmodels" "example" {
+/// data "aws_bedrockfoundation_models" "example" {
 /// }
-/// data "aws_bedrockfoundation_getmodel" "exampleGetModel" {
-///   model_id = data.aws_bedrockfoundation_getmodels.example.model_summaries[0].model_id
+/// data "aws_bedrockfoundation_model" "exampleGetModel" {
+///   model_id = data.aws_bedrockfoundation_models.example.model_summaries[0].model_id
 /// }
 /// ```
 /// ```java
@@ -220,7 +220,7 @@ pulumi.Output<GetModelResult> getModelOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -228,10 +228,10 @@ pulumi.Output<GetModelResult> getModelOutput(
 ///   }
 /// }
 ///
-/// data "aws_bedrockfoundation_getmodels" "example" {
+/// data "aws_bedrockfoundation_models" "example" {
 /// }
-/// data "aws_bedrockfoundation_getmodelagreementoffers" "exampleGetModelAgreementOffers" {
-///   model_id = data.aws_bedrockfoundation_getmodels.example.model_summaries[0].model_id
+/// data "aws_bedrockfoundation_model_agreement_offers" "exampleGetModelAgreementOffers" {
+///   model_id = data.aws_bedrockfoundation_models.example.model_summaries[0].model_id
 /// }
 /// ```
 /// ```java
@@ -354,7 +354,7 @@ pulumi.Output<GetModelAgreementOffersResult> getModelAgreementOffersOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -362,7 +362,7 @@ pulumi.Output<GetModelAgreementOffersResult> getModelAgreementOffersOutput(
 ///   }
 /// }
 ///
-/// data "aws_bedrockfoundation_getmodels" "example" {
+/// data "aws_bedrockfoundation_models" "example" {
 /// }
 /// ```
 /// ```java
@@ -454,7 +454,7 @@ pulumi.Output<GetModelAgreementOffersResult> getModelAgreementOffersOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -462,7 +462,7 @@ pulumi.Output<GetModelAgreementOffersResult> getModelAgreementOffersOutput(
 ///   }
 /// }
 ///
-/// data "aws_bedrockfoundation_getmodels" "example" {
+/// data "aws_bedrockfoundation_models" "example" {
 ///   by_inference_type = "ON_DEMAND"
 /// }
 /// ```

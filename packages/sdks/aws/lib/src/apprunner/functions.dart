@@ -102,7 +102,7 @@ import 'get_hosted_zone_id_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -110,13 +110,16 @@ import 'get_hosted_zone_id_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_apprunner_gethostedzoneid" "main" {
+/// data "aws_apprunner_hosted_zone_id" "main" {
 /// }
 ///
 /// resource "aws_route53_record" "www" {
-///   aliases {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   alias {
 ///     name                   = mainAwsApprunnerCustomDomainAssociation.dnsTarget
-///     zone_id                = data.aws_apprunner_gethostedzoneid.main.id
+///     zone_id                = data.aws_apprunner_hosted_zone_id.main.id
 ///     evaluate_target_health = true
 ///   }
 ///   zone_id = primary.zoneId
@@ -153,11 +156,11 @@ import 'get_hosted_zone_id_result.dart';
 ///
 ///         var www = new Record("www", RecordArgs.builder()
 ///             .aliases(RecordAliasArgs.builder()
-///                 .name(mainAwsApprunnerCustomDomainAssociation.dnsTarget())
+///                 .name(mainAwsApprunnerCustomDomainAssociation.get("dnsTarget"))
 ///                 .zoneId(main.id())
 ///                 .evaluateTargetHealth(true)
 ///                 .build())
-///             .zoneId(primary.zoneId())
+///             .zoneId(primary.get("zoneId"))
 ///             .name("example.com")
 ///             .type("A")
 ///             .build());

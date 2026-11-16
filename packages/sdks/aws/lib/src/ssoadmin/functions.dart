@@ -71,7 +71,7 @@ import 'get_principal_application_assignments_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -79,7 +79,7 @@ import 'get_principal_application_assignments_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getapplication" "example" {
+/// data "aws_ssoadmin_application" "example" {
 ///   application_arn = "arn:aws:sso::123456789012:application/ssoins-1234/apl-5678"
 /// }
 /// ```
@@ -202,7 +202,7 @@ pulumi.Output<GetApplicationResult> getApplicationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -210,7 +210,7 @@ pulumi.Output<GetApplicationResult> getApplicationOutput(
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getapplicationassignments" "example" {
+/// data "aws_ssoadmin_application_assignments" "example" {
 ///   application_arn = exampleAwsSsoadminApplication.arn
 /// }
 /// ```
@@ -236,7 +236,7 @@ pulumi.Output<GetApplicationResult> getApplicationOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = SsoadminFunctions.getApplicationAssignments(GetApplicationAssignmentsArgs.builder()
-///             .applicationArn(exampleAwsSsoadminApplication.arn())
+///             .applicationArn(exampleAwsSsoadminApplication.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -326,7 +326,7 @@ pulumi.Output<GetApplicationAssignmentsResult> getApplicationAssignmentsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -334,7 +334,7 @@ pulumi.Output<GetApplicationAssignmentsResult> getApplicationAssignmentsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getapplicationproviders" "example" {
+/// data "aws_ssoadmin_application_providers" "example" {
 /// }
 /// ```
 /// ```java
@@ -456,7 +456,7 @@ pulumi.Output<GetApplicationProvidersResult> getApplicationProvidersOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -464,14 +464,14 @@ pulumi.Output<GetApplicationProvidersResult> getApplicationProvidersOutput(
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
 ///
 /// output "arn" {
-///   value = data.aws_ssoadmin_getinstances.example.arns[0]
+///   value = data.aws_ssoadmin_instances.example.arns[0]
 /// }
 /// output "identityStoreId" {
-///   value = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+///   value = data.aws_ssoadmin_instances.example.identity_store_ids[0]
 /// }
 /// ```
 /// ```java
@@ -613,7 +613,7 @@ pulumi.Output<GetInstancesResult> getInstancesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -621,15 +621,15 @@ pulumi.Output<GetInstancesResult> getInstancesOutput(
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
-/// data "aws_ssoadmin_getpermissionset" "exampleGetPermissionSet" {
-///   instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+/// data "aws_ssoadmin_permission_set" "exampleGetPermissionSet" {
+///   instance_arn = data.aws_ssoadmin_instances.example.arns[0]
 ///   name         = "Example"
 /// }
 ///
 /// output "arn" {
-///   value = data.aws_ssoadmin_getpermissionset.exampleGetPermissionSet.arn
+///   value = data.aws_ssoadmin_permission_set.exampleGetPermissionSet.arn
 /// }
 /// ```
 /// ```java
@@ -772,7 +772,7 @@ pulumi.Output<GetPermissionSetResult> getPermissionSetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -780,10 +780,10 @@ pulumi.Output<GetPermissionSetResult> getPermissionSetOutput(
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
-/// data "aws_ssoadmin_getpermissionsets" "exampleGetPermissionSets" {
-///   instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+/// data "aws_ssoadmin_permission_sets" "exampleGetPermissionSets" {
+///   instance_arn = data.aws_ssoadmin_instances.example.arns[0]
 /// }
 /// ```
 /// ```java
@@ -921,7 +921,7 @@ pulumi.Output<GetPermissionSetsResult> getPermissionSetsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -929,7 +929,7 @@ pulumi.Output<GetPermissionSetsResult> getPermissionSetsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getprincipalapplicationassignments" "example" {
+/// data "aws_ssoadmin_principal_application_assignments" "example" {
 ///   instance_arn   = test.arns[0]
 ///   principal_id   = testAwsIdentitystoreUser.userId
 ///   principal_type = "USER"
@@ -957,8 +957,8 @@ pulumi.Output<GetPermissionSetsResult> getPermissionSetsOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = SsoadminFunctions.getPrincipalApplicationAssignments(GetPrincipalApplicationAssignmentsArgs.builder()
-///             .instanceArn(test.arns()[0])
-///             .principalId(testAwsIdentitystoreUser.userId())
+///             .instanceArn(test.get("arns")[0])
+///             .principalId(testAwsIdentitystoreUser.get("userId"))
 ///             .principalType("USER")
 ///             .build());
 ///

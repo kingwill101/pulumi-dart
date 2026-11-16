@@ -91,6 +91,8 @@ export 'securityhub/configuration_policy_state.dart';
 export 'securityhub/connector_v2.dart';
 export 'securityhub/connector_v2_args.dart';
 export 'securityhub/connector_v2_connector_provider.dart';
+export 'securityhub/connector_v2_connector_provider_azure.dart';
+export 'securityhub/connector_v2_connector_provider_azure_scope_configuration.dart';
 export 'securityhub/connector_v2_connector_provider_jira_cloud.dart';
 export 'securityhub/connector_v2_connector_provider_service_now.dart';
 export 'securityhub/connector_v2_health.dart';

@@ -61,7 +61,7 @@ import 'get_local_disk_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -69,7 +69,7 @@ import 'get_local_disk_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_storagegateway_getlocaldisk" "test" {
+/// data "aws_storagegateway_local_disk" "test" {
 ///   disk_path   = testAwsVolumeAttachment.deviceName
 ///   gateway_arn = testAwsStoragegatewayGateway.arn
 /// }
@@ -96,8 +96,8 @@ import 'get_local_disk_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = StoragegatewayFunctions.getLocalDisk(GetLocalDiskArgs.builder()
-///             .diskPath(testAwsVolumeAttachment.deviceName())
-///             .gatewayArn(testAwsStoragegatewayGateway.arn())
+///             .diskPath(testAwsVolumeAttachment.get("deviceName"))
+///             .gatewayArn(testAwsStoragegatewayGateway.get("arn"))
 ///             .build());
 ///
 ///     }
