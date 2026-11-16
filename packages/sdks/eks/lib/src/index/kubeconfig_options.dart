@@ -22,11 +22,11 @@ class KubeconfigOptions {
   /// AWS credential profile name to always use instead of the default AWS credential provider chain.
   ///
   /// The profile is passed to kubeconfig as an authentication environment setting.
-  final pulumi.Input<String>? profileName;
+  final pulumi.Input<String?>? profileName;
   /// Role ARN to assume instead of the default AWS credential provider chain.
   ///
   /// The role is passed to kubeconfig as an authentication exec argument.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
 
   /// Creates a new [KubeconfigOptions].
   /// [profileName] AWS credential profile name to always use instead of the default AWS credential provider chain.

@@ -3,11 +3,11 @@
 import 'package:pulumi_eks/index.dart' as module_index;
 import 'package:pulumi_eks/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final AccessEntry = module_index.AccessEntry.new;
   final AccessEntryArgs = module_index.AccessEntry.new;
   final AccessEntryType = module_index.AccessEntryType.values;
@@ -74,9 +74,10 @@ class _IndexModuleNamespace {
   final VpcCniOptions = module_index.VpcCniOptions.new;
   final VpcCniOptionsArgs = module_index.VpcCniOptions.new;
   final getKubeconfig = module_index.getKubeconfig;
+  final getKubeconfigOutput = module_index.getKubeconfigOutput;
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final Eks = module_providers.ProviderProvider.new;
 }
