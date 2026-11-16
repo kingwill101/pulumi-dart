@@ -18,9 +18,9 @@ class DefaultPrivilegArgs {
   /// The role that will automatically be granted the specified privileges on new objects created by the owner.
   final pulumi.Input<String> role;
   /// The database schema to set default privileges for this role.
-  final pulumi.Input<String>? schema;
+  final pulumi.Input<String?>? schema;
   /// Permit the grant recipient to grant it to others
-  final pulumi.Input<bool>? withGrantOption;
+  final pulumi.Input<bool?>? withGrantOption;
 
   /// Creates a new [DefaultPrivilegArgs].
   /// [database] The database to grant default privileges for this role.

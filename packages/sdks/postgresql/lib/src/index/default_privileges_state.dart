@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering DefaultPrivileges resources.
 class DefaultPrivilegesState {
   /// The database to grant default privileges for this role.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, routine, type, schema).
-  final pulumi.Input<String>? objectType;
+  final pulumi.Input<String?>? objectType;
   /// Specifies the role that creates objects for which the default privileges will be applied.
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
   /// List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
-  final pulumi.Input<List<String>>? privileges;
+  final pulumi.Input<List<String>?>? privileges;
   /// The role that will automatically be granted the specified privileges on new objects created by the owner.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
   /// The database schema to set default privileges for this role.
-  final pulumi.Input<String>? schema;
+  final pulumi.Input<String?>? schema;
   /// Permit the grant recipient to grant it to others
-  final pulumi.Input<bool>? withGrantOption;
+  final pulumi.Input<bool?>? withGrantOption;
 
   /// Creates a new [DefaultPrivilegesState].
   /// [database] The database to grant default privileges for this role.
