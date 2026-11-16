@@ -31,9 +31,9 @@ class GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl {
 
   factory GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl.fromMap(Map<String, dynamic> map) {
     return GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl(
-      statusCode: pulumi.Input.fromValue((map['statusCode'] as num).toInt()),
+      statusCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['statusCode'])),
       statusCodeRange: pulumi.Input.fromValue(GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange.fromMap((map['statusCodeRange']! as Map).cast<String, dynamic>())),
-      value: pulumi.Input.fromValue((map['value'] as num).toInt()),
+      value: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['value'])),
     );
   }
 }

@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadBalancerRuleOverridesRandomSteering {
-  /// The default weight for pools in the load balancer that are not specified in the poolWeights map.
+  /// The default weight for pools in the load balancer that are not specified in the poolWeights map. An omitted value inherits the load balancer's default weight.
   final pulumi.Input<double> defaultWeight;
   /// A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
   final pulumi.Input<Map<String, double>> poolWeights;
 
   /// Creates a new [GetLoadBalancerRuleOverridesRandomSteering].
-  /// [defaultWeight] The default weight for pools in the load balancer that are not specified in the poolWeights map.
+  /// [defaultWeight] The default weight for pools in the load balancer that are not specified in the poolWeights map. An omitted value inherits the load balancer's default weight.
   /// [poolWeights] A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
   const GetLoadBalancerRuleOverridesRandomSteering({
     required this.defaultWeight,

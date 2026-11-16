@@ -10,6 +10,8 @@ class GetQueuesResult {
   final pulumi.Input<double> consumersTotalCount;
   final pulumi.Input<String> createdOn;
   final pulumi.Input<String> id;
+  /// Available values: "eu", "us", "fedramp".
+  final pulumi.Input<String> jurisdiction;
   final pulumi.Input<String> modifiedOn;
   final pulumi.Input<List<GetQueuesResultProducer>> producers;
   final pulumi.Input<double> producersTotalCount;
@@ -22,6 +24,7 @@ class GetQueuesResult {
   /// [consumersTotalCount] Required.
   /// [createdOn] Required.
   /// [id] Required.
+  /// [jurisdiction] Available values: "eu", "us", "fedramp".
   /// [modifiedOn] Required.
   /// [producers] Required.
   /// [producersTotalCount] Required.
@@ -33,6 +36,7 @@ class GetQueuesResult {
     required this.consumersTotalCount,
     required this.createdOn,
     required this.id,
+    required this.jurisdiction,
     required this.modifiedOn,
     required this.producers,
     required this.producersTotalCount,
@@ -47,6 +51,7 @@ class GetQueuesResult {
       'consumersTotalCount': consumersTotalCount,
       'createdOn': createdOn,
       'id': id,
+      'jurisdiction': jurisdiction,
       'modifiedOn': modifiedOn,
       'producers': pulumi.Input.mapInputValue<List<GetQueuesResultProducer>, List<Map<String, dynamic>>>(producers, (value) => pulumi.Input.encodeList<GetQueuesResultProducer, Map<String, dynamic>>(value, (value) => value.toMap())),
       'producersTotalCount': producersTotalCount,
@@ -62,6 +67,7 @@ class GetQueuesResult {
       consumersTotalCount: pulumi.Input.fromValue((map['consumersTotalCount'] as num).toDouble()),
       createdOn: pulumi.Input.fromValue(map['createdOn'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
+      jurisdiction: pulumi.Input.fromValue(map['jurisdiction'] as String),
       modifiedOn: pulumi.Input.fromValue(map['modifiedOn'] as String),
       producers: pulumi.Input.fromValue(pulumi.Input.decodeList<GetQueuesResultProducer>(map['producers']!, (value) => GetQueuesResultProducer.fromMap((value as Map).cast<String, dynamic>()))),
       producersTotalCount: pulumi.Input.fromValue((map['producersTotalCount'] as num).toDouble()),

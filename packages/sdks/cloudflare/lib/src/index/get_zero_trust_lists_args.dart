@@ -8,26 +8,39 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_zero_trust_lists_get_zero_trust_lists_args_doc}
 class GetZeroTrustListsArgs {
   final pulumi.Input<String?>? accountId;
-  /// Max items to fetch, default: 1000
+  final pulumi.Input<String?>? direction;
+  final pulumi.Input<List<String>?>? filters;
   final pulumi.Input<int?>? maxItems;
-  /// Specify the list type.
-  /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
+  final pulumi.Input<String?>? orderBy;
+  final pulumi.Input<String?>? search;
   final pulumi.Input<String?>? type;
 
   /// Creates a new [GetZeroTrustListsArgs].
   /// [accountId] Optional.
-  /// [maxItems] Max items to fetch, default: 1000
-  /// [type] Specify the list type.
+  /// [direction] Optional.
+  /// [filters] Optional.
+  /// [maxItems] Optional.
+  /// [orderBy] Optional.
+  /// [search] Optional.
+  /// [type] Optional.
   const GetZeroTrustListsArgs({
     this.accountId,
+    this.direction,
+    this.filters,
     this.maxItems,
+    this.orderBy,
+    this.search,
     this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountId': ?accountId,
+      'direction': ?direction,
+      'filters': ?filters,
       'maxItems': ?maxItems,
+      'orderBy': ?orderBy,
+      'search': ?search,
       'type': ?type,
     };
   }
@@ -35,7 +48,11 @@ class GetZeroTrustListsArgs {
   factory GetZeroTrustListsArgs.fromMap(Map<String, dynamic> map) {
     return GetZeroTrustListsArgs(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      orderBy: (() { final guardedValue = map['orderBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      search: (() { final guardedValue = map['search']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

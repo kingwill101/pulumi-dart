@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContentScanningExpressionBody {
-  /// Defines the ruleset expression to use in matching content objects.
+  /// Defines the custom content extraction expression used to reach content objects in the request.
   final pulumi.Input<String> payload;
 
   /// Creates a new [ContentScanningExpressionBody].
-  /// [payload] Defines the ruleset expression to use in matching content objects.
+  /// [payload] Defines the custom content extraction expression used to reach content objects in the request.
   const ContentScanningExpressionBody({
     required this.payload,
   });

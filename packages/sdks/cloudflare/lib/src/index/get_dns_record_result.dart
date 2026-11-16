@@ -13,41 +13,25 @@ class GetDnsRecordResult {
   final String? commentModifiedOn;
   /// A valid IPv4 address.
   final String? content;
-  /// When the record was created.
   final String? createdOn;
-  /// Components of a MX record.
   final GetDnsRecordData? data;
   /// Identifier.
   final String? dnsRecordId;
   final GetDnsRecordFilter? filter;
-  /// Identifier.
   final String? id;
   /// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
   final bool? includeShadowMetadata;
-  /// Extra Cloudflare-specific metadata about the record.
   final GetDnsRecordMeta? meta;
-  /// When the record was last modified.
   final String? modifiedOn;
-  /// Complete DNS record name, including the zone name, in Punycode.
   final String? name;
-  /// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
   final double? priority;
-  /// Enables private network routing to the origin.
   final bool? privateRouting;
-  /// Whether the record can be proxied by Cloudflare or not.
   final bool? proxiable;
-  /// Whether the record is receiving the performance and security benefits of Cloudflare.
   final bool? proxied;
-  /// Settings for the DNS record.
   final GetDnsRecordSettings? settings;
-  /// Custom tags for the DNS record. This field has no effect on DNS responses.
   final List<String>? tags;
-  /// When the record tags were last modified. Omitted if there are no tags.
   final String? tagsModifiedOn;
-  /// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
   final double? ttl;
-  /// Record type.
-  /// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
   final String? type;
   /// Identifier.
   final String? zoneId;
@@ -56,24 +40,24 @@ class GetDnsRecordResult {
   /// [comment] Comments or notes about the DNS record. This field has no effect on DNS responses.
   /// [commentModifiedOn] When the record comment was last modified. Omitted if there is no comment.
   /// [content] A valid IPv4 address.
-  /// [createdOn] When the record was created.
-  /// [data] Components of a MX record.
+  /// [createdOn] Optional.
+  /// [data] Optional.
   /// [dnsRecordId] Identifier.
   /// [filter] Optional.
-  /// [id] Identifier.
+  /// [id] Optional.
   /// [includeShadowMetadata] Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
-  /// [meta] Extra Cloudflare-specific metadata about the record.
-  /// [modifiedOn] When the record was last modified.
-  /// [name] Complete DNS record name, including the zone name, in Punycode.
-  /// [priority] Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
-  /// [privateRouting] Enables private network routing to the origin.
-  /// [proxiable] Whether the record can be proxied by Cloudflare or not.
-  /// [proxied] Whether the record is receiving the performance and security benefits of Cloudflare.
-  /// [settings] Settings for the DNS record.
-  /// [tags] Custom tags for the DNS record. This field has no effect on DNS responses.
-  /// [tagsModifiedOn] When the record tags were last modified. Omitted if there are no tags.
-  /// [ttl] Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
-  /// [type] Record type.
+  /// [meta] Optional.
+  /// [modifiedOn] Optional.
+  /// [name] Optional.
+  /// [priority] Optional.
+  /// [privateRouting] Optional.
+  /// [proxiable] Optional.
+  /// [proxied] Optional.
+  /// [settings] Optional.
+  /// [tags] Optional.
+  /// [tagsModifiedOn] Optional.
+  /// [ttl] Optional.
+  /// [type] Optional.
   /// [zoneId] Identifier.
   const GetDnsRecordResult({
     this.comment,

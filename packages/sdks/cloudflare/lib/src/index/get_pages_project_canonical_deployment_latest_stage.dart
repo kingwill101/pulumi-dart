@@ -11,7 +11,7 @@ class GetPagesProjectCanonicalDeploymentLatestStage {
   /// When the stage started.
   final pulumi.Input<String> startedOn;
   /// State of the current stage.
-  /// Available values: "success", "idle", "active", "failure", "canceled".
+  /// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
   final pulumi.Input<String> status;
 
   /// Creates a new [GetPagesProjectCanonicalDeploymentLatestStage].

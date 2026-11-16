@@ -8,12 +8,13 @@ class GetAccountDnsSettingsResult {
   final String? accountId;
   /// When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
   final bool? enforceDnsOnly;
+  /// Default settings for new zones created in this account.
   final GetAccountDnsSettingsZoneDefaults? zoneDefaults;
 
   /// Creates a new [GetAccountDnsSettingsResult].
   /// [accountId] Identifier.
   /// [enforceDnsOnly] When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
-  /// [zoneDefaults] Optional.
+  /// [zoneDefaults] Default settings for new zones created in this account.
   const GetAccountDnsSettingsResult({
     this.accountId,
     this.enforceDnsOnly,

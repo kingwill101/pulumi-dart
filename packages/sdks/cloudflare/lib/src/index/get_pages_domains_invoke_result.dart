@@ -9,7 +9,7 @@ class GetPagesDomainsInvokeResult {
   final String? accountId;
   /// Max items to fetch, default: 1000
   final int? maxItems;
-  /// Name of the project.
+  /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   final String? projectName;
   /// The items returned by the data source
   final List<GetPagesDomainsResult>? results;
@@ -17,7 +17,7 @@ class GetPagesDomainsInvokeResult {
   /// Creates a new [GetPagesDomainsInvokeResult].
   /// [accountId] Identifier.
   /// [maxItems] Max items to fetch, default: 1000
-  /// [projectName] Name of the project.
+  /// [projectName] Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   /// [results] The items returned by the data source
   const GetPagesDomainsInvokeResult({
     this.accountId,
@@ -38,7 +38,7 @@ class GetPagesDomainsInvokeResult {
   factory GetPagesDomainsInvokeResult.fromMap(Map<String, dynamic> map) {
     return GetPagesDomainsInvokeResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       projectName: (() { final guardedValue = map['projectName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetPagesDomainsResult>(guardedValue, (value) => GetPagesDomainsResult.fromMap((value as Map).cast<String, dynamic>())); })(),
     );

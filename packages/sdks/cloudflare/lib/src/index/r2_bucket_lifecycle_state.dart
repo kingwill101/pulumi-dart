@@ -5,7 +5,7 @@ import 'r2_bucket_lifecycle_rule.dart';
 
 /// Input properties used for looking up and filtering R2BucketLifecycle resources.
 class R2BucketLifecycleState {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   final pulumi.Input<String?>? accountId;
   /// Name of the bucket.
   final pulumi.Input<String?>? bucketName;
@@ -14,7 +14,7 @@ class R2BucketLifecycleState {
   final pulumi.Input<List<R2BucketLifecycleRule>?>? rules;
 
   /// Creates a new [R2BucketLifecycleState].
-  /// [accountId] Account ID.
+  /// [accountId] Cloudflare account ID that owns the R2 resource.
   /// [bucketName] Name of the bucket.
   /// [jurisdiction] Jurisdiction of the bucket
   /// [rules] Optional.

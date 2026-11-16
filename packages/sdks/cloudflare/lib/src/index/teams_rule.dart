@@ -35,9 +35,6 @@ import 'teams_rule_state.dart';
 ///             "X-Custom-Header-Name": ["somecustomvalue"],
 ///         },
 ///         allowChildBypass: false,
-///         auditSsh: {
-///             commandLogging: false,
-///         },
 ///         bisoAdminControls: {
 ///             copy: "remote_only",
 ///             dcp: true,
@@ -89,6 +86,9 @@ import 'teams_rule_state.dart';
 ///         },
 ///         forensicCopy: {
 ///             enabled: true,
+///         },
+///         forward: {
+///             workerId: "0123456789abcdef0123456789abcdef",
 ///         },
 ///         ignoreCnameCategoryMatches: true,
 ///         insecureDisableDnssecValidation: false,
@@ -172,9 +172,6 @@ import 'teams_rule_state.dart';
 ///             "X-Custom-Header-Name": ["somecustomvalue"],
 ///         },
 ///         "allow_child_bypass": False,
-///         "audit_ssh": {
-///             "command_logging": False,
-///         },
 ///         "biso_admin_controls": {
 ///             "copy": "remote_only",
 ///             "dcp": True,
@@ -226,6 +223,9 @@ import 'teams_rule_state.dart';
 ///         },
 ///         "forensic_copy": {
 ///             "enabled": True,
+///         },
+///         "forward": {
+///             "worker_id": "0123456789abcdef0123456789abcdef",
 ///         },
 ///         "ignore_cname_category_matches": True,
 ///         "insecure_disable_dnssec_validation": False,
@@ -323,10 +323,6 @@ import 'teams_rule_state.dart';
 ///                 } },
 ///             },
 ///             AllowChildBypass = false,
-///             AuditSsh = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs
-///             {
-///                 CommandLogging = false,
-///             },
 ///             BisoAdminControls = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs
 ///             {
 ///                 Copy = "remote_only",
@@ -393,6 +389,10 @@ import 'teams_rule_state.dart';
 ///             ForensicCopy = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs
 ///             {
 ///                 Enabled = true,
+///             },
+///             Forward = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsForwardArgs
+///             {
+///                 WorkerId = "0123456789abcdef0123456789abcdef",
 ///             },
 ///             IgnoreCnameCategoryMatches = true,
 ///             InsecureDisableDnssecValidation = false,
@@ -504,9 +504,6 @@ import 'teams_rule_state.dart';
 /// 					},
 /// 				},
 /// 				AllowChildBypass: pulumi.Bool(false),
-/// 				AuditSsh: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs{
-/// 					CommandLogging: pulumi.Bool(false),
-/// 				},
 /// 				BisoAdminControls: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs{
 /// 					Copy:     pulumi.String("remote_only"),
 /// 					Dcp:      pulumi.Bool(true),
@@ -562,6 +559,9 @@ import 'teams_rule_state.dart';
 /// 				},
 /// 				ForensicCopy: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs{
 /// 					Enabled: pulumi.Bool(true),
+/// 				},
+/// 				Forward: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsForwardArgs{
+/// 					WorkerId: pulumi.String("0123456789abcdef0123456789abcdef"),
 /// 				},
 /// 				IgnoreCnameCategoryMatches:      pulumi.Bool(true),
 /// 				InsecureDisableDnssecValidation: pulumi.Bool(false),
@@ -629,7 +629,7 @@ import 'teams_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -637,7 +637,10 @@ import 'teams_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustgatewaypolicy" "example_zero_trust_gateway_policy" {
+/// resource "cloudflare_zero_trust_gateway_policy" "example_zero_trust_gateway_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id     = "699d98642c564d2e855e9661899b7252"
 ///   action         = "allow"
 ///   name           = "block bad websites"
@@ -657,9 +660,6 @@ import 'teams_rule_state.dart';
 ///       "X-Custom-Header-Name" = ["somecustomvalue"]
 ///     }
 ///     allow_child_bypass = false
-///     audit_ssh = {
-///       command_logging = false
-///     }
 ///     biso_admin_controls = {
 ///       copy     = "remote_only"
 ///       dcp      = true
@@ -689,16 +689,16 @@ import 'teams_rule_state.dart';
 ///     delete_headers = ["X-Old-Header", "X-Remove-Me"]
 ///     dns_resolvers = {
 ///       ipv4s = [{
-///         "ip"                         = "2.2.2.2"
-///         "port"                       = 5053
-///         "routeThroughPrivateNetwork" = true
-///         "vnetId"                     = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+///         ip                            = "2.2.2.2"
+///         port                          = 5053
+///         route_through_private_network = true
+///         vnet_id                       = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 ///       }]
 ///       ipv6s = [{
-///         "ip"                         = "2001:DB8::"
-///         "port"                       = 5053
-///         "routeThroughPrivateNetwork" = true
-///         "vnetId"                     = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+///         ip                            = "2001:DB8::"
+///         port                          = 5053
+///         route_through_private_network = true
+///         vnet_id                       = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 ///       }]
 ///     }
 ///     egress = {
@@ -708,6 +708,9 @@ import 'teams_rule_state.dart';
 ///     }
 ///     forensic_copy = {
 ///       enabled = true
+///     }
+///     forward = {
+///       worker_id = "0123456789abcdef0123456789abcdef"
 ///     }
 ///     ignore_cname_category_matches      = true
 ///     insecure_disable_dnssec_validation = false
@@ -771,7 +774,6 @@ import 'teams_rule_state.dart';
 /// import com.pulumi.cloudflare.ZeroTrustGatewayPolicyArgs;
 /// import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyExpirationArgs;
 /// import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsArgs;
-/// import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs;
 /// import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs;
 /// import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs;
 /// import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs;
@@ -780,6 +782,7 @@ import 'teams_rule_state.dart';
 /// import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6Args;
 /// import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsEgressArgs;
 /// import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs;
+/// import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsForwardArgs;
 /// import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs;
 /// import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs;
 /// import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs;
@@ -823,9 +826,6 @@ import 'teams_rule_state.dart';
 ///                     Map.entry("X-Custom-Header-Name", Arrays.asList("somecustomvalue"))
 ///                 ))
 ///                 .allowChildBypass(false)
-///                 .auditSsh(ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs.builder()
-///                     .commandLogging(false)
-///                     .build())
 ///                 .bisoAdminControls(ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs.builder()
 ///                     .copy("remote_only")
 ///                     .dcp(true)
@@ -876,6 +876,9 @@ import 'teams_rule_state.dart';
 ///                     .build())
 ///                 .forensicCopy(ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs.builder()
 ///                     .enabled(true)
+///                     .build())
+///                 .forward(ZeroTrustGatewayPolicyRuleSettingsForwardArgs.builder()
+///                     .workerId("0123456789abcdef0123456789abcdef")
 ///                     .build())
 ///                 .ignoreCnameCategoryMatches(true)
 ///                 .insecureDisableDnssecValidation(false)
@@ -959,8 +962,6 @@ import 'teams_rule_state.dart';
 ///           X-Custom-Header-Name:
 ///             - somecustomvalue
 ///         allowChildBypass: false
-///         auditSsh:
-///           commandLogging: false
 ///         bisoAdminControls:
 ///           copy: remote_only
 ///           dcp: true
@@ -1004,6 +1005,8 @@ import 'teams_rule_state.dart';
 ///           ipv6: 2001:DB8::/64
 ///         forensicCopy:
 ///           enabled: true
+///         forward:
+///           workerId: 0123456789abcdef0123456789abcdef
 ///         ignoreCnameCategoryMatches: true
 ///         insecureDisableDnssecValidation: false
 ///         ipCategories: true
@@ -1057,9 +1060,10 @@ import 'teams_rule_state.dart';
 /// $ pulumi import cloudflare:index/teamsRule:TeamsRule example '<account_id>/<rule_id>'
 /// ```
 class TeamsRule extends pulumi.CustomResource {
+  /// Specify the Cloudflare account identifier.
   late final pulumi.Output<String> accountId;
   /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-  /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
+  /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect", "forward".
   late final pulumi.Output<String> action;
   late final pulumi.Output<String> createdAt;
   /// Indicate the date of deletion, if any.
@@ -1110,7 +1114,7 @@ class TeamsRule extends pulumi.CustomResource {
           'cloudflare:index/teamsRule:TeamsRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     action = registerOutput<String>('action');

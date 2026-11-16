@@ -29,7 +29,7 @@ class GetR2BucketLockRuleCondition {
   factory GetR2BucketLockRuleCondition.fromMap(Map<String, dynamic> map) {
     return GetR2BucketLockRuleCondition(
       date: pulumi.Input.fromValue(map['date'] as String),
-      maxAgeSeconds: pulumi.Input.fromValue((map['maxAgeSeconds'] as num).toInt()),
+      maxAgeSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxAgeSeconds'])),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

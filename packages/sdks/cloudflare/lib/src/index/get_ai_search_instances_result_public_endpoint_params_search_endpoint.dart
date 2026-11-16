@@ -3,11 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAiSearchInstancesResultPublicEndpointParamsSearchEndpoint {
-  /// Disable search endpoint for this public endpoint
   final pulumi.Input<bool> disabled;
 
   /// Creates a new [GetAiSearchInstancesResultPublicEndpointParamsSearchEndpoint].
-  /// [disabled] Disable search endpoint for this public endpoint
+  /// [disabled] Required.
   const GetAiSearchInstancesResultPublicEndpointParamsSearchEndpoint({
     required this.disabled,
   });

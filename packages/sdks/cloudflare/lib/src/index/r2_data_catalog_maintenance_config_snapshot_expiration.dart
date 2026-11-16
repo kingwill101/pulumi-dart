@@ -35,7 +35,7 @@ class R2DataCatalogMaintenanceConfigSnapshotExpiration {
   factory R2DataCatalogMaintenanceConfigSnapshotExpiration.fromMap(Map<String, dynamic> map) {
     return R2DataCatalogMaintenanceConfigSnapshotExpiration(
       maxSnapshotAge: (() { final guardedValue = map['maxSnapshotAge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      minSnapshotsToKeep: (() { final guardedValue = map['minSnapshotsToKeep']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minSnapshotsToKeep: (() { final guardedValue = map['minSnapshotsToKeep']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

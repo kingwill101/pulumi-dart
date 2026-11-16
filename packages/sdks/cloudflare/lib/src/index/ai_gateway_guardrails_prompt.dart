@@ -16,6 +16,8 @@ class AiGatewayGuardrailsPrompt {
   /// Available values: "FLAG", "BLOCK".
   final pulumi.Input<String?>? s13;
   /// Available values: "FLAG", "BLOCK".
+  final pulumi.Input<String?>? s14;
+  /// Available values: "FLAG", "BLOCK".
   final pulumi.Input<String?>? s2;
   /// Available values: "FLAG", "BLOCK".
   final pulumi.Input<String?>? s3;
@@ -39,6 +41,7 @@ class AiGatewayGuardrailsPrompt {
   /// [s11] Available values: "FLAG", "BLOCK".
   /// [s12] Available values: "FLAG", "BLOCK".
   /// [s13] Available values: "FLAG", "BLOCK".
+  /// [s14] Available values: "FLAG", "BLOCK".
   /// [s2] Available values: "FLAG", "BLOCK".
   /// [s3] Available values: "FLAG", "BLOCK".
   /// [s4] Available values: "FLAG", "BLOCK".
@@ -54,6 +57,7 @@ class AiGatewayGuardrailsPrompt {
     this.s11,
     this.s12,
     this.s13,
+    this.s14,
     this.s2,
     this.s3,
     this.s4,
@@ -72,6 +76,7 @@ class AiGatewayGuardrailsPrompt {
       's11': ?s11,
       's12': ?s12,
       's13': ?s13,
+      's14': ?s14,
       's2': ?s2,
       's3': ?s3,
       's4': ?s4,
@@ -91,6 +96,7 @@ class AiGatewayGuardrailsPrompt {
       s11: (() { final guardedValue = map['s11']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s12: (() { final guardedValue = map['s12']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s13: (() { final guardedValue = map['s13']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      s14: (() { final guardedValue = map['s14']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s2: (() { final guardedValue = map['s2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s3: (() { final guardedValue = map['s3']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s4: (() { final guardedValue = map['s4']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

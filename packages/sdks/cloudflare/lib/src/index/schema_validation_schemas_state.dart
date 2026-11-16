@@ -10,6 +10,8 @@ class SchemaValidationSchemasState {
   final pulumi.Input<String?>? kind;
   /// A human-readable name for the schema
   final pulumi.Input<String?>? name;
+  /// Omit the source-files of schemas and only retrieve their meta-data.
+  final pulumi.Input<bool?>? omitSource;
   /// A unique identifier of this schema
   final pulumi.Input<String?>? schemaId;
   /// The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
@@ -23,6 +25,7 @@ class SchemaValidationSchemasState {
   /// [createdAt] Optional.
   /// [kind] The kind of the schema
   /// [name] A human-readable name for the schema
+  /// [omitSource] Omit the source-files of schemas and only retrieve their meta-data.
   /// [schemaId] A unique identifier of this schema
   /// [source] The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
   /// [validationEnabled] An indicator if this schema is enabled
@@ -31,6 +34,7 @@ class SchemaValidationSchemasState {
     this.createdAt,
     this.kind,
     this.name,
+    this.omitSource,
     this.schemaId,
     this.source,
     this.validationEnabled,
@@ -42,6 +46,7 @@ class SchemaValidationSchemasState {
       'createdAt': ?createdAt,
       'kind': ?kind,
       'name': ?name,
+      'omitSource': ?omitSource,
       'schemaId': ?schemaId,
       'source': ?source,
       'validationEnabled': ?validationEnabled,
@@ -54,6 +59,7 @@ class SchemaValidationSchemasState {
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      omitSource: (() { final guardedValue = map['omitSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       schemaId: (() { final guardedValue = map['schemaId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       validationEnabled: (() { final guardedValue = map['validationEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

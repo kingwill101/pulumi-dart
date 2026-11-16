@@ -10,57 +10,55 @@ import 'get_zero_trust_dlp_custom_profile_shared_entry.dart';
 class GetZeroTrustDlpCustomProfileResult {
   final String? accountId;
   final bool? aiContextEnabled;
-  /// Related DLP policies will trigger when the match count exceeds the number set.
+  /// For `type: custom`: Related DLP policies will trigger when the match count exceeds the number set.
   final int? allowedMatchCount;
   /// Available values: "low", "medium", "high", "veryHigh".
   final String? confidenceThreshold;
-  /// Scan the context of predefined entries to only return matches surrounded by keywords.
+  /// For `type: custom`: Scan the context of predefined entries to only return matches surrounded by keywords.
   final GetZeroTrustDlpCustomProfileContextAwareness? contextAwareness;
-  /// When the profile was created.
+  /// For `type: custom`: When the profile was created.
   final String? createdAt;
-  /// Data classes associated with this profile.
+  /// For `type: custom`: Data classes associated with this profile.
   final List<String>? dataClasses;
-  /// Data tags associated with this profile.
+  /// For `type: custom`: Data tags associated with this profile.
   final List<String>? dataTags;
-  /// The description of the profile.
+  /// For `type: custom` or `type: integration`: The description of the profile.
   final String? description;
   final List<GetZeroTrustDlpCustomProfileEntry>? entries;
   /// The ID of this resource.
   final String? id;
-  /// The name of the profile.
+  final String? integrationId;
+  /// For `type: custom`: The name of the profile.
   final String? name;
   final bool? ocrEnabled;
-  /// Whether this profile can be accessed by anyone.
   final bool? openAccess;
   final String? profileId;
-  /// Sensitivity levels associated with this profile.
   final List<GetZeroTrustDlpCustomProfileSensitivityLevel>? sensitivityLevels;
   final List<GetZeroTrustDlpCustomProfileSharedEntry>? sharedEntries;
-  /// Available values: "custom", "predefined", "integration".
   final String? type;
-  /// When the profile was lasted updated.
   final String? updatedAt;
 
   /// Creates a new [GetZeroTrustDlpCustomProfileResult].
   /// [accountId] Optional.
   /// [aiContextEnabled] Optional.
-  /// [allowedMatchCount] Related DLP policies will trigger when the match count exceeds the number set.
+  /// [allowedMatchCount] For `type: custom`: Related DLP policies will trigger when the match count exceeds the number set.
   /// [confidenceThreshold] Available values: "low", "medium", "high", "veryHigh".
-  /// [contextAwareness] Scan the context of predefined entries to only return matches surrounded by keywords.
-  /// [createdAt] When the profile was created.
-  /// [dataClasses] Data classes associated with this profile.
-  /// [dataTags] Data tags associated with this profile.
-  /// [description] The description of the profile.
+  /// [contextAwareness] For `type: custom`: Scan the context of predefined entries to only return matches surrounded by keywords.
+  /// [createdAt] For `type: custom`: When the profile was created.
+  /// [dataClasses] For `type: custom`: Data classes associated with this profile.
+  /// [dataTags] For `type: custom`: Data tags associated with this profile.
+  /// [description] For `type: custom` or `type: integration`: The description of the profile.
   /// [entries] Optional.
   /// [id] The ID of this resource.
-  /// [name] The name of the profile.
+  /// [integrationId] Optional.
+  /// [name] For `type: custom`: The name of the profile.
   /// [ocrEnabled] Optional.
-  /// [openAccess] Whether this profile can be accessed by anyone.
+  /// [openAccess] Optional.
   /// [profileId] Optional.
-  /// [sensitivityLevels] Sensitivity levels associated with this profile.
+  /// [sensitivityLevels] Optional.
   /// [sharedEntries] Optional.
-  /// [type] Available values: "custom", "predefined", "integration".
-  /// [updatedAt] When the profile was lasted updated.
+  /// [type] Optional.
+  /// [updatedAt] Optional.
   const GetZeroTrustDlpCustomProfileResult({
     this.accountId,
     this.aiContextEnabled,
@@ -73,6 +71,7 @@ class GetZeroTrustDlpCustomProfileResult {
     this.description,
     this.entries,
     this.id,
+    this.integrationId,
     this.name,
     this.ocrEnabled,
     this.openAccess,
@@ -96,6 +95,7 @@ class GetZeroTrustDlpCustomProfileResult {
       'description': ?description,
       'entries': ?(() { final guardedValue = entries; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetZeroTrustDlpCustomProfileEntry, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': ?id,
+      'integrationId': ?integrationId,
       'name': ?name,
       'ocrEnabled': ?ocrEnabled,
       'openAccess': ?openAccess,
@@ -111,7 +111,7 @@ class GetZeroTrustDlpCustomProfileResult {
     return GetZeroTrustDlpCustomProfileResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       aiContextEnabled: (() { final guardedValue = map['aiContextEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      allowedMatchCount: (() { final guardedValue = map['allowedMatchCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      allowedMatchCount: (() { final guardedValue = map['allowedMatchCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       confidenceThreshold: (() { final guardedValue = map['confidenceThreshold']; if (guardedValue == null) return null; return guardedValue as String; })(),
       contextAwareness: (() { final guardedValue = map['contextAwareness']; if (guardedValue == null) return null; return GetZeroTrustDlpCustomProfileContextAwareness.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -120,6 +120,7 @@ class GetZeroTrustDlpCustomProfileResult {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       entries: (() { final guardedValue = map['entries']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetZeroTrustDlpCustomProfileEntry>(guardedValue, (value) => GetZeroTrustDlpCustomProfileEntry.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      integrationId: (() { final guardedValue = map['integrationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ocrEnabled: (() { final guardedValue = map['ocrEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       openAccess: (() { final guardedValue = map['openAccess']; if (guardedValue == null) return null; return guardedValue as bool; })(),

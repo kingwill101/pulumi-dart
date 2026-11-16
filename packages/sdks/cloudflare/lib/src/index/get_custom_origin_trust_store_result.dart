@@ -6,12 +6,12 @@ import 'get_custom_origin_trust_store_filter.dart';
 class GetCustomOriginTrustStoreResult {
   /// The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
   final String? certificate;
-  /// Identifier.
+  /// Certificate identifier tag.
   final String? customOriginTrustStoreId;
   /// When the certificate expires.
   final String? expiresOn;
   final GetCustomOriginTrustStoreFilter? filter;
-  /// Identifier.
+  /// Certificate identifier tag.
   final String? id;
   /// The certificate authority that issued the certificate.
   final String? issuer;
@@ -20,7 +20,7 @@ class GetCustomOriginTrustStoreResult {
   /// Status of the zone's custom SSL.
   /// Available values: "initializing", "pending*deployment", "active", "pending*deletion", "deleted", "expired".
   final String? status;
-  /// When the certificate was last modified.
+  /// When the certificate was last modified. Only returned when uploading a certificate.
   final String? updatedAt;
   /// When the certificate was uploaded to Cloudflare.
   final String? uploadedOn;
@@ -29,14 +29,14 @@ class GetCustomOriginTrustStoreResult {
 
   /// Creates a new [GetCustomOriginTrustStoreResult].
   /// [certificate] The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
-  /// [customOriginTrustStoreId] Identifier.
+  /// [customOriginTrustStoreId] Certificate identifier tag.
   /// [expiresOn] When the certificate expires.
   /// [filter] Optional.
-  /// [id] Identifier.
+  /// [id] Certificate identifier tag.
   /// [issuer] The certificate authority that issued the certificate.
   /// [signature] The type of hash used for the certificate.
   /// [status] Status of the zone's custom SSL.
-  /// [updatedAt] When the certificate was last modified.
+  /// [updatedAt] When the certificate was last modified. Only returned when uploading a certificate.
   /// [uploadedOn] When the certificate was uploaded to Cloudflare.
   /// [zoneId] Identifier.
   const GetCustomOriginTrustStoreResult({

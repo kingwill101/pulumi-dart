@@ -12,6 +12,8 @@ class SchemaValidationSchemasArgs {
   final pulumi.Input<String> kind;
   /// A human-readable name for the schema
   final pulumi.Input<String> name;
+  /// Omit the source-files of schemas and only retrieve their meta-data.
+  final pulumi.Input<bool?>? omitSource;
   /// The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
   final pulumi.Input<String> source;
   /// An indicator if this schema is enabled
@@ -22,12 +24,14 @@ class SchemaValidationSchemasArgs {
   /// Creates a new [SchemaValidationSchemasArgs].
   /// [kind] The kind of the schema
   /// [name] A human-readable name for the schema
+  /// [omitSource] Omit the source-files of schemas and only retrieve their meta-data.
   /// [source] The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
   /// [validationEnabled] An indicator if this schema is enabled
   /// [zoneId] Identifier.
   const SchemaValidationSchemasArgs({
     required this.kind,
     required this.name,
+    this.omitSource,
     required this.source,
     required this.validationEnabled,
     required this.zoneId,
@@ -37,6 +41,7 @@ class SchemaValidationSchemasArgs {
     return <String, dynamic>{
       'kind': kind,
       'name': name,
+      'omitSource': ?omitSource,
       'source': source,
       'validationEnabled': validationEnabled,
       'zoneId': zoneId,
@@ -47,6 +52,7 @@ class SchemaValidationSchemasArgs {
     return SchemaValidationSchemasArgs(
       kind: pulumi.Input.fromValue(map['kind'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
+      omitSource: (() { final guardedValue = map['omitSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       source: pulumi.Input.fromValue(map['source'] as String),
       validationEnabled: pulumi.Input.fromValue(map['validationEnabled'] as bool),
       zoneId: pulumi.Input.fromValue(map['zoneId'] as String),

@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAiSearchNamespacePublicEndpointParamsMcp {
   final pulumi.Input<String> description;
-  /// Disable MCP endpoint for this public endpoint
+  /// Disable MCP endpoint for this public endpoint.
   final pulumi.Input<bool> disabled;
 
   /// Creates a new [GetAiSearchNamespacePublicEndpointParamsMcp].
   /// [description] Required.
-  /// [disabled] Disable MCP endpoint for this public endpoint
+  /// [disabled] Disable MCP endpoint for this public endpoint.
   const GetAiSearchNamespacePublicEndpointParamsMcp({
     required this.description,
     required this.disabled,

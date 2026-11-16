@@ -33,7 +33,7 @@ class GetRulesetRuleActionParametersSMaxage {
     return GetRulesetRuleActionParametersSMaxage(
       cloudflareOnly: pulumi.Input.fromValue(map['cloudflareOnly'] as bool),
       operation: pulumi.Input.fromValue(map['operation'] as String),
-      value: pulumi.Input.fromValue((map['value'] as num).toInt()),
+      value: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['value'])),
     );
   }
 }

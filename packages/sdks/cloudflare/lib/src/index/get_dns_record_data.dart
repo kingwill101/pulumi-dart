@@ -74,6 +74,8 @@ class GetDnsRecordData {
   /// Usage.
   final pulumi.Input<double> usage;
   /// Value of the record. This field's semantics depend on the chosen tag.
+  ///
+  /// Value.
   final pulumi.Input<String> value;
   /// The record weight.
   final pulumi.Input<double> weight;

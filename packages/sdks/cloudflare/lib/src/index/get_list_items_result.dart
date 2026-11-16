@@ -57,7 +57,7 @@ class GetListItemsResult {
 
   factory GetListItemsResult.fromMap(Map<String, dynamic> map) {
     return GetListItemsResult(
-      asn: pulumi.Input.fromValue((map['asn'] as num).toInt()),
+      asn: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['asn'])),
       comment: pulumi.Input.fromValue(map['comment'] as String),
       createdOn: pulumi.Input.fromValue(map['createdOn'] as String),
       hostname: pulumi.Input.fromValue(GetListItemsResultHostname.fromMap((map['hostname']! as Map).cast<String, dynamic>())),

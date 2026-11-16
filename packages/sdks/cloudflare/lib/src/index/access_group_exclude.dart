@@ -23,6 +23,7 @@ import 'access_group_exclude_oidc.dart';
 import 'access_group_exclude_okta.dart';
 import 'access_group_exclude_saml.dart';
 import 'access_group_exclude_service_token.dart';
+import 'access_group_exclude_service_token_tag.dart';
 import 'access_group_exclude_user_risk_score.dart';
 
 class AccessGroupExclude {
@@ -53,6 +54,7 @@ class AccessGroupExclude {
   final pulumi.Input<AccessGroupExcludeOkta?>? okta;
   final pulumi.Input<AccessGroupExcludeSaml?>? saml;
   final pulumi.Input<AccessGroupExcludeServiceToken?>? serviceToken;
+  final pulumi.Input<AccessGroupExcludeServiceTokenTag?>? serviceTokenTag;
   final pulumi.Input<AccessGroupExcludeUserRiskScore?>? userRiskScore;
 
   /// Creates a new [AccessGroupExclude].
@@ -81,6 +83,7 @@ class AccessGroupExclude {
   /// [okta] Optional.
   /// [saml] Optional.
   /// [serviceToken] Optional.
+  /// [serviceTokenTag] Optional.
   /// [userRiskScore] Optional.
   const AccessGroupExclude({
     this.anyValidServiceToken,
@@ -108,6 +111,7 @@ class AccessGroupExclude {
     this.okta,
     this.saml,
     this.serviceToken,
+    this.serviceTokenTag,
     this.userRiskScore,
   });
 
@@ -138,6 +142,7 @@ class AccessGroupExclude {
       'okta': ?pulumi.Input.mapOptionalInputValue<AccessGroupExcludeOkta, Map<String, dynamic>>(okta, (value) => value.toMap()),
       'saml': ?pulumi.Input.mapOptionalInputValue<AccessGroupExcludeSaml, Map<String, dynamic>>(saml, (value) => value.toMap()),
       'serviceToken': ?pulumi.Input.mapOptionalInputValue<AccessGroupExcludeServiceToken, Map<String, dynamic>>(serviceToken, (value) => value.toMap()),
+      'serviceTokenTag': ?pulumi.Input.mapOptionalInputValue<AccessGroupExcludeServiceTokenTag, Map<String, dynamic>>(serviceTokenTag, (value) => value.toMap()),
       'userRiskScore': ?pulumi.Input.mapOptionalInputValue<AccessGroupExcludeUserRiskScore, Map<String, dynamic>>(userRiskScore, (value) => value.toMap()),
     };
   }
@@ -169,6 +174,7 @@ class AccessGroupExclude {
       okta: (() { final guardedValue = map['okta']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccessGroupExcludeOkta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       saml: (() { final guardedValue = map['saml']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccessGroupExcludeSaml.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       serviceToken: (() { final guardedValue = map['serviceToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccessGroupExcludeServiceToken.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      serviceTokenTag: (() { final guardedValue = map['serviceTokenTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccessGroupExcludeServiceTokenTag.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       userRiskScore: (() { final guardedValue = map['userRiskScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccessGroupExcludeUserRiskScore.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

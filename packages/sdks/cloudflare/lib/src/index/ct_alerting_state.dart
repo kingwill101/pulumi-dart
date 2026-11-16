@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering CtAlerting resources.
 class CtAlertingState {
-  /// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+  /// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
   final pulumi.Input<List<String>?>? emails;
   /// Whether CT alerting is enabled for the zone.
   final pulumi.Input<bool?>? enabled;
@@ -12,7 +12,7 @@ class CtAlertingState {
   final pulumi.Input<String?>? zoneId;
 
   /// Creates a new [CtAlertingState].
-  /// [emails] Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+  /// [emails] Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
   /// [enabled] Whether CT alerting is enabled for the zone.
   /// [zoneId] Identifier.
   const CtAlertingState({

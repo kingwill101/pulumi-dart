@@ -10,14 +10,23 @@ import 'ai_gateway_stripe.dart';
 /// Input properties used for looking up and filtering AiGateway resources.
 class AiGatewayState {
   final pulumi.Input<String?>? accountId;
-  /// gateway id
+  /// Unique identifier of the AI Gateway within the account.
   final pulumi.Input<String?>? aiGatewayId;
+  /// Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
   final pulumi.Input<bool?>? authentication;
+  /// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+  final pulumi.Input<bool?>? byokOnly;
   final pulumi.Input<bool?>? cacheInvalidateOnUpdate;
   final pulumi.Input<int?>? cacheTtl;
   final pulumi.Input<bool?>? collectLogs;
   final pulumi.Input<String?>? createdAt;
   final pulumi.Input<AiGatewayDlp?>? dlp;
+  /// FedRAMP compliance level: fedramp-medium or fedramp-high.
+  /// Available values: "fedramp-medium", "fedramp-high".
+  final pulumi.Input<String?>? fedrampLevel;
+  /// FedRAMP enforcement mode. "prefer" prioritizes compliant connectors but allows fallback. "require" strictly filters.
+  /// Available values: "prefer", "require".
+  final pulumi.Input<String?>? fedrampMode;
   final pulumi.Input<AiGatewayGuardrails?>? guardrails;
   final pulumi.Input<bool?>? isDefault;
   final pulumi.Input<bool?>? logClassification;
@@ -35,11 +44,12 @@ class AiGatewayState {
   /// Backoff strategy for retry delays
   /// Available values: "constant", "linear", "exponential".
   final pulumi.Input<String?>? retryBackoff;
-  /// Delay between retry attempts in milliseconds (0-5000)
+  /// Delay between retry attempts in milliseconds (0-60000)
   final pulumi.Input<int?>? retryDelay;
   /// Maximum number of retry attempts for failed requests (1-5)
   final pulumi.Input<int?>? retryMaxAttempts;
   final pulumi.Input<AiGatewaySpendLimits?>? spendLimits;
+  /// Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
   final pulumi.Input<String?>? storeId;
   final pulumi.Input<AiGatewayStripe?>? stripe;
   /// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
@@ -49,13 +59,16 @@ class AiGatewayState {
 
   /// Creates a new [AiGatewayState].
   /// [accountId] Optional.
-  /// [aiGatewayId] gateway id
-  /// [authentication] Optional.
+  /// [aiGatewayId] Unique identifier of the AI Gateway within the account.
+  /// [authentication] Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+  /// [byokOnly] Requires customer-provided provider credentials and prevents fallback to Unified Billing.
   /// [cacheInvalidateOnUpdate] Optional.
   /// [cacheTtl] Optional.
   /// [collectLogs] Optional.
   /// [createdAt] Optional.
   /// [dlp] Optional.
+  /// [fedrampLevel] FedRAMP compliance level: fedramp-medium or fedramp-high.
+  /// [fedrampMode] FedRAMP enforcement mode. "prefer" prioritizes compliant connectors but allows fallback. "require" strictly filters.
   /// [guardrails] Optional.
   /// [isDefault] Optional.
   /// [logClassification] Optional.
@@ -69,10 +82,10 @@ class AiGatewayState {
   /// [rateLimitingLimit] Optional.
   /// [rateLimitingTechnique] Available values: "fixed", "sliding".
   /// [retryBackoff] Backoff strategy for retry delays
-  /// [retryDelay] Delay between retry attempts in milliseconds (0-5000)
+  /// [retryDelay] Delay between retry attempts in milliseconds (0-60000)
   /// [retryMaxAttempts] Maximum number of retry attempts for failed requests (1-5)
   /// [spendLimits] Optional.
-  /// [storeId] Optional.
+  /// [storeId] Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
   /// [stripe] Optional.
   /// [workersAiBillingMode] Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
   /// [zdr] Optional.
@@ -80,11 +93,14 @@ class AiGatewayState {
     this.accountId,
     this.aiGatewayId,
     this.authentication,
+    this.byokOnly,
     this.cacheInvalidateOnUpdate,
     this.cacheTtl,
     this.collectLogs,
     this.createdAt,
     this.dlp,
+    this.fedrampLevel,
+    this.fedrampMode,
     this.guardrails,
     this.isDefault,
     this.logClassification,
@@ -112,11 +128,14 @@ class AiGatewayState {
       'accountId': ?accountId,
       'aiGatewayId': ?aiGatewayId,
       'authentication': ?authentication,
+      'byokOnly': ?byokOnly,
       'cacheInvalidateOnUpdate': ?cacheInvalidateOnUpdate,
       'cacheTtl': ?cacheTtl,
       'collectLogs': ?collectLogs,
       'createdAt': ?createdAt,
       'dlp': ?pulumi.Input.mapOptionalInputValue<AiGatewayDlp, Map<String, dynamic>>(dlp, (value) => value.toMap()),
+      'fedrampLevel': ?fedrampLevel,
+      'fedrampMode': ?fedrampMode,
       'guardrails': ?pulumi.Input.mapOptionalInputValue<AiGatewayGuardrails, Map<String, dynamic>>(guardrails, (value) => value.toMap()),
       'isDefault': ?isDefault,
       'logClassification': ?logClassification,
@@ -145,26 +164,29 @@ class AiGatewayState {
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       aiGatewayId: (() { final guardedValue = map['aiGatewayId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       authentication: (() { final guardedValue = map['authentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      byokOnly: (() { final guardedValue = map['byokOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       cacheInvalidateOnUpdate: (() { final guardedValue = map['cacheInvalidateOnUpdate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      cacheTtl: (() { final guardedValue = map['cacheTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      cacheTtl: (() { final guardedValue = map['cacheTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       collectLogs: (() { final guardedValue = map['collectLogs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dlp: (() { final guardedValue = map['dlp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiGatewayDlp.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      fedrampLevel: (() { final guardedValue = map['fedrampLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fedrampMode: (() { final guardedValue = map['fedrampMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       guardrails: (() { final guardedValue = map['guardrails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiGatewayGuardrails.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       isDefault: (() { final guardedValue = map['isDefault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       logClassification: (() { final guardedValue = map['logClassification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      logManagement: (() { final guardedValue = map['logManagement']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      logManagement: (() { final guardedValue = map['logManagement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       logManagementStrategy: (() { final guardedValue = map['logManagementStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       logpush: (() { final guardedValue = map['logpush']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       logpushPublicKey: (() { final guardedValue = map['logpushPublicKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       modifiedAt: (() { final guardedValue = map['modifiedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       otels: (() { final guardedValue = map['otels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AiGatewayOtel>(guardedValue, (value) => AiGatewayOtel.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      rateLimitingInterval: (() { final guardedValue = map['rateLimitingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      rateLimitingLimit: (() { final guardedValue = map['rateLimitingLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      rateLimitingInterval: (() { final guardedValue = map['rateLimitingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      rateLimitingLimit: (() { final guardedValue = map['rateLimitingLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       rateLimitingTechnique: (() { final guardedValue = map['rateLimitingTechnique']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       retryBackoff: (() { final guardedValue = map['retryBackoff']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      retryDelay: (() { final guardedValue = map['retryDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      retryMaxAttempts: (() { final guardedValue = map['retryMaxAttempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      retryDelay: (() { final guardedValue = map['retryDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      retryMaxAttempts: (() { final guardedValue = map['retryMaxAttempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       spendLimits: (() { final guardedValue = map['spendLimits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiGatewaySpendLimits.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       storeId: (() { final guardedValue = map['storeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       stripe: (() { final guardedValue = map['stripe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiGatewayStripe.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

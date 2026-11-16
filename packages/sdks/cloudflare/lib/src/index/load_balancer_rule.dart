@@ -15,7 +15,7 @@ class LoadBalancerRule {
   final pulumi.Input<String?>? name;
   /// A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional.
   final pulumi.Input<LoadBalancerRuleOverrides?>? overrides;
-  /// The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
+  /// The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If all priorities are omitted or zero, the API assigns priorities based on the array order of the rules field.
   final pulumi.Input<int?>? priority;
   /// If this rule's condition is true, this causes rule evaluation to stop after processing this rule.
   final pulumi.Input<bool?>? terminates;
@@ -26,7 +26,7 @@ class LoadBalancerRule {
   /// [fixedResponse] A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed*response is supplied the rule will be marked as terminates.
   /// [name] Name of this rule. Only used for human readability.
   /// [overrides] A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional.
-  /// [priority] The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
+  /// [priority] The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If all priorities are omitted or zero, the API assigns priorities based on the array order of the rules field.
   /// [terminates] If this rule's condition is true, this causes rule evaluation to stop after processing this rule.
   const LoadBalancerRule({
     this.condition,
@@ -57,7 +57,7 @@ class LoadBalancerRule {
       fixedResponse: (() { final guardedValue = map['fixedResponse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LoadBalancerRuleFixedResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       overrides: (() { final guardedValue = map['overrides']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LoadBalancerRuleOverrides.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       terminates: (() { final guardedValue = map['terminates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

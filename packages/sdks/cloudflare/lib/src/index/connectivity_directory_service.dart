@@ -25,6 +25,8 @@ import 'connectivity_directory_service_tls_settings.dart';
 ///     httpsPort: 8443,
 ///     tlsSettings: {
 ///         certVerificationMode: "verify_full",
+///         certificateAuthority: "705db030-8247-489b-80dd-0d6256e5950d",
+///         clientCertificate: "a493fbb4-34bc-4218-a63c-61a9323ac725",
 ///     },
 /// });
 /// ```
@@ -46,6 +48,8 @@ import 'connectivity_directory_service_tls_settings.dart';
 ///     https_port=8443,
 ///     tls_settings={
 ///         "cert_verification_mode": "verify_full",
+///         "certificate_authority": "705db030-8247-489b-80dd-0d6256e5950d",
+///         "client_certificate": "a493fbb4-34bc-4218-a63c-61a9323ac725",
 ///     })
 /// ```
 /// ```csharp
@@ -74,6 +78,8 @@ import 'connectivity_directory_service_tls_settings.dart';
 ///         TlsSettings = new Cloudflare.Inputs.ConnectivityDirectoryServiceTlsSettingsArgs
 ///         {
 ///             CertVerificationMode = "verify_full",
+///             CertificateAuthority = "705db030-8247-489b-80dd-0d6256e5950d",
+///             ClientCertificate = "a493fbb4-34bc-4218-a63c-61a9323ac725",
 ///         },
 ///     });
 ///
@@ -103,6 +109,8 @@ import 'connectivity_directory_service_tls_settings.dart';
 /// 			HttpsPort: pulumi.Int(8443),
 /// 			TlsSettings: &cloudflare.ConnectivityDirectoryServiceTlsSettingsArgs{
 /// 				CertVerificationMode: pulumi.String("verify_full"),
+/// 				CertificateAuthority: pulumi.String("705db030-8247-489b-80dd-0d6256e5950d"),
+/// 				ClientCertificate:    pulumi.String("a493fbb4-34bc-4218-a63c-61a9323ac725"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -113,7 +121,7 @@ import 'connectivity_directory_service_tls_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -121,7 +129,10 @@ import 'connectivity_directory_service_tls_settings.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_connectivitydirectoryservice" "example_connectivity_directory_service" {
+/// resource "cloudflare_connectivity_directory_service" "example_connectivity_directory_service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   host = {
 ///     ipv4 = "10.0.0.1"
@@ -135,6 +146,8 @@ import 'connectivity_directory_service_tls_settings.dart';
 ///   https_port = 8443
 ///   tls_settings = {
 ///     cert_verification_mode = "verify_full"
+///     certificate_authority  = "705db030-8247-489b-80dd-0d6256e5950d"
+///     client_certificate     = "a493fbb4-34bc-4218-a63c-61a9323ac725"
 ///   }
 /// }
 /// ```
@@ -176,6 +189,8 @@ import 'connectivity_directory_service_tls_settings.dart';
 ///             .httpsPort(8443)
 ///             .tlsSettings(ConnectivityDirectoryServiceTlsSettingsArgs.builder()
 ///                 .certVerificationMode("verify_full")
+///                 .certificateAuthority("705db030-8247-489b-80dd-0d6256e5950d")
+///                 .clientCertificate("a493fbb4-34bc-4218-a63c-61a9323ac725")
 ///                 .build())
 ///             .build());
 ///
@@ -199,6 +214,8 @@ import 'connectivity_directory_service_tls_settings.dart';
 ///       httpsPort: 8443
 ///       tlsSettings:
 ///         certVerificationMode: verify_full
+///         certificateAuthority: 705db030-8247-489b-80dd-0d6256e5950d
+///         clientCertificate: a493fbb4-34bc-4218-a63c-61a9323ac725
 /// ```
 ///
 ///
@@ -237,7 +254,7 @@ class ConnectivityDirectoryService extends pulumi.CustomResource {
           'cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     appProtocol = registerOutput<String?>('appProtocol');

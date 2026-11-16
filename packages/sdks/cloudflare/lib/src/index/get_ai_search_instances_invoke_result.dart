@@ -6,9 +6,10 @@ import 'get_ai_search_instances_result.dart';
 /// Result data returned by getAiSearchInstances.
 class GetAiSearchInstancesInvokeResult {
   final String? accountId;
+  /// Return only instances with this exact Search for Agents hostname (case-insensitive).
+  final String? hostname;
   /// Max items to fetch, default: 1000
   final int? maxItems;
-  /// Filter by namespace.
   final String? namespace;
   /// Field to order results by.
   /// Available values: "createdAt".
@@ -23,14 +24,16 @@ class GetAiSearchInstancesInvokeResult {
 
   /// Creates a new [GetAiSearchInstancesInvokeResult].
   /// [accountId] Optional.
+  /// [hostname] Return only instances with this exact Search for Agents hostname (case-insensitive).
   /// [maxItems] Max items to fetch, default: 1000
-  /// [namespace] Filter by namespace.
+  /// [namespace] Optional.
   /// [orderBy] Field to order results by.
   /// [orderByDirection] Order direction.
   /// [results] The items returned by the data source
   /// [search] Filter instances whose id contains this string (case-insensitive).
   const GetAiSearchInstancesInvokeResult({
     this.accountId,
+    this.hostname,
     this.maxItems,
     this.namespace,
     this.orderBy,
@@ -42,6 +45,7 @@ class GetAiSearchInstancesInvokeResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountId': ?accountId,
+      'hostname': ?hostname,
       'maxItems': ?maxItems,
       'namespace': ?namespace,
       'orderBy': ?orderBy,
@@ -54,7 +58,8 @@ class GetAiSearchInstancesInvokeResult {
   factory GetAiSearchInstancesInvokeResult.fromMap(Map<String, dynamic> map) {
     return GetAiSearchInstancesInvokeResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return guardedValue as String; })(),
       orderBy: (() { final guardedValue = map['orderBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       orderByDirection: (() { final guardedValue = map['orderByDirection']; if (guardedValue == null) return null; return guardedValue as String; })(),

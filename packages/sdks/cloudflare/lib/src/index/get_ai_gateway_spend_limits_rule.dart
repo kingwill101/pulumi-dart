@@ -64,7 +64,7 @@ class GetAiGatewaySpendLimitsRule {
       metadata: pulumi.Input.fromValue(pulumi.Input.decodeMapValues<GetAiGatewaySpendLimitsRuleMetadata>(map['metadata']!, (value) => GetAiGatewaySpendLimitsRuleMetadata.fromMap((value as Map).cast<String, dynamic>()))),
       model: pulumi.Input.fromValue(GetAiGatewaySpendLimitsRuleModel.fromMap((map['model']! as Map).cast<String, dynamic>())),
       technique: pulumi.Input.fromValue(map['technique'] as String),
-      window: pulumi.Input.fromValue((map['window'] as num).toInt()),
+      window: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['window'])),
     );
   }
 }

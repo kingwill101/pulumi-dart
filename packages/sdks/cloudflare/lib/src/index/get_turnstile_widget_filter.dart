@@ -6,7 +6,8 @@ class GetTurnstileWidgetFilter {
   /// Direction to order widgets.
   /// Available values: "asc", "desc".
   final pulumi.Input<String?>? direction;
-  /// Filter widgets by field using case-insensitive substring matching.
+  /// Filter widgets by field. The `name` field uses case-insensitive
+  /// substring matching; `sitekey` uses exact matching.
   /// Format: `field:value`
   final pulumi.Input<String?>? filter;
   /// Field to order widgets by.
@@ -15,7 +16,7 @@ class GetTurnstileWidgetFilter {
 
   /// Creates a new [GetTurnstileWidgetFilter].
   /// [direction] Direction to order widgets.
-  /// [filter] Filter widgets by field using case-insensitive substring matching.
+  /// [filter] Filter widgets by field. The `name` field uses case-insensitive
   /// [order] Field to order widgets by.
   const GetTurnstileWidgetFilter({
     this.direction,

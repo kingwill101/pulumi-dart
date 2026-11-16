@@ -8,8 +8,6 @@ import 'get_account_dns_settings_zone_defaults_soa.dart';
 class GetAccountDnsSettingsZoneDefaults {
   /// Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
   final pulumi.Input<bool> flattenAllCnames;
-  /// Whether to enable Foundation DNS Advanced Nameservers on the zone.
-  final pulumi.Input<bool> foundationDns;
   /// Settings for this internal zone.
   final pulumi.Input<GetAccountDnsSettingsZoneDefaultsInternalDns> internalDns;
   /// Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
@@ -28,7 +26,6 @@ class GetAccountDnsSettingsZoneDefaults {
 
   /// Creates a new [GetAccountDnsSettingsZoneDefaults].
   /// [flattenAllCnames] Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
-  /// [foundationDns] Whether to enable Foundation DNS Advanced Nameservers on the zone.
   /// [internalDns] Settings for this internal zone.
   /// [multiProvider] Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
   /// [nameservers] Settings determining the nameservers through which the zone should be available.
@@ -38,7 +35,6 @@ class GetAccountDnsSettingsZoneDefaults {
   /// [zoneMode] Whether the zone mode is a regular or CDN/DNS only zone.
   const GetAccountDnsSettingsZoneDefaults({
     required this.flattenAllCnames,
-    required this.foundationDns,
     required this.internalDns,
     required this.multiProvider,
     required this.nameservers,
@@ -51,7 +47,6 @@ class GetAccountDnsSettingsZoneDefaults {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'flattenAllCnames': flattenAllCnames,
-      'foundationDns': foundationDns,
       'internalDns': pulumi.Input.mapInputValue<GetAccountDnsSettingsZoneDefaultsInternalDns, Map<String, dynamic>>(internalDns, (value) => value.toMap()),
       'multiProvider': multiProvider,
       'nameservers': pulumi.Input.mapInputValue<GetAccountDnsSettingsZoneDefaultsNameservers, Map<String, dynamic>>(nameservers, (value) => value.toMap()),
@@ -65,7 +60,6 @@ class GetAccountDnsSettingsZoneDefaults {
   factory GetAccountDnsSettingsZoneDefaults.fromMap(Map<String, dynamic> map) {
     return GetAccountDnsSettingsZoneDefaults(
       flattenAllCnames: pulumi.Input.fromValue(map['flattenAllCnames'] as bool),
-      foundationDns: pulumi.Input.fromValue(map['foundationDns'] as bool),
       internalDns: pulumi.Input.fromValue(GetAccountDnsSettingsZoneDefaultsInternalDns.fromMap((map['internalDns']! as Map).cast<String, dynamic>())),
       multiProvider: pulumi.Input.fromValue(map['multiProvider'] as bool),
       nameservers: pulumi.Input.fromValue(GetAccountDnsSettingsZoneDefaultsNameservers.fromMap((map['nameservers']! as Map).cast<String, dynamic>())),

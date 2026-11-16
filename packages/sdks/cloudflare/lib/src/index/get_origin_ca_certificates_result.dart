@@ -12,23 +12,26 @@ class GetOriginCaCertificatesResult {
   /// Array of hostnames or wildcard names bound to the certificate.
   /// Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.
   final pulumi.Input<List<String>> hostnames;
-  /// Identifier.
+  /// The x509 serial number of the Origin CA certificate.
   final pulumi.Input<String> id;
   /// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
   /// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
   final pulumi.Input<String> requestType;
-  /// The number of days for which the certificate should be valid.
+  /// The number of days for which the certificate was requested to be valid. Only returned in the Create Certificate response, where it echoes the requested value. Not returned when getting or listing certificates.
   /// Available values: 7, 30, 90, 365, 730, 1095, 5475.
   final pulumi.Input<double> requestedValidity;
+  /// When the certificate was revoked.
+  final pulumi.Input<String> revokedAt;
 
   /// Creates a new [GetOriginCaCertificatesResult].
   /// [certificate] The Origin CA certificate. Will be newline-encoded.
   /// [csr] The Certificate Signing Request (CSR). Must be newline-encoded.
   /// [expiresOn] When the certificate will expire.
   /// [hostnames] Array of hostnames or wildcard names bound to the certificate.
-  /// [id] Identifier.
+  /// [id] The x509 serial number of the Origin CA certificate.
   /// [requestType] Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
-  /// [requestedValidity] The number of days for which the certificate should be valid.
+  /// [requestedValidity] The number of days for which the certificate was requested to be valid. Only returned in the Create Certificate response, where it echoes the requested value. Not returned when getting or listing certificates.
+  /// [revokedAt] When the certificate was revoked.
   const GetOriginCaCertificatesResult({
     required this.certificate,
     required this.csr,
@@ -37,6 +40,7 @@ class GetOriginCaCertificatesResult {
     required this.id,
     required this.requestType,
     required this.requestedValidity,
+    required this.revokedAt,
   });
 
   Map<String, dynamic> toMap() {
@@ -48,6 +52,7 @@ class GetOriginCaCertificatesResult {
       'id': id,
       'requestType': requestType,
       'requestedValidity': requestedValidity,
+      'revokedAt': revokedAt,
     };
   }
 
@@ -60,6 +65,7 @@ class GetOriginCaCertificatesResult {
       id: pulumi.Input.fromValue(map['id'] as String),
       requestType: pulumi.Input.fromValue(map['requestType'] as String),
       requestedValidity: pulumi.Input.fromValue((map['requestedValidity'] as num).toDouble()),
+      revokedAt: pulumi.Input.fromValue(map['revokedAt'] as String),
     );
   }
 }

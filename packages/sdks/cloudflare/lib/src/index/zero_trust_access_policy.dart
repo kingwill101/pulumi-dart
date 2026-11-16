@@ -71,6 +71,7 @@ import 'zero_trust_access_policy_state.dart';
 ///         mfaDisabled: false,
 ///         sessionDuration: "24h",
 ///     },
+///     policyResolutionAccountId: "policy_resolution_account_id",
 ///     purposeJustificationPrompt: "Please enter a justification for entering this protected domain.",
 ///     purposeJustificationRequired: true,
 ///     requires: [{
@@ -134,6 +135,7 @@ import 'zero_trust_access_policy_state.dart';
 ///         "mfa_disabled": False,
 ///         "session_duration": "24h",
 ///     },
+///     policy_resolution_account_id="policy_resolution_account_id",
 ///     purpose_justification_prompt="Please enter a justification for entering this protected domain.",
 ///     purpose_justification_required=True,
 ///     requires=[{
@@ -165,7 +167,7 @@ import 'zero_trust_access_policy_state.dart';
 ///         {
 ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyApprovalGroupArgs
 ///             {
-///                 ApprovalsNeeded = 1,
+///                 ApprovalsNeeded = 1.0,
 ///                 EmailAddresses = new[]
 ///                 {
 ///                     "test1@cloudflare.com",
@@ -175,7 +177,7 @@ import 'zero_trust_access_policy_state.dart';
 ///             },
 ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyApprovalGroupArgs
 ///             {
-///                 ApprovalsNeeded = 3,
+///                 ApprovalsNeeded = 3.0,
 ///                 EmailAddresses = new[]
 ///                 {
 ///                     "test@cloudflare.com",
@@ -220,6 +222,7 @@ import 'zero_trust_access_policy_state.dart';
 ///             MfaDisabled = false,
 ///             SessionDuration = "24h",
 ///         },
+///         PolicyResolutionAccountId = "policy_resolution_account_id",
 ///         PurposeJustificationPrompt = "Please enter a justification for entering this protected domain.",
 ///         PurposeJustificationRequired = true,
 ///         Requires = new[]
@@ -299,6 +302,7 @@ import 'zero_trust_access_policy_state.dart';
 /// 				MfaDisabled:     pulumi.Bool(false),
 /// 				SessionDuration: pulumi.String("24h"),
 /// 			},
+/// 			PolicyResolutionAccountId:    pulumi.String("policy_resolution_account_id"),
 /// 			PurposeJustificationPrompt:   pulumi.String("Please enter a justification for entering this protected domain."),
 /// 			PurposeJustificationRequired: pulumi.Bool(true),
 /// 			Requires: cloudflare.ZeroTrustAccessPolicyRequireArray{
@@ -316,7 +320,7 @@ import 'zero_trust_access_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -324,23 +328,25 @@ import 'zero_trust_access_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustaccesspolicy" "example_zero_trust_access_policy" {
+/// resource "cloudflare_zero_trust_access_policy" "example_zero_trust_access_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   decision   = "allow"
-///   includes {
+///   include = [{
 ///     certificate = {}
-///   }
+///   }]
 ///   name = "Allow devs"
-///   approval_groups {
+///   approval_groups = [{
 ///     approvals_needed = 1
 ///     email_addresses  = ["test1@cloudflare.com", "test2@cloudflare.com"]
 ///     email_list_uuid  = "email_list_uuid"
-///   }
-///   approval_groups {
+///     }, {
 ///     approvals_needed = 3
 ///     email_addresses  = ["test@cloudflare.com", "test2@cloudflare.com"]
 ///     email_list_uuid  = "597147a1-976b-4ef2-9af0-81d5d007fc34"
-///   }
+///   }]
 ///   approval_required = true
 ///   connection_rules = {
 ///     rdp = {
@@ -348,20 +354,21 @@ import 'zero_trust_access_policy_state.dart';
 ///       allowed_clipboard_remote_to_local_formats = ["text", "file"]
 ///     }
 ///   }
-///   excludes {
+///   exclude = [{
 ///     certificate = {}
-///   }
+///   }]
 ///   isolation_required = false
 ///   mfa_config = {
 ///     allowed_authenticators = ["totp", "biometrics", "security_key"]
 ///     mfa_disabled           = false
 ///     session_duration       = "24h"
 ///   }
+///   policy_resolution_account_id   = "policy_resolution_account_id"
 ///   purpose_justification_prompt   = "Please enter a justification for entering this protected domain."
 ///   purpose_justification_required = true
-///   requires {
+///   require = [{
 ///     certificate = {}
-///   }
+///   }]
 ///   session_duration = "24h"
 /// }
 /// ```
@@ -443,6 +450,7 @@ import 'zero_trust_access_policy_state.dart';
 ///                 .mfaDisabled(false)
 ///                 .sessionDuration("24h")
 ///                 .build())
+///             .policyResolutionAccountId("policy_resolution_account_id")
 ///             .purposeJustificationPrompt("Please enter a justification for entering this protected domain.")
 ///             .purposeJustificationRequired(true)
 ///             .requires(ZeroTrustAccessPolicyRequireArgs.builder()
@@ -496,6 +504,7 @@ import 'zero_trust_access_policy_state.dart';
 ///           - security_key
 ///         mfaDisabled: false
 ///         sessionDuration: 24h
+///       policyResolutionAccountId: policy_resolution_account_id
 ///       purposeJustificationPrompt: Please enter a justification for entering this protected domain.
 ///       purposeJustificationRequired: true
 ///       requires:
@@ -512,8 +521,6 @@ import 'zero_trust_access_policy_state.dart';
 class ZeroTrustAccessPolicy extends pulumi.CustomResource {
   /// Identifier.
   late final pulumi.Output<String> accountId;
-  /// Number of access applications currently using this policy.
-  late final pulumi.Output<int> appCount;
   /// Administrators who can approve a temporary authentication request.
   late final pulumi.Output<List<ZeroTrustAccessPolicyApprovalGroup>?> approvalGroups;
   /// Requires the user to request access from an administrator at the start of each session.
@@ -534,6 +541,8 @@ class ZeroTrustAccessPolicy extends pulumi.CustomResource {
   late final pulumi.Output<ZeroTrustAccessPolicyMfaConfig?> mfaConfig;
   /// The name of the Access policy.
   late final pulumi.Output<String> name;
+  /// The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+  late final pulumi.Output<String?> policyResolutionAccountId;
   /// A custom message that will appear on the purpose justification screen.
   late final pulumi.Output<String?> purposeJustificationPrompt;
   /// Require users to enter a justification when they log in to the application.
@@ -557,10 +566,9 @@ class ZeroTrustAccessPolicy extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
-    appCount = registerOutput<int>('appCount');
     approvalGroups = registerOutput<List<ZeroTrustAccessPolicyApprovalGroup>?>('approvalGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZeroTrustAccessPolicyApprovalGroup>(guardedValue, (value) => ZeroTrustAccessPolicyApprovalGroup.fromMap((value as Map).cast<String, dynamic>())); });
     approvalRequired = registerOutput<bool?>('approvalRequired');
     connectionRules = registerOutput<ZeroTrustAccessPolicyConnectionRules?>('connectionRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustAccessPolicyConnectionRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -571,6 +579,7 @@ class ZeroTrustAccessPolicy extends pulumi.CustomResource {
     isolationRequired = registerOutput<bool?>('isolationRequired');
     mfaConfig = registerOutput<ZeroTrustAccessPolicyMfaConfig?>('mfaConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustAccessPolicyMfaConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
+    policyResolutionAccountId = registerOutput<String?>('policyResolutionAccountId');
     purposeJustificationPrompt = registerOutput<String?>('purposeJustificationPrompt');
     purposeJustificationRequired = registerOutput<bool?>('purposeJustificationRequired');
     requires = registerOutput<List<ZeroTrustAccessPolicyRequire>>('requires', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZeroTrustAccessPolicyRequire>(guardedValue, (value) => ZeroTrustAccessPolicyRequire.fromMap((value as Map).cast<String, dynamic>())); });
@@ -604,7 +613,6 @@ class ZeroTrustAccessPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accountId = registerOutput<String>('accountId');
-    appCount = registerOutput<int>('appCount');
     approvalGroups = registerOutput<List<ZeroTrustAccessPolicyApprovalGroup>?>('approvalGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZeroTrustAccessPolicyApprovalGroup>(guardedValue, (value) => ZeroTrustAccessPolicyApprovalGroup.fromMap((value as Map).cast<String, dynamic>())); });
     approvalRequired = registerOutput<bool?>('approvalRequired');
     connectionRules = registerOutput<ZeroTrustAccessPolicyConnectionRules?>('connectionRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustAccessPolicyConnectionRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -615,6 +623,7 @@ class ZeroTrustAccessPolicy extends pulumi.CustomResource {
     isolationRequired = registerOutput<bool?>('isolationRequired');
     mfaConfig = registerOutput<ZeroTrustAccessPolicyMfaConfig?>('mfaConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustAccessPolicyMfaConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
+    policyResolutionAccountId = registerOutput<String?>('policyResolutionAccountId');
     purposeJustificationPrompt = registerOutput<String?>('purposeJustificationPrompt');
     purposeJustificationRequired = registerOutput<bool?>('purposeJustificationRequired');
     requires = registerOutput<List<ZeroTrustAccessPolicyRequire>>('requires', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZeroTrustAccessPolicyRequire>(guardedValue, (value) => ZeroTrustAccessPolicyRequire.fromMap((value as Map).cast<String, dynamic>())); });
@@ -633,7 +642,6 @@ class ZeroTrustAccessPolicy extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     accountId = registerOutput<String>('accountId');
-    appCount = registerOutput<int>('appCount');
     approvalGroups = registerOutput<List<ZeroTrustAccessPolicyApprovalGroup>?>('approvalGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZeroTrustAccessPolicyApprovalGroup>(guardedValue, (value) => ZeroTrustAccessPolicyApprovalGroup.fromMap((value as Map).cast<String, dynamic>())); });
     approvalRequired = registerOutput<bool?>('approvalRequired');
     connectionRules = registerOutput<ZeroTrustAccessPolicyConnectionRules?>('connectionRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustAccessPolicyConnectionRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -644,6 +652,7 @@ class ZeroTrustAccessPolicy extends pulumi.CustomResource {
     isolationRequired = registerOutput<bool?>('isolationRequired');
     mfaConfig = registerOutput<ZeroTrustAccessPolicyMfaConfig?>('mfaConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustAccessPolicyMfaConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
+    policyResolutionAccountId = registerOutput<String?>('policyResolutionAccountId');
     purposeJustificationPrompt = registerOutput<String?>('purposeJustificationPrompt');
     purposeJustificationRequired = registerOutput<bool?>('purposeJustificationRequired');
     requires = registerOutput<List<ZeroTrustAccessPolicyRequire>>('requires', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZeroTrustAccessPolicyRequire>(guardedValue, (value) => ZeroTrustAccessPolicyRequire.fromMap((value as Map).cast<String, dynamic>())); });

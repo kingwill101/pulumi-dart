@@ -2,40 +2,48 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_workers_deployment_annotations.dart';
+import 'get_workers_deployment_code_update_strategy.dart';
 import 'get_workers_deployment_version.dart';
 
 /// Result data returned by getWorkersDeployment.
 class GetWorkersDeploymentResult {
   /// Identifier.
   final String? accountId;
+  /// Metadata attached to the deployment.
   final GetWorkersDeploymentAnnotations? annotations;
   final String? authorEmail;
+  /// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+  final GetWorkersDeploymentCodeUpdateStrategy? codeUpdateStrategy;
   final String? createdOn;
   final String? deploymentId;
   /// The ID of this resource.
   final String? id;
-  /// Name of the script, used in URLs and route configuration.
+  /// Name of the script.
   final String? scriptName;
   final String? source;
+  /// Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
   /// Available values: "percentage".
   final String? strategy;
+  /// Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"versionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
   final List<GetWorkersDeploymentVersion>? versions;
 
   /// Creates a new [GetWorkersDeploymentResult].
   /// [accountId] Identifier.
-  /// [annotations] Optional.
+  /// [annotations] Metadata attached to the deployment.
   /// [authorEmail] Optional.
+  /// [codeUpdateStrategy] Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
   /// [createdOn] Optional.
   /// [deploymentId] Optional.
   /// [id] The ID of this resource.
-  /// [scriptName] Name of the script, used in URLs and route configuration.
+  /// [scriptName] Name of the script.
   /// [source] Optional.
-  /// [strategy] Available values: "percentage".
-  /// [versions] Optional.
+  /// [strategy] Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
+  /// [versions] Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"versionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
   const GetWorkersDeploymentResult({
     this.accountId,
     this.annotations,
     this.authorEmail,
+    this.codeUpdateStrategy,
     this.createdOn,
     this.deploymentId,
     this.id,
@@ -50,6 +58,7 @@ class GetWorkersDeploymentResult {
       'accountId': ?accountId,
       'annotations': ?annotations?.toMap(),
       'authorEmail': ?authorEmail,
+      'codeUpdateStrategy': ?codeUpdateStrategy?.toMap(),
       'createdOn': ?createdOn,
       'deploymentId': ?deploymentId,
       'id': ?id,
@@ -65,6 +74,7 @@ class GetWorkersDeploymentResult {
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return GetWorkersDeploymentAnnotations.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       authorEmail: (() { final guardedValue = map['authorEmail']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      codeUpdateStrategy: (() { final guardedValue = map['codeUpdateStrategy']; if (guardedValue == null) return null; return GetWorkersDeploymentCodeUpdateStrategy.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       createdOn: (() { final guardedValue = map['createdOn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       deploymentId: (() { final guardedValue = map['deploymentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),

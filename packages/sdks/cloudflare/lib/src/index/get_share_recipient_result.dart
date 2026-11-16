@@ -12,13 +12,13 @@ class GetShareRecipientResult {
   /// target state set by the API; the background reconciliation workflow
   /// drives `currentAssociationStatus` toward it.
   final String? associationStatus;
-  /// When the share was created.
+  /// When the object was created.
   final String? created;
   /// Share Recipient identifier tag.
   final String? id;
   /// Include resources in the response.
   final bool? includeResources;
-  /// When the share was modified.
+  /// When the object was last modified.
   final String? modified;
   /// Share Recipient identifier tag.
   final String? recipientId;
@@ -29,10 +29,10 @@ class GetShareRecipientResult {
   /// Creates a new [GetShareRecipientResult].
   /// [accountId] Account identifier.
   /// [associationStatus] The current state of the recipient relative to the share. The
-  /// [created] When the share was created.
+  /// [created] When the object was created.
   /// [id] Share Recipient identifier tag.
   /// [includeResources] Include resources in the response.
-  /// [modified] When the share was modified.
+  /// [modified] When the object was last modified.
   /// [recipientId] Share Recipient identifier tag.
   /// [resources] Optional.
   /// [shareId] Share identifier tag.

@@ -28,6 +28,8 @@ class ZeroTrustDeviceDefaultProfileArgs {
   final pulumi.Input<bool?>? disableAutoFallback;
   /// List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
   final pulumi.Input<List<ZeroTrustDeviceDefaultProfileDnsSearchSuffix>?>? dnsSearchSuffixes;
+  /// Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+  final pulumi.Input<bool?>? enableDeviceCredentialAuthentication;
   /// Whether to add Microsoft IPs to Split Tunnel exclusions.
   final pulumi.Input<bool?>? excludeOfficeIps;
   /// List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
@@ -51,6 +53,8 @@ class ZeroTrustDeviceDefaultProfileArgs {
   final pulumi.Input<bool?>? switchLocked;
   /// Determines which tunnel protocol to use.
   final pulumi.Input<String?>? tunnelProtocol;
+  /// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+  final pulumi.Input<bool?>? uninstallProtection;
   /// Virtual network access settings for the device.
   final pulumi.Input<ZeroTrustDeviceDefaultProfileVirtualNetworks?>? virtualNetworks;
 
@@ -63,6 +67,7 @@ class ZeroTrustDeviceDefaultProfileArgs {
   /// [captivePortal] Turn on the captive portal after the specified amount of time.
   /// [disableAutoFallback] If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
   /// [dnsSearchSuffixes] List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+  /// [enableDeviceCredentialAuthentication] Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
   /// [excludeOfficeIps] Whether to add Microsoft IPs to Split Tunnel exclusions.
   /// [excludes] List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
   /// [globalAcceleration] Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
@@ -75,6 +80,7 @@ class ZeroTrustDeviceDefaultProfileArgs {
   /// [supportUrl] The URL to launch when the Send Feedback button is clicked.
   /// [switchLocked] Whether to allow the user to turn off the WARP switch and disconnect the client.
   /// [tunnelProtocol] Determines which tunnel protocol to use.
+  /// [uninstallProtection] Determines whether uninstalling the WARP client requires an override code. (Windows only).
   /// [virtualNetworks] Virtual network access settings for the device.
   const ZeroTrustDeviceDefaultProfileArgs({
     required this.accountId,
@@ -85,6 +91,7 @@ class ZeroTrustDeviceDefaultProfileArgs {
     this.captivePortal,
     this.disableAutoFallback,
     this.dnsSearchSuffixes,
+    this.enableDeviceCredentialAuthentication,
     this.excludeOfficeIps,
     this.excludes,
     this.globalAcceleration,
@@ -97,6 +104,7 @@ class ZeroTrustDeviceDefaultProfileArgs {
     this.supportUrl,
     this.switchLocked,
     this.tunnelProtocol,
+    this.uninstallProtection,
     this.virtualNetworks,
   });
 
@@ -110,6 +118,7 @@ class ZeroTrustDeviceDefaultProfileArgs {
       'captivePortal': ?captivePortal,
       'disableAutoFallback': ?disableAutoFallback,
       'dnsSearchSuffixes': ?pulumi.Input.mapOptionalInputValue<List<ZeroTrustDeviceDefaultProfileDnsSearchSuffix>, List<Map<String, dynamic>>>(dnsSearchSuffixes, (value) => pulumi.Input.encodeList<ZeroTrustDeviceDefaultProfileDnsSearchSuffix, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'enableDeviceCredentialAuthentication': ?enableDeviceCredentialAuthentication,
       'excludeOfficeIps': ?excludeOfficeIps,
       'excludes': ?pulumi.Input.mapOptionalInputValue<List<ZeroTrustDeviceDefaultProfileExclude>, List<Map<String, dynamic>>>(excludes, (value) => pulumi.Input.encodeList<ZeroTrustDeviceDefaultProfileExclude, Map<String, dynamic>>(value, (value) => value.toMap())),
       'globalAcceleration': ?pulumi.Input.mapOptionalInputValue<ZeroTrustDeviceDefaultProfileGlobalAcceleration, Map<String, dynamic>>(globalAcceleration, (value) => value.toMap()),
@@ -122,6 +131,7 @@ class ZeroTrustDeviceDefaultProfileArgs {
       'supportUrl': ?supportUrl,
       'switchLocked': ?switchLocked,
       'tunnelProtocol': ?tunnelProtocol,
+      'uninstallProtection': ?uninstallProtection,
       'virtualNetworks': ?pulumi.Input.mapOptionalInputValue<ZeroTrustDeviceDefaultProfileVirtualNetworks, Map<String, dynamic>>(virtualNetworks, (value) => value.toMap()),
     };
   }
@@ -136,6 +146,7 @@ class ZeroTrustDeviceDefaultProfileArgs {
       captivePortal: (() { final guardedValue = map['captivePortal']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       disableAutoFallback: (() { final guardedValue = map['disableAutoFallback']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       dnsSearchSuffixes: (() { final guardedValue = map['dnsSearchSuffixes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ZeroTrustDeviceDefaultProfileDnsSearchSuffix>(guardedValue, (value) => ZeroTrustDeviceDefaultProfileDnsSearchSuffix.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      enableDeviceCredentialAuthentication: (() { final guardedValue = map['enableDeviceCredentialAuthentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       excludeOfficeIps: (() { final guardedValue = map['excludeOfficeIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       excludes: (() { final guardedValue = map['excludes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ZeroTrustDeviceDefaultProfileExclude>(guardedValue, (value) => ZeroTrustDeviceDefaultProfileExclude.fromMap((value as Map).cast<String, dynamic>()))); })(),
       globalAcceleration: (() { final guardedValue = map['globalAcceleration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustDeviceDefaultProfileGlobalAcceleration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -148,6 +159,7 @@ class ZeroTrustDeviceDefaultProfileArgs {
       supportUrl: (() { final guardedValue = map['supportUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       switchLocked: (() { final guardedValue = map['switchLocked']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       tunnelProtocol: (() { final guardedValue = map['tunnelProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uninstallProtection: (() { final guardedValue = map['uninstallProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       virtualNetworks: (() { final guardedValue = map['virtualNetworks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustDeviceDefaultProfileVirtualNetworks.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

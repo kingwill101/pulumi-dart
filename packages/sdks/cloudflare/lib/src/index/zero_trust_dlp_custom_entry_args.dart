@@ -14,6 +14,8 @@ class ZeroTrustDlpCustomEntryArgs {
   final pulumi.Input<String> name;
   final pulumi.Input<ZeroTrustDlpCustomEntryPattern> pattern;
   final pulumi.Input<String?>? profileId;
+  /// Validators the new entry should reference, by id, at most 10.
+  final pulumi.Input<List<String>?>? validatorIds;
 
   /// Creates a new [ZeroTrustDlpCustomEntryArgs].
   /// [accountId] Required.
@@ -22,6 +24,7 @@ class ZeroTrustDlpCustomEntryArgs {
   /// [name] Required.
   /// [pattern] Required.
   /// [profileId] Optional.
+  /// [validatorIds] Validators the new entry should reference, by id, at most 10.
   const ZeroTrustDlpCustomEntryArgs({
     required this.accountId,
     this.description,
@@ -29,6 +32,7 @@ class ZeroTrustDlpCustomEntryArgs {
     required this.name,
     required this.pattern,
     this.profileId,
+    this.validatorIds,
   });
 
   Map<String, dynamic> toMap() {
@@ -39,6 +43,7 @@ class ZeroTrustDlpCustomEntryArgs {
       'name': name,
       'pattern': pulumi.Input.mapInputValue<ZeroTrustDlpCustomEntryPattern, Map<String, dynamic>>(pattern, (value) => value.toMap()),
       'profileId': ?profileId,
+      'validatorIds': ?validatorIds,
     };
   }
 
@@ -50,6 +55,7 @@ class ZeroTrustDlpCustomEntryArgs {
       name: pulumi.Input.fromValue(map['name'] as String),
       pattern: pulumi.Input.fromValue(ZeroTrustDlpCustomEntryPattern.fromMap((map['pattern']! as Map).cast<String, dynamic>())),
       profileId: (() { final guardedValue = map['profileId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      validatorIds: (() { final guardedValue = map['validatorIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }

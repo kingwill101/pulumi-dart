@@ -7,6 +7,7 @@ class GetEmailSecurityBlockSenderResult {
   final String? accountId;
   final String? comments;
   final String? createdAt;
+  final String? expiresAt;
   final GetEmailSecurityBlockSenderFilter? filter;
   final String? id;
   final bool? isRegex;
@@ -20,6 +21,7 @@ class GetEmailSecurityBlockSenderResult {
   /// [accountId] Optional.
   /// [comments] Optional.
   /// [createdAt] Optional.
+  /// [expiresAt] Optional.
   /// [filter] Optional.
   /// [id] Optional.
   /// [isRegex] Optional.
@@ -32,6 +34,7 @@ class GetEmailSecurityBlockSenderResult {
     this.accountId,
     this.comments,
     this.createdAt,
+    this.expiresAt,
     this.filter,
     this.id,
     this.isRegex,
@@ -47,6 +50,7 @@ class GetEmailSecurityBlockSenderResult {
       'accountId': ?accountId,
       'comments': ?comments,
       'createdAt': ?createdAt,
+      'expiresAt': ?expiresAt,
       'filter': ?filter?.toMap(),
       'id': ?id,
       'isRegex': ?isRegex,
@@ -63,6 +67,7 @@ class GetEmailSecurityBlockSenderResult {
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       comments: (() { final guardedValue = map['comments']; if (guardedValue == null) return null; return guardedValue as String; })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      expiresAt: (() { final guardedValue = map['expiresAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return GetEmailSecurityBlockSenderFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isRegex: (() { final guardedValue = map['isRegex']; if (guardedValue == null) return null; return guardedValue as bool; })(),

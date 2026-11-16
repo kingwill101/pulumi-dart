@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_accounts_result_legacy_flags.dart';
 import 'get_accounts_result_managed_by.dart';
 import 'get_accounts_result_settings.dart';
 
@@ -9,6 +10,8 @@ class GetAccountsResult {
   final pulumi.Input<String> createdOn;
   /// Identifier
   final pulumi.Input<String> id;
+  /// Legacy account flags.
+  final pulumi.Input<GetAccountsResultLegacyFlags> legacyFlags;
   /// Parent container details
   final pulumi.Input<GetAccountsResultManagedBy> managedBy;
   /// Account name
@@ -21,6 +24,7 @@ class GetAccountsResult {
   /// Creates a new [GetAccountsResult].
   /// [createdOn] Timestamp for the creation of the account
   /// [id] Identifier
+  /// [legacyFlags] Legacy account flags.
   /// [managedBy] Parent container details
   /// [name] Account name
   /// [settings] Account settings
@@ -28,6 +32,7 @@ class GetAccountsResult {
   const GetAccountsResult({
     required this.createdOn,
     required this.id,
+    required this.legacyFlags,
     required this.managedBy,
     required this.name,
     required this.settings,
@@ -38,6 +43,7 @@ class GetAccountsResult {
     return <String, dynamic>{
       'createdOn': createdOn,
       'id': id,
+      'legacyFlags': pulumi.Input.mapInputValue<GetAccountsResultLegacyFlags, Map<String, dynamic>>(legacyFlags, (value) => value.toMap()),
       'managedBy': pulumi.Input.mapInputValue<GetAccountsResultManagedBy, Map<String, dynamic>>(managedBy, (value) => value.toMap()),
       'name': name,
       'settings': pulumi.Input.mapInputValue<GetAccountsResultSettings, Map<String, dynamic>>(settings, (value) => value.toMap()),
@@ -49,6 +55,7 @@ class GetAccountsResult {
     return GetAccountsResult(
       createdOn: pulumi.Input.fromValue(map['createdOn'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
+      legacyFlags: pulumi.Input.fromValue(GetAccountsResultLegacyFlags.fromMap((map['legacyFlags']! as Map).cast<String, dynamic>())),
       managedBy: pulumi.Input.fromValue(GetAccountsResultManagedBy.fromMap((map['managedBy']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
       settings: pulumi.Input.fromValue(GetAccountsResultSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())),

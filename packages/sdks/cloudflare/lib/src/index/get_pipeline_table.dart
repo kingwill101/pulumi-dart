@@ -42,10 +42,10 @@ class GetPipelineTable {
   factory GetPipelineTable.fromMap(Map<String, dynamic> map) {
     return GetPipelineTable(
       id: pulumi.Input.fromValue(map['id'] as String),
-      latest: pulumi.Input.fromValue((map['latest'] as num).toInt()),
+      latest: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['latest'])),
       name: pulumi.Input.fromValue(map['name'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
-      version: pulumi.Input.fromValue((map['version'] as num).toInt()),
+      version: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['version'])),
     );
   }
 }

@@ -35,6 +35,8 @@ class GetZeroTrustDevicePostureRulesResultInput {
   /// List of values indicating purposes for which the certificate public key can be used.
   final pulumi.Input<List<String>> extendedKeyUsages;
   /// List ID.
+  ///
+  /// UUID of Access List.
   final pulumi.Input<String> id;
   /// Whether device is infected.
   final pulumi.Input<bool> infected;
@@ -49,12 +51,16 @@ class GetZeroTrustDevicePostureRulesResultInput {
   /// Available values: "connected", "disconnected", "disconnecting", "connecting".
   final pulumi.Input<String> networkStatus;
   /// Operating system.
+  ///
+  /// Operating System.
   /// Available values: "windows", "linux", "mac", "android", "ios", "chromeos".
   final pulumi.Input<String> operatingSystem;
   /// Agent operational state.
-  /// Available values: "na", "partially*disabled", "auto*fully*disabled", "fully*disabled", "auto*partially*disabled", "disabled*error", "db*corruption".
+  /// Available values: "na", "partiallyDisabled", "autoFullyDisabled", "fullyDisabled", "autoPartiallyDisabled", "disabledError", "dbCorruption".
   final pulumi.Input<String> operationalState;
   /// Operator.
+  ///
+  /// Operator to evaluate riskLevel or eid_last_seen.
   /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
   final pulumi.Input<String> operator;
   /// Os Version.
@@ -68,6 +74,8 @@ class GetZeroTrustDevicePostureRulesResultInput {
   /// Overall.
   final pulumi.Input<String> overall;
   /// File path.
+  ///
+  /// Path for the application.
   final pulumi.Input<String> path;
   /// Whether to check all disks for encryption.
   final pulumi.Input<bool> requireAll;
@@ -95,6 +103,8 @@ class GetZeroTrustDevicePostureRulesResultInput {
   /// Number of days that the antivirus should be updated within.
   final pulumi.Input<double> updateWindowDays;
   /// Version of OS.
+  ///
+  /// Version.
   final pulumi.Input<String> version;
   /// Version Operator.
   /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".

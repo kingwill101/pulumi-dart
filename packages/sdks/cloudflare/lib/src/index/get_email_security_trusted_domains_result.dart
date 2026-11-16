@@ -13,12 +13,14 @@ class GetEmailSecurityTrustedDomainsResult {
   final String? id;
   /// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
   final bool? isRecent;
+  /// Whether `pattern` is a regular expression instead of a literal domain.
   final bool? isRegex;
   /// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
   final bool? isSimilarity;
   /// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
   final String? lastModified;
   final String? modifiedAt;
+  /// The domain pattern to trust, e.g. `example.com`.
   final String? pattern;
   /// Trusted domain identifier
   final String? trustedDomainId;
@@ -30,11 +32,11 @@ class GetEmailSecurityTrustedDomainsResult {
   /// [filter] Optional.
   /// [id] Trusted domain identifier
   /// [isRecent] Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
-  /// [isRegex] Optional.
+  /// [isRegex] Whether `pattern` is a regular expression instead of a literal domain.
   /// [isSimilarity] Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
   /// [lastModified] Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
   /// [modifiedAt] Optional.
-  /// [pattern] Optional.
+  /// [pattern] The domain pattern to trust, e.g. `example.com`.
   /// [trustedDomainId] Trusted domain identifier
   const GetEmailSecurityTrustedDomainsResult({
     this.accountId,

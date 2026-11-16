@@ -15,6 +15,8 @@ class RateLimitArgs {
   final pulumi.Input<RateLimitMatch> match;
   /// The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
   final pulumi.Input<double> period;
+  /// Defines the unique identifier of the rate limit.
+  final pulumi.Input<String?>? rateLimitId;
   /// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
   final pulumi.Input<double> threshold;
   /// Defines an identifier.
@@ -24,12 +26,14 @@ class RateLimitArgs {
   /// [action] The action to perform when the threshold of matched traffic within the configured period is exceeded.
   /// [match] Determines which traffic the rate limit counts towards the threshold.
   /// [period] The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
+  /// [rateLimitId] Defines the unique identifier of the rate limit.
   /// [threshold] The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
   /// [zoneId] Defines an identifier.
   const RateLimitArgs({
     required this.action,
     required this.match,
     required this.period,
+    this.rateLimitId,
     required this.threshold,
     required this.zoneId,
   });
@@ -39,6 +43,7 @@ class RateLimitArgs {
       'action': pulumi.Input.mapInputValue<RateLimitAction, Map<String, dynamic>>(action, (value) => value.toMap()),
       'match': pulumi.Input.mapInputValue<RateLimitMatch, Map<String, dynamic>>(match, (value) => value.toMap()),
       'period': period,
+      'rateLimitId': ?rateLimitId,
       'threshold': threshold,
       'zoneId': zoneId,
     };
@@ -49,6 +54,7 @@ class RateLimitArgs {
       action: pulumi.Input.fromValue(RateLimitAction.fromMap((map['action']! as Map).cast<String, dynamic>())),
       match: pulumi.Input.fromValue(RateLimitMatch.fromMap((map['match']! as Map).cast<String, dynamic>())),
       period: pulumi.Input.fromValue((map['period'] as num).toDouble()),
+      rateLimitId: (() { final guardedValue = map['rateLimitId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       threshold: pulumi.Input.fromValue((map['threshold'] as num).toDouble()),
       zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );

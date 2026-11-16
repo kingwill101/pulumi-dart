@@ -6,14 +6,14 @@ class GetZeroTrustRiskBehaviorBehaviors {
   final pulumi.Input<String> description;
   final pulumi.Input<bool> enabled;
   final pulumi.Input<String> name;
-  /// Available values: "low", "medium", "high".
+  /// Available values: "info", "low", "medium", "high".
   final pulumi.Input<String> riskLevel;
 
   /// Creates a new [GetZeroTrustRiskBehaviorBehaviors].
   /// [description] Required.
   /// [enabled] Required.
   /// [name] Required.
-  /// [riskLevel] Available values: "low", "medium", "high".
+  /// [riskLevel] Available values: "info", "low", "medium", "high".
   const GetZeroTrustRiskBehaviorBehaviors({
     required this.description,
     required this.enabled,

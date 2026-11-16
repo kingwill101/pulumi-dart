@@ -115,7 +115,7 @@ class GetZeroTrustGatewaySettingsSettings {
       fips: pulumi.Input.fromValue(GetZeroTrustGatewaySettingsSettingsFips.fromMap((map['fips']! as Map).cast<String, dynamic>())),
       hostSelector: pulumi.Input.fromValue(GetZeroTrustGatewaySettingsSettingsHostSelector.fromMap((map['hostSelector']! as Map).cast<String, dynamic>())),
       inspection: pulumi.Input.fromValue(GetZeroTrustGatewaySettingsSettingsInspection.fromMap((map['inspection']! as Map).cast<String, dynamic>())),
-      maxTtlSecs: pulumi.Input.fromValue((map['maxTtlSecs'] as num).toInt()),
+      maxTtlSecs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxTtlSecs'])),
       protocolDetection: pulumi.Input.fromValue(GetZeroTrustGatewaySettingsSettingsProtocolDetection.fromMap((map['protocolDetection']! as Map).cast<String, dynamic>())),
       sandbox: pulumi.Input.fromValue(GetZeroTrustGatewaySettingsSettingsSandbox.fromMap((map['sandbox']! as Map).cast<String, dynamic>())),
       tlsDecrypt: pulumi.Input.fromValue(GetZeroTrustGatewaySettingsSettingsTlsDecrypt.fromMap((map['tlsDecrypt']! as Map).cast<String, dynamic>())),

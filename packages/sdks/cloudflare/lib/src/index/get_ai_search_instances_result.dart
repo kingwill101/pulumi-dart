@@ -11,34 +11,29 @@ import 'get_ai_search_instances_result_source_params.dart';
 
 class GetAiSearchInstancesResult {
   final pulumi.Input<String> aiGatewayId;
-  /// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
   final pulumi.Input<String> aisearchModel;
   final pulumi.Input<bool> cache;
   /// Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
   final pulumi.Input<String> cacheThreshold;
-  /// Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
   /// Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
   final pulumi.Input<double> cacheTtl;
-  final pulumi.Input<int> chunkOverlap;
-  final pulumi.Input<int> chunkSize;
+  final pulumi.Input<bool> chunk;
+  final pulumi.Input<double> chunkOverlap;
+  final pulumi.Input<double> chunkSize;
   final pulumi.Input<String> createdAt;
   final pulumi.Input<String> createdBy;
   final pulumi.Input<List<GetAiSearchInstancesResultCustomMetadata>> customMetadatas;
-  /// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
   final pulumi.Input<String> embeddingModel;
   final pulumi.Input<bool> enable;
   final pulumi.Input<double> engineVersion;
   /// Available values: "max", "rrf".
   final pulumi.Input<String> fusionMethod;
-  /// Deprecated — use indexMethod instead.
   final pulumi.Input<bool> hybridSearchEnabled;
-  /// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
   final pulumi.Input<String> id;
-  /// Controls which storage backends are used during indexing. Defaults to vector-only.
   final pulumi.Input<GetAiSearchInstancesResultIndexMethod> indexMethod;
   final pulumi.Input<GetAiSearchInstancesResultIndexingOptions> indexingOptions;
   final pulumi.Input<String> lastActivity;
-  final pulumi.Input<int> maxNumResults;
+  final pulumi.Input<double> maxNumResults;
   final pulumi.Input<GetAiSearchInstancesResultMetadata> metadata;
   final pulumi.Input<String> modifiedAt;
   final pulumi.Input<String> modifiedBy;
@@ -47,41 +42,44 @@ class GetAiSearchInstancesResult {
   final pulumi.Input<String> publicEndpointId;
   final pulumi.Input<GetAiSearchInstancesResultPublicEndpointParams> publicEndpointParams;
   final pulumi.Input<bool> reranking;
-  /// Available values: "@cf/baai/bge-reranker-base", "".
   final pulumi.Input<String> rerankingModel;
   final pulumi.Input<GetAiSearchInstancesResultRetrievalOptions> retrievalOptions;
-  /// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
   final pulumi.Input<String> rewriteModel;
   final pulumi.Input<bool> rewriteQuery;
   final pulumi.Input<double> scoreThreshold;
   final pulumi.Input<String> source;
   final pulumi.Input<GetAiSearchInstancesResultSourceParams> sourceParams;
   final pulumi.Input<String> status;
-  /// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+  final pulumi.Input<bool> summarization;
+  final pulumi.Input<String> summarizationModel;
   /// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
   final pulumi.Input<double> syncInterval;
+  final pulumi.Input<String> systemPromptAisearch;
+  final pulumi.Input<String> systemPromptIndexSummarization;
+  final pulumi.Input<String> systemPromptRewriteQuery;
   final pulumi.Input<String> tokenId;
   /// Available values: "r2", "web-crawler".
   final pulumi.Input<String> type;
 
   /// Creates a new [GetAiSearchInstancesResult].
   /// [aiGatewayId] Required.
-  /// [aisearchModel] Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+  /// [aisearchModel] Required.
   /// [cache] Required.
   /// [cacheThreshold] Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
-  /// [cacheTtl] Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+  /// [cacheTtl] Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+  /// [chunk] Required.
   /// [chunkOverlap] Required.
   /// [chunkSize] Required.
   /// [createdAt] Required.
   /// [createdBy] Required.
   /// [customMetadatas] Required.
-  /// [embeddingModel] Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+  /// [embeddingModel] Required.
   /// [enable] Required.
   /// [engineVersion] Required.
   /// [fusionMethod] Available values: "max", "rrf".
-  /// [hybridSearchEnabled] Deprecated — use indexMethod instead.
-  /// [id] AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
-  /// [indexMethod] Controls which storage backends are used during indexing. Defaults to vector-only.
+  /// [hybridSearchEnabled] Required.
+  /// [id] Required.
+  /// [indexMethod] Required.
   /// [indexingOptions] Required.
   /// [lastActivity] Required.
   /// [maxNumResults] Required.
@@ -93,15 +91,20 @@ class GetAiSearchInstancesResult {
   /// [publicEndpointId] Required.
   /// [publicEndpointParams] Required.
   /// [reranking] Required.
-  /// [rerankingModel] Available values: "@cf/baai/bge-reranker-base", "".
+  /// [rerankingModel] Required.
   /// [retrievalOptions] Required.
-  /// [rewriteModel] Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+  /// [rewriteModel] Required.
   /// [rewriteQuery] Required.
   /// [scoreThreshold] Required.
   /// [source] Required.
   /// [sourceParams] Required.
   /// [status] Required.
-  /// [syncInterval] Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+  /// [summarization] Required.
+  /// [summarizationModel] Required.
+  /// [syncInterval] Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
+  /// [systemPromptAisearch] Required.
+  /// [systemPromptIndexSummarization] Required.
+  /// [systemPromptRewriteQuery] Required.
   /// [tokenId] Required.
   /// [type] Available values: "r2", "web-crawler".
   const GetAiSearchInstancesResult({
@@ -110,6 +113,7 @@ class GetAiSearchInstancesResult {
     required this.cache,
     required this.cacheThreshold,
     required this.cacheTtl,
+    required this.chunk,
     required this.chunkOverlap,
     required this.chunkSize,
     required this.createdAt,
@@ -141,7 +145,12 @@ class GetAiSearchInstancesResult {
     required this.source,
     required this.sourceParams,
     required this.status,
+    required this.summarization,
+    required this.summarizationModel,
     required this.syncInterval,
+    required this.systemPromptAisearch,
+    required this.systemPromptIndexSummarization,
+    required this.systemPromptRewriteQuery,
     required this.tokenId,
     required this.type,
   });
@@ -153,6 +162,7 @@ class GetAiSearchInstancesResult {
       'cache': cache,
       'cacheThreshold': cacheThreshold,
       'cacheTtl': cacheTtl,
+      'chunk': chunk,
       'chunkOverlap': chunkOverlap,
       'chunkSize': chunkSize,
       'createdAt': createdAt,
@@ -184,7 +194,12 @@ class GetAiSearchInstancesResult {
       'source': source,
       'sourceParams': pulumi.Input.mapInputValue<GetAiSearchInstancesResultSourceParams, Map<String, dynamic>>(sourceParams, (value) => value.toMap()),
       'status': status,
+      'summarization': summarization,
+      'summarizationModel': summarizationModel,
       'syncInterval': syncInterval,
+      'systemPromptAisearch': systemPromptAisearch,
+      'systemPromptIndexSummarization': systemPromptIndexSummarization,
+      'systemPromptRewriteQuery': systemPromptRewriteQuery,
       'tokenId': tokenId,
       'type': type,
     };
@@ -197,8 +212,9 @@ class GetAiSearchInstancesResult {
       cache: pulumi.Input.fromValue(map['cache'] as bool),
       cacheThreshold: pulumi.Input.fromValue(map['cacheThreshold'] as String),
       cacheTtl: pulumi.Input.fromValue((map['cacheTtl'] as num).toDouble()),
-      chunkOverlap: pulumi.Input.fromValue((map['chunkOverlap'] as num).toInt()),
-      chunkSize: pulumi.Input.fromValue((map['chunkSize'] as num).toInt()),
+      chunk: pulumi.Input.fromValue(map['chunk'] as bool),
+      chunkOverlap: pulumi.Input.fromValue((map['chunkOverlap'] as num).toDouble()),
+      chunkSize: pulumi.Input.fromValue((map['chunkSize'] as num).toDouble()),
       createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
       createdBy: pulumi.Input.fromValue(map['createdBy'] as String),
       customMetadatas: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAiSearchInstancesResultCustomMetadata>(map['customMetadatas']!, (value) => GetAiSearchInstancesResultCustomMetadata.fromMap((value as Map).cast<String, dynamic>()))),
@@ -211,7 +227,7 @@ class GetAiSearchInstancesResult {
       indexMethod: pulumi.Input.fromValue(GetAiSearchInstancesResultIndexMethod.fromMap((map['indexMethod']! as Map).cast<String, dynamic>())),
       indexingOptions: pulumi.Input.fromValue(GetAiSearchInstancesResultIndexingOptions.fromMap((map['indexingOptions']! as Map).cast<String, dynamic>())),
       lastActivity: pulumi.Input.fromValue(map['lastActivity'] as String),
-      maxNumResults: pulumi.Input.fromValue((map['maxNumResults'] as num).toInt()),
+      maxNumResults: pulumi.Input.fromValue((map['maxNumResults'] as num).toDouble()),
       metadata: pulumi.Input.fromValue(GetAiSearchInstancesResultMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())),
       modifiedAt: pulumi.Input.fromValue(map['modifiedAt'] as String),
       modifiedBy: pulumi.Input.fromValue(map['modifiedBy'] as String),
@@ -228,7 +244,12 @@ class GetAiSearchInstancesResult {
       source: pulumi.Input.fromValue(map['source'] as String),
       sourceParams: pulumi.Input.fromValue(GetAiSearchInstancesResultSourceParams.fromMap((map['sourceParams']! as Map).cast<String, dynamic>())),
       status: pulumi.Input.fromValue(map['status'] as String),
+      summarization: pulumi.Input.fromValue(map['summarization'] as bool),
+      summarizationModel: pulumi.Input.fromValue(map['summarizationModel'] as String),
       syncInterval: pulumi.Input.fromValue((map['syncInterval'] as num).toDouble()),
+      systemPromptAisearch: pulumi.Input.fromValue(map['systemPromptAisearch'] as String),
+      systemPromptIndexSummarization: pulumi.Input.fromValue(map['systemPromptIndexSummarization'] as String),
+      systemPromptRewriteQuery: pulumi.Input.fromValue(map['systemPromptRewriteQuery'] as String),
       tokenId: pulumi.Input.fromValue(map['tokenId'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );

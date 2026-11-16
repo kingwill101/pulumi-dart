@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'worker_script_binding_outbound.dart';
+import 'worker_script_binding_retry.dart';
 import 'worker_script_binding_simple.dart';
 
 class WorkerScriptBinding {
@@ -43,7 +44,7 @@ class WorkerScriptBinding {
   /// JSON data to use.
   final pulumi.Input<String?>? json;
   /// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-  /// Available values: "eu", "fedramp", "fedramp-high".
+  /// Available values: "eu", "fedramp", "fedramp-high", "us".
   final pulumi.Input<String?>? jurisdiction;
   /// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
   final pulumi.Input<String?>? keyBase64;
@@ -67,6 +68,8 @@ class WorkerScriptBinding {
   final pulumi.Input<String?>? pipeline;
   /// Name of the Queue to bind to.
   final pulumi.Input<String?>? queueName;
+  /// Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+  final pulumi.Input<WorkerScriptBindingRetry?>? retry;
   /// The script where the Durable Object is defined, if it is external to this Worker.
   final pulumi.Input<String?>? scriptName;
   /// Name of the secret in the store.
@@ -79,16 +82,18 @@ class WorkerScriptBinding {
   final pulumi.Input<WorkerScriptBindingSimple?>? simple;
   /// ID of the store containing the secret.
   final pulumi.Input<String?>? storeId;
+  /// ID of a K2 stream owned by the account deploying the Worker.
+  final pulumi.Input<String?>? stream;
   /// The text value to use.
   final pulumi.Input<String?>? text;
   /// UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
   final pulumi.Input<String?>? tunnelId;
   /// The kind of resource that the binding provides.
-  /// Available values: "ai", "ai*search", "ai*search*namespace", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+  /// Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "artifacts", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "k2", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
   final pulumi.Input<String> type;
   /// Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
   final pulumi.Input<List<String>?>? usages;
-  /// Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+  /// Identifier for the version to inherit the binding from. This can be a version ID, or the literal "latest" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to "latest". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only "latest" and reject a version ID with error 10057.
   final pulumi.Input<String?>? versionId;
   /// Name of the Workflow to bind to.
   final pulumi.Input<String?>? workflowName;
@@ -124,17 +129,19 @@ class WorkerScriptBinding {
   /// [part] The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
   /// [pipeline] Name of the Pipeline to bind to.
   /// [queueName] Name of the Queue to bind to.
+  /// [retry] Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
   /// [scriptName] The script where the Durable Object is defined, if it is external to this Worker.
   /// [secretName] Name of the secret in the store.
   /// [service] Name of Worker to bind to.
   /// [serviceId] Identifier of the VPC service to bind to.
   /// [simple] A simple rate limit.
   /// [storeId] ID of the store containing the secret.
+  /// [stream] ID of a K2 stream owned by the account deploying the Worker.
   /// [text] The text value to use.
   /// [tunnelId] UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
   /// [type] The kind of resource that the binding provides.
   /// [usages] Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
-  /// [versionId] Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+  /// [versionId] Identifier for the version to inherit the binding from. This can be a version ID, or the literal "latest" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to "latest". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only "latest" and reject a version ID with error 10057.
   /// [workflowName] Name of the Workflow to bind to.
   const WorkerScriptBinding({
     this.algorithm,
@@ -167,12 +174,14 @@ class WorkerScriptBinding {
     this.part,
     this.pipeline,
     this.queueName,
+    this.retry,
     this.scriptName,
     this.secretName,
     this.service,
     this.serviceId,
     this.simple,
     this.storeId,
+    this.stream,
     this.text,
     this.tunnelId,
     required this.type,
@@ -213,12 +222,14 @@ class WorkerScriptBinding {
       'part': ?part,
       'pipeline': ?pipeline,
       'queueName': ?queueName,
+      'retry': ?pulumi.Input.mapOptionalInputValue<WorkerScriptBindingRetry, Map<String, dynamic>>(retry, (value) => value.toMap()),
       'scriptName': ?scriptName,
       'secretName': ?secretName,
       'service': ?service,
       'serviceId': ?serviceId,
       'simple': ?pulumi.Input.mapOptionalInputValue<WorkerScriptBindingSimple, Map<String, dynamic>>(simple, (value) => value.toMap()),
       'storeId': ?storeId,
+      'stream': ?stream,
       'text': ?text,
       'tunnelId': ?tunnelId,
       'type': type,
@@ -260,12 +271,14 @@ class WorkerScriptBinding {
       part: (() { final guardedValue = map['part']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pipeline: (() { final guardedValue = map['pipeline']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       queueName: (() { final guardedValue = map['queueName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      retry: (() { final guardedValue = map['retry']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerScriptBindingRetry.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       scriptName: (() { final guardedValue = map['scriptName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secretName: (() { final guardedValue = map['secretName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       service: (() { final guardedValue = map['service']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceId: (() { final guardedValue = map['serviceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       simple: (() { final guardedValue = map['simple']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerScriptBindingSimple.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       storeId: (() { final guardedValue = map['storeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      stream: (() { final guardedValue = map['stream']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       text: (() { final guardedValue = map['text']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tunnelId: (() { final guardedValue = map['tunnelId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),

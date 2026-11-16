@@ -25,8 +25,8 @@ class GetStreamsResultInput {
 
   factory GetStreamsResultInput.fromMap(Map<String, dynamic> map) {
     return GetStreamsResultInput(
-      height: pulumi.Input.fromValue((map['height'] as num).toInt()),
-      width: pulumi.Input.fromValue((map['width'] as num).toInt()),
+      height: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['height'])),
+      width: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['width'])),
     );
   }
 }

@@ -25,8 +25,8 @@ class WorkerScriptLimits {
 
   factory WorkerScriptLimits.fromMap(Map<String, dynamic> map) {
     return WorkerScriptLimits(
-      cpuMs: (() { final guardedValue = map['cpuMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      subrequests: (() { final guardedValue = map['subrequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      cpuMs: (() { final guardedValue = map['cpuMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      subrequests: (() { final guardedValue = map['subrequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

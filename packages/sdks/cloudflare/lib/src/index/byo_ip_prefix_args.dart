@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ByoIpPrefixArgs {
   /// Identifier of a Cloudflare account.
   final pulumi.Input<String> accountId;
-  /// Autonomous System Number (ASN) the prefix will be advertised under.
+  /// Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare's ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.
   final pulumi.Input<int> asn;
   /// IP Prefix in Classless Inter-Domain Routing format.
   final pulumi.Input<String> cidr;
@@ -22,7 +22,7 @@ class ByoIpPrefixArgs {
 
   /// Creates a new [ByoIpPrefixArgs].
   /// [accountId] Identifier of a Cloudflare account.
-  /// [asn] Autonomous System Number (ASN) the prefix will be advertised under.
+  /// [asn] Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare's ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.
   /// [cidr] IP Prefix in Classless Inter-Domain Routing format.
   /// [delegateLoaCreation] Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
   /// [description] Description of the prefix.
@@ -50,7 +50,7 @@ class ByoIpPrefixArgs {
   factory ByoIpPrefixArgs.fromMap(Map<String, dynamic> map) {
     return ByoIpPrefixArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
-      asn: pulumi.Input.fromValue((map['asn'] as num).toInt()),
+      asn: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['asn'])),
       cidr: pulumi.Input.fromValue(map['cidr'] as String),
       delegateLoaCreation: (() { final guardedValue = map['delegateLoaCreation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

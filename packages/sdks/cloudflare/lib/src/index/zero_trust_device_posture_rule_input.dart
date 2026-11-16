@@ -28,13 +28,13 @@ class ZeroTrustDevicePostureRuleInput {
   final pulumi.Input<String?>? domain;
   /// For more details on eid last seen, refer to the Tanium documentation.
   final pulumi.Input<String?>? eidLastSeen;
-  /// Enabled.
+  /// Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issueCount input, and true otherwise.
   final pulumi.Input<bool?>? enabled;
   /// Whether or not file exists.
   final pulumi.Input<bool?>? exists;
   /// List of values indicating purposes for which the certificate public key can be used.
   final pulumi.Input<List<String>?>? extendedKeyUsages;
-  /// List ID.
+  /// API UUID.
   final pulumi.Input<String?>? id;
   /// Whether device is infected.
   final pulumi.Input<bool?>? infected;
@@ -49,12 +49,16 @@ class ZeroTrustDevicePostureRuleInput {
   /// Available values: "connected", "disconnected", "disconnecting", "connecting".
   final pulumi.Input<String?>? networkStatus;
   /// Operating system.
+  ///
+  /// Operating System.
   /// Available values: "windows", "linux", "mac", "android", "ios", "chromeos".
   final pulumi.Input<String?>? operatingSystem;
   /// Agent operational state.
-  /// Available values: "na", "partially*disabled", "auto*fully*disabled", "fully*disabled", "auto*partially*disabled", "disabled*error", "db*corruption".
+  /// Available values: "na", "partiallyDisabled", "autoFullyDisabled", "fullyDisabled", "autoPartiallyDisabled", "disabledError", "dbCorruption".
   final pulumi.Input<String?>? operationalState;
   /// Operator.
+  ///
+  /// Operator to evaluate riskLevel or eid_last_seen.
   /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
   final pulumi.Input<String?>? operator;
   /// Os Version.
@@ -68,6 +72,8 @@ class ZeroTrustDevicePostureRuleInput {
   /// Overall.
   final pulumi.Input<String?>? overall;
   /// File path.
+  ///
+  /// Path for the application.
   final pulumi.Input<String?>? path;
   /// Whether to check all disks for encryption.
   final pulumi.Input<bool?>? requireAll;
@@ -95,6 +101,8 @@ class ZeroTrustDevicePostureRuleInput {
   /// Number of days that the antivirus should be updated within.
   final pulumi.Input<double?>? updateWindowDays;
   /// Version of OS.
+  ///
+  /// Version.
   final pulumi.Input<String?>? version;
   /// Version Operator.
   /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
@@ -112,10 +120,10 @@ class ZeroTrustDevicePostureRuleInput {
   /// [countOperator] Count Operator.
   /// [domain] Domain.
   /// [eidLastSeen] For more details on eid last seen, refer to the Tanium documentation.
-  /// [enabled] Enabled.
+  /// [enabled] Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issueCount input, and true otherwise.
   /// [exists] Whether or not file exists.
   /// [extendedKeyUsages] List of values indicating purposes for which the certificate public key can be used.
-  /// [id] List ID.
+  /// [id] API UUID.
   /// [infected] Whether device is infected.
   /// [isActive] Whether device is active.
   /// [issueCount] The Number of Issues.

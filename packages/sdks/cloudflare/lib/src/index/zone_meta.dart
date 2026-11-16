@@ -50,12 +50,12 @@ class ZoneMeta {
   factory ZoneMeta.fromMap(Map<String, dynamic> map) {
     return ZoneMeta(
       cdnOnly: (() { final guardedValue = map['cdnOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      customCertificateQuota: (() { final guardedValue = map['customCertificateQuota']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      customCertificateQuota: (() { final guardedValue = map['customCertificateQuota']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       dnsOnly: (() { final guardedValue = map['dnsOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       foundationDns: (() { final guardedValue = map['foundationDns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      pageRuleQuota: (() { final guardedValue = map['pageRuleQuota']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      pageRuleQuota: (() { final guardedValue = map['pageRuleQuota']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       phishingDetected: (() { final guardedValue = map['phishingDetected']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      step: (() { final guardedValue = map['step']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      step: (() { final guardedValue = map['step']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

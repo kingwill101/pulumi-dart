@@ -6,7 +6,7 @@ import 'get_user_groups_result_policy.dart';
 class GetUserGroupsResult {
   /// Timestamp for the creation of the user group
   final pulumi.Input<String> createdOn;
-  /// User Group identifier tag.
+  /// Identifier of the user group.
   final pulumi.Input<String> id;
   /// Last time the user group was modified.
   final pulumi.Input<String> modifiedOn;
@@ -17,7 +17,7 @@ class GetUserGroupsResult {
 
   /// Creates a new [GetUserGroupsResult].
   /// [createdOn] Timestamp for the creation of the user group
-  /// [id] User Group identifier tag.
+  /// [id] Identifier of the user group.
   /// [modifiedOn] Last time the user group was modified.
   /// [name] Name of the user group.
   /// [policies] Policies attached to the User group

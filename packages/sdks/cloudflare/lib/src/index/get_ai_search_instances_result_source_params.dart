@@ -4,17 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_ai_search_instances_result_source_params_web_crawler.dart';
 
 class GetAiSearchInstancesResultSourceParams {
-  /// List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
   final pulumi.Input<List<String>> excludeItems;
-  /// List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
   final pulumi.Input<List<String>> includeItems;
   final pulumi.Input<String> prefix;
   final pulumi.Input<String> r2Jurisdiction;
   final pulumi.Input<GetAiSearchInstancesResultSourceParamsWebCrawler> webCrawler;
 
   /// Creates a new [GetAiSearchInstancesResultSourceParams].
-  /// [excludeItems] List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
-  /// [includeItems] List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+  /// [excludeItems] Required.
+  /// [includeItems] Required.
   /// [prefix] Required.
   /// [r2Jurisdiction] Required.
   /// [webCrawler] Required.

@@ -62,7 +62,7 @@ class GetZeroTrustAccessApplicationResult {
   final GetZeroTrustAccessApplicationLandingPageDesign? landingPageDesign;
   /// The image URL for the logo shown in the App Launcher dashboard.
   final String? logoUrl;
-  /// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+  /// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
   final GetZeroTrustAccessApplicationMfaConfig? mfaConfig;
   /// The name of the application.
   final String? name;
@@ -88,7 +88,7 @@ class GetZeroTrustAccessApplicationResult {
   final List<String>? selfHostedDomains;
   /// Returns a 401 status code when the request is blocked by a Service Auth policy.
   final bool? serviceAuth401Redirect;
-  /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+  /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
   final String? sessionDuration;
   /// Determines when to skip the App Launcher landing page.
   final bool? skipAppLauncherLoginPage;
@@ -129,7 +129,7 @@ class GetZeroTrustAccessApplicationResult {
   /// [id] Identifier.
   /// [landingPageDesign] The design of the App Launcher landing page shown to users when they log in.
   /// [logoUrl] The image URL for the logo shown in the App Launcher dashboard.
-  /// [mfaConfig] Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+  /// [mfaConfig] Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
   /// [name] The name of the application.
   /// [optionsPreflightBypass] Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
   /// [pathCookieAttribute] Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
@@ -140,7 +140,7 @@ class GetZeroTrustAccessApplicationResult {
   /// [scimConfig] Configuration for provisioning to this application via SCIM. This is currently in closed beta.
   /// [selfHostedDomains] List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
   /// [serviceAuth401Redirect] Returns a 401 status code when the request is blocked by a Service Auth policy.
-  /// [sessionDuration] The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+  /// [sessionDuration] The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
   /// [skipAppLauncherLoginPage] Determines when to skip the App Launcher landing page.
   /// [skipInterstitial] Enables automatic authentication through cloudflared.
   /// [tags] The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.

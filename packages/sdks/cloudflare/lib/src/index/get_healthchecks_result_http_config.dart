@@ -63,7 +63,7 @@ class GetHealthchecksResultHttpConfig {
       header: pulumi.Input.fromValue(pulumi.Input.decodeMapValues<List<String>>(map['header']!, (value) => (value as List).cast<String>())),
       method: pulumi.Input.fromValue(map['method'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
-      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
     );
   }
 }

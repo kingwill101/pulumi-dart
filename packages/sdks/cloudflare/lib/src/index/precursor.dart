@@ -1,6 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'precursor_args.dart';
-import 'precursor_enforcement_rule.dart';
+import 'precursor_rule.dart';
 import 'precursor_state.dart';
 
 /// ## Example Usage
@@ -12,13 +12,14 @@ import 'precursor_state.dart';
 ///
 /// const examplePrecursor = new cloudflare.Precursor("example_precursor", {
 ///     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
-///     defaultMode: "min-friction",
-///     enforcementRules: [{
+///     mode: "monitor",
+///     rules: [{
 ///         expression: "http.request.uri.path eq \"/login\"",
-///         mode: "max-security",
-///         description: "Ease friction on the login path",
+///         showInterstitial: true,
+///         description: "Show an interstitial on the login path",
 ///         enabled: true,
 ///     }],
+///     showInterstitial: true,
 /// });
 /// ```
 /// ```python
@@ -27,13 +28,14 @@ import 'precursor_state.dart';
 ///
 /// example_precursor = cloudflare.Precursor("example_precursor",
 ///     zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-///     default_mode="min-friction",
-///     enforcement_rules=[{
+///     mode="monitor",
+///     rules=[{
 ///         "expression": "http.request.uri.path eq \"/login\"",
-///         "mode": "max-security",
-///         "description": "Ease friction on the login path",
+///         "show_interstitial": True,
+///         "description": "Show an interstitial on the login path",
 ///         "enabled": True,
-///     }])
+///     }],
+///     show_interstitial=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -46,17 +48,18 @@ import 'precursor_state.dart';
 ///     var examplePrecursor = new Cloudflare.Precursor("example_precursor", new()
 ///     {
 ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-///         DefaultMode = "min-friction",
-///         EnforcementRules = new[]
+///         Mode = "monitor",
+///         Rules = new[]
 ///         {
-///             new Cloudflare.Inputs.PrecursorEnforcementRuleArgs
+///             new Cloudflare.Inputs.PrecursorRuleArgs
 ///             {
 ///                 Expression = "http.request.uri.path eq \"/login\"",
-///                 Mode = "max-security",
-///                 Description = "Ease friction on the login path",
+///                 ShowInterstitial = true,
+///                 Description = "Show an interstitial on the login path",
 ///                 Enabled = true,
 ///             },
 ///         },
+///         ShowInterstitial = true,
 ///     });
 ///
 /// });
@@ -72,16 +75,17 @@ import 'precursor_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.NewPrecursor(ctx, "example_precursor", &cloudflare.PrecursorArgs{
-/// 			ZoneId:      pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-/// 			DefaultMode: pulumi.String("min-friction"),
-/// 			EnforcementRules: cloudflare.PrecursorEnforcementRuleArray{
-/// 				&cloudflare.PrecursorEnforcementRuleArgs{
-/// 					Expression:  pulumi.String("http.request.uri.path eq \"/login\""),
-/// 					Mode:        pulumi.String("max-security"),
-/// 					Description: pulumi.String("Ease friction on the login path"),
-/// 					Enabled:     pulumi.Bool(true),
+/// 			ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			Mode:   pulumi.String("monitor"),
+/// 			Rules: cloudflare.PrecursorRuleArray{
+/// 				&cloudflare.PrecursorRuleArgs{
+/// 					Expression:       pulumi.String("http.request.uri.path eq \"/login\""),
+/// 					ShowInterstitial: pulumi.Bool(true),
+/// 					Description:      pulumi.String("Show an interstitial on the login path"),
+/// 					Enabled:          pulumi.Bool(true),
 /// 				},
 /// 			},
+/// 			ShowInterstitial: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -91,7 +95,7 @@ import 'precursor_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -100,14 +104,18 @@ import 'precursor_state.dart';
 /// }
 ///
 /// resource "cloudflare_precursor" "example_precursor" {
-///   zone_id      = "023e105f4ecef8ad9ca31a8372d0c353"
-///   default_mode = "min-friction"
-///   enforcement_rules {
-///     expression  = "http.request.uri.path eq \"/login\""
-///     mode        = "max-security"
-///     description = "Ease friction on the login path"
-///     enabled     = true
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
+///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
+///   mode    = "monitor"
+///   rules = [{
+///     expression        = "http.request.uri.path eq \"/login\""
+///     show_interstitial = true
+///     description       = "Show an interstitial on the login path"
+///     enabled           = true
+///   }]
+///   show_interstitial = true
 /// }
 /// ```
 /// ```java
@@ -118,7 +126,7 @@ import 'precursor_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.cloudflare.Precursor;
 /// import com.pulumi.cloudflare.PrecursorArgs;
-/// import com.pulumi.cloudflare.inputs.PrecursorEnforcementRuleArgs;
+/// import com.pulumi.cloudflare.inputs.PrecursorRuleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -134,13 +142,14 @@ import 'precursor_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var examplePrecursor = new Precursor("examplePrecursor", PrecursorArgs.builder()
 ///             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-///             .defaultMode("min-friction")
-///             .enforcementRules(PrecursorEnforcementRuleArgs.builder()
+///             .mode("monitor")
+///             .rules(PrecursorRuleArgs.builder()
 ///                 .expression("http.request.uri.path eq \"/login\"")
-///                 .mode("max-security")
-///                 .description("Ease friction on the login path")
+///                 .showInterstitial(true)
+///                 .description("Show an interstitial on the login path")
 ///                 .enabled(true)
 ///                 .build())
+///             .showInterstitial(true)
 ///             .build());
 ///
 ///     }
@@ -153,27 +162,32 @@ import 'precursor_state.dart';
 ///     name: example_precursor
 ///     properties:
 ///       zoneId: 023e105f4ecef8ad9ca31a8372d0c353
-///       defaultMode: min-friction
-///       enforcementRules:
+///       mode: monitor
+///       rules:
 ///         - expression: http.request.uri.path eq "/login"
-///           mode: max-security
-///           description: Ease friction on the login path
+///           showInterstitial: true
+///           description: Show an interstitial on the login path
 ///           enabled: true
+///       showInterstitial: true
 /// ```
 ///
 ///
 /// ## Import
 ///
 /// ```sh
-/// $ pulumi import cloudflare:index/precursor:Precursor example '<zone_id>'
+/// $ pulumi import cloudflare:index/precursor:Precursor example '<zone_id>/<cloudflare_version>'
 /// ```
 class Precursor extends pulumi.CustomResource {
-  /// The zone-level Precursor enforcement mode applied to requests that do
-  /// not match a more specific enforcement rule.
-  /// Available values: "off", "min-friction", "max-security".
-  late final pulumi.Output<String> defaultMode;
-  /// The ordered list of enforcement rules for the zone.
-  late final pulumi.Output<List<PrecursorEnforcementRule>> enforcementRules;
+  /// Controls Precursor detection for the zone. `off` disables detection,
+  /// `monitor` records detections without affecting bot scores, and `arm`
+  /// allows detections to affect bot scores.
+  /// Available values: "off", "monitor", "arm".
+  late final pulumi.Output<String> mode;
+  /// The ordered list of Precursor rules for the zone.
+  late final pulumi.Output<List<PrecursorRule>> rules;
+  /// Whether Precursor shows an interstitial when it takes action on a
+  /// request.
+  late final pulumi.Output<bool?> showInterstitial;
   /// Identifier.
   late final pulumi.Output<String> zoneId;
 
@@ -189,10 +203,11 @@ class Precursor extends pulumi.CustomResource {
           'cloudflare:index/precursor:Precursor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
-    defaultMode = registerOutput<String>('defaultMode');
-    enforcementRules = registerOutput<List<PrecursorEnforcementRule>>('enforcementRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrecursorEnforcementRule>(guardedValue, (value) => PrecursorEnforcementRule.fromMap((value as Map).cast<String, dynamic>())); });
+    mode = registerOutput<String>('mode');
+    rules = registerOutput<List<PrecursorRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrecursorRule>(guardedValue, (value) => PrecursorRule.fromMap((value as Map).cast<String, dynamic>())); });
+    showInterstitial = registerOutput<bool?>('showInterstitial');
     zoneId = registerOutput<String>('zoneId');
   }
 
@@ -220,8 +235,9 @@ class Precursor extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    defaultMode = registerOutput<String>('defaultMode');
-    enforcementRules = registerOutput<List<PrecursorEnforcementRule>>('enforcementRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrecursorEnforcementRule>(guardedValue, (value) => PrecursorEnforcementRule.fromMap((value as Map).cast<String, dynamic>())); });
+    mode = registerOutput<String>('mode');
+    rules = registerOutput<List<PrecursorRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrecursorRule>(guardedValue, (value) => PrecursorRule.fromMap((value as Map).cast<String, dynamic>())); });
+    showInterstitial = registerOutput<bool?>('showInterstitial');
     zoneId = registerOutput<String>('zoneId');
   }
 
@@ -234,8 +250,9 @@ class Precursor extends pulumi.CustomResource {
         pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
         isResourceReference: true,
       ) {
-    defaultMode = registerOutput<String>('defaultMode');
-    enforcementRules = registerOutput<List<PrecursorEnforcementRule>>('enforcementRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrecursorEnforcementRule>(guardedValue, (value) => PrecursorEnforcementRule.fromMap((value as Map).cast<String, dynamic>())); });
+    mode = registerOutput<String>('mode');
+    rules = registerOutput<List<PrecursorRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrecursorRule>(guardedValue, (value) => PrecursorRule.fromMap((value as Map).cast<String, dynamic>())); });
+    showInterstitial = registerOutput<bool?>('showInterstitial');
     zoneId = registerOutput<String>('zoneId');
   }
 }

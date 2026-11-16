@@ -8,7 +8,7 @@ class ArgoTieredCachingState {
   final pulumi.Input<bool?>? editable;
   /// Last time this setting was modified.
   final pulumi.Input<String?>? modifiedOn;
-  /// Enables Tiered Caching.
+  /// Enables or disables Tiered Cache.
   /// Available values: "on", "off".
   final pulumi.Input<String?>? value;
   /// Identifier.
@@ -17,7 +17,7 @@ class ArgoTieredCachingState {
   /// Creates a new [ArgoTieredCachingState].
   /// [editable] Whether the setting is editable.
   /// [modifiedOn] Last time this setting was modified.
-  /// [value] Enables Tiered Caching.
+  /// [value] Enables or disables Tiered Cache.
   /// [zoneId] Identifier.
   const ArgoTieredCachingState({
     this.editable,

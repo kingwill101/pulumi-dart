@@ -17,6 +17,7 @@ class GetZeroTrustAccessAiControlsMcpPortalsResultServer {
   final pulumi.Input<String> authenticationStatus;
   final pulumi.Input<String> createdAt;
   final pulumi.Input<String> createdBy;
+  /// Hide this server's tools and prompts by default. To expose specific capabilities, set enabled: true for them in updated*tools or updated*prompts.
   final pulumi.Input<bool> defaultDisabled;
   /// Optional description of the MCP server.
   final pulumi.Input<String> description;
@@ -26,7 +27,7 @@ class GetZeroTrustAccessAiControlsMcpPortalsResultServer {
   final pulumi.Input<String> hostname;
   /// Unique identifier for the MCP server.
   final pulumi.Input<String> id;
-  /// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+  /// When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
   final pulumi.Input<bool> isSharedOauthCallbackEnabled;
   final pulumi.Input<String> lastSuccessfulSync;
   final pulumi.Input<String> lastSynced;
@@ -36,6 +37,8 @@ class GetZeroTrustAccessAiControlsMcpPortalsResultServer {
   final pulumi.Input<String> name;
   final pulumi.Input<bool> onBehalf;
   final pulumi.Input<List<Map<String, String>>> prompts;
+  /// Timestamp of the most recent successful admin OAuth registration.
+  final pulumi.Input<String> registeredAt;
   /// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
   final pulumi.Input<bool> secureWebGateway;
   /// Unique identifier for the MCP server.
@@ -53,13 +56,13 @@ class GetZeroTrustAccessAiControlsMcpPortalsResultServer {
   /// [authenticationStatus] Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
   /// [createdAt] Required.
   /// [createdBy] Required.
-  /// [defaultDisabled] Required.
+  /// [defaultDisabled] Hide this server's tools and prompts by default. To expose specific capabilities, set enabled: true for them in updated*tools or updated*prompts.
   /// [description] Optional description of the MCP server.
   /// [error] Required.
   /// [errorDetails] Required.
   /// [hostname] URL of the upstream MCP endpoint.
   /// [id] Unique identifier for the MCP server.
-  /// [isSharedOauthCallbackEnabled] When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+  /// [isSharedOauthCallbackEnabled] When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
   /// [lastSuccessfulSync] Required.
   /// [lastSynced] Required.
   /// [modifiedAt] Required.
@@ -67,6 +70,7 @@ class GetZeroTrustAccessAiControlsMcpPortalsResultServer {
   /// [name] Display name for the MCP server.
   /// [onBehalf] Required.
   /// [prompts] Required.
+  /// [registeredAt] Timestamp of the most recent successful admin OAuth registration.
   /// [secureWebGateway] Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
   /// [serverId] Unique identifier for the MCP server.
   /// [status] Current sync state of the server
@@ -93,6 +97,7 @@ class GetZeroTrustAccessAiControlsMcpPortalsResultServer {
     required this.name,
     required this.onBehalf,
     required this.prompts,
+    required this.registeredAt,
     required this.secureWebGateway,
     required this.serverId,
     required this.status,
@@ -122,6 +127,7 @@ class GetZeroTrustAccessAiControlsMcpPortalsResultServer {
       'name': name,
       'onBehalf': onBehalf,
       'prompts': prompts,
+      'registeredAt': registeredAt,
       'secureWebGateway': secureWebGateway,
       'serverId': serverId,
       'status': status,
@@ -152,6 +158,7 @@ class GetZeroTrustAccessAiControlsMcpPortalsResultServer {
       name: pulumi.Input.fromValue(map['name'] as String),
       onBehalf: pulumi.Input.fromValue(map['onBehalf'] as bool),
       prompts: pulumi.Input.fromValue(pulumi.Input.decodeList<Map<String, String>>(map['prompts']!, (value) => (value as Map).cast<String, String>())),
+      registeredAt: pulumi.Input.fromValue(map['registeredAt'] as String),
       secureWebGateway: pulumi.Input.fromValue(map['secureWebGateway'] as bool),
       serverId: pulumi.Input.fromValue(map['serverId'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),

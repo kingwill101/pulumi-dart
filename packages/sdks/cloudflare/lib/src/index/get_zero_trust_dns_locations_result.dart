@@ -9,6 +9,8 @@ class GetZeroTrustDnsLocationsResult {
   /// Indicate whether this location is the default location.
   final pulumi.Input<bool> clientDefault;
   final pulumi.Input<String> createdAt;
+  /// Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+  final pulumi.Input<bool> dns64Enabled;
   /// Indicate the identifier of the pair of IPv4 addresses assigned to this location.
   final pulumi.Input<String> dnsDestinationIpsId;
   /// Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.
@@ -22,9 +24,9 @@ class GetZeroTrustDnsLocationsResult {
   final pulumi.Input<String> id;
   /// Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.
   final pulumi.Input<String> ip;
-  /// Show the primary destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
+  /// Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
   final pulumi.Input<String> ipv4Destination;
-  /// Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
+  /// Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
   final pulumi.Input<String> ipv4DestinationBackup;
   /// Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
   final pulumi.Input<GetZeroTrustDnsLocationsResultMaxTtl> maxTtl;
@@ -37,6 +39,7 @@ class GetZeroTrustDnsLocationsResult {
   /// Creates a new [GetZeroTrustDnsLocationsResult].
   /// [clientDefault] Indicate whether this location is the default location.
   /// [createdAt] Required.
+  /// [dns64Enabled] Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
   /// [dnsDestinationIpsId] Indicate the identifier of the pair of IPv4 addresses assigned to this location.
   /// [dnsDestinationIpv6BlockId] Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.
   /// [dohSubdomain] Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.
@@ -44,8 +47,8 @@ class GetZeroTrustDnsLocationsResult {
   /// [endpoints] Configure the destination endpoints for this location.
   /// [id] Required.
   /// [ip] Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.
-  /// [ipv4Destination] Show the primary destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
-  /// [ipv4DestinationBackup] Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
+  /// [ipv4Destination] Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
+  /// [ipv4DestinationBackup] Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
   /// [maxTtl] Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
   /// [name] Specify the location name.
   /// [networks] Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
@@ -53,6 +56,7 @@ class GetZeroTrustDnsLocationsResult {
   const GetZeroTrustDnsLocationsResult({
     required this.clientDefault,
     required this.createdAt,
+    required this.dns64Enabled,
     required this.dnsDestinationIpsId,
     required this.dnsDestinationIpv6BlockId,
     required this.dohSubdomain,
@@ -72,6 +76,7 @@ class GetZeroTrustDnsLocationsResult {
     return <String, dynamic>{
       'clientDefault': clientDefault,
       'createdAt': createdAt,
+      'dns64Enabled': dns64Enabled,
       'dnsDestinationIpsId': dnsDestinationIpsId,
       'dnsDestinationIpv6BlockId': dnsDestinationIpv6BlockId,
       'dohSubdomain': dohSubdomain,
@@ -92,6 +97,7 @@ class GetZeroTrustDnsLocationsResult {
     return GetZeroTrustDnsLocationsResult(
       clientDefault: pulumi.Input.fromValue(map['clientDefault'] as bool),
       createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
+      dns64Enabled: pulumi.Input.fromValue(map['dns64Enabled'] as bool),
       dnsDestinationIpsId: pulumi.Input.fromValue(map['dnsDestinationIpsId'] as String),
       dnsDestinationIpv6BlockId: pulumi.Input.fromValue(map['dnsDestinationIpv6BlockId'] as String),
       dohSubdomain: pulumi.Input.fromValue(map['dohSubdomain'] as String),

@@ -9,54 +9,53 @@ import 'get_zero_trust_dlp_custom_entry_variant.dart';
 /// Result data returned by getZeroTrustDlpCustomEntry.
 class GetZeroTrustDlpCustomEntryResult {
   final String? accountId;
-  /// Only applies to custom word lists.
+  /// For `type: exactData`: Only applies to custom word lists.
   /// Determines if the words should be matched in a case-sensitive manner
   /// Cannot be set to false if secret is true
   final bool? caseSensitive;
   final GetZeroTrustDlpCustomEntryConfidence? confidence;
   final String? createdAt;
-  /// Whether this entry is deprecated for new use. This is computed from the static catalog and
+  /// For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
   /// emitted only when true.
   final bool? deprecated;
+  /// For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
   final String? description;
   final bool? enabled;
   final String? entryId;
-  /// The ID of this resource.
   final String? id;
   final String? name;
   final GetZeroTrustDlpCustomEntryPattern? pattern;
   final String? profileId;
   final List<GetZeroTrustDlpCustomEntryProfile>? profiles;
   final bool? secret;
-  /// Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
   final String? type;
   final String? updatedAt;
-  /// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
   final String? uploadStatus;
-  /// A Predefined AI prompt classification topic entry.
+  final List<String>? validatorIds;
   final GetZeroTrustDlpCustomEntryVariant? variant;
-  final String? wordList;
+  final List<String>? wordLists;
 
   /// Creates a new [GetZeroTrustDlpCustomEntryResult].
   /// [accountId] Optional.
-  /// [caseSensitive] Only applies to custom word lists.
+  /// [caseSensitive] For `type: exactData`: Only applies to custom word lists.
   /// [confidence] Optional.
   /// [createdAt] Optional.
-  /// [deprecated] Whether this entry is deprecated for new use. This is computed from the static catalog and
-  /// [description] Optional.
+  /// [deprecated] For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
+  /// [description] For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
   /// [enabled] Optional.
   /// [entryId] Optional.
-  /// [id] The ID of this resource.
+  /// [id] Optional.
   /// [name] Optional.
   /// [pattern] Optional.
   /// [profileId] Optional.
   /// [profiles] Optional.
   /// [secret] Optional.
-  /// [type] Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+  /// [type] Optional.
   /// [updatedAt] Optional.
-  /// [uploadStatus] Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
-  /// [variant] A Predefined AI prompt classification topic entry.
-  /// [wordList] Optional.
+  /// [uploadStatus] Optional.
+  /// [validatorIds] Optional.
+  /// [variant] Optional.
+  /// [wordLists] Optional.
   const GetZeroTrustDlpCustomEntryResult({
     this.accountId,
     this.caseSensitive,
@@ -75,8 +74,9 @@ class GetZeroTrustDlpCustomEntryResult {
     this.type,
     this.updatedAt,
     this.uploadStatus,
+    this.validatorIds,
     this.variant,
-    this.wordList,
+    this.wordLists,
   });
 
   Map<String, dynamic> toMap() {
@@ -98,8 +98,9 @@ class GetZeroTrustDlpCustomEntryResult {
       'type': ?type,
       'updatedAt': ?updatedAt,
       'uploadStatus': ?uploadStatus,
+      'validatorIds': ?validatorIds,
       'variant': ?variant?.toMap(),
-      'wordList': ?wordList,
+      'wordLists': ?wordLists,
     };
   }
 
@@ -122,8 +123,9 @@ class GetZeroTrustDlpCustomEntryResult {
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       updatedAt: (() { final guardedValue = map['updatedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       uploadStatus: (() { final guardedValue = map['uploadStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      validatorIds: (() { final guardedValue = map['validatorIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       variant: (() { final guardedValue = map['variant']; if (guardedValue == null) return null; return GetZeroTrustDlpCustomEntryVariant.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      wordList: (() { final guardedValue = map['wordList']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      wordLists: (() { final guardedValue = map['wordLists']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }

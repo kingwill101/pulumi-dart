@@ -3,44 +3,44 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class R2BucketSippySource {
-  /// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
+  /// For `r2_bucket_sippy_provider: aws` or `r2_bucket_sippy_provider: s3`: Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
   final pulumi.Input<String?>? accessKeyId;
-  /// Access key for the Azure Storage account. Mutually exclusive with sasToken.
+  /// For `r2_bucket_sippy_provider: azure`: Access key for the Azure Storage account. Mutually exclusive with sasToken.
   final pulumi.Input<String?>? accountKey;
-  /// Name of the Azure Storage account.
+  /// For `r2_bucket_sippy_provider: azure`: Name of the Azure Storage account.
   final pulumi.Input<String?>? accountName;
-  /// Name of the AWS S3 bucket.
+  /// For `r2_bucket_sippy_provider: aws`: Name of the AWS S3 bucket.
   final pulumi.Input<String?>? bucket;
-  /// URL to the S3-compatible API of the bucket.
+  /// For `r2_bucket_sippy_provider: s3`: URL to the S3-compatible API of the bucket.
   final pulumi.Input<String?>? bucketUrl;
-  /// Client email of an IAM credential (ideally scoped to a single GCS bucket).
+  /// For `r2_bucket_sippy_provider: gcs`: Client email of an IAM credential (ideally scoped to a single GCS bucket).
   final pulumi.Input<String?>? clientEmail;
   /// Available values: "aws", "gcs", "s3", "azure".
   final pulumi.Input<String?>? cloudProvider;
-  /// Name of the Azure Blob Storage container.
+  /// For `r2_bucket_sippy_provider: azure`: Name of the Azure Blob Storage container.
   final pulumi.Input<String?>? container;
-  /// Private Key of an IAM credential (ideally scoped to a single GCS bucket).
+  /// For `r2_bucket_sippy_provider: gcs`: Private Key of an IAM credential (ideally scoped to a single GCS bucket).
   final pulumi.Input<String?>? privateKey;
-  /// Name of the AWS availability zone.
+  /// For `r2_bucket_sippy_provider: aws`: AWS region containing the source S3 bucket.
   final pulumi.Input<String?>? region;
-  /// Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
+  /// For `r2_bucket_sippy_provider: azure`: Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
   final pulumi.Input<String?>? sasToken;
-  /// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
+  /// For `r2_bucket_sippy_provider: aws` or `r2_bucket_sippy_provider: s3`: Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
   final pulumi.Input<String?>? secretAccessKey;
 
   /// Creates a new [R2BucketSippySource].
-  /// [accessKeyId] Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
-  /// [accountKey] Access key for the Azure Storage account. Mutually exclusive with sasToken.
-  /// [accountName] Name of the Azure Storage account.
-  /// [bucket] Name of the AWS S3 bucket.
-  /// [bucketUrl] URL to the S3-compatible API of the bucket.
-  /// [clientEmail] Client email of an IAM credential (ideally scoped to a single GCS bucket).
+  /// [accessKeyId] For `r2_bucket_sippy_provider: aws` or `r2_bucket_sippy_provider: s3`: Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
+  /// [accountKey] For `r2_bucket_sippy_provider: azure`: Access key for the Azure Storage account. Mutually exclusive with sasToken.
+  /// [accountName] For `r2_bucket_sippy_provider: azure`: Name of the Azure Storage account.
+  /// [bucket] For `r2_bucket_sippy_provider: aws`: Name of the AWS S3 bucket.
+  /// [bucketUrl] For `r2_bucket_sippy_provider: s3`: URL to the S3-compatible API of the bucket.
+  /// [clientEmail] For `r2_bucket_sippy_provider: gcs`: Client email of an IAM credential (ideally scoped to a single GCS bucket).
   /// [cloudProvider] Available values: "aws", "gcs", "s3", "azure".
-  /// [container] Name of the Azure Blob Storage container.
-  /// [privateKey] Private Key of an IAM credential (ideally scoped to a single GCS bucket).
-  /// [region] Name of the AWS availability zone.
-  /// [sasToken] Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
-  /// [secretAccessKey] Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
+  /// [container] For `r2_bucket_sippy_provider: azure`: Name of the Azure Blob Storage container.
+  /// [privateKey] For `r2_bucket_sippy_provider: gcs`: Private Key of an IAM credential (ideally scoped to a single GCS bucket).
+  /// [region] For `r2_bucket_sippy_provider: aws`: AWS region containing the source S3 bucket.
+  /// [sasToken] For `r2_bucket_sippy_provider: azure`: Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
+  /// [secretAccessKey] For `r2_bucket_sippy_provider: aws` or `r2_bucket_sippy_provider: s3`: Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
   const R2BucketSippySource({
     this.accessKeyId,
     this.accountKey,

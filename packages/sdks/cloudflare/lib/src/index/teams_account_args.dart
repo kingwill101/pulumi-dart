@@ -8,12 +8,13 @@ import 'teams_account_settings.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_teams_account_teams_account_args_doc}
 class TeamsAccountArgs {
+  /// Specify the Cloudflare account identifier.
   final pulumi.Input<String> accountId;
   /// Specify account settings.
   final pulumi.Input<TeamsAccountSettings?>? settings;
 
   /// Creates a new [TeamsAccountArgs].
-  /// [accountId] Required.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [settings] Specify account settings.
   const TeamsAccountArgs({
     required this.accountId,

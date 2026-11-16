@@ -36,6 +36,9 @@ class GetWorkerVersionsResultBinding {
   final pulumi.Input<String> format;
   /// Identifier of the D1 database to bind to.
   final pulumi.Input<String> id;
+  /// Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id or an explicit "cf1:vnet:\n\n" network_id.
+  /// Available values: "runtime-email-alpha".
+  final pulumi.Input<String> identity;
   /// Name of the Vectorize index to bind to.
   final pulumi.Input<String> indexName;
   /// The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
@@ -43,7 +46,7 @@ class GetWorkerVersionsResultBinding {
   /// JSON data to use.
   final pulumi.Input<String> json;
   /// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-  /// Available values: "eu", "fedramp", "fedramp-high".
+  /// Available values: "eu", "fedramp", "fedramp-high", "us".
   final pulumi.Input<String> jurisdiction;
   /// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
   final pulumi.Input<String> keyBase64;
@@ -55,7 +58,7 @@ class GetWorkerVersionsResultBinding {
   final pulumi.Input<String> namespace;
   /// Namespace identifier tag.
   final pulumi.Input<String> namespaceId;
-  /// Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id.
+  /// Identifier of the network to bind to. Use "cf1:network" to select the account's default virtual network at runtime, or "cf1:vnet:\n\n" to select an explicit virtual network in the Worker's account. Mutually exclusive with tunnel_id.
   final pulumi.Input<String> networkId;
   /// The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
   final pulumi.Input<String> oldName;
@@ -79,16 +82,18 @@ class GetWorkerVersionsResultBinding {
   final pulumi.Input<GetWorkerVersionsResultBindingSimple> simple;
   /// ID of the store containing the secret.
   final pulumi.Input<String> storeId;
+  /// ID of a K2 stream owned by the account deploying the Worker.
+  final pulumi.Input<String> stream;
   /// The text value to use.
   final pulumi.Input<String> text;
   /// UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
   final pulumi.Input<String> tunnelId;
   /// The kind of resource that the binding provides.
-  /// Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+  /// Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "artifacts", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "k2", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
   final pulumi.Input<String> type;
   /// Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
   final pulumi.Input<List<String>> usages;
-  /// Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+  /// Identifier for the version to inherit the binding from. This can be a version ID, or the literal "latest" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to "latest". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only "latest" and reject a version ID with error 10057.
   final pulumi.Input<String> versionId;
   /// Name of the Workflow to bind to.
   final pulumi.Input<String> workflowName;
@@ -109,6 +114,7 @@ class GetWorkerVersionsResultBinding {
   /// [environment] The environment of the scriptName to bind to.
   /// [format] Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
   /// [id] Identifier of the D1 database to bind to.
+  /// [identity] Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id or an explicit "cf1:vnet:\n\n" network_id.
   /// [indexName] Name of the Vectorize index to bind to.
   /// [instanceName] The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
   /// [json] JSON data to use.
@@ -118,7 +124,7 @@ class GetWorkerVersionsResultBinding {
   /// [name] A JavaScript variable name for the binding.
   /// [namespace] The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field.
   /// [namespaceId] Namespace identifier tag.
-  /// [networkId] Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id.
+  /// [networkId] Identifier of the network to bind to. Use "cf1:network" to select the account's default virtual network at runtime, or "cf1:vnet:\n\n" to select an explicit virtual network in the Worker's account. Mutually exclusive with tunnel_id.
   /// [oldName] The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
   /// [outbound] Outbound worker.
   /// [part] The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
@@ -130,11 +136,12 @@ class GetWorkerVersionsResultBinding {
   /// [serviceId] Identifier of the VPC service to bind to.
   /// [simple] The rate limit configuration.
   /// [storeId] ID of the store containing the secret.
+  /// [stream] ID of a K2 stream owned by the account deploying the Worker.
   /// [text] The text value to use.
   /// [tunnelId] UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
   /// [type] The kind of resource that the binding provides.
   /// [usages] Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
-  /// [versionId] Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+  /// [versionId] Identifier for the version to inherit the binding from. This can be a version ID, or the literal "latest" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to "latest". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only "latest" and reject a version ID with error 10057.
   /// [workflowName] Name of the Workflow to bind to.
   const GetWorkerVersionsResultBinding({
     required this.algorithm,
@@ -152,6 +159,7 @@ class GetWorkerVersionsResultBinding {
     required this.environment,
     required this.format,
     required this.id,
+    required this.identity,
     required this.indexName,
     required this.instanceName,
     required this.json,
@@ -173,6 +181,7 @@ class GetWorkerVersionsResultBinding {
     required this.serviceId,
     required this.simple,
     required this.storeId,
+    required this.stream,
     required this.text,
     required this.tunnelId,
     required this.type,
@@ -198,6 +207,7 @@ class GetWorkerVersionsResultBinding {
       'environment': environment,
       'format': format,
       'id': id,
+      'identity': identity,
       'indexName': indexName,
       'instanceName': instanceName,
       'json': json,
@@ -219,6 +229,7 @@ class GetWorkerVersionsResultBinding {
       'serviceId': serviceId,
       'simple': pulumi.Input.mapInputValue<GetWorkerVersionsResultBindingSimple, Map<String, dynamic>>(simple, (value) => value.toMap()),
       'storeId': storeId,
+      'stream': stream,
       'text': text,
       'tunnelId': tunnelId,
       'type': type,
@@ -245,6 +256,7 @@ class GetWorkerVersionsResultBinding {
       environment: pulumi.Input.fromValue(map['environment'] as String),
       format: pulumi.Input.fromValue(map['format'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
+      identity: pulumi.Input.fromValue(map['identity'] as String),
       indexName: pulumi.Input.fromValue(map['indexName'] as String),
       instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
       json: pulumi.Input.fromValue(map['json'] as String),
@@ -266,6 +278,7 @@ class GetWorkerVersionsResultBinding {
       serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
       simple: pulumi.Input.fromValue(GetWorkerVersionsResultBindingSimple.fromMap((map['simple']! as Map).cast<String, dynamic>())),
       storeId: pulumi.Input.fromValue(map['storeId'] as String),
+      stream: pulumi.Input.fromValue(map['stream'] as String),
       text: pulumi.Input.fromValue(map['text'] as String),
       tunnelId: pulumi.Input.fromValue(map['tunnelId'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),

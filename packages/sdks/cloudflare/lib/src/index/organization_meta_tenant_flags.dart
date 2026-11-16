@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OrganizationMetaTenantFlags {
   final pulumi.Input<String?>? accountCreation;
+  final pulumi.Input<String?>? accountCreationAppliesTenantDefaults;
   final pulumi.Input<String?>? accountDeletion;
   final pulumi.Input<String?>? accountMigration;
   final pulumi.Input<String?>? accountMobility;
@@ -13,6 +14,7 @@ class OrganizationMetaTenantFlags {
 
   /// Creates a new [OrganizationMetaTenantFlags].
   /// [accountCreation] Optional.
+  /// [accountCreationAppliesTenantDefaults] Optional.
   /// [accountDeletion] Optional.
   /// [accountMigration] Optional.
   /// [accountMobility] Optional.
@@ -21,6 +23,7 @@ class OrganizationMetaTenantFlags {
   /// [subOrgCreation] Optional.
   const OrganizationMetaTenantFlags({
     this.accountCreation,
+    this.accountCreationAppliesTenantDefaults,
     this.accountDeletion,
     this.accountMigration,
     this.accountMobility,
@@ -32,6 +35,7 @@ class OrganizationMetaTenantFlags {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountCreation': ?accountCreation,
+      'accountCreationAppliesTenantDefaults': ?accountCreationAppliesTenantDefaults,
       'accountDeletion': ?accountDeletion,
       'accountMigration': ?accountMigration,
       'accountMobility': ?accountMobility,
@@ -44,6 +48,7 @@ class OrganizationMetaTenantFlags {
   factory OrganizationMetaTenantFlags.fromMap(Map<String, dynamic> map) {
     return OrganizationMetaTenantFlags(
       accountCreation: (() { final guardedValue = map['accountCreation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      accountCreationAppliesTenantDefaults: (() { final guardedValue = map['accountCreationAppliesTenantDefaults']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       accountDeletion: (() { final guardedValue = map['accountDeletion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       accountMigration: (() { final guardedValue = map['accountMigration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       accountMobility: (() { final guardedValue = map['accountMobility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

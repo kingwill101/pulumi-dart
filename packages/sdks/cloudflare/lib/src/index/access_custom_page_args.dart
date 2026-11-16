@@ -46,7 +46,7 @@ class AccessCustomPageArgs {
   factory AccessCustomPageArgs.fromMap(Map<String, dynamic> map) {
     return AccessCustomPageArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
-      contractVersion: (() { final guardedValue = map['contractVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      contractVersion: (() { final guardedValue = map['contractVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       customHtml: pulumi.Input.fromValue(map['customHtml'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),

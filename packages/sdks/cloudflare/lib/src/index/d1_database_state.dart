@@ -9,6 +9,9 @@ class D1DatabaseState {
   final pulumi.Input<String?>? accountId;
   /// Specifies the timestamp the resource was created as an ISO8601 string.
   final pulumi.Input<String?>? createdAt;
+  /// Comma-separated list of fields to include in the response. When omitted,
+  /// all fields are returned.
+  final pulumi.Input<List<String>?>? fields;
   /// The D1 database's size, in bytes.
   final pulumi.Input<double?>? fileSize;
   /// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
@@ -16,6 +19,7 @@ class D1DatabaseState {
   final pulumi.Input<String?>? jurisdiction;
   /// D1 database name.
   final pulumi.Input<String?>? name;
+  /// The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
   final pulumi.Input<double?>? numTables;
   /// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
   /// Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
@@ -29,10 +33,11 @@ class D1DatabaseState {
   /// Creates a new [D1DatabaseState].
   /// [accountId] Account identifier tag.
   /// [createdAt] Specifies the timestamp the resource was created as an ISO8601 string.
+  /// [fields] Comma-separated list of fields to include in the response. When omitted,
   /// [fileSize] The D1 database's size, in bytes.
   /// [jurisdiction] Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
   /// [name] D1 database name.
-  /// [numTables] Optional.
+  /// [numTables] The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
   /// [primaryLocationHint] Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
   /// [readReplication] Configuration for D1 read replication.
   /// [uuid] D1 database identifier (UUID).
@@ -40,6 +45,7 @@ class D1DatabaseState {
   const D1DatabaseState({
     this.accountId,
     this.createdAt,
+    this.fields,
     this.fileSize,
     this.jurisdiction,
     this.name,
@@ -54,6 +60,7 @@ class D1DatabaseState {
     return <String, dynamic>{
       'accountId': ?accountId,
       'createdAt': ?createdAt,
+      'fields': ?fields,
       'fileSize': ?fileSize,
       'jurisdiction': ?jurisdiction,
       'name': ?name,
@@ -69,6 +76,7 @@ class D1DatabaseState {
     return D1DatabaseState(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fields: (() { final guardedValue = map['fields']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       fileSize: (() { final guardedValue = map['fileSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       jurisdiction: (() { final guardedValue = map['jurisdiction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

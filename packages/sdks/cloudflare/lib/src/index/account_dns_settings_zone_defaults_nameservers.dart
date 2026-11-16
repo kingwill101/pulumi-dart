@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountDnsSettingsZoneDefaultsNameservers {
   /// Nameserver type
-  /// Available values: "cloudflare.standard", "cloudflare.standard.random", "custom.account", "custom.tenant".
+  /// Available values: "cloudflare.standard", "cloudflare.advanced", "cloudflare.standard.random", "custom.account", "custom.tenant".
   final pulumi.Input<String?>? type;
 
   /// Creates a new [AccountDnsSettingsZoneDefaultsNameservers].

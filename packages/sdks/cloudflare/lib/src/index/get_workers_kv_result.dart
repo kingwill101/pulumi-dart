@@ -3,21 +3,21 @@
 
 /// Result data returned by getWorkersKv.
 class GetWorkersKvResult {
-  /// Identifier.
+  /// ID of the Cloudflare account that owns the Workers KV namespaces.
   final String? accountId;
   /// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
   final String? id;
   /// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
   final String? keyName;
-  /// Namespace identifier tag.
+  /// ID of the Workers KV namespace.
   final String? namespaceId;
   final String? value;
 
   /// Creates a new [GetWorkersKvResult].
-  /// [accountId] Identifier.
+  /// [accountId] ID of the Cloudflare account that owns the Workers KV namespaces.
   /// [id] A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
   /// [keyName] A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
-  /// [namespaceId] Namespace identifier tag.
+  /// [namespaceId] ID of the Workers KV namespace.
   /// [value] Optional.
   const GetWorkersKvResult({
     this.accountId,

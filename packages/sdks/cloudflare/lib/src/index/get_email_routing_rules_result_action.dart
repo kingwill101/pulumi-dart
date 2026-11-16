@@ -6,11 +6,12 @@ class GetEmailRoutingRulesResultAction {
   /// Type of supported action.
   /// Available values: "drop", "forward", "worker".
   final pulumi.Input<String> type;
+  /// List of values for the action. Currently limited to a single value.
   final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetEmailRoutingRulesResultAction].
   /// [type] Type of supported action.
-  /// [values] Required.
+  /// [values] List of values for the action. Currently limited to a single value.
   const GetEmailRoutingRulesResultAction({
     required this.type,
     required this.values,

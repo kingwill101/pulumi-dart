@@ -18,6 +18,8 @@ import 'workers_custom_domain_state.dart';
 ///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
 ///     hostname: "app.example.com",
 ///     service: "my-worker",
+///     enabled: true,
+///     previewsEnabled: false,
 ///     zoneId: "593c9c94de529bbbfaac7c53ced0447d",
 ///     zoneName: "example.com",
 /// });
@@ -30,6 +32,8 @@ import 'workers_custom_domain_state.dart';
 ///     account_id="023e105f4ecef8ad9ca31a8372d0c353",
 ///     hostname="app.example.com",
 ///     service="my-worker",
+///     enabled=True,
+///     previews_enabled=False,
 ///     zone_id="593c9c94de529bbbfaac7c53ced0447d",
 ///     zone_name="example.com")
 /// ```
@@ -46,6 +50,8 @@ import 'workers_custom_domain_state.dart';
 ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
 ///         Hostname = "app.example.com",
 ///         Service = "my-worker",
+///         Enabled = true,
+///         PreviewsEnabled = false,
 ///         ZoneId = "593c9c94de529bbbfaac7c53ced0447d",
 ///         ZoneName = "example.com",
 ///     });
@@ -63,11 +69,13 @@ import 'workers_custom_domain_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.NewWorkersCustomDomain(ctx, "example_workers_custom_domain", &cloudflare.WorkersCustomDomainArgs{
-/// 			AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-/// 			Hostname:  pulumi.String("app.example.com"),
-/// 			Service:   pulumi.String("my-worker"),
-/// 			ZoneId:    pulumi.String("593c9c94de529bbbfaac7c53ced0447d"),
-/// 			ZoneName:  pulumi.String("example.com"),
+/// 			AccountId:       pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			Hostname:        pulumi.String("app.example.com"),
+/// 			Service:         pulumi.String("my-worker"),
+/// 			Enabled:         pulumi.Bool(true),
+/// 			PreviewsEnabled: pulumi.Bool(false),
+/// 			ZoneId:          pulumi.String("593c9c94de529bbbfaac7c53ced0447d"),
+/// 			ZoneName:        pulumi.String("example.com"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -77,7 +85,7 @@ import 'workers_custom_domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -85,12 +93,17 @@ import 'workers_custom_domain_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_workerscustomdomain" "example_workers_custom_domain" {
-///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
-///   hostname   = "app.example.com"
-///   service    = "my-worker"
-///   zone_id    = "593c9c94de529bbbfaac7c53ced0447d"
-///   zone_name  = "example.com"
+/// resource "cloudflare_workers_custom_domain" "example_workers_custom_domain" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   account_id       = "023e105f4ecef8ad9ca31a8372d0c353"
+///   hostname         = "app.example.com"
+///   service          = "my-worker"
+///   enabled          = true
+///   previews_enabled = false
+///   zone_id          = "593c9c94de529bbbfaac7c53ced0447d"
+///   zone_name        = "example.com"
 /// }
 /// ```
 /// ```java
@@ -118,6 +131,8 @@ import 'workers_custom_domain_state.dart';
 ///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
 ///             .hostname("app.example.com")
 ///             .service("my-worker")
+///             .enabled(true)
+///             .previewsEnabled(false)
 ///             .zoneId("593c9c94de529bbbfaac7c53ced0447d")
 ///             .zoneName("example.com")
 ///             .build());
@@ -134,6 +149,8 @@ import 'workers_custom_domain_state.dart';
 ///       accountId: 023e105f4ecef8ad9ca31a8372d0c353
 ///       hostname: app.example.com
 ///       service: my-worker
+///       enabled: true
+///       previewsEnabled: false
 ///       zoneId: 593c9c94de529bbbfaac7c53ced0447d
 ///       zoneName: example.com
 /// ```
@@ -149,10 +166,14 @@ class WorkersCustomDomain extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
   /// ID of the TLS certificate issued for the domain.
   late final pulumi.Output<String> certId;
+  /// Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+  late final pulumi.Output<bool> enabled;
   /// Worker environment associated with the domain.
   late final pulumi.Output<String> environment;
   /// Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
   late final pulumi.Output<String> hostname;
+  /// Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+  late final pulumi.Output<bool> previewsEnabled;
   /// Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
   late final pulumi.Output<String> service;
   /// ID of the zone containing the domain hostname.
@@ -172,12 +193,14 @@ class WorkersCustomDomain extends pulumi.CustomResource {
           'cloudflare:index/workersCustomDomain:WorkersCustomDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     certId = registerOutput<String>('certId');
+    enabled = registerOutput<bool>('enabled');
     environment = registerOutput<String>('environment');
     hostname = registerOutput<String>('hostname');
+    previewsEnabled = registerOutput<bool>('previewsEnabled');
     service = registerOutput<String>('service');
     zoneId = registerOutput<String>('zoneId');
     zoneName = registerOutput<String>('zoneName');
@@ -209,8 +232,10 @@ class WorkersCustomDomain extends pulumi.CustomResource {
         ) {
     accountId = registerOutput<String>('accountId');
     certId = registerOutput<String>('certId');
+    enabled = registerOutput<bool>('enabled');
     environment = registerOutput<String>('environment');
     hostname = registerOutput<String>('hostname');
+    previewsEnabled = registerOutput<bool>('previewsEnabled');
     service = registerOutput<String>('service');
     zoneId = registerOutput<String>('zoneId');
     zoneName = registerOutput<String>('zoneName');
@@ -227,8 +252,10 @@ class WorkersCustomDomain extends pulumi.CustomResource {
       ) {
     accountId = registerOutput<String>('accountId');
     certId = registerOutput<String>('certId');
+    enabled = registerOutput<bool>('enabled');
     environment = registerOutput<String>('environment');
     hostname = registerOutput<String>('hostname');
+    previewsEnabled = registerOutput<bool>('previewsEnabled');
     service = registerOutput<String>('service');
     zoneId = registerOutput<String>('zoneId');
     zoneName = registerOutput<String>('zoneName');

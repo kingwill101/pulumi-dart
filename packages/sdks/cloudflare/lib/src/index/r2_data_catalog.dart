@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'r2_data_catalog_args.dart';
+import 'r2_data_catalog_credential.dart';
 import 'r2_data_catalog_maintenance_config.dart';
 import 'r2_data_catalog_state.dart';
 
@@ -18,6 +19,9 @@ import 'r2_data_catalog_state.dart';
 /// const exampleR2DataCatalog = new cloudflare.R2DataCatalog("example_r2_data_catalog", {
 ///     accountId: "0123456789abcdef0123456789abcdef",
 ///     bucketName: "my-data-bucket",
+///     credential: {
+///         token: "your-cloudflare-api-token-here",
+///     },
 /// });
 /// ```
 /// ```python
@@ -26,7 +30,10 @@ import 'r2_data_catalog_state.dart';
 ///
 /// example_r2_data_catalog = cloudflare.R2DataCatalog("example_r2_data_catalog",
 ///     account_id="0123456789abcdef0123456789abcdef",
-///     bucket_name="my-data-bucket")
+///     bucket_name="my-data-bucket",
+///     credential={
+///         "token": "your-cloudflare-api-token-here",
+///     })
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -40,6 +47,10 @@ import 'r2_data_catalog_state.dart';
 ///     {
 ///         AccountId = "0123456789abcdef0123456789abcdef",
 ///         BucketName = "my-data-bucket",
+///         Credential = new Cloudflare.Inputs.R2DataCatalogCredentialArgs
+///         {
+///             Token = "your-cloudflare-api-token-here",
+///         },
 ///     });
 ///
 /// });
@@ -57,6 +68,9 @@ import 'r2_data_catalog_state.dart';
 /// 		_, err := cloudflare.NewR2DataCatalog(ctx, "example_r2_data_catalog", &cloudflare.R2DataCatalogArgs{
 /// 			AccountId:  pulumi.String("0123456789abcdef0123456789abcdef"),
 /// 			BucketName: pulumi.String("my-data-bucket"),
+/// 			Credential: &cloudflare.R2DataCatalogCredentialArgs{
+/// 				Token: pulumi.String("your-cloudflare-api-token-here"),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -66,7 +80,7 @@ import 'r2_data_catalog_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -74,9 +88,15 @@ import 'r2_data_catalog_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_r2datacatalog" "example_r2_data_catalog" {
+/// resource "cloudflare_r2_data_catalog" "example_r2_data_catalog" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id  = "0123456789abcdef0123456789abcdef"
 ///   bucket_name = "my-data-bucket"
+///   credential = {
+///     token = "your-cloudflare-api-token-here"
+///   }
 /// }
 /// ```
 /// ```java
@@ -87,6 +107,7 @@ import 'r2_data_catalog_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.cloudflare.R2DataCatalog;
 /// import com.pulumi.cloudflare.R2DataCatalogArgs;
+/// import com.pulumi.cloudflare.inputs.R2DataCatalogCredentialArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -103,6 +124,9 @@ import 'r2_data_catalog_state.dart';
 ///         var exampleR2DataCatalog = new R2DataCatalog("exampleR2DataCatalog", R2DataCatalogArgs.builder()
 ///             .accountId("0123456789abcdef0123456789abcdef")
 ///             .bucketName("my-data-bucket")
+///             .credential(R2DataCatalogCredentialArgs.builder()
+///                 .token("your-cloudflare-api-token-here")
+///                 .build())
 ///             .build());
 ///
 ///     }
@@ -116,6 +140,8 @@ import 'r2_data_catalog_state.dart';
 ///     properties:
 ///       accountId: 0123456789abcdef0123456789abcdef
 ///       bucketName: my-data-bucket
+///       credential:
+///         token: your-cloudflare-api-token-here
 /// ```
 ///
 ///
@@ -131,9 +157,13 @@ class R2DataCatalog extends pulumi.CustomResource {
   late final pulumi.Output<String> bucket;
   /// Specifies the R2 bucket name.
   late final pulumi.Output<String> bucketName;
+  /// Contains request to store catalog credentials.
+  late final pulumi.Output<R2DataCatalogCredential?> credential;
   /// Shows the credential configuration status.
   /// Available values: "present", "absent".
   late final pulumi.Output<String> credentialStatus;
+  /// Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
+  late final pulumi.Output<String> jurisdiction;
   /// Configures maintenance for the catalog.
   late final pulumi.Output<R2DataCatalogMaintenanceConfig> maintenanceConfig;
   /// Specifies the catalog name (generated from account and bucket name).
@@ -154,12 +184,14 @@ class R2DataCatalog extends pulumi.CustomResource {
           'cloudflare:index/r2DataCatalog:R2DataCatalog',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     bucket = registerOutput<String>('bucket');
     bucketName = registerOutput<String>('bucketName');
+    credential = registerOutput<R2DataCatalogCredential?>('credential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return R2DataCatalogCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     credentialStatus = registerOutput<String>('credentialStatus');
+    jurisdiction = registerOutput<String>('jurisdiction');
     maintenanceConfig = registerOutput<R2DataCatalogMaintenanceConfig>('maintenanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return R2DataCatalogMaintenanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     status = registerOutput<String>('status');
@@ -192,7 +224,9 @@ class R2DataCatalog extends pulumi.CustomResource {
     accountId = registerOutput<String>('accountId');
     bucket = registerOutput<String>('bucket');
     bucketName = registerOutput<String>('bucketName');
+    credential = registerOutput<R2DataCatalogCredential?>('credential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return R2DataCatalogCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     credentialStatus = registerOutput<String>('credentialStatus');
+    jurisdiction = registerOutput<String>('jurisdiction');
     maintenanceConfig = registerOutput<R2DataCatalogMaintenanceConfig>('maintenanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return R2DataCatalogMaintenanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     status = registerOutput<String>('status');
@@ -210,7 +244,9 @@ class R2DataCatalog extends pulumi.CustomResource {
     accountId = registerOutput<String>('accountId');
     bucket = registerOutput<String>('bucket');
     bucketName = registerOutput<String>('bucketName');
+    credential = registerOutput<R2DataCatalogCredential?>('credential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return R2DataCatalogCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     credentialStatus = registerOutput<String>('credentialStatus');
+    jurisdiction = registerOutput<String>('jurisdiction');
     maintenanceConfig = registerOutput<R2DataCatalogMaintenanceConfig>('maintenanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return R2DataCatalogMaintenanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     status = registerOutput<String>('status');

@@ -53,7 +53,7 @@ import 'zero_trust_device_settings_state.dart';
 ///     var exampleZeroTrustDeviceSettings = new Cloudflare.ZeroTrustDeviceSettings("example_zero_trust_device_settings", new()
 ///     {
 ///         AccountId = "699d98642c564d2e855e9661899b7252",
-///         DisableForTime = 0,
+///         DisableForTime = 0.0,
 ///         ExternalEmergencySignalEnabled = true,
 ///         ExternalEmergencySignalFingerprint = "abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
 ///         ExternalEmergencySignalInterval = "5m",
@@ -96,7 +96,7 @@ import 'zero_trust_device_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -104,7 +104,10 @@ import 'zero_trust_device_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdevicesettings" "example_zero_trust_device_settings" {
+/// resource "cloudflare_zero_trust_device_settings" "example_zero_trust_device_settings" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id                            = "699d98642c564d2e855e9661899b7252"
 ///   disable_for_time                      = 0
 ///   external_emergency_signal_enabled     = true
@@ -179,23 +182,23 @@ import 'zero_trust_device_settings_state.dart';
 class ZeroTrustDeviceSettings extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
   /// Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
-  late final pulumi.Output<double?> disableForTime;
+  late final pulumi.Output<double> disableForTime;
   /// Controls whether the external emergency disconnect feature is enabled.
-  late final pulumi.Output<bool?> externalEmergencySignalEnabled;
+  late final pulumi.Output<bool> externalEmergencySignalEnabled;
   /// The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
-  late final pulumi.Output<String?> externalEmergencySignalFingerprint;
+  late final pulumi.Output<String> externalEmergencySignalFingerprint;
   /// The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
-  late final pulumi.Output<String?> externalEmergencySignalInterval;
+  late final pulumi.Output<String> externalEmergencySignalInterval;
   /// The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
-  late final pulumi.Output<String?> externalEmergencySignalUrl;
+  late final pulumi.Output<String> externalEmergencySignalUrl;
   /// Enable gateway proxy filtering on TCP.
-  late final pulumi.Output<bool?> gatewayProxyEnabled;
+  late final pulumi.Output<bool> gatewayProxyEnabled;
   /// Enable gateway proxy filtering on UDP.
-  late final pulumi.Output<bool?> gatewayUdpProxyEnabled;
+  late final pulumi.Output<bool> gatewayUdpProxyEnabled;
   /// Enable installation of cloudflare managed root certificate.
-  late final pulumi.Output<bool?> rootCertificateInstallationEnabled;
+  late final pulumi.Output<bool> rootCertificateInstallationEnabled;
   /// Enable using CGNAT virtual IPv4.
-  late final pulumi.Output<bool?> useZtVirtualIp;
+  late final pulumi.Output<bool> useZtVirtualIp;
 
   /// Creates a new [ZeroTrustDeviceSettings].
   /// [name] The Pulumi resource name.
@@ -209,18 +212,18 @@ class ZeroTrustDeviceSettings extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
-    disableForTime = registerOutput<double?>('disableForTime');
-    externalEmergencySignalEnabled = registerOutput<bool?>('externalEmergencySignalEnabled');
-    externalEmergencySignalFingerprint = registerOutput<String?>('externalEmergencySignalFingerprint');
-    externalEmergencySignalInterval = registerOutput<String?>('externalEmergencySignalInterval');
-    externalEmergencySignalUrl = registerOutput<String?>('externalEmergencySignalUrl');
-    gatewayProxyEnabled = registerOutput<bool?>('gatewayProxyEnabled');
-    gatewayUdpProxyEnabled = registerOutput<bool?>('gatewayUdpProxyEnabled');
-    rootCertificateInstallationEnabled = registerOutput<bool?>('rootCertificateInstallationEnabled');
-    useZtVirtualIp = registerOutput<bool?>('useZtVirtualIp');
+    disableForTime = registerOutput<double>('disableForTime');
+    externalEmergencySignalEnabled = registerOutput<bool>('externalEmergencySignalEnabled');
+    externalEmergencySignalFingerprint = registerOutput<String>('externalEmergencySignalFingerprint');
+    externalEmergencySignalInterval = registerOutput<String>('externalEmergencySignalInterval');
+    externalEmergencySignalUrl = registerOutput<String>('externalEmergencySignalUrl');
+    gatewayProxyEnabled = registerOutput<bool>('gatewayProxyEnabled');
+    gatewayUdpProxyEnabled = registerOutput<bool>('gatewayUdpProxyEnabled');
+    rootCertificateInstallationEnabled = registerOutput<bool>('rootCertificateInstallationEnabled');
+    useZtVirtualIp = registerOutput<bool>('useZtVirtualIp');
   }
 
   /// Gets an existing [ZeroTrustDeviceSettings] resource's state with the given [name] and [id].
@@ -248,15 +251,15 @@ class ZeroTrustDeviceSettings extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accountId = registerOutput<String>('accountId');
-    disableForTime = registerOutput<double?>('disableForTime');
-    externalEmergencySignalEnabled = registerOutput<bool?>('externalEmergencySignalEnabled');
-    externalEmergencySignalFingerprint = registerOutput<String?>('externalEmergencySignalFingerprint');
-    externalEmergencySignalInterval = registerOutput<String?>('externalEmergencySignalInterval');
-    externalEmergencySignalUrl = registerOutput<String?>('externalEmergencySignalUrl');
-    gatewayProxyEnabled = registerOutput<bool?>('gatewayProxyEnabled');
-    gatewayUdpProxyEnabled = registerOutput<bool?>('gatewayUdpProxyEnabled');
-    rootCertificateInstallationEnabled = registerOutput<bool?>('rootCertificateInstallationEnabled');
-    useZtVirtualIp = registerOutput<bool?>('useZtVirtualIp');
+    disableForTime = registerOutput<double>('disableForTime');
+    externalEmergencySignalEnabled = registerOutput<bool>('externalEmergencySignalEnabled');
+    externalEmergencySignalFingerprint = registerOutput<String>('externalEmergencySignalFingerprint');
+    externalEmergencySignalInterval = registerOutput<String>('externalEmergencySignalInterval');
+    externalEmergencySignalUrl = registerOutput<String>('externalEmergencySignalUrl');
+    gatewayProxyEnabled = registerOutput<bool>('gatewayProxyEnabled');
+    gatewayUdpProxyEnabled = registerOutput<bool>('gatewayUdpProxyEnabled');
+    rootCertificateInstallationEnabled = registerOutput<bool>('rootCertificateInstallationEnabled');
+    useZtVirtualIp = registerOutput<bool>('useZtVirtualIp');
   }
 
   /// Creates a typed reference to an existing [ZeroTrustDeviceSettings] resource.
@@ -269,14 +272,14 @@ class ZeroTrustDeviceSettings extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     accountId = registerOutput<String>('accountId');
-    disableForTime = registerOutput<double?>('disableForTime');
-    externalEmergencySignalEnabled = registerOutput<bool?>('externalEmergencySignalEnabled');
-    externalEmergencySignalFingerprint = registerOutput<String?>('externalEmergencySignalFingerprint');
-    externalEmergencySignalInterval = registerOutput<String?>('externalEmergencySignalInterval');
-    externalEmergencySignalUrl = registerOutput<String?>('externalEmergencySignalUrl');
-    gatewayProxyEnabled = registerOutput<bool?>('gatewayProxyEnabled');
-    gatewayUdpProxyEnabled = registerOutput<bool?>('gatewayUdpProxyEnabled');
-    rootCertificateInstallationEnabled = registerOutput<bool?>('rootCertificateInstallationEnabled');
-    useZtVirtualIp = registerOutput<bool?>('useZtVirtualIp');
+    disableForTime = registerOutput<double>('disableForTime');
+    externalEmergencySignalEnabled = registerOutput<bool>('externalEmergencySignalEnabled');
+    externalEmergencySignalFingerprint = registerOutput<String>('externalEmergencySignalFingerprint');
+    externalEmergencySignalInterval = registerOutput<String>('externalEmergencySignalInterval');
+    externalEmergencySignalUrl = registerOutput<String>('externalEmergencySignalUrl');
+    gatewayProxyEnabled = registerOutput<bool>('gatewayProxyEnabled');
+    gatewayUdpProxyEnabled = registerOutput<bool>('gatewayUdpProxyEnabled');
+    rootCertificateInstallationEnabled = registerOutput<bool>('rootCertificateInstallationEnabled');
+    useZtVirtualIp = registerOutput<bool>('useZtVirtualIp');
   }
 }

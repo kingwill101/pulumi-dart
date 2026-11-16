@@ -1,11 +1,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workers_deployment_annotations.dart';
 import 'workers_deployment_args.dart';
+import 'workers_deployment_code_update_strategy.dart';
 import 'workers_deployment_state.dart';
 import 'workers_deployment_version.dart';
 
 /// Accepted Permissions
 ///
+/// - `Individual Workers Admin`
+/// - `Individual Workers Content Read-Only`
+/// - `Individual Workers Editor`
+/// - `Individual Workers Metadata Read-Only`
+/// - `Workers Admin`
+/// - `Workers Content Read-Only`
+/// - `Workers Editor`
+/// - `Workers Metadata Read-Only`
 /// - `Workers Scripts Read`
 /// - `Workers Scripts Write`
 /// - `Workers Tail Read`
@@ -23,10 +32,13 @@ import 'workers_deployment_version.dart';
 ///     strategy: "percentage",
 ///     versions: [{
 ///         percentage: 100,
-///         versionId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+///         versionId: "023e105f-2a42-4f8b-a1c1-73f6a2a30c0f",
 ///     }],
 ///     annotations: {
 ///         workersMessage: "Deploy bug fix.",
+///     },
+///     codeUpdateStrategy: {
+///         mode: "immediate",
 ///     },
 /// });
 /// ```
@@ -40,10 +52,13 @@ import 'workers_deployment_version.dart';
 ///     strategy="percentage",
 ///     versions=[{
 ///         "percentage": float(100),
-///         "version_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+///         "version_id": "023e105f-2a42-4f8b-a1c1-73f6a2a30c0f",
 ///     }],
 ///     annotations={
 ///         "workers_message": "Deploy bug fix.",
+///     },
+///     code_update_strategy={
+///         "mode": "immediate",
 ///     })
 /// ```
 /// ```csharp
@@ -63,13 +78,17 @@ import 'workers_deployment_version.dart';
 ///         {
 ///             new Cloudflare.Inputs.WorkersDeploymentVersionArgs
 ///             {
-///                 Percentage = 100,
-///                 VersionId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+///                 Percentage = 100.0,
+///                 VersionId = "023e105f-2a42-4f8b-a1c1-73f6a2a30c0f",
 ///             },
 ///         },
 ///         Annotations = new Cloudflare.Inputs.WorkersDeploymentAnnotationsArgs
 ///         {
 ///             WorkersMessage = "Deploy bug fix.",
+///         },
+///         CodeUpdateStrategy = new Cloudflare.Inputs.WorkersDeploymentCodeUpdateStrategyArgs
+///         {
+///             Mode = "immediate",
 ///         },
 ///     });
 ///
@@ -92,11 +111,14 @@ import 'workers_deployment_version.dart';
 /// 			Versions: cloudflare.WorkersDeploymentVersionArray{
 /// 				&cloudflare.WorkersDeploymentVersionArgs{
 /// 					Percentage: pulumi.Float64(100),
-/// 					VersionId:  pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
+/// 					VersionId:  pulumi.String("023e105f-2a42-4f8b-a1c1-73f6a2a30c0f"),
 /// 				},
 /// 			},
 /// 			Annotations: &cloudflare.WorkersDeploymentAnnotationsArgs{
 /// 				WorkersMessage: pulumi.String("Deploy bug fix."),
+/// 			},
+/// 			CodeUpdateStrategy: &cloudflare.WorkersDeploymentCodeUpdateStrategyArgs{
+/// 				Mode: pulumi.String("immediate"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -107,7 +129,7 @@ import 'workers_deployment_version.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -115,16 +137,22 @@ import 'workers_deployment_version.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_workersdeployment" "example_workers_deployment" {
+/// resource "cloudflare_workers_deployment" "example_workers_deployment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   script_name = "this-is_my_script-01"
 ///   strategy    = "percentage"
-///   versions {
+///   versions = [{
 ///     percentage = 100
-///     version_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
-///   }
+///     version_id = "023e105f-2a42-4f8b-a1c1-73f6a2a30c0f"
+///   }]
 ///   annotations = {
 ///     workers_message = "Deploy bug fix."
+///   }
+///   code_update_strategy = {
+///     mode = "immediate"
 ///   }
 /// }
 /// ```
@@ -138,6 +166,7 @@ import 'workers_deployment_version.dart';
 /// import com.pulumi.cloudflare.WorkersDeploymentArgs;
 /// import com.pulumi.cloudflare.inputs.WorkersDeploymentVersionArgs;
 /// import com.pulumi.cloudflare.inputs.WorkersDeploymentAnnotationsArgs;
+/// import com.pulumi.cloudflare.inputs.WorkersDeploymentCodeUpdateStrategyArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -157,10 +186,13 @@ import 'workers_deployment_version.dart';
 ///             .strategy("percentage")
 ///             .versions(WorkersDeploymentVersionArgs.builder()
 ///                 .percentage(100.0)
-///                 .versionId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+///                 .versionId("023e105f-2a42-4f8b-a1c1-73f6a2a30c0f")
 ///                 .build())
 ///             .annotations(WorkersDeploymentAnnotationsArgs.builder()
 ///                 .workersMessage("Deploy bug fix.")
+///                 .build())
+///             .codeUpdateStrategy(WorkersDeploymentCodeUpdateStrategyArgs.builder()
+///                 .mode("immediate")
 ///                 .build())
 ///             .build());
 ///
@@ -178,9 +210,11 @@ import 'workers_deployment_version.dart';
 ///       strategy: percentage
 ///       versions:
 ///         - percentage: 100
-///           versionId: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e
+///           versionId: 023e105f-2a42-4f8b-a1c1-73f6a2a30c0f
 ///       annotations:
 ///         workersMessage: Deploy bug fix.
+///       codeUpdateStrategy:
+///         mode: immediate
 /// ```
 ///
 ///
@@ -192,14 +226,21 @@ import 'workers_deployment_version.dart';
 class WorkersDeployment extends pulumi.CustomResource {
   /// Identifier.
   late final pulumi.Output<String> accountId;
+  /// Metadata attached to the deployment.
   late final pulumi.Output<WorkersDeploymentAnnotations> annotations;
   late final pulumi.Output<String> authorEmail;
+  /// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+  late final pulumi.Output<WorkersDeploymentCodeUpdateStrategy?> codeUpdateStrategy;
   late final pulumi.Output<String> createdOn;
-  /// Name of the script, used in URLs and route configuration.
+  /// If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
+  late final pulumi.Output<bool?> force;
+  /// Name of the script.
   late final pulumi.Output<String> scriptName;
   late final pulumi.Output<String> source;
+  /// Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
   /// Available values: "percentage".
   late final pulumi.Output<String> strategy;
+  /// Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"versionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
   late final pulumi.Output<List<WorkersDeploymentVersion>> versions;
 
   /// Creates a new [WorkersDeployment].
@@ -214,12 +255,14 @@ class WorkersDeployment extends pulumi.CustomResource {
           'cloudflare:index/workersDeployment:WorkersDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     annotations = registerOutput<WorkersDeploymentAnnotations>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkersDeploymentAnnotations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authorEmail = registerOutput<String>('authorEmail');
+    codeUpdateStrategy = registerOutput<WorkersDeploymentCodeUpdateStrategy?>('codeUpdateStrategy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkersDeploymentCodeUpdateStrategy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdOn = registerOutput<String>('createdOn');
+    force = registerOutput<bool?>('force');
     scriptName = registerOutput<String>('scriptName');
     source = registerOutput<String>('source');
     strategy = registerOutput<String>('strategy');
@@ -253,7 +296,9 @@ class WorkersDeployment extends pulumi.CustomResource {
     accountId = registerOutput<String>('accountId');
     annotations = registerOutput<WorkersDeploymentAnnotations>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkersDeploymentAnnotations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authorEmail = registerOutput<String>('authorEmail');
+    codeUpdateStrategy = registerOutput<WorkersDeploymentCodeUpdateStrategy?>('codeUpdateStrategy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkersDeploymentCodeUpdateStrategy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdOn = registerOutput<String>('createdOn');
+    force = registerOutput<bool?>('force');
     scriptName = registerOutput<String>('scriptName');
     source = registerOutput<String>('source');
     strategy = registerOutput<String>('strategy');
@@ -272,7 +317,9 @@ class WorkersDeployment extends pulumi.CustomResource {
     accountId = registerOutput<String>('accountId');
     annotations = registerOutput<WorkersDeploymentAnnotations>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkersDeploymentAnnotations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authorEmail = registerOutput<String>('authorEmail');
+    codeUpdateStrategy = registerOutput<WorkersDeploymentCodeUpdateStrategy?>('codeUpdateStrategy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkersDeploymentCodeUpdateStrategy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdOn = registerOutput<String>('createdOn');
+    force = registerOutput<bool?>('force');
     scriptName = registerOutput<String>('scriptName');
     source = registerOutput<String>('source');
     strategy = registerOutput<String>('strategy');

@@ -33,8 +33,16 @@ import 'load_balancer_pool_state.dart';
 ///         virtualNetworkId: "a5624d4e-044a-4ff0-b3e1-e2465353d4b4",
 ///         weight: 0.6,
 ///     }],
+///     checkRegions: [
+///         "WEU",
+///         "ENAM",
+///     ],
 ///     description: "Primary data center - Provider XYZ",
 ///     enabled: false,
+///     healthSources: [
+///         "regional",
+///         "global",
+///     ],
 ///     latitude: 0,
 ///     loadShedding: {
 ///         defaultPercent: 0,
@@ -46,6 +54,10 @@ import 'load_balancer_pool_state.dart';
 ///     minimumOrigins: 0,
 ///     monitor: "monitor",
 ///     monitorGroup: "monitor_group",
+///     networks: [
+///         "cloudflare",
+///         "jdcloud",
+///     ],
 ///     notificationEmail: "someone@example.com,sometwo@example.com",
 ///     notificationFilter: {
 ///         origin: {
@@ -81,8 +93,16 @@ import 'load_balancer_pool_state.dart';
 ///         "virtual_network_id": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4",
 ///         "weight": 0.6,
 ///     }],
+///     check_regions=[
+///         "WEU",
+///         "ENAM",
+///     ],
 ///     description="Primary data center - Provider XYZ",
 ///     enabled=False,
+///     health_sources=[
+///         "regional",
+///         "global",
+///     ],
 ///     latitude=float(0),
 ///     load_shedding={
 ///         "default_percent": float(0),
@@ -94,6 +114,10 @@ import 'load_balancer_pool_state.dart';
 ///     minimum_origins=0,
 ///     monitor="monitor",
 ///     monitor_group="monitor_group",
+///     networks=[
+///         "cloudflare",
+///         "jdcloud",
+///     ],
 ///     notification_email="someone@example.com,sometwo@example.com",
 ///     notification_filter={
 ///         "origin": {
@@ -141,20 +165,35 @@ import 'load_balancer_pool_state.dart';
 ///                 Weight = 0.6,
 ///             },
 ///         },
+///         CheckRegions = new[]
+///         {
+///             "WEU",
+///             "ENAM",
+///         },
 ///         Description = "Primary data center - Provider XYZ",
 ///         Enabled = false,
-///         Latitude = 0,
+///         HealthSources = new[]
+///         {
+///             "regional",
+///             "global",
+///         },
+///         Latitude = 0.0,
 ///         LoadShedding = new Cloudflare.Inputs.LoadBalancerPoolLoadSheddingArgs
 ///         {
-///             DefaultPercent = 0,
+///             DefaultPercent = 0.0,
 ///             DefaultPolicy = "random",
-///             SessionPercent = 0,
+///             SessionPercent = 0.0,
 ///             SessionPolicy = "hash",
 ///         },
-///         Longitude = 0,
+///         Longitude = 0.0,
 ///         MinimumOrigins = 0,
 ///         Monitor = "monitor",
 ///         MonitorGroup = "monitor_group",
+///         Networks = new[]
+///         {
+///             "cloudflare",
+///             "jdcloud",
+///         },
 ///         NotificationEmail = "someone@example.com,sometwo@example.com",
 ///         NotificationFilter = new Cloudflare.Inputs.LoadBalancerPoolNotificationFilterArgs
 ///         {
@@ -206,19 +245,31 @@ import 'load_balancer_pool_state.dart';
 /// 					Weight:           pulumi.Float64(0.6),
 /// 				},
 /// 			},
+/// 			CheckRegions: pulumi.StringArray{
+/// 				pulumi.String("WEU"),
+/// 				pulumi.String("ENAM"),
+/// 			},
 /// 			Description: pulumi.String("Primary data center - Provider XYZ"),
 /// 			Enabled:     pulumi.Bool(false),
-/// 			Latitude:    pulumi.Float64(0),
+/// 			HealthSources: pulumi.StringArray{
+/// 				pulumi.String("regional"),
+/// 				pulumi.String("global"),
+/// 			},
+/// 			Latitude: pulumi.Float64(0),
 /// 			LoadShedding: &cloudflare.LoadBalancerPoolLoadSheddingArgs{
 /// 				DefaultPercent: pulumi.Float64(0),
 /// 				DefaultPolicy:  pulumi.String("random"),
 /// 				SessionPercent: pulumi.Float64(0),
 /// 				SessionPolicy:  pulumi.String("hash"),
 /// 			},
-/// 			Longitude:         pulumi.Float64(0),
-/// 			MinimumOrigins:    pulumi.Int(0),
-/// 			Monitor:           pulumi.String("monitor"),
-/// 			MonitorGroup:      pulumi.String("monitor_group"),
+/// 			Longitude:      pulumi.Float64(0),
+/// 			MinimumOrigins: pulumi.Int(0),
+/// 			Monitor:        pulumi.String("monitor"),
+/// 			MonitorGroup:   pulumi.String("monitor_group"),
+/// 			Networks: []string{
+/// 				"cloudflare",
+/// 				"jdcloud",
+/// 			},
 /// 			NotificationEmail: pulumi.String("someone@example.com,sometwo@example.com"),
 /// 			NotificationFilter: &cloudflare.LoadBalancerPoolNotificationFilterArgs{
 /// 				Origin: &cloudflare.LoadBalancerPoolNotificationFilterOriginArgs{
@@ -242,7 +293,7 @@ import 'load_balancer_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -250,10 +301,13 @@ import 'load_balancer_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_loadbalancerpool" "example_load_balancer_pool" {
+/// resource "cloudflare_load_balancer_pool" "example_load_balancer_pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   name       = "primary-dc-1"
-///   origins {
+///   origins = [{
 ///     address       = "0.0.0.0"
 ///     enabled       = true
 ///     flatten_cname = true
@@ -264,10 +318,12 @@ import 'load_balancer_pool_state.dart';
 ///     port               = 0
 ///     virtual_network_id = "a5624d4e-044a-4ff0-b3e1-e2465353d4b4"
 ///     weight             = 0.6
-///   }
-///   description = "Primary data center - Provider XYZ"
-///   enabled     = false
-///   latitude    = 0
+///   }]
+///   check_regions  = ["WEU", "ENAM"]
+///   description    = "Primary data center - Provider XYZ"
+///   enabled        = false
+///   health_sources = ["regional", "global"]
+///   latitude       = 0
 ///   load_shedding = {
 ///     default_percent = 0
 ///     default_policy  = "random"
@@ -278,6 +334,7 @@ import 'load_balancer_pool_state.dart';
 ///   minimum_origins    = 0
 ///   monitor            = "monitor"
 ///   monitor_group      = "monitor_group"
+///   networks           = ["cloudflare", "jdcloud"]
 ///   notification_email = "someone@example.com,sometwo@example.com"
 ///   notification_filter = {
 ///     origin = {
@@ -337,8 +394,14 @@ import 'load_balancer_pool_state.dart';
 ///                 .virtualNetworkId("a5624d4e-044a-4ff0-b3e1-e2465353d4b4")
 ///                 .weight(0.6)
 ///                 .build())
+///             .checkRegions(
+///                 "WEU",
+///                 "ENAM")
 ///             .description("Primary data center - Provider XYZ")
 ///             .enabled(false)
+///             .healthSources(
+///                 "regional",
+///                 "global")
 ///             .latitude(0.0)
 ///             .loadShedding(LoadBalancerPoolLoadSheddingArgs.builder()
 ///                 .defaultPercent(0.0)
@@ -350,6 +413,9 @@ import 'load_balancer_pool_state.dart';
 ///             .minimumOrigins(0)
 ///             .monitor("monitor")
 ///             .monitorGroup("monitor_group")
+///             .networks(Arrays.asList(
+///                 "cloudflare",
+///                 "jdcloud"))
 ///             .notificationEmail("someone@example.com,sometwo@example.com")
 ///             .notificationFilter(LoadBalancerPoolNotificationFilterArgs.builder()
 ///                 .origin(LoadBalancerPoolNotificationFilterOriginArgs.builder()
@@ -388,8 +454,14 @@ import 'load_balancer_pool_state.dart';
 ///           port: 0
 ///           virtualNetworkId: a5624d4e-044a-4ff0-b3e1-e2465353d4b4
 ///           weight: 0.6
+///       checkRegions:
+///         - WEU
+///         - ENAM
 ///       description: Primary data center - Provider XYZ
 ///       enabled: false
+///       healthSources:
+///         - regional
+///         - global
 ///       latitude: 0
 ///       loadShedding:
 ///         defaultPercent: 0
@@ -400,6 +472,9 @@ import 'load_balancer_pool_state.dart';
 ///       minimumOrigins: 0
 ///       monitor: monitor
 ///       monitorGroup: monitor_group
+///       networks:
+///         - cloudflare
+///         - jdcloud
 ///       notificationEmail: someone@example.com,sometwo@example.com
 ///       notificationFilter:
 ///         origin:
@@ -470,7 +545,7 @@ class LoadBalancerPool extends pulumi.CustomResource {
           'cloudflare:index/loadBalancerPool:LoadBalancerPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     checkRegions = registerOutput<List<String>?>('checkRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

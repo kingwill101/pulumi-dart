@@ -10,6 +10,9 @@ import 'd1_database_read_replication.dart';
 class D1DatabaseArgs {
   /// Account identifier tag.
   final pulumi.Input<String> accountId;
+  /// Comma-separated list of fields to include in the response. When omitted,
+  /// all fields are returned.
+  final pulumi.Input<List<String>?>? fields;
   /// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
   /// Available values: "eu", "fedramp", "us".
   final pulumi.Input<String?>? jurisdiction;
@@ -23,12 +26,14 @@ class D1DatabaseArgs {
 
   /// Creates a new [D1DatabaseArgs].
   /// [accountId] Account identifier tag.
+  /// [fields] Comma-separated list of fields to include in the response. When omitted,
   /// [jurisdiction] Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
   /// [name] D1 database name.
   /// [primaryLocationHint] Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
   /// [readReplication] Configuration for D1 read replication.
   const D1DatabaseArgs({
     required this.accountId,
+    this.fields,
     this.jurisdiction,
     required this.name,
     this.primaryLocationHint,
@@ -38,6 +43,7 @@ class D1DatabaseArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountId': accountId,
+      'fields': ?fields,
       'jurisdiction': ?jurisdiction,
       'name': name,
       'primaryLocationHint': ?primaryLocationHint,
@@ -48,6 +54,7 @@ class D1DatabaseArgs {
   factory D1DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return D1DatabaseArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      fields: (() { final guardedValue = map['fields']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       jurisdiction: (() { final guardedValue = map['jurisdiction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       primaryLocationHint: (() { final guardedValue = map['primaryLocationHint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

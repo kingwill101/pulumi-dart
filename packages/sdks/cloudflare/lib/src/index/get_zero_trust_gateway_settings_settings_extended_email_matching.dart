@@ -38,7 +38,7 @@ class GetZeroTrustGatewaySettingsSettingsExtendedEmailMatching {
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       readOnly: pulumi.Input.fromValue(map['readOnly'] as bool),
       sourceAccount: pulumi.Input.fromValue(map['sourceAccount'] as String),
-      version: pulumi.Input.fromValue((map['version'] as num).toInt()),
+      version: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['version'])),
     );
   }
 }

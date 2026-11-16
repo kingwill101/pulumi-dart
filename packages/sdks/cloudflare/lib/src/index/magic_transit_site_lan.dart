@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'magic_transit_site_lan_args.dart';
 import 'magic_transit_site_lan_nat.dart';
+import 'magic_transit_site_lan_remote_subnet.dart';
 import 'magic_transit_site_lan_routed_subnet.dart';
 import 'magic_transit_site_lan_state.dart';
 import 'magic_transit_site_lan_static_addressing.dart';
@@ -31,6 +32,10 @@ import 'magic_transit_site_lan_static_addressing.dart';
 ///         staticPrefix: "192.0.2.0/24",
 ///     },
 ///     physport: 1,
+///     remoteSubnets: [{
+///         localAliasPrefix: "192.0.2.0/24",
+///         remotePrefix: "192.0.2.0/24",
+///     }],
 ///     routedSubnets: [{
 ///         nextHop: "192.0.2.1",
 ///         prefix: "192.0.2.0/24",
@@ -44,6 +49,11 @@ import 'magic_transit_site_lan_static_addressing.dart';
 ///             serverAddresses: ["192.0.2.1"],
 ///         },
 ///         dhcpServer: {
+///             dhcpOptions: [{
+///                 code: 66,
+///                 type: "ip",
+///                 value: "10.20.30.40",
+///             }],
 ///             dhcpPoolEnd: "192.0.2.1",
 ///             dhcpPoolStart: "192.0.2.1",
 ///             dnsServer: "192.0.2.1",
@@ -75,6 +85,10 @@ import 'magic_transit_site_lan_static_addressing.dart';
 ///         "static_prefix": "192.0.2.0/24",
 ///     },
 ///     physport=1,
+///     remote_subnets=[{
+///         "local_alias_prefix": "192.0.2.0/24",
+///         "remote_prefix": "192.0.2.0/24",
+///     }],
 ///     routed_subnets=[{
 ///         "next_hop": "192.0.2.1",
 ///         "prefix": "192.0.2.0/24",
@@ -88,6 +102,11 @@ import 'magic_transit_site_lan_static_addressing.dart';
 ///             "server_addresses": ["192.0.2.1"],
 ///         },
 ///         "dhcp_server": {
+///             "dhcp_options": [{
+///                 "code": 66,
+///                 "type": "ip",
+///                 "value": "10.20.30.40",
+///             }],
 ///             "dhcp_pool_end": "192.0.2.1",
 ///             "dhcp_pool_start": "192.0.2.1",
 ///             "dns_server": "192.0.2.1",
@@ -124,6 +143,14 @@ import 'magic_transit_site_lan_static_addressing.dart';
 ///             StaticPrefix = "192.0.2.0/24",
 ///         },
 ///         Physport = 1,
+///         RemoteSubnets = new[]
+///         {
+///             new Cloudflare.Inputs.MagicTransitSiteLanRemoteSubnetArgs
+///             {
+///                 LocalAliasPrefix = "192.0.2.0/24",
+///                 RemotePrefix = "192.0.2.0/24",
+///             },
+///         },
 ///         RoutedSubnets = new[]
 ///         {
 ///             new Cloudflare.Inputs.MagicTransitSiteLanRoutedSubnetArgs
@@ -148,6 +175,15 @@ import 'magic_transit_site_lan_static_addressing.dart';
 ///             },
 ///             DhcpServer = new Cloudflare.Inputs.MagicTransitSiteLanStaticAddressingDhcpServerArgs
 ///             {
+///                 DhcpOptions = new[]
+///                 {
+///                     new Cloudflare.Inputs.MagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionArgs
+///                     {
+///                         Code = 66,
+///                         Type = "ip",
+///                         Value = "10.20.30.40",
+///                     },
+///                 },
 ///                 DhcpPoolEnd = "192.0.2.1",
 ///                 DhcpPoolStart = "192.0.2.1",
 ///                 DnsServer = "192.0.2.1",
@@ -191,6 +227,12 @@ import 'magic_transit_site_lan_static_addressing.dart';
 /// 				StaticPrefix: pulumi.String("192.0.2.0/24"),
 /// 			},
 /// 			Physport: pulumi.Int(1),
+/// 			RemoteSubnets: cloudflare.MagicTransitSiteLanRemoteSubnetArray{
+/// 				&cloudflare.MagicTransitSiteLanRemoteSubnetArgs{
+/// 					LocalAliasPrefix: pulumi.String("192.0.2.0/24"),
+/// 					RemotePrefix:     pulumi.String("192.0.2.0/24"),
+/// 				},
+/// 			},
 /// 			RoutedSubnets: cloudflare.MagicTransitSiteLanRoutedSubnetArray{
 /// 				&cloudflare.MagicTransitSiteLanRoutedSubnetArgs{
 /// 					NextHop: pulumi.String("192.0.2.1"),
@@ -208,6 +250,13 @@ import 'magic_transit_site_lan_static_addressing.dart';
 /// 					},
 /// 				},
 /// 				DhcpServer: &cloudflare.MagicTransitSiteLanStaticAddressingDhcpServerArgs{
+/// 					DhcpOptions: cloudflare.MagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionArray{
+/// 						&cloudflare.MagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionArgs{
+/// 							Code:  pulumi.Int(66),
+/// 							Type:  pulumi.String("ip"),
+/// 							Value: pulumi.String("10.20.30.40"),
+/// 						},
+/// 					},
 /// 					DhcpPoolEnd:   pulumi.String("192.0.2.1"),
 /// 					DhcpPoolStart: pulumi.String("192.0.2.1"),
 /// 					DnsServer:     pulumi.String("192.0.2.1"),
@@ -232,7 +281,7 @@ import 'magic_transit_site_lan_static_addressing.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -240,7 +289,10 @@ import 'magic_transit_site_lan_static_addressing.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_magictransitsitelan" "example_magic_transit_site_lan" {
+/// resource "cloudflare_magic_transit_site_lan" "example_magic_transit_site_lan" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id     = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   site_id        = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   bond_id        = 2
@@ -252,19 +304,28 @@ import 'magic_transit_site_lan_static_addressing.dart';
 ///     static_prefix = "192.0.2.0/24"
 ///   }
 ///   physport = 1
-///   routed_subnets {
+///   remote_subnets = [{
+///     local_alias_prefix = "192.0.2.0/24"
+///     remote_prefix      = "192.0.2.0/24"
+///   }]
+///   routed_subnets = [{
 ///     next_hop = "192.0.2.1"
 ///     prefix   = "192.0.2.0/24"
 ///     nat = {
 ///       static_prefix = "192.0.2.0/24"
 ///     }
-///   }
+///   }]
 ///   static_addressing = {
 ///     address = "192.0.2.0/24"
 ///     dhcp_relay = {
 ///       server_addresses = ["192.0.2.1"]
 ///     }
 ///     dhcp_server = {
+///       dhcp_options = [{
+///         code  = 66
+///         type  = "ip"
+///         value = "10.20.30.40"
+///       }]
 ///       dhcp_pool_end   = "192.0.2.1"
 ///       dhcp_pool_start = "192.0.2.1"
 ///       dns_server      = "192.0.2.1"
@@ -289,11 +350,13 @@ import 'magic_transit_site_lan_static_addressing.dart';
 /// import com.pulumi.cloudflare.MagicTransitSiteLan;
 /// import com.pulumi.cloudflare.MagicTransitSiteLanArgs;
 /// import com.pulumi.cloudflare.inputs.MagicTransitSiteLanNatArgs;
+/// import com.pulumi.cloudflare.inputs.MagicTransitSiteLanRemoteSubnetArgs;
 /// import com.pulumi.cloudflare.inputs.MagicTransitSiteLanRoutedSubnetArgs;
 /// import com.pulumi.cloudflare.inputs.MagicTransitSiteLanRoutedSubnetNatArgs;
 /// import com.pulumi.cloudflare.inputs.MagicTransitSiteLanStaticAddressingArgs;
 /// import com.pulumi.cloudflare.inputs.MagicTransitSiteLanStaticAddressingDhcpRelayArgs;
 /// import com.pulumi.cloudflare.inputs.MagicTransitSiteLanStaticAddressingDhcpServerArgs;
+/// import com.pulumi.cloudflare.inputs.MagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -319,6 +382,10 @@ import 'magic_transit_site_lan_static_addressing.dart';
 ///                 .staticPrefix("192.0.2.0/24")
 ///                 .build())
 ///             .physport(1)
+///             .remoteSubnets(MagicTransitSiteLanRemoteSubnetArgs.builder()
+///                 .localAliasPrefix("192.0.2.0/24")
+///                 .remotePrefix("192.0.2.0/24")
+///                 .build())
 ///             .routedSubnets(MagicTransitSiteLanRoutedSubnetArgs.builder()
 ///                 .nextHop("192.0.2.1")
 ///                 .prefix("192.0.2.0/24")
@@ -332,6 +399,11 @@ import 'magic_transit_site_lan_static_addressing.dart';
 ///                     .serverAddresses("192.0.2.1")
 ///                     .build())
 ///                 .dhcpServer(MagicTransitSiteLanStaticAddressingDhcpServerArgs.builder()
+///                     .dhcpOptions(MagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionArgs.builder()
+///                         .code(66)
+///                         .type("ip")
+///                         .value("10.20.30.40")
+///                         .build())
 ///                     .dhcpPoolEnd("192.0.2.1")
 ///                     .dhcpPoolStart("192.0.2.1")
 ///                     .dnsServer("192.0.2.1")
@@ -366,6 +438,9 @@ import 'magic_transit_site_lan_static_addressing.dart';
 ///       nat:
 ///         staticPrefix: 192.0.2.0/24
 ///       physport: 1
+///       remoteSubnets:
+///         - localAliasPrefix: 192.0.2.0/24
+///           remotePrefix: 192.0.2.0/24
 ///       routedSubnets:
 ///         - nextHop: 192.0.2.1
 ///           prefix: 192.0.2.0/24
@@ -377,6 +452,10 @@ import 'magic_transit_site_lan_static_addressing.dart';
 ///           serverAddresses:
 ///             - 192.0.2.1
 ///         dhcpServer:
+///           dhcpOptions:
+///             - code: 66
+///               type: ip
+///               value: 10.20.30.40
 ///           dhcpPoolEnd: 192.0.2.1
 ///           dhcpPoolStart: 192.0.2.1
 ///           dnsServer: 192.0.2.1
@@ -409,6 +488,7 @@ class MagicTransitSiteLan extends pulumi.CustomResource {
   late final pulumi.Output<String?> name;
   late final pulumi.Output<MagicTransitSiteLanNat?> nat;
   late final pulumi.Output<int?> physport;
+  late final pulumi.Output<List<MagicTransitSiteLanRemoteSubnet>?> remoteSubnets;
   late final pulumi.Output<List<MagicTransitSiteLanRoutedSubnet>?> routedSubnets;
   /// Identifier
   late final pulumi.Output<String> siteId;
@@ -429,7 +509,7 @@ class MagicTransitSiteLan extends pulumi.CustomResource {
           'cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     bondId = registerOutput<int?>('bondId');
@@ -439,6 +519,7 @@ class MagicTransitSiteLan extends pulumi.CustomResource {
     this.name = registerOutput<String?>('name');
     nat = registerOutput<MagicTransitSiteLanNat?>('nat', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MagicTransitSiteLanNat.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     physport = registerOutput<int?>('physport');
+    remoteSubnets = registerOutput<List<MagicTransitSiteLanRemoteSubnet>?>('remoteSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MagicTransitSiteLanRemoteSubnet>(guardedValue, (value) => MagicTransitSiteLanRemoteSubnet.fromMap((value as Map).cast<String, dynamic>())); });
     routedSubnets = registerOutput<List<MagicTransitSiteLanRoutedSubnet>?>('routedSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MagicTransitSiteLanRoutedSubnet>(guardedValue, (value) => MagicTransitSiteLanRoutedSubnet.fromMap((value as Map).cast<String, dynamic>())); });
     siteId = registerOutput<String>('siteId');
     staticAddressing = registerOutput<MagicTransitSiteLanStaticAddressing?>('staticAddressing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MagicTransitSiteLanStaticAddressing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -477,6 +558,7 @@ class MagicTransitSiteLan extends pulumi.CustomResource {
     this.name = registerOutput<String?>('name');
     nat = registerOutput<MagicTransitSiteLanNat?>('nat', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MagicTransitSiteLanNat.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     physport = registerOutput<int?>('physport');
+    remoteSubnets = registerOutput<List<MagicTransitSiteLanRemoteSubnet>?>('remoteSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MagicTransitSiteLanRemoteSubnet>(guardedValue, (value) => MagicTransitSiteLanRemoteSubnet.fromMap((value as Map).cast<String, dynamic>())); });
     routedSubnets = registerOutput<List<MagicTransitSiteLanRoutedSubnet>?>('routedSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MagicTransitSiteLanRoutedSubnet>(guardedValue, (value) => MagicTransitSiteLanRoutedSubnet.fromMap((value as Map).cast<String, dynamic>())); });
     siteId = registerOutput<String>('siteId');
     staticAddressing = registerOutput<MagicTransitSiteLanStaticAddressing?>('staticAddressing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MagicTransitSiteLanStaticAddressing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -500,6 +582,7 @@ class MagicTransitSiteLan extends pulumi.CustomResource {
     this.name = registerOutput<String?>('name');
     nat = registerOutput<MagicTransitSiteLanNat?>('nat', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MagicTransitSiteLanNat.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     physport = registerOutput<int?>('physport');
+    remoteSubnets = registerOutput<List<MagicTransitSiteLanRemoteSubnet>?>('remoteSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MagicTransitSiteLanRemoteSubnet>(guardedValue, (value) => MagicTransitSiteLanRemoteSubnet.fromMap((value as Map).cast<String, dynamic>())); });
     routedSubnets = registerOutput<List<MagicTransitSiteLanRoutedSubnet>?>('routedSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MagicTransitSiteLanRoutedSubnet>(guardedValue, (value) => MagicTransitSiteLanRoutedSubnet.fromMap((value as Map).cast<String, dynamic>())); });
     siteId = registerOutput<String>('siteId');
     staticAddressing = registerOutput<MagicTransitSiteLanStaticAddressing?>('staticAddressing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MagicTransitSiteLanStaticAddressing.fromMap((guardedValue as Map).cast<String, dynamic>()); });

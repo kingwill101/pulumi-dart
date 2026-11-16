@@ -10,9 +10,9 @@ class GetKeylessCertificateResult {
   final bool? enabled;
   /// The keyless SSL name.
   final String? host;
-  /// Identifier.
+  /// Keyless certificate identifier tag.
   final String? id;
-  /// Identifier.
+  /// Keyless certificate identifier tag.
   final String? keylessCertificateId;
   /// When the Keyless SSL was last modified.
   final String? modifiedOn;
@@ -34,8 +34,8 @@ class GetKeylessCertificateResult {
   /// [createdOn] When the Keyless SSL was created.
   /// [enabled] Whether or not the Keyless SSL is on or off.
   /// [host] The keyless SSL name.
-  /// [id] Identifier.
-  /// [keylessCertificateId] Identifier.
+  /// [id] Keyless certificate identifier tag.
+  /// [keylessCertificateId] Keyless certificate identifier tag.
   /// [modifiedOn] When the Keyless SSL was last modified.
   /// [name] The keyless SSL name.
   /// [permissions] Available permissions for the Keyless SSL for the current user requesting the item.

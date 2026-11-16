@@ -23,6 +23,7 @@ import 'get_zero_trust_access_group_include_oidc.dart';
 import 'get_zero_trust_access_group_include_okta.dart';
 import 'get_zero_trust_access_group_include_saml.dart';
 import 'get_zero_trust_access_group_include_service_token.dart';
+import 'get_zero_trust_access_group_include_service_token_tag.dart';
 import 'get_zero_trust_access_group_include_user_risk_score.dart';
 
 class GetZeroTrustAccessGroupInclude {
@@ -53,6 +54,7 @@ class GetZeroTrustAccessGroupInclude {
   final pulumi.Input<GetZeroTrustAccessGroupIncludeOkta> okta;
   final pulumi.Input<GetZeroTrustAccessGroupIncludeSaml> saml;
   final pulumi.Input<GetZeroTrustAccessGroupIncludeServiceToken> serviceToken;
+  final pulumi.Input<GetZeroTrustAccessGroupIncludeServiceTokenTag> serviceTokenTag;
   final pulumi.Input<GetZeroTrustAccessGroupIncludeUserRiskScore> userRiskScore;
 
   /// Creates a new [GetZeroTrustAccessGroupInclude].
@@ -81,6 +83,7 @@ class GetZeroTrustAccessGroupInclude {
   /// [okta] Required.
   /// [saml] Required.
   /// [serviceToken] Required.
+  /// [serviceTokenTag] Required.
   /// [userRiskScore] Required.
   const GetZeroTrustAccessGroupInclude({
     required this.anyValidServiceToken,
@@ -108,6 +111,7 @@ class GetZeroTrustAccessGroupInclude {
     required this.okta,
     required this.saml,
     required this.serviceToken,
+    required this.serviceTokenTag,
     required this.userRiskScore,
   });
 
@@ -138,6 +142,7 @@ class GetZeroTrustAccessGroupInclude {
       'okta': pulumi.Input.mapInputValue<GetZeroTrustAccessGroupIncludeOkta, Map<String, dynamic>>(okta, (value) => value.toMap()),
       'saml': pulumi.Input.mapInputValue<GetZeroTrustAccessGroupIncludeSaml, Map<String, dynamic>>(saml, (value) => value.toMap()),
       'serviceToken': pulumi.Input.mapInputValue<GetZeroTrustAccessGroupIncludeServiceToken, Map<String, dynamic>>(serviceToken, (value) => value.toMap()),
+      'serviceTokenTag': pulumi.Input.mapInputValue<GetZeroTrustAccessGroupIncludeServiceTokenTag, Map<String, dynamic>>(serviceTokenTag, (value) => value.toMap()),
       'userRiskScore': pulumi.Input.mapInputValue<GetZeroTrustAccessGroupIncludeUserRiskScore, Map<String, dynamic>>(userRiskScore, (value) => value.toMap()),
     };
   }
@@ -169,6 +174,7 @@ class GetZeroTrustAccessGroupInclude {
       okta: pulumi.Input.fromValue(GetZeroTrustAccessGroupIncludeOkta.fromMap((map['okta']! as Map).cast<String, dynamic>())),
       saml: pulumi.Input.fromValue(GetZeroTrustAccessGroupIncludeSaml.fromMap((map['saml']! as Map).cast<String, dynamic>())),
       serviceToken: pulumi.Input.fromValue(GetZeroTrustAccessGroupIncludeServiceToken.fromMap((map['serviceToken']! as Map).cast<String, dynamic>())),
+      serviceTokenTag: pulumi.Input.fromValue(GetZeroTrustAccessGroupIncludeServiceTokenTag.fromMap((map['serviceTokenTag']! as Map).cast<String, dynamic>())),
       userRiskScore: pulumi.Input.fromValue(GetZeroTrustAccessGroupIncludeUserRiskScore.fromMap((map['userRiskScore']! as Map).cast<String, dynamic>())),
     );
   }

@@ -3,7 +3,7 @@
 
 /// Result data returned by getCtAlerting.
 class GetCtAlertingResult {
-  /// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+  /// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
   final List<String>? emails;
   /// Whether CT alerting is enabled for the zone.
   final bool? enabled;
@@ -13,7 +13,7 @@ class GetCtAlertingResult {
   final String? zoneId;
 
   /// Creates a new [GetCtAlertingResult].
-  /// [emails] Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+  /// [emails] Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
   /// [enabled] Whether CT alerting is enabled for the zone.
   /// [id] Identifier.
   /// [zoneId] Identifier.

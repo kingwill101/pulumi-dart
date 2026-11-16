@@ -35,6 +35,7 @@ import 'origin_ca_certificate_state.dart';
 ///     ],
 ///     requestType: "origin-rsa",
 ///     requestedValidity: 5475,
+///     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
 /// });
 /// ```
 /// ```python
@@ -66,7 +67,8 @@ import 'origin_ca_certificate_state.dart';
 ///         "sub.example.com",
 ///     ],
 ///     request_type="origin-rsa",
-///     requested_validity=float(5475))
+///     requested_validity=float(5475),
+///     zone_id="023e105f4ecef8ad9ca31a8372d0c353")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -103,7 +105,8 @@ import 'origin_ca_certificate_state.dart';
 ///             "sub.example.com",
 ///         },
 ///         RequestType = "origin-rsa",
-///         RequestedValidity = 5475,
+///         RequestedValidity = 5475.0,
+///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
 ///     });
 ///
 /// });
@@ -144,6 +147,7 @@ import 'origin_ca_certificate_state.dart';
 /// 			},
 /// 			RequestType:       pulumi.String("origin-rsa"),
 /// 			RequestedValidity: pulumi.Float64(5475),
+/// 			ZoneId:            pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -153,7 +157,7 @@ import 'origin_ca_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -161,11 +165,34 @@ import 'origin_ca_certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_origincacertificate" "example_origin_ca_certificate" {
-///   csr                = "  -----BEGIN CERTIFICATE REQUEST-----\n  MIICxzCCAa8CAQAwSDELMAkGA1UEBhMCVVMxFjAUBgNVBAgTDVNhbiBGcmFuY2lz\n  Y28xCzAJBgNVBAcTAkNBMRQwEgYDVQQDEwtleGFtcGxlLm5ldDCCASIwDQYJKoZI\n  hvcNAQEBBQADggEPADCCAQoCggEBALxejtu4b+jPdFeFi6OUsye8TYJQBm3WfCvL\n  Hu5EvijMO/4Z2TImwASbwUF7Ir8OLgH+mGlQZeqyNvGoSOMEaZVXcYfpR1hlVak8\n  4GGVr+04IGfOCqaBokaBFIwzclGZbzKmLGwIQioNxGfqFm6RGYGA3be2Je2iseBc\n  N8GV1wYmvYE0RR+yWweJCTJ157exyRzu7sVxaEW9F87zBQLyOnwXc64rflXslRqi\n  g7F7w5IaQYOl8yvmk/jEPCAha7fkiUfEpj4N12+oPRiMvleJF98chxjD4MH39c5I\n  uOslULhrWunfh7GB1jwWNA9y44H0snrf+xvoy2TcHmxvma9Eln8CAwEAAaA6MDgG\n  CSqGSIb3DQEJDjErMCkwJwYDVR0RBCAwHoILZXhhbXBsZS5uZXSCD3d3dy5leGFt\n  cGxlLm5ldDANBgkqhkiG9w0BAQsFAAOCAQEAcBaX6dOnI8ncARrI9ZSF2AJX+8mx\n  pTHY2+Y2C0VvrVDGMtbBRH8R9yMbqWtlxeeNGf//LeMkSKSFa4kbpdx226lfui8/\n  auRDBTJGx2R1ccUxmLZXx4my0W5iIMxunu+kez+BDlu7bTT2io0uXMRHue4i6quH\n  yc5ibxvbJMjR7dqbcanVE10/34oprzXQsJ/VmSuZNXtjbtSKDlmcpw6To/eeAJ+J\n  hXykcUihvHyG4A1m2R6qpANBjnA0pHexfwM/SgfzvpbvUg0T1ubmer8BgTwCKIWs\n  dcWYTthM51JIqRBfNqy4QcBnX+GY05yltEEswQI55wdiS3CjTTA67sdbcQ==\n  -----END CERTIFICATE REQUEST-----\n"
+/// resource "cloudflare_origin_ca_certificate" "example_origin_ca_certificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   csr                = <<EOT
+///   -----BEGIN CERTIFICATE REQUEST-----
+///   MIICxzCCAa8CAQAwSDELMAkGA1UEBhMCVVMxFjAUBgNVBAgTDVNhbiBGcmFuY2lz
+///   Y28xCzAJBgNVBAcTAkNBMRQwEgYDVQQDEwtleGFtcGxlLm5ldDCCASIwDQYJKoZI
+///   hvcNAQEBBQADggEPADCCAQoCggEBALxejtu4b+jPdFeFi6OUsye8TYJQBm3WfCvL
+///   Hu5EvijMO/4Z2TImwASbwUF7Ir8OLgH+mGlQZeqyNvGoSOMEaZVXcYfpR1hlVak8
+///   4GGVr+04IGfOCqaBokaBFIwzclGZbzKmLGwIQioNxGfqFm6RGYGA3be2Je2iseBc
+///   N8GV1wYmvYE0RR+yWweJCTJ157exyRzu7sVxaEW9F87zBQLyOnwXc64rflXslRqi
+///   g7F7w5IaQYOl8yvmk/jEPCAha7fkiUfEpj4N12+oPRiMvleJF98chxjD4MH39c5I
+///   uOslULhrWunfh7GB1jwWNA9y44H0snrf+xvoy2TcHmxvma9Eln8CAwEAAaA6MDgG
+///   CSqGSIb3DQEJDjErMCkwJwYDVR0RBCAwHoILZXhhbXBsZS5uZXSCD3d3dy5leGFt
+///   cGxlLm5ldDANBgkqhkiG9w0BAQsFAAOCAQEAcBaX6dOnI8ncARrI9ZSF2AJX+8mx
+///   pTHY2+Y2C0VvrVDGMtbBRH8R9yMbqWtlxeeNGf//LeMkSKSFa4kbpdx226lfui8/
+///   auRDBTJGx2R1ccUxmLZXx4my0W5iIMxunu+kez+BDlu7bTT2io0uXMRHue4i6quH
+///   yc5ibxvbJMjR7dqbcanVE10/34oprzXQsJ/VmSuZNXtjbtSKDlmcpw6To/eeAJ+J
+///   hXykcUihvHyG4A1m2R6qpANBjnA0pHexfwM/SgfzvpbvUg0T1ubmer8BgTwCKIWs
+///   dcWYTthM51JIqRBfNqy4QcBnX+GY05yltEEswQI55wdiS3CjTTA67sdbcQ==
+///   -----END CERTIFICATE REQUEST-----
+/// EOT
+///
 ///   hostnames          = ["example.com", "*.example.com", "sub.example.com"]
 ///   request_type       = "origin-rsa"
 ///   requested_validity = 5475
+///   zone_id            = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
 /// ```java
@@ -215,6 +242,7 @@ import 'origin_ca_certificate_state.dart';
 ///                 "sub.example.com")
 ///             .requestType("origin-rsa")
 ///             .requestedValidity(5475.0)
+///             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
 ///             .build());
 ///
 ///     }
@@ -250,6 +278,7 @@ import 'origin_ca_certificate_state.dart';
 ///         - sub.example.com
 ///       requestType: origin-rsa
 ///       requestedValidity: 5475
+///       zoneId: 023e105f4ecef8ad9ca31a8372d0c353
 /// ```
 ///
 ///
@@ -274,6 +303,10 @@ class OriginCaCertificate extends pulumi.CustomResource {
   /// The number of days for which the certificate should be valid.
   /// Available values: 7, 30, 90, 365, 730, 1095, 5475.
   late final pulumi.Output<double> requestedValidity;
+  /// When the certificate was revoked.
+  late final pulumi.Output<String> revokedAt;
+  /// Identifier of the zone whose keyless servers the certificate is for. Required when `requestType` is `keyless-certificate`; ignored otherwise.
+  late final pulumi.Output<String?> zoneId;
 
   /// Creates a new [OriginCaCertificate].
   /// [name] The Pulumi resource name.
@@ -287,7 +320,7 @@ class OriginCaCertificate extends pulumi.CustomResource {
           'cloudflare:index/originCaCertificate:OriginCaCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     certificate = registerOutput<String>('certificate');
     csr = registerOutput<String>('csr');
@@ -295,6 +328,8 @@ class OriginCaCertificate extends pulumi.CustomResource {
     hostnames = registerOutput<List<String>>('hostnames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     requestType = registerOutput<String>('requestType');
     requestedValidity = registerOutput<double>('requestedValidity');
+    revokedAt = registerOutput<String>('revokedAt');
+    zoneId = registerOutput<String?>('zoneId');
   }
 
   /// Gets an existing [OriginCaCertificate] resource's state with the given [name] and [id].
@@ -327,6 +362,8 @@ class OriginCaCertificate extends pulumi.CustomResource {
     hostnames = registerOutput<List<String>>('hostnames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     requestType = registerOutput<String>('requestType');
     requestedValidity = registerOutput<double>('requestedValidity');
+    revokedAt = registerOutput<String>('revokedAt');
+    zoneId = registerOutput<String?>('zoneId');
   }
 
   /// Creates a typed reference to an existing [OriginCaCertificate] resource.
@@ -344,5 +381,7 @@ class OriginCaCertificate extends pulumi.CustomResource {
     hostnames = registerOutput<List<String>>('hostnames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     requestType = registerOutput<String>('requestType');
     requestedValidity = registerOutput<double>('requestedValidity');
+    revokedAt = registerOutput<String>('revokedAt');
+    zoneId = registerOutput<String?>('zoneId');
   }
 }

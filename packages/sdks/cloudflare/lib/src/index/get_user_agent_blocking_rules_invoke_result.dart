@@ -48,7 +48,7 @@ class GetUserAgentBlockingRulesInvokeResult {
   factory GetUserAgentBlockingRulesInvokeResult.fromMap(Map<String, dynamic> map) {
     return GetUserAgentBlockingRulesInvokeResult(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       paused: (() { final guardedValue = map['paused']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetUserAgentBlockingRulesResult>(guardedValue, (value) => GetUserAgentBlockingRulesResult.fromMap((value as Map).cast<String, dynamic>())); })(),
       userAgent: (() { final guardedValue = map['userAgent']; if (guardedValue == null) return null; return guardedValue as String; })(),

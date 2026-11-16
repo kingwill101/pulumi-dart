@@ -8,35 +8,27 @@ import 'get_zero_trust_list_item.dart';
 class GetZeroTrustListResult {
   final String? accountId;
   final String? createdAt;
-  /// Provide the list description.
   final String? description;
   final GetZeroTrustListFilter? filter;
-  /// Identify the API resource with a UUID.
   final String? id;
-  /// Provide the list items.
   final List<GetZeroTrustListItem>? items;
-  /// Indicate the number of items in the list.
   final double? listCount;
-  /// Identify the API resource with a UUID.
   final String? listId;
-  /// Specify the list name.
   final String? name;
-  /// Specify the list type.
-  /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
   final String? type;
   final String? updatedAt;
 
   /// Creates a new [GetZeroTrustListResult].
   /// [accountId] Optional.
   /// [createdAt] Optional.
-  /// [description] Provide the list description.
+  /// [description] Optional.
   /// [filter] Optional.
-  /// [id] Identify the API resource with a UUID.
-  /// [items] Provide the list items.
-  /// [listCount] Indicate the number of items in the list.
-  /// [listId] Identify the API resource with a UUID.
-  /// [name] Specify the list name.
-  /// [type] Specify the list type.
+  /// [id] Optional.
+  /// [items] Optional.
+  /// [listCount] Optional.
+  /// [listId] Optional.
+  /// [name] Optional.
+  /// [type] Optional.
   /// [updatedAt] Optional.
   const GetZeroTrustListResult({
     this.accountId,

@@ -25,7 +25,7 @@ class PagesProjectDeploymentConfigsProduction {
   final pulumi.Input<Map<String, PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets>?>? analyticsEngineDatasets;
   /// Browser bindings used for Pages Functions.
   final pulumi.Input<Map<String, Map<String, dynamic>>?>? browsers;
-  /// The major version of the build image to use for Pages Functions.
+  /// The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected.
   final pulumi.Input<int?>? buildImageMajorVersion;
   /// Compatibility date used for Pages Functions.
   final pulumi.Input<String?>? compatibilityDate;
@@ -68,7 +68,7 @@ class PagesProjectDeploymentConfigsProduction {
   /// [alwaysUseLatestCompatibilityDate] Whether to always use the latest compatibility date for Pages Functions.
   /// [analyticsEngineDatasets] Analytics Engine bindings used for Pages Functions.
   /// [browsers] Browser bindings used for Pages Functions.
-  /// [buildImageMajorVersion] The major version of the build image to use for Pages Functions.
+  /// [buildImageMajorVersion] The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected.
   /// [compatibilityDate] Compatibility date used for Pages Functions.
   /// [compatibilityFlags] Compatibility flags used for Pages Functions.
   /// [d1Databases] D1 databases used for Pages Functions.
@@ -144,7 +144,7 @@ class PagesProjectDeploymentConfigsProduction {
       alwaysUseLatestCompatibilityDate: (() { final guardedValue = map['alwaysUseLatestCompatibilityDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       analyticsEngineDatasets: (() { final guardedValue = map['analyticsEngineDatasets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets>(guardedValue, (value) => PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets.fromMap((value as Map).cast<String, dynamic>()))); })(),
       browsers: (() { final guardedValue = map['browsers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, Map<String, dynamic>>()); })(),
-      buildImageMajorVersion: (() { final guardedValue = map['buildImageMajorVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      buildImageMajorVersion: (() { final guardedValue = map['buildImageMajorVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       compatibilityDate: (() { final guardedValue = map['compatibilityDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       compatibilityFlags: (() { final guardedValue = map['compatibilityFlags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       d1Databases: (() { final guardedValue = map['d1Databases']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<PagesProjectDeploymentConfigsProductionD1Databases>(guardedValue, (value) => PagesProjectDeploymentConfigsProductionD1Databases.fromMap((value as Map).cast<String, dynamic>()))); })(),

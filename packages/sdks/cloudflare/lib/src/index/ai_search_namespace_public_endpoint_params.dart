@@ -14,7 +14,7 @@ class AiSearchNamespacePublicEndpointParams {
   /// When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
   final pulumi.Input<bool?>? defaultDomainEnabled;
   final pulumi.Input<bool?>? enabled;
-  /// Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.
+  /// Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account's multi-instance search limit.
   final pulumi.Input<List<String>?>? instancesAlloweds;
   final pulumi.Input<AiSearchNamespacePublicEndpointParamsMcp?>? mcp;
   final pulumi.Input<AiSearchNamespacePublicEndpointParamsRateLimit?>? rateLimit;
@@ -26,7 +26,7 @@ class AiSearchNamespacePublicEndpointParams {
   /// [customDomains] Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
   /// [defaultDomainEnabled] When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
   /// [enabled] Optional.
-  /// [instancesAlloweds] Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.
+  /// [instancesAlloweds] Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account's multi-instance search limit.
   /// [mcp] Optional.
   /// [rateLimit] Optional.
   /// [searchEndpoint] Optional.

@@ -4,7 +4,7 @@ import 'get_r2_custom_domain_status.dart';
 
 /// Result data returned by getR2CustomDomain.
 class GetR2CustomDomainResult {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   final String? accountId;
   /// Name of the bucket.
   final String? bucketName;
@@ -24,7 +24,7 @@ class GetR2CustomDomainResult {
   final String? zoneName;
 
   /// Creates a new [GetR2CustomDomainResult].
-  /// [accountId] Account ID.
+  /// [accountId] Cloudflare account ID that owns the R2 resource.
   /// [bucketName] Name of the bucket.
   /// [ciphers] An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
   /// [domain] Name of the custom domain.

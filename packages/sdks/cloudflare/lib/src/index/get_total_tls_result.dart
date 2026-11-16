@@ -3,24 +3,24 @@
 
 /// Result data returned by getTotalTls.
 class GetTotalTlsResult {
-  /// The Certificate Authority that Total TLS certificates will be issued through.
+  /// The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
   /// Available values: "google", "lets*encrypt", "ssl*com".
   final String? certificateAuthority;
   /// If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
   final bool? enabled;
   /// Identifier.
   final String? id;
-  /// The validity period in days for the certificates ordered via Total TLS.
+  /// The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
   /// Available values: 90.
   final int? validityPeriod;
   /// Identifier.
   final String? zoneId;
 
   /// Creates a new [GetTotalTlsResult].
-  /// [certificateAuthority] The Certificate Authority that Total TLS certificates will be issued through.
+  /// [certificateAuthority] The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
   /// [enabled] If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
   /// [id] Identifier.
-  /// [validityPeriod] The validity period in days for the certificates ordered via Total TLS.
+  /// [validityPeriod] The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
   /// [zoneId] Identifier.
   const GetTotalTlsResult({
     this.certificateAuthority,
@@ -45,7 +45,7 @@ class GetTotalTlsResult {
       certificateAuthority: (() { final guardedValue = map['certificateAuthority']; if (guardedValue == null) return null; return guardedValue as String; })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      validityPeriod: (() { final guardedValue = map['validityPeriod']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      validityPeriod: (() { final guardedValue = map['validityPeriod']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

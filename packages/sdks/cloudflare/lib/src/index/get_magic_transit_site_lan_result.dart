@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_magic_transit_site_lan_nat.dart';
+import 'get_magic_transit_site_lan_remote_subnet.dart';
 import 'get_magic_transit_site_lan_routed_subnet.dart';
 import 'get_magic_transit_site_lan_static_addressing.dart';
 
@@ -23,6 +24,7 @@ class GetMagicTransitSiteLanResult {
   final String? name;
   final GetMagicTransitSiteLanNat? nat;
   final int? physport;
+  final List<GetMagicTransitSiteLanRemoteSubnet>? remoteSubnets;
   final List<GetMagicTransitSiteLanRoutedSubnet>? routedSubnets;
   /// Identifier
   final String? siteId;
@@ -42,6 +44,7 @@ class GetMagicTransitSiteLanResult {
   /// [name] Optional.
   /// [nat] Optional.
   /// [physport] Optional.
+  /// [remoteSubnets] Optional.
   /// [routedSubnets] Optional.
   /// [siteId] Identifier
   /// [staticAddressing] If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
@@ -57,6 +60,7 @@ class GetMagicTransitSiteLanResult {
     this.name,
     this.nat,
     this.physport,
+    this.remoteSubnets,
     this.routedSubnets,
     this.siteId,
     this.staticAddressing,
@@ -75,6 +79,7 @@ class GetMagicTransitSiteLanResult {
       'name': ?name,
       'nat': ?nat?.toMap(),
       'physport': ?physport,
+      'remoteSubnets': ?(() { final guardedValue = remoteSubnets; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetMagicTransitSiteLanRemoteSubnet, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'routedSubnets': ?(() { final guardedValue = routedSubnets; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetMagicTransitSiteLanRoutedSubnet, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'siteId': ?siteId,
       'staticAddressing': ?staticAddressing?.toMap(),
@@ -85,7 +90,7 @@ class GetMagicTransitSiteLanResult {
   factory GetMagicTransitSiteLanResult.fromMap(Map<String, dynamic> map) {
     return GetMagicTransitSiteLanResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      bondId: (() { final guardedValue = map['bondId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      bondId: (() { final guardedValue = map['bondId']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       haLink: (() { final guardedValue = map['haLink']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isBreakout: (() { final guardedValue = map['isBreakout']; if (guardedValue == null) return null; return guardedValue as bool; })(),
@@ -93,11 +98,12 @@ class GetMagicTransitSiteLanResult {
       lanId: (() { final guardedValue = map['lanId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       nat: (() { final guardedValue = map['nat']; if (guardedValue == null) return null; return GetMagicTransitSiteLanNat.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      physport: (() { final guardedValue = map['physport']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      physport: (() { final guardedValue = map['physport']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      remoteSubnets: (() { final guardedValue = map['remoteSubnets']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetMagicTransitSiteLanRemoteSubnet>(guardedValue, (value) => GetMagicTransitSiteLanRemoteSubnet.fromMap((value as Map).cast<String, dynamic>())); })(),
       routedSubnets: (() { final guardedValue = map['routedSubnets']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetMagicTransitSiteLanRoutedSubnet>(guardedValue, (value) => GetMagicTransitSiteLanRoutedSubnet.fromMap((value as Map).cast<String, dynamic>())); })(),
       siteId: (() { final guardedValue = map['siteId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       staticAddressing: (() { final guardedValue = map['staticAddressing']; if (guardedValue == null) return null; return GetMagicTransitSiteLanStaticAddressing.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      vlanTag: (() { final guardedValue = map['vlanTag']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      vlanTag: (() { final guardedValue = map['vlanTag']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

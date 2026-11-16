@@ -13,8 +13,8 @@ class SecretsStoreSecretArgs {
   final pulumi.Input<String?>? comment;
   /// The name of the secret
   final pulumi.Input<String> name;
-  /// The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
-  final pulumi.Input<List<String>> scopes;
+  /// The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
+  final pulumi.Input<List<String>?>? scopes;
   /// Store Identifier
   final pulumi.Input<String> storeId;
   /// The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets.
@@ -24,14 +24,14 @@ class SecretsStoreSecretArgs {
   /// [accountId] Account Identifier
   /// [comment] Freeform text describing the secret
   /// [name] The name of the secret
-  /// [scopes] The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
+  /// [scopes] The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
   /// [storeId] Store Identifier
   /// [value] The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets.
   const SecretsStoreSecretArgs({
     required this.accountId,
     this.comment,
     required this.name,
-    required this.scopes,
+    this.scopes,
     required this.storeId,
     required this.value,
   });
@@ -41,7 +41,7 @@ class SecretsStoreSecretArgs {
       'accountId': accountId,
       'comment': ?comment,
       'name': name,
-      'scopes': scopes,
+      'scopes': ?scopes,
       'storeId': storeId,
       'value': value,
     };
@@ -52,7 +52,7 @@ class SecretsStoreSecretArgs {
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
       comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      scopes: pulumi.Input.fromValue((map['scopes'] as List).cast<String>()),
+      scopes: (() { final guardedValue = map['scopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       storeId: pulumi.Input.fromValue(map['storeId'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );

@@ -5,20 +5,20 @@ import 'get_r2_bucket_event_notification_rule.dart';
 
 /// Result data returned by getR2BucketEventNotification.
 class GetR2BucketEventNotificationResult {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   final String? accountId;
   /// Name of the bucket.
   final String? bucketName;
-  /// Queue ID.
+  /// ID of the Cloudflare Queue that receives notifications for matching R2 object events.
   final String? queueId;
   /// Name of the queue.
   final String? queueName;
   final List<GetR2BucketEventNotificationRule>? rules;
 
   /// Creates a new [GetR2BucketEventNotificationResult].
-  /// [accountId] Account ID.
+  /// [accountId] Cloudflare account ID that owns the R2 resource.
   /// [bucketName] Name of the bucket.
-  /// [queueId] Queue ID.
+  /// [queueId] ID of the Cloudflare Queue that receives notifications for matching R2 object events.
   /// [queueName] Name of the queue.
   /// [rules] Optional.
   const GetR2BucketEventNotificationResult({

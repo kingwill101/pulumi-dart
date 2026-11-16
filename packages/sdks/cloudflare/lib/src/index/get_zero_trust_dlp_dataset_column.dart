@@ -34,7 +34,7 @@ class GetZeroTrustDlpDatasetColumn {
     return GetZeroTrustDlpDatasetColumn(
       entryId: pulumi.Input.fromValue(map['entryId'] as String),
       headerName: pulumi.Input.fromValue(map['headerName'] as String),
-      numCells: pulumi.Input.fromValue((map['numCells'] as num).toInt()),
+      numCells: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numCells'])),
       uploadStatus: pulumi.Input.fromValue(map['uploadStatus'] as String),
     );
   }

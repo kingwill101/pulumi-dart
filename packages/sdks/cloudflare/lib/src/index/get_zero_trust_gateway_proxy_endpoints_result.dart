@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetZeroTrustGatewayProxyEndpointsResult {
   final pulumi.Input<String> createdAt;
   final pulumi.Input<String> id;
-  /// Specify the list of CIDRs to restrict ingress connections.
+  /// For `kind: ip`: Specify the list of CIDRs to restrict ingress connections.
   final pulumi.Input<List<String>> ips;
   /// The proxy endpoint kind
   /// Available values: "ip", "identity".
@@ -19,7 +19,7 @@ class GetZeroTrustGatewayProxyEndpointsResult {
   /// Creates a new [GetZeroTrustGatewayProxyEndpointsResult].
   /// [createdAt] Required.
   /// [id] Required.
-  /// [ips] Specify the list of CIDRs to restrict ingress connections.
+  /// [ips] For `kind: ip`: Specify the list of CIDRs to restrict ingress connections.
   /// [kind] The proxy endpoint kind
   /// [name] Specify the name of the proxy endpoint.
   /// [subdomain] Specify the subdomain to use as the destination in the proxy client.

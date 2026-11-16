@@ -28,6 +28,7 @@ import 'zero_trust_dlp_entry_variant.dart';
 ///     },
 ///     description: "description",
 ///     profileId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+///     validatorIds: ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
 /// });
 /// ```
 /// ```python
@@ -43,7 +44,8 @@ import 'zero_trust_dlp_entry_variant.dart';
 ///         "validation": "luhn",
 ///     },
 ///     description="description",
-///     profile_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+///     profile_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+///     validator_ids=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -65,6 +67,10 @@ import 'zero_trust_dlp_entry_variant.dart';
 ///         },
 ///         Description = "description",
 ///         ProfileId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+///         ValidatorIds = new[]
+///         {
+///             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+///         },
 ///     });
 ///
 /// });
@@ -89,6 +95,9 @@ import 'zero_trust_dlp_entry_variant.dart';
 /// 			},
 /// 			Description: pulumi.String("description"),
 /// 			ProfileId:   pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
+/// 			ValidatorIds: pulumi.StringArray{
+/// 				pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -98,7 +107,7 @@ import 'zero_trust_dlp_entry_variant.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -106,7 +115,10 @@ import 'zero_trust_dlp_entry_variant.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdlpentry" "example_zero_trust_dlp_entry" {
+/// resource "cloudflare_zero_trust_dlp_entry" "example_zero_trust_dlp_entry" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "account_id"
 ///   enabled    = true
 ///   name       = "name"
@@ -114,8 +126,9 @@ import 'zero_trust_dlp_entry_variant.dart';
 ///     regex      = "regex"
 ///     validation = "luhn"
 ///   }
-///   description = "description"
-///   profile_id  = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
+///   description   = "description"
+///   profile_id    = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
+///   validator_ids = ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"]
 /// }
 /// ```
 /// ```java
@@ -150,6 +163,7 @@ import 'zero_trust_dlp_entry_variant.dart';
 ///                 .build())
 ///             .description("description")
 ///             .profileId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+///             .validatorIds("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 ///             .build());
 ///
 ///     }
@@ -169,6 +183,8 @@ import 'zero_trust_dlp_entry_variant.dart';
 ///         validation: luhn
 ///       description: description
 ///       profileId: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e
+///       validatorIds:
+///         - 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e
 /// ```
 ///
 ///
@@ -179,13 +195,13 @@ import 'zero_trust_dlp_entry_variant.dart';
 /// ```
 class ZeroTrustDlpEntry extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
-  /// Only applies to custom word lists.
+  /// For `type: exactData`: Only applies to custom word lists.
   /// Determines if the words should be matched in a case-sensitive manner
   /// Cannot be set to false if secret is true
   late final pulumi.Output<bool> caseSensitive;
   late final pulumi.Output<ZeroTrustDlpEntryConfidence> confidence;
   late final pulumi.Output<String> createdAt;
-  /// Whether this entry is deprecated for new use. This is computed from the static catalog and
+  /// For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
   /// emitted only when true.
   late final pulumi.Output<bool> deprecated;
   late final pulumi.Output<String?> description;
@@ -200,9 +216,11 @@ class ZeroTrustDlpEntry extends pulumi.CustomResource {
   late final pulumi.Output<String> updatedAt;
   /// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
   late final pulumi.Output<String> uploadStatus;
-  /// A Predefined AI prompt classification topic entry.
+  /// Validators the new entry should reference, by id, at most 10.
+  late final pulumi.Output<List<String>> validatorIds;
+  /// For `type: predefined`: A Predefined AI prompt classification topic entry.
   late final pulumi.Output<ZeroTrustDlpEntryVariant> variant;
-  late final pulumi.Output<String> wordList;
+  late final pulumi.Output<List<String>> wordLists;
 
   /// Creates a new [ZeroTrustDlpEntry].
   /// [name] The Pulumi resource name.
@@ -216,7 +234,7 @@ class ZeroTrustDlpEntry extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDlpEntry:ZeroTrustDlpEntry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     caseSensitive = registerOutput<bool>('caseSensitive');
@@ -233,8 +251,9 @@ class ZeroTrustDlpEntry extends pulumi.CustomResource {
     type = registerOutput<String?>('type');
     updatedAt = registerOutput<String>('updatedAt');
     uploadStatus = registerOutput<String>('uploadStatus');
+    validatorIds = registerOutput<List<String>>('validatorIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     variant = registerOutput<ZeroTrustDlpEntryVariant>('variant', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustDlpEntryVariant.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    wordList = registerOutput<String>('wordList');
+    wordLists = registerOutput<List<String>>('wordLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ZeroTrustDlpEntry] resource's state with the given [name] and [id].
@@ -276,8 +295,9 @@ class ZeroTrustDlpEntry extends pulumi.CustomResource {
     type = registerOutput<String?>('type');
     updatedAt = registerOutput<String>('updatedAt');
     uploadStatus = registerOutput<String>('uploadStatus');
+    validatorIds = registerOutput<List<String>>('validatorIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     variant = registerOutput<ZeroTrustDlpEntryVariant>('variant', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustDlpEntryVariant.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    wordList = registerOutput<String>('wordList');
+    wordLists = registerOutput<List<String>>('wordLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Creates a typed reference to an existing [ZeroTrustDlpEntry] resource.
@@ -304,7 +324,8 @@ class ZeroTrustDlpEntry extends pulumi.CustomResource {
     type = registerOutput<String?>('type');
     updatedAt = registerOutput<String>('updatedAt');
     uploadStatus = registerOutput<String>('uploadStatus');
+    validatorIds = registerOutput<List<String>>('validatorIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     variant = registerOutput<ZeroTrustDlpEntryVariant>('variant', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustDlpEntryVariant.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    wordList = registerOutput<String>('wordList');
+    wordLists = registerOutput<List<String>>('wordLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

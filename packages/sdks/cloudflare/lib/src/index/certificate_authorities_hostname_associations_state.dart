@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering CertificateAuthoritiesHostnameAssociations resources.
 class CertificateAuthoritiesHostnameAssociationsState {
+  /// Unordered set of hostnames. Hostnames are stored as lowercase punycode.
   final pulumi.Input<List<String>?>? hostnames;
   /// The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls*certificate*id is given, the hostnames will be associated to your active Cloudflare Managed CA.
   final pulumi.Input<String?>? mtlsCertificateId;
@@ -11,7 +12,7 @@ class CertificateAuthoritiesHostnameAssociationsState {
   final pulumi.Input<String?>? zoneId;
 
   /// Creates a new [CertificateAuthoritiesHostnameAssociationsState].
-  /// [hostnames] Optional.
+  /// [hostnames] Unordered set of hostnames. Hostnames are stored as lowercase punycode.
   /// [mtlsCertificateId] The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls*certificate*id is given, the hostnames will be associated to your active Cloudflare Managed CA.
   /// [zoneId] Identifier.
   const CertificateAuthoritiesHostnameAssociationsState({

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccessApplicationMfaConfig {
   /// The authenticators allowed for MFA.
-  /// Available values: "totp", "biometrics", "securityKey".
+  /// Available values: "totp", "biometrics", "security*key", "piv*key", "ssh*fido2*key".
   final pulumi.Input<List<String>?>? allowedAuthenticators;
   /// Whether MFA is disabled for this application.
   final pulumi.Input<bool?>? mfaDisabled;

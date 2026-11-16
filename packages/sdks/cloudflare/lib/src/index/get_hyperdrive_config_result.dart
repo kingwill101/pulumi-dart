@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'get_hyperdrive_config_caching.dart';
+import 'get_hyperdrive_config_integration.dart';
 import 'get_hyperdrive_config_mtls.dart';
 import 'get_hyperdrive_config_origin.dart';
 
@@ -15,12 +16,15 @@ class GetHyperdriveConfigResult {
   final String? hyperdriveId;
   /// Define configurations using a unique string identifier.
   final String? id;
+  /// Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
+  final GetHyperdriveConfigIntegration? integration;
   /// Defines the last modified time of the Hyperdrive configuration.
   final String? modifiedOn;
   /// mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
   final GetHyperdriveConfigMtls? mtls;
   /// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
   final String? name;
+  /// Combines database connection fields with exactly one supported network location.
   final GetHyperdriveConfigOrigin? origin;
   /// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
   final int? originConnectionLimit;
@@ -32,10 +36,11 @@ class GetHyperdriveConfigResult {
   /// [createdOn] Defines the creation time of the Hyperdrive configuration.
   /// [hyperdriveId] Define configurations using a unique string identifier.
   /// [id] Define configurations using a unique string identifier.
+  /// [integration] Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
   /// [modifiedOn] Defines the last modified time of the Hyperdrive configuration.
   /// [mtls] mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
   /// [name] The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
-  /// [origin] Optional.
+  /// [origin] Combines database connection fields with exactly one supported network location.
   /// [originConnectionLimit] The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
   /// [restartedOn] Optional.
   const GetHyperdriveConfigResult({
@@ -44,6 +49,7 @@ class GetHyperdriveConfigResult {
     this.createdOn,
     this.hyperdriveId,
     this.id,
+    this.integration,
     this.modifiedOn,
     this.mtls,
     this.name,
@@ -59,6 +65,7 @@ class GetHyperdriveConfigResult {
       'createdOn': ?createdOn,
       'hyperdriveId': ?hyperdriveId,
       'id': ?id,
+      'integration': ?integration?.toMap(),
       'modifiedOn': ?modifiedOn,
       'mtls': ?mtls?.toMap(),
       'name': ?name,
@@ -75,11 +82,12 @@ class GetHyperdriveConfigResult {
       createdOn: (() { final guardedValue = map['createdOn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       hyperdriveId: (() { final guardedValue = map['hyperdriveId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      integration: (() { final guardedValue = map['integration']; if (guardedValue == null) return null; return GetHyperdriveConfigIntegration.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       modifiedOn: (() { final guardedValue = map['modifiedOn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       mtls: (() { final guardedValue = map['mtls']; if (guardedValue == null) return null; return GetHyperdriveConfigMtls.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       origin: (() { final guardedValue = map['origin']; if (guardedValue == null) return null; return GetHyperdriveConfigOrigin.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      originConnectionLimit: (() { final guardedValue = map['originConnectionLimit']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      originConnectionLimit: (() { final guardedValue = map['originConnectionLimit']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       restartedOn: (() { final guardedValue = map['restartedOn']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

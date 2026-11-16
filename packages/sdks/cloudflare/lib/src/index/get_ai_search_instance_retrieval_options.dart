@@ -6,13 +6,13 @@ import 'get_ai_search_instance_retrieval_options_boost_by.dart';
 class GetAiSearchInstanceRetrievalOptions {
   /// Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom*metadata field.
   final pulumi.Input<List<GetAiSearchInstanceRetrievalOptionsBoostBy>> boostBies;
-  /// Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.
+  /// Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'.
   /// Available values: "and", "or".
   final pulumi.Input<String> keywordMatchMode;
 
   /// Creates a new [GetAiSearchInstanceRetrievalOptions].
   /// [boostBies] Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom*metadata field.
-  /// [keywordMatchMode] Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.
+  /// [keywordMatchMode] Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'.
   const GetAiSearchInstanceRetrievalOptions({
     required this.boostBies,
     required this.keywordMatchMode,

@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_workers_result_observability.dart';
+import 'get_workers_result_previews_base_config.dart';
 import 'get_workers_result_references.dart';
 import 'get_workers_result_subdomain.dart';
 import 'get_workers_result_tail_consumer.dart';
@@ -19,6 +20,8 @@ class GetWorkersResult {
   final pulumi.Input<String> name;
   /// Observability settings for the Worker.
   final pulumi.Input<GetWorkersResultObservability> observability;
+  /// Template configuration used when creating new Previews for this Worker.
+  final pulumi.Input<GetWorkersResultPreviewsBaseConfig> previewsBaseConfig;
   /// Other resources that reference the Worker and depend on it existing.
   final pulumi.Input<GetWorkersResultReferences> references;
   /// Subdomain settings for the Worker.
@@ -37,6 +40,7 @@ class GetWorkersResult {
   /// [logpush] Whether logpush is enabled for the Worker.
   /// [name] Name of the Worker.
   /// [observability] Observability settings for the Worker.
+  /// [previewsBaseConfig] Template configuration used when creating new Previews for this Worker.
   /// [references] Other resources that reference the Worker and depend on it existing.
   /// [subdomain] Subdomain settings for the Worker.
   /// [tags] Tags associated with the Worker.
@@ -49,6 +53,7 @@ class GetWorkersResult {
     required this.logpush,
     required this.name,
     required this.observability,
+    required this.previewsBaseConfig,
     required this.references,
     required this.subdomain,
     required this.tags,
@@ -64,6 +69,7 @@ class GetWorkersResult {
       'logpush': logpush,
       'name': name,
       'observability': pulumi.Input.mapInputValue<GetWorkersResultObservability, Map<String, dynamic>>(observability, (value) => value.toMap()),
+      'previewsBaseConfig': pulumi.Input.mapInputValue<GetWorkersResultPreviewsBaseConfig, Map<String, dynamic>>(previewsBaseConfig, (value) => value.toMap()),
       'references': pulumi.Input.mapInputValue<GetWorkersResultReferences, Map<String, dynamic>>(references, (value) => value.toMap()),
       'subdomain': pulumi.Input.mapInputValue<GetWorkersResultSubdomain, Map<String, dynamic>>(subdomain, (value) => value.toMap()),
       'tags': tags,
@@ -80,6 +86,7 @@ class GetWorkersResult {
       logpush: pulumi.Input.fromValue(map['logpush'] as bool),
       name: pulumi.Input.fromValue(map['name'] as String),
       observability: pulumi.Input.fromValue(GetWorkersResultObservability.fromMap((map['observability']! as Map).cast<String, dynamic>())),
+      previewsBaseConfig: pulumi.Input.fromValue(GetWorkersResultPreviewsBaseConfig.fromMap((map['previewsBaseConfig']! as Map).cast<String, dynamic>())),
       references: pulumi.Input.fromValue(GetWorkersResultReferences.fromMap((map['references']! as Map).cast<String, dynamic>())),
       subdomain: pulumi.Input.fromValue(GetWorkersResultSubdomain.fromMap((map['subdomain']! as Map).cast<String, dynamic>())),
       tags: pulumi.Input.fromValue((map['tags'] as List).cast<String>()),

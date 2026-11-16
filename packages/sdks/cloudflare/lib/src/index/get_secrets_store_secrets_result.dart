@@ -13,7 +13,7 @@ class GetSecretsStoreSecretsResult {
   final pulumi.Input<String> modified;
   /// The name of the secret.
   final pulumi.Input<String> name;
-  /// The list of services that can use this secret.
+  /// The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret.
   final pulumi.Input<List<String>> scopes;
   /// Available values: "pending", "active", "deleted".
   final pulumi.Input<String> status;
@@ -26,7 +26,7 @@ class GetSecretsStoreSecretsResult {
   /// [id] Secret identifier tag.
   /// [modified] When the secret was modified.
   /// [name] The name of the secret.
-  /// [scopes] The list of services that can use this secret.
+  /// [scopes] The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret.
   /// [status] Available values: "pending", "active", "deleted".
   /// [storeId] Store Identifier.
   const GetSecretsStoreSecretsResult({

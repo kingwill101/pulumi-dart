@@ -12,27 +12,29 @@ import 'share_resource_state.dart';
 /// const exampleShareResource = new cloudflare.ShareResource("example_share_resource", {
 ///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
 ///     shareId: "3fd85f74b32742f1bff64a85009dda07",
-///     meta: {},
+///     meta: JSON.stringify({}),
 ///     resourceAccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-///     resourceId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     resourceId: "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
 ///     resourceType: "custom-ruleset",
 /// });
 /// ```
 /// ```python
 /// import pulumi
+/// import json
 /// import pulumi_cloudflare as cloudflare
 ///
 /// example_share_resource = cloudflare.ShareResource("example_share_resource",
 ///     account_id="023e105f4ecef8ad9ca31a8372d0c353",
 ///     share_id="3fd85f74b32742f1bff64a85009dda07",
-///     meta={},
+///     meta=json.dumps({}),
 ///     resource_account_id="023e105f4ecef8ad9ca31a8372d0c353",
-///     resource_id="023e105f4ecef8ad9ca31a8372d0c353",
+///     resource_id="0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
 ///     resource_type="custom-ruleset")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
 /// using System.Linq;
+/// using System.Text.Json;
 /// using Pulumi;
 /// using Cloudflare = Pulumi.Cloudflare;
 ///
@@ -42,9 +44,11 @@ import 'share_resource_state.dart';
 ///     {
 ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
 ///         ShareId = "3fd85f74b32742f1bff64a85009dda07",
-///         Meta = null,
+///         Meta = JsonSerializer.Serialize(new Dictionary<string, object?>
+///         {
+///         }),
 ///         ResourceAccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-///         ResourceId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         ResourceId = "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
 ///         ResourceType = "custom-ruleset",
 ///     });
 ///
@@ -54,18 +58,25 @@ import 'share_resource_state.dart';
 /// package main
 ///
 /// import (
+/// 	"encoding/json"
+///
 /// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := cloudflare.NewShareResource(ctx, "example_share_resource", &cloudflare.ShareResourceArgs{
+/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		json0 := string(tmpJSON0)
+/// 		_, err = cloudflare.NewShareResource(ctx, "example_share_resource", &cloudflare.ShareResourceArgs{
 /// 			AccountId:         pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 /// 			ShareId:           pulumi.String("3fd85f74b32742f1bff64a85009dda07"),
-/// 			Meta:              pulumi.String{},
+/// 			Meta:              pulumi.String(json0),
 /// 			ResourceAccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-/// 			ResourceId:        pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			ResourceId:        pulumi.String("0a679032-bbb2-4b7e-9acc-dd5c5cb27a17"),
 /// 			ResourceType:      pulumi.String("custom-ruleset"),
 /// 		})
 /// 		if err != nil {
@@ -76,7 +87,7 @@ import 'share_resource_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -84,12 +95,15 @@ import 'share_resource_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_shareresource" "example_share_resource" {
+/// resource "cloudflare_share_resource" "example_share_resource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id          = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   share_id            = "3fd85f74b32742f1bff64a85009dda07"
-///   meta                = {}
+///   meta                = jsonencode({})
 ///   resource_account_id = "023e105f4ecef8ad9ca31a8372d0c353"
-///   resource_id         = "023e105f4ecef8ad9ca31a8372d0c353"
+///   resource_id         = "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17"
 ///   resource_type       = "custom-ruleset"
 /// }
 /// ```
@@ -101,6 +115,7 @@ import 'share_resource_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.cloudflare.ShareResource;
 /// import com.pulumi.cloudflare.ShareResourceArgs;
+/// import static com.pulumi.codegen.internal.Serialization.*;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -117,10 +132,12 @@ import 'share_resource_state.dart';
 ///         var exampleShareResource = new ShareResource("exampleShareResource", ShareResourceArgs.builder()
 ///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
 ///             .shareId("3fd85f74b32742f1bff64a85009dda07")
-///             .meta(Map.ofEntries(
-///             ))
+///             .meta(serializeJson(
+///                 jsonObject(
+///
+///                 )))
 ///             .resourceAccountId("023e105f4ecef8ad9ca31a8372d0c353")
-///             .resourceId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .resourceId("0a679032-bbb2-4b7e-9acc-dd5c5cb27a17")
 ///             .resourceType("custom-ruleset")
 ///             .build());
 ///
@@ -135,9 +152,10 @@ import 'share_resource_state.dart';
 ///     properties:
 ///       accountId: 023e105f4ecef8ad9ca31a8372d0c353
 ///       shareId: 3fd85f74b32742f1bff64a85009dda07
-///       meta: {}
+///       meta:
+///         fn::toJSON: {}
 ///       resourceAccountId: 023e105f4ecef8ad9ca31a8372d0c353
-///       resourceId: 023e105f4ecef8ad9ca31a8372d0c353
+///       resourceId: 0a679032-bbb2-4b7e-9acc-dd5c5cb27a17
 ///       resourceType: custom-ruleset
 /// ```
 ///
@@ -150,18 +168,18 @@ import 'share_resource_state.dart';
 class ShareResourceResource extends pulumi.CustomResource {
   /// Account identifier.
   late final pulumi.Output<String> accountId;
-  /// When the share was created.
+  /// When the object was created.
   late final pulumi.Output<String> created;
   /// Resource Metadata.
   late final pulumi.Output<String> meta;
-  /// When the share was modified.
+  /// When the object was last modified.
   late final pulumi.Output<String> modified;
-  /// Account identifier.
+  /// The account that owns the resource. Must match the `accountId` in the path.
   late final pulumi.Output<String> resourceAccountId;
-  /// Share Resource identifier.
+  /// Identifier assigned by the service that owns the shared resource.
   late final pulumi.Output<String> resourceId;
   /// Resource Type.
-  /// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+  /// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
   late final pulumi.Output<String> resourceType;
   /// Resource Version.
   late final pulumi.Output<int> resourceVersion;
@@ -183,7 +201,7 @@ class ShareResourceResource extends pulumi.CustomResource {
           'cloudflare:index/shareResource:ShareResource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     created = registerOutput<String>('created');

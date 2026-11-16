@@ -7,17 +7,17 @@ import 'get_workers_cron_trigger_schedule.dart';
 class GetWorkersCronTriggerResult {
   /// Identifier.
   final String? accountId;
-  /// Name of the script, used in URLs and route configuration.
+  /// Name of the script.
   final String? id;
   final List<GetWorkersCronTriggerSchedule>? schedules;
-  /// Name of the script, used in URLs and route configuration.
+  /// Name of the script.
   final String? scriptName;
 
   /// Creates a new [GetWorkersCronTriggerResult].
   /// [accountId] Identifier.
-  /// [id] Name of the script, used in URLs and route configuration.
+  /// [id] Name of the script.
   /// [schedules] Optional.
-  /// [scriptName] Name of the script, used in URLs and route configuration.
+  /// [scriptName] Name of the script.
   const GetWorkersCronTriggerResult({
     this.accountId,
     this.id,

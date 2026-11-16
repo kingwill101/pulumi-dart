@@ -45,7 +45,7 @@ class PipelineStreamFormat {
     return PipelineStreamFormat(
       compression: (() { final guardedValue = map['compression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       decimalEncoding: (() { final guardedValue = map['decimalEncoding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rowGroupBytes: (() { final guardedValue = map['rowGroupBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      rowGroupBytes: (() { final guardedValue = map['rowGroupBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       timestampFormat: (() { final guardedValue = map['timestampFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       unstructured: (() { final guardedValue = map['unstructured']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

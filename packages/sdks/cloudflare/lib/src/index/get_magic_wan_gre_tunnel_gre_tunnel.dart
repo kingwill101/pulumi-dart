@@ -102,9 +102,9 @@ class GetMagicWanGreTunnelGreTunnel {
       interfaceAddress: pulumi.Input.fromValue(map['interfaceAddress'] as String),
       interfaceAddress6: pulumi.Input.fromValue(map['interfaceAddress6'] as String),
       modifiedOn: pulumi.Input.fromValue(map['modifiedOn'] as String),
-      mtu: pulumi.Input.fromValue((map['mtu'] as num).toInt()),
+      mtu: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['mtu'])),
       name: pulumi.Input.fromValue(map['name'] as String),
-      ttl: pulumi.Input.fromValue((map['ttl'] as num).toInt()),
+      ttl: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ttl'])),
     );
   }
 }

@@ -9,8 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ShareRecipientArgs {
   /// Account identifier.
   final pulumi.Input<String> accountId;
-  /// Organization identifier.
-  final pulumi.Input<String?>? organizationId;
+  /// Include resources in the response.
+  final pulumi.Input<bool?>? includeResources;
   /// The account that will receive the share.
   final pulumi.Input<String?>? recipientAccountId;
   /// Share identifier tag.
@@ -18,12 +18,12 @@ class ShareRecipientArgs {
 
   /// Creates a new [ShareRecipientArgs].
   /// [accountId] Account identifier.
-  /// [organizationId] Organization identifier.
+  /// [includeResources] Include resources in the response.
   /// [recipientAccountId] The account that will receive the share.
   /// [shareId] Share identifier tag.
   const ShareRecipientArgs({
     required this.accountId,
-    this.organizationId,
+    this.includeResources,
     this.recipientAccountId,
     required this.shareId,
   });
@@ -31,7 +31,7 @@ class ShareRecipientArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountId': accountId,
-      'organizationId': ?organizationId,
+      'includeResources': ?includeResources,
       'recipientAccountId': ?recipientAccountId,
       'shareId': shareId,
     };
@@ -40,7 +40,7 @@ class ShareRecipientArgs {
   factory ShareRecipientArgs.fromMap(Map<String, dynamic> map) {
     return ShareRecipientArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
-      organizationId: (() { final guardedValue = map['organizationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      includeResources: (() { final guardedValue = map['includeResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       recipientAccountId: (() { final guardedValue = map['recipientAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       shareId: pulumi.Input.fromValue(map['shareId'] as String),
     );

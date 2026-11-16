@@ -6,41 +6,49 @@ import 'get_email_security_impersonation_registry_filter.dart';
 class GetEmailSecurityImpersonationRegistryResult {
   /// Identifier.
   final String? accountId;
+  /// Optional note describing the entry.
   final String? comments;
   final String? createdAt;
+  /// Identifier of the directory the entry was synced from, when directory-synced.
   final int? directoryId;
+  /// Identifier of the directory node the entry was synced from, when directory-synced.
   final int? directoryNodeId;
+  /// Email address (or pattern) of the protected identity.
   final String? email;
+  /// Deprecated. External identifier of the directory node.
   final String? externalDirectoryNodeId;
   final GetEmailSecurityImpersonationRegistryFilter? filter;
   /// Impersonation registry entry identifier
   final String? id;
   /// Impersonation registry entry identifier
   final String? impersonationRegistryId;
+  /// Whether `email` is a regular expression instead of a literal address.
   final bool? isEmailRegex;
   /// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
   final String? lastModified;
   final String? modifiedAt;
+  /// Display name of the protected identity.
   final String? name;
+  /// Source the entry was created from.
   /// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
   final String? provenance;
 
   /// Creates a new [GetEmailSecurityImpersonationRegistryResult].
   /// [accountId] Identifier.
-  /// [comments] Optional.
+  /// [comments] Optional note describing the entry.
   /// [createdAt] Optional.
-  /// [directoryId] Optional.
-  /// [directoryNodeId] Optional.
-  /// [email] Optional.
-  /// [externalDirectoryNodeId] Optional.
+  /// [directoryId] Identifier of the directory the entry was synced from, when directory-synced.
+  /// [directoryNodeId] Identifier of the directory node the entry was synced from, when directory-synced.
+  /// [email] Email address (or pattern) of the protected identity.
+  /// [externalDirectoryNodeId] Deprecated. External identifier of the directory node.
   /// [filter] Optional.
   /// [id] Impersonation registry entry identifier
   /// [impersonationRegistryId] Impersonation registry entry identifier
-  /// [isEmailRegex] Optional.
+  /// [isEmailRegex] Whether `email` is a regular expression instead of a literal address.
   /// [lastModified] Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
   /// [modifiedAt] Optional.
-  /// [name] Optional.
-  /// [provenance] Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+  /// [name] Display name of the protected identity.
+  /// [provenance] Source the entry was created from.
   const GetEmailSecurityImpersonationRegistryResult({
     this.accountId,
     this.comments,
@@ -84,8 +92,8 @@ class GetEmailSecurityImpersonationRegistryResult {
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       comments: (() { final guardedValue = map['comments']; if (guardedValue == null) return null; return guardedValue as String; })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      directoryId: (() { final guardedValue = map['directoryId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      directoryNodeId: (() { final guardedValue = map['directoryNodeId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      directoryId: (() { final guardedValue = map['directoryId']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      directoryNodeId: (() { final guardedValue = map['directoryNodeId']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return guardedValue as String; })(),
       externalDirectoryNodeId: (() { final guardedValue = map['externalDirectoryNodeId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return GetEmailSecurityImpersonationRegistryFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),

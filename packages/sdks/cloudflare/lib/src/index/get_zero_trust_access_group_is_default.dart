@@ -23,6 +23,7 @@ import 'get_zero_trust_access_group_is_default_oidc.dart';
 import 'get_zero_trust_access_group_is_default_okta.dart';
 import 'get_zero_trust_access_group_is_default_saml.dart';
 import 'get_zero_trust_access_group_is_default_service_token.dart';
+import 'get_zero_trust_access_group_is_default_service_token_tag.dart';
 import 'get_zero_trust_access_group_is_default_user_risk_score.dart';
 
 class GetZeroTrustAccessGroupIsDefault {
@@ -53,6 +54,7 @@ class GetZeroTrustAccessGroupIsDefault {
   final pulumi.Input<GetZeroTrustAccessGroupIsDefaultOkta> okta;
   final pulumi.Input<GetZeroTrustAccessGroupIsDefaultSaml> saml;
   final pulumi.Input<GetZeroTrustAccessGroupIsDefaultServiceToken> serviceToken;
+  final pulumi.Input<GetZeroTrustAccessGroupIsDefaultServiceTokenTag> serviceTokenTag;
   final pulumi.Input<GetZeroTrustAccessGroupIsDefaultUserRiskScore> userRiskScore;
 
   /// Creates a new [GetZeroTrustAccessGroupIsDefault].
@@ -81,6 +83,7 @@ class GetZeroTrustAccessGroupIsDefault {
   /// [okta] Required.
   /// [saml] Required.
   /// [serviceToken] Required.
+  /// [serviceTokenTag] Required.
   /// [userRiskScore] Required.
   const GetZeroTrustAccessGroupIsDefault({
     required this.anyValidServiceToken,
@@ -108,6 +111,7 @@ class GetZeroTrustAccessGroupIsDefault {
     required this.okta,
     required this.saml,
     required this.serviceToken,
+    required this.serviceTokenTag,
     required this.userRiskScore,
   });
 
@@ -138,6 +142,7 @@ class GetZeroTrustAccessGroupIsDefault {
       'okta': pulumi.Input.mapInputValue<GetZeroTrustAccessGroupIsDefaultOkta, Map<String, dynamic>>(okta, (value) => value.toMap()),
       'saml': pulumi.Input.mapInputValue<GetZeroTrustAccessGroupIsDefaultSaml, Map<String, dynamic>>(saml, (value) => value.toMap()),
       'serviceToken': pulumi.Input.mapInputValue<GetZeroTrustAccessGroupIsDefaultServiceToken, Map<String, dynamic>>(serviceToken, (value) => value.toMap()),
+      'serviceTokenTag': pulumi.Input.mapInputValue<GetZeroTrustAccessGroupIsDefaultServiceTokenTag, Map<String, dynamic>>(serviceTokenTag, (value) => value.toMap()),
       'userRiskScore': pulumi.Input.mapInputValue<GetZeroTrustAccessGroupIsDefaultUserRiskScore, Map<String, dynamic>>(userRiskScore, (value) => value.toMap()),
     };
   }
@@ -169,6 +174,7 @@ class GetZeroTrustAccessGroupIsDefault {
       okta: pulumi.Input.fromValue(GetZeroTrustAccessGroupIsDefaultOkta.fromMap((map['okta']! as Map).cast<String, dynamic>())),
       saml: pulumi.Input.fromValue(GetZeroTrustAccessGroupIsDefaultSaml.fromMap((map['saml']! as Map).cast<String, dynamic>())),
       serviceToken: pulumi.Input.fromValue(GetZeroTrustAccessGroupIsDefaultServiceToken.fromMap((map['serviceToken']! as Map).cast<String, dynamic>())),
+      serviceTokenTag: pulumi.Input.fromValue(GetZeroTrustAccessGroupIsDefaultServiceTokenTag.fromMap((map['serviceTokenTag']! as Map).cast<String, dynamic>())),
       userRiskScore: pulumi.Input.fromValue(GetZeroTrustAccessGroupIsDefaultUserRiskScore.fromMap((map['userRiskScore']! as Map).cast<String, dynamic>())),
     );
   }

@@ -36,7 +36,7 @@ class TeamsRuleRuleSettingsDnsResolversIpv4 {
   factory TeamsRuleRuleSettingsDnsResolversIpv4.fromMap(Map<String, dynamic> map) {
     return TeamsRuleRuleSettingsDnsResolversIpv4(
       ip: pulumi.Input.fromValue(map['ip'] as String),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       routeThroughPrivateNetwork: (() { final guardedValue = map['routeThroughPrivateNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       vnetId: (() { final guardedValue = map['vnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

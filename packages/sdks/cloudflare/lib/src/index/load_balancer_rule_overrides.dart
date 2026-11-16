@@ -19,7 +19,7 @@ class LoadBalancerRuleOverrides {
   final pulumi.Input<LoadBalancerRuleOverridesLocationStrategy?>? locationStrategy;
   /// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
   final pulumi.Input<Map<String, List<String>>?>? popPools;
-  /// Configures pool weights.
+  /// Configures pool weights for a rule override. An omitted defaultWeight inherits the load balancer's default weight.
   final pulumi.Input<LoadBalancerRuleOverridesRandomSteering?>? randomSteering;
   /// A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
   final pulumi.Input<Map<String, List<String>>?>? regionPools;
@@ -42,7 +42,7 @@ class LoadBalancerRuleOverrides {
   /// [fallbackPool] The pool ID to use when all other pools are detected as unhealthy.
   /// [locationStrategy] Controls location-based steering for non-proxied requests. See `steeringPolicy` to learn how steering is affected.
   /// [popPools] Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
-  /// [randomSteering] Configures pool weights.
+  /// [randomSteering] Configures pool weights for a rule override. An omitted defaultWeight inherits the load balancer's default weight.
   /// [regionPools] A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
   /// [sessionAffinity] Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ipCookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `sessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `sessionAffinityAttributes` for additional required configuration.
   /// [sessionAffinityAttributes] Configures attributes for session affinity.

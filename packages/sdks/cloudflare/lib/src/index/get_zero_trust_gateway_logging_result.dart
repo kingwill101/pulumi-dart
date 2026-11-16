@@ -4,8 +4,9 @@ import 'get_zero_trust_gateway_logging_settings_by_rule_type.dart';
 
 /// Result data returned by getZeroTrustGatewayLogging.
 class GetZeroTrustGatewayLoggingResult {
+  /// Specify the Cloudflare account identifier.
   final String? accountId;
-  /// The ID of this resource.
+  /// Specify the Cloudflare account identifier.
   final String? id;
   /// Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
   final bool? redactPii;
@@ -13,8 +14,8 @@ class GetZeroTrustGatewayLoggingResult {
   final GetZeroTrustGatewayLoggingSettingsByRuleType? settingsByRuleType;
 
   /// Creates a new [GetZeroTrustGatewayLoggingResult].
-  /// [accountId] Optional.
-  /// [id] The ID of this resource.
+  /// [accountId] Specify the Cloudflare account identifier.
+  /// [id] Specify the Cloudflare account identifier.
   /// [redactPii] Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
   /// [settingsByRuleType] Configure logging settings for each rule type.
   const GetZeroTrustGatewayLoggingResult({

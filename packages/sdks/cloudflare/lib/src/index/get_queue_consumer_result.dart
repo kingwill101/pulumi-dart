@@ -14,7 +14,7 @@ class GetQueueConsumerResult {
   /// A Resource identifier.
   final String? queueId;
   final String? queueName;
-  /// Name of a Worker
+  /// For `type: worker`: Name of a Worker
   final String? scriptName;
   final GetQueueConsumerSettings? settings;
   /// Available values: "worker", "httpPull".
@@ -27,7 +27,7 @@ class GetQueueConsumerResult {
   /// [deadLetterQueue] Name of the dead letter queue, or empty string if not configured
   /// [queueId] A Resource identifier.
   /// [queueName] Optional.
-  /// [scriptName] Name of a Worker
+  /// [scriptName] For `type: worker`: Name of a Worker
   /// [settings] Optional.
   /// [type] Available values: "worker", "httpPull".
   const GetQueueConsumerResult({

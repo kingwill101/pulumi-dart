@@ -6,45 +6,55 @@ import 'get_zero_trust_dlp_predefined_profile_entry_pattern.dart';
 import 'get_zero_trust_dlp_predefined_profile_entry_variant.dart';
 
 class GetZeroTrustDlpPredefinedProfileEntry {
-  /// Only applies to custom word lists.
+  /// For `type: exactData`: Only applies to custom word lists.
   /// Determines if the words should be matched in a case-sensitive manner
   /// Cannot be set to false if secret is true
   final pulumi.Input<bool> caseSensitive;
   final pulumi.Input<GetZeroTrustDlpPredefinedProfileEntryConfidence> confidence;
   final pulumi.Input<String> createdAt;
-  /// Whether this entry is deprecated for new use. This is computed from the static catalog and
+  /// For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
   /// emitted only when true.
   final pulumi.Input<bool> deprecated;
+  /// For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
   final pulumi.Input<String> description;
   final pulumi.Input<bool> enabled;
+  /// The ID of this resource.
   final pulumi.Input<String> id;
+  /// The name of the predefined profile.
   final pulumi.Input<String> name;
   final pulumi.Input<GetZeroTrustDlpPredefinedProfileEntryPattern> pattern;
   final pulumi.Input<String> profileId;
   final pulumi.Input<bool> secret;
-  /// Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+  /// Available values: "custom", "customPromptTopic", "predefined", "integration", "exactData", "documentFingerprint", "wordList".
   final pulumi.Input<String> type;
   final pulumi.Input<String> updatedAt;
-  /// A Predefined AI prompt classification topic entry.
+  /// For `type: custom`: Validators this entry references, by id, at most 10. An empty list means the entry
+  /// references none.
+  ///
+  /// Returned by the entry endpoints. Not returned on entries embedded in other responses, such
+  /// as profiles.
+  final pulumi.Input<List<String>> validatorIds;
+  /// For `type: predefined`: A Predefined AI prompt classification topic entry.
   final pulumi.Input<GetZeroTrustDlpPredefinedProfileEntryVariant> variant;
-  final pulumi.Input<String> wordList;
+  final pulumi.Input<List<String>> wordLists;
 
   /// Creates a new [GetZeroTrustDlpPredefinedProfileEntry].
-  /// [caseSensitive] Only applies to custom word lists.
+  /// [caseSensitive] For `type: exactData`: Only applies to custom word lists.
   /// [confidence] Required.
   /// [createdAt] Required.
-  /// [deprecated] Whether this entry is deprecated for new use. This is computed from the static catalog and
-  /// [description] Required.
+  /// [deprecated] For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
+  /// [description] For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
   /// [enabled] Required.
-  /// [id] Required.
-  /// [name] Required.
+  /// [id] The ID of this resource.
+  /// [name] The name of the predefined profile.
   /// [pattern] Required.
   /// [profileId] Required.
   /// [secret] Required.
-  /// [type] Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+  /// [type] Available values: "custom", "customPromptTopic", "predefined", "integration", "exactData", "documentFingerprint", "wordList".
   /// [updatedAt] Required.
-  /// [variant] A Predefined AI prompt classification topic entry.
-  /// [wordList] Required.
+  /// [validatorIds] For `type: custom`: Validators this entry references, by id, at most 10. An empty list means the entry
+  /// [variant] For `type: predefined`: A Predefined AI prompt classification topic entry.
+  /// [wordLists] Required.
   const GetZeroTrustDlpPredefinedProfileEntry({
     required this.caseSensitive,
     required this.confidence,
@@ -59,8 +69,9 @@ class GetZeroTrustDlpPredefinedProfileEntry {
     required this.secret,
     required this.type,
     required this.updatedAt,
+    required this.validatorIds,
     required this.variant,
-    required this.wordList,
+    required this.wordLists,
   });
 
   Map<String, dynamic> toMap() {
@@ -78,8 +89,9 @@ class GetZeroTrustDlpPredefinedProfileEntry {
       'secret': secret,
       'type': type,
       'updatedAt': updatedAt,
+      'validatorIds': validatorIds,
       'variant': pulumi.Input.mapInputValue<GetZeroTrustDlpPredefinedProfileEntryVariant, Map<String, dynamic>>(variant, (value) => value.toMap()),
-      'wordList': wordList,
+      'wordLists': wordLists,
     };
   }
 
@@ -98,8 +110,9 @@ class GetZeroTrustDlpPredefinedProfileEntry {
       secret: pulumi.Input.fromValue(map['secret'] as bool),
       type: pulumi.Input.fromValue(map['type'] as String),
       updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),
+      validatorIds: pulumi.Input.fromValue((map['validatorIds'] as List).cast<String>()),
       variant: pulumi.Input.fromValue(GetZeroTrustDlpPredefinedProfileEntryVariant.fromMap((map['variant']! as Map).cast<String, dynamic>())),
-      wordList: pulumi.Input.fromValue(map['wordList'] as String),
+      wordLists: pulumi.Input.fromValue((map['wordLists'] as List).cast<String>()),
     );
   }
 }

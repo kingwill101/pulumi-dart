@@ -6,33 +6,41 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EmailSecurityImpersonationRegistryState {
   /// Identifier.
   final pulumi.Input<String?>? accountId;
+  /// Optional note describing the entry.
   final pulumi.Input<String?>? comments;
   final pulumi.Input<String?>? createdAt;
+  /// Identifier of the directory the entry was synced from, when directory-synced.
   final pulumi.Input<int?>? directoryId;
+  /// Identifier of the directory node the entry was synced from, when directory-synced.
   final pulumi.Input<int?>? directoryNodeId;
+  /// Email address (or pattern) of the protected identity.
   final pulumi.Input<String?>? email;
+  /// Deprecated. External identifier of the directory node.
   final pulumi.Input<String?>? externalDirectoryNodeId;
+  /// Whether `email` is a regular expression instead of a literal address.
   final pulumi.Input<bool?>? isEmailRegex;
   /// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
   final pulumi.Input<String?>? lastModified;
   final pulumi.Input<String?>? modifiedAt;
+  /// Display name of the protected identity.
   final pulumi.Input<String?>? name;
+  /// Source the entry was created from.
   /// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
   final pulumi.Input<String?>? provenance;
 
   /// Creates a new [EmailSecurityImpersonationRegistryState].
   /// [accountId] Identifier.
-  /// [comments] Optional.
+  /// [comments] Optional note describing the entry.
   /// [createdAt] Optional.
-  /// [directoryId] Optional.
-  /// [directoryNodeId] Optional.
-  /// [email] Optional.
-  /// [externalDirectoryNodeId] Optional.
-  /// [isEmailRegex] Optional.
+  /// [directoryId] Identifier of the directory the entry was synced from, when directory-synced.
+  /// [directoryNodeId] Identifier of the directory node the entry was synced from, when directory-synced.
+  /// [email] Email address (or pattern) of the protected identity.
+  /// [externalDirectoryNodeId] Deprecated. External identifier of the directory node.
+  /// [isEmailRegex] Whether `email` is a regular expression instead of a literal address.
   /// [lastModified] Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
   /// [modifiedAt] Optional.
-  /// [name] Optional.
-  /// [provenance] Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+  /// [name] Display name of the protected identity.
+  /// [provenance] Source the entry was created from.
   const EmailSecurityImpersonationRegistryState({
     this.accountId,
     this.comments,
@@ -70,8 +78,8 @@ class EmailSecurityImpersonationRegistryState {
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       comments: (() { final guardedValue = map['comments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      directoryId: (() { final guardedValue = map['directoryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      directoryNodeId: (() { final guardedValue = map['directoryNodeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      directoryId: (() { final guardedValue = map['directoryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      directoryNodeId: (() { final guardedValue = map['directoryNodeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       externalDirectoryNodeId: (() { final guardedValue = map['externalDirectoryNodeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isEmailRegex: (() { final guardedValue = map['isEmailRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

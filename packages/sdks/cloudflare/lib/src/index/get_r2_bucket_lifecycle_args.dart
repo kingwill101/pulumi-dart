@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_get_r2_bucket_lifecycle_get_r2_bucket_lifecycle_args_doc}
 class GetR2BucketLifecycleArgs {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   final pulumi.Input<String> accountId;
   /// Name of the bucket.
   final pulumi.Input<String> bucketName;
 
   /// Creates a new [GetR2BucketLifecycleArgs].
-  /// [accountId] Account ID.
+  /// [accountId] Cloudflare account ID that owns the R2 resource.
   /// [bucketName] Name of the bucket.
   const GetR2BucketLifecycleArgs({
     required this.accountId,

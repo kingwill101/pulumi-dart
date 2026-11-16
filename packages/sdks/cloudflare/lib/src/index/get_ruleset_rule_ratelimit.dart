@@ -57,11 +57,11 @@ class GetRulesetRuleRatelimit {
     return GetRulesetRuleRatelimit(
       characteristics: pulumi.Input.fromValue((map['characteristics'] as List).cast<String>()),
       countingExpression: pulumi.Input.fromValue(map['countingExpression'] as String),
-      mitigationTimeout: pulumi.Input.fromValue((map['mitigationTimeout'] as num).toInt()),
-      period: pulumi.Input.fromValue((map['period'] as num).toInt()),
-      requestsPerPeriod: pulumi.Input.fromValue((map['requestsPerPeriod'] as num).toInt()),
+      mitigationTimeout: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['mitigationTimeout'])),
+      period: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['period'])),
+      requestsPerPeriod: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['requestsPerPeriod'])),
       requestsToOrigin: pulumi.Input.fromValue(map['requestsToOrigin'] as bool),
-      scorePerPeriod: pulumi.Input.fromValue((map['scorePerPeriod'] as num).toInt()),
+      scorePerPeriod: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['scorePerPeriod'])),
       scoreResponseHeaderName: pulumi.Input.fromValue(map['scoreResponseHeaderName'] as String),
     );
   }

@@ -9,7 +9,7 @@ class GetClientCertificateResult {
   final String? certificate;
   /// Certificate Authority used to issue the Client Certificate.
   final GetClientCertificateCertificateAuthority? certificateAuthority;
-  /// Identifier.
+  /// Client Certificate Tag
   final String? clientCertificateId;
   /// Common Name of the Client Certificate.
   final String? commonName;
@@ -22,7 +22,7 @@ class GetClientCertificateResult {
   final GetClientCertificateFilter? filter;
   /// Unique identifier of the Client Certificate.
   final String? fingerprintSha256;
-  /// Identifier.
+  /// Client Certificate Tag
   final String? id;
   /// Date that the Client Certificate was issued by the Certificate Authority.
   final String? issuedOn;
@@ -51,14 +51,14 @@ class GetClientCertificateResult {
   /// Creates a new [GetClientCertificateResult].
   /// [certificate] The Client Certificate PEM.
   /// [certificateAuthority] Certificate Authority used to issue the Client Certificate.
-  /// [clientCertificateId] Identifier.
+  /// [clientCertificateId] Client Certificate Tag
   /// [commonName] Common Name of the Client Certificate.
   /// [country] Country, provided by the CSR.
   /// [csr] The Certificate Signing Request (CSR). Must be newline-encoded.
   /// [expiresOn] Date that the Client Certificate expires.
   /// [filter] Optional.
   /// [fingerprintSha256] Unique identifier of the Client Certificate.
-  /// [id] Identifier.
+  /// [id] Client Certificate Tag
   /// [issuedOn] Date that the Client Certificate was issued by the Certificate Authority.
   /// [location] Location, provided by the CSR.
   /// [organization] Organization, provided by the CSR.
@@ -141,7 +141,7 @@ class GetClientCertificateResult {
       ski: (() { final guardedValue = map['ski']; if (guardedValue == null) return null; return guardedValue as String; })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      validityDays: (() { final guardedValue = map['validityDays']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      validityDays: (() { final guardedValue = map['validityDays']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

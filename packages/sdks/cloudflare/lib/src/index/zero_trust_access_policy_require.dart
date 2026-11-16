@@ -23,6 +23,7 @@ import 'zero_trust_access_policy_require_oidc.dart';
 import 'zero_trust_access_policy_require_okta.dart';
 import 'zero_trust_access_policy_require_saml.dart';
 import 'zero_trust_access_policy_require_service_token.dart';
+import 'zero_trust_access_policy_require_service_token_tag.dart';
 import 'zero_trust_access_policy_require_user_risk_score.dart';
 
 class ZeroTrustAccessPolicyRequire {
@@ -53,6 +54,7 @@ class ZeroTrustAccessPolicyRequire {
   final pulumi.Input<ZeroTrustAccessPolicyRequireOkta?>? okta;
   final pulumi.Input<ZeroTrustAccessPolicyRequireSaml?>? saml;
   final pulumi.Input<ZeroTrustAccessPolicyRequireServiceToken?>? serviceToken;
+  final pulumi.Input<ZeroTrustAccessPolicyRequireServiceTokenTag?>? serviceTokenTag;
   final pulumi.Input<ZeroTrustAccessPolicyRequireUserRiskScore?>? userRiskScore;
 
   /// Creates a new [ZeroTrustAccessPolicyRequire].
@@ -81,6 +83,7 @@ class ZeroTrustAccessPolicyRequire {
   /// [okta] Optional.
   /// [saml] Optional.
   /// [serviceToken] Optional.
+  /// [serviceTokenTag] Optional.
   /// [userRiskScore] Optional.
   const ZeroTrustAccessPolicyRequire({
     this.anyValidServiceToken,
@@ -108,6 +111,7 @@ class ZeroTrustAccessPolicyRequire {
     this.okta,
     this.saml,
     this.serviceToken,
+    this.serviceTokenTag,
     this.userRiskScore,
   });
 
@@ -138,6 +142,7 @@ class ZeroTrustAccessPolicyRequire {
       'okta': ?pulumi.Input.mapOptionalInputValue<ZeroTrustAccessPolicyRequireOkta, Map<String, dynamic>>(okta, (value) => value.toMap()),
       'saml': ?pulumi.Input.mapOptionalInputValue<ZeroTrustAccessPolicyRequireSaml, Map<String, dynamic>>(saml, (value) => value.toMap()),
       'serviceToken': ?pulumi.Input.mapOptionalInputValue<ZeroTrustAccessPolicyRequireServiceToken, Map<String, dynamic>>(serviceToken, (value) => value.toMap()),
+      'serviceTokenTag': ?pulumi.Input.mapOptionalInputValue<ZeroTrustAccessPolicyRequireServiceTokenTag, Map<String, dynamic>>(serviceTokenTag, (value) => value.toMap()),
       'userRiskScore': ?pulumi.Input.mapOptionalInputValue<ZeroTrustAccessPolicyRequireUserRiskScore, Map<String, dynamic>>(userRiskScore, (value) => value.toMap()),
     };
   }
@@ -169,6 +174,7 @@ class ZeroTrustAccessPolicyRequire {
       okta: (() { final guardedValue = map['okta']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustAccessPolicyRequireOkta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       saml: (() { final guardedValue = map['saml']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustAccessPolicyRequireSaml.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       serviceToken: (() { final guardedValue = map['serviceToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustAccessPolicyRequireServiceToken.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      serviceTokenTag: (() { final guardedValue = map['serviceTokenTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustAccessPolicyRequireServiceTokenTag.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       userRiskScore: (() { final guardedValue = map['userRiskScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustAccessPolicyRequireUserRiskScore.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -5,137 +5,168 @@ import 'worker_version_binding_outbound.dart';
 import 'worker_version_binding_simple.dart';
 
 class WorkerVersionBinding {
-  /// Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+  /// For `type: secretKey`: Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
   final pulumi.Input<String?>? algorithm;
-  /// List of allowed destination addresses.
+  /// For `type: sendEmail`: List of allowed destination addresses.
   final pulumi.Input<List<String>?>? allowedDestinationAddresses;
-  /// List of allowed sender addresses.
+  /// For `type: sendEmail`: List of allowed sender addresses.
   final pulumi.Input<List<String>?>? allowedSenderAddresses;
-  /// ID of the Flagship app to bind to for feature flag evaluation.
+  /// For `type: flagship`: ID of the Flagship app to bind to for feature flag evaluation.
   final pulumi.Input<String?>? appId;
-  /// R2 bucket to bind to.
+  /// For `type: r2Bucket`: R2 bucket to bind to.
   final pulumi.Input<String?>? bucketName;
-  /// Identifier of the certificate to bind to.
+  /// For `type: mtlsCertificate`: Identifier of the certificate to bind to.
   final pulumi.Input<String?>? certificateId;
-  /// The exported class name of the Durable Object.
+  /// For `type: durableObjectNamespace`: The exported class name of the Durable Object.
+  ///
+  /// For `type: workflow`: Class name of the Workflow. Should only be provided if the Workflow belongs to this script.
   final pulumi.Input<String?>? className;
-  /// Identifier of the D1 database to bind to.
+  /// For `type: d1`: Identifier of the D1 database to bind to.
   final pulumi.Input<String?>? databaseId;
-  /// The name of the dataset to bind to.
+  /// For `type: analyticsEngine`: The name of the dataset to bind to.
   final pulumi.Input<String?>? dataset;
-  /// Destination address for the email.
+  /// For `type: sendEmail`: Destination address for the email.
   final pulumi.Input<String?>? destinationAddress;
-  /// The dispatch namespace the Durable Object script belongs to.
+  /// For `type: durableObjectNamespace`: The dispatch namespace the Durable Object script belongs to.
   final pulumi.Input<String?>? dispatchNamespace;
-  /// Entrypoint to invoke on the target Worker.
+  /// For `type: service`: Entrypoint to invoke on the target Worker.
   final pulumi.Input<String?>? entrypoint;
-  /// The environment of the scriptName to bind to.
+  /// For `type: durableObjectNamespace`: The environment of the scriptName to bind to.
+  ///
+  /// For `type: service`: Optional environment if the Worker utilizes one.
   final pulumi.Input<String?>? environment;
-  /// Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+  /// For `type: secretKey`: Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
   /// Available values: "raw", "pkcs8", "spki", "jwk".
   final pulumi.Input<String?>? format;
-  /// Identifier of the D1 database to bind to.
+  /// For `type: d1`: Identifier of the D1 database to bind to.
+  ///
+  /// For `type: hyperdrive`: Identifier of the Hyperdrive connection to bind to.
   final pulumi.Input<String?>? id;
-  /// Name of the Vectorize index to bind to.
+  /// For `type: vpcNetwork`: Enables Gateway identity for the binding. Requires networkId to be "cf1:network" and cannot be combined with tunnelId or an explicit "cf1:vnet:&lt;UUID&gt;" network_id.
+  /// Available values: "runtime-email-alpha".
+  final pulumi.Input<String?>? identity;
+  /// For `type: vectorize`: Name of the Vectorize index to bind to.
   final pulumi.Input<String?>? indexName;
-  /// The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
+  /// For `type: aiSearch`: The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
   final pulumi.Input<String?>? instanceName;
-  /// JSON data to use.
+  /// For `type: json`: JSON data to use.
   final pulumi.Input<String?>? json;
-  /// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-  /// Available values: "eu", "fedramp", "fedramp-high".
+  /// For `type: r2Bucket`: The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+  /// Available values: "eu", "fedramp", "fedramp-high", "us".
   final pulumi.Input<String?>? jurisdiction;
-  /// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
+  /// For `type: secretKey`: Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
   final pulumi.Input<String?>? keyBase64;
-  /// Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
+  /// For `type: secretKey`: Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
   final pulumi.Input<String?>? keyJwk;
-  /// A JavaScript variable name for the binding.
+  /// For `type: ai` or `type: aiSearch` or `type: aiSearchNamespace` or `type: messaging` or `type: analyticsEngine` or `type: artifacts` or `type: assets` or `type: browser` or `type: d1` or `type: dataBlob` or `type: dispatchNamespace` or `type: durableObjectNamespace` or `type: hyperdrive` or `type: images` or `type: json` or `type: kvNamespace` or `type: media` or `type: mtlsCertificate` or `type: plainText` or `type: pipelines` or `type: k2` or `type: queue` or `type: ratelimit` or `type: r2Bucket` or `type: secretText` or `type: sendEmail` or `type: service` or `type: textBlob` or `type: vectorize` or `type: versionMetadata` or `type: secretsStoreSecret` or `type: flagship` or `type: secretKey` or `type: workflow` or `type: wasmModule` or `type: vpcService` or `type: vpcNetwork` or `type: workerLoader`: A JavaScript variable name for the binding.
   final pulumi.Input<String> name;
-  /// The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field.
+  /// For `type: aiSearch`: The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field.
+  ///
+  /// For `type: aiSearchNamespace`: The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace.
+  ///
+  /// For `type: messaging`: The Messaging namespace to bind to.
+  ///
+  /// For `type: artifacts`: The Artifacts namespace exposed to the Worker in the Worker's account. Must be 2-63 characters, start with an ASCII alphanumeric character, contain only ASCII alphanumeric characters, dots, underscores, and hyphens, and must not end with a hyphen. The namespace does not need to be created before binding it.
+  ///
+  /// For `type: dispatchNamespace`: The name of the dispatch namespace.
   final pulumi.Input<String?>? namespace;
-  /// Namespace identifier tag.
+  /// For `type: durableObjectNamespace` or `type: kvNamespace`: Namespace identifier tag.
+  ///
+  /// For `type: ratelimit`: Identifier of the rate limit namespace to bind to.
   final pulumi.Input<String?>? namespaceId;
-  /// Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id.
+  /// For `type: vpcNetwork`: Identifier of the network to bind to. Use "cf1:network" to select the account's default virtual network at runtime, or "cf1:vnet:&lt;UUID&gt;" to select an explicit virtual network in the Worker's account. Mutually exclusive with tunnel_id.
   final pulumi.Input<String?>? networkId;
-  /// The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
+  /// For `type: inherit`: The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
   final pulumi.Input<String?>? oldName;
-  /// Outbound worker.
+  /// For `type: dispatchNamespace`: Outbound worker.
   final pulumi.Input<WorkerVersionBindingOutbound?>? outbound;
-  /// The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+  /// For `type: dataBlob`: The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+  ///
+  /// For `type: textBlob`: The name of the file containing the text content. Only accepted for `service worker syntax` Workers.
+  ///
+  /// For `type: wasmModule`: The name of the file containing the WebAssembly module content. Only accepted for `service worker syntax` Workers.
   final pulumi.Input<String?>? part;
-  /// Name of the Pipeline to bind to.
+  /// For `type: pipelines`: Name of the Pipeline to bind to.
   final pulumi.Input<String?>? pipeline;
-  /// Name of the Queue to bind to.
+  /// For `type: queue`: Name of the Queue to bind to.
   final pulumi.Input<String?>? queueName;
-  /// The script where the Durable Object is defined, if it is external to this Worker.
+  /// For `type: durableObjectNamespace`: The script where the Durable Object is defined, if it is external to this Worker.
+  ///
+  /// For `type: workflow`: Script name that contains the Workflow. If not provided, defaults to this script name.
   final pulumi.Input<String?>? scriptName;
-  /// Name of the secret in the store.
+  /// For `type: secretsStoreSecret`: Name of the secret in the store.
   final pulumi.Input<String?>? secretName;
-  /// Name of Worker to bind to.
+  /// For `type: service`: Name of Worker to bind to.
   final pulumi.Input<String?>? service;
-  /// Identifier of the VPC service to bind to.
+  /// For `type: vpcService`: Identifier of the VPC service to bind to.
   final pulumi.Input<String?>? serviceId;
-  /// The rate limit configuration.
+  /// For `type: ratelimit`: The rate limit configuration.
   final pulumi.Input<WorkerVersionBindingSimple?>? simple;
-  /// ID of the store containing the secret.
+  /// For `type: secretsStoreSecret`: ID of the store containing the secret.
   final pulumi.Input<String?>? storeId;
-  /// The text value to use.
+  /// For `type: k2`: ID of a K2 stream owned by the account deploying the Worker.
+  final pulumi.Input<String?>? stream;
+  /// For `type: plainText`: The text value to use.
+  ///
+  /// For `type: secretText`: The secret value to use.
   final pulumi.Input<String?>? text;
-  /// UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
+  /// For `type: vpcNetwork`: UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
   final pulumi.Input<String?>? tunnelId;
   /// The kind of resource that the binding provides.
-  /// Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+  /// Available values: "ai", "aiSearch", "aiSearchNamespace", "messaging", "analyticsEngine", "artifacts", "assets", "browser", "d1", "dataBlob", "dispatchNamespace", "durableObjectNamespace", "hyperdrive", "inherit", "images", "json", "kvNamespace", "media", "mtlsCertificate", "plainText", "pipelines", "k2", "queue", "ratelimit", "r2Bucket", "secretText", "sendEmail", "service", "textBlob", "vectorize", "versionMetadata", "secretsStoreSecret", "flagship", "secretKey", "workflow", "wasmModule", "vpcService", "vpcNetwork", "workerLoader".
   final pulumi.Input<String> type;
-  /// Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+  /// For `type: secretKey`: Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
   final pulumi.Input<List<String>?>? usages;
-  /// Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+  /// For `type: inherit`: Identifier for the version to inherit the binding from. This can be a version ID, or the literal "latest" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to "latest". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only "latest" and reject a version ID with error 10057.
   final pulumi.Input<String?>? versionId;
-  /// Name of the Workflow to bind to.
+  /// For `type: workflow`: Name of the Workflow to bind to.
   final pulumi.Input<String?>? workflowName;
 
   /// Creates a new [WorkerVersionBinding].
-  /// [algorithm] Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
-  /// [allowedDestinationAddresses] List of allowed destination addresses.
-  /// [allowedSenderAddresses] List of allowed sender addresses.
-  /// [appId] ID of the Flagship app to bind to for feature flag evaluation.
-  /// [bucketName] R2 bucket to bind to.
-  /// [certificateId] Identifier of the certificate to bind to.
-  /// [className] The exported class name of the Durable Object.
-  /// [databaseId] Identifier of the D1 database to bind to.
-  /// [dataset] The name of the dataset to bind to.
-  /// [destinationAddress] Destination address for the email.
-  /// [dispatchNamespace] The dispatch namespace the Durable Object script belongs to.
-  /// [entrypoint] Entrypoint to invoke on the target Worker.
-  /// [environment] The environment of the scriptName to bind to.
-  /// [format] Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
-  /// [id] Identifier of the D1 database to bind to.
-  /// [indexName] Name of the Vectorize index to bind to.
-  /// [instanceName] The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
-  /// [json] JSON data to use.
-  /// [jurisdiction] The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-  /// [keyBase64] Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
-  /// [keyJwk] Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
-  /// [name] A JavaScript variable name for the binding.
-  /// [namespace] The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field.
-  /// [namespaceId] Namespace identifier tag.
-  /// [networkId] Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id.
-  /// [oldName] The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
-  /// [outbound] Outbound worker.
-  /// [part] The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
-  /// [pipeline] Name of the Pipeline to bind to.
-  /// [queueName] Name of the Queue to bind to.
-  /// [scriptName] The script where the Durable Object is defined, if it is external to this Worker.
-  /// [secretName] Name of the secret in the store.
-  /// [service] Name of Worker to bind to.
-  /// [serviceId] Identifier of the VPC service to bind to.
-  /// [simple] The rate limit configuration.
-  /// [storeId] ID of the store containing the secret.
-  /// [text] The text value to use.
-  /// [tunnelId] UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
+  /// [algorithm] For `type: secretKey`: Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+  /// [allowedDestinationAddresses] For `type: sendEmail`: List of allowed destination addresses.
+  /// [allowedSenderAddresses] For `type: sendEmail`: List of allowed sender addresses.
+  /// [appId] For `type: flagship`: ID of the Flagship app to bind to for feature flag evaluation.
+  /// [bucketName] For `type: r2Bucket`: R2 bucket to bind to.
+  /// [certificateId] For `type: mtlsCertificate`: Identifier of the certificate to bind to.
+  /// [className] For `type: durableObjectNamespace`: The exported class name of the Durable Object.
+  /// [databaseId] For `type: d1`: Identifier of the D1 database to bind to.
+  /// [dataset] For `type: analyticsEngine`: The name of the dataset to bind to.
+  /// [destinationAddress] For `type: sendEmail`: Destination address for the email.
+  /// [dispatchNamespace] For `type: durableObjectNamespace`: The dispatch namespace the Durable Object script belongs to.
+  /// [entrypoint] For `type: service`: Entrypoint to invoke on the target Worker.
+  /// [environment] For `type: durableObjectNamespace`: The environment of the scriptName to bind to.
+  /// [format] For `type: secretKey`: Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+  /// [id] For `type: d1`: Identifier of the D1 database to bind to.
+  /// [identity] For `type: vpcNetwork`: Enables Gateway identity for the binding. Requires networkId to be "cf1:network" and cannot be combined with tunnelId or an explicit "cf1:vnet:&lt;UUID&gt;" network_id.
+  /// [indexName] For `type: vectorize`: Name of the Vectorize index to bind to.
+  /// [instanceName] For `type: aiSearch`: The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
+  /// [json] For `type: json`: JSON data to use.
+  /// [jurisdiction] For `type: r2Bucket`: The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+  /// [keyBase64] For `type: secretKey`: Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
+  /// [keyJwk] For `type: secretKey`: Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
+  /// [name] For `type: ai` or `type: aiSearch` or `type: aiSearchNamespace` or `type: messaging` or `type: analyticsEngine` or `type: artifacts` or `type: assets` or `type: browser` or `type: d1` or `type: dataBlob` or `type: dispatchNamespace` or `type: durableObjectNamespace` or `type: hyperdrive` or `type: images` or `type: json` or `type: kvNamespace` or `type: media` or `type: mtlsCertificate` or `type: plainText` or `type: pipelines` or `type: k2` or `type: queue` or `type: ratelimit` or `type: r2Bucket` or `type: secretText` or `type: sendEmail` or `type: service` or `type: textBlob` or `type: vectorize` or `type: versionMetadata` or `type: secretsStoreSecret` or `type: flagship` or `type: secretKey` or `type: workflow` or `type: wasmModule` or `type: vpcService` or `type: vpcNetwork` or `type: workerLoader`: A JavaScript variable name for the binding.
+  /// [namespace] For `type: aiSearch`: The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field.
+  /// [namespaceId] For `type: durableObjectNamespace` or `type: kvNamespace`: Namespace identifier tag.
+  /// [networkId] For `type: vpcNetwork`: Identifier of the network to bind to. Use "cf1:network" to select the account's default virtual network at runtime, or "cf1:vnet:&lt;UUID&gt;" to select an explicit virtual network in the Worker's account. Mutually exclusive with tunnel_id.
+  /// [oldName] For `type: inherit`: The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
+  /// [outbound] For `type: dispatchNamespace`: Outbound worker.
+  /// [part] For `type: dataBlob`: The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+  /// [pipeline] For `type: pipelines`: Name of the Pipeline to bind to.
+  /// [queueName] For `type: queue`: Name of the Queue to bind to.
+  /// [scriptName] For `type: durableObjectNamespace`: The script where the Durable Object is defined, if it is external to this Worker.
+  /// [secretName] For `type: secretsStoreSecret`: Name of the secret in the store.
+  /// [service] For `type: service`: Name of Worker to bind to.
+  /// [serviceId] For `type: vpcService`: Identifier of the VPC service to bind to.
+  /// [simple] For `type: ratelimit`: The rate limit configuration.
+  /// [storeId] For `type: secretsStoreSecret`: ID of the store containing the secret.
+  /// [stream] For `type: k2`: ID of a K2 stream owned by the account deploying the Worker.
+  /// [text] For `type: plainText`: The text value to use.
+  /// [tunnelId] For `type: vpcNetwork`: UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
   /// [type] The kind of resource that the binding provides.
-  /// [usages] Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
-  /// [versionId] Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
-  /// [workflowName] Name of the Workflow to bind to.
+  /// [usages] For `type: secretKey`: Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+  /// [versionId] For `type: inherit`: Identifier for the version to inherit the binding from. This can be a version ID, or the literal "latest" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to "latest". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only "latest" and reject a version ID with error 10057.
+  /// [workflowName] For `type: workflow`: Name of the Workflow to bind to.
   const WorkerVersionBinding({
     this.algorithm,
     this.allowedDestinationAddresses,
@@ -152,6 +183,7 @@ class WorkerVersionBinding {
     this.environment,
     this.format,
     this.id,
+    this.identity,
     this.indexName,
     this.instanceName,
     this.json,
@@ -173,6 +205,7 @@ class WorkerVersionBinding {
     this.serviceId,
     this.simple,
     this.storeId,
+    this.stream,
     this.text,
     this.tunnelId,
     required this.type,
@@ -198,6 +231,7 @@ class WorkerVersionBinding {
       'environment': ?environment,
       'format': ?format,
       'id': ?id,
+      'identity': ?identity,
       'indexName': ?indexName,
       'instanceName': ?instanceName,
       'json': ?json,
@@ -219,6 +253,7 @@ class WorkerVersionBinding {
       'serviceId': ?serviceId,
       'simple': ?pulumi.Input.mapOptionalInputValue<WorkerVersionBindingSimple, Map<String, dynamic>>(simple, (value) => value.toMap()),
       'storeId': ?storeId,
+      'stream': ?stream,
       'text': ?text,
       'tunnelId': ?tunnelId,
       'type': type,
@@ -245,6 +280,7 @@ class WorkerVersionBinding {
       environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       indexName: (() { final guardedValue = map['indexName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceName: (() { final guardedValue = map['instanceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       json: (() { final guardedValue = map['json']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -266,6 +302,7 @@ class WorkerVersionBinding {
       serviceId: (() { final guardedValue = map['serviceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       simple: (() { final guardedValue = map['simple']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerVersionBindingSimple.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       storeId: (() { final guardedValue = map['storeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      stream: (() { final guardedValue = map['stream']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       text: (() { final guardedValue = map['text']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tunnelId: (() { final guardedValue = map['tunnelId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),

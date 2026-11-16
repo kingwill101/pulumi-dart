@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_ct_alerting_ct_alerting_args_doc}
 class CtAlertingArgs {
-  /// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+  /// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
   final pulumi.Input<List<String>?>? emails;
   /// Whether CT alerting is enabled for the zone.
   final pulumi.Input<bool> enabled;
@@ -15,7 +15,7 @@ class CtAlertingArgs {
   final pulumi.Input<String> zoneId;
 
   /// Creates a new [CtAlertingArgs].
-  /// [emails] Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+  /// [emails] Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
   /// [enabled] Whether CT alerting is enabled for the zone.
   /// [zoneId] Identifier.
   const CtAlertingArgs({

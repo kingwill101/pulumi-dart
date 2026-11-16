@@ -21,6 +21,9 @@ import 'zero_trust_access_service_token_state.dart';
 ///     duration: "60m",
 ///     enabled: true,
 ///     previousClientSecretExpiresAt: "2014-01-01T05:20:00.12345Z",
+///     tags: {
+///         environment: "production",
+///     },
 /// });
 /// ```
 /// ```python
@@ -33,7 +36,10 @@ import 'zero_trust_access_service_token_state.dart';
 ///     client_secret_version=float(0),
 ///     duration="60m",
 ///     enabled=True,
-///     previous_client_secret_expires_at="2014-01-01T05:20:00.12345Z")
+///     previous_client_secret_expires_at="2014-01-01T05:20:00.12345Z",
+///     tags={
+///         "environment": "production",
+///     })
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -47,10 +53,14 @@ import 'zero_trust_access_service_token_state.dart';
 ///     {
 ///         Name = "CI/CD token",
 ///         ZoneId = "zone_id",
-///         ClientSecretVersion = 0,
+///         ClientSecretVersion = 0.0,
 ///         Duration = "60m",
 ///         Enabled = true,
 ///         PreviousClientSecretExpiresAt = "2014-01-01T05:20:00.12345Z",
+///         Tags =
+///         {
+///             { "environment", "production" },
+///         },
 ///     });
 ///
 /// });
@@ -72,6 +82,9 @@ import 'zero_trust_access_service_token_state.dart';
 /// 			Duration:                      pulumi.String("60m"),
 /// 			Enabled:                       pulumi.Bool(true),
 /// 			PreviousClientSecretExpiresAt: pulumi.String("2014-01-01T05:20:00.12345Z"),
+/// 			Tags: pulumi.StringMap{
+/// 				"environment": pulumi.String("production"),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -81,7 +94,7 @@ import 'zero_trust_access_service_token_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -89,13 +102,19 @@ import 'zero_trust_access_service_token_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustaccessservicetoken" "example_zero_trust_access_service_token" {
+/// resource "cloudflare_zero_trust_access_service_token" "example_zero_trust_access_service_token" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                              = "CI/CD token"
 ///   zone_id                           = "zone_id"
 ///   client_secret_version             = 0
 ///   duration                          = "60m"
 ///   enabled                           = true
 ///   previous_client_secret_expires_at = "2014-01-01T05:20:00.12345Z"
+///   tags = {
+///     "environment" = "production"
+///   }
 /// }
 /// ```
 /// ```java
@@ -126,6 +145,7 @@ import 'zero_trust_access_service_token_state.dart';
 ///             .duration("60m")
 ///             .enabled(true)
 ///             .previousClientSecretExpiresAt("2014-01-01T05:20:00.12345Z")
+///             .tags(Map.of("environment", "production"))
 ///             .build());
 ///
 ///     }
@@ -143,6 +163,8 @@ import 'zero_trust_access_service_token_state.dart';
 ///       duration: 60m
 ///       enabled: true
 ///       previousClientSecretExpiresAt: 2014-01-01T05:20:00.12345Z
+///       tags:
+///         environment: production
 /// ```
 ///
 ///
@@ -158,17 +180,25 @@ class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
   late final pulumi.Output<String> clientId;
   /// The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
   late final pulumi.Output<String> clientSecret;
-  /// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+  /// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`. If the service token was reported as leaked, `previousClientSecretExpiresAt` is not required, may not be in the future, and the previous secret is discarded immediately.
   late final pulumi.Output<double> clientSecretVersion;
   /// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
   late final pulumi.Output<String> duration;
-  /// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+  /// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
   late final pulumi.Output<bool> enabled;
   late final pulumi.Output<String> expiresAt;
+  /// Where the leaked `clientSecret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+  late final pulumi.Output<String> leakReportUrl;
+  /// When a secret scanning partner reported this service token's `clientSecret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+  late final pulumi.Output<String> leakReportedAt;
+  /// The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
+  late final pulumi.Output<String> leakReporter;
   /// The name of the service token.
   late final pulumi.Output<String> name;
-  /// The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+  /// The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
   late final pulumi.Output<String?> previousClientSecretExpiresAt;
+  /// Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+  late final pulumi.Output<Map<String, String>?> tags;
   /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
   late final pulumi.Output<String?> zoneId;
 
@@ -184,7 +214,7 @@ class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
           additionalSecretOutputs: const ['clientSecret'],
         ) {
     accountId = registerOutput<String?>('accountId');
@@ -194,8 +224,12 @@ class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
     duration = registerOutput<String>('duration');
     enabled = registerOutput<bool>('enabled');
     expiresAt = registerOutput<String>('expiresAt');
+    leakReportUrl = registerOutput<String>('leakReportUrl');
+    leakReportedAt = registerOutput<String>('leakReportedAt');
+    leakReporter = registerOutput<String>('leakReporter');
     this.name = registerOutput<String>('name');
     previousClientSecretExpiresAt = registerOutput<String?>('previousClientSecretExpiresAt');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     zoneId = registerOutput<String?>('zoneId');
   }
 
@@ -230,8 +264,12 @@ class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
     duration = registerOutput<String>('duration');
     enabled = registerOutput<bool>('enabled');
     expiresAt = registerOutput<String>('expiresAt');
+    leakReportUrl = registerOutput<String>('leakReportUrl');
+    leakReportedAt = registerOutput<String>('leakReportedAt');
+    leakReporter = registerOutput<String>('leakReporter');
     this.name = registerOutput<String>('name');
     previousClientSecretExpiresAt = registerOutput<String?>('previousClientSecretExpiresAt');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     zoneId = registerOutput<String?>('zoneId');
   }
 
@@ -252,8 +290,12 @@ class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
     duration = registerOutput<String>('duration');
     enabled = registerOutput<bool>('enabled');
     expiresAt = registerOutput<String>('expiresAt');
+    leakReportUrl = registerOutput<String>('leakReportUrl');
+    leakReportedAt = registerOutput<String>('leakReportedAt');
+    leakReporter = registerOutput<String>('leakReporter');
     this.name = registerOutput<String>('name');
     previousClientSecretExpiresAt = registerOutput<String?>('previousClientSecretExpiresAt');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     zoneId = registerOutput<String?>('zoneId');
   }
 }

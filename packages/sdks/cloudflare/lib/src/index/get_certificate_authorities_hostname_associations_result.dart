@@ -3,6 +3,7 @@
 
 /// Result data returned by getCertificateAuthoritiesHostnameAssociations.
 class GetCertificateAuthoritiesHostnameAssociationsResult {
+  /// Hostnames are returned in lowercase punycode, in no particular order. Null when there are no associations.
   final List<String>? hostnames;
   /// Identifier.
   final String? id;
@@ -12,7 +13,7 @@ class GetCertificateAuthoritiesHostnameAssociationsResult {
   final String? zoneId;
 
   /// Creates a new [GetCertificateAuthoritiesHostnameAssociationsResult].
-  /// [hostnames] Optional.
+  /// [hostnames] Hostnames are returned in lowercase punycode, in no particular order. Null when there are no associations.
   /// [id] Identifier.
   /// [mtlsCertificateId] The UUID to match against for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls*certificate*id is given, the results will be the hostnames associated to your active Cloudflare Managed CA.
   /// [zoneId] Identifier.

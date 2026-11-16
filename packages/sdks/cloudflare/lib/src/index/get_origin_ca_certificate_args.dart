@@ -8,12 +8,12 @@ import 'get_origin_ca_certificate_filter.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_get_origin_ca_certificate_get_origin_ca_certificate_args_doc}
 class GetOriginCaCertificateArgs {
-  /// Identifier.
+  /// The x509 serial number of the Origin CA certificate.
   final pulumi.Input<String?>? certificateId;
   final pulumi.Input<GetOriginCaCertificateFilter?>? filter;
 
   /// Creates a new [GetOriginCaCertificateArgs].
-  /// [certificateId] Identifier.
+  /// [certificateId] The x509 serial number of the Origin CA certificate.
   /// [filter] Optional.
   const GetOriginCaCertificateArgs({
     this.certificateId,

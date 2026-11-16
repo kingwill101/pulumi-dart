@@ -68,7 +68,7 @@ class GetZeroTrustDlpPredefinedProfileResult {
     return GetZeroTrustDlpPredefinedProfileResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       aiContextEnabled: (() { final guardedValue = map['aiContextEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      allowedMatchCount: (() { final guardedValue = map['allowedMatchCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      allowedMatchCount: (() { final guardedValue = map['allowedMatchCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       confidenceThreshold: (() { final guardedValue = map['confidenceThreshold']; if (guardedValue == null) return null; return guardedValue as String; })(),
       enabledEntries: (() { final guardedValue = map['enabledEntries']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       entries: (() { final guardedValue = map['entries']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetZeroTrustDlpPredefinedProfileEntry>(guardedValue, (value) => GetZeroTrustDlpPredefinedProfileEntry.fromMap((value as Map).cast<String, dynamic>())); })(),

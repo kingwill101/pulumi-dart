@@ -81,7 +81,7 @@ class GetZeroTrustTunnelCloudflaredRoutesInvokeResult {
       comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return guardedValue as String; })(),
       existedAt: (() { final guardedValue = map['existedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isDeleted: (() { final guardedValue = map['isDeleted']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       networkSubset: (() { final guardedValue = map['networkSubset']; if (guardedValue == null) return null; return guardedValue as String; })(),
       networkSuperset: (() { final guardedValue = map['networkSuperset']; if (guardedValue == null) return null; return guardedValue as String; })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetZeroTrustTunnelCloudflaredRoutesResult>(guardedValue, (value) => GetZeroTrustTunnelCloudflaredRoutesResult.fromMap((value as Map).cast<String, dynamic>())); })(),

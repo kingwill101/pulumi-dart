@@ -4,45 +4,49 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_workers_scripts_result_exports_cache.dart';
 
 class GetWorkersScriptsResultExports {
-  /// Cache override for this entrypoint. It applies only to
-  /// `type: worker` entries and overrides the Worker's global
-  /// `cache_options.enabled` for that entrypoint.
+  /// For `type: worker`: Cache override for this entrypoint. Overrides the Worker's
+  /// global `cache_options.enabled` for this entrypoint only.
   final pulumi.Input<GetWorkersScriptsResultExportsCache> cache;
   /// Destination class name for a `state: renamed` tombstone. The
   /// target must appear as a live (`created`) entry in the same
   /// `exports` map. Write-only: never present in GET responses.
   final pulumi.Input<String> renamedTo;
-  /// Lifecycle state of the export entry. Defaults to `created`
-  /// (a normal, live export) when omitted.
+  /// For `state: created`: Live export. May be omitted; defaults to `created`.
   final pulumi.Input<String> state;
-  /// Storage backend for a `type: durable-object` export. Required
-  /// for live Durable Object entries (`created` and
-  /// `expecting-transfer`). `sqlite` selects SQLite-backed storage;
-  /// `legacy-kv` selects the legacy key-value storage.
+  /// For `type: durable-object` and `state: created`: Durable Object storage backend. `sqlite` is the recommended (and
+  /// only) backend for new namespaces. `legacy-kv` is accepted only for
+  /// a class whose namespace already exists as KV-backed; the `exports`
+  /// flow never provisions a new `legacy-kv` namespace.
+  ///
+  /// For `type: durable-object` and `state: expecting-transfer`: Durable Object storage backend. `sqlite` is the recommended (and
+  /// only) backend for new namespaces. `legacy-kv` is accepted only for
+  /// a class whose namespace already exists as KV-backed; the `exports`
+  /// flow never provisions a new `legacy-kv` namespace.
   /// Available values: "sqlite", "legacy-kv".
   final pulumi.Input<String> storage;
-  /// Source script for a `state: expecting-transfer` entry. The
-  /// namespace on this script is materialised from the source
-  /// script's data via the pending-transfer flow. Present on reads
-  /// for `expecting-transfer` entries.
+  /// For `state: expecting-transfer`: The source script name to receive the namespace from. Must be
+  /// in the same account and dispatch-namespace context. Present on
+  /// reads for `expecting-transfer` entries.
   final pulumi.Input<String> transferFrom;
-  /// Destination script for a `state: transferred` tombstone. Must
-  /// reference a script in the same account; cross-dispatch-namespace
-  /// transfers are rejected. Write-only: never present in GET
-  /// responses.
+  /// For `state: transferred`: The destination script name. Must be in the same account and
+  /// the same dispatch-namespace context (or both non-dispatch).
+  /// Cross-dispatch-namespace transfers are rejected. Write-only:
+  /// never present in GET responses.
   final pulumi.Input<String> transferredTo;
-  /// The kind of export.
+  /// For `type: worker`: Marks this entry as a Worker entrypoint export.
+  ///
+  /// For `type: durable-object`: Marks this entry as a Durable Object export.
   /// Available values: "worker", "durable-object".
   final pulumi.Input<String> type;
 
   /// Creates a new [GetWorkersScriptsResultExports].
-  /// [cache] Cache override for this entrypoint. It applies only to
+  /// [cache] For `type: worker`: Cache override for this entrypoint. Overrides the Worker's
   /// [renamedTo] Destination class name for a `state: renamed` tombstone. The
-  /// [state] Lifecycle state of the export entry. Defaults to `created`
-  /// [storage] Storage backend for a `type: durable-object` export. Required
-  /// [transferFrom] Source script for a `state: expecting-transfer` entry. The
-  /// [transferredTo] Destination script for a `state: transferred` tombstone. Must
-  /// [type] The kind of export.
+  /// [state] For `state: created`: Live export. May be omitted; defaults to `created`.
+  /// [storage] For `type: durable-object` and `state: created`: Durable Object storage backend. `sqlite` is the recommended (and
+  /// [transferFrom] For `state: expecting-transfer`: The source script name to receive the namespace from. Must be
+  /// [transferredTo] For `state: transferred`: The destination script name. Must be in the same account and
+  /// [type] For `type: worker`: Marks this entry as a Worker entrypoint export.
   const GetWorkersScriptsResultExports({
     required this.cache,
     required this.renamedTo,

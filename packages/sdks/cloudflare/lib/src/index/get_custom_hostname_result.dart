@@ -9,7 +9,7 @@ import 'get_custom_hostname_ssl.dart';
 class GetCustomHostnameResult {
   /// This is the time the hostname was created.
   final String? createdAt;
-  /// Identifier.
+  /// Custom hostname identifier tag.
   final String? customHostnameId;
   /// Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
   final Map<String, String>? customMetadata;
@@ -20,7 +20,7 @@ class GetCustomHostnameResult {
   final GetCustomHostnameFilter? filter;
   /// The custom hostname that will point to your hostname via CNAME.
   final String? hostname;
-  /// Identifier.
+  /// Custom hostname identifier tag.
   final String? id;
   /// This is a record which can be placed to activate a hostname.
   final GetCustomHostnameOwnershipVerification? ownershipVerification;
@@ -37,13 +37,13 @@ class GetCustomHostnameResult {
 
   /// Creates a new [GetCustomHostnameResult].
   /// [createdAt] This is the time the hostname was created.
-  /// [customHostnameId] Identifier.
+  /// [customHostnameId] Custom hostname identifier tag.
   /// [customMetadata] Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
   /// [customOriginServer] a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
   /// [customOriginSni] A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request*host*header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
   /// [filter] Optional.
   /// [hostname] The custom hostname that will point to your hostname via CNAME.
-  /// [id] Identifier.
+  /// [id] Custom hostname identifier tag.
   /// [ownershipVerification] This is a record which can be placed to activate a hostname.
   /// [ownershipVerificationHttp] This presents the token to be served by the given http url to activate a hostname.
   /// [ssl] Optional.

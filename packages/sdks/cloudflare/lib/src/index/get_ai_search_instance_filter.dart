@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAiSearchInstanceFilter {
-  /// Filter by namespace.
-  final pulumi.Input<String?>? namespace;
+  /// Return only instances with this exact Search for Agents hostname (case-insensitive).
+  final pulumi.Input<String?>? hostname;
   /// Field to order results by.
   /// Available values: "createdAt".
   final pulumi.Input<String> orderBy;
@@ -15,12 +15,12 @@ class GetAiSearchInstanceFilter {
   final pulumi.Input<String?>? search;
 
   /// Creates a new [GetAiSearchInstanceFilter].
-  /// [namespace] Filter by namespace.
+  /// [hostname] Return only instances with this exact Search for Agents hostname (case-insensitive).
   /// [orderBy] Field to order results by.
   /// [orderByDirection] Order direction.
   /// [search] Filter instances whose id contains this string (case-insensitive).
   const GetAiSearchInstanceFilter({
-    this.namespace,
+    this.hostname,
     required this.orderBy,
     required this.orderByDirection,
     this.search,
@@ -28,7 +28,7 @@ class GetAiSearchInstanceFilter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'namespace': ?namespace,
+      'hostname': ?hostname,
       'orderBy': orderBy,
       'orderByDirection': orderByDirection,
       'search': ?search,
@@ -37,7 +37,7 @@ class GetAiSearchInstanceFilter {
 
   factory GetAiSearchInstanceFilter.fromMap(Map<String, dynamic> map) {
     return GetAiSearchInstanceFilter(
-      namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       orderBy: pulumi.Input.fromValue(map['orderBy'] as String),
       orderByDirection: pulumi.Input.fromValue(map['orderByDirection'] as String),
       search: (() { final guardedValue = map['search']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

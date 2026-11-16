@@ -15,7 +15,7 @@ class GetCustomSslsResult {
   /// Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
   final pulumi.Input<GetCustomSslsResultGeoRestrictions> geoRestrictions;
   final pulumi.Input<List<String>> hosts;
-  /// Identifier.
+  /// Custom certificate identifier tag.
   final pulumi.Input<String> id;
   /// The certificate authority that issued the certificate.
   final pulumi.Input<String> issuer;
@@ -44,7 +44,7 @@ class GetCustomSslsResult {
   /// [expiresOn] When the certificate from the authority expires.
   /// [geoRestrictions] Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
   /// [hosts] Required.
-  /// [id] Identifier.
+  /// [id] Custom certificate identifier tag.
   /// [issuer] The certificate authority that issued the certificate.
   /// [keylessServer] Required.
   /// [modifiedOn] When the certificate was last modified.

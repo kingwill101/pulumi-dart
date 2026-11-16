@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetZeroTrustDlpCustomProfileEntryVariant {
-  /// A customer-facing explanation of what this predefined AI prompt topic represents.
+  /// For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
   final pulumi.Input<String> description;
   /// Available values: "Intent", "Content".
   final pulumi.Input<String> topicType;
@@ -11,7 +11,7 @@ class GetZeroTrustDlpCustomProfileEntryVariant {
   final pulumi.Input<String> type;
 
   /// Creates a new [GetZeroTrustDlpCustomProfileEntryVariant].
-  /// [description] A customer-facing explanation of what this predefined AI prompt topic represents.
+  /// [description] For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
   /// [topicType] Available values: "Intent", "Content".
   /// [type] Available values: "PromptTopic", "General".
   const GetZeroTrustDlpCustomProfileEntryVariant({

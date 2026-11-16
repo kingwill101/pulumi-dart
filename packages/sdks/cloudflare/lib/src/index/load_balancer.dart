@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'load_balancer_adaptive_routing.dart';
 import 'load_balancer_args.dart';
 import 'load_balancer_location_strategy.dart';
+import 'load_balancer_pool_set.dart';
 import 'load_balancer_random_steering.dart';
 import 'load_balancer_rule.dart';
 import 'load_balancer_session_affinity_attributes.dart';
@@ -11,6 +12,19 @@ import 'load_balancer_state.dart';
 ///
 /// - `Load Balancers Read`
 /// - `Load Balancers Write`
+///
+/// ## Planning updates
+///
+/// On an update, unchanged API defaults can retain their state values instead of
+/// showing `(known after apply)`. This includes unset overrides in unchanged, named
+/// rules. Removing a configured, non-default value still lets the API reset that
+/// value; the plan does not retain the removed setting.
+///
+/// `modifiedOn` remains unknown because it changes on every write. Other computed
+/// values can remain unknown on creation, when a related setting changes, or when
+/// the provider cannot determine a safe default. For example, changing session
+/// affinity can change its default TTL, and an unconfigured DNS TTL remains unknown
+/// for an unproxied load balancer.
 ///
 /// ## Example Usage
 ///
@@ -44,7 +58,38 @@ import 'load_balancer_state.dart';
 ///         mode: "resolver_ip",
 ///         preferEcs: "always",
 ///     },
-///     networks: ["string"],
+///     networks: [
+///         "cloudflare",
+///         "jdcloud",
+///     ],
+///     poolSets: [{
+///         disabled: true,
+///         fixedResponse: {
+///             contentType: "application/json",
+///             location: "www.example.com",
+///             messageBody: "Testing Hello",
+///             statusCode: 0,
+///         },
+///         match: {
+///             "default": true,
+///             topology: {
+///                 countries: ["string"],
+///                 pops: ["string"],
+///                 regions: ["WNAM"],
+///             },
+///         },
+///         name: "wnam-primary",
+///         overrides: {
+///             fallbackPool: "9290f38c5d07c2e2f4df57b1f61d4196",
+///             poolDefaultWeight: 0.2,
+///             poolWeights: {
+///                 "9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
+///                 de90f38ced07c2e2f4df50b1f61d4194: 0.3,
+///             },
+///             pools: ["17b5962d775c646f3f9725cbc7a53df4"],
+///             steeringPolicy: "random",
+///         },
+///     }],
 ///     popPools: {
 ///         LAX: [
 ///             "de90f38ced07c2e2f4df50b1f61d4194",
@@ -192,7 +237,38 @@ import 'load_balancer_state.dart';
 ///         "mode": "resolver_ip",
 ///         "prefer_ecs": "always",
 ///     },
-///     networks=["string"],
+///     networks=[
+///         "cloudflare",
+///         "jdcloud",
+///     ],
+///     pool_sets=[{
+///         "disabled": True,
+///         "fixed_response": {
+///             "content_type": "application/json",
+///             "location": "www.example.com",
+///             "message_body": "Testing Hello",
+///             "status_code": 0,
+///         },
+///         "match": {
+///             "default": True,
+///             "topology": {
+///                 "countries": ["string"],
+///                 "pops": ["string"],
+///                 "regions": ["WNAM"],
+///             },
+///         },
+///         "name": "wnam-primary",
+///         "overrides": {
+///             "fallback_pool": "9290f38c5d07c2e2f4df57b1f61d4196",
+///             "pool_default_weight": 0.2,
+///             "pool_weights": {
+///                 "9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
+///                 "de90f38ced07c2e2f4df50b1f61d4194": 0.3,
+///             },
+///             "pools": ["17b5962d775c646f3f9725cbc7a53df4"],
+///             "steering_policy": "random",
+///         },
+///     }],
 ///     pop_pools={
 ///         "LAX": [
 ///             "de90f38ced07c2e2f4df50b1f61d4194",
@@ -354,7 +430,57 @@ import 'load_balancer_state.dart';
 ///         },
 ///         Networks = new[]
 ///         {
-///             "string",
+///             "cloudflare",
+///             "jdcloud",
+///         },
+///         PoolSets = new[]
+///         {
+///             new Cloudflare.Inputs.LoadBalancerPoolSetArgs
+///             {
+///                 Disabled = true,
+///                 FixedResponse = new Cloudflare.Inputs.LoadBalancerPoolSetFixedResponseArgs
+///                 {
+///                     ContentType = "application/json",
+///                     Location = "www.example.com",
+///                     MessageBody = "Testing Hello",
+///                     StatusCode = 0,
+///                 },
+///                 Match = new Cloudflare.Inputs.LoadBalancerPoolSetMatchArgs
+///                 {
+///                     Default = true,
+///                     Topology = new Cloudflare.Inputs.LoadBalancerPoolSetMatchTopologyArgs
+///                     {
+///                         Countries = new[]
+///                         {
+///                             "string",
+///                         },
+///                         Pops = new[]
+///                         {
+///                             "string",
+///                         },
+///                         Regions = new[]
+///                         {
+///                             "WNAM",
+///                         },
+///                     },
+///                 },
+///                 Name = "wnam-primary",
+///                 Overrides = new Cloudflare.Inputs.LoadBalancerPoolSetOverridesArgs
+///                 {
+///                     FallbackPool = "9290f38c5d07c2e2f4df57b1f61d4196",
+///                     PoolDefaultWeight = 0.2,
+///                     PoolWeights =
+///                     {
+///                         { "9290f38c5d07c2e2f4df57b1f61d4196", 0.5 },
+///                         { "de90f38ced07c2e2f4df50b1f61d4194", 0.3 },
+///                     },
+///                     Pools = new[]
+///                     {
+///                         "17b5962d775c646f3f9725cbc7a53df4",
+///                     },
+///                     SteeringPolicy = "random",
+///                 },
+///             },
 ///         },
 ///         PopPools =
 ///         {
@@ -490,7 +616,7 @@ import 'load_balancer_state.dart';
 ///                     SessionAffinity = "cookie",
 ///                     SessionAffinityAttributes = new Cloudflare.Inputs.LoadBalancerRuleOverridesSessionAffinityAttributesArgs
 ///                     {
-///                         DrainDuration = 100,
+///                         DrainDuration = 100.0,
 ///                         Headers = new[]
 ///                         {
 ///                             "x",
@@ -500,9 +626,9 @@ import 'load_balancer_state.dart';
 ///                         Secure = "Auto",
 ///                         ZeroDowntimeFailover = "sticky",
 ///                     },
-///                     SessionAffinityTtl = 1800,
+///                     SessionAffinityTtl = 1800.0,
 ///                     SteeringPolicy = "dynamic_latency",
-///                     Ttl = 30,
+///                     Ttl = 30.0,
 ///                 },
 ///                 Priority = 0,
 ///                 Terminates = true,
@@ -511,7 +637,7 @@ import 'load_balancer_state.dart';
 ///         SessionAffinity = "cookie",
 ///         SessionAffinityAttributes = new Cloudflare.Inputs.LoadBalancerSessionAffinityAttributesArgs
 ///         {
-///             DrainDuration = 100,
+///             DrainDuration = 100.0,
 ///             Headers = new[]
 ///             {
 ///                 "x",
@@ -521,9 +647,9 @@ import 'load_balancer_state.dart';
 ///             Secure = "Auto",
 ///             ZeroDowntimeFailover = "sticky",
 ///         },
-///         SessionAffinityTtl = 1800,
+///         SessionAffinityTtl = 1800.0,
 ///         SteeringPolicy = "dynamic_latency",
-///         Ttl = 30,
+///         Ttl = 30.0,
 ///     });
 ///
 /// });
@@ -566,7 +692,46 @@ import 'load_balancer_state.dart';
 /// 				PreferEcs: pulumi.String("always"),
 /// 			},
 /// 			Networks: pulumi.StringArray{
-/// 				pulumi.String("string"),
+/// 				pulumi.String("cloudflare"),
+/// 				pulumi.String("jdcloud"),
+/// 			},
+/// 			PoolSets: cloudflare.LoadBalancerPoolSetArray{
+/// 				&cloudflare.LoadBalancerPoolSetArgs{
+/// 					Disabled: pulumi.Bool(true),
+/// 					FixedResponse: &cloudflare.LoadBalancerPoolSetFixedResponseArgs{
+/// 						ContentType: pulumi.String("application/json"),
+/// 						Location:    pulumi.String("www.example.com"),
+/// 						MessageBody: pulumi.String("Testing Hello"),
+/// 						StatusCode:  pulumi.Int(0),
+/// 					},
+/// 					Match: &cloudflare.LoadBalancerPoolSetMatchArgs{
+/// 						Default: pulumi.Bool(true),
+/// 						Topology: &cloudflare.LoadBalancerPoolSetMatchTopologyArgs{
+/// 							Countries: pulumi.StringArray{
+/// 								pulumi.String("string"),
+/// 							},
+/// 							Pops: pulumi.StringArray{
+/// 								pulumi.String("string"),
+/// 							},
+/// 							Regions: pulumi.StringArray{
+/// 								pulumi.String("WNAM"),
+/// 							},
+/// 						},
+/// 					},
+/// 					Name: pulumi.String("wnam-primary"),
+/// 					Overrides: &cloudflare.LoadBalancerPoolSetOverridesArgs{
+/// 						FallbackPool:      pulumi.String("9290f38c5d07c2e2f4df57b1f61d4196"),
+/// 						PoolDefaultWeight: pulumi.Float64(0.2),
+/// 						PoolWeights: pulumi.Float64Map{
+/// 							"9290f38c5d07c2e2f4df57b1f61d4196": pulumi.Float64(0.5),
+/// 							"de90f38ced07c2e2f4df50b1f61d4194": pulumi.Float64(0.3),
+/// 						},
+/// 						Pools: pulumi.StringArray{
+/// 							pulumi.String("17b5962d775c646f3f9725cbc7a53df4"),
+/// 						},
+/// 						SteeringPolicy: pulumi.String("random"),
+/// 					},
+/// 				},
 /// 			},
 /// 			PopPools: pulumi.StringArrayMap{
 /// 				"LAX": pulumi.StringArray{
@@ -711,7 +876,7 @@ import 'load_balancer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -719,7 +884,10 @@ import 'load_balancer_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_loadbalancer" "example_load_balancer" {
+/// resource "cloudflare_load_balancer" "example_load_balancer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   default_pools = ["17b5962d775c646f3f9725cbc7a53df4", "9290f38c5d07c2e2f4df57b1f61d4196", "00920f38ce07c2e2f4df50b1f61d4194"]
 ///   fallback_pool = "fallback_pool"
 ///   name          = "www.example.com"
@@ -737,7 +905,35 @@ import 'load_balancer_state.dart';
 ///     mode       = "resolver_ip"
 ///     prefer_ecs = "always"
 ///   }
-///   networks = ["string"]
+///   networks = ["cloudflare", "jdcloud"]
+///   pool_sets = [{
+///     disabled = true
+///     fixed_response = {
+///       content_type = "application/json"
+///       location     = "www.example.com"
+///       message_body = "Testing Hello"
+///       status_code  = 0
+///     }
+///     match = {
+///       default = true
+///       topology = {
+///         countries = ["string"]
+///         pops      = ["string"]
+///         regions   = ["WNAM"]
+///       }
+///     }
+///     name = "wnam-primary"
+///     overrides = {
+///       fallback_pool       = "9290f38c5d07c2e2f4df57b1f61d4196"
+///       pool_default_weight = 0.2
+///       pool_weights = {
+///         "9290f38c5d07c2e2f4df57b1f61d4196" = 0.5
+///         "de90f38ced07c2e2f4df50b1f61d4194" = 0.3
+///       }
+///       pools           = ["17b5962d775c646f3f9725cbc7a53df4"]
+///       steering_policy = "random"
+///     }
+///   }]
 ///   pop_pools = {
 ///     "LAX" = ["de90f38ced07c2e2f4df50b1f61d4194", "9290f38c5d07c2e2f4df57b1f61d4196"]
 ///     "LHR" = ["abd90f38ced07c2e2f4df50b1f61d4194", "f9138c5d07c2e2f4df57b1f61d4196"]
@@ -755,7 +951,7 @@ import 'load_balancer_state.dart';
 ///     "ENAM" = ["00920f38ce07c2e2f4df50b1f61d4194"]
 ///     "WNAM" = ["de90f38ced07c2e2f4df50b1f61d4194", "9290f38c5d07c2e2f4df57b1f61d4196"]
 ///   }
-///   rules {
+///   rules = [{
 ///     condition = "http.request.uri.path contains \"/testing\""
 ///     disabled  = true
 ///     fixed_response = {
@@ -816,7 +1012,7 @@ import 'load_balancer_state.dart';
 ///     }
 ///     priority   = 0
 ///     terminates = true
-///   }
+///   }]
 ///   session_affinity = "cookie"
 ///   session_affinity_attributes = {
 ///     drain_duration         = 100
@@ -841,6 +1037,11 @@ import 'load_balancer_state.dart';
 /// import com.pulumi.cloudflare.LoadBalancerArgs;
 /// import com.pulumi.cloudflare.inputs.LoadBalancerAdaptiveRoutingArgs;
 /// import com.pulumi.cloudflare.inputs.LoadBalancerLocationStrategyArgs;
+/// import com.pulumi.cloudflare.inputs.LoadBalancerPoolSetArgs;
+/// import com.pulumi.cloudflare.inputs.LoadBalancerPoolSetFixedResponseArgs;
+/// import com.pulumi.cloudflare.inputs.LoadBalancerPoolSetMatchArgs;
+/// import com.pulumi.cloudflare.inputs.LoadBalancerPoolSetMatchTopologyArgs;
+/// import com.pulumi.cloudflare.inputs.LoadBalancerPoolSetOverridesArgs;
 /// import com.pulumi.cloudflare.inputs.LoadBalancerRandomSteeringArgs;
 /// import com.pulumi.cloudflare.inputs.LoadBalancerRuleArgs;
 /// import com.pulumi.cloudflare.inputs.LoadBalancerRuleFixedResponseArgs;
@@ -886,7 +1087,37 @@ import 'load_balancer_state.dart';
 ///                 .mode("resolver_ip")
 ///                 .preferEcs("always")
 ///                 .build())
-///             .networks("string")
+///             .networks(
+///                 "cloudflare",
+///                 "jdcloud")
+///             .poolSets(LoadBalancerPoolSetArgs.builder()
+///                 .disabled(true)
+///                 .fixedResponse(LoadBalancerPoolSetFixedResponseArgs.builder()
+///                     .contentType("application/json")
+///                     .location("www.example.com")
+///                     .messageBody("Testing Hello")
+///                     .statusCode(0)
+///                     .build())
+///                 .match(LoadBalancerPoolSetMatchArgs.builder()
+///                     .default_(true)
+///                     .topology(LoadBalancerPoolSetMatchTopologyArgs.builder()
+///                         .countries("string")
+///                         .pops("string")
+///                         .regions("WNAM")
+///                         .build())
+///                     .build())
+///                 .name("wnam-primary")
+///                 .overrides(LoadBalancerPoolSetOverridesArgs.builder()
+///                     .fallbackPool("9290f38c5d07c2e2f4df57b1f61d4196")
+///                     .poolDefaultWeight(0.2)
+///                     .poolWeights(Map.ofEntries(
+///                         Map.entry("9290f38c5d07c2e2f4df57b1f61d4196", 0.5),
+///                         Map.entry("de90f38ced07c2e2f4df50b1f61d4194", 0.3)
+///                     ))
+///                     .pools("17b5962d775c646f3f9725cbc7a53df4")
+///                     .steeringPolicy("random")
+///                     .build())
+///                 .build())
 ///             .popPools(Map.ofEntries(
 ///                 Map.entry("LAX", Arrays.asList(
 ///                     "de90f38ced07c2e2f4df50b1f61d4194",
@@ -1027,7 +1258,34 @@ import 'load_balancer_state.dart';
 ///         mode: resolver_ip
 ///         preferEcs: always
 ///       networks:
-///         - string
+///         - cloudflare
+///         - jdcloud
+///       poolSets:
+///         - disabled: true
+///           fixedResponse:
+///             contentType: application/json
+///             location: www.example.com
+///             messageBody: Testing Hello
+///             statusCode: 0
+///           match:
+///             default: true
+///             topology:
+///               countries:
+///                 - string
+///               pops:
+///                 - string
+///               regions:
+///                 - WNAM
+///           name: wnam-primary
+///           overrides:
+///             fallbackPool: 9290f38c5d07c2e2f4df57b1f61d4196
+///             poolDefaultWeight: 0.2
+///             poolWeights:
+///               9290f38c5d07c2e2f4df57b1f61d4196: 0.5
+///               de90f38ced07c2e2f4df50b1f61d4194: 0.3
+///             pools:
+///               - 17b5962d775c646f3f9725cbc7a53df4
+///             steeringPolicy: random
 ///       popPools:
 ///         LAX:
 ///           - de90f38ced07c2e2f4df50b1f61d4194
@@ -1133,7 +1391,7 @@ import 'load_balancer_state.dart';
 /// ## Import
 ///
 /// ```sh
-/// $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '<{accounts|zones}/{account_id|zone_id}>/<load_balancer_id>'
+/// $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '<zone_id>/<load_balancer_id>'
 /// ```
 class LoadBalancer extends pulumi.CustomResource {
   /// Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.
@@ -1156,6 +1414,8 @@ class LoadBalancer extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// List of networks where Load Balancer or Pool is enabled.
   late final pulumi.Output<List<String>> networks;
+  /// An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`regionPools` / `countryPools` / `popPools` / `defaultPools` / `steeringPolicy` / `randomSteering` / `fallbackPool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
+  late final pulumi.Output<List<LoadBalancerPoolSet>> poolSets;
   /// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
   late final pulumi.Output<Map<String, List<String>>> popPools;
   /// Whether the hostname should be gray clouded (false) or orange clouded (true).
@@ -1192,7 +1452,7 @@ class LoadBalancer extends pulumi.CustomResource {
           'cloudflare:index/loadBalancer:LoadBalancer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     adaptiveRouting = registerOutput<LoadBalancerAdaptiveRouting>('adaptiveRouting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerAdaptiveRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     countryPools = registerOutput<Map<String, List<String>>>('countryPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>()); });
@@ -1205,6 +1465,7 @@ class LoadBalancer extends pulumi.CustomResource {
     modifiedOn = registerOutput<String>('modifiedOn');
     this.name = registerOutput<String>('name');
     networks = registerOutput<List<String>>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    poolSets = registerOutput<List<LoadBalancerPoolSet>>('poolSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerPoolSet>(guardedValue, (value) => LoadBalancerPoolSet.fromMap((value as Map).cast<String, dynamic>())); });
     popPools = registerOutput<Map<String, List<String>>>('popPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>()); });
     proxied = registerOutput<bool>('proxied');
     randomSteering = registerOutput<LoadBalancerRandomSteering>('randomSteering', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerRandomSteering.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1254,6 +1515,7 @@ class LoadBalancer extends pulumi.CustomResource {
     modifiedOn = registerOutput<String>('modifiedOn');
     this.name = registerOutput<String>('name');
     networks = registerOutput<List<String>>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    poolSets = registerOutput<List<LoadBalancerPoolSet>>('poolSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerPoolSet>(guardedValue, (value) => LoadBalancerPoolSet.fromMap((value as Map).cast<String, dynamic>())); });
     popPools = registerOutput<Map<String, List<String>>>('popPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>()); });
     proxied = registerOutput<bool>('proxied');
     randomSteering = registerOutput<LoadBalancerRandomSteering>('randomSteering', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerRandomSteering.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1288,6 +1550,7 @@ class LoadBalancer extends pulumi.CustomResource {
     modifiedOn = registerOutput<String>('modifiedOn');
     this.name = registerOutput<String>('name');
     networks = registerOutput<List<String>>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    poolSets = registerOutput<List<LoadBalancerPoolSet>>('poolSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerPoolSet>(guardedValue, (value) => LoadBalancerPoolSet.fromMap((value as Map).cast<String, dynamic>())); });
     popPools = registerOutput<Map<String, List<String>>>('popPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>()); });
     proxied = registerOutput<bool>('proxied');
     randomSteering = registerOutput<LoadBalancerRandomSteering>('randomSteering', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerRandomSteering.fromMap((guardedValue as Map).cast<String, dynamic>()); });

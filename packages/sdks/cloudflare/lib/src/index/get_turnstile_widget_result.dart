@@ -25,7 +25,7 @@ class GetTurnstileWidgetResult {
   /// Return the Ephemeral ID in /siteverify (ENT only).
   final bool? ephemeralId;
   final GetTurnstileWidgetFilter? filter;
-  /// Widget item identifier tag.
+  /// Unique identifier for a Turnstile widget.
   final String? id;
   /// Origin of the most recent mutation (create, update, delete, or
   /// secret rotation). Server-derived; not client-settable. Omitted for
@@ -48,7 +48,7 @@ class GetTurnstileWidgetResult {
   final String? region;
   /// Secret key for this widget.
   final String? secret;
-  /// Widget item identifier tag.
+  /// Unique identifier for a Turnstile widget.
   final String? sitekey;
 
   /// Creates a new [GetTurnstileWidgetResult].
@@ -60,7 +60,7 @@ class GetTurnstileWidgetResult {
   /// [domains] Optional.
   /// [ephemeralId] Return the Ephemeral ID in /siteverify (ENT only).
   /// [filter] Optional.
-  /// [id] Widget item identifier tag.
+  /// [id] Unique identifier for a Turnstile widget.
   /// [lastModifiedVia] Origin of the most recent mutation (create, update, delete, or
   /// [mode] Widget Mode
   /// [modifiedOn] When the widget was modified.
@@ -68,7 +68,7 @@ class GetTurnstileWidgetResult {
   /// [offlabel] Do not show any Cloudflare branding on the widget (ENT only).
   /// [region] Region where this widget can be used. This cannot be changed after creation.
   /// [secret] Secret key for this widget.
-  /// [sitekey] Widget item identifier tag.
+  /// [sitekey] Unique identifier for a Turnstile widget.
   const GetTurnstileWidgetResult({
     this.accountId,
     this.botFightMode,

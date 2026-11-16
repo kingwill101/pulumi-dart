@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetOrganizationsResultMetaTenantFlags {
   final pulumi.Input<String> accountCreation;
+  final pulumi.Input<String> accountCreationAppliesTenantDefaults;
   final pulumi.Input<String> accountDeletion;
   final pulumi.Input<String> accountMigration;
   final pulumi.Input<String> accountMobility;
@@ -13,6 +14,7 @@ class GetOrganizationsResultMetaTenantFlags {
 
   /// Creates a new [GetOrganizationsResultMetaTenantFlags].
   /// [accountCreation] Required.
+  /// [accountCreationAppliesTenantDefaults] Required.
   /// [accountDeletion] Required.
   /// [accountMigration] Required.
   /// [accountMobility] Required.
@@ -21,6 +23,7 @@ class GetOrganizationsResultMetaTenantFlags {
   /// [subOrgCreation] Required.
   const GetOrganizationsResultMetaTenantFlags({
     required this.accountCreation,
+    required this.accountCreationAppliesTenantDefaults,
     required this.accountDeletion,
     required this.accountMigration,
     required this.accountMobility,
@@ -32,6 +35,7 @@ class GetOrganizationsResultMetaTenantFlags {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountCreation': accountCreation,
+      'accountCreationAppliesTenantDefaults': accountCreationAppliesTenantDefaults,
       'accountDeletion': accountDeletion,
       'accountMigration': accountMigration,
       'accountMobility': accountMobility,
@@ -44,6 +48,7 @@ class GetOrganizationsResultMetaTenantFlags {
   factory GetOrganizationsResultMetaTenantFlags.fromMap(Map<String, dynamic> map) {
     return GetOrganizationsResultMetaTenantFlags(
       accountCreation: pulumi.Input.fromValue(map['accountCreation'] as String),
+      accountCreationAppliesTenantDefaults: pulumi.Input.fromValue(map['accountCreationAppliesTenantDefaults'] as String),
       accountDeletion: pulumi.Input.fromValue(map['accountDeletion'] as String),
       accountMigration: pulumi.Input.fromValue(map['accountMigration'] as String),
       accountMobility: pulumi.Input.fromValue(map['accountMobility'] as String),

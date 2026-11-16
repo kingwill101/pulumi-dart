@@ -29,7 +29,7 @@ class GetZeroTrustAccessAiControlsMcpServerResult {
   final String? hostname;
   /// Unique identifier for the MCP server.
   final String? id;
-  /// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+  /// When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
   final bool? isSharedOauthCallbackEnabled;
   final String? lastSuccessfulSync;
   final String? lastSynced;
@@ -38,6 +38,8 @@ class GetZeroTrustAccessAiControlsMcpServerResult {
   /// Display name for the MCP server.
   final String? name;
   final List<Map<String, String>>? prompts;
+  /// Timestamp of the most recent successful admin OAuth registration.
+  final String? registeredAt;
   /// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
   final bool? secureWebGateway;
   /// Current sync state of the server
@@ -62,13 +64,14 @@ class GetZeroTrustAccessAiControlsMcpServerResult {
   /// [filter] Optional.
   /// [hostname] URL of the upstream MCP endpoint.
   /// [id] Unique identifier for the MCP server.
-  /// [isSharedOauthCallbackEnabled] When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+  /// [isSharedOauthCallbackEnabled] When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
   /// [lastSuccessfulSync] Optional.
   /// [lastSynced] Optional.
   /// [modifiedAt] Optional.
   /// [modifiedBy] Optional.
   /// [name] Display name for the MCP server.
   /// [prompts] Optional.
+  /// [registeredAt] Timestamp of the most recent successful admin OAuth registration.
   /// [secureWebGateway] Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
   /// [status] Current sync state of the server
   /// [tools] Optional.
@@ -94,6 +97,7 @@ class GetZeroTrustAccessAiControlsMcpServerResult {
     this.modifiedBy,
     this.name,
     this.prompts,
+    this.registeredAt,
     this.secureWebGateway,
     this.status,
     this.tools,
@@ -122,6 +126,7 @@ class GetZeroTrustAccessAiControlsMcpServerResult {
       'modifiedBy': ?modifiedBy,
       'name': ?name,
       'prompts': ?prompts,
+      'registeredAt': ?registeredAt,
       'secureWebGateway': ?secureWebGateway,
       'status': ?status,
       'tools': ?tools,
@@ -151,6 +156,7 @@ class GetZeroTrustAccessAiControlsMcpServerResult {
       modifiedBy: (() { final guardedValue = map['modifiedBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       prompts: (() { final guardedValue = map['prompts']; if (guardedValue == null) return null; return pulumi.Input.decodeList<Map<String, String>>(guardedValue, (value) => (value as Map).cast<String, String>()); })(),
+      registeredAt: (() { final guardedValue = map['registeredAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       secureWebGateway: (() { final guardedValue = map['secureWebGateway']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tools: (() { final guardedValue = map['tools']; if (guardedValue == null) return null; return pulumi.Input.decodeList<Map<String, String>>(guardedValue, (value) => (value as Map).cast<String, String>()); })(),

@@ -12,7 +12,8 @@ class GetTurnstileWidgetsArgs {
   /// Direction to order widgets.
   /// Available values: "asc", "desc".
   final pulumi.Input<String?>? direction;
-  /// Filter widgets by field using case-insensitive substring matching.
+  /// Filter widgets by field. The `name` field uses case-insensitive
+  /// substring matching; `sitekey` uses exact matching.
   /// Format: `field:value`
   final pulumi.Input<String?>? filter;
   final pulumi.Input<int?>? maxItems;
@@ -21,7 +22,7 @@ class GetTurnstileWidgetsArgs {
   /// Creates a new [GetTurnstileWidgetsArgs].
   /// [accountId] Identifier
   /// [direction] Direction to order widgets.
-  /// [filter] Filter widgets by field using case-insensitive substring matching.
+  /// [filter] Filter widgets by field. The `name` field uses case-insensitive
   /// [maxItems] Optional.
   /// [order] Optional.
   const GetTurnstileWidgetsArgs({
@@ -47,7 +48,7 @@ class GetTurnstileWidgetsArgs {
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

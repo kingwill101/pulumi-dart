@@ -9,10 +9,15 @@ class GetMagicTransitSiteWansResult {
   final pulumi.Input<String> healthCheckRate;
   /// Identifier
   final pulumi.Input<String> id;
+  final pulumi.Input<bool> loadBalanceInnerFlows;
   final pulumi.Input<String> name;
   final pulumi.Input<int> physport;
   /// Priority of WAN for traffic loadbalancing.
   final pulumi.Input<int> priority;
+  /// Provisioned download rate of the WAN circuit in kilobits per second.
+  final pulumi.Input<int> provisionedDownloadKbps;
+  /// Provisioned upload rate of the WAN circuit in kilobits per second.
+  final pulumi.Input<int> provisionedUploadKbps;
   /// Identifier
   final pulumi.Input<String> siteId;
   /// (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
@@ -23,18 +28,24 @@ class GetMagicTransitSiteWansResult {
   /// Creates a new [GetMagicTransitSiteWansResult].
   /// [healthCheckRate] Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
   /// [id] Identifier
+  /// [loadBalanceInnerFlows] Required.
   /// [name] Required.
   /// [physport] Required.
   /// [priority] Priority of WAN for traffic loadbalancing.
+  /// [provisionedDownloadKbps] Provisioned download rate of the WAN circuit in kilobits per second.
+  /// [provisionedUploadKbps] Provisioned upload rate of the WAN circuit in kilobits per second.
   /// [siteId] Identifier
   /// [staticAddressing] (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
   /// [vlanTag] VLAN ID. Use zero for untagged.
   const GetMagicTransitSiteWansResult({
     required this.healthCheckRate,
     required this.id,
+    required this.loadBalanceInnerFlows,
     required this.name,
     required this.physport,
     required this.priority,
+    required this.provisionedDownloadKbps,
+    required this.provisionedUploadKbps,
     required this.siteId,
     required this.staticAddressing,
     required this.vlanTag,
@@ -44,9 +55,12 @@ class GetMagicTransitSiteWansResult {
     return <String, dynamic>{
       'healthCheckRate': healthCheckRate,
       'id': id,
+      'loadBalanceInnerFlows': loadBalanceInnerFlows,
       'name': name,
       'physport': physport,
       'priority': priority,
+      'provisionedDownloadKbps': provisionedDownloadKbps,
+      'provisionedUploadKbps': provisionedUploadKbps,
       'siteId': siteId,
       'staticAddressing': pulumi.Input.mapInputValue<GetMagicTransitSiteWansResultStaticAddressing, Map<String, dynamic>>(staticAddressing, (value) => value.toMap()),
       'vlanTag': vlanTag,
@@ -57,12 +71,15 @@ class GetMagicTransitSiteWansResult {
     return GetMagicTransitSiteWansResult(
       healthCheckRate: pulumi.Input.fromValue(map['healthCheckRate'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
+      loadBalanceInnerFlows: pulumi.Input.fromValue(map['loadBalanceInnerFlows'] as bool),
       name: pulumi.Input.fromValue(map['name'] as String),
-      physport: pulumi.Input.fromValue((map['physport'] as num).toInt()),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      physport: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['physport'])),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
+      provisionedDownloadKbps: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['provisionedDownloadKbps'])),
+      provisionedUploadKbps: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['provisionedUploadKbps'])),
       siteId: pulumi.Input.fromValue(map['siteId'] as String),
       staticAddressing: pulumi.Input.fromValue(GetMagicTransitSiteWansResultStaticAddressing.fromMap((map['staticAddressing']! as Map).cast<String, dynamic>())),
-      vlanTag: pulumi.Input.fromValue((map['vlanTag'] as num).toInt()),
+      vlanTag: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vlanTag'])),
     );
   }
 }

@@ -19,7 +19,7 @@ class AccessApplicationPolicy {
   final pulumi.Input<String?>? id;
   /// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
   final pulumi.Input<List<AccessApplicationPolicyInclude>?>? includes;
-  /// Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `sshPivKey` is a supported authenticator; for other application types use `totp`, `biometrics`, or `securityKey`.
+  /// Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
   final pulumi.Input<AccessApplicationPolicyMfaConfig?>? mfaConfig;
   /// The name of the Access policy.
   final pulumi.Input<String?>? name;
@@ -34,7 +34,7 @@ class AccessApplicationPolicy {
   /// [excludes] Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
   /// [id] The UUID of the policy
   /// [includes] Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
-  /// [mfaConfig] Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `sshPivKey` is a supported authenticator; for other application types use `totp`, `biometrics`, or `securityKey`.
+  /// [mfaConfig] Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
   /// [name] The name of the Access policy.
   /// [precedence] The order of execution for this policy. Must be unique for each policy within an app.
   /// [requires] Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
@@ -73,7 +73,7 @@ class AccessApplicationPolicy {
       includes: (() { final guardedValue = map['includes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AccessApplicationPolicyInclude>(guardedValue, (value) => AccessApplicationPolicyInclude.fromMap((value as Map).cast<String, dynamic>()))); })(),
       mfaConfig: (() { final guardedValue = map['mfaConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccessApplicationPolicyMfaConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      precedence: (() { final guardedValue = map['precedence']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      precedence: (() { final guardedValue = map['precedence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       requires: (() { final guardedValue = map['requires']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AccessApplicationPolicyRequire>(guardedValue, (value) => AccessApplicationPolicyRequire.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

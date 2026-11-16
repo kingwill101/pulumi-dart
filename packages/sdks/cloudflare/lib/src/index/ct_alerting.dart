@@ -82,7 +82,7 @@ import 'ct_alerting_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -90,7 +90,10 @@ import 'ct_alerting_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_ctalerting" "example_ct_alerting" {
+/// resource "cloudflare_ct_alerting" "example_ct_alerting" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   enabled = true
 ///   emails  = ["security@example.com", "admin@example.com"]
@@ -148,7 +151,7 @@ import 'ct_alerting_state.dart';
 /// $ pulumi import cloudflare:index/ctAlerting:CtAlerting example '<zone_id>'
 /// ```
 class CtAlerting extends pulumi.CustomResource {
-  /// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+  /// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
   late final pulumi.Output<List<String>?> emails;
   /// Whether CT alerting is enabled for the zone.
   late final pulumi.Output<bool> enabled;
@@ -167,7 +170,7 @@ class CtAlerting extends pulumi.CustomResource {
           'cloudflare:index/ctAlerting:CtAlerting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     emails = registerOutput<List<String>?>('emails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     enabled = registerOutput<bool>('enabled');

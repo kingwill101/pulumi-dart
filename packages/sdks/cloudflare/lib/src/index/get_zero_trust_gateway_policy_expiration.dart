@@ -30,7 +30,7 @@ class GetZeroTrustGatewayPolicyExpiration {
 
   factory GetZeroTrustGatewayPolicyExpiration.fromMap(Map<String, dynamic> map) {
     return GetZeroTrustGatewayPolicyExpiration(
-      duration: pulumi.Input.fromValue((map['duration'] as num).toInt()),
+      duration: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['duration'])),
       expired: pulumi.Input.fromValue(map['expired'] as bool),
       expiresAt: pulumi.Input.fromValue(map['expiresAt'] as String),
     );

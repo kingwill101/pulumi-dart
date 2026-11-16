@@ -14,10 +14,10 @@ class QueueConsumerState {
   /// A Resource identifier.
   final pulumi.Input<String?>? queueId;
   final pulumi.Input<String?>? queueName;
-  /// Name of a Worker
+  /// For `type: worker`: Name of a Worker
   final pulumi.Input<String?>? scriptName;
   final pulumi.Input<QueueConsumerSettings?>? settings;
-  /// Available values: "worker", "httpPull".
+  /// Available values: "worker", "httpPull", "notification".
   final pulumi.Input<String?>? type;
 
   /// Creates a new [QueueConsumerState].
@@ -27,9 +27,9 @@ class QueueConsumerState {
   /// [deadLetterQueue] Optional.
   /// [queueId] A Resource identifier.
   /// [queueName] Optional.
-  /// [scriptName] Name of a Worker
+  /// [scriptName] For `type: worker`: Name of a Worker
   /// [settings] Optional.
-  /// [type] Available values: "worker", "httpPull".
+  /// [type] Available values: "worker", "httpPull", "notification".
   const QueueConsumerState({
     this.accountId,
     this.consumerId,

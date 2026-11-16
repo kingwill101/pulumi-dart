@@ -10,6 +10,8 @@ class PipelineSinkConfig {
   /// Cloudflare Account ID for the bucket
   final pulumi.Input<String> accountId;
   /// R2 Bucket to write to
+  ///
+  /// The R2 Bucket that hosts this catalog
   final pulumi.Input<String> bucket;
   final pulumi.Input<PipelineSinkConfigCredentials?>? credentials;
   /// Controls filename prefix/suffix and strategy.

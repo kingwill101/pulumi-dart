@@ -31,7 +31,7 @@ class GetMagicTransitSiteLanStaticAddressingDhcpServerDhcpOption {
 
   factory GetMagicTransitSiteLanStaticAddressingDhcpServerDhcpOption.fromMap(Map<String, dynamic> map) {
     return GetMagicTransitSiteLanStaticAddressingDhcpServerDhcpOption(
-      code: pulumi.Input.fromValue((map['code'] as num).toInt()),
+      code: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['code'])),
       type: pulumi.Input.fromValue(map['type'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );

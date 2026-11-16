@@ -16,7 +16,7 @@ class PagesProjectArgs {
   final pulumi.Input<PagesProjectBuildConfig?>? buildConfig;
   /// Configs for deployments in a project.
   final pulumi.Input<PagesProjectDeploymentConfigs?>? deploymentConfigs;
-  /// Name of the project.
+  /// Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   final pulumi.Input<String> name;
   /// Production branch of the project. Used to identify production deployments.
   final pulumi.Input<String> productionBranch;
@@ -27,7 +27,7 @@ class PagesProjectArgs {
   /// [accountId] Identifier.
   /// [buildConfig] Configs for the project build process.
   /// [deploymentConfigs] Configs for deployments in a project.
-  /// [name] Name of the project.
+  /// [name] Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   /// [productionBranch] Production branch of the project. Used to identify production deployments.
   /// [source] Configs for the project source control.
   const PagesProjectArgs({

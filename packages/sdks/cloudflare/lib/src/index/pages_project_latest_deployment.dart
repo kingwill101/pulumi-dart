@@ -24,7 +24,7 @@ class PagesProjectLatestDeployment {
   final pulumi.Input<String?>? environment;
   /// Id of the deployment.
   final pulumi.Input<String?>? id;
-  /// If the deployment has been skipped.
+  /// Whether the deployment was skipped.
   final pulumi.Input<bool?>? isSkipped;
   /// The status of the deployment.
   final pulumi.Input<PagesProjectLatestDeploymentLatestStage?>? latestStage;
@@ -32,7 +32,7 @@ class PagesProjectLatestDeployment {
   final pulumi.Input<String?>? modifiedOn;
   /// Id of the project.
   final pulumi.Input<String?>? projectId;
-  /// Name of the project.
+  /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   final pulumi.Input<String?>? projectName;
   /// Short Id (8 character) of the deployment.
   final pulumi.Input<String?>? shortId;
@@ -53,11 +53,11 @@ class PagesProjectLatestDeployment {
   /// [envVars] Environment variables used for builds and Pages Functions.
   /// [environment] Type of deploy.
   /// [id] Id of the deployment.
-  /// [isSkipped] If the deployment has been skipped.
+  /// [isSkipped] Whether the deployment was skipped.
   /// [latestStage] The status of the deployment.
   /// [modifiedOn] When the deployment was last modified.
   /// [projectId] Id of the project.
-  /// [projectName] Name of the project.
+  /// [projectName] Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   /// [shortId] Short Id (8 character) of the deployment.
   /// [source] Configs for the project source control.
   /// [stages] List of past stages.

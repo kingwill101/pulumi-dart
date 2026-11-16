@@ -23,6 +23,8 @@ class ZeroTrustAccessIdentityProviderConfig {
   /// Your OAuth Client ID
   final pulumi.Input<String?>? clientId;
   /// Your OAuth Client Secret
+  ///
+  /// The client secret from the Duo Generic OIDC Relying Party metadata.
   final pulumi.Input<String?>? clientSecret;
   /// Should Cloudflare try to load authentication contexts from your account
   final pulumi.Input<bool?>? conditionalAccessEnabled;
@@ -34,13 +36,31 @@ class ZeroTrustAccessIdentityProviderConfig {
   final pulumi.Input<String?>? emailClaimName;
   /// Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
   /// SAML assertions using the certificate from the assigned certificate set.
+  ///
+  /// To enable encryption:
+  /// 1. Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`
+  /// 2. Set this field to `true` and include `samlCertificateSetId` in the PUT request
+  /// 3. Configure the public certificate in your external Identity Provider
+  ///
+  /// Note: Requires `samlCertificateSetId` to be set when `true`.
   final pulumi.Input<bool?>? enableEncryption;
+  /// Asks the IdP to reauthenticate the user for each SAML authentication request.
+  final pulumi.Input<bool?>? forceAuthn;
   /// Add a list of attribute names that will be returned in the response header from the Access callback.
   final pulumi.Input<List<ZeroTrustAccessIdentityProviderConfigHeaderAttribute>?>? headerAttributes;
   /// X509 certificate to verify the signature in the SAML authentication response
   final pulumi.Input<List<String>?>? idpPublicCerts;
+  /// The issuer URL from the Duo Generic OIDC Relying Party metadata.
+  ///
   /// IdP Entity ID or Issuer URL
   final pulumi.Input<String?>? issuerUrl;
+  /// When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+  final pulumi.Input<bool?>? loginPageAutoPrompt;
+  /// The maximum URL length the IdP accepts for the SSO redirect URL.
+  /// When the constructed SSO URL would exceed this length, the RelayState
+  /// is stored server-side and a short nonce is passed to the IdP instead.
+  /// Set this if your IdP enforces a URL length limit.
+  final pulumi.Input<int?>? maxSsoUrlLength;
   /// Your okta account url
   final pulumi.Input<String?>? oktaAccount;
   /// Your OneLogin account url
@@ -50,7 +70,9 @@ class ZeroTrustAccessIdentityProviderConfig {
   /// Enable Proof Key for Code Exchange (PKCE)
   final pulumi.Input<bool?>? pkceEnabled;
   /// Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-  /// Available values: "login", "selectAccount", "none".
+  ///
+  /// Configures the prompt behavior for Google authentication.
+  /// Available values: "login", "selectAccount", "none", "consent".
   final pulumi.Input<String?>? prompt;
   final pulumi.Input<String?>? redirectUrl;
   /// When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.
@@ -63,8 +85,10 @@ class ZeroTrustAccessIdentityProviderConfig {
   final pulumi.Input<String?>? ssoTargetUrl;
   /// Should Cloudflare try to load groups from your account
   final pulumi.Input<bool?>? supportGroups;
-  /// The tokenEndpoint URL of your IdP
+  /// The tokenEndpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require clientSecret in the request. Path-only changes do not require client_secret.
   final pulumi.Input<String?>? tokenUrl;
+  /// Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
+  final pulumi.Input<bool?>? useLoginHint;
 
   /// Creates a new [ZeroTrustAccessIdentityProviderConfig].
   /// [appsDomain] Your companies TLD
@@ -82,9 +106,12 @@ class ZeroTrustAccessIdentityProviderConfig {
   /// [emailAttributeName] The attribute name for email in the SAML response.
   /// [emailClaimName] The claim name for email in the idToken response.
   /// [enableEncryption] Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
+  /// [forceAuthn] Asks the IdP to reauthenticate the user for each SAML authentication request.
   /// [headerAttributes] Add a list of attribute names that will be returned in the response header from the Access callback.
   /// [idpPublicCerts] X509 certificate to verify the signature in the SAML authentication response
-  /// [issuerUrl] IdP Entity ID or Issuer URL
+  /// [issuerUrl] The issuer URL from the Duo Generic OIDC Relying Party metadata.
+  /// [loginPageAutoPrompt] When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+  /// [maxSsoUrlLength] The maximum URL length the IdP accepts for the SSO redirect URL.
   /// [oktaAccount] Your okta account url
   /// [oneloginAccount] Your OneLogin account url
   /// [pingEnvId] Your PingOne environment identifier
@@ -96,7 +123,8 @@ class ZeroTrustAccessIdentityProviderConfig {
   /// [signRequest] Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.
   /// [ssoTargetUrl] URL to send the SAML authentication requests to
   /// [supportGroups] Should Cloudflare try to load groups from your account
-  /// [tokenUrl] The tokenEndpoint URL of your IdP
+  /// [tokenUrl] The tokenEndpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require clientSecret in the request. Path-only changes do not require client_secret.
+  /// [useLoginHint] Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
   const ZeroTrustAccessIdentityProviderConfig({
     this.appsDomain,
     this.attributes,
@@ -113,9 +141,12 @@ class ZeroTrustAccessIdentityProviderConfig {
     this.emailAttributeName,
     this.emailClaimName,
     this.enableEncryption,
+    this.forceAuthn,
     this.headerAttributes,
     this.idpPublicCerts,
     this.issuerUrl,
+    this.loginPageAutoPrompt,
+    this.maxSsoUrlLength,
     this.oktaAccount,
     this.oneloginAccount,
     this.pingEnvId,
@@ -128,6 +159,7 @@ class ZeroTrustAccessIdentityProviderConfig {
     this.ssoTargetUrl,
     this.supportGroups,
     this.tokenUrl,
+    this.useLoginHint,
   });
 
   Map<String, dynamic> toMap() {
@@ -147,9 +179,12 @@ class ZeroTrustAccessIdentityProviderConfig {
       'emailAttributeName': ?emailAttributeName,
       'emailClaimName': ?emailClaimName,
       'enableEncryption': ?enableEncryption,
+      'forceAuthn': ?forceAuthn,
       'headerAttributes': ?pulumi.Input.mapOptionalInputValue<List<ZeroTrustAccessIdentityProviderConfigHeaderAttribute>, List<Map<String, dynamic>>>(headerAttributes, (value) => pulumi.Input.encodeList<ZeroTrustAccessIdentityProviderConfigHeaderAttribute, Map<String, dynamic>>(value, (value) => value.toMap())),
       'idpPublicCerts': ?idpPublicCerts,
       'issuerUrl': ?issuerUrl,
+      'loginPageAutoPrompt': ?loginPageAutoPrompt,
+      'maxSsoUrlLength': ?maxSsoUrlLength,
       'oktaAccount': ?oktaAccount,
       'oneloginAccount': ?oneloginAccount,
       'pingEnvId': ?pingEnvId,
@@ -162,6 +197,7 @@ class ZeroTrustAccessIdentityProviderConfig {
       'ssoTargetUrl': ?ssoTargetUrl,
       'supportGroups': ?supportGroups,
       'tokenUrl': ?tokenUrl,
+      'useLoginHint': ?useLoginHint,
     };
   }
 
@@ -182,9 +218,12 @@ class ZeroTrustAccessIdentityProviderConfig {
       emailAttributeName: (() { final guardedValue = map['emailAttributeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       emailClaimName: (() { final guardedValue = map['emailClaimName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableEncryption: (() { final guardedValue = map['enableEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      forceAuthn: (() { final guardedValue = map['forceAuthn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       headerAttributes: (() { final guardedValue = map['headerAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ZeroTrustAccessIdentityProviderConfigHeaderAttribute>(guardedValue, (value) => ZeroTrustAccessIdentityProviderConfigHeaderAttribute.fromMap((value as Map).cast<String, dynamic>()))); })(),
       idpPublicCerts: (() { final guardedValue = map['idpPublicCerts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       issuerUrl: (() { final guardedValue = map['issuerUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      loginPageAutoPrompt: (() { final guardedValue = map['loginPageAutoPrompt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      maxSsoUrlLength: (() { final guardedValue = map['maxSsoUrlLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       oktaAccount: (() { final guardedValue = map['oktaAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       oneloginAccount: (() { final guardedValue = map['oneloginAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pingEnvId: (() { final guardedValue = map['pingEnvId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -197,6 +236,7 @@ class ZeroTrustAccessIdentityProviderConfig {
       ssoTargetUrl: (() { final guardedValue = map['ssoTargetUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       supportGroups: (() { final guardedValue = map['supportGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       tokenUrl: (() { final guardedValue = map['tokenUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      useLoginHint: (() { final guardedValue = map['useLoginHint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }

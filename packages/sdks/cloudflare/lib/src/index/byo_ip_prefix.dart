@@ -85,7 +85,7 @@ import 'byo_ip_prefix_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -93,7 +93,10 @@ import 'byo_ip_prefix_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_byoipprefix" "example_byo_ip_prefix" {
+/// resource "cloudflare_byo_ip_prefix" "example_byo_ip_prefix" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id            = "258def64c72dae45f3e4c8516e2111f2"
 ///   asn                   = 13335
 ///   cidr                  = "192.0.2.0/24"
@@ -162,10 +165,16 @@ class ByoIpPrefix extends pulumi.CustomResource {
   late final pulumi.Output<bool> advertised;
   /// Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
   late final pulumi.Output<String> advertisedModifiedAt;
-  /// Approval state of the prefix (P = pending, V = active).
+  /// Approval state of the prefix (P = pending, V = approved). Approval does not advertise the prefix or activate traffic.
   late final pulumi.Output<String> approved;
-  /// Autonomous System Number (ASN) the prefix will be advertised under.
+  /// Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare's ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.
   late final pulumi.Output<int> asn;
+  /// State of ASN ownership validation for a customer-owned Autonomous System Number (ASN). Returned when an ASN ownership validation result exists. Omitted when validation does not apply, such as for Cloudflare-owned ASNs. Verification is reused for prefixes with the same account and ASN. Refer to [ASN ownership validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#asn-ownership-validation) for state meanings and resolutions.
+  /// Available values: "pending", "valid", "missing", "invalid".
+  late final pulumi.Output<String> asnOwnershipValidationState;
+  /// State of Autonomous System Provider Authorization (ASPA) validation for a customer-owned ASN. Returned when an ASPA validation result exists. Publishing an ASPA is optional. A published ASPA must authorize AS13335 as a provider. An invalid result blocks approval. If omitted, no ASPA validation result is available. Omission does not indicate successful validation or confirm that no ASPA exists. Refer to [ASPA validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#aspa-validation) for state meanings and resolutions, and [ASPA authorization](https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/#aspa-authorization) for publication guidance.
+  /// Available values: "pending", "valid", "invalid".
+  late final pulumi.Output<String> aspaValidationState;
   /// IP Prefix in Classless Inter-Domain Routing format.
   late final pulumi.Output<String> cidr;
   late final pulumi.Output<String> createdAt;
@@ -184,7 +193,7 @@ class ByoIpPrefix extends pulumi.CustomResource {
   late final pulumi.Output<bool> onDemandLocked;
   /// State of one kind of validation for an IP prefix.
   late final pulumi.Output<String> ownershipValidationState;
-  /// Token provided to demonstrate ownership of the prefix.
+  /// Token used to verify ownership of the prefix and, when applicable, its ASN. Use the same token for both checks. Refer to the [BYOIP onboarding guide](https://developers.cloudflare.com/byoip/get-started/) for verification instructions.
   late final pulumi.Output<String> ownershipValidationToken;
   /// State of one kind of validation for an IP prefix.
   late final pulumi.Output<String> rpkiValidationState;
@@ -201,13 +210,15 @@ class ByoIpPrefix extends pulumi.CustomResource {
           'cloudflare:index/byoIpPrefix:ByoIpPrefix',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     advertised = registerOutput<bool>('advertised');
     advertisedModifiedAt = registerOutput<String>('advertisedModifiedAt');
     approved = registerOutput<String>('approved');
     asn = registerOutput<int>('asn');
+    asnOwnershipValidationState = registerOutput<String>('asnOwnershipValidationState');
+    aspaValidationState = registerOutput<String>('aspaValidationState');
     cidr = registerOutput<String>('cidr');
     createdAt = registerOutput<String>('createdAt');
     delegateLoaCreation = registerOutput<bool>('delegateLoaCreation');
@@ -251,6 +262,8 @@ class ByoIpPrefix extends pulumi.CustomResource {
     advertisedModifiedAt = registerOutput<String>('advertisedModifiedAt');
     approved = registerOutput<String>('approved');
     asn = registerOutput<int>('asn');
+    asnOwnershipValidationState = registerOutput<String>('asnOwnershipValidationState');
+    aspaValidationState = registerOutput<String>('aspaValidationState');
     cidr = registerOutput<String>('cidr');
     createdAt = registerOutput<String>('createdAt');
     delegateLoaCreation = registerOutput<bool>('delegateLoaCreation');
@@ -279,6 +292,8 @@ class ByoIpPrefix extends pulumi.CustomResource {
     advertisedModifiedAt = registerOutput<String>('advertisedModifiedAt');
     approved = registerOutput<String>('approved');
     asn = registerOutput<int>('asn');
+    asnOwnershipValidationState = registerOutput<String>('asnOwnershipValidationState');
+    aspaValidationState = registerOutput<String>('aspaValidationState');
     cidr = registerOutput<String>('cidr');
     createdAt = registerOutput<String>('createdAt');
     delegateLoaCreation = registerOutput<bool>('delegateLoaCreation');

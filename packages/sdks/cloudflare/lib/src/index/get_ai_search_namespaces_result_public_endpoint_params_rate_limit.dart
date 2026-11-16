@@ -28,8 +28,8 @@ class GetAiSearchNamespacesResultPublicEndpointParamsRateLimit {
 
   factory GetAiSearchNamespacesResultPublicEndpointParamsRateLimit.fromMap(Map<String, dynamic> map) {
     return GetAiSearchNamespacesResultPublicEndpointParamsRateLimit(
-      periodMs: pulumi.Input.fromValue((map['periodMs'] as num).toInt()),
-      requests: pulumi.Input.fromValue((map['requests'] as num).toInt()),
+      periodMs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['periodMs'])),
+      requests: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['requests'])),
       technique: pulumi.Input.fromValue(map['technique'] as String),
     );
   }
