@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppSpecEnv {
   /// The name of the environment variable.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// The type of the environment variable, `GENERAL` or `SECRET`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The value of the environment variable.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [AppSpecEnv].
   /// [key] The name of the environment variable.

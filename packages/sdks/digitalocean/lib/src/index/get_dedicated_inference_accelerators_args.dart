@@ -12,9 +12,9 @@ class GetDedicatedInferenceAcceleratorsArgs {
   /// The ID of the dedicated inference endpoint to list accelerators for.
   final pulumi.Input<String> dedicatedInferenceId;
   /// Filter the results. The `filter` block is documented below.
-  final pulumi.Input<List<GetDedicatedInferenceAcceleratorsFilter>>? filters;
+  final pulumi.Input<List<GetDedicatedInferenceAcceleratorsFilter>?>? filters;
   /// Sort the results. The `sort` block is documented below.
-  final pulumi.Input<List<GetDedicatedInferenceAcceleratorsSort>>? sorts;
+  final pulumi.Input<List<GetDedicatedInferenceAcceleratorsSort>?>? sorts;
 
   /// Creates a new [GetDedicatedInferenceAcceleratorsArgs].
   /// [dedicatedInferenceId] The ID of the dedicated inference endpoint to list accelerators for.

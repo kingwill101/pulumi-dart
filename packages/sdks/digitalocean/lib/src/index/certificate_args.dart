@@ -10,22 +10,22 @@ class CertificateArgs {
   /// The full PEM-formatted trust chain
   /// between the certificate authority's certificate and your domain's TLS
   /// certificate. Only valid when type is `custom`.
-  final pulumi.Input<String>? certificateChain;
+  final pulumi.Input<String?>? certificateChain;
   /// List of fully qualified domain names (FQDNs) for
   /// which the certificate will be issued. The domains must be managed using
   /// DigitalOcean's DNS. Only valid when type is `letsEncrypt`.
-  final pulumi.Input<List<String>>? domains;
+  final pulumi.Input<List<String>?>? domains;
   /// The contents of a PEM-formatted public
   /// TLS certificate. Only valid when type is `custom`.
-  final pulumi.Input<String>? leafCertificate;
+  final pulumi.Input<String?>? leafCertificate;
   /// The name of the certificate for identification.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The contents of a PEM-formatted private-key
   /// corresponding to the SSL certificate. Only valid when type is `custom`.
-  final pulumi.Input<String>? privateKey;
+  final pulumi.Input<String?>? privateKey;
   /// The type of certificate to provision. Can be either
   /// `custom` or `letsEncrypt`. Defaults to `custom`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [CertificateArgs].
   /// [certificateChain] The full PEM-formatted trust chain
@@ -61,7 +61,7 @@ class CertificateArgs {
       leafCertificate: (() { final guardedValue = map['leafCertificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateKey: (() { final guardedValue = map['privateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

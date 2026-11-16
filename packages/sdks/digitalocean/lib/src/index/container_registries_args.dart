@@ -7,8 +7,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_container_registries_container_registries_args_doc}
 class ContainerRegistriesArgs {
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? region;
   final pulumi.Input<String> subscriptionTierSlug;
 
   /// Creates a new [ContainerRegistriesArgs].

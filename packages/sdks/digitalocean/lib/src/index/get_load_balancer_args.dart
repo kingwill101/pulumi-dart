@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_load_balancer_get_load_balancer_args_doc}
 class GetLoadBalancerArgs {
   /// The ID of load balancer.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of load balancer.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GetLoadBalancerArgs].
   /// [id] The ID of load balancer.

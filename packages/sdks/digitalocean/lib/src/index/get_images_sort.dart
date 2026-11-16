@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetImagesSort {
   /// The sort direction. This may be either `asc` or `desc`.
-  final pulumi.Input<String>? direction;
+  final pulumi.Input<String?>? direction;
   /// Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
   /// `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
   final pulumi.Input<String> key;

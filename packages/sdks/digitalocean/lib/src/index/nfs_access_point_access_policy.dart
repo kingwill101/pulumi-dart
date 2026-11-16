@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NfsAccessPointAccessPolicy {
   /// Anonymous GID mapped for NFS clients. Defaults to `65534`.
-  final pulumi.Input<int>? anongid;
+  final pulumi.Input<int?>? anongid;
   /// Anonymous UID mapped for NFS clients. Defaults to `65534`.
-  final pulumi.Input<int>? anonuid;
+  final pulumi.Input<int?>? anonuid;
   /// Whether identity enforcement is enabled. Defaults to `false`.
-  final pulumi.Input<bool>? identityEnforcementEnabled;
+  final pulumi.Input<bool?>? identityEnforcementEnabled;
   /// List of NFS protocols. Defaults to `["NFS4"]`.
-  final pulumi.Input<List<String>>? protocols;
+  final pulumi.Input<List<String>?>? protocols;
   /// Squash configuration. Valid values are `NO_SQUASH`, `ROOT_SQUASH`, and `ALL_SQUASH`. Defaults to `ROOT_SQUASH`.
-  final pulumi.Input<String>? squashConfig;
+  final pulumi.Input<String?>? squashConfig;
 
   /// Creates a new [NfsAccessPointAccessPolicy].
   /// [anongid] Anonymous GID mapped for NFS clients. Defaults to `65534`.
@@ -40,8 +40,8 @@ class NfsAccessPointAccessPolicy {
 
   factory NfsAccessPointAccessPolicy.fromMap(Map<String, dynamic> map) {
     return NfsAccessPointAccessPolicy(
-      anongid: (() { final guardedValue = map['anongid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      anonuid: (() { final guardedValue = map['anonuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      anongid: (() { final guardedValue = map['anongid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      anonuid: (() { final guardedValue = map['anonuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       identityEnforcementEnabled: (() { final guardedValue = map['identityEnforcementEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       protocols: (() { final guardedValue = map['protocols']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       squashConfig: (() { final guardedValue = map['squashConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

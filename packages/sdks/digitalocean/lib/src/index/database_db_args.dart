@@ -10,7 +10,7 @@ class DatabaseDbArgs {
   /// The ID of the original source database cluster.
   final pulumi.Input<String> clusterId;
   /// The name for the database.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [DatabaseDbArgs].
   /// [clusterId] The ID of the original source database cluster.

@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_app_spec_service_alert_destinations_slack_webhook.dart';
 
 class GetAppSpecServiceAlertDestinations {
-  final pulumi.Input<List<String>>? emails;
-  final pulumi.Input<List<GetAppSpecServiceAlertDestinationsSlackWebhook>>? slackWebhooks;
+  final pulumi.Input<List<String>?>? emails;
+  final pulumi.Input<List<GetAppSpecServiceAlertDestinationsSlackWebhook>?>? slackWebhooks;
 
   /// Creates a new [GetAppSpecServiceAlertDestinations].
   /// [emails] Optional.

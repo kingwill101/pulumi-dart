@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppSpecWorkerLogDestinationOpenSearchBasicAuth {
   /// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? user;
 
   /// Creates a new [GetAppSpecWorkerLogDestinationOpenSearchBasicAuth].
   /// [password] Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.

@@ -3,44 +3,44 @@
 
 /// Result data returned by getPartnerAttachmentServiceKey.
 class GetPartnerAttachmentServiceKeyResult {
-  final String attachmentId;
-  final String createdAt;
+  final String? attachmentId;
+  final String? createdAt;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String state;
-  final String value;
+  final String? id;
+  final String? state;
+  final String? value;
 
   /// Creates a new [GetPartnerAttachmentServiceKeyResult].
-  /// [attachmentId] Required.
-  /// [createdAt] Required.
+  /// [attachmentId] Optional.
+  /// [createdAt] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [state] Required.
-  /// [value] Required.
+  /// [state] Optional.
+  /// [value] Optional.
   const GetPartnerAttachmentServiceKeyResult({
-    required this.attachmentId,
-    required this.createdAt,
-    required this.id,
-    required this.state,
-    required this.value,
+    this.attachmentId,
+    this.createdAt,
+    this.id,
+    this.state,
+    this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attachmentId': attachmentId,
-      'createdAt': createdAt,
-      'id': id,
-      'state': state,
-      'value': value,
+      'attachmentId': ?attachmentId,
+      'createdAt': ?createdAt,
+      'id': ?id,
+      'state': ?state,
+      'value': ?value,
     };
   }
 
   factory GetPartnerAttachmentServiceKeyResult.fromMap(Map<String, dynamic> map) {
     return GetPartnerAttachmentServiceKeyResult(
-      attachmentId: map['attachmentId'] as String,
-      createdAt: map['createdAt'] as String,
-      id: map['id'] as String,
-      state: map['state'] as String,
-      value: map['value'] as String,
+      attachmentId: (() { final guardedValue = map['attachmentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
