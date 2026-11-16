@@ -13,7 +13,7 @@ import 'vpc_endpoint_strategy.dart';
 /// {@endtemplate}
 /// {@macro pulumi_ec2_vpc_args_doc}
 class VpcArgs {
-  /// Requests an Amazon-provided IPv6 CIDR block with a /56 prefix length for the VPC. You cannot specify the range of IP addresses, or the size of the CIDR block. Default is `false`. Conflicts with `ipv6IpamPoolId`
+  /// Requests an Amazon-provided IPv6 CIDR block with a /56 prefix length for the VPC. You cannot specify the range of IP addresses, or the size of the CIDR block. Default is `false`. Conflicts with `ipv6IpamPoolId`.
   final pulumi.Input<bool?>? assignGeneratedIpv6CidrBlock;
   /// The netmask for each available zone to be aligned to. This is optional, the default value is inferred based on an even distribution of available space from the VPC's CIDR block after being divided evenly by the number of availability zones.
   final pulumi.Input<int?>? availabilityZoneCidrMask;
@@ -21,17 +21,17 @@ class VpcArgs {
   final pulumi.Input<List<String>?>? availabilityZoneNames;
   /// The CIDR block for the VPC. Optional. Defaults to 10.0.0.0/16.
   final pulumi.Input<String?>? cidrBlock;
-  /// A boolean flag to enable/disable DNS hostnames in the VPC. Defaults false.
+  /// Whether to enable DNS hostnames in the VPC. Defaults to `false`.
   final pulumi.Input<bool?>? enableDnsHostnames;
-  /// A boolean flag to enable/disable DNS support in the VPC. Defaults to true.
+  /// Whether to enable DNS support in the VPC. Defaults to `true`.
   final pulumi.Input<bool?>? enableDnsSupport;
-  /// Indicates whether Network Address Usage metrics are enabled for your VPC. Defaults to false.
+  /// Whether to enable Network Address Usage metrics for your VPC. Defaults to `false`.
   final pulumi.Input<bool?>? enableNetworkAddressUsageMetrics;
-  /// A tenancy option for instances launched into the VPC. Default is `default`, which ensures that EC2 instances launched in this VPC use the EC2 instance tenancy attribute specified when the EC2 instance is launched. The only other option is `dedicated`, which ensures that EC2 instances launched in this VPC are run on dedicated tenancy instances regardless of the tenancy attribute specified at launch. This has a dedicated per region fee of $2 per hour, plus an hourly per instance usage fee.
+  /// Tenancy option for instances launched into the VPC. Default is `default`, which ensures that EC2 instances launched in this VPC use the EC2 instance tenancy attribute specified when the EC2 instance is launched. The only other option is `dedicated`, which ensures that EC2 instances launched in this VPC are run on dedicated tenancy instances regardless of the tenancy attribute specified at launch. This has a dedicated per region fee of $2 per hour, plus an hourly per instance usage fee.
   final pulumi.Input<String?>? instanceTenancy;
-  /// The ID of an IPv4 IPAM pool you want to use for allocating this VPC's CIDR. IPAM is a VPC feature that you can use to automate your IP address management workflows including assigning, tracking, troubleshooting, and auditing IP addresses across AWS Regions and accounts. Using IPAM you can monitor IP address usage throughout your AWS Organization.
+  /// ID of an IPv4 IPAM pool you want to use for allocating this VPC's CIDR. IPAM is a VPC feature that you can use to automate your IP address management workflows including assigning, tracking, troubleshooting, and auditing IP addresses across AWS Regions and accounts. Using IPAM you can monitor IP address usage throughout your AWS Organization.
   final pulumi.Input<String?>? ipv4IpamPoolId;
-  /// The netmask length of the IPv4 CIDR you want to allocate to this VPC. Requires specifying a `ipv4IpamPoolId`.
+  /// Netmask length of the IPv4 CIDR you want to allocate to this VPC. Requires specifying a `ipv4IpamPoolId`.
   final pulumi.Input<int?>? ipv4NetmaskLength;
   /// IPv6 CIDR block to request from an IPAM Pool. Can be set explicitly or derived from IPAM using `ipv6NetmaskLength`.
   final pulumi.Input<String?>? ipv6CidrBlock;
@@ -53,7 +53,7 @@ class VpcArgs {
   final pulumi.Input<List<SubnetSpec>?>? subnetSpecs;
   /// The strategy to use when allocating subnets for the VPC. Optional. Defaults to `Legacy`.
   final pulumi.Input<SubnetAllocationStrategy?>? subnetStrategy;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
   /// A list of VPC Endpoints specs to be deployed as part of the VPC
   final pulumi.Input<List<VpcEndpointSpec>?>? vpcEndpointSpecs;
@@ -61,16 +61,16 @@ class VpcArgs {
   final pulumi.Input<VpcEndpointStrategy?>? vpcEndpointStrategy;
 
   /// Creates a new [VpcArgs].
-  /// [assignGeneratedIpv6CidrBlock] Requests an Amazon-provided IPv6 CIDR block with a /56 prefix length for the VPC. You cannot specify the range of IP addresses, or the size of the CIDR block. Default is `false`. Conflicts with `ipv6IpamPoolId`
+  /// [assignGeneratedIpv6CidrBlock] Requests an Amazon-provided IPv6 CIDR block with a /56 prefix length for the VPC. You cannot specify the range of IP addresses, or the size of the CIDR block. Default is `false`. Conflicts with `ipv6IpamPoolId`.
   /// [availabilityZoneCidrMask] The netmask for each available zone to be aligned to. This is optional, the default value is inferred based on an even distribution of available space from the VPC's CIDR block after being divided evenly by the number of availability zones.
   /// [availabilityZoneNames] A list of availability zone names to which the subnets defined in subnetSpecs will be deployed. Optional, defaults to the first 3 AZs in the current region.
   /// [cidrBlock] The CIDR block for the VPC. Optional. Defaults to 10.0.0.0/16.
-  /// [enableDnsHostnames] A boolean flag to enable/disable DNS hostnames in the VPC. Defaults false.
-  /// [enableDnsSupport] A boolean flag to enable/disable DNS support in the VPC. Defaults to true.
-  /// [enableNetworkAddressUsageMetrics] Indicates whether Network Address Usage metrics are enabled for your VPC. Defaults to false.
-  /// [instanceTenancy] A tenancy option for instances launched into the VPC. Default is `default`, which ensures that EC2 instances launched in this VPC use the EC2 instance tenancy attribute specified when the EC2 instance is launched. The only other option is `dedicated`, which ensures that EC2 instances launched in this VPC are run on dedicated tenancy instances regardless of the tenancy attribute specified at launch. This has a dedicated per region fee of $2 per hour, plus an hourly per instance usage fee.
-  /// [ipv4IpamPoolId] The ID of an IPv4 IPAM pool you want to use for allocating this VPC's CIDR. IPAM is a VPC feature that you can use to automate your IP address management workflows including assigning, tracking, troubleshooting, and auditing IP addresses across AWS Regions and accounts. Using IPAM you can monitor IP address usage throughout your AWS Organization.
-  /// [ipv4NetmaskLength] The netmask length of the IPv4 CIDR you want to allocate to this VPC. Requires specifying a `ipv4IpamPoolId`.
+  /// [enableDnsHostnames] Whether to enable DNS hostnames in the VPC. Defaults to `false`.
+  /// [enableDnsSupport] Whether to enable DNS support in the VPC. Defaults to `true`.
+  /// [enableNetworkAddressUsageMetrics] Whether to enable Network Address Usage metrics for your VPC. Defaults to `false`.
+  /// [instanceTenancy] Tenancy option for instances launched into the VPC. Default is `default`, which ensures that EC2 instances launched in this VPC use the EC2 instance tenancy attribute specified when the EC2 instance is launched. The only other option is `dedicated`, which ensures that EC2 instances launched in this VPC are run on dedicated tenancy instances regardless of the tenancy attribute specified at launch. This has a dedicated per region fee of $2 per hour, plus an hourly per instance usage fee.
+  /// [ipv4IpamPoolId] ID of an IPv4 IPAM pool you want to use for allocating this VPC's CIDR. IPAM is a VPC feature that you can use to automate your IP address management workflows including assigning, tracking, troubleshooting, and auditing IP addresses across AWS Regions and accounts. Using IPAM you can monitor IP address usage throughout your AWS Organization.
+  /// [ipv4NetmaskLength] Netmask length of the IPv4 CIDR you want to allocate to this VPC. Requires specifying a `ipv4IpamPoolId`.
   /// [ipv6CidrBlock] IPv6 CIDR block to request from an IPAM Pool. Can be set explicitly or derived from IPAM using `ipv6NetmaskLength`.
   /// [ipv6CidrBlockNetworkBorderGroup] By default when an IPv6 CIDR is assigned to a VPC a default ipv6CidrBlockNetworkBorderGroup will be set to the region of the VPC. This can be changed to restrict advertisement of public addresses to specific Network Border Groups such as LocalZones.
   /// [ipv6IpamPoolId] IPAM Pool ID for a IPv6 pool. Conflicts with `assignGeneratedIpv6CidrBlock`.
@@ -81,7 +81,7 @@ class VpcArgs {
   /// [subnetNameTagStrategy] Controls the AWS `Name` tags applied to generated subnets and their associated route tables. Pulumi logical resource names and URNs are unchanged. Optional; defaults to `Legacy`.
   /// [subnetSpecs] A list of subnet specs that should be deployed to each AZ specified in availabilityZoneNames. Optional. Defaults to a (smaller) public subnet and a (larger) private subnet based on the size of the CIDR block for the VPC. Private subnets are allocated CIDR block ranges first, followed by Public subnets, and Isolated subnets are allocated last.
   /// [subnetStrategy] The strategy to use when allocating subnets for the VPC. Optional. Defaults to `Legacy`.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcEndpointSpecs] A list of VPC Endpoints specs to be deployed as part of the VPC
   /// [vpcEndpointStrategy] The strategy to use when applying VPC endpoint specs. Optional. Defaults to `Legacy`.
   const VpcArgs({
