@@ -54,7 +54,7 @@ import 'get_regional_parameters_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -71,7 +71,7 @@ import 'get_regional_parameters_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -79,7 +79,7 @@ import 'get_regional_parameters_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_parametermanager_getparameter" "parameterDatasource" {
+/// data "gcp_parametermanager_parameter" "parameterDatasource" {
 ///   parameter_id = "foobar"
 /// }
 /// ```
@@ -186,7 +186,7 @@ pulumi.Output<GetParameterResult> getParameterOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -204,7 +204,7 @@ pulumi.Output<GetParameterResult> getParameterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -212,7 +212,7 @@ pulumi.Output<GetParameterResult> getParameterOutput(
 ///   }
 /// }
 ///
-/// data "gcp_parametermanager_getparameterversion" "basic" {
+/// data "gcp_parametermanager_parameter_version" "basic" {
 ///   parameter            = "test-parameter"
 ///   parameter_version_id = "test-parameter-version"
 /// }
@@ -323,7 +323,7 @@ pulumi.Output<GetParameterVersionResult> getParameterVersionOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -341,7 +341,7 @@ pulumi.Output<GetParameterVersionResult> getParameterVersionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -349,7 +349,7 @@ pulumi.Output<GetParameterVersionResult> getParameterVersionOutput(
 ///   }
 /// }
 ///
-/// data "gcp_parametermanager_getparameterversionrender" "basic" {
+/// data "gcp_parametermanager_parameter_version_render" "basic" {
 ///   parameter            = "test-parameter"
 ///   parameter_version_id = "test-parameter-version"
 /// }
@@ -451,7 +451,7 @@ pulumi.Output<GetParameterVersionRenderResult> getParameterVersionRenderOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -466,7 +466,7 @@ pulumi.Output<GetParameterVersionRenderResult> getParameterVersionRenderOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -474,7 +474,7 @@ pulumi.Output<GetParameterVersionRenderResult> getParameterVersionRenderOutput(
 ///   }
 /// }
 ///
-/// data "gcp_parametermanager_getparameters" "parameters" {
+/// data "gcp_parametermanager_parameters" "parameters" {
 /// }
 /// ```
 /// ```java
@@ -578,7 +578,7 @@ pulumi.Output<GetParametersResult> getParametersOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -596,7 +596,7 @@ pulumi.Output<GetParametersResult> getParametersOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -604,7 +604,7 @@ pulumi.Output<GetParametersResult> getParametersOutput(
 ///   }
 /// }
 ///
-/// data "gcp_parametermanager_getregionalparameter" "regParameterDatasource" {
+/// data "gcp_parametermanager_regional_parameter" "regParameterDatasource" {
 ///   parameter_id = "foobar"
 ///   location     = "us-central1"
 /// }
@@ -717,7 +717,7 @@ pulumi.Output<GetRegionalParameterResult> getRegionalParameterOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -736,7 +736,7 @@ pulumi.Output<GetRegionalParameterResult> getRegionalParameterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -744,7 +744,7 @@ pulumi.Output<GetRegionalParameterResult> getRegionalParameterOutput(
 ///   }
 /// }
 ///
-/// data "gcp_parametermanager_getregionalparameterversion" "basic" {
+/// data "gcp_parametermanager_regional_parameter_version" "basic" {
 ///   parameter            = "test-regional-parameter"
 ///   parameter_version_id = "test-regional-parameter-version"
 ///   location             = "us-central1"
@@ -862,7 +862,7 @@ pulumi.Output<GetRegionalParameterVersionResult> getRegionalParameterVersionOutp
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -881,7 +881,7 @@ pulumi.Output<GetRegionalParameterVersionResult> getRegionalParameterVersionOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -889,7 +889,7 @@ pulumi.Output<GetRegionalParameterVersionResult> getRegionalParameterVersionOutp
 ///   }
 /// }
 ///
-/// data "gcp_parametermanager_getregionalparameterversionrender" "basic" {
+/// data "gcp_parametermanager_regional_parameter_version_render" "basic" {
 ///   parameter            = "test-regional-parameter"
 ///   parameter_version_id = "test-regional-parameter-version"
 ///   location             = "us-central1"
@@ -999,7 +999,7 @@ pulumi.Output<GetRegionalParameterVersionRenderResult> getRegionalParameterVersi
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1016,7 +1016,7 @@ pulumi.Output<GetRegionalParameterVersionRenderResult> getRegionalParameterVersi
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1024,7 +1024,7 @@ pulumi.Output<GetRegionalParameterVersionRenderResult> getRegionalParameterVersi
 ///   }
 /// }
 ///
-/// data "gcp_parametermanager_getregionalparameters" "regional-parameters" {
+/// data "gcp_parametermanager_regional_parameters" "regional-parameters" {
 ///   location = "us-central1"
 /// }
 /// ```

@@ -19,6 +19,7 @@ class GetRegionalParameterResult {
   final List<GetRegionalParameterPolicyMember>? policyMembers;
   final String? project;
   final Map<String, String>? pulumiLabels;
+  final Map<String, String>? tags;
   final String? updateTime;
 
   /// Creates a new [GetRegionalParameterResult].
@@ -35,6 +36,7 @@ class GetRegionalParameterResult {
   /// [policyMembers] Optional.
   /// [project] Optional.
   /// [pulumiLabels] Optional.
+  /// [tags] Optional.
   /// [updateTime] Optional.
   const GetRegionalParameterResult({
     this.createTime,
@@ -50,6 +52,7 @@ class GetRegionalParameterResult {
     this.policyMembers,
     this.project,
     this.pulumiLabels,
+    this.tags,
     this.updateTime,
   });
 
@@ -68,6 +71,7 @@ class GetRegionalParameterResult {
       'policyMembers': ?(() { final guardedValue = policyMembers; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionalParameterPolicyMember, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'project': ?project,
       'pulumiLabels': ?pulumiLabels,
+      'tags': ?tags,
       'updateTime': ?updateTime,
     };
   }
@@ -87,6 +91,7 @@ class GetRegionalParameterResult {
       policyMembers: (() { final guardedValue = map['policyMembers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionalParameterPolicyMember>(guardedValue, (value) => GetRegionalParameterPolicyMember.fromMap((value as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

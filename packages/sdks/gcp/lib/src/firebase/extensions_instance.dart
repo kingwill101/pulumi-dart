@@ -14,6 +14,7 @@ import 'extensions_instance_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://firebase.google.com/products/extensions)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Firebase Extensions Instance Resize Image
@@ -160,8 +161,8 @@ import 'extensions_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -216,7 +217,7 @@ import 'extensions_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -225,6 +226,9 @@ import 'extensions_instance_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "images" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                     = "my-project-name"
 ///   name                        = "bucket-id"
 ///   location                    = "US"
@@ -232,7 +236,10 @@ import 'extensions_instance_state.dart';
 ///   # Delete all objects when the bucket is deleted
 ///   force_destroy = true
 /// }
-/// resource "gcp_firebase_extensionsinstance" "resize_image" {
+/// resource "gcp_firebase_extensions_instance" "resize_image" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "my-project-name"
 ///   instance_id = "storage-resize-images"
 ///   config = {
@@ -442,7 +449,7 @@ class ExtensionsInstance extends pulumi.CustomResource {
           'gcp:firebase/extensionsInstance:ExtensionsInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     config = registerOutput<ExtensionsInstanceConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtensionsInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

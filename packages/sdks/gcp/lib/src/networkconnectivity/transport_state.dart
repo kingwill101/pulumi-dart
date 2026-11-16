@@ -9,7 +9,6 @@ class TransportState {
   final pulumi.Input<bool?>? adminEnabled;
   /// List of IP Prefixes that will be advertised to the remote provider. Both IPv4 and IPv6 addresses are supported.
   final pulumi.Input<List<String>?>? advertisedRoutes;
-  /// (Optional, Beta)
   /// Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
   final pulumi.Input<bool?>? autoAccept;
   /// Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
@@ -27,7 +26,6 @@ class TransportState {
   final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// [Output only] Google-generated activation key. This is only output if the selected profile supports an OUTPUT key flow. Inputting this to the provider is only valid while the resource is in a PENDING_KEY state. Once the provider has accepted the key, the resource will move to the CONFIGURING state.
   final pulumi.Input<String?>? generatedActivationKey;
-  /// (Optional, Beta)
   /// The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
   final pulumi.Input<String?>? hub;
   /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -47,7 +45,6 @@ class TransportState {
   final pulumi.Input<String?>? project;
   /// Key used for establishing a connection with the remote transport. This key can only be provided if the profile supports an INPUT key flow and the resource is in the PENDING_KEY state.
   final pulumi.Input<String?>? providedActivationKey;
-  /// (Optional, Beta)
   /// Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
   final pulumi.Input<bool?>? pscRoutingEnabled;
   /// The combination of labels configured directly on the resource
@@ -69,13 +66,13 @@ class TransportState {
   /// Creates a new [TransportState].
   /// [adminEnabled] (Optional, Beta)
   /// [advertisedRoutes] List of IP Prefixes that will be advertised to the remote provider. Both IPv4 and IPv6 addresses are supported.
-  /// [autoAccept] (Optional, Beta)
+  /// [autoAccept] Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
   /// [bandwidth] Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [generatedActivationKey] [Output only] Google-generated activation key. This is only output if the selected profile supports an OUTPUT key flow. Inputting this to the provider is only valid while the resource is in a PENDING_KEY state. Once the provider has accepted the key, the resource will move to the CONFIGURING state.
-  /// [hub] (Optional, Beta)
+  /// [hub] The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
   /// [labels] Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   /// [mtuLimit] [Output only] The maximum transmission unit (MTU) of a packet that can be sent over this transport.
   /// [name] Name of the resource, see google.aip.dev/122 for resource naming.
@@ -83,7 +80,7 @@ class TransportState {
   /// [peeringNetwork] VPC Network URI that was created for the VPC Peering connection to the provided `network`. If VPC Peering is disconnected, this can be used to re-establish.
   /// [project] The ID of the project in which the resource belongs.
   /// [providedActivationKey] Key used for establishing a connection with the remote transport. This key can only be provided if the profile supports an INPUT key flow and the resource is in the PENDING_KEY state.
-  /// [pscRoutingEnabled] (Optional, Beta)
+  /// [pscRoutingEnabled] Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [region] The region of this resource. This is required to construct the resource name, but is not sent to the API since the region is already contained in the parent field.
   /// [remoteAccountId] The user supplied account id for the CSP associated with the remote profile.
@@ -156,7 +153,7 @@ class TransportState {
       generatedActivationKey: (() { final guardedValue = map['generatedActivationKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hub: (() { final guardedValue = map['hub']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      mtuLimit: (() { final guardedValue = map['mtuLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      mtuLimit: (() { final guardedValue = map['mtuLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       peeringNetwork: (() { final guardedValue = map['peeringNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

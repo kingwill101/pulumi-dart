@@ -11,6 +11,7 @@ import 'domain_state.dart';
 /// * How-to Guides
 /// * [Managed Microsoft Active Directory Quickstart](https://cloud.google.com/managed-microsoft-ad/docs/quickstarts)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Active Directory Domain Basic
@@ -63,7 +64,7 @@ import 'domain_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/activedirectory"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/activedirectory"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -85,7 +86,7 @@ import 'domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -94,6 +95,9 @@ import 'domain_state.dart';
 /// }
 ///
 /// resource "gcp_activedirectory_domain" "ad-domain" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name         = "tfgen.org.com"
 ///   locations           = ["us-central1"]
 ///   reserved_ip_range   = "192.168.255.0/24"
@@ -220,7 +224,7 @@ class Domain extends pulumi.CustomResource {
           'gcp:activedirectory/domain:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     admin = registerOutput<String?>('admin');

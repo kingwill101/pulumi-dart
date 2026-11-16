@@ -8,6 +8,7 @@ import 'standard_app_version_entrypoint.dart';
 import 'standard_app_version_handler.dart';
 import 'standard_app_version_library.dart';
 import 'standard_app_version_manual_scaling.dart';
+import 'standard_app_version_vpc_access.dart';
 import 'standard_app_version_vpc_access_connector.dart';
 
 /// {@template pulumi_appengine_standard_app_version_standard_app_version_args_doc}
@@ -82,6 +83,10 @@ class StandardAppVersionArgs {
   final pulumi.Input<bool?>? threadsafe;
   /// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
   final pulumi.Input<String?>? versionId;
+  /// (Optional, Beta)
+  /// Direct VPC Access settings for standard apps.
+  /// Structure is documented below.
+  final pulumi.Input<StandardAppVersionVpcAccess?>? vpcAccess;
   /// Enables VPC connectivity for standard apps.
   /// Structure is documented below.
   final pulumi.Input<StandardAppVersionVpcAccessConnector?>? vpcAccessConnector;
@@ -109,6 +114,7 @@ class StandardAppVersionArgs {
   /// [serviceAccount] The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
   /// [threadsafe] Whether multiple requests can be dispatched to this version at once.
   /// [versionId] Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+  /// [vpcAccess] (Optional, Beta)
   /// [vpcAccessConnector] Enables VPC connectivity for standard apps.
   const StandardAppVersionArgs({
     this.appEngineApis,
@@ -133,6 +139,7 @@ class StandardAppVersionArgs {
     this.serviceAccount,
     this.threadsafe,
     this.versionId,
+    this.vpcAccess,
     this.vpcAccessConnector,
   });
 
@@ -160,6 +167,7 @@ class StandardAppVersionArgs {
       'serviceAccount': ?serviceAccount,
       'threadsafe': ?threadsafe,
       'versionId': ?versionId,
+      'vpcAccess': ?pulumi.Input.mapOptionalInputValue<StandardAppVersionVpcAccess, Map<String, dynamic>>(vpcAccess, (value) => value.toMap()),
       'vpcAccessConnector': ?pulumi.Input.mapOptionalInputValue<StandardAppVersionVpcAccessConnector, Map<String, dynamic>>(vpcAccessConnector, (value) => value.toMap()),
     };
   }
@@ -188,6 +196,7 @@ class StandardAppVersionArgs {
       serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       threadsafe: (() { final guardedValue = map['threadsafe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       versionId: (() { final guardedValue = map['versionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vpcAccess: (() { final guardedValue = map['vpcAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StandardAppVersionVpcAccess.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       vpcAccessConnector: (() { final guardedValue = map['vpcAccessConnector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StandardAppVersionVpcAccessConnector.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

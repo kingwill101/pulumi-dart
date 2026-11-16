@@ -49,11 +49,23 @@ class SearchEngineState {
   final pulumi.Input<SearchEngineKnowledgeGraphConfig?>? knowledgeGraphConfig;
   /// Location.
   final pulumi.Input<String?>? location;
+  /// Maps a model name to its specific configuration for this engine. This
+  /// allows admin users to turn on/off individual models. This only stores
+  /// models whose states are overridden by the admin. When the state is
+  /// unspecified, or `modelConfigs` is empty for this model, the system
+  /// decides if this model is available based on the default configuration.
+  /// For example, a preview model is disabled by default if the admin has not
+  /// chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+  /// `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+  /// for details.
+  final pulumi.Input<Map<String, String>?>? modelConfigs;
   /// The unique full resource name of the search engine. Values are of the format
   /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
   /// This field must be a UTF-8 encoded string with a length limit of 1024
   /// characters.
   final pulumi.Input<String?>? name;
+  /// The emails of the procurement contacts.
+  final pulumi.Input<List<String>?>? procurementContactEmails;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
@@ -78,7 +90,9 @@ class SearchEngineState {
   /// [kmsKeyName] The KMS key to be used to protect this Engine at creation time.
   /// [knowledgeGraphConfig] Configurations for the Knowledge Graph.
   /// [location] Location.
+  /// [modelConfigs] Maps a model name to its specific configuration for this engine. This
   /// [name] The unique full resource name of the search engine. Values are of the format
+  /// [procurementContactEmails] The emails of the procurement contacts.
   /// [project] The ID of the project in which the resource belongs.
   /// [searchEngineConfig] Configurations for a Search Engine.
   /// [updateTime] Timestamp the Engine was last updated.
@@ -97,7 +111,9 @@ class SearchEngineState {
     this.kmsKeyName,
     this.knowledgeGraphConfig,
     this.location,
+    this.modelConfigs,
     this.name,
+    this.procurementContactEmails,
     this.project,
     this.searchEngineConfig,
     this.updateTime,
@@ -119,7 +135,9 @@ class SearchEngineState {
       'kmsKeyName': ?kmsKeyName,
       'knowledgeGraphConfig': ?pulumi.Input.mapOptionalInputValue<SearchEngineKnowledgeGraphConfig, Map<String, dynamic>>(knowledgeGraphConfig, (value) => value.toMap()),
       'location': ?location,
+      'modelConfigs': ?modelConfigs,
       'name': ?name,
+      'procurementContactEmails': ?procurementContactEmails,
       'project': ?project,
       'searchEngineConfig': ?pulumi.Input.mapOptionalInputValue<SearchEngineSearchEngineConfig, Map<String, dynamic>>(searchEngineConfig, (value) => value.toMap()),
       'updateTime': ?updateTime,
@@ -142,7 +160,9 @@ class SearchEngineState {
       kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       knowledgeGraphConfig: (() { final guardedValue = map['knowledgeGraphConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SearchEngineKnowledgeGraphConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      modelConfigs: (() { final guardedValue = map['modelConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      procurementContactEmails: (() { final guardedValue = map['procurementContactEmails']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       searchEngineConfig: (() { final guardedValue = map['searchEngineConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SearchEngineSearchEngineConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

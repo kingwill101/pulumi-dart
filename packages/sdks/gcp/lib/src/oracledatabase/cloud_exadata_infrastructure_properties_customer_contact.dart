@@ -5,6 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudExadataInfrastructurePropertiesCustomerContact {
   /// The email address used by Oracle to send notifications regarding databases
   /// and infrastructure.
+  ///
+  /// &lt;a name="nestedPropertiesExascaleConfig"&gt;&lt;/a&gt;The `exascaleConfig` block contains:
   final pulumi.Input<String> email;
 
   /// Creates a new [CloudExadataInfrastructurePropertiesCustomerContact].

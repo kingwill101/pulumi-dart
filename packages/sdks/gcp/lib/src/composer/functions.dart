@@ -66,7 +66,7 @@ import 'get_user_workloads_secret_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/composer"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/composer"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -90,7 +90,7 @@ import 'get_user_workloads_secret_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -98,15 +98,18 @@ import 'get_user_workloads_secret_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_composer_getenvironment" "composerEnv" {
+/// data "gcp_composer_environment" "composerEnv" {
 ///   name = test.name
 /// }
 ///
 /// resource "gcp_composer_environment" "composer_env" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "composer-environment"
 /// }
 /// output "debug" {
-///   value = data.gcp_composer_getenvironment.composerEnv.configs
+///   value = data.gcp_composer_environment.composerEnv.configs
 /// }
 /// ```
 /// ```java
@@ -255,7 +258,7 @@ pulumi.Output<GetEnvironmentResult> getEnvironmentOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/composer"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/composer"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -282,7 +285,7 @@ pulumi.Output<GetEnvironmentResult> getEnvironmentOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -290,15 +293,18 @@ pulumi.Output<GetEnvironmentResult> getEnvironmentOutput(
 ///   }
 /// }
 ///
-/// data "gcp_composer_getimageversions" "all" {
+/// data "gcp_composer_image_versions" "all" {
 /// }
 ///
 /// resource "gcp_composer_environment" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "test-env"
 ///   region = "us-central1"
 ///   config = {
 ///     software_config = {
-///       image_version = data.gcp_composer_getimageversions.all.image_versions[0].image_version_id
+///       image_version = data.gcp_composer_image_versions.all.image_versions[0].image_version_id
 ///     }
 ///   }
 /// }
@@ -492,7 +498,7 @@ pulumi.Output<GetImageVersionsResult> getImageVersionsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/composer"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/composer"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -530,7 +536,7 @@ pulumi.Output<GetImageVersionsResult> getImageVersionsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -538,12 +544,15 @@ pulumi.Output<GetImageVersionsResult> getImageVersionsOutput(
 ///   }
 /// }
 ///
-/// data "gcp_composer_getuserworkloadsconfigmap" "example" {
+/// data "gcp_composer_user_workloads_config_map" "example" {
 ///   environment = gcp_composer_environment.example.name
 ///   name        = googleComposerUserWorkloadsConfigMap.example.name
 /// }
 ///
 /// resource "gcp_composer_environment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-environment"
 ///   config = {
 ///     software_config = {
@@ -551,7 +560,10 @@ pulumi.Output<GetImageVersionsResult> getImageVersionsOutput(
 ///     }
 ///   }
 /// }
-/// resource "gcp_composer_userworkloadsconfigmap" "example" {
+/// resource "gcp_composer_user_workloads_config_map" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   environment = gcp_composer_environment.example.name
 ///   name        = "example-config-map"
 ///   data = {
@@ -560,7 +572,7 @@ pulumi.Output<GetImageVersionsResult> getImageVersionsOutput(
 ///   }
 /// }
 /// output "debug" {
-///   value = data.gcp_composer_getuserworkloadsconfigmap.example
+///   value = data.gcp_composer_user_workloads_config_map.example
 /// }
 /// ```
 /// ```java
@@ -792,7 +804,7 @@ pulumi.Output<GetUserWorkloadsConfigMapResult> getUserWorkloadsConfigMapOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/composer"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/composer"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -843,7 +855,7 @@ pulumi.Output<GetUserWorkloadsConfigMapResult> getUserWorkloadsConfigMapOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -854,12 +866,15 @@ pulumi.Output<GetUserWorkloadsConfigMapResult> getUserWorkloadsConfigMapOutput(
 ///   }
 /// }
 ///
-/// data "gcp_composer_getuserworkloadssecret" "example" {
+/// data "gcp_composer_user_workloads_secret" "example" {
 ///   environment = gcp_composer_environment.example.name
 ///   name        = googleComposerUserWorkloadsSecret.example.name
 /// }
 ///
 /// resource "gcp_composer_environment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-environment"
 ///   config = {
 ///     software_config = {
@@ -867,7 +882,10 @@ pulumi.Output<GetUserWorkloadsConfigMapResult> getUserWorkloadsConfigMapOutput(
 ///     }
 ///   }
 /// }
-/// resource "gcp_composer_userworkloadssecret" "example" {
+/// resource "gcp_composer_user_workloads_secret" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   environment = gcp_composer_environment.example.name
 ///   name        = "example-secret"
 ///   data = {
@@ -876,7 +894,7 @@ pulumi.Output<GetUserWorkloadsConfigMapResult> getUserWorkloadsConfigMapOutput(
 ///   }
 /// }
 /// output "debug" {
-///   value = data.gcp_composer_getuserworkloadssecret.example
+///   value = data.gcp_composer_user_workloads_secret.example
 /// }
 /// ```
 /// ```java

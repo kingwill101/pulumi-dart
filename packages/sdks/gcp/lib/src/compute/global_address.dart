@@ -12,6 +12,7 @@ import 'global_address_state.dart';
 /// * How-to Guides
 /// * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Global Address Basic
@@ -49,7 +50,7 @@ import 'global_address_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -66,7 +67,7 @@ import 'global_address_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -74,7 +75,10 @@ import 'global_address_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_globaladdress" "default" {
+/// resource "gcp_compute_global_address" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "global-appserver-ip"
 /// }
 /// ```
@@ -113,6 +117,7 @@ import 'global_address_state.dart';
 ///     properties:
 ///       name: global-appserver-ip
 /// ```
+///
 ///
 /// ### Global Address Private Services Connect
 ///
@@ -177,7 +182,7 @@ import 'global_address_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -194,7 +199,7 @@ import 'global_address_state.dart';
 /// 			Name:        pulumi.String("global-psconnect-ip"),
 /// 			AddressType: pulumi.String("INTERNAL"),
 /// 			Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
-/// 			Network:     network.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     network.ID(),
 /// 			Address:     pulumi.String("100.100.100.105"),
 /// 		})
 /// 		if err != nil {
@@ -205,7 +210,7 @@ import 'global_address_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -213,7 +218,10 @@ import 'global_address_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_globaladdress" "default" {
+/// resource "gcp_compute_global_address" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "global-psconnect-ip"
 ///   address_type = "INTERNAL"
 ///   purpose      = "PRIVATE_SERVICE_CONNECT"
@@ -221,6 +229,9 @@ import 'global_address_state.dart';
 ///   address      = "100.100.100.105"
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network-name"
 ///   auto_create_subnetworks = false
 /// }
@@ -376,7 +387,7 @@ class GlobalAddress extends pulumi.CustomResource {
           'gcp:compute/globalAddress:GlobalAddress',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     address = registerOutput<String>('address');

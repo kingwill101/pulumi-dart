@@ -24,6 +24,7 @@ import 'reservation_state.dart';
 /// * How-to Guides
 /// * [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Reservation Basic
@@ -90,7 +91,7 @@ import 'reservation_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -115,7 +116,7 @@ import 'reservation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -124,6 +125,9 @@ import 'reservation_state.dart';
 /// }
 ///
 /// resource "gcp_compute_reservation" "gce_reservation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "gce-reservation"
 ///   zone = "us-central1-a"
 ///   specific_reservation = {
@@ -188,6 +192,7 @@ import 'reservation_state.dart';
 ///           machineType: n2-standard-2
 /// ```
 ///
+///
 /// ### Reservation Basic Beta
 ///
 ///
@@ -204,7 +209,7 @@ import 'reservation_state.dart';
 ///         instanceProperties: {
 ///             minCpuPlatform: "Intel Cascade Lake",
 ///             machineType: "n2-standard-2",
-///             maintenanceInterval: "PERIODIC",
+///             maintenanceInterval: "RECURRENT",
 ///         },
 ///     },
 ///     enableEmergentMaintenance: true,
@@ -222,7 +227,7 @@ import 'reservation_state.dart';
 ///         "instance_properties": {
 ///             "min_cpu_platform": "Intel Cascade Lake",
 ///             "machine_type": "n2-standard-2",
-///             "maintenance_interval": "PERIODIC",
+///             "maintenance_interval": "RECURRENT",
 ///         },
 ///     },
 ///     enable_emergent_maintenance=True)
@@ -246,7 +251,7 @@ import 'reservation_state.dart';
 ///             {
 ///                 MinCpuPlatform = "Intel Cascade Lake",
 ///                 MachineType = "n2-standard-2",
-///                 MaintenanceInterval = "PERIODIC",
+///                 MaintenanceInterval = "RECURRENT",
 ///             },
 ///         },
 ///         EnableEmergentMaintenance = true,
@@ -258,7 +263,7 @@ import 'reservation_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -272,7 +277,7 @@ import 'reservation_state.dart';
 /// 				InstanceProperties: &compute.ReservationSpecificReservationInstancePropertiesArgs{
 /// 					MinCpuPlatform:      pulumi.String("Intel Cascade Lake"),
 /// 					MachineType:         pulumi.String("n2-standard-2"),
-/// 					MaintenanceInterval: pulumi.String("PERIODIC"),
+/// 					MaintenanceInterval: pulumi.String("RECURRENT"),
 /// 				},
 /// 			},
 /// 			EnableEmergentMaintenance: pulumi.Bool(true),
@@ -285,7 +290,7 @@ import 'reservation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -294,6 +299,9 @@ import 'reservation_state.dart';
 /// }
 ///
 /// resource "gcp_compute_reservation" "gce_reservation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "gce-reservation"
 ///   zone = "us-central1-a"
 ///   specific_reservation = {
@@ -301,7 +309,7 @@ import 'reservation_state.dart';
 ///     instance_properties = {
 ///       min_cpu_platform     = "Intel Cascade Lake"
 ///       machine_type         = "n2-standard-2"
-///       maintenance_interval = "PERIODIC"
+///       maintenance_interval = "RECURRENT"
 ///     }
 ///   }
 ///   enable_emergent_maintenance = true
@@ -338,7 +346,7 @@ import 'reservation_state.dart';
 ///                 .instanceProperties(ReservationSpecificReservationInstancePropertiesArgs.builder()
 ///                     .minCpuPlatform("Intel Cascade Lake")
 ///                     .machineType("n2-standard-2")
-///                     .maintenanceInterval("PERIODIC")
+///                     .maintenanceInterval("RECURRENT")
 ///                     .build())
 ///                 .build())
 ///             .enableEmergentMaintenance(true)
@@ -360,9 +368,10 @@ import 'reservation_state.dart';
 ///         instanceProperties:
 ///           minCpuPlatform: Intel Cascade Lake
 ///           machineType: n2-standard-2
-///           maintenanceInterval: PERIODIC
+///           maintenanceInterval: RECURRENT
 ///       enableEmergentMaintenance: true
 /// ```
+///
 ///
 /// ### Reservation Source Instance Template
 ///
@@ -373,7 +382,7 @@ import 'reservation_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const myImage = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const foobar = new gcp.compute.InstanceTemplate("foobar", {
@@ -423,7 +432,7 @@ import 'reservation_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// my_image = gcp.compute.get_image(family="debian-11",
+/// my_image = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// foobar = gcp.compute.InstanceTemplate("foobar",
 ///     name="instance-template",
@@ -476,7 +485,7 @@ import 'reservation_state.dart';
 /// {
 ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -547,14 +556,14 @@ import 'reservation_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -617,7 +626,7 @@ import 'reservation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -625,18 +634,21 @@ import 'reservation_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "myImage" {
-///   family  = "debian-11"
+/// data "gcp_compute_image" "myImage" {
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
-/// resource "gcp_compute_instancetemplate" "foobar" {
+/// resource "gcp_compute_instance_template" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "instance-template"
 ///   machine_type   = "n2-standard-2"
 ///   can_ip_forward = false
 ///   tags           = ["foo", "bar"]
 ///   disks {
-///     source_image = data.gcp_compute_getimage.myImage.self_link
+///     source_image = data.gcp_compute_image.myImage.self_link
 ///     auto_delete  = true
 ///     boot         = true
 ///   }
@@ -658,11 +670,14 @@ import 'reservation_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_reservation" "gce_reservation_source_instance_template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "gce-reservation-source-instance-template"
 ///   zone = "us-central1-a"
 ///   specific_reservation = {
 ///     count                    = 1
-///     source_instance_template = gcp_compute_instancetemplate.foobar.self_link
+///     source_instance_template = gcp_compute_instance_template.foobar.self_link
 ///   }
 /// }
 /// ```
@@ -697,7 +712,7 @@ import 'reservation_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -785,9 +800,10 @@ import 'reservation_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
+///
 ///
 /// ### Reservation Sharing Policy
 ///
@@ -798,7 +814,7 @@ import 'reservation_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const myImage = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const foobar = new gcp.compute.InstanceTemplate("foobar", {
@@ -851,7 +867,7 @@ import 'reservation_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// my_image = gcp.compute.get_image(family="debian-11",
+/// my_image = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// foobar = gcp.compute.InstanceTemplate("foobar",
 ///     name="instance-template",
@@ -907,7 +923,7 @@ import 'reservation_state.dart';
 /// {
 ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -982,14 +998,14 @@ import 'reservation_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -1055,7 +1071,7 @@ import 'reservation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1063,18 +1079,21 @@ import 'reservation_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "myImage" {
-///   family  = "debian-11"
+/// data "gcp_compute_image" "myImage" {
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
-/// resource "gcp_compute_instancetemplate" "foobar" {
+/// resource "gcp_compute_instance_template" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "instance-template"
 ///   machine_type   = "g2-standard-4"
 ///   can_ip_forward = false
 ///   tags           = ["foo", "bar"]
 ///   disks {
-///     source_image = data.gcp_compute_getimage.myImage.self_link
+///     source_image = data.gcp_compute_image.myImage.self_link
 ///     auto_delete  = true
 ///     boot         = true
 ///   }
@@ -1096,11 +1115,14 @@ import 'reservation_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_reservation" "gce_reservation_sharing_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "gce-reservation-sharing-policy"
 ///   zone = "us-central1-b"
 ///   specific_reservation = {
 ///     count                    = 2
-///     source_instance_template = gcp_compute_instancetemplate.foobar.self_link
+///     source_instance_template = gcp_compute_instance_template.foobar.self_link
 ///   }
 ///   reservation_sharing_policy = {
 ///     service_share_type = "ALLOW_ALL"
@@ -1139,7 +1161,7 @@ import 'reservation_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -1232,7 +1254,7 @@ import 'reservation_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
 ///
@@ -1299,9 +1321,6 @@ class Reservation extends pulumi.CustomResource {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-  /// (Output)
-  /// The number of reservation blocks associated with this reservation.
-  late final pulumi.Output<int> reservationBlockCount;
   /// Sharing policy for reservations with Google Cloud managed services.
   /// Structure is documented below.
   late final pulumi.Output<ReservationReservationSharingPolicy> reservationSharingPolicy;
@@ -1339,7 +1358,7 @@ class Reservation extends pulumi.CustomResource {
           'gcp:compute/reservation:Reservation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     blockNames = registerOutput<List<String>>('blockNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     commitment = registerOutput<String>('commitment');
@@ -1354,7 +1373,6 @@ class Reservation extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     params = registerOutput<ReservationParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    reservationBlockCount = registerOutput<int>('reservationBlockCount');
     reservationSharingPolicy = registerOutput<ReservationReservationSharingPolicy>('reservationSharingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationReservationSharingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceStatuses = registerOutput<List<ReservationResourceStatus>>('resourceStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReservationResourceStatus>(guardedValue, (value) => ReservationResourceStatus.fromMap((value as Map).cast<String, dynamic>())); });
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
@@ -1403,7 +1421,6 @@ class Reservation extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     params = registerOutput<ReservationParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    reservationBlockCount = registerOutput<int>('reservationBlockCount');
     reservationSharingPolicy = registerOutput<ReservationReservationSharingPolicy>('reservationSharingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationReservationSharingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceStatuses = registerOutput<List<ReservationResourceStatus>>('resourceStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReservationResourceStatus>(guardedValue, (value) => ReservationResourceStatus.fromMap((value as Map).cast<String, dynamic>())); });
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
@@ -1437,7 +1454,6 @@ class Reservation extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     params = registerOutput<ReservationParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    reservationBlockCount = registerOutput<int>('reservationBlockCount');
     reservationSharingPolicy = registerOutput<ReservationReservationSharingPolicy>('reservationSharingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationReservationSharingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceStatuses = registerOutput<List<ReservationResourceStatus>>('resourceStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReservationResourceStatus>(guardedValue, (value) => ReservationResourceStatus.fromMap((value as Map).cast<String, dynamic>())); });
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');

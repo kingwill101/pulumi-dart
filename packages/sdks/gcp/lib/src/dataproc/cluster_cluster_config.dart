@@ -10,11 +10,14 @@ import 'cluster_cluster_config_gce_cluster_config.dart';
 import 'cluster_cluster_config_initialization_action.dart';
 import 'cluster_cluster_config_lifecycle_config.dart';
 import 'cluster_cluster_config_master_config.dart';
+import 'cluster_cluster_config_master_flexible_config.dart';
 import 'cluster_cluster_config_metastore_config.dart';
 import 'cluster_cluster_config_preemptible_worker_config.dart';
+import 'cluster_cluster_config_secondary_worker_flexible_config.dart';
 import 'cluster_cluster_config_security_config.dart';
 import 'cluster_cluster_config_software_config.dart';
 import 'cluster_cluster_config_worker_config.dart';
+import 'cluster_cluster_config_worker_flexible_config.dart';
 
 class ClusterClusterConfig {
   /// The autoscaling policy config associated with the cluster.
@@ -56,6 +59,11 @@ class ClusterClusterConfig {
   /// The Google Compute Engine config settings for the master instances
   /// in a cluster. Structure defined below.
   final pulumi.Input<ClusterClusterConfigMasterConfig?>? masterConfig;
+  /// The configuration for the master flexible instance group
+  /// in High Obtainability (HO) mode. Mutually exclusive with `masterConfig` and `gce_cluster_config.zone`.
+  /// Required whenever `workerFlexibleConfig` or `secondaryWorkerFlexibleConfig` is specified.
+  /// Structure defined below.
+  final pulumi.Input<ClusterClusterConfigMasterFlexibleConfig?>? masterFlexibleConfig;
   /// The config setting for metastore service with the cluster.
   /// Structure defined below.
   /// - - -
@@ -66,6 +74,11 @@ class ClusterClusterConfig {
   /// an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't necessarily mean it is preemptible and is named as
   /// such for legacy/compatibility reasons.
   final pulumi.Input<ClusterClusterConfigPreemptibleWorkerConfig?>? preemptibleWorkerConfig;
+  /// The configuration for the secondary worker flexible
+  /// instance group in High Obtainability (HO) mode. Mutually exclusive with `preemptibleWorkerConfig` and
+  /// `gce_cluster_config.zone`. Requires `masterFlexibleConfig`.
+  /// Structure defined below.
+  final pulumi.Input<ClusterClusterConfigSecondaryWorkerFlexibleConfig?>? secondaryWorkerFlexibleConfig;
   /// Security related configuration. Structure defined below.
   final pulumi.Input<ClusterClusterConfigSecurityConfig?>? securityConfig;
   /// The config settings for software inside the cluster.
@@ -86,6 +99,10 @@ class ClusterClusterConfig {
   /// The Google Compute Engine config settings for the worker instances
   /// in a cluster. Structure defined below.
   final pulumi.Input<ClusterClusterConfigWorkerConfig?>? workerConfig;
+  /// The configuration for the worker flexible instance group
+  /// in High Obtainability (HO) mode. Mutually exclusive with `workerConfig` and `gce_cluster_config.zone`.
+  /// Requires `masterFlexibleConfig`. Structure defined below.
+  final pulumi.Input<ClusterClusterConfigWorkerFlexibleConfig?>? workerFlexibleConfig;
 
   /// Creates a new [ClusterClusterConfig].
   /// [autoscalingConfig] The autoscaling policy config associated with the cluster.
@@ -101,13 +118,16 @@ class ClusterClusterConfig {
   /// [initializationActions] Commands to execute on each node after config is completed.
   /// [lifecycleConfig] The settings for auto deletion cluster schedule.
   /// [masterConfig] The Google Compute Engine config settings for the master instances
+  /// [masterFlexibleConfig] The configuration for the master flexible instance group
   /// [metastoreConfig] The config setting for metastore service with the cluster.
   /// [preemptibleWorkerConfig] The Google Compute Engine config settings for the additional
+  /// [secondaryWorkerFlexibleConfig] The configuration for the secondary worker flexible
   /// [securityConfig] Security related configuration. Structure defined below.
   /// [softwareConfig] The config settings for software inside the cluster.
   /// [stagingBucket] The Cloud Storage staging bucket used to stage files,
   /// [tempBucket] The Cloud Storage temp bucket used to store ephemeral cluster
   /// [workerConfig] The Google Compute Engine config settings for the worker instances
+  /// [workerFlexibleConfig] The configuration for the worker flexible instance group
   const ClusterClusterConfig({
     this.autoscalingConfig,
     this.auxiliaryNodeGroups,
@@ -122,13 +142,16 @@ class ClusterClusterConfig {
     this.initializationActions,
     this.lifecycleConfig,
     this.masterConfig,
+    this.masterFlexibleConfig,
     this.metastoreConfig,
     this.preemptibleWorkerConfig,
+    this.secondaryWorkerFlexibleConfig,
     this.securityConfig,
     this.softwareConfig,
     this.stagingBucket,
     this.tempBucket,
     this.workerConfig,
+    this.workerFlexibleConfig,
   });
 
   Map<String, dynamic> toMap() {
@@ -146,13 +169,16 @@ class ClusterClusterConfig {
       'initializationActions': ?pulumi.Input.mapOptionalInputValue<List<ClusterClusterConfigInitializationAction>, List<Map<String, dynamic>>>(initializationActions, (value) => pulumi.Input.encodeList<ClusterClusterConfigInitializationAction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'lifecycleConfig': ?pulumi.Input.mapOptionalInputValue<ClusterClusterConfigLifecycleConfig, Map<String, dynamic>>(lifecycleConfig, (value) => value.toMap()),
       'masterConfig': ?pulumi.Input.mapOptionalInputValue<ClusterClusterConfigMasterConfig, Map<String, dynamic>>(masterConfig, (value) => value.toMap()),
+      'masterFlexibleConfig': ?pulumi.Input.mapOptionalInputValue<ClusterClusterConfigMasterFlexibleConfig, Map<String, dynamic>>(masterFlexibleConfig, (value) => value.toMap()),
       'metastoreConfig': ?pulumi.Input.mapOptionalInputValue<ClusterClusterConfigMetastoreConfig, Map<String, dynamic>>(metastoreConfig, (value) => value.toMap()),
       'preemptibleWorkerConfig': ?pulumi.Input.mapOptionalInputValue<ClusterClusterConfigPreemptibleWorkerConfig, Map<String, dynamic>>(preemptibleWorkerConfig, (value) => value.toMap()),
+      'secondaryWorkerFlexibleConfig': ?pulumi.Input.mapOptionalInputValue<ClusterClusterConfigSecondaryWorkerFlexibleConfig, Map<String, dynamic>>(secondaryWorkerFlexibleConfig, (value) => value.toMap()),
       'securityConfig': ?pulumi.Input.mapOptionalInputValue<ClusterClusterConfigSecurityConfig, Map<String, dynamic>>(securityConfig, (value) => value.toMap()),
       'softwareConfig': ?pulumi.Input.mapOptionalInputValue<ClusterClusterConfigSoftwareConfig, Map<String, dynamic>>(softwareConfig, (value) => value.toMap()),
       'stagingBucket': ?stagingBucket,
       'tempBucket': ?tempBucket,
       'workerConfig': ?pulumi.Input.mapOptionalInputValue<ClusterClusterConfigWorkerConfig, Map<String, dynamic>>(workerConfig, (value) => value.toMap()),
+      'workerFlexibleConfig': ?pulumi.Input.mapOptionalInputValue<ClusterClusterConfigWorkerFlexibleConfig, Map<String, dynamic>>(workerFlexibleConfig, (value) => value.toMap()),
     };
   }
 
@@ -171,13 +197,16 @@ class ClusterClusterConfig {
       initializationActions: (() { final guardedValue = map['initializationActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterClusterConfigInitializationAction>(guardedValue, (value) => ClusterClusterConfigInitializationAction.fromMap((value as Map).cast<String, dynamic>()))); })(),
       lifecycleConfig: (() { final guardedValue = map['lifecycleConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterConfigLifecycleConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       masterConfig: (() { final guardedValue = map['masterConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterConfigMasterConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      masterFlexibleConfig: (() { final guardedValue = map['masterFlexibleConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterConfigMasterFlexibleConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       metastoreConfig: (() { final guardedValue = map['metastoreConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterConfigMetastoreConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       preemptibleWorkerConfig: (() { final guardedValue = map['preemptibleWorkerConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterConfigPreemptibleWorkerConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      secondaryWorkerFlexibleConfig: (() { final guardedValue = map['secondaryWorkerFlexibleConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterConfigSecondaryWorkerFlexibleConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       securityConfig: (() { final guardedValue = map['securityConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterConfigSecurityConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       softwareConfig: (() { final guardedValue = map['softwareConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterConfigSoftwareConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       stagingBucket: (() { final guardedValue = map['stagingBucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tempBucket: (() { final guardedValue = map['tempBucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       workerConfig: (() { final guardedValue = map['workerConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterConfigWorkerConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      workerFlexibleConfig: (() { final guardedValue = map['workerFlexibleConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterConfigWorkerFlexibleConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }

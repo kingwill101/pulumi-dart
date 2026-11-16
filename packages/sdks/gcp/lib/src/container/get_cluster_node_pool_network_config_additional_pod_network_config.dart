@@ -30,7 +30,7 @@ class GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
 
   factory GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig(
-      maxPodsPerNode: pulumi.Input.fromValue((map['maxPodsPerNode'] as num).toInt()),
+      maxPodsPerNode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxPodsPerNode'])),
       secondaryPodRange: pulumi.Input.fromValue(map['secondaryPodRange'] as String),
       subnetwork: pulumi.Input.fromValue(map['subnetwork'] as String),
     );

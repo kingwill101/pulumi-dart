@@ -38,6 +38,10 @@ class ParameterArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
+  /// A map of resource manager tags.
+  /// Resource manager tag keys and values have the same definition as resource manager tags.
+  /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ParameterArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -46,6 +50,7 @@ class ParameterArgs {
   /// [labels] The labels assigned to this Parameter.
   /// [parameterId] This must be unique within the project.
   /// [project] The ID of the project in which the resource belongs.
+  /// [tags] A map of resource manager tags.
   const ParameterArgs({
     this.deletionPolicy,
     this.format,
@@ -53,6 +58,7 @@ class ParameterArgs {
     this.labels,
     required this.parameterId,
     this.project,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
@@ -63,6 +69,7 @@ class ParameterArgs {
       'labels': ?labels,
       'parameterId': parameterId,
       'project': ?project,
+      'tags': ?tags,
     };
   }
 
@@ -74,6 +81,7 @@ class ParameterArgs {
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       parameterId: pulumi.Input.fromValue(map['parameterId'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }

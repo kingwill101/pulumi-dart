@@ -31,7 +31,7 @@ class FlexibleAppVersionResourcesVolume {
   factory FlexibleAppVersionResourcesVolume.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionResourcesVolume(
       name: pulumi.Input.fromValue(map['name'] as String),
-      sizeGb: pulumi.Input.fromValue((map['sizeGb'] as num).toInt()),
+      sizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sizeGb'])),
       volumeType: pulumi.Input.fromValue(map['volumeType'] as String),
     );
   }

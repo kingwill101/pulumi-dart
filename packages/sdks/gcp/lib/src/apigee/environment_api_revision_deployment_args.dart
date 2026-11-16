@@ -69,7 +69,7 @@ class EnvironmentApiRevisionDeploymentArgs {
       environment: pulumi.Input.fromValue(map['environment'] as String),
       orgId: pulumi.Input.fromValue(map['orgId'] as String),
       override: (() { final guardedValue = map['override']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      revision: pulumi.Input.fromValue((map['revision'] as num).toInt()),
+      revision: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['revision'])),
       sequencedRollout: (() { final guardedValue = map['sequencedRollout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

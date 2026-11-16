@@ -5,6 +5,7 @@ import 'data_connector_action_config.dart';
 import 'data_connector_bap_config.dart';
 import 'data_connector_destination_config.dart';
 import 'data_connector_entity.dart';
+import 'data_connector_metadata.dart';
 
 /// {@template pulumi_discoveryengine_data_connector_data_connector_args_doc}
 /// The set of arguments for DataConnector.
@@ -80,6 +81,9 @@ class DataConnectorArgs {
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   final pulumi.Input<String> location;
+  /// User-facing metadata for the connector.
+  /// Structure is documented below.
+  final pulumi.Input<DataConnectorMetadata?>? metadata;
   /// Params needed to access the source in the format of String-to-String (Key, Value) pairs.
   final pulumi.Input<Map<String, String>?>? params;
   /// The ID of the project in which the resource belongs.
@@ -96,6 +100,8 @@ class DataConnectorArgs {
   /// The data synchronization mode supported by the data connector. The possible value can be:
   /// 'PERIODIC', 'STREAMING'.
   final pulumi.Input<String?>? syncMode;
+  /// User-facing, version-independent label for this connector.
+  final pulumi.Input<String?>? tag;
 
   /// Creates a new [DataConnectorArgs].
   /// [actionConfig] Action configuration for the data connector. Configures action
@@ -114,11 +120,13 @@ class DataConnectorArgs {
   /// [jsonParams] Params needed to access the source in the format of json string.
   /// [kmsKeyName] The KMS key to be used to protect the DataStores managed by this connector.
   /// [location] The geographic location where the data store should reside. The value can
+  /// [metadata] User-facing metadata for the connector.
   /// [params] Params needed to access the source in the format of String-to-String (Key, Value) pairs.
   /// [project] The ID of the project in which the resource belongs.
   /// [refreshInterval] The refresh interval for data sync. If duration is set to 0, the data will
   /// [staticIpEnabled] Whether customer has enabled static IP addresses for this connector.
   /// [syncMode] The data synchronization mode supported by the data connector. The possible value can be:
+  /// [tag] User-facing, version-independent label for this connector.
   const DataConnectorArgs({
     this.actionConfig,
     this.autoRunDisabled,
@@ -136,11 +144,13 @@ class DataConnectorArgs {
     this.jsonParams,
     this.kmsKeyName,
     required this.location,
+    this.metadata,
     this.params,
     this.project,
     required this.refreshInterval,
     this.staticIpEnabled,
     this.syncMode,
+    this.tag,
   });
 
   Map<String, dynamic> toMap() {
@@ -161,11 +171,13 @@ class DataConnectorArgs {
       'jsonParams': ?jsonParams,
       'kmsKeyName': ?kmsKeyName,
       'location': location,
+      'metadata': ?pulumi.Input.mapOptionalInputValue<DataConnectorMetadata, Map<String, dynamic>>(metadata, (value) => value.toMap()),
       'params': ?params,
       'project': ?project,
       'refreshInterval': refreshInterval,
       'staticIpEnabled': ?staticIpEnabled,
       'syncMode': ?syncMode,
+      'tag': ?tag,
     };
   }
 
@@ -178,7 +190,7 @@ class DataConnectorArgs {
       collectionId: pulumi.Input.fromValue(map['collectionId'] as String),
       connectorModes: (() { final guardedValue = map['connectorModes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       dataSource: pulumi.Input.fromValue(map['dataSource'] as String),
-      dataSourceVersion: (() { final guardedValue = map['dataSourceVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      dataSourceVersion: (() { final guardedValue = map['dataSourceVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationConfigs: (() { final guardedValue = map['destinationConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataConnectorDestinationConfig>(guardedValue, (value) => DataConnectorDestinationConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       entities: (() { final guardedValue = map['entities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataConnectorEntity>(guardedValue, (value) => DataConnectorEntity.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -187,11 +199,13 @@ class DataConnectorArgs {
       jsonParams: (() { final guardedValue = map['jsonParams']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataConnectorMetadata.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       refreshInterval: pulumi.Input.fromValue(map['refreshInterval'] as String),
       staticIpEnabled: (() { final guardedValue = map['staticIpEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       syncMode: (() { final guardedValue = map['syncMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tag: (() { final guardedValue = map['tag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }

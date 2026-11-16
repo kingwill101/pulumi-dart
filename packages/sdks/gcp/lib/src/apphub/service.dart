@@ -9,6 +9,7 @@ import 'service_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Apphub Service Basic
@@ -340,10 +341,10 @@ import 'service_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apphub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apphub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -411,7 +412,7 @@ import 'service_state.dart';
 /// 			Project:     serviceProject.ProjectId,
 /// 			IpCidrRange: pulumi.String("10.0.1.0/24"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     ilbNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     ilbNetwork.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -436,7 +437,7 @@ import 'service_state.dart';
 /// 			Name:         pulumi.String("l7-ilb-backend-subnet"),
 /// 			Project:      serviceProject.ProjectId,
 /// 			Region:       pulumi.String("us-central1"),
-/// 			HealthChecks: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks: _default.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -449,9 +450,9 @@ import 'service_state.dart';
 /// 			IpVersion:           pulumi.String("IPV4"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
 /// 			AllPorts:            pulumi.Bool(true),
-/// 			BackendService:      backend.ID().ToIDOutput().ToStringOutput(),
-/// 			Network:             ilbNetwork.ID().ToIDOutput().ToStringOutput(),
-/// 			Subnetwork:          ilbSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			BackendService:      backend.ID(),
+/// 			Network:             ilbNetwork.ID(),
+/// 			Subnetwork:          ilbSubnet.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -485,7 +486,7 @@ import 'service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -496,12 +497,15 @@ import 'service_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_apphub_getdiscoveredservice" "catalog-service" {
+/// data "gcp_apphub_discovered_service" "catalog-service" {
 ///   location    = "us-central1"
-///   service_uri ="//compute.googleapis.com/${gcp_compute_forwardingrule.forwarding_rule.id}"
+///   service_uri ="//compute.googleapis.com/${gcp_compute_forwarding_rule.forwarding_rule.id}"
 /// }
 ///
 /// resource "gcp_apphub_application" "application" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us-central1"
 ///   application_id = "example-application-1"
 ///   scope = {
@@ -509,6 +513,9 @@ import 'service_state.dart';
 ///   }
 /// }
 /// resource "gcp_organizations_project" "service_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "project-1"
 ///   name            = "Service Project"
 ///   org_id          = "123456789"
@@ -517,37 +524,58 @@ import 'service_state.dart';
 /// }
 /// # Enable Compute API
 /// resource "gcp_projects_service" "compute_service_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.service_project.project_id
 ///   service = "compute.googleapis.com"
 /// }
 /// resource "time_sleep" "wait_120s" {
-///   depends_on      = [gcp_projects_service.compute_service_project]
+///   depends_on = [gcp_projects_service.compute_service_project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "120s"
 /// }
-/// resource "gcp_apphub_serviceprojectattachment" "service_project_attachment" {
-///   depends_on                    = [time_sleep.wait_120s]
+/// resource "gcp_apphub_service_project_attachment" "service_project_attachment" {
+///   depends_on = [time_sleep.wait_120s]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_project_attachment_id = gcp_organizations_project.service_project.project_id
 /// }
 /// resource "time_sleep" "wait_120s_for_resource_ingestion" {
-///   depends_on      = [gcp_compute_forwardingrule.forwarding_rule]
+///   depends_on = [gcp_compute_forwarding_rule.forwarding_rule]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "120s"
 /// }
 /// resource "gcp_apphub_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location           = "us-central1"
 ///   application_id     = gcp_apphub_application.application.application_id
-///   service_id         = gcp_compute_forwardingrule.forwarding_rule.name
-///   discovered_service = data.gcp_apphub_getdiscoveredservice.catalog-service.name
+///   service_id         = gcp_compute_forwarding_rule.forwarding_rule.name
+///   discovered_service = data.gcp_apphub_discovered_service.catalog-service.name
 /// }
 /// #creates service
 /// # VPC network
 /// resource "gcp_compute_network" "ilb_network" {
-///   depends_on              = [time_sleep.wait_120s]
+///   depends_on = [time_sleep.wait_120s]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "l7-ilb-network"
 ///   project                 = gcp_organizations_project.service_project.project_id
 ///   auto_create_subnetworks = false
 /// }
 /// # backend subnet
 /// resource "gcp_compute_subnetwork" "ilb_subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "l7-ilb-subnet"
 ///   project       = gcp_organizations_project.service_project.project_id
 ///   ip_cidr_range = "10.0.1.0/24"
@@ -555,27 +583,36 @@ import 'service_state.dart';
 ///   network       = gcp_compute_network.ilb_network.id
 /// }
 /// # forwarding rule
-/// resource "gcp_compute_forwardingrule" "forwarding_rule" {
+/// resource "gcp_compute_forwarding_rule" "forwarding_rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "l7-ilb-forwarding-rule"
 ///   project               = gcp_organizations_project.service_project.project_id
 ///   region                = "us-central1"
 ///   ip_version            = "IPV4"
 ///   load_balancing_scheme = "INTERNAL"
 ///   all_ports             = true
-///   backend_service       = gcp_compute_regionbackendservice.backend.id
+///   backend_service       = gcp_compute_region_backend_service.backend.id
 ///   network               = gcp_compute_network.ilb_network.id
 ///   subnetwork            = gcp_compute_subnetwork.ilb_subnet.id
 /// }
 /// # backend service
-/// resource "gcp_compute_regionbackendservice" "backend" {
+/// resource "gcp_compute_region_backend_service" "backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "l7-ilb-backend-subnet"
 ///   project       = gcp_organizations_project.service_project.project_id
 ///   region        = "us-central1"
-///   health_checks = gcp_compute_healthcheck.default.id
+///   health_checks = gcp_compute_health_check.default.id
 /// }
 /// # health check
-/// resource "gcp_compute_healthcheck" "default" {
-///   depends_on         = [time_sleep.wait_120s]
+/// resource "gcp_compute_health_check" "default" {
+///   depends_on = [time_sleep.wait_120s]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "l7-ilb-hc"
 ///   project            = gcp_organizations_project.service_project.project_id
 ///   check_interval_sec = 1
@@ -857,6 +894,7 @@ import 'service_state.dart';
 ///         location: us-central1
 ///         serviceUri: //compute.googleapis.com/${forwardingRule.id}
 /// ```
+///
 ///
 /// ### Apphub Service Full
 ///
@@ -1268,10 +1306,10 @@ import 'service_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apphub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apphub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -1339,7 +1377,7 @@ import 'service_state.dart';
 /// 			Project:     serviceProject.ProjectId,
 /// 			IpCidrRange: pulumi.String("10.0.1.0/24"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     ilbNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     ilbNetwork.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1364,7 +1402,7 @@ import 'service_state.dart';
 /// 			Name:         pulumi.String("l7-ilb-backend-subnet"),
 /// 			Project:      serviceProject.ProjectId,
 /// 			Region:       pulumi.String("us-central1"),
-/// 			HealthChecks: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks: _default.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1377,9 +1415,9 @@ import 'service_state.dart';
 /// 			IpVersion:           pulumi.String("IPV4"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
 /// 			AllPorts:            pulumi.Bool(true),
-/// 			BackendService:      backend.ID().ToIDOutput().ToStringOutput(),
-/// 			Network:             ilbNetwork.ID().ToIDOutput().ToStringOutput(),
-/// 			Subnetwork:          ilbSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			BackendService:      backend.ID(),
+/// 			Network:             ilbNetwork.ID(),
+/// 			Subnetwork:          ilbSubnet.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1441,7 +1479,7 @@ import 'service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1452,12 +1490,15 @@ import 'service_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_apphub_getdiscoveredservice" "catalog-service" {
+/// data "gcp_apphub_discovered_service" "catalog-service" {
 ///   location    = "us-central1"
-///   service_uri ="//compute.googleapis.com/${gcp_compute_forwardingrule.forwarding_rule.id}"
+///   service_uri ="//compute.googleapis.com/${gcp_compute_forwarding_rule.forwarding_rule.id}"
 /// }
 ///
 /// resource "gcp_apphub_application" "application" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us-central1"
 ///   application_id = "example-application-1"
 ///   scope = {
@@ -1465,6 +1506,9 @@ import 'service_state.dart';
 ///   }
 /// }
 /// resource "gcp_organizations_project" "service_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "project-1"
 ///   name            = "Service Project"
 ///   org_id          = "123456789"
@@ -1473,26 +1517,41 @@ import 'service_state.dart';
 /// }
 /// # Enable Compute API
 /// resource "gcp_projects_service" "compute_service_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.service_project.project_id
 ///   service = "compute.googleapis.com"
 /// }
 /// resource "time_sleep" "wait_120s" {
-///   depends_on      = [gcp_projects_service.compute_service_project]
+///   depends_on = [gcp_projects_service.compute_service_project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "120s"
 /// }
-/// resource "gcp_apphub_serviceprojectattachment" "service_project_attachment" {
-///   depends_on                    = [time_sleep.wait_120s]
+/// resource "gcp_apphub_service_project_attachment" "service_project_attachment" {
+///   depends_on = [time_sleep.wait_120s]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_project_attachment_id = gcp_organizations_project.service_project.project_id
 /// }
 /// resource "time_sleep" "wait_120s_for_resource_ingestion" {
-///   depends_on      = [gcp_compute_forwardingrule.forwarding_rule]
+///   depends_on = [gcp_compute_forwarding_rule.forwarding_rule]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "120s"
 /// }
 /// resource "gcp_apphub_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location           = "us-central1"
 ///   application_id     = gcp_apphub_application.application.application_id
-///   service_id         = gcp_compute_forwardingrule.forwarding_rule.name
-///   discovered_service = data.gcp_apphub_getdiscoveredservice.catalog-service.name
+///   service_id         = gcp_compute_forwarding_rule.forwarding_rule.name
+///   discovered_service = data.gcp_apphub_discovered_service.catalog-service.name
 ///   display_name       = "Example Service Full"
 ///   description        = "Register service for testing"
 ///   attributes = {
@@ -1503,29 +1562,35 @@ import 'service_state.dart';
 ///       type = "MISSION_CRITICAL"
 ///     }
 ///     business_owners = [{
-///       "displayName" = "Alice"
-///       "email"       = "alice@google.com"
+///       display_name = "Alice"
+///       email        = "alice@google.com"
 ///     }]
 ///     developer_owners = [{
-///       "displayName" = "Bob"
-///       "email"       = "bob@google.com"
+///       display_name = "Bob"
+///       email        = "bob@google.com"
 ///     }]
 ///     operator_owners = [{
-///       "displayName" = "Charlie"
-///       "email"       = "charlie@google.com"
+///       display_name = "Charlie"
+///       email        = "charlie@google.com"
 ///     }]
 ///   }
 /// }
 /// #creates service
 /// # VPC network
 /// resource "gcp_compute_network" "ilb_network" {
-///   depends_on              = [time_sleep.wait_120s]
+///   depends_on = [time_sleep.wait_120s]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "l7-ilb-network"
 ///   project                 = gcp_organizations_project.service_project.project_id
 ///   auto_create_subnetworks = false
 /// }
 /// # backend subnet
 /// resource "gcp_compute_subnetwork" "ilb_subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "l7-ilb-subnet"
 ///   project       = gcp_organizations_project.service_project.project_id
 ///   ip_cidr_range = "10.0.1.0/24"
@@ -1533,27 +1598,36 @@ import 'service_state.dart';
 ///   network       = gcp_compute_network.ilb_network.id
 /// }
 /// # forwarding rule
-/// resource "gcp_compute_forwardingrule" "forwarding_rule" {
+/// resource "gcp_compute_forwarding_rule" "forwarding_rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "l7-ilb-forwarding-rule"
 ///   project               = gcp_organizations_project.service_project.project_id
 ///   region                = "us-central1"
 ///   ip_version            = "IPV4"
 ///   load_balancing_scheme = "INTERNAL"
 ///   all_ports             = true
-///   backend_service       = gcp_compute_regionbackendservice.backend.id
+///   backend_service       = gcp_compute_region_backend_service.backend.id
 ///   network               = gcp_compute_network.ilb_network.id
 ///   subnetwork            = gcp_compute_subnetwork.ilb_subnet.id
 /// }
 /// # backend service
-/// resource "gcp_compute_regionbackendservice" "backend" {
+/// resource "gcp_compute_region_backend_service" "backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "l7-ilb-backend-subnet"
 ///   project       = gcp_organizations_project.service_project.project_id
 ///   region        = "us-central1"
-///   health_checks = gcp_compute_healthcheck.default.id
+///   health_checks = gcp_compute_health_check.default.id
 /// }
 /// # health check
-/// resource "gcp_compute_healthcheck" "default" {
-///   depends_on         = [time_sleep.wait_120s]
+/// resource "gcp_compute_health_check" "default" {
+///   depends_on = [time_sleep.wait_120s]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "l7-ilb-hc"
 ///   project            = gcp_organizations_project.service_project.project_id
 ///   check_interval_sec = 1
@@ -1954,7 +2028,7 @@ class Service extends pulumi.CustomResource {
           'gcp:apphub/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     attributes = registerOutput<ServiceAttributes?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });

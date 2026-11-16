@@ -16,7 +16,6 @@ class GetDataSourceReferencesDataSourceReference {
   /// The last time a successful backup was made.
   final pulumi.Input<String> lastSuccessfulBackupTime;
   final pulumi.Input<String> name;
-  /// The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resourceType` is deprecated and will be removed in a future major release.
   final pulumi.Input<String> resourceType;
 
   /// Creates a new [GetDataSourceReferencesDataSourceReference].
@@ -27,7 +26,7 @@ class GetDataSourceReferencesDataSourceReference {
   /// [lastBackupState] The state of the last backup.
   /// [lastSuccessfulBackupTime] The last time a successful backup was made.
   /// [name] Required.
-  /// [resourceType] The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resourceType` is deprecated and will be removed in a future major release.
+  /// [resourceType] Required.
   const GetDataSourceReferencesDataSourceReference({
     required this.backupConfigState,
     required this.backupCount,
@@ -55,7 +54,7 @@ class GetDataSourceReferencesDataSourceReference {
   factory GetDataSourceReferencesDataSourceReference.fromMap(Map<String, dynamic> map) {
     return GetDataSourceReferencesDataSourceReference(
       backupConfigState: pulumi.Input.fromValue(map['backupConfigState'] as String),
-      backupCount: pulumi.Input.fromValue((map['backupCount'] as num).toInt()),
+      backupCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['backupCount'])),
       dataSource: pulumi.Input.fromValue(map['dataSource'] as String),
       gcpResourceName: pulumi.Input.fromValue(map['gcpResourceName'] as String),
       lastBackupState: pulumi.Input.fromValue(map['lastBackupState'] as String),

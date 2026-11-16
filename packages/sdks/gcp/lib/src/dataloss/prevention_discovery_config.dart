@@ -16,6 +16,7 @@ import 'prevention_discovery_config_target.dart';
 /// * How-to Guides
 /// * [Schedule inspection scan](https://cloud.google.com/dlp/docs/schedule-inspection-scan)
 ///
+///
 /// ## Example Usage
 ///
 /// ## Import
@@ -89,7 +90,7 @@ class PreventionDiscoveryConfig extends pulumi.CustomResource {
           'gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     actions = registerOutput<List<PreventionDiscoveryConfigAction>?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PreventionDiscoveryConfigAction>(guardedValue, (value) => PreventionDiscoveryConfigAction.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');

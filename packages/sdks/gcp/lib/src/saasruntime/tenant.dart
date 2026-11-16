@@ -8,6 +8,7 @@ import 'tenant_state.dart';
 /// See Provider Versions for more details on beta resources.
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Saas Runtime Tenant Basic
@@ -83,7 +84,7 @@ import 'tenant_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/saasruntime"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/saasruntime"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -104,7 +105,7 @@ import 'tenant_state.dart';
 /// 		_, err = saasruntime.NewTenant(ctx, "example", &saasruntime.TenantArgs{
 /// 			Location:         pulumi.String("global"),
 /// 			TenantId:         pulumi.String("example-tenant"),
-/// 			Saas:             exampleSaas.ID().ToIDOutput().ToStringOutput(),
+/// 			Saas:             exampleSaas.ID(),
 /// 			ConsumerResource: pulumi.String("//compute.googleapis.com/projects/example-project/zones/us-central1-a/instances/example-instance"),
 /// 		})
 /// 		if err != nil {
@@ -115,7 +116,7 @@ import 'tenant_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -123,7 +124,10 @@ import 'tenant_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_saasruntime_saas" "example_saas" {
+/// resource "gcp_saasruntime_saa_s" "example_saas" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   saas_id  = "example-saas"
 ///   location = "global"
 ///   locations {
@@ -131,9 +135,12 @@ import 'tenant_state.dart';
 ///   }
 /// }
 /// resource "gcp_saasruntime_tenant" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "global"
 ///   tenant_id         = "example-tenant"
-///   saas              = gcp_saasruntime_saas.example_saas.id
+///   saas              = gcp_saasruntime_saa_s.example_saas.id
 ///   consumer_resource = "//compute.googleapis.com/projects/example-project/zones/us-central1-a/instances/example-instance"
 /// }
 /// ```
@@ -287,7 +294,7 @@ class Tenant extends pulumi.CustomResource {
           'gcp:saasruntime/tenant:Tenant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

@@ -8,6 +8,7 @@ import 'app_hosting_domain_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Firebase App Hosting Domain Minimal
@@ -101,8 +102,8 @@ import 'app_hosting_domain_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -142,7 +143,7 @@ import 'app_hosting_domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -150,13 +151,19 @@ import 'app_hosting_domain_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_apphostingdomain" "example" {
-///   project   = gcp_firebase_apphostingbackend.example.project
-///   location  = gcp_firebase_apphostingbackend.example.location
-///   backend   = gcp_firebase_apphostingbackend.example.backend_id
+/// resource "gcp_firebase_app_hosting_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project   = gcp_firebase_app_hosting_backend.example.project
+///   location  = gcp_firebase_app_hosting_backend.example.location
+///   backend   = gcp_firebase_app_hosting_backend.example.backend_id
 ///   domain_id = "example.com"
 /// }
-/// resource "gcp_firebase_apphostingbackend" "example" {
+/// resource "gcp_firebase_app_hosting_backend" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = "my-project-name"
 ///   location         = "us-central1"
 ///   backend_id       = "domain-mini"
@@ -165,6 +172,9 @@ import 'app_hosting_domain_state.dart';
 ///   service_account  = gcp_serviceaccount_account.service_account.email
 /// }
 /// resource "gcp_serviceaccount_account" "service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                      = "my-project-name"
 ///   account_id                   = "sa-id"
 ///   display_name                 = "Firebase App Hosting compute service account"
@@ -250,6 +260,7 @@ import 'app_hosting_domain_state.dart';
 ///       displayName: Firebase App Hosting compute service account
 ///       createIgnoreAlreadyExists: true
 /// ```
+///
 ///
 /// ### Firebase App Hosting Domain Full
 ///
@@ -362,8 +373,8 @@ import 'app_hosting_domain_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -409,7 +420,7 @@ import 'app_hosting_domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -417,10 +428,13 @@ import 'app_hosting_domain_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_apphostingdomain" "example" {
-///   project   = gcp_firebase_apphostingbackend.example.project
-///   location  = gcp_firebase_apphostingbackend.example.location
-///   backend   = gcp_firebase_apphostingbackend.example.backend_id
+/// resource "gcp_firebase_app_hosting_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project   = gcp_firebase_app_hosting_backend.example.project
+///   location  = gcp_firebase_app_hosting_backend.example.location
+///   backend   = gcp_firebase_app_hosting_backend.example.backend_id
 ///   domain_id = "example.com"
 ///   serve = {
 ///     redirect = {
@@ -429,7 +443,10 @@ import 'app_hosting_domain_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_firebase_apphostingbackend" "example" {
+/// resource "gcp_firebase_app_hosting_backend" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = "my-project-name"
 ///   location         = "us-central1"
 ///   backend_id       = "domain-full"
@@ -438,6 +455,9 @@ import 'app_hosting_domain_state.dart';
 ///   service_account  = gcp_serviceaccount_account.service_account.email
 /// }
 /// resource "gcp_serviceaccount_account" "service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                      = "my-project-name"
 ///   account_id                   = "sa-id"
 ///   display_name                 = "Firebase App Hosting compute service account"
@@ -608,7 +628,7 @@ class AppHostingDomain extends pulumi.CustomResource {
           'gcp:firebase/appHostingDomain:AppHostingDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     backend = registerOutput<String>('backend');
     createTime = registerOutput<String>('createTime');

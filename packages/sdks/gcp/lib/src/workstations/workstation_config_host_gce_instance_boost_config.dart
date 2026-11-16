@@ -9,6 +9,9 @@ class WorkstationConfigHostGceInstanceBoostConfig {
   final pulumi.Input<List<WorkstationConfigHostGceInstanceBoostConfigAccelerator>?>? accelerators;
   /// Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
   final pulumi.Input<int?>? bootDiskSizeGb;
+  /// (Optional, Beta)
+  /// Indicates if this boost config is eligible for automatic failover when the service cannot provision the default VM type. Defaults to false.
+  final pulumi.Input<bool?>? enableAutomaticFailover;
   /// Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
   /// See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
   final pulumi.Input<bool?>? enableNestedVirtualization;
@@ -22,6 +25,7 @@ class WorkstationConfigHostGceInstanceBoostConfig {
   /// Creates a new [WorkstationConfigHostGceInstanceBoostConfig].
   /// [accelerators] An accelerator card attached to the boost instance.
   /// [bootDiskSizeGb] Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
+  /// [enableAutomaticFailover] (Optional, Beta)
   /// [enableNestedVirtualization] Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
   /// [id] The id to be used for the boost config.
   /// [machineType] The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
@@ -29,6 +33,7 @@ class WorkstationConfigHostGceInstanceBoostConfig {
   const WorkstationConfigHostGceInstanceBoostConfig({
     this.accelerators,
     this.bootDiskSizeGb,
+    this.enableAutomaticFailover,
     this.enableNestedVirtualization,
     required this.id,
     this.machineType,
@@ -39,6 +44,7 @@ class WorkstationConfigHostGceInstanceBoostConfig {
     return <String, dynamic>{
       'accelerators': ?pulumi.Input.mapOptionalInputValue<List<WorkstationConfigHostGceInstanceBoostConfigAccelerator>, List<Map<String, dynamic>>>(accelerators, (value) => pulumi.Input.encodeList<WorkstationConfigHostGceInstanceBoostConfigAccelerator, Map<String, dynamic>>(value, (value) => value.toMap())),
       'bootDiskSizeGb': ?bootDiskSizeGb,
+      'enableAutomaticFailover': ?enableAutomaticFailover,
       'enableNestedVirtualization': ?enableNestedVirtualization,
       'id': id,
       'machineType': ?machineType,
@@ -49,11 +55,12 @@ class WorkstationConfigHostGceInstanceBoostConfig {
   factory WorkstationConfigHostGceInstanceBoostConfig.fromMap(Map<String, dynamic> map) {
     return WorkstationConfigHostGceInstanceBoostConfig(
       accelerators: (() { final guardedValue = map['accelerators']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkstationConfigHostGceInstanceBoostConfigAccelerator>(guardedValue, (value) => WorkstationConfigHostGceInstanceBoostConfigAccelerator.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      bootDiskSizeGb: (() { final guardedValue = map['bootDiskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bootDiskSizeGb: (() { final guardedValue = map['bootDiskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      enableAutomaticFailover: (() { final guardedValue = map['enableAutomaticFailover']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableNestedVirtualization: (() { final guardedValue = map['enableNestedVirtualization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       id: pulumi.Input.fromValue(map['id'] as String),
       machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      poolSize: (() { final guardedValue = map['poolSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      poolSize: (() { final guardedValue = map['poolSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

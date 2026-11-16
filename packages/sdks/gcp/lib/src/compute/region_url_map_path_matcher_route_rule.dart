@@ -83,7 +83,7 @@ class RegionUrlMapPathMatcherRouteRule {
     return RegionUrlMapPathMatcherRouteRule(
       headerAction: (() { final guardedValue = map['headerAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionUrlMapPathMatcherRouteRuleHeaderAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       matchRules: (() { final guardedValue = map['matchRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionUrlMapPathMatcherRouteRuleMatchRule>(guardedValue, (value) => RegionUrlMapPathMatcherRouteRuleMatchRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       routeAction: (() { final guardedValue = map['routeAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionUrlMapPathMatcherRouteRuleRouteAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       service: (() { final guardedValue = map['service']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       urlRedirect: (() { final guardedValue = map['urlRedirect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionUrlMapPathMatcherRouteRuleUrlRedirect.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

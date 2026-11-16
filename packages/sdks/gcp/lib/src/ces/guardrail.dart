@@ -12,6 +12,7 @@ import 'guardrail_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Ces Guardrail Basic
@@ -178,7 +179,7 @@ import 'guardrail_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -239,7 +240,7 @@ import 'guardrail_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -248,6 +249,9 @@ import 'guardrail_state.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "ces_app_for_guardrail" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id"
 ///   location     = "us"
 ///   description  = "App used as parent for CES Toolset example"
@@ -263,6 +267,9 @@ import 'guardrail_state.dart';
 ///   }
 /// }
 /// resource "gcp_ces_guardrail" "ces_guardrail_basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   guardrail_id = "guardrail-id"
 ///   location     = gcp_ces_app.ces_app_for_guardrail.location
 ///   app          = gcp_ces_app.ces_app_for_guardrail.app_id
@@ -271,16 +278,16 @@ import 'guardrail_state.dart';
 ///   action = {
 ///     respond_immediately = {
 ///       responses = [{
-///         "text"     = "Text"
-///         "disabled" = false
+///         text     = "Text"
+///         disabled = false
 ///       }]
 ///     }
 ///   }
 ///   enabled = true
 ///   model_safety = {
 ///     safety_settings = [{
-///       "category"  = "HARM_CATEGORY_HATE_SPEECH"
-///       "threshold" = "BLOCK_NONE"
+///       category  = "HARM_CATEGORY_HATE_SPEECH"
+///       threshold = "BLOCK_NONE"
 ///     }]
 ///   }
 /// }
@@ -398,6 +405,7 @@ import 'guardrail_state.dart';
 ///           - category: HARM_CATEGORY_HATE_SPEECH
 ///             threshold: BLOCK_NONE
 /// ```
+///
 ///
 /// ### Ces Guardrail Transfer Agent Content Filter
 ///
@@ -569,7 +577,7 @@ import 'guardrail_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -634,7 +642,7 @@ import 'guardrail_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -643,6 +651,9 @@ import 'guardrail_state.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "ces_app_for_guardrail" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id"
 ///   location     = "us"
 ///   description  = "App used as parent for CES Toolset example"
@@ -658,6 +669,9 @@ import 'guardrail_state.dart';
 ///   }
 /// }
 /// resource "gcp_ces_guardrail" "ces_guardrail_transfer_agent_content_filter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   guardrail_id = "guardrail-id"
 ///   location     = gcp_ces_app.ces_app_for_guardrail.location
 ///   app          = gcp_ces_app.ces_app_for_guardrail.app_id
@@ -795,6 +809,7 @@ import 'guardrail_state.dart';
 ///         disregardDiacritics: true
 /// ```
 ///
+///
 /// ### Ces Guardrail Generative Answer Llm Prompt Security
 ///
 ///
@@ -839,6 +854,7 @@ import 'guardrail_state.dart';
 ///             modelSettings: {
 ///                 model: "gemini-3.0-flash-001",
 ///                 temperature: 50,
+///                 thinkingLevel: "LOW",
 ///             },
 ///             prompt: "example_prompt",
 ///             policyScope: "USER_QUERY",
@@ -887,6 +903,7 @@ import 'guardrail_state.dart';
 ///             "model_settings": {
 ///                 "model": "gemini-3.0-flash-001",
 ///                 "temperature": float(50),
+///                 "thinking_level": "LOW",
 ///             },
 ///             "prompt": "example_prompt",
 ///             "policy_scope": "USER_QUERY",
@@ -950,6 +967,7 @@ import 'guardrail_state.dart';
 ///                 {
 ///                     Model = "gemini-3.0-flash-001",
 ///                     Temperature = 50.0,
+///                     ThinkingLevel = "LOW",
 ///                 },
 ///                 Prompt = "example_prompt",
 ///                 PolicyScope = "USER_QUERY",
@@ -965,7 +983,7 @@ import 'guardrail_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1008,8 +1026,9 @@ import 'guardrail_state.dart';
 /// 				CustomPolicy: &ces.GuardrailLlmPromptSecurityCustomPolicyArgs{
 /// 					MaxConversationMessages: pulumi.Int(10),
 /// 					ModelSettings: &ces.GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs{
-/// 						Model:       pulumi.String("gemini-3.0-flash-001"),
-/// 						Temperature: pulumi.Float64(50),
+/// 						Model:         pulumi.String("gemini-3.0-flash-001"),
+/// 						Temperature:   pulumi.Float64(50),
+/// 						ThinkingLevel: pulumi.String("LOW"),
 /// 					},
 /// 					Prompt:              pulumi.String("example_prompt"),
 /// 					PolicyScope:         pulumi.String("USER_QUERY"),
@@ -1026,7 +1045,7 @@ import 'guardrail_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1035,6 +1054,9 @@ import 'guardrail_state.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "ces_app_for_guardrail" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id"
 ///   location     = "us"
 ///   description  = "App used as parent for CES Toolset example"
@@ -1050,6 +1072,9 @@ import 'guardrail_state.dart';
 ///   }
 /// }
 /// resource "gcp_ces_guardrail" "ces_guardrail_generative_answer_llm_prompt_security" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   guardrail_id = "guardrail-id"
 ///   location     = gcp_ces_app.ces_app_for_guardrail.location
 ///   app          = gcp_ces_app.ces_app_for_guardrail.app_id
@@ -1065,8 +1090,9 @@ import 'guardrail_state.dart';
 ///     custom_policy = {
 ///       max_conversation_messages = 10
 ///       model_settings = {
-///         model       = "gemini-3.0-flash-001"
-///         temperature = 50
+///         model          = "gemini-3.0-flash-001"
+///         temperature    = 50
+///         thinking_level = "LOW"
 ///       }
 ///       prompt                = "example_prompt"
 ///       policy_scope          = "USER_QUERY"
@@ -1142,6 +1168,7 @@ import 'guardrail_state.dart';
 ///                     .modelSettings(GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs.builder()
 ///                         .model("gemini-3.0-flash-001")
 ///                         .temperature(50.0)
+///                         .thinkingLevel("LOW")
 ///                         .build())
 ///                     .prompt("example_prompt")
 ///                     .policyScope("USER_QUERY")
@@ -1192,11 +1219,13 @@ import 'guardrail_state.dart';
 ///           modelSettings:
 ///             model: gemini-3.0-flash-001
 ///             temperature: 50
+///             thinkingLevel: LOW
 ///           prompt: example_prompt
 ///           policyScope: USER_QUERY
 ///           failOpen: true
 ///           allowShortUtterance: true
 /// ```
+///
 ///
 /// ### Ces Guardrail Llm Prompt Security Fail Open
 ///
@@ -1336,7 +1365,7 @@ import 'guardrail_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1387,7 +1416,7 @@ import 'guardrail_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1396,6 +1425,9 @@ import 'guardrail_state.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "ces_app_for_guardrail" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id"
 ///   location     = "us"
 ///   description  = "App used as parent for CES Toolset example"
@@ -1411,6 +1443,9 @@ import 'guardrail_state.dart';
 ///   }
 /// }
 /// resource "gcp_ces_guardrail" "ces_guardrail_llm_prompt_security_fail_open" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   guardrail_id = "guardrail-id"
 ///   location     = gcp_ces_app.ces_app_for_guardrail.location
 ///   app          = gcp_ces_app.ces_app_for_guardrail.app_id
@@ -1528,6 +1563,7 @@ import 'guardrail_state.dart';
 ///       llmPromptSecurity:
 ///         failOpen: true
 /// ```
+///
 ///
 /// ### Ces Guardrail Llm Prompt Security Default Settings
 ///
@@ -1667,7 +1703,7 @@ import 'guardrail_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1718,7 +1754,7 @@ import 'guardrail_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1727,6 +1763,9 @@ import 'guardrail_state.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "ces_app_for_guardrail" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id"
 ///   location     = "us"
 ///   description  = "App used as parent for CES Toolset example"
@@ -1742,6 +1781,9 @@ import 'guardrail_state.dart';
 ///   }
 /// }
 /// resource "gcp_ces_guardrail" "ces_guardrail_llm_prompt_security_default_settings" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   guardrail_id = "guardrail-id"
 ///   location     = gcp_ces_app.ces_app_for_guardrail.location
 ///   app          = gcp_ces_app.ces_app_for_guardrail.app_id
@@ -1862,6 +1904,7 @@ import 'guardrail_state.dart';
 ///         defaultSettings: {}
 /// ```
 ///
+///
 /// ### Ces Guardrail Code Callback
 ///
 ///
@@ -1924,6 +1967,7 @@ import 'guardrail_state.dart';
 ///             disabled: true,
 ///             pythonCode: `def callback(context):
 ///     return {'override': False}`,
+///             proactiveExecutionEnabled: true,
 ///         },
 ///     },
 /// });
@@ -1985,6 +2029,7 @@ import 'guardrail_state.dart';
 ///             "disabled": True,
 ///             "python_code": """def callback(context):
 ///     return {'override': False}""",
+///             "proactive_execution_enabled": True,
 ///         },
 ///     })
 /// ```
@@ -2063,6 +2108,7 @@ import 'guardrail_state.dart';
 ///                 Disabled = true,
 ///                 PythonCode = @"def callback(context):
 ///     return {'override': False}",
+///                 ProactiveExecutionEnabled = true,
 ///             },
 ///         },
 ///     });
@@ -2073,7 +2119,7 @@ import 'guardrail_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2129,9 +2175,10 @@ import 'guardrail_state.dart';
 /// 					PythonCode:  pulumi.String("def callback(context):\n    return {'override': False}"),
 /// 				},
 /// 				AfterModelCallback: &ces.GuardrailCodeCallbackAfterModelCallbackArgs{
-/// 					Description: pulumi.String("Example callback"),
-/// 					Disabled:    pulumi.Bool(true),
-/// 					PythonCode:  pulumi.String("def callback(context):\n    return {'override': False}"),
+/// 					Description:               pulumi.String("Example callback"),
+/// 					Disabled:                  pulumi.Bool(true),
+/// 					PythonCode:                pulumi.String("def callback(context):\n    return {'override': False}"),
+/// 					ProactiveExecutionEnabled: pulumi.Bool(true),
 /// 				},
 /// 			},
 /// 		})
@@ -2143,7 +2190,7 @@ import 'guardrail_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2152,6 +2199,9 @@ import 'guardrail_state.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "ces_app_for_guardrail" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id"
 ///   location     = "us"
 ///   description  = "App used as parent for CES Toolset example"
@@ -2167,6 +2217,9 @@ import 'guardrail_state.dart';
 ///   }
 /// }
 /// resource "gcp_ces_guardrail" "ces_guardrail_code_callback" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   guardrail_id = "guardrail-id"
 ///   location     = gcp_ces_app.ces_app_for_guardrail.location
 ///   app          = gcp_ces_app.ces_app_for_guardrail.app_id
@@ -2195,9 +2248,10 @@ import 'guardrail_state.dart';
 ///       python_code = "def callback(context):\n    return {'override': False}"
 ///     }
 ///     after_model_callback = {
-///       description = "Example callback"
-///       disabled    = true
-///       python_code = "def callback(context):\n    return {'override': False}"
+///       description                 = "Example callback"
+///       disabled                    = true
+///       python_code                 = "def callback(context):\n    return {'override': False}"
+///       proactive_execution_enabled = true
 ///     }
 ///   }
 /// }
@@ -2292,6 +2346,7 @@ import 'guardrail_state.dart';
 ///                     .pythonCode("""
 /// def callback(context):
 ///     return {'override': False}                    """)
+///                     .proactiveExecutionEnabled(true)
 ///                     .build())
 ///                 .build())
 ///             .build());
@@ -2356,7 +2411,9 @@ import 'guardrail_state.dart';
 ///           pythonCode: |-
 ///             def callback(context):
 ///                 return {'override': False}
+///           proactiveExecutionEnabled: true
 /// ```
+///
 ///
 /// ### Ces Guardrail Llm Policy
 ///
@@ -2401,6 +2458,7 @@ import 'guardrail_state.dart';
 ///         modelSettings: {
 ///             model: "gemini-3.0-flash-001",
 ///             temperature: 50,
+///             thinkingLevel: "LOW",
 ///         },
 ///         prompt: "example_prompt",
 ///         policyScope: "USER_QUERY",
@@ -2447,6 +2505,7 @@ import 'guardrail_state.dart';
 ///         "model_settings": {
 ///             "model": "gemini-3.0-flash-001",
 ///             "temperature": float(50),
+///             "thinking_level": "LOW",
 ///         },
 ///         "prompt": "example_prompt",
 ///         "policy_scope": "USER_QUERY",
@@ -2507,6 +2566,7 @@ import 'guardrail_state.dart';
 ///             {
 ///                 Model = "gemini-3.0-flash-001",
 ///                 Temperature = 50.0,
+///                 ThinkingLevel = "LOW",
 ///             },
 ///             Prompt = "example_prompt",
 ///             PolicyScope = "USER_QUERY",
@@ -2521,7 +2581,7 @@ import 'guardrail_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2563,8 +2623,9 @@ import 'guardrail_state.dart';
 /// 			LlmPolicy: &ces.GuardrailLlmPolicyArgs{
 /// 				MaxConversationMessages: pulumi.Int(10),
 /// 				ModelSettings: &ces.GuardrailLlmPolicyModelSettingsArgs{
-/// 					Model:       pulumi.String("gemini-3.0-flash-001"),
-/// 					Temperature: pulumi.Float64(50),
+/// 					Model:         pulumi.String("gemini-3.0-flash-001"),
+/// 					Temperature:   pulumi.Float64(50),
+/// 					ThinkingLevel: pulumi.String("LOW"),
 /// 				},
 /// 				Prompt:              pulumi.String("example_prompt"),
 /// 				PolicyScope:         pulumi.String("USER_QUERY"),
@@ -2580,7 +2641,7 @@ import 'guardrail_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2589,6 +2650,9 @@ import 'guardrail_state.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "ces_app_for_guardrail" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id"
 ///   location     = "us"
 ///   description  = "App used as parent for CES Toolset example"
@@ -2604,6 +2668,9 @@ import 'guardrail_state.dart';
 ///   }
 /// }
 /// resource "gcp_ces_guardrail" "ces_guardrail_llm_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   guardrail_id = "guardrail-id"
 ///   location     = gcp_ces_app.ces_app_for_guardrail.location
 ///   app          = gcp_ces_app.ces_app_for_guardrail.app_id
@@ -2618,8 +2685,9 @@ import 'guardrail_state.dart';
 ///   llm_policy = {
 ///     max_conversation_messages = 10
 ///     model_settings = {
-///       model       = "gemini-3.0-flash-001"
-///       temperature = 50
+///       model          = "gemini-3.0-flash-001"
+///       temperature    = 50
+///       thinking_level = "LOW"
 ///     }
 ///     prompt                = "example_prompt"
 ///     policy_scope          = "USER_QUERY"
@@ -2692,6 +2760,7 @@ import 'guardrail_state.dart';
 ///                 .modelSettings(GuardrailLlmPolicyModelSettingsArgs.builder()
 ///                     .model("gemini-3.0-flash-001")
 ///                     .temperature(50.0)
+///                     .thinkingLevel("LOW")
 ///                     .build())
 ///                 .prompt("example_prompt")
 ///                 .policyScope("USER_QUERY")
@@ -2740,6 +2809,7 @@ import 'guardrail_state.dart';
 ///         modelSettings:
 ///           model: gemini-3.0-flash-001
 ///           temperature: 50
+///           thinkingLevel: LOW
 ///         prompt: example_prompt
 ///         policyScope: USER_QUERY
 ///         failOpen: true
@@ -2836,7 +2906,7 @@ class Guardrail extends pulumi.CustomResource {
           'gcp:ces/guardrail:Guardrail',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     action = registerOutput<GuardrailAction?>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     app = registerOutput<String>('app');

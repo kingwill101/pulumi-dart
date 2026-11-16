@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'database_instance_blue_green_deployment.dart';
 import 'database_instance_clone.dart';
 import 'database_instance_point_in_time_restore_context.dart';
 import 'database_instance_replica_configuration.dart';
@@ -18,6 +19,9 @@ class DatabaseInstanceArgs {
   /// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
   /// block during resource creation/update will trigger the restore action after the resource is created/updated.
   final pulumi.Input<String?>? backupdrBackup;
+  /// The configuration for a Cloud SQL Blue-Green Deployment on this instance. The configuration is detailed below.
+  /// &gt; **WARNING:** Because `blueGreenDeployment` is authoritatively managed by Terraform on the primary instance resource, if a Blue-Green Deployment is created on this instance outside of Terraform (for example, via `gcloud` or the Cloud Console) and the `blueGreenDeployment` block is not present in your Terraform configuration, running `pulumi up` will delete the out-of-band Blue-Green Deployment along with its green target instance.
+  final pulumi.Input<DatabaseInstanceBlueGreenDeployment?>? blueGreenDeployment;
   /// The context needed to create this instance as a clone of another instance. When this field is set during
   /// resource creation, this provider will attempt to clone another instance as indicated in the context. The
   /// configuration is detailed below.
@@ -44,6 +48,8 @@ class DatabaseInstanceArgs {
   ///
   /// &gt; **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
   final pulumi.Input<bool?>? deletionProtection;
+  /// Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+  final pulumi.Input<bool?>? encryptionConfidentialMode;
   /// The full path to the encryption key used for the CMEK disk encryption.  Setting
   /// up disk encryption currently requires manual steps outside of this provider.
   /// The provided key must be in the same region as the SQL instance.  In order
@@ -119,10 +125,12 @@ class DatabaseInstanceArgs {
 
   /// Creates a new [DatabaseInstanceArgs].
   /// [backupdrBackup] The backupdrBackup needed to restore the database to a backup run. This field will
+  /// [blueGreenDeployment] The configuration for a Cloud SQL Blue-Green Deployment on this instance. The configuration is detailed below.
   /// [clone] The context needed to create this instance as a clone of another instance. When this field is set during
   /// [databaseVersion] The MySQL, PostgreSQL or
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [deletionProtection] Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+  /// [encryptionConfidentialMode] Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
   /// [encryptionKeyName] The full path to the encryption key used for the CMEK disk encryption.  Setting
   /// [enforceNewSqlNetworkArchitecture] Whether to enforce the new SQL network architecture.
   /// [finalBackupDescription] The description of final backup. Only set this field when `final_backup_config.enabled` is true.
@@ -146,10 +154,12 @@ class DatabaseInstanceArgs {
   /// [switchTransactionLogsToCloudStorageEnabled] When set to `true`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
   const DatabaseInstanceArgs({
     this.backupdrBackup,
+    this.blueGreenDeployment,
     this.clone,
     required this.databaseVersion,
     this.deletionPolicy,
     this.deletionProtection,
+    this.encryptionConfidentialMode,
     this.encryptionKeyName,
     this.enforceNewSqlNetworkArchitecture,
     this.finalBackupDescription,
@@ -176,10 +186,12 @@ class DatabaseInstanceArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'backupdrBackup': ?backupdrBackup,
+      'blueGreenDeployment': ?pulumi.Input.mapOptionalInputValue<DatabaseInstanceBlueGreenDeployment, Map<String, dynamic>>(blueGreenDeployment, (value) => value.toMap()),
       'clone': ?pulumi.Input.mapOptionalInputValue<DatabaseInstanceClone, Map<String, dynamic>>(clone, (value) => value.toMap()),
       'databaseVersion': databaseVersion,
       'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
+      'encryptionConfidentialMode': ?encryptionConfidentialMode,
       'encryptionKeyName': ?encryptionKeyName,
       'enforceNewSqlNetworkArchitecture': ?enforceNewSqlNetworkArchitecture,
       'finalBackupDescription': ?finalBackupDescription,
@@ -207,10 +219,12 @@ class DatabaseInstanceArgs {
   factory DatabaseInstanceArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceArgs(
       backupdrBackup: (() { final guardedValue = map['backupdrBackup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      blueGreenDeployment: (() { final guardedValue = map['blueGreenDeployment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatabaseInstanceBlueGreenDeployment.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       clone: (() { final guardedValue = map['clone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatabaseInstanceClone.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       databaseVersion: pulumi.Input.fromValue(map['databaseVersion'] as String),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      encryptionConfidentialMode: (() { final guardedValue = map['encryptionConfidentialMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       encryptionKeyName: (() { final guardedValue = map['encryptionKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enforceNewSqlNetworkArchitecture: (() { final guardedValue = map['enforceNewSqlNetworkArchitecture']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       finalBackupDescription: (() { final guardedValue = map['finalBackupDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -219,7 +233,7 @@ class DatabaseInstanceArgs {
       maintenanceVersion: (() { final guardedValue = map['maintenanceVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       masterInstanceName: (() { final guardedValue = map['masterInstanceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       pointInTimeRestoreContext: (() { final guardedValue = map['pointInTimeRestoreContext']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatabaseInstancePointInTimeRestoreContext.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

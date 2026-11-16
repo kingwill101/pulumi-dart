@@ -47,9 +47,9 @@ class InstanceAccessRulesOptions {
   factory InstanceAccessRulesOptions.fromMap(Map<String, dynamic> map) {
     return InstanceAccessRulesOptions(
       accessRules: (() { final guardedValue = map['accessRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceAccessRulesOptionsAccessRule>(guardedValue, (value) => InstanceAccessRulesOptionsAccessRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      defaultSquashGid: (() { final guardedValue = map['defaultSquashGid']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      defaultSquashGid: (() { final guardedValue = map['defaultSquashGid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       defaultSquashMode: pulumi.Input.fromValue(map['defaultSquashMode'] as String),
-      defaultSquashUid: (() { final guardedValue = map['defaultSquashUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      defaultSquashUid: (() { final guardedValue = map['defaultSquashUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

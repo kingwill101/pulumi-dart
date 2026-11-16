@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'listing_subscription_destination_dataset.dart';
+import 'listing_subscription_destination_pubsub_subscription.dart';
 
 /// {@template pulumi_bigqueryanalyticshub_listing_subscription_listing_subscription_args_doc}
 /// The set of arguments for ListingSubscription.
@@ -19,7 +20,10 @@ class ListingSubscriptionArgs {
   final pulumi.Input<String?>? deletionPolicy;
   /// The destination dataset for this subscription.
   /// Structure is documented below.
-  final pulumi.Input<ListingSubscriptionDestinationDataset> destinationDataset;
+  final pulumi.Input<ListingSubscriptionDestinationDataset?>? destinationDataset;
+  /// Destination Pub/Sub subscription to create for the subscriber.
+  /// Structure is documented below.
+  final pulumi.Input<ListingSubscriptionDestinationPubsubSubscription?>? destinationPubsubSubscription;
   /// The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
   final pulumi.Input<String> listingId;
   /// The name of the location of the data exchange. Distinct from the location of the destination data set.
@@ -32,13 +36,15 @@ class ListingSubscriptionArgs {
   /// [dataExchangeId] The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [destinationDataset] The destination dataset for this subscription.
+  /// [destinationPubsubSubscription] Destination Pub/Sub subscription to create for the subscriber.
   /// [listingId] The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
   /// [location] The name of the location of the data exchange. Distinct from the location of the destination data set.
   /// [project] The ID of the project in which the resource belongs.
   const ListingSubscriptionArgs({
     required this.dataExchangeId,
     this.deletionPolicy,
-    required this.destinationDataset,
+    this.destinationDataset,
+    this.destinationPubsubSubscription,
     required this.listingId,
     required this.location,
     this.project,
@@ -48,7 +54,8 @@ class ListingSubscriptionArgs {
     return <String, dynamic>{
       'dataExchangeId': dataExchangeId,
       'deletionPolicy': ?deletionPolicy,
-      'destinationDataset': pulumi.Input.mapInputValue<ListingSubscriptionDestinationDataset, Map<String, dynamic>>(destinationDataset, (value) => value.toMap()),
+      'destinationDataset': ?pulumi.Input.mapOptionalInputValue<ListingSubscriptionDestinationDataset, Map<String, dynamic>>(destinationDataset, (value) => value.toMap()),
+      'destinationPubsubSubscription': ?pulumi.Input.mapOptionalInputValue<ListingSubscriptionDestinationPubsubSubscription, Map<String, dynamic>>(destinationPubsubSubscription, (value) => value.toMap()),
       'listingId': listingId,
       'location': location,
       'project': ?project,
@@ -59,7 +66,8 @@ class ListingSubscriptionArgs {
     return ListingSubscriptionArgs(
       dataExchangeId: pulumi.Input.fromValue(map['dataExchangeId'] as String),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      destinationDataset: pulumi.Input.fromValue(ListingSubscriptionDestinationDataset.fromMap((map['destinationDataset']! as Map).cast<String, dynamic>())),
+      destinationDataset: (() { final guardedValue = map['destinationDataset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListingSubscriptionDestinationDataset.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      destinationPubsubSubscription: (() { final guardedValue = map['destinationPubsubSubscription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListingSubscriptionDestinationPubsubSubscription.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       listingId: pulumi.Input.fromValue(map['listingId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

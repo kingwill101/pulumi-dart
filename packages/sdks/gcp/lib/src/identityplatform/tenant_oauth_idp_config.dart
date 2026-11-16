@@ -10,6 +10,7 @@ import 'tenant_oauth_idp_config_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Identity Platform Tenant Oauth Idp Config Basic
@@ -75,7 +76,7 @@ import 'tenant_oauth_idp_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/identityplatform"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/identityplatform"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -104,7 +105,7 @@ import 'tenant_oauth_idp_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -113,9 +114,15 @@ import 'tenant_oauth_idp_config_state.dart';
 /// }
 ///
 /// resource "gcp_identityplatform_tenant" "tenant" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "tenant"
 /// }
-/// resource "gcp_identityplatform_tenantoauthidpconfig" "tenant_oauth_idp_config" {
+/// resource "gcp_identityplatform_tenant_oauth_idp_config" "tenant_oauth_idp_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "oidc.oauth-idp-config"
 ///   tenant        = gcp_identityplatform_tenant.tenant.name
 ///   display_name  = "Display Name"
@@ -239,7 +246,7 @@ class TenantOauthIdpConfig extends pulumi.CustomResource {
           'gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String?>('clientSecret');

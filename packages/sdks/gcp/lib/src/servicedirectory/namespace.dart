@@ -12,6 +12,7 @@ import 'namespace_state.dart';
 /// * How-to Guides
 /// * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Service Directory Namespace Basic
@@ -68,7 +69,7 @@ import 'namespace_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicedirectory"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicedirectory"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -90,7 +91,7 @@ import 'namespace_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -99,6 +100,9 @@ import 'namespace_state.dart';
 /// }
 ///
 /// resource "gcp_servicedirectory_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   namespace_id = "example-namespace"
 ///   location     = "us-central1"
 ///   labels = {
@@ -213,7 +217,7 @@ class Namespace extends pulumi.CustomResource {
           'gcp:servicedirectory/namespace:Namespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

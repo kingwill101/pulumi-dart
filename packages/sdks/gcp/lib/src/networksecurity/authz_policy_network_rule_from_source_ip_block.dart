@@ -25,7 +25,7 @@ class AuthzPolicyNetworkRuleFromSourceIpBlock {
 
   factory AuthzPolicyNetworkRuleFromSourceIpBlock.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyNetworkRuleFromSourceIpBlock(
-      length: pulumi.Input.fromValue((map['length'] as num).toInt()),
+      length: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['length'])),
       prefix: pulumi.Input.fromValue(map['prefix'] as String),
     );
   }

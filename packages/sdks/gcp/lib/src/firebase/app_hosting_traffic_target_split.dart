@@ -26,7 +26,7 @@ class AppHostingTrafficTargetSplit {
   factory AppHostingTrafficTargetSplit.fromMap(Map<String, dynamic> map) {
     return AppHostingTrafficTargetSplit(
       build: pulumi.Input.fromValue(map['build'] as String),
-      percent: pulumi.Input.fromValue((map['percent'] as num).toInt()),
+      percent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['percent'])),
     );
   }
 }

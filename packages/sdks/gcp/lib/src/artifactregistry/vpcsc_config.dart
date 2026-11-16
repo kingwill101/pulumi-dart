@@ -15,6 +15,7 @@ import 'vpcsc_config_state.dart';
 /// resource of this type will acquire and update the resource that already
 /// exists at the location. Deleting this resource will remove the config from
 /// your Terraform state but leave the resource as is.
+///
 /// ## Example Usage
 ///
 /// ### Artifact Registry Vpcsc Config
@@ -58,7 +59,7 @@ import 'vpcsc_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -76,7 +77,7 @@ import 'vpcsc_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -84,7 +85,10 @@ import 'vpcsc_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_artifactregistry_vpcscconfig" "my-config" {
+/// resource "gcp_artifactregistry_vpcsc_config" "my-config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us-central1"
 ///   vpcsc_policy = "ALLOW"
 /// }
@@ -173,7 +177,7 @@ class VpcscConfig extends pulumi.CustomResource {
           'gcp:artifactregistry/vpcscConfig:VpcscConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

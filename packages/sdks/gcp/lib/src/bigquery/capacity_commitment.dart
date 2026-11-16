@@ -13,6 +13,7 @@ import 'capacity_commitment_state.dart';
 /// * How-to Guides
 /// * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Bigquery Reservation Capacity Commitment Docs
@@ -65,7 +66,7 @@ import 'capacity_commitment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -86,7 +87,7 @@ import 'capacity_commitment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -94,7 +95,10 @@ import 'capacity_commitment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigquery_capacitycommitment" "example" {
+/// resource "gcp_bigquery_capacity_commitment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   capacity_commitment_id = "example-commitment"
 ///   location               = "us-west2"
 ///   slot_count             = 100
@@ -213,7 +217,7 @@ class CapacityCommitment extends pulumi.CustomResource {
           'gcp:bigquery/capacityCommitment:CapacityCommitment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     capacityCommitmentId = registerOutput<String?>('capacityCommitmentId');
     commitmentEndTime = registerOutput<String>('commitmentEndTime');

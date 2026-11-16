@@ -13,6 +13,7 @@ import 'folder_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/storage/docs/folders-overview)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Storage Folder Basic
@@ -97,7 +98,7 @@ import 'folder_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -135,7 +136,7 @@ import 'folder_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -144,6 +145,9 @@ import 'folder_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my-bucket"
 ///   location                    = "EU"
 ///   uniform_bucket_level_access = true
@@ -152,10 +156,16 @@ import 'folder_state.dart';
 ///   }
 /// }
 /// resource "gcp_storage_folder" "folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = gcp_storage_bucket.bucket.name
 ///   name   = "parent-folder/"
 /// }
 /// resource "gcp_storage_folder" "subfolder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = gcp_storage_bucket.bucket.name
 ///   name   ="${gcp_storage_folder.folder.name}subfolder/"
 /// }
@@ -279,7 +289,7 @@ class Folder extends pulumi.CustomResource {
           'gcp:storage/folder:Folder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');

@@ -1,3 +1,7 @@
+export 'observability/bucket.dart';
+export 'observability/bucket_args.dart';
+export 'observability/bucket_cmek_settings.dart';
+export 'observability/bucket_state.dart';
 export 'observability/folder_settings.dart';
 export 'observability/folder_settings_args.dart';
 export 'observability/folder_settings_state.dart';
@@ -8,6 +12,9 @@ export 'observability/get_organization_settings_args.dart';
 export 'observability/get_organization_settings_result.dart';
 export 'observability/get_project_settings_args.dart';
 export 'observability/get_project_settings_result.dart';
+export 'observability/link.dart';
+export 'observability/link_args.dart';
+export 'observability/link_state.dart';
 export 'observability/organization_settings.dart';
 export 'observability/organization_settings_args.dart';
 export 'observability/organization_settings_state.dart';

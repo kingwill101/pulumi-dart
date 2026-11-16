@@ -41,7 +41,7 @@ class IcebergTableSchemaField {
   factory IcebergTableSchemaField.fromMap(Map<String, dynamic> map) {
     return IcebergTableSchemaField(
       doc: (() { final guardedValue = map['doc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      id: pulumi.Input.fromValue((map['id'] as num).toInt()),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       name: pulumi.Input.fromValue(map['name'] as String),
       required: pulumi.Input.fromValue(map['required'] as bool),
       type: pulumi.Input.fromValue(map['type'] as String),

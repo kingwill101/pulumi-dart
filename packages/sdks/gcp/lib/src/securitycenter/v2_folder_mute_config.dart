@@ -12,6 +12,7 @@ import 'v2_folder_mute_config_state.dart';
 ///
 /// * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v2/folders.muteConfigs)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Scc V2 Folder Mute Config Basic
@@ -80,8 +81,8 @@ import 'v2_folder_mute_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -110,7 +111,7 @@ import 'v2_folder_mute_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -119,10 +120,16 @@ import 'v2_folder_mute_config_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_folder" "folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "organizations/123456789"
 ///   display_name = "folder-name"
 /// }
-/// resource "gcp_securitycenter_v2foldermuteconfig" "default" {
+/// resource "gcp_securitycenter_v2_folder_mute_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mute_config_id = "my-config"
 ///   folder         = gcp_organizations_folder.folder.folder_id
 ///   location       = "global"
@@ -258,7 +265,7 @@ class V2FolderMuteConfig extends pulumi.CustomResource {
           'gcp:securitycenter/v2FolderMuteConfig:V2FolderMuteConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

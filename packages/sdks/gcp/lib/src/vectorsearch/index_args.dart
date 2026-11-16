@@ -56,6 +56,16 @@ class IndexArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
+  /// Whether to skip waiting for the index to be created. Building an ANN
+  /// index over a large collection can take several hours; setting `skipWait`
+  /// to `true` causes Terraform to return as soon as the creation request is
+  /// accepted rather than blocking until the long-running build completes
+  /// (which can exceed CI/CD timeouts or short-lived Terraform runner
+  /// credentials). Leave this set to `false` (the default) if downstream
+  /// resources or workloads depend on the index being ready to serve queries
+  /// immediately after `pulumi up`, or if you want Terraform to fail
+  /// synchronously when an asynchronous index build fails.
+  final pulumi.Input<bool?>? skipWait;
   /// The fields to push into the index to enable inline data retrieval.
   final pulumi.Input<List<String>?>? storeFields;
 
@@ -73,6 +83,7 @@ class IndexArgs {
   /// [labels] Labels as key value pairs.
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [project] The ID of the project in which the resource belongs.
+  /// [skipWait] Whether to skip waiting for the index to be created. Building an ANN
   /// [storeFields] The fields to push into the index to enable inline data retrieval.
   const IndexArgs({
     required this.collectionId,
@@ -88,6 +99,7 @@ class IndexArgs {
     this.labels,
     required this.location,
     this.project,
+    this.skipWait,
     this.storeFields,
   });
 
@@ -106,6 +118,7 @@ class IndexArgs {
       'labels': ?labels,
       'location': location,
       'project': ?project,
+      'skipWait': ?skipWait,
       'storeFields': ?storeFields,
     };
   }
@@ -125,6 +138,7 @@ class IndexArgs {
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      skipWait: (() { final guardedValue = map['skipWait']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       storeFields: (() { final guardedValue = map['storeFields']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

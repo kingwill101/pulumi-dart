@@ -14,6 +14,7 @@ import 'search_engine_state.dart';
 /// * How-to Guides
 /// * [Create a Search Engine](https://cloud.google.com/generative-ai-app-builder/docs/create-engine-es)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Discoveryengine Searchengine Basic
@@ -103,7 +104,7 @@ import 'search_engine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -141,7 +142,7 @@ import 'search_engine_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -149,7 +150,10 @@ import 'search_engine_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_discoveryengine_datastore" "basic" {
+/// resource "gcp_discoveryengine_data_store" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                    = "global"
 ///   data_store_id               = "example-datastore-id"
 ///   display_name                = "tf-test-structured-datastore"
@@ -158,12 +162,15 @@ import 'search_engine_state.dart';
 ///   solution_types              = ["SOLUTION_TYPE_SEARCH"]
 ///   create_advanced_site_search = false
 /// }
-/// resource "gcp_discoveryengine_searchengine" "basic" {
+/// resource "gcp_discoveryengine_search_engine" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   engine_id            = "example-engine-id"
 ///   collection_id        = "default_collection"
-///   location             = gcp_discoveryengine_datastore.basic.location
+///   location             = gcp_discoveryengine_data_store.basic.location
 ///   display_name         = "Example Display Name"
-///   data_store_ids       = [gcp_discoveryengine_datastore.basic.data_store_id]
+///   data_store_ids       = [gcp_discoveryengine_data_store.basic.data_store_id]
 ///   search_engine_config = {}
 /// }
 /// ```
@@ -239,6 +246,7 @@ import 'search_engine_state.dart';
 ///         - ${basic.dataStoreId}
 ///       searchEngineConfig: {}
 /// ```
+///
 ///
 /// ### Discoveryengine Searchengine Agentspace Basic
 ///
@@ -368,7 +376,7 @@ import 'search_engine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -420,7 +428,7 @@ import 'search_engine_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -428,7 +436,10 @@ import 'search_engine_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_discoveryengine_datastore" "agentspace_basic" {
+/// resource "gcp_discoveryengine_data_store" "agentspace_basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                    = "global"
 ///   data_store_id               = "example-datastore-id"
 ///   display_name                = "tf-test-structured-datastore"
@@ -437,12 +448,15 @@ import 'search_engine_state.dart';
 ///   solution_types              = ["SOLUTION_TYPE_SEARCH"]
 ///   create_advanced_site_search = false
 /// }
-/// resource "gcp_discoveryengine_searchengine" "agentspace_basic" {
+/// resource "gcp_discoveryengine_search_engine" "agentspace_basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   engine_id         = "example-engine-id"
 ///   collection_id     = "default_collection"
-///   location          = gcp_discoveryengine_datastore.agentspace_basic.location
+///   location          = gcp_discoveryengine_data_store.agentspace_basic.location
 ///   display_name      = "tf-test-agentspace-search-engine"
-///   data_store_ids    = [gcp_discoveryengine_datastore.agentspace_basic.data_store_id]
+///   data_store_ids    = [gcp_discoveryengine_data_store.agentspace_basic.data_store_id]
 ///   industry_vertical = "GENERIC"
 ///   app_type          = "APP_TYPE_INTRANET"
 ///   search_engine_config = {
@@ -616,11 +630,23 @@ class SearchEngine extends pulumi.CustomResource {
   late final pulumi.Output<SearchEngineKnowledgeGraphConfig> knowledgeGraphConfig;
   /// Location.
   late final pulumi.Output<String> location;
+  /// Maps a model name to its specific configuration for this engine. This
+  /// allows admin users to turn on/off individual models. This only stores
+  /// models whose states are overridden by the admin. When the state is
+  /// unspecified, or `modelConfigs` is empty for this model, the system
+  /// decides if this model is available based on the default configuration.
+  /// For example, a preview model is disabled by default if the admin has not
+  /// chosen to enable it. Each value is one of `MODEL_STATE_UNSPECIFIED`,
+  /// `MODEL_ENABLED`, or `MODEL_DISABLED`; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+  /// for details.
+  late final pulumi.Output<Map<String, String>> modelConfigs;
   /// The unique full resource name of the search engine. Values are of the format
   /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
   /// This field must be a UTF-8 encoded string with a length limit of 1024
   /// characters.
   late final pulumi.Output<String> name;
+  /// The emails of the procurement contacts.
+  late final pulumi.Output<List<String>?> procurementContactEmails;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -642,7 +668,7 @@ class SearchEngine extends pulumi.CustomResource {
           'gcp:discoveryengine/searchEngine:SearchEngine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     appType = registerOutput<String?>('appType');
     collectionId = registerOutput<String>('collectionId');
@@ -658,7 +684,9 @@ class SearchEngine extends pulumi.CustomResource {
     kmsKeyName = registerOutput<String?>('kmsKeyName');
     knowledgeGraphConfig = registerOutput<SearchEngineKnowledgeGraphConfig>('knowledgeGraphConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineKnowledgeGraphConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
+    modelConfigs = registerOutput<Map<String, String>>('modelConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
+    procurementContactEmails = registerOutput<List<String>?>('procurementContactEmails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     searchEngineConfig = registerOutput<SearchEngineSearchEngineConfig>('searchEngineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineSearchEngineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
@@ -702,7 +730,9 @@ class SearchEngine extends pulumi.CustomResource {
     kmsKeyName = registerOutput<String?>('kmsKeyName');
     knowledgeGraphConfig = registerOutput<SearchEngineKnowledgeGraphConfig>('knowledgeGraphConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineKnowledgeGraphConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
+    modelConfigs = registerOutput<Map<String, String>>('modelConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
+    procurementContactEmails = registerOutput<List<String>?>('procurementContactEmails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     searchEngineConfig = registerOutput<SearchEngineSearchEngineConfig>('searchEngineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineSearchEngineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
@@ -731,7 +761,9 @@ class SearchEngine extends pulumi.CustomResource {
     kmsKeyName = registerOutput<String?>('kmsKeyName');
     knowledgeGraphConfig = registerOutput<SearchEngineKnowledgeGraphConfig>('knowledgeGraphConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineKnowledgeGraphConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
+    modelConfigs = registerOutput<Map<String, String>>('modelConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
+    procurementContactEmails = registerOutput<List<String>?>('procurementContactEmails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     searchEngineConfig = registerOutput<SearchEngineSearchEngineConfig>('searchEngineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineSearchEngineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');

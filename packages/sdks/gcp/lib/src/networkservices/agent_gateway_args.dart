@@ -10,6 +10,10 @@ import 'agent_gateway_self_managed.dart';
 /// {@endtemplate}
 /// {@macro pulumi_networkservices_agent_gateway_agent_gateway_args_doc}
 class AgentGatewayArgs {
+  /// The resource name of the AgentConnectivityTemplate.
+  /// Must be of format
+  /// `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
+  final pulumi.Input<String?>? agentConnectivityTemplate;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -54,6 +58,7 @@ class AgentGatewayArgs {
   final pulumi.Input<AgentGatewaySelfManaged?>? selfManaged;
 
   /// Creates a new [AgentGatewayArgs].
+  /// [agentConnectivityTemplate] The resource name of the AgentConnectivityTemplate.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A free-text description of the resource. Max length 1024 characters.
   /// [googleManaged] Configuration for Google Managed deployment mode.
@@ -66,6 +71,7 @@ class AgentGatewayArgs {
   /// [registries] A list of Agent registries containing the agents, MCP servers and tools governed by the Agent Gateway.
   /// [selfManaged] Configuration for Self Managed deployment mode.
   const AgentGatewayArgs({
+    this.agentConnectivityTemplate,
     this.deletionPolicy,
     this.description,
     this.googleManaged,
@@ -81,6 +87,7 @@ class AgentGatewayArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'agentConnectivityTemplate': ?agentConnectivityTemplate,
       'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'googleManaged': ?pulumi.Input.mapOptionalInputValue<AgentGatewayGoogleManaged, Map<String, dynamic>>(googleManaged, (value) => value.toMap()),
@@ -97,6 +104,7 @@ class AgentGatewayArgs {
 
   factory AgentGatewayArgs.fromMap(Map<String, dynamic> map) {
     return AgentGatewayArgs(
+      agentConnectivityTemplate: (() { final guardedValue = map['agentConnectivityTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       googleManaged: (() { final guardedValue = map['googleManaged']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentGatewayGoogleManaged.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

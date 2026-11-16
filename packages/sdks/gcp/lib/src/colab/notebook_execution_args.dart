@@ -39,6 +39,8 @@ class NotebookExecutionArgs {
   final pulumi.Input<NotebookExecutionGcsNotebookSource?>? gcsNotebookSource;
   /// The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
   final pulumi.Input<String> gcsOutputUri;
+  /// The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+  final pulumi.Input<String?>? kernelName;
   /// The location for the resource: https://cloud.google.com/colab/docs/locations
   final pulumi.Input<String> location;
   /// User specified ID for the Notebook Execution Job
@@ -64,6 +66,7 @@ class NotebookExecutionArgs {
   /// [executionUser] The user email to run the execution as.
   /// [gcsNotebookSource] The Cloud Storage uri for the input notebook.
   /// [gcsOutputUri] The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
+  /// [kernelName] The name of the kernel to use during notebook execution. If unset, the default kernel is used.
   /// [location] The location for the resource: https://cloud.google.com/colab/docs/locations
   /// [notebookExecutionJobId] User specified ID for the Notebook Execution Job
   /// [notebookRuntimeTemplateResourceName] The NotebookRuntimeTemplate to source compute configuration from.
@@ -80,6 +83,7 @@ class NotebookExecutionArgs {
     this.executionUser,
     this.gcsNotebookSource,
     required this.gcsOutputUri,
+    this.kernelName,
     required this.location,
     this.notebookExecutionJobId,
     this.notebookRuntimeTemplateResourceName,
@@ -99,6 +103,7 @@ class NotebookExecutionArgs {
       'executionUser': ?executionUser,
       'gcsNotebookSource': ?pulumi.Input.mapOptionalInputValue<NotebookExecutionGcsNotebookSource, Map<String, dynamic>>(gcsNotebookSource, (value) => value.toMap()),
       'gcsOutputUri': gcsOutputUri,
+      'kernelName': ?kernelName,
       'location': location,
       'notebookExecutionJobId': ?notebookExecutionJobId,
       'notebookRuntimeTemplateResourceName': ?notebookRuntimeTemplateResourceName,
@@ -119,6 +124,7 @@ class NotebookExecutionArgs {
       executionUser: (() { final guardedValue = map['executionUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gcsNotebookSource: (() { final guardedValue = map['gcsNotebookSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NotebookExecutionGcsNotebookSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       gcsOutputUri: pulumi.Input.fromValue(map['gcsOutputUri'] as String),
+      kernelName: (() { final guardedValue = map['kernelName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       notebookExecutionJobId: (() { final guardedValue = map['notebookExecutionJobId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       notebookRuntimeTemplateResourceName: (() { final guardedValue = map['notebookRuntimeTemplateResourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

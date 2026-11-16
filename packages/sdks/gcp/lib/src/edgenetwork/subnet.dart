@@ -11,6 +11,7 @@ import 'subnet_state.dart';
 /// * How-to Guides
 /// * [Create and manage subnetworks](https://cloud.google.com/distributed-cloud/edge/latest/docs/subnetworks#api)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Edgenetwork Subnet
@@ -101,7 +102,7 @@ import 'subnet_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/edgenetwork"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/edgenetwork"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -122,7 +123,7 @@ import 'subnet_state.dart';
 /// 			Location:    pulumi.String("us-west1"),
 /// 			Zone:        pulumi.String(""),
 /// 			Description: pulumi.String("Example subnet."),
-/// 			Network:     exampleNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     exampleNetwork.ID(),
 /// 			Ipv4Cidrs: pulumi.StringArray{
 /// 				pulumi.String("4.4.4.1/24"),
 /// 			},
@@ -138,7 +139,7 @@ import 'subnet_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -147,6 +148,9 @@ import 'subnet_state.dart';
 /// }
 ///
 /// resource "gcp_edgenetwork_subnet" "example_subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_id   = "example-subnet"
 ///   location    = "us-west1"
 ///   zone        = ""
@@ -158,6 +162,9 @@ import 'subnet_state.dart';
 ///   }
 /// }
 /// resource "gcp_edgenetwork_network" "example_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_id  = "example-network"
 ///   location    = "us-west1"
 ///   zone        = ""
@@ -234,6 +241,7 @@ import 'subnet_state.dart';
 ///       description: Example network.
 ///       mtu: 9000
 /// ```
+///
 ///
 /// ### Edgenetwork Subnet With Vlan Id
 ///
@@ -326,7 +334,7 @@ import 'subnet_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/edgenetwork"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/edgenetwork"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -347,7 +355,7 @@ import 'subnet_state.dart';
 /// 			Location:    pulumi.String("us-west1"),
 /// 			Zone:        pulumi.String(""),
 /// 			Description: pulumi.String("Example subnet with VLAN ID."),
-/// 			Network:     exampleNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     exampleNetwork.ID(),
 /// 			Ipv6Cidrs: pulumi.StringArray{
 /// 				pulumi.String("4444:4444:4444:4444::1/64"),
 /// 			},
@@ -364,7 +372,7 @@ import 'subnet_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -373,6 +381,9 @@ import 'subnet_state.dart';
 /// }
 ///
 /// resource "gcp_edgenetwork_subnet" "example_subnet_with_vlan_id" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_id   = "example-subnet-with-vlan-id"
 ///   location    = "us-west1"
 ///   zone        = ""
@@ -385,6 +396,9 @@ import 'subnet_state.dart';
 ///   }
 /// }
 /// resource "gcp_edgenetwork_network" "example_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_id  = "example-network"
 ///   location    = "us-west1"
 ///   zone        = ""
@@ -549,7 +563,7 @@ class Subnet extends pulumi.CustomResource {
           'gcp:edgenetwork/subnet:Subnet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

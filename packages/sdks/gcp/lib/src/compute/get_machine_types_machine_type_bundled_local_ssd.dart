@@ -26,7 +26,7 @@ class GetMachineTypesMachineTypeBundledLocalSsd {
   factory GetMachineTypesMachineTypeBundledLocalSsd.fromMap(Map<String, dynamic> map) {
     return GetMachineTypesMachineTypeBundledLocalSsd(
       defaultInterface: pulumi.Input.fromValue(map['defaultInterface'] as String),
-      partitionCount: pulumi.Input.fromValue((map['partitionCount'] as num).toInt()),
+      partitionCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['partitionCount'])),
     );
   }
 }

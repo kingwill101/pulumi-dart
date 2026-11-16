@@ -51,6 +51,10 @@ class RegionalParameterState {
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>?>? pulumiLabels;
+  /// A map of resource manager tags.
+  /// Resource manager tag keys and values have the same definition as resource manager tags.
+  /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The time at which the regional Parameter was updated.
   final pulumi.Input<String?>? updateTime;
 
@@ -67,6 +71,7 @@ class RegionalParameterState {
   /// [policyMembers] An object containing a unique resource identity tied to the regional parameter.
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
+  /// [tags] A map of resource manager tags.
   /// [updateTime] The time at which the regional Parameter was updated.
   const RegionalParameterState({
     this.createTime,
@@ -81,6 +86,7 @@ class RegionalParameterState {
     this.policyMembers,
     this.project,
     this.pulumiLabels,
+    this.tags,
     this.updateTime,
   });
 
@@ -98,6 +104,7 @@ class RegionalParameterState {
       'policyMembers': ?pulumi.Input.mapOptionalInputValue<List<RegionalParameterPolicyMember>, List<Map<String, dynamic>>>(policyMembers, (value) => pulumi.Input.encodeList<RegionalParameterPolicyMember, Map<String, dynamic>>(value, (value) => value.toMap())),
       'project': ?project,
       'pulumiLabels': ?pulumiLabels,
+      'tags': ?tags,
       'updateTime': ?updateTime,
     };
   }
@@ -116,6 +123,7 @@ class RegionalParameterState {
       policyMembers: (() { final guardedValue = map['policyMembers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionalParameterPolicyMember>(guardedValue, (value) => RegionalParameterPolicyMember.fromMap((value as Map).cast<String, dynamic>()))); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

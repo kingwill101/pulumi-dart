@@ -47,7 +47,7 @@ import 'get_connection_iam_policy_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuildv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuildv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -66,7 +66,7 @@ import 'get_connection_iam_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -74,7 +74,7 @@ import 'get_connection_iam_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_cloudbuildv2_getconnectioniampolicy" "policy" {
+/// data "gcp_cloudbuildv2_connection_iam_policy" "policy" {
 ///   project  = my-connection.project
 ///   location = my-connection.location
 ///   name     = my-connection.name

@@ -3,45 +3,50 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workflow_template_placement_managed_cluster_config_secondary_worker_config_accelerator.dart';
 import 'workflow_template_placement_managed_cluster_config_secondary_worker_config_disk_config.dart';
+import 'workflow_template_placement_managed_cluster_config_secondary_worker_config_instance_flexibility_policy.dart';
 import 'workflow_template_placement_managed_cluster_config_secondary_worker_config_managed_group_config.dart';
 
 class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig {
-  /// Optional. The Compute Engine accelerator configuration for these instances.
+  /// The Compute Engine accelerator configuration for these instances. Structure is documented below.
   final pulumi.Input<List<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator>?>? accelerators;
-  /// Optional. Disk option config settings.
+  /// Disk option config settings. Structure is documented below.
   final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig?>? diskConfig;
-  /// Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/[image-id]` * `projects/[projectId]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/family/[custom-image-family-name]` * `projects/[projectId]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+  /// The Compute Engine image resource used for cluster instances.
   final pulumi.Input<String?>? image;
-  /// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+  /// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Structure is documented below.
+  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy?>? instanceFlexibilityPolicy;
+  /// Output only. The list of instance names.
   final pulumi.Input<List<String>?>? instanceNames;
   /// Output only. Specifies that this instance group contains preemptible instances.
   final pulumi.Input<bool?>? isPreemptible;
-  /// Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+  /// The Compute Engine machine type used for cluster instances.
   final pulumi.Input<String?>? machineType;
-  /// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+  /// Output only. The config for Compute Engine Instance Group Manager that manages this group.
   final pulumi.Input<List<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig>?>? managedGroupConfigs;
-  /// Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc &gt; Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+  /// The minimum CPU platform and architecture for the cluster.
   final pulumi.Input<String?>? minCpuPlatform;
-  /// Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) masterConfig groups, **must be set to 3**. For standard cluster masterConfig groups, **must be set to 1**.
+  /// The number of worker instances in the cluster.
   final pulumi.Input<int?>? numInstances;
-  /// Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+  /// Specifies the preemptibility of the secondary worker group.
   final pulumi.Input<String?>? preemptibility;
 
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig].
-  /// [accelerators] Optional. The Compute Engine accelerator configuration for these instances.
-  /// [diskConfig] Optional. Disk option config settings.
-  /// [image] Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/[image-id]` * `projects/[projectId]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/family/[custom-image-family-name]` * `projects/[projectId]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
-  /// [instanceNames] Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+  /// [accelerators] The Compute Engine accelerator configuration for these instances. Structure is documented below.
+  /// [diskConfig] Disk option config settings. Structure is documented below.
+  /// [image] The Compute Engine image resource used for cluster instances.
+  /// [instanceFlexibilityPolicy] Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Structure is documented below.
+  /// [instanceNames] Output only. The list of instance names.
   /// [isPreemptible] Output only. Specifies that this instance group contains preemptible instances.
-  /// [machineType] Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
-  /// [managedGroupConfigs] Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-  /// [minCpuPlatform] Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc &gt; Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
-  /// [numInstances] Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) masterConfig groups, **must be set to 3**. For standard cluster masterConfig groups, **must be set to 1**.
-  /// [preemptibility] Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+  /// [machineType] The Compute Engine machine type used for cluster instances.
+  /// [managedGroupConfigs] Output only. The config for Compute Engine Instance Group Manager that manages this group.
+  /// [minCpuPlatform] The minimum CPU platform and architecture for the cluster.
+  /// [numInstances] The number of worker instances in the cluster.
+  /// [preemptibility] Specifies the preemptibility of the secondary worker group.
   const WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig({
     this.accelerators,
     this.diskConfig,
     this.image,
+    this.instanceFlexibilityPolicy,
     this.instanceNames,
     this.isPreemptible,
     this.machineType,
@@ -56,6 +61,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig {
       'accelerators': ?pulumi.Input.mapOptionalInputValue<List<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator>, List<Map<String, dynamic>>>(accelerators, (value) => pulumi.Input.encodeList<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator, Map<String, dynamic>>(value, (value) => value.toMap())),
       'diskConfig': ?pulumi.Input.mapOptionalInputValue<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig, Map<String, dynamic>>(diskConfig, (value) => value.toMap()),
       'image': ?image,
+      'instanceFlexibilityPolicy': ?pulumi.Input.mapOptionalInputValue<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy, Map<String, dynamic>>(instanceFlexibilityPolicy, (value) => value.toMap()),
       'instanceNames': ?instanceNames,
       'isPreemptible': ?isPreemptible,
       'machineType': ?machineType,
@@ -71,12 +77,13 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig {
       accelerators: (() { final guardedValue = map['accelerators']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator>(guardedValue, (value) => WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator.fromMap((value as Map).cast<String, dynamic>()))); })(),
       diskConfig: (() { final guardedValue = map['diskConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceFlexibilityPolicy: (() { final guardedValue = map['instanceFlexibilityPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       instanceNames: (() { final guardedValue = map['instanceNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       isPreemptible: (() { final guardedValue = map['isPreemptible']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managedGroupConfigs: (() { final guardedValue = map['managedGroupConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig>(guardedValue, (value) => WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       minCpuPlatform: (() { final guardedValue = map['minCpuPlatform']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      numInstances: (() { final guardedValue = map['numInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      numInstances: (() { final guardedValue = map['numInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       preemptibility: (() { final guardedValue = map['preemptibility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

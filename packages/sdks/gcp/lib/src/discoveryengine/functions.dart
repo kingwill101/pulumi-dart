@@ -48,7 +48,7 @@ import 'get_search_engine_iam_policy_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -65,7 +65,7 @@ import 'get_search_engine_iam_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -73,7 +73,7 @@ import 'get_search_engine_iam_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_discoveryengine_getdatastore" "example" {
+/// data "gcp_discoveryengine_data_store" "example" {
 ///   data_store_id = "my-data-store"
 /// }
 /// ```
@@ -151,7 +151,7 @@ import 'get_search_engine_iam_policy_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -168,7 +168,7 @@ import 'get_search_engine_iam_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -176,7 +176,7 @@ import 'get_search_engine_iam_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_discoveryengine_getdatastore" "example" {
+/// data "gcp_discoveryengine_data_store" "example" {
 ///   display_name = "My Data Store"
 /// }
 /// ```
@@ -282,7 +282,7 @@ pulumi.Output<GetDataStoreResult> getDataStoreOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -299,7 +299,7 @@ pulumi.Output<GetDataStoreResult> getDataStoreOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -307,7 +307,7 @@ pulumi.Output<GetDataStoreResult> getDataStoreOutput(
 ///   }
 /// }
 ///
-/// data "gcp_discoveryengine_getdatastores" "example" {
+/// data "gcp_discoveryengine_data_stores" "example" {
 ///   location = "global"
 /// }
 /// ```
@@ -421,7 +421,7 @@ pulumi.Output<GetDataStoresResult> getDataStoresOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -441,7 +441,7 @@ pulumi.Output<GetDataStoresResult> getDataStoresOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -449,7 +449,7 @@ pulumi.Output<GetDataStoresResult> getDataStoresOutput(
 ///   }
 /// }
 ///
-/// data "gcp_discoveryengine_getsearchengineiampolicy" "policy" {
+/// data "gcp_discoveryengine_search_engine_iam_policy" "policy" {
 ///   project       = basic.project
 ///   location      = basic.location
 ///   collection_id = basic.collectionId

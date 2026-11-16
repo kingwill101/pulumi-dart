@@ -15,6 +15,7 @@ import 'edge_cache_keyset_validation_shared_key.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Network Services Edge Cache Keyset Basic
@@ -91,7 +92,7 @@ import 'edge_cache_keyset_validation_shared_key.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -119,7 +120,7 @@ import 'edge_cache_keyset_validation_shared_key.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -127,7 +128,10 @@ import 'edge_cache_keyset_validation_shared_key.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkservices_edgecachekeyset" "default" {
+/// resource "gcp_networkservices_edge_cache_keyset" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-keyset"
 ///   description = "The default keyset"
 ///   public_keys {
@@ -192,6 +196,7 @@ import 'edge_cache_keyset_validation_shared_key.dart';
 ///         - id: my-public-key-2
 ///           value: hzd03llxB1u5FOLKFkZ6_wCJqC7jtN0bg7xlBqS6WVM
 /// ```
+///
 ///
 /// ### Network Services Edge Cache Keyset Dual Token
 ///
@@ -296,8 +301,8 @@ import 'edge_cache_keyset_validation_shared_key.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -313,7 +318,7 @@ import 'edge_cache_keyset_validation_shared_key.dart';
 /// 			return err
 /// 		}
 /// 		secret_version_basic, err := secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
-/// 			Secret:     secret_basic.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:     secret_basic.ID(),
 /// 			SecretData: pulumi.String("secret-data"),
 /// 		})
 /// 		if err != nil {
@@ -330,7 +335,7 @@ import 'edge_cache_keyset_validation_shared_key.dart';
 /// 			},
 /// 			ValidationSharedKeys: networkservices.EdgeCacheKeysetValidationSharedKeyArray{
 /// 				&networkservices.EdgeCacheKeysetValidationSharedKeyArgs{
-/// 					SecretVersion: secret_version_basic.ID().ToIDOutput().ToStringOutput(),
+/// 					SecretVersion: secret_version_basic.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -342,7 +347,7 @@ import 'edge_cache_keyset_validation_shared_key.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -351,16 +356,25 @@ import 'edge_cache_keyset_validation_shared_key.dart';
 /// }
 ///
 /// resource "gcp_secretmanager_secret" "secret-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "secret-name"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "secret-version-basic" {
+/// resource "gcp_secretmanager_secret_version" "secret-version-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.secret-basic.id
 ///   secret_data = "secret-data"
 /// }
-/// resource "gcp_networkservices_edgecachekeyset" "default" {
+/// resource "gcp_networkservices_edge_cache_keyset" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-keyset"
 ///   description = "The default keyset"
 ///   public_keys {
@@ -368,7 +382,7 @@ import 'edge_cache_keyset_validation_shared_key.dart';
 ///     managed = true
 ///   }
 ///   validation_shared_keys {
-///     secret_version = gcp_secretmanager_secretversion.secret-version-basic.id
+///     secret_version = gcp_secretmanager_secret_version.secret-version-basic.id
 ///   }
 /// }
 /// ```
@@ -524,7 +538,7 @@ class EdgeCacheKeyset extends pulumi.CustomResource {
           'gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

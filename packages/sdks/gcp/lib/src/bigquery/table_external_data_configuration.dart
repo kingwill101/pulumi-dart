@@ -197,7 +197,7 @@ class TableExternalDataConfiguration {
       ignoreUnknownValues: (() { final guardedValue = map['ignoreUnknownValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       jsonExtension: (() { final guardedValue = map['jsonExtension']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       jsonOptions: (() { final guardedValue = map['jsonOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableExternalDataConfigurationJsonOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxBadRecords: (() { final guardedValue = map['maxBadRecords']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxBadRecords: (() { final guardedValue = map['maxBadRecords']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       metadataCacheMode: (() { final guardedValue = map['metadataCacheMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       objectMetadata: (() { final guardedValue = map['objectMetadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parquetOptions: (() { final guardedValue = map['parquetOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableExternalDataConfigurationParquetOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

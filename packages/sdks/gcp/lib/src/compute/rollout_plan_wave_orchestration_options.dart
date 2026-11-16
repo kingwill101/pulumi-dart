@@ -33,8 +33,8 @@ class RolloutPlanWaveOrchestrationOptions {
   factory RolloutPlanWaveOrchestrationOptions.fromMap(Map<String, dynamic> map) {
     return RolloutPlanWaveOrchestrationOptions(
       delays: (() { final guardedValue = map['delays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RolloutPlanWaveOrchestrationOptionsDelay>(guardedValue, (value) => RolloutPlanWaveOrchestrationOptionsDelay.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      maxConcurrentLocations: (() { final guardedValue = map['maxConcurrentLocations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxConcurrentResourcesPerLocation: (() { final guardedValue = map['maxConcurrentResourcesPerLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxConcurrentLocations: (() { final guardedValue = map['maxConcurrentLocations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxConcurrentResourcesPerLocation: (() { final guardedValue = map['maxConcurrentResourcesPerLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

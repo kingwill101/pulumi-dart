@@ -9,6 +9,7 @@ import 'code_tools_setting_binding_state.dart';
 /// * How-to Guides
 /// * [Gemini Cloud Assist overview](https://cloud.google.com/gemini/docs/cloud-assist/overview)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Gemini Code Tools Setting Binding Basic
@@ -119,7 +120,7 @@ import 'code_tools_setting_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gemini"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gemini"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -163,7 +164,7 @@ import 'code_tools_setting_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -171,7 +172,10 @@ import 'code_tools_setting_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_gemini_codetoolssetting" "example" {
+/// resource "gcp_gemini_code_tools_setting" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   code_tools_setting_id = "ls-tf1"
 ///   location              = "global"
 ///   labels = {
@@ -188,7 +192,10 @@ import 'code_tools_setting_binding_state.dart';
 ///     uri_override = "my_uri_override"
 ///   }
 /// }
-/// resource "gcp_gemini_codetoolssettingbinding" "example" {
+/// resource "gcp_gemini_code_tools_setting_binding" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   code_tools_setting_id = basic.codeToolsSettingId
 ///   setting_binding_id    = "ls-tf1b1"
 ///   location              = "global"
@@ -341,7 +348,7 @@ class CodeToolsSettingBinding extends pulumi.CustomResource {
           'gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     codeToolsSettingId = registerOutput<String>('codeToolsSettingId');

@@ -11,6 +11,8 @@ class GetJobTemplate {
   ///
   /// This field follows Kubernetes annotations' namespacing, limits, and rules.
   final pulumi.Input<Map<String, String>> annotations;
+  /// If true, the system will start the execution within the next 12 hours depending on available capacity.
+  final pulumi.Input<bool> delayExecution;
   /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
   /// or break down billing charges by team, component, environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or
   /// https://cloud.google.com/run/docs/configuring/labels.
@@ -27,12 +29,14 @@ class GetJobTemplate {
 
   /// Creates a new [GetJobTemplate].
   /// [annotations] Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+  /// [delayExecution] If true, the system will start the execution within the next 12 hours depending on available capacity.
   /// [labels] Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
   /// [parallelism] Specifies the maximum desired number of tasks the execution should run at given time. Must be &lt;= taskCount. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
   /// [taskCount] Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
   /// [templates] Describes the task(s) that will be created when executing an execution
   const GetJobTemplate({
     required this.annotations,
+    required this.delayExecution,
     required this.labels,
     required this.parallelism,
     required this.taskCount,
@@ -42,6 +46,7 @@ class GetJobTemplate {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': annotations,
+      'delayExecution': delayExecution,
       'labels': labels,
       'parallelism': parallelism,
       'taskCount': taskCount,
@@ -52,9 +57,10 @@ class GetJobTemplate {
   factory GetJobTemplate.fromMap(Map<String, dynamic> map) {
     return GetJobTemplate(
       annotations: pulumi.Input.fromValue((map['annotations'] as Map).cast<String, String>()),
+      delayExecution: pulumi.Input.fromValue(map['delayExecution'] as bool),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
-      parallelism: pulumi.Input.fromValue((map['parallelism'] as num).toInt()),
-      taskCount: pulumi.Input.fromValue((map['taskCount'] as num).toInt()),
+      parallelism: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['parallelism'])),
+      taskCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['taskCount'])),
       templates: pulumi.Input.fromValue(pulumi.Input.decodeList<GetJobTemplateTemplate>(map['templates']!, (value) => GetJobTemplateTemplate.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

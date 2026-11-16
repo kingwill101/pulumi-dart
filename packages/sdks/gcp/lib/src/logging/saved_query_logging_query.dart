@@ -39,8 +39,8 @@ class SavedQueryLoggingQuery {
   factory SavedQueryLoggingQuery.fromMap(Map<String, dynamic> map) {
     return SavedQueryLoggingQuery(
       filter: pulumi.Input.fromValue(map['filter'] as String),
-      summaryFieldEnd: (() { final guardedValue = map['summaryFieldEnd']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      summaryFieldStart: (() { final guardedValue = map['summaryFieldStart']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      summaryFieldEnd: (() { final guardedValue = map['summaryFieldEnd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      summaryFieldStart: (() { final guardedValue = map['summaryFieldStart']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       summaryFields: (() { final guardedValue = map['summaryFields']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SavedQueryLoggingQuerySummaryField>(guardedValue, (value) => SavedQueryLoggingQuerySummaryField.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

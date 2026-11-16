@@ -46,6 +46,8 @@ class RouterState {
   final pulumi.Input<String?>? project;
   /// Region where the router resides.
   final pulumi.Input<String?>? region;
+  /// The unique identifier number for the resource. This identifier is defined by the server.
+  final pulumi.Input<int?>? routerId;
   /// The URI of the created resource.
   final pulumi.Input<String?>? selfLink;
 
@@ -62,6 +64,7 @@ class RouterState {
   /// [params] Additional params passed with the request, but not persisted as part of resource payload
   /// [project] The ID of the project in which the resource belongs.
   /// [region] Region where the router resides.
+  /// [routerId] The unique identifier number for the resource. This identifier is defined by the server.
   /// [selfLink] The URI of the created resource.
   const RouterState({
     this.bgp,
@@ -76,6 +79,7 @@ class RouterState {
     this.params,
     this.project,
     this.region,
+    this.routerId,
     this.selfLink,
   });
 
@@ -93,6 +97,7 @@ class RouterState {
       'params': ?pulumi.Input.mapOptionalInputValue<RouterParams, Map<String, dynamic>>(params, (value) => value.toMap()),
       'project': ?project,
       'region': ?region,
+      'routerId': ?routerId,
       'selfLink': ?selfLink,
     };
   }
@@ -111,6 +116,7 @@ class RouterState {
       params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RouterParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routerId: (() { final guardedValue = map['routerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

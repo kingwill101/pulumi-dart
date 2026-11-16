@@ -49,7 +49,7 @@ import 'get_instance_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/spanner"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/spanner"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -67,7 +67,7 @@ import 'get_instance_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -75,7 +75,7 @@ import 'get_instance_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_spanner_getdatabase" "foo" {
+/// data "gcp_spanner_database" "foo" {
 ///   name     = "foo"
 ///   instance = instance.name
 /// }
@@ -188,7 +188,7 @@ pulumi.Output<GetDatabaseResult> getDatabaseOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/spanner"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/spanner"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -207,7 +207,7 @@ pulumi.Output<GetDatabaseResult> getDatabaseOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -215,7 +215,7 @@ pulumi.Output<GetDatabaseResult> getDatabaseOutput(
 ///   }
 /// }
 ///
-/// data "gcp_spanner_getdatabaseiampolicy" "foo" {
+/// data "gcp_spanner_database_iam_policy" "foo" {
 ///   project  = database.project
 ///   database = database.name
 ///   instance = database.instance
@@ -325,7 +325,7 @@ pulumi.Output<GetDatabaseIamPolicyResult> getDatabaseIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/spanner"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/spanner"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -342,7 +342,7 @@ pulumi.Output<GetDatabaseIamPolicyResult> getDatabaseIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -350,7 +350,7 @@ pulumi.Output<GetDatabaseIamPolicyResult> getDatabaseIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_spanner_getinstance" "foo" {
+/// data "gcp_spanner_instance" "foo" {
 ///   name = "bar"
 /// }
 /// ```
@@ -457,7 +457,7 @@ pulumi.Output<GetInstanceResult> getInstanceOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/spanner"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/spanner"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -475,7 +475,7 @@ pulumi.Output<GetInstanceResult> getInstanceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -483,7 +483,7 @@ pulumi.Output<GetInstanceResult> getInstanceOutput(
 ///   }
 /// }
 ///
-/// data "gcp_spanner_getinstanceiampolicy" "foo" {
+/// data "gcp_spanner_instance_iam_policy" "foo" {
 ///   project  = instance.project
 ///   instance = instance.name
 /// }

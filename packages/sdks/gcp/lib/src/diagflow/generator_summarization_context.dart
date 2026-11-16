@@ -13,14 +13,14 @@ class GeneratorSummarizationContext {
   /// Optional. List of sections. Note it contains both predefined section sand customer defined sections.
   /// Structure is documented below.
   final pulumi.Input<List<GeneratorSummarizationContextSummarizationSection>?>? summarizationSections;
-  /// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
+  /// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["5.0", "6.0"].
   final pulumi.Input<String?>? version;
 
   /// Creates a new [GeneratorSummarizationContext].
   /// [fewShotExamples] Optional. List of few shot examples.
   /// [outputLanguageCode] Optional. The target language of the generated summary. The language code for conversation will be used if this field is empty. Supported 2.0 and later versions.
   /// [summarizationSections] Optional. List of sections. Note it contains both predefined section sand customer defined sections.
-  /// [version] Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
+  /// [version] Optional. Version of the feature. If not set, default to latest version. Current candidates are ["5.0", "6.0"].
   const GeneratorSummarizationContext({
     this.fewShotExamples,
     this.outputLanguageCode,

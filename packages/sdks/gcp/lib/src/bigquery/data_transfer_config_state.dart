@@ -144,7 +144,7 @@ class DataTransferConfigState {
 
   factory DataTransferConfigState.fromMap(Map<String, dynamic> map) {
     return DataTransferConfigState(
-      dataRefreshWindowDays: (() { final guardedValue = map['dataRefreshWindowDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      dataRefreshWindowDays: (() { final guardedValue = map['dataRefreshWindowDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       dataSourceId: (() { final guardedValue = map['dataSourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationDatasetId: (() { final guardedValue = map['destinationDatasetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -9,6 +9,7 @@ import 'region_network_firewall_policy_association_state.dart';
 ///
 /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionNetworkFirewallPolicies/addAssociation)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Region Network Firewall Policy Association
@@ -93,7 +94,7 @@ import 'region_network_firewall_policy_association_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -118,8 +119,8 @@ import 'region_network_firewall_policy_association_state.dart';
 /// 		_, err = compute.NewRegionNetworkFirewallPolicyAssociation(ctx, "default", &compute.RegionNetworkFirewallPolicyAssociationArgs{
 /// 			Name:             pulumi.String("my-association"),
 /// 			Project:          pulumi.String("my-project-name"),
-/// 			AttachmentTarget: network.ID().ToIDOutput().ToStringOutput(),
-/// 			FirewallPolicy:   policy.ID().ToIDOutput().ToStringOutput(),
+/// 			AttachmentTarget: network.ID(),
+/// 			FirewallPolicy:   policy.ID(),
 /// 			Region:           pulumi.String("us-west1"),
 /// 		})
 /// 		if err != nil {
@@ -130,7 +131,7 @@ import 'region_network_firewall_policy_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -138,21 +139,30 @@ import 'region_network_firewall_policy_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionnetworkfirewallpolicy" "policy" {
+/// resource "gcp_compute_region_network_firewall_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-policy"
 ///   project     = "my-project-name"
 ///   description = "Sample global network firewall policy"
 ///   region      = "us-west1"
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_compute_regionnetworkfirewallpolicyassociation" "default" {
+/// resource "gcp_compute_region_network_firewall_policy_association" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "my-association"
 ///   project           = "my-project-name"
 ///   attachment_target = gcp_compute_network.network.id
-///   firewall_policy   = gcp_compute_regionnetworkfirewallpolicy.policy.id
+///   firewall_policy   = gcp_compute_region_network_firewall_policy.policy.id
 ///   region            = "us-west1"
 /// }
 /// ```
@@ -227,6 +237,7 @@ import 'region_network_firewall_policy_association_state.dart';
 ///       firewallPolicy: ${policy.id}
 ///       region: us-west1
 /// ```
+///
 ///
 /// ### Region Network Firewall Policy Association Priority
 ///
@@ -313,7 +324,7 @@ import 'region_network_firewall_policy_association_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -338,8 +349,8 @@ import 'region_network_firewall_policy_association_state.dart';
 /// 		_, err = compute.NewRegionNetworkFirewallPolicyAssociation(ctx, "association", &compute.RegionNetworkFirewallPolicyAssociationArgs{
 /// 			Name:             pulumi.String("my-association"),
 /// 			Project:          pulumi.String("my-project-name"),
-/// 			AttachmentTarget: network.ID().ToIDOutput().ToStringOutput(),
-/// 			FirewallPolicy:   policy.ID().ToIDOutput().ToStringOutput(),
+/// 			AttachmentTarget: network.ID(),
+/// 			FirewallPolicy:   policy.ID(),
 /// 			Region:           pulumi.String("us-west1"),
 /// 			Priority:         pulumi.Int(1),
 /// 		})
@@ -351,7 +362,7 @@ import 'region_network_firewall_policy_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -359,21 +370,30 @@ import 'region_network_firewall_policy_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionnetworkfirewallpolicy" "policy" {
+/// resource "gcp_compute_region_network_firewall_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-policy"
 ///   project     = "my-project-name"
 ///   description = "Sample global network firewall policy"
 ///   region      = "us-west1"
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_compute_regionnetworkfirewallpolicyassociation" "association" {
+/// resource "gcp_compute_region_network_firewall_policy_association" "association" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "my-association"
 ///   project           = "my-project-name"
 ///   attachment_target = gcp_compute_network.network.id
-///   firewall_policy   = gcp_compute_regionnetworkfirewallpolicy.policy.id
+///   firewall_policy   = gcp_compute_region_network_firewall_policy.policy.id
 ///   region            = "us-west1"
 ///   priority          = 1
 /// }
@@ -510,7 +530,7 @@ class RegionNetworkFirewallPolicyAssociation extends pulumi.CustomResource {
           'gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     attachmentTarget = registerOutput<String>('attachmentTarget');
     deletionPolicy = registerOutput<String>('deletionPolicy');

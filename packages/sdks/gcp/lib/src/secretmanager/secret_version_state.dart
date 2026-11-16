@@ -38,13 +38,13 @@ class SecretVersionState {
   final pulumi.Input<String?>? secretData;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// (Optional, Write-Only)
-  /// The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+  /// The secret data. Must be no larger than 64KiB.
   /// **Note**: This property is write-only and will not be read from the API.
   ///
   /// &gt; **Note:** One of `secretData` or `secretDataWo` can only be set.
   final pulumi.Input<String?>? secretDataWo;
-  /// Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-  final pulumi.Input<int?>? secretDataWoVersion;
+  /// Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+  final pulumi.Input<String?>? secretDataWoVersion;
   /// The version of the Secret.
   final pulumi.Input<String?>? version;
 
@@ -59,7 +59,7 @@ class SecretVersionState {
   /// [secret] Secret Manager secret resource
   /// [secretData] The secret data. Must be no larger than 64KiB.
   /// [secretDataWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// [secretDataWoVersion] Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+  /// [secretDataWoVersion] Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   /// [version] The version of the Secret.
   const SecretVersionState({
     this.createTime,
@@ -105,7 +105,7 @@ class SecretVersionState {
       secret: (() { final guardedValue = map['secret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secretData: (() { final guardedValue = map['secretData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secretDataWo: (() { final guardedValue = map['secretDataWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      secretDataWoVersion: (() { final guardedValue = map['secretDataWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      secretDataWoVersion: (() { final guardedValue = map['secretDataWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

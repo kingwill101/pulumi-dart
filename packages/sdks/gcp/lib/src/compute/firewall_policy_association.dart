@@ -10,6 +10,7 @@ import 'firewall_policy_association_state.dart';
 ///
 /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/firewallPolicies/addAssociation)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Firewall Policy Association
@@ -88,8 +89,8 @@ import 'firewall_policy_association_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -112,7 +113,7 @@ import 'firewall_policy_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewFirewallPolicyAssociation(ctx, "default", &compute.FirewallPolicyAssociationArgs{
-/// 			FirewallPolicy:   policy.ID().ToIDOutput().ToStringOutput(),
+/// 			FirewallPolicy:   policy.ID(),
 /// 			AttachmentTarget: folder.Name,
 /// 			Name:             pulumi.String("my-association"),
 /// 		})
@@ -124,7 +125,7 @@ import 'firewall_policy_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -133,17 +134,26 @@ import 'firewall_policy_association_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_folder" "folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name        = "folder-fpa"
 ///   parent              = "organizations/123456789"
 ///   deletion_protection = false
 /// }
-/// resource "gcp_compute_firewallpolicy" "policy" {
+/// resource "gcp_compute_firewall_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent      = "organizations/123456789"
 ///   short_name  = "my-policy"
 ///   description = "Example Resource"
 /// }
-/// resource "gcp_compute_firewallpolicyassociation" "default" {
-///   firewall_policy   = gcp_compute_firewallpolicy.policy.id
+/// resource "gcp_compute_firewall_policy_association" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   firewall_policy   = gcp_compute_firewall_policy.policy.id
 ///   attachment_target = gcp_organizations_folder.folder.name
 ///   name              = "my-association"
 /// }
@@ -216,6 +226,7 @@ import 'firewall_policy_association_state.dart';
 ///       name: my-association
 /// ```
 ///
+///
 /// ## Import
 ///
 /// FirewallPolicyAssociation can be imported using any of these accepted formats:
@@ -263,7 +274,7 @@ class FirewallPolicyAssociation extends pulumi.CustomResource {
           'gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     attachmentTarget = registerOutput<String>('attachmentTarget');
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -17,6 +17,7 @@ import 'change_stream_state.dart';
 /// &gt; **Warning:** This resource creates a Firestore Change Stream on a project that already has
 /// a Firestore database.
 ///
+///
 /// ## Example Usage
 ///
 /// ### Firestore Change Stream Basic
@@ -122,7 +123,7 @@ import 'change_stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -165,7 +166,7 @@ import 'change_stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -177,6 +178,9 @@ import 'change_stream_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = "my-project-name"
 ///   name             = "database-id"
 ///   location_id      = "nam5"
@@ -185,11 +189,17 @@ import 'change_stream_state.dart';
 ///   deletion_policy  = "DELETE"
 /// }
 /// resource "time_sleep" "wait_30_seconds" {
-///   depends_on      = [gcp_firestore_database.database]
+///   depends_on = [gcp_firestore_database.database]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "30s"
 /// }
-/// resource "gcp_firestore_changestream" "change_stream" {
-///   depends_on       = [time_sleep.wait_30_seconds]
+/// resource "gcp_firestore_change_stream" "change_stream" {
+///   depends_on = [time_sleep.wait_30_seconds]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = "my-project-name"
 ///   database         = gcp_firestore_database.database.name
 ///   name             = "my-change-stream"
@@ -285,6 +295,7 @@ import 'change_stream_state.dart';
 ///       dependsOn:
 ///         - ${wait30Seconds}
 /// ```
+///
 ///
 /// ### Firestore Change Stream Full
 ///
@@ -396,7 +407,7 @@ import 'change_stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -441,7 +452,7 @@ import 'change_stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -453,6 +464,9 @@ import 'change_stream_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = "my-project-name"
 ///   name             = "database-id"
 ///   location_id      = "nam5"
@@ -461,11 +475,17 @@ import 'change_stream_state.dart';
 ///   deletion_policy  = "DELETE"
 /// }
 /// resource "time_sleep" "wait_30_seconds" {
-///   depends_on      = [gcp_firestore_database.database]
+///   depends_on = [gcp_firestore_database.database]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "30s"
 /// }
-/// resource "gcp_firestore_changestream" "change_stream" {
-///   depends_on       = [time_sleep.wait_30_seconds]
+/// resource "gcp_firestore_change_stream" "change_stream" {
+///   depends_on = [time_sleep.wait_30_seconds]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = "my-project-name"
 ///   database         = gcp_firestore_database.database.name
 ///   name             = "my-change-stream"
@@ -630,7 +650,7 @@ class ChangeStream extends pulumi.CustomResource {
           'gcp:firestore/changeStream:ChangeStream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     collectionGroupScope = registerOutput<ChangeStreamCollectionGroupScope?>('collectionGroupScope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChangeStreamCollectionGroupScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

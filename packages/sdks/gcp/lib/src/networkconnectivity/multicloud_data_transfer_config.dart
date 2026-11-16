@@ -12,6 +12,7 @@ import 'multicloud_data_transfer_config_state.dart';
 /// * How-to Guides
 /// * [QUICKSTART_TITLE](https://docs.cloud.google.com/data-transfer-essentials/docs/create-resources)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Network Connectivity Multicloud Data Transfer Config Basic
@@ -95,7 +96,7 @@ import 'multicloud_data_transfer_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -125,7 +126,7 @@ import 'multicloud_data_transfer_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -133,7 +134,10 @@ import 'multicloud_data_transfer_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkconnectivity_multiclouddatatransferconfig" "example" {
+/// resource "gcp_networkconnectivity_multicloud_data_transfer_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "basic_config"
 ///   location    = "europe-west1"
 ///   description = "A basic multicloud data transfer configs"
@@ -282,7 +286,7 @@ class MulticloudDataTransferConfig extends pulumi.CustomResource {
           'gcp:networkconnectivity/multicloudDataTransferConfig:MulticloudDataTransferConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

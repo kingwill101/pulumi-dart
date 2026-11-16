@@ -14,6 +14,7 @@ import 'multicast_domain_ull_multicast_domain.dart';
 /// * How-to Guides
 /// * [Create Multicast Domain](https://docs.cloud.google.com/vpc/docs/multicast/create-domains#create-domain)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Network Services Multicast Domain Basic
@@ -111,8 +112,8 @@ import 'multicast_domain_ull_multicast_domain.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -132,7 +133,7 @@ import 'multicast_domain_ull_multicast_domain.dart';
 /// 			Labels: pulumi.StringMap{
 /// 				"label-one": pulumi.String("value-one"),
 /// 			},
-/// 			AdminNetwork: network.ID().ToIDOutput().ToStringOutput(),
+/// 			AdminNetwork: network.ID(),
 /// 			ConnectionConfig: &networkservices.MulticastDomainConnectionConfigArgs{
 /// 				ConnectionType: pulumi.String("SAME_VPC"),
 /// 				NccHub:         pulumi.String(""),
@@ -149,7 +150,7 @@ import 'multicast_domain_ull_multicast_domain.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -158,11 +159,17 @@ import 'multicast_domain_ull_multicast_domain.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "test-md-network"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_networkservices_multicastdomain" "md_test" {
-///   depends_on          = [gcp_compute_network.network]
+/// resource "gcp_networkservices_multicast_domain" "md_test" {
+///   depends_on = [gcp_compute_network.network]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   multicast_domain_id = "test-md-domain"
 ///   location            = "global"
 ///   description         = "A sample domain"
@@ -349,7 +356,7 @@ class MulticastDomain extends pulumi.CustomResource {
           'gcp:networkservices/multicastDomain:MulticastDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     adminNetwork = registerOutput<String>('adminNetwork');

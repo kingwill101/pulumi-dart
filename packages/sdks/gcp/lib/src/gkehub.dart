@@ -74,6 +74,8 @@ export 'gkehub/fleet_args.dart';
 export 'gkehub/fleet_default_cluster_config.dart';
 export 'gkehub/fleet_default_cluster_config_binary_authorization_config.dart';
 export 'gkehub/fleet_default_cluster_config_binary_authorization_config_policy_binding.dart';
+export 'gkehub/fleet_default_cluster_config_compliance_posture_config.dart';
+export 'gkehub/fleet_default_cluster_config_compliance_posture_config_compliance_standard.dart';
 export 'gkehub/fleet_default_cluster_config_security_posture_config.dart';
 export 'gkehub/fleet_gkehub_state.dart';
 export 'gkehub/fleet_state.dart';

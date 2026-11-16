@@ -53,13 +53,13 @@ class GetServiceTemplateContainerLivenessProbe {
 
   factory GetServiceTemplateContainerLivenessProbe.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateContainerLivenessProbe(
-      failureThreshold: pulumi.Input.fromValue((map['failureThreshold'] as num).toInt()),
+      failureThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['failureThreshold'])),
       grpcs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateContainerLivenessProbeGrpc>(map['grpcs']!, (value) => GetServiceTemplateContainerLivenessProbeGrpc.fromMap((value as Map).cast<String, dynamic>()))),
       httpGets: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateContainerLivenessProbeHttpGet>(map['httpGets']!, (value) => GetServiceTemplateContainerLivenessProbeHttpGet.fromMap((value as Map).cast<String, dynamic>()))),
-      initialDelaySeconds: pulumi.Input.fromValue((map['initialDelaySeconds'] as num).toInt()),
-      periodSeconds: pulumi.Input.fromValue((map['periodSeconds'] as num).toInt()),
+      initialDelaySeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['initialDelaySeconds'])),
+      periodSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['periodSeconds'])),
       tcpSockets: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateContainerLivenessProbeTcpSocket>(map['tcpSockets']!, (value) => GetServiceTemplateContainerLivenessProbeTcpSocket.fromMap((value as Map).cast<String, dynamic>()))),
-      timeoutSeconds: pulumi.Input.fromValue((map['timeoutSeconds'] as num).toInt()),
+      timeoutSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['timeoutSeconds'])),
     );
   }
 }

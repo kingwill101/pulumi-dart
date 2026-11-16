@@ -14,6 +14,7 @@ import 'custom_target_type_tasks.dart';
 /// * How-to Guides
 /// * [Define and use a custom target type](https://cloud.google.com/deploy/docs/deploy-app-custom-target)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Clouddeploy Custom Target Type Basic
@@ -99,7 +100,7 @@ import 'custom_target_type_tasks.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/clouddeploy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/clouddeploy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -130,7 +131,7 @@ import 'custom_target_type_tasks.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -138,7 +139,10 @@ import 'custom_target_type_tasks.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_clouddeploy_customtargettype" "custom-target-type" {
+/// resource "gcp_clouddeploy_custom_target_type" "custom-target-type" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-central1"
 ///   name        = "my-custom-target-type"
 ///   description = "My custom target type"
@@ -217,6 +221,7 @@ import 'custom_target_type_tasks.dart';
 ///         renderAction: renderAction
 ///         deployAction: deployAction
 /// ```
+///
 ///
 /// ### Clouddeploy Custom Target Type Git Skaffold Modules
 ///
@@ -307,7 +312,7 @@ import 'custom_target_type_tasks.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/clouddeploy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/clouddeploy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -342,7 +347,7 @@ import 'custom_target_type_tasks.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -350,7 +355,10 @@ import 'custom_target_type_tasks.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_clouddeploy_customtargettype" "custom-target-type" {
+/// resource "gcp_clouddeploy_custom_target_type" "custom-target-type" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-central1"
 ///   name        = "my-custom-target-type"
 ///   description = "My custom target type"
@@ -358,11 +366,11 @@ import 'custom_target_type_tasks.dart';
 ///     render_action = "renderAction"
 ///     deploy_action = "deployAction"
 ///     include_skaffold_modules = [{
-///       "configs" = ["my-config"]
-///       "git" = {
-///         "repo" = "http://github.com/example/example-repo.git"
-///         "path" = "configs/skaffold.yaml"
-///         "ref"  = "main"
+///       configs = ["my-config"]
+///       git = {
+///         repo = "http://github.com/example/example-repo.git"
+///         path = "configs/skaffold.yaml"
+///         ref  = "main"
 ///       }
 ///     }]
 ///   }
@@ -432,6 +440,7 @@ import 'custom_target_type_tasks.dart';
 ///               path: configs/skaffold.yaml
 ///               ref: main
 /// ```
+///
 ///
 /// ### Clouddeploy Custom Target Type Gcs Skaffold Modules
 ///
@@ -519,7 +528,7 @@ import 'custom_target_type_tasks.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/clouddeploy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/clouddeploy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -553,7 +562,7 @@ import 'custom_target_type_tasks.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -561,7 +570,10 @@ import 'custom_target_type_tasks.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_clouddeploy_customtargettype" "custom-target-type" {
+/// resource "gcp_clouddeploy_custom_target_type" "custom-target-type" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-central1"
 ///   name        = "my-custom-target-type"
 ///   description = "My custom target type"
@@ -569,10 +581,10 @@ import 'custom_target_type_tasks.dart';
 ///     render_action = "renderAction"
 ///     deploy_action = "deployAction"
 ///     include_skaffold_modules = [{
-///       "configs" = ["my-config"]
-///       "googleCloudStorage" = {
-///         "source" = "gs://example-bucket/dir/configs/*"
-///         "path"   = "skaffold.yaml"
+///       configs = ["my-config"]
+///       google_cloud_storage = {
+///         source = "gs://example-bucket/dir/configs/*"
+///         path   = "skaffold.yaml"
 ///       }
 ///     }]
 ///   }
@@ -640,6 +652,7 @@ import 'custom_target_type_tasks.dart';
 ///               source: gs://example-bucket/dir/configs/*
 ///               path: skaffold.yaml
 /// ```
+///
 ///
 /// ### Clouddeploy Custom Target Type Gcb Repo Skaffold Modules
 ///
@@ -730,7 +743,7 @@ import 'custom_target_type_tasks.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/clouddeploy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/clouddeploy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -765,7 +778,7 @@ import 'custom_target_type_tasks.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -773,7 +786,10 @@ import 'custom_target_type_tasks.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_clouddeploy_customtargettype" "custom-target-type" {
+/// resource "gcp_clouddeploy_custom_target_type" "custom-target-type" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-central1"
 ///   name        = "my-custom-target-type"
 ///   description = "My custom target type"
@@ -781,11 +797,11 @@ import 'custom_target_type_tasks.dart';
 ///     render_action = "renderAction"
 ///     deploy_action = "deployAction"
 ///     include_skaffold_modules = [{
-///       "configs" = ["my-config"]
-///       "googleCloudBuildRepo" = {
-///         "repository" = "projects/example/locations/us-central1/connections/git/repositories/example-repo"
-///         "path"       = "configs/skaffold.yaml"
-///         "ref"        = "main"
+///       configs = ["my-config"]
+///       google_cloud_build_repo = {
+///         repository = "projects/example/locations/us-central1/connections/git/repositories/example-repo"
+///         path       = "configs/skaffold.yaml"
+///         ref        = "main"
 ///       }
 ///     }]
 ///   }
@@ -855,6 +871,7 @@ import 'custom_target_type_tasks.dart';
 ///               path: configs/skaffold.yaml
 ///               ref: main
 /// ```
+///
 ///
 /// ### Clouddeploy Custom Target Type Tasks
 ///
@@ -941,7 +958,7 @@ import 'custom_target_type_tasks.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/clouddeploy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/clouddeploy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -972,7 +989,7 @@ import 'custom_target_type_tasks.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -980,7 +997,10 @@ import 'custom_target_type_tasks.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_clouddeploy_customtargettype" "custom-target-type" {
+/// resource "gcp_clouddeploy_custom_target_type" "custom-target-type" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-central1"
 ///   name        = "my-custom-target-type"
 ///   description = "My custom target type"
@@ -1140,7 +1160,7 @@ class CustomTargetType extends pulumi.CustomResource {
           'gcp:clouddeploy/customTargetType:CustomTargetType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

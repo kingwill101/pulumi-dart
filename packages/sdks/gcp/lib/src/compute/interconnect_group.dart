@@ -16,6 +16,7 @@ import 'interconnect_group_state.dart';
 /// * How-to Guides
 /// * [Create a Dedicated Interconnect](https://cloud.google.com/network-connectivity/docs/interconnect/concepts/dedicated-overview)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Interconnect Group Basic
@@ -66,7 +67,7 @@ import 'interconnect_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -86,7 +87,7 @@ import 'interconnect_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -94,7 +95,10 @@ import 'interconnect_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_interconnectgroup" "example-interconnect-group" {
+/// resource "gcp_compute_interconnect_group" "example-interconnect-group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-interconnect-group"
 ///   intent = {
 ///     topology_capability = "NO_SLA"
@@ -215,7 +219,7 @@ class InterconnectGroup extends pulumi.CustomResource {
           'gcp:compute/interconnectGroup:InterconnectGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     configureds = registerOutput<List<InterconnectGroupConfigured>>('configureds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectGroupConfigured>(guardedValue, (value) => InterconnectGroupConfigured.fromMap((value as Map).cast<String, dynamic>())); });
     creationTimestamp = registerOutput<String>('creationTimestamp');

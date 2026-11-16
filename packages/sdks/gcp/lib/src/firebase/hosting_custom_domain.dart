@@ -18,6 +18,7 @@ import 'hosting_custom_domain_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://firebase.google.com/docs/hosting)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Firebasehosting Customdomain Basic
@@ -64,7 +65,7 @@ import 'hosting_custom_domain_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -83,7 +84,7 @@ import 'hosting_custom_domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -91,7 +92,10 @@ import 'hosting_custom_domain_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_hostingcustomdomain" "default" {
+/// resource "gcp_firebase_hosting_custom_domain" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project       = "my-project-name"
 ///   site_id       = "site-id"
 ///   custom_domain = "custom.domain.com"
@@ -136,6 +140,7 @@ import 'hosting_custom_domain_state.dart';
 ///       siteId: site-id
 ///       customDomain: custom.domain.com
 /// ```
+///
 ///
 /// ### Firebasehosting Customdomain Full
 ///
@@ -203,7 +208,7 @@ import 'hosting_custom_domain_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -232,7 +237,7 @@ import 'hosting_custom_domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -240,13 +245,19 @@ import 'hosting_custom_domain_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_hostingsite" "default" {
+/// resource "gcp_firebase_hosting_site" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   site_id = "site-id-full"
 /// }
-/// resource "gcp_firebase_hostingcustomdomain" "default" {
+/// resource "gcp_firebase_hosting_custom_domain" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project               = "my-project-name"
-///   site_id               = gcp_firebase_hostingsite.default.site_id
+///   site_id               = gcp_firebase_hosting_site.default.site_id
 ///   custom_domain         = "source.domain.com"
 ///   cert_preference       = "GROUPED"
 ///   redirect_target       = "destination.domain.com"
@@ -311,6 +322,7 @@ import 'hosting_custom_domain_state.dart';
 ///       redirectTarget: destination.domain.com
 ///       waitDnsVerification: false
 /// ```
+///
 ///
 /// ### Firebasehosting Customdomain Cloud Run
 ///
@@ -473,8 +485,8 @@ import 'hosting_custom_domain_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -543,7 +555,7 @@ import 'hosting_custom_domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -551,42 +563,57 @@ import 'hosting_custom_domain_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_hostingsite" "default" {
+/// resource "gcp_firebase_hosting_site" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   site_id = "site-id"
 /// }
 /// resource "gcp_cloudrunv2_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project  = "my-project-name"
 ///   name     = "cloud-run-service-via-hosting"
 ///   location = "us-central1"
 ///   ingress  = "INGRESS_TRAFFIC_ALL"
 ///   template = {
 ///     containers = [{
-///       "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///       image = "us-docker.pkg.dev/cloudrun/container/hello"
 ///     }]
 ///   }
 ///   deletion_protection = true
 /// }
-/// resource "gcp_firebase_hostingversion" "default" {
-///   site_id = gcp_firebase_hostingsite.default.site_id
+/// resource "gcp_firebase_hosting_version" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   site_id = gcp_firebase_hosting_site.default.site_id
 ///   config = {
 ///     rewrites = [{
-///       "glob" = "/hello/**"
-///       "run" = {
-///         "serviceId" = gcp_cloudrunv2_service.default.name
-///         "region"    = gcp_cloudrunv2_service.default.location
+///       glob = "/hello/**"
+///       run = {
+///         service_id = gcp_cloudrunv2_service.default.name
+///         region     = gcp_cloudrunv2_service.default.location
 ///       }
 ///     }]
 ///   }
 /// }
-/// resource "gcp_firebase_hostingrelease" "default" {
-///   site_id      = gcp_firebase_hostingsite.default.site_id
-///   version_name = gcp_firebase_hostingversion.default.name
+/// resource "gcp_firebase_hosting_release" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   site_id      = gcp_firebase_hosting_site.default.site_id
+///   version_name = gcp_firebase_hosting_version.default.name
 ///   message      = "Cloud Run Integration"
 /// }
-/// resource "gcp_firebase_hostingcustomdomain" "default" {
+/// resource "gcp_firebase_hosting_custom_domain" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project               = "my-project-name"
-///   site_id               = gcp_firebase_hostingsite.default.site_id
+///   site_id               = gcp_firebase_hosting_site.default.site_id
 ///   custom_domain         = "run.custom.domain.com"
 ///   wait_dns_verification = false
 /// }
@@ -870,7 +897,7 @@ class HostingCustomDomain extends pulumi.CustomResource {
           'gcp:firebase/hostingCustomDomain:HostingCustomDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     certPreference = registerOutput<String>('certPreference');
     certs = registerOutput<List<HostingCustomDomainCert>>('certs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HostingCustomDomainCert>(guardedValue, (value) => HostingCustomDomainCert.fromMap((value as Map).cast<String, dynamic>())); });

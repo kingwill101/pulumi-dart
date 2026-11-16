@@ -25,8 +25,8 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch {
 
   factory RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch(
-      rangeEnd: pulumi.Input.fromValue((map['rangeEnd'] as num).toInt()),
-      rangeStart: pulumi.Input.fromValue((map['rangeStart'] as num).toInt()),
+      rangeEnd: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rangeEnd'])),
+      rangeStart: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rangeStart'])),
     );
   }
 }

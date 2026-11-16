@@ -55,7 +55,7 @@ class GetTableExternalDataConfigurationCsvOption {
       encoding: pulumi.Input.fromValue(map['encoding'] as String),
       fieldDelimiter: pulumi.Input.fromValue(map['fieldDelimiter'] as String),
       quote: pulumi.Input.fromValue(map['quote'] as String),
-      skipLeadingRows: pulumi.Input.fromValue((map['skipLeadingRows'] as num).toInt()),
+      skipLeadingRows: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['skipLeadingRows'])),
       sourceColumnMatch: pulumi.Input.fromValue(map['sourceColumnMatch'] as String),
     );
   }

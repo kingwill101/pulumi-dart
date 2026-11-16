@@ -12,6 +12,7 @@ import 'connector_subnet.dart';
 /// * How-to Guides
 /// * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Vpc Access Connector
@@ -64,7 +65,7 @@ import 'connector_subnet.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vpcaccess"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vpcaccess"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -85,7 +86,7 @@ import 'connector_subnet.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -94,6 +95,9 @@ import 'connector_subnet.dart';
 /// }
 ///
 /// resource "gcp_vpcaccess_connector" "connector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "vpc-con"
 ///   ip_cidr_range = "10.8.0.0/28"
 ///   network       = "default"
@@ -144,6 +148,7 @@ import 'connector_subnet.dart';
 ///       minInstances: 2
 ///       maxInstances: 3
 /// ```
+///
 ///
 /// ### Vpc Access Connector Shared Vpc
 ///
@@ -221,8 +226,8 @@ import 'connector_subnet.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vpcaccess"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vpcaccess"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -254,7 +259,7 @@ import 'connector_subnet.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -263,6 +268,9 @@ import 'connector_subnet.dart';
 /// }
 ///
 /// resource "gcp_vpcaccess_connector" "connector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "vpc-con"
 ///   subnet = {
 ///     name = gcp_compute_subnetwork.custom_test.name
@@ -272,6 +280,9 @@ import 'connector_subnet.dart';
 ///   max_instances = 3
 /// }
 /// resource "gcp_compute_subnetwork" "custom_test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "vpc-con"
 ///   ip_cidr_range = "10.2.0.0/28"
 ///   region        = "us-central1"
@@ -419,7 +430,7 @@ class Connector extends pulumi.CustomResource {
           'gcp:vpcaccess/connector:Connector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     connectedProjects = registerOutput<List<String>>('connectedProjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

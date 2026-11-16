@@ -48,9 +48,9 @@ class GetInstanceAdvancedMachineFeature {
       enableNestedVirtualization: pulumi.Input.fromValue(map['enableNestedVirtualization'] as bool),
       enableUefiNetworking: pulumi.Input.fromValue(map['enableUefiNetworking'] as bool),
       performanceMonitoringUnit: pulumi.Input.fromValue(map['performanceMonitoringUnit'] as String),
-      threadsPerCore: pulumi.Input.fromValue((map['threadsPerCore'] as num).toInt()),
+      threadsPerCore: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['threadsPerCore'])),
       turboMode: pulumi.Input.fromValue(map['turboMode'] as String),
-      visibleCoreCount: pulumi.Input.fromValue((map['visibleCoreCount'] as num).toInt()),
+      visibleCoreCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['visibleCoreCount'])),
     );
   }
 }

@@ -16,6 +16,7 @@ import 'job_terminal_condition.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/run/docs/)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Cloudrunv2 Job Basic
@@ -89,7 +90,7 @@ import 'job_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -117,7 +118,7 @@ import 'job_terminal_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -126,13 +127,16 @@ import 'job_terminal_condition.dart';
 /// }
 ///
 /// resource "gcp_cloudrunv2_job" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cloudrun-job"
 ///   location            = "us-central1"
 ///   deletion_protection = false
 ///   template = {
 ///     template = {
 ///       containers = [{
-///         "image" = "us-docker.pkg.dev/cloudrun/container/job"
+///         image = "us-docker.pkg.dev/cloudrun/container/job"
 ///       }]
 ///     }
 ///   }
@@ -191,6 +195,7 @@ import 'job_terminal_condition.dart';
 ///           containers:
 ///             - image: us-docker.pkg.dev/cloudrun/container/job
 /// ```
+///
 ///
 /// ### Cloudrunv2 Job Limits
 ///
@@ -283,7 +288,7 @@ import 'job_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -317,7 +322,7 @@ import 'job_terminal_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -326,15 +331,18 @@ import 'job_terminal_condition.dart';
 /// }
 ///
 /// resource "gcp_cloudrunv2_job" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cloudrun-job"
 ///   location            = "us-central1"
 ///   deletion_protection = false
 ///   template = {
 ///     template = {
 ///       containers = [{
-///         "image" = "us-docker.pkg.dev/cloudrun/container/job"
-///         "resources" = {
-///           "limits" = {
+///         image = "us-docker.pkg.dev/cloudrun/container/job"
+///         resources = {
+///           limits = {
 ///             "cpu"    = "2"
 ///             "memory" = "1024Mi"
 ///           }
@@ -408,6 +416,199 @@ import 'job_terminal_condition.dart';
 ///                   cpu: '2'
 ///                   memory: 1024Mi
 /// ```
+///
+///
+/// ### Cloudrunv2 Job Sandbox
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.cloudrunv2.Job("default", {
+///     name: "cloudrun-job",
+///     location: "us-central1",
+///     deletionProtection: false,
+///     launchStage: "BETA",
+///     template: {
+///         template: {
+///             containers: [{
+///                 image: "us-docker.pkg.dev/cloudrun/container/job",
+///                 sandboxLauncher: true,
+///             }],
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.cloudrunv2.Job("default",
+///     name="cloudrun-job",
+///     location="us-central1",
+///     deletion_protection=False,
+///     launch_stage="BETA",
+///     template={
+///         "template": {
+///             "containers": [{
+///                 "image": "us-docker.pkg.dev/cloudrun/container/job",
+///                 "sandbox_launcher": True,
+///             }],
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.CloudRunV2.Job("default", new()
+///     {
+///         Name = "cloudrun-job",
+///         Location = "us-central1",
+///         DeletionProtection = false,
+///         LaunchStage = "BETA",
+///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
+///         {
+///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
+///             {
+///                 Containers = new[]
+///                 {
+///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerArgs
+///                     {
+///                         Image = "us-docker.pkg.dev/cloudrun/container/job",
+///                         SandboxLauncher = true,
+///                     },
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
+/// 			Name:               pulumi.String("cloudrun-job"),
+/// 			Location:           pulumi.String("us-central1"),
+/// 			DeletionProtection: pulumi.Bool(false),
+/// 			LaunchStage:        pulumi.String("BETA"),
+/// 			Template: &cloudrunv2.JobTemplateArgs{
+/// 				Template: &cloudrunv2.JobTemplateTemplateArgs{
+/// 					Containers: cloudrunv2.JobTemplateTemplateContainerArray{
+/// 						&cloudrunv2.JobTemplateTemplateContainerArgs{
+/// 							Image:           pulumi.String("us-docker.pkg.dev/cloudrun/container/job"),
+/// 							SandboxLauncher: pulumi.Bool(true),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_job" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                = "cloudrun-job"
+///   location            = "us-central1"
+///   deletion_protection = false
+///   launch_stage        = "BETA"
+///   template = {
+///     template = {
+///       containers = [{
+///         image            = "us-docker.pkg.dev/cloudrun/container/job"
+///         sandbox_launcher = true
+///       }]
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.cloudrunv2.Job;
+/// import com.pulumi.gcp.cloudrunv2.JobArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateContainerArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new Job("default", JobArgs.builder()
+///             .name("cloudrun-job")
+///             .location("us-central1")
+///             .deletionProtection(false)
+///             .launchStage("BETA")
+///             .template(JobTemplateArgs.builder()
+///                 .template(JobTemplateTemplateArgs.builder()
+///                     .containers(JobTemplateTemplateContainerArgs.builder()
+///                         .image("us-docker.pkg.dev/cloudrun/container/job")
+///                         .sandboxLauncher(true)
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:cloudrunv2:Job
+///     properties:
+///       name: cloudrun-job
+///       location: us-central1
+///       deletionProtection: false
+///       launchStage: BETA
+///       template:
+///         template:
+///           containers:
+///             - image: us-docker.pkg.dev/cloudrun/container/job
+///               sandboxLauncher: true
+/// ```
+///
 ///
 /// ### Cloudrunv2 Job Sql
 ///
@@ -663,10 +864,10 @@ import 'job_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -753,7 +954,7 @@ import 'job_terminal_condition.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-/// 			SecretId: secret.ID().ToIDOutput().ToStringOutput(),
+/// 			SecretId: secret.ID(),
 /// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 /// 			Member:   pulumi.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -767,7 +968,7 @@ import 'job_terminal_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -775,60 +976,75 @@ import 'job_terminal_condition.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_cloudrunv2_job" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cloudrun-job"
 ///   location            = "us-central1"
 ///   deletion_protection = false
 ///   template = {
 ///     template = {
 ///       volumes = [{
-///         "name" = "cloudsql"
-///         "cloudSqlInstance" = {
-///           "instances" = [gcp_sql_databaseinstance.instance.connection_name]
+///         name = "cloudsql"
+///         cloud_sql_instance = {
+///           instances = [gcp_sql_database_instance.instance.connection_name]
 ///         }
 ///       }]
 ///       containers = [{
-///         "image" = "us-docker.pkg.dev/cloudrun/container/job"
-///         "envs" = [{
-///           "name"  = "FOO"
-///           "value" = "bar"
+///         image = "us-docker.pkg.dev/cloudrun/container/job"
+///         envs = [{
+///           name  = "FOO"
+///           value = "bar"
 ///           }, {
-///           "name" = "latestdclsecret"
-///           "valueSource" = {
-///             "secretKeyRef" = {
-///               "secret"  = gcp_secretmanager_secret.secret.secret_id
-///               "version" = "1"
+///           name = "latestdclsecret"
+///           value_source = {
+///             secret_key_ref = {
+///               secret  = gcp_secretmanager_secret.secret.secret_id
+///               version = "1"
 ///             }
 ///           }
 ///         }]
-///         "volumeMounts" = [{
-///           "name"      = "cloudsql"
-///           "mountPath" = "/cloudsql"
+///         volume_mounts = [{
+///           name       = "cloudsql"
+///           mount_path = "/cloudsql"
 ///         }]
 ///       }]
 ///     }
 ///   }
 /// }
 /// resource "gcp_secretmanager_secret" "secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "secret"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "secret-version-data" {
+/// resource "gcp_secretmanager_secret_version" "secret-version-data" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.secret.name
 ///   secret_data = "secret-data"
 /// }
-/// resource "gcp_secretmanager_secretiammember" "secret-access" {
+/// resource "gcp_secretmanager_secret_iam_member" "secret-access" {
 ///   depends_on = [gcp_secretmanager_secret.secret]
-///   secret_id  = gcp_secretmanager_secret.secret.id
-///   role       = "roles/secretmanager.secretAccessor"
-///   member     ="serviceAccount:${data.gcp_organizations_getproject.project.number}-compute@developer.gserviceaccount.com"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   secret_id = gcp_secretmanager_secret.secret.id
+///   role      = "roles/secretmanager.secretAccessor"
+///   member    ="serviceAccount:${data.gcp_organizations_project.project.number}-compute@developer.gserviceaccount.com"
 /// }
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "cloudrun-sql"
 ///   region           = "us-central1"
 ///   database_version = "MYSQL_5_7"
@@ -1020,6 +1236,7 @@ import 'job_terminal_condition.dart';
 ///       arguments: {}
 /// ```
 ///
+///
 /// ### Cloudrunv2 Job Vpcaccess
 ///
 ///
@@ -1168,9 +1385,9 @@ import 'job_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vpcaccess"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vpcaccess"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1187,7 +1404,7 @@ import 'job_terminal_condition.dart';
 /// 			Name:        pulumi.String("run-subnetwork"),
 /// 			IpCidrRange: pulumi.String("10.2.0.0/28"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     customTestNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     customTestNetwork.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1217,7 +1434,7 @@ import 'job_terminal_condition.dart';
 /// 						},
 /// 					},
 /// 					VpcAccess: &cloudrunv2.JobTemplateTemplateVpcAccessArgs{
-/// 						Connector: connector.ID().ToIDOutput().ToStringOutput(),
+/// 						Connector: connector.ID(),
 /// 						Egress:    pulumi.String("ALL_TRAFFIC"),
 /// 					},
 /// 				},
@@ -1231,7 +1448,7 @@ import 'job_terminal_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1240,13 +1457,16 @@ import 'job_terminal_condition.dart';
 /// }
 ///
 /// resource "gcp_cloudrunv2_job" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cloudrun-job"
 ///   location            = "us-central1"
 ///   deletion_protection = false
 ///   template = {
 ///     template = {
 ///       containers = [{
-///         "image" = "us-docker.pkg.dev/cloudrun/container/job"
+///         image = "us-docker.pkg.dev/cloudrun/container/job"
 ///       }]
 ///       vpc_access = {
 ///         connector = gcp_vpcaccess_connector.connector.id
@@ -1256,6 +1476,9 @@ import 'job_terminal_condition.dart';
 ///   }
 /// }
 /// resource "gcp_vpcaccess_connector" "connector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "run-vpc"
 ///   subnet = {
 ///     name = gcp_compute_subnetwork.custom_test.name
@@ -1266,12 +1489,18 @@ import 'job_terminal_condition.dart';
 ///   region        = "us-central1"
 /// }
 /// resource "gcp_compute_subnetwork" "custom_test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "run-subnetwork"
 ///   ip_cidr_range = "10.2.0.0/28"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.custom_test.id
 /// }
 /// resource "gcp_compute_network" "custom_test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "run-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -1392,6 +1621,7 @@ import 'job_terminal_condition.dart';
 ///       autoCreateSubnetworks: false
 /// ```
 ///
+///
 /// ### Cloudrunv2 Job Directvpc
 ///
 ///
@@ -1505,7 +1735,7 @@ import 'job_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1547,7 +1777,7 @@ import 'job_terminal_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1556,6 +1786,9 @@ import 'job_terminal_condition.dart';
 /// }
 ///
 /// resource "gcp_cloudrunv2_job" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cloudrun-job"
 ///   location            = "us-central1"
 ///   deletion_protection = false
@@ -1563,13 +1796,13 @@ import 'job_terminal_condition.dart';
 ///   template = {
 ///     template = {
 ///       containers = [{
-///         "image" = "us-docker.pkg.dev/cloudrun/container/job"
+///         image = "us-docker.pkg.dev/cloudrun/container/job"
 ///       }]
 ///       vpc_access = {
 ///         network_interfaces = [{
-///           "network"    = "default"
-///           "subnetwork" = "default"
-///           "tags"       = ["tag1", "tag2", "tag3"]
+///           network    = "default"
+///           subnetwork = "default"
+///           tags       = ["tag1", "tag2", "tag3"]
 ///         }]
 ///       }
 ///     }
@@ -1651,6 +1884,7 @@ import 'job_terminal_condition.dart';
 ///                   - tag2
 ///                   - tag3
 /// ```
+///
 ///
 /// ### Cloudrunv2 Job Secret
 ///
@@ -1862,9 +2096,9 @@ import 'job_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1891,7 +2125,7 @@ import 'job_terminal_condition.dart';
 /// 			return err
 /// 		}
 /// 		secret_access, err := secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-/// 			SecretId: secret.ID().ToIDOutput().ToStringOutput(),
+/// 			SecretId: secret.ID(),
 /// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 /// 			Member:   pulumi.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -1947,7 +2181,7 @@ import 'job_terminal_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1955,53 +2189,65 @@ import 'job_terminal_condition.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_cloudrunv2_job" "default" {
-///   depends_on          = [gcp_secretmanager_secretversion.secret-version-data, gcp_secretmanager_secretiammember.secret-access]
+///   depends_on = [gcp_secretmanager_secret_version.secret-version-data, gcp_secretmanager_secret_iam_member.secret-access]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cloudrun-job"
 ///   location            = "us-central1"
 ///   deletion_protection = false
 ///   template = {
 ///     template = {
 ///       volumes = [{
-///         "name" = "a-volume"
-///         "secret" = {
-///           "secret"      = gcp_secretmanager_secret.secret.secret_id
-///           "defaultMode" = 292
-///           "items" = [{
-///             "version" = "1"
-///             "path"    = "my-secret"
-///             "mode"    = 256
+///         name = "a-volume"
+///         secret = {
+///           secret       = gcp_secretmanager_secret.secret.secret_id
+///           default_mode = 292
+///           items = [{
+///             version = "1"
+///             path    = "my-secret"
+///             mode    = 256
 ///           }]
 ///         }
 ///       }]
 ///       containers = [{
-///         "image" = "us-docker.pkg.dev/cloudrun/container/job"
-///         "volumeMounts" = [{
-///           "name"      = "a-volume"
-///           "mountPath" = "/secrets"
+///         image = "us-docker.pkg.dev/cloudrun/container/job"
+///         volume_mounts = [{
+///           name       = "a-volume"
+///           mount_path = "/secrets"
 ///         }]
 ///       }]
 ///     }
 ///   }
 /// }
 /// resource "gcp_secretmanager_secret" "secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "secret"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "secret-version-data" {
+/// resource "gcp_secretmanager_secret_version" "secret-version-data" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.secret.name
 ///   secret_data = "secret-data"
 /// }
-/// resource "gcp_secretmanager_secretiammember" "secret-access" {
+/// resource "gcp_secretmanager_secret_iam_member" "secret-access" {
 ///   depends_on = [gcp_secretmanager_secret.secret]
-///   secret_id  = gcp_secretmanager_secret.secret.id
-///   role       = "roles/secretmanager.secretAccessor"
-///   member     ="serviceAccount:${data.gcp_organizations_getproject.project.number}-compute@developer.gserviceaccount.com"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   secret_id = gcp_secretmanager_secret.secret.id
+///   role      = "roles/secretmanager.secretAccessor"
+///   member    ="serviceAccount:${data.gcp_organizations_project.project.number}-compute@developer.gserviceaccount.com"
 /// }
 /// ```
 /// ```java
@@ -2158,6 +2404,7 @@ import 'job_terminal_condition.dart';
 ///       arguments: {}
 /// ```
 ///
+///
 /// ### Cloudrunv2 Job Emptydir
 ///
 ///
@@ -2271,7 +2518,7 @@ import 'job_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2314,7 +2561,7 @@ import 'job_terminal_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2323,23 +2570,26 @@ import 'job_terminal_condition.dart';
 /// }
 ///
 /// resource "gcp_cloudrunv2_job" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cloudrun-job"
 ///   location            = "us-central1"
 ///   deletion_protection = false
 ///   template = {
 ///     template = {
 ///       containers = [{
-///         "image" = "us-docker.pkg.dev/cloudrun/container/job"
-///         "volumeMounts" = [{
-///           "name"      = "empty-dir-volume"
-///           "mountPath" = "/mnt"
+///         image = "us-docker.pkg.dev/cloudrun/container/job"
+///         volume_mounts = [{
+///           name       = "empty-dir-volume"
+///           mount_path = "/mnt"
 ///         }]
 ///       }]
 ///       volumes = [{
-///         "name" = "empty-dir-volume"
-///         "emptyDir" = {
-///           "medium"    = "MEMORY"
-///           "sizeLimit" = "128Mi"
+///         name = "empty-dir-volume"
+///         empty_dir = {
+///           medium     = "MEMORY"
+///           size_limit = "128Mi"
 ///         }
 ///       }]
 ///     }
@@ -2421,6 +2671,7 @@ import 'job_terminal_condition.dart';
 ///                 medium: MEMORY
 ///                 sizeLimit: 128Mi
 /// ```
+///
 ///
 /// ### Cloudrunv2 Job Emptydir Disk
 ///
@@ -2538,7 +2789,7 @@ import 'job_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2582,7 +2833,7 @@ import 'job_terminal_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2591,6 +2842,9 @@ import 'job_terminal_condition.dart';
 /// }
 ///
 /// resource "gcp_cloudrunv2_job" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cloudrun-job"
 ///   location            = "us-central1"
 ///   launch_stage        = "BETA"
@@ -2598,17 +2852,17 @@ import 'job_terminal_condition.dart';
 ///   template = {
 ///     template = {
 ///       containers = [{
-///         "image" = "us-docker.pkg.dev/cloudrun/container/job"
-///         "volumeMounts" = [{
-///           "name"      = "empty-dir-volume"
-///           "mountPath" = "/mnt"
+///         image = "us-docker.pkg.dev/cloudrun/container/job"
+///         volume_mounts = [{
+///           name       = "empty-dir-volume"
+///           mount_path = "/mnt"
 ///         }]
 ///       }]
 ///       volumes = [{
-///         "name" = "empty-dir-volume"
-///         "emptyDir" = {
-///           "medium"    = "DISK"
-///           "sizeLimit" = "10Gi"
+///         name = "empty-dir-volume"
+///         empty_dir = {
+///           medium     = "DISK"
+///           size_limit = "10Gi"
 ///         }
 ///       }]
 ///     }
@@ -2693,6 +2947,7 @@ import 'job_terminal_condition.dart';
 ///                 sizeLimit: 10Gi
 /// ```
 ///
+///
 /// ### Cloudrunv2 Job Run Job
 ///
 ///
@@ -2767,7 +3022,7 @@ import 'job_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2796,7 +3051,7 @@ import 'job_terminal_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2805,6 +3060,9 @@ import 'job_terminal_condition.dart';
 /// }
 ///
 /// resource "gcp_cloudrunv2_job" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "cloudrun-job"
 ///   location              = "us-central1"
 ///   deletion_protection   = false
@@ -2812,7 +3070,7 @@ import 'job_terminal_condition.dart';
 ///   template = {
 ///     template = {
 ///       containers = [{
-///         "image" = "us-docker.pkg.dev/cloudrun/container/job"
+///         image = "us-docker.pkg.dev/cloudrun/container/job"
 ///       }]
 ///     }
 ///   }
@@ -2873,6 +3131,7 @@ import 'job_terminal_condition.dart';
 ///           containers:
 ///             - image: us-docker.pkg.dev/cloudrun/container/job
 /// ```
+///
 ///
 /// ### Cloudrunv2 Job Multicontainer
 ///
@@ -2965,7 +3224,7 @@ import 'job_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2998,7 +3257,7 @@ import 'job_terminal_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3007,17 +3266,20 @@ import 'job_terminal_condition.dart';
 /// }
 ///
 /// resource "gcp_cloudrunv2_job" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cloudrun-job"
 ///   location            = "us-central1"
 ///   deletion_protection = false
 ///   template = {
 ///     template = {
 ///       containers = [{
-///         "name"  = "job-1"
-///         "image" = "us-docker.pkg.dev/cloudrun/container/job"
+///         name  = "job-1"
+///         image = "us-docker.pkg.dev/cloudrun/container/job"
 ///         }, {
-///         "name"  = "job-2"
-///         "image" = "us-docker.pkg.dev/cloudrun/container/job"
+///         name  = "job-2"
+///         image = "us-docker.pkg.dev/cloudrun/container/job"
 ///       }]
 ///     }
 ///   }
@@ -3085,6 +3347,7 @@ import 'job_terminal_condition.dart';
 ///             - name: job-2
 ///               image: us-docker.pkg.dev/cloudrun/container/job
 /// ```
+///
 ///
 /// ### Cloudrunv2 Job Gpu
 ///
@@ -3170,7 +3433,7 @@ import 'job_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3202,7 +3465,7 @@ import 'job_terminal_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3211,13 +3474,16 @@ import 'job_terminal_condition.dart';
 /// }
 ///
 /// resource "gcp_cloudrunv2_job" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cloudrun-job"
 ///   location            = "us-central1"
 ///   deletion_protection = false
 ///   template = {
 ///     template = {
 ///       containers = [{
-///         "image" = "us-docker.pkg.dev/cloudrun/container/job"
+///         image = "us-docker.pkg.dev/cloudrun/container/job"
 ///       }]
 ///       node_selector = {
 ///         accelerator = "nvidia-l4"
@@ -3288,6 +3554,7 @@ import 'job_terminal_condition.dart';
 ///             accelerator: nvidia-l4
 ///           gpuZonalRedundancyDisabled: true
 /// ```
+///
 ///
 /// ### Cloudrunv2 Job Tags
 ///
@@ -3370,7 +3637,7 @@ import 'job_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3401,7 +3668,7 @@ import 'job_terminal_condition.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3410,6 +3677,9 @@ import 'job_terminal_condition.dart';
 /// }
 ///
 /// resource "gcp_cloudrunv2_job" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cloudrun-job"
 ///   location            = "us-central1"
 ///   deletion_protection = false
@@ -3419,7 +3689,7 @@ import 'job_terminal_condition.dart';
 ///   template = {
 ///     template = {
 ///       containers = [{
-///         "image" = "us-docker.pkg.dev/cloudrun/container/job"
+///         image = "us-docker.pkg.dev/cloudrun/container/job"
 ///       }]
 ///     }
 ///   }
@@ -3480,6 +3750,220 @@ import 'job_terminal_condition.dart';
 ///         template:
 ///           containers:
 ///             - image: us-docker.pkg.dev/cloudrun/container/job
+/// ```
+///
+///
+/// ### Cloudrunv2 Job Agent Identity
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.cloudrunv2.Job("default", {
+///     name: "cloudrun-job",
+///     location: "us-central1",
+///     deletionProtection: false,
+///     functionalType: "FUNCTIONAL_TYPE_AGENT",
+///     template: {
+///         template: {
+///             containers: [{
+///                 image: "us-docker.pkg.dev/cloudrun/container/job",
+///             }],
+///             workloadIdentityConfig: {
+///                 identityType: "IDENTITY_TYPE_AGENT_IDENTITY",
+///                 identityCertificateEnabled: true,
+///             },
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.cloudrunv2.Job("default",
+///     name="cloudrun-job",
+///     location="us-central1",
+///     deletion_protection=False,
+///     functional_type="FUNCTIONAL_TYPE_AGENT",
+///     template={
+///         "template": {
+///             "containers": [{
+///                 "image": "us-docker.pkg.dev/cloudrun/container/job",
+///             }],
+///             "workload_identity_config": {
+///                 "identity_type": "IDENTITY_TYPE_AGENT_IDENTITY",
+///                 "identity_certificate_enabled": True,
+///             },
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.CloudRunV2.Job("default", new()
+///     {
+///         Name = "cloudrun-job",
+///         Location = "us-central1",
+///         DeletionProtection = false,
+///         FunctionalType = "FUNCTIONAL_TYPE_AGENT",
+///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
+///         {
+///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
+///             {
+///                 Containers = new[]
+///                 {
+///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerArgs
+///                     {
+///                         Image = "us-docker.pkg.dev/cloudrun/container/job",
+///                     },
+///                 },
+///                 WorkloadIdentityConfig = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateWorkloadIdentityConfigArgs
+///                 {
+///                     IdentityType = "IDENTITY_TYPE_AGENT_IDENTITY",
+///                     IdentityCertificateEnabled = true,
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
+/// 			Name:               pulumi.String("cloudrun-job"),
+/// 			Location:           pulumi.String("us-central1"),
+/// 			DeletionProtection: pulumi.Bool(false),
+/// 			FunctionalType:     pulumi.String("FUNCTIONAL_TYPE_AGENT"),
+/// 			Template: &cloudrunv2.JobTemplateArgs{
+/// 				Template: &cloudrunv2.JobTemplateTemplateArgs{
+/// 					Containers: cloudrunv2.JobTemplateTemplateContainerArray{
+/// 						&cloudrunv2.JobTemplateTemplateContainerArgs{
+/// 							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/job"),
+/// 						},
+/// 					},
+/// 					WorkloadIdentityConfig: &cloudrunv2.JobTemplateTemplateWorkloadIdentityConfigArgs{
+/// 						IdentityType:               pulumi.String("IDENTITY_TYPE_AGENT_IDENTITY"),
+/// 						IdentityCertificateEnabled: pulumi.Bool(true),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_job" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                = "cloudrun-job"
+///   location            = "us-central1"
+///   deletion_protection = false
+///   functional_type     = "FUNCTIONAL_TYPE_AGENT"
+///   template = {
+///     template = {
+///       containers = [{
+///         image = "us-docker.pkg.dev/cloudrun/container/job"
+///       }]
+///       workload_identity_config = {
+///         identity_type                = "IDENTITY_TYPE_AGENT_IDENTITY"
+///         identity_certificate_enabled = true
+///       }
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.cloudrunv2.Job;
+/// import com.pulumi.gcp.cloudrunv2.JobArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateContainerArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateWorkloadIdentityConfigArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new Job("default", JobArgs.builder()
+///             .name("cloudrun-job")
+///             .location("us-central1")
+///             .deletionProtection(false)
+///             .functionalType("FUNCTIONAL_TYPE_AGENT")
+///             .template(JobTemplateArgs.builder()
+///                 .template(JobTemplateTemplateArgs.builder()
+///                     .containers(JobTemplateTemplateContainerArgs.builder()
+///                         .image("us-docker.pkg.dev/cloudrun/container/job")
+///                         .build())
+///                     .workloadIdentityConfig(JobTemplateTemplateWorkloadIdentityConfigArgs.builder()
+///                         .identityType("IDENTITY_TYPE_AGENT_IDENTITY")
+///                         .identityCertificateEnabled(true)
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:cloudrunv2:Job
+///     properties:
+///       name: cloudrun-job
+///       location: us-central1
+///       deletionProtection: false
+///       functionalType: FUNCTIONAL_TYPE_AGENT
+///       template:
+///         template:
+///           containers:
+///             - image: us-docker.pkg.dev/cloudrun/container/job
+///           workloadIdentityConfig:
+///             identityType: IDENTITY_TYPE_AGENT_IDENTITY
+///             identityCertificateEnabled: true
 /// ```
 ///
 ///
@@ -3549,6 +4033,15 @@ class Job extends pulumi.CustomResource {
   late final pulumi.Output<int> executionCount;
   /// For a deleted resource, the time after which it will be permanently deleted.
   late final pulumi.Output<String> expireTime;
+  /// (Optional, Beta)
+  /// The functional type of the Job. Declares the primary purpose of the workload so that it can be
+  /// registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+  /// Once set, this field cannot be changed or unset.
+  /// Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+  /// A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+  /// `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+  /// Possible values are: `FUNCTIONAL_TYPE_AGENT`.
+  late final pulumi.Output<String> functionalType;
   /// A number that monotonically increases every time the user modifies the desired state.
   late final pulumi.Output<String> generation;
   /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
@@ -3618,7 +4111,7 @@ class Job extends pulumi.CustomResource {
           'gcp:cloudrunv2/job:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
@@ -3636,6 +4129,7 @@ class Job extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     executionCount = registerOutput<int>('executionCount');
     expireTime = registerOutput<String>('expireTime');
+    functionalType = registerOutput<String>('functionalType');
     generation = registerOutput<String>('generation');
     labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lastModifier = registerOutput<String>('lastModifier');
@@ -3695,6 +4189,7 @@ class Job extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     executionCount = registerOutput<int>('executionCount');
     expireTime = registerOutput<String>('expireTime');
+    functionalType = registerOutput<String>('functionalType');
     generation = registerOutput<String>('generation');
     labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lastModifier = registerOutput<String>('lastModifier');
@@ -3740,6 +4235,7 @@ class Job extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     executionCount = registerOutput<int>('executionCount');
     expireTime = registerOutput<String>('expireTime');
+    functionalType = registerOutput<String>('functionalType');
     generation = registerOutput<String>('generation');
     labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lastModifier = registerOutput<String>('lastModifier');

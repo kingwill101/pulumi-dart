@@ -50,7 +50,7 @@ class ConnectionCloudSpanner {
     return ConnectionCloudSpanner(
       database: pulumi.Input.fromValue(map['database'] as String),
       databaseRole: (() { final guardedValue = map['databaseRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxParallelism: (() { final guardedValue = map['maxParallelism']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxParallelism: (() { final guardedValue = map['maxParallelism']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       useDataBoost: (() { final guardedValue = map['useDataBoost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       useParallelism: (() { final guardedValue = map['useParallelism']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       useServerlessAnalytics: (() { final guardedValue = map['useServerlessAnalytics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

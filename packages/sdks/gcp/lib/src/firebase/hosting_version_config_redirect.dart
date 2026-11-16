@@ -40,7 +40,7 @@ class HostingVersionConfigRedirect {
       glob: (() { final guardedValue = map['glob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       regex: (() { final guardedValue = map['regex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      statusCode: pulumi.Input.fromValue((map['statusCode'] as num).toInt()),
+      statusCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['statusCode'])),
     );
   }
 }

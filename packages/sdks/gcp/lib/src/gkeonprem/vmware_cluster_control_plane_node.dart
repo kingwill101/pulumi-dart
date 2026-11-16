@@ -49,9 +49,9 @@ class VMwareClusterControlPlaneNode {
   factory VMwareClusterControlPlaneNode.fromMap(Map<String, dynamic> map) {
     return VMwareClusterControlPlaneNode(
       autoResizeConfig: (() { final guardedValue = map['autoResizeConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VMwareClusterControlPlaneNodeAutoResizeConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      cpus: (() { final guardedValue = map['cpus']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      memory: (() { final guardedValue = map['memory']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      cpus: (() { final guardedValue = map['cpus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      memory: (() { final guardedValue = map['memory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       vsphereConfigs: (() { final guardedValue = map['vsphereConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VMwareClusterControlPlaneNodeVsphereConfig>(guardedValue, (value) => VMwareClusterControlPlaneNodeVsphereConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

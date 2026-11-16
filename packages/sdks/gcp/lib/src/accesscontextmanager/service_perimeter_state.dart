@@ -18,6 +18,8 @@ class ServicePerimeterState {
   /// Description of the ServicePerimeter and its use. Does not affect
   /// behavior.
   final pulumi.Input<String?>? description;
+  /// The etag for the version of the ServicePerimeter that this request is based on.
+  final pulumi.Input<String?>? etag;
   /// Resource name for the ServicePerimeter. The shortName component must
   /// begin with a letter and only include alphanumeric and '_'.
   /// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
@@ -72,6 +74,7 @@ class ServicePerimeterState {
   /// [createTime] Time the AccessPolicy was created in UTC.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Description of the ServicePerimeter and its use. Does not affect
+  /// [etag] The etag for the version of the ServicePerimeter that this request is based on.
   /// [name] Resource name for the ServicePerimeter. The shortName component must
   /// [parent] The AccessPolicy this ServicePerimeter lives in.
   /// [perimeterType] Specifies the type of the Perimeter. There are two types: regular and
@@ -84,6 +87,7 @@ class ServicePerimeterState {
     this.createTime,
     this.deletionPolicy,
     this.description,
+    this.etag,
     this.name,
     this.parent,
     this.perimeterType,
@@ -99,6 +103,7 @@ class ServicePerimeterState {
       'createTime': ?createTime,
       'deletionPolicy': ?deletionPolicy,
       'description': ?description,
+      'etag': ?etag,
       'name': ?name,
       'parent': ?parent,
       'perimeterType': ?perimeterType,
@@ -115,6 +120,7 @@ class ServicePerimeterState {
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       perimeterType: (() { final guardedValue = map['perimeterType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

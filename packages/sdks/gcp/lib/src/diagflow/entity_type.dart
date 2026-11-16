@@ -12,6 +12,7 @@ import 'entity_type_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Dialogflow Entity Type Basic
@@ -133,7 +134,7 @@ import 'entity_type_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -177,7 +178,7 @@ import 'entity_type_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -186,12 +187,18 @@ import 'entity_type_state.dart';
 /// }
 ///
 /// resource "gcp_diagflow_agent" "basic_agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "example_agent"
 ///   default_language_code = "en"
 ///   time_zone             = "America/New_York"
 /// }
-/// resource "gcp_diagflow_entitytype" "basic_entity_type" {
-///   depends_on   = [gcp_diagflow_agent.basic_agent]
+/// resource "gcp_diagflow_entity_type" "basic_entity_type" {
+///   depends_on = [gcp_diagflow_agent.basic_agent]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "basic-entity-type"
 ///   kind         = "KIND_MAP"
 ///   entities {
@@ -341,7 +348,7 @@ class EntityType extends pulumi.CustomResource {
           'gcp:diagflow/entityType:EntityType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');

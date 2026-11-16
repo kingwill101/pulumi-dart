@@ -10,6 +10,7 @@ import 'assets_export_job_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Migration Center Assets Export Job Basic
@@ -86,7 +87,7 @@ import 'assets_export_job_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/migrationcenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/migrationcenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -114,7 +115,7 @@ import 'assets_export_job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -122,7 +123,10 @@ import 'assets_export_job_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_migrationcenter_assetsexportjob" "default" {
+/// resource "gcp_migrationcenter_assets_export_job" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "us-central1"
 ///   assets_export_job_id = "assets-export-job-test"
 ///   performance_data = {
@@ -279,7 +283,7 @@ class AssetsExportJob extends pulumi.CustomResource {
           'gcp:migrationcenter/assetsExportJob:AssetsExportJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     assetsExportJobId = registerOutput<String>('assetsExportJobId');

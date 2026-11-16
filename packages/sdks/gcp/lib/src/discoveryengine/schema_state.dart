@@ -14,6 +14,12 @@ class SchemaState {
   /// When set to "DELETE", deleting the resource is allowed.
   final pulumi.Input<String?>? deletionPolicy;
   /// The JSON representation of the schema.
+  /// Changes are applied in place and must be backward compatible: existing fields
+  /// can't be removed or have their type changed. Updating the schema triggers
+  /// reindexing of all documents in the data store, which can take hours for large
+  /// data stores and may incur costs. See
+  /// [Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+  /// for details.
   final pulumi.Input<String?>? jsonSchema;
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".

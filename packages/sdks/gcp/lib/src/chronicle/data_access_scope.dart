@@ -13,6 +13,7 @@ import 'data_access_scope_state.dart';
 /// * How-to Guides
 /// * [Introduction to data RBAC](https://cloud.google.com/chronicle/docs/onboard/onboard-datarbac)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Chronicle Dataaccessscope With Logtype
@@ -89,7 +90,7 @@ import 'data_access_scope_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -117,7 +118,7 @@ import 'data_access_scope_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -125,7 +126,10 @@ import 'data_access_scope_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_chronicle_dataaccessscope" "example" {
+/// resource "gcp_chronicle_data_access_scope" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "us"
 ///   instance             = "00000000-0000-0000-0000-000000000000"
 ///   data_access_scope_id = "scope-id"
@@ -190,6 +194,7 @@ import 'data_access_scope_state.dart';
 ///         - logType: GCP_CLOUDAUDIT
 ///         - logType: GITHUB
 /// ```
+///
 ///
 /// ### Chronicle Dataaccessscope With Dataaccesslabel
 ///
@@ -270,7 +275,7 @@ import 'data_access_scope_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -304,7 +309,7 @@ import 'data_access_scope_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -312,13 +317,19 @@ import 'data_access_scope_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_chronicle_dataaccesslabel" "custom_data_access_label" {
+/// resource "gcp_chronicle_data_access_label" "custom_data_access_label" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "us"
 ///   instance             = "00000000-0000-0000-0000-000000000000"
 ///   data_access_label_id = "label-id"
 ///   udm_query            = "principal.hostname=\"google.com\""
 /// }
-/// resource "gcp_chronicle_dataaccessscope" "example" {
+/// resource "gcp_chronicle_data_access_scope" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "us"
 ///   instance             = "00000000-0000-0000-0000-000000000000"
 ///   data_access_scope_id = "scope-id"
@@ -393,6 +404,7 @@ import 'data_access_scope_state.dart';
 ///         - dataAccessLabel: ${googleChronicleDataAccessLabel.customDataAccessLabel.dataAccessLabelId}
 /// ```
 ///
+///
 /// ### Chronicle Dataaccessscope With Asset Namespace
 ///
 ///
@@ -453,7 +465,7 @@ import 'data_access_scope_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -478,7 +490,7 @@ import 'data_access_scope_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -486,7 +498,10 @@ import 'data_access_scope_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_chronicle_dataaccessscope" "example" {
+/// resource "gcp_chronicle_data_access_scope" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "us"
 ///   instance             = "00000000-0000-0000-0000-000000000000"
 ///   data_access_scope_id = "scope-id"
@@ -543,6 +558,7 @@ import 'data_access_scope_state.dart';
 ///       allowedDataAccessLabels:
 ///         - assetNamespace: my-namespace
 /// ```
+///
 ///
 /// ### Chronicle Dataaccessscope With Ingestion Label
 ///
@@ -614,7 +630,7 @@ import 'data_access_scope_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -642,7 +658,7 @@ import 'data_access_scope_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -650,7 +666,10 @@ import 'data_access_scope_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_chronicle_dataaccessscope" "example" {
+/// resource "gcp_chronicle_data_access_scope" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "us"
 ///   instance             = "00000000-0000-0000-0000-000000000000"
 ///   data_access_scope_id = "scope-id"
@@ -716,6 +735,7 @@ import 'data_access_scope_state.dart';
 ///             ingestionLabelKey: ingestion_key
 ///             ingestionLabelValue: ingestion_value
 /// ```
+///
 ///
 /// ### Chronicle Dataaccessscope With Denied Labels
 ///
@@ -843,7 +863,7 @@ import 'data_access_scope_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -890,7 +910,7 @@ import 'data_access_scope_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -898,13 +918,19 @@ import 'data_access_scope_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_chronicle_dataaccesslabel" "custom_data_access_label" {
+/// resource "gcp_chronicle_data_access_label" "custom_data_access_label" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "us"
 ///   instance             = "00000000-0000-0000-0000-000000000000"
 ///   data_access_label_id = "label-id"
 ///   udm_query            = "principal.hostname=\"google.com\""
 /// }
-/// resource "gcp_chronicle_dataaccessscope" "example" {
+/// resource "gcp_chronicle_data_access_scope" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "us"
 ///   instance             = "00000000-0000-0000-0000-000000000000"
 ///   data_access_scope_id = "scope-id"
@@ -1102,7 +1128,7 @@ class DataAccessScope extends pulumi.CustomResource {
           'gcp:chronicle/dataAccessScope:DataAccessScope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     allowAll = registerOutput<bool?>('allowAll');
     allowedDataAccessLabels = registerOutput<List<DataAccessScopeAllowedDataAccessLabel>?>('allowedDataAccessLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataAccessScopeAllowedDataAccessLabel>(guardedValue, (value) => DataAccessScopeAllowedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>())); });

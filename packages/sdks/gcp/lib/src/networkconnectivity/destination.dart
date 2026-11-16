@@ -13,6 +13,7 @@ import 'destination_state_timeline.dart';
 /// * How-to Guides
 /// * [QUICKSTART_TITLE](https://docs.cloud.google.com/data-transfer-essentials/docs/create-resources)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Network Connectivity Destination Basic
@@ -107,7 +108,7 @@ import 'destination_state_timeline.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -145,7 +146,7 @@ import 'destination_state_timeline.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -153,15 +154,21 @@ import 'destination_state_timeline.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkconnectivity_multiclouddatatransferconfig" "config" {
+/// resource "gcp_networkconnectivity_multicloud_data_transfer_config" "config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "basic-config"
 ///   location    = "europe-west4"
 ///   description = "A basic multicloud data transfer config for the destination example"
 /// }
 /// resource "gcp_networkconnectivity_destination" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "basic-destination"
 ///   location                        = "europe-west4"
-///   multicloud_data_transfer_config = gcp_networkconnectivity_multiclouddatatransferconfig.config.name
+///   multicloud_data_transfer_config = gcp_networkconnectivity_multicloud_data_transfer_config.config.name
 ///   description                     = "A basic destination"
 ///   labels = {
 ///     "foo" = "bar"
@@ -324,7 +331,7 @@ class Destination extends pulumi.CustomResource {
           'gcp:networkconnectivity/destination:Destination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

@@ -8,8 +8,12 @@ import 'analyst_agent_persona_resource.dart';
 import 'analyst_agent_persona_skill.dart';
 import 'analyst_agent_persona_state.dart';
 import 'analyst_agent_persona_table.dart';
+import 'analyst_agent_persona_web_search_config.dart';
 
 /// Represents a persona configuration for an analyst agent in Agentic Applications.
+///
+/// &gt; **Note:** The `project` field must be set to the numeric project number (not the project ID).
+///
 ///
 ///
 ///
@@ -26,6 +30,7 @@ import 'analyst_agent_persona_table.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const example = new gcp.agenticapplications.AnalystAgentPersona("example", {
+///     project: "1111111111111",
 ///     location: "us",
 ///     analystAgentPersonaId: "basic",
 ///     displayName: "Test Analyst Persona",
@@ -54,6 +59,10 @@ import 'analyst_agent_persona_table.dart';
 ///         content: `# Finance Analysis
 /// Analyze financial data.`,
 ///     }],
+///     mathRenderingMode: "MATH_RENDERING_MODE_LATEX",
+///     webSearchConfig: {
+///         excludedDomains: ["example.com"],
+///     },
 /// });
 /// ```
 /// ```python
@@ -61,6 +70,7 @@ import 'analyst_agent_persona_table.dart';
 /// import pulumi_gcp as gcp
 ///
 /// example = gcp.agenticapplications.AnalystAgentPersona("example",
+///     project="1111111111111",
 ///     location="us",
 ///     analyst_agent_persona_id="basic",
 ///     display_name="Test Analyst Persona",
@@ -88,7 +98,11 @@ import 'analyst_agent_persona_table.dart';
 ///         "description": "Skill for finance analysis",
 ///         "content": """# Finance Analysis
 /// Analyze financial data.""",
-///     }])
+///     }],
+///     math_rendering_mode="MATH_RENDERING_MODE_LATEX",
+///     web_search_config={
+///         "excluded_domains": ["example.com"],
+///     })
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -100,6 +114,7 @@ import 'analyst_agent_persona_table.dart';
 /// {
 ///     var example = new Gcp.AgenticApplications.AnalystAgentPersona("example", new()
 ///     {
+///         Project = "1111111111111",
 ///         Location = "us",
 ///         AnalystAgentPersonaId = "basic",
 ///         DisplayName = "Test Analyst Persona",
@@ -139,6 +154,14 @@ import 'analyst_agent_persona_table.dart';
 /// Analyze financial data.",
 ///             },
 ///         },
+///         MathRenderingMode = "MATH_RENDERING_MODE_LATEX",
+///         WebSearchConfig = new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaWebSearchConfigArgs
+///         {
+///             ExcludedDomains = new[]
+///             {
+///                 "example.com",
+///             },
+///         },
 ///     });
 ///
 /// });
@@ -147,13 +170,14 @@ import 'analyst_agent_persona_table.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/agenticapplications"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agenticapplications"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := agenticapplications.NewAnalystAgentPersona(ctx, "example", &agenticapplications.AnalystAgentPersonaArgs{
+/// 			Project:               pulumi.String("1111111111111"),
 /// 			Location:              pulumi.String("us"),
 /// 			AnalystAgentPersonaId: pulumi.String("basic"),
 /// 			DisplayName:           pulumi.String("Test Analyst Persona"),
@@ -185,6 +209,12 @@ import 'analyst_agent_persona_table.dart';
 /// 					Content:     pulumi.String("# Finance Analysis\nAnalyze financial data."),
 /// 				},
 /// 			},
+/// 			MathRenderingMode: pulumi.String("MATH_RENDERING_MODE_LATEX"),
+/// 			WebSearchConfig: &agenticapplications.AnalystAgentPersonaWebSearchConfigArgs{
+/// 				ExcludedDomains: pulumi.StringArray{
+/// 					pulumi.String("example.com"),
+/// 				},
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -194,7 +224,7 @@ import 'analyst_agent_persona_table.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -202,7 +232,11 @@ import 'analyst_agent_persona_table.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_agenticapplications_analystagentpersona" "example" {
+/// resource "gcp_agenticapplications_analyst_agent_persona" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project                  = "1111111111111"
 ///   location                 = "us"
 ///   analyst_agent_persona_id = "basic"
 ///   display_name             = "Test Analyst Persona"
@@ -227,6 +261,10 @@ import 'analyst_agent_persona_table.dart';
 ///     description = "Skill for finance analysis"
 ///     content     = "# Finance Analysis\nAnalyze financial data."
 ///   }
+///   math_rendering_mode = "MATH_RENDERING_MODE_LATEX"
+///   web_search_config = {
+///     excluded_domains = ["example.com"]
+///   }
 /// }
 /// ```
 /// ```java
@@ -241,6 +279,7 @@ import 'analyst_agent_persona_table.dart';
 /// import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactExampleResourceArgs;
 /// import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactExampleResourceRawFileResourceArgs;
 /// import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaSkillArgs;
+/// import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaWebSearchConfigArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -255,6 +294,7 @@ import 'analyst_agent_persona_table.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AnalystAgentPersona("example", AnalystAgentPersonaArgs.builder()
+///             .project("1111111111111")
 ///             .location("us")
 ///             .analystAgentPersonaId("basic")
 ///             .displayName("Test Analyst Persona")
@@ -283,6 +323,10 @@ import 'analyst_agent_persona_table.dart';
 /// # Finance Analysis
 /// Analyze financial data.                """)
 ///                 .build())
+///             .mathRenderingMode("MATH_RENDERING_MODE_LATEX")
+///             .webSearchConfig(AnalystAgentPersonaWebSearchConfigArgs.builder()
+///                 .excludedDomains("example.com")
+///                 .build())
 ///             .build());
 ///
 ///     }
@@ -293,6 +337,7 @@ import 'analyst_agent_persona_table.dart';
 ///   example:
 ///     type: gcp:agenticapplications:AnalystAgentPersona
 ///     properties:
+///       project: '1111111111111'
 ///       location: us
 ///       analystAgentPersonaId: basic
 ///       displayName: Test Analyst Persona
@@ -317,7 +362,12 @@ import 'analyst_agent_persona_table.dart';
 ///           content: |-
 ///             # Finance Analysis
 ///             Analyze financial data.
+///       mathRenderingMode: MATH_RENDERING_MODE_LATEX
+///       webSearchConfig:
+///         excludedDomains:
+///           - example.com
 /// ```
+///
 ///
 /// ### Analyst Agent Persona Full
 ///
@@ -348,6 +398,7 @@ import 'analyst_agent_persona_table.dart';
 ///     bucket: bucket.name,
 /// });
 /// const example = new gcp.agenticapplications.AnalystAgentPersona("example", {
+///     project: "1111111111111",
 ///     location: "us",
 ///     analystAgentPersonaId: "full",
 ///     displayName: "Full Test Analyst Persona",
@@ -434,6 +485,7 @@ import 'analyst_agent_persona_table.dart';
 ///             }],
 ///         },
 ///         visualizationOptions: {
+///             visualizationMode: "VISUALIZATION_MODE_WHEN_NECESSARY",
 ///             visualizationExamples: [{
 ///                 visualizationType: "VISUALIZATION_TYPE_UNSPECIFIED",
 ///                 resource: {
@@ -459,7 +511,9 @@ import 'analyst_agent_persona_table.dart';
 ///         enabled: true,
 ///         prompt: "Use this server for queries",
 ///         apiKeyName: "x-api-key",
+///         apiKeyHeader: "x-api-key-header",
 ///         clientId: "sample-client-id",
+///         clientSecret: "sample-client-secret",
 ///         oauthTokenUrl: "https://example.com/oauth/token",
 ///     }],
 ///     resources: [
@@ -510,6 +564,11 @@ import 'analyst_agent_persona_table.dart';
 ///             dataType: "STRING",
 ///         }],
 ///     }],
+///     mathRenderingMode: "MATH_RENDERING_MODE_LATEX",
+///     webSearchConfig: {
+///         disabled: false,
+///         excludedDomains: ["example.com"],
+///     },
 /// });
 /// ```
 /// ```python
@@ -533,6 +592,7 @@ import 'analyst_agent_persona_table.dart';
 ///     content="Hello World",
 ///     bucket=bucket.name)
 /// example = gcp.agenticapplications.AnalystAgentPersona("example",
+///     project="1111111111111",
 ///     location="us",
 ///     analyst_agent_persona_id="full",
 ///     display_name="Full Test Analyst Persona",
@@ -631,6 +691,7 @@ import 'analyst_agent_persona_table.dart';
 ///             }],
 ///         },
 ///         "visualization_options": {
+///             "visualization_mode": "VISUALIZATION_MODE_WHEN_NECESSARY",
 ///             "visualization_examples": [{
 ///                 "visualization_type": "VISUALIZATION_TYPE_UNSPECIFIED",
 ///                 "resource": {
@@ -656,7 +717,9 @@ import 'analyst_agent_persona_table.dart';
 ///         "enabled": True,
 ///         "prompt": "Use this server for queries",
 ///         "api_key_name": "x-api-key",
+///         "api_key_header": "x-api-key-header",
 ///         "client_id": "sample-client-id",
+///         "client_secret": "sample-client-secret",
 ///         "oauth_token_url": "https://example.com/oauth/token",
 ///     }],
 ///     resources=[
@@ -715,7 +778,12 @@ import 'analyst_agent_persona_table.dart';
 ///             "description": "First column description",
 ///             "data_type": "STRING",
 ///         }],
-///     }])
+///     }],
+///     math_rendering_mode="MATH_RENDERING_MODE_LATEX",
+///     web_search_config={
+///         "disabled": False,
+///         "excluded_domains": ["example.com"],
+///     })
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -755,6 +823,7 @@ import 'analyst_agent_persona_table.dart';
 ///
 ///     var example = new Gcp.AgenticApplications.AnalystAgentPersona("example", new()
 ///     {
+///         Project = "1111111111111",
 ///         Location = "us",
 ///         AnalystAgentPersonaId = "full",
 ///         DisplayName = "Full Test Analyst Persona",
@@ -889,6 +958,7 @@ import 'analyst_agent_persona_table.dart';
 ///             },
 ///             VisualizationOptions = new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs
 ///             {
+///                 VisualizationMode = "VISUALIZATION_MODE_WHEN_NECESSARY",
 ///                 VisualizationExamples = new[]
 ///                 {
 ///                     new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleArgs
@@ -927,7 +997,9 @@ import 'analyst_agent_persona_table.dart';
 ///                 Enabled = true,
 ///                 Prompt = "Use this server for queries",
 ///                 ApiKeyName = "x-api-key",
+///                 ApiKeyHeader = "x-api-key-header",
 ///                 ClientId = "sample-client-id",
+///                 ClientSecret = "sample-client-secret",
 ///                 OauthTokenUrl = "https://example.com/oauth/token",
 ///             },
 ///         },
@@ -1016,6 +1088,15 @@ import 'analyst_agent_persona_table.dart';
 ///                 },
 ///             },
 ///         },
+///         MathRenderingMode = "MATH_RENDERING_MODE_LATEX",
+///         WebSearchConfig = new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaWebSearchConfigArgs
+///         {
+///             Disabled = false,
+///             ExcludedDomains = new[]
+///             {
+///                 "example.com",
+///             },
+///         },
 ///     });
 ///
 /// });
@@ -1026,9 +1107,9 @@ import 'analyst_agent_persona_table.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/agenticapplications"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agenticapplications"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1067,6 +1148,7 @@ import 'analyst_agent_persona_table.dart';
 /// 			return err
 /// 		}
 /// 		_, err = agenticapplications.NewAnalystAgentPersona(ctx, "example", &agenticapplications.AnalystAgentPersonaArgs{
+/// 			Project:               pulumi.String("1111111111111"),
 /// 			Location:              pulumi.String("us"),
 /// 			AnalystAgentPersonaId: pulumi.String("full"),
 /// 			DisplayName:           pulumi.String("Full Test Analyst Persona"),
@@ -1171,6 +1253,7 @@ import 'analyst_agent_persona_table.dart';
 /// 					},
 /// 				},
 /// 				VisualizationOptions: &agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs{
+/// 					VisualizationMode: pulumi.String("VISUALIZATION_MODE_WHEN_NECESSARY"),
 /// 					VisualizationExamples: agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleArray{
 /// 						&agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleArgs{
 /// 							VisualizationType: pulumi.String("VISUALIZATION_TYPE_UNSPECIFIED"),
@@ -1201,7 +1284,9 @@ import 'analyst_agent_persona_table.dart';
 /// 					Enabled:       pulumi.Bool(true),
 /// 					Prompt:        pulumi.String("Use this server for queries"),
 /// 					ApiKeyName:    pulumi.String("x-api-key"),
+/// 					ApiKeyHeader:  pulumi.String("x-api-key-header"),
 /// 					ClientId:      pulumi.String("sample-client-id"),
+/// 					ClientSecret:  pulumi.String("sample-client-secret"),
 /// 					OauthTokenUrl: pulumi.String("https://example.com/oauth/token"),
 /// 				},
 /// 			},
@@ -1271,6 +1356,13 @@ import 'analyst_agent_persona_table.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			MathRenderingMode: pulumi.String("MATH_RENDERING_MODE_LATEX"),
+/// 			WebSearchConfig: &agenticapplications.AnalystAgentPersonaWebSearchConfigArgs{
+/// 				Disabled: pulumi.Bool(false),
+/// 				ExcludedDomains: pulumi.StringArray{
+/// 					pulumi.String("example.com"),
+/// 				},
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1280,7 +1372,7 @@ import 'analyst_agent_persona_table.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1289,26 +1381,42 @@ import 'analyst_agent_persona_table.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "bq_ds" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "dataset_id"
 ///   location   = "US"
 /// }
 /// resource "gcp_bigquery_table" "bq_tbl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id          = gcp_bigquery_dataset.bq_ds.dataset_id
 ///   table_id            = "table"
 ///   deletion_protection = false
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "bucket"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 ///   force_destroy               = true
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "example_object.txt"
 ///   content = "Hello World"
 ///   bucket  = gcp_storage_bucket.bucket.name
 /// }
-/// resource "gcp_agenticapplications_analystagentpersona" "example" {
+/// resource "gcp_agenticapplications_analyst_agent_persona" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project                  = "1111111111111"
 ///   location                 = "us"
 ///   analyst_agent_persona_id = "full"
 ///   display_name             = "Full Test Analyst Persona"
@@ -1344,7 +1452,7 @@ import 'analyst_agent_persona_table.dart';
 ///       model_description = "Sample GCS model description"
 ///       use_rag           = false
 ///       google_cloud_storage_resource = {
-///         google_cloud_storage_object ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.object.name}"
+///         google_cloud_storage_object ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucket_object.object.name}"
 ///         file_extension_restrictions = ["txt"]
 ///       }
 ///     }
@@ -1353,23 +1461,23 @@ import 'analyst_agent_persona_table.dart';
 ///     document_generation_options = {
 ///       export_format = "EXPORT_FORMAT_UNSPECIFIED"
 ///       document_examples = [{
-///         "resource" = {
-///           "displayLabel"     = "doc_example_raw"
-///           "modelDescription" = "Sample doc raw description"
-///           "useRag"           = false
-///           "rawFileResource" = {
-///             "fileTitle"   = "doc.txt"
-///             "fileContent" = "UTEgUmV2ZW51ZTogMTAwTQ=="
-///             "mimeType"    = "text/plain"
+///         resource = {
+///           display_label     = "doc_example_raw"
+///           model_description = "Sample doc raw description"
+///           use_rag           = false
+///           raw_file_resource = {
+///             file_title   = "doc.txt"
+///             file_content = "UTEgUmV2ZW51ZTogMTAwTQ=="
+///             mime_type    = "text/plain"
 ///           }
 ///         }
 ///         }, {
-///         "resource" = {
-///           "displayLabel"     = "doc_example_bq"
-///           "modelDescription" = "Sample doc BQ description"
-///           "useRag"           = false
-///           "bigqueryResource" = {
-///             "bigqueryDataset" ="projects/${gcp_bigquery_dataset.bq_ds.project}/datasets/${gcp_bigquery_dataset.bq_ds.dataset_id}"
+///         resource = {
+///           display_label     = "doc_example_bq"
+///           model_description = "Sample doc BQ description"
+///           use_rag           = false
+///           bigquery_resource = {
+///             bigquery_dataset ="projects/${gcp_bigquery_dataset.bq_ds.project}/datasets/${gcp_bigquery_dataset.bq_ds.dataset_id}"
 ///           }
 ///         }
 ///       }]
@@ -1377,29 +1485,30 @@ import 'analyst_agent_persona_table.dart';
 ///     slide_generation_options = {
 ///       export_format = "EXPORT_FORMAT_UNSPECIFIED"
 ///       slide_examples = [{
-///         "resource" = {
-///           "displayLabel"     = "slide_example_raw"
-///           "modelDescription" = "Sample slide raw description"
-///           "useRag"           = false
-///           "rawFileResource" = {
-///             "fileTitle"   = "slide.txt"
-///             "fileContent" = "UTEgUmV2ZW51ZTogMTAwTQ=="
-///             "mimeType"    = "text/plain"
+///         resource = {
+///           display_label     = "slide_example_raw"
+///           model_description = "Sample slide raw description"
+///           use_rag           = false
+///           raw_file_resource = {
+///             file_title   = "slide.txt"
+///             file_content = "UTEgUmV2ZW51ZTogMTAwTQ=="
+///             mime_type    = "text/plain"
 ///           }
 ///         }
 ///       }]
 ///     }
 ///     visualization_options = {
+///       visualization_mode = "VISUALIZATION_MODE_WHEN_NECESSARY"
 ///       visualization_examples = [{
-///         "visualizationType" = "VISUALIZATION_TYPE_UNSPECIFIED"
-///         "resource" = {
-///           "displayLabel"     = "viz_example_raw"
-///           "modelDescription" = "Sample viz raw description"
-///           "useRag"           = false
-///           "rawFileResource" = {
-///             "fileTitle"   = "viz.txt"
-///             "fileContent" = "UTEgUmV2ZW51ZTogMTAwTQ=="
-///             "mimeType"    = "text/plain"
+///         visualization_type = "VISUALIZATION_TYPE_UNSPECIFIED"
+///         resource = {
+///           display_label     = "viz_example_raw"
+///           model_description = "Sample viz raw description"
+///           use_rag           = false
+///           raw_file_resource = {
+///             file_title   = "viz.txt"
+///             file_content = "UTEgUmV2ZW51ZTogMTAwTQ=="
+///             mime_type    = "text/plain"
 ///           }
 ///         }
 ///       }]
@@ -1415,7 +1524,9 @@ import 'analyst_agent_persona_table.dart';
 ///     enabled         = true
 ///     prompt          = "Use this server for queries"
 ///     api_key_name    = "x-api-key"
+///     api_key_header  = "x-api-key-header"
 ///     client_id       = "sample-client-id"
+///     client_secret   = "sample-client-secret"
 ///     oauth_token_url = "https://example.com/oauth/token"
 ///   }
 ///   resources {
@@ -1441,7 +1552,7 @@ import 'analyst_agent_persona_table.dart';
 ///     model_description = "GCS resource description"
 ///     use_rag           = false
 ///     google_cloud_storage_resource = {
-///       google_cloud_storage_object ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.object.name}"
+///       google_cloud_storage_object ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucket_object.object.name}"
 ///       file_extension_restrictions = ["txt"]
 ///     }
 ///   }
@@ -1462,6 +1573,11 @@ import 'analyst_agent_persona_table.dart';
 ///       description = "First column description"
 ///       data_type   = "STRING"
 ///     }
+///   }
+///   math_rendering_mode = "MATH_RENDERING_MODE_LATEX"
+///   web_search_config = {
+///     disabled         = false
+///     excluded_domains = ["example.com"]
 ///   }
 /// }
 /// ```
@@ -1510,6 +1626,7 @@ import 'analyst_agent_persona_table.dart';
 /// import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaSkillReferenceArgs;
 /// import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaTableArgs;
 /// import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaTableColumnArgs;
+/// import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaWebSearchConfigArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1548,6 +1665,7 @@ import 'analyst_agent_persona_table.dart';
 ///             .build());
 ///
 ///         var example = new AnalystAgentPersona("example", AnalystAgentPersonaArgs.builder()
+///             .project("1111111111111")
 ///             .location("us")
 ///             .analystAgentPersonaId("full")
 ///             .displayName("Full Test Analyst Persona")
@@ -1644,6 +1762,7 @@ import 'analyst_agent_persona_table.dart';
 ///                         .build())
 ///                     .build())
 ///                 .visualizationOptions(AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs.builder()
+///                     .visualizationMode("VISUALIZATION_MODE_WHEN_NECESSARY")
 ///                     .visualizationExamples(AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleArgs.builder()
 ///                         .visualizationType("VISUALIZATION_TYPE_UNSPECIFIED")
 ///                         .resource(AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResourceArgs.builder()
@@ -1669,7 +1788,9 @@ import 'analyst_agent_persona_table.dart';
 ///                 .enabled(true)
 ///                 .prompt("Use this server for queries")
 ///                 .apiKeyName("x-api-key")
+///                 .apiKeyHeader("x-api-key-header")
 ///                 .clientId("sample-client-id")
+///                 .clientSecret("sample-client-secret")
 ///                 .oauthTokenUrl("https://example.com/oauth/token")
 ///                 .build())
 ///             .resources(
@@ -1729,6 +1850,11 @@ import 'analyst_agent_persona_table.dart';
 ///                     .dataType("STRING")
 ///                     .build())
 ///                 .build())
+///             .mathRenderingMode("MATH_RENDERING_MODE_LATEX")
+///             .webSearchConfig(AnalystAgentPersonaWebSearchConfigArgs.builder()
+///                 .disabled(false)
+///                 .excludedDomains("example.com")
+///                 .build())
 ///             .build());
 ///
 ///     }
@@ -1765,6 +1891,7 @@ import 'analyst_agent_persona_table.dart';
 ///   example:
 ///     type: gcp:agenticapplications:AnalystAgentPersona
 ///     properties:
+///       project: '1111111111111'
 ///       location: us
 ///       analystAgentPersonaId: full
 ///       displayName: Full Test Analyst Persona
@@ -1826,6 +1953,7 @@ import 'analyst_agent_persona_table.dart';
 ///                   fileContent: UTEgUmV2ZW51ZTogMTAwTQ==
 ///                   mimeType: text/plain
 ///         visualizationOptions:
+///           visualizationMode: VISUALIZATION_MODE_WHEN_NECESSARY
 ///           visualizationExamples:
 ///             - visualizationType: VISUALIZATION_TYPE_UNSPECIFIED
 ///               resource:
@@ -1845,7 +1973,9 @@ import 'analyst_agent_persona_table.dart';
 ///           enabled: true
 ///           prompt: Use this server for queries
 ///           apiKeyName: x-api-key
+///           apiKeyHeader: x-api-key-header
 ///           clientId: sample-client-id
+///           clientSecret: sample-client-secret
 ///           oauthTokenUrl: https://example.com/oauth/token
 ///       resources:
 ///         - displayLabel: sample_raw_file_full
@@ -1883,6 +2013,411 @@ import 'analyst_agent_persona_table.dart';
 ///             - name: column_1
 ///               description: First column description
 ///               dataType: STRING
+///       mathRenderingMode: MATH_RENDERING_MODE_LATEX
+///       webSearchConfig:
+///         disabled: false
+///         excludedDomains:
+///           - example.com
+/// ```
+///
+///
+/// ### Analyst Agent Persona Methodology Export Options
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const example = new gcp.agenticapplications.AnalystAgentPersona("example", {
+///     project: "1111111111111",
+///     location: "us",
+///     analystAgentPersonaId: "methodology",
+///     displayName: "Test Analyst Persona Methodology Export",
+///     displayDescription: "Sample analyst agent persona description",
+///     modelDescription: "Sample model description",
+///     role: "ANALYST_ROLE_GENERIC_FINANCE_ANALYST",
+///     artifactsConfig: {
+///         methodologyExportOptions: {
+///             appendMethodology: true,
+///             exportFormat: "MARKDOWN",
+///             exportMethodologyArtifact: true,
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// example = gcp.agenticapplications.AnalystAgentPersona("example",
+///     project="1111111111111",
+///     location="us",
+///     analyst_agent_persona_id="methodology",
+///     display_name="Test Analyst Persona Methodology Export",
+///     display_description="Sample analyst agent persona description",
+///     model_description="Sample model description",
+///     role="ANALYST_ROLE_GENERIC_FINANCE_ANALYST",
+///     artifacts_config={
+///         "methodology_export_options": {
+///             "append_methodology": True,
+///             "export_format": "MARKDOWN",
+///             "export_methodology_artifact": True,
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Gcp.AgenticApplications.AnalystAgentPersona("example", new()
+///     {
+///         Project = "1111111111111",
+///         Location = "us",
+///         AnalystAgentPersonaId = "methodology",
+///         DisplayName = "Test Analyst Persona Methodology Export",
+///         DisplayDescription = "Sample analyst agent persona description",
+///         ModelDescription = "Sample model description",
+///         Role = "ANALYST_ROLE_GENERIC_FINANCE_ANALYST",
+///         ArtifactsConfig = new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaArtifactsConfigArgs
+///         {
+///             MethodologyExportOptions = new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs
+///             {
+///                 AppendMethodology = true,
+///                 ExportFormat = "MARKDOWN",
+///                 ExportMethodologyArtifact = true,
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agenticapplications"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := agenticapplications.NewAnalystAgentPersona(ctx, "example", &agenticapplications.AnalystAgentPersonaArgs{
+/// 			Project:               pulumi.String("1111111111111"),
+/// 			Location:              pulumi.String("us"),
+/// 			AnalystAgentPersonaId: pulumi.String("methodology"),
+/// 			DisplayName:           pulumi.String("Test Analyst Persona Methodology Export"),
+/// 			DisplayDescription:    pulumi.String("Sample analyst agent persona description"),
+/// 			ModelDescription:      pulumi.String("Sample model description"),
+/// 			Role:                  pulumi.String("ANALYST_ROLE_GENERIC_FINANCE_ANALYST"),
+/// 			ArtifactsConfig: &agenticapplications.AnalystAgentPersonaArtifactsConfigArgs{
+/// 				MethodologyExportOptions: &agenticapplications.AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs{
+/// 					AppendMethodology:         pulumi.Bool(true),
+/// 					ExportFormat:              pulumi.String("MARKDOWN"),
+/// 					ExportMethodologyArtifact: pulumi.Bool(true),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_agenticapplications_analyst_agent_persona" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project                  = "1111111111111"
+///   location                 = "us"
+///   analyst_agent_persona_id = "methodology"
+///   display_name             = "Test Analyst Persona Methodology Export"
+///   display_description      = "Sample analyst agent persona description"
+///   model_description        = "Sample model description"
+///   role                     = "ANALYST_ROLE_GENERIC_FINANCE_ANALYST"
+///   artifacts_config = {
+///     methodology_export_options = {
+///       append_methodology          = true
+///       export_format               = "MARKDOWN"
+///       export_methodology_artifact = true
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.agenticapplications.AnalystAgentPersona;
+/// import com.pulumi.gcp.agenticapplications.AnalystAgentPersonaArgs;
+/// import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactsConfigArgs;
+/// import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new AnalystAgentPersona("example", AnalystAgentPersonaArgs.builder()
+///             .project("1111111111111")
+///             .location("us")
+///             .analystAgentPersonaId("methodology")
+///             .displayName("Test Analyst Persona Methodology Export")
+///             .displayDescription("Sample analyst agent persona description")
+///             .modelDescription("Sample model description")
+///             .role("ANALYST_ROLE_GENERIC_FINANCE_ANALYST")
+///             .artifactsConfig(AnalystAgentPersonaArtifactsConfigArgs.builder()
+///                 .methodologyExportOptions(AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs.builder()
+///                     .appendMethodology(true)
+///                     .exportFormat("MARKDOWN")
+///                     .exportMethodologyArtifact(true)
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: gcp:agenticapplications:AnalystAgentPersona
+///     properties:
+///       project: '1111111111111'
+///       location: us
+///       analystAgentPersonaId: methodology
+///       displayName: Test Analyst Persona Methodology Export
+///       displayDescription: Sample analyst agent persona description
+///       modelDescription: Sample model description
+///       role: ANALYST_ROLE_GENERIC_FINANCE_ANALYST
+///       artifactsConfig:
+///         methodologyExportOptions:
+///           appendMethodology: true
+///           exportFormat: MARKDOWN
+///           exportMethodologyArtifact: true
+/// ```
+///
+///
+/// ### Analyst Agent Persona Audit Trail Export Options
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const example = new gcp.agenticapplications.AnalystAgentPersona("example", {
+///     project: "1111111111111",
+///     location: "us",
+///     analystAgentPersonaId: "audit_trail",
+///     displayName: "Test Analyst Persona Audit Trail Export",
+///     displayDescription: "Sample analyst agent persona description",
+///     modelDescription: "Sample model description",
+///     role: "ANALYST_ROLE_GENERIC_FINANCE_ANALYST",
+///     artifactsConfig: {
+///         auditTrailExportOptions: {
+///             appendAuditTrail: true,
+///             exportFormat: "MARKDOWN",
+///             exportAuditTrailArtifact: true,
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// example = gcp.agenticapplications.AnalystAgentPersona("example",
+///     project="1111111111111",
+///     location="us",
+///     analyst_agent_persona_id="audit_trail",
+///     display_name="Test Analyst Persona Audit Trail Export",
+///     display_description="Sample analyst agent persona description",
+///     model_description="Sample model description",
+///     role="ANALYST_ROLE_GENERIC_FINANCE_ANALYST",
+///     artifacts_config={
+///         "audit_trail_export_options": {
+///             "append_audit_trail": True,
+///             "export_format": "MARKDOWN",
+///             "export_audit_trail_artifact": True,
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Gcp.AgenticApplications.AnalystAgentPersona("example", new()
+///     {
+///         Project = "1111111111111",
+///         Location = "us",
+///         AnalystAgentPersonaId = "audit_trail",
+///         DisplayName = "Test Analyst Persona Audit Trail Export",
+///         DisplayDescription = "Sample analyst agent persona description",
+///         ModelDescription = "Sample model description",
+///         Role = "ANALYST_ROLE_GENERIC_FINANCE_ANALYST",
+///         ArtifactsConfig = new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaArtifactsConfigArgs
+///         {
+///             AuditTrailExportOptions = new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs
+///             {
+///                 AppendAuditTrail = true,
+///                 ExportFormat = "MARKDOWN",
+///                 ExportAuditTrailArtifact = true,
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agenticapplications"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := agenticapplications.NewAnalystAgentPersona(ctx, "example", &agenticapplications.AnalystAgentPersonaArgs{
+/// 			Project:               pulumi.String("1111111111111"),
+/// 			Location:              pulumi.String("us"),
+/// 			AnalystAgentPersonaId: pulumi.String("audit_trail"),
+/// 			DisplayName:           pulumi.String("Test Analyst Persona Audit Trail Export"),
+/// 			DisplayDescription:    pulumi.String("Sample analyst agent persona description"),
+/// 			ModelDescription:      pulumi.String("Sample model description"),
+/// 			Role:                  pulumi.String("ANALYST_ROLE_GENERIC_FINANCE_ANALYST"),
+/// 			ArtifactsConfig: &agenticapplications.AnalystAgentPersonaArtifactsConfigArgs{
+/// 				AuditTrailExportOptions: &agenticapplications.AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs{
+/// 					AppendAuditTrail:         pulumi.Bool(true),
+/// 					ExportFormat:             pulumi.String("MARKDOWN"),
+/// 					ExportAuditTrailArtifact: pulumi.Bool(true),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_agenticapplications_analyst_agent_persona" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project                  = "1111111111111"
+///   location                 = "us"
+///   analyst_agent_persona_id = "audit_trail"
+///   display_name             = "Test Analyst Persona Audit Trail Export"
+///   display_description      = "Sample analyst agent persona description"
+///   model_description        = "Sample model description"
+///   role                     = "ANALYST_ROLE_GENERIC_FINANCE_ANALYST"
+///   artifacts_config = {
+///     audit_trail_export_options = {
+///       append_audit_trail          = true
+///       export_format               = "MARKDOWN"
+///       export_audit_trail_artifact = true
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.agenticapplications.AnalystAgentPersona;
+/// import com.pulumi.gcp.agenticapplications.AnalystAgentPersonaArgs;
+/// import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactsConfigArgs;
+/// import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new AnalystAgentPersona("example", AnalystAgentPersonaArgs.builder()
+///             .project("1111111111111")
+///             .location("us")
+///             .analystAgentPersonaId("audit_trail")
+///             .displayName("Test Analyst Persona Audit Trail Export")
+///             .displayDescription("Sample analyst agent persona description")
+///             .modelDescription("Sample model description")
+///             .role("ANALYST_ROLE_GENERIC_FINANCE_ANALYST")
+///             .artifactsConfig(AnalystAgentPersonaArtifactsConfigArgs.builder()
+///                 .auditTrailExportOptions(AnalystAgentPersonaArtifactsConfigAuditTrailExportOptionsArgs.builder()
+///                     .appendAuditTrail(true)
+///                     .exportFormat("MARKDOWN")
+///                     .exportAuditTrailArtifact(true)
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: gcp:agenticapplications:AnalystAgentPersona
+///     properties:
+///       project: '1111111111111'
+///       location: us
+///       analystAgentPersonaId: audit_trail
+///       displayName: Test Analyst Persona Audit Trail Export
+///       displayDescription: Sample analyst agent persona description
+///       modelDescription: Sample model description
+///       role: ANALYST_ROLE_GENERIC_FINANCE_ANALYST
+///       artifactsConfig:
+///         auditTrailExportOptions:
+///           appendAuditTrail: true
+///           exportFormat: MARKDOWN
+///           exportAuditTrailArtifact: true
 /// ```
 ///
 ///
@@ -1936,9 +2471,19 @@ import 'analyst_agent_persona_table.dart';
 ///
 /// &lt;a name="nestedArtifactsConfig"&gt;&lt;/a&gt;The `artifactsConfig` block supports:
 ///
+/// * `auditTrailExportOptions` -
+/// (Optional)
+/// Options for audit trail export.
+/// Structure is documented below.
+///
 /// * `documentGenerationOptions` -
 /// (Optional)
 /// Options for document generation.
+/// Structure is documented below.
+///
+/// * `methodologyExportOptions` -
+/// (Optional)
+/// Options for methodology export.
 /// Structure is documented below.
 ///
 /// * `slideGenerationOptions` -
@@ -1951,6 +2496,24 @@ import 'analyst_agent_persona_table.dart';
 /// Options for visualizations.
 /// Structure is documented below.
 ///
+///
+/// &lt;a name="nestedArtifactsConfigAuditTrailExportOptions"&gt;&lt;/a&gt;The `auditTrailExportOptions` block supports:
+///
+/// * `appendAuditTrail` -
+/// (Optional)
+/// If true, append the audit trail to the final response.
+///
+/// * `exportAuditTrailArtifact` -
+/// (Optional)
+/// If true, export the audit trail as a separate artifact.
+///
+/// * `exportFormat` -
+/// (Optional)
+/// Format for audit trail export.
+/// Possible values:
+/// MARKDOWN
+/// HTML
+/// PDF
 ///
 /// &lt;a name="nestedArtifactsConfigDocumentGenerationOptions"&gt;&lt;/a&gt;The `documentGenerationOptions` block supports:
 ///
@@ -2088,6 +2651,24 @@ import 'analyst_agent_persona_table.dart';
 /// * `mimeType` -
 /// (Required)
 /// The mime type of the file.
+///
+/// &lt;a name="nestedArtifactsConfigMethodologyExportOptions"&gt;&lt;/a&gt;The `methodologyExportOptions` block supports:
+///
+/// * `appendMethodology` -
+/// (Optional)
+/// If true, append the detailed methodology to the final response.
+///
+/// * `exportFormat` -
+/// (Optional)
+/// Format for methodology export.
+/// Possible values:
+/// MARKDOWN
+/// HTML
+/// PDF
+///
+/// * `exportMethodologyArtifact` -
+/// (Optional)
+/// If true, export the detailed methodology as a separate artifact.
 ///
 /// &lt;a name="nestedArtifactsConfigSlideGenerationOptions"&gt;&lt;/a&gt;The `slideGenerationOptions` block supports:
 ///
@@ -2233,6 +2814,15 @@ import 'analyst_agent_persona_table.dart';
 /// (Optional)
 /// Examples for visualizations.
 /// Structure is documented below.
+///
+/// * `visualizationMode` -
+/// (Optional)
+/// Mode for generating visualizations.
+/// Possible values:
+/// VISUALIZATION_MODE_EXPLICIT_ONLY
+/// VISUALIZATION_MODE_WHEN_NECESSARY
+/// VISUALIZATION_MODE_WHEN_HELPFUL
+/// VISUALIZATION_MODE_ALWAYS
 ///
 ///
 /// &lt;a name="nestedArtifactsConfigVisualizationOptionsVisualizationExamples"&gt;&lt;/a&gt;The `visualizationExamples` block supports:
@@ -2410,6 +3000,11 @@ import 'analyst_agent_persona_table.dart';
 /// (Optional)
 /// Input only. The API key of the MCP server.
 /// **Note**: This property is sensitive and will not be displayed in the plan.
+///
+/// * `apiKeyHeader` -
+/// (Optional)
+/// The HTTP header when the API key is passed in a request header
+/// (e.g. `x-api-key`, `api-key`, `X-Auth-Token`).
 ///
 /// * `apiKeyName` -
 /// (Optional)
@@ -2626,6 +3221,18 @@ import 'analyst_agent_persona_table.dart';
 /// (Required)
 /// The name of the column.
 ///
+/// &lt;a name="nestedWebSearchConfig"&gt;&lt;/a&gt;The `webSearchConfig` block supports:
+///
+/// * `disabled` -
+/// (Optional)
+/// Whether web search grounding is disabled for the analyst agent.
+/// Defaults to false if not specified (i.e. web search grounding is enabled).
+///
+/// * `excludedDomains` -
+/// (Optional)
+/// List of domains to be excluded from Google Search / Enterprise Web Search
+/// grounding.
+///
 /// ## Import
 ///
 /// AnalystAgentPersona can be imported using any of these accepted formats:
@@ -2679,6 +3286,11 @@ class AnalystAgentPersona extends pulumi.CustomResource {
   late final pulumi.Output<String?> geminiEnterpriseEngine;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
+  /// The math rendering mode selected for this persona.
+  /// Possible values:
+  /// MATH_RENDERING_MODE_LATEX
+  /// MATH_RENDERING_MODE_PLAIN_TEXT
+  late final pulumi.Output<String?> mathRenderingMode;
   /// The MCP data source selections to be used by the agent.
   /// Structure is documented below.
   late final pulumi.Output<List<AnalystAgentPersonaMcpDataSource>?> mcpDataSources;
@@ -2733,6 +3345,9 @@ class AnalystAgentPersona extends pulumi.CustomResource {
   late final pulumi.Output<List<AnalystAgentPersonaTable>?> tables;
   /// Update time stamp.
   late final pulumi.Output<String> updateTime;
+  /// Configuration for web search grounding for the analyst agent.
+  /// Structure is documented below.
+  late final pulumi.Output<AnalystAgentPersonaWebSearchConfig?> webSearchConfig;
 
   /// Creates a new [AnalystAgentPersona].
   /// [name] The Pulumi resource name.
@@ -2746,7 +3361,7 @@ class AnalystAgentPersona extends pulumi.CustomResource {
           'gcp:agenticapplications/analystAgentPersona:AnalystAgentPersona',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     analystAgentPersonaId = registerOutput<String>('analystAgentPersonaId');
     artifactExamples = registerOutput<List<AnalystAgentPersonaArtifactExample>?>('artifactExamples', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaArtifactExample>(guardedValue, (value) => AnalystAgentPersonaArtifactExample.fromMap((value as Map).cast<String, dynamic>())); });
@@ -2759,6 +3374,7 @@ class AnalystAgentPersona extends pulumi.CustomResource {
     externalDataSources = registerOutput<List<AnalystAgentPersonaExternalDataSource>?>('externalDataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaExternalDataSource>(guardedValue, (value) => AnalystAgentPersonaExternalDataSource.fromMap((value as Map).cast<String, dynamic>())); });
     geminiEnterpriseEngine = registerOutput<String?>('geminiEnterpriseEngine');
     location = registerOutput<String>('location');
+    mathRenderingMode = registerOutput<String?>('mathRenderingMode');
     mcpDataSources = registerOutput<List<AnalystAgentPersonaMcpDataSource>?>('mcpDataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaMcpDataSource>(guardedValue, (value) => AnalystAgentPersonaMcpDataSource.fromMap((value as Map).cast<String, dynamic>())); });
     modelDescription = registerOutput<String?>('modelDescription');
     this.name = registerOutput<String>('name');
@@ -2768,6 +3384,7 @@ class AnalystAgentPersona extends pulumi.CustomResource {
     skills = registerOutput<List<AnalystAgentPersonaSkill>?>('skills', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaSkill>(guardedValue, (value) => AnalystAgentPersonaSkill.fromMap((value as Map).cast<String, dynamic>())); });
     tables = registerOutput<List<AnalystAgentPersonaTable>?>('tables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaTable>(guardedValue, (value) => AnalystAgentPersonaTable.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
+    webSearchConfig = registerOutput<AnalystAgentPersonaWebSearchConfig?>('webSearchConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalystAgentPersonaWebSearchConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [AnalystAgentPersona] resource's state with the given [name] and [id].
@@ -2805,6 +3422,7 @@ class AnalystAgentPersona extends pulumi.CustomResource {
     externalDataSources = registerOutput<List<AnalystAgentPersonaExternalDataSource>?>('externalDataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaExternalDataSource>(guardedValue, (value) => AnalystAgentPersonaExternalDataSource.fromMap((value as Map).cast<String, dynamic>())); });
     geminiEnterpriseEngine = registerOutput<String?>('geminiEnterpriseEngine');
     location = registerOutput<String>('location');
+    mathRenderingMode = registerOutput<String?>('mathRenderingMode');
     mcpDataSources = registerOutput<List<AnalystAgentPersonaMcpDataSource>?>('mcpDataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaMcpDataSource>(guardedValue, (value) => AnalystAgentPersonaMcpDataSource.fromMap((value as Map).cast<String, dynamic>())); });
     modelDescription = registerOutput<String?>('modelDescription');
     this.name = registerOutput<String>('name');
@@ -2814,6 +3432,7 @@ class AnalystAgentPersona extends pulumi.CustomResource {
     skills = registerOutput<List<AnalystAgentPersonaSkill>?>('skills', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaSkill>(guardedValue, (value) => AnalystAgentPersonaSkill.fromMap((value as Map).cast<String, dynamic>())); });
     tables = registerOutput<List<AnalystAgentPersonaTable>?>('tables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaTable>(guardedValue, (value) => AnalystAgentPersonaTable.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
+    webSearchConfig = registerOutput<AnalystAgentPersonaWebSearchConfig?>('webSearchConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalystAgentPersonaWebSearchConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Creates a typed reference to an existing [AnalystAgentPersona] resource.
@@ -2836,6 +3455,7 @@ class AnalystAgentPersona extends pulumi.CustomResource {
     externalDataSources = registerOutput<List<AnalystAgentPersonaExternalDataSource>?>('externalDataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaExternalDataSource>(guardedValue, (value) => AnalystAgentPersonaExternalDataSource.fromMap((value as Map).cast<String, dynamic>())); });
     geminiEnterpriseEngine = registerOutput<String?>('geminiEnterpriseEngine');
     location = registerOutput<String>('location');
+    mathRenderingMode = registerOutput<String?>('mathRenderingMode');
     mcpDataSources = registerOutput<List<AnalystAgentPersonaMcpDataSource>?>('mcpDataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaMcpDataSource>(guardedValue, (value) => AnalystAgentPersonaMcpDataSource.fromMap((value as Map).cast<String, dynamic>())); });
     modelDescription = registerOutput<String?>('modelDescription');
     this.name = registerOutput<String>('name');
@@ -2845,5 +3465,6 @@ class AnalystAgentPersona extends pulumi.CustomResource {
     skills = registerOutput<List<AnalystAgentPersonaSkill>?>('skills', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaSkill>(guardedValue, (value) => AnalystAgentPersonaSkill.fromMap((value as Map).cast<String, dynamic>())); });
     tables = registerOutput<List<AnalystAgentPersonaTable>?>('tables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaTable>(guardedValue, (value) => AnalystAgentPersonaTable.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
+    webSearchConfig = registerOutput<AnalystAgentPersonaWebSearchConfig?>('webSearchConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalystAgentPersonaWebSearchConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

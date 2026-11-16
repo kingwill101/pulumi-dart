@@ -11,6 +11,7 @@ import 'project_cloud_armor_tier_state.dart';
 /// * How-to Guides
 /// * [Subscribing to Cloud Armor Enterprise](https://cloud.google.com/armor/docs/managed-protection-overview#subscribing_to_plus)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Compute Project Cloud Armor Tier Basic
@@ -48,7 +49,7 @@ import 'project_cloud_armor_tier_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -65,7 +66,7 @@ import 'project_cloud_armor_tier_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -73,7 +74,10 @@ import 'project_cloud_armor_tier_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_projectcloudarmortier" "cloud_armor_tier_config" {
+/// resource "gcp_compute_project_cloud_armor_tier" "cloud_armor_tier_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloud_armor_tier = "CA_STANDARD"
 /// }
 /// ```
@@ -113,6 +117,7 @@ import 'project_cloud_armor_tier_state.dart';
 ///     properties:
 ///       cloudArmorTier: CA_STANDARD
 /// ```
+///
 ///
 /// ### Compute Project Cloud Armor Tier Project Set
 ///
@@ -199,9 +204,9 @@ import 'project_cloud_armor_tier_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -238,7 +243,7 @@ import 'project_cloud_armor_tier_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -247,6 +252,9 @@ import 'project_cloud_armor_tier_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "your_project_id"
 ///   name            = "your_project_id"
 ///   org_id          = "123456789"
@@ -254,11 +262,17 @@ import 'project_cloud_armor_tier_state.dart';
 ///   deletion_policy = "DELETE"
 /// }
 /// resource "gcp_projects_service" "compute" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.project.project_id
 ///   service = "compute.googleapis.com"
 /// }
-/// resource "gcp_compute_projectcloudarmortier" "cloud_armor_tier_config" {
-///   depends_on       = [gcp_projects_service.compute]
+/// resource "gcp_compute_project_cloud_armor_tier" "cloud_armor_tier_config" {
+///   depends_on = [gcp_projects_service.compute]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = gcp_organizations_project.project.project_id
 ///   cloud_armor_tier = "CA_STANDARD"
 /// }
@@ -380,7 +394,7 @@ class ProjectCloudArmorTier extends pulumi.CustomResource {
           'gcp:compute/projectCloudArmorTier:ProjectCloudArmorTier',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     cloudArmorTier = registerOutput<String>('cloudArmorTier');
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -22,6 +22,7 @@ import 'instance_user_metadata.dart';
 /// * [Configure a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-setup)
 /// * [Create a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-create)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Looker Instance Basic
@@ -84,7 +85,7 @@ import 'instance_user_metadata.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/looker"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/looker"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -108,7 +109,7 @@ import 'instance_user_metadata.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -117,6 +118,9 @@ import 'instance_user_metadata.dart';
 /// }
 ///
 /// resource "gcp_looker_instance" "looker-instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "my-instance"
 ///   platform_edition = "LOOKER_CORE_STANDARD_ANNUAL"
 ///   region           = "us-central1"
@@ -177,6 +181,164 @@ import 'instance_user_metadata.dart';
 ///       deletionPolicy: DEFAULT
 /// ```
 ///
+///
+/// ### Looker Instance Force Delete
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const looker_instance = new gcp.looker.Instance("looker-instance", {
+///     name: "my-instance",
+///     platformEdition: "LOOKER_CORE_STANDARD_ANNUAL",
+///     region: "us-central1",
+///     oauthConfig: {
+///         clientId: "my-client-id",
+///         clientSecret: "my-client-secret",
+///     },
+///     deletionPolicy: "FORCE",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// looker_instance = gcp.looker.Instance("looker-instance",
+///     name="my-instance",
+///     platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
+///     region="us-central1",
+///     oauth_config={
+///         "client_id": "my-client-id",
+///         "client_secret": "my-client-secret",
+///     },
+///     deletion_policy="FORCE")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var looker_instance = new Gcp.Looker.Instance("looker-instance", new()
+///     {
+///         Name = "my-instance",
+///         PlatformEdition = "LOOKER_CORE_STANDARD_ANNUAL",
+///         Region = "us-central1",
+///         OauthConfig = new Gcp.Looker.Inputs.InstanceOauthConfigArgs
+///         {
+///             ClientId = "my-client-id",
+///             ClientSecret = "my-client-secret",
+///         },
+///         DeletionPolicy = "FORCE",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/looker"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := looker.NewInstance(ctx, "looker-instance", &looker.InstanceArgs{
+/// 			Name:            pulumi.String("my-instance"),
+/// 			PlatformEdition: pulumi.String("LOOKER_CORE_STANDARD_ANNUAL"),
+/// 			Region:          pulumi.String("us-central1"),
+/// 			OauthConfig: &looker.InstanceOauthConfigArgs{
+/// 				ClientId:     pulumi.String("my-client-id"),
+/// 				ClientSecret: pulumi.String("my-client-secret"),
+/// 			},
+/// 			DeletionPolicy: pulumi.String("FORCE"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_looker_instance" "looker-instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name             = "my-instance"
+///   platform_edition = "LOOKER_CORE_STANDARD_ANNUAL"
+///   region           = "us-central1"
+///   oauth_config = {
+///     client_id     = "my-client-id"
+///     client_secret = "my-client-secret"
+///   }
+///   deletion_policy = "FORCE"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.looker.Instance;
+/// import com.pulumi.gcp.looker.InstanceArgs;
+/// import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var looker_instance = new Instance("looker-instance", InstanceArgs.builder()
+///             .name("my-instance")
+///             .platformEdition("LOOKER_CORE_STANDARD_ANNUAL")
+///             .region("us-central1")
+///             .oauthConfig(InstanceOauthConfigArgs.builder()
+///                 .clientId("my-client-id")
+///                 .clientSecret("my-client-secret")
+///                 .build())
+///             .deletionPolicy("FORCE")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   looker-instance:
+///     type: gcp:looker:Instance
+///     properties:
+///       name: my-instance
+///       platformEdition: LOOKER_CORE_STANDARD_ANNUAL
+///       region: us-central1
+///       oauthConfig:
+///         clientId: my-client-id
+///         clientSecret: my-client-secret
+///       deletionPolicy: FORCE
+/// ```
+///
+///
 /// ### Looker Instance Full
 ///
 ///
@@ -225,6 +387,7 @@ import 'instance_user_metadata.dart';
 ///         clientId: "my-client-id",
 ///         clientSecret: "my-client-secret",
 ///     },
+///     deletionPolicy: "FORCE",
 /// });
 /// ```
 /// ```python
@@ -270,7 +433,8 @@ import 'instance_user_metadata.dart';
 ///     oauth_config={
 ///         "client_id": "my-client-id",
 ///         "client_secret": "my-client-secret",
-///     })
+///     },
+///     deletion_policy="FORCE")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -332,6 +496,7 @@ import 'instance_user_metadata.dart';
 ///             ClientId = "my-client-id",
 ///             ClientSecret = "my-client-secret",
 ///         },
+///         DeletionPolicy = "FORCE",
 ///     });
 ///
 /// });
@@ -340,7 +505,7 @@ import 'instance_user_metadata.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/looker"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/looker"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -388,6 +553,7 @@ import 'instance_user_metadata.dart';
 /// 				ClientId:     pulumi.String("my-client-id"),
 /// 				ClientSecret: pulumi.String("my-client-secret"),
 /// 			},
+/// 			DeletionPolicy: pulumi.String("FORCE"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -397,7 +563,7 @@ import 'instance_user_metadata.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -406,6 +572,9 @@ import 'instance_user_metadata.dart';
 /// }
 ///
 /// resource "gcp_looker_instance" "looker-instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "my-instance"
 ///   platform_edition  = "LOOKER_CORE_STANDARD_ANNUAL"
 ///   region            = "us-central1"
@@ -445,6 +614,7 @@ import 'instance_user_metadata.dart';
 ///     client_id     = "my-client-id"
 ///     client_secret = "my-client-secret"
 ///   }
+///   deletion_policy = "FORCE"
 /// }
 /// ```
 /// ```java
@@ -516,6 +686,7 @@ import 'instance_user_metadata.dart';
 ///                 .clientId("my-client-id")
 ///                 .clientSecret("my-client-secret")
 ///                 .build())
+///             .deletionPolicy("FORCE")
 ///             .build());
 ///
 ///     }
@@ -558,167 +729,9 @@ import 'instance_user_metadata.dart';
 ///       oauthConfig:
 ///         clientId: my-client-id
 ///         clientSecret: my-client-secret
+///       deletionPolicy: FORCE
 /// ```
 ///
-/// ### Looker Instance Fips
-///
-///
-///
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
-///
-/// const looker_instance = new gcp.looker.Instance("looker-instance", {
-///     name: "my-instance-fips",
-///     platformEdition: "LOOKER_CORE_ENTERPRISE_ANNUAL",
-///     region: "us-central1",
-///     publicIpEnabled: true,
-///     fipsEnabled: true,
-///     oauthConfig: {
-///         clientId: "my-client-id",
-///         clientSecret: "my-client-secret",
-///     },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// looker_instance = gcp.looker.Instance("looker-instance",
-///     name="my-instance-fips",
-///     platform_edition="LOOKER_CORE_ENTERPRISE_ANNUAL",
-///     region="us-central1",
-///     public_ip_enabled=True,
-///     fips_enabled=True,
-///     oauth_config={
-///         "client_id": "my-client-id",
-///         "client_secret": "my-client-secret",
-///     })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var looker_instance = new Gcp.Looker.Instance("looker-instance", new()
-///     {
-///         Name = "my-instance-fips",
-///         PlatformEdition = "LOOKER_CORE_ENTERPRISE_ANNUAL",
-///         Region = "us-central1",
-///         PublicIpEnabled = true,
-///         FipsEnabled = true,
-///         OauthConfig = new Gcp.Looker.Inputs.InstanceOauthConfigArgs
-///         {
-///             ClientId = "my-client-id",
-///             ClientSecret = "my-client-secret",
-///         },
-///     });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/looker"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := looker.NewInstance(ctx, "looker-instance", &looker.InstanceArgs{
-/// 			Name:            pulumi.String("my-instance-fips"),
-/// 			PlatformEdition: pulumi.String("LOOKER_CORE_ENTERPRISE_ANNUAL"),
-/// 			Region:          pulumi.String("us-central1"),
-/// 			PublicIpEnabled: pulumi.Bool(true),
-/// 			FipsEnabled:     pulumi.Bool(true),
-/// 			OauthConfig: &looker.InstanceOauthConfigArgs{
-/// 				ClientId:     pulumi.String("my-client-id"),
-/// 				ClientSecret: pulumi.String("my-client-secret"),
-/// 			},
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
-/// ```hcl
-/// pulumi {
-///   required_providers {
-///     gcp = {
-///       source = "pulumi/gcp"
-///     }
-///   }
-/// }
-///
-/// resource "gcp_looker_instance" "looker-instance" {
-///   name              = "my-instance-fips"
-///   platform_edition  = "LOOKER_CORE_ENTERPRISE_ANNUAL"
-///   region            = "us-central1"
-///   public_ip_enabled = true
-///   fips_enabled      = true
-///   oauth_config = {
-///     client_id     = "my-client-id"
-///     client_secret = "my-client-secret"
-///   }
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.looker.Instance;
-/// import com.pulumi.gcp.looker.InstanceArgs;
-/// import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
-/// import java.util.ArrayList;
-/// import java.util.Arrays;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         var looker_instance = new Instance("looker-instance", InstanceArgs.builder()
-///             .name("my-instance-fips")
-///             .platformEdition("LOOKER_CORE_ENTERPRISE_ANNUAL")
-///             .region("us-central1")
-///             .publicIpEnabled(true)
-///             .fipsEnabled(true)
-///             .oauthConfig(InstanceOauthConfigArgs.builder()
-///                 .clientId("my-client-id")
-///                 .clientSecret("my-client-secret")
-///                 .build())
-///             .build());
-///
-///     }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-///   looker-instance:
-///     type: gcp:looker:Instance
-///     properties:
-///       name: my-instance-fips
-///       platformEdition: LOOKER_CORE_ENTERPRISE_ANNUAL
-///       region: us-central1
-///       publicIpEnabled: true
-///       fipsEnabled: true
-///       oauthConfig:
-///         clientId: my-client-id
-///         clientSecret: my-client-secret
-/// ```
 ///
 /// ### Looker Instance Enterprise Full
 ///
@@ -786,6 +799,9 @@ import 'instance_user_metadata.dart';
 ///     oauthConfig: {
 ///         clientId: "my-client-id",
 ///         clientSecret: "my-client-secret",
+///     },
+///     customDomain: {
+///         domain: "my-custom-domain.com",
 ///     },
 /// }, {
 ///     dependsOn: [lookerVpcConnection],
@@ -857,6 +873,9 @@ import 'instance_user_metadata.dart';
 ///     oauth_config={
 ///         "client_id": "my-client-id",
 ///         "client_secret": "my-client-secret",
+///     },
+///     custom_domain={
+///         "domain": "my-custom-domain.com",
 ///     },
 ///     opts = pulumi.ResourceOptions(depends_on=[looker_vpc_connection]))
 /// project = gcp.organizations.get_project()
@@ -956,6 +975,10 @@ import 'instance_user_metadata.dart';
 ///             ClientId = "my-client-id",
 ///             ClientSecret = "my-client-secret",
 ///         },
+///         CustomDomain = new Gcp.Looker.Inputs.InstanceCustomDomainArgs
+///         {
+///             Domain = "my-custom-domain.com",
+///         },
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -979,11 +1002,11 @@ import 'instance_user_metadata.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/looker"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/looker"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1000,13 +1023,13 @@ import 'instance_user_metadata.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(20),
-/// 			Network:      lookerNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      lookerNetwork.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		lookerVpcConnection, err := servicenetworking.NewConnection(ctx, "looker_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: lookerNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: lookerNetwork.ID(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				lookerRange.Name,
@@ -1023,7 +1046,7 @@ import 'instance_user_metadata.dart';
 /// 			PublicIpEnabled:  pulumi.Bool(false),
 /// 			GeminiEnabled:    pulumi.Bool(true),
 /// 			ReservedRange:    lookerRange.Name,
-/// 			ConsumerNetwork:  lookerNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			ConsumerNetwork:  lookerNetwork.ID(),
 /// 			AdminSettings: &looker.InstanceAdminSettingsArgs{
 /// 				AllowedEmailDomains: pulumi.StringArray{
 /// 					pulumi.String("google.com"),
@@ -1063,6 +1086,9 @@ import 'instance_user_metadata.dart';
 /// 				ClientId:     pulumi.String("my-client-id"),
 /// 				ClientSecret: pulumi.String("my-client-secret"),
 /// 			},
+/// 			CustomDomain: &looker.InstanceCustomDomainArgs{
+/// 				Domain: pulumi.String("my-custom-domain.com"),
+/// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			lookerVpcConnection,
 /// 		}))
@@ -1086,7 +1112,7 @@ import 'instance_user_metadata.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1094,18 +1120,21 @@ import 'instance_user_metadata.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_looker_instance" "looker-instance" {
-///   depends_on         = [gcp_servicenetworking_connection.looker_vpc_connection]
+///   depends_on = [gcp_servicenetworking_connection.looker_vpc_connection]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-instance"
 ///   platform_edition   = "LOOKER_CORE_ENTERPRISE_ANNUAL"
 ///   region             = "us-central1"
 ///   private_ip_enabled = true
 ///   public_ip_enabled  = false
 ///   gemini_enabled     = true
-///   reserved_range     = gcp_compute_globaladdress.looker_range.name
+///   reserved_range     = gcp_compute_global_address.looker_range.name
 ///   consumer_network   = gcp_compute_network.looker_network.id
 ///   admin_settings = {
 ///     allowed_email_domains = ["google.com"]
@@ -1144,13 +1173,22 @@ import 'instance_user_metadata.dart';
 ///     client_id     = "my-client-id"
 ///     client_secret = "my-client-secret"
 ///   }
+///   custom_domain = {
+///     domain = "my-custom-domain.com"
+///   }
 /// }
 /// resource "gcp_servicenetworking_connection" "looker_vpc_connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.looker_network.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.looker_range.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.looker_range.name]
 /// }
-/// resource "gcp_compute_globaladdress" "looker_range" {
+/// resource "gcp_compute_global_address" "looker_range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "looker-range"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -1158,12 +1196,18 @@ import 'instance_user_metadata.dart';
 ///   network       = gcp_compute_network.looker_network.id
 /// }
 /// resource "gcp_compute_network" "looker_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "looker-network"
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "crypto_key" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = "looker-kms-key"
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-looker.iam.gserviceaccount.com"
+///   member        ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-looker.iam.gserviceaccount.com"
 /// }
 /// ```
 /// ```java
@@ -1189,6 +1233,7 @@ import 'instance_user_metadata.dart';
 /// import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodEndDateArgs;
 /// import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodTimeArgs;
 /// import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
+/// import com.pulumi.gcp.looker.inputs.InstanceCustomDomainArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
 /// import com.pulumi.gcp.kms.CryptoKeyIAMMember;
@@ -1271,6 +1316,9 @@ import 'instance_user_metadata.dart';
 ///                 .clientId("my-client-id")
 ///                 .clientSecret("my-client-secret")
 ///                 .build())
+///             .customDomain(InstanceCustomDomainArgs.builder()
+///                 .domain("my-custom-domain.com")
+///                 .build())
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(lookerVpcConnection)
 ///                 .build());
@@ -1329,6 +1377,8 @@ import 'instance_user_metadata.dart';
 ///       oauthConfig:
 ///         clientId: my-client-id
 ///         clientSecret: my-client-secret
+///       customDomain:
+///         domain: my-custom-domain.com
 ///     options:
 ///       dependsOn:
 ///         - ${lookerVpcConnection}
@@ -1368,173 +1418,6 @@ import 'instance_user_metadata.dart';
 ///       arguments: {}
 /// ```
 ///
-/// ### Looker Instance Custom Domain
-///
-///
-///
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
-///
-/// const looker_instance = new gcp.looker.Instance("looker-instance", {
-///     name: "my-instance",
-///     platformEdition: "LOOKER_CORE_STANDARD_ANNUAL",
-///     region: "us-central1",
-///     oauthConfig: {
-///         clientId: "my-client-id",
-///         clientSecret: "my-client-secret",
-///     },
-///     customDomain: {
-///         domain: "my-custom-domain.com",
-///     },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// looker_instance = gcp.looker.Instance("looker-instance",
-///     name="my-instance",
-///     platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
-///     region="us-central1",
-///     oauth_config={
-///         "client_id": "my-client-id",
-///         "client_secret": "my-client-secret",
-///     },
-///     custom_domain={
-///         "domain": "my-custom-domain.com",
-///     })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var looker_instance = new Gcp.Looker.Instance("looker-instance", new()
-///     {
-///         Name = "my-instance",
-///         PlatformEdition = "LOOKER_CORE_STANDARD_ANNUAL",
-///         Region = "us-central1",
-///         OauthConfig = new Gcp.Looker.Inputs.InstanceOauthConfigArgs
-///         {
-///             ClientId = "my-client-id",
-///             ClientSecret = "my-client-secret",
-///         },
-///         CustomDomain = new Gcp.Looker.Inputs.InstanceCustomDomainArgs
-///         {
-///             Domain = "my-custom-domain.com",
-///         },
-///     });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/looker"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := looker.NewInstance(ctx, "looker-instance", &looker.InstanceArgs{
-/// 			Name:            pulumi.String("my-instance"),
-/// 			PlatformEdition: pulumi.String("LOOKER_CORE_STANDARD_ANNUAL"),
-/// 			Region:          pulumi.String("us-central1"),
-/// 			OauthConfig: &looker.InstanceOauthConfigArgs{
-/// 				ClientId:     pulumi.String("my-client-id"),
-/// 				ClientSecret: pulumi.String("my-client-secret"),
-/// 			},
-/// 			CustomDomain: &looker.InstanceCustomDomainArgs{
-/// 				Domain: pulumi.String("my-custom-domain.com"),
-/// 			},
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
-/// ```hcl
-/// pulumi {
-///   required_providers {
-///     gcp = {
-///       source = "pulumi/gcp"
-///     }
-///   }
-/// }
-///
-/// resource "gcp_looker_instance" "looker-instance" {
-///   name             = "my-instance"
-///   platform_edition = "LOOKER_CORE_STANDARD_ANNUAL"
-///   region           = "us-central1"
-///   oauth_config = {
-///     client_id     = "my-client-id"
-///     client_secret = "my-client-secret"
-///   }
-///   custom_domain = {
-///     domain = "my-custom-domain.com"
-///   }
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.looker.Instance;
-/// import com.pulumi.gcp.looker.InstanceArgs;
-/// import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
-/// import com.pulumi.gcp.looker.inputs.InstanceCustomDomainArgs;
-/// import java.util.ArrayList;
-/// import java.util.Arrays;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         var looker_instance = new Instance("looker-instance", InstanceArgs.builder()
-///             .name("my-instance")
-///             .platformEdition("LOOKER_CORE_STANDARD_ANNUAL")
-///             .region("us-central1")
-///             .oauthConfig(InstanceOauthConfigArgs.builder()
-///                 .clientId("my-client-id")
-///                 .clientSecret("my-client-secret")
-///                 .build())
-///             .customDomain(InstanceCustomDomainArgs.builder()
-///                 .domain("my-custom-domain.com")
-///                 .build())
-///             .build());
-///
-///     }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-///   looker-instance:
-///     type: gcp:looker:Instance
-///     properties:
-///       name: my-instance
-///       platformEdition: LOOKER_CORE_STANDARD_ANNUAL
-///       region: us-central1
-///       oauthConfig:
-///         clientId: my-client-id
-///         clientSecret: my-client-secret
-///       customDomain:
-///         domain: my-custom-domain.com
-/// ```
 ///
 /// ### Looker Instance Psc
 ///
@@ -1615,7 +1498,7 @@ import 'instance_user_metadata.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/looker"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/looker"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1646,7 +1529,7 @@ import 'instance_user_metadata.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1655,6 +1538,9 @@ import 'instance_user_metadata.dart';
 /// }
 ///
 /// resource "gcp_looker_instance" "looker-instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-instance"
 ///   platform_edition   = "LOOKER_CORE_ENTERPRISE_ANNUAL"
 ///   region             = "us-central1"
@@ -1731,159 +1617,10 @@ import 'instance_user_metadata.dart';
 ///           - projects/test-project/global/networks/test
 /// ```
 ///
-/// ### Looker Instance Force Delete
 ///
+/// ## Regional Endpoint Policies
 ///
-///
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
-///
-/// const looker_instance = new gcp.looker.Instance("looker-instance", {
-///     name: "my-instance",
-///     platformEdition: "LOOKER_CORE_STANDARD_ANNUAL",
-///     region: "us-central1",
-///     oauthConfig: {
-///         clientId: "my-client-id",
-///         clientSecret: "my-client-secret",
-///     },
-///     deletionPolicy: "FORCE",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// looker_instance = gcp.looker.Instance("looker-instance",
-///     name="my-instance",
-///     platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
-///     region="us-central1",
-///     oauth_config={
-///         "client_id": "my-client-id",
-///         "client_secret": "my-client-secret",
-///     },
-///     deletion_policy="FORCE")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var looker_instance = new Gcp.Looker.Instance("looker-instance", new()
-///     {
-///         Name = "my-instance",
-///         PlatformEdition = "LOOKER_CORE_STANDARD_ANNUAL",
-///         Region = "us-central1",
-///         OauthConfig = new Gcp.Looker.Inputs.InstanceOauthConfigArgs
-///         {
-///             ClientId = "my-client-id",
-///             ClientSecret = "my-client-secret",
-///         },
-///         DeletionPolicy = "FORCE",
-///     });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/looker"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := looker.NewInstance(ctx, "looker-instance", &looker.InstanceArgs{
-/// 			Name:            pulumi.String("my-instance"),
-/// 			PlatformEdition: pulumi.String("LOOKER_CORE_STANDARD_ANNUAL"),
-/// 			Region:          pulumi.String("us-central1"),
-/// 			OauthConfig: &looker.InstanceOauthConfigArgs{
-/// 				ClientId:     pulumi.String("my-client-id"),
-/// 				ClientSecret: pulumi.String("my-client-secret"),
-/// 			},
-/// 			DeletionPolicy: pulumi.String("FORCE"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
-/// ```hcl
-/// pulumi {
-///   required_providers {
-///     gcp = {
-///       source = "pulumi/gcp"
-///     }
-///   }
-/// }
-///
-/// resource "gcp_looker_instance" "looker-instance" {
-///   name             = "my-instance"
-///   platform_edition = "LOOKER_CORE_STANDARD_ANNUAL"
-///   region           = "us-central1"
-///   oauth_config = {
-///     client_id     = "my-client-id"
-///     client_secret = "my-client-secret"
-///   }
-///   deletion_policy = "FORCE"
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.looker.Instance;
-/// import com.pulumi.gcp.looker.InstanceArgs;
-/// import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
-/// import java.util.ArrayList;
-/// import java.util.Arrays;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         var looker_instance = new Instance("looker-instance", InstanceArgs.builder()
-///             .name("my-instance")
-///             .platformEdition("LOOKER_CORE_STANDARD_ANNUAL")
-///             .region("us-central1")
-///             .oauthConfig(InstanceOauthConfigArgs.builder()
-///                 .clientId("my-client-id")
-///                 .clientSecret("my-client-secret")
-///                 .build())
-///             .deletionPolicy("FORCE")
-///             .build());
-///
-///     }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-///   looker-instance:
-///     type: gcp:looker:Instance
-///     properties:
-///       name: my-instance
-///       platformEdition: LOOKER_CORE_STANDARD_ANNUAL
-///       region: us-central1
-///       oauthConfig:
-///         clientId: my-client-id
-///         clientSecret: my-client-secret
-///       deletionPolicy: FORCE
-/// ```
-///
+/// This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
 ///
 /// ## Import
 ///
@@ -2028,7 +1765,7 @@ class Instance extends pulumi.CustomResource {
           'gcp:looker/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     adminSettings = registerOutput<InstanceAdminSettings?>('adminSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAdminSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consumerNetwork = registerOutput<String?>('consumerNetwork');

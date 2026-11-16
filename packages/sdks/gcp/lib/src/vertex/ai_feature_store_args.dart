@@ -84,7 +84,7 @@ class AiFeatureStoreArgs {
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       onlineServingConfig: (() { final guardedValue = map['onlineServingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiFeatureStoreOnlineServingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      onlineStorageTtlDays: (() { final guardedValue = map['onlineStorageTtlDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      onlineStorageTtlDays: (() { final guardedValue = map['onlineStorageTtlDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

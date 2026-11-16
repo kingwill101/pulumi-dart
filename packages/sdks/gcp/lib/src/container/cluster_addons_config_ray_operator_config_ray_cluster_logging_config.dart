@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig {
+  /// Whether Ray Cluster logging is enabled.
   final pulumi.Input<bool> enabled;
 
   /// Creates a new [ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig].
-  /// [enabled] Required.
+  /// [enabled] Whether Ray Cluster logging is enabled.
   const ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig({
     required this.enabled,
   });

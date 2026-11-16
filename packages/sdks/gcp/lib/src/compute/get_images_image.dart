@@ -74,12 +74,12 @@ class GetImagesImage {
 
   factory GetImagesImage.fromMap(Map<String, dynamic> map) {
     return GetImagesImage(
-      archiveSizeBytes: pulumi.Input.fromValue((map['archiveSizeBytes'] as num).toInt()),
+      archiveSizeBytes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['archiveSizeBytes'])),
       creationTimestamp: pulumi.Input.fromValue(map['creationTimestamp'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      diskSizeGb: pulumi.Input.fromValue((map['diskSizeGb'] as num).toInt()),
+      diskSizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['diskSizeGb'])),
       family: pulumi.Input.fromValue(map['family'] as String),
-      imageId: pulumi.Input.fromValue((map['imageId'] as num).toInt()),
+      imageId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['imageId'])),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
       selfLink: pulumi.Input.fromValue(map['selfLink'] as String),

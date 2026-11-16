@@ -19,6 +19,7 @@ import 'region_instant_snapshot_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/compute/docs/disks/instant-snapshots)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Region Instant Snapshot Basic
@@ -97,7 +98,7 @@ import 'region_instant_snapshot_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -129,7 +130,7 @@ import 'region_instant_snapshot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -137,17 +138,23 @@ import 'region_instant_snapshot_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regiondisk" "foo" {
+/// resource "gcp_compute_region_disk" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "example-disk"
 ///   type          = "pd-ssd"
 ///   region        = "us-central1"
 ///   size          = 10
 ///   replica_zones = ["us-central1-a", "us-central1-f"]
 /// }
-/// resource "gcp_compute_regioninstantsnapshot" "default" {
+/// resource "gcp_compute_region_instant_snapshot" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "instant-snapshot"
 ///   region      = "us-central1"
-///   source_disk = gcp_compute_regiondisk.foo.self_link
+///   source_disk = gcp_compute_region_disk.foo.self_link
 /// }
 /// ```
 /// ```java
@@ -303,7 +310,7 @@ class RegionInstantSnapshot extends pulumi.CustomResource {
           'gcp:compute/regionInstantSnapshot:RegionInstantSnapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     architecture = registerOutput<String>('architecture');

@@ -12,6 +12,7 @@ import 'http_route_state.dart';
 /// * How-to Guides
 /// * [Setup HTTP Services](https://cloud.google.com/traffic-director/docs/set-up-envoy-http-mesh)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Network Services Http Route Basic
@@ -110,7 +111,7 @@ import 'http_route_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -149,7 +150,7 @@ import 'http_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -157,7 +158,10 @@ import 'http_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkservices_httproute" "default" {
+/// resource "gcp_networkservices_http_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-http-route"
 ///   labels = {
 ///     "foo" = "bar"
@@ -236,6 +240,7 @@ import 'http_route_state.dart';
 ///                   exactMatch: value
 ///               fullPathMatch: example
 /// ```
+///
 ///
 /// ### Network Services Http Route Matches And Actions
 ///
@@ -600,7 +605,7 @@ import 'http_route_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -728,7 +733,7 @@ import 'http_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -736,7 +741,10 @@ import 'http_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkservices_httproute" "default" {
+/// resource "gcp_networkservices_http_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-http-route"
 ///   labels = {
 ///     "foo" = "bar"
@@ -1020,6 +1028,7 @@ import 'http_route_state.dart';
 ///               allowCredentials: true
 ///               disabled: false
 /// ```
+///
 ///
 /// ### Network Services Http Route Actions
 ///
@@ -1313,7 +1322,7 @@ import 'http_route_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1414,7 +1423,7 @@ import 'http_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1422,7 +1431,10 @@ import 'http_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkservices_httproute" "default" {
+/// resource "gcp_networkservices_http_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-http-route"
 ///   labels = {
 ///     "foo" = "bar"
@@ -1657,6 +1669,7 @@ import 'http_route_state.dart';
 ///                 - removearg
 /// ```
 ///
+///
 /// ### Network Services Http Route Mesh Basic
 ///
 ///
@@ -1782,7 +1795,7 @@ import 'http_route_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1808,7 +1821,7 @@ import 'http_route_state.dart';
 /// 				pulumi.String("example"),
 /// 			},
 /// 			Meshes: pulumi.StringArray{
-/// 				_default.ID().ToIDOutput().ToStringOutput(),
+/// 				_default.ID(),
 /// 			},
 /// 			Rules: networkservices.HttpRouteRuleArray{
 /// 				&networkservices.HttpRouteRuleArgs{
@@ -1834,7 +1847,7 @@ import 'http_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1843,13 +1856,19 @@ import 'http_route_state.dart';
 /// }
 ///
 /// resource "gcp_networkservices_mesh" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-http-route"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
 ///   description = "my description"
 /// }
-/// resource "gcp_networkservices_httproute" "default" {
+/// resource "gcp_networkservices_http_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-http-route"
 ///   labels = {
 ///     "foo" = "bar"
@@ -2021,7 +2040,7 @@ class HttpRoute extends pulumi.CustomResource {
           'gcp:networkservices/httpRoute:HttpRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

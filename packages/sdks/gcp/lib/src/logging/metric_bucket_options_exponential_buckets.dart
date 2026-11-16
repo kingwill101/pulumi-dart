@@ -31,7 +31,7 @@ class MetricBucketOptionsExponentialBuckets {
   factory MetricBucketOptionsExponentialBuckets.fromMap(Map<String, dynamic> map) {
     return MetricBucketOptionsExponentialBuckets(
       growthFactor: pulumi.Input.fromValue((map['growthFactor'] as num).toDouble()),
-      numFiniteBuckets: pulumi.Input.fromValue((map['numFiniteBuckets'] as num).toInt()),
+      numFiniteBuckets: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numFiniteBuckets'])),
       scale: pulumi.Input.fromValue((map['scale'] as num).toDouble()),
     );
   }

@@ -16,6 +16,8 @@ class LicenseConfigArgs {
   final pulumi.Input<LicenseConfigEndDate?>? endDate;
   /// Whether the license config is for free trial.
   final pulumi.Input<bool?>? freeTrial;
+  /// Timestamp of the most recent user-initiated update.
+  final pulumi.Input<String?>? lastUserUpdateTime;
   /// The unique id of the license config.
   final pulumi.Input<String> licenseConfigId;
   /// Number of licenses purchased.
@@ -40,6 +42,7 @@ class LicenseConfigArgs {
   /// [autoRenew] Whether the license config should be auto renewed when it reaches the end date.
   /// [endDate] The planned end date.
   /// [freeTrial] Whether the license config is for free trial.
+  /// [lastUserUpdateTime] Timestamp of the most recent user-initiated update.
   /// [licenseConfigId] The unique id of the license config.
   /// [licenseCount] Number of licenses purchased.
   /// [location] The geographic location where the data store should reside. The value can
@@ -51,6 +54,7 @@ class LicenseConfigArgs {
     this.autoRenew,
     this.endDate,
     this.freeTrial,
+    this.lastUserUpdateTime,
     required this.licenseConfigId,
     required this.licenseCount,
     required this.location,
@@ -65,6 +69,7 @@ class LicenseConfigArgs {
       'autoRenew': ?autoRenew,
       'endDate': ?pulumi.Input.mapOptionalInputValue<LicenseConfigEndDate, Map<String, dynamic>>(endDate, (value) => value.toMap()),
       'freeTrial': ?freeTrial,
+      'lastUserUpdateTime': ?lastUserUpdateTime,
       'licenseConfigId': licenseConfigId,
       'licenseCount': licenseCount,
       'location': location,
@@ -80,8 +85,9 @@ class LicenseConfigArgs {
       autoRenew: (() { final guardedValue = map['autoRenew']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       endDate: (() { final guardedValue = map['endDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LicenseConfigEndDate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       freeTrial: (() { final guardedValue = map['freeTrial']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      lastUserUpdateTime: (() { final guardedValue = map['lastUserUpdateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       licenseConfigId: pulumi.Input.fromValue(map['licenseConfigId'] as String),
-      licenseCount: pulumi.Input.fromValue((map['licenseCount'] as num).toInt()),
+      licenseCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['licenseCount'])),
       location: pulumi.Input.fromValue(map['location'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startDate: pulumi.Input.fromValue(LicenseConfigStartDate.fromMap((map['startDate']! as Map).cast<String, dynamic>())),

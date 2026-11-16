@@ -75,13 +75,6 @@ class StoragePoolState {
   /// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
   /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
   final pulumi.Input<String?>? replicaZone;
-  /// (Optional, Beta, Deprecated)
-  /// The effective scale tier of the storage pool. If `scaleTier` is not
-  /// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-  /// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-  ///
-  /// &gt; **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-  final pulumi.Input<String?>? scaleTier;
   /// The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
   /// Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
   final pulumi.Input<String?>? scaleType;
@@ -131,7 +124,6 @@ class StoragePoolState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [qosType] QoS (Quality of Service) type of the storage pool.
   /// [replicaZone] Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
-  /// [scaleTier] (Optional, Beta, Deprecated)
   /// [scaleType] The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
   /// [serviceLevel] Service level of the storage pool.
   /// [totalIops] Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
@@ -165,7 +157,6 @@ class StoragePoolState {
     this.pulumiLabels,
     this.qosType,
     this.replicaZone,
-    this.scaleTier,
     this.scaleType,
     this.serviceLevel,
     this.totalIops,
@@ -202,7 +193,6 @@ class StoragePoolState {
       'pulumiLabels': ?pulumiLabels,
       'qosType': ?qosType,
       'replicaZone': ?replicaZone,
-      'scaleTier': ?scaleTier,
       'scaleType': ?scaleType,
       'serviceLevel': ?serviceLevel,
       'totalIops': ?totalIops,
@@ -240,14 +230,13 @@ class StoragePoolState {
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       qosType: (() { final guardedValue = map['qosType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       replicaZone: (() { final guardedValue = map['replicaZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      scaleTier: (() { final guardedValue = map['scaleTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scaleType: (() { final guardedValue = map['scaleType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceLevel: (() { final guardedValue = map['serviceLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       totalIops: (() { final guardedValue = map['totalIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       totalThroughputMibps: (() { final guardedValue = map['totalThroughputMibps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       volumeCapacityGib: (() { final guardedValue = map['volumeCapacityGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      volumeCount: (() { final guardedValue = map['volumeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      volumeCount: (() { final guardedValue = map['volumeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

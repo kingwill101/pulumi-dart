@@ -20,6 +20,7 @@ import 'project_state.dart';
 /// with `userProjectOverride = true` unless you wish for your quota
 /// project to be different from the Firebase project.
 ///
+///
 /// ## Example Usage
 ///
 /// ### Firebase Project Basic
@@ -86,8 +87,8 @@ import 'project_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -116,7 +117,7 @@ import 'project_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -125,6 +126,9 @@ import 'project_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "my-project"
 ///   name            = "my-project"
 ///   org_id          = "123456789"
@@ -134,6 +138,9 @@ import 'project_state.dart';
 ///   }
 /// }
 /// resource "gcp_firebase_project" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.default.project_id
 /// }
 /// ```
@@ -225,7 +232,7 @@ class Project extends pulumi.CustomResource {
           'gcp:firebase/project:Project',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     displayName = registerOutput<String>('displayName');
     project = registerOutput<String>('project');

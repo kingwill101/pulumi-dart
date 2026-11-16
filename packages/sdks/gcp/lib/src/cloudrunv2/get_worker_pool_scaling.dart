@@ -35,9 +35,9 @@ class GetWorkerPoolScaling {
 
   factory GetWorkerPoolScaling.fromMap(Map<String, dynamic> map) {
     return GetWorkerPoolScaling(
-      manualInstanceCount: pulumi.Input.fromValue((map['manualInstanceCount'] as num).toInt()),
-      maxInstanceCount: pulumi.Input.fromValue((map['maxInstanceCount'] as num).toInt()),
-      minInstanceCount: pulumi.Input.fromValue((map['minInstanceCount'] as num).toInt()),
+      manualInstanceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['manualInstanceCount'])),
+      maxInstanceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxInstanceCount'])),
+      minInstanceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minInstanceCount'])),
       scalingMode: pulumi.Input.fromValue(map['scalingMode'] as String),
     );
   }

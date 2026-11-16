@@ -11,6 +11,7 @@ import 'code_repository_index_state.dart';
 /// * How-to Guides
 /// * [Gemini Code Assist overview](https://cloud.google.com/gemini/docs/codeassist/overview)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Gemini Code Repository Index Basic
@@ -57,7 +58,7 @@ import 'code_repository_index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gemini"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gemini"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -76,7 +77,7 @@ import 'code_repository_index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -84,7 +85,10 @@ import 'code_repository_index_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_gemini_coderepositoryindex" "example" {
+/// resource "gcp_gemini_code_repository_index" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                 = "us-central1"
 ///   code_repository_index_id = "code-repository-index-example"
 ///   kms_key                  = "projects/projectExample/locations/locationExample/keyRings/keyRingExample/cryptoKeys/cryptoKeyExample"
@@ -198,7 +202,7 @@ class CodeRepositoryIndex extends pulumi.CustomResource {
           'gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     codeRepositoryIndexId = registerOutput<String>('codeRepositoryIndexId');

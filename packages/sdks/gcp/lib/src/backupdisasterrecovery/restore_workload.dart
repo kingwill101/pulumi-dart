@@ -16,6 +16,7 @@ import 'restore_workload_target_resource.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Backup Dr Restore Workload Compute Instance Basic
@@ -91,7 +92,7 @@ import 'restore_workload_target_resource.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -119,7 +120,7 @@ import 'restore_workload_target_resource.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -127,7 +128,10 @@ import 'restore_workload_target_resource.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_backupdisasterrecovery_restoreworkload" "restore_compute_basic" {
+/// resource "gcp_backupdisasterrecovery_restore_workload" "restore_compute_basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
 ///   backup_vault_id = "backup-vault"
 ///   data_source_id  = "data-source"
@@ -200,6 +204,7 @@ import 'restore_workload_target_resource.dart';
 ///         name: restored-instance
 ///         machineType: zones/us-central1-a/machineTypes/e2-medium
 /// ```
+///
 ///
 /// ### Backup Dr Restore Workload Compute Instance Full
 ///
@@ -501,7 +506,7 @@ import 'restore_workload_target_resource.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -601,7 +606,7 @@ import 'restore_workload_target_resource.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -609,7 +614,10 @@ import 'restore_workload_target_resource.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_backupdisasterrecovery_restoreworkload" "restore_compute_full" {
+/// resource "gcp_backupdisasterrecovery_restore_workload" "restore_compute_full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
 ///   backup_vault_id = "backup-vault"
 ///   data_source_id  = "data-source"
@@ -625,24 +633,24 @@ import 'restore_workload_target_resource.dart';
 ///     can_ip_forward      = true
 ///     deletion_protection = false
 ///     labels = [{
-///       "key"   = "environment"
-///       "value" = "production"
+///       key   = "environment"
+///       value = "production"
 ///       }, {
-///       "key"   = "restored"
-///       "value" = "true"
+///       key   = "restored"
+///       value = "true"
 ///       }, {
-///       "key"   = "team"
-///       "value" = "infrastructure"
+///       key   = "team"
+///       value = "infrastructure"
 ///     }]
 ///     tags = {
 ///       items = ["web", "https-server", "restored"]
 ///     }
 ///     network_interfaces = [{
-///       "network"    = "projects/my-project-name/global/networks/default"
-///       "subnetwork" = "projects/my-project-name/regions/us-central1/subnetworks/default"
-///       "accessConfigs" = [{
-///         "name"        = "ONE_TO_ONE_NAT"
-///         "networkTier" = "PREMIUM"
+///       network    = "projects/my-project-name/global/networks/default"
+///       subnetwork = "projects/my-project-name/regions/us-central1/subnetworks/default"
+///       access_configs = [{
+///         name         = "ONE_TO_ONE_NAT"
+///         network_tier = "PREMIUM"
 ///       }]
 ///     }]
 ///     scheduling = {
@@ -652,8 +660,8 @@ import 'restore_workload_target_resource.dart';
 ///       provisioning_model  = "STANDARD"
 ///     }
 ///     service_accounts = [{
-///       "email"  = "default"
-///       "scopes" = ["https://www.googleapis.com/auth/cloud-platform", "https://www.googleapis.com/auth/compute"]
+///       email  = "default"
+///       scopes = ["https://www.googleapis.com/auth/cloud-platform", "https://www.googleapis.com/auth/compute"]
 ///     }]
 ///     shielded_instance_config = {
 ///       enable_secure_boot          = true
@@ -666,11 +674,11 @@ import 'restore_workload_target_resource.dart';
 ///     }
 ///     metadata = {
 ///       items = [{
-///         "key"   = "startup-script"
-///         "value" = "#!/bin/bash\necho 'Instance restored' > /tmp/restored.txt"
+///         key   = "startup-script"
+///         value = "#!/bin/bash\necho 'Instance restored' > /tmp/restored.txt"
 ///         }, {
-///         "key"   = "enable-oslogin"
-///         "value" = "TRUE"
+///         key   = "enable-oslogin"
+///         value = "TRUE"
 ///       }]
 ///     }
 ///   }
@@ -855,6 +863,7 @@ import 'restore_workload_target_resource.dart';
 ///               value: TRUE
 /// ```
 ///
+///
 /// ### Backup Dr Restore Workload Disk Basic
 ///
 ///
@@ -947,7 +956,7 @@ import 'restore_workload_target_resource.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -981,7 +990,7 @@ import 'restore_workload_target_resource.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -989,7 +998,10 @@ import 'restore_workload_target_resource.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_backupdisasterrecovery_restoreworkload" "restore_disk_basic" {
+/// resource "gcp_backupdisasterrecovery_restore_workload" "restore_disk_basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
 ///   backup_vault_id = "backup-vault"
 ///   data_source_id  = "data-source"
@@ -1079,6 +1091,7 @@ import 'restore_workload_target_resource.dart';
 ///           environment: production
 ///           restored: 'true'
 /// ```
+///
 ///
 /// ### Backup Dr Restore Workload Regional Disk
 ///
@@ -1191,7 +1204,7 @@ import 'restore_workload_target_resource.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1231,7 +1244,7 @@ import 'restore_workload_target_resource.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1239,7 +1252,10 @@ import 'restore_workload_target_resource.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_backupdisasterrecovery_restoreworkload" "restore_regional_disk" {
+/// resource "gcp_backupdisasterrecovery_restore_workload" "restore_regional_disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
 ///   backup_vault_id = "backup-vault"
 ///   data_source_id  = "data-source"
@@ -1343,6 +1359,7 @@ import 'restore_workload_target_resource.dart';
 ///         provisionedThroughput: 140
 /// ```
 ///
+///
 /// ### Backup Dr Restore Workload Without Delete
 ///
 ///
@@ -1422,7 +1439,7 @@ import 'restore_workload_target_resource.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1452,7 +1469,7 @@ import 'restore_workload_target_resource.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1460,7 +1477,10 @@ import 'restore_workload_target_resource.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_backupdisasterrecovery_restoreworkload" "restore_without_delete" {
+/// resource "gcp_backupdisasterrecovery_restore_workload" "restore_without_delete" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                 = "us-central1"
 ///   backup_vault_id          = "backup-vault"
 ///   data_source_id           = "data-source"
@@ -1616,7 +1636,7 @@ class RestoreWorkload extends pulumi.CustomResource {
           'gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     backupId = registerOutput<String>('backupId');
     backupVaultId = registerOutput<String>('backupVaultId');

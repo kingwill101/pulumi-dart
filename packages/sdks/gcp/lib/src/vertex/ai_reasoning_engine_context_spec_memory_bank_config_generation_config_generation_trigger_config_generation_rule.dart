@@ -38,10 +38,10 @@ class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTrig
 
   factory AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule(
-      eventCount: (() { final guardedValue = map['eventCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      eventCount: (() { final guardedValue = map['eventCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       fixedInterval: (() { final guardedValue = map['fixedInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       idleDuration: (() { final guardedValue = map['idleDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      overlapEventCount: (() { final guardedValue = map['overlapEventCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      overlapEventCount: (() { final guardedValue = map['overlapEventCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

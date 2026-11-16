@@ -15,6 +15,7 @@ import 'ai_feature_online_store_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Vertex Ai Feature Online Store
@@ -91,7 +92,7 @@ import 'ai_feature_online_store_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -119,7 +120,7 @@ import 'ai_feature_online_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -127,7 +128,10 @@ import 'ai_feature_online_store_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aifeatureonlinestore" "feature_online_store" {
+/// resource "gcp_vertex_ai_feature_online_store" "feature_online_store" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example_feature_online_store"
 ///   labels = {
 ///     "foo" = "bar"
@@ -197,6 +201,7 @@ import 'ai_feature_online_store_state.dart';
 ///           maxNodeCount: 3
 ///           cpuUtilizationTarget: 50
 /// ```
+///
 ///
 /// ### Vertex Ai Featureonlinestore With Optimized
 ///
@@ -279,8 +284,8 @@ import 'ai_feature_online_store_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -314,7 +319,7 @@ import 'ai_feature_online_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -322,10 +327,13 @@ import 'ai_feature_online_store_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_vertex_aifeatureonlinestore" "featureonlinestore" {
+/// resource "gcp_vertex_ai_feature_online_store" "featureonlinestore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example_feature_online_store_optimized"
 ///   labels = {
 ///     "foo" = "bar"
@@ -335,7 +343,7 @@ import 'ai_feature_online_store_state.dart';
 ///   dedicated_serving_endpoint = {
 ///     private_service_connect_config = {
 ///       enable_private_service_connect = true
-///       project_allowlists             = [data.gcp_organizations_getproject.project.number]
+///       project_allowlists             = [data.gcp_organizations_project.project.number]
 ///     }
 ///   }
 /// }
@@ -407,6 +415,7 @@ import 'ai_feature_online_store_state.dart';
 ///       function: gcp:organizations:getProject
 ///       arguments: {}
 /// ```
+///
 ///
 /// ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
 ///
@@ -499,8 +508,8 @@ import 'ai_feature_online_store_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -536,7 +545,7 @@ import 'ai_feature_online_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -544,10 +553,13 @@ import 'ai_feature_online_store_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_vertex_aifeatureonlinestore" "featureonlinestore" {
+/// resource "gcp_vertex_ai_feature_online_store" "featureonlinestore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example_feature_online_store_beta_bigtable"
 ///   labels = {
 ///     "foo" = "bar"
@@ -722,7 +734,7 @@ class AiFeatureOnlineStore extends pulumi.CustomResource {
           'gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     bigtable = registerOutput<AiFeatureOnlineStoreBigtable?>('bigtable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreBigtable.fromMap((guardedValue as Map).cast<String, dynamic>()); });

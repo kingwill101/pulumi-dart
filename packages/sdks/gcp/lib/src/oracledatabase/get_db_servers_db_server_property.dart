@@ -66,15 +66,15 @@ class GetDbServersDbServerProperty {
   factory GetDbServersDbServerProperty.fromMap(Map<String, dynamic> map) {
     return GetDbServersDbServerProperty(
       dbNodeIds: pulumi.Input.fromValue((map['dbNodeIds'] as List).cast<String>()),
-      dbNodeStorageSizeGb: pulumi.Input.fromValue((map['dbNodeStorageSizeGb'] as num).toInt()),
-      maxDbNodeStorageSizeGb: pulumi.Input.fromValue((map['maxDbNodeStorageSizeGb'] as num).toInt()),
-      maxMemorySizeGb: pulumi.Input.fromValue((map['maxMemorySizeGb'] as num).toInt()),
-      maxOcpuCount: pulumi.Input.fromValue((map['maxOcpuCount'] as num).toInt()),
-      memorySizeGb: pulumi.Input.fromValue((map['memorySizeGb'] as num).toInt()),
+      dbNodeStorageSizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dbNodeStorageSizeGb'])),
+      maxDbNodeStorageSizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxDbNodeStorageSizeGb'])),
+      maxMemorySizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxMemorySizeGb'])),
+      maxOcpuCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxOcpuCount'])),
+      memorySizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['memorySizeGb'])),
       ocid: pulumi.Input.fromValue(map['ocid'] as String),
-      ocpuCount: pulumi.Input.fromValue((map['ocpuCount'] as num).toInt()),
+      ocpuCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ocpuCount'])),
       state: pulumi.Input.fromValue(map['state'] as String),
-      vmCount: pulumi.Input.fromValue((map['vmCount'] as num).toInt()),
+      vmCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vmCount'])),
     );
   }
 }

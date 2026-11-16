@@ -8,6 +8,7 @@ import 'get_service_template_scaling.dart';
 import 'get_service_template_service_mesh.dart';
 import 'get_service_template_volume.dart';
 import 'get_service_template_vpc_access.dart';
+import 'get_service_template_workload_identity_config.dart';
 
 class GetServiceTemplate {
   /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
@@ -58,6 +59,9 @@ class GetServiceTemplate {
   final pulumi.Input<List<GetServiceTemplateVolume>> volumes;
   /// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
   final pulumi.Input<List<GetServiceTemplateVpcAccess>> vpcAccesses;
+  /// The Revision's workload identity settings. Used to assign an
+  /// [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+  final pulumi.Input<List<GetServiceTemplateWorkloadIdentityConfig>> workloadIdentityConfigs;
 
   /// Creates a new [GetServiceTemplate].
   /// [annotations] Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
@@ -78,6 +82,7 @@ class GetServiceTemplate {
   /// [timeout] Max allowed time for an instance to respond to a request.
   /// [volumes] A list of Volumes to make available to containers.
   /// [vpcAccesses] VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+  /// [workloadIdentityConfigs] The Revision's workload identity settings. Used to assign an
   const GetServiceTemplate({
     required this.annotations,
     required this.containers,
@@ -97,6 +102,7 @@ class GetServiceTemplate {
     required this.timeout,
     required this.volumes,
     required this.vpcAccesses,
+    required this.workloadIdentityConfigs,
   });
 
   Map<String, dynamic> toMap() {
@@ -119,6 +125,7 @@ class GetServiceTemplate {
       'timeout': timeout,
       'volumes': pulumi.Input.mapInputValue<List<GetServiceTemplateVolume>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<GetServiceTemplateVolume, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpcAccesses': pulumi.Input.mapInputValue<List<GetServiceTemplateVpcAccess>, List<Map<String, dynamic>>>(vpcAccesses, (value) => pulumi.Input.encodeList<GetServiceTemplateVpcAccess, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'workloadIdentityConfigs': pulumi.Input.mapInputValue<List<GetServiceTemplateWorkloadIdentityConfig>, List<Map<String, dynamic>>>(workloadIdentityConfigs, (value) => pulumi.Input.encodeList<GetServiceTemplateWorkloadIdentityConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
@@ -131,7 +138,7 @@ class GetServiceTemplate {
       gpuZonalRedundancyDisabled: pulumi.Input.fromValue(map['gpuZonalRedundancyDisabled'] as bool),
       healthCheckDisabled: pulumi.Input.fromValue(map['healthCheckDisabled'] as bool),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
-      maxInstanceRequestConcurrency: pulumi.Input.fromValue((map['maxInstanceRequestConcurrency'] as num).toInt()),
+      maxInstanceRequestConcurrency: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxInstanceRequestConcurrency'])),
       nodeSelectors: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateNodeSelector>(map['nodeSelectors']!, (value) => GetServiceTemplateNodeSelector.fromMap((value as Map).cast<String, dynamic>()))),
       revision: pulumi.Input.fromValue(map['revision'] as String),
       sandboxes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateSandbox>(map['sandboxes']!, (value) => GetServiceTemplateSandbox.fromMap((value as Map).cast<String, dynamic>()))),
@@ -142,6 +149,7 @@ class GetServiceTemplate {
       timeout: pulumi.Input.fromValue(map['timeout'] as String),
       volumes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateVolume>(map['volumes']!, (value) => GetServiceTemplateVolume.fromMap((value as Map).cast<String, dynamic>()))),
       vpcAccesses: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateVpcAccess>(map['vpcAccesses']!, (value) => GetServiceTemplateVpcAccess.fromMap((value as Map).cast<String, dynamic>()))),
+      workloadIdentityConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateWorkloadIdentityConfig>(map['workloadIdentityConfigs']!, (value) => GetServiceTemplateWorkloadIdentityConfig.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }

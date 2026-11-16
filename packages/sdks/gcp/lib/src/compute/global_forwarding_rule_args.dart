@@ -94,7 +94,7 @@ class GlobalForwardingRuleArgs {
   /// Specifies the forwarding rule type.
   /// For more information about forwarding rules, refer to
   /// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-  /// Default value is `EXTERNAL`.
+  /// Default value is `EXTERNAL_MANAGED`.
   /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
   final pulumi.Input<String?>? loadBalancingScheme;
   /// Opaque filter criteria used by Loadbalancer to restrict routing

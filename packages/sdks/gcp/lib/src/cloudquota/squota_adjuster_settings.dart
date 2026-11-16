@@ -11,6 +11,7 @@ import 'squota_adjuster_settings_state.dart';
 /// * How-to Guides
 /// * [Cloud Quotas Overview](https://cloud.google.com/docs/quotas/overview)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Cloudquotas Quota Adjuster Settings Basic
@@ -54,7 +55,7 @@ import 'squota_adjuster_settings_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudquota"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudquota"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -72,7 +73,7 @@ import 'squota_adjuster_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -80,7 +81,10 @@ import 'squota_adjuster_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_cloudquota_squotaadjustersettings" "adjuster_settings" {
+/// resource "gcp_cloudquota_s_quota_adjuster_settings" "adjuster_settings" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent     = "projects/104740170505"
 ///   enablement = "ENABLED"
 /// }
@@ -170,7 +174,7 @@ class SQuotaAdjusterSettings extends pulumi.CustomResource {
           'gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     effectiveContainer = registerOutput<String>('effectiveContainer');
     effectiveEnablement = registerOutput<String>('effectiveEnablement');

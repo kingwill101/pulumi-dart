@@ -97,16 +97,16 @@ class GetNetworkEndpointGroupsNetworkEndpointGroup {
 
   factory GetNetworkEndpointGroupsNetworkEndpointGroup.fromMap(Map<String, dynamic> map) {
     return GetNetworkEndpointGroupsNetworkEndpointGroup(
-      defaultPort: pulumi.Input.fromValue((map['defaultPort'] as num).toInt()),
+      defaultPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['defaultPort'])),
       deletionPolicy: pulumi.Input.fromValue(map['deletionPolicy'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      generatedId: pulumi.Input.fromValue((map['generatedId'] as num).toInt()),
+      generatedId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['generatedId'])),
       name: pulumi.Input.fromValue(map['name'] as String),
       network: pulumi.Input.fromValue(map['network'] as String),
       networkEndpointType: pulumi.Input.fromValue(map['networkEndpointType'] as String),
       project: pulumi.Input.fromValue(map['project'] as String),
       selfLink: pulumi.Input.fromValue(map['selfLink'] as String),
-      size: pulumi.Input.fromValue((map['size'] as num).toInt()),
+      size: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['size'])),
       subnetwork: pulumi.Input.fromValue(map['subnetwork'] as String),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );

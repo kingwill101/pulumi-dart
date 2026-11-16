@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'toolset_mcp_toolset_api_authentication.dart';
 import 'toolset_mcp_toolset_service_directory_config.dart';
 import 'toolset_mcp_toolset_tls_config.dart';
+import 'toolset_mcp_toolset_tool_override.dart';
 
 class ToolsetMcpToolset {
   /// Authentication information required to access tools and execute a tool
@@ -31,6 +32,9 @@ class ToolsetMcpToolset {
   /// client should trust.
   /// Structure is documented below.
   final pulumi.Input<ToolsetMcpToolsetTlsConfig?>? tlsConfig;
+  /// A list of tool overrides for the toolset.
+  /// Structure is documented below.
+  final pulumi.Input<List<ToolsetMcpToolsetToolOverride>?>? toolOverrides;
 
   /// Creates a new [ToolsetMcpToolset].
   /// [apiAuthentication] Authentication information required to access tools and execute a tool
@@ -38,12 +42,14 @@ class ToolsetMcpToolset {
   /// [serverAddress] The address of the MCP server, for example, "https://example.com/mcp/". If
   /// [serviceDirectoryConfig] Service Directory configuration for VPC-SC, used to resolve service names
   /// [tlsConfig] The TLS configuration. Includes the custom server certificates that the
+  /// [toolOverrides] A list of tool overrides for the toolset.
   const ToolsetMcpToolset({
     this.apiAuthentication,
     this.customHeaders,
     required this.serverAddress,
     this.serviceDirectoryConfig,
     this.tlsConfig,
+    this.toolOverrides,
   });
 
   Map<String, dynamic> toMap() {
@@ -53,6 +59,7 @@ class ToolsetMcpToolset {
       'serverAddress': serverAddress,
       'serviceDirectoryConfig': ?pulumi.Input.mapOptionalInputValue<ToolsetMcpToolsetServiceDirectoryConfig, Map<String, dynamic>>(serviceDirectoryConfig, (value) => value.toMap()),
       'tlsConfig': ?pulumi.Input.mapOptionalInputValue<ToolsetMcpToolsetTlsConfig, Map<String, dynamic>>(tlsConfig, (value) => value.toMap()),
+      'toolOverrides': ?pulumi.Input.mapOptionalInputValue<List<ToolsetMcpToolsetToolOverride>, List<Map<String, dynamic>>>(toolOverrides, (value) => pulumi.Input.encodeList<ToolsetMcpToolsetToolOverride, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
@@ -63,6 +70,7 @@ class ToolsetMcpToolset {
       serverAddress: pulumi.Input.fromValue(map['serverAddress'] as String),
       serviceDirectoryConfig: (() { final guardedValue = map['serviceDirectoryConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ToolsetMcpToolsetServiceDirectoryConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tlsConfig: (() { final guardedValue = map['tlsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ToolsetMcpToolsetTlsConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      toolOverrides: (() { final guardedValue = map['toolOverrides']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ToolsetMcpToolsetToolOverride>(guardedValue, (value) => ToolsetMcpToolsetToolOverride.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }

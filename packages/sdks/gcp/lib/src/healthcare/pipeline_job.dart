@@ -15,6 +15,7 @@ import 'pipeline_job_state.dart';
 /// * How-to Guides
 /// * [Creating a PipelineJob](https://cloud.google.com/healthcare-api/private/healthcare-data-engine/docs/reference/rest/v1/projects.locations.datasets.pipelineJobs#PipelineJob)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Healthcare Pipeline Job Reconciliation
@@ -207,9 +208,9 @@ import 'pipeline_job_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -228,7 +229,7 @@ import 'pipeline_job_state.dart';
 /// 		}
 /// 		fhirstore, err := healthcare.NewFhirStore(ctx, "fhirstore", &healthcare.FhirStoreArgs{
 /// 			Name:                        pulumi.String("fhir_store"),
-/// 			Dataset:                     dataset.ID().ToIDOutput().ToStringOutput(),
+/// 			Dataset:                     dataset.ID(),
 /// 			Version:                     pulumi.String("R4"),
 /// 			EnableUpdateCreate:          pulumi.Bool(true),
 /// 			DisableReferentialIntegrity: pulumi.Bool(true),
@@ -255,7 +256,7 @@ import 'pipeline_job_state.dart';
 /// 		_, err = healthcare.NewPipelineJob(ctx, "example-pipeline", &healthcare.PipelineJobArgs{
 /// 			Name:           pulumi.String("example_pipeline_job"),
 /// 			Location:       pulumi.String("us-central1"),
-/// 			Dataset:        dataset.ID().ToIDOutput().ToStringOutput(),
+/// 			Dataset:        dataset.ID(),
 /// 			DisableLineage: pulumi.Bool(true),
 /// 			ReconciliationPipelineJob: &healthcare.PipelineJobReconciliationPipelineJobArgs{
 /// 				MergeConfig: &healthcare.PipelineJobReconciliationPipelineJobMergeConfigArgs{
@@ -297,7 +298,7 @@ import 'pipeline_job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -305,10 +306,13 @@ import 'pipeline_job_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_healthcare_pipelinejob" "example-pipeline" {
+/// resource "gcp_healthcare_pipeline_job" "example-pipeline" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example_pipeline_job"
 ///   location        = "us-central1"
 ///   dataset         = gcp_healthcare_dataset.dataset.id
@@ -317,19 +321,25 @@ import 'pipeline_job_state.dart';
 ///     merge_config = {
 ///       description = "sample description for reconciliation rules"
 ///       whistle_config_source = {
-///         uri               ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.merge_file.name}"
+///         uri               ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucket_object.merge_file.name}"
 ///         import_uri_prefix ="gs://${gcp_storage_bucket.bucket.name}"
 ///       }
 ///     }
 ///     matching_uri_prefix    ="gs://${gcp_storage_bucket.bucket.name}"
-///     fhir_store_destination ="${gcp_healthcare_dataset.dataset.id}/fhirStores/${gcp_healthcare_fhirstore.fhirstore.name}"
+///     fhir_store_destination ="${gcp_healthcare_dataset.dataset.id}/fhirStores/${gcp_healthcare_fhir_store.fhirstore.name}"
 ///   }
 /// }
 /// resource "gcp_healthcare_dataset" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example_dataset"
 ///   location = "us-central1"
 /// }
-/// resource "gcp_healthcare_fhirstore" "fhirstore" {
+/// resource "gcp_healthcare_fhir_store" "fhirstore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "fhir_store"
 ///   dataset                       = gcp_healthcare_dataset.dataset.id
 ///   version                       = "R4"
@@ -337,19 +347,28 @@ import 'pipeline_job_state.dart';
 ///   disable_referential_integrity = true
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example_bucket_name"
 ///   location                    = "us-central1"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "merge_file" {
+/// resource "gcp_storage_bucket_object" "merge_file" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "merge.wstl"
 ///   content = " "
 ///   bucket  = gcp_storage_bucket.bucket.name
 /// }
-/// resource "gcp_storage_bucketiammember" "hsa" {
+/// resource "gcp_storage_bucket_i_a_m_member" "hsa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = gcp_storage_bucket.bucket.name
 ///   role   = "roles/storage.objectUser"
-///   member ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-healthcare.iam.gserviceaccount.com"
+///   member ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-healthcare.iam.gserviceaccount.com"
 /// }
 /// ```
 /// ```java
@@ -507,6 +526,7 @@ import 'pipeline_job_state.dart';
 ///       arguments: {}
 /// ```
 ///
+///
 /// ### Healthcare Pipeline Job Backfill
 ///
 ///
@@ -576,7 +596,7 @@ import 'pipeline_job_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -592,7 +612,7 @@ import 'pipeline_job_state.dart';
 /// 		_, err = healthcare.NewPipelineJob(ctx, "example-pipeline", &healthcare.PipelineJobArgs{
 /// 			Name:     pulumi.String("example_backfill_pipeline"),
 /// 			Location: pulumi.String("us-central1"),
-/// 			Dataset:  dataset.ID().ToIDOutput().ToStringOutput(),
+/// 			Dataset:  dataset.ID(),
 /// 			BackfillPipelineJob: &healthcare.PipelineJobBackfillPipelineJobArgs{
 /// 				MappingPipelineJob: dataset.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 					return fmt.Sprintf("%v/pipelineJobs/example_mapping_pipeline_job", id), nil
@@ -607,7 +627,7 @@ import 'pipeline_job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -615,7 +635,10 @@ import 'pipeline_job_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_pipelinejob" "example-pipeline" {
+/// resource "gcp_healthcare_pipeline_job" "example-pipeline" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example_backfill_pipeline"
 ///   location = "us-central1"
 ///   dataset  = gcp_healthcare_dataset.dataset.id
@@ -624,6 +647,9 @@ import 'pipeline_job_state.dart';
 ///   }
 /// }
 /// resource "gcp_healthcare_dataset" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example_dataset"
 ///   location = "us-central1"
 /// }
@@ -685,6 +711,7 @@ import 'pipeline_job_state.dart';
 ///       name: example_dataset
 ///       location: us-central1
 /// ```
+///
 ///
 /// ### Healthcare Pipeline Job Whistle Mapping
 ///
@@ -927,9 +954,9 @@ import 'pipeline_job_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -948,7 +975,7 @@ import 'pipeline_job_state.dart';
 /// 		}
 /// 		sourceFhirstore, err := healthcare.NewFhirStore(ctx, "source_fhirstore", &healthcare.FhirStoreArgs{
 /// 			Name:                        pulumi.String("source_fhir_store"),
-/// 			Dataset:                     dataset.ID().ToIDOutput().ToStringOutput(),
+/// 			Dataset:                     dataset.ID(),
 /// 			Version:                     pulumi.String("R4"),
 /// 			EnableUpdateCreate:          pulumi.Bool(true),
 /// 			DisableReferentialIntegrity: pulumi.Bool(true),
@@ -958,7 +985,7 @@ import 'pipeline_job_state.dart';
 /// 		}
 /// 		destFhirstore, err := healthcare.NewFhirStore(ctx, "dest_fhirstore", &healthcare.FhirStoreArgs{
 /// 			Name:                        pulumi.String("dest_fhir_store"),
-/// 			Dataset:                     dataset.ID().ToIDOutput().ToStringOutput(),
+/// 			Dataset:                     dataset.ID(),
 /// 			Version:                     pulumi.String("R4"),
 /// 			EnableUpdateCreate:          pulumi.Bool(true),
 /// 			DisableReferentialIntegrity: pulumi.Bool(true),
@@ -985,7 +1012,7 @@ import 'pipeline_job_state.dart';
 /// 		_, err = healthcare.NewPipelineJob(ctx, "example-mapping-pipeline", &healthcare.PipelineJobArgs{
 /// 			Name:           pulumi.String("example_mapping_pipeline_job"),
 /// 			Location:       pulumi.String("us-central1"),
-/// 			Dataset:        dataset.ID().ToIDOutput().ToStringOutput(),
+/// 			Dataset:        dataset.ID(),
 /// 			DisableLineage: pulumi.Bool(true),
 /// 			Labels: pulumi.StringMap{
 /// 				"example_label_key": pulumi.String("example_label_value"),
@@ -1035,7 +1062,7 @@ import 'pipeline_job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1043,10 +1070,13 @@ import 'pipeline_job_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_healthcare_pipelinejob" "example-mapping-pipeline" {
+/// resource "gcp_healthcare_pipeline_job" "example-mapping-pipeline" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example_mapping_pipeline_job"
 ///   location        = "us-central1"
 ///   dataset         = gcp_healthcare_dataset.dataset.id
@@ -1057,30 +1087,39 @@ import 'pipeline_job_state.dart';
 ///   mapping_pipeline_job = {
 ///     mapping_config = {
 ///       whistle_config_source = {
-///         uri               ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.mapping_file.name}"
+///         uri               ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucket_object.mapping_file.name}"
 ///         import_uri_prefix ="gs://${gcp_storage_bucket.bucket.name}"
 ///       }
 ///       description = "example description for mapping configuration"
 ///     }
 ///     fhir_streaming_source = {
-///       fhir_store  ="${gcp_healthcare_dataset.dataset.id}/fhirStores/${gcp_healthcare_fhirstore.source_fhirstore.name}"
+///       fhir_store  ="${gcp_healthcare_dataset.dataset.id}/fhirStores/${gcp_healthcare_fhir_store.source_fhirstore.name}"
 ///       description = "example description for streaming fhirstore"
 ///     }
-///     fhir_store_destination ="${gcp_healthcare_dataset.dataset.id}/fhirStores/${gcp_healthcare_fhirstore.dest_fhirstore.name}"
+///     fhir_store_destination ="${gcp_healthcare_dataset.dataset.id}/fhirStores/${gcp_healthcare_fhir_store.dest_fhirstore.name}"
 ///   }
 /// }
 /// resource "gcp_healthcare_dataset" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example_dataset"
 ///   location = "us-central1"
 /// }
-/// resource "gcp_healthcare_fhirstore" "source_fhirstore" {
+/// resource "gcp_healthcare_fhir_store" "source_fhirstore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "source_fhir_store"
 ///   dataset                       = gcp_healthcare_dataset.dataset.id
 ///   version                       = "R4"
 ///   enable_update_create          = true
 ///   disable_referential_integrity = true
 /// }
-/// resource "gcp_healthcare_fhirstore" "dest_fhirstore" {
+/// resource "gcp_healthcare_fhir_store" "dest_fhirstore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "dest_fhir_store"
 ///   dataset                       = gcp_healthcare_dataset.dataset.id
 ///   version                       = "R4"
@@ -1088,19 +1127,28 @@ import 'pipeline_job_state.dart';
 ///   disable_referential_integrity = true
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example_bucket_name"
 ///   location                    = "us-central1"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "mapping_file" {
+/// resource "gcp_storage_bucket_object" "mapping_file" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "mapping.wstl"
 ///   content = " "
 ///   bucket  = gcp_storage_bucket.bucket.name
 /// }
-/// resource "gcp_storage_bucketiammember" "hsa" {
+/// resource "gcp_storage_bucket_i_a_m_member" "hsa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = gcp_storage_bucket.bucket.name
 ///   role   = "roles/storage.objectUser"
-///   member ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-healthcare.iam.gserviceaccount.com"
+///   member ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-healthcare.iam.gserviceaccount.com"
 /// }
 /// ```
 /// ```java
@@ -1288,6 +1336,7 @@ import 'pipeline_job_state.dart';
 ///       function: gcp:organizations:getProject
 ///       arguments: {}
 /// ```
+///
 ///
 /// ### Healthcare Pipeline Job Mapping Recon Dest
 ///
@@ -1619,9 +1668,9 @@ import 'pipeline_job_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1640,7 +1689,7 @@ import 'pipeline_job_state.dart';
 /// 		}
 /// 		destFhirstore, err := healthcare.NewFhirStore(ctx, "dest_fhirstore", &healthcare.FhirStoreArgs{
 /// 			Name:                        pulumi.String("dest_fhir_store"),
-/// 			Dataset:                     dataset.ID().ToIDOutput().ToStringOutput(),
+/// 			Dataset:                     dataset.ID(),
 /// 			Version:                     pulumi.String("R4"),
 /// 			EnableUpdateCreate:          pulumi.Bool(true),
 /// 			DisableReferentialIntegrity: pulumi.Bool(true),
@@ -1667,7 +1716,7 @@ import 'pipeline_job_state.dart';
 /// 		recon, err := healthcare.NewPipelineJob(ctx, "recon", &healthcare.PipelineJobArgs{
 /// 			Name:           pulumi.String("example_recon_pipeline_job"),
 /// 			Location:       pulumi.String("us-central1"),
-/// 			Dataset:        dataset.ID().ToIDOutput().ToStringOutput(),
+/// 			Dataset:        dataset.ID(),
 /// 			DisableLineage: pulumi.Bool(true),
 /// 			ReconciliationPipelineJob: &healthcare.PipelineJobReconciliationPipelineJobArgs{
 /// 				MergeConfig: &healthcare.PipelineJobReconciliationPipelineJobMergeConfigArgs{
@@ -1698,7 +1747,7 @@ import 'pipeline_job_state.dart';
 /// 		}
 /// 		sourceFhirstore, err := healthcare.NewFhirStore(ctx, "source_fhirstore", &healthcare.FhirStoreArgs{
 /// 			Name:                        pulumi.String("source_fhir_store"),
-/// 			Dataset:                     dataset.ID().ToIDOutput().ToStringOutput(),
+/// 			Dataset:                     dataset.ID(),
 /// 			Version:                     pulumi.String("R4"),
 /// 			EnableUpdateCreate:          pulumi.Bool(true),
 /// 			DisableReferentialIntegrity: pulumi.Bool(true),
@@ -1717,7 +1766,7 @@ import 'pipeline_job_state.dart';
 /// 		_, err = healthcare.NewPipelineJob(ctx, "example-mapping-pipeline", &healthcare.PipelineJobArgs{
 /// 			Name:           pulumi.String("example_mapping_pipeline_job"),
 /// 			Location:       pulumi.String("us-central1"),
-/// 			Dataset:        dataset.ID().ToIDOutput().ToStringOutput(),
+/// 			Dataset:        dataset.ID(),
 /// 			DisableLineage: pulumi.Bool(true),
 /// 			Labels: pulumi.StringMap{
 /// 				"example_label_key": pulumi.String("example_label_value"),
@@ -1765,7 +1814,7 @@ import 'pipeline_job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1773,10 +1822,13 @@ import 'pipeline_job_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_healthcare_pipelinejob" "recon" {
+/// resource "gcp_healthcare_pipeline_job" "recon" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example_recon_pipeline_job"
 ///   location        = "us-central1"
 ///   dataset         = gcp_healthcare_dataset.dataset.id
@@ -1785,16 +1837,19 @@ import 'pipeline_job_state.dart';
 ///     merge_config = {
 ///       description = "sample description for reconciliation rules"
 ///       whistle_config_source = {
-///         uri               ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.merge_file.name}"
+///         uri               ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucket_object.merge_file.name}"
 ///         import_uri_prefix ="gs://${gcp_storage_bucket.bucket.name}"
 ///       }
 ///     }
 ///     matching_uri_prefix    ="gs://${gcp_storage_bucket.bucket.name}"
-///     fhir_store_destination ="${gcp_healthcare_dataset.dataset.id}/fhirStores/${gcp_healthcare_fhirstore.dest_fhirstore.name}"
+///     fhir_store_destination ="${gcp_healthcare_dataset.dataset.id}/fhirStores/${gcp_healthcare_fhir_store.dest_fhirstore.name}"
 ///   }
 /// }
-/// resource "gcp_healthcare_pipelinejob" "example-mapping-pipeline" {
-///   depends_on      = [gcp_healthcare_pipelinejob.recon]
+/// resource "gcp_healthcare_pipeline_job" "example-mapping-pipeline" {
+///   depends_on = [gcp_healthcare_pipeline_job.recon]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example_mapping_pipeline_job"
 ///   location        = "us-central1"
 ///   dataset         = gcp_healthcare_dataset.dataset.id
@@ -1805,30 +1860,39 @@ import 'pipeline_job_state.dart';
 ///   mapping_pipeline_job = {
 ///     mapping_config = {
 ///       whistle_config_source = {
-///         uri               ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.mapping_file.name}"
+///         uri               ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucket_object.mapping_file.name}"
 ///         import_uri_prefix ="gs://${gcp_storage_bucket.bucket.name}"
 ///       }
 ///       description = "example description for mapping configuration"
 ///     }
 ///     fhir_streaming_source = {
-///       fhir_store  ="${gcp_healthcare_dataset.dataset.id}/fhirStores/${gcp_healthcare_fhirstore.source_fhirstore.name}"
+///       fhir_store  ="${gcp_healthcare_dataset.dataset.id}/fhirStores/${gcp_healthcare_fhir_store.source_fhirstore.name}"
 ///       description = "example description for streaming fhirstore"
 ///     }
 ///     reconciliation_destination = true
 ///   }
 /// }
 /// resource "gcp_healthcare_dataset" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example_dataset"
 ///   location = "us-central1"
 /// }
-/// resource "gcp_healthcare_fhirstore" "source_fhirstore" {
+/// resource "gcp_healthcare_fhir_store" "source_fhirstore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "source_fhir_store"
 ///   dataset                       = gcp_healthcare_dataset.dataset.id
 ///   version                       = "R4"
 ///   enable_update_create          = true
 ///   disable_referential_integrity = true
 /// }
-/// resource "gcp_healthcare_fhirstore" "dest_fhirstore" {
+/// resource "gcp_healthcare_fhir_store" "dest_fhirstore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "dest_fhir_store"
 ///   dataset                       = gcp_healthcare_dataset.dataset.id
 ///   version                       = "R4"
@@ -1836,24 +1900,36 @@ import 'pipeline_job_state.dart';
 ///   disable_referential_integrity = true
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example_bucket_name"
 ///   location                    = "us-central1"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "mapping_file" {
+/// resource "gcp_storage_bucket_object" "mapping_file" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "mapping.wstl"
 ///   content = " "
 ///   bucket  = gcp_storage_bucket.bucket.name
 /// }
-/// resource "gcp_storage_bucketobject" "merge_file" {
+/// resource "gcp_storage_bucket_object" "merge_file" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "merge.wstl"
 ///   content = " "
 ///   bucket  = gcp_storage_bucket.bucket.name
 /// }
-/// resource "gcp_storage_bucketiammember" "hsa" {
+/// resource "gcp_storage_bucket_i_a_m_member" "hsa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = gcp_storage_bucket.bucket.name
 ///   role   = "roles/storage.objectUser"
-///   member ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-healthcare.iam.gserviceaccount.com"
+///   member ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-healthcare.iam.gserviceaccount.com"
 /// }
 /// ```
 /// ```java
@@ -2177,7 +2253,7 @@ class PipelineJob extends pulumi.CustomResource {
           'gcp:healthcare/pipelineJob:PipelineJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     backfillPipelineJob = registerOutput<PipelineJobBackfillPipelineJob?>('backfillPipelineJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineJobBackfillPipelineJob.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -21,6 +21,7 @@ import 'conversation_profile_tts_config.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Dialogflow Conversation Profile Basic
@@ -48,6 +49,16 @@ import 'conversation_profile_tts_config.dart';
 ///             enableSentimentAnalysis: true,
 ///         },
 ///     },
+///     sttConfig: {
+///         useGeminiAsr: true,
+///         geminiAsrConfig: {
+///             modelId: "gemini-3-flash-lite-asr-preview",
+///             silenceDurationMs: 1000,
+///             prefixPaddingMs: 500,
+///             startOfSpeechSensitivity: "START_SENSITIVITY_LOW",
+///             endOfSpeechSensitivity: "END_SENSITIVITY_LOW",
+///         },
+///     },
 /// });
 /// ```
 /// ```python
@@ -68,6 +79,16 @@ import 'conversation_profile_tts_config.dart';
 ///         "message_analysis_config": {
 ///             "enable_entity_extraction": True,
 ///             "enable_sentiment_analysis": True,
+///         },
+///     },
+///     stt_config={
+///         "use_gemini_asr": True,
+///         "gemini_asr_config": {
+///             "model_id": "gemini-3-flash-lite-asr-preview",
+///             "silence_duration_ms": 1000,
+///             "prefix_padding_ms": 500,
+///             "start_of_speech_sensitivity": "START_SENSITIVITY_LOW",
+///             "end_of_speech_sensitivity": "END_SENSITIVITY_LOW",
 ///         },
 ///     })
 /// ```
@@ -102,6 +123,18 @@ import 'conversation_profile_tts_config.dart';
 ///                 EnableSentimentAnalysis = true,
 ///             },
 ///         },
+///         SttConfig = new Gcp.Diagflow.Inputs.ConversationProfileSttConfigArgs
+///         {
+///             UseGeminiAsr = true,
+///             GeminiAsrConfig = new Gcp.Diagflow.Inputs.ConversationProfileSttConfigGeminiAsrConfigArgs
+///             {
+///                 ModelId = "gemini-3-flash-lite-asr-preview",
+///                 SilenceDurationMs = 1000,
+///                 PrefixPaddingMs = 500,
+///                 StartOfSpeechSensitivity = "START_SENSITIVITY_LOW",
+///                 EndOfSpeechSensitivity = "END_SENSITIVITY_LOW",
+///             },
+///         },
 ///     });
 ///
 /// });
@@ -112,7 +145,7 @@ import 'conversation_profile_tts_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -140,6 +173,16 @@ import 'conversation_profile_tts_config.dart';
 /// 					EnableSentimentAnalysis: pulumi.Bool(true),
 /// 				},
 /// 			},
+/// 			SttConfig: &diagflow.ConversationProfileSttConfigArgs{
+/// 				UseGeminiAsr: pulumi.Bool(true),
+/// 				GeminiAsrConfig: &diagflow.ConversationProfileSttConfigGeminiAsrConfigArgs{
+/// 					ModelId:                  pulumi.String("gemini-3-flash-lite-asr-preview"),
+/// 					SilenceDurationMs:        pulumi.Int(1000),
+/// 					PrefixPaddingMs:          pulumi.Int(500),
+/// 					StartOfSpeechSensitivity: pulumi.String("START_SENSITIVITY_LOW"),
+/// 					EndOfSpeechSensitivity:   pulumi.String("END_SENSITIVITY_LOW"),
+/// 				},
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -149,7 +192,7 @@ import 'conversation_profile_tts_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -158,11 +201,17 @@ import 'conversation_profile_tts_config.dart';
 /// }
 ///
 /// resource "gcp_diagflow_agent" "basic_agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "example_agent"
 ///   default_language_code = "en"
 ///   time_zone             = "America/New_York"
 /// }
-/// resource "gcp_diagflow_conversationprofile" "basic_profile" {
+/// resource "gcp_diagflow_conversation_profile" "basic_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "dialogflow-profile"
 ///   location     = "global"
 ///   automated_agent_config = {
@@ -172,6 +221,16 @@ import 'conversation_profile_tts_config.dart';
 ///     message_analysis_config = {
 ///       enable_entity_extraction  = true
 ///       enable_sentiment_analysis = true
+///     }
+///   }
+///   stt_config = {
+///     use_gemini_asr = true
+///     gemini_asr_config = {
+///       model_id                    = "gemini-3-flash-lite-asr-preview"
+///       silence_duration_ms         = 1000
+///       prefix_padding_ms           = 500
+///       start_of_speech_sensitivity = "START_SENSITIVITY_LOW"
+///       end_of_speech_sensitivity   = "END_SENSITIVITY_LOW"
 ///     }
 ///   }
 /// }
@@ -189,6 +248,8 @@ import 'conversation_profile_tts_config.dart';
 /// import com.pulumi.gcp.diagflow.inputs.ConversationProfileAutomatedAgentConfigArgs;
 /// import com.pulumi.gcp.diagflow.inputs.ConversationProfileHumanAgentAssistantConfigArgs;
 /// import com.pulumi.gcp.diagflow.inputs.ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs;
+/// import com.pulumi.gcp.diagflow.inputs.ConversationProfileSttConfigArgs;
+/// import com.pulumi.gcp.diagflow.inputs.ConversationProfileSttConfigGeminiAsrConfigArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -220,6 +281,16 @@ import 'conversation_profile_tts_config.dart';
 ///                     .enableSentimentAnalysis(true)
 ///                     .build())
 ///                 .build())
+///             .sttConfig(ConversationProfileSttConfigArgs.builder()
+///                 .useGeminiAsr(true)
+///                 .geminiAsrConfig(ConversationProfileSttConfigGeminiAsrConfigArgs.builder()
+///                     .modelId("gemini-3-flash-lite-asr-preview")
+///                     .silenceDurationMs(1000)
+///                     .prefixPaddingMs(500)
+///                     .startOfSpeechSensitivity("START_SENSITIVITY_LOW")
+///                     .endOfSpeechSensitivity("END_SENSITIVITY_LOW")
+///                     .build())
+///                 .build())
 ///             .build());
 ///
 ///     }
@@ -246,7 +317,16 @@ import 'conversation_profile_tts_config.dart';
 ///         messageAnalysisConfig:
 ///           enableEntityExtraction: true
 ///           enableSentimentAnalysis: true
+///       sttConfig:
+///         useGeminiAsr: true
+///         geminiAsrConfig:
+///           modelId: gemini-3-flash-lite-asr-preview
+///           silenceDurationMs: 1000
+///           prefixPaddingMs: 500
+///           startOfSpeechSensitivity: START_SENSITIVITY_LOW
+///           endOfSpeechSensitivity: END_SENSITIVITY_LOW
 /// ```
+///
 ///
 /// ### Dialogflow Conversation Profile Recognition Result Notification
 ///
@@ -309,8 +389,8 @@ import 'conversation_profile_tts_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -326,7 +406,7 @@ import 'conversation_profile_tts_config.dart';
 /// 			DisplayName: pulumi.String("dialogflow-profile"),
 /// 			Location:    pulumi.String("global"),
 /// 			NewRecognitionResultNotificationConfig: &diagflow.ConversationProfileNewRecognitionResultNotificationConfigArgs{
-/// 				Topic:         recognitionResultNotificationProfileTopic.ID().ToIDOutput().ToStringOutput(),
+/// 				Topic:         recognitionResultNotificationProfileTopic.ID(),
 /// 				MessageFormat: pulumi.String("JSON"),
 /// 			},
 /// 		})
@@ -338,7 +418,7 @@ import 'conversation_profile_tts_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -346,7 +426,10 @@ import 'conversation_profile_tts_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_diagflow_conversationprofile" "recognition_result_notification_profile" {
+/// resource "gcp_diagflow_conversation_profile" "recognition_result_notification_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "dialogflow-profile"
 ///   location     = "global"
 ///   new_recognition_result_notification_config = {
@@ -355,6 +438,9 @@ import 'conversation_profile_tts_config.dart';
 ///   }
 /// }
 /// resource "gcp_pubsub_topic" "recognition_result_notification_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "recognition-result-notification"
 /// }
 /// ```
@@ -415,6 +501,7 @@ import 'conversation_profile_tts_config.dart';
 ///     properties:
 ///       name: recognition-result-notification
 /// ```
+///
 ///
 /// ### Dialogflow Conversation Profile Beta Bidi
 ///
@@ -512,8 +599,8 @@ import 'conversation_profile_tts_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -536,7 +623,7 @@ import 'conversation_profile_tts_config.dart';
 /// 			LanguageCode:     pulumi.String("en-US"),
 /// 			UseBidiStreaming: pulumi.Bool(true),
 /// 			AutomatedAgentConfig: &diagflow.ConversationProfileAutomatedAgentConfigArgs{
-/// 				Agent: cesAppForAgent.ID().ToIDOutput().ToStringOutput(),
+/// 				Agent: cesAppForAgent.ID(),
 /// 			},
 /// 			SipConfig: &diagflow.ConversationProfileSipConfigArgs{
 /// 				AllowVirtualAgentInteraction: pulumi.Bool(true),
@@ -551,7 +638,7 @@ import 'conversation_profile_tts_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -559,7 +646,10 @@ import 'conversation_profile_tts_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_diagflow_conversationprofile" "bidi_profile" {
+/// resource "gcp_diagflow_conversation_profile" "bidi_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name       = "dialogflow-profile-bidi"
 ///   location           = "europe-west1"
 ///   language_code      = "en-US"
@@ -573,6 +663,9 @@ import 'conversation_profile_tts_config.dart';
 ///   }
 /// }
 /// resource "gcp_ces_app" "ces_app_for_agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id"
 ///   location     = "us"
 ///   display_name = "my-app"
@@ -744,7 +837,7 @@ class ConversationProfile extends pulumi.CustomResource {
           'gcp:diagflow/conversationProfile:ConversationProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     automatedAgentConfig = registerOutput<ConversationProfileAutomatedAgentConfig?>('automatedAgentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileAutomatedAgentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

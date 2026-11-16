@@ -158,7 +158,7 @@ class NetworkArgs {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableUlaInternalIpv6: (() { final guardedValue = map['enableUlaInternalIpv6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       internalIpv6Range: (() { final guardedValue = map['internalIpv6Range']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      mtu: (() { final guardedValue = map['mtu']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      mtu: (() { final guardedValue = map['mtu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkFirewallPolicyEnforcementOrder: (() { final guardedValue = map['networkFirewallPolicyEnforcementOrder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkProfile: (() { final guardedValue = map['networkProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

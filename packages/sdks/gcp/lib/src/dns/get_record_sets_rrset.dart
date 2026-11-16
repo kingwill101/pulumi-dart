@@ -37,7 +37,7 @@ class GetRecordSetsRrset {
     return GetRecordSetsRrset(
       name: pulumi.Input.fromValue(map['name'] as String),
       rrdatas: pulumi.Input.fromValue((map['rrdatas'] as List).cast<String>()),
-      ttl: pulumi.Input.fromValue((map['ttl'] as num).toInt()),
+      ttl: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ttl'])),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

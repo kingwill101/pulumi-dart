@@ -9,6 +9,7 @@ import 'app_hosting_traffic_target.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Firebase App Hosting Traffic Target
@@ -199,15 +200,15 @@ import 'app_hosting_traffic_target.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		// ## Include these blocks only once per project if you are starting from scratch ###
+/// 		//## Include these blocks only once per project if you are starting from scratch ###
 /// 		serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
 /// 			Project:                   pulumi.String("my-project-name"),
 /// 			AccountId:                 pulumi.String("firebase-app-hosting-compute"),
@@ -280,7 +281,7 @@ import 'app_hosting_traffic_target.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -288,21 +289,27 @@ import 'app_hosting_traffic_target.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_apphostingtraffic" "example" {
-///   project  = gcp_firebase_apphostingbackend.example.project
-///   location = gcp_firebase_apphostingbackend.example.location
-///   backend  = gcp_firebase_apphostingbackend.example.backend_id
+/// resource "gcp_firebase_app_hosting_traffic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project  = gcp_firebase_app_hosting_backend.example.project
+///   location = gcp_firebase_app_hosting_backend.example.location
+///   backend  = gcp_firebase_app_hosting_backend.example.backend_id
 ///   target = {
 ///     splits = [{
-///       "build"   = gcp_firebase_apphostingbuild.example.name
-///       "percent" = 100
+///       build   = gcp_firebase_app_hosting_build.example.name
+///       percent = 100
 ///     }]
 ///   }
 /// }
-/// resource "gcp_firebase_apphostingbuild" "example" {
-///   project  = gcp_firebase_apphostingbackend.example.project
-///   location = gcp_firebase_apphostingbackend.example.location
-///   backend  = gcp_firebase_apphostingbackend.example.backend_id
+/// resource "gcp_firebase_app_hosting_build" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project  = gcp_firebase_app_hosting_backend.example.project
+///   location = gcp_firebase_app_hosting_backend.example.location
+///   backend  = gcp_firebase_app_hosting_backend.example.backend_id
 ///   build_id = "target-build"
 ///   source = {
 ///     container = {
@@ -310,8 +317,11 @@ import 'app_hosting_traffic_target.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_firebase_apphostingbackend" "example" {
-///   depends_on       = [gcp_projects_service.fah]
+/// resource "gcp_firebase_app_hosting_backend" "example" {
+///   depends_on = [gcp_projects_service.fah]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = "my-project-name"
 ///   location         = "asia-east1"
 ///   backend_id       = "traffic-tg"
@@ -321,17 +331,26 @@ import 'app_hosting_traffic_target.dart';
 /// }
 /// ### Include these blocks only once per project if you are starting from scratch ###
 /// resource "gcp_serviceaccount_account" "service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                      = "my-project-name"
 ///   account_id                   = "firebase-app-hosting-compute"
 ///   display_name                 = "Firebase App Hosting compute service account"
 ///   create_ignore_already_exists = true
 /// }
-/// resource "gcp_projects_iammember" "app_hosting_sa_runner" {
+/// resource "gcp_projects_i_a_m_member" "app_hosting_sa_runner" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   role    = "roles/firebaseapphosting.computeRunner"
 ///   member  = gcp_serviceaccount_account.service_account.member
 /// }
 /// resource "gcp_projects_service" "fah" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   service = "firebaseapphosting.googleapis.com"
 /// }
@@ -488,6 +507,7 @@ import 'app_hosting_traffic_target.dart';
 ///       service: firebaseapphosting.googleapis.com
 /// ```
 ///
+///
 /// ### Firebase App Hosting Traffic Rollout Policy
 ///
 ///
@@ -627,15 +647,15 @@ import 'app_hosting_traffic_target.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		// ## Include these blocks only once per project if you are starting from scratch ###
+/// 		//## Include these blocks only once per project if you are starting from scratch ###
 /// 		serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
 /// 			Project:                   pulumi.String("my-project-name"),
 /// 			AccountId:                 pulumi.String("firebase-app-hosting-compute"),
@@ -689,7 +709,7 @@ import 'app_hosting_traffic_target.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -697,16 +717,22 @@ import 'app_hosting_traffic_target.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_apphostingtraffic" "example" {
-///   project  = gcp_firebase_apphostingbackend.example.project
-///   location = gcp_firebase_apphostingbackend.example.location
-///   backend  = gcp_firebase_apphostingbackend.example.backend_id
+/// resource "gcp_firebase_app_hosting_traffic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project  = gcp_firebase_app_hosting_backend.example.project
+///   location = gcp_firebase_app_hosting_backend.example.location
+///   backend  = gcp_firebase_app_hosting_backend.example.backend_id
 ///   rollout_policy = {
 ///     codebase_branch = "main"
 ///   }
 /// }
-/// resource "gcp_firebase_apphostingbackend" "example" {
-///   depends_on       = [gcp_projects_service.fah]
+/// resource "gcp_firebase_app_hosting_backend" "example" {
+///   depends_on = [gcp_projects_service.fah]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = "my-project-name"
 ///   location         = "asia-east1"
 ///   backend_id       = "traffic-rp"
@@ -716,17 +742,26 @@ import 'app_hosting_traffic_target.dart';
 /// }
 /// ### Include these blocks only once per project if you are starting from scratch ###
 /// resource "gcp_serviceaccount_account" "service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                      = "my-project-name"
 ///   account_id                   = "firebase-app-hosting-compute"
 ///   display_name                 = "Firebase App Hosting compute service account"
 ///   create_ignore_already_exists = true
 /// }
-/// resource "gcp_projects_iammember" "app_hosting_sa_runner" {
+/// resource "gcp_projects_i_a_m_member" "app_hosting_sa_runner" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   role    = "roles/firebaseapphosting.computeRunner"
 ///   member  = gcp_serviceaccount_account.service_account.member
 /// }
 /// resource "gcp_projects_service" "fah" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   service = "firebaseapphosting.googleapis.com"
 /// }
@@ -849,6 +884,7 @@ import 'app_hosting_traffic_target.dart';
 ///       project: my-project-name
 ///       service: firebaseapphosting.googleapis.com
 /// ```
+///
 ///
 /// ### Firebase App Hosting Traffic Rollout Policy Disabled
 ///
@@ -992,15 +1028,15 @@ import 'app_hosting_traffic_target.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		// ## Include these blocks only once per project if you are starting from scratch ###
+/// 		//## Include these blocks only once per project if you are starting from scratch ###
 /// 		serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
 /// 			Project:                   pulumi.String("my-project-name"),
 /// 			AccountId:                 pulumi.String("firebase-app-hosting-compute"),
@@ -1055,7 +1091,7 @@ import 'app_hosting_traffic_target.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1063,17 +1099,23 @@ import 'app_hosting_traffic_target.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_apphostingtraffic" "example" {
-///   project  = gcp_firebase_apphostingbackend.example.project
-///   location = gcp_firebase_apphostingbackend.example.location
-///   backend  = gcp_firebase_apphostingbackend.example.backend_id
+/// resource "gcp_firebase_app_hosting_traffic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project  = gcp_firebase_app_hosting_backend.example.project
+///   location = gcp_firebase_app_hosting_backend.example.location
+///   backend  = gcp_firebase_app_hosting_backend.example.backend_id
 ///   rollout_policy = {
 ///     disabled        = true
 ///     codebase_branch = "main"
 ///   }
 /// }
-/// resource "gcp_firebase_apphostingbackend" "example" {
-///   depends_on       = [gcp_projects_service.fah]
+/// resource "gcp_firebase_app_hosting_backend" "example" {
+///   depends_on = [gcp_projects_service.fah]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = "my-project-name"
 ///   location         = "asia-east1"
 ///   backend_id       = "traffic-rpd"
@@ -1083,17 +1125,26 @@ import 'app_hosting_traffic_target.dart';
 /// }
 /// ### Include these blocks only once per project if you are starting from scratch ###
 /// resource "gcp_serviceaccount_account" "service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                      = "my-project-name"
 ///   account_id                   = "firebase-app-hosting-compute"
 ///   display_name                 = "Firebase App Hosting compute service account"
 ///   create_ignore_already_exists = true
 /// }
-/// resource "gcp_projects_iammember" "app_hosting_sa_runner" {
+/// resource "gcp_projects_i_a_m_member" "app_hosting_sa_runner" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   role    = "roles/firebaseapphosting.computeRunner"
 ///   member  = gcp_serviceaccount_account.service_account.member
 /// }
 /// resource "gcp_projects_service" "fah" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   service = "firebaseapphosting.googleapis.com"
 /// }
@@ -1284,7 +1335,7 @@ class AppHostingTraffic extends pulumi.CustomResource {
           'gcp:firebase/appHostingTraffic:AppHostingTraffic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     backend = registerOutput<String>('backend');
     createTime = registerOutput<String>('createTime');

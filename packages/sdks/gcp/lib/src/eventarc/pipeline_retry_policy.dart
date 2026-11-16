@@ -36,7 +36,7 @@ class PipelineRetryPolicy {
 
   factory PipelineRetryPolicy.fromMap(Map<String, dynamic> map) {
     return PipelineRetryPolicy(
-      maxAttempts: (() { final guardedValue = map['maxAttempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxAttempts: (() { final guardedValue = map['maxAttempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       maxRetryDelay: (() { final guardedValue = map['maxRetryDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       minRetryDelay: (() { final guardedValue = map['minRetryDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

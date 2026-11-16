@@ -19,6 +19,7 @@ import 'metastore_service_telemetry_config.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/dataproc-metastore/docs/overview)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Dataproc Metastore Service Basic
@@ -101,7 +102,7 @@ import 'metastore_service_telemetry_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -131,7 +132,7 @@ import 'metastore_service_telemetry_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -139,7 +140,10 @@ import 'metastore_service_telemetry_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_metastoreservice" "default" {
+/// resource "gcp_dataproc_metastore_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id = "metastore-srv"
 ///   location   = "us-central1"
 ///   port       = 9080
@@ -214,6 +218,7 @@ import 'metastore_service_telemetry_config.dart';
 ///       labels:
 ///         env: test
 /// ```
+///
 ///
 /// ### Dataproc Metastore Service Deletion Protection
 ///
@@ -298,7 +303,7 @@ import 'metastore_service_telemetry_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -329,7 +334,7 @@ import 'metastore_service_telemetry_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -337,7 +342,10 @@ import 'metastore_service_telemetry_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_metastoreservice" "default" {
+/// resource "gcp_dataproc_metastore_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id          = "metastore-srv"
 ///   location            = "us-central1"
 ///   port                = 9080
@@ -415,6 +423,7 @@ import 'metastore_service_telemetry_config.dart';
 ///       labels:
 ///         env: test
 /// ```
+///
 ///
 /// ### Dataproc Metastore Service Cmek Example
 ///
@@ -506,8 +515,8 @@ import 'metastore_service_telemetry_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -522,7 +531,7 @@ import 'metastore_service_telemetry_config.dart';
 /// 		}
 /// 		cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("example-key"),
-/// 			KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyRing: keyRing.ID(),
 /// 			Purpose: pulumi.String("ENCRYPT_DECRYPT"),
 /// 		})
 /// 		if err != nil {
@@ -532,7 +541,7 @@ import 'metastore_service_telemetry_config.dart';
 /// 			ServiceId: pulumi.String("example-service"),
 /// 			Location:  pulumi.String("us-central1"),
 /// 			EncryptionConfig: &dataproc.MetastoreServiceEncryptionConfigArgs{
-/// 				KmsKey: cryptoKey.ID().ToIDOutput().ToStringOutput(),
+/// 				KmsKey: cryptoKey.ID(),
 /// 			},
 /// 			HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
 /// 				Version: pulumi.String("3.1.2"),
@@ -546,7 +555,7 @@ import 'metastore_service_telemetry_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -554,22 +563,31 @@ import 'metastore_service_telemetry_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_metastoreservice" "default" {
+/// resource "gcp_dataproc_metastore_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id = "example-service"
 ///   location   = "us-central1"
 ///   encryption_config = {
-///     kms_key = gcp_kms_cryptokey.crypto_key.id
+///     kms_key = gcp_kms_crypto_key.crypto_key.id
 ///   }
 ///   hive_metastore_config = {
 ///     version = "3.1.2"
 ///   }
 /// }
-/// resource "gcp_kms_cryptokey" "crypto_key" {
+/// resource "gcp_kms_crypto_key" "crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-key"
-///   key_ring = gcp_kms_keyring.key_ring.id
+///   key_ring = gcp_kms_key_ring.key_ring.id
 ///   purpose  = "ENCRYPT_DECRYPT"
 /// }
-/// resource "gcp_kms_keyring" "key_ring" {
+/// resource "gcp_kms_key_ring" "key_ring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-keyring"
 ///   location = "us-central1"
 /// }
@@ -651,6 +669,7 @@ import 'metastore_service_telemetry_config.dart';
 ///       name: example-keyring
 ///       location: us-central1
 /// ```
+///
 ///
 /// ### Dataproc Metastore Service Private Service Connect
 ///
@@ -761,8 +780,8 @@ import 'metastore_service_telemetry_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -778,7 +797,7 @@ import 'metastore_service_telemetry_config.dart';
 /// 		subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 /// 			Name:                  pulumi.String("my-subnetwork"),
 /// 			Region:                pulumi.String("us-central1"),
-/// 			Network:               net.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:               net.ID(),
 /// 			IpCidrRange:           pulumi.String("10.0.0.0/22"),
 /// 			PrivateIpGoogleAccess: pulumi.Bool(true),
 /// 		})
@@ -795,7 +814,7 @@ import 'metastore_service_telemetry_config.dart';
 /// 			NetworkConfig: &dataproc.MetastoreServiceNetworkConfigArgs{
 /// 				Consumers: dataproc.MetastoreServiceNetworkConfigConsumerArray{
 /// 					&dataproc.MetastoreServiceNetworkConfigConsumerArgs{
-/// 						Subnetwork: subnet.ID().ToIDOutput().ToStringOutput(),
+/// 						Subnetwork: subnet.ID(),
 /// 					},
 /// 				},
 /// 			},
@@ -808,7 +827,7 @@ import 'metastore_service_telemetry_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -817,17 +836,26 @@ import 'metastore_service_telemetry_config.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "my-subnetwork"
 ///   region                   = "us-central1"
 ///   network                  = gcp_compute_network.net.id
 ///   ip_cidr_range            = "10.0.0.0/22"
 ///   private_ip_google_access = true
 /// }
-/// resource "gcp_dataproc_metastoreservice" "default" {
+/// resource "gcp_dataproc_metastore_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id = "metastore-srv"
 ///   location   = "us-central1"
 ///   tier       = "DEVELOPER"
@@ -836,7 +864,7 @@ import 'metastore_service_telemetry_config.dart';
 ///   }
 ///   network_config = {
 ///     consumers = [{
-///       "subnetwork" = gcp_compute_subnetwork.subnet.id
+///       subnetwork = gcp_compute_subnetwork.subnet.id
 ///     }]
 ///   }
 /// }
@@ -926,6 +954,7 @@ import 'metastore_service_telemetry_config.dart';
 ///         consumers:
 ///           - subnetwork: ${subnet.id}
 /// ```
+///
 ///
 /// ### Dataproc Metastore Service Private Service Connect Custom Routes
 ///
@@ -1036,8 +1065,8 @@ import 'metastore_service_telemetry_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1053,7 +1082,7 @@ import 'metastore_service_telemetry_config.dart';
 /// 		subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 /// 			Name:                  pulumi.String("my-subnetwork"),
 /// 			Region:                pulumi.String("us-central1"),
-/// 			Network:               net.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:               net.ID(),
 /// 			IpCidrRange:           pulumi.String("10.0.0.0/22"),
 /// 			PrivateIpGoogleAccess: pulumi.Bool(true),
 /// 		})
@@ -1069,7 +1098,7 @@ import 'metastore_service_telemetry_config.dart';
 /// 			NetworkConfig: &dataproc.MetastoreServiceNetworkConfigArgs{
 /// 				Consumers: dataproc.MetastoreServiceNetworkConfigConsumerArray{
 /// 					&dataproc.MetastoreServiceNetworkConfigConsumerArgs{
-/// 						Subnetwork: subnet.ID().ToIDOutput().ToStringOutput(),
+/// 						Subnetwork: subnet.ID(),
 /// 					},
 /// 				},
 /// 				CustomRoutesEnabled: pulumi.Bool(true),
@@ -1083,7 +1112,7 @@ import 'metastore_service_telemetry_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1092,17 +1121,26 @@ import 'metastore_service_telemetry_config.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "my-subnetwork"
 ///   region                   = "us-central1"
 ///   network                  = gcp_compute_network.net.id
 ///   ip_cidr_range            = "10.0.0.0/22"
 ///   private_ip_google_access = true
 /// }
-/// resource "gcp_dataproc_metastoreservice" "default" {
+/// resource "gcp_dataproc_metastore_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id = "metastore-srv"
 ///   location   = "us-central1"
 ///   hive_metastore_config = {
@@ -1110,7 +1148,7 @@ import 'metastore_service_telemetry_config.dart';
 ///   }
 ///   network_config = {
 ///     consumers = [{
-///       "subnetwork" = gcp_compute_subnetwork.subnet.id
+///       subnetwork = gcp_compute_subnetwork.subnet.id
 ///     }]
 ///     custom_routes_enabled = true
 ///   }
@@ -1202,6 +1240,7 @@ import 'metastore_service_telemetry_config.dart';
 ///         customRoutesEnabled: true
 /// ```
 ///
+///
 /// ### Dataproc Metastore Service Dpms2
 ///
 ///
@@ -1266,7 +1305,7 @@ import 'metastore_service_telemetry_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1291,7 +1330,7 @@ import 'metastore_service_telemetry_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1299,7 +1338,10 @@ import 'metastore_service_telemetry_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_metastoreservice" "dpms2" {
+/// resource "gcp_dataproc_metastore_service" "dpms2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id    = "ms-dpms2"
 ///   location      = "us-central1"
 ///   database_type = "SPANNER"
@@ -1362,6 +1404,7 @@ import 'metastore_service_telemetry_config.dart';
 ///       scalingConfig:
 ///         instanceSize: EXTRA_SMALL
 /// ```
+///
 ///
 /// ### Dataproc Metastore Service Dpms2 Scaling Factor
 ///
@@ -1427,7 +1470,7 @@ import 'metastore_service_telemetry_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1452,7 +1495,7 @@ import 'metastore_service_telemetry_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1460,7 +1503,10 @@ import 'metastore_service_telemetry_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_metastoreservice" "dpms2_scaling_factor" {
+/// resource "gcp_dataproc_metastore_service" "dpms2_scaling_factor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id    = "ms-dpms2sf"
 ///   location      = "us-central1"
 ///   database_type = "SPANNER"
@@ -1524,6 +1570,7 @@ import 'metastore_service_telemetry_config.dart';
 ///       scalingConfig:
 ///         scalingFactor: '2'
 /// ```
+///
 ///
 /// ### Dataproc Metastore Service Scheduled Backup
 ///
@@ -1639,8 +1686,8 @@ import 'metastore_service_telemetry_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1685,7 +1732,7 @@ import 'metastore_service_telemetry_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1693,7 +1740,10 @@ import 'metastore_service_telemetry_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_metastoreservice" "backup" {
+/// resource "gcp_dataproc_metastore_service" "backup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id = "backup-1"
 ///   location   = "us-central1"
 ///   port       = 9080
@@ -1716,6 +1766,9 @@ import 'metastore_service_telemetry_config.dart';
 ///   }
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "backup-1"
 ///   location = "us-central1"
 /// }
@@ -1803,6 +1856,7 @@ import 'metastore_service_telemetry_config.dart';
 ///       location: us-central1
 /// ```
 ///
+///
 /// ### Dataproc Metastore Service Autoscaling Max Scaling Factor
 ///
 ///
@@ -1884,7 +1938,7 @@ import 'metastore_service_telemetry_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1914,7 +1968,7 @@ import 'metastore_service_telemetry_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1922,7 +1976,10 @@ import 'metastore_service_telemetry_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_metastoreservice" "test_resource" {
+/// resource "gcp_dataproc_metastore_service" "test_resource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id    = "test-service"
 ///   location      = "us-central1"
 ///   database_type = "SPANNER"
@@ -2001,6 +2058,7 @@ import 'metastore_service_telemetry_config.dart';
 ///           limitConfig:
 ///             maxScalingFactor: 1
 /// ```
+///
 ///
 /// ### Dataproc Metastore Service Autoscaling Min And Max Scaling Factor
 ///
@@ -2086,7 +2144,7 @@ import 'metastore_service_telemetry_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2117,7 +2175,7 @@ import 'metastore_service_telemetry_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2125,7 +2183,10 @@ import 'metastore_service_telemetry_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_metastoreservice" "test_resource" {
+/// resource "gcp_dataproc_metastore_service" "test_resource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id    = "test-service"
 ///   location      = "us-central1"
 ///   database_type = "SPANNER"
@@ -2208,6 +2269,7 @@ import 'metastore_service_telemetry_config.dart';
 ///             maxScalingFactor: 1
 /// ```
 ///
+///
 /// ### Dataproc Metastore Service Autoscaling Min Scaling Factor
 ///
 ///
@@ -2289,7 +2351,7 @@ import 'metastore_service_telemetry_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2319,7 +2381,7 @@ import 'metastore_service_telemetry_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2327,7 +2389,10 @@ import 'metastore_service_telemetry_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_metastoreservice" "test_resource" {
+/// resource "gcp_dataproc_metastore_service" "test_resource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id    = "test-service"
 ///   location      = "us-central1"
 ///   database_type = "SPANNER"
@@ -2407,6 +2472,7 @@ import 'metastore_service_telemetry_config.dart';
 ///             minScalingFactor: 0.1
 /// ```
 ///
+///
 /// ### Dataproc Metastore Service Autoscaling No Limit Config
 ///
 ///
@@ -2478,7 +2544,7 @@ import 'metastore_service_telemetry_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2505,7 +2571,7 @@ import 'metastore_service_telemetry_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2513,7 +2579,10 @@ import 'metastore_service_telemetry_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_metastoreservice" "test_resource" {
+/// resource "gcp_dataproc_metastore_service" "test_resource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id    = "test-service"
 ///   location      = "us-central1"
 ///   database_type = "SPANNER"
@@ -2706,7 +2775,7 @@ class MetastoreService extends pulumi.CustomResource {
           'gcp:dataproc/metastoreService:MetastoreService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     artifactGcsUri = registerOutput<String>('artifactGcsUri');

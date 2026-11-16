@@ -6,6 +6,7 @@ import 'configuration_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Licensemanager Configuration Basic
@@ -16,7 +17,7 @@ import 'configuration_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// // Reference design doc: go/lima-terraform
+/// // Reference design doc: go/lima-pulumi
 /// const example_configuration = new gcp.licensemanager.Configuration("example-configuration", {
 ///     location: "us-central1",
 ///     configurationId: "example-configuration",
@@ -28,7 +29,7 @@ import 'configuration_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// # Reference design doc: go/lima-terraform
+/// # Reference design doc: go/lima-pulumi
 /// example_configuration = gcp.licensemanager.Configuration("example-configuration",
 ///     location="us-central1",
 ///     configuration_id="example-configuration",
@@ -43,7 +44,7 @@ import 'configuration_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     // Reference design doc: go/lima-terraform
+///     // Reference design doc: go/lima-pulumi
 ///     var example_configuration = new Gcp.LicenseManager.Configuration("example-configuration", new()
 ///     {
 ///         Location = "us-central1",
@@ -58,13 +59,13 @@ import 'configuration_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/licensemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/licensemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		// Reference design doc: go/lima-terraform
+/// 		// Reference design doc: go/lima-pulumi
 /// 		_, err := licensemanager.NewConfiguration(ctx, "example-configuration", &licensemanager.ConfigurationArgs{
 /// 			Location:        pulumi.String("us-central1"),
 /// 			ConfigurationId: pulumi.String("example-configuration"),
@@ -79,7 +80,7 @@ import 'configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -87,8 +88,11 @@ import 'configuration_state.dart';
 ///   }
 /// }
 ///
-/// # Reference design doc: go/lima-terraform
+/// # Reference design doc: go/lima-pulumi
 /// resource "gcp_licensemanager_configuration" "example-configuration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us-central1"
 ///   configuration_id = "example-configuration"
 ///   product          = "Office2021ProfessionalPlus"
@@ -116,7 +120,7 @@ import 'configuration_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         // Reference design doc: go/lima-terraform
+///         // Reference design doc: go/lima-pulumi
 ///         var example_configuration = new Configuration("example-configuration", ConfigurationArgs.builder()
 ///             .location("us-central1")
 ///             .configurationId("example-configuration")
@@ -129,7 +133,7 @@ import 'configuration_state.dart';
 /// ```
 /// ```yaml
 /// resources:
-///   # Reference design doc: go/lima-terraform
+///   # Reference design doc: go/lima-pulumi
 ///   example-configuration:
 ///     type: gcp:licensemanager:Configuration
 ///     properties:
@@ -207,7 +211,7 @@ class Configuration extends pulumi.CustomResource {
           'gcp:licensemanager/configuration:Configuration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     active = registerOutput<bool?>('active');

@@ -28,6 +28,8 @@ class JobTemplateTemplateContainer {
   /// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
   /// Structure is documented below.
   final pulumi.Input<JobTemplateTemplateContainerResources?>? resources;
+  /// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+  final pulumi.Input<bool?>? sandboxLauncher;
   /// Startup probe of application within the container.
   /// All other probes are disabled if a startup probe is provided, until it
   /// succeeds. Container will not be added to service endpoints if the probe fails.
@@ -48,6 +50,7 @@ class JobTemplateTemplateContainer {
   /// [name] Name of the container specified as a DNS_LABEL.
   /// [ports] List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
   /// [resources] Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+  /// [sandboxLauncher] Indicates that this container can act as a sandbox supervisor and launch sandboxes.
   /// [startupProbe] Startup probe of application within the container.
   /// [volumeMounts] Volume to mount into the container's filesystem.
   /// [workingDir] Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
@@ -60,6 +63,7 @@ class JobTemplateTemplateContainer {
     this.name,
     this.ports,
     this.resources,
+    this.sandboxLauncher,
     this.startupProbe,
     this.volumeMounts,
     this.workingDir,
@@ -75,6 +79,7 @@ class JobTemplateTemplateContainer {
       'name': ?name,
       'ports': ?pulumi.Input.mapOptionalInputValue<List<JobTemplateTemplateContainerPort>, List<Map<String, dynamic>>>(ports, (value) => pulumi.Input.encodeList<JobTemplateTemplateContainerPort, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resources': ?pulumi.Input.mapOptionalInputValue<JobTemplateTemplateContainerResources, Map<String, dynamic>>(resources, (value) => value.toMap()),
+      'sandboxLauncher': ?sandboxLauncher,
       'startupProbe': ?pulumi.Input.mapOptionalInputValue<JobTemplateTemplateContainerStartupProbe, Map<String, dynamic>>(startupProbe, (value) => value.toMap()),
       'volumeMounts': ?pulumi.Input.mapOptionalInputValue<List<JobTemplateTemplateContainerVolumeMount>, List<Map<String, dynamic>>>(volumeMounts, (value) => pulumi.Input.encodeList<JobTemplateTemplateContainerVolumeMount, Map<String, dynamic>>(value, (value) => value.toMap())),
       'workingDir': ?workingDir,
@@ -91,6 +96,7 @@ class JobTemplateTemplateContainer {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ports: (() { final guardedValue = map['ports']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<JobTemplateTemplateContainerPort>(guardedValue, (value) => JobTemplateTemplateContainerPort.fromMap((value as Map).cast<String, dynamic>()))); })(),
       resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobTemplateTemplateContainerResources.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sandboxLauncher: (() { final guardedValue = map['sandboxLauncher']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       startupProbe: (() { final guardedValue = map['startupProbe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobTemplateTemplateContainerStartupProbe.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       volumeMounts: (() { final guardedValue = map['volumeMounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<JobTemplateTemplateContainerVolumeMount>(guardedValue, (value) => JobTemplateTemplateContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))); })(),
       workingDir: (() { final guardedValue = map['workingDir']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

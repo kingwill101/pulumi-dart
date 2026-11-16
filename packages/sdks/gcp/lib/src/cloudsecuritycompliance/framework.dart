@@ -10,6 +10,7 @@ import 'framework_state.dart';
 ///
 /// * [API documentation](https://docs.cloud.google.com/security-command-center/docs/reference/cloudsecuritycompliance/rest/v1/organizations.locations.frameworks)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Cloudsecuritycompliance Framework Org Basic
@@ -230,7 +231,7 @@ import 'framework_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudsecuritycompliance"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -306,7 +307,7 @@ import 'framework_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -315,6 +316,9 @@ import 'framework_state.dart';
 /// }
 ///
 /// resource "gcp_cloudsecuritycompliance_framework" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "organizations/123456789"
 ///   location     = "global"
 ///   framework_id = "example-framework"
@@ -484,6 +488,7 @@ import 'framework_state.dart';
 ///               parameterValue:
 ///                 numberValue: 1
 /// ```
+///
 ///
 /// ### Cloudsecuritycompliance Framework Project Basic
 ///
@@ -707,8 +712,8 @@ import 'framework_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudsecuritycompliance"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -788,7 +793,7 @@ import 'framework_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -796,17 +801,20 @@ import 'framework_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_cloudsecuritycompliance_framework" "example" {
-///   parent       ="projects/${data.gcp_organizations_getproject.project.number}"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       ="projects/${data.gcp_organizations_project.project.number}"
 ///   location     = "global"
 ///   framework_id = "example-framework"
 ///   display_name = "Terraform Framework Name"
 ///   description  = "An Terraform description for the framework"
 ///   cloud_control_details {
-///     name              ="projects/${data.gcp_organizations_getproject.project.number}/locations/global/cloudControls/builtin-assess-resource-availability"
+///     name              ="projects/${data.gcp_organizations_project.project.number}/locations/global/cloudControls/builtin-assess-resource-availability"
 ///     major_revision_id = "2"
 ///     parameters {
 ///       name = "location"
@@ -816,7 +824,7 @@ import 'framework_state.dart';
 ///     }
 ///   }
 ///   cloud_control_details {
-///     name              ="projects/${data.gcp_organizations_getproject.project.number}/locations/global/cloudControls/builtin-cmek-key-in-use-for-bigquery-table"
+///     name              ="projects/${data.gcp_organizations_project.project.number}/locations/global/cloudControls/builtin-cmek-key-in-use-for-bigquery-table"
 ///     major_revision_id = "1"
 ///     parameters {
 ///       name = "location"
@@ -828,7 +836,7 @@ import 'framework_state.dart';
 ///     }
 ///   }
 ///   cloud_control_details {
-///     name              ="projects/${data.gcp_organizations_getproject.project.number}/locations/global/cloudControls/builtin-enable-automatic-backups-cloud-sql"
+///     name              ="projects/${data.gcp_organizations_project.project.number}/locations/global/cloudControls/builtin-enable-automatic-backups-cloud-sql"
 ///     major_revision_id = "3"
 ///     parameters {
 ///       name = "location"
@@ -838,7 +846,7 @@ import 'framework_state.dart';
 ///     }
 ///   }
 ///   cloud_control_details {
-///     name              ="projects/${data.gcp_organizations_getproject.project.number}/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets"
+///     name              ="projects/${data.gcp_organizations_project.project.number}/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets"
 ///     major_revision_id = "2"
 ///     parameters {
 ///       name = "location"
@@ -979,6 +987,7 @@ import 'framework_state.dart';
 ///       function: gcp:organizations:getProject
 ///       arguments: {}
 /// ```
+///
 ///
 /// ### Cloudsecuritycompliance Framework Org Basic Backward
 ///
@@ -1198,7 +1207,7 @@ import 'framework_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudsecuritycompliance"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1274,7 +1283,7 @@ import 'framework_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1283,6 +1292,9 @@ import 'framework_state.dart';
 /// }
 ///
 /// resource "gcp_cloudsecuritycompliance_framework" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization = "123456789"
 ///   location     = "global"
 ///   framework_id = "example-framework"
@@ -1532,7 +1544,7 @@ class Framework extends pulumi.CustomResource {
           'gcp:cloudsecuritycompliance/framework:Framework',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     categories = registerOutput<List<String>>('categories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     cloudControlDetails = registerOutput<List<FrameworkCloudControlDetail>?>('cloudControlDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrameworkCloudControlDetail>(guardedValue, (value) => FrameworkCloudControlDetail.fromMap((value as Map).cast<String, dynamic>())); });

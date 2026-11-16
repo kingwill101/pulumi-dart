@@ -13,6 +13,7 @@ import 'auto_labeling_rule_state.dart';
 /// * How-to Guides
 /// * [Configure auto labeling rules using the API](https://cloud.google.com/contact-center/insights/docs/auto-labeling-rule)
 ///
+///
 /// ## Example Usage
 ///
 /// ## Import
@@ -85,7 +86,7 @@ class AutoLabelingRule extends pulumi.CustomResource {
           'gcp:contactcenterinsights/autoLabelingRule:AutoLabelingRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     active = registerOutput<bool?>('active');
     autoLabelingRuleId = registerOutput<String?>('autoLabelingRuleId');

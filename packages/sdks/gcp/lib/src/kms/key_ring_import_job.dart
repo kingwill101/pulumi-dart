@@ -20,6 +20,7 @@ import 'key_ring_import_job_state.dart';
 /// * How-to Guides
 /// * [Importing a key](https://cloud.google.com/kms/docs/importing-a-key)
 ///
+///
 /// ## Example Usage
 ///
 /// ## Import
@@ -82,7 +83,7 @@ class KeyRingImportJob extends pulumi.CustomResource {
           'gcp:kms/keyRingImportJob:KeyRingImportJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     attestations = registerOutput<List<KeyRingImportJobAttestation>>('attestations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyRingImportJobAttestation>(guardedValue, (value) => KeyRingImportJobAttestation.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

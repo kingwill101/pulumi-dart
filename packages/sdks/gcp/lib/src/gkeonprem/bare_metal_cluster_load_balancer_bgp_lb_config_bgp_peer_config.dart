@@ -35,7 +35,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig {
 
   factory BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig(
-      asn: pulumi.Input.fromValue((map['asn'] as num).toInt()),
+      asn: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['asn'])),
       controlPlaneNodes: (() { final guardedValue = map['controlPlaneNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
     );

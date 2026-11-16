@@ -25,8 +25,8 @@ class ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds {
 
   factory ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds.fromMap(Map<String, dynamic> map) {
     return ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds(
-      scaleIn: pulumi.Input.fromValue((map['scaleIn'] as num).toInt()),
-      scaleOut: pulumi.Input.fromValue((map['scaleOut'] as num).toInt()),
+      scaleIn: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['scaleIn'])),
+      scaleOut: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['scaleOut'])),
     );
   }
 }

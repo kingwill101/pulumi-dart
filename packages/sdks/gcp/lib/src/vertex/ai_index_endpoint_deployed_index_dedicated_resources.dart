@@ -33,8 +33,8 @@ class AiIndexEndpointDeployedIndexDedicatedResources {
   factory AiIndexEndpointDeployedIndexDedicatedResources.fromMap(Map<String, dynamic> map) {
     return AiIndexEndpointDeployedIndexDedicatedResources(
       machineSpec: pulumi.Input.fromValue(AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec.fromMap((map['machineSpec']! as Map).cast<String, dynamic>())),
-      maxReplicaCount: (() { final guardedValue = map['maxReplicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minReplicaCount: pulumi.Input.fromValue((map['minReplicaCount'] as num).toInt()),
+      maxReplicaCount: (() { final guardedValue = map['maxReplicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minReplicaCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minReplicaCount'])),
     );
   }
 }

@@ -5,6 +5,9 @@ import 'backup_plan_association_rules_config_info.dart';
 
 /// Input properties used for looking up and filtering BackupPlanAssociation resources.
 class BackupPlanAssociationState {
+  /// (Beta)
+  /// The resource name of the auto protection policy binding that manages this backup plan association, if any.
+  final pulumi.Input<String?>? autoProtectionPolicyBinding;
   /// The BP with which resource needs to be created
   /// Note:
   /// - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
@@ -44,6 +47,7 @@ class BackupPlanAssociationState {
   final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [BackupPlanAssociationState].
+  /// [autoProtectionPolicyBinding] (Beta)
   /// [backupPlan] The BP with which resource needs to be created
   /// [backupPlanAssociationId] The id of backupplan association
   /// [createTime] The time when the instance was created
@@ -57,6 +61,7 @@ class BackupPlanAssociationState {
   /// [rulesConfigInfos] Message for rules config info
   /// [updateTime] The time when the instance was updated.
   const BackupPlanAssociationState({
+    this.autoProtectionPolicyBinding,
     this.backupPlan,
     this.backupPlanAssociationId,
     this.createTime,
@@ -73,6 +78,7 @@ class BackupPlanAssociationState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'autoProtectionPolicyBinding': ?autoProtectionPolicyBinding,
       'backupPlan': ?backupPlan,
       'backupPlanAssociationId': ?backupPlanAssociationId,
       'createTime': ?createTime,
@@ -90,6 +96,7 @@ class BackupPlanAssociationState {
 
   factory BackupPlanAssociationState.fromMap(Map<String, dynamic> map) {
     return BackupPlanAssociationState(
+      autoProtectionPolicyBinding: (() { final guardedValue = map['autoProtectionPolicyBinding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       backupPlan: (() { final guardedValue = map['backupPlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       backupPlanAssociationId: (() { final guardedValue = map['backupPlanAssociationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

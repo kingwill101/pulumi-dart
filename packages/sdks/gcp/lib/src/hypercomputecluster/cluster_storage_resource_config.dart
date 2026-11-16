@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_storage_resource_config_existing_bucket.dart';
 import 'cluster_storage_resource_config_existing_filestore.dart';
 import 'cluster_storage_resource_config_existing_lustre.dart';
+import 'cluster_storage_resource_config_existing_nfs.dart';
 import 'cluster_storage_resource_config_new_bucket.dart';
 import 'cluster_storage_resource_config_new_filestore.dart';
 import 'cluster_storage_resource_config_new_lustre.dart';
@@ -23,6 +24,11 @@ class ClusterStorageResourceConfig {
   /// should be imported.
   /// Structure is documented below.
   final pulumi.Input<ClusterStorageResourceConfigExistingLustre?>? existingLustre;
+  /// (Optional, Beta)
+  /// When set in a StorageResourceConfig, indicates that an existing NFS
+  /// share should be imported.
+  /// Structure is documented below.
+  final pulumi.Input<ClusterStorageResourceConfigExistingNfs?>? existingNfs;
   /// When set in a StorageResourceConfig, indicates that a new
   /// [Google Cloud Storage](https://cloud.google.com/storage) bucket should be
   /// created.
@@ -42,6 +48,7 @@ class ClusterStorageResourceConfig {
   /// [existingBucket] When set in a StorageResourceConfig, indicates that an existing
   /// [existingFilestore] When set in a StorageResourceConfig, indicates that an existing
   /// [existingLustre] When set in a StorageResourceConfig, indicates that an existing
+  /// [existingNfs] (Optional, Beta)
   /// [newBucket] When set in a StorageResourceConfig, indicates that a new
   /// [newFilestore] When set in a StorageResourceConfig, indicates that a new
   /// [newLustre] When set in a StorageResourceConfig, indicates that a new
@@ -49,6 +56,7 @@ class ClusterStorageResourceConfig {
     this.existingBucket,
     this.existingFilestore,
     this.existingLustre,
+    this.existingNfs,
     this.newBucket,
     this.newFilestore,
     this.newLustre,
@@ -59,6 +67,7 @@ class ClusterStorageResourceConfig {
       'existingBucket': ?pulumi.Input.mapOptionalInputValue<ClusterStorageResourceConfigExistingBucket, Map<String, dynamic>>(existingBucket, (value) => value.toMap()),
       'existingFilestore': ?pulumi.Input.mapOptionalInputValue<ClusterStorageResourceConfigExistingFilestore, Map<String, dynamic>>(existingFilestore, (value) => value.toMap()),
       'existingLustre': ?pulumi.Input.mapOptionalInputValue<ClusterStorageResourceConfigExistingLustre, Map<String, dynamic>>(existingLustre, (value) => value.toMap()),
+      'existingNfs': ?pulumi.Input.mapOptionalInputValue<ClusterStorageResourceConfigExistingNfs, Map<String, dynamic>>(existingNfs, (value) => value.toMap()),
       'newBucket': ?pulumi.Input.mapOptionalInputValue<ClusterStorageResourceConfigNewBucket, Map<String, dynamic>>(newBucket, (value) => value.toMap()),
       'newFilestore': ?pulumi.Input.mapOptionalInputValue<ClusterStorageResourceConfigNewFilestore, Map<String, dynamic>>(newFilestore, (value) => value.toMap()),
       'newLustre': ?pulumi.Input.mapOptionalInputValue<ClusterStorageResourceConfigNewLustre, Map<String, dynamic>>(newLustre, (value) => value.toMap()),
@@ -70,6 +79,7 @@ class ClusterStorageResourceConfig {
       existingBucket: (() { final guardedValue = map['existingBucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterStorageResourceConfigExistingBucket.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       existingFilestore: (() { final guardedValue = map['existingFilestore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterStorageResourceConfigExistingFilestore.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       existingLustre: (() { final guardedValue = map['existingLustre']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterStorageResourceConfigExistingLustre.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      existingNfs: (() { final guardedValue = map['existingNfs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterStorageResourceConfigExistingNfs.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       newBucket: (() { final guardedValue = map['newBucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterStorageResourceConfigNewBucket.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       newFilestore: (() { final guardedValue = map['newFilestore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterStorageResourceConfigNewFilestore.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       newLustre: (() { final guardedValue = map['newLustre']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterStorageResourceConfigNewLustre.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

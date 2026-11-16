@@ -41,7 +41,7 @@ class CxIntentTrainingPhrase {
     return CxIntentTrainingPhrase(
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parts: pulumi.Input.fromValue(pulumi.Input.decodeList<CxIntentTrainingPhrasePart>(map['parts']!, (value) => CxIntentTrainingPhrasePart.fromMap((value as Map).cast<String, dynamic>()))),
-      repeatCount: (() { final guardedValue = map['repeatCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      repeatCount: (() { final guardedValue = map['repeatCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

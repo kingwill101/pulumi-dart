@@ -8,8 +8,9 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo {
   /// are allowed to perform in this `ServicePerimeter`.
   /// Structure is documented below.
   final pulumi.Input<List<ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation>?>? operations;
-  /// A list of resources, currently only projects in the form
-  /// `projects/&lt;projectnumber&gt;`, protected by this `ServicePerimeter`
+  /// A list of resources protected by this `ServicePerimeter`, in the form
+  /// `projects/{project_number}`, `folders/{folder_number}`, or
+  /// `organizations/{organization_number}`,
   /// that are allowed to be accessed by sources defined in the
   /// corresponding `IngressFrom`. A request matches if it contains
   /// a resource in this list. If `*` is specified for resources,
@@ -24,7 +25,7 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo {
 
   /// Creates a new [ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo].
   /// [operations] A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
-  /// [resources] A list of resources, currently only projects in the form
+  /// [resources] A list of resources protected by this `ServicePerimeter`, in the form
   /// [roles] A list of IAM roles that represent the set of operations that the sources
   const ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo({
     this.operations,

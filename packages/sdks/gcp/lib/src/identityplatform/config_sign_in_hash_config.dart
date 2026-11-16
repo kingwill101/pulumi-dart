@@ -41,8 +41,8 @@ class ConfigSignInHashConfig {
   factory ConfigSignInHashConfig.fromMap(Map<String, dynamic> map) {
     return ConfigSignInHashConfig(
       algorithm: (() { final guardedValue = map['algorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      memoryCost: (() { final guardedValue = map['memoryCost']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      rounds: (() { final guardedValue = map['rounds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      memoryCost: (() { final guardedValue = map['memoryCost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      rounds: (() { final guardedValue = map['rounds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       saltSeparator: (() { final guardedValue = map['saltSeparator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       signerKey: (() { final guardedValue = map['signerKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

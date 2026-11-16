@@ -61,7 +61,7 @@ import 'get_secrets_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -79,7 +79,7 @@ import 'get_secrets_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -87,7 +87,7 @@ import 'get_secrets_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_secretmanager_getregionalsecret" "secretDatasource" {
+/// data "gcp_secretmanager_regional_secret" "secretDatasource" {
 ///   secret_id = "secretname"
 ///   location  = "us-central1"
 /// }
@@ -201,7 +201,7 @@ pulumi.Output<GetRegionalSecretResult> getRegionalSecretOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -220,7 +220,7 @@ pulumi.Output<GetRegionalSecretResult> getRegionalSecretOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -228,7 +228,7 @@ pulumi.Output<GetRegionalSecretResult> getRegionalSecretOutput(
 ///   }
 /// }
 ///
-/// data "gcp_secretmanager_getregionalsecretiampolicy" "policy" {
+/// data "gcp_secretmanager_regional_secret_iam_policy" "policy" {
 ///   project   = regional-secret-basic.project
 ///   location  = regional-secret-basic.location
 ///   secret_id = regional-secret-basic.secretId
@@ -300,11 +300,6 @@ pulumi.Output<GetRegionalSecretIamPolicyResult> getRegionalSecretIamPolicyOutput
   ).apply(GetRegionalSecretIamPolicyResult.fromMap);
 }
 
-/// subcategory: "Secret Manager"
-/// description: |-
-/// Get a Secret Manager regional secret's version.
-/// ---
-///
 /// Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.locations.secrets.versions). If you don't need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the gcp.secretmanager.getRegionalSecretVersionAccess datasource.
 ///
 /// ## Example Usage
@@ -346,7 +341,7 @@ pulumi.Output<GetRegionalSecretIamPolicyResult> getRegionalSecretIamPolicyOutput
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -364,7 +359,7 @@ pulumi.Output<GetRegionalSecretIamPolicyResult> getRegionalSecretIamPolicyOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -372,7 +367,7 @@ pulumi.Output<GetRegionalSecretIamPolicyResult> getRegionalSecretIamPolicyOutput
 ///   }
 /// }
 ///
-/// data "gcp_secretmanager_getregionalsecretversion" "basic" {
+/// data "gcp_secretmanager_regional_secret_version" "basic" {
 ///   secret   = "my-secret"
 ///   location = "us-central1"
 /// }
@@ -441,12 +436,6 @@ pulumi.Output<GetRegionalSecretVersionResult> getRegionalSecretVersionOutput(
   ).apply(GetRegionalSecretVersionResult.fromMap);
 }
 
-/// subcategory: "Secret Manager"
-/// page_title: "Google: gcp.secretmanager.getRegionalSecretVersionAccess"
-/// description: |-
-/// Get a payload of Secret Manager regional secret's version.
-/// ---
-///
 /// Get the value from a Secret Manager regional secret version. This is similar to the gcp.secretmanager.RegionalSecretVersion datasource, but it only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.locations.secrets.versions/access).
 ///
 /// ## Example Usage
@@ -488,7 +477,7 @@ pulumi.Output<GetRegionalSecretVersionResult> getRegionalSecretVersionOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -506,7 +495,7 @@ pulumi.Output<GetRegionalSecretVersionResult> getRegionalSecretVersionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -514,7 +503,7 @@ pulumi.Output<GetRegionalSecretVersionResult> getRegionalSecretVersionOutput(
 ///   }
 /// }
 ///
-/// data "gcp_secretmanager_getregionalsecretversionaccess" "latest" {
+/// data "gcp_secretmanager_regional_secret_version_access" "latest" {
 ///   secret   = "my-secret"
 ///   location = "us-central1"
 /// }
@@ -583,11 +572,6 @@ pulumi.Output<GetRegionalSecretVersionAccessResult> getRegionalSecretVersionAcce
   ).apply(GetRegionalSecretVersionAccessResult.fromMap);
 }
 
-/// subcategory: "Secret Manager"
-/// description: |-
-/// List the Secret Manager Regional Secrets.
-/// ---
-///
 /// Use this data source to list the Secret Manager Regional Secrets.
 ///
 /// ## Example Usage
@@ -626,7 +610,7 @@ pulumi.Output<GetRegionalSecretVersionAccessResult> getRegionalSecretVersionAcce
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -643,7 +627,7 @@ pulumi.Output<GetRegionalSecretVersionAccessResult> getRegionalSecretVersionAcce
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -651,7 +635,7 @@ pulumi.Output<GetRegionalSecretVersionAccessResult> getRegionalSecretVersionAcce
 ///   }
 /// }
 ///
-/// data "gcp_secretmanager_getregionalsecrets" "secrets" {
+/// data "gcp_secretmanager_regional_secrets" "secrets" {
 ///   location = "us-central1"
 /// }
 /// ```
@@ -755,7 +739,7 @@ pulumi.Output<GetRegionalSecretsResult> getRegionalSecretsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -772,7 +756,7 @@ pulumi.Output<GetRegionalSecretsResult> getRegionalSecretsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -780,7 +764,7 @@ pulumi.Output<GetRegionalSecretsResult> getRegionalSecretsOutput(
 ///   }
 /// }
 ///
-/// data "gcp_secretmanager_getsecret" "qa" {
+/// data "gcp_secretmanager_secret" "qa" {
 ///   secret_id = "foobar"
 /// }
 /// ```
@@ -888,7 +872,7 @@ pulumi.Output<GetSecretResult> getSecretOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -906,7 +890,7 @@ pulumi.Output<GetSecretResult> getSecretOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -914,7 +898,7 @@ pulumi.Output<GetSecretResult> getSecretOutput(
 ///   }
 /// }
 ///
-/// data "gcp_secretmanager_getsecretiampolicy" "policy" {
+/// data "gcp_secretmanager_secret_iam_policy" "policy" {
 ///   project   = secret-basic.project
 ///   secret_id = secret-basic.secretId
 /// }
@@ -1021,7 +1005,7 @@ pulumi.Output<GetSecretIamPolicyResult> getSecretIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1038,7 +1022,7 @@ pulumi.Output<GetSecretIamPolicyResult> getSecretIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1046,7 +1030,7 @@ pulumi.Output<GetSecretIamPolicyResult> getSecretIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_secretmanager_getsecretversion" "basic" {
+/// data "gcp_secretmanager_secret_version" "basic" {
 ///   secret = "my-secret"
 /// }
 /// ```
@@ -1150,7 +1134,7 @@ pulumi.Output<GetSecretVersionResult> getSecretVersionOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1167,7 +1151,7 @@ pulumi.Output<GetSecretVersionResult> getSecretVersionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1175,7 +1159,7 @@ pulumi.Output<GetSecretVersionResult> getSecretVersionOutput(
 ///   }
 /// }
 ///
-/// data "gcp_secretmanager_getsecretversionaccess" "basic" {
+/// data "gcp_secretmanager_secret_version_access" "basic" {
 ///   secret = "my-secret"
 /// }
 /// ```
@@ -1274,7 +1258,7 @@ pulumi.Output<GetSecretVersionAccessResult> getSecretVersionAccessOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1289,7 +1273,7 @@ pulumi.Output<GetSecretVersionAccessResult> getSecretVersionAccessOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1297,7 +1281,7 @@ pulumi.Output<GetSecretVersionAccessResult> getSecretVersionAccessOutput(
 ///   }
 /// }
 ///
-/// data "gcp_secretmanager_getsecrets" "secrets" {
+/// data "gcp_secretmanager_secrets" "secrets" {
 /// }
 /// ```
 /// ```java

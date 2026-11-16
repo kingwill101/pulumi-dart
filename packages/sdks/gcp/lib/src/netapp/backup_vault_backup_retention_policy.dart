@@ -40,7 +40,7 @@ class BackupVaultBackupRetentionPolicy {
 
   factory BackupVaultBackupRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return BackupVaultBackupRetentionPolicy(
-      backupMinimumEnforcedRetentionDays: pulumi.Input.fromValue((map['backupMinimumEnforcedRetentionDays'] as num).toInt()),
+      backupMinimumEnforcedRetentionDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['backupMinimumEnforcedRetentionDays'])),
       dailyBackupImmutable: (() { final guardedValue = map['dailyBackupImmutable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       manualBackupImmutable: (() { final guardedValue = map['manualBackupImmutable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       monthlyBackupImmutable: (() { final guardedValue = map['monthlyBackupImmutable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

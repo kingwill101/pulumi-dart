@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_subscription_bigquery_config.dart';
+import 'get_subscription_bigtable_config.dart';
 import 'get_subscription_cloud_storage_config.dart';
 import 'get_subscription_dead_letter_policy.dart';
 import 'get_subscription_expiration_policy.dart';
@@ -13,6 +14,7 @@ import 'get_subscription_retry_policy.dart';
 class GetSubscriptionResult {
   final int? ackDeadlineSeconds;
   final List<GetSubscriptionBigqueryConfig>? bigqueryConfigs;
+  final List<GetSubscriptionBigtableConfig>? bigtableConfigs;
   final List<GetSubscriptionCloudStorageConfig>? cloudStorageConfigs;
   final List<GetSubscriptionDeadLetterPolicy>? deadLetterPolicies;
   final String? deletionPolicy;
@@ -38,6 +40,7 @@ class GetSubscriptionResult {
   /// Creates a new [GetSubscriptionResult].
   /// [ackDeadlineSeconds] Optional.
   /// [bigqueryConfigs] Optional.
+  /// [bigtableConfigs] Optional.
   /// [cloudStorageConfigs] Optional.
   /// [deadLetterPolicies] Optional.
   /// [deletionPolicy] Optional.
@@ -61,6 +64,7 @@ class GetSubscriptionResult {
   const GetSubscriptionResult({
     this.ackDeadlineSeconds,
     this.bigqueryConfigs,
+    this.bigtableConfigs,
     this.cloudStorageConfigs,
     this.deadLetterPolicies,
     this.deletionPolicy,
@@ -87,6 +91,7 @@ class GetSubscriptionResult {
     return <String, dynamic>{
       'ackDeadlineSeconds': ?ackDeadlineSeconds,
       'bigqueryConfigs': ?(() { final guardedValue = bigqueryConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSubscriptionBigqueryConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'bigtableConfigs': ?(() { final guardedValue = bigtableConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSubscriptionBigtableConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'cloudStorageConfigs': ?(() { final guardedValue = cloudStorageConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSubscriptionCloudStorageConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'deadLetterPolicies': ?(() { final guardedValue = deadLetterPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSubscriptionDeadLetterPolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'deletionPolicy': ?deletionPolicy,
@@ -112,8 +117,9 @@ class GetSubscriptionResult {
 
   factory GetSubscriptionResult.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionResult(
-      ackDeadlineSeconds: (() { final guardedValue = map['ackDeadlineSeconds']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      ackDeadlineSeconds: (() { final guardedValue = map['ackDeadlineSeconds']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       bigqueryConfigs: (() { final guardedValue = map['bigqueryConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSubscriptionBigqueryConfig>(guardedValue, (value) => GetSubscriptionBigqueryConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      bigtableConfigs: (() { final guardedValue = map['bigtableConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSubscriptionBigtableConfig>(guardedValue, (value) => GetSubscriptionBigtableConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
       cloudStorageConfigs: (() { final guardedValue = map['cloudStorageConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSubscriptionCloudStorageConfig>(guardedValue, (value) => GetSubscriptionCloudStorageConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
       deadLetterPolicies: (() { final guardedValue = map['deadLetterPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSubscriptionDeadLetterPolicy>(guardedValue, (value) => GetSubscriptionDeadLetterPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),

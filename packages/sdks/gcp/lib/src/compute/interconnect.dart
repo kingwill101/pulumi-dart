@@ -17,6 +17,7 @@ import 'interconnect_state.dart';
 /// * How-to Guides
 /// * [Create a Dedicated Interconnect](https://cloud.google.com/network-connectivity/docs/interconnect/concepts/dedicated-overview)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Compute Interconnect Basic
@@ -76,8 +77,8 @@ import 'interconnect_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -103,7 +104,7 @@ import 'interconnect_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -111,15 +112,18 @@ import 'interconnect_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_compute_interconnect" "example-interconnect" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-interconnect"
 ///   customer_name        = "example_customer"
 ///   interconnect_type    = "DEDICATED"
 ///   link_type            = "LINK_TYPE_ETHERNET_10G_LR"
-///   location             ="https://www.googleapis.com/compute/v1/projects/${data.gcp_organizations_getproject.project.project_id}/global/interconnectLocations/iad-zone1-1"
+///   location             ="https://www.googleapis.com/compute/v1/projects/${data.gcp_organizations_project.project.project_id}/global/interconnectLocations/iad-zone1-1"
 ///   requested_link_count = 1
 /// }
 /// ```
@@ -214,7 +218,6 @@ class Interconnect extends pulumi.CustomResource {
   /// - 'IF_MACSEC': Indicates the Interconnect connection is provisioned on MACsec capable hardware ports. If this feature is not present, the connection does not support MACsec, and any attempt to enable it will fail.
   /// - 'IF_L2_FORWARDING': Indicates the Interconnect connection can be used for Layer 2 (L2) traffic forwarding. If not present, the connection cannot be used with L2 forwarding attachments.
   /// - 'IF_CROSS_SITE_NETWORK': Indicates the Interconnect connection is provisioned for Cross-Site Networking.
-  /// Note: 'MACSEC' is a legacy value and has the same meaning as 'IF_MACSEC'.
   late final pulumi.Output<List<String>> availableFeatures;
   /// A list of CircuitInfo objects, that describe the individual circuits in this LAG.
   /// Structure is documented below.
@@ -331,7 +334,7 @@ class Interconnect extends pulumi.CustomResource {
   /// - 'IF_MACSEC': Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
   /// - 'IF_L2_FORWARDING': Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
   /// - 'IF_CROSS_SITE_NETWORK': Provisions the connection exclusively for Cross-Site Networking.
-  /// Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
+  /// Note: 'MACSEC' is a legacy value for compatibility reasons. 'IF_MACSEC' should be used. Choosing 'MACSEC' can result in allocation of non-MACsec capable ports, if available.
   /// Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
   late final pulumi.Output<List<String>?> requestedFeatures;
   /// Target number of physical links in the link bundle, as requested by the customer.
@@ -362,7 +365,7 @@ class Interconnect extends pulumi.CustomResource {
           'gcp:compute/interconnect:Interconnect',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     aaiEnabled = registerOutput<bool?>('aaiEnabled');

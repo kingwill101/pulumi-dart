@@ -40,7 +40,7 @@ class UserPasswordPolicy {
 
   factory UserPasswordPolicy.fromMap(Map<String, dynamic> map) {
     return UserPasswordPolicy(
-      allowedFailedAttempts: (() { final guardedValue = map['allowedFailedAttempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      allowedFailedAttempts: (() { final guardedValue = map['allowedFailedAttempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       enableFailedAttemptsCheck: (() { final guardedValue = map['enableFailedAttemptsCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enablePasswordVerification: (() { final guardedValue = map['enablePasswordVerification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       passwordExpirationDuration: (() { final guardedValue = map['passwordExpirationDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

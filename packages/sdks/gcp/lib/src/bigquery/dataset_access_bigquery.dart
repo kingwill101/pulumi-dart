@@ -26,6 +26,7 @@ import 'dataset_access_view.dart';
 /// The API does accept both formats but it will always return the legacy format which results in Terraform
 /// showing permanent diff on each plan and apply operation.
 ///
+///
 /// ## Example Usage
 ///
 /// ### Bigquery Dataset Access Basic User
@@ -86,8 +87,8 @@ import 'dataset_access_view.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -118,7 +119,7 @@ import 'dataset_access_view.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -126,15 +127,24 @@ import 'dataset_access_view.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigquery_datasetaccess" "access" {
+/// resource "gcp_bigquery_dataset_access" "access" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    = gcp_bigquery_dataset.dataset.dataset_id
 ///   role          = "OWNER"
 ///   user_by_email = gcp_serviceaccount_account.bqowner.email
 /// }
 /// resource "gcp_bigquery_dataset" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "example_dataset"
 /// }
 /// resource "gcp_serviceaccount_account" "bqowner" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "bqowner"
 /// }
 /// ```
@@ -197,6 +207,7 @@ import 'dataset_access_view.dart';
 ///     properties:
 ///       accountId: bqowner
 /// ```
+///
 ///
 /// ### Bigquery Dataset Access View
 ///
@@ -295,7 +306,7 @@ import 'dataset_access_view.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -341,7 +352,7 @@ import 'dataset_access_view.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -349,7 +360,10 @@ import 'dataset_access_view.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigquery_datasetaccess" "access" {
+/// resource "gcp_bigquery_dataset_access" "access" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = gcp_bigquery_dataset.private.dataset_id
 ///   view = {
 ///     project_id = gcp_bigquery_table.public.project
@@ -358,12 +372,21 @@ import 'dataset_access_view.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "private" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "example_dataset"
 /// }
 /// resource "gcp_bigquery_dataset" "public" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "example_dataset2"
 /// }
 /// resource "gcp_bigquery_table" "public" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_protection = false
 ///   dataset_id          = gcp_bigquery_dataset.public.dataset_id
 ///   table_id            = "example_table"
@@ -460,6 +483,7 @@ import 'dataset_access_view.dart';
 ///         useLegacySql: false
 /// ```
 ///
+///
 /// ### Bigquery Dataset Access Authorized Dataset
 ///
 ///
@@ -538,7 +562,7 @@ import 'dataset_access_view.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -576,7 +600,7 @@ import 'dataset_access_view.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -584,7 +608,10 @@ import 'dataset_access_view.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigquery_datasetaccess" "access" {
+/// resource "gcp_bigquery_dataset_access" "access" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = gcp_bigquery_dataset.private.dataset_id
 ///   authorized_dataset = {
 ///     dataset = {
@@ -595,9 +622,15 @@ import 'dataset_access_view.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "private" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "private"
 /// }
 /// resource "gcp_bigquery_dataset" "public" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "public"
 /// }
 /// ```
@@ -669,6 +702,7 @@ import 'dataset_access_view.dart';
 ///     properties:
 ///       datasetId: public
 /// ```
+///
 ///
 /// ### Bigquery Dataset Access Authorized Routine
 ///
@@ -833,7 +867,7 @@ import 'dataset_access_view.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -908,7 +942,7 @@ import 'dataset_access_view.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -917,15 +951,24 @@ import 'dataset_access_view.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "public" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id  = "public_dataset"
 ///   description = "This dataset is public"
 /// }
 /// resource "gcp_bigquery_routine" "public" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id      = gcp_bigquery_dataset.public.dataset_id
 ///   routine_id      = "public_routine"
 ///   routine_type    = "TABLE_VALUED_FUNCTION"
 ///   language        = "SQL"
-///   definition_body = "SELECT 1 + value AS value\n"
+///   definition_body = <<-EOS
+/// SELECT 1 + value AS value
+/// EOS
+///
 ///   arguments {
 ///     name          = "value"
 ///     argument_kind = "FIXED_TYPE"
@@ -943,10 +986,16 @@ import 'dataset_access_view.dart';
 ///   })
 /// }
 /// resource "gcp_bigquery_dataset" "private" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id  = "private_dataset"
 ///   description = "This dataset is private"
 /// }
-/// resource "gcp_bigquery_datasetaccess" "authorized_routine" {
+/// resource "gcp_bigquery_dataset_access" "authorized_routine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = gcp_bigquery_dataset.private.dataset_id
 ///   routine = {
 ///     project_id = gcp_bigquery_routine.public.project
@@ -1156,7 +1205,7 @@ class DatasetAccessBigquery extends pulumi.CustomResource {
           'gcp:bigquery/datasetAccess:DatasetAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
         ) {
     apiUpdatedMember = registerOutput<bool>('apiUpdatedMember');
     authorizedDataset = registerOutput<DatasetAccessAuthorizedDataset?>('authorizedDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetAccessAuthorizedDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });

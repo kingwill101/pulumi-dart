@@ -45,6 +45,7 @@ import 'cluster_rbac_binding_config.dart';
 import 'cluster_release_channel.dart';
 import 'cluster_resource_usage_export_config.dart';
 import 'cluster_rollback_safe_upgrade.dart';
+import 'cluster_schedule_upgrade_config.dart';
 import 'cluster_secret_manager_config.dart';
 import 'cluster_secret_sync_config.dart';
 import 'cluster_security_posture_config.dart';
@@ -193,7 +194,10 @@ class ClusterArgs {
   final pulumi.Input<String?>? inTransitEncryptionConfig;
   /// The number of nodes to create in this
   /// cluster's default node pool. In regional or multi-zonal clusters, this is the
-  /// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
+  /// number of nodes per zone. When omitted (or set to `0`) with no `nodeConfig` or
+  /// `nodePool` blocks defined, the cluster is created without a default node pool.
+  /// This requires a GKE version that supports clusters without a default node pool
+  /// (`1.36.4-gke.1469000+`). For older GKE versions, if you're using
   /// `gcp.container.NodePool` objects with no default node pool, you'll need to
   /// set this to a value of at least `1`, alongside setting
   /// `removeDefaultNodePool` to `true`.
@@ -221,7 +225,7 @@ class ClusterArgs {
   final pulumi.Input<ClusterMaintenancePolicy?>? maintenancePolicy;
   /// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
   final pulumi.Input<ClusterManagedMachineLearningDiagnosticsConfig?>? managedMachineLearningDiagnosticsConfig;
-  /// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+  /// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
   final pulumi.Input<ClusterManagedOpentelemetryConfig?>? managedOpentelemetryConfig;
   /// The authentication information for accessing the
   /// Kubernetes master. Some values in this block are only returned by the API if
@@ -355,9 +359,13 @@ class ClusterArgs {
   /// channel. Structure is documented below.
   final pulumi.Input<ClusterReleaseChannel?>? releaseChannel;
   /// If `true`, deletes the default node
-  /// pool upon cluster creation. If you're using `gcp.container.NodePool`
-  /// resources with no default node pool, this should be set to `true`, alongside
-  /// setting `initialNodeCount` to at least `1`.
+  /// pool upon cluster creation. On GKE versions that support clusters without a
+  /// default node pool, you can instead omit `initialNodeCount` and
+  /// `nodeConfig` (or set `initialNodeCount` to `0`) to skip creating the
+  /// default node pool without setting this field. For older GKE versions, if
+  /// you're using `gcp.container.NodePool` resources with no default node
+  /// pool, this should be set to `true`, alongside setting `initialNodeCount`
+  /// to at least `1`.
   final pulumi.Input<bool?>? removeDefaultNodePool;
   /// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
   ///
@@ -370,6 +378,8 @@ class ClusterArgs {
   final pulumi.Input<ClusterResourceUsageExportConfig?>? resourceUsageExportConfig;
   /// Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
   final pulumi.Input<ClusterRollbackSafeUpgrade?>? rollbackSafeUpgrade;
+  /// Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+  final pulumi.Input<ClusterScheduleUpgradeConfig?>? scheduleUpgradeConfig;
   /// Configuration for the
   /// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
   /// Structure is documented below.
@@ -387,9 +397,10 @@ class ClusterArgs {
   /// The name or selfLink of the Google Compute Engine
   /// subnetwork in which the cluster's instances are launched.
   final pulumi.Input<String?>? subnetwork;
-  /// TPU configuration for the cluster.
+  /// ) Configuration for Cloud TPU in this cluster.
+  /// Structure is documented below.
   final pulumi.Input<ClusterTpuConfig?>? tpuConfig;
-  /// The custom keys configuration of the cluster Structure is documented below.
+  /// The custom keys configuration of the cluster. Structure is documented below.
   final pulumi.Input<ClusterUserManagedKeysConfig?>? userManagedKeysConfig;
   /// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
   /// Structure is documented below.
@@ -452,7 +463,7 @@ class ClusterArgs {
   /// [loggingService] The logging service that the cluster should
   /// [maintenancePolicy] The maintenance policy to use for the cluster. Structure is
   /// [managedMachineLearningDiagnosticsConfig] ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
-  /// [managedOpentelemetryConfig] ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+  /// [managedOpentelemetryConfig] Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
   /// [masterAuth] The authentication information for accessing the
   /// [masterAuthorizedNetworksConfig] The desired
   /// [meshCertificates] Structure is documented below.
@@ -484,14 +495,15 @@ class ClusterArgs {
   /// [resourceLabels] The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
   /// [resourceUsageExportConfig] Configuration for the
   /// [rollbackSafeUpgrade] Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+  /// [scheduleUpgradeConfig] Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
   /// [secretManagerConfig] Configuration for the
   /// [secretSyncConfig] Configuration for the
   /// [securityPostureConfig] Enable/Disable Security Posture API features for the cluster. Structure is documented below.
   /// [serviceExternalIpsConfig] Structure is documented below.
   /// [skipNodePoolRefresh] Whether to skip refreshing the GKE cluster's inline node pool list during read operations. Setting this to `true` prevents the provider from querying GKE API for node pools, resolving long plan times on clusters with a large number of node pools. **Warning:** When enabled, the cluster's `nodePool` attribute in the Terraform state will remain empty (`[]`), even if node pools exist externally. This flag cannot be set to `true` if you define inline `nodePool` blocks in your configuration; doing so will result in a validation error during plan.
   /// [subnetwork] The name or selfLink of the Google Compute Engine
-  /// [tpuConfig] TPU configuration for the cluster.
-  /// [userManagedKeysConfig] The custom keys configuration of the cluster Structure is documented below.
+  /// [tpuConfig] ) Configuration for Cloud TPU in this cluster.
+  /// [userManagedKeysConfig] The custom keys configuration of the cluster. Structure is documented below.
   /// [verticalPodAutoscaling] Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
   /// [workloadAltsConfig] )
   /// [workloadIdentityConfig] Workload Identity allows Kubernetes service accounts to act as a user-managed
@@ -577,6 +589,7 @@ class ClusterArgs {
     this.resourceLabels,
     this.resourceUsageExportConfig,
     this.rollbackSafeUpgrade,
+    this.scheduleUpgradeConfig,
     this.secretManagerConfig,
     this.secretSyncConfig,
     this.securityPostureConfig,
@@ -673,6 +686,7 @@ class ClusterArgs {
       'resourceLabels': ?resourceLabels,
       'resourceUsageExportConfig': ?pulumi.Input.mapOptionalInputValue<ClusterResourceUsageExportConfig, Map<String, dynamic>>(resourceUsageExportConfig, (value) => value.toMap()),
       'rollbackSafeUpgrade': ?pulumi.Input.mapOptionalInputValue<ClusterRollbackSafeUpgrade, Map<String, dynamic>>(rollbackSafeUpgrade, (value) => value.toMap()),
+      'scheduleUpgradeConfig': ?pulumi.Input.mapOptionalInputValue<ClusterScheduleUpgradeConfig, Map<String, dynamic>>(scheduleUpgradeConfig, (value) => value.toMap()),
       'secretManagerConfig': ?pulumi.Input.mapOptionalInputValue<ClusterSecretManagerConfig, Map<String, dynamic>>(secretManagerConfig, (value) => value.toMap()),
       'secretSyncConfig': ?pulumi.Input.mapOptionalInputValue<ClusterSecretSyncConfig, Map<String, dynamic>>(secretSyncConfig, (value) => value.toMap()),
       'securityPostureConfig': ?pulumi.Input.mapOptionalInputValue<ClusterSecurityPostureConfig, Map<String, dynamic>>(securityPostureConfig, (value) => value.toMap()),
@@ -705,7 +719,7 @@ class ClusterArgs {
       databaseEncryption: (() { final guardedValue = map['databaseEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterDatabaseEncryption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       datapathProvider: (() { final guardedValue = map['datapathProvider']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataplaneOptimizationMode: (() { final guardedValue = map['dataplaneOptimizationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      defaultMaxPodsPerNode: (() { final guardedValue = map['defaultMaxPodsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      defaultMaxPodsPerNode: (() { final guardedValue = map['defaultMaxPodsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       defaultSnatStatus: (() { final guardedValue = map['defaultSnatStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterDefaultSnatStatus.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -731,7 +745,7 @@ class ClusterArgs {
       identityServiceConfig: (() { final guardedValue = map['identityServiceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterIdentityServiceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ignoreNodeCountChanges: (() { final guardedValue = map['ignoreNodeCountChanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       inTransitEncryptionConfig: (() { final guardedValue = map['inTransitEncryptionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      initialNodeCount: (() { final guardedValue = map['initialNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      initialNodeCount: (() { final guardedValue = map['initialNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipAllocationPolicy: (() { final guardedValue = map['ipAllocationPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterIpAllocationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       loggingConfig: (() { final guardedValue = map['loggingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -770,6 +784,7 @@ class ClusterArgs {
       resourceLabels: (() { final guardedValue = map['resourceLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       resourceUsageExportConfig: (() { final guardedValue = map['resourceUsageExportConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterResourceUsageExportConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       rollbackSafeUpgrade: (() { final guardedValue = map['rollbackSafeUpgrade']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterRollbackSafeUpgrade.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      scheduleUpgradeConfig: (() { final guardedValue = map['scheduleUpgradeConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterScheduleUpgradeConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       secretManagerConfig: (() { final guardedValue = map['secretManagerConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterSecretManagerConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       secretSyncConfig: (() { final guardedValue = map['secretSyncConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterSecretSyncConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       securityPostureConfig: (() { final guardedValue = map['securityPostureConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterSecurityPostureConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

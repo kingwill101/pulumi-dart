@@ -5,6 +5,7 @@ import 'get_backup_plan_association_rules_config_info.dart';
 
 /// Result data returned by getBackupPlanAssociation.
 class GetBackupPlanAssociationResult {
+  final String? autoProtectionPolicyBinding;
   final String? backupPlan;
   final String? backupPlanAssociationId;
   final String? createTime;
@@ -21,6 +22,7 @@ class GetBackupPlanAssociationResult {
   final String? updateTime;
 
   /// Creates a new [GetBackupPlanAssociationResult].
+  /// [autoProtectionPolicyBinding] Optional.
   /// [backupPlan] Optional.
   /// [backupPlanAssociationId] Optional.
   /// [createTime] Optional.
@@ -35,6 +37,7 @@ class GetBackupPlanAssociationResult {
   /// [rulesConfigInfos] Optional.
   /// [updateTime] Optional.
   const GetBackupPlanAssociationResult({
+    this.autoProtectionPolicyBinding,
     this.backupPlan,
     this.backupPlanAssociationId,
     this.createTime,
@@ -52,6 +55,7 @@ class GetBackupPlanAssociationResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'autoProtectionPolicyBinding': ?autoProtectionPolicyBinding,
       'backupPlan': ?backupPlan,
       'backupPlanAssociationId': ?backupPlanAssociationId,
       'createTime': ?createTime,
@@ -70,6 +74,7 @@ class GetBackupPlanAssociationResult {
 
   factory GetBackupPlanAssociationResult.fromMap(Map<String, dynamic> map) {
     return GetBackupPlanAssociationResult(
+      autoProtectionPolicyBinding: (() { final guardedValue = map['autoProtectionPolicyBinding']; if (guardedValue == null) return null; return guardedValue as String; })(),
       backupPlan: (() { final guardedValue = map['backupPlan']; if (guardedValue == null) return null; return guardedValue as String; })(),
       backupPlanAssociationId: (() { final guardedValue = map['backupPlanAssociationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),

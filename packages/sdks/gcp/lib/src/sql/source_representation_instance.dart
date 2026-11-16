@@ -12,6 +12,7 @@ import 'source_representation_instance_state.dart';
 ///
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Sql Source Representation Instance Basic
@@ -73,7 +74,7 @@ import 'source_representation_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -97,7 +98,7 @@ import 'source_representation_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -105,7 +106,10 @@ import 'source_representation_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_sourcerepresentationinstance" "instance" {
+/// resource "gcp_sql_source_representation_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "my-instance"
 ///   region           = "us-central1"
 ///   database_version = "MYSQL_8_0"
@@ -166,6 +170,7 @@ import 'source_representation_instance_state.dart';
 ///       dumpFilePath: gs://replica-bucket/source-database.sql.gz
 /// ```
 ///
+///
 /// ### Sql Source Representation Instance Postgres
 ///
 ///
@@ -225,7 +230,7 @@ import 'source_representation_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -249,7 +254,7 @@ import 'source_representation_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -257,7 +262,10 @@ import 'source_representation_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_sourcerepresentationinstance" "instance" {
+/// resource "gcp_sql_source_representation_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "my-instance"
 ///   region           = "us-central1"
 ///   database_version = "POSTGRES_9_6"
@@ -384,7 +392,7 @@ class SourceRepresentationInstance extends pulumi.CustomResource {
           'gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['password'],
         ) {
     caCertificate = registerOutput<String?>('caCertificate');

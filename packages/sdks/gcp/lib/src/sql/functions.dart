@@ -57,7 +57,7 @@ import 'get_tiers_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -75,7 +75,7 @@ import 'get_tiers_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -83,7 +83,7 @@ import 'get_tiers_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_sql_getbackuprun" "backup" {
+/// data "gcp_sql_backup_run" "backup" {
 ///   instance    = main.name
 ///   most_recent = true
 /// }
@@ -223,7 +223,7 @@ pulumi.Output<GetCaCertsResult> getCaCertsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -241,7 +241,7 @@ pulumi.Output<GetCaCertsResult> getCaCertsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -249,7 +249,7 @@ pulumi.Output<GetCaCertsResult> getCaCertsOutput(
 ///   }
 /// }
 ///
-/// data "gcp_sql_getdatabase" "qa" {
+/// data "gcp_sql_database" "qa" {
 ///   name     = "test-sql-database"
 ///   instance = main.name
 /// }
@@ -356,7 +356,7 @@ pulumi.Output<GetDatabaseResult> getDatabaseOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -373,7 +373,7 @@ pulumi.Output<GetDatabaseResult> getDatabaseOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -381,7 +381,7 @@ pulumi.Output<GetDatabaseResult> getDatabaseOutput(
 ///   }
 /// }
 ///
-/// data "gcp_sql_getdatabaseinstance" "qa" {
+/// data "gcp_sql_database_instance" "qa" {
 ///   name = "test-sql-instance"
 /// }
 /// ```
@@ -495,7 +495,7 @@ pulumi.Output<GetDatabaseInstanceResult> getDatabaseInstanceOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -513,7 +513,7 @@ pulumi.Output<GetDatabaseInstanceResult> getDatabaseInstanceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -521,12 +521,12 @@ pulumi.Output<GetDatabaseInstanceResult> getDatabaseInstanceOutput(
 ///   }
 /// }
 ///
-/// data "gcp_sql_getdatabaseinstancelatestrecoverytime" "default" {
+/// data "gcp_sql_database_instance_latest_recovery_time" "default" {
 ///   instance = "sample-instance"
 /// }
 ///
 /// output "latestRecoveryTime" {
-///   value = data.gcp_sql_getdatabaseinstancelatestrecoverytime.default
+///   value = data.gcp_sql_database_instance_latest_recovery_time.default
 /// }
 /// ```
 /// ```java
@@ -632,7 +632,7 @@ pulumi.Output<GetDatabaseInstanceLatestRecoveryTimeResult> getDatabaseInstanceLa
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -649,7 +649,7 @@ pulumi.Output<GetDatabaseInstanceLatestRecoveryTimeResult> getDatabaseInstanceLa
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -657,7 +657,7 @@ pulumi.Output<GetDatabaseInstanceLatestRecoveryTimeResult> getDatabaseInstanceLa
 ///   }
 /// }
 ///
-/// data "gcp_sql_getdatabaseinstances" "qa" {
+/// data "gcp_sql_database_instances" "qa" {
 ///   project = "test-project"
 /// }
 /// ```
@@ -760,7 +760,7 @@ pulumi.Output<GetDatabaseInstancesResult> getDatabaseInstancesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -777,7 +777,7 @@ pulumi.Output<GetDatabaseInstancesResult> getDatabaseInstancesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -785,7 +785,7 @@ pulumi.Output<GetDatabaseInstancesResult> getDatabaseInstancesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_sql_getdatabases" "qa" {
+/// data "gcp_sql_databases" "qa" {
 ///   instance = main.name
 /// }
 /// ```
@@ -903,7 +903,7 @@ pulumi.Output<GetDatabasesResult> getDatabasesOutput(
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -911,12 +911,12 @@ pulumi.Output<GetDatabasesResult> getDatabasesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_sql_gettiers" "tiers" {
+/// data "gcp_sql_tiers" "tiers" {
 ///   project = "sample-project"
 /// }
 ///
 /// locals {
-///   allAvailableTiers = [for v in data.gcp_sql_gettiers.tiers.tiers : v.tier]
+///   allAvailableTiers = [for v in data.gcp_sql_tiers.tiers.tiers : v.tier]
 /// }
 /// output "avaialbleTiers" {
 ///   value = local.allAvailableTiers

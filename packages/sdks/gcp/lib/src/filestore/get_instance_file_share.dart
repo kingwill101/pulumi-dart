@@ -4,8 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_instance_file_share_nfs_export_option.dart';
 
 class GetInstanceFileShare {
-  /// File share capacity in GiB. This must be at least 1024 GiB
-  /// for the standard tier, or 2560 GiB for the premium tier.
+  /// File share capacity in GiB. Acceptable instance capacities for each tier are as follows:
+  /// * BASIC_HDD: 1024-65433 GiB in 1 GiB increments or its multiples.
+  /// * BASIC_SSD: 2560-65433 GiB in 1 GiB increments or its multiples.
+  /// * HIGH_SCALE_SSD: 10240-102400 GiB in 2560 GiB increments or its multiples.
+  /// * ZONAL: 100-102400 GiB (100-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
+  /// * ENTERPRISE: 1024-10240 GiB in 256 GiB increments or its multiples.
+  /// * REGIONAL: 1024-102400 GiB (100-102400 GiB in supported regions): ((100 or 1024)-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
   final pulumi.Input<int> capacityGb;
   /// The name of a Filestore instance.
   ///
@@ -23,7 +28,7 @@ class GetInstanceFileShare {
   final pulumi.Input<String> sourceBackupdrBackup;
 
   /// Creates a new [GetInstanceFileShare].
-  /// [capacityGb] File share capacity in GiB. This must be at least 1024 GiB
+  /// [capacityGb] File share capacity in GiB. Acceptable instance capacities for each tier are as follows:
   /// [name] The name of a Filestore instance.
   /// [nfsExportOptions] Nfs Export Options. There is a limit of 10 export options per file share.
   /// [sourceBackup] The resource name of the backup, in the format
@@ -48,7 +53,7 @@ class GetInstanceFileShare {
 
   factory GetInstanceFileShare.fromMap(Map<String, dynamic> map) {
     return GetInstanceFileShare(
-      capacityGb: pulumi.Input.fromValue((map['capacityGb'] as num).toInt()),
+      capacityGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['capacityGb'])),
       name: pulumi.Input.fromValue(map['name'] as String),
       nfsExportOptions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstanceFileShareNfsExportOption>(map['nfsExportOptions']!, (value) => GetInstanceFileShareNfsExportOption.fromMap((value as Map).cast<String, dynamic>()))),
       sourceBackup: pulumi.Input.fromValue(map['sourceBackup'] as String),

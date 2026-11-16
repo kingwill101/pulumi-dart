@@ -3,17 +3,19 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceLbPoliciesIsolationConfig {
+  /// (Optional, Beta)
   /// The isolation granularity of the load balancer.
   /// Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
   final pulumi.Input<String?>? isolationGranularity;
+  /// (Optional, Beta)
   /// The isolation mode of the load balancer.
   /// Default value is `NEAREST`.
   /// Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
   final pulumi.Input<String?>? isolationMode;
 
   /// Creates a new [ServiceLbPoliciesIsolationConfig].
-  /// [isolationGranularity] The isolation granularity of the load balancer.
-  /// [isolationMode] The isolation mode of the load balancer.
+  /// [isolationGranularity] (Optional, Beta)
+  /// [isolationMode] (Optional, Beta)
   const ServiceLbPoliciesIsolationConfig({
     this.isolationGranularity,
     this.isolationMode,

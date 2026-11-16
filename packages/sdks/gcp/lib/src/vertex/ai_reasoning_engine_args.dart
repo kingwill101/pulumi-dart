@@ -11,7 +11,6 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// {@endtemplate}
 /// {@macro pulumi_vertex_ai_reasoning_engine_ai_reasoning_engine_args_doc}
 class AiReasoningEngineArgs {
-  /// (Optional, Beta)
   /// Optional. Configuration for how Agent Engine sub-resources should manage context.
   /// Structure is documented below.
   final pulumi.Input<AiReasoningEngineContextSpec?>? contextSpec;
@@ -54,7 +53,7 @@ class AiReasoningEngineArgs {
   final pulumi.Input<AiReasoningEngineTrafficConfig?>? trafficConfig;
 
   /// Creates a new [AiReasoningEngineArgs].
-  /// [contextSpec] (Optional, Beta)
+  /// [contextSpec] Optional. Configuration for how Agent Engine sub-resources should manage context.
   /// [deletionPolicy] Optional. The deletion policy for the reasoning engine.
   /// [description] The description of the ReasoningEngine.
   /// [displayName] The display name of the ReasoningEngine.

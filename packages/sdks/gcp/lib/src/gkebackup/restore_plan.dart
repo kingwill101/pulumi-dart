@@ -12,6 +12,7 @@ import 'restore_plan_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
 ///
+///
 /// ## Example Usage
 ///
 /// ### Gkebackup Restoreplan All Namespaces
@@ -22,26 +23,10 @@ import 'restore_plan_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const primary = new gcp.container.Cluster("primary", {
-///     name: "restore-all-ns-cluster",
-///     location: "us-central1",
-///     initialNodeCount: 1,
-///     workloadIdentityConfig: {
-///         workloadPool: "my-project-name.svc.id.goog",
-///     },
-///     addonsConfig: {
-///         gkeBackupAgentConfig: {
-///             enabled: true,
-///         },
-///     },
-///     deletionProtection: true,
-///     network: "default",
-///     subnetwork: "default",
-/// });
 /// const basic = new gcp.gkebackup.BackupPlan("basic", {
 ///     name: "restore-all-ns",
-///     cluster: primary.id,
-///     location: "us-central1",
+///     cluster: "projects/my-project-name/locations/us-east1/clusters/restore-all-ns-cluster",
+///     location: "us-east1",
 ///     backupConfig: {
 ///         includeVolumeData: true,
 ///         includeSecrets: true,
@@ -50,9 +35,9 @@ import 'restore_plan_state.dart';
 /// });
 /// const allNs = new gcp.gkebackup.RestorePlan("all_ns", {
 ///     name: "restore-all-ns",
-///     location: "us-central1",
+///     location: "us-east1",
 ///     backupPlan: basic.id,
-///     cluster: primary.id,
+///     cluster: "projects/my-project-name/locations/us-east1/clusters/restore-all-ns-cluster",
 ///     restoreConfig: {
 ///         allNamespaces: true,
 ///         namespacedResourceRestoreMode: "FAIL_ON_CONFLICT",
@@ -68,25 +53,10 @@ import 'restore_plan_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// primary = gcp.container.Cluster("primary",
-///     name="restore-all-ns-cluster",
-///     location="us-central1",
-///     initial_node_count=1,
-///     workload_identity_config={
-///         "workload_pool": "my-project-name.svc.id.goog",
-///     },
-///     addons_config={
-///         "gke_backup_agent_config": {
-///             "enabled": True,
-///         },
-///     },
-///     deletion_protection=True,
-///     network="default",
-///     subnetwork="default")
 /// basic = gcp.gkebackup.BackupPlan("basic",
 ///     name="restore-all-ns",
-///     cluster=primary.id,
-///     location="us-central1",
+///     cluster="projects/my-project-name/locations/us-east1/clusters/restore-all-ns-cluster",
+///     location="us-east1",
 ///     backup_config={
 ///         "include_volume_data": True,
 ///         "include_secrets": True,
@@ -94,9 +64,9 @@ import 'restore_plan_state.dart';
 ///     })
 /// all_ns = gcp.gkebackup.RestorePlan("all_ns",
 ///     name="restore-all-ns",
-///     location="us-central1",
+///     location="us-east1",
 ///     backup_plan=basic.id,
-///     cluster=primary.id,
+///     cluster="projects/my-project-name/locations/us-east1/clusters/restore-all-ns-cluster",
 ///     restore_config={
 ///         "all_namespaces": True,
 ///         "namespaced_resource_restore_mode": "FAIL_ON_CONFLICT",
@@ -115,32 +85,11 @@ import 'restore_plan_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var primary = new Gcp.Container.Cluster("primary", new()
-///     {
-///         Name = "restore-all-ns-cluster",
-///         Location = "us-central1",
-///         InitialNodeCount = 1,
-///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
-///         {
-///             WorkloadPool = "my-project-name.svc.id.goog",
-///         },
-///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
-///         {
-///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
-///             {
-///                 Enabled = true,
-///             },
-///         },
-///         DeletionProtection = true,
-///         Network = "default",
-///         Subnetwork = "default",
-///     });
-///
 ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
 ///     {
 ///         Name = "restore-all-ns",
-///         Cluster = primary.Id,
-///         Location = "us-central1",
+///         Cluster = "projects/my-project-name/locations/us-east1/clusters/restore-all-ns-cluster",
+///         Location = "us-east1",
 ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
 ///         {
 ///             IncludeVolumeData = true,
@@ -152,9 +101,9 @@ import 'restore_plan_state.dart';
 ///     var allNs = new Gcp.GkeBackup.RestorePlan("all_ns", new()
 ///     {
 ///         Name = "restore-all-ns",
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         BackupPlan = basic.Id,
-///         Cluster = primary.Id,
+///         Cluster = "projects/my-project-name/locations/us-east1/clusters/restore-all-ns-cluster",
 ///         RestoreConfig = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigArgs
 ///         {
 ///             AllNamespaces = true,
@@ -174,36 +123,16 @@ import 'restore_plan_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-/// 			Name:             pulumi.String("restore-all-ns-cluster"),
-/// 			Location:         pulumi.String("us-central1"),
-/// 			InitialNodeCount: pulumi.Int(1),
-/// 			WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
-/// 				WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
-/// 			},
-/// 			AddonsConfig: &container.ClusterAddonsConfigArgs{
-/// 				GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
-/// 					Enabled: pulumi.Bool(true),
-/// 				},
-/// 			},
-/// 			DeletionProtection: pulumi.Bool(true),
-/// 			Network:            pulumi.String("default"),
-/// 			Subnetwork:         pulumi.String("default"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
 /// 		basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("restore-all-ns"),
-/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-/// 			Location: pulumi.String("us-central1"),
+/// 			Cluster:  pulumi.String("projects/my-project-name/locations/us-east1/clusters/restore-all-ns-cluster"),
+/// 			Location: pulumi.String("us-east1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
 /// 				IncludeSecrets:    pulumi.Bool(true),
@@ -215,9 +144,9 @@ import 'restore_plan_state.dart';
 /// 		}
 /// 		_, err = gkebackup.NewRestorePlan(ctx, "all_ns", &gkebackup.RestorePlanArgs{
 /// 			Name:       pulumi.String("restore-all-ns"),
-/// 			Location:   pulumi.String("us-central1"),
-/// 			BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
-/// 			Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
+/// 			Location:   pulumi.String("us-east1"),
+/// 			BackupPlan: basic.ID(),
+/// 			Cluster:    pulumi.String("projects/my-project-name/locations/us-east1/clusters/restore-all-ns-cluster"),
 /// 			RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 /// 				AllNamespaces:                 pulumi.Bool(true),
 /// 				NamespacedResourceRestoreMode: pulumi.String("FAIL_ON_CONFLICT"),
@@ -236,7 +165,7 @@ import 'restore_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -244,37 +173,27 @@ import 'restore_plan_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_container_cluster" "primary" {
-///   name               = "restore-all-ns-cluster"
-///   location           = "us-central1"
-///   initial_node_count = 1
-///   workload_identity_config = {
-///     workload_pool = "my-project-name.svc.id.goog"
+/// resource "gcp_gkebackup_backup_plan" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   addons_config = {
-///     gke_backup_agent_config = {
-///       enabled = true
-///     }
-///   }
-///   deletion_protection = true
-///   network             = "default"
-///   subnetwork          = "default"
-/// }
-/// resource "gcp_gkebackup_backupplan" "basic" {
 ///   name     = "restore-all-ns"
-///   cluster  = gcp_container_cluster.primary.id
-///   location = "us-central1"
+///   cluster  = "projects/my-project-name/locations/us-east1/clusters/restore-all-ns-cluster"
+///   location = "us-east1"
 ///   backup_config = {
 ///     include_volume_data = true
 ///     include_secrets     = true
 ///     all_namespaces      = true
 ///   }
 /// }
-/// resource "gcp_gkebackup_restoreplan" "all_ns" {
+/// resource "gcp_gkebackup_restore_plan" "all_ns" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "restore-all-ns"
-///   location    = "us-central1"
-///   backup_plan = gcp_gkebackup_backupplan.basic.id
-///   cluster     = gcp_container_cluster.primary.id
+///   location    = "us-east1"
+///   backup_plan = gcp_gkebackup_backup_plan.basic.id
+///   cluster     = "projects/my-project-name/locations/us-east1/clusters/restore-all-ns-cluster"
 ///   restore_config = {
 ///     all_namespaces                   = true
 ///     namespaced_resource_restore_mode = "FAIL_ON_CONFLICT"
@@ -292,11 +211,6 @@ import 'restore_plan_state.dart';
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.container.Cluster;
-/// import com.pulumi.gcp.container.ClusterArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
 /// import com.pulumi.gcp.gkebackup.BackupPlan;
 /// import com.pulumi.gcp.gkebackup.BackupPlanArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
@@ -317,27 +231,10 @@ import 'restore_plan_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var primary = new Cluster("primary", ClusterArgs.builder()
-///             .name("restore-all-ns-cluster")
-///             .location("us-central1")
-///             .initialNodeCount(1)
-///             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
-///                 .workloadPool("my-project-name.svc.id.goog")
-///                 .build())
-///             .addonsConfig(ClusterAddonsConfigArgs.builder()
-///                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
-///                     .enabled(true)
-///                     .build())
-///                 .build())
-///             .deletionProtection(true)
-///             .network("default")
-///             .subnetwork("default")
-///             .build());
-///
 ///         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
 ///             .name("restore-all-ns")
-///             .cluster(primary.id())
-///             .location("us-central1")
+///             .cluster("projects/my-project-name/locations/us-east1/clusters/restore-all-ns-cluster")
+///             .location("us-east1")
 ///             .backupConfig(BackupPlanBackupConfigArgs.builder()
 ///                 .includeVolumeData(true)
 ///                 .includeSecrets(true)
@@ -347,9 +244,9 @@ import 'restore_plan_state.dart';
 ///
 ///         var allNs = new RestorePlan("allNs", RestorePlanArgs.builder()
 ///             .name("restore-all-ns")
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .backupPlan(basic.id())
-///             .cluster(primary.id())
+///             .cluster("projects/my-project-name/locations/us-east1/clusters/restore-all-ns-cluster")
 ///             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
 ///                 .allNamespaces(true)
 ///                 .namespacedResourceRestoreMode("FAIL_ON_CONFLICT")
@@ -366,26 +263,12 @@ import 'restore_plan_state.dart';
 /// ```
 /// ```yaml
 /// resources:
-///   primary:
-///     type: gcp:container:Cluster
-///     properties:
-///       name: restore-all-ns-cluster
-///       location: us-central1
-///       initialNodeCount: 1
-///       workloadIdentityConfig:
-///         workloadPool: my-project-name.svc.id.goog
-///       addonsConfig:
-///         gkeBackupAgentConfig:
-///           enabled: true
-///       deletionProtection: true
-///       network: default
-///       subnetwork: default
 ///   basic:
 ///     type: gcp:gkebackup:BackupPlan
 ///     properties:
 ///       name: restore-all-ns
-///       cluster: ${primary.id}
-///       location: us-central1
+///       cluster: projects/my-project-name/locations/us-east1/clusters/restore-all-ns-cluster
+///       location: us-east1
 ///       backupConfig:
 ///         includeVolumeData: true
 ///         includeSecrets: true
@@ -395,9 +278,9 @@ import 'restore_plan_state.dart';
 ///     name: all_ns
 ///     properties:
 ///       name: restore-all-ns
-///       location: us-central1
+///       location: us-east1
 ///       backupPlan: ${basic.id}
-///       cluster: ${primary.id}
+///       cluster: projects/my-project-name/locations/us-east1/clusters/restore-all-ns-cluster
 ///       restoreConfig:
 ///         allNamespaces: true
 ///         namespacedResourceRestoreMode: FAIL_ON_CONFLICT
@@ -407,6 +290,7 @@ import 'restore_plan_state.dart';
 ///         clusterResourceConflictPolicy: USE_EXISTING_VERSION
 /// ```
 ///
+///
 /// ### Gkebackup Restoreplan Rollback Namespace
 ///
 ///
@@ -415,26 +299,10 @@ import 'restore_plan_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const primary = new gcp.container.Cluster("primary", {
-///     name: "rollback-ns-cluster",
-///     location: "us-central1",
-///     initialNodeCount: 1,
-///     workloadIdentityConfig: {
-///         workloadPool: "my-project-name.svc.id.goog",
-///     },
-///     addonsConfig: {
-///         gkeBackupAgentConfig: {
-///             enabled: true,
-///         },
-///     },
-///     deletionProtection: true,
-///     network: "default",
-///     subnetwork: "default",
-/// });
 /// const basic = new gcp.gkebackup.BackupPlan("basic", {
 ///     name: "rollback-ns",
-///     cluster: primary.id,
-///     location: "us-central1",
+///     cluster: "projects/my-project-name/locations/us-east1/clusters/rollback-ns-cluster",
+///     location: "us-east1",
 ///     backupConfig: {
 ///         includeVolumeData: true,
 ///         includeSecrets: true,
@@ -443,9 +311,9 @@ import 'restore_plan_state.dart';
 /// });
 /// const rollbackNs = new gcp.gkebackup.RestorePlan("rollback_ns", {
 ///     name: "rollback-ns-rp",
-///     location: "us-central1",
+///     location: "us-east1",
 ///     backupPlan: basic.id,
-///     cluster: primary.id,
+///     cluster: "projects/my-project-name/locations/us-east1/clusters/rollback-ns-cluster",
 ///     restoreConfig: {
 ///         selectedNamespaces: {
 ///             namespaces: ["my-ns"],
@@ -472,25 +340,10 @@ import 'restore_plan_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// primary = gcp.container.Cluster("primary",
-///     name="rollback-ns-cluster",
-///     location="us-central1",
-///     initial_node_count=1,
-///     workload_identity_config={
-///         "workload_pool": "my-project-name.svc.id.goog",
-///     },
-///     addons_config={
-///         "gke_backup_agent_config": {
-///             "enabled": True,
-///         },
-///     },
-///     deletion_protection=True,
-///     network="default",
-///     subnetwork="default")
 /// basic = gcp.gkebackup.BackupPlan("basic",
 ///     name="rollback-ns",
-///     cluster=primary.id,
-///     location="us-central1",
+///     cluster="projects/my-project-name/locations/us-east1/clusters/rollback-ns-cluster",
+///     location="us-east1",
 ///     backup_config={
 ///         "include_volume_data": True,
 ///         "include_secrets": True,
@@ -498,9 +351,9 @@ import 'restore_plan_state.dart';
 ///     })
 /// rollback_ns = gcp.gkebackup.RestorePlan("rollback_ns",
 ///     name="rollback-ns-rp",
-///     location="us-central1",
+///     location="us-east1",
 ///     backup_plan=basic.id,
-///     cluster=primary.id,
+///     cluster="projects/my-project-name/locations/us-east1/clusters/rollback-ns-cluster",
 ///     restore_config={
 ///         "selected_namespaces": {
 ///             "namespaces": ["my-ns"],
@@ -530,32 +383,11 @@ import 'restore_plan_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var primary = new Gcp.Container.Cluster("primary", new()
-///     {
-///         Name = "rollback-ns-cluster",
-///         Location = "us-central1",
-///         InitialNodeCount = 1,
-///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
-///         {
-///             WorkloadPool = "my-project-name.svc.id.goog",
-///         },
-///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
-///         {
-///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
-///             {
-///                 Enabled = true,
-///             },
-///         },
-///         DeletionProtection = true,
-///         Network = "default",
-///         Subnetwork = "default",
-///     });
-///
 ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
 ///     {
 ///         Name = "rollback-ns",
-///         Cluster = primary.Id,
-///         Location = "us-central1",
+///         Cluster = "projects/my-project-name/locations/us-east1/clusters/rollback-ns-cluster",
+///         Location = "us-east1",
 ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
 ///         {
 ///             IncludeVolumeData = true,
@@ -567,9 +399,9 @@ import 'restore_plan_state.dart';
 ///     var rollbackNs = new Gcp.GkeBackup.RestorePlan("rollback_ns", new()
 ///     {
 ///         Name = "rollback-ns-rp",
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         BackupPlan = basic.Id,
-///         Cluster = primary.Id,
+///         Cluster = "projects/my-project-name/locations/us-east1/clusters/rollback-ns-cluster",
 ///         RestoreConfig = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigArgs
 ///         {
 ///             SelectedNamespaces = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigSelectedNamespacesArgs
@@ -607,36 +439,16 @@ import 'restore_plan_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-/// 			Name:             pulumi.String("rollback-ns-cluster"),
-/// 			Location:         pulumi.String("us-central1"),
-/// 			InitialNodeCount: pulumi.Int(1),
-/// 			WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
-/// 				WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
-/// 			},
-/// 			AddonsConfig: &container.ClusterAddonsConfigArgs{
-/// 				GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
-/// 					Enabled: pulumi.Bool(true),
-/// 				},
-/// 			},
-/// 			DeletionProtection: pulumi.Bool(true),
-/// 			Network:            pulumi.String("default"),
-/// 			Subnetwork:         pulumi.String("default"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
 /// 		basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("rollback-ns"),
-/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-/// 			Location: pulumi.String("us-central1"),
+/// 			Cluster:  pulumi.String("projects/my-project-name/locations/us-east1/clusters/rollback-ns-cluster"),
+/// 			Location: pulumi.String("us-east1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
 /// 				IncludeSecrets:    pulumi.Bool(true),
@@ -648,9 +460,9 @@ import 'restore_plan_state.dart';
 /// 		}
 /// 		_, err = gkebackup.NewRestorePlan(ctx, "rollback_ns", &gkebackup.RestorePlanArgs{
 /// 			Name:       pulumi.String("rollback-ns-rp"),
-/// 			Location:   pulumi.String("us-central1"),
-/// 			BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
-/// 			Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
+/// 			Location:   pulumi.String("us-east1"),
+/// 			BackupPlan: basic.ID(),
+/// 			Cluster:    pulumi.String("projects/my-project-name/locations/us-east1/clusters/rollback-ns-cluster"),
 /// 			RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 /// 				SelectedNamespaces: &gkebackup.RestorePlanRestoreConfigSelectedNamespacesArgs{
 /// 					Namespaces: pulumi.StringArray{
@@ -682,7 +494,7 @@ import 'restore_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -690,37 +502,27 @@ import 'restore_plan_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_container_cluster" "primary" {
-///   name               = "rollback-ns-cluster"
-///   location           = "us-central1"
-///   initial_node_count = 1
-///   workload_identity_config = {
-///     workload_pool = "my-project-name.svc.id.goog"
+/// resource "gcp_gkebackup_backup_plan" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   addons_config = {
-///     gke_backup_agent_config = {
-///       enabled = true
-///     }
-///   }
-///   deletion_protection = true
-///   network             = "default"
-///   subnetwork          = "default"
-/// }
-/// resource "gcp_gkebackup_backupplan" "basic" {
 ///   name     = "rollback-ns"
-///   cluster  = gcp_container_cluster.primary.id
-///   location = "us-central1"
+///   cluster  = "projects/my-project-name/locations/us-east1/clusters/rollback-ns-cluster"
+///   location = "us-east1"
 ///   backup_config = {
 ///     include_volume_data = true
 ///     include_secrets     = true
 ///     all_namespaces      = true
 ///   }
 /// }
-/// resource "gcp_gkebackup_restoreplan" "rollback_ns" {
+/// resource "gcp_gkebackup_restore_plan" "rollback_ns" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "rollback-ns-rp"
-///   location    = "us-central1"
-///   backup_plan = gcp_gkebackup_backupplan.basic.id
-///   cluster     = gcp_container_cluster.primary.id
+///   location    = "us-east1"
+///   backup_plan = gcp_gkebackup_backup_plan.basic.id
+///   cluster     = "projects/my-project-name/locations/us-east1/clusters/rollback-ns-cluster"
 ///   restore_config = {
 ///     selected_namespaces = {
 ///       namespaces = ["my-ns"]
@@ -729,11 +531,11 @@ import 'restore_plan_state.dart';
 ///     volume_data_restore_policy       = "RESTORE_VOLUME_DATA_FROM_BACKUP"
 ///     cluster_resource_restore_scope = {
 ///       selected_group_kinds = [{
-///         "resourceGroup" = "apiextension.k8s.io"
-///         "resourceKind"  = "CustomResourceDefinition"
+///         resource_group = "apiextension.k8s.io"
+///         resource_kind  = "CustomResourceDefinition"
 ///         }, {
-///         "resourceGroup" = "storage.k8s.io"
-///         "resourceKind"  = "StorageClass"
+///         resource_group = "storage.k8s.io"
+///         resource_kind  = "StorageClass"
 ///       }]
 ///     }
 ///     cluster_resource_conflict_policy = "USE_EXISTING_VERSION"
@@ -746,11 +548,6 @@ import 'restore_plan_state.dart';
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.container.Cluster;
-/// import com.pulumi.gcp.container.ClusterArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
 /// import com.pulumi.gcp.gkebackup.BackupPlan;
 /// import com.pulumi.gcp.gkebackup.BackupPlanArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
@@ -773,27 +570,10 @@ import 'restore_plan_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var primary = new Cluster("primary", ClusterArgs.builder()
-///             .name("rollback-ns-cluster")
-///             .location("us-central1")
-///             .initialNodeCount(1)
-///             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
-///                 .workloadPool("my-project-name.svc.id.goog")
-///                 .build())
-///             .addonsConfig(ClusterAddonsConfigArgs.builder()
-///                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
-///                     .enabled(true)
-///                     .build())
-///                 .build())
-///             .deletionProtection(true)
-///             .network("default")
-///             .subnetwork("default")
-///             .build());
-///
 ///         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
 ///             .name("rollback-ns")
-///             .cluster(primary.id())
-///             .location("us-central1")
+///             .cluster("projects/my-project-name/locations/us-east1/clusters/rollback-ns-cluster")
+///             .location("us-east1")
 ///             .backupConfig(BackupPlanBackupConfigArgs.builder()
 ///                 .includeVolumeData(true)
 ///                 .includeSecrets(true)
@@ -803,9 +583,9 @@ import 'restore_plan_state.dart';
 ///
 ///         var rollbackNs = new RestorePlan("rollbackNs", RestorePlanArgs.builder()
 ///             .name("rollback-ns-rp")
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .backupPlan(basic.id())
-///             .cluster(primary.id())
+///             .cluster("projects/my-project-name/locations/us-east1/clusters/rollback-ns-cluster")
 ///             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
 ///                 .selectedNamespaces(RestorePlanRestoreConfigSelectedNamespacesArgs.builder()
 ///                     .namespaces("my-ns")
@@ -832,26 +612,12 @@ import 'restore_plan_state.dart';
 /// ```
 /// ```yaml
 /// resources:
-///   primary:
-///     type: gcp:container:Cluster
-///     properties:
-///       name: rollback-ns-cluster
-///       location: us-central1
-///       initialNodeCount: 1
-///       workloadIdentityConfig:
-///         workloadPool: my-project-name.svc.id.goog
-///       addonsConfig:
-///         gkeBackupAgentConfig:
-///           enabled: true
-///       deletionProtection: true
-///       network: default
-///       subnetwork: default
 ///   basic:
 ///     type: gcp:gkebackup:BackupPlan
 ///     properties:
 ///       name: rollback-ns
-///       cluster: ${primary.id}
-///       location: us-central1
+///       cluster: projects/my-project-name/locations/us-east1/clusters/rollback-ns-cluster
+///       location: us-east1
 ///       backupConfig:
 ///         includeVolumeData: true
 ///         includeSecrets: true
@@ -861,9 +627,9 @@ import 'restore_plan_state.dart';
 ///     name: rollback_ns
 ///     properties:
 ///       name: rollback-ns-rp
-///       location: us-central1
+///       location: us-east1
 ///       backupPlan: ${basic.id}
-///       cluster: ${primary.id}
+///       cluster: projects/my-project-name/locations/us-east1/clusters/rollback-ns-cluster
 ///       restoreConfig:
 ///         selectedNamespaces:
 ///           namespaces:
@@ -879,6 +645,7 @@ import 'restore_plan_state.dart';
 ///         clusterResourceConflictPolicy: USE_EXISTING_VERSION
 /// ```
 ///
+///
 /// ### Gkebackup Restoreplan Protected Application
 ///
 ///
@@ -887,26 +654,10 @@ import 'restore_plan_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const primary = new gcp.container.Cluster("primary", {
-///     name: "rollback-app-cluster",
-///     location: "us-central1",
-///     initialNodeCount: 1,
-///     workloadIdentityConfig: {
-///         workloadPool: "my-project-name.svc.id.goog",
-///     },
-///     addonsConfig: {
-///         gkeBackupAgentConfig: {
-///             enabled: true,
-///         },
-///     },
-///     deletionProtection: true,
-///     network: "default",
-///     subnetwork: "default",
-/// });
 /// const basic = new gcp.gkebackup.BackupPlan("basic", {
 ///     name: "rollback-app",
-///     cluster: primary.id,
-///     location: "us-central1",
+///     cluster: "projects/my-project-name/locations/us-east1/clusters/rollback-app-cluster",
+///     location: "us-east1",
 ///     backupConfig: {
 ///         includeVolumeData: true,
 ///         includeSecrets: true,
@@ -915,9 +666,9 @@ import 'restore_plan_state.dart';
 /// });
 /// const rollbackApp = new gcp.gkebackup.RestorePlan("rollback_app", {
 ///     name: "rollback-app-rp",
-///     location: "us-central1",
+///     location: "us-east1",
 ///     backupPlan: basic.id,
-///     cluster: primary.id,
+///     cluster: "projects/my-project-name/locations/us-east1/clusters/rollback-app-cluster",
 ///     restoreConfig: {
 ///         selectedApplications: {
 ///             namespacedNames: [{
@@ -937,25 +688,10 @@ import 'restore_plan_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// primary = gcp.container.Cluster("primary",
-///     name="rollback-app-cluster",
-///     location="us-central1",
-///     initial_node_count=1,
-///     workload_identity_config={
-///         "workload_pool": "my-project-name.svc.id.goog",
-///     },
-///     addons_config={
-///         "gke_backup_agent_config": {
-///             "enabled": True,
-///         },
-///     },
-///     deletion_protection=True,
-///     network="default",
-///     subnetwork="default")
 /// basic = gcp.gkebackup.BackupPlan("basic",
 ///     name="rollback-app",
-///     cluster=primary.id,
-///     location="us-central1",
+///     cluster="projects/my-project-name/locations/us-east1/clusters/rollback-app-cluster",
+///     location="us-east1",
 ///     backup_config={
 ///         "include_volume_data": True,
 ///         "include_secrets": True,
@@ -963,9 +699,9 @@ import 'restore_plan_state.dart';
 ///     })
 /// rollback_app = gcp.gkebackup.RestorePlan("rollback_app",
 ///     name="rollback-app-rp",
-///     location="us-central1",
+///     location="us-east1",
 ///     backup_plan=basic.id,
-///     cluster=primary.id,
+///     cluster="projects/my-project-name/locations/us-east1/clusters/rollback-app-cluster",
 ///     restore_config={
 ///         "selected_applications": {
 ///             "namespaced_names": [{
@@ -988,32 +724,11 @@ import 'restore_plan_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var primary = new Gcp.Container.Cluster("primary", new()
-///     {
-///         Name = "rollback-app-cluster",
-///         Location = "us-central1",
-///         InitialNodeCount = 1,
-///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
-///         {
-///             WorkloadPool = "my-project-name.svc.id.goog",
-///         },
-///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
-///         {
-///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
-///             {
-///                 Enabled = true,
-///             },
-///         },
-///         DeletionProtection = true,
-///         Network = "default",
-///         Subnetwork = "default",
-///     });
-///
 ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
 ///     {
 ///         Name = "rollback-app",
-///         Cluster = primary.Id,
-///         Location = "us-central1",
+///         Cluster = "projects/my-project-name/locations/us-east1/clusters/rollback-app-cluster",
+///         Location = "us-east1",
 ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
 ///         {
 ///             IncludeVolumeData = true,
@@ -1025,9 +740,9 @@ import 'restore_plan_state.dart';
 ///     var rollbackApp = new Gcp.GkeBackup.RestorePlan("rollback_app", new()
 ///     {
 ///         Name = "rollback-app-rp",
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         BackupPlan = basic.Id,
-///         Cluster = primary.Id,
+///         Cluster = "projects/my-project-name/locations/us-east1/clusters/rollback-app-cluster",
 ///         RestoreConfig = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigArgs
 ///         {
 ///             SelectedApplications = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigSelectedApplicationsArgs
@@ -1056,36 +771,16 @@ import 'restore_plan_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-/// 			Name:             pulumi.String("rollback-app-cluster"),
-/// 			Location:         pulumi.String("us-central1"),
-/// 			InitialNodeCount: pulumi.Int(1),
-/// 			WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
-/// 				WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
-/// 			},
-/// 			AddonsConfig: &container.ClusterAddonsConfigArgs{
-/// 				GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
-/// 					Enabled: pulumi.Bool(true),
-/// 				},
-/// 			},
-/// 			DeletionProtection: pulumi.Bool(true),
-/// 			Network:            pulumi.String("default"),
-/// 			Subnetwork:         pulumi.String("default"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
 /// 		basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("rollback-app"),
-/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-/// 			Location: pulumi.String("us-central1"),
+/// 			Cluster:  pulumi.String("projects/my-project-name/locations/us-east1/clusters/rollback-app-cluster"),
+/// 			Location: pulumi.String("us-east1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
 /// 				IncludeSecrets:    pulumi.Bool(true),
@@ -1097,9 +792,9 @@ import 'restore_plan_state.dart';
 /// 		}
 /// 		_, err = gkebackup.NewRestorePlan(ctx, "rollback_app", &gkebackup.RestorePlanArgs{
 /// 			Name:       pulumi.String("rollback-app-rp"),
-/// 			Location:   pulumi.String("us-central1"),
-/// 			BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
-/// 			Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
+/// 			Location:   pulumi.String("us-east1"),
+/// 			BackupPlan: basic.ID(),
+/// 			Cluster:    pulumi.String("projects/my-project-name/locations/us-east1/clusters/rollback-app-cluster"),
 /// 			RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 /// 				SelectedApplications: &gkebackup.RestorePlanRestoreConfigSelectedApplicationsArgs{
 /// 					NamespacedNames: gkebackup.RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArray{
@@ -1124,7 +819,7 @@ import 'restore_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1132,42 +827,32 @@ import 'restore_plan_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_container_cluster" "primary" {
-///   name               = "rollback-app-cluster"
-///   location           = "us-central1"
-///   initial_node_count = 1
-///   workload_identity_config = {
-///     workload_pool = "my-project-name.svc.id.goog"
+/// resource "gcp_gkebackup_backup_plan" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   addons_config = {
-///     gke_backup_agent_config = {
-///       enabled = true
-///     }
-///   }
-///   deletion_protection = true
-///   network             = "default"
-///   subnetwork          = "default"
-/// }
-/// resource "gcp_gkebackup_backupplan" "basic" {
 ///   name     = "rollback-app"
-///   cluster  = gcp_container_cluster.primary.id
-///   location = "us-central1"
+///   cluster  = "projects/my-project-name/locations/us-east1/clusters/rollback-app-cluster"
+///   location = "us-east1"
 ///   backup_config = {
 ///     include_volume_data = true
 ///     include_secrets     = true
 ///     all_namespaces      = true
 ///   }
 /// }
-/// resource "gcp_gkebackup_restoreplan" "rollback_app" {
+/// resource "gcp_gkebackup_restore_plan" "rollback_app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "rollback-app-rp"
-///   location    = "us-central1"
-///   backup_plan = gcp_gkebackup_backupplan.basic.id
-///   cluster     = gcp_container_cluster.primary.id
+///   location    = "us-east1"
+///   backup_plan = gcp_gkebackup_backup_plan.basic.id
+///   cluster     = "projects/my-project-name/locations/us-east1/clusters/rollback-app-cluster"
 ///   restore_config = {
 ///     selected_applications = {
 ///       namespaced_names = [{
-///         "name"      = "my-app"
-///         "namespace" = "my-ns"
+///         name      = "my-app"
+///         namespace = "my-ns"
 ///       }]
 ///     }
 ///     namespaced_resource_restore_mode = "DELETE_AND_RESTORE"
@@ -1184,11 +869,6 @@ import 'restore_plan_state.dart';
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.container.Cluster;
-/// import com.pulumi.gcp.container.ClusterArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
 /// import com.pulumi.gcp.gkebackup.BackupPlan;
 /// import com.pulumi.gcp.gkebackup.BackupPlanArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
@@ -1211,27 +891,10 @@ import 'restore_plan_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var primary = new Cluster("primary", ClusterArgs.builder()
-///             .name("rollback-app-cluster")
-///             .location("us-central1")
-///             .initialNodeCount(1)
-///             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
-///                 .workloadPool("my-project-name.svc.id.goog")
-///                 .build())
-///             .addonsConfig(ClusterAddonsConfigArgs.builder()
-///                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
-///                     .enabled(true)
-///                     .build())
-///                 .build())
-///             .deletionProtection(true)
-///             .network("default")
-///             .subnetwork("default")
-///             .build());
-///
 ///         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
 ///             .name("rollback-app")
-///             .cluster(primary.id())
-///             .location("us-central1")
+///             .cluster("projects/my-project-name/locations/us-east1/clusters/rollback-app-cluster")
+///             .location("us-east1")
 ///             .backupConfig(BackupPlanBackupConfigArgs.builder()
 ///                 .includeVolumeData(true)
 ///                 .includeSecrets(true)
@@ -1241,9 +904,9 @@ import 'restore_plan_state.dart';
 ///
 ///         var rollbackApp = new RestorePlan("rollbackApp", RestorePlanArgs.builder()
 ///             .name("rollback-app-rp")
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .backupPlan(basic.id())
-///             .cluster(primary.id())
+///             .cluster("projects/my-project-name/locations/us-east1/clusters/rollback-app-cluster")
 ///             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
 ///                 .selectedApplications(RestorePlanRestoreConfigSelectedApplicationsArgs.builder()
 ///                     .namespacedNames(RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs.builder()
@@ -1264,26 +927,12 @@ import 'restore_plan_state.dart';
 /// ```
 /// ```yaml
 /// resources:
-///   primary:
-///     type: gcp:container:Cluster
-///     properties:
-///       name: rollback-app-cluster
-///       location: us-central1
-///       initialNodeCount: 1
-///       workloadIdentityConfig:
-///         workloadPool: my-project-name.svc.id.goog
-///       addonsConfig:
-///         gkeBackupAgentConfig:
-///           enabled: true
-///       deletionProtection: true
-///       network: default
-///       subnetwork: default
 ///   basic:
 ///     type: gcp:gkebackup:BackupPlan
 ///     properties:
 ///       name: rollback-app
-///       cluster: ${primary.id}
-///       location: us-central1
+///       cluster: projects/my-project-name/locations/us-east1/clusters/rollback-app-cluster
+///       location: us-east1
 ///       backupConfig:
 ///         includeVolumeData: true
 ///         includeSecrets: true
@@ -1293,9 +942,9 @@ import 'restore_plan_state.dart';
 ///     name: rollback_app
 ///     properties:
 ///       name: rollback-app-rp
-///       location: us-central1
+///       location: us-east1
 ///       backupPlan: ${basic.id}
-///       cluster: ${primary.id}
+///       cluster: projects/my-project-name/locations/us-east1/clusters/rollback-app-cluster
 ///       restoreConfig:
 ///         selectedApplications:
 ///           namespacedNames:
@@ -1307,6 +956,7 @@ import 'restore_plan_state.dart';
 ///           noGroupKinds: true
 /// ```
 ///
+///
 /// ### Gkebackup Restoreplan All Cluster Resources
 ///
 ///
@@ -1315,26 +965,10 @@ import 'restore_plan_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const primary = new gcp.container.Cluster("primary", {
-///     name: "all-groupkinds-cluster",
-///     location: "us-central1",
-///     initialNodeCount: 1,
-///     workloadIdentityConfig: {
-///         workloadPool: "my-project-name.svc.id.goog",
-///     },
-///     addonsConfig: {
-///         gkeBackupAgentConfig: {
-///             enabled: true,
-///         },
-///     },
-///     deletionProtection: true,
-///     network: "default",
-///     subnetwork: "default",
-/// });
 /// const basic = new gcp.gkebackup.BackupPlan("basic", {
 ///     name: "all-groupkinds",
-///     cluster: primary.id,
-///     location: "us-central1",
+///     cluster: "projects/my-project-name/locations/us-east1/clusters/all-groupkinds-cluster",
+///     location: "us-east1",
 ///     backupConfig: {
 ///         includeVolumeData: true,
 ///         includeSecrets: true,
@@ -1343,9 +977,9 @@ import 'restore_plan_state.dart';
 /// });
 /// const allClusterResources = new gcp.gkebackup.RestorePlan("all_cluster_resources", {
 ///     name: "all-groupkinds-rp",
-///     location: "us-central1",
+///     location: "us-east1",
 ///     backupPlan: basic.id,
-///     cluster: primary.id,
+///     cluster: "projects/my-project-name/locations/us-east1/clusters/all-groupkinds-cluster",
 ///     restoreConfig: {
 ///         noNamespaces: true,
 ///         namespacedResourceRestoreMode: "FAIL_ON_CONFLICT",
@@ -1360,25 +994,10 @@ import 'restore_plan_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// primary = gcp.container.Cluster("primary",
-///     name="all-groupkinds-cluster",
-///     location="us-central1",
-///     initial_node_count=1,
-///     workload_identity_config={
-///         "workload_pool": "my-project-name.svc.id.goog",
-///     },
-///     addons_config={
-///         "gke_backup_agent_config": {
-///             "enabled": True,
-///         },
-///     },
-///     deletion_protection=True,
-///     network="default",
-///     subnetwork="default")
 /// basic = gcp.gkebackup.BackupPlan("basic",
 ///     name="all-groupkinds",
-///     cluster=primary.id,
-///     location="us-central1",
+///     cluster="projects/my-project-name/locations/us-east1/clusters/all-groupkinds-cluster",
+///     location="us-east1",
 ///     backup_config={
 ///         "include_volume_data": True,
 ///         "include_secrets": True,
@@ -1386,9 +1005,9 @@ import 'restore_plan_state.dart';
 ///     })
 /// all_cluster_resources = gcp.gkebackup.RestorePlan("all_cluster_resources",
 ///     name="all-groupkinds-rp",
-///     location="us-central1",
+///     location="us-east1",
 ///     backup_plan=basic.id,
-///     cluster=primary.id,
+///     cluster="projects/my-project-name/locations/us-east1/clusters/all-groupkinds-cluster",
 ///     restore_config={
 ///         "no_namespaces": True,
 ///         "namespaced_resource_restore_mode": "FAIL_ON_CONFLICT",
@@ -1406,32 +1025,11 @@ import 'restore_plan_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var primary = new Gcp.Container.Cluster("primary", new()
-///     {
-///         Name = "all-groupkinds-cluster",
-///         Location = "us-central1",
-///         InitialNodeCount = 1,
-///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
-///         {
-///             WorkloadPool = "my-project-name.svc.id.goog",
-///         },
-///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
-///         {
-///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
-///             {
-///                 Enabled = true,
-///             },
-///         },
-///         DeletionProtection = true,
-///         Network = "default",
-///         Subnetwork = "default",
-///     });
-///
 ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
 ///     {
 ///         Name = "all-groupkinds",
-///         Cluster = primary.Id,
-///         Location = "us-central1",
+///         Cluster = "projects/my-project-name/locations/us-east1/clusters/all-groupkinds-cluster",
+///         Location = "us-east1",
 ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
 ///         {
 ///             IncludeVolumeData = true,
@@ -1443,9 +1041,9 @@ import 'restore_plan_state.dart';
 ///     var allClusterResources = new Gcp.GkeBackup.RestorePlan("all_cluster_resources", new()
 ///     {
 ///         Name = "all-groupkinds-rp",
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         BackupPlan = basic.Id,
-///         Cluster = primary.Id,
+///         Cluster = "projects/my-project-name/locations/us-east1/clusters/all-groupkinds-cluster",
 ///         RestoreConfig = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigArgs
 ///         {
 ///             NoNamespaces = true,
@@ -1464,36 +1062,16 @@ import 'restore_plan_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-/// 			Name:             pulumi.String("all-groupkinds-cluster"),
-/// 			Location:         pulumi.String("us-central1"),
-/// 			InitialNodeCount: pulumi.Int(1),
-/// 			WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
-/// 				WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
-/// 			},
-/// 			AddonsConfig: &container.ClusterAddonsConfigArgs{
-/// 				GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
-/// 					Enabled: pulumi.Bool(true),
-/// 				},
-/// 			},
-/// 			DeletionProtection: pulumi.Bool(true),
-/// 			Network:            pulumi.String("default"),
-/// 			Subnetwork:         pulumi.String("default"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
 /// 		basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("all-groupkinds"),
-/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-/// 			Location: pulumi.String("us-central1"),
+/// 			Cluster:  pulumi.String("projects/my-project-name/locations/us-east1/clusters/all-groupkinds-cluster"),
+/// 			Location: pulumi.String("us-east1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
 /// 				IncludeSecrets:    pulumi.Bool(true),
@@ -1505,9 +1083,9 @@ import 'restore_plan_state.dart';
 /// 		}
 /// 		_, err = gkebackup.NewRestorePlan(ctx, "all_cluster_resources", &gkebackup.RestorePlanArgs{
 /// 			Name:       pulumi.String("all-groupkinds-rp"),
-/// 			Location:   pulumi.String("us-central1"),
-/// 			BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
-/// 			Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
+/// 			Location:   pulumi.String("us-east1"),
+/// 			BackupPlan: basic.ID(),
+/// 			Cluster:    pulumi.String("projects/my-project-name/locations/us-east1/clusters/all-groupkinds-cluster"),
 /// 			RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 /// 				NoNamespaces:                  pulumi.Bool(true),
 /// 				NamespacedResourceRestoreMode: pulumi.String("FAIL_ON_CONFLICT"),
@@ -1525,7 +1103,7 @@ import 'restore_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1533,37 +1111,27 @@ import 'restore_plan_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_container_cluster" "primary" {
-///   name               = "all-groupkinds-cluster"
-///   location           = "us-central1"
-///   initial_node_count = 1
-///   workload_identity_config = {
-///     workload_pool = "my-project-name.svc.id.goog"
+/// resource "gcp_gkebackup_backup_plan" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   addons_config = {
-///     gke_backup_agent_config = {
-///       enabled = true
-///     }
-///   }
-///   deletion_protection = true
-///   network             = "default"
-///   subnetwork          = "default"
-/// }
-/// resource "gcp_gkebackup_backupplan" "basic" {
 ///   name     = "all-groupkinds"
-///   cluster  = gcp_container_cluster.primary.id
-///   location = "us-central1"
+///   cluster  = "projects/my-project-name/locations/us-east1/clusters/all-groupkinds-cluster"
+///   location = "us-east1"
 ///   backup_config = {
 ///     include_volume_data = true
 ///     include_secrets     = true
 ///     all_namespaces      = true
 ///   }
 /// }
-/// resource "gcp_gkebackup_restoreplan" "all_cluster_resources" {
+/// resource "gcp_gkebackup_restore_plan" "all_cluster_resources" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "all-groupkinds-rp"
-///   location    = "us-central1"
-///   backup_plan = gcp_gkebackup_backupplan.basic.id
-///   cluster     = gcp_container_cluster.primary.id
+///   location    = "us-east1"
+///   backup_plan = gcp_gkebackup_backup_plan.basic.id
+///   cluster     = "projects/my-project-name/locations/us-east1/clusters/all-groupkinds-cluster"
 ///   restore_config = {
 ///     no_namespaces                    = true
 ///     namespaced_resource_restore_mode = "FAIL_ON_CONFLICT"
@@ -1580,11 +1148,6 @@ import 'restore_plan_state.dart';
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.container.Cluster;
-/// import com.pulumi.gcp.container.ClusterArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
 /// import com.pulumi.gcp.gkebackup.BackupPlan;
 /// import com.pulumi.gcp.gkebackup.BackupPlanArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
@@ -1605,27 +1168,10 @@ import 'restore_plan_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var primary = new Cluster("primary", ClusterArgs.builder()
-///             .name("all-groupkinds-cluster")
-///             .location("us-central1")
-///             .initialNodeCount(1)
-///             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
-///                 .workloadPool("my-project-name.svc.id.goog")
-///                 .build())
-///             .addonsConfig(ClusterAddonsConfigArgs.builder()
-///                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
-///                     .enabled(true)
-///                     .build())
-///                 .build())
-///             .deletionProtection(true)
-///             .network("default")
-///             .subnetwork("default")
-///             .build());
-///
 ///         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
 ///             .name("all-groupkinds")
-///             .cluster(primary.id())
-///             .location("us-central1")
+///             .cluster("projects/my-project-name/locations/us-east1/clusters/all-groupkinds-cluster")
+///             .location("us-east1")
 ///             .backupConfig(BackupPlanBackupConfigArgs.builder()
 ///                 .includeVolumeData(true)
 ///                 .includeSecrets(true)
@@ -1635,9 +1181,9 @@ import 'restore_plan_state.dart';
 ///
 ///         var allClusterResources = new RestorePlan("allClusterResources", RestorePlanArgs.builder()
 ///             .name("all-groupkinds-rp")
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .backupPlan(basic.id())
-///             .cluster(primary.id())
+///             .cluster("projects/my-project-name/locations/us-east1/clusters/all-groupkinds-cluster")
 ///             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
 ///                 .noNamespaces(true)
 ///                 .namespacedResourceRestoreMode("FAIL_ON_CONFLICT")
@@ -1653,26 +1199,12 @@ import 'restore_plan_state.dart';
 /// ```
 /// ```yaml
 /// resources:
-///   primary:
-///     type: gcp:container:Cluster
-///     properties:
-///       name: all-groupkinds-cluster
-///       location: us-central1
-///       initialNodeCount: 1
-///       workloadIdentityConfig:
-///         workloadPool: my-project-name.svc.id.goog
-///       addonsConfig:
-///         gkeBackupAgentConfig:
-///           enabled: true
-///       deletionProtection: true
-///       network: default
-///       subnetwork: default
 ///   basic:
 ///     type: gcp:gkebackup:BackupPlan
 ///     properties:
 ///       name: all-groupkinds
-///       cluster: ${primary.id}
-///       location: us-central1
+///       cluster: projects/my-project-name/locations/us-east1/clusters/all-groupkinds-cluster
+///       location: us-east1
 ///       backupConfig:
 ///         includeVolumeData: true
 ///         includeSecrets: true
@@ -1682,9 +1214,9 @@ import 'restore_plan_state.dart';
 ///     name: all_cluster_resources
 ///     properties:
 ///       name: all-groupkinds-rp
-///       location: us-central1
+///       location: us-east1
 ///       backupPlan: ${basic.id}
-///       cluster: ${primary.id}
+///       cluster: projects/my-project-name/locations/us-east1/clusters/all-groupkinds-cluster
 ///       restoreConfig:
 ///         noNamespaces: true
 ///         namespacedResourceRestoreMode: FAIL_ON_CONFLICT
@@ -1692,6 +1224,7 @@ import 'restore_plan_state.dart';
 ///           allGroupKinds: true
 ///         clusterResourceConflictPolicy: USE_EXISTING_VERSION
 /// ```
+///
 ///
 /// ### Gkebackup Restoreplan Rename Namespace
 ///
@@ -1701,26 +1234,10 @@ import 'restore_plan_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const primary = new gcp.container.Cluster("primary", {
-///     name: "rename-ns-cluster",
-///     location: "us-central1",
-///     initialNodeCount: 1,
-///     workloadIdentityConfig: {
-///         workloadPool: "my-project-name.svc.id.goog",
-///     },
-///     addonsConfig: {
-///         gkeBackupAgentConfig: {
-///             enabled: true,
-///         },
-///     },
-///     deletionProtection: true,
-///     network: "default",
-///     subnetwork: "default",
-/// });
 /// const basic = new gcp.gkebackup.BackupPlan("basic", {
 ///     name: "rename-ns",
-///     cluster: primary.id,
-///     location: "us-central1",
+///     cluster: "projects/my-project-name/locations/us-east1/clusters/rename-ns-cluster",
+///     location: "us-east1",
 ///     backupConfig: {
 ///         includeVolumeData: true,
 ///         includeSecrets: true,
@@ -1729,9 +1246,9 @@ import 'restore_plan_state.dart';
 /// });
 /// const renameNs = new gcp.gkebackup.RestorePlan("rename_ns", {
 ///     name: "rename-ns-rp",
-///     location: "us-central1",
+///     location: "us-east1",
 ///     backupPlan: basic.id,
-///     cluster: primary.id,
+///     cluster: "projects/my-project-name/locations/us-east1/clusters/rename-ns-cluster",
 ///     restoreConfig: {
 ///         selectedNamespaces: {
 ///             namespaces: ["ns1"],
@@ -1775,25 +1292,10 @@ import 'restore_plan_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// primary = gcp.container.Cluster("primary",
-///     name="rename-ns-cluster",
-///     location="us-central1",
-///     initial_node_count=1,
-///     workload_identity_config={
-///         "workload_pool": "my-project-name.svc.id.goog",
-///     },
-///     addons_config={
-///         "gke_backup_agent_config": {
-///             "enabled": True,
-///         },
-///     },
-///     deletion_protection=True,
-///     network="default",
-///     subnetwork="default")
 /// basic = gcp.gkebackup.BackupPlan("basic",
 ///     name="rename-ns",
-///     cluster=primary.id,
-///     location="us-central1",
+///     cluster="projects/my-project-name/locations/us-east1/clusters/rename-ns-cluster",
+///     location="us-east1",
 ///     backup_config={
 ///         "include_volume_data": True,
 ///         "include_secrets": True,
@@ -1801,9 +1303,9 @@ import 'restore_plan_state.dart';
 ///     })
 /// rename_ns = gcp.gkebackup.RestorePlan("rename_ns",
 ///     name="rename-ns-rp",
-///     location="us-central1",
+///     location="us-east1",
 ///     backup_plan=basic.id,
-///     cluster=primary.id,
+///     cluster="projects/my-project-name/locations/us-east1/clusters/rename-ns-cluster",
 ///     restore_config={
 ///         "selected_namespaces": {
 ///             "namespaces": ["ns1"],
@@ -1850,32 +1352,11 @@ import 'restore_plan_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var primary = new Gcp.Container.Cluster("primary", new()
-///     {
-///         Name = "rename-ns-cluster",
-///         Location = "us-central1",
-///         InitialNodeCount = 1,
-///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
-///         {
-///             WorkloadPool = "my-project-name.svc.id.goog",
-///         },
-///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
-///         {
-///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
-///             {
-///                 Enabled = true,
-///             },
-///         },
-///         DeletionProtection = true,
-///         Network = "default",
-///         Subnetwork = "default",
-///     });
-///
 ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
 ///     {
 ///         Name = "rename-ns",
-///         Cluster = primary.Id,
-///         Location = "us-central1",
+///         Cluster = "projects/my-project-name/locations/us-east1/clusters/rename-ns-cluster",
+///         Location = "us-east1",
 ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
 ///         {
 ///             IncludeVolumeData = true,
@@ -1887,9 +1368,9 @@ import 'restore_plan_state.dart';
 ///     var renameNs = new Gcp.GkeBackup.RestorePlan("rename_ns", new()
 ///     {
 ///         Name = "rename-ns-rp",
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         BackupPlan = basic.Id,
-///         Cluster = primary.Id,
+///         Cluster = "projects/my-project-name/locations/us-east1/clusters/rename-ns-cluster",
 ///         RestoreConfig = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigArgs
 ///         {
 ///             SelectedNamespaces = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigSelectedNamespacesArgs
@@ -1961,36 +1442,16 @@ import 'restore_plan_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-/// 			Name:             pulumi.String("rename-ns-cluster"),
-/// 			Location:         pulumi.String("us-central1"),
-/// 			InitialNodeCount: pulumi.Int(1),
-/// 			WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
-/// 				WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
-/// 			},
-/// 			AddonsConfig: &container.ClusterAddonsConfigArgs{
-/// 				GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
-/// 					Enabled: pulumi.Bool(true),
-/// 				},
-/// 			},
-/// 			DeletionProtection: pulumi.Bool(true),
-/// 			Network:            pulumi.String("default"),
-/// 			Subnetwork:         pulumi.String("default"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
 /// 		basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("rename-ns"),
-/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-/// 			Location: pulumi.String("us-central1"),
+/// 			Cluster:  pulumi.String("projects/my-project-name/locations/us-east1/clusters/rename-ns-cluster"),
+/// 			Location: pulumi.String("us-east1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
 /// 				IncludeSecrets:    pulumi.Bool(true),
@@ -2002,9 +1463,9 @@ import 'restore_plan_state.dart';
 /// 		}
 /// 		_, err = gkebackup.NewRestorePlan(ctx, "rename_ns", &gkebackup.RestorePlanArgs{
 /// 			Name:       pulumi.String("rename-ns-rp"),
-/// 			Location:   pulumi.String("us-central1"),
-/// 			BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
-/// 			Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
+/// 			Location:   pulumi.String("us-east1"),
+/// 			BackupPlan: basic.ID(),
+/// 			Cluster:    pulumi.String("projects/my-project-name/locations/us-east1/clusters/rename-ns-cluster"),
 /// 			RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 /// 				SelectedNamespaces: &gkebackup.RestorePlanRestoreConfigSelectedNamespacesArgs{
 /// 					Namespaces: pulumi.StringArray{
@@ -2061,7 +1522,7 @@ import 'restore_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2069,37 +1530,27 @@ import 'restore_plan_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_container_cluster" "primary" {
-///   name               = "rename-ns-cluster"
-///   location           = "us-central1"
-///   initial_node_count = 1
-///   workload_identity_config = {
-///     workload_pool = "my-project-name.svc.id.goog"
+/// resource "gcp_gkebackup_backup_plan" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   addons_config = {
-///     gke_backup_agent_config = {
-///       enabled = true
-///     }
-///   }
-///   deletion_protection = true
-///   network             = "default"
-///   subnetwork          = "default"
-/// }
-/// resource "gcp_gkebackup_backupplan" "basic" {
 ///   name     = "rename-ns"
-///   cluster  = gcp_container_cluster.primary.id
-///   location = "us-central1"
+///   cluster  = "projects/my-project-name/locations/us-east1/clusters/rename-ns-cluster"
+///   location = "us-east1"
 ///   backup_config = {
 ///     include_volume_data = true
 ///     include_secrets     = true
 ///     all_namespaces      = true
 ///   }
 /// }
-/// resource "gcp_gkebackup_restoreplan" "rename_ns" {
+/// resource "gcp_gkebackup_restore_plan" "rename_ns" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "rename-ns-rp"
-///   location    = "us-central1"
-///   backup_plan = gcp_gkebackup_backupplan.basic.id
-///   cluster     = gcp_container_cluster.primary.id
+///   location    = "us-east1"
+///   backup_plan = gcp_gkebackup_backup_plan.basic.id
+///   cluster     = "projects/my-project-name/locations/us-east1/clusters/rename-ns-cluster"
 ///   restore_config = {
 ///     selected_namespaces = {
 ///       namespaces = ["ns1"]
@@ -2110,27 +1561,27 @@ import 'restore_plan_state.dart';
 ///       no_group_kinds = true
 ///     }
 ///     transformation_rules = [{
-///       "description" = "rename namespace from ns1 to ns2"
-///       "resourceFilter" = {
-///         "groupKinds" = [{
-///           "resourceKind" = "Namespace"
+///       description = "rename namespace from ns1 to ns2"
+///       resource_filter = {
+///         group_kinds = [{
+///           resource_kind = "Namespace"
 ///         }]
-///         "jsonPath" = ".metadata[?(@.name == 'ns1')]"
+///         json_path = ".metadata[?(@.name == 'ns1')]"
 ///       }
-///       "fieldActions" = [{
-///         "op"    = "REPLACE"
-///         "path"  = "/metadata/name"
-///         "value" = "ns2"
+///       field_actions = [{
+///         op    = "REPLACE"
+///         path  = "/metadata/name"
+///         value = "ns2"
 ///       }]
 ///       }, {
-///       "description" = "move all resources from ns1 to ns2"
-///       "resourceFilter" = {
-///         "namespaces" = ["ns1"]
+///       description = "move all resources from ns1 to ns2"
+///       resource_filter = {
+///         namespaces = ["ns1"]
 ///       }
-///       "fieldActions" = [{
-///         "op"    = "REPLACE"
-///         "path"  = "/metadata/namespace"
-///         "value" = "ns2"
+///       field_actions = [{
+///         op    = "REPLACE"
+///         path  = "/metadata/namespace"
+///         value = "ns2"
 ///       }]
 ///     }]
 ///   }
@@ -2142,11 +1593,6 @@ import 'restore_plan_state.dart';
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.container.Cluster;
-/// import com.pulumi.gcp.container.ClusterArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
 /// import com.pulumi.gcp.gkebackup.BackupPlan;
 /// import com.pulumi.gcp.gkebackup.BackupPlanArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
@@ -2172,27 +1618,10 @@ import 'restore_plan_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var primary = new Cluster("primary", ClusterArgs.builder()
-///             .name("rename-ns-cluster")
-///             .location("us-central1")
-///             .initialNodeCount(1)
-///             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
-///                 .workloadPool("my-project-name.svc.id.goog")
-///                 .build())
-///             .addonsConfig(ClusterAddonsConfigArgs.builder()
-///                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
-///                     .enabled(true)
-///                     .build())
-///                 .build())
-///             .deletionProtection(true)
-///             .network("default")
-///             .subnetwork("default")
-///             .build());
-///
 ///         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
 ///             .name("rename-ns")
-///             .cluster(primary.id())
-///             .location("us-central1")
+///             .cluster("projects/my-project-name/locations/us-east1/clusters/rename-ns-cluster")
+///             .location("us-east1")
 ///             .backupConfig(BackupPlanBackupConfigArgs.builder()
 ///                 .includeVolumeData(true)
 ///                 .includeSecrets(true)
@@ -2202,9 +1631,9 @@ import 'restore_plan_state.dart';
 ///
 ///         var renameNs = new RestorePlan("renameNs", RestorePlanArgs.builder()
 ///             .name("rename-ns-rp")
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .backupPlan(basic.id())
-///             .cluster(primary.id())
+///             .cluster("projects/my-project-name/locations/us-east1/clusters/rename-ns-cluster")
 ///             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
 ///                 .selectedNamespaces(RestorePlanRestoreConfigSelectedNamespacesArgs.builder()
 ///                     .namespaces("ns1")
@@ -2248,26 +1677,12 @@ import 'restore_plan_state.dart';
 /// ```
 /// ```yaml
 /// resources:
-///   primary:
-///     type: gcp:container:Cluster
-///     properties:
-///       name: rename-ns-cluster
-///       location: us-central1
-///       initialNodeCount: 1
-///       workloadIdentityConfig:
-///         workloadPool: my-project-name.svc.id.goog
-///       addonsConfig:
-///         gkeBackupAgentConfig:
-///           enabled: true
-///       deletionProtection: true
-///       network: default
-///       subnetwork: default
 ///   basic:
 ///     type: gcp:gkebackup:BackupPlan
 ///     properties:
 ///       name: rename-ns
-///       cluster: ${primary.id}
-///       location: us-central1
+///       cluster: projects/my-project-name/locations/us-east1/clusters/rename-ns-cluster
+///       location: us-east1
 ///       backupConfig:
 ///         includeVolumeData: true
 ///         includeSecrets: true
@@ -2277,9 +1692,9 @@ import 'restore_plan_state.dart';
 ///     name: rename_ns
 ///     properties:
 ///       name: rename-ns-rp
-///       location: us-central1
+///       location: us-east1
 ///       backupPlan: ${basic.id}
-///       cluster: ${primary.id}
+///       cluster: projects/my-project-name/locations/us-east1/clusters/rename-ns-cluster
 ///       restoreConfig:
 ///         selectedNamespaces:
 ///           namespaces:
@@ -2308,6 +1723,7 @@ import 'restore_plan_state.dart';
 ///                 value: ns2
 /// ```
 ///
+///
 /// ### Gkebackup Restoreplan Second Transformation
 ///
 ///
@@ -2316,26 +1732,10 @@ import 'restore_plan_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const primary = new gcp.container.Cluster("primary", {
-///     name: "transform-rule-cluster",
-///     location: "us-central1",
-///     initialNodeCount: 1,
-///     workloadIdentityConfig: {
-///         workloadPool: "my-project-name.svc.id.goog",
-///     },
-///     addonsConfig: {
-///         gkeBackupAgentConfig: {
-///             enabled: true,
-///         },
-///     },
-///     deletionProtection: true,
-///     network: "default",
-///     subnetwork: "default",
-/// });
 /// const basic = new gcp.gkebackup.BackupPlan("basic", {
 ///     name: "transform-rule",
-///     cluster: primary.id,
-///     location: "us-central1",
+///     cluster: "projects/my-project-name/locations/us-east1/clusters/transform-rule-cluster",
+///     location: "us-east1",
 ///     backupConfig: {
 ///         includeVolumeData: true,
 ///         includeSecrets: true,
@@ -2348,9 +1748,9 @@ import 'restore_plan_state.dart';
 ///     labels: {
 ///         app: "nginx",
 ///     },
-///     location: "us-central1",
+///     location: "us-east1",
 ///     backupPlan: basic.id,
-///     cluster: primary.id,
+///     cluster: "projects/my-project-name/locations/us-east1/clusters/transform-rule-cluster",
 ///     restoreConfig: {
 ///         excludedNamespaces: {
 ///             namespaces: ["my-ns"],
@@ -2386,25 +1786,10 @@ import 'restore_plan_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// primary = gcp.container.Cluster("primary",
-///     name="transform-rule-cluster",
-///     location="us-central1",
-///     initial_node_count=1,
-///     workload_identity_config={
-///         "workload_pool": "my-project-name.svc.id.goog",
-///     },
-///     addons_config={
-///         "gke_backup_agent_config": {
-///             "enabled": True,
-///         },
-///     },
-///     deletion_protection=True,
-///     network="default",
-///     subnetwork="default")
 /// basic = gcp.gkebackup.BackupPlan("basic",
 ///     name="transform-rule",
-///     cluster=primary.id,
-///     location="us-central1",
+///     cluster="projects/my-project-name/locations/us-east1/clusters/transform-rule-cluster",
+///     location="us-east1",
 ///     backup_config={
 ///         "include_volume_data": True,
 ///         "include_secrets": True,
@@ -2416,9 +1801,9 @@ import 'restore_plan_state.dart';
 ///     labels={
 ///         "app": "nginx",
 ///     },
-///     location="us-central1",
+///     location="us-east1",
 ///     backup_plan=basic.id,
-///     cluster=primary.id,
+///     cluster="projects/my-project-name/locations/us-east1/clusters/transform-rule-cluster",
 ///     restore_config={
 ///         "excluded_namespaces": {
 ///             "namespaces": ["my-ns"],
@@ -2457,32 +1842,11 @@ import 'restore_plan_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var primary = new Gcp.Container.Cluster("primary", new()
-///     {
-///         Name = "transform-rule-cluster",
-///         Location = "us-central1",
-///         InitialNodeCount = 1,
-///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
-///         {
-///             WorkloadPool = "my-project-name.svc.id.goog",
-///         },
-///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
-///         {
-///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
-///             {
-///                 Enabled = true,
-///             },
-///         },
-///         DeletionProtection = true,
-///         Network = "default",
-///         Subnetwork = "default",
-///     });
-///
 ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
 ///     {
 ///         Name = "transform-rule",
-///         Cluster = primary.Id,
-///         Location = "us-central1",
+///         Cluster = "projects/my-project-name/locations/us-east1/clusters/transform-rule-cluster",
+///         Location = "us-east1",
 ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
 ///         {
 ///             IncludeVolumeData = true,
@@ -2499,9 +1863,9 @@ import 'restore_plan_state.dart';
 ///         {
 ///             { "app", "nginx" },
 ///         },
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         BackupPlan = basic.Id,
-///         Cluster = primary.Id,
+///         Cluster = "projects/my-project-name/locations/us-east1/clusters/transform-rule-cluster",
 ///         RestoreConfig = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigArgs
 ///         {
 ///             ExcludedNamespaces = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigExcludedNamespacesArgs
@@ -2562,36 +1926,16 @@ import 'restore_plan_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-/// 			Name:             pulumi.String("transform-rule-cluster"),
-/// 			Location:         pulumi.String("us-central1"),
-/// 			InitialNodeCount: pulumi.Int(1),
-/// 			WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
-/// 				WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
-/// 			},
-/// 			AddonsConfig: &container.ClusterAddonsConfigArgs{
-/// 				GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
-/// 					Enabled: pulumi.Bool(true),
-/// 				},
-/// 			},
-/// 			DeletionProtection: pulumi.Bool(true),
-/// 			Network:            pulumi.String("default"),
-/// 			Subnetwork:         pulumi.String("default"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
 /// 		basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("transform-rule"),
-/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-/// 			Location: pulumi.String("us-central1"),
+/// 			Cluster:  pulumi.String("projects/my-project-name/locations/us-east1/clusters/transform-rule-cluster"),
+/// 			Location: pulumi.String("us-east1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
 /// 				IncludeSecrets:    pulumi.Bool(true),
@@ -2607,9 +1951,9 @@ import 'restore_plan_state.dart';
 /// 			Labels: pulumi.StringMap{
 /// 				"app": pulumi.String("nginx"),
 /// 			},
-/// 			Location:   pulumi.String("us-central1"),
-/// 			BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
-/// 			Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
+/// 			Location:   pulumi.String("us-east1"),
+/// 			BackupPlan: basic.ID(),
+/// 			Cluster:    pulumi.String("projects/my-project-name/locations/us-east1/clusters/transform-rule-cluster"),
 /// 			RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 /// 				ExcludedNamespaces: &gkebackup.RestorePlanRestoreConfigExcludedNamespacesArgs{
 /// 					Namespaces: pulumi.StringArray{
@@ -2658,7 +2002,7 @@ import 'restore_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2666,41 +2010,31 @@ import 'restore_plan_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_container_cluster" "primary" {
-///   name               = "transform-rule-cluster"
-///   location           = "us-central1"
-///   initial_node_count = 1
-///   workload_identity_config = {
-///     workload_pool = "my-project-name.svc.id.goog"
+/// resource "gcp_gkebackup_backup_plan" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   addons_config = {
-///     gke_backup_agent_config = {
-///       enabled = true
-///     }
-///   }
-///   deletion_protection = true
-///   network             = "default"
-///   subnetwork          = "default"
-/// }
-/// resource "gcp_gkebackup_backupplan" "basic" {
 ///   name     = "transform-rule"
-///   cluster  = gcp_container_cluster.primary.id
-///   location = "us-central1"
+///   cluster  = "projects/my-project-name/locations/us-east1/clusters/transform-rule-cluster"
+///   location = "us-east1"
 ///   backup_config = {
 ///     include_volume_data = true
 ///     include_secrets     = true
 ///     all_namespaces      = true
 ///   }
 /// }
-/// resource "gcp_gkebackup_restoreplan" "transform_rule" {
+/// resource "gcp_gkebackup_restore_plan" "transform_rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "transform-rule-rp"
 ///   description = "copy nginx env variables"
 ///   labels = {
 ///     "app" = "nginx"
 ///   }
-///   location    = "us-central1"
-///   backup_plan = gcp_gkebackup_backupplan.basic.id
-///   cluster     = gcp_container_cluster.primary.id
+///   location    = "us-east1"
+///   backup_plan = gcp_gkebackup_backup_plan.basic.id
+///   cluster     = "projects/my-project-name/locations/us-east1/clusters/transform-rule-cluster"
 ///   restore_config = {
 ///     excluded_namespaces = {
 ///       namespaces = ["my-ns"]
@@ -2709,24 +2043,24 @@ import 'restore_plan_state.dart';
 ///     volume_data_restore_policy       = "RESTORE_VOLUME_DATA_FROM_BACKUP"
 ///     cluster_resource_restore_scope = {
 ///       excluded_group_kinds = [{
-///         "resourceGroup" = "apiextension.k8s.io"
-///         "resourceKind"  = "CustomResourceDefinition"
+///         resource_group = "apiextension.k8s.io"
+///         resource_kind  = "CustomResourceDefinition"
 ///       }]
 ///     }
 ///     cluster_resource_conflict_policy = "USE_EXISTING_VERSION"
 ///     transformation_rules = [{
-///       "description" = "Copy environment variables from the nginx container to the install init container."
-///       "resourceFilter" = {
-///         "groupKinds" = [{
-///           "resourceKind"  = "Pod"
-///           "resourceGroup" = ""
+///       description = "Copy environment variables from the nginx container to the install init container."
+///       resource_filter = {
+///         group_kinds = [{
+///           resource_kind  = "Pod"
+///           resource_group = ""
 ///         }]
-///         "jsonPath" = ".metadata[?(@.name == 'nginx')]"
+///         json_path = ".metadata[?(@.name == 'nginx')]"
 ///       }
-///       "fieldActions" = [{
-///         "op"       = "COPY"
-///         "path"     = "/spec/initContainers/0/env"
-///         "fromPath" = "/spec/containers/0/env"
+///       field_actions = [{
+///         op        = "COPY"
+///         path      = "/spec/initContainers/0/env"
+///         from_path = "/spec/containers/0/env"
 ///       }]
 ///     }]
 ///   }
@@ -2738,11 +2072,6 @@ import 'restore_plan_state.dart';
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.container.Cluster;
-/// import com.pulumi.gcp.container.ClusterArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
 /// import com.pulumi.gcp.gkebackup.BackupPlan;
 /// import com.pulumi.gcp.gkebackup.BackupPlanArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
@@ -2769,27 +2098,10 @@ import 'restore_plan_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var primary = new Cluster("primary", ClusterArgs.builder()
-///             .name("transform-rule-cluster")
-///             .location("us-central1")
-///             .initialNodeCount(1)
-///             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
-///                 .workloadPool("my-project-name.svc.id.goog")
-///                 .build())
-///             .addonsConfig(ClusterAddonsConfigArgs.builder()
-///                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
-///                     .enabled(true)
-///                     .build())
-///                 .build())
-///             .deletionProtection(true)
-///             .network("default")
-///             .subnetwork("default")
-///             .build());
-///
 ///         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
 ///             .name("transform-rule")
-///             .cluster(primary.id())
-///             .location("us-central1")
+///             .cluster("projects/my-project-name/locations/us-east1/clusters/transform-rule-cluster")
+///             .location("us-east1")
 ///             .backupConfig(BackupPlanBackupConfigArgs.builder()
 ///                 .includeVolumeData(true)
 ///                 .includeSecrets(true)
@@ -2801,9 +2113,9 @@ import 'restore_plan_state.dart';
 ///             .name("transform-rule-rp")
 ///             .description("copy nginx env variables")
 ///             .labels(Map.of("app", "nginx"))
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .backupPlan(basic.id())
-///             .cluster(primary.id())
+///             .cluster("projects/my-project-name/locations/us-east1/clusters/transform-rule-cluster")
 ///             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
 ///                 .excludedNamespaces(RestorePlanRestoreConfigExcludedNamespacesArgs.builder()
 ///                     .namespaces("my-ns")
@@ -2840,26 +2152,12 @@ import 'restore_plan_state.dart';
 /// ```
 /// ```yaml
 /// resources:
-///   primary:
-///     type: gcp:container:Cluster
-///     properties:
-///       name: transform-rule-cluster
-///       location: us-central1
-///       initialNodeCount: 1
-///       workloadIdentityConfig:
-///         workloadPool: my-project-name.svc.id.goog
-///       addonsConfig:
-///         gkeBackupAgentConfig:
-///           enabled: true
-///       deletionProtection: true
-///       network: default
-///       subnetwork: default
 ///   basic:
 ///     type: gcp:gkebackup:BackupPlan
 ///     properties:
 ///       name: transform-rule
-///       cluster: ${primary.id}
-///       location: us-central1
+///       cluster: projects/my-project-name/locations/us-east1/clusters/transform-rule-cluster
+///       location: us-east1
 ///       backupConfig:
 ///         includeVolumeData: true
 ///         includeSecrets: true
@@ -2872,9 +2170,9 @@ import 'restore_plan_state.dart';
 ///       description: copy nginx env variables
 ///       labels:
 ///         app: nginx
-///       location: us-central1
+///       location: us-east1
 ///       backupPlan: ${basic.id}
-///       cluster: ${primary.id}
+///       cluster: projects/my-project-name/locations/us-east1/clusters/transform-rule-cluster
 ///       restoreConfig:
 ///         excludedNamespaces:
 ///           namespaces:
@@ -2899,6 +2197,7 @@ import 'restore_plan_state.dart';
 ///                 fromPath: /spec/containers/0/env
 /// ```
 ///
+///
 /// ### Gkebackup Restoreplan Gitops Mode
 ///
 ///
@@ -2907,26 +2206,10 @@ import 'restore_plan_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const primary = new gcp.container.Cluster("primary", {
-///     name: "gitops-mode-cluster",
-///     location: "us-central1",
-///     initialNodeCount: 1,
-///     workloadIdentityConfig: {
-///         workloadPool: "my-project-name.svc.id.goog",
-///     },
-///     addonsConfig: {
-///         gkeBackupAgentConfig: {
-///             enabled: true,
-///         },
-///     },
-///     deletionProtection: true,
-///     network: "default",
-///     subnetwork: "default",
-/// });
 /// const basic = new gcp.gkebackup.BackupPlan("basic", {
 ///     name: "gitops-mode",
-///     cluster: primary.id,
-///     location: "us-central1",
+///     cluster: "projects/my-project-name/locations/us-east1/clusters/gitops-mode-cluster",
+///     location: "us-east1",
 ///     backupConfig: {
 ///         includeVolumeData: true,
 ///         includeSecrets: true,
@@ -2935,9 +2218,9 @@ import 'restore_plan_state.dart';
 /// });
 /// const gitopsMode = new gcp.gkebackup.RestorePlan("gitops_mode", {
 ///     name: "gitops-mode",
-///     location: "us-central1",
+///     location: "us-east1",
 ///     backupPlan: basic.id,
-///     cluster: primary.id,
+///     cluster: "projects/my-project-name/locations/us-east1/clusters/gitops-mode-cluster",
 ///     restoreConfig: {
 ///         allNamespaces: true,
 ///         namespacedResourceRestoreMode: "MERGE_SKIP_ON_CONFLICT",
@@ -2953,25 +2236,10 @@ import 'restore_plan_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// primary = gcp.container.Cluster("primary",
-///     name="gitops-mode-cluster",
-///     location="us-central1",
-///     initial_node_count=1,
-///     workload_identity_config={
-///         "workload_pool": "my-project-name.svc.id.goog",
-///     },
-///     addons_config={
-///         "gke_backup_agent_config": {
-///             "enabled": True,
-///         },
-///     },
-///     deletion_protection=True,
-///     network="default",
-///     subnetwork="default")
 /// basic = gcp.gkebackup.BackupPlan("basic",
 ///     name="gitops-mode",
-///     cluster=primary.id,
-///     location="us-central1",
+///     cluster="projects/my-project-name/locations/us-east1/clusters/gitops-mode-cluster",
+///     location="us-east1",
 ///     backup_config={
 ///         "include_volume_data": True,
 ///         "include_secrets": True,
@@ -2979,9 +2247,9 @@ import 'restore_plan_state.dart';
 ///     })
 /// gitops_mode = gcp.gkebackup.RestorePlan("gitops_mode",
 ///     name="gitops-mode",
-///     location="us-central1",
+///     location="us-east1",
 ///     backup_plan=basic.id,
-///     cluster=primary.id,
+///     cluster="projects/my-project-name/locations/us-east1/clusters/gitops-mode-cluster",
 ///     restore_config={
 ///         "all_namespaces": True,
 ///         "namespaced_resource_restore_mode": "MERGE_SKIP_ON_CONFLICT",
@@ -3000,32 +2268,11 @@ import 'restore_plan_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var primary = new Gcp.Container.Cluster("primary", new()
-///     {
-///         Name = "gitops-mode-cluster",
-///         Location = "us-central1",
-///         InitialNodeCount = 1,
-///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
-///         {
-///             WorkloadPool = "my-project-name.svc.id.goog",
-///         },
-///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
-///         {
-///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
-///             {
-///                 Enabled = true,
-///             },
-///         },
-///         DeletionProtection = true,
-///         Network = "default",
-///         Subnetwork = "default",
-///     });
-///
 ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
 ///     {
 ///         Name = "gitops-mode",
-///         Cluster = primary.Id,
-///         Location = "us-central1",
+///         Cluster = "projects/my-project-name/locations/us-east1/clusters/gitops-mode-cluster",
+///         Location = "us-east1",
 ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
 ///         {
 ///             IncludeVolumeData = true,
@@ -3037,9 +2284,9 @@ import 'restore_plan_state.dart';
 ///     var gitopsMode = new Gcp.GkeBackup.RestorePlan("gitops_mode", new()
 ///     {
 ///         Name = "gitops-mode",
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         BackupPlan = basic.Id,
-///         Cluster = primary.Id,
+///         Cluster = "projects/my-project-name/locations/us-east1/clusters/gitops-mode-cluster",
 ///         RestoreConfig = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigArgs
 ///         {
 ///             AllNamespaces = true,
@@ -3059,36 +2306,16 @@ import 'restore_plan_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-/// 			Name:             pulumi.String("gitops-mode-cluster"),
-/// 			Location:         pulumi.String("us-central1"),
-/// 			InitialNodeCount: pulumi.Int(1),
-/// 			WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
-/// 				WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
-/// 			},
-/// 			AddonsConfig: &container.ClusterAddonsConfigArgs{
-/// 				GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
-/// 					Enabled: pulumi.Bool(true),
-/// 				},
-/// 			},
-/// 			DeletionProtection: pulumi.Bool(true),
-/// 			Network:            pulumi.String("default"),
-/// 			Subnetwork:         pulumi.String("default"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
 /// 		basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("gitops-mode"),
-/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-/// 			Location: pulumi.String("us-central1"),
+/// 			Cluster:  pulumi.String("projects/my-project-name/locations/us-east1/clusters/gitops-mode-cluster"),
+/// 			Location: pulumi.String("us-east1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
 /// 				IncludeSecrets:    pulumi.Bool(true),
@@ -3100,9 +2327,9 @@ import 'restore_plan_state.dart';
 /// 		}
 /// 		_, err = gkebackup.NewRestorePlan(ctx, "gitops_mode", &gkebackup.RestorePlanArgs{
 /// 			Name:       pulumi.String("gitops-mode"),
-/// 			Location:   pulumi.String("us-central1"),
-/// 			BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
-/// 			Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
+/// 			Location:   pulumi.String("us-east1"),
+/// 			BackupPlan: basic.ID(),
+/// 			Cluster:    pulumi.String("projects/my-project-name/locations/us-east1/clusters/gitops-mode-cluster"),
 /// 			RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 /// 				AllNamespaces:                 pulumi.Bool(true),
 /// 				NamespacedResourceRestoreMode: pulumi.String("MERGE_SKIP_ON_CONFLICT"),
@@ -3121,7 +2348,7 @@ import 'restore_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3129,37 +2356,27 @@ import 'restore_plan_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_container_cluster" "primary" {
-///   name               = "gitops-mode-cluster"
-///   location           = "us-central1"
-///   initial_node_count = 1
-///   workload_identity_config = {
-///     workload_pool = "my-project-name.svc.id.goog"
+/// resource "gcp_gkebackup_backup_plan" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   addons_config = {
-///     gke_backup_agent_config = {
-///       enabled = true
-///     }
-///   }
-///   deletion_protection = true
-///   network             = "default"
-///   subnetwork          = "default"
-/// }
-/// resource "gcp_gkebackup_backupplan" "basic" {
 ///   name     = "gitops-mode"
-///   cluster  = gcp_container_cluster.primary.id
-///   location = "us-central1"
+///   cluster  = "projects/my-project-name/locations/us-east1/clusters/gitops-mode-cluster"
+///   location = "us-east1"
 ///   backup_config = {
 ///     include_volume_data = true
 ///     include_secrets     = true
 ///     all_namespaces      = true
 ///   }
 /// }
-/// resource "gcp_gkebackup_restoreplan" "gitops_mode" {
+/// resource "gcp_gkebackup_restore_plan" "gitops_mode" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "gitops-mode"
-///   location    = "us-central1"
-///   backup_plan = gcp_gkebackup_backupplan.basic.id
-///   cluster     = gcp_container_cluster.primary.id
+///   location    = "us-east1"
+///   backup_plan = gcp_gkebackup_backup_plan.basic.id
+///   cluster     = "projects/my-project-name/locations/us-east1/clusters/gitops-mode-cluster"
 ///   restore_config = {
 ///     all_namespaces                   = true
 ///     namespaced_resource_restore_mode = "MERGE_SKIP_ON_CONFLICT"
@@ -3177,11 +2394,6 @@ import 'restore_plan_state.dart';
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.container.Cluster;
-/// import com.pulumi.gcp.container.ClusterArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
 /// import com.pulumi.gcp.gkebackup.BackupPlan;
 /// import com.pulumi.gcp.gkebackup.BackupPlanArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
@@ -3202,27 +2414,10 @@ import 'restore_plan_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var primary = new Cluster("primary", ClusterArgs.builder()
-///             .name("gitops-mode-cluster")
-///             .location("us-central1")
-///             .initialNodeCount(1)
-///             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
-///                 .workloadPool("my-project-name.svc.id.goog")
-///                 .build())
-///             .addonsConfig(ClusterAddonsConfigArgs.builder()
-///                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
-///                     .enabled(true)
-///                     .build())
-///                 .build())
-///             .deletionProtection(true)
-///             .network("default")
-///             .subnetwork("default")
-///             .build());
-///
 ///         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
 ///             .name("gitops-mode")
-///             .cluster(primary.id())
-///             .location("us-central1")
+///             .cluster("projects/my-project-name/locations/us-east1/clusters/gitops-mode-cluster")
+///             .location("us-east1")
 ///             .backupConfig(BackupPlanBackupConfigArgs.builder()
 ///                 .includeVolumeData(true)
 ///                 .includeSecrets(true)
@@ -3232,9 +2427,9 @@ import 'restore_plan_state.dart';
 ///
 ///         var gitopsMode = new RestorePlan("gitopsMode", RestorePlanArgs.builder()
 ///             .name("gitops-mode")
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .backupPlan(basic.id())
-///             .cluster(primary.id())
+///             .cluster("projects/my-project-name/locations/us-east1/clusters/gitops-mode-cluster")
 ///             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
 ///                 .allNamespaces(true)
 ///                 .namespacedResourceRestoreMode("MERGE_SKIP_ON_CONFLICT")
@@ -3251,26 +2446,12 @@ import 'restore_plan_state.dart';
 /// ```
 /// ```yaml
 /// resources:
-///   primary:
-///     type: gcp:container:Cluster
-///     properties:
-///       name: gitops-mode-cluster
-///       location: us-central1
-///       initialNodeCount: 1
-///       workloadIdentityConfig:
-///         workloadPool: my-project-name.svc.id.goog
-///       addonsConfig:
-///         gkeBackupAgentConfig:
-///           enabled: true
-///       deletionProtection: true
-///       network: default
-///       subnetwork: default
 ///   basic:
 ///     type: gcp:gkebackup:BackupPlan
 ///     properties:
 ///       name: gitops-mode
-///       cluster: ${primary.id}
-///       location: us-central1
+///       cluster: projects/my-project-name/locations/us-east1/clusters/gitops-mode-cluster
+///       location: us-east1
 ///       backupConfig:
 ///         includeVolumeData: true
 ///         includeSecrets: true
@@ -3280,9 +2461,9 @@ import 'restore_plan_state.dart';
 ///     name: gitops_mode
 ///     properties:
 ///       name: gitops-mode
-///       location: us-central1
+///       location: us-east1
 ///       backupPlan: ${basic.id}
-///       cluster: ${primary.id}
+///       cluster: projects/my-project-name/locations/us-east1/clusters/gitops-mode-cluster
 ///       restoreConfig:
 ///         allNamespaces: true
 ///         namespacedResourceRestoreMode: MERGE_SKIP_ON_CONFLICT
@@ -3292,6 +2473,7 @@ import 'restore_plan_state.dart';
 ///         clusterResourceConflictPolicy: USE_EXISTING_VERSION
 /// ```
 ///
+///
 /// ### Gkebackup Restoreplan Restore Order
 ///
 ///
@@ -3300,26 +2482,10 @@ import 'restore_plan_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const primary = new gcp.container.Cluster("primary", {
-///     name: "restore-order-cluster",
-///     location: "us-central1",
-///     initialNodeCount: 1,
-///     workloadIdentityConfig: {
-///         workloadPool: "my-project-name.svc.id.goog",
-///     },
-///     addonsConfig: {
-///         gkeBackupAgentConfig: {
-///             enabled: true,
-///         },
-///     },
-///     deletionProtection: true,
-///     network: "default",
-///     subnetwork: "default",
-/// });
 /// const basic = new gcp.gkebackup.BackupPlan("basic", {
 ///     name: "restore-order",
-///     cluster: primary.id,
-///     location: "us-central1",
+///     cluster: "projects/my-project-name/locations/us-east1/clusters/restore-order-cluster",
+///     location: "us-east1",
 ///     backupConfig: {
 ///         includeVolumeData: true,
 ///         includeSecrets: true,
@@ -3328,9 +2494,9 @@ import 'restore_plan_state.dart';
 /// });
 /// const restoreOrder = new gcp.gkebackup.RestorePlan("restore_order", {
 ///     name: "restore-order",
-///     location: "us-central1",
+///     location: "us-east1",
 ///     backupPlan: basic.id,
-///     cluster: primary.id,
+///     cluster: "projects/my-project-name/locations/us-east1/clusters/restore-order-cluster",
 ///     restoreConfig: {
 ///         allNamespaces: true,
 ///         namespacedResourceRestoreMode: "FAIL_ON_CONFLICT",
@@ -3370,25 +2536,10 @@ import 'restore_plan_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// primary = gcp.container.Cluster("primary",
-///     name="restore-order-cluster",
-///     location="us-central1",
-///     initial_node_count=1,
-///     workload_identity_config={
-///         "workload_pool": "my-project-name.svc.id.goog",
-///     },
-///     addons_config={
-///         "gke_backup_agent_config": {
-///             "enabled": True,
-///         },
-///     },
-///     deletion_protection=True,
-///     network="default",
-///     subnetwork="default")
 /// basic = gcp.gkebackup.BackupPlan("basic",
 ///     name="restore-order",
-///     cluster=primary.id,
-///     location="us-central1",
+///     cluster="projects/my-project-name/locations/us-east1/clusters/restore-order-cluster",
+///     location="us-east1",
 ///     backup_config={
 ///         "include_volume_data": True,
 ///         "include_secrets": True,
@@ -3396,9 +2547,9 @@ import 'restore_plan_state.dart';
 ///     })
 /// restore_order = gcp.gkebackup.RestorePlan("restore_order",
 ///     name="restore-order",
-///     location="us-central1",
+///     location="us-east1",
 ///     backup_plan=basic.id,
-///     cluster=primary.id,
+///     cluster="projects/my-project-name/locations/us-east1/clusters/restore-order-cluster",
 ///     restore_config={
 ///         "all_namespaces": True,
 ///         "namespaced_resource_restore_mode": "FAIL_ON_CONFLICT",
@@ -3441,32 +2592,11 @@ import 'restore_plan_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var primary = new Gcp.Container.Cluster("primary", new()
-///     {
-///         Name = "restore-order-cluster",
-///         Location = "us-central1",
-///         InitialNodeCount = 1,
-///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
-///         {
-///             WorkloadPool = "my-project-name.svc.id.goog",
-///         },
-///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
-///         {
-///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
-///             {
-///                 Enabled = true,
-///             },
-///         },
-///         DeletionProtection = true,
-///         Network = "default",
-///         Subnetwork = "default",
-///     });
-///
 ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
 ///     {
 ///         Name = "restore-order",
-///         Cluster = primary.Id,
-///         Location = "us-central1",
+///         Cluster = "projects/my-project-name/locations/us-east1/clusters/restore-order-cluster",
+///         Location = "us-east1",
 ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
 ///         {
 ///             IncludeVolumeData = true,
@@ -3478,9 +2608,9 @@ import 'restore_plan_state.dart';
 ///     var restoreOrder = new Gcp.GkeBackup.RestorePlan("restore_order", new()
 ///     {
 ///         Name = "restore-order",
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         BackupPlan = basic.Id,
-///         Cluster = primary.Id,
+///         Cluster = "projects/my-project-name/locations/us-east1/clusters/restore-order-cluster",
 ///         RestoreConfig = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigArgs
 ///         {
 ///             AllNamespaces = true,
@@ -3532,36 +2662,16 @@ import 'restore_plan_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-/// 			Name:             pulumi.String("restore-order-cluster"),
-/// 			Location:         pulumi.String("us-central1"),
-/// 			InitialNodeCount: pulumi.Int(1),
-/// 			WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
-/// 				WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
-/// 			},
-/// 			AddonsConfig: &container.ClusterAddonsConfigArgs{
-/// 				GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
-/// 					Enabled: pulumi.Bool(true),
-/// 				},
-/// 			},
-/// 			DeletionProtection: pulumi.Bool(true),
-/// 			Network:            pulumi.String("default"),
-/// 			Subnetwork:         pulumi.String("default"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
 /// 		basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("restore-order"),
-/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-/// 			Location: pulumi.String("us-central1"),
+/// 			Cluster:  pulumi.String("projects/my-project-name/locations/us-east1/clusters/restore-order-cluster"),
+/// 			Location: pulumi.String("us-east1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
 /// 				IncludeSecrets:    pulumi.Bool(true),
@@ -3573,9 +2683,9 @@ import 'restore_plan_state.dart';
 /// 		}
 /// 		_, err = gkebackup.NewRestorePlan(ctx, "restore_order", &gkebackup.RestorePlanArgs{
 /// 			Name:       pulumi.String("restore-order"),
-/// 			Location:   pulumi.String("us-central1"),
-/// 			BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
-/// 			Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
+/// 			Location:   pulumi.String("us-east1"),
+/// 			BackupPlan: basic.ID(),
+/// 			Cluster:    pulumi.String("projects/my-project-name/locations/us-east1/clusters/restore-order-cluster"),
 /// 			RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 /// 				AllNamespaces:                 pulumi.Bool(true),
 /// 				NamespacedResourceRestoreMode: pulumi.String("FAIL_ON_CONFLICT"),
@@ -3618,7 +2728,7 @@ import 'restore_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3626,37 +2736,27 @@ import 'restore_plan_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_container_cluster" "primary" {
-///   name               = "restore-order-cluster"
-///   location           = "us-central1"
-///   initial_node_count = 1
-///   workload_identity_config = {
-///     workload_pool = "my-project-name.svc.id.goog"
+/// resource "gcp_gkebackup_backup_plan" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   addons_config = {
-///     gke_backup_agent_config = {
-///       enabled = true
-///     }
-///   }
-///   deletion_protection = true
-///   network             = "default"
-///   subnetwork          = "default"
-/// }
-/// resource "gcp_gkebackup_backupplan" "basic" {
 ///   name     = "restore-order"
-///   cluster  = gcp_container_cluster.primary.id
-///   location = "us-central1"
+///   cluster  = "projects/my-project-name/locations/us-east1/clusters/restore-order-cluster"
+///   location = "us-east1"
 ///   backup_config = {
 ///     include_volume_data = true
 ///     include_secrets     = true
 ///     all_namespaces      = true
 ///   }
 /// }
-/// resource "gcp_gkebackup_restoreplan" "restore_order" {
+/// resource "gcp_gkebackup_restore_plan" "restore_order" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "restore-order"
-///   location    = "us-central1"
-///   backup_plan = gcp_gkebackup_backupplan.basic.id
-///   cluster     = gcp_container_cluster.primary.id
+///   location    = "us-east1"
+///   backup_plan = gcp_gkebackup_backup_plan.basic.id
+///   cluster     = "projects/my-project-name/locations/us-east1/clusters/restore-order-cluster"
 ///   restore_config = {
 ///     all_namespaces                   = true
 ///     namespaced_resource_restore_mode = "FAIL_ON_CONFLICT"
@@ -3667,22 +2767,22 @@ import 'restore_plan_state.dart';
 ///     cluster_resource_conflict_policy = "USE_EXISTING_VERSION"
 ///     restore_order = {
 ///       group_kind_dependencies = [{
-///         "satisfying" = {
-///           "resourceGroup" = "stable.example.com"
-///           "resourceKind"  = "kindA"
+///         satisfying = {
+///           resource_group = "stable.example.com"
+///           resource_kind  = "kindA"
 ///         }
-///         "requiring" = {
-///           "resourceGroup" = "stable.example.com"
-///           "resourceKind"  = "kindB"
+///         requiring = {
+///           resource_group = "stable.example.com"
+///           resource_kind  = "kindB"
 ///         }
 ///         }, {
-///         "satisfying" = {
-///           "resourceGroup" = "stable.example.com"
-///           "resourceKind"  = "kindB"
+///         satisfying = {
+///           resource_group = "stable.example.com"
+///           resource_kind  = "kindB"
 ///         }
-///         "requiring" = {
-///           "resourceGroup" = "stable.example.com"
-///           "resourceKind"  = "kindC"
+///         requiring = {
+///           resource_group = "stable.example.com"
+///           resource_kind  = "kindC"
 ///         }
 ///       }]
 ///     }
@@ -3695,11 +2795,6 @@ import 'restore_plan_state.dart';
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.container.Cluster;
-/// import com.pulumi.gcp.container.ClusterArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
 /// import com.pulumi.gcp.gkebackup.BackupPlan;
 /// import com.pulumi.gcp.gkebackup.BackupPlanArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
@@ -3724,27 +2819,10 @@ import 'restore_plan_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var primary = new Cluster("primary", ClusterArgs.builder()
-///             .name("restore-order-cluster")
-///             .location("us-central1")
-///             .initialNodeCount(1)
-///             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
-///                 .workloadPool("my-project-name.svc.id.goog")
-///                 .build())
-///             .addonsConfig(ClusterAddonsConfigArgs.builder()
-///                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
-///                     .enabled(true)
-///                     .build())
-///                 .build())
-///             .deletionProtection(true)
-///             .network("default")
-///             .subnetwork("default")
-///             .build());
-///
 ///         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
 ///             .name("restore-order")
-///             .cluster(primary.id())
-///             .location("us-central1")
+///             .cluster("projects/my-project-name/locations/us-east1/clusters/restore-order-cluster")
+///             .location("us-east1")
 ///             .backupConfig(BackupPlanBackupConfigArgs.builder()
 ///                 .includeVolumeData(true)
 ///                 .includeSecrets(true)
@@ -3754,9 +2832,9 @@ import 'restore_plan_state.dart';
 ///
 ///         var restoreOrder = new RestorePlan("restoreOrder", RestorePlanArgs.builder()
 ///             .name("restore-order")
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .backupPlan(basic.id())
-///             .cluster(primary.id())
+///             .cluster("projects/my-project-name/locations/us-east1/clusters/restore-order-cluster")
 ///             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
 ///                 .allNamespaces(true)
 ///                 .namespacedResourceRestoreMode("FAIL_ON_CONFLICT")
@@ -3796,26 +2874,12 @@ import 'restore_plan_state.dart';
 /// ```
 /// ```yaml
 /// resources:
-///   primary:
-///     type: gcp:container:Cluster
-///     properties:
-///       name: restore-order-cluster
-///       location: us-central1
-///       initialNodeCount: 1
-///       workloadIdentityConfig:
-///         workloadPool: my-project-name.svc.id.goog
-///       addonsConfig:
-///         gkeBackupAgentConfig:
-///           enabled: true
-///       deletionProtection: true
-///       network: default
-///       subnetwork: default
 ///   basic:
 ///     type: gcp:gkebackup:BackupPlan
 ///     properties:
 ///       name: restore-order
-///       cluster: ${primary.id}
-///       location: us-central1
+///       cluster: projects/my-project-name/locations/us-east1/clusters/restore-order-cluster
+///       location: us-east1
 ///       backupConfig:
 ///         includeVolumeData: true
 ///         includeSecrets: true
@@ -3825,9 +2889,9 @@ import 'restore_plan_state.dart';
 ///     name: restore_order
 ///     properties:
 ///       name: restore-order
-///       location: us-central1
+///       location: us-east1
 ///       backupPlan: ${basic.id}
-///       cluster: ${primary.id}
+///       cluster: projects/my-project-name/locations/us-east1/clusters/restore-order-cluster
 ///       restoreConfig:
 ///         allNamespaces: true
 ///         namespacedResourceRestoreMode: FAIL_ON_CONFLICT
@@ -3851,6 +2915,7 @@ import 'restore_plan_state.dart';
 ///                 resourceKind: kindC
 /// ```
 ///
+///
 /// ### Gkebackup Restoreplan Volume Res
 ///
 ///
@@ -3859,26 +2924,10 @@ import 'restore_plan_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const primary = new gcp.container.Cluster("primary", {
-///     name: "volume-res-cluster",
-///     location: "us-central1",
-///     initialNodeCount: 1,
-///     workloadIdentityConfig: {
-///         workloadPool: "my-project-name.svc.id.goog",
-///     },
-///     addonsConfig: {
-///         gkeBackupAgentConfig: {
-///             enabled: true,
-///         },
-///     },
-///     deletionProtection: true,
-///     network: "default",
-///     subnetwork: "default",
-/// });
 /// const basic = new gcp.gkebackup.BackupPlan("basic", {
 ///     name: "volume-res",
-///     cluster: primary.id,
-///     location: "us-central1",
+///     cluster: "projects/my-project-name/locations/us-east1/clusters/volume-res-cluster",
+///     location: "us-east1",
 ///     backupConfig: {
 ///         includeVolumeData: true,
 ///         includeSecrets: true,
@@ -3887,9 +2936,9 @@ import 'restore_plan_state.dart';
 /// });
 /// const volumeRes = new gcp.gkebackup.RestorePlan("volume_res", {
 ///     name: "volume-res",
-///     location: "us-central1",
+///     location: "us-east1",
 ///     backupPlan: basic.id,
-///     cluster: primary.id,
+///     cluster: "projects/my-project-name/locations/us-east1/clusters/volume-res-cluster",
 ///     restoreConfig: {
 ///         allNamespaces: true,
 ///         namespacedResourceRestoreMode: "FAIL_ON_CONFLICT",
@@ -3909,25 +2958,10 @@ import 'restore_plan_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// primary = gcp.container.Cluster("primary",
-///     name="volume-res-cluster",
-///     location="us-central1",
-///     initial_node_count=1,
-///     workload_identity_config={
-///         "workload_pool": "my-project-name.svc.id.goog",
-///     },
-///     addons_config={
-///         "gke_backup_agent_config": {
-///             "enabled": True,
-///         },
-///     },
-///     deletion_protection=True,
-///     network="default",
-///     subnetwork="default")
 /// basic = gcp.gkebackup.BackupPlan("basic",
 ///     name="volume-res",
-///     cluster=primary.id,
-///     location="us-central1",
+///     cluster="projects/my-project-name/locations/us-east1/clusters/volume-res-cluster",
+///     location="us-east1",
 ///     backup_config={
 ///         "include_volume_data": True,
 ///         "include_secrets": True,
@@ -3935,9 +2969,9 @@ import 'restore_plan_state.dart';
 ///     })
 /// volume_res = gcp.gkebackup.RestorePlan("volume_res",
 ///     name="volume-res",
-///     location="us-central1",
+///     location="us-east1",
 ///     backup_plan=basic.id,
-///     cluster=primary.id,
+///     cluster="projects/my-project-name/locations/us-east1/clusters/volume-res-cluster",
 ///     restore_config={
 ///         "all_namespaces": True,
 ///         "namespaced_resource_restore_mode": "FAIL_ON_CONFLICT",
@@ -3960,32 +2994,11 @@ import 'restore_plan_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var primary = new Gcp.Container.Cluster("primary", new()
-///     {
-///         Name = "volume-res-cluster",
-///         Location = "us-central1",
-///         InitialNodeCount = 1,
-///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
-///         {
-///             WorkloadPool = "my-project-name.svc.id.goog",
-///         },
-///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
-///         {
-///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
-///             {
-///                 Enabled = true,
-///             },
-///         },
-///         DeletionProtection = true,
-///         Network = "default",
-///         Subnetwork = "default",
-///     });
-///
 ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
 ///     {
 ///         Name = "volume-res",
-///         Cluster = primary.Id,
-///         Location = "us-central1",
+///         Cluster = "projects/my-project-name/locations/us-east1/clusters/volume-res-cluster",
+///         Location = "us-east1",
 ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
 ///         {
 ///             IncludeVolumeData = true,
@@ -3997,9 +3010,9 @@ import 'restore_plan_state.dart';
 ///     var volumeRes = new Gcp.GkeBackup.RestorePlan("volume_res", new()
 ///     {
 ///         Name = "volume-res",
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         BackupPlan = basic.Id,
-///         Cluster = primary.Id,
+///         Cluster = "projects/my-project-name/locations/us-east1/clusters/volume-res-cluster",
 ///         RestoreConfig = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigArgs
 ///         {
 ///             AllNamespaces = true,
@@ -4027,36 +3040,16 @@ import 'restore_plan_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-/// 			Name:             pulumi.String("volume-res-cluster"),
-/// 			Location:         pulumi.String("us-central1"),
-/// 			InitialNodeCount: pulumi.Int(1),
-/// 			WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
-/// 				WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
-/// 			},
-/// 			AddonsConfig: &container.ClusterAddonsConfigArgs{
-/// 				GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
-/// 					Enabled: pulumi.Bool(true),
-/// 				},
-/// 			},
-/// 			DeletionProtection: pulumi.Bool(true),
-/// 			Network:            pulumi.String("default"),
-/// 			Subnetwork:         pulumi.String("default"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
 /// 		basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("volume-res"),
-/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-/// 			Location: pulumi.String("us-central1"),
+/// 			Cluster:  pulumi.String("projects/my-project-name/locations/us-east1/clusters/volume-res-cluster"),
+/// 			Location: pulumi.String("us-east1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
 /// 				IncludeSecrets:    pulumi.Bool(true),
@@ -4068,9 +3061,9 @@ import 'restore_plan_state.dart';
 /// 		}
 /// 		_, err = gkebackup.NewRestorePlan(ctx, "volume_res", &gkebackup.RestorePlanArgs{
 /// 			Name:       pulumi.String("volume-res"),
-/// 			Location:   pulumi.String("us-central1"),
-/// 			BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
-/// 			Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
+/// 			Location:   pulumi.String("us-east1"),
+/// 			BackupPlan: basic.ID(),
+/// 			Cluster:    pulumi.String("projects/my-project-name/locations/us-east1/clusters/volume-res-cluster"),
 /// 			RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 /// 				AllNamespaces:                 pulumi.Bool(true),
 /// 				NamespacedResourceRestoreMode: pulumi.String("FAIL_ON_CONFLICT"),
@@ -4095,7 +3088,7 @@ import 'restore_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4103,37 +3096,27 @@ import 'restore_plan_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_container_cluster" "primary" {
-///   name               = "volume-res-cluster"
-///   location           = "us-central1"
-///   initial_node_count = 1
-///   workload_identity_config = {
-///     workload_pool = "my-project-name.svc.id.goog"
+/// resource "gcp_gkebackup_backup_plan" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   addons_config = {
-///     gke_backup_agent_config = {
-///       enabled = true
-///     }
-///   }
-///   deletion_protection = true
-///   network             = "default"
-///   subnetwork          = "default"
-/// }
-/// resource "gcp_gkebackup_backupplan" "basic" {
 ///   name     = "volume-res"
-///   cluster  = gcp_container_cluster.primary.id
-///   location = "us-central1"
+///   cluster  = "projects/my-project-name/locations/us-east1/clusters/volume-res-cluster"
+///   location = "us-east1"
 ///   backup_config = {
 ///     include_volume_data = true
 ///     include_secrets     = true
 ///     all_namespaces      = true
 ///   }
 /// }
-/// resource "gcp_gkebackup_restoreplan" "volume_res" {
+/// resource "gcp_gkebackup_restore_plan" "volume_res" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "volume-res"
-///   location    = "us-central1"
-///   backup_plan = gcp_gkebackup_backupplan.basic.id
-///   cluster     = gcp_container_cluster.primary.id
+///   location    = "us-east1"
+///   backup_plan = gcp_gkebackup_backup_plan.basic.id
+///   cluster     = "projects/my-project-name/locations/us-east1/clusters/volume-res-cluster"
 ///   restore_config = {
 ///     all_namespaces                   = true
 ///     namespaced_resource_restore_mode = "FAIL_ON_CONFLICT"
@@ -4143,8 +3126,8 @@ import 'restore_plan_state.dart';
 ///     }
 ///     cluster_resource_conflict_policy = "USE_EXISTING_VERSION"
 ///     volume_data_restore_policy_bindings = [{
-///       "policy"     = "RESTORE_VOLUME_DATA_FROM_BACKUP"
-///       "volumeType" = "GCE_PERSISTENT_DISK"
+///       policy      = "RESTORE_VOLUME_DATA_FROM_BACKUP"
+///       volume_type = "GCE_PERSISTENT_DISK"
 ///     }]
 ///   }
 /// }
@@ -4155,11 +3138,6 @@ import 'restore_plan_state.dart';
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.container.Cluster;
-/// import com.pulumi.gcp.container.ClusterArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
-/// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
 /// import com.pulumi.gcp.gkebackup.BackupPlan;
 /// import com.pulumi.gcp.gkebackup.BackupPlanArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
@@ -4181,27 +3159,10 @@ import 'restore_plan_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var primary = new Cluster("primary", ClusterArgs.builder()
-///             .name("volume-res-cluster")
-///             .location("us-central1")
-///             .initialNodeCount(1)
-///             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
-///                 .workloadPool("my-project-name.svc.id.goog")
-///                 .build())
-///             .addonsConfig(ClusterAddonsConfigArgs.builder()
-///                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
-///                     .enabled(true)
-///                     .build())
-///                 .build())
-///             .deletionProtection(true)
-///             .network("default")
-///             .subnetwork("default")
-///             .build());
-///
 ///         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
 ///             .name("volume-res")
-///             .cluster(primary.id())
-///             .location("us-central1")
+///             .cluster("projects/my-project-name/locations/us-east1/clusters/volume-res-cluster")
+///             .location("us-east1")
 ///             .backupConfig(BackupPlanBackupConfigArgs.builder()
 ///                 .includeVolumeData(true)
 ///                 .includeSecrets(true)
@@ -4211,9 +3172,9 @@ import 'restore_plan_state.dart';
 ///
 ///         var volumeRes = new RestorePlan("volumeRes", RestorePlanArgs.builder()
 ///             .name("volume-res")
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .backupPlan(basic.id())
-///             .cluster(primary.id())
+///             .cluster("projects/my-project-name/locations/us-east1/clusters/volume-res-cluster")
 ///             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
 ///                 .allNamespaces(true)
 ///                 .namespacedResourceRestoreMode("FAIL_ON_CONFLICT")
@@ -4234,26 +3195,12 @@ import 'restore_plan_state.dart';
 /// ```
 /// ```yaml
 /// resources:
-///   primary:
-///     type: gcp:container:Cluster
-///     properties:
-///       name: volume-res-cluster
-///       location: us-central1
-///       initialNodeCount: 1
-///       workloadIdentityConfig:
-///         workloadPool: my-project-name.svc.id.goog
-///       addonsConfig:
-///         gkeBackupAgentConfig:
-///           enabled: true
-///       deletionProtection: true
-///       network: default
-///       subnetwork: default
 ///   basic:
 ///     type: gcp:gkebackup:BackupPlan
 ///     properties:
 ///       name: volume-res
-///       cluster: ${primary.id}
-///       location: us-central1
+///       cluster: projects/my-project-name/locations/us-east1/clusters/volume-res-cluster
+///       location: us-east1
 ///       backupConfig:
 ///         includeVolumeData: true
 ///         includeSecrets: true
@@ -4263,9 +3210,9 @@ import 'restore_plan_state.dart';
 ///     name: volume_res
 ///     properties:
 ///       name: volume-res
-///       location: us-central1
+///       location: us-east1
 ///       backupPlan: ${basic.id}
-///       cluster: ${primary.id}
+///       cluster: projects/my-project-name/locations/us-east1/clusters/volume-res-cluster
 ///       restoreConfig:
 ///         allNamespaces: true
 ///         namespacedResourceRestoreMode: FAIL_ON_CONFLICT
@@ -4351,7 +3298,7 @@ class RestorePlan extends pulumi.CustomResource {
           'gcp:gkebackup/restorePlan:RestorePlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     backupPlan = registerOutput<String>('backupPlan');

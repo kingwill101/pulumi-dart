@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodePoolNodeConfigAdvancedMachineFeatures {
   /// Whether the node should have nested virtualization enabled.
   final pulumi.Input<bool?>? enableNestedVirtualization;
-  /// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+  /// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
   final pulumi.Input<String?>? performanceMonitoringUnit;
   /// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
   final pulumi.Input<int> threadsPerCore;
 
   /// Creates a new [NodePoolNodeConfigAdvancedMachineFeatures].
   /// [enableNestedVirtualization] Whether the node should have nested virtualization enabled.
-  /// [performanceMonitoringUnit] Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+  /// [performanceMonitoringUnit] Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
   /// [threadsPerCore] The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
   const NodePoolNodeConfigAdvancedMachineFeatures({
     this.enableNestedVirtualization,
@@ -32,7 +32,7 @@ class NodePoolNodeConfigAdvancedMachineFeatures {
     return NodePoolNodeConfigAdvancedMachineFeatures(
       enableNestedVirtualization: (() { final guardedValue = map['enableNestedVirtualization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       performanceMonitoringUnit: (() { final guardedValue = map['performanceMonitoringUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      threadsPerCore: pulumi.Input.fromValue((map['threadsPerCore'] as num).toInt()),
+      threadsPerCore: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['threadsPerCore'])),
     );
   }
 }

@@ -41,8 +41,8 @@ class AiDeploymentResourcePoolDedicatedResources {
     return AiDeploymentResourcePoolDedicatedResources(
       autoscalingMetricSpecs: (() { final guardedValue = map['autoscalingMetricSpecs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec>(guardedValue, (value) => AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec.fromMap((value as Map).cast<String, dynamic>()))); })(),
       machineSpec: pulumi.Input.fromValue(AiDeploymentResourcePoolDedicatedResourcesMachineSpec.fromMap((map['machineSpec']! as Map).cast<String, dynamic>())),
-      maxReplicaCount: (() { final guardedValue = map['maxReplicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minReplicaCount: pulumi.Input.fromValue((map['minReplicaCount'] as num).toInt()),
+      maxReplicaCount: (() { final guardedValue = map['maxReplicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minReplicaCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minReplicaCount'])),
     );
   }
 }

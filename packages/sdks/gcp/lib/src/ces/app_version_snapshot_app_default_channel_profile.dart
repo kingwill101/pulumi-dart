@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_version_snapshot_app_default_channel_profile_persona_property.dart';
 import 'app_version_snapshot_app_default_channel_profile_web_widget_config.dart';
+import 'app_version_snapshot_app_default_channel_profile_whatsapp_config.dart';
 
 class AppVersionSnapshotAppDefaultChannelProfile {
   /// (Output)
@@ -34,6 +35,10 @@ class AppVersionSnapshotAppDefaultChannelProfile {
   /// Message for configuration for the web widget.
   /// Structure is documented below.
   final pulumi.Input<List<AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig>?>? webWidgetConfigs;
+  /// (Output)
+  /// Configuration specific to WhatsApp deployments.
+  /// Structure is documented below.
+  final pulumi.Input<List<AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig>?>? whatsappConfigs;
 
   /// Creates a new [AppVersionSnapshotAppDefaultChannelProfile].
   /// [channelType] (Output)
@@ -42,6 +47,7 @@ class AppVersionSnapshotAppDefaultChannelProfile {
   /// [personaProperties] (Output)
   /// [profileId] (Output)
   /// [webWidgetConfigs] (Output)
+  /// [whatsappConfigs] (Output)
   const AppVersionSnapshotAppDefaultChannelProfile({
     this.channelType,
     this.disableBargeInControl,
@@ -49,6 +55,7 @@ class AppVersionSnapshotAppDefaultChannelProfile {
     this.personaProperties,
     this.profileId,
     this.webWidgetConfigs,
+    this.whatsappConfigs,
   });
 
   Map<String, dynamic> toMap() {
@@ -59,6 +66,7 @@ class AppVersionSnapshotAppDefaultChannelProfile {
       'personaProperties': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotAppDefaultChannelProfilePersonaProperty>, List<Map<String, dynamic>>>(personaProperties, (value) => pulumi.Input.encodeList<AppVersionSnapshotAppDefaultChannelProfilePersonaProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
       'profileId': ?profileId,
       'webWidgetConfigs': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig>, List<Map<String, dynamic>>>(webWidgetConfigs, (value) => pulumi.Input.encodeList<AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'whatsappConfigs': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig>, List<Map<String, dynamic>>>(whatsappConfigs, (value) => pulumi.Input.encodeList<AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
@@ -70,6 +78,7 @@ class AppVersionSnapshotAppDefaultChannelProfile {
       personaProperties: (() { final guardedValue = map['personaProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotAppDefaultChannelProfilePersonaProperty>(guardedValue, (value) => AppVersionSnapshotAppDefaultChannelProfilePersonaProperty.fromMap((value as Map).cast<String, dynamic>()))); })(),
       profileId: (() { final guardedValue = map['profileId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       webWidgetConfigs: (() { final guardedValue = map['webWidgetConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig>(guardedValue, (value) => AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      whatsappConfigs: (() { final guardedValue = map['whatsappConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig>(guardedValue, (value) => AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }

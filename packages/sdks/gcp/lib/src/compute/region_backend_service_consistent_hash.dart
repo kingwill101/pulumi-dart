@@ -43,7 +43,7 @@ class RegionBackendServiceConsistentHash {
     return RegionBackendServiceConsistentHash(
       httpCookie: (() { final guardedValue = map['httpCookie']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionBackendServiceConsistentHashHttpCookie.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       httpHeaderName: (() { final guardedValue = map['httpHeaderName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      minimumRingSize: (() { final guardedValue = map['minimumRingSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minimumRingSize: (() { final guardedValue = map['minimumRingSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

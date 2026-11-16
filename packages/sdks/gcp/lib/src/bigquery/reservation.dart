@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'reservation_args.dart';
 import 'reservation_autoscale.dart';
 import 'reservation_replication_status.dart';
+import 'reservation_scheduling_policy.dart';
 import 'reservation_state.dart';
 
 /// A reservation is a mechanism used to guarantee BigQuery slots to users.
@@ -12,6 +13,7 @@ import 'reservation_state.dart';
 /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/projects.locations.reservations/create)
 /// * How-to Guides
 /// * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
+///
 ///
 /// ## Example Usage
 ///
@@ -88,7 +90,7 @@ import 'reservation_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -116,7 +118,7 @@ import 'reservation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -125,6 +127,9 @@ import 'reservation_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_reservation" "reservation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "my-reservation"
 ///   location          = "us-west2"
 ///   slot_capacity     = 0
@@ -335,6 +340,11 @@ class Reservation extends pulumi.CustomResource {
   /// Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
   /// Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
   late final pulumi.Output<String?> scalingMode;
+  /// The scheduling policy to use for jobs and queries running under this
+  /// reservation. The scheduling policy controls how the reservation's resources
+  /// are distributed.
+  /// Structure is documented below.
+  late final pulumi.Output<ReservationSchedulingPolicy?> schedulingPolicy;
   /// The current location of the reservation's secondary replica. This field is only set for
   /// reservations using the managed disaster recovery feature. Users can set this in create
   /// reservation calls to create a failover reservation or in update reservation calls to convert
@@ -356,7 +366,7 @@ class Reservation extends pulumi.CustomResource {
           'gcp:bigquery/reservation:Reservation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.2').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     autoscale = registerOutput<ReservationAutoscale?>('autoscale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationAutoscale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -376,6 +386,7 @@ class Reservation extends pulumi.CustomResource {
     replicationStatuses = registerOutput<List<ReservationReplicationStatus>>('replicationStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReservationReplicationStatus>(guardedValue, (value) => ReservationReplicationStatus.fromMap((value as Map).cast<String, dynamic>())); });
     reservationGroup = registerOutput<String?>('reservationGroup');
     scalingMode = registerOutput<String?>('scalingMode');
+    schedulingPolicy = registerOutput<ReservationSchedulingPolicy?>('schedulingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationSchedulingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secondaryLocation = registerOutput<String?>('secondaryLocation');
     slotCapacity = registerOutput<int>('slotCapacity');
   }
@@ -421,6 +432,7 @@ class Reservation extends pulumi.CustomResource {
     replicationStatuses = registerOutput<List<ReservationReplicationStatus>>('replicationStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReservationReplicationStatus>(guardedValue, (value) => ReservationReplicationStatus.fromMap((value as Map).cast<String, dynamic>())); });
     reservationGroup = registerOutput<String?>('reservationGroup');
     scalingMode = registerOutput<String?>('scalingMode');
+    schedulingPolicy = registerOutput<ReservationSchedulingPolicy?>('schedulingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationSchedulingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secondaryLocation = registerOutput<String?>('secondaryLocation');
     slotCapacity = registerOutput<int>('slotCapacity');
   }
@@ -452,6 +464,7 @@ class Reservation extends pulumi.CustomResource {
     replicationStatuses = registerOutput<List<ReservationReplicationStatus>>('replicationStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReservationReplicationStatus>(guardedValue, (value) => ReservationReplicationStatus.fromMap((value as Map).cast<String, dynamic>())); });
     reservationGroup = registerOutput<String?>('reservationGroup');
     scalingMode = registerOutput<String?>('scalingMode');
+    schedulingPolicy = registerOutput<ReservationSchedulingPolicy?>('schedulingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationSchedulingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secondaryLocation = registerOutput<String?>('secondaryLocation');
     slotCapacity = registerOutput<int>('slotCapacity');
   }
