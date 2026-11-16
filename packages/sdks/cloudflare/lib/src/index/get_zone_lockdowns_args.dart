@@ -80,7 +80,7 @@ class GetZoneLockdownsArgs {
       ip: (() { final guardedValue = map['ip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipRangeSearch: (() { final guardedValue = map['ipRangeSearch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipSearch: (() { final guardedValue = map['ipSearch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       modifiedOn: (() { final guardedValue = map['modifiedOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       uriSearch: (() { final guardedValue = map['uriSearch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

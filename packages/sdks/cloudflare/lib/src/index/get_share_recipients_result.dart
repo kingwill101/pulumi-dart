@@ -11,20 +11,20 @@ class GetShareRecipientsResult {
   /// target state set by the API; the background reconciliation workflow
   /// drives `currentAssociationStatus` toward it.
   final pulumi.Input<String> associationStatus;
-  /// When the share was created.
+  /// When the object was created.
   final pulumi.Input<String> created;
   /// Share Recipient identifier tag.
   final pulumi.Input<String> id;
-  /// When the share was modified.
+  /// When the object was last modified.
   final pulumi.Input<String> modified;
   final pulumi.Input<List<GetShareRecipientsResultResource>> resources;
 
   /// Creates a new [GetShareRecipientsResult].
   /// [accountId] Account identifier.
   /// [associationStatus] The current state of the recipient relative to the share. The
-  /// [created] When the share was created.
+  /// [created] When the object was created.
   /// [id] Share Recipient identifier tag.
-  /// [modified] When the share was modified.
+  /// [modified] When the object was last modified.
   /// [resources] Required.
   const GetShareRecipientsResult({
     required this.accountId,

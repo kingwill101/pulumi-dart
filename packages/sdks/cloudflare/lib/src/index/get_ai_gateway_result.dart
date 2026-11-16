@@ -11,15 +11,24 @@ import 'get_ai_gateway_stripe.dart';
 /// Result data returned by getAiGateway.
 class GetAiGatewayResult {
   final String? accountId;
+  /// Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
   final bool? authentication;
+  /// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+  final bool? byokOnly;
   final bool? cacheInvalidateOnUpdate;
   final int? cacheTtl;
   final bool? collectLogs;
   final String? createdAt;
   final GetAiGatewayDlp? dlp;
+  /// FedRAMP compliance level: fedramp-medium or fedramp-high.
+  /// Available values: "fedramp-medium", "fedramp-high".
+  final String? fedrampLevel;
+  /// FedRAMP enforcement mode. "prefer" prioritizes compliant connectors but allows fallback. "require" strictly filters.
+  /// Available values: "prefer", "require".
+  final String? fedrampMode;
   final GetAiGatewayFilter? filter;
   final GetAiGatewayGuardrails? guardrails;
-  /// gateway id
+  /// Unique identifier of the AI Gateway within the account.
   final String? id;
   final bool? isDefault;
   final bool? logClassification;
@@ -37,11 +46,12 @@ class GetAiGatewayResult {
   /// Backoff strategy for retry delays
   /// Available values: "constant", "linear", "exponential".
   final String? retryBackoff;
-  /// Delay between retry attempts in milliseconds (0-5000)
+  /// Delay between retry attempts in milliseconds (0-60000)
   final int? retryDelay;
   /// Maximum number of retry attempts for failed requests (1-5)
   final int? retryMaxAttempts;
   final GetAiGatewaySpendLimits? spendLimits;
+  /// Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
   final String? storeId;
   final GetAiGatewayStripe? stripe;
   /// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
@@ -51,15 +61,18 @@ class GetAiGatewayResult {
 
   /// Creates a new [GetAiGatewayResult].
   /// [accountId] Optional.
-  /// [authentication] Optional.
+  /// [authentication] Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+  /// [byokOnly] Requires customer-provided provider credentials and prevents fallback to Unified Billing.
   /// [cacheInvalidateOnUpdate] Optional.
   /// [cacheTtl] Optional.
   /// [collectLogs] Optional.
   /// [createdAt] Optional.
   /// [dlp] Optional.
+  /// [fedrampLevel] FedRAMP compliance level: fedramp-medium or fedramp-high.
+  /// [fedrampMode] FedRAMP enforcement mode. "prefer" prioritizes compliant connectors but allows fallback. "require" strictly filters.
   /// [filter] Optional.
   /// [guardrails] Optional.
-  /// [id] gateway id
+  /// [id] Unique identifier of the AI Gateway within the account.
   /// [isDefault] Optional.
   /// [logClassification] Optional.
   /// [logManagement] Optional.
@@ -72,21 +85,24 @@ class GetAiGatewayResult {
   /// [rateLimitingLimit] Optional.
   /// [rateLimitingTechnique] Available values: "fixed", "sliding".
   /// [retryBackoff] Backoff strategy for retry delays
-  /// [retryDelay] Delay between retry attempts in milliseconds (0-5000)
+  /// [retryDelay] Delay between retry attempts in milliseconds (0-60000)
   /// [retryMaxAttempts] Maximum number of retry attempts for failed requests (1-5)
   /// [spendLimits] Optional.
-  /// [storeId] Optional.
+  /// [storeId] Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
   /// [stripe] Optional.
   /// [workersAiBillingMode] Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
   /// [zdr] Optional.
   const GetAiGatewayResult({
     this.accountId,
     this.authentication,
+    this.byokOnly,
     this.cacheInvalidateOnUpdate,
     this.cacheTtl,
     this.collectLogs,
     this.createdAt,
     this.dlp,
+    this.fedrampLevel,
+    this.fedrampMode,
     this.filter,
     this.guardrails,
     this.id,
@@ -115,11 +131,14 @@ class GetAiGatewayResult {
     return <String, dynamic>{
       'accountId': ?accountId,
       'authentication': ?authentication,
+      'byokOnly': ?byokOnly,
       'cacheInvalidateOnUpdate': ?cacheInvalidateOnUpdate,
       'cacheTtl': ?cacheTtl,
       'collectLogs': ?collectLogs,
       'createdAt': ?createdAt,
       'dlp': ?dlp?.toMap(),
+      'fedrampLevel': ?fedrampLevel,
+      'fedrampMode': ?fedrampMode,
       'filter': ?filter?.toMap(),
       'guardrails': ?guardrails?.toMap(),
       'id': ?id,
@@ -149,28 +168,31 @@ class GetAiGatewayResult {
     return GetAiGatewayResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       authentication: (() { final guardedValue = map['authentication']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      byokOnly: (() { final guardedValue = map['byokOnly']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       cacheInvalidateOnUpdate: (() { final guardedValue = map['cacheInvalidateOnUpdate']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      cacheTtl: (() { final guardedValue = map['cacheTtl']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      cacheTtl: (() { final guardedValue = map['cacheTtl']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       collectLogs: (() { final guardedValue = map['collectLogs']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dlp: (() { final guardedValue = map['dlp']; if (guardedValue == null) return null; return GetAiGatewayDlp.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      fedrampLevel: (() { final guardedValue = map['fedrampLevel']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      fedrampMode: (() { final guardedValue = map['fedrampMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return GetAiGatewayFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       guardrails: (() { final guardedValue = map['guardrails']; if (guardedValue == null) return null; return GetAiGatewayGuardrails.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isDefault: (() { final guardedValue = map['isDefault']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       logClassification: (() { final guardedValue = map['logClassification']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      logManagement: (() { final guardedValue = map['logManagement']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      logManagement: (() { final guardedValue = map['logManagement']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       logManagementStrategy: (() { final guardedValue = map['logManagementStrategy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       logpush: (() { final guardedValue = map['logpush']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       logpushPublicKey: (() { final guardedValue = map['logpushPublicKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
       modifiedAt: (() { final guardedValue = map['modifiedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       otels: (() { final guardedValue = map['otels']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetAiGatewayOtel>(guardedValue, (value) => GetAiGatewayOtel.fromMap((value as Map).cast<String, dynamic>())); })(),
-      rateLimitingInterval: (() { final guardedValue = map['rateLimitingInterval']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      rateLimitingLimit: (() { final guardedValue = map['rateLimitingLimit']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      rateLimitingInterval: (() { final guardedValue = map['rateLimitingInterval']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      rateLimitingLimit: (() { final guardedValue = map['rateLimitingLimit']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       rateLimitingTechnique: (() { final guardedValue = map['rateLimitingTechnique']; if (guardedValue == null) return null; return guardedValue as String; })(),
       retryBackoff: (() { final guardedValue = map['retryBackoff']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      retryDelay: (() { final guardedValue = map['retryDelay']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      retryMaxAttempts: (() { final guardedValue = map['retryMaxAttempts']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      retryDelay: (() { final guardedValue = map['retryDelay']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      retryMaxAttempts: (() { final guardedValue = map['retryMaxAttempts']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       spendLimits: (() { final guardedValue = map['spendLimits']; if (guardedValue == null) return null; return GetAiGatewaySpendLimits.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       storeId: (() { final guardedValue = map['storeId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       stripe: (() { final guardedValue = map['stripe']; if (guardedValue == null) return null; return GetAiGatewayStripe.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),

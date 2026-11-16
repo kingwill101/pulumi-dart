@@ -3,22 +3,25 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAiSearchInstancesResultRetrievalOptionsBoostBy {
-  /// Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not*exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields.
-  /// Available values: "asc", "desc", "exists", "not*exists".
+  /// Available values: "number", "datetime", "text", "boolean".
+  final pulumi.Input<String> dataType;
+  /// Available values: "asc", "desc", "exists", "notExists".
   final pulumi.Input<String> direction;
-  /// Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom*metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not*exists); text/boolean fields only support exists/not_exists.
   final pulumi.Input<String> field;
 
   /// Creates a new [GetAiSearchInstancesResultRetrievalOptionsBoostBy].
-  /// [direction] Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not*exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields.
-  /// [field] Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom*metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not*exists); text/boolean fields only support exists/not_exists.
+  /// [dataType] Available values: "number", "datetime", "text", "boolean".
+  /// [direction] Available values: "asc", "desc", "exists", "notExists".
+  /// [field] Required.
   const GetAiSearchInstancesResultRetrievalOptionsBoostBy({
+    required this.dataType,
     required this.direction,
     required this.field,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'dataType': dataType,
       'direction': direction,
       'field': field,
     };
@@ -26,6 +29,7 @@ class GetAiSearchInstancesResultRetrievalOptionsBoostBy {
 
   factory GetAiSearchInstancesResultRetrievalOptionsBoostBy.fromMap(Map<String, dynamic> map) {
     return GetAiSearchInstancesResultRetrievalOptionsBoostBy(
+      dataType: pulumi.Input.fromValue(map['dataType'] as String),
       direction: pulumi.Input.fromValue(map['direction'] as String),
       field: pulumi.Input.fromValue(map['field'] as String),
     );

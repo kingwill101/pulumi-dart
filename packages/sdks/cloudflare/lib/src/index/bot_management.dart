@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'bot_management_ai_agents.dart';
 import 'bot_management_args.dart';
 import 'bot_management_stale_zone_configuration.dart';
 import 'bot_management_state.dart';
@@ -17,13 +18,26 @@ import 'bot_management_state.dart';
 ///
 /// const exampleBotManagement = new cloudflare.BotManagement("example_bot_management", {
 ///     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     aiAgents: {
+///         anthropicAgent: "block",
+///         googleAgent: "block",
+///         instinct: "block",
+///         muse: "block",
+///         openaiAgent: "block",
+///     },
+///     aiBotsMigrationOptOut: false,
 ///     aiBotsProtection: "block",
+///     aisearch: "block",
+///     aiTraining: "disallow",
+///     aiUser: "only_on_ad_pages",
+///     botPreferenceSyncEnabled: true,
 ///     cfRobotsVariant: "policy_only",
 ///     contentBotsProtection: "disabled",
 ///     crawlerProtection: "enabled",
 ///     enableJs: true,
 ///     fightMode: true,
 ///     isRobotsTxtManaged: false,
+///     jsdApiResultsEnabled: true,
 /// });
 /// ```
 /// ```python
@@ -32,13 +46,26 @@ import 'bot_management_state.dart';
 ///
 /// example_bot_management = cloudflare.BotManagement("example_bot_management",
 ///     zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+///     ai_agents={
+///         "anthropic_agent": "block",
+///         "google_agent": "block",
+///         "instinct": "block",
+///         "muse": "block",
+///         "openai_agent": "block",
+///     },
+///     ai_bots_migration_opt_out=False,
 ///     ai_bots_protection="block",
+///     aisearch="block",
+///     ai_training="disallow",
+///     ai_user="only_on_ad_pages",
+///     bot_preference_sync_enabled=True,
 ///     cf_robots_variant="policy_only",
 ///     content_bots_protection="disabled",
 ///     crawler_protection="enabled",
 ///     enable_js=True,
 ///     fight_mode=True,
-///     is_robots_txt_managed=False)
+///     is_robots_txt_managed=False,
+///     jsd_api_results_enabled=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -51,13 +78,27 @@ import 'bot_management_state.dart';
 ///     var exampleBotManagement = new Cloudflare.BotManagement("example_bot_management", new()
 ///     {
 ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         AiAgents = new Cloudflare.Inputs.BotManagementAiAgentsArgs
+///         {
+///             AnthropicAgent = "block",
+///             GoogleAgent = "block",
+///             Instinct = "block",
+///             Muse = "block",
+///             OpenaiAgent = "block",
+///         },
+///         AiBotsMigrationOptOut = false,
 ///         AiBotsProtection = "block",
+///         Aisearch = "block",
+///         AiTraining = "disallow",
+///         AiUser = "only_on_ad_pages",
+///         BotPreferenceSyncEnabled = true,
 ///         CfRobotsVariant = "policy_only",
 ///         ContentBotsProtection = "disabled",
 ///         CrawlerProtection = "enabled",
 ///         EnableJs = true,
 ///         FightMode = true,
 ///         IsRobotsTxtManaged = false,
+///         JsdApiResultsEnabled = true,
 ///     });
 ///
 /// });
@@ -73,14 +114,27 @@ import 'bot_management_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.NewBotManagement(ctx, "example_bot_management", &cloudflare.BotManagementArgs{
-/// 			ZoneId:                pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-/// 			AiBotsProtection:      pulumi.String("block"),
-/// 			CfRobotsVariant:       pulumi.String("policy_only"),
-/// 			ContentBotsProtection: pulumi.String("disabled"),
-/// 			CrawlerProtection:     pulumi.String("enabled"),
-/// 			EnableJs:              pulumi.Bool(true),
-/// 			FightMode:             pulumi.Bool(true),
-/// 			IsRobotsTxtManaged:    pulumi.Bool(false),
+/// 			ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			AiAgents: &cloudflare.BotManagementAiAgentsArgs{
+/// 				AnthropicAgent: pulumi.String("block"),
+/// 				GoogleAgent:    pulumi.String("block"),
+/// 				Instinct:       pulumi.String("block"),
+/// 				Muse:           pulumi.String("block"),
+/// 				OpenaiAgent:    pulumi.String("block"),
+/// 			},
+/// 			AiBotsMigrationOptOut:    pulumi.Bool(false),
+/// 			AiBotsProtection:         pulumi.String("block"),
+/// 			Aisearch:                 pulumi.String("block"),
+/// 			AiTraining:               pulumi.String("disallow"),
+/// 			AiUser:                   pulumi.String("only_on_ad_pages"),
+/// 			BotPreferenceSyncEnabled: pulumi.Bool(true),
+/// 			CfRobotsVariant:          pulumi.String("policy_only"),
+/// 			ContentBotsProtection:    pulumi.String("disabled"),
+/// 			CrawlerProtection:        pulumi.String("enabled"),
+/// 			EnableJs:                 pulumi.Bool(true),
+/// 			FightMode:                pulumi.Bool(true),
+/// 			IsRobotsTxtManaged:       pulumi.Bool(false),
+/// 			JsdApiResultsEnabled:     pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -90,7 +144,7 @@ import 'bot_management_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -98,15 +152,31 @@ import 'bot_management_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_botmanagement" "example_bot_management" {
-///   zone_id                 = "023e105f4ecef8ad9ca31a8372d0c353"
-///   ai_bots_protection      = "block"
-///   cf_robots_variant       = "policy_only"
-///   content_bots_protection = "disabled"
-///   crawler_protection      = "enabled"
-///   enable_js               = true
-///   fight_mode              = true
-///   is_robots_txt_managed   = false
+/// resource "cloudflare_bot_management" "example_bot_management" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
+///   ai_agents = {
+///     anthropic_agent = "block"
+///     google_agent    = "block"
+///     instinct        = "block"
+///     muse            = "block"
+///     openai_agent    = "block"
+///   }
+///   ai_bots_migration_opt_out   = false
+///   ai_bots_protection          = "block"
+///   aisearch                    = "block"
+///   ai_training                 = "disallow"
+///   ai_user                     = "only_on_ad_pages"
+///   bot_preference_sync_enabled = true
+///   cf_robots_variant           = "policy_only"
+///   content_bots_protection     = "disabled"
+///   crawler_protection          = "enabled"
+///   enable_js                   = true
+///   fight_mode                  = true
+///   is_robots_txt_managed       = false
+///   jsd_api_results_enabled     = true
 /// }
 /// ```
 /// ```java
@@ -117,6 +187,7 @@ import 'bot_management_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.cloudflare.BotManagement;
 /// import com.pulumi.cloudflare.BotManagementArgs;
+/// import com.pulumi.cloudflare.inputs.BotManagementAiAgentsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -132,13 +203,26 @@ import 'bot_management_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var exampleBotManagement = new BotManagement("exampleBotManagement", BotManagementArgs.builder()
 ///             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .aiAgents(BotManagementAiAgentsArgs.builder()
+///                 .anthropicAgent("block")
+///                 .googleAgent("block")
+///                 .instinct("block")
+///                 .muse("block")
+///                 .openaiAgent("block")
+///                 .build())
+///             .aiBotsMigrationOptOut(false)
 ///             .aiBotsProtection("block")
+///             .aisearch("block")
+///             .aiTraining("disallow")
+///             .aiUser("only_on_ad_pages")
+///             .botPreferenceSyncEnabled(true)
 ///             .cfRobotsVariant("policy_only")
 ///             .contentBotsProtection("disabled")
 ///             .crawlerProtection("enabled")
 ///             .enableJs(true)
 ///             .fightMode(true)
 ///             .isRobotsTxtManaged(false)
+///             .jsdApiResultsEnabled(true)
 ///             .build());
 ///
 ///     }
@@ -151,13 +235,25 @@ import 'bot_management_state.dart';
 ///     name: example_bot_management
 ///     properties:
 ///       zoneId: 023e105f4ecef8ad9ca31a8372d0c353
+///       aiAgents:
+///         anthropicAgent: block
+///         googleAgent: block
+///         instinct: block
+///         muse: block
+///         openaiAgent: block
+///       aiBotsMigrationOptOut: false
 ///       aiBotsProtection: block
+///       aisearch: block
+///       aiTraining: disallow
+///       aiUser: only_on_ad_pages
+///       botPreferenceSyncEnabled: true
 ///       cfRobotsVariant: policy_only
 ///       contentBotsProtection: disabled
 ///       crawlerProtection: enabled
 ///       enableJs: true
 ///       fightMode: true
 ///       isRobotsTxtManaged: false
+///       jsdApiResultsEnabled: true
 /// ```
 ///
 ///
@@ -167,13 +263,28 @@ import 'bot_management_state.dart';
 /// $ pulumi import cloudflare:index/botManagement:BotManagement example '<zone_id>'
 /// ```
 class BotManagement extends pulumi.CustomResource {
+  /// Configure blocking behavior for supported personal AI agents.
+  late final pulumi.Output<BotManagementAiAgents> aiAgents;
+  /// Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+  late final pulumi.Output<bool> aiBotsMigrationOptOut;
   /// Enable rule to block AI Scrapers and Crawlers.
   /// Available values: "block", "disabled", "only*on*ad_pages".
   late final pulumi.Output<String> aiBotsProtection;
+  /// Configure robots.txt policy for AI model training bots.
+  /// Available values: "disabled", "disallow", "block", "only*on*ad_pages".
+  late final pulumi.Output<String> aiTraining;
+  /// Configure robots.txt policy for AI assistant and agent bots.
+  /// Available values: "disabled", "block", "only*on*ad_pages".
+  late final pulumi.Output<String> aiUser;
+  /// Configure robots.txt policy for AI search bots.
+  /// Available values: "disabled", "block", "only*on*ad_pages".
+  late final pulumi.Output<String> aisearch;
   /// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
   late final pulumi.Output<bool> autoUpdateModel;
   /// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
   late final pulumi.Output<bool> bmCookieEnabled;
+  /// Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
+  late final pulumi.Output<bool?> botPreferenceSyncEnabled;
   /// Specifies the Robots Access Control License variant to use.
   /// Available values: "off", "policyOnly".
   late final pulumi.Output<String> cfRobotsVariant;
@@ -189,6 +300,8 @@ class BotManagement extends pulumi.CustomResource {
   late final pulumi.Output<bool> fightMode;
   /// Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
   late final pulumi.Output<bool> isRobotsTxtManaged;
+  /// Whether to use JavaScript Detection results submitted through the API for this zone.
+  late final pulumi.Output<bool> jsdApiResultsEnabled;
   /// Whether to optimize Super Bot Fight Mode protections for Wordpress.
   late final pulumi.Output<bool> optimizeWordpress;
   /// Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
@@ -225,17 +338,24 @@ class BotManagement extends pulumi.CustomResource {
           'cloudflare:index/botManagement:BotManagement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
+    aiAgents = registerOutput<BotManagementAiAgents>('aiAgents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BotManagementAiAgents.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    aiBotsMigrationOptOut = registerOutput<bool>('aiBotsMigrationOptOut');
     aiBotsProtection = registerOutput<String>('aiBotsProtection');
+    aiTraining = registerOutput<String>('aiTraining');
+    aiUser = registerOutput<String>('aiUser');
+    aisearch = registerOutput<String>('aisearch');
     autoUpdateModel = registerOutput<bool>('autoUpdateModel');
     bmCookieEnabled = registerOutput<bool>('bmCookieEnabled');
+    botPreferenceSyncEnabled = registerOutput<bool?>('botPreferenceSyncEnabled');
     cfRobotsVariant = registerOutput<String>('cfRobotsVariant');
     contentBotsProtection = registerOutput<String>('contentBotsProtection');
     crawlerProtection = registerOutput<String>('crawlerProtection');
     enableJs = registerOutput<bool>('enableJs');
     fightMode = registerOutput<bool>('fightMode');
     isRobotsTxtManaged = registerOutput<bool>('isRobotsTxtManaged');
+    jsdApiResultsEnabled = registerOutput<bool>('jsdApiResultsEnabled');
     optimizeWordpress = registerOutput<bool>('optimizeWordpress');
     sbfmDefinitelyAutomated = registerOutput<String>('sbfmDefinitelyAutomated');
     sbfmLikelyAutomated = registerOutput<String>('sbfmLikelyAutomated');
@@ -271,15 +391,22 @@ class BotManagement extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    aiAgents = registerOutput<BotManagementAiAgents>('aiAgents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BotManagementAiAgents.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    aiBotsMigrationOptOut = registerOutput<bool>('aiBotsMigrationOptOut');
     aiBotsProtection = registerOutput<String>('aiBotsProtection');
+    aiTraining = registerOutput<String>('aiTraining');
+    aiUser = registerOutput<String>('aiUser');
+    aisearch = registerOutput<String>('aisearch');
     autoUpdateModel = registerOutput<bool>('autoUpdateModel');
     bmCookieEnabled = registerOutput<bool>('bmCookieEnabled');
+    botPreferenceSyncEnabled = registerOutput<bool?>('botPreferenceSyncEnabled');
     cfRobotsVariant = registerOutput<String>('cfRobotsVariant');
     contentBotsProtection = registerOutput<String>('contentBotsProtection');
     crawlerProtection = registerOutput<String>('crawlerProtection');
     enableJs = registerOutput<bool>('enableJs');
     fightMode = registerOutput<bool>('fightMode');
     isRobotsTxtManaged = registerOutput<bool>('isRobotsTxtManaged');
+    jsdApiResultsEnabled = registerOutput<bool>('jsdApiResultsEnabled');
     optimizeWordpress = registerOutput<bool>('optimizeWordpress');
     sbfmDefinitelyAutomated = registerOutput<String>('sbfmDefinitelyAutomated');
     sbfmLikelyAutomated = registerOutput<String>('sbfmLikelyAutomated');
@@ -300,15 +427,22 @@ class BotManagement extends pulumi.CustomResource {
         pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
         isResourceReference: true,
       ) {
+    aiAgents = registerOutput<BotManagementAiAgents>('aiAgents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BotManagementAiAgents.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    aiBotsMigrationOptOut = registerOutput<bool>('aiBotsMigrationOptOut');
     aiBotsProtection = registerOutput<String>('aiBotsProtection');
+    aiTraining = registerOutput<String>('aiTraining');
+    aiUser = registerOutput<String>('aiUser');
+    aisearch = registerOutput<String>('aisearch');
     autoUpdateModel = registerOutput<bool>('autoUpdateModel');
     bmCookieEnabled = registerOutput<bool>('bmCookieEnabled');
+    botPreferenceSyncEnabled = registerOutput<bool?>('botPreferenceSyncEnabled');
     cfRobotsVariant = registerOutput<String>('cfRobotsVariant');
     contentBotsProtection = registerOutput<String>('contentBotsProtection');
     crawlerProtection = registerOutput<String>('crawlerProtection');
     enableJs = registerOutput<bool>('enableJs');
     fightMode = registerOutput<bool>('fightMode');
     isRobotsTxtManaged = registerOutput<bool>('isRobotsTxtManaged');
+    jsdApiResultsEnabled = registerOutput<bool>('jsdApiResultsEnabled');
     optimizeWordpress = registerOutput<bool>('optimizeWordpress');
     sbfmDefinitelyAutomated = registerOutput<String>('sbfmDefinitelyAutomated');
     sbfmLikelyAutomated = registerOutput<String>('sbfmLikelyAutomated');

@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_magic_transit_site_lans_result_nat.dart';
+import 'get_magic_transit_site_lans_result_remote_subnet.dart';
 import 'get_magic_transit_site_lans_result_routed_subnet.dart';
 import 'get_magic_transit_site_lans_result_static_addressing.dart';
 
@@ -18,6 +19,7 @@ class GetMagicTransitSiteLansResult {
   final pulumi.Input<String> name;
   final pulumi.Input<GetMagicTransitSiteLansResultNat> nat;
   final pulumi.Input<int> physport;
+  final pulumi.Input<List<GetMagicTransitSiteLansResultRemoteSubnet>> remoteSubnets;
   final pulumi.Input<List<GetMagicTransitSiteLansResultRoutedSubnet>> routedSubnets;
   /// Identifier
   final pulumi.Input<String> siteId;
@@ -35,6 +37,7 @@ class GetMagicTransitSiteLansResult {
   /// [name] Required.
   /// [nat] Required.
   /// [physport] Required.
+  /// [remoteSubnets] Required.
   /// [routedSubnets] Required.
   /// [siteId] Identifier
   /// [staticAddressing] If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
@@ -48,6 +51,7 @@ class GetMagicTransitSiteLansResult {
     required this.name,
     required this.nat,
     required this.physport,
+    required this.remoteSubnets,
     required this.routedSubnets,
     required this.siteId,
     required this.staticAddressing,
@@ -64,6 +68,7 @@ class GetMagicTransitSiteLansResult {
       'name': name,
       'nat': pulumi.Input.mapInputValue<GetMagicTransitSiteLansResultNat, Map<String, dynamic>>(nat, (value) => value.toMap()),
       'physport': physport,
+      'remoteSubnets': pulumi.Input.mapInputValue<List<GetMagicTransitSiteLansResultRemoteSubnet>, List<Map<String, dynamic>>>(remoteSubnets, (value) => pulumi.Input.encodeList<GetMagicTransitSiteLansResultRemoteSubnet, Map<String, dynamic>>(value, (value) => value.toMap())),
       'routedSubnets': pulumi.Input.mapInputValue<List<GetMagicTransitSiteLansResultRoutedSubnet>, List<Map<String, dynamic>>>(routedSubnets, (value) => pulumi.Input.encodeList<GetMagicTransitSiteLansResultRoutedSubnet, Map<String, dynamic>>(value, (value) => value.toMap())),
       'siteId': siteId,
       'staticAddressing': pulumi.Input.mapInputValue<GetMagicTransitSiteLansResultStaticAddressing, Map<String, dynamic>>(staticAddressing, (value) => value.toMap()),
@@ -73,18 +78,19 @@ class GetMagicTransitSiteLansResult {
 
   factory GetMagicTransitSiteLansResult.fromMap(Map<String, dynamic> map) {
     return GetMagicTransitSiteLansResult(
-      bondId: pulumi.Input.fromValue((map['bondId'] as num).toInt()),
+      bondId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['bondId'])),
       haLink: pulumi.Input.fromValue(map['haLink'] as bool),
       id: pulumi.Input.fromValue(map['id'] as String),
       isBreakout: pulumi.Input.fromValue(map['isBreakout'] as bool),
       isPrioritized: pulumi.Input.fromValue(map['isPrioritized'] as bool),
       name: pulumi.Input.fromValue(map['name'] as String),
       nat: pulumi.Input.fromValue(GetMagicTransitSiteLansResultNat.fromMap((map['nat']! as Map).cast<String, dynamic>())),
-      physport: pulumi.Input.fromValue((map['physport'] as num).toInt()),
+      physport: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['physport'])),
+      remoteSubnets: pulumi.Input.fromValue(pulumi.Input.decodeList<GetMagicTransitSiteLansResultRemoteSubnet>(map['remoteSubnets']!, (value) => GetMagicTransitSiteLansResultRemoteSubnet.fromMap((value as Map).cast<String, dynamic>()))),
       routedSubnets: pulumi.Input.fromValue(pulumi.Input.decodeList<GetMagicTransitSiteLansResultRoutedSubnet>(map['routedSubnets']!, (value) => GetMagicTransitSiteLansResultRoutedSubnet.fromMap((value as Map).cast<String, dynamic>()))),
       siteId: pulumi.Input.fromValue(map['siteId'] as String),
       staticAddressing: pulumi.Input.fromValue(GetMagicTransitSiteLansResultStaticAddressing.fromMap((map['staticAddressing']! as Map).cast<String, dynamic>())),
-      vlanTag: pulumi.Input.fromValue((map['vlanTag'] as num).toInt()),
+      vlanTag: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vlanTag'])),
     );
   }
 }

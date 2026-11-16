@@ -9,9 +9,7 @@ import 'get_ai_search_instances_result_public_endpoint_params_search_endpoint.da
 class GetAiSearchInstancesResultPublicEndpointParams {
   final pulumi.Input<List<String>> authorizedHosts;
   final pulumi.Input<GetAiSearchInstancesResultPublicEndpointParamsChatCompletionsEndpoint> chatCompletionsEndpoint;
-  /// Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
   final pulumi.Input<List<String>> customDomains;
-  /// When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
   final pulumi.Input<bool> defaultDomainEnabled;
   final pulumi.Input<bool> enabled;
   final pulumi.Input<GetAiSearchInstancesResultPublicEndpointParamsMcp> mcp;
@@ -21,8 +19,8 @@ class GetAiSearchInstancesResultPublicEndpointParams {
   /// Creates a new [GetAiSearchInstancesResultPublicEndpointParams].
   /// [authorizedHosts] Required.
   /// [chatCompletionsEndpoint] Required.
-  /// [customDomains] Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
-  /// [defaultDomainEnabled] When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+  /// [customDomains] Required.
+  /// [defaultDomainEnabled] Required.
   /// [enabled] Required.
   /// [mcp] Required.
   /// [rateLimit] Required.

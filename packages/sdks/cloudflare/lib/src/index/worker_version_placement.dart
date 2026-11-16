@@ -9,7 +9,6 @@ class WorkerVersionPlacement {
   /// HTTP hostname for targeted placement.
   final pulumi.Input<String?>? hostname;
   /// Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-  /// Available values: "smart", "targeted".
   final pulumi.Input<String?>? mode;
   /// Cloud region for targeted placement in format 'provider:region'.
   final pulumi.Input<String?>? region;

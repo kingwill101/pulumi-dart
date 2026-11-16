@@ -57,7 +57,7 @@ class GetZeroTrustAccessCustomPageResult {
   factory GetZeroTrustAccessCustomPageResult.fromMap(Map<String, dynamic> map) {
     return GetZeroTrustAccessCustomPageResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      contractVersion: (() { final guardedValue = map['contractVersion']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      contractVersion: (() { final guardedValue = map['contractVersion']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       customHtml: (() { final guardedValue = map['customHtml']; if (guardedValue == null) return null; return guardedValue as String; })(),
       customPageId: (() { final guardedValue = map['customPageId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),

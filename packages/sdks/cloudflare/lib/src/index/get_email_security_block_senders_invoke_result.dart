@@ -7,6 +7,7 @@ import 'get_email_security_block_senders_result.dart';
 class GetEmailSecurityBlockSendersInvokeResult {
   final String? accountId;
   final String? direction;
+  final bool? expired;
   final int? maxItems;
   final String? order;
   final String? pattern;
@@ -17,6 +18,7 @@ class GetEmailSecurityBlockSendersInvokeResult {
   /// Creates a new [GetEmailSecurityBlockSendersInvokeResult].
   /// [accountId] Optional.
   /// [direction] Optional.
+  /// [expired] Optional.
   /// [maxItems] Optional.
   /// [order] Optional.
   /// [pattern] Optional.
@@ -26,6 +28,7 @@ class GetEmailSecurityBlockSendersInvokeResult {
   const GetEmailSecurityBlockSendersInvokeResult({
     this.accountId,
     this.direction,
+    this.expired,
     this.maxItems,
     this.order,
     this.pattern,
@@ -38,6 +41,7 @@ class GetEmailSecurityBlockSendersInvokeResult {
     return <String, dynamic>{
       'accountId': ?accountId,
       'direction': ?direction,
+      'expired': ?expired,
       'maxItems': ?maxItems,
       'order': ?order,
       'pattern': ?pattern,
@@ -51,7 +55,8 @@ class GetEmailSecurityBlockSendersInvokeResult {
     return GetEmailSecurityBlockSendersInvokeResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      expired: (() { final guardedValue = map['expired']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return guardedValue as String; })(),
       pattern: (() { final guardedValue = map['pattern']; if (guardedValue == null) return null; return guardedValue as String; })(),
       patternType: (() { final guardedValue = map['patternType']; if (guardedValue == null) return null; return guardedValue as String; })(),

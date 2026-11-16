@@ -77,7 +77,7 @@ import 'zero_trust_dlp_integration_entry_variant.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -85,7 +85,10 @@ import 'zero_trust_dlp_integration_entry_variant.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdlpintegrationentry" "example_zero_trust_dlp_integration_entry" {
+/// resource "cloudflare_zero_trust_dlp_integration_entry" "example_zero_trust_dlp_integration_entry" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "account_id"
 ///   enabled    = true
 ///   entry_id   = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
@@ -143,15 +146,16 @@ import 'zero_trust_dlp_integration_entry_variant.dart';
 /// ```
 class ZeroTrustDlpIntegrationEntry extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
-  /// Only applies to custom word lists.
+  /// For `type: exactData`: Only applies to custom word lists.
   /// Determines if the words should be matched in a case-sensitive manner
   /// Cannot be set to false if secret is true
   late final pulumi.Output<bool> caseSensitive;
   late final pulumi.Output<ZeroTrustDlpIntegrationEntryConfidence> confidence;
   late final pulumi.Output<String> createdAt;
-  /// Whether this entry is deprecated for new use. This is computed from the static catalog and
+  /// For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
   /// emitted only when true.
   late final pulumi.Output<bool> deprecated;
+  /// For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
   late final pulumi.Output<String> description;
   late final pulumi.Output<bool> enabled;
   late final pulumi.Output<String> entryId;
@@ -162,14 +166,20 @@ class ZeroTrustDlpIntegrationEntry extends pulumi.CustomResource {
   late final pulumi.Output<String?> profileId;
   late final pulumi.Output<List<ZeroTrustDlpIntegrationEntryProfile>> profiles;
   late final pulumi.Output<bool> secret;
-  /// Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+  /// Available values: "custom", "customPromptTopic", "predefined", "integration", "exactData", "documentFingerprint", "wordList".
   late final pulumi.Output<String> type;
   late final pulumi.Output<String> updatedAt;
   /// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
   late final pulumi.Output<String> uploadStatus;
-  /// A Predefined AI prompt classification topic entry.
+  /// For `type: custom`: Validators this entry references, by id, at most 10. An empty list means the entry
+  /// references none.
+  ///
+  /// Returned by the entry endpoints. Not returned on entries embedded in other responses, such
+  /// as profiles.
+  late final pulumi.Output<List<String>> validatorIds;
+  /// For `type: predefined`: A Predefined AI prompt classification topic entry.
   late final pulumi.Output<ZeroTrustDlpIntegrationEntryVariant> variant;
-  late final pulumi.Output<String> wordList;
+  late final pulumi.Output<List<String>> wordLists;
 
   /// Creates a new [ZeroTrustDlpIntegrationEntry].
   /// [name] The Pulumi resource name.
@@ -183,7 +193,7 @@ class ZeroTrustDlpIntegrationEntry extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDlpIntegrationEntry:ZeroTrustDlpIntegrationEntry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     caseSensitive = registerOutput<bool>('caseSensitive');
@@ -201,8 +211,9 @@ class ZeroTrustDlpIntegrationEntry extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     updatedAt = registerOutput<String>('updatedAt');
     uploadStatus = registerOutput<String>('uploadStatus');
+    validatorIds = registerOutput<List<String>>('validatorIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     variant = registerOutput<ZeroTrustDlpIntegrationEntryVariant>('variant', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustDlpIntegrationEntryVariant.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    wordList = registerOutput<String>('wordList');
+    wordLists = registerOutput<List<String>>('wordLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ZeroTrustDlpIntegrationEntry] resource's state with the given [name] and [id].
@@ -245,8 +256,9 @@ class ZeroTrustDlpIntegrationEntry extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     updatedAt = registerOutput<String>('updatedAt');
     uploadStatus = registerOutput<String>('uploadStatus');
+    validatorIds = registerOutput<List<String>>('validatorIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     variant = registerOutput<ZeroTrustDlpIntegrationEntryVariant>('variant', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustDlpIntegrationEntryVariant.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    wordList = registerOutput<String>('wordList');
+    wordLists = registerOutput<List<String>>('wordLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Creates a typed reference to an existing [ZeroTrustDlpIntegrationEntry] resource.
@@ -274,7 +286,8 @@ class ZeroTrustDlpIntegrationEntry extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     updatedAt = registerOutput<String>('updatedAt');
     uploadStatus = registerOutput<String>('uploadStatus');
+    validatorIds = registerOutput<List<String>>('validatorIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     variant = registerOutput<ZeroTrustDlpIntegrationEntryVariant>('variant', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustDlpIntegrationEntryVariant.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    wordList = registerOutput<String>('wordList');
+    wordLists = registerOutput<List<String>>('wordLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

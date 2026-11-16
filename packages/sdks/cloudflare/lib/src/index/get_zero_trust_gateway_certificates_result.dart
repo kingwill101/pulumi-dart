@@ -20,6 +20,8 @@ class GetZeroTrustGatewayCertificatesResult {
   final pulumi.Input<String> issuerOrg;
   /// Provide the entire issuer field of the certificate (read-only).
   final pulumi.Input<String> issuerRaw;
+  /// Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.
+  final pulumi.Input<String> region;
   /// Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
   /// Available values: "custom", "gatewayManaged".
   final pulumi.Input<String> type;
@@ -36,6 +38,7 @@ class GetZeroTrustGatewayCertificatesResult {
   /// [inUse] Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
   /// [issuerOrg] Indicate the organization that issued the certificate (read-only).
   /// [issuerRaw] Provide the entire issuer field of the certificate (read-only).
+  /// [region] Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.
   /// [type] Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
   /// [updatedAt] Required.
   /// [uploadedOn] Required.
@@ -49,6 +52,7 @@ class GetZeroTrustGatewayCertificatesResult {
     required this.inUse,
     required this.issuerOrg,
     required this.issuerRaw,
+    required this.region,
     required this.type,
     required this.updatedAt,
     required this.uploadedOn,
@@ -65,6 +69,7 @@ class GetZeroTrustGatewayCertificatesResult {
       'inUse': inUse,
       'issuerOrg': issuerOrg,
       'issuerRaw': issuerRaw,
+      'region': region,
       'type': type,
       'updatedAt': updatedAt,
       'uploadedOn': uploadedOn,
@@ -82,6 +87,7 @@ class GetZeroTrustGatewayCertificatesResult {
       inUse: pulumi.Input.fromValue(map['inUse'] as bool),
       issuerOrg: pulumi.Input.fromValue(map['issuerOrg'] as String),
       issuerRaw: pulumi.Input.fromValue(map['issuerRaw'] as String),
+      region: pulumi.Input.fromValue(map['region'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
       updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),
       uploadedOn: pulumi.Input.fromValue(map['uploadedOn'] as String),

@@ -27,7 +27,7 @@ class GetZeroTrustAccessApplicationsResultPolicy {
   final pulumi.Input<List<GetZeroTrustAccessApplicationsResultPolicyInclude>> includes;
   /// Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
   final pulumi.Input<bool> isolationRequired;
-  /// Configures multi-factor authentication (MFA) settings for this policy.
+  /// Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
   final pulumi.Input<GetZeroTrustAccessApplicationsResultPolicyMfaConfig> mfaConfig;
   /// The name of the Access policy.
   final pulumi.Input<String> name;
@@ -53,7 +53,7 @@ class GetZeroTrustAccessApplicationsResultPolicy {
   /// [id] The UUID of the policy
   /// [includes] Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
   /// [isolationRequired] Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
-  /// [mfaConfig] Configures multi-factor authentication (MFA) settings for this policy.
+  /// [mfaConfig] Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
   /// [name] The name of the Access policy.
   /// [precedence] The order of execution for this policy. Must be unique for each policy within an app.
   /// [purposeJustificationPrompt] A custom message that will appear on the purpose justification screen.
@@ -116,7 +116,7 @@ class GetZeroTrustAccessApplicationsResultPolicy {
       isolationRequired: pulumi.Input.fromValue(map['isolationRequired'] as bool),
       mfaConfig: pulumi.Input.fromValue(GetZeroTrustAccessApplicationsResultPolicyMfaConfig.fromMap((map['mfaConfig']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
-      precedence: pulumi.Input.fromValue((map['precedence'] as num).toInt()),
+      precedence: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['precedence'])),
       purposeJustificationPrompt: pulumi.Input.fromValue(map['purposeJustificationPrompt'] as String),
       purposeJustificationRequired: pulumi.Input.fromValue(map['purposeJustificationRequired'] as bool),
       requires: pulumi.Input.fromValue(pulumi.Input.decodeList<GetZeroTrustAccessApplicationsResultPolicyRequire>(map['requires']!, (value) => GetZeroTrustAccessApplicationsResultPolicyRequire.fromMap((value as Map).cast<String, dynamic>()))),

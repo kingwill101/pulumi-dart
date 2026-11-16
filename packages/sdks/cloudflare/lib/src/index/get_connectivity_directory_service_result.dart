@@ -21,6 +21,7 @@ class GetConnectivityDirectoryServiceResult {
   final int? tcpPort;
   /// TLS settings for a connectivity service.
   final GetConnectivityDirectoryServiceTlsSettings? tlsSettings;
+  /// Available values: "tcp", "http".
   final String? type;
   final String? updatedAt;
 
@@ -37,7 +38,7 @@ class GetConnectivityDirectoryServiceResult {
   /// [serviceId] Optional.
   /// [tcpPort] Optional.
   /// [tlsSettings] TLS settings for a connectivity service.
-  /// [type] Optional.
+  /// [type] Available values: "tcp", "http".
   /// [updatedAt] Optional.
   const GetConnectivityDirectoryServiceResult({
     this.accountId,
@@ -82,12 +83,12 @@ class GetConnectivityDirectoryServiceResult {
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return GetConnectivityDirectoryServiceFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return GetConnectivityDirectoryServiceHost.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      httpPort: (() { final guardedValue = map['httpPort']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      httpsPort: (() { final guardedValue = map['httpsPort']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      httpPort: (() { final guardedValue = map['httpPort']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      httpsPort: (() { final guardedValue = map['httpsPort']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       serviceId: (() { final guardedValue = map['serviceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      tcpPort: (() { final guardedValue = map['tcpPort']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      tcpPort: (() { final guardedValue = map['tcpPort']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       tlsSettings: (() { final guardedValue = map['tlsSettings']; if (guardedValue == null) return null; return GetConnectivityDirectoryServiceTlsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       updatedAt: (() { final guardedValue = map['updatedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),

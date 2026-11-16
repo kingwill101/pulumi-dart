@@ -13,13 +13,15 @@ class RecordArgs {
   final pulumi.Input<String?>? comment;
   /// A valid IPv4 address.
   final pulumi.Input<String?>? content;
-  /// Components of a MX record.
+  /// For `type: CAA`: Components of a CAA record.
   final pulumi.Input<RecordData?>? data;
+  /// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+  final pulumi.Input<bool?>? includeShadowMetadata;
   /// DNS record name (or @ for the zone apex) in Punycode.
   final pulumi.Input<String> name;
   /// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
   final pulumi.Input<double?>? priority;
-  /// Enables private network routing to the origin.
+  /// For `type: A` or `type: AAAA`: Enables private network routing to the origin.
   final pulumi.Input<bool?>? privateRouting;
   /// Whether the record is receiving the performance and security benefits of Cloudflare.
   final pulumi.Input<bool?>? proxied;
@@ -38,10 +40,11 @@ class RecordArgs {
   /// Creates a new [RecordArgs].
   /// [comment] Comments or notes about the DNS record. This field has no effect on DNS responses.
   /// [content] A valid IPv4 address.
-  /// [data] Components of a MX record.
+  /// [data] For `type: CAA`: Components of a CAA record.
+  /// [includeShadowMetadata] Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
   /// [name] DNS record name (or @ for the zone apex) in Punycode.
   /// [priority] Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
-  /// [privateRouting] Enables private network routing to the origin.
+  /// [privateRouting] For `type: A` or `type: AAAA`: Enables private network routing to the origin.
   /// [proxied] Whether the record is receiving the performance and security benefits of Cloudflare.
   /// [settings] Settings for the DNS record.
   /// [tags] Custom tags for the DNS record. This field has no effect on DNS responses.
@@ -52,6 +55,7 @@ class RecordArgs {
     this.comment,
     this.content,
     this.data,
+    this.includeShadowMetadata,
     required this.name,
     this.priority,
     this.privateRouting,
@@ -68,6 +72,7 @@ class RecordArgs {
       'comment': ?comment,
       'content': ?content,
       'data': ?pulumi.Input.mapOptionalInputValue<RecordData, Map<String, dynamic>>(data, (value) => value.toMap()),
+      'includeShadowMetadata': ?includeShadowMetadata,
       'name': name,
       'priority': ?priority,
       'privateRouting': ?privateRouting,
@@ -85,6 +90,7 @@ class RecordArgs {
       comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       data: (() { final guardedValue = map['data']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RecordData.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      includeShadowMetadata: (() { final guardedValue = map['includeShadowMetadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       privateRouting: (() { final guardedValue = map['privateRouting']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

@@ -57,7 +57,7 @@ class AccessApplicationState {
   final pulumi.Input<AccessApplicationLandingPageDesign?>? landingPageDesign;
   /// The image URL for the logo shown in the App Launcher dashboard.
   final pulumi.Input<String?>? logoUrl;
-  /// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+  /// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
   final pulumi.Input<AccessApplicationMfaConfig?>? mfaConfig;
   /// The name of the application.
   final pulumi.Input<String?>? name;
@@ -86,7 +86,7 @@ class AccessApplicationState {
   final pulumi.Input<List<String>?>? selfHostedDomains;
   /// Returns a 401 status code when the request is blocked by a Service Auth policy.
   final pulumi.Input<bool?>? serviceAuth401Redirect;
-  /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+  /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
   final pulumi.Input<String?>? sessionDuration;
   /// Determines when to skip the App Launcher landing page.
   final pulumi.Input<bool?>? skipAppLauncherLoginPage;
@@ -94,6 +94,7 @@ class AccessApplicationState {
   final pulumi.Input<bool?>? skipInterstitial;
   /// The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
   final pulumi.Input<List<String>?>? tags;
+  /// Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
   final pulumi.Input<List<AccessApplicationTargetCriteria>?>? targetCriterias;
   /// The application type.
   /// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "proxyEndpoint".
@@ -124,7 +125,7 @@ class AccessApplicationState {
   /// [httpOnlyCookieAttribute] Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
   /// [landingPageDesign] The design of the App Launcher landing page shown to users when they log in.
   /// [logoUrl] The image URL for the logo shown in the App Launcher dashboard.
-  /// [mfaConfig] Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+  /// [mfaConfig] Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
   /// [name] The name of the application.
   /// [oauthConfiguration] Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
   /// [optionsPreflightBypass] Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
@@ -136,11 +137,11 @@ class AccessApplicationState {
   /// [scimConfig] Configuration for provisioning to this application via SCIM. This is currently in closed beta.
   /// [selfHostedDomains] List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
   /// [serviceAuth401Redirect] Returns a 401 status code when the request is blocked by a Service Auth policy.
-  /// [sessionDuration] The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+  /// [sessionDuration] The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
   /// [skipAppLauncherLoginPage] Determines when to skip the App Launcher landing page.
   /// [skipInterstitial] Enables automatic authentication through cloudflared.
   /// [tags] The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
-  /// [targetCriterias] Optional.
+  /// [targetCriterias] Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
   /// [type] The application type.
   /// [zoneId] The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
   const AccessApplicationState({

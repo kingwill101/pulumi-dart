@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlagshipFlagRuleRollout {
   /// Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.
   final pulumi.Input<String?>? attribute;
-  /// Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+  /// Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
   final pulumi.Input<double> percentage;
 
   /// Creates a new [FlagshipFlagRuleRollout].
   /// [attribute] Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.
-  /// [percentage] Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+  /// [percentage] Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
   const FlagshipFlagRuleRollout({
     this.attribute,
     required this.percentage,

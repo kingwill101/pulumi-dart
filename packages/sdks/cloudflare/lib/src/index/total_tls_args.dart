@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_total_tls_total_tls_args_doc}
 class TotalTlsArgs {
-  /// The Certificate Authority that Total TLS certificates will be issued through.
+  /// The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
   /// Available values: "google", "lets*encrypt", "ssl*com".
   final pulumi.Input<String?>? certificateAuthority;
   /// If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
@@ -16,7 +16,7 @@ class TotalTlsArgs {
   final pulumi.Input<String> zoneId;
 
   /// Creates a new [TotalTlsArgs].
-  /// [certificateAuthority] The Certificate Authority that Total TLS certificates will be issued through.
+  /// [certificateAuthority] The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
   /// [enabled] If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
   /// [zoneId] Identifier.
   const TotalTlsArgs({

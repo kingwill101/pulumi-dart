@@ -8,14 +8,14 @@ import 'get_custom_ssl_filter.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_get_custom_ssl_get_custom_ssl_args_doc}
 class GetCustomSslArgs {
-  /// Identifier.
+  /// Custom certificate identifier tag.
   final pulumi.Input<String?>? customCertificateId;
   final pulumi.Input<GetCustomSslFilter?>? filter;
   /// Identifier.
   final pulumi.Input<String?>? zoneId;
 
   /// Creates a new [GetCustomSslArgs].
-  /// [customCertificateId] Identifier.
+  /// [customCertificateId] Custom certificate identifier tag.
   /// [filter] Optional.
   /// [zoneId] Identifier.
   const GetCustomSslArgs({

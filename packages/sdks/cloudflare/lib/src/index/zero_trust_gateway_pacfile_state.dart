@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering ZeroTrustGatewayPacfile resources.
 class ZeroTrustGatewayPacfileState {
+  /// Specify the Cloudflare account identifier.
   final pulumi.Input<String?>? accountId;
   /// Actual contents of the PAC file
   final pulumi.Input<String?>? contents;
@@ -19,7 +20,7 @@ class ZeroTrustGatewayPacfileState {
   final pulumi.Input<String?>? url;
 
   /// Creates a new [ZeroTrustGatewayPacfileState].
-  /// [accountId] Optional.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [contents] Actual contents of the PAC file
   /// [createdAt] Optional.
   /// [description] Detailed description of the PAC file.

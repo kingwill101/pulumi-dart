@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'organization_meta_tenant_flags.dart';
 
 class OrganizationMeta {
+  final pulumi.Input<bool?>? areChildAccountsAccessibleByOrgMembers;
   /// Ordered chain of organization tags from the root organization down to
   /// (and including) this organization itself. Root organizations return a
   /// single-element array containing their own tag; sub-organizations return
@@ -14,30 +15,39 @@ class OrganizationMeta {
   final pulumi.Input<String?>? managedBy;
   /// Enable features for Organizations.
   final pulumi.Input<OrganizationMetaTenantFlags?>? tenantFlags;
+  final pulumi.Input<String?>? tenantType;
 
   /// Creates a new [OrganizationMeta].
+  /// [areChildAccountsAccessibleByOrgMembers] Optional.
   /// [hierarchyTags] Ordered chain of organization tags from the root organization down to
   /// [managedBy] Optional.
   /// [tenantFlags] Enable features for Organizations.
+  /// [tenantType] Optional.
   const OrganizationMeta({
+    this.areChildAccountsAccessibleByOrgMembers,
     this.hierarchyTags,
     this.managedBy,
     this.tenantFlags,
+    this.tenantType,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'areChildAccountsAccessibleByOrgMembers': ?areChildAccountsAccessibleByOrgMembers,
       'hierarchyTags': ?hierarchyTags,
       'managedBy': ?managedBy,
       'tenantFlags': ?pulumi.Input.mapOptionalInputValue<OrganizationMetaTenantFlags, Map<String, dynamic>>(tenantFlags, (value) => value.toMap()),
+      'tenantType': ?tenantType,
     };
   }
 
   factory OrganizationMeta.fromMap(Map<String, dynamic> map) {
     return OrganizationMeta(
+      areChildAccountsAccessibleByOrgMembers: (() { final guardedValue = map['areChildAccountsAccessibleByOrgMembers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       hierarchyTags: (() { final guardedValue = map['hierarchyTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       managedBy: (() { final guardedValue = map['managedBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tenantFlags: (() { final guardedValue = map['tenantFlags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OrganizationMetaTenantFlags.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tenantType: (() { final guardedValue = map['tenantType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }

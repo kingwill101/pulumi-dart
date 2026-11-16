@@ -7,7 +7,7 @@ class GetCallsSfuAppsResult {
   final pulumi.Input<String> created;
   /// The date and time the item was last modified.
   final pulumi.Input<String> modified;
-  /// A short description of Calls app, not shown to end users.
+  /// A short description of a Realtime SFU app, not shown to end users.
   final pulumi.Input<String> name;
   /// A Cloudflare-generated unique identifier for a item.
   final pulumi.Input<String> uid;
@@ -15,7 +15,7 @@ class GetCallsSfuAppsResult {
   /// Creates a new [GetCallsSfuAppsResult].
   /// [created] The date and time the item was created.
   /// [modified] The date and time the item was last modified.
-  /// [name] A short description of Calls app, not shown to end users.
+  /// [name] A short description of a Realtime SFU app, not shown to end users.
   /// [uid] A Cloudflare-generated unique identifier for a item.
   const GetCallsSfuAppsResult({
     required this.created,

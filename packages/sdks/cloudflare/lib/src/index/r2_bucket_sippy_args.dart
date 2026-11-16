@@ -9,7 +9,7 @@ import 'r2_bucket_sippy_source.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_r2_bucket_sippy_r2_bucket_sippy_args_doc}
 class R2BucketSippyArgs {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   final pulumi.Input<String> accountId;
   /// Name of the bucket.
   final pulumi.Input<String> bucketName;
@@ -21,7 +21,7 @@ class R2BucketSippyArgs {
   final pulumi.Input<R2BucketSippySource?>? source;
 
   /// Creates a new [R2BucketSippyArgs].
-  /// [accountId] Account ID.
+  /// [accountId] Cloudflare account ID that owns the R2 resource.
   /// [bucketName] Name of the bucket.
   /// [destination] R2 bucket to copy objects to.
   /// [jurisdiction] Jurisdiction of the bucket

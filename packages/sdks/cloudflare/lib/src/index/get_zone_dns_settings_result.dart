@@ -8,13 +8,11 @@ import 'get_zone_dns_settings_soa.dart';
 class GetZoneDnsSettingsResult {
   /// Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
   final bool? flattenAllCnames;
-  /// Whether to enable Foundation DNS Advanced Nameservers on the zone.
-  final bool? foundationDns;
   /// Settings for this internal zone.
   final GetZoneDnsSettingsInternalDns? internalDns;
   /// Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
   final bool? multiProvider;
-  /// Settings determining the nameservers through which the zone should be available.
+  /// Controls the nameservers through which the zone is available.
   final GetZoneDnsSettingsNameservers? nameservers;
   /// The time to live (TTL) of the zone's nameserver (NS) records.
   final double? nsTtl;
@@ -30,10 +28,9 @@ class GetZoneDnsSettingsResult {
 
   /// Creates a new [GetZoneDnsSettingsResult].
   /// [flattenAllCnames] Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
-  /// [foundationDns] Whether to enable Foundation DNS Advanced Nameservers on the zone.
   /// [internalDns] Settings for this internal zone.
   /// [multiProvider] Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
-  /// [nameservers] Settings determining the nameservers through which the zone should be available.
+  /// [nameservers] Controls the nameservers through which the zone is available.
   /// [nsTtl] The time to live (TTL) of the zone's nameserver (NS) records.
   /// [secondaryOverrides] Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
   /// [soa] Components of the zone's SOA record.
@@ -41,7 +38,6 @@ class GetZoneDnsSettingsResult {
   /// [zoneMode] Whether the zone mode is a regular or CDN/DNS only zone.
   const GetZoneDnsSettingsResult({
     this.flattenAllCnames,
-    this.foundationDns,
     this.internalDns,
     this.multiProvider,
     this.nameservers,
@@ -55,7 +51,6 @@ class GetZoneDnsSettingsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'flattenAllCnames': ?flattenAllCnames,
-      'foundationDns': ?foundationDns,
       'internalDns': ?internalDns?.toMap(),
       'multiProvider': ?multiProvider,
       'nameservers': ?nameservers?.toMap(),
@@ -70,7 +65,6 @@ class GetZoneDnsSettingsResult {
   factory GetZoneDnsSettingsResult.fromMap(Map<String, dynamic> map) {
     return GetZoneDnsSettingsResult(
       flattenAllCnames: (() { final guardedValue = map['flattenAllCnames']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      foundationDns: (() { final guardedValue = map['foundationDns']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       internalDns: (() { final guardedValue = map['internalDns']; if (guardedValue == null) return null; return GetZoneDnsSettingsInternalDns.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       multiProvider: (() { final guardedValue = map['multiProvider']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       nameservers: (() { final guardedValue = map['nameservers']; if (guardedValue == null) return null; return GetZoneDnsSettingsNameservers.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),

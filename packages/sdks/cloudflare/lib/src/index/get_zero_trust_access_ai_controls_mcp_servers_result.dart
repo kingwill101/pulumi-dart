@@ -25,7 +25,7 @@ class GetZeroTrustAccessAiControlsMcpServersResult {
   final pulumi.Input<String> hostname;
   /// Unique identifier for the MCP server.
   final pulumi.Input<String> id;
-  /// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+  /// When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
   final pulumi.Input<bool> isSharedOauthCallbackEnabled;
   final pulumi.Input<String> lastSuccessfulSync;
   final pulumi.Input<String> lastSynced;
@@ -34,6 +34,8 @@ class GetZeroTrustAccessAiControlsMcpServersResult {
   /// Display name for the MCP server.
   final pulumi.Input<String> name;
   final pulumi.Input<List<Map<String, String>>> prompts;
+  /// Timestamp of the most recent successful admin OAuth registration.
+  final pulumi.Input<String> registeredAt;
   /// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
   final pulumi.Input<bool> secureWebGateway;
   /// Current sync state of the server
@@ -56,13 +58,14 @@ class GetZeroTrustAccessAiControlsMcpServersResult {
   /// [errorDetails] Required.
   /// [hostname] URL of the upstream MCP endpoint.
   /// [id] Unique identifier for the MCP server.
-  /// [isSharedOauthCallbackEnabled] When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+  /// [isSharedOauthCallbackEnabled] When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
   /// [lastSuccessfulSync] Required.
   /// [lastSynced] Required.
   /// [modifiedAt] Required.
   /// [modifiedBy] Required.
   /// [name] Display name for the MCP server.
   /// [prompts] Required.
+  /// [registeredAt] Timestamp of the most recent successful admin OAuth registration.
   /// [secureWebGateway] Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
   /// [status] Current sync state of the server
   /// [tools] Required.
@@ -86,6 +89,7 @@ class GetZeroTrustAccessAiControlsMcpServersResult {
     required this.modifiedBy,
     required this.name,
     required this.prompts,
+    required this.registeredAt,
     required this.secureWebGateway,
     required this.status,
     required this.tools,
@@ -112,6 +116,7 @@ class GetZeroTrustAccessAiControlsMcpServersResult {
       'modifiedBy': modifiedBy,
       'name': name,
       'prompts': prompts,
+      'registeredAt': registeredAt,
       'secureWebGateway': secureWebGateway,
       'status': status,
       'tools': tools,
@@ -139,6 +144,7 @@ class GetZeroTrustAccessAiControlsMcpServersResult {
       modifiedBy: pulumi.Input.fromValue(map['modifiedBy'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       prompts: pulumi.Input.fromValue(pulumi.Input.decodeList<Map<String, String>>(map['prompts']!, (value) => (value as Map).cast<String, String>())),
+      registeredAt: pulumi.Input.fromValue(map['registeredAt'] as String),
       secureWebGateway: pulumi.Input.fromValue(map['secureWebGateway'] as bool),
       status: pulumi.Input.fromValue(map['status'] as String),
       tools: pulumi.Input.fromValue(pulumi.Input.decodeList<Map<String, String>>(map['tools']!, (value) => (value as Map).cast<String, String>())),

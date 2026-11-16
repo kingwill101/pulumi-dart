@@ -65,7 +65,7 @@ class GetCustomPageAssetResult {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       lastUpdated: (() { final guardedValue = map['lastUpdated']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      sizeBytes: (() { final guardedValue = map['sizeBytes']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      sizeBytes: (() { final guardedValue = map['sizeBytes']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return guardedValue as String; })(),
       zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

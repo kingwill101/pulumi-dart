@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkersDeploymentVersion {
+  /// Percentage of traffic served by this version.
   final pulumi.Input<double> percentage;
+  /// Identifier of the Worker Version.
   final pulumi.Input<String> versionId;
 
   /// Creates a new [WorkersDeploymentVersion].
-  /// [percentage] Required.
-  /// [versionId] Required.
+  /// [percentage] Percentage of traffic served by this version.
+  /// [versionId] Identifier of the Worker Version.
   const WorkersDeploymentVersion({
     required this.percentage,
     required this.versionId,

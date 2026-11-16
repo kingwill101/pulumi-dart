@@ -14,6 +14,8 @@ class ApiShieldSchemaState {
   final pulumi.Input<String?>? kind;
   /// Name of the schema
   final pulumi.Input<String?>? name;
+  /// Omit the source-files of schemas and only retrieve their meta-data.
+  final pulumi.Input<bool?>? omitSource;
   final pulumi.Input<ApiShieldSchemaSchema?>? schema;
   final pulumi.Input<String?>? schemaId;
   /// Source of the schema
@@ -30,6 +32,7 @@ class ApiShieldSchemaState {
   /// [file] Schema file bytes
   /// [kind] Kind of schema
   /// [name] Name of the schema
+  /// [omitSource] Omit the source-files of schemas and only retrieve their meta-data.
   /// [schema] Optional.
   /// [schemaId] Optional.
   /// [source] Source of the schema
@@ -41,6 +44,7 @@ class ApiShieldSchemaState {
     this.file,
     this.kind,
     this.name,
+    this.omitSource,
     this.schema,
     this.schemaId,
     this.source,
@@ -55,6 +59,7 @@ class ApiShieldSchemaState {
       'file': ?file,
       'kind': ?kind,
       'name': ?name,
+      'omitSource': ?omitSource,
       'schema': ?pulumi.Input.mapOptionalInputValue<ApiShieldSchemaSchema, Map<String, dynamic>>(schema, (value) => value.toMap()),
       'schemaId': ?schemaId,
       'source': ?source,
@@ -70,6 +75,7 @@ class ApiShieldSchemaState {
       file: (() { final guardedValue = map['file']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      omitSource: (() { final guardedValue = map['omitSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       schema: (() { final guardedValue = map['schema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApiShieldSchemaSchema.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       schemaId: (() { final guardedValue = map['schemaId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

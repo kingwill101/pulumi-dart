@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RiskBehaviorBehaviors {
   final pulumi.Input<bool> enabled;
-  /// Available values: "low", "medium", "high".
+  /// Available values: "info", "low", "medium", "high".
   final pulumi.Input<String> riskLevel;
 
   /// Creates a new [RiskBehaviorBehaviors].
   /// [enabled] Required.
-  /// [riskLevel] Available values: "low", "medium", "high".
+  /// [riskLevel] Available values: "info", "low", "medium", "high".
   const RiskBehaviorBehaviors({
     required this.enabled,
     required this.riskLevel,

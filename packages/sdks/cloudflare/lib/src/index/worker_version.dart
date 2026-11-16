@@ -6,6 +6,7 @@ import 'worker_version_binding.dart';
 import 'worker_version_cache_options.dart';
 import 'worker_version_container.dart';
 import 'worker_version_exports.dart';
+import 'worker_version_exports_reconciliation.dart';
 import 'worker_version_limits.dart';
 import 'worker_version_migrations.dart';
 import 'worker_version_module.dart';
@@ -15,6 +16,12 @@ import 'worker_version_state.dart';
 
 /// Accepted Permissions
 ///
+/// - `Individual Workers Admin`
+/// - `Individual Workers Content Read-Only`
+/// - `Individual Workers Editor`
+/// - `Workers Admin`
+/// - `Workers Content Read-Only`
+/// - `Workers Editor`
 /// - `Workers Scripts Read`
 /// - `Workers Scripts Write`
 /// - `Workers Tail Read`
@@ -35,6 +42,7 @@ import 'worker_version_state.dart';
 ///     },
 ///     assets: {
 ///         config: {
+///             basePath: "/docs/",
 ///             htmlHandling: "auto-trailing-slash",
 ///             notFoundHandling: "404-page",
 ///             runWorkerFirst: [],
@@ -50,7 +58,7 @@ import 'worker_version_state.dart';
 ///         enabled: true,
 ///         crossVersionCache: true,
 ///     },
-///     compatibilityDate: "2021-01-01",
+///     compatibilityDate: "2021-01-01T00:00:00Z",
 ///     compatibilityFlags: ["nodejs_compat"],
 ///     containers: [{
 ///         className: "MyDurableObject",
@@ -61,22 +69,25 @@ import 'worker_version_state.dart';
 ///             cache: {
 ///                 enabled: true,
 ///             },
-///             renamedTo: "renamed_to",
 ///             state: "created",
+///         },
+///         Counter: {
 ///             storage: "sqlite",
-///             transferFrom: "transfer_from",
-///             transferredTo: "transferred_to",
+///             type: "durable-object",
+///             container: "my-container",
+///             state: "created",
+///         },
+///         OldCounter: {
+///             renamedTo: "Counter",
+///             state: "renamed",
+///             type: "durable-object",
 ///         },
 ///         "default": {
 ///             type: "worker",
 ///             cache: {
 ///                 enabled: false,
 ///             },
-///             renamedTo: "renamed_to",
 ///             state: "created",
-///             storage: "sqlite",
-///             transferFrom: "transfer_from",
-///             transferredTo: "transferred_to",
 ///         },
 ///     },
 ///     limits: {
@@ -101,7 +112,7 @@ import 'worker_version_state.dart';
 ///         }],
 ///     },
 ///     modules: [{
-///         contentFile: "dist/index.js",
+///         contentBase64: "ZXhwb3J0IGRlZmF1bHQgewogIGFzeW5jIGZldGNoKHJlcXVlc3QsIGVudiwgY3R4KSB7CiAgICByZXR1cm4gbmV3IFJlc3BvbnNlKCdIZWxsbyBXb3JsZCEnKQogIH0KfQ==",
 ///         contentType: "application/javascript+module",
 ///         name: "index.js",
 ///     }],
@@ -113,6 +124,7 @@ import 'worker_version_state.dart';
 ///     placement: {
 ///         mode: "smart",
 ///     },
+///     usageModel: "standard",
 /// });
 /// ```
 /// ```python
@@ -128,6 +140,7 @@ import 'worker_version_state.dart';
 ///     },
 ///     assets={
 ///         "config": {
+///             "base_path": "/docs/",
 ///             "html_handling": "auto-trailing-slash",
 ///             "not_found_handling": "404-page",
 ///             "run_worker_first": [],
@@ -143,7 +156,7 @@ import 'worker_version_state.dart';
 ///         "enabled": True,
 ///         "cross_version_cache": True,
 ///     },
-///     compatibility_date="2021-01-01",
+///     compatibility_date="2021-01-01T00:00:00Z",
 ///     compatibility_flags=["nodejs_compat"],
 ///     containers=[{
 ///         "class_name": "MyDurableObject",
@@ -154,22 +167,25 @@ import 'worker_version_state.dart';
 ///             "cache": {
 ///                 "enabled": True,
 ///             },
-///             "renamed_to": "renamed_to",
 ///             "state": "created",
+///         },
+///         "Counter": {
 ///             "storage": "sqlite",
-///             "transfer_from": "transfer_from",
-///             "transferred_to": "transferred_to",
+///             "type": "durable-object",
+///             "container": "my-container",
+///             "state": "created",
+///         },
+///         "OldCounter": {
+///             "renamed_to": "Counter",
+///             "state": "renamed",
+///             "type": "durable-object",
 ///         },
 ///         "default": {
 ///             "type": "worker",
 ///             "cache": {
 ///                 "enabled": False,
 ///             },
-///             "renamed_to": "renamed_to",
 ///             "state": "created",
-///             "storage": "sqlite",
-///             "transfer_from": "transfer_from",
-///             "transferred_to": "transferred_to",
 ///         },
 ///     },
 ///     limits={
@@ -194,7 +210,7 @@ import 'worker_version_state.dart';
 ///         }],
 ///     },
 ///     modules=[{
-///         "content_file": "dist/index.js",
+///         "content_base64": "ZXhwb3J0IGRlZmF1bHQgewogIGFzeW5jIGZldGNoKHJlcXVlc3QsIGVudiwgY3R4KSB7CiAgICByZXR1cm4gbmV3IFJlc3BvbnNlKCdIZWxsbyBXb3JsZCEnKQogIH0KfQ==",
 ///         "content_type": "application/javascript+module",
 ///         "name": "index.js",
 ///     }],
@@ -205,7 +221,8 @@ import 'worker_version_state.dart';
 ///     }],
 ///     placement={
 ///         "mode": "smart",
-///     })
+///     },
+///     usage_model="standard")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -228,6 +245,7 @@ import 'worker_version_state.dart';
 ///         {
 ///             Config = new Cloudflare.Inputs.WorkerVersionAssetsConfigArgs
 ///             {
+///                 BasePath = "/docs/",
 ///                 HtmlHandling = "auto-trailing-slash",
 ///                 NotFoundHandling = "404-page",
 ///                 RunWorkerFirst = new() { },
@@ -248,7 +266,7 @@ import 'worker_version_state.dart';
 ///             Enabled = true,
 ///             CrossVersionCache = true,
 ///         },
-///         CompatibilityDate = "2021-01-01",
+///         CompatibilityDate = "2021-01-01T00:00:00Z",
 ///         CompatibilityFlags = new[]
 ///         {
 ///             "nodejs_compat",
@@ -269,11 +287,20 @@ import 'worker_version_state.dart';
 ///                 {
 ///                     Enabled = true,
 ///                 },
-///                 RenamedTo = "renamed_to",
 ///                 State = "created",
+///             } },
+///             { "Counter", new Cloudflare.Inputs.WorkerVersionExportsArgs
+///             {
 ///                 Storage = "sqlite",
-///                 TransferFrom = "transfer_from",
-///                 TransferredTo = "transferred_to",
+///                 Type = "durable-object",
+///                 Container = "my-container",
+///                 State = "created",
+///             } },
+///             { "OldCounter", new Cloudflare.Inputs.WorkerVersionExportsArgs
+///             {
+///                 RenamedTo = "Counter",
+///                 State = "renamed",
+///                 Type = "durable-object",
 ///             } },
 ///             { "default", new Cloudflare.Inputs.WorkerVersionExportsArgs
 ///             {
@@ -282,11 +309,7 @@ import 'worker_version_state.dart';
 ///                 {
 ///                     Enabled = false,
 ///                 },
-///                 RenamedTo = "renamed_to",
 ///                 State = "created",
-///                 Storage = "sqlite",
-///                 TransferFrom = "transfer_from",
-///                 TransferredTo = "transferred_to",
 ///             } },
 ///         },
 ///         Limits = new Cloudflare.Inputs.WorkerVersionLimitsArgs
@@ -333,7 +356,7 @@ import 'worker_version_state.dart';
 ///         {
 ///             new Cloudflare.Inputs.WorkerVersionModuleArgs
 ///             {
-///                 ContentFile = "dist/index.js",
+///                 ContentBase64 = "ZXhwb3J0IGRlZmF1bHQgewogIGFzeW5jIGZldGNoKHJlcXVlc3QsIGVudiwgY3R4KSB7CiAgICByZXR1cm4gbmV3IFJlc3BvbnNlKCdIZWxsbyBXb3JsZCEnKQogIH0KfQ==",
 ///                 ContentType = "application/javascript+module",
 ///                 Name = "index.js",
 ///             },
@@ -351,6 +374,7 @@ import 'worker_version_state.dart';
 ///         {
 ///             Mode = "smart",
 ///         },
+///         UsageModel = "standard",
 ///     });
 ///
 /// });
@@ -374,6 +398,7 @@ import 'worker_version_state.dart';
 /// 			},
 /// 			Assets: &cloudflare.WorkerVersionAssetsArgs{
 /// 				Config: &cloudflare.WorkerVersionAssetsConfigArgs{
+/// 					BasePath:         pulumi.String("/docs/"),
 /// 					HtmlHandling:     pulumi.String("auto-trailing-slash"),
 /// 					NotFoundHandling: pulumi.String("404-page"),
 /// 					RunWorkerFirst:   pulumi.Any{},
@@ -391,7 +416,7 @@ import 'worker_version_state.dart';
 /// 				Enabled:           pulumi.Bool(true),
 /// 				CrossVersionCache: pulumi.Bool(true),
 /// 			},
-/// 			CompatibilityDate: pulumi.String("2021-01-01"),
+/// 			CompatibilityDate: pulumi.String("2021-01-01T00:00:00Z"),
 /// 			CompatibilityFlags: pulumi.StringArray{
 /// 				pulumi.String("nodejs_compat"),
 /// 			},
@@ -406,22 +431,25 @@ import 'worker_version_state.dart';
 /// 					Cache: &cloudflare.WorkerVersionExportsCacheArgs{
 /// 						Enabled: pulumi.Bool(true),
 /// 					},
-/// 					RenamedTo:     pulumi.String("renamed_to"),
-/// 					State:         pulumi.String("created"),
-/// 					Storage:       pulumi.String("sqlite"),
-/// 					TransferFrom:  pulumi.String("transfer_from"),
-/// 					TransferredTo: pulumi.String("transferred_to"),
+/// 					State: pulumi.String("created"),
+/// 				},
+/// 				"Counter": &cloudflare.WorkerVersionExportsArgs{
+/// 					Storage:   pulumi.String("sqlite"),
+/// 					Type:      pulumi.String("durable-object"),
+/// 					Container: pulumi.String("my-container"),
+/// 					State:     pulumi.String("created"),
+/// 				},
+/// 				"OldCounter": &cloudflare.WorkerVersionExportsArgs{
+/// 					RenamedTo: pulumi.String("Counter"),
+/// 					State:     pulumi.String("renamed"),
+/// 					Type:      pulumi.String("durable-object"),
 /// 				},
 /// 				"default": &cloudflare.WorkerVersionExportsArgs{
 /// 					Type: pulumi.String("worker"),
 /// 					Cache: &cloudflare.WorkerVersionExportsCacheArgs{
 /// 						Enabled: pulumi.Bool(false),
 /// 					},
-/// 					RenamedTo:     pulumi.String("renamed_to"),
-/// 					State:         pulumi.String("created"),
-/// 					Storage:       pulumi.String("sqlite"),
-/// 					TransferFrom:  pulumi.String("transfer_from"),
-/// 					TransferredTo: pulumi.String("transferred_to"),
+/// 					State: pulumi.String("created"),
 /// 				},
 /// 			},
 /// 			Limits: &cloudflare.WorkerVersionLimitsArgs{
@@ -457,9 +485,9 @@ import 'worker_version_state.dart';
 /// 			},
 /// 			Modules: cloudflare.WorkerVersionModuleArray{
 /// 				&cloudflare.WorkerVersionModuleArgs{
-/// 					ContentFile: pulumi.String("dist/index.js"),
-/// 					ContentType: pulumi.String("application/javascript+module"),
-/// 					Name:        pulumi.String("index.js"),
+/// 					ContentBase64: pulumi.String("ZXhwb3J0IGRlZmF1bHQgewogIGFzeW5jIGZldGNoKHJlcXVlc3QsIGVudiwgY3R4KSB7CiAgICByZXR1cm4gbmV3IFJlc3BvbnNlKCdIZWxsbyBXb3JsZCEnKQogIH0KfQ=="),
+/// 					ContentType:   pulumi.String("application/javascript+module"),
+/// 					Name:          pulumi.String("index.js"),
 /// 				},
 /// 			},
 /// 			PackageDependencies: cloudflare.WorkerVersionPackageDependencyArray{
@@ -472,6 +500,7 @@ import 'worker_version_state.dart';
 /// 			Placement: &cloudflare.WorkerVersionPlacementArgs{
 /// 				Mode: pulumi.String("smart"),
 /// 			},
+/// 			UsageModel: pulumi.String("standard"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -481,7 +510,7 @@ import 'worker_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -489,7 +518,10 @@ import 'worker_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_workerversion" "example_worker_version" {
+/// resource "cloudflare_worker_version" "example_worker_version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   worker_id  = "worker_id"
 ///   annotations = {
@@ -498,48 +530,52 @@ import 'worker_version_state.dart';
 ///   }
 ///   assets = {
 ///     config = {
+///       base_path          = "/docs/"
 ///       html_handling      = "auto-trailing-slash"
 ///       not_found_handling = "404-page"
 ///       run_worker_first   = []
 ///     }
 ///     jwt = "jwt"
 ///   }
-///   bindings {
+///   bindings = [{
 ///     name = "MY_ENV_VAR"
 ///     text = "my_data"
 ///     type = "plain_text"
-///   }
+///   }]
 ///   cache_options = {
 ///     enabled             = true
 ///     cross_version_cache = true
 ///   }
-///   compatibility_date  = "2021-01-01"
+///   compatibility_date  = "2021-01-01T00:00:00Z"
 ///   compatibility_flags = ["nodejs_compat"]
-///   containers {
+///   containers = [{
 ///     class_name = "MyDurableObject"
-///   }
+///   }]
 ///   exports = {
 ///     "Admin" = {
 ///       type = "worker"
 ///       cache = {
 ///         enabled = true
 ///       }
-///       renamed_to     = "renamed_to"
-///       state          = "created"
-///       storage        = "sqlite"
-///       transfer_from  = "transfer_from"
-///       transferred_to = "transferred_to"
+///       state = "created"
+///     }
+///     "Counter" = {
+///       storage   = "sqlite"
+///       type      = "durable-object"
+///       container = "my-container"
+///       state     = "created"
+///     }
+///     "OldCounter" = {
+///       renamed_to = "Counter"
+///       state      = "renamed"
+///       type       = "durable-object"
 ///     }
 ///     "default" = {
 ///       type = "worker"
 ///       cache = {
 ///         enabled = false
 ///       }
-///       renamed_to     = "renamed_to"
-///       state          = "created"
-///       storage        = "sqlite"
-///       transfer_from  = "transfer_from"
-///       transferred_to = "transferred_to"
+///       state = "created"
 ///     }
 ///   }
 ///   limits = {
@@ -554,28 +590,29 @@ import 'worker_version_state.dart';
 ///     new_tag            = "v2"
 ///     old_tag            = "v1"
 ///     renamed_classes = [{
-///       "from" = "from"
-///       "to"   = "to"
+///       from = "from"
+///       to   = "to"
 ///     }]
 ///     transferred_classes = [{
-///       "from"       = "from"
-///       "fromScript" = "from_script"
-///       "to"         = "to"
+///       from        = "from"
+///       from_script = "from_script"
+///       to          = "to"
 ///     }]
 ///   }
-///   modules {
-///     content_file = "dist/index.js"
-///     content_type = "application/javascript+module"
-///     name         = "index.js"
-///   }
-///   package_dependencies {
+///   modules = [{
+///     content_base64 = "ZXhwb3J0IGRlZmF1bHQgewogIGFzeW5jIGZldGNoKHJlcXVlc3QsIGVudiwgY3R4KSB7CiAgICByZXR1cm4gbmV3IFJlc3BvbnNlKCdIZWxsbyBXb3JsZCEnKQogIH0KfQ=="
+///     content_type   = "application/javascript+module"
+///     name           = "index.js"
+///   }]
+///   package_dependencies = [{
 ///     installed_version    = "4.17.22"
 ///     name                 = "lodash"
 ///     package_json_version = "^4.17.21"
-///   }
+///   }]
 ///   placement = {
 ///     mode = "smart"
 ///   }
+///   usage_model = "standard"
 /// }
 /// ```
 /// ```java
@@ -623,6 +660,7 @@ import 'worker_version_state.dart';
 ///                 .build())
 ///             .assets(WorkerVersionAssetsArgs.builder()
 ///                 .config(WorkerVersionAssetsConfigArgs.builder()
+///                     .basePath("/docs/")
 ///                     .htmlHandling("auto-trailing-slash")
 ///                     .notFoundHandling("404-page")
 ///                     .runWorkerFirst()
@@ -638,7 +676,7 @@ import 'worker_version_state.dart';
 ///                 .enabled(true)
 ///                 .crossVersionCache(true)
 ///                 .build())
-///             .compatibilityDate("2021-01-01")
+///             .compatibilityDate("2021-01-01T00:00:00Z")
 ///             .compatibilityFlags("nodejs_compat")
 ///             .containers(WorkerVersionContainerArgs.builder()
 ///                 .className("MyDurableObject")
@@ -649,22 +687,25 @@ import 'worker_version_state.dart';
 ///                     .cache(WorkerVersionExportsCacheArgs.builder()
 ///                         .enabled(true)
 ///                         .build())
-///                     .renamedTo("renamed_to")
 ///                     .state("created")
+///                     .build()),
+///                 Map.entry("Counter", WorkerVersionExportsArgs.builder()
 ///                     .storage("sqlite")
-///                     .transferFrom("transfer_from")
-///                     .transferredTo("transferred_to")
+///                     .type("durable-object")
+///                     .container("my-container")
+///                     .state("created")
+///                     .build()),
+///                 Map.entry("OldCounter", WorkerVersionExportsArgs.builder()
+///                     .renamedTo("Counter")
+///                     .state("renamed")
+///                     .type("durable-object")
 ///                     .build()),
 ///                 Map.entry("default", WorkerVersionExportsArgs.builder()
 ///                     .type("worker")
 ///                     .cache(WorkerVersionExportsCacheArgs.builder()
 ///                         .enabled(false)
 ///                         .build())
-///                     .renamedTo("renamed_to")
 ///                     .state("created")
-///                     .storage("sqlite")
-///                     .transferFrom("transfer_from")
-///                     .transferredTo("transferred_to")
 ///                     .build())
 ///             ))
 ///             .limits(WorkerVersionLimitsArgs.builder()
@@ -689,7 +730,7 @@ import 'worker_version_state.dart';
 ///                     .build())
 ///                 .build())
 ///             .modules(WorkerVersionModuleArgs.builder()
-///                 .contentFile("dist/index.js")
+///                 .contentBase64("ZXhwb3J0IGRlZmF1bHQgewogIGFzeW5jIGZldGNoKHJlcXVlc3QsIGVudiwgY3R4KSB7CiAgICByZXR1cm4gbmV3IFJlc3BvbnNlKCdIZWxsbyBXb3JsZCEnKQogIH0KfQ==")
 ///                 .contentType("application/javascript+module")
 ///                 .name("index.js")
 ///                 .build())
@@ -701,6 +742,7 @@ import 'worker_version_state.dart';
 ///             .placement(WorkerVersionPlacementArgs.builder()
 ///                 .mode("smart")
 ///                 .build())
+///             .usageModel("standard")
 ///             .build());
 ///
 ///     }
@@ -719,6 +761,7 @@ import 'worker_version_state.dart';
 ///         workersTag: v1.0.1
 ///       assets:
 ///         config:
+///           basePath: /docs/
 ///           htmlHandling: auto-trailing-slash
 ///           notFoundHandling: 404-page
 ///           runWorkerFirst: []
@@ -730,7 +773,7 @@ import 'worker_version_state.dart';
 ///       cacheOptions:
 ///         enabled: true
 ///         crossVersionCache: true
-///       compatibilityDate: 2021-01-01
+///       compatibilityDate: 2021-01-01T00:00:00Z
 ///       compatibilityFlags:
 ///         - nodejs_compat
 ///       containers:
@@ -740,20 +783,21 @@ import 'worker_version_state.dart';
 ///           type: worker
 ///           cache:
 ///             enabled: true
-///           renamedTo: renamed_to
 ///           state: created
+///         Counter:
 ///           storage: sqlite
-///           transferFrom: transfer_from
-///           transferredTo: transferred_to
+///           type: durable-object
+///           container: my-container
+///           state: created
+///         OldCounter:
+///           renamedTo: Counter
+///           state: renamed
+///           type: durable-object
 ///         default:
 ///           type: worker
 ///           cache:
 ///             enabled: false
-///           renamedTo: renamed_to
 ///           state: created
-///           storage: sqlite
-///           transferFrom: transfer_from
-///           transferredTo: transferred_to
 ///       limits:
 ///         cpuMs: 50
 ///         subrequests: 1000
@@ -775,7 +819,7 @@ import 'worker_version_state.dart';
 ///             fromScript: from_script
 ///             to: to
 ///       modules:
-///         - contentFile: dist/index.js
+///         - contentBase64: ZXhwb3J0IGRlZmF1bHQgewogIGFzeW5jIGZldGNoKHJlcXVlc3QsIGVudiwgY3R4KSB7CiAgICByZXR1cm4gbmV3IFJlc3BvbnNlKCdIZWxsbyBXb3JsZCEnKQogIH0KfQ==
 ///           contentType: application/javascript+module
 ///           name: index.js
 ///       packageDependencies:
@@ -784,6 +828,7 @@ import 'worker_version_state.dart';
 ///           packageJsonVersion: ^4.17.21
 ///       placement:
 ///         mode: smart
+///       usageModel: standard
 /// ```
 ///
 ///
@@ -799,6 +844,10 @@ class WorkerVersion extends pulumi.CustomResource {
   late final pulumi.Output<WorkerVersionAnnotations> annotations;
   /// Configuration for assets within a Worker.
   late final pulumi.Output<WorkerVersionAssets?> assets;
+  /// Email of the user who created the version.
+  late final pulumi.Output<String> authorEmail;
+  /// Identifier of the user who created the version.
+  late final pulumi.Output<String> authorId;
   /// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
   late final pulumi.Output<List<WorkerVersionBinding>?> bindings;
   /// Global CacheW configuration for the Worker. When caching is on,
@@ -808,12 +857,16 @@ class WorkerVersion extends pulumi.CustomResource {
   late final pulumi.Output<WorkerVersionCacheOptions> cacheOptions;
   /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
   late final pulumi.Output<String?> compatibilityDate;
-  /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
+  /// Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibilityDate`.
+  ///
+  /// Responses list only the flags this version sets explicitly and exclude behavior that `compatibilityDate` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.
   late final pulumi.Output<List<String>> compatibilityFlags;
   /// List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
   late final pulumi.Output<List<WorkerVersionContainer>?> containers;
   /// When the version was created.
   late final pulumi.Output<String> createdOn;
+  /// If true, a deployment will be created that sends 100% of traffic to the new version.
+  late final pulumi.Output<bool?> deploy;
   /// Declarative exports for the version, including Durable Object
   /// classes (with their `storage` backend) and named Worker
   /// entrypoints. On reads, tombstoned lifecycle entries are
@@ -821,6 +874,11 @@ class WorkerVersion extends pulumi.CustomResource {
   /// `expecting-transfer`) are returned. `exports` and `migrations`
   /// are mutually exclusive on upload.
   late final pulumi.Output<Map<String, WorkerVersionExports>?> exports;
+  /// Summary of the declarative exports reconciliation that ran on this upload. Populated only when the uploaded metadata included an `exports` block. Durable Object entries drive reconciliation; `type: worker` entries do not contribute to this summary.
+  late final pulumi.Output<WorkerVersionExportsReconciliation> exportsReconciliation;
+  /// Optional properties to include in the response. `modules` includes the `modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the version's source maps in `modules`.
+  /// Available values: "modules", "modules,sourcemaps".
+  late final pulumi.Output<String?> include;
   /// Resource limits enforced at runtime.
   late final pulumi.Output<WorkerVersionLimits> limits;
   /// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
@@ -832,6 +890,10 @@ class WorkerVersion extends pulumi.CustomResource {
   /// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
   late final pulumi.Output<WorkerVersionMigrations?> migrations;
   /// Code, sourcemaps, and other content used at runtime.
+  ///
+  /// Source maps use content type `application/source-map`. Responses include them only when requested with
+  /// `include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned
+  /// source map is equivalent to the uploaded file but not byte-identical.
   ///
   /// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
   /// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
@@ -869,18 +931,23 @@ class WorkerVersion extends pulumi.CustomResource {
           'cloudflare:index/workerVersion:WorkerVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     annotations = registerOutput<WorkerVersionAnnotations>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerVersionAnnotations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     assets = registerOutput<WorkerVersionAssets?>('assets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerVersionAssets.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authorEmail = registerOutput<String>('authorEmail');
+    authorId = registerOutput<String>('authorId');
     bindings = registerOutput<List<WorkerVersionBinding>?>('bindings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerVersionBinding>(guardedValue, (value) => WorkerVersionBinding.fromMap((value as Map).cast<String, dynamic>())); });
     cacheOptions = registerOutput<WorkerVersionCacheOptions>('cacheOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerVersionCacheOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     compatibilityDate = registerOutput<String?>('compatibilityDate');
     compatibilityFlags = registerOutput<List<String>>('compatibilityFlags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     containers = registerOutput<List<WorkerVersionContainer>?>('containers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerVersionContainer>(guardedValue, (value) => WorkerVersionContainer.fromMap((value as Map).cast<String, dynamic>())); });
     createdOn = registerOutput<String>('createdOn');
+    deploy = registerOutput<bool?>('deploy');
     exports = registerOutput<Map<String, WorkerVersionExports>?>('exports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<WorkerVersionExports>(guardedValue, (value) => WorkerVersionExports.fromMap((value as Map).cast<String, dynamic>())); });
+    exportsReconciliation = registerOutput<WorkerVersionExportsReconciliation>('exportsReconciliation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerVersionExportsReconciliation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    include = registerOutput<String?>('include');
     limits = registerOutput<WorkerVersionLimits>('limits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerVersionLimits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mainModule = registerOutput<String?>('mainModule');
     mainScriptBase64 = registerOutput<String>('mainScriptBase64');
@@ -924,13 +991,18 @@ class WorkerVersion extends pulumi.CustomResource {
     accountId = registerOutput<String>('accountId');
     annotations = registerOutput<WorkerVersionAnnotations>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerVersionAnnotations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     assets = registerOutput<WorkerVersionAssets?>('assets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerVersionAssets.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authorEmail = registerOutput<String>('authorEmail');
+    authorId = registerOutput<String>('authorId');
     bindings = registerOutput<List<WorkerVersionBinding>?>('bindings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerVersionBinding>(guardedValue, (value) => WorkerVersionBinding.fromMap((value as Map).cast<String, dynamic>())); });
     cacheOptions = registerOutput<WorkerVersionCacheOptions>('cacheOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerVersionCacheOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     compatibilityDate = registerOutput<String?>('compatibilityDate');
     compatibilityFlags = registerOutput<List<String>>('compatibilityFlags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     containers = registerOutput<List<WorkerVersionContainer>?>('containers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerVersionContainer>(guardedValue, (value) => WorkerVersionContainer.fromMap((value as Map).cast<String, dynamic>())); });
     createdOn = registerOutput<String>('createdOn');
+    deploy = registerOutput<bool?>('deploy');
     exports = registerOutput<Map<String, WorkerVersionExports>?>('exports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<WorkerVersionExports>(guardedValue, (value) => WorkerVersionExports.fromMap((value as Map).cast<String, dynamic>())); });
+    exportsReconciliation = registerOutput<WorkerVersionExportsReconciliation>('exportsReconciliation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerVersionExportsReconciliation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    include = registerOutput<String?>('include');
     limits = registerOutput<WorkerVersionLimits>('limits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerVersionLimits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mainModule = registerOutput<String?>('mainModule');
     mainScriptBase64 = registerOutput<String>('mainScriptBase64');
@@ -959,13 +1031,18 @@ class WorkerVersion extends pulumi.CustomResource {
     accountId = registerOutput<String>('accountId');
     annotations = registerOutput<WorkerVersionAnnotations>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerVersionAnnotations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     assets = registerOutput<WorkerVersionAssets?>('assets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerVersionAssets.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authorEmail = registerOutput<String>('authorEmail');
+    authorId = registerOutput<String>('authorId');
     bindings = registerOutput<List<WorkerVersionBinding>?>('bindings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerVersionBinding>(guardedValue, (value) => WorkerVersionBinding.fromMap((value as Map).cast<String, dynamic>())); });
     cacheOptions = registerOutput<WorkerVersionCacheOptions>('cacheOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerVersionCacheOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     compatibilityDate = registerOutput<String?>('compatibilityDate');
     compatibilityFlags = registerOutput<List<String>>('compatibilityFlags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     containers = registerOutput<List<WorkerVersionContainer>?>('containers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerVersionContainer>(guardedValue, (value) => WorkerVersionContainer.fromMap((value as Map).cast<String, dynamic>())); });
     createdOn = registerOutput<String>('createdOn');
+    deploy = registerOutput<bool?>('deploy');
     exports = registerOutput<Map<String, WorkerVersionExports>?>('exports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<WorkerVersionExports>(guardedValue, (value) => WorkerVersionExports.fromMap((value as Map).cast<String, dynamic>())); });
+    exportsReconciliation = registerOutput<WorkerVersionExportsReconciliation>('exportsReconciliation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerVersionExportsReconciliation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    include = registerOutput<String?>('include');
     limits = registerOutput<WorkerVersionLimits>('limits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerVersionLimits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mainModule = registerOutput<String?>('mainModule');
     mainScriptBase64 = registerOutput<String>('mainScriptBase64');

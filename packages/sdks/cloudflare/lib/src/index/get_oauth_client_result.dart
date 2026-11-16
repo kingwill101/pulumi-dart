@@ -26,6 +26,8 @@ class GetOauthClientResult {
   final String? logoUri;
   /// The unique identifier for an OAuth client.
   final String? oauthClientId;
+  /// Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+  final List<String>? optionalScopes;
   /// URL that points to a privacy policy document.
   final String? policyUri;
   /// Array of allowed post-logout redirect URIs.
@@ -61,6 +63,7 @@ class GetOauthClientResult {
   /// [hasRotatedSecret] Indicates whether the client has a rotated secret that has not yet been deleted.
   /// [logoUri] URL of the client's logo.
   /// [oauthClientId] The unique identifier for an OAuth client.
+  /// [optionalScopes] Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
   /// [policyUri] URL that points to a privacy policy document.
   /// [postLogoutRedirectUris] Array of allowed post-logout redirect URIs.
   /// [promotedAt] Timestamp when the OAuth client was promoted to public visibility.
@@ -83,6 +86,7 @@ class GetOauthClientResult {
     this.hasRotatedSecret,
     this.logoUri,
     this.oauthClientId,
+    this.optionalScopes,
     this.policyUri,
     this.postLogoutRedirectUris,
     this.promotedAt,
@@ -108,6 +112,7 @@ class GetOauthClientResult {
       'hasRotatedSecret': ?hasRotatedSecret,
       'logoUri': ?logoUri,
       'oauthClientId': ?oauthClientId,
+      'optionalScopes': ?optionalScopes,
       'policyUri': ?policyUri,
       'postLogoutRedirectUris': ?postLogoutRedirectUris,
       'promotedAt': ?promotedAt,
@@ -134,6 +139,7 @@ class GetOauthClientResult {
       hasRotatedSecret: (() { final guardedValue = map['hasRotatedSecret']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       logoUri: (() { final guardedValue = map['logoUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
       oauthClientId: (() { final guardedValue = map['oauthClientId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      optionalScopes: (() { final guardedValue = map['optionalScopes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       policyUri: (() { final guardedValue = map['policyUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
       postLogoutRedirectUris: (() { final guardedValue = map['postLogoutRedirectUris']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       promotedAt: (() { final guardedValue = map['promotedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),

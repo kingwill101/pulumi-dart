@@ -13,12 +13,8 @@ class GetCustomHostnamesResultSsl {
   /// The Certificate Authority that will issue the certificate.
   /// Available values: "digicert", "google", "lets*encrypt", "ssl*com".
   final pulumi.Input<String> certificateAuthority;
-  /// If a custom uploaded certificate is used.
-  final pulumi.Input<String> customCertificate;
   /// The identifier for the Custom CSR that was used.
   final pulumi.Input<String> customCsrId;
-  /// The key for a custom uploaded certificate.
-  final pulumi.Input<String> customKey;
   /// DCV Delegation records for domain validation.
   final pulumi.Input<List<GetCustomHostnamesResultSslDcvDelegationRecord>> dcvDelegationRecords;
   /// The time the custom certificate expires on.
@@ -54,9 +50,7 @@ class GetCustomHostnamesResultSsl {
   /// Creates a new [GetCustomHostnamesResultSsl].
   /// [bundleMethod] A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
   /// [certificateAuthority] The Certificate Authority that will issue the certificate.
-  /// [customCertificate] If a custom uploaded certificate is used.
   /// [customCsrId] The identifier for the Custom CSR that was used.
-  /// [customKey] The key for a custom uploaded certificate.
   /// [dcvDelegationRecords] DCV Delegation records for domain validation.
   /// [expiresOn] The time the custom certificate expires on.
   /// [hosts] A list of Hostnames on a custom uploaded certificate.
@@ -75,9 +69,7 @@ class GetCustomHostnamesResultSsl {
   const GetCustomHostnamesResultSsl({
     required this.bundleMethod,
     required this.certificateAuthority,
-    required this.customCertificate,
     required this.customCsrId,
-    required this.customKey,
     required this.dcvDelegationRecords,
     required this.expiresOn,
     required this.hosts,
@@ -99,9 +91,7 @@ class GetCustomHostnamesResultSsl {
     return <String, dynamic>{
       'bundleMethod': bundleMethod,
       'certificateAuthority': certificateAuthority,
-      'customCertificate': customCertificate,
       'customCsrId': customCsrId,
-      'customKey': customKey,
       'dcvDelegationRecords': pulumi.Input.mapInputValue<List<GetCustomHostnamesResultSslDcvDelegationRecord>, List<Map<String, dynamic>>>(dcvDelegationRecords, (value) => pulumi.Input.encodeList<GetCustomHostnamesResultSslDcvDelegationRecord, Map<String, dynamic>>(value, (value) => value.toMap())),
       'expiresOn': expiresOn,
       'hosts': hosts,
@@ -124,9 +114,7 @@ class GetCustomHostnamesResultSsl {
     return GetCustomHostnamesResultSsl(
       bundleMethod: pulumi.Input.fromValue(map['bundleMethod'] as String),
       certificateAuthority: pulumi.Input.fromValue(map['certificateAuthority'] as String),
-      customCertificate: pulumi.Input.fromValue(map['customCertificate'] as String),
       customCsrId: pulumi.Input.fromValue(map['customCsrId'] as String),
-      customKey: pulumi.Input.fromValue(map['customKey'] as String),
       dcvDelegationRecords: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCustomHostnamesResultSslDcvDelegationRecord>(map['dcvDelegationRecords']!, (value) => GetCustomHostnamesResultSslDcvDelegationRecord.fromMap((value as Map).cast<String, dynamic>()))),
       expiresOn: pulumi.Input.fromValue(map['expiresOn'] as String),
       hosts: pulumi.Input.fromValue((map['hosts'] as List).cast<String>()),

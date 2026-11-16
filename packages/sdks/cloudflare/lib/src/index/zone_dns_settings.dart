@@ -22,13 +22,11 @@ import 'zone_dns_settings_state.dart';
 /// const exampleZoneDnsSettings = new cloudflare.ZoneDnsSettings("example_zone_dns_settings", {
 ///     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
 ///     flattenAllCnames: false,
-///     foundationDns: false,
 ///     internalDns: {
 ///         referenceZoneId: "reference_zone_id",
 ///     },
 ///     multiProvider: false,
 ///     nameservers: {
-///         nsSet: 1,
 ///         type: "cloudflare.standard",
 ///     },
 ///     nsTtl: 86400,
@@ -52,13 +50,11 @@ import 'zone_dns_settings_state.dart';
 /// example_zone_dns_settings = cloudflare.ZoneDnsSettings("example_zone_dns_settings",
 ///     zone_id="023e105f4ecef8ad9ca31a8372d0c353",
 ///     flatten_all_cnames=False,
-///     foundation_dns=False,
 ///     internal_dns={
 ///         "reference_zone_id": "reference_zone_id",
 ///     },
 ///     multi_provider=False,
 ///     nameservers={
-///         "ns_set": 1,
 ///         "type": "cloudflare.standard",
 ///     },
 ///     ns_ttl=float(86400),
@@ -86,7 +82,6 @@ import 'zone_dns_settings_state.dart';
 ///     {
 ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
 ///         FlattenAllCnames = false,
-///         FoundationDns = false,
 ///         InternalDns = new Cloudflare.Inputs.ZoneDnsSettingsInternalDnsArgs
 ///         {
 ///             ReferenceZoneId = "reference_zone_id",
@@ -94,20 +89,19 @@ import 'zone_dns_settings_state.dart';
 ///         MultiProvider = false,
 ///         Nameservers = new Cloudflare.Inputs.ZoneDnsSettingsNameserversArgs
 ///         {
-///             NsSet = 1,
 ///             Type = "cloudflare.standard",
 ///         },
-///         NsTtl = 86400,
+///         NsTtl = 86400.0,
 ///         SecondaryOverrides = false,
 ///         Soa = new Cloudflare.Inputs.ZoneDnsSettingsSoaArgs
 ///         {
-///             Expire = 604800,
-///             MinTtl = 1800,
+///             Expire = 604800.0,
+///             MinTtl = 1800.0,
 ///             Mname = "kristina.ns.cloudflare.com",
-///             Refresh = 10000,
-///             Retry = 2400,
+///             Refresh = 10000.0,
+///             Retry = 2400.0,
 ///             Rname = "admin.example.com",
-///             Ttl = 3600,
+///             Ttl = 3600.0,
 ///         },
 ///         ZoneMode = "dns_only",
 ///     });
@@ -127,14 +121,12 @@ import 'zone_dns_settings_state.dart';
 /// 		_, err := cloudflare.NewZoneDnsSettings(ctx, "example_zone_dns_settings", &cloudflare.ZoneDnsSettingsArgs{
 /// 			ZoneId:           pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 /// 			FlattenAllCnames: pulumi.Bool(false),
-/// 			FoundationDns:    pulumi.Bool(false),
 /// 			InternalDns: &cloudflare.ZoneDnsSettingsInternalDnsArgs{
 /// 				ReferenceZoneId: pulumi.String("reference_zone_id"),
 /// 			},
 /// 			MultiProvider: pulumi.Bool(false),
 /// 			Nameservers: &cloudflare.ZoneDnsSettingsNameserversArgs{
-/// 				NsSet: pulumi.Int(1),
-/// 				Type:  pulumi.String("cloudflare.standard"),
+/// 				Type: pulumi.String("cloudflare.standard"),
 /// 			},
 /// 			NsTtl:              pulumi.Float64(86400),
 /// 			SecondaryOverrides: pulumi.Bool(false),
@@ -157,7 +149,7 @@ import 'zone_dns_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -165,17 +157,18 @@ import 'zone_dns_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zonednssettings" "example_zone_dns_settings" {
+/// resource "cloudflare_zone_dns_settings" "example_zone_dns_settings" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id            = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   flatten_all_cnames = false
-///   foundation_dns     = false
 ///   internal_dns = {
 ///     reference_zone_id = "reference_zone_id"
 ///   }
 ///   multi_provider = false
 ///   nameservers = {
-///     ns_set = 1
-///     type   = "cloudflare.standard"
+///     type = "cloudflare.standard"
 ///   }
 ///   ns_ttl              = 86400
 ///   secondary_overrides = false
@@ -218,13 +211,11 @@ import 'zone_dns_settings_state.dart';
 ///         var exampleZoneDnsSettings = new ZoneDnsSettings("exampleZoneDnsSettings", ZoneDnsSettingsArgs.builder()
 ///             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
 ///             .flattenAllCnames(false)
-///             .foundationDns(false)
 ///             .internalDns(ZoneDnsSettingsInternalDnsArgs.builder()
 ///                 .referenceZoneId("reference_zone_id")
 ///                 .build())
 ///             .multiProvider(false)
 ///             .nameservers(ZoneDnsSettingsNameserversArgs.builder()
-///                 .nsSet(1)
 ///                 .type("cloudflare.standard")
 ///                 .build())
 ///             .nsTtl(86400.0)
@@ -252,12 +243,10 @@ import 'zone_dns_settings_state.dart';
 ///     properties:
 ///       zoneId: 023e105f4ecef8ad9ca31a8372d0c353
 ///       flattenAllCnames: false
-///       foundationDns: false
 ///       internalDns:
 ///         referenceZoneId: reference_zone_id
 ///       multiProvider: false
 ///       nameservers:
-///         nsSet: 1
 ///         type: cloudflare.standard
 ///       nsTtl: 86400
 ///       secondaryOverrides: false
@@ -279,13 +268,11 @@ import 'zone_dns_settings_state.dart';
 class ZoneDnsSettings extends pulumi.CustomResource {
   /// Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
   late final pulumi.Output<bool?> flattenAllCnames;
-  /// Whether to enable Foundation DNS Advanced Nameservers on the zone.
-  late final pulumi.Output<bool?> foundationDns;
   /// Settings for this internal zone.
   late final pulumi.Output<ZoneDnsSettingsInternalDns> internalDns;
   /// Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
   late final pulumi.Output<bool?> multiProvider;
-  /// Settings determining the nameservers through which the zone should be available.
+  /// Controls the nameservers through which the zone is available.
   late final pulumi.Output<ZoneDnsSettingsNameservers> nameservers;
   /// The time to live (TTL) of the zone's nameserver (NS) records.
   late final pulumi.Output<double?> nsTtl;
@@ -311,10 +298,9 @@ class ZoneDnsSettings extends pulumi.CustomResource {
           'cloudflare:index/zoneDnsSettings:ZoneDnsSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     flattenAllCnames = registerOutput<bool?>('flattenAllCnames');
-    foundationDns = registerOutput<bool?>('foundationDns');
     internalDns = registerOutput<ZoneDnsSettingsInternalDns>('internalDns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDnsSettingsInternalDns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     multiProvider = registerOutput<bool?>('multiProvider');
     nameservers = registerOutput<ZoneDnsSettingsNameservers>('nameservers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDnsSettingsNameservers.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -350,7 +336,6 @@ class ZoneDnsSettings extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     flattenAllCnames = registerOutput<bool?>('flattenAllCnames');
-    foundationDns = registerOutput<bool?>('foundationDns');
     internalDns = registerOutput<ZoneDnsSettingsInternalDns>('internalDns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDnsSettingsInternalDns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     multiProvider = registerOutput<bool?>('multiProvider');
     nameservers = registerOutput<ZoneDnsSettingsNameservers>('nameservers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDnsSettingsNameservers.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -371,7 +356,6 @@ class ZoneDnsSettings extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     flattenAllCnames = registerOutput<bool?>('flattenAllCnames');
-    foundationDns = registerOutput<bool?>('foundationDns');
     internalDns = registerOutput<ZoneDnsSettingsInternalDns>('internalDns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDnsSettingsInternalDns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     multiProvider = registerOutput<bool?>('multiProvider');
     nameservers = registerOutput<ZoneDnsSettingsNameservers>('nameservers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDnsSettingsNameservers.fromMap((guardedValue as Map).cast<String, dynamic>()); });

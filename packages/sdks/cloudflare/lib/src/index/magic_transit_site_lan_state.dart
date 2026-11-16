@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'magic_transit_site_lan_nat.dart';
+import 'magic_transit_site_lan_remote_subnet.dart';
 import 'magic_transit_site_lan_routed_subnet.dart';
 import 'magic_transit_site_lan_static_addressing.dart';
 
@@ -19,6 +20,7 @@ class MagicTransitSiteLanState {
   final pulumi.Input<String?>? name;
   final pulumi.Input<MagicTransitSiteLanNat?>? nat;
   final pulumi.Input<int?>? physport;
+  final pulumi.Input<List<MagicTransitSiteLanRemoteSubnet>?>? remoteSubnets;
   final pulumi.Input<List<MagicTransitSiteLanRoutedSubnet>?>? routedSubnets;
   /// Identifier
   final pulumi.Input<String?>? siteId;
@@ -36,6 +38,7 @@ class MagicTransitSiteLanState {
   /// [name] Optional.
   /// [nat] Optional.
   /// [physport] Optional.
+  /// [remoteSubnets] Optional.
   /// [routedSubnets] Optional.
   /// [siteId] Identifier
   /// [staticAddressing] If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
@@ -49,6 +52,7 @@ class MagicTransitSiteLanState {
     this.name,
     this.nat,
     this.physport,
+    this.remoteSubnets,
     this.routedSubnets,
     this.siteId,
     this.staticAddressing,
@@ -65,6 +69,7 @@ class MagicTransitSiteLanState {
       'name': ?name,
       'nat': ?pulumi.Input.mapOptionalInputValue<MagicTransitSiteLanNat, Map<String, dynamic>>(nat, (value) => value.toMap()),
       'physport': ?physport,
+      'remoteSubnets': ?pulumi.Input.mapOptionalInputValue<List<MagicTransitSiteLanRemoteSubnet>, List<Map<String, dynamic>>>(remoteSubnets, (value) => pulumi.Input.encodeList<MagicTransitSiteLanRemoteSubnet, Map<String, dynamic>>(value, (value) => value.toMap())),
       'routedSubnets': ?pulumi.Input.mapOptionalInputValue<List<MagicTransitSiteLanRoutedSubnet>, List<Map<String, dynamic>>>(routedSubnets, (value) => pulumi.Input.encodeList<MagicTransitSiteLanRoutedSubnet, Map<String, dynamic>>(value, (value) => value.toMap())),
       'siteId': ?siteId,
       'staticAddressing': ?pulumi.Input.mapOptionalInputValue<MagicTransitSiteLanStaticAddressing, Map<String, dynamic>>(staticAddressing, (value) => value.toMap()),
@@ -75,17 +80,18 @@ class MagicTransitSiteLanState {
   factory MagicTransitSiteLanState.fromMap(Map<String, dynamic> map) {
     return MagicTransitSiteLanState(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      bondId: (() { final guardedValue = map['bondId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bondId: (() { final guardedValue = map['bondId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       haLink: (() { final guardedValue = map['haLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       isBreakout: (() { final guardedValue = map['isBreakout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       isPrioritized: (() { final guardedValue = map['isPrioritized']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nat: (() { final guardedValue = map['nat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MagicTransitSiteLanNat.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      physport: (() { final guardedValue = map['physport']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      physport: (() { final guardedValue = map['physport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      remoteSubnets: (() { final guardedValue = map['remoteSubnets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MagicTransitSiteLanRemoteSubnet>(guardedValue, (value) => MagicTransitSiteLanRemoteSubnet.fromMap((value as Map).cast<String, dynamic>()))); })(),
       routedSubnets: (() { final guardedValue = map['routedSubnets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MagicTransitSiteLanRoutedSubnet>(guardedValue, (value) => MagicTransitSiteLanRoutedSubnet.fromMap((value as Map).cast<String, dynamic>()))); })(),
       siteId: (() { final guardedValue = map['siteId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       staticAddressing: (() { final guardedValue = map['staticAddressing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MagicTransitSiteLanStaticAddressing.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      vlanTag: (() { final guardedValue = map['vlanTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      vlanTag: (() { final guardedValue = map['vlanTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

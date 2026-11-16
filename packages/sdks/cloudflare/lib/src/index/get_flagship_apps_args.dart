@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_get_flagship_apps_get_flagship_apps_args_doc}
 class GetFlagshipAppsArgs {
-  /// Cloudflare account ID.
+  /// Cloudflare account ID that owns the Flagship app.
   final pulumi.Input<String> accountId;
   /// Max items to fetch, default: 1000
   final pulumi.Input<int?>? maxItems;
 
   /// Creates a new [GetFlagshipAppsArgs].
-  /// [accountId] Cloudflare account ID.
+  /// [accountId] Cloudflare account ID that owns the Flagship app.
   /// [maxItems] Max items to fetch, default: 1000
   const GetFlagshipAppsArgs({
     required this.accountId,
@@ -30,7 +30,7 @@ class GetFlagshipAppsArgs {
   factory GetFlagshipAppsArgs.fromMap(Map<String, dynamic> map) {
     return GetFlagshipAppsArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

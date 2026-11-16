@@ -19,6 +19,10 @@ class OriginCaCertificateState {
   /// The number of days for which the certificate should be valid.
   /// Available values: 7, 30, 90, 365, 730, 1095, 5475.
   final pulumi.Input<double?>? requestedValidity;
+  /// When the certificate was revoked.
+  final pulumi.Input<String?>? revokedAt;
+  /// Identifier of the zone whose keyless servers the certificate is for. Required when `requestType` is `keyless-certificate`; ignored otherwise.
+  final pulumi.Input<String?>? zoneId;
 
   /// Creates a new [OriginCaCertificateState].
   /// [certificate] The Origin CA certificate. Will be newline-encoded.
@@ -27,6 +31,8 @@ class OriginCaCertificateState {
   /// [hostnames] Array of hostnames or wildcard names bound to the certificate.
   /// [requestType] Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
   /// [requestedValidity] The number of days for which the certificate should be valid.
+  /// [revokedAt] When the certificate was revoked.
+  /// [zoneId] Identifier of the zone whose keyless servers the certificate is for. Required when `requestType` is `keyless-certificate`; ignored otherwise.
   const OriginCaCertificateState({
     this.certificate,
     this.csr,
@@ -34,6 +40,8 @@ class OriginCaCertificateState {
     this.hostnames,
     this.requestType,
     this.requestedValidity,
+    this.revokedAt,
+    this.zoneId,
   });
 
   Map<String, dynamic> toMap() {
@@ -44,6 +52,8 @@ class OriginCaCertificateState {
       'hostnames': ?hostnames,
       'requestType': ?requestType,
       'requestedValidity': ?requestedValidity,
+      'revokedAt': ?revokedAt,
+      'zoneId': ?zoneId,
     };
   }
 
@@ -55,6 +65,8 @@ class OriginCaCertificateState {
       hostnames: (() { final guardedValue = map['hostnames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       requestType: (() { final guardedValue = map['requestType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       requestedValidity: (() { final guardedValue = map['requestedValidity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      revokedAt: (() { final guardedValue = map['revokedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }

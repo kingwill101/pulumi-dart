@@ -7,18 +7,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_get_flagship_flags_get_flagship_flags_args_doc}
 class GetFlagshipFlagsArgs {
-  /// Cloudflare account ID.
+  /// Cloudflare account ID that owns the Flagship app.
   final pulumi.Input<String> accountId;
-  /// App identifier.
+  /// Flagship app ID returned when the app was created.
   final pulumi.Input<String> appId;
   /// Max items to return (1–200).
-  final pulumi.Input<String?>? limit;
+  final pulumi.Input<int?>? limit;
   /// Max items to fetch, default: 1000
   final pulumi.Input<int?>? maxItems;
 
   /// Creates a new [GetFlagshipFlagsArgs].
-  /// [accountId] Cloudflare account ID.
-  /// [appId] App identifier.
+  /// [accountId] Cloudflare account ID that owns the Flagship app.
+  /// [appId] Flagship app ID returned when the app was created.
   /// [limit] Max items to return (1–200).
   /// [maxItems] Max items to fetch, default: 1000
   const GetFlagshipFlagsArgs({
@@ -41,8 +41,8 @@ class GetFlagshipFlagsArgs {
     return GetFlagshipFlagsArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
       appId: pulumi.Input.fromValue(map['appId'] as String),
-      limit: (() { final guardedValue = map['limit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      limit: (() { final guardedValue = map['limit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

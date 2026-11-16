@@ -77,6 +77,8 @@ class NotificationPolicyFilters {
   final pulumi.Input<List<String>?>? targetIps;
   /// Used for configuring advanced*ddos*attack*l7*alert
   final pulumi.Input<List<String>?>? targetZoneNames;
+  /// Access service token IDs to include for expiring*service*token_alert. Omit this property to include all current and future service tokens.
+  final pulumi.Input<List<String>?>? tokenIds;
   /// Used for configuring traffic*anomalies*alert
   final pulumi.Input<List<String>?>? trafficExclusions;
   /// Used for configuring tunnel*health*event
@@ -128,6 +130,7 @@ class NotificationPolicyFilters {
   /// [targetHostnames] Used for configuring advanced*ddos*attack*l7*alert
   /// [targetIps] Used for configuring advanced*ddos*attack*l4*alert
   /// [targetZoneNames] Used for configuring advanced*ddos*attack*l7*alert
+  /// [tokenIds] Access service token IDs to include for expiring*service*token_alert. Omit this property to include all current and future service tokens.
   /// [trafficExclusions] Used for configuring traffic*anomalies*alert
   /// [tunnelIds] Used for configuring tunnel*health*event
   /// [tunnelNames] Usage depends on specific alert type
@@ -172,6 +175,7 @@ class NotificationPolicyFilters {
     this.targetHostnames,
     this.targetIps,
     this.targetZoneNames,
+    this.tokenIds,
     this.trafficExclusions,
     this.tunnelIds,
     this.tunnelNames,
@@ -219,6 +223,7 @@ class NotificationPolicyFilters {
       'targetHostnames': ?targetHostnames,
       'targetIps': ?targetIps,
       'targetZoneNames': ?targetZoneNames,
+      'tokenIds': ?tokenIds,
       'trafficExclusions': ?trafficExclusions,
       'tunnelIds': ?tunnelIds,
       'tunnelNames': ?tunnelNames,
@@ -267,6 +272,7 @@ class NotificationPolicyFilters {
       targetHostnames: (() { final guardedValue = map['targetHostnames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       targetIps: (() { final guardedValue = map['targetIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       targetZoneNames: (() { final guardedValue = map['targetZoneNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      tokenIds: (() { final guardedValue = map['tokenIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       trafficExclusions: (() { final guardedValue = map['trafficExclusions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       tunnelIds: (() { final guardedValue = map['tunnelIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       tunnelNames: (() { final guardedValue = map['tunnelNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

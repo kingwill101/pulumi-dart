@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions {
   /// Maximum link-follow depth from the seed URL.
   final pulumi.Input<double> depth;
-  /// Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.
+  /// Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own.
   final pulumi.Input<bool> includeExternalLinks;
   /// Follow links to subdomains of the source host.
   final pulumi.Input<bool> includeSubdomains;
@@ -19,7 +19,7 @@ class GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions {
 
   /// Creates a new [GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions].
   /// [depth] Maximum link-follow depth from the seed URL.
-  /// [includeExternalLinks] Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.
+  /// [includeExternalLinks] Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own.
   /// [includeSubdomains] Follow links to subdomains of the source host.
   /// [limit] Maximum number of pages to crawl (1-100000).
   /// [maxAge] Maximum content age in seconds to accept (0–604800).

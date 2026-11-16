@@ -10,9 +10,12 @@ import 'teams_location_network.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_teams_location_teams_location_args_doc}
 class TeamsLocationArgs {
+  /// Specify the Cloudflare account identifier.
   final pulumi.Input<String> accountId;
   /// Indicate whether this location is the default location.
   final pulumi.Input<bool?>? clientDefault;
+  /// Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+  final pulumi.Input<bool?>? dns64Enabled;
   /// Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
   final pulumi.Input<String?>? dnsDestinationIpsId;
   /// Indicate whether the location must resolve EDNS queries.
@@ -27,8 +30,9 @@ class TeamsLocationArgs {
   final pulumi.Input<List<TeamsLocationNetwork>?>? networks;
 
   /// Creates a new [TeamsLocationArgs].
-  /// [accountId] Required.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [clientDefault] Indicate whether this location is the default location.
+  /// [dns64Enabled] Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
   /// [dnsDestinationIpsId] Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
   /// [ecsSupport] Indicate whether the location must resolve EDNS queries.
   /// [endpoints] Configure the destination endpoints for this location.
@@ -38,6 +42,7 @@ class TeamsLocationArgs {
   const TeamsLocationArgs({
     required this.accountId,
     this.clientDefault,
+    this.dns64Enabled,
     this.dnsDestinationIpsId,
     this.ecsSupport,
     this.endpoints,
@@ -50,6 +55,7 @@ class TeamsLocationArgs {
     return <String, dynamic>{
       'accountId': accountId,
       'clientDefault': ?clientDefault,
+      'dns64Enabled': ?dns64Enabled,
       'dnsDestinationIpsId': ?dnsDestinationIpsId,
       'ecsSupport': ?ecsSupport,
       'endpoints': ?pulumi.Input.mapOptionalInputValue<TeamsLocationEndpoints, Map<String, dynamic>>(endpoints, (value) => value.toMap()),
@@ -63,6 +69,7 @@ class TeamsLocationArgs {
     return TeamsLocationArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
       clientDefault: (() { final guardedValue = map['clientDefault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      dns64Enabled: (() { final guardedValue = map['dns64Enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       dnsDestinationIpsId: (() { final guardedValue = map['dnsDestinationIpsId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ecsSupport: (() { final guardedValue = map['ecsSupport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       endpoints: (() { final guardedValue = map['endpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TeamsLocationEndpoints.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

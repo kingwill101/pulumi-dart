@@ -80,14 +80,14 @@ class GetCloudforceOneRequestsResult {
       completed: pulumi.Input.fromValue(map['completed'] as String),
       created: pulumi.Input.fromValue(map['created'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      messageTokens: pulumi.Input.fromValue((map['messageTokens'] as num).toInt()),
+      messageTokens: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['messageTokens'])),
       priority: pulumi.Input.fromValue(map['priority'] as String),
       readableId: pulumi.Input.fromValue(map['readableId'] as String),
       request: pulumi.Input.fromValue(map['request'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
       summary: pulumi.Input.fromValue(map['summary'] as String),
       tlp: pulumi.Input.fromValue(map['tlp'] as String),
-      tokens: pulumi.Input.fromValue((map['tokens'] as num).toInt()),
+      tokens: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['tokens'])),
       updated: pulumi.Input.fromValue(map['updated'] as String),
     );
   }

@@ -6,7 +6,7 @@ class GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptions {
   final pulumi.Input<double> depth;
   final pulumi.Input<bool> includeExternalLinks;
   final pulumi.Input<bool> includeSubdomains;
-  /// Maximum number of pages to crawl. New values are capped at 100000; instances configured before that cap may report a higher stored value, which the crawler clamps at run time.
+  /// Maximum number of pages to crawl. New values have a maximum of 100000; instances configured before that cap may report a higher stored value, which the crawler clamps at run time.
   final pulumi.Input<double> limit;
   final pulumi.Input<double> maxAge;
   /// Available values: "all", "sitemaps", "links".
@@ -16,7 +16,7 @@ class GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptions {
   /// [depth] Required.
   /// [includeExternalLinks] Required.
   /// [includeSubdomains] Required.
-  /// [limit] Maximum number of pages to crawl. New values are capped at 100000; instances configured before that cap may report a higher stored value, which the crawler clamps at run time.
+  /// [limit] Maximum number of pages to crawl. New values have a maximum of 100000; instances configured before that cap may report a higher stored value, which the crawler clamps at run time.
   /// [maxAge] Required.
   /// [source] Available values: "all", "sitemaps", "links".
   const GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptions({

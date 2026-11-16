@@ -6,18 +6,52 @@ class DevicePostureIntegrationConfig {
   /// If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `apiUrl`.
   final pulumi.Input<String?>? accessClientId;
   /// If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
+  ///
+  /// This secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
   final pulumi.Input<String?>? accessClientSecret;
   /// The Workspace One API URL provided in the Workspace One Admin Dashboard.
+  ///
+  /// The Crowdstrike API URL.
+  ///
+  /// The Uptycs API URL.
+  ///
+  /// The Tanium API URL.
+  ///
+  /// The SentinelOne S2S API URL.
+  ///
+  /// The Custom Device Posture Integration  API URL.
   final pulumi.Input<String?>? apiUrl;
   /// The Workspace One Authorization URL depending on your region.
   final pulumi.Input<String?>? authUrl;
   /// The Workspace One client ID provided in the Workspace One Admin Dashboard.
+  ///
+  /// The Crowdstrike client ID.
+  ///
+  /// The Intune client ID.
+  ///
+  /// The Kolide client ID.
   final pulumi.Input<String?>? clientId;
   /// The Uptycs client secret.
   final pulumi.Input<String?>? clientKey;
   /// The Workspace One client secret provided in the Workspace One Admin Dashboard.
+  ///
+  /// The Crowdstrike client secret.
+  ///
+  /// The Uptycs client secret.
+  ///
+  /// The Intune client secret.
+  ///
+  /// The Kolide client secret.
+  ///
+  /// The Tanium client secret.
+  ///
+  /// The SentinelOne S2S client secret.
   final pulumi.Input<String?>? clientSecret;
   /// The Crowdstrike customer ID.
+  ///
+  /// The Uptycs customer ID.
+  ///
+  /// The Intune customer ID.
   final pulumi.Input<String?>? customerId;
 
   /// Creates a new [DevicePostureIntegrationConfig].

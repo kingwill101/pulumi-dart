@@ -16,6 +16,9 @@ class GetSharesArgs {
   final pulumi.Input<bool?>? includeRecipientCounts;
   /// Include resources in the response.
   final pulumi.Input<bool?>? includeResources;
+  /// Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+  /// Available values: "api", "mirror".
+  final pulumi.Input<String?>? includeTagsFrom;
   /// Filter shares by kind.
   /// Available values: "sent", "received".
   final pulumi.Input<String?>? kind;
@@ -40,6 +43,7 @@ class GetSharesArgs {
   /// [direction] Direction to sort objects.
   /// [includeRecipientCounts] Include recipient counts in the response.
   /// [includeResources] Include resources in the response.
+  /// [includeTagsFrom] Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
   /// [kind] Filter shares by kind.
   /// [maxItems] Max items to fetch, default: 1000
   /// [order] Order shares by values in the given field.
@@ -52,6 +56,7 @@ class GetSharesArgs {
     this.direction,
     this.includeRecipientCounts,
     this.includeResources,
+    this.includeTagsFrom,
     this.kind,
     this.maxItems,
     this.order,
@@ -67,6 +72,7 @@ class GetSharesArgs {
       'direction': ?direction,
       'includeRecipientCounts': ?includeRecipientCounts,
       'includeResources': ?includeResources,
+      'includeTagsFrom': ?includeTagsFrom,
       'kind': ?kind,
       'maxItems': ?maxItems,
       'order': ?order,
@@ -83,8 +89,9 @@ class GetSharesArgs {
       direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       includeRecipientCounts: (() { final guardedValue = map['includeRecipientCounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       includeResources: (() { final guardedValue = map['includeResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      includeTagsFrom: (() { final guardedValue = map['includeTagsFrom']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceTypes: (() { final guardedValue = map['resourceTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

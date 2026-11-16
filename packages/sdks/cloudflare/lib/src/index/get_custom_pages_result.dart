@@ -7,10 +7,10 @@ class GetCustomPagesResult {
   final String? accountId;
   final String? createdOn;
   final String? description;
-  /// Error Page Types
+  /// Custom page type.
   /// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
   final String? id;
-  /// Error Page Types
+  /// Custom page type.
   /// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
   final String? identifier;
   final String? modifiedOn;
@@ -28,8 +28,8 @@ class GetCustomPagesResult {
   /// [accountId] The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
   /// [createdOn] Optional.
   /// [description] Optional.
-  /// [id] Error Page Types
-  /// [identifier] Error Page Types
+  /// [id] Custom page type.
+  /// [identifier] Custom page type.
   /// [modifiedOn] Optional.
   /// [previewTarget] Optional.
   /// [requiredTokens] Optional.

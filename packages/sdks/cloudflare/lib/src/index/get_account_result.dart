@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'get_account_filter.dart';
+import 'get_account_legacy_flags.dart';
 import 'get_account_managed_by.dart';
 import 'get_account_settings.dart';
 
@@ -13,6 +14,8 @@ class GetAccountResult {
   final GetAccountFilter? filter;
   /// Account identifier tag.
   final String? id;
+  /// Legacy account flags.
+  final GetAccountLegacyFlags? legacyFlags;
   /// Parent container details
   final GetAccountManagedBy? managedBy;
   /// Account name
@@ -27,6 +30,7 @@ class GetAccountResult {
   /// [createdOn] Timestamp for the creation of the account
   /// [filter] Optional.
   /// [id] Account identifier tag.
+  /// [legacyFlags] Legacy account flags.
   /// [managedBy] Parent container details
   /// [name] Account name
   /// [settings] Account settings
@@ -36,6 +40,7 @@ class GetAccountResult {
     this.createdOn,
     this.filter,
     this.id,
+    this.legacyFlags,
     this.managedBy,
     this.name,
     this.settings,
@@ -48,6 +53,7 @@ class GetAccountResult {
       'createdOn': ?createdOn,
       'filter': ?filter?.toMap(),
       'id': ?id,
+      'legacyFlags': ?legacyFlags?.toMap(),
       'managedBy': ?managedBy?.toMap(),
       'name': ?name,
       'settings': ?settings?.toMap(),
@@ -61,6 +67,7 @@ class GetAccountResult {
       createdOn: (() { final guardedValue = map['createdOn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return GetAccountFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      legacyFlags: (() { final guardedValue = map['legacyFlags']; if (guardedValue == null) return null; return GetAccountLegacyFlags.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       managedBy: (() { final guardedValue = map['managedBy']; if (guardedValue == null) return null; return GetAccountManagedBy.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       settings: (() { final guardedValue = map['settings']; if (guardedValue == null) return null; return GetAccountSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),

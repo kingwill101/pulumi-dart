@@ -9,12 +9,13 @@ class AccountDnsSettingsState {
   final pulumi.Input<String?>? accountId;
   /// When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
   final pulumi.Input<bool?>? enforceDnsOnly;
+  /// Default settings for new zones created in this account.
   final pulumi.Input<AccountDnsSettingsZoneDefaults?>? zoneDefaults;
 
   /// Creates a new [AccountDnsSettingsState].
   /// [accountId] Identifier.
   /// [enforceDnsOnly] When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
-  /// [zoneDefaults] Optional.
+  /// [zoneDefaults] Default settings for new zones created in this account.
   const AccountDnsSettingsState({
     this.accountId,
     this.enforceDnsOnly,

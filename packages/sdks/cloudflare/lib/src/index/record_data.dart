@@ -49,6 +49,8 @@ class RecordData {
   final pulumi.Input<double?>? precisionVert;
   /// Preference.
   final pulumi.Input<double?>? preference;
+  /// Priority.
+  ///
   /// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
   final pulumi.Input<double?>? priority;
   /// Protocol.
@@ -67,13 +69,20 @@ class RecordData {
   final pulumi.Input<double?>? size;
   /// Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
   final pulumi.Input<String?>? tag;
-  /// A valid mail server hostname, or "." for a NULL MX record.
+  /// Target.
+  ///
+  /// A valid hostname.
+  ///
+  /// The record content.
   final pulumi.Input<String?>? target;
-  /// Type.
+  /// Record type.
+  /// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
   final pulumi.Input<double?>? type;
   /// Usage.
   final pulumi.Input<double?>? usage;
   /// Value of the record. This field's semantics depend on the chosen tag.
+  ///
+  /// Value.
   final pulumi.Input<String?>? value;
   /// The record weight.
   final pulumi.Input<double?>? weight;
@@ -101,7 +110,7 @@ class RecordData {
   /// [precisionHorz] Horizontal precision of location.
   /// [precisionVert] Vertical precision of location.
   /// [preference] Preference.
-  /// [priority] Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
+  /// [priority] Priority.
   /// [protocol] Protocol.
   /// [publicKey] Public Key.
   /// [regex] Regex.
@@ -110,8 +119,8 @@ class RecordData {
   /// [service] Service.
   /// [size] Size of location in meters.
   /// [tag] Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
-  /// [target] A valid mail server hostname, or "." for a NULL MX record.
-  /// [type] Type.
+  /// [target] Target.
+  /// [type] Record type.
   /// [usage] Usage.
   /// [value] Value of the record. This field's semantics depend on the chosen tag.
   /// [weight] The record weight.

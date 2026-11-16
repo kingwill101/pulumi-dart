@@ -9,15 +9,19 @@ class MagicTransitSiteWanStaticAddressing {
   final pulumi.Input<String> gatewayAddress;
   /// A valid CIDR notation representing an IP range.
   final pulumi.Input<String?>? secondaryAddress;
+  /// Gateway address for the secondary connector of a high availability site.
+  final pulumi.Input<String?>? secondaryGatewayAddress;
 
   /// Creates a new [MagicTransitSiteWanStaticAddressing].
   /// [address] A valid CIDR notation representing an IP range.
   /// [gatewayAddress] A valid IPv4 address.
   /// [secondaryAddress] A valid CIDR notation representing an IP range.
+  /// [secondaryGatewayAddress] Gateway address for the secondary connector of a high availability site.
   const MagicTransitSiteWanStaticAddressing({
     required this.address,
     required this.gatewayAddress,
     this.secondaryAddress,
+    this.secondaryGatewayAddress,
   });
 
   Map<String, dynamic> toMap() {
@@ -25,6 +29,7 @@ class MagicTransitSiteWanStaticAddressing {
       'address': address,
       'gatewayAddress': gatewayAddress,
       'secondaryAddress': ?secondaryAddress,
+      'secondaryGatewayAddress': ?secondaryGatewayAddress,
     };
   }
 
@@ -33,6 +38,7 @@ class MagicTransitSiteWanStaticAddressing {
       address: pulumi.Input.fromValue(map['address'] as String),
       gatewayAddress: pulumi.Input.fromValue(map['gatewayAddress'] as String),
       secondaryAddress: (() { final guardedValue = map['secondaryAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secondaryGatewayAddress: (() { final guardedValue = map['secondaryGatewayAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }

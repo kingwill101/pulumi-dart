@@ -9,6 +9,10 @@ import 'organization_state.dart';
 ///
 /// - `User Details Write`
 ///
+/// User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address. The `cloudflare.Organization` Terraform resource therefore requires a Global API key for its full lifecycle.
+///
+/// See [Organizations authentication limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/#api-authentication) for credential compatibility by operation. Each endpoint’s **Security** section lists its supported authentication methods, with **Accepted Permissions** where applicable.
+///
 /// ## Example Usage
 ///
 ///
@@ -17,9 +21,9 @@ import 'organization_state.dart';
 /// import * as cloudflare from "@pulumi/cloudflare";
 ///
 /// const exampleOrganization = new cloudflare.Organization("example_organization", {
-///     name: "name",
+///     name: "x",
 ///     parent: {
-///         id: "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+///         id: "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 ///     },
 ///     profile: {
 ///         businessAddress: "business_address",
@@ -35,9 +39,9 @@ import 'organization_state.dart';
 /// import pulumi_cloudflare as cloudflare
 ///
 /// example_organization = cloudflare.Organization("example_organization",
-///     name="name",
+///     name="x",
 ///     parent={
-///         "id": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+///         "id": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 ///     },
 ///     profile={
 ///         "business_address": "business_address",
@@ -57,10 +61,10 @@ import 'organization_state.dart';
 /// {
 ///     var exampleOrganization = new Cloudflare.Organization("example_organization", new()
 ///     {
-///         Name = "name",
+///         Name = "x",
 ///         Parent = new Cloudflare.Inputs.OrganizationParentArgs
 ///         {
-///             Id = "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+///             Id = "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 ///         },
 ///         Profile = new Cloudflare.Inputs.OrganizationProfileArgs
 ///         {
@@ -85,9 +89,9 @@ import 'organization_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.NewOrganization(ctx, "example_organization", &cloudflare.OrganizationArgs{
-/// 			Name: pulumi.String("name"),
+/// 			Name: pulumi.String("x"),
 /// 			Parent: &cloudflare.OrganizationParentArgs{
-/// 				Id: pulumi.String("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8"),
+/// 				Id: pulumi.String("a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8"),
 /// 			},
 /// 			Profile: &cloudflare.OrganizationProfileTypeArgs{
 /// 				BusinessAddress:  pulumi.String("business_address"),
@@ -105,7 +109,7 @@ import 'organization_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -114,9 +118,12 @@ import 'organization_state.dart';
 /// }
 ///
 /// resource "cloudflare_organization" "example_organization" {
-///   name = "name"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name = "x"
 ///   parent = {
-///     id = "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8"
+///     id = "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8"
 ///   }
 ///   profile = {
 ///     business_address  = "business_address"
@@ -151,9 +158,9 @@ import 'organization_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var exampleOrganization = new Organization("exampleOrganization", OrganizationArgs.builder()
-///             .name("name")
+///             .name("x")
 ///             .parent(OrganizationParentArgs.builder()
-///                 .id("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+///                 .id("a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8")
 ///                 .build())
 ///             .profile(OrganizationProfileArgs.builder()
 ///                 .businessAddress("business_address")
@@ -173,9 +180,9 @@ import 'organization_state.dart';
 ///     type: cloudflare:Organization
 ///     name: example_organization
 ///     properties:
-///       name: name
+///       name: x
 ///       parent:
-///         id: a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8
+///         id: a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8
 ///       profile:
 ///         businessAddress: business_address
 ///         businessEmail: business_email
@@ -193,8 +200,12 @@ import 'organization_state.dart';
 class Organization extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   late final pulumi.Output<OrganizationMeta> meta;
+  /// The Organization name, limited to 65 UTF-8 bytes.
   late final pulumi.Output<String> name;
-  late final pulumi.Output<OrganizationParent> parent;
+  late final pulumi.Output<OrganizationParent?> parent;
+  /// The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+  late final pulumi.Output<String?> parentId;
+  /// Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
   late final pulumi.Output<OrganizationProfile?> profile;
 
   /// Creates a new [Organization].
@@ -209,12 +220,13 @@ class Organization extends pulumi.CustomResource {
           'cloudflare:index/organization:Organization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     meta = registerOutput<OrganizationMeta>('meta', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    parent = registerOutput<OrganizationParent>('parent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationParent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    parent = registerOutput<OrganizationParent?>('parent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationParent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    parentId = registerOutput<String?>('parentId');
     profile = registerOutput<OrganizationProfile?>('profile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -245,7 +257,8 @@ class Organization extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     meta = registerOutput<OrganizationMeta>('meta', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    parent = registerOutput<OrganizationParent>('parent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationParent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    parent = registerOutput<OrganizationParent?>('parent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationParent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    parentId = registerOutput<String?>('parentId');
     profile = registerOutput<OrganizationProfile?>('profile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -261,7 +274,8 @@ class Organization extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     meta = registerOutput<OrganizationMeta>('meta', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    parent = registerOutput<OrganizationParent>('parent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationParent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    parent = registerOutput<OrganizationParent?>('parent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationParent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    parentId = registerOutput<String?>('parentId');
     profile = registerOutput<OrganizationProfile?>('profile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

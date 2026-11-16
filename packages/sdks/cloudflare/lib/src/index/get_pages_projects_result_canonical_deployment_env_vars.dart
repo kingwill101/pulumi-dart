@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPagesProjectsResultCanonicalDeploymentEnvVars {
   /// Available values: "plain*text", "secret*text".
   final pulumi.Input<String> type;
-  /// Environment variable value.
+  /// For `type: plainText`: Environment variable value.
   final pulumi.Input<String> value;
 
   /// Creates a new [GetPagesProjectsResultCanonicalDeploymentEnvVars].
   /// [type] Available values: "plain*text", "secret*text".
-  /// [value] Environment variable value.
+  /// [value] For `type: plainText`: Environment variable value.
   const GetPagesProjectsResultCanonicalDeploymentEnvVars({
     required this.type,
     required this.value,

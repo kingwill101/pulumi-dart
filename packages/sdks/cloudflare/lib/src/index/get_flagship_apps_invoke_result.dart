@@ -5,7 +5,7 @@ import 'get_flagship_apps_result.dart';
 
 /// Result data returned by getFlagshipApps.
 class GetFlagshipAppsInvokeResult {
-  /// Cloudflare account ID.
+  /// Cloudflare account ID that owns the Flagship app.
   final String? accountId;
   /// Max items to fetch, default: 1000
   final int? maxItems;
@@ -13,7 +13,7 @@ class GetFlagshipAppsInvokeResult {
   final List<GetFlagshipAppsResult>? results;
 
   /// Creates a new [GetFlagshipAppsInvokeResult].
-  /// [accountId] Cloudflare account ID.
+  /// [accountId] Cloudflare account ID that owns the Flagship app.
   /// [maxItems] Max items to fetch, default: 1000
   /// [results] The items returned by the data source
   const GetFlagshipAppsInvokeResult({
@@ -33,7 +33,7 @@ class GetFlagshipAppsInvokeResult {
   factory GetFlagshipAppsInvokeResult.fromMap(Map<String, dynamic> map) {
     return GetFlagshipAppsInvokeResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetFlagshipAppsResult>(guardedValue, (value) => GetFlagshipAppsResult.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }

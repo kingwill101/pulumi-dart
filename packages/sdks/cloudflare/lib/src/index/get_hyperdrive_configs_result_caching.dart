@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHyperdriveConfigsResultCaching {
-  /// Set to true to disable caching of SQL responses. Default is false.
+  /// Defines whether caching is disabled.
   final pulumi.Input<bool> disabled;
-  /// Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
+  /// Defines the maximum duration (in seconds) items persist in the cache.
   final pulumi.Input<int> maxAge;
-  /// Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
+  /// Defines the number of seconds the cache may serve a stale response.
   final pulumi.Input<int> staleWhileRevalidate;
 
   /// Creates a new [GetHyperdriveConfigsResultCaching].
-  /// [disabled] Set to true to disable caching of SQL responses. Default is false.
-  /// [maxAge] Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
-  /// [staleWhileRevalidate] Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
+  /// [disabled] Defines whether caching is disabled.
+  /// [maxAge] Defines the maximum duration (in seconds) items persist in the cache.
+  /// [staleWhileRevalidate] Defines the number of seconds the cache may serve a stale response.
   const GetHyperdriveConfigsResultCaching({
     required this.disabled,
     required this.maxAge,
@@ -31,8 +31,8 @@ class GetHyperdriveConfigsResultCaching {
   factory GetHyperdriveConfigsResultCaching.fromMap(Map<String, dynamic> map) {
     return GetHyperdriveConfigsResultCaching(
       disabled: pulumi.Input.fromValue(map['disabled'] as bool),
-      maxAge: pulumi.Input.fromValue((map['maxAge'] as num).toInt()),
-      staleWhileRevalidate: pulumi.Input.fromValue((map['staleWhileRevalidate'] as num).toInt()),
+      maxAge: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxAge'])),
+      staleWhileRevalidate: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['staleWhileRevalidate'])),
     );
   }
 }

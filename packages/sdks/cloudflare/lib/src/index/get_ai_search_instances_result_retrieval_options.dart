@@ -4,15 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_ai_search_instances_result_retrieval_options_boost_by.dart';
 
 class GetAiSearchInstancesResultRetrievalOptions {
-  /// Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom*metadata field.
   final pulumi.Input<List<GetAiSearchInstancesResultRetrievalOptionsBoostBy>> boostBies;
-  /// Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.
   /// Available values: "and", "or".
   final pulumi.Input<String> keywordMatchMode;
 
   /// Creates a new [GetAiSearchInstancesResultRetrievalOptions].
-  /// [boostBies] Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom*metadata field.
-  /// [keywordMatchMode] Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.
+  /// [boostBies] Required.
+  /// [keywordMatchMode] Available values: "and", "or".
   const GetAiSearchInstancesResultRetrievalOptions({
     required this.boostBies,
     required this.keywordMatchMode,

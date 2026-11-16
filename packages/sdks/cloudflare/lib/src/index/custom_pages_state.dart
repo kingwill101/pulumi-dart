@@ -8,7 +8,7 @@ class CustomPagesState {
   final pulumi.Input<String?>? accountId;
   final pulumi.Input<String?>? createdOn;
   final pulumi.Input<String?>? description;
-  /// Error Page Types
+  /// Custom page type.
   /// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
   final pulumi.Input<String?>? identifier;
   final pulumi.Input<String?>? modifiedOn;
@@ -26,7 +26,7 @@ class CustomPagesState {
   /// [accountId] The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
   /// [createdOn] Optional.
   /// [description] Optional.
-  /// [identifier] Error Page Types
+  /// [identifier] Custom page type.
   /// [modifiedOn] Optional.
   /// [previewTarget] Optional.
   /// [requiredTokens] Optional.

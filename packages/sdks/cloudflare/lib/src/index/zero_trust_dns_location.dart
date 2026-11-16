@@ -23,6 +23,7 @@ import 'zero_trust_dns_location_state.dart';
 ///     name: "Austin Office Location",
 ///     clientDefault: false,
 ///     dnsDestinationIpsId: "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
+///     dns64Enabled: false,
 ///     ecsSupport: false,
 ///     endpoints: {
 ///         doh: {
@@ -66,6 +67,7 @@ import 'zero_trust_dns_location_state.dart';
 ///     name="Austin Office Location",
 ///     client_default=False,
 ///     dns_destination_ips_id="0e4a32c6-6fb8-4858-9296-98f51631e8e6",
+///     dns64_enabled=False,
 ///     ecs_support=False,
 ///     endpoints={
 ///         "doh": {
@@ -113,6 +115,7 @@ import 'zero_trust_dns_location_state.dart';
 ///         Name = "Austin Office Location",
 ///         ClientDefault = false,
 ///         DnsDestinationIpsId = "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
+///         Dns64Enabled = false,
 ///         EcsSupport = false,
 ///         Endpoints = new Cloudflare.Inputs.ZeroTrustDnsLocationEndpointsArgs
 ///         {
@@ -186,6 +189,7 @@ import 'zero_trust_dns_location_state.dart';
 /// 			Name:                pulumi.String("Austin Office Location"),
 /// 			ClientDefault:       pulumi.Bool(false),
 /// 			DnsDestinationIpsId: pulumi.String("0e4a32c6-6fb8-4858-9296-98f51631e8e6"),
+/// 			Dns64Enabled:        pulumi.Bool(false),
 /// 			EcsSupport:          pulumi.Bool(false),
 /// 			Endpoints: &cloudflare.ZeroTrustDnsLocationEndpointsArgs{
 /// 				Doh: &cloudflare.ZeroTrustDnsLocationEndpointsDohArgs{
@@ -235,7 +239,7 @@ import 'zero_trust_dns_location_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -243,24 +247,28 @@ import 'zero_trust_dns_location_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdnslocation" "example_zero_trust_dns_location" {
+/// resource "cloudflare_zero_trust_dns_location" "example_zero_trust_dns_location" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id             = "699d98642c564d2e855e9661899b7252"
 ///   name                   = "Austin Office Location"
 ///   client_default         = false
 ///   dns_destination_ips_id = "0e4a32c6-6fb8-4858-9296-98f51631e8e6"
+///   dns64_enabled          = false
 ///   ecs_support            = false
 ///   endpoints = {
 ///     doh = {
 ///       enabled = true
 ///       networks = [{
-///         "network" = "2001:85a3::/64"
+///         network = "2001:85a3::/64"
 ///       }]
 ///       require_token = true
 ///     }
 ///     dot = {
 ///       enabled = true
 ///       networks = [{
-///         "network" = "2001:85a3::/64"
+///         network = "2001:85a3::/64"
 ///       }]
 ///     }
 ///     ipv4 = {
@@ -269,7 +277,7 @@ import 'zero_trust_dns_location_state.dart';
 ///     ipv6 = {
 ///       enabled = true
 ///       networks = [{
-///         "network" = "2001:85a3::/64"
+///         network = "2001:85a3::/64"
 ///       }]
 ///     }
 ///   }
@@ -277,9 +285,9 @@ import 'zero_trust_dns_location_state.dart';
 ///     mode     = "override"
 ///     ttl_secs = 3600
 ///   }
-///   networks {
+///   networks = [{
 ///     network = "192.0.2.1/32"
-///   }
+///   }]
 /// }
 /// ```
 /// ```java
@@ -318,6 +326,7 @@ import 'zero_trust_dns_location_state.dart';
 ///             .name("Austin Office Location")
 ///             .clientDefault(false)
 ///             .dnsDestinationIpsId("0e4a32c6-6fb8-4858-9296-98f51631e8e6")
+///             .dns64Enabled(false)
 ///             .ecsSupport(false)
 ///             .endpoints(ZeroTrustDnsLocationEndpointsArgs.builder()
 ///                 .doh(ZeroTrustDnsLocationEndpointsDohArgs.builder()
@@ -365,6 +374,7 @@ import 'zero_trust_dns_location_state.dart';
 ///       name: Austin Office Location
 ///       clientDefault: false
 ///       dnsDestinationIpsId: 0e4a32c6-6fb8-4858-9296-98f51631e8e6
+///       dns64Enabled: false
 ///       ecsSupport: false
 ///       endpoints:
 ///         doh:
@@ -396,10 +406,13 @@ import 'zero_trust_dns_location_state.dart';
 /// $ pulumi import cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation example '<account_id>/<location_id>'
 /// ```
 class ZeroTrustDnsLocation extends pulumi.CustomResource {
+  /// Specify the Cloudflare account identifier.
   late final pulumi.Output<String> accountId;
   /// Indicate whether this location is the default location.
   late final pulumi.Output<bool> clientDefault;
   late final pulumi.Output<String> createdAt;
+  /// Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+  late final pulumi.Output<bool?> dns64Enabled;
   /// Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
   late final pulumi.Output<String> dnsDestinationIpsId;
   /// Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.
@@ -436,11 +449,12 @@ class ZeroTrustDnsLocation extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     clientDefault = registerOutput<bool>('clientDefault');
     createdAt = registerOutput<String>('createdAt');
+    dns64Enabled = registerOutput<bool?>('dns64Enabled');
     dnsDestinationIpsId = registerOutput<String>('dnsDestinationIpsId');
     dnsDestinationIpv6BlockId = registerOutput<String>('dnsDestinationIpv6BlockId');
     dohSubdomain = registerOutput<String>('dohSubdomain');
@@ -482,6 +496,7 @@ class ZeroTrustDnsLocation extends pulumi.CustomResource {
     accountId = registerOutput<String>('accountId');
     clientDefault = registerOutput<bool>('clientDefault');
     createdAt = registerOutput<String>('createdAt');
+    dns64Enabled = registerOutput<bool?>('dns64Enabled');
     dnsDestinationIpsId = registerOutput<String>('dnsDestinationIpsId');
     dnsDestinationIpv6BlockId = registerOutput<String>('dnsDestinationIpv6BlockId');
     dohSubdomain = registerOutput<String>('dohSubdomain');
@@ -508,6 +523,7 @@ class ZeroTrustDnsLocation extends pulumi.CustomResource {
     accountId = registerOutput<String>('accountId');
     clientDefault = registerOutput<bool>('clientDefault');
     createdAt = registerOutput<String>('createdAt');
+    dns64Enabled = registerOutput<bool?>('dns64Enabled');
     dnsDestinationIpsId = registerOutput<String>('dnsDestinationIpsId');
     dnsDestinationIpv6BlockId = registerOutput<String>('dnsDestinationIpv6BlockId');
     dohSubdomain = registerOutput<String>('dohSubdomain');

@@ -3,15 +3,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetZoneLockdownConfiguration {
-  /// The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
-  /// Available values: "ip", "ipRange".
+  /// For `target: ip`: The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
   final pulumi.Input<String> target;
-  /// The IP address to match. This address will be compared to the IP address of incoming requests.
+  /// For `target: ip`: The IP address to match. This address will be compared to the IP address of incoming requests.
+  ///
+  /// For `target: ipRange`: The IP address range to match. You can only use prefix lengths `/16` and `/24`.
   final pulumi.Input<String> value;
 
   /// Creates a new [GetZoneLockdownConfiguration].
-  /// [target] The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
-  /// [value] The IP address to match. This address will be compared to the IP address of incoming requests.
+  /// [target] For `target: ip`: The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
+  /// [value] For `target: ip`: The IP address to match. This address will be compared to the IP address of incoming requests.
   const GetZoneLockdownConfiguration({
     required this.target,
     required this.value,

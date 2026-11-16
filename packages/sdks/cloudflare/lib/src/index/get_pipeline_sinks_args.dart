@@ -9,29 +9,41 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPipelineSinksArgs {
   /// Specifies the public ID of the account.
   final pulumi.Input<String?>? accountId;
+  /// Sort direction.
+  /// Available values: "asc", "desc".
+  final pulumi.Input<String?>? direction;
   /// Max items to fetch, default: 1000
   final pulumi.Input<int?>? maxItems;
   /// Filters sinks by name (case-insensitive substring).
   final pulumi.Input<String?>? name;
+  /// Sorts sinks by this field. Defaults to `createdAt`.
+  /// Available values: "name", "createdAt".
+  final pulumi.Input<String?>? orderBy;
   final pulumi.Input<String?>? pipelineId;
 
   /// Creates a new [GetPipelineSinksArgs].
   /// [accountId] Specifies the public ID of the account.
+  /// [direction] Sort direction.
   /// [maxItems] Max items to fetch, default: 1000
   /// [name] Filters sinks by name (case-insensitive substring).
+  /// [orderBy] Sorts sinks by this field. Defaults to `createdAt`.
   /// [pipelineId] Optional.
   const GetPipelineSinksArgs({
     this.accountId,
+    this.direction,
     this.maxItems,
     this.name,
+    this.orderBy,
     this.pipelineId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountId': ?accountId,
+      'direction': ?direction,
       'maxItems': ?maxItems,
       'name': ?name,
+      'orderBy': ?orderBy,
       'pipelineId': ?pipelineId,
     };
   }
@@ -39,8 +51,10 @@ class GetPipelineSinksArgs {
   factory GetPipelineSinksArgs.fromMap(Map<String, dynamic> map) {
     return GetPipelineSinksArgs(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      orderBy: (() { final guardedValue = map['orderBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pipelineId: (() { final guardedValue = map['pipelineId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'worker_observability.dart';
+import 'worker_previews_base_config.dart';
 import 'worker_references.dart';
 import 'worker_subdomain.dart';
 import 'worker_tail_consumer.dart';
@@ -14,12 +15,16 @@ class WorkerState {
   final pulumi.Input<String?>? createdOn;
   /// When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
   final pulumi.Input<String?>? deployedOn;
+  /// If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+  final pulumi.Input<bool?>? force;
   /// Whether logpush is enabled for the Worker.
   final pulumi.Input<bool?>? logpush;
   /// Name of the Worker.
   final pulumi.Input<String?>? name;
   /// Observability settings for the Worker.
   final pulumi.Input<WorkerObservability?>? observability;
+  /// Template configuration used when creating new Previews for this Worker.
+  final pulumi.Input<WorkerPreviewsBaseConfig?>? previewsBaseConfig;
   /// Other resources that reference the Worker and depend on it existing.
   final pulumi.Input<WorkerReferences?>? references;
   /// Subdomain settings for the Worker.
@@ -35,9 +40,11 @@ class WorkerState {
   /// [accountId] Identifier.
   /// [createdOn] When the Worker was created.
   /// [deployedOn] When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
+  /// [force] If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
   /// [logpush] Whether logpush is enabled for the Worker.
   /// [name] Name of the Worker.
   /// [observability] Observability settings for the Worker.
+  /// [previewsBaseConfig] Template configuration used when creating new Previews for this Worker.
   /// [references] Other resources that reference the Worker and depend on it existing.
   /// [subdomain] Subdomain settings for the Worker.
   /// [tags] Tags associated with the Worker.
@@ -47,9 +54,11 @@ class WorkerState {
     this.accountId,
     this.createdOn,
     this.deployedOn,
+    this.force,
     this.logpush,
     this.name,
     this.observability,
+    this.previewsBaseConfig,
     this.references,
     this.subdomain,
     this.tags,
@@ -62,9 +71,11 @@ class WorkerState {
       'accountId': ?accountId,
       'createdOn': ?createdOn,
       'deployedOn': ?deployedOn,
+      'force': ?force,
       'logpush': ?logpush,
       'name': ?name,
       'observability': ?pulumi.Input.mapOptionalInputValue<WorkerObservability, Map<String, dynamic>>(observability, (value) => value.toMap()),
+      'previewsBaseConfig': ?pulumi.Input.mapOptionalInputValue<WorkerPreviewsBaseConfig, Map<String, dynamic>>(previewsBaseConfig, (value) => value.toMap()),
       'references': ?pulumi.Input.mapOptionalInputValue<WorkerReferences, Map<String, dynamic>>(references, (value) => value.toMap()),
       'subdomain': ?pulumi.Input.mapOptionalInputValue<WorkerSubdomain, Map<String, dynamic>>(subdomain, (value) => value.toMap()),
       'tags': ?tags,
@@ -78,9 +89,11 @@ class WorkerState {
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createdOn: (() { final guardedValue = map['createdOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deployedOn: (() { final guardedValue = map['deployedOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      force: (() { final guardedValue = map['force']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       logpush: (() { final guardedValue = map['logpush']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       observability: (() { final guardedValue = map['observability']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerObservability.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      previewsBaseConfig: (() { final guardedValue = map['previewsBaseConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerPreviewsBaseConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       references: (() { final guardedValue = map['references']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerReferences.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       subdomain: (() { final guardedValue = map['subdomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerSubdomain.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

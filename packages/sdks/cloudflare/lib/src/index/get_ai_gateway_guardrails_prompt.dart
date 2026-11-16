@@ -16,6 +16,8 @@ class GetAiGatewayGuardrailsPrompt {
   /// Available values: "FLAG", "BLOCK".
   final pulumi.Input<String> s13;
   /// Available values: "FLAG", "BLOCK".
+  final pulumi.Input<String> s14;
+  /// Available values: "FLAG", "BLOCK".
   final pulumi.Input<String> s2;
   /// Available values: "FLAG", "BLOCK".
   final pulumi.Input<String> s3;
@@ -39,6 +41,7 @@ class GetAiGatewayGuardrailsPrompt {
   /// [s11] Available values: "FLAG", "BLOCK".
   /// [s12] Available values: "FLAG", "BLOCK".
   /// [s13] Available values: "FLAG", "BLOCK".
+  /// [s14] Available values: "FLAG", "BLOCK".
   /// [s2] Available values: "FLAG", "BLOCK".
   /// [s3] Available values: "FLAG", "BLOCK".
   /// [s4] Available values: "FLAG", "BLOCK".
@@ -54,6 +57,7 @@ class GetAiGatewayGuardrailsPrompt {
     required this.s11,
     required this.s12,
     required this.s13,
+    required this.s14,
     required this.s2,
     required this.s3,
     required this.s4,
@@ -72,6 +76,7 @@ class GetAiGatewayGuardrailsPrompt {
       's11': s11,
       's12': s12,
       's13': s13,
+      's14': s14,
       's2': s2,
       's3': s3,
       's4': s4,
@@ -91,6 +96,7 @@ class GetAiGatewayGuardrailsPrompt {
       s11: pulumi.Input.fromValue(map['s11'] as String),
       s12: pulumi.Input.fromValue(map['s12'] as String),
       s13: pulumi.Input.fromValue(map['s13'] as String),
+      s14: pulumi.Input.fromValue(map['s14'] as String),
       s2: pulumi.Input.fromValue(map['s2'] as String),
       s3: pulumi.Input.fromValue(map['s3'] as String),
       s4: pulumi.Input.fromValue(map['s4'] as String),

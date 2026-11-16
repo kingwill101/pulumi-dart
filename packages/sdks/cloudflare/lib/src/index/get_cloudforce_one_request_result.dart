@@ -99,7 +99,7 @@ class GetCloudforceOneRequestResult {
       created: (() { final guardedValue = map['created']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return GetCloudforceOneRequestFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      messageTokens: (() { final guardedValue = map['messageTokens']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      messageTokens: (() { final guardedValue = map['messageTokens']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return guardedValue as String; })(),
       readableId: (() { final guardedValue = map['readableId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       request: (() { final guardedValue = map['request']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -107,7 +107,7 @@ class GetCloudforceOneRequestResult {
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
       summary: (() { final guardedValue = map['summary']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tlp: (() { final guardedValue = map['tlp']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      tokens: (() { final guardedValue = map['tokens']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      tokens: (() { final guardedValue = map['tokens']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       updated: (() { final guardedValue = map['updated']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

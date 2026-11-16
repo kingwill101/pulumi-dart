@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'load_balancer_adaptive_routing.dart';
 import 'load_balancer_location_strategy.dart';
+import 'load_balancer_pool_set.dart';
 import 'load_balancer_random_steering.dart';
 import 'load_balancer_rule.dart';
 import 'load_balancer_session_affinity_attributes.dart';
@@ -29,6 +30,8 @@ class LoadBalancerState {
   final pulumi.Input<String?>? name;
   /// List of networks where Load Balancer or Pool is enabled.
   final pulumi.Input<List<String>?>? networks;
+  /// An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`regionPools` / `countryPools` / `popPools` / `defaultPools` / `steeringPolicy` / `randomSteering` / `fallbackPool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
+  final pulumi.Input<List<LoadBalancerPoolSet>?>? poolSets;
   /// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
   final pulumi.Input<Map<String, List<String>>?>? popPools;
   /// Whether the hostname should be gray clouded (false) or orange clouded (true).
@@ -65,6 +68,7 @@ class LoadBalancerState {
   /// [modifiedOn] Optional.
   /// [name] The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.
   /// [networks] List of networks where Load Balancer or Pool is enabled.
+  /// [poolSets] An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`regionPools` / `countryPools` / `popPools` / `defaultPools` / `steeringPolicy` / `randomSteering` / `fallbackPool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
   /// [popPools] Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
   /// [proxied] Whether the hostname should be gray clouded (false) or orange clouded (true).
   /// [randomSteering] Configures pool weights.
@@ -89,6 +93,7 @@ class LoadBalancerState {
     this.modifiedOn,
     this.name,
     this.networks,
+    this.poolSets,
     this.popPools,
     this.proxied,
     this.randomSteering,
@@ -116,6 +121,7 @@ class LoadBalancerState {
       'modifiedOn': ?modifiedOn,
       'name': ?name,
       'networks': ?networks,
+      'poolSets': ?pulumi.Input.mapOptionalInputValue<List<LoadBalancerPoolSet>, List<Map<String, dynamic>>>(poolSets, (value) => pulumi.Input.encodeList<LoadBalancerPoolSet, Map<String, dynamic>>(value, (value) => value.toMap())),
       'popPools': ?popPools,
       'proxied': ?proxied,
       'randomSteering': ?pulumi.Input.mapOptionalInputValue<LoadBalancerRandomSteering, Map<String, dynamic>>(randomSteering, (value) => value.toMap()),
@@ -144,6 +150,7 @@ class LoadBalancerState {
       modifiedOn: (() { final guardedValue = map['modifiedOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networks: (() { final guardedValue = map['networks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      poolSets: (() { final guardedValue = map['poolSets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LoadBalancerPoolSet>(guardedValue, (value) => LoadBalancerPoolSet.fromMap((value as Map).cast<String, dynamic>()))); })(),
       popPools: (() { final guardedValue = map['popPools']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>())); })(),
       proxied: (() { final guardedValue = map['proxied']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       randomSteering: (() { final guardedValue = map['randomSteering']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LoadBalancerRandomSteering.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

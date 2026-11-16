@@ -13,7 +13,7 @@ class ZeroTrustTunnelWarpConnectorConfigState {
   final pulumi.Input<int?>? configurationVersion;
   /// Timestamp of when the resource was created.
   final pulumi.Input<String?>? createdAt;
-  /// High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
+  /// High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
   /// Available values: "none", "disabled", "aws", "local".
   final pulumi.Input<String?>? haMode;
   /// UUID of the tunnel.
@@ -26,7 +26,7 @@ class ZeroTrustTunnelWarpConnectorConfigState {
   /// [config] Provider-specific configuration. Required shape depends on ha_mode. For `aws`, must contain `fnrId`. For `local`, must contain `vips`. For `none` and `disabled`, must be empty or omitted.
   /// [configurationVersion] Monotonically increasing configuration version, incremented on each PUT.
   /// [createdAt] Timestamp of when the resource was created.
-  /// [haMode] High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
+  /// [haMode] High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
   /// [tunnelId] UUID of the tunnel.
   /// [updatedAt] Timestamp of the last update. Null if never updated.
   const ZeroTrustTunnelWarpConnectorConfigState({
@@ -55,7 +55,7 @@ class ZeroTrustTunnelWarpConnectorConfigState {
     return ZeroTrustTunnelWarpConnectorConfigState(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustTunnelWarpConnectorConfigConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      configurationVersion: (() { final guardedValue = map['configurationVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      configurationVersion: (() { final guardedValue = map['configurationVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       haMode: (() { final guardedValue = map['haMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tunnelId: (() { final guardedValue = map['tunnelId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

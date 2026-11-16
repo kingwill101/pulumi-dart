@@ -6,6 +6,9 @@ class GetShareFilter {
   /// Direction to sort objects.
   /// Available values: "asc", "desc".
   final pulumi.Input<String> direction;
+  /// Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+  /// Available values: "api", "mirror".
+  final pulumi.Input<String?>? includeTagsFrom;
   /// Filter shares by kind.
   /// Available values: "sent", "received".
   final pulumi.Input<String?>? kind;
@@ -25,6 +28,7 @@ class GetShareFilter {
 
   /// Creates a new [GetShareFilter].
   /// [direction] Direction to sort objects.
+  /// [includeTagsFrom] Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
   /// [kind] Filter shares by kind.
   /// [order] Order shares by values in the given field.
   /// [resourceTypes] Filter share resources by resource_types.
@@ -33,6 +37,7 @@ class GetShareFilter {
   /// [targetType] Filter shares by target_type.
   const GetShareFilter({
     required this.direction,
+    this.includeTagsFrom,
     this.kind,
     required this.order,
     this.resourceTypes,
@@ -44,6 +49,7 @@ class GetShareFilter {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'direction': direction,
+      'includeTagsFrom': ?includeTagsFrom,
       'kind': ?kind,
       'order': order,
       'resourceTypes': ?resourceTypes,
@@ -56,6 +62,7 @@ class GetShareFilter {
   factory GetShareFilter.fromMap(Map<String, dynamic> map) {
     return GetShareFilter(
       direction: pulumi.Input.fromValue(map['direction'] as String),
+      includeTagsFrom: (() { final guardedValue = map['includeTagsFrom']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       order: pulumi.Input.fromValue(map['order'] as String),
       resourceTypes: (() { final guardedValue = map['resourceTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

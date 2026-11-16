@@ -11,7 +11,7 @@ class GetCallsTurnAppResult {
   final String? keyId;
   /// The date and time the item was last modified.
   final String? modified;
-  /// A short description of Calls app, not shown to end users.
+  /// A short description of a Realtime SFU app, not shown to end users.
   final String? name;
   /// A Cloudflare-generated unique identifier for a item.
   final String? uid;
@@ -21,7 +21,7 @@ class GetCallsTurnAppResult {
   /// [created] The date and time the item was created.
   /// [keyId] A Cloudflare-generated unique identifier for a item.
   /// [modified] The date and time the item was last modified.
-  /// [name] A short description of Calls app, not shown to end users.
+  /// [name] A short description of a Realtime SFU app, not shown to end users.
   /// [uid] A Cloudflare-generated unique identifier for a item.
   const GetCallsTurnAppResult({
     this.accountId,

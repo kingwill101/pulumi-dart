@@ -48,7 +48,7 @@ class ListItemRedirect {
       preservePathSuffix: (() { final guardedValue = map['preservePathSuffix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       preserveQueryString: (() { final guardedValue = map['preserveQueryString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       sourceUrl: pulumi.Input.fromValue(map['sourceUrl'] as String),
-      statusCode: (() { final guardedValue = map['statusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      statusCode: (() { final guardedValue = map['statusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       subpathMatching: (() { final guardedValue = map['subpathMatching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       targetUrl: pulumi.Input.fromValue(map['targetUrl'] as String),
     );

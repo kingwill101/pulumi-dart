@@ -13,11 +13,13 @@ class PipelineStreamState {
   final pulumi.Input<String?>? createdAt;
   /// Indicates the endpoint URL of this stream.
   final pulumi.Input<String?>? endpoint;
+  /// Defines the data format of the events.
   final pulumi.Input<PipelineStreamFormat?>? format;
   final pulumi.Input<PipelineStreamHttp?>? http;
   final pulumi.Input<String?>? modifiedAt;
   /// Specifies the name of the Stream.
   final pulumi.Input<String?>? name;
+  /// Defines the schema of the events in the data stream.
   final pulumi.Input<PipelineStreamSchema?>? schema;
   /// Indicates the current version of this stream.
   final pulumi.Input<int?>? version;
@@ -27,11 +29,11 @@ class PipelineStreamState {
   /// [accountId] Specifies the public ID of the account.
   /// [createdAt] Optional.
   /// [endpoint] Indicates the endpoint URL of this stream.
-  /// [format] Optional.
+  /// [format] Defines the data format of the events.
   /// [http] Optional.
   /// [modifiedAt] Optional.
   /// [name] Specifies the name of the Stream.
-  /// [schema] Optional.
+  /// [schema] Defines the schema of the events in the data stream.
   /// [version] Indicates the current version of this stream.
   /// [workerBinding] Optional.
   const PipelineStreamState({
@@ -72,7 +74,7 @@ class PipelineStreamState {
       modifiedAt: (() { final guardedValue = map['modifiedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       schema: (() { final guardedValue = map['schema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineStreamSchema.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       workerBinding: (() { final guardedValue = map['workerBinding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineStreamWorkerBinding.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

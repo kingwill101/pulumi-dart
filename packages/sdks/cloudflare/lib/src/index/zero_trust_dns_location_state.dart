@@ -7,10 +7,13 @@ import 'zero_trust_dns_location_network.dart';
 
 /// Input properties used for looking up and filtering ZeroTrustDnsLocation resources.
 class ZeroTrustDnsLocationState {
+  /// Specify the Cloudflare account identifier.
   final pulumi.Input<String?>? accountId;
   /// Indicate whether this location is the default location.
   final pulumi.Input<bool?>? clientDefault;
   final pulumi.Input<String?>? createdAt;
+  /// Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+  final pulumi.Input<bool?>? dns64Enabled;
   /// Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
   final pulumi.Input<String?>? dnsDestinationIpsId;
   /// Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.
@@ -36,9 +39,10 @@ class ZeroTrustDnsLocationState {
   final pulumi.Input<String?>? updatedAt;
 
   /// Creates a new [ZeroTrustDnsLocationState].
-  /// [accountId] Optional.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [clientDefault] Indicate whether this location is the default location.
   /// [createdAt] Optional.
+  /// [dns64Enabled] Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
   /// [dnsDestinationIpsId] Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
   /// [dnsDestinationIpv6BlockId] Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.
   /// [dohSubdomain] Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.
@@ -55,6 +59,7 @@ class ZeroTrustDnsLocationState {
     this.accountId,
     this.clientDefault,
     this.createdAt,
+    this.dns64Enabled,
     this.dnsDestinationIpsId,
     this.dnsDestinationIpv6BlockId,
     this.dohSubdomain,
@@ -74,6 +79,7 @@ class ZeroTrustDnsLocationState {
       'accountId': ?accountId,
       'clientDefault': ?clientDefault,
       'createdAt': ?createdAt,
+      'dns64Enabled': ?dns64Enabled,
       'dnsDestinationIpsId': ?dnsDestinationIpsId,
       'dnsDestinationIpv6BlockId': ?dnsDestinationIpv6BlockId,
       'dohSubdomain': ?dohSubdomain,
@@ -94,6 +100,7 @@ class ZeroTrustDnsLocationState {
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clientDefault: (() { final guardedValue = map['clientDefault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dns64Enabled: (() { final guardedValue = map['dns64Enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       dnsDestinationIpsId: (() { final guardedValue = map['dnsDestinationIpsId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dnsDestinationIpv6BlockId: (() { final guardedValue = map['dnsDestinationIpv6BlockId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dohSubdomain: (() { final guardedValue = map['dohSubdomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

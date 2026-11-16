@@ -13,7 +13,6 @@ import 'share_recipient_state.dart';
 /// const exampleShareRecipient = new cloudflare.ShareRecipient("example_share_recipient", {
 ///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
 ///     shareId: "3fd85f74b32742f1bff64a85009dda07",
-///     organizationId: "023e105f4ecef8ad9ca31a8372d0c353",
 ///     recipientAccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 /// });
 /// ```
@@ -24,7 +23,6 @@ import 'share_recipient_state.dart';
 /// example_share_recipient = cloudflare.ShareRecipient("example_share_recipient",
 ///     account_id="023e105f4ecef8ad9ca31a8372d0c353",
 ///     share_id="3fd85f74b32742f1bff64a85009dda07",
-///     organization_id="023e105f4ecef8ad9ca31a8372d0c353",
 ///     recipient_account_id="023e105f4ecef8ad9ca31a8372d0c353")
 /// ```
 /// ```csharp
@@ -39,7 +37,6 @@ import 'share_recipient_state.dart';
 ///     {
 ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
 ///         ShareId = "3fd85f74b32742f1bff64a85009dda07",
-///         OrganizationId = "023e105f4ecef8ad9ca31a8372d0c353",
 ///         RecipientAccountId = "023e105f4ecef8ad9ca31a8372d0c353",
 ///     });
 ///
@@ -58,7 +55,6 @@ import 'share_recipient_state.dart';
 /// 		_, err := cloudflare.NewShareRecipient(ctx, "example_share_recipient", &cloudflare.ShareRecipientArgs{
 /// 			AccountId:          pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 /// 			ShareId:            pulumi.String("3fd85f74b32742f1bff64a85009dda07"),
-/// 			OrganizationId:     pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 /// 			RecipientAccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 /// 		})
 /// 		if err != nil {
@@ -69,7 +65,7 @@ import 'share_recipient_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -77,10 +73,12 @@ import 'share_recipient_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_sharerecipient" "example_share_recipient" {
+/// resource "cloudflare_share_recipient" "example_share_recipient" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id           = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   share_id             = "3fd85f74b32742f1bff64a85009dda07"
-///   organization_id      = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   recipient_account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -108,7 +106,6 @@ import 'share_recipient_state.dart';
 ///         var exampleShareRecipient = new ShareRecipient("exampleShareRecipient", ShareRecipientArgs.builder()
 ///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
 ///             .shareId("3fd85f74b32742f1bff64a85009dda07")
-///             .organizationId("023e105f4ecef8ad9ca31a8372d0c353")
 ///             .recipientAccountId("023e105f4ecef8ad9ca31a8372d0c353")
 ///             .build());
 ///
@@ -123,7 +120,6 @@ import 'share_recipient_state.dart';
 ///     properties:
 ///       accountId: 023e105f4ecef8ad9ca31a8372d0c353
 ///       shareId: 3fd85f74b32742f1bff64a85009dda07
-///       organizationId: 023e105f4ecef8ad9ca31a8372d0c353
 ///       recipientAccountId: 023e105f4ecef8ad9ca31a8372d0c353
 /// ```
 ///
@@ -141,12 +137,12 @@ class ShareRecipientRes extends pulumi.CustomResource {
   /// target state set by the API; the background reconciliation workflow
   /// drives `currentAssociationStatus` toward it.
   late final pulumi.Output<String> associationStatus;
-  /// When the share was created.
+  /// When the object was created.
   late final pulumi.Output<String> created;
-  /// When the share was modified.
+  /// Include resources in the response.
+  late final pulumi.Output<bool?> includeResources;
+  /// When the object was last modified.
   late final pulumi.Output<String> modified;
-  /// Organization identifier.
-  late final pulumi.Output<String?> organizationId;
   /// The account that will receive the share.
   late final pulumi.Output<String?> recipientAccountId;
   late final pulumi.Output<List<ShareRecipientResource>> resources;
@@ -165,13 +161,13 @@ class ShareRecipientRes extends pulumi.CustomResource {
           'cloudflare:index/shareRecipient:ShareRecipient',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     associationStatus = registerOutput<String>('associationStatus');
     created = registerOutput<String>('created');
+    includeResources = registerOutput<bool?>('includeResources');
     modified = registerOutput<String>('modified');
-    organizationId = registerOutput<String?>('organizationId');
     recipientAccountId = registerOutput<String?>('recipientAccountId');
     resources = registerOutput<List<ShareRecipientResource>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ShareRecipientResource>(guardedValue, (value) => ShareRecipientResource.fromMap((value as Map).cast<String, dynamic>())); });
     shareId = registerOutput<String>('shareId');
@@ -204,8 +200,8 @@ class ShareRecipientRes extends pulumi.CustomResource {
     accountId = registerOutput<String>('accountId');
     associationStatus = registerOutput<String>('associationStatus');
     created = registerOutput<String>('created');
+    includeResources = registerOutput<bool?>('includeResources');
     modified = registerOutput<String>('modified');
-    organizationId = registerOutput<String?>('organizationId');
     recipientAccountId = registerOutput<String?>('recipientAccountId');
     resources = registerOutput<List<ShareRecipientResource>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ShareRecipientResource>(guardedValue, (value) => ShareRecipientResource.fromMap((value as Map).cast<String, dynamic>())); });
     shareId = registerOutput<String>('shareId');
@@ -223,8 +219,8 @@ class ShareRecipientRes extends pulumi.CustomResource {
     accountId = registerOutput<String>('accountId');
     associationStatus = registerOutput<String>('associationStatus');
     created = registerOutput<String>('created');
+    includeResources = registerOutput<bool?>('includeResources');
     modified = registerOutput<String>('modified');
-    organizationId = registerOutput<String?>('organizationId');
     recipientAccountId = registerOutput<String?>('recipientAccountId');
     resources = registerOutput<List<ShareRecipientResource>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ShareRecipientResource>(guardedValue, (value) => ShareRecipientResource.fromMap((value as Map).cast<String, dynamic>())); });
     shareId = registerOutput<String>('shareId');

@@ -12,7 +12,7 @@ class GetCertificatePackResult {
   /// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
   /// Available values: "google", "lets*encrypt", "ssl*com".
   final String? certificateAuthority;
-  /// Identifier.
+  /// The unique identifier for a certificate_pack.
   final String? certificatePackId;
   /// Array of certificates in this pack.
   final List<GetCertificatePackCertificate>? certificates;
@@ -23,7 +23,7 @@ class GetCertificatePackResult {
   final GetCertificatePackFilter? filter;
   /// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
   final List<String>? hosts;
-  /// Identifier.
+  /// The unique identifier for a certificate_pack.
   final String? id;
   /// Identifier of the primary certificate in a pack.
   final String? primaryCertificate;
@@ -48,13 +48,13 @@ class GetCertificatePackResult {
 
   /// Creates a new [GetCertificatePackResult].
   /// [certificateAuthority] Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
-  /// [certificatePackId] Identifier.
+  /// [certificatePackId] The unique identifier for a certificate_pack.
   /// [certificates] Array of certificates in this pack.
   /// [cloudflareBranding] Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
   /// [dcvDelegationRecords] DCV Delegation records for domain validation.
   /// [filter] Optional.
   /// [hosts] Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
-  /// [id] Identifier.
+  /// [id] The unique identifier for a certificate_pack.
   /// [primaryCertificate] Identifier of the primary certificate in a pack.
   /// [status] Status of certificate pack.
   /// [type] Type of certificate pack.
@@ -119,7 +119,7 @@ class GetCertificatePackResult {
       validationErrors: (() { final guardedValue = map['validationErrors']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetCertificatePackValidationError>(guardedValue, (value) => GetCertificatePackValidationError.fromMap((value as Map).cast<String, dynamic>())); })(),
       validationMethod: (() { final guardedValue = map['validationMethod']; if (guardedValue == null) return null; return guardedValue as String; })(),
       validationRecords: (() { final guardedValue = map['validationRecords']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetCertificatePackValidationRecord>(guardedValue, (value) => GetCertificatePackValidationRecord.fromMap((value as Map).cast<String, dynamic>())); })(),
-      validityDays: (() { final guardedValue = map['validityDays']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      validityDays: (() { final guardedValue = map['validityDays']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

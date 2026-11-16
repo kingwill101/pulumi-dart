@@ -10,7 +10,7 @@ class GetQueueConsumersResult {
   /// Name of the dead letter queue, or empty string if not configured
   final pulumi.Input<String> deadLetterQueue;
   final pulumi.Input<String> queueName;
-  /// Name of a Worker
+  /// For `type: worker`: Name of a Worker
   final pulumi.Input<String> scriptName;
   final pulumi.Input<GetQueueConsumersResultSettings> settings;
   /// Available values: "worker", "httpPull".
@@ -21,7 +21,7 @@ class GetQueueConsumersResult {
   /// [createdOn] Required.
   /// [deadLetterQueue] Name of the dead letter queue, or empty string if not configured
   /// [queueName] Required.
-  /// [scriptName] Name of a Worker
+  /// [scriptName] For `type: worker`: Name of a Worker
   /// [settings] Required.
   /// [type] Available values: "worker", "httpPull".
   const GetQueueConsumersResult({

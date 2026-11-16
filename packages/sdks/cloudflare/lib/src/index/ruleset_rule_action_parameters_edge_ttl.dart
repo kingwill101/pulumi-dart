@@ -32,7 +32,7 @@ class RulesetRuleActionParametersEdgeTtl {
 
   factory RulesetRuleActionParametersEdgeTtl.fromMap(Map<String, dynamic> map) {
     return RulesetRuleActionParametersEdgeTtl(
-      default_: (() { final guardedValue = map['default']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      default_: (() { final guardedValue = map['default']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       mode: pulumi.Input.fromValue(map['mode'] as String),
       statusCodeTtls: (() { final guardedValue = map['statusCodeTtls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RulesetRuleActionParametersEdgeTtlStatusCodeTtl>(guardedValue, (value) => RulesetRuleActionParametersEdgeTtlStatusCodeTtl.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

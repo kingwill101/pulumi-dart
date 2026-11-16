@@ -12,15 +12,18 @@ class GetAiSearchInstanceArgs {
   final pulumi.Input<GetAiSearchInstanceFilter?>? filter;
   /// The ID of this resource.
   final pulumi.Input<String?>? id;
+  final pulumi.Input<String?>? namespace;
 
   /// Creates a new [GetAiSearchInstanceArgs].
   /// [accountId] Optional.
   /// [filter] Optional.
   /// [id] The ID of this resource.
+  /// [namespace] Optional.
   const GetAiSearchInstanceArgs({
     this.accountId,
     this.filter,
     this.id,
+    this.namespace,
   });
 
   Map<String, dynamic> toMap() {
@@ -28,6 +31,7 @@ class GetAiSearchInstanceArgs {
       'accountId': ?accountId,
       'filter': ?pulumi.Input.mapOptionalInputValue<GetAiSearchInstanceFilter, Map<String, dynamic>>(filter, (value) => value.toMap()),
       'id': ?id,
+      'namespace': ?namespace,
     };
   }
 
@@ -36,6 +40,7 @@ class GetAiSearchInstanceArgs {
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GetAiSearchInstanceFilter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }

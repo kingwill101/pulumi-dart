@@ -7,12 +7,16 @@ import 'get_workers_custom_domains_result.dart';
 class GetWorkersCustomDomainsInvokeResult {
   /// Identifier.
   final String? accountId;
+  /// Whether the configured hostname is routable for the domain.
+  final bool? enabled;
   /// Worker environment associated with the domain.
   final String? environment;
   /// Hostname of the domain.
   final String? hostname;
   /// Max items to fetch, default: 1000
   final int? maxItems;
+  /// Whether previews are routable for the domain.
+  final bool? previewsEnabled;
   /// The items returned by the data source
   final List<GetWorkersCustomDomainsResult>? results;
   /// Name of the Worker associated with the domain.
@@ -24,18 +28,22 @@ class GetWorkersCustomDomainsInvokeResult {
 
   /// Creates a new [GetWorkersCustomDomainsInvokeResult].
   /// [accountId] Identifier.
+  /// [enabled] Whether the configured hostname is routable for the domain.
   /// [environment] Worker environment associated with the domain.
   /// [hostname] Hostname of the domain.
   /// [maxItems] Max items to fetch, default: 1000
+  /// [previewsEnabled] Whether previews are routable for the domain.
   /// [results] The items returned by the data source
   /// [service] Name of the Worker associated with the domain.
   /// [zoneId] ID of the zone containing the domain hostname.
   /// [zoneName] Name of the zone containing the domain hostname.
   const GetWorkersCustomDomainsInvokeResult({
     this.accountId,
+    this.enabled,
     this.environment,
     this.hostname,
     this.maxItems,
+    this.previewsEnabled,
     this.results,
     this.service,
     this.zoneId,
@@ -45,9 +53,11 @@ class GetWorkersCustomDomainsInvokeResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountId': ?accountId,
+      'enabled': ?enabled,
       'environment': ?environment,
       'hostname': ?hostname,
       'maxItems': ?maxItems,
+      'previewsEnabled': ?previewsEnabled,
       'results': ?(() { final guardedValue = results; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetWorkersCustomDomainsResult, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'service': ?service,
       'zoneId': ?zoneId,
@@ -58,9 +68,11 @@ class GetWorkersCustomDomainsInvokeResult {
   factory GetWorkersCustomDomainsInvokeResult.fromMap(Map<String, dynamic> map) {
     return GetWorkersCustomDomainsInvokeResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return guardedValue as String; })(),
       hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      previewsEnabled: (() { final guardedValue = map['previewsEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetWorkersCustomDomainsResult>(guardedValue, (value) => GetWorkersCustomDomainsResult.fromMap((value as Map).cast<String, dynamic>())); })(),
       service: (() { final guardedValue = map['service']; if (guardedValue == null) return null; return guardedValue as String; })(),
       zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),

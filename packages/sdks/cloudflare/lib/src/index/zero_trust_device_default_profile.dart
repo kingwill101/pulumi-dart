@@ -28,11 +28,24 @@ import 'zero_trust_device_default_profile_virtual_networks.dart';
 ///     autoConnect: 0,
 ///     captivePortal: 180,
 ///     disableAutoFallback: true,
+///     dnsSearchSuffixes: [{
+///         suffix: "internal.corp",
+///         description: "Example internal domains",
+///     }],
+///     enableDeviceCredentialAuthentication: false,
 ///     excludes: [{
 ///         address: "192.0.2.0/24",
 ///         description: "Exclude testing domains from the tunnel",
 ///     }],
 ///     excludeOfficeIps: true,
+///     globalAcceleration: {
+///         apiEndpoints: ["198.51.100.1:443"],
+///         enabled: true,
+///         masqueEndpoints: ["198.51.100.1:443"],
+///         wireguardEndpoints: ["198.51.100.1:2408"],
+///         allowManualOverride: true,
+///         autoswitch: true,
+///     },
 ///     includes: [{
 ///         address: "192.0.2.0/24",
 ///         description: "Include testing domains in the tunnel",
@@ -48,6 +61,11 @@ import 'zero_trust_device_default_profile_virtual_networks.dart';
 ///     supportUrl: "https://1.1.1.1/help",
 ///     switchLocked: true,
 ///     tunnelProtocol: "wireguard",
+///     uninstallProtection: false,
+///     virtualNetworks: {
+///         alloweds: ["f174e90a-fafe-4643-bbbc-4a0ed4fc8415"],
+///         "default": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+///     },
 /// });
 /// ```
 /// ```python
@@ -62,11 +80,24 @@ import 'zero_trust_device_default_profile_virtual_networks.dart';
 ///     auto_connect=float(0),
 ///     captive_portal=float(180),
 ///     disable_auto_fallback=True,
+///     dns_search_suffixes=[{
+///         "suffix": "internal.corp",
+///         "description": "Example internal domains",
+///     }],
+///     enable_device_credential_authentication=False,
 ///     excludes=[{
 ///         "address": "192.0.2.0/24",
 ///         "description": "Exclude testing domains from the tunnel",
 ///     }],
 ///     exclude_office_ips=True,
+///     global_acceleration={
+///         "api_endpoints": ["198.51.100.1:443"],
+///         "enabled": True,
+///         "masque_endpoints": ["198.51.100.1:443"],
+///         "wireguard_endpoints": ["198.51.100.1:2408"],
+///         "allow_manual_override": True,
+///         "autoswitch": True,
+///     },
 ///     includes=[{
 ///         "address": "192.0.2.0/24",
 ///         "description": "Include testing domains in the tunnel",
@@ -81,7 +112,12 @@ import 'zero_trust_device_default_profile_virtual_networks.dart';
 ///     },
 ///     support_url="https://1.1.1.1/help",
 ///     switch_locked=True,
-///     tunnel_protocol="wireguard")
+///     tunnel_protocol="wireguard",
+///     uninstall_protection=False,
+///     virtual_networks={
+///         "alloweds": ["f174e90a-fafe-4643-bbbc-4a0ed4fc8415"],
+///         "default": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+///     })
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -97,9 +133,18 @@ import 'zero_trust_device_default_profile_virtual_networks.dart';
 ///         AllowModeSwitch = true,
 ///         AllowUpdates = true,
 ///         AllowedToLeave = true,
-///         AutoConnect = 0,
-///         CaptivePortal = 180,
+///         AutoConnect = 0.0,
+///         CaptivePortal = 180.0,
 ///         DisableAutoFallback = true,
+///         DnsSearchSuffixes = new[]
+///         {
+///             new Cloudflare.Inputs.ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs
+///             {
+///                 Suffix = "internal.corp",
+///                 Description = "Example internal domains",
+///             },
+///         },
+///         EnableDeviceCredentialAuthentication = false,
 ///         Excludes = new[]
 ///         {
 ///             new Cloudflare.Inputs.ZeroTrustDeviceDefaultProfileExcludeArgs
@@ -109,6 +154,24 @@ import 'zero_trust_device_default_profile_virtual_networks.dart';
 ///             },
 ///         },
 ///         ExcludeOfficeIps = true,
+///         GlobalAcceleration = new Cloudflare.Inputs.ZeroTrustDeviceDefaultProfileGlobalAccelerationArgs
+///         {
+///             ApiEndpoints = new[]
+///             {
+///                 "198.51.100.1:443",
+///             },
+///             Enabled = true,
+///             MasqueEndpoints = new[]
+///             {
+///                 "198.51.100.1:443",
+///             },
+///             WireguardEndpoints = new[]
+///             {
+///                 "198.51.100.1:2408",
+///             },
+///             AllowManualOverride = true,
+///             Autoswitch = true,
+///         },
 ///         Includes = new[]
 ///         {
 ///             new Cloudflare.Inputs.ZeroTrustDeviceDefaultProfileIncludeArgs
@@ -117,18 +180,27 @@ import 'zero_trust_device_default_profile_virtual_networks.dart';
 ///                 Description = "Include testing domains in the tunnel",
 ///             },
 ///         },
-///         LanAllowMinutes = 30,
-///         LanAllowSubnetSize = 24,
+///         LanAllowMinutes = 30.0,
+///         LanAllowSubnetSize = 24.0,
 ///         RegisterInterfaceIpWithDns = true,
 ///         SccmVpnBoundarySupport = false,
 ///         ServiceModeV2 = new Cloudflare.Inputs.ZeroTrustDeviceDefaultProfileServiceModeV2Args
 ///         {
 ///             Mode = "proxy",
-///             Port = 3000,
+///             Port = 3000.0,
 ///         },
 ///         SupportUrl = "https://1.1.1.1/help",
 ///         SwitchLocked = true,
 ///         TunnelProtocol = "wireguard",
+///         UninstallProtection = false,
+///         VirtualNetworks = new Cloudflare.Inputs.ZeroTrustDeviceDefaultProfileVirtualNetworksArgs
+///         {
+///             Alloweds = new[]
+///             {
+///                 "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+///             },
+///             Default = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+///         },
 ///     });
 ///
 /// });
@@ -151,6 +223,13 @@ import 'zero_trust_device_default_profile_virtual_networks.dart';
 /// 			AutoConnect:         pulumi.Float64(0),
 /// 			CaptivePortal:       pulumi.Float64(180),
 /// 			DisableAutoFallback: pulumi.Bool(true),
+/// 			DnsSearchSuffixes: cloudflare.ZeroTrustDeviceDefaultProfileDnsSearchSuffixArray{
+/// 				&cloudflare.ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs{
+/// 					Suffix:      pulumi.String("internal.corp"),
+/// 					Description: pulumi.String("Example internal domains"),
+/// 				},
+/// 			},
+/// 			EnableDeviceCredentialAuthentication: pulumi.Bool(false),
 /// 			Excludes: cloudflare.ZeroTrustDeviceDefaultProfileExcludeArray{
 /// 				&cloudflare.ZeroTrustDeviceDefaultProfileExcludeArgs{
 /// 					Address:     pulumi.String("192.0.2.0/24"),
@@ -158,6 +237,20 @@ import 'zero_trust_device_default_profile_virtual_networks.dart';
 /// 				},
 /// 			},
 /// 			ExcludeOfficeIps: pulumi.Bool(true),
+/// 			GlobalAcceleration: &cloudflare.ZeroTrustDeviceDefaultProfileGlobalAccelerationArgs{
+/// 				ApiEndpoints: pulumi.StringArray{
+/// 					pulumi.String("198.51.100.1:443"),
+/// 				},
+/// 				Enabled: pulumi.Bool(true),
+/// 				MasqueEndpoints: pulumi.StringArray{
+/// 					pulumi.String("198.51.100.1:443"),
+/// 				},
+/// 				WireguardEndpoints: pulumi.StringArray{
+/// 					pulumi.String("198.51.100.1:2408"),
+/// 				},
+/// 				AllowManualOverride: pulumi.Bool(true),
+/// 				Autoswitch:          pulumi.Bool(true),
+/// 			},
 /// 			Includes: cloudflare.ZeroTrustDeviceDefaultProfileIncludeArray{
 /// 				&cloudflare.ZeroTrustDeviceDefaultProfileIncludeArgs{
 /// 					Address:     pulumi.String("192.0.2.0/24"),
@@ -172,9 +265,16 @@ import 'zero_trust_device_default_profile_virtual_networks.dart';
 /// 				Mode: pulumi.String("proxy"),
 /// 				Port: pulumi.Float64(3000),
 /// 			},
-/// 			SupportUrl:     pulumi.String("https://1.1.1.1/help"),
-/// 			SwitchLocked:   pulumi.Bool(true),
-/// 			TunnelProtocol: pulumi.String("wireguard"),
+/// 			SupportUrl:          pulumi.String("https://1.1.1.1/help"),
+/// 			SwitchLocked:        pulumi.Bool(true),
+/// 			TunnelProtocol:      pulumi.String("wireguard"),
+/// 			UninstallProtection: pulumi.Bool(false),
+/// 			VirtualNetworks: &cloudflare.ZeroTrustDeviceDefaultProfileVirtualNetworksArgs{
+/// 				Alloweds: pulumi.StringArray{
+/// 					pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+/// 				},
+/// 				Default: pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -184,7 +284,7 @@ import 'zero_trust_device_default_profile_virtual_networks.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -192,7 +292,10 @@ import 'zero_trust_device_default_profile_virtual_networks.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdevicedefaultprofile" "example_zero_trust_device_default_profile" {
+/// resource "cloudflare_zero_trust_device_default_profile" "example_zero_trust_device_default_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id            = "699d98642c564d2e855e9661899b7252"
 ///   allow_mode_switch     = true
 ///   allow_updates         = true
@@ -200,15 +303,28 @@ import 'zero_trust_device_default_profile_virtual_networks.dart';
 ///   auto_connect          = 0
 ///   captive_portal        = 180
 ///   disable_auto_fallback = true
-///   excludes {
+///   dns_search_suffixes = [{
+///     suffix      = "internal.corp"
+///     description = "Example internal domains"
+///   }]
+///   enable_device_credential_authentication = false
+///   exclude = [{
 ///     address     = "192.0.2.0/24"
 ///     description = "Exclude testing domains from the tunnel"
-///   }
+///   }]
 ///   exclude_office_ips = true
-///   includes {
+///   global_acceleration = {
+///     api_endpoints         = ["198.51.100.1:443"]
+///     enabled               = true
+///     masque_endpoints      = ["198.51.100.1:443"]
+///     wireguard_endpoints   = ["198.51.100.1:2408"]
+///     allow_manual_override = true
+///     autoswitch            = true
+///   }
+///   include = [{
 ///     address     = "192.0.2.0/24"
 ///     description = "Include testing domains in the tunnel"
-///   }
+///   }]
 ///   lan_allow_minutes              = 30
 ///   lan_allow_subnet_size          = 24
 ///   register_interface_ip_with_dns = true
@@ -217,9 +333,14 @@ import 'zero_trust_device_default_profile_virtual_networks.dart';
 ///     mode = "proxy"
 ///     port = 3000
 ///   }
-///   support_url     = "https://1.1.1.1/help"
-///   switch_locked   = true
-///   tunnel_protocol = "wireguard"
+///   support_url          = "https://1.1.1.1/help"
+///   switch_locked        = true
+///   tunnel_protocol      = "wireguard"
+///   uninstall_protection = false
+///   virtual_networks = {
+///     alloweds = ["f174e90a-fafe-4643-bbbc-4a0ed4fc8415"]
+///     default  = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+///   }
 /// }
 /// ```
 /// ```java
@@ -230,9 +351,12 @@ import 'zero_trust_device_default_profile_virtual_networks.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.cloudflare.ZeroTrustDeviceDefaultProfile;
 /// import com.pulumi.cloudflare.ZeroTrustDeviceDefaultProfileArgs;
+/// import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs;
 /// import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileExcludeArgs;
+/// import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileGlobalAccelerationArgs;
 /// import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileIncludeArgs;
 /// import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileServiceModeV2Args;
+/// import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileVirtualNetworksArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -254,11 +378,24 @@ import 'zero_trust_device_default_profile_virtual_networks.dart';
 ///             .autoConnect(0.0)
 ///             .captivePortal(180.0)
 ///             .disableAutoFallback(true)
+///             .dnsSearchSuffixes(ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs.builder()
+///                 .suffix("internal.corp")
+///                 .description("Example internal domains")
+///                 .build())
+///             .enableDeviceCredentialAuthentication(false)
 ///             .excludes(ZeroTrustDeviceDefaultProfileExcludeArgs.builder()
 ///                 .address("192.0.2.0/24")
 ///                 .description("Exclude testing domains from the tunnel")
 ///                 .build())
 ///             .excludeOfficeIps(true)
+///             .globalAcceleration(ZeroTrustDeviceDefaultProfileGlobalAccelerationArgs.builder()
+///                 .apiEndpoints("198.51.100.1:443")
+///                 .enabled(true)
+///                 .masqueEndpoints("198.51.100.1:443")
+///                 .wireguardEndpoints("198.51.100.1:2408")
+///                 .allowManualOverride(true)
+///                 .autoswitch(true)
+///                 .build())
 ///             .includes(ZeroTrustDeviceDefaultProfileIncludeArgs.builder()
 ///                 .address("192.0.2.0/24")
 ///                 .description("Include testing domains in the tunnel")
@@ -274,6 +411,11 @@ import 'zero_trust_device_default_profile_virtual_networks.dart';
 ///             .supportUrl("https://1.1.1.1/help")
 ///             .switchLocked(true)
 ///             .tunnelProtocol("wireguard")
+///             .uninstallProtection(false)
+///             .virtualNetworks(ZeroTrustDeviceDefaultProfileVirtualNetworksArgs.builder()
+///                 .alloweds("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+///                 .default_("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+///                 .build())
 ///             .build());
 ///
 ///     }
@@ -292,10 +434,24 @@ import 'zero_trust_device_default_profile_virtual_networks.dart';
 ///       autoConnect: 0
 ///       captivePortal: 180
 ///       disableAutoFallback: true
+///       dnsSearchSuffixes:
+///         - suffix: internal.corp
+///           description: Example internal domains
+///       enableDeviceCredentialAuthentication: false
 ///       excludes:
 ///         - address: 192.0.2.0/24
 ///           description: Exclude testing domains from the tunnel
 ///       excludeOfficeIps: true
+///       globalAcceleration:
+///         apiEndpoints:
+///           - 198.51.100.1:443
+///         enabled: true
+///         masqueEndpoints:
+///           - 198.51.100.1:443
+///         wireguardEndpoints:
+///           - 198.51.100.1:2408
+///         allowManualOverride: true
+///         autoswitch: true
 ///       includes:
 ///         - address: 192.0.2.0/24
 ///           description: Include testing domains in the tunnel
@@ -309,6 +465,11 @@ import 'zero_trust_device_default_profile_virtual_networks.dart';
 ///       supportUrl: https://1.1.1.1/help
 ///       switchLocked: true
 ///       tunnelProtocol: wireguard
+///       uninstallProtection: false
+///       virtualNetworks:
+///         alloweds:
+///           - f174e90a-fafe-4643-bbbc-4a0ed4fc8415
+///         default: f174e90a-fafe-4643-bbbc-4a0ed4fc8415
 /// ```
 ///
 ///
@@ -335,6 +496,8 @@ class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
   late final pulumi.Output<bool> disableAutoFallback;
   /// List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
   late final pulumi.Output<List<ZeroTrustDeviceDefaultProfileDnsSearchSuffix>> dnsSearchSuffixes;
+  /// Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+  late final pulumi.Output<bool> enableDeviceCredentialAuthentication;
   /// Whether the policy will be applied to matching devices.
   late final pulumi.Output<bool> enabled;
   /// Whether to add Microsoft IPs to Split Tunnel exclusions.
@@ -352,6 +515,9 @@ class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
   /// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
   late final pulumi.Output<double?> lanAllowSubnetSize;
   late final pulumi.Output<String> policyId;
+  /// The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+  /// Available values: "warp", "browserExtension".
+  late final pulumi.Output<String> profileType;
   /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
   late final pulumi.Output<bool> registerInterfaceIpWithDns;
   /// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
@@ -363,6 +529,8 @@ class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
   late final pulumi.Output<bool> switchLocked;
   /// Determines which tunnel protocol to use.
   late final pulumi.Output<String> tunnelProtocol;
+  /// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+  late final pulumi.Output<bool> uninstallProtection;
   /// Virtual network access settings for the device.
   late final pulumi.Output<ZeroTrustDeviceDefaultProfileVirtualNetworks?> virtualNetworks;
 
@@ -378,7 +546,7 @@ class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     allowModeSwitch = registerOutput<bool>('allowModeSwitch');
@@ -389,6 +557,7 @@ class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
     default_ = registerOutput<bool>('default');
     disableAutoFallback = registerOutput<bool>('disableAutoFallback');
     dnsSearchSuffixes = registerOutput<List<ZeroTrustDeviceDefaultProfileDnsSearchSuffix>>('dnsSearchSuffixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZeroTrustDeviceDefaultProfileDnsSearchSuffix>(guardedValue, (value) => ZeroTrustDeviceDefaultProfileDnsSearchSuffix.fromMap((value as Map).cast<String, dynamic>())); });
+    enableDeviceCredentialAuthentication = registerOutput<bool>('enableDeviceCredentialAuthentication');
     enabled = registerOutput<bool>('enabled');
     excludeOfficeIps = registerOutput<bool>('excludeOfficeIps');
     excludes = registerOutput<List<ZeroTrustDeviceDefaultProfileExclude>>('excludes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZeroTrustDeviceDefaultProfileExclude>(guardedValue, (value) => ZeroTrustDeviceDefaultProfileExclude.fromMap((value as Map).cast<String, dynamic>())); });
@@ -399,12 +568,14 @@ class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
     lanAllowMinutes = registerOutput<double?>('lanAllowMinutes');
     lanAllowSubnetSize = registerOutput<double?>('lanAllowSubnetSize');
     policyId = registerOutput<String>('policyId');
+    profileType = registerOutput<String>('profileType');
     registerInterfaceIpWithDns = registerOutput<bool>('registerInterfaceIpWithDns');
     sccmVpnBoundarySupport = registerOutput<bool>('sccmVpnBoundarySupport');
     serviceModeV2 = registerOutput<ZeroTrustDeviceDefaultProfileServiceModeV2>('serviceModeV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustDeviceDefaultProfileServiceModeV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     supportUrl = registerOutput<String>('supportUrl');
     switchLocked = registerOutput<bool>('switchLocked');
     tunnelProtocol = registerOutput<String>('tunnelProtocol');
+    uninstallProtection = registerOutput<bool>('uninstallProtection');
     virtualNetworks = registerOutput<ZeroTrustDeviceDefaultProfileVirtualNetworks?>('virtualNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustDeviceDefaultProfileVirtualNetworks.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -441,6 +612,7 @@ class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
     default_ = registerOutput<bool>('default');
     disableAutoFallback = registerOutput<bool>('disableAutoFallback');
     dnsSearchSuffixes = registerOutput<List<ZeroTrustDeviceDefaultProfileDnsSearchSuffix>>('dnsSearchSuffixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZeroTrustDeviceDefaultProfileDnsSearchSuffix>(guardedValue, (value) => ZeroTrustDeviceDefaultProfileDnsSearchSuffix.fromMap((value as Map).cast<String, dynamic>())); });
+    enableDeviceCredentialAuthentication = registerOutput<bool>('enableDeviceCredentialAuthentication');
     enabled = registerOutput<bool>('enabled');
     excludeOfficeIps = registerOutput<bool>('excludeOfficeIps');
     excludes = registerOutput<List<ZeroTrustDeviceDefaultProfileExclude>>('excludes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZeroTrustDeviceDefaultProfileExclude>(guardedValue, (value) => ZeroTrustDeviceDefaultProfileExclude.fromMap((value as Map).cast<String, dynamic>())); });
@@ -451,12 +623,14 @@ class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
     lanAllowMinutes = registerOutput<double?>('lanAllowMinutes');
     lanAllowSubnetSize = registerOutput<double?>('lanAllowSubnetSize');
     policyId = registerOutput<String>('policyId');
+    profileType = registerOutput<String>('profileType');
     registerInterfaceIpWithDns = registerOutput<bool>('registerInterfaceIpWithDns');
     sccmVpnBoundarySupport = registerOutput<bool>('sccmVpnBoundarySupport');
     serviceModeV2 = registerOutput<ZeroTrustDeviceDefaultProfileServiceModeV2>('serviceModeV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustDeviceDefaultProfileServiceModeV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     supportUrl = registerOutput<String>('supportUrl');
     switchLocked = registerOutput<bool>('switchLocked');
     tunnelProtocol = registerOutput<String>('tunnelProtocol');
+    uninstallProtection = registerOutput<bool>('uninstallProtection');
     virtualNetworks = registerOutput<ZeroTrustDeviceDefaultProfileVirtualNetworks?>('virtualNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustDeviceDefaultProfileVirtualNetworks.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -478,6 +652,7 @@ class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
     default_ = registerOutput<bool>('default');
     disableAutoFallback = registerOutput<bool>('disableAutoFallback');
     dnsSearchSuffixes = registerOutput<List<ZeroTrustDeviceDefaultProfileDnsSearchSuffix>>('dnsSearchSuffixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZeroTrustDeviceDefaultProfileDnsSearchSuffix>(guardedValue, (value) => ZeroTrustDeviceDefaultProfileDnsSearchSuffix.fromMap((value as Map).cast<String, dynamic>())); });
+    enableDeviceCredentialAuthentication = registerOutput<bool>('enableDeviceCredentialAuthentication');
     enabled = registerOutput<bool>('enabled');
     excludeOfficeIps = registerOutput<bool>('excludeOfficeIps');
     excludes = registerOutput<List<ZeroTrustDeviceDefaultProfileExclude>>('excludes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZeroTrustDeviceDefaultProfileExclude>(guardedValue, (value) => ZeroTrustDeviceDefaultProfileExclude.fromMap((value as Map).cast<String, dynamic>())); });
@@ -488,12 +663,14 @@ class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
     lanAllowMinutes = registerOutput<double?>('lanAllowMinutes');
     lanAllowSubnetSize = registerOutput<double?>('lanAllowSubnetSize');
     policyId = registerOutput<String>('policyId');
+    profileType = registerOutput<String>('profileType');
     registerInterfaceIpWithDns = registerOutput<bool>('registerInterfaceIpWithDns');
     sccmVpnBoundarySupport = registerOutput<bool>('sccmVpnBoundarySupport');
     serviceModeV2 = registerOutput<ZeroTrustDeviceDefaultProfileServiceModeV2>('serviceModeV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustDeviceDefaultProfileServiceModeV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     supportUrl = registerOutput<String>('supportUrl');
     switchLocked = registerOutput<bool>('switchLocked');
     tunnelProtocol = registerOutput<String>('tunnelProtocol');
+    uninstallProtection = registerOutput<bool>('uninstallProtection');
     virtualNetworks = registerOutput<ZeroTrustDeviceDefaultProfileVirtualNetworks?>('virtualNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustDeviceDefaultProfileVirtualNetworks.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

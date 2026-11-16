@@ -9,6 +9,8 @@ import 'get_zero_trust_access_policies_result_mfa_config.dart';
 import 'get_zero_trust_access_policies_result_require.dart';
 
 class GetZeroTrustAccessPoliciesResult {
+  /// Identifier.
+  final pulumi.Input<String> accountId;
   /// Number of access applications currently using this policy.
   final pulumi.Input<int> appCount;
   /// Administrators who can approve a temporary authentication request.
@@ -33,6 +35,8 @@ class GetZeroTrustAccessPoliciesResult {
   final pulumi.Input<GetZeroTrustAccessPoliciesResultMfaConfig> mfaConfig;
   /// The name of the Access policy.
   final pulumi.Input<String> name;
+  /// The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+  final pulumi.Input<String> policyResolutionAccountId;
   /// A custom message that will appear on the purpose justification screen.
   final pulumi.Input<String> purposeJustificationPrompt;
   /// Require users to enter a justification when they log in to the application.
@@ -45,6 +49,7 @@ class GetZeroTrustAccessPoliciesResult {
   final pulumi.Input<String> updatedAt;
 
   /// Creates a new [GetZeroTrustAccessPoliciesResult].
+  /// [accountId] Identifier.
   /// [appCount] Number of access applications currently using this policy.
   /// [approvalGroups] Administrators who can approve a temporary authentication request.
   /// [approvalRequired] Requires the user to request access from an administrator at the start of each session.
@@ -57,6 +62,7 @@ class GetZeroTrustAccessPoliciesResult {
   /// [isolationRequired] Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
   /// [mfaConfig] Configures multi-factor authentication (MFA) settings.
   /// [name] The name of the Access policy.
+  /// [policyResolutionAccountId] The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
   /// [purposeJustificationPrompt] A custom message that will appear on the purpose justification screen.
   /// [purposeJustificationRequired] Require users to enter a justification when they log in to the application.
   /// [requires] Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
@@ -64,6 +70,7 @@ class GetZeroTrustAccessPoliciesResult {
   /// [sessionDuration] The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
   /// [updatedAt] Required.
   const GetZeroTrustAccessPoliciesResult({
+    required this.accountId,
     required this.appCount,
     required this.approvalGroups,
     required this.approvalRequired,
@@ -76,6 +83,7 @@ class GetZeroTrustAccessPoliciesResult {
     required this.isolationRequired,
     required this.mfaConfig,
     required this.name,
+    required this.policyResolutionAccountId,
     required this.purposeJustificationPrompt,
     required this.purposeJustificationRequired,
     required this.requires,
@@ -86,6 +94,7 @@ class GetZeroTrustAccessPoliciesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'accountId': accountId,
       'appCount': appCount,
       'approvalGroups': pulumi.Input.mapInputValue<List<GetZeroTrustAccessPoliciesResultApprovalGroup>, List<Map<String, dynamic>>>(approvalGroups, (value) => pulumi.Input.encodeList<GetZeroTrustAccessPoliciesResultApprovalGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
       'approvalRequired': approvalRequired,
@@ -98,6 +107,7 @@ class GetZeroTrustAccessPoliciesResult {
       'isolationRequired': isolationRequired,
       'mfaConfig': pulumi.Input.mapInputValue<GetZeroTrustAccessPoliciesResultMfaConfig, Map<String, dynamic>>(mfaConfig, (value) => value.toMap()),
       'name': name,
+      'policyResolutionAccountId': policyResolutionAccountId,
       'purposeJustificationPrompt': purposeJustificationPrompt,
       'purposeJustificationRequired': purposeJustificationRequired,
       'requires': pulumi.Input.mapInputValue<List<GetZeroTrustAccessPoliciesResultRequire>, List<Map<String, dynamic>>>(requires, (value) => pulumi.Input.encodeList<GetZeroTrustAccessPoliciesResultRequire, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -109,7 +119,8 @@ class GetZeroTrustAccessPoliciesResult {
 
   factory GetZeroTrustAccessPoliciesResult.fromMap(Map<String, dynamic> map) {
     return GetZeroTrustAccessPoliciesResult(
-      appCount: pulumi.Input.fromValue((map['appCount'] as num).toInt()),
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      appCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['appCount'])),
       approvalGroups: pulumi.Input.fromValue(pulumi.Input.decodeList<GetZeroTrustAccessPoliciesResultApprovalGroup>(map['approvalGroups']!, (value) => GetZeroTrustAccessPoliciesResultApprovalGroup.fromMap((value as Map).cast<String, dynamic>()))),
       approvalRequired: pulumi.Input.fromValue(map['approvalRequired'] as bool),
       connectionRules: pulumi.Input.fromValue(GetZeroTrustAccessPoliciesResultConnectionRules.fromMap((map['connectionRules']! as Map).cast<String, dynamic>())),
@@ -121,6 +132,7 @@ class GetZeroTrustAccessPoliciesResult {
       isolationRequired: pulumi.Input.fromValue(map['isolationRequired'] as bool),
       mfaConfig: pulumi.Input.fromValue(GetZeroTrustAccessPoliciesResultMfaConfig.fromMap((map['mfaConfig']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
+      policyResolutionAccountId: pulumi.Input.fromValue(map['policyResolutionAccountId'] as String),
       purposeJustificationPrompt: pulumi.Input.fromValue(map['purposeJustificationPrompt'] as String),
       purposeJustificationRequired: pulumi.Input.fromValue(map['purposeJustificationRequired'] as bool),
       requires: pulumi.Input.fromValue(pulumi.Input.decodeList<GetZeroTrustAccessPoliciesResultRequire>(map['requires']!, (value) => GetZeroTrustAccessPoliciesResultRequire.fromMap((value as Map).cast<String, dynamic>()))),

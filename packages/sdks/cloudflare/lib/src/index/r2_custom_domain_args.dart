@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_r2_custom_domain_r2_custom_domain_args_doc}
 class R2CustomDomainArgs {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   final pulumi.Input<String> accountId;
   /// Name of the bucket.
   final pulumi.Input<String> bucketName;
@@ -26,7 +26,7 @@ class R2CustomDomainArgs {
   final pulumi.Input<String> zoneId;
 
   /// Creates a new [R2CustomDomainArgs].
-  /// [accountId] Account ID.
+  /// [accountId] Cloudflare account ID that owns the R2 resource.
   /// [bucketName] Name of the bucket.
   /// [ciphers] An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
   /// [domain] Name of the custom domain to be added.

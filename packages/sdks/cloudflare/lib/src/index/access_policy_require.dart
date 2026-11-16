@@ -23,6 +23,7 @@ import 'access_policy_require_oidc.dart';
 import 'access_policy_require_okta.dart';
 import 'access_policy_require_saml.dart';
 import 'access_policy_require_service_token.dart';
+import 'access_policy_require_service_token_tag.dart';
 import 'access_policy_require_user_risk_score.dart';
 
 class AccessPolicyRequire {
@@ -53,6 +54,7 @@ class AccessPolicyRequire {
   final pulumi.Input<AccessPolicyRequireOkta?>? okta;
   final pulumi.Input<AccessPolicyRequireSaml?>? saml;
   final pulumi.Input<AccessPolicyRequireServiceToken?>? serviceToken;
+  final pulumi.Input<AccessPolicyRequireServiceTokenTag?>? serviceTokenTag;
   final pulumi.Input<AccessPolicyRequireUserRiskScore?>? userRiskScore;
 
   /// Creates a new [AccessPolicyRequire].
@@ -81,6 +83,7 @@ class AccessPolicyRequire {
   /// [okta] Optional.
   /// [saml] Optional.
   /// [serviceToken] Optional.
+  /// [serviceTokenTag] Optional.
   /// [userRiskScore] Optional.
   const AccessPolicyRequire({
     this.anyValidServiceToken,
@@ -108,6 +111,7 @@ class AccessPolicyRequire {
     this.okta,
     this.saml,
     this.serviceToken,
+    this.serviceTokenTag,
     this.userRiskScore,
   });
 
@@ -138,6 +142,7 @@ class AccessPolicyRequire {
       'okta': ?pulumi.Input.mapOptionalInputValue<AccessPolicyRequireOkta, Map<String, dynamic>>(okta, (value) => value.toMap()),
       'saml': ?pulumi.Input.mapOptionalInputValue<AccessPolicyRequireSaml, Map<String, dynamic>>(saml, (value) => value.toMap()),
       'serviceToken': ?pulumi.Input.mapOptionalInputValue<AccessPolicyRequireServiceToken, Map<String, dynamic>>(serviceToken, (value) => value.toMap()),
+      'serviceTokenTag': ?pulumi.Input.mapOptionalInputValue<AccessPolicyRequireServiceTokenTag, Map<String, dynamic>>(serviceTokenTag, (value) => value.toMap()),
       'userRiskScore': ?pulumi.Input.mapOptionalInputValue<AccessPolicyRequireUserRiskScore, Map<String, dynamic>>(userRiskScore, (value) => value.toMap()),
     };
   }
@@ -169,6 +174,7 @@ class AccessPolicyRequire {
       okta: (() { final guardedValue = map['okta']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccessPolicyRequireOkta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       saml: (() { final guardedValue = map['saml']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccessPolicyRequireSaml.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       serviceToken: (() { final guardedValue = map['serviceToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccessPolicyRequireServiceToken.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      serviceTokenTag: (() { final guardedValue = map['serviceTokenTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccessPolicyRequireServiceTokenTag.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       userRiskScore: (() { final guardedValue = map['userRiskScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccessPolicyRequireUserRiskScore.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

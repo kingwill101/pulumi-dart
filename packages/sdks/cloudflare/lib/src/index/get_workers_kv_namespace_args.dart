@@ -8,16 +8,16 @@ import 'get_workers_kv_namespace_filter.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_get_workers_kv_namespace_get_workers_kv_namespace_args_doc}
 class GetWorkersKvNamespaceArgs {
-  /// Identifier.
+  /// ID of the Cloudflare account that owns the Workers KV namespaces.
   final pulumi.Input<String?>? accountId;
   final pulumi.Input<GetWorkersKvNamespaceFilter?>? filter;
-  /// Namespace identifier tag.
+  /// ID of the Workers KV namespace.
   final pulumi.Input<String?>? namespaceId;
 
   /// Creates a new [GetWorkersKvNamespaceArgs].
-  /// [accountId] Identifier.
+  /// [accountId] ID of the Cloudflare account that owns the Workers KV namespaces.
   /// [filter] Optional.
-  /// [namespaceId] Namespace identifier tag.
+  /// [namespaceId] ID of the Workers KV namespace.
   const GetWorkersKvNamespaceArgs({
     this.accountId,
     this.filter,

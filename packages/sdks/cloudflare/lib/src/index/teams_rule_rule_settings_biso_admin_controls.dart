@@ -19,8 +19,8 @@ class TeamsRuleRuleSettingsBisoAdminControls {
   final pulumi.Input<bool?>? dp;
   /// Set to false to enable uploading. Only applies when `version == "v1"`.
   final pulumi.Input<bool?>? du;
-  /// Configure keyboard usage behavior. If this field is absent, keyboard usage remains enabled. Applies only when version == "v2".
-  /// Available values: "enabled", "disabled".
+  /// Configure keyboard usage behavior. When set to enable*read*only*actions, only approved browser commands (find, copy, print, zoom, and select-all) may execute; other keyboard input is blocked from reaching the page. Copy and print remain subject to their independent controls. If this field is absent, keyboard usage remains enabled. Applies only when version == "v2". The enable*read*only*actions value requires an explicit version of "v2".
+  /// Available values: "enabled", "disabled", "enable*read*only_actions".
   final pulumi.Input<String?>? keyboard;
   /// Configure paste behavior. If set to remote*only, users cannot paste content from the local clipboard into isolated pages. If this field is absent, pasting remains enabled. Applies only when version == "v2".
   /// Available values: "enabled", "disabled", "remote*only".
@@ -45,7 +45,7 @@ class TeamsRuleRuleSettingsBisoAdminControls {
   /// [download] Configure download behavior. When set to remote*only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == "v2".
   /// [dp] Set to false to enable printing. Only applies when `version == "v1"`.
   /// [du] Set to false to enable uploading. Only applies when `version == "v1"`.
-  /// [keyboard] Configure keyboard usage behavior. If this field is absent, keyboard usage remains enabled. Applies only when version == "v2".
+  /// [keyboard] Configure keyboard usage behavior. When set to enable*read*only*actions, only approved browser commands (find, copy, print, zoom, and select-all) may execute; other keyboard input is blocked from reaching the page. Copy and print remain subject to their independent controls. If this field is absent, keyboard usage remains enabled. Applies only when version == "v2". The enable*read*only*actions value requires an explicit version of "v2".
   /// [paste] Configure paste behavior. If set to remote*only, users cannot paste content from the local clipboard into isolated pages. If this field is absent, pasting remains enabled. Applies only when version == "v2".
   /// [printing] Configure print behavior. Default, Printing is enabled. Applies only when version == "v2".
   /// [upload] Configure upload behavior. If this field is absent, uploading remains enabled. Applies only when version == "v2".

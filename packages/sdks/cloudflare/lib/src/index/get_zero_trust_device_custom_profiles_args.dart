@@ -10,26 +10,33 @@ class GetZeroTrustDeviceCustomProfilesArgs {
   final pulumi.Input<String?>? accountId;
   /// Max items to fetch, default: 1000
   final pulumi.Input<int?>? maxItems;
+  /// Filter profiles by client type. When omitted, only WARP profiles are returned.
+  /// Available values: "warp", "browserExtension".
+  final pulumi.Input<String?>? profileType;
 
   /// Creates a new [GetZeroTrustDeviceCustomProfilesArgs].
   /// [accountId] Optional.
   /// [maxItems] Max items to fetch, default: 1000
+  /// [profileType] Filter profiles by client type. When omitted, only WARP profiles are returned.
   const GetZeroTrustDeviceCustomProfilesArgs({
     this.accountId,
     this.maxItems,
+    this.profileType,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountId': ?accountId,
       'maxItems': ?maxItems,
+      'profileType': ?profileType,
     };
   }
 
   factory GetZeroTrustDeviceCustomProfilesArgs.fromMap(Map<String, dynamic> map) {
     return GetZeroTrustDeviceCustomProfilesArgs(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      profileType: (() { final guardedValue = map['profileType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }

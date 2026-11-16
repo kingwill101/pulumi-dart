@@ -20,7 +20,7 @@ import 'risk_behavior_state.dart';
 ///     behaviors: {
 ///         foo: {
 ///             enabled: true,
-///             riskLevel: "low",
+///             riskLevel: "info",
 ///         },
 ///     },
 /// });
@@ -34,7 +34,7 @@ import 'risk_behavior_state.dart';
 ///     behaviors={
 ///         "foo": {
 ///             "enabled": True,
-///             "risk_level": "low",
+///             "risk_level": "info",
 ///         },
 ///     })
 /// ```
@@ -54,7 +54,7 @@ import 'risk_behavior_state.dart';
 ///             { "foo", new Cloudflare.Inputs.ZeroTrustRiskBehaviorBehaviorsArgs
 ///             {
 ///                 Enabled = true,
-///                 RiskLevel = "low",
+///                 RiskLevel = "info",
 ///             } },
 ///         },
 ///     });
@@ -76,7 +76,7 @@ import 'risk_behavior_state.dart';
 /// 			Behaviors: cloudflare.ZeroTrustRiskBehaviorBehaviorsMap{
 /// 				"foo": &cloudflare.ZeroTrustRiskBehaviorBehaviorsArgs{
 /// 					Enabled:   pulumi.Bool(true),
-/// 					RiskLevel: pulumi.String("low"),
+/// 					RiskLevel: pulumi.String("info"),
 /// 				},
 /// 			},
 /// 		})
@@ -88,7 +88,7 @@ import 'risk_behavior_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -96,12 +96,15 @@ import 'risk_behavior_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustriskbehavior" "example_zero_trust_risk_behavior" {
+/// resource "cloudflare_zero_trust_risk_behavior" "example_zero_trust_risk_behavior" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "account_id"
 ///   behaviors = {
 ///     "foo" = {
 ///       enabled    = true
-///       risk_level = "low"
+///       risk_level = "info"
 ///     }
 ///   }
 /// }
@@ -132,7 +135,7 @@ import 'risk_behavior_state.dart';
 ///             .accountId("account_id")
 ///             .behaviors(Map.of("foo", ZeroTrustRiskBehaviorBehaviorsArgs.builder()
 ///                 .enabled(true)
-///                 .riskLevel("low")
+///                 .riskLevel("info")
 ///                 .build()))
 ///             .build());
 ///
@@ -149,7 +152,7 @@ import 'risk_behavior_state.dart';
 ///       behaviors:
 ///         foo:
 ///           enabled: true
-///           riskLevel: low
+///           riskLevel: info
 /// ```
 ///
 ///
@@ -172,7 +175,7 @@ class RiskBehavior extends pulumi.CustomResource {
           'cloudflare:index/riskBehavior:RiskBehavior',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     behaviors = registerOutput<Map<String, RiskBehaviorBehaviors>>('behaviors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<RiskBehaviorBehaviors>(guardedValue, (value) => RiskBehaviorBehaviors.fromMap((value as Map).cast<String, dynamic>())); });

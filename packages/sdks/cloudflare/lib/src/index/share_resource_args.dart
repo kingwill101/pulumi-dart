@@ -11,12 +11,12 @@ class ShareResourceArgs {
   final pulumi.Input<String> accountId;
   /// Resource Metadata.
   final pulumi.Input<String> meta;
-  /// Account identifier.
+  /// The account that owns the resource. Must match the `accountId` in the path.
   final pulumi.Input<String> resourceAccountId;
-  /// Share Resource identifier.
+  /// Identifier assigned by the service that owns the shared resource.
   final pulumi.Input<String> resourceId;
   /// Resource Type.
-  /// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+  /// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
   final pulumi.Input<String> resourceType;
   /// Share identifier tag.
   final pulumi.Input<String> shareId;
@@ -24,8 +24,8 @@ class ShareResourceArgs {
   /// Creates a new [ShareResourceArgs].
   /// [accountId] Account identifier.
   /// [meta] Resource Metadata.
-  /// [resourceAccountId] Account identifier.
-  /// [resourceId] Share Resource identifier.
+  /// [resourceAccountId] The account that owns the resource. Must match the `accountId` in the path.
+  /// [resourceId] Identifier assigned by the service that owns the shared resource.
   /// [resourceType] Resource Type.
   /// [shareId] Share identifier tag.
   const ShareResourceArgs({

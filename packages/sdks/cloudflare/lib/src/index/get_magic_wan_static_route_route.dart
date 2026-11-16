@@ -67,9 +67,9 @@ class GetMagicWanStaticRouteRoute {
       modifiedOn: pulumi.Input.fromValue(map['modifiedOn'] as String),
       nexthop: pulumi.Input.fromValue(map['nexthop'] as String),
       prefix: pulumi.Input.fromValue(map['prefix'] as String),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       scope: pulumi.Input.fromValue(GetMagicWanStaticRouteRouteScope.fromMap((map['scope']! as Map).cast<String, dynamic>())),
-      weight: pulumi.Input.fromValue((map['weight'] as num).toInt()),
+      weight: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['weight'])),
     );
   }
 }

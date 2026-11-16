@@ -12,12 +12,12 @@ class ShareRecipientState {
   /// target state set by the API; the background reconciliation workflow
   /// drives `currentAssociationStatus` toward it.
   final pulumi.Input<String?>? associationStatus;
-  /// When the share was created.
+  /// When the object was created.
   final pulumi.Input<String?>? created;
-  /// When the share was modified.
+  /// Include resources in the response.
+  final pulumi.Input<bool?>? includeResources;
+  /// When the object was last modified.
   final pulumi.Input<String?>? modified;
-  /// Organization identifier.
-  final pulumi.Input<String?>? organizationId;
   /// The account that will receive the share.
   final pulumi.Input<String?>? recipientAccountId;
   final pulumi.Input<List<ShareRecipientResource>?>? resources;
@@ -27,9 +27,9 @@ class ShareRecipientState {
   /// Creates a new [ShareRecipientState].
   /// [accountId] Account identifier.
   /// [associationStatus] The current state of the recipient relative to the share. The
-  /// [created] When the share was created.
-  /// [modified] When the share was modified.
-  /// [organizationId] Organization identifier.
+  /// [created] When the object was created.
+  /// [includeResources] Include resources in the response.
+  /// [modified] When the object was last modified.
   /// [recipientAccountId] The account that will receive the share.
   /// [resources] Optional.
   /// [shareId] Share identifier tag.
@@ -37,8 +37,8 @@ class ShareRecipientState {
     this.accountId,
     this.associationStatus,
     this.created,
+    this.includeResources,
     this.modified,
-    this.organizationId,
     this.recipientAccountId,
     this.resources,
     this.shareId,
@@ -49,8 +49,8 @@ class ShareRecipientState {
       'accountId': ?accountId,
       'associationStatus': ?associationStatus,
       'created': ?created,
+      'includeResources': ?includeResources,
       'modified': ?modified,
-      'organizationId': ?organizationId,
       'recipientAccountId': ?recipientAccountId,
       'resources': ?pulumi.Input.mapOptionalInputValue<List<ShareRecipientResource>, List<Map<String, dynamic>>>(resources, (value) => pulumi.Input.encodeList<ShareRecipientResource, Map<String, dynamic>>(value, (value) => value.toMap())),
       'shareId': ?shareId,
@@ -62,8 +62,8 @@ class ShareRecipientState {
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       associationStatus: (() { final guardedValue = map['associationStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       created: (() { final guardedValue = map['created']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      includeResources: (() { final guardedValue = map['includeResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       modified: (() { final guardedValue = map['modified']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      organizationId: (() { final guardedValue = map['organizationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       recipientAccountId: (() { final guardedValue = map['recipientAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ShareRecipientResource>(guardedValue, (value) => ShareRecipientResource.fromMap((value as Map).cast<String, dynamic>()))); })(),
       shareId: (() { final guardedValue = map['shareId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

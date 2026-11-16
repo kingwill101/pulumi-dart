@@ -5,6 +5,7 @@ import 'zero_trust_gateway_logging_settings_by_rule_type.dart';
 
 /// Input properties used for looking up and filtering ZeroTrustGatewayLogging resources.
 class ZeroTrustGatewayLoggingState {
+  /// Specify the Cloudflare account identifier.
   final pulumi.Input<String?>? accountId;
   /// Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
   final pulumi.Input<bool?>? redactPii;
@@ -12,7 +13,7 @@ class ZeroTrustGatewayLoggingState {
   final pulumi.Input<ZeroTrustGatewayLoggingSettingsByRuleType?>? settingsByRuleType;
 
   /// Creates a new [ZeroTrustGatewayLoggingState].
-  /// [accountId] Optional.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [redactPii] Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
   /// [settingsByRuleType] Configure logging settings for each rule type.
   const ZeroTrustGatewayLoggingState({

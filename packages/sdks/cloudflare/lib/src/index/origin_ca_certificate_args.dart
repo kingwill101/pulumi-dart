@@ -18,17 +18,21 @@ class OriginCaCertificateArgs {
   /// The number of days for which the certificate should be valid.
   /// Available values: 7, 30, 90, 365, 730, 1095, 5475.
   final pulumi.Input<double?>? requestedValidity;
+  /// Identifier of the zone whose keyless servers the certificate is for. Required when `requestType` is `keyless-certificate`; ignored otherwise.
+  final pulumi.Input<String?>? zoneId;
 
   /// Creates a new [OriginCaCertificateArgs].
   /// [csr] The Certificate Signing Request (CSR). Must be newline-encoded.
   /// [hostnames] Array of hostnames or wildcard names bound to the certificate.
   /// [requestType] Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
   /// [requestedValidity] The number of days for which the certificate should be valid.
+  /// [zoneId] Identifier of the zone whose keyless servers the certificate is for. Required when `requestType` is `keyless-certificate`; ignored otherwise.
   const OriginCaCertificateArgs({
     required this.csr,
     required this.hostnames,
     required this.requestType,
     this.requestedValidity,
+    this.zoneId,
   });
 
   Map<String, dynamic> toMap() {
@@ -37,6 +41,7 @@ class OriginCaCertificateArgs {
       'hostnames': hostnames,
       'requestType': requestType,
       'requestedValidity': ?requestedValidity,
+      'zoneId': ?zoneId,
     };
   }
 
@@ -46,6 +51,7 @@ class OriginCaCertificateArgs {
       hostnames: pulumi.Input.fromValue((map['hostnames'] as List).cast<String>()),
       requestType: pulumi.Input.fromValue(map['requestType'] as String),
       requestedValidity: (() { final guardedValue = map['requestedValidity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }

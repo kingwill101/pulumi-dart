@@ -9,15 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPagesDomainArgs {
   /// Identifier.
   final pulumi.Input<String> accountId;
-  /// The domain name.
+  /// Fully qualified domain name for the Pages project, such as `example.com`.
   final pulumi.Input<String> domainName;
-  /// Name of the project.
+  /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   final pulumi.Input<String> projectName;
 
   /// Creates a new [GetPagesDomainArgs].
   /// [accountId] Identifier.
-  /// [domainName] The domain name.
-  /// [projectName] Name of the project.
+  /// [domainName] Fully qualified domain name for the Pages project, such as `example.com`.
+  /// [projectName] Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   const GetPagesDomainArgs({
     required this.accountId,
     required this.domainName,

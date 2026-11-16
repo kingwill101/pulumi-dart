@@ -15,7 +15,7 @@ class CustomOriginTrustStoreState {
   /// Status of the zone's custom SSL.
   /// Available values: "initializing", "pending*deployment", "active", "pending*deletion", "deleted", "expired".
   final pulumi.Input<String?>? status;
-  /// When the certificate was last modified.
+  /// When the certificate was last modified. Only returned when uploading a certificate.
   final pulumi.Input<String?>? updatedAt;
   /// When the certificate was uploaded to Cloudflare.
   final pulumi.Input<String?>? uploadedOn;
@@ -28,7 +28,7 @@ class CustomOriginTrustStoreState {
   /// [issuer] The certificate authority that issued the certificate.
   /// [signature] The type of hash used for the certificate.
   /// [status] Status of the zone's custom SSL.
-  /// [updatedAt] When the certificate was last modified.
+  /// [updatedAt] When the certificate was last modified. Only returned when uploading a certificate.
   /// [uploadedOn] When the certificate was uploaded to Cloudflare.
   /// [zoneId] Identifier.
   const CustomOriginTrustStoreState({

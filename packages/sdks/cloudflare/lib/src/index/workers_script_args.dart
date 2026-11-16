@@ -5,7 +5,9 @@ import 'workers_script_annotations.dart';
 import 'workers_script_assets.dart';
 import 'workers_script_binding.dart';
 import 'workers_script_cache_options.dart';
+import 'workers_script_code_update_strategy.dart';
 import 'workers_script_exports.dart';
+import 'workers_script_files.dart';
 import 'workers_script_limits.dart';
 import 'workers_script_migrations.dart';
 import 'workers_script_observability.dart';
@@ -26,6 +28,9 @@ class WorkersScriptArgs {
   final pulumi.Input<WorkersScriptAssets?>? assets;
   /// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
   final pulumi.Input<List<WorkersScriptBinding>?>? bindings;
+  /// When set to "strict", the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
+  /// Available values: "strict".
+  final pulumi.Input<String?>? bindingsInherit;
   /// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
   final pulumi.Input<String?>? bodyPart;
   /// Global CacheW configuration for the Worker. When caching is on,
@@ -33,6 +38,8 @@ class WorkersScriptArgs {
   /// A `type: worker` entry in the `exports` map can override this
   /// value for a single entrypoint.
   final pulumi.Input<WorkersScriptCacheOptions?>? cacheOptions;
+  /// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+  final pulumi.Input<WorkersScriptCodeUpdateStrategy?>? codeUpdateStrategy;
   /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
   final pulumi.Input<String?>? compatibilityDate;
   /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
@@ -47,6 +54,10 @@ class WorkersScriptArgs {
   final pulumi.Input<String?>? contentType;
   /// Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
   final pulumi.Input<Map<String, WorkersScriptExports>?>? exports;
+  /// Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+  final pulumi.Input<Map<String, WorkersScriptFiles>?>? files;
+  /// If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+  final pulumi.Input<bool?>? force;
   /// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
   final pulumi.Input<bool?>? keepAssets;
   /// List of binding types to keep from previous_upload.
@@ -78,8 +89,10 @@ class WorkersScriptArgs {
   /// [annotations] Annotations for the version created by this upload.
   /// [assets] Configuration for assets within a Worker.
   /// [bindings] List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+  /// [bindingsInherit] When set to "strict", the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
   /// [bodyPart] Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
   /// [cacheOptions] Global CacheW configuration for the Worker. When caching is on,
+  /// [codeUpdateStrategy] Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
   /// [compatibilityDate] Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
   /// [compatibilityFlags] Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
   /// [content] Module or Service Worker contents of the Worker. Conflicts with `contentFile`.
@@ -87,6 +100,8 @@ class WorkersScriptArgs {
   /// [contentSha256] SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `contentFile` is specified.
   /// [contentType] Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
   /// [exports] Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+  /// [files] Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+  /// [force] If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
   /// [keepAssets] Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
   /// [keepBindings] List of binding types to keep from previous_upload.
   /// [limits] Limits to apply for this Worker.
@@ -104,8 +119,10 @@ class WorkersScriptArgs {
     this.annotations,
     this.assets,
     this.bindings,
+    this.bindingsInherit,
     this.bodyPart,
     this.cacheOptions,
+    this.codeUpdateStrategy,
     this.compatibilityDate,
     this.compatibilityFlags,
     this.content,
@@ -113,6 +130,8 @@ class WorkersScriptArgs {
     this.contentSha256,
     this.contentType,
     this.exports,
+    this.files,
+    this.force,
     this.keepAssets,
     this.keepBindings,
     this.limits,
@@ -133,8 +152,10 @@ class WorkersScriptArgs {
       'annotations': ?pulumi.Input.mapOptionalInputValue<WorkersScriptAnnotations, Map<String, dynamic>>(annotations, (value) => value.toMap()),
       'assets': ?pulumi.Input.mapOptionalInputValue<WorkersScriptAssets, Map<String, dynamic>>(assets, (value) => value.toMap()),
       'bindings': ?pulumi.Input.mapOptionalInputValue<List<WorkersScriptBinding>, List<Map<String, dynamic>>>(bindings, (value) => pulumi.Input.encodeList<WorkersScriptBinding, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'bindingsInherit': ?bindingsInherit,
       'bodyPart': ?bodyPart,
       'cacheOptions': ?pulumi.Input.mapOptionalInputValue<WorkersScriptCacheOptions, Map<String, dynamic>>(cacheOptions, (value) => value.toMap()),
+      'codeUpdateStrategy': ?pulumi.Input.mapOptionalInputValue<WorkersScriptCodeUpdateStrategy, Map<String, dynamic>>(codeUpdateStrategy, (value) => value.toMap()),
       'compatibilityDate': ?compatibilityDate,
       'compatibilityFlags': ?compatibilityFlags,
       'content': ?content,
@@ -142,6 +163,8 @@ class WorkersScriptArgs {
       'contentSha256': ?contentSha256,
       'contentType': ?contentType,
       'exports': ?pulumi.Input.mapOptionalInputValue<Map<String, WorkersScriptExports>, Map<String, Map<String, dynamic>>>(exports, (value) => pulumi.Input.encodeMapValues<WorkersScriptExports, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'files': ?pulumi.Input.mapOptionalInputValue<Map<String, WorkersScriptFiles>, Map<String, Map<String, dynamic>>>(files, (value) => pulumi.Input.encodeMapValues<WorkersScriptFiles, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'force': ?force,
       'keepAssets': ?keepAssets,
       'keepBindings': ?keepBindings,
       'limits': ?pulumi.Input.mapOptionalInputValue<WorkersScriptLimits, Map<String, dynamic>>(limits, (value) => value.toMap()),
@@ -163,8 +186,10 @@ class WorkersScriptArgs {
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkersScriptAnnotations.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       assets: (() { final guardedValue = map['assets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkersScriptAssets.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       bindings: (() { final guardedValue = map['bindings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkersScriptBinding>(guardedValue, (value) => WorkersScriptBinding.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      bindingsInherit: (() { final guardedValue = map['bindingsInherit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bodyPart: (() { final guardedValue = map['bodyPart']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cacheOptions: (() { final guardedValue = map['cacheOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkersScriptCacheOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      codeUpdateStrategy: (() { final guardedValue = map['codeUpdateStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkersScriptCodeUpdateStrategy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       compatibilityDate: (() { final guardedValue = map['compatibilityDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       compatibilityFlags: (() { final guardedValue = map['compatibilityFlags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -172,6 +197,8 @@ class WorkersScriptArgs {
       contentSha256: (() { final guardedValue = map['contentSha256']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       contentType: (() { final guardedValue = map['contentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       exports: (() { final guardedValue = map['exports']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<WorkersScriptExports>(guardedValue, (value) => WorkersScriptExports.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      files: (() { final guardedValue = map['files']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<WorkersScriptFiles>(guardedValue, (value) => WorkersScriptFiles.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      force: (() { final guardedValue = map['force']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       keepAssets: (() { final guardedValue = map['keepAssets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       keepBindings: (() { final guardedValue = map['keepBindings']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       limits: (() { final guardedValue = map['limits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkersScriptLimits.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

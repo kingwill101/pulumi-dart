@@ -79,7 +79,7 @@ class GetWorkersForPlatformsDispatchNamespaceResult {
       modifiedOn: (() { final guardedValue = map['modifiedOn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       namespaceId: (() { final guardedValue = map['namespaceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       namespaceName: (() { final guardedValue = map['namespaceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      scriptCount: (() { final guardedValue = map['scriptCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      scriptCount: (() { final guardedValue = map['scriptCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       trustedWorkers: (() { final guardedValue = map['trustedWorkers']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }

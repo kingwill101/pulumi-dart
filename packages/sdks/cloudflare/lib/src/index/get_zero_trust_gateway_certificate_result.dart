@@ -3,6 +3,7 @@
 
 /// Result data returned by getZeroTrustGatewayCertificate.
 class GetZeroTrustGatewayCertificateResult {
+  /// Specify the Cloudflare account identifier.
   final String? accountId;
   /// Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
   /// Available values: "pending*deployment", "available", "pending*deletion", "inactive".
@@ -23,6 +24,8 @@ class GetZeroTrustGatewayCertificateResult {
   final String? issuerOrg;
   /// Provide the entire issuer field of the certificate (read-only).
   final String? issuerRaw;
+  /// Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.
+  final String? region;
   /// Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
   /// Available values: "custom", "gatewayManaged".
   final String? type;
@@ -30,7 +33,7 @@ class GetZeroTrustGatewayCertificateResult {
   final String? uploadedOn;
 
   /// Creates a new [GetZeroTrustGatewayCertificateResult].
-  /// [accountId] Optional.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [bindingStatus] Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
   /// [certificate] Provide the CA certificate (read-only).
   /// [certificateId] Identify the certificate with a UUID.
@@ -41,6 +44,7 @@ class GetZeroTrustGatewayCertificateResult {
   /// [inUse] Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
   /// [issuerOrg] Indicate the organization that issued the certificate (read-only).
   /// [issuerRaw] Provide the entire issuer field of the certificate (read-only).
+  /// [region] Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.
   /// [type] Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
   /// [updatedAt] Optional.
   /// [uploadedOn] Optional.
@@ -56,6 +60,7 @@ class GetZeroTrustGatewayCertificateResult {
     this.inUse,
     this.issuerOrg,
     this.issuerRaw,
+    this.region,
     this.type,
     this.updatedAt,
     this.uploadedOn,
@@ -74,6 +79,7 @@ class GetZeroTrustGatewayCertificateResult {
       'inUse': ?inUse,
       'issuerOrg': ?issuerOrg,
       'issuerRaw': ?issuerRaw,
+      'region': ?region,
       'type': ?type,
       'updatedAt': ?updatedAt,
       'uploadedOn': ?uploadedOn,
@@ -93,6 +99,7 @@ class GetZeroTrustGatewayCertificateResult {
       inUse: (() { final guardedValue = map['inUse']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       issuerOrg: (() { final guardedValue = map['issuerOrg']; if (guardedValue == null) return null; return guardedValue as String; })(),
       issuerRaw: (() { final guardedValue = map['issuerRaw']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       updatedAt: (() { final guardedValue = map['updatedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       uploadedOn: (() { final guardedValue = map['uploadedOn']; if (guardedValue == null) return null; return guardedValue as String; })(),

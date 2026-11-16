@@ -7,7 +7,7 @@ class GetZeroTrustResourceLibraryCategoriesResult {
   final pulumi.Input<String> createdAt;
   /// Returns the category description.
   final pulumi.Input<String> description;
-  /// Returns the category ID.
+  /// Numeric identifier for an application category.
   final pulumi.Input<int> id;
   /// Returns the category name.
   final pulumi.Input<String> name;
@@ -15,7 +15,7 @@ class GetZeroTrustResourceLibraryCategoriesResult {
   /// Creates a new [GetZeroTrustResourceLibraryCategoriesResult].
   /// [createdAt] Returns the category creation time.
   /// [description] Returns the category description.
-  /// [id] Returns the category ID.
+  /// [id] Numeric identifier for an application category.
   /// [name] Returns the category name.
   const GetZeroTrustResourceLibraryCategoriesResult({
     required this.createdAt,
@@ -37,7 +37,7 @@ class GetZeroTrustResourceLibraryCategoriesResult {
     return GetZeroTrustResourceLibraryCategoriesResult(
       createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      id: pulumi.Input.fromValue((map['id'] as num).toInt()),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }

@@ -72,7 +72,7 @@ class GetStreamsResultWatermark {
     return GetStreamsResultWatermark(
       created: pulumi.Input.fromValue(map['created'] as String),
       downloadedFrom: pulumi.Input.fromValue(map['downloadedFrom'] as String),
-      height: pulumi.Input.fromValue((map['height'] as num).toInt()),
+      height: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['height'])),
       name: pulumi.Input.fromValue(map['name'] as String),
       opacity: pulumi.Input.fromValue((map['opacity'] as num).toDouble()),
       padding: pulumi.Input.fromValue((map['padding'] as num).toDouble()),
@@ -80,7 +80,7 @@ class GetStreamsResultWatermark {
       scale: pulumi.Input.fromValue((map['scale'] as num).toDouble()),
       size: pulumi.Input.fromValue((map['size'] as num).toDouble()),
       uid: pulumi.Input.fromValue(map['uid'] as String),
-      width: pulumi.Input.fromValue((map['width'] as num).toInt()),
+      width: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['width'])),
     );
   }
 }

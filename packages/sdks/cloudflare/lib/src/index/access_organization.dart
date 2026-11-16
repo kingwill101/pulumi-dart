@@ -3,7 +3,8 @@ import 'access_organization_args.dart';
 import 'access_organization_custom_pages.dart';
 import 'access_organization_login_design.dart';
 import 'access_organization_mfa_config.dart';
-import 'access_organization_mfa_ssh_piv_key_requirements.dart';
+import 'access_organization_mfa_piv_key_requirements.dart';
+import 'access_organization_service_token_inactivity.dart';
 import 'access_organization_state.dart';
 
 /// Accepted Permissions
@@ -30,6 +31,7 @@ import 'access_organization_state.dart';
 ///     },
 ///     denyUnmatchedRequests: true,
 ///     denyUnmatchedRequestsExemptedZoneNames: ["example.com"],
+///     disableEndUserAppCreation: false,
 ///     isUiReadOnly: true,
 ///     loginDesign: {
 ///         backgroundColor: "#c5ed1b",
@@ -48,8 +50,7 @@ import 'access_organization_state.dart';
 ///         requiredAaguids: "2fc0579f-8113-47ea-b116-bb5a8db9202a",
 ///         sessionDuration: "24h",
 ///     },
-///     mfaRequiredForAllApps: false,
-///     mfaSshPivKeyRequirements: {
+///     mfaPivKeyRequirements: {
 ///         pinPolicy: "always",
 ///         requireFipsDevice: true,
 ///         sshKeySizes: [
@@ -62,8 +63,15 @@ import 'access_organization_state.dart';
 ///         ],
 ///         touchPolicy: "always",
 ///     },
+///     mfaRequiredForAllApps: false,
 ///     name: "Widget Corps Internal Applications",
+///     serviceTokenInactivity: {
+///         action: "disable",
+///         enabled: true,
+///         inactivityThresholdDays: 30,
+///     },
 ///     sessionDuration: "24h",
+///     strictServiceTokenAuth: true,
 ///     uiReadOnlyToggleReason: "Temporarily turn off the UI read only lock to make a change via the UI",
 ///     userSeatExpirationInactiveTime: "730h",
 ///     warpAuthNonBrowser401: false,
@@ -85,6 +93,7 @@ import 'access_organization_state.dart';
 ///     },
 ///     deny_unmatched_requests=True,
 ///     deny_unmatched_requests_exempted_zone_names=["example.com"],
+///     disable_end_user_app_creation=False,
 ///     is_ui_read_only=True,
 ///     login_design={
 ///         "background_color": "#c5ed1b",
@@ -103,8 +112,7 @@ import 'access_organization_state.dart';
 ///         "required_aaguids": "2fc0579f-8113-47ea-b116-bb5a8db9202a",
 ///         "session_duration": "24h",
 ///     },
-///     mfa_required_for_all_apps=False,
-///     mfa_ssh_piv_key_requirements={
+///     mfa_piv_key_requirements={
 ///         "pin_policy": "always",
 ///         "require_fips_device": True,
 ///         "ssh_key_sizes": [
@@ -117,8 +125,15 @@ import 'access_organization_state.dart';
 ///         ],
 ///         "touch_policy": "always",
 ///     },
+///     mfa_required_for_all_apps=False,
 ///     name="Widget Corps Internal Applications",
+///     service_token_inactivity={
+///         "action": "disable",
+///         "enabled": True,
+///         "inactivity_threshold_days": 30,
+///     },
 ///     session_duration="24h",
+///     strict_service_token_auth=True,
 ///     ui_read_only_toggle_reason="Temporarily turn off the UI read only lock to make a change via the UI",
 ///     user_seat_expiration_inactive_time="730h",
 ///     warp_auth_non_browser401=False,
@@ -148,6 +163,7 @@ import 'access_organization_state.dart';
 ///         {
 ///             "example.com",
 ///         },
+///         DisableEndUserAppCreation = false,
 ///         IsUiReadOnly = true,
 ///         LoginDesign = new Cloudflare.Inputs.ZeroTrustOrganizationLoginDesignArgs
 ///         {
@@ -169,8 +185,7 @@ import 'access_organization_state.dart';
 ///             RequiredAaguids = "2fc0579f-8113-47ea-b116-bb5a8db9202a",
 ///             SessionDuration = "24h",
 ///         },
-///         MfaRequiredForAllApps = false,
-///         MfaSshPivKeyRequirements = new Cloudflare.Inputs.ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs
+///         MfaPivKeyRequirements = new Cloudflare.Inputs.ZeroTrustOrganizationMfaPivKeyRequirementsArgs
 ///         {
 ///             PinPolicy = "always",
 ///             RequireFipsDevice = true,
@@ -186,8 +201,16 @@ import 'access_organization_state.dart';
 ///             },
 ///             TouchPolicy = "always",
 ///         },
+///         MfaRequiredForAllApps = false,
 ///         Name = "Widget Corps Internal Applications",
+///         ServiceTokenInactivity = new Cloudflare.Inputs.ZeroTrustOrganizationServiceTokenInactivityArgs
+///         {
+///             Action = "disable",
+///             Enabled = true,
+///             InactivityThresholdDays = 30,
+///         },
 ///         SessionDuration = "24h",
+///         StrictServiceTokenAuth = true,
 ///         UiReadOnlyToggleReason = "Temporarily turn off the UI read only lock to make a change via the UI",
 ///         UserSeatExpirationInactiveTime = "730h",
 ///         WarpAuthNonBrowser401 = false,
@@ -219,7 +242,8 @@ import 'access_organization_state.dart';
 /// 			DenyUnmatchedRequestsExemptedZoneNames: pulumi.StringArray{
 /// 				pulumi.String("example.com"),
 /// 			},
-/// 			IsUiReadOnly: pulumi.Bool(true),
+/// 			DisableEndUserAppCreation: pulumi.Bool(false),
+/// 			IsUiReadOnly:              pulumi.Bool(true),
 /// 			LoginDesign: &cloudflare.ZeroTrustOrganizationLoginDesignArgs{
 /// 				BackgroundColor: pulumi.String("#c5ed1b"),
 /// 				FooterText:      pulumi.String("This is an example description."),
@@ -237,8 +261,7 @@ import 'access_organization_state.dart';
 /// 				RequiredAaguids:            pulumi.String("2fc0579f-8113-47ea-b116-bb5a8db9202a"),
 /// 				SessionDuration:            pulumi.String("24h"),
 /// 			},
-/// 			MfaRequiredForAllApps: pulumi.Bool(false),
-/// 			MfaSshPivKeyRequirements: &cloudflare.ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs{
+/// 			MfaPivKeyRequirements: &cloudflare.ZeroTrustOrganizationMfaPivKeyRequirementsArgs{
 /// 				PinPolicy:         pulumi.String("always"),
 /// 				RequireFipsDevice: pulumi.Bool(true),
 /// 				SshKeySizes: pulumi.IntArray{
@@ -251,8 +274,15 @@ import 'access_organization_state.dart';
 /// 				},
 /// 				TouchPolicy: pulumi.String("always"),
 /// 			},
-/// 			Name:                           pulumi.String("Widget Corps Internal Applications"),
+/// 			MfaRequiredForAllApps: pulumi.Bool(false),
+/// 			Name:                  pulumi.String("Widget Corps Internal Applications"),
+/// 			ServiceTokenInactivity: &cloudflare.ZeroTrustOrganizationServiceTokenInactivityArgs{
+/// 				Action:                  pulumi.String("disable"),
+/// 				Enabled:                 pulumi.Bool(true),
+/// 				InactivityThresholdDays: pulumi.Int(30),
+/// 			},
 /// 			SessionDuration:                pulumi.String("24h"),
+/// 			StrictServiceTokenAuth:         pulumi.Bool(true),
 /// 			UiReadOnlyToggleReason:         pulumi.String("Temporarily turn off the UI read only lock to make a change via the UI"),
 /// 			UserSeatExpirationInactiveTime: pulumi.String("730h"),
 /// 			WarpAuthNonBrowser401:          pulumi.Bool(false),
@@ -266,7 +296,7 @@ import 'access_organization_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -274,7 +304,10 @@ import 'access_organization_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustorganization" "example_zero_trust_organization" {
+/// resource "cloudflare_zero_trust_organization" "example_zero_trust_organization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id                     = "zone_id"
 ///   allow_authenticate_via_warp = true
 ///   auth_domain                 = "test.cloudflareaccess.com"
@@ -285,6 +318,7 @@ import 'access_organization_state.dart';
 ///   }
 ///   deny_unmatched_requests                     = true
 ///   deny_unmatched_requests_exempted_zone_names = ["example.com"]
+///   disable_end_user_app_creation               = false
 ///   is_ui_read_only                             = true
 ///   login_design = {
 ///     background_color = "#c5ed1b"
@@ -299,19 +333,25 @@ import 'access_organization_state.dart';
 ///     required_aaguids              = "2fc0579f-8113-47ea-b116-bb5a8db9202a"
 ///     session_duration              = "24h"
 ///   }
-///   mfa_required_for_all_apps = false
-///   mfa_ssh_piv_key_requirements = {
+///   mfa_piv_key_requirements = {
 ///     pin_policy          = "always"
 ///     require_fips_device = true
 ///     ssh_key_sizes       = [256, 2048]
 ///     ssh_key_types       = ["ecdsa", "rsa"]
 ///     touch_policy        = "always"
 ///   }
-///   name                               = "Widget Corps Internal Applications"
+///   mfa_required_for_all_apps = false
+///   name                      = "Widget Corps Internal Applications"
+///   service_token_inactivity = {
+///     action                    = "disable"
+///     enabled                   = true
+///     inactivity_threshold_days = 30
+///   }
 ///   session_duration                   = "24h"
+///   strict_service_token_auth          = true
 ///   ui_read_only_toggle_reason         = "Temporarily turn off the UI read only lock to make a change via the UI"
 ///   user_seat_expiration_inactive_time = "730h"
-///   warp_auth_non_browser401           = false
+///   warp_auth_non_browser_401          = false
 ///   warp_auth_session_duration         = "24h"
 /// }
 /// ```
@@ -326,7 +366,8 @@ import 'access_organization_state.dart';
 /// import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationCustomPagesArgs;
 /// import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationLoginDesignArgs;
 /// import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationMfaConfigArgs;
-/// import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs;
+/// import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationMfaPivKeyRequirementsArgs;
+/// import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationServiceTokenInactivityArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -351,6 +392,7 @@ import 'access_organization_state.dart';
 ///                 .build())
 ///             .denyUnmatchedRequests(true)
 ///             .denyUnmatchedRequestsExemptedZoneNames("example.com")
+///             .disableEndUserAppCreation(false)
 ///             .isUiReadOnly(true)
 ///             .loginDesign(ZeroTrustOrganizationLoginDesignArgs.builder()
 ///                 .backgroundColor("#c5ed1b")
@@ -368,8 +410,7 @@ import 'access_organization_state.dart';
 ///                 .requiredAaguids("2fc0579f-8113-47ea-b116-bb5a8db9202a")
 ///                 .sessionDuration("24h")
 ///                 .build())
-///             .mfaRequiredForAllApps(false)
-///             .mfaSshPivKeyRequirements(ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs.builder()
+///             .mfaPivKeyRequirements(ZeroTrustOrganizationMfaPivKeyRequirementsArgs.builder()
 ///                 .pinPolicy("always")
 ///                 .requireFipsDevice(true)
 ///                 .sshKeySizes(
@@ -380,8 +421,15 @@ import 'access_organization_state.dart';
 ///                     "rsa")
 ///                 .touchPolicy("always")
 ///                 .build())
+///             .mfaRequiredForAllApps(false)
 ///             .name("Widget Corps Internal Applications")
+///             .serviceTokenInactivity(ZeroTrustOrganizationServiceTokenInactivityArgs.builder()
+///                 .action("disable")
+///                 .enabled(true)
+///                 .inactivityThresholdDays(30)
+///                 .build())
 ///             .sessionDuration("24h")
+///             .strictServiceTokenAuth(true)
 ///             .uiReadOnlyToggleReason("Temporarily turn off the UI read only lock to make a change via the UI")
 ///             .userSeatExpirationInactiveTime("730h")
 ///             .warpAuthNonBrowser401(false)
@@ -407,6 +455,7 @@ import 'access_organization_state.dart';
 ///       denyUnmatchedRequests: true
 ///       denyUnmatchedRequestsExemptedZoneNames:
 ///         - example.com
+///       disableEndUserAppCreation: false
 ///       isUiReadOnly: true
 ///       loginDesign:
 ///         backgroundColor: '#c5ed1b'
@@ -422,8 +471,7 @@ import 'access_organization_state.dart';
 ///         amrMatchingSessionDuration: 12h
 ///         requiredAaguids: 2fc0579f-8113-47ea-b116-bb5a8db9202a
 ///         sessionDuration: 24h
-///       mfaRequiredForAllApps: false
-///       mfaSshPivKeyRequirements:
+///       mfaPivKeyRequirements:
 ///         pinPolicy: always
 ///         requireFipsDevice: true
 ///         sshKeySizes:
@@ -433,8 +481,14 @@ import 'access_organization_state.dart';
 ///           - ecdsa
 ///           - rsa
 ///         touchPolicy: always
+///       mfaRequiredForAllApps: false
 ///       name: Widget Corps Internal Applications
+///       serviceTokenInactivity:
+///         action: disable
+///         enabled: true
+///         inactivityThresholdDays: 30
 ///       sessionDuration: 24h
+///       strictServiceTokenAuth: true
 ///       uiReadOnlyToggleReason: Temporarily turn off the UI read only lock to make a change via the UI
 ///       userSeatExpirationInactiveTime: 730h
 ///       warpAuthNonBrowser401: false
@@ -444,13 +498,15 @@ import 'access_organization_state.dart';
 ///
 /// ## Import
 ///
-/// &gt; This resource does not currently support `pulumi import`.
+/// ```sh
+/// $ pulumi import cloudflare:index/accessOrganization:AccessOrganization example '<account_id>'
+/// ```
 class AccessOrganization extends pulumi.CustomResource {
   /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
   late final pulumi.Output<String?> accountId;
   /// When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
   late final pulumi.Output<bool> allowAuthenticateViaWarp;
-  /// The unique subdomain assigned to your Zero Trust organization.
+  /// The unique subdomain assigned to your Zero Trust organization. If omitted on creation, a unique subdomain is auto-generated in the format `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).
   late final pulumi.Output<String?> authDomain;
   /// When set to `true`, users skip the identity provider selection step during login.
   late final pulumi.Output<bool> autoRedirectToIdentity;
@@ -459,6 +515,8 @@ class AccessOrganization extends pulumi.CustomResource {
   late final pulumi.Output<bool?> denyUnmatchedRequests;
   /// Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
   late final pulumi.Output<List<String>?> denyUnmatchedRequestsExemptedZoneNames;
+  /// Whether creation of end user applications is disabled for this organization.
+  late final pulumi.Output<bool> disableEndUserAppCreation;
   /// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
   late final pulumi.Output<bool> isUiReadOnly;
   late final pulumi.Output<AccessOrganizationLoginDesign?> loginDesign;
@@ -466,14 +524,20 @@ class AccessOrganization extends pulumi.CustomResource {
   late final pulumi.Output<AccessOrganizationMfaConfig?> mfaConfig;
   /// Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
   late final pulumi.Output<bool> mfaConfigurationAllowed;
+  /// Configures PIV key requirements for MFA using hardware security keys.
+  late final pulumi.Output<AccessOrganizationMfaPivKeyRequirements?> mfaPivKeyRequirements;
   /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
   late final pulumi.Output<bool> mfaRequiredForAllApps;
-  /// Configures SSH PIV key requirements for MFA using hardware security keys.
-  late final pulumi.Output<AccessOrganizationMfaSshPivKeyRequirements?> mfaSshPivKeyRequirements;
-  /// The name of your Zero Trust organization.
+  /// The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain slug (e.g. frosty-moon-7a3b).
   late final pulumi.Output<String?> name;
+  /// Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
+  late final pulumi.Output<AccessOrganizationServiceTokenInactivity?> serviceTokenInactivity;
   /// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
   late final pulumi.Output<String?> sessionDuration;
+  /// Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
+  late final pulumi.Output<bool> strictServiceTokenAuth;
+  /// The account tags of organizations trusted by this organization for policy and device posture sharing.
+  late final pulumi.Output<List<String>> trustedAccounts;
   /// A description of the reason why the UI read only field is being toggled.
   late final pulumi.Output<String> uiReadOnlyToggleReason;
   /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
@@ -497,7 +561,7 @@ class AccessOrganization extends pulumi.CustomResource {
           'cloudflare:index/accessOrganization:AccessOrganization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     allowAuthenticateViaWarp = registerOutput<bool>('allowAuthenticateViaWarp');
@@ -506,14 +570,18 @@ class AccessOrganization extends pulumi.CustomResource {
     customPages = registerOutput<AccessOrganizationCustomPages?>('customPages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessOrganizationCustomPages.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     denyUnmatchedRequests = registerOutput<bool?>('denyUnmatchedRequests');
     denyUnmatchedRequestsExemptedZoneNames = registerOutput<List<String>?>('denyUnmatchedRequestsExemptedZoneNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    disableEndUserAppCreation = registerOutput<bool>('disableEndUserAppCreation');
     isUiReadOnly = registerOutput<bool>('isUiReadOnly');
     loginDesign = registerOutput<AccessOrganizationLoginDesign?>('loginDesign', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessOrganizationLoginDesign.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mfaConfig = registerOutput<AccessOrganizationMfaConfig?>('mfaConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessOrganizationMfaConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mfaConfigurationAllowed = registerOutput<bool>('mfaConfigurationAllowed');
+    mfaPivKeyRequirements = registerOutput<AccessOrganizationMfaPivKeyRequirements?>('mfaPivKeyRequirements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessOrganizationMfaPivKeyRequirements.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mfaRequiredForAllApps = registerOutput<bool>('mfaRequiredForAllApps');
-    mfaSshPivKeyRequirements = registerOutput<AccessOrganizationMfaSshPivKeyRequirements?>('mfaSshPivKeyRequirements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessOrganizationMfaSshPivKeyRequirements.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String?>('name');
+    serviceTokenInactivity = registerOutput<AccessOrganizationServiceTokenInactivity?>('serviceTokenInactivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessOrganizationServiceTokenInactivity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sessionDuration = registerOutput<String?>('sessionDuration');
+    strictServiceTokenAuth = registerOutput<bool>('strictServiceTokenAuth');
+    trustedAccounts = registerOutput<List<String>>('trustedAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     uiReadOnlyToggleReason = registerOutput<String>('uiReadOnlyToggleReason');
     userSeatExpirationInactiveTime = registerOutput<String?>('userSeatExpirationInactiveTime');
     warpAuthNonBrowser401 = registerOutput<bool>('warpAuthNonBrowser401');
@@ -552,14 +620,18 @@ class AccessOrganization extends pulumi.CustomResource {
     customPages = registerOutput<AccessOrganizationCustomPages?>('customPages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessOrganizationCustomPages.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     denyUnmatchedRequests = registerOutput<bool?>('denyUnmatchedRequests');
     denyUnmatchedRequestsExemptedZoneNames = registerOutput<List<String>?>('denyUnmatchedRequestsExemptedZoneNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    disableEndUserAppCreation = registerOutput<bool>('disableEndUserAppCreation');
     isUiReadOnly = registerOutput<bool>('isUiReadOnly');
     loginDesign = registerOutput<AccessOrganizationLoginDesign?>('loginDesign', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessOrganizationLoginDesign.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mfaConfig = registerOutput<AccessOrganizationMfaConfig?>('mfaConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessOrganizationMfaConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mfaConfigurationAllowed = registerOutput<bool>('mfaConfigurationAllowed');
+    mfaPivKeyRequirements = registerOutput<AccessOrganizationMfaPivKeyRequirements?>('mfaPivKeyRequirements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessOrganizationMfaPivKeyRequirements.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mfaRequiredForAllApps = registerOutput<bool>('mfaRequiredForAllApps');
-    mfaSshPivKeyRequirements = registerOutput<AccessOrganizationMfaSshPivKeyRequirements?>('mfaSshPivKeyRequirements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessOrganizationMfaSshPivKeyRequirements.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String?>('name');
+    serviceTokenInactivity = registerOutput<AccessOrganizationServiceTokenInactivity?>('serviceTokenInactivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessOrganizationServiceTokenInactivity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sessionDuration = registerOutput<String?>('sessionDuration');
+    strictServiceTokenAuth = registerOutput<bool>('strictServiceTokenAuth');
+    trustedAccounts = registerOutput<List<String>>('trustedAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     uiReadOnlyToggleReason = registerOutput<String>('uiReadOnlyToggleReason');
     userSeatExpirationInactiveTime = registerOutput<String?>('userSeatExpirationInactiveTime');
     warpAuthNonBrowser401 = registerOutput<bool>('warpAuthNonBrowser401');
@@ -583,14 +655,18 @@ class AccessOrganization extends pulumi.CustomResource {
     customPages = registerOutput<AccessOrganizationCustomPages?>('customPages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessOrganizationCustomPages.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     denyUnmatchedRequests = registerOutput<bool?>('denyUnmatchedRequests');
     denyUnmatchedRequestsExemptedZoneNames = registerOutput<List<String>?>('denyUnmatchedRequestsExemptedZoneNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    disableEndUserAppCreation = registerOutput<bool>('disableEndUserAppCreation');
     isUiReadOnly = registerOutput<bool>('isUiReadOnly');
     loginDesign = registerOutput<AccessOrganizationLoginDesign?>('loginDesign', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessOrganizationLoginDesign.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mfaConfig = registerOutput<AccessOrganizationMfaConfig?>('mfaConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessOrganizationMfaConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mfaConfigurationAllowed = registerOutput<bool>('mfaConfigurationAllowed');
+    mfaPivKeyRequirements = registerOutput<AccessOrganizationMfaPivKeyRequirements?>('mfaPivKeyRequirements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessOrganizationMfaPivKeyRequirements.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mfaRequiredForAllApps = registerOutput<bool>('mfaRequiredForAllApps');
-    mfaSshPivKeyRequirements = registerOutput<AccessOrganizationMfaSshPivKeyRequirements?>('mfaSshPivKeyRequirements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessOrganizationMfaSshPivKeyRequirements.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String?>('name');
+    serviceTokenInactivity = registerOutput<AccessOrganizationServiceTokenInactivity?>('serviceTokenInactivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessOrganizationServiceTokenInactivity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sessionDuration = registerOutput<String?>('sessionDuration');
+    strictServiceTokenAuth = registerOutput<bool>('strictServiceTokenAuth');
+    trustedAccounts = registerOutput<List<String>>('trustedAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     uiReadOnlyToggleReason = registerOutput<String>('uiReadOnlyToggleReason');
     userSeatExpirationInactiveTime = registerOutput<String?>('userSeatExpirationInactiveTime');
     warpAuthNonBrowser401 = registerOutput<bool>('warpAuthNonBrowser401');

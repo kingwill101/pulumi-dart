@@ -60,7 +60,7 @@ import 'argo_tiered_caching_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -68,7 +68,10 @@ import 'argo_tiered_caching_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_argotieredcaching" "example_argo_tiered_caching" {
+/// resource "cloudflare_argo_tiered_caching" "example_argo_tiered_caching" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   value   = "on"
 /// }
@@ -123,7 +126,7 @@ class ArgoTieredCaching extends pulumi.CustomResource {
   late final pulumi.Output<bool> editable;
   /// Last time this setting was modified.
   late final pulumi.Output<String> modifiedOn;
-  /// Enables Tiered Caching.
+  /// Enables or disables Tiered Cache.
   /// Available values: "on", "off".
   late final pulumi.Output<String> value;
   /// Identifier.
@@ -141,7 +144,7 @@ class ArgoTieredCaching extends pulumi.CustomResource {
           'cloudflare:index/argoTieredCaching:ArgoTieredCaching',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     editable = registerOutput<bool>('editable');
     modifiedOn = registerOutput<String>('modifiedOn');

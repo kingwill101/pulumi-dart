@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'get_pages_project_build_config.dart';
+import 'get_pages_project_build_image_auto_upgrade.dart';
 import 'get_pages_project_canonical_deployment.dart';
 import 'get_pages_project_deployment_configs.dart';
 import 'get_pages_project_latest_deployment.dart';
@@ -12,6 +13,8 @@ class GetPagesProjectResult {
   final String? accountId;
   /// Configs for the project build process.
   final GetPagesProjectBuildConfig? buildConfig;
+  /// Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
+  final GetPagesProjectBuildImageAutoUpgrade? buildImageAutoUpgrade;
   /// Most recent production deployment of the project.
   final GetPagesProjectCanonicalDeployment? canonicalDeployment;
   /// When the project was created.
@@ -24,11 +27,11 @@ class GetPagesProjectResult {
   final String? framework;
   /// Version of the framework the project is using.
   final String? frameworkVersion;
-  /// Name of the project.
+  /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   final String? id;
   /// Most recent deployment of the project.
   final GetPagesProjectLatestDeployment? latestDeployment;
-  /// Name of the project.
+  /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   final String? name;
   /// Name of the preview script.
   final String? previewScriptName;
@@ -36,7 +39,7 @@ class GetPagesProjectResult {
   final String? productionBranch;
   /// Name of the production script.
   final String? productionScriptName;
-  /// Name of the project.
+  /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   final String? projectName;
   /// Configs for the project source control.
   final GetPagesProjectSource? source;
@@ -48,25 +51,27 @@ class GetPagesProjectResult {
   /// Creates a new [GetPagesProjectResult].
   /// [accountId] Identifier.
   /// [buildConfig] Configs for the project build process.
+  /// [buildImageAutoUpgrade] Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
   /// [canonicalDeployment] Most recent production deployment of the project.
   /// [createdOn] When the project was created.
   /// [deploymentConfigs] Configs for deployments in a project.
   /// [domains] A list of associated custom domains for the project.
   /// [framework] Framework the project is using.
   /// [frameworkVersion] Version of the framework the project is using.
-  /// [id] Name of the project.
+  /// [id] Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   /// [latestDeployment] Most recent deployment of the project.
-  /// [name] Name of the project.
+  /// [name] Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   /// [previewScriptName] Name of the preview script.
   /// [productionBranch] Production branch of the project. Used to identify production deployments.
   /// [productionScriptName] Name of the production script.
-  /// [projectName] Name of the project.
+  /// [projectName] Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   /// [source] Configs for the project source control.
   /// [subdomain] The Cloudflare subdomain associated with the project.
   /// [usesFunctions] Whether the project uses functions.
   const GetPagesProjectResult({
     this.accountId,
     this.buildConfig,
+    this.buildImageAutoUpgrade,
     this.canonicalDeployment,
     this.createdOn,
     this.deploymentConfigs,
@@ -89,6 +94,7 @@ class GetPagesProjectResult {
     return <String, dynamic>{
       'accountId': ?accountId,
       'buildConfig': ?buildConfig?.toMap(),
+      'buildImageAutoUpgrade': ?buildImageAutoUpgrade?.toMap(),
       'canonicalDeployment': ?canonicalDeployment?.toMap(),
       'createdOn': ?createdOn,
       'deploymentConfigs': ?deploymentConfigs?.toMap(),
@@ -112,6 +118,7 @@ class GetPagesProjectResult {
     return GetPagesProjectResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       buildConfig: (() { final guardedValue = map['buildConfig']; if (guardedValue == null) return null; return GetPagesProjectBuildConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      buildImageAutoUpgrade: (() { final guardedValue = map['buildImageAutoUpgrade']; if (guardedValue == null) return null; return GetPagesProjectBuildImageAutoUpgrade.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       canonicalDeployment: (() { final guardedValue = map['canonicalDeployment']; if (guardedValue == null) return null; return GetPagesProjectCanonicalDeployment.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       createdOn: (() { final guardedValue = map['createdOn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       deploymentConfigs: (() { final guardedValue = map['deploymentConfigs']; if (guardedValue == null) return null; return GetPagesProjectDeploymentConfigs.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),

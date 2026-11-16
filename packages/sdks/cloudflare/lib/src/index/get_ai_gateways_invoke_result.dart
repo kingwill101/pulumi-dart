@@ -37,7 +37,7 @@ class GetAiGatewaysInvokeResult {
   factory GetAiGatewaysInvokeResult.fromMap(Map<String, dynamic> map) {
     return GetAiGatewaysInvokeResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetAiGatewaysResult>(guardedValue, (value) => GetAiGatewaysResult.fromMap((value as Map).cast<String, dynamic>())); })(),
       search: (() { final guardedValue = map['search']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

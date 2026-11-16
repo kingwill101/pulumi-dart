@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetZeroTrustAccessApplicationPolicyMfaConfig {
   /// The authenticators allowed for MFA.
-  /// Available values: "totp", "biometrics", "security*key", "ssh*piv_key".
+  /// Available values: "totp", "biometrics", "security*key", "piv*key", "ssh*fido2*key".
   final pulumi.Input<List<String>> allowedAuthenticators;
   /// Whether MFA is disabled for this policy.
   final pulumi.Input<bool> mfaDisabled;

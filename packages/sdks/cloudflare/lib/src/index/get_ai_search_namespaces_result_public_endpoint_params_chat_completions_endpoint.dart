@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAiSearchNamespacesResultPublicEndpointParamsChatCompletionsEndpoint {
-  /// Disable chat completions endpoint for this public endpoint
+  /// Disable chat completions endpoint for this public endpoint.
   final pulumi.Input<bool> disabled;
 
   /// Creates a new [GetAiSearchNamespacesResultPublicEndpointParamsChatCompletionsEndpoint].
-  /// [disabled] Disable chat completions endpoint for this public endpoint
+  /// [disabled] Disable chat completions endpoint for this public endpoint.
   const GetAiSearchNamespacesResultPublicEndpointParamsChatCompletionsEndpoint({
     required this.disabled,
   });

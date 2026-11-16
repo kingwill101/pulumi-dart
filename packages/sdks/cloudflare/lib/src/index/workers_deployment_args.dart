@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workers_deployment_annotations.dart';
+import 'workers_deployment_code_update_strategy.dart';
 import 'workers_deployment_version.dart';
 
 /// {@template pulumi_index_workers_deployment_workers_deployment_args_doc}
@@ -11,22 +12,33 @@ import 'workers_deployment_version.dart';
 class WorkersDeploymentArgs {
   /// Identifier.
   final pulumi.Input<String> accountId;
+  /// Metadata attached to the deployment.
   final pulumi.Input<WorkersDeploymentAnnotations?>? annotations;
-  /// Name of the script, used in URLs and route configuration.
+  /// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+  final pulumi.Input<WorkersDeploymentCodeUpdateStrategy?>? codeUpdateStrategy;
+  /// If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
+  final pulumi.Input<bool?>? force;
+  /// Name of the script.
   final pulumi.Input<String> scriptName;
+  /// Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
   /// Available values: "percentage".
   final pulumi.Input<String> strategy;
+  /// Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"versionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
   final pulumi.Input<List<WorkersDeploymentVersion>> versions;
 
   /// Creates a new [WorkersDeploymentArgs].
   /// [accountId] Identifier.
-  /// [annotations] Optional.
-  /// [scriptName] Name of the script, used in URLs and route configuration.
-  /// [strategy] Available values: "percentage".
-  /// [versions] Required.
+  /// [annotations] Metadata attached to the deployment.
+  /// [codeUpdateStrategy] Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+  /// [force] If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
+  /// [scriptName] Name of the script.
+  /// [strategy] Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
+  /// [versions] Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"versionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
   const WorkersDeploymentArgs({
     required this.accountId,
     this.annotations,
+    this.codeUpdateStrategy,
+    this.force,
     required this.scriptName,
     required this.strategy,
     required this.versions,
@@ -36,6 +48,8 @@ class WorkersDeploymentArgs {
     return <String, dynamic>{
       'accountId': accountId,
       'annotations': ?pulumi.Input.mapOptionalInputValue<WorkersDeploymentAnnotations, Map<String, dynamic>>(annotations, (value) => value.toMap()),
+      'codeUpdateStrategy': ?pulumi.Input.mapOptionalInputValue<WorkersDeploymentCodeUpdateStrategy, Map<String, dynamic>>(codeUpdateStrategy, (value) => value.toMap()),
+      'force': ?force,
       'scriptName': scriptName,
       'strategy': strategy,
       'versions': pulumi.Input.mapInputValue<List<WorkersDeploymentVersion>, List<Map<String, dynamic>>>(versions, (value) => pulumi.Input.encodeList<WorkersDeploymentVersion, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -46,6 +60,8 @@ class WorkersDeploymentArgs {
     return WorkersDeploymentArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkersDeploymentAnnotations.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      codeUpdateStrategy: (() { final guardedValue = map['codeUpdateStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkersDeploymentCodeUpdateStrategy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      force: (() { final guardedValue = map['force']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       scriptName: pulumi.Input.fromValue(map['scriptName'] as String),
       strategy: pulumi.Input.fromValue(map['strategy'] as String),
       versions: pulumi.Input.fromValue(pulumi.Input.decodeList<WorkersDeploymentVersion>(map['versions']!, (value) => WorkersDeploymentVersion.fromMap((value as Map).cast<String, dynamic>()))),

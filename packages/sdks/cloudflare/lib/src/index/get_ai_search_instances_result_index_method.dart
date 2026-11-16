@@ -3,14 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAiSearchInstancesResultIndexMethod {
-  /// Enable keyword (BM25) storage backend.
   final pulumi.Input<bool> keyword;
-  /// Enable vector (embedding) storage backend.
   final pulumi.Input<bool> vector;
 
   /// Creates a new [GetAiSearchInstancesResultIndexMethod].
-  /// [keyword] Enable keyword (BM25) storage backend.
-  /// [vector] Enable vector (embedding) storage backend.
+  /// [keyword] Required.
+  /// [vector] Required.
   const GetAiSearchInstancesResultIndexMethod({
     required this.keyword,
     required this.vector,

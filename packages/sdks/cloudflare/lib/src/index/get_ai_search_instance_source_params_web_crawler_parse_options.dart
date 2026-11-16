@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_ai_search_instance_source_params_web_crawler_parse_options_content_selector.dart';
 
 class GetAiSearchInstanceSourceParamsWebCrawlerParseOptions {
-  /// List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.
+  /// List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.
   final pulumi.Input<List<GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelector>> contentSelectors;
-  /// Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).
+  /// Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF.
   final pulumi.Input<Map<String, String>> includeHeaders;
   final pulumi.Input<bool> includeImages;
   /// List of specific sitemap URLs to use for crawling. Only valid when parseType is 'sitemap'.
@@ -14,8 +14,8 @@ class GetAiSearchInstanceSourceParamsWebCrawlerParseOptions {
   final pulumi.Input<bool> useBrowserRendering;
 
   /// Creates a new [GetAiSearchInstanceSourceParamsWebCrawlerParseOptions].
-  /// [contentSelectors] List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.
-  /// [includeHeaders] Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).
+  /// [contentSelectors] List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.
+  /// [includeHeaders] Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF.
   /// [includeImages] Required.
   /// [specificSitemaps] List of specific sitemap URLs to use for crawling. Only valid when parseType is 'sitemap'.
   /// [useBrowserRendering] Required.

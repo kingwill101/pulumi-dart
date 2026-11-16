@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'zero_trust_gateway_policy_rule_settings_audit_ssh.dart';
 import 'zero_trust_gateway_policy_rule_settings_biso_admin_controls.dart';
 import 'zero_trust_gateway_policy_rule_settings_block_page.dart';
 import 'zero_trust_gateway_policy_rule_settings_check_session.dart';
 import 'zero_trust_gateway_policy_rule_settings_dns_resolvers.dart';
 import 'zero_trust_gateway_policy_rule_settings_egress.dart';
 import 'zero_trust_gateway_policy_rule_settings_forensic_copy.dart';
+import 'zero_trust_gateway_policy_rule_settings_forward.dart';
 import 'zero_trust_gateway_policy_rule_settings_l4override.dart';
 import 'zero_trust_gateway_policy_rule_settings_notification_settings.dart';
 import 'zero_trust_gateway_policy_rule_settings_payload_log.dart';
@@ -21,8 +21,6 @@ class ZeroTrustGatewayPolicyRuleSettings {
   final pulumi.Input<Map<String, List<String>>?>? addHeaders;
   /// Set to enable MSP children to bypass this rule. Only parent MSP accounts can set this. this rule. Settable for all types of rules.
   final pulumi.Input<bool?>? allowChildBypass;
-  /// Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
-  final pulumi.Input<ZeroTrustGatewayPolicyRuleSettingsAuditSsh?>? auditSsh;
   /// Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.
   final pulumi.Input<ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls?>? bisoAdminControls;
   /// Configure custom block page settings. If missing or null, use the account settings. Settable only for `http` rules with the action set to `block`.
@@ -43,6 +41,8 @@ class ZeroTrustGatewayPolicyRuleSettings {
   final pulumi.Input<ZeroTrustGatewayPolicyRuleSettingsEgress?>? egress;
   /// Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
   final pulumi.Input<ZeroTrustGatewayPolicyRuleSettingsForensicCopy?>? forensicCopy;
+  /// Forward matching HTTP requests to a Worker. Required for `http` rules with the action set to `forward`.
+  final pulumi.Input<ZeroTrustGatewayPolicyRuleSettingsForward?>? forward;
   /// Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
   final pulumi.Input<bool?>? ignoreCnameCategoryMatches;
   /// Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.
@@ -77,7 +77,6 @@ class ZeroTrustGatewayPolicyRuleSettings {
   /// Creates a new [ZeroTrustGatewayPolicyRuleSettings].
   /// [addHeaders] Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.
   /// [allowChildBypass] Set to enable MSP children to bypass this rule. Only parent MSP accounts can set this. this rule. Settable for all types of rules.
-  /// [auditSsh] Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
   /// [bisoAdminControls] Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.
   /// [blockPage] Configure custom block page settings. If missing or null, use the account settings. Settable only for `http` rules with the action set to `block`.
   /// [blockPageEnabled] Enable the custom block page. Settable only for `dns` rules with action `block`.
@@ -88,6 +87,7 @@ class ZeroTrustGatewayPolicyRuleSettings {
   /// [dnsResolvers] Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
   /// [egress] Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules.
   /// [forensicCopy] Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
+  /// [forward] Forward matching HTTP requests to a Worker. Required for `http` rules with the action set to `forward`.
   /// [ignoreCnameCategoryMatches] Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
   /// [insecureDisableDnssecValidation] Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.
   /// [ipCategories] Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dnsResolver` rules.
@@ -106,7 +106,6 @@ class ZeroTrustGatewayPolicyRuleSettings {
   const ZeroTrustGatewayPolicyRuleSettings({
     this.addHeaders,
     this.allowChildBypass,
-    this.auditSsh,
     this.bisoAdminControls,
     this.blockPage,
     this.blockPageEnabled,
@@ -117,6 +116,7 @@ class ZeroTrustGatewayPolicyRuleSettings {
     this.dnsResolvers,
     this.egress,
     this.forensicCopy,
+    this.forward,
     this.ignoreCnameCategoryMatches,
     this.insecureDisableDnssecValidation,
     this.ipCategories,
@@ -138,7 +138,6 @@ class ZeroTrustGatewayPolicyRuleSettings {
     return <String, dynamic>{
       'addHeaders': ?addHeaders,
       'allowChildBypass': ?allowChildBypass,
-      'auditSsh': ?pulumi.Input.mapOptionalInputValue<ZeroTrustGatewayPolicyRuleSettingsAuditSsh, Map<String, dynamic>>(auditSsh, (value) => value.toMap()),
       'bisoAdminControls': ?pulumi.Input.mapOptionalInputValue<ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls, Map<String, dynamic>>(bisoAdminControls, (value) => value.toMap()),
       'blockPage': ?pulumi.Input.mapOptionalInputValue<ZeroTrustGatewayPolicyRuleSettingsBlockPage, Map<String, dynamic>>(blockPage, (value) => value.toMap()),
       'blockPageEnabled': ?blockPageEnabled,
@@ -149,6 +148,7 @@ class ZeroTrustGatewayPolicyRuleSettings {
       'dnsResolvers': ?pulumi.Input.mapOptionalInputValue<ZeroTrustGatewayPolicyRuleSettingsDnsResolvers, Map<String, dynamic>>(dnsResolvers, (value) => value.toMap()),
       'egress': ?pulumi.Input.mapOptionalInputValue<ZeroTrustGatewayPolicyRuleSettingsEgress, Map<String, dynamic>>(egress, (value) => value.toMap()),
       'forensicCopy': ?pulumi.Input.mapOptionalInputValue<ZeroTrustGatewayPolicyRuleSettingsForensicCopy, Map<String, dynamic>>(forensicCopy, (value) => value.toMap()),
+      'forward': ?pulumi.Input.mapOptionalInputValue<ZeroTrustGatewayPolicyRuleSettingsForward, Map<String, dynamic>>(forward, (value) => value.toMap()),
       'ignoreCnameCategoryMatches': ?ignoreCnameCategoryMatches,
       'insecureDisableDnssecValidation': ?insecureDisableDnssecValidation,
       'ipCategories': ?ipCategories,
@@ -171,7 +171,6 @@ class ZeroTrustGatewayPolicyRuleSettings {
     return ZeroTrustGatewayPolicyRuleSettings(
       addHeaders: (() { final guardedValue = map['addHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>())); })(),
       allowChildBypass: (() { final guardedValue = map['allowChildBypass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      auditSsh: (() { final guardedValue = map['auditSsh']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustGatewayPolicyRuleSettingsAuditSsh.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       bisoAdminControls: (() { final guardedValue = map['bisoAdminControls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       blockPage: (() { final guardedValue = map['blockPage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustGatewayPolicyRuleSettingsBlockPage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       blockPageEnabled: (() { final guardedValue = map['blockPageEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -182,6 +181,7 @@ class ZeroTrustGatewayPolicyRuleSettings {
       dnsResolvers: (() { final guardedValue = map['dnsResolvers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustGatewayPolicyRuleSettingsDnsResolvers.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       egress: (() { final guardedValue = map['egress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustGatewayPolicyRuleSettingsEgress.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       forensicCopy: (() { final guardedValue = map['forensicCopy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustGatewayPolicyRuleSettingsForensicCopy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      forward: (() { final guardedValue = map['forward']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustGatewayPolicyRuleSettingsForward.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ignoreCnameCategoryMatches: (() { final guardedValue = map['ignoreCnameCategoryMatches']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       insecureDisableDnssecValidation: (() { final guardedValue = map['insecureDisableDnssecValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       ipCategories: (() { final guardedValue = map['ipCategories']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

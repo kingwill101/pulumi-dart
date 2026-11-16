@@ -7,6 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_certificate_authorities_hostname_associations_certificate_authorities_hostname_associations_args_doc}
 class CertificateAuthoritiesHostnameAssociationsArgs {
+  /// Unordered set of hostnames. Hostnames are stored as lowercase punycode.
   final pulumi.Input<List<String>?>? hostnames;
   /// The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls*certificate*id is given, the hostnames will be associated to your active Cloudflare Managed CA.
   final pulumi.Input<String?>? mtlsCertificateId;
@@ -14,7 +15,7 @@ class CertificateAuthoritiesHostnameAssociationsArgs {
   final pulumi.Input<String> zoneId;
 
   /// Creates a new [CertificateAuthoritiesHostnameAssociationsArgs].
-  /// [hostnames] Optional.
+  /// [hostnames] Unordered set of hostnames. Hostnames are stored as lowercase punycode.
   /// [mtlsCertificateId] The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls*certificate*id is given, the hostnames will be associated to your active Cloudflare Managed CA.
   /// [zoneId] Identifier.
   const CertificateAuthoritiesHostnameAssociationsArgs({

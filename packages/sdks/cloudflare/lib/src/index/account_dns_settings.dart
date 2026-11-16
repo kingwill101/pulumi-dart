@@ -20,7 +20,6 @@ import 'account_dns_settings_zone_defaults.dart';
 ///     enforceDnsOnly: false,
 ///     zoneDefaults: {
 ///         flattenAllCnames: false,
-///         foundationDns: false,
 ///         internalDns: {
 ///             referenceZoneId: "reference_zone_id",
 ///         },
@@ -52,7 +51,6 @@ import 'account_dns_settings_zone_defaults.dart';
 ///     enforce_dns_only=False,
 ///     zone_defaults={
 ///         "flatten_all_cnames": False,
-///         "foundation_dns": False,
 ///         "internal_dns": {
 ///             "reference_zone_id": "reference_zone_id",
 ///         },
@@ -89,7 +87,6 @@ import 'account_dns_settings_zone_defaults.dart';
 ///         ZoneDefaults = new Cloudflare.Inputs.AccountDnsSettingsZoneDefaultsArgs
 ///         {
 ///             FlattenAllCnames = false,
-///             FoundationDns = false,
 ///             InternalDns = new Cloudflare.Inputs.AccountDnsSettingsZoneDefaultsInternalDnsArgs
 ///             {
 ///                 ReferenceZoneId = "reference_zone_id",
@@ -99,17 +96,17 @@ import 'account_dns_settings_zone_defaults.dart';
 ///             {
 ///                 Type = "cloudflare.standard",
 ///             },
-///             NsTtl = 86400,
+///             NsTtl = 86400.0,
 ///             SecondaryOverrides = false,
 ///             Soa = new Cloudflare.Inputs.AccountDnsSettingsZoneDefaultsSoaArgs
 ///             {
-///                 Expire = 604800,
-///                 MinTtl = 1800,
+///                 Expire = 604800.0,
+///                 MinTtl = 1800.0,
 ///                 Mname = "kristina.ns.cloudflare.com",
-///                 Refresh = 10000,
-///                 Retry = 2400,
+///                 Refresh = 10000.0,
+///                 Retry = 2400.0,
 ///                 Rname = "admin.example.com",
-///                 Ttl = 3600,
+///                 Ttl = 3600.0,
 ///             },
 ///             ZoneMode = "dns_only",
 ///         },
@@ -132,7 +129,6 @@ import 'account_dns_settings_zone_defaults.dart';
 /// 			EnforceDnsOnly: pulumi.Bool(false),
 /// 			ZoneDefaults: &cloudflare.AccountDnsSettingsZoneDefaultsArgs{
 /// 				FlattenAllCnames: pulumi.Bool(false),
-/// 				FoundationDns:    pulumi.Bool(false),
 /// 				InternalDns: &cloudflare.AccountDnsSettingsZoneDefaultsInternalDnsArgs{
 /// 					ReferenceZoneId: pulumi.String("reference_zone_id"),
 /// 				},
@@ -162,7 +158,7 @@ import 'account_dns_settings_zone_defaults.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -170,12 +166,14 @@ import 'account_dns_settings_zone_defaults.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_accountdnssettings" "example_account_dns_settings" {
+/// resource "cloudflare_account_dns_settings" "example_account_dns_settings" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id       = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   enforce_dns_only = false
 ///   zone_defaults = {
 ///     flatten_all_cnames = false
-///     foundation_dns     = false
 ///     internal_dns = {
 ///       reference_zone_id = "reference_zone_id"
 ///     }
@@ -228,7 +226,6 @@ import 'account_dns_settings_zone_defaults.dart';
 ///             .enforceDnsOnly(false)
 ///             .zoneDefaults(AccountDnsSettingsZoneDefaultsArgs.builder()
 ///                 .flattenAllCnames(false)
-///                 .foundationDns(false)
 ///                 .internalDns(AccountDnsSettingsZoneDefaultsInternalDnsArgs.builder()
 ///                     .referenceZoneId("reference_zone_id")
 ///                     .build())
@@ -264,7 +261,6 @@ import 'account_dns_settings_zone_defaults.dart';
 ///       enforceDnsOnly: false
 ///       zoneDefaults:
 ///         flattenAllCnames: false
-///         foundationDns: false
 ///         internalDns:
 ///           referenceZoneId: reference_zone_id
 ///         multiProvider: false
@@ -292,6 +288,7 @@ class AccountDnsSettings extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
   /// When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
   late final pulumi.Output<bool?> enforceDnsOnly;
+  /// Default settings for new zones created in this account.
   late final pulumi.Output<AccountDnsSettingsZoneDefaults> zoneDefaults;
 
   /// Creates a new [AccountDnsSettings].
@@ -306,7 +303,7 @@ class AccountDnsSettings extends pulumi.CustomResource {
           'cloudflare:index/accountDnsSettings:AccountDnsSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.24.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     enforceDnsOnly = registerOutput<bool?>('enforceDnsOnly');

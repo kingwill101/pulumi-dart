@@ -11,10 +11,15 @@ class GetMagicTransitSiteWanResult {
   final String? healthCheckRate;
   /// Identifier
   final String? id;
+  final bool? loadBalanceInnerFlows;
   final String? name;
   final int? physport;
   /// Priority of WAN for traffic loadbalancing.
   final int? priority;
+  /// Provisioned download rate of the WAN circuit in kilobits per second.
+  final int? provisionedDownloadKbps;
+  /// Provisioned upload rate of the WAN circuit in kilobits per second.
+  final int? provisionedUploadKbps;
   /// Identifier
   final String? siteId;
   /// (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
@@ -28,9 +33,12 @@ class GetMagicTransitSiteWanResult {
   /// [accountId] Identifier
   /// [healthCheckRate] Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
   /// [id] Identifier
+  /// [loadBalanceInnerFlows] Optional.
   /// [name] Optional.
   /// [physport] Optional.
   /// [priority] Priority of WAN for traffic loadbalancing.
+  /// [provisionedDownloadKbps] Provisioned download rate of the WAN circuit in kilobits per second.
+  /// [provisionedUploadKbps] Provisioned upload rate of the WAN circuit in kilobits per second.
   /// [siteId] Identifier
   /// [staticAddressing] (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
   /// [vlanTag] VLAN ID. Use zero for untagged.
@@ -39,9 +47,12 @@ class GetMagicTransitSiteWanResult {
     this.accountId,
     this.healthCheckRate,
     this.id,
+    this.loadBalanceInnerFlows,
     this.name,
     this.physport,
     this.priority,
+    this.provisionedDownloadKbps,
+    this.provisionedUploadKbps,
     this.siteId,
     this.staticAddressing,
     this.vlanTag,
@@ -53,9 +64,12 @@ class GetMagicTransitSiteWanResult {
       'accountId': ?accountId,
       'healthCheckRate': ?healthCheckRate,
       'id': ?id,
+      'loadBalanceInnerFlows': ?loadBalanceInnerFlows,
       'name': ?name,
       'physport': ?physport,
       'priority': ?priority,
+      'provisionedDownloadKbps': ?provisionedDownloadKbps,
+      'provisionedUploadKbps': ?provisionedUploadKbps,
       'siteId': ?siteId,
       'staticAddressing': ?staticAddressing?.toMap(),
       'vlanTag': ?vlanTag,
@@ -68,12 +82,15 @@ class GetMagicTransitSiteWanResult {
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       healthCheckRate: (() { final guardedValue = map['healthCheckRate']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      loadBalanceInnerFlows: (() { final guardedValue = map['loadBalanceInnerFlows']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      physport: (() { final guardedValue = map['physport']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      physport: (() { final guardedValue = map['physport']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      provisionedDownloadKbps: (() { final guardedValue = map['provisionedDownloadKbps']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      provisionedUploadKbps: (() { final guardedValue = map['provisionedUploadKbps']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       siteId: (() { final guardedValue = map['siteId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       staticAddressing: (() { final guardedValue = map['staticAddressing']; if (guardedValue == null) return null; return GetMagicTransitSiteWanStaticAddressing.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      vlanTag: (() { final guardedValue = map['vlanTag']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      vlanTag: (() { final guardedValue = map['vlanTag']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       wanId: (() { final guardedValue = map['wanId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

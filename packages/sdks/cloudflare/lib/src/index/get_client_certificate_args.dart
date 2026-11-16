@@ -8,14 +8,14 @@ import 'get_client_certificate_filter.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_get_client_certificate_get_client_certificate_args_doc}
 class GetClientCertificateArgs {
-  /// Identifier.
+  /// Client Certificate Tag
   final pulumi.Input<String?>? clientCertificateId;
   final pulumi.Input<GetClientCertificateFilter?>? filter;
   /// Identifier.
   final pulumi.Input<String?>? zoneId;
 
   /// Creates a new [GetClientCertificateArgs].
-  /// [clientCertificateId] Identifier.
+  /// [clientCertificateId] Client Certificate Tag
   /// [filter] Optional.
   /// [zoneId] Identifier.
   const GetClientCertificateArgs({

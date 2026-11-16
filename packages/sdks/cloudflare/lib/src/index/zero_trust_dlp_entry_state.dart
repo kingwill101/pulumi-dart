@@ -9,13 +9,13 @@ import 'zero_trust_dlp_entry_variant.dart';
 /// Input properties used for looking up and filtering ZeroTrustDlpEntry resources.
 class ZeroTrustDlpEntryState {
   final pulumi.Input<String?>? accountId;
-  /// Only applies to custom word lists.
+  /// For `type: exactData`: Only applies to custom word lists.
   /// Determines if the words should be matched in a case-sensitive manner
   /// Cannot be set to false if secret is true
   final pulumi.Input<bool?>? caseSensitive;
   final pulumi.Input<ZeroTrustDlpEntryConfidence?>? confidence;
   final pulumi.Input<String?>? createdAt;
-  /// Whether this entry is deprecated for new use. This is computed from the static catalog and
+  /// For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
   /// emitted only when true.
   final pulumi.Input<bool?>? deprecated;
   final pulumi.Input<String?>? description;
@@ -30,16 +30,18 @@ class ZeroTrustDlpEntryState {
   final pulumi.Input<String?>? updatedAt;
   /// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
   final pulumi.Input<String?>? uploadStatus;
-  /// A Predefined AI prompt classification topic entry.
+  /// Validators the new entry should reference, by id, at most 10.
+  final pulumi.Input<List<String>?>? validatorIds;
+  /// For `type: predefined`: A Predefined AI prompt classification topic entry.
   final pulumi.Input<ZeroTrustDlpEntryVariant?>? variant;
-  final pulumi.Input<String?>? wordList;
+  final pulumi.Input<List<String>?>? wordLists;
 
   /// Creates a new [ZeroTrustDlpEntryState].
   /// [accountId] Optional.
-  /// [caseSensitive] Only applies to custom word lists.
+  /// [caseSensitive] For `type: exactData`: Only applies to custom word lists.
   /// [confidence] Optional.
   /// [createdAt] Optional.
-  /// [deprecated] Whether this entry is deprecated for new use. This is computed from the static catalog and
+  /// [deprecated] For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
   /// [description] Optional.
   /// [enabled] Optional.
   /// [name] Optional.
@@ -50,8 +52,9 @@ class ZeroTrustDlpEntryState {
   /// [type] Available values: "custom", "predefined", "integration".
   /// [updatedAt] Optional.
   /// [uploadStatus] Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
-  /// [variant] A Predefined AI prompt classification topic entry.
-  /// [wordList] Optional.
+  /// [validatorIds] Validators the new entry should reference, by id, at most 10.
+  /// [variant] For `type: predefined`: A Predefined AI prompt classification topic entry.
+  /// [wordLists] Optional.
   const ZeroTrustDlpEntryState({
     this.accountId,
     this.caseSensitive,
@@ -68,8 +71,9 @@ class ZeroTrustDlpEntryState {
     this.type,
     this.updatedAt,
     this.uploadStatus,
+    this.validatorIds,
     this.variant,
-    this.wordList,
+    this.wordLists,
   });
 
   Map<String, dynamic> toMap() {
@@ -89,8 +93,9 @@ class ZeroTrustDlpEntryState {
       'type': ?type,
       'updatedAt': ?updatedAt,
       'uploadStatus': ?uploadStatus,
+      'validatorIds': ?validatorIds,
       'variant': ?pulumi.Input.mapOptionalInputValue<ZeroTrustDlpEntryVariant, Map<String, dynamic>>(variant, (value) => value.toMap()),
-      'wordList': ?wordList,
+      'wordLists': ?wordLists,
     };
   }
 
@@ -111,8 +116,9 @@ class ZeroTrustDlpEntryState {
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       updatedAt: (() { final guardedValue = map['updatedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       uploadStatus: (() { final guardedValue = map['uploadStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      validatorIds: (() { final guardedValue = map['validatorIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       variant: (() { final guardedValue = map['variant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustDlpEntryVariant.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      wordList: (() { final guardedValue = map['wordList']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      wordLists: (() { final guardedValue = map['wordLists']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }

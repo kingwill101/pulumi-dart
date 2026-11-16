@@ -6,18 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ShareResourceState {
   /// Account identifier.
   final pulumi.Input<String?>? accountId;
-  /// When the share was created.
+  /// When the object was created.
   final pulumi.Input<String?>? created;
   /// Resource Metadata.
   final pulumi.Input<String?>? meta;
-  /// When the share was modified.
+  /// When the object was last modified.
   final pulumi.Input<String?>? modified;
-  /// Account identifier.
+  /// The account that owns the resource. Must match the `accountId` in the path.
   final pulumi.Input<String?>? resourceAccountId;
-  /// Share Resource identifier.
+  /// Identifier assigned by the service that owns the shared resource.
   final pulumi.Input<String?>? resourceId;
   /// Resource Type.
-  /// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+  /// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
   final pulumi.Input<String?>? resourceType;
   /// Resource Version.
   final pulumi.Input<int?>? resourceVersion;
@@ -29,11 +29,11 @@ class ShareResourceState {
 
   /// Creates a new [ShareResourceState].
   /// [accountId] Account identifier.
-  /// [created] When the share was created.
+  /// [created] When the object was created.
   /// [meta] Resource Metadata.
-  /// [modified] When the share was modified.
-  /// [resourceAccountId] Account identifier.
-  /// [resourceId] Share Resource identifier.
+  /// [modified] When the object was last modified.
+  /// [resourceAccountId] The account that owns the resource. Must match the `accountId` in the path.
+  /// [resourceId] Identifier assigned by the service that owns the shared resource.
   /// [resourceType] Resource Type.
   /// [resourceVersion] Resource Version.
   /// [shareId] Share identifier tag.
@@ -75,7 +75,7 @@ class ShareResourceState {
       resourceAccountId: (() { final guardedValue = map['resourceAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      resourceVersion: (() { final guardedValue = map['resourceVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      resourceVersion: (() { final guardedValue = map['resourceVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       shareId: (() { final guardedValue = map['shareId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

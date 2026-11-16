@@ -8,14 +8,23 @@ import 'get_ai_gateways_result_spend_limits.dart';
 import 'get_ai_gateways_result_stripe.dart';
 
 class GetAiGatewaysResult {
+  /// Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
   final pulumi.Input<bool> authentication;
+  /// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+  final pulumi.Input<bool> byokOnly;
   final pulumi.Input<bool> cacheInvalidateOnUpdate;
   final pulumi.Input<int> cacheTtl;
   final pulumi.Input<bool> collectLogs;
   final pulumi.Input<String> createdAt;
   final pulumi.Input<GetAiGatewaysResultDlp> dlp;
+  /// FedRAMP compliance level: fedramp-medium or fedramp-high.
+  /// Available values: "fedramp-medium", "fedramp-high".
+  final pulumi.Input<String> fedrampLevel;
+  /// FedRAMP enforcement mode. "prefer" prioritizes compliant connectors but allows fallback. "require" strictly filters.
+  /// Available values: "prefer", "require".
+  final pulumi.Input<String> fedrampMode;
   final pulumi.Input<GetAiGatewaysResultGuardrails> guardrails;
-  /// gateway id
+  /// Unique identifier of the AI Gateway within the account.
   final pulumi.Input<String> id;
   final pulumi.Input<bool> isDefault;
   final pulumi.Input<bool> logClassification;
@@ -33,11 +42,12 @@ class GetAiGatewaysResult {
   /// Backoff strategy for retry delays
   /// Available values: "constant", "linear", "exponential".
   final pulumi.Input<String> retryBackoff;
-  /// Delay between retry attempts in milliseconds (0-5000)
+  /// Delay between retry attempts in milliseconds (0-60000)
   final pulumi.Input<int> retryDelay;
   /// Maximum number of retry attempts for failed requests (1-5)
   final pulumi.Input<int> retryMaxAttempts;
   final pulumi.Input<GetAiGatewaysResultSpendLimits> spendLimits;
+  /// Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
   final pulumi.Input<String> storeId;
   final pulumi.Input<GetAiGatewaysResultStripe> stripe;
   /// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
@@ -46,14 +56,17 @@ class GetAiGatewaysResult {
   final pulumi.Input<bool> zdr;
 
   /// Creates a new [GetAiGatewaysResult].
-  /// [authentication] Required.
+  /// [authentication] Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+  /// [byokOnly] Requires customer-provided provider credentials and prevents fallback to Unified Billing.
   /// [cacheInvalidateOnUpdate] Required.
   /// [cacheTtl] Required.
   /// [collectLogs] Required.
   /// [createdAt] Required.
   /// [dlp] Required.
+  /// [fedrampLevel] FedRAMP compliance level: fedramp-medium or fedramp-high.
+  /// [fedrampMode] FedRAMP enforcement mode. "prefer" prioritizes compliant connectors but allows fallback. "require" strictly filters.
   /// [guardrails] Required.
-  /// [id] gateway id
+  /// [id] Unique identifier of the AI Gateway within the account.
   /// [isDefault] Required.
   /// [logClassification] Required.
   /// [logManagement] Required.
@@ -66,20 +79,23 @@ class GetAiGatewaysResult {
   /// [rateLimitingLimit] Required.
   /// [rateLimitingTechnique] Available values: "fixed", "sliding".
   /// [retryBackoff] Backoff strategy for retry delays
-  /// [retryDelay] Delay between retry attempts in milliseconds (0-5000)
+  /// [retryDelay] Delay between retry attempts in milliseconds (0-60000)
   /// [retryMaxAttempts] Maximum number of retry attempts for failed requests (1-5)
   /// [spendLimits] Required.
-  /// [storeId] Required.
+  /// [storeId] Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
   /// [stripe] Required.
   /// [workersAiBillingMode] Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
   /// [zdr] Required.
   const GetAiGatewaysResult({
     required this.authentication,
+    required this.byokOnly,
     required this.cacheInvalidateOnUpdate,
     required this.cacheTtl,
     required this.collectLogs,
     required this.createdAt,
     required this.dlp,
+    required this.fedrampLevel,
+    required this.fedrampMode,
     required this.guardrails,
     required this.id,
     required this.isDefault,
@@ -106,11 +122,14 @@ class GetAiGatewaysResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'authentication': authentication,
+      'byokOnly': byokOnly,
       'cacheInvalidateOnUpdate': cacheInvalidateOnUpdate,
       'cacheTtl': cacheTtl,
       'collectLogs': collectLogs,
       'createdAt': createdAt,
       'dlp': pulumi.Input.mapInputValue<GetAiGatewaysResultDlp, Map<String, dynamic>>(dlp, (value) => value.toMap()),
+      'fedrampLevel': fedrampLevel,
+      'fedrampMode': fedrampMode,
       'guardrails': pulumi.Input.mapInputValue<GetAiGatewaysResultGuardrails, Map<String, dynamic>>(guardrails, (value) => value.toMap()),
       'id': id,
       'isDefault': isDefault,
@@ -138,27 +157,30 @@ class GetAiGatewaysResult {
   factory GetAiGatewaysResult.fromMap(Map<String, dynamic> map) {
     return GetAiGatewaysResult(
       authentication: pulumi.Input.fromValue(map['authentication'] as bool),
+      byokOnly: pulumi.Input.fromValue(map['byokOnly'] as bool),
       cacheInvalidateOnUpdate: pulumi.Input.fromValue(map['cacheInvalidateOnUpdate'] as bool),
-      cacheTtl: pulumi.Input.fromValue((map['cacheTtl'] as num).toInt()),
+      cacheTtl: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cacheTtl'])),
       collectLogs: pulumi.Input.fromValue(map['collectLogs'] as bool),
       createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
       dlp: pulumi.Input.fromValue(GetAiGatewaysResultDlp.fromMap((map['dlp']! as Map).cast<String, dynamic>())),
+      fedrampLevel: pulumi.Input.fromValue(map['fedrampLevel'] as String),
+      fedrampMode: pulumi.Input.fromValue(map['fedrampMode'] as String),
       guardrails: pulumi.Input.fromValue(GetAiGatewaysResultGuardrails.fromMap((map['guardrails']! as Map).cast<String, dynamic>())),
       id: pulumi.Input.fromValue(map['id'] as String),
       isDefault: pulumi.Input.fromValue(map['isDefault'] as bool),
       logClassification: pulumi.Input.fromValue(map['logClassification'] as bool),
-      logManagement: pulumi.Input.fromValue((map['logManagement'] as num).toInt()),
+      logManagement: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['logManagement'])),
       logManagementStrategy: pulumi.Input.fromValue(map['logManagementStrategy'] as String),
       logpush: pulumi.Input.fromValue(map['logpush'] as bool),
       logpushPublicKey: pulumi.Input.fromValue(map['logpushPublicKey'] as String),
       modifiedAt: pulumi.Input.fromValue(map['modifiedAt'] as String),
       otels: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAiGatewaysResultOtel>(map['otels']!, (value) => GetAiGatewaysResultOtel.fromMap((value as Map).cast<String, dynamic>()))),
-      rateLimitingInterval: pulumi.Input.fromValue((map['rateLimitingInterval'] as num).toInt()),
-      rateLimitingLimit: pulumi.Input.fromValue((map['rateLimitingLimit'] as num).toInt()),
+      rateLimitingInterval: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rateLimitingInterval'])),
+      rateLimitingLimit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rateLimitingLimit'])),
       rateLimitingTechnique: pulumi.Input.fromValue(map['rateLimitingTechnique'] as String),
       retryBackoff: pulumi.Input.fromValue(map['retryBackoff'] as String),
-      retryDelay: pulumi.Input.fromValue((map['retryDelay'] as num).toInt()),
-      retryMaxAttempts: pulumi.Input.fromValue((map['retryMaxAttempts'] as num).toInt()),
+      retryDelay: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retryDelay'])),
+      retryMaxAttempts: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retryMaxAttempts'])),
       spendLimits: pulumi.Input.fromValue(GetAiGatewaysResultSpendLimits.fromMap((map['spendLimits']! as Map).cast<String, dynamic>())),
       storeId: pulumi.Input.fromValue(map['storeId'] as String),
       stripe: pulumi.Input.fromValue(GetAiGatewaysResultStripe.fromMap((map['stripe']! as Map).cast<String, dynamic>())),

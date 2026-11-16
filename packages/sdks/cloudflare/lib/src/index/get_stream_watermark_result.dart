@@ -83,7 +83,7 @@ class GetStreamWatermarkResult {
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       created: (() { final guardedValue = map['created']; if (guardedValue == null) return null; return guardedValue as String; })(),
       downloadedFrom: (() { final guardedValue = map['downloadedFrom']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      height: (() { final guardedValue = map['height']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      height: (() { final guardedValue = map['height']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       identifier: (() { final guardedValue = map['identifier']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       opacity: (() { final guardedValue = map['opacity']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
@@ -92,7 +92,7 @@ class GetStreamWatermarkResult {
       scale: (() { final guardedValue = map['scale']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      width: (() { final guardedValue = map['width']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      width: (() { final guardedValue = map['width']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

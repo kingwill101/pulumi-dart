@@ -26,7 +26,7 @@ class RulesetRuleActionParametersBrowserTtl {
 
   factory RulesetRuleActionParametersBrowserTtl.fromMap(Map<String, dynamic> map) {
     return RulesetRuleActionParametersBrowserTtl(
-      default_: (() { final guardedValue = map['default']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      default_: (() { final guardedValue = map['default']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }

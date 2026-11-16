@@ -7,14 +7,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_argo_tiered_caching_argo_tiered_caching_args_doc}
 class ArgoTieredCachingArgs {
-  /// Enables Tiered Caching.
+  /// Enables or disables Tiered Cache.
   /// Available values: "on", "off".
   final pulumi.Input<String> value;
   /// Identifier.
   final pulumi.Input<String> zoneId;
 
   /// Creates a new [ArgoTieredCachingArgs].
-  /// [value] Enables Tiered Caching.
+  /// [value] Enables or disables Tiered Cache.
   /// [zoneId] Identifier.
   const ArgoTieredCachingArgs({
     required this.value,

@@ -17,15 +17,20 @@ class ZeroTrustAccessInfrastructureTargetArgs {
   final pulumi.Input<String> hostname;
   /// The IPv4/IPv6 address that identifies where to reach a target
   final pulumi.Input<ZeroTrustAccessInfrastructureTargetIp> ip;
+  /// Optional tags to associate with the target. Keys and values are
+  /// user-defined strings.
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ZeroTrustAccessInfrastructureTargetArgs].
   /// [accountId] Account identifier
   /// [hostname] A non-unique field that refers to a target. Case insensitive, maximum
   /// [ip] The IPv4/IPv6 address that identifies where to reach a target
+  /// [tags] Optional tags to associate with the target. Keys and values are
   const ZeroTrustAccessInfrastructureTargetArgs({
     required this.accountId,
     required this.hostname,
     required this.ip,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
@@ -33,6 +38,7 @@ class ZeroTrustAccessInfrastructureTargetArgs {
       'accountId': accountId,
       'hostname': hostname,
       'ip': pulumi.Input.mapInputValue<ZeroTrustAccessInfrastructureTargetIp, Map<String, dynamic>>(ip, (value) => value.toMap()),
+      'tags': ?tags,
     };
   }
 
@@ -41,6 +47,7 @@ class ZeroTrustAccessInfrastructureTargetArgs {
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
       hostname: pulumi.Input.fromValue(map['hostname'] as String),
       ip: pulumi.Input.fromValue(ZeroTrustAccessInfrastructureTargetIp.fromMap((map['ip']! as Map).cast<String, dynamic>())),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }

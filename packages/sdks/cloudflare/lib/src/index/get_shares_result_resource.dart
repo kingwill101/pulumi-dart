@@ -3,20 +3,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSharesResultResource {
-  /// When the share was created.
+  /// When the object was created.
   final pulumi.Input<String> created;
   /// Share Resource identifier.
   final pulumi.Input<String> id;
   /// Resource Metadata.
   final pulumi.Input<String> meta;
-  /// When the share was modified.
+  /// When the object was last modified.
   final pulumi.Input<String> modified;
   /// Account identifier.
   final pulumi.Input<String> resourceAccountId;
-  /// Share Resource identifier.
+  /// Identifier assigned by the service that owns the shared resource.
   final pulumi.Input<String> resourceId;
   /// Resource Type.
-  /// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+  /// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
   final pulumi.Input<String> resourceType;
   /// Resource Version.
   final pulumi.Input<int> resourceVersion;
@@ -25,12 +25,12 @@ class GetSharesResultResource {
   final pulumi.Input<String> status;
 
   /// Creates a new [GetSharesResultResource].
-  /// [created] When the share was created.
+  /// [created] When the object was created.
   /// [id] Share Resource identifier.
   /// [meta] Resource Metadata.
-  /// [modified] When the share was modified.
+  /// [modified] When the object was last modified.
   /// [resourceAccountId] Account identifier.
-  /// [resourceId] Share Resource identifier.
+  /// [resourceId] Identifier assigned by the service that owns the shared resource.
   /// [resourceType] Resource Type.
   /// [resourceVersion] Resource Version.
   /// [status] Resource Status.
@@ -69,7 +69,7 @@ class GetSharesResultResource {
       resourceAccountId: pulumi.Input.fromValue(map['resourceAccountId'] as String),
       resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
       resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
-      resourceVersion: pulumi.Input.fromValue((map['resourceVersion'] as num).toInt()),
+      resourceVersion: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['resourceVersion'])),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }

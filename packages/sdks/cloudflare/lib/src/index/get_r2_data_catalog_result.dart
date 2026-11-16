@@ -15,6 +15,8 @@ class GetR2DataCatalogResult {
   final String? credentialStatus;
   /// Specifies the R2 bucket name.
   final String? id;
+  /// Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
+  final String? jurisdiction;
   /// Configures maintenance for the catalog.
   final GetR2DataCatalogMaintenanceConfig? maintenanceConfig;
   /// Specifies the catalog name (generated from account and bucket name).
@@ -29,6 +31,7 @@ class GetR2DataCatalogResult {
   /// [bucketName] Specifies the R2 bucket name.
   /// [credentialStatus] Shows the credential configuration status.
   /// [id] Specifies the R2 bucket name.
+  /// [jurisdiction] Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
   /// [maintenanceConfig] Configures maintenance for the catalog.
   /// [name] Specifies the catalog name (generated from account and bucket name).
   /// [status] Indicates the status of the catalog.
@@ -38,6 +41,7 @@ class GetR2DataCatalogResult {
     this.bucketName,
     this.credentialStatus,
     this.id,
+    this.jurisdiction,
     this.maintenanceConfig,
     this.name,
     this.status,
@@ -50,6 +54,7 @@ class GetR2DataCatalogResult {
       'bucketName': ?bucketName,
       'credentialStatus': ?credentialStatus,
       'id': ?id,
+      'jurisdiction': ?jurisdiction,
       'maintenanceConfig': ?maintenanceConfig?.toMap(),
       'name': ?name,
       'status': ?status,
@@ -63,6 +68,7 @@ class GetR2DataCatalogResult {
       bucketName: (() { final guardedValue = map['bucketName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       credentialStatus: (() { final guardedValue = map['credentialStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      jurisdiction: (() { final guardedValue = map['jurisdiction']; if (guardedValue == null) return null; return guardedValue as String; })(),
       maintenanceConfig: (() { final guardedValue = map['maintenanceConfig']; if (guardedValue == null) return null; return GetR2DataCatalogMaintenanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),

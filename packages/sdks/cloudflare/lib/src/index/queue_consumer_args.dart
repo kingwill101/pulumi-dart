@@ -13,19 +13,19 @@ class QueueConsumerArgs {
   final pulumi.Input<String?>? deadLetterQueue;
   /// A Resource identifier.
   final pulumi.Input<String> queueId;
-  /// Name of a Worker
+  /// For `type: worker`: Name of a Worker
   final pulumi.Input<String?>? scriptName;
   final pulumi.Input<QueueConsumerSettings?>? settings;
-  /// Available values: "worker", "httpPull".
+  /// Available values: "worker", "httpPull", "notification".
   final pulumi.Input<String> type;
 
   /// Creates a new [QueueConsumerArgs].
   /// [accountId] A Resource identifier.
   /// [deadLetterQueue] Optional.
   /// [queueId] A Resource identifier.
-  /// [scriptName] Name of a Worker
+  /// [scriptName] For `type: worker`: Name of a Worker
   /// [settings] Optional.
-  /// [type] Available values: "worker", "httpPull".
+  /// [type] Available values: "worker", "httpPull", "notification".
   const QueueConsumerArgs({
     required this.accountId,
     this.deadLetterQueue,
