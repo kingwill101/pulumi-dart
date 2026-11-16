@@ -11,9 +11,9 @@ class DatabaseOnlineMigrationArgs {
   /// The ID of the target MySQL cluster.
   final pulumi.Input<String> clusterId;
   /// When set to true, enables SSL encryption when connecting to the source database.
-  final pulumi.Input<bool>? disableSsl;
+  final pulumi.Input<bool?>? disableSsl;
   /// A list of databases that should be ignored during migration.
-  final pulumi.Input<List<String>>? ignoreDbs;
+  final pulumi.Input<List<String>?>? ignoreDbs;
   /// Configuration for migration
   final pulumi.Input<DatabaseOnlineMigrationSource> source;
 

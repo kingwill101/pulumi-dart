@@ -5,17 +5,17 @@ import 'get_app_spec_ingress_rule_cors_allow_origins.dart';
 
 class GetAppSpecIngressRuleCors {
   /// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-  final pulumi.Input<bool>? allowCredentials;
+  final pulumi.Input<bool?>? allowCredentials;
   /// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
-  final pulumi.Input<List<String>>? allowHeaders;
+  final pulumi.Input<List<String>?>? allowHeaders;
   /// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
-  final pulumi.Input<List<String>>? allowMethods;
+  final pulumi.Input<List<String>?>? allowMethods;
   /// The `Access-Control-Allow-Origin` can be
-  final pulumi.Input<GetAppSpecIngressRuleCorsAllowOrigins>? allowOrigins;
+  final pulumi.Input<GetAppSpecIngressRuleCorsAllowOrigins?>? allowOrigins;
   /// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
-  final pulumi.Input<List<String>>? exposeHeaders;
+  final pulumi.Input<List<String>?>? exposeHeaders;
   /// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
-  final pulumi.Input<String>? maxAge;
+  final pulumi.Input<String?>? maxAge;
 
   /// Creates a new [GetAppSpecIngressRuleCors].
   /// [allowCredentials] Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.

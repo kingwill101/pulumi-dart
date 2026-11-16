@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ProjectResources resources.
 class ProjectResourcesState {
   /// the ID of the project
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// a list of uniform resource names (URNs) for the resources associated with the project
-  final pulumi.Input<List<String>>? resources;
+  final pulumi.Input<List<String>?>? resources;
 
   /// Creates a new [ProjectResourcesState].
   /// [project] the ID of the project

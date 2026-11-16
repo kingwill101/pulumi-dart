@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Cdn resources.
 class CdnState {
   /// **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
-  final pulumi.Input<String>? certificateId;
+  final pulumi.Input<String?>? certificateId;
   /// The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
-  final pulumi.Input<String>? certificateName;
+  final pulumi.Input<String?>? certificateName;
   /// The date and time when the CDN Endpoint was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
-  final pulumi.Input<String>? customDomain;
+  final pulumi.Input<String?>? customDomain;
   /// The fully qualified domain name (FQDN) from which the CDN-backed content is served.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// The fully qualified domain name, (FQDN) for a Space.
-  final pulumi.Input<String>? origin;
+  final pulumi.Input<String?>? origin;
   /// The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
-  final pulumi.Input<int>? ttl;
+  final pulumi.Input<int?>? ttl;
 
   /// Creates a new [CdnState].
   /// [certificateId] **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
@@ -57,7 +57,7 @@ class CdnState {
       customDomain: (() { final guardedValue = map['customDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       origin: (() { final guardedValue = map['origin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

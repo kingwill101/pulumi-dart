@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppSpecEgress {
   /// The app egress type: `AUTOASSIGN`, `DEDICATED_IP`
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [AppSpecEgress].
   /// [type] The app egress type: `AUTOASSIGN`, `DEDICATED_IP`

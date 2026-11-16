@@ -9,14 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ByoipPrefixArgs {
   /// A boolean indicating whether the prefix should be advertised.
   /// Defaults to `false`.
-  final pulumi.Input<bool>? advertised;
+  final pulumi.Input<bool?>? advertised;
   /// The CIDR notation of the prefix (e.g., "192.0.2.0/24").
   final pulumi.Input<String> prefix;
   /// The DigitalOcean region where the prefix will be deployed.
   final pulumi.Input<String> region;
   /// The cryptographic signature proving ownership of the prefix.
   /// This is required during creation but can be omitted in subsequent updates.
-  final pulumi.Input<String>? signature;
+  final pulumi.Input<String?>? signature;
 
   /// Creates a new [ByoipPrefixArgs].
   /// [advertised] A boolean indicating whether the prefix should be advertised.

@@ -3,10 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSshKeysFilter {
-  final pulumi.Input<bool>? all;
+  final pulumi.Input<bool?>? all;
   /// Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
   final pulumi.Input<String> key;
-  final pulumi.Input<String>? matchBy;
+  final pulumi.Input<String?>? matchBy;
   /// A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
   final pulumi.Input<List<String>> values;
 

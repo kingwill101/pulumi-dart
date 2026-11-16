@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainArgs {
   /// The IP address of the domain. If specified, this IP
   /// is used to created an initial A record for the domain.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// The name of the domain
   final pulumi.Input<String> name;
 

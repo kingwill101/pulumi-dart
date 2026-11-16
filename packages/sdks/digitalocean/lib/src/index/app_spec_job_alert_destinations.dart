@@ -5,9 +5,9 @@ import 'app_spec_job_alert_destinations_slack_webhook.dart';
 
 class AppSpecJobAlertDestinations {
   /// Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
-  final pulumi.Input<List<String>>? emails;
+  final pulumi.Input<List<String>?>? emails;
   /// Determines which slack channels or users receive alerts.
-  final pulumi.Input<List<AppSpecJobAlertDestinationsSlackWebhook>>? slackWebhooks;
+  final pulumi.Input<List<AppSpecJobAlertDestinationsSlackWebhook>?>? slackWebhooks;
 
   /// Creates a new [AppSpecJobAlertDestinations].
   /// [emails] Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.

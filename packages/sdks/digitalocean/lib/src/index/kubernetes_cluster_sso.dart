@@ -6,13 +6,13 @@ class KubernetesClusterSso {
   /// The OIDC client ID for the cluster SSO configuration.
   ///
   /// This resource supports customized create timeouts. The default timeout is 30 minutes.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Boolean flag indicating whether SSO is enabled as an authentication method for the cluster.
   final pulumi.Input<bool> enabled;
   /// The OIDC issuer URL for the cluster SSO configuration.
-  final pulumi.Input<String>? issuerUrl;
+  final pulumi.Input<String?>? issuerUrl;
   /// Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
-  final pulumi.Input<bool>? required;
+  final pulumi.Input<bool?>? required;
 
   /// Creates a new [KubernetesClusterSso].
   /// [clientId] The OIDC client ID for the cluster SSO configuration.

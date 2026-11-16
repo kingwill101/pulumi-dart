@@ -11,7 +11,7 @@ class NfsAccessPointArgs {
   /// Access policy configuration for the access point. See Access Policy below.
   final pulumi.Input<NfsAccessPointAccessPolicy> accessPolicy;
   /// A name for the NFS access point.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The export path for the access point.
   final pulumi.Input<String> path;
   /// The ID of the NFS share.

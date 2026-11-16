@@ -7,31 +7,31 @@ import 'app_spec.dart';
 /// Input properties used for looking up and filtering App resources.
 class AppState {
   /// The ID the app's currently active deployment.
-  final pulumi.Input<String>? activeDeploymentId;
+  final pulumi.Input<String?>? activeDeploymentId;
   /// The uniform resource identifier for the app.
-  final pulumi.Input<String>? appUrn;
+  final pulumi.Input<String?>? appUrn;
   /// The date and time of when the app was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// The dedicated egress IP addresses associated with the app.
-  final pulumi.Input<List<AppDedicatedIp>>? dedicatedIps;
+  final pulumi.Input<List<AppDedicatedIp>?>? dedicatedIps;
   /// The default URL to access the app.
-  final pulumi.Input<String>? defaultIngress;
+  final pulumi.Input<String?>? defaultIngress;
   /// (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
-  final pulumi.Input<int>? deploymentPerPage;
+  final pulumi.Input<int?>? deploymentPerPage;
   /// The live domain of the app.
-  final pulumi.Input<String>? liveDomain;
+  final pulumi.Input<String?>? liveDomain;
   /// The live URL of the app.
-  final pulumi.Input<String>? liveUrl;
+  final pulumi.Input<String?>? liveUrl;
   /// The ID of the project that the app is assigned to.
   ///
   /// A spec can contain multiple components.
   ///
   /// A `service` can contain:
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
   /// A DigitalOcean App spec describing the app.
-  final pulumi.Input<AppSpec>? spec;
+  final pulumi.Input<AppSpec?>? spec;
   /// The date and time of when the app was last updated.
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
 
   /// Creates a new [AppState].
   /// [activeDeploymentId] The ID the app's currently active deployment.
@@ -82,7 +82,7 @@ class AppState {
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dedicatedIps: (() { final guardedValue = map['dedicatedIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppDedicatedIp>(guardedValue, (value) => AppDedicatedIp.fromMap((value as Map).cast<String, dynamic>()))); })(),
       defaultIngress: (() { final guardedValue = map['defaultIngress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      deploymentPerPage: (() { final guardedValue = map['deploymentPerPage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deploymentPerPage: (() { final guardedValue = map['deploymentPerPage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       liveDomain: (() { final guardedValue = map['liveDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       liveUrl: (() { final guardedValue = map['liveUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectId: (() { final guardedValue = map['projectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
