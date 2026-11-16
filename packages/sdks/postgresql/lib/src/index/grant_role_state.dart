@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering GrantRole resources.
 class GrantRoleState {
   /// The name of the role that is added to `role`.
-  final pulumi.Input<String>? grantRole;
+  final pulumi.Input<String?>? grantRole;
   /// The name of the role that is granted a new membership.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
   /// Giving ability to grant membership to others or not for `role`. (Default: false)
-  final pulumi.Input<bool>? withAdminOption;
+  final pulumi.Input<bool?>? withAdminOption;
 
   /// Creates a new [GrantRoleState].
   /// [grantRole] The name of the role that is added to `role`.

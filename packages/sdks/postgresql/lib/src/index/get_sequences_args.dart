@@ -10,17 +10,17 @@ class GetSequencesArgs {
   /// The PostgreSQL database which will be queried for sequence names.
   final pulumi.Input<String> database;
   /// List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``LIKE ALL`` operators.
-  final pulumi.Input<List<String>>? likeAllPatterns;
+  final pulumi.Input<List<String>?>? likeAllPatterns;
   /// List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``LIKE ANY`` operators.
-  final pulumi.Input<List<String>>? likeAnyPatterns;
+  final pulumi.Input<List<String>?>? likeAnyPatterns;
   /// List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
-  final pulumi.Input<List<String>>? notLikeAllPatterns;
+  final pulumi.Input<List<String>?>? notLikeAllPatterns;
   /// Expression which will be pattern matched against sequence names in the query using the PostgreSQL ``~`` (regular expression match) operator.
   ///
   /// Note that all optional arguments can be used in conjunction.
-  final pulumi.Input<String>? regexPattern;
+  final pulumi.Input<String?>? regexPattern;
   /// List of PostgreSQL schema(s) which will be queried for sequence names. Queries all schemas in the database by default.
-  final pulumi.Input<List<String>>? schemas;
+  final pulumi.Input<List<String>?>? schemas;
 
   /// Creates a new [GetSequencesArgs].
   /// [database] The PostgreSQL database which will be queried for sequence names.

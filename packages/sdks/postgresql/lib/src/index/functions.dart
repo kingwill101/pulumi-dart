@@ -62,7 +62,7 @@ import 'get_tables_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     postgresql = {
 ///       source = "pulumi/postgresql"
@@ -70,7 +70,7 @@ import 'get_tables_result.dart';
 ///   }
 /// }
 ///
-/// data "postgresql_getschemas" "mySchemas" {
+/// data "postgresql_schemas" "mySchemas" {
 ///   database = "my_database"
 /// }
 /// ```
@@ -123,6 +123,17 @@ Future<GetSchemasResult> getSchemas(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSchemasResult.fromMap(result);
+}
+
+pulumi.Output<GetSchemasResult> getSchemasOutput(
+  GetSchemasArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'postgresql:index/getSchemas:getSchemas',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSchemasResult.fromMap);
 }
 
 /// The ``postgresql.getSequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
@@ -181,7 +192,7 @@ Future<GetSchemasResult> getSchemas(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     postgresql = {
 ///       source = "pulumi/postgresql"
@@ -189,7 +200,7 @@ Future<GetSchemasResult> getSchemas(
 ///   }
 /// }
 ///
-/// data "postgresql_getsequences" "mySequences" {
+/// data "postgresql_sequences" "mySequences" {
 ///   database = "my_database"
 /// }
 /// ```
@@ -242,6 +253,17 @@ Future<GetSequencesResult> getSequences(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSequencesResult.fromMap(result);
+}
+
+pulumi.Output<GetSequencesResult> getSequencesOutput(
+  GetSequencesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'postgresql:index/getSequences:getSequences',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSequencesResult.fromMap);
 }
 
 /// The ``postgresql.getTables`` data source retrieves a list of table names from a specified PostgreSQL database.
@@ -300,7 +322,7 @@ Future<GetSequencesResult> getSequences(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     postgresql = {
 ///       source = "pulumi/postgresql"
@@ -308,7 +330,7 @@ Future<GetSequencesResult> getSequences(
 ///   }
 /// }
 ///
-/// data "postgresql_gettables" "myTables" {
+/// data "postgresql_tables" "myTables" {
 ///   database = "my_database"
 /// }
 /// ```
@@ -361,4 +383,15 @@ Future<GetTablesResult> getTables(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTablesResult.fromMap(result);
+}
+
+pulumi.Output<GetTablesResult> getTablesOutput(
+  GetTablesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'postgresql:index/getTables:getTables',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTablesResult.fromMap);
 }
