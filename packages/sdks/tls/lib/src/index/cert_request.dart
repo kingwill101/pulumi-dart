@@ -99,7 +99,7 @@ import 'cert_request_subject.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     std = {
 ///       source = "pulumi/std"
@@ -110,9 +110,12 @@ import 'cert_request_subject.dart';
 ///   }
 /// }
 ///
-/// resource "tls_certrequest" "example" {
+/// resource "tls_cert_request" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   private_key_pem = file("private_key.pem")
-///   subject = {
+///   subject {
 ///     common_name  = "example.com"
 ///     organization = "ACME Examples, Inc"
 ///   }
@@ -203,7 +206,7 @@ class CertRequest extends pulumi.CustomResource {
           'tls:index/certRequest:CertRequest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '5.6.0').merge(options),
+          pulumi.CustomResourceOptions(version: '5.6.3').merge(options),
           additionalSecretOutputs: const ['privateKeyPem', 'privateKeyPemWo'],
         ) {
     certRequestPem = registerOutput<String>('certRequestPem');
