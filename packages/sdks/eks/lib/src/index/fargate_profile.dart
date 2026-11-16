@@ -6,11 +6,11 @@ import 'package:pulumi_aws/eks.dart' as pulumi_aws_eks;
 /// Defines how Kubernetes pods are executed in Fargate. See aws.eks.FargateProfileArgs for reference.
 class FargateProfile {
   /// Specify a custom role to use for executing pods in Fargate. Defaults to creating a new role with the `arn:aws:iam::aws:policy/AmazonEKSFargatePodExecutionRolePolicy` policy attached.
-  final pulumi.Input<String>? podExecutionRoleArn;
+  final pulumi.Input<String?>? podExecutionRoleArn;
   /// Specify the namespace and label selectors to use for launching pods into Fargate.
-  final pulumi.Input<List<pulumi_aws_eks.FargateProfileSelector>>? selectors;
+  final pulumi.Input<List<pulumi_aws_eks.FargateProfileSelector>?>? selectors;
   /// Specify the subnets in which to execute Fargate tasks for pods. Defaults to the private subnets associated with the cluster.
-  final pulumi.Input<List<String>>? subnetIds;
+  final pulumi.Input<List<String>?>? subnetIds;
 
   /// Creates a new [FargateProfile].
   /// [podExecutionRoleArn] Specify a custom role to use for executing pods in Fargate. Defaults to creating a new role with the `arn:aws:iam::aws:policy/AmazonEKSFargatePodExecutionRolePolicy` policy attached.
