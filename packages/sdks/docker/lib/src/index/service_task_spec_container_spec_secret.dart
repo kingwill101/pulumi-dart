@@ -46,7 +46,7 @@ class ServiceTaskSpecContainerSpecSecret {
   factory ServiceTaskSpecContainerSpecSecret.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecContainerSpecSecret(
       fileGid: (() { final guardedValue = map['fileGid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      fileMode: (() { final guardedValue = map['fileMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      fileMode: (() { final guardedValue = map['fileMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       fileName: pulumi.Input.fromValue(map['fileName'] as String),
       fileUid: (() { final guardedValue = map['fileUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secretId: pulumi.Input.fromValue(map['secretId'] as String),

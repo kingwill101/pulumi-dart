@@ -126,7 +126,7 @@ import 'service_update_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     docker = {
 ///       source = "pulumi/docker"
@@ -135,16 +135,19 @@ import 'service_update_config.dart';
 /// }
 ///
 /// resource "docker_service" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "foo-service"
-///   task_spec = {
-///     container_spec = {
+///   task_spec {
+///     container_spec {
 ///       image = "repo.mycompany.com:8080/foo-service:v1"
 ///     }
 ///   }
-///   endpoint_spec = {
-///     ports = [{
-///       "targetPort" = "8080"
-///     }]
+///   endpoint_spec {
+///     ports {
+///       target_port = "8080"
+///     }
 ///   }
 /// }
 /// ```
@@ -333,7 +336,7 @@ import 'service_update_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     docker = {
 ///       source = "pulumi/docker"
@@ -341,21 +344,24 @@ import 'service_update_config.dart';
 ///   }
 /// }
 ///
-/// data "docker_getremoteimage" "foo" {
+/// data "docker_remote_image" "foo" {
 ///   name = "repo.mycompany.com:8080/foo-service:v1"
 /// }
 ///
 /// resource "docker_service" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "foo-service"
-///   task_spec = {
-///     container_spec = {
-///       image = data.docker_getremoteimage.foo.repo_digest
+///   task_spec {
+///     container_spec {
+///       image = data.docker_remote_image.foo.repo_digest
 ///     }
 ///   }
-///   endpoint_spec = {
-///     ports = [{
-///       "targetPort" = "8080"
-///     }]
+///   endpoint_spec {
+///     ports {
+///       target_port = "8080"
+///     }
 ///   }
 /// }
 /// ```
@@ -1150,7 +1156,7 @@ import 'service_update_config.dart';
 /// 				ContainerSpec: &docker.ServiceTaskSpecContainerSpecArgs{
 /// 					Configs: docker.ServiceTaskSpecContainerSpecConfigArray{
 /// 						&docker.ServiceTaskSpecContainerSpecConfigArgs{
-/// 							ConfigId:   serviceConfig.ID().ToIDOutput().ToStringOutput(),
+/// 							ConfigId:   serviceConfig.ID(),
 /// 							ConfigName: serviceConfig.Name,
 /// 							FileName:   pulumi.String("/configs.json"),
 /// 						},
@@ -1158,7 +1164,7 @@ import 'service_update_config.dart';
 /// 					},
 /// 					Secrets: docker.ServiceTaskSpecContainerSpecSecretArray{
 /// 						&docker.ServiceTaskSpecContainerSpecSecretArgs{
-/// 							SecretId:   serviceSecret.ID().ToIDOutput().ToStringOutput(),
+/// 							SecretId:   serviceSecret.ID(),
 /// 							SecretName: serviceSecret.Name,
 /// 							FileName:   pulumi.String("/secrets.json"),
 /// 							FileUid:    pulumi.String("0"),
@@ -1284,7 +1290,7 @@ import 'service_update_config.dart';
 /// 					"delay":       "3s",
 /// 					"maxAttempts": 4,
 /// 					"window":      "10s",
-/// 				}[0],
+/// 				}[0].(docker.ServiceTaskSpecRestartPolicyArgs),
 /// 				Placement: &docker.ServiceTaskSpecPlacementArgs{
 /// 					Constraints: pulumi.StringArray{
 /// 						pulumi.String("node.role==manager"),
@@ -1350,7 +1356,7 @@ import 'service_update_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     docker = {
 ///       source = "pulumi/docker"
@@ -1359,46 +1365,68 @@ import 'service_update_config.dart';
 /// }
 ///
 /// resource "docker_volume" "test_volume" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "tftest-volume"
 /// }
 /// resource "docker_volume" "test_volume_2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "tftest-volume2"
 /// }
-/// resource "docker_serviceconfig" "service_config" {
+/// resource "docker_service_config" "service_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "tftest-full-myconfig"
 ///   data = "ewogICJwcmVmaXgiOiAiMTIzIgp9"
 /// }
 /// resource "docker_secret" "service_secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "tftest-mysecret"
 ///   data = "ewogICJrZXkiOiAiUVdFUlRZIgp9"
 /// }
 /// resource "docker_network" "test_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "tftest-network"
 ///   driver = "overlay"
 /// }
 /// resource "docker_service" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "tftest-service-basic"
-///   task_spec = {
-///     container_spec = {
-///       configs = [{
-///         "configId"   = docker_serviceconfig.service_config.id
-///         "configName" = docker_serviceconfig.service_config.name
-///         "fileName"   = "/configs.json"
-///       }, {}]
-///       secrets = [{
-///         "secretId"   = docker_secret.service_secret.id
-///         "secretName" = docker_secret.service_secret.name
-///         "fileName"   = "/secrets.json"
-///         "fileUid"    = "0"
-///         "fileGid"    = "0"
-///         "fileMode"   = 777
-///       }, {}]
+///   task_spec {
+///     container_spec {
+///       configs {
+///         config_id   = docker_service_config.service_config.id
+///         config_name = docker_service_config.service_config.name
+///         file_name   = "/configs.json"
+///       }
+///       configs {
+///       }
+///       secrets {
+///         secret_id   = docker_secret.service_secret.id
+///         secret_name = docker_secret.service_secret.name
+///         file_name   = "/secrets.json"
+///         file_uid    = "0"
+///         file_gid    = "0"
+///         file_mode   = 777
+///       }
+///       secrets {
+///       }
 ///       image = "repo.mycompany.com:8080/foo-service:v1"
-///       labels = [{
-///         "label" = "foo.bar"
-///         "value" = "baz"
-///       }]
-///       commands = ["ls"]
+///       labels {
+///         label = "foo.bar"
+///         value = "baz"
+///       }
+///       command  = ["ls"]
 ///       args     = ["-las"]
 ///       hostname = "my-fancy-service"
 ///       env = {
@@ -1407,8 +1435,8 @@ import 'service_update_config.dart';
 ///       dir    = "/root"
 ///       user   = "root"
 ///       groups = ["docker", "foogroup"]
-///       privileges = {
-///         se_linux_context = {
+///       privileges {
+///         se_linux_context {
 ///           disable = true
 ///           user    = "user-label"
 ///           role    = "role-label"
@@ -1417,70 +1445,73 @@ import 'service_update_config.dart';
 ///         }
 ///       }
 ///       read_only = true
-///       mounts = [{
-///         "target"   = "/mount/test"
-///         "source"   = docker_volume.test_volume.name
-///         "type"     = "bind"
-///         "readOnly" = true
-///         "bindOptions" = {
-///           "propagation" = "rprivate"
+///       mounts {
+///         target    = "/mount/test"
+///         source    = docker_volume.test_volume.name
+///         type      = "bind"
+///         read_only = true
+///         bind_options {
+///           propagation = "rprivate"
 ///         }
-///         }, {
-///         "target"   = "/mount/test2"
-///         "source"   = docker_volume.test_volume_2.name
-///         "type"     = "volume"
-///         "readOnly" = true
-///         "volumeOptions" = {
-///           "noCopy" = true
-///           "labels" = [{
-///             "label" = "foo"
-///             "value" = "bar"
-///           }]
-///           "driverName" = "random-driver"
-///           "driverOptions" = {
+///       }
+///       mounts {
+///         target    = "/mount/test2"
+///         source    = docker_volume.test_volume_2.name
+///         type      = "volume"
+///         read_only = true
+///         volume_options {
+///           no_copy = true
+///           labels {
+///             label = "foo"
+///             value = "bar"
+///           }
+///           driver_name = "random-driver"
+///           driver_options = {
 ///             "op1" = "val1"
 ///           }
 ///         }
-///       }]
+///       }
 ///       stop_signal       = "SIGTERM"
 ///       stop_grace_period = "10s"
-///       healthcheck = {
-///         tests    = ["CMD", "curl", "-f", "http://localhost:8080/health"]
+///       healthcheck {
+///         test     = ["CMD", "curl", "-f", "http://localhost:8080/health"]
 ///         interval = "5s"
 ///         timeout  = "2s"
 ///         retries  = 4
 ///       }
-///       hosts = [{
-///         "host" = "testhost"
-///         "ip"   = "10.0.1.0"
-///       }]
-///       dns_config = {
+///       hosts {
+///         host = "testhost"
+///         ip   = "10.0.1.0"
+///       }
+///       dns_config {
 ///         nameservers = ["8.8.8.8"]
-///         searches    = ["example.org"]
+///         search      = ["example.org"]
 ///         options     = ["timeout:3"]
 ///       }
 ///     }
-///     resources = {
-///       limits = {
+///     resources {
+///       limits {
 ///         nano_cpus    = 1000000
 ///         memory_bytes = 536870912
 ///       }
-///       reservation = {
+///       reservation {
 ///         nano_cpus    = 1000000
 ///         memory_bytes = 536870912
-///         generic_resources = {
-///           named_resources_specs    = ["GPU=UUID1"]
-///           discrete_resources_specs = ["SSD=3"]
+///         generic_resources {
+///           named_resources_spec    = ["GPU=UUID1"]
+///           discrete_resources_spec = ["SSD=3"]
 ///         }
 ///       }
 ///     }
-///     restart_policy = {
-///       "condition"   = "on-failure"
-///       "delay"       = "3s"
-///       "maxAttempts" = 4
-///       "window"      = "10s"
-///     }[0]
-///     placement = {
+///     restart_policy {
+///       content = {
+///         "condition"   = "on-failure"
+///         "delay"       = "3s"
+///         "maxAttempts" = 4
+///         "window"      = "10s"
+///       }[0]
+///     }
+///     placement {
 ///       constraints  = ["node.role==manager"]
 ///       prefs        = ["spread=node.role.manager"]
 ///       max_replicas = 1
@@ -1488,7 +1519,7 @@ import 'service_update_config.dart';
 ///     force_update = 0
 ///     runtime      = "container"
 ///     networks     = [docker_network.test_network.id]
-///     log_driver = {
+///     log_driver {
 ///       name = "json-file"
 ///       options = {
 ///         "max-size" = "10m"
@@ -1496,12 +1527,12 @@ import 'service_update_config.dart';
 ///       }
 ///     }
 ///   }
-///   mode = {
-///     replicated = {
+///   mode {
+///     replicated {
 ///       replicas = 2
 ///     }
 ///   }
-///   update_config = {
+///   update_config {
 ///     parallelism       = 2
 ///     delay             = "10s"
 ///     failure_action    = "pause"
@@ -1509,7 +1540,7 @@ import 'service_update_config.dart';
 ///     max_failure_ratio = "0.1"
 ///     order             = "start-first"
 ///   }
-///   rollback_config = {
+///   rollback_config {
 ///     parallelism       = 2
 ///     delay             = "5ms"
 ///     failure_action    = "pause"
@@ -1517,14 +1548,16 @@ import 'service_update_config.dart';
 ///     max_failure_ratio = "0.9"
 ///     order             = "stop-first"
 ///   }
-///   endpoint_spec = {
-///     ports = [{
-///       "name"          = "random"
-///       "protocol"      = "tcp"
-///       "targetPort"    = "8080"
-///       "publishedPort" = "8080"
-///       "publishMode"   = "ingress"
-///     }, {}]
+///   endpoint_spec {
+///     ports {
+///       name           = "random"
+///       protocol       = "tcp"
+///       target_port    = "8080"
+///       published_port = "8080"
+///       publish_mode   = "ingress"
+///     }
+///     ports {
+///     }
 ///     mode = "vip"
 ///   }
 /// }
@@ -1904,7 +1937,7 @@ import 'service_update_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     docker = {
 ///       source = "pulumi/docker"
@@ -1913,17 +1946,20 @@ import 'service_update_config.dart';
 /// }
 ///
 /// resource "docker_service" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "foo"
-///   task_spec = {
-///     container_spec = {
+///   task_spec {
+///     container_spec {
 ///       image = "nginx"
 ///     }
 ///   }
-///   endpoint_spec = {
-///     ports = [{
-///       "targetPort"    = "80"
-///       "publishedPort" = "8080"
-///     }]
+///   endpoint_spec {
+///     ports {
+///       target_port    = "80"
+///       published_port = "8080"
+///     }
 ///   }
 /// }
 /// ```
@@ -2025,7 +2061,7 @@ class Service extends pulumi.CustomResource {
           'docker:index/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '5.2.0').merge(options),
+          pulumi.CustomResourceOptions(version: '5.3.0').merge(options),
         ) {
     auth = registerOutput<ServiceAuth?>('auth', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAuth.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     convergeConfig = registerOutput<ServiceConvergeConfig?>('convergeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceConvergeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

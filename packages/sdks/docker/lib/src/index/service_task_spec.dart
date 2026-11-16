@@ -62,7 +62,7 @@ class ServiceTaskSpec {
   factory ServiceTaskSpec.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpec(
       containerSpec: pulumi.Input.fromValue(ServiceTaskSpecContainerSpec.fromMap((map['containerSpec']! as Map).cast<String, dynamic>())),
-      forceUpdate: (() { final guardedValue = map['forceUpdate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      forceUpdate: (() { final guardedValue = map['forceUpdate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       logDriver: (() { final guardedValue = map['logDriver']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTaskSpecLogDriver.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       networksAdvanceds: (() { final guardedValue = map['networksAdvanceds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceTaskSpecNetworksAdvanced>(guardedValue, (value) => ServiceTaskSpecNetworksAdvanced.fromMap((value as Map).cast<String, dynamic>()))); })(),
       placement: (() { final guardedValue = map['placement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTaskSpecPlacement.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -30,9 +30,9 @@ class ContainerUlimit {
 
   factory ContainerUlimit.fromMap(Map<String, dynamic> map) {
     return ContainerUlimit(
-      hard: pulumi.Input.fromValue((map['hard'] as num).toInt()),
+      hard: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['hard'])),
       name: pulumi.Input.fromValue(map['name'] as String),
-      soft: pulumi.Input.fromValue((map['soft'] as num).toInt()),
+      soft: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['soft'])),
     );
   }
 }

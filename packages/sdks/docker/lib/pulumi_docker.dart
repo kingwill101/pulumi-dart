@@ -244,11 +244,17 @@ class _IndexModuleNamespace {
   final VolumeState = module_index.VolumeState.new;
   final VolumeStateArgs = module_index.VolumeState.new;
   final getLogs = module_index.getLogs;
+  final getLogsOutput = module_index.getLogsOutput;
   final getNetwork = module_index.getNetwork;
+  final getNetworkOutput = module_index.getNetworkOutput;
   final getPlugin = module_index.getPlugin;
+  final getPluginOutput = module_index.getPluginOutput;
   final getRegistryImage = module_index.getRegistryImage;
   final getRegistryImageManifests = module_index.getRegistryImageManifests;
+  final getRegistryImageManifestsOutput = module_index.getRegistryImageManifestsOutput;
+  final getRegistryImageOutput = module_index.getRegistryImageOutput;
   final getRemoteImage = module_index.getRemoteImage;
+  final getRemoteImageOutput = module_index.getRemoteImageOutput;
 }
 
 class _ProvidersModuleNamespace {
@@ -262,4 +268,5 @@ class _ProvidersModuleNamespace {
   final TerraformConfigResult = module_providers.TerraformConfigResult.new;
   final TerraformConfigResultArgs = module_providers.TerraformConfigResult.new;
   final terraformConfig = module_providers.terraformConfig;
+  final terraformConfigOutput = module_providers.terraformConfigOutput;
 }

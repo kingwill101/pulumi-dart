@@ -63,7 +63,7 @@ import 'remote_image_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     docker = {
 ///       source = "pulumi/docker"
@@ -71,7 +71,10 @@ import 'remote_image_state.dart';
 ///   }
 /// }
 ///
-/// resource "docker_remoteimage" "ubuntu" {
+/// resource "docker_remote_image" "ubuntu" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "ubuntu:precise"
 /// }
 /// ```
@@ -193,7 +196,7 @@ import 'remote_image_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     docker = {
 ///       source = "pulumi/docker"
@@ -201,13 +204,16 @@ import 'remote_image_state.dart';
 ///   }
 /// }
 ///
-/// data "docker_getregistryimage" "ubuntu" {
+/// data "docker_registry_image" "ubuntu" {
 ///   name = "ubuntu:precise"
 /// }
 ///
-/// resource "docker_remoteimage" "ubuntu" {
-///   name          = data.docker_getregistryimage.ubuntu.name
-///   pull_triggers = [data.docker_getregistryimage.ubuntu.sha256_digest]
+/// resource "docker_remote_image" "ubuntu" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name          = data.docker_registry_image.ubuntu.name
+///   pull_triggers = [data.docker_registry_image.ubuntu.sha256_digest]
 /// }
 /// ```
 /// ```java
@@ -374,7 +380,7 @@ import 'remote_image_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     docker = {
 ///       source = "pulumi/docker"
@@ -382,7 +388,10 @@ import 'remote_image_state.dart';
 ///   }
 /// }
 ///
-/// resource "docker_remoteimage" "zoo" {
+/// resource "docker_remote_image" "zoo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "zoo"
 ///   build = {
 ///     context = "."
@@ -481,7 +490,7 @@ class RemoteImage extends pulumi.CustomResource {
           'docker:index/remoteImage:RemoteImage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '5.2.0').merge(options),
+          pulumi.CustomResourceOptions(version: '5.3.0').merge(options),
         ) {
     build = registerOutput<RemoteImageBuild?>('build', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RemoteImageBuild.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     forceRemove = registerOutput<bool?>('forceRemove');

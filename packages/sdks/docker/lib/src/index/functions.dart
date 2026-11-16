@@ -94,7 +94,7 @@ pulumi.Output<GetLogsResult> getLogsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     docker = {
 ///       source = "pulumi/docker"
@@ -102,7 +102,7 @@ pulumi.Output<GetLogsResult> getLogsOutput(
 ///   }
 /// }
 ///
-/// data "docker_getnetwork" "main" {
+/// data "docker_network" "main" {
 ///   name = "main"
 /// }
 /// ```
@@ -246,7 +246,7 @@ pulumi.Output<GetNetworkResult> getNetworkOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     docker = {
 ///       source = "pulumi/docker"
@@ -254,10 +254,10 @@ pulumi.Output<GetNetworkResult> getNetworkOutput(
 ///   }
 /// }
 ///
-/// data "docker_getplugin" "byAlias" {
+/// data "docker_plugin" "byAlias" {
 ///   alias = "sample-volume-plugin:latest"
 /// }
-/// data "docker_getplugin" "byId" {
+/// data "docker_plugin" "byId" {
 ///   id = "e9a9db917b3bfd6706b5d3a66d4bceb9f"
 /// }
 ///
@@ -419,7 +419,7 @@ pulumi.Output<GetPluginResult> getPluginOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     docker = {
 ///       source = "pulumi/docker"
@@ -427,13 +427,16 @@ pulumi.Output<GetPluginResult> getPluginOutput(
 ///   }
 /// }
 ///
-/// data "docker_getregistryimage" "ubuntu" {
+/// data "docker_registry_image" "ubuntu" {
 ///   name = "ubuntu:precise"
 /// }
 ///
-/// resource "docker_remoteimage" "ubuntu" {
-///   name          = data.docker_getregistryimage.ubuntu.name
-///   pull_triggers = [data.docker_getregistryimage.ubuntu.sha256_digest]
+/// resource "docker_remote_image" "ubuntu" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name          = data.docker_registry_image.ubuntu.name
+///   pull_triggers = [data.docker_registry_image.ubuntu.sha256_digest]
 /// }
 /// ```
 /// ```java
@@ -656,7 +659,7 @@ pulumi.Output<GetRegistryImageManifestsResult> getRegistryImageManifestsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     docker = {
 ///       source = "pulumi/docker"
@@ -664,16 +667,16 @@ pulumi.Output<GetRegistryImageManifestsResult> getRegistryImageManifestsOutput(
 ///   }
 /// }
 ///
-/// data "docker_getremoteimage" "latest" {
+/// data "docker_remote_image" "latest" {
 ///   name = "nginx"
 /// }
-/// data "docker_getremoteimage" "specific" {
+/// data "docker_remote_image" "specific" {
 ///   name = "nginx:1.17.6"
 /// }
-/// data "docker_getremoteimage" "digest" {
+/// data "docker_remote_image" "digest" {
 ///   name = "nginx@sha256:36b74457bccb56fbf8b05f79c85569501b721d4db813b684391d63e02287c0b2"
 /// }
-/// data "docker_getremoteimage" "tagAndDigest" {
+/// data "docker_remote_image" "tagAndDigest" {
 ///   name = "nginx:1.19.1@sha256:36b74457bccb56fbf8b05f79c85569501b721d4db813b684391d63e02287c0b2"
 /// }
 ///

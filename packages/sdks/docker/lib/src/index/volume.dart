@@ -58,7 +58,7 @@ import 'volume_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     docker = {
 ///       source = "pulumi/docker"
@@ -67,6 +67,9 @@ import 'volume_state.dart';
 /// }
 ///
 /// resource "docker_volume" "shared_volume" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "shared_volume"
 /// }
 /// ```
@@ -178,7 +181,7 @@ import 'volume_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     docker = {
 ///       source = "pulumi/docker"
@@ -187,6 +190,9 @@ import 'volume_state.dart';
 /// }
 ///
 /// resource "docker_volume" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "524b0457aa2a87dd2b75c74c3e4e53f406974249e63ab3ed9bf21e5644f9dc7d"
 /// }
 /// ```
@@ -260,7 +266,7 @@ class Volume extends pulumi.CustomResource {
           'docker:index/volume:Volume',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '5.2.0').merge(options),
+          pulumi.CustomResourceOptions(version: '5.3.0').merge(options),
         ) {
     cluster = registerOutput<VolumeCluster?>('cluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     driver = registerOutput<String>('driver');

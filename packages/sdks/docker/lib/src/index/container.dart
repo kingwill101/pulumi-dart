@@ -101,7 +101,7 @@ import 'container_volume.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     docker = {
 ///       source = "pulumi/docker"
@@ -111,11 +111,17 @@ import 'container_volume.dart';
 ///
 /// # Start a container
 /// resource "docker_container" "ubuntu" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "foo"
-///   image = docker_remoteimage.ubuntu.image_id
+///   image = docker_remote_image.ubuntu.image_id
 /// }
 /// # Find the latest Ubuntu precise image.
-/// resource "docker_remoteimage" "ubuntu" {
+/// resource "docker_remote_image" "ubuntu" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "ubuntu:precise"
 /// }
 /// ```
@@ -272,7 +278,7 @@ import 'container_volume.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     docker = {
 ///       source = "pulumi/docker"
@@ -281,6 +287,9 @@ import 'container_volume.dart';
 /// }
 ///
 /// resource "docker_container" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "foo"
 ///   image = "nginx"
 ///   ports {
@@ -513,7 +522,7 @@ class Container extends pulumi.CustomResource {
           'docker:index/container:Container',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '5.2.0').merge(options),
+          pulumi.CustomResourceOptions(version: '5.3.0').merge(options),
         ) {
     attach = registerOutput<bool?>('attach');
     bridge = registerOutput<String>('bridge');

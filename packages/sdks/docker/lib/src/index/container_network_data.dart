@@ -57,9 +57,9 @@ class ContainerNetworkData {
     return ContainerNetworkData(
       gateway: (() { final guardedValue = map['gateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       globalIpv6Address: (() { final guardedValue = map['globalIpv6Address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      globalIpv6PrefixLength: (() { final guardedValue = map['globalIpv6PrefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      globalIpv6PrefixLength: (() { final guardedValue = map['globalIpv6PrefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ipPrefixLength: (() { final guardedValue = map['ipPrefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      ipPrefixLength: (() { final guardedValue = map['ipPrefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipv6Gateway: (() { final guardedValue = map['ipv6Gateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       macAddress: (() { final guardedValue = map['macAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkName: (() { final guardedValue = map['networkName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

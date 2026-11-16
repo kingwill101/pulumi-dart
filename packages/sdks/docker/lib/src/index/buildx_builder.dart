@@ -83,7 +83,7 @@ import 'buildx_builder_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     docker = {
 ///       source = "pulumi/docker"
@@ -91,11 +91,14 @@ import 'buildx_builder_state.dart';
 ///   }
 /// }
 ///
-/// resource "docker_buildxbuilder" "example" {
+/// resource "docker_buildx_builder" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "example-builder"
 ///   driver = "docker-container"
 ///   use    = true
-///   docker_container = {
+///   docker_container {
 ///     image = "moby/buildkit:latest"
 ///   }
 /// }
@@ -187,7 +190,7 @@ class BuildxBuilder extends pulumi.CustomResource {
           'docker:index/buildxBuilder:BuildxBuilder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '5.2.0').merge(options),
+          pulumi.CustomResourceOptions(version: '5.3.0').merge(options),
         ) {
     append = registerOutput<bool?>('append');
     bootstrap = registerOutput<bool?>('bootstrap');

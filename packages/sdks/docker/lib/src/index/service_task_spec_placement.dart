@@ -37,7 +37,7 @@ class ServiceTaskSpecPlacement {
   factory ServiceTaskSpecPlacement.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecPlacement(
       constraints: (() { final guardedValue = map['constraints']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      maxReplicas: (() { final guardedValue = map['maxReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxReplicas: (() { final guardedValue = map['maxReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       platforms: (() { final guardedValue = map['platforms']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceTaskSpecPlacementPlatform>(guardedValue, (value) => ServiceTaskSpecPlacementPlatform.fromMap((value as Map).cast<String, dynamic>()))); })(),
       prefs: (() { final guardedValue = map['prefs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

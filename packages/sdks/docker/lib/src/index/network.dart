@@ -58,7 +58,7 @@ import 'network_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     docker = {
 ///       source = "pulumi/docker"
@@ -67,6 +67,9 @@ import 'network_state.dart';
 /// }
 ///
 /// resource "docker_network" "private_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my_network"
 /// }
 /// ```
@@ -178,7 +181,7 @@ import 'network_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     docker = {
 ///       source = "pulumi/docker"
@@ -187,6 +190,9 @@ import 'network_state.dart';
 /// }
 ///
 /// resource "docker_network" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "foo"
 /// }
 /// ```
@@ -272,7 +278,7 @@ class Network extends pulumi.CustomResource {
           'docker:index/network:Network',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '5.2.0').merge(options),
+          pulumi.CustomResourceOptions(version: '5.3.0').merge(options),
         ) {
     attachable = registerOutput<bool?>('attachable');
     driver = registerOutput<String>('driver');
