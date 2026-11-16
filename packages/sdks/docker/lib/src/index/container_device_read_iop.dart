@@ -26,7 +26,7 @@ class ContainerDeviceReadIop {
   factory ContainerDeviceReadIop.fromMap(Map<String, dynamic> map) {
     return ContainerDeviceReadIop(
       path: pulumi.Input.fromValue(map['path'] as String),
-      rate: pulumi.Input.fromValue((map['rate'] as num).toInt()),
+      rate: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rate'])),
     );
   }
 }

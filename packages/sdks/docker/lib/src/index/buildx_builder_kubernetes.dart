@@ -107,7 +107,7 @@ class BuildxBuilderKubernetes {
       namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nodeselector: (() { final guardedValue = map['nodeselector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       qemu: (() { final guardedValue = map['qemu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BuildxBuilderKubernetesQemu.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       requests: (() { final guardedValue = map['requests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BuildxBuilderKubernetesRequests.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       rootless: (() { final guardedValue = map['rootless']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       schedulername: (() { final guardedValue = map['schedulername']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

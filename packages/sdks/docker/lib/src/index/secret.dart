@@ -71,7 +71,7 @@ import 'secret_state.dart';
 /// 		}
 /// 		_, err = docker.NewSecret(ctx, "foo", &docker.SecretArgs{
 /// 			Name: pulumi.String("foo"),
-/// 			Data: invokeBase64encode.Result,
+/// 			Data: invokeBase64encode.Result.(pulumi.String),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -81,7 +81,7 @@ import 'secret_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     docker = {
 ///       source = "pulumi/docker"
@@ -90,6 +90,9 @@ import 'secret_state.dart';
 /// }
 ///
 /// resource "docker_secret" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "foo"
 ///   data = base64encode("{\"foo\": \"s3cr3t\"}")
 /// }
@@ -118,7 +121,7 @@ import 'secret_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var foo = new Secret("foo", SecretArgs.builder()
 ///             .name("foo")
-///             .data(StdFunctions.base64encode(Map.of("input", "{\"foo\": \"s3cr3t\"}")).result())
+///             .data(StdFunctions.base64encode(Map.of("input", "{\"foo\": \"s3cr3t\"}")).get("result"))
 ///             .build());
 ///
 ///     }
@@ -166,7 +169,7 @@ class Secret extends pulumi.CustomResource {
           'docker:index/secret:Secret',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '5.2.0').merge(options),
+          pulumi.CustomResourceOptions(version: '5.3.0').merge(options),
           additionalSecretOutputs: const ['data'],
         ) {
     data = registerOutput<String>('data', isSecret: true);

@@ -105,7 +105,7 @@ import 'registry_image_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     docker = {
 ///       source = "pulumi/docker"
@@ -113,14 +113,20 @@ import 'registry_image_state.dart';
 ///   }
 /// }
 ///
-/// resource "docker_registryimage" "helloworld" {
-///   name          = docker_remoteimage.image.name
+/// resource "docker_registry_image" "helloworld" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name          = docker_remote_image.image.name
 ///   keep_remotely = true
 /// }
-/// resource "docker_remoteimage" "image" {
+/// resource "docker_remote_image" "image" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "registry.com/somename:1.0"
 ///   build = {
-///     context ="${path.cwd}/absolutePathToContextFolder"
+///     context ="${abspath(path.root)}/absolutePathToContextFolder"
 ///   }
 /// }
 /// ```
@@ -205,7 +211,7 @@ class RegistryImage extends pulumi.CustomResource {
           'docker:index/registryImage:RegistryImage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '5.2.0').merge(options),
+          pulumi.CustomResourceOptions(version: '5.3.0').merge(options),
         ) {
     authConfig = registerOutput<RegistryImageAuthConfig?>('authConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryImageAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     build = registerOutput<RegistryImageBuild?>('build', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryImageBuild.fromMap((guardedValue as Map).cast<String, dynamic>()); });

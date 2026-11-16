@@ -144,7 +144,7 @@ class ServiceConfig extends pulumi.CustomResource {
           'docker:index/serviceConfig:ServiceConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '5.2.0').merge(options),
+          pulumi.CustomResourceOptions(version: '5.3.0').merge(options),
         ) {
     data = registerOutput<String?>('data');
     dataRaw = registerOutput<String?>('dataRaw');
